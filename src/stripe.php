@@ -7,6 +7,7 @@ if (!function_exists('curl_init')) {
 if (!function_exists('json_decode')) {
   throw new Exception('Stripe needs the JSON PHP extension.');
 }
+require_once(dirname(__FILE__) . '/compat.php');
 
 abstract class Stripe {
   public static $apiKey;
@@ -92,10 +93,10 @@ abstract class StripeUtil {
     } else if (is_array($resp)) {
       $resp = self::arrayClone($resp);
       if (isset($resp['object']) && isset($types[$resp['object']]))
-	$class_name = $types[$resp['object']];
+	$className = $types[$resp['object']];
       else
-	$class_name = 'StripeObject';
-      return call_user_func("$class_name::constructFrom", $resp, $apiKey);
+	$className = 'StripeObject';
+      return call_user_func("$className::constructFrom", $resp, $apiKey, $className);
     } else {
       return $resp;
     }
@@ -198,7 +199,7 @@ class StripeAPIRequestor {
     }
 
     if ($rcode < 200 || $rcode >= 300) {
-      $this::handleApiError($rbody, $rcode, $resp);
+      $this->handleApiError($rbody, $rcode, $resp);
     }
     return $resp;
   }
@@ -336,8 +337,9 @@ class StripeObject implements ArrayAccess {
     return isset($this->values[$k]) ? $this->values[$k] : null;
   }
 
-  public static function constructFrom($values, $apiKey=null) {
-    $class = get_called_class();
+  public static function constructFrom($values, $apiKey=null, $class=null) {
+    if (!$class)
+      $class = get_called_class();
     $obj = new $class(isset($values['id']) ? $values['id'] : null,
 		      $apiKey);
     $obj->refreshFrom($values, $apiKey);
@@ -460,9 +462,10 @@ abstract class StripeAPIResource extends StripeObject {
     // PHP doesn't support mixins / multiple inheritance, so need
     // to accpt this hack if we want to stay DRY
     $class = get_called_class();
-    if (!$class::$apiMethods->includes($method)) {
-      $class = get_called_class();
-      $methods = join(', ', $class::$apiMethods->toArray());
+    $classVars = get_class_vars($class);
+    $apiMethods = $classVars['apiMethods'];
+    if (!$apiMethods->includes($method)) {
+      $methods = join(', ', $apiMethods->toArray());
       throw new StripeError("Sorry, $class does not support the '$method' API method.  (HINT: $class supports the following methods: $methods)");
     }
     // We could add types to the API methods, but then we wouldn't get this friendly error message.
