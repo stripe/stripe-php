@@ -96,6 +96,17 @@ class TestCharge extends UnitTestCase {
     $this->assertTrue($c->paid);
     $this->assertFalse($c->refunded);
   }
+
+  public function testRetrieve() {
+    authorizeFromEnv();
+    $c = StripeCharge::create(array('amount' => 100,
+				    'currency' => 'usd',
+				    'card' => array('number' => 4242424242424242,
+						    'exp_month' => 5,
+						    'exp_year' => 2015)));
+    $d = StripeCharge::retrieve($c->id);
+    $this->assertEqual($d->id, $c->id);
+  }
 }
 
 class TestCustomer extends UnitTestCase {

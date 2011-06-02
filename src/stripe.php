@@ -423,8 +423,8 @@ abstract class StripeAPIResource extends StripeObject {
     return array($this['id']);
   }
 
-  public static function retrieve($id, $apiKey=null) {
-    $instance = new self($id, $apiKey);
+  protected static function scopedRetrieve($class, $id, $apiKey=null) {
+    $instance = new $class($id, $apiKey);
     $instance->refresh();
     return $instance;
   }
@@ -512,6 +512,11 @@ class StripeCharge extends StripeAPIResource {
     return self::scopedConstructFrom($class, $values, $apiKey);
   }
 
+  public static function retrieve($id, $apiKey=null) {
+    $class = get_class();
+    return self::scopedRetrieve($class, $id, $apiKey);
+  }
+
   public static function all($params=null, $apiKey=null) {
     $class = get_class();
     return self::scopedAll($class, $params, $apiKey);
@@ -535,6 +540,11 @@ class StripeCustomer extends StripeAPIResource {
   public static function constructFrom($values, $apiKey=null) {
     $class = get_class();
     return self::scopedConstructFrom($class, $values, $apiKey);
+  }
+
+  public static function retrieve($id, $apiKey=null) {
+    $class = get_class();
+    return self::scopedRetrieve($class, $id, $apiKey);
   }
 
   public static function all($params=null, $apiKey=null) {
@@ -612,6 +622,11 @@ class StripeInvoice extends StripeAPIResource {
     return self::scopedConstructFrom($class, $values, $apiKey);
   }
 
+  public static function retrieve($id, $apiKey=null) {
+    $class = get_class();
+    return self::scopedRetrieve($class, $id, $apiKey);
+  }
+
   public static function all($params=null, $apiKey=null) {
     $class = get_class();
     return self::scopedAll($class, $params, $apiKey);
@@ -629,6 +644,11 @@ class StripeInvoiceItem extends StripeAPIResource {
   public static function constructFrom($values, $apiKey=null) {
     $class = get_class();
     return self::scopedConstructFrom($class, $values, $apiKey);
+  }
+
+  public static function retrieve($id, $apiKey=null) {
+    $class = get_class();
+    return self::scopedRetrieve($class, $id, $apiKey);
   }
 
   public static function all($params=null, $apiKey=null) {
