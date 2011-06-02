@@ -11,7 +11,7 @@ if (!function_exists('json_decode')) {
 abstract class Stripe {
   public static $apiKey;
   public static $apiBase = 'https://api.stripe.com/v1';
-  const VERSION = '1.5.0';
+  const VERSION = '1.5.1';
 }
 
 // Exceptions
