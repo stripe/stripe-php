@@ -7,7 +7,6 @@ if (!function_exists('curl_init')) {
 if (!function_exists('json_decode')) {
   throw new Exception('Stripe needs the JSON PHP extension.');
 }
-require_once(dirname(__FILE__) . '/compat.php');
 
 abstract class Stripe {
   public static $apiKey;
@@ -93,10 +92,10 @@ abstract class StripeUtil {
     } else if (is_array($resp)) {
       $resp = self::arrayClone($resp);
       if (isset($resp['object']) && isset($types[$resp['object']]))
-	$className = $types[$resp['object']];
+	$class = $types[$resp['object']];
       else
-	$className = 'StripeObject';
-      return call_user_func("$className::constructFrom", $resp, $apiKey, $className);
+	$class = 'StripeObject';
+      return StripeObject::scopedConstructFrom($class, $resp, $apiKey);
     } else {
       return $resp;
     }
@@ -337,13 +336,16 @@ class StripeObject implements ArrayAccess {
     return isset($this->values[$k]) ? $this->values[$k] : null;
   }
 
-  public static function constructFrom($values, $apiKey=null, $class=null) {
-    if (!$class)
-      $class = get_called_class();
+  public static function scopedConstructFrom($class, $values, $apiKey=null) {
     $obj = new $class(isset($values['id']) ? $values['id'] : null,
 		      $apiKey);
     $obj->refreshFrom($values, $apiKey);
     return $obj;
+  }
+
+  public static function constructFrom($values, $apiKey=null) {
+    $class = get_class();
+    return self::scopedConstructFrom($class, $values, $apiKey);
   }
 
   public function refreshFrom($values, $apiKey, $partial=false) {
@@ -417,8 +419,6 @@ class StripeObject implements ArrayAccess {
 StripeObject::init();
 
 abstract class StripeAPIResource extends StripeObject {
-  protected static $apiMethods;
-
   protected function ident() {
     return array($this['id']);
   }
@@ -437,8 +437,7 @@ abstract class StripeAPIResource extends StripeObject {
     return $this;
    }
 
-  public static function classUrl() {
-    $class = get_called_class();
+  public static function classUrl($class) {
     if (substr($class, 0, strlen('Stripe')) == 'Stripe')
       $class = substr($class, strlen('Stripe'));
     $name = urlencode($class);
@@ -453,45 +452,36 @@ abstract class StripeAPIResource extends StripeObject {
       throw new StripeInvalidRequestError("Could not determine which URL to request: $class instance has invalid ID: $id");
     }
     $id = StripeAPIRequestor::utf8($id);
-    $base = self::classUrl();
+    $class = get_class($this);
+    $base = self::classUrl($class);
     $extn = urlencode($id);
     return "$base/$extn";
   }
 
   private static function validateCall($method, $params=null, $apiKey=null) {
-    // PHP doesn't support mixins / multiple inheritance, so need
-    // to accpt this hack if we want to stay DRY
-    $class = get_called_class();
-    $classVars = get_class_vars($class);
-    $apiMethods = $classVars['apiMethods'];
-    if (!$apiMethods->includes($method)) {
-      $methods = join(', ', $apiMethods->toArray());
-      throw new StripeError("Sorry, $class does not support the '$method' API method.  (HINT: $class supports the following methods: $methods)");
-    }
-    // We could add types to the API methods, but then we wouldn't get this friendly error message.
     if ($params && !is_array($params))
       throw new StripeError("You must pass an array as the first argument to Stripe API method calls.  (HINT: an example call to create a charge would be: \"StripeCharge::create(array('amount' => 100, 'currency' => 'usd', 'card' => array('number' => 4242424242424242, 'exp_month' => 5, 'exp_year' => 2015)))\")");
     if ($apiKey && !is_string($apiKey))
       throw new StripeError('The second argument to Stripe API method calls is an optional per-request apiKey, which must be a string.  (HINT: you can set a global apiKey by "Stripe::$apiKey = <apiKey>")');
   }
 
-  public static function all($params=null, $apiKey=null) {
+  protected static function scopedAll($class, $params=null, $apiKey=null) {
     self::validateCall('all', $params, $apiKey);
     $requestor = new StripeAPIRequestor($apiKey);
-    $url = self::classUrl();
+    $url = self::classUrl($class);
     list($response, $apiKey) = $requestor->request('get', $url, $params);
     return StripeUtil::convertToStripeObject($response, $apiKey);
   }
 
-  public static function create($params=null, $apiKey=null) {
+  protected static function scopedCreate($class, $params=null, $apiKey=null) {
     self::validateCall('create', $params, $apiKey);
     $requestor = new StripeAPIRequestor($apiKey);
-    $url = self::classUrl();
+    $url = self::classUrl($class);
     list($response, $apiKey) = $requestor->request('post', $url, $params);
     return StripeUtil::convertToStripeObject($response, $apiKey);
   }
 
-  public function save() {
+  protected function scopedSave($class) {
     self::validateCall('save');
     if ($this->unsavedValues) {
       $requestor = new StripeAPIRequestor($this->apiKey);
@@ -505,7 +495,7 @@ abstract class StripeAPIResource extends StripeObject {
     return $this;
   }
 
-  public function delete() {
+  protected function scopedDelete($class) {
     self::validateCall('delete');
     $requestor = new StripeAPIRequestor($this->apiKey);
     $url = $this->instanceUrl();
@@ -517,10 +507,19 @@ abstract class StripeAPIResource extends StripeObject {
 
 // API objects.
 class StripeCharge extends StripeAPIResource {
-  protected static $apiMethods;
+  public static function constructFrom($values, $apiKey=null) {
+    $class = get_class();
+    return self::scopedConstructFrom($class, $values, $apiKey);
+  }
 
-  public static function init() {
-    self::$apiMethods = new StripeSet(array('create', 'all'));
+  public static function all($params=null, $apiKey=null) {
+    $class = get_class();
+    return self::scopedAll($class, $params, $apiKey);
+  }
+
+  public static function create($params=null, $apiKey=null) {
+    $class = get_class();
+    return self::scopedCreate($class, $params, $apiKey);
   }
 
   public function refund() {
@@ -531,13 +530,31 @@ class StripeCharge extends StripeAPIResource {
     return $this;
   }
 }
-StripeCharge::init();
 
 class StripeCustomer extends StripeAPIResource {
-  protected static $apiMethods;
+  public static function constructFrom($values, $apiKey=null) {
+    $class = get_class();
+    return self::scopedConstructFrom($class, $values, $apiKey);
+  }
 
-  public static function init() {
-    self::$apiMethods = new StripeSet(array('create', 'save', 'all', 'delete'));
+  public static function all($params=null, $apiKey=null) {
+    $class = get_class();
+    return self::scopedAll($class, $params, $apiKey);
+  }
+
+  public static function create($params=null, $apiKey=null) {
+    $class = get_class();
+    return self::scopedCreate($class, $params, $apiKey);
+  }
+
+  public function save() {
+    $class = get_class();
+    return self::scopedSave($class);
+  }
+
+  public function delete() {
+    $class = get_class();
+    return self::scopedDelete($class);
   }
 
   public function addInvoiceItem($params=null) {
@@ -588,29 +605,49 @@ class StripeCustomer extends StripeAPIResource {
     return $this->subscription;
   }
 }
-StripeCustomer::init();
 
 class StripeInvoice extends StripeAPIResource {
-  protected static $apiMethods;
+  public static function constructFrom($values, $apiKey=null) {
+    $class = get_class();
+    return self::scopedConstructFrom($class, $values, $apiKey);
+  }
 
-  public static function init() {
-    self::$apiMethods = new StripeSet(array('all'));
+  public static function all($params=null, $apiKey=null) {
+    $class = get_class();
+    return self::scopedAll($class, $params, $apiKey);
   }
 
   public static function upcoming($params=null, $apiKey=null) {
     $requestor = new StripeAPIRequestor($this->apiKey);
-    $url = $this->classUrl() . '/upcoming';
+    $url = self::classUrl(get_class()) . '/upcoming';
     list($response, $apiKey) = $requestor->request('get', $url, $params);
     return $this->convertToStripeObject($response, $apiKey);
   }
 }
-StripeInvoice::init();
 
 class StripeInvoiceItem extends StripeAPIResource {
-  protected static $apiMethods;
+  public static function constructFrom($values, $apiKey=null) {
+    $class = get_class();
+    return self::scopedConstructFrom($class, $values, $apiKey);
+  }
 
-  public static function init() {
-    self::$apiMethods = new StripeSet(array('create', 'save', 'all', 'delete'));
+  public static function all($params=null, $apiKey=null) {
+    $class = get_class();
+    return self::scopedAll($class, $params, $apiKey);
+  }
+
+  public static function create($params=null, $apiKey=null) {
+    $class = get_class();
+    return self::scopedCreate($class, $params, $apiKey);
+  }
+
+  public function save() {
+    $class = get_class();
+    return self::scopedSave($class);
+  }
+
+  public function delete() {
+    $class = get_class();
+    return self::scopedDelete($class);
   }
 }
-StripeInvoiceItem::init();

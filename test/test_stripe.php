@@ -76,7 +76,7 @@ class TestStripeObject extends UnitTestCase {
 
 class TestCharge extends UnitTestCase {
   public function testUrls() {
-    $this->assertEqual(StripeCharge::classUrl(), '/charges');
+    $this->assertEqual(StripeCharge::classUrl('StripeCharge'), '/charges');
     $charge = new StripeCharge('abcd/efgh');
     $this->assertEqual($charge->instanceUrl(), '/charges/abcd%2Fefgh');
   }
