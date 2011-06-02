@@ -174,9 +174,9 @@ class StripeAPIRequestor {
     if (!$myApiKey)
       throw new StripeAuthenticationError('No API key provided.  (HINT: set your API key using "Stripe::$apiKey = <API-KEY>".  You can generate API keys from the Stripe web interface.  See https://stripe.com/api for details, or email support@stripe.com if you have any questions.');
 
-    $absUrl = $this::apiUrl($url);
+    $absUrl = $this->apiUrl($url);
     $params = StripeUtil::arrayClone($params);
-    $this::objectsToIds($params);
+    $this->objectsToIds($params);
     $langVersion = phpversion();
     $uname = php_uname();
     $ua = array('bindings_version' => Stripe::VERSION,
@@ -186,7 +186,7 @@ class StripeAPIRequestor {
 		'uname' => $uname);
     $headers = array('X-Stripe-Client-User-Agent: ' . json_encode($ua),
 		     'User-Agent: Stripe/v1 RubyBindings/' . Stripe::VERSION);
-    list($rbody, $rcode) = $this::curlRequest($meth, $absUrl, $headers, $params, $myApiKey);
+    list($rbody, $rcode) = $this->curlRequest($meth, $absUrl, $headers, $params, $myApiKey);
     return array($rbody, $rcode, $myApiKey);
   }
 
