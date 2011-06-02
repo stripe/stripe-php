@@ -84,7 +84,7 @@ abstract class StripeUtil {
     $types = array('charge' => 'StripeCharge',
 		   'customer' => 'StripeCustomer',
 		   'invoice' => 'StripeInvoice',
-		   'invoice_item' => 'StripeInvoiceItem');
+		   'invoiceitem' => 'StripeInvoiceItem');
     if (self::isList($resp)) {
       $mapped = array();
       foreach ($resp as $i)
