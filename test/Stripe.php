@@ -4,7 +4,7 @@ function authorizeFromEnv() {
   $apiKey = getenv('STRIPE_API_KEY');
   if (!$apiKey)
     throw new Stripe_Error('You need to set STRIPE_API_KEY');
-  Stripe::$apiKey = $apiKey;
+  Stripe::setApiKey($apiKey);
 }
 
 require_once('simpletest/autorun.php');
