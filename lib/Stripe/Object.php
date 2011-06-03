@@ -1,10 +1,12 @@
 <?php
 
-class Stripe_Object implements ArrayAccess {
+class Stripe_Object implements ArrayAccess
+{
   protected static $_permanentAttributes;
   protected static $_ignoredAttributes;
 
-  public static function init() {
+  public static function init()
+  {
     self::$_permanentAttributes = new Stripe_Util_Set(array('_apiKey'));
     self::$_ignoredAttributes = new Stripe_Util_Set(array('id', '_apiKey', 'object'));
   }
@@ -14,7 +16,8 @@ class Stripe_Object implements ArrayAccess {
   protected $_unsavedValues;
   protected $_transientValues;
 
-  public function __construct($id=null, $apiKey=null) {
+  public function __construct($id=null, $apiKey=null)
+  {
     $this->_apiKey = $apiKey;
     $this->_values = array();
     $this->_unsavedValues = new Stripe_Util_Set();
@@ -23,21 +26,26 @@ class Stripe_Object implements ArrayAccess {
       $this->id = $id;
   }
 
-  public function __set($k, $v) {
+  // Standard accessor magic methods
+  public function __set($k, $v)
+  {
     // TODO: may want to clear from $_transientValues.  (Won't be user-visible.)
     $this->_values[$k] = $v;
     if (!self::$_ignoredAttributes->includes($k))
       $this->_unsavedValues->add($k);
   }
-  public function __isset($k) {
+  public function __isset($k)
+  {
     return isset($this->_values[$k]);
   }
-  public function __unset($k) {
+  public function __unset($k)
+  {
     unset($this->_values[$k]);
     $this->_transientValues->add($k);
     $this->_unsavedValues->discard($k);
   }
-  public function __get($k) {
+  public function __get($k)
+  {
     if (isset($this->_values[$k])) {
       return $this->_values[$k];
     } else if ($this->_transientValues->includes($k)) {
@@ -53,32 +61,40 @@ class Stripe_Object implements ArrayAccess {
   }
 
   // ArrayAccess methods
-  public function offsetSet($k, $v) {
+  public function offsetSet($k, $v)
+  {
     $this->$k = $v;
   }
-  public function offsetExists($k) {
+  public function offsetExists($k)
+  {
     return isset($this->$k);
   }
-  public function offsetUnset($k) {
+  public function offsetUnset($k)
+  {
     unset($this->$k);
   }
-  public function offsetGet($k) {
+  public function offsetGet($k)
+  {
     return isset($this->_values[$k]) ? $this->_values[$k] : null;
   }
 
-  public static function scopedConstructFrom($class, $values, $apiKey=null) {
+  // This unfortunately needs to be public to be used in Util.php
+  public static function scopedConstructFrom($class, $values, $apiKey=null)
+  {
     $obj = new $class(isset($values['id']) ? $values['id'] : null,
 		      $apiKey);
     $obj->refreshFrom($values, $apiKey);
     return $obj;
   }
 
-  public static function constructFrom($values, $apiKey=null) {
+  public static function constructFrom($values, $apiKey=null)
+  {
     $class = get_class();
     return self::scopedConstructFrom($class, $values, $apiKey);
   }
 
-  public function refreshFrom($values, $apiKey, $partial=false) {
+  public function refreshFrom($values, $apiKey, $partial=false)
+  {
     $this->_apiKey = $apiKey;
     // Wipe old state before setting new.  This is useful for e.g. updating a
     // customer, where there is no persistent card parameter.  Mark those values
@@ -103,11 +119,13 @@ class Stripe_Object implements ArrayAccess {
     }
   }
 
-  protected function _ident() {
+  protected function _ident()
+  {
     return array($this['object'], $this['id']);
   }
 
-  protected function _stringify($nested=false) {
+  protected function _stringify($nested=false)
+  {
     $ident = array_filter($this->_ident());
     if ($ident)
       $ident = '[' . join(', ', $ident) . ']';
@@ -142,8 +160,11 @@ class Stripe_Object implements ArrayAccess {
     return "<$class$ident $displayValues>";
   }
 
-  public function __toString() {
+  public function __toString()
+  {
     return $this->_stringify();
   }
 }
+
+
 Stripe_Object::init();

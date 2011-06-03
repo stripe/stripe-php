@@ -10,19 +10,24 @@ if (!function_exists('json_decode')) {
   throw new Exception('Stripe needs the JSON PHP extension.');
 }
 
-abstract class Stripe {
+
+abstract class Stripe
+{
   public static $apiKey;
   public static $apiBase = 'https://api.stripe.com/v1';
   const VERSION = '1.5.1';
 
-  public function getApiKey() {
+  public function getApiKey()
+  {
     return self::$apiKey;
   }
 
-  public function setApiKey($apiKey) {
+  public function setApiKey($apiKey)
+  {
     self::$apiKey = $apiKey;
   }
 }
+
 
 // Utilities
 require_once(dirname(__FILE__) . '/Stripe/Util.php');

@@ -1,18 +1,22 @@
 <?php
 
-class Stripe_ChargeTest extends UnitTestCase {
-  public function testUrls() {
+class Stripe_ChargeTest extends UnitTestCase
+{
+  public function testUrls()
+  {
     $this->assertEqual(Stripe_Charge::classUrl('Stripe_Charge'), '/charges');
     $charge = new Stripe_Charge('abcd/efgh');
     $this->assertEqual($charge->instanceUrl(), '/charges/abcd%2Fefgh');
   }
 
-  public function testToString() {
+  public function testToString()
+  {
     $charge = new Stripe_Charge('a');
     $this->assertEqual("$charge", "<Stripe_Charge[a] (no attributes)>");
   }
 
-  public function testCreate() {
+  public function testCreate()
+  {
     authorizeFromEnv();
     $c = Stripe_Charge::create(array('amount' => 100,
 				    'currency' => 'usd',
@@ -23,7 +27,8 @@ class Stripe_ChargeTest extends UnitTestCase {
     $this->assertFalse($c->refunded);
   }
 
-  public function testRetrieve() {
+  public function testRetrieve()
+  {
     authorizeFromEnv();
     $c = Stripe_Charge::create(array('amount' => 100,
 				    'currency' => 'usd',

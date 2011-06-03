@@ -1,13 +1,16 @@
 <?php
 
-abstract class Stripe_Util {
-  public static function arrayClone($array) {
+abstract class Stripe_Util
+{
+  public static function arrayClone($array)
+  {
     if (!is_array($array))
       throw new StripeError("Trying to clone non-array: $array");
     return array_merge($array);
   }
 
-  public static function isList($array) {
+  public static function isList($array)
+  {
     if (!is_array($array))
       return false;
     // TODO: this isn't actually correct in general, but it's correct given Stripe's responses
@@ -18,7 +21,8 @@ abstract class Stripe_Util {
     return true;
   }
 
-  public static function convertToStripeObject($resp, $apiKey) {
+  public static function convertToStripeObject($resp, $apiKey)
+  {
     $types = array('charge' => 'Stripe_Charge',
 		   'customer' => 'Stripe_Customer',
 		   'invoice' => 'Stripe_Invoice',

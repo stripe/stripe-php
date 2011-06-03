@@ -1,7 +1,9 @@
 <?php
 
-class Stripe_ObjectTest extends UnitTestCase {
-  public function testArrayAccessorsSemantics() {
+class Stripe_ObjectTest extends UnitTestCase
+{
+  public function testArrayAccessorsSemantics()
+  {
     $s = new Stripe_Object();
     $s['foo'] = 'a';
     $this->assertEqual($s['foo'], 'a');
@@ -10,7 +12,8 @@ class Stripe_ObjectTest extends UnitTestCase {
     $this->assertFalse(isset($s['foo']));
   }
 
-  public function testNormalAccessorsSemantics() {
+  public function testNormalAccessorsSemantics()
+  {
     $s = new Stripe_Object();
     $s->foo = 'a';
     $this->assertEqual($s->foo, 'a');
@@ -19,7 +22,8 @@ class Stripe_ObjectTest extends UnitTestCase {
     $this->assertFalse(isset($s->foo));
   }
 
-  public function testArrayAccessorsMatchNormalAccessors() {
+  public function testArrayAccessorsMatchNormalAccessors()
+  {
     $s = new Stripe_Object();
     $s->foo = 'a';
     $this->assertEqual($s['foo'], 'a');
@@ -28,7 +32,8 @@ class Stripe_ObjectTest extends UnitTestCase {
     $this->assertEqual($s->bar, 'b');
   }
 
-  public function testToString() {
+  public function testToString()
+  {
     $s = new Stripe_Object();
     $s->foo = 'a';
     $s->bar = 'b';

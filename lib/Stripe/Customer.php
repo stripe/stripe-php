@@ -1,37 +1,45 @@
 <?php
 
-class Stripe_Customer extends Stripe_ApiResource {
-  public static function constructFrom($values, $apiKey=null) {
+class Stripe_Customer extends Stripe_ApiResource
+{
+  public static function constructFrom($values, $apiKey=null)
+  {
     $class = get_class();
     return self::_scopedConstructFrom($class, $values, $apiKey);
   }
 
-  public static function retrieve($id, $apiKey=null) {
+  public static function retrieve($id, $apiKey=null)
+  {
     $class = get_class();
     return self::_scopedRetrieve($class, $id, $apiKey);
   }
 
-  public static function all($params=null, $apiKey=null) {
+  public static function all($params=null, $apiKey=null)
+  {
     $class = get_class();
     return self::_scopedAll($class, $params, $apiKey);
   }
 
-  public static function create($params=null, $apiKey=null) {
+  public static function create($params=null, $apiKey=null)
+  {
     $class = get_class();
     return self::_scopedCreate($class, $params, $apiKey);
   }
 
-  public function save() {
+  public function save()
+  {
     $class = get_class();
     return self::_scopedSave($class);
   }
 
-  public function delete() {
+  public function delete()
+  {
     $class = get_class();
     return self::_scopedDelete($class);
   }
 
-  public function addInvoiceItem($params=null) {
+  public function addInvoiceItem($params=null)
+  {
     if (!$params)
       $params = array();
     $params['customer'] = $this->id;
@@ -39,7 +47,8 @@ class Stripe_Customer extends Stripe_ApiResource {
     return $ii;
   }
 
-  public function invoices($params=null) {
+  public function invoices($params=null)
+  {
     if (!$params)
       $params = array();
     $params['customer'] = $this->id;
@@ -47,7 +56,8 @@ class Stripe_Customer extends Stripe_ApiResource {
     return $invoices;
   }
 
-  public function invoiceItems($params=null) {
+  public function invoiceItems($params=null)
+  {
     if (!$params)
       $params = array();
     $params['customer'] = $this->id;
@@ -55,7 +65,8 @@ class Stripe_Customer extends Stripe_ApiResource {
     return $iis;
   }
 
-  public function charges($params=null) {
+  public function charges($params=null)
+  {
     if (!$params)
       $params = array();
     $params['customer'] = $this->id;
@@ -63,7 +74,8 @@ class Stripe_Customer extends Stripe_ApiResource {
     return $charges;
   }
 
-  public function updateSubscription($params=null) {
+  public function updateSubscription($params=null)
+  {
     $requestor = new Stripe_ApiRequestor($this->_apiKey);
     $url = $this->instanceUrl() . '/subscription';
     list($response, $apiKey) = $requestor->request('post', $url, $params);
@@ -71,7 +83,8 @@ class Stripe_Customer extends Stripe_ApiResource {
     return $this->subscription;
   }
 
-  public function cancelSubscription() {
+  public function cancelSubscription()
+  {
     $requestor = Stripe_ApiRequestor($this->_apiKey);
     $url = $this->instanceUrl() . '/subscription';
     list($response, $apiKey) = $requestor->request('delete', $url);

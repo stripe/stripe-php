@@ -1,7 +1,9 @@
 <?php
 
-class Stripe_CustomerTest extends UnitTestCase {
-  public function testDeletion() {
+class Stripe_CustomerTest extends UnitTestCase
+{
+  public function testDeletion()
+  {
     authorizeFromEnv();
     $c = Stripe_Customer::create(array('amount' => 100,
 				       'currency' => 'usd',
@@ -13,7 +15,8 @@ class Stripe_CustomerTest extends UnitTestCase {
     $this->assertNull($c['active_card']);
   }
 
-  public function testSave() {
+  public function testSave()
+  {
     authorizeFromEnv();
     $c = Stripe_Customer::create();
     $c->email = 'gdb@stripe.com';

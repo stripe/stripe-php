@@ -1,25 +1,30 @@
 <?php
 
-class Stripe_ApiRequestor {
+class Stripe_ApiRequestor
+{
   public $apiKey;
 
-  public function __construct($apiKey=null) {
+  public function __construct($apiKey=null)
+  {
     $this->_apiKey = $apiKey;
   }
 
-  public static function apiUrl($url='') {
+  public static function apiUrl($url='')
+  {
     $apiBase = Stripe::$apiBase;
     return "$apiBase$url";
   }
 
-  public static function utf8($value) {
+  public static function utf8($value)
+  {
     if (is_string($value))
       return utf8_encode($value);
     else
       return $value;
   }
 
-  private static function _objectsToIds($d) {
+  private static function _objectsToIds($d)
+  {
     if ($d instanceof Stripe_ApiRequestor) {
       return $d->id;
     } else if (is_array($d)) {
@@ -32,11 +37,13 @@ class Stripe_ApiRequestor {
     }
   }
 
-  public static function encode($d) {
+  public static function encode($d)
+  {
     return http_build_query($d, null, '&');
   }
 
-  public function request($meth, $url, $params=null) {
+  public function request($meth, $url, $params=null)
+  {
     if (!$params)
       $params = array();
     list($rbody, $rcode, $myApiKey) = $this->_requestRaw($meth, $url, $params);
@@ -44,7 +51,8 @@ class Stripe_ApiRequestor {
     return array($resp, $myApiKey);
   }
 
-  public function handleApiError($rbody, $rcode, $resp) {
+  public function handleApiError($rbody, $rcode, $resp)
+  {
     if (!is_array($resp) || !isset($resp['error']))
       throw new Stripe_Error_Api("Invalid response object from API: $rbody (HTTP response code was $rcode)");
     $error = $resp['error'];
@@ -64,7 +72,8 @@ class Stripe_ApiRequestor {
     }
   }
 
-  private function _requestRaw($meth, $url, $params) {
+  private function _requestRaw($meth, $url, $params)
+  {
     $myApiKey = $this->_apiKey;
     if (!$myApiKey)
       $myApiKey = Stripe::$apiKey;
@@ -87,7 +96,8 @@ class Stripe_ApiRequestor {
     return array($rbody, $rcode, $myApiKey);
   }
 
-  private function _interpretResponse($rbody, $rcode) {
+  private function _interpretResponse($rbody, $rcode)
+  {
     try {
       $resp = json_decode($rbody, true);
     } catch (Exception $e) {
@@ -100,7 +110,8 @@ class Stripe_ApiRequestor {
     return $resp;
   }
 
-  private function _curlRequest($meth, $absUrl, $headers, $params, $myApiKey) {
+  private function _curlRequest($meth, $absUrl, $headers, $params, $myApiKey)
+  {
     $curl = curl_init();
     $meth = strtolower($meth);
     $opts = array();
@@ -149,7 +160,8 @@ class Stripe_ApiRequestor {
     return array($rbody, $rcode);
   }
 
-  public function handleCurlError($errno, $message) {
+  public function handleCurlError($errno, $message)
+  {
     $apiBase = Stripe::$apiBase;
     switch ($errno) {
     case CURLE_COULDNT_CONNECT:
