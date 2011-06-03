@@ -31,5 +31,3 @@ class Stripe_InvoiceItem extends Stripe_ApiResource {
     return self::scopedDelete($class);
   }
 }
-
-?>

@@ -38,5 +38,3 @@ require_once(dirname(__FILE__) . '/Stripe/Charge.php');
 require_once(dirname(__FILE__) . '/Stripe/Customer.php');
 require_once(dirname(__FILE__) . '/Stripe/Invoice.php');
 require_once(dirname(__FILE__) . '/Stripe/InvoiceItem.php');
-
-?>

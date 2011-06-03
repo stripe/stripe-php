@@ -6,5 +6,3 @@ class Stripe_Error_InvalidRequest extends Stripe_Error {
     $this->param = $param;
   }
 }
-
-?>

@@ -7,5 +7,3 @@ class Stripe_ApiRequestorTest extends UnitTestCase {
     $this->assertEqual($enc, 'my=value&that%5Byour%5D=example&bar=1');
   }
 }
-
-?>

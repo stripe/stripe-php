@@ -34,5 +34,3 @@ class Stripe_ChargeTest extends UnitTestCase {
     $this->assertEqual($d->id, $c->id);
   }
 }
-
-?>

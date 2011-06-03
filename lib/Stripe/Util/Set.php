@@ -26,5 +26,3 @@ class Stripe_Util_Set {
     return array_keys($this->elts);
   }
 }
-
-?>

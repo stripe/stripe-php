@@ -7,5 +7,3 @@ class Stripe_Error_Card extends Stripe_Error {
     $this->code = $code;
   }
 }
-
-?>

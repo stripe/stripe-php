@@ -29,5 +29,3 @@ class Stripe_Charge extends Stripe_ApiResource {
     return $this;
   }
 }
-
-?>

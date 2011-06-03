@@ -147,5 +147,3 @@ class Stripe_Object implements ArrayAccess {
   }
 }
 Stripe_Object::init();
-
-?>

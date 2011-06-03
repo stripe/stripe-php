@@ -87,5 +87,3 @@ abstract class Stripe_ApiResource extends Stripe_Object {
     return $this;
   }
 }
-
-?>

@@ -44,5 +44,3 @@ class Stripe_ObjectTest extends UnitTestCase {
     $this->assertEqual("$s", "<Stripe_Object[12345] bar=b (unsaved), baz=<Stripe_Object[test] ...> (unsaved), foo=a (unsaved)>");
   }
 }
-
-?>

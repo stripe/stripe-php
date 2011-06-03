@@ -166,5 +166,3 @@ class Stripe_ApiRequestor {
     throw new Stripe_Error_ApiConnection($msg);
   }
 }
-
-?>

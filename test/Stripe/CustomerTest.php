@@ -26,5 +26,3 @@ class Stripe_CustomerTest extends UnitTestCase {
     $this->assertEqual($c->email, $c2->email);
   }
 }
-
-?>

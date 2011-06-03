@@ -79,5 +79,3 @@ class Stripe_Customer extends Stripe_ApiResource {
     return $this->subscription;
   }
 }
-
-?>

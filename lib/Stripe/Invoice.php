@@ -23,5 +23,3 @@ class Stripe_Invoice extends Stripe_ApiResource {
     return $this->convertToStripeObject($response, $apiKey);
   }
 }
-
-?>

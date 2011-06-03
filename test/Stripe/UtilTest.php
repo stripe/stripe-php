@@ -9,5 +9,3 @@ class Stripe_UtilTest extends UnitTestCase {
     $this->assertFalse(Stripe_Util::isList($notlist));
   }
 }
-
-?>
