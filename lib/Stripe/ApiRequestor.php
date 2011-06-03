@@ -4,7 +4,7 @@ class Stripe_ApiRequestor {
   public $apiKey;
 
   public function __construct($apiKey=null) {
-    $this->apiKey = $apiKey;
+    $this->_apiKey = $apiKey;
   }
 
   public static function apiUrl($url='') {
@@ -19,13 +19,13 @@ class Stripe_ApiRequestor {
       return $value;
   }
 
-  private static function objectsToIds($d) {
+  private static function _objectsToIds($d) {
     if ($d instanceof Stripe_ApiRequestor) {
       return $d->id;
     } else if (is_array($d)) {
       $res = array();
       foreach ($res as $k => $v)
-	$res[$k] = self::objectsToIds($v);
+	$res[$k] = self::_objectsToIds($v);
       return $res;
     } else {
       return $d;
@@ -39,8 +39,8 @@ class Stripe_ApiRequestor {
   public function request($meth, $url, $params=null) {
     if (!$params)
       $params = array();
-    list($rbody, $rcode, $myApiKey) = $this->requestRaw($meth, $url, $params);
-    $resp = $this->interpretResponse($rbody, $rcode);
+    list($rbody, $rcode, $myApiKey) = $this->_requestRaw($meth, $url, $params);
+    $resp = $this->_interpretResponse($rbody, $rcode);
     return array($resp, $myApiKey);
   }
 
@@ -64,8 +64,8 @@ class Stripe_ApiRequestor {
     }
   }
 
-  private function requestRaw($meth, $url, $params) {
-    $myApiKey = $this->apiKey;
+  private function _requestRaw($meth, $url, $params) {
+    $myApiKey = $this->_apiKey;
     if (!$myApiKey)
       $myApiKey = Stripe::$apiKey;
     if (!$myApiKey)
@@ -73,7 +73,7 @@ class Stripe_ApiRequestor {
 
     $absUrl = $this->apiUrl($url);
     $params = Stripe_Util::arrayClone($params);
-    $this->objectsToIds($params);
+    self::_objectsToIds($params);
     $langVersion = phpversion();
     $uname = php_uname();
     $ua = array('bindings_version' => Stripe::VERSION,
@@ -83,11 +83,11 @@ class Stripe_ApiRequestor {
 		'uname' => $uname);
     $headers = array('X-Stripe-Client-User-Agent: ' . json_encode($ua),
 		     'User-Agent: Stripe/v1 RubyBindings/' . Stripe::VERSION);
-    list($rbody, $rcode) = $this->curlRequest($meth, $absUrl, $headers, $params, $myApiKey);
+    list($rbody, $rcode) = $this->_curlRequest($meth, $absUrl, $headers, $params, $myApiKey);
     return array($rbody, $rcode, $myApiKey);
   }
 
-  private function interpretResponse($rbody, $rcode) {
+  private function _interpretResponse($rbody, $rcode) {
     try {
       $resp = json_decode($rbody, true);
     } catch (Exception $e) {
@@ -100,7 +100,7 @@ class Stripe_ApiRequestor {
     return $resp;
   }
 
-  private function curlRequest($meth, $absUrl, $headers, $params, $myApiKey) {
+  private function _curlRequest($meth, $absUrl, $headers, $params, $myApiKey) {
     $curl = curl_init();
     $meth = strtolower($meth);
     $opts = array();

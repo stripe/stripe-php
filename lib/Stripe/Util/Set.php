@@ -1,28 +1,28 @@
 <?php
 
 class Stripe_Util_Set {
-  private $elts;
+  private $_elts;
 
   public function __construct($members=array()) {
-    $this->elts = array();
+    $this->_elts = array();
     foreach ($members as $item)
-      $this->elts[$item] = true;
+      $this->_elts[$item] = true;
   }
 
   public function includes($elt) {
-    return isset($this->elts[$elt]);
+    return isset($this->_elts[$elt]);
   }
 
   public function add($elt) {
-    $this->elts[$elt] = true;
+    $this->_elts[$elt] = true;
   }
 
   public function discard($elt) {
-    unset($this->elts[$elt]);
+    unset($this->_elts[$elt]);
   }
 
   // TODO: make Set support foreach
   public function toArray() {
-    return array_keys($this->elts);
+    return array_keys($this->_elts);
   }
 }
