@@ -90,7 +90,7 @@ class TestCharge extends UnitTestCase {
     authorizeFromEnv();
     $c = StripeCharge::create(array('amount' => 100,
 				    'currency' => 'usd',
-				    'card' => array('number' => 4242424242424242,
+				    'card' => array('number' => '4242424242424242',
 						    'exp_month' => 5,
 						    'exp_year' => 2015)));
     $this->assertTrue($c->paid);
@@ -101,7 +101,7 @@ class TestCharge extends UnitTestCase {
     authorizeFromEnv();
     $c = StripeCharge::create(array('amount' => 100,
 				    'currency' => 'usd',
-				    'card' => array('number' => 4242424242424242,
+				    'card' => array('number' => '4242424242424242',
 						    'exp_month' => 5,
 						    'exp_year' => 2015)));
     $d = StripeCharge::retrieve($c->id);
@@ -114,7 +114,7 @@ class TestCustomer extends UnitTestCase {
     authorizeFromEnv();
     $c = StripeCustomer::create(array('amount' => 100,
 				      'currency' => 'usd',
-				      'card' => array('number' => 4242424242424242,
+				      'card' => array('number' => '4242424242424242',
 						      'exp_month' => 5,
 						      'exp_year' => 2015)));
     $c->delete();
