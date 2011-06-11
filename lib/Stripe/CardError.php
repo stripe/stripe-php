@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_Error_Card extends Stripe_Error
+class Stripe_CardError extends Stripe_Error
 {
   public function __construct($message, $param, $code)
   {

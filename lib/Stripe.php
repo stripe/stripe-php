@@ -35,11 +35,11 @@ require_once(dirname(__FILE__) . '/Stripe/Util/Set.php');
 
 // Errors
 require_once(dirname(__FILE__) . '/Stripe/Error.php');
-require_once(dirname(__FILE__) . '/Stripe/Error/Api.php');
-require_once(dirname(__FILE__) . '/Stripe/Error/ApiConnection.php');
-require_once(dirname(__FILE__) . '/Stripe/Error/Authentication.php');
-require_once(dirname(__FILE__) . '/Stripe/Error/Card.php');
-require_once(dirname(__FILE__) . '/Stripe/Error/InvalidRequest.php');
+require_once(dirname(__FILE__) . '/Stripe/ApiError.php');
+require_once(dirname(__FILE__) . '/Stripe/ApiConnectionError.php');
+require_once(dirname(__FILE__) . '/Stripe/AuthenticationError.php');
+require_once(dirname(__FILE__) . '/Stripe/CardError.php');
+require_once(dirname(__FILE__) . '/Stripe/InvalidRequestError.php');
 
 // Plumbing
 require_once(dirname(__FILE__) . '/Stripe/Object.php');
