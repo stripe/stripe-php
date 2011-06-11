@@ -91,7 +91,7 @@ class Stripe_ApiRequestor
 		'publisher' => 'stripe',
 		'uname' => $uname);
     $headers = array('X-Stripe-Client-User-Agent: ' . json_encode($ua),
-		     'User-Agent: Stripe/v1 RubyBindings/' . Stripe::VERSION);
+		     'User-Agent: Stripe/v1 PhpBindings/' . Stripe::VERSION);
     list($rbody, $rcode) = $this->_curlRequest($meth, $absUrl, $headers, $params, $myApiKey);
     return array($rbody, $rcode, $myApiKey);
   }
