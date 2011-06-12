@@ -6,7 +6,7 @@ Obtain the latest version of the Stripe PHP bindings with:
 
 To get started, add the following to your PHP script:
 
-    require_once("/path/to/stripe-php/src/stripe.php");
+    require_once("/path/to/stripe-php/lib/stripe.php");
 
 Simple usage looks like:
 
