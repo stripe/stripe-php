@@ -144,7 +144,7 @@ class Stripe_ApiRequestor
 
     if (curl_errno($curl) == 60) { // CURLE_SSL_CACERT
       curl_setopt($curl, CURLOPT_CAINFO,
-                  dirname(__FILE__) . '/data/ca-certificates.crt');
+                  dirname(__FILE__) . '/../data/ca-certificates.crt');
       $rbody = curl_exec($curl);
     }
 
