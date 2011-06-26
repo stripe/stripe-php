@@ -34,4 +34,13 @@ class Stripe_Charge extends Stripe_ApiResource
     $this->refreshFrom($response, $apiKey);
     return $this;
   }
+
+  public function capture($params=null)
+  {
+    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $url = $this->instanceUrl() . '/capture';
+    list($response, $apiKey) = $requestor->request('post', $url, $params);
+    $this->refreshFrom($response, $apiKey);
+    return $this;
+  }
 }
