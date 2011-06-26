@@ -26,11 +26,11 @@ class Stripe_Charge extends Stripe_ApiResource
     return self::_scopedCreate($class, $params, $apiKey);
   }
 
-  public function refund()
+  public function refund($params=null)
   {
     $requestor = new Stripe_ApiRequestor($this->_apiKey);
     $url = $this->instanceUrl() . '/refund';
-    list($response, $apiKey) = $requestor->request('post', $url);
+    list($response, $apiKey) = $requestor->request('post', $url, $params);
     $this->refreshFrom($response, $apiKey);
     return $this;
   }
