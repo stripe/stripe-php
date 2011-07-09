@@ -1,3 +1,1 @@
-#!/bin/sh
-
-perl -ne 'print $1 if'" /VERSION.*'([\d.]+)'/" "$(dirname "$0")/lib/Stripe.php"
+1.5.4
