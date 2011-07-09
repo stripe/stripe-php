@@ -85,7 +85,7 @@ class Stripe_Customer extends Stripe_ApiResource
 
   public function cancelSubscription()
   {
-    $requestor = Stripe_ApiRequestor($this->_apiKey);
+    $requestor = new Stripe_ApiRequestor($this->_apiKey);
     $url = $this->instanceUrl() . '/subscription';
     list($response, $apiKey) = $requestor->request('delete', $url);
     $this->refreshFrom(array('subscription' => $response), $apiKey, true);
