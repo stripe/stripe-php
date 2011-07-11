@@ -138,11 +138,13 @@ class Stripe_ApiRequestor
     $opts[CURLOPT_RETURNTRANSFER] = true;
     $opts[CURLOPT_HTTPHEADER] = $headers;
     $opts[CURLOPT_USERPWD] = $myApiKey . ':';
+    if (!Stripe::$verifySslCerts)
+      $opts[CURLOPT_SSL_VERIFYPEER] = false;
 
     curl_setopt_array($curl, $opts);
     $rbody = curl_exec($curl);
 
-    if (curl_errno($curl) == 60) { // CURLE_SSL_CACERT
+    if (curl_errno($curl) == CURLE_SSL_CACERT) {
       curl_setopt($curl, CURLOPT_CAINFO,
                   dirname(__FILE__) . '/../data/ca-certificates.crt');
       $rbody = curl_exec($curl);
