@@ -170,8 +170,11 @@ class Stripe_ApiRequestor
     case CURLE_COULDNT_RESOLVE_HOST:
     case CURLE_OPERATION_TIMEOUTED:
       $msg = "Could not connect to Stripe ($apiBase).  Please check your internet connection and try again.  If this problem persists, you should check Stripe's service status at https://twitter.com/stripe, or let us know at support@stripe.com.";
+      break;
     case CURLE_SSL_CACERT:
+    case CURLE_SSL_PEER_CERTIFICATE:
       $msg = "Could not verify Stripe's SSL certificate.  Please make sure that your network is not intercepting certificates.  (Try going to $apiBase in your browser.)  If this problem persists, let us know at support@stripe.com.";
+      break;
     default:
       $msg = "Unexpected error communicating with Stripe.  If this problem persists, let us know at support@stripe.com.";
     }
