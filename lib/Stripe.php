@@ -28,6 +28,10 @@ abstract class Stripe
     self::$apiKey = $apiKey;
   }
 
+  public function getVerifySslCerts() {
+    return self::$verifySslCerts;
+  }
+
   public function setVerifySslCerts($verify) {
     self::$verifySslCerts = $verify;
   }
