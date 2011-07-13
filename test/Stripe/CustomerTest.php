@@ -28,4 +28,18 @@ class Stripe_CustomerTest extends UnitTestCase
     $c2 = Stripe_Customer::retrieve($c->id);
     $this->assertEqual($c->email, $c2->email);
   }
+
+  public function testCancelSubscription()
+  {
+    authorizeFromEnv();
+    $c = Stripe_Customer::create(array('card' => array('number' => '4242424242424242',
+						       'exp_month' => 5,
+						       'exp_year' => 2015),
+				       'plan' => 'gold'));
+    $c->cancelSubscription(array('at_period_end' => true));
+    $this->assertEqual($c->subscription->status, 'active');
+    $this->assertTrue($c->subscription->cancel_at_period_end);
+    $c->cancelSubscription();
+    $this->assertEqual($c->subscription->status, 'canceled');
+  }
 }

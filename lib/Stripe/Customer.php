@@ -32,10 +32,10 @@ class Stripe_Customer extends Stripe_ApiResource
     return self::_scopedSave($class);
   }
 
-  public function delete()
+  public function delete($params=null)
   {
     $class = get_class();
-    return self::_scopedDelete($class);
+    return self::_scopedDelete($class, $params);
   }
 
   public function addInvoiceItem($params=null)

@@ -88,12 +88,12 @@ abstract class Stripe_ApiResource extends Stripe_Object
     return $this;
   }
 
-  protected function _scopedDelete($class)
+  protected function _scopedDelete($class, $params=null)
   {
     self::_validateCall('delete');
     $requestor = new Stripe_ApiRequestor($this->_apiKey);
     $url = $this->instanceUrl();
-    list($response, $apiKey) = $requestor->request('delete', $url);
+    list($response, $apiKey) = $requestor->request('delete', $url, $params);
     $this->refreshFrom($response, $apiKey);
     return $this;
   }
