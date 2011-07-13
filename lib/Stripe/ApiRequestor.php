@@ -126,6 +126,10 @@ class Stripe_ApiRequestor
       $opts[CURLOPT_POSTFIELDS] = self::encode($params);
     } else if ($meth == 'delete')  {
       $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
+      if (count($params) > 0) {
+	$encoded = self::encode($params);
+	$absUrl = "$absUrl?$encoded";
+      }
     } else {
       throw new Stripe_ApiError("Unrecognized method $meth");
     }
