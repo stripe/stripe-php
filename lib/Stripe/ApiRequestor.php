@@ -23,14 +23,18 @@ class Stripe_ApiRequestor
       return $value;
   }
 
-  private static function _objectsToIds($d)
+  private static function _encodeObjects($d)
   {
     if ($d instanceof Stripe_ApiRequestor) {
       return $d->id;
+    } else if ($d === true) {
+      return 'true';
+    } else if ($d === false) {
+      return 'false';
     } else if (is_array($d)) {
       $res = array();
-      foreach ($res as $k => $v)
-	$res[$k] = self::_objectsToIds($v);
+      foreach ($d as $k => $v)
+	$res[$k] = self::_encodeObjects($v);
       return $res;
     } else {
       return $d;
@@ -82,7 +86,7 @@ class Stripe_ApiRequestor
 
     $absUrl = $this->apiUrl($url);
     $params = Stripe_Util::arrayClone($params);
-    self::_objectsToIds($params);
+    $params = self::_encodeObjects($params);
     $langVersion = phpversion();
     $uname = php_uname();
     $ua = array('bindings_version' => Stripe::VERSION,
