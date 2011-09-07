@@ -11,3 +11,4 @@ class Stripe_InvoiceTest extends UnitTestCase
     $this->assertEqual($invoice->customer, $c->id);
     $this->assertEqual($invoice->attempted, false);
   }
+}
