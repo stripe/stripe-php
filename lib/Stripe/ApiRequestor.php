@@ -9,10 +9,13 @@ class Stripe_ApiRequestor
     $this->_apiKey = $apiKey;
   }
 
-  public static function apiUrl($url='')
+  public static function apiUrl($url='', $short=false)
   {
-    $apiBase = Stripe::$apiBase;
-    return "$apiBase$url";
+    if ($short)
+      $base = Stripe::$apiShortBase;
+    else
+      $base = Stripe::$apiBase;
+    return "$base$url";
   }
 
   public static function utf8($value)
@@ -84,7 +87,7 @@ class Stripe_ApiRequestor
     if (!$myApiKey)
       throw new Stripe_AuthenticationError('No API key provided.  (HINT: set your API key using "Stripe::$apiKey = <API-KEY>".  You can generate API keys from the Stripe web interface.  See https://stripe.com/api for details, or email support@stripe.com if you have any questions.');
 
-    $absUrl = $this->apiUrl($url);
+    $absUrl = $this->apiUrl($url, !$this->_hasRawCard($params));
     $params = Stripe_Util::arrayClone($params);
     $params = self::_encodeObjects($params);
     $langVersion = phpversion();
@@ -98,6 +101,23 @@ class Stripe_ApiRequestor
 		     'User-Agent: Stripe/v1 PhpBindings/' . Stripe::VERSION);
     list($rbody, $rcode) = $this->_curlRequest($meth, $absUrl, $headers, $params, $myApiKey);
     return array($rbody, $rcode, $myApiKey);
+  }
+
+  private function _hasRawCard($params)
+  {
+    if ($params) {
+      foreach ($params as $k => $v) {
+	$k = "$k";
+	if ($k == 'card') {
+	  return !($v instanceof string);
+	} else if (strpos($v, 'card') === 0) {
+          // Handle card[foo]
+          return true;
+	}
+      }
+    }
+
+    return false;
   }
 
   private function _interpretResponse($rbody, $rcode)
