@@ -18,21 +18,21 @@ abstract class Stripe
   public static $verifySslCerts = true;
   const VERSION = '1.5.10';
 
-  public function getApiKey()
+  public static function getApiKey()
   {
     return self::$apiKey;
   }
 
-  public function setApiKey($apiKey)
+  public static function setApiKey($apiKey)
   {
     self::$apiKey = $apiKey;
   }
 
-  public function getVerifySslCerts() {
+  public static function getVerifySslCerts() {
     return self::$verifySslCerts;
   }
 
-  public function setVerifySslCerts($verify) {
+  public static function setVerifySslCerts($verify) {
     self::$verifySslCerts = $verify;
   }
 }
