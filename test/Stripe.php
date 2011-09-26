@@ -16,4 +16,5 @@ require_once(dirname(__FILE__) . '/Stripe/ChargeTest.php');
 require_once(dirname(__FILE__) . '/Stripe/CustomerTest.php');
 require_once(dirname(__FILE__) . '/Stripe/InvoiceTest.php');
 require_once(dirname(__FILE__) . '/Stripe/ObjectTest.php');
+require_once(dirname(__FILE__) . '/Stripe/Token.php');
 require_once(dirname(__FILE__) . '/Stripe/UtilTest.php');
