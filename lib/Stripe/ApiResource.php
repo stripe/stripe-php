@@ -52,7 +52,7 @@ abstract class Stripe_ApiResource extends Stripe_Object
     if ($params && !is_array($params))
       throw new StripeError("You must pass an array as the first argument to Stripe API method calls.  (HINT: an example call to create a charge would be: \"StripeCharge::create(array('amount' => 100, 'currency' => 'usd', 'card' => array('number' => 4242424242424242, 'exp_month' => 5, 'exp_year' => 2015)))\")");
     if ($apiKey && !is_string($apiKey))
-      throw new StripeError('The second argument to Stripe API method calls is an optional per-request apiKey, which must be a string.  (HINT: you can set a global apiKey by "Stripe::$apiKey = <apiKey>")');
+      throw new StripeError('The second argument to Stripe API method calls is an optional per-request apiKey, which must be a string.  (HINT: you can set a global apiKey by "Stripe::setApiKey(<apiKey>)")');
   }
 
   protected static function _scopedAll($class, $params=null, $apiKey=null)
