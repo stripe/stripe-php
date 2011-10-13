@@ -5,7 +5,7 @@ abstract class Stripe_Util
   public static function arrayClone($array)
   {
     if (!is_array($array))
-      throw new StripeError("Trying to clone non-array: $array");
+      throw new Stripe_Error("Trying to clone non-array: $array");
     return array_merge($array);
   }
 
