@@ -164,6 +164,14 @@ class Stripe_Object implements ArrayAccess
   {
     return $this->_stringify();
   }
+
+  // Convert this object to an array. (Note that this method does not
+  // recurse, so any contained Stripe_Objects will be present in the
+  // returned array.
+  public function __toArray()
+  {
+    return $this->_values;
+  }
 }
 
 
