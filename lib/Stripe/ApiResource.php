@@ -25,6 +25,9 @@ abstract class Stripe_ApiResource extends Stripe_Object
 
   public static function classUrl($class)
   {
+    // Useful for namespaces: Foo\Stripe_Charge
+    if ($postfix = strrchr($class, '\\'))
+      $class = substr($postfix, 1);
     if (substr($class, 0, strlen('Stripe')) == 'Stripe')
       $class = substr($class, strlen('Stripe'));
     $class = str_replace('_', '', $class);
@@ -36,12 +39,11 @@ abstract class Stripe_ApiResource extends Stripe_Object
   public function instanceUrl()
   {
     $id = $this['id'];
+    $class = get_class($this);
     if (!$id) {
-      $class = get_class($this);
       throw new Stripe_InvalidRequestError("Could not determine which URL to request: $class instance has invalid ID: $id");
     }
     $id = Stripe_ApiRequestor::utf8($id);
-    $class = get_class($this);
     $base = self::classUrl($class);
     $extn = urlencode($id);
     return "$base/$extn";

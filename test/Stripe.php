@@ -12,6 +12,7 @@ require_once('simpletest/autorun.php');
 require_once(dirname(__FILE__) . '/../lib/Stripe.php');
 
 require_once(dirname(__FILE__) . '/Stripe/ApiRequestorTest.php');
+require_once(dirname(__FILE__) . '/Stripe/ApiResourceTest.php');
 require_once(dirname(__FILE__) . '/Stripe/ChargeTest.php');
 require_once(dirname(__FILE__) . '/Stripe/CustomerTest.php');
 require_once(dirname(__FILE__) . '/Stripe/InvoiceTest.php');
