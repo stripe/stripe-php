@@ -2,7 +2,7 @@
 
 Obtain the latest version of the Stripe PHP bindings with:
 
-    git clone https://github.com/stripe-bindings/stripe-php
+    git clone https://github.com/stripe/stripe-php
 
 To get started, add the following to your PHP script:
 
