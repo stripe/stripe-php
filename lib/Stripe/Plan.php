@@ -26,6 +26,12 @@ class Stripe_Plan extends Stripe_ApiResource
     return self::_scopedDelete($class, $params);
   }
   
+  public function save()
+  {
+    $class = get_class();
+    return self::_scopedSave($class);
+  }
+  
   public static function all($params=null, $apiKey=null)
   {
     $class = get_class();
