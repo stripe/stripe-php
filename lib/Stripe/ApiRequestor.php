@@ -64,13 +64,18 @@ class Stripe_ApiRequestor
     case 400:
     case 404:
       throw new Stripe_InvalidRequestError(isset($error['message']) ? $error['message'] : null,
-					    isset($error['param']) ? $error['param'] : null);
+					    isset($error['param']) ? $error['param'] : null,
+							$rcode,
+							isset($error['type']) ? $error['type'] : null);
     case 401:
       throw new Stripe_AuthenticationError(isset($error['message']) ? $error['message'] : null);
     case 402:
       throw new Stripe_CardError(isset($error['message']) ? $error['message'] : null,
 				  isset($error['param']) ? $error['param'] : null,
-				  isset($error['code']) ? $error['code'] : null);
+				  $rcode,
+					isset($error['type']) ? $error['type'] : null
+				
+				);
     default:
       throw new Stripe_ApiError(isset($error['message']) ? $error['message'] : null);
     }
