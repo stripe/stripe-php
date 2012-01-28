@@ -2,13 +2,11 @@
 
 class Stripe_Object implements ArrayAccess
 {
-  protected static $_permanentAttributes;
-  protected static $_ignoredAttributes;
+  public static $_permanentAttributes;
 
   public static function init()
   {
     self::$_permanentAttributes = new Stripe_Util_Set(array('_apiKey'));
-    self::$_ignoredAttributes = new Stripe_Util_Set(array('id', '_apiKey', 'object'));
   }
 
   protected $_apiKey;
@@ -31,7 +29,7 @@ class Stripe_Object implements ArrayAccess
   {
     // TODO: may want to clear from $_transientValues.  (Won't be user-visible.)
     $this->_values[$k] = $v;
-    if (!self::$_ignoredAttributes->includes($k))
+    if (!self::$_permanentAttributes->includes($k))
       $this->_unsavedValues->add($k);
   }
   public function __isset($k)
@@ -81,8 +79,7 @@ class Stripe_Object implements ArrayAccess
   // This unfortunately needs to be public to be used in Util.php
   public static function scopedConstructFrom($class, $values, $apiKey=null)
   {
-    $obj = new $class(isset($values['id']) ? $values['id'] : null,
-		      $apiKey);
+    $obj = new $class(isset($values['id']) ? $values['id'] : null, $apiKey);
     $obj->refreshFrom($values, $apiKey);
     return $obj;
   }
@@ -119,58 +116,25 @@ class Stripe_Object implements ArrayAccess
     }
   }
 
-  protected function _ident()
+  public function __toJSON()
   {
-    return array($this['object'], $this['id']);
-  }
-
-  protected function _stringify($nested=false)
-  {
-    $ident = array_filter($this->_ident());
-    if ($ident)
-      $ident = '[' . join(', ', $ident) . ']';
+    if (defined('JSON_PRETTY_PRINT'))
+      return json_encode($this->__toArray(true), JSON_PRETTY_PRINT);
     else
-      $ident = '';
-    $class = get_class($this);
-
-    if ($nested)
-      return "<$class$ident ...>";
-
-    $valuesStr = array();
-    $values = Stripe_Util::arrayClone($this->_values);
-    ksort($values);
-    foreach ($values as $k => $v) {
-      if (self::$_ignoredAttributes->includes($k))
-	continue;
-      $v = $this->$k;
-      if ($v instanceof Stripe_Object)
-	$v = $v->_stringify(true);
-      else if (is_bool($v))
-	$v = $v ? 'true' : 'false';
-      else
-	$v = "$v";
-      if ($this->_unsavedValues->includes($k))
-	array_push($valuesStr, "$k=$v (unsaved)");
-      else
-	array_push($valuesStr, "$k=$v");
-    }
-    if (count($valuesStr) == 0)
-      array_push($valuesStr, '(no attributes)');
-    $displayValues = join(', ', $valuesStr);
-    return "<$class$ident $displayValues>";
+      return json_encode($this->__toArray(true));
   }
 
   public function __toString()
   {
-    return $this->_stringify();
+    return $this->__toJSON();
   }
 
-  // Convert this object to an array. (Note that this method does not
-  // recurse, so any contained Stripe_Objects will be present in the
-  // returned array.
-  public function __toArray()
+  public function __toArray($recursive=false)
   {
-    return $this->_values;
+    if ($recursive)
+      return Stripe_Util::convertStripeObjectToArray($this->_values);
+    else
+      return $this->_values;
   }
 }
 
