@@ -2,11 +2,6 @@
 
 abstract class Stripe_ApiResource extends Stripe_Object
 {
-  protected function _ident()
-  {
-    return array($this['id']);
-  }
-
   protected static function _scopedRetrieve($class, $id, $apiKey=null)
   {
     $instance = new $class($id, $apiKey);

@@ -1,5 +1,5 @@
 <?php
-
+ini_set('error_log','/tmp/php_log');
 // Tested on PHP 5.2, 5.3
 
 // This snippet (and some of the curl code) due to the Facebook SDK.
@@ -16,7 +16,7 @@ abstract class Stripe
   public static $apiKey;
   public static $apiBase = 'https://api.stripe.com/v1';
   public static $verifySslCerts = true;
-  const VERSION = '1.5.24';
+  const VERSION = '1.6.0';
 
   public static function getApiKey()
   {
