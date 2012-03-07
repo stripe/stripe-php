@@ -5,7 +5,7 @@ class Stripe_Token extends Stripe_ApiResource
   public static function constructFrom($values, $apiKey=null)
   {
     $class = get_class();
-    return self::_scopedConstructFrom($class, $values, $apiKey);
+    return self::scopedConstructFrom($class, $values, $apiKey);
   }
 
   public static function retrieve($id, $apiKey=null)
