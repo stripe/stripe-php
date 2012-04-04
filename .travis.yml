@@ -5,4 +5,4 @@ php:
 before_script:
   - wget http://softlayer.dl.sourceforge.net/project/simpletest/simpletest/simpletest_1.1/simpletest_1.1.0.tar.gz
   - tar xf simpletest_1.1.0.tar.gz
-script: "php test/Stripe.php"
+script: "STRIPE_API_KEY=2kltMIclmbArkUYn2VEsEIkB9EyDWL8n php test/Stripe.php"
