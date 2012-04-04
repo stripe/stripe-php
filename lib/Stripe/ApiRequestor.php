@@ -87,7 +87,6 @@ class Stripe_ApiRequestor
       throw new Stripe_AuthenticationError('No API key provided.  (HINT: set your API key using "Stripe::setApiKey(<API-KEY>)".  You can generate API keys from the Stripe web interface.  See https://stripe.com/api for details, or email support@stripe.com if you have any questions.');
 
     $absUrl = $this->apiUrl($url);
-    $params = Stripe_Util::arrayClone($params);
     $params = self::_encodeObjects($params);
     $langVersion = phpversion();
     $uname = php_uname();

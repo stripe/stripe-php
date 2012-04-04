@@ -2,13 +2,6 @@
 
 abstract class Stripe_Util
 {
-  public static function arrayClone($array)
-  {
-    if (!is_array($array))
-      throw new Stripe_Error("Trying to clone non-array: $array");
-    return array_merge($array);
-  }
-
   public static function isList($array)
   {
     if (!is_array($array))
@@ -27,9 +20,9 @@ abstract class Stripe_Util
     foreach ($values as $k => $v) {
       // FIXME: this is an encapsulation violation
       if (Stripe_Object::$_permanentAttributes->includes($k)) {
-        continue;        
+        continue;
       }
-      if ($v instanceof Stripe_Object) {        
+      if ($v instanceof Stripe_Object) {
         $results[$k] = $v->__toArray(true);
       }
       else if (is_array($v)) {
@@ -54,7 +47,6 @@ abstract class Stripe_Util
         array_push($mapped, self::convertToStripeObject($i, $apiKey));
       return $mapped;
     } else if (is_array($resp)) {
-      $resp = self::arrayClone($resp);
       if (isset($resp['object']) && is_string($resp['object']) && isset($types[$resp['object']]))
         $class = $types[$resp['object']];
       else
