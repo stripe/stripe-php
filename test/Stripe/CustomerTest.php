@@ -1,45 +1,58 @@
 <?php
 
-class Stripe_CustomerTest extends UnitTestCase
+class Stripe_CustomerTest extends StripeTestCase
 {
   public function testDeletion()
   {
-    authorizeFromEnv();
-    $c = Stripe_Customer::create(array('amount' => 100,
-				       'currency' => 'usd',
-				       'card' => array('number' => '4242424242424242',
-						       'exp_month' => 5,
-						       'exp_year' => 2015)));
-    $c->delete();
-    $this->assertTrue($c->deleted);
-    $this->assertNull($c['active_card']);
+    $customer = self::createTestCustomer();
+    $customer->delete();
+
+    $this->assertTrue($customer->deleted);
+    $this->assertNull($customer['active_card']);
   }
 
   public function testSave()
   {
-    authorizeFromEnv();
-    $c = Stripe_Customer::create();
-    $c->email = 'gdb@stripe.com';
-    $c->bogus = 'bogus';
-    $c->save();
-    $this->assertEqual($c->email, 'gdb@stripe.com');
-    $this->assertNull($c['bogus']);
+    $customer = self::createTestCustomer();
 
-    $c2 = Stripe_Customer::retrieve($c->id);
-    $this->assertEqual($c->email, $c2->email);
+    $customer->email = 'gdb@stripe.com';
+    $customer->save();
+    $this->assertEqual($customer->email, 'gdb@stripe.com');
+
+    $customer2 = Stripe_Customer::retrieve($customer->id);
+    $this->assertEqual($customer->email, $customer2->email);
+  }
+
+  public function testBogusAttribute()
+  {
+    $customer = self::createTestCustomer();
+    $customer->bogus = 'bogus';
+
+    $caught = null;
+    try {
+      $customer->save();
+    } catch (Stripe_InvalidRequestError $exception) {
+      $caught = $exception;
+    }
+
+    $this->assertTrue($caught instanceof Stripe_InvalidRequestError);
   }
 
   public function testCancelSubscription()
   {
-    authorizeFromEnv();
-    $c = Stripe_Customer::create(array('card' => array('number' => '4242424242424242',
-						       'exp_month' => 5,
-						       'exp_year' => 2015),
-				       'plan' => 'gold'));
-    $c->cancelSubscription(array('at_period_end' => true));
-    $this->assertEqual($c->subscription->status, 'active');
-    $this->assertTrue($c->subscription->cancel_at_period_end);
-    $c->cancelSubscription();
-    $this->assertEqual($c->subscription->status, 'canceled');
+    $plan_id = 'gold';
+    self::retrieveOrCreatePlan($plan_id);
+
+    $customer = self::createTestCustomer(
+      array(
+        'plan' => $plan_id,
+      ));
+
+    $customer->cancelSubscription(array('at_period_end' => true));
+    $this->assertEqual($customer->subscription->status, 'active');
+    $this->assertTrue($customer->subscription->cancel_at_period_end);
+    $customer->cancelSubscription();
+    $this->assertEqual($customer->subscription->status, 'canceled');
   }
+
 }
