@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Base class for Strip test cases, provides some utility methods for creating
+ * Base class for Stripe test cases, provides some utility methods for creating
  * objects.
  */
 abstract class StripeTestCase extends UnitTestCase
