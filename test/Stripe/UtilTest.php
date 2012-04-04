@@ -11,13 +11,12 @@ class Stripe_UtilTest extends UnitTestCase
     $this->assertFalse(Stripe_Util::isList($notlist));
   }
 
-  public function testArrayClone()
+  public function testThatPHPHasValueSemanticsForArrays()
   {
-    try {
-      Stripe_Util::arrayClone(1);
-      $this->assertFalse(true);
-    } catch (Stripe_Error $e) {
-      $this->assertTrue(true);
-    }
+    $original = array('php-arrays' => 'value-semantics');
+    $derived = $original;
+    $derived['php-arrays'] = 'reference-semantics';
+
+    $this->assertEqual('value-semantics', $original['php-arrays']);
   }
 }
