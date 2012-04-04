@@ -9,12 +9,6 @@ class Stripe_ChargeTest extends UnitTestCase
     $this->assertEqual($charge->instanceUrl(), '/charges/abcd%2Fefgh');
   }
 
-  public function testToString()
-  {
-    $charge = new Stripe_Charge('a');
-    $this->assertEqual("$charge", "<Stripe_Charge[a] (no attributes)>");
-  }
-
   public function testCreate()
   {
     authorizeFromEnv();

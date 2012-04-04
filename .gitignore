@@ -1,0 +1,5 @@
+# Mac OS X dumps these all over the place.
+.DS_Store
+
+# Ignore the SimpleTest library if it is installed to /test/.
+/test/simpletest/

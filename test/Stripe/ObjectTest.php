@@ -34,18 +34,20 @@ class Stripe_ObjectTest extends UnitTestCase
 
   public function testToString()
   {
+
     $s = new Stripe_Object();
     $s->foo = 'a';
     $s->bar = 'b';
-    $this->assertEqual("$s", "<Stripe_Object bar=b (unsaved), foo=a (unsaved)>");
 
-    $s->id = '12345';
-    $this->assertEqual("$s", "<Stripe_Object[12345] bar=b (unsaved), foo=a (unsaved)>");
+    // NOTE: The toString() implementation of Stripe_Object simply converts the
+    // object into a JSON string, but the exact format depends on the
+    // availability of JSON_PRETTY_PRINT, which isn't available until PHP 5.4.
+    // Instead of testing the exact string representation, verify that the
+    // object converts into a valid JSON string.
 
-    $t = new Stripe_Object();
-    $t->id = 'test';
-    $t->bar = 'bar';
-    $s->baz = $t;
-    $this->assertEqual("$s", "<Stripe_Object[12345] bar=b (unsaved), baz=<Stripe_Object[test] ...> (unsaved), foo=a (unsaved)>");
+    $string = (string)$s;
+    $object = json_decode($string, true);
+
+    $this->assertTrue(is_array($object));
   }
 }
