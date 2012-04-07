@@ -1,0 +1,25 @@
+{
+  "name": "stripe/stripe-php",
+  "description": "PHP bindings for Stripe api",
+  "keywords": [
+    "stripe",
+    "payment processing",
+    "api"
+  ],
+  "homepage": "http://stripe.com/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Stripe and contributors",
+      "homepage": "https://github.com/stripe/stripe-php/contributors"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.2"
+  },
+  "autoload": {
+    "psr-0": {
+      "Stripe": "lib/"
+    }
+  }
+}
