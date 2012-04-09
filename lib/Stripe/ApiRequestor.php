@@ -154,7 +154,10 @@ class Stripe_ApiRequestor
     $rbody = curl_exec($curl);
 
     $errno = curl_errno($curl);
-    if ($errno == CURLE_SSL_CACERT || $errno == CURLE_SSL_PEER_CERTIFICATE) {
+    if ($errno == CURLE_SSL_CACERT ||
+	$errno == CURLE_SSL_PEER_CERTIFICATE ||
+	$errno == 77 // CURLE_SSL_CACERT_BADFILE (constant not defined in PHP though)
+	) {
       array_push($headers, 'X-Stripe-Client-Info: {"ca":"using Stripe-supplied CA bundle"}');
       curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
       curl_setopt($curl, CURLOPT_CAINFO,
@@ -191,7 +194,7 @@ class Stripe_ApiRequestor
       $msg = "Unexpected error communicating with Stripe.  If this problem persists, let us know at support@stripe.com.";
     }
 
-    $msg .= "\n\n(Network error: $message)";
+    $msg .= "\n\n(Network error [errno $errno]: $message)";
     throw new Stripe_ApiConnectionError($msg);
   }
 }
