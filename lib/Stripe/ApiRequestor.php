@@ -96,8 +96,9 @@ class Stripe_ApiRequestor
 		'publisher' => 'stripe',
 		'uname' => $uname);
     $headers = array('X-Stripe-Client-User-Agent: ' . json_encode($ua),
-		     'User-Agent: Stripe/v1 PhpBindings/' . Stripe::VERSION);
-    list($rbody, $rcode) = $this->_curlRequest($meth, $absUrl, $headers, $params, $myApiKey);
+		     'User-Agent: Stripe/v1 PhpBindings/' . Stripe::VERSION,
+                     'Authorization: Bearer ' . $myApiKey);
+    list($rbody, $rcode) = $this->_curlRequest($meth, $absUrl, $headers, $params);
     return array($rbody, $rcode, $myApiKey);
   }
 
@@ -115,7 +116,7 @@ class Stripe_ApiRequestor
     return $resp;
   }
 
-  private function _curlRequest($meth, $absUrl, $headers, $params, $myApiKey)
+  private function _curlRequest($meth, $absUrl, $headers, $params)
   {
     $curl = curl_init();
     $meth = strtolower($meth);
@@ -146,7 +147,6 @@ class Stripe_ApiRequestor
     $opts[CURLOPT_TIMEOUT] = 80;
     $opts[CURLOPT_RETURNTRANSFER] = true;
     $opts[CURLOPT_HTTPHEADER] = $headers;
-    $opts[CURLOPT_USERPWD] = $myApiKey . ':';
     if (!Stripe::$verifySslCerts)
       $opts[CURLOPT_SSL_VERIFYPEER] = false;
 
