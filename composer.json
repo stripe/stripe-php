@@ -1,12 +1,12 @@
 {
   "name": "stripe/stripe-php",
-  "description": "PHP bindings for Stripe api",
+  "description": "Stripe PHP Library",
   "keywords": [
     "stripe",
     "payment processing",
     "api"
   ],
-  "homepage": "http://stripe.com/",
+  "homepage": "https://stripe.com/",
   "license": "MIT",
   "authors": [
     {
@@ -15,7 +15,11 @@
     }
   ],
   "require": {
-    "php": ">=5.3.2"
+    "php": ">=5.2",
+    "ext-curl": "*"
+  },
+  "require-dev": {
+    "vierbergenlars/simpletest": "*"
   },
   "autoload": {
     "psr-0": {
