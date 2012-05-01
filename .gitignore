@@ -3,3 +3,6 @@
 
 # Ignore the SimpleTest library if it is installed to /test/.
 /test/simpletest/
+
+# Ignore the /vendor/ directory for people using composer
+/vendor/
