@@ -1,7 +1,8 @@
 <?php
 namespace Stripe;
 
-use Util\Set;
+use Stripe\Util\Set;
+use Stripe\Charge;
 
 class Object implements \ArrayAccess
 {

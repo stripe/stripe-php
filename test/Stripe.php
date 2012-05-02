@@ -3,9 +3,10 @@
 function authorizeFromEnv()
 {
   $apiKey = getenv('STRIPE_API_KEY');
-  if (!$apiKey)
-    throw new Stripe_Error('You need to set STRIPE_API_KEY');
-  Stripe::setApiKey($apiKey);
+  if (!$apiKey) {
+    throw new \Stripe\Error('You need to set STRIPE_API_KEY');
+  }
+  Stripe\Base::setApiKey($apiKey);
 }
 
 if (!getenv('STRIPE_API_KEY')) {
@@ -26,18 +27,20 @@ if (!$ok) {
   exit(1);
 }
 
-require_once(__DIR__ . '/../lib/Base.php');
+$testDir = __DIR__ . '/Stripe/Test';
 
-require_once(__DIR__ . '/Stripe/TestCase.php');
+require_once __DIR__ . '/../lib/Stripe/Base.php';
 
-require_once(__DIR__ . '/Stripe/ApiRequestorTest.php');
-require_once(__DIR__ . '/Stripe/AuthenticationErrorTest.php');
-require_once(__DIR__ . '/Stripe/CardErrorTest.php');
-require_once(__DIR__ . '/Stripe/ChargeTest.php');
-require_once(__DIR__ . '/Stripe/CustomerTest.php');
-require_once(__DIR__ . '/Stripe/Error.php');
-require_once(__DIR__ . '/Stripe/InvalidRequestErrorTest.php');
-require_once(__DIR__ . '/Stripe/InvoiceTest.php');
-require_once(__DIR__ . '/Stripe/ObjectTest.php');
-require_once(__DIR__ . '/Stripe/Token.php');
-require_once(__DIR__ . '/Stripe/UtilTest.php');
+require_once $testDir . '/TestCase.php';
+
+require_once $testDir . '/ApiRequestorTest.php';
+require_once $testDir . '/AuthenticationErrorTest.php';
+require_once $testDir . '/CardErrorTest.php';
+require_once $testDir . '/ChargeTest.php';
+require_once $testDir . '/CustomerTest.php';
+require_once $testDir . '/Error.php';
+require_once $testDir . '/InvalidRequestErrorTest.php';
+require_once $testDir . '/InvoiceTest.php';
+require_once $testDir . '/ObjectTest.php';
+require_once $testDir . '/Token.php';
+require_once $testDir . '/UtilTest.php';

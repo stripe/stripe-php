@@ -1,11 +1,14 @@
 <?php
+namespace Stripe\Test;
 
-class Stripe_PlanTest extends UnitTestCase
+use Stripe\Plan;
+
+class PlanTest extends \UnitTestCase
 {
   public function testDeletion()
   {
     authorizeFromEnv();
-    $p = Stripe_Plan::create(array('amount' => 2000,
+    $p = Plan::create(array('amount' => 2000,
 				       'currency' => 'usd',
 				       'name' => 'Plan',
 				       'id' => 'gold'));
@@ -16,7 +19,7 @@ class Stripe_PlanTest extends UnitTestCase
   public function testSave()
   {
     authorizeFromEnv();
-    $p = Stripe_Plan::create(array('amount' => 2000,
+    $p = Plan::create(array('amount' => 2000,
 				       'currency' => 'usd',
 				       'name' => 'Plan',
 				       'id' => 'gold'));
@@ -26,7 +29,7 @@ class Stripe_PlanTest extends UnitTestCase
     $this->assertEqual($p->name, 'A new plan name');
     $this->assertNull($p['bogus']);
 
-    $p2 = Stripe_Plan::retrieve($p->'gold');
+    $p2 = Plan::retrieve($p->'gold');
     $this->assertEqual($c->name, $c2->name);
   }
 }

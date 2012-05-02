@@ -1,13 +1,15 @@
 <?php
+namespace Stripe\Test;
 
-class Stripe_ErrorTest extends UnitTestCase
+use Stripe\Error;
+
+class ErrorTest extends \UnitTestCase
 {
   public function testCreation()
   {
     try {
-      throw new Stripe_Error("hello", 500, "{'foo':'bar'}", array('foo' => 'bar'));
-      $this->fail("Did not raise error");
-    } catch (Stripe_Error $e) {
+      throw new Error("hello", 500, "{'foo':'bar'}", array('foo' => 'bar'));
+    } catch (Error $e) {
       $this->assertEqual("hello", $e->getMessage());
       $this->assertEqual(500, $e->getHttpStatus());
       $this->assertEqual("{'foo':'bar'}", $e->getHttpBody());

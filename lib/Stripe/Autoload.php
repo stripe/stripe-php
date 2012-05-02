@@ -25,7 +25,10 @@ class Autoload
     if (null === self::$base) {
       self::$base = dirname(__DIR__);
     }
-    $file = str_replace('_', '/', $class) . '.php';
+    if (0 !== strpos($class, 'Stripe')) {
+      return false;
+    }
+    $file = str_replace('\\', '/', $class) . '.php';
     return include sprintf('%s/%s', self::$base, $file);
   }
 

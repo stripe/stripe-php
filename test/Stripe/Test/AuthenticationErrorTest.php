@@ -1,13 +1,18 @@
 <?php
+namespace Stripe\Test;
 
-class Stripe_AuthenticationErrorTest extends UnitTestCase
+use Stripe\Customer;
+use Stripe\Base;
+use Stripe\AuthenticationError;
+
+class AuthenticationErrorTest extends \UnitTestCase
 {
   public function testInvalidCredentials()
   {
-    Stripe::setApiKey('invalid');
+    Base::setApiKey('invalid');
     try {
-      Stripe_Customer::create();
-    } catch (Stripe_AuthenticationError $e) {
+      Customer::create();
+    } catch (AuthenticationError $e) {
       $this->assertEqual(401, $e->getHttpStatus());
     }
   }

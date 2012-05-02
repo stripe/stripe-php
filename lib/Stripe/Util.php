@@ -1,6 +1,8 @@
 <?php
 namespace Stripe;
 
+use Stripe\Object;
+
 abstract class Util
 {
   public static function isList($array)
@@ -39,10 +41,11 @@ abstract class Util
   public static function convertToStripeObject($resp, $apiKey)
   {
     $types = array(
-      'charge' => 'Charge',
-	  'customer' => 'Customer',
-	  'invoice' => 'Invoice',
-	  'invoiceitem' => 'InvoiceItem', 'event' => 'Event'
+      'charge'      => 'Stripe\Charge',
+      'customer'    => 'Stripe\Customer',
+      'invoice'     => 'Stripe\Invoice',
+      'invoiceitem' => 'Stripe\InvoiceItem',
+      'event'       => 'Stripe\Event'
     );
     if (self::isList($resp)) {
       $mapped = array();
@@ -55,7 +58,7 @@ abstract class Util
       if (isset($resp['object']) && is_string($resp['object']) && isset($types[$resp['object']])) {
         $class = $types[$resp['object']];
       } else {
-        $class = 'Object';
+        $class = 'Stripe\Object';
       }
       return Object::scopedConstructFrom($class, $resp, $apiKey);
     }

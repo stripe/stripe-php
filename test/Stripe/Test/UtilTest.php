@@ -1,14 +1,17 @@
 <?php
+namespace Stripe\Test;
 
-class Stripe_UtilTest extends UnitTestCase
+use Stripe\Util;
+
+class UtilTest extends \UnitTestCase
 {
   public function testIsList()
   {
     $list = array(5, 'nstaoush', array());
-    $this->assertTrue(Stripe_Util::isList($list));
+    $this->assertTrue(Util::isList($list));
 
     $notlist = array(5, 'nstaoush', array(), 'bar' => 'baz');
-    $this->assertFalse(Stripe_Util::isList($notlist));
+    $this->assertFalse(Util::isList($notlist));
   }
 
   public function testThatPHPHasValueSemanticsForArrays()

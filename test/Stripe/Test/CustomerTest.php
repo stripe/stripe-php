@@ -1,6 +1,10 @@
 <?php
+namespace Stripe\Test;
 
-class Stripe_CustomerTest extends StripeTestCase
+use Stripe\Customer;
+use Stripe\InvalidRequestError;
+
+class CustomerTest extends TestCase
 {
   public function testDeletion()
   {
@@ -19,7 +23,7 @@ class Stripe_CustomerTest extends StripeTestCase
     $customer->save();
     $this->assertEqual($customer->email, 'gdb@stripe.com');
 
-    $customer2 = Stripe_Customer::retrieve($customer->id);
+    $customer2 = Customer::retrieve($customer->id);
     $this->assertEqual($customer->email, $customer2->email);
   }
 
@@ -31,11 +35,11 @@ class Stripe_CustomerTest extends StripeTestCase
     $caught = null;
     try {
       $customer->save();
-    } catch (Stripe_InvalidRequestError $exception) {
+    } catch (InvalidRequestError $exception) {
       $caught = $exception;
     }
 
-    $this->assertTrue($caught instanceof Stripe_InvalidRequestError);
+    $this->assertTrue($caught instanceof InvalidRequestError);
   }
 
   public function testCancelSubscription()

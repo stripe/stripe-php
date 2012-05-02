@@ -1,7 +1,7 @@
 <?php
 namespace Stripe;
 
-require_once 'Stripe/Autoload.php';
+require_once __DIR__ . '/Autoload.php';
 Autoload::register();
 
 abstract class Base

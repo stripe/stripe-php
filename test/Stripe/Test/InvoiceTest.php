@@ -1,20 +1,24 @@
 <?php
+namespace Stripe\Test;
 
-class Stripe_InvoiceTest extends StripeTestCase
+use Stripe\InvoiceItem;
+use Stripe\Invoice;
+
+class InvoiceTest extends TestCase
 {
   public function testUpcoming()
   {
     authorizeFromEnv();
     $customer = self::createTestCustomer();
 
-    Stripe_InvoiceItem::create(
+    InvoiceItem::create(
       array(
         'customer'  => $customer->id,
         'amount'    => 0,
         'currency'  => 'usd',
       ));
 
-    $invoice = Stripe_Invoice::upcoming(
+    $invoice = Invoice::upcoming(
       array(
         'customer' => $customer->id,
       ));

@@ -1,10 +1,15 @@
 <?php
+namespace Stripe\Test;
+
+use Stripe\Customer;
+use Stripe\Plan;
+use Stripe\InvalidRequestError;
 
 /**
  * Base class for Stripe test cases, provides some utility methods for creating
  * objects.
  */
-abstract class StripeTestCase extends UnitTestCase
+abstract class TestCase extends \UnitTestCase
 {
 
   /**
@@ -14,7 +19,7 @@ abstract class StripeTestCase extends UnitTestCase
   {
     authorizeFromEnv();
 
-    return Stripe_Customer::create(
+    return Customer::create(
       $attributes + array(
         'card' => array(
           'number'    => '4242424242424242',
@@ -33,9 +38,9 @@ abstract class StripeTestCase extends UnitTestCase
     authorizeFromEnv();
 
     try {
-      $plan = Stripe_Plan::retrieve($id);
-    } catch (Stripe_InvalidRequestError $exception) {
-      $plan = Stripe_Plan::create(
+      $plan = Plan::retrieve($id);
+    } catch (InvalidRequestError $exception) {
+      $plan = Plan::create(
         array(
           'id'        => $id,
           'amount'    => 0,

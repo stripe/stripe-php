@@ -1,13 +1,18 @@
 <?php
+namespace Stripe\Test;
 
-class Stripe_InvalidRequestErrorTest extends UnitTestCase
+use Stripe\Customer;
+use Stripe\InvalidRequestError;
+use Stripe\Charge;
+
+class InvalidRequestErrorTest extends \UnitTestCase
 {
   public function testInvalidObject()
   {
     authorizeFromEnv();
     try {
-      Stripe_Customer::retrieve('invalid');
-    } catch (Stripe_InvalidRequestError $e) {
+      Customer::retrieve('invalid');
+    } catch (InvalidRequestError $e) {
       $this->assertEqual(404, $e->getHttpStatus());
     }
   }
@@ -16,8 +21,8 @@ class Stripe_InvalidRequestErrorTest extends UnitTestCase
   {
     authorizeFromEnv();
     try {
-      Stripe_Charge::create();
-    } catch (Stripe_InvalidRequestError $e) {
+      Charge::create();
+    } catch (InvalidRequestError $e) {
       $this->assertEqual(400, $e->getHttpStatus());
     }
   }
