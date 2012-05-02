@@ -1,3 +1,7 @@
+= About
+
+This fork aims to be PHP 5.3 compatible and is not maintained by Stripe.
+
 = Installation
 
 Obtain the latest version of the Stripe PHP bindings with:
