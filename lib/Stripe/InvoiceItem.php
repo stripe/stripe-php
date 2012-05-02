@@ -1,6 +1,7 @@
 <?php
+namespace Stripe;
 
-class Stripe_InvoiceItem extends Stripe_ApiResource
+class InvoiceItem extends ApiResource
 {
   public static function constructFrom($values, $apiKey=null)
   {

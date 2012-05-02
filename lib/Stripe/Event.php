@@ -1,6 +1,7 @@
 <?php
+namespace Stripe;
 
-class Stripe_Event extends Stripe_ApiResource
+class Event extends ApiResource
 {
   public static function constructFrom($values, $apiKey=null)
   {

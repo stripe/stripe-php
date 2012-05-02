@@ -1,5 +1,7 @@
 <?php
-class Stripe_Autoload
+namespace Stripe;
+
+class Autoload
 {
   /**
    * Base dir: for absolute paths.
@@ -21,7 +23,7 @@ class Stripe_Autoload
   public static function load($class)
   {
     if (null === self::$base) {
-      self::$base = dirname(dirname(__FILE__));
+      self::$base = dirname(__DIR__);
     }
     $file = str_replace('_', '/', $class) . '.php';
     return include sprintf('%s/%s', self::$base, $file);
@@ -37,7 +39,7 @@ class Stripe_Autoload
     if (true === self::$registered) {
       return;
     }
-    spl_autoload_register(array('Stripe_Autoload', 'load'));
+    spl_autoload_register(array('\Stripe\Autoload', 'load'));
     self::$registered = true;
   }
 }

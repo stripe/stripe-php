@@ -1,6 +1,7 @@
 <?php
+namespace Stripe;
 
-class Stripe_Token extends Stripe_ApiResource
+class Token extends ApiResource
 {
   public static function constructFrom($values, $apiKey=null)
   {

@@ -1,6 +1,7 @@
 <?php
+namespace Stripe;
 
-class Stripe_Plan extends Stripe_ApiResource
+class Plan extends ApiResource
 {
   public static function constructFrom($values, $apiKey=null)
   {

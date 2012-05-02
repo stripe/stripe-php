@@ -1,14 +1,16 @@
 <?php
+namespace Stripe\Util;
 
-class Stripe_Util_Set
+class Set
 {
   private $_elts;
 
   public function __construct($members=array())
   {
     $this->_elts = array();
-    foreach ($members as $item)
+    foreach ($members as $item) {
       $this->_elts[$item] = true;
+    }
   }
 
   public function includes($elt)

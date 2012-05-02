@@ -1,6 +1,7 @@
 <?php
+namespace Stripe;
 
-class Stripe_Customer extends Stripe_ApiResource
+class Customer extends ApiResource
 {
   public static function constructFrom($values, $apiKey=null)
   {
@@ -43,7 +44,7 @@ class Stripe_Customer extends Stripe_ApiResource
     if (!$params)
       $params = array();
     $params['customer'] = $this->id;
-    $ii = Stripe_InvoiceItem::create($params, $this->_apiKey);
+    $ii = InvoiceItem::create($params, $this->_apiKey);
     return $ii;
   }
 
@@ -52,7 +53,7 @@ class Stripe_Customer extends Stripe_ApiResource
     if (!$params)
       $params = array();
     $params['customer'] = $this->id;
-    $invoices = Stripe_Invoice::all($params, $this->_apiKey);
+    $invoices = Invoice::all($params, $this->_apiKey);
     return $invoices;
   }
 
@@ -61,7 +62,7 @@ class Stripe_Customer extends Stripe_ApiResource
     if (!$params)
       $params = array();
     $params['customer'] = $this->id;
-    $iis = Stripe_InvoiceItem::all($params, $this->_apiKey);
+    $iis = InvoiceItem::all($params, $this->_apiKey);
     return $iis;
   }
 
@@ -70,13 +71,13 @@ class Stripe_Customer extends Stripe_ApiResource
     if (!$params)
       $params = array();
     $params['customer'] = $this->id;
-    $charges = Stripe_Charge::all($params, $this->_apiKey);
+    $charges = Charge::all($params, $this->_apiKey);
     return $charges;
   }
 
   public function updateSubscription($params=null)
   {
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $requestor = new ApiRequestor($this->_apiKey);
     $url = $this->instanceUrl() . '/subscription';
     list($response, $apiKey) = $requestor->request('post', $url, $params);
     $this->refreshFrom(array('subscription' => $response), $apiKey, true);
@@ -85,7 +86,7 @@ class Stripe_Customer extends Stripe_ApiResource
 
   public function cancelSubscription($params=null)
   {
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $requestor = new ApiRequestor($this->_apiKey);
     $url = $this->instanceUrl() . '/subscription';
     list($response, $apiKey) = $requestor->request('delete', $url, $params);
     $this->refreshFrom(array('subscription' => $response), $apiKey, true);

@@ -1,6 +1,7 @@
 <?php
+namespace Stripe;
 
-class Stripe_Invoice extends Stripe_ApiResource
+class Invoice extends ApiResource
 {
   public static function constructFrom($values, $apiKey=null)
   {
@@ -22,9 +23,9 @@ class Stripe_Invoice extends Stripe_ApiResource
 
   public static function upcoming($params=null, $apiKey=null)
   {
-    $requestor = new Stripe_ApiRequestor($apiKey);
+    $requestor = new ApiRequestor($apiKey);
     $url = self::classUrl(get_class()) . '/upcoming';
     list($response, $apiKey) = $requestor->request('get', $url, $params);
-    return Stripe_Util::convertToStripeObject($response, $apiKey);
+    return Util::convertToStripeObject($response, $apiKey);
   }
 }

@@ -1,13 +1,15 @@
 <?php
+namespace Stripe;
 
-class Stripe_Error extends Exception
+class Error extends Exception
 {
   public function __construct($message=null, $http_status=null, $http_body=null, $json_body=null)
   {
     parent::__construct($message);
+
     $this->http_status = $http_status;
-    $this->http_body = $http_body;
-    $this->json_body = $json_body;
+    $this->http_body   = $http_body;
+    $this->json_body   = $json_body;
   }
 
   public function getHttpStatus()

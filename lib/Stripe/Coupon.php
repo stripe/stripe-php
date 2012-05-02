@@ -1,6 +1,7 @@
 <?php
+namespace Stripe;
 
-class Stripe_Coupon extends Stripe_ApiResource
+class Coupon extends ApiResource
 {
   public static function constructFrom($values, $apiKey=null)
   {
@@ -25,7 +26,7 @@ class Stripe_Coupon extends Stripe_ApiResource
     $class = get_class();
     return self::_scopedDelete($class, $params);
   }
-  
+
   public static function all($params=null, $apiKey=null)
   {
     $class = get_class();

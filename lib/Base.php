@@ -1,9 +1,10 @@
 <?php
+namespace Stripe;
 
 require_once 'Stripe/Autoload.php';
-Stripe\Autoload::register();
+Autoload::register();
 
-abstract class Stripe
+abstract class Base
 {
   public static $apiKey;
   public static $apiBase = 'https://api.stripe.com/v1';

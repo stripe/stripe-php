@@ -15,9 +15,9 @@ if (!getenv('STRIPE_API_KEY')) {
   exit(1);
 }
 
-$ok = @include_once(dirname(__FILE__).'/simpletest/autorun.php');
+$ok = @include_once(__DIR__.'/simpletest/autorun.php');
 if (!$ok) {
-  $ok = @include_once(dirname(__FILE__).'/../vendor/simpletest/simpletest/autorun.php');
+  $ok = @include_once(__DIR__.'/../vendor/simpletest/simpletest/autorun.php');
 }
 if (!$ok) {
   echo "MISSING DEPENDENCY: The Stripe API test cases depend on SimpleTest. ".
@@ -26,18 +26,18 @@ if (!$ok) {
   exit(1);
 }
 
-require_once(dirname(__FILE__) . '/../lib/Stripe.php');
+require_once(__DIR__ . '/../lib/Base.php');
 
-require_once(dirname(__FILE__) . '/Stripe/TestCase.php');
+require_once(__DIR__ . '/Stripe/TestCase.php');
 
-require_once(dirname(__FILE__) . '/Stripe/ApiRequestorTest.php');
-require_once(dirname(__FILE__) . '/Stripe/AuthenticationErrorTest.php');
-require_once(dirname(__FILE__) . '/Stripe/CardErrorTest.php');
-require_once(dirname(__FILE__) . '/Stripe/ChargeTest.php');
-require_once(dirname(__FILE__) . '/Stripe/CustomerTest.php');
-require_once(dirname(__FILE__) . '/Stripe/Error.php');
-require_once(dirname(__FILE__) . '/Stripe/InvalidRequestErrorTest.php');
-require_once(dirname(__FILE__) . '/Stripe/InvoiceTest.php');
-require_once(dirname(__FILE__) . '/Stripe/ObjectTest.php');
-require_once(dirname(__FILE__) . '/Stripe/Token.php');
-require_once(dirname(__FILE__) . '/Stripe/UtilTest.php');
+require_once(__DIR__ . '/Stripe/ApiRequestorTest.php');
+require_once(__DIR__ . '/Stripe/AuthenticationErrorTest.php');
+require_once(__DIR__ . '/Stripe/CardErrorTest.php');
+require_once(__DIR__ . '/Stripe/ChargeTest.php');
+require_once(__DIR__ . '/Stripe/CustomerTest.php');
+require_once(__DIR__ . '/Stripe/Error.php');
+require_once(__DIR__ . '/Stripe/InvalidRequestErrorTest.php');
+require_once(__DIR__ . '/Stripe/InvoiceTest.php');
+require_once(__DIR__ . '/Stripe/ObjectTest.php');
+require_once(__DIR__ . '/Stripe/Token.php');
+require_once(__DIR__ . '/Stripe/UtilTest.php');

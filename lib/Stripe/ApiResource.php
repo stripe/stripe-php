@@ -1,6 +1,7 @@
 <?php
+namespace Stripe;
 
-abstract class Stripe_ApiResource extends Stripe_Object
+abstract class ApiResource extends Object
 {
   protected static function _scopedRetrieve($class, $id, $apiKey=null)
   {
@@ -11,7 +12,7 @@ abstract class Stripe_ApiResource extends Stripe_Object
 
   public function refresh()
   {
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $requestor = new ApiRequestor($this->_apiKey);
     $url = $this->instanceUrl();
     list($response, $apiKey) = $requestor->request('get', $url);
     $this->refreshFrom($response, $apiKey);
@@ -36,9 +37,9 @@ abstract class Stripe_ApiResource extends Stripe_Object
     $id = $this['id'];
     $class = get_class($this);
     if (!$id) {
-      throw new Stripe_InvalidRequestError("Could not determine which URL to request: $class instance has invalid ID: $id");
+      throw new InvalidRequestError("Could not determine which URL to request: $class instance has invalid ID: $id");
     }
-    $id = Stripe_ApiRequestor::utf8($id);
+    $id = ApiRequestor::utf8($id);
     $base = self::classUrl($class);
     $extn = urlencode($id);
     return "$base/$extn";
@@ -47,34 +48,34 @@ abstract class Stripe_ApiResource extends Stripe_Object
   private static function _validateCall($method, $params=null, $apiKey=null)
   {
     if ($params && !is_array($params))
-      throw new Stripe_Error("You must pass an array as the first argument to Stripe API method calls.  (HINT: an example call to create a charge would be: \"StripeCharge::create(array('amount' => 100, 'currency' => 'usd', 'card' => array('number' => 4242424242424242, 'exp_month' => 5, 'exp_year' => 2015)))\")");
+      throw new Error("You must pass an array as the first argument to Stripe API method calls.  (HINT: an example call to create a charge would be: \"StripeCharge::create(array('amount' => 100, 'currency' => 'usd', 'card' => array('number' => 4242424242424242, 'exp_month' => 5, 'exp_year' => 2015)))\")");
     if ($apiKey && !is_string($apiKey))
-      throw new Stripe_Error('The second argument to Stripe API method calls is an optional per-request apiKey, which must be a string.  (HINT: you can set a global apiKey by "Stripe::setApiKey(<apiKey>)")');
+      throw new Error('The second argument to Stripe API method calls is an optional per-request apiKey, which must be a string.  (HINT: you can set a global apiKey by "Stripe::setApiKey(<apiKey>)")');
   }
 
   protected static function _scopedAll($class, $params=null, $apiKey=null)
   {
     self::_validateCall('all', $params, $apiKey);
-    $requestor = new Stripe_ApiRequestor($apiKey);
+    $requestor = new ApiRequestor($apiKey);
     $url = self::classUrl($class);
     list($response, $apiKey) = $requestor->request('get', $url, $params);
-    return Stripe_Util::convertToStripeObject($response, $apiKey);
+    return Util::convertToStripeObject($response, $apiKey);
   }
 
   protected static function _scopedCreate($class, $params=null, $apiKey=null)
   {
     self::_validateCall('create', $params, $apiKey);
-    $requestor = new Stripe_ApiRequestor($apiKey);
+    $requestor = new ApiRequestor($apiKey);
     $url = self::classUrl($class);
     list($response, $apiKey) = $requestor->request('post', $url, $params);
-    return Stripe_Util::convertToStripeObject($response, $apiKey);
+    return Util::convertToStripeObject($response, $apiKey);
   }
 
   protected function _scopedSave($class)
   {
     self::_validateCall('save');
     if ($this->_unsavedValues) {
-      $requestor = new Stripe_ApiRequestor($this->_apiKey);
+      $requestor = new ApiRequestor($this->_apiKey);
       $params = array();
       foreach ($this->_unsavedValues->toArray() as $k)
 	$params[$k] = $this->$k;
@@ -88,7 +89,7 @@ abstract class Stripe_ApiResource extends Stripe_Object
   protected function _scopedDelete($class, $params=null)
   {
     self::_validateCall('delete');
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $requestor = new ApiRequestor($this->_apiKey);
     $url = $this->instanceUrl();
     list($response, $apiKey) = $requestor->request('delete', $url, $params);
     $this->refreshFrom($response, $apiKey);

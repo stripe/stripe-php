@@ -1,5 +1,6 @@
 <?php
+namespace Stripe;
 
-class Stripe_ApiConnectionError extends Stripe_Error
+class ApiConnectionError extends Error
 {
 }

@@ -1,6 +1,7 @@
 <?php
+namespace Stripe;
 
-class Stripe_Charge extends Stripe_ApiResource
+class Charge extends ApiResource
 {
   public static function constructFrom($values, $apiKey=null)
   {
@@ -28,7 +29,7 @@ class Stripe_Charge extends Stripe_ApiResource
 
   public function refund($params=null)
   {
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $requestor = new ApiRequestor($this->_apiKey);
     $url = $this->instanceUrl() . '/refund';
     list($response, $apiKey) = $requestor->request('post', $url, $params);
     $this->refreshFrom($response, $apiKey);
@@ -37,7 +38,7 @@ class Stripe_Charge extends Stripe_ApiResource
 
   public function capture($params=null)
   {
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $requestor = new ApiRequestor($this->_apiKey);
     $url = $this->instanceUrl() . '/capture';
     list($response, $apiKey) = $requestor->request('post', $url, $params);
     $this->refreshFrom($response, $apiKey);
