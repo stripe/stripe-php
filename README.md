@@ -1,12 +1,12 @@
-= About
+# About
 
 This fork aims to be PHP 5.3 compatible and is not maintained by Stripe.
 
-= Testing
+# Testing
 
-https://secure.travis-ci.org/easybib/stripe-php.png?branch=master
+[![Build Status](https://secure.travis-ci.org/easybib/stripe-php.png?branch=master)](http://travis-ci.org/easybib/stripe-php)
 
-= Installation
+# Installation
 
 Obtain the latest version of the Stripe PHP bindings with:
 
@@ -23,6 +23,6 @@ Simple usage looks like:
     $charge = Stripe\Charge::create(array('card' => $myCard, 'amount' => 2000, 'currency' => 'usd'));
     echo $charge;
 
-= Documentation
+# Documentation
 
 Please see https://stripe.com/api for up-to-date documentation.
