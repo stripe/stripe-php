@@ -1,17 +1,7 @@
 <?php
 
-// Tested on PHP 5.2, 5.3
-
-// This snippet (and some of the curl code) due to the Facebook SDK.
-if (!function_exists('curl_init')) {
-  throw new Exception('Stripe needs the CURL PHP extension.');
-}
-if (!function_exists('json_decode')) {
-  throw new Exception('Stripe needs the JSON PHP extension.');
-}
-
 require_once 'Stripe/Autoload.php';
-Stripe_Autoload::register();
+Stripe\Autoload::register();
 
 abstract class Stripe
 {
