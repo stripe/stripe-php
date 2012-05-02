@@ -12,6 +12,12 @@ Obtain the latest version of the Stripe PHP bindings with:
 
     git clone https://github.com/easybib/stripe-php
 
+Or use [packagist.org](http://packagist.org/packages/easybib/stripe-php) and put the following into your project's `composer.json`:
+
+    "require": {
+      "easybib/stripe-php": "*"
+    }
+
 To get started, add the following to your PHP script:
 
     require_once("/path/to/stripe-php/lib/Stripe.php");
