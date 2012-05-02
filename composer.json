@@ -31,6 +31,9 @@
     "php": ">=5.3",
     "ext-curl": "*"
   },
+  "replace": {
+    "stripe/stripe-php": "*"
+  },
   "require-dev": {
     "simpletest/simpletest": "1.1.0"
   },
