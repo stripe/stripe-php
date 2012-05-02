@@ -1,12 +1,12 @@
 {
-  "name": "stripe/stripe-php",
-  "description": "Stripe PHP Library",
+  "name": "easybib/stripe-php",
+  "description": "Stripe PHP Library [Unofficial: PHP 5.3+ clone]",
   "keywords": [
     "stripe",
     "payment processing",
     "api"
   ],
-  "homepage": "https://stripe.com/",
+  "homepage": "https://github.com/easybib/stripe-php",
   "license": "MIT",
   "authors": [
     {
