@@ -6,7 +6,7 @@ This fork aims to be PHP 5.3 compatible and is not maintained by Stripe.
 
 Obtain the latest version of the Stripe PHP bindings with:
 
-    git clone https://github.com/stripe/stripe-php
+    git clone https://github.com/easybib/stripe-php
 
 To get started, add the following to your PHP script:
 
@@ -14,9 +14,9 @@ To get started, add the following to your PHP script:
 
 Simple usage looks like:
 
-    Stripe::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
+    Stripe\Base::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
     $myCard = array('number' => '4242424242424242', 'exp_month' => 5, 'exp_year' => 2015);
-    $charge = Stripe_Charge::create(array('card' => $myCard, 'amount' => 2000, 'currency' => 'usd'));
+    $charge = Stripe\Charge::create(array('card' => $myCard, 'amount' => 2000, 'currency' => 'usd'));
     echo $charge;
 
 = Documentation
