@@ -1,9 +1,8 @@
 language: php
 php:
-  - 5.2
   - 5.3
   - 5.4
 before_script:
-  - wget http://softlayer.dl.sourceforge.net/project/simpletest/simpletest/simpletest_1.1/simpletest_1.1.0.tar.gz
-  - tar xf simpletest_1.1.0.tar.gz -C test
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev
 script: "STRIPE_API_KEY=2kltMIclmbArkUYn2VEsEIkB9EyDWL8n php test/Stripe.php"
