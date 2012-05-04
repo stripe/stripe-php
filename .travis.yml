@@ -5,4 +5,4 @@ php:
 before_script:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev
-script: "STRIPE_API_KEY=2kltMIclmbArkUYn2VEsEIkB9EyDWL8n php test/Stripe.php"
+script: "STRIPE_API_KEY=2kltMIclmbArkUYn2VEsEIkB9EyDWL8n php test/TestInit.php"
