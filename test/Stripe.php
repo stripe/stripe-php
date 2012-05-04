@@ -29,7 +29,8 @@ if (!$ok) {
 
 $testDir = __DIR__ . '/Stripe/Test';
 
-require_once __DIR__ . '/../lib/Stripe/Base.php';
+require_once __DIR__ . '/../lib/Stripe/Autoload.php';
+Stripe\Autoload::register();
 
 require_once $testDir . '/TestCase.php';
 
