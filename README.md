@@ -20,13 +20,13 @@ Or use [packagist.org](http://packagist.org/packages/easybib/stripe-php) and put
 
 To get started, add the following to your PHP script:
 
-    require_once("/path/to/stripe-php/lib/Stripe.php");
+    require_once("/path/to/stripe-php/lib/Stripe/Autoload.php");
+    \Stripe\Autoload::register();
 
 Simple usage looks like:
 
-
     require_once 'Stripe/Autoload.php';
-    Autoload::register();
+    \Stripe\Autoload::register();
     
     Stripe\Base::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
     $myCard = array('number' => '4242424242424242', 'exp_month' => 5, 'exp_year' => 2015);
