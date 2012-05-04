@@ -64,3 +64,4 @@ require(dirname(__FILE__) . '/Stripe/Plan.php');
 require(dirname(__FILE__) . '/Stripe/Token.php');
 require(dirname(__FILE__) . '/Stripe/Coupon.php');
 require(dirname(__FILE__) . '/Stripe/Event.php');
+require(dirname(__FILE__) . '/Stripe/Transfer.php');
