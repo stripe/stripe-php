@@ -1,9 +1,6 @@
 <?php
 namespace Stripe;
 
-require_once __DIR__ . '/Autoload.php';
-Autoload::register();
-
 abstract class Base
 {
   public static $apiKey;
