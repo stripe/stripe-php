@@ -28,6 +28,7 @@ require_once(dirname(__FILE__) . '/Stripe/AuthenticationErrorTest.php');
 require_once(dirname(__FILE__) . '/Stripe/CardErrorTest.php');
 require_once(dirname(__FILE__) . '/Stripe/ChargeTest.php');
 require_once(dirname(__FILE__) . '/Stripe/CustomerTest.php');
+require_once(dirname(__FILE__) . '/Stripe/DiscountTest.php');
 require_once(dirname(__FILE__) . '/Stripe/Error.php');
 require_once(dirname(__FILE__) . '/Stripe/InvalidRequestErrorTest.php');
 require_once(dirname(__FILE__) . '/Stripe/InvoiceTest.php');
