@@ -91,4 +91,12 @@ class Stripe_Customer extends Stripe_ApiResource
     $this->refreshFrom(array('subscription' => $response), $apiKey, true);
     return $this->subscription;
   }
+
+  public function deleteDiscount()
+  {
+    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $url = $this->instanceUrl() . '/discount';
+    list($response, $apiKey) = $requestor->request('delete', $url);
+    $this->refreshFrom(array('discount' => null), $apiKey, true);
+  }
 }
