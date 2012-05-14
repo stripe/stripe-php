@@ -1,5 +1,5 @@
 <?php
 
-class Stripe_AuthenticationError extends Stripe_Error
-{
-}
+namespace Stripe;
+
+class AuthenticationError extends \Stripe\Error { }
