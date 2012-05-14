@@ -8,7 +8,7 @@ class Object implements \ArrayAccess
 
 	public static function init()
 	{
-		self::$_permanentAttributes = new Stripe_Util_Set(array('_apiKey'));
+		self::$_permanentAttributes = new \Stripe\Util\Set(array('_apiKey'));
 	}
 
 	protected $_apiKey;
@@ -20,8 +20,8 @@ class Object implements \ArrayAccess
 	{
 		$this->_apiKey = $apiKey;
 		$this->_values = array();
-		$this->_unsavedValues = new Stripe_Util_Set();
-		$this->_transientValues = new Stripe_Util_Set();
+		$this->_unsavedValues = new \Stripe\Util\Set();
+		$this->_transientValues = new \Stripe\Util\Set();
 		if ($id)
 			$this->id = $id;
 	}
@@ -99,7 +99,7 @@ class Object implements \ArrayAccess
 		// customer, where there is no persistent card parameter.  Mark those values
 		// which don't persist as transient
 		if ($partial)
-			$removed = new Stripe_Util_Set();
+			$removed = new \Stripe\Util\Set();
 		else
 			$removed = array_diff(array_keys($this->_values), array_keys($values));
 
@@ -112,7 +112,7 @@ class Object implements \ArrayAccess
 		foreach ($values as $k => $v) {
 			if (self::$_permanentAttributes->includes($k))
 				continue;
-			$this->_values[$k] = Stripe_Util::convertToStripeObject($v, $apiKey);
+			$this->_values[$k] = \Stripe\Util::convertToStripeObject($v, $apiKey);
 			$this->_transientValues->discard($k);
 			$this->_unsavedValues->discard($k);
 		}
@@ -134,7 +134,7 @@ class Object implements \ArrayAccess
 	public function __toArray($recursive=false)
 	{
 		if ($recursive)
-			return Stripe_Util::convertStripeObjectToArray($this->_values);
+			return \Stripe\Util::convertStripeObjectToArray($this->_values);
 		else
 			return $this->_values;
 	}

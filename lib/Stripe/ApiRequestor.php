@@ -27,7 +27,7 @@ class ApiRequestor
 
 	private static function _encodeObjects($d)
 	{
-		if ($d instanceof Stripe_ApiRequestor) {
+		if ($d instanceof \Stripe\ApiRequestor) {
 			return $d->id;
 		} else if ($d === true) {
 			return 'true';
@@ -60,23 +60,23 @@ class ApiRequestor
 	public function handleApiError($rbody, $rcode, $resp)
 	{
 		if (!is_array($resp) || !isset($resp['error']))
-			throw new Stripe_ApiError("Invalid response object from API: $rbody (HTTP response code was $rcode)", $rcode, $rbody, $resp);
+			throw new \Stripe\ApiError("Invalid response object from API: $rbody (HTTP response code was $rcode)", $rcode, $rbody, $resp);
 		$error = $resp['error'];
 		switch ($rcode) {
 			case 400:
 			case 404:
-				throw new Stripe_InvalidRequestError(isset($error['message']) ? $error['message'] : null,
+				throw new \Stripe\InvalidRequestError(isset($error['message']) ? $error['message'] : null,
 				isset($error['param']) ? $error['param'] : null,
 				$rcode, $rbody, $resp);
 			case 401:
-				throw new Stripe_AuthenticationError(isset($error['message']) ? $error['message'] : null, $rcode, $rbody, $resp);
+				throw new \Stripe\AuthenticationError(isset($error['message']) ? $error['message'] : null, $rcode, $rbody, $resp);
 			case 402:
-				throw new Stripe_CardError(isset($error['message']) ? $error['message'] : null,
+				throw new \Stripe\CardError(isset($error['message']) ? $error['message'] : null,
 				isset($error['param']) ? $error['param'] : null,
 				isset($error['code']) ? $error['code'] : null,
 				$rcode, $rbody, $resp);
 			default:
-				throw new Stripe_ApiError(isset($error['message']) ? $error['message'] : null, $rcode, $rbody, $resp);
+				throw new \Stripe\ApiError(isset($error['message']) ? $error['message'] : null, $rcode, $rbody, $resp);
 		}
 	}
 
@@ -86,7 +86,7 @@ class ApiRequestor
 		if (!$myApiKey)
 			$myApiKey = Stripe::$apiKey;
 		if (!$myApiKey)
-			throw new Stripe_AuthenticationError('No API key provided.  (HINT: set your API key using "Stripe::setApiKey(<API-KEY>)".  You can generate API keys from the Stripe web interface.  See https://stripe.com/api for details, or email support@stripe.com if you have any questions.');
+			throw new \Stripe\AuthenticationError('No API key provided.  (HINT: set your API key using "Stripe::setApiKey(<API-KEY>)".  You can generate API keys from the Stripe web interface.  See https://stripe.com/api for details, or email support@stripe.com if you have any questions.');
 
 		$absUrl = $this->apiUrl($url);
 		$params = self::_encodeObjects($params);
@@ -109,7 +109,7 @@ class ApiRequestor
 		try {
 			$resp = json_decode($rbody, true);
 		} catch (Exception $e) {
-			throw new Stripe_ApiError("Invalid response body from API: $rbody (HTTP response code was $rcode)", $rcode, $rbody);
+			throw new \Stripe\ApiError("Invalid response body from API: $rbody (HTTP response code was $rcode)", $rcode, $rbody);
 		}
 
 		if ($rcode < 200 || $rcode >= 300) {
@@ -139,7 +139,7 @@ class ApiRequestor
 				$absUrl = "$absUrl?$encoded";
 			}
 		} else {
-			throw new Stripe_ApiError("Unrecognized method $meth");
+			throw new \Stripe\ApiError("Unrecognized method $meth");
 		}
 
 		$absUrl = self::utf8($absUrl);
@@ -197,6 +197,6 @@ class ApiRequestor
 		}
 
 		$msg .= "\n\n(Network error [errno $errno]: $message)";
-		throw new Stripe_ApiConnectionError($msg);
+		throw new \Stripe\ApiConnectionError($msg);
 	}
 }
