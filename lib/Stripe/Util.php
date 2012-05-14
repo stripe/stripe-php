@@ -21,10 +21,10 @@ abstract class Util
 		$results = array();
 		foreach ($values as $k => $v) {
 			// FIXME: this is an encapsulation violation
-			if (Stripe_Object::$_permanentAttributes->includes($k)) {
+			if (\Stripe\Object::$_permanentAttributes->includes($k)) {
 				continue;
 			}
-			if ($v instanceof Stripe_Object) {
+			if ($v instanceof \Stripe\Object) {
 				$results[$k] = $v->__toArray(true);
 			}
 			else if (is_array($v)) {
@@ -39,11 +39,11 @@ abstract class Util
 
 	public static function convertToStripeObject($resp, $apiKey)
 	{
-		$types = array('charge' => 'Stripe_Charge',
-				'customer' => 'Stripe_Customer',
-				'invoice' => 'Stripe_Invoice',
-				'invoiceitem' => 'Stripe_InvoiceItem', 'event' => 'Stripe_Event',
-				'transfer' => 'Stripe_Transfer');
+		$types = array('charge' => '\Stripe\Charge',
+				'customer' => '\Stripe\Customer',
+				'invoice' => '\Stripe\Invoice',
+				'invoiceitem' => '\Stripe\InvoiceItem', 'event' => '\Stripe\Event',
+				'transfer' => '\Stripe\Transfer');
 		if (self::isList($resp)) {
 			$mapped = array();
 			foreach ($resp as $i)
@@ -53,8 +53,8 @@ abstract class Util
 			if (isset($resp['object']) && is_string($resp['object']) && isset($types[$resp['object']]))
 				$class = $types[$resp['object']];
 			else
-				$class = 'Stripe_Object';
-			return Stripe_Object::scopedConstructFrom($class, $resp, $apiKey);
+				$class = '\Stripe\Object';
+			return \Stripe\Object::scopedConstructFrom($class, $resp, $apiKey);
 		} else {
 			return $resp;
 		}
