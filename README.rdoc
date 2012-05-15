@@ -9,10 +9,11 @@ Obtain the latest version of the Stripe PHP bindings with:
 
 To get started, use a PSR-0 compliant autoloader to load the library. You can use something like Symfony2 or ZF2 or the Packagist autoloader if you choose.
 
-    use Stripe\Stripe;
+    use \Stripe\Stripe;
 
 Simple usage looks like:
 
+    /* Stripe::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249'); //if you included the namespace, like above */
     \Stripe\Stripe::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
     $myCard = array('number' => '4242424242424242', 'exp_month' => 5, 'exp_year' => 2015);
     $charge = \Stripe\Charge::create(array('card' => $myCard, 'amount' => 2000, 'currency' => 'usd'));
