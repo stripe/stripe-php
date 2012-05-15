@@ -2,12 +2,12 @@
 
 namespace Stripe\Tests;
 
-class ChargeErrorTest extends \PHPUnit_Framework_TestCase
+class ChargeErrorTest extends StripeTestCase
 {
-	protected function setUp()
+	/* protected function setUp()
 	{
 		\Stripe\Stripe::setApiKey('tGN0bIwXnHdwOa85VABjPdSn8nWY7G7I');
-	}
+	} */
 	
 	public function testURLs()
 	{

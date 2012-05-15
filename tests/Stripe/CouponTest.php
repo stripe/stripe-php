@@ -2,16 +2,27 @@
 
 namespace Stripe\Tests;
 
-class CouponTest extends \PHPUnit_Framework_TestCase
+class CouponTest extends StripeTestCase
 {
-	protected function setUp()
+	/* protected function setUp()
 	{
 		\Stripe\Stripe::setApiKey('tGN0bIwXnHdwOa85VABjPdSn8nWY7G7I');
-	}
+	} */
+	
+	/* protected function generateRandomString()
+	{
+		$chars = 'abcdefghijklmnopqrstuvwxyz';
+		$str = '';
+		for ($i = 0; $i < 10; $i++) {
+			$str .= $chars[rand(0, strlen($chars)-1)];
+		}
+		
+		return $str;
+	} */
 	
 	public function testCreate()
 	{
-		$id = 'test-coupon-123456';
+		$id = 'test-coupon-'.$this->generateRandomString();
 		
 		$c = \Stripe\Coupon::create(array(
 				'percent_off' => 25,

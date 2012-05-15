@@ -2,7 +2,7 @@
 
 namespace Stripe\Tests;
 
-class APIRequestorTest extends \PHPUnit_Framework_TestCase
+class APIRequestorTest extends StripeTestCase
 {
 	public function testEncode()
 	{

@@ -2,7 +2,7 @@
 
 namespace Stripe\Tests;
 
-class CardErrorTest extends \PHPUnit_Framework_TestCase
+class CardErrorTest extends StripeTestCase
 {
 	public function testDecline()
 	{

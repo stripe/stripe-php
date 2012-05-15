@@ -2,25 +2,15 @@
 
 namespace Stripe\Tests;
 
-class CustomerTest extends \PHPUnit_Framework_TestCase
+class CustomerTest extends StripeTestCase
 {
 	protected $customer;
 	
-	protected function setUp()
+	/* protected function setUp()
 	{
 		\Stripe\Stripe::setApiKey('tGN0bIwXnHdwOa85VABjPdSn8nWY7G7I');
-	}
-	
-	protected function getTestCustomer()
-	{
-		return \Stripe\Customer::create(array(
-				'card' => array(
-						'number'    => '4242424242424242',
-						'exp_month' => 5,
-						'exp_year'  => date('Y') + 3
-				)));
-	}
-	
+	} */
+
 	public function testDeletion()
 	{
 		$customer = $this->getTestCustomer();
@@ -28,5 +18,33 @@ class CustomerTest extends \PHPUnit_Framework_TestCase
 		
 		$this->assertTrue($customer->deleted);
 		$this->assertSame(null, $customer['active_card']);
+	}
+	
+	public function testSave()
+	{
+		$customer = $this->getTestCustomer();
+		
+		$customer->email = 'gdb@stripe.com';
+		$customer->save();
+		
+		$this->assertSame($customer->email, 'gdb@stripe.com');
+		
+		$customer2 = \Stripe\Customer::retrieve($customer->id);
+		$this->assertSame($customer->email, $customer2->email);
+	}
+	
+	/**
+	 * @expectedException \Stripe\InvalidRequestError
+	 */
+	public function testBogusAttribute()
+	{
+		$customer = $this->getTestCustomer();
+		$customer->bogus = 'bogus';
+		$customer->save();
+	}
+	
+	public function testCancelSubscription()
+	{
+		//not implemented yet
 	}
 }

@@ -2,7 +2,7 @@
 
 namespace Stripe\Tests;
 
-class AuthenticationErrorTest extends \PHPUnit_Framework_TestCase
+class AuthenticationErrorTest extends StripeTestCase
 {
 	public function testInvalidCredentials()
 	{

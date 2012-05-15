@@ -8,3 +8,5 @@ spl_autoload_register(function($class)
 		return true;
 	}
 });
+
+require_once __DIR__.'/StripeTestCase.php';
