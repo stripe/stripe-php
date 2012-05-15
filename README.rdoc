@@ -1,18 +1,21 @@
 = Installation
 
+I've updated this library to be PHP 5.3 > compliant and to use namespaces and autoloading instead of "require" statements.
+Its a much more streamlined use of the library. Most of the API documentation is still valid - just use namespaced class references instead.
+
 Obtain the latest version of the Stripe PHP bindings with:
 
     git clone https://github.com/stripe/stripe-php
 
-To get started, add the following to your PHP script:
+To get started, use a PSR-0 compliant autoloader to load the library. You can use something like Symfony2 or ZF2 or the Packagist autoloader if you choose.
 
-    require_once("/path/to/stripe-php/lib/Stripe.php");
+    use Stripe\Stripe;
 
 Simple usage looks like:
 
-    Stripe::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
+    \Stripe\Stripe::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
     $myCard = array('number' => '4242424242424242', 'exp_month' => 5, 'exp_year' => 2015);
-    $charge = Stripe_Charge::create(array('card' => $myCard, 'amount' => 2000, 'currency' => 'usd'));
+    $charge = \Stripe\Charge::create(array('card' => $myCard, 'amount' => 2000, 'currency' => 'usd'));
     echo $charge;
 
 = Documentation
