@@ -84,7 +84,7 @@ class ApiRequestor
 	{
 		$myApiKey = $this->_apiKey;
 		if (!$myApiKey)
-			$myApiKey = Stripe::$apiKey;
+			$myApiKey = \Stripe\Stripe::$apiKey;
 		if (!$myApiKey)
 			throw new \Stripe\AuthenticationError('No API key provided.  (HINT: set your API key using "Stripe::setApiKey(<API-KEY>)".  You can generate API keys from the Stripe web interface.  See https://stripe.com/api for details, or email support@stripe.com if you have any questions.');
 
@@ -92,13 +92,13 @@ class ApiRequestor
 		$params = self::_encodeObjects($params);
 		$langVersion = phpversion();
 		$uname = php_uname();
-		$ua = array('bindings_version' => Stripe::VERSION,
+		$ua = array('bindings_version' => \Stripe\Stripe::VERSION,
 				'lang' => 'php',
 				'lang_version' => $langVersion,
 				'publisher' => 'stripe',
 				'uname' => $uname);
 		$headers = array('X-Stripe-Client-User-Agent: ' . json_encode($ua),
-				'User-Agent: Stripe/v1 PhpBindings/' . Stripe::VERSION,
+				'User-Agent: Stripe/v1 PhpBindings/' . \Stripe\Stripe::VERSION,
 				'Authorization: Bearer ' . $myApiKey);
 		list($rbody, $rcode) = $this->_curlRequest($meth, $absUrl, $headers, $params);
 		return array($rbody, $rcode, $myApiKey);
@@ -149,7 +149,7 @@ class ApiRequestor
 		$opts[CURLOPT_TIMEOUT] = 80;
 		$opts[CURLOPT_RETURNTRANSFER] = true;
 		$opts[CURLOPT_HTTPHEADER] = $headers;
-		if (!Stripe::$verifySslCerts)
+		if (!\Stripe\Stripe::$verifySslCerts)
 			$opts[CURLOPT_SSL_VERIFYPEER] = false;
 
 		curl_setopt_array($curl, $opts);

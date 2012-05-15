@@ -2,7 +2,7 @@
 
 namespace Stripe;
 
-class Stripe_InvoiceItem extends \Stripe\ApiResource
+class InvoiceItem extends \Stripe\ApiResource
 {
 	public static function constructFrom($values, $apiKey=null)
 	{

@@ -24,9 +24,9 @@ class Invoice extends \Stripe\ApiResource
 
 	public static function upcoming($params=null, $apiKey=null)
 	{
-		$requestor = new Stripe_ApiRequestor($apiKey);
+		$requestor = new \Stripe\ApiRequestor($apiKey);
 		$url = self::classUrl(get_class()) . '/upcoming';
 		list($response, $apiKey) = $requestor->request('get', $url, $params);
-		return Stripe_Util::convertToStripeObject($response, $apiKey);
+		return \Stripe\Util::convertToStripeObject($response, $apiKey);
 	}
 }

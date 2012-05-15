@@ -2,4 +2,4 @@
 
 namespace Stripe;
 
-class ApiConnectionError extends Stripe_Error { }
+class ApiConnectionError extends \Stripe\Error { }

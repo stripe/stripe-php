@@ -24,9 +24,9 @@ class Transfer extends \Stripe\ApiResource
 
 	public function transactions($params=null)
 	{
-		$requestor = new Stripe_ApiRequestor($this->_apiKey);
+		$requestor = new \Stripe\ApiRequestor($this->_apiKey);
 		$url = $this->instanceUrl() . '/transactions';
 		list($response, $apiKey) = $requestor->request('get', $url, $params);
-		return Stripe_Util::convertToStripeObject($response, $apiKey);
+		return \Stripe\Util::convertToStripeObject($response, $apiKey);
 	}
 }

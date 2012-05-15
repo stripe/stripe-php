@@ -22,7 +22,7 @@ abstract class ApiResource extends \Stripe\Object
 
 	public static function classUrl($class)
 	{
-		// Useful for namespaces: Foo\Stripe_Charge
+		// Useful for namespaces: Foo\Stripe\Charge
 		if ($postfix = strrchr($class, '\\'))
 			$class = substr($postfix, 1);
 		if (substr($class, 0, strlen('Stripe')) == 'Stripe')
