@@ -13,10 +13,18 @@ To get started, use a PSR-0 compliant autoloader to load the library. You can us
 
 Simple usage looks like:
 
+    <?php
+    
     /* Stripe::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249'); //if you included the namespace, like above */
     \Stripe\Stripe::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
+    
+    //An array to represent a credit card
     $myCard = array('number' => '4242424242424242', 'exp_month' => 5, 'exp_year' => 2015);
+    
+    //Charge the card
     $charge = \Stripe\Charge::create(array('card' => $myCard, 'amount' => 2000, 'currency' => 'usd'));
+    
+    //See the result!
     echo $charge;
 
 = Documentation
