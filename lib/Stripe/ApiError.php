@@ -1,5 +1,5 @@
 <?php
 
-class Stripe_ApiError extends Stripe_Error
-{
-}
+namespace Stripe;
+
+class ApiError extends \Stripe\Error { }
