@@ -36,7 +36,7 @@ abstract class Stripe_ApiResource extends Stripe_Object
     $id = $this['id'];
     $class = get_class($this);
     if (!$id) {
-      throw new Stripe_InvalidRequestError("Could not determine which URL to request: $class instance has invalid ID: $id");
+      throw new Stripe_InvalidRequestError("Could not determine which URL to request: $class instance has invalid ID: $id", null);
     }
     $id = Stripe_ApiRequestor::utf8($id);
     $base = self::classUrl($class);
