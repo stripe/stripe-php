@@ -1,3 +1,10 @@
+=== 1.7.1 2012-05-24
+
+* Add missing argument to Stripe_InvalidRequestError constructor in
+  Stripe_ApiResource::instanceUrl. Fixes a warning when
+  Stripe_ApiResource::instanceUrl is called on a resouce with no ID
+  (github issue #12)
+
 === 1.7.0 2012-05-17
 
 * Support Composer and Packagist (github issue #9)
