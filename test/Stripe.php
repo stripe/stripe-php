@@ -16,6 +16,8 @@ if (!$ok) {
   echo "MISSING DEPENDENCY: The Stripe API test cases depend on SimpleTest. ".
        "Download it at <http://www.simpletest.org/>, and either install it ".
        "in your PHP include_path or put it in the test/ directory.\n";
+  echo "If you're trying to use the Stripe PHP bindings you'll probably want ".
+       "to require('lib/Stripe.php'); instead of this file\n";
   exit(1);
 }
 
