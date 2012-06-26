@@ -1,3 +1,8 @@
+=== 1.7.2 2012-06-26
+
+* Make clearer that you should be including lib/Stripe.php, not
+  test/Stripe.php (github issue #14)
+
 === 1.7.1 2012-05-24
 
 * Add missing argument to Stripe_InvalidRequestError constructor in
