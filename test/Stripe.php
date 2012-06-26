@@ -1,5 +1,9 @@
 <?php
 
+echo "Running the Stripe PHP bindings test suite.\n".
+     "If you're trying to use the Stripe PHP bindings you'll probably want ".
+     "to require('lib/Stripe.php'); instead of this file\n";
+
 function authorizeFromEnv()
 {
   $apiKey = getenv('STRIPE_API_KEY');
