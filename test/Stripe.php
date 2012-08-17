@@ -30,6 +30,7 @@ require_once(dirname(__FILE__) . '/Stripe/TestCase.php');
 require_once(dirname(__FILE__) . '/Stripe/ApiRequestorTest.php');
 require_once(dirname(__FILE__) . '/Stripe/AuthenticationErrorTest.php');
 require_once(dirname(__FILE__) . '/Stripe/CardErrorTest.php');
+require_once(dirname(__FILE__) . '/Stripe/AccountTest.php');
 require_once(dirname(__FILE__) . '/Stripe/ChargeTest.php');
 require_once(dirname(__FILE__) . '/Stripe/CustomerTest.php');
 require_once(dirname(__FILE__) . '/Stripe/DiscountTest.php');

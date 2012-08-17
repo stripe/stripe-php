@@ -1,3 +1,7 @@
+=== 1.7.3 2012-08-15
+
+* Add new Account resource
+
 === 1.7.2 2012-06-26
 
 * Make clearer that you should be including lib/Stripe.php, not
