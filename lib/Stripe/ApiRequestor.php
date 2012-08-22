@@ -25,7 +25,7 @@ class Stripe_ApiRequestor
 
   private static function _encodeObjects($d)
   {
-    if ($d instanceof Stripe_ApiRequestor) {
+    if ($d instanceof Stripe_ApiResource) {
       return $d->id;
     } else if ($d === true) {
       return 'true';

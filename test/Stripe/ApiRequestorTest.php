@@ -12,4 +12,17 @@ class Stripe_ApiRequestorTest extends UnitTestCase
     $enc = Stripe_APIRequestor::encode($a);
     $this->assertEqual($enc, 'that%5Byour%5D=example');
   }
+
+  public function testEncodeObjects()
+  {
+    // We have to do some work here because this is normally
+    // private. This is just for testing!
+    $reflector = new ReflectionClass('Stripe_APIRequestor');
+    $method = $reflector->getMethod('_encodeObjects');
+    $method->setAccessible(true);
+
+    $a = array('customer' => new Stripe_Customer('abcd'));
+    $enc = $method->invoke(null, $a);
+    $this->assertEqual($enc, array('customer' => 'abcd'));
+  }
 }
