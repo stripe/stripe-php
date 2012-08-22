@@ -16,13 +16,16 @@ class Stripe_ApiRequestorTest extends UnitTestCase
   public function testEncodeObjects()
   {
     // We have to do some work here because this is normally
-    // private. This is just for testing!
-    $reflector = new ReflectionClass('Stripe_APIRequestor');
-    $method = $reflector->getMethod('_encodeObjects');
-    $method->setAccessible(true);
+    // private. This is just for testing! Also it only works on PHP >=
+    // 5.3
+    if (version_compare(PHP_VERSION, '5.3.2', '>=')) {
+      $reflector = new ReflectionClass('Stripe_APIRequestor');
+      $method = $reflector->getMethod('_encodeObjects');
+      $method->setAccessible(true);
 
-    $a = array('customer' => new Stripe_Customer('abcd'));
-    $enc = $method->invoke(null, $a);
-    $this->assertEqual($enc, array('customer' => 'abcd'));
+      $a = array('customer' => new Stripe_Customer('abcd'));
+      $enc = $method->invoke(null, $a);
+      $this->assertEqual($enc, array('customer' => 'abcd'));
+    }
   }
 }
