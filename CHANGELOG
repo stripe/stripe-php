@@ -1,3 +1,8 @@
+=== 1.7.4 2012-08-21
+
+* Bugfix so that Stripe objects (e.g. Customer, Charge objects) used
+  in API calls are transparently converted to their object IDs
+
 === 1.7.3 2012-08-15
 
 * Add new Account resource
