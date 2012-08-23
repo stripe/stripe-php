@@ -11,6 +11,6 @@ class Stripe_Account extends Stripe_SingletonApiResource
   public static function retrieve($apiKey=null)
   {
     $class = get_class();
-    return self::_scopedRetrieve($class, $apiKey);
+    return self::_scopedSingletonRetrieve($class, $apiKey);
   }
 }
