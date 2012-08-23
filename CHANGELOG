@@ -1,3 +1,8 @@
+=== 1.7.5 2012-08-23
+
+* Change internal function names so that Stripe_SingletonApiRequst is
+  E_STRICT-clean (github issue #16)
+
 === 1.7.4 2012-08-21
 
 * Bugfix so that Stripe objects (e.g. Customer, Charge objects) used
