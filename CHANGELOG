@@ -1,3 +1,7 @@
+=== 1.7.6 2012-08-31
+
+* Add update and pay methods to Invoice resource
+
 === 1.7.5 2012-08-23
 
 * Change internal function names so that Stripe_SingletonApiRequst is
