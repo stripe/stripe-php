@@ -27,4 +27,19 @@ class Stripe_Invoice extends Stripe_ApiResource
     list($response, $apiKey) = $requestor->request('get', $url, $params);
     return Stripe_Util::convertToStripeObject($response, $apiKey);
   }
+
+  public function save()
+  {
+    $class = get_class();
+    return self::_scopedSave($class);
+  }
+
+  public function pay()
+  {
+    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $url = $this->instanceUrl() . '/pay';
+    list($response, $apiKey) = $requestor->request('post', $url);
+    $this->refreshFrom($response, $apiKey);
+    return $this;
+  }
 }
