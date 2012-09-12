@@ -18,3 +18,13 @@ Simple usage looks like:
 = Documentation
 
 Please see https://stripe.com/api for up-to-date documentation.
+
+= Tests
+
+In order to run tests you have to install SimpleTest (http://packagist.org/packages/vierbergenlars/simpletest) via Composer (http://getcomposer.org/) (recommended way):
+
+    composer.phar update --dev
+
+Run test suite:
+
+    php ./test/Stripe.php
