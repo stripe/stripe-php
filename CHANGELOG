@@ -1,3 +1,8 @@
+=== 1.7.7 2012-09-14
+
+* Get all of the various version numbers in the repo in sync (no other
+  changes)
+
 === 1.7.6 2012-08-31
 
 * Add update and pay methods to Invoice resource
