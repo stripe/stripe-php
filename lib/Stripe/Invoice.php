@@ -8,6 +8,12 @@ class Stripe_Invoice extends Stripe_ApiResource
     return self::scopedConstructFrom($class, $values, $apiKey);
   }
 
+  public static function create($params=null, $apiKey=null)
+  {
+    $class = get_class();
+    return self::_scopedCreate($class, $params, $apiKey);
+  }
+
   public static function retrieve($id, $apiKey=null)
   {
     $class = get_class();
