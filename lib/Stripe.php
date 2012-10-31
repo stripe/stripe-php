@@ -14,7 +14,7 @@ if (!function_exists('json_decode')) {
 abstract class Stripe
 {
   public static $apiKey;
-  public static $apiBase = 'https://api.stripe.com/v1';
+  public static $apiBase = 'https://api.stripe.com';
   public static $verifySslCerts = true;
   const VERSION = '1.7.8';
 
@@ -55,6 +55,7 @@ require(dirname(__FILE__) . '/Stripe/Object.php');
 require(dirname(__FILE__) . '/Stripe/ApiRequestor.php');
 require(dirname(__FILE__) . '/Stripe/ApiResource.php');
 require(dirname(__FILE__) . '/Stripe/SingletonApiResource.php');
+require(dirname(__FILE__) . '/Stripe/List.php');
 
 // Stripe API Resources
 require(dirname(__FILE__) . '/Stripe/Account.php');

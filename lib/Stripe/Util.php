@@ -39,6 +39,7 @@ abstract class Stripe_Util
   {
     $types = array('charge' => 'Stripe_Charge',
 		   'customer' => 'Stripe_Customer',
+       'list' => 'Stripe_List',
 		   'invoice' => 'Stripe_Invoice',
 		   'invoiceitem' => 'Stripe_InvoiceItem', 'event' => 'Stripe_Event',
 		   'transfer' => 'Stripe_Transfer');

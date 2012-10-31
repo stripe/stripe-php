@@ -19,12 +19,4 @@ class Stripe_Transfer extends Stripe_ApiResource
     $class = get_class();
     return self::_scopedAll($class, $params, $apiKey);
   }
-
-  public function transactions($params=null)
-  {
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
-    $url = $this->instanceUrl() . '/transactions';
-    list($response, $apiKey) = $requestor->request('get', $url, $params);
-    return Stripe_Util::convertToStripeObject($response, $apiKey);
-  }
 }

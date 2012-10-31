@@ -4,9 +4,9 @@ class Stripe_ChargeTest extends UnitTestCase
 {
   public function testUrls()
   {
-    $this->assertEqual(Stripe_Charge::classUrl('Stripe_Charge'), '/charges');
+    $this->assertEqual(Stripe_Charge::classUrl('Stripe_Charge'), '/v1/charges');
     $charge = new Stripe_Charge('abcd/efgh');
-    $this->assertEqual($charge->instanceUrl(), '/charges/abcd%2Fefgh');
+    $this->assertEqual($charge->instanceUrl(), '/v1/charges/abcd%2Fefgh');
   }
 
   public function testCreate()
