@@ -17,6 +17,13 @@ class Stripe_Invoice extends Stripe_ApiResource
   public static function retrieve($id, $apiKey=null)
   {
     $class = get_class();
+    if (is_array($id)) {
+      $result = array();
+      foreach ($id as $line) {
+        $result[$line] = self::_scopedRetrieve($class, $line, $apiKey);
+      }
+      return $result;
+    }
     return self::_scopedRetrieve($class, $id, $apiKey);
   }
 
