@@ -43,4 +43,13 @@ class Stripe_Charge extends Stripe_ApiResource
     $this->refreshFrom($response, $apiKey);
     return $this;
   }
+
+  public function updateDispute($params=null)
+  {
+    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $url = $this->instanceUrl() . '/dispute';
+    list($response, $apiKey) = $requestor->request('post', $url, $params);
+    $this->refreshFrom(array('dispute' => $response), $apiKey, true);
+    return $this->dispute;
+  }
 }
