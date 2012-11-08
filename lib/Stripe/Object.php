@@ -34,7 +34,7 @@ class Stripe_Object implements ArrayAccess
   }
   public function __isset($k)
   {
-    return isset($this->_values[$k]);
+    return array_key_exists($k, $this->_values);
   }
   public function __unset($k)
   {
@@ -44,7 +44,7 @@ class Stripe_Object implements ArrayAccess
   }
   public function __get($k)
   {
-    if (isset($this->_values[$k])) {
+    if (array_key_exists($k, $this->_values)) {
       return $this->_values[$k];
     } else if ($this->_transientValues->includes($k)) {
       $class = get_class($this);
@@ -63,17 +63,19 @@ class Stripe_Object implements ArrayAccess
   {
     $this->$k = $v;
   }
+  
   public function offsetExists($k)
   {
-    return isset($this->$k);
+    return array_key_exists($k, $this->_values);
   }
+
   public function offsetUnset($k)
   {
     unset($this->$k);
   }
   public function offsetGet($k)
   {
-    return isset($this->_values[$k]) ? $this->_values[$k] : null;
+    return array_key_exists($k, $this->_values) ? $this->_values[$k] : null;
   }
 
   // This unfortunately needs to be public to be used in Util.php
