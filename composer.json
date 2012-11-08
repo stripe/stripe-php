@@ -22,8 +22,6 @@
     "vierbergenlars/simpletest": "*"
   },
   "autoload": {
-    "psr-0": {
-      "Stripe": "lib/"
-    }
+    "classmap": ["lib/Stripe/"]
   }
 }
