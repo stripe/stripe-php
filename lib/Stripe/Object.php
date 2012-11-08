@@ -34,7 +34,7 @@ class Stripe_Object implements ArrayAccess
   }
   public function __isset($k)
   {
-    return array_key_exists($k, $this->_values);
+    return isset($this->_values[$k]);
   }
   public function __unset($k)
   {
