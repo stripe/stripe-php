@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_PlanTest extends UnitTestCase
+class Stripe_PlanTest extends StripeTestCase
 {
   public function testDeletion()
   {
