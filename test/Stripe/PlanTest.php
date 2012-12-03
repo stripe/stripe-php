@@ -6,9 +6,10 @@ class Stripe_PlanTest extends UnitTestCase
   {
     authorizeFromEnv();
     $p = Stripe_Plan::create(array('amount' => 2000,
-				       'currency' => 'usd',
-				       'name' => 'Plan',
-				       'id' => 'gold'));
+                                   'interval' => 'month',
+                                   'currency' => 'usd',
+                                   'name' => 'Plan',
+                                   'id' => 'gold-' . self::randomString()));
     $p->delete();
     $this->assertTrue($p->deleted);
   }
@@ -16,17 +17,19 @@ class Stripe_PlanTest extends UnitTestCase
   public function testSave()
   {
     authorizeFromEnv();
+    $planId = 'gold-' . self::randomString();
     $p = Stripe_Plan::create(array('amount' => 2000,
-				       'currency' => 'usd',
-				       'name' => 'Plan',
-				       'id' => 'gold'));
+                                   'interval' => 'month',
+                                   'currency' => 'usd',
+                                   'name' => 'Plan',
+                                   'id' => $planId));
     $p->name = 'A new plan name';
     $p->bogus = 'bogus';
     $p->save();
     $this->assertEqual($p->name, 'A new plan name');
     $this->assertNull($p['bogus']);
 
-    $p2 = Stripe_Plan::retrieve($p->'gold');
+    $p2 = Stripe_Plan::retrieve($planId);
     $this->assertEqual($c->name, $c2->name);
   }
 }

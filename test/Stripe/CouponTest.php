@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_CouponTest extends UnitTestCase
+class Stripe_CouponTest extends StripeTestCase
 {
   public function testCreate()
   {
