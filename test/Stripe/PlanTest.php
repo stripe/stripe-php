@@ -24,12 +24,10 @@ class Stripe_PlanTest extends StripeTestCase
                                    'name' => 'Plan',
                                    'id' => $planId));
     $p->name = 'A new plan name';
-    $p->bogus = 'bogus';
     $p->save();
     $this->assertEqual($p->name, 'A new plan name');
-    $this->assertNull($p['bogus']);
 
     $p2 = Stripe_Plan::retrieve($planId);
-    $this->assertEqual($c->name, $c2->name);
+    $this->assertEqual($p->name, $p2->name);
   }
 }
