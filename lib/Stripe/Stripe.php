@@ -5,7 +5,7 @@ abstract class Stripe
   public static $apiKey;
   public static $apiBase = 'https://api.stripe.com';
   public static $verifySslCerts = true;
-  const VERSION = '1.7.9';
+  const VERSION = '1.7.10';
 
   public static function getApiKey()
   {
