@@ -1,10 +1,14 @@
+=== 1.7.12 2013-01-15
+
+* Add support for setting a Stripe API version override
+
 === 1.7.11 2012-12-30
 
 * Version bump to cleanup constants and such (github issue #26)
 
 === 1.7.10 2012-11-08
 
-* Add support for updating charge disputes. 
+* Add support for updating charge disputes.
 * Fix bug preventing retrieval of null attributes
 
 === 1.7.9 2012-11-08
