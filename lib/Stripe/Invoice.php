@@ -27,4 +27,10 @@ class Stripe_Invoice extends Stripe_ApiResource
     list($response, $apiKey) = $requestor->request('get', $url, $params);
     return Stripe_Util::convertToStripeObject($response, $apiKey);
   }
+
+  public static function create($params=null, $apiKey=null)
+  {
+      $class = get_class();
+      return self::_scopedCreate($class, $params, $apiKey);
+  }
 }
