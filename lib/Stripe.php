@@ -4,10 +4,10 @@
 
 // This snippet (and some of the curl code) due to the Facebook SDK.
 if (!function_exists('curl_init')) {
-  throw new Exception('Stripe needs the CURL PHP extension.');
+	throw new Exception('Stripe needs the CURL PHP extension.');
 }
 if (!function_exists('json_decode')) {
-  throw new Exception('Stripe needs the JSON PHP extension.');
+	throw new Exception('Stripe needs the JSON PHP extension.');
 }
 
 // Stripe singleton
