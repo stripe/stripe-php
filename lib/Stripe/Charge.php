@@ -25,6 +25,12 @@ class Stripe_Charge extends Stripe_ApiResource
     $class = get_class();
     return self::_scopedCreate($class, $params, $apiKey);
   }
+    
+  public function save()
+  {
+    $class = get_class();
+    return self::_scopedSave($class);
+  }
 
   public function refund($params=null)
   {
