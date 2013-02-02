@@ -34,16 +34,33 @@ class Stripe_ApiRequestor
     } else if (is_array($d)) {
       $res = array();
       foreach ($d as $k => $v)
-	$res[$k] = self::_encodeObjects($v);
+      	$res[$k] = self::_encodeObjects($v);
       return $res;
     } else {
       return $d;
     }
   }
 
-  public static function encode($d)
+  public static function encode($arr, $prefix=null, $nested=false)
   {
-    return http_build_query($d, null, '&');
+    if (!is_array($arr))
+      return false;
+
+    foreach ($arr as $k => $v) {
+      if ($nested)
+        $k = $prefix."[]";
+      elseif (is_int($k))
+        $k = $prefix.$k;
+
+      if (is_array($v) || is_object($v)) {
+        $r[] = self::encode($v, $k, true);
+        continue;
+      }
+
+      $r[]=urlencode($k)."=" .urlencode($v);
+    }
+
+    return implode("&", $r);
   }
 
   public function request($meth, $url, $params=null)
