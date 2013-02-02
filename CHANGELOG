@@ -1,3 +1,9 @@
+=== 1.7.13 2013-02-01
+
+* Add support for passing options when retrieving Stripe objects
+  e.g., Stripe_Charge::retrieve(array("id"=>"foo", "expand" => array("customer")))
+  Stripe_Charge::retrieve("foo") will continue to work
+
 === 1.7.12 2013-01-15
 
 * Add support for setting a Stripe API version override

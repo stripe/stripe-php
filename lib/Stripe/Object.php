@@ -13,6 +13,7 @@ class Stripe_Object implements ArrayAccess
   protected $_values;
   protected $_unsavedValues;
   protected $_transientValues;
+  protected $_retrieveOptions;
 
   public function __construct($id=null, $apiKey=null)
   {
@@ -20,6 +21,16 @@ class Stripe_Object implements ArrayAccess
     $this->_values = array();
     $this->_unsavedValues = new Stripe_Util_Set();
     $this->_transientValues = new Stripe_Util_Set();
+
+    $this->_retrieveOptions = array();
+    if (is_array($id)) {
+      foreach($id as $key => $value) {
+        if ($key != 'id')
+          $this->_retrieveOptions[$key] = $value;
+      }
+      $id = $id['id'];
+    }
+
     if ($id)
       $this->id = $id;
   }
@@ -63,7 +74,7 @@ class Stripe_Object implements ArrayAccess
   {
     $this->$k = $v;
   }
-  
+
   public function offsetExists($k)
   {
     return array_key_exists($k, $this->_values);
