@@ -14,7 +14,7 @@ abstract class Stripe_ApiResource extends Stripe_Object
     $requestor = new Stripe_ApiRequestor($this->_apiKey);
     $url = $this->instanceUrl();
 
-    list($response, $apiKey) = $requestor->request('get', $url);
+    list($response, $apiKey) = $requestor->request('get', $url, $this->_retrieveOptions);
     $this->refreshFrom($response, $apiKey);
     return $this;
    }
