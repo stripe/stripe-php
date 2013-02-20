@@ -21,6 +21,21 @@ class Stripe_ApiRequestorTest extends UnitTestCase
     $this->assertEqual($enc, 'my=value&that%5Byour%5D%5B%5D=cheese&that%5Byour%5D%5B%5D=whiz&bar=1');
   }
 
+  public function testUtf8()
+  {
+    // UTF-8 string
+    $x = "\xc3\xa9";
+    $this->assertEqual(Stripe_ApiRequestor::utf8($x), $x);
+
+    // Latin-1 string
+    $x = "\xe9";
+    $this->assertEqual(Stripe_ApiRequestor::utf8($x), "\xc3\xa9");
+
+    // Not a string
+    $x = TRUE;
+    $this->assertEqual(Stripe_ApiRequestor::utf8($x), $x);
+  }
+
   public function testEncodeObjects()
   {
     // We have to do some work here because this is normally
@@ -34,6 +49,16 @@ class Stripe_ApiRequestorTest extends UnitTestCase
       $a = array('customer' => new Stripe_Customer('abcd'));
       $enc = $method->invoke(null, $a);
       $this->assertEqual($enc, array('customer' => 'abcd'));
+
+      // Preserves UTF-8
+      $v = array('customer' => "☃");
+      $enc = $method->invoke(null, $v);
+      $this->assertEqual($enc, $v);
+
+      // Encodes latin-1 -> UTF-8
+      $v = array('customer' => "\xe9");
+      $enc = $method->invoke(null, $v);
+      $this->assertEqual($enc, array('customer' => "\xc3\xa9"));
     }
   }
 }
