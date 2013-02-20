@@ -26,7 +26,7 @@ class Stripe_ApiRequestor
   private static function _encodeObjects($d)
   {
     if ($d instanceof Stripe_ApiResource) {
-      return $d->id;
+      return self::utf8($d->id);
     } else if ($d === true) {
       return 'true';
     } else if ($d === false) {
@@ -37,7 +37,7 @@ class Stripe_ApiRequestor
       	$res[$k] = self::_encodeObjects($v);
       return $res;
     } else {
-      return $d;
+      return self::utf8($d);
     }
   }
 

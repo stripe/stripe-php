@@ -49,6 +49,16 @@ class Stripe_ApiRequestorTest extends UnitTestCase
       $a = array('customer' => new Stripe_Customer('abcd'));
       $enc = $method->invoke(null, $a);
       $this->assertEqual($enc, array('customer' => 'abcd'));
+
+      // Preserves UTF-8
+      $v = array('customer' => "☃");
+      $enc = $method->invoke(null, $v);
+      $this->assertEqual($enc, $v);
+
+      // Encodes latin-1 -> UTF-8
+      $v = array('customer' => "\xe9");
+      $enc = $method->invoke(null, $v);
+      $this->assertEqual($enc, array('customer' => "\xc3\xa9"));
     }
   }
 }
