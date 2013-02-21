@@ -6,7 +6,7 @@ class Stripe_Object implements ArrayAccess
 
   public static function init()
   {
-    self::$_permanentAttributes = new Stripe_Util_Set(array('_apiKey'));
+    self::$_permanentAttributes = new Stripe_Util_Set(array('_apiKey', 'id'));
   }
 
   protected $_apiKey;
