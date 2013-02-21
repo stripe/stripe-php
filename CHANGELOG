@@ -1,3 +1,7 @@
+=== 1.7.15 2013-02-21
+
+* Add 'id' to the list of permanent object attributes
+
 === 1.7.14 2013-02-20
 
 * Don't re-encode strings that are already encoded in UTF-8. If you
