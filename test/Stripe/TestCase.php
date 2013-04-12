@@ -25,6 +25,26 @@ abstract class StripeTestCase extends UnitTestCase
   }
 
   /**
+   * Create a valid test recipient
+   */
+  protected static function createTestRecipient(array $attributes = array())
+  {
+    authorizeFromEnv();
+
+    return Stripe_Recipient::create(
+      $attributes + array(
+        'name' => 'PHP Test',
+        'type' => 'individual',
+        'tax_id' => '000000000',
+        'bank_account' => array(
+          'country'    => 'US',
+          'routing_number' => '110000000',
+          'account_number'  => '000123456789'
+        ),
+      ));
+  }
+
+  /**
    * Generate a random 8-character string. Useful for ensuring
    * multiple test suite runs don't conflict
    */
