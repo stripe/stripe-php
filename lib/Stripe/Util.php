@@ -37,14 +37,17 @@ abstract class Stripe_Util
 
   public static function convertToStripeObject($resp, $apiKey)
   {
-    $types = array('charge' => 'Stripe_Charge',
-		   'customer' => 'Stripe_Customer',
-                   'list' => 'Stripe_List',
-		   'invoice' => 'Stripe_Invoice',
-		   'invoiceitem' => 'Stripe_InvoiceItem',
-                   'event' => 'Stripe_Event',
-		   'transfer' => 'Stripe_Transfer',
-                   'plan' => 'Stripe_Plan');
+    $types = array(
+      'charge' => 'Stripe_Charge',
+		  'customer' => 'Stripe_Customer',
+      'list' => 'Stripe_List',
+		  'invoice' => 'Stripe_Invoice',
+		  'invoiceitem' => 'Stripe_InvoiceItem',
+      'event' => 'Stripe_Event',
+		  'transfer' => 'Stripe_Transfer',
+      'plan' => 'Stripe_Plan',
+      'recipient' => 'Stripe_Recipient'
+    );
     if (self::isList($resp)) {
       $mapped = array();
       foreach ($resp as $i)
