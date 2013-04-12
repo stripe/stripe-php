@@ -1,3 +1,8 @@
+=== 1.8.0 2013-04-11
+
+* Allow Transfers to be creatable
+* Add new Recipient resource
+
 === 1.7.15 2013-02-21
 
 * Add 'id' to the list of permanent object attributes
