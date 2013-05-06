@@ -16,7 +16,9 @@
   ],
   "require": {
     "php": ">=5.2",
-    "ext-curl": "*"
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*"
   },
   "require-dev": {
     "vierbergenlars/simpletest": "*"
