@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_UtilTest extends UnitTestCase
+class Stripe_UtilTest extends StripeTestCase
 {
   public function testIsList()
   {
@@ -18,5 +18,11 @@ class Stripe_UtilTest extends UnitTestCase
     $derived['php-arrays'] = 'reference-semantics';
 
     $this->assertEqual('value-semantics', $original['php-arrays']);
+  }
+
+  public function testConvertStripeObjectToArrayIncludesId()
+  {
+    $customer = self::createTestCustomer();
+    $this->assertTrue(array_key_exists("id", $customer->__toArray(true)));
   }
 }

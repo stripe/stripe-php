@@ -19,7 +19,7 @@ abstract class Stripe_Util
     $results = array();
     foreach ($values as $k => $v) {
       // FIXME: this is an encapsulation violation
-      if (Stripe_Object::$_permanentAttributes->includes($k)) {
+      if ($k[0] == '_') {
         continue;
       }
       if ($v instanceof Stripe_Object) {
