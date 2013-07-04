@@ -17,10 +17,13 @@ class Stripe_ApiRequestor
 
   public static function utf8($value)
   {
-    if (is_string($value) && mb_detect_encoding($value, "UTF-8", TRUE) != "UTF-8")
+    if (is_string($value)
+        && mb_detect_encoding($value, "UTF-8", TRUE) != "UTF-8"
+    ) {
       return utf8_encode($value);
-    else
+    } else {
       return $value;
+    }
   }
 
   private static function _encodeObjects($d)
@@ -77,24 +80,29 @@ class Stripe_ApiRequestor
 
   public function handleApiError($rbody, $rcode, $resp)
   {
-    if (!is_array($resp) || !isset($resp['error']))
-      throw new Stripe_ApiError("Invalid response object from API: $rbody (HTTP response code was $rcode)", $rcode, $rbody, $resp);
+    if (!is_array($resp) || !isset($resp['error'])) {
+      $msg = "Invalid response object from API: $rbody "
+           ."(HTTP response code was $rcode)";
+      throw new Stripe_ApiError($msg, $rcode, $rbody, $resp);
+    }
+
     $error = $resp['error'];
+    $msg = isset($error['message']) ? $error['message'] : null;
+    $param = isset($error['param']) ? $error['param'] : null;
+    $code = isset($error['code']) ? $error['code'] : null;
+
     switch ($rcode) {
     case 400:
     case 404:
-      throw new Stripe_InvalidRequestError(isset($error['message']) ? $error['message'] : null,
-                                           isset($error['param']) ? $error['param'] : null,
-                                           $rcode, $rbody, $resp);
+        throw new Stripe_InvalidRequestError(
+            $msg, $param, $rcode, $rbody, $resp
+        );
     case 401:
-      throw new Stripe_AuthenticationError(isset($error['message']) ? $error['message'] : null, $rcode, $rbody, $resp);
+        throw new Stripe_AuthenticationError($msg, $rcode, $rbody, $resp);
     case 402:
-      throw new Stripe_CardError(isset($error['message']) ? $error['message'] : null,
-                                 isset($error['param']) ? $error['param'] : null,
-                                 isset($error['code']) ? $error['code'] : null,
-                                 $rcode, $rbody, $resp);
+        throw new Stripe_CardError($msg, $param, $code, $rcode, $rbody, $resp);
     default:
-      throw new Stripe_ApiError(isset($error['message']) ? $error['message'] : null, $rcode, $rbody, $resp);
+        throw new Stripe_ApiError($msg, $rcode, $rbody, $resp);
     }
   }
 
@@ -103,8 +111,14 @@ class Stripe_ApiRequestor
     $myApiKey = $this->_apiKey;
     if (!$myApiKey)
       $myApiKey = Stripe::$apiKey;
-    if (!$myApiKey)
-      throw new Stripe_AuthenticationError('No API key provided.  (HINT: set your API key using "Stripe::setApiKey(<API-KEY>)".  You can generate API keys from the Stripe web interface.  See https://stripe.com/api for details, or email support@stripe.com if you have any questions.');
+
+    if (!$myApiKey) {
+      $msg = 'No API key provided.  (HINT: set your API key using '
+           . '"Stripe::setApiKey(<API-KEY>)".  You can generate API keys from '
+           . 'the Stripe web interface.  See https://stripe.com/api for '
+           . 'details, or email support@stripe.com if you have any questions.';
+      throw new Stripe_AuthenticationError($msg);
+    }
 
     $absUrl = $this->apiUrl($url);
     $params = self::_encodeObjects($params);
@@ -120,7 +134,12 @@ class Stripe_ApiRequestor
                      'Authorization: Bearer ' . $myApiKey);
     if (Stripe::$apiVersion)
       $headers[] = 'Stripe-Version: ' . Stripe::$apiVersion;
-    list($rbody, $rcode) = $this->_curlRequest($meth, $absUrl, $headers, $params);
+    list($rbody, $rcode) = $this->_curlRequest(
+      $meth,
+      $absUrl,
+      $headers,
+      $params
+    );
     return array($rbody, $rcode, $myApiKey);
   }
 
@@ -129,7 +148,9 @@ class Stripe_ApiRequestor
     try {
       $resp = json_decode($rbody, true);
     } catch (Exception $e) {
-      throw new Stripe_ApiError("Invalid response body from API: $rbody (HTTP response code was $rcode)", $rcode, $rbody);
+      $msg = "Invalid response body from API: $rbody "
+           . "(HTTP response code was $rcode)";
+      throw new Stripe_ApiError($msg, $rcode, $rbody);
     }
 
     if ($rcode < 200 || $rcode >= 300) {
@@ -178,7 +199,7 @@ class Stripe_ApiRequestor
     $errno = curl_errno($curl);
     if ($errno == CURLE_SSL_CACERT ||
         $errno == CURLE_SSL_PEER_CERTIFICATE ||
-        $errno == 77 // CURLE_SSL_CACERT_BADFILE (constant not defined in PHP though)
+        $errno == 77 // CURLE_SSL_CACERT_BADFILE (constant not defined in PHP)
         ) {
       array_push(
           $headers,
@@ -222,8 +243,10 @@ class Stripe_ApiRequestor
            . "If this problem persists,";
         break;
     default:
-      $msg = "Unexpected error communicating with Stripe.  If this problem persists, let us know at support@stripe.com.";
+      $msg = "Unexpected error communicating with Stripe.  "
+           . "If this problem persists,";
     }
+    $msg .= " let us know at support@stripe.com.";
 
     $msg .= "\n\n(Network error [errno $errno]: $message)";
     throw new Stripe_ApiConnectionError($msg);

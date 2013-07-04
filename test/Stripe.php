@@ -12,9 +12,10 @@ function authorizeFromEnv()
   Stripe::setApiKey($apiKey);
 }
 
-$ok = @include_once(dirname(__FILE__).'/simpletest/autorun.php');
+$testURI = '/simpletest/autorun.php';
+$ok = @include_once(dirname(__FILE__).$testURI);
 if (!$ok) {
-  $ok = @include_once(dirname(__FILE__).'/../vendor/simpletest/simpletest/autorun.php');
+  $ok = @include_once(dirname(__FILE__).'/../vendor/simpletest'.$testURI);
 }
 if (!$ok) {
   echo "MISSING DEPENDENCY: The Stripe API test cases depend on SimpleTest. ".

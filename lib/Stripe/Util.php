@@ -7,7 +7,7 @@ abstract class Stripe_Util
     if (!is_array($array))
       return false;
 
-    // TODO: this isn't actually correct in general, but it's correct given Stripe's responses
+    // TODO: generally incorrect, but it's correct given Stripe's response
     foreach (array_keys($array) as $k) {
       if (!is_numeric($k))
         return false;
@@ -57,10 +57,14 @@ abstract class Stripe_Util
         array_push($mapped, self::convertToStripeObject($i, $apiKey));
       return $mapped;
     } else if (is_array($resp)) {
-      if (isset($resp['object']) && is_string($resp['object']) && isset($types[$resp['object']]))
+      if (isset($resp['object']) 
+          && is_string($resp['object'])
+          && isset($types[$resp['object']])
+      ) {
         $class = $types[$resp['object']];
-      else
+      } else {
         $class = 'Stripe_Object';
+      }
       return Stripe_Object::scopedConstructFrom($class, $resp, $apiKey);
     } else {
       return $resp;

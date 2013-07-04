@@ -12,15 +12,18 @@ class Stripe_ChargeTest extends UnitTestCase
   public function testCreate()
   {
     authorizeFromEnv();
+
+    $card = array(
+      'number' => '4242424242424242',
+      'exp_month' => 5,
+      'exp_year' => 2015
+    );
+
     $c = Stripe_Charge::create(
       array(
         'amount' => 100,
         'currency' => 'usd',
-        'card' => array(
-          'number' => '4242424242424242',
-          'exp_month' => 5,
-          'exp_year' => 2015
-        )
+        'card' => $card
       )
     );
     $this->assertTrue($c->paid);
@@ -30,15 +33,18 @@ class Stripe_ChargeTest extends UnitTestCase
   public function testRetrieve()
   {
     authorizeFromEnv();
+
+    $card = array(
+      'number' => '4242424242424242',
+      'exp_month' => 5,
+      'exp_year' => 2015
+    );
+
     $c = Stripe_Charge::create(
       array(
         'amount' => 100,
         'currency' => 'usd',
-        'card' => array(
-          'number' => '4242424242424242',
-          'exp_month' => 5,
-          'exp_year' => 2015
-        )
+        'card' => $card
       )
     );
     $d = Stripe_Charge::retrieve($c->id);

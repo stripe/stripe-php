@@ -14,7 +14,11 @@ abstract class Stripe_ApiResource extends Stripe_Object
     $requestor = new Stripe_ApiRequestor($this->_apiKey);
     $url = $this->instanceUrl();
 
-    list($response, $apiKey) = $requestor->request('get', $url, $this->_retrieveOptions);
+    list($response, $apiKey) = $requestor->request(
+      'get',
+      $url,
+      $this->_retrieveOptions
+    );
     $this->refreshFrom($response, $apiKey);
     return $this;
   }
@@ -43,7 +47,9 @@ abstract class Stripe_ApiResource extends Stripe_Object
     $id = $this['id'];
     $class = get_class($this);
     if (!$id) {
-      throw new Stripe_InvalidRequestError("Could not determine which URL to request: $class instance has invalid ID: $id", null);
+      $message = "Could not determine which URL to request: "
+               . "$class instance has invalid ID: $id";
+      throw new Stripe_InvalidRequestError($message, null);
     }
     $id = Stripe_ApiRequestor::utf8($id);
     $base = $this->_lsb('classUrl', $class);
@@ -53,10 +59,22 @@ abstract class Stripe_ApiResource extends Stripe_Object
 
   private static function _validateCall($method, $params=null, $apiKey=null)
   {
-    if ($params && !is_array($params))
-      throw new Stripe_Error("You must pass an array as the first argument to Stripe API method calls.  (HINT: an example call to create a charge would be: \"StripeCharge::create(array('amount' => 100, 'currency' => 'usd', 'card' => array('number' => 4242424242424242, 'exp_month' => 5, 'exp_year' => 2015)))\")");
-    if ($apiKey && !is_string($apiKey))
-      throw new Stripe_Error('The second argument to Stripe API method calls is an optional per-request apiKey, which must be a string.  (HINT: you can set a global apiKey by "Stripe::setApiKey(<apiKey>)")');
+    if ($params && !is_array($params)) {
+      $message = "You must pass an array as the first argument to Stripe API "
+               . "method calls.  (HINT: an example call to create a charge "
+               . "would be: \"StripeCharge::create(array('amount' => 100, "
+               . "'currency' => 'usd', 'card' => array('number' => "
+               . "4242424242424242, 'exp_month' => 5, 'exp_year' => 2015)))\")";
+      throw new Stripe_Error($message);
+    }
+
+    if ($apiKey && !is_string($apiKey)) {
+      $message = 'The second argument to Stripe API method calls is an '
+               . 'optional per-request apiKey, which must be a string.  '
+               . '(HINT: you can set a global apiKey by '
+               . '"Stripe::setApiKey(<apiKey>)")';
+      throw new Stripe_Error($message);
+    }
   }
 
   protected static function _scopedAll($class, $params=null, $apiKey=null)

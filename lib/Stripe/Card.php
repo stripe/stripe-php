@@ -14,7 +14,9 @@ class Stripe_Card extends Stripe_ApiResource
     $customer = $this['customer'];
     $class = get_class($this);
     if (!$id) {
-      throw new Stripe_InvalidRequestError("Could not determine which URL to request: $class instance has invalid ID: $id", null);
+      $msg = "Could not determine which URL to request: $class instance "
+           . "has invalid ID: $id";
+      throw new Stripe_InvalidRequestError($msg, null);
     }
     $id = Stripe_ApiRequestor::utf8($id);
     $customer = Stripe_ApiRequestor::utf8($customer);
@@ -37,3 +39,4 @@ class Stripe_Card extends Stripe_ApiResource
     return self::_scopedSave($class);
   }
 }
+
