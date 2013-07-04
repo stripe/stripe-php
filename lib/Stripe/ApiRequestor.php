@@ -18,8 +18,7 @@ class Stripe_ApiRequestor
   public static function utf8($value)
   {
     if (is_string($value)
-        && mb_detect_encoding($value, "UTF-8", TRUE) != "UTF-8"
-    ) {
+        && mb_detect_encoding($value, "UTF-8", TRUE) != "UTF-8") {
       return utf8_encode($value);
     } else {
       return $value;
@@ -173,7 +172,7 @@ class Stripe_ApiRequestor
     } else if ($meth == 'post') {
       $opts[CURLOPT_POST] = 1;
       $opts[CURLOPT_POSTFIELDS] = self::encode($params);
-    } else if ($meth == 'delete')  {
+    } else if ($meth == 'delete') {
       $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
       if (count($params) > 0) {
         $encoded = self::encode($params);
@@ -199,8 +198,12 @@ class Stripe_ApiRequestor
     $errno = curl_errno($curl);
     if ($errno == CURLE_SSL_CACERT ||
         $errno == CURLE_SSL_PEER_CERTIFICATE ||
+<<<<<<< HEAD
         $errno == 77 // CURLE_SSL_CACERT_BADFILE (constant not defined in PHP)
         ) {
+=======
+        $errno == CURLE_SSL_CACERT_BADFILE) {
+>>>>>>> 3a09cb1... Add { on same line as if
       array_push(
           $headers,
           'X-Stripe-Client-Info: {"ca":"using Stripe-supplied CA bundle"}'

@@ -25,11 +25,9 @@ abstract class Stripe_Util
       }
       if ($v instanceof Stripe_Object) {
         $results[$k] = $v->__toArray(true);
-      }
-      else if (is_array($v)) {
+      } else if (is_array($v)) {
         $results[$k] = self::convertStripeObjectToArray($v);
-      }
-      else {
+      } else {
         $results[$k] = $v;
       }
     }
@@ -59,8 +57,7 @@ abstract class Stripe_Util
     } else if (is_array($resp)) {
       if (isset($resp['object']) 
           && is_string($resp['object'])
-          && isset($types[$resp['object']])
-      ) {
+          && isset($types[$resp['object']])) {
         $class = $types[$resp['object']];
       } else {
         $class = 'Stripe_Object';

@@ -26,7 +26,7 @@ class Stripe_Object implements ArrayAccess
 
     $this->_retrieveOptions = array();
     if (is_array($id)) {
-      foreach($id as $key => $value) {
+      foreach ($id as $key => $value) {
         if ($key != 'id')
           $this->_retrieveOptions[$key] = $value;
       }
@@ -40,7 +40,7 @@ class Stripe_Object implements ArrayAccess
   // Standard accessor magic methods
   public function __set($k, $v)
   {
-    if ($v === ""){
+    if ($v === "") {
       throw new InvalidArgumentException(
         'You cannot set \''.$k.'\'to an empty string. '
         .'We interpret empty strings as NULL in requests. '
