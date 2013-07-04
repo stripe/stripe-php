@@ -35,7 +35,7 @@ class Stripe_PlanTest extends StripeTestCase
     $p->save();
     $this->assertEqual($p->name, 'A new plan name');
 
-    $p2 = Stripe_Plan::retrieve($planId);
-    $this->assertEqual($p->name, $p2->name);
+    $stripePlan = Stripe_Plan::retrieve($planId);
+    $this->assertEqual($p->name, $stripePlan->name);
   }
 }
