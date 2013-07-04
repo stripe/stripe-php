@@ -34,7 +34,7 @@ class Stripe_ApiRequestor
     } else if (is_array($d)) {
       $res = array();
       foreach ($d as $k => $v)
-      	$res[$k] = self::_encodeObjects($v);
+              $res[$k] = self::_encodeObjects($v);
       return $res;
     } else {
       return self::utf8($d);
@@ -111,12 +111,12 @@ class Stripe_ApiRequestor
     $langVersion = phpversion();
     $uname = php_uname();
     $ua = array('bindings_version' => Stripe::VERSION,
-		'lang' => 'php',
-		'lang_version' => $langVersion,
-		'publisher' => 'stripe',
-		'uname' => $uname);
+                'lang' => 'php',
+                'lang_version' => $langVersion,
+                'publisher' => 'stripe',
+                'uname' => $uname);
     $headers = array('X-Stripe-Client-User-Agent: ' . json_encode($ua),
-		     'User-Agent: Stripe/v1 PhpBindings/' . Stripe::VERSION,
+                     'User-Agent: Stripe/v1 PhpBindings/' . Stripe::VERSION,
                      'Authorization: Bearer ' . $myApiKey);
     if (Stripe::$apiVersion)
       $headers[] = 'Stripe-Version: ' . Stripe::$apiVersion;
@@ -146,8 +146,8 @@ class Stripe_ApiRequestor
     if ($meth == 'get') {
       $opts[CURLOPT_HTTPGET] = 1;
       if (count($params) > 0) {
-	$encoded = self::encode($params);
-	$absUrl = "$absUrl?$encoded";
+        $encoded = self::encode($params);
+        $absUrl = "$absUrl?$encoded";
       }
     } else if ($meth == 'post') {
       $opts[CURLOPT_POST] = 1;
@@ -155,8 +155,8 @@ class Stripe_ApiRequestor
     } else if ($meth == 'delete')  {
       $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
       if (count($params) > 0) {
-	$encoded = self::encode($params);
-	$absUrl = "$absUrl?$encoded";
+        $encoded = self::encode($params);
+        $absUrl = "$absUrl?$encoded";
       }
     } else {
       throw new Stripe_ApiError("Unrecognized method $meth");
@@ -177,10 +177,13 @@ class Stripe_ApiRequestor
 
     $errno = curl_errno($curl);
     if ($errno == CURLE_SSL_CACERT ||
-	$errno == CURLE_SSL_PEER_CERTIFICATE ||
-	$errno == 77 // CURLE_SSL_CACERT_BADFILE (constant not defined in PHP though)
-	) {
-      array_push($headers, 'X-Stripe-Client-Info: {"ca":"using Stripe-supplied CA bundle"}');
+        $errno == CURLE_SSL_PEER_CERTIFICATE ||
+        $errno == 77 // CURLE_SSL_CACERT_BADFILE (constant not defined in PHP though)
+        ) {
+      array_push(
+          $headers,
+          'X-Stripe-Client-Info: {"ca":"using Stripe-supplied CA bundle"}'
+      );
       curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
       curl_setopt($curl, CURLOPT_CAINFO,
                   dirname(__FILE__) . '/../data/ca-certificates.crt');
@@ -206,12 +209,18 @@ class Stripe_ApiRequestor
     case CURLE_COULDNT_CONNECT:
     case CURLE_COULDNT_RESOLVE_HOST:
     case CURLE_OPERATION_TIMEOUTED:
-      $msg = "Could not connect to Stripe ($apiBase).  Please check your internet connection and try again.  If this problem persists, you should check Stripe's service status at https://twitter.com/stripestatus, or let us know at support@stripe.com.";
-      break;
+      $msg = "Could not connect to Stripe ($apiBase).  Please check your "
+           . "internet connection and try again.  If this problem persists, "
+           . "you should check Stripe's service status at "
+           . "https://twitter.com/stripestatus, or";
+        break;
     case CURLE_SSL_CACERT:
     case CURLE_SSL_PEER_CERTIFICATE:
-      $msg = "Could not verify Stripe's SSL certificate.  Please make sure that your network is not intercepting certificates.  (Try going to $apiBase in your browser.)  If this problem persists, let us know at support@stripe.com.";
-      break;
+      $msg = "Could not verify Stripe's SSL certificate.  Please make sure "
+           . "that your network is not intercepting certificates.  "
+           . "(Try going to $apiBase in your browser.)  "
+           . "If this problem persists,";
+        break;
     default:
       $msg = "Unexpected error communicating with Stripe.  If this problem persists, let us know at support@stripe.com.";
     }
