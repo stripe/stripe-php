@@ -119,9 +119,10 @@ class Stripe_CustomerTest extends StripeTestCase
     self::retrieveOrCreatePlan($plan_id);
 
     $customer = self::createTestCustomer(
-      array(
-        'plan' => $plan_id,
-      ));
+        array(
+            'plan' => $plan_id,
+        )
+    );
 
     $customer->cancelSubscription(array('at_period_end' => true));
     $this->assertEqual($customer->subscription->status, 'active');

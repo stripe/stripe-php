@@ -134,10 +134,10 @@ class Stripe_ApiRequestor
     if (Stripe::$apiVersion)
       $headers[] = 'Stripe-Version: ' . Stripe::$apiVersion;
     list($rbody, $rcode) = $this->_curlRequest(
-      $meth,
-      $absUrl,
-      $headers,
-      $params
+        $meth,
+        $absUrl,
+        $headers,
+        $params
     );
     return array($rbody, $rcode, $myApiKey);
   }
@@ -208,9 +208,9 @@ class Stripe_ApiRequestor
           $headers,
           'X-Stripe-Client-Info: {"ca":"using Stripe-supplied CA bundle"}'
       );
+      $cert = dirname(__FILE__) . '/../data/ca-certificates.crt';
       curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-      curl_setopt($curl, CURLOPT_CAINFO,
-                  dirname(__FILE__) . '/../data/ca-certificates.crt');
+      curl_setopt($curl, CURLOPT_CAINFO, $cert);
       $rbody = curl_exec($curl);
     }
 
