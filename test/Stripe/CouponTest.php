@@ -15,7 +15,9 @@ class Stripe_CouponTest extends StripeTestCase
         )
     );
     $this->assertEqual($id, $c->id);
+    // @codingStandardsIgnoreStart
     $this->assertEqual(25, $c->percent_off);
+    // @codingStandardsIgnoreEnd
   }
 
 }

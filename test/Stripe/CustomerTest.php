@@ -115,12 +115,12 @@ class Stripe_CustomerTest extends StripeTestCase
 
   public function testCancelSubscription()
   {
-    $plan_id = 'gold-' . self::randomString();
-    self::retrieveOrCreatePlan($plan_id);
+    $planID = 'gold-' . self::randomString();
+    self::retrieveOrCreatePlan($planID);
 
     $customer = self::createTestCustomer(
         array(
-            'plan' => $plan_id,
+            'plan' => $planID,
         )
     );
 
