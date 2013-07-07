@@ -59,20 +59,20 @@ abstract class Stripe_ApiResource extends Stripe_Object
       throw new Stripe_Error('The second argument to Stripe API method calls is an optional per-request apiKey, which must be a string.  (HINT: you can set a global apiKey by "Stripe::setApiKey(<apiKey>)")');
   }
 
-  protected static function _scopedAll($class, $params=null, $apiKey=null)
+  protected static function _scopedAll($class, $params=null, $apiKey=null, $append=null)
   {
     self::_validateCall('all', $params, $apiKey);
     $requestor = new Stripe_ApiRequestor($apiKey);
-    $url = self::classUrl($class);
+    $url = self::classUrl($class) . $append;
     list($response, $apiKey) = $requestor->request('get', $url, $params);
     return Stripe_Util::convertToStripeObject($response, $apiKey);
   }
 
-  protected static function _scopedCreate($class, $params=null, $apiKey=null)
+  protected static function _scopedCreate($class, $params=null, $apiKey=null, $append=null)
   {
     self::_validateCall('create', $params, $apiKey);
     $requestor = new Stripe_ApiRequestor($apiKey);
-    $url = self::classUrl($class);
+    $url = self::classUrl($class) . $append;
     list($response, $apiKey) = $requestor->request('post', $url, $params);
     return Stripe_Util::convertToStripeObject($response, $apiKey);
   }
