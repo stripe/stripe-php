@@ -38,6 +38,7 @@ abstract class Stripe_Util
   public static function convertToStripeObject($resp, $apiKey)
   {
     $types = array(
+      'card' => 'Stripe_Card',
       'charge' => 'Stripe_Charge',
 		  'customer' => 'Stripe_Customer',
       'list' => 'Stripe_List',
