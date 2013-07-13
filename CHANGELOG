@@ -1,3 +1,7 @@
+=== 1.8.1 2013-07-12
+
+* Add support for multiple cards API (Stripe API version 2013-07-12: https://stripe.com/docs/upgrades#2013-07-05)
+
 === 1.8.0 2013-04-11
 
 * Allow Transfers to be creatable
