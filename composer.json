@@ -21,7 +21,8 @@
     "ext-mbstring": "*"
   },
   "require-dev": {
-    "vierbergenlars/simpletest": "*"
+    "vierbergenlars/simpletest": "*",
+    "squizlabs/php_codesniffer": "*"
   },
   "autoload": {
     "classmap": ["lib/Stripe/"]
