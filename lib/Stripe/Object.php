@@ -89,6 +89,11 @@ class Stripe_Object implements ArrayAccess
     return array_key_exists($k, $this->_values) ? $this->_values[$k] : null;
   }
 
+  public function keys()
+  {
+    return array_keys($this->_values);
+  }
+
   // This unfortunately needs to be public to be used in Util.php
   public static function scopedConstructFrom($class, $values, $apiKey=null)
   {

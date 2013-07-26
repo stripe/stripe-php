@@ -32,6 +32,13 @@ class Stripe_ObjectTest extends UnitTestCase
     $this->assertEqual($s->bar, 'b');
   }
 
+  public function testKeys()
+  {
+    $s = new Stripe_Object();
+    $s->foo = 'a';
+    $this->assertEqual($s->keys(), array('foo'));
+  }
+
   public function testToString()
   {
 
