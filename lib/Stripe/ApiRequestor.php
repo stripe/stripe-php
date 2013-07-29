@@ -195,15 +195,14 @@ class Stripe_ApiRequestor
     curl_setopt_array($curl, $opts);
     $rbody = curl_exec($curl);
 
+    if (!defined('CURLE_SSL_CACERT_BADFILE')) {
+      define('CURLE_SSL_CACERT_BADFILE', 77);  // constant not defined in PHP
+    }
+
     $errno = curl_errno($curl);
     if ($errno == CURLE_SSL_CACERT ||
         $errno == CURLE_SSL_PEER_CERTIFICATE ||
-<<<<<<< HEAD
-        $errno == 77 // CURLE_SSL_CACERT_BADFILE (constant not defined in PHP)
-        ) {
-=======
         $errno == CURLE_SSL_CACERT_BADFILE) {
->>>>>>> 3a09cb1... Add { on same line as if
       array_push(
           $headers,
           'X-Stripe-Client-Info: {"ca":"using Stripe-supplied CA bundle"}'
