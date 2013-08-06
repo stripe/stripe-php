@@ -27,15 +27,28 @@ class Stripe_CustomerTest extends StripeTestCase
   {
     $customer = self::createTestCustomer();
     $customer->bogus = 'bogus';
+    $this->expectException(new IsAExpectation('Stripe_InvalidRequestError'));
+    $customer->save();
+  }
 
-    $caught = null;
-    try {
-      $customer->save();
-    } catch (Stripe_InvalidRequestError $exception) {
-      $caught = $exception;
-    }
+  public function testUpdateDescriptionEmpty()
+  {
+    $customer = self::createTestCustomer();
 
-    $this->assertTrue($caught instanceof Stripe_InvalidRequestError);
+    $this->expectException(new IsAExpectation('InvalidArgumentException'));
+
+    $customer->description = '';
+  }
+
+  public function testUpdateDescriptionNull()
+  {
+    $customer = self::createTestCustomer(array('description' => 'foo bar'));
+    $customer->description = NULL;
+
+    $customer->save();
+    
+    $updatedCustomer = Stripe_Customer::retrieve($customer->id);
+    $this->assertEqual(NULL, $updatedCustomer->description);
   }
 
   public function testCancelSubscription()
