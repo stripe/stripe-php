@@ -46,7 +46,7 @@ class Stripe_CustomerTest extends StripeTestCase
     $customer->description = NULL;
 
     $customer->save();
-    
+
     $updatedCustomer = Stripe_Customer::retrieve($customer->id);
     $this->assertEqual(NULL, $updatedCustomer->description);
   }
