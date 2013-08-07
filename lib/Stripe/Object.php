@@ -41,8 +41,8 @@ class Stripe_Object implements ArrayAccess
     if ($v === ""){
       throw new InvalidArgumentException(
         'You cannot set \''.$k.'\'to an empty string. '
-	.'We interpret empty strings as NULL in requests. '
-	.'You may set obj->'.$k.' = NULL to delete the property');
+        .'We interpret empty strings as NULL in requests. '
+        .'You may set obj->'.$k.' = NULL to delete the property');
     }
     // TODO: may want to clear from $_transientValues.  (Won't be user-visible.)
     $this->_values[$k] = $v;
