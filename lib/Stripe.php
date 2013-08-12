@@ -38,6 +38,8 @@ require(dirname(__FILE__) . '/Stripe/List.php');
 // Stripe API Resources
 require(dirname(__FILE__) . '/Stripe/Account.php');
 require(dirname(__FILE__) . '/Stripe/Card.php');
+require(dirname(__FILE__) . '/Stripe/Balance.php');
+require(dirname(__FILE__) . '/Stripe/BalanceTransaction.php');
 require(dirname(__FILE__) . '/Stripe/Charge.php');
 require(dirname(__FILE__) . '/Stripe/Customer.php');
 require(dirname(__FILE__) . '/Stripe/Invoice.php');

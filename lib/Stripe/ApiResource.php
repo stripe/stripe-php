@@ -34,8 +34,17 @@ abstract class Stripe_ApiResource extends Stripe_Object
 
   public static function classUrl($class)
   {
+    $customMappings = array(
+      'balancetransaction' => 'balance/history'
+    );
+
     $base = self::className($class);
-    return "/v1/${base}s";
+    if (array_key_exists($base, $customMappings)) {
+      $base = $customMappings[$base];
+      return "/v1/${base}";
+    } else {
+      return "/v1/${base}s";
+    }
   }
 
   public function instanceUrl()
