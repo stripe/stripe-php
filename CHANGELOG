@@ -1,3 +1,8 @@
+=== 1.8.2 2013-08-12
+
+* Add support for unsetting attributes by updating to NULL.
+  Setting properties to a blank string is now an error.
+
 === 1.8.1 2013-07-12
 
 * Add support for multiple cards API (Stripe API version 2013-07-12: https://stripe.com/docs/upgrades#2013-07-05)
