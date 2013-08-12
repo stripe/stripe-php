@@ -83,8 +83,13 @@ abstract class Stripe_ApiResource extends Stripe_Object
     if ($this->_unsavedValues) {
       $requestor = new Stripe_ApiRequestor($this->_apiKey);
       $params = array();
-      foreach ($this->_unsavedValues->toArray() as $k)
-        $params[$k] = $this->$k;
+      foreach ($this->_unsavedValues->toArray() as $k){
+        $v = $this->$k;
+        if ($v === NULL){
+          $v = '';
+        }
+        $params[$k] = $v;
+      }
       $url = $this->instanceUrl();
       list($response, $apiKey) = $requestor->request('post', $url, $params);
       $this->refreshFrom($response, $apiKey);
