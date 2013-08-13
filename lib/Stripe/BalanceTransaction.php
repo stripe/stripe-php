@@ -2,6 +2,9 @@
 
 class Stripe_BalanceTransaction extends Stripe_ApiResource
 {
+  public static function classUrl($class) {
+    return "/v1/balance/history";
+  }
 
   public static function constructFrom($values, $apiKey=null)
   {
