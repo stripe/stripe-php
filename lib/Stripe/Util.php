@@ -40,12 +40,12 @@ abstract class Stripe_Util
     $types = array(
       'card' => 'Stripe_Card',
       'charge' => 'Stripe_Charge',
-		  'customer' => 'Stripe_Customer',
+      'customer' => 'Stripe_Customer',
       'list' => 'Stripe_List',
-		  'invoice' => 'Stripe_Invoice',
-		  'invoiceitem' => 'Stripe_InvoiceItem',
+      'invoice' => 'Stripe_Invoice',
+      'invoiceitem' => 'Stripe_InvoiceItem',
       'event' => 'Stripe_Event',
-		  'transfer' => 'Stripe_Transfer',
+      'transfer' => 'Stripe_Transfer',
       'plan' => 'Stripe_Plan',
       'recipient' => 'Stripe_Recipient'
     );
