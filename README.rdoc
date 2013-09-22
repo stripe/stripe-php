@@ -21,7 +21,7 @@ Please see https://stripe.com/api for up-to-date documentation.
 
 = Tests
 
-In order to run tests you have to install SimpleTest (http://packagist.org/packages/vierbergenlars/simpletest) via Composer (http://getcomposer.org/) (recommended way):
+In order to run tests you have to install SimpleTest (http://packagist.org/packages/simpletest/simpletest) via Composer (http://getcomposer.org/) (recommended way):
 
     composer.phar update --dev
 
