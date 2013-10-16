@@ -1,3 +1,7 @@
+=== 1.9.0 2013-10-16
+
+* Add support for metadata API.
+
 === 1.8.4 2013-09-18
 
 * Add support for closing disputes.
