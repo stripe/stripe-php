@@ -80,14 +80,16 @@ abstract class Stripe_ApiResource extends Stripe_Object
   protected function _scopedSave($class)
   {
     self::_validateCall('save');
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
-    $params = $this->serializeParameters();
-
-    if (isset($this->metadata)) {
-      $params['metadata'] = $this->_serializeMetadata();
-    }
-
-    if (count($params) > 0) {
+    if ($this->_unsavedValues) {
+      $requestor = new Stripe_ApiRequestor($this->_apiKey);
+      $params = array();
+      foreach ($this->_unsavedValues->toArray() as $k){
+        $v = $this->$k;
+        if ($v === NULL){
+          $v = '';
+        }
+        $params[$k] = $v;
+      }
       $url = $this->instanceUrl();
       list($response, $apiKey) = $requestor->request('post', $url, $params);
       $this->refreshFrom($response, $apiKey);
