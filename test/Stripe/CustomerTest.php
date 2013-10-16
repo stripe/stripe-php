@@ -51,58 +51,6 @@ class Stripe_CustomerTest extends StripeTestCase
     $this->assertEqual(NULL, $updatedCustomer->description);
   }
 
-  public function testUpdateMetadata()
-  {
-    $customer = self::createTestCustomer();
-
-    $customer->metadata['test'] = 'foo bar';
-    $customer->save();
-
-    $updatedCustomer = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual('foo bar', $updatedCustomer->metadata['test']);
-  }
-
-  public function testDeleteMetadata()
-  {
-    $customer = self::createTestCustomer();
-
-    $customer->metadata = NULL;
-    $customer->save();
-
-    $updatedCustomer = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual(0, count($updatedCustomer->metadata->keys()));
-  }
-
-  public function testUpdateSomeMetadata()
-  {
-    $customer = self::createTestCustomer();
-    $customer->metadata['shoe size'] = '7';
-    $customer->metadata['shirt size'] = 'XS';
-    $customer->save();
-
-    $customer->metadata['shoe size'] = '9';
-    $customer->save();
-
-    $updatedCustomer = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual('XS', $updatedCustomer->metadata['shirt size']);
-    $this->assertEqual('9', $updatedCustomer->metadata['shoe size']);
-  }
-
-  public function testUpdateAllMetadata()
-  {
-    $customer = self::createTestCustomer();
-    $customer->metadata['shoe size'] = '7';
-    $customer->metadata['shirt size'] = 'XS';
-    $customer->save();
-
-    $customer->metadata = array('shirt size' => 'XL');
-    $customer->save();
-
-    $updatedCustomer = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual('XL', $updatedCustomer->metadata['shirt size']);
-    $this->assertFalse(isset($updatedCustomer->metadata['shoe size']));
-  }
-
   public function testCancelSubscription()
   {
     $plan_id = 'gold-' . self::randomString();

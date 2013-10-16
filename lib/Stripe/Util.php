@@ -6,10 +6,6 @@ abstract class Stripe_Util
   {
     if (!is_array($array))
       return false;
-
-    if (count($array) === 0) {
-      return false;
-    }
     // TODO: this isn't actually correct in general, but it's correct given Stripe's responses
     foreach (array_keys($array) as $k) {
       if (!is_numeric($k))
