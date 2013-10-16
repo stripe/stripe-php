@@ -117,6 +117,7 @@ class Stripe_Object implements ArrayAccess
   public function refreshFrom($values, $apiKey, $partial=false)
   {
     $this->_apiKey = $apiKey;
+
     // Wipe old state before setting new.  This is useful for e.g. updating a
     // customer, where there is no persistent card parameter.  Mark those values
     // which don't persist as transient
@@ -131,6 +132,11 @@ class Stripe_Object implements ArrayAccess
       unset($this->$k);
     }
 
+    // Cache metadata for updates later.
+    if (isset($values['metadata'])) {
+      $this->_cachedMetadata = $values['metadata'];
+    }
+
     foreach ($values as $k => $v) {
       if (self::$_permanentAttributes->includes($k))
         continue;
@@ -138,6 +144,55 @@ class Stripe_Object implements ArrayAccess
       $this->_transientValues->discard($k);
       $this->_unsavedValues->discard($k);
     }
+  }
+
+  public function _serializeMetadata()
+  {
+    if ($this->_unsavedValues->includes('metadata')) {
+      $metadata = $this->metadata;
+      // If the metadata was set to NULL, we want to unset it.
+      if ($metadata === NULL) {
+        return '';
+      }
+
+      // Otherwise we have something like `$c->metadata = array('a' => 'b')`, in
+      // which case we want to replace the previous hash by unsetting all cached
+      // keys...
+      $params = array();
+      if (isset($this->_cachedMetadata)) {
+        foreach ($this->_cachedMetadata as $k => $v) {
+          $params[$k] = '';
+        }
+      }
+      // ...and adding the new KV pairs.
+      foreach ($metadata as $k => $v) {
+        $params[$k] = $v;
+      }
+      return $params;
+    }
+    // If metadata was not directly replaced, we serialize the unsaved metadata
+    // parameters.
+    return $this->metadata->serializeParameters();
+  }
+
+
+  public function serializeParameters()
+  {
+    $params = array();
+    if ($this->_unsavedValues) {
+      foreach ($this->_unsavedValues->toArray() as $k) {
+        if ($k === '_cachedMetadata') {
+          continue;
+        }
+
+        $v = $this->$k;
+        if ($v === NULL) {
+          $v = '';
+        }
+        $params[$k] = $v;
+      }
+    }
+    return $params;
   }
 
   // Pretend to have late static bindings, even in PHP 5.2
