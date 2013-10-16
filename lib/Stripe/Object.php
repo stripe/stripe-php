@@ -150,21 +150,28 @@ class Stripe_Object implements ArrayAccess
   {
     if ($this->_unsavedValues->includes('metadata')) {
       $metadata = $this->metadata;
+      // If the metadata was set to NULL, we want to unset it.
       if ($metadata === NULL) {
         return '';
       }
 
+      // Otherwise we have something like `$c->metadata = array('a' => 'b')`, in
+      // which case we want to replace the previous hash by unsetting all cached
+      // keys...
       $params = array();
       if (isset($this->_cachedMetadata)) {
         foreach ($this->_cachedMetadata as $k => $v) {
           $params[$k] = '';
         }
       }
+      // ...and adding the new KV pairs.
       foreach ($metadata as $k => $v) {
         $params[$k] = $v;
       }
       return $params;
     }
+    // If metadata was not directly replaced, we serialize the unsaved metadata
+    // parameters.
     return $this->metadata->serializeParameters();
   }
 
