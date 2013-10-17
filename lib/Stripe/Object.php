@@ -47,7 +47,7 @@ class Stripe_Object implements ArrayAccess
         .'You may set obj->'.$k.' = NULL to delete the property');
     }
 
-    if (self::$_nestedUpdatableAttributes->includes($k) && is_array($v)) {
+    if (self::$_nestedUpdatableAttributes->includes($k) && isset($this->$k) && is_array($v)) {
       $this->$k->replaceWith($v);
     } else {
       // TODO: may want to clear from $_transientValues.  (Won't be user-visible.)
