@@ -3,10 +3,12 @@
 class Stripe_Object implements ArrayAccess
 {
   public static $_permanentAttributes;
+  public static $_nestedUpdatableAttributes;
 
   public static function init()
   {
     self::$_permanentAttributes = new Stripe_Util_Set(array('_apiKey', 'id'));
+    self::$_nestedUpdatableAttributes = new Stripe_Util_Set(array('metadata'));
   }
 
   protected $_apiKey;
@@ -44,8 +46,13 @@ class Stripe_Object implements ArrayAccess
         .'We interpret empty strings as NULL in requests. '
         .'You may set obj->'.$k.' = NULL to delete the property');
     }
-    // TODO: may want to clear from $_transientValues.  (Won't be user-visible.)
-    $this->_values[$k] = $v;
+
+    if (self::$_nestedUpdatableAttributes->includes($k) && is_array($v)) {
+      $this->$k->replaceWith($v);
+    } else {
+      // TODO: may want to clear from $_transientValues.  (Won't be user-visible.)
+      $this->_values[$k] = $v;
+    }
     if (!self::$_permanentAttributes->includes($k))
       $this->_unsavedValues->add($k);
   }
@@ -132,64 +139,37 @@ class Stripe_Object implements ArrayAccess
       unset($this->$k);
     }
 
-    // Cache metadata for updates later.
-    if (isset($values['metadata'])) {
-      $this->_cachedMetadata = $values['metadata'];
-    }
-
     foreach ($values as $k => $v) {
       if (self::$_permanentAttributes->includes($k))
         continue;
-      $this->_values[$k] = Stripe_Util::convertToStripeObject($v, $apiKey);
+
+      if (self::$_nestedUpdatableAttributes->includes($k))
+        $this->_values[$k] = Stripe_Object::scopedConstructFrom('Stripe_AttachedObject', $v, $apiKey);
+      else
+        $this->_values[$k] = Stripe_Util::convertToStripeObject($v, $apiKey);
+
       $this->_transientValues->discard($k);
       $this->_unsavedValues->discard($k);
     }
   }
-
-  public function _serializeMetadata()
-  {
-    if ($this->_unsavedValues->includes('metadata')) {
-      $metadata = $this->metadata;
-      // If the metadata was set to NULL, we want to unset it.
-      if ($metadata === NULL) {
-        return '';
-      }
-
-      // Otherwise we have something like `$c->metadata = array('a' => 'b')`, in
-      // which case we want to replace the previous hash by unsetting all cached
-      // keys...
-      $params = array();
-      if (isset($this->_cachedMetadata)) {
-        foreach ($this->_cachedMetadata as $k => $v) {
-          $params[$k] = '';
-        }
-      }
-      // ...and adding the new KV pairs.
-      foreach ($metadata as $k => $v) {
-        $params[$k] = $v;
-      }
-      return $params;
-    }
-    // If metadata was not directly replaced, we serialize the unsaved metadata
-    // parameters.
-    return $this->metadata->serializeParameters();
-  }
-
 
   public function serializeParameters()
   {
     $params = array();
     if ($this->_unsavedValues) {
       foreach ($this->_unsavedValues->toArray() as $k) {
-        if ($k === '_cachedMetadata') {
-          continue;
-        }
-
         $v = $this->$k;
         if ($v === NULL) {
           $v = '';
         }
         $params[$k] = $v;
+      }
+    }
+
+    // Get nested updates.
+    foreach (self::$_nestedUpdatableAttributes->toArray() as $property) {
+      if (isset($this->$property) && $this->$property instanceOf Stripe_Object) {
+        $params[$property] = $this->$property->serializeParameters();
       }
     }
     return $params;

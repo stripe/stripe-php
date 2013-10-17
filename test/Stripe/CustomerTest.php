@@ -103,6 +103,16 @@ class Stripe_CustomerTest extends StripeTestCase
     $this->assertFalse(isset($updatedCustomer->metadata['shoe size']));
   }
 
+  public function testUpdateInvalidMetadata()
+  {
+    $customer = self::createTestCustomer();
+
+    $this->expectException(new IsAExpectation('Stripe_InvalidRequestError'));
+
+    $customer->metadata = 'something';
+    $customer->save();
+  }
+
   public function testCancelSubscription()
   {
     $plan_id = 'gold-' . self::randomString();

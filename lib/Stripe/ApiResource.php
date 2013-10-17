@@ -83,10 +83,6 @@ abstract class Stripe_ApiResource extends Stripe_Object
     $requestor = new Stripe_ApiRequestor($this->_apiKey);
     $params = $this->serializeParameters();
 
-    if (isset($this->metadata)) {
-      $params['metadata'] = $this->_serializeMetadata();
-    }
-
     if (count($params) > 0) {
       $url = $this->instanceUrl();
       list($response, $apiKey) = $requestor->request('post', $url, $params);

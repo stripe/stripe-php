@@ -33,6 +33,7 @@ require(dirname(__FILE__) . '/Stripe/Object.php');
 require(dirname(__FILE__) . '/Stripe/ApiRequestor.php');
 require(dirname(__FILE__) . '/Stripe/ApiResource.php');
 require(dirname(__FILE__) . '/Stripe/SingletonApiResource.php');
+require(dirname(__FILE__) . '/Stripe/AttachedObject.php');
 require(dirname(__FILE__) . '/Stripe/List.php');
 
 // Stripe API Resources
