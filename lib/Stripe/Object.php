@@ -143,7 +143,7 @@ class Stripe_Object implements ArrayAccess
       if (self::$_permanentAttributes->includes($k))
         continue;
 
-      if (self::$_nestedUpdatableAttributes->includes($k))
+      if (self::$_nestedUpdatableAttributes->includes($k) && is_array($v))
         $this->_values[$k] = Stripe_Object::scopedConstructFrom('Stripe_AttachedObject', $v, $apiKey);
       else
         $this->_values[$k] = Stripe_Util::convertToStripeObject($v, $apiKey);

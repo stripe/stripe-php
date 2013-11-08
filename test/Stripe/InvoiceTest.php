@@ -22,4 +22,13 @@ class Stripe_InvoiceTest extends StripeTestCase
     $this->assertEqual($invoice->attempted, false);
   }
 
+  // This is really just making sure that this operation does not trigger any
+  // warnings, as it's highly nested.
+  public function testAll()
+  {
+    authorizeFromEnv();
+    $invoices = Stripe_Invoice::all();
+    $this->assertTrue(count($invoices) > 0);
+  }
+
 }
