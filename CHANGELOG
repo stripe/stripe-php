@@ -1,3 +1,7 @@
+=== 1.9.1 2013-11-08
+
+* Fix a bug where a null nestable object causes warnings to fire.
+
 === 1.9.0 2013-10-16
 
 * Add support for metadata API.
