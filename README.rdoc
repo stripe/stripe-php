@@ -28,3 +28,7 @@ In order to run tests you have to install SimpleTest (http://packagist.org/packa
 Run test suite:
 
     php ./test/Stripe.php
+
+Run test suite against Phar file:
+
+    php ./test/Stripe.php --test-phar
