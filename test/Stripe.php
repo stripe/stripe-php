@@ -1,5 +1,4 @@
 <?php
-
 echo "Running the Stripe PHP bindings test suite.\n".
      "If you're trying to use the Stripe PHP bindings you'll probably want ".
      "to require('lib/Stripe.php'); instead of this file\n";
@@ -30,7 +29,14 @@ function exception_error_handler($errno, $errstr, $errfile, $errline) {
 set_error_handler('exception_error_handler');
 error_reporting(E_ALL | E_STRICT);
 
-require_once(dirname(__FILE__) . '/../lib/Stripe.php');
+if(isset($argv[1]) && $argv[1] == "--test-phar"){
+	echo "Testing Stripe.phar.\n";
+
+	require_once(dirname(__FILE__) . '/../Stripe.phar');
+} else {
+	echo "Testing lib/Stripe.php.\n";
+	require_once(dirname(__FILE__) . '/../lib/Stripe.php');
+}
 
 require_once(dirname(__FILE__) . '/Stripe/TestCase.php');
 
