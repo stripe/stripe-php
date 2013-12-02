@@ -1,3 +1,7 @@
+=== 1.10.1 2013-12-02
+
+* Add new ApplicationFee
+
 === 1.9.1 2013-11-08
 
 * Fix a bug where a null nestable object causes warnings to fire.
