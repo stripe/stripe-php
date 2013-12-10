@@ -1,8 +1,27 @@
 = Installation
 
+- Composer
+
+To install with Composer, simply add the requirement to your composer.json file:
+
+    {
+        "require" : {
+            stripe/stripe-php" : "dev-master"
+        }
+    }
+
+And run Composer to update your dependencies:
+
+    $ curl -sS http://getcomposer.org/installer | php
+    $ php composer.phar update
+    
+- Git
+
 Obtain the latest version of the Stripe PHP bindings with:
 
     git clone https://github.com/stripe/stripe-php
+    
+= Getting Started
 
 To get started, add the following to your PHP script:
 
