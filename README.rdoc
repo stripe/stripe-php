@@ -1,6 +1,7 @@
 = Installation
 
-- Composer
+Composer
+--------
 
 To install with Composer, simply add the requirement to your composer.json file:
 
@@ -15,7 +16,8 @@ And run Composer to update your dependencies:
     $ curl -sS http://getcomposer.org/installer | php
     $ php composer.phar update
     
-- Git
+Git
+---
 
 Obtain the latest version of the Stripe PHP bindings with:
 
