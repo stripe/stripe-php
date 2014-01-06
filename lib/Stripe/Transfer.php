@@ -32,4 +32,13 @@ class Stripe_Transfer extends Stripe_ApiResource
     return self::_scopedSave($class);
   }
 
+  public function transactions($params = null)
+  {
+    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $url = $this->instanceUrl() . '/transactions';
+    list($response, $apiKey) = $requestor->request('get', $url, $params);
+    $this->refreshFrom($response, $apiKey);
+    return $this;
+  }
+
 }
