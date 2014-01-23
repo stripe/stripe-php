@@ -33,7 +33,7 @@ class Stripe_Object implements ArrayAccess
       $id = $id['id'];
     }
 
-    if ($id)
+    if ($id !== null)
       $this->id = $id;
   }
 
