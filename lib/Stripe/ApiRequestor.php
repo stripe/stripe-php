@@ -169,6 +169,7 @@ class Stripe_ApiRequestor
     $opts[CURLOPT_TIMEOUT] = 80;
     $opts[CURLOPT_RETURNTRANSFER] = true;
     $opts[CURLOPT_HTTPHEADER] = $headers;
+    $opts[CURLOPT_SSL_CIPHER_LIST] = "DEFAULT:!aNULL:!eNULL:!LOW:!EXPORT:!SSLv2";
     if (!Stripe::$verifySslCerts)
       $opts[CURLOPT_SSL_VERIFYPEER] = false;
 
