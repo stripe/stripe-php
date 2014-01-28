@@ -46,6 +46,7 @@ require(dirname(__FILE__) . '/Stripe/Customer.php');
 require(dirname(__FILE__) . '/Stripe/Invoice.php');
 require(dirname(__FILE__) . '/Stripe/InvoiceItem.php');
 require(dirname(__FILE__) . '/Stripe/Plan.php');
+require(dirname(__FILE__) . '/Stripe/Subscription.php');
 require(dirname(__FILE__) . '/Stripe/Token.php');
 require(dirname(__FILE__) . '/Stripe/Coupon.php');
 require(dirname(__FILE__) . '/Stripe/Event.php');

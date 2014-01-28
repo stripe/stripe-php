@@ -80,4 +80,23 @@ abstract class StripeTestCase extends UnitTestCase
     }
   }
 
+  /**
+   * Verify that a coupon with a given ID exists, or create a new one if it does
+   * not.
+   */
+  protected static function retrieveOrCreateCoupon($id)
+  {
+    authorizeFromEnv();
+
+    try {
+      $coupon = Stripe_Coupon::retrieve($id);
+    } catch (Stripe_InvalidRequestError $exception) {
+      $coupon = Stripe_Coupon::create(
+        array(
+          'id'        => $id,
+          'duration'  => 'forever',
+          'percent_off' => 25,
+        ));
+    }
+  }
 }

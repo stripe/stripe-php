@@ -48,7 +48,8 @@ abstract class Stripe_Util
       'event' => 'Stripe_Event',
       'transfer' => 'Stripe_Transfer',
       'plan' => 'Stripe_Plan',
-      'recipient' => 'Stripe_Recipient'
+      'recipient' => 'Stripe_Recipient',
+      'subscription' => 'Stripe_Subscription'
     );
     if (self::isList($resp)) {
       $mapped = array();
