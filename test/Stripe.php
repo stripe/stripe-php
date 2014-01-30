@@ -49,6 +49,7 @@ require_once(dirname(__FILE__) . '/Stripe/InvalidRequestErrorTest.php');
 require_once(dirname(__FILE__) . '/Stripe/InvoiceTest.php');
 require_once(dirname(__FILE__) . '/Stripe/ObjectTest.php');
 require_once(dirname(__FILE__) . '/Stripe/PlanTest.php');
+require_once(dirname(__FILE__) . '/Stripe/SubscriptionTest.php');
 require_once(dirname(__FILE__) . '/Stripe/Token.php');
 require_once(dirname(__FILE__) . '/Stripe/TransferTest.php');
 require_once(dirname(__FILE__) . '/Stripe/RecipientTest.php');
