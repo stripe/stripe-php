@@ -90,7 +90,7 @@
 
 === 1.7.5 2012-08-23
 
-* Change internal function names so that Stripe_SingletonApiRequst is
+* Change internal function names so that Stripe_SingletonApiRequest is
   E_STRICT-clean (github issue #16)
 
 === 1.7.4 2012-08-21
@@ -111,7 +111,7 @@
 
 * Add missing argument to Stripe_InvalidRequestError constructor in
   Stripe_ApiResource::instanceUrl. Fixes a warning when
-  Stripe_ApiResource::instanceUrl is called on a resouce with no ID
+  Stripe_ApiResource::instanceUrl is called on a resource with no ID
   (github issue #12)
 
 === 1.7.0 2012-05-17
