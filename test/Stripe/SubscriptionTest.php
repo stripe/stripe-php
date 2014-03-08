@@ -44,8 +44,8 @@ class Stripe_SubscriptionTest extends StripeTestCase
 
     $sub = $customer->subscriptions->create(
         array(
-            'plan' => $plan_id,
-            'coupon' => $coupon_id
+            'plan' => $planId,
+            'coupon' => $couponId
         )
     );
 
