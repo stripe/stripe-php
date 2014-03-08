@@ -14,7 +14,7 @@ function authorizeFromEnv()
 
 $ok = @include_once(dirname(__FILE__).'/simpletest/autorun.php');
 if (!$ok) {
-  $ok = @include_once(dirname(__FILE__).'/../vendor/vierbergenlars/simpletest/autorun.php');
+  $ok = @include_once(dirname(__FILE__).'/../vendor/simpletest/simpletest/autorun.php');
 }
 if (!$ok) {
   echo "MISSING DEPENDENCY: The Stripe API test cases depend on SimpleTest. ".

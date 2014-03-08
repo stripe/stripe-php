@@ -21,7 +21,7 @@
     "ext-mbstring": "*"
   },
   "require-dev": {
-    "vierbergenlars/simpletest": "*"
+    "simpletest/simpletest": "*"
   },
   "autoload": {
     "classmap": ["lib/Stripe/"]
