@@ -14,7 +14,11 @@ class Stripe_Subscription extends Stripe_ApiResource
     $customer = $this['customer'];
     $class = get_class($this);
     if (!$id) {
-      throw new Stripe_InvalidRequestError("Could not determine which URL to request: $class instance has invalid ID: $id", null);
+      throw new Stripe_InvalidRequestError(
+          "Could not determine which URL to request: " .
+          "class instance has invalid ID: $id",
+          null
+      );
     }
     $id = Stripe_ApiRequestor::utf8($id);
     $customer = Stripe_ApiRequestor::utf8($customer);
