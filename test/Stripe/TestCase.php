@@ -95,11 +95,12 @@ abstract class StripeTestCase extends UnitTestCase
       $coupon = Stripe_Coupon::retrieve($id);
     } catch (Stripe_InvalidRequestError $exception) {
       $coupon = Stripe_Coupon::create(
-        array(
-          'id'        => $id,
-          'duration'  => 'forever',
-          'percent_off' => 25,
-        ));
+          array(
+              'id'        => $id,
+              'duration'  => 'forever',
+              'percent_off' => 25,
+          )
+      );
     }
   }
 }

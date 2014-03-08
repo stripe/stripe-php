@@ -39,11 +39,11 @@ class Stripe_TransferTest extends StripeTestCase
 
     authorizeFromEnv();
     $transfer = Stripe_Transfer::create(
-      array(
-        'amount' => 100,
-        'currency' => 'usd',
-        'recipient' => $recipient->id
-      )
+        array(
+            'amount' => 100,
+            'currency' => 'usd',
+            'recipient' => $recipient->id
+        )
     );
 
     $transfer->metadata['test'] = 'foo bar';
@@ -59,11 +59,11 @@ class Stripe_TransferTest extends StripeTestCase
 
     authorizeFromEnv();
     $transfer = Stripe_Transfer::create(
-      array(
-        'amount' => 100,
-        'currency' => 'usd',
-        'recipient' => $recipient->id
-      )
+        array(
+          'amount' => 100,
+          'currency' => 'usd',
+          'recipient' => $recipient->id
+        )
     );
 
     $transfer->metadata = array('test' => 'foo bar');
