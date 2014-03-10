@@ -18,8 +18,8 @@ class Stripe_RecipientTest extends StripeTestCase
     $recipient->save();
     $this->assertEqual($recipient->email, 'gdb@stripe.com');
 
-    $recipient2 = Stripe_Recipient::retrieve($recipient->id);
-    $this->assertEqual($recipient->email, $recipient2->email);
+    $stripeRecipient = Stripe_Recipient::retrieve($recipient->id);
+    $this->assertEqual($recipient->email, $stripeRecipient->email);
   }
 
   public function testBogusAttribute()

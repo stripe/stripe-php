@@ -2,13 +2,13 @@
 
 class Stripe_Object implements ArrayAccess
 {
-  public static $_permanentAttributes;
-  public static $_nestedUpdatableAttributes;
+  public static $permanentAttributes;
+  public static $nestedUpdatableAttributes;
 
   public static function init()
   {
-    self::$_permanentAttributes = new Stripe_Util_Set(array('_apiKey', 'id'));
-    self::$_nestedUpdatableAttributes = new Stripe_Util_Set(array('metadata'));
+    self::$permanentAttributes = new Stripe_Util_Set(array('_apiKey', 'id'));
+    self::$nestedUpdatableAttributes = new Stripe_Util_Set(array('metadata'));
   }
 
   protected $_apiKey;
@@ -26,7 +26,7 @@ class Stripe_Object implements ArrayAccess
 
     $this->_retrieveOptions = array();
     if (is_array($id)) {
-      foreach($id as $key => $value) {
+      foreach ($id as $key => $value) {
         if ($key != 'id')
           $this->_retrieveOptions[$key] = $value;
       }
@@ -40,20 +40,21 @@ class Stripe_Object implements ArrayAccess
   // Standard accessor magic methods
   public function __set($k, $v)
   {
-    if ($v === ""){
+    if ($v === "") {
       throw new InvalidArgumentException(
-        'You cannot set \''.$k.'\'to an empty string. '
-        .'We interpret empty strings as NULL in requests. '
-        .'You may set obj->'.$k.' = NULL to delete the property');
+          'You cannot set \''.$k.'\'to an empty string. '
+          .'We interpret empty strings as NULL in requests. '
+          .'You may set obj->'.$k.' = NULL to delete the property'
+      );
     }
 
-    if (self::$_nestedUpdatableAttributes->includes($k) && isset($this->$k) && is_array($v)) {
+    if (self::$nestedUpdatableAttributes->includes($k) && isset($this->$k) && is_array($v)) {
       $this->$k->replaceWith($v);
     } else {
       // TODO: may want to clear from $_transientValues.  (Won't be user-visible.)
       $this->_values[$k] = $v;
     }
-    if (!self::$_permanentAttributes->includes($k))
+    if (!self::$permanentAttributes->includes($k))
       $this->_unsavedValues->add($k);
   }
   public function __isset($k)
@@ -73,7 +74,13 @@ class Stripe_Object implements ArrayAccess
     } else if ($this->_transientValues->includes($k)) {
       $class = get_class($this);
       $attrs = join(', ', array_keys($this->_values));
-      error_log("Stripe Notice: Undefined property of $class instance: $k.  HINT: The $k attribute was set in the past, however.  It was then wiped when refreshing the object with the result returned by Stripe's API, probably as a result of a save().  The attributes currently available on this object are: $attrs");
+      $message = "Stripe Notice: Undefined property of $class instance: $k. "
+               . "HINT: The $k attribute was set in the past, however. "
+               . "It was then wiped when refreshing the object "
+               . "with the result returned by Stripe's API, "
+               . "probably as a result of a save(). The attributes currently "
+               . "available on this object are: $attrs";
+      error_log($message);
       return null;
     } else {
       $class = get_class($this);
@@ -134,16 +141,16 @@ class Stripe_Object implements ArrayAccess
       $removed = array_diff(array_keys($this->_values), array_keys($values));
 
     foreach ($removed as $k) {
-      if (self::$_permanentAttributes->includes($k))
+      if (self::$permanentAttributes->includes($k))
         continue;
       unset($this->$k);
     }
 
     foreach ($values as $k => $v) {
-      if (self::$_permanentAttributes->includes($k))
+      if (self::$permanentAttributes->includes($k))
         continue;
 
-      if (self::$_nestedUpdatableAttributes->includes($k) && is_array($v))
+      if (self::$nestedUpdatableAttributes->includes($k) && is_array($v))
         $this->_values[$k] = Stripe_Object::scopedConstructFrom('Stripe_AttachedObject', $v, $apiKey);
       else
         $this->_values[$k] = Stripe_Util::convertToStripeObject($v, $apiKey);
@@ -167,7 +174,7 @@ class Stripe_Object implements ArrayAccess
     }
 
     // Get nested updates.
-    foreach (self::$_nestedUpdatableAttributes->toArray() as $property) {
+    foreach (self::$nestedUpdatableAttributes->toArray() as $property) {
       if (isset($this->$property) && $this->$property instanceOf Stripe_Object) {
         $params[$property] = $this->$property->serializeParameters();
       }

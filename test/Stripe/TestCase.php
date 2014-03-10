@@ -15,13 +15,14 @@ abstract class StripeTestCase extends UnitTestCase
     authorizeFromEnv();
 
     return Stripe_Customer::create(
-      $attributes + array(
-        'card' => array(
-          'number'    => '4242424242424242',
-          'exp_month' => 5,
-          'exp_year'  => date('Y') + 3,
-        ),
-      ));
+        $attributes + array(
+          'card' => array(
+            'number'    => '4242424242424242',
+            'exp_month' => 5,
+            'exp_year'  => date('Y') + 3,
+          ),
+        )
+    );
   }
 
   /**
@@ -32,16 +33,17 @@ abstract class StripeTestCase extends UnitTestCase
     authorizeFromEnv();
 
     return Stripe_Recipient::create(
-      $attributes + array(
-        'name' => 'PHP Test',
-        'type' => 'individual',
-        'tax_id' => '000000000',
-        'bank_account' => array(
-          'country'    => 'US',
-          'routing_number' => '110000000',
-          'account_number'  => '000123456789'
-        ),
-      ));
+        $attributes + array(
+          'name' => 'PHP Test',
+          'type' => 'individual',
+          'tax_id' => '000000000',
+          'bank_account' => array(
+            'country'    => 'US',
+            'routing_number' => '110000000',
+            'account_number'  => '000123456789'
+          ),
+      )
+    );
   }
 
   /**
@@ -70,13 +72,14 @@ abstract class StripeTestCase extends UnitTestCase
       $plan = Stripe_Plan::retrieve($id);
     } catch (Stripe_InvalidRequestError $exception) {
       $plan = Stripe_Plan::create(
-        array(
-          'id'        => $id,
-          'amount'    => 0,
-          'currency'  => 'usd',
-          'interval'  => 'month',
-          'name'      => 'Gold Test Plan',
-        ));
+          array(
+            'id'        => $id,
+            'amount'    => 0,
+            'currency'  => 'usd',
+            'interval'  => 'month',
+            'name'      => 'Gold Test Plan',
+          )
+      );
     }
   }
 
@@ -92,11 +95,12 @@ abstract class StripeTestCase extends UnitTestCase
       $coupon = Stripe_Coupon::retrieve($id);
     } catch (Stripe_InvalidRequestError $exception) {
       $coupon = Stripe_Coupon::create(
-        array(
-          'id'        => $id,
-          'duration'  => 'forever',
-          'percent_off' => 25,
-        ));
+          array(
+              'id'        => $id,
+              'duration'  => 'forever',
+              'percent_off' => 25,
+          )
+      );
     }
   }
 }

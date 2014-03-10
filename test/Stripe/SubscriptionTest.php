@@ -5,50 +5,53 @@ class Stripe_SubscriptionTest extends StripeTestCase
 
   public function testCreateUpdateCancel()
   {
-    $plan_id = 'gold-' . self::randomString();
-    self::retrieveOrCreatePlan($plan_id);
+    $planID = 'gold-' . self::randomString();
+    self::retrieveOrCreatePlan($planID);
 
     $customer = self::createTestCustomer();
 
-    $sub = $customer->subscriptions->create(array('plan' => $plan_id));
+    $sub = $customer->subscriptions->create(array('plan' => $planID));
 
     $this->assertEqual($sub->status, 'active');
-    $this->assertEqual($sub->plan->id, $plan_id);
+    $this->assertEqual($sub->plan->id, $planID);
 
     $sub->quantity = 2;
     $sub->save();
 
     $sub = $customer->subscriptions->retrieve($sub->id);
     $this->assertEqual($sub->status, 'active');
-    $this->assertEqual($sub->plan->id, $plan_id);
+    $this->assertEqual($sub->plan->id, $planID);
     $this->assertEqual($sub->quantity, 2);
 
     $sub->cancel(array('at_period_end' => true));
 
     $sub = $customer->subscriptions->retrieve($sub->id);
     $this->assertEqual($sub->status, 'active');
+    // @codingStandardsIgnoreStart
     $this->assertTrue($sub->cancel_at_period_end);
+    // @codingStandardsIgnoreEnd
   }
 
   public function testDeleteDiscount()
   {
-    $plan_id = 'gold-' . self::randomString();
-    self::retrieveOrCreatePlan($plan_id);
+    $planID = 'gold-' . self::randomString();
+    self::retrieveOrCreatePlan($planID);
 
-    $coupon_id = '25off-' . self::randomString();
-    self::retrieveOrCreateCoupon($coupon_id);
+    $couponID = '25off-' . self::randomString();
+    self::retrieveOrCreateCoupon($couponID);
 
     $customer = self::createTestCustomer();
 
     $sub = $customer->subscriptions->create(
-      array(
-        'plan' => $plan_id,
-        'coupon' => $coupon_id
-        ));
+        array(
+            'plan' => $planID,
+            'coupon' => $couponID
+        )
+    );
 
     $this->assertEqual($sub->status, 'active');
-    $this->assertEqual($sub->plan->id, $plan_id);
-    $this->assertEqual($sub->discount->coupon->id, $coupon_id);
+    $this->assertEqual($sub->plan->id, $planID);
+    $this->assertEqual($sub->discount->coupon->id, $couponID);
 
     $sub->deleteDiscount();
     $sub = $customer->subscriptions->retrieve($sub->id);

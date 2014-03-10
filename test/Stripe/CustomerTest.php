@@ -19,8 +19,8 @@ class Stripe_CustomerTest extends StripeTestCase
     $customer->save();
     $this->assertEqual($customer->email, 'gdb@stripe.com');
 
-    $customer2 = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual($customer->email, $customer2->email);
+    $stripeCustomer = Stripe_Customer::retrieve($customer->id);
+    $this->assertEqual($customer->email, $stripeCustomer->email);
   }
 
   public function testBogusAttribute()
@@ -115,13 +115,14 @@ class Stripe_CustomerTest extends StripeTestCase
 
   public function testCancelSubscription()
   {
-    $plan_id = 'gold-' . self::randomString();
-    self::retrieveOrCreatePlan($plan_id);
+    $planID = 'gold-' . self::randomString();
+    self::retrieveOrCreatePlan($planID);
 
     $customer = self::createTestCustomer(
-      array(
-        'plan' => $plan_id,
-      ));
+        array(
+            'plan' => $planID,
+        )
+    );
 
     $customer->cancelSubscription(array('at_period_end' => true));
     $this->assertEqual($customer->subscription->status, 'active');

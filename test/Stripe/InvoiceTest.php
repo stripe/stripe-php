@@ -8,16 +8,18 @@ class Stripe_InvoiceTest extends StripeTestCase
     $customer = self::createTestCustomer();
 
     Stripe_InvoiceItem::create(
-      array(
-        'customer'  => $customer->id,
-        'amount'    => 0,
-        'currency'  => 'usd',
-      ));
+        array(
+            'customer'  => $customer->id,
+            'amount'    => 0,
+            'currency'  => 'usd',
+        )
+    );
 
     $invoice = Stripe_Invoice::upcoming(
-      array(
-        'customer' => $customer->id,
-      ));
+        array(
+            'customer' => $customer->id,
+        )
+    );
     $this->assertEqual($invoice->customer, $customer->id);
     $this->assertEqual($invoice->attempted, false);
   }

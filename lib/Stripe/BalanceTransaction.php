@@ -2,7 +2,8 @@
 
 class Stripe_BalanceTransaction extends Stripe_ApiResource
 {
-  public static function classUrl($class) {
+  public static function classUrl($class)
+  {
     return "/v1/balance/history";
   }
 

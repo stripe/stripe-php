@@ -12,16 +12,19 @@ class Stripe_ChargeTest extends UnitTestCase
   public function testCreate()
   {
     authorizeFromEnv();
+
+    $card = array(
+      'number' => '4242424242424242',
+      'exp_month' => 5,
+      'exp_year' => 2015
+    );
+
     $c = Stripe_Charge::create(
-      array(
-        'amount' => 100,
-        'currency' => 'usd',
-        'card' => array(
-          'number' => '4242424242424242',
-          'exp_month' => 5,
-          'exp_year' => 2015
+        array(
+          'amount' => 100,
+          'currency' => 'usd',
+          'card' => $card
         )
-      )
     );
     $this->assertTrue($c->paid);
     $this->assertFalse($c->refunded);
@@ -30,16 +33,19 @@ class Stripe_ChargeTest extends UnitTestCase
   public function testRetrieve()
   {
     authorizeFromEnv();
+
+    $card = array(
+      'number' => '4242424242424242',
+      'exp_month' => 5,
+      'exp_year' => 2015
+    );
+
     $c = Stripe_Charge::create(
-      array(
-        'amount' => 100,
-        'currency' => 'usd',
-        'card' => array(
-          'number' => '4242424242424242',
-          'exp_month' => 5,
-          'exp_year' => 2015
+        array(
+            'amount' => 100,
+            'currency' => 'usd',
+            'card' => $card
         )
-      )
     );
     $d = Stripe_Charge::retrieve($c->id);
     $this->assertEqual($d->id, $c->id);
@@ -48,16 +54,19 @@ class Stripe_ChargeTest extends UnitTestCase
   public function testUpdateMetadata()
   {
     authorizeFromEnv();
+
+    $card = array(
+      'number' => '4242424242424242',
+      'exp_month' => 5,
+      'exp_year' => 2015
+    );
+
     $charge = Stripe_Charge::create(
-      array(
-        'amount' => 100,
-        'currency' => 'usd',
-        'card' => array(
-          'number' => '4242424242424242',
-          'exp_month' => 5,
-          'exp_year' => 2015
+        array(
+            'amount' => 100,
+            'currency' => 'usd',
+            'card' => $card
         )
-      )
     );
 
     $charge->metadata['test'] = 'foo bar';
@@ -70,16 +79,19 @@ class Stripe_ChargeTest extends UnitTestCase
   public function testUpdateMetadataAll()
   {
     authorizeFromEnv();
+
+    $card = array(
+      'number' => '4242424242424242',
+      'exp_month' => 5,
+      'exp_year' => 2015
+    );
+    
     $charge = Stripe_Charge::create(
-      array(
-        'amount' => 100,
-        'currency' => 'usd',
-        'card' => array(
-          'number' => '4242424242424242',
-          'exp_month' => 5,
-          'exp_year' => 2015
+        array(
+            'amount' => 100,
+            'currency' => 'usd',
+            'card' => $card
         )
-      )
     );
 
     $charge->metadata = array('test' => 'foo bar');
