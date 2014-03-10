@@ -21,21 +21,21 @@ class Stripe_PlanTest extends StripeTestCase
   public function testSave()
   {
     authorizeFromEnv();
-    $planId = 'gold-' . self::randomString();
+    $planID = 'gold-' . self::randomString();
     $p = Stripe_Plan::create(
         array(
             'amount' => 2000,
             'interval' => 'month',
             'currency' => 'usd',
             'name' => 'Plan',
-            'id' => $planId
+            'id' => $planID
         )
     );
     $p->name = 'A new plan name';
     $p->save();
     $this->assertEqual($p->name, 'A new plan name');
 
-    $stripePlan = Stripe_Plan::retrieve($planId);
+    $stripePlan = Stripe_Plan::retrieve($planID);
     $this->assertEqual($p->name, $stripePlan->name);
   }
 }
