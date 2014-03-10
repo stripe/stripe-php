@@ -8,6 +8,12 @@ class Stripe_Charge extends Stripe_ApiResource
     return self::scopedConstructFrom($class, $values, $apiKey);
   }
 
+  /**
+   * @param string      $id
+   * @param string|null $apiKey
+   *
+   * @return Stripe_Charge
+   */
   public static function retrieve($id, $apiKey=null)
   {
     $class = get_class();
@@ -32,6 +38,11 @@ class Stripe_Charge extends Stripe_ApiResource
     return self::_scopedSave($class);
   }
 
+  /**
+   * @param array|null $params
+   *
+   * @return Stripe_Charge
+   */
   public function refund($params=null)
   {
     $requestor = new Stripe_ApiRequestor($this->_apiKey);
@@ -41,6 +52,11 @@ class Stripe_Charge extends Stripe_ApiResource
     return $this;
   }
 
+  /**
+   * @param array|null $params
+   *
+   * @return Stripe_Charge
+   */
   public function capture($params=null)
   {
     $requestor = new Stripe_ApiRequestor($this->_apiKey);
