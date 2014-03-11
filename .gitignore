@@ -9,4 +9,3 @@
 
 # If the vendor directory isn't being commited the composer.lock file should also be ignored
 composer.lock
-composer.phar
