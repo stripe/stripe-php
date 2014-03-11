@@ -8,6 +8,10 @@ class Stripe_Card extends Stripe_ApiResource
     return self::scopedConstructFrom($class, $values, $apiKey);
   }
 
+  /**
+   * @return string The instance URL for this resource. It needs to be special
+   *    cased because it doesn't fit into the standard resource pattern.
+   */
   public function instanceUrl()
   {
     $id = $this['id'];
@@ -27,12 +31,20 @@ class Stripe_Card extends Stripe_ApiResource
     return "$base/$customerExtn/cards/$extn";
   }
 
+  /**
+   * @param array|null $params
+   *
+   * @return Stripe_Card The deleted card.
+   */
   public function delete($params=null)
   {
     $class = get_class();
     return self::_scopedDelete($class, $params);
   }
 
+  /**
+   * @return Stripe_Card The saved card.
+   */
   public function save()
   {
     $class = get_class();

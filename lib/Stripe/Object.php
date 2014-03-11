@@ -2,7 +2,15 @@
 
 class Stripe_Object implements ArrayAccess
 {
+  /**
+   * @var array Attributes that should not be sent to the API because they're
+   *    not updatable (e.g. API key, ID).
+   */
   public static $permanentAttributes;
+  /**
+   * @var array Attributes that are nested but still updatable from the parent
+   *    class's URL (e.g. metadata).
+   */
   public static $nestedUpdatableAttributes;
 
   public static function init()
@@ -114,7 +122,15 @@ class Stripe_Object implements ArrayAccess
     return array_keys($this->_values);
   }
 
-  // This unfortunately needs to be public to be used in Util.php
+  /**
+   * This unfortunately needs to be public to be used in Util.php
+   *
+   * @param Stripe_Object $class
+   * @param array $values
+   * @param string|null $apiKey
+   *
+   * @return Stripe_Object The object constructed from the given values.
+   */
   public static function scopedConstructFrom($class, $values, $apiKey=null)
   {
     $obj = new $class(isset($values['id']) ? $values['id'] : null, $apiKey);
@@ -122,12 +138,26 @@ class Stripe_Object implements ArrayAccess
     return $obj;
   }
 
+  /**
+   * @param array $values
+   * @param string|null $apiKey
+   *
+   * @return Stripe_Object The object of the same class as $this constructed
+   *    from the given values.
+   */
   public static function constructFrom($values, $apiKey=null)
   {
-    $class = get_class();
+    $class = get_class($this);
     return self::scopedConstructFrom($class, $values, $apiKey);
   }
 
+  /**
+   * Refreshes this object using the provided values.
+   *
+   * @param array $values
+   * @param string $apiKey
+   * @param boolean $partial Defaults to false.
+   */
   public function refreshFrom($values, $apiKey, $partial=false)
   {
     $this->_apiKey = $apiKey;
@@ -160,6 +190,10 @@ class Stripe_Object implements ArrayAccess
     }
   }
 
+  /**
+   * @return array A recursive mapping of attributes to values for this object,
+   *    including the proper value for deleted attributes.
+   */
   public function serializeParameters()
   {
     $params = array();

@@ -2,12 +2,11 @@
 
 class Stripe_Account extends Stripe_SingletonApiResource
 {
-  public static function constructFrom($values, $apiKey=null)
-  {
-    $class = get_class();
-    return self::scopedConstructFrom($class, $values, $apiKey);
-  }
-
+  /**
+    * @param string|null $apiKey
+    *
+    * @return Stripe_Account
+    */
   public static function retrieve($apiKey=null)
   {
     $class = get_class();
