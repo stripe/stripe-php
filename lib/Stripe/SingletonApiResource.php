@@ -9,12 +9,19 @@ abstract class Stripe_SingletonApiResource extends Stripe_ApiResource
     return $instance;
   }
 
+  /**
+   * @param Stripe_SingletonApiResource $class
+   * @return string The endpoint associated with this singleton class.
+   */
   public static function classUrl($class)
   {
     $base = self::className($class);
     return "/v1/${base}";
   }
 
+  /**
+   * @return string The endpoint associated with this singleton API resource.
+   */
   public function instanceUrl()
   {
     $class = get_class($this);

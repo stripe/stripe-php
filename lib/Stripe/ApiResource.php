@@ -9,6 +9,9 @@ abstract class Stripe_ApiResource extends Stripe_Object
     return $instance;
   }
 
+  /**
+   * @returns Stripe_ApiResource The refreshed resource.
+   */
   public function refresh()
   {
     $requestor = new Stripe_ApiRequestor($this->_apiKey);
@@ -23,6 +26,12 @@ abstract class Stripe_ApiResource extends Stripe_Object
     return $this;
   }
 
+  /**
+   * @param string $class
+   *
+   * @returns string The name of the class, with namespacing and underscores
+   *    stripped.
+   */
   public static function className($class)
   {
     // Useful for namespaces: Foo\Stripe_Charge
@@ -36,12 +45,20 @@ abstract class Stripe_ApiResource extends Stripe_Object
     return $name;
   }
 
+  /**
+   * @param string $class
+   *
+   * @returns string The endpoint URL for the given class.
+   */
   public static function classUrl($class)
   {
     $base = self::_scopedLsb($class, 'className', $class);
     return "/v1/${base}s";
   }
 
+  /**
+   * @returns string The full API URL for this API resource.
+   */
   public function instanceUrl()
   {
     $id = $this['id'];
@@ -95,10 +112,10 @@ abstract class Stripe_ApiResource extends Stripe_Object
     return Stripe_Util::convertToStripeObject($response, $apiKey);
   }
 
-  protected function _scopedSave($class)
+  protected function _scopedSave($class, $apiKey=null)
   {
     self::_validateCall('save');
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $requestor = new Stripe_ApiRequestor($apiKey);
     $params = $this->serializeParameters();
 
     if (count($params) > 0) {

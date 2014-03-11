@@ -2,12 +2,9 @@
 
 class Stripe_Subscription extends Stripe_ApiResource
 {
-  public static function constructFrom($values, $apiKey=null)
-  {
-    $class = get_class();
-    return self::scopedConstructFrom($class, $values, $apiKey);
-  }
-
+  /**
+   * @return string The API URL for this Stripe subscription.
+   */
   public function instanceUrl()
   {
     $id = $this['id'];
@@ -29,18 +26,28 @@ class Stripe_Subscription extends Stripe_ApiResource
     return "$base/$customerExtn/subscriptions/$extn";
   }
 
+  /**
+   * @param array|null $params
+   * @return Stripe_Subscription The deleted subscription.
+   */
   public function cancel($params=null)
   {
     $class = get_class();
     return self::_scopedDelete($class, $params);
   }
 
+  /**
+   * @return Stripe_Subscription The saved subscription.
+   */
   public function save()
   {
     $class = get_class();
     return self::_scopedSave($class);
   }
 
+  /**
+   * @return Stripe_Subscription The updated subscription.
+   */
   public function deleteDiscount()
   {
     $requestor = new Stripe_ApiRequestor($this->_apiKey);

@@ -2,6 +2,9 @@
 
 class Stripe_ApiRequestor
 {
+  /**
+   * @var string $apiKey The API key that's to be used to make requests.
+   */
   public $apiKey;
 
   public function __construct($apiKey=null)
@@ -9,12 +12,23 @@ class Stripe_ApiRequestor
     $this->_apiKey = $apiKey;
   }
 
+  /**
+   * @param string $url The path to the API endpoint.
+   *
+   * @returns string The full path.
+   */
   public static function apiUrl($url='')
   {
     $apiBase = Stripe::$apiBase;
     return "$apiBase$url";
   }
 
+  /**
+   * @param string|mixed $value A string to UTF8-encode.
+   *
+   * @returns string|mixed The UTF8-encoded string, or the object passed in if 
+   *    it wasn't a string.
+   */
   public static function utf8($value)
   {
     if (is_string($value)
@@ -43,6 +57,12 @@ class Stripe_ApiRequestor
     }
   }
 
+  /**
+   * @param array $arr An map of param keys to values.
+   * @param string|null $prefix (It doesn't look like we ever use $prefix...)
+   *
+   * @returns string A querystring, essentially.
+   */
   public static function encode($arr, $prefix=null)
   {
     if (!is_array($arr))
@@ -68,15 +88,36 @@ class Stripe_ApiRequestor
     return implode("&", $r);
   }
 
-  public function request($meth, $url, $params=null)
+  /**
+   * @param string $method
+   * @param string $url
+   * @param array|null $params
+   *
+   * @return array An array whose first element is the response and second 
+   *    element is the API key used to make the request.
+   */
+  public function request($method, $url, $params=null)
   {
     if (!$params)
       $params = array();
-    list($rbody, $rcode, $myApiKey) = $this->_requestRaw($meth, $url, $params);
+    list($rbody, $rcode, $myApiKey) = $this->_requestRaw($method, $url, $params);
     $resp = $this->_interpretResponse($rbody, $rcode);
     return array($resp, $myApiKey);
   }
 
+
+  /**
+   * @param string $rbody A JSON string.
+   * @param int $rcode
+   * @param array $resp
+   *
+   * @throws Stripe_InvalidRequestError if the error is caused by the user.
+   * @throws Stripe_AuthenticationError if the error is caused by a lack of 
+   *    permissions.
+   * @throws Stripe_CardError if the error is the error code is 402 (payment 
+   *    required)
+   * @throws Stripe_ApiError otherwise.
+   */
   public function handleApiError($rbody, $rcode, $resp)
   {
     if (!is_array($resp) || !isset($resp['error'])) {
@@ -105,7 +146,7 @@ class Stripe_ApiRequestor
     }
   }
 
-  private function _requestRaw($meth, $url, $params)
+  private function _requestRaw($method, $url, $params)
   {
     $myApiKey = $this->_apiKey;
     if (!$myApiKey)
@@ -134,7 +175,7 @@ class Stripe_ApiRequestor
     if (Stripe::$apiVersion)
       $headers[] = 'Stripe-Version: ' . Stripe::$apiVersion;
     list($rbody, $rcode) = $this->_curlRequest(
-        $meth,
+        $method,
         $absUrl,
         $headers,
         $params
@@ -158,28 +199,28 @@ class Stripe_ApiRequestor
     return $resp;
   }
 
-  private function _curlRequest($meth, $absUrl, $headers, $params)
+  private function _curlRequest($method, $absUrl, $headers, $params)
   {
     $curl = curl_init();
-    $meth = strtolower($meth);
+    $method = strtolower($method);
     $opts = array();
-    if ($meth == 'get') {
+    if ($method == 'get') {
       $opts[CURLOPT_HTTPGET] = 1;
       if (count($params) > 0) {
         $encoded = self::encode($params);
         $absUrl = "$absUrl?$encoded";
       }
-    } else if ($meth == 'post') {
+    } else if ($method == 'post') {
       $opts[CURLOPT_POST] = 1;
       $opts[CURLOPT_POSTFIELDS] = self::encode($params);
-    } else if ($meth == 'delete') {
+    } else if ($method == 'delete') {
       $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
       if (count($params) > 0) {
         $encoded = self::encode($params);
         $absUrl = "$absUrl?$encoded";
       }
     } else {
-      throw new Stripe_ApiError("Unrecognized method $meth");
+      throw new Stripe_ApiError("Unrecognized method $method");
     }
 
     $absUrl = self::utf8($absUrl);
@@ -225,6 +266,11 @@ class Stripe_ApiRequestor
     return array($rbody, $rcode);
   }
 
+  /**
+   * @param number $errno
+   * @param string $message
+   * @throws Stripe_ApiConnectionError
+   */
   public function handleCurlError($errno, $message)
   {
     $apiBase = Stripe::$apiBase;

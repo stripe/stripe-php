@@ -2,6 +2,12 @@
 
 abstract class Stripe_Util
 {
+  /**
+   * Whether the provided array (or other) is a list rather than a dictionary.
+   *
+   * @param array|mixed $array
+   * @return boolean True if the given object is a list.
+   */
   public static function isList($array)
   {
     if (!is_array($array))
@@ -15,6 +21,12 @@ abstract class Stripe_Util
     return true;
   }
 
+  /**
+   * Recursively converts the PHP Stripe object to an array.
+   *
+   * @param array $values The PHP Stripe object to convert.
+   * @return array
+   */
   public static function convertStripeObjectToArray($values)
   {
     $results = array();
@@ -34,6 +46,13 @@ abstract class Stripe_Util
     return $results;
   }
 
+  /**
+   * Converts a response from the Stripe API to the corresponding PHP object.
+   *
+   * @param array $resp The response from the Stripe API.
+   * @param string $apiKey
+   * @return Stripe_Object|array
+   */
   public static function convertToStripeObject($resp, $apiKey)
   {
     $types = array(
