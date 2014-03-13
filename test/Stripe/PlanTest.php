@@ -1,15 +1,15 @@
-<?php
+  <?php
 
 class Stripe_PlanTest extends StripeTestCase
 {
   public function testDeletion()
   {
     authorizeFromEnv();
-    $p = Stripe_Plan::create(array('amount' => 2000,
+    $p = Stripe_Plan::create(array('amount'   => 2000,
                                    'interval' => 'month',
                                    'currency' => 'usd',
-                                   'name' => 'Plan',
-                                   'id' => 'gold-' . self::randomString()));
+                                   'name'     => 'Plan',
+                                   'id'       => 'gold-' . self::randomString()));
     $p->delete();
     $this->assertTrue($p->deleted);
   }
@@ -17,27 +17,28 @@ class Stripe_PlanTest extends StripeTestCase
   public function testId()
   {
     authorizeFromEnv();
-    $p = Stripe_Plan::create(array('amount' => 2000,
-                                   'interval' => 'month',
-                                   'currency' => 'usd',
-                                   'name' => 'Plan',
-                                   'id' => '0'));
-    $p2 = Stripe_Plan::retrieve('0');
+    $plan = Stripe_Plan::create(array('amount'   => 2000,
+                                      'interval' => 'month',
+                                      'currency' => 'usd',
+                                      'name'     => 'Plan',
+                                      'id'       => '0'));
+    $retrieved_plan = Stripe_Plan::retrieve('0');
 
-    $this->assertEqual($p->id, $p2->id);
-    $this->assertEqual($p->id, '0');
-    $p->delete();
+    $this->assertEqual($plan->id, $retrieved_plan->id);
+    $this->assertEqual($plan->id, '0');
+
+    $plan->delete();
   }
 
   public function testSave()
   {
     authorizeFromEnv();
     $planId = 'gold-' . self::randomString();
-    $p = Stripe_Plan::create(array('amount' => 2000,
+    $p = Stripe_Plan::create(array('amount'   => 2000,
                                    'interval' => 'month',
                                    'currency' => 'usd',
-                                   'name' => 'Plan',
-                                   'id' => $planId));
+                                   'name'     => 'Plan',
+                                   'id'       => $planId));
     $p->name = 'A new plan name';
     $p->save();
     $this->assertEqual($p->name, 'A new plan name');

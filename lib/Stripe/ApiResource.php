@@ -22,10 +22,12 @@ abstract class Stripe_ApiResource extends Stripe_Object
   public static function className($class)
   {
     // Useful for namespaces: Foo\Stripe_Charge
-    if ($postfix = strrchr($class, '\\'))
+    if ($postfix = strrchr($class, '\\')) {
       $class = substr($postfix, 1);
-    if (substr($class, 0, strlen('Stripe')) == 'Stripe')
+    }
+    if (substr($class, 0, strlen('Stripe')) == 'Stripe') {
       $class = substr($class, strlen('Stripe'));
+    }
     $class = str_replace('_', '', $class);
     $name = urlencode($class);
     $name = strtolower($name);
@@ -53,10 +55,12 @@ abstract class Stripe_ApiResource extends Stripe_Object
 
   private static function _validateCall($method, $params=null, $apiKey=null)
   {
-    if ($params && !is_array($params))
+    if ($params && !is_array($params)) {
       throw new Stripe_Error("You must pass an array as the first argument to Stripe API method calls.  (HINT: an example call to create a charge would be: \"StripeCharge::create(array('amount' => 100, 'currency' => 'usd', 'card' => array('number' => 4242424242424242, 'exp_month' => 5, 'exp_year' => 2015)))\")");
-    if ($apiKey && !is_string($apiKey))
+    }
+    if ($apiKey && !is_string($apiKey)) {
       throw new Stripe_Error('The second argument to Stripe API method calls is an optional per-request apiKey, which must be a string.  (HINT: you can set a global apiKey by "Stripe::setApiKey(<apiKey>)")');
+    }
   }
 
   protected static function _scopedAll($class, $params=null, $apiKey=null)
