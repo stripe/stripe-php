@@ -28,3 +28,4 @@ In order to run tests you have to install SimpleTest (http://packagist.org/packa
 Run test suite:
 
     php ./test/Stripe.php
+
