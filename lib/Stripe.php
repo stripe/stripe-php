@@ -27,6 +27,7 @@ require(dirname(__FILE__) . '/Stripe/ApiConnectionError.php');
 require(dirname(__FILE__) . '/Stripe/AuthenticationError.php');
 require(dirname(__FILE__) . '/Stripe/CardError.php');
 require(dirname(__FILE__) . '/Stripe/InvalidRequestError.php');
+require(dirname(__FILE__) . '/Stripe/RateLimitError.php');
 
 // Plumbing
 require(dirname(__FILE__) . '/Stripe/Object.php');
