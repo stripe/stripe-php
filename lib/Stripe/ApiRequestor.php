@@ -133,6 +133,11 @@ class Stripe_ApiRequestor
 
     switch ($rcode) {
     case 400:
+        if ($code == 'rate_limit') {
+          throw new Stripe_RateLimitError(
+              $msg, $param, $rcode, $rbody, $resp
+          );
+        }
     case 404:
         throw new Stripe_InvalidRequestError(
             $msg, $param, $rcode, $rbody, $resp
