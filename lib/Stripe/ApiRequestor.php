@@ -322,6 +322,16 @@ class Stripe_ApiRequestor
 
   private function checkSslCert($url)
   {
+   /* Preflight the SSL certificate presented by the backend. This isn't 100%
+    * bulletproof, in that we're not actually validating the transport used to
+    * communicate with Stripe, merely that the first attempt to does not use a
+    * revoked certificate.
+
+    * Unfortunately the interface to OpenSSL doesn't make it easy to check the
+    * certificate before sending potentially sensitive data on the wire. This
+    * approach raises the bar for an attacker significantly.
+    */
+
     if (version_compare(PHP_VERSION, '5.3.0', '<')) {
       error_log("Warning: This version of PHP is tool old to check SSL certificates correctly. " .
                 "Stripe cannot guarantee that the server has a certificate which is not blacklisted");
