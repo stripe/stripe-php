@@ -26,7 +26,7 @@ class Stripe_ApiRequestor
   /**
    * @param string|mixed $value A string to UTF8-encode.
    *
-   * @returns string|mixed The UTF8-encoded string, or the object passed in if 
+   * @returns string|mixed The UTF8-encoded string, or the object passed in if
    *    it wasn't a string.
    */
   public static function utf8($value)
@@ -93,7 +93,7 @@ class Stripe_ApiRequestor
    * @param string $url
    * @param array|null $params
    *
-   * @return array An array whose first element is the response and second 
+   * @return array An array whose first element is the response and second
    *    element is the API key used to make the request.
    */
   public function request($method, $url, $params=null)
@@ -112,9 +112,9 @@ class Stripe_ApiRequestor
    * @param array $resp
    *
    * @throws Stripe_InvalidRequestError if the error is caused by the user.
-   * @throws Stripe_AuthenticationError if the error is caused by a lack of 
+   * @throws Stripe_AuthenticationError if the error is caused by a lack of
    *    permissions.
-   * @throws Stripe_CardError if the error is the error code is 402 (payment 
+   * @throws Stripe_CardError if the error is the error code is 402 (payment
    *    required)
    * @throws Stripe_ApiError otherwise.
    */
