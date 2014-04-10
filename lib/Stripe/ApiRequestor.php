@@ -322,6 +322,12 @@ class Stripe_ApiRequestor
 
   private function checkSslCert($url)
   {
+    if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+      error_log("Warning: This version of PHP is tool old to check SSL certificates correctly. " .
+                "Stripe cannot guarantee that the server has a certificate which is not blacklisted");
+      return true;
+    }
+
     $url = parse_url($url);
     $port = isset($url["port"]) ? $url["port"] : 443;
     $url = "ssl://{$url["host"]}:{$port}";
