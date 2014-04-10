@@ -338,6 +338,15 @@ class Stripe_ApiRequestor
           'cafile'        => $this->caBundle(),
         )));
     $result = stream_socket_client($url, $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $sslContext);
+    if ($errno !== 0) {
+        throw new Stripe_ApiConnectionError(
+             "Could not connect to Stripe ($apiBase).  Please check your "
+           . "internet connection and try again.  If this problem persists, "
+           . "you should check Stripe's service status at "
+           . "https://twitter.com/stripestatus. Reason was: $errstr"
+       );
+    }
+
     $params = stream_context_get_params($result);
 
     $cert = $params['options']['ssl']['peer_certificate'];
