@@ -7,6 +7,16 @@ class Stripe_ApiRequestor
    */
   public $apiKey;
 
+  private static $preFlight;
+
+  private static function blacklistedCerts()
+  {
+    return array(
+      '05c0b3643694470a888c6e7feb5c9e24e823dc53',
+      '5b7dc7fbc98d78bf76d4d4fa6f597a0c901fad5c',
+    );
+  }
+
   public function __construct($apiKey=null)
   {
     $this->_apiKey = $apiKey;
@@ -26,7 +36,7 @@ class Stripe_ApiRequestor
   /**
    * @param string|mixed $value A string to UTF8-encode.
    *
-   * @returns string|mixed The UTF8-encoded string, or the object passed in if 
+   * @returns string|mixed The UTF8-encoded string, or the object passed in if
    *    it wasn't a string.
    */
   public static function utf8($value)
@@ -93,7 +103,7 @@ class Stripe_ApiRequestor
    * @param string $url
    * @param array|null $params
    *
-   * @return array An array whose first element is the response and second 
+   * @return array An array whose first element is the response and second
    *    element is the API key used to make the request.
    */
   public function request($method, $url, $params=null)
@@ -112,9 +122,9 @@ class Stripe_ApiRequestor
    * @param array $resp
    *
    * @throws Stripe_InvalidRequestError if the error is caused by the user.
-   * @throws Stripe_AuthenticationError if the error is caused by a lack of 
+   * @throws Stripe_AuthenticationError if the error is caused by a lack of
    *    permissions.
-   * @throws Stripe_CardError if the error is the error code is 402 (payment 
+   * @throws Stripe_CardError if the error is the error code is 402 (payment
    *    required)
    * @throws Stripe_ApiError otherwise.
    */
@@ -206,6 +216,11 @@ class Stripe_ApiRequestor
 
   private function _curlRequest($method, $absUrl, $headers, $params)
   {
+
+    if (!self::$preFlight) {
+      self::$preFlight = $this->checkSslCert($this->apiUrl());
+    }
+
     $curl = curl_init();
     $method = strtolower($method);
     $opts = array();
@@ -253,7 +268,7 @@ class Stripe_ApiRequestor
           $headers,
           'X-Stripe-Client-Info: {"ca":"using Stripe-supplied CA bundle"}'
       );
-      $cert = dirname(__FILE__) . '/../data/ca-certificates.crt';
+      $cert = $this->caBundle();
       curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
       curl_setopt($curl, CURLOPT_CAINFO, $cert);
       $rbody = curl_exec($curl);
@@ -303,5 +318,72 @@ class Stripe_ApiRequestor
 
     $msg .= "\n\n(Network error [errno $errno]: $message)";
     throw new Stripe_ApiConnectionError($msg);
+  }
+
+  private function checkSslCert($url)
+  {
+    if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+      error_log("Warning: This version of PHP is tool old to check SSL certificates correctly. " .
+                "Stripe cannot guarantee that the server has a certificate which is not blacklisted");
+      return true;
+    }
+
+    $url = parse_url($url);
+    $port = isset($url["port"]) ? $url["port"] : 443;
+    $url = "ssl://{$url["host"]}:{$port}";
+
+    $sslContext = stream_context_create(array( 'ssl' => array(
+          'capture_peer_cert' => true,
+          'verify_peer'   => true,
+          'cafile'        => $this->caBundle(),
+        )));
+    $result = stream_socket_client($url, $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $sslContext);
+    if ($errno !== 0) {
+        throw new Stripe_ApiConnectionError(
+             "Could not connect to Stripe ($apiBase).  Please check your "
+           . "internet connection and try again.  If this problem persists, "
+           . "you should check Stripe's service status at "
+           . "https://twitter.com/stripestatus. Reason was: $errstr"
+       );
+    }
+
+    $params = stream_context_get_params($result);
+
+    $cert = $params['options']['ssl']['peer_certificate'];
+    $cert_data = openssl_x509_parse( $cert );
+
+    openssl_x509_export($cert, $pem_cert);
+
+    if (self::isBlackListed($pem_cert)) {
+        throw new Stripe_ApiConnectionError(
+            "Invalid server certificate. You tried to connect to a server that has a " .
+            "revoked SSL certificate, which means we cannot securely send data to " .
+            "that server.  Please email support@stripe.com if you need help " .
+            "connecting to the correct API server."
+        );
+    }
+
+    return true;
+  }
+
+  /* Checks if a valid PEM encoded certificate is blacklisted
+   * @return boolean
+   */
+  public static function isBlackListed($certificate)
+  {
+    $certificate = trim($certificate);
+    $lines = explode("\n", $certificate);
+
+    // Kludgily remove the PEM padding
+    array_shift($lines); array_pop($lines);
+
+    $der_cert = base64_decode(implode("", $lines));
+    $fingerprint = sha1($der_cert);
+    return in_array($fingerprint, self::blacklistedCerts());
+  }
+
+  private function caBundle()
+  {
+    return dirname(__FILE__) . '/../data/ca-certificates.crt';
   }
 }
