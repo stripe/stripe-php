@@ -1,4 +1,12 @@
-= Installation
+= Stripe PHP bindings {<img src="https://travis-ci.org/stripe/stripe-php.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/stripe/stripe-php]
+
+You can sign up for a Stripe account at https://stripe.com.
+
+== Requirements
+
+PHP 5.2 and later.
+
+== Installation
 
 Obtain the latest version of the Stripe PHP bindings with:
 
@@ -15,11 +23,11 @@ Simple usage looks like:
     $charge = Stripe_Charge::create(array('card' => $myCard, 'amount' => 2000, 'currency' => 'usd'));
     echo $charge;
 
-= Documentation
+== Documentation
 
 Please see https://stripe.com/api for up-to-date documentation.
 
-= Tests
+== Tests
 
 In order to run tests you have to install SimpleTest (http://packagist.org/packages/simpletest/simpletest) via Composer (http://getcomposer.org/) (recommended way):
 
