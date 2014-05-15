@@ -177,7 +177,7 @@ class Stripe_Object implements ArrayAccess
     }
 
     foreach ($values as $k => $v) {
-      if (self::$permanentAttributes->includes($k))
+      if (self::$permanentAttributes->includes($k) && isset($this[$k]))
         continue;
 
       if (self::$nestedUpdatableAttributes->includes($k) && is_array($v))
