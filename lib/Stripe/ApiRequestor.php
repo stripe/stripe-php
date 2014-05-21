@@ -333,7 +333,7 @@ class Stripe_ApiRequestor
     */
 
     if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-      error_log("Warning: This version of PHP is tool old to check SSL certificates correctly. " .
+      error_log("Warning: This version of PHP is too old to check SSL certificates correctly. " .
                 "Stripe cannot guarantee that the server has a certificate which is not blacklisted");
       return true;
     }
