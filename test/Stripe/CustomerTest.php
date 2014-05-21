@@ -147,7 +147,8 @@ class Stripe_CustomerTest extends StripeTestCase
     $customer->save();
 
     $updatedCustomer = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual(count($updatedCustomer->cards->all()["data"]), 2);
+    $updatedCards = $updatedCustomer->cards->all();
+    $this->assertEqual(count($updatedCards["data"]), 2);
 
   }
 
@@ -156,14 +157,16 @@ class Stripe_CustomerTest extends StripeTestCase
     $customer = $this->createTestCustomer();
     $customer->save();
 
-    $this->assertEqual(count($customer->cards->all()["data"]), 1);
+    $cards = $customer->cards->all();
+    $this->assertEqual(count($cards["data"]), 1);
 
-    $card = $customer->cards->all()['data'][0];
+    $card = $cards['data'][0];
     $card->name = "Jane Austen";
     $card->save();
 
     $updatedCustomer = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual($updatedCustomer->cards->all()["data"][0]->name, "Jane Austen");
+    $updatedCards = $updatedCustomer->cards->all();
+    $this->assertEqual($updatedCards["data"][0]->name, "Jane Austen");
   }
 
   public function testCustomerDeleteCard()
@@ -182,14 +185,16 @@ class Stripe_CustomerTest extends StripeTestCase
     $customer->save();
 
     $updatedCustomer = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual(count($updatedCustomer->cards->all()["data"]), 2);
+    $updatedCards = $updatedCustomer->cards->all();
+    $this->assertEqual(count($updatedCards["data"]), 2);
 
     $deleteStatus = $updatedCustomer->cards->retrieve($createdCard->id)->delete();
     $this->assertEqual($deleteStatus->deleted, 1);
     $updatedCustomer->save();
 
     $postDeleteCustomer = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual(count($postDeleteCustomer->cards->all()["data"]), 1);
+    $postDeleteCards = $postDeleteCustomer->cards->all();
+    $this->assertEqual(count($postDeleteCards["data"]), 1);
   }
 
 }

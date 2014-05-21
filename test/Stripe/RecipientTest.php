@@ -53,7 +53,8 @@ class Stripe_RecipientTest extends StripeTestCase
     $recipient->save();
 
     $updatedRecipient = Stripe_Recipient::retrieve($recipient->id);
-    $this->assertEqual(count($updatedRecipient->cards->all()["data"]), 1);
+    $updatedCards = $updatedRecipient->cards->all();
+    $this->assertEqual(count($updatedCards["data"]), 1);
 
   }
 
@@ -72,14 +73,16 @@ class Stripe_RecipientTest extends StripeTestCase
     $createdCard = $recipient->cards->create(array("card" => $token->id));
     $recipient->save();
 
-    $this->assertEqual(count($recipient->cards->all()["data"]), 1);
+    $createdCards = $recipient->cards->all();
+    $this->assertEqual(count($createdCards["data"]), 1);
 
-    $card = $recipient->cards->all()['data'][0];
+    $card = $createdCards['data'][0];
     $card->name = "Jane Austen";
     $card->save();
 
     $updatedRecipient = Stripe_Recipient::retrieve($recipient->id);
-    $this->assertEqual($updatedRecipient->cards->all()["data"][0]->name, "Jane Austen");
+    $updatedCards = $updatedRecipient->cards->all();
+    $this->assertEqual($updatedCards["data"][0]->name, "Jane Austen");
   }
 
   public function testRecipientDeleteCard()
@@ -98,13 +101,15 @@ class Stripe_RecipientTest extends StripeTestCase
     $recipient->save();
 
     $updatedRecipient = Stripe_Recipient::retrieve($recipient->id);
-    $this->assertEqual(count($updatedRecipient->cards->all()["data"]), 1);
+    $updatedCards = $updatedRecipient->cards->all(); 
+    $this->assertEqual(count($updatedCards["data"]), 1);
 
     $deleteStatus = $updatedRecipient->cards->retrieve($createdCard->id)->delete();
     $this->assertEqual($deleteStatus->deleted, 1);
     $updatedRecipient->save();
 
     $postDeleteRecipient = Stripe_Recipient::retrieve($recipient->id);
-    $this->assertEqual(count($postDeleteRecipient->cards->all()["data"]), 0);
+    $postDeleteCards = $postDeleteRecipient->cards->all();
+    $this->assertEqual(count($postDeleteCards["data"]), 0);
   }
 }
