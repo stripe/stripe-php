@@ -137,7 +137,7 @@ class Stripe_CustomerTest extends StripeTestCase
       "card" => array(
         "number" => "4242424242424242",
         "exp_month" => 5,
-        "exp_year" => 2015,
+        "exp_year" => date('Y') + 3,
         "cvc" => "314"
       )
     ));
@@ -172,7 +172,7 @@ class Stripe_CustomerTest extends StripeTestCase
       "card" => array(
         "number" => "4242424242424242",
         "exp_month" => 5,
-        "exp_year" => 2015,
+        "exp_year" => date('Y') + 3,
         "cvc" => "314"
       )
     ));

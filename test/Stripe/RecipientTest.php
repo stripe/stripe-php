@@ -43,7 +43,7 @@ class Stripe_RecipientTest extends StripeTestCase
       "card" => array(
         "number" => "4000056655665556",
         "exp_month" => 5,
-        "exp_year" => 2015,
+        "exp_year" => date('Y') + 3,
         "cvc" => "314"
       )
     ));
@@ -63,7 +63,7 @@ class Stripe_RecipientTest extends StripeTestCase
       "card" => array(
         "number" => "4000056655665556",
         "exp_month" => 5,
-        "exp_year" => 2015,
+        "exp_year" => date('Y') + 3,
         "cvc" => "314"
       )
     ));
@@ -88,7 +88,7 @@ class Stripe_RecipientTest extends StripeTestCase
       "card" => array(
         "number" => "4000056655665556",
         "exp_month" => 5,
-        "exp_year" => 2015,
+        "exp_year" => date('Y') + 3,
         "cvc" => "314"
       )
     ));
