@@ -22,30 +22,23 @@ class Stripe_Card extends Stripe_ApiResource
     }
 
     if (isset($this['customer'])) {
-
-      $customer = $this['customer'];
-      $class = get_class($this);
-
-      $id = Stripe_ApiRequestor::utf8($id);
-      $customer = Stripe_ApiRequestor::utf8($customer);
-
+      
+      $parent = $this['customer'];
+      $parent = Stripe_ApiRequestor::utf8($parent);
       $base = self::classUrl('Stripe_Customer');
-      $customerExtn = urlencode($customer);
-      $extn = urlencode($id);
-      return "$base/$customerExtn/cards/$extn";
     } else {
       
-      $recipient = $this['recipient'];
-      $class = get_class($this);
-
-      $id = Stripe_ApiRequestor::utf8($id);
-      $recipient = Stripe_ApiRequestor::utf8($recipient);
-
+      $parent = $this['recipient'];
+      $parent = Stripe_ApiRequestor::utf8($parent);
       $base = self::classUrl('Stripe_Recipient');
-      $recipientExtn = urlencode($recipient);
-      $extn = urlencode($id);
-      return "$base/$recipientExtn/cards/$extn";
     }
+
+    $class = get_class($this);
+    $id = Stripe_ApiRequestor::utf8($id);
+
+    $parentExtn = urlencode($parent);
+    $extn = urlencode($id);
+    return "$base/$parentExtn/cards/$extn";
   }
 
   /**
