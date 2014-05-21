@@ -131,4 +131,65 @@ class Stripe_CustomerTest extends StripeTestCase
     $this->assertEqual($customer->subscription->status, 'canceled');
   }
 
+  public function testCustomerAddCard()
+  {
+    $token = Stripe_Token::create(array(
+      "card" => array(
+        "number" => "4242424242424242",
+        "exp_month" => 5,
+        "exp_year" => 2015,
+        "cvc" => "314"
+      )
+    ));
+
+    $customer = $this->createTestCustomer();
+    $createdCard = $customer->cards->create(array("card" => $token->id));
+    $customer->save();
+
+    $updatedCustomer = Stripe_Customer::retrieve($customer->id);
+    $this->assertEqual(count($updatedCustomer->cards->all()["data"]), 2);
+
+  }
+
+  public function testCustomerUpdateCard()
+  {
+    $customer = $this->createTestCustomer();
+    $customer->save();
+
+    $this->assertEqual(count($customer->cards->all()["data"]), 1);
+
+    $card = $customer->cards->all()['data'][0];
+    $card->name = "Jane Austen";
+    $card->save();
+
+    $updatedCustomer = Stripe_Customer::retrieve($customer->id);
+    $this->assertEqual($updatedCustomer->cards->all()["data"][0]->name, "Jane Austen");
+  }
+
+  public function testCustomerDeleteCard()
+  {
+    $token = Stripe_Token::create(array(
+      "card" => array(
+        "number" => "4242424242424242",
+        "exp_month" => 5,
+        "exp_year" => 2015,
+        "cvc" => "314"
+      )
+    ));
+
+    $customer = $this->createTestCustomer();
+    $createdCard = $customer->cards->create(array("card" => $token->id));
+    $customer->save();
+
+    $updatedCustomer = Stripe_Customer::retrieve($customer->id);
+    $this->assertEqual(count($updatedCustomer->cards->all()["data"]), 2);
+
+    $deleteStatus = $updatedCustomer->cards->retrieve($createdCard->id)->delete();
+    $this->assertEqual($deleteStatus->deleted, 1);
+    $updatedCustomer->save();
+
+    $postDeleteCustomer = Stripe_Customer::retrieve($customer->id);
+    $this->assertEqual(count($postDeleteCustomer->cards->all()["data"]), 1);
+  }
+
 }
