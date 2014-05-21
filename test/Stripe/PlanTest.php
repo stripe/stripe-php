@@ -1,4 +1,4 @@
-  <?php
+<?php
 
 class Stripe_PlanTest extends StripeTestCase
 {
@@ -6,13 +6,13 @@ class Stripe_PlanTest extends StripeTestCase
   {
     authorizeFromEnv();
     $p = Stripe_Plan::create(
-      array(
-          'amount' => 2000,
-          'interval' => 'month',
-          'currency' => 'usd',
-          'name' => 'Plan',
-          'id' => 'gold-' . self::randomString()
-      )
+        array(
+            'amount' => 2000,
+            'interval' => 'month',
+            'currency' => 'usd',
+            'name' => 'Plan',
+            'id' => 'gold-' . self::randomString()
+        )
     );
     $p->delete();
     $this->assertTrue($p->deleted);
@@ -22,13 +22,13 @@ class Stripe_PlanTest extends StripeTestCase
   {
     authorizeFromEnv();
     $plan = Stripe_Plan::create(
-      array(
-          'amount'   => 2000,
-          'interval' => 'month',
-          'currency' => 'usd',
-          'name'     => 'Plan',
-          'id'       => '0'
-      )
+        array(
+            'amount'   => 2000,
+            'interval' => 'month',
+            'currency' => 'usd',
+            'name'     => 'Plan',
+            'id'       => '0'
+        )
     );
     $retrieved_plan = Stripe_Plan::retrieve('0');
 
@@ -43,13 +43,13 @@ class Stripe_PlanTest extends StripeTestCase
     authorizeFromEnv();
     $planID = 'gold-' . self::randomString();
     $p = Stripe_Plan::create(
-      array(
-          'amount'   => 2000,
-          'interval' => 'month',
-          'currency' => 'usd',
-          'name'     => 'Plan',
-          'id'       => $planID
-      )
+        array(
+            'amount'   => 2000,
+            'interval' => 'month',
+            'currency' => 'usd',
+            'name'     => 'Plan',
+            'id'       => $planID
+        )
     );
     $p->name = 'A new plan name';
     $p->save();
