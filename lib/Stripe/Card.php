@@ -24,15 +24,14 @@ class Stripe_Card extends Stripe_ApiResource
     if (isset($this['customer'])) {
       
       $parent = $this['customer'];
-      $parent = Stripe_ApiRequestor::utf8($parent);
       $base = self::classUrl('Stripe_Customer');
     } else {
       
       $parent = $this['recipient'];
-      $parent = Stripe_ApiRequestor::utf8($parent);
       $base = self::classUrl('Stripe_Recipient');
     }
 
+    $parent = Stripe_ApiRequestor::utf8($parent);
     $class = get_class($this);
     $id = Stripe_ApiRequestor::utf8($id);
 
