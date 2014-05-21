@@ -35,10 +35,12 @@ abstract class Stripe_ApiResource extends Stripe_Object
   public static function className($class)
   {
     // Useful for namespaces: Foo\Stripe_Charge
-    if ($postfix = strrchr($class, '\\'))
+    if ($postfix = strrchr($class, '\\')) {
       $class = substr($postfix, 1);
-    if (substr($class, 0, strlen('Stripe')) == 'Stripe')
+    }
+    if (substr($class, 0, strlen('Stripe')) == 'Stripe') {
       $class = substr($class, strlen('Stripe'));
+    }
     $class = str_replace('_', '', $class);
     $name = urlencode($class);
     $name = strtolower($name);
@@ -63,7 +65,7 @@ abstract class Stripe_ApiResource extends Stripe_Object
   {
     $id = $this['id'];
     $class = get_class($this);
-    if (!$id) {
+    if ($id === null) {
       $message = "Could not determine which URL to request: "
                . "$class instance has invalid ID: $id";
       throw new Stripe_InvalidRequestError($message, null);
