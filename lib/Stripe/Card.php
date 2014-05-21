@@ -15,20 +15,37 @@ class Stripe_Card extends Stripe_ApiResource
   public function instanceUrl()
   {
     $id = $this['id'];
-    $customer = $this['customer'];
-    $class = get_class($this);
     if (!$id) {
       $msg = "Could not determine which URL to request: $class instance "
            . "has invalid ID: $id";
       throw new Stripe_InvalidRequestError($msg, null);
     }
-    $id = Stripe_ApiRequestor::utf8($id);
-    $customer = Stripe_ApiRequestor::utf8($customer);
 
-    $base = self::classUrl('Stripe_Customer');
-    $customerExtn = urlencode($customer);
-    $extn = urlencode($id);
-    return "$base/$customerExtn/cards/$extn";
+    if (isset($this['customer'])) {
+
+      $customer = $this['customer'];
+      $class = get_class($this);
+
+      $id = Stripe_ApiRequestor::utf8($id);
+      $customer = Stripe_ApiRequestor::utf8($customer);
+
+      $base = self::classUrl('Stripe_Customer');
+      $customerExtn = urlencode($customer);
+      $extn = urlencode($id);
+      return "$base/$customerExtn/cards/$extn";
+    } else {
+      
+      $recipient = $this['recipient'];
+      $class = get_class($this);
+
+      $id = Stripe_ApiRequestor::utf8($id);
+      $recipient = Stripe_ApiRequestor::utf8($recipient);
+
+      $base = self::classUrl('Stripe_Recipient');
+      $recipientExtn = urlencode($recipient);
+      $extn = urlencode($id);
+      return "$base/$recipientExtn/cards/$extn";
+    }
   }
 
   /**
