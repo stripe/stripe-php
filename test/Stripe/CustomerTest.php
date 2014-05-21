@@ -131,4 +131,70 @@ class Stripe_CustomerTest extends StripeTestCase
     $this->assertEqual($customer->subscription->status, 'canceled');
   }
 
+  public function testCustomerAddCard()
+  {
+    $token = Stripe_Token::create(array(
+      "card" => array(
+        "number" => "4242424242424242",
+        "exp_month" => 5,
+        "exp_year" => date('Y') + 3,
+        "cvc" => "314"
+      )
+    ));
+
+    $customer = $this->createTestCustomer();
+    $createdCard = $customer->cards->create(array("card" => $token->id));
+    $customer->save();
+
+    $updatedCustomer = Stripe_Customer::retrieve($customer->id);
+    $updatedCards = $updatedCustomer->cards->all();
+    $this->assertEqual(count($updatedCards["data"]), 2);
+
+  }
+
+  public function testCustomerUpdateCard()
+  {
+    $customer = $this->createTestCustomer();
+    $customer->save();
+
+    $cards = $customer->cards->all();
+    $this->assertEqual(count($cards["data"]), 1);
+
+    $card = $cards['data'][0];
+    $card->name = "Jane Austen";
+    $card->save();
+
+    $updatedCustomer = Stripe_Customer::retrieve($customer->id);
+    $updatedCards = $updatedCustomer->cards->all();
+    $this->assertEqual($updatedCards["data"][0]->name, "Jane Austen");
+  }
+
+  public function testCustomerDeleteCard()
+  {
+    $token = Stripe_Token::create(array(
+      "card" => array(
+        "number" => "4242424242424242",
+        "exp_month" => 5,
+        "exp_year" => date('Y') + 3,
+        "cvc" => "314"
+      )
+    ));
+
+    $customer = $this->createTestCustomer();
+    $createdCard = $customer->cards->create(array("card" => $token->id));
+    $customer->save();
+
+    $updatedCustomer = Stripe_Customer::retrieve($customer->id);
+    $updatedCards = $updatedCustomer->cards->all();
+    $this->assertEqual(count($updatedCards["data"]), 2);
+
+    $deleteStatus = $updatedCustomer->cards->retrieve($createdCard->id)->delete();
+    $this->assertEqual($deleteStatus->deleted, 1);
+    $updatedCustomer->save();
+
+    $postDeleteCustomer = Stripe_Customer::retrieve($customer->id);
+    $postDeleteCards = $postDeleteCustomer->cards->all();
+    $this->assertEqual(count($postDeleteCards["data"]), 1);
+  }
+
 }
