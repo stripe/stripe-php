@@ -149,8 +149,7 @@ class Stripe_Object implements ArrayAccess
    */
   public static function constructFrom($values, $apiKey=null)
   {
-    $class = get_called_class();
-    return self::scopedConstructFrom($class, $values, $apiKey);
+    return self::scopedConstructFrom(__CLASS__, $values, $apiKey);
   }
 
   /**
