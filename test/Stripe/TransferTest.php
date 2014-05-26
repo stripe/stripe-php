@@ -33,6 +33,25 @@ class Stripe_TransferTest extends StripeTestCase
     $this->assertEqual($reloaded->id, $transfer->id);
   }
 
+  public function testCancel()
+  {
+    $this->expectException(new IsAExpectation('Stripe_InvalidRequestError'));
+    $recipient = self::createTestRecipient();
+
+    authorizeFromEnv();
+    $transfer = Stripe_Transfer::create(
+        array(
+          'amount' => 100,
+          'currency' => 'usd',
+          'recipient' => $recipient->id
+        )
+    );
+    $reloaded = Stripe_Transfer::retrieve($transfer->id);
+    $this->assertEqual($reloaded->id, $transfer->id);
+
+    $reloaded->cancel();
+  }
+
   public function testTransferUpdateMetadata()
   {
     $recipient = self::createTestRecipient();
