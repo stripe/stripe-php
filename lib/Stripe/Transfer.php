@@ -39,6 +39,18 @@ class Stripe_Transfer extends Stripe_ApiResource
   }
 
   /**
+   * @return Stripe_Transfer The canceled transfer.
+   */
+  public function cancel()
+  {
+    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $url = $this->instanceUrl() . '/cancel';
+    list($response, $apiKey) = $requestor->request('post', $url);
+    $this->refreshFrom($response, $apiKey);
+    return $this;
+  }
+
+  /**
    * @return Stripe_Transfer The saved transfer.
    */
   public function save()
