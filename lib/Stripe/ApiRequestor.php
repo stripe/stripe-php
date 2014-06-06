@@ -338,6 +338,12 @@ class Stripe_ApiRequestor
       return true;
     }
 
+    if (strpos(PHP_VERSION, 'hiphop') !== false) {
+      error_log("Warning: HHVM does not support SSL certificate verification. (See http://docs.hhvm.com/manual/en/context.ssl.php) " .
+                "Stripe cannot guarantee that the server has a certificate which is not blacklisted");
+      return true;
+    }
+
     $url = parse_url($url);
     $port = isset($url["port"]) ? $url["port"] : 443;
     $url = "ssl://{$url["host"]}:{$port}";
@@ -349,6 +355,7 @@ class Stripe_ApiRequestor
         )));
     $result = stream_socket_client($url, $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $sslContext);
     if ($errno !== 0) {
+        $apiBase = Stripe::$apiBase;
         throw new Stripe_ApiConnectionError(
              "Could not connect to Stripe ($apiBase).  Please check your "
            . "internet connection and try again.  If this problem persists, "
