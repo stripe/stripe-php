@@ -8,7 +8,7 @@ PHP 5.2 and later.
 
 == Composer
 
-You can install the API via Composer[http://getcomposer.org/]. Add this to your +composer.json+:
+You can install the bindings via Composer[http://getcomposer.org/]. Add this to your +composer.json+:
 
     {
       "require": {
