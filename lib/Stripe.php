@@ -53,4 +53,5 @@ require(dirname(__FILE__) . '/Stripe/Coupon.php');
 require(dirname(__FILE__) . '/Stripe/Event.php');
 require(dirname(__FILE__) . '/Stripe/Transfer.php');
 require(dirname(__FILE__) . '/Stripe/Recipient.php');
+require(dirname(__FILE__) . '/Stripe/Refund.php');
 require(dirname(__FILE__) . '/Stripe/ApplicationFee.php');

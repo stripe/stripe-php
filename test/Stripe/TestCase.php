@@ -8,6 +8,28 @@ abstract class StripeTestCase extends UnitTestCase
 {
 
   /**
+   * Create a valid test charge.
+   */
+  protected static function createTestCharge(array $attributes = array())
+  {
+    authorizeFromEnv();
+
+    return Stripe_Charge::create(
+        $attributes + array(
+          "amount" => 2000,
+          "currency" => "usd",
+          "description" => "Charge for test@example.com",
+          'card' => array(
+            'number'    => '4242424242424242',
+            'exp_month' => 5,
+            'exp_year'  => date('Y') + 3,
+          ),
+        )
+    );
+  }
+
+
+  /**
    * Create a valid test customer.
    */
   protected static function createTestCustomer(array $attributes = array())

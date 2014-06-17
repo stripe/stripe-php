@@ -55,5 +55,6 @@ require_once(dirname(__FILE__) . '/Stripe/SubscriptionTest.php');
 require_once(dirname(__FILE__) . '/Stripe/Token.php');
 require_once(dirname(__FILE__) . '/Stripe/TransferTest.php');
 require_once(dirname(__FILE__) . '/Stripe/RecipientTest.php');
+require_once(dirname(__FILE__) . '/Stripe/RefundTest.php');
 require_once(dirname(__FILE__) . '/Stripe/ApplicationFeeTest.php');
 require_once(dirname(__FILE__) . '/Stripe/UtilTest.php');
