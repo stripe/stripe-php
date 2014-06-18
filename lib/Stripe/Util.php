@@ -66,6 +66,7 @@ abstract class Stripe_Util
       'transfer' => 'Stripe_Transfer',
       'plan' => 'Stripe_Plan',
       'recipient' => 'Stripe_Recipient',
+      'refund' => 'Stripe_Refund',
       'subscription' => 'Stripe_Subscription'
     );
     if (self::isList($resp)) {
