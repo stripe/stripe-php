@@ -39,14 +39,14 @@ class Stripe_RecipientTest extends StripeTestCase
 
   public function testRecipientAddCard()
   {
-    $token = Stripe_Token::create(array(
-      "card" => array(
-        "number" => "4000056655665556",
-        "exp_month" => 5,
-        "exp_year" => date('Y') + 3,
-        "cvc" => "314"
-      )
-    ));
+    $token = Stripe_Token::create(
+        array("card" => array(
+          "number" => "4000056655665556",
+          "exp_month" => 5,
+          "exp_year" => date('Y') + 3,
+          "cvc" => "314"
+        ))
+    );
 
     $recipient = $this->createTestRecipient();
     $createdCard = $recipient->cards->create(array("card" => $token->id));
@@ -60,14 +60,14 @@ class Stripe_RecipientTest extends StripeTestCase
 
   public function testRecipientUpdateCard()
   {
-    $token = Stripe_Token::create(array(
-      "card" => array(
-        "number" => "4000056655665556",
-        "exp_month" => 5,
-        "exp_year" => date('Y') + 3,
-        "cvc" => "314"
-      )
-    ));
+    $token = Stripe_Token::create(
+        array("card" => array(
+          "number" => "4000056655665556",
+          "exp_month" => 5,
+          "exp_year" => date('Y') + 3,
+          "cvc" => "314"
+        ))
+    );
     
     $recipient = $this->createTestRecipient();
     $createdCard = $recipient->cards->create(array("card" => $token->id));
@@ -87,14 +87,14 @@ class Stripe_RecipientTest extends StripeTestCase
 
   public function testRecipientDeleteCard()
   {
-    $token = Stripe_Token::create(array(
-      "card" => array(
-        "number" => "4000056655665556",
-        "exp_month" => 5,
-        "exp_year" => date('Y') + 3,
-        "cvc" => "314"
-      )
-    ));
+    $token = Stripe_Token::create(
+        array("card" => array(
+          "number" => "4000056655665556",
+          "exp_month" => 5,
+          "exp_year" => date('Y') + 3,
+          "cvc" => "314"
+        ))
+    );
 
     $recipient = $this->createTestRecipient();
     $createdCard = $recipient->cards->create(array("card" => $token->id));
@@ -104,7 +104,8 @@ class Stripe_RecipientTest extends StripeTestCase
     $updatedCards = $updatedRecipient->cards->all(); 
     $this->assertEqual(count($updatedCards["data"]), 1);
 
-    $deleteStatus = $updatedRecipient->cards->retrieve($createdCard->id)->delete();
+    $deleteStatus =
+      $updatedRecipient->cards->retrieve($createdCard->id)->delete();
     $this->assertEqual($deleteStatus->deleted, 1);
     $updatedRecipient->save();
 

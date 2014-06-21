@@ -4,7 +4,7 @@ class Stripe_InvoiceTest extends StripeTestCase
 {
   public function testUpcoming()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     $customer = self::createTestCustomer();
 
     Stripe_InvoiceItem::create(
@@ -28,7 +28,7 @@ class Stripe_InvoiceTest extends StripeTestCase
   // warnings, as it's highly nested.
   public function testAll()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     $invoices = Stripe_Invoice::all();
     $this->assertTrue(count($invoices) > 0);
   }

@@ -7,7 +7,7 @@ class Stripe_ApiRequestor
    */
   public $apiKey;
 
-  private static $preFlight;
+  private static $_preFlight;
 
   private static function blacklistedCerts()
   {
@@ -110,7 +110,8 @@ class Stripe_ApiRequestor
   {
     if (!$params)
       $params = array();
-    list($rbody, $rcode, $myApiKey) = $this->_requestRaw($method, $url, $params);
+    list($rbody, $rcode, $myApiKey) =
+      $this->_requestRaw($method, $url, $params);
     $resp = $this->_interpretResponse($rbody, $rcode);
     return array($resp, $myApiKey);
   }
@@ -217,8 +218,8 @@ class Stripe_ApiRequestor
   private function _curlRequest($method, $absUrl, $headers, $params)
   {
 
-    if (!self::$preFlight) {
-      self::$preFlight = $this->checkSslCert($this->apiUrl());
+    if (!self::$_preFlight) {
+      self::$_preFlight = $this->checkSslCert($this->apiUrl());
     }
 
     $curl = curl_init();
@@ -320,27 +321,34 @@ class Stripe_ApiRequestor
     throw new Stripe_ApiConnectionError($msg);
   }
 
+  /**
+   * Preflight the SSL certificate presented by the backend. This isn't 100%
+   * bulletproof, in that we're not actually validating the transport used to
+   * communicate with Stripe, merely that the first attempt to does not use a
+   * revoked certificate.
+   *
+   * Unfortunately the interface to OpenSSL doesn't make it easy to check the
+   * certificate before sending potentially sensitive data on the wire. This
+   * approach raises the bar for an attacker significantly.
+   */
   private function checkSslCert($url)
   {
-   /* Preflight the SSL certificate presented by the backend. This isn't 100%
-    * bulletproof, in that we're not actually validating the transport used to
-    * communicate with Stripe, merely that the first attempt to does not use a
-    * revoked certificate.
-
-    * Unfortunately the interface to OpenSSL doesn't make it easy to check the
-    * certificate before sending potentially sensitive data on the wire. This
-    * approach raises the bar for an attacker significantly.
-    */
-
     if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-      error_log("Warning: This version of PHP is too old to check SSL certificates correctly. " .
-                "Stripe cannot guarantee that the server has a certificate which is not blacklisted");
+      error_log(
+          'Warning: This version of PHP is too old to check SSL certificates '.
+          'correctly. Stripe cannot guarantee that the server has a '.
+          'certificate which is not blacklisted'
+      );
       return true;
     }
 
     if (strpos(PHP_VERSION, 'hiphop') !== false) {
-      error_log("Warning: HHVM does not support SSL certificate verification. (See http://docs.hhvm.com/manual/en/context.ssl.php) " .
-                "Stripe cannot guarantee that the server has a certificate which is not blacklisted");
+      error_log(
+          'Warning: HHVM does not support Stripe\'s SSL certificate '.
+          'verification. (See http://docs.hhvm.com/manual/en/context.ssl.php) '.
+          'Stripe cannot guarantee that the server has a certificate which is '.
+          'not blacklisted'
+      );
       return true;
     }
 
@@ -348,36 +356,39 @@ class Stripe_ApiRequestor
     $port = isset($url["port"]) ? $url["port"] : 443;
     $url = "ssl://{$url["host"]}:{$port}";
 
-    $sslContext = stream_context_create(array( 'ssl' => array(
+    $sslContext = stream_context_create(
+        array('ssl' => array(
           'capture_peer_cert' => true,
           'verify_peer'   => true,
           'cafile'        => $this->caBundle(),
-        )));
-    $result = stream_socket_client($url, $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $sslContext);
+        ))
+    );
+    $result = stream_socket_client(
+        $url, $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $sslContext
+    );
     if ($errno !== 0) {
-        $apiBase = Stripe::$apiBase;
-        throw new Stripe_ApiConnectionError(
-             "Could not connect to Stripe ($apiBase).  Please check your "
-           . "internet connection and try again.  If this problem persists, "
-           . "you should check Stripe's service status at "
-           . "https://twitter.com/stripestatus. Reason was: $errstr"
-       );
+      $apiBase = Stripe::$apiBase;
+      throw new Stripe_ApiConnectionError(
+          'Could not connect to Stripe ($apiBase).  Please check your '.
+          'internet connection and try again.  If this problem persists, '.
+          'you should check Stripe\'s service status at '.
+          'https://twitter.com/stripestatus. Reason was: '.$errstr
+      );
     }
 
     $params = stream_context_get_params($result);
 
     $cert = $params['options']['ssl']['peer_certificate'];
-    $cert_data = openssl_x509_parse( $cert );
 
-    openssl_x509_export($cert, $pem_cert);
+    openssl_x509_export($cert, $pemCert);
 
-    if (self::isBlackListed($pem_cert)) {
-        throw new Stripe_ApiConnectionError(
-            "Invalid server certificate. You tried to connect to a server that has a " .
-            "revoked SSL certificate, which means we cannot securely send data to " .
-            "that server.  Please email support@stripe.com if you need help " .
-            "connecting to the correct API server."
-        );
+    if (self::isBlackListed($pemCert)) {
+      throw new Stripe_ApiConnectionError(
+          'Invalid server certificate. You tried to connect to a server that '.
+          'has a revoked SSL certificate, which means we cannot securely send '.
+          'data to that server.  Please email support@stripe.com if you need '.
+          'help connecting to the correct API server.'
+      );
     }
 
     return true;
@@ -394,8 +405,8 @@ class Stripe_ApiRequestor
     // Kludgily remove the PEM padding
     array_shift($lines); array_pop($lines);
 
-    $der_cert = base64_decode(implode("", $lines));
-    $fingerprint = sha1($der_cert);
+    $derCert = base64_decode(implode("", $lines));
+    $fingerprint = sha1($derCert);
     return in_array($fingerprint, self::blacklistedCerts());
   }
 

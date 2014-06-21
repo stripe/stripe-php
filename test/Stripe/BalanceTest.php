@@ -4,7 +4,7 @@ class Stripe_BalanceTest extends StripeTestCase
 {
   public function testRetrieve()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     $d = Stripe_Balance::retrieve();
     $this->assertEqual($d->object, "balance");
     $this->assertTrue(Stripe_Util::isList($d->available));

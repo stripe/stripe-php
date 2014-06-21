@@ -4,7 +4,7 @@ class Stripe_DiscountTest extends StripeTestCase
 {
   public function testDeletion()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     $id = 'test-coupon-' . self::randomString();
     $coupon = Stripe_Coupon::create(
         array(

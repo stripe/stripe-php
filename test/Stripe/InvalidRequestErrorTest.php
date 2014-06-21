@@ -1,10 +1,10 @@
 <?php
 
-class Stripe_InvalidRequestErrorTest extends UnitTestCase
+class Stripe_InvalidRequestErrorTest extends StripeTestCase
 {
   public function testInvalidObject()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     try {
       Stripe_Customer::retrieve('invalid');
     } catch (Stripe_InvalidRequestError $e) {
@@ -14,7 +14,7 @@ class Stripe_InvalidRequestErrorTest extends UnitTestCase
 
   public function testBadData()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     try {
       Stripe_Charge::create();
     } catch (Stripe_InvalidRequestError $e) {

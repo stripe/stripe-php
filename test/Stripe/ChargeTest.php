@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_ChargeTest extends UnitTestCase
+class Stripe_ChargeTest extends StripeTestCase
 {
   public function testUrls()
   {
@@ -11,7 +11,7 @@ class Stripe_ChargeTest extends UnitTestCase
 
   public function testCreate()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
 
     $card = array(
       'number' => '4242424242424242',
@@ -32,7 +32,7 @@ class Stripe_ChargeTest extends UnitTestCase
 
   public function testRetrieve()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
 
     $card = array(
       'number' => '4242424242424242',
@@ -53,7 +53,7 @@ class Stripe_ChargeTest extends UnitTestCase
 
   public function testUpdateMetadata()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
 
     $card = array(
       'number' => '4242424242424242',
@@ -78,7 +78,7 @@ class Stripe_ChargeTest extends UnitTestCase
 
   public function testUpdateMetadataAll()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
 
     $card = array(
       'number' => '4242424242424242',

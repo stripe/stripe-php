@@ -1,10 +1,10 @@
 <?php
 
-class Stripe_CardErrorTest extends UnitTestCase
+class Stripe_CardErrorTest extends StripeTestCase
 {
   public function testDecline()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
 
     $card = array(
       'number' => '4000000000000002',

@@ -4,7 +4,7 @@ class Stripe_AccountTest extends StripeTestCase
 {
   public function testRetrieve()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     $d = Stripe_Account::retrieve();
     $this->assertEqual($d->id, "cuD9Rwx8pgmRZRpVe02lsuR9cwp2Bzf7");
     $this->assertEqual($d->email, "test+bindings@stripe.com");

@@ -6,7 +6,7 @@ class Stripe_TransferTest extends StripeTestCase
   {
     $recipient = self::createTestRecipient();
 
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     $transfer = Stripe_Transfer::create(
         array(
           'amount' => 100,
@@ -21,7 +21,7 @@ class Stripe_TransferTest extends StripeTestCase
   {
     $recipient = self::createTestRecipient();
 
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     $transfer = Stripe_Transfer::create(
         array(
           'amount' => 100,
@@ -38,7 +38,7 @@ class Stripe_TransferTest extends StripeTestCase
     $this->expectException(new IsAExpectation('Stripe_InvalidRequestError'));
     $recipient = self::createTestRecipient();
 
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     $transfer = Stripe_Transfer::create(
         array(
           'amount' => 100,
@@ -56,7 +56,7 @@ class Stripe_TransferTest extends StripeTestCase
   {
     $recipient = self::createTestRecipient();
 
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     $transfer = Stripe_Transfer::create(
         array(
             'amount' => 100,
@@ -76,7 +76,7 @@ class Stripe_TransferTest extends StripeTestCase
   {
     $recipient = self::createTestRecipient();
 
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     $transfer = Stripe_Transfer::create(
         array(
           'amount' => 100,

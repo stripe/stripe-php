@@ -6,13 +6,21 @@
  */
 abstract class StripeTestCase extends UnitTestCase
 {
+  protected static function authorizeFromEnv()
+  {
+    $apiKey = getenv('STRIPE_API_KEY');
+    if (!$apiKey) {
+      $apiKey = "tGN0bIwXnHdwOa85VABjPdSn8nWY7G7I";
+    }
+    Stripe::setApiKey($apiKey);
+  }
 
   /**
    * Create a valid test charge.
    */
   protected static function createTestCharge(array $attributes = array())
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
 
     return Stripe_Charge::create(
         $attributes + array(
@@ -34,7 +42,7 @@ abstract class StripeTestCase extends UnitTestCase
    */
   protected static function createTestCustomer(array $attributes = array())
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
 
     return Stripe_Customer::create(
         $attributes + array(
@@ -52,7 +60,7 @@ abstract class StripeTestCase extends UnitTestCase
    */
   protected static function createTestRecipient(array $attributes = array())
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
 
     return Stripe_Recipient::create(
         $attributes + array(
@@ -88,7 +96,7 @@ abstract class StripeTestCase extends UnitTestCase
    */
   protected static function retrieveOrCreatePlan($id)
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
 
     try {
       $plan = Stripe_Plan::retrieve($id);
@@ -111,7 +119,7 @@ abstract class StripeTestCase extends UnitTestCase
    */
   protected static function retrieveOrCreateCoupon($id)
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
 
     try {
       $coupon = Stripe_Coupon::retrieve($id);

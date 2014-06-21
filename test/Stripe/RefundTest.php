@@ -28,7 +28,7 @@ class Stripe_RefundTest extends StripeTestCase
     $refB = $charge->refunds->create(array('amount' => 50));
 
     $all = $charge->refunds->all();
-    $this->assertEqual(false, $all->has_more);
+    $this->assertEqual(false, $all['has_more']);
     $this->assertEqual(2, count($all->data));
     $this->assertEqual($refA->id, $all->data[0]->id);
     $this->assertEqual($refB->id, $all->data[1]->id);

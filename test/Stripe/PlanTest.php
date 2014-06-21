@@ -4,7 +4,7 @@ class Stripe_PlanTest extends StripeTestCase
 {
   public function testDeletion()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     $p = Stripe_Plan::create(
         array(
             'amount' => 2000,
@@ -20,7 +20,7 @@ class Stripe_PlanTest extends StripeTestCase
 
   public function testId()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     $id = self::randomString();
     $plan = Stripe_Plan::create(
         array(
@@ -31,9 +31,9 @@ class Stripe_PlanTest extends StripeTestCase
             'id'       => $id
         )
     );
-    $retrieved_plan = Stripe_Plan::retrieve($id);
+    $retrievedPlan = Stripe_Plan::retrieve($id);
 
-    $this->assertEqual($plan->id, $retrieved_plan->id);
+    $this->assertEqual($plan->id, $retrievedPlan->id);
     $this->assertEqual($plan->id, $id);
 
     $plan->delete();
@@ -41,7 +41,7 @@ class Stripe_PlanTest extends StripeTestCase
 
   public function testSave()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     $planID = 'gold-' . self::randomString();
     $p = Stripe_Plan::create(
         array(

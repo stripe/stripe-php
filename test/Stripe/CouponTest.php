@@ -4,7 +4,7 @@ class Stripe_CouponTest extends StripeTestCase
 {
   public function testCreate()
   {
-    authorizeFromEnv();
+    self::authorizeFromEnv();
     $id = 'test_coupon-' . self::randomString();
     $c = Stripe_Coupon::create(
         array(
