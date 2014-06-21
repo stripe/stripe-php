@@ -21,19 +21,20 @@ class Stripe_PlanTest extends StripeTestCase
   public function testId()
   {
     authorizeFromEnv();
+    $id = self::randomString();
     $plan = Stripe_Plan::create(
         array(
             'amount'   => 2000,
             'interval' => 'month',
             'currency' => 'usd',
             'name'     => 'Plan',
-            'id'       => '0'
+            'id'       => $id
         )
     );
-    $retrieved_plan = Stripe_Plan::retrieve('0');
+    $retrieved_plan = Stripe_Plan::retrieve($id);
 
     $this->assertEqual($plan->id, $retrieved_plan->id);
-    $this->assertEqual($plan->id, '0');
+    $this->assertEqual($plan->id, $id);
 
     $plan->delete();
   }
