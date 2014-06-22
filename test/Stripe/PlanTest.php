@@ -18,25 +18,16 @@ class Stripe_PlanTest extends StripeTestCase
     $this->assertTrue($p->deleted);
   }
 
-  public function testId()
+  public function testFalseyId()
   {
-    self::authorizeFromEnv();
-    $id = self::randomString();
-    $plan = Stripe_Plan::create(
-        array(
-            'amount'   => 2000,
-            'interval' => 'month',
-            'currency' => 'usd',
-            'name'     => 'Plan',
-            'id'       => $id
-        )
-    );
-    $retrievedPlan = Stripe_Plan::retrieve($id);
-
-    $this->assertEqual($plan->id, $retrievedPlan->id);
-    $this->assertEqual($plan->id, $id);
-
-    $plan->delete();
+    try {
+      $retrievedPlan = Stripe_Plan::retrieve('0');
+    } catch (Stripe_InvalidRequestError $e) {
+      // Can either succeed or 404, all other errors are bad
+      if ($e->httpStatus !== 404) {
+        $this->fail();
+      }
+    }
   }
 
   public function testSave()
