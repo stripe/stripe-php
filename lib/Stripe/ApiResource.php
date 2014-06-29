@@ -38,6 +38,10 @@ abstract class Stripe_ApiResource extends Stripe_Object
     if ($postfix = strrchr($class, '\\')) {
       $class = substr($postfix, 1);
     }
+    // Useful for underscored 'namespaces': Foo_Stripe_Charge
+    if ($postfix2 = strrchr($class, 'Stripe_')) {
+      $class = substr($postfix2, 0);
+    }
     if (substr($class, 0, strlen('Stripe')) == 'Stripe') {
       $class = substr($class, strlen('Stripe'));
     }
