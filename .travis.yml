@@ -13,5 +13,5 @@ before_script:
   - sh -c "if [ '$TRAVIS_PHP_VERSION' = '5.6' ]; then pear install pear/PHP_CodeSniffer; phpenv rehash; fi"
 
 script:
-  - sh -c "if [ '$TRAVIS_PHP_VERSION' = '5.6' ]; then phpcs --standard=zend --encoding=UTF-8 --report=summary --ignore=vendor -p ./; fi"
+  - sh -c "if [ '$TRAVIS_PHP_VERSION' = '5.6' ]; then phpcs --standard=zend --encoding=UTF-8 --ignore=vendor -p ./; fi"
   - php test/Stripe.php
