@@ -3,13 +3,13 @@
 class Stripe_Object implements ArrayAccess
 {
   /**
-   * @var array Attributes that should not be sent to the API because they're
-   *    not updatable (e.g. API key, ID).
+   * @var Stripe_Util_Set Attributes that should not be sent to the API because
+   *    they're not updatable (e.g. API key, ID).
    */
   public static $permanentAttributes;
   /**
-   * @var array Attributes that are nested but still updatable from the parent
-   *    class's URL (e.g. metadata).
+   * @var Stripe_Util_Set Attributes that are nested but still updatable from
+   *    the parent class's URL (e.g. metadata).
    */
   public static $nestedUpdatableAttributes;
 
@@ -128,7 +128,7 @@ class Stripe_Object implements ArrayAccess
   /**
    * This unfortunately needs to be public to be used in Util.php
    *
-   * @param Stripe_Object $class
+   * @param string $class
    * @param array $values
    * @param string|null $apiKey
    *
