@@ -369,7 +369,7 @@ class Stripe_ApiRequestor
     if ($errno !== 0) {
       $apiBase = Stripe::$apiBase;
       throw new Stripe_ApiConnectionError(
-          'Could not connect to Stripe ($apiBase).  Please check your '.
+          'Could not connect to Stripe (' . $apiBase . ').  Please check your '.
           'internet connection and try again.  If this problem persists, '.
           'you should check Stripe\'s service status at '.
           'https://twitter.com/stripestatus. Reason was: '.$errstr

@@ -16,6 +16,7 @@ class Stripe_Card extends Stripe_ApiResource
   {
     $id = $this['id'];
     if (!$id) {
+      $class = get_class($this);
       $msg = "Could not determine which URL to request: $class instance "
            . "has invalid ID: $id";
       throw new Stripe_InvalidRequestError($msg, null);
@@ -35,7 +36,6 @@ class Stripe_Card extends Stripe_ApiResource
     }
 
     $parent = Stripe_ApiRequestor::utf8($parent);
-    $class = get_class($this);
     $id = Stripe_ApiRequestor::utf8($id);
 
     $parentExtn = urlencode($parent);

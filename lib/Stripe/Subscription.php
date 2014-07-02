@@ -9,7 +9,6 @@ class Stripe_Subscription extends Stripe_ApiResource
   {
     $id = $this['id'];
     $customer = $this['customer'];
-    $class = get_class($this);
     if (!$id) {
       throw new Stripe_InvalidRequestError(
           "Could not determine which URL to request: " .
