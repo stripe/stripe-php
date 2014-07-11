@@ -35,12 +35,12 @@ abstract class Stripe_ApiResource extends Stripe_Object
   public static function className($class)
   {
     // Useful for namespaces: Foo\Stripe_Charge
-    if ($postfix_namespaces = strrchr($class, '\\')) {
-      $class = substr($postfix_namespaces, 1);
+    if ($postfixNamespaces = strrchr($class, '\\')) {
+      $class = substr($postfixNamespaces, 1);
     }
     // Useful for underscored 'namespaces': Foo_Stripe_Charge
-    if ($postfix_fake_namespaces = strrchr($class, 'Stripe_')) {
-      $class = $postfix_fake_namespaces;
+    if ($postfixFakeNamespaces = strrchr($class, 'Stripe_')) {
+      $class = $postfixFakeNamespaces;
     }
     if (substr($class, 0, strlen('Stripe')) == 'Stripe') {
       $class = substr($class, strlen('Stripe'));
