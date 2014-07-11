@@ -198,8 +198,7 @@ class Stripe_ApiRequestor
           $headers,
           $params
       );
-    }
-    else {
+    } else {
       list($rbody, $rcode) = $this->_httpRequest(
           $method,
           $absUrl,
