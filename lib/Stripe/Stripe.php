@@ -15,6 +15,10 @@ abstract class Stripe
    */
   public static $apiVersion = null;
   /**
+   * @var bool $useCurl Use curl library
+   */
+  public static $useCurl = false;
+  /**
    * @var boolean Defaults to true.
    */
   public static $verifySslCerts = true;

@@ -2,10 +2,7 @@
 
 // Tested on PHP 5.2, 5.3
 
-// This snippet (and some of the curl code) due to the Facebook SDK.
-if (!function_exists('curl_init')) {
-  throw new Exception('Stripe needs the CURL PHP extension.');
-}
+// Check for required extensions
 if (!function_exists('json_decode')) {
   throw new Exception('Stripe needs the JSON PHP extension.');
 }
@@ -55,3 +52,6 @@ require(dirname(__FILE__) . '/Stripe/Transfer.php');
 require(dirname(__FILE__) . '/Stripe/Recipient.php');
 require(dirname(__FILE__) . '/Stripe/Refund.php');
 require(dirname(__FILE__) . '/Stripe/ApplicationFee.php');
+
+// Use curl library if present
+Stripe::$useCurl = function_exists('curl_init');
