@@ -193,18 +193,18 @@ class Stripe_ApiRequestor
 
     if (Stripe::$useCurl) {
       list($rbody, $rcode) = $this->_curlRequest(
-        $method,
-        $absUrl,
-        $headers,
-        $params
+          $method,
+          $absUrl,
+          $headers,
+          $params
       );
     }
     else {
       list($rbody, $rcode) = $this->_httpRequest(
-        $method,
-        $absUrl,
-        $headers,
-        $params
+          $method,
+          $absUrl,
+          $headers,
+          $params
       );
     }
     return array($rbody, $rcode, $myApiKey);
@@ -258,7 +258,8 @@ class Stripe_ApiRequestor
       }
     } else if ($method == 'post') {
       $opts["http"]["method"] = "POST";
-      $opts["http"]["header"] .= "Content-type: application/x-www-form-urlencoded\r\n";
+      $opts["http"]["header"] .= "Content-type:" .
+          "application/x-www-form-urlencoded\r\n";
       $opts["http"]["content"] = self::encode($params);
     } else if ($method == 'delete') {
       $opts["http"]["method"] = "DELETE";
