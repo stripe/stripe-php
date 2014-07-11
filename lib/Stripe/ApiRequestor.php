@@ -190,12 +190,23 @@ class Stripe_ApiRequestor
                      'Authorization: Bearer ' . $myApiKey);
     if (Stripe::$apiVersion)
       $headers[] = 'Stripe-Version: ' . Stripe::$apiVersion;
-    list($rbody, $rcode) = $this->_curlRequest(
+
+    if (Stripe::$useCurl) {
+      list($rbody, $rcode) = $this->_curlRequest(
         $method,
         $absUrl,
         $headers,
         $params
-    );
+      );
+    }
+    else {
+      list($rbody, $rcode) = $this->_httpRequest(
+        $method,
+        $absUrl,
+        $headers,
+        $params
+      );
+    }
     return array($rbody, $rcode, $myApiKey);
   }
 
@@ -213,6 +224,68 @@ class Stripe_ApiRequestor
       $this->handleApiError($rbody, $rcode, $resp);
     }
     return $resp;
+  }
+
+  private function _httpRequest($method, $absUrl, $headers, $params)
+  {
+    if (!self::$_preFlight) {
+      self::$_preFlight = $this->checkSslCert($this->apiUrl());
+    }
+
+    $method = strtolower($method);
+
+    // php sockets http fetch setup
+    $opts = array(
+      "http" => array(
+        "timeout" => 30,
+        "ignore_errors" => true,
+        "method" => $method,
+        "header" => "Accept-language: en\r\n"
+      )
+    );
+
+    // copy headers
+    foreach ($headers as $header) {
+      $opts["http"]["header"] .= $header . "\r\n";
+    }
+
+    if ($method == 'get') {
+      $opts["http"]["method"] = "GET";
+
+      if (count($params) > 0) {
+        $encoded = self::encode($params);
+        $absUrl = "$absUrl?$encoded";
+      }
+    } else if ($method == 'post') {
+      $opts["http"]["method"] = "POST";
+      $opts["http"]["header"] .= "Content-type: application/x-www-form-urlencoded\r\n";
+      $opts["http"]["content"] = self::encode($params);
+    } else if ($method == 'delete') {
+      $opts["http"]["method"] = "DELETE";
+      if (count($params) > 0) {
+        $encoded = self::encode($params);
+        $absUrl = "$absUrl?$encoded";
+      }
+    } else {
+      throw new Stripe_ApiError("Unrecognized method $method");
+    }
+
+    $context = stream_context_create($opts);
+
+    $absUrl = self::utf8($absUrl);
+    $rbody = file_get_contents($absUrl, false, $context);
+    $rheaders = $http_response_header;
+
+    $rcode = 200;
+
+    if (is_array($rheaders) && count($rheaders) > 0) {
+      // match returned http code from headers
+      if (preg_match('#HTTP/[0-9\.]+ (\d+)#', $rheaders[0], $matches)) {
+        $rcode = $matches[1];
+      }
+    }
+
+    return array($rbody, $rcode);
   }
 
   private function _curlRequest($method, $absUrl, $headers, $params)
