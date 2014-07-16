@@ -247,7 +247,8 @@ class Stripe_Object implements ArrayAccess
 
   public function __toString()
   {
-    return $this->__toJSON();
+    $class = get_class($this);
+    return $class . ' JSON: ' . $this->__toJSON();
   }
 
   public function __toArray($recursive=false)
