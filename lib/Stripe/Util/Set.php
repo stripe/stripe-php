@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_Util_Set
+class Stripe_Util_Set implements IteratorAggregate
 {
     private $_elts;
 
@@ -27,9 +27,13 @@ class Stripe_Util_Set
         unset($this->_elts[$elt]);
     }
 
-    // TODO: make Set support foreach
     public function toArray()
     {
         return array_keys($this->_elts);
+    }
+
+    public function getIterator()
+    {
+        return new ArrayIterator($this->toArray());
     }
 }
