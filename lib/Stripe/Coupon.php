@@ -38,6 +38,15 @@ class Stripe_Coupon extends Stripe_ApiResource
   }
 
   /**
+   * @return Stripe_Coupon The saved coupon.
+   */
+  public function save()
+  {
+    $class = get_class();
+    return self::_scopedSave($class);
+  }
+
+  /**
    * @param array|null $params
    * @param string|null $apiKey
    *

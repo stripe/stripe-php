@@ -1,3 +1,7 @@
+=== 1.17.2 2014-08-23
+
+* Coupons now are backed by a `Stripe_Coupon` instead of `Stripe_Object`, and support updating metadata
+
 === 1.17.1 2014-07-31
 
 * Requests now send Content-Type header

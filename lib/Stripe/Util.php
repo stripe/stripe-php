@@ -58,6 +58,7 @@ abstract class Stripe_Util
     $types = array(
       'card' => 'Stripe_Card',
       'charge' => 'Stripe_Charge',
+      'coupon' => 'Stripe_Coupon',
       'customer' => 'Stripe_Customer',
       'list' => 'Stripe_List',
       'invoice' => 'Stripe_Invoice',
@@ -76,7 +77,7 @@ abstract class Stripe_Util
         array_push($mapped, self::convertToStripeObject($i, $apiKey));
       return $mapped;
     } else if (is_array($resp)) {
-      if (isset($resp['object']) 
+      if (isset($resp['object'])
           && is_string($resp['object'])
           && isset($types[$resp['object']])) {
         $class = $types[$resp['object']];
