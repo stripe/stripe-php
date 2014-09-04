@@ -53,7 +53,7 @@ Simple usage looks like:
 
 == Documentation
 
-Please see https://stripe.com/api for up-to-date documentation.
+Please see https://stripe.com/docs/api for up-to-date documentation.
 
 == Tests
 
