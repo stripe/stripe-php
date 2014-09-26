@@ -348,7 +348,8 @@ class Stripe_ApiRequestor
       return true;
     }
 
-    if (strpos(PHP_VERSION, 'hiphop') !== false || strpos(PHP_VERSION, 'hhvm') !== false) {
+    if (strpos(PHP_VERSION, 'hiphop') !== false ||
+        strpos(PHP_VERSION, 'hhvm') !== false) {
       error_log(
           'Warning: HHVM does not support Stripe\'s SSL certificate '.
           'verification. (See http://docs.hhvm.com/manual/en/context.ssl.php) '.
