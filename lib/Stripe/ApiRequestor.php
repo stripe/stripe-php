@@ -339,22 +339,12 @@ class Stripe_ApiRequestor
    */
   private function checkSslCert($url)
   {
-    if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+    if (!function_exists('stream_context_get_params') ||
+        !function_exists('stream_socket_enable_crypto')) {
       error_log(
-          'Warning: This version of PHP is too old to check SSL certificates '.
-          'correctly. Stripe cannot guarantee that the server has a '.
-          'certificate which is not blacklisted'
-      );
-      return true;
-    }
-
-    if (strpos(PHP_VERSION, 'hiphop') !== false ||
-        strpos(PHP_VERSION, 'hhvm') !== false) {
-      error_log(
-          'Warning: HHVM does not support Stripe\'s SSL certificate '.
-          'verification. (See http://docs.hhvm.com/manual/en/context.ssl.php) '.
-          'Stripe cannot guarantee that the server has a certificate which is '.
-          'not blacklisted'
+          'Warning: This version of PHP does not support checking SSL '.
+          'certificates Stripe cannot guarantee that the server has a '.
+          'certificate which is not blacklisted.'
       );
       return true;
     }
