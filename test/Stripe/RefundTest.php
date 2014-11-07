@@ -20,7 +20,7 @@ class Stripe_RefundTest extends StripeTestCase
     $ref = $charge->refunds->retrieve($ref->id);
     $this->assertEqual("value", $ref->metadata["key"], "value");
   }
- 
+
   public function testList()
   {
     $charge = self::createTestCharge();
@@ -30,7 +30,7 @@ class Stripe_RefundTest extends StripeTestCase
     $all = $charge->refunds->all();
     $this->assertEqual(false, $all['has_more']);
     $this->assertEqual(2, count($all->data));
-    $this->assertEqual($refA->id, $all->data[0]->id);
-    $this->assertEqual($refB->id, $all->data[1]->id);
+    $this->assertEqual($refB->id, $all->data[0]->id);
+    $this->assertEqual($refA->id, $all->data[1]->id);
   }
 }
