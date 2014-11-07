@@ -363,7 +363,7 @@ class Stripe_ApiRequestor
     $result = stream_socket_client(
         $url, $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $sslContext
     );
-    if ($errno !== 0) {
+    if (($errno !== 0 && $errno !== NULL) || $result === false) {
       $apiBase = Stripe::$apiBase;
       throw new Stripe_ApiConnectionError(
           'Could not connect to Stripe (' . $apiBase . ').  Please check your '.
