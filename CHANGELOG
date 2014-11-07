@@ -1,3 +1,7 @@
+=== 1.17.3 2014-11-06
+
+* Better handling of HHVM support for SSL certificate blacklist checking.
+
 === 1.17.2 2014-09-23
 
 * Coupons now are backed by a `Stripe_Coupon` instead of `Stripe_Object`, and support updating metadata
