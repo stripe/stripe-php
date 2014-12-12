@@ -85,7 +85,7 @@ class Stripe_ChargeTest extends StripeTestCase
       'exp_month' => 5,
       'exp_year' => 2015
     );
-    
+
     $charge = Stripe_Charge::create(
         array(
             'amount' => 100,
@@ -99,5 +99,56 @@ class Stripe_ChargeTest extends StripeTestCase
 
     $updatedCharge = Stripe_Charge::retrieve($charge->id);
     $this->assertEqual('foo bar', $updatedCharge->metadata['test']);
+  }
+
+  public function testMarkAsFraudulent()
+  {
+    self::authorizeFromEnv();
+
+    $card = array(
+      'number' => '4242424242424242',
+      'exp_month' => 5,
+      'exp_year' => 2015
+    );
+
+    $charge = Stripe_Charge::create(
+        array(
+            'amount' => 100,
+            'currency' => 'usd',
+            'card' => $card
+        )
+    );
+
+    $charge->refunds->create();
+    $charge->markAsFraudulent();
+
+    $updatedCharge = Stripe_Charge::retrieve($charge->id);
+    $this->assertEqual(
+        'fraudulent', $updatedCharge['fraud_details']['user_report']
+    );
+  }
+
+  public function markAsSafe()
+  {
+    self::authorizeFromEnv();
+
+    $card = array(
+      'number' => '4242424242424242',
+      'exp_month' => 5,
+      'exp_year' => 2015
+    );
+
+    $charge = Stripe_Charge::create(
+        array(
+            'amount' => 100,
+            'currency' => 'usd',
+            'card' => $card
+        )
+    );
+
+    $charge->markAsSafe();
+
+    $updatedCharge = Stripe_Charge::retrieve($charge->id);
+    $this->assertEqual('safe', $updatedCharge['fraud_details']['user_report']);
   }
 }

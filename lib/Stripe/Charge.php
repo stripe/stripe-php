@@ -100,4 +100,30 @@ class Stripe_Charge extends Stripe_ApiResource
     $this->refreshFrom($response, $apiKey);
     return $this;
   }
+
+  /**
+   * @return Stripe_Charge The updated charge.
+   */
+  public function markAsFraudulent()
+  {
+    $params = array('fraud_details' => array('user_report' => 'fraudulent'));
+    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $url = $this->instanceUrl();
+    list($response, $apiKey) = $requestor->request('post', $url, $params);
+    $this->refreshFrom($response, $apiKey);
+    return $this;
+  }
+
+  /**
+   * @return Stripe_Charge The updated charge.
+   */
+  public function markAsSafe()
+  {
+    $params = array('fraud_details' => array('user_report' => 'safe'));
+    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $url = $this->instanceUrl();
+    list($response, $apiKey) = $requestor->request('post', $url, $params);
+    $this->refreshFrom($response, $apiKey);
+    return $this;
+  }
 }
