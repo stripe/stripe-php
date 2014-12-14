@@ -72,7 +72,7 @@ abstract class StripeTestCase extends UnitTestCase
             'routing_number' => '110000000',
             'account_number'  => '000123456789'
           ),
-      )
+        )
     );
   }
 
