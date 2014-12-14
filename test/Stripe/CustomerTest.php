@@ -21,6 +21,16 @@ class Stripe_CustomerTest extends StripeTestCase
 
     $stripeCustomer = Stripe_Customer::retrieve($customer->id);
     $this->assertEqual($customer->email, $stripeCustomer->email);
+
+
+    Stripe::setApiKey(null);
+    $customer = Stripe_Customer::create(null, StripeTestCase::API_KEY);
+    $customer->email = 'gdb@stripe.com';
+    $customer->save();
+
+    StripeTestCase::authorizeFromEnv();
+    $updatedCustomer = Stripe_Customer::retrieve($customer->id);
+    $this->assertEqual($updatedCustomer->email, 'gdb@stripe.com');
   }
 
   public function testBogusAttribute()
