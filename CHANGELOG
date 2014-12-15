@@ -1,3 +1,8 @@
+=== 1.17.4 2014-12-15
+
+* Saving objects fetched with a custom key now works (thanks @JustinHook & @jpasilan)
+* Added methods for reporting charges as safe or fraudulent and for specifying the reason for refunds
+
 === 1.17.3 2014-11-06
 
 * Better handling of HHVM support for SSL certificate blacklist checking.
