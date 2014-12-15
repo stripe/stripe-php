@@ -44,7 +44,7 @@ class Stripe_Customer extends Stripe_ApiResource
   public function save()
   {
     $class = get_class();
-    return self::_scopedSave($class, $this->_apiKey);
+    return self::_scopedSave($class);
   }
 
   /**

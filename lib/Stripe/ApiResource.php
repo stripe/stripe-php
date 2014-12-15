@@ -118,10 +118,10 @@ abstract class Stripe_ApiResource extends Stripe_Object
     return Stripe_Util::convertToStripeObject($response, $apiKey);
   }
 
-  protected function _scopedSave($class, $apiKey=null)
+  protected function _scopedSave($class)
   {
     self::_validateCall('save');
-    $requestor = new Stripe_ApiRequestor($apiKey);
+    $requestor = new Stripe_ApiRequestor($this->_apiKey);
     $params = $this->serializeParameters();
 
     if (count($params) > 0) {
