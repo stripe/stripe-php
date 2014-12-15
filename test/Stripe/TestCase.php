@@ -6,11 +6,13 @@
  */
 abstract class StripeTestCase extends UnitTestCase
 {
+  const API_KEY = "tGN0bIwXnHdwOa85VABjPdSn8nWY7G7I";
+
   protected static function authorizeFromEnv()
   {
     $apiKey = getenv('STRIPE_API_KEY');
     if (!$apiKey) {
-      $apiKey = "tGN0bIwXnHdwOa85VABjPdSn8nWY7G7I";
+      $apiKey = self::API_KEY;
     }
     Stripe::setApiKey($apiKey);
   }
