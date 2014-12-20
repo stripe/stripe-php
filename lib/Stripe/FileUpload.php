@@ -2,6 +2,11 @@
 
 class Stripe_FileUpload extends Stripe_ApiResource
 {
+  public static function baseUrl()
+  {
+    return Stripe::$apiUploadBase;
+  }
+
   public static function className($class)
   {
     return 'file';

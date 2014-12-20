@@ -15,10 +15,6 @@ abstract class Stripe
    */
   public static $apiUploadBase = 'https://uploads.stripe.com';
   /**
-   * @var array The path prefixes that should use the uploads endpoint.
-   */
-  public static $apiUploadPaths = array('/v1/files');
-  /**
    * @var string|null The version of the Stripe API to use for requests.
    */
   public static $apiVersion = null;
