@@ -44,6 +44,7 @@ require(dirname(__FILE__) . '/Stripe/Balance.php');
 require(dirname(__FILE__) . '/Stripe/BalanceTransaction.php');
 require(dirname(__FILE__) . '/Stripe/Charge.php');
 require(dirname(__FILE__) . '/Stripe/Customer.php');
+require(dirname(__FILE__) . '/Stripe/FileUpload.php');
 require(dirname(__FILE__) . '/Stripe/Invoice.php');
 require(dirname(__FILE__) . '/Stripe/InvoiceItem.php');
 require(dirname(__FILE__) . '/Stripe/Plan.php');
