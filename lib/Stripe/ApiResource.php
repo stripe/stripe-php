@@ -2,6 +2,11 @@
 
 abstract class Stripe_ApiResource extends Stripe_Object
 {
+  public static function baseUrl()
+  {
+    return Stripe::$apiBase;
+  }
+
   protected static function _scopedRetrieve($class, $id, $apiKey=null)
   {
     $instance = new $class($id, $apiKey);
@@ -14,7 +19,7 @@ abstract class Stripe_ApiResource extends Stripe_Object
    */
   public function refresh()
   {
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $requestor = new Stripe_ApiRequestor($this->_apiKey, self::baseUrl());
     $url = $this->instanceUrl();
 
     list($response, $apiKey) = $requestor->request(
@@ -103,8 +108,10 @@ abstract class Stripe_ApiResource extends Stripe_Object
   protected static function _scopedAll($class, $params=null, $apiKey=null)
   {
     self::_validateCall('all', $params, $apiKey);
-    $requestor = new Stripe_ApiRequestor($apiKey);
+    $base = self::_scopedLsb($class, 'baseUrl');
     $url = self::_scopedLsb($class, 'classUrl', $class);
+
+    $requestor = new Stripe_ApiRequestor($apiKey, $base);
     list($response, $apiKey) = $requestor->request('get', $url, $params);
     return Stripe_Util::convertToStripeObject($response, $apiKey);
   }
@@ -112,8 +119,10 @@ abstract class Stripe_ApiResource extends Stripe_Object
   protected static function _scopedCreate($class, $params=null, $apiKey=null)
   {
     self::_validateCall('create', $params, $apiKey);
-    $requestor = new Stripe_ApiRequestor($apiKey);
+    $base = self::_scopedLsb($class, 'baseUrl');
     $url = self::_scopedLsb($class, 'classUrl', $class);
+
+    $requestor = new Stripe_ApiRequestor($apiKey, $base);
     list($response, $apiKey) = $requestor->request('post', $url, $params);
     return Stripe_Util::convertToStripeObject($response, $apiKey);
   }
@@ -121,7 +130,7 @@ abstract class Stripe_ApiResource extends Stripe_Object
   protected function _scopedSave($class)
   {
     self::_validateCall('save');
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $requestor = new Stripe_ApiRequestor($this->_apiKey, self::baseUrl());
     $params = $this->serializeParameters();
 
     if (count($params) > 0) {
@@ -135,7 +144,7 @@ abstract class Stripe_ApiResource extends Stripe_Object
   protected function _scopedDelete($class, $params=null)
   {
     self::_validateCall('delete');
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $requestor = new Stripe_ApiRequestor($this->_apiKey, self::baseUrl());
     $url = $this->instanceUrl();
     list($response, $apiKey) = $requestor->request('delete', $url, $params);
     $this->refreshFrom($response, $apiKey);

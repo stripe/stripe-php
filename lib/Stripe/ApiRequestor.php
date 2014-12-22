@@ -2,35 +2,24 @@
 
 class Stripe_ApiRequestor
 {
-  /**
-   * @var string $apiKey The API key that's to be used to make requests.
-   */
-  public $apiKey;
+  private $_apiKey;
 
-  private static $_preFlight;
+  private $_apiBase;
 
-  private static function blacklistedCerts()
-  {
-    return array(
-      '05c0b3643694470a888c6e7feb5c9e24e823dc53',
-      '5b7dc7fbc98d78bf76d4d4fa6f597a0c901fad5c',
-    );
-  }
+  private static $_preFlight = array();
 
-  public function __construct($apiKey=null)
+  private static $_blacklistedCerts = array(
+    '05c0b3643694470a888c6e7feb5c9e24e823dc53',
+    '5b7dc7fbc98d78bf76d4d4fa6f597a0c901fad5c',
+  );
+
+  public function __construct($apiKey=null, $apiBase=null)
   {
     $this->_apiKey = $apiKey;
-  }
-
-  /**
-   * @param string $url The path to the API endpoint.
-   *
-   * @returns string The full path.
-   */
-  public static function apiUrl($url='')
-  {
-    $apiBase = Stripe::$apiBase;
-    return "$apiBase$url";
+    if (!$apiBase) {
+      $apiBase = Stripe::$apiBase;
+    }
+    $this->_apiBase = $apiBase;
   }
 
   /**
@@ -164,9 +153,15 @@ class Stripe_ApiRequestor
 
   private function _requestRaw($method, $url, $params)
   {
+    if (!array_key_exists($this->_apiBase, self::$_preFlight)
+      || !self::$_preFlight[$this->_apiBase]) {
+      self::$_preFlight[$this->_apiBase] = $this->checkSslCert($this->_apiBase);
+    }
+
     $myApiKey = $this->_apiKey;
-    if (!$myApiKey)
+    if (!$myApiKey) {
       $myApiKey = Stripe::$apiKey;
+    }
 
     if (!$myApiKey) {
       $msg = 'No API key provided.  (HINT: set your API key using '
@@ -176,7 +171,7 @@ class Stripe_ApiRequestor
       throw new Stripe_AuthenticationError($msg);
     }
 
-    $absUrl = $this->apiUrl($url);
+    $absUrl = $this->_apiBase.$url;
     $params = self::_encodeObjects($params);
     $langVersion = phpversion();
     $uname = php_uname();
@@ -191,18 +186,58 @@ class Stripe_ApiRequestor
         'X-Stripe-Client-User-Agent: ' . json_encode($ua),
         'User-Agent: Stripe/v1 PhpBindings/' . Stripe::VERSION,
         'Authorization: Bearer ' . $myApiKey,
-        'Content-Type: application/x-www-form-urlencoded',
     );
     if (Stripe::$apiVersion) {
       $headers[] = 'Stripe-Version: ' . Stripe::$apiVersion;
     }
+    $hasFile = false;
+    $hasCurlFile = class_exists('CURLFile');
+    foreach ($params as $k => $v) {
+      if (is_resource($v)) {
+        $hasFile = true;
+        $params[$k] = self::_processResourceParam($v);
+      } else if ($hasCurlFile && $v instanceof CURLFile) {
+        $hasFile = true;
+      }
+    }
+
+    if ($hasFile) {
+      $headers[] = 'Content-Type: multipart/form-data';
+    } else {
+      $headers[] = 'Content-Type: application/x-www-form-urlencoded';
+    }
+
     list($rbody, $rcode) = $this->_curlRequest(
         $method,
         $absUrl,
         $headers,
-        $params
+        $params,
+        $hasFile
     );
     return array($rbody, $rcode, $myApiKey);
+  }
+
+  private function _processResourceParam($resource)
+  {
+    if (get_resource_type($resource) !== 'stream') {
+      throw new Stripe_ApiError(
+          'Attempted to upload a resource that is not a stream'
+      );
+    }
+
+    $metaData = stream_get_meta_data($resource);
+    if ($metaData['wrapper_type'] !== 'plainfile') {
+      throw new Stripe_ApiError(
+          'Only plainfile resource streams are supported'
+      );
+    }
+
+    if (class_exists('CURLFile')) {
+      // We don't have the filename or mimetype, but the API doesn't care
+      return new CURLFile($metaData['uri']);
+    } else {
+      return '@'.$metaData['uri'];
+    }
   }
 
   private function _interpretResponse($rbody, $rcode)
@@ -221,17 +256,17 @@ class Stripe_ApiRequestor
     return $resp;
   }
 
-  private function _curlRequest($method, $absUrl, $headers, $params)
+  private function _curlRequest($method, $absUrl, $headers, $params, $hasFile)
   {
-
-    if (!self::$_preFlight) {
-      self::$_preFlight = $this->checkSslCert($this->apiUrl());
-    }
-
     $curl = curl_init();
     $method = strtolower($method);
     $opts = array();
     if ($method == 'get') {
+      if ($hasFile) {
+        throw new Stripe_ApiError(
+            "Issuing a GET request with a file parameter"
+        );
+      }
       $opts[CURLOPT_HTTPGET] = 1;
       if (count($params) > 0) {
         $encoded = self::encode($params);
@@ -239,7 +274,7 @@ class Stripe_ApiRequestor
       }
     } else if ($method == 'post') {
       $opts[CURLOPT_POST] = 1;
-      $opts[CURLOPT_POSTFIELDS] = self::encode($params);
+      $opts[CURLOPT_POSTFIELDS] = $hasFile ? $params : self::encode($params);
     } else if ($method == 'delete') {
       $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
       if (count($params) > 0) {
@@ -300,7 +335,7 @@ class Stripe_ApiRequestor
    */
   public function handleCurlError($errno, $message)
   {
-    $apiBase = Stripe::$apiBase;
+    $apiBase = $this->_apiBase;
     switch ($errno) {
     case CURLE_COULDNT_CONNECT:
     case CURLE_COULDNT_RESOLVE_HOST:
@@ -364,9 +399,8 @@ class Stripe_ApiRequestor
         $url, $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $sslContext
     );
     if (($errno !== 0 && $errno !== NULL) || $result === false) {
-      $apiBase = Stripe::$apiBase;
       throw new Stripe_ApiConnectionError(
-          'Could not connect to Stripe (' . $apiBase . ').  Please check your '.
+          'Could not connect to Stripe (' . $url . ').  Please check your '.
           'internet connection and try again.  If this problem persists, '.
           'you should check Stripe\'s service status at '.
           'https://twitter.com/stripestatus. Reason was: '.$errstr
@@ -404,7 +438,7 @@ class Stripe_ApiRequestor
 
     $derCert = base64_decode(implode("", $lines));
     $fingerprint = sha1($derCert);
-    return in_array($fingerprint, self::blacklistedCerts());
+    return in_array($fingerprint, self::$_blacklistedCerts);
   }
 
   private function caBundle()
