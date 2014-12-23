@@ -1,3 +1,7 @@
+=== 1.17.5 2014-12-23
+
+* Adding support for creating file uploads.
+
 === 1.17.4 2014-12-15
 
 * Saving objects fetched with a custom key now works (thanks @JustinHook & @jpasilan)
