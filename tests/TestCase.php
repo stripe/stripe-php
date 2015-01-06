@@ -152,4 +152,17 @@ class TestCase extends \PHPUnit_Framework_TestCase
         }
         return $randomString;
     }
+
+    protected static function createTestBitcoinReceiver($email)
+    {
+        $receiver = BitcoinReceiver::create(
+            array(
+                'amount' => 100,
+                'currency' => 'usd',
+                'description' => 'some details',
+                'email' => $email
+            )
+        );
+        return $receiver;
+    }
 }

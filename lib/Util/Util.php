@@ -75,6 +75,8 @@ abstract class Util
             'refund' => 'Stripe\\Refund',
             'subscription' => 'Stripe\\Subscription',
             'fee_refund' => 'Stripe\\ApplicationFeeRefund',
+            'bitcoin_receiver' => 'Stripe\\BitcoinReceiver',
+            'bitcoin_transaction' => 'Stripe\\BitcoinTransaction',
         );
         if (self::isList($resp)) {
             $mapped = array();
