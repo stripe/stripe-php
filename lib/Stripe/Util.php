@@ -69,7 +69,9 @@ abstract class Stripe_Util
       'recipient' => 'Stripe_Recipient',
       'refund' => 'Stripe_Refund',
       'subscription' => 'Stripe_Subscription',
-      'fee_refund' => 'Stripe_ApplicationFeeRefund'
+      'fee_refund' => 'Stripe_ApplicationFeeRefund',
+      'bitcoin_receiver' => 'Stripe_BitcoinReceiver',
+      'bitcoin_transaction' => 'Stripe_BitcoinTransaction'
     );
     if (self::isList($resp)) {
       $mapped = array();

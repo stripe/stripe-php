@@ -58,3 +58,5 @@ require(dirname(__FILE__) . '/Stripe/Recipient.php');
 require(dirname(__FILE__) . '/Stripe/Refund.php');
 require(dirname(__FILE__) . '/Stripe/ApplicationFee.php');
 require(dirname(__FILE__) . '/Stripe/ApplicationFeeRefund.php');
+require(dirname(__FILE__) . '/Stripe/BitcoinReceiver.php');
+require(dirname(__FILE__) . '/Stripe/BitcoinTransaction.php');

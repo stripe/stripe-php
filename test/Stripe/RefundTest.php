@@ -33,4 +33,29 @@ class Stripe_RefundTest extends StripeTestCase
     $this->assertEqual($refB->id, $all->data[0]->id);
     $this->assertEqual($refA->id, $all->data[1]->id);
   }
+
+  public function testCreateForBitcoin()
+  {
+    self::authorizeFromEnv();
+
+    $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
+
+    $charge = Stripe_Charge::create(
+        array(
+          "amount" => $receiver->amount,
+          "currency" => $receiver->currency,
+          "description" => $receiver->description,
+          'source' => $receiver->id
+        )
+    );
+
+    $ref = $charge->refunds->create(
+        array(
+          'amount' => $receiver->amount,
+          'refund_address' => 'ABCDEF'
+        )
+    );
+    $this->assertEqual($receiver->amount, $ref->amount);
+    $this->assertNotNull($ref->id);
+  }
 }
