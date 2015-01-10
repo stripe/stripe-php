@@ -1,0 +1,12 @@
+<phpunit bootstrap="tests/bootstrap.php" colors="true" forceCoversAnnotation="true">
+    <testsuites>
+        <testsuite name="Stripe PHP Test Suite">
+            <directory suffix="Test.php">tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory>lib</directory>
+        </whitelist>
+    </filter>
+</phpunit>
