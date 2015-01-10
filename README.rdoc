@@ -57,11 +57,11 @@ Please see https://stripe.com/docs/api for up-to-date documentation.
 
 == Tests
 
-In order to run tests you have to install SimpleTest[http://packagist.org/packages/simpletest/simpletest] via Composer[http://getcomposer.org/] (recommended way):
+In order to run tests you have to install PHPUnit[http://packagist.org/packages/phpunit/phpunit] via Composer[http://getcomposer.org/] (recommended way):
 
     composer.phar update --dev
 
 Run test suite:
 
-    php ./test/Stripe.php
+    ./vendor/bin/phpunit
 
