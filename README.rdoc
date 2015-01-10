@@ -8,7 +8,7 @@ You can sign up for a Stripe account at https://stripe.com.
 
 == Requirements
 
-PHP 5.2 and later.
+PHP 5.3.3 and later.
 
 == Composer
 
