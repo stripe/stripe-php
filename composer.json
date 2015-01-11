@@ -15,15 +15,16 @@
     }
   ],
   "require": {
-    "php": ">=5.2",
+    "php": ">=5.3.3",
     "ext-curl": "*",
     "ext-json": "*",
     "ext-mbstring": "*"
   },
   "require-dev": {
-    "simpletest/simpletest": "*"
+    "phpunit/phpunit": "~4.0",
+    "squizlabs/php_codesniffer": "~1.5"
   },
   "autoload": {
-    "classmap": ["lib/Stripe/"]
+    "psr-4": { "Stripe\\" : "lib" }
   }
 }
