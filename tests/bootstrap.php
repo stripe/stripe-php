@@ -1,2 +1,2 @@
 <?php
-require_once __DIR__ . '/Stripe/TestCase.php';
+require_once __DIR__ . '/TestCase.php';
