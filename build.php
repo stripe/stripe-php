@@ -9,7 +9,7 @@ if ($returnStatus !== 0) {
 }
 
 passthru(
-    './vendor/bin/phpcs --standard=Zend lib tests *.php',
+    './vendor/bin/phpcs --standard=PSR2 -n lib tests *.php',
     $returnStatus
 );
 if ($returnStatus !== 0) {
