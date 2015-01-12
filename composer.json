@@ -26,6 +26,6 @@
     "squizlabs/php_codesniffer": "~2.0"
   },
   "autoload": {
-    "classmap": ["lib/Stripe/"]
+    "psr-4": { "Stripe\\" : "lib" }
   }
 }
