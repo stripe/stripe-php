@@ -1,11 +1,11 @@
 <?php
 
-class Stripe_ApplicationFeeTest extends StripeTestCase
+class Stripe_ApplicationFeeTest extends Stripe_TestCase
 {
   public function testUrls()
   {
     $applicationFee = new Stripe_ApplicationFee('abcd/efgh');
-    $this->assertEqual(
+    $this->assertSame(
         $applicationFee->instanceUrl(), '/v1/application_fees/abcd%2Fefgh'
     );
   }
@@ -14,6 +14,6 @@ class Stripe_ApplicationFeeTest extends StripeTestCase
   {
     self::authorizeFromEnv();
     $d = Stripe_ApplicationFee::all();
-    $this->assertEqual($d->url, '/v1/application_fees');
+    $this->assertSame($d->url, '/v1/application_fees');
   }
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_InvoiceTest extends StripeTestCase
+class Stripe_InvoiceTest extends Stripe_TestCase
 {
   public function testUpcoming()
   {
@@ -20,8 +20,8 @@ class Stripe_InvoiceTest extends StripeTestCase
             'customer' => $customer->id,
         )
     );
-    $this->assertEqual($invoice->customer, $customer->id);
-    $this->assertEqual($invoice->attempted, false);
+    $this->assertSame($invoice->customer, $customer->id);
+    $this->assertSame($invoice->attempted, false);
   }
 
   public function testItemsAccessWithParameter()
@@ -49,8 +49,8 @@ class Stripe_InvoiceTest extends StripeTestCase
         )
     );
 
-    $this->assertEqual(count($lines->data), 1);
-    $this->assertEqual($lines->data[0]->amount, 100);
+    $this->assertSame(count($lines->data), 1);
+    $this->assertSame($lines->data[0]->amount, 100);
   }
 
   // This is really just making sure that this operation does not trigger any

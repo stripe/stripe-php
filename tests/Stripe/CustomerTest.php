@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_CustomerTest extends StripeTestCase
+class Stripe_CustomerTest extends Stripe_TestCase
 {
   public function testDeletion()
   {
@@ -17,36 +17,37 @@ class Stripe_CustomerTest extends StripeTestCase
 
     $customer->email = 'gdb@stripe.com';
     $customer->save();
-    $this->assertEqual($customer->email, 'gdb@stripe.com');
+    $this->assertSame($customer->email, 'gdb@stripe.com');
 
     $stripeCustomer = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual($customer->email, $stripeCustomer->email);
-
+    $this->assertSame($customer->email, $stripeCustomer->email);
 
     Stripe::setApiKey(null);
-    $customer = Stripe_Customer::create(null, StripeTestCase::API_KEY);
+    $customer = Stripe_Customer::create(null, self::API_KEY);
     $customer->email = 'gdb@stripe.com';
     $customer->save();
 
-    StripeTestCase::authorizeFromEnv();
+    self::authorizeFromEnv();
     $updatedCustomer = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual($updatedCustomer->email, 'gdb@stripe.com');
+    $this->assertSame($updatedCustomer->email, 'gdb@stripe.com');
   }
 
+  /**
+   * @expectedException Stripe_InvalidRequestError
+   */
   public function testBogusAttribute()
   {
     $customer = self::createTestCustomer();
     $customer->bogus = 'bogus';
-    $this->expectException(new IsAExpectation('Stripe_InvalidRequestError'));
     $customer->save();
   }
 
+  /**
+   * @expectedException InvalidArgumentException
+   */
   public function testUpdateDescriptionEmpty()
   {
     $customer = self::createTestCustomer();
-
-    $this->expectException(new IsAExpectation('InvalidArgumentException'));
-
     $customer->description = '';
   }
 
@@ -58,7 +59,7 @@ class Stripe_CustomerTest extends StripeTestCase
     $customer->save();
 
     $updatedCustomer = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual(NULL, $updatedCustomer->description);
+    $this->assertSame(NULL, $updatedCustomer->description);
   }
 
   public function testUpdateMetadata()
@@ -69,7 +70,7 @@ class Stripe_CustomerTest extends StripeTestCase
     $customer->save();
 
     $updatedCustomer = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual('foo bar', $updatedCustomer->metadata['test']);
+    $this->assertSame('foo bar', $updatedCustomer->metadata['test']);
   }
 
   public function testDeleteMetadata()
@@ -80,7 +81,7 @@ class Stripe_CustomerTest extends StripeTestCase
     $customer->save();
 
     $updatedCustomer = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual(0, count($updatedCustomer->metadata->keys()));
+    $this->assertSame(0, count($updatedCustomer->metadata->keys()));
   }
 
   public function testUpdateSomeMetadata()
@@ -94,8 +95,8 @@ class Stripe_CustomerTest extends StripeTestCase
     $customer->save();
 
     $updatedCustomer = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual('XS', $updatedCustomer->metadata['shirt size']);
-    $this->assertEqual('9', $updatedCustomer->metadata['shoe size']);
+    $this->assertSame('XS', $updatedCustomer->metadata['shirt size']);
+    $this->assertSame('9', $updatedCustomer->metadata['shoe size']);
   }
 
   public function testUpdateAllMetadata()
@@ -109,16 +110,16 @@ class Stripe_CustomerTest extends StripeTestCase
     $customer->save();
 
     $updatedCustomer = Stripe_Customer::retrieve($customer->id);
-    $this->assertEqual('XL', $updatedCustomer->metadata['shirt size']);
+    $this->assertSame('XL', $updatedCustomer->metadata['shirt size']);
     $this->assertFalse(isset($updatedCustomer->metadata['shoe size']));
   }
 
+  /**
+   * @expectedException Stripe_InvalidRequestError
+   */
   public function testUpdateInvalidMetadata()
   {
     $customer = self::createTestCustomer();
-
-    $this->expectException(new IsAExpectation('Stripe_InvalidRequestError'));
-
     $customer->metadata = 'something';
     $customer->save();
   }
@@ -135,10 +136,10 @@ class Stripe_CustomerTest extends StripeTestCase
     );
 
     $customer->cancelSubscription(array('at_period_end' => true));
-    $this->assertEqual($customer->subscription->status, 'active');
+    $this->assertSame($customer->subscription->status, 'active');
     $this->assertTrue($customer->subscription->cancel_at_period_end);
     $customer->cancelSubscription();
-    $this->assertEqual($customer->subscription->status, 'canceled');
+    $this->assertSame($customer->subscription->status, 'canceled');
   }
 
   public function testCustomerAddCard()
@@ -158,7 +159,7 @@ class Stripe_CustomerTest extends StripeTestCase
 
     $updatedCustomer = Stripe_Customer::retrieve($customer->id);
     $updatedCards = $updatedCustomer->cards->all();
-    $this->assertEqual(count($updatedCards["data"]), 2);
+    $this->assertSame(count($updatedCards["data"]), 2);
 
   }
 
@@ -168,7 +169,7 @@ class Stripe_CustomerTest extends StripeTestCase
     $customer->save();
 
     $cards = $customer->cards->all();
-    $this->assertEqual(count($cards["data"]), 1);
+    $this->assertSame(count($cards["data"]), 1);
 
     $card = $cards['data'][0];
     $card->name = "Jane Austen";
@@ -176,7 +177,7 @@ class Stripe_CustomerTest extends StripeTestCase
 
     $updatedCustomer = Stripe_Customer::retrieve($customer->id);
     $updatedCards = $updatedCustomer->cards->all();
-    $this->assertEqual($updatedCards["data"][0]->name, "Jane Austen");
+    $this->assertSame($updatedCards["data"][0]->name, "Jane Austen");
   }
 
   public function testCustomerDeleteCard()
@@ -196,16 +197,16 @@ class Stripe_CustomerTest extends StripeTestCase
 
     $updatedCustomer = Stripe_Customer::retrieve($customer->id);
     $updatedCards = $updatedCustomer->cards->all();
-    $this->assertEqual(count($updatedCards["data"]), 2);
+    $this->assertSame(count($updatedCards["data"]), 2);
 
     $deleteStatus =
       $updatedCustomer->cards->retrieve($createdCard->id)->delete();
-    $this->assertEqual($deleteStatus->deleted, 1);
+    $this->assertTrue($deleteStatus->deleted);
     $updatedCustomer->save();
 
     $postDeleteCustomer = Stripe_Customer::retrieve($customer->id);
     $postDeleteCards = $postDeleteCustomer->cards->all();
-    $this->assertEqual(count($postDeleteCards["data"]), 1);
+    $this->assertSame(count($postDeleteCards["data"]), 1);
   }
 
 }

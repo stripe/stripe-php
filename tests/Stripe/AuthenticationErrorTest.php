@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_AuthenticationErrorTest extends UnitTestCase
+class Stripe_AuthenticationErrorTest extends Stripe_TestCase
 {
   public function testInvalidCredentials()
   {
@@ -8,7 +8,7 @@ class Stripe_AuthenticationErrorTest extends UnitTestCase
     try {
       Stripe_Customer::create();
     } catch (Stripe_AuthenticationError $e) {
-      $this->assertEqual(401, $e->getHttpStatus());
+      $this->assertSame(401, $e->getHttpStatus());
     }
   }
 }

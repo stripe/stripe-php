@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_CouponTest extends StripeTestCase
+class Stripe_CouponTest extends Stripe_TestCase
 {
   public function testSave()
   {
@@ -14,14 +14,14 @@ class Stripe_CouponTest extends StripeTestCase
             'id' => $id,
         )
     );
-    $this->assertEqual($id, $c->id);
+    $this->assertSame($id, $c->id);
     // @codingStandardsIgnoreStart
-    $this->assertEqual(25, $c->percent_off);
+    $this->assertSame(25, $c->percent_off);
     // @codingStandardsIgnoreEnd
     $c->metadata['foo'] = 'bar';
     $c->save();
 
     $stripeCoupon = Stripe_Coupon::retrieve($id);
-    $this->assertEqual($c->metadata, $stripeCoupon->metadata);
+    $this->assertEquals($c->metadata, $stripeCoupon->metadata);
   }
 }

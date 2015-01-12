@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_TransferTest extends StripeTestCase
+class Stripe_TransferTest extends Stripe_TestCase
 {
   public function testCreate()
   {
@@ -14,7 +14,7 @@ class Stripe_TransferTest extends StripeTestCase
           'recipient' => $recipient->id
         )
     );
-    $this->assertEqual('pending', $transfer->status);
+    $this->assertSame('pending', $transfer->status);
   }
 
   public function testRetrieve()
@@ -30,12 +30,14 @@ class Stripe_TransferTest extends StripeTestCase
         )
     );
     $reloaded = Stripe_Transfer::retrieve($transfer->id);
-    $this->assertEqual($reloaded->id, $transfer->id);
+    $this->assertSame($reloaded->id, $transfer->id);
   }
 
+  /**
+   * @expectedException Stripe_InvalidRequestError
+   */
   public function testCancel()
   {
-    $this->expectException(new IsAExpectation('Stripe_InvalidRequestError'));
     $recipient = self::createTestRecipient();
 
     self::authorizeFromEnv();
@@ -47,7 +49,7 @@ class Stripe_TransferTest extends StripeTestCase
         )
     );
     $reloaded = Stripe_Transfer::retrieve($transfer->id);
-    $this->assertEqual($reloaded->id, $transfer->id);
+    $this->assertSame($reloaded->id, $transfer->id);
 
     $reloaded->cancel();
   }
@@ -69,7 +71,7 @@ class Stripe_TransferTest extends StripeTestCase
     $transfer->save();
 
     $updatedTransfer = Stripe_Transfer::retrieve($transfer->id);
-    $this->assertEqual('foo bar', $updatedTransfer->metadata['test']);
+    $this->assertSame('foo bar', $updatedTransfer->metadata['test']);
   }
 
   public function testTransferUpdateMetadataAll()
@@ -89,7 +91,7 @@ class Stripe_TransferTest extends StripeTestCase
     $transfer->save();
 
     $updatedTransfer = Stripe_Transfer::retrieve($transfer->id);
-    $this->assertEqual('foo bar', $updatedTransfer->metadata['test']);
+    $this->assertSame('foo bar', $updatedTransfer->metadata['test']);
   }
 
   public function testRecipientUpdateMetadata()
@@ -100,7 +102,7 @@ class Stripe_TransferTest extends StripeTestCase
     $recipient->save();
 
     $updatedRecipient = Stripe_Recipient::retrieve($recipient->id);
-    $this->assertEqual('foo bar', $updatedRecipient->metadata['test']);
+    $this->assertSame('foo bar', $updatedRecipient->metadata['test']);
   }
 
   public function testRecipientUpdateMetadataAll()
@@ -111,6 +113,6 @@ class Stripe_TransferTest extends StripeTestCase
     $recipient->save();
 
     $updatedRecipient = Stripe_Recipient::retrieve($recipient->id);
-    $this->assertEqual('foo bar', $updatedRecipient->metadata['test']);
+    $this->assertSame('foo bar', $updatedRecipient->metadata['test']);
   }
 }

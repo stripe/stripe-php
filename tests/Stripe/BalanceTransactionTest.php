@@ -1,11 +1,11 @@
 <?php
 
-class Stripe_BalanceTransactionTest extends StripeTestCase
+class Stripe_BalanceTransactionTest extends Stripe_TestCase
 {
   public function testList()
   {
     self::authorizeFromEnv();
     $d = Stripe_BalanceTransaction::all();
-    $this->assertEqual($d->url, '/v1/balance/history');
+    $this->assertSame($d->url, '/v1/balance/history');
   }
 }

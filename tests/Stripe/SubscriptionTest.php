@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_SubscriptionTest extends StripeTestCase
+class Stripe_SubscriptionTest extends Stripe_TestCase
 {
 
   public function testCreateUpdateCancel()
@@ -12,21 +12,21 @@ class Stripe_SubscriptionTest extends StripeTestCase
 
     $sub = $customer->subscriptions->create(array('plan' => $planID));
 
-    $this->assertEqual($sub->status, 'active');
-    $this->assertEqual($sub->plan->id, $planID);
+    $this->assertSame($sub->status, 'active');
+    $this->assertSame($sub->plan->id, $planID);
 
     $sub->quantity = 2;
     $sub->save();
 
     $sub = $customer->subscriptions->retrieve($sub->id);
-    $this->assertEqual($sub->status, 'active');
-    $this->assertEqual($sub->plan->id, $planID);
-    $this->assertEqual($sub->quantity, 2);
+    $this->assertSame($sub->status, 'active');
+    $this->assertSame($sub->plan->id, $planID);
+    $this->assertSame($sub->quantity, 2);
 
     $sub->cancel(array('at_period_end' => true));
 
     $sub = $customer->subscriptions->retrieve($sub->id);
-    $this->assertEqual($sub->status, 'active');
+    $this->assertSame($sub->status, 'active');
     // @codingStandardsIgnoreStart
     $this->assertTrue($sub->cancel_at_period_end);
     // @codingStandardsIgnoreEnd
@@ -49,9 +49,9 @@ class Stripe_SubscriptionTest extends StripeTestCase
         )
     );
 
-    $this->assertEqual($sub->status, 'active');
-    $this->assertEqual($sub->plan->id, $planID);
-    $this->assertEqual($sub->discount->coupon->id, $couponID);
+    $this->assertSame($sub->status, 'active');
+    $this->assertSame($sub->plan->id, $planID);
+    $this->assertSame($sub->discount->coupon->id, $couponID);
 
     $sub->deleteDiscount();
     $sub = $customer->subscriptions->retrieve($sub->id);

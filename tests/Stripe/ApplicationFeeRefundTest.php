@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_ApplicationFeeRefundTest extends StripeTestCase
+class Stripe_ApplicationFeeRefundTest extends Stripe_TestCase
 {
   public function testUrls()
   {
@@ -8,7 +8,7 @@ class Stripe_ApplicationFeeRefundTest extends StripeTestCase
     $refund->id = 'refund_id';
     $refund->fee = 'fee_id';
 
-    $this->assertEqual(
+    $this->assertSame(
         $refund->instanceUrl(),
         '/v1/application_fees/fee_id/refunds/refund_id'
     );

@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_DiscountTest extends StripeTestCase
+class Stripe_DiscountTest extends Stripe_TestCase
 {
   public function testDeletion()
   {
@@ -18,7 +18,7 @@ class Stripe_DiscountTest extends StripeTestCase
 
     $this->assertTrue(isset($customer->discount));
     $this->assertTrue(isset($customer->discount->coupon));
-    $this->assertEqual($id, $customer->discount->coupon->id);
+    $this->assertSame($id, $customer->discount->coupon->id);
 
     $customer->deleteDiscount();
     $this->assertFalse(isset($customer->discount));

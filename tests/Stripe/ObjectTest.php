@@ -1,12 +1,12 @@
 <?php
 
-class Stripe_ObjectTest extends UnitTestCase
+class Stripe_ObjectTest extends Stripe_TestCase
 {
   public function testArrayAccessorsSemantics()
   {
     $s = new Stripe_Object();
     $s['foo'] = 'a';
-    $this->assertEqual($s['foo'], 'a');
+    $this->assertSame($s['foo'], 'a');
     $this->assertTrue(isset($s['foo']));
     unset($s['foo']);
     $this->assertFalse(isset($s['foo']));
@@ -16,7 +16,7 @@ class Stripe_ObjectTest extends UnitTestCase
   {
     $s = new Stripe_Object();
     $s->foo = 'a';
-    $this->assertEqual($s->foo, 'a');
+    $this->assertSame($s->foo, 'a');
     $this->assertTrue(isset($s->foo));
     unset($s->foo);
     $this->assertFalse(isset($s->foo));
@@ -26,16 +26,16 @@ class Stripe_ObjectTest extends UnitTestCase
   {
     $s = new Stripe_Object();
     $s->foo = 'a';
-    $this->assertEqual($s['foo'], 'a');
+    $this->assertSame($s['foo'], 'a');
 
     $s['bar'] = 'b';
-    $this->assertEqual($s->bar, 'b');
+    $this->assertSame($s->bar, 'b');
   }
 
   public function testKeys()
   {
     $s = new Stripe_Object();
     $s->foo = 'a';
-    $this->assertEqual($s->keys(), array('foo'));
+    $this->assertSame($s->keys(), array('foo'));
   }
 }

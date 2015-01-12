@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_InvalidRequestErrorTest extends StripeTestCase
+class Stripe_InvalidRequestErrorTest extends Stripe_TestCase
 {
   public function testInvalidObject()
   {
@@ -8,7 +8,7 @@ class Stripe_InvalidRequestErrorTest extends StripeTestCase
     try {
       Stripe_Customer::retrieve('invalid');
     } catch (Stripe_InvalidRequestError $e) {
-      $this->assertEqual(404, $e->getHttpStatus());
+      $this->assertSame(404, $e->getHttpStatus());
     }
   }
 
@@ -18,7 +18,7 @@ class Stripe_InvalidRequestErrorTest extends StripeTestCase
     try {
       Stripe_Charge::create();
     } catch (Stripe_InvalidRequestError $e) {
-      $this->assertEqual(400, $e->getHttpStatus());
+      $this->assertSame(400, $e->getHttpStatus());
     }
   }
 }

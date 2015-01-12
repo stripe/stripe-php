@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_PlanTest extends StripeTestCase
+class Stripe_PlanTest extends Stripe_TestCase
 {
   public function testDeletion()
   {
@@ -45,9 +45,9 @@ class Stripe_PlanTest extends StripeTestCase
     );
     $p->name = 'A new plan name';
     $p->save();
-    $this->assertEqual($p->name, 'A new plan name');
+    $this->assertSame($p->name, 'A new plan name');
 
     $stripePlan = Stripe_Plan::retrieve($planID);
-    $this->assertEqual($p->name, $stripePlan->name);
+    $this->assertSame($p->name, $stripePlan->name);
   }
 }

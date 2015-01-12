@@ -1,6 +1,6 @@
 <?php
 
-class Stripe_FileUploadTest extends StripeTestCase
+class Stripe_FileUploadTest extends Stripe_TestCase
 {
   public function testCreateFile()
   {
@@ -13,8 +13,8 @@ class Stripe_FileUploadTest extends StripeTestCase
         )
     );
     fclose($fp);
-    $this->assertEqual(95, $file->size);
-    $this->assertEqual('image/png', $file->mimetype);
+    $this->assertSame(95, $file->size);
+    $this->assertSame('image/png', $file->mimetype);
   }
 
   public function testCreateCurlFile()
@@ -32,7 +32,7 @@ class Stripe_FileUploadTest extends StripeTestCase
             'file' => $file,
         )
     );
-    $this->assertEqual(95, $file->size);
-    $this->assertEqual('image/png', $file->mimetype);
+    $this->assertSame(95, $file->size);
+    $this->assertSame('image/png', $file->mimetype);
   }
 }

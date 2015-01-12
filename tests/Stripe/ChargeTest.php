@@ -1,12 +1,12 @@
 <?php
 
-class Stripe_ChargeTest extends StripeTestCase
+class Stripe_ChargeTest extends Stripe_TestCase
 {
   public function testUrls()
   {
-    $this->assertEqual(Stripe_Charge::classUrl('Stripe_Charge'), '/v1/charges');
+    $this->assertSame(Stripe_Charge::classUrl('Stripe_Charge'), '/v1/charges');
     $charge = new Stripe_Charge('abcd/efgh');
-    $this->assertEqual($charge->instanceUrl(), '/v1/charges/abcd%2Fefgh');
+    $this->assertSame($charge->instanceUrl(), '/v1/charges/abcd%2Fefgh');
   }
 
   public function testCreate()
@@ -48,7 +48,7 @@ class Stripe_ChargeTest extends StripeTestCase
         )
     );
     $d = Stripe_Charge::retrieve($c->id);
-    $this->assertEqual($d->id, $c->id);
+    $this->assertSame($d->id, $c->id);
   }
 
   public function testUpdateMetadata()
@@ -73,7 +73,7 @@ class Stripe_ChargeTest extends StripeTestCase
     $charge->save();
 
     $updatedCharge = Stripe_Charge::retrieve($charge->id);
-    $this->assertEqual('foo bar', $updatedCharge->metadata['test']);
+    $this->assertSame('foo bar', $updatedCharge->metadata['test']);
   }
 
   public function testUpdateMetadataAll()
@@ -98,7 +98,7 @@ class Stripe_ChargeTest extends StripeTestCase
     $charge->save();
 
     $updatedCharge = Stripe_Charge::retrieve($charge->id);
-    $this->assertEqual('foo bar', $updatedCharge->metadata['test']);
+    $this->assertSame('foo bar', $updatedCharge->metadata['test']);
   }
 
   public function testMarkAsFraudulent()
@@ -123,7 +123,7 @@ class Stripe_ChargeTest extends StripeTestCase
     $charge->markAsFraudulent();
 
     $updatedCharge = Stripe_Charge::retrieve($charge->id);
-    $this->assertEqual(
+    $this->assertSame(
         'fraudulent', $updatedCharge['fraud_details']['user_report']
     );
   }
@@ -149,6 +149,6 @@ class Stripe_ChargeTest extends StripeTestCase
     $charge->markAsSafe();
 
     $updatedCharge = Stripe_Charge::retrieve($charge->id);
-    $this->assertEqual('safe', $updatedCharge['fraud_details']['user_report']);
+    $this->assertSame('safe', $updatedCharge['fraud_details']['user_report']);
   }
 }
