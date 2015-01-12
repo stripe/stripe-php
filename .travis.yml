@@ -7,5 +7,5 @@ php:
   - 5.6
   - hhvm
 
-script:
-  - ./build.php
+script: ./build.php
+after_script: ./vendor/bin/coveralls -v
