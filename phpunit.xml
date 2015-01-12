@@ -1,4 +1,4 @@
-<phpunit bootstrap="tests/bootstrap.php" colors="true" forceCoversAnnotation="true">
+<phpunit bootstrap="tests/bootstrap.php" colors="true">
     <testsuites>
         <testsuite name="Stripe PHP Test Suite">
             <directory suffix="Test.php">tests</directory>
@@ -9,4 +9,7 @@
             <directory>lib</directory>
         </whitelist>
     </filter>
+    <logging>
+        <log type="coverage-clover" target="clover.xml"/>
+    </logging>
 </phpunit>
