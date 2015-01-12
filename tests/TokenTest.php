@@ -4,10 +4,10 @@ namespace Stripe;
 
 class TokenTest extends TestCase
 {
-  public function testUrls()
-  {
-    $this->assertSame(Token::classUrl('Stripe\\Token'), '/v1/tokens');
-    $token = new Token('abcd/efgh');
-    $this->assertSame($token->instanceUrl(), '/v1/tokens/abcd%2Fefgh');
-  }
+    public function testUrls()
+    {
+        $this->assertSame(Token::classUrl('Stripe\\Token'), '/v1/tokens');
+        $token = new Token('abcd/efgh');
+        $this->assertSame($token->instanceUrl(), '/v1/tokens/abcd%2Fefgh');
+    }
 }

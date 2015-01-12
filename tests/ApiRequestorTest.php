@@ -4,85 +4,85 @@ namespace Stripe;
 
 class ApiRequestorTest extends TestCase
 {
-  public function testEncode()
-  {
-    $a = array(
-      'my' => 'value',
-      'that' => array('your' => 'example'),
-      'bar' => 1,
-      'baz' => null
-    );
+    public function testEncode()
+    {
+        $a = array(
+        'my' => 'value',
+        'that' => array('your' => 'example'),
+        'bar' => 1,
+        'baz' => null
+        );
 
-    $enc = APIRequestor::encode($a);
-    $this->assertSame($enc, 'my=value&that%5Byour%5D=example&bar=1');
+        $enc = APIRequestor::encode($a);
+        $this->assertSame($enc, 'my=value&that%5Byour%5D=example&bar=1');
 
-    $a = array('that' => array('your' => 'example', 'foo' => null));
-    $enc = APIRequestor::encode($a);
-    $this->assertSame($enc, 'that%5Byour%5D=example');
+        $a = array('that' => array('your' => 'example', 'foo' => null));
+        $enc = APIRequestor::encode($a);
+        $this->assertSame($enc, 'that%5Byour%5D=example');
 
-    $a = array('that' => 'example', 'foo' => array('bar', 'baz'));
-    $enc = APIRequestor::encode($a);
-    $this->assertSame($enc, 'that=example&foo%5B%5D=bar&foo%5B%5D=baz');
+        $a = array('that' => 'example', 'foo' => array('bar', 'baz'));
+        $enc = APIRequestor::encode($a);
+        $this->assertSame($enc, 'that=example&foo%5B%5D=bar&foo%5B%5D=baz');
 
-    $a = array(
+        $a = array(
         'my' => 'value',
         'that' => array('your' => array('cheese', 'whiz', null)),
         'bar' => 1,
         'baz' => null
-    );
+        );
 
-    $enc = APIRequestor::encode($a);
-    $expected = 'my=value&that%5Byour%5D%5B%5D=cheese'
+        $enc = APIRequestor::encode($a);
+        $expected = 'my=value&that%5Byour%5D%5B%5D=cheese'
               . '&that%5Byour%5D%5B%5D=whiz&bar=1';
-    $this->assertSame($enc, $expected);
-  }
-
-  public function testUtf8()
-  {
-    // UTF-8 string
-    $x = "\xc3\xa9";
-    $this->assertSame(ApiRequestor::utf8($x), $x);
-
-    // Latin-1 string
-    $x = "\xe9";
-    $this->assertSame(ApiRequestor::utf8($x), "\xc3\xa9");
-
-    // Not a string
-    $x = TRUE;
-    $this->assertSame(ApiRequestor::utf8($x), $x);
-  }
-
-  public function testEncodeObjects()
-  {
-    // We have to do some work here because this is normally
-    // private. This is just for testing! Also it only works on PHP >=
-    // 5.3
-    if (version_compare(PHP_VERSION, '5.3.2', '>=')) {
-      $reflector = new \ReflectionClass('Stripe\\ApiRequestor');
-      $method = $reflector->getMethod('_encodeObjects');
-      $method->setAccessible(true);
-
-      $a = array('customer' => new Customer('abcd'));
-      $enc = $method->invoke(null, $a);
-      $this->assertSame($enc, array('customer' => 'abcd'));
-
-      // Preserves UTF-8
-      $v = array('customer' => "☃");
-      $enc = $method->invoke(null, $v);
-      $this->assertSame($enc, $v);
-
-      // Encodes latin-1 -> UTF-8
-      $v = array('customer' => "\xe9");
-      $enc = $method->invoke(null, $v);
-      $this->assertSame($enc, array('customer' => "\xc3\xa9"));
+        $this->assertSame($enc, $expected);
     }
-  }
 
-  public function testBlacklistedPEMCert()
-  {
-    $cert =
-      // {{{ Revoked certificate from api.stripe.com
-'-----BEGIN CERTIFICATE-----
+    public function testUtf8()
+    {
+      // UTF-8 string
+        $x = "\xc3\xa9";
+        $this->assertSame(ApiRequestor::utf8($x), $x);
+
+      // Latin-1 string
+        $x = "\xe9";
+        $this->assertSame(ApiRequestor::utf8($x), "\xc3\xa9");
+
+      // Not a string
+        $x = true;
+        $this->assertSame(ApiRequestor::utf8($x), $x);
+    }
+
+    public function testEncodeObjects()
+    {
+      // We have to do some work here because this is normally
+      // private. This is just for testing! Also it only works on PHP >=
+      // 5.3
+        if (version_compare(PHP_VERSION, '5.3.2', '>=')) {
+            $reflector = new \ReflectionClass('Stripe\\ApiRequestor');
+            $method = $reflector->getMethod('_encodeObjects');
+            $method->setAccessible(true);
+
+            $a = array('customer' => new Customer('abcd'));
+            $enc = $method->invoke(null, $a);
+            $this->assertSame($enc, array('customer' => 'abcd'));
+
+          // Preserves UTF-8
+            $v = array('customer' => "☃");
+            $enc = $method->invoke(null, $v);
+            $this->assertSame($enc, $v);
+
+          // Encodes latin-1 -> UTF-8
+            $v = array('customer' => "\xe9");
+            $enc = $method->invoke(null, $v);
+            $this->assertSame($enc, array('customer' => "\xc3\xa9"));
+        }
+    }
+
+    public function testBlacklistedPEMCert()
+    {
+        $cert =
+        // {{{ Revoked certificate from api.stripe.com
+        '-----BEGIN CERTIFICATE-----
 MIIGoDCCBYigAwIBAgIQATGh1aL1Q3mXYwp7zTQ8+zANBgkqhkiG9w0BAQUFADBm
 MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3
 d3cuZGlnaWNlcnQuY29tMSUwIwYDVQQDExxEaWdpQ2VydCBIaWdoIEFzc3VyYW5j
@@ -120,7 +120,7 @@ SBs2soRGVXHr3AczRKLW3G+IbIpUc3vilOul/PXWHutfzz7/asxXSTk/siVKROQ8
 3PGuaL8B8TZVbTOPYoJHdPzeRxL8Rbg8sDogHR+jkqwwyhUCfuzVbOjWFJU1DKvr
 CBoD8xKYd5r7CYf1Du+nNMmDmrE=
 -----END CERTIFICATE-----';
-  // }}}
-    $this->assertTrue(APIRequestor::isBlackListed($cert));
-  }
+    // }}}
+        $this->assertTrue(APIRequestor::isBlackListed($cert));
+    }
 }
