@@ -1,0 +1,18 @@
+filter:
+    excluded_paths:
+        - 'vendor/*'
+        - 'tests/*'
+before_commands:
+    - 'composer install --prefer-source'
+tools:
+    php_analyzer: true
+    php_mess_detector: true
+    php_code_sniffer:
+        config:
+            standard: Zend
+    sensiolabs_security_checker: true
+    php_loc:
+        excluded_dirs:
+            - vendor
+    php_pdepend: true
+    php_sim: true
