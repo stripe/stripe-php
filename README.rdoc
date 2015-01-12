@@ -3,7 +3,11 @@
 {<img src="https://poser.pugx.org/stripe/stripe-php/v/stable.svg" alt="Latest Stable Version" />}[https://packagist.org/packages/stripe/stripe-php]
 {<img src="https://poser.pugx.org/stripe/stripe-php/downloads.svg" alt="Total Downloads" />}[https://packagist.org/packages/stripe/stripe-php]
 {<img src="https://poser.pugx.org/stripe/stripe-php/license.svg" alt="License" />}[https://packagist.org/packages/stripe/stripe-php]
-{<img src="http://img.shields.io/coveralls/stripe/stripe-php.svg" alt="Code Coverage" />}[https://coveralls.io/r/stripe/stripe-php]
+{<img src="https://coveralls.io/repos/stripe/stripe-php/badge.png?branch=experimental-v2" alt="Code Coverage" />}[https://coveralls.io/r/stripe/stripe-php?branch=experimental-v2]
+
+
+
+
 
 
 You can sign up for a Stripe account at https://stripe.com.
