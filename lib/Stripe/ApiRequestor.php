@@ -91,16 +91,21 @@ class Stripe_ApiRequestor
    * @param string $method
    * @param string $url
    * @param array|null $params
+   * @param array|null $headers
    *
    * @return array An array whose first element is the response and second
    *    element is the API key used to make the request.
    */
-  public function request($method, $url, $params=null)
+  public function request($method, $url, $params=null, $headers=null)
   {
-    if (!$params)
+    if (!$params) {
       $params = array();
+    }
+    if (!$headers) {
+      $headers = array();
+    }
     list($rbody, $rcode, $myApiKey) =
-      $this->_requestRaw($method, $url, $params);
+      $this->_requestRaw($method, $url, $params, $headers);
     $resp = $this->_interpretResponse($rbody, $rcode);
     return array($resp, $myApiKey);
   }
@@ -151,7 +156,7 @@ class Stripe_ApiRequestor
     }
   }
 
-  private function _requestRaw($method, $url, $params)
+  private function _requestRaw($method, $url, $params, $headers)
   {
     if (!array_key_exists($this->_apiBase, self::$_preFlight)
       || !self::$_preFlight[$this->_apiBase]) {
@@ -182,14 +187,16 @@ class Stripe_ApiRequestor
         'publisher' => 'stripe',
         'uname' => $uname,
     );
-    $headers = array(
-        'X-Stripe-Client-User-Agent: ' . json_encode($ua),
-        'User-Agent: Stripe/v1 PhpBindings/' . Stripe::VERSION,
-        'Authorization: Bearer ' . $myApiKey,
+    $defaultHeaders = array(
+        'X-Stripe-Client-User-Agent' => json_encode($ua),
+        'User-Agent' => 'Stripe/v1 PhpBindings/' . Stripe::VERSION,
+        'Authorization' => 'Bearer ' . $myApiKey,
     );
+
     if (Stripe::$apiVersion) {
-      $headers[] = 'Stripe-Version: ' . Stripe::$apiVersion;
+      $defaultHeaders['Stripe-Version'] = Stripe::$apiVersion;
     }
+
     $hasFile = false;
     $hasCurlFile = class_exists('CURLFile');
     foreach ($params as $k => $v) {
@@ -202,15 +209,22 @@ class Stripe_ApiRequestor
     }
 
     if ($hasFile) {
-      $headers[] = 'Content-Type: multipart/form-data';
+      $defaultHeaders['Content-Type'] = 'multipart/form-data';
     } else {
-      $headers[] = 'Content-Type: application/x-www-form-urlencoded';
+      $defaultHeaders['Content-Type'] = 'application/x-www-form-urlencoded';
+    }
+
+    $combinedHeaders = array_merge($defaultHeaders, $headers);
+    $rawHeaders = array();
+
+    foreach ($combinedHeaders as $header => $value) {
+      $rawHeaders[] = $header . ': ' . $value;
     }
 
     list($rbody, $rcode) = $this->_curlRequest(
         $method,
         $absUrl,
-        $headers,
+        $rawHeaders,
         $params,
         $hasFile
     );

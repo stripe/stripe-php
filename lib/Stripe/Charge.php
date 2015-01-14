@@ -8,10 +8,10 @@ class Stripe_Charge extends Stripe_ApiResource
    *
    * @return Stripe_Charge
    */
-  public static function retrieve($id, $apiKey=null)
+  public static function retrieve($id, $options=null)
   {
     $class = get_class();
-    return self::_scopedRetrieve($class, $id, $apiKey);
+    return self::_scopedRetrieve($class, $id, $options);
   }
 
   /**
@@ -20,10 +20,10 @@ class Stripe_Charge extends Stripe_ApiResource
    *
    * @return array An array of Stripe_Charges.
    */
-  public static function all($params=null, $apiKey=null)
+  public static function all($params=null, $options=null)
   {
     $class = get_class();
-    return self::_scopedAll($class, $params, $apiKey);
+    return self::_scopedAll($class, $params, $options);
   }
 
   /**
@@ -32,19 +32,19 @@ class Stripe_Charge extends Stripe_ApiResource
    *
    * @return Stripe_Charge The created charge.
    */
-  public static function create($params=null, $apiKey=null)
+  public static function create($params=null, $options=null)
   {
     $class = get_class();
-    return self::_scopedCreate($class, $params, $apiKey);
+    return self::_scopedCreate($class, $params, $options);
   }
 
   /**
    * @return Stripe_Charge The saved charge.
    */
-  public function save()
+  public function save($options=null)
   {
     $class = get_class();
-    return self::_scopedSave($class);
+    return self::_scopedSave($class, $options);
   }
 
   /**
@@ -52,11 +52,13 @@ class Stripe_Charge extends Stripe_ApiResource
    *
    * @return Stripe_Charge The refunded charge.
    */
-  public function refund($params=null)
+  public function refund($params=null, $options=null)
   {
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $opts = $this->parseOptions($options);
+    $requestor = new Stripe_ApiRequestor($opts->apiKey);
     $url = $this->instanceUrl() . '/refund';
-    list($response, $apiKey) = $requestor->request('post', $url, $params);
+    list($response, $apiKey) = 
+      $requestor->request('post', $url, $params, $opts->headers);
     $this->refreshFrom($response, $apiKey);
     return $this;
   }
@@ -66,11 +68,13 @@ class Stripe_Charge extends Stripe_ApiResource
    *
    * @return Stripe_Charge The captured charge.
    */
-  public function capture($params=null)
+  public function capture($params=null, $options=null)
   {
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $opts = $this->parseOptions($options);
+    $requestor = new Stripe_ApiRequestor($opts->apiKey);
     $url = $this->instanceUrl() . '/capture';
-    list($response, $apiKey) = $requestor->request('post', $url, $params);
+    list($response, $apiKey) = 
+      $requestor->request('post', $url, $params, $opts->headers);
     $this->refreshFrom($response, $apiKey);
     return $this;
   }
@@ -80,11 +84,13 @@ class Stripe_Charge extends Stripe_ApiResource
    *
    * @return array The updated dispute.
    */
-  public function updateDispute($params=null)
+  public function updateDispute($params=null, $option=null)
   {
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $opts = $this->parseOptions($options);
+    $requestor = new Stripe_ApiRequestor($opts->apiKey);
     $url = $this->instanceUrl() . '/dispute';
-    list($response, $apiKey) = $requestor->request('post', $url, $params);
+    list($response, $apiKey) = 
+      $requestor->request('post', $url, $params, $headers);
     $this->refreshFrom(array('dispute' => $response), $apiKey, true);
     return $this->dispute;
   }
@@ -92,11 +98,13 @@ class Stripe_Charge extends Stripe_ApiResource
   /**
    * @return Stripe_Charge The updated charge.
    */
-  public function closeDispute()
+  public function closeDispute($options=null)
   {
-    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+    $opts = $this->parseOptions($options);
+    $requestor = new Stripe_ApiRequestor($opts->apiKey);
     $url = $this->instanceUrl() . '/dispute/close';
-    list($response, $apiKey) = $requestor->request('post', $url);
+    list($response, $apiKey) = 
+      $requestor->request('post', $url, null, $opts->headers);
     $this->refreshFrom($response, $apiKey);
     return $this;
   }
