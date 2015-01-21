@@ -198,11 +198,11 @@ class Stripe_ApiRequestor
     }
 
     $hasFile = false;
-    $hasCurlFile = class_exists('CURLFile');
+    $hasCurlFile = class_exists('CURLFile', false);
     foreach ($params as $k => $v) {
       if (is_resource($v)) {
         $hasFile = true;
-        $params[$k] = self::_processResourceParam($v);
+        $params[$k] = self::_processResourceParam($v, $hasCurlFile);
       } else if ($hasCurlFile && $v instanceof CURLFile) {
         $hasFile = true;
       }
@@ -231,7 +231,7 @@ class Stripe_ApiRequestor
     return array($rbody, $rcode, $myApiKey);
   }
 
-  private function _processResourceParam($resource)
+  private function _processResourceParam($resource, $hasCurlFile)
   {
     if (get_resource_type($resource) !== 'stream') {
       throw new Stripe_ApiError(
@@ -246,7 +246,7 @@ class Stripe_ApiRequestor
       );
     }
 
-    if (class_exists('CURLFile')) {
+    if ($hasCurlFile) {
       // We don't have the filename or mimetype, but the API doesn't care
       return new CURLFile($metaData['uri']);
     } else {
