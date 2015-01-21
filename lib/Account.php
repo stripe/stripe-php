@@ -11,7 +11,6 @@ class Account extends SingletonApiResource
      */
     public static function retrieve($apiKey = null)
     {
-        $class = get_class();
-        return self::_scopedSingletonRetrieve($class, $apiKey);
+        return self::_singletonRetrieve($apiKey);
     }
 }

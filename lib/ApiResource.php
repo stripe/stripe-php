@@ -9,14 +9,6 @@ abstract class ApiResource extends Object
         return Stripe::$apiBase;
     }
 
-    protected static function _scopedRetrieve($class, $id, $options = null)
-    {
-        $opts = RequestOptions::parse($options);
-        $instance = new $class($id, $opts->apiKey);
-        $instance->refresh();
-        return $instance;
-    }
-
     /**
      * @return ApiResource The refreshed resource.
      */
@@ -48,8 +40,6 @@ abstract class ApiResource extends Object
     }
 
     /**
-     * @param string $class
-     *
      * @return string The name of the class, with namespacing and underscores
      *    stripped.
      */
@@ -74,8 +64,6 @@ abstract class ApiResource extends Object
     }
 
     /**
-     * @param string $class
-     *
      * @return string The endpoint URL for the given class.
      */
     public static function classUrl()
@@ -91,6 +79,7 @@ abstract class ApiResource extends Object
     {
         $id = $this['id'];
         if ($id === null) {
+            $class = get_called_class();
             $message = "Could not determine which URL to request: "
                . "$class instance has invalid ID: $id";
             throw new InvalidRequestError($message, null);
@@ -106,7 +95,7 @@ abstract class ApiResource extends Object
         if ($params && !is_array($params)) {
             $message = "You must pass an array as the first argument to Stripe API "
                . "method calls.  (HINT: an example call to create a charge "
-               . "would be: \"StripeCharge::create(array('amount' => 100, "
+               . "would be: \"Stripe\\Charge::create(array('amount' => 100, "
                . "'currency' => 'usd', 'card' => array('number' => "
                . "4242424242424242, 'exp_month' => 5, 'exp_year' => 2015)))\")";
             throw new Error($message);
@@ -122,7 +111,15 @@ abstract class ApiResource extends Object
         }
     }
 
-    protected static function _scopedAll($class, $params = null, $options = null)
+    protected static function _retrieve($id, $options = null)
+    {
+        $opts = RequestOptions::parse($options);
+        $instance = new static($id, $opts->apiKey);
+        $instance->refresh();
+        return $instance;
+    }
+
+    protected static function _all($params = null, $options = null)
     {
         self::_validateCall('all', $params, $options);
         $base = static::baseUrl();
@@ -134,7 +131,7 @@ abstract class ApiResource extends Object
         return Util::convertToStripeObject($response, $apiKey);
     }
 
-    protected static function _scopedCreate($class, $params = null, $options = null)
+    protected static function _create($params = null, $options = null)
     {
         self::_validateCall('create', $params, $options);
         $base = static::baseUrl();
@@ -146,7 +143,7 @@ abstract class ApiResource extends Object
         return Util::convertToStripeObject($response, $apiKey);
     }
 
-    protected function _scopedSave($class, $options = null)
+    protected function _save($options = null)
     {
         self::_validateCall('save', null, $options);
 
@@ -163,7 +160,7 @@ abstract class ApiResource extends Object
         return $this;
     }
 
-    protected function _scopedDelete($class, $params = null, $options = null)
+    protected function _delete($params = null, $options = null)
     {
         self::_validateCall('delete', $params, $options);
         $opts = RequestOptions::parse($options);

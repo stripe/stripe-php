@@ -4,9 +4,9 @@ namespace Stripe;
 
 abstract class SingletonApiResource extends ApiResource
 {
-    protected static function _scopedSingletonRetrieve($class, $apiKey = null)
+    protected static function _singletonRetrieve($apiKey = null)
     {
-        $instance = new $class(null, $apiKey);
+        $instance = new static(null, $apiKey);
         $instance->refresh();
         return $instance;
     }

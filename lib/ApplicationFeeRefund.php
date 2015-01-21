@@ -32,7 +32,6 @@ class ApplicationFeeRefund extends ApiResource
      */
     public function save()
     {
-        $class = get_class();
-        return self::_scopedSave($class);
+        return self::_save();
     }
 }

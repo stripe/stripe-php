@@ -135,29 +135,16 @@ class Object implements ArrayAccess
     /**
      * This unfortunately needs to be public to be used in Util.php
      *
-     * @param string $class
      * @param array $values
      * @param string|null $apiKey
      *
      * @return Object The object constructed from the given values.
      */
-    public static function scopedConstructFrom($class, $values, $apiKey = null)
-    {
-        $obj = new $class(isset($values['id']) ? $values['id'] : null, $apiKey);
-        $obj->refreshFrom($values, $apiKey);
-        return $obj;
-    }
-
-    /**
-     * @param array $values
-     * @param string|null $apiKey
-     *
-     * @return Object The object of the same class as $this constructed
-     *    from the given values.
-     */
     public static function constructFrom($values, $apiKey = null)
     {
-        return self::scopedConstructFrom(__CLASS__, $values, $apiKey);
+        $obj = new static(isset($values['id']) ? $values['id'] : null, $apiKey);
+        $obj->refreshFrom($values, $apiKey);
+        return $obj;
     }
 
     /**
@@ -194,7 +181,7 @@ class Object implements ArrayAccess
             }
 
             if (self::$nestedUpdatableAttributes->includes($k) && is_array($v)) {
-                $this->_values[$k] = Object::scopedConstructFrom('Stripe\\AttachedObject', $v, $apiKey);
+                $this->_values[$k] = AttachedObject::constructFrom($v, $apiKey);
             } else {
                 $this->_values[$k] = Util::convertToStripeObject($v, $apiKey);
             }

@@ -12,8 +12,7 @@ class Transfer extends ApiResource
      */
     public static function retrieve($id, $apiKey = null)
     {
-        $class = get_class();
-        return self::_scopedRetrieve($class, $id, $apiKey);
+        return self::_retrieve($id, $apiKey);
     }
 
     /**
@@ -24,8 +23,7 @@ class Transfer extends ApiResource
      */
     public static function all($params = null, $apiKey = null)
     {
-        $class = get_class();
-        return self::_scopedAll($class, $params, $apiKey);
+        return self::_all($params, $apiKey);
     }
 
     /**
@@ -37,7 +35,7 @@ class Transfer extends ApiResource
     public static function create($params = null, $apiKey = null)
     {
         $class = get_class();
-        return self::_scopedCreate($class, $params, $apiKey);
+        return self::_create($params, $apiKey);
     }
 
     /**
@@ -57,7 +55,6 @@ class Transfer extends ApiResource
    */
     public function save()
     {
-        $class = get_class();
-        return self::_scopedSave($class);
+        return self::_save();
     }
 }

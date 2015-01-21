@@ -12,8 +12,7 @@ class Token extends ApiResource
      */
     public static function retrieve($id, $apiKey = null)
     {
-        $class = get_class();
-        return self::_scopedRetrieve($class, $id, $apiKey);
+        return self::_retrieve($id, $apiKey);
     }
 
     /**
@@ -24,7 +23,6 @@ class Token extends ApiResource
      */
     public static function create($params = null, $apiKey = null)
     {
-        $class = get_class();
-        return self::_scopedCreate($class, $params, $apiKey);
+        return self::_create($params, $apiKey);
     }
 }

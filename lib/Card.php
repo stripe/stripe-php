@@ -4,12 +4,6 @@ namespace Stripe;
 
 class Card extends ApiResource
 {
-    public static function constructFrom($values, $apiKey = null)
-    {
-        $class = get_class();
-        return self::scopedConstructFrom($class, $values, $apiKey);
-    }
-
     /**
      * @return string The instance URL for this resource. It needs to be special
      *    cased because it doesn't fit into the standard resource pattern.
@@ -49,8 +43,7 @@ class Card extends ApiResource
      */
     public function delete($params = null)
     {
-        $class = get_class();
-        return self::_scopedDelete($class, $params);
+        return self::_delete($params);
     }
 
     /**
@@ -58,7 +51,6 @@ class Card extends ApiResource
      */
     public function save()
     {
-        $class = get_class();
-        return self::_scopedSave($class);
+        return self::_save();
     }
 }

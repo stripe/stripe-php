@@ -12,8 +12,7 @@ class Charge extends ApiResource
      */
     public static function retrieve($id, $options = null)
     {
-        $class = get_class();
-        return self::_scopedRetrieve($class, $id, $options);
+        return self::_retrieve($id, $options);
     }
 
     /**
@@ -24,8 +23,7 @@ class Charge extends ApiResource
      */
     public static function all($params = null, $options = null)
     {
-        $class = get_class();
-        return self::_scopedAll($class, $params, $options);
+        return self::_all($params, $options);
     }
 
     /**
@@ -36,8 +34,7 @@ class Charge extends ApiResource
      */
     public static function create($params = null, $options = null)
     {
-        $class = get_class();
-        return self::_scopedCreate($class, $params, $options);
+        return self::_create($params, $options);
     }
 
     /**
@@ -47,8 +44,7 @@ class Charge extends ApiResource
      */
     public function save($options = null)
     {
-        $class = get_class();
-        return self::_scopedSave($class, $options);
+        return self::_save($options);
     }
 
     /**

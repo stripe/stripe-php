@@ -60,21 +60,21 @@ abstract class Util
     public static function convertToStripeObject($resp, $apiKey)
     {
         $types = array(
-        'card' => 'Stripe\\Card',
-        'charge' => 'Stripe\\Charge',
-        'coupon' => 'Stripe\\Coupon',
-        'customer' => 'Stripe\\Customer',
-        'list' => 'Stripe\\Collection',
-        'invoice' => 'Stripe\\Invoice',
-        'invoiceitem' => 'Stripe\\InvoiceItem',
-        'event' => 'Stripe\\Event',
-        'file' => 'Stripe\\FileUpload',
-        'transfer' => 'Stripe\\Transfer',
-        'plan' => 'Stripe\\Plan',
-        'recipient' => 'Stripe\\Recipient',
-        'refund' => 'Stripe\\Refund',
-        'subscription' => 'Stripe\\Subscription',
-        'fee_refund' => 'Stripe\\ApplicationFeeRefund'
+            'card' => 'Stripe\\Card',
+            'charge' => 'Stripe\\Charge',
+            'coupon' => 'Stripe\\Coupon',
+            'customer' => 'Stripe\\Customer',
+            'list' => 'Stripe\\Collection',
+            'invoice' => 'Stripe\\Invoice',
+            'invoiceitem' => 'Stripe\\InvoiceItem',
+            'event' => 'Stripe\\Event',
+            'file' => 'Stripe\\FileUpload',
+            'transfer' => 'Stripe\\Transfer',
+            'plan' => 'Stripe\\Plan',
+            'recipient' => 'Stripe\\Recipient',
+            'refund' => 'Stripe\\Refund',
+            'subscription' => 'Stripe\\Subscription',
+            'fee_refund' => 'Stripe\\ApplicationFeeRefund',
         );
         if (self::isList($resp)) {
             $mapped = array();
@@ -88,7 +88,7 @@ abstract class Util
             } else {
                 $class = 'Stripe\\Object';
             }
-            return Object::scopedConstructFrom($class, $resp, $apiKey);
+            return $class::constructFrom($resp, $apiKey);
         } else {
             return $resp;
         }

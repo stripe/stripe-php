@@ -21,8 +21,7 @@ class BalanceTransaction extends ApiResource
      */
     public static function retrieve($id, $apiKey = null)
     {
-        $class = get_class();
-        return self::_scopedRetrieve($class, $id, $apiKey);
+        return self::_retrieve($id, $apiKey);
     }
 
     /**
@@ -33,7 +32,6 @@ class BalanceTransaction extends ApiResource
      */
     public static function all($params = null, $apiKey = null)
     {
-        $class = get_class();
-        return self::_scopedAll($class, $params, $apiKey);
+        return self::_all($params, $apiKey);
     }
 }

@@ -34,8 +34,7 @@ class Subscription extends ApiResource
      */
     public function cancel($params = null)
     {
-        $class = get_class();
-        return self::_scopedDelete($class, $params);
+        return self::_delete($params);
     }
 
     /**
@@ -43,8 +42,7 @@ class Subscription extends ApiResource
      */
     public function save()
     {
-        $class = get_class();
-        return self::_scopedSave($class);
+        return self::_save();
     }
 
     /**
