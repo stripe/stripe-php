@@ -18,8 +18,8 @@ abstract class ApiResource extends Object
     }
 
     /**
-   * @returns ApiResource The refreshed resource.
-   */
+     * @returns ApiResource The refreshed resource.
+     */
     public function refresh()
     {
         $requestor = new ApiRequestor($this->_apiKey, self::baseUrl());
@@ -35,10 +35,10 @@ abstract class ApiResource extends Object
     }
 
     /**
-   * @param array options
-   *
-   * @returns RequestOptions with either passed in or saved API key
-   */
+     * @param array options
+     *
+     * @returns RequestOptions with either passed in or saved API key
+     */
     public function parseOptions($options)
     {
         $opts = RequestOptions::parse($options);
@@ -48,18 +48,18 @@ abstract class ApiResource extends Object
     }
 
     /**
-   * @param string $class
-   *
-   * @returns string The name of the class, with namespacing and underscores
-   *    stripped.
-   */
+     * @param string $class
+     *
+     * @returns string The name of the class, with namespacing and underscores
+     *    stripped.
+     */
     public static function className($class)
     {
-      // Useful for namespaces: Foo\Charge
+        // Useful for namespaces: Foo\Charge
         if ($postfixNamespaces = strrchr($class, '\\')) {
             $class = substr($postfixNamespaces, 1);
         }
-      // Useful for underscored 'namespaces': Foo_Charge
+        // Useful for underscored 'namespaces': Foo_Charge
         if ($postfixFakeNamespaces = strrchr($class, '')) {
             $class = $postfixFakeNamespaces;
         }
@@ -73,10 +73,10 @@ abstract class ApiResource extends Object
     }
 
     /**
-   * @param string $class
-   *
-   * @returns string The endpoint URL for the given class.
-   */
+     * @param string $class
+     *
+     * @returns string The endpoint URL for the given class.
+     */
     public static function classUrl($class)
     {
         $base = self::_scopedLsb($class, 'className', $class);
@@ -84,8 +84,8 @@ abstract class ApiResource extends Object
     }
 
     /**
-   * @returns string The full API URL for this API resource.
-   */
+     * @returns string The full API URL for this API resource.
+     */
     public function instanceUrl()
     {
         $id = $this['id'];
@@ -130,8 +130,7 @@ abstract class ApiResource extends Object
 
         $opts = RequestOptions::parse($options);
         $requestor = new ApiRequestor($opts->apiKey, $base);
-        list($response, $apiKey) =
-            $requestor->request('get', $url, $params, $opts->headers);
+        list($response, $apiKey) = $requestor->request('get', $url, $params, $opts->headers);
         return Util::convertToStripeObject($response, $apiKey);
     }
 
@@ -143,8 +142,7 @@ abstract class ApiResource extends Object
 
         $opts = RequestOptions::parse($options);
         $requestor = new ApiRequestor($opts->apiKey, $base);
-        list($response, $apiKey) =
-            $requestor->request('post', $url, $params, $opts->headers);
+        list($response, $apiKey) = $requestor->request('post', $url, $params, $opts->headers);
         return Util::convertToStripeObject($response, $apiKey);
     }
 
@@ -159,8 +157,7 @@ abstract class ApiResource extends Object
 
         if (count($params) > 0) {
             $url = $this->instanceUrl();
-            list($response, $apiKey) =
-                $requestor->request('post', $url, $params, $options);
+            list($response, $apiKey) = $requestor->request('post', $url, $params, $options);
             $this->refreshFrom($response, $apiKey);
         }
         return $this;

@@ -11,9 +11,9 @@ class Card extends ApiResource
     }
 
     /**
-   * @return string The instance URL for this resource. It needs to be special
-   *    cased because it doesn't fit into the standard resource pattern.
-   */
+     * @return string The instance URL for this resource. It needs to be special
+     *    cased because it doesn't fit into the standard resource pattern.
+     */
     public function instanceUrl()
     {
         $id = $this['id'];
@@ -43,10 +43,10 @@ class Card extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   *
-   * @return Card The deleted card.
-   */
+     * @param array|null $params
+     *
+     * @return Card The deleted card.
+     */
     public function delete($params = null)
     {
         $class = get_class();
@@ -54,8 +54,8 @@ class Card extends ApiResource
     }
 
     /**
-   * @return Card The saved card.
-   */
+     * @return Card The saved card.
+     */
     public function save()
     {
         $class = get_class();

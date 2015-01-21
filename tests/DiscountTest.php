@@ -10,10 +10,10 @@ class DiscountTest extends TestCase
         $id = 'test-coupon-' . self::randomString();
         $coupon = Coupon::create(
             array(
-            'percent_off' => 25,
-            'duration' => 'repeating',
-            'duration_in_months' => 5,
-            'id' => $id,
+                'percent_off' => 25,
+                'duration' => 'repeating',
+                'duration_in_months' => 5,
+                'id' => $id,
             )
         );
         $customer = self::createTestCustomer(array('coupon' => $id));

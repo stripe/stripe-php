@@ -10,8 +10,8 @@ class FileUploadTest extends TestCase
         self::authorizeFromEnv();
         $file = FileUpload::create(
             array(
-            'purpose' => 'dispute_evidence',
-            'file' => $fp,
+                'purpose' => 'dispute_evidence',
+                'file' => $fp,
             )
         );
         fclose($fp);
@@ -21,8 +21,8 @@ class FileUploadTest extends TestCase
 
     public function testCreateCurlFile()
     {
-        if (!class_exists('\CurlFile')) {
-          // Older PHP versions don't support this
+        if (!class_exists('\CurlFile', false)) {
+            // Older PHP versions don't support this
             return;
         }
 
@@ -30,8 +30,8 @@ class FileUploadTest extends TestCase
         self::authorizeFromEnv();
         $file = FileUpload::create(
             array(
-            'purpose' => 'dispute_evidence',
-            'file' => $file,
+                'purpose' => 'dispute_evidence',
+                'file' => $file,
             )
         );
         $this->assertSame(95, $file->size);

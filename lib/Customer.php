@@ -5,11 +5,11 @@ namespace Stripe;
 class Customer extends ApiResource
 {
     /**
-   * @param string $id The ID of the customer to retrieve.
-   * @param string|null $apiKey
-   *
-   * @return Customer
-   */
+     * @param string $id The ID of the customer to retrieve.
+     * @param string|null $apiKey
+     *
+     * @return Customer
+     */
     public static function retrieve($id, $apiKey = null)
     {
         $class = get_class();
@@ -17,11 +17,11 @@ class Customer extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   * @param string|null $apiKey
-   *
-   * @return array An array of Customers.
-   */
+     * @param array|null $params
+     * @param string|null $apiKey
+     *
+     * @return array An array of Customers.
+     */
     public static function all($params = null, $apiKey = null)
     {
         $class = get_class();
@@ -29,11 +29,11 @@ class Customer extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   * @param string|null $apiKey
-   *
-   * @return Customer The created customer.
-   */
+     * @param array|null $params
+     * @param string|null $apiKey
+     *
+     * @return Customer The created customer.
+     */
     public static function create($params = null, $apiKey = null)
     {
         $class = get_class();
@@ -41,8 +41,8 @@ class Customer extends ApiResource
     }
 
     /**
-   * @returns Customer The saved customer.
-   */
+     * @returns Customer The saved customer.
+     */
     public function save()
     {
         $class = get_class();
@@ -50,10 +50,10 @@ class Customer extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   *
-   * @returns Customer The deleted customer.
-   */
+     * @param array|null $params
+     *
+     * @return Customer The deleted customer.
+     */
     public function delete($params = null)
     {
         $class = get_class();
@@ -61,10 +61,10 @@ class Customer extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   *
-   * @returns InvoiceItem The resulting invoice item.
-   */
+     * @param array|null $params
+     *
+     * @return InvoiceItem The resulting invoice item.
+     */
     public function addInvoiceItem($params = null)
     {
         if (!$params) {
@@ -76,10 +76,10 @@ class Customer extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   *
-   * @returns array An array of the customer's Invoices.
-   */
+     * @param array|null $params
+     *
+     * @return array An array of the customer's Invoices.
+     */
     public function invoices($params = null)
     {
         if (!$params) {
@@ -91,10 +91,10 @@ class Customer extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   *
-   * @returns array An array of the customer's InvoiceItems.
-   */
+     * @param array|null $params
+     *
+     * @return array An array of the customer's InvoiceItems.
+     */
     public function invoiceItems($params = null)
     {
         if (!$params) {
@@ -106,10 +106,10 @@ class Customer extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   *
-   * @returns array An array of the customer's Charges.
-   */
+     * @param array|null $params
+     *
+     * @return array An array of the customer's Charges.
+     */
     public function charges($params = null)
     {
         if (!$params) {
@@ -121,10 +121,10 @@ class Customer extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   *
-   * @returns Subscription The updated subscription.
-   */
+     * @param array|null $params
+     *
+     * @return Subscription The updated subscription.
+     */
     public function updateSubscription($params = null)
     {
         $requestor = new ApiRequestor($this->_apiKey);
@@ -135,10 +135,10 @@ class Customer extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   *
-   * @returns Subscription The cancelled subscription.
-   */
+     * @param array|null $params
+     *
+     * @return Subscription The cancelled subscription.
+     */
     public function cancelSubscription($params = null)
     {
         $requestor = new ApiRequestor($this->_apiKey);
@@ -149,10 +149,10 @@ class Customer extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   *
-   * @returns Customer The updated customer.
-   */
+     * @param array|null $params
+     *
+     * @return Customer The updated customer.
+     */
     public function deleteDiscount()
     {
         $requestor = new ApiRequestor($this->_apiKey);

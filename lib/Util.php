@@ -5,11 +5,11 @@ namespace Stripe;
 abstract class Util
 {
     /**
-   * Whether the provided array (or other) is a list rather than a dictionary.
-   *
-   * @param array|mixed $array
-   * @return boolean True if the given object is a list.
-   */
+     * Whether the provided array (or other) is a list rather than a dictionary.
+     *
+     * @param array|mixed $array
+     * @return boolean True if the given object is a list.
+     */
     public static function isList($array)
     {
         if (!is_array($array)) {
@@ -26,16 +26,16 @@ abstract class Util
     }
 
     /**
-   * Recursively converts the PHP Stripe object to an array.
-   *
-   * @param array $values The PHP Stripe object to convert.
-   * @return array
-   */
+     * Recursively converts the PHP Stripe object to an array.
+     *
+     * @param array $values The PHP Stripe object to convert.
+     * @return array
+     */
     public static function convertStripeObjectToArray($values)
     {
         $results = array();
         foreach ($values as $k => $v) {
-          // FIXME: this is an encapsulation violation
+            // FIXME: this is an encapsulation violation
             if ($k[0] == '_') {
                 continue;
             }
@@ -51,12 +51,12 @@ abstract class Util
     }
 
     /**
-   * Converts a response from the Stripe API to the corresponding PHP object.
-   *
-   * @param array $resp The response from the Stripe API.
-   * @param string $apiKey
-   * @return Object|array
-   */
+     * Converts a response from the Stripe API to the corresponding PHP object.
+     *
+     * @param array $resp The response from the Stripe API.
+     * @param string $apiKey
+     * @return Object|array
+     */
     public static function convertToStripeObject($resp, $apiKey)
     {
         $types = array(
@@ -83,9 +83,7 @@ abstract class Util
             }
             return $mapped;
         } elseif (is_array($resp)) {
-            if (isset($resp['object'])
-            && is_string($resp['object'])
-            && isset($types[$resp['object']])) {
+            if (isset($resp['object']) && is_string($resp['object']) && isset($types[$resp['object']])) {
                 $class = $types[$resp['object']];
             } else {
                 $class = 'Stripe\\Object';

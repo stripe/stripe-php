@@ -7,10 +7,10 @@ class ApiRequestorTest extends TestCase
     public function testEncode()
     {
         $a = array(
-        'my' => 'value',
-        'that' => array('your' => 'example'),
-        'bar' => 1,
-        'baz' => null
+            'my' => 'value',
+            'that' => array('your' => 'example'),
+            'bar' => 1,
+            'baz' => null
         );
 
         $enc = APIRequestor::encode($a);
@@ -25,10 +25,10 @@ class ApiRequestorTest extends TestCase
         $this->assertSame($enc, 'that=example&foo%5B%5D=bar&foo%5B%5D=baz');
 
         $a = array(
-        'my' => 'value',
-        'that' => array('your' => array('cheese', 'whiz', null)),
-        'bar' => 1,
-        'baz' => null
+            'my' => 'value',
+            'that' => array('your' => array('cheese', 'whiz', null)),
+            'bar' => 1,
+            'baz' => null
         );
 
         $enc = APIRequestor::encode($a);
@@ -39,43 +39,38 @@ class ApiRequestorTest extends TestCase
 
     public function testUtf8()
     {
-      // UTF-8 string
+        // UTF-8 string
         $x = "\xc3\xa9";
         $this->assertSame(ApiRequestor::utf8($x), $x);
 
-      // Latin-1 string
+        // Latin-1 string
         $x = "\xe9";
         $this->assertSame(ApiRequestor::utf8($x), "\xc3\xa9");
 
-      // Not a string
+        // Not a string
         $x = true;
         $this->assertSame(ApiRequestor::utf8($x), $x);
     }
 
     public function testEncodeObjects()
     {
-      // We have to do some work here because this is normally
-      // private. This is just for testing! Also it only works on PHP >=
-      // 5.3
-        if (version_compare(PHP_VERSION, '5.3.2', '>=')) {
-            $reflector = new \ReflectionClass('Stripe\\ApiRequestor');
-            $method = $reflector->getMethod('_encodeObjects');
-            $method->setAccessible(true);
+        $reflector = new \ReflectionClass('Stripe\\ApiRequestor');
+        $method = $reflector->getMethod('_encodeObjects');
+        $method->setAccessible(true);
 
-            $a = array('customer' => new Customer('abcd'));
-            $enc = $method->invoke(null, $a);
-            $this->assertSame($enc, array('customer' => 'abcd'));
+        $a = array('customer' => new Customer('abcd'));
+        $enc = $method->invoke(null, $a);
+        $this->assertSame($enc, array('customer' => 'abcd'));
 
-          // Preserves UTF-8
-            $v = array('customer' => "☃");
-            $enc = $method->invoke(null, $v);
-            $this->assertSame($enc, $v);
+        // Preserves UTF-8
+        $v = array('customer' => "☃");
+        $enc = $method->invoke(null, $v);
+        $this->assertSame($enc, $v);
 
-          // Encodes latin-1 -> UTF-8
-            $v = array('customer' => "\xe9");
-            $enc = $method->invoke(null, $v);
-            $this->assertSame($enc, array('customer' => "\xc3\xa9"));
-        }
+        // Encodes latin-1 -> UTF-8
+        $v = array('customer' => "\xe9");
+        $enc = $method->invoke(null, $v);
+        $this->assertSame($enc, array('customer' => "\xc3\xa9"));
     }
 
     public function testBlacklistedPEMCert()
@@ -120,7 +115,7 @@ SBs2soRGVXHr3AczRKLW3G+IbIpUc3vilOul/PXWHutfzz7/asxXSTk/siVKROQ8
 3PGuaL8B8TZVbTOPYoJHdPzeRxL8Rbg8sDogHR+jkqwwyhUCfuzVbOjWFJU1DKvr
 CBoD8xKYd5r7CYf1Du+nNMmDmrE=
 -----END CERTIFICATE-----';
-    // }}}
+        // }}}
         $this->assertTrue(APIRequestor::isBlackListed($cert));
     }
 }

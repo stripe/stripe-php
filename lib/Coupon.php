@@ -5,11 +5,11 @@ namespace Stripe;
 class Coupon extends ApiResource
 {
     /**
-   * @param string $id The ID of the coupon to retrieve.
-   * @param string|null $apiKey
-   *
-   * @return Coupon
-   */
+     * @param string $id The ID of the coupon to retrieve.
+     * @param string|null $apiKey
+     *
+     * @return Coupon
+     */
     public static function retrieve($id, $apiKey = null)
     {
         $class = get_class();
@@ -17,11 +17,11 @@ class Coupon extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   * @param string|null $apiKey
-   *
-   * @return Coupon The created coupon.
-   */
+     * @param array|null $params
+     * @param string|null $apiKey
+     *
+     * @return Coupon The created coupon.
+     */
     public static function create($params = null, $apiKey = null)
     {
         $class = get_class();
@@ -29,10 +29,10 @@ class Coupon extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   *
-   * @return Coupon The deleted coupon.
-   */
+     * @param array|null $params
+     *
+     * @return Coupon The deleted coupon.
+     */
     public function delete($params = null)
     {
         $class = get_class();
@@ -40,8 +40,8 @@ class Coupon extends ApiResource
     }
 
     /**
-   * @return Coupon The saved coupon.
-   */
+     * @return Coupon The saved coupon.
+     */
     public function save()
     {
         $class = get_class();
@@ -49,11 +49,11 @@ class Coupon extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   * @param string|null $apiKey
-   *
-   * @return array An array of Coupons.
-   */
+     * @param array|null $params
+     * @param string|null $apiKey
+     *
+     * @return array An array of Coupons.
+     */
     public static function all($params = null, $apiKey = null)
     {
         $class = get_class();

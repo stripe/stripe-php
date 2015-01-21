@@ -10,16 +10,16 @@ class CouponTest extends TestCase
         $id = 'test_coupon-' . self::randomString();
         $c = Coupon::create(
             array(
-            'percent_off' => 25,
-            'duration' => 'repeating',
-            'duration_in_months' => 5,
-            'id' => $id,
+                'percent_off' => 25,
+                'duration' => 'repeating',
+                'duration_in_months' => 5,
+                'id' => $id,
             )
         );
         $this->assertSame($id, $c->id);
-    // @codingStandardsIgnoreStart
+        // @codingStandardsIgnoreStart
         $this->assertSame(25, $c->percent_off);
-    // @codingStandardsIgnoreEnd
+        // @codingStandardsIgnoreEnd
         $c->metadata['foo'] = 'bar';
         $c->save();
 

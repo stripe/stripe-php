@@ -16,16 +16,16 @@ class ChargeTest extends TestCase
         self::authorizeFromEnv();
 
         $card = array(
-        'number' => '4242424242424242',
-        'exp_month' => 5,
-        'exp_year' => 2015
+            'number' => '4242424242424242',
+            'exp_month' => 5,
+            'exp_year' => 2015
         );
 
         $c = Charge::create(
             array(
-            'amount' => 100,
-            'currency' => 'usd',
-            'card' => $card
+                'amount' => 100,
+                'currency' => 'usd',
+                'card' => $card
             )
         );
         $this->assertTrue($c->paid);
@@ -49,7 +49,7 @@ class ChargeTest extends TestCase
                 'card' => $card
             ),
             array(
-                'idempotency_key' => $this->generateRandomString(),
+                'idempotency_key' => self::generateRandomString(),
             )
         );
 
@@ -62,16 +62,16 @@ class ChargeTest extends TestCase
         self::authorizeFromEnv();
 
         $card = array(
-        'number' => '4242424242424242',
-        'exp_month' => 5,
-        'exp_year' => 2015
+            'number' => '4242424242424242',
+            'exp_month' => 5,
+            'exp_year' => 2015
         );
 
         $c = Charge::create(
             array(
-            'amount' => 100,
-            'currency' => 'usd',
-            'card' => $card
+                'amount' => 100,
+                'currency' => 'usd',
+                'card' => $card
             )
         );
         $d = Charge::retrieve($c->id);
@@ -83,16 +83,16 @@ class ChargeTest extends TestCase
         self::authorizeFromEnv();
 
         $card = array(
-        'number' => '4242424242424242',
-        'exp_month' => 5,
-        'exp_year' => 2015
+            'number' => '4242424242424242',
+            'exp_month' => 5,
+            'exp_year' => 2015
         );
 
         $charge = Charge::create(
             array(
-            'amount' => 100,
-            'currency' => 'usd',
-            'card' => $card
+                'amount' => 100,
+                'currency' => 'usd',
+                'card' => $card
             )
         );
 
@@ -108,16 +108,16 @@ class ChargeTest extends TestCase
         self::authorizeFromEnv();
 
         $card = array(
-        'number' => '4242424242424242',
-        'exp_month' => 5,
-        'exp_year' => 2015
+            'number' => '4242424242424242',
+            'exp_month' => 5,
+            'exp_year' => 2015
         );
 
         $charge = Charge::create(
             array(
-            'amount' => 100,
-            'currency' => 'usd',
-            'card' => $card
+                'amount' => 100,
+                'currency' => 'usd',
+                'card' => $card
             )
         );
 
@@ -133,16 +133,16 @@ class ChargeTest extends TestCase
         self::authorizeFromEnv();
 
         $card = array(
-        'number' => '4242424242424242',
-        'exp_month' => 5,
-        'exp_year' => 2015
+            'number' => '4242424242424242',
+            'exp_month' => 5,
+            'exp_year' => 2015
         );
 
         $charge = Charge::create(
             array(
-            'amount' => 100,
-            'currency' => 'usd',
-            'card' => $card
+                'amount' => 100,
+                'currency' => 'usd',
+                'card' => $card
             )
         );
 
@@ -161,16 +161,16 @@ class ChargeTest extends TestCase
         self::authorizeFromEnv();
 
         $card = array(
-        'number' => '4242424242424242',
-        'exp_month' => 5,
-        'exp_year' => 2015
+            'number' => '4242424242424242',
+            'exp_month' => 5,
+            'exp_year' => 2015
         );
 
         $charge = Charge::create(
             array(
-            'amount' => 100,
-            'currency' => 'usd',
-            'card' => $card
+                'amount' => 100,
+                'currency' => 'usd',
+                'card' => $card
             )
         );
 

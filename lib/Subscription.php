@@ -5,8 +5,8 @@ namespace Stripe;
 class Subscription extends ApiResource
 {
     /**
-   * @return string The API URL for this Stripe subscription.
-   */
+     * @return string The API URL for this Stripe subscription.
+     */
     public function instanceUrl()
     {
         $id = $this['id'];
@@ -28,9 +28,10 @@ class Subscription extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   * @return Subscription The deleted subscription.
-   */
+     * @param array|null $params
+     *
+     * @return Subscription The deleted subscription.
+     */
     public function cancel($params = null)
     {
         $class = get_class();
@@ -38,8 +39,8 @@ class Subscription extends ApiResource
     }
 
     /**
-   * @return Subscription The saved subscription.
-   */
+     * @return Subscription The saved subscription.
+     */
     public function save()
     {
         $class = get_class();
@@ -47,8 +48,8 @@ class Subscription extends ApiResource
     }
 
     /**
-   * @return Subscription The updated subscription.
-   */
+     * @return Subscription The updated subscription.
+     */
     public function deleteDiscount()
     {
         $requestor = new ApiRequestor($this->_apiKey);

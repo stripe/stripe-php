@@ -35,8 +35,8 @@ class CustomerTest extends TestCase
     }
 
     /**
-   * @expectedException Stripe\InvalidRequestError
-   */
+     * @expectedException Stripe\InvalidRequestError
+     */
     public function testBogusAttribute()
     {
         $customer = self::createTestCustomer();
@@ -45,8 +45,8 @@ class CustomerTest extends TestCase
     }
 
     /**
-   * @expectedException InvalidArgumentException
-   */
+     * @expectedException InvalidArgumentException
+     */
     public function testUpdateDescriptionEmpty()
     {
         $customer = self::createTestCustomer();
@@ -117,8 +117,8 @@ class CustomerTest extends TestCase
     }
 
     /**
-   * @expectedException Stripe\InvalidRequestError
-   */
+     * @expectedException Stripe\InvalidRequestError
+     */
     public function testUpdateInvalidMetadata()
     {
         $customer = self::createTestCustomer();
@@ -133,7 +133,7 @@ class CustomerTest extends TestCase
 
         $customer = self::createTestCustomer(
             array(
-            'plan' => $planID,
+                'plan' => $planID,
             )
         );
 
@@ -148,10 +148,10 @@ class CustomerTest extends TestCase
     {
         $token = Token::create(
             array("card" => array(
-            "number" => "4242424242424242",
-            "exp_month" => 5,
-            "exp_year" => date('Y') + 3,
-            "cvc" => "314"
+                "number" => "4242424242424242",
+                "exp_month" => 5,
+                "exp_year" => date('Y') + 3,
+                "cvc" => "314"
             ))
         );
 
@@ -186,10 +186,10 @@ class CustomerTest extends TestCase
     {
         $token = Token::create(
             array("card" => array(
-            "number" => "4242424242424242",
-            "exp_month" => 5,
-            "exp_year" => date('Y') + 3,
-            "cvc" => "314"
+                "number" => "4242424242424242",
+                "exp_month" => 5,
+                "exp_year" => date('Y') + 3,
+                "cvc" => "314"
             ))
         );
 
@@ -201,8 +201,7 @@ class CustomerTest extends TestCase
         $updatedCards = $updatedCustomer->cards->all();
         $this->assertSame(count($updatedCards["data"]), 2);
 
-        $deleteStatus =
-        $updatedCustomer->cards->retrieve($createdCard->id)->delete();
+        $deleteStatus = $updatedCustomer->cards->retrieve($createdCard->id)->delete();
         $this->assertTrue($deleteStatus->deleted);
         $updatedCustomer->save();
 

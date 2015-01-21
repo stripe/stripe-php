@@ -142,7 +142,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
     /**
      * Genereate a semi-random string
      */
-    public function generateRandomString($length = 24)
+    protected static function generateRandomString($length = 24)
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTU';
         $charactersLength = strlen($characters);

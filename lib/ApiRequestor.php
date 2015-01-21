@@ -11,8 +11,8 @@ class ApiRequestor
     private static $_preFlight = array();
 
     private static $_blacklistedCerts = array(
-    '05c0b3643694470a888c6e7feb5c9e24e823dc53',
-    '5b7dc7fbc98d78bf76d4d4fa6f597a0c901fad5c',
+        '05c0b3643694470a888c6e7feb5c9e24e823dc53',
+        '5b7dc7fbc98d78bf76d4d4fa6f597a0c901fad5c',
     );
 
     public function __construct($apiKey = null, $apiBase = null)
@@ -25,15 +25,14 @@ class ApiRequestor
     }
 
     /**
-   * @param string|mixed $value A string to UTF8-encode.
-   *
-   * @returns string|mixed The UTF8-encoded string, or the object passed in if
-   *    it wasn't a string.
-   */
+     * @param string|mixed $value A string to UTF8-encode.
+     *
+     * @returns string|mixed The UTF8-encoded string, or the object passed in if
+     *    it wasn't a string.
+     */
     public static function utf8($value)
     {
-        if (is_string($value)
-        && mb_detect_encoding($value, "UTF-8", true) != "UTF-8") {
+        if (is_string($value) && mb_detect_encoding($value, "UTF-8", true) != "UTF-8") {
             return utf8_encode($value);
         } else {
             return $value;
@@ -60,11 +59,11 @@ class ApiRequestor
     }
 
     /**
-   * @param array $arr An map of param keys to values.
-   * @param string|null $prefix (It doesn't look like we ever use $prefix...)
-   *
-   * @returns string A querystring, essentially.
-   */
+     * @param array $arr An map of param keys to values.
+     * @param string|null $prefix (It doesn't look like we ever use $prefix...)
+     *
+     * @returns string A querystring, essentially.
+     */
     public static function encode($arr, $prefix = null)
     {
         if (!is_array($arr)) {
@@ -94,14 +93,14 @@ class ApiRequestor
     }
 
     /**
-   * @param string $method
-   * @param string $url
-   * @param array|null $params
-   * @param array|null $headers
-   *
-   * @return array An array whose first element is the response and second
-   *    element is the API key used to make the request.
-   */
+     * @param string $method
+     * @param string $url
+     * @param array|null $params
+     * @param array|null $headers
+     *
+     * @return array An array whose first element is the response and second
+     *    element is the API key used to make the request.
+     */
     public function request($method, $url, $params = null, $headers = null)
     {
         if (!$params) {
@@ -117,22 +116,22 @@ class ApiRequestor
     }
 
     /**
-   * @param string $rbody A JSON string.
-   * @param int $rcode
-   * @param array $resp
-   *
-   * @throws InvalidRequestError if the error is caused by the user.
-   * @throws AuthenticationError if the error is caused by a lack of
-   *    permissions.
-   * @throws CardError if the error is the error code is 402 (payment
-   *    required)
-   * @throws ApiError otherwise.
-   */
+     * @param string $rbody A JSON string.
+     * @param int $rcode
+     * @param array $resp
+     *
+     * @throws InvalidRequestError if the error is caused by the user.
+     * @throws AuthenticationError if the error is caused by a lack of
+     *    permissions.
+     * @throws CardError if the error is the error code is 402 (payment
+     *    required)
+     * @throws ApiError otherwise.
+     */
     public function handleApiError($rbody, $rcode, $resp)
     {
         if (!is_array($resp) || !isset($resp['error'])) {
             $msg = "Invalid response object from API: $rbody "
-             ."(HTTP response code was $rcode)";
+              . "(HTTP response code was $rcode)";
             throw new ApiError($msg, $rcode, $rbody, $resp);
         }
 
@@ -144,24 +143,12 @@ class ApiRequestor
         switch ($rcode) {
             case 400:
                 if ($code == 'rate_limit') {
-                    throw new RateLimitError(
-                        $msg,
-                        $param,
-                        $rcode,
-                        $rbody,
-                        $resp
-                    );
+                    throw new RateLimitError($msg, $param, $rcode, $rbody, $resp);
                 }
 
                 // intentional fall-through
             case 404:
-                throw new InvalidRequestError(
-                    $msg,
-                    $param,
-                    $rcode,
-                    $rbody,
-                    $resp
-                );
+                throw new InvalidRequestError($msg, $param, $rcode, $rbody, $resp);
             case 401:
                 throw new AuthenticationError($msg, $rcode, $rbody, $resp);
             case 402:
@@ -173,8 +160,10 @@ class ApiRequestor
 
     private function _requestRaw($method, $url, $params, $headers)
     {
-        if (!array_key_exists($this->_apiBase, self::$_preFlight)
-        || !self::$_preFlight[$this->_apiBase]) {
+        if (
+            !array_key_exists($this->_apiBase, self::$_preFlight) ||
+            !self::$_preFlight[$this->_apiBase]
+        ) {
             self::$_preFlight[$this->_apiBase] = $this->checkSslCert($this->_apiBase);
         }
 
@@ -185,9 +174,9 @@ class ApiRequestor
 
         if (!$myApiKey) {
             $msg = 'No API key provided.  (HINT: set your API key using '
-             . '"Stripe::setApiKey(<API-KEY>)".  You can generate API keys from '
-             . 'the Stripe web interface.  See https://stripe.com/api for '
-             . 'details, or email support@stripe.com if you have any questions.';
+              . '"Stripe::setApiKey(<API-KEY>)".  You can generate API keys from '
+              . 'the Stripe web interface.  See https://stripe.com/api for '
+              . 'details, or email support@stripe.com if you have any questions.';
             throw new AuthenticationError($msg);
         }
 
@@ -196,16 +185,16 @@ class ApiRequestor
         $langVersion = phpversion();
         $uname = php_uname();
         $ua = array(
-        'bindings_version' => Stripe::VERSION,
-        'lang' => 'php',
-        'lang_version' => $langVersion,
-        'publisher' => 'stripe',
-        'uname' => $uname,
+            'bindings_version' => Stripe::VERSION,
+            'lang' => 'php',
+            'lang_version' => $langVersion,
+            'publisher' => 'stripe',
+            'uname' => $uname,
         );
         $defaultHeaders = array(
-        'X-Stripe-Client-User-Agent' => json_encode($ua),
-        'User-Agent' => 'Stripe/v1 PhpBindings/' . Stripe::VERSION,
-        'Authorization' => 'Bearer ' . $myApiKey,
+            'X-Stripe-Client-User-Agent' => json_encode($ua),
+            'User-Agent' => 'Stripe/v1 PhpBindings/' . Stripe::VERSION,
+            'Authorization' => 'Bearer ' . $myApiKey,
         );
         if (Stripe::$apiVersion) {
             $defaultHeaders['Stripe-Version'] = Stripe::$apiVersion;
@@ -273,7 +262,7 @@ class ApiRequestor
             $resp = json_decode($rbody, true);
         } catch (Exception $e) {
             $msg = "Invalid response body from API: $rbody "
-             . "(HTTP response code was $rcode)";
+              . "(HTTP response code was $rcode)";
             throw new ApiError($msg, $rcode, $rbody);
         }
 
@@ -332,8 +321,9 @@ class ApiRequestor
 
         $errno = curl_errno($curl);
         if ($errno == CURLE_SSL_CACERT ||
-        $errno == CURLE_SSL_PEER_CERTIFICATE ||
-        $errno == CURLE_SSL_CACERT_BADFILE) {
+            $errno == CURLE_SSL_PEER_CERTIFICATE ||
+            $errno == CURLE_SSL_CACERT_BADFILE
+        ) {
             array_push(
                 $headers,
                 'X-Stripe-Client-Info: {"ca":"using Stripe-supplied CA bundle"}'
@@ -369,9 +359,9 @@ class ApiRequestor
             case CURLE_COULDNT_RESOLVE_HOST:
             case CURLE_OPERATION_TIMEOUTED:
                 $msg = "Could not connect to Stripe ($apiBase).  Please check your "
-                   . "internet connection and try again.  If this problem persists, "
-                   . "you should check Stripe's service status at "
-                   . "https://twitter.com/stripestatus, or";
+                 . "internet connection and try again.  If this problem persists, "
+                 . "you should check Stripe's service status at "
+                 . "https://twitter.com/stripestatus, or";
                 break;
             case CURLE_SSL_CACERT:
             case CURLE_SSL_PEER_CERTIFICATE:
@@ -402,11 +392,13 @@ class ApiRequestor
    */
     private function checkSslCert($url)
     {
-        if (!function_exists('stream_context_get_params') ||
-        !function_exists('stream_socket_enable_crypto')) {
+        if (
+            !function_exists('stream_context_get_params') ||
+            !function_exists('stream_socket_enable_crypto')
+        ) {
             error_log(
-                'Warning: This version of PHP does not support checking SSL '.
-                'certificates Stripe cannot guarantee that the server has a '.
+                'Warning: This version of PHP does not support checking SSL ' .
+                'certificates Stripe cannot guarantee that the server has a ' .
                 'certificate which is not blacklisted.'
             );
             return true;
@@ -418,9 +410,9 @@ class ApiRequestor
 
         $sslContext = stream_context_create(
             array('ssl' => array(
-            'capture_peer_cert' => true,
-            'verify_peer'   => true,
-            'cafile'        => $this->caBundle(),
+                'capture_peer_cert' => true,
+                'verify_peer'   => true,
+                'cafile'        => $this->caBundle(),
             ))
         );
         $result = stream_socket_client(
@@ -433,10 +425,10 @@ class ApiRequestor
         );
         if (($errno !== 0 && $errno !== null) || $result === false) {
             throw new ApiConnectionError(
-                'Could not connect to Stripe (' . $url . ').  Please check your '.
-                'internet connection and try again.  If this problem persists, '.
-                'you should check Stripe\'s service status at '.
-                'https://twitter.com/stripestatus. Reason was: '.$errstr
+                'Could not connect to Stripe (' . $url . ').  Please check your ' .
+                'internet connection and try again.  If this problem persists, ' .
+                'you should check Stripe\'s service status at ' .
+                'https://twitter.com/stripestatus. Reason was: ' . $errstr
             );
         }
 
@@ -448,9 +440,9 @@ class ApiRequestor
 
         if (self::isBlackListed($pemCert)) {
             throw new ApiConnectionError(
-                'Invalid server certificate. You tried to connect to a server that '.
-                'has a revoked SSL certificate, which means we cannot securely send '.
-                'data to that server.  Please email support@stripe.com if you need '.
+                'Invalid server certificate. You tried to connect to a server that ' .
+                'has a revoked SSL certificate, which means we cannot securely send ' .
+                'data to that server.  Please email support@stripe.com if you need ' .
                 'help connecting to the correct API server.'
             );
         }
@@ -458,15 +450,16 @@ class ApiRequestor
         return true;
     }
 
-  /* Checks if a valid PEM encoded certificate is blacklisted
-   * @return boolean
-   */
+    /**
+     * Checks if a valid PEM encoded certificate is blacklisted
+     * @return boolean
+     */
     public static function isBlackListed($certificate)
     {
         $certificate = trim($certificate);
         $lines = explode("\n", $certificate);
 
-      // Kludgily remove the PEM padding
+        // Kludgily remove the PEM padding
         array_shift($lines);
         array_pop($lines);
 

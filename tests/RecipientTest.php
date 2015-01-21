@@ -43,10 +43,10 @@ class RecipientTest extends TestCase
     {
         $token = Token::create(
             array("card" => array(
-            "number" => "4000056655665556",
-            "exp_month" => 5,
-            "exp_year" => date('Y') + 3,
-            "cvc" => "314"
+                "number" => "4000056655665556",
+                "exp_month" => 5,
+                "exp_year" => date('Y') + 3,
+                "cvc" => "314"
             ))
         );
 
@@ -64,10 +64,10 @@ class RecipientTest extends TestCase
     {
         $token = Token::create(
             array("card" => array(
-            "number" => "4000056655665556",
-            "exp_month" => 5,
-            "exp_year" => date('Y') + 3,
-            "cvc" => "314"
+                "number" => "4000056655665556",
+                "exp_month" => 5,
+                "exp_year" => date('Y') + 3,
+                "cvc" => "314"
             ))
         );
 
@@ -91,10 +91,10 @@ class RecipientTest extends TestCase
     {
         $token = Token::create(
             array("card" => array(
-            "number" => "4000056655665556",
-            "exp_month" => 5,
-            "exp_year" => date('Y') + 3,
-            "cvc" => "314"
+                "number" => "4000056655665556",
+                "exp_month" => 5,
+                "exp_year" => date('Y') + 3,
+                "cvc" => "314"
             ))
         );
 

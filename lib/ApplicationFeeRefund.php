@@ -5,8 +5,8 @@ namespace Stripe;
 class ApplicationFeeRefund extends ApiResource
 {
     /**
-   * @return string The API URL for this Stripe refund.
-   */
+     * @return string The API URL for this Stripe refund.
+     */
     public function instanceUrl()
     {
         $id = $this['id'];
@@ -28,8 +28,8 @@ class ApplicationFeeRefund extends ApiResource
     }
 
     /**
-   * @return ApplicationFeeRefund The saved refund.
-   */
+     * @return ApplicationFeeRefund The saved refund.
+     */
     public function save()
     {
         $class = get_class();

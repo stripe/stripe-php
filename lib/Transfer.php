@@ -5,11 +5,11 @@ namespace Stripe;
 class Transfer extends ApiResource
 {
     /**
-   * @param string $id The ID of the transfer to retrieve.
-   * @param string|null $apiKey
-   *
-   * @return Transfer
-   */
+     * @param string $id The ID of the transfer to retrieve.
+     * @param string|null $apiKey
+     *
+     * @return Transfer
+     */
     public static function retrieve($id, $apiKey = null)
     {
         $class = get_class();
@@ -17,11 +17,11 @@ class Transfer extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   * @param string|null $apiKey
-   *
-   * @return array An array of Transfers.
-   */
+     * @param array|null $params
+     * @param string|null $apiKey
+     *
+     * @return array An array of Transfers.
+     */
     public static function all($params = null, $apiKey = null)
     {
         $class = get_class();
@@ -29,11 +29,11 @@ class Transfer extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   * @param string|null $apiKey
-   *
-   * @return Transfer The created transfer.
-   */
+     * @param array|null $params
+     * @param string|null $apiKey
+     *
+     * @return Transfer The created transfer.
+     */
     public static function create($params = null, $apiKey = null)
     {
         $class = get_class();
@@ -41,8 +41,8 @@ class Transfer extends ApiResource
     }
 
     /**
-   * @return Transfer The canceled transfer.
-   */
+     * @return Transfer The canceled transfer.
+     */
     public function cancel()
     {
         $requestor = new ApiRequestor($this->_apiKey);

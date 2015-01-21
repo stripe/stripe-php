@@ -5,11 +5,11 @@ namespace Stripe;
 class Event extends ApiResource
 {
     /**
-   * @param string $id The ID of the event to retrieve.
-   * @param string|null $apiKey
-   *
-   * @return Event
-   */
+     * @param string $id The ID of the event to retrieve.
+     * @param string|null $apiKey
+     *
+     * @return Event
+     */
     public static function retrieve($id, $apiKey = null)
     {
         $class = get_class();
@@ -17,11 +17,11 @@ class Event extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   * @param string|null $apiKey
-   *
-   * @return array An array of Events.
-   */
+     * @param array|null $params
+     * @param string|null $apiKey
+     *
+     * @return array An array of Events.
+     */
     public static function all($params = null, $apiKey = null)
     {
         $class = get_class();

@@ -5,11 +5,11 @@ namespace Stripe;
 class Recipient extends ApiResource
 {
     /**
-   * @param string $id The ID of the recipient to retrieve.
-   * @param string|null $apiKey
-   *
-   * @return Recipient
-   */
+     * @param string $id The ID of the recipient to retrieve.
+     * @param string|null $apiKey
+     *
+     * @return Recipient
+     */
     public static function retrieve($id, $apiKey = null)
     {
         $class = get_class();
@@ -17,11 +17,11 @@ class Recipient extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   * @param string|null $apiKey
-   *
-   * @return array An array of Recipients.
-   */
+     * @param array|null $params
+     * @param string|null $apiKey
+     *
+     * @return array An array of Recipients.
+     */
     public static function all($params = null, $apiKey = null)
     {
         $class = get_class();
@@ -29,11 +29,11 @@ class Recipient extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   * @param string|null $apiKey
-   *
-   * @return Recipient The created recipient.
-   */
+     * @param array|null $params
+     * @param string|null $apiKey
+     *
+     * @return Recipient The created recipient.
+     */
     public static function create($params = null, $apiKey = null)
     {
         $class = get_class();
@@ -41,8 +41,8 @@ class Recipient extends ApiResource
     }
 
     /**
-   * @return Recipient The saved recipient.
-   */
+     * @return Recipient The saved recipient.
+     */
     public function save()
     {
         $class = get_class();
@@ -50,22 +50,22 @@ class Recipient extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   *
-   * @return Recipient The deleted recipient.
-   */
+     * @param array|null $params
+     *
+     * @return Recipient The deleted recipient.
+     */
     public function delete($params = null)
     {
         $class = get_class();
         return self::_scopedDelete($class, $params);
     }
 
-  
+
     /**
-   * @param array|null $params
-   *
-   * @return array An array of the recipient's Transfers.
-   */
+     * @param array|null $params
+     *
+     * @return array An array of the recipient's Transfers.
+     */
     public function transfers($params = null)
     {
         if (!$params) {

@@ -29,9 +29,9 @@ class SubscriptionTest extends TestCase
 
         $sub = $customer->subscriptions->retrieve($sub->id);
         $this->assertSame($sub->status, 'active');
-      // @codingStandardsIgnoreStart
+        // @codingStandardsIgnoreStart
         $this->assertTrue($sub->cancel_at_period_end);
-      // @codingStandardsIgnoreEnd
+        // @codingStandardsIgnoreEnd
     }
 
     public function testDeleteDiscount()
@@ -46,8 +46,8 @@ class SubscriptionTest extends TestCase
 
         $sub = $customer->subscriptions->create(
             array(
-            'plan' => $planID,
-            'coupon' => $couponID
+                'plan' => $planID,
+                'coupon' => $couponID
             )
         );
 

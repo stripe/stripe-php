@@ -14,11 +14,11 @@ class RequestOptions
     }
 
     /**
-   * Unpacks an options array into an Options object
-   * @param array|string $options a key => value array
-   *
-   * @return Options
-   */
+     * Unpacks an options array into an Options object
+     * @param array|string $options a key => value array
+     *
+     * @return Options
+     */
     public static function parse($options)
     {
         if (is_null($options)) {

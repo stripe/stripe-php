@@ -10,9 +10,9 @@ class AccountTest extends TestCase
         $d = Account::retrieve();
         $this->assertSame($d->id, "cuD9Rwx8pgmRZRpVe02lsuR9cwp2Bzf7");
         $this->assertSame($d->email, "test+bindings@stripe.com");
-      // @codingStandardsIgnoreStart
+        // @codingStandardsIgnoreStart
         $this->assertSame($d->charges_enabled, false);
         $this->assertSame($d->details_submitted, false);
-      // @codingStandardsIgnoreEnd
+        // @codingStandardsIgnoreEnd
     }
 }

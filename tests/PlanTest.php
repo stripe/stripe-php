@@ -7,15 +7,13 @@ class PlanTest extends TestCase
     public function testDeletion()
     {
         self::authorizeFromEnv();
-        $p = Plan::create(
-            array(
+        $p = Plan::create(array(
             'amount' => 2000,
             'interval' => 'month',
             'currency' => 'usd',
             'name' => 'Plan',
             'id' => 'gold-' . self::randomString()
-            )
-        );
+        ));
         $p->delete();
         $this->assertTrue($p->deleted);
     }
@@ -25,7 +23,7 @@ class PlanTest extends TestCase
         try {
             $retrievedPlan = Plan::retrieve('0');
         } catch (InvalidRequestError $e) {
-          // Can either succeed or 404, all other errors are bad
+            // Can either succeed or 404, all other errors are bad
             if ($e->httpStatus !== 404) {
                 $this->fail();
             }
@@ -36,15 +34,13 @@ class PlanTest extends TestCase
     {
         self::authorizeFromEnv();
         $planID = 'gold-' . self::randomString();
-        $p = Plan::create(
-            array(
+        $p = Plan::create(array(
             'amount'   => 2000,
             'interval' => 'month',
             'currency' => 'usd',
             'name'     => 'Plan',
             'id'       => $planID
-            )
-        );
+        ));
         $p->name = 'A new plan name';
         $p->save();
         $this->assertSame($p->name, 'A new plan name');

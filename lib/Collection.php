@@ -45,11 +45,11 @@ class Collection extends Object
         }
 
         if (isset($url['query'])) {
-          // If the URL contains a query param, parse it out into $params so they
-          // don't interact weirdly with each other.
+            // If the URL contains a query param, parse it out into $params so they
+            // don't interact weirdly with each other.
             $query = array();
             parse_str($url['query'], $query);
-          // PHP 5.2 doesn't support the ?: operator :(
+            // PHP 5.2 doesn't support the ?: operator :(
             $params = array_merge($params ? $params : array(), $query);
         }
 

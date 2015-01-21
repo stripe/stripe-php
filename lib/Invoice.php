@@ -5,11 +5,11 @@ namespace Stripe;
 class Invoice extends ApiResource
 {
     /**
-   * @param array|null $params
-   * @param string|null $apiKey
-   *
-   * @return Invoice The created invoice.
-   */
+     * @param array|null $params
+     * @param string|null $apiKey
+     *
+     * @return Invoice The created invoice.
+     */
     public static function create($params = null, $apiKey = null)
     {
         $class = get_class();
@@ -17,11 +17,11 @@ class Invoice extends ApiResource
     }
 
     /**
-   * @param string $id The ID of the invoice to retrieve.
-   * @param string|null $apiKey
-   *
-   * @return Invoice
-   */
+     * @param string $id The ID of the invoice to retrieve.
+     * @param string|null $apiKey
+     *
+     * @return Invoice
+     */
     public static function retrieve($id, $apiKey = null)
     {
         $class = get_class();
@@ -29,11 +29,11 @@ class Invoice extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   * @param string|null $apiKey
-   *
-   * @return array An array of Invoices.
-   */
+     * @param array|null $params
+     * @param string|null $apiKey
+     *
+     * @return array An array of Invoices.
+     */
     public static function all($params = null, $apiKey = null)
     {
         $class = get_class();
@@ -41,11 +41,11 @@ class Invoice extends ApiResource
     }
 
     /**
-   * @param array|null $params
-   * @param string|null $apiKey
-   *
-   * @return Invoice The upcoming invoice.
-   */
+     * @param array|null $params
+     * @param string|null $apiKey
+     *
+     * @return Invoice The upcoming invoice.
+     */
     public static function upcoming($params = null, $apiKey = null)
     {
         $requestor = new ApiRequestor($apiKey);
@@ -55,8 +55,8 @@ class Invoice extends ApiResource
     }
 
     /**
-   * @return Invoice The saved invoice.
-   */
+     * @return Invoice The saved invoice.
+     */
     public function save()
     {
         $class = get_class();
@@ -64,8 +64,8 @@ class Invoice extends ApiResource
     }
 
     /**
-   * @return Invoice The paid invoice.
-   */
+     * @return Invoice The paid invoice.
+     */
     public function pay()
     {
         $requestor = new ApiRequestor($this->_apiKey);
