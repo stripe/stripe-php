@@ -32,6 +32,31 @@ class ChargeTest extends TestCase
         $this->assertFalse($c->refunded);
     }
 
+    public function testIdempotentCreate()
+    {
+        self::authorizeFromEnv();
+
+        $card = array(
+            'number' => '4242424242424242',
+            'exp_month' => 5,
+            'exp_year' => 2015
+        );
+
+        $c = Charge::create(
+            array(
+                'amount' => 100,
+                'currency' => 'usd',
+                'card' => $card
+            ),
+            array(
+                'idempotency_key' => $this->generateRandomString(),
+            )
+        );
+
+        $this->assertTrue($c->paid);
+        $this->assertFalse($c->refunded);
+    }
+
     public function testRetrieve()
     {
         self::authorizeFromEnv();

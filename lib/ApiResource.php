@@ -9,9 +9,10 @@ abstract class ApiResource extends Object
         return Stripe::$apiBase;
     }
 
-    protected static function _scopedRetrieve($class, $id, $apiKey = null)
+    protected static function _scopedRetrieve($class, $id, $options = null)
     {
-        $instance = new $class($id, $apiKey);
+        $opts = RequestOptions::parse($options);
+        $instance = new $class($id, $opts->apiKey);
         $instance->refresh();
         return $instance;
     }
@@ -31,6 +32,19 @@ abstract class ApiResource extends Object
         );
         $this->refreshFrom($response, $apiKey);
         return $this;
+    }
+
+   /**
+  * @param array options
+  *
+  * @returns RequestOptions with either passed in or saved API key
+  */
+    public function parseOptions($options)
+    {
+        $opts = RequestOptions::parse($options);
+        $key = ($opts->apiKey ? $opts->apiKey : $this->_apiKey);
+        $opts->apiKey = $key;
+        return $opts;
     }
 
     /**
@@ -87,7 +101,7 @@ abstract class ApiResource extends Object
         return "$base/$extn";
     }
 
-    private static function _validateCall($method, $params = null, $apiKey = null)
+    private static function _validateCall($method, $params = null, $options = null)
     {
         if ($params && !is_array($params)) {
             $message = "You must pass an array as the first argument to Stripe API "
@@ -98,55 +112,66 @@ abstract class ApiResource extends Object
             throw new Error($message);
         }
 
-        if ($apiKey && !is_string($apiKey)) {
+        if ($options && (!is_string($options) && !is_array($options))) {
             $message = 'The second argument to Stripe API method calls is an '
-               . 'optional per-request apiKey, which must be a string.  '
+               . 'optional per-request apiKey, which must be a string, or '
+               . 'per-request options, which must be an array. '
                . '(HINT: you can set a global apiKey by '
                . '"Stripe::setApiKey(<apiKey>)")';
             throw new Error($message);
         }
     }
 
-    protected static function _scopedAll($class, $params = null, $apiKey = null)
+    protected static function _scopedAll($class, $params = null, $options = null)
     {
-        self::_validateCall('all', $params, $apiKey);
+        self::_validateCall('all', $params, $options);
         $base = self::_scopedLsb($class, 'baseUrl');
         $url = self::_scopedLsb($class, 'classUrl', $class);
 
-        $requestor = new ApiRequestor($apiKey, $base);
-        list($response, $apiKey) = $requestor->request('get', $url, $params);
+        $opts = RequestOptions::parse($options);
+        $requestor = new ApiRequestor($opts->apiKey, $base);
+        list($response, $apiKey) =
+            $requestor->request('get', $url, $params, $opts->headers);
         return Util::convertToStripeObject($response, $apiKey);
     }
 
-    protected static function _scopedCreate($class, $params = null, $apiKey = null)
+    protected static function _scopedCreate($class, $params = null, $options = null)
     {
-        self::_validateCall('create', $params, $apiKey);
+        self::_validateCall('create', $params, $options);
         $base = self::_scopedLsb($class, 'baseUrl');
         $url = self::_scopedLsb($class, 'classUrl', $class);
 
-        $requestor = new ApiRequestor($apiKey, $base);
-        list($response, $apiKey) = $requestor->request('post', $url, $params);
+        $opts = RequestOptions::parse($options);
+        $requestor = new ApiRequestor($opts->apiKey, $base);
+        list($response, $apiKey) =
+            $requestor->request('post', $url, $params, $opts->headers);
         return Util::convertToStripeObject($response, $apiKey);
     }
 
-    protected function _scopedSave($class)
+    protected function _scopedSave($class, $options = null)
     {
-        self::_validateCall('save');
-        $requestor = new ApiRequestor($this->_apiKey, self::baseUrl());
+        self::_validateCall('save', null, $options);
+
+        $opts = RequestOptions::parse($options);
+        $key = ($opts->apiKey ? $opts->apiKey : $this->_apiKey);
+        $requestor = new ApiRequestor($key, self::baseUrl());
         $params = $this->serializeParameters();
 
         if (count($params) > 0) {
             $url = $this->instanceUrl();
-            list($response, $apiKey) = $requestor->request('post', $url, $params);
+            list($response, $apiKey) =
+                $requestor->request('post', $url, $params, $options);
             $this->refreshFrom($response, $apiKey);
         }
         return $this;
     }
 
-    protected function _scopedDelete($class, $params = null)
+    protected function _scopedDelete($class, $params = null, $options = null)
     {
-        self::_validateCall('delete');
-        $requestor = new ApiRequestor($this->_apiKey, self::baseUrl());
+        self::_validateCall('delete', $params, $options);
+        $opts = RequestOptions::parse($options);
+        $key = ($opts->apiKey ? $opts->apiKey : $this->_apiKey);
+        $requestor = new ApiRequestor($key, self::baseUrl());
         $url = $this->instanceUrl();
         list($response, $apiKey) = $requestor->request('delete', $url, $params);
         $this->refreshFrom($response, $apiKey);
