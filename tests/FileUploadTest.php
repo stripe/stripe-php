@@ -16,7 +16,7 @@ class FileUploadTest extends TestCase
         );
         fclose($fp);
         $this->assertSame(95, $file->size);
-        $this->assertSame('image/png', $file->mimetype);
+        $this->assertSame('png', $file->type);
     }
 
     public function testCreateCurlFile()
@@ -35,6 +35,6 @@ class FileUploadTest extends TestCase
             )
         );
         $this->assertSame(95, $file->size);
-        $this->assertSame('image/png', $file->mimetype);
+        $this->assertSame('png', $file->type);
     }
 }
