@@ -63,9 +63,9 @@ class RequestOptionsTest extends TestCase
     {
         $caught = false;
         try {
-          $opts = RequestOptions::parse(5);
+            $opts = RequestOptions::parse(5);
         } catch (Stripe_Error $e) {
-          $caught = true;
+            $caught = true;
         }
         $this->assertTrue($caught);
     }

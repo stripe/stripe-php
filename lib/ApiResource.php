@@ -34,11 +34,11 @@ abstract class ApiResource extends Object
         return $this;
     }
 
-   /**
-  * @param array options
-  *
-  * @returns RequestOptions with either passed in or saved API key
-  */
+    /**
+   * @param array options
+   *
+   * @returns RequestOptions with either passed in or saved API key
+   */
     public function parseOptions($options)
     {
         $opts = RequestOptions::parse($options);
