@@ -21,7 +21,7 @@ class Subscription extends ApiResource
         $id = ApiRequestor::utf8($id);
         $customer = ApiRequestor::utf8($customer);
 
-        $base = self::classUrl('Stripe\\Customer');
+        $base = Customer::classUrl();
         $customerExtn = urlencode($customer);
         $extn = urlencode($id);
         return "$base/$customerExtn/subscriptions/$extn";

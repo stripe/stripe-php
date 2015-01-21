@@ -232,19 +232,6 @@ class Object implements ArrayAccess
         return $params;
     }
 
-    // Pretend to have late static bindings, even in PHP 5.2
-    protected function _lsb($method)
-    {
-        $class = get_class($this);
-        $args = array_slice(func_get_args(), 1);
-        return call_user_func_array(array($class, $method), $args);
-    }
-    protected static function _scopedLsb($class, $method)
-    {
-        $args = array_slice(func_get_args(), 2);
-        return call_user_func_array(array($class, $method), $args);
-    }
-
     public function __toJSON()
     {
         if (defined('JSON_PRETTY_PRINT')) {

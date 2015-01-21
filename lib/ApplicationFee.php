@@ -10,7 +10,7 @@ class ApplicationFee extends ApiResource
      *
      * @return string The name of the class.
      */
-    public static function className($class)
+    public static function className()
     {
         return 'application_fee';
     }

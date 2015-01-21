@@ -41,7 +41,7 @@ class Customer extends ApiResource
     }
 
     /**
-     * @returns Customer The saved customer.
+     * @return Customer The saved customer.
      */
     public function save()
     {

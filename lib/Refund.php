@@ -21,7 +21,7 @@ class Refund extends ApiResource
         $id = ApiRequestor::utf8($id);
         $charge = ApiRequestor::utf8($charge);
 
-        $base = self::classUrl('Stripe\\Charge');
+        $base = Charge::classUrl();
         $chargeExtn = urlencode($charge);
         $extn = urlencode($id);
         return "$base/$chargeExtn/refunds/$extn";

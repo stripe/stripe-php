@@ -21,7 +21,7 @@ class ApplicationFeeRefund extends ApiResource
         $id = ApiRequestor::utf8($id);
         $fee = ApiRequestor::utf8($fee);
 
-        $base = self::classUrl('Stripe\\ApplicationFee');
+        $base = ApplicationFee::classUrl();
         $feeExtn = urlencode($fee);
         $extn = urlencode($id);
         return "$base/$feeExtn/refunds/$extn";

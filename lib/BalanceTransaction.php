@@ -5,12 +5,10 @@ namespace Stripe;
 class BalanceTransaction extends ApiResource
 {
     /**
-     * @param string $class Ignored.
-     *
      * @return string The class URL for this resource. It needs to be special
      *    cased because it doesn't fit into the standard resource pattern.
      */
-    public static function classUrl($class)
+    public static function classUrl()
     {
         return "/v1/balance/history";
     }

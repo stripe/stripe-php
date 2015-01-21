@@ -26,10 +26,10 @@ class Card extends ApiResource
 
         if (isset($this['customer'])) {
             $parent = $this['customer'];
-            $base = self::classUrl('Stripe\\Customer');
+            $base = Customer::classUrl();
         } elseif (isset($this['recipient'])) {
             $parent = $this['recipient'];
-            $base = self::classUrl('Stripe\\Recipient');
+            $base = Recipient::classUrl();
         } else {
             return null;
         }

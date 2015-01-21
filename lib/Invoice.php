@@ -49,7 +49,7 @@ class Invoice extends ApiResource
     public static function upcoming($params = null, $apiKey = null)
     {
         $requestor = new ApiRequestor($apiKey);
-        $url = self::classUrl(get_class()) . '/upcoming';
+        $url = static::classUrl() . '/upcoming';
         list($response, $apiKey) = $requestor->request('get', $url, $params);
         return Util::convertToStripeObject($response, $apiKey);
     }

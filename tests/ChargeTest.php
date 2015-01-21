@@ -6,7 +6,7 @@ class ChargeTest extends TestCase
 {
     public function testUrls()
     {
-        $this->assertSame(Charge::classUrl('Stripe\\Charge'), '/v1/charges');
+        $this->assertSame(Charge::classUrl(), '/v1/charges');
         $charge = new Charge('abcd/efgh');
         $this->assertSame($charge->instanceUrl(), '/v1/charges/abcd%2Fefgh');
     }

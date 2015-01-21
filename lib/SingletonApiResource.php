@@ -12,12 +12,11 @@ abstract class SingletonApiResource extends ApiResource
     }
 
     /**
-     * @param SingletonApiResource $class
      * @return string The endpoint associated with this singleton class.
      */
-    public static function classUrl($class)
+    public static function classUrl()
     {
-        $base = self::className($class);
+        $base = static::className();
         return "/v1/${base}";
     }
 
@@ -26,8 +25,6 @@ abstract class SingletonApiResource extends ApiResource
      */
     public function instanceUrl()
     {
-        $class = get_class($this);
-        $base = self::classUrl($class);
-        return "$base";
+        return static::classUrl();
     }
 }

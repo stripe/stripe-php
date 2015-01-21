@@ -18,7 +18,7 @@ abstract class ApiResource extends Object
     }
 
     /**
-     * @returns ApiResource The refreshed resource.
+     * @return ApiResource The refreshed resource.
      */
     public function refresh()
     {
@@ -37,7 +37,7 @@ abstract class ApiResource extends Object
     /**
      * @param array options
      *
-     * @returns RequestOptions with either passed in or saved API key
+     * @return RequestOptions with either passed in or saved API key
      */
     public function parseOptions($options)
     {
@@ -50,11 +50,12 @@ abstract class ApiResource extends Object
     /**
      * @param string $class
      *
-     * @returns string The name of the class, with namespacing and underscores
+     * @return string The name of the class, with namespacing and underscores
      *    stripped.
      */
-    public static function className($class)
+    public static function className()
     {
+        $class = get_called_class();
         // Useful for namespaces: Foo\Charge
         if ($postfixNamespaces = strrchr($class, '\\')) {
             $class = substr($postfixNamespaces, 1);
@@ -75,28 +76,27 @@ abstract class ApiResource extends Object
     /**
      * @param string $class
      *
-     * @returns string The endpoint URL for the given class.
+     * @return string The endpoint URL for the given class.
      */
-    public static function classUrl($class)
+    public static function classUrl()
     {
-        $base = self::_scopedLsb($class, 'className', $class);
+        $base = static::className();
         return "/v1/${base}s";
     }
 
     /**
-     * @returns string The full API URL for this API resource.
+     * @return string The full API URL for this API resource.
      */
     public function instanceUrl()
     {
         $id = $this['id'];
-        $class = get_class($this);
         if ($id === null) {
             $message = "Could not determine which URL to request: "
                . "$class instance has invalid ID: $id";
             throw new InvalidRequestError($message, null);
         }
         $id = ApiRequestor::utf8($id);
-        $base = $this->_lsb('classUrl', $class);
+        $base = static::classUrl();
         $extn = urlencode($id);
         return "$base/$extn";
     }
@@ -125,8 +125,8 @@ abstract class ApiResource extends Object
     protected static function _scopedAll($class, $params = null, $options = null)
     {
         self::_validateCall('all', $params, $options);
-        $base = self::_scopedLsb($class, 'baseUrl');
-        $url = self::_scopedLsb($class, 'classUrl', $class);
+        $base = static::baseUrl();
+        $url = static::classUrl();
 
         $opts = RequestOptions::parse($options);
         $requestor = new ApiRequestor($opts->apiKey, $base);
@@ -137,8 +137,8 @@ abstract class ApiResource extends Object
     protected static function _scopedCreate($class, $params = null, $options = null)
     {
         self::_validateCall('create', $params, $options);
-        $base = self::_scopedLsb($class, 'baseUrl');
-        $url = self::_scopedLsb($class, 'classUrl', $class);
+        $base = static::baseUrl();
+        $url = static::classUrl();
 
         $opts = RequestOptions::parse($options);
         $requestor = new ApiRequestor($opts->apiKey, $base);
