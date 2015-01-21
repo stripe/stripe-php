@@ -56,7 +56,7 @@ class Invoice extends ApiResource
      */
     public function save()
     {
-        return self::_save();
+        return $this->_save();
     }
 
     /**

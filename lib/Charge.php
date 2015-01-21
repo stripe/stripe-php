@@ -44,7 +44,7 @@ class Charge extends ApiResource
      */
     public function save($options = null)
     {
-        return self::_save($options);
+        return $this->_save($options);
     }
 
     /**
