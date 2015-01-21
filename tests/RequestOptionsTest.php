@@ -59,14 +59,11 @@ class RequestOptionsTest extends TestCase
         $this->assertSame(array('Idempotency-Key' => 'foo'), $opts->headers);
     }
 
+    /**
+     * @expectedException Stripe\Error\Api
+     */
     public function testWrongType()
     {
-        $caught = false;
-        try {
-            $opts = RequestOptions::parse(5);
-        } catch (Error $e) {
-            $caught = true;
-        }
-        $this->assertTrue($caught);
+        $opts = RequestOptions::parse(5);
     }
 }

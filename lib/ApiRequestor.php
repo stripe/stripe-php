@@ -120,19 +120,19 @@ class ApiRequestor
      * @param int $rcode
      * @param array $resp
      *
-     * @throws InvalidRequestError if the error is caused by the user.
-     * @throws AuthenticationError if the error is caused by a lack of
+     * @throws Error\InvalidRequest if the error is caused by the user.
+     * @throws Error\Authentication if the error is caused by a lack of
      *    permissions.
-     * @throws CardError if the error is the error code is 402 (payment
+     * @throws Error\Card if the error is the error code is 402 (payment
      *    required)
-     * @throws ApiError otherwise.
+     * @throws Error\Api otherwise.
      */
     public function handleApiError($rbody, $rcode, $resp)
     {
         if (!is_array($resp) || !isset($resp['error'])) {
             $msg = "Invalid response object from API: $rbody "
               . "(HTTP response code was $rcode)";
-            throw new ApiError($msg, $rcode, $rbody, $resp);
+            throw new Error\Api($msg, $rcode, $rbody, $resp);
         }
 
         $error = $resp['error'];
@@ -143,18 +143,18 @@ class ApiRequestor
         switch ($rcode) {
             case 400:
                 if ($code == 'rate_limit') {
-                    throw new RateLimitError($msg, $param, $rcode, $rbody, $resp);
+                    throw new Error\RateLimit($msg, $param, $rcode, $rbody, $resp);
                 }
 
                 // intentional fall-through
             case 404:
-                throw new InvalidRequestError($msg, $param, $rcode, $rbody, $resp);
+                throw new Error\InvalidRequest($msg, $param, $rcode, $rbody, $resp);
             case 401:
-                throw new AuthenticationError($msg, $rcode, $rbody, $resp);
+                throw new Error\Authentication($msg, $rcode, $rbody, $resp);
             case 402:
-                throw new CardError($msg, $param, $code, $rcode, $rbody, $resp);
+                throw new Error\Card($msg, $param, $code, $rcode, $rbody, $resp);
             default:
-                throw new ApiError($msg, $rcode, $rbody, $resp);
+                throw new Error\Api($msg, $rcode, $rbody, $resp);
         }
     }
 
@@ -177,7 +177,7 @@ class ApiRequestor
               . '"Stripe::setApiKey(<API-KEY>)".  You can generate API keys from '
               . 'the Stripe web interface.  See https://stripe.com/api for '
               . 'details, or email support@stripe.com if you have any questions.';
-            throw new AuthenticationError($msg);
+            throw new Error\Authentication($msg);
         }
 
         $absUrl = $this->_apiBase.$url;
@@ -236,14 +236,14 @@ class ApiRequestor
     private function _processResourceParam($resource, $hasCurlFile)
     {
         if (get_resource_type($resource) !== 'stream') {
-            throw new ApiError(
+            throw new Error\Api(
                 'Attempted to upload a resource that is not a stream'
             );
         }
 
         $metaData = stream_get_meta_data($resource);
         if ($metaData['wrapper_type'] !== 'plainfile') {
-            throw new ApiError(
+            throw new Error\Api(
                 'Only plainfile resource streams are supported'
             );
         }
@@ -263,7 +263,7 @@ class ApiRequestor
         } catch (Exception $e) {
             $msg = "Invalid response body from API: $rbody "
               . "(HTTP response code was $rcode)";
-            throw new ApiError($msg, $rcode, $rbody);
+            throw new Error\Api($msg, $rcode, $rbody);
         }
 
         if ($rcode < 200 || $rcode >= 300) {
@@ -279,7 +279,7 @@ class ApiRequestor
         $opts = array();
         if ($method == 'get') {
             if ($hasFile) {
-                throw new ApiError(
+                throw new Error\Api(
                     "Issuing a GET request with a file parameter"
                 );
             }
@@ -298,7 +298,7 @@ class ApiRequestor
                 $absUrl = "$absUrl?$encoded";
             }
         } else {
-            throw new ApiError("Unrecognized method $method");
+            throw new Error\Api("Unrecognized method $method");
         }
 
         $absUrl = self::utf8($absUrl);
@@ -377,7 +377,7 @@ class ApiRequestor
         $msg .= " let us know at support@stripe.com.";
 
         $msg .= "\n\n(Network error [errno $errno]: $message)";
-        throw new ApiConnectionError($msg);
+        throw new Error\ApiConnection($msg);
     }
 
     /**
@@ -424,7 +424,7 @@ class ApiRequestor
             $sslContext
         );
         if (($errno !== 0 && $errno !== null) || $result === false) {
-            throw new ApiConnectionError(
+            throw new Error\ApiConnection(
                 'Could not connect to Stripe (' . $url . ').  Please check your ' .
                 'internet connection and try again.  If this problem persists, ' .
                 'you should check Stripe\'s service status at ' .
@@ -439,7 +439,7 @@ class ApiRequestor
         openssl_x509_export($cert, $pemCert);
 
         if (self::isBlackListed($pemCert)) {
-            throw new ApiConnectionError(
+            throw new Error\ApiConnection(
                 'Invalid server certificate. You tried to connect to a server that ' .
                 'has a revoked SSL certificate, which means we cannot securely send ' .
                 'data to that server.  Please email support@stripe.com if you need ' .

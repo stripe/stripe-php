@@ -1,8 +1,8 @@
 <?php
 
-namespace Stripe;
+namespace Stripe\Error;
 
-class RateLimitError extends InvalidRequestError
+class RateLimit extends InvalidRequest
 {
     public function __construct(
         $message,

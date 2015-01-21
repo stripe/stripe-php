@@ -1,8 +1,8 @@
 <?php
 
-namespace Stripe;
+namespace Stripe\Error;
 
-class CardError extends Error
+class Card extends Base
 {
     public function __construct(
         $message,

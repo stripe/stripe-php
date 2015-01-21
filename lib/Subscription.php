@@ -12,7 +12,7 @@ class Subscription extends ApiResource
         $id = $this['id'];
         $customer = $this['customer'];
         if (!$id) {
-            throw new InvalidRequestError(
+            throw new Error\InvalidRequest(
                 "Could not determine which URL to request: " .
                 "class instance has invalid ID: $id",
                 null

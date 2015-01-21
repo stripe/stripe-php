@@ -12,7 +12,7 @@ class Refund extends ApiResource
         $id = $this['id'];
         $charge = $this['charge'];
         if (!$id) {
-            throw new InvalidRequestError(
+            throw new Error\InvalidRequest(
                 "Could not determine which URL to request: " .
                 "class instance has invalid ID: $id",
                 null

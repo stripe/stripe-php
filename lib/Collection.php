@@ -41,7 +41,7 @@ class Collection extends Object
     {
         $url = parse_url($this->url);
         if (!isset($url['path'])) {
-            throw new APIError("Could not parse list url into parts: $url");
+            throw new Error\Api("Could not parse list url into parts: $url");
         }
 
         if (isset($url['query'])) {

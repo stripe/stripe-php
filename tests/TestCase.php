@@ -105,7 +105,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
         try {
             $plan = Plan::retrieve($id);
-        } catch (InvalidRequestError $exception) {
+        } catch (Error\InvalidRequest $exception) {
             $plan = Plan::create(
                 array(
                     'id' => $id,
@@ -128,7 +128,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
         try {
             $coupon = Coupon::retrieve($id);
-        } catch (InvalidRequestError $exception) {
+        } catch (Error\InvalidRequest $exception) {
             $coupon = Coupon::create(
                 array(
                     'id' => $id,

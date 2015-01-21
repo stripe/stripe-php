@@ -41,6 +41,6 @@ class RequestOptions
             return new RequestOptions($key, $headers);
         }
 
-        throw new Error("options must be a string, an array, or null");
+        throw new Error\Api("options must be a string, an array, or null");
     }
 }

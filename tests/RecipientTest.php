@@ -24,19 +24,14 @@ class RecipientTest extends TestCase
         $this->assertSame($recipient->email, $stripeRecipient->email);
     }
 
+    /**
+     * @expectedException Stripe\Error\InvalidRequest
+     */
     public function testBogusAttribute()
     {
         $recipient = self::createTestRecipient();
         $recipient->bogus = 'bogus';
-
-        $caught = null;
-        try {
-            $recipient->save();
-        } catch (InvalidRequestError $exception) {
-            $caught = $exception;
-        }
-
-        $this->assertTrue($caught instanceof InvalidRequestError);
+        $recipient->save();
     }
 
     public function testRecipientAddCard()
@@ -57,7 +52,6 @@ class RecipientTest extends TestCase
         $updatedRecipient = Recipient::retrieve($recipient->id);
         $updatedCards = $updatedRecipient->cards->all();
         $this->assertSame(count($updatedCards["data"]), 1);
-
     }
 
     public function testRecipientUpdateCard()

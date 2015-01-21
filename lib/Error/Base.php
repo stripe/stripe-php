@@ -1,10 +1,10 @@
 <?php
 
-namespace Stripe;
+namespace Stripe\Error;
 
 use Exception;
 
-class Error extends Exception
+abstract class Base extends Exception
 {
     public function __construct(
         $message,

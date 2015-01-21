@@ -22,7 +22,7 @@ class PlanTest extends TestCase
     {
         try {
             $retrievedPlan = Plan::retrieve('0');
-        } catch (InvalidRequestError $e) {
+        } catch (Error\InvalidRequest $e) {
             // Can either succeed or 404, all other errors are bad
             if ($e->httpStatus !== 404) {
                 $this->fail();

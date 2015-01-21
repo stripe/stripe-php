@@ -15,7 +15,7 @@ class Card extends ApiResource
             $class = get_class($this);
             $msg = "Could not determine which URL to request: $class instance "
              . "has invalid ID: $id";
-            throw new InvalidRequestError($msg, null);
+            throw new Error\InvalidRequest($msg, null);
         }
 
         if (isset($this['customer'])) {

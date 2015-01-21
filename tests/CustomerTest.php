@@ -35,7 +35,7 @@ class CustomerTest extends TestCase
     }
 
     /**
-     * @expectedException Stripe\InvalidRequestError
+     * @expectedException Stripe\Error\InvalidRequest
      */
     public function testBogusAttribute()
     {
@@ -117,7 +117,7 @@ class CustomerTest extends TestCase
     }
 
     /**
-     * @expectedException Stripe\InvalidRequestError
+     * @expectedException Stripe\Error\InvalidRequest
      */
     public function testUpdateInvalidMetadata()
     {

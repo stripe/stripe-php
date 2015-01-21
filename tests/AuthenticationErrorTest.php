@@ -9,7 +9,7 @@ class AuthenticationErrorTest extends TestCase
         Stripe::setApiKey('invalid');
         try {
             Customer::create();
-        } catch (AuthenticationError $e) {
+        } catch (Error\Authentication $e) {
             $this->assertSame(401, $e->getHttpStatus());
         }
     }

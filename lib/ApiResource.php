@@ -82,7 +82,7 @@ abstract class ApiResource extends Object
             $class = get_called_class();
             $message = "Could not determine which URL to request: "
                . "$class instance has invalid ID: $id";
-            throw new InvalidRequestError($message, null);
+            throw new Error\InvalidRequest($message, null);
         }
         $id = ApiRequestor::utf8($id);
         $base = static::classUrl();
@@ -98,7 +98,7 @@ abstract class ApiResource extends Object
                . "would be: \"Stripe\\Charge::create(array('amount' => 100, "
                . "'currency' => 'usd', 'card' => array('number' => "
                . "4242424242424242, 'exp_month' => 5, 'exp_year' => 2015)))\")";
-            throw new Error($message);
+            throw new Error\Api($message);
         }
 
         if ($options && (!is_string($options) && !is_array($options))) {
@@ -107,7 +107,7 @@ abstract class ApiResource extends Object
                . 'per-request options, which must be an array. '
                . '(HINT: you can set a global apiKey by '
                . '"Stripe::setApiKey(<apiKey>)")';
-            throw new Error($message);
+            throw new Error\Api($message);
         }
     }
 

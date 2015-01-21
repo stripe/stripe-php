@@ -22,7 +22,7 @@ class CardErrorTest extends TestCase
 
         try {
             Charge::create($charge);
-        } catch (CardError $e) {
+        } catch (Error\Card $e) {
             $this->assertSame(402, $e->getHttpStatus());
             $actual = $e->getJsonBody();
             $this->assertSame(

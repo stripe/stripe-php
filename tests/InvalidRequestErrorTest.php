@@ -9,7 +9,7 @@ class InvalidRequestErrorTest extends TestCase
         self::authorizeFromEnv();
         try {
             Customer::retrieve('invalid');
-        } catch (InvalidRequestError $e) {
+        } catch (Error\InvalidRequest $e) {
             $this->assertSame(404, $e->getHttpStatus());
         }
     }
@@ -19,7 +19,7 @@ class InvalidRequestErrorTest extends TestCase
         self::authorizeFromEnv();
         try {
             Charge::create();
-        } catch (InvalidRequestError $e) {
+        } catch (Error\InvalidRequest $e) {
             $this->assertSame(400, $e->getHttpStatus());
         }
     }

@@ -7,14 +7,14 @@ class ErrorTest extends TestCase
     public function testCreation()
     {
         try {
-            throw new Error(
+            throw new Error\Api(
                 "hello",
                 500,
                 "{'foo':'bar'}",
                 array('foo' => 'bar')
             );
             $this->fail("Did not raise error");
-        } catch (Error $e) {
+        } catch (Error\Api $e) {
             $this->assertSame("hello", $e->getMessage());
             $this->assertSame(500, $e->getHttpStatus());
             $this->assertSame("{'foo':'bar'}", $e->getHttpBody());
