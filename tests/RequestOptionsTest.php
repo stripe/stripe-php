@@ -6,28 +6,28 @@ class RequestOptionsTest extends TestCase
 {
     public function testStringAPIKey()
     {
-        $opts = RequestOptions::parse("foo");
+        $opts = Util\RequestOptions::parse("foo");
         $this->assertSame("foo", $opts->apiKey);
         $this->assertSame(array(), $opts->headers);
     }
 
     public function testNull()
     {
-        $opts = RequestOptions::parse(null);
+        $opts = Util\RequestOptions::parse(null);
         $this->assertSame(null, $opts->apiKey);
         $this->assertSame(array(), $opts->headers);
     }
 
     public function testEmptyArray()
     {
-        $opts = RequestOptions::parse(array());
+        $opts = Util\RequestOptions::parse(array());
         $this->assertSame(null, $opts->apiKey);
         $this->assertSame(array(), $opts->headers);
     }
 
     public function testAPIKeyArray()
     {
-        $opts = RequestOptions::parse(
+        $opts = Util\RequestOptions::parse(
             array(
                 'api_key' => 'foo',
             )
@@ -38,7 +38,7 @@ class RequestOptionsTest extends TestCase
 
     public function testIdempotentKeyArray()
     {
-        $opts = RequestOptions::parse(
+        $opts = Util\RequestOptions::parse(
             array(
                 'idempotency_key' => 'foo',
             )
@@ -49,7 +49,7 @@ class RequestOptionsTest extends TestCase
 
     public function testKeyArray()
     {
-        $opts = RequestOptions::parse(
+        $opts = Util\RequestOptions::parse(
             array(
                 'idempotency_key' => 'foo',
                 'api_key' => 'foo'
@@ -64,6 +64,6 @@ class RequestOptionsTest extends TestCase
      */
     public function testWrongType()
     {
-        $opts = RequestOptions::parse(5);
+        $opts = Util\RequestOptions::parse(5);
     }
 }

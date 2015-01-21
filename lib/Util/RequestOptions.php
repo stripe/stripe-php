@@ -1,6 +1,8 @@
 <?php
 
-namespace Stripe;
+namespace Stripe\Util;
+
+use Stripe\Error;
 
 class RequestOptions
 {

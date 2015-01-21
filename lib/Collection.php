@@ -10,7 +10,7 @@ class Collection extends Object
 
         $requestor = new ApiRequestor($this->_apiKey);
         list($response, $apiKey) = $requestor->request('get', $url, $params);
-        return Util::convertToStripeObject($response, $apiKey);
+        return Util\Util::convertToStripeObject($response, $apiKey);
     }
 
     public function create($params = null)
@@ -19,7 +19,7 @@ class Collection extends Object
 
         $requestor = new ApiRequestor($this->_apiKey);
         list($response, $apiKey) = $requestor->request('post', $url, $params);
-        return Util::convertToStripeObject($response, $apiKey);
+        return Util\Util::convertToStripeObject($response, $apiKey);
     }
 
     public function retrieve($id, $params = null)
@@ -34,7 +34,7 @@ class Collection extends Object
             "$url/$extn",
             $params
         );
-        return Util::convertToStripeObject($response, $apiKey);
+        return Util\Util::convertToStripeObject($response, $apiKey);
     }
 
     private function extractPathAndUpdateParams($params)

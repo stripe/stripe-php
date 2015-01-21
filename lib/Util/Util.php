@@ -1,6 +1,6 @@
 <?php
 
-namespace Stripe;
+namespace Stripe\Util;
 
 abstract class Util
 {

@@ -7,10 +7,10 @@ class UtilTest extends TestCase
     public function testIsList()
     {
         $list = array(5, 'nstaoush', array());
-        $this->assertTrue(Util::isList($list));
+        $this->assertTrue(Util\Util::isList($list));
 
         $notlist = array(5, 'nstaoush', array(), 'bar' => 'baz');
-        $this->assertFalse(Util::isList($notlist));
+        $this->assertFalse(Util\Util::isList($notlist));
     }
 
     public function testThatPHPHasValueSemanticsForArrays()

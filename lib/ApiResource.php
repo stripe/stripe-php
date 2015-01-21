@@ -29,11 +29,11 @@ abstract class ApiResource extends Object
     /**
      * @param array options
      *
-     * @return RequestOptions with either passed in or saved API key
+     * @return Util\RequestOptions with either passed in or saved API key
      */
     public function parseOptions($options)
     {
-        $opts = RequestOptions::parse($options);
+        $opts = Util\RequestOptions::parse($options);
         $key = ($opts->apiKey ? $opts->apiKey : $this->_apiKey);
         $opts->apiKey = $key;
         return $opts;
@@ -113,7 +113,7 @@ abstract class ApiResource extends Object
 
     protected static function _retrieve($id, $options = null)
     {
-        $opts = RequestOptions::parse($options);
+        $opts = Util\RequestOptions::parse($options);
         $instance = new static($id, $opts->apiKey);
         $instance->refresh();
         return $instance;
@@ -125,10 +125,10 @@ abstract class ApiResource extends Object
         $base = static::baseUrl();
         $url = static::classUrl();
 
-        $opts = RequestOptions::parse($options);
+        $opts = Util\RequestOptions::parse($options);
         $requestor = new ApiRequestor($opts->apiKey, $base);
         list($response, $apiKey) = $requestor->request('get', $url, $params, $opts->headers);
-        return Util::convertToStripeObject($response, $apiKey);
+        return Util\Util::convertToStripeObject($response, $apiKey);
     }
 
     protected static function _create($params = null, $options = null)
@@ -137,17 +137,17 @@ abstract class ApiResource extends Object
         $base = static::baseUrl();
         $url = static::classUrl();
 
-        $opts = RequestOptions::parse($options);
+        $opts = Util\RequestOptions::parse($options);
         $requestor = new ApiRequestor($opts->apiKey, $base);
         list($response, $apiKey) = $requestor->request('post', $url, $params, $opts->headers);
-        return Util::convertToStripeObject($response, $apiKey);
+        return Util\Util::convertToStripeObject($response, $apiKey);
     }
 
     protected function _save($options = null)
     {
         self::_validateCall('save', null, $options);
 
-        $opts = RequestOptions::parse($options);
+        $opts = Util\RequestOptions::parse($options);
         $key = ($opts->apiKey ? $opts->apiKey : $this->_apiKey);
         $requestor = new ApiRequestor($key, self::baseUrl());
         $params = $this->serializeParameters();
@@ -163,7 +163,7 @@ abstract class ApiResource extends Object
     protected function _delete($params = null, $options = null)
     {
         self::_validateCall('delete', $params, $options);
-        $opts = RequestOptions::parse($options);
+        $opts = Util\RequestOptions::parse($options);
         $key = ($opts->apiKey ? $opts->apiKey : $this->_apiKey);
         $requestor = new ApiRequestor($key, self::baseUrl());
         $url = $this->instanceUrl();

@@ -133,7 +133,7 @@ class Object implements ArrayAccess
     }
 
     /**
-     * This unfortunately needs to be public to be used in Util.php
+     * This unfortunately needs to be public to be used in Util\Util
      *
      * @param array $values
      * @param string|null $apiKey
@@ -183,7 +183,7 @@ class Object implements ArrayAccess
             if (self::$nestedUpdatableAttributes->includes($k) && is_array($v)) {
                 $this->_values[$k] = AttachedObject::constructFrom($v, $apiKey);
             } else {
-                $this->_values[$k] = Util::convertToStripeObject($v, $apiKey);
+                $this->_values[$k] = Util\Util::convertToStripeObject($v, $apiKey);
             }
 
             $this->_transientValues->discard($k);
@@ -237,7 +237,7 @@ class Object implements ArrayAccess
     public function __toArray($recursive = false)
     {
         if ($recursive) {
-            return Util::convertStripeObjectToArray($this->_values);
+            return Util\Util::convertStripeObjectToArray($this->_values);
         } else {
             return $this->_values;
         }
