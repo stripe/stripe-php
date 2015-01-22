@@ -10,7 +10,7 @@ class BitcoinReceiver extends ApiResource
      */
     public static function classUrl()
     {
-      return "/v1/bitcoin/receivers";
+        return "/v1/bitcoin/receivers";
     }
 
     /**
@@ -21,7 +21,7 @@ class BitcoinReceiver extends ApiResource
      */
     public static function retrieve($id, $apiKey = null)
     {
-      return self::_retrieve($id, $apiKey);
+        return self::_retrieve($id, $apiKey);
     }
 
     /**
@@ -32,7 +32,7 @@ class BitcoinReceiver extends ApiResource
      */
     public static function all($params = null, $apiKey = null)
     {
-      return self::_all($params, $apiKey);
+        return self::_all($params, $apiKey);
     }
 
     /**
@@ -43,7 +43,7 @@ class BitcoinReceiver extends ApiResource
      */
     public static function create($params = null, $apiKey = null)
     {
-      return self::_create($params, $apiKey);
+        return self::_create($params, $apiKey);
     }
 
     /**
@@ -51,7 +51,6 @@ class BitcoinReceiver extends ApiResource
      */
     public function save()
     {
-      return self::_save();
+        return $this->_save();
     }
 }
-

@@ -160,10 +160,8 @@ class ApiRequestor
 
     private function _requestRaw($method, $url, $params, $headers)
     {
-        if (
-            !array_key_exists($this->_apiBase, self::$_preFlight) ||
-            !self::$_preFlight[$this->_apiBase]
-        ) {
+        if (!array_key_exists($this->_apiBase, self::$_preFlight) ||
+            !self::$_preFlight[$this->_apiBase]) {
             self::$_preFlight[$this->_apiBase] = $this->checkSslCert($this->_apiBase);
         }
 
@@ -392,10 +390,8 @@ class ApiRequestor
      */
     private function checkSslCert($url)
     {
-        if (
-            !function_exists('stream_context_get_params') ||
-            !function_exists('stream_socket_enable_crypto')
-        ) {
+        if (!function_exists('stream_context_get_params') ||
+            !function_exists('stream_socket_enable_crypto')) {
             error_log(
                 'Warning: This version of PHP does not support checking SSL ' .
                 'certificates Stripe cannot guarantee that the server has a ' .
