@@ -50,7 +50,7 @@ class Stripe_Plan extends Stripe_ApiResource
    * @param array|null $params
    * @param string|null $apiKey
    *
-   * @return array An array of Stripe_Plans.
+   * @return Stripe_Plan[] An array of Stripe_Plans.
    */
   public static function all($params=null, $apiKey=null)
   {
