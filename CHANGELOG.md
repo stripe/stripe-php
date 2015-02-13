@@ -1,3 +1,4 @@
+<<<<<<< HEAD:CHANGELOG.md
 ### 2.0.0 2015-02-14
 
 * Bumped minimum version to 5.3.3
@@ -6,6 +7,10 @@
 * Switched style guide to PSR2 (thanks @chadicus!)
 * Added $opts hash to the end of most methods: this permits passing 'idempotency_key', 'stripe_account', or 'stripe_version'. The last 2 will persist across multiple object loads.
 * Added support for retrieving Account by ID
+
+### 1.18.0 2015-01-21
+
+* Support making bitcoin charges through BitcoinReceiver source object
 
 ### 1.17.5 2014-12-23
 

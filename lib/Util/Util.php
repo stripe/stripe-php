@@ -60,6 +60,7 @@ abstract class Util
     public static function convertToStripeObject($resp, $opts)
     {
         $types = array(
+            'account' => 'Stripe\\Account',
             'card' => 'Stripe\\Card',
             'charge' => 'Stripe\\Charge',
             'coupon' => 'Stripe\\Coupon',
