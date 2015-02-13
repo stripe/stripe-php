@@ -64,6 +64,9 @@ class RequestOptions
             if (array_key_exists('stripe_account', $options)) {
                 $headers['Stripe-Account'] = $options['stripe_account'];
             }
+            if (array_key_exists('stripe_version', $options)) {
+                $headers['Stripe-Version'] = $options['stripe_version'];
+            }
             return new RequestOptions($key, $headers);
         }
 

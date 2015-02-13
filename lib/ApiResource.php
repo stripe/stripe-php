@@ -4,7 +4,7 @@ namespace Stripe;
 
 abstract class ApiResource extends Object
 {
-    private static $HEADERS_TO_PERSIST = array('stripe_account' => true, 'stripe_version' => true);
+    private static $HEADERS_TO_PERSIST = array('Stripe-Account' => true, 'Stripe-Version' => true);
 
     public static function baseUrl()
     {

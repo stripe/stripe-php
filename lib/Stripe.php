@@ -2,7 +2,7 @@
 
 namespace Stripe;
 
-abstract class Stripe
+class Stripe
 {
     // @var string The Stripe API key to be used for requests.
     public static $apiKey;
@@ -18,7 +18,8 @@ abstract class Stripe
 
     // @var boolean Defaults to true.
     public static $verifySslCerts = true;
-    const VERSION = '1.17.5';
+
+    const VERSION = '2.0.0';
 
     /**
      * @return string The API key used for requests.
