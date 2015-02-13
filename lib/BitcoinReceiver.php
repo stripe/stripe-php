@@ -15,42 +15,44 @@ class BitcoinReceiver extends ApiResource
 
     /**
      * @param string $id The ID of the Bitcoin Receiver to retrieve.
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
      * @return BitcoinReceiver
      */
-    public static function retrieve($id, $apiKey = null)
+    public static function retrieve($id, $opts = null)
     {
-        return self::_retrieve($id, $apiKey);
+        return self::_retrieve($id, $opts);
     }
 
     /**
      * @param array|null $params
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
-     * @return array An array of BitcoinReceivers.
+     * @return BitcoinReceiver[].
      */
-    public static function all($params = null, $apiKey = null)
+    public static function all($params = null, $opts = null)
     {
-        return self::_all($params, $apiKey);
+        return self::_all($params, $opts);
     }
 
     /**
      * @param array|null $params
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
      * @return BitcoinReceiver The created Bitcoin Receiver item.
      */
-    public static function create($params = null, $apiKey = null)
+    public static function create($params = null, $opts = null)
     {
-        return self::_create($params, $apiKey);
+        return self::_create($params, $opts);
     }
 
     /**
+     * @param array|string|null $opts
+     *
      * @return BitcoinReceiver The saved Bitcoin Receiver item.
      */
-    public function save()
+    public function save($opts = null)
     {
-        return $this->_save();
+        return $this->_save($opts);
     }
 }

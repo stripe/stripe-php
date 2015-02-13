@@ -32,17 +32,19 @@ class Subscription extends ApiResource
      *
      * @return Subscription The deleted subscription.
      */
-    public function cancel($params = null)
+    public function cancel($params = null, $opts = null)
     {
-        return $this->_delete($params);
+        return $this->_delete($params, $opts);
     }
 
     /**
+     * @param array|string|null $opts
+     *
      * @return Subscription The saved subscription.
      */
-    public function save()
+    public function save($opts = null)
     {
-        return $this->_save();
+        return $this->_save($opts);
     }
 
     /**

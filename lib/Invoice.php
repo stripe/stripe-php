@@ -6,40 +6,40 @@ class Invoice extends ApiResource
 {
     /**
      * @param array|null $params
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
      * @return Invoice The created invoice.
      */
-    public static function create($params = null, $apiKey = null)
+    public static function create($params = null, $opts = null)
     {
-        return self::_create($params, $apiKey);
+        return self::_create($params, $opts);
     }
 
     /**
      * @param string $id The ID of the invoice to retrieve.
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
      * @return Invoice
      */
-    public static function retrieve($id, $apiKey = null)
+    public static function retrieve($id, $opts = null)
     {
-        return self::_retrieve($id, $apiKey);
+        return self::_retrieve($id, $opts);
     }
 
     /**
      * @param array|null $params
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
-     * @return array An array of Invoices.
+     * @return Invoice[]
      */
-    public static function all($params = null, $apiKey = null)
+    public static function all($params = null, $opts = null)
     {
-        return self::_all($params, $apiKey);
+        return self::_all($params, $opts);
     }
 
     /**
      * @param array|null $params
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
      * @return Invoice The upcoming invoice.
      */
@@ -51,20 +51,22 @@ class Invoice extends ApiResource
     }
 
     /**
+     * @param array|string|null $opts
+     *
      * @return Invoice The saved invoice.
      */
-    public function save()
+    public function save($opts = null)
     {
-        return $this->_save();
+        return $this->_save($opts);
     }
 
     /**
      * @return Invoice The paid invoice.
      */
-    public function pay()
+    public function pay($opts = null)
     {
         $url = $this->instanceUrl() . '/pay';
-        list($response, $opts) = $this->_request('post', $url);
+        list($response, $opts) = $this->_request('post', $url, null, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }

@@ -38,19 +38,22 @@ class Card extends ApiResource
 
     /**
      * @param array|null $params
+     * @param array|string|null $opts
      *
      * @return Card The deleted card.
      */
-    public function delete($params = null)
+    public function delete($params = null, $opts = null)
     {
-        return $this->_delete($params);
+        return $this->_delete($params, $opts);
     }
 
     /**
+     * @param array|string|null $opts
+     *
      * @return Card The saved card.
      */
-    public function save()
+    public function save($opts = null)
     {
-        return $this->_save();
+        return $this->_save($opts);
     }
 }

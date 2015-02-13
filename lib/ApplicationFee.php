@@ -17,35 +17,36 @@ class ApplicationFee extends ApiResource
 
     /**
      * @param string $id The ID of the application fee to retrieve.
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
      * @return ApplicationFee
      */
-    public static function retrieve($id, $apiKey = null)
+    public static function retrieve($id, $opts = null)
     {
-        return self::_retrieve($id, $apiKey);
+        return self::_retrieve($id, $opts);
     }
 
     /**
-     * @param string|null $params
-     * @param string|null $apiKey
+     * @param array|null $params
+     * @param array|string|null $opts
      *
-     * @return array An array of application fees.
+     * @return ApplicationFee[]
      */
-    public static function all($params = null, $apiKey = null)
+    public static function all($params = null, $opts = null)
     {
-        return self::_all($params, $apiKey);
+        return self::_all($params, $opts);
     }
 
     /**
-     * @param string|null $params
+     * @param array|null $params
+     * @param array|string|null $opts
      *
      * @return ApplicationFee The refunded application fee.
      */
-    public function refund($params = null)
+    public function refund($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/refund';
-        list($response, $opts) = $this->_request('post', $url, $params);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }

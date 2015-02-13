@@ -5,12 +5,12 @@ namespace Stripe;
 class Balance extends SingletonApiResource
 {
     /**
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
      * @return Balance
      */
-    public static function retrieve($apiKey = null)
+    public static function retrieve($opts = null)
     {
-        return self::_singletonRetrieve($apiKey);
+        return self::_singletonRetrieve($opts);
     }
 }

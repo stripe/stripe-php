@@ -28,10 +28,12 @@ class ApplicationFeeRefund extends ApiResource
     }
 
     /**
+     * @param array|string|null $opts
+     *
      * @return ApplicationFeeRefund The saved refund.
      */
-    public function save()
+    public function save($opts = null)
     {
-        return $this->_save();
+        return $this->_save($opts);
     }
 }

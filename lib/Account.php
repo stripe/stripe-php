@@ -22,8 +22,8 @@ class Account extends ApiResource
     public static function retrieve($id = null, $opts = null)
     {
         if (!$opts && is_string($id) && substr($id, 0, 3) === 'sk_') {
-          $opts = $id;
-          $id = null;
+            $opts = $id;
+            $id = null;
         }
         return self::_retrieve($id, $opts);
     }
@@ -40,9 +40,11 @@ class Account extends ApiResource
     }
 
     /**
+     * @param array|string|null $opts
+     *
      * @return Account
      */
-    public function save()
+    public function save($opts = null)
     {
         return $this->_save();
     }

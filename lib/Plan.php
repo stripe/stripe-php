@@ -6,52 +6,55 @@ class Plan extends ApiResource
 {
     /**
      * @param string $id The ID of the plan to retrieve.
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
      * @return Plan
      */
-    public static function retrieve($id, $apiKey = null)
+    public static function retrieve($id, $opts = null)
     {
-        return self::_retrieve($id, $apiKey);
+        return self::_retrieve($id, $opts);
     }
 
     /**
      * @param array|null $params
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
      * @return Plan The created plan.
      */
-    public static function create($params = null, $apiKey = null)
+    public static function create($params = null, $opts = null)
     {
-        return self::_create($params, $apiKey);
+        return self::_create($params, $opts);
     }
 
     /**
      * @param array|null $params
+     * @param array|string|null $opts
      *
      * @return Plan The deleted plan.
      */
-    public function delete($params = null)
+    public function delete($params = null, $opts = null)
     {
-        return $this->_delete($params);
+        return $this->_delete($params, $opts);
     }
 
     /**
+     * @param array|string|null $opts
+     *
      * @return Plan The saved plan.
      */
-    public function save()
+    public function save($opts = null)
     {
-        return $this->_save();
+        return $this->_save($opts);
     }
 
     /**
      * @param array|null $params
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
-     * @return array An array of Plans.
+     * @return Plan[]
      */
-    public static function all($params = null, $apiKey = null)
+    public static function all($params = null, $opts = null)
     {
-        return self::_all($params, $apiKey);
+        return self::_all($params, $opts);
     }
 }

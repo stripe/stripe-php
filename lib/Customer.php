@@ -6,53 +6,56 @@ class Customer extends ApiResource
 {
     /**
      * @param string $id The ID of the customer to retrieve.
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
      * @return Customer
      */
-    public static function retrieve($id, $apiKey = null)
+    public static function retrieve($id, $opts = null)
     {
-        return self::_retrieve($id, $apiKey);
+        return self::_retrieve($id, $opts);
     }
 
     /**
      * @param array|null $params
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
      * @return array An array of Customers.
      */
-    public static function all($params = null, $apiKey = null)
+    public static function all($params = null, $opts = null)
     {
-        return self::_all($params, $apiKey);
+        return self::_all($params, $opts);
     }
 
     /**
      * @param array|null $params
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
      * @return Customer The created customer.
      */
-    public static function create($params = null, $apiKey = null)
+    public static function create($params = null, $opts = null)
     {
-        return self::_create($params, $apiKey);
+        return self::_create($params, $opts);
     }
 
     /**
+     * @param array|string|null $opts
+     *
      * @return Customer The saved customer.
      */
-    public function save()
+    public function save($opts = null)
     {
-        return $this->_save();
+        return $this->_save($opts);
     }
 
     /**
      * @param array|null $params
+     * @param array|string|null $opts
      *
      * @return Customer The deleted customer.
      */
-    public function delete($params = null)
+    public function delete($params = null, $opts = null)
     {
-        return $this->_delete($params);
+        return $this->_delete($params, $opts);
     }
 
     /**

@@ -6,43 +6,45 @@ class Recipient extends ApiResource
 {
     /**
      * @param string $id The ID of the recipient to retrieve.
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
      * @return Recipient
      */
-    public static function retrieve($id, $apiKey = null)
+    public static function retrieve($id, $opts = null)
     {
-        return self::_retrieve($id, $apiKey);
+        return self::_retrieve($id, $opts);
     }
 
     /**
      * @param array|null $params
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
-     * @return array An array of Recipients.
+     * @return Recipients[]
      */
-    public static function all($params = null, $apiKey = null)
+    public static function all($params = null, $opts = null)
     {
-        return self::_all($params, $apiKey);
+        return self::_all($params, $opts);
     }
 
     /**
      * @param array|null $params
-     * @param string|null $apiKey
+     * @param array|string|null $opts
      *
      * @return Recipient The created recipient.
      */
-    public static function create($params = null, $apiKey = null)
+    public static function create($params = null, $opts = null)
     {
-        return self::_create($params, $apiKey);
+        return self::_create($params, $opts);
     }
 
     /**
+     * @param array|string|null $opts
+     *
      * @return Recipient The saved recipient.
      */
-    public function save()
+    public function save($opts = null)
     {
-        return $this->_save();
+        return $this->_save($opts);
     }
 
     /**
@@ -50,9 +52,9 @@ class Recipient extends ApiResource
      *
      * @return Recipient The deleted recipient.
      */
-    public function delete($params = null)
+    public function delete($params = null, $opts = null)
     {
-        return $this->_delete($params);
+        return $this->_delete($params, $opts);
     }
 
 
@@ -61,8 +63,11 @@ class Recipient extends ApiResource
      *
      * @return array An array of the recipient's Transfers.
      */
-    public function transfers($params = array())
+    public function transfers($params = null)
     {
+        if ($params === null) {
+            $params = array();
+        }
         $params['recipient'] = $this->id;
         $transfers = Transfer::all($params, $this->_opts);
         return $transfers;

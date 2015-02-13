@@ -103,25 +103,29 @@ class Charge extends ApiResource
     }
 
     /**
+     * @param array|string|null $opts
+     *
      * @return Charge The updated charge.
      */
-    public function markAsFraudulent()
+    public function markAsFraudulent($opts = null)
     {
         $params = array('fraud_details' => array('user_report' => 'fraudulent'));
         $url = $this->instanceUrl();
-        list($response, $opts) = $this->_request('post', $url, $params);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }
 
     /**
+     * @param array|string|null $opts
+     *
      * @return Charge The updated charge.
      */
-    public function markAsSafe()
+    public function markAsSafe($opts = null)
     {
         $params = array('fraud_details' => array('user_report' => 'safe'));
         $url = $this->instanceUrl();
-        list($response, $opts) = $this->_request('post', $url, $params);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }

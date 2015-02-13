@@ -4,23 +4,23 @@ namespace Stripe;
 
 class Collection extends ApiResource
 {
-    public function all($params = null)
+    public function all($params = null, $opts = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
 
-        list($response, $opts) = $this->_request('get', $url, $params);
+        list($response, $opts) = $this->_request('get', $url, $params, $opts);
         return Util\Util::convertToStripeObject($response, $opts);
     }
 
-    public function create($params = null)
+    public function create($params = null, $opts = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
 
-        list($response, $opts) = $this->_request('post', $url, $params);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         return Util\Util::convertToStripeObject($response, $opts);
     }
 
-    public function retrieve($id, $params = null)
+    public function retrieve($id, $params = null, $opts = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
 
@@ -29,7 +29,8 @@ class Collection extends ApiResource
         list($response, $opts) = $this->_request(
             'get',
             "$url/$extn",
-            $params
+            $params,
+            $opts
         );
         return Util\Util::convertToStripeObject($response, $opts);
     }
