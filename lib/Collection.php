@@ -2,39 +2,36 @@
 
 namespace Stripe;
 
-class Collection extends Object
+class Collection extends ApiResource
 {
     public function all($params = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
 
-        $requestor = new ApiRequestor($this->_apiKey);
-        list($response, $apiKey) = $requestor->request('get', $url, $params);
-        return Util\Util::convertToStripeObject($response, $apiKey);
+        list($response, $opts) = $this->_request('get', $url, $params);
+        return Util\Util::convertToStripeObject($response, $opts);
     }
 
     public function create($params = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
 
-        $requestor = new ApiRequestor($this->_apiKey);
-        list($response, $apiKey) = $requestor->request('post', $url, $params);
-        return Util\Util::convertToStripeObject($response, $apiKey);
+        list($response, $opts) = $this->_request('post', $url, $params);
+        return Util\Util::convertToStripeObject($response, $opts);
     }
 
     public function retrieve($id, $params = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
 
-        $requestor = new ApiRequestor($this->_apiKey);
         $id = ApiRequestor::utf8($id);
         $extn = urlencode($id);
-        list($response, $apiKey) = $requestor->request(
+        list($response, $opts) = $this->_request(
             'get',
             "$url/$extn",
             $params
         );
-        return Util\Util::convertToStripeObject($response, $apiKey);
+        return Util\Util::convertToStripeObject($response, $opts);
     }
 
     private function extractPathAndUpdateParams($params)

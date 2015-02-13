@@ -61,13 +61,10 @@ class Recipient extends ApiResource
      *
      * @return array An array of the recipient's Transfers.
      */
-    public function transfers($params = null)
+    public function transfers($params = array())
     {
-        if (!$params) {
-            $params = array();
-        }
         $params['recipient'] = $this->id;
-        $transfers = Transfer::all($params, $this->_apiKey);
+        $transfers = Transfer::all($params, $this->_opts);
         return $transfers;
     }
 }

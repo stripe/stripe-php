@@ -50,9 +50,8 @@ class Subscription extends ApiResource
      */
     public function deleteDiscount()
     {
-        $requestor = new ApiRequestor($this->_apiKey);
         $url = $this->instanceUrl() . '/discount';
-        list($response, $apiKey) = $requestor->request('delete', $url);
-        $this->refreshFrom(array('discount' => null), $apiKey, true);
+        list($response, $opts) = $this->_request('delete', $url);
+        $this->refreshFrom(array('discount' => null), $opts, true);
     }
 }

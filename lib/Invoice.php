@@ -43,12 +43,11 @@ class Invoice extends ApiResource
      *
      * @return Invoice The upcoming invoice.
      */
-    public static function upcoming($params = null, $apiKey = null)
+    public static function upcoming($params = null, $opts = null)
     {
-        $requestor = new ApiRequestor($apiKey);
         $url = static::classUrl() . '/upcoming';
-        list($response, $apiKey) = $requestor->request('get', $url, $params);
-        return Util\Util::convertToStripeObject($response, $apiKey);
+        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
+        return Util\Util::convertToStripeObject($response, $opts);
     }
 
     /**
@@ -64,10 +63,9 @@ class Invoice extends ApiResource
      */
     public function pay()
     {
-        $requestor = new ApiRequestor($this->_apiKey);
         $url = $this->instanceUrl() . '/pay';
-        list($response, $apiKey) = $requestor->request('post', $url);
-        $this->refreshFrom($response, $apiKey);
+        list($response, $opts) = $this->_request('post', $url);
+        $this->refreshFrom($response, $opts);
         return $this;
     }
 }

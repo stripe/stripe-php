@@ -4,6 +4,8 @@ namespace Stripe;
 
 abstract class ApiResource extends Object
 {
+    private static $HEADERS_TO_PERSIST = array('stripe_account' => true, 'stripe_version' => true);
+
     public static function baseUrl()
     {
         return Stripe::$apiBase;
@@ -14,29 +16,17 @@ abstract class ApiResource extends Object
      */
     public function refresh()
     {
-        $requestor = new ApiRequestor($this->_apiKey, self::baseUrl());
+        $requestor = new ApiRequestor($this->_opts->apiKey, self::baseUrl());
         $url = $this->instanceUrl();
 
-        list($response, $apiKey) = $requestor->request(
+        list($response, $this->_opts->apiKey) = $requestor->request(
             'get',
             $url,
-            $this->_retrieveOptions
+            $this->_retrieveOptions,
+            $this->_opts->headers
         );
-        $this->refreshFrom($response, $apiKey);
+        $this->refreshFrom($response, $this->_opts);
         return $this;
-    }
-
-    /**
-     * @param array options
-     *
-     * @return Util\RequestOptions with either passed in or saved API key
-     */
-    public function parseOptions($options)
-    {
-        $opts = Util\RequestOptions::parse($options);
-        $key = ($opts->apiKey ? $opts->apiKey : $this->_apiKey);
-        $opts->apiKey = $key;
-        return $opts;
     }
 
     /**
@@ -90,7 +80,7 @@ abstract class ApiResource extends Object
         return "$base/$extn";
     }
 
-    private static function _validateCall($method, $params = null, $options = null)
+    private static function _validateParams($params = null)
     {
         if ($params && !is_array($params)) {
             $message = "You must pass an array as the first argument to Stripe API "
@@ -100,75 +90,73 @@ abstract class ApiResource extends Object
                . "4242424242424242, 'exp_month' => 5, 'exp_year' => 2015)))\")";
             throw new Error\Api($message);
         }
+    }
 
-        if ($options && (!is_string($options) && !is_array($options))) {
-            $message = 'The second argument to Stripe API method calls is an '
-               . 'optional per-request apiKey, which must be a string, or '
-               . 'per-request options, which must be an array. '
-               . '(HINT: you can set a global apiKey by '
-               . '"Stripe::setApiKey(<apiKey>)")';
-            throw new Error\Api($message);
+    protected function _request($method, $url, $params = array(), $options = null)
+    {
+        $opts = $this->_opts->merge($options);
+        return static::_staticRequest($method, $url, $params, $opts);
+    }
+
+    protected static function _staticRequest($method, $url, $params, $options)
+    {
+        $opts = Util\RequestOptions::parse($options);
+        $key = ($opts->apiKey ? $opts->apiKey : null);
+        $requestor = new ApiRequestor($key, static::baseUrl());
+        list($response, $opts->apiKey) = $requestor->request($method, $url, $params, $opts->headers);
+        foreach ($opts->headers as $k => $v) {
+            if (!array_key_exists($k, self::$HEADERS_TO_PERSIST)) {
+                unset($opts->headers[$k]);
+            }
         }
+        return array($response, $opts);
     }
 
     protected static function _retrieve($id, $options = null)
     {
         $opts = Util\RequestOptions::parse($options);
-        $instance = new static($id, $opts->apiKey);
+        $instance = new static($id, $opts);
         $instance->refresh();
         return $instance;
     }
 
     protected static function _all($params = null, $options = null)
     {
-        self::_validateCall('all', $params, $options);
-        $base = static::baseUrl();
+        self::_validateParams($params);
         $url = static::classUrl();
 
-        $opts = Util\RequestOptions::parse($options);
-        $requestor = new ApiRequestor($opts->apiKey, $base);
-        list($response, $apiKey) = $requestor->request('get', $url, $params, $opts->headers);
-        return Util\Util::convertToStripeObject($response, $apiKey);
+        list($response, $opts) = static::_staticRequest('get', $url, $params, $options);
+        return Util\Util::convertToStripeObject($response, $opts);
     }
 
     protected static function _create($params = null, $options = null)
     {
-        self::_validateCall('create', $params, $options);
+        self::_validateParams($params);
         $base = static::baseUrl();
         $url = static::classUrl();
 
-        $opts = Util\RequestOptions::parse($options);
-        $requestor = new ApiRequestor($opts->apiKey, $base);
-        list($response, $apiKey) = $requestor->request('post', $url, $params, $opts->headers);
-        return Util\Util::convertToStripeObject($response, $apiKey);
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        return Util\Util::convertToStripeObject($response, $opts);
     }
 
     protected function _save($options = null)
     {
-        self::_validateCall('save', null, $options);
-
-        $opts = Util\RequestOptions::parse($options);
-        $key = ($opts->apiKey ? $opts->apiKey : $this->_apiKey);
-        $requestor = new ApiRequestor($key, self::baseUrl());
         $params = $this->serializeParameters();
-
         if (count($params) > 0) {
             $url = $this->instanceUrl();
-            list($response, $apiKey) = $requestor->request('post', $url, $params, $options);
-            $this->refreshFrom($response, $apiKey);
+            list($response, $opts) = $this->_request('post', $url, $params, $options);
+            $this->refreshFrom($response, $opts);
         }
         return $this;
     }
 
     protected function _delete($params = null, $options = null)
     {
-        self::_validateCall('delete', $params, $options);
-        $opts = Util\RequestOptions::parse($options);
-        $key = ($opts->apiKey ? $opts->apiKey : $this->_apiKey);
-        $requestor = new ApiRequestor($key, self::baseUrl());
+        self::_validateParams($params);
+
         $url = $this->instanceUrl();
-        list($response, $apiKey) = $requestor->request('delete', $url, $params);
-        $this->refreshFrom($response, $apiKey);
+        list($response, $opts) = $this->_request('delete', $url, $params, $options);
+        $this->refreshFrom($response, $opts);
         return $this;
     }
 }

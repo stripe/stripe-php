@@ -20,19 +20,19 @@ class Object implements ArrayAccess
 
     public static function init()
     {
-        self::$permanentAttributes = new Util\Set(array('_apiKey', 'id'));
+        self::$permanentAttributes = new Util\Set(array('_opts', 'id'));
         self::$nestedUpdatableAttributes = new Util\Set(array('metadata'));
     }
 
-    protected $_apiKey;
+    protected $_opts;
     protected $_values;
     protected $_unsavedValues;
     protected $_transientValues;
     protected $_retrieveOptions;
 
-    public function __construct($id = null, $apiKey = null)
+    public function __construct($id = null, $opts = null)
     {
-        $this->_apiKey = $apiKey;
+        $this->_opts = $opts ? $opts : new Util\RequestOptions();
         $this->_values = array();
         $this->_unsavedValues = new Util\Set();
         $this->_transientValues = new Util\Set();
@@ -136,14 +136,14 @@ class Object implements ArrayAccess
      * This unfortunately needs to be public to be used in Util\Util
      *
      * @param array $values
-     * @param string|null $apiKey
+     * @param array $opts
      *
      * @return Object The object constructed from the given values.
      */
-    public static function constructFrom($values, $apiKey = null)
+    public static function constructFrom($values, $opts)
     {
-        $obj = new static(isset($values['id']) ? $values['id'] : null, $apiKey);
-        $obj->refreshFrom($values, $apiKey);
+        $obj = new static(isset($values['id']) ? $values['id'] : null);
+        $obj->refreshFrom($values, $opts);
         return $obj;
     }
 
@@ -151,12 +151,12 @@ class Object implements ArrayAccess
      * Refreshes this object using the provided values.
      *
      * @param array $values
-     * @param string $apiKey
+     * @param array $opts
      * @param boolean $partial Defaults to false.
      */
-    public function refreshFrom($values, $apiKey, $partial = false)
+    public function refreshFrom($values, $opts, $partial = false)
     {
-        $this->_apiKey = $apiKey;
+        $this->_opts = $opts;
 
         // Wipe old state before setting new.  This is useful for e.g. updating a
         // customer, where there is no persistent card parameter.  Mark those values
@@ -181,9 +181,9 @@ class Object implements ArrayAccess
             }
 
             if (self::$nestedUpdatableAttributes->includes($k) && is_array($v)) {
-                $this->_values[$k] = AttachedObject::constructFrom($v, $apiKey);
+                $this->_values[$k] = AttachedObject::constructFrom($v, $opts);
             } else {
-                $this->_values[$k] = Util\Util::convertToStripeObject($v, $apiKey);
+                $this->_values[$k] = Util\Util::convertToStripeObject($v, $opts);
             }
 
             $this->_transientValues->discard($k);

@@ -54,10 +54,10 @@ abstract class Util
      * Converts a response from the Stripe API to the corresponding PHP object.
      *
      * @param array $resp The response from the Stripe API.
-     * @param string $apiKey
+     * @param array $opts
      * @return Object|array
      */
-    public static function convertToStripeObject($resp, $apiKey)
+    public static function convertToStripeObject($resp, $opts)
     {
         $types = array(
             'card' => 'Stripe\\Card',
@@ -81,7 +81,7 @@ abstract class Util
         if (self::isList($resp)) {
             $mapped = array();
             foreach ($resp as $i) {
-                array_push($mapped, self::convertToStripeObject($i, $apiKey));
+                array_push($mapped, self::convertToStripeObject($i, $opts));
             }
             return $mapped;
         } elseif (is_array($resp)) {
@@ -90,7 +90,7 @@ abstract class Util
             } else {
                 $class = 'Stripe\\Object';
             }
-            return $class::constructFrom($resp, $apiKey);
+            return $class::constructFrom($resp, $opts);
         } else {
             return $resp;
         }

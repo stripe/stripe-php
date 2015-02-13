@@ -22,39 +22,25 @@ You can install the bindings via Composer[http://getcomposer.org/]. Add this to 
 
     {
       "require": {
-        "stripe/stripe-php": "1.*"
+        "stripe/stripe-php": "2.*"
       }
     }
-    
+
 Then install via:
 
     composer.phar install
 
-To use the bindings, either user Composer's autoload[https://getcomposer.org/doc/00-intro.md#autoloading]:
+To use the bindings, use Composer's (autoload)[https://getcomposer.org/doc/00-intro.md#autoloading]:
 
     require_once('vendor/autoload.php');
-    
-Or manually:
-
-    require_once('/path/to/vendor/stripe/stripe-php/lib/Stripe.php');
-
-== Manual Installation
-
-Obtain the latest version of the Stripe PHP bindings with:
-
-    git clone https://github.com/stripe/stripe-php
-
-To use the bindings, add the following to your PHP script:
-
-    require_once("/path/to/stripe-php/lib/Stripe.php");
 
 == Getting Started
 
 Simple usage looks like:
 
-    Stripe::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
+    /Stripe::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
     $myCard = array('number' => '4242424242424242', 'exp_month' => 5, 'exp_year' => 2015);
-    $charge = Stripe_Charge::create(array('card' => $myCard, 'amount' => 2000, 'currency' => 'usd'));
+    $charge = /Stripe/Charge::create(array('card' => $myCard, 'amount' => 2000, 'currency' => 'usd'));
     echo $charge;
 
 == Documentation
@@ -63,11 +49,11 @@ Please see https://stripe.com/docs/api for up-to-date documentation.
 
 == Tests
 
-In order to run tests you have to install PHPUnit[http://packagist.org/packages/phpunit/phpunit] via Composer[http://getcomposer.org/] (recommended way):
+In order to run tests first install PHPUnit[http://packagist.org/packages/phpunit/phpunit] via Composer[http://getcomposer.org/]:
 
     composer.phar update --dev
 
-Run test suite:
+To run the test suite:
 
     ./vendor/bin/phpunit
 

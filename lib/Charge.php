@@ -55,11 +55,9 @@ class Charge extends ApiResource
      */
     public function refund($params = null, $options = null)
     {
-        $opts = $this->parseOptions($options);
-        $requestor = new ApiRequestor($opts->apiKey);
         $url = $this->instanceUrl() . '/refund';
-        list($response, $apiKey) = $requestor->request('post', $url, $params, $opts->headers);
-        $this->refreshFrom($response, $apiKey);
+        list($response, $opts) = $this->request('post', $url, $params, $options);
+        $this->refreshFrom($response, $opts);
         return $this;
     }
 
@@ -71,11 +69,9 @@ class Charge extends ApiResource
      */
     public function capture($params = null, $options = null)
     {
-        $opts = $this->parseOptions($options);
-        $requestor = new ApiRequestor($opts->apiKey);
         $url = $this->instanceUrl() . '/capture';
-        list($response, $apiKey) = $requestor->request('post', $url, $params, $opts->headers);
-        $this->refreshFrom($response, $apiKey);
+        list($response, $opts) = $this->_request('post', $url, $params, $options);
+        $this->refreshFrom($response, $opts);
         return $this;
     }
 
@@ -87,11 +83,9 @@ class Charge extends ApiResource
      */
     public function updateDispute($params = null, $options = null)
     {
-        $opts = $this->parseOptions($options);
-        $requestor = new ApiRequestor($opts->apiKey);
         $url = $this->instanceUrl() . '/dispute';
-        list($response, $apiKey) = $requestor->request('post', $url, $params, $opts->headers);
-        $this->refreshFrom(array('dispute' => $response), $apiKey, true);
+        list($response, $opts) = $this->_request('post', $url, $params, $options);
+        $this->refreshFrom(array('dispute' => $response), $opts, true);
         return $this->dispute;
     }
 
@@ -102,11 +96,9 @@ class Charge extends ApiResource
      */
     public function closeDispute($options = null)
     {
-        $opts = $this->parseOptions($options);
-        $requestor = new ApiRequestor($opts->apiKey);
         $url = $this->instanceUrl() . '/dispute/close';
-        list($response, $apiKey) = $requestor->request('post', $url, null, $opts->headers);
-        $this->refreshFrom($response, $apiKey);
+        list($response, $opts) = $this->_request('post', $url, null, $options);
+        $this->refreshFrom($response, $opts);
         return $this;
     }
 
@@ -116,10 +108,9 @@ class Charge extends ApiResource
     public function markAsFraudulent()
     {
         $params = array('fraud_details' => array('user_report' => 'fraudulent'));
-        $requestor = new ApiRequestor($this->_apiKey);
         $url = $this->instanceUrl();
-        list($response, $apiKey) = $requestor->request('post', $url, $params);
-        $this->refreshFrom($response, $apiKey);
+        list($response, $opts) = $this->_request('post', $url, $params);
+        $this->refreshFrom($response, $opts);
         return $this;
     }
 
@@ -129,10 +120,9 @@ class Charge extends ApiResource
     public function markAsSafe()
     {
         $params = array('fraud_details' => array('user_report' => 'safe'));
-        $requestor = new ApiRequestor($this->_apiKey);
         $url = $this->instanceUrl();
-        list($response, $apiKey) = $requestor->request('post', $url, $params);
-        $this->refreshFrom($response, $apiKey);
+        list($response, $opts) = $this->_request('post', $url, $params);
+        $this->refreshFrom($response, $opts);
         return $this;
     }
 }

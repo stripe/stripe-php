@@ -43,10 +43,9 @@ class Transfer extends ApiResource
      */
     public function cancel()
     {
-        $requestor = new ApiRequestor($this->_apiKey);
         $url = $this->instanceUrl() . '/cancel';
-        list($response, $apiKey) = $requestor->request('post', $url);
-        $this->refreshFrom($response, $apiKey);
+        list($response, $opts) = $this->_request('post', $url);
+        $this->refreshFrom($response, $opts);
         return $this;
     }
 

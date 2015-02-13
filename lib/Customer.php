@@ -66,7 +66,7 @@ class Customer extends ApiResource
             $params = array();
         }
         $params['customer'] = $this->id;
-        $ii = InvoiceItem::create($params, $this->_apiKey);
+        $ii = InvoiceItem::create($params, $this->_opts);
         return $ii;
     }
 
@@ -81,7 +81,7 @@ class Customer extends ApiResource
             $params = array();
         }
         $params['customer'] = $this->id;
-        $invoices = Invoice::all($params, $this->_apiKey);
+        $invoices = Invoice::all($params, $this->_opts);
         return $invoices;
     }
 
@@ -96,7 +96,7 @@ class Customer extends ApiResource
             $params = array();
         }
         $params['customer'] = $this->id;
-        $iis = InvoiceItem::all($params, $this->_apiKey);
+        $iis = InvoiceItem::all($params, $this->_opts);
         return $iis;
     }
 
@@ -111,7 +111,7 @@ class Customer extends ApiResource
             $params = array();
         }
         $params['customer'] = $this->id;
-        $charges = Charge::all($params, $this->_apiKey);
+        $charges = Charge::all($params, $this->_opts);
         return $charges;
     }
 
@@ -122,10 +122,9 @@ class Customer extends ApiResource
      */
     public function updateSubscription($params = null)
     {
-        $requestor = new ApiRequestor($this->_apiKey);
         $url = $this->instanceUrl() . '/subscription';
-        list($response, $apiKey) = $requestor->request('post', $url, $params);
-        $this->refreshFrom(array('subscription' => $response), $apiKey, true);
+        list($response, $opts) = $this->_request('post', $url, $params);
+        $this->refreshFrom(array('subscription' => $response), $opts, true);
         return $this->subscription;
     }
 
@@ -136,10 +135,9 @@ class Customer extends ApiResource
      */
     public function cancelSubscription($params = null)
     {
-        $requestor = new ApiRequestor($this->_apiKey);
         $url = $this->instanceUrl() . '/subscription';
-        list($response, $apiKey) = $requestor->request('delete', $url, $params);
-        $this->refreshFrom(array('subscription' => $response), $apiKey, true);
+        list($response, $opts) = $this->_request('delete', $url, $params);
+        $this->refreshFrom(array('subscription' => $response), $opts, true);
         return $this->subscription;
     }
 
@@ -150,9 +148,8 @@ class Customer extends ApiResource
      */
     public function deleteDiscount()
     {
-        $requestor = new ApiRequestor($this->_apiKey);
         $url = $this->instanceUrl() . '/discount';
-        list($response, $apiKey) = $requestor->request('delete', $url);
-        $this->refreshFrom(array('discount' => null), $apiKey, true);
+        list($response, $opts) = $this->_request('delete', $url);
+        $this->refreshFrom(array('discount' => null), $opts, true);
     }
 }
