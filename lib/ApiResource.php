@@ -101,8 +101,7 @@ abstract class ApiResource extends Object
     protected static function _staticRequest($method, $url, $params, $options)
     {
         $opts = Util\RequestOptions::parse($options);
-        $key = ($opts->apiKey ? $opts->apiKey : null);
-        $requestor = new ApiRequestor($key, static::baseUrl());
+        $requestor = new ApiRequestor($opts->apiKey, static::baseUrl());
         list($response, $opts->apiKey) = $requestor->request($method, $url, $params, $opts->headers);
         foreach ($opts->headers as $k => $v) {
             if (!array_key_exists($k, self::$HEADERS_TO_PERSIST)) {
