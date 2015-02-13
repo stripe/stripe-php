@@ -1,62 +1,74 @@
 <?php
 
-// Tested on PHP 5.2, 5.3
+namespace Stripe;
 
-// This snippet (and some of the curl code) due to the Facebook SDK.
-if (!function_exists('curl_init')) {
-  throw new Exception('Stripe needs the CURL PHP extension.');
+class Stripe
+{
+    // @var string The Stripe API key to be used for requests.
+    public static $apiKey;
+
+    // @var string The base URL for the Stripe API.
+    public static $apiBase = 'https://api.stripe.com';
+
+    // @var string The base URL for the Stripe API uploads endpoint.
+    public static $apiUploadBase = 'https://uploads.stripe.com';
+
+    // @var string|null The version of the Stripe API to use for requests.
+    public static $apiVersion = null;
+
+    // @var boolean Defaults to true.
+    public static $verifySslCerts = true;
+
+    const VERSION = '2.0.0';
+
+    /**
+     * @return string The API key used for requests.
+     */
+    public static function getApiKey()
+    {
+        return self::$apiKey;
+    }
+
+    /**
+     * Sets the API key to be used for requests.
+     *
+     * @param string $apiKey
+     */
+    public static function setApiKey($apiKey)
+    {
+        self::$apiKey = $apiKey;
+    }
+
+    /**
+     * @return string The API version used for requests. null if we're using the
+     *    latest version.
+     */
+    public static function getApiVersion()
+    {
+        return self::$apiVersion;
+    }
+
+    /**
+     * @param string $apiVersion The API version to use for requests.
+     */
+    public static function setApiVersion($apiVersion)
+    {
+        self::$apiVersion = $apiVersion;
+    }
+
+    /**
+     * @return boolean
+     */
+    public static function getVerifySslCerts()
+    {
+        return self::$verifySslCerts;
+    }
+
+    /**
+     * @param boolean $verify
+     */
+    public static function setVerifySslCerts($verify)
+    {
+        self::$verifySslCerts = $verify;
+    }
 }
-if (!function_exists('json_decode')) {
-  throw new Exception('Stripe needs the JSON PHP extension.');
-}
-if (!function_exists('mb_detect_encoding')) {
-  throw new Exception('Stripe needs the Multibyte String PHP extension.');
-}
-
-// Stripe singleton
-require(dirname(__FILE__) . '/Stripe/Stripe.php');
-
-// Utilities
-require(dirname(__FILE__) . '/Stripe/Util.php');
-require(dirname(__FILE__) . '/Stripe/Util/Set.php');
-
-// Errors
-require(dirname(__FILE__) . '/Stripe/Error.php');
-require(dirname(__FILE__) . '/Stripe/ApiError.php');
-require(dirname(__FILE__) . '/Stripe/ApiConnectionError.php');
-require(dirname(__FILE__) . '/Stripe/AuthenticationError.php');
-require(dirname(__FILE__) . '/Stripe/CardError.php');
-require(dirname(__FILE__) . '/Stripe/InvalidRequestError.php');
-require(dirname(__FILE__) . '/Stripe/RateLimitError.php');
-
-// Plumbing
-require(dirname(__FILE__) . '/Stripe/Object.php');
-require(dirname(__FILE__) . '/Stripe/ApiRequestor.php');
-require(dirname(__FILE__) . '/Stripe/ApiResource.php');
-require(dirname(__FILE__) . '/Stripe/SingletonApiResource.php');
-require(dirname(__FILE__) . '/Stripe/AttachedObject.php');
-require(dirname(__FILE__) . '/Stripe/List.php');
-require(dirname(__FILE__) . '/Stripe/RequestOptions.php');
-
-// Stripe API Resources
-require(dirname(__FILE__) . '/Stripe/Account.php');
-require(dirname(__FILE__) . '/Stripe/Card.php');
-require(dirname(__FILE__) . '/Stripe/Balance.php');
-require(dirname(__FILE__) . '/Stripe/BalanceTransaction.php');
-require(dirname(__FILE__) . '/Stripe/Charge.php');
-require(dirname(__FILE__) . '/Stripe/Customer.php');
-require(dirname(__FILE__) . '/Stripe/FileUpload.php');
-require(dirname(__FILE__) . '/Stripe/Invoice.php');
-require(dirname(__FILE__) . '/Stripe/InvoiceItem.php');
-require(dirname(__FILE__) . '/Stripe/Plan.php');
-require(dirname(__FILE__) . '/Stripe/Subscription.php');
-require(dirname(__FILE__) . '/Stripe/Token.php');
-require(dirname(__FILE__) . '/Stripe/Coupon.php');
-require(dirname(__FILE__) . '/Stripe/Event.php');
-require(dirname(__FILE__) . '/Stripe/Transfer.php');
-require(dirname(__FILE__) . '/Stripe/Recipient.php');
-require(dirname(__FILE__) . '/Stripe/Refund.php');
-require(dirname(__FILE__) . '/Stripe/ApplicationFee.php');
-require(dirname(__FILE__) . '/Stripe/ApplicationFeeRefund.php');
-require(dirname(__FILE__) . '/Stripe/BitcoinReceiver.php');
-require(dirname(__FILE__) . '/Stripe/BitcoinTransaction.php');
