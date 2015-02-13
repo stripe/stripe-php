@@ -247,7 +247,7 @@ class ApiRequestor
         }
 
         if ($hasCurlFile) {
-          // We don't have the filename or mimetype, but the API doesn't care
+            // We don't have the filename or mimetype, but the API doesn't care
             return new \CURLFile($metaData['uri']);
         } else {
             return '@'.$metaData['uri'];
