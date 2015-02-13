@@ -18,7 +18,7 @@ PHP 5.3.3 and later.
 
 == Composer
 
-You can install the bindings via Composer[http://getcomposer.org/]. Add this to your +composer.json+:
+You can install the bindings via [Composer](http://getcomposer.org/). Add this to your +composer.json+:
 
     {
       "require": {
@@ -30,7 +30,7 @@ Then install via:
 
     composer.phar install
 
-To use the bindings, use Composer's (autoload)[https://getcomposer.org/doc/00-intro.md#autoloading]:
+To use the bindings, use Composer's [autoload](https://getcomposer.org/doc/00-intro.md#autoloading):
 
     require_once('vendor/autoload.php');
 
@@ -43,13 +43,24 @@ Simple usage looks like:
     $charge = /Stripe/Charge::create(array('card' => $myCard, 'amount' => 2000, 'currency' => 'usd'));
     echo $charge;
 
+== Legacy Version Support
+
+If you are using PHP 5.2, you can download v1.18.0 ([zip](https://github.com/stripe/stripe-php/archive/v1.18.0.zip), [tar.gz](https://github.com/stripe/stripe-php/archive/v1.18.0.tar.gz)) from our [releases page](https://github.com/stripe/stripe-php/releases). This version will continue to work with new versions of the Stripe API for all common uses.
+
+This legacy version may be included via +require_once("/path/to/stripe-php/lib/Stripe.php");+, and used like:
+
+    Stripe::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
+    $myCard = array('number' => '4242424242424242', 'exp_month' => 5, 'exp_year' => 2015);
+    $charge = Stripe_Charge::create(array('card' => $myCard, 'amount' => 2000, 'currency' => 'usd'));
+    echo $charge;
+
 == Documentation
 
 Please see https://stripe.com/docs/api for up-to-date documentation.
 
 == Tests
 
-In order to run tests first install PHPUnit[http://packagist.org/packages/phpunit/phpunit] via Composer[http://getcomposer.org/]:
+In order to run tests first install [PHPUnit](http://packagist.org/packages/phpunit/phpunit) via [Composer](http://getcomposer.org/):
 
     composer.phar update --dev
 
