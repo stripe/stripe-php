@@ -27,5 +27,10 @@
   },
   "autoload": {
     "psr-4": { "Stripe\\" : "lib/" }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.0-dev"
+    }
   }
 }
