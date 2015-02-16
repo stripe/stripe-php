@@ -1,3 +1,7 @@
+### 2.0.1 2015-02-16
+
+* Fix to fetching endpoints that use a non-default baseUrl (`FileUpload`)
+
 ### 2.0.0 2015-02-14
 
 * Bumped minimum version to 5.3.3
