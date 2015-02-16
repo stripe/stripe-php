@@ -16,7 +16,7 @@ abstract class ApiResource extends Object
      */
     public function refresh()
     {
-        $requestor = new ApiRequestor($this->_opts->apiKey, self::baseUrl());
+        $requestor = new ApiRequestor($this->_opts->apiKey, static::baseUrl());
         $url = $this->instanceUrl();
 
         list($response, $this->_opts->apiKey) = $requestor->request(
