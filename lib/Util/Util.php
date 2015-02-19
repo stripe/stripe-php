@@ -2,6 +2,8 @@
 
 namespace Stripe\Util;
 
+use Stripe\Object;
+
 abstract class Util
 {
     /**
