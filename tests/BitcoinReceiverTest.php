@@ -55,4 +55,52 @@ class BitcoinReceiverTest extends TestCase
         $transactions = $receiver->transactions->all(array("limit" => 1));
         $this->assertSame(1, count($transactions->data));
     }
+
+    public function testDeleteWithCustomer()
+    {
+        self::authorizeFromEnv();
+        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
+        $customer = Customer::create(array("source" => $receiver->id));
+        $charge = Charge::create(array(
+            "customer" => $customer->id,
+            "amount" => $receiver->amount,
+            "currency" => $receiver->currency
+        ));
+        $receiver = BitcoinReceiver::retrieve($receiver->id);
+        $response = $receiver->delete();
+        $this->assertTrue($response->deleted);
+    }
+
+    public function testUpdateWithCustomer()
+    {
+        self::authorizeFromEnv();
+        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
+        $customer = Customer::create(array("source" => $receiver->id));
+        $receiver = BitcoinReceiver::retrieve($receiver->id);
+
+        $receiver->description = "a new description";
+        $receiver->save();
+
+        $base = Customer::classUrl();
+        $parentExtn = $receiver['customer'];
+        $extn = $receiver['id'];
+        $this->assertEquals("$base/$parentExtn/sources/$extn", $receiver->instanceUrl());
+
+        $updatedReceiver = BitcoinReceiver::retrieve($receiver->id);
+        $this->assertEquals($receiver["description"], $updatedReceiver["description"]);
+    }
+
+    public function testUpdateWithoutCustomer()
+    {
+        self::authorizeFromEnv();
+        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
+
+        $receiver->description = "a new description";
+        $receiver->save();
+
+        $this->assertEquals(BitcoinReceiver::classUrl() . "/" . $receiver['id'], $receiver->instanceUrl());
+
+        $updatedReceiver = BitcoinReceiver::retrieve($receiver->id);
+        $this->assertEquals($receiver["description"], $updatedReceiver["description"]);
+    }
 }

@@ -172,7 +172,7 @@ class ChargeTest extends TestCase
 
         $this->assertSame($receiver->id, $charge->source->id);
         $this->assertSame("bitcoin_receiver", $charge->source->object);
-        $this->assertSame("paid", $charge->status);
+        $this->assertSame("succeeded", $charge->status);
         $this->assertInstanceOf('Stripe\\BitcoinReceiver', $charge->source);
     }
 
