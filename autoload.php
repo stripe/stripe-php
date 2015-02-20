@@ -3,7 +3,8 @@
 /**
  * @param string $class_name
  */
-function stripe_api_autoload($class_name) {
+function stripe_api_autoload($class_name)
+{
 	$name_prefix = 'Stripe\\'; // The namespace prefix
 	$base = __DIR__ . '/lib/'; // Directory for the namespace
 	if(strpos($class_name, $name_prefix) != 0) // Check if the class belongs in the namespace
