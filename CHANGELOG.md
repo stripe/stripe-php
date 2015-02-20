@@ -1,3 +1,9 @@
+### 2.1.0 2015-02-19
+
+* Support new API version (2015-02-18)
+* Added Bitcoin Receiever update and delete actions
+* Edited tests to prefer "source" over "card" as per new API version
+
 ### 2.0.1 2015-02-16
 
 * Fix to fetching endpoints that use a non-default baseUrl (`FileUpload`)
