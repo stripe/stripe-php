@@ -7,5 +7,9 @@ php:
   - 5.6
   - hhvm
 
-script: ./build.php
+env:
+  - AUTOLOAD=1
+  - AUTOLOAD=0
+
+script: ./build.php ${AUTOLOAD}
 after_script: ./vendor/bin/coveralls -v
