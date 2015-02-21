@@ -14,7 +14,7 @@ PHP 5.3.3 and later.
 
 ## Composer
 
-You install the bindings via [Composer](http://getcomposer.org/). Add this to your `composer.json`:
+You can install the bindings via [Composer](http://getcomposer.org/). Add this to your `composer.json`:
 
     {
       "require": {
@@ -30,7 +30,11 @@ To use the bindings, use Composer's [autoload](https://getcomposer.org/doc/00-in
 
     require_once('vendor/autoload.php');
     
-Note: Currently, v2.0+ of the Stripe-PHP library requires Composer.
+## Manual Installation
+
+If you do not wish to use Composer, you can download the [latest release](https://github.com/stripe/stripe-php/releases). Then, to use the bindings, include the `init.php` file.
+
+    require_once('/path/to/stripe-php/init.php');
 
 ## Getting Started
 
