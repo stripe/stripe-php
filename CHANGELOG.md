@@ -1,3 +1,6 @@
+### 2.1.1 2015-02-25
+* Support transfer reversals
+
 ### 2.1.0 2015-02-19
 
 * Support new API version (2015-02-18)

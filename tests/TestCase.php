@@ -42,6 +42,25 @@ class TestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Create a valid test charge.
+     */
+    protected static function createTestTransfer(array $attributes = array())
+    {
+        self::authorizeFromEnv();
+
+        $recipient = self::createTestRecipient();
+
+        return Transfer::create(
+            $attributes + array(
+                'amount' => 2000,
+                'currency' => 'usd',
+                'description' => 'Transfer to test@example.com',
+                'recipient' => $recipient->id
+            )
+        );
+    }
+
+    /**
      * Create a valid test customer.
      */
     protected static function createTestCustomer(array $attributes = array())
