@@ -38,6 +38,17 @@ class Transfer extends ApiResource
     }
 
     /**
+     * @return TransferReversal The created transfer reversal.
+     */
+    public function reverse($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/reversals';
+        list($response, $opts) = $this->request('post', $url, $params, $options);
+        $this->refreshFrom($response, $opts);
+        return $this;
+    }
+
+    /**
      * @return Transfer The canceled transfer.
      */
     public function cancel()
