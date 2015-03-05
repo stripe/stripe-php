@@ -56,7 +56,7 @@ class Charge extends ApiResource
     public function refund($params = null, $options = null)
     {
         $url = $this->instanceUrl() . '/refund';
-        list($response, $opts) = $this->request('post', $url, $params, $options);
+        list($response, $opts) = $this->_request('post', $url, $params, $options);
         $this->refreshFrom($response, $opts);
         return $this;
     }
