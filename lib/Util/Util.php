@@ -63,6 +63,7 @@ abstract class Util
     {
         $types = array(
             'account' => 'Stripe\\Account',
+            'alipay_account' => 'Stripe\\Alipay',
             'card' => 'Stripe\\Card',
             'charge' => 'Stripe\\Charge',
             'coupon' => 'Stripe\\Coupon',
