@@ -24,12 +24,12 @@ You can install the bindings via [Composer](http://getcomposer.org/). Add this t
 
 Then install via:
 
-    composer.phar install
+    composer install
 
 To use the bindings, use Composer's [autoload](https://getcomposer.org/doc/00-intro.md#autoloading):
 
     require_once('vendor/autoload.php');
-    
+
 ## Manual Installation
 
 If you do not wish to use Composer, you can download the [latest release](https://github.com/stripe/stripe-php/releases). Then, to use the bindings, include the `init.php` file.
@@ -64,7 +64,7 @@ This legacy version may be included via `require_once("/path/to/stripe-php/lib/S
 
 In order to run tests first install [PHPUnit](http://packagist.org/packages/phpunit/phpunit) via [Composer](http://getcomposer.org/):
 
-    composer.phar update --dev
+    composer update --dev
 
 To run the test suite:
 
