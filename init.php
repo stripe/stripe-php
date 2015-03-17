@@ -26,6 +26,7 @@ require(dirname(__FILE__) . '/lib/AttachedObject.php');
 
 // Stripe API Resources
 require(dirname(__FILE__) . '/lib/Account.php');
+require(dirname(__FILE__) . '/lib/Alipay.php');
 require(dirname(__FILE__) . '/lib/ApplicationFee.php');
 require(dirname(__FILE__) . '/lib/ApplicationFeeRefund.php');
 require(dirname(__FILE__) . '/lib/Balance.php');
