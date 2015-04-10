@@ -8,13 +8,6 @@ class ApiRequestor
 
     private $_apiBase;
 
-    private static $_preFlight = array();
-
-    private static $_blacklistedCerts = array(
-        '05c0b3643694470a888c6e7feb5c9e24e823dc53',
-        '5b7dc7fbc98d78bf76d4d4fa6f597a0c901fad5c',
-    );
-
     public function __construct($apiKey = null, $apiBase = null)
     {
         $this->_apiKey = $apiKey;
@@ -160,11 +153,6 @@ class ApiRequestor
 
     private function _requestRaw($method, $url, $params, $headers)
     {
-        if (!array_key_exists($this->_apiBase, self::$_preFlight) ||
-            !self::$_preFlight[$this->_apiBase]) {
-            self::$_preFlight[$this->_apiBase] = $this->checkSslCert($this->_apiBase);
-        }
-
         $myApiKey = $this->_apiKey;
         if (!$myApiKey) {
             $myApiKey = Stripe::$apiKey;
@@ -376,92 +364,6 @@ class ApiRequestor
 
         $msg .= "\n\n(Network error [errno $errno]: $message)";
         throw new Error\ApiConnection($msg);
-    }
-
-    /**
-     * Preflight the SSL certificate presented by the backend. This isn't 100%
-     * bulletproof, in that we're not actually validating the transport used to
-     * communicate with Stripe, merely that the first attempt to does not use a
-     * revoked certificate.
-     *
-     * Unfortunately the interface to OpenSSL doesn't make it easy to check the
-     * certificate before sending potentially sensitive data on the wire. This
-     * approach raises the bar for an attacker significantly.
-     */
-    private function checkSslCert($url)
-    {
-        if (!function_exists('stream_context_get_params') ||
-            !function_exists('stream_socket_enable_crypto')) {
-            error_log(
-                'Warning: This version of PHP does not support checking SSL ' .
-                'certificates Stripe cannot guarantee that the server has a ' .
-                'certificate which is not blacklisted.'
-            );
-            return true;
-        }
-
-        $url = parse_url($url);
-        $port = isset($url["port"]) ? $url["port"] : 443;
-        $url = "ssl://{$url["host"]}:{$port}";
-
-        $sslContext = stream_context_create(
-            array('ssl' => array(
-                'capture_peer_cert' => true,
-                'verify_peer'   => true,
-                'cafile'        => $this->caBundle(),
-            ))
-        );
-        $result = stream_socket_client(
-            $url,
-            $errno,
-            $errstr,
-            30,
-            STREAM_CLIENT_CONNECT,
-            $sslContext
-        );
-        if (($errno !== 0 && $errno !== null) || $result === false) {
-            throw new Error\ApiConnection(
-                'Could not connect to Stripe (' . $url . ').  Please check your ' .
-                'internet connection and try again.  If this problem persists, ' .
-                'you should check Stripe\'s service status at ' .
-                'https://twitter.com/stripestatus. Reason was: ' . $errstr
-            );
-        }
-
-        $params = stream_context_get_params($result);
-
-        $cert = $params['options']['ssl']['peer_certificate'];
-
-        openssl_x509_export($cert, $pemCert);
-
-        if (self::isBlackListed($pemCert)) {
-            throw new Error\ApiConnection(
-                'Invalid server certificate. You tried to connect to a server that ' .
-                'has a revoked SSL certificate, which means we cannot securely send ' .
-                'data to that server.  Please email support@stripe.com if you need ' .
-                'help connecting to the correct API server.'
-            );
-        }
-
-        return true;
-    }
-
-    /**
-     * Checks if a valid PEM encoded certificate is blacklisted
-     * @return boolean
-     */
-    public static function isBlackListed($certificate)
-    {
-        $certificate = trim($certificate);
-        $lines = explode("\n", $certificate);
-
-        // Kludgily remove the PEM padding
-        array_shift($lines);
-        array_pop($lines);
-
-        $derCert = base64_decode(implode("", $lines));
-        $fingerprint = sha1($derCert);
-        return in_array($fingerprint, self::$_blacklistedCerts);
     }
 
     private function caBundle()
