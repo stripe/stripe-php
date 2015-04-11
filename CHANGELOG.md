@@ -1,3 +1,8 @@
+### 2.1.2 2015-04-10
+
+* Remove SSL cert revokation checking (all pre-Heartbleed certs have expired)
+* Bug fixes to account updating
+
 ### 2.1.1 2015-02-27
 * Support transfer reversals
 
