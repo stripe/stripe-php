@@ -74,7 +74,7 @@ abstract class ApiResource extends Object
                . "$class instance has invalid ID: $id";
             throw new Error\InvalidRequest($message, null);
         }
-        $id = ApiRequestor::utf8($id);
+        $id = Util\Util::utf8($id);
         $base = static::classUrl();
         $extn = urlencode($id);
         return "$base/$extn";

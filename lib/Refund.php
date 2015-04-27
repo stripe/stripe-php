@@ -18,8 +18,8 @@ class Refund extends ApiResource
                 null
             );
         }
-        $id = ApiRequestor::utf8($id);
-        $charge = ApiRequestor::utf8($charge);
+        $id = Util\Util::utf8($id);
+        $charge = Util\Util::utf8($charge);
 
         $base = Charge::classUrl();
         $chargeExtn = urlencode($charge);

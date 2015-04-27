@@ -8,6 +8,10 @@ require(dirname(__FILE__) . '/lib/Util/RequestOptions.php');
 require(dirname(__FILE__) . '/lib/Util/Set.php');
 require(dirname(__FILE__) . '/lib/Util/Util.php');
 
+// HttpClient
+require(dirname(__FILE__) . '/lib/HttpClient/ClientInterface.php');
+require(dirname(__FILE__) . '/lib/HttpClient/CurlClient.php');
+
 // Errors
 require(dirname(__FILE__) . '/lib/Error/Base.php');
 require(dirname(__FILE__) . '/lib/Error/Api.php');

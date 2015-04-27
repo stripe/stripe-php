@@ -18,8 +18,8 @@ class TransferReversal extends ApiResource
                 null
             );
         }
-        $id = ApiRequestor::utf8($id);
-        $transfer = ApiRequestor::utf8($transfer);
+        $id = Util\Util::utf8($id);
+        $transfer = Util\Util::utf8($transfer);
 
         $base = Transfer::classUrl();
         $transferExtn = urlencode($transfer);
