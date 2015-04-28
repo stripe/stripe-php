@@ -133,7 +133,7 @@ class CurlClient implements ClientInterface
 
     /**
      * @param array $arr An map of param keys to values.
-     * @param string|null $prefix (It doesn't look like we ever use $prefix...)
+     * @param string|null $prefix
      *
      * Only public for testability, should not be called outside of CurlClient
      *
@@ -158,7 +158,10 @@ class CurlClient implements ClientInterface
             }
 
             if (is_array($v)) {
-                $r[] = self::encode($v, $k, true);
+                $enc = self::encode($v, $k);
+                if ($enc) {
+                    $r[] = $enc;
+                }
             } else {
                 $r[] = urlencode($k)."=".urlencode($v);
             }
