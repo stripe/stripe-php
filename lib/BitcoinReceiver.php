@@ -27,7 +27,7 @@ class BitcoinReceiver extends ApiResource
             throw new Error\InvalidRequest($msg, null);
         }
 
-        $id = ApiRequestor::utf8($id);
+        $id = Util\Util::utf8($id);
         $extn = urlencode($id);
 
         if (!$this['customer']) {
@@ -35,7 +35,7 @@ class BitcoinReceiver extends ApiResource
             return "$base/$extn";
         } else {
             $base = Customer::classUrl();
-            $parent = ApiRequestor::utf8($this['customer']);
+            $parent = Util\Util::utf8($this['customer']);
             $parentExtn = urlencode($parent);
             return "$base/$parentExtn/sources/$extn";
         }

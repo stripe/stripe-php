@@ -18,8 +18,8 @@ class ApplicationFeeRefund extends ApiResource
                 null
             );
         }
-        $id = ApiRequestor::utf8($id);
-        $fee = ApiRequestor::utf8($fee);
+        $id = Util\Util::utf8($id);
+        $fee = Util\Util::utf8($fee);
 
         $base = ApplicationFee::classUrl();
         $feeExtn = urlencode($fee);

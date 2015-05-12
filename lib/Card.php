@@ -28,8 +28,8 @@ class Card extends ApiResource
             return null;
         }
 
-        $parent = ApiRequestor::utf8($parent);
-        $id = ApiRequestor::utf8($id);
+        $parent = Util\Util::utf8($parent);
+        $id = Util\Util::utf8($id);
 
         $parentExtn = urlencode($parent);
         $extn = urlencode($id);

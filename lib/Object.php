@@ -218,7 +218,10 @@ class Object implements ArrayAccess
         foreach (self::$nestedUpdatableAttributes->toArray() as $property) {
             if (isset($this->$property)) {
                 if ($this->$property instanceof Object) {
-                    $params[$property] = $this->$property->serializeParameters();
+                    $serialized = $this->$property->serializeParameters();
+                    if ($serialized) {
+                        $params[$property] = $serialized;
+                    }
                 }
             }
         }

@@ -10,6 +10,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
 {
     const API_KEY = 'tGN0bIwXnHdwOa85VABjPdSn8nWY7G7I';
 
+    private $mock;
+
     protected static function authorizeFromEnv()
     {
         $apiKey = getenv('STRIPE_API_KEY');
@@ -18,6 +20,32 @@ class TestCase extends \PHPUnit_Framework_TestCase
         }
 
         Stripe::setApiKey($apiKey);
+    }
+
+    protected function setUp()
+    {
+        ApiRequestor::setHttpClient(HttpClient\CurlClient::instance());
+        $this->mock = null;
+        $this->call = 0;
+    }
+
+    protected function mockRequest($method, $path, $params = array(), $return = array('id' => 'myId'))
+    {
+        $mock = $this->setUpMockRequest();
+        $mock->expects($this->at($this->call++))
+             ->method('request')
+             ->with(strtolower($method), 'https://api.stripe.com' . $path, $this->anything(), $params, false)
+             ->willReturn(array(json_encode($return), 200));
+    }
+
+    private function setUpMockRequest()
+    {
+        if (!$this->mock) {
+            self::authorizeFromEnv();
+            $this->mock = $this->getMock('\Stripe\HttpClient\ClientInterface');
+            ApiRequestor::setHttpClient($this->mock);
+        }
+        return $this->mock;
     }
 
     /**
