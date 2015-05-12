@@ -1,3 +1,9 @@
+### 2.1.3 2015-05-12
+
+* Fix to account updating to permit `tos_acceptance` and `personal_address` to be set properly
+* Fix to Transfer reversal creation (thanks @neatness!)
+* Network requests are now done through a swappable class for easier mocking
+
 ### 2.1.2 2015-04-10
 
 * Remove SSL cert revokation checking (all pre-Heartbleed certs have expired)
