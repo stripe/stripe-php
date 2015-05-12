@@ -84,7 +84,7 @@ class CurlClient implements ClientInterface
             $errno = curl_errno($curl);
             $message = curl_error($curl);
             curl_close($curl);
-            $this->handleCurlError($errno, $message);
+            $this->handleCurlError($absUrl, $errno, $message);
         }
 
         $rcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
@@ -97,14 +97,13 @@ class CurlClient implements ClientInterface
      * @param string $message
      * @throws Error\ApiConnection
      */
-    public function handleCurlError($errno, $message)
+    private function handleCurlError($url, $errno, $message)
     {
-        $apiBase = $this->_apiBase;
         switch ($errno) {
             case CURLE_COULDNT_CONNECT:
             case CURLE_COULDNT_RESOLVE_HOST:
             case CURLE_OPERATION_TIMEOUTED:
-                $msg = "Could not connect to Stripe ($apiBase).  Please check your "
+                $msg = "Could not connect to Stripe ($url).  Please check your "
                  . "internet connection and try again.  If this problem persists, "
                  . "you should check Stripe's service status at "
                  . "https://twitter.com/stripestatus, or";
@@ -113,7 +112,7 @@ class CurlClient implements ClientInterface
             case CURLE_SSL_PEER_CERTIFICATE:
                 $msg = "Could not verify Stripe's SSL certificate.  Please make sure "
                  . "that your network is not intercepting certificates.  "
-                 . "(Try going to $apiBase in your browser.)  "
+                 . "(Try going to $url in your browser.)  "
                  . "If this problem persists,";
                 break;
             default:
