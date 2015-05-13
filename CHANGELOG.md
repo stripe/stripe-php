@@ -1,3 +1,7 @@
+### 2.1.4 2015-05-13
+
+* Fix CA certificate file path (thanks @lphilps & @matthewarkin)
+
 ### 2.1.3 2015-05-12
 
 * Fix to account updating to permit `tos_acceptance` and `personal_address` to be set properly
