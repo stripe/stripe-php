@@ -127,7 +127,7 @@ class CurlClient implements ClientInterface
 
     private static function caBundle()
     {
-        return dirname(__FILE__) . '/../data/ca-certificates.crt';
+        return dirname(__FILE__) . '/../../data/ca-certificates.crt';
     }
 
     /**
