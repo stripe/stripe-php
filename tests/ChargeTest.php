@@ -18,7 +18,7 @@ class ChargeTest extends TestCase
         $card = array(
             'number' => '4242424242424242',
             'exp_month' => 5,
-            'exp_year' => 2015
+            'exp_year' => date('Y') + 1
         );
 
         $c = Charge::create(
@@ -39,7 +39,7 @@ class ChargeTest extends TestCase
         $card = array(
             'number' => '4242424242424242',
             'exp_month' => 5,
-            'exp_year' => 2015
+            'exp_year' => date('Y') + 1
         );
 
         $c = Charge::create(
@@ -64,7 +64,7 @@ class ChargeTest extends TestCase
         $card = array(
             'number' => '4242424242424242',
             'exp_month' => 5,
-            'exp_year' => 2015
+            'exp_year' => date('Y') + 1
         );
 
         $c = Charge::create(
@@ -85,7 +85,7 @@ class ChargeTest extends TestCase
         $card = array(
             'number' => '4242424242424242',
             'exp_month' => 5,
-            'exp_year' => 2015
+            'exp_year' => date('Y') + 1
         );
 
         $charge = Charge::create(
@@ -110,7 +110,7 @@ class ChargeTest extends TestCase
         $card = array(
             'number' => '4242424242424242',
             'exp_month' => 5,
-            'exp_year' => 2015
+            'exp_year' => date('Y') + 1
         );
 
         $charge = Charge::create(
@@ -135,7 +135,7 @@ class ChargeTest extends TestCase
         $card = array(
             'number' => '4242424242424242',
             'exp_month' => 5,
-            'exp_year' => 2015
+            'exp_year' => date('Y') + 1
         );
 
         $charge = Charge::create(
@@ -183,7 +183,7 @@ class ChargeTest extends TestCase
         $card = array(
             'number' => '4242424242424242',
             'exp_month' => 5,
-            'exp_year' => 2015
+            'exp_year' => date('Y') + 1
         );
 
         $charge = Charge::create(
