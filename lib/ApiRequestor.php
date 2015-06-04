@@ -78,7 +78,7 @@ class ApiRequestor
         if (!is_array($resp) || !isset($resp['error'])) {
             $msg = "Invalid response object from API: $rbody "
               . "(HTTP response code was $rcode)";
-            throw new Error\Api($msg, $rcode, $rbody, $resp);
+            throw new Error\Api($msg, $rcode, $resp, $rbody);
         }
 
         $error = $resp['error'];
@@ -89,18 +89,18 @@ class ApiRequestor
         switch ($rcode) {
             case 400:
                 if ($code == 'rate_limit') {
-                    throw new Error\RateLimit($msg, $param, $rcode, $rbody, $resp);
+                    throw new Error\RateLimit($msg, $param, $rcode, $resp, $rbody);
                 }
 
                 // intentional fall-through
             case 404:
-                throw new Error\InvalidRequest($msg, $param, $rcode, $rbody, $resp);
+                throw new Error\InvalidRequest($msg, $param, $rcode, $resp, $rbody);
             case 401:
-                throw new Error\Authentication($msg, $rcode, $rbody, $resp);
+                throw new Error\Authentication($msg, $rcode, $resp, $rbody);
             case 402:
-                throw new Error\Card($msg, $param, $code, $rcode, $rbody, $resp);
+                throw new Error\Card($msg, $param, $code, $rcode, $resp, $rbody);
             default:
-                throw new Error\Api($msg, $rcode, $rbody, $resp);
+                throw new Error\Api($msg, $rcode, $resp, $rbody);
         }
     }
 
