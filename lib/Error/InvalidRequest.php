@@ -9,9 +9,10 @@ class InvalidRequest extends Base
         $param,
         $httpStatus = null,
         $httpBody = null,
-        $jsonBody = null
+        $jsonBody = null,
+        $httpHeaders = null
     ) {
-        parent::__construct($message, $httpStatus, $httpBody, $jsonBody);
+        parent::__construct($message, $httpStatus, $httpBody, $jsonBody, $httpHeaders);
         $this->param = $param;
     }
 }

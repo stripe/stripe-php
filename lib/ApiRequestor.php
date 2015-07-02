@@ -55,15 +55,16 @@ class ApiRequestor
         if (!$headers) {
             $headers = array();
         }
-        list($rbody, $rcode, $myApiKey) =
+        list($rbody, $rcode, $rheaders, $myApiKey) =
         $this->_requestRaw($method, $url, $params, $headers);
-        $resp = $this->_interpretResponse($rbody, $rcode);
+        $resp = $this->_interpretResponse($rbody, $rcode, $rheaders);
         return array($resp, $myApiKey);
     }
 
     /**
      * @param string $rbody A JSON string.
      * @param int $rcode
+     * @param array $rheaders
      * @param array $resp
      *
      * @throws Error\InvalidRequest if the error is caused by the user.
@@ -73,12 +74,12 @@ class ApiRequestor
      *    required)
      * @throws Error\Api otherwise.
      */
-    public function handleApiError($rbody, $rcode, $resp)
+    public function handleApiError($rbody, $rcode, $rheaders, $resp)
     {
         if (!is_array($resp) || !isset($resp['error'])) {
             $msg = "Invalid response object from API: $rbody "
               . "(HTTP response code was $rcode)";
-            throw new Error\Api($msg, $rcode, $rbody, $resp);
+            throw new Error\Api($msg, $rcode, $rbody, $resp, $rheaders);
         }
 
         $error = $resp['error'];
@@ -89,18 +90,18 @@ class ApiRequestor
         switch ($rcode) {
             case 400:
                 if ($code == 'rate_limit') {
-                    throw new Error\RateLimit($msg, $param, $rcode, $rbody, $resp);
+                    throw new Error\RateLimit($msg, $param, $rcode, $rbody, $resp, $rheaders);
                 }
 
                 // intentional fall-through
             case 404:
-                throw new Error\InvalidRequest($msg, $param, $rcode, $rbody, $resp);
+                throw new Error\InvalidRequest($msg, $param, $rcode, $rbody, $resp, $rheaders);
             case 401:
-                throw new Error\Authentication($msg, $rcode, $rbody, $resp);
+                throw new Error\Authentication($msg, $rcode, $rbody, $resp, $rheaders);
             case 402:
-                throw new Error\Card($msg, $param, $code, $rcode, $rbody, $resp);
+                throw new Error\Card($msg, $param, $code, $rcode, $rbody, $resp, $rheaders);
             default:
-                throw new Error\Api($msg, $rcode, $rbody, $resp);
+                throw new Error\Api($msg, $rcode, $rbody, $resp, $rheaders);
         }
     }
 
@@ -162,14 +163,14 @@ class ApiRequestor
             $rawHeaders[] = $header . ': ' . $value;
         }
 
-        list($rbody, $rcode) = $this->httpClient()->request(
+        list($rbody, $rcode, $rheaders) = $this->httpClient()->request(
             $method,
             $absUrl,
             $rawHeaders,
             $params,
             $hasFile
         );
-        return array($rbody, $rcode, $myApiKey);
+        return array($rbody, $rcode, $rheaders, $myApiKey);
     }
 
     private function _processResourceParam($resource, $hasCurlFile)
@@ -195,7 +196,7 @@ class ApiRequestor
         }
     }
 
-    private function _interpretResponse($rbody, $rcode)
+    private function _interpretResponse($rbody, $rcode, $rheaders)
     {
         try {
             $resp = json_decode($rbody, true);
@@ -206,7 +207,7 @@ class ApiRequestor
         }
 
         if ($rcode < 200 || $rcode >= 300) {
-            $this->handleApiError($rbody, $rcode, $resp);
+            $this->handleApiError($rbody, $rcode, $rheaders, $resp);
         }
         return $resp;
     }

@@ -10,12 +10,19 @@ abstract class Base extends Exception
         $message,
         $httpStatus = null,
         $httpBody = null,
-        $jsonBody = null
+        $jsonBody = null,
+        $httpHeaders = null
     ) {
         parent::__construct($message);
         $this->httpStatus = $httpStatus;
         $this->httpBody = $httpBody;
         $this->jsonBody = $jsonBody;
+        $this->httpHeaders = $httpHeaders;
+        $this->requestID = null;
+
+        if ($httpHeaders && isset($httpHeaders['Request-Id'])) {
+          $this->requestId = $httpHeaders['Request-Id'];
+        }
     }
 
     public function getHttpStatus()
@@ -32,4 +39,15 @@ abstract class Base extends Exception
     {
         return $this->jsonBody;
     }
+
+    public function getHttpHeaders()
+    {
+        return $this->httpHeaders;
+    }
+
+    public function getRequestId()
+    {
+        return $this->requestId;
+    }
+
 }
