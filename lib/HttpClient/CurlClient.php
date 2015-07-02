@@ -50,9 +50,13 @@ class CurlClient implements ClientInterface
         // Create a callback to capture HTTP headers for the response
         $rheaders = array();
         $headerCallback = function ($curl, $header_line) use (&$rheaders) {
-          list($key, $value) = explode(":", trim($header_line), 1);
-          $rheaders[trim($key)] = trim($value);
-          return strlen($header_line);
+            // Ignore the HTTP request line (HTTP/1.1 200 OK)
+            if (strpos($header_line, ":") === false) {
+                return strlen($header_line);
+            }
+            list($key, $value) = explode(":", trim($header_line), 2);
+            $rheaders[trim($key)] = trim($value);
+            return strlen($header_line);
         };
 
         $absUrl = Util\Util::utf8($absUrl);

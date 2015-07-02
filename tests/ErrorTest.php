@@ -40,5 +40,4 @@ class ErrorTest extends TestCase
             $this->assertSame('req_bar', $e->getRequestId());
         }
     }
-
 }

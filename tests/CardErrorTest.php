@@ -4,12 +4,6 @@ namespace Stripe;
 
 class CardErrorTest extends TestCase
 {
-
-    public function assertStartsWith($haystack, $needle) {
-      // search backwards starting from haystack length characters from the end
-      return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== FALSE;
-    }
-
     public function testDecline()
     {
         self::authorizeFromEnv();
@@ -30,7 +24,7 @@ class CardErrorTest extends TestCase
             Charge::create($charge);
         } catch (Error\Card $e) {
             $this->assertSame(402, $e->getHttpStatus());
-            $this->assertStartsWith("req_", $e->getRequestId());
+            $this->assertTrue(strpos($e->getRequestId(), "req_") === 0, $e->getRequestId());
             $actual = $e->getJsonBody();
             $this->assertSame(
                 array('error' => array(
