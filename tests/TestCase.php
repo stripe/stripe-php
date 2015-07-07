@@ -35,7 +35,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
         $mock->expects($this->at($this->call++))
              ->method('request')
              ->with(strtolower($method), 'https://api.stripe.com' . $path, $this->anything(), $params, false)
-             ->willReturn(array(json_encode($return), 200));
+             ->willReturn(array(json_encode($return), 200, array()));
     }
 
     private function setUpMockRequest()
