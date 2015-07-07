@@ -47,12 +47,25 @@ class CurlClient implements ClientInterface
             throw new Error\Api("Unrecognized method $method");
         }
 
+        // Create a callback to capture HTTP headers for the response
+        $rheaders = array();
+        $headerCallback = function ($curl, $header_line) use (&$rheaders) {
+            // Ignore the HTTP request line (HTTP/1.1 200 OK)
+            if (strpos($header_line, ":") === false) {
+                return strlen($header_line);
+            }
+            list($key, $value) = explode(":", trim($header_line), 2);
+            $rheaders[trim($key)] = trim($value);
+            return strlen($header_line);
+        };
+
         $absUrl = Util\Util::utf8($absUrl);
         $opts[CURLOPT_URL] = $absUrl;
         $opts[CURLOPT_RETURNTRANSFER] = true;
         $opts[CURLOPT_CONNECTTIMEOUT] = 30;
         $opts[CURLOPT_TIMEOUT] = 80;
         $opts[CURLOPT_RETURNTRANSFER] = true;
+        $opts[CURLOPT_HEADERFUNCTION] = $headerCallback;
         $opts[CURLOPT_HTTPHEADER] = $headers;
         if (!Stripe::$verifySslCerts) {
             $opts[CURLOPT_SSL_VERIFYPEER] = false;
@@ -89,7 +102,7 @@ class CurlClient implements ClientInterface
 
         $rcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
-        return array($rbody, $rcode);
+        return array($rbody, $rcode, $rheaders);
     }
 
     /**

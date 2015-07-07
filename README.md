@@ -69,4 +69,3 @@ In order to run tests first install [PHPUnit](http://packagist.org/packages/phpu
 To run the test suite:
 
     ./vendor/bin/phpunit
-

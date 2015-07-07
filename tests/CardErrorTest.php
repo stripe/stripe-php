@@ -24,6 +24,7 @@ class CardErrorTest extends TestCase
             Charge::create($charge);
         } catch (Error\Card $e) {
             $this->assertSame(402, $e->getHttpStatus());
+            $this->assertTrue(strpos($e->getRequestId(), "req_") === 0, $e->getRequestId());
             $actual = $e->getJsonBody();
             $this->assertSame(
                 array('error' => array(

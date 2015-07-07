@@ -19,6 +19,25 @@ class ErrorTest extends TestCase
             $this->assertSame(500, $e->getHttpStatus());
             $this->assertSame("{'foo':'bar'}", $e->getHttpBody());
             $this->assertSame(array('foo' => 'bar'), $e->getJsonBody());
+            $this->assertSame(null, $e->getHttpHeaders());
+            $this->assertSame(null, $e->getRequestId());
+        }
+    }
+
+    public function testResponseHeaders()
+    {
+        try {
+            throw new Error\Api(
+                "hello",
+                500,
+                "{'foo':'bar'}",
+                array('foo' => 'bar'),
+                array('Request-Id' => 'req_bar')
+            );
+            $this->fail("Did not raise error");
+        } catch (Error\Api $e) {
+            $this->assertSame(array('Request-Id' => 'req_bar'), $e->getHttpHeaders());
+            $this->assertSame('req_bar', $e->getRequestId());
         }
     }
 }
