@@ -34,7 +34,7 @@ class DisputeTest extends TestCase
             if ($attempts > 5) {
                 throw "Charge is taking too long to be disputed";
             }
-            sleep(10);
+            sleep(1);
             $c = Charge::retrieve($c->id);
             $attempts += 1;
         }
