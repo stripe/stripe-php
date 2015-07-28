@@ -40,4 +40,22 @@ class ErrorTest extends TestCase
             $this->assertSame('req_bar', $e->getRequestId());
         }
     }
+
+    public function testCode()
+    {
+        try {
+            throw new Error\Card(
+                "hello",
+                "some_param",
+                "some_code",
+                400,
+                "{'foo':'bar'}",
+                array('foo' => 'bar')
+            );
+            $this->fail("Did not raise error");
+        } catch (Error\Card $e) {
+            $this->assertSame("some_param", $e->getStripeParam());
+            $this->assertSame('some_code', $e->getStripeCode());
+        }
+    }
 }

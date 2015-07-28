@@ -6,15 +6,25 @@ class Card extends Base
 {
     public function __construct(
         $message,
-        $param,
-        $code,
+        $stripeParam,
+        $stripeCode,
         $httpStatus,
         $httpBody,
         $jsonBody,
         $httpHeaders = null
     ) {
         parent::__construct($message, $httpStatus, $httpBody, $jsonBody, $httpHeaders);
-        $this->param = $param;
-        $this->code = $code;
+        $this->stripeParam = $stripeParam;
+        $this->stripeCode = $stripeCode;
+    }
+
+    public function getStripeCode()
+    {
+        return $this->stripeCode;
+    }
+
+    public function getStripeParam()
+    {
+        return $this->stripeParam;
     }
 }
