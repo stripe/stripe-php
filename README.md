@@ -18,7 +18,7 @@ You can install the bindings via [Composer](http://getcomposer.org/). Add this t
 
     {
       "require": {
-        "stripe/stripe-php": "2.*"
+        "stripe/stripe-php": "3.*"
       }
     }
 
