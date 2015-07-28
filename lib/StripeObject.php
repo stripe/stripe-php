@@ -5,7 +5,7 @@ namespace Stripe;
 use ArrayAccess;
 use InvalidArgumentException;
 
-class Object implements ArrayAccess
+class StripeObject implements ArrayAccess
 {
     /**
      * @var Util\Set Attributes that should not be sent to the API because
@@ -145,7 +145,7 @@ class Object implements ArrayAccess
      * @param array $values
      * @param array $opts
      *
-     * @return Object The object constructed from the given values.
+     * @return StripeObject The object constructed from the given values.
      */
     public static function constructFrom($values, $opts)
     {
@@ -219,7 +219,7 @@ class Object implements ArrayAccess
         // Get nested updates.
         foreach (self::$nestedUpdatableAttributes->toArray() as $property) {
             if (isset($this->$property)) {
-                if ($this->$property instanceof Object) {
+                if ($this->$property instanceof StripeObject) {
                     $serialized = $this->$property->serializeParameters();
                     if ($serialized) {
                         $params[$property] = $serialized;
@@ -256,4 +256,4 @@ class Object implements ArrayAccess
     }
 }
 
-Object::init();
+StripeObject::init();
