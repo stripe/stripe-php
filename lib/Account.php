@@ -53,7 +53,7 @@ class Account extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return Account[]
+     * @return Collection of Accounts
      */
     public static function all($params = null, $opts = null)
     {

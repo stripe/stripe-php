@@ -46,7 +46,7 @@ class BitcoinReceiver extends ExternalAccount
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return BitcoinReceiver[].
+     * @return Collection of BitcoinReceivers
      */
     public static function all($params = null, $opts = null)
     {

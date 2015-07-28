@@ -28,7 +28,7 @@ class BalanceTransaction extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return array An array of BalanceTransactions.
+     * @return Collection of BalanceTransactions
      */
     public static function all($params = null, $opts = null)
     {

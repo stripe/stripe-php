@@ -19,7 +19,7 @@ class Charge extends ApiResource
      * @param array|null $params
      * @param array|string|null $options
      *
-     * @return array An array of Charges.
+     * @return Collection of Charges
      */
     public static function all($params = null, $options = null)
     {

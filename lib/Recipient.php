@@ -19,7 +19,7 @@ class Recipient extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return Recipients[]
+     * @return Collection of Recipients
      */
     public static function all($params = null, $opts = null)
     {
@@ -61,7 +61,7 @@ class Recipient extends ApiResource
     /**
      * @param array|null $params
      *
-     * @return array An array of the recipient's Transfers.
+     * @return Collection of the Recipient's Transfers
      */
     public function transfers($params = null)
     {

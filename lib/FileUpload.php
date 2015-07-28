@@ -40,7 +40,7 @@ class FileUpload extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return FileUpload[]
+     * @return Collection of FileUploads
      */
     public static function all($params = null, $opts = null)
     {

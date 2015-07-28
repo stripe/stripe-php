@@ -30,7 +30,7 @@ class ApplicationFee extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ApplicationFee[]
+     * @return Collection of ApplicationFees
      */
     public static function all($params = null, $opts = null)
     {

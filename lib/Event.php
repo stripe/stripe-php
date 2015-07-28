@@ -19,7 +19,7 @@ class Event extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return Event[]
+     * @return Collection of Events
      */
     public static function all($params = null, $opts = null)
     {

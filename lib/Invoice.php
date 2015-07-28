@@ -30,7 +30,7 @@ class Invoice extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return Invoice[]
+     * @return Collection of Invoices
      */
     public static function all($params = null, $opts = null)
     {

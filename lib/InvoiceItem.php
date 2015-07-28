@@ -19,7 +19,7 @@ class InvoiceItem extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return InvoiceItem[]
+     * @return Collection of InvoiceItems
      */
     public static function all($params = null, $opts = null)
     {

@@ -19,7 +19,7 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return array An array of Customers.
+     * @return Collection of Customers
      */
     public static function all($params = null, $opts = null)
     {

@@ -19,7 +19,7 @@ class Transfer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return Transfer[]
+     * @return Collection of Transfers
      */
     public static function all($params = null, $opts = null)
     {

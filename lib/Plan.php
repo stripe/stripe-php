@@ -51,7 +51,7 @@ class Plan extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return Plan[]
+     * @return Collection of Plans
      */
     public static function all($params = null, $opts = null)
     {
