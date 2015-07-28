@@ -81,4 +81,17 @@ class StripeObjectTest extends TestCase
         $s = new StripeObject();
         $this->assertNull($s['nonexistent']);
     }
+
+    public function testJsonEncode()
+    {
+        // We can only JSON encode our objects in PHP 5.4+. 5.3 must use ->__toJSON()
+        if (version_compare(phpversion(), '5.4.0', '<')) {
+            return;
+        }
+
+        $s = new StripeObject();
+        $s->foo = 'a';
+
+        $this->assertEquals('{"foo":"a"}', json_encode($s->__toArray()));
+    }
 }
