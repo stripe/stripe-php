@@ -72,13 +72,13 @@ class StripeObjectTest extends TestCase
 
     public function testNonexistentProperty()
     {
-        $s = new Object();
+        $s = new StripeObject();
         $this->assertNull($s->nonexistent);
     }
 
     public function testPropertyDoesNotExists()
     {
-        $s = new Object();
+        $s = new StripeObject();
         $this->assertNull($s['nonexistent']);
     }
 }
