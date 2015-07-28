@@ -92,6 +92,8 @@ class Object implements ArrayAccess
     }
     public function &__get($k)
     {
+        // function should return a reference, using $nullval to return a reference to null
+        $nullval = null;
         if (array_key_exists($k, $this->_values)) {
             return $this->_values[$k];
         } else if ($this->_transientValues->includes($k)) {
@@ -104,11 +106,11 @@ class Object implements ArrayAccess
                     . "probably as a result of a save(). The attributes currently "
                     . "available on this object are: $attrs";
             error_log($message);
-            return null;
+            return $nullval;
         } else {
             $class = get_class($this);
             error_log("Stripe Notice: Undefined property of $class instance: $k");
-            return null;
+            return $nullval;
         }
     }
 

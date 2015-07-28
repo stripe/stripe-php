@@ -69,4 +69,16 @@ class ObjectTest extends TestCase
         $this->assertArrayHasKey('foo', $converted['child']);
         $this->assertEquals('a', $converted['child']['foo']);
     }
+
+    public function testNonexistentProperty()
+    {
+        $s = new Object();
+        $this->assertNull($s->nonexistent);
+    }
+
+    public function testPropertyDoesNotExists()
+    {
+        $s = new Object();
+        $this->assertNull($s['nonexistent']);
+    }
 }
