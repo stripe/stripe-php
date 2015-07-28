@@ -1,3 +1,10 @@
+### 3.0.0 2015-07-28
+
+* Rename `\Stripe\Object` to `\Stripe\StripeObject` (PHP 7 compatibility)
+* Rename `getCode` and `getParam` in exceptions to `getStripeCode` and `getStripeParam`
+* Add support for calling `json_encode` on Stripe objects in PHP 5.4+
+* Start supporting/testing PHP 7
+
 ### 2.3.0 2015-07-06
 
 * Add request ID to all Stripe exceptions
