@@ -5,16 +5,6 @@ namespace Stripe;
 use ArrayAccess;
 use InvalidArgumentException;
 
-// JsonSerializable only exists in PHP 5.4+. Stub if out if it doesn't exist
-if (interface_exists('\JsonSerializable', false)) {
-    interface JsonSerializable extends \JsonSerializable {
-    }
-} else {
-    interface JsonSerializable {
-        public function jsonSerialize();
-    }
-}
-
 class StripeObject implements ArrayAccess, JsonSerializable
 {
     /**
