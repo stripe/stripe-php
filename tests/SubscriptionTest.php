@@ -7,7 +7,7 @@ class SubscriptionTest extends TestCase
 
     public function testCreateUpdateCancel()
     {
-        $planID = 'gold-' . self::randomString();
+        $planID = 'gold-' . self::generateRandomString(20);
         self::retrieveOrCreatePlan($planID);
 
         $customer = self::createTestCustomer();
@@ -36,10 +36,10 @@ class SubscriptionTest extends TestCase
 
     public function testDeleteDiscount()
     {
-        $planID = 'gold-' . self::randomString();
+        $planID = 'gold-' . self::generateRandomString(20);
         self::retrieveOrCreatePlan($planID);
 
-        $couponID = '25off-' . self::randomString();
+        $couponID = '25off-' . self::generateRandomString(20);
         self::retrieveOrCreateCoupon($couponID);
 
         $customer = self::createTestCustomer();

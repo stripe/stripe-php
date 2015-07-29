@@ -7,7 +7,7 @@ class DiscountTest extends TestCase
     public function testDeletion()
     {
         self::authorizeFromEnv();
-        $id = 'test-coupon-' . self::randomString();
+        $id = 'test-coupon-' . self::generateRandomString(20);
         $coupon = Coupon::create(
             array(
                 'percent_off' => 25,
