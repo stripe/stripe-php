@@ -7,7 +7,7 @@ class CouponTest extends TestCase
     public function testSave()
     {
         self::authorizeFromEnv();
-        $id = 'test_coupon-' . self::randomString();
+        $id = 'test_coupon-' . self::generateRandomString(8);
         $c = Coupon::create(
             array(
                 'percent_off' => 25,
