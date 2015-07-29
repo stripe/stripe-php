@@ -128,7 +128,7 @@ class CustomerTest extends TestCase
 
     public function testCancelSubscription()
     {
-        $planID = 'gold-' . self::generateRandomString(8);
+        $planID = 'gold-' . self::generateRandomString(20);
         self::retrieveOrCreatePlan($planID);
 
         $customer = self::createTestCustomer(
