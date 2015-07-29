@@ -128,16 +128,6 @@ class TestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Generate a random 8-character string. Useful for ensuring
-     * multiple test suite runs don't conflict.
-     * Deprecated: use generateRandomString(8) instead.
-     */
-    protected static function randomString()
-    {
-        return self::generateRandomString(8);
-    }
-
-    /**
      * Verify that a plan with a given ID exists, or create a new one if it does
      * not.
      */
