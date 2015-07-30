@@ -128,6 +128,22 @@ class TestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Create a test account
+     */
+    protected static function createTestAccount(array $attributes = array())
+    {
+        self::authorizeFromEnv();
+
+        return Account::create(
+            $attributes + array(
+                'managed' => false,
+                'country' => 'US',
+                'email' => self::generateRandomEmail(),
+            )
+        );
+    }
+
+    /**
      * Verify that a plan with a given ID exists, or create a new one if it does
      * not.
      */
@@ -183,6 +199,14 @@ class TestCase extends \PHPUnit_Framework_TestCase
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    /**
+     * Generate a semi-random email.
+     */
+    protected static function generateRandomEmail($domain = 'bar.com')
+    {
+        return self::generateRandomString().'@'.$domain;
     }
 
     protected static function createTestBitcoinReceiver($email)

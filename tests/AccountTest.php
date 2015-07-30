@@ -58,6 +58,14 @@ class AccountTest extends TestCase
         );
     }
 
+    private function deletedAccountResponse($id)
+    {
+        return array(
+            'id' => $id,
+            'deleted' => true
+        );
+    }
+
     public function testBasicRetrieve()
     {
         $this->mockRequest('GET', '/v1/account', array(), $this->managedAccountResponse('acct_ABC'));
@@ -84,6 +92,21 @@ class AccountTest extends TestCase
             'managed' => true
         ));
         $this->assertSame($account->id, 'acct_ABC');
+    }
+
+    public function testDelete()
+    {
+        $account = self::createTestAccount();
+
+        $this->mockRequest(
+            'DELETE',
+            '/v1/accounts/' . $account->id,
+            array(),
+            $this->deletedAccountResponse('acct_ABC')
+        );
+        $deleted = $account->delete();
+        $this->assertSame($deleted->id, $account->id);
+        $this->assertTrue($deleted->deleted);
     }
 
     public function testUpdateLegalEntity()

@@ -53,6 +53,17 @@ class Account extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @return Account The deleted account.
+     */
+    public function delete($params = null, $opts = null)
+    {
+        return $this->_delete($params, $opts);
+    }
+
+    /**
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
      * @return Collection of Accounts
      */
     public static function all($params = null, $opts = null)
