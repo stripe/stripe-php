@@ -1,3 +1,8 @@
+### 3.1.0 2015-08-03
+
+* Add dispute listing and retrieval
+* Add support for manage account deletion
+
 ### 3.0.0 2015-07-28
 
 * Rename `\Stripe\Object` to `\Stripe\StripeObject` (PHP 7 compatibility)
