@@ -1,6 +1,6 @@
 ### 3.2.0 2015-08-17
 
-* Add dispute listing and retrieval without an associated charge
+* Add refund listing and retrieval without an associated charge
 
 ### 3.1.0 2015-08-03
 
