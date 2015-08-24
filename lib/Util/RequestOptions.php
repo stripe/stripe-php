@@ -6,9 +6,20 @@ use Stripe\Error;
 
 class RequestOptions
 {
+    /**
+     * @var array
+     */
     public $headers;
+
+    /**
+     * @var null|string
+     */
     public $apiKey;
 
+    /**
+     * @param null|string $key
+     * @param array       $headers
+     */
     public function __construct($key = null, $headers = array())
     {
         $this->apiKey = $key;
@@ -18,6 +29,7 @@ class RequestOptions
     /**
      * Unpacks an options array and merges it into the existing RequestOptions
      * object.
+     *
      * @param array|string|null $options a key => value array
      *
      * @return RequestOptions
@@ -29,14 +41,18 @@ class RequestOptions
             $other_options->apiKey = $this->apiKey;
         }
         $other_options->headers = array_merge($this->headers, $other_options->headers);
+
         return $other_options;
     }
 
     /**
-     * Unpacks an options array into an RequestOptions object
+     * Unpacks an options array into an RequestOptions object.
+     *
      * @param array|string|null $options a key => value array
      *
      * @return RequestOptions
+     *
+     * @throws \Stripe\Error\Api
      */
     public static function parse($options)
     {
@@ -45,11 +61,11 @@ class RequestOptions
         }
 
         if (is_null($options)) {
-            return new RequestOptions(null, array());
+            return new self(null, array());
         }
 
         if (is_string($options)) {
-            return new RequestOptions($options, array());
+            return new self($options, array());
         }
 
         if (is_array($options)) {
@@ -67,13 +83,14 @@ class RequestOptions
             if (array_key_exists('stripe_version', $options)) {
                 $headers['Stripe-Version'] = $options['stripe_version'];
             }
-            return new RequestOptions($key, $headers);
+
+            return new self($key, $headers);
         }
 
         $message = 'The second argument to Stripe API method calls is an '
-           . 'optional per-request apiKey, which must be a string, or '
-           . 'per-request options, which must be an array. (HINT: you can set '
-           . 'a global apiKey by "Stripe::setApiKey(<apiKey>)")';
+           .'optional per-request apiKey, which must be a string, or '
+           .'per-request options, which must be an array. (HINT: you can set '
+           .'a global apiKey by "Stripe::setApiKey(<apiKey>)")';
         throw new Error\Api($message);
     }
 }

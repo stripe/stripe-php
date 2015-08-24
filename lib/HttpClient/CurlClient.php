@@ -8,16 +8,26 @@ use Stripe\Util;
 
 class CurlClient implements ClientInterface
 {
+    /**
+     * @var CurlClient
+     */
     private static $instance;
 
+    /**
+     * @return CurlClient
+     */
     public static function instance()
     {
         if (!self::$instance) {
             self::$instance = new self();
         }
+
         return self::$instance;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function request($method, $absUrl, $headers, $params, $hasFile)
     {
         $curl = curl_init();
@@ -26,7 +36,7 @@ class CurlClient implements ClientInterface
         if ($method == 'get') {
             if ($hasFile) {
                 throw new Error\Api(
-                    "Issuing a GET request with a file parameter"
+                    'Issuing a GET request with a file parameter'
                 );
             }
             $opts[CURLOPT_HTTPGET] = 1;
@@ -51,11 +61,12 @@ class CurlClient implements ClientInterface
         $rheaders = array();
         $headerCallback = function ($curl, $header_line) use (&$rheaders) {
             // Ignore the HTTP request line (HTTP/1.1 200 OK)
-            if (strpos($header_line, ":") === false) {
+            if (strpos($header_line, ':') === false) {
                 return strlen($header_line);
             }
-            list($key, $value) = explode(":", trim($header_line), 2);
+            list($key, $value) = explode(':', trim($header_line), 2);
             $rheaders[trim($key)] = trim($value);
+
             return strlen($header_line);
         };
 
@@ -102,13 +113,16 @@ class CurlClient implements ClientInterface
 
         $rcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
+
         return array($rbody, $rcode, $rheaders);
     }
 
     /**
-     * @param number $errno
+     * @param string $url
+     * @param int    $errno
      * @param string $message
-     * @throws Error\ApiConnection
+     *
+     * @throws \Stripe\Error\ApiConnection
      */
     private function handleCurlError($url, $errno, $message)
     {
@@ -117,22 +131,22 @@ class CurlClient implements ClientInterface
             case CURLE_COULDNT_RESOLVE_HOST:
             case CURLE_OPERATION_TIMEOUTED:
                 $msg = "Could not connect to Stripe ($url).  Please check your "
-                 . "internet connection and try again.  If this problem persists, "
-                 . "you should check Stripe's service status at "
-                 . "https://twitter.com/stripestatus, or";
+                 .'internet connection and try again.  If this problem persists, '
+                 ."you should check Stripe's service status at "
+                 .'https://twitter.com/stripestatus, or';
                 break;
             case CURLE_SSL_CACERT:
             case CURLE_SSL_PEER_CERTIFICATE:
                 $msg = "Could not verify Stripe's SSL certificate.  Please make sure "
-                 . "that your network is not intercepting certificates.  "
-                 . "(Try going to $url in your browser.)  "
-                 . "If this problem persists,";
+                 .'that your network is not intercepting certificates.  '
+                 ."(Try going to $url in your browser.)  "
+                 .'If this problem persists,';
                 break;
             default:
-                $msg = "Unexpected error communicating with Stripe.  "
-                 . "If this problem persists,";
+                $msg = 'Unexpected error communicating with Stripe.  '
+                 .'If this problem persists,';
         }
-        $msg .= " let us know at support@stripe.com.";
+        $msg .= ' let us know at support@stripe.com.';
 
         $msg .= "\n\n(Network error [errno $errno]: $message)";
         throw new Error\ApiConnection($msg);
@@ -140,11 +154,11 @@ class CurlClient implements ClientInterface
 
     private static function caBundle()
     {
-        return dirname(__FILE__) . '/../../data/ca-certificates.crt';
+        return dirname(__FILE__).'/../../data/ca-certificates.crt';
     }
 
     /**
-     * @param array $arr An map of param keys to values.
+     * @param array|mixed $arr    An map of param keys to values.
      * @param string|null $prefix
      *
      * Only public for testability, should not be called outside of CurlClient
@@ -158,15 +172,16 @@ class CurlClient implements ClientInterface
         }
 
         $r = array();
+
         foreach ($arr as $k => $v) {
             if (is_null($v)) {
                 continue;
             }
 
             if ($prefix && $k && !is_int($k)) {
-                $k = $prefix."[".$k."]";
+                $k = $prefix.'['.$k.']';
             } elseif ($prefix) {
-                $k = $prefix."[]";
+                $k = $prefix.'[]';
             }
 
             if (is_array($v)) {
@@ -175,10 +190,10 @@ class CurlClient implements ClientInterface
                     $r[] = $enc;
                 }
             } else {
-                $r[] = urlencode($k)."=".urlencode($v);
+                $r[] = urlencode($k).'='.urlencode($v);
             }
         }
 
-        return implode("&", $r);
+        return implode('&', $r);
     }
 }

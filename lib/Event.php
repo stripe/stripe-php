@@ -5,7 +5,7 @@ namespace Stripe;
 class Event extends ApiResource
 {
     /**
-     * @param string $id The ID of the event to retrieve.
+     * @param string            $id   The ID of the event to retrieve.
      * @param array|string|null $opts
      *
      * @return Event
@@ -16,7 +16,7 @@ class Event extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Collection of Events

@@ -4,6 +4,14 @@ namespace Stripe\Error;
 
 class InvalidRequest extends Base
 {
+    /**
+     * @param string   $message
+     * @param int|null $stripeParam
+     * @param null     $httpStatus
+     * @param null     $httpBody
+     * @param null     $jsonBody
+     * @param null     $httpHeaders
+     */
     public function __construct(
         $message,
         $stripeParam,
@@ -16,6 +24,9 @@ class InvalidRequest extends Base
         $this->stripeParam = $stripeParam;
     }
 
+    /**
+     * @return int|null
+     */
     public function getStripeParam()
     {
         return $this->stripeParam;

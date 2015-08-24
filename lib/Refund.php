@@ -4,9 +4,8 @@ namespace Stripe;
 
 class Refund extends ApiResource
 {
-
     /**
-     * @param string $id The ID of the refund to retrieve.
+     * @param string            $id      The ID of the refund to retrieve.
      * @param array|string|null $options
      *
      * @return Refund
@@ -17,7 +16,7 @@ class Refund extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Collection of Refunds
@@ -28,7 +27,7 @@ class Refund extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Refund The created refund.

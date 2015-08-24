@@ -4,5 +4,4 @@ namespace Stripe;
 
 class Card extends ExternalAccount
 {
-
 }
