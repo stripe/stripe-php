@@ -2,7 +2,7 @@
 
 namespace Stripe;
 
-abstract class ApiResource extends StripeObject
+abstract class ApiResource extends Object
 {
     private static $HEADERS_TO_PERSIST = array('Stripe-Account' => true, 'Stripe-Version' => true);
 
@@ -102,7 +102,7 @@ abstract class ApiResource extends StripeObject
     {
         $opts = Util\RequestOptions::parse($options);
         $requestor = new ApiRequestor($opts->apiKey, static::baseUrl());
-        list($response, $opts->apiKey) = $requestor->request($method, $url, $params, $opts->headers);
+        list($response, $opts->apiKey, $opts->requestId) = $requestor->request($method, $url, $params, $opts->headers);
         foreach ($opts->headers as $k => $v) {
             if (!array_key_exists($k, self::$HEADERS_TO_PERSIST)) {
                 unset($opts->headers[$k]);

@@ -57,8 +57,10 @@ class ApiRequestor
         }
         list($rbody, $rcode, $rheaders, $myApiKey) =
         $this->_requestRaw($method, $url, $params, $headers);
-        $resp = $this->_interpretResponse($rbody, $rcode, $rheaders);
-        return array($resp, $myApiKey);
+
+        list($respBody, $requestId) = $resp = $this->_interpretResponse($rbody, $rcode, $rheaders);
+
+        return array($respBody, $myApiKey, $requestId);
     }
 
     /**
@@ -199,6 +201,7 @@ class ApiRequestor
     private function _interpretResponse($rbody, $rcode, $rheaders)
     {
         try {
+            $requestId = isset($rheaders["Request-Id"])?$rheaders["Request-Id"]:null;
             $resp = json_decode($rbody, true);
         } catch (Exception $e) {
             $msg = "Invalid response body from API: $rbody "
@@ -209,7 +212,8 @@ class ApiRequestor
         if ($rcode < 200 || $rcode >= 300) {
             $this->handleApiError($rbody, $rcode, $rheaders, $resp);
         }
-        return $resp;
+
+        return array($resp, $requestId);
     }
 
     public static function setHttpClient($client)
