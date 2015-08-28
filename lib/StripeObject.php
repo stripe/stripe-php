@@ -107,6 +107,8 @@ class StripeObject implements ArrayAccess, JsonSerializable
                     . "available on this object are: $attrs";
             error_log($message);
             return $nullval;
+        } else if ($k === "_requestid"){
+          return $this->_opts->requestId;
         } else {
             $class = get_class($this);
             error_log("Stripe Notice: Undefined property of $class instance: $k");
