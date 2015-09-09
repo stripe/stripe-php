@@ -91,6 +91,10 @@ class ApiRequestor
 
         switch ($rcode) {
             case 400:
+                if ($code == 'rate_limit') {
+                    throw new Error\RateLimit($msg, $param, $rcode, $rbody, $resp, $rheaders);
+                }
+
                 // intentional fall-through
             case 404:
                 throw new Error\InvalidRequest($msg, $param, $rcode, $rbody, $resp, $rheaders);
@@ -99,7 +103,7 @@ class ApiRequestor
             case 402:
                 throw new Error\Card($msg, $param, $code, $rcode, $rbody, $resp, $rheaders);
             case 429:
-                throw new Error\RateLimit($msg, $rcode, $rbody, $resp, $rheaders);
+                throw new Error\RateLimit($msg, $param, $rcode, $rbody, $resp, $rheaders);
             default:
                 throw new Error\Api($msg, $rcode, $rbody, $resp, $rheaders);
         }
