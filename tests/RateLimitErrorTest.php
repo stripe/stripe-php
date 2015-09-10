@@ -16,6 +16,7 @@ class RateLimitErrorTest extends TestCase
         try {
             $this->mockRequest('GET', '/v1/accounts/acct_DEF', array(), $this->rateLimitErrorResponse(), 429);
             Account::retrieve('acct_DEF');
+            $this->fail('Did not raise an error.');
         } catch (Error\RateLimit $e) {
             $this->assertSame(429, $e->getHttpStatus());
         }

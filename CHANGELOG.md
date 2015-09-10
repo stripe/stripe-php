@@ -1,7 +1,3 @@
-### 3.3.0 2015-09-08
-
-* Add support for 429 RateLimit errors
-
 ### 3.2.0 2015-08-17
 
 * Add refund listing and retrieval without an associated charge

@@ -91,6 +91,8 @@ class ApiRequestor
 
         switch ($rcode) {
             case 400:
+                // 'rate_limit' code is depreciated, but left here for backwards compatibility
+                // for API versions earlier than 2015-09-08
                 if ($code == 'rate_limit') {
                     throw new Error\RateLimit($msg, $param, $rcode, $rbody, $resp, $rheaders);
                 }
