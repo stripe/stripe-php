@@ -1,3 +1,7 @@
+### 3.3.0 2015-09-11
+
+* Add support for 429 Rate Limit response
+
 ### 3.2.0 2015-08-17
 
 * Add refund listing and retrieval without an associated charge
