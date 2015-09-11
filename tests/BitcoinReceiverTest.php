@@ -103,4 +103,18 @@ class BitcoinReceiverTest extends TestCase
         $updatedReceiver = BitcoinReceiver::retrieve($receiver->id);
         $this->assertEquals($receiver["description"], $updatedReceiver["description"]);
     }
+
+    public function testRefund()
+    {
+        self::authorizeFromEnv();
+        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
+
+        $receiver = BitcoinReceiver::retrieve($receiver->id);
+        $this->assertNull($receiver->refund_address);
+
+        $refundAddress = "REFUNDHERE";
+        $receiver->refund(array("refund_address" => $refundAddress));
+
+        $this->assertSame($refundAddress, $receiver->refund_address);
+    }
 }
