@@ -1,3 +1,7 @@
+### 3.4.0 2015-09-14
+
+* Products, SKUs, and Orders -- https://stripe.com/relay
+
 ### 3.3.0 2015-09-11
 
 * Add support for 429 Rate Limit response
