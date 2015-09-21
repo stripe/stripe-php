@@ -50,7 +50,7 @@ Simple usage looks like:
 
 ```php
 \Stripe\Stripe::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
-$myCard = array('number' => '4242424242424242', 'exp_month' => 5, 'exp_year' => 2015);
+$myCard = array('number' => '4242424242424242', 'exp_month' => 05, 'exp_year' => 2015);
 $charge = \Stripe\Charge::create(array('card' => $myCard, 'amount' => 2000, 'currency' => 'usd'));
 echo $charge;
 ```
