@@ -5,7 +5,7 @@ namespace Stripe;
 class Subscription extends ApiResource
 {
     /**
-     * @return string The API URL for this Stripe subscription.
+     * {@inheritdoc}
      */
     public function instanceUrl()
     {
@@ -13,7 +13,7 @@ class Subscription extends ApiResource
         $customer = $this['customer'];
         if (!$id) {
             throw new Error\InvalidRequest(
-                "Could not determine which URL to request: " .
+                'Could not determine which URL to request: '.
                 "class instance has invalid ID: $id",
                 null
             );
@@ -24,11 +24,13 @@ class Subscription extends ApiResource
         $base = Customer::classUrl();
         $customerExtn = urlencode($customer);
         $extn = urlencode($id);
+
         return "$base/$customerExtn/subscriptions/$extn";
     }
 
     /**
      * @param array|null $params
+     * @param mixed      $opts
      *
      * @return Subscription The deleted subscription.
      */
@@ -52,8 +54,8 @@ class Subscription extends ApiResource
      */
     public function deleteDiscount()
     {
-        $url = $this->instanceUrl() . '/discount';
-        list($response, $opts) = $this->_request('delete', $url);
+        $url = $this->instanceUrl().'/discount';
+        list(, $opts) = $this->_request('delete', $url);
         $this->refreshFrom(array('discount' => null), $opts, true);
     }
 }

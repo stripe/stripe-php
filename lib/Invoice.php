@@ -5,7 +5,7 @@ namespace Stripe;
 class Invoice extends ApiResource
 {
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Invoice The created invoice.
@@ -16,7 +16,7 @@ class Invoice extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the invoice to retrieve.
+     * @param string            $id   The ID of the invoice to retrieve.
      * @param array|string|null $opts
      *
      * @return Invoice
@@ -27,7 +27,7 @@ class Invoice extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Collection of Invoices
@@ -38,15 +38,16 @@ class Invoice extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Invoice The upcoming invoice.
      */
     public static function upcoming($params = null, $opts = null)
     {
-        $url = static::classUrl() . '/upcoming';
+        $url = static::classUrl().'/upcoming';
         list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
+
         return Util\Util::convertToStripeObject($response, $opts);
     }
 
@@ -61,13 +62,16 @@ class Invoice extends ApiResource
     }
 
     /**
+     * @param null|string|array $opts
+     *
      * @return Invoice The paid invoice.
      */
     public function pay($opts = null)
     {
-        $url = $this->instanceUrl() . '/pay';
+        $url = $this->instanceUrl().'/pay';
         list($response, $opts) = $this->_request('post', $url, null, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 }

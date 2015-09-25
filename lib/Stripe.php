@@ -4,19 +4,29 @@ namespace Stripe;
 
 class Stripe
 {
-    // @var string The Stripe API key to be used for requests.
+    /**
+     * @var string The Stripe API key to be used for requests.
+     */
     public static $apiKey;
 
-    // @var string The base URL for the Stripe API.
+    /**
+     * @var string The base URL for the Stripe API.
+     */
     public static $apiBase = 'https://api.stripe.com';
 
-    // @var string The base URL for the Stripe API uploads endpoint.
+    /**
+     * @var string The base URL for the Stripe API uploads endpoint.
+     */
     public static $apiUploadBase = 'https://uploads.stripe.com';
 
-    // @var string|null The version of the Stripe API to use for requests.
+    /**
+     * @var string|null The version of the Stripe API to use for requests.
+     */
     public static $apiVersion = null;
 
-    // @var boolean Defaults to true.
+    /**
+     * @var bool Defaults to true.
+     */
     public static $verifySslCerts = true;
 
     const VERSION = '3.4.0';
@@ -41,7 +51,7 @@ class Stripe
 
     /**
      * @return string The API version used for requests. null if we're using the
-     *    latest version.
+     *                latest version.
      */
     public static function getApiVersion()
     {
@@ -57,7 +67,7 @@ class Stripe
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public static function getVerifySslCerts()
     {
@@ -65,7 +75,7 @@ class Stripe
     }
 
     /**
-     * @param boolean $verify
+     * @param bool $verify
      */
     public static function setVerifySslCerts($verify)
     {

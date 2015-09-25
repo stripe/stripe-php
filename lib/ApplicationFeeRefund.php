@@ -6,6 +6,8 @@ class ApplicationFeeRefund extends ApiResource
 {
     /**
      * @return string The API URL for this Stripe refund.
+     *
+     * @throws Error\InvalidRequest
      */
     public function instanceUrl()
     {
@@ -13,7 +15,7 @@ class ApplicationFeeRefund extends ApiResource
         $fee = $this['fee'];
         if (!$id) {
             throw new Error\InvalidRequest(
-                "Could not determine which URL to request: " .
+                'Could not determine which URL to request: '.
                 "class instance has invalid ID: $id",
                 null
             );
@@ -24,6 +26,7 @@ class ApplicationFeeRefund extends ApiResource
         $base = ApplicationFee::classUrl();
         $feeExtn = urlencode($fee);
         $extn = urlencode($id);
+
         return "$base/$feeExtn/refunds/$extn";
     }
 

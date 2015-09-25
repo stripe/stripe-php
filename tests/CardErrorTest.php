@@ -11,20 +11,20 @@ class CardErrorTest extends TestCase
         $card = array(
             'number' => '4000000000000002',
             'exp_month' => '3',
-            'exp_year' => '2020'
+            'exp_year' => '2020',
         );
 
         $charge = array(
             'amount' => 100,
             'currency' => 'usd',
-            'card' => $card
+            'card' => $card,
         );
 
         try {
             Charge::create($charge);
         } catch (Error\Card $e) {
             $this->assertSame(402, $e->getHttpStatus());
-            $this->assertTrue(strpos($e->getRequestId(), "req_") === 0, $e->getRequestId());
+            $this->assertTrue(strpos($e->getRequestId(), 'req_') === 0, $e->getRequestId());
             $actual = $e->getJsonBody();
             $this->assertSame(
                 array('error' => array(

@@ -34,7 +34,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
         $mock = $this->setUpMockRequest();
         $mock->expects($this->at($this->call++))
              ->method('request')
-             ->with(strtolower($method), 'https://api.stripe.com' . $path, $this->anything(), $params, false)
+             ->with(strtolower($method), 'https://api.stripe.com'.$path, $this->anything(), $params, false)
              ->willReturn(array(json_encode($return), $rcode, array()));
     }
 
@@ -45,6 +45,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
             $this->mock = $this->getMock('\Stripe\HttpClient\ClientInterface');
             ApiRequestor::setHttpClient($this->mock);
         }
+
         return $this->mock;
     }
 
@@ -83,7 +84,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
                 'amount' => 2000,
                 'currency' => 'usd',
                 'description' => 'Transfer to test@example.com',
-                'recipient' => $recipient->id
+                'recipient' => $recipient->id,
             )
         );
     }
@@ -107,7 +108,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Create a valid test recipient
+     * Create a valid test recipient.
      */
     protected static function createTestRecipient(array $attributes = array())
     {
@@ -119,16 +120,16 @@ class TestCase extends \PHPUnit_Framework_TestCase
                 'type' => 'individual',
                 'tax_id' => '000000000',
                 'bank_account' => array(
-                    'country'    => 'US',
+                    'country' => 'US',
                     'routing_number' => '110000000',
-                    'account_number'  => '000123456789'
+                    'account_number' => '000123456789',
                 ),
             )
         );
     }
 
     /**
-     * Create a test account
+     * Create a test account.
      */
     protected static function createTestAccount(array $attributes = array())
     {
@@ -188,16 +189,17 @@ class TestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Genereate a semi-random string
+     * Genereate a semi-random string.
      */
     protected static function generateRandomString($length = 24)
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTU';
         $charactersLength = strlen($characters);
         $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
+        for ($i = 0; $i < $length; ++$i) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
+
         return $randomString;
     }
 
@@ -216,9 +218,10 @@ class TestCase extends \PHPUnit_Framework_TestCase
                 'amount' => 100,
                 'currency' => 'usd',
                 'description' => 'some details',
-                'email' => $email
+                'email' => $email,
             )
         );
+
         return $receiver;
     }
 }

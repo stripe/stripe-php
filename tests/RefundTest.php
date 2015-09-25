@@ -4,7 +4,6 @@ namespace Stripe;
 
 class RefundTest extends TestCase
 {
-
     public function testCreate()
     {
         $charge = self::createTestCharge();
@@ -17,10 +16,10 @@ class RefundTest extends TestCase
     {
         $charge = self::createTestCharge();
         $ref = Refund::create(array('amount' => 100, 'charge' => $charge->id));
-        $ref->metadata["key"] = "value";
+        $ref->metadata['key'] = 'value';
         $ref->save();
         $ref = Refund::retrieve($ref->id);
-        $this->assertSame("value", $ref->metadata["key"], "value");
+        $this->assertSame('value', $ref->metadata['key'], 'value');
     }
 
     public function testListForCharge()
@@ -49,14 +48,14 @@ class RefundTest extends TestCase
     {
         self::authorizeFromEnv();
 
-        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
+        $receiver = $this->createTestBitcoinReceiver('do+fill_now@stripe.com');
 
         $charge = Charge::create(
             array(
                 'amount' => $receiver->amount,
                 'currency' => $receiver->currency,
                 'description' => $receiver->description,
-                'source' => $receiver->id
+                'source' => $receiver->id,
             )
         );
 
@@ -64,7 +63,7 @@ class RefundTest extends TestCase
             array(
                 'amount' => $receiver->amount,
                 'refund_address' => 'ABCDEF',
-                'charge' => $charge->id
+                'charge' => $charge->id,
             )
         );
         $this->assertSame($receiver->amount, $ref->amount);
@@ -85,10 +84,10 @@ class RefundTest extends TestCase
     {
         $charge = self::createTestCharge();
         $ref = $charge->refunds->create(array('amount' => 100));
-        $ref->metadata["key"] = "value";
+        $ref->metadata['key'] = 'value';
         $ref->save();
         $ref = $charge->refunds->retrieve($ref->id);
-        $this->assertSame("value", $ref->metadata["key"], "value");
+        $this->assertSame('value', $ref->metadata['key'], 'value');
     }
 
     public function testListViaCharge()
@@ -108,21 +107,21 @@ class RefundTest extends TestCase
     {
         self::authorizeFromEnv();
 
-        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
+        $receiver = $this->createTestBitcoinReceiver('do+fill_now@stripe.com');
 
         $charge = Charge::create(
             array(
                 'amount' => $receiver->amount,
                 'currency' => $receiver->currency,
                 'description' => $receiver->description,
-                'source' => $receiver->id
+                'source' => $receiver->id,
             )
         );
 
         $ref = $charge->refunds->create(
             array(
                 'amount' => $receiver->amount,
-                'refund_address' => 'ABCDEF'
+                'refund_address' => 'ABCDEF',
             )
         );
         $this->assertSame($receiver->amount, $ref->amount);

@@ -2,7 +2,7 @@
 <?php
 chdir(dirname(__FILE__));
 
-$autoload = (int)$argv[1];
+$autoload = (int) $argv[1];
 $returnStatus = null;
 
 if (!$autoload) {

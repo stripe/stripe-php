@@ -6,8 +6,8 @@ class RequestOptionsTest extends TestCase
 {
     public function testStringAPIKey()
     {
-        $opts = Util\RequestOptions::parse("foo");
-        $this->assertSame("foo", $opts->apiKey);
+        $opts = Util\RequestOptions::parse('foo');
+        $this->assertSame('foo', $opts->apiKey);
         $this->assertSame(array(), $opts->headers);
     }
 
@@ -52,7 +52,7 @@ class RequestOptionsTest extends TestCase
         $opts = Util\RequestOptions::parse(
             array(
                 'idempotency_key' => 'foo',
-                'api_key' => 'foo'
+                'api_key' => 'foo',
             )
         );
         $this->assertSame('foo', $opts->apiKey);

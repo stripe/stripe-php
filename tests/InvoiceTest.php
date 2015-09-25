@@ -10,9 +10,9 @@ class InvoiceTest extends TestCase
         $customer = self::createTestCustomer();
 
         InvoiceItem::create(array(
-            'customer'  => $customer->id,
-            'amount'    => 0,
-            'currency'  => 'usd',
+            'customer' => $customer->id,
+            'amount' => 0,
+            'currency' => 'usd',
         ));
 
         $invoice = Invoice::upcoming(array(
@@ -28,9 +28,9 @@ class InvoiceTest extends TestCase
         $customer = self::createTestCustomer();
 
         InvoiceItem::create(array(
-            'customer'  => $customer->id,
-            'amount'    => 100,
-            'currency'  => 'usd',
+            'customer' => $customer->id,
+            'amount' => 100,
+            'currency' => 'usd',
         ));
 
         $invoice = Invoice::upcoming(

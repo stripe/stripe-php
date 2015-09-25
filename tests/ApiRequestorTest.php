@@ -15,7 +15,7 @@ class ApiRequestorTest extends TestCase
         $this->assertSame($enc, array('customer' => 'abcd'));
 
         // Preserves UTF-8
-        $v = array('customer' => "☃");
+        $v = array('customer' => '☃');
         $enc = $method->invoke(null, $v);
         $this->assertSame($enc, $v);
 

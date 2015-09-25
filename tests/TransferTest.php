@@ -12,7 +12,7 @@ class TransferTest extends TestCase
         $transfer = Transfer::create(array(
             'amount' => 100,
             'currency' => 'usd',
-            'recipient' => $recipient->id
+            'recipient' => $recipient->id,
         ));
         $this->assertSame('pending', $transfer->status);
     }
@@ -25,7 +25,7 @@ class TransferTest extends TestCase
         $transfer = Transfer::create(array(
             'amount' => 100,
             'currency' => 'usd',
-            'recipient' => $recipient->id
+            'recipient' => $recipient->id,
         ));
         $reloaded = Transfer::retrieve($transfer->id);
         $this->assertSame($reloaded->id, $transfer->id);
@@ -42,7 +42,7 @@ class TransferTest extends TestCase
         $transfer = Transfer::create(array(
             'amount' => 100,
             'currency' => 'usd',
-            'recipient' => $recipient->id
+            'recipient' => $recipient->id,
         ));
         $reloaded = Transfer::retrieve($transfer->id);
         $this->assertSame($reloaded->id, $transfer->id);
@@ -58,7 +58,7 @@ class TransferTest extends TestCase
         $transfer = Transfer::create(array(
             'amount' => 100,
             'currency' => 'usd',
-            'recipient' => $recipient->id
+            'recipient' => $recipient->id,
         ));
 
         $transfer->metadata['test'] = 'foo bar';
@@ -76,7 +76,7 @@ class TransferTest extends TestCase
         $transfer = Transfer::create(array(
             'amount' => 100,
             'currency' => 'usd',
-            'recipient' => $recipient->id
+            'recipient' => $recipient->id,
         ));
 
         $transfer->metadata = array('test' => 'foo bar');

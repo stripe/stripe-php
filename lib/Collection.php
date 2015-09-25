@@ -4,22 +4,48 @@ namespace Stripe;
 
 class Collection extends ApiResource
 {
+    /**
+     * @param null|array $params
+     * @param null|array $opts
+     *
+     * @return array|StripeObject
+     *
+     * @throws Error\Api
+     */
     public function all($params = null, $opts = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
-
         list($response, $opts) = $this->_request('get', $url, $params, $opts);
+
         return Util\Util::convertToStripeObject($response, $opts);
     }
 
+    /**
+     * @param null|array $params
+     * @param null|array $opts
+     *
+     * @return array|StripeObject
+     *
+     * @throws Error\Api
+     */
     public function create($params = null, $opts = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
 
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
+
         return Util\Util::convertToStripeObject($response, $opts);
     }
 
+    /**
+     * @param string     $id
+     * @param null|array $params
+     * @param null|array $opts
+     *
+     * @return array|StripeObject
+     *
+     * @throws Error\Api
+     */
     public function retrieve($id, $params = null, $opts = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
@@ -32,9 +58,17 @@ class Collection extends ApiResource
             $params,
             $opts
         );
+
         return Util\Util::convertToStripeObject($response, $opts);
     }
 
+    /**
+     * @param null||array $params
+     *
+     * @return array
+     *
+     * @throws Error\Api
+     */
     private function extractPathAndUpdateParams($params)
     {
         $url = parse_url($this->url);

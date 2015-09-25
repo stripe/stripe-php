@@ -4,7 +4,6 @@ namespace Stripe;
 
 class TransferReversalTest extends TestCase
 {
-
     public function testList()
     {
         $transfer = self::createTestTransfer();
