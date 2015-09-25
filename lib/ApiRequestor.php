@@ -91,10 +91,12 @@ class ApiRequestor
      *
      * @throws Error\InvalidRequest if the error is caused by the user.
      * @throws Error\Authentication if the error is caused by a lack of
-     *                              permissions.
-     * @throws Error\Card           if the error is the error code is 402 (payment
-     *                              required)
-     * @throws Error\Api            otherwise.
+     *    permissions.
+     * @throws Error\Card if the error is the error code is 402 (payment
+     *    required)
+     * @throws Error\RateLimit if the error is caused by too many requests
+     *    hitting the API.
+     * @throws Error\Api otherwise.
      */
     public function handleApiError($rbody, $rcode, $rheaders, $resp)
     {
@@ -111,6 +113,8 @@ class ApiRequestor
 
         switch ($rcode) {
             case 400:
+                // 'rate_limit' code is deprecated, but left here for backwards compatibility
+                // for API versions earlier than 2015-09-08
                 if ($code == 'rate_limit') {
                     throw new Error\RateLimit($msg, $param, $rcode, $rbody, $resp, $rheaders);
                 }
@@ -122,6 +126,8 @@ class ApiRequestor
                 throw new Error\Authentication($msg, $rcode, $rbody, $resp, $rheaders);
             case 402:
                 throw new Error\Card($msg, $param, $code, $rcode, $rbody, $resp, $rheaders);
+            case 429:
+                throw new Error\RateLimit($msg, $param, $rcode, $rbody, $resp, $rheaders);
             default:
                 throw new Error\Api($msg, $rcode, $rbody, $resp, $rheaders);
         }
