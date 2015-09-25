@@ -12,7 +12,7 @@ class PlanTest extends TestCase
             'interval' => 'month',
             'currency' => 'usd',
             'name' => 'Plan',
-            'id' => 'gold-' . self::generateRandomString(20)
+            'id' => 'gold-'.self::generateRandomString(20),
         ));
         $p->delete();
         $this->assertTrue($p->deleted);
@@ -33,13 +33,13 @@ class PlanTest extends TestCase
     public function testSave()
     {
         self::authorizeFromEnv();
-        $planID = 'gold-' . self::generateRandomString(20);
+        $planID = 'gold-'.self::generateRandomString(20);
         $p = Plan::create(array(
-            'amount'   => 2000,
+            'amount' => 2000,
             'interval' => 'month',
             'currency' => 'usd',
-            'name'     => 'Plan',
-            'id'       => $planID
+            'name' => 'Plan',
+            'id' => $planID,
         ));
         $p->name = 'A new plan name';
         $p->save();

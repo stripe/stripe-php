@@ -25,7 +25,7 @@ class UtilTest extends TestCase
     public function testConvertStripeObjectToArrayIncludesId()
     {
         $customer = self::createTestCustomer();
-        $this->assertTrue(array_key_exists("id", $customer->__toArray(true)));
+        $this->assertTrue(array_key_exists('id', $customer->__toArray(true)));
     }
 
     public function testUtf8()

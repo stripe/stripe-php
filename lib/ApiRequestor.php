@@ -91,12 +91,12 @@ class ApiRequestor
      *
      * @throws Error\InvalidRequest if the error is caused by the user.
      * @throws Error\Authentication if the error is caused by a lack of
-     *    permissions.
-     * @throws Error\Card if the error is the error code is 402 (payment
-     *    required)
-     * @throws Error\RateLimit if the error is caused by too many requests
-     *    hitting the API.
-     * @throws Error\Api otherwise.
+     *                              permissions.
+     * @throws Error\Card           if the error is the error code is 402 (payment
+     *                              required)
+     * @throws Error\RateLimit      if the error is caused by too many requests
+     *                              hitting the API.
+     * @throws Error\Api            otherwise.
      */
     public function handleApiError($rbody, $rcode, $rheaders, $resp)
     {

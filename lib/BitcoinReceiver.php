@@ -65,16 +65,17 @@ class BitcoinReceiver extends ExternalAccount
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return BitcoinReceiver The refunded Bitcoin Receiver item.
      */
     public function refund($params = null, $options = null)
     {
-        $url = $this->instanceUrl() . '/refund';
+        $url = $this->instanceUrl().'/refund';
         list($response, $opts) = $this->_request('post', $url, $params, $options);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 }

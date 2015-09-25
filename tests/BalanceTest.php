@@ -8,7 +8,7 @@ class BalanceTest extends TestCase
     {
         self::authorizeFromEnv();
         $d = Balance::retrieve();
-        $this->assertSame($d->object, "balance");
+        $this->assertSame($d->object, 'balance');
         $this->assertTrue(Util\Util::isList($d->available));
         $this->assertTrue(Util\Util::isList($d->pending));
     }

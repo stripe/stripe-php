@@ -12,7 +12,7 @@ class CurlClientTest extends TestCase
             'my' => 'value',
             'that' => array('your' => 'example'),
             'bar' => 1,
-            'baz' => null
+            'baz' => null,
         );
 
         $enc = CurlClient::encode($a);
@@ -30,12 +30,12 @@ class CurlClientTest extends TestCase
             'my' => 'value',
             'that' => array('your' => array('cheese', 'whiz', null)),
             'bar' => 1,
-            'baz' => null
+            'baz' => null,
         );
 
         $enc = CurlClient::encode($a);
         $expected = 'my=value&that%5Byour%5D%5B%5D=cheese'
-              . '&that%5Byour%5D%5B%5D=whiz&bar=1';
+              .'&that%5Byour%5D%5B%5D=whiz&bar=1';
         $this->assertSame($expected, $enc);
 
         // Ignores an empty array

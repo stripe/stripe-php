@@ -5,7 +5,7 @@ namespace Stripe;
 class Order extends ApiResource
 {
     /**
-     * @param string $id The ID of the Order to retrieve.
+     * @param string            $id   The ID of the Order to retrieve.
      * @param array|string|null $opts
      *
      * @return Order
@@ -16,7 +16,7 @@ class Order extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Order The created Order.
@@ -37,7 +37,7 @@ class Order extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Collection of Orders
@@ -52,9 +52,10 @@ class Order extends ApiResource
      */
     public function pay($params = null, $opts = null)
     {
-        $url = $this->instanceUrl() . '/pay';
+        $url = $this->instanceUrl().'/pay';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 }

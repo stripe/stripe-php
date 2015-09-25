@@ -37,68 +37,68 @@ class RecipientTest extends TestCase
     public function testRecipientAddCard()
     {
         $token = Token::create(
-            array("card" => array(
-                "number" => "4000056655665556",
-                "exp_month" => 5,
-                "exp_year" => date('Y') + 3,
-                "cvc" => "314"
+            array('card' => array(
+                'number' => '4000056655665556',
+                'exp_month' => 5,
+                'exp_year' => date('Y') + 3,
+                'cvc' => '314',
             ))
         );
 
         $recipient = $this->createTestRecipient();
-        $createdCard = $recipient->cards->create(array("card" => $token->id));
+        $createdCard = $recipient->cards->create(array('card' => $token->id));
         $recipient->save();
 
         $updatedRecipient = Recipient::retrieve($recipient->id);
         $updatedCards = $updatedRecipient->cards->all();
-        $this->assertSame(count($updatedCards["data"]), 1);
+        $this->assertSame(count($updatedCards['data']), 1);
     }
 
     public function testRecipientUpdateCard()
     {
         $token = Token::create(
-            array("card" => array(
-                "number" => "4000056655665556",
-                "exp_month" => 5,
-                "exp_year" => date('Y') + 3,
-                "cvc" => "314"
+            array('card' => array(
+                'number' => '4000056655665556',
+                'exp_month' => 5,
+                'exp_year' => date('Y') + 3,
+                'cvc' => '314',
             ))
         );
 
         $recipient = $this->createTestRecipient();
-        $createdCard = $recipient->cards->create(array("card" => $token->id));
+        $createdCard = $recipient->cards->create(array('card' => $token->id));
         $recipient->save();
 
         $createdCards = $recipient->cards->all();
-        $this->assertSame(count($createdCards["data"]), 1);
+        $this->assertSame(count($createdCards['data']), 1);
 
         $card = $createdCards['data'][0];
-        $card->name = "Jane Austen";
+        $card->name = 'Jane Austen';
         $card->save();
 
         $updatedRecipient = Recipient::retrieve($recipient->id);
         $updatedCards = $updatedRecipient->cards->all();
-        $this->assertSame($updatedCards["data"][0]->name, "Jane Austen");
+        $this->assertSame($updatedCards['data'][0]->name, 'Jane Austen');
     }
 
     public function testRecipientDeleteCard()
     {
         $token = Token::create(
-            array("card" => array(
-                "number" => "4000056655665556",
-                "exp_month" => 5,
-                "exp_year" => date('Y') + 3,
-                "cvc" => "314"
+            array('card' => array(
+                'number' => '4000056655665556',
+                'exp_month' => 5,
+                'exp_year' => date('Y') + 3,
+                'cvc' => '314',
             ))
         );
 
         $recipient = $this->createTestRecipient();
-        $createdCard = $recipient->cards->create(array("card" => $token->id));
+        $createdCard = $recipient->cards->create(array('card' => $token->id));
         $recipient->save();
 
         $updatedRecipient = Recipient::retrieve($recipient->id);
         $updatedCards = $updatedRecipient->cards->all();
-        $this->assertSame(count($updatedCards["data"]), 1);
+        $this->assertSame(count($updatedCards['data']), 1);
 
         $deleteStatus =
         $updatedRecipient->cards->retrieve($createdCard->id)->delete();
@@ -107,6 +107,6 @@ class RecipientTest extends TestCase
 
         $postDeleteRecipient = Recipient::retrieve($recipient->id);
         $postDeleteCards = $postDeleteRecipient->cards->all();
-        $this->assertSame(count($postDeleteCards["data"]), 0);
+        $this->assertSame(count($postDeleteCards['data']), 0);
     }
 }

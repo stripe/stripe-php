@@ -15,8 +15,8 @@ class AccountTest extends TestCase
                 'object' => 'list',
                 'total_count' => 0,
                 'has_more' => false,
-                'url' => '/v1/accounts/' . $id . '/bank_accounts',
-                'data' => array()
+                'url' => '/v1/accounts/'.$id.'/bank_accounts',
+                'data' => array(),
             ),
             'verification' => array(
                 'fields_needed' => array(
@@ -25,15 +25,15 @@ class AccountTest extends TestCase
                     'support_phone',
                     'bank_account',
                     'tos_acceptance.ip',
-                    'tos_acceptance.date'
+                    'tos_acceptance.date',
                 ),
                 'due_by' => null,
-                'contacted' => false
+                'contacted' => false,
             ),
             'tos_acceptance' => array(
                 'ip' => null,
                 'date' => null,
-                'user_agent' => null
+                'user_agent' => null,
             ),
             'legal_entity' => array(
                 'type' => null,
@@ -44,7 +44,7 @@ class AccountTest extends TestCase
                     'city' => null,
                     'state' => null,
                     'postal_code' => null,
-                    'country' => 'US'
+                    'country' => 'US',
                 ),
                 'first_name' => null,
                 'last_name' => null,
@@ -52,9 +52,9 @@ class AccountTest extends TestCase
                 'verification' => array(
                     'status' => 'unverified',
                     'document' => null,
-                    'details' => null
-                )
-            )
+                    'details' => null,
+                ),
+            ),
         );
     }
 
@@ -62,7 +62,7 @@ class AccountTest extends TestCase
     {
         return array(
             'id' => $id,
-            'deleted' => true
+            'deleted' => true,
         );
     }
 
@@ -89,7 +89,7 @@ class AccountTest extends TestCase
             $this->managedAccountResponse('acct_ABC')
         );
         $account = Account::create(array(
-            'managed' => true
+            'managed' => true,
         ));
         $this->assertSame($account->id, 'acct_ABC');
     }
@@ -100,7 +100,7 @@ class AccountTest extends TestCase
 
         $this->mockRequest(
             'DELETE',
-            '/v1/accounts/' . $account->id,
+            '/v1/accounts/'.$account->id,
             array(),
             $this->deletedAccountResponse('acct_ABC')
         );
@@ -143,13 +143,13 @@ class AccountTest extends TestCase
                 'city' => null,
                 'state' => null,
                 'postal_code' => null,
-                'country' => null
+                'country' => null,
             ),
             'verification' => array(
                 'status' => 'unverified',
                 'document' => null,
-                'details' => null
-            )
+                'details' => null,
+            ),
         ));
 
         $this->mockRequest(
@@ -185,7 +185,7 @@ class AccountTest extends TestCase
 
         $response['legal_entity']['additional_owners'][1] = array(
             'first_name' => 'Jane',
-            'last_name' => 'Doe'
+            'last_name' => 'Doe',
         );
         $this->mockRequest(
             'POST',
