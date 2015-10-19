@@ -8,11 +8,13 @@ class RequestOptions
 {
     public $headers;
     public $apiKey;
+    public $requestId;
 
     public function __construct($key = null, $headers = array())
     {
         $this->apiKey = $key;
         $this->headers = $headers;
+        $this->requestId = "";
     }
 
     /**
