@@ -29,11 +29,30 @@ class StripeObject implements ArrayAccess, JsonSerializable
         ));
     }
 
+    /**
+     * @return object The last response from the Stripe API
+     */
+    public function getLastResponse()
+    {
+        return $this->_lastResponse;
+    }
+
+    /**
+     * @param ApiResponse
+     *
+     * @return void Set the last response from the Stripe API
+     */
+    public function setLastResponse($resp)
+    {
+        $this->_lastResponse = $resp;
+    }
+
     protected $_opts;
     protected $_values;
     protected $_unsavedValues;
     protected $_transientValues;
     protected $_retrieveOptions;
+    protected $_lastResponse;
 
     public function __construct($id = null, $opts = null)
     {
