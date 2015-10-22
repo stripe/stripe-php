@@ -25,7 +25,8 @@ abstract class ApiResource extends StripeObject
             $this->_retrieveOptions,
             $this->_opts->headers
         );
-        $this->refreshFrom($response, $this->_opts);
+        $this->setLastResponse($response);
+        $this->refreshFrom($response->json, $this->_opts);
         return $this;
     }
 
@@ -95,7 +96,9 @@ abstract class ApiResource extends StripeObject
     protected function _request($method, $url, $params = array(), $options = null)
     {
         $opts = $this->_opts->merge($options);
-        return static::_staticRequest($method, $url, $params, $opts);
+        list($resp, $options) = static::_staticRequest($method, $url, $params, $opts);
+        $this->setLastResponse($resp);
+        return array($resp->json, $options);
     }
 
     protected static function _staticRequest($method, $url, $params, $options)
@@ -125,7 +128,9 @@ abstract class ApiResource extends StripeObject
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('get', $url, $params, $options);
-        return Util\Util::convertToStripeObject($response, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+        return $obj;
     }
 
     protected static function _create($params = null, $options = null)
@@ -135,7 +140,9 @@ abstract class ApiResource extends StripeObject
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        return Util\Util::convertToStripeObject($response, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+        return $obj;
     }
 
     protected function _save($options = null)

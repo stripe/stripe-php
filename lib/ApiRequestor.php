@@ -44,7 +44,7 @@ class ApiRequestor
      * @param array|null $params
      * @param array|null $headers
      *
-     * @return array An array whose first element is the response and second
+     * @return array An array whose first element is an API response and second
      *    element is the API key used to make the request.
      */
     public function request($method, $url, $params = null, $headers = null)
@@ -57,7 +57,8 @@ class ApiRequestor
         }
         list($rbody, $rcode, $rheaders, $myApiKey) =
         $this->_requestRaw($method, $url, $params, $headers);
-        $resp = $this->_interpretResponse($rbody, $rcode, $rheaders);
+        $json = $this->_interpretResponse($rbody, $rcode, $rheaders);
+        $resp = new ApiResponse($rbody, $rcode, $rheaders, $json);
         return array($resp, $myApiKey);
     }
 

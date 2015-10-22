@@ -54,7 +54,7 @@ class ChargeTest extends TestCase
         );
 
         $this->assertTrue($c->paid);
-        $this->assertFalse($c->refunded);
+        $this->assertSame(200, $c->getLastResponse()->code);
     }
 
     public function testRetrieve()
@@ -75,6 +75,7 @@ class ChargeTest extends TestCase
             )
         );
         $d = Charge::retrieve($c->id);
+        $this->assertSame(200, $d->getLastResponse()->code);
         $this->assertSame($d->id, $c->id);
     }
 
@@ -123,6 +124,7 @@ class ChargeTest extends TestCase
 
         $charge->metadata = array('test' => 'foo bar');
         $charge->save();
+        $this->assertSame(200, $charge->getLastResponse()->code);
 
         $updatedCharge = Charge::retrieve($charge->id);
         $this->assertSame('foo bar', $updatedCharge->metadata['test']);
