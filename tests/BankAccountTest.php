@@ -13,7 +13,9 @@ class BankAccountTest extends TestCase
         $bankAccount = $customer->sources->create(array(
             'source' => array(
                 'object' => 'bank_account',
+                'account_holder_type' => 'individual',
                 'account_number' => '000123456789',
+                'name' => 'John Doe',
                 'routing_number' => '110000000',
                 'country' => 'US'
             )
