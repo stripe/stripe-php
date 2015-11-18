@@ -72,8 +72,14 @@ composer install
 
 ## Tests
 
-Install dependencies as mentioned above (which will resolve [PHPUnit](http://packagist.org/packages/phpunit/phpunit)), then run the test suite:
+Install dependencies as mentioned above (which will resolve [PHPUnit](http://packagist.org/packages/phpunit/phpunit)), then you can run the test suite:
 
 ```bash
 ./vendor/bin/phpunit
+```
+
+Or to run an individual test file:
+
+```bash
+./vendor/bin/phpunit tests/UtilTest.php
 ```
