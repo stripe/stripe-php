@@ -62,16 +62,24 @@ $charge = Stripe_Charge::create(array('card' => $myCard, 'amount' => 2000, 'curr
 echo $charge;
 ```
 
-## Tests
+## Development
 
-In order to run tests first install [PHPUnit](http://packagist.org/packages/phpunit/phpunit) via [Composer](http://getcomposer.org/):
+Install dependencies:
 
-```bash
-composer update --dev
+``` bash
+composer install
 ```
 
-To run the test suite:
+## Tests
+
+Install dependencies as mentioned above (which will resolve [PHPUnit](http://packagist.org/packages/phpunit/phpunit)), then you can run the test suite:
 
 ```bash
 ./vendor/bin/phpunit
+```
+
+Or to run an individual test file:
+
+```bash
+./vendor/bin/phpunit tests/UtilTest.php
 ```
