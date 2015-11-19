@@ -45,10 +45,8 @@ class ApplicationFee extends ApiResource
      */
     public function refund($params = null, $opts = null)
     {
-        $url = $this->instanceUrl() . '/refunds';
-        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = Util\Util::convertToStripeObject($response->json, $opts);
-        $obj->setLastResponse($response);
-        return $obj;
+        $this->refunds->create();
+        $this->refresh();
+        return $this;
     }
 }
