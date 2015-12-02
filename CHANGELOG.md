@@ -1,3 +1,7 @@
+### 3.5.0 2015-12-01
+
+* Add a verification routine for external accounts
+
 ### 3.4.0 2015-09-14
 
 * Products, SKUs, and Orders -- https://stripe.com/relay
