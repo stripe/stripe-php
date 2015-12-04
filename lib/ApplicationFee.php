@@ -45,9 +45,8 @@ class ApplicationFee extends ApiResource
      */
     public function refund($params = null, $opts = null)
     {
-        $url = $this->instanceUrl() . '/refund';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
+        $this->refunds->create();
+        $this->refresh();
         return $this;
     }
 }
