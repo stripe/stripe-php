@@ -20,8 +20,11 @@ class CurlClient implements ClientInterface
 
     // USER DEFINED TIMEOUTS
 
-    private static $timeout = 80;
-    private static $connectTimeout = 30;
+    const DEFAULT_TIMEOUT = 80;
+    const DEFAULT_CONNECT_TIMEOUT = 30;
+
+    private static $timeout = self::DEFAULT_TIMEOUT;
+    private static $connectTimeout = self::DEFAULT_CONNECT_TIMEOUT;
 
     public static function setTimeout($seconds)
     {
