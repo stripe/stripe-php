@@ -18,6 +18,33 @@ class CurlClient implements ClientInterface
         return self::$instance;
     }
 
+    // USER DEFINED TIMEOUTS
+
+    private static $timeout = 80;
+    private static $connectTimeout = 30;
+
+    public static function setTimeout($seconds)
+    {
+        self::$timeout = (int) min($seconds, 0);
+    }
+
+    public static function setConnectTimeout($seconds)
+    {
+        self::$connectTimeout = (int) min($seconds, 0);
+    }
+
+    public static function getTimeout()
+    {
+        return self::$timeout;
+    }
+
+    public static function getConnectTimeout()
+    {
+        return self::$connectTimeout;
+    }
+
+    // END OF USER DEFINED TIMEOUTS
+
     public function request($method, $absUrl, $headers, $params, $hasFile)
     {
         $curl = curl_init();
@@ -62,8 +89,8 @@ class CurlClient implements ClientInterface
         $absUrl = Util\Util::utf8($absUrl);
         $opts[CURLOPT_URL] = $absUrl;
         $opts[CURLOPT_RETURNTRANSFER] = true;
-        $opts[CURLOPT_CONNECTTIMEOUT] = 30;
-        $opts[CURLOPT_TIMEOUT] = 80;
+        $opts[CURLOPT_CONNECTTIMEOUT] = static::$connectTimeout;
+        $opts[CURLOPT_TIMEOUT] = static::$timeout;
         $opts[CURLOPT_RETURNTRANSFER] = true;
         $opts[CURLOPT_HEADERFUNCTION] = $headerCallback;
         $opts[CURLOPT_HTTPHEADER] = $headers;
