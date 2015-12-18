@@ -23,27 +23,29 @@ class CurlClient implements ClientInterface
     const DEFAULT_TIMEOUT = 80;
     const DEFAULT_CONNECT_TIMEOUT = 30;
 
-    private static $timeout = self::DEFAULT_TIMEOUT;
-    private static $connectTimeout = self::DEFAULT_CONNECT_TIMEOUT;
+    private $timeout = self::DEFAULT_TIMEOUT;
+    private $connectTimeout = self::DEFAULT_CONNECT_TIMEOUT;
 
-    public static function setTimeout($seconds)
+    public function setTimeout($seconds)
     {
-        self::$timeout = (int) min($seconds, 0);
+        $this->timeout = (int) max($seconds, 0);
+        return $this;
     }
 
-    public static function setConnectTimeout($seconds)
+    public function setConnectTimeout($seconds)
     {
-        self::$connectTimeout = (int) min($seconds, 0);
+        $this->connectTimeout = (int) max($seconds, 0);
+        return $this;
     }
 
-    public static function getTimeout()
+    public function getTimeout()
     {
-        return self::$timeout;
+        return $this->timeout;
     }
 
-    public static function getConnectTimeout()
+    public function getConnectTimeout()
     {
-        return self::$connectTimeout;
+        return $this->connectTimeout;
     }
 
     // END OF USER DEFINED TIMEOUTS
@@ -92,8 +94,8 @@ class CurlClient implements ClientInterface
         $absUrl = Util\Util::utf8($absUrl);
         $opts[CURLOPT_URL] = $absUrl;
         $opts[CURLOPT_RETURNTRANSFER] = true;
-        $opts[CURLOPT_CONNECTTIMEOUT] = static::$connectTimeout;
-        $opts[CURLOPT_TIMEOUT] = static::$timeout;
+        $opts[CURLOPT_CONNECTTIMEOUT] = $this->connectTimeout;
+        $opts[CURLOPT_TIMEOUT] = $this->timeout;
         $opts[CURLOPT_RETURNTRANSFER] = true;
         $opts[CURLOPT_HEADERFUNCTION] = $headerCallback;
         $opts[CURLOPT_HTTPHEADER] = $headers;
