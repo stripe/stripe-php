@@ -64,7 +64,7 @@ echo $charge;
 
 ## Custom Request Timeouts
 
-*NOTE:* If you're decreasing timeouts on non-read-only calls, make sure to use idempotency tokens to avoid executing the same transaction twice as a result of timeout retry logic.
+*NOTE:* We do not recommend decreasing the timeout for non-read-only calls (e.g. charge creation), since even if you locally timeout, the request on Stripe's side can still complete. If you are decreasing timeouts on these calls, make sure to use [idempotency tokens](https://stripe.com/docs/api/php#idempotent_requests) to avoid executing the same transaction twice as a result of timeout retry logic.
 
 To modify request timeouts (connect or total, in seconds) you'll need to tell the API client to use a CurlClient other than its default. You'll set the timeouts in that CurlClient.
 
