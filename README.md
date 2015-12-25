@@ -62,6 +62,27 @@ $charge = Stripe_Charge::create(array('card' => $myCard, 'amount' => 2000, 'curr
 echo $charge;
 ```
 
+## Custom Request Timeouts
+
+*NOTE:* We do not recommend decreasing the timeout for non-read-only calls (e.g. charge creation), since even if you locally timeout, the request on Stripe's side can still complete. If you are decreasing timeouts on these calls, make sure to use [idempotency tokens](https://stripe.com/docs/api/php#idempotent_requests) to avoid executing the same transaction twice as a result of timeout retry logic.
+
+To modify request timeouts (connect or total, in seconds) you'll need to tell the API client to use a CurlClient other than its default. You'll set the timeouts in that CurlClient.
+
+```php
+// set up your tweaked Curl client
+$curl = new \Stripe\HttpClient\CurlClient();
+$curl->setTimeout(10); // default is \Stripe\HttpClient\CurlClient::DEFAULT_TIMEOUT
+$curl->setConnectTimeout(5); // default is \Stripe\HttpClient\CurlClient::DEFAULT_CONNECT_TIMEOUT
+
+echo $curl->getTimeout(); // 10
+echo $curl->getConnectTimeout(); // 5
+
+// tell Stripe to use the tweaked client
+\Stripe\ApiRequestor::setHttpClient($curl);
+
+// use the Stripe API client as you normally would
+```
+
 ## Development
 
 Install dependencies:
