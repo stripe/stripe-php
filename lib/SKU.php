@@ -46,4 +46,15 @@ class SKU extends ApiResource
     {
         return self::_all($params, $opts);
     }
+
+    /**
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @return SKU The deleted sku.
+     */
+    public function delete($params = null, $opts = null)
+    {
+        return $this->_delete($params, $opts);
+    }
 }
