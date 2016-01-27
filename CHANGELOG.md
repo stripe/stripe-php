@@ -1,3 +1,7 @@
+### 3.7.0 2016-01-27
+
+* Support deleting Relay products and SKUs
+
 ### 3.6.0 2016-01-05
 
 * Allow configuration of HTTP client timeouts
