@@ -1,3 +1,7 @@
+### 3.7.1 2016-02-01
+
+* Update bundled CA certs
+
 ### 3.7.0 2016-01-27
 
 * Support deleting Relay products and SKUs
