@@ -68,6 +68,7 @@ abstract class Util
             'balance_transaction' => 'Stripe\\BalanceTransaction',
             'card' => 'Stripe\\Card',
             'charge' => 'Stripe\\Charge',
+            'country_spec' => 'Stripe\\CountrySpec',
             'coupon' => 'Stripe\\Coupon',
             'customer' => 'Stripe\\Customer',
             'dispute' => 'Stripe\\Dispute',
