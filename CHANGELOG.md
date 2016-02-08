@@ -1,3 +1,7 @@
+### 3.8.0 2016-02-08
+
+* Add `CountrySpec` model for looking up country payment information
+
 ### 3.7.1 2016-02-01
 
 * Update bundled CA certs
