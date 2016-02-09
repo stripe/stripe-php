@@ -129,7 +129,13 @@ abstract class ApiResource extends StripeObject
 
         list($response, $opts) = static::_staticRequest('get', $url, $params, $options);
         $obj = Util\Util::convertToStripeObject($response->json, $opts);
+        if (!is_a($obj, 'Stripe\\Collection')) {
+            $class = get_class($obj);
+            $message = "Expected type \"Stripe\\Collection\", got \"$class\" instead";
+            throw new Error\Api($message);
+        }
         $obj->setLastResponse($response);
+        $obj->setRequestParams($params);
         return $obj;
     }
 
