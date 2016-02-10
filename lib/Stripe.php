@@ -76,7 +76,8 @@ class Stripe
     }
 
     /**
-     * @return string | null The Stripe account ID for connected accounts requests.
+     * @return string | null The Stripe account ID for connected account
+     *   requests.
      */
     public static function getAccountId()
     {
@@ -84,7 +85,8 @@ class Stripe
     }
 
     /**
-     * @param string $accountId The Stripe account ID to set for connected accounts requests
+     * @param string $accountId The Stripe account ID to set for connected
+     *   account requests.
      */
     public static function setAccountId($accountId)
     {
