@@ -1,3 +1,8 @@
+### 3.9.0 2016-02-09
+
+* Add automatic pagination mechanism with `autoPagingIterator()`
+* Allow global account ID to be set with `Stripe::setAccountId()`
+
 ### 3.8.0 2016-02-08
 
 * Add `CountrySpec` model for looking up country payment information
