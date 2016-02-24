@@ -15,7 +15,7 @@ class BankAccountTest extends TestCase
                 'object' => 'bank_account',
                 'account_holder_type' => 'individual',
                 'account_number' => '000123456789',
-                'name' => 'John Doe',
+                'account_holder_name' => 'John Doe',
                 'routing_number' => '110000000',
                 'country' => 'US'
             )
