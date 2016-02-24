@@ -207,10 +207,12 @@ class CurlClient implements ClientInterface
                 continue;
             }
 
-            if ($prefix && $k && !is_int($k)) {
-                $k = $prefix."[".$k."]";
-            } elseif ($prefix) {
-                $k = $prefix."[]";
+            if ($prefix) {
+                if ($k !== null && (!is_int($k) || is_array($v))) {
+                    $k = $prefix."[".$k."]";
+                } else {
+                    $k = $prefix."[]";
+                }
             }
 
             if (is_array($v)) {
