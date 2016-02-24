@@ -129,6 +129,48 @@ class AccountTest extends TestCase
         $this->assertSame('Bob', $account->legal_entity->first_name);
     }
 
+    public function testCreateAdditionalOwners()
+    {
+        $request = array(
+            'managed' => true,
+            'country' => 'GB',
+            'legal_entity' => array(
+                'additional_owners' => array(
+                    0 => array(
+                        'dob' => array(
+                            'day' => 12,
+                            'month' => 5,
+                            'year' => 1970,
+                        ),
+                        'first_name' => 'xgvukvfrde',
+                        'last_name' => 'rtcyvubhy',
+                    ),
+                    1 => array(
+                        'dob' => array(
+                            'day' => 8,
+                            'month' => 4,
+                            'year' => 1979,
+                        ),
+                        'first_name' => 'yutreuk',
+                        'last_name' => 'dfcgvhbjihmv',
+                    ),
+                ),
+            ),
+        );
+
+        $acct = Account::create($request);
+        $response = $acct->__toArray(true);
+
+        $req_ao = $request['legal_entity']['additional_owners'];
+        $resp_ao = $response['legal_entity']['additional_owners'];
+
+        $this->assertSame($req_ao[0]['dob'], $resp_ao[0]['dob']);
+        $this->assertSame($req_ao[1]['dob'], $resp_ao[1]['dob']);
+
+        $this->assertSame($req_ao[0]['first_name'], $resp_ao[0]['first_name']);
+        $this->assertSame($req_ao[1]['first_name'], $resp_ao[1]['first_name']);
+    }
+
     public function testUpdateAdditionalOwners()
     {
         $response = $this->managedAccountResponse('acct_ABC');

@@ -59,5 +59,9 @@ class CurlClientTest extends TestCase
         $enc = CurlClient::encode(array('foo' => array(), 'bar' => 'baz'));
         $expected = 'bar=baz';
         $this->assertSame($expected, $enc);
+
+        $a = array('foo' => array(array('bar' => 'baz'), array('bar' => 'bin')));
+        $enc = CurlClient::encode($a);
+        $this->assertSame('foo%5B0%5D%5Bbar%5D=baz&foo%5B1%5D%5Bbar%5D=bin', $enc);
     }
 }
