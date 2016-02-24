@@ -1,3 +1,7 @@
+### 3.9.1 2016-02-24
+
+* Fix encoding behavior of nested arrays for requests (see #227)
+
 ### 3.9.0 2016-02-09
 
 * Add automatic pagination mechanism with `autoPagingIterator()`
