@@ -88,7 +88,7 @@ class StripeObject implements ArrayAccess, JsonSerializable
         }
 
         if (self::$nestedUpdatableAttributes->includes($k)
-                && isset($this->$k) && is_array($v)) {
+                && isset($this->$k) && $this->$k instanceof AttachedObject && is_array($v)) {
             $this->$k->replaceWith($v);
         } else {
             // TODO: may want to clear from $_transientValues (Won't be user-visible).
