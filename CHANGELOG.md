@@ -1,3 +1,7 @@
+### 3.9.2 2016-03-04
+
+* Fix error when an object's metadata is set more than once
+
 ### 3.9.1 2016-02-24
 
 * Fix encoding behavior of nested arrays for requests (see #227)
