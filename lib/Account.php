@@ -64,6 +64,20 @@ class Account extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @return Account The rejected account.
+     */
+    public function reject($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/reject';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+        return $this;
+    }
+
+    /**
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
      * @return Collection of Accounts
      */
     public static function all($params = null, $opts = null)

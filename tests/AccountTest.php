@@ -109,6 +109,20 @@ class AccountTest extends TestCase
         $this->assertTrue($deleted->deleted);
     }
 
+    public function testReject()
+    {
+        $account = self::createTestAccount();
+
+        $this->mockRequest(
+            'POST',
+            '/v1/accounts/' . $account->id . '/reject',
+            array('reason' => 'fraud'),
+            $this->deletedAccountResponse('acct_ABC')
+        );
+        $rejected = $account->reject(array('reason' => 'fraud'));
+        $this->assertSame($rejected->id, $account->id);
+    }
+
     public function testUpdateLegalEntity()
     {
         $response = $this->managedAccountResponse('acct_ABC');
