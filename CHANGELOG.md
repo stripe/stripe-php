@@ -1,3 +1,7 @@
+### 3.10.0 2016-03-15
+
+* Add `reject` on `Account` to support the new API feature
+
 ### 3.9.2 2016-03-04
 
 * Fix error when an object's metadata is set more than once
