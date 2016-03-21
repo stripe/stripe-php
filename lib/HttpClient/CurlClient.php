@@ -23,7 +23,7 @@ class CurlClient implements ClientInterface
     /**
      * CurlClient constructor.
      *
-     * Pass in a callable to $defaultIptions that returns an array of CURLOPT_* values to start
+     * Pass in a callable to $defaultOptions that returns an array of CURLOPT_* values to start
      * off a request with, or an flat array with the same format used by curl_setopt_array() to
      * provide a static set of options. Note that many options are overridden later in the request
      * call, including timeouts, which can be set via setTimeout() and setConnectTimeout().
