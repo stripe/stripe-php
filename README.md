@@ -83,6 +83,19 @@ echo $curl->getConnectTimeout(); // 5
 // use the Stripe API client as you normally would
 ```
 
+## Custom cURL Options (e.g. proxies)
+
+Need to set a proxy for your requests? Pass in the requisite `CURLOPT_*` array to the CurlClient constructor, using the same syntax as `curl_stopt_array()`. This will set the default cURL options for each HTTP request made by the SDK, though many more common options (e.g. timeouts; see above on how to set those) will be overridden by the client even if set here.
+
+```php
+// set up your tweaked Curl client
+$curl = new \Stripe\HttpClient\CurlClient(array(CURLOPT_PROXY => 'proxy.local:80'));
+// tell Stripe to use the tweaked client
+\Stripe\ApiRequestor::setHttpClient($curl);
+```
+
+Alternately, a callable can be passed to the CurlClient constructor that returns the above array based on request inputs. See `testDefaultOptions()` in `tests/CurlClientTest.php` for an example of this behavior. Note that the callable is called at the beginning of every API request, before the request is sent.
+
 ## Development
 
 Install dependencies:

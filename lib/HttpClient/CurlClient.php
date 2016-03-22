@@ -18,6 +18,31 @@ class CurlClient implements ClientInterface
         return self::$instance;
     }
 
+    protected $defaultOptions;
+
+    /**
+     * CurlClient constructor.
+     *
+     * Pass in a callable to $defaultOptions that returns an array of CURLOPT_* values to start
+     * off a request with, or an flat array with the same format used by curl_setopt_array() to
+     * provide a static set of options. Note that many options are overridden later in the request
+     * call, including timeouts, which can be set via setTimeout() and setConnectTimeout().
+     *
+     * Note that request() will silently ignore a non-callable, non-array $defaultOptions, and will
+     * throw an exception if $defaultOptions returns a non-array value.
+     *
+     * @param array|callable|null $defaultOptions
+     */
+    public function __construct($defaultOptions = null)
+    {
+        $this->defaultOptions = $defaultOptions;
+    }
+
+    public function getDefaultOptions()
+    {
+        return $this->defaultOptions;
+    }
+
     // USER DEFINED TIMEOUTS
 
     const DEFAULT_TIMEOUT = 80;
@@ -54,7 +79,17 @@ class CurlClient implements ClientInterface
     {
         $curl = curl_init();
         $method = strtolower($method);
+
         $opts = array();
+        if (is_callable($this->defaultOptions)) { // call defaultOptions callback, set options to return value
+            $opts = call_user_func_array($this->defaultOptions, func_get_args());
+            if (!is_array($opts)) {
+                throw new Error\Api("Non-array value returned by defaultOptions CurlClient callback");
+            }
+        } elseif (is_array($this->defaultOptions)) { // set default curlopts from array
+            $opts = $this->defaultOptions;
+        }
+
         if ($method == 'get') {
             if ($hasFile) {
                 throw new Error\Api(
