@@ -45,7 +45,7 @@ class ApplicationFee extends ApiResource
      */
     public function refund($params = null, $opts = null)
     {
-        $this->refunds->create();
+        $this->refunds->create($params, $opts);
         $this->refresh();
         return $this;
     }
