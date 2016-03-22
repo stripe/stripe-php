@@ -1,3 +1,7 @@
+### 3.11.0 2016-03-22
+
+* Allow `CurlClient` to be initialized with default `CURLOPT_*` options
+
 ### 3.10.1 2016-03-22
 
 * Fix bug where request params and options were ignored in `ApplicationFee`'s `refund.`
