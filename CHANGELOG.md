@@ -1,3 +1,7 @@
+### 3.10.1 2016-03-22
+
+* Fix bug where request params and options were ignored in `ApplicationFee`'s `refund.`
+
 ### 3.10.0 2016-03-15
 
 * Add `reject` on `Account` to support the new API feature
