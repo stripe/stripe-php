@@ -46,7 +46,7 @@ class Account extends ApiResource
      */
     public function save($opts = null)
     {
-        return $this->_save();
+        return $this->_save($opts);
     }
 
     /**
