@@ -1,3 +1,10 @@
+### 3.12.0 2016-03-31
+
+* Fix bug `refreshFrom` on `StripeObject` would not take an `$opts` array
+* Fix bug where `$opts` not passed to parent `save` method in `Account`
+* Fix bug where non-existent variable was referenced in `reverse` in `Transfer`
+* Update CA cert bundle for compatibility with OpenSSL versions below 1.0.1
+
 ### 3.11.0 2016-03-22
 
 * Allow `CurlClient` to be initialized with default `CURLOPT_*` options
