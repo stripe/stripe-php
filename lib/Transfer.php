@@ -43,7 +43,7 @@ class Transfer extends ApiResource
     public function reverse($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/reversals';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }
