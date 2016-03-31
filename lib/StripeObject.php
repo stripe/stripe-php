@@ -177,11 +177,15 @@ class StripeObject implements ArrayAccess, JsonSerializable
      * Refreshes this object using the provided values.
      *
      * @param array $values
-     * @param array $opts
+     * @param array|Util\RequestOptions $opts
      * @param boolean $partial Defaults to false.
      */
     public function refreshFrom($values, $opts, $partial = false)
     {
+        if (is_array($opts)) {
+            $opts = Util\RequestOptions::parse($opts);
+        }
+
         $this->_opts = $opts;
 
         // Wipe old state before setting new.  This is useful for e.g. updating a
