@@ -113,9 +113,9 @@ class StripeObject implements ArrayAccess, JsonSerializable
     {
         // function should return a reference, using $nullval to return a reference to null
         $nullval = null;
-        if (array_key_exists($k, $this->_values)) {
+        if (!empty($this->_values) && array_key_exists($k, $this->_values)) {
             return $this->_values[$k];
-        } else if ($this->_transientValues->includes($k)) {
+        } else if (!empty($this->_transientValues) && $this->_transientValues->includes($k)) {
             $class = get_class($this);
             $attrs = join(', ', array_keys($this->_values));
             $message = "Stripe Notice: Undefined property of $class instance: $k. "
