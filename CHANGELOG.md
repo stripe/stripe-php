@@ -1,3 +1,7 @@
+### 3.12.1 2016-04-07
+
+* Additional check on value arrays for some extra safety
+
 ### 3.12.0 2016-03-31
 
 * Fix bug `refreshFrom` on `StripeObject` would not take an `$opts` array
