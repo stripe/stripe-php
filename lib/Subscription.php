@@ -5,26 +5,36 @@ namespace Stripe;
 class Subscription extends ApiResource
 {
     /**
-     * @return string The API URL for this Stripe subscription.
+     * @param string $id The ID of the subscription to retrieve.
+     * @param array|string|null $opts
+     *
+     * @return Subscription
      */
-    public function instanceUrl()
+    public static function retrieve($id, $opts = null)
     {
-        $id = $this['id'];
-        $customer = $this['customer'];
-        if (!$id) {
-            throw new Error\InvalidRequest(
-                "Could not determine which URL to request: " .
-                "class instance has invalid ID: $id",
-                null
-            );
-        }
-        $id = Util\Util::utf8($id);
-        $customer = Util\Util::utf8($customer);
+        return self::_retrieve($id, $opts);
+    }
 
-        $base = Customer::classUrl();
-        $customerExtn = urlencode($customer);
-        $extn = urlencode($id);
-        return "$base/$customerExtn/subscriptions/$extn";
+    /**
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @return Collection of Subscriptions
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return self::_all($params, $opts);
+    }
+
+    /**
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @return Subscription The created subscription.
+     */
+    public static function create($params = null, $opts = null)
+    {
+        return self::_create($params, $opts);
     }
 
     /**
