@@ -1,12 +1,3 @@
-### 3.22.0 2016-05-04
-
-* Add support for the new `/v1/subscriptions` endpoint
-  * `\Stripe\Subscription::retrieve`
-  * `\Stripe\Subscription::list`
-  * `\Stripe\Subscription::create`
-  * `\Stripe\Subscription::update`
-  * `\Stripe\Subscription::delete`
-
 ### 3.12.1 2016-04-07
 
 * Additional check on value arrays for some extra safety
