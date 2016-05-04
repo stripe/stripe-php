@@ -1,3 +1,7 @@
+### 3.13.0 2016-05-04
+
+* Add `list`, `create`, `update`, `retrieve`, and `delete` methods to the Subscription class
+
 ### 3.12.1 2016-04-07
 
 * Additional check on value arrays for some extra safety
