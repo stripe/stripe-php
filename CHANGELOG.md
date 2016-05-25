@@ -1,3 +1,7 @@
+### 3.14.0 2016-05-25
+
+* Add support for returning Relay orders
+
 ### 3.13.0 2016-05-04
 
 * Add `list`, `create`, `update`, `retrieve`, and `delete` methods to the Subscription class
