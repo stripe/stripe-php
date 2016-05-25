@@ -100,7 +100,7 @@ class ProductSKUOrderTest extends TestCase
         $this->assertTrue($deletedProduct->deleted);
     }
 
-    public function testOrderCreateUpdateRetrievePay()
+    public function testOrderCreateUpdateRetrievePayReturn()
     {
         Stripe::setApiKey('sk_test_JieJALRz7rPz7boV17oMma7a');
         $ProductID = 'silver-' . self::generateRandomString(20);
@@ -149,5 +149,8 @@ class ProductSKUOrderTest extends TestCase
             ),
         ));
         $this->assertSame($order->status, 'paid');
+
+        $orderReturn = $order->returnOrder();
+        $this->assertSame($orderReturn->order, $order->id);
     }
 }

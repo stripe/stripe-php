@@ -82,6 +82,7 @@ abstract class Util
             'token' => 'Stripe\\Token',
             'transfer' => 'Stripe\\Transfer',
             'order' => 'Stripe\\Order',
+            'order_return' => 'Stripe\\OrderReturn',
             'plan' => 'Stripe\\Plan',
             'product' => 'Stripe\\Product',
             'recipient' => 'Stripe\\Recipient',
