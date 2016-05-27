@@ -1,3 +1,7 @@
+### 3.14.1 2016-05-27
+
+* Fix some inconsistencies in PHPDoc
+
 ### 3.14.0 2016-05-25
 
 * Add support for returning Relay orders
