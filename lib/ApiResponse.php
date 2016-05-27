@@ -11,7 +11,7 @@ class ApiResponse
 
     /**
      * @param string $body
-     * @param integer $body
+     * @param integer $code
      * @param array|null $headers
      * @param array|null $json
      *

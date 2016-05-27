@@ -145,8 +145,6 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param array|null $params
-     *
      * @return Customer The updated customer.
      */
     public function deleteDiscount()
