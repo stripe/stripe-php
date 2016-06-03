@@ -1,3 +1,7 @@
+### 3.14.2 2016-06-03
+
+* Add `inventory` under `SKU` to list of keys that have nested data and can be updated
+
 ### 3.14.1 2016-05-27
 
 * Fix some inconsistencies in PHPDoc
