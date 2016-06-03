@@ -62,13 +62,15 @@ class ProductSKUOrderTest extends TestCase
         ));
 
         $sku->price = 600;
+        $sku->inventory->quantity = 50;
         $sku->save();
         $this->assertSame($sku->price, 600);
+        $this->assertSame(50, $sku->inventory->quantity);
 
         $stripeSku = SKU::retrieve($SkuID);
         $this->assertSame($sku->price, 600);
         $this->assertSame('finite', $sku->inventory->type);
-        $this->assertSame(40, $sku->inventory->quantity);
+        $this->assertSame(50, $sku->inventory->quantity);
     }
 
     public function testSKUProductDelete()
