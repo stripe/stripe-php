@@ -46,7 +46,7 @@ class Subscription extends ApiResource
      */
     public static function update($id, $params = null, $options = null)
     {
-        return self::_update($params, $options);
+        return self::_update($id, $params, $options);
     }
 
     /**
