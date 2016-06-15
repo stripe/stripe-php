@@ -57,6 +57,12 @@ class SubscriptionTest extends TestCase
         $this->assertSame($sub->plan->id, $planID);
         $this->assertSame($sub->quantity, 2);
 
+        // Update the quantity parameter one more time
+        $sub = Subscription::update($sub->id, array("quantity" => 3));
+        $this->assertSame($sub->status, 'active');
+        $this->assertSame($sub->plan->id, $planID);
+        $this->assertSame($sub->quantity, 3);
+
         $subs = Subscription::all(array('customer'=>$customer->id, 'plan'=>$planID, 'limit'=>3));
         $this->assertSame(get_class($subs->data[0]), 'Stripe\Subscription');
 
