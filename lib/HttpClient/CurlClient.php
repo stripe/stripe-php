@@ -126,6 +126,9 @@ class CurlClient implements ClientInterface
             return strlen($header_line);
         };
 
+        // Send empty expect header to avoid 100-Continue responses
+        array_push($headers, 'Expect: ');
+
         $absUrl = Util\Util::utf8($absUrl);
         $opts[CURLOPT_URL] = $absUrl;
         $opts[CURLOPT_RETURNTRANSFER] = true;
