@@ -1,3 +1,7 @@
+### 3.14.3 2016-06-20
+
+* Make sure that cURL never sends `Expects: 100-continue`, even on large request bodies
+
 ### 3.14.2 2016-06-03
 
 * Add `inventory` under `SKU` to list of keys that have nested data and can be updated
