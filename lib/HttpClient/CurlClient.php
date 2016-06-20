@@ -126,7 +126,18 @@ class CurlClient implements ClientInterface
             return strlen($header_line);
         };
 
-        // Send empty expect header to avoid 100-Continue responses
+        // By default for large request body sizes (> 1024 bytes), cURL will
+        // send a request without a body and with a `Expect: 100-continue`
+        // header, which gives the server a chance to respond with an error
+        // status code in cases where one can be determined right away (say
+        // on an authentication problem for example), and saves the "large"
+        // request body from being ever sent.
+        //
+        // Unfortunately, the bindings don't currently correctly handle the
+        // success case (in which the server sends back a 100 CONTINUE), so
+        // we'll error under that condition. To compensate for that problem
+        // for the time being, override cURL's behavior by simply always
+        // sending an empty `Expect:` header.
         array_push($headers, 'Expect: ');
 
         $absUrl = Util\Util::utf8($absUrl);
