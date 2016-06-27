@@ -66,7 +66,7 @@ abstract class ApiResource extends StripeObject
     /**
      * @return string The instance endpoint URL for the given class.
      */
-    public static function classInstanceUrl($id)
+    public static function resourceUrl($id)
     {
         if ($id === null) {
             $class = get_called_class();
@@ -85,7 +85,7 @@ abstract class ApiResource extends StripeObject
      */
     public function instanceUrl()
     {
-        return static::classInstanceUrl($this['id']);
+        return static::resourceUrl($this['id']);
     }
 
     private static function _validateParams($params = null)
@@ -158,11 +158,18 @@ abstract class ApiResource extends StripeObject
         return $obj;
     }
 
+    /**
+     * @param string $id The ID of the API resource to update.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @return ApiResource the updated API resource
+     */
     protected static function _update($id, $params = null, $options = null)
     {
         self::_validateParams($params);
         $base = static::baseUrl();
-        $url = static::classInstanceUrl($id);
+        $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
         $obj = Util\Util::convertToStripeObject($response->json, $opts);
