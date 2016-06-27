@@ -27,6 +27,18 @@ class Dispute extends ApiResource
     }
 
     /**
+     * @param string $id The ID of the dispute to update.
+     * @param array|null $params
+     * @param array|string|null $options
+     *
+     * @return Dispute The updated dispute.
+     */
+    public static function update($id, $params = null, $options = null)
+    {
+        return self::_update($id, $params, $options);
+    }
+
+    /**
      * @param array|string|null $options
      *
      * @return Dispute The saved charge.

@@ -27,6 +27,18 @@ class Order extends ApiResource
     }
 
     /**
+     * @param string $id The ID of the order to update.
+     * @param array|null $params
+     * @param array|string|null $options
+     *
+     * @return Order The updated order.
+     */
+    public static function update($id, $params = null, $options = null)
+    {
+        return self::_update($id, $params, $options);
+    }
+
+    /**
      * @param array|string|null $opts
      *
      * @return Order The saved Order.

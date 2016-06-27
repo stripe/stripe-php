@@ -27,6 +27,18 @@ class Plan extends ApiResource
     }
 
     /**
+     * @param string $id The ID of the plan to update.
+     * @param array|null $params
+     * @param array|string|null $options
+     *
+     * @return Plan The updated plan.
+     */
+    public static function update($id, $params = null, $options = null)
+    {
+        return self::_update($id, $params, $options);
+    }
+
+    /**
      * @param array|null $params
      * @param array|string|null $opts
      *

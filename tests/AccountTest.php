@@ -123,7 +123,7 @@ class AccountTest extends TestCase
         $this->assertSame($rejected->id, $account->id);
     }
 
-    public function testUpdateLegalEntity()
+    public function testSaveLegalEntity()
     {
         $response = $this->managedAccountResponse('acct_ABC');
         $this->mockRequest('POST', '/v1/accounts', array('managed' => 'true'), $response);
@@ -139,6 +139,29 @@ class AccountTest extends TestCase
         $account = Account::create(array('managed' => true));
         $account->legal_entity->first_name = 'Bob';
         $account->save();
+
+        $this->assertSame('Bob', $account->legal_entity->first_name);
+    }
+
+    public function testUpdateLegalEntity()
+    {
+        $response = $this->managedAccountResponse('acct_ABC');
+        $this->mockRequest('POST', '/v1/accounts', array('managed' => 'true'), $response);
+
+        $response['legal_entity']['first_name'] = 'Bob';
+        $this->mockRequest(
+            'POST',
+            '/v1/accounts/acct_ABC',
+            array('legal_entity' => array('first_name' => 'Bob')),
+            $response
+        );
+
+        $account = Account::create(array('managed' => true));
+        $account = Account::update($account['id'], array(
+          'legal_entity' => array(
+            'first_name' => 'Bob'
+          )
+        ));
 
         $this->assertSame('Bob', $account->legal_entity->first_name);
     }

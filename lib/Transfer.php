@@ -38,6 +38,18 @@ class Transfer extends ApiResource
     }
 
     /**
+     * @param string $id The ID of the transfer to update.
+     * @param array|null $params
+     * @param array|string|null $options
+     *
+     * @return Transfer The updated transfer.
+     */
+    public static function update($id, $params = null, $options = null)
+    {
+        return self::_update($id, $params, $options);
+    }
+
+    /**
      * @return TransferReversal The created transfer reversal.
      */
     public function reverse($params = null, $opts = null)
