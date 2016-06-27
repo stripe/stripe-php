@@ -38,6 +38,18 @@ class Invoice extends ApiResource
     }
 
     /**
+     * @param string $id The ID of the invoice to update.
+     * @param array|null $params
+     * @param array|string|null $options
+     *
+     * @return Invoice The updated invoice.
+     */
+    public static function update($id, $params = null, $options = null)
+    {
+        return self::_update($id, $params, $options);
+    }
+
+    /**
      * @param array|null $params
      * @param array|string|null $opts
      *

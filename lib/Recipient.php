@@ -38,6 +38,18 @@ class Recipient extends ApiResource
     }
 
     /**
+     * @param string $id The ID of the recipient to update.
+     * @param array|null $params
+     * @param array|string|null $options
+     *
+     * @return Recipient The updated recipient.
+     */
+    public static function update($id, $params = null, $options = null)
+    {
+        return self::_update($id, $params, $options);
+    }
+
+    /**
      * @param array|string|null $opts
      *
      * @return Recipient The saved recipient.

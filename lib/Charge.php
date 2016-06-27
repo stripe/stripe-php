@@ -38,6 +38,18 @@ class Charge extends ApiResource
     }
 
     /**
+     * @param string $id The ID of the charge to update.
+     * @param array|null $params
+     * @param array|string|null $options
+     *
+     * @return Charge The updated charge.
+     */
+    public static function update($id, $params = null, $options = null)
+    {
+        return self::_update($id, $params, $options);
+    }
+
+    /**
      * @param array|string|null $options
      *
      * @return Charge The saved charge.

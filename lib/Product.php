@@ -27,6 +27,18 @@ class Product extends ApiResource
     }
 
     /**
+     * @param string $id The ID of the product to update.
+     * @param array|null $params
+     * @param array|string|null $options
+     *
+     * @return Product The updated product.
+     */
+    public static function update($id, $params = null, $options = null)
+    {
+        return self::_update($id, $params, $options);
+    }
+
+    /**
      * @param array|string|null $opts
      *
      * @return Product The saved Product.

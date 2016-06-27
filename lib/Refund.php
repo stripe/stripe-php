@@ -17,6 +17,18 @@ class Refund extends ApiResource
     }
 
     /**
+     * @param string $id The ID of the refund to update.
+     * @param array|null $params
+     * @param array|string|null $options
+     *
+     * @return Refund The updated refund.
+     */
+    public static function update($id, $params = null, $options = null)
+    {
+        return self::_update($id, $params, $options);
+    }
+
+    /**
      * @param array|null $params
      * @param array|string|null $options
      *
