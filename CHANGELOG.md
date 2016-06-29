@@ -1,3 +1,7 @@
+### 3.15.0 2016-06-29
+
+* Add static `update` method to all resources that can be changed.
+
 ### 3.14.3 2016-06-20
 
 * Make sure that cURL never sends `Expects: 100-continue`, even on large request bodies
