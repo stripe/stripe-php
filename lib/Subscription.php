@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class Subscription
+ *
+ * @package Stripe
+ */
 class Subscription extends ApiResource
 {
     /**

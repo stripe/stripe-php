@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class ApiRequestor
+ *
+ * @package Stripe
+ */
 class ApiRequestor
 {
     private $_apiKey;

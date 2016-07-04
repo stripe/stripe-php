@@ -2,6 +2,18 @@
 
 namespace Stripe;
 
+/**
+ * Class FileUpload
+ *
+ * @property string $id
+ * @property string $object
+ * @property int $created
+ * @property string $purpose
+ * @property int $size
+ * @property string $type
+ *
+ * @package Stripe
+ */
 class FileUpload extends ApiResource
 {
     public static function baseUrl()

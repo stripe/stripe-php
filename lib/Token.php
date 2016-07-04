@@ -2,6 +2,21 @@
 
 namespace Stripe;
 
+/**
+ * Class Token
+ *
+ * @property string $id
+ * @property string $object
+ * @property mixed $bank_account
+ * @property mixed $card
+ * @property mixed $client_ip
+ * @property int $created
+ * @property bool $livemode
+ * @property string $type
+ * @property bool $used
+ *
+ * @package Stripe
+ */
 class Token extends ApiResource
 {
     /**

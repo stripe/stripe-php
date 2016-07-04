@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class Order
+ *
+ * @package Stripe
+ */
 class Order extends ApiResource
 {
     /**

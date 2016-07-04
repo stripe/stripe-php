@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class BankAccount
+ *
+ * @package Stripe
+ */
 class BankAccount extends ExternalAccount
 {
     /**

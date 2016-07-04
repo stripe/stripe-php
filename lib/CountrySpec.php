@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class CountrySpec
+ *
+ * @package Stripe
+ */
 class CountrySpec extends ApiResource
 {
     /**

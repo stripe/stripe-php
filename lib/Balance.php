@@ -2,6 +2,16 @@
 
 namespace Stripe;
 
+/**
+ * Class Balance
+ *
+ * @param string $object
+ * @param mixed $available
+ * @param bool $livedmode
+ * @param mixed $pending
+ *
+ * @package Stripe
+ */
 class Balance extends SingletonApiResource
 {
     /**

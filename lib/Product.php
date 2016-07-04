@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class Product
+ *
+ * @package Stripe
+ */
 class Product extends ApiResource
 {
     /**

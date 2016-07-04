@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class Stripe
+ *
+ * @package Stripe
+ */
 class Stripe
 {
     // @var string The Stripe API key to be used for requests.

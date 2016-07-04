@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class ApiResource
+ *
+ * @package Stripe
+ */
 abstract class ApiResource extends StripeObject
 {
     private static $HEADERS_TO_PERSIST = array('Stripe-Account' => true, 'Stripe-Version' => true);

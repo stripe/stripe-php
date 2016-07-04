@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class Invoice
+ *
+ * @package Stripe
+ */
 class Invoice extends ApiResource
 {
     /**

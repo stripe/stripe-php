@@ -2,6 +2,38 @@
 
 namespace Stripe;
 
+/**
+ * Class Account
+ *
+ * @property string $id
+ * @property string $object
+ * @property mixed $business_logo
+ * @property string $business_name
+ * @property mixed $business_url
+ * @property bool $charges_enabled
+ * @property string $country
+ * @property bool $debit_negative_balances
+ * @property mixed $decline_charge_on
+ * @property string $default_currency
+ * @property bool $details_submitted
+ * @property string $display_name
+ * @property string $email
+ * @property mixed $external_accounts
+ * @property mixed $legal_entity
+ * @property bool $managed
+ * @property mixed $product_description
+ * @property mixed $statement_descriptor
+ * @property mixed $support_email
+ * @property mixed $support_phone
+ * @property string $timezone
+ * @property mixed $tos_acceptance
+ * @property mixed $transfer_schedule
+ * @property bool $transfers_enabled
+ * @property mixed $verification
+ * @property mixed $keys
+ *
+ * @package Stripe
+ */
 class Account extends ApiResource
 {
     public function instanceUrl()

@@ -2,7 +2,13 @@
 
 namespace Stripe;
 
-// e.g. metadata on Stripe objects.
+/**
+ * Class AttachedObject
+ *
+ * e.g. metadata on Stripe objects.
+ *
+ * @package Stripe
+ */
 class AttachedObject extends StripeObject
 {
     /**

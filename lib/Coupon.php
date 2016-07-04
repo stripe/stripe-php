@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class Coupon
+ *
+ * @package Stripe
+ */
 class Coupon extends ApiResource
 {
     /**
