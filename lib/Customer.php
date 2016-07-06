@@ -19,8 +19,8 @@ namespace Stripe;
  * @property bool $livemode
  * @property array $metadata
  * @property mixed $shipping
- * @property array $sources
- * @property array $subscriptions
+ * @property Collection $sources
+ * @property Collection $subscriptions
  *
  * @package Stripe
  */
