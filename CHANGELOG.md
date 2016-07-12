@@ -1,3 +1,7 @@
+### 3.16.0 2016-07-12
+
+* Add `ThreeDSecure` model for 3-D secure payments
+
 ### 3.15.0 2016-06-29
 
 * Add static `update` method to all resources that can be changed.
