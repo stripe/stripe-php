@@ -89,6 +89,7 @@ abstract class Util
             'refund' => 'Stripe\\Refund',
             'sku' => 'Stripe\\SKU',
             'subscription' => 'Stripe\\Subscription',
+            'three_d_secure' => 'Stripe\\ThreeDSecure',
             'fee_refund' => 'Stripe\\ApplicationFeeRefund',
             'bitcoin_receiver' => 'Stripe\\BitcoinReceiver',
             'bitcoin_transaction' => 'Stripe\\BitcoinTransaction',
