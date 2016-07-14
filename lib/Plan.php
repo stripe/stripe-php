@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class Plan
+ *
+ * @package Stripe
+ */
 class Plan extends ApiResource
 {
     /**

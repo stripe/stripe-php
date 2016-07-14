@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class ExternalAccount
+ *
+ * @package Stripe
+ */
 abstract class ExternalAccount extends ApiResource
 {
     /**

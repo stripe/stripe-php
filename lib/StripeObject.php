@@ -5,6 +5,11 @@ namespace Stripe;
 use ArrayAccess;
 use InvalidArgumentException;
 
+/**
+ * Class StripeObject
+ *
+ * @package Stripe
+ */
 class StripeObject implements ArrayAccess, JsonSerializable
 {
     /**

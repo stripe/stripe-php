@@ -2,6 +2,16 @@
 
 namespace Stripe;
 
+/**
+ * Class Collection
+ *
+ * @param string $object
+ * @param string $url
+ * @param bool $has_more
+ * @param mixed $data
+ *
+ * @package Stripe
+ */
 class Collection extends ApiResource
 {
     protected $_requestParams = array();

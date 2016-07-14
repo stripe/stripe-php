@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class ApplicationFee
+ *
+ * @package Stripe
+ */
 class ApplicationFee extends ApiResource
 {
     /**

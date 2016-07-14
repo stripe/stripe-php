@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class BitcoinReceiver
+ *
+ * @package Stripe
+ */
 class BitcoinReceiver extends ExternalAccount
 {
     /**

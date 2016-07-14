@@ -2,6 +2,42 @@
 
 namespace Stripe;
 
+/**
+ * Class Charge
+ *
+ * @property string $id
+ * @property string $object
+ * @property int $amount
+ * @property int $amount_refunded
+ * @property mixed $application_fee
+ * @property string $balance_transaction
+ * @property bool $captured
+ * @property int $created
+ * @property string $currency
+ * @property string $customer
+ * @property mixed $description
+ * @property mixed $destination
+ * @property mixed $dispute
+ * @property mixed $failure_code
+ * @property mixed $failure_message
+ * @property mixed $fraud_details
+ * @property mixed $invoice
+ * @property bool $livemode
+ * @property mixed $metadata
+ * @property mixed $order
+ * @property bool $paid
+ * @property mixed $receipt_email
+ * @property mixed $receipt_number
+ * @property bool $refunded
+ * @property mixed $refunds
+ * @property mixed $shipping
+ * @property mixed $source
+ * @property mixed $source_transfer
+ * @property mixed $statement_descriptor
+ * @property string $status
+ *
+ * @package Stripe
+ */
 class Charge extends ApiResource
 {
     /**

@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class ApiResponse
+ *
+ * @package Stripe
+ */
 class ApiResponse
 {
     public $headers;

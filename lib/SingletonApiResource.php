@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class SingletonApiResource
+ *
+ * @package Stripe
+ */
 abstract class SingletonApiResource extends ApiResource
 {
     protected static function _singletonRetrieve($options = null)

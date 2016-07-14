@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class Recipient
+ *
+ * @package Stripe
+ */
 class Recipient extends ApiResource
 {
     /**

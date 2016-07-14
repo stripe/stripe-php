@@ -2,6 +2,11 @@
 
 namespace Stripe;
 
+/**
+ * Class SKU
+ *
+ * @package Stripe
+ */
 class SKU extends ApiResource
 {
     /**
