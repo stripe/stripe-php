@@ -162,7 +162,6 @@ class CustomerTest extends TestCase
         $updatedCustomer = Customer::retrieve($customer->id);
         $updatedCards = $updatedCustomer->sources->all();
         $this->assertSame(count($updatedCards["data"]), 2);
-
     }
 
     public function testCustomerUpdateCard()
@@ -229,7 +228,6 @@ class CustomerTest extends TestCase
         $updatedCustomer = Customer::retrieve($customer->id);
         $updatedSources = $updatedCustomer->sources->all();
         $this->assertSame(count($updatedSources["data"]), 2);
-
     }
 
     public function testCustomerUpdateSource()
