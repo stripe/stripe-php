@@ -1,3 +1,7 @@
+### 3.17.0 2016-07-14
+
+* Add field annotations to model classes for better editor hinting
+
 ### 3.16.0 2016-07-12
 
 * Add `ThreeDSecure` model for 3-D secure payments
