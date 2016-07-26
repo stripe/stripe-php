@@ -154,13 +154,21 @@ class CurlClient implements ClientInterface
         // PSR2 requires all constants be upper case. Sadly, the CURL_SSLVERSION
         // constants to not abide by those rules.
         //
-        // Opt into TLS 1.x support on older versions of curl. This causes some
-        // curl versions, notably on RedHat, to upgrade the connection to TLS
-        // 1.2, from the default TLS 1.0.
-        if (!defined('CURL_SSLVERSION_TLSv1')) {
-            define('CURL_SSLVERSION_TLSv1', 1); // constant not defined in PHP < 5.5
+        // Explicitly set secure connection to use TLS 1.2 now that the
+        // deprecation effort for 1.0 and 1.1 is well underway and TLS 1.2 is
+        // widespread enougth to be the only good option.
+        //
+        // We'd previously had this set to allow negotiating a range of 1.0 to
+        // 1.2 (CURL_SSLVERSION_TLSv1), but it seems that this will cause some
+        // combinations of systems and libraries to choose 1.0 or 1.1 even when
+        // 1.2 is available, and these requests may be blocked by us once they hit
+        // the Stripe API. See discussion on #276 for details.
+        if (!defined('CURL_SSLVERSION_TLSv1_2')) {
+            // Note the value 6 comes from its position in the enum that
+            // defines it in cURL's source code.
+            define('CURL_SSLVERSION_TLSv1_2', 6); // constant not defined in PHP < 5.5
         }
-        $opts[CURLOPT_SSLVERSION] = CURL_SSLVERSION_TLSv1;
+        $opts[CURLOPT_SSLVERSION] = CURL_SSLVERSION_TLSv1_2;
         // @codingStandardsIgnoreEnd
 
         curl_setopt_array($curl, $opts);
