@@ -150,25 +150,37 @@ class CurlClient implements ClientInterface
         if (!Stripe::$verifySslCerts) {
             $opts[CURLOPT_SSL_VERIFYPEER] = false;
         }
+
         // @codingStandardsIgnoreStart
         // PSR2 requires all constants be upper case. Sadly, the CURL_SSLVERSION
         // constants to not abide by those rules.
         //
-        // Explicitly set secure connection to use TLS 1.2 now that the
-        // deprecation effort for 1.0 and 1.1 is well underway and TLS 1.2 is
-        // widespread enougth to be the only good option.
+        // Explicitly set a TLS version for cURL to use now that we're starting
+        // to block 1.0 and 1.1 requests.
         //
-        // We'd previously had this set to allow negotiating a range of 1.0 to
-        // 1.2 (CURL_SSLVERSION_TLSv1), but it seems that this will cause some
-        // combinations of systems and libraries to choose 1.0 or 1.1 even when
-        // 1.2 is available, and these requests may be blocked by us once they hit
-        // the Stripe API. See discussion on #276 for details.
-        if (!defined('CURL_SSLVERSION_TLSv1_2')) {
-            // Note the value 6 comes from its position in the enum that
-            // defines it in cURL's source code.
-            define('CURL_SSLVERSION_TLSv1_2', 6); // constant not defined in PHP < 5.5
+        // If users are on OpenSSL >= 1.0.1, we know that they support TLS 1.2,
+        // so set that explicitly because on some older Linux distros, clients may
+        // default to TLS 1.0 even when they have TLS 1.2 available.
+        //
+        // For users on much older versions of OpenSSL, set a valid range of
+        // TLS 1.0 to 1.2 (CURL_SSLVERSION_TLSv1). Note that this may result in
+        // their requests being blocked unless they're specially flagged into
+        // being able to use an old TLS version.
+        //
+        // Note: The int on the right is pulled from the source of OpenSSL 1.0.1a.
+        if (OPENSSL_VERSION_NUMBER >= 0x1000101fL) {
+            if (!defined('CURL_SSLVERSION_TLSv1_2')) {
+                // Note the value 6 comes from its position in the enum that
+                // defines it in cURL's source code.
+                define('CURL_SSLVERSION_TLSv1_2', 6); // constant not defined in PHP < 5.5
+            }
+            $opts[CURLOPT_SSLVERSION] = CURL_SSLVERSION_TLSv1_2;
+        } else {
+            if (!defined('CURL_SSLVERSION_TLSv1')) {
+                define('CURL_SSLVERSION_TLSv1', 1); // constant not defined in PHP < 5.5
+            }
+            $opts[CURLOPT_SSLVERSION] = CURL_SSLVERSION_TLSv1;
         }
-        $opts[CURLOPT_SSLVERSION] = CURL_SSLVERSION_TLSv1_2;
         // @codingStandardsIgnoreEnd
 
         curl_setopt_array($curl, $opts);
