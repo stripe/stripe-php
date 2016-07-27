@@ -70,4 +70,36 @@ class CollectionTest extends TestCase
 
         $this->assertSame($seen, array('pm_123', 'pm_124', 'pm_125', 'pm_126', 'pm_127'));
     }
+
+    public function testIteratorToArray()
+    {
+        $collection = Collection::constructFrom(
+            $this->pageableModelResponse(array('pm_123', 'pm_124'), true),
+            new Util\RequestOptions()
+        );
+
+        $this->mockRequest(
+            'GET',
+            '/v1/pageablemodels',
+            array(
+                  'starting_after' => 'pm_124'
+            ),
+            $this->pageableModelResponse(array('pm_125', 'pm_126'), true)
+        );
+        $this->mockRequest(
+            'GET',
+            '/v1/pageablemodels',
+            array(
+                  'starting_after' => 'pm_126'
+            ),
+            $this->pageableModelResponse(array('pm_127'), false)
+        );
+
+        $seen = array();
+        foreach (iterator_to_array($collection->autoPagingIterator()) as $item) {
+            array_push($seen, $item['id']);
+        }
+
+        $this->assertSame($seen, array('pm_123', 'pm_124', 'pm_125', 'pm_126', 'pm_127'));
+    }
 }
