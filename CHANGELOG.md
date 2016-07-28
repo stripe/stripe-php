@@ -1,3 +1,7 @@
+### 3.18.0 2016-07-28
+
+* Add new `STATUS_` constants for subscriptions
+
 ### 3.17.1 2016-07-28
 
 * Fix auto-paging iterator so that it plays nicely with `iterator_to_array`
