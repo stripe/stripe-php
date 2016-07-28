@@ -168,7 +168,7 @@ class CurlClient implements ClientInterface
         // being able to use an old TLS version.
         //
         // Note: The int on the right is pulled from the source of OpenSSL 1.0.1a.
-        if (OPENSSL_VERSION_NUMBER >= 0x1000101f) {
+        if (OPENSSL_VERSION_NUMBER >= 0x1000100f) {
             if (!defined('CURL_SSLVERSION_TLSv1_2')) {
                 // Note the value 6 comes from its position in the enum that
                 // defines it in cURL's source code.
