@@ -32,7 +32,7 @@ class DisputeTest extends TestCase
 
         while ($c->dispute === null) {
             if ($attempts > 5) {
-                throw "Charge is taking too long to be disputed";
+                throw new \Exception("Charge is taking too long to be disputed");
             }
             sleep(1);
             $c = Charge::retrieve($c->id);
