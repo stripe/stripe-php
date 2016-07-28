@@ -1,3 +1,7 @@
+### 3.17.1 2016-07-28
+
+* Fix auto-paging iterator so that it plays nicely with `iterator_to_array`
+
 ### 3.17.0 2016-07-14
 
 * Add field annotations to model classes for better editor hinting
