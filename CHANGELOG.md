@@ -1,3 +1,7 @@
+### 3.19.0 2016-07-29
+
+* Opt requests directly into TLS 1.2 where OpenSSL >= 1.0.1 (see #277 for context)
+
 ### 3.18.0 2016-07-28
 
 * Add new `STATUS_` constants for subscriptions
