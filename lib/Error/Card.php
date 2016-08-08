@@ -16,6 +16,7 @@ class Card extends Base
         parent::__construct($message, $httpStatus, $httpBody, $jsonBody, $httpHeaders);
         $this->stripeParam = $stripeParam;
         $this->stripeCode = $stripeCode;
+        $this->stripeDeclineCode = isset($jsonBody["error"]["decline_code"]) ? $jsonBody["error"]["decline_code"] : null;
     }
 
     public function getStripeCode()
@@ -26,5 +27,10 @@ class Card extends Base
     public function getStripeParam()
     {
         return $this->stripeParam;
+    }
+
+    public function getStripeDeclineCode()
+    {
+        return $this->stripeDeclineCode;
     }
 }
