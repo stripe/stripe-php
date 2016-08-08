@@ -1,3 +1,7 @@
+### 3.20.0 2016-08-08
+
+* Add `getDeclineCode` to card errors
+
 ### 3.19.0 2016-07-29
 
 * Opt requests directly into TLS 1.2 where OpenSSL >= 1.0.1 (see #277 for context)
