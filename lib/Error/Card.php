@@ -16,6 +16,11 @@ class Card extends Base
         parent::__construct($message, $httpStatus, $httpBody, $jsonBody, $httpHeaders);
         $this->stripeParam = $stripeParam;
         $this->stripeCode = $stripeCode;
+
+        // This one is not like the others because it was added later and we're
+        // trying to do our best not to change the public interface of this class'
+        // constructor. We should consider changing its implementation on the
+        // next major version bump of this library.
         $this->stripeDeclineCode = isset($jsonBody["error"]["decline_code"]) ? $jsonBody["error"]["decline_code"] : null;
     }
 
