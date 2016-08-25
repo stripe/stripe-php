@@ -88,6 +88,7 @@ abstract class Util
             'recipient' => 'Stripe\\Recipient',
             'refund' => 'Stripe\\Refund',
             'sku' => 'Stripe\\SKU',
+            'source' => 'Stripe\\Source',
             'subscription' => 'Stripe\\Subscription',
             'three_d_secure' => 'Stripe\\ThreeDSecure',
             'fee_refund' => 'Stripe\\ApplicationFeeRefund',
