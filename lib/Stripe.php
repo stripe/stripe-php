@@ -27,7 +27,7 @@ class Stripe
     // @var boolean Defaults to true.
     public static $verifySslCerts = true;
 
-    const VERSION = '3.20.0';
+    const VERSION = '3.21.0';
 
     /**
      * @return string The API key used for requests.
