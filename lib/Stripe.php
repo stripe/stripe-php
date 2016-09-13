@@ -27,6 +27,9 @@ class Stripe
     // @var boolean Defaults to true.
     public static $verifySslCerts = true;
 
+    // @var array The application's information (name, version, URL)
+    public static $appInfo = null;
+
     const VERSION = '3.21.0';
 
     /**
@@ -96,5 +99,28 @@ class Stripe
     public static function setAccountId($accountId)
     {
         self::$accountId = $accountId;
+    }
+
+    /**
+     * @return array | null The application's information
+     */
+    public static function getAppInfo()
+    {
+        return self::$appInfo;
+    }
+
+    /**
+     * @param string $appName The application's name
+     * @param string $appVersion The application's version
+     * @param string $appUrl The application's URL
+     */
+    public static function setAppInfo($appName, $appVersion = null, $appUrl = null)
+    {
+        if (self::$appInfo === null) {
+            self::$appInfo = array();
+        }
+        self::$appInfo['name'] = $appName;
+        self::$appInfo['version'] = $appVersion;
+        self::$appInfo['url'] = $appUrl;
     }
 }
