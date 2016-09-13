@@ -1,3 +1,7 @@
+### 3.22.0 2016-09-13
+
+* Add `Stripe::setAppInfo` to allow plugins to register user agent information
+
 ### 3.21.0 2016-08-25
 
 * Add `Source` model for generic payment sources
