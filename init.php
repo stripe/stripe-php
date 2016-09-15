@@ -35,6 +35,7 @@ require(dirname(__FILE__) . '/lib/ExternalAccount.php');
 // Stripe API Resources
 require(dirname(__FILE__) . '/lib/Account.php');
 require(dirname(__FILE__) . '/lib/AlipayAccount.php');
+require(dirname(__FILE__) . '/lib/ApplePayDomain.php');
 require(dirname(__FILE__) . '/lib/ApplicationFee.php');
 require(dirname(__FILE__) . '/lib/ApplicationFeeRefund.php');
 require(dirname(__FILE__) . '/lib/Balance.php');
