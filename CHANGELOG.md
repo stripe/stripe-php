@@ -1,3 +1,7 @@
+### 3.23.0 2016-09-15
+
+* Add support for Apple Pay domains
+
 ### 3.22.0 2016-09-13
 
 * Add `Stripe::setAppInfo` to allow plugins to register user agent information
