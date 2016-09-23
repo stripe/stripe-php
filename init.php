@@ -63,6 +63,7 @@ require(dirname(__FILE__) . '/lib/Refund.php');
 require(dirname(__FILE__) . '/lib/SKU.php');
 require(dirname(__FILE__) . '/lib/Source.php');
 require(dirname(__FILE__) . '/lib/Subscription.php');
+require(dirname(__FILE__) . '/lib/SubscriptionItem.php');
 require(dirname(__FILE__) . '/lib/ThreeDSecure.php');
 require(dirname(__FILE__) . '/lib/Token.php');
 require(dirname(__FILE__) . '/lib/Transfer.php');

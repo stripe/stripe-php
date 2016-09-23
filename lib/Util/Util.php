@@ -91,6 +91,7 @@ abstract class Util
             'sku' => 'Stripe\\SKU',
             'source' => 'Stripe\\Source',
             'subscription' => 'Stripe\\Subscription',
+            'subscription_item' => 'Stripe\\SubscriptionItem',
             'three_d_secure' => 'Stripe\\ThreeDSecure',
             'fee_refund' => 'Stripe\\ApplicationFeeRefund',
             'bitcoin_receiver' => 'Stripe\\BitcoinReceiver',
