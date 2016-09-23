@@ -18,7 +18,6 @@ class SubscriptionItemTest extends TestCase
         $this->assertSame($subItem->plan->id, $planID);
 
         $subItem->quantity = 2;
-        $subItem->subscription = $sub->id;
         $subItem->save();
 
         $subItem = SubscriptionItem::retrieve($subItem->id);
