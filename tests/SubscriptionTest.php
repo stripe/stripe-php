@@ -87,7 +87,7 @@ class SubscriptionTest extends TestCase
           ),
         ));
 
-        $this->assertSame(count($sub->items->data), 2);
+        $this->assertSame(count($sub->items->data), 1);
         $this->assertSame($sub->items->data[0]->id, $planID);
 
         $sub = Subscription::update($sub->id, array(
