@@ -88,7 +88,7 @@ class SubscriptionTest extends TestCase
         ));
 
         $this->assertSame(count($sub->items->data), 1);
-        $this->assertSame($sub->items->data[0]->id, $planID);
+        $this->assertSame($sub->items->data[0]->plan->id, $planID);
 
         $sub = Subscription::update($sub->id, array(
           'items' => array(
@@ -97,8 +97,8 @@ class SubscriptionTest extends TestCase
         ));
 
         $this->assertSame(count($sub->items->data), 2);
-        $this->assertSame($sub->items->data[0]->id, $planID);
-        $this->assertSame($sub->items->data[1]->id, $planID);
+        $this->assertSame($sub->items->data[0]->plan->id, $planID);
+        $this->assertSame($sub->items->data[1]->plan->id, $planID);
     }
 
     public function testDeleteDiscount()
