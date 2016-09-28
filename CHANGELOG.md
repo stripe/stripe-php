@@ -1,3 +1,8 @@
+### 4.0.0 2016-09-28
+
+* Support for subscription items
+* Drop attempt to force TLS 1.2: please note that this could be breaking if you're using old OS distributions or packages and upgraded recently (so please make sure to test your integration!)
+
 ### 3.23.0 2016-09-15
 
 * Add support for Apple Pay domains
