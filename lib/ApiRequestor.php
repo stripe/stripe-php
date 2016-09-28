@@ -141,6 +141,7 @@ class ApiRequestor
 
         $langVersion = phpversion();
         $uname = php_uname();
+        $curlVersion = curl_version();
         $appInfo = Stripe::getAppInfo();
         $ua = array(
             'bindings_version' => Stripe::VERSION,
@@ -148,6 +149,8 @@ class ApiRequestor
             'lang_version' => $langVersion,
             'publisher' => 'stripe',
             'uname' => $uname,
+            'httplib' => 'curl ' . $curlVersion['version'],
+            'ssllib' => $curlVersion['ssl_version'],
         );
         if ($appInfo !== null) {
             $uaString .= ' ' . self::_formatAppInfo($appInfo);

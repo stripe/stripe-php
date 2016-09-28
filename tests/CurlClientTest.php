@@ -89,4 +89,12 @@ class CurlClientTest extends TestCase
         $enc = CurlClient::encode($a);
         $this->assertSame('foo%5B0%5D%5Bbar%5D=baz&foo%5B1%5D%5Bbar%5D=bin', $enc);
     }
+
+    public function testSslOption()
+    {
+        // make sure options array loads/saves properly
+        $optionsArray = array(CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1);
+        $withOptionsArray = new CurlClient($optionsArray);
+        $this->assertSame($withOptionsArray->getDefaultOptions(), $optionsArray);
+    }
 }
