@@ -5,10 +5,10 @@ namespace Stripe;
 /**
  * Class Balance
  *
- * @param string $object
- * @param mixed $available
- * @param bool $livedmode
- * @param mixed $pending
+ * @property string $object
+ * @property mixed $available
+ * @property bool $livedmode
+ * @property mixed $pending
  *
  * @package Stripe
  */
