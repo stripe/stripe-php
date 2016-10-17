@@ -1,3 +1,8 @@
+### 4.0.1 2016-10-17
+
+* Fix transfer reversal materialization
+* Fixes for some property definitions in docblocks
+
 ### 4.0.0 2016-09-28
 
 * Support for subscription items
