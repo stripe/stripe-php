@@ -82,6 +82,7 @@ abstract class Util
             'file' => 'Stripe\\FileUpload',
             'token' => 'Stripe\\Token',
             'transfer' => 'Stripe\\Transfer',
+            'transfer_reversal' => 'Stripe\\TransferReversal',
             'order' => 'Stripe\\Order',
             'order_return' => 'Stripe\\OrderReturn',
             'plan' => 'Stripe\\Plan',
