@@ -5,10 +5,10 @@ namespace Stripe;
 /**
  * Class Collection
  *
- * @param string $object
- * @param string $url
- * @param bool $has_more
- * @param mixed $data
+ * @property string $object
+ * @property string $url
+ * @property bool $has_more
+ * @property mixed $data
  *
  * @package Stripe
  */
