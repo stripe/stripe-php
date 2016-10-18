@@ -20,7 +20,7 @@ require(dirname(__FILE__) . '/lib/Error/ApiConnection.php');
 require(dirname(__FILE__) . '/lib/Error/Authentication.php');
 require(dirname(__FILE__) . '/lib/Error/Card.php');
 require(dirname(__FILE__) . '/lib/Error/InvalidRequest.php');
-require(dirname(__FILE__) . '/lib/Error/Permissions.php');
+require(dirname(__FILE__) . '/lib/Error/Permission.php');
 require(dirname(__FILE__) . '/lib/Error/RateLimit.php');
 
 // Plumbing

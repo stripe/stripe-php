@@ -2,9 +2,9 @@
 
 namespace Stripe;
 
-class PermissionsErrorTest extends TestCase
+class PermissionErrorTest extends TestCase
 {
-    private function permissionsErrorResponse()
+    private function permissionErrorResponse()
     {
         return array(
             'error' => array(),
@@ -12,11 +12,11 @@ class PermissionsErrorTest extends TestCase
     }
 
     /**
-     * @expectedException Stripe\Error\Permissions
+     * @expectedException Stripe\Error\Permission
      */
-    public function testPermissions()
+    public function testPermission()
     {
-        $this->mockRequest('GET', '/v1/accounts/acct_DEF', array(), $this->permissionsErrorResponse(), 403);
+        $this->mockRequest('GET', '/v1/accounts/acct_DEF', array(), $this->permissionErrorResponse(), 403);
         Account::retrieve('acct_DEF');
     }
 }
