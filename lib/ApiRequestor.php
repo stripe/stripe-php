@@ -76,6 +76,8 @@ class ApiRequestor
      * @throws Error\InvalidRequest if the error is caused by the user.
      * @throws Error\Authentication if the error is caused by a lack of
      *    permissions.
+     * @throws Error\Permission if the error is caused by insufficient
+     *    permissions.
      * @throws Error\Card if the error is the error code is 402 (payment
      *    required)
      * @throws Error\RateLimit if the error is caused by too many requests
@@ -110,6 +112,8 @@ class ApiRequestor
                 throw new Error\Authentication($msg, $rcode, $rbody, $resp, $rheaders);
             case 402:
                 throw new Error\Card($msg, $param, $code, $rcode, $rbody, $resp, $rheaders);
+            case 403:
+                throw new Error\Permission($msg, $rcode, $rbody, $resp, $rheaders);
             case 429:
                 throw new Error\RateLimit($msg, $param, $rcode, $rbody, $resp, $rheaders);
             default:
