@@ -1,3 +1,7 @@
+### 4.1.0 2016-10-18
+
+* Support for 403 status codes (permission denied)
+
 ### 4.0.1 2016-10-17
 
 * Fix transfer reversal materialization
