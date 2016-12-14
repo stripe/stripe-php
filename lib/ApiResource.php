@@ -172,7 +172,6 @@ abstract class ApiResource extends StripeObject
     protected static function _update($id, $params = null, $options = null)
     {
         self::_validateParams($params);
-        $base = static::baseUrl();
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
