@@ -4,18 +4,19 @@ namespace Stripe;
 
 class SubscriptionItemTest extends TestCase
 {
-
     public function testCreateUpdateRetrieveListCancel()
     {
-        $planID = 'gold-' . self::generateRandomString(20);
-        self::retrieveOrCreatePlan($planID);
+        $plan0ID = 'gold-' . self::generateRandomString(20);
+        self::retrieveOrCreatePlan($plan0ID);
 
         $customer = self::createTestCustomer();
-        $sub = Subscription::create(array('plan' => $planID, 'customer' => $customer->id));
+        $sub = Subscription::create(array('plan' => $plan0ID, 'customer' => $customer->id));
 
-        $subItem = SubscriptionItem::create(array('plan' => $planID, 'subscription' => $sub->id));
+        $plan1ID = 'gold-' . self::generateRandomString(20);
+        self::retrieveOrCreatePlan($plan1ID);
 
-        $this->assertSame($subItem->plan->id, $planID);
+        $subItem = SubscriptionItem::create(array('plan' => $plan1ID, 'subscription' => $sub->id));
+        $this->assertSame($subItem->plan->id, $plan1ID);
 
         $subItem->quantity = 2;
         $subItem->save();
