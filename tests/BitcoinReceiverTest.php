@@ -42,7 +42,7 @@ class BitcoinReceiverTest extends TestCase
         $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
 
         $receivers = BitcoinReceiver::all();
-        $this->assertTrue(count($receivers->data) > 0);
+        $this->assertGreaterThan(0, count($receivers->data));
     }
 
     public function testListTransactions()
