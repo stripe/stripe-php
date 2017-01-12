@@ -51,6 +51,6 @@ class InvoiceTest extends TestCase
     {
         self::authorizeFromEnv();
         $invoices = Invoice::all();
-        $this->assertTrue(count($invoices) > 0);
+        $this->assertGreaterThan(0, count($invoices));
     }
 }
