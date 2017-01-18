@@ -1,3 +1,7 @@
+### 4.4.0 2017-01-18
+
+* Add support for updating sources
+
 ### 4.3.0 2016-11-30
 
 * Add support for verifying sources
