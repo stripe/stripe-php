@@ -20,7 +20,6 @@ namespace Stripe;
  * @property array $metadata
  * @property mixed $shipping
  * @property Collection $sources
- * @property Collection $subscriptions
  *
  * @package Stripe
  */
