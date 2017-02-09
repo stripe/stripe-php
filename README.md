@@ -49,9 +49,8 @@ If you use Composer, these dependencies should be handled automatically. If you 
 Simple usage looks like:
 
 ```php
-\Stripe\Stripe::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
-$myCard = array('number' => '4242424242424242', 'exp_month' => 8, 'exp_year' => 2018);
-$charge = \Stripe\Charge::create(array('card' => $myCard, 'amount' => 2000, 'currency' => 'usd'));
+\Stripe\Stripe::setApiKey('sk_test_BQokikJOvBiI2HlWgH4olfQ2');
+$charge = \Stripe\Charge::create(array('amount' => 2000, 'currency' => 'usd', 'source' => 'tok_189fqt2eZvKYlo2CTGBeg6Uq' ));
 echo $charge;
 ```
 
