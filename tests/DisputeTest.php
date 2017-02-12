@@ -62,7 +62,7 @@ class DisputeTest extends TestCase
         $c = $this->createDisputedCharge();
 
         $d = $c->dispute;
-        $d->evidence["customer_name"] = "Bob";
+        $d->evidence = array("customer_name" => "Bob", "product_description" => "Lorem ipsum dolor sit amet.");
         $s = $d->save();
 
         $this->assertSame($d->id, $s->id);
