@@ -22,17 +22,33 @@ class StripeObject implements ArrayAccess, JsonSerializable
      *    the parent class's URL (e.g. metadata).
      */
     public static $nestedUpdatableAttributes;
+    /**
+     * @var Util\Set Attributes that are nested but cannot be unset via
+     *    an empty string.
+     */
+    public static $nonNullableAttributes;
 
     public static function init()
     {
         self::$permanentAttributes = new Util\Set(array('_opts', 'id'));
         self::$nestedUpdatableAttributes = new Util\Set(array(
-            'metadata', 'legal_entity', 'address', 'dob', 'transfer_schedule', 'verification',
-            'tos_acceptance', 'personal_address',
+            'metadata', 'legal_entity',
+            'transfer_schedule', 'tos_acceptance',
+
+            // These all can't be unset via an empty string.
+            'dob', 'verification',
+            'address',
+            'personal_address',
+
             // will make the array into an AttachedObject: weird, but works for now
             'additional_owners', 0, 1, 2, 3, 4, // Max 3, but leave the 4th so errors work properly
             'inventory',
             'owner',
+        ));
+        self::$nonNullableAttributes = new Util\Set(array(
+          'dob', 'verification',
+          'address', 'address_kana', 'address_kanji',
+          'personal_address', 'personal_address_kana', 'personal_address_kanji',
         ));
     }
 
@@ -101,7 +117,9 @@ class StripeObject implements ArrayAccess, JsonSerializable
             // TODO: may want to clear from $_transientValues (Won't be user-visible).
             $this->_values[$k] = $v;
         }
-        if (!self::$permanentAttributes->includes($k)) {
+
+        if (!self::$permanentAttributes->includes($k)
+                && !(self::$nonNullableAttributes->includes($k) && $v === null)) {
             $this->_unsavedValues->add($k);
         }
     }
