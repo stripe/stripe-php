@@ -254,11 +254,11 @@ class ApiRequestor
 
     private function _interpretResponse($rbody, $rcode, $rheaders)
     {
-        try {
-            $resp = json_decode($rbody, true);
-        } catch (Exception $e) {
+        $resp = json_decode($rbody, true);
+        $jsonError = json_last_error();
+        if ($resp === null && $jsonError !== JSON_ERROR_NONE) {
             $msg = "Invalid response body from API: $rbody "
-              . "(HTTP response code was $rcode)";
+              . "(HTTP response code was $rcode, json_last_error() was $jsonError)";
             throw new Error\Api($msg, $rcode, $rbody);
         }
 
