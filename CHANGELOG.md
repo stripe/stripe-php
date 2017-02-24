@@ -1,3 +1,7 @@
+### 4.4.1 2017-02-24
+
+* Correct the error check on a bad JSON decoding
+
 ### 4.4.0 2017-01-18
 
 * Add support for updating sources
