@@ -17,7 +17,7 @@ namespace Stripe;
  * @property string $customer
  * @property mixed $description
  * @property mixed $destination
- * @property mixed $dispute
+ * @property string|null $dispute
  * @property mixed $failure_code
  * @property mixed $failure_message
  * @property mixed $fraud_details
