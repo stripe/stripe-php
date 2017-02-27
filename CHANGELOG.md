@@ -1,3 +1,7 @@
+### 4.4.2 2017-02-27
+
+* Correct handling of `owner` parameter when updating sources
+
 ### 4.4.1 2017-02-24
 
 * Correct the error check on a bad JSON decoding
