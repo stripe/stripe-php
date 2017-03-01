@@ -115,7 +115,9 @@ class StripeObjectTest extends TestCase
         $this->assertSame($s->metadata, array('bar' => 3));
         $s->metadata = null;
 
-        $this->assertSame($s->serializeParameters()['metadata'], '');
+        $serialized = $s->serializeParameters();
+
+        $this->assertSame($serialized['metadata'], '');
     }
 
     public function testReplaceNonNullableNullDoesNotSerialize()
