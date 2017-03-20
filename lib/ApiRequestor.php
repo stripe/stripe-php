@@ -145,7 +145,16 @@ class ApiRequestor
 
         $langVersion = phpversion();
         $uname = php_uname();
-        $curlVersion = curl_version();
+
+        $httplib = 'unknown';
+        $ssllib = 'unknown';
+
+        if (function_exists('curl_version')) {
+            $curlVersion = curl_version();
+            $httplib = 'curl ' . $curlVersion['version'];
+            $ssllib = $curlVersion['ssl_version'];
+        }
+
         $appInfo = Stripe::getAppInfo();
         $ua = array(
             'bindings_version' => Stripe::VERSION,
@@ -153,8 +162,8 @@ class ApiRequestor
             'lang_version' => $langVersion,
             'publisher' => 'stripe',
             'uname' => $uname,
-            'httplib' => 'curl ' . $curlVersion['version'],
-            'ssllib' => $curlVersion['ssl_version'],
+            'httplib' => $httplib,
+            'ssllib' => $ssllib,
         );
         if ($appInfo !== null) {
             $uaString .= ' ' . self::_formatAppInfo($appInfo);
