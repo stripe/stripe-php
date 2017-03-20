@@ -137,6 +137,53 @@ class SourceTest extends TestCase
         $this->assertSame($source->owner['address']['country'], "Test Country");
     }
 
+    public function testDeleteAttached()
+    {
+        $response = array(
+            'id' => 'src_foo',
+            'object' => 'source',
+            'customer' => 'cus_bar',
+        );
+        $this->mockRequest(
+            'GET',
+            '/v1/sources/src_foo',
+            array(),
+            $response
+        );
+
+        unset($response['customer']);
+        $this->mockRequest(
+            'DELETE',
+            '/v1/customers/cus_bar/sources/src_foo',
+            array(),
+            $response
+        );
+
+        $source = Source::retrieve('src_foo');
+        $source->delete();
+        $this->assertFalse(array_key_exists('customer', $source));
+    }
+
+    /**
+     * @expectedException Stripe\Error\Api
+     */
+    public function testDeleteUnattached()
+    {
+        $response = array(
+            'id' => 'src_foo',
+            'object' => 'source',
+        );
+        $this->mockRequest(
+            'GET',
+            '/v1/sources/src_foo',
+            array(),
+            $response
+        );
+
+        $source = Source::retrieve('src_foo');
+        $source->delete();
+    }
+
     public function testVerify()
     {
         $response = array(

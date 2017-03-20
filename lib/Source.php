@@ -66,6 +66,41 @@ class Source extends ApiResource
 
     /**
      * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @return Source The deleted source.
+     */
+    public function delete($params = null, $options = null)
+    {
+        self::_validateParams($params);
+
+        $id = $this['id'];
+        if (!$id) {
+            $class = get_class($this);
+            $msg = "Could not determine which URL to request: $class instance "
+             . "has invalid ID: $id";
+            throw new Error\InvalidRequest($msg, null);
+        }
+
+        if ($this['customer']) {
+            $base = Customer::classUrl();
+            $parentExtn = urlencode(Util\Util::utf8($this['customer']));
+            $extn = urlencode(Util\Util::utf8($id));
+            $url = "$base/$parentExtn/sources/$extn";
+
+            list($response, $opts) = $this->_request('delete', $url, $params, $options);
+            $this->refreshFrom($response, $opts);
+            return $this;
+        } else {
+            $message = "Source objects cannot be deleted, they can only be "
+               . "detached from customer objects. This source object does not "
+               . "appear to be currently attached to a customer object.";
+            throw new Error\Api($message);
+        }
+    }
+
+    /**
+     * @param array|null $params
      * @param array|string|null $options
      *
      * @return BankAccount The verified bank account.
