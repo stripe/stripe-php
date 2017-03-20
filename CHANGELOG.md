@@ -1,3 +1,7 @@
+### 4.5.0 2017-03-20
+
+* Support for detaching sources from customers
+
 ### 4.4.2 2017-02-27
 
 * Correct handling of `owner` parameter when updating sources
