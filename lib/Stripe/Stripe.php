@@ -24,6 +24,9 @@ abstract class Stripe
   public static $verifySslCerts = true;
   const VERSION = '1.18.0';
 
+  // @var array The application's information (name, version, URL)
+  public static $appInfo = null;
+
   /**
    * @return string The API key used for requests.
    */
@@ -73,5 +76,28 @@ abstract class Stripe
   public static function setVerifySslCerts($verify)
   {
     self::$verifySslCerts = $verify;
+  }
+
+  /**
+   * @return array | null The application's information
+   */
+  public static function getAppInfo()
+  {
+      return self::$appInfo;
+  }
+
+  /**
+   * @param string $appName The application's name
+   * @param string $appVersion The application's version
+   * @param string $appUrl The application's URL
+   */
+  public static function setAppInfo($appName, $appVersion = null, $appUrl = null)
+  {
+      if (self::$appInfo === null) {
+          self::$appInfo = array();
+      }
+      self::$appInfo['name'] = $appName;
+      self::$appInfo['version'] = $appVersion;
+      self::$appInfo['url'] = $appUrl;
   }
 }

@@ -156,6 +156,51 @@ class Stripe_ApiRequestor
     }
   }
 
+  private static function _formatAppInfo($appInfo)
+  {
+      if ($appInfo !== null) {
+          $string = $appInfo['name'];
+          if ($appInfo['version'] !== null) {
+              $string .= '/' . $appInfo['version'];
+          }
+          if ($appInfo['url'] !== null) {
+              $string .= ' (' . $appInfo['url'] . ')';
+          }
+          return $string;
+      } else {
+          return null;
+      }
+  }
+
+  private static function _defaultHeaders($apiKey)
+  {
+      $appInfo = Stripe::getAppInfo();
+
+      $uaString = 'Stripe/v1 PhpBindings/' . Stripe::VERSION;
+
+      $langVersion = phpversion();
+      $uname = php_uname();
+      $appInfo = Stripe::getAppInfo();
+      $ua = array(
+          'bindings_version' => Stripe::VERSION,
+          'lang' => 'php',
+          'lang_version' => $langVersion,
+          'publisher' => 'stripe',
+          'uname' => $uname,
+      );
+      if ($appInfo !== null) {
+          $uaString .= ' ' . self::_formatAppInfo($appInfo);
+          $ua['application'] = $appInfo;
+      }
+
+      $defaultHeaders = array(
+          'X-Stripe-Client-User-Agent' => json_encode($ua),
+          'User-Agent' => $uaString,
+          'Authorization' => 'Bearer ' . $apiKey,
+      );
+      return $defaultHeaders;
+  }
+
   private function _requestRaw($method, $url, $params, $headers)
   {
     if (!array_key_exists($this->_apiBase, self::$_preFlight)
@@ -178,21 +223,7 @@ class Stripe_ApiRequestor
 
     $absUrl = $this->_apiBase.$url;
     $params = self::_encodeObjects($params);
-    $langVersion = phpversion();
-    $uname = php_uname();
-    $ua = array(
-        'bindings_version' => Stripe::VERSION,
-        'lang' => 'php',
-        'lang_version' => $langVersion,
-        'publisher' => 'stripe',
-        'uname' => $uname,
-    );
-    $defaultHeaders = array(
-        'X-Stripe-Client-User-Agent' => json_encode($ua),
-        'User-Agent' => 'Stripe/v1 PhpBindings/' . Stripe::VERSION,
-        'Authorization' => 'Bearer ' . $myApiKey,
-    );
-
+    $defaultHeaders = $this->_defaultHeaders($myApiKey);
     if (Stripe::$apiVersion) {
       $defaultHeaders['Stripe-Version'] = Stripe::$apiVersion;
     }
