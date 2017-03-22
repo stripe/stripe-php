@@ -1,3 +1,7 @@
+### 4.5.1 2017-03-22
+
+* Remove hard dependency on cURL
+
 ### 4.5.0 2017-03-20
 
 * Support for detaching sources from customers
