@@ -125,9 +125,9 @@ class TestCase extends \PHPUnit_Framework_TestCase
                 'type' => 'individual',
                 'tax_id' => '000000000',
                 'bank_account' => array(
-                    'country'    => 'US',
+                    'country' => 'US',
                     'routing_number' => '110000000',
-                    'account_number'  => '000123456789'
+                    'account_number' => '000123456789'
                 ),
             )
         );
@@ -145,6 +145,47 @@ class TestCase extends \PHPUnit_Framework_TestCase
                 'managed' => false,
                 'country' => 'US',
                 'email' => self::generateRandomEmail(),
+            )
+        );
+    }
+
+    /**
+     * Create a test account
+     */
+    protected static function createTestManagedAccount(array $attributes = array())
+    {
+        self::authorizeFromEnv();
+
+        return Account::create(
+            $attributes + array(
+                'managed' => true,
+                'country' => 'US',
+                'external_account' => array(
+                    'object' => 'bank_account',
+                    'country' => 'US',
+                    'currency' => 'usd',
+                    'routing_number' => '110000000',
+                    'account_number' => '000123456789'
+                ),
+                'legal_entity' => array(
+                    'type'               => 'individual',
+                    'personal_id_number' => '000000000',
+                    'type'               => 'individual',
+                    'dob'                => array('year' => '1980', 'month' => '01', 'day' => '01'),
+                    'first_name'         => 'John',
+                    'last_name'          => 'Doe',
+                    'address'            => array(
+                        'line1'          => '1234 Main Street',
+                        'postal_code'    => '94110',
+                        'city'           => 'San Francisco'
+                    ),
+                    'personal_address'   => array(
+                        'line1'          => '1234 Main Street',
+                        'postal_code'    => '94110',
+                        'city'           => 'San Francisco'
+                    )
+                ),
+                'tos_acceptance' => array('date' => time(), 'ip' => '127.0.0.1')
             )
         );
     }
