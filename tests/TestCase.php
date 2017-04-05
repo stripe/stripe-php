@@ -188,7 +188,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Genereate a semi-random string
+     * Generate a semi-random string
      */
     protected static function generateRandomString($length = 24)
     {
