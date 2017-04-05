@@ -25,6 +25,11 @@ class TestCase extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         ApiRequestor::setHttpClient(HttpClient\CurlClient::instance());
+
+        // Peg the API version so that it can be varied independently of the
+        // one set on the test account.
+        Stripe::setApiVersion('2017-02-14');
+
         $this->mock = null;
         $this->call = 0;
     }
