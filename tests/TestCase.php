@@ -28,7 +28,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
         // Peg the API version so that it can be varied independently of the
         // one set on the test account.
-        Stripe::setApiVersion('2017-02-14');
+        Stripe::setApiVersion('2017-04-06');
 
         $this->mock = null;
         $this->call = 0;
@@ -75,9 +75,9 @@ class TestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Create a valid test charge.
+     * Create a valid test transfer.
      */
-    protected static function createTestTransfer(array $attributes = array())
+    protected static function createTestTransfer(array $attributes = array(), $opts = null)
     {
         self::authorizeFromEnv();
 
@@ -89,7 +89,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
                 'currency' => 'usd',
                 'description' => 'Transfer to test@example.com',
                 'recipient' => $recipient->id
-            )
+            ),
+            $opts
         );
     }
 
