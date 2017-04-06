@@ -28,7 +28,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
         // Peg the API version so that it can be varied independently of the
         // one set on the test account.
-        Stripe::setApiVersion('2017-02-14');
+        Stripe::setApiVersion('2017-04-06');
 
         $this->mock = null;
         $this->call = 0;
