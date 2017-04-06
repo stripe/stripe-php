@@ -77,7 +77,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
     /**
      * Create a valid test charge.
      */
-    protected static function createTestTransfer(array $attributes = array())
+    protected static function createTestTransfer(array $attributes = array(), $opts = null)
     {
         self::authorizeFromEnv();
 
@@ -89,7 +89,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
                 'currency' => 'usd',
                 'description' => 'Transfer to test@example.com',
                 'recipient' => $recipient->id
-            )
+            ),
+            $opts
         );
     }
 
