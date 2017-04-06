@@ -30,7 +30,7 @@ class Stripe
     // @var array The application's information (name, version, URL)
     public static $appInfo = null;
 
-    const VERSION = '4.5.1';
+    const VERSION = '4.6.0';
 
     /**
      * @return string The API key used for requests.

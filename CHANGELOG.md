@@ -1,3 +1,7 @@
+### 4.6.0 2017-04-06
+
+* Add support for payouts and recipient transfers
+
 ### 4.5.1 2017-03-22
 
 * Remove hard dependency on cURL
