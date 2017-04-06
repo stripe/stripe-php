@@ -75,7 +75,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Create a valid test charge.
+     * Create a valid test transfer.
      */
     protected static function createTestTransfer(array $attributes = array(), $opts = null)
     {
