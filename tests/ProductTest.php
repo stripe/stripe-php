@@ -142,14 +142,7 @@ class ProductSKUOrderTest extends TestCase
         $stripeOrder = Order::retrieve($order->id);
         $this->assertSame($order->metadata->foo, "bar");
 
-        $order->pay(array(
-            'source' => array(
-                'object' => 'card',
-                'number' => '4242424242424242',
-                'exp_month' => '05',
-                'exp_year' => '2017'
-            ),
-        ));
+        $order->pay(array('source' => 'tok_visa'));
         $this->assertSame($order->status, 'paid');
 
         $orderReturn = $order->returnOrder();
