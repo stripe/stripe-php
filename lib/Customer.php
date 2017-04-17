@@ -153,6 +153,19 @@ class Customer extends ApiResource
     }
 
     /**
+     * @param string $id The ID of the BankAccount to verify.
+     * @param array|null $params
+     *
+     * @return BankAccount The verified bank account.
+     */
+    public function verifyBankAccount($id, $params = null)
+    {
+        $url = $this->instanceUrl() . '/bank_accounts/' . $id . '/verify';
+        list($response, $opts) = $this->_request('post', $url, $params);
+        return $this->$response;
+    }
+
+    /**
      * @param array|null $params
      *
      * @return Subscription The updated subscription.
