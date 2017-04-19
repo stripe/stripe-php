@@ -30,6 +30,10 @@ class Stripe
     // @var array The application's information (name, version, URL)
     public static $appInfo = null;
 
+    // @var Util\LoggerInterface|null The logger to which the library will
+    //   produce messages.
+    public static $logger = null;
+
     const VERSION = '4.7.0';
 
     /**
@@ -38,6 +42,27 @@ class Stripe
     public static function getApiKey()
     {
         return self::$apiKey;
+    }
+
+    /**
+     * @return Util\LoggerInterface The logger to which the library will
+     *   produce messages.
+     */
+    public static function getLogger()
+    {
+        if (self::$logger == null) {
+            return new Util\DefaultLogger();
+        }
+        return self::$logger;
+    }
+
+    /**
+     * @param Util\LoggerInterface $logger The logger to which the library
+     *   will produce messages.
+     */
+    public static function setLogger($logger)
+    {
+        self::$logger = $logger;
     }
 
     /**
