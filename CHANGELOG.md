@@ -1,3 +1,7 @@
+### 4.8.0 2017-04-20
+
+* Add `\Stripe\Stripe::setLogger()` to support an external PSR-3 compatible logger
+
 ### 4.7.0 2017-04-10
 
 * Add support for payouts and recipient transfers
