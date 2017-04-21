@@ -105,4 +105,28 @@ class StripeObjectTest extends TestCase
         $s->metadata = array('baz', 'qux');
         $this->assertSame($s->metadata, array('baz', 'qux'));
     }
+
+    public function testReplaceNewNestedNullSerializesToString()
+    {
+        StripeObject::init(); // Populate the $nestedUpdatableAttributes Set
+        $s = new StripeObject();
+
+        $s->metadata = array('bar' => 3);
+        $this->assertSame($s->metadata, array('bar' => 3));
+        $s->metadata = null;
+
+        $serialized = $s->serializeParameters();
+
+        $this->assertSame($serialized['metadata'], '');
+    }
+
+    public function testReplaceNonNullableNullDoesNotSerialize()
+    {
+        StripeObject::init(); // Populate the $nestedUpdatableAttributes Set
+        $s = new StripeObject();
+
+        $s->address = null;
+
+        $this->assertEmpty($s->serializeParameters());
+    }
 }
