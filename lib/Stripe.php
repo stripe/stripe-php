@@ -34,7 +34,7 @@ class Stripe
     //   produce messages.
     public static $logger = null;
 
-    const VERSION = '4.8.0';
+    const VERSION = '4.8.1';
 
     /**
      * @return string The API key used for requests.
