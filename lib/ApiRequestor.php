@@ -187,9 +187,9 @@ class ApiRequestor
 
         if (!$myApiKey) {
             $msg = 'No API key provided.  (HINT: set your API key using '
-              . '"Stripe::setApiKey(<API-KEY>)".  You can generate API keys from '
-              . 'the Stripe web interface.  See https://stripe.com/api for '
-              . 'details, or email support@stripe.com if you have any questions.';
+              . '"Stripe::setApiKey(<API-KEY>)".  You can find your API keys '
+              . 'in your Stripe dashboard: '
+              . 'https://dashboard.stripe.com/account/apikeys.';
             throw new Error\Authentication($msg);
         }
 
