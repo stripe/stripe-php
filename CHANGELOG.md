@@ -1,3 +1,7 @@
+### 4.9.0 2017-04-28
+
+* Support for checking webhook signatures
+
 ### 4.8.1 2017-04-24
 
 * Allow nested field `payout_schedule` to be updated
