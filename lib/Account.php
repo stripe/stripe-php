@@ -47,7 +47,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id
+     * @param array|string|null $id The ID of the account to retrieve, or an
+     *     options array containing an `id` key.
      * @param array|string|null $opts
      *
      * @return Account

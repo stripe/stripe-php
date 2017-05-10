@@ -21,7 +21,8 @@ class SubscriptionItem extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the subscription item to retrieve.
+     * @param array|string $id The ID of the subscription item to retrieve, or
+     *     an options array containing an `id` key.
      * @param array|string|null $opts
      *
      * @return SubscriptionItem
