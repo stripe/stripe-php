@@ -20,7 +20,7 @@ namespace Stripe;
 class Token extends ApiResource
 {
     /**
-     * @param string $id The ID of the token to retrieve.
+     * @param array|string $id The ID of the token to retrieve.
      * @param array|string|null $opts
      *
      * @return Token

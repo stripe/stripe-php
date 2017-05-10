@@ -20,7 +20,7 @@ class ApplePayDomain extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the domain to retrieve.
+     * @param array|string $id The ID of the domain to retrieve.
      * @param array|string|null $opts
      *
      * @return ApplePayDomain

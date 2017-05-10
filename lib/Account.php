@@ -47,7 +47,7 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id
+     * @param array|string|null $id
      * @param array|string|null $opts
      *
      * @return Account

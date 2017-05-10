@@ -37,7 +37,7 @@ class BitcoinReceiver extends ExternalAccount
     }
 
     /**
-     * @param string $id The ID of the Bitcoin Receiver to retrieve.
+     * @param array|string $id The ID of the Bitcoin Receiver to retrieve.
      * @param array|string|null $opts
      *
      * @return BitcoinReceiver

@@ -23,7 +23,7 @@ namespace Stripe;
 class Plan extends ApiResource
 {
     /**
-     * @param string $id The ID of the plan to retrieve.
+     * @param array|string $id The ID of the plan to retrieve.
      * @param array|string|null $opts
      *
      * @return Plan

@@ -10,7 +10,7 @@ namespace Stripe;
 class Coupon extends ApiResource
 {
     /**
-     * @param string $id The ID of the coupon to retrieve.
+     * @param array|string $id The ID of the coupon to retrieve.
      * @param array|string|null $opts
      *
      * @return Coupon

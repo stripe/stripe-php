@@ -21,7 +21,7 @@ class CountrySpec extends ApiResource
     }
 
     /**
-     * @param string $country The ISO country code of the country we retrieve the CountrySpec for.
+     * @param array|string $country The ISO country code of the country we retrieve the CountrySpec for.
      * @param array|string|null $opts
      *
      * @return CountrySpec

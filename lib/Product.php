@@ -10,7 +10,7 @@ namespace Stripe;
 class Product extends ApiResource
 {
     /**
-     * @param string $id The ID of the Product to retrieve.
+     * @param array|string $id The ID of the Product to retrieve.
      * @param array|string|null $opts
      *
      * @return Product

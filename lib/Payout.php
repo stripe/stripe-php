@@ -30,7 +30,7 @@ namespace Stripe;
 class Payout extends ApiResource
 {
     /**
-     * @param string $id The ID of the payout to retrieve.
+     * @param array|string $id The ID of the payout to retrieve.
      * @param array|string|null $opts
      *
      * @return Payout

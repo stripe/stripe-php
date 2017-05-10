@@ -41,7 +41,7 @@ namespace Stripe;
 class Charge extends ApiResource
 {
     /**
-     * @param string $id The ID of the charge to retrieve.
+     * @param array|string $id The ID of the charge to retrieve.
      * @param array|string|null $options
      *
      * @return Charge

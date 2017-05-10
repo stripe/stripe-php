@@ -10,7 +10,7 @@ namespace Stripe;
 class SKU extends ApiResource
 {
     /**
-     * @param string $id The ID of the SKU to retrieve.
+     * @param array|string $id The ID of the SKU to retrieve.
      * @param array|string|null $opts
      *
      * @return SKU
