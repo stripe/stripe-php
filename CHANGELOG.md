@@ -1,3 +1,7 @@
+### 4.9.1 2017-05-10
+
+* Fix docs to include arrays on `$id` parameter for retrieve methods
+
 ### 4.9.0 2017-04-28
 
 * Support for checking webhook signatures
