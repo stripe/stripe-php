@@ -46,8 +46,7 @@ class AutoPagingIterator implements \Iterator
                     array('starting_after' => $this->lastId)
                 );
                 $this->page = $this->page->all($this->params);
-            } else {
-                return false;
+                $item = next($this->page->data);
             }
         }
     }
