@@ -5,6 +5,8 @@ require(dirname(__FILE__) . '/lib/Stripe.php');
 
 // Utilities
 require(dirname(__FILE__) . '/lib/Util/AutoPagingIterator.php');
+require(dirname(__FILE__) . '/lib/Util/LoggerInterface.php');
+require(dirname(__FILE__) . '/lib/Util/DefaultLogger.php');
 require(dirname(__FILE__) . '/lib/Util/RequestOptions.php');
 require(dirname(__FILE__) . '/lib/Util/Set.php');
 require(dirname(__FILE__) . '/lib/Util/Util.php');
@@ -22,6 +24,7 @@ require(dirname(__FILE__) . '/lib/Error/Card.php');
 require(dirname(__FILE__) . '/lib/Error/InvalidRequest.php');
 require(dirname(__FILE__) . '/lib/Error/Permission.php');
 require(dirname(__FILE__) . '/lib/Error/RateLimit.php');
+require(dirname(__FILE__) . '/lib/Error/SignatureVerification.php');
 
 // Plumbing
 require(dirname(__FILE__) . '/lib/ApiResponse.php');
@@ -57,9 +60,11 @@ require(dirname(__FILE__) . '/lib/Invoice.php');
 require(dirname(__FILE__) . '/lib/InvoiceItem.php');
 require(dirname(__FILE__) . '/lib/Order.php');
 require(dirname(__FILE__) . '/lib/OrderReturn.php');
+require(dirname(__FILE__) . '/lib/Payout.php');
 require(dirname(__FILE__) . '/lib/Plan.php');
 require(dirname(__FILE__) . '/lib/Product.php');
 require(dirname(__FILE__) . '/lib/Recipient.php');
+require(dirname(__FILE__) . '/lib/RecipientTransfer.php');
 require(dirname(__FILE__) . '/lib/Refund.php');
 require(dirname(__FILE__) . '/lib/SKU.php');
 require(dirname(__FILE__) . '/lib/Source.php');
@@ -69,3 +74,5 @@ require(dirname(__FILE__) . '/lib/ThreeDSecure.php');
 require(dirname(__FILE__) . '/lib/Token.php');
 require(dirname(__FILE__) . '/lib/Transfer.php');
 require(dirname(__FILE__) . '/lib/TransferReversal.php');
+require(dirname(__FILE__) . '/lib/Webhook.php');
+require(dirname(__FILE__) . '/lib/WebhookSignature.php');

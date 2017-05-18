@@ -21,14 +21,15 @@ namespace Stripe;
  * @property mixed $external_accounts
  * @property mixed $legal_entity
  * @property bool $managed
+ * @property mixed $payout_schedule
+ * @property mixed $payout_statement_descriptor
+ * @property bool $payouts_enabled
  * @property mixed $product_description
  * @property mixed $statement_descriptor
  * @property mixed $support_email
  * @property mixed $support_phone
  * @property string $timezone
  * @property mixed $tos_acceptance
- * @property mixed $transfer_schedule
- * @property bool $transfers_enabled
  * @property mixed $verification
  * @property mixed $keys
  *
@@ -46,7 +47,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id
+     * @param array|string|null $id The ID of the account to retrieve, or an
+     *     options array containing an `id` key.
      * @param array|string|null $opts
      *
      * @return Account

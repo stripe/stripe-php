@@ -10,7 +10,8 @@ namespace Stripe;
 class Order extends ApiResource
 {
     /**
-     * @param string $id The ID of the Order to retrieve.
+     * @param array|string $id The ID of the order to retrieve, or an options
+     *     array containing an `id` key.
      * @param array|string|null $opts
      *
      * @return Order

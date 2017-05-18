@@ -1,3 +1,27 @@
+### 4.9.1 2017-05-10
+
+* Fix docs to include arrays on `$id` parameter for retrieve methods
+
+### 4.9.0 2017-04-28
+
+* Support for checking webhook signatures
+
+### 4.8.1 2017-04-24
+
+* Allow nested field `payout_schedule` to be updated
+
+### 4.8.0 2017-04-20
+
+* Add `\Stripe\Stripe::setLogger()` to support an external PSR-3 compatible logger
+
+### 4.7.0 2017-04-10
+
+* Add support for payouts and recipient transfers
+
+### 4.6.0 2017-04-06
+
+* Please see 4.7.0 instead (no-op release)	
+
 ### 4.5.1 2017-03-22
 
 * Remove hard dependency on cURL

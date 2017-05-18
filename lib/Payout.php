@@ -3,34 +3,38 @@
 namespace Stripe;
 
 /**
- * Class Transfer
+ * Class Payout
  *
  * @property string $id
  * @property string $object
  * @property int $amount
- * @property int $amount_reversed
  * @property string $balance_transaction
+ * @property string $cancellation_balance_transaction
  * @property int $created
  * @property string $currency
- * @property int $date
- * @property mixed $destination
- * @property mixed $destination_payment
+ * @property int $arrival_date
+ * @property string $destination
+ * @property string $failure_code
+ * @property string $failure_message
  * @property bool $livemode
  * @property mixed $metadata
- * @property mixed $reversals
- * @property bool $reversed
- * @property mixed $source_transaction
+ * @property string $method
+ * @property string $recipient
+ * @property string $source_type
+ * @property string $statement_descriptor
+ * @property string $status
+ * @property string $type
  *
  * @package Stripe
  */
-class Transfer extends ApiResource
+class Payout extends ApiResource
 {
     /**
-     * @param array|string $id The ID of the transfer to retrieve, or an
-     *     options array containing an `id` key.
+     * @param array|string $id The ID of the payout to retrieve, or an options
+     *     array containing an `id` key.
      * @param array|string|null $opts
      *
-     * @return Transfer
+     * @return Payout
      */
     public static function retrieve($id, $opts = null)
     {
@@ -41,7 +45,7 @@ class Transfer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return Collection of Transfers
+     * @return Collection of Payouts
      */
     public static function all($params = null, $opts = null)
     {
@@ -52,7 +56,7 @@ class Transfer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return Transfer The created transfer.
+     * @return Payout The created payout.
      */
     public static function create($params = null, $opts = null)
     {
@@ -60,11 +64,11 @@ class Transfer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the transfer to update.
+     * @param string $id The ID of the payout to update.
      * @param array|null $params
      * @param array|string|null $options
      *
-     * @return Transfer The updated transfer.
+     * @return Payout The updated payout.
      */
     public static function update($id, $params = null, $options = null)
     {
@@ -72,18 +76,7 @@ class Transfer extends ApiResource
     }
 
     /**
-     * @return TransferReversal The created transfer reversal.
-     */
-    public function reverse($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/reversals';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-        return $this;
-    }
-
-    /**
-     * @return Transfer The canceled transfer.
+     * @return Payout The canceled payout.
      */
     public function cancel()
     {
@@ -96,7 +89,7 @@ class Transfer extends ApiResource
     /**
      * @param array|string|null $opts
      *
-     * @return Transfer The saved transfer.
+     * @return Payout The saved payout.
      */
     public function save($opts = null)
     {

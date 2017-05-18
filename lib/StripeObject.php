@@ -27,7 +27,7 @@ class StripeObject implements ArrayAccess, JsonSerializable
     {
         self::$permanentAttributes = new Util\Set(array('_opts', 'id'));
         self::$nestedUpdatableAttributes = new Util\Set(array(
-            'metadata', 'legal_entity', 'address', 'dob', 'transfer_schedule', 'verification',
+            'metadata', 'legal_entity', 'address', 'dob', 'payout_schedule', 'transfer_schedule', 'verification',
             'tos_acceptance', 'personal_address',
             // will make the array into an AttachedObject: weird, but works for now
             'additional_owners', 0, 1, 2, 3, 4, // Max 3, but leave the 4th so errors work properly
@@ -131,11 +131,11 @@ class StripeObject implements ArrayAccess, JsonSerializable
                     . "with the result returned by Stripe's API, "
                     . "probably as a result of a save(). The attributes currently "
                     . "available on this object are: $attrs";
-            error_log($message);
+            Stripe::getLogger()->error($message);
             return $nullval;
         } else {
             $class = get_class($this);
-            error_log("Stripe Notice: Undefined property of $class instance: $k");
+            Stripe::getLogger()->error("Stripe Notice: Undefined property of $class instance: $k");
             return $nullval;
         }
     }
