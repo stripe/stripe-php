@@ -314,17 +314,17 @@ class AccountTest extends TestCase
 
         $this->mockRequest('GET', "/v1/accounts/$accountId", array(), $mockExpress);
 
-        $mockEditLink = array(
+        $mockLoginLink = array(
             'object' => 'login_link',
             'created' => 1493820886,
-            'url' => "https://connect.stripe.com/express/AAAAAAAA"
+            'url' => "https://connect.stripe.com/$accountId/AAAAAAAA"
         );
 
-        $this->mockRequest('GET', "/v1/accounts/$accountId", array(), $mockExpress);
+        $this->mockRequest('POST', "/v1/accounts/$accountId/login_links", array(), $mockLoginLink);
 
         $account = Account::retrieve($accountId);
         $loginLink = $account->login_links->create();
         $this->assertSame('login_link', $loginLink->object);
-        $this->assertSame('\Stripe\LoginLink', get_class($loginLink));
+        $this->assertSame('Stripe\LoginLink', get_class($loginLink));
     }
 }
