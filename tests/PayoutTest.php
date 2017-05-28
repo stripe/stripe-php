@@ -21,12 +21,7 @@ class PayoutTest extends TestCase
             $charge = \Stripe\Charge::create(array(
                 'currency' => 'usd',
                 'amount' => '10000',
-                'source' => array(
-                    'object' => 'card',
-                    'number' => '4000000000000077',
-                    'exp_month' => '09',
-                    'exp_year' => date('Y') + 3,
-                ),
+                'source' => 'tok_bypassPending',
                 'destination' => array(
                     'account' => $account->id
                 )
