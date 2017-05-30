@@ -13,17 +13,11 @@ class DisputeTest extends TestCase
 
     private function createDisputedCharge()
     {
-        $card = array(
-            'number' => '4000000000000259',
-            'exp_month' => 5,
-            'exp_year' => date('Y') + 1
-        );
-
         $c = Charge::create(
             array(
                 'amount' => 100,
                 'currency' => 'usd',
-                'card' => $card
+                'source' => 'tok_createDispute'
             )
         );
         $c = Charge::retrieve($c->id);
