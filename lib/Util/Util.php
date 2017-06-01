@@ -76,6 +76,7 @@ abstract class Util
             'coupon' => 'Stripe\\Coupon',
             'customer' => 'Stripe\\Customer',
             'dispute' => 'Stripe\\Dispute',
+            'ephemeral_key' => 'Stripe\\EphemeralKey',
             'list' => 'Stripe\\Collection',
             'invoice' => 'Stripe\\Invoice',
             'invoiceitem' => 'Stripe\\InvoiceItem',
