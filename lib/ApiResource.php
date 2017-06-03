@@ -99,8 +99,7 @@ abstract class ApiResource extends StripeObject
             $message = "You must pass an array as the first argument to Stripe API "
                . "method calls.  (HINT: an example call to create a charge "
                . "would be: \"Stripe\\Charge::create(array('amount' => 100, "
-               . "'currency' => 'usd', 'card' => array('number' => "
-               . "4242424242424242, 'exp_month' => 5, 'exp_year' => 2015)))\")";
+               . "'currency' => 'usd', 'source' => 'tok_1234'))\")";
             throw new Error\Api($message);
         }
     }

@@ -77,6 +77,7 @@ abstract class Util
             'customer' => 'Stripe\\Customer',
             'dispute' => 'Stripe\\Dispute',
             'list' => 'Stripe\\Collection',
+            'login_link' => 'Stripe\\LoginLink',
             'invoice' => 'Stripe\\Invoice',
             'invoiceitem' => 'Stripe\\InvoiceItem',
             'event' => 'Stripe\\Event',

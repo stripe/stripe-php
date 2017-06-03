@@ -146,17 +146,8 @@ class CustomerTest extends TestCase
 
     public function testCustomerAddCard()
     {
-        $token = Token::create(
-            array("card" => array(
-                "number" => "4242424242424242",
-                "exp_month" => 5,
-                "exp_year" => date('Y') + 3,
-                "cvc" => "314"
-            ))
-        );
-
         $customer = $this->createTestCustomer();
-        $createdCard = $customer->sources->create(array("card" => $token->id));
+        $createdCard = $customer->sources->create(array("card" => 'tok_visa'));
         $customer->save();
 
         $updatedCustomer = Customer::retrieve($customer->id);
@@ -183,17 +174,8 @@ class CustomerTest extends TestCase
 
     public function testCustomerDeleteCard()
     {
-        $token = Token::create(
-            array("card" => array(
-                "number" => "4242424242424242",
-                "exp_month" => 5,
-                "exp_year" => date('Y') + 3,
-                "cvc" => "314"
-            ))
-        );
-
         $customer = $this->createTestCustomer();
-        $createdCard = $customer->sources->create(array("card" => $token->id));
+        $createdCard = $customer->sources->create(array("card" => 'tok_visa'));
         $customer->save();
 
         $updatedCustomer = Customer::retrieve($customer->id);
@@ -212,17 +194,9 @@ class CustomerTest extends TestCase
     public function testCustomerAddSource()
     {
         self::authorizeFromEnv();
-        $token = Token::create(
-            array("card" => array(
-                "number" => "4242424242424242",
-                "exp_month" => 5,
-                "exp_year" => date('Y') + 3,
-                "cvc" => "314"
-            ))
-        );
 
         $customer = $this->createTestCustomer();
-        $createdSource = $customer->sources->create(array("source" => $token->id));
+        $createdSource = $customer->sources->create(array("source" => 'tok_visa'));
         $customer->save();
 
         $updatedCustomer = Customer::retrieve($customer->id);
@@ -250,17 +224,9 @@ class CustomerTest extends TestCase
     public function testCustomerDeleteSource()
     {
         self::authorizeFromEnv();
-        $token = Token::create(
-            array("card" => array(
-                "number" => "4242424242424242",
-                "exp_month" => 5,
-                "exp_year" => date('Y') + 3,
-                "cvc" => "314"
-            ))
-        );
 
         $customer = $this->createTestCustomer();
-        $createdSource = $customer->sources->create(array("source" => $token->id));
+        $createdSource = $customer->sources->create(array("source" => 'tok_visa'));
         $customer->save();
 
         $updatedCustomer = Customer::retrieve($customer->id);

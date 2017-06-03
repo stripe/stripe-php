@@ -65,11 +65,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
                 'amount' => 2000,
                 'currency' => 'usd',
                 'description' => 'Charge for test@example.com',
-                'card' => array(
-                    'number' => '4242424242424242',
-                    'exp_month' => 5,
-                    'exp_year' => date('Y') + 3,
-                ),
+                'card' => 'tok_visa',
             )
         );
     }
@@ -103,11 +99,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
         return Customer::create(
             $attributes + array(
-                'card' => array(
-                    'number' => '4242424242424242',
-                    'exp_month' => 5,
-                    'exp_year' => date('Y') + 3,
-                ),
+                'card' => 'tok_visa',
             )
         );
     }

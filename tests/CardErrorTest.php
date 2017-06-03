@@ -8,16 +8,10 @@ class CardErrorTest extends TestCase
     {
         self::authorizeFromEnv();
 
-        $card = array(
-            'number' => '4000000000000002',
-            'exp_month' => '3',
-            'exp_year' => '2020'
-        );
-
         $charge = array(
             'amount' => 100,
             'currency' => 'usd',
-            'card' => $card
+            'source' => 'tok_chargeDeclined'
         );
 
         try {

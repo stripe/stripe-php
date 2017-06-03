@@ -1,3 +1,7 @@
+### 4.10.0 2017-05-25
+
+* Add support for login links
+
 ### 4.9.1 2017-05-10
 
 * Fix docs to include arrays on `$id` parameter for retrieve methods
