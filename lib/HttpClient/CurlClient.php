@@ -36,6 +36,8 @@ class CurlClient implements ClientInterface
 
     protected $defaultOptions;
 
+    protected $userAgentInfo;
+
     /**
      * CurlClient constructor.
      *
@@ -52,11 +54,26 @@ class CurlClient implements ClientInterface
     public function __construct($defaultOptions = null)
     {
         $this->defaultOptions = $defaultOptions;
+        $this->initUserAgentInfo();
+    }
+
+    public function initUserAgentInfo()
+    {
+        $curlVersion = curl_version();
+        $this->userAgentInfo = array(
+            'httplib' =>  'curl ' . $curlVersion['version'],
+            'ssllib' => $curlVersion['ssl_version'],
+        );
     }
 
     public function getDefaultOptions()
     {
         return $this->defaultOptions;
+    }
+
+    public function getUserAgentInfo()
+    {
+        return $this->userAgentInfo;
     }
 
     // USER DEFINED TIMEOUTS
