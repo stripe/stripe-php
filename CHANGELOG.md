@@ -1,3 +1,7 @@
+### 4.11.0 2017-06-05
+
+* Implement `Countable` for `AttachedObject` (`metadata` and `additional_owners`)
+
 ### 4.10.0 2017-05-25
 
 * Add support for login links
