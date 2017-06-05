@@ -295,6 +295,7 @@ class AccountTest extends TestCase
 
         $account->legal_entity->additional_owners[1] = array('first_name' => 'Jane');
         $account->save();
+        $this->assertSame(2, count($account->legal_entity->additional_owners));
         $this->assertSame('Jane', $account->legal_entity->additional_owners[1]->first_name);
     }
 
