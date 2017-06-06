@@ -1,3 +1,7 @@
+### 4.12.0 2017-06-05
+
+* Clients can implement `getUserAgentInfo()` to add additional user agent information
+
 ### 4.11.0 2017-06-05
 
 * Implement `Countable` for `AttachedObject` (`metadata` and `additional_owners`)
