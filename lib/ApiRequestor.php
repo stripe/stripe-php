@@ -137,7 +137,7 @@ class ApiRequestor
         }
     }
 
-    private static function _defaultHeaders($apiKey)
+    private static function _defaultHeaders($apiKey, $clientInfo = null)
     {
         $appInfo = Stripe::getAppInfo();
 
@@ -146,15 +146,6 @@ class ApiRequestor
         $langVersion = phpversion();
         $uname = php_uname();
 
-        $httplib = 'unknown';
-        $ssllib = 'unknown';
-
-        if (function_exists('curl_version')) {
-            $curlVersion = curl_version();
-            $httplib = 'curl ' . $curlVersion['version'];
-            $ssllib = $curlVersion['ssl_version'];
-        }
-
         $appInfo = Stripe::getAppInfo();
         $ua = array(
             'bindings_version' => Stripe::VERSION,
@@ -162,9 +153,10 @@ class ApiRequestor
             'lang_version' => $langVersion,
             'publisher' => 'stripe',
             'uname' => $uname,
-            'httplib' => $httplib,
-            'ssllib' => $ssllib,
         );
+        if ($clientInfo) {
+            $ua = array_merge($clientInfo, $ua);
+        }
         if ($appInfo !== null) {
             $uaString .= ' ' . self::_formatAppInfo($appInfo);
             $ua['application'] = $appInfo;
@@ -193,9 +185,17 @@ class ApiRequestor
             throw new Error\Authentication($msg);
         }
 
+        // Clients can supply arbitrary additional keys to be included in the
+        // X-Stripe-Client-User-Agent header via the optional getUserAgentInfo()
+        // method
+        $clientUAInfo = null;
+        if (method_exists($this->httpClient(), 'getUserAgentInfo')) {
+            $clientUAInfo = $this->httpClient()->getUserAgentInfo();
+        }
+
         $absUrl = $this->_apiBase.$url;
         $params = self::_encodeObjects($params);
-        $defaultHeaders = $this->_defaultHeaders($myApiKey);
+        $defaultHeaders = $this->_defaultHeaders($myApiKey, $clientUAInfo);
         if (Stripe::$apiVersion) {
             $defaultHeaders['Stripe-Version'] = Stripe::$apiVersion;
         }
