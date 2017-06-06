@@ -2,6 +2,8 @@
 
 namespace Stripe;
 
+use Exception;
+
 /**
  * Class ApiRequestor
  *
