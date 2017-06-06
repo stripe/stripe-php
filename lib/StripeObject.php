@@ -3,6 +3,7 @@
 namespace Stripe;
 
 use ArrayAccess;
+use Countable;
 use InvalidArgumentException;
 
 /**
@@ -10,7 +11,7 @@ use InvalidArgumentException;
  *
  * @package Stripe
  */
-class StripeObject implements ArrayAccess, JsonSerializable
+class StripeObject implements ArrayAccess, JsonSerializable, Countable
 {
     /**
      * @var Util\Set Attributes that should not be sent to the API because
@@ -288,6 +289,11 @@ class StripeObject implements ArrayAccess, JsonSerializable
         } else {
             return $this->_values;
         }
+    }
+
+    public function count()
+    {
+        return count($this->_values);
     }
 }
 
