@@ -78,6 +78,7 @@ abstract class Util
             'dispute' => 'Stripe\\Dispute',
             'ephemeral_key' => 'Stripe\\EphemeralKey',
             'list' => 'Stripe\\Collection',
+            'login_link' => 'Stripe\\LoginLink',
             'invoice' => 'Stripe\\Invoice',
             'invoiceitem' => 'Stripe\\InvoiceItem',
             'event' => 'Stripe\\Event',

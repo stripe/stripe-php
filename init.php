@@ -59,6 +59,7 @@ require(dirname(__FILE__) . '/lib/Event.php');
 require(dirname(__FILE__) . '/lib/FileUpload.php');
 require(dirname(__FILE__) . '/lib/Invoice.php');
 require(dirname(__FILE__) . '/lib/InvoiceItem.php');
+require(dirname(__FILE__) . '/lib/LoginLink.php');
 require(dirname(__FILE__) . '/lib/Order.php');
 require(dirname(__FILE__) . '/lib/OrderReturn.php');
 require(dirname(__FILE__) . '/lib/Payout.php');

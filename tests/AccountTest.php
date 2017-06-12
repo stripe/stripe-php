@@ -295,6 +295,37 @@ class AccountTest extends TestCase
 
         $account->legal_entity->additional_owners[1] = array('first_name' => 'Jane');
         $account->save();
+        $this->assertSame(2, count($account->legal_entity->additional_owners));
         $this->assertSame('Jane', $account->legal_entity->additional_owners[1]->first_name);
+    }
+
+    public function testLoginLinkCreation()
+    {
+        $accountId = 'acct_EXPRESS';
+        $mockExpress = array(
+            'id' => $accountId,
+            'object' => 'account',
+            'login_links' => array(
+                'object' => 'list',
+                'data' => array(),
+                'has_more' => false,
+                'url' =>  "/v1/accounts/$accountId/login_links"
+            )
+        );
+
+        $this->mockRequest('GET', "/v1/accounts/$accountId", array(), $mockExpress);
+
+        $mockLoginLink = array(
+            'object' => 'login_link',
+            'created' => 1493820886,
+            'url' => "https://connect.stripe.com/$accountId/AAAAAAAA"
+        );
+
+        $this->mockRequest('POST', "/v1/accounts/$accountId/login_links", array(), $mockLoginLink);
+
+        $account = Account::retrieve($accountId);
+        $loginLink = $account->login_links->create();
+        $this->assertSame('login_link', $loginLink->object);
+        $this->assertSame('Stripe\LoginLink', get_class($loginLink));
     }
 }

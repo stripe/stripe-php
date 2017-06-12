@@ -23,6 +23,15 @@ class CurlClientTest extends TestCase
         $this->assertSame(0, $curl->getConnectTimeout());
     }
 
+    public function testUserAgentInfo()
+    {
+        $curl = new CurlClient();
+        $uaInfo = $curl->getUserAgentInfo();
+        $this->assertNotNull($uaInfo);
+        $this->assertNotNull($uaInfo['httplib']);
+        $this->assertNotNull($uaInfo['ssllib']);
+    }
+
     public function testDefaultOptions()
     {
         // make sure options array loads/saves properly
