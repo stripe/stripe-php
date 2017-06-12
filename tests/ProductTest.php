@@ -147,7 +147,7 @@ class ProductSKUOrderTest extends TestCase
                 'object' => 'card',
                 'number' => '4242424242424242',
                 'exp_month' => '05',
-                'exp_year' => '2017'
+                'exp_year' => '2027'
             ),
         ));
         $this->assertSame($order->status, 'paid');
