@@ -24,7 +24,7 @@ class EphemeralKeyTest extends TestCase
 
     public function testVersionlessCreateWithoutGlobalVersion()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->setExpectedException('\InvalidArgumentException');
         $key = EphemeralKey::create(
             array('customer' => 'cus_123')
         );
@@ -45,7 +45,7 @@ class EphemeralKeyTest extends TestCase
     public function testVersionlessCreateWithGlobalVersion()
     {
         Stripe::setApiVersion('2017-06-05');
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->setExpectedException('\InvalidArgumentException');
         $key = EphemeralKey::create(
             array('customer' => 'cus_123')
         );
