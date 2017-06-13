@@ -139,8 +139,6 @@ class ApiRequestor
 
     private static function _defaultHeaders($apiKey, $clientInfo = null)
     {
-        $appInfo = Stripe::getAppInfo();
-
         $uaString = 'Stripe/v1 PhpBindings/' . Stripe::VERSION;
 
         $langVersion = phpversion();
