@@ -1,3 +1,7 @@
+### 4.13.0 2017-06-19
+
+* Add support for ephemeral keys
+
 ### 4.12.0 2017-06-05
 
 * Clients can implement `getUserAgentInfo()` to add additional user agent information
