@@ -10,7 +10,23 @@ class TestCase extends \PHPUnit_Framework_TestCase
 {
     const API_KEY = 'tGN0bIwXnHdwOa85VABjPdSn8nWY7G7I';
 
+    private static $stubPort = null;
+
     private $mock;
+
+    /**
+     * Looks for STRIPE_STUB_PORT in the environment and fails tests quickly
+     * if it's not present.
+     *
+     * @beforeClass
+     */
+    public static function checkStripeStubPort()
+    {
+        self::$stubPort = getenv('STRIPE_STUB_PORT');
+        if (!self::$stubPort) {
+            die("Please specify STRIPE_STUB_PORT. See README for setup instructions.");
+        }
+    }
 
     protected static function authorizeFromEnv()
     {
@@ -32,6 +48,25 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
         $this->mock = null;
         $this->call = 0;
+    }
+
+    /**
+     * Set the API URL back to whatever it was before stripestub was enabled.
+     */
+    protected function disableStripeStub()
+    {
+        Stripe::$apiBase = $this->oldApiBase;
+    }
+
+    /**
+     * Set the API URL to the location of a locally running instance of
+     * stripestub.
+     */
+    protected function enableStripeStub()
+    {
+        Stripe::setApiKey("sk_test_myValidKey");
+        $this->oldApiBase = Stripe::$apiBase;
+        Stripe::$apiBase = "http://localhost:" . self::$stubPort;
     }
 
     protected function mockRequest($method, $path, $params = array(), $return = array('id' => 'myId'), $rcode = 200)

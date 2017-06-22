@@ -34,9 +34,28 @@ matrix:
       dist: trusty
       env: AUTOLOAD=0
 
+env:
+  global:
+    - STRIPE_STUB_PORT=6065
+    - STRIPE_STUB_VERSION=0.1.1
+
 cache:
   directories:
     - $HOME/.composer/cache/files
+    - stripestubs
+
+before_install:
+  # Unpack and start the Stripe API stub so that the test suite can talk to it
+  - |
+    if [ ! -d "stripestubs/stripestub_${STRIPE_STUB_VERSION}" ]; then
+      mkdir -p stripestubs/stripestub_${STRIPE_STUB_VERSION}/
+      curl -L "https://github.com/brandur/stripestub/releases/download/v${STRIPE_STUB_VERSION}/stripestub_${STRIPE_STUB_VERSION}_linux_amd64.tar.gz" -o "stripestubs/stripestub_${STRIPE_STUB_VERSION}_linux_amd64.tar.gz"
+      tar -zxf "stripestubs/stripestub_${STRIPE_STUB_VERSION}_linux_amd64.tar.gz" -C "stripestubs/stripestub_${STRIPE_STUB_VERSION}/"
+    fi
+  - |
+    stripestubs/stripestub_${STRIPE_STUB_VERSION}/stripestub -port ${STRIPE_STUB_PORT} &
+    STRIPE_STUB_PID=$!
 
 script: ./build.php ${AUTOLOAD}
+
 after_script: ./vendor/bin/coveralls -v
