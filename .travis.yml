@@ -34,5 +34,9 @@ matrix:
       dist: trusty
       env: AUTOLOAD=0
 
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
 script: ./build.php ${AUTOLOAD}
 after_script: ./vendor/bin/coveralls -v
