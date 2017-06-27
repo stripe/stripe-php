@@ -1,3 +1,7 @@
+### 5.0.0 2017-06-27
+
+* `pay` on invoice now takes params as well as opts
+
 ### 4.13.0 2017-06-19
 
 * Add support for ephemeral keys
