@@ -4,48 +4,53 @@ namespace Stripe;
 
 class PlanTest extends TestCase
 {
-    public function testDeletion()
+    /**
+     * @before
+     */
+    public function setUpStripeStub()
     {
-        self::authorizeFromEnv();
-        $p = Plan::create(array(
-            'amount' => 2000,
-            'interval' => 'month',
-            'currency' => 'usd',
-            'name' => 'Plan',
-            'id' => 'gold-' . self::generateRandomString(20)
-        ));
-        $p->delete();
-        $this->assertTrue($p->deleted);
+        $this->enableStripeStub();
     }
 
-    public function testFalseyId()
+    /**
+     * @after
+     */
+    public function tearDownStripeStub()
     {
-        try {
-            $retrievedPlan = Plan::retrieve('0');
-        } catch (Error\InvalidRequest $e) {
-            // Can either succeed or 404, all other errors are bad
-            if ($e->httpStatus !== 404) {
-                $this->fail();
-            }
-        }
+        $this->disableStripeStub();
+    }
+
+    public function testRetrieve()
+    {
+        $plan = Plan::retrieve('gold');
+        $this->assertTrue(is_a($plan, 'Stripe\\Plan'));
+    }
+
+    public function testUpdate()
+    {
+        $plan = Plan::update('gold', array('name' => 'New name'));
+        $this->assertTrue(is_a($plan, 'Stripe\\Plan'));
+    }
+
+    public function testDelete()
+    {
+        $plan = Plan::retrieve('gold');
+        $plan = $plan->delete();
+        $this->assertTrue(is_a($plan, 'Stripe\\Plan'));
     }
 
     public function testSave()
     {
-        self::authorizeFromEnv();
-        $planID = 'gold-' . self::generateRandomString(20);
-        $p = Plan::create(array(
-            'amount'   => 2000,
-            'interval' => 'month',
-            'currency' => 'usd',
-            'name'     => 'Plan',
-            'id'       => $planID
-        ));
-        $p->name = 'A new plan name';
-        $p->save();
-        $this->assertSame($p->name, 'A new plan name');
+        $plan = Plan::retrieve('gold');
+        $plan->name = 'A new plan name';
+        $plan = $plan->save();
+        $this->assertTrue(is_a($plan, 'Stripe\\Plan'));
+    }
 
-        $stripePlan = Plan::retrieve($planID);
-        $this->assertSame($p->name, $stripePlan->name);
+    public function testAll()
+    {
+        $plans = Plan::all();
+        $this->assertTrue(is_a($plans, 'Stripe\\Collection'));
+        $this->assertTrue(is_a($plans->data[0], 'Stripe\\Plan'));
     }
 }
