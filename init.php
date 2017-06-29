@@ -26,6 +26,14 @@ require(dirname(__FILE__) . '/lib/Error/Permission.php');
 require(dirname(__FILE__) . '/lib/Error/RateLimit.php');
 require(dirname(__FILE__) . '/lib/Error/SignatureVerification.php');
 
+// OAuth errors
+require(dirname(__FILE__) . '/lib/Error/OAuth/OAuthBase.php');
+require(dirname(__FILE__) . '/lib/Error/OAuth/InvalidGrant.php');
+require(dirname(__FILE__) . '/lib/Error/OAuth/InvalidRequest.php');
+require(dirname(__FILE__) . '/lib/Error/OAuth/InvalidScope.php');
+require(dirname(__FILE__) . '/lib/Error/OAuth/UnsupportedGrantType.php');
+require(dirname(__FILE__) . '/lib/Error/OAuth/UnsupportedResponseType.php');
+
 // Plumbing
 require(dirname(__FILE__) . '/lib/ApiResponse.php');
 require(dirname(__FILE__) . '/lib/JsonSerializable.php');
@@ -76,5 +84,10 @@ require(dirname(__FILE__) . '/lib/ThreeDSecure.php');
 require(dirname(__FILE__) . '/lib/Token.php');
 require(dirname(__FILE__) . '/lib/Transfer.php');
 require(dirname(__FILE__) . '/lib/TransferReversal.php');
+
+// OAuth
+require(dirname(__FILE__) . '/lib/OAuth.php');
+
+// Webhooks
 require(dirname(__FILE__) . '/lib/Webhook.php');
 require(dirname(__FILE__) . '/lib/WebhookSignature.php');

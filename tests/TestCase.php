@@ -34,12 +34,12 @@ class TestCase extends \PHPUnit_Framework_TestCase
         $this->call = 0;
     }
 
-    protected function mockRequest($method, $path, $params = array(), $return = array('id' => 'myId'), $rcode = 200)
+    protected function mockRequest($method, $path, $params = array(), $return = array('id' => 'myId'), $rcode = 200, $base = 'https://api.stripe.com')
     {
         $mock = $this->setUpMockRequest();
         $mock->expects($this->at($this->call++))
              ->method('request')
-             ->with(strtolower($method), 'https://api.stripe.com' . $path, $this->anything(), $params, false)
+             ->with(strtolower($method), $base . $path, $this->anything(), $params, false)
              ->willReturn(array(json_encode($return), $rcode, array()));
     }
 
