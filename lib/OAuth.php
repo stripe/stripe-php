@@ -15,8 +15,7 @@ abstract class OAuth {
         if (!array_key_exists('response_type', $params)) {
             $params['response_type'] = 'code';
         }
-        // TODO: move encode out of CurlClient (and into Util probably)
-        $query = HttpClient\CurlClient::encode($params);
+        $query = Util\Util::urlEncode($params);
 
         return $base . '/oauth/authorize?' . $query;
     }
