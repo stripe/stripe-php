@@ -2,7 +2,8 @@
 
 namespace Stripe;
 
-abstract class OAuth {
+abstract class OAuth
+{
     /**
      * Generates a URL to Stripe's OAuth form.
      *
@@ -80,7 +81,7 @@ abstract class OAuth {
     {
         $clientId = ($params && array_key_exists('client_id', $params)) ? $params['client_id'] : null;
         if ($clientId === null) {
-          $clientId = Stripe::getClientId();
+            $clientId = Stripe::getClientId();
         }
         if ($clientId === null) {
             $msg = 'No client_id provided.  (HINT: set your client_id using '

@@ -199,6 +199,5 @@ class ApiRequestorTest extends TestCase
         } catch (\Exception $e) {
             $this->fail("Unexpected exception: " . get_class($e));
         }
-
     }
 }
