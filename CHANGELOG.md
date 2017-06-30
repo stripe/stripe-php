@@ -1,3 +1,7 @@
+### 5.1.0 2017-06-30
+
+* Add support for OAuth
+
 ### 5.0.0 2017-06-27
 
 * `pay` on invoice now takes params as well as opts
