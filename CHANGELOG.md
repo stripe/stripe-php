@@ -1,3 +1,7 @@
+### 5.1.1 2017-07-03
+
+* Fix order returns to use the right URL `/v1/order_returns`
+
 ### 5.1.0 2017-06-30
 
 * Add support for OAuth
