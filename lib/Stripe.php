@@ -12,8 +12,14 @@ class Stripe
     // @var string The Stripe API key to be used for requests.
     public static $apiKey;
 
+    // @var string The Stripe client_id to be used for Connect requests.
+    public static $clientId;
+
     // @var string The base URL for the Stripe API.
     public static $apiBase = 'https://api.stripe.com';
+
+    // @var string The base URL for the OAuth API.
+    public static $connectBase = 'https://connect.stripe.com';
 
     // @var string The base URL for the Stripe API uploads endpoint.
     public static $apiUploadBase = 'https://uploads.stripe.com';
@@ -34,7 +40,7 @@ class Stripe
     //   produce messages.
     public static $logger = null;
 
-    const VERSION = '4.10.0';
+    const VERSION = '5.1.1';
 
     /**
      * @return string The API key used for requests.
@@ -42,6 +48,14 @@ class Stripe
     public static function getApiKey()
     {
         return self::$apiKey;
+    }
+
+    /**
+     * @return string The client_id used for Connect requests.
+     */
+    public static function getClientId()
+    {
+        return self::$clientId;
     }
 
     /**
@@ -73,6 +87,16 @@ class Stripe
     public static function setApiKey($apiKey)
     {
         self::$apiKey = $apiKey;
+    }
+
+    /**
+     * Sets the client_id to be used for Connect requests.
+     *
+     * @param string $clientId
+     */
+    public static function setClientId($clientId)
+    {
+        self::$clientId = $clientId;
     }
 
     /**

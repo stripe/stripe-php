@@ -76,6 +76,7 @@ abstract class Util
             'coupon' => 'Stripe\\Coupon',
             'customer' => 'Stripe\\Customer',
             'dispute' => 'Stripe\\Dispute',
+            'ephemeral_key' => 'Stripe\\EphemeralKey',
             'list' => 'Stripe\\Collection',
             'login_link' => 'Stripe\\LoginLink',
             'invoice' => 'Stripe\\Invoice',
@@ -173,5 +174,44 @@ abstract class Util
             }
             return ($result == 0);
         }
+    }
+
+    /**
+     * @param array $arr A map of param keys to values.
+     * @param string|null $prefix
+     *
+     * @return string A querystring, essentially.
+     */
+    public static function urlEncode($arr, $prefix = null)
+    {
+        if (!is_array($arr)) {
+            return $arr;
+        }
+
+        $r = array();
+        foreach ($arr as $k => $v) {
+            if (is_null($v)) {
+                continue;
+            }
+
+            if ($prefix) {
+                if ($k !== null && (!is_int($k) || is_array($v))) {
+                    $k = $prefix."[".$k."]";
+                } else {
+                    $k = $prefix."[]";
+                }
+            }
+
+            if (is_array($v)) {
+                $enc = self::urlEncode($v, $k);
+                if ($enc) {
+                    $r[] = $enc;
+                }
+            } else {
+                $r[] = urlencode($k)."=".urlencode($v);
+            }
+        }
+
+        return implode("&", $r);
     }
 }

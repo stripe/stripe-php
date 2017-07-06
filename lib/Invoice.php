@@ -83,10 +83,10 @@ class Invoice extends ApiResource
     /**
      * @return Invoice The paid invoice.
      */
-    public function pay($opts = null)
+    public function pay($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/pay';
-        list($response, $opts) = $this->_request('post', $url, null, $opts);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }

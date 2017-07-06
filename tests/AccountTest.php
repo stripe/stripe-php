@@ -295,6 +295,7 @@ class AccountTest extends TestCase
 
         $account->legal_entity->additional_owners[1] = array('first_name' => 'Jane');
         $account->save();
+        $this->assertSame(2, count($account->legal_entity->additional_owners));
         $this->assertSame('Jane', $account->legal_entity->additional_owners[1]->first_name);
     }
 
@@ -326,5 +327,37 @@ class AccountTest extends TestCase
         $loginLink = $account->login_links->create();
         $this->assertSame('login_link', $loginLink->object);
         $this->assertSame('Stripe\LoginLink', get_class($loginLink));
+    }
+
+    public function testDeauthorize()
+    {
+        Stripe::setClientId('ca_test');
+
+        $accountId = 'acct_test_deauth';
+        $mockAccount = array(
+            'id' => $accountId,
+            'object' => 'account',
+        );
+
+        $this->mockRequest('GET', "/v1/accounts/$accountId", array(), $mockAccount);
+
+        $this->mockRequest(
+            'POST',
+            '/oauth/deauthorize',
+            array(
+                'client_id' => 'ca_test',
+                'stripe_user_id' => $accountId,
+            ),
+            array(
+                'stripe_user_id' => $accountId,
+            ),
+            200,
+            Stripe::$connectBase
+        );
+
+        $account = Account::retrieve($accountId);
+        $account->deauthorize();
+
+        Stripe::setClientId(null);
     }
 }

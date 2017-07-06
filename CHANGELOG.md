@@ -1,3 +1,27 @@
+### 5.1.1 2017-07-03
+
+* Fix order returns to use the right URL `/v1/order_returns`
+
+### 5.1.0 2017-06-30
+
+* Add support for OAuth
+
+### 5.0.0 2017-06-27
+
+* `pay` on invoice now takes params as well as opts
+
+### 4.13.0 2017-06-19
+
+* Add support for ephemeral keys
+
+### 4.12.0 2017-06-05
+
+* Clients can implement `getUserAgentInfo()` to add additional user agent information
+
+### 4.11.0 2017-06-05
+
+* Implement `Countable` for `AttachedObject` (`metadata` and `additional_owners`)
+
 ### 4.10.0 2017-05-25
 
 * Add support for login links

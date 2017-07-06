@@ -68,11 +68,14 @@ class CustomerTest extends TestCase
     {
         $customer = self::createTestCustomer();
 
-        $customer->metadata['test'] = 'foo bar';
+        $customer->metadata['test1'] = 'foo';
+        $customer->metadata['test2'] = 'bar';
         $customer->save();
 
         $updatedCustomer = Customer::retrieve($customer->id);
-        $this->assertSame('foo bar', $updatedCustomer->metadata['test']);
+        $this->assertSame(2, count($updatedCustomer->metadata));
+        $this->assertSame('foo', $updatedCustomer->metadata['test1']);
+        $this->assertSame('bar', $updatedCustomer->metadata['test2']);
     }
 
     public function testDeleteMetadata()
@@ -83,7 +86,7 @@ class CustomerTest extends TestCase
         $customer->save();
 
         $updatedCustomer = Customer::retrieve($customer->id);
-        $this->assertSame(0, count($updatedCustomer->metadata->keys()));
+        $this->assertSame(0, count($updatedCustomer->metadata));
     }
 
     public function testUpdateSomeMetadata()
