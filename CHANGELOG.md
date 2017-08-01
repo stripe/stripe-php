@@ -1,3 +1,7 @@
+### 5.1.2 2017-08-01
+
+* Fix documented return type of `autoPagingIterator()` (was missing namespace)
+
 ### 5.1.1 2017-07-03
 
 * Fix order returns to use the right URL `/v1/order_returns`
