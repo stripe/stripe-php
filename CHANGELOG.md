@@ -1,3 +1,7 @@
+### 5.1.3 2017-08-14
+
+* Allow `address_kana` and `address_kanji` to be updated for custom accounts
+
 ### 5.1.2 2017-08-01
 
 * Fix documented return type of `autoPagingIterator()` (was missing namespace)
