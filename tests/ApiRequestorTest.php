@@ -176,6 +176,31 @@ class ApiRequestorTest extends TestCase
         }
     }
 
+    public function testErrorOAuthInvalidClient()
+    {
+        $this->mockRequest(
+            'POST',
+            '/oauth/token',
+            array(),
+            array(
+                'error' => 'invalid_client',
+                'error_description' => 'No authentication was provided. Send your secret API key using the Authorization header, or as a client_secret POST parameter.',
+            ),
+            401,
+            Stripe::$connectBase
+        );
+
+        try {
+            OAuth::token();
+            $this->fail("Did not raise error");
+        } catch (Error\OAuth\InvalidClient $e) {
+            $this->assertSame('invalid_client', $e->getErrorCode());
+            $this->assertSame('No authentication was provided. Send your secret API key using the Authorization header, or as a client_secret POST parameter.', $e->getMessage());
+        } catch (\Exception $e) {
+            $this->fail("Unexpected exception: " . get_class($e));
+        }
+    }
+
     public function testErrorOAuthInvalidGrant()
     {
         $this->mockRequest(
