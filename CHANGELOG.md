@@ -1,3 +1,7 @@
+### 5.2.0 2017-08-29
+
+* Add support for `InvalidClient` OAuth error
+
 ### 5.1.3 2017-08-14
 
 * Allow `address_kana` and `address_kanji` to be updated for custom accounts
