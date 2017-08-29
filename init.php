@@ -28,6 +28,7 @@ require(dirname(__FILE__) . '/lib/Error/SignatureVerification.php');
 
 // OAuth errors
 require(dirname(__FILE__) . '/lib/Error/OAuth/OAuthBase.php');
+require(dirname(__FILE__) . '/lib/Error/OAuth/InvalidClient.php');
 require(dirname(__FILE__) . '/lib/Error/OAuth/InvalidGrant.php');
 require(dirname(__FILE__) . '/lib/Error/OAuth/InvalidRequest.php');
 require(dirname(__FILE__) . '/lib/Error/OAuth/InvalidScope.php');
