@@ -140,6 +140,8 @@ class ApiRequestor
         $description = isset($resp['error_description']) ? $resp['error_description'] : $errorCode;
 
         switch ($errorCode) {
+            case 'invalid_client':
+                return new Error\OAuth\InvalidClient($errorCode, $description, $rcode, $rbody, $resp, $rheaders);
             case 'invalid_grant':
                 return new Error\OAuth\InvalidGrant($errorCode, $description, $rcode, $rbody, $resp, $rheaders);
             case 'invalid_request':

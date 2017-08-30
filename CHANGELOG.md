@@ -1,3 +1,15 @@
+### 5.2.0 2017-08-29
+
+* Add support for `InvalidClient` OAuth error
+
+### 5.1.3 2017-08-14
+
+* Allow `address_kana` and `address_kanji` to be updated for custom accounts
+
+### 5.1.2 2017-08-01
+
+* Fix documented return type of `autoPagingIterator()` (was missing namespace)
+
 ### 5.1.1 2017-07-03
 
 * Fix order returns to use the right URL `/v1/order_returns`
