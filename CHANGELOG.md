@@ -1,3 +1,7 @@
+### 5.2.1 2017-09-14
+
+* Serialized `shipping` nested attribute
+
 ### 5.2.0 2017-08-29
 
 * Add support for `InvalidClient` OAuth error
