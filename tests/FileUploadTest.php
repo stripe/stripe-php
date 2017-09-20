@@ -17,6 +17,7 @@ class FileUploadTest extends TestCase
         fclose($fp);
         $this->assertSame(95, $file->size);
         $this->assertSame('png', $file->type);
+        $this->assertInstanceOf('Stripe\\FileUpload', $file);
     }
 
     public function testCreateAndRetrieveCurlFile()
