@@ -1,3 +1,7 @@
+### 5.2.2 2017-09-20
+
+* Fix deserialization mapping of `FileUpload` objects
+
 ### 5.2.1 2017-09-14
 
 * Serialized `shipping` nested attribute
