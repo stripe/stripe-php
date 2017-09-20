@@ -4,14 +4,16 @@ namespace Stripe;
 
 /**
  * Class BitcoinReceiver
- *
- * @package Stripe
+
+ * @deprecated Please use sources instead.
  */
 class BitcoinReceiver extends ExternalAccount
 {
     /**
      * @return string The class URL for this resource. It needs to be special
      *    cased because it doesn't fit into the standard resource pattern.
+     *
+     * @deprecated Please use sources instead.
      */
     public static function classUrl()
     {
@@ -21,6 +23,8 @@ class BitcoinReceiver extends ExternalAccount
     /**
      * @return string The instance URL for this resource. It needs to be special
      *    cased because it doesn't fit into the standard resource pattern.
+     *
+     * @deprecated Please use sources instead.
      */
     public function instanceUrl()
     {
@@ -42,6 +46,8 @@ class BitcoinReceiver extends ExternalAccount
      * @param array|string|null $opts
      *
      * @return BitcoinReceiver
+     *
+     * @deprecated Please use sources instead.
      */
     public static function retrieve($id, $opts = null)
     {
@@ -53,6 +59,8 @@ class BitcoinReceiver extends ExternalAccount
      * @param array|string|null $opts
      *
      * @return Collection of BitcoinReceivers
+     *
+     * @deprecated Please use sources instead.
      */
     public static function all($params = null, $opts = null)
     {
@@ -64,6 +72,8 @@ class BitcoinReceiver extends ExternalAccount
      * @param array|string|null $opts
      *
      * @return BitcoinReceiver The created Bitcoin Receiver item.
+     *
+     * @deprecated Please use sources instead.
      */
     public static function create($params = null, $opts = null)
     {
@@ -75,6 +85,8 @@ class BitcoinReceiver extends ExternalAccount
      * @param array|string|null $options
      *
      * @return BitcoinReceiver The refunded Bitcoin Receiver item.
+     *
+     * @deprecated Please use sources instead.
      */
     public function refund($params = null, $options = null)
     {

@@ -45,32 +45,6 @@ class RefundTest extends TestCase
         $this->assertSame(10, count($all->data));
     }
 
-    public function testCreateForBitcoin()
-    {
-        self::authorizeFromEnv();
-
-        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
-
-        $charge = Charge::create(
-            array(
-                'amount' => $receiver->amount,
-                'currency' => $receiver->currency,
-                'description' => $receiver->description,
-                'source' => $receiver->id
-            )
-        );
-
-        $ref = Refund::create(
-            array(
-                'amount' => $receiver->amount,
-                'refund_address' => 'ABCDEF',
-                'charge' => $charge->id
-            )
-        );
-        $this->assertSame($receiver->amount, $ref->amount);
-        $this->assertNotNull($ref->id);
-    }
-
     // Deprecated charge endpoints:
 
     public function testCreateViaCharge()
@@ -102,30 +76,5 @@ class RefundTest extends TestCase
         $this->assertSame(2, count($all->data));
         $this->assertSame($refB->id, $all->data[0]->id);
         $this->assertSame($refA->id, $all->data[1]->id);
-    }
-
-    public function testCreateForBitcoinViaCharge()
-    {
-        self::authorizeFromEnv();
-
-        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
-
-        $charge = Charge::create(
-            array(
-                'amount' => $receiver->amount,
-                'currency' => $receiver->currency,
-                'description' => $receiver->description,
-                'source' => $receiver->id
-            )
-        );
-
-        $ref = $charge->refunds->create(
-            array(
-                'amount' => $receiver->amount,
-                'refund_address' => 'ABCDEF'
-            )
-        );
-        $this->assertSame($receiver->amount, $ref->amount);
-        $this->assertNotNull($ref->id);
     }
 }
