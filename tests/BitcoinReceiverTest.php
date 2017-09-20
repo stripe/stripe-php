@@ -13,108 +13,14 @@ class BitcoinReceiverTest extends TestCase
         $this->assertSame($instanceUrl, '/v1/bitcoin/receivers/abcd%2Fefgh');
     }
 
-    public function testCreate()
-    {
-        self::authorizeFromEnv();
-
-        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
-
-        $this->assertSame(100, $receiver->amount);
-        $this->assertNotNull($receiver->id);
-    }
-
-    public function testRetrieve()
-    {
-        self::authorizeFromEnv();
-
-        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
-
-        $r = BitcoinReceiver::retrieve($receiver->id);
-        $this->assertSame($receiver->id, $r->id);
-
-        $this->assertInstanceOf('Stripe\\BitcoinTransaction', $r->transactions->data[0]);
-    }
-
-    public function testList()
-    {
-        self::authorizeFromEnv();
-
-        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
-
-        $receivers = BitcoinReceiver::all();
-        $this->assertGreaterThan(0, count($receivers->data));
-    }
-
-    public function testListTransactions()
-    {
-        self::authorizeFromEnv();
-
-        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
-        $this->assertSame(0, count($receiver->transactions->data));
-
-        $transactions = $receiver->transactions->all(array("limit" => 1));
-        $this->assertSame(1, count($transactions->data));
-    }
-
-    public function testDeleteWithCustomer()
-    {
-        self::authorizeFromEnv();
-        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
-        $customer = Customer::create(array("source" => $receiver->id));
-        $charge = Charge::create(array(
-            "customer" => $customer->id,
-            "amount" => $receiver->amount,
-            "currency" => $receiver->currency
-        ));
-        $receiver = BitcoinReceiver::retrieve($receiver->id);
-        $response = $receiver->delete();
-        $this->assertTrue($response->deleted);
-    }
-
-    public function testUpdateWithCustomer()
-    {
-        self::authorizeFromEnv();
-        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
-        $customer = Customer::create(array("source" => $receiver->id));
-        $receiver = BitcoinReceiver::retrieve($receiver->id);
-
-        $receiver->description = "a new description";
-        $receiver->save();
-
-        $base = Customer::classUrl();
-        $parentExtn = $receiver['customer'];
-        $extn = $receiver['id'];
-        $this->assertEquals("$base/$parentExtn/sources/$extn", $receiver->instanceUrl());
-
-        $updatedReceiver = BitcoinReceiver::retrieve($receiver->id);
-        $this->assertEquals($receiver["description"], $updatedReceiver["description"]);
-    }
-
-    public function testUpdateWithoutCustomer()
-    {
-        self::authorizeFromEnv();
-        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
-
-        $receiver->description = "a new description";
-        $receiver->save();
-
-        $this->assertEquals(BitcoinReceiver::classUrl() . "/" . $receiver['id'], $receiver->instanceUrl());
-
-        $updatedReceiver = BitcoinReceiver::retrieve($receiver->id);
-        $this->assertEquals($receiver["description"], $updatedReceiver["description"]);
-    }
-
-    public function testRefund()
-    {
-        self::authorizeFromEnv();
-        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
-
-        $receiver = BitcoinReceiver::retrieve($receiver->id);
-        $this->assertNull($receiver->refund_address);
-
-        $refundAddress = "REFUNDHERE";
-        $receiver->refund(array("refund_address" => $refundAddress));
-
-        $this->assertSame($refundAddress, $receiver->refund_address);
-    }
+    //
+    // Note that there are no tests of consequences in here. The Bitcoin
+    // endpoints have been deprecated in favor of the generic sources API. The
+    // BitcoinReceiver class has been left in place for some backwards
+    // compatibility, but all users should be migrating off of it. The tests
+    // have been removed because we no longer have the API endpoints required
+    // to run them.
+    //
+    // [1] https://stripe.com/docs/sources
+    //
 }

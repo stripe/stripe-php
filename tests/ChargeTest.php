@@ -122,26 +122,6 @@ class ChargeTest extends TestCase
         );
     }
 
-    public function testCreateWithBitcoinReceiverSource()
-    {
-        self::authorizeFromEnv();
-
-        $receiver = $this->createTestBitcoinReceiver("do+fill_now@stripe.com");
-
-        $charge = Charge::create(
-            array(
-                'amount' => 100,
-                'currency' => 'usd',
-                'source' => $receiver->id
-            )
-        );
-
-        $this->assertSame($receiver->id, $charge->source->id);
-        $this->assertSame("bitcoin_receiver", $charge->source->object);
-        $this->assertSame("succeeded", $charge->status);
-        $this->assertInstanceOf('Stripe\\BitcoinReceiver', $charge->source);
-    }
-
     public function markAsSafe()
     {
         self::authorizeFromEnv();
