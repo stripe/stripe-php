@@ -96,6 +96,7 @@ abstract class Util
             'refund' => 'Stripe\\Refund',
             'sku' => 'Stripe\\SKU',
             'source' => 'Stripe\\Source',
+            'source_transaction' => 'Stripe\\SourceTransaction',
             'subscription' => 'Stripe\\Subscription',
             'subscription_item' => 'Stripe\\SubscriptionItem',
             'three_d_secure' => 'Stripe\\ThreeDSecure',

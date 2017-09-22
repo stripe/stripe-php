@@ -116,7 +116,22 @@ class Source extends ApiResource
      * @param array|null $params
      * @param array|string|null $options
      *
-     * @return BankAccount The verified bank account.
+     * @return Collection The list of source transactions.
+     */
+    public function sourceTransactions($params = null, $options = null)
+    {
+        $url = $this->instanceUrl() . '/source_transactions';
+        list($response, $opts) = $this->_request('get', $url, $params, $options);
+        $obj = Util\Util::convertToStripeObject($response, $opts);
+        $obj->setLastResponse($response);
+        return $obj;
+    }
+
+    /**
+     * @param array|null $params
+     * @param array|string|null $options
+     *
+     * @return Source The verified source.
      */
     public function verify($params = null, $options = null)
     {
