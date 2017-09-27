@@ -1,3 +1,7 @@
+### 5.2.3 2017-09-27
+
+* Add PHPDoc for `Card`
+
 ### 5.2.2 2017-09-20
 
 * Fix deserialization mapping of `FileUpload` objects
