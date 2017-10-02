@@ -5,8 +5,10 @@ matrix:
   include:
     - php: 5.3
       env: AUTOLOAD=1
+      dist: precise
     - php: 5.3
       env: AUTOLOAD=0
+      dist: precise
     - php: 5.4
       env: AUTOLOAD=1
     - php: 5.4
@@ -28,10 +30,8 @@ matrix:
     - php: 7.1
       env: AUTOLOAD=0
     - php: hhvm
-      dist: trusty
       env: AUTOLOAD=1
     - php: hhvm
-      dist: trusty
       env: AUTOLOAD=0
 
 cache:

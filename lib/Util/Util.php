@@ -82,7 +82,7 @@ abstract class Util
             'invoice' => 'Stripe\\Invoice',
             'invoiceitem' => 'Stripe\\InvoiceItem',
             'event' => 'Stripe\\Event',
-            'file' => 'Stripe\\FileUpload',
+            'file_upload' => 'Stripe\\FileUpload',
             'token' => 'Stripe\\Token',
             'transfer' => 'Stripe\\Transfer',
             'transfer_reversal' => 'Stripe\\TransferReversal',
