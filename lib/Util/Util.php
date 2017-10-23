@@ -77,6 +77,7 @@ abstract class Util
             'customer' => 'Stripe\\Customer',
             'dispute' => 'Stripe\\Dispute',
             'ephemeral_key' => 'Stripe\\EphemeralKey',
+            'exchange_rate' => 'Stripe\\ExchangeRate',
             'list' => 'Stripe\\Collection',
             'login_link' => 'Stripe\\LoginLink',
             'invoice' => 'Stripe\\Invoice',

@@ -65,6 +65,7 @@ require(dirname(__FILE__) . '/lib/Customer.php');
 require(dirname(__FILE__) . '/lib/Dispute.php');
 require(dirname(__FILE__) . '/lib/EphemeralKey.php');
 require(dirname(__FILE__) . '/lib/Event.php');
+require(dirname(__FILE__) . '/lib/ExchangeRate.php');
 require(dirname(__FILE__) . '/lib/FileUpload.php');
 require(dirname(__FILE__) . '/lib/Invoice.php');
 require(dirname(__FILE__) . '/lib/InvoiceItem.php');
