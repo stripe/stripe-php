@@ -1,7 +1,7 @@
 # Changelog
 
 ## 5.3.0 - 2017-10-11
-* Rename source `delete` to `detach` (and deprecate the former)
+* [#378](https://github.com/stripe/stripe-php/pull/378) Rename source `delete` to `detach` (and deprecate the former)
 
 ## 5.2.3 - 2017-09-27
 * Add PHPDoc for `Card`
