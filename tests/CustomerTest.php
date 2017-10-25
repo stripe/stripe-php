@@ -244,4 +244,95 @@ class CustomerTest extends TestCase
         $postDeleteSources = $postDeleteCustomer->sources->all();
         $this->assertSame(count($postDeleteSources["data"]), 1);
     }
+
+
+    public function testStaticCreateSource()
+    {
+        $this->mockRequest(
+            'POST',
+            '/v1/customers/cus_123/sources',
+            array('source' => 'tok_123'),
+            array('id' => 'card_123', 'object' => 'card')
+        );
+
+        $source = Customer::createSource(
+            'cus_123',
+            array('source' => 'tok_123')
+        );
+
+        $this->assertSame('card_123', $source->id);
+        $this->assertSame('card', $source->object);
+    }
+
+    public function testStaticRetrieveSource()
+    {
+        $this->mockRequest(
+            'GET',
+            '/v1/customers/cus_123/sources/card_123',
+            array(),
+            array('id' => 'card_123', 'object' => 'card')
+        );
+
+        $source = Customer::retrieveSource(
+            'cus_123',
+            'card_123'
+        );
+
+        $this->assertSame('card_123', $source->id);
+        $this->assertSame('card', $source->object);
+    }
+
+    public function testStaticUpdateSource()
+    {
+        $this->mockRequest(
+            'POST',
+            '/v1/customers/cus_123/sources/card_123',
+            array('metadata' => array('foo' => 'bar')),
+            array('id' => 'card_123', 'object' => 'card')
+        );
+
+        $source = Customer::updateSource(
+            'cus_123',
+            'card_123',
+            array('metadata' => array('foo' => 'bar'))
+        );
+
+        $this->assertSame('card_123', $source->id);
+        $this->assertSame('card', $source->object);
+    }
+
+    public function testStaticDeleteSource()
+    {
+        $this->mockRequest(
+            'DELETE',
+            '/v1/customers/cus_123/sources/card_123',
+            array(),
+            array('id' => 'card_123', 'deleted' => true)
+        );
+
+        $source = Customer::deleteSource(
+            'cus_123',
+            'card_123'
+        );
+
+        $this->assertSame('card_123', $source->id);
+        $this->assertSame(true, $source->deleted);
+    }
+
+    public function testStaticAllSources()
+    {
+        $this->mockRequest(
+            'GET',
+            '/v1/customers/cus_123/sources',
+            array(),
+            array('object' => 'list', 'data' => array())
+        );
+
+        $sources = Customer::allsources(
+            'cus_123'
+        );
+
+        $this->assertSame('list', $sources->object);
+        $this->assertEmpty($sources->data);
+    }
 }

@@ -9,6 +9,8 @@ namespace Stripe;
  */
 class ApplicationFee extends ApiResource
 {
+    const PATH_REFUNDS = '/refunds';
+
     /**
      * This is a special case because the application fee endpoint has an
      *    underscore in it. The parent `className` function strips underscores.
@@ -66,5 +68,55 @@ class ApplicationFee extends ApiResource
         $this->refunds->create($params, $opts);
         $this->refresh();
         return $this;
+    }
+
+    /**
+     * @param array|null $id The ID of the application fee on which to create the refund.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @return ApplicationFeeRefund
+     */
+    public static function createRefund($id, $params = null, $opts = null)
+    {
+        return self::_createNestedResource($id, static::PATH_REFUNDS, $params, $opts);
+    }
+
+    /**
+     * @param array|null $id The ID of the application fee to which the refund belongs.
+     * @param array|null $refundId The ID of the refund to retrieve.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @return ApplicationFeeRefund
+     */
+    public static function retrieveRefund($id, $refundId, $params = null, $opts = null)
+    {
+        return self::_retrieveNestedResource($id, static::PATH_REFUNDS, $refundId, $params, $opts);
+    }
+
+    /**
+     * @param array|null $id The ID of the application fee to which the refund belongs.
+     * @param array|null $refundId The ID of the refund to update.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @return ApplicationFeeRefund
+     */
+    public static function updateRefund($id, $refundId, $params = null, $opts = null)
+    {
+        return self::_updateNestedResource($id, static::PATH_REFUNDS, $refundId, $params, $opts);
+    }
+
+    /**
+     * @param array|null $id The ID of the application fee on which to retrieve the refunds.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @return ApplicationFeeRefund
+     */
+    public static function allRefunds($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_REFUNDS, $params, $opts);
     }
 }

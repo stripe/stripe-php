@@ -43,4 +43,75 @@ class TransferTest extends TestCase
         $updatedTransfer = Transfer::retrieve($transfer->id, $this->opts);
         $this->assertSame('foo bar', $updatedTransfer->metadata['test']);
     }
+
+    public function testStaticCreateReversal()
+    {
+        $this->mockRequest(
+            'POST',
+            '/v1/transfers/tr_123/reversals',
+            array(),
+            array('id' => 'trr_123', 'object' => 'transfer_reversal')
+        );
+
+        $reversal = Transfer::createReversal(
+            'tr_123'
+        );
+
+        $this->assertSame('trr_123', $reversal->id);
+        $this->assertSame('transfer_reversal', $reversal->object);
+    }
+
+    public function testStaticRetrieveReversal()
+    {
+        $this->mockRequest(
+            'GET',
+            '/v1/transfers/tr_123/reversals/trr_123',
+            array(),
+            array('id' => 'trr_123', 'object' => 'transfer_reversal')
+        );
+
+        $reversal = Transfer::retrieveReversal(
+            'tr_123',
+            'trr_123'
+        );
+
+        $this->assertSame('trr_123', $reversal->id);
+        $this->assertSame('transfer_reversal', $reversal->object);
+    }
+
+    public function testStaticUpdateReversal()
+    {
+        $this->mockRequest(
+            'POST',
+            '/v1/transfers/tr_123/reversals/trr_123',
+            array('metadata' => array('foo' => 'bar')),
+            array('id' => 'trr_123', 'object' => 'transfer_reversal')
+        );
+
+        $reversal = Transfer::updateReversal(
+            'tr_123',
+            'trr_123',
+            array('metadata' => array('foo' => 'bar'))
+        );
+
+        $this->assertSame('trr_123', $reversal->id);
+        $this->assertSame('transfer_reversal', $reversal->object);
+    }
+
+    public function testStaticAllReversals()
+    {
+        $this->mockRequest(
+            'GET',
+            '/v1/transfers/tr_123/reversals',
+            array(),
+            array('object' => 'list', 'data' => array())
+        );
+
+        $reversals = Transfer::allReversals(
+            'tr_123'
+        );
+
+        $this->assertSame('list', $reversals->object);
+        $this->assertEmpty($reversals->data);
+    }
 }
