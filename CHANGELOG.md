@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.4.0 - 2017-10-24
+* [#383](https://github.com/stripe/stripe-php/pull/383) Add static methods to manipulate resources from parent
+    * `Account` gains methods for external accounts and login links (e.g. `createExternalAccount`, `createLoginLink`)
+    * `ApplicationFee` gains methods for refunds
+    * `Customer` gains methods for sources
+    * `Transfer` gains methods for reversals
+
 ## 5.3.0 - 2017-10-11
 * [#378](https://github.com/stripe/stripe-php/pull/378) Rename source `delete` to `detach` (and deprecate the former)
 
