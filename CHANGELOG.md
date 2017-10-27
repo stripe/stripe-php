@@ -1,5 +1,8 @@
 # Changelog
 
+## 5.5.0 - 2017-10-27
+* [#385](https://github.com/stripe/stripe-php/pull/385) Support for listing source transactions
+
 ## 5.4.0 - 2017-10-24
 * [#383](https://github.com/stripe/stripe-php/pull/383) Add static methods to manipulate resources from parent
     * `Account` gains methods for external accounts and login links (e.g. `createExternalAccount`, `createLoginLink`)
