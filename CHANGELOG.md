@@ -1,5 +1,8 @@
 # Changelog
 
+## 5.6.0 - 2017-10-31
+* [#386](https://github.com/stripe/stripe-php/pull/386) Support for exchange rates APIs
+
 ## 5.5.1 - 2017-10-30
 * [#387](https://github.com/stripe/stripe-php/pull/387) Allow `personal_address_kana` and `personal_address_kanji` to be updated on an account
 
