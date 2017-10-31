@@ -27,13 +27,29 @@ class StripeObject implements ArrayAccess, JsonSerializable
     {
         self::$permanentAttributes = new Util\Set(array('_opts', 'id'));
         self::$nestedUpdatableAttributes = new Util\Set(array(
-            'metadata', 'legal_entity', 'address', 'dob', 'payout_schedule', 'transfer_schedule', 'verification',
-            'tos_acceptance', 'personal_address', 'personal_address_kana', 'personal_address_kanji',
-            'address_kana', 'address_kanji', 'shipping',
-            // will make the array into an AttachedObject: weird, but works for now
-            'additional_owners', 0, 1, 2, 3, 4, // Max 3, but leave the 4th so errors work properly
+            // Numbers are in place for indexes in an `additional_owners` array.
+            //
+            // There's a maximum allowed additional owners of 3, but leave the
+            // 4th so errors work properly.
+            0, 1, 2, 3, 4,
+
+            'additional_owners',
+            'address',
+            'address_kana',
+            'address_kanji',
+            'dob',
             'inventory',
+            'legal_entity',
+            'metadata',
             'owner',
+            'payout_schedule',
+            'personal_address',
+            'personal_address_kana',
+            'personal_address_kanji',
+            'shipping',
+            'tos_acceptance',
+            'transfer_schedule',
+            'verification',
         ));
     }
 
