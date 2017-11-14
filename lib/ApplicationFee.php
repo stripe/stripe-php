@@ -35,18 +35,6 @@ class ApplicationFee extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the application fee to update.
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return ApplicationFee The updated application fee.
-     */
-    public static function update($id, $params = null, $options = null)
-    {
-        return self::_update($id, $params, $options);
-    }
-
-    /**
      * @param array|null $params
      * @param array|string|null $opts
      *
