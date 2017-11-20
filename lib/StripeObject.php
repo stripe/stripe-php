@@ -37,6 +37,7 @@ class StripeObject implements ArrayAccess, JsonSerializable
             'address',
             'address_kana',
             'address_kanji',
+            'card',
             'dob',
             'inventory',
             'legal_entity',
