@@ -1,7 +1,9 @@
 # Changelog
 
 ## 5.7.0 - 2017-11-28
-* [#999](https://github.com/stripe/stripe-php/pull/999) DESCRIBE CHANGES HERE (try to use the same style, tense, etc. as the other entries)
+* [#390](https://github.com/stripe/stripe-php/pull/390) Remove some unsupported API methods
+* [#391](https://github.com/stripe/stripe-php/pull/391) Alphabetize the list of API resources in `Util::convertToStripeObject()` and add missing resources
+* [#393](https://github.com/stripe/stripe-php/pull/393) Fix expiry date update for card sources
 
 ## 5.6.0 - 2017-10-31
 * [#386](https://github.com/stripe/stripe-php/pull/386) Support for exchange rates APIs
