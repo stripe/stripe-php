@@ -1,5 +1,8 @@
 # Changelog
 
+## 5.7.0 - 2017-11-28
+* [#999](https://github.com/stripe/stripe-php/pull/999) DESCRIBE CHANGES HERE (try to use the same style, tense, etc. as the other entries)
+
 ## 5.6.0 - 2017-10-31
 * [#386](https://github.com/stripe/stripe-php/pull/386) Support for exchange rates APIs
 
