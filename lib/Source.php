@@ -25,17 +25,6 @@ class Source extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return Collection of Sources
-     */
-    public static function all($params = null, $opts = null)
-    {
-        return self::_all($params, $opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
      * @return Source The created Source.
      */
     public static function create($params = null, $opts = null)
