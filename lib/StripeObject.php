@@ -13,45 +13,53 @@ use InvalidArgumentException;
 class StripeObject implements ArrayAccess, JsonSerializable
 {
     /**
-     * @var Util\Set Attributes that should not be sent to the API because
+     * @return Util\Set Attributes that should not be sent to the API because
      *    they're not updatable (e.g. API key, ID).
      */
-    public static $permanentAttributes;
+    public static function getPermanentAttributes()
+    {
+        static $permanentAttributes = null;
+        if ($permanentAttributes === null) {
+            $permanentAttributes = new Util\Set(array('_opts', 'id'));
+        }
+        return $permanentAttributes;
+    }
+
     /**
-     * @var Util\Set Attributes that are nested but still updatable from
+     * @return Util\Set Attributes that are nested but still updatable from
      *    the parent class's URL (e.g. metadata).
      */
-    public static $nestedUpdatableAttributes;
-
-    public static function init()
+    public static function getNestedUpdatableAttributes()
     {
-        self::$permanentAttributes = new Util\Set(array('_opts', 'id'));
-        self::$nestedUpdatableAttributes = new Util\Set(array(
-            // Numbers are in place for indexes in an `additional_owners` array.
-            //
-            // There's a maximum allowed additional owners of 3, but leave the
-            // 4th so errors work properly.
-            0, 1, 2, 3, 4,
+        static $nestedUpdatableAttributes = null;
+        if ($nestedUpdatableAttributes === null) {
+            $nestedUpdatableAttributes = new Util\Set(array(
+                // Numbers are in place for indexes in an `additional_owners` array.
+                //
+                // There's a maximum allowed additional owners of 3, but leave the
+                // 4th so errors work properly.
+                0, 1, 2, 3, 4,
 
-            'additional_owners',
-            'address',
-            'address_kana',
-            'address_kanji',
-            'card',
-            'dob',
-            'inventory',
-            'legal_entity',
-            'metadata',
-            'owner',
-            'payout_schedule',
-            'personal_address',
-            'personal_address_kana',
-            'personal_address_kanji',
-            'shipping',
-            'tos_acceptance',
-            'transfer_schedule',
-            'verification',
-        ));
+                'additional_owners',
+                'address',
+                'address_kana',
+                'address_kanji',
+                'dob',
+                'inventory',
+                'legal_entity',
+                'metadata',
+                'owner',
+                'payout_schedule',
+                'personal_address',
+                'personal_address_kana',
+                'personal_address_kanji',
+                'shipping',
+                'tos_acceptance',
+                'transfer_schedule',
+                'verification',
+            ));
+        }
+        return $nestedUpdatableAttributes;
     }
 
     /**
@@ -112,14 +120,14 @@ class StripeObject implements ArrayAccess, JsonSerializable
             );
         }
 
-        if (self::$nestedUpdatableAttributes->includes($k)
+        if (static::getNestedUpdatableAttributes()->includes($k)
                 && isset($this->$k) && $this->$k instanceof AttachedObject && is_array($v)) {
             $this->$k->replaceWith($v);
         } else {
             // TODO: may want to clear from $_transientValues (Won't be user-visible).
             $this->_values[$k] = $v;
         }
-        if (!self::$permanentAttributes->includes($k)) {
+        if (!static::getPermanentAttributes()->includes($k)) {
             $this->_unsavedValues->add($k);
         }
     }
@@ -223,7 +231,7 @@ class StripeObject implements ArrayAccess, JsonSerializable
         }
 
         foreach ($removed as $k) {
-            if (self::$permanentAttributes->includes($k)) {
+            if (static::getPermanentAttributes()->includes($k)) {
                 continue;
             }
 
@@ -231,11 +239,11 @@ class StripeObject implements ArrayAccess, JsonSerializable
         }
 
         foreach ($values as $k => $v) {
-            if (self::$permanentAttributes->includes($k) && isset($this[$k])) {
+            if (static::getPermanentAttributes()->includes($k) && isset($this[$k])) {
                 continue;
             }
 
-            if (self::$nestedUpdatableAttributes->includes($k) && is_array($v)) {
+            if (static::getNestedUpdatableAttributes()->includes($k) && is_array($v)) {
                 $this->_values[$k] = AttachedObject::constructFrom($v, $opts);
             } else {
                 $this->_values[$k] = Util\Util::convertToStripeObject($v, $opts);
@@ -265,7 +273,7 @@ class StripeObject implements ArrayAccess, JsonSerializable
         }
 
         // Get nested updates.
-        foreach (self::$nestedUpdatableAttributes->toArray() as $property) {
+        foreach (static::getNestedUpdatableAttributes()->toArray() as $property) {
             if (isset($this->$property)) {
                 if ($this->$property instanceof StripeObject) {
                     $serialized = $this->$property->serializeParameters();
@@ -308,5 +316,3 @@ class StripeObject implements ArrayAccess, JsonSerializable
         }
     }
 }
-
-StripeObject::init();

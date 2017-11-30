@@ -10,6 +10,20 @@ namespace Stripe;
 class Source extends ApiResource
 {
     /**
+     * @return Util\Set Attributes that are nested but still updatable from
+     *    the parent class's URL (e.g. metadata).
+     */
+    public static function getNestedUpdatableAttributes()
+    {
+        static $nestedUpdatableAttributes = null;
+        if ($nestedUpdatableAttributes === null) {
+            $nestedUpdatableAttributes = StripeObject::getNestedUpdatableAttributes();
+            $nestedUpdatableAttributes->add('card');
+        }
+        return $nestedUpdatableAttributes;
+    }
+
+    /**
      * @param array|string $id The ID of the source to retrieve, or an options
      *     array containing an `id` key.
      * @param array|string|null $opts
