@@ -12,10 +12,8 @@ class CountrySpecTest extends TestCase
         $d = CountrySpec::retrieve($country);
         $this->assertSame($d->object, "country_spec");
         $this->assertSame($d->id, $country);
-        $this->assertGreaterThan(0, count($d->supported_bank_account_currencies));
         $this->assertGreaterThan(0, count($d->supported_payment_currencies));
         $this->assertGreaterThan(0, count($d->supported_payment_methods));
-        $this->assertGreaterThan(0, count($d->verification_fields));
     }
 
     public function testList()
