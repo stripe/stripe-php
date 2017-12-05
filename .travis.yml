@@ -29,6 +29,10 @@ matrix:
       env: AUTOLOAD=1
     - php: 7.1
       env: AUTOLOAD=0
+    - php: 7.2
+      env: AUTOLOAD=1
+    - php: 7.2
+      env: AUTOLOAD=0
     - php: hhvm
       env: AUTOLOAD=1
     - php: hhvm
