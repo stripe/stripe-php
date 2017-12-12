@@ -97,7 +97,6 @@ class StripeObjectTest extends TestCase
 
     public function testReplaceNewNestedUpdatable()
     {
-        StripeObject::init(); // Populate the $nestedUpdatableAttributes Set
         $s = new StripeObject();
 
         $s->metadata = array('bar');
