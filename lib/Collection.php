@@ -9,6 +9,7 @@ namespace Stripe;
  * @property string $url
  * @property bool $has_more
  * @property mixed $data
+ * @property int $total_count
  *
  * @package Stripe
  */
