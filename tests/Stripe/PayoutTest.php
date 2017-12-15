@@ -46,7 +46,7 @@ class PayoutTest extends TestCase
         $resource->metadata["key"] = "value";
         $this->expectsRequest(
             'post',
-            '/v1/payouts/' . self::TEST_RESOURCE_ID
+            '/v1/payouts/' . $resource->id
         );
         $resource->save();
         $this->assertInstanceOf("Stripe\\Payout", $resource);

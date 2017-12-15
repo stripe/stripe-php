@@ -15,7 +15,7 @@ namespace Stripe;
  * @property $interval
  * @property $interval_count
  * @property $livemode
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property $name
  * @property $statement_descriptor
  * @property $trial_period_days

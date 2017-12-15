@@ -42,6 +42,18 @@ class Account extends ApiResource
     use ApiOperations\Delete;
     use ApiOperations\Update;
 
+    public static function getSavedNestedResources()
+    {
+        static $savedNestedResources = null;
+        if ($savedNestedResources === null) {
+            $savedNestedResources = new Util\Set([
+                'external_account',
+                'bank_account',
+            ]);
+        }
+        return $savedNestedResources;
+    }
+
     const PATH_EXTERNAL_ACCOUNTS = '/external_accounts';
     const PATH_LOGIN_LINKS = '/login_links';
 
@@ -172,5 +184,46 @@ class Account extends ApiResource
     public static function createLoginLink($id, $params = null, $opts = null)
     {
         return self::_createNestedResource($id, static::PATH_LOGIN_LINKS, $params, $opts);
+    }
+
+    public function serializeParameters($force = false)
+    {
+        $update = parent::serializeParameters($force);
+        if (isset($this->_values['legal_entity'])) {
+            $entity = $this['legal_entity'];
+            if (isset($entity->_values['additional_owners'])) {
+                $owners = $entity['additional_owners'];
+                $entityUpdate = isset($update['legal_entity']) ? $update['legal_entity'] : [];
+                $entityUpdate['additional_owners'] = $this->serializeAdditionalOwners($entity, $owners);
+                $update['legal_entity'] = $entityUpdate;
+            }
+        }
+        return $update;
+    }
+
+    private function serializeAdditionalOwners($legalEntity, $additionalOwners)
+    {
+        if (isset($legalEntity->_originalValues['additional_owners'])) {
+            $originalValue = $legalEntity->_originalValues['additional_owners'];
+        } else {
+            $originalValue = [];
+        }
+        if (($originalValue) && (count($originalValue) > count($additionalOwners))) {
+            throw new \InvalidArgumentException(
+                "You cannot delete an item from an array, you must instead set a new array"
+            );
+        }
+
+        $updateArr = [];
+        foreach ($additionalOwners as $i => $v) {
+            $update = ($v instanceof StripeObject) ? $v->serializeParameters() : $v;
+
+            if ($update !== []) {
+                if (!$originalValue || ($update != $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
+                    $updateArr[$i] = $update;
+                }
+            }
+        }
+        return $updateArr;
     }
 }

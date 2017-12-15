@@ -49,7 +49,7 @@ class PlanTest extends TestCase
         $resource->metadata["key"] = "value";
         $this->expectsRequest(
             'post',
-            '/v1/plans/' . self::TEST_RESOURCE_ID
+            '/v1/plans/' . $resource->id
         );
         $resource->save();
         $this->assertInstanceOf("Stripe\\Plan", $resource);
@@ -72,7 +72,7 @@ class PlanTest extends TestCase
         $resource = Plan::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'delete',
-            '/v1/plans/' . self::TEST_RESOURCE_ID
+            '/v1/plans/' . $resource->id
         );
         $resource->delete();
         $this->assertInstanceOf("Stripe\\Plan", $resource);

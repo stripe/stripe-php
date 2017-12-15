@@ -32,6 +32,17 @@ class Customer extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    public static function getSavedNestedResources()
+    {
+        static $savedNestedResources = null;
+        if ($savedNestedResources === null) {
+            $savedNestedResources = new Util\Set([
+                'source',
+            ]);
+        }
+        return $savedNestedResources;
+    }
+
     const PATH_SOURCES = '/sources';
 
     /**

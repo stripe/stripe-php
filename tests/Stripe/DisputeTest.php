@@ -33,7 +33,7 @@ class DisputeTest extends TestCase
         $resource->metadata["key"] = "value";
         $this->expectsRequest(
             'post',
-            '/v1/disputes/' . self::TEST_RESOURCE_ID
+            '/v1/disputes/' . $resource->id
         );
         $resource->save();
         $this->assertInstanceOf("Stripe\\Dispute", $resource);

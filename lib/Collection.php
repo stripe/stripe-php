@@ -12,9 +12,46 @@ namespace Stripe;
  *
  * @package Stripe
  */
-class Collection extends ApiResource
+class Collection extends StripeObject
 {
     protected $_requestParams = [];
+
+    /**
+     * @param string $method HTTP method ('get', 'post', etc.)
+     * @param string $url URL for the request
+     * @param array $params list of parameters for the request
+     * @param array|string|null $options
+     *
+     * @return array tuple containing (the JSON response, $options)
+     */
+    protected function _request($method, $url, $params = [], $options = null)
+    {
+        $opts = $this->_opts->merge($options);
+        list($resp, $options) = static::_staticRequest($method, $url, $params, $opts);
+        $this->setLastResponse($resp);
+        return [$resp->json, $options];
+    }
+
+    /**
+     * @param string $method HTTP method ('get', 'post', etc.)
+     * @param string $url URL for the request
+     * @param array $params list of parameters for the request
+     * @param array|string|null $options
+     *
+     * @return array tuple containing (the JSON response, $options)
+     */
+    protected static function _staticRequest($method, $url, $params, $options)
+    {
+        $opts = Util\RequestOptions::parse($options);
+        $requestor = new ApiRequestor($opts->apiKey);
+        list($response, $opts->apiKey) = $requestor->request($method, $url, $params, $opts->headers);
+        foreach ($opts->headers as $k => $v) {
+            if (!array_key_exists($k, self::$HEADERS_TO_PERSIST)) {
+                unset($opts->headers[$k]);
+            }
+        }
+        return [$response, $opts];
+    }
 
     public function setRequestParams($params)
     {

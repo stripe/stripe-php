@@ -54,7 +54,7 @@ class AccountTest extends TestCase
         $resource->metadata["key"] = "value";
         $this->expectsRequest(
             'post',
-            '/v1/accounts/' . self::TEST_RESOURCE_ID
+            '/v1/accounts/' . $resource->id
         );
         $resource->save();
         $this->assertInstanceOf("Stripe\\Account", $resource);
@@ -77,7 +77,7 @@ class AccountTest extends TestCase
         $resource = Account::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'delete',
-            '/v1/accounts/' . self::TEST_RESOURCE_ID
+            '/v1/accounts/' . $resource->id
         );
         $resource->delete();
         $this->assertInstanceOf("Stripe\\Account", $resource);
@@ -178,5 +178,188 @@ class AccountTest extends TestCase
         );
         $resource = Account::createLoginLink(self::TEST_RESOURCE_ID);
         $this->assertInstanceOf("Stripe\\LoginLink", $resource);
+    }
+
+    public function testSerializeNewAdditionalOwners()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'account',
+            'legal_entity' => StripeObject::constructFrom([]),
+        ], null);
+        $obj->legal_entity->additional_owners = [
+            ['first_name' => 'Joe'],
+            ['first_name' => 'Jane'],
+        ];
+
+        $expected = [
+            'legal_entity' => [
+                'additional_owners' => [
+                    0 => ['first_name' => 'Joe'],
+                    1 => ['first_name' => 'Jane'],
+                ],
+            ],
+        ];
+        $this->assertSame($expected, $obj->serializeParameters());
+    }
+
+    public function testSerializePartiallyChangedAdditionalOwners()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'account',
+            'legal_entity' => [
+                'additional_owners' => [
+                    StripeObject::constructFrom(['first_name' => 'Joe']),
+                    StripeObject::constructFrom(['first_name' => 'Jane']),
+                ],
+            ],
+        ], null);
+        $obj->legal_entity->additional_owners[1]->first_name = 'Stripe';
+
+        $expected = [
+            'legal_entity' => [
+                'additional_owners' => [
+                    1 => ['first_name' => 'Stripe'],
+                ],
+            ],
+        ];
+        $this->assertSame($expected, $obj->serializeParameters());
+    }
+
+    public function testSerializeUnchangedAdditionalOwners()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'account',
+            'legal_entity' => [
+                'additional_owners' => [
+                    StripeObject::constructFrom(['first_name' => 'Joe']),
+                    StripeObject::constructFrom(['first_name' => 'Jane']),
+                ],
+            ],
+        ], null);
+
+        $expected = [
+            'legal_entity' => [
+                'additional_owners' => [],
+            ],
+        ];
+        $this->assertSame($expected, $obj->serializeParameters());
+    }
+
+    public function testSerializeUnsetAdditionalOwners()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'account',
+            'legal_entity' => [
+                'additional_owners' => [
+                    StripeObject::constructFrom(['first_name' => 'Joe']),
+                    StripeObject::constructFrom(['first_name' => 'Jane']),
+                ],
+            ],
+        ], null);
+        $obj->legal_entity->additional_owners = null;
+
+        // Note that the empty string that we send for this one has a special
+        // meaning for the server, which interprets it as an array unset.
+        $expected = [
+            'legal_entity' => [
+                'additional_owners' => '',
+            ],
+        ];
+        $this->assertSame($expected, $obj->serializeParameters());
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testSerializeAdditionalOwnersDeletedItem()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'account',
+            'legal_entity' => [
+                'additional_owners' => [
+                    StripeObject::constructFrom(['first_name' => 'Joe']),
+                    StripeObject::constructFrom(['first_name' => 'Jane']),
+                ],
+            ],
+        ], null);
+        unset($obj->legal_entity->additional_owners[0]);
+
+        $obj->serializeParameters();
+    }
+
+    public function testSerializeExternalAccountString()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'account',
+        ], null);
+        $obj->external_account = 'btok_123';
+
+        $expected = [
+            'external_account' => 'btok_123',
+        ];
+        $this->assertSame($expected, $obj->serializeParameters());
+    }
+
+    public function testSerializeExternalAccountHash()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'account',
+        ], null);
+        $obj->external_account = [
+            'object' => 'bank_account',
+            'routing_number' => '110000000',
+            'account_number' => '000123456789',
+            'country' => 'US',
+            'currency' => 'usd',
+        ];
+
+        $expected = [
+            'external_account' => [
+                'object' => 'bank_account',
+                'routing_number' => '110000000',
+                'account_number' => '000123456789',
+                'country' => 'US',
+                'currency' => 'usd',
+            ],
+        ];
+        $this->assertSame($expected, $obj->serializeParameters());
+    }
+
+    public function testSerializeBankAccountString()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'account',
+        ], null);
+        $obj->bank_account = 'btok_123';
+
+        $expected = [
+            'bank_account' => 'btok_123',
+        ];
+        $this->assertSame($expected, $obj->serializeParameters());
+    }
+
+    public function testSerializeBankAccountHash()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'account',
+        ], null);
+        $obj->bank_account = [
+            'object' => 'bank_account',
+            'routing_number' => '110000000',
+            'account_number' => '000123456789',
+            'country' => 'US',
+            'currency' => 'usd',
+        ];
+
+        $expected = [
+            'bank_account' => [
+                'object' => 'bank_account',
+                'routing_number' => '110000000',
+                'account_number' => '000123456789',
+                'country' => 'US',
+                'currency' => 'usd',
+            ],
+        ];
+        $this->assertSame($expected, $obj->serializeParameters());
     }
 }
