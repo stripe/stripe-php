@@ -45,7 +45,7 @@ class InvoiceTest extends TestCase
         $resource->metadata["key"] = "value";
         $this->expectsRequest(
             'post',
-            '/v1/invoices/' . self::TEST_RESOURCE_ID
+            '/v1/invoices/' . $resource->id
         );
         $resource->save();
         $this->assertInstanceOf("Stripe\\Invoice", $resource);

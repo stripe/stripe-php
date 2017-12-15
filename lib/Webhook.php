@@ -31,7 +31,7 @@ abstract class Webhook
               . "(json_last_error() was $jsonError)";
             throw new \UnexpectedValueException($msg);
         }
-        $event = Event::constructFrom($data, null);
+        $event = Event::constructFrom($data);
 
         WebhookSignature::verifyHeader($payload, $sigHeader, $secret, $tolerance);
 

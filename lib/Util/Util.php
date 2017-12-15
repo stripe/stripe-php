@@ -11,21 +11,22 @@ abstract class Util
 
     /**
      * Whether the provided array (or other) is a list rather than a dictionary.
+     * A list is defined as an array for which all the keys are consecutive
+     * integers starting at 0. Empty arrays are considered to be lists.
      *
      * @param array|mixed $array
-     * @return boolean True if the given object is a list.
+     * @return boolean true if the given object is a list.
      */
     public static function isList($array)
     {
         if (!is_array($array)) {
             return false;
         }
-
-      // TODO: generally incorrect, but it's correct given Stripe's response
-        foreach (array_keys($array) as $k) {
-            if (!is_numeric($k)) {
-                return false;
-            }
+        if ($array === []) {
+            return true;
+        }
+        if (array_keys($array) !== range(0, count($array) - 1)) {
+            return false;
         }
         return true;
     }
@@ -220,5 +221,17 @@ abstract class Util
         }
 
         return implode("&", $r);
+    }
+
+    public static function normalizeId($id)
+    {
+        if (is_array($id)) {
+            $params = $id;
+            $id = $params['id'];
+            unset($params['id']);
+        } else {
+            $params = [];
+        }
+        return [$id, $params];
     }
 }
