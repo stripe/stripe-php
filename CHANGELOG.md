@@ -1,5 +1,8 @@
 # Changelog
 
+## 5.8.0 - 2017-12-20
+* [#403](https://github.com/stripe/stripe-php/pull/403) Add `__debugInfo()` magic method to `StripeObject`
+
 ## 5.7.0 - 2017-11-28
 * [#390](https://github.com/stripe/stripe-php/pull/390) Remove some unsupported API methods
 * [#391](https://github.com/stripe/stripe-php/pull/391) Alphabetize the list of API resources in `Util::convertToStripeObject()` and add missing resources
