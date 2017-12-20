@@ -158,6 +158,12 @@ class StripeObject implements ArrayAccess, JsonSerializable
         }
     }
 
+    // Magic method for var_dump output. Only works with PHP >= 5.6
+    public function __debugInfo()
+    {
+        return $this->_values;
+    }
+
     // ArrayAccess methods
     public function offsetSet($k, $v)
     {
