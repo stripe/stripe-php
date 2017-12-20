@@ -70,6 +70,7 @@ class ApiRequestor
      * @param array $resp
      *
      * @throws Error\InvalidRequest if the error is caused by the user.
+     * @throws Error\Idempotency if the error is caused by an idempotency key.
      * @throws Error\Authentication if the error is caused by a lack of
      *    permissions.
      * @throws Error\Permission if the error is caused by insufficient
@@ -106,6 +107,7 @@ class ApiRequestor
         $msg = isset($errorData['message']) ? $errorData['message'] : null;
         $param = isset($errorData['param']) ? $errorData['param'] : null;
         $code = isset($errorData['code']) ? $errorData['code'] : null;
+        $type = isset($errorData['type']) ? $errorData['type'] : null;
 
         switch ($rcode) {
             case 400:
@@ -113,6 +115,9 @@ class ApiRequestor
                 // for API versions earlier than 2015-09-08
                 if ($code == 'rate_limit') {
                     return new Error\RateLimit($msg, $param, $rcode, $rbody, $resp, $rheaders);
+                }
+                if ($type == 'idempotency_error') {
+                    return new Error\Idempotency($msg, $rcode, $rbody, $resp, $rheaders);
                 }
 
                 // intentional fall-through
