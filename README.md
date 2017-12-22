@@ -144,6 +144,13 @@ composer install
 
 ## Tests
 
+The test suite depends on [stripe-mock], so make sure to fetch and run it from a
+background terminal ([stripe-mock's README][stripe-mock] also contains
+instructions for installing via Homebrew and other methods):
+
+    go get -u github.com/stripe/stripe-mock
+    stripe-mock
+
 Install dependencies as mentioned above (which will resolve [PHPUnit](http://packagist.org/packages/phpunit/phpunit)), then you can run the test suite:
 
 ```bash
