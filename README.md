@@ -178,3 +178,4 @@ The method should be called once, before any request is sent to the API. The sec
 See the "SSL / TLS compatibility issues" paragraph above for full context. If you want to ensure that your plugin can be used on all systems, you should add a configuration option to let your users choose between different values for `CURLOPT_SSLVERSION`: none (default), `CURL_SSLVERSION_TLSv1` and `CURL_SSLVERSION_TLSv1_2`.
 
 [psr3]: http://www.php-fig.org/psr/psr-3/
+[stripe-mock]: https://github.com/stripe/stripe-mock
