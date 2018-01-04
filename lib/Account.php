@@ -143,10 +143,10 @@ class Account extends ApiResource
      */
     public function deauthorize($clientId = null, $opts = null)
     {
-        $params = array(
+        $params = [
             'client_id' => $clientId,
             'stripe_user_id' => $this->id,
-        );
+        ];
         OAuth::deauthorize($params, $opts);
     }
 

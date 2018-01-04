@@ -142,7 +142,7 @@ class Charge extends ApiResource
     {
         $url = $this->instanceUrl() . '/dispute';
         list($response, $opts) = $this->_request('post', $url, $params, $options);
-        $this->refreshFrom(array('dispute' => $response), $opts, true);
+        $this->refreshFrom(['dispute' => $response], $opts, true);
         return $this->dispute;
     }
 
@@ -168,7 +168,7 @@ class Charge extends ApiResource
      */
     public function markAsFraudulent($opts = null)
     {
-        $params = array('fraud_details' => array('user_report' => 'fraudulent'));
+        $params = ['fraud_details' => ['user_report' => 'fraudulent']];
         $url = $this->instanceUrl();
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
@@ -182,7 +182,7 @@ class Charge extends ApiResource
      */
     public function markAsSafe($opts = null)
     {
-        $params = array('fraud_details' => array('user_report' => 'safe'));
+        $params = ['fraud_details' => ['user_report' => 'safe']];
         $url = $this->instanceUrl();
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);

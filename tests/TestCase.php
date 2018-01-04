@@ -101,12 +101,12 @@ class TestCase extends \PHPUnit_Framework_TestCase
         $params = null,
         $headers = null,
         $hasFile = false,
-        $response = array(),
+        $response = [],
         $rcode = 200,
         $base = null
     ) {
         $this->prepareRequestMock($method, $path, $params, $headers, $hasFile, $base)
-            ->willReturn(array(json_encode($response), $rcode, array()));
+            ->willReturn([json_encode($response), $rcode, []]);
     }
 
     /**

@@ -50,7 +50,7 @@ Simple usage looks like:
 
 ```php
 \Stripe\Stripe::setApiKey('sk_test_BQokikJOvBiI2HlWgH4olfQ2');
-$charge = \Stripe\Charge::create(array('amount' => 2000, 'currency' => 'usd', 'source' => 'tok_189fqt2eZvKYlo2CTGBeg6Uq' ));
+$charge = \Stripe\Charge::create(['amount' => 2000, 'currency' => 'usd', 'source' => 'tok_189fqt2eZvKYlo2CTGBeg6Uq']);
 echo $charge;
 ```
 
@@ -103,7 +103,7 @@ Need to set a proxy for your requests? Pass in the requisite `CURLOPT_*` array t
 
 ```php
 // set up your tweaked Curl client
-$curl = new \Stripe\HttpClient\CurlClient(array(CURLOPT_PROXY => 'proxy.local:80'));
+$curl = new \Stripe\HttpClient\CurlClient([CURLOPT_PROXY => 'proxy.local:80']);
 // tell Stripe to use the tweaked client
 \Stripe\ApiRequestor::setHttpClient($curl);
 ```
@@ -125,7 +125,7 @@ end up there instead of `error_log`:
 You can access the data from the last API response on any object via `getLastResponse()`.
 
 ```php
-$charge = \Stripe\Charge::create(array('amount' => 2000, 'currency' => 'usd', 'source' => 'tok_visa'));
+$charge = \Stripe\Charge::create(['amount' => 2000, 'currency' => 'usd', 'source' => 'tok_visa']);
 echo $charge->getLastResponse()->headers['Request-Id'];
 ```
 
@@ -136,7 +136,7 @@ Stripe's API now requires that [all connections use TLS 1.2](https://stripe.com/
 The recommended course of action is to [upgrade your cURL and OpenSSL packages](https://support.stripe.com/questions/how-do-i-upgrade-my-stripe-integration-from-tls-1-0-to-tls-1-2#php) so that TLS 1.2 is used by default, but if that is not possible, you might be able to solve the issue by setting the `CURLOPT_SSLVERSION` option to either `CURL_SSLVERSION_TLSv1` or `CURL_SSLVERSION_TLSv1_2`:
 
 ```php
-$curl = new \Stripe\HttpClient\CurlClient(array(CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1));
+$curl = new \Stripe\HttpClient\CurlClient([CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1]);
 \Stripe\ApiRequestor::setHttpClient($curl);
 ```
 

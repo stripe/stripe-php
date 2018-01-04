@@ -33,9 +33,9 @@ class InvoiceTest extends TestCase
             'post',
             '/v1/invoices'
         );
-        $resource = Invoice::create(array(
+        $resource = Invoice::create([
             "customer" => "cus_123"
-        ));
+        ]);
         $this->assertInstanceOf("Stripe\\Invoice", $resource);
     }
 
@@ -57,9 +57,9 @@ class InvoiceTest extends TestCase
             'post',
             '/v1/invoices/' . self::TEST_RESOURCE_ID
         );
-        $resource = Invoice::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Invoice::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertInstanceOf("Stripe\\Invoice", $resource);
     }
 
@@ -69,7 +69,7 @@ class InvoiceTest extends TestCase
             'get',
             '/v1/invoices/upcoming'
         );
-        $resource = Invoice::upcoming(array("customer" => "cus_123"));
+        $resource = Invoice::upcoming(["customer" => "cus_123"]);
         $this->assertInstanceOf("Stripe\\Invoice", $resource);
     }
 
