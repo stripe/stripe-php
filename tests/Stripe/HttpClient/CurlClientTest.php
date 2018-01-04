@@ -35,7 +35,7 @@ class CurlClientTest extends TestCase
     public function testDefaultOptions()
     {
         // make sure options array loads/saves properly
-        $optionsArray = array(CURLOPT_PROXY => 'localhost:80');
+        $optionsArray = [CURLOPT_PROXY => 'localhost:80'];
         $withOptionsArray = new CurlClient($optionsArray);
         $this->assertSame($withOptionsArray->getDefaultOptions(), $optionsArray);
 
@@ -43,24 +43,24 @@ class CurlClientTest extends TestCase
         $ref = null;
         $withClosure = new CurlClient(function ($method, $absUrl, $headers, $params, $hasFile) use (&$ref) {
             $ref = func_get_args();
-            return array();
+            return [];
         });
 
-        $withClosure->request('get', 'https://httpbin.org/status/200', array(), array(), false);
-        $this->assertSame($ref, array('get', 'https://httpbin.org/status/200', array(), array(), false));
+        $withClosure->request('get', 'https://httpbin.org/status/200', [], [], false);
+        $this->assertSame($ref, ['get', 'https://httpbin.org/status/200', [], [], false]);
 
         // this is the last test case that will run, since it'll throw an exception at the end
         $withBadClosure = new CurlClient(function () {
             return 'thisShouldNotWork';
         });
         $this->setExpectedException('Stripe\Error\Api', "Non-array value returned by defaultOptions CurlClient callback");
-        $withBadClosure->request('get', 'https://httpbin.org/status/200', array(), array(), false);
+        $withBadClosure->request('get', 'https://httpbin.org/status/200', [], [], false);
     }
 
     public function testSslOption()
     {
         // make sure options array loads/saves properly
-        $optionsArray = array(CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1);
+        $optionsArray = [CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1];
         $withOptionsArray = new CurlClient($optionsArray);
         $this->assertSame($withOptionsArray->getDefaultOptions(), $optionsArray);
     }

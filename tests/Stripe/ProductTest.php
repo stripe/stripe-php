@@ -33,9 +33,9 @@ class ProductTest extends TestCase
             'post',
             '/v1/products'
         );
-        $resource = Product::create(array(
+        $resource = Product::create([
             'name' => 'name'
-        ));
+        ]);
         $this->assertSame("Stripe\\Product", get_class($resource));
     }
 
@@ -57,9 +57,9 @@ class ProductTest extends TestCase
             'post',
             '/v1/products/' . self::TEST_RESOURCE_ID
         );
-        $resource = Product::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Product::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertSame("Stripe\\Product", get_class($resource));
     }
 

@@ -33,13 +33,13 @@ class PlanTest extends TestCase
             'post',
             '/v1/plans'
         );
-        $resource = Plan::create(array(
+        $resource = Plan::create([
             'amount' => 100,
             'interval' => 'month',
             'currency' => 'usd',
             'name' => self::TEST_RESOURCE_ID,
             'id' => self::TEST_RESOURCE_ID
-        ));
+        ]);
         $this->assertSame("Stripe\\Plan", get_class($resource));
     }
 
@@ -61,9 +61,9 @@ class PlanTest extends TestCase
             'post',
             '/v1/plans/' . self::TEST_RESOURCE_ID
         );
-        $resource = Plan::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Plan::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertSame("Stripe\\Plan", get_class($resource));
     }
 

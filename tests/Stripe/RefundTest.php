@@ -33,9 +33,9 @@ class RefundTest extends TestCase
             'post',
             '/v1/refunds'
         );
-        $resource = Refund::create(array(
+        $resource = Refund::create([
             "charge" => "ch_123"
-        ));
+        ]);
         $this->assertSame("Stripe\\Refund", get_class($resource));
     }
 
@@ -57,9 +57,9 @@ class RefundTest extends TestCase
             'post',
             '/v1/refunds/' . self::TEST_RESOURCE_ID
         );
-        $resource = Refund::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Refund::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertSame("Stripe\\Refund", get_class($resource));
     }
 }

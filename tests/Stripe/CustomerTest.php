@@ -56,9 +56,9 @@ class CustomerTest extends TestCase
             'post',
             '/v1/customers/' . self::TEST_RESOURCE_ID
         );
-        $resource = Customer::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Customer::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertSame("Stripe\\Customer", get_class($resource));
     }
 
@@ -79,16 +79,16 @@ class CustomerTest extends TestCase
         $this->expectsRequest(
             'post',
             '/v1/invoiceitems',
-            array(
+            [
                 "amount" => 100,
                 "currency" => "usd",
                 "customer" => $customer->id
-            )
+            ]
         );
-        $resource = $customer->addInvoiceItem(array(
+        $resource = $customer->addInvoiceItem([
             "amount" => 100,
             "currency" => "usd"
-        ));
+        ]);
         $this->assertSame("Stripe\\InvoiceItem", get_class($resource));
     }
 
@@ -98,7 +98,7 @@ class CustomerTest extends TestCase
         $this->expectsRequest(
             'get',
             '/v1/invoices',
-            array("customer" => $customer->id)
+            ["customer" => $customer->id]
         );
         $resources = $customer->invoices();
         $this->assertTrue(is_array($resources->data));
@@ -111,7 +111,7 @@ class CustomerTest extends TestCase
         $this->expectsRequest(
             'get',
             '/v1/invoiceitems',
-            array("customer" => $customer->id)
+            ["customer" => $customer->id]
         );
         $resources = $customer->invoiceItems();
         $this->assertTrue(is_array($resources->data));
@@ -124,7 +124,7 @@ class CustomerTest extends TestCase
         $this->expectsRequest(
             'get',
             '/v1/charges',
-            array("customer" => $customer->id)
+            ["customer" => $customer->id]
         );
         $resources = $customer->charges();
         $this->assertTrue(is_array($resources->data));
@@ -137,15 +137,15 @@ class CustomerTest extends TestCase
         $this->stubRequest(
             'post',
             '/v1/customers/' . $customer->id . '/subscription',
-            array("plan" => "plan"),
+            ["plan" => "plan"],
             null,
             false,
-            array(
+            [
                 "object" => "subscription",
                 "id" => "sub_foo"
-            )
+            ]
         );
-        $resource = $customer->updateSubscription(array("plan" => "plan"));
+        $resource = $customer->updateSubscription(["plan" => "plan"]);
         $this->assertSame("Stripe\\Subscription", get_class($resource));
         $this->assertSame("sub_foo", $customer->subscription->id);
     }
@@ -156,13 +156,13 @@ class CustomerTest extends TestCase
         $this->stubRequest(
             'delete',
             '/v1/customers/' . $customer->id . '/subscription',
-            array(),
+            [],
             null,
             false,
-            array(
+            [
                 "object" => "subscription",
                 "id" => "sub_foo"
-            )
+            ]
         );
         $resource = $customer->cancelSubscription();
         $this->assertSame("Stripe\\Subscription", get_class($resource));
@@ -186,7 +186,7 @@ class CustomerTest extends TestCase
             'post',
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/sources'
         );
-        $resource = Customer::createSource(self::TEST_RESOURCE_ID, array("source" => "btok_123"));
+        $resource = Customer::createSource(self::TEST_RESOURCE_ID, ["source" => "btok_123"]);
         $this->assertSame("Stripe\\BankAccount", get_class($resource));
     }
 
@@ -206,7 +206,7 @@ class CustomerTest extends TestCase
             'post',
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/sources/' . self::TEST_SOURCE_ID
         );
-        $resource = Customer::updateSource(self::TEST_RESOURCE_ID, self::TEST_SOURCE_ID, array("name" => "name"));
+        $resource = Customer::updateSource(self::TEST_RESOURCE_ID, self::TEST_SOURCE_ID, ["name" => "name"]);
         // stripe-mock returns a Card on this method and not a bank account
         $this->assertSame("Stripe\\Card", get_class($resource));
     }

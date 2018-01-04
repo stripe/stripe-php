@@ -33,9 +33,9 @@ class OrderTest extends TestCase
             'post',
             '/v1/orders'
         );
-        $resource = Order::create(array(
+        $resource = Order::create([
             'currency' => 'usd'
-        ));
+        ]);
         $this->assertSame("Stripe\\Order", get_class($resource));
     }
 
@@ -57,9 +57,9 @@ class OrderTest extends TestCase
             'post',
             '/v1/orders/' . self::TEST_RESOURCE_ID
         );
-        $resource = Order::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Order::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertSame("Stripe\\Order", get_class($resource));
     }
 

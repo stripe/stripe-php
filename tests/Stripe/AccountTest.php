@@ -44,7 +44,7 @@ class AccountTest extends TestCase
             'post',
             '/v1/accounts'
         );
-        $resource = Account::create(array("type" => "custom"));
+        $resource = Account::create(["type" => "custom"]);
         $this->assertSame("Stripe\\Account", get_class($resource));
     }
 
@@ -66,9 +66,9 @@ class AccountTest extends TestCase
             'post',
             '/v1/accounts/' . self::TEST_RESOURCE_ID
         );
-        $resource = Account::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Account::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertSame("Stripe\\Account", get_class($resource));
     }
 
@@ -90,7 +90,7 @@ class AccountTest extends TestCase
             'post',
             '/v1/accounts/' . $account->id . '/reject'
         );
-        $resource = $account->reject(array("reason" => "fraud"));
+        $resource = $account->reject(["reason" => "fraud"]);
         $this->assertSame("Stripe\\Account", get_class($resource));
         $this->assertSame($resource, $account);
     }
@@ -101,15 +101,15 @@ class AccountTest extends TestCase
         $this->stubRequest(
             'post',
             '/oauth/deauthorize',
-            array(
+            [
                 'client_id' => Stripe::getClientId(),
                 'stripe_user_id' => $resource->id,
-            ),
+            ],
             null,
             false,
-            array(
+            [
                 'stripe_user_id' => $resource->id,
-            ),
+            ],
             200,
             Stripe::$connectBase
         );
@@ -122,7 +122,9 @@ class AccountTest extends TestCase
             'post',
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts'
         );
-        $resource = Account::createExternalAccount(self::TEST_RESOURCE_ID, array("external_account" => "btok_123"));
+        $resource = Account::createExternalAccount(self::TEST_RESOURCE_ID, [
+            "external_account" => "btok_123",
+        ]);
         $this->assertSame("Stripe\\BankAccount", get_class($resource));
     }
 
@@ -142,7 +144,9 @@ class AccountTest extends TestCase
             'post',
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts/' . self::TEST_EXTERNALACCOUNT_ID
         );
-        $resource = Account::updateExternalAccount(self::TEST_RESOURCE_ID, self::TEST_EXTERNALACCOUNT_ID, array("name" => "name"));
+        $resource = Account::updateExternalAccount(self::TEST_RESOURCE_ID, self::TEST_EXTERNALACCOUNT_ID, [
+            "name" => "name",
+        ]);
         $this->assertSame("Stripe\\BankAccount", get_class($resource));
     }
 
