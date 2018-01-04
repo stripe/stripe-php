@@ -45,51 +45,10 @@ namespace Stripe;
  */
 class Invoice extends ApiResource
 {
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return Invoice The created invoice.
-     */
-    public static function create($params = null, $opts = null)
-    {
-        return self::_create($params, $opts);
-    }
-
-    /**
-     * @param array|string $id The ID of the invoice to retrieve, or an options
-     *     array containing an `id` key.
-     * @param array|string|null $opts
-     *
-     * @return Invoice
-     */
-    public static function retrieve($id, $opts = null)
-    {
-        return self::_retrieve($id, $opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return Collection of Invoices
-     */
-    public static function all($params = null, $opts = null)
-    {
-        return self::_all($params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the invoice to update.
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return Invoice The updated invoice.
-     */
-    public static function update($id, $params = null, $options = null)
-    {
-        return self::_update($id, $params, $options);
-    }
+    use ApiOperations\All;
+    use ApiOperations\Create;
+    use ApiOperations\Retrieve;
+    use ApiOperations\Update;
 
     /**
      * @param array|null $params

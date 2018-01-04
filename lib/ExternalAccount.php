@@ -12,6 +12,8 @@ namespace Stripe;
  */
 abstract class ExternalAccount extends ApiResource
 {
+    use ApiOperations\Delete;
+
     /**
      * @return string The instance URL for this resource. It needs to be special
      *    cased because it doesn't fit into the standard resource pattern.
@@ -48,17 +50,6 @@ abstract class ExternalAccount extends ApiResource
         $parentExtn = urlencode($parent);
         $extn = urlencode($id);
         return "$base/$parentExtn/$path/$extn";
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return ExternalAccount The deleted external account.
-     */
-    public function delete($params = null, $opts = null)
-    {
-        return $this->_delete($params, $opts);
     }
 
     /**

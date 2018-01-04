@@ -29,51 +29,10 @@ namespace Stripe;
  */
 class Payout extends ApiResource
 {
-    /**
-     * @param array|string $id The ID of the payout to retrieve, or an options
-     *     array containing an `id` key.
-     * @param array|string|null $opts
-     *
-     * @return Payout
-     */
-    public static function retrieve($id, $opts = null)
-    {
-        return self::_retrieve($id, $opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return Collection of Payouts
-     */
-    public static function all($params = null, $opts = null)
-    {
-        return self::_all($params, $opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return Payout The created payout.
-     */
-    public static function create($params = null, $opts = null)
-    {
-        return self::_create($params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the payout to update.
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return Payout The updated payout.
-     */
-    public static function update($id, $params = null, $options = null)
-    {
-        return self::_update($id, $params, $options);
-    }
+    use ApiOperations\All;
+    use ApiOperations\Create;
+    use ApiOperations\Retrieve;
+    use ApiOperations\Update;
 
     /**
      * @return Payout The canceled payout.
@@ -84,15 +43,5 @@ class Payout extends ApiResource
         list($response, $opts) = $this->_request('post', $url);
         $this->refreshFrom($response, $opts);
         return $this;
-    }
-
-    /**
-     * @param array|string|null $opts
-     *
-     * @return Payout The saved payout.
-     */
-    public function save($opts = null)
-    {
-        return $this->_save($opts);
     }
 }

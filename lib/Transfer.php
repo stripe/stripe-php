@@ -26,53 +26,12 @@ namespace Stripe;
  */
 class Transfer extends ApiResource
 {
+    use ApiOperations\All;
+    use ApiOperations\Create;
+    use ApiOperations\Retrieve;
+    use ApiOperations\Update;
+
     const PATH_REVERSALS = '/reversals';
-
-    /**
-     * @param array|string $id The ID of the transfer to retrieve, or an
-     *     options array containing an `id` key.
-     * @param array|string|null $opts
-     *
-     * @return Transfer
-     */
-    public static function retrieve($id, $opts = null)
-    {
-        return self::_retrieve($id, $opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return Collection of Transfers
-     */
-    public static function all($params = null, $opts = null)
-    {
-        return self::_all($params, $opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return Transfer The created transfer.
-     */
-    public static function create($params = null, $opts = null)
-    {
-        return self::_create($params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the transfer to update.
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return Transfer The updated transfer.
-     */
-    public static function update($id, $params = null, $options = null)
-    {
-        return self::_update($id, $params, $options);
-    }
 
     /**
      * @return TransferReversal The created transfer reversal.
@@ -94,16 +53,6 @@ class Transfer extends ApiResource
         list($response, $opts) = $this->_request('post', $url);
         $this->refreshFrom($response, $opts);
         return $this;
-    }
-
-    /**
-     * @param array|string|null $opts
-     *
-     * @return Transfer The saved transfer.
-     */
-    public function save($opts = null)
-    {
-        return $this->_save($opts);
     }
 
     /**
