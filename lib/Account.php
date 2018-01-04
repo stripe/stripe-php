@@ -121,7 +121,7 @@ class Account extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ExternalAccount
+     * @return BankAccount|Card
      */
     public static function createExternalAccount($id, $params = null, $opts = null)
     {
@@ -134,7 +134,7 @@ class Account extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ExternalAccount
+     * @return BankAccount|Card
      */
     public static function retrieveExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
@@ -147,7 +147,7 @@ class Account extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ExternalAccount
+     * @return BankAccount|Card
      */
     public static function updateExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
@@ -160,7 +160,7 @@ class Account extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ExternalAccount
+     * @return BankAccount|Card
      */
     public static function deleteExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
@@ -172,7 +172,7 @@ class Account extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ExternalAccount
+     * @return BankAccount|Card
      */
     public static function allExternalAccounts($id, $params = null, $opts = null)
     {

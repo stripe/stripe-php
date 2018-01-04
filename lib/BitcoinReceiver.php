@@ -4,20 +4,20 @@ namespace Stripe;
 
 /**
  * Class BitcoinReceiver
-
- * @deprecated Please use sources instead.
+ *
+ * @package Stripe
+ *
+ * @deprecated Bitcoin receivers are deprecated. Please use the sources API instead.
+ * @link https://stripe.com/docs/sources/bitcoin
  */
-class BitcoinReceiver extends ExternalAccount
+class BitcoinReceiver extends ApiResource
 {
     use ApiOperations\All;
-    use ApiOperations\Create;
     use ApiOperations\Retrieve;
 
     /**
      * @return string The class URL for this resource. It needs to be special
      *    cased because it doesn't fit into the standard resource pattern.
-     *
-     * @deprecated Please use sources instead.
      */
     public static function classUrl()
     {
@@ -27,36 +27,20 @@ class BitcoinReceiver extends ExternalAccount
     /**
      * @return string The instance URL for this resource. It needs to be special
      *    cased because it doesn't fit into the standard resource pattern.
-     *
-     * @deprecated Please use sources instead.
      */
     public function instanceUrl()
     {
-        $result = parent::instanceUrl();
-        if ($result) {
-            return $result;
+        if ($this['customer']) {
+            $base = Customer::classUrl();
+            $parent = $this['customer'];
+            $path = 'sources';
+            $parentExtn = urlencode(Util\Util::utf8($parent));
+            $extn = urlencode(Util\Util::utf8($this['id']));
+            return "$base/$parentExtn/$path/$extn";
         } else {
-            $id = $this['id'];
-            $id = Util\Util::utf8($id);
-            $extn = urlencode($id);
             $base = BitcoinReceiver::classUrl();
+            $extn = urlencode(Util\Util::utf8($this['id']));
             return "$base/$extn";
         }
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return BitcoinReceiver The refunded Bitcoin Receiver item.
-     *
-     * @deprecated Please use sources instead.
-     */
-    public function refund($params = null, $options = null)
-    {
-        $url = $this->instanceUrl() . '/refund';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
-        $this->refreshFrom($response, $opts);
-        return $this;
     }
 }

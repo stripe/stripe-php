@@ -139,7 +139,7 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ExternalAccount
+     * @return ApiResource
      */
     public static function createSource($id, $params = null, $opts = null)
     {
@@ -152,7 +152,7 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ExternalAccount
+     * @return ApiResource
      */
     public static function retrieveSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -165,7 +165,7 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ExternalAccount
+     * @return ApiResource
      */
     public static function updateSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -178,7 +178,7 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ExternalAccount
+     * @return ApiResource
      */
     public static function deleteSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -190,7 +190,7 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ExternalAccount
+     * @return ApiResource
      */
     public static function allSources($id, $params = null, $opts = null)
     {

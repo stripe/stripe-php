@@ -4,23 +4,59 @@ namespace Stripe;
 
 class BitcoinReceiverTest extends TestCase
 {
-    public function testUrls()
+    const TEST_RESOURCE_ID = 'btcrcv_123';
+
+    // Because of the wildcard nature of sources, stripe-mock cannot currently
+    // reliably return sources of a given type, so we create a fixture manually
+    public function createFixture($params = [])
     {
-        $classUrl = BitcoinReceiver::classUrl('Stripe_BitcoinReceiver');
-        $this->assertSame($classUrl, '/v1/bitcoin/receivers');
-        $receiver = new BitcoinReceiver('abcd/efgh');
-        $instanceUrl = $receiver->instanceUrl();
-        $this->assertSame($instanceUrl, '/v1/bitcoin/receivers/abcd%2Fefgh');
+        $base = [
+            'id' => self::TEST_RESOURCE_ID,
+            'object' => 'bitcoin_receiver',
+            'metadata' => [],
+        ];
+        return BitcoinReceiver::constructFrom(
+            array_merge($params, $base),
+            new Util\RequestOptions()
+        );
     }
 
-    //
-    // Note that there are no tests of consequences in here. The Bitcoin
-    // endpoints have been deprecated in favor of the generic sources API. The
-    // BitcoinReceiver class has been left in place for some backwards
-    // compatibility, but all users should be migrating off of it. The tests
-    // have been removed because we no longer have the API endpoints required
-    // to run them.
-    //
-    // [1] https://stripe.com/docs/sources
-    //
+    public function testHasCorrectStandaloneUrl()
+    {
+        $resource = $this->createFixture();
+        $this->assertSame(
+            "/v1/bitcoin/receivers/" . self::TEST_RESOURCE_ID,
+            $resource->instanceUrl()
+        );
+    }
+
+    public function testHasCorrectUrlForCustomer()
+    {
+        $resource = $this->createFixture(['customer' => 'cus_123']);
+        $this->assertSame(
+            "/v1/customers/cus_123/sources/" . self::TEST_RESOURCE_ID,
+            $resource->instanceUrl()
+        );
+    }
+
+    public function testIsListable()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/bitcoin/receivers'
+        );
+        $resources = BitcoinReceiver::all();
+        $this->assertTrue(is_array($resources->data));
+        $this->assertSame("Stripe\\BitcoinReceiver", get_class($resources->data[0]));
+    }
+
+    public function testIsRetrievable()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/bitcoin/receivers/' . self::TEST_RESOURCE_ID
+        );
+        $resource = BitcoinReceiver::retrieve(self::TEST_RESOURCE_ID);
+        $this->assertSame("Stripe\\BitcoinReceiver", get_class($resource));
+    }
 }
