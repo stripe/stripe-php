@@ -37,6 +37,11 @@ namespace Stripe;
  */
 class Account extends ApiResource
 {
+    use ApiOperations\All;
+    use ApiOperations\Create;
+    use ApiOperations\Delete;
+    use ApiOperations\Update;
+
     const PATH_EXTERNAL_ACCOUNTS = '/external_accounts';
     const PATH_LOGIN_LINKS = '/login_links';
 
@@ -69,50 +74,6 @@ class Account extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return Account
-     */
-    public static function create($params = null, $opts = null)
-    {
-        return self::_create($params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the account to update.
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return Account The updated account.
-     */
-    public static function update($id, $params = null, $options = null)
-    {
-        return self::_update($id, $params, $options);
-    }
-
-    /**
-     * @param array|string|null $opts
-     *
-     * @return Account
-     */
-    public function save($opts = null)
-    {
-        return $this->_save($opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return Account The deleted account.
-     */
-    public function delete($params = null, $opts = null)
-    {
-        return $this->_delete($params, $opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
      * @return Account The rejected account.
      */
     public function reject($params = null, $opts = null)
@@ -121,17 +82,6 @@ class Account extends ApiResource
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return Collection of Accounts
-     */
-    public static function all($params = null, $opts = null)
-    {
-        return self::_all($params, $opts);
     }
 
     /**

@@ -9,6 +9,9 @@ namespace Stripe;
  */
 class ApplicationFee extends ApiResource
 {
+    use ApiOperations\All;
+    use ApiOperations\Retrieve;
+
     const PATH_REFUNDS = '/refunds';
 
     /**
@@ -20,29 +23,6 @@ class ApplicationFee extends ApiResource
     public static function className()
     {
         return 'application_fee';
-    }
-
-    /**
-     * @param array|string $id The ID of the application fee to retrieve, or an
-     *     options array containing an `id` key.
-     * @param array|string|null $opts
-     *
-     * @return ApplicationFee
-     */
-    public static function retrieve($id, $opts = null)
-    {
-        return self::_retrieve($id, $opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return Collection of ApplicationFees
-     */
-    public static function all($params = null, $opts = null)
-    {
-        return self::_all($params, $opts);
     }
 
     /**
