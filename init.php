@@ -37,7 +37,6 @@ require(dirname(__FILE__) . '/lib/Error/OAuth/UnsupportedResponseType.php');
 
 // Plumbing
 require(dirname(__FILE__) . '/lib/ApiResponse.php');
-require(dirname(__FILE__) . '/lib/JsonSerializable.php');
 require(dirname(__FILE__) . '/lib/StripeObject.php');
 require(dirname(__FILE__) . '/lib/ApiRequestor.php');
 require(dirname(__FILE__) . '/lib/ApiResource.php');
