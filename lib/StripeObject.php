@@ -2,15 +2,12 @@
 
 namespace Stripe;
 
-use ArrayAccess;
-use InvalidArgumentException;
-
 /**
  * Class StripeObject
  *
  * @package Stripe
  */
-class StripeObject implements ArrayAccess, JsonSerializable
+class StripeObject implements \ArrayAccess, \JsonSerializable
 {
     /**
      * @var Util\Set Attributes that should not be sent to the API because
@@ -105,7 +102,7 @@ class StripeObject implements ArrayAccess, JsonSerializable
     public function __set($k, $v)
     {
         if ($v === "") {
-            throw new InvalidArgumentException(
+            throw new \InvalidArgumentException(
                 'You cannot set \''.$k.'\'to an empty string. '
                 .'We interpret empty strings as NULL in requests. '
                 .'You may set obj->'.$k.' = NULL to delete the property'
@@ -292,11 +289,7 @@ class StripeObject implements ArrayAccess, JsonSerializable
 
     public function __toJSON()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
-            return json_encode($this->__toArray(true), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode($this->__toArray(true));
-        }
+        return json_encode($this->__toArray(true), JSON_PRETTY_PRINT);
     }
 
     public function __toString()
