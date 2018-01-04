@@ -2,9 +2,9 @@
 
 namespace Stripe;
 
-class BankAccountTest extends TestCase
+class CardTest extends TestCase
 {
-    const TEST_RESOURCE_ID = 'ba_123';
+    const TEST_RESOURCE_ID = 'card_123';
 
     // Because of the wildcard nature of sources, stripe-mock cannot currently
     // reliably return sources of a given type, so we create a fixture manually
@@ -15,10 +15,10 @@ class BankAccountTest extends TestCase
         }
         $base = [
             'id' => self::TEST_RESOURCE_ID,
-            'object' => 'bank_account',
+            'object' => 'card',
             'metadata' => [],
         ];
-        return BankAccount::constructFrom(
+        return Card::constructFrom(
             array_merge($params, $base),
             new Util\RequestOptions()
         );
@@ -42,12 +42,21 @@ class BankAccountTest extends TestCase
         );
     }
 
+    public function testHasCorrectUrlForRecipient()
+    {
+        $resource = $this->createFixture(['recipient' => 'rp_123']);
+        $this->assertSame(
+            "/v1/recipients/rp_123/cards/" . self::TEST_RESOURCE_ID,
+            $resource->instanceUrl()
+        );
+    }
+
     /**
      * @expectedException \Stripe\Error\InvalidRequest
      */
     public function testIsNotDirectlyRetrievable()
     {
-        BankAccount::retrieve(self::TEST_RESOURCE_ID);
+        Card::retrieve(self::TEST_RESOURCE_ID);
     }
 
     public function testIsSaveable()
@@ -59,7 +68,7 @@ class BankAccountTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame("Stripe\\BankAccount", get_class($resource));
+        $this->assertSame("Stripe\\Card", get_class($resource));
     }
 
     /**
@@ -67,7 +76,7 @@ class BankAccountTest extends TestCase
      */
     public function testIsNotDirectlyUpdatable()
     {
-        BankAccount::update(self::TEST_RESOURCE_ID, [
+        Card::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
     }
@@ -80,20 +89,6 @@ class BankAccountTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertSame("Stripe\\BankAccount", get_class($resource));
-    }
-
-    public function testIsVerifiable()
-    {
-        $resource = $this->createFixture();
-        $this->expectsRequest(
-            'post',
-            '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID . "/verify",
-            [
-                "amounts" => [1, 2]
-            ]
-        );
-        $resource->verify(["amounts" => [1, 2]]);
-        $this->assertInstanceOf("Stripe\\BankAccount", $resource);
+        $this->assertSame("Stripe\\Card", get_class($resource));
     }
 }
