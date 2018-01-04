@@ -38,7 +38,7 @@ abstract class Util
      */
     public static function convertStripeObjectToArray($values)
     {
-        $results = array();
+        $results = [];
         foreach ($values as $k => $v) {
             // FIXME: this is an encapsulation violation
             if ($k[0] == '_') {
@@ -64,7 +64,7 @@ abstract class Util
      */
     public static function convertToStripeObject($resp, $opts)
     {
-        $types = array(
+        $types = [
             // data structures
             'list' => 'Stripe\\Collection',
 
@@ -109,9 +109,9 @@ abstract class Util
             'token' => 'Stripe\\Token',
             'transfer' => 'Stripe\\Transfer',
             'transfer_reversal' => 'Stripe\\TransferReversal',
-        );
+        ];
         if (self::isList($resp)) {
-            $mapped = array();
+            $mapped = [];
             foreach ($resp as $i) {
                 array_push($mapped, self::convertToStripeObject($i, $opts));
             }
@@ -195,7 +195,7 @@ abstract class Util
             return $arr;
         }
 
-        $r = array();
+        $r = [];
         foreach ($arr as $k => $v) {
             if (is_null($v)) {
                 continue;

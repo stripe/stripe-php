@@ -9,7 +9,7 @@ namespace Stripe;
  */
 abstract class ApiResource extends StripeObject
 {
-    private static $HEADERS_TO_PERSIST = array('Stripe-Account' => true, 'Stripe-Version' => true);
+    private static $HEADERS_TO_PERSIST = ['Stripe-Account' => true, 'Stripe-Version' => true];
 
     public static function baseUrl()
     {
@@ -98,18 +98,18 @@ abstract class ApiResource extends StripeObject
         if ($params && !is_array($params)) {
             $message = "You must pass an array as the first argument to Stripe API "
                . "method calls.  (HINT: an example call to create a charge "
-               . "would be: \"Stripe\\Charge::create(array('amount' => 100, "
-               . "'currency' => 'usd', 'source' => 'tok_1234'))\")";
+               . "would be: \"Stripe\\Charge::create(['amount' => 100, "
+               . "'currency' => 'usd', 'source' => 'tok_1234'])\")";
             throw new Error\Api($message);
         }
     }
 
-    protected function _request($method, $url, $params = array(), $options = null)
+    protected function _request($method, $url, $params = [], $options = null)
     {
         $opts = $this->_opts->merge($options);
         list($resp, $options) = static::_staticRequest($method, $url, $params, $opts);
         $this->setLastResponse($resp);
-        return array($resp->json, $options);
+        return [$resp->json, $options];
     }
 
     protected static function _staticRequest($method, $url, $params, $options)
@@ -122,7 +122,7 @@ abstract class ApiResource extends StripeObject
                 unset($opts->headers[$k]);
             }
         }
-        return array($response, $opts);
+        return [$response, $opts];
     }
 
     protected static function _retrieve($id, $options = null)

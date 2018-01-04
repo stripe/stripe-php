@@ -33,10 +33,10 @@ class PayoutTest extends TestCase
             'post',
             '/v1/payouts'
         );
-        $resource = Payout::create(array(
+        $resource = Payout::create([
             "amount" => 100,
             "currency" => "usd"
-        ));
+        ]);
         $this->assertInstanceOf("Stripe\\Payout", $resource);
     }
 
@@ -58,9 +58,9 @@ class PayoutTest extends TestCase
             'post',
             '/v1/payouts/' . self::TEST_RESOURCE_ID
         );
-        $resource = Payout::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Payout::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertInstanceOf("Stripe\\Payout", $resource);
     }
 

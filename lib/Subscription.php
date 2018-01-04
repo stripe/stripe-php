@@ -93,6 +93,6 @@ class Subscription extends ApiResource
     {
         $url = $this->instanceUrl() . '/discount';
         list($response, $opts) = $this->_request('delete', $url);
-        $this->refreshFrom(array('discount' => null), $opts, true);
+        $this->refreshFrom(['discount' => null], $opts, true);
     }
 }

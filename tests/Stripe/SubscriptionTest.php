@@ -33,10 +33,10 @@ class SubscriptionTest extends TestCase
             'post',
             '/v1/subscriptions'
         );
-        $resource = Subscription::create(array(
+        $resource = Subscription::create([
             "customer" => "cus_123",
             "plan" => "plan"
-        ));
+        ]);
         $this->assertInstanceOf("Stripe\\Subscription", $resource);
     }
 
@@ -58,9 +58,9 @@ class SubscriptionTest extends TestCase
             'post',
             '/v1/subscriptions/' . self::TEST_RESOURCE_ID
         );
-        $resource = Subscription::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Subscription::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertInstanceOf("Stripe\\Subscription", $resource);
     }
 

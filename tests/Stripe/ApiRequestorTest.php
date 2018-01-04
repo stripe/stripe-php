@@ -12,19 +12,19 @@ class ApiRequestorTest extends TestCase
         $method = $reflector->getMethod('_encodeObjects');
         $method->setAccessible(true);
 
-        $a = array('customer' => new Customer('abcd'));
+        $a = ['customer' => new Customer('abcd')];
         $enc = $method->invoke(null, $a);
-        $this->assertSame($enc, array('customer' => 'abcd'));
+        $this->assertSame($enc, ['customer' => 'abcd']);
 
         // Preserves UTF-8
-        $v = array('customer' => "☃");
+        $v = ['customer' => "☃"];
         $enc = $method->invoke(null, $v);
         $this->assertSame($enc, $v);
 
         // Encodes latin-1 -> UTF-8
-        $v = array('customer' => "\xe9");
+        $v = ['customer' => "\xe9"];
         $enc = $method->invoke(null, $v);
-        $this->assertSame($enc, array('customer' => "\xc3\xa9"));
+        $this->assertSame($enc, ['customer' => "\xc3\xa9"]);
     }
 
     public function testHttpClientInjection()
@@ -50,7 +50,7 @@ class ApiRequestorTest extends TestCase
         // no way to stub static methods with PHPUnit 4.x :(
         Stripe::setAppInfo('MyTestApp', '1.2.34', 'https://mytestapp.example');
         $apiKey = 'sk_test_notarealkey';
-        $clientInfo = array('httplib' => 'testlib 0.1.2');
+        $clientInfo = ['httplib' => 'testlib 0.1.2'];
 
         $headers = $method->invoke(null, $apiKey, $clientInfo);
 
@@ -74,16 +74,16 @@ class ApiRequestorTest extends TestCase
         $this->stubRequest(
             'POST',
             '/v1/charges',
-            array(),
+            [],
             null,
             false,
-            array(
-                'error' => array(
+            [
+                'error' => [
                     'type' => 'invalid_request_error',
                     'message' => 'Missing id',
                     'param' => 'id',
-                ),
-            ),
+                ],
+            ],
             400
         );
 
@@ -105,15 +105,15 @@ class ApiRequestorTest extends TestCase
         $this->stubRequest(
             'POST',
             '/v1/charges',
-            array(),
+            [],
             null,
             false,
-            array(
-                'error' => array(
+            [
+                'error' => [
                     'type' => 'invalid_request_error',
                     'message' => 'You did not provide an API key.',
-                ),
-            ),
+                ],
+            ],
             401
         );
 
@@ -134,18 +134,18 @@ class ApiRequestorTest extends TestCase
         $this->stubRequest(
             'POST',
             '/v1/charges',
-            array(),
+            [],
             null,
             false,
-            array(
-                'error' => array(
+            [
+                'error' => [
                     'type' => 'card_error',
                     'message' => 'Your card was declined.',
                     'code' => 'card_declined',
                     'decline_code' => 'generic_decline',
                     'charge' => 'ch_declined_charge',
-                ),
-            ),
+                ],
+            ],
             402
         );
 
@@ -168,15 +168,15 @@ class ApiRequestorTest extends TestCase
         $this->stubRequest(
             'GET',
             '/v1/accounts/foo',
-            array(),
+            [],
             null,
             false,
-            array(
-                'error' => array(
+            [
+                'error' => [
                     'type' => 'invalid_request_error',
                     'message' => "The provided key 'sk_test_********************1234' does not have access to account 'foo' (or that account does not exist). Application access may have been revoked.",
-                ),
-            ),
+                ],
+            ],
             403
         );
 
@@ -197,16 +197,16 @@ class ApiRequestorTest extends TestCase
         $this->stubRequest(
             'GET',
             '/v1/charges/foo',
-            array(),
+            [],
             null,
             false,
-            array(
-                'error' => array(
+            [
+                'error' => [
                     'type' => 'invalid_request_error',
                     'message' => 'No such charge: foo',
                     'param' => 'id',
-                ),
-            ),
+                ],
+            ],
             404
         );
 
@@ -228,14 +228,14 @@ class ApiRequestorTest extends TestCase
         $this->stubRequest(
             'POST',
             '/v1/charges',
-            array(),
+            [],
             null,
             false,
-            array(
-                'error' => array(
+            [
+                'error' => [
                     'message' => 'Too many requests',
-                ),
-            ),
+                ],
+            ],
             429
         );
 
@@ -256,13 +256,13 @@ class ApiRequestorTest extends TestCase
         $this->stubRequest(
             'POST',
             '/oauth/token',
-            array(),
+            [],
             null,
             false,
-            array(
+            [
                 'error' => 'invalid_request',
                 'error_description' => 'No grant type specified',
-            ),
+            ],
             400,
             Stripe::$connectBase
         );
@@ -284,13 +284,13 @@ class ApiRequestorTest extends TestCase
         $this->stubRequest(
             'POST',
             '/oauth/token',
-            array(),
+            [],
             null,
             false,
-            array(
+            [
                 'error' => 'invalid_client',
                 'error_description' => 'No authentication was provided. Send your secret API key using the Authorization header, or as a client_secret POST parameter.',
-            ),
+            ],
             401,
             Stripe::$connectBase
         );
@@ -312,13 +312,13 @@ class ApiRequestorTest extends TestCase
         $this->stubRequest(
             'POST',
             '/oauth/token',
-            array(),
+            [],
             null,
             false,
-            array(
+            [
                 'error' => 'invalid_grant',
                 'error_description' => 'This authorization code has already been used. All tokens issued with this code have been revoked.',
-            ),
+            ],
             400,
             Stripe::$connectBase
         );

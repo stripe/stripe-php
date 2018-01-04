@@ -10,7 +10,7 @@ class WebhookTest extends TestCase
 }";
     const SECRET = "whsec_test_secret";
 
-    private function generateHeader($opts = array())
+    private function generateHeader($opts = [])
     {
         $timestamp = array_key_exists('timestamp', $opts) ? $opts['timestamp'] : time();
         $payload = array_key_exists('payload', $opts) ? $opts['payload'] : self::EVENT_PAYLOAD;
@@ -37,7 +37,7 @@ class WebhookTest extends TestCase
     public function testInvalidJson()
     {
         $payload = "this is not valid JSON";
-        $sigHeader = $this->generateHeader(array("payload" => $payload));
+        $sigHeader = $this->generateHeader(["payload" => $payload]);
         Webhook::constructEvent($payload, $sigHeader, self::SECRET);
     }
 
@@ -66,7 +66,7 @@ class WebhookTest extends TestCase
      */
     public function testNoSignaturesWithExpectedScheme()
     {
-        $sigHeader = $this->generateHeader(array("scheme" => "v0"));
+        $sigHeader = $this->generateHeader(["scheme" => "v0"]);
         WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET);
     }
 
@@ -76,7 +76,7 @@ class WebhookTest extends TestCase
      */
     public function testNoValidSignatureForPayload()
     {
-        $sigHeader = $this->generateHeader(array("signature" => "bad_signature"));
+        $sigHeader = $this->generateHeader(["signature" => "bad_signature"]);
         WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET);
     }
 
@@ -86,7 +86,7 @@ class WebhookTest extends TestCase
      */
     public function testTimestampOutsideTolerance()
     {
-        $sigHeader = $this->generateHeader(array("timestamp" => time() - 15));
+        $sigHeader = $this->generateHeader(["timestamp" => time() - 15]);
         WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10);
     }
 
@@ -104,7 +104,7 @@ class WebhookTest extends TestCase
 
     public function testTimestampOffButNoTolerance()
     {
-        $sigHeader = $this->generateHeader(array("timestamp" => 12345));
+        $sigHeader = $this->generateHeader(["timestamp" => 12345]);
         $this->assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET));
     }
 }

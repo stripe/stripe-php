@@ -9,21 +9,21 @@ class BankAccountTest extends TestCase
     public function testIsVerifiable()
     {
         $resource = BankAccount::constructFrom(
-            array(
+            [
                 'id' => self::TEST_RESOURCE_ID,
                 'object' => 'bank_account',
                 'customer' => 'cus_123',
-            ),
+            ],
             new Util\RequestOptions()
         );
         $this->expectsRequest(
             'post',
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID . "/verify",
-            array(
-                "amounts" => array(1, 2)
-            )
+            [
+                "amounts" => [1, 2]
+            ]
         );
-        $resource->verify(array("amounts" => array(1, 2)));
+        $resource->verify(["amounts" => [1, 2]]);
         $this->assertInstanceOf("Stripe\\BankAccount", $resource);
     }
 }

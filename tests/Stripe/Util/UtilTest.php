@@ -6,16 +6,16 @@ class UtilTest extends TestCase
 {
     public function testIsList()
     {
-        $list = array(5, 'nstaoush', array());
+        $list = [5, 'nstaoush', []];
         $this->assertTrue(Util\Util::isList($list));
 
-        $notlist = array(5, 'nstaoush', array(), 'bar' => 'baz');
+        $notlist = [5, 'nstaoush', [], 'bar' => 'baz'];
         $this->assertFalse(Util\Util::isList($notlist));
     }
 
     public function testThatPHPHasValueSemanticsForArrays()
     {
-        $original = array('php-arrays' => 'value-semantics');
+        $original = ['php-arrays' => 'value-semantics'];
         $derived = $original;
         $derived['php-arrays'] = 'reference-semantics';
 
@@ -24,10 +24,10 @@ class UtilTest extends TestCase
 
     public function testConvertStripeObjectToArrayIncludesId()
     {
-        $customer = Util\Util::convertToStripeObject(array(
+        $customer = Util\Util::convertToStripeObject([
             'id' => 'cus_123',
             'object' => 'customer',
-        ), null);
+        ], null);
         $this->assertTrue(array_key_exists("id", $customer->__toArray(true)));
     }
 
@@ -48,30 +48,30 @@ class UtilTest extends TestCase
 
     public function testUrlEncode()
     {
-        $a = array(
+        $a = [
             'my' => 'value',
-            'that' => array('your' => 'example'),
+            'that' => ['your' => 'example'],
             'bar' => 1,
             'baz' => null
-        );
+        ];
 
         $enc = Util\Util::urlEncode($a);
         $this->assertSame('my=value&that%5Byour%5D=example&bar=1', $enc);
 
-        $a = array('that' => array('your' => 'example', 'foo' => null));
+        $a = ['that' => ['your' => 'example', 'foo' => null]];
         $enc = Util\Util::urlEncode($a);
         $this->assertSame('that%5Byour%5D=example', $enc);
 
-        $a = array('that' => 'example', 'foo' => array('bar', 'baz'));
+        $a = ['that' => 'example', 'foo' => ['bar', 'baz']];
         $enc = Util\Util::urlEncode($a);
         $this->assertSame('that=example&foo%5B%5D=bar&foo%5B%5D=baz', $enc);
 
-        $a = array(
+        $a = [
             'my' => 'value',
-            'that' => array('your' => array('cheese', 'whiz', null)),
+            'that' => ['your' => ['cheese', 'whiz', null]],
             'bar' => 1,
             'baz' => null
-        );
+        ];
 
         $enc = Util\Util::urlEncode($a);
         $expected = 'my=value&that%5Byour%5D%5B%5D=cheese'
@@ -79,11 +79,11 @@ class UtilTest extends TestCase
         $this->assertSame($expected, $enc);
 
         // Ignores an empty array
-        $enc = Util\Util::urlEncode(array('foo' => array(), 'bar' => 'baz'));
+        $enc = Util\Util::urlEncode(['foo' => [], 'bar' => 'baz']);
         $expected = 'bar=baz';
         $this->assertSame($expected, $enc);
 
-        $a = array('foo' => array(array('bar' => 'baz'), array('bar' => 'bin')));
+        $a = ['foo' => [['bar' => 'baz'], ['bar' => 'bin']]];
         $enc = Util\Util::urlEncode($a);
         $this->assertSame('foo%5B0%5D%5Bbar%5D=baz&foo%5B1%5D%5Bbar%5D=bin', $enc);
     }

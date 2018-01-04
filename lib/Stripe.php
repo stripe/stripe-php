@@ -165,9 +165,7 @@ class Stripe
      */
     public static function setAppInfo($appName, $appVersion = null, $appUrl = null)
     {
-        if (self::$appInfo === null) {
-            self::$appInfo = array();
-        }
+        self::$appInfo = self::$appInfo ?: [];
         self::$appInfo['name'] = $appName;
         self::$appInfo['version'] = $appVersion;
         self::$appInfo['url'] = $appUrl;

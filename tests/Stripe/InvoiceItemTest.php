@@ -33,11 +33,11 @@ class InvoiceItemTest extends TestCase
             'post',
             '/v1/invoiceitems'
         );
-        $resource = InvoiceItem::create(array(
+        $resource = InvoiceItem::create([
             "amount" => 100,
             "currency" => "usd",
             "customer" => "cus_123"
-        ));
+        ]);
         $this->assertInstanceOf("Stripe\\InvoiceItem", $resource);
     }
 
@@ -59,9 +59,9 @@ class InvoiceItemTest extends TestCase
             'post',
             '/v1/invoiceitems/' . self::TEST_RESOURCE_ID
         );
-        $resource = InvoiceItem::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = InvoiceItem::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertInstanceOf("Stripe\\InvoiceItem", $resource);
     }
 

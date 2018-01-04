@@ -33,10 +33,10 @@ class RecipientTest extends TestCase
             'post',
             '/v1/recipients'
         );
-        $resource = Recipient::create(array(
+        $resource = Recipient::create([
             "name" => "name",
             "type" => "individual"
-        ));
+        ]);
         $this->assertInstanceOf("Stripe\\Recipient", $resource);
     }
 
@@ -58,9 +58,9 @@ class RecipientTest extends TestCase
             'post',
             '/v1/recipients/' . self::TEST_RESOURCE_ID
         );
-        $resource = Recipient::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Recipient::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertInstanceOf("Stripe\\Recipient", $resource);
     }
 
@@ -81,7 +81,7 @@ class RecipientTest extends TestCase
         $this->expectsRequest(
             'get',
             '/v1/transfers',
-            array("recipient" => $recipient->id)
+            ["recipient" => $recipient->id]
         );
         $resources = $recipient->transfers();
         $this->assertTrue(is_array($resources->data));

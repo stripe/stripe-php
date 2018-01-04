@@ -9,11 +9,11 @@ class CollectionTest extends TestCase
      */
     public function setUpFixture()
     {
-        $this->fixture = Collection::constructFrom(array(
-            'data' => array(array('id' => 1)),
+        $this->fixture = Collection::constructFrom([
+            'data' => [['id' => 1]],
             'has_more' => true,
             'url' => '/things',
-        ), new Util\RequestOptions());
+        ], new Util\RequestOptions());
     }
 
     public function testCanList()
@@ -21,14 +21,14 @@ class CollectionTest extends TestCase
         $this->stubRequest(
             'GET',
             '/things',
-            array(),
+            [],
             null,
             false,
-            array(
-                'data' => array(array('id' => 1)),
+            [
+                'data' => [['id' => 1]],
                 'has_more' => true,
                 'url' => '/things',
-            )
+            ]
         );
 
         $resources = $this->fixture->all();
@@ -40,12 +40,12 @@ class CollectionTest extends TestCase
         $this->stubRequest(
             'GET',
             '/things/1',
-            array(),
+            [],
             null,
             false,
-            array(
+            [
                 'id' => 1,
-            )
+            ]
         );
 
         $this->fixture->retrieve(1);
@@ -56,19 +56,19 @@ class CollectionTest extends TestCase
         $this->stubRequest(
             'POST',
             '/things',
-            array(
+            [
                 'foo' => 'bar',
-            ),
+            ],
             null,
             false,
-            array(
+            [
                 'id' => 2,
-            )
+            ]
         );
 
-        $this->fixture->create(array(
+        $this->fixture->create([
             'foo' => 'bar',
-        ));
+        ]);
     }
 
     public function testProvidesAutoPagingIterator()
@@ -76,23 +76,23 @@ class CollectionTest extends TestCase
         $this->stubRequest(
             'GET',
             '/things',
-            array(
+            [
                 'starting_after' => 1,
-            ),
+            ],
             null,
             false,
-            array(
-                'data' => array(array('id' => 2), array('id' => 3)),
+            [
+                'data' => [['id' => 2], ['id' => 3]],
                 'has_more' => false,
-            )
+            ]
         );
 
-        $seen = array();
+        $seen = [];
         foreach ($this->fixture->autoPagingIterator() as $item) {
             array_push($seen, $item['id']);
         }
 
-        $this->assertSame(array(1, 2, 3), $seen);
+        $this->assertSame([1, 2, 3], $seen);
     }
 
     public function testSupportsIteratorToArray()
@@ -100,22 +100,22 @@ class CollectionTest extends TestCase
         $this->stubRequest(
             'GET',
             '/things',
-            array(
+            [
                 'starting_after' => 1,
-            ),
+            ],
             null,
             false,
-            array(
-                'data' => array(array('id' => 2), array('id' => 3)),
+            [
+                'data' => [['id' => 2], ['id' => 3]],
                 'has_more' => false,
-            )
+            ]
         );
 
-        $seen = array();
+        $seen = [];
         foreach (iterator_to_array($this->fixture->autoPagingIterator()) as $item) {
             array_push($seen, $item['id']);
         }
 
-        $this->assertSame(array(1, 2, 3), $seen);
+        $this->assertSame([1, 2, 3], $seen);
     }
 }
