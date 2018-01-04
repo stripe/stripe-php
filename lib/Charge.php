@@ -40,61 +40,10 @@ namespace Stripe;
  */
 class Charge extends ApiResource
 {
-    /**
-     * @param array|string $id The ID of the charge to retrieve, or an options
-     *     array containing an `id` key.
-     * @param array|string|null $options
-     *
-     * @return Charge
-     */
-    public static function retrieve($id, $options = null)
-    {
-        return self::_retrieve($id, $options);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return Collection of Charges
-     */
-    public static function all($params = null, $options = null)
-    {
-        return self::_all($params, $options);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return Charge The created charge.
-     */
-    public static function create($params = null, $options = null)
-    {
-        return self::_create($params, $options);
-    }
-
-    /**
-     * @param string $id The ID of the charge to update.
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return Charge The updated charge.
-     */
-    public static function update($id, $params = null, $options = null)
-    {
-        return self::_update($id, $params, $options);
-    }
-
-    /**
-     * @param array|string|null $options
-     *
-     * @return Charge The saved charge.
-     */
-    public function save($options = null)
-    {
-        return $this->_save($options);
-    }
+    use ApiOperations\All;
+    use ApiOperations\Create;
+    use ApiOperations\Retrieve;
+    use ApiOperations\Update;
 
     /**
      * @param array|null $params

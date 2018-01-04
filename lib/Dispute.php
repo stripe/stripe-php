@@ -24,50 +24,9 @@ namespace Stripe;
  */
 class Dispute extends ApiResource
 {
-    /**
-     * @param array|string $id The ID of the dispute to retrieve, or an options
-     *     array containing an `id` key.
-     * @param array|string|null $options
-     *
-     * @return Dispute
-     */
-    public static function retrieve($id, $options = null)
-    {
-        return self::_retrieve($id, $options);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return array An array of Disputes.
-     */
-    public static function all($params = null, $options = null)
-    {
-        return self::_all($params, $options);
-    }
-
-    /**
-     * @param string $id The ID of the dispute to update.
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return Dispute The updated dispute.
-     */
-    public static function update($id, $params = null, $options = null)
-    {
-        return self::_update($id, $params, $options);
-    }
-
-    /**
-     * @param array|string|null $options
-     *
-     * @return Dispute The saved charge.
-     */
-    public function save($options = null)
-    {
-        return $this->_save($options);
-    }
+    use ApiOperations\All;
+    use ApiOperations\Retrieve;
+    use ApiOperations\Update;
 
     /**
      * @param array|string|null $options

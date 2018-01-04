@@ -9,6 +9,10 @@ namespace Stripe;
  */
 class BitcoinReceiver extends ExternalAccount
 {
+    use ApiOperations\All;
+    use ApiOperations\Create;
+    use ApiOperations\Retrieve;
+
     /**
      * @return string The class URL for this resource. It needs to be special
      *    cased because it doesn't fit into the standard resource pattern.
@@ -38,46 +42,6 @@ class BitcoinReceiver extends ExternalAccount
             $base = BitcoinReceiver::classUrl();
             return "$base/$extn";
         }
-    }
-
-    /**
-     * @param array|string $id The ID of the bitcoin receiver to retrieve, or
-     *     an options array containing an `id` key.
-     * @param array|string|null $opts
-     *
-     * @return BitcoinReceiver
-     *
-     * @deprecated Please use sources instead.
-     */
-    public static function retrieve($id, $opts = null)
-    {
-        return self::_retrieve($id, $opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return Collection of BitcoinReceivers
-     *
-     * @deprecated Please use sources instead.
-     */
-    public static function all($params = null, $opts = null)
-    {
-        return self::_all($params, $opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return BitcoinReceiver The created Bitcoin Receiver item.
-     *
-     * @deprecated Please use sources instead.
-     */
-    public static function create($params = null, $opts = null)
-    {
-        return self::_create($params, $opts);
     }
 
     /**
