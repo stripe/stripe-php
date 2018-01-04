@@ -22,11 +22,11 @@ class ThreeDSecureTest extends TestCase
             'post',
             '/v1/3d_secure'
         );
-        $resource = ThreeDSecure::create(array(
+        $resource = ThreeDSecure::create([
             "amount" => 100,
             "currency" => "usd",
             "return_url" => "url"
-        ));
+        ]);
         $this->assertSame("Stripe\\ThreeDSecure", get_class($resource));
     }
 }

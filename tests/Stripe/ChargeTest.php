@@ -33,11 +33,11 @@ class ChargeTest extends TestCase
             'post',
             '/v1/charges'
         );
-        $resource = Charge::create(array(
+        $resource = Charge::create([
             "amount" => 100,
             "currency" => "usd",
             "source" => "tok_123"
-        ));
+        ]);
         $this->assertSame("Stripe\\Charge", get_class($resource));
     }
 
@@ -59,9 +59,9 @@ class ChargeTest extends TestCase
             'post',
             '/v1/charges/' . self::TEST_RESOURCE_ID
         );
-        $resource = Charge::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Charge::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertSame("Stripe\\Charge", get_class($resource));
     }
 
@@ -118,7 +118,7 @@ class ChargeTest extends TestCase
         $this->expectsRequest(
             'post',
             '/v1/charges/' . $charge->id,
-            array('fraud_details' => array('user_report' => 'fraudulent'))
+            ['fraud_details' => ['user_report' => 'fraudulent']]
         );
         $resource = $charge->markAsFraudulent();
         $this->assertSame("Stripe\\Charge", get_class($resource));
@@ -131,7 +131,7 @@ class ChargeTest extends TestCase
         $this->expectsRequest(
             'post',
             '/v1/charges/' . $charge->id,
-            array('fraud_details' => array('user_report' => 'safe'))
+            ['fraud_details' => ['user_report' => 'safe']]
         );
         $resource = $charge->markAsSafe();
         $this->assertSame("Stripe\\Charge", get_class($resource));

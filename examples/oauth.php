@@ -11,10 +11,10 @@ if (isset($_GET['code'])) {
     $code = $_GET['code'];
 
     try {
-        $resp = \Stripe\OAuth::token(array(
+        $resp = \Stripe\OAuth::token([
             'grant_type' => 'authorization_code',
             'code' => $code,
-        ));
+        ]);
     } catch (\Stripe\Error\OAuth\OAuthBase $e) {
         exit("Error: " . $e->getMessage());
     }
@@ -37,9 +37,9 @@ if (isset($_GET['code'])) {
     $accountId = $_GET['deauth'];
 
     try {
-        \Stripe\OAuth::deauthorize(array(
+        \Stripe\OAuth::deauthorize([
             'stripe_user_id' => $accountId,
-        ));
+        ]);
     } catch (\Stripe\Error\OAuth\OAuthBase $e) {
         exit("Error: " . $e->getMessage());
     }
@@ -48,8 +48,8 @@ if (isset($_GET['code'])) {
     echo "<p>Click <a href=\"?\">here</a> to restart the OAuth flow.</p>\n";
 
 } else {
-    $url = \Stripe\OAuth::authorizeUrl(array(
+    $url = \Stripe\OAuth::authorizeUrl([
         'scope' => 'read_only',
-    ));
+    ]);
     echo "<a href=\"$url\">Connect with Stripe</a>\n";
 }

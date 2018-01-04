@@ -33,10 +33,10 @@ class SubscriptionItemTest extends TestCase
             'post',
             '/v1/subscription_items'
         );
-        $resource = SubscriptionItem::create(array(
+        $resource = SubscriptionItem::create([
             "plan" => "plan",
             "subscription" => "sub_123"
-        ));
+        ]);
         $this->assertSame("Stripe\\SubscriptionItem", get_class($resource));
     }
 
@@ -58,9 +58,9 @@ class SubscriptionItemTest extends TestCase
             'post',
             '/v1/subscription_items/' . self::TEST_RESOURCE_ID
         );
-        $resource = SubscriptionItem::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = SubscriptionItem::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertSame("Stripe\\SubscriptionItem", get_class($resource));
     }
 

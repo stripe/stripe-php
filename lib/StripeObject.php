@@ -22,8 +22,8 @@ class StripeObject implements \ArrayAccess, \JsonSerializable
 
     public static function init()
     {
-        self::$permanentAttributes = new Util\Set(array('_opts', 'id'));
-        self::$nestedUpdatableAttributes = new Util\Set(array(
+        self::$permanentAttributes = new Util\Set(['_opts', 'id']);
+        self::$nestedUpdatableAttributes = new Util\Set([
             // Numbers are in place for indexes in an `additional_owners` array.
             //
             // There's a maximum allowed additional owners of 3, but leave the
@@ -48,7 +48,7 @@ class StripeObject implements \ArrayAccess, \JsonSerializable
             'tos_acceptance',
             'transfer_schedule',
             'verification',
-        ));
+        ]);
     }
 
     /**
@@ -79,11 +79,11 @@ class StripeObject implements \ArrayAccess, \JsonSerializable
     public function __construct($id = null, $opts = null)
     {
         $this->_opts = $opts ? $opts : new Util\RequestOptions();
-        $this->_values = array();
+        $this->_values = [];
         $this->_unsavedValues = new Util\Set();
         $this->_transientValues = new Util\Set();
 
-        $this->_retrieveOptions = array();
+        $this->_retrieveOptions = [];
         if (is_array($id)) {
             foreach ($id as $key => $value) {
                 if ($key != 'id') {
@@ -255,7 +255,7 @@ class StripeObject implements \ArrayAccess, \JsonSerializable
      */
     public function serializeParameters()
     {
-        $params = array();
+        $params = [];
         if ($this->_unsavedValues) {
             foreach ($this->_unsavedValues->toArray() as $k) {
                 $v = $this->$k;

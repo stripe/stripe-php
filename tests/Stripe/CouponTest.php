@@ -33,12 +33,12 @@ class CouponTest extends TestCase
             'post',
             '/v1/coupons'
         );
-        $resource = Coupon::create(array(
+        $resource = Coupon::create([
             "percent_off" => 25,
             "duration" => "repeating",
             "duration_in_months" => 3,
             "id" => self::TEST_RESOURCE_ID,
-        ));
+        ]);
         $this->assertSame("Stripe\\Coupon", get_class($resource));
     }
 
@@ -60,9 +60,9 @@ class CouponTest extends TestCase
             'post',
             '/v1/coupons/' . self::TEST_RESOURCE_ID
         );
-        $resource = Coupon::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Coupon::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertSame("Stripe\\Coupon", get_class($resource));
     }
 

@@ -60,10 +60,10 @@ class CurlClient implements ClientInterface
     public function initUserAgentInfo()
     {
         $curlVersion = curl_version();
-        $this->userAgentInfo = array(
+        $this->userAgentInfo = [
             'httplib' =>  'curl ' . $curlVersion['version'],
             'ssllib' => $curlVersion['ssl_version'],
-        );
+        ];
     }
 
     public function getDefaultOptions()
@@ -113,7 +113,7 @@ class CurlClient implements ClientInterface
         $curl = curl_init();
         $method = strtolower($method);
 
-        $opts = array();
+        $opts = [];
         if (is_callable($this->defaultOptions)) { // call defaultOptions callback, set options to return value
             $opts = call_user_func_array($this->defaultOptions, func_get_args());
             if (!is_array($opts)) {
@@ -148,7 +148,7 @@ class CurlClient implements ClientInterface
         }
 
         // Create a callback to capture HTTP headers for the response
-        $rheaders = array();
+        $rheaders = [];
         $headerCallback = function ($curl, $header_line) use (&$rheaders) {
             // Ignore the HTTP request line (HTTP/1.1 200 OK)
             if (strpos($header_line, ":") === false) {
@@ -215,7 +215,7 @@ class CurlClient implements ClientInterface
 
         $rcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
-        return array($rbody, $rcode, $rheaders);
+        return [$rbody, $rcode, $rheaders];
     }
 
     /**

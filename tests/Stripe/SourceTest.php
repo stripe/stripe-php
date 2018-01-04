@@ -22,9 +22,9 @@ class SourceTest extends TestCase
             'post',
             '/v1/sources'
         );
-        $resource = Source::create(array(
+        $resource = Source::create([
             "type" => "card"
-        ));
+        ]);
         $this->assertSame("Stripe\\Source", get_class($resource));
     }
 
@@ -46,22 +46,22 @@ class SourceTest extends TestCase
             'post',
             '/v1/sources/' . self::TEST_RESOURCE_ID
         );
-        $resource = Source::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Source::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertSame("Stripe\\Source", get_class($resource));
     }
 
     public function testCanSaveCardExpiryDate()
     {
-        $response = array(
+        $response = [
             'id' => 'src_foo',
             'object' => 'source',
-            'card' => array(
+            'card' => [
                 'exp_month' => 8,
                 'exp_year' => 2019,
-            ),
-        );
+            ],
+        ];
         $source = Source::constructFrom(
             $response,
             new Util\RequestOptions()
@@ -72,12 +72,12 @@ class SourceTest extends TestCase
         $this->stubRequest(
             'POST',
             '/v1/sources/src_foo',
-            array(
-                'card' => array(
+            [
+                'card' => [
                     'exp_month' => 12,
                     'exp_year' => 2022,
-                )
-            ),
+                ]
+            ],
             null,
             false,
             $response
@@ -131,7 +131,7 @@ class SourceTest extends TestCase
             'post',
             '/v1/sources/' . self::TEST_RESOURCE_ID . "/verify"
         );
-        $resource->verify(array("values" => array(32,45)));
+        $resource->verify(["values" => [32, 45]]);
         $this->assertSame("Stripe\\Source", get_class($resource));
     }
 }

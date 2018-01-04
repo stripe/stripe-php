@@ -103,7 +103,7 @@ abstract class WebhookSignature
      */
     private static function getSignatures($header, $scheme)
     {
-        $signatures = array();
+        $signatures = [];
         $items = explode(",", $header);
 
         foreach ($items as $item) {

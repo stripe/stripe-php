@@ -13,10 +13,10 @@ class FileUploadTest extends TestCase
     {
         // PHP <= 5.5 does not support arrays as class constants, so we set up
         // the fixture as an instance variable.
-        $this->fixture = array(
+        $this->fixture = [
             'id' => self::TEST_RESOURCE_ID,
             'object' => 'file_upload',
-        );
+        ];
     }
 
     public function testIsListable()
@@ -24,14 +24,14 @@ class FileUploadTest extends TestCase
         $this->stubRequest(
             'get',
             '/v1/files',
-            array(),
+            [],
             null,
             false,
-            array(
+            [
                 'object' => 'list',
-                'data' => array($this->fixture),
+                'data' => [$this->fixture],
                 'resource_url' => '/v1/files',
-            ),
+            ],
             200,
             Stripe::$apiUploadBase
         );
@@ -46,7 +46,7 @@ class FileUploadTest extends TestCase
         $this->stubRequest(
             'get',
             '/v1/files/' . self::TEST_RESOURCE_ID,
-            array(),
+            [],
             null,
             false,
             $this->fixture,
@@ -63,17 +63,17 @@ class FileUploadTest extends TestCase
             'post',
             '/v1/files',
             null,
-            array('Content-Type: multipart/form-data'),
+            ['Content-Type: multipart/form-data'],
             true,
             $this->fixture,
             200,
             Stripe::$apiUploadBase
         );
         $fp = fopen(dirname(__FILE__) . '/../data/test.png', 'r');
-        $resource = FileUpload::create(array(
+        $resource = FileUpload::create([
             "purpose" => "dispute_evidence",
             "file" => $fp,
-        ));
+        ]);
         $this->assertSame("Stripe\\FileUpload", get_class($resource));
     }
 
@@ -88,17 +88,17 @@ class FileUploadTest extends TestCase
             'post',
             '/v1/files',
             null,
-            array('Content-Type: multipart/form-data'),
+            ['Content-Type: multipart/form-data'],
             true,
             $this->fixture,
             200,
             Stripe::$apiUploadBase
         );
         $curlFile = new \CurlFile(dirname(__FILE__) . '/../data/test.png');
-        $resource = FileUpload::create(array(
+        $resource = FileUpload::create([
             "purpose" => "dispute_evidence",
             "file" => $curlFile,
-        ));
+        ]);
         $this->assertSame("Stripe\\FileUpload", get_class($resource));
     }
 }
