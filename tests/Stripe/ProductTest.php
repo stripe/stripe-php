@@ -14,7 +14,7 @@ class ProductTest extends TestCase
         );
         $resources = Product::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\Product", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\Product", $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class ProductTest extends TestCase
             '/v1/products/' . self::TEST_RESOURCE_ID
         );
         $resource = Product::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame("Stripe\\Product", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Product", $resource);
     }
 
     public function testIsCreatable()
@@ -36,7 +36,7 @@ class ProductTest extends TestCase
         $resource = Product::create(array(
             'name' => 'name'
         ));
-        $this->assertSame("Stripe\\Product", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Product", $resource);
     }
 
     public function testIsSaveable()
@@ -48,7 +48,7 @@ class ProductTest extends TestCase
             '/v1/products/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame("Stripe\\Product", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Product", $resource);
     }
 
     public function testIsUpdatable()
@@ -60,7 +60,7 @@ class ProductTest extends TestCase
         $resource = Product::update(self::TEST_RESOURCE_ID, array(
             "metadata" => array("key" => "value"),
         ));
-        $this->assertSame("Stripe\\Product", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Product", $resource);
     }
 
     public function testIsDeletable()
@@ -71,6 +71,6 @@ class ProductTest extends TestCase
             '/v1/products/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertSame("Stripe\\Product", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Product", $resource);
     }
 }

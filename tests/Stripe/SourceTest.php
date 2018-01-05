@@ -13,7 +13,7 @@ class SourceTest extends TestCase
             '/v1/sources/' . self::TEST_RESOURCE_ID
         );
         $resource = Source::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame("Stripe\\Source", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Source", $resource);
     }
 
     public function testIsCreatable()
@@ -25,7 +25,7 @@ class SourceTest extends TestCase
         $resource = Source::create(array(
             "type" => "card"
         ));
-        $this->assertSame("Stripe\\Source", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Source", $resource);
     }
 
     public function testIsSaveable()
@@ -37,7 +37,7 @@ class SourceTest extends TestCase
             '/v1/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame("Stripe\\Source", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Source", $resource);
     }
 
     public function testIsUpdatable()
@@ -49,7 +49,7 @@ class SourceTest extends TestCase
         $resource = Source::update(self::TEST_RESOURCE_ID, array(
             "metadata" => array("key" => "value"),
         ));
-        $this->assertSame("Stripe\\Source", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Source", $resource);
     }
 
     public function testCanSaveCardExpiryDate()
@@ -100,7 +100,7 @@ class SourceTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertSame("Stripe\\Source", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Source", $resource);
     }
 
     /**
@@ -121,7 +121,7 @@ class SourceTest extends TestCase
         );
         $resources = $source->sourceTransactions();
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\SourceTransaction", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\SourceTransaction", $resources->data[0]);
     }
 
     public function testCanVerify()
@@ -132,6 +132,6 @@ class SourceTest extends TestCase
             '/v1/sources/' . self::TEST_RESOURCE_ID . "/verify"
         );
         $resource->verify(array("values" => array(32,45)));
-        $this->assertSame("Stripe\\Source", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Source", $resource);
     }
 }

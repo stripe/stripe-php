@@ -13,7 +13,7 @@ class TokenTest extends TestCase
             '/v1/tokens/' . self::TEST_RESOURCE_ID
         );
         $resource = Token::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame("Stripe\\Token", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Token", $resource);
     }
 
     public function testIsCreatable()
@@ -23,6 +23,6 @@ class TokenTest extends TestCase
             '/v1/tokens'
         );
         $resource = Token::create(array("card" => "tok_visa"));
-        $this->assertSame("Stripe\\Token", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Token", $resource);
     }
 }

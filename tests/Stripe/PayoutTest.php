@@ -14,7 +14,7 @@ class PayoutTest extends TestCase
         );
         $resources = Payout::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\Payout", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\Payout", $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class PayoutTest extends TestCase
             '/v1/payouts/' . self::TEST_RESOURCE_ID
         );
         $resource = Payout::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame("Stripe\\Payout", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Payout", $resource);
     }
 
     public function testIsCreatable()
@@ -37,7 +37,7 @@ class PayoutTest extends TestCase
             "amount" => 100,
             "currency" => "usd"
         ));
-        $this->assertSame("Stripe\\Payout", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Payout", $resource);
     }
 
     public function testIsSaveable()
@@ -49,7 +49,7 @@ class PayoutTest extends TestCase
             '/v1/payouts/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame("Stripe\\Payout", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Payout", $resource);
     }
 
     public function testIsUpdatable()
@@ -61,7 +61,7 @@ class PayoutTest extends TestCase
         $resource = Payout::update(self::TEST_RESOURCE_ID, array(
             "metadata" => array("key" => "value"),
         ));
-        $this->assertSame("Stripe\\Payout", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Payout", $resource);
     }
 
     public function testIsCancelable()
@@ -72,6 +72,6 @@ class PayoutTest extends TestCase
             '/v1/payouts/' . $resource->id . '/cancel'
         );
         $resource->cancel();
-        $this->assertSame("Stripe\\Payout", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Payout", $resource);
     }
 }

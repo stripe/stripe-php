@@ -14,7 +14,7 @@ class ApplePayDomainTest extends TestCase
         );
         $resources = ApplePayDomain::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\ApplePayDomain", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\ApplePayDomain", $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class ApplePayDomainTest extends TestCase
             '/v1/apple_pay/domains/' . self::TEST_RESOURCE_ID
         );
         $resource = ApplePayDomain::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame("Stripe\\ApplePayDomain", get_class($resource));
+        $this->assertInstanceOf("Stripe\\ApplePayDomain", $resource);
     }
 
     public function testIsCreatable()
@@ -36,7 +36,7 @@ class ApplePayDomainTest extends TestCase
         $resource = ApplePayDomain::create(array(
             "domain_name" => "domain",
         ));
-        $this->assertSame("Stripe\\ApplePayDomain", get_class($resource));
+        $this->assertInstanceOf("Stripe\\ApplePayDomain", $resource);
     }
 
     public function testIsDeletable()
@@ -47,6 +47,6 @@ class ApplePayDomainTest extends TestCase
             '/v1/apple_pay/domains/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertSame("Stripe\\ApplePayDomain", get_class($resource));
+        $this->assertInstanceOf("Stripe\\ApplePayDomain", $resource);
     }
 }

@@ -14,7 +14,7 @@ class OrderTest extends TestCase
         );
         $resources = Order::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\Order", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\Order", $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class OrderTest extends TestCase
             '/v1/orders/' . self::TEST_RESOURCE_ID
         );
         $resource = Order::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame("Stripe\\Order", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Order", $resource);
     }
 
     public function testIsCreatable()
@@ -36,7 +36,7 @@ class OrderTest extends TestCase
         $resource = Order::create(array(
             'currency' => 'usd'
         ));
-        $this->assertSame("Stripe\\Order", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Order", $resource);
     }
 
     public function testIsSaveable()
@@ -48,7 +48,7 @@ class OrderTest extends TestCase
             '/v1/orders/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame("Stripe\\Order", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Order", $resource);
     }
 
     public function testIsUpdatable()
@@ -60,7 +60,7 @@ class OrderTest extends TestCase
         $resource = Order::update(self::TEST_RESOURCE_ID, array(
             "metadata" => array("key" => "value"),
         ));
-        $this->assertSame("Stripe\\Order", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Order", $resource);
     }
 
     public function testIsPayable()
@@ -71,7 +71,7 @@ class OrderTest extends TestCase
             '/v1/orders/' . self::TEST_RESOURCE_ID . '/pay'
         );
         $resource->pay();
-        $this->assertSame("Stripe\\Order", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Order", $resource);
     }
 
     public function testIsReturnable()
@@ -82,6 +82,6 @@ class OrderTest extends TestCase
             '/v1/orders/' . self::TEST_RESOURCE_ID . '/returns'
         );
         $resource = $order->returnOrder();
-        $this->assertSame("Stripe\\OrderReturn", get_class($resource));
+        $this->assertInstanceOf("Stripe\\OrderReturn", $resource);
     }
 }

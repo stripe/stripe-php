@@ -24,6 +24,6 @@ class BankAccountTest extends TestCase
             )
         );
         $resource->verify(array("amounts" => array(1, 2)));
-        $this->assertSame("Stripe\\BankAccount", get_class($resource));
+        $this->assertInstanceOf("Stripe\\BankAccount", $resource);
     }
 }

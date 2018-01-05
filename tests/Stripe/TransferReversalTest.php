@@ -16,6 +16,6 @@ class TransferReversalTest extends TestCase
             '/v1/transfers/' . $resource->transfer . '/reversals/' . $resource->id
         );
         $resource->save();
-        $this->assertSame("Stripe\\TransferReversal", get_class($resource));
+        $this->assertInstanceOf("Stripe\\TransferReversal", $resource);
     }
 }

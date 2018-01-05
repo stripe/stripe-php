@@ -14,7 +14,7 @@ class EventTest extends TestCase
         );
         $resources = Event::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\Event", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\Event", $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,6 +24,6 @@ class EventTest extends TestCase
             '/v1/events/' . self::TEST_RESOURCE_ID
         );
         $resource = Event::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame("Stripe\\Event", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Event", $resource);
     }
 }

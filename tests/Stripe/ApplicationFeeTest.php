@@ -15,7 +15,7 @@ class ApplicationFeeTest extends TestCase
         );
         $resources = ApplicationFee::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\ApplicationFee", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\ApplicationFee", $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -25,7 +25,7 @@ class ApplicationFeeTest extends TestCase
             '/v1/application_fees/' . self::TEST_RESOURCE_ID
         );
         $resource = ApplicationFee::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame("Stripe\\ApplicationFee", get_class($resource));
+        $this->assertInstanceOf("Stripe\\ApplicationFee", $resource);
     }
 
     public function testCanCreateRefund()
@@ -35,7 +35,7 @@ class ApplicationFeeTest extends TestCase
             '/v1/application_fees/' . self::TEST_RESOURCE_ID . '/refunds'
         );
         $resource = ApplicationFee::createRefund(self::TEST_RESOURCE_ID);
-        $this->assertSame("Stripe\\ApplicationFeeRefund", get_class($resource));
+        $this->assertInstanceOf("Stripe\\ApplicationFeeRefund", $resource);
     }
 
     public function testCanRetrieveRefund()
@@ -45,7 +45,7 @@ class ApplicationFeeTest extends TestCase
             '/v1/application_fees/' . self::TEST_RESOURCE_ID . '/refunds/' . self::TEST_FEEREFUND_ID
         );
         $resource = ApplicationFee::retrieveRefund(self::TEST_RESOURCE_ID, self::TEST_FEEREFUND_ID);
-        $this->assertSame("Stripe\\ApplicationFeeRefund", get_class($resource));
+        $this->assertInstanceOf("Stripe\\ApplicationFeeRefund", $resource);
     }
 
     public function testCanUpdateRefund()
@@ -55,7 +55,7 @@ class ApplicationFeeTest extends TestCase
             '/v1/application_fees/' . self::TEST_RESOURCE_ID . '/refunds/' . self::TEST_FEEREFUND_ID
         );
         $resource = ApplicationFee::updateRefund(self::TEST_RESOURCE_ID, self::TEST_FEEREFUND_ID);
-        $this->assertSame("Stripe\\ApplicationFeeRefund", get_class($resource));
+        $this->assertInstanceOf("Stripe\\ApplicationFeeRefund", $resource);
     }
 
     public function testCanListRefunds()
@@ -66,6 +66,6 @@ class ApplicationFeeTest extends TestCase
         );
         $resources = ApplicationFee::allRefunds(self::TEST_RESOURCE_ID);
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\ApplicationFeeRefund", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\ApplicationFeeRefund", $resources->data[0]);
     }
 }
