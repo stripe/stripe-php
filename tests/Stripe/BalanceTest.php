@@ -11,6 +11,6 @@ class BalanceTest extends TestCase
             '/v1/balance'
         );
         $resource = Balance::retrieve();
-        $this->assertSame("Stripe\\Balance", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Balance", $resource);
     }
 }

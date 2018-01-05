@@ -15,7 +15,7 @@ class CustomerTest extends TestCase
         );
         $resources = Customer::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\Customer", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\Customer", $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -25,7 +25,7 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID
         );
         $resource = Customer::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame("Stripe\\Customer", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Customer", $resource);
     }
 
     public function testIsCreatable()
@@ -35,7 +35,7 @@ class CustomerTest extends TestCase
             '/v1/customers'
         );
         $resource = Customer::create();
-        $this->assertSame("Stripe\\Customer", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Customer", $resource);
     }
 
     public function testIsSaveable()
@@ -47,7 +47,7 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame("Stripe\\Customer", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Customer", $resource);
     }
 
     public function testIsUpdatable()
@@ -59,7 +59,7 @@ class CustomerTest extends TestCase
         $resource = Customer::update(self::TEST_RESOURCE_ID, array(
             "metadata" => array("key" => "value"),
         ));
-        $this->assertSame("Stripe\\Customer", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Customer", $resource);
     }
 
     public function testIsDeletable()
@@ -70,7 +70,7 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertSame("Stripe\\Customer", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Customer", $resource);
     }
 
     public function testCanAddInvoiceItem()
@@ -89,7 +89,7 @@ class CustomerTest extends TestCase
             "amount" => 100,
             "currency" => "usd"
         ));
-        $this->assertSame("Stripe\\InvoiceItem", get_class($resource));
+        $this->assertInstanceOf("Stripe\\InvoiceItem", $resource);
     }
 
     public function testCanListInvoices()
@@ -102,7 +102,7 @@ class CustomerTest extends TestCase
         );
         $resources = $customer->invoices();
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\Invoice", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\Invoice", $resources->data[0]);
     }
 
     public function testCanListInvoiceItems()
@@ -115,7 +115,7 @@ class CustomerTest extends TestCase
         );
         $resources = $customer->invoiceItems();
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\InvoiceItem", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\InvoiceItem", $resources->data[0]);
     }
 
     public function testCanListCharges()
@@ -128,7 +128,7 @@ class CustomerTest extends TestCase
         );
         $resources = $customer->charges();
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\Charge", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\Charge", $resources->data[0]);
     }
 
     public function testCanUpdateSubscription()
@@ -146,7 +146,7 @@ class CustomerTest extends TestCase
             )
         );
         $resource = $customer->updateSubscription(array("plan" => "plan"));
-        $this->assertSame("Stripe\\Subscription", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Subscription", $resource);
         $this->assertSame("sub_foo", $customer->subscription->id);
     }
 
@@ -165,7 +165,7 @@ class CustomerTest extends TestCase
             )
         );
         $resource = $customer->cancelSubscription();
-        $this->assertSame("Stripe\\Subscription", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Subscription", $resource);
         $this->assertSame("sub_foo", $customer->subscription->id);
     }
 
@@ -187,7 +187,7 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/sources'
         );
         $resource = Customer::createSource(self::TEST_RESOURCE_ID, array("source" => "btok_123"));
-        $this->assertSame("Stripe\\BankAccount", get_class($resource));
+        $this->assertInstanceOf("Stripe\\BankAccount", $resource);
     }
 
     public function testCanRetrieveSource()
@@ -197,7 +197,7 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/sources/' . self::TEST_SOURCE_ID
         );
         $resource = Customer::retrieveSource(self::TEST_RESOURCE_ID, self::TEST_SOURCE_ID);
-        $this->assertSame("Stripe\\BankAccount", get_class($resource));
+        $this->assertInstanceOf("Stripe\\BankAccount", $resource);
     }
 
     public function testCanUpdateSource()
@@ -208,7 +208,7 @@ class CustomerTest extends TestCase
         );
         $resource = Customer::updateSource(self::TEST_RESOURCE_ID, self::TEST_SOURCE_ID, array("name" => "name"));
         // stripe-mock returns a Card on this method and not a bank account
-        $this->assertSame("Stripe\\Card", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Card", $resource);
     }
 
     public function testCanDeleteSource()
@@ -218,7 +218,7 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/sources/' . self::TEST_SOURCE_ID
         );
         $resource = Customer::deleteSource(self::TEST_RESOURCE_ID, self::TEST_SOURCE_ID);
-        $this->assertSame("Stripe\\BankAccount", get_class($resource));
+        $this->assertInstanceOf("Stripe\\BankAccount", $resource);
     }
 
     public function testCanListSources()

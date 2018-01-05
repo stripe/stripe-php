@@ -14,7 +14,7 @@ class PlanTest extends TestCase
         );
         $resources = Plan::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\Plan", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\Plan", $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class PlanTest extends TestCase
             '/v1/plans/' . self::TEST_RESOURCE_ID
         );
         $resource = Plan::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame("Stripe\\Plan", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Plan", $resource);
     }
 
     public function testIsCreatable()
@@ -40,7 +40,7 @@ class PlanTest extends TestCase
             'name' => self::TEST_RESOURCE_ID,
             'id' => self::TEST_RESOURCE_ID
         ));
-        $this->assertSame("Stripe\\Plan", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Plan", $resource);
     }
 
     public function testIsSaveable()
@@ -52,7 +52,7 @@ class PlanTest extends TestCase
             '/v1/plans/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame("Stripe\\Plan", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Plan", $resource);
     }
 
     public function testIsUpdatable()
@@ -64,7 +64,7 @@ class PlanTest extends TestCase
         $resource = Plan::update(self::TEST_RESOURCE_ID, array(
             "metadata" => array("key" => "value"),
         ));
-        $this->assertSame("Stripe\\Plan", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Plan", $resource);
     }
 
     public function testIsDeletable()
@@ -75,6 +75,6 @@ class PlanTest extends TestCase
             '/v1/plans/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertSame("Stripe\\Plan", get_class($resource));
+        $this->assertInstanceOf("Stripe\\Plan", $resource);
     }
 }

@@ -38,7 +38,7 @@ class FileUploadTest extends TestCase
 
         $resources = FileUpload::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\FileUpload", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\FileUpload", $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -54,7 +54,7 @@ class FileUploadTest extends TestCase
             Stripe::$apiUploadBase
         );
         $resource = FileUpload::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame("Stripe\\FileUpload", get_class($resource));
+        $this->assertInstanceOf("Stripe\\FileUpload", $resource);
     }
 
     public function testIsCreatableWithFileHandle()
@@ -74,7 +74,7 @@ class FileUploadTest extends TestCase
             "purpose" => "dispute_evidence",
             "file" => $fp,
         ));
-        $this->assertSame("Stripe\\FileUpload", get_class($resource));
+        $this->assertInstanceOf("Stripe\\FileUpload", $resource);
     }
 
     public function testIsCreatableWithCurlFile()
@@ -99,6 +99,6 @@ class FileUploadTest extends TestCase
             "purpose" => "dispute_evidence",
             "file" => $curlFile,
         ));
-        $this->assertSame("Stripe\\FileUpload", get_class($resource));
+        $this->assertInstanceOf("Stripe\\FileUpload", $resource);
     }
 }

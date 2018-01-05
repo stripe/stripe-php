@@ -14,7 +14,7 @@ class SubscriptionItemTest extends TestCase
         );
         $resources = SubscriptionItem::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\SubscriptionItem", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\SubscriptionItem", $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class SubscriptionItemTest extends TestCase
             '/v1/subscription_items/' . self::TEST_RESOURCE_ID
         );
         $resource = SubscriptionItem::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame("Stripe\\SubscriptionItem", get_class($resource));
+        $this->assertInstanceOf("Stripe\\SubscriptionItem", $resource);
     }
 
     public function testIsCreatable()
@@ -37,7 +37,7 @@ class SubscriptionItemTest extends TestCase
             "plan" => "plan",
             "subscription" => "sub_123"
         ));
-        $this->assertSame("Stripe\\SubscriptionItem", get_class($resource));
+        $this->assertInstanceOf("Stripe\\SubscriptionItem", $resource);
     }
 
     public function testIsSaveable()
@@ -49,7 +49,7 @@ class SubscriptionItemTest extends TestCase
             '/v1/subscription_items/' . $resource->id
         );
         $resource->save();
-        $this->assertSame("Stripe\\SubscriptionItem", get_class($resource));
+        $this->assertInstanceOf("Stripe\\SubscriptionItem", $resource);
     }
 
     public function testIsUpdatable()
@@ -61,7 +61,7 @@ class SubscriptionItemTest extends TestCase
         $resource = SubscriptionItem::update(self::TEST_RESOURCE_ID, array(
             "metadata" => array("key" => "value"),
         ));
-        $this->assertSame("Stripe\\SubscriptionItem", get_class($resource));
+        $this->assertInstanceOf("Stripe\\SubscriptionItem", $resource);
     }
 
     public function testIsDeletable()
@@ -72,6 +72,6 @@ class SubscriptionItemTest extends TestCase
             '/v1/subscription_items/' . $resource->id
         );
         $resource->delete();
-        $this->assertSame("Stripe\\SubscriptionItem", get_class($resource));
+        $this->assertInstanceOf("Stripe\\SubscriptionItem", $resource);
     }
 }

@@ -14,7 +14,7 @@ class InvoiceItemTest extends TestCase
         );
         $resources = InvoiceItem::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertSame("Stripe\\InvoiceItem", get_class($resources->data[0]));
+        $this->assertInstanceOf("Stripe\\InvoiceItem", $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class InvoiceItemTest extends TestCase
             '/v1/invoiceitems/' . self::TEST_RESOURCE_ID
         );
         $resource = InvoiceItem::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame("Stripe\\InvoiceItem", get_class($resource));
+        $this->assertInstanceOf("Stripe\\InvoiceItem", $resource);
     }
 
     public function testIsCreatable()
@@ -38,7 +38,7 @@ class InvoiceItemTest extends TestCase
             "currency" => "usd",
             "customer" => "cus_123"
         ));
-        $this->assertSame("Stripe\\InvoiceItem", get_class($resource));
+        $this->assertInstanceOf("Stripe\\InvoiceItem", $resource);
     }
 
     public function testIsSaveable()
@@ -50,7 +50,7 @@ class InvoiceItemTest extends TestCase
             '/v1/invoiceitems/' . $resource->id
         );
         $resource->save();
-        $this->assertSame("Stripe\\InvoiceItem", get_class($resource));
+        $this->assertInstanceOf("Stripe\\InvoiceItem", $resource);
     }
 
     public function testIsUpdatable()
@@ -62,7 +62,7 @@ class InvoiceItemTest extends TestCase
         $resource = InvoiceItem::update(self::TEST_RESOURCE_ID, array(
             "metadata" => array("key" => "value"),
         ));
-        $this->assertSame("Stripe\\InvoiceItem", get_class($resource));
+        $this->assertInstanceOf("Stripe\\InvoiceItem", $resource);
     }
 
     public function testIsDeletable()
@@ -73,6 +73,6 @@ class InvoiceItemTest extends TestCase
             '/v1/invoiceitems/' . $invoiceItem->id
         );
         $resource = $invoiceItem->delete();
-        $this->assertSame("Stripe\\InvoiceItem", get_class($resource));
+        $this->assertInstanceOf("Stripe\\InvoiceItem", $resource);
     }
 }

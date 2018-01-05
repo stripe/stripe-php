@@ -13,7 +13,7 @@ class ThreeDSecureTest extends TestCase
             '/v1/3d_secure/' . self::TEST_RESOURCE_ID
         );
         $resource = ThreeDSecure::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame("Stripe\\ThreeDSecure", get_class($resource));
+        $this->assertInstanceOf("Stripe\\ThreeDSecure", $resource);
     }
 
     public function testIsCreatable()
@@ -27,6 +27,6 @@ class ThreeDSecureTest extends TestCase
             "currency" => "usd",
             "return_url" => "url"
         ));
-        $this->assertSame("Stripe\\ThreeDSecure", get_class($resource));
+        $this->assertInstanceOf("Stripe\\ThreeDSecure", $resource);
     }
 }

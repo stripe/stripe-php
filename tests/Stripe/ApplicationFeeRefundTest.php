@@ -16,6 +16,6 @@ class ApplicationFeeRefundTest extends TestCase
             '/v1/application_fees/' . $resource->fee . '/refunds/' . $resource->id
         );
         $resource->save();
-        $this->assertSame("Stripe\\ApplicationFeeRefund", get_class($resource));
+        $this->assertInstanceOf("Stripe\\ApplicationFeeRefund", $resource);
     }
 }
