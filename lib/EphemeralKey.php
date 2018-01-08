@@ -17,6 +17,9 @@ namespace Stripe;
  */
 class EphemeralKey extends ApiResource
 {
+    use ApiOperations\Create {
+        create as protected _create;
+    }
     use ApiOperations\Delete;
 
     /**

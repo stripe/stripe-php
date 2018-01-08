@@ -18,6 +18,10 @@ namespace Stripe;
  */
 class TransferReversal extends ApiResource
 {
+    use ApiOperations\Update {
+        save as protected _save;
+    }
+
     /**
      * @return string The API URL for this Stripe transfer reversal.
      */

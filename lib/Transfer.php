@@ -28,6 +28,7 @@ class Transfer extends ApiResource
 {
     use ApiOperations\All;
     use ApiOperations\Create;
+    use ApiOperations\NestedResource;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
