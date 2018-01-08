@@ -46,7 +46,7 @@ class RecipientTest extends TestCase
         $resource->metadata["key"] = "value";
         $this->expectsRequest(
             'post',
-            '/v1/recipients/' . self::TEST_RESOURCE_ID
+            '/v1/recipients/' . $resource->id
         );
         $resource->save();
         $this->assertInstanceOf("Stripe\\Recipient", $resource);
@@ -69,7 +69,7 @@ class RecipientTest extends TestCase
         $resource = Recipient::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'delete',
-            '/v1/recipients/' . self::TEST_RESOURCE_ID
+            '/v1/recipients/' . $resource->id
         );
         $resource->delete();
         $this->assertInstanceOf("Stripe\\Recipient", $resource);

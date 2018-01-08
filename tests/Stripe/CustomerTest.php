@@ -44,7 +44,7 @@ class CustomerTest extends TestCase
         $resource->metadata["key"] = "value";
         $this->expectsRequest(
             'post',
-            '/v1/customers/' . self::TEST_RESOURCE_ID
+            '/v1/customers/' . $resource->id
         );
         $resource->save();
         $this->assertInstanceOf("Stripe\\Customer", $resource);
@@ -67,7 +67,7 @@ class CustomerTest extends TestCase
         $resource = Customer::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'delete',
-            '/v1/customers/' . self::TEST_RESOURCE_ID
+            '/v1/customers/' . $resource->id
         );
         $resource->delete();
         $this->assertInstanceOf("Stripe\\Customer", $resource);
@@ -229,5 +229,41 @@ class CustomerTest extends TestCase
         );
         $resources = Customer::allSources(self::TEST_RESOURCE_ID);
         $this->assertTrue(is_array($resources->data));
+    }
+
+    public function testSerializeSourceString()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'customer',
+        ], null);
+        $obj->source = 'tok_visa';
+
+        $expected = [
+            'source' => 'tok_visa',
+        ];
+        $this->assertSame($expected, $obj->serializeParameters());
+    }
+
+    public function testSerializeSourceMap()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'customer',
+        ], null);
+        $obj->source = [
+            'object' => 'card',
+            'number' => '4242424242424242',
+            'exp_month' => 12,
+            'exp_year' => 2032,
+        ];
+
+        $expected = [
+            'source' => [
+                'object' => 'card',
+                'number' => '4242424242424242',
+                'exp_month' => 12,
+                'exp_year' => 2032,
+            ],
+        ];
+        $this->assertSame($expected, $obj->serializeParameters());
     }
 }

@@ -51,7 +51,7 @@ class SKUTest extends TestCase
         $resource->metadata["key"] = "value";
         $this->expectsRequest(
             'post',
-            '/v1/skus/' . self::TEST_RESOURCE_ID
+            '/v1/skus/' . $resource->id
         );
         $resource->save();
         $this->assertInstanceOf("Stripe\\SKU", $resource);
@@ -74,7 +74,7 @@ class SKUTest extends TestCase
         $resource = SKU::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'delete',
-            '/v1/skus/' . self::TEST_RESOURCE_ID
+            '/v1/skus/' . $resource->id
         );
         $resource->delete();
         $this->assertInstanceOf("Stripe\\SKU", $resource);

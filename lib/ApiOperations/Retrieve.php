@@ -6,7 +6,7 @@ namespace Stripe\ApiOperations;
  * Trait for retrievable resources. Adds a `retrieve()` static method to the
  * class.
  *
- * This trait should only be applied to classes that derive from ApiResource.
+ * This trait should only be applied to classes that derive from StripeObject.
  */
 trait Retrieve
 {
@@ -15,10 +15,13 @@ trait Retrieve
      *     or an options array containing an `id` key.
      * @param array|string|null $opts
      *
-     * @return ApiResource
+     * @return Stripe\StripeObject
      */
     public static function retrieve($id, $opts = null)
     {
-        return self::_retrieve($id, $opts);
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+        return $instance;
     }
 }

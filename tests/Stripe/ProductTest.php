@@ -45,7 +45,7 @@ class ProductTest extends TestCase
         $resource->metadata["key"] = "value";
         $this->expectsRequest(
             'post',
-            '/v1/products/' . self::TEST_RESOURCE_ID
+            '/v1/products/' . $resource->id
         );
         $resource->save();
         $this->assertInstanceOf("Stripe\\Product", $resource);
@@ -68,7 +68,7 @@ class ProductTest extends TestCase
         $resource = Product::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'delete',
-            '/v1/products/' . self::TEST_RESOURCE_ID
+            '/v1/products/' . $resource->id
         );
         $resource->delete();
         $this->assertInstanceOf("Stripe\\Product", $resource);

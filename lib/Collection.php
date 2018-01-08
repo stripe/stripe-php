@@ -12,9 +12,19 @@ namespace Stripe;
  *
  * @package Stripe
  */
-class Collection extends ApiResource
+class Collection extends StripeObject
 {
+    use ApiOperations\Request;
+
     protected $_requestParams = [];
+
+    /**
+     * @return string The base URL for the given class.
+     */
+    public static function baseUrl()
+    {
+        return Stripe::$apiBase;
+    }
 
     public function setRequestParams($params)
     {

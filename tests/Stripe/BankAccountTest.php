@@ -8,14 +8,11 @@ class BankAccountTest extends TestCase
 
     public function testIsVerifiable()
     {
-        $resource = BankAccount::constructFrom(
-            [
-                'id' => self::TEST_RESOURCE_ID,
-                'object' => 'bank_account',
-                'customer' => 'cus_123',
-            ],
-            new Util\RequestOptions()
-        );
+        $resource = BankAccount::constructFrom([
+            'id' => self::TEST_RESOURCE_ID,
+            'object' => 'bank_account',
+            'customer' => 'cus_123',
+        ]);
         $this->expectsRequest(
             'post',
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID . "/verify",

@@ -11,6 +11,9 @@ class Subscription extends ApiResource
 {
     use ApiOperations\All;
     use ApiOperations\Create;
+    use ApiOperations\Delete {
+        delete as protected _delete;
+    }
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
@@ -24,6 +27,17 @@ class Subscription extends ApiResource
     const STATUS_PAST_DUE = 'past_due';
     const STATUS_TRIALING = 'trialing';
     const STATUS_UNPAID = 'unpaid';
+
+    public static function getSavedNestedResources()
+    {
+        static $savedNestedResources = null;
+        if ($savedNestedResources === null) {
+            $savedNestedResources = new Util\Set([
+                'source',
+            ]);
+        }
+        return $savedNestedResources;
+    }
 
     /**
      * @param array|null $params
@@ -43,5 +57,14 @@ class Subscription extends ApiResource
         $url = $this->instanceUrl() . '/discount';
         list($response, $opts) = $this->_request('delete', $url);
         $this->refreshFrom(['discount' => null], $opts, true);
+    }
+
+    public function serializeParameters($force = false)
+    {
+        $update = parent::serializeParameters($force);
+        if ($this->_unsavedValues->includes('items')) {
+            $update['items'] = $this->serializeParamsValue($this->items, null, true, $force, 'items');
+        }
+        return $update;
     }
 }
