@@ -40,6 +40,10 @@ class Account extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Delete;
+    use ApiOperations\NestedResource;
+    use ApiOperations\Retrieve {
+        retrieve as protected _retrieve;
+    }
     use ApiOperations\Update;
 
     public static function getSavedNestedResources()

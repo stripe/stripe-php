@@ -30,16 +30,6 @@ class Invoice extends ApiResource
     }
 
     /**
-     * @param array|string|null $opts
-     *
-     * @return Invoice The saved invoice.
-     */
-    public function save($opts = null)
-    {
-        return $this->_save($opts);
-    }
-
-    /**
      * @return Invoice The paid invoice.
      */
     public function pay($params = null, $opts = null)

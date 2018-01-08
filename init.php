@@ -36,10 +36,11 @@ require(dirname(__FILE__) . '/lib/Error/OAuth/UnsupportedGrantType.php');
 require(dirname(__FILE__) . '/lib/Error/OAuth/UnsupportedResponseType.php');
 
 // API operations
-echo "bouh";
 require(dirname(__FILE__) . '/lib/ApiOperations/All.php');
 require(dirname(__FILE__) . '/lib/ApiOperations/Create.php');
 require(dirname(__FILE__) . '/lib/ApiOperations/Delete.php');
+require(dirname(__FILE__) . '/lib/ApiOperations/NestedResource.php');
+require(dirname(__FILE__) . '/lib/ApiOperations/Request.php');
 require(dirname(__FILE__) . '/lib/ApiOperations/Retrieve.php');
 require(dirname(__FILE__) . '/lib/ApiOperations/Update.php');
 
