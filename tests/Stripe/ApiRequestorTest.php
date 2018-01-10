@@ -25,6 +25,15 @@ class ApiRequestorTest extends TestCase
         $v = ['customer' => "\xe9"];
         $enc = $method->invoke(null, $v);
         $this->assertSame($enc, ['customer' => "\xc3\xa9"]);
+
+        // Encodes booleans
+        $v = true;
+        $enc = $method->invoke(null, $v);
+        $this->assertSame('true', $enc);
+
+        $v = false;
+        $enc = $method->invoke(null, $v);
+        $this->assertSame('false', $enc);
     }
 
     public function testHttpClientInjection()
@@ -67,6 +76,16 @@ class ApiRequestorTest extends TestCase
         );
 
         $this->assertSame($headers['Authorization'], 'Bearer ' . $apiKey);
+    }
+
+    /**
+     * @expectedException \Stripe\Error\Authentication
+     * @expectedExceptionMessageRegExp #No API key provided#
+     */
+    public function testRaisesAuthenticationErrorWhenNoApiKey()
+    {
+        Stripe::setApiKey(null);
+        Charge::create();
     }
 
     public function testRaisesInvalidRequestErrorOn400()
@@ -144,6 +163,7 @@ class ApiRequestorTest extends TestCase
                     'code' => 'card_declined',
                     'decline_code' => 'generic_decline',
                     'charge' => 'ch_declined_charge',
+                    'param' => 'exp_month',
                 ],
             ],
             402
@@ -158,6 +178,7 @@ class ApiRequestorTest extends TestCase
             $this->assertSame('Your card was declined.', $e->getMessage());
             $this->assertSame('card_declined', $e->getStripeCode());
             $this->assertSame('generic_decline', $e->getDeclineCode());
+            $this->assertSame('exp_month', $e->getStripeParam());
         } catch (\Exception $e) {
             $this->fail("Unexpected exception: " . get_class($e));
         }
@@ -251,6 +272,35 @@ class ApiRequestorTest extends TestCase
         }
     }
 
+    public function testRaisesRateLimitErrorOn400AndCodeRateLimit()
+    {
+        $this->stubRequest(
+            'POST',
+            '/v1/charges',
+            [],
+            null,
+            false,
+            [
+                'error' => [
+                    'code' => 'rate_limit',
+                    'message' => 'Too many requests',
+                ],
+            ],
+            400
+        );
+
+        try {
+            Charge::create();
+            $this->fail("Did not raise error");
+        } catch (Error\RateLimit $e) {
+            $this->assertSame(400, $e->getHttpStatus());
+            $this->assertTrue(is_array($e->getJsonBody()));
+            $this->assertSame('Too many requests', $e->getMessage());
+        } catch (\Exception $e) {
+            $this->fail("Unexpected exception: " . get_class($e));
+        }
+    }
+
     public function testRaisesOAuthInvalidRequestError()
     {
         $this->stubRequest(
@@ -333,5 +383,161 @@ class ApiRequestorTest extends TestCase
         } catch (\Exception $e) {
             $this->fail("Unexpected exception: " . get_class($e));
         }
+    }
+
+    public function testRaisesOAuthInvalidScopeError()
+    {
+        $this->stubRequest(
+            'POST',
+            '/oauth/token',
+            [],
+            null,
+            false,
+            [
+                'error' => 'invalid_scope',
+                'error_description' => 'Invalid scope provided: invalid_scope.',
+            ],
+            400,
+            Stripe::$connectBase
+        );
+
+        try {
+            OAuth::token();
+            $this->fail("Did not raise error");
+        } catch (Error\OAuth\InvalidScope $e) {
+            $this->assertSame(400, $e->getHttpStatus());
+            $this->assertSame('invalid_scope', $e->getErrorCode());
+            $this->assertSame('Invalid scope provided: invalid_scope.', $e->getMessage());
+        } catch (\Exception $e) {
+            $this->fail("Unexpected exception: " . get_class($e));
+        }
+    }
+
+    public function testRaisesOAuthUnsupportedGrantTypeError()
+    {
+        $this->stubRequest(
+            'POST',
+            '/oauth/token',
+            [],
+            null,
+            false,
+            [
+                'error' => 'unsupported_grant_type',
+            ],
+            400,
+            Stripe::$connectBase
+        );
+
+        try {
+            OAuth::token();
+            $this->fail("Did not raise error");
+        } catch (Error\OAuth\UnsupportedGrantType $e) {
+            $this->assertSame(400, $e->getHttpStatus());
+            $this->assertSame('unsupported_grant_type', $e->getErrorCode());
+        } catch (\Exception $e) {
+            $this->fail("Unexpected exception: " . get_class($e));
+        }
+    }
+
+    public function testRaisesOAuthUnsupportedResponseTypeError()
+    {
+        $this->stubRequest(
+            'POST',
+            '/oauth/token',
+            [],
+            null,
+            false,
+            [
+                'error' => 'unsupported_response_type',
+                'error_description' => "Only 'code' response_type is supported, but 'unsupported_response_type' was provided",
+            ],
+            400,
+            Stripe::$connectBase
+        );
+
+        try {
+            OAuth::token();
+            $this->fail("Did not raise error");
+        } catch (Error\OAuth\UnsupportedResponseType $e) {
+            $this->assertSame(400, $e->getHttpStatus());
+            $this->assertSame('unsupported_response_type', $e->getErrorCode());
+            $this->assertSame("Only 'code' response_type is supported, but 'unsupported_response_type' was provided", $e->getMessage());
+        } catch (\Exception $e) {
+            $this->fail("Unexpected exception: " . get_class($e));
+        }
+    }
+
+    public function testHeaderStripeVersionGlobal()
+    {
+        Stripe::setApiVersion('2222-22-22');
+        $this->stubRequest(
+            'POST',
+            '/v1/charges',
+            [],
+            [
+                'Stripe-Version: 2222-22-22',
+            ],
+            false,
+            [
+                'id' => 'ch_123',
+                'object' => 'charge',
+            ]
+        );
+        Charge::create();
+    }
+
+    public function testHeaderStripeVersionRequestOptions()
+    {
+        $this->stubRequest(
+            'POST',
+            '/v1/charges',
+            [],
+            [
+                'Stripe-Version: 2222-22-22',
+            ],
+            false,
+            [
+                'id' => 'ch_123',
+                'object' => 'charge',
+            ]
+        );
+        Charge::create([], ['stripe_version' => '2222-22-22']);
+    }
+
+    public function testHeaderStripeAccountGlobal()
+    {
+        Stripe::setAccountId('acct_123');
+        $this->stubRequest(
+            'POST',
+            '/v1/charges',
+            [],
+            [
+                'Stripe-Account: acct_123',
+            ],
+            false,
+            [
+                'id' => 'ch_123',
+                'object' => 'charge',
+            ]
+        );
+        Charge::create();
+    }
+
+    public function testHeaderStripeAccountRequestOptions()
+    {
+        $this->stubRequest(
+            'POST',
+            '/v1/charges',
+            [],
+            [
+                'Stripe-Account: acct_123',
+            ],
+            false,
+            [
+                'id' => 'ch_123',
+                'object' => 'charge',
+            ]
+        );
+        Charge::create([], ['stripe_account' => 'acct_123']);
     }
 }

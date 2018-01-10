@@ -28,6 +28,18 @@ class ApplicationFeeTest extends TestCase
         $this->assertInstanceOf("Stripe\\ApplicationFee", $resource);
     }
 
+    public function testIsRefundable()
+    {
+        $fee = ApplicationFee::retrieve(self::TEST_RESOURCE_ID);
+        $this->expectsRequest(
+            'post',
+            '/v1/application_fees/' . $fee->id . '/refunds'
+        );
+        $resource = $fee->refund();
+        $this->assertInstanceOf("Stripe\\ApplicationFee", $resource);
+        $this->assertSame($resource, $fee);
+    }
+
     public function testCanCreateRefund()
     {
         $this->expectsRequest(

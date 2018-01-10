@@ -4,22 +4,6 @@ namespace Stripe;
 
 class OAuthTest extends TestCase
 {
-    /**
-     * @before
-     */
-    public function setUpClientId()
-    {
-        Stripe::setClientId('ca_test');
-    }
-
-    /**
-     * @after
-     */
-    public function tearDownClientId()
-    {
-        Stripe::setClientId(null);
-    }
-
     public function testAuthorizeUrl()
     {
         $uriStr = OAuth::authorizeUrl([
@@ -39,11 +23,21 @@ class OAuthTest extends TestCase
         $this->assertSame('connect.stripe.com', $uri['host']);
         $this->assertSame('/oauth/authorize', $uri['path']);
 
-        $this->assertSame('ca_test', $params['client_id']);
+        $this->assertSame('ca_123', $params['client_id']);
         $this->assertSame('read_write', $params['scope']);
         $this->assertSame('test@example.com', $params['stripe_user']['email']);
         $this->assertSame('https://example.com/profile/test', $params['stripe_user']['url']);
         $this->assertSame('US', $params['stripe_user']['country']);
+    }
+
+    /**
+     * @expectedException \Stripe\Error\Authentication
+     * @expectedExceptionMessageRegExp #No client_id provided#
+     */
+    public function testRaisesAuthenticationErrorWhenNoClientId()
+    {
+        Stripe::setClientId(null);
+        OAuth::authorizeUrl();
     }
 
     public function testToken()
@@ -84,7 +78,7 @@ class OAuthTest extends TestCase
             '/oauth/deauthorize',
             [
                 'stripe_user_id' => 'acct_test_deauth',
-                'client_id' => 'ca_test',
+                'client_id' => 'ca_123',
             ],
             null,
             false,
