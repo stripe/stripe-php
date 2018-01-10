@@ -50,7 +50,6 @@ require(dirname(__FILE__) . '/lib/StripeObject.php');
 require(dirname(__FILE__) . '/lib/ApiRequestor.php');
 require(dirname(__FILE__) . '/lib/ApiResource.php');
 require(dirname(__FILE__) . '/lib/SingletonApiResource.php');
-require(dirname(__FILE__) . '/lib/ExternalAccount.php');
 
 // Stripe API Resources
 require(dirname(__FILE__) . '/lib/Account.php');
