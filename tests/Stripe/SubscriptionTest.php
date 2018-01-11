@@ -69,9 +69,14 @@ class SubscriptionTest extends TestCase
         $resource = Subscription::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'delete',
-            '/v1/subscriptions/' . $resource->id
+            '/v1/subscriptions/' . $resource->id,
+            [
+                'at_period_end' => 'true',
+            ]
         );
-        $resource->cancel();
+        $resource->cancel([
+            'at_period_end' => true,
+        ]);
         $this->assertInstanceOf("Stripe\\Subscription", $resource);
     }
 
