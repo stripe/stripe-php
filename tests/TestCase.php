@@ -2,6 +2,8 @@
 
 namespace Stripe;
 
+use AspectMock\Test as test;
+
 /**
  * Base class for Stripe test cases.
  */
@@ -50,6 +52,9 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
     protected function tearDown()
     {
+        // Remove all registered test doubles
+        test::clean();
+
         // Restore original values
         Stripe::$apiBase = $this->origApiBase;
         Stripe::setApiKey($this->origApiKey);

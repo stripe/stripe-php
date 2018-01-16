@@ -1,5 +1,15 @@
 <?php
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
+// Initialize AspectMock
+$kernel = \AspectMock\Kernel::getInstance();
+$kernel->init([
+    'debug' => true,
+    'includePaths' => [__DIR__ . '/../lib']
+]);
+
+// Initialize stripe-mock
 define("MOCK_MINIMUM_VERSION", "0.5.0");
 define("MOCK_PORT", getenv("STRIPE_MOCK_PORT") ?: 12111);
 

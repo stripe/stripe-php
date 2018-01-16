@@ -1,4 +1,4 @@
-<phpunit bootstrap="tests/bootstrap.php" colors="true">
+<phpunit bootstrap="tests/bootstrap.php" backupGlobals="false" colors="true">
     <testsuites>
         <testsuite name="Stripe PHP Test Suite">
             <directory suffix="Test.php">tests</directory>
