@@ -36,7 +36,7 @@ require_once('/path/to/stripe-php/init.php');
 
 ## Dependencies
 
-The bindings require the following extension in order to work properly:
+The bindings require the following extensions in order to work properly:
 
 - [`curl`](https://secure.php.net/manual/en/book.curl.php), although you can use your own non-cURL client if you prefer
 - [`json`](https://secure.php.net/manual/en/book.json.php)
@@ -157,8 +157,6 @@ Install dependencies:
 composer install
 ```
 
-## Tests
-
 The test suite depends on [stripe-mock], so make sure to fetch and run it from a
 background terminal ([stripe-mock's README][stripe-mock] also contains
 instructions for installing via Homebrew and other methods):
@@ -178,6 +176,12 @@ Or to run an individual test file:
 ./vendor/bin/phpunit tests/UtilTest.php
 ```
 
+Update bundled CA certificates from the [Mozilla cURL release][curl]:
+
+```bash
+./update_certs.php
+```
+
 ## Attention plugin developers
 
 Are you writing a plugin that integrates Stripe and embeds our library? Then please use the `setAppInfo` function to identify your plugin. For example:
@@ -192,5 +196,6 @@ The method should be called once, before any request is sent to the API. The sec
 
 See the "SSL / TLS compatibility issues" paragraph above for full context. If you want to ensure that your plugin can be used on all systems, you should add a configuration option to let your users choose between different values for `CURLOPT_SSLVERSION`: none (default), `CURL_SSLVERSION_TLSv1` and `CURL_SSLVERSION_TLSv1_2`.
 
+[curl]: http://curl.haxx.se/docs/caextract.html
 [psr3]: http://www.php-fig.org/psr/psr-3/
 [stripe-mock]: https://github.com/stripe/stripe-mock
