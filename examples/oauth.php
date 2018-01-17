@@ -29,7 +29,7 @@ if (isset($_GET['code'])) {
     $error = $_GET['error'];
     $error_description = $_GET['error_description'];
 
-    echo "<p>Error: code=$error, description=$error_description</p>\n";
+    echo "<p>Error: code=" . htmlspecialchars($error, ENT_QUOTES) . ", description=" . htmlspecialchars($error_description, ENT_QUOTES) . "</p>\n";
     echo "<p>Click <a href=\"?\">here</a> to restart the OAuth flow.</p>\n";
 
 } elseif (isset($_GET['deauth'])) {
@@ -44,7 +44,7 @@ if (isset($_GET['code'])) {
         exit("Error: " . $e->getMessage());
     }
 
-    echo "<p>Success! Account <code>$accountId</code> is disonnected.</p>\n";
+    echo "<p>Success! Account <code>" . htmlspecialchars($accountId, ENT_QUOTES) . "</code> is disconnected.</p>\n";
     echo "<p>Click <a href=\"?\">here</a> to restart the OAuth flow.</p>\n";
 
 } else {
