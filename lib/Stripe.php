@@ -30,6 +30,9 @@ class Stripe
     // @var string|null The account ID for connected accounts requests.
     public static $accountId = null;
 
+    // @var string Path to the CA bundle used to verify SSL certificates
+    public static $caBundlePath = null;
+
     // @var boolean Defaults to true.
     public static $verifySslCerts = true;
 
@@ -114,6 +117,30 @@ class Stripe
     public static function setApiVersion($apiVersion)
     {
         self::$apiVersion = $apiVersion;
+    }
+
+    /**
+     * @return string
+     */
+    private static function getDefaultCABundlePath()
+    {
+        return realpath(dirname(__FILE__) . '/../data/ca-certificates.crt');
+    }
+
+    /**
+     * @return string
+     */
+    public static function getCABundlePath()
+    {
+        return self::$caBundlePath ?: self::getDefaultCABundlePath();
+    }
+
+    /**
+     * @param string $caBundlePath
+     */
+    public static function setCABundlePath($caBundlePath)
+    {
+        self::$caBundlePath = $caBundlePath;
     }
 
     /**

@@ -140,6 +140,15 @@ $curl = new \Stripe\HttpClient\CurlClient([CURLOPT_SSLVERSION => CURL_SSLVERSION
 \Stripe\ApiRequestor::setHttpClient($curl);
 ```
 
+### Configuring CA Bundles
+
+By default, the library will use its own internal bundle of known CA
+certificates, but it's possible to configure your own:
+
+```php
+\Stripe\Stripe::setCABundlePath("path/to/ca/bundle");
+```
+
 ## Development
 
 Install dependencies:
