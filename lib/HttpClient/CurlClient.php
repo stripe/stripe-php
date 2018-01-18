@@ -180,31 +180,13 @@ class CurlClient implements ClientInterface
         $opts[CURLOPT_TIMEOUT] = $this->timeout;
         $opts[CURLOPT_HEADERFUNCTION] = $headerCallback;
         $opts[CURLOPT_HTTPHEADER] = $headers;
-        if (!Stripe::$verifySslCerts) {
+        $opts[CURLOPT_CAINFO] = Stripe::getCABundlePath();
+        if (!Stripe::getVerifySslCerts()) {
             $opts[CURLOPT_SSL_VERIFYPEER] = false;
         }
 
         curl_setopt_array($curl, $opts);
         $rbody = curl_exec($curl);
-
-        if (!defined('CURLE_SSL_CACERT_BADFILE')) {
-            define('CURLE_SSL_CACERT_BADFILE', 77);  // constant not defined in PHP
-        }
-
-        $errno = curl_errno($curl);
-        if ($errno == CURLE_SSL_CACERT ||
-            $errno == CURLE_SSL_PEER_CERTIFICATE ||
-            $errno == CURLE_SSL_CACERT_BADFILE
-        ) {
-            array_push(
-                $headers,
-                'X-Stripe-Client-Info: {"ca":"using Stripe-supplied CA bundle"}'
-            );
-            $cert = self::caBundle();
-            curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-            curl_setopt($curl, CURLOPT_CAINFO, $cert);
-            $rbody = curl_exec($curl);
-        }
 
         if ($rbody === false) {
             $errno = curl_errno($curl);
@@ -249,10 +231,5 @@ class CurlClient implements ClientInterface
 
         $msg .= "\n\n(Network error [errno $errno]: $message)";
         throw new Error\ApiConnection($msg);
-    }
-
-    private static function caBundle()
-    {
-        return dirname(__FILE__) . '/../../data/ca-certificates.crt';
     }
 }
