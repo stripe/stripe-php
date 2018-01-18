@@ -43,6 +43,15 @@ class Stripe
     //   produce messages.
     public static $logger = null;
 
+    // @var int Maximum number of request retries
+    public static $maxNetworkRetries = 0;
+
+    // @var float Maximum delay between retries, in seconds
+    private static $maxNetworkRetryDelay = 2.0;
+
+    // @var float Initial delay between retries, in seconds
+    private static $initialNetworkRetryDelay = 0.5;
+
     const VERSION = '5.8.0';
 
     /**
@@ -196,5 +205,37 @@ class Stripe
         self::$appInfo['name'] = $appName;
         self::$appInfo['version'] = $appVersion;
         self::$appInfo['url'] = $appUrl;
+    }
+
+    /**
+     * @return int Maximum number of request retries
+     */
+    public static function getMaxNetworkRetries()
+    {
+        return self::$maxNetworkRetries;
+    }
+
+    /**
+     * @param int $maxNetworkRetries Maximum number of request retries
+     */
+    public static function setMaxNetworkRetries($maxNetworkRetries)
+    {
+        self::$maxNetworkRetries = $maxNetworkRetries;
+    }
+
+    /**
+     * @return float Maximum delay between retries, in seconds
+     */
+    public static function getMaxNetworkRetryDelay()
+    {
+        return self::$maxNetworkRetryDelay;
+    }
+
+    /**
+     * @return float Initial delay between retries, in seconds
+     */
+    public static function getInitialNetworkRetryDelay()
+    {
+        return self::$initialNetworkRetryDelay;
     }
 }

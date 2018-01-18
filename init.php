@@ -7,6 +7,7 @@ require(dirname(__FILE__) . '/lib/Stripe.php');
 require(dirname(__FILE__) . '/lib/Util/AutoPagingIterator.php');
 require(dirname(__FILE__) . '/lib/Util/LoggerInterface.php');
 require(dirname(__FILE__) . '/lib/Util/DefaultLogger.php');
+require(dirname(__FILE__) . '/lib/Util/RandomGenerator.php');
 require(dirname(__FILE__) . '/lib/Util/RequestOptions.php');
 require(dirname(__FILE__) . '/lib/Util/Set.php');
 require(dirname(__FILE__) . '/lib/Util/Util.php');
