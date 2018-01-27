@@ -5,6 +5,24 @@ namespace Stripe;
 /**
  * Class Product
  *
+ * @property string $id
+ * @property string $object
+ * @property bool $active
+ * @property string[] $attributes
+ * @property string $caption
+ * @property int $created
+ * @property string[] $deactivate_on
+ * @property string $description
+ * @property array $images
+ * @property bool $livemode
+ * @property AttachedObject $metadata
+ * @property string $name
+ * @property mixed $package_dimensions
+ * @property bool $shippable
+ * @property Collection $skus
+ * @property int $updated
+ * @property string $url
+ *
  * @package Stripe
  */
 class Product extends ApiResource

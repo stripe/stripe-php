@@ -9,7 +9,7 @@ namespace Stripe;
  * @property string $object
  * @property mixed $bank_account
  * @property mixed $card
- * @property mixed $client_ip
+ * @property string $client_ip
  * @property int $created
  * @property bool $livemode
  * @property string $type
