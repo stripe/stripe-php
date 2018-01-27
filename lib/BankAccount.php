@@ -5,6 +5,22 @@ namespace Stripe;
 /**
  * Class BankAccount
  *
+ * @property string $id
+ * @property string $object
+ * @property string $account
+ * @property string $account_holder_name
+ * @property string $account_holder_type
+ * @property string $bank_name
+ * @property string $country
+ * @property string $currency
+ * @property string $customer
+ * @property bool $default_for_currency
+ * @property string $fingerprint
+ * @property string $last4
+ * @property AttachedObject $metadata
+ * @property string $routing_number
+ * @property string $status
+ *
  * @package Stripe
  */
 class BankAccount extends ExternalAccount

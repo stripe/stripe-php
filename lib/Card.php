@@ -19,13 +19,13 @@ namespace Stripe;
  * @property string $country
  * @property string $customer
  * @property string $cvc_check
- * @property string $dynamic_last4": null,
+ * @property string $dynamic_last4
  * @property int $exp_month
  * @property int $exp_year
  * @property string $fingerprint
  * @property string $funding
  * @property string $last4
- * @property mixed $metadata
+ * @property AttachedObject $metadata
  * @property string $name
  * @property string $tokenization_method
  *
