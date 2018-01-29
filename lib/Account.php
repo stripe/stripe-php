@@ -7,11 +7,13 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property mixed $business_logo
+ * @property string $business_logo
  * @property string $business_name
- * @property mixed $business_url
+ * @property string $business_primary_color
+ * @property string $business_url
  * @property bool $charges_enabled
  * @property string $country
+ * @property int $created
  * @property bool $debit_negative_balances
  * @property mixed $decline_charge_on
  * @property string $default_currency
@@ -20,18 +22,17 @@ namespace Stripe;
  * @property string $email
  * @property mixed $external_accounts
  * @property mixed $legal_entity
- * @property bool $managed
+ * @property AttachedObject $metadata
  * @property mixed $payout_schedule
- * @property mixed $payout_statement_descriptor
+ * @property string $payout_statement_descriptor
  * @property bool $payouts_enabled
- * @property mixed $product_description
- * @property mixed $statement_descriptor
- * @property mixed $support_email
- * @property mixed $support_phone
+ * @property string $product_description
+ * @property string $statement_descriptor
+ * @property string $support_email
+ * @property string $support_phone
  * @property string $timezone
  * @property mixed $tos_acceptance
  * @property mixed $verification
- * @property mixed $keys
  *
  * @package Stripe
  */

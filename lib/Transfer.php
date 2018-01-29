@@ -12,14 +12,15 @@ namespace Stripe;
  * @property string $balance_transaction
  * @property int $created
  * @property string $currency
- * @property int $date
- * @property mixed $destination
- * @property mixed $destination_payment
+ * @property string $destination
+ * @property string $destination_payment
  * @property bool $livemode
- * @property mixed $metadata
- * @property mixed $reversals
+ * @property AttachedObject $metadata
+ * @property Collection $reversals
  * @property bool $reversed
- * @property mixed $source_transaction
+ * @property string $source_transaction
+ * @property string $source_type
+ * @property string $transfer_group
  *
  * @package Stripe
  */
