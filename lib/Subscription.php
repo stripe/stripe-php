@@ -21,7 +21,7 @@ namespace Stripe;
  * @property Collection $items
  * @property boolean $livemode
  * @property AttachedObject $metadata
- * @property mixed $plan
+ * @property Plan $plan
  * @property int $quantity
  * @property int $start
  * @property string $status
