@@ -8,6 +8,7 @@
 
 ## 5.9.0 - 2018-01-17
 * [#421](https://github.com/stripe/stripe-php/pull/421) Updated bundled CA certificates
+* [#423](https://github.com/stripe/stripe-php/pull/423) Escape unsanitized input in OAuth example
 
 ## 5.8.0 - 2017-12-20
 * [#403](https://github.com/stripe/stripe-php/pull/403) Add `__debugInfo()` magic method to `StripeObject`
