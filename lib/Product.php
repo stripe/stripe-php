@@ -20,6 +20,8 @@ namespace Stripe;
  * @property mixed $package_dimensions
  * @property bool $shippable
  * @property Collection $skus
+ * @property string $statement_descriptor
+ * @property string $type
  * @property int $updated
  * @property string $url
  *

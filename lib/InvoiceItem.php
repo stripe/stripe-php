@@ -16,8 +16,8 @@ namespace Stripe;
  * @property string $invoice
  * @property bool $livemode
  * @property AttachedObject $metadata
- * @property array $period
- * @property mixed $plan
+ * @property mixed $period
+ * @property Plan $plan
  * @property bool $proration
  * @property int $quantity
  * @property string $subscription

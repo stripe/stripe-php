@@ -16,8 +16,8 @@ namespace Stripe;
  * @property int $interval_count
  * @property bool $livemode
  * @property AttachedObject $metadata
- * @property string $name
- * @property string $statement_descriptor
+ * @property string $nickname
+ * @property string $product
  * @property int $trial_period_days
  */
 class Plan extends ApiResource
