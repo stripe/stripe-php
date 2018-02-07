@@ -7,9 +7,8 @@ namespace Stripe;
  *
  * @property string $object
  * @property string $url
- * @property bool $has_more
- * @property mixed $data
- *
+ * @property bool   $has_more
+ * @property mixed  $data
  * @package Stripe
  */
 class Collection extends ApiResource

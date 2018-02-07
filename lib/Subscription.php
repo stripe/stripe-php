@@ -5,30 +5,29 @@ namespace Stripe;
 /**
  * Class Subscription
  *
- * @property string $id
- * @property string $object
- * @property float $application_fee_percent
- * @property string $billing
- * @property bool $cancel_at_period_end
- * @property int $canceled_at
- * @property int $created
- * @property int current_period_end
- * @property int current_period_start
- * @property string $customer
- * @property int $days_until_due
- * @property mixed $discount
- * @property int $ended_at
- * @property Collection $items
- * @property boolean $livemode
+ * @property string         $id
+ * @property string         $object
+ * @property float          $application_fee_percent
+ * @property string         $billing
+ * @property bool           $cancel_at_period_end
+ * @property int            $canceled_at
+ * @property int            $created
+ * @property int            current_period_end
+ * @property int            current_period_start
+ * @property string         $customer
+ * @property int            $days_until_due
+ * @property mixed          $discount
+ * @property int            $ended_at
+ * @property Collection     $items
+ * @property boolean        $livemode
  * @property AttachedObject $metadata
- * @property mixed $plan
- * @property int $quantity
- * @property int $start
- * @property string $status
- * @property float $tax_percent
- * @property int $trial_end
- * @property int $trial_start
- *
+ * @property mixed          $plan
+ * @property int            $quantity
+ * @property int            $start
+ * @property string         $status
+ * @property float          $tax_percent
+ * @property int            $trial_end
+ * @property int            $trial_start
  * @package Stripe
  */
 class Subscription extends ApiResource
