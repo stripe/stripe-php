@@ -22,9 +22,9 @@ class SourceTest extends TestCase
             'post',
             '/v1/sources'
         );
-        $resource = Source::create(array(
+        $resource = Source::create([
             "type" => "card"
-        ));
+        ]);
         $this->assertInstanceOf("Stripe\\Source", $resource);
     }
 
@@ -34,7 +34,7 @@ class SourceTest extends TestCase
         $resource->metadata["key"] = "value";
         $this->expectsRequest(
             'post',
-            '/v1/sources/' . self::TEST_RESOURCE_ID
+            '/v1/sources/' . $resource->id
         );
         $resource->save();
         $this->assertInstanceOf("Stripe\\Source", $resource);
@@ -46,38 +46,35 @@ class SourceTest extends TestCase
             'post',
             '/v1/sources/' . self::TEST_RESOURCE_ID
         );
-        $resource = Source::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Source::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertInstanceOf("Stripe\\Source", $resource);
     }
 
     public function testCanSaveCardExpiryDate()
     {
-        $response = array(
+        $response = [
             'id' => 'src_foo',
             'object' => 'source',
-            'card' => array(
+            'card' => [
                 'exp_month' => 8,
                 'exp_year' => 2019,
-            ),
-        );
-        $source = Source::constructFrom(
-            $response,
-            new Util\RequestOptions()
-        );
+            ],
+        ];
+        $source = Source::constructFrom($response);
 
         $response['card']['exp_month'] = 12;
         $response['card']['exp_year'] = 2022;
         $this->stubRequest(
             'POST',
             '/v1/sources/src_foo',
-            array(
-                'card' => array(
+            [
+                'card' => [
                     'exp_month' => 12,
                     'exp_year' => 2022,
-                )
-            ),
+                ]
+            ],
             null,
             false,
             $response
@@ -97,7 +94,7 @@ class SourceTest extends TestCase
         $resource->customer = "cus_123";
         $this->expectsRequest(
             'delete',
-            '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
+            '/v1/customers/cus_123/sources/' . $resource->id
         );
         $resource->delete();
         $this->assertInstanceOf("Stripe\\Source", $resource);
@@ -129,9 +126,9 @@ class SourceTest extends TestCase
         $resource = Source::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'post',
-            '/v1/sources/' . self::TEST_RESOURCE_ID . "/verify"
+            '/v1/sources/' . $resource->id . "/verify"
         );
-        $resource->verify(array("values" => array(32,45)));
+        $resource->verify(["values" => [32, 45]]);
         $this->assertInstanceOf("Stripe\\Source", $resource);
     }
 }

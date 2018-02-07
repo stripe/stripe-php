@@ -10,7 +10,7 @@ You can sign up for a Stripe account at https://stripe.com.
 
 ## Requirements
 
-PHP 5.3.3 and later.
+PHP 5.4.0 and later.
 
 ## Composer
 
@@ -36,7 +36,7 @@ require_once('/path/to/stripe-php/init.php');
 
 ## Dependencies
 
-The bindings require the following extension in order to work properly:
+The bindings require the following extensions in order to work properly:
 
 - [`curl`](https://secure.php.net/manual/en/book.curl.php), although you can use your own non-cURL client if you prefer
 - [`json`](https://secure.php.net/manual/en/book.json.php)
@@ -50,7 +50,7 @@ Simple usage looks like:
 
 ```php
 \Stripe\Stripe::setApiKey('sk_test_BQokikJOvBiI2HlWgH4olfQ2');
-$charge = \Stripe\Charge::create(array('amount' => 2000, 'currency' => 'usd', 'source' => 'tok_189fqt2eZvKYlo2CTGBeg6Uq' ));
+$charge = \Stripe\Charge::create(['amount' => 2000, 'currency' => 'usd', 'source' => 'tok_189fqt2eZvKYlo2CTGBeg6Uq']);
 echo $charge;
 ```
 
@@ -59,6 +59,12 @@ echo $charge;
 Please see https://stripe.com/docs/api for up-to-date documentation.
 
 ## Legacy Version Support
+
+### PHP 5.3
+
+If you are using PHP 5.3, you can download v5.8.0 ([zip](https://github.com/stripe/stripe-php/archive/v5.8.0.zip), [tar.gz](https://github.com/stripe/stripe-php/archive/v5.8.0.tar.gz)) from our [releases page](https://github.com/stripe/stripe-php/releases). This version will continue to work with new versions of the Stripe API for all common uses.
+
+### PHP 5.2
 
 If you are using PHP 5.2, you can download v1.18.0 ([zip](https://github.com/stripe/stripe-php/archive/v1.18.0.zip), [tar.gz](https://github.com/stripe/stripe-php/archive/v1.18.0.tar.gz)) from our [releases page](https://github.com/stripe/stripe-php/releases). This version will continue to work with new versions of the Stripe API for all common uses.
 
@@ -97,7 +103,7 @@ Need to set a proxy for your requests? Pass in the requisite `CURLOPT_*` array t
 
 ```php
 // set up your tweaked Curl client
-$curl = new \Stripe\HttpClient\CurlClient(array(CURLOPT_PROXY => 'proxy.local:80'));
+$curl = new \Stripe\HttpClient\CurlClient([CURLOPT_PROXY => 'proxy.local:80']);
 // tell Stripe to use the tweaked client
 \Stripe\ApiRequestor::setHttpClient($curl);
 ```
@@ -119,7 +125,7 @@ end up there instead of `error_log`:
 You can access the data from the last API response on any object via `getLastResponse()`.
 
 ```php
-$charge = \Stripe\Charge::create(array('amount' => 2000, 'currency' => 'usd', 'source' => 'tok_visa'));
+$charge = \Stripe\Charge::create(['amount' => 2000, 'currency' => 'usd', 'source' => 'tok_visa']);
 echo $charge->getLastResponse()->headers['Request-Id'];
 ```
 
@@ -130,8 +136,17 @@ Stripe's API now requires that [all connections use TLS 1.2](https://stripe.com/
 The recommended course of action is to [upgrade your cURL and OpenSSL packages](https://support.stripe.com/questions/how-do-i-upgrade-my-stripe-integration-from-tls-1-0-to-tls-1-2#php) so that TLS 1.2 is used by default, but if that is not possible, you might be able to solve the issue by setting the `CURLOPT_SSLVERSION` option to either `CURL_SSLVERSION_TLSv1` or `CURL_SSLVERSION_TLSv1_2`:
 
 ```php
-$curl = new \Stripe\HttpClient\CurlClient(array(CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1));
+$curl = new \Stripe\HttpClient\CurlClient([CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1]);
 \Stripe\ApiRequestor::setHttpClient($curl);
+```
+
+### Configuring CA Bundles
+
+By default, the library will use its own internal bundle of known CA
+certificates, but it's possible to configure your own:
+
+```php
+\Stripe\Stripe::setCABundlePath("path/to/ca/bundle");
 ```
 
 ## Development
@@ -141,8 +156,6 @@ Install dependencies:
 ``` bash
 composer install
 ```
-
-## Tests
 
 The test suite depends on [stripe-mock], so make sure to fetch and run it from a
 background terminal ([stripe-mock's README][stripe-mock] also contains
@@ -163,6 +176,12 @@ Or to run an individual test file:
 ./vendor/bin/phpunit tests/UtilTest.php
 ```
 
+Update bundled CA certificates from the [Mozilla cURL release][curl]:
+
+```bash
+./update_certs.php
+```
+
 ## Attention plugin developers
 
 Are you writing a plugin that integrates Stripe and embeds our library? Then please use the `setAppInfo` function to identify your plugin. For example:
@@ -177,5 +196,6 @@ The method should be called once, before any request is sent to the API. The sec
 
 See the "SSL / TLS compatibility issues" paragraph above for full context. If you want to ensure that your plugin can be used on all systems, you should add a configuration option to let your users choose between different values for `CURLOPT_SSLVERSION`: none (default), `CURL_SSLVERSION_TLSv1` and `CURL_SSLVERSION_TLSv1_2`.
 
+[curl]: http://curl.haxx.se/docs/caextract.html
 [psr3]: http://www.php-fig.org/psr/psr-3/
 [stripe-mock]: https://github.com/stripe/stripe-mock

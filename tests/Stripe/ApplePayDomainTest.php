@@ -33,9 +33,9 @@ class ApplePayDomainTest extends TestCase
             'post',
             '/v1/apple_pay/domains'
         );
-        $resource = ApplePayDomain::create(array(
+        $resource = ApplePayDomain::create([
             "domain_name" => "domain",
-        ));
+        ]);
         $this->assertInstanceOf("Stripe\\ApplePayDomain", $resource);
     }
 
@@ -44,7 +44,7 @@ class ApplePayDomainTest extends TestCase
         $resource = ApplePayDomain::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'delete',
-            '/v1/apple_pay/domains/' . self::TEST_RESOURCE_ID
+            '/v1/apple_pay/domains/' . $resource->id
         );
         $resource->delete();
         $this->assertInstanceOf("Stripe\\ApplePayDomain", $resource);

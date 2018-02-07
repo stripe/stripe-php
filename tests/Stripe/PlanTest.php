@@ -33,13 +33,13 @@ class PlanTest extends TestCase
             'post',
             '/v1/plans'
         );
-        $resource = Plan::create(array(
+        $resource = Plan::create([
             'amount' => 100,
             'interval' => 'month',
             'currency' => 'usd',
             'name' => self::TEST_RESOURCE_ID,
             'id' => self::TEST_RESOURCE_ID
-        ));
+        ]);
         $this->assertInstanceOf("Stripe\\Plan", $resource);
     }
 
@@ -49,7 +49,7 @@ class PlanTest extends TestCase
         $resource->metadata["key"] = "value";
         $this->expectsRequest(
             'post',
-            '/v1/plans/' . self::TEST_RESOURCE_ID
+            '/v1/plans/' . $resource->id
         );
         $resource->save();
         $this->assertInstanceOf("Stripe\\Plan", $resource);
@@ -61,9 +61,9 @@ class PlanTest extends TestCase
             'post',
             '/v1/plans/' . self::TEST_RESOURCE_ID
         );
-        $resource = Plan::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Plan::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertInstanceOf("Stripe\\Plan", $resource);
     }
 
@@ -72,7 +72,7 @@ class PlanTest extends TestCase
         $resource = Plan::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'delete',
-            '/v1/plans/' . self::TEST_RESOURCE_ID
+            '/v1/plans/' . $resource->id
         );
         $resource->delete();
         $this->assertInstanceOf("Stripe\\Plan", $resource);

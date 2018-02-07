@@ -33,9 +33,9 @@ class OrderTest extends TestCase
             'post',
             '/v1/orders'
         );
-        $resource = Order::create(array(
+        $resource = Order::create([
             'currency' => 'usd'
-        ));
+        ]);
         $this->assertInstanceOf("Stripe\\Order", $resource);
     }
 
@@ -45,7 +45,7 @@ class OrderTest extends TestCase
         $resource->metadata["key"] = "value";
         $this->expectsRequest(
             'post',
-            '/v1/orders/' . self::TEST_RESOURCE_ID
+            '/v1/orders/' . $resource->id
         );
         $resource->save();
         $this->assertInstanceOf("Stripe\\Order", $resource);
@@ -57,9 +57,9 @@ class OrderTest extends TestCase
             'post',
             '/v1/orders/' . self::TEST_RESOURCE_ID
         );
-        $resource = Order::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Order::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertInstanceOf("Stripe\\Order", $resource);
     }
 
@@ -68,7 +68,7 @@ class OrderTest extends TestCase
         $resource = Order::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'post',
-            '/v1/orders/' . self::TEST_RESOURCE_ID . '/pay'
+            '/v1/orders/' . $resource->id . '/pay'
         );
         $resource->pay();
         $this->assertInstanceOf("Stripe\\Order", $resource);
@@ -79,7 +79,7 @@ class OrderTest extends TestCase
         $order = Order::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'post',
-            '/v1/orders/' . self::TEST_RESOURCE_ID . '/returns'
+            '/v1/orders/' . $order->id . '/returns'
         );
         $resource = $order->returnOrder();
         $this->assertInstanceOf("Stripe\\OrderReturn", $resource);

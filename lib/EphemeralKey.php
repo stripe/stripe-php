@@ -17,6 +17,11 @@ namespace Stripe;
  */
 class EphemeralKey extends ApiResource
 {
+    use ApiOperations\Create {
+        create as protected _create;
+    }
+    use ApiOperations\Delete;
+
     /**
      * This is a special case because the ephemeral key endpoint has an
      *    underscore in it. The parent `className` function strips underscores.
@@ -40,16 +45,5 @@ class EphemeralKey extends ApiResource
             throw new \InvalidArgumentException('stripe_version must be specified to create an ephemeral key');
         }
         return self::_create($params, $opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return EphemeralKey The deleted key.
-     */
-    public function delete($params = null, $opts = null)
-    {
-        return $this->_delete($params, $opts);
     }
 }

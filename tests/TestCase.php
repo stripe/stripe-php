@@ -16,6 +16,12 @@ class TestCase extends \PHPUnit_Framework_TestCase
     /** @var string original client ID */
     protected $origClientId;
 
+    /** @var string original API version */
+    protected $origApiVersion;
+
+    /** @var string original account ID */
+    protected $origAccountId;
+
     /** @var object HTTP client mocker */
     protected $clientMock;
 
@@ -25,11 +31,15 @@ class TestCase extends \PHPUnit_Framework_TestCase
         $this->origApiBase = Stripe::$apiBase;
         $this->origApiKey = Stripe::getApiKey();
         $this->origClientId = Stripe::getClientId();
+        $this->origApiVersion = Stripe::getApiVersion();
+        $this->origAccountId = Stripe::getAccountId();
 
         // Set up host and credentials for stripe-mock
         Stripe::$apiBase = "http://localhost:" . MOCK_PORT;
         Stripe::setApiKey("sk_test_123");
         Stripe::setClientId("ca_123");
+        Stripe::setApiVersion(null);
+        Stripe::setAccountId(null);
 
         // Set up the HTTP client mocker
         $this->clientMock = $this->getMock('\Stripe\HttpClient\ClientInterface');
@@ -44,6 +54,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
         Stripe::$apiBase = $this->origApiBase;
         Stripe::setApiKey($this->origApiKey);
         Stripe::setClientId($this->origClientId);
+        Stripe::setApiVersion($this->origApiVersion);
+        Stripe::setAccountId($this->origAccountId);
     }
 
     /**
@@ -101,12 +113,12 @@ class TestCase extends \PHPUnit_Framework_TestCase
         $params = null,
         $headers = null,
         $hasFile = false,
-        $response = array(),
+        $response = [],
         $rcode = 200,
         $base = null
     ) {
         $this->prepareRequestMock($method, $path, $params, $headers, $hasFile, $base)
-            ->willReturn(array(json_encode($response), $rcode, array()));
+            ->willReturn([json_encode($response), $rcode, []]);
     }
 
     /**

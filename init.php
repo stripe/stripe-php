@@ -7,6 +7,7 @@ require(dirname(__FILE__) . '/lib/Stripe.php');
 require(dirname(__FILE__) . '/lib/Util/AutoPagingIterator.php');
 require(dirname(__FILE__) . '/lib/Util/LoggerInterface.php');
 require(dirname(__FILE__) . '/lib/Util/DefaultLogger.php');
+require(dirname(__FILE__) . '/lib/Util/RandomGenerator.php');
 require(dirname(__FILE__) . '/lib/Util/RequestOptions.php');
 require(dirname(__FILE__) . '/lib/Util/Set.php');
 require(dirname(__FILE__) . '/lib/Util/Util.php');
@@ -35,15 +36,21 @@ require(dirname(__FILE__) . '/lib/Error/OAuth/InvalidScope.php');
 require(dirname(__FILE__) . '/lib/Error/OAuth/UnsupportedGrantType.php');
 require(dirname(__FILE__) . '/lib/Error/OAuth/UnsupportedResponseType.php');
 
+// API operations
+require(dirname(__FILE__) . '/lib/ApiOperations/All.php');
+require(dirname(__FILE__) . '/lib/ApiOperations/Create.php');
+require(dirname(__FILE__) . '/lib/ApiOperations/Delete.php');
+require(dirname(__FILE__) . '/lib/ApiOperations/NestedResource.php');
+require(dirname(__FILE__) . '/lib/ApiOperations/Request.php');
+require(dirname(__FILE__) . '/lib/ApiOperations/Retrieve.php');
+require(dirname(__FILE__) . '/lib/ApiOperations/Update.php');
+
 // Plumbing
 require(dirname(__FILE__) . '/lib/ApiResponse.php');
-require(dirname(__FILE__) . '/lib/JsonSerializable.php');
 require(dirname(__FILE__) . '/lib/StripeObject.php');
 require(dirname(__FILE__) . '/lib/ApiRequestor.php');
 require(dirname(__FILE__) . '/lib/ApiResource.php');
 require(dirname(__FILE__) . '/lib/SingletonApiResource.php');
-require(dirname(__FILE__) . '/lib/AttachedObject.php');
-require(dirname(__FILE__) . '/lib/ExternalAccount.php');
 
 // Stripe API Resources
 require(dirname(__FILE__) . '/lib/Account.php');

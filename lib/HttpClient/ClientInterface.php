@@ -12,7 +12,7 @@ interface ClientInterface
      * @param boolean $hasFile Whether or not $params references a file (via an @ prefix or
      *                         CurlFile)
      * @throws \Stripe\Error\Api & \Stripe\Error\ApiConnection
-     * @return array($rawBody, $httpStatusCode, $httpHeader)
+     * @return [$rawBody, $httpStatusCode, $httpHeader]
      */
     public function request($method, $absUrl, $headers, $params, $hasFile);
 }

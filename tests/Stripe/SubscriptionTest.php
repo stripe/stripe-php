@@ -33,10 +33,10 @@ class SubscriptionTest extends TestCase
             'post',
             '/v1/subscriptions'
         );
-        $resource = Subscription::create(array(
+        $resource = Subscription::create([
             "customer" => "cus_123",
             "plan" => "plan"
-        ));
+        ]);
         $this->assertInstanceOf("Stripe\\Subscription", $resource);
     }
 
@@ -58,9 +58,9 @@ class SubscriptionTest extends TestCase
             'post',
             '/v1/subscriptions/' . self::TEST_RESOURCE_ID
         );
-        $resource = Subscription::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = Subscription::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertInstanceOf("Stripe\\Subscription", $resource);
     }
 
@@ -69,9 +69,14 @@ class SubscriptionTest extends TestCase
         $resource = Subscription::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'delete',
-            '/v1/subscriptions/' . $resource->id
+            '/v1/subscriptions/' . $resource->id,
+            [
+                'at_period_end' => 'true',
+            ]
         );
-        $resource->cancel();
+        $resource->cancel([
+            'at_period_end' => true,
+        ]);
         $this->assertInstanceOf("Stripe\\Subscription", $resource);
     }
 
@@ -84,5 +89,27 @@ class SubscriptionTest extends TestCase
         );
         $resource->deleteDiscount();
         $this->assertInstanceOf("Stripe\\Subscription", $resource);
+    }
+
+    public function testSerializeParametersItems()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'subscription',
+            'items' => Util\Util::convertToStripeObject([
+                'object' => 'list',
+                'data' => [],
+            ], null),
+        ], null);
+        $obj->items = [
+            ['id' => 'si_foo', 'deleted' => true],
+            ['plan' => 'plan_bar'],
+        ];
+        $expected = [
+            'items' => [
+                0 => ['id' => 'si_foo', 'deleted' => true],
+                1 => ['plan' => 'plan_bar'],
+            ],
+        ];
+        $this->assertSame($expected, $obj->serializeParameters());
     }
 }

@@ -33,15 +33,15 @@ class SKUTest extends TestCase
             'post',
             '/v1/skus'
         );
-        $resource = SKU::create(array(
+        $resource = SKU::create([
             'currency'  => 'usd',
-            'inventory' => array(
+            'inventory' => [
                 'type'     => 'finite',
                 'quantity' => 1
-            ),
+            ],
             'price'     => 100,
             'product'   => "prod_123"
-        ));
+        ]);
         $this->assertInstanceOf("Stripe\\SKU", $resource);
     }
 
@@ -51,7 +51,7 @@ class SKUTest extends TestCase
         $resource->metadata["key"] = "value";
         $this->expectsRequest(
             'post',
-            '/v1/skus/' . self::TEST_RESOURCE_ID
+            '/v1/skus/' . $resource->id
         );
         $resource->save();
         $this->assertInstanceOf("Stripe\\SKU", $resource);
@@ -63,9 +63,9 @@ class SKUTest extends TestCase
             'post',
             '/v1/skus/' . self::TEST_RESOURCE_ID
         );
-        $resource = SKU::update(self::TEST_RESOURCE_ID, array(
-            "metadata" => array("key" => "value"),
-        ));
+        $resource = SKU::update(self::TEST_RESOURCE_ID, [
+            "metadata" => ["key" => "value"],
+        ]);
         $this->assertInstanceOf("Stripe\\SKU", $resource);
     }
 
@@ -74,7 +74,7 @@ class SKUTest extends TestCase
         $resource = SKU::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'delete',
-            '/v1/skus/' . self::TEST_RESOURCE_ID
+            '/v1/skus/' . $resource->id
         );
         $resource->delete();
         $this->assertInstanceOf("Stripe\\SKU", $resource);

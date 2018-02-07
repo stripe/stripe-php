@@ -14,7 +14,7 @@ namespace Stripe;
  * @property string $currency
  * @property string $flow
  * @property bool $livemode
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property mixed $owner
  * @property mixed $receiver
  * @property mixed $redirect
@@ -27,50 +27,9 @@ namespace Stripe;
  */
 class Source extends ApiResource
 {
-    /**
-     * @param array|string $id The ID of the source to retrieve, or an options
-     *     array containing an `id` key.
-     * @param array|string|null $opts
-     *
-     * @return Source
-     */
-    public static function retrieve($id, $opts = null)
-    {
-        return self::_retrieve($id, $opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return Source The created Source.
-     */
-    public static function create($params = null, $opts = null)
-    {
-        return self::_create($params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the source to update.
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return Source The updated source.
-     */
-    public static function update($id, $params = null, $options = null)
-    {
-        return self::_update($id, $params, $options);
-    }
-
-    /**
-     * @param array|string|null $opts
-     *
-     * @return Source The saved source.
-     */
-    public function save($opts = null)
-    {
-        return $this->_save($opts);
-    }
+    use ApiOperations\Create;
+    use ApiOperations\Retrieve;
+    use ApiOperations\Update;
 
     /**
      * @param array|null $params

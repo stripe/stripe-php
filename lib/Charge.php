@@ -24,7 +24,7 @@ namespace Stripe;
  * @property mixed $fraud_details
  * @property string $invoice
  * @property bool $livemode
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property string $on_behalf_of
  * @property string $order
  * @property mixed $outcome
@@ -46,61 +46,10 @@ namespace Stripe;
  */
 class Charge extends ApiResource
 {
-    /**
-     * @param array|string $id The ID of the charge to retrieve, or an options
-     *     array containing an `id` key.
-     * @param array|string|null $options
-     *
-     * @return Charge
-     */
-    public static function retrieve($id, $options = null)
-    {
-        return self::_retrieve($id, $options);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return Collection of Charges
-     */
-    public static function all($params = null, $options = null)
-    {
-        return self::_all($params, $options);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return Charge The created charge.
-     */
-    public static function create($params = null, $options = null)
-    {
-        return self::_create($params, $options);
-    }
-
-    /**
-     * @param string $id The ID of the charge to update.
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return Charge The updated charge.
-     */
-    public static function update($id, $params = null, $options = null)
-    {
-        return self::_update($id, $params, $options);
-    }
-
-    /**
-     * @param array|string|null $options
-     *
-     * @return Charge The saved charge.
-     */
-    public function save($options = null)
-    {
-        return $this->_save($options);
-    }
+    use ApiOperations\All;
+    use ApiOperations\Create;
+    use ApiOperations\Retrieve;
+    use ApiOperations\Update;
 
     /**
      * @param array|null $params
@@ -142,7 +91,7 @@ class Charge extends ApiResource
     {
         $url = $this->instanceUrl() . '/dispute';
         list($response, $opts) = $this->_request('post', $url, $params, $options);
-        $this->refreshFrom(array('dispute' => $response), $opts, true);
+        $this->refreshFrom(['dispute' => $response], $opts, true);
         return $this->dispute;
     }
 
@@ -168,7 +117,7 @@ class Charge extends ApiResource
      */
     public function markAsFraudulent($opts = null)
     {
-        $params = array('fraud_details' => array('user_report' => 'fraudulent'));
+        $params = ['fraud_details' => ['user_report' => 'fraudulent']];
         $url = $this->instanceUrl();
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
@@ -182,7 +131,7 @@ class Charge extends ApiResource
      */
     public function markAsSafe($opts = null)
     {
-        $params = array('fraud_details' => array('user_report' => 'safe'));
+        $params = ['fraud_details' => ['user_report' => 'safe']];
         $url = $this->instanceUrl();
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);

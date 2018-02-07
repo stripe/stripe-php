@@ -17,7 +17,7 @@ namespace Stripe;
  * @property mixed $discount
  * @property string $email
  * @property bool $livemode
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property mixed $shipping
  * @property Collection $sources
  * @property Collection $subscriptions
@@ -26,74 +26,25 @@ namespace Stripe;
  */
 class Customer extends ApiResource
 {
+    use ApiOperations\All;
+    use ApiOperations\Create;
+    use ApiOperations\Delete;
+    use ApiOperations\NestedResource;
+    use ApiOperations\Retrieve;
+    use ApiOperations\Update;
+
+    public static function getSavedNestedResources()
+    {
+        static $savedNestedResources = null;
+        if ($savedNestedResources === null) {
+            $savedNestedResources = new Util\Set([
+                'source',
+            ]);
+        }
+        return $savedNestedResources;
+    }
+
     const PATH_SOURCES = '/sources';
-
-    /**
-     * @param array|string $id The ID of the customer to retrieve, or an
-     *     options array containing an `id` key.
-     * @param array|string|null $opts
-     *
-     * @return Customer
-     */
-    public static function retrieve($id, $opts = null)
-    {
-        return self::_retrieve($id, $opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return Collection of Customers
-     */
-    public static function all($params = null, $opts = null)
-    {
-        return self::_all($params, $opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return Customer The created customer.
-     */
-    public static function create($params = null, $opts = null)
-    {
-        return self::_create($params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the customer to update.
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return Customer The updated customer.
-     */
-    public static function update($id, $params = null, $options = null)
-    {
-        return self::_update($id, $params, $options);
-    }
-
-    /**
-     * @param array|string|null $opts
-     *
-     * @return Customer The saved customer.
-     */
-    public function save($opts = null)
-    {
-        return $this->_save($opts);
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @return Customer The deleted customer.
-     */
-    public function delete($params = null, $opts = null)
-    {
-        return $this->_delete($params, $opts);
-    }
 
     /**
      * @param array|null $params
@@ -102,9 +53,7 @@ class Customer extends ApiResource
      */
     public function addInvoiceItem($params = null)
     {
-        if (!$params) {
-            $params = array();
-        }
+        $params = $params ?: [];
         $params['customer'] = $this->id;
         $ii = InvoiceItem::create($params, $this->_opts);
         return $ii;
@@ -117,9 +66,7 @@ class Customer extends ApiResource
      */
     public function invoices($params = null)
     {
-        if (!$params) {
-            $params = array();
-        }
+        $params = $params ?: [];
         $params['customer'] = $this->id;
         $invoices = Invoice::all($params, $this->_opts);
         return $invoices;
@@ -132,9 +79,7 @@ class Customer extends ApiResource
      */
     public function invoiceItems($params = null)
     {
-        if (!$params) {
-            $params = array();
-        }
+        $params = $params ?: [];
         $params['customer'] = $this->id;
         $iis = InvoiceItem::all($params, $this->_opts);
         return $iis;
@@ -147,9 +92,7 @@ class Customer extends ApiResource
      */
     public function charges($params = null)
     {
-        if (!$params) {
-            $params = array();
-        }
+        $params = $params ?: [];
         $params['customer'] = $this->id;
         $charges = Charge::all($params, $this->_opts);
         return $charges;
@@ -164,7 +107,7 @@ class Customer extends ApiResource
     {
         $url = $this->instanceUrl() . '/subscription';
         list($response, $opts) = $this->_request('post', $url, $params);
-        $this->refreshFrom(array('subscription' => $response), $opts, true);
+        $this->refreshFrom(['subscription' => $response], $opts, true);
         return $this->subscription;
     }
 
@@ -177,7 +120,7 @@ class Customer extends ApiResource
     {
         $url = $this->instanceUrl() . '/subscription';
         list($response, $opts) = $this->_request('delete', $url, $params);
-        $this->refreshFrom(array('subscription' => $response), $opts, true);
+        $this->refreshFrom(['subscription' => $response], $opts, true);
         return $this->subscription;
     }
 
@@ -188,7 +131,7 @@ class Customer extends ApiResource
     {
         $url = $this->instanceUrl() . '/discount';
         list($response, $opts) = $this->_request('delete', $url);
-        $this->refreshFrom(array('discount' => null), $opts, true);
+        $this->refreshFrom(['discount' => null], $opts, true);
     }
 
     /**
@@ -196,7 +139,7 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ExternalAccount
+     * @return ApiResource
      */
     public static function createSource($id, $params = null, $opts = null)
     {
@@ -209,7 +152,7 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ExternalAccount
+     * @return ApiResource
      */
     public static function retrieveSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -222,7 +165,7 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ExternalAccount
+     * @return ApiResource
      */
     public static function updateSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -235,7 +178,7 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ExternalAccount
+     * @return ApiResource
      */
     public static function deleteSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -247,7 +190,7 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ExternalAccount
+     * @return ApiResource
      */
     public static function allSources($id, $params = null, $opts = null)
     {
