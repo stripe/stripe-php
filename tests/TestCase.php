@@ -174,32 +174,4 @@ class TestCase extends \PHPUnit_Framework_TestCase
                 $this->identicalTo($hasFile)
             );
     }
-
-    /**
-     * @param string $className
-     * @param string $methodName
-     *
-     * @return ReflectionMethod
-     */
-    public function getPrivateMethod($className, $methodName)
-    {
-        $reflector = new \ReflectionClass($className);
-        $method = $reflector->getMethod($methodName);
-        $method->setAccessible(true);
-        return $method;
-    }
-
-    /**
-     * @param string $className
-     * @param string $propertyName
-     *
-     * @return ReflectionProperty
-     */
-    public function getPrivateProperty($className, $propertyName)
-    {
-        $reflector = new \ReflectionClass($className);
-        $method = $reflector->getProperty($propertyName);
-        $method->setAccessible(true);
-        return $method;
-    }
 }
