@@ -2,6 +2,10 @@
 
 namespace Stripe\Util;
 
+/**
+ * A basic random generator. This is in a separate class so we the generator
+ * can be injected as a dependency and replaced with a mock in tests.
+ */
 class RandomGenerator
 {
     /**
