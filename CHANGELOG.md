@@ -1,5 +1,8 @@
 # Changelog
 
+## 5.9.2 - 2018-02-07
+* [#431](https://github.com/stripe/stripe-php/pull/431) Update PHPDoc @property tags for latest API version
+
 ## 5.9.1 - 2018-02-06
 * [#427](https://github.com/stripe/stripe-php/pull/427) Add and update PHPDoc @property tags on all API resources
 
