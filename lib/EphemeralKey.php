@@ -7,12 +7,11 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property int $created
- * @property int $expires
- * @property bool $livemode
+ * @property int    $created
+ * @property int    $expires
+ * @property bool   $livemode
  * @property string $secret
- * @property array $associated_objects
- *
+ * @property array  $associated_objects
  * @package Stripe
  */
 class EphemeralKey extends ApiResource

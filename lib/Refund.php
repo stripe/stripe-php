@@ -5,20 +5,19 @@ namespace Stripe;
 /**
  * Class Refund
  *
- * @property string $id
- * @property string $object
- * @property int $amount
- * @property string $balance_transaction
- * @property string $charge
- * @property int $created
- * @property string $currency
- * @property string $failure_balance_transaction
- * @property string failure_reason
+ * @property string         $id
+ * @property string         $object
+ * @property int            $amount
+ * @property string         $balance_transaction
+ * @property string         $charge
+ * @property int            $created
+ * @property string         $currency
+ * @property string         $failure_balance_transaction
+ * @property string         failure_reason
  * @property AttachedObject $metadata
- * @property mixed $reason
- * @property mixed $receipt_number
- * @property string $status
- *
+ * @property mixed          $reason
+ * @property mixed          $receipt_number
+ * @property string         $status
  * @package Stripe
  */
 class Refund extends ApiResource

@@ -5,24 +5,23 @@ namespace Stripe;
 /**
  * Class InvoiceItem
  *
- * @property string $id
- * @property string $object
- * @property int $amount
- * @property string $currency
- * @property string $customer
- * @property int $date
- * @property string $description
- * @property bool $discountable
- * @property string $invoice
- * @property bool $livemode
+ * @property string         $id
+ * @property string         $object
+ * @property int            $amount
+ * @property string         $currency
+ * @property string         $customer
+ * @property int            $date
+ * @property string         $description
+ * @property bool           $discountable
+ * @property string         $invoice
+ * @property bool           $livemode
  * @property AttachedObject $metadata
- * @property array $period
- * @property mixed $plan
- * @property bool $proration
- * @property int $quantity
- * @property string $subscription
- * @property string $subscription_item
- *
+ * @property mixed          $period
+ * @property mixed          $plan
+ * @property bool           $proration
+ * @property int            $quantity
+ * @property string         $subscription
+ * @property string         $subscription_item
  * @package Stripe
  */
 class InvoiceItem extends ApiResource

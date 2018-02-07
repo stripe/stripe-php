@@ -5,23 +5,22 @@ namespace Stripe;
 /**
  * Class Transfer
  *
- * @property string $id
- * @property string $object
- * @property int $amount
- * @property int $amount_reversed
- * @property string $balance_transaction
- * @property int $created
- * @property string $currency
- * @property string $destination
- * @property string $destination_payment
- * @property bool $livemode
+ * @property string         $id
+ * @property string         $object
+ * @property int            $amount
+ * @property int            $amount_reversed
+ * @property string         $balance_transaction
+ * @property int            $created
+ * @property string         $currency
+ * @property string         $destination
+ * @property string         $destination_payment
+ * @property bool           $livemode
  * @property AttachedObject $metadata
- * @property Collection $reversals
- * @property bool $reversed
- * @property string $source_transaction
- * @property string $source_type
- * @property string $transfer_group
- *
+ * @property Collection     $reversals
+ * @property bool           $reversed
+ * @property string         $source_transaction
+ * @property string         $source_type
+ * @property string         $transfer_group
  * @package Stripe
  */
 class Transfer extends ApiResource

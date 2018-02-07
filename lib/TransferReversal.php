@@ -5,15 +5,14 @@ namespace Stripe;
 /**
  * Class TransferReversal
  *
- * @property string $id
- * @property string $object
- * @property int $amount
- * @property string $balance_transaction
- * @property int $created
- * @property string $currency
+ * @property string         $id
+ * @property string         $object
+ * @property int            $amount
+ * @property string         $balance_transaction
+ * @property int            $created
+ * @property string         $currency
  * @property AttachedObject $metadata
- * @property string $transfer
- *
+ * @property string         $transfer
  * @package Stripe
  */
 class TransferReversal extends ApiResource

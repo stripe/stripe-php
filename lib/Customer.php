@@ -5,23 +5,22 @@ namespace Stripe;
 /**
  * Class Customer
  *
- * @property string $id
- * @property string $object
- * @property int $account_balance
- * @property string $business_vat_id
- * @property string $created
- * @property string $currency
- * @property string $default_source
- * @property bool $delinquent
- * @property string $description
- * @property mixed $discount
- * @property string $email
- * @property bool $livemode
+ * @property string         $id
+ * @property string         $object
+ * @property int            $account_balance
+ * @property string         $business_vat_id
+ * @property string         $created
+ * @property string         $currency
+ * @property string         $default_source
+ * @property bool           $delinquent
+ * @property string         $description
+ * @property mixed          $discount
+ * @property string         $email
+ * @property bool           $livemode
  * @property AttachedObject $metadata
- * @property mixed $shipping
- * @property Collection $sources
- * @property Collection $subscriptions
- *
+ * @property mixed          $shipping
+ * @property Collection     $sources
+ * @property Collection     $subscriptions
  * @package Stripe
  */
 class Customer extends ApiResource
