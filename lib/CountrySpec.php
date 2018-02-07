@@ -8,10 +8,10 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property string $default_currency
- * @property mixed supported_bank_account_currencies
- * @property string[] supported_payment_currencies
- * @property string[] supported_payment_methods
- * @property mixed verification_fields
+ * @property mixed $supported_bank_account_currencies
+ * @property string[] $supported_payment_currencies
+ * @property string[] $supported_payment_methods
+ * @property mixed $verification_fields
  *
  * @package Stripe
  */
