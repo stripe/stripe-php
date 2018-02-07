@@ -19,7 +19,7 @@ namespace Stripe;
  * @property string $external_coupon_code
  * @property mixed $items
  * @property bool $livemode
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property Collection $returns
  * @property string $selected_shipping_method
  * @property mixed $shipping

@@ -17,7 +17,7 @@ namespace Stripe;
  * @property mixed $discount
  * @property string $email
  * @property bool $livemode
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property mixed $shipping
  * @property Collection $sources
  * @property Collection $subscriptions

@@ -25,7 +25,7 @@ namespace Stripe;
  * @property string $fingerprint
  * @property string $funding
  * @property string $last4
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property string $name
  * @property string $tokenization_method
  *

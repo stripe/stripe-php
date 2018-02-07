@@ -14,7 +14,7 @@ namespace Stripe;
  * @property string $currency
  * @property string $flow
  * @property bool $livemode
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property mixed $owner
  * @property mixed $receiver
  * @property mixed $redirect

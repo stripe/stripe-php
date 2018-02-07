@@ -15,7 +15,7 @@ namespace Stripe;
  * @property bool $discountable
  * @property string $invoice
  * @property bool $livemode
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property mixed $period
  * @property Plan $plan
  * @property bool $proration

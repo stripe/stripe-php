@@ -24,7 +24,7 @@ namespace Stripe;
  * @property bool $forgiven
  * @property Collection $lines
  * @property bool $livemode
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property int $next_payment_attempt
  * @property string $number
  * @property bool $paid

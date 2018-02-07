@@ -12,7 +12,7 @@ namespace Stripe;
  * @property int $created
  * @property string $currency
  * @property string $fee
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  *
  * @package Stripe
  */

@@ -8,7 +8,7 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property int $created
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property Plan $plan
  * @property int $quantity
  * @property string $subscription

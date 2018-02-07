@@ -24,7 +24,7 @@ namespace Stripe;
  * @property mixed $fraud_details
  * @property string $invoice
  * @property bool $livemode
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property string $on_behalf_of
  * @property string $order
  * @property mixed $outcome

@@ -15,7 +15,7 @@ namespace Stripe;
  * @property string $destination
  * @property string $destination_payment
  * @property bool $livemode
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property Collection $reversals
  * @property bool $reversed
  * @property string $source_transaction

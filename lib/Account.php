@@ -22,7 +22,7 @@ namespace Stripe;
  * @property string $email
  * @property mixed $external_accounts
  * @property mixed $legal_entity
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property mixed $payout_schedule
  * @property string $payout_statement_descriptor
  * @property bool $payouts_enabled

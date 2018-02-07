@@ -17,7 +17,7 @@ namespace Stripe;
  * @property bool $default_for_currency
  * @property string $fingerprint
  * @property string $last4
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property string $routing_number
  * @property string $status
  *

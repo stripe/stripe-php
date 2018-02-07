@@ -14,7 +14,7 @@ namespace Stripe;
  * @property int $duration_in_months
  * @property bool $livemode
  * @property int $max_redemptions
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property int $percent_off
  * @property int $redeem_by
  * @property int $times_redeemed

@@ -11,7 +11,7 @@ namespace Stripe;
  * @property string $balance_transaction
  * @property int $created
  * @property string $currency
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property string $transfer
  *
  * @package Stripe

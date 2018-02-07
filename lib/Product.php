@@ -15,7 +15,7 @@ namespace Stripe;
  * @property string $description
  * @property array $images
  * @property bool $livemode
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property string $name
  * @property mixed $package_dimensions
  * @property bool $shippable

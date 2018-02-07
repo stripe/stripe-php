@@ -16,7 +16,7 @@ namespace Stripe;
  * @property mixed $evidence_details
  * @property bool $is_charge_refundable
  * @property bool $livemode
- * @property AttachedObject $metadata
+ * @property StripeObject $metadata
  * @property string $reason
  * @property string $status
  *
