@@ -1,5 +1,8 @@
 # Changelog
 
+## 5.9.1 - 2018-02-06
+* [#427](https://github.com/stripe/stripe-php/pull/427) Add and update PHPDoc @property tags on all API resources
+
 ## 5.9.0 - 2018-01-17
 * [#421](https://github.com/stripe/stripe-php/pull/421) Updated bundled CA certificates
 
