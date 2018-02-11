@@ -6,6 +6,14 @@ use Stripe\Error;
 
 class RequestOptions
 {
+    /**
+     * @var array A list of headers that should be persisted across requests.
+     */
+    public static $HEADERS_TO_PERSIST = [
+        'Stripe-Account',
+        'Stripe-Version',
+    ];
+
     public $headers;
     public $apiKey;
 
@@ -30,6 +38,18 @@ class RequestOptions
         }
         $other_options->headers = array_merge($this->headers, $other_options->headers);
         return $other_options;
+    }
+
+    /**
+     * Discards all headers that we don't want to persist across requests.
+     */
+    public function discardNonPersistentHeaders()
+    {
+        foreach ($this->headers as $k => $v) {
+            if (!in_array($k, self::$HEADERS_TO_PERSIST)) {
+                unset($this->headers[$k]);
+            }
+        }
     }
 
     /**

@@ -28,14 +28,6 @@ abstract class ApiResource extends StripeObject
     }
 
     /**
-     * @var array A list of headers that should be persisted across requests.
-     */
-    private static $HEADERS_TO_PERSIST = [
-        'Stripe-Account' => true,
-        'Stripe-Version' => true
-    ];
-
-    /**
      * @var boolean A flag that can be set a behavior that will cause this
      * resource to be encoded and sent up along with an update of its parent
      * resource. This is usually not desirable because resources are updated
