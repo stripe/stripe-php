@@ -54,11 +54,7 @@ trait Request
         $opts = \Stripe\Util\RequestOptions::parse($options);
         $requestor = new \Stripe\ApiRequestor($opts->apiKey, static::baseUrl());
         list($response, $opts->apiKey) = $requestor->request($method, $url, $params, $opts->headers);
-        foreach ($opts->headers as $k => $v) {
-            if (!array_key_exists($k, self::$HEADERS_TO_PERSIST)) {
-                unset($opts->headers[$k]);
-            }
-        }
+        $opts->discardNonPersistentHeaders();
         return [$response, $opts];
     }
 }

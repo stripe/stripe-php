@@ -118,4 +118,30 @@ class CollectionTest extends TestCase
 
         $this->assertSame([1, 2, 3], $seen);
     }
+
+    public function testHeaders()
+    {
+        $this->stubRequest(
+            'POST',
+            '/things',
+            [
+                'foo' => 'bar',
+            ],
+            [
+                'Stripe-Account: acct_foo',
+                'Idempotency-Key: qwertyuiop',
+            ],
+            false,
+            [
+                'id' => 2,
+            ]
+        );
+
+        $this->fixture->create([
+            'foo' => 'bar',
+        ], [
+            'stripe_account' => 'acct_foo',
+            'idempotency_key' => 'qwertyuiop',
+        ]);
+    }
 }

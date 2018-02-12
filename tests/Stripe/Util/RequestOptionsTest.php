@@ -66,4 +66,16 @@ class RequestOptionsTest extends TestCase
     {
         $opts = Util\RequestOptions::parse(5);
     }
+
+    public function testDiscardNonPersistentHeaders()
+    {
+        $opts = Util\RequestOptions::parse(
+            [
+                'stripe_account' => 'foo',
+                'idempotency_key' => 'foo',
+            ]
+        );
+        $opts->discardNonPersistentHeaders();
+        $this->assertSame(['Stripe-Account' => 'foo'], $opts->headers);
+    }
 }
