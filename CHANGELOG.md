@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.1.0 - 2018-02-12
+* [#435](https://github.com/stripe/stripe-php/pull/435) Fix header persistence on `Collection` objects
+* [#436](https://github.com/stripe/stripe-php/pull/436) Introduce new `Idempotency` error class
+
 ## 6.0.0 - 2018-02-07
 * [#410](https://github.com/stripe/stripe-php/pull/410) Drop support for PHP 5.3
 * [#411](https://github.com/stripe/stripe-php/pull/411) Use traits for common API operations
