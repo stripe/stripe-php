@@ -5,6 +5,13 @@
 * [#436](https://github.com/stripe/stripe-php/pull/436) Introduce new `Idempotency` error class
 
 ## 6.0.0 - 2018-02-07
+Major version release. List of backwards incompatible changes to watch out for:
++ The minimum PHP version is now 5.4.0. If you're using PHP 5.3 or older, consider upgrading to a more recent version.
+* `\Stripe\AttachedObject` no longer exists. Attributes that used to be instances of `\Stripe\AttachedObject` (such as `metadata`) are now instances of `\Stripe\StripeObject`.
++ Attributes that used to be PHP arrays (such as `legal_entity->additional_owners` on `\Stripe\Account` instances) are now instances of `\Stripe\StripeObject`, except when they are empty. `\Stripe\StripeObject` has array semantics so this should not be an issue unless you are actively checking types.
+* `\Stripe\Collection` now derives from `\Stripe\StripeObject` rather than from `\Stripe\ApiResource`.
+
+Pull requests included in this release:
 * [#410](https://github.com/stripe/stripe-php/pull/410) Drop support for PHP 5.3
 * [#411](https://github.com/stripe/stripe-php/pull/411) Use traits for common API operations
 * [#414](https://github.com/stripe/stripe-php/pull/414) Use short array syntax
