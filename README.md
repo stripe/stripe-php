@@ -149,6 +149,18 @@ certificates, but it's possible to configure your own:
 \Stripe\Stripe::setCABundlePath("path/to/ca/bundle");
 ```
 
+### Configuring Automatic Retries
+
+The library can be configured to automatically retry requests that fail due to
+an intermittent network problem:
+
+```php
+\Stripe\Stripe::setMaxNetworkRetries(2);
+```
+
+[Idempotency keys][idempotency-keys] are added to requests to guarantee that
+retries are safe.
+
 ## Development
 
 Install dependencies:
@@ -198,4 +210,5 @@ See the "SSL / TLS compatibility issues" paragraph above for full context. If yo
 
 [curl]: http://curl.haxx.se/docs/caextract.html
 [psr3]: http://www.php-fig.org/psr/psr-3/
+[idempotency-keys]: https://stripe.com/docs/api/php#idempotent_requests
 [stripe-mock]: https://github.com/stripe/stripe-mock
