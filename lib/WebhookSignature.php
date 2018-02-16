@@ -17,8 +17,8 @@ abstract class WebhookSignature
      * @param string $secret secret used to generate the signature.
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time
-     * @throws \Stripe\Error\SignatureVerification if the verification fails.
-	 * @return bool
+     * @throws \Stripe\Error\SignatureVerification if the verification fails
+     * @return bool
      */
     public static function verifyHeader($payload, $header, $secret, $tolerance = null)
     {
