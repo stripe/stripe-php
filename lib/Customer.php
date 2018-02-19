@@ -45,11 +45,20 @@ class Customer extends ApiResource
     }
 
     const PATH_SOURCES = '/sources';
+    const OBJECT_NAME = "customer";
 
     /**
      * @param array|null $params
      *
      * @return InvoiceItem The resulting invoice item.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function addInvoiceItem($params = null)
     {
@@ -62,7 +71,15 @@ class Customer extends ApiResource
     /**
      * @param array|null $params
      *
-     * @return array An array of the customer's Invoices.
+     * @return Collection An array of the customer's Invoices.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function invoices($params = null)
     {
@@ -75,7 +92,15 @@ class Customer extends ApiResource
     /**
      * @param array|null $params
      *
-     * @return array An array of the customer's InvoiceItems.
+     * @return Collection An array of the customer's InvoiceItems.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function invoiceItems($params = null)
     {
@@ -88,7 +113,15 @@ class Customer extends ApiResource
     /**
      * @param array|null $params
      *
-     * @return array An array of the customer's Charges.
+     * @return Collection An array of the customer's Charges.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function charges($params = null)
     {
@@ -102,6 +135,14 @@ class Customer extends ApiResource
      * @param array|null $params
      *
      * @return Subscription The updated subscription.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function updateSubscription($params = null)
     {
@@ -115,6 +156,14 @@ class Customer extends ApiResource
      * @param array|null $params
      *
      * @return Subscription The cancelled subscription.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function cancelSubscription($params = null)
     {
@@ -126,6 +175,14 @@ class Customer extends ApiResource
 
     /**
      * @return Customer The updated customer.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function deleteDiscount()
     {
@@ -135,11 +192,19 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the customer on which to create the source.
-     * @param array|null $params
+     * @param array|null        $id The ID of the customer on which to create the source.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return ApiResource
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function createSource($id, $params = null, $opts = null)
     {
@@ -147,12 +212,20 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the customer to which the source belongs.
-     * @param array|null $sourceId The ID of the source to retrieve.
-     * @param array|null $params
+     * @param array|null        $id       The ID of the customer to which the source belongs.
+     * @param array|null        $sourceId The ID of the source to retrieve.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return ApiResource
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function retrieveSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -160,12 +233,20 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the customer to which the source belongs.
-     * @param array|null $sourceId The ID of the source to update.
-     * @param array|null $params
+     * @param array|null        $id       The ID of the customer to which the source belongs.
+     * @param array|null        $sourceId The ID of the source to update.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return ApiResource
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function updateSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -173,12 +254,20 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the customer to which the source belongs.
-     * @param array|null $sourceId The ID of the source to delete.
-     * @param array|null $params
+     * @param array|null        $id       The ID of the customer to which the source belongs.
+     * @param array|null        $sourceId The ID of the source to delete.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return ApiResource
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function deleteSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -186,11 +275,19 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the customer on which to retrieve the sources.
-     * @param array|null $params
+     * @param array|null        $id The ID of the customer on which to retrieve the sources.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return ApiResource
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function allSources($id, $params = null, $opts = null)
     {

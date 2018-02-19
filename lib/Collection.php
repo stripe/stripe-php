@@ -31,6 +31,20 @@ class Collection extends StripeObject
         $this->_requestParams = $params;
     }
 
+    /**
+     * @param $params
+     * @param $opts
+     *
+     * @return array|StripeObject
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
+     */
     public function all($params = null, $opts = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
@@ -40,6 +54,20 @@ class Collection extends StripeObject
         return Util\Util::convertToStripeObject($response, $opts);
     }
 
+    /**
+     * @param $params
+     * @param $opts
+     *
+     * @return array|StripeObject
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
+     */
     public function create($params = null, $opts = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
@@ -49,6 +77,21 @@ class Collection extends StripeObject
         return Util\Util::convertToStripeObject($response, $opts);
     }
 
+    /**
+     * @param $id
+     * @param $params
+     * @param $opts
+     *
+     * @return array|StripeObject
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
+     */
     public function retrieve($id, $params = null, $opts = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
@@ -76,6 +119,12 @@ class Collection extends StripeObject
         return new Util\AutoPagingIterator($this, $this->_requestParams);
     }
 
+    /**
+     * @param $params
+     *
+     * @return array
+     * @throws Error\Api
+     */
     private function extractPathAndUpdateParams($params)
     {
         $url = parse_url($this->url);

@@ -38,6 +38,14 @@ class EphemeralKey extends ApiResource
      * @param array|string|null $opts
      *
      * @return EphemeralKey The created key.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function create($params = null, $opts = null)
     {

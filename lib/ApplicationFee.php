@@ -29,6 +29,7 @@ class ApplicationFee extends ApiResource
     use ApiOperations\Retrieve;
 
     const PATH_REFUNDS = '/refunds';
+    const OBJECT_NAME = "application_fee";
 
     /**
      * This is a special case because the application fee endpoint has an
@@ -42,10 +43,18 @@ class ApplicationFee extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return ApplicationFee The refunded application fee.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function refund($params = null, $opts = null)
     {
@@ -55,11 +64,19 @@ class ApplicationFee extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the application fee on which to create the refund.
-     * @param array|null $params
+     * @param array|null        $id The ID of the application fee on which to create the refund.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return ApplicationFeeRefund
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function createRefund($id, $params = null, $opts = null)
     {
@@ -67,12 +84,20 @@ class ApplicationFee extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the application fee to which the refund belongs.
-     * @param array|null $refundId The ID of the refund to retrieve.
-     * @param array|null $params
+     * @param array|null        $id       The ID of the application fee to which the refund belongs.
+     * @param array|null        $refundId The ID of the refund to retrieve.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return ApplicationFeeRefund
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function retrieveRefund($id, $refundId, $params = null, $opts = null)
     {
@@ -80,12 +105,20 @@ class ApplicationFee extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the application fee to which the refund belongs.
-     * @param array|null $refundId The ID of the refund to update.
-     * @param array|null $params
+     * @param array|null        $id       The ID of the application fee to which the refund belongs.
+     * @param array|null        $refundId The ID of the refund to update.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return ApplicationFeeRefund
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function updateRefund($id, $refundId, $params = null, $opts = null)
     {
@@ -93,11 +126,19 @@ class ApplicationFee extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the application fee on which to retrieve the refunds.
-     * @param array|null $params
+     * @param array|null        $id The ID of the application fee on which to retrieve the refunds.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return ApplicationFeeRefund
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function allRefunds($id, $params = null, $opts = null)
     {

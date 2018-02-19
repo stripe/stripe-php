@@ -10,10 +10,18 @@ namespace Stripe\ApiOperations;
 trait All
 {
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Collection of ApiResources
+     * @return \Stripe\Collection of ApiResources
+     * @throws \Stripe\Error\Api
+     * @throws \Stripe\Error\ApiConnection
+     * @throws \Stripe\Error\Authentication
+     * @throws \Stripe\Error\Card
+     * @throws \Stripe\Error\Idempotency
+     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Error\Permission
+     * @throws \Stripe\Error\RateLimit
      */
     public static function all($params = null, $opts = null)
     {
@@ -25,7 +33,7 @@ trait All
         if (!is_a($obj, 'Stripe\\Collection')) {
             $class = get_class($obj);
             $message = "Expected type \"Stripe\\Collection\", got \"$class\" instead";
-            throw new Error\Api($message);
+            throw new \Stripe\Error\Api($message);
         }
         $obj->setLastResponse($response);
         $obj->setRequestParams($params);

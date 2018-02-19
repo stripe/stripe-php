@@ -18,6 +18,7 @@ class AlipayAccount extends ApiResource
     /**
      * @return string The instance URL for this resource. It needs to be special
      *    cased because it doesn't fit into the standard resource pattern.
+     * @throws Error\InvalidRequest
      */
     public function instanceUrl()
     {
@@ -38,7 +39,7 @@ class AlipayAccount extends ApiResource
      * @param array|string $_id
      * @param array|string|null $_opts
      *
-     * @throws \Stripe\Error\InvalidRequest
+     * @throws Error\InvalidRequest
      *
      * @deprecated Alipay accounts are deprecated. Please use the sources API instead.
      * @link https://stripe.com/docs/sources/alipay
@@ -55,7 +56,7 @@ class AlipayAccount extends ApiResource
      * @param array|null $_params
      * @param array|string|null $_options
      *
-     * @throws \Stripe\Error\InvalidRequest
+     * @throws Error\InvalidRequest
      *
      * @deprecated Alipay accounts are deprecated. Please use the sources API instead.
      * @link https://stripe.com/docs/sources/alipay

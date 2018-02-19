@@ -31,11 +31,21 @@ class Source extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const OBJECT_NAME = "source";
+
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Source The detached source.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function detach($params = null, $options = null)
     {
@@ -66,11 +76,18 @@ class Source extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Source The detached source.
-     *
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      * @deprecated Use the `detach` method instead.
      */
     public function delete($params = null, $options = null)
@@ -79,10 +96,18 @@ class Source extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Collection The list of source transactions.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function sourceTransactions($params = null, $options = null)
     {
@@ -94,10 +119,18 @@ class Source extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Source The verified source.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function verify($params = null, $options = null)
     {

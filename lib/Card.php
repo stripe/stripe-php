@@ -36,10 +36,13 @@ class Card extends ApiResource
     use ApiOperations\Delete;
     use ApiOperations\Update;
 
+    const OBJECT_NAME = "card";
+
     /**
      * @return string The instance URL for this resource. It needs to be special
      *    cased because cards are nested resources that may belong to different
      *    top-level resources.
+     * @throws Error\InvalidRequest
      */
     public function instanceUrl()
     {
@@ -68,7 +71,7 @@ class Card extends ApiResource
      * @param array|string $_id
      * @param array|string|null $_opts
      *
-     * @throws \Stripe\Error\InvalidRequest
+     * @throws Error\InvalidRequest
      */
     public static function retrieve($_id, $_opts = null)
     {
@@ -84,7 +87,7 @@ class Card extends ApiResource
      * @param array|null $_params
      * @param array|string|null $_options
      *
-     * @throws \Stripe\Error\InvalidRequest
+     * @throws Error\InvalidRequest
      */
     public static function update($_id, $_params = null, $_options = null)
     {

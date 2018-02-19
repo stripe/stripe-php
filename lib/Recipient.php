@@ -15,10 +15,20 @@ class Recipient extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const OBJECT_NAME = "recipient";
+
     /**
      * @param array|null $params
      *
      * @return Collection of the Recipient's Transfers
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function transfers($params = null)
     {

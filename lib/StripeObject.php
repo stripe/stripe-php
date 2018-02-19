@@ -2,6 +2,8 @@
 
 namespace Stripe;
 
+use InvalidArgumentException;
+
 /**
  * Class StripeObject
  *
@@ -32,6 +34,11 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         return $permanentAttributes;
     }
 
+    /**
+     * StripeObject constructor.
+     *
+     * @throws Error\Api
+     */
     public function __construct($id = null, $opts = null)
     {
         list($id, $this->_retrieveOptions) = Util\Util::normalizeId($id);
@@ -154,6 +161,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      * @param null|string|array|Util\RequestOptions $opts
      *
      * @return StripeObject The object constructed from the given values.
+     * @throws Error\Api
      */
     public static function constructFrom($values, $opts = null)
     {
@@ -168,6 +176,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      * @param array $values
      * @param null|string|array|Util\RequestOptions $opts
      * @param boolean $partial Defaults to false.
+     * @throws Error\Api
      */
     public function refreshFrom($values, $opts, $partial = false)
     {
@@ -205,6 +214,8 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      * @param array $values
      * @param null|string|array|Util\RequestOptions $opts
      * @param boolean $dirty Defaults to true.
+     *
+     * @throws Error\Api
      */
     public function updateAttributes($values, $opts = null, $dirty = true)
     {
@@ -385,6 +396,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     /**
      * Produces a deep copy of the given object including support for arrays
      * and StripeObjects.
+     * @throws Error\Api
      */
     protected static function deepCopy($obj)
     {

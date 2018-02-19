@@ -34,8 +34,18 @@ class Payout extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const OBJECT_NAME = "payout";
+
     /**
      * @return Payout The canceled payout.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function cancel()
     {

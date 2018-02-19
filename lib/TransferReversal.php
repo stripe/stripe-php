@@ -22,8 +22,11 @@ class TransferReversal extends ApiResource
         save as protected _save;
     }
 
+    const OBJECT_NAME = "transfer_reversal";
+
     /**
      * @return string The API URL for this Stripe transfer reversal.
+     * @throws Error\InvalidRequest
      */
     public function instanceUrl()
     {
@@ -49,6 +52,14 @@ class TransferReversal extends ApiResource
      * @param array|string|null $opts
      *
      * @return TransferReversal The saved reversal.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function save($opts = null)
     {

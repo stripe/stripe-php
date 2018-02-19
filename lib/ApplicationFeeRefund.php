@@ -22,8 +22,11 @@ class ApplicationFeeRefund extends ApiResource
         save as protected _save;
     }
 
+    const OBJECT_NAME = "fee_refund";
+
     /**
      * @return string The API URL for this Stripe refund.
+     * @throws Error\InvalidRequest
      */
     public function instanceUrl()
     {
@@ -49,6 +52,14 @@ class ApplicationFeeRefund extends ApiResource
      * @param array|string|null $opts
      *
      * @return ApplicationFeeRefund The saved refund.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function save($opts = null)
     {

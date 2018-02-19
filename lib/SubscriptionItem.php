@@ -23,9 +23,11 @@ class SubscriptionItem extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const OBJECT_NAME = "subscription_item";
+
     /**
      * This is a special case because the subscription items endpoint has an
-     *    underscore in it. The parent `className` function strips underscores.
+     * underscore in it. The parent `className` function strips underscores.
      *
      * @return string The name of the class.
      */

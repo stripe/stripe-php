@@ -12,7 +12,7 @@ trait Request
     /**
      * @param array|null|mixed $params The list of parameters to validate
      *
-     * @throws Stripe\Error\Api if $params exists and is not an array
+     * @throws \Stripe\Error\Api if $params exists and is not an array
      */
     protected static function _validateParams($params = null)
     {
@@ -21,17 +21,25 @@ trait Request
                . "method calls.  (HINT: an example call to create a charge "
                . "would be: \"Stripe\\Charge::create(['amount' => 100, "
                . "'currency' => 'usd', 'source' => 'tok_1234'])\")";
-            throw new Error\Api($message);
+            throw new \Stripe\Error\Api($message);
         }
     }
 
     /**
-     * @param string $method HTTP method ('get', 'post', etc.)
-     * @param string $url URL for the request
-     * @param array $params list of parameters for the request
+     * @param string            $method HTTP method ('get', 'post', etc.)
+     * @param string            $url    URL for the request
+     * @param array             $params list of parameters for the request
      * @param array|string|null $options
      *
      * @return array tuple containing (the JSON response, $options)
+     * @throws \Stripe\Error\Api
+     * @throws \Stripe\Error\ApiConnection
+     * @throws \Stripe\Error\Authentication
+     * @throws \Stripe\Error\Card
+     * @throws \Stripe\Error\Idempotency
+     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Error\Permission
+     * @throws \Stripe\Error\RateLimit
      */
     protected function _request($method, $url, $params = [], $options = null)
     {
@@ -42,12 +50,20 @@ trait Request
     }
 
     /**
-     * @param string $method HTTP method ('get', 'post', etc.)
-     * @param string $url URL for the request
-     * @param array $params list of parameters for the request
+     * @param string            $method HTTP method ('get', 'post', etc.)
+     * @param string            $url    URL for the request
+     * @param array             $params list of parameters for the request
      * @param array|string|null $options
      *
      * @return array tuple containing (the JSON response, $options)
+     * @throws \Stripe\Error\Api
+     * @throws \Stripe\Error\ApiConnection
+     * @throws \Stripe\Error\Authentication
+     * @throws \Stripe\Error\Card
+     * @throws \Stripe\Error\Idempotency
+     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Error\Permission
+     * @throws \Stripe\Error\RateLimit
      */
     protected static function _staticRequest($method, $url, $params, $options)
     {

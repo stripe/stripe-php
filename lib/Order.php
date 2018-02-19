@@ -38,8 +38,21 @@ class Order extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const OBJECT_NAME = "order";
+
     /**
+     * @param $params
+     * @param $opts
+     *
      * @return Order The paid order.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function pay($params = null, $opts = null)
     {
@@ -50,7 +63,18 @@ class Order extends ApiResource
     }
 
     /**
+     * @param $params
+     * @param $opts
+     *
      * @return OrderReturn The newly created return.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function returnOrder($params = null, $opts = null)
     {

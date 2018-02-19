@@ -59,9 +59,14 @@ class Account extends ApiResource
         return $savedNestedResources;
     }
 
+    const OBJECT_NAME = "account";
     const PATH_EXTERNAL_ACCOUNTS = '/external_accounts';
     const PATH_LOGIN_LINKS = '/login_links';
 
+    /**
+     * @return string
+     * @throws Error\InvalidRequest
+     */
     public function instanceUrl()
     {
         if ($this['id'] === null) {
@@ -72,11 +77,18 @@ class Account extends ApiResource
     }
 
     /**
-     * @param array|string|null $id The ID of the account to retrieve, or an
-     *     options array containing an `id` key.
+     * @param array|string|null $id The ID of the account to retrieve, or an options array containing an `id` key.
      * @param array|string|null $opts
      *
      * @return Account
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function retrieve($id = null, $opts = null)
     {
@@ -88,10 +100,18 @@ class Account extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Account The rejected account.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function reject($params = null, $opts = null)
     {
@@ -102,10 +122,18 @@ class Account extends ApiResource
     }
 
     /**
-     * @param array|null $clientId
+     * @param array|null        $clientId
      * @param array|string|null $opts
      *
      * @return StripeObject Object containing the response from the API.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function deauthorize($clientId = null, $opts = null)
     {
@@ -117,11 +145,19 @@ class Account extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the account on which to create the external account.
-     * @param array|null $params
+     * @param array|null        $id The ID of the account on which to create the external account.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return BankAccount|Card
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function createExternalAccount($id, $params = null, $opts = null)
     {
@@ -129,12 +165,20 @@ class Account extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the account to which the external account belongs.
-     * @param array|null $externalAccountId The ID of the external account to retrieve.
-     * @param array|null $params
+     * @param array|null        $id                The ID of the account to which the external account belongs.
+     * @param array|null        $externalAccountId The ID of the external account to retrieve.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return BankAccount|Card
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function retrieveExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
@@ -142,12 +186,20 @@ class Account extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the account to which the external account belongs.
-     * @param array|null $externalAccountId The ID of the external account to update.
-     * @param array|null $params
+     * @param array|null        $id                The ID of the account to which the external account belongs.
+     * @param array|null        $externalAccountId The ID of the external account to update.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return BankAccount|Card
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function updateExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
@@ -155,12 +207,20 @@ class Account extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the account to which the external account belongs.
-     * @param array|null $externalAccountId The ID of the external account to delete.
-     * @param array|null $params
+     * @param array|null        $id                The ID of the account to which the external account belongs.
+     * @param array|null        $externalAccountId The ID of the external account to delete.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return BankAccount|Card
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function deleteExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
@@ -168,11 +228,19 @@ class Account extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the account on which to retrieve the external accounts.
-     * @param array|null $params
+     * @param array|null        $id The ID of the account on which to retrieve the external accounts.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return BankAccount|Card
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function allExternalAccounts($id, $params = null, $opts = null)
     {
@@ -180,11 +248,19 @@ class Account extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the account on which to create the login link.
-     * @param array|null $params
+     * @param array|null        $id The ID of the account on which to create the login link.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return LoginLink
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function createLoginLink($id, $params = null, $opts = null)
     {

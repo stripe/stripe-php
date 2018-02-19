@@ -41,6 +41,8 @@ class Subscription extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const OBJECT_NAME = "subscription";
+
     /**
      * These constants are possible representations of the status field.
      *
@@ -65,8 +67,17 @@ class Subscription extends ApiResource
 
     /**
      * @param array|null $params
+     * @param $opts
      *
      * @return Subscription The deleted subscription.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function cancel($params = null, $opts = null)
     {
@@ -75,6 +86,14 @@ class Subscription extends ApiResource
 
     /**
      * @return Subscription The updated subscription.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function deleteDiscount()
     {

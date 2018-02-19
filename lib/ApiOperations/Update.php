@@ -11,11 +11,19 @@ namespace Stripe\ApiOperations;
 trait Update
 {
     /**
-     * @param string $id The ID of the resource to update.
-     * @param array|null $params
+     * @param string            $id The ID of the resource to update.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return ApiResource The updated resource.
+     * @return \Stripe\ApiResource The updated resource.
+     * @throws \Stripe\Error\Api
+     * @throws \Stripe\Error\ApiConnection
+     * @throws \Stripe\Error\Authentication
+     * @throws \Stripe\Error\Card
+     * @throws \Stripe\Error\Idempotency
+     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Error\Permission
+     * @throws \Stripe\Error\RateLimit
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -31,7 +39,15 @@ trait Update
     /**
      * @param array|string|null $opts
      *
-     * @return ApiResource The saved resource.
+     * @return \Stripe\ApiResource The saved resource.
+     * @throws \Stripe\Error\Api
+     * @throws \Stripe\Error\ApiConnection
+     * @throws \Stripe\Error\Authentication
+     * @throws \Stripe\Error\Card
+     * @throws \Stripe\Error\Idempotency
+     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Error\Permission
+     * @throws \Stripe\Error\RateLimit
      */
     public function save($opts = null)
     {

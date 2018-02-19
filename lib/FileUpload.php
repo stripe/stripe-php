@@ -20,6 +20,8 @@ class FileUpload extends ApiResource
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
 
+    const OBJECT_NAME = "file_upload";
+
     public static function baseUrl()
     {
         return Stripe::$apiUploadBase;

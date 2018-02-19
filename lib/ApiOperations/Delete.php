@@ -10,10 +10,18 @@ namespace Stripe\ApiOperations;
 trait Delete
 {
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return ApiResource The deleted resource.
+     * @return \Stripe\ApiResource The deleted resource.
+     * @throws \Stripe\Error\Api
+     * @throws \Stripe\Error\ApiConnection
+     * @throws \Stripe\Error\Authentication
+     * @throws \Stripe\Error\Card
+     * @throws \Stripe\Error\Idempotency
+     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Error\Permission
+     * @throws \Stripe\Error\RateLimit
      */
     public function delete($params = null, $opts = null)
     {

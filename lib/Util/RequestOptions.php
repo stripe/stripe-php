@@ -2,8 +2,6 @@
 
 namespace Stripe\Util;
 
-use Stripe\Error;
-
 class RequestOptions
 {
     /**
@@ -29,6 +27,7 @@ class RequestOptions
      * @param array|string|null $options a key => value array
      *
      * @return RequestOptions
+     * @throws \Stripe\Error\Api
      */
     public function merge($options)
     {
@@ -57,6 +56,7 @@ class RequestOptions
      * @param array|string|null $options a key => value array
      *
      * @return RequestOptions
+     * @throws \Stripe\Error\Api
      */
     public static function parse($options)
     {
@@ -94,6 +94,6 @@ class RequestOptions
            . 'optional per-request apiKey, which must be a string, or '
            . 'per-request options, which must be an array. (HINT: you can set '
            . 'a global apiKey by "Stripe::setApiKey(<apiKey>)")';
-        throw new Error\Api($message);
+        throw new \Stripe\Error\Api($message);
     }
 }
