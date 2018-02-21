@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.2.0 - 2018-02-21
+* [#440](https://github.com/stripe/stripe-php/pull/440) Add support for topups
+* [#442](https://github.com/stripe/stripe-php/pull/442) Fix PHPDoc for `\Stripe\Error\SignatureVerification`
+
 ## 6.1.0 - 2018-02-12
 * [#435](https://github.com/stripe/stripe-php/pull/435) Fix header persistence on `Collection` objects
 * [#436](https://github.com/stripe/stripe-php/pull/436) Introduce new `Idempotency` error class
