@@ -108,6 +108,7 @@ abstract class Util
             'subscription_item' => 'Stripe\\SubscriptionItem',
             'three_d_secure' => 'Stripe\\ThreeDSecure',
             'token' => 'Stripe\\Token',
+            'topup' => 'Stripe\\Topup',
             'transfer' => 'Stripe\\Transfer',
             'transfer_reversal' => 'Stripe\\TransferReversal',
         ];
