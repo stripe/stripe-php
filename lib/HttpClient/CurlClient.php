@@ -304,8 +304,8 @@ class CurlClient implements ClientInterface
             return true;
         }
 
-        // 409 conflict
-        if ($rcode === 409) {
+        // 409 conflict or 429 too many requests
+        if ($rcode === 409 || $rcode === 429) {
             return true;
         }
 

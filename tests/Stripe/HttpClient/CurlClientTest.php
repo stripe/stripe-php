@@ -151,6 +151,15 @@ class CurlClientTest extends TestCase
         $this->assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 409, 0));
     }
 
+    public function testShouldRetryOnTooManyRequests()
+    {
+        Stripe::setMaxNetworkRetries(2);
+
+        $curlClient = new CurlClient();
+
+        $this->assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 429, 0));
+    }
+
     public function testShouldNotRetryAtMaximumCount()
     {
         Stripe::setMaxNetworkRetries(2);
