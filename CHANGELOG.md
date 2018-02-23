@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.3.0 - 2018-02-23
+* [#450](https://github.com/stripe/stripe-php/pull/450) Add support for `code` attribute on all Stripe exceptions
+
 ## 6.2.0 - 2018-02-21
 * [#440](https://github.com/stripe/stripe-php/pull/440) Add support for topups
 * [#442](https://github.com/stripe/stripe-php/pull/442) Fix PHPDoc for `\Stripe\Error\SignatureVerification`
