@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.3.1 - 2018-02-26
+* [#443](https://github.com/stripe/stripe-php/pull/443) Add event types as constants to `\Stripe\Event` class
+
 ## 6.3.0 - 2018-02-23
 * [#450](https://github.com/stripe/stripe-php/pull/450) Add support for `code` attribute on all Stripe exceptions
 
