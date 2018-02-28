@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.3.2 - 2018-02-27
+* [#452](https://github.com/stripe/stripe-php/pull/452) Add PHPDoc for `amount_paid` and `amount_remaining` on `\Stripe\Invoice`
+
 ## 6.3.1 - 2018-02-26
 * [#443](https://github.com/stripe/stripe-php/pull/443) Add event types as constants to `\Stripe\Event` class
 
