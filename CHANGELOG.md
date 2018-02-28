@@ -1,7 +1,7 @@
 # Changelog
 
 ## 6.4.0 - 2018-02-28
-* [#453](https://github.com/stripe/stripe-php/pull/453) Add constants for `reason` (`REASON_*`) and `status` (`STATUS_`) on `\Stripe\Dispute`
+* [#453](https://github.com/stripe/stripe-php/pull/453) Add constants for `reason` (`REASON_*`) and `status` (`STATUS_*`) on `\Stripe\Dispute`
 
 ## 6.3.2 - 2018-02-27
 * [#452](https://github.com/stripe/stripe-php/pull/452) Add PHPDoc for `amount_paid` and `amount_remaining` on `\Stripe\Invoice`
