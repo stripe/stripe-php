@@ -239,7 +239,7 @@ class CurlClient implements ClientInterface
 
     /**
      * @param string $url
-     * @param number $errno
+     * @param int $errno
      * @param string $message
      * @param int $numRetries
      * @throws Error\ApiConnection

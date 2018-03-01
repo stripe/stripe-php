@@ -13,7 +13,7 @@ trait Create
      * @param array|null $params
      * @param array|string|null $options
      *
-     * @return ApiResource The created resource.
+     * @return \Stripe\ApiResource The created resource.
      */
     public static function create($params = null, $options = null)
     {

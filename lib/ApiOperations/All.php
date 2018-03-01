@@ -13,7 +13,7 @@ trait All
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return Collection of ApiResources
+     * @return \Stripe\Collection of ApiResources
      */
     public static function all($params = null, $opts = null)
     {

@@ -12,7 +12,7 @@ trait Request
     /**
      * @param array|null|mixed $params The list of parameters to validate
      *
-     * @throws Stripe\Error\Api if $params exists and is not an array
+     * @throws \Stripe\Error\Api if $params exists and is not an array
      */
     protected static function _validateParams($params = null)
     {
