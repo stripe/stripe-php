@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.4.1 - 2018-03-02
+* [#455](https://github.com/stripe/stripe-php/pull/455) Fix namespaces in PHPDoc
+* [#456](https://github.com/stripe/stripe-php/pull/456) Fix namespaces for some exceptions
+
 ## 6.4.0 - 2018-02-28
 * [#453](https://github.com/stripe/stripe-php/pull/453) Add constants for `reason` (`REASON_*`) and `status` (`STATUS_*`) on `\Stripe\Dispute`
 
