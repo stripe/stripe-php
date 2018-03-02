@@ -15,7 +15,7 @@ trait Update
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ApiResource The updated resource.
+     * @return \Stripe\ApiResource The updated resource.
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -31,7 +31,7 @@ trait Update
     /**
      * @param array|string|null $opts
      *
-     * @return ApiResource The saved resource.
+     * @return \Stripe\ApiResource The saved resource.
      */
     public function save($opts = null)
     {

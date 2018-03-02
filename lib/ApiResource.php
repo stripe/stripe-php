@@ -12,7 +12,7 @@ abstract class ApiResource extends StripeObject
     use ApiOperations\Request;
 
     /**
-     * @return Stripe\Util\Set A list of fields that can be their own type of
+     * @return \Stripe\Util\Set A list of fields that can be their own type of
      * API resource (say a nested card under an account for example), and if
      * that resource is set, it should be transmitted to the API on a create or
      * update. Doing so is not the default behavior because API resources

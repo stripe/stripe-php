@@ -15,7 +15,7 @@ trait NestedResource
      * @param array|null $params
      * @param array|string|null $options
      *
-     * @return Stripe\StripeObject
+     * @return \Stripe\StripeObject
      */
     protected static function _nestedResourceOperation($method, $url, $params = null, $options = null)
     {
@@ -49,7 +49,7 @@ trait NestedResource
      * @param array|null $params
      * @param array|string|null $options
      *
-     * @return Stripe\StripeObject
+     * @return \Stripe\StripeObject
      */
     protected static function _createNestedResource($id, $nestedPath, $params = null, $options = null)
     {
@@ -63,7 +63,7 @@ trait NestedResource
      * @param array|null $params
      * @param array|string|null $options
      *
-     * @return Stripe\StripeObject
+     * @return \Stripe\StripeObject
      */
     protected static function _retrieveNestedResource($id, $nestedPath, $nestedId, $params = null, $options = null)
     {
@@ -77,7 +77,7 @@ trait NestedResource
      * @param array|null $params
      * @param array|string|null $options
      *
-     * @return Stripe\StripeObject
+     * @return \Stripe\StripeObject
      */
     protected static function _updateNestedResource($id, $nestedPath, $nestedId, $params = null, $options = null)
     {
@@ -91,7 +91,7 @@ trait NestedResource
      * @param array|null $params
      * @param array|string|null $options
      *
-     * @return Stripe\StripeObject
+     * @return \Stripe\StripeObject
      */
     protected static function _deleteNestedResource($id, $nestedPath, $nestedId, $params = null, $options = null)
     {
@@ -105,7 +105,7 @@ trait NestedResource
      * @param array|null $params
      * @param array|string|null $options
      *
-     * @return Stripe\StripeObject
+     * @return \Stripe\StripeObject
      */
     protected static function _allNestedResources($id, $nestedPath, $params = null, $options = null)
     {
