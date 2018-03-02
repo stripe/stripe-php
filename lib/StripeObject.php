@@ -415,7 +415,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         } elseif ($obj instanceof StripeObject) {
             $values = $obj->_values;
         } else {
-            throw new InvalidArgumentException(
+            throw new \InvalidArgumentException(
                 "empty_values got got unexpected object type: " . get_class($obj)
             );
         }

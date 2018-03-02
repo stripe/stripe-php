@@ -21,7 +21,7 @@ trait Request
                . "method calls.  (HINT: an example call to create a charge "
                . "would be: \"Stripe\\Charge::create(['amount' => 100, "
                . "'currency' => 'usd', 'source' => 'tok_1234'])\")";
-            throw new Error\Api($message);
+            throw new \Stripe\Error\Api($message);
         }
     }
 
