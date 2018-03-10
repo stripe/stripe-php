@@ -8,6 +8,8 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property int $amount_due
+ * @property int $amount_paid
+ * @property int $amount_remaining
  * @property int $application_fee
  * @property int $attempt_count
  * @property bool $attempted

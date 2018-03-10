@@ -140,6 +140,24 @@ $curl = new \Stripe\HttpClient\CurlClient([CURLOPT_SSLVERSION => CURL_SSLVERSION
 \Stripe\ApiRequestor::setHttpClient($curl);
 ```
 
+### Per-request Configuration
+
+For apps that need to use multiple keys during the lifetime of a process, like
+one that uses [Stripe Connect][connect], it's also possible to set a
+per-request key and/or account:
+
+```php
+\Stripe\Charge::all([], [
+    'api_key' => 'sk_test_...',
+    'stripe_account' => 'acct_...'
+]);
+
+\Stripe\Charge::retrieve("ch_18atAXCdGbJFKhCuBAa4532Z", [
+    'api_key' => 'sk_test_...',
+    'stripe_account' => 'acct_...'
+]);
+```
+
 ### Configuring CA Bundles
 
 By default, the library will use its own internal bundle of known CA
@@ -208,6 +226,7 @@ The method should be called once, before any request is sent to the API. The sec
 
 See the "SSL / TLS compatibility issues" paragraph above for full context. If you want to ensure that your plugin can be used on all systems, you should add a configuration option to let your users choose between different values for `CURLOPT_SSLVERSION`: none (default), `CURL_SSLVERSION_TLSv1` and `CURL_SSLVERSION_TLSv1_2`.
 
+[connect]: https://stripe.com/connect
 [curl]: http://curl.haxx.se/docs/caextract.html
 [psr3]: http://www.php-fig.org/psr/psr-3/
 [idempotency-keys]: https://stripe.com/docs/api/php#idempotent_requests

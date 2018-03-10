@@ -1,5 +1,25 @@
 # Changelog
 
+## 6.4.1 - 2018-03-02
+* [#455](https://github.com/stripe/stripe-php/pull/455) Fix namespaces in PHPDoc
+* [#456](https://github.com/stripe/stripe-php/pull/456) Fix namespaces for some exceptions
+
+## 6.4.0 - 2018-02-28
+* [#453](https://github.com/stripe/stripe-php/pull/453) Add constants for `reason` (`REASON_*`) and `status` (`STATUS_*`) on `\Stripe\Dispute`
+
+## 6.3.2 - 2018-02-27
+* [#452](https://github.com/stripe/stripe-php/pull/452) Add PHPDoc for `amount_paid` and `amount_remaining` on `\Stripe\Invoice`
+
+## 6.3.1 - 2018-02-26
+* [#443](https://github.com/stripe/stripe-php/pull/443) Add event types as constants to `\Stripe\Event` class
+
+## 6.3.0 - 2018-02-23
+* [#450](https://github.com/stripe/stripe-php/pull/450) Add support for `code` attribute on all Stripe exceptions
+
+## 6.2.0 - 2018-02-21
+* [#440](https://github.com/stripe/stripe-php/pull/440) Add support for topups
+* [#442](https://github.com/stripe/stripe-php/pull/442) Fix PHPDoc for `\Stripe\Error\SignatureVerification`
+
 ## 6.1.0 - 2018-02-12
 * [#435](https://github.com/stripe/stripe-php/pull/435) Fix header persistence on `Collection` objects
 * [#436](https://github.com/stripe/stripe-php/pull/436) Introduce new `Idempotency` error class
