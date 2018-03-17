@@ -7,6 +7,7 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
+ * @property string $account
  * @property string $api_version
  * @property int $created
  * @property mixed $data
