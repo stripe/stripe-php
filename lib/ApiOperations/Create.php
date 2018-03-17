@@ -10,10 +10,18 @@ namespace Stripe\ApiOperations;
 trait Create
 {
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return \Stripe\ApiResource The created resource.
+     * @throws \Stripe\Error\Api
+     * @throws \Stripe\Error\ApiConnection
+     * @throws \Stripe\Error\Authentication
+     * @throws \Stripe\Error\Card
+     * @throws \Stripe\Error\Idempotency
+     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Error\Permission
+     * @throws \Stripe\Error\RateLimit
      */
     public static function create($params = null, $options = null)
     {

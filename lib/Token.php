@@ -21,4 +21,6 @@ class Token extends ApiResource
 {
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
+
+    const OBJECT_NAME = "token";
 }

@@ -52,11 +52,21 @@ class Invoice extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const OBJECT_NAME = "invoice";
+
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Invoice The upcoming invoice.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function upcoming($params = null, $opts = null)
     {
@@ -68,7 +78,18 @@ class Invoice extends ApiResource
     }
 
     /**
+     * @param null $params
+     * @param null $opts
+     *
      * @return Invoice The paid invoice.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function pay($params = null, $opts = null)
     {

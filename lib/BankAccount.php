@@ -28,9 +28,12 @@ class BankAccount extends ApiResource
     use ApiOperations\Delete;
     use ApiOperations\Update;
 
+    const OBJECT_NAME = "bank_account";
+
     /**
      * @return string The instance URL for this resource. It needs to be special
      *    cased because it doesn't fit into the standard resource pattern.
+     * @throws Error\InvalidRequest
      */
     public function instanceUrl()
     {
@@ -55,7 +58,7 @@ class BankAccount extends ApiResource
      * @param array|string $_id
      * @param array|string|null $_opts
      *
-     * @throws \Stripe\Error\InvalidRequest
+     * @throws Error\InvalidRequest
      */
     public static function retrieve($_id, $_opts = null)
     {
@@ -70,7 +73,7 @@ class BankAccount extends ApiResource
      * @param array|null $_params
      * @param array|string|null $_options
      *
-     * @throws \Stripe\Error\InvalidRequest
+     * @throws Error\InvalidRequest
      */
     public static function update($_id, $_params = null, $_options = null)
     {
@@ -80,17 +83,25 @@ class BankAccount extends ApiResource
         throw new Error\InvalidRequest($msg, null);
     }
 
-   /**
-     * @param array|null $params
+    /**
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return BankAccount The verified bank account.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function verify($params = null, $options = null)
     {
-        $url = $this->instanceUrl() . '/verify';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
-        $this->refreshFrom($response, $opts);
-        return $this;
+         $url = $this->instanceUrl() . '/verify';
+         list($response, $opts) = $this->_request('post', $url, $params, $options);
+         $this->refreshFrom($response, $opts);
+         return $this;
     }
 }

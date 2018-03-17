@@ -28,6 +28,8 @@ class Dispute extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const OBJECT_NAME = "dispute";
+
     /**
      * Possible string representations of dispute reasons.
      * @link https://stripe.com/docs/api#dispute_object
@@ -63,6 +65,14 @@ class Dispute extends ApiResource
      * @param array|string|null $options
      *
      * @return Dispute The closed dispute.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function close($options = null)
     {

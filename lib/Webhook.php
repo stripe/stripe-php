@@ -18,9 +18,10 @@ abstract class Webhook
      * @param string $secret secret used to generate the signature.
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time
-     * @return \Stripe\Event the Event instance
+     * @return Event the Event instance
      * @throws \UnexpectedValueException if the payload is not valid JSON,
-     * @throws \Stripe\Error\SignatureVerification if the verification fails.
+     * @throws Error\SignatureVerification if the verification fails.
+     * @throws Error\Api
      */
     public static function constructEvent($payload, $sigHeader, $secret, $tolerance = self::DEFAULT_TOLERANCE)
     {

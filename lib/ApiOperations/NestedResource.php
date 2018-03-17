@@ -10,12 +10,20 @@ namespace Stripe\ApiOperations;
 trait NestedResource
 {
     /**
-     * @param string $method
-     * @param string $url
-     * @param array|null $params
+     * @param string            $method
+     * @param string            $url
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return \Stripe\StripeObject
+     * @throws \Stripe\Error\Api
+     * @throws \Stripe\Error\ApiConnection
+     * @throws \Stripe\Error\Authentication
+     * @throws \Stripe\Error\Card
+     * @throws \Stripe\Error\Idempotency
+     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Error\Permission
+     * @throws \Stripe\Error\RateLimit
      */
     protected static function _nestedResourceOperation($method, $url, $params = null, $options = null)
     {
@@ -33,6 +41,7 @@ trait NestedResource
      * @param string|null $nestedId
      *
      * @return string
+     * @throws \Stripe\Error\InvalidRequest
      */
     protected static function _nestedResourceUrl($id, $nestedPath, $nestedId = null)
     {
@@ -44,12 +53,20 @@ trait NestedResource
     }
 
     /**
-     * @param string $id
-     * @param string $nestedPath
-     * @param array|null $params
+     * @param string            $id
+     * @param string            $nestedPath
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return \Stripe\StripeObject
+     * @throws \Stripe\Error\Api
+     * @throws \Stripe\Error\ApiConnection
+     * @throws \Stripe\Error\Authentication
+     * @throws \Stripe\Error\Card
+     * @throws \Stripe\Error\Idempotency
+     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Error\Permission
+     * @throws \Stripe\Error\RateLimit
      */
     protected static function _createNestedResource($id, $nestedPath, $params = null, $options = null)
     {
@@ -58,12 +75,21 @@ trait NestedResource
     }
 
     /**
-     * @param string $id
-     * @param string $nestedPath
-     * @param array|null $params
+     * @param string            $id
+     * @param string            $nestedPath
+     * @param                   $nestedId
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return \Stripe\StripeObject
+     * @throws \Stripe\Error\Api
+     * @throws \Stripe\Error\ApiConnection
+     * @throws \Stripe\Error\Authentication
+     * @throws \Stripe\Error\Card
+     * @throws \Stripe\Error\Idempotency
+     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Error\Permission
+     * @throws \Stripe\Error\RateLimit
      */
     protected static function _retrieveNestedResource($id, $nestedPath, $nestedId, $params = null, $options = null)
     {
@@ -72,12 +98,21 @@ trait NestedResource
     }
 
     /**
-     * @param string $id
-     * @param string $nestedPath
-     * @param array|null $params
+     * @param string            $id
+     * @param string            $nestedPath
+     * @param                   $nestedId
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return \Stripe\StripeObject
+     * @throws \Stripe\Error\Api
+     * @throws \Stripe\Error\ApiConnection
+     * @throws \Stripe\Error\Authentication
+     * @throws \Stripe\Error\Card
+     * @throws \Stripe\Error\Idempotency
+     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Error\Permission
+     * @throws \Stripe\Error\RateLimit
      */
     protected static function _updateNestedResource($id, $nestedPath, $nestedId, $params = null, $options = null)
     {
@@ -86,12 +121,21 @@ trait NestedResource
     }
 
     /**
-     * @param string $id
-     * @param string $nestedPath
-     * @param array|null $params
+     * @param string            $id
+     * @param string            $nestedPath
+     * @param                   $nestedId
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return \Stripe\StripeObject
+     * @throws \Stripe\Error\Api
+     * @throws \Stripe\Error\ApiConnection
+     * @throws \Stripe\Error\Authentication
+     * @throws \Stripe\Error\Card
+     * @throws \Stripe\Error\Idempotency
+     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Error\Permission
+     * @throws \Stripe\Error\RateLimit
      */
     protected static function _deleteNestedResource($id, $nestedPath, $nestedId, $params = null, $options = null)
     {
@@ -100,12 +144,20 @@ trait NestedResource
     }
 
     /**
-     * @param string $id
-     * @param string $nestedPath
-     * @param array|null $params
+     * @param string            $id
+     * @param string            $nestedPath
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return \Stripe\StripeObject
+     * @throws \Stripe\Error\Api
+     * @throws \Stripe\Error\ApiConnection
+     * @throws \Stripe\Error\Authentication
+     * @throws \Stripe\Error\Card
+     * @throws \Stripe\Error\Idempotency
+     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Error\Permission
+     * @throws \Stripe\Error\RateLimit
      */
     protected static function _allNestedResources($id, $nestedPath, $params = null, $options = null)
     {

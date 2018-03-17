@@ -44,13 +44,21 @@ class ApiRequestor
     }
 
     /**
-     * @param string $method
-     * @param string $url
+     * @param string     $method
+     * @param string     $url
      * @param array|null $params
      * @param array|null $headers
      *
      * @return array An array whose first element is an API response and second
      *    element is the API key used to make the request.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function request($method, $url, $params = null, $headers = null)
     {
@@ -205,6 +213,17 @@ class ApiRequestor
         return $defaultHeaders;
     }
 
+    /**
+     * @param $method
+     * @param $url
+     * @param $params
+     * @param $headers
+     *
+     * @return array
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     */
     private function _requestRaw($method, $url, $params, $headers)
     {
         $myApiKey = $this->_apiKey;
@@ -273,6 +292,13 @@ class ApiRequestor
         return [$rbody, $rcode, $rheaders, $myApiKey];
     }
 
+    /**
+     * @param $resource
+     * @param $hasCurlFile
+     *
+     * @return \CURLFile|string
+     * @throws Error\Api
+     */
     private function _processResourceParam($resource, $hasCurlFile)
     {
         if (get_resource_type($resource) !== 'stream') {
@@ -296,6 +322,20 @@ class ApiRequestor
         }
     }
 
+    /**
+     * @param $rbody
+     * @param $rcode
+     * @param $rheaders
+     *
+     * @return mixed
+     * @throws Error\Api
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
+     */
     private function _interpretResponse($rbody, $rcode, $rheaders)
     {
         $resp = json_decode($rbody, true);

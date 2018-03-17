@@ -112,4 +112,6 @@ class Event extends ApiResource
 
     use ApiOperations\All;
     use ApiOperations\Retrieve;
+
+    const OBJECT_NAME = "event";
 }

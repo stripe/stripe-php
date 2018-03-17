@@ -9,6 +9,19 @@ namespace Stripe;
  */
 abstract class SingletonApiResource extends ApiResource
 {
+    /**
+     * @param array|null $options
+     *
+     * @return static
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
+     */
     protected static function _singletonRetrieve($options = null)
     {
         $opts = Util\RequestOptions::parse($options);

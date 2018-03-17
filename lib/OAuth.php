@@ -11,6 +11,7 @@ abstract class OAuth
      * @param array|null $opts
      *
      * @return string The URL to Stripe's OAuth form.
+     * @throws Error\Authentication
      */
     public static function authorizeUrl($params = null, $opts = null)
     {
@@ -35,6 +36,14 @@ abstract class OAuth
      * @param array|null $opts
      *
      * @return StripeObject Object containing the response from the API.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function token($params = null, $opts = null)
     {
@@ -56,6 +65,14 @@ abstract class OAuth
      * @param array|null $opts
      *
      * @return StripeObject Object containing the response from the API.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public static function deauthorize($params = null, $opts = null)
     {
@@ -72,6 +89,12 @@ abstract class OAuth
         return Util\Util::convertToStripeObject($response->json, $opts);
     }
 
+    /**
+     * @param null $params
+     *
+     * @return null|string
+     * @throws Error\Authentication
+     */
     private static function _getClientId($params = null)
     {
         $clientId = ($params && array_key_exists('client_id', $params)) ? $params['client_id'] : null;

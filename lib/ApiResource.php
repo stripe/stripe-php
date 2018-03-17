@@ -49,6 +49,14 @@ abstract class ApiResource extends StripeObject
 
     /**
      * @return ApiResource The refreshed resource.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function refresh()
     {
@@ -109,6 +117,7 @@ abstract class ApiResource extends StripeObject
 
     /**
      * @return string The instance endpoint URL for the given class.
+     * @throws Error\InvalidRequest
      */
     public static function resourceUrl($id)
     {
@@ -126,6 +135,7 @@ abstract class ApiResource extends StripeObject
 
     /**
      * @return string The full API URL for this API resource.
+     * @throws Error\InvalidRequest
      */
     public function instanceUrl()
     {

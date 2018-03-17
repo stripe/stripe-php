@@ -18,7 +18,7 @@ namespace Stripe;
  * @property string $customer
  * @property string $description
  * @property string $destination
- * @property string $dispute
+ * @property string|array $dispute
  * @property string $failure_code
  * @property string $failure_message
  * @property mixed $fraud_details
@@ -51,11 +51,21 @@ class Charge extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const OBJECT_NAME = "charge";
+
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Charge The refunded charge.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function refund($params = null, $options = null)
     {
@@ -66,10 +76,18 @@ class Charge extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Charge The captured charge.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function capture($params = null, $options = null)
     {
@@ -80,12 +98,19 @@ class Charge extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
-     * @deprecated Use the `save` method on the Dispute object
-     *
      * @return array The updated dispute.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
+     * @deprecated Use the `save` method on the Dispute object
      */
     public function updateDispute($params = null, $options = null)
     {
@@ -98,9 +123,16 @@ class Charge extends ApiResource
     /**
      * @param array|string|null $options
      *
-     * @deprecated Use the `close` method on the Dispute object
-     *
      * @return Charge The updated charge.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
+     * @deprecated Use the `close` method on the Dispute object
      */
     public function closeDispute($options = null)
     {
@@ -114,6 +146,14 @@ class Charge extends ApiResource
      * @param array|string|null $opts
      *
      * @return Charge The updated charge.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function markAsFraudulent($opts = null)
     {
@@ -128,6 +168,14 @@ class Charge extends ApiResource
      * @param array|string|null $opts
      *
      * @return Charge The updated charge.
+     * @throws Error\Api
+     * @throws Error\ApiConnection
+     * @throws Error\Authentication
+     * @throws Error\Card
+     * @throws Error\Idempotency
+     * @throws Error\InvalidRequest
+     * @throws Error\Permission
+     * @throws Error\RateLimit
      */
     public function markAsSafe($opts = null)
     {

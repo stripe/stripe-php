@@ -20,6 +20,8 @@ class CountrySpec extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Retrieve;
 
+    const OBJECT_NAME = "country_spec";
+
     /**
      * This is a special case because the country specs endpoint has an
      *    underscore in it. The parent `className` function strips underscores.

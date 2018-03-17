@@ -27,4 +27,6 @@ class Refund extends ApiResource
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
+
+    const OBJECT_NAME = "refund";
 }

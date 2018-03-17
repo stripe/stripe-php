@@ -27,6 +27,8 @@ class BalanceTransaction extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Retrieve;
 
+    const OBJECT_NAME = "balance_transaction";
+
     /**
      * @return string The class URL for this resource. It needs to be special
      *    cased because it doesn't fit into the standard resource pattern.

@@ -12,6 +12,8 @@ class OrderReturn extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Retrieve;
 
+    const OBJECT_NAME = "order_return";
+
     /**
      * This is a special case because the order returns endpoint has an
      *    underscore in it. The parent `className` function strips underscores.

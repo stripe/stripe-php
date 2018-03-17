@@ -2,10 +2,6 @@
 
 namespace Stripe\HttpClient;
 
-use Stripe\Stripe;
-use Stripe\Error;
-use Stripe\Util;
-
 // cURL constants are not defined in PHP < 5.5
 
 // @codingStandardsIgnoreStart
@@ -54,7 +50,7 @@ class CurlClient implements ClientInterface
     public function __construct($defaultOptions = null, $randomGenerator = null)
     {
         $this->defaultOptions = $defaultOptions;
-        $this->randomGenerator = $randomGenerator ?: new Util\RandomGenerator();
+        $this->randomGenerator = $randomGenerator ?: new \Stripe\Util\RandomGenerator();
         $this->initUserAgentInfo();
     }
 
@@ -109,6 +105,17 @@ class CurlClient implements ClientInterface
 
     // END OF USER DEFINED TIMEOUTS
 
+    /**
+     * @param string $method
+     * @param string $absUrl
+     * @param array  $headers
+     * @param array  $params
+     * @param bool   $hasFile
+     *
+     * @return array
+     * @throws \Stripe\Error\Api
+     * @throws \Stripe\Error\ApiConnection
+     */
     public function request($method, $absUrl, $headers, $params, $hasFile)
     {
         $method = strtolower($method);
@@ -117,7 +124,7 @@ class CurlClient implements ClientInterface
         if (is_callable($this->defaultOptions)) { // call defaultOptions callback, set options to return value
             $opts = call_user_func_array($this->defaultOptions, func_get_args());
             if (!is_array($opts)) {
-                throw new Error\Api("Non-array value returned by defaultOptions CurlClient callback");
+                throw new \Stripe\Error\Api("Non-array value returned by defaultOptions CurlClient callback");
             }
         } elseif (is_array($this->defaultOptions)) { // set default curlopts from array
             $opts = $this->defaultOptions;
@@ -125,31 +132,31 @@ class CurlClient implements ClientInterface
 
         if ($method == 'get') {
             if ($hasFile) {
-                throw new Error\Api(
+                throw new \Stripe\Error\Api(
                     "Issuing a GET request with a file parameter"
                 );
             }
             $opts[CURLOPT_HTTPGET] = 1;
             if (count($params) > 0) {
-                $encoded = Util\Util::urlEncode($params);
+                $encoded = \Stripe\Util\Util::urlEncode($params);
                 $absUrl = "$absUrl?$encoded";
             }
         } elseif ($method == 'post') {
             $opts[CURLOPT_POST] = 1;
-            $opts[CURLOPT_POSTFIELDS] = $hasFile ? $params : Util\Util::urlEncode($params);
+            $opts[CURLOPT_POSTFIELDS] = $hasFile ? $params : \Stripe\Util\Util::urlEncode($params);
         } elseif ($method == 'delete') {
             $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
             if (count($params) > 0) {
-                $encoded = Util\Util::urlEncode($params);
+                $encoded = \Stripe\Util\Util::urlEncode($params);
                 $absUrl = "$absUrl?$encoded";
             }
         } else {
-            throw new Error\Api("Unrecognized method $method");
+            throw new \Stripe\Error\Api("Unrecognized method $method");
         }
 
         // It is only safe to retry network failures on POST requests if we
         // add an Idempotency-Key header
-        if (($method == 'post') && (Stripe::$maxNetworkRetries > 0)) {
+        if (($method == 'post') && (\Stripe\Stripe::$maxNetworkRetries > 0)) {
             if (!isset($headers['Idempotency-Key'])) {
                 array_push($headers, 'Idempotency-Key: ' . $this->randomGenerator->uuid());
             }
@@ -181,15 +188,15 @@ class CurlClient implements ClientInterface
         // sending an empty `Expect:` header.
         array_push($headers, 'Expect: ');
 
-        $absUrl = Util\Util::utf8($absUrl);
+        $absUrl = \Stripe\Util\Util::utf8($absUrl);
         $opts[CURLOPT_URL] = $absUrl;
         $opts[CURLOPT_RETURNTRANSFER] = true;
         $opts[CURLOPT_CONNECTTIMEOUT] = $this->connectTimeout;
         $opts[CURLOPT_TIMEOUT] = $this->timeout;
         $opts[CURLOPT_HEADERFUNCTION] = $headerCallback;
         $opts[CURLOPT_HTTPHEADER] = $headers;
-        $opts[CURLOPT_CAINFO] = Stripe::getCABundlePath();
-        if (!Stripe::getVerifySslCerts()) {
+        $opts[CURLOPT_CAINFO] = \Stripe\Stripe::getCABundlePath();
+        if (!\Stripe\Stripe::getVerifySslCerts()) {
             $opts[CURLOPT_SSL_VERIFYPEER] = false;
         }
 
@@ -200,6 +207,9 @@ class CurlClient implements ClientInterface
 
     /**
      * @param array $opts cURL options
+     *
+     * @throws \Stripe\Error\ApiConnection
+     * @return array
      */
     private function executeRequestWithRetries($opts, $absUrl)
     {
@@ -242,7 +252,7 @@ class CurlClient implements ClientInterface
      * @param int $errno
      * @param string $message
      * @param int $numRetries
-     * @throws Error\ApiConnection
+     * @throws \Stripe\Error\ApiConnection
      */
     private function handleCurlError($url, $errno, $message, $numRetries)
     {
@@ -274,7 +284,7 @@ class CurlClient implements ClientInterface
             $msg .= "\n\nRequest was retried $numRetries times.";
         }
 
-        throw new Error\ApiConnection($msg);
+        throw new \Stripe\Error\ApiConnection($msg);
     }
 
     /**
@@ -288,7 +298,7 @@ class CurlClient implements ClientInterface
      */
     private function shouldRetry($errno, $rcode, $numRetries)
     {
-        if ($numRetries >= Stripe::getMaxNetworkRetries()) {
+        if ($numRetries >= \Stripe\Stripe::getMaxNetworkRetries()) {
             return false;
         }
 
@@ -318,8 +328,8 @@ class CurlClient implements ClientInterface
         // number of $numRetries so far as inputs. Do not allow the number to exceed
         // $maxNetworkRetryDelay.
         $sleepSeconds = min(
-            Stripe::getInitialNetworkRetryDelay() * 1.0 * pow(2, $numRetries - 1),
-            Stripe::getMaxNetworkRetryDelay()
+            \Stripe\Stripe::getInitialNetworkRetryDelay() * 1.0 * pow(2, $numRetries - 1),
+            \Stripe\Stripe::getMaxNetworkRetryDelay()
         );
 
         // Apply some jitter by randomizing the value in the range of
@@ -327,7 +337,7 @@ class CurlClient implements ClientInterface
         $sleepSeconds *= 0.5 * (1 + $this->randomGenerator->randFloat());
 
         // But never sleep less than the base sleep seconds.
-        $sleepSeconds = max(Stripe::getInitialNetworkRetryDelay(), $sleepSeconds);
+        $sleepSeconds = max(\Stripe\Stripe::getInitialNetworkRetryDelay(), $sleepSeconds);
 
         return $sleepSeconds;
     }

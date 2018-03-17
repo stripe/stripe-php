@@ -34,4 +34,6 @@ class Product extends ApiResource
     use ApiOperations\Delete;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
+
+    const OBJECT_NAME = "product";
 }
