@@ -270,6 +270,17 @@ EOS;
     public function testSerializeParametersOnReplacedStripeObject()
     {
         $obj = StripeObject::constructFrom([
+            'source' => StripeObject::constructFrom(['bar' => 'foo']),
+        ]);
+        $obj->source = StripeObject::constructFrom(['baz' => 'foo']);
+
+        $serialized = $obj->serializeParameters();
+        $this->assertSame(['baz' => 'foo'], $serialized['source']);
+    }
+
+    public function testSerializeParametersOnReplacedStripeObjectWhichIsMetadata()
+    {
+        $obj = StripeObject::constructFrom([
             'metadata' => StripeObject::constructFrom(['bar' => 'foo']),
         ]);
         $obj->metadata = StripeObject::constructFrom(['baz' => 'foo']);
