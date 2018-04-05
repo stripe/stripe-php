@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.5.0 - 2018-04-05
+* [#461](https://github.com/stripe/stripe-php/pull/461) Don't zero keys on non-`metadata` subobjects
+
 ## 6.4.2 - 2018-03-17
 * [#458](https://github.com/stripe/stripe-php/pull/458) Add PHPDoc for `account` on `\Stripe\Event`
 
