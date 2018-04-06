@@ -157,7 +157,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts/' . self::TEST_EXTERNALACCOUNT_ID
         );
         $resource = Account::deleteExternalAccount(self::TEST_RESOURCE_ID, self::TEST_EXTERNALACCOUNT_ID);
-        $this->assertInstanceOf("Stripe\\BankAccount", $resource);
+        $this->assertTrue($resource->deleted);
     }
 
     public function testCanListExternalAccounts()
