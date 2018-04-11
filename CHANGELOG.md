@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.6.0 - 2018-04-11
+* [#460](https://github.com/stripe/stripe-php/pull/460) Add support for flexible billing primitives
+
 ## 6.5.0 - 2018-04-05
 * [#461](https://github.com/stripe/stripe-php/pull/461) Don't zero keys on non-`metadata` subobjects
 
