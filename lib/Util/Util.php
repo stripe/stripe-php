@@ -111,6 +111,7 @@ abstract class Util
             'topup' => 'Stripe\\Topup',
             'transfer' => 'Stripe\\Transfer',
             'transfer_reversal' => 'Stripe\\TransferReversal',
+            'usage_record' => 'Stripe\\UsageRecord',
         ];
         if (self::isList($resp)) {
             $mapped = [];
