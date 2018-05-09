@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.7.0 - 2018-05-09
+* [#466](https://github.com/stripe/stripe-php/pull/466) Add support for issuer fraud records
+
 ## 6.6.0 - 2018-04-11
 * [#460](https://github.com/stripe/stripe-php/pull/460) Add support for flexible billing primitives
 
