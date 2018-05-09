@@ -92,6 +92,7 @@ abstract class Util
             'file_upload' => 'Stripe\\FileUpload',
             'invoice' => 'Stripe\\Invoice',
             'invoiceitem' => 'Stripe\\InvoiceItem',
+            'issuer_fraud_record' => 'Stripe\\IssuerFraudRecord',
             'login_link' => 'Stripe\\LoginLink',
             'order' => 'Stripe\\Order',
             'order_return' => 'Stripe\\OrderReturn',
