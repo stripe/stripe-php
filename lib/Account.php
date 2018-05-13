@@ -20,7 +20,7 @@ namespace Stripe;
  * @property bool $details_submitted
  * @property string $display_name
  * @property string $email
- * @property mixed $external_accounts
+ * @property Collection $external_accounts
  * @property mixed $legal_entity
  * @property StripeObject $metadata
  * @property mixed $payout_schedule
@@ -28,10 +28,13 @@ namespace Stripe;
  * @property bool $payouts_enabled
  * @property string $product_description
  * @property string $statement_descriptor
+ * @property mixed $support_address
  * @property string $support_email
  * @property string $support_phone
+ * @property string $support_url
  * @property string $timezone
  * @property mixed $tos_acceptance
+ * @property string $type
  * @property mixed $verification
  *
  * @package Stripe
