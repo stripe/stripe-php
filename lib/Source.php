@@ -27,6 +27,9 @@ namespace Stripe;
  */
 class Source extends ApiResource
 {
+
+    const OBJECT_NAME = "source";
+
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;

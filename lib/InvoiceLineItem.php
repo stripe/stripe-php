@@ -3,17 +3,15 @@
 namespace Stripe;
 
 /**
- * Class InvoiceItem
+ * Class InvoiceLineItem
  *
  * @property string $id
  * @property string $object
  * @property int $amount
  * @property string $currency
- * @property string $customer
- * @property int $date
  * @property string $description
  * @property bool $discountable
- * @property string $invoice
+ * @property string $invoice_item
  * @property bool $livemode
  * @property StripeObject $metadata
  * @property mixed $period
@@ -22,13 +20,14 @@ namespace Stripe;
  * @property int $quantity
  * @property string $subscription
  * @property string $subscription_item
+ * @property string $type
  *
  * @package Stripe
  */
-class InvoiceItem extends ApiResource
+class InvoiceLineItem extends ApiResource
 {
 
-    const OBJECT_NAME = "invoiceitem";
+    const OBJECT_NAME = "line_item";
 
     use ApiOperations\All;
     use ApiOperations\Create;

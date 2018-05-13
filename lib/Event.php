@@ -20,6 +20,9 @@ namespace Stripe;
  */
 class Event extends ApiResource
 {
+
+    const OBJECT_NAME = "event";
+
      /**
      * Possible string representations of event types.
      * @link https://stripe.com/docs/api#event_types
