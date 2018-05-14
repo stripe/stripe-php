@@ -9,6 +9,7 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
+ * @property string $aggregate_usage
  * @property int $amount
  * @property string $billing_scheme
  * @property int $created
@@ -19,8 +20,9 @@ namespace Stripe;
  * @property StripeObject $metadata
  * @property string $nickname
  * @property string $product
- * @property array $tiers
+ * @property mixed $tiers
  * @property string $tiers_mode
+ * @property mixed $transform_usage
  * @property int $trial_period_days
  * @property string $usage_type
  */

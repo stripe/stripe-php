@@ -7,6 +7,7 @@ namespace Stripe;
  *
  * @property string $object
  * @property array $available
+ * @property array $connect_reserved
  * @property bool $livemode
  * @property array $pending
  *

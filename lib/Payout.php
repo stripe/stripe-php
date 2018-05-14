@@ -8,12 +8,13 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property int $amount
+ * @property int $arrival_date
+ * @property bool $automatic
  * @property string $balance_transaction
- * @property string $cancellation_balance_transaction
  * @property int $created
  * @property string $currency
- * @property int $arrival_date
  * @property string $destination
+ * @property string $failure_balance_transaction
  * @property string $failure_code
  * @property string $failure_message
  * @property bool $livemode

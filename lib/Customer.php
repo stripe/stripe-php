@@ -16,6 +16,7 @@ namespace Stripe;
  * @property string $description
  * @property mixed $discount
  * @property string $email
+ * @property string $invoice_prefix
  * @property bool $livemode
  * @property StripeObject $metadata
  * @property mixed $shipping
