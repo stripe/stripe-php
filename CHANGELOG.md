@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.7.1 - 2018-05-13
+* [#468](https://github.com/stripe/stripe-php/pull/468) Update fields in PHP docs for accuracy
+
 ## 6.7.0 - 2018-05-09
 * [#466](https://github.com/stripe/stripe-php/pull/466) Add support for issuer fraud records
 
