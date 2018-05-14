@@ -62,7 +62,7 @@ Please see https://stripe.com/docs/api for up-to-date documentation.
 
 ### PHP 5.3
 
-If you are using PHP 5.3, you can download v5.8.0 ([zip](https://github.com/stripe/stripe-php/archive/v5.8.0.zip), [tar.gz](https://github.com/stripe/stripe-php/archive/v5.8.0.tar.gz)) from our [releases page](https://github.com/stripe/stripe-php/releases). This version will continue to work with new versions of the Stripe API for all common uses.
+If you are using PHP 5.3, you can download v5.9.2 ([zip](https://github.com/stripe/stripe-php/archive/v5.9.2.zip), [tar.gz](https://github.com/stripe/stripe-php/archive/v5.9.2.tar.gz)) from our [releases page](https://github.com/stripe/stripe-php/releases). This version will continue to work with new versions of the Stripe API for all common uses.
 
 ### PHP 5.2
 
