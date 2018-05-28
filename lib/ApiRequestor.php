@@ -20,7 +20,7 @@ class ApiRequestor
     private $_apiBase;
 
     /**
-     * @var HttpClient\CurlClient
+     * @var HttpClient\ClientInterface
      */
     private static $_httpClient;
 
@@ -66,8 +66,8 @@ class ApiRequestor
     }
 
     /**
-     * @param string $method
-     * @param string $url
+     * @param string     $method
+     * @param string     $url
      * @param array|null $params
      * @param array|null $headers
      *
@@ -99,12 +99,11 @@ class ApiRequestor
 
     /**
      * @param string $rbody A JSON string.
-     * @param int $rcode
-     * @param array $rheaders
-     * @param array $resp
+     * @param int    $rcode
+     * @param array  $rheaders
+     * @param array  $resp
      *
      * @throws Error\InvalidRequest if the error is caused by the user.
-     * @throws Error\Idempotency if the error is caused by an idempotency key.
      * @throws Error\Authentication if the error is caused by a lack of
      *    permissions.
      * @throws Error\Permission if the error is caused by insufficient
@@ -149,10 +148,10 @@ class ApiRequestor
      * @static
      *
      * @param string $rbody
-     * @param int $rcode
-     * @param array $rheaders
-     * @param array $resp
-     * @param array $errorData
+     * @param int    $rcode
+     * @param array  $rheaders
+     * @param array  $resp
+     * @param array  $errorData
      *
      * @return Error\Api|Error\Authentication|Error\Card|Error\InvalidRequest|Error\Permission|Error\RateLimit
      */
@@ -226,7 +225,7 @@ class ApiRequestor
     /**
      * @static
      *
-     * @param $appInfo
+     * @param null|array $appInfo
      *
      * @return null|string
      */
