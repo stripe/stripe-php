@@ -15,6 +15,9 @@ namespace Stripe;
  */
 class Balance extends SingletonApiResource
 {
+
+    const OBJECT_NAME = "balance";
+
     /**
      * @param array|string|null $opts
      *

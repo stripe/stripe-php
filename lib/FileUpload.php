@@ -16,6 +16,9 @@ namespace Stripe;
  */
 class FileUpload extends ApiResource
 {
+
+    const OBJECT_NAME = "file_upload";
+
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Retrieve;

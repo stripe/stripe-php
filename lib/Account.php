@@ -41,6 +41,9 @@ namespace Stripe;
  */
 class Account extends ApiResource
 {
+
+    const OBJECT_NAME = "account";
+
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Delete;

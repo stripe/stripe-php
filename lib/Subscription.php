@@ -33,6 +33,9 @@ namespace Stripe;
  */
 class Subscription extends ApiResource
 {
+
+    const OBJECT_NAME = "subscription";
+
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Delete {

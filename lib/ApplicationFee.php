@@ -24,6 +24,9 @@ namespace Stripe;
  */
 class ApplicationFee extends ApiResource
 {
+
+    const OBJECT_NAME = "application_fee";
+
     use ApiOperations\All;
     use ApiOperations\NestedResource;
     use ApiOperations\Retrieve;

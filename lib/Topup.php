@@ -25,6 +25,9 @@ namespace Stripe;
  */
 class Topup extends ApiResource
 {
+
+    const OBJECT_NAME = "topup";
+
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
