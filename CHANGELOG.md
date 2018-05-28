@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.7.3 - 2018-05-28
+* [#479](https://github.com/stripe/stripe-php/pull/479) Fix unnecessary traits on `\Stripe\InvoiceLineItem`
+
 ## 6.7.2 - 2018-05-28
 * [#471](https://github.com/stripe/stripe-php/pull/471) Add `OBJECT_NAME` constant to all API resource classes, add `\Stripe\InvoiceLineItem` class
 
