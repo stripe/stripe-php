@@ -19,9 +19,9 @@ namespace Stripe;
  * @property string $name
  * @property mixed $package_dimensions
  * @property bool $shippable
- * @property Collection $skus
  * @property string $statement_descriptor
  * @property string $type
+ * @property string $unit_label
  * @property int $updated
  * @property string $url
  *
