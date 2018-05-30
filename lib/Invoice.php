@@ -14,16 +14,19 @@ namespace Stripe;
  * @property int $attempt_count
  * @property bool $attempted
  * @property string $billing
+ * @property string $billing_reason
  * @property string $charge
  * @property bool $closed
  * @property string $currency
  * @property string $customer
  * @property int $date
  * @property string $description
- * @property mixed $discount
+ * @property Discount $discount
  * @property int $due_date
  * @property int $ending_balance
  * @property bool $forgiven
+ * @property string $hosted_invoice_url
+ * @property string $invoice_pdf
  * @property Collection $lines
  * @property bool $livemode
  * @property StripeObject $metadata

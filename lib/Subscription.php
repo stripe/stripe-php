@@ -9,6 +9,7 @@ namespace Stripe;
  * @property string $object
  * @property float $application_fee_percent
  * @property string $billing
+ * @property int $billing_cycle_anchor
  * @property bool $cancel_at_period_end
  * @property int $canceled_at
  * @property int $created
@@ -16,7 +17,7 @@ namespace Stripe;
  * @property int current_period_start
  * @property string $customer
  * @property int $days_until_due
- * @property mixed $discount
+ * @property Discount $discount
  * @property int $ended_at
  * @property Collection $items
  * @property boolean $livemode
@@ -49,11 +50,11 @@ class Subscription extends ApiResource
      *
      * @link https://stripe.com/docs/api#subscription_object-status
      */
-    const STATUS_ACTIVE = 'active';
+    const STATUS_ACTIVE   = 'active';
     const STATUS_CANCELED = 'canceled';
     const STATUS_PAST_DUE = 'past_due';
     const STATUS_TRIALING = 'trialing';
-    const STATUS_UNPAID = 'unpaid';
+    const STATUS_UNPAID   = 'unpaid';
 
     public static function getSavedNestedResources()
     {

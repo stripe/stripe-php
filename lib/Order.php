@@ -17,7 +17,7 @@ namespace Stripe;
  * @property string $customer
  * @property string $email
  * @property string $external_coupon_code
- * @property mixed $items
+ * @property OrderItem[] $items
  * @property bool $livemode
  * @property StripeObject $metadata
  * @property Collection $returns
