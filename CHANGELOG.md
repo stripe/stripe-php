@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.7.4 - 2018-05-29
+* [#480](https://github.com/stripe/stripe-php/pull/480) PHPDoc changes for API version 2018-05-21 and the addition of the new `CHARGE_EXPIRED` event type
+
 ## 6.7.3 - 2018-05-28
 * [#479](https://github.com/stripe/stripe-php/pull/479) Fix unnecessary traits on `\Stripe\InvoiceLineItem`
 
