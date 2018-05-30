@@ -85,6 +85,7 @@ class ApiRequestor
      * @throws Error\OAuth\UnsupportedResponseType
      * @throws Error\Permission
      * @throws Error\RateLimit
+     * @throws Error\Idempotency
      */
     public function request($method, $url, $params = null, $headers = null)
     {
@@ -99,9 +100,9 @@ class ApiRequestor
 
     /**
      * @param string $rbody A JSON string.
-     * @param int    $rcode
-     * @param array  $rheaders
-     * @param array  $resp
+     * @param int $rcode
+     * @param array $rheaders
+     * @param array $resp
      *
      * @throws Error\InvalidRequest if the error is caused by the user.
      * @throws Error\Authentication if the error is caused by a lack of
@@ -111,6 +112,7 @@ class ApiRequestor
      * @throws Error\Card if the error is the error code is 402 (payment
      *    required)
      * @throws Error\InvalidRequest if the error is caused by the user.
+     * @throws Error\Idempotency if the error is caused by an idempotency key.
      * @throws Error\OAuth\InvalidClient
      * @throws Error\OAuth\InvalidGrant
      * @throws Error\OAuth\InvalidRequest
@@ -153,7 +155,7 @@ class ApiRequestor
      * @param array  $resp
      * @param array  $errorData
      *
-     * @return Error\Api|Error\Authentication|Error\Card|Error\InvalidRequest|Error\Permission|Error\RateLimit
+     * @return Error\Api|Error\Authentication|Error\Card|Error\InvalidRequest|Error\Permission|Error\RateLimit|Error\Idempotency
      */
     private static function _specificAPIError($rbody, $rcode, $rheaders, $resp, $errorData)
     {
@@ -410,6 +412,7 @@ class ApiRequestor
      * @throws Error\OAuth\UnsupportedResponseType
      * @throws Error\Permission
      * @throws Error\RateLimit
+     * @throws Error\Idempotency
      */
     private function _interpretResponse($rbody, $rcode, $rheaders)
     {
