@@ -198,7 +198,7 @@ class ApiRequestor
      * @param int         $rcode
      * @param array       $rheaders
      * @param array       $resp
-     * @param array       $errorCode
+     * @param string      $errorCode
      *
      * @return null|Error\OAuth\InvalidClient|Error\OAuth\InvalidGrant|Error\OAuth\InvalidRequest|Error\OAuth\InvalidScope|Error\OAuth\UnsupportedGrantType|Error\OAuth\UnsupportedResponseType
      */
@@ -395,9 +395,9 @@ class ApiRequestor
     }
 
     /**
-     * @param bool|string $rbody
-     * @param int         $rcode
-     * @param array       $rheaders
+     * @param string $rbody
+     * @param int    $rcode
+     * @param array  $rheaders
      *
      * @return mixed
      * @throws Error\Api
