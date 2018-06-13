@@ -42,9 +42,9 @@ class ApiRequestor
     /**
      * @static
      *
-     * @param array|bool|mixed $d
+     * @param ApiResource|bool|array|mixed $d
      *
-     * @return array|string|mixed
+     * @return ApiResource|array|string|mixed
      */
     private static function _encodeObjects($d)
     {
@@ -86,6 +86,7 @@ class ApiRequestor
      * @throws Error\Permission
      * @throws Error\RateLimit
      * @throws Error\Idempotency
+     * @throws Error\ApiConnection
      */
     public function request($method, $url, $params = null, $headers = null)
     {
@@ -155,7 +156,7 @@ class ApiRequestor
      * @param array  $resp
      * @param array  $errorData
      *
-     * @return Error\Api|Error\Authentication|Error\Card|Error\InvalidRequest|Error\Permission|Error\RateLimit|Error\Idempotency
+     * @return Error\RateLimit|Error\Idempotency|Error\InvalidRequest|Error\Authentication|Error\Card|Error\Permission|Error\Api
      */
     private static function _specificAPIError($rbody, $rcode, $rheaders, $resp, $errorData)
     {
@@ -294,6 +295,7 @@ class ApiRequestor
      *
      * @return array
      * @throws Error\Api
+     * @throws Error\ApiConnection
      * @throws Error\Authentication
      */
     private function _requestRaw($method, $url, $params, $headers)
@@ -433,7 +435,7 @@ class ApiRequestor
     /**
      * @static
      *
-     * @param HttpClient\CurlClient $client
+     * @param HttpClient\ClientInterface $client
      */
     public static function setHttpClient($client)
     {
@@ -441,7 +443,7 @@ class ApiRequestor
     }
 
     /**
-     * @return HttpClient\CurlClient
+     * @return HttpClient\ClientInterface
      */
     private function httpClient()
     {
