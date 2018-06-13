@@ -9,6 +9,7 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
+ * @property bool $active
  * @property string $aggregate_usage
  * @property int $amount
  * @property string $billing_scheme

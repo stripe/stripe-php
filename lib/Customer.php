@@ -14,7 +14,7 @@ namespace Stripe;
  * @property string $default_source
  * @property bool $delinquent
  * @property string $description
- * @property mixed $discount
+ * @property Discount $discount
  * @property string $email
  * @property string $invoice_prefix
  * @property bool $livemode
