@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.8.0 - 2018-06-13
+* [#481](https://github.com/stripe/stripe-php/pull/481) Add new `\Stripe\Discount` and `\Stripe\OrderItem` classes, add more PHPDoc describing object attributes
+
 ## 6.7.4 - 2018-05-29
 * [#480](https://github.com/stripe/stripe-php/pull/480) PHPDoc changes for API version 2018-05-21 and the addition of the new `CHARGE_EXPIRED` event type
 
