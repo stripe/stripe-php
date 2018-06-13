@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.8.1 - 2018-06-13
+* [#472](https://github.com/stripe/stripe-php/pull/472) Added phpDoc for `ApiRequestor` and others, especially regarding thrown errors
+
 ## 6.8.0 - 2018-06-13
 * [#481](https://github.com/stripe/stripe-php/pull/481) Add new `\Stripe\Discount` and `\Stripe\OrderItem` classes, add more PHPDoc describing object attributes
 
