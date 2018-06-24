@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.8.2 - 2018-06-24
+* [#486](https://github.com/stripe/stripe-php/pull/486) Make `Account.deauthorize()` return the `StripeObject` from the API
+
 ## 6.8.1 - 2018-06-13
 * [#472](https://github.com/stripe/stripe-php/pull/472) Added phpDoc for `ApiRequestor` and others, especially regarding thrown errors
 
