@@ -119,7 +119,7 @@ class Account extends ApiResource
             'client_id' => $clientId,
             'stripe_user_id' => $this->id,
         ];
-        OAuth::deauthorize($params, $opts);
+        return OAuth::deauthorize($params, $opts);
     }
 
     /**
