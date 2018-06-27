@@ -57,7 +57,7 @@ class ApiRequestorTest extends TestCase
         $method->setAccessible(true);
 
         // no way to stub static methods with PHPUnit 4.x :(
-        Stripe::setAppInfo('MyTestApp', '1.2.34', 'https://mytestapp.example');
+        Stripe::setAppInfo('MyTestApp', '1.2.34', 'https://mytestapp.example', 'partner_1234');
         $apiKey = 'sk_test_notarealkey';
         $clientInfo = ['httplib' => 'testlib 0.1.2'];
 
@@ -67,6 +67,7 @@ class ApiRequestorTest extends TestCase
         $this->assertSame($ua->application->name, 'MyTestApp');
         $this->assertSame($ua->application->version, '1.2.34');
         $this->assertSame($ua->application->url, 'https://mytestapp.example');
+        $this->assertSame($ua->application->partner_id, 'partner_1234');
 
         $this->assertSame($ua->httplib, 'testlib 0.1.2');
 
