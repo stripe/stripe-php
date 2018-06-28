@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.10.0 - 2018-06-28
+* [#488](https://github.com/stripe/stripe-php/pull/488) Add support for `$appPartnerId` to `Stripe::setAppInfo()`
+
 ## 6.9.0 - 2018-06-28
 * [#487](https://github.com/stripe/stripe-php/pull/487) Add support for payment intents
 
