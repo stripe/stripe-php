@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.9.0 - 2018-06-28
+* [#487](https://github.com/stripe/stripe-php/pull/487) Add support for payment intents
+
 ## 6.8.2 - 2018-06-24
 * [#486](https://github.com/stripe/stripe-php/pull/486) Make `Account.deauthorize()` return the `StripeObject` from the API
 
