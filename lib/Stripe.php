@@ -199,12 +199,13 @@ class Stripe
      * @param string $appVersion The application's version
      * @param string $appUrl The application's URL
      */
-    public static function setAppInfo($appName, $appVersion = null, $appUrl = null)
+    public static function setAppInfo($appName, $appVersion = null, $appUrl = null, $appPartnerId = null)
     {
         self::$appInfo = self::$appInfo ?: [];
         self::$appInfo['name'] = $appName;
-        self::$appInfo['version'] = $appVersion;
+        self::$appInfo['partner_id'] = $appPartnerId;
         self::$appInfo['url'] = $appUrl;
+        self::$appInfo['version'] = $appVersion;
     }
 
     /**
