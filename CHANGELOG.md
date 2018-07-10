@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.10.1 - 2018-07-10
+* [#493](https://github.com/stripe/stripe-php/pull/493) Add PHPDoc for `auto_advance` on `\Stripe\Invoice`
+
 ## 6.10.0 - 2018-06-28
 * [#488](https://github.com/stripe/stripe-php/pull/488) Add support for `$appPartnerId` to `Stripe::setAppInfo()`
 
