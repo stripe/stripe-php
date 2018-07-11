@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.10.2 - 2018-07-11
+* [#494](https://github.com/stripe/stripe-php/pull/494) Enable HTTP/2 support
+
 ## 6.10.1 - 2018-07-10
 * [#493](https://github.com/stripe/stripe-php/pull/493) Add PHPDoc for `auto_advance` on `\Stripe\Invoice`
 
