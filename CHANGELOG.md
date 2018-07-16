@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.10.3 - 2018-07-16
+* [#497](https://github.com/stripe/stripe-php/pull/497) Use HTTP/2 only for HTTPS requests
+
 ## 6.10.2 - 2018-07-11
 * [#494](https://github.com/stripe/stripe-php/pull/494) Enable HTTP/2 support
 
