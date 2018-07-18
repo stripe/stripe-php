@@ -30,8 +30,8 @@ class FileUpload extends ApiResource
         return Stripe::$apiUploadBase;
     }
 
-    public static function className()
+    public static function classUrl()
     {
-        return 'file';
+        return '/v1/files';
     }
 }

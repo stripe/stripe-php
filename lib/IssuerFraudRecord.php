@@ -22,9 +22,4 @@ class IssuerFraudRecord extends ApiResource
 
     use ApiOperations\All;
     use ApiOperations\Retrieve;
-
-    public static function classUrl()
-    {
-        return "/v1/issuer_fraud_records";
-    }
 }
