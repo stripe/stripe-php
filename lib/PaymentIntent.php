@@ -47,17 +47,6 @@ class PaymentIntent extends ApiResource
     use ApiOperations\Update;
 
     /**
-     * This is a special case because the payment intents endpoint has an
-     *    underscore in it. The parent `className` function strips underscores.
-     *
-     * @return string The name of the class.
-     */
-    public static function className()
-    {
-        return 'payment_intent';
-    }
-
-    /**
      * @param array|null $params
      * @param array|string|null $options
      *
