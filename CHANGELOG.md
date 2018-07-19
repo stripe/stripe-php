@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.10.4 - 2018-07-19
+* [#498](https://github.com/stripe/stripe-php/pull/498) Internal improvements to the `\Stripe\ApiResource.classUrl()` method
+
 ## 6.10.3 - 2018-07-16
 * [#497](https://github.com/stripe/stripe-php/pull/497) Use HTTP/2 only for HTTPS requests
 
