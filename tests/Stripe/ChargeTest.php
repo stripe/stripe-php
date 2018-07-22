@@ -137,4 +137,41 @@ class ChargeTest extends TestCase
         $this->assertInstanceOf("Stripe\\Charge", $resource);
         $this->assertSame($resource, $charge);
     }
+
+    public function testStatementDescriptorSanitization()
+    {
+        // Strings that are fine will pass.
+        $this->assertEquals(
+            'This is fine.',
+            Charge::sanitizeStatementDescriptor('This is fine.')
+        );
+
+        // Long strings are truncated.
+        $this->assertEquals(
+            'This string is longer ',
+            Charge::sanitizeStatementDescriptor('This string is longer than 22 characters.')
+        );
+
+        // Disallowed characters are stripped out.
+        $this->assertEquals(
+            '<b>"Disallowed\' bits</b>',
+            Charge::sanitizeStatementDescriptor('bDisallowed bits/b')
+        );
+
+        // A prefix is not applied if the descriptor is not numeric.
+        $this->assertEquals(
+            'Hello world.',
+            Charge::sanitizeStatementDescriptor('Hello world.', 'Example: ')
+        );
+
+        // A prefix is applied if the descriptor is numeric.
+        $this->assertEquals(
+            'Example: 123',
+            Charge::sanitizeStatementDescriptor('123', 'Example: ')
+        );
+
+        // A prefix must be supplied if the descriptor is numeric.
+        $this->expectsException(\InvalidArgumentException::class);
+        Charge::sanitizeStatementDescriptor('123');
+    }
 }
