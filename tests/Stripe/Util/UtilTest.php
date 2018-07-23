@@ -25,7 +25,7 @@ class UtilTest extends TestCase
     public function testConvertStripeObjectToArrayIncludesId()
     {
         $customer = Util\Util::convertToStripeObject([
-            'id' => 'cus_123',
+            'id' => 'cus_',
             'object' => 'customer',
         ], null);
         $this->assertTrue(array_key_exists("id", $customer->__toArray(true)));
@@ -86,5 +86,30 @@ class UtilTest extends TestCase
         $a = ['foo' => [['bar' => 'baz'], ['bar' => 'bin']]];
         $enc = Util\Util::urlEncode($a);
         $this->assertSame('foo%5B0%5D%5Bbar%5D=baz&foo%5B1%5D%5Bbar%5D=bin', $enc);
+    }
+
+    public function testStatementDescriptorSanitization()
+    {
+        // Strings that are fine will pass.
+        $this->assertEquals(
+            'This is fine.',
+            Util\Util::sanitizeStatementDescriptor('This is fine.')
+        );
+
+        // Long strings are truncated.
+        $this->assertEquals(
+            'This string is longer ',
+            Util\Util::sanitizeStatementDescriptor('This string is longer than 22 characters.')
+        );
+
+        // Disallowed characters are stripped out.
+        $this->assertEquals(
+            'bDisallowed bits/b',
+            Util\Util::sanitizeStatementDescriptor('<b>"Disallowed\' bits</b>')
+        );
+
+        // A statement can not be numeric.
+        $this->expectException('\InvalidArgumentException');
+        Util\Util::sanitizeStatementDescriptor('123');
     }
 }

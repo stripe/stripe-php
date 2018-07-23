@@ -241,4 +241,32 @@ abstract class Util
         }
         return [$id, $params];
     }
+
+    /**
+     * Sanitise a dynamic statement descriptor.
+     *
+     * @param string $descriptor
+     * @return string
+     * @link https://stripe.com/docs/charges#dynamic-statement-descriptor
+     */
+    public static function sanitizeStatementDescriptor($descriptor)
+    {
+        // Must not use the special characters <, >, ', or "
+        $descriptor = str_replace(['<', '>', '"', '\''], '', $descriptor);
+
+        // Limited to 22 characters
+        $descriptor = substr($descriptor, 0, 22);
+
+        // Must not consist of only numbers
+        if (is_numeric($descriptor)) {
+            throw new \InvalidArgumentException('A statement descriptor can not be numeric.');
+        }
+
+        // Must not be blank
+        if (empty($descriptor)) {
+            throw new \InvalidArgumentException('A statement descriptor can not be empty.');
+        }
+
+        return $descriptor;
+    }
 }

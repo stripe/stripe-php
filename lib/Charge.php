@@ -188,32 +188,4 @@ class Charge extends ApiResource
         $this->refreshFrom($response, $opts);
         return $this;
     }
-
-    /**
-     * Sanitise a dynamic statement descriptor.
-     *
-     * @param string $descriptor
-     * @param string $prefix
-     * @return string
-     * @link https://stripe.com/docs/charges#dynamic-statement-descriptor
-     */
-    public static function sanitizeStatementDescriptor($descriptor, $prefix = '')
-    {
-        // Must not consist of only numbers
-        if (is_numeric($descriptor)) {
-            if (empty($prefix) || is_numeric($prefix)) {
-                throw new \InvalidArgumentException('A statement descriptor cannot be numeric. If it is, a non-numeric prefix should be set.');
-            }
-
-            $descriptor = $prefix . $descriptor;
-        }
-
-        // Must not use the special characters <, >, ', or "
-        $descriptor = str_replace(['<', '>', '"', '\''], '', $descriptor);
-
-        // Limited to 22 characters
-        $descriptor = substr($descriptor, 0, 22);
-
-        return $descriptor;
-    }
 }
