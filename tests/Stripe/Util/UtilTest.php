@@ -25,7 +25,7 @@ class UtilTest extends TestCase
     public function testConvertStripeObjectToArrayIncludesId()
     {
         $customer = Util\Util::convertToStripeObject([
-            'id' => 'cus_',
+            'id' => 'cus_123',
             'object' => 'customer',
         ], null);
         $this->assertTrue(array_key_exists("id", $customer->__toArray(true)));
