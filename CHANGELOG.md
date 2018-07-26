@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.11.0 - 2018-07-26
+* [#500](https://github.com/stripe/stripe-php/pull/500) Add support for Stripe Issuing
+
 ## 6.10.4 - 2018-07-19
 * [#498](https://github.com/stripe/stripe-php/pull/498) Internal improvements to the `\Stripe\ApiResource.classUrl()` method
 
