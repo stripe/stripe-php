@@ -113,6 +113,7 @@ abstract class Util
             \Stripe\RecipientTransfer::OBJECT_NAME => 'Stripe\\RecipientTransfer',
             \Stripe\Refund::OBJECT_NAME => 'Stripe\\Refund',
             \Stripe\SKU::OBJECT_NAME => 'Stripe\\SKU',
+            \Stripe\Sigma\ScheduledQueryRun::OBJECT_NAME => 'Stripe\\Sigma\\ScheduledQueryRun',
             \Stripe\Source::OBJECT_NAME => 'Stripe\\Source',
             \Stripe\SourceTransaction::OBJECT_NAME => 'Stripe\\SourceTransaction',
             \Stripe\Subscription::OBJECT_NAME => 'Stripe\\Subscription',
