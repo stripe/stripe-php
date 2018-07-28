@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.12.0 - 2018-07-28
+* [#501](https://github.com/stripe/stripe-php/pull/501) Add support for scheduled query runs (`\Stripe\Sigma\ScheduledQueryRun`) for Sigma
+
 ## 6.11.0 - 2018-07-26
 * [#500](https://github.com/stripe/stripe-php/pull/500) Add support for Stripe Issuing
 
