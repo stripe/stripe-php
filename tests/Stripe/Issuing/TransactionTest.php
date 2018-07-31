@@ -6,21 +6,6 @@ class TransactionTest extends \Stripe\TestCase
 {
     const TEST_RESOURCE_ID = 'ipi_123';
 
-    // stripe-mock does not support /v1/issuing/transactions yet so we stub it
-    // and create a fixture for it
-    public function createFixture()
-    {
-        $base = [
-            'id' => self::TEST_RESOURCE_ID,
-            'object' => 'issuing.transaction',
-            'metadata' => [],
-        ];
-        return Transaction::constructFrom(
-            $base,
-            new \Stripe\Util\RequestOptions()
-        );
-    }
-
     public function testIsListable()
     {
         $this->expectsRequest(
