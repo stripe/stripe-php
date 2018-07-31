@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.13.0 - 2018-07-31
+* [#502](https://github.com/stripe/stripe-php/pull/502) Add `isDeleted()` method to `\Stripe\StripeObject`
+
 ## 6.12.0 - 2018-07-28
 * [#501](https://github.com/stripe/stripe-php/pull/501) Add support for scheduled query runs (`\Stripe\Sigma\ScheduledQueryRun`) for Sigma
 
