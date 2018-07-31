@@ -507,4 +507,16 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     {
         $this->_lastResponse = $resp;
     }
+
+    /**
+     * Indicates whether or not the resource has been deleted on the server.
+     * Note that some, but not all, resources can indicate whether they have
+     * been deleted.
+     *
+     * @return bool Whether the resource is deleted.
+     */
+    public function isDeleted()
+    {
+        return isset($this->_values['deleted']) ? $this->_values['deleted'] : false;
+    }
 }

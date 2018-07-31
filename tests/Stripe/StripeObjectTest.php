@@ -461,4 +461,16 @@ EOS;
         $copyCharge = $this->deepCopyReflector->invoke(null, $charge);
         $this->assertEquals(get_class($charge), get_class($copyCharge));
     }
+
+    public function testIsDeleted()
+    {
+        $obj = StripeObject::constructFrom([]);
+        $this->assertFalse($obj->isDeleted());
+
+        $obj = StripeObject::constructFrom(['deleted' => false]);
+        $this->assertFalse($obj->isDeleted());
+
+        $obj = StripeObject::constructFrom(['deleted' => true]);
+        $this->assertTrue($obj->isDeleted());
+    }
 }
