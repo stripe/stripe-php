@@ -90,6 +90,7 @@ abstract class Util
             \Stripe\Event::OBJECT_NAME => 'Stripe\\Event',
             \Stripe\ExchangeRate::OBJECT_NAME => 'Stripe\\ExchangeRate',
             \Stripe\ApplicationFeeRefund::OBJECT_NAME => 'Stripe\\ApplicationFeeRefund',
+            \Stripe\FileLink::OBJECT_NAME => 'Stripe\\FileLink',
             \Stripe\FileUpload::OBJECT_NAME => 'Stripe\\FileUpload',
             \Stripe\Invoice::OBJECT_NAME => 'Stripe\\Invoice',
             \Stripe\InvoiceItem::OBJECT_NAME => 'Stripe\\InvoiceItem',
