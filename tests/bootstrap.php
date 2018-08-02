@@ -1,6 +1,6 @@
 <?php
 
-define("MOCK_MINIMUM_VERSION", "0.24.1");
+define("MOCK_MINIMUM_VERSION", "0.25.0");
 define("MOCK_PORT", getenv("STRIPE_MOCK_PORT") ?: 12111);
 
 // Send a request to stripe-mock
