@@ -4,7 +4,7 @@ namespace Stripe;
 
 class FileLinkTest extends TestCase
 {
-    const TEST_RESOURCE_ID = 'fl_123';
+    const TEST_RESOURCE_ID = 'link_123';
 
     public function testIsListable()
     {
