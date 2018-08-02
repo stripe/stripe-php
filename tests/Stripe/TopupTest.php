@@ -66,4 +66,15 @@ class TopupTest extends TestCase
         ]);
         $this->assertInstanceOf("Stripe\\Topup", $resource);
     }
+
+    public function testIsCancelable()
+    {
+        $resource = Topup::retrieve(self::TEST_RESOURCE_ID);
+        $this->expectsRequest(
+            'post',
+            '/v1/topups/' . self::TEST_RESOURCE_ID . '/cancel'
+        );
+        $resource = $resource->cancel();
+        $this->assertInstanceOf("Stripe\\Topup", $resource);
+    }
 }
