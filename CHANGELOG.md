@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.15.0 - 2018-08-03
+* [#504](https://github.com/stripe/stripe-php/pull/504) Add cancel support for topups
+
 ## 6.14.0 - 2018-08-02
 * [#505](https://github.com/stripe/stripe-php/pull/505) Add support for file links
 
