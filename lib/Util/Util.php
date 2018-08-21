@@ -125,6 +125,7 @@ abstract class Util
             \Stripe\Transfer::OBJECT_NAME => 'Stripe\\Transfer',
             \Stripe\TransferReversal::OBJECT_NAME => 'Stripe\\TransferReversal',
             \Stripe\UsageRecord::OBJECT_NAME => 'Stripe\\UsageRecord',
+            \Stripe\UsageRecordSummary::OBJECT_NAME => 'Stripe\\UsageRecordSummary',
         ];
         if (self::isList($resp)) {
             $mapped = [];
