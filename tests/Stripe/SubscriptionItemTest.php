@@ -74,4 +74,16 @@ class SubscriptionItemTest extends TestCase
         $resource->delete();
         $this->assertInstanceOf("Stripe\\SubscriptionItem", $resource);
     }
+
+    public function testCanListUsageRecordSummaries()
+    {
+        $resource = SubscriptionItem::retrieve(self::TEST_RESOURCE_ID);
+        $this->expectsRequest(
+            'get',
+            '/v1/subscription_items/' . $resource->id . "/usage_record_summaries"
+        );
+        $resources = $resource->usageRecordSummaries();
+        $this->assertTrue(is_array($resources->data));
+        $this->assertInstanceOf("Stripe\\UsageRecordSummary", $resources->data[0]);
+    }
 }
