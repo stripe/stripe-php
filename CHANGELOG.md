@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.16.0 - 2018-08-23
+* [#509](https://github.com/stripe/stripe-php/pull/509) Add support for usage record summaries
+
 ## 6.15.0 - 2018-08-03
 * [#504](https://github.com/stripe/stripe-php/pull/504) Add cancel support for topups
 
