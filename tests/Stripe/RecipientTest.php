@@ -78,10 +78,18 @@ class RecipientTest extends TestCase
     public function testCanListTransfers()
     {
         $recipient = Recipient::retrieve(self::TEST_RESOURCE_ID);
-        $this->expectsRequest(
+
+        // stripe-mock does not support this anymore so we stub it
+        $this->stubRequest(
             'get',
             '/v1/transfers',
-            ["recipient" => $recipient->id]
+            ["recipient" => $recipient->id],
+            null,
+            false,
+            [
+                "object" => "list",
+                "data" => [["id" => "tr_123", "object" => "transfer"]]
+            ]
         );
         $resources = $recipient->transfers();
         $this->assertTrue(is_array($resources->data));

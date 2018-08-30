@@ -10,9 +10,14 @@ class SubscriptionItemTest extends TestCase
     {
         $this->expectsRequest(
             'get',
-            '/v1/subscription_items'
+            '/v1/subscription_items',
+            [
+                "subscription" => "sub_123"
+            ]
         );
-        $resources = SubscriptionItem::all();
+        $resources = SubscriptionItem::all([
+            "subscription" => "sub_123"
+        ]);
         $this->assertTrue(is_array($resources->data));
         $this->assertInstanceOf("Stripe\\SubscriptionItem", $resources->data[0]);
     }
