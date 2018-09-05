@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.17.0 - 2018-09-05
+* [#514](https://github.com/stripe/stripe-php/pull/514) Add support for reporting resources
+
 ## 6.16.0 - 2018-08-23
 * [#509](https://github.com/stripe/stripe-php/pull/509) Add support for usage record summaries
 
