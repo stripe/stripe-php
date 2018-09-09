@@ -24,6 +24,10 @@ cache:
     - stripe-mock
 
 before_install:
+  # Install various build dependencies. We use `travis_retry` because Composer
+  # will occasionally fail intermittently.
+  - travis_retry composer install
+
   # Unpack and start stripe-mock so that the test suite can talk to it
   - |
     if [ ! -d "stripe-mock/stripe-mock_${STRIPE_MOCK_VERSION}" ]; then
