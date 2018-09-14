@@ -203,42 +203,85 @@ abstract class Util
     }
 
     /**
-     * @param array $arr A map of param keys to values.
-     * @param string|null $prefix
+     * @param array $params
      *
-     * @return string A querystring, essentially.
+     * @return string
      */
-    public static function urlEncode($arr, $prefix = null)
+    public static function encodeParameters($params)
     {
-        if (!is_array($arr)) {
-            return $arr;
+        $flattenedParams = self::flattenParams($params);
+        $pieces = [];
+        foreach ($flattenedParams as $param) {
+            list($k, $v) = $param;
+            array_push($pieces, self::urlEncode($k) . '=' . self::urlEncode($v));
         }
+        return implode('&', $pieces);
+    }
 
-        $r = [];
-        foreach ($arr as $k => $v) {
-            if (is_null($v)) {
-                continue;
-            }
+    /**
+     * @param array $params
+     * @param string|null $parentKey
+     *
+     * @return array
+     */
+    public static function flattenParams($params, $parentKey = null)
+    {
+        $result = [];
 
-            if ($prefix) {
-                if ($k !== null && (!is_int($k) || is_array($v))) {
-                    $k = $prefix."[".$k."]";
-                } else {
-                    $k = $prefix."[]";
-                }
-            }
+        foreach ($params as $key => $value) {
+            $calculatedKey = $parentKey ? "{$parentKey}[{$key}]" : $key;
 
-            if (is_array($v)) {
-                $enc = self::urlEncode($v, $k);
-                if ($enc) {
-                    $r[] = $enc;
-                }
+            if (self::isList($value)) {
+                $result = array_merge($result, self::flattenParamsList($value, $calculatedKey));
+            } elseif (is_array($value)) {
+                $result = array_merge($result, self::flattenParams($value, $calculatedKey));
             } else {
-                $r[] = urlencode($k)."=".urlencode($v);
+                array_push($result, [$calculatedKey, $value]);
             }
         }
 
-        return implode("&", $r);
+        return $result;
+    }
+
+    /**
+     * @param array $value
+     * @param string $calculatedKey
+     *
+     * @return array
+     */
+    public static function flattenParamsList($value, $calculatedKey)
+    {
+        $result = [];
+
+        foreach ($value as $i => $elem) {
+            if (self::isList($elem)) {
+                $result = array_merge($result, self::flattenParamsList($elem, $calculatedKey));
+            } elseif (is_array($elem)) {
+                $result = array_merge($result, self::flattenParams($elem, "{$calculatedKey}[{$i}]"));
+            } else {
+                array_push($result, ["{$calculatedKey}[{$i}]", $elem]);
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param string $key A string to URL-encode.
+     *
+     * @return string The URL-encoded string.
+     */
+    public static function urlEncode($key)
+    {
+        $s = urlencode($key);
+
+        // Don't use strict form encoding by changing the square bracket control
+        // characters back to their literals. This is fine by the server, and
+        // makes these parameter strings easier to read.
+        $s = str_replace('%5B', '[', $s);
+        $s = str_replace('%5D', ']', $s);
+
+        return $s;
     }
 
     public static function normalizeId($id)
