@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.17.1 - 2018-09-14
+* [#517](https://github.com/stripe/stripe-php/pull/517) Integer-index encode all sequential arrays
+
 ## 6.17.0 - 2018-09-05
 * [#514](https://github.com/stripe/stripe-php/pull/514) Add support for reporting resources
 
