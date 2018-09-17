@@ -202,6 +202,29 @@ class AccountTest extends TestCase
         $this->assertSame($expected, $obj->serializeParameters());
     }
 
+    public function testSerializeAddAdditionalOwners()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'account',
+            'legal_entity' => [
+                'additional_owners' => [
+                    StripeObject::constructFrom(['first_name' => 'Joe']),
+                    StripeObject::constructFrom(['first_name' => 'Jane']),
+                ],
+            ],
+        ], null);
+        $obj->legal_entity->additional_owners[2] = ['first_name' => 'Andrew'];
+
+        $expected = [
+            'legal_entity' => [
+                'additional_owners' => [
+                    2 => ['first_name' => 'Andrew'],
+                ],
+            ],
+        ];
+        $this->assertSame($expected, $obj->serializeParameters());
+    }
+
     public function testSerializePartiallyChangedAdditionalOwners()
     {
         $obj = Util\Util::convertToStripeObject([
