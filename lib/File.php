@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class FileUpload
+ * Class File
  *
  * @property string $id
  * @property string $object
@@ -16,10 +16,14 @@ namespace Stripe;
  *
  * @package Stripe
  */
-class FileUpload extends ApiResource
+class File extends ApiResource
 {
-
-    const OBJECT_NAME = "file_upload";
+    // This resource can have two different object names. In latter API
+    // versions, only `file` is used, but since stripe-php may be used with
+    // any API version, we need to support deserializing the older
+    // `file_upload` object into the same class.
+    const OBJECT_NAME = "file";
+    const OBJECT_NAME_ALT = "file_upload";
 
     use ApiOperations\All;
     use ApiOperations\Create;
@@ -35,3 +39,6 @@ class FileUpload extends ApiResource
         return '/v1/files';
     }
 }
+
+// For backwards compatibility, the `File` class is aliased to `FileUpload`.
+class_alias('Stripe\\File', 'Stripe\\FileUpload');
