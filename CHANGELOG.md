@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.17.2 - 2018-09-18
+* [#522](https://github.com/stripe/stripe-php/pull/522) Fix warning when adding a new additional owner to an existing array
+
 ## 6.17.1 - 2018-09-14
 * [#517](https://github.com/stripe/stripe-php/pull/517) Integer-index encode all sequential arrays
 
