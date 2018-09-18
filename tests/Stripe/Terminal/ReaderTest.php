@@ -55,12 +55,12 @@ class ReaderTest extends \Stripe\TestCase
 
     public function testIsCreatable()
     {
-      $this->expectsRequest(
-          'post',
-          '/v1/terminal/readers',
-          ["registration_code" => "a-b-c"]
-      );
-      $resource = Reader::create(['registration_code' => 'a-b-c']);
-      $this->assertInstanceOf("Stripe\\Terminal\\Reader", $resource);
+        $this->expectsRequest(
+            'post',
+            '/v1/terminal/readers',
+            ["registration_code" => "a-b-c"]
+        );
+        $resource = Reader::create(['registration_code' => 'a-b-c']);
+        $this->assertInstanceOf("Stripe\\Terminal\\Reader", $resource);
     }
 }

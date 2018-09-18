@@ -55,30 +55,30 @@ class LocationTest extends \Stripe\TestCase
 
     public function testIsCreatable()
     {
-      $this->expectsRequest(
-          'post',
-          '/v1/terminal/locations',
-          [
-              "display_name" => "name",
-              "address" => [
-                  "line1" => "line1",
-                  "country" => "US",
-                  "state" => "CA",
-                  "postal_code" => "12345",
-                  "city" => "San Francisco"
-              ]
-          ]
-      );
-      $resource = Location::create([
-          "display_name" => "name",
-          "address" => [
-              "line1" => "line1",
-              "country" => "US",
-              "state" => "CA",
-              "postal_code" => "12345",
-              "city" => "San Francisco"
-          ]
-      ]);
-      $this->assertInstanceOf("Stripe\\Terminal\\Location", $resource);
+        $this->expectsRequest(
+            'post',
+            '/v1/terminal/locations',
+            [
+                "display_name" => "name",
+                "address" => [
+                    "line1" => "line1",
+                    "country" => "US",
+                    "state" => "CA",
+                    "postal_code" => "12345",
+                    "city" => "San Francisco"
+                ]
+            ]
+        );
+        $resource = Location::create([
+            "display_name" => "name",
+            "address" => [
+                "line1" => "line1",
+                "country" => "US",
+                "state" => "CA",
+                "postal_code" => "12345",
+                "city" => "San Francisco"
+            ]
+        ]);
+        $this->assertInstanceOf("Stripe\\Terminal\\Location", $resource);
     }
 }
