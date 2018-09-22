@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "felixfbecker.php-intellisense",
+        "ikappas.phpcs",
+        "emallin.phpunit"
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "editor.renderWhitespace": "all",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "[php]": {
+      "editor.detectIndentation": false,
+      "editor.insertSpaces": true,
+      "editor.rulers": [
+        100
+      ],
+      "editor.tabSize": 4,
+    },
+
+    // Linting
+    "phpcs.enable": true,
+    "phpcs.standard": "PSR2"
+}
