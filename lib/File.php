@@ -26,17 +26,29 @@ class File extends ApiResource
     const OBJECT_NAME_ALT = "file_upload";
 
     use ApiOperations\All;
-    use ApiOperations\Create;
-    use ApiOperations\Retrieve;
-
-    public static function baseUrl()
-    {
-        return Stripe::$apiUploadBase;
+    use ApiOperations\Create {
+        create as protected _create;
     }
+    use ApiOperations\Retrieve;
 
     public static function classUrl()
     {
         return '/v1/files';
+    }
+
+    /**
+     * @param array|null $params
+     * @param array|string|null $options
+     *
+     * @return \Stripe\File The created resource.
+     */
+    public static function create($params = null, $options = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($options);
+        if (is_null($opts->apiBase)) {
+            $opts->apiBase = Stripe::$apiUploadBase;
+        }
+        return static::_create($params, $opts);
     }
 }
 

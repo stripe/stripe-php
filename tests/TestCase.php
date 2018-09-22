@@ -13,9 +13,6 @@ class TestCase extends \PHPUnit_Framework_TestCase
     /** @var string original API key */
     protected $origApiKey;
 
-    /** @var string original upload base URL */
-    protected $origApiUploadBase;
-
     /** @var string original client ID */
     protected $origClientId;
 
@@ -33,7 +30,6 @@ class TestCase extends \PHPUnit_Framework_TestCase
         // Save original values so that we can restore them after running tests
         $this->origApiBase = Stripe::$apiBase;
         $this->origApiKey = Stripe::getApiKey();
-        $this->origApiUploadBase = Stripe::$apiUploadBase;
         $this->origClientId = Stripe::getClientId();
         $this->origApiVersion = Stripe::getApiVersion();
         $this->origAccountId = Stripe::getAccountId();
@@ -41,7 +37,6 @@ class TestCase extends \PHPUnit_Framework_TestCase
         // Set up host and credentials for stripe-mock
         Stripe::$apiBase = "http://localhost:" . MOCK_PORT;
         Stripe::setApiKey("sk_test_123");
-        Stripe::$apiUploadBase = "http://localhost:" . MOCK_PORT;
         Stripe::setClientId("ca_123");
         Stripe::setApiVersion(null);
         Stripe::setAccountId(null);
@@ -58,7 +53,6 @@ class TestCase extends \PHPUnit_Framework_TestCase
         // Restore original values
         Stripe::$apiBase = $this->origApiBase;
         Stripe::setApiKey($this->origApiKey);
-        Stripe::$apiUploadBase = $this->origApiUploadBase;
         Stripe::setClientId($this->origClientId);
         Stripe::setApiVersion($this->origApiVersion);
         Stripe::setAccountId($this->origAccountId);
@@ -76,15 +70,17 @@ class TestCase extends \PHPUnit_Framework_TestCase
      *   exhaustive. If null, headers are not checked.
      * @param bool $hasFile Whether the request parameters contains a file.
      *   Defaults to false.
+     * @param string|null $base base URL (e.g. 'https://api.stripe.com')
      */
     protected function expectsRequest(
         $method,
         $path,
         $params = null,
         $headers = null,
-        $hasFile = false
+        $hasFile = false,
+        $base = null
     ) {
-        $this->prepareRequestMock($method, $path, $params, $headers, $hasFile)
+        $this->prepareRequestMock($method, $path, $params, $headers, $hasFile, $base)
             ->will($this->returnCallback(
                 function ($method, $absUrl, $headers, $params, $hasFile) {
                     $curlClient = HttpClient\CurlClient::instance();

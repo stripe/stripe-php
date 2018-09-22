@@ -27,45 +27,6 @@ class FileTest extends TestCase
         $this->assertInstanceOf("Stripe\\File", $resource);
     }
 
-    public function testIsCreatableWithFileHandle()
-    {
-        $this->expectsRequest(
-            'post',
-            '/v1/files',
-            null,
-            ['Content-Type: multipart/form-data'],
-            true
-        );
-        $fp = fopen(dirname(__FILE__) . '/../data/test.png', 'r');
-        $resource = File::create([
-            "purpose" => "dispute_evidence",
-            "file" => $fp,
-        ]);
-        $this->assertInstanceOf("Stripe\\File", $resource);
-    }
-
-    public function testIsCreatableWithCurlFile()
-    {
-        if (!class_exists('\CurlFile', false)) {
-            // Older PHP versions don't support this
-            return;
-        }
-
-        $this->expectsRequest(
-            'post',
-            '/v1/files',
-            null,
-            ['Content-Type: multipart/form-data'],
-            true
-        );
-        $curlFile = new \CurlFile(dirname(__FILE__) . '/../data/test.png');
-        $resource = File::create([
-            "purpose" => "dispute_evidence",
-            "file" => $curlFile,
-        ]);
-        $this->assertInstanceOf("Stripe\\File", $resource);
-    }
-
     public function testDeserializesFromFile()
     {
         $obj = Util\Util::convertToStripeObject([
