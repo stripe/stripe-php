@@ -10,7 +10,7 @@ class DisputeTest extends \Stripe\TestCase
     {
         $params = [
             "reason" => "fraudulent",
-            "transaction" => "ipi_123",
+            "disputed_transaction" => "ipi_123",
         ];
 
         $this->expectsRequest(
