@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.19.0 - 2018-09-24
+* [#523](https://github.com/stripe/stripe-php/pull/523) Add support for Stripe Terminal
+
 ## 6.18.0 - 2018-09-24
 * [#520](https://github.com/stripe/stripe-php/pull/520) Rename `\Stripe\FileUpload` to `\Stripe\File`
 
