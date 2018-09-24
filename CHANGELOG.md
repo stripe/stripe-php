@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.18.0 - 2018-09-24
+* [#520](https://github.com/stripe/stripe-php/pull/520) Rename `\Stripe\FileUpload` to `\Stripe\File`
+
 ## 6.17.2 - 2018-09-18
 * [#522](https://github.com/stripe/stripe-php/pull/522) Fix warning when adding a new additional owner to an existing array
 
