@@ -5,7 +5,7 @@ namespace Stripe\Terminal;
 /**
  * Class ConnectionToken
  *
- * @property string $connection_token
+ * @property string $secret
  *
  * @package Stripe\Terminal
  */
