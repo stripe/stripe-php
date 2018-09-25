@@ -127,6 +127,8 @@ class CurlClient implements ClientInterface
             $opts = $this->defaultOptions;
         }
 
+        $params = Util\Util::objectsToIds($params);
+
         if ($method == 'get') {
             if ($hasFile) {
                 throw new Error\Api(
