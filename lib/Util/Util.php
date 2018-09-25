@@ -207,6 +207,38 @@ abstract class Util
     }
 
     /**
+     * Recursively goes through an array of parameters. If a parameter is an instance of
+     * ApiResource, then it is replaced by the resource's ID.
+     * Also clears out null values.
+     *
+     * @param mixed $h
+     * @return mixed
+     */
+    public static function objectsToIds($h)
+    {
+        if ($h instanceof \Stripe\ApiResource) {
+            return $h->id;
+        } elseif (static::isList($h)) {
+            $results = [];
+            foreach ($h as $v) {
+                array_push($results, static::objectsToIds($v));
+            }
+            return $results;
+        } elseif (is_array($h)) {
+            $results = [];
+            foreach ($h as $k => $v) {
+                if (is_null($v)) {
+                    continue;
+                }
+                $results[$k] = static::objectsToIds($v);
+            }
+            return $results;
+        } else {
+            return $h;
+        }
+    }
+
+    /**
      * @param array $params
      *
      * @return string

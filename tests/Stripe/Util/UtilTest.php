@@ -24,10 +24,13 @@ class UtilTest extends TestCase
 
     public function testConvertStripeObjectToArrayIncludesId()
     {
-        $customer = Util\Util::convertToStripeObject([
-            'id' => 'cus_123',
-            'object' => 'customer',
-        ], null);
+        $customer = Util\Util::convertToStripeObject(
+            [
+                'id' => 'cus_123',
+                'object' => 'customer',
+            ],
+            null
+        );
         $this->assertTrue(array_key_exists("id", $customer->__toArray(true)));
     }
 
@@ -44,6 +47,29 @@ class UtilTest extends TestCase
         // Not a string
         $x = true;
         $this->assertSame(Util\Util::utf8($x), $x);
+    }
+
+    public function testObjectsToIds()
+    {
+        $params = [
+            'foo' => 'bar',
+            'customer' => Util\Util::convertToStripeObject(
+                [
+                    'id' => 'cus_123',
+                    'object' => 'customer',
+                ],
+                null
+            ),
+            'null_value' => null,
+        ];
+
+        $this->assertSame(
+            [
+                'foo' => 'bar',
+                'customer' => 'cus_123',
+            ],
+            Util\Util::objectsToIds($params)
+        );
     }
 
     public function testEncodeParameters()
