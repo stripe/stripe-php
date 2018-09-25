@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.19.1 - 2018-09-25
+* [#526](https://github.com/stripe/stripe-php/pull/526) Ignore null values in request parameters
+
 ## 6.19.0 - 2018-09-24
 * [#523](https://github.com/stripe/stripe-php/pull/523) Add support for Stripe Terminal
 
