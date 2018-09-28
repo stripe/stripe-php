@@ -17,6 +17,7 @@ namespace Stripe;
  * @property string $capture_method
  * @property Collection $charges
  * @property string $client_secret
+ * @property string $confirmation_method
  * @property int $created
  * @property string $currency
  * @property string $customer
@@ -27,6 +28,7 @@ namespace Stripe;
  * @property string $on_behalf_of
  * @property string $receipt_email
  * @property string $return_url
+ * @property string $review
  * @property mixed $shipping
  * @property string $source
  * @property string $statement_descriptor

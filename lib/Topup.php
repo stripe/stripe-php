@@ -20,6 +20,7 @@ namespace Stripe;
  * @property mixed $source
  * @property string $statement_descriptor
  * @property string $status
+ * @property string $transfer_group
  *
  * @package Stripe
  */

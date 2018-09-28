@@ -12,8 +12,8 @@ namespace Stripe;
  * @property int $amount_remaining
  * @property int $application_fee
  * @property int $attempt_count
- * @property bool $auto_advance
  * @property bool $attempted
+ * @property bool $auto_advance
  * @property string $billing
  * @property string $billing_reason
  * @property string $charge
