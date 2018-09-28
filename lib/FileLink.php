@@ -11,7 +11,6 @@ namespace Stripe;
  * @property bool $expired
  * @property int $expires_at
  * @property string $file
- * @property string $purpose
  * @property bool $livemode
  * @property StripeObject $metadata
  * @property string $url

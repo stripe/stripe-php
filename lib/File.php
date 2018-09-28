@@ -9,8 +9,10 @@ namespace Stripe;
  * @property string $object
  * @property int $created
  * @property string $filename
+ * @property Collection $links
  * @property string $purpose
  * @property int $size
+ * @property string $title
  * @property string $type
  * @property string $url
  *

@@ -13,6 +13,7 @@ namespace Stripe;
  * @property string $balance_transaction
  * @property int $created
  * @property string $currency
+ * @property string $description
  * @property string $destination
  * @property string $failure_balance_transaction
  * @property string $failure_code
@@ -20,7 +21,6 @@ namespace Stripe;
  * @property bool $livemode
  * @property StripeObject $metadata
  * @property string $method
- * @property string $recipient
  * @property string $source_type
  * @property string $statement_descriptor
  * @property string $status
