@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.19.2 - 2018-10-08
+* [#531](https://github.com/stripe/stripe-php/pull/531) Store HTTP response headers in case-insensitive array
+
 ## 6.19.1 - 2018-09-25
 * [#526](https://github.com/stripe/stripe-php/pull/526) Ignore null values in request parameters
 
