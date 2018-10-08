@@ -225,4 +225,13 @@ class CurlClientTest extends TestCase
         $this->assertEquals($baseValue * 4, $this->sleepTimeMethod->invoke($curlClient, 3));
         $this->assertEquals($baseValue * 8, $this->sleepTimeMethod->invoke($curlClient, 4));
     }
+
+    public function testResponseHeadersCaseInsensitive()
+    {
+        $charge = Charge::all();
+
+        $headers = $charge->getLastResponse()->headers;
+        $this->assertNotNull($headers['request-id']);
+        $this->assertEquals($headers['request-id'], $headers['Request-Id']);
+    }
 }
