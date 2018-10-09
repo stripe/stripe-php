@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.19.3 - 2018-10-09
+* [#530](https://github.com/stripe/stripe-php/pull/530) Add constants for `flow` (`FLOW_*`), `status` (`STATUS_*`) and `usage` (`USAGE_*`) on `\Stripe\Source`
+
 ## 6.19.2 - 2018-10-08
 * [#531](https://github.com/stripe/stripe-php/pull/531) Store HTTP response headers in case-insensitive array
 
