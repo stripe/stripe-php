@@ -78,6 +78,7 @@ require(dirname(__FILE__) . '/lib/Event.php');
 require(dirname(__FILE__) . '/lib/ExchangeRate.php');
 require(dirname(__FILE__) . '/lib/File.php');
 require(dirname(__FILE__) . '/lib/FileLink.php');
+require(dirname(__FILE__) . '/lib/FileUpload.php');
 require(dirname(__FILE__) . '/lib/Invoice.php');
 require(dirname(__FILE__) . '/lib/InvoiceItem.php');
 require(dirname(__FILE__) . '/lib/InvoiceLineItem.php');
