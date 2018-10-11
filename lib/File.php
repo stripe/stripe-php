@@ -53,6 +53,3 @@ class File extends ApiResource
         return static::_create($params, $opts);
     }
 }
-
-// For backwards compatibility, the `File` class is aliased to `FileUpload`.
-class_alias('Stripe\\File', 'Stripe\\FileUpload');
