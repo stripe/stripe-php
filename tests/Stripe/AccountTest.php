@@ -6,6 +6,7 @@ class AccountTest extends TestCase
 {
     const TEST_RESOURCE_ID = 'acct_123';
     const TEST_EXTERNALACCOUNT_ID = 'ba_123';
+    const TEST_PERSON_ID = 'person_123';
 
     public function testIsListable()
     {
@@ -116,6 +117,18 @@ class AccountTest extends TestCase
         $resource->deauthorize();
     }
 
+    public function testPersons()
+    {
+        $account = Account::retrieve(self::TEST_RESOURCE_ID);
+        $this->expectsRequest(
+            'get',
+            '/v1/accounts/' . $account->id . '/persons'
+        );
+        $persons = $account->persons();
+        $this->assertTrue(is_array($persons->data));
+        $this->assertInstanceOf("Stripe\\Person", $persons->data[0]);
+    }
+
     public function testCanCreateExternalAccount()
     {
         $this->expectsRequest(
@@ -178,6 +191,64 @@ class AccountTest extends TestCase
         );
         $resource = Account::createLoginLink(self::TEST_RESOURCE_ID);
         $this->assertInstanceOf("Stripe\\LoginLink", $resource);
+    }
+
+    public function testCanCreatePerson()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons'
+        );
+        $resource = Account::createPerson(self::TEST_RESOURCE_ID, [
+            "dob" => [
+                "day" => 1,
+                "month" => 1,
+                "year" => 1980
+            ]
+        ]);
+        $this->assertInstanceOf("Stripe\\Person", $resource);
+    }
+
+    public function testCanRetrievePerson()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons/' . self::TEST_PERSON_ID
+        );
+        $resource = Account::retrievePerson(self::TEST_RESOURCE_ID, self::TEST_PERSON_ID);
+        $this->assertInstanceOf("Stripe\\Person", $resource);
+    }
+
+    public function testCanUpdatePerson()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons/' . self::TEST_PERSON_ID
+        );
+        $resource = Account::updatePerson(self::TEST_RESOURCE_ID, self::TEST_PERSON_ID, [
+            "first_name" => "First name",
+        ]);
+        $this->assertInstanceOf("Stripe\\Person", $resource);
+    }
+
+    public function testCanDeletePerson()
+    {
+        $this->expectsRequest(
+            'delete',
+            '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons/' . self::TEST_PERSON_ID
+        );
+        $resource = Account::deletePerson(self::TEST_RESOURCE_ID, self::TEST_PERSON_ID);
+        $this->assertTrue($resource->deleted);
+    }
+
+    public function testCanListPersons()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons'
+        );
+        $resources = Account::allPersons(self::TEST_RESOURCE_ID);
+        $this->assertTrue(is_array($resources->data));
     }
 
     public function testSerializeNewAdditionalOwners()

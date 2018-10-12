@@ -109,6 +109,7 @@ abstract class Util
             \Stripe\OrderReturn::OBJECT_NAME => 'Stripe\\OrderReturn',
             \Stripe\PaymentIntent::OBJECT_NAME => 'Stripe\\PaymentIntent',
             \Stripe\Payout::OBJECT_NAME => 'Stripe\\Payout',
+            \Stripe\Person::OBJECT_NAME => 'Stripe\\Person',
             \Stripe\Plan::OBJECT_NAME => 'Stripe\\Plan',
             \Stripe\Product::OBJECT_NAME => 'Stripe\\Product',
             \Stripe\Recipient::OBJECT_NAME => 'Stripe\\Recipient',
