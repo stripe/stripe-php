@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.19.5 - 2018-10-17
+* [#539](https://github.com/stripe/stripe-php/pull/539) Fix methods on `\Stripe\PaymentIntent` to properly pass arguments to the API.
+
 ## 6.19.4 - 2018-10-11
 * [#534](https://github.com/stripe/stripe-php/pull/534) Fix PSR-4 autoloading for `\Stripe\FileUpload` class alias
 
