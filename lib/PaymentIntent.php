@@ -57,7 +57,7 @@ class PaymentIntent extends ApiResource
     public function cancel($params = null, $options = null)
     {
         $url = $this->instanceUrl() . '/cancel';
-        list($response, $opts) = $this->_request('post', $url);
+        list($response, $opts) = $this->_request('post', $url, $params, $options);
         $this->refreshFrom($response, $opts);
         return $this;
     }
@@ -71,7 +71,7 @@ class PaymentIntent extends ApiResource
     public function capture($params = null, $options = null)
     {
         $url = $this->instanceUrl() . '/capture';
-        list($response, $opts) = $this->_request('post', $url);
+        list($response, $opts) = $this->_request('post', $url, $params, $options);
         $this->refreshFrom($response, $opts);
         return $this;
     }
@@ -85,7 +85,7 @@ class PaymentIntent extends ApiResource
     public function confirm($params = null, $options = null)
     {
         $url = $this->instanceUrl() . '/confirm';
-        list($response, $opts) = $this->_request('post', $url);
+        list($response, $opts) = $this->_request('post', $url, $params, $options);
         $this->refreshFrom($response, $opts);
         return $this;
     }
