@@ -133,6 +133,7 @@ abstract class Util
             \Stripe\TransferReversal::OBJECT_NAME => 'Stripe\\TransferReversal',
             \Stripe\UsageRecord::OBJECT_NAME => 'Stripe\\UsageRecord',
             \Stripe\UsageRecordSummary::OBJECT_NAME => 'Stripe\\UsageRecordSummary',
+            \Stripe\WebhookEndpoint::OBJECT_NAME => 'Stripe\\WebhookEndpoint',
         ];
         if (self::isList($resp)) {
             $mapped = [];
