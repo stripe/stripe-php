@@ -125,4 +125,5 @@ require(dirname(__FILE__) . '/lib/OAuth.php');
 
 // Webhooks
 require(dirname(__FILE__) . '/lib/Webhook.php');
+require(dirname(__FILE__) . '/lib/WebhookEndpoint.php');
 require(dirname(__FILE__) . '/lib/WebhookSignature.php');
