@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.20.0 - 2018-10-30
+* [#536](https://github.com/stripe/stripe-php/pull/536) Add support for the `Person` resource
+* [#541](https://github.com/stripe/stripe-php/pull/541) Add support for the `WebhookEndpoint` resource
+
 ## 6.19.5 - 2018-10-17
 * [#539](https://github.com/stripe/stripe-php/pull/539) Fix methods on `\Stripe\PaymentIntent` to properly pass arguments to the API.
 
