@@ -20,6 +20,7 @@ namespace Stripe;
  * @property bool $livemode
  * @property StripeObject $metadata
  * @property mixed $shipping
+ * @property string $source Used for save() only, not returned on resources.
  * @property Collection $sources
  * @property Collection $subscriptions
  * @property mixed $tax_info
