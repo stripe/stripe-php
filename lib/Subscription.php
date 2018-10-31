@@ -13,6 +13,7 @@ namespace Stripe;
  * @property bool $cancel_at_period_end
  * @property int $canceled_at
  * @property int $created
+ * @property string $coupon Used for save() only, not returned on resources.
  * @property int $current_period_end
  * @property int $current_period_start
  * @property string $customer
