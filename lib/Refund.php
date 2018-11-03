@@ -15,8 +15,9 @@ namespace Stripe;
  * @property string $failure_balance_transaction
  * @property string $failure_reason
  * @property StripeObject $metadata
- * @property mixed $reason
- * @property mixed $receipt_number
+ * @property string $reason
+ * @property string $receipt_number
+ * @property string $source_transfer_reversal
  * @property string $status
  *
  * @package Stripe
