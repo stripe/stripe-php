@@ -11,6 +11,7 @@ namespace Stripe;
  * @property string $business_name
  * @property string $business_primary_color
  * @property string $business_url
+ * @property mixed $capabilities
  * @property bool $charges_enabled
  * @property string $country
  * @property int $created

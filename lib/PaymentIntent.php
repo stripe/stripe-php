@@ -14,6 +14,7 @@ namespace Stripe;
  * @property string $application
  * @property int $application_fee
  * @property int $canceled_at
+ * @property string $cancellation_reason
  * @property string $capture_method
  * @property Collection $charges
  * @property string $client_secret
@@ -22,6 +23,7 @@ namespace Stripe;
  * @property string $currency
  * @property string $customer
  * @property string $description
+ * @property mixed $last_payment_error
  * @property bool $livemode
  * @property StripeObject $metadata
  * @property mixed $next_source_action

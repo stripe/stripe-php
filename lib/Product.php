@@ -13,7 +13,7 @@ namespace Stripe;
  * @property int $created
  * @property string[] $deactivate_on
  * @property string $description
- * @property array $images
+ * @property string[] $images
  * @property bool $livemode
  * @property StripeObject $metadata
  * @property string $name

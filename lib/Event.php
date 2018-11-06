@@ -23,11 +23,12 @@ class Event extends ApiResource
 
     const OBJECT_NAME = "event";
 
-     /**
+    /**
      * Possible string representations of event types.
      * @link https://stripe.com/docs/api#event_types
      */
     const ACCOUNT_UPDATED                      = 'account.updated';
+    const ACCOUNT_APPLICATION_AUTHORIZED       = 'account.application.authorized';
     const ACCOUNT_APPLICATION_DEAUTHORIZED     = 'account.application.deauthorized';
     const ACCOUNT_EXTERNAL_ACCOUNT_CREATED     = 'account.external_account.created';
     const ACCOUNT_EXTERNAL_ACCOUNT_DELETED     = 'account.external_account.deleted';
@@ -68,14 +69,28 @@ class Event extends ApiResource
     const CUSTOMER_SUBSCRIPTION_UPDATED        = 'customer.subscription.updated';
     const FILE_CREATED                         = 'file.created';
     const INVOICE_CREATED                      = 'invoice.created';
+    const INVOICE_DELETED                      = 'invoice.deleted';
+    const INVOICE_MARKED_UNCOLLECTIBLE         = 'invoice.marked_uncollectible';
     const INVOICE_PAYMENT_FAILED               = 'invoice.payment_failed';
     const INVOICE_PAYMENT_SUCCEEDED            = 'invoice.payment_succeeded';
     const INVOICE_SENT                         = 'invoice.sent';
     const INVOICE_UPCOMING                     = 'invoice.upcoming';
     const INVOICE_UPDATED                      = 'invoice.updated';
+    const INVOICE_VOIDED                       = 'invoice.voided';
     const INVOICEITEM_CREATED                  = 'invoiceitem.created';
     const INVOICEITEM_DELETED                  = 'invoiceitem.deleted';
     const INVOICEITEM_UPDATED                  = 'invoiceitem.updated';
+    const ISSUER_FRAUD_RECORD_CREATED          = 'issuer_fraud_record.created';
+    const ISSUING_AUTHORIZATION_CREATED        = 'issuing_authorization.created';
+    const ISSUING_AUTHORIZATION_UPDATED        = 'issuing_authorization.updated';
+    const ISSUING_CARD_CREATED                 = 'issuing_card.created';
+    const ISSUING_CARD_UPDATED                 = 'issuing_card.updated';
+    const ISSUING_CARDHOLDER_CREATED           = 'issuing_cardholder.created';
+    const ISSUING_CARDHOLDER_UPDATED           = 'issuing_cardholder.updated';
+    const ISSUING_DISPUTE_CREATED              = 'issuing_dispute.created';
+    const ISSUING_DISPUTE_UPDATED              = 'issuing_dispute.updated';
+    const ISSUING_TRANSACTION_CREATED          = 'issuing_transaction.created';
+    const ISSUING_TRANSACTION_UPDATED          = 'issuing_transaction.updated';
     const ORDER_CREATED                        = 'order.created';
     const ORDER_PAYMENT_FAILED                 = 'order.payment_failed';
     const ORDER_PAYMENT_SUCCEEDED              = 'order.payment_succeeded';
@@ -96,6 +111,9 @@ class Event extends ApiResource
     const RECIPIENT_CREATED                    = 'recipient.created';
     const RECIPIENT_DELETED                    = 'recipient.deleted';
     const RECIPIENT_UPDATED                    = 'recipient.updated';
+    const REPORTING_REPORT_RUN_FAILED          = 'reporting.report_run.failed';
+    const REPORTING_REPORT_RUN_SUCCEEDED       = 'reporting.report_run.succeeded';
+    const REPORTING_REPORT_TYPE_UPDATED        = 'reporting.report_type.updated';
     const REVIEW_CLOSED                        = 'review.closed';
     const REVIEW_OPENED                        = 'review.opened';
     const SIGMA_SCHEDULED_QUERY_RUN_CREATED    = 'sigma.scheduled_query_run.created';
@@ -106,9 +124,18 @@ class Event extends ApiResource
     const SOURCE_CHARGEABLE                    = 'source.chargeable';
     const SOURCE_FAILED                        = 'source.failed';
     const SOURCE_MANDATE_NOTIFICATION          = 'source.mandate_notification';
+    const SOURCE_REFUND_ATTRIBUTES_REQUIRED    = 'source.refund_attributes_required';
     const SOURCE_TRANSACTION_CREATED           = 'source.transaction.created';
+    const SOURCE_TRANSACTION_UPDATED           = 'source.transaction.updated';
+    const SUBSCRIPTION_SCHEDULE_CANCELED       = 'subscription_schedule.canceled';
+    const SUBSCRIPTION_SCHEDULE_COMPLETED      = 'subscription_schedule.completed';
+    const SUBSCRIPTION_SCHEDULE_CREATED        = 'subscription_schedule.created';
+    const SUBSCRIPTION_SCHEDULE_RELEASED       = 'subscription_schedule.released';
+    const SUBSCRIPTION_SCHEDULE_UPDATED        = 'subscription_schedule.updated';
+    const TOPUP_CANCELED                       = 'topup.canceled';
     const TOPUP_CREATED                        = 'topup.created';
     const TOPUP_FAILED                         = 'topup.failed';
+    const TOPUP_REVERSED                       = 'topup.reversed';
     const TOPUP_SUCCEEDED                      = 'topup.succeeded';
     const TRANSFER_CREATED                     = 'transfer.created';
     const TRANSFER_REVERSED                    = 'transfer.reversed';

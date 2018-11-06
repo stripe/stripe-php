@@ -16,7 +16,7 @@ namespace Stripe;
  * @property string $address_state
  * @property string $address_zip
  * @property string $address_zip_check
- * @property array $available_payout_methods
+ * @property string[] $available_payout_methods
  * @property string $brand
  * @property string $country
  * @property string $currency
