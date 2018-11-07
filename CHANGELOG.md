@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.20.1 - 2018-11-07
+* [#546](https://github.com/stripe/stripe-php/pull/546) Drop files from the Composer package that aren't needed in the release
+
 ## 6.20.0 - 2018-10-30
 * [#536](https://github.com/stripe/stripe-php/pull/536) Add support for the `Person` resource
 * [#541](https://github.com/stripe/stripe-php/pull/541) Add support for the `WebhookEndpoint` resource
