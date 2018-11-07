@@ -1,12 +1,13 @@
 # https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes
 
-# A list of files and folders those will be excluded from release archive
+# A list of files and folders those will be excluded from archives and the
+# Composer package (for purposes of making it smaller).
 /.coveralls.yml export-ignore
-/examples export-ignore
 /.github export-ignore
 /.gitattributes export-ignore
+/.travis.yml export-ignore
+/.vscode export-ignore
+/examples export-ignore
 /phpunit.xml export-ignore
 /phpunit.no_autoload.xml export-ignore
 /tests export-ignore
-/.travis.yml export-ignore
-/.vscode export-ignore
