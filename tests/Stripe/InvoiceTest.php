@@ -63,6 +63,53 @@ class InvoiceTest extends TestCase
         $this->assertInstanceOf("Stripe\\Invoice", $resource);
     }
 
+    public function testIsDeletable()
+    {
+        $resource = Invoice::retrieve(self::TEST_RESOURCE_ID);
+        $this->expectsRequest(
+            'delete',
+            '/v1/invoices/' . self::TEST_RESOURCE_ID
+        );
+        $resource->delete();
+        $this->assertInstanceOf("Stripe\\Invoice", $resource);
+    }
+
+    public function testCanFinalizeInvoice()
+    {
+        $invoice = Invoice::retrieve(self::TEST_RESOURCE_ID);
+        $this->expectsRequest(
+            'post',
+            '/v1/invoices/' . $invoice->id . '/finalize'
+        );
+        $resource = $invoice->finalizeInvoice();
+        $this->assertInstanceOf("Stripe\\Invoice", $resource);
+        $this->assertSame($resource, $invoice);
+    }
+
+    public function testCanMarkUncollectible()
+    {
+        $invoice = Invoice::retrieve(self::TEST_RESOURCE_ID);
+        $this->expectsRequest(
+            'post',
+            '/v1/invoices/' . $invoice->id . '/mark_uncollectible'
+        );
+        $resource = $invoice->markUncollectible();
+        $this->assertInstanceOf("Stripe\\Invoice", $resource);
+        $this->assertSame($resource, $invoice);
+    }
+
+    public function testCanPay()
+    {
+        $invoice = Invoice::retrieve(self::TEST_RESOURCE_ID);
+        $this->expectsRequest(
+            'post',
+            '/v1/invoices/' . $invoice->id . '/pay'
+        );
+        $resource = $invoice->pay();
+        $this->assertInstanceOf("Stripe\\Invoice", $resource);
+        $this->assertSame($resource, $invoice);
+    }
+
     public function testCanRetrieveUpcoming()
     {
         $this->expectsRequest(
@@ -73,14 +120,26 @@ class InvoiceTest extends TestCase
         $this->assertInstanceOf("Stripe\\Invoice", $resource);
     }
 
-    public function testIsPayable()
+    public function testCanSendInvoice()
     {
         $invoice = Invoice::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'post',
-            '/v1/invoices/' . $invoice->id . '/pay'
+            '/v1/invoices/' . $invoice->id . '/send'
         );
-        $resource = $invoice->pay();
+        $resource = $invoice->sendInvoice();
+        $this->assertInstanceOf("Stripe\\Invoice", $resource);
+        $this->assertSame($resource, $invoice);
+    }
+
+    public function testCanVoidInvoice()
+    {
+        $invoice = Invoice::retrieve(self::TEST_RESOURCE_ID);
+        $this->expectsRequest(
+            'post',
+            '/v1/invoices/' . $invoice->id . '/void'
+        );
+        $resource = $invoice->voidInvoice();
         $this->assertInstanceOf("Stripe\\Invoice", $resource);
         $this->assertSame($resource, $invoice);
     }
