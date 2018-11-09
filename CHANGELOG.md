@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.21.0 - 2018-11-08
+* [#537](https://github.com/stripe/stripe-php/pull/537) Add new API endpoints for the `Invoice` resource.
+
 ## 6.20.1 - 2018-11-07
 * [#546](https://github.com/stripe/stripe-php/pull/546) Drop files from the Composer package that aren't needed in the release
 
