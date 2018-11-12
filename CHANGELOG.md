@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.21.1 - 2018-11-12
+* [#548](https://github.com/stripe/stripe-php/pull/548) Don't mutate `Exception` class properties from `OAuthBase` error
+
 ## 6.21.0 - 2018-11-08
 * [#537](https://github.com/stripe/stripe-php/pull/537) Add new API endpoints for the `Invoice` resource.
 
