@@ -333,12 +333,11 @@ class ApiRequestor
         }
 
         $hasFile = false;
-        $hasCurlFile = class_exists('\CURLFile', false);
         foreach ($params as $k => $v) {
             if (is_resource($v)) {
                 $hasFile = true;
-                $params[$k] = self::_processResourceParam($v, $hasCurlFile);
-            } elseif ($hasCurlFile && $v instanceof \CURLFile) {
+                $params[$k] = self::_processResourceParam($v);
+            } elseif ($v instanceof \CURLFile) {
                 $hasFile = true;
             }
         }
@@ -368,12 +367,11 @@ class ApiRequestor
 
     /**
      * @param resource $resource
-     * @param bool     $hasCurlFile
      *
      * @return \CURLFile|string
      * @throws Error\Api
      */
-    private function _processResourceParam($resource, $hasCurlFile)
+    private function _processResourceParam($resource)
     {
         if (get_resource_type($resource) !== 'stream') {
             throw new Error\Api(
@@ -388,12 +386,8 @@ class ApiRequestor
             );
         }
 
-        if ($hasCurlFile) {
-            // We don't have the filename or mimetype, but the API doesn't care
-            return new \CURLFile($metaData['uri']);
-        } else {
-            return '@'.$metaData['uri'];
-        }
+        // We don't have the filename or mimetype, but the API doesn't care
+        return new \CURLFile($metaData['uri']);
     }
 
     /**
