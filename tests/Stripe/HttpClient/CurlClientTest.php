@@ -60,7 +60,7 @@ class CurlClientTest extends TestCase
 
     private function createFakeRandomGenerator($returnValue = 1.0)
     {
-        $fakeRandomGenerator = $this->getMock('Stripe\Util\RandomGenetator', ['randFloat']);
+        $fakeRandomGenerator = $this->createMock('Stripe\Util\RandomGenerator', ['randFloat']);
         $fakeRandomGenerator->method('randFloat')->willReturn($returnValue);
         return $fakeRandomGenerator;
     }
