@@ -6,12 +6,6 @@ language: php
 
 matrix:
   include:
-    - php: 5.4
-      env: AUTOLOAD=1
-      dist: trusty
-    - php: 5.4
-      env: AUTOLOAD=0
-      dist: trusty
     - php: 5.5
       env: AUTOLOAD=1
       dist: trusty
