@@ -6,22 +6,20 @@ use Stripe\Stripe;
 use Stripe\Error;
 use Stripe\Util;
 
-// cURL constants are not defined in PHP < 5.5
-
 // @codingStandardsIgnoreStart
 // PSR2 requires all constants be upper case. Sadly, the CURL_SSLVERSION
 // constants do not abide by those rules.
 
-// Note the values 1 and 6 come from their position in the enum that
+// Note the values come from their position in the enums that
 // defines them in cURL's source code.
-if (!defined('CURL_SSLVERSION_TLSv1')) {
-    define('CURL_SSLVERSION_TLSv1', 1);
-}
+
+// Available since PHP 5.5.19 and 5.6.3
 if (!defined('CURL_SSLVERSION_TLSv1_2')) {
     define('CURL_SSLVERSION_TLSv1_2', 6);
 }
 // @codingStandardsIgnoreEnd
 
+// Available since PHP 7.0.7 and cURL 7.47.0
 if (!defined('CURL_HTTP_VERSION_2TLS')) {
     define('CURL_HTTP_VERSION_2TLS', 4);
 }
