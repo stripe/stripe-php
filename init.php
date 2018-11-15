@@ -49,6 +49,7 @@ require(dirname(__FILE__) . '/lib/ApiOperations/Update.php');
 
 // Plumbing
 require(dirname(__FILE__) . '/lib/ApiResponse.php');
+require(dirname(__FILE__) . '/lib/RequestTelemetry.php');
 require(dirname(__FILE__) . '/lib/StripeObject.php');
 require(dirname(__FILE__) . '/lib/ApiRequestor.php');
 require(dirname(__FILE__) . '/lib/ApiResource.php');

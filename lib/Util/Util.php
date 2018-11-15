@@ -333,4 +333,14 @@ abstract class Util
         }
         return [$id, $params];
     }
+
+    /**
+     * Returns UNIX timestamp in milliseconds
+     *
+     * @return float current time in millis
+     */
+    public static function currentTimeMillis()
+    {
+        return round(microtime(true) * 1000);
+    }
 }

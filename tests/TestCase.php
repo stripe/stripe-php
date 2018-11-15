@@ -52,6 +52,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
     {
         // Restore original values
         Stripe::$apiBase = $this->origApiBase;
+        Stripe::setEnableTelemetry(false);
         Stripe::setApiKey($this->origApiKey);
         Stripe::setClientId($this->origClientId);
         Stripe::setApiVersion($this->origApiVersion);
