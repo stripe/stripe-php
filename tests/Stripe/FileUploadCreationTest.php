@@ -47,11 +47,6 @@ class FileUploadCreationTest extends TestCase
 
     public function testIsCreatableWithCurlFile()
     {
-        if (!class_exists('\CurlFile', false)) {
-            // Older PHP versions don't support this
-            return;
-        }
-
         $this->expectsRequest(
             'post',
             '/v1/files',
