@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.22.0 - 2018-11-15
+* [#549](https://github.com/stripe/stripe-php/pull/549) Add support for client telemetry
+
 ## 6.21.1 - 2018-11-12
 * [#548](https://github.com/stripe/stripe-php/pull/548) Don't mutate `Exception` class properties from `OAuthBase` error
 
