@@ -193,31 +193,32 @@ class ApiRequestor
         $param = isset($errorData['param']) ? $errorData['param'] : null;
         $code = isset($errorData['code']) ? $errorData['code'] : null;
         $type = isset($errorData['type']) ? $errorData['type'] : null;
+        $declineCode = isset($errorData['decline_code']) ? $errorData['decline_code'] : null;
 
         switch ($rcode) {
             case 400:
                 // 'rate_limit' code is deprecated, but left here for backwards compatibility
                 // for API versions earlier than 2015-09-08
                 if ($code == 'rate_limit') {
-                    return new Error\RateLimit($msg, $param, $rcode, $rbody, $resp, $rheaders);
+                    return new Error\RateLimit($msg, $param, $rcode, $rbody, $resp, $rheaders, $code);
                 }
                 if ($type == 'idempotency_error') {
-                    return new Error\Idempotency($msg, $rcode, $rbody, $resp, $rheaders);
+                    return new Error\Idempotency($msg, $rcode, $rbody, $resp, $rheaders, $code);
                 }
 
                 // no break
             case 404:
-                return new Error\InvalidRequest($msg, $param, $rcode, $rbody, $resp, $rheaders);
+                return new Error\InvalidRequest($msg, $param, $rcode, $rbody, $resp, $rheaders, $code);
             case 401:
-                return new Error\Authentication($msg, $rcode, $rbody, $resp, $rheaders);
+                return new Error\Authentication($msg, $rcode, $rbody, $resp, $rheaders, $code);
             case 402:
-                return new Error\Card($msg, $param, $code, $rcode, $rbody, $resp, $rheaders);
+                return new Error\Card($msg, $param, $code, $rcode, $rbody, $resp, $rheaders, $declineCode);
             case 403:
-                return new Error\Permission($msg, $rcode, $rbody, $resp, $rheaders);
+                return new Error\Permission($msg, $rcode, $rbody, $resp, $rheaders, $code);
             case 429:
-                return new Error\RateLimit($msg, $param, $rcode, $rbody, $resp, $rheaders);
+                return new Error\RateLimit($msg, $param, $rcode, $rbody, $resp, $rheaders, $code);
             default:
-                return new Error\Api($msg, $rcode, $rbody, $resp, $rheaders);
+                return new Error\Api($msg, $rcode, $rbody, $resp, $rheaders, $code);
         }
     }
 
