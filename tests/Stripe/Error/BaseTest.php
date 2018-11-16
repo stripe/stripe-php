@@ -31,6 +31,6 @@ class BaseTest extends TestCase
     public function testToString()
     {
         $e = $this->createFixture();
-        $this->assertContains("from API request 'req_test'", (string)$e);
+        $this->assertContains("(Request req_test)", (string)$e);
     }
 }
