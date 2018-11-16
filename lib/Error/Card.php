@@ -2,8 +2,16 @@
 
 namespace Stripe\Error;
 
+/**
+ * Card is raised when a user enters a card that can't be charged for some reason.
+ *
+ * @package Stripe\Error
+ */
 class Card extends Base
 {
+    protected $declineCode;
+    protected $stripeParam;
+
     public function __construct(
         $message,
         $stripeParam,
@@ -11,21 +19,12 @@ class Card extends Base
         $httpStatus,
         $httpBody,
         $jsonBody,
-        $httpHeaders = null
+        $httpHeaders = null,
+        $declineCode = null
     ) {
-        parent::__construct($message, $httpStatus, $httpBody, $jsonBody, $httpHeaders);
+        parent::__construct($message, $httpStatus, $httpBody, $jsonBody, $httpHeaders, $stripeCode);
+        $this->declineCode = $declineCode;
         $this->stripeParam = $stripeParam;
-
-        // TODO: once Error\Base accepts the error code as an argument, pass it
-        //       in the call to parent::__construct() and stop setting it here.
-        $this->stripeCode = $stripeCode;
-
-        // This one is not like the others because it was added later and we're
-        // trying to do our best not to change the public interface of this class'
-        // constructor.
-        // TODO: make this a proper constructor argument in the next major
-        //       release.
-        $this->declineCode = isset($jsonBody["error"]["decline_code"]) ? $jsonBody["error"]["decline_code"] : null;
     }
 
     public function getDeclineCode()
