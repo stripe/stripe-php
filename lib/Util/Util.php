@@ -337,10 +337,10 @@ abstract class Util
     /**
      * Returns UNIX timestamp in milliseconds
      *
-     * @return float current time in millis
+     * @return integer current time in millis
      */
     public static function currentTimeMillis()
     {
-        return round(microtime(true) * 1000);
+        return (int) round(microtime(true) * 1000);
     }
 }
