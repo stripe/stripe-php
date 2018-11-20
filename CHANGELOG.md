@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.22.1 - 2018-11-20
+* [#561](https://github.com/stripe/stripe-php/pull/561) Add cast and some docs to telemetry introduced in 6.22.0/#549
+
 ## 6.22.0 - 2018-11-15
 * [#549](https://github.com/stripe/stripe-php/pull/549) Add support for client telemetry
 
