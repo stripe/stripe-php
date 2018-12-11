@@ -40,7 +40,7 @@ class CurlClient implements ClientInterface
 
     protected $userAgentInfo;
 
-    protected $enablePersistentConnections = null;
+    protected $enablePersistentConnections = true;
 
     protected $curlHandle = null;
 
@@ -62,10 +62,6 @@ class CurlClient implements ClientInterface
         $this->defaultOptions = $defaultOptions;
         $this->randomGenerator = $randomGenerator ?: new Util\RandomGenerator();
         $this->initUserAgentInfo();
-
-        // TODO: curl_reset requires PHP >= 5.5.0. Once we drop support for PHP 5.4, we can simply
-        // initialize this to true.
-        $this->enablePersistentConnections = function_exists('curl_reset');
     }
 
     public function __destruct()
