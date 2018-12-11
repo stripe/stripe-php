@@ -71,6 +71,7 @@ abstract class Util
 
             // business objects
             \Stripe\Account::OBJECT_NAME => 'Stripe\\Account',
+            \Stripe\AccountLink::OBJECT_NAME => 'Stripe\\AccountLink',
             \Stripe\AlipayAccount::OBJECT_NAME => 'Stripe\\AlipayAccount',
             \Stripe\ApplePayDomain::OBJECT_NAME => 'Stripe\\ApplePayDomain',
             \Stripe\ApplicationFee::OBJECT_NAME => 'Stripe\\ApplicationFee',
