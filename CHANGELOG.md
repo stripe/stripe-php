@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.25.0 - 2018-12-10
+* [#567](https://github.com/stripe/stripe-php/pull/567) Add support for account links
+
 ## 6.24.0 - 2018-11-28
 * [#562](https://github.com/stripe/stripe-php/pull/562) Add support for the Review resource
 * [#564](https://github.com/stripe/stripe-php/pull/564) Add event name constants for subscription schedule aborted/expiring
