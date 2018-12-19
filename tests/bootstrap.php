@@ -1,8 +1,19 @@
 <?php
 
+require_once(__DIR__ . '/StripeMock.php');
+
 define("MOCK_MINIMUM_VERSION", "0.40.0");
-define("MOCK_HOST", getenv("STRIPE_MOCK_HOST") ?: "localhost");
-define("MOCK_PORT", getenv("STRIPE_MOCK_PORT") ?: 12111);
+
+if (\Stripe\StripeMock::start()) {
+    register_shutdown_function('\Stripe\StripeMock::stop');
+
+    define("MOCK_HOST", "localhost");
+    define("MOCK_PORT", \Stripe\StripeMock::getPort());
+} else {
+    define("MOCK_HOST", getenv("STRIPE_MOCK_HOST") ?: "localhost");
+    define("MOCK_PORT", getenv("STRIPE_MOCK_PORT") ?: 12111);
+}
+
 define("MOCK_URL", "http://" . MOCK_HOST . ":" . MOCK_PORT);
 
 // Send a request to stripe-mock
