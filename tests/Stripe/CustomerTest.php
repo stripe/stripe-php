@@ -216,7 +216,6 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/sources/' . self::TEST_SOURCE_ID
         );
         $resource = Customer::deleteSource(self::TEST_RESOURCE_ID, self::TEST_SOURCE_ID);
-        $this->assertInstanceOf("Stripe\\AlipayAccount", $resource);
     }
 
     public function testCanListSources()
