@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.27.0 - 2018-12-21
+* [#571](https://github.com/stripe/stripe-php/pull/571) Add support for the `CheckoutSession` resource
+
 ## 6.26.0 - 2018-12-11
 * [#568](https://github.com/stripe/stripe-php/pull/568) Enable persistent connections
 
