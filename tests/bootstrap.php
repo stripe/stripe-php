@@ -3,7 +3,7 @@
 define("MOCK_MINIMUM_VERSION", "0.40.0");
 define("MOCK_HOST", getenv("STRIPE_MOCK_HOST") ?: "localhost");
 define("MOCK_PORT", getenv("STRIPE_MOCK_PORT") ?: 12111);
-define("MOCK_URL", "http://" . MOCK_HOST . ":" . MOCK_PORT . "/");
+define("MOCK_URL", "http://" . MOCK_HOST . ":" . MOCK_PORT);
 
 // Send a request to stripe-mock
 $ch = curl_init(MOCK_URL);
