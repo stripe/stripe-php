@@ -71,6 +71,26 @@ class CollectionTest extends TestCase
         ]);
     }
 
+    public function testCanIterate()
+    {
+        $seen = [];
+        foreach ($this->fixture as $item) {
+            array_push($seen, $item['id']);
+        }
+
+        $this->assertSame([1], $seen);
+    }
+
+    public function testSupportsIteratorToArray()
+    {
+        $seen = [];
+        foreach (iterator_to_array($this->fixture) as $item) {
+            array_push($seen, $item['id']);
+        }
+
+        $this->assertSame([1], $seen);
+    }
+
     public function testProvidesAutoPagingIterator()
     {
         $this->stubRequest(
@@ -95,7 +115,7 @@ class CollectionTest extends TestCase
         $this->assertSame([1, 2, 3], $seen);
     }
 
-    public function testSupportsIteratorToArray()
+    public function testAutoPagingIteratorSupportsIteratorToArray()
     {
         $this->stubRequest(
             'GET',
