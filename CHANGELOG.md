@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.28.0 - 2019-01-03
+* [#576](https://github.com/stripe/stripe-php/pull/576) Add support for iterating directly over `Collection` instances
+
 ## 6.27.0 - 2018-12-21
 * [#571](https://github.com/stripe/stripe-php/pull/571) Add support for the `CheckoutSession` resource
 
