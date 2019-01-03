@@ -1,17 +1,19 @@
 <?php
 
 define("MOCK_MINIMUM_VERSION", "0.40.0");
+define("MOCK_HOST", getenv("STRIPE_MOCK_HOST") ?: "localhost");
 define("MOCK_PORT", getenv("STRIPE_MOCK_PORT") ?: 12111);
+define("MOCK_URL", "http://" . MOCK_HOST . ":" . MOCK_PORT);
 
 // Send a request to stripe-mock
-$ch = curl_init("http://localhost:" . MOCK_PORT . "/");
+$ch = curl_init(MOCK_URL);
 curl_setopt($ch, CURLOPT_HEADER, 1);
 curl_setopt($ch, CURLOPT_NOBODY, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $resp = curl_exec($ch);
 
 if (curl_errno($ch)) {
-    echo "Couldn't reach stripe-mock at `localhost:" . MOCK_PORT . "`. Is " .
+    echo "Couldn't reach stripe-mock at `" . MOCK_HOST . ":" . MOCK_PORT . "`. Is " .
          "it running? Please see README for setup instructions.\n";
     exit(1);
 }
@@ -28,7 +30,7 @@ foreach ($headers as $header) {
 
 if ($version === null) {
     echo "Could not retrieve Stripe-Mock-Version header. Are you sure " .
-         "that the server at `localhost:" . MOCK_PORT . "` is a stripe-mock " .
+         "that the server at `" . MOCK_HOST . ":" . MOCK_PORT . "` is a stripe-mock " .
          "instance?";
     exit(1);
 }
