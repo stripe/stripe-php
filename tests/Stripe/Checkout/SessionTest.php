@@ -1,16 +1,16 @@
 <?php
 
-namespace Stripe;
+namespace Stripe\Checkout;
 
-class CheckoutSessionTest extends TestCase
+class SessionTest extends \Stripe\TestCase
 {
     public function testIsCreatable()
     {
         $this->expectsRequest(
             'post',
-            '/v1/checkout_sessions'
+            '/v1/checkout/sessions'
         );
-        $resource = CheckoutSession::create([
+        $resource = Session::create([
             'allowed_source_types' => ['card'],
             'cancel_url' => 'https://stripe.com/cancel',
             'client_reference_id' => '1234',
@@ -31,6 +31,6 @@ class CheckoutSessionTest extends TestCase
             ],
             'success_url' => 'https://stripe.com/success'
         ]);
-        $this->assertInstanceOf('Stripe\\CheckoutSession', $resource);
+        $this->assertInstanceOf('Stripe\\Checkout\\Session', $resource);
     }
 }
