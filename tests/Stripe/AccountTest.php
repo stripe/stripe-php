@@ -456,4 +456,59 @@ class AccountTest extends TestCase
         ];
         $this->assertSame($expected, $obj->serializeParameters());
     }
+
+    public function testSerializeNewIndividual()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'account',
+        ], null);
+        $obj->individual = ['first_name' => 'Jane'];
+
+        $expected = ['individual' => ['first_name' => 'Jane']];
+        $this->assertSame($expected, $obj->serializeParameters());
+    }
+
+    public function testSerializePartiallyChangedIndividual()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'account',
+            'individual' => Util\Util::convertToStripeObject([
+                'object' => 'person',
+                'first_name' => 'Jenny',
+            ], null),
+        ], null);
+        $obj->individual = ['first_name' => 'Jane'];
+
+        $expected = ['individual' => ['first_name' => 'Jane']];
+        $this->assertSame($expected, $obj->serializeParameters());
+    }
+
+    public function testSerializeUnchangedIndividual()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'account',
+            'individual' => Util\Util::convertToStripeObject([
+                'object' => 'person',
+                'first_name' => 'Jenny',
+            ], null),
+        ], null);
+
+        $expected = ['individual' => []];
+        $this->assertSame($expected, $obj->serializeParameters());
+    }
+
+    public function testSerializeUnsetIndividual()
+    {
+        $obj = Util\Util::convertToStripeObject([
+            'object' => 'account',
+            'individual' => Util\Util::convertToStripeObject([
+                'object' => 'person',
+                'first_name' => 'Jenny',
+            ], null),
+        ], null);
+        $obj->individual = null;
+
+        $expected = ['individual' => ''];
+        $this->assertSame($expected, $obj->serializeParameters());
+    }
 }
