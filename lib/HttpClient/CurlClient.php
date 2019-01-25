@@ -228,8 +228,10 @@ class CurlClient implements ClientInterface
             $opts[CURLOPT_SSL_VERIFYPEER] = false;
         }
 
-        // For HTTPS requests, enable HTTP/2, if supported
-        $opts[CURLOPT_HTTP_VERSION] = CURL_HTTP_VERSION_2TLS;
+        if (!isset($opts[CURLOPT_HTTP_VERSION])) {
+            // For HTTPS requests, enable HTTP/2, if supported
+            $opts[CURLOPT_HTTP_VERSION] = CURL_HTTP_VERSION_2TLS;
+        }
 
         list($rbody, $rcode) = $this->executeRequestWithRetries($opts, $absUrl);
 
