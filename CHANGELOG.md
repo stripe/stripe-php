@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.29.1 - 2019-01-25
+* [#566](https://github.com/stripe/stripe-php/pull/566) Fix dangling message contents
+* [#586](https://github.com/stripe/stripe-php/pull/586) Don't overwrite `CURLOPT_HTTP_VERSION` option
+
 ## 6.29.0 - 2019-01-23
 * [#579](https://github.com/stripe/stripe-php/pull/579) Rename `CheckoutSession` to `Session` and move it under the `Checkout` namespace. This is a breaking change, but we've reached out to affected merchants and all new merchants would use the new approach.
 
