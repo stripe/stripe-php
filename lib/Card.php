@@ -82,7 +82,7 @@ class Card extends ApiResource
     {
         $msg = "Cards cannot be accessed without a customer, recipient or account ID. " .
                "Retrieve a card using \$customer->sources->retrieve('card_id'), " .
-               "\$recipient->cards->retrieve('card_id'), or";
+               "\$recipient->cards->retrieve('card_id'), or " .
                "\$account->external_accounts->retrieve('card_id') instead.";
         throw new Error\InvalidRequest($msg, null);
     }
@@ -98,7 +98,7 @@ class Card extends ApiResource
     {
         $msg = "Cards cannot be accessed without a customer, recipient or account ID. " .
                "Call save() on \$customer->sources->retrieve('card_id'), " .
-               "\$recipient->cards->retrieve('card_id'), or";
+               "\$recipient->cards->retrieve('card_id'), or " .
                "\$account->external_accounts->retrieve('card_id') instead.";
         throw new Error\InvalidRequest($msg, null);
     }
