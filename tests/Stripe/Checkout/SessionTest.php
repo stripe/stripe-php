@@ -11,7 +11,6 @@ class SessionTest extends \Stripe\TestCase
             '/v1/checkout/sessions'
         );
         $resource = Session::create([
-            'allowed_source_types' => ['card'],
             'cancel_url' => 'https://stripe.com/cancel',
             'client_reference_id' => '1234',
             'line_items' => [
@@ -29,6 +28,7 @@ class SessionTest extends \Stripe\TestCase
             'payment_intent_data' => [
                 'receipt_email' => 'test@stripe.com',
             ],
+            'payment_method_types' => ['card'],
             'success_url' => 'https://stripe.com/success'
         ]);
         $this->assertInstanceOf('Stripe\\Checkout\\Session', $resource);
