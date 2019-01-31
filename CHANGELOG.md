@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.29.3 - 2019-01-31
+* [#592](https://github.com/stripe/stripe-php/pull/592) Some more PHPDoc fixes
+
 ## 6.29.2 - 2019-01-31
 * [#591](https://github.com/stripe/stripe-php/pull/591) Fix PHPDoc for nested resources
 
