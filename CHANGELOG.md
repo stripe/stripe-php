@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.29.2 - 2019-01-31
+* [#591](https://github.com/stripe/stripe-php/pull/591) Fix PHPDoc for nested resources
+
 ## 6.29.1 - 2019-01-25
 * [#566](https://github.com/stripe/stripe-php/pull/566) Fix dangling message contents
 * [#586](https://github.com/stripe/stripe-php/pull/586) Don't overwrite `CURLOPT_HTTP_VERSION` option
