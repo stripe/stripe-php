@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.30.0 - 2019-02-12
+* [#590](https://github.com/stripe/stripe-php/pull/590) Add support for `SubscriptionSchedule` and `SubscriptionScheduleRevision`
+
 ## 6.29.3 - 2019-01-31
 * [#592](https://github.com/stripe/stripe-php/pull/592) Some more PHPDoc fixes
 
