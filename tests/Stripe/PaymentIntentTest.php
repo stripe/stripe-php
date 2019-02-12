@@ -34,9 +34,9 @@ class PaymentIntentTest extends TestCase
             '/v1/payment_intents'
         );
         $resource = PaymentIntent::create([
-            "allowed_source_types" => ["card"],
             "amount" => 100,
             "currency" => "usd",
+            'payment_method_types' => ['card'],
         ]);
         $this->assertInstanceOf("Stripe\\PaymentIntent", $resource);
     }
