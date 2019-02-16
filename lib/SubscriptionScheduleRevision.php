@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class Subscription
+ * Class SubscriptionScheduleRevision
  *
  * @property string $id
  * @property string $object
@@ -14,7 +14,7 @@ namespace Stripe;
  * @property string $previous_revision
  * @property string $renewal_behavior
  * @property mixed $renewal_interval
- * @property string $chedule
+ * @property string $schedule
  *
  * @package Stripe
  */

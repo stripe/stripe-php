@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class Subscription
+ * Class SubscriptionSchedule
  *
  * @property string $id
  * @property string $object
