@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.30.4 - 2019-02-27
+* [#602](https://github.com/stripe/stripe-php/pull/602) Add `subscription_schedule` to `Subscription` for PHPDoc.
+
 ## 6.30.3 - 2019-02-26
 * [#603](https://github.com/stripe/stripe-php/pull/603) Improve PHPDoc on the `Source` object to cover all types of Sources currently supported.
 
