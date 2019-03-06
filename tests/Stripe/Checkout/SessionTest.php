@@ -4,6 +4,8 @@ namespace Stripe\Checkout;
 
 class SessionTest extends \Stripe\TestCase
 {
+    const TEST_RESOURCE_ID = 'cs_123';
+
     public function testIsCreatable()
     {
         $this->expectsRequest(
@@ -32,5 +34,15 @@ class SessionTest extends \Stripe\TestCase
             'success_url' => 'https://stripe.com/success'
         ]);
         $this->assertInstanceOf('Stripe\\Checkout\\Session', $resource);
+    }
+
+    public function testIsRetrievable()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/checkout/sessions/' . self::TEST_RESOURCE_ID
+        );
+        $resource = Session::retrieve(self::TEST_RESOURCE_ID);
+        $this->assertInstanceOf("Stripe\\Checkout\\Session", $resource);
     }
 }
