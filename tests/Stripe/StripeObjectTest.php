@@ -473,4 +473,23 @@ EOS;
         $obj = StripeObject::constructFrom(['deleted' => true]);
         $this->assertTrue($obj->isDeleted());
     }
+
+    public function testDeserializeEmptyMetadata()
+    {
+        $obj = StripeObject::constructFrom([
+            'metadata' => [],
+        ]);
+
+        $this->assertInstanceOf("Stripe\\StripeObject", $obj->metadata);
+    }
+
+    public function testDeserializeMetadataWithKeyNamedMetadata()
+    {
+        $obj = StripeObject::constructFrom([
+            'metadata' => ['metadata' => 'value'],
+        ]);
+
+        $this->assertInstanceOf("Stripe\\StripeObject", $obj->metadata);
+        $this->assertEquals("value", $obj->metadata->metadata);
+    }
 }
