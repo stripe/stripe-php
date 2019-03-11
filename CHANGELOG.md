@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.30.5 - 2019-03-11
+* [#607](https://github.com/stripe/stripe-php/pull/607) Correctly handle case where a metadata key is called `metadata`
+
 ## 6.30.4 - 2019-02-27
 * [#602](https://github.com/stripe/stripe-php/pull/602) Add `subscription_schedule` to `Subscription` for PHPDoc.
 
