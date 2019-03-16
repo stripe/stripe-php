@@ -81,4 +81,15 @@ class LocationTest extends \Stripe\TestCase
         ]);
         $this->assertInstanceOf("Stripe\\Terminal\\Location", $resource);
     }
+
+    public function testIsDeletable()
+    {
+        $resource = Location::retrieve(self::TEST_RESOURCE_ID);
+        $this->expectsRequest(
+            'delete',
+            '/v1/terminal/locations/' . self::TEST_RESOURCE_ID
+        );
+        $resource->delete();
+        $this->assertInstanceOf("Stripe\\Terminal\\Location", $resource);
+    }
 }

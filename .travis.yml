@@ -13,7 +13,7 @@ php:
 
 env:
   global:
-    - STRIPE_MOCK_VERSION=0.44.0
+    - STRIPE_MOCK_VERSION=0.49.0
   matrix:
     - AUTOLOAD=1
     - AUTOLOAD=0
