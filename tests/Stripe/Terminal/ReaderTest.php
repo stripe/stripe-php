@@ -63,4 +63,15 @@ class ReaderTest extends \Stripe\TestCase
         $resource = Reader::create(['registration_code' => 'a-b-c']);
         $this->assertInstanceOf("Stripe\\Terminal\\Reader", $resource);
     }
+
+    public function testIsDeletable()
+    {
+        $resource = Reader::retrieve(self::TEST_RESOURCE_ID);
+        $this->expectsRequest(
+            'delete',
+            '/v1/terminal/readers/' . self::TEST_RESOURCE_ID
+        );
+        $resource->delete();
+        $this->assertInstanceOf("Stripe\\Terminal\\Reader", $resource);
+    }
 }
