@@ -27,6 +27,7 @@ namespace Stripe;
  * @property StripeObject $metadata
  * @property mixed $next_action
  * @property string $on_behalf_of
+ * @property string $payment_method
  * @property string[] $payment_method_types
  * @property string $receipt_email
  * @property string $review

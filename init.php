@@ -97,6 +97,7 @@ require(dirname(__FILE__) . '/lib/Order.php');
 require(dirname(__FILE__) . '/lib/OrderItem.php');
 require(dirname(__FILE__) . '/lib/OrderReturn.php');
 require(dirname(__FILE__) . '/lib/PaymentIntent.php');
+require(dirname(__FILE__) . '/lib/PaymentMethod.php');
 require(dirname(__FILE__) . '/lib/Payout.php');
 require(dirname(__FILE__) . '/lib/Person.php');
 require(dirname(__FILE__) . '/lib/Plan.php');
