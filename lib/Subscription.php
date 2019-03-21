@@ -54,11 +54,13 @@ class Subscription extends ApiResource
      *
      * @link https://stripe.com/docs/api#subscription_object-status
      */
-    const STATUS_ACTIVE   = 'active';
-    const STATUS_CANCELED = 'canceled';
-    const STATUS_PAST_DUE = 'past_due';
-    const STATUS_TRIALING = 'trialing';
-    const STATUS_UNPAID   = 'unpaid';
+    const STATUS_ACTIVE             = 'active';
+    const STATUS_CANCELED           = 'canceled';
+    const STATUS_PAST_DUE           = 'past_due';
+    const STATUS_TRIALING           = 'trialing';
+    const STATUS_UNPAID             = 'unpaid';
+    const STATUS_INCOMPLETE         = 'incomplete';
+    const STATUS_INCOMPLETE_EXPIRED = 'incomplete_expired';
 
     public static function getSavedNestedResources()
     {
