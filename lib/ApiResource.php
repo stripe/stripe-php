@@ -109,4 +109,22 @@ abstract class ApiResource extends StripeObject
     {
         return static::resourceUrl($this['id']);
     }
+
+    public function __call($name, $arguments)
+    {
+        $method_name = '_instance_' . $name;
+        if (method_exists($this, $method_name)) {
+            return call_user_func_array([$this, $method_name], $arguments);
+        }
+        trigger_error("Call to undefined method " . get_called_class() . "::" . $name . "()", E_USER_ERROR);
+    }
+
+    public static function __callStatic($name, $arguments)
+    {
+        $method_name = '_static_' . $name;
+        if (method_exists(get_called_class(), $method_name)) {
+            return call_user_func_array([get_called_class(), $method_name], $arguments);
+        }
+        trigger_error("Call to undefined method " . get_called_class() . "::" . $name . "()", E_USER_ERROR);
+    }
 }

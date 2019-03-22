@@ -44,7 +44,7 @@ class Subscription extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Delete {
-        delete as protected _delete;
+        _instance_delete as protected _delete;
     }
     use ApiOperations\Retrieve;
     use ApiOperations\Update;

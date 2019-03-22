@@ -89,6 +89,16 @@ class ChargeTest extends TestCase
         $this->assertSame($resource, $charge);
     }
 
+    public function testCanCaptureStatic()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/charges/' . self::TEST_RESOURCE_ID . '/capture'
+        );
+        $resource = Charge::capture(self::TEST_RESOURCE_ID);
+        $this->assertInstanceOf("Stripe\\Charge", $resource);
+    }
+
     public function testCanUpdateDispute()
     {
         $charge = Charge::retrieve(self::TEST_RESOURCE_ID);

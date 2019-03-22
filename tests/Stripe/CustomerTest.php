@@ -73,6 +73,16 @@ class CustomerTest extends TestCase
         $this->assertInstanceOf("Stripe\\Customer", $resource);
     }
 
+    public function testIsDeletableStatic()
+    {
+        $this->expectsRequest(
+            'delete',
+            '/v1/customers/' . self::TEST_RESOURCE_ID
+        );
+        $resource = Customer::delete(self::TEST_RESOURCE_ID);
+        $this->assertInstanceOf("Stripe\\Customer", $resource);
+    }
+
     public function testCanAddInvoiceItem()
     {
         $customer = Customer::retrieve(self::TEST_RESOURCE_ID);

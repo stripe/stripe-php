@@ -10,12 +10,30 @@ namespace Stripe\ApiOperations;
 trait Delete
 {
     /**
+     * @param string $id The ID of the resource to update.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @return \Stripe\ApiResource The updated resource.
+     */
+    public static function _static_delete($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+
+        list($response, $opts) = static::_staticRequest('delete', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+        return $obj;
+    }
+
+    /**
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @return \Stripe\ApiResource The deleted resource.
      */
-    public function delete($params = null, $opts = null)
+    public function _instance_delete($params = null, $opts = null)
     {
         self::_validateParams($params);
 

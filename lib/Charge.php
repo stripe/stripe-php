@@ -125,7 +125,22 @@ class Charge extends ApiResource
      *
      * @return Charge The captured charge.
      */
-    public function capture($params = null, $options = null)
+    public static function _static_capture($id, $params = null, $options = null)
+    {
+        $url = static::resourceUrl($id) . '/capture';
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+        return $obj;
+    }
+
+    /**
+     * @param array|null $params
+     * @param array|string|null $options
+     *
+     * @return Charge The captured charge.
+     */
+    public function _instance_capture($params = null, $options = null)
     {
         $url = $this->instanceUrl() . '/capture';
         list($response, $opts) = $this->_request('post', $url, $params, $options);
