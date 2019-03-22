@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.31.1 - 2019-03-22
+* [#612](https://github.com/stripe/stripe-php/pull/612) Add a lot of constants
+* [#614](https://github.com/stripe/stripe-php/pull/614) Add missing subscription status constants
+
 ## 6.31.0 - 2019-03-18
 * [#600](https://github.com/stripe/stripe-php/pull/600) Add support for the `PaymentMethod` resource and APIs
 * [#606](https://github.com/stripe/stripe-php/pull/606) Add support for retrieving a Checkout `Session`
