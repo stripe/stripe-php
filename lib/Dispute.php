@@ -36,6 +36,7 @@ class Dispute extends ApiResource
      * @link https://stripe.com/docs/api#dispute_object
      */
     const REASON_BANK_CANNOT_PROCESS       = 'bank_cannot_process';
+    const REASON_CHECK_RETURNED            = 'check_returned';
     const REASON_CREDIT_NOT_PROCESSED      = 'credit_not_processed';
     const REASON_CUSTOMER_INITIATED        = 'customer_initiated';
     const REASON_DEBIT_NOT_AUTHORIZED      = 'debit_not_authorized';

@@ -10,7 +10,7 @@ namespace Stripe;
  * @property int $amount_due
  * @property int $amount_paid
  * @property int $amount_remaining
- * @property int $application_fee
+ * @property int $application_fee_amount
  * @property int $attempt_count
  * @property bool $attempted
  * @property bool $auto_advance
@@ -63,6 +63,35 @@ class Invoice extends ApiResource
     use ApiOperations\Delete;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
+
+    /**
+     * Possible string representations of the invoice status.
+     * @link https://stripe.com/docs/api/invoices/object#invoice_object-status
+     */
+    const STATUS_DRAFT         = 'draft';
+    const STATUS_OPEN          = 'open';
+    const STATUS_PAID          = 'paid';
+    const STATUS_UNCOLLECTIBLE = 'uncollectible';
+    const STATUS_VOID          = 'void';
+
+    /**
+     * Possible string representations of the billing.
+     * @link https://stripe.com/docs/api/invoices/object#invoice_object-billing
+     */
+    const BILLING_SEND_INVOICE         = 'send_invoice';
+    const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
+
+    /**
+     * Possible string representations of the billing reason.
+     * @link https://stripe.com/docs/api/invoices/object#invoice_object-billing_reason
+     */
+    const BILLING_REASON_SUBSCRIPTION           = 'subscription';
+    const BILLING_REASON_SUBSCRIPTION_CREATE    = 'subscription_create';
+    const BILLING_REASON_SUBSCRIPTION_CYCLE     = 'subscription_cycle';
+    const BILLING_REASON_SUBSCRIPTION_UPDATE    = 'subscription_update';
+    const BILLING_REASON_SUBSCRIPTION_THRESHOLD = 'subscription_threshold';
+    const BILLING_REASON_MANUAL                 = 'manual';
+    const BILLING_REASON_UPCOMING               = 'upcoming';
 
     /**
      * @param array|null $params

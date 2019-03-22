@@ -45,6 +45,31 @@ class Card extends ApiResource
     use ApiOperations\Update;
 
     /**
+     * Possible string representations of the CVC check status.
+     * @link https://stripe.com/docs/api/cards/object#card_object-cvc_check
+     */
+    const CVC_CHECK_FAIL        = 'fail';
+    const CVC_CHECK_PASS        = 'pass';
+    const CVC_CHECK_UNAVAILABLE = 'unavailable';
+    const CVC_CHECK_UNCHECKED   = 'unchecked';
+
+    /**
+     * Possible string representations of the funding of the card.
+     * @link https://stripe.com/docs/api/cards/object#card_object-funding
+     */
+    const FUNDING_CREDIT  = 'credit';
+    const FUNDING_DEBIT   = 'debit';
+    const FUNDING_PREPAID = 'prepaid';
+    const FUNDING_UNKNOWN = 'unknown';
+
+    /**
+     * Possible string representations of the tokenization method when using Apple Pay or Google Pay.
+     * @link https://stripe.com/docs/api/cards/object#card_object-tokenization_method
+     */
+    const TOKENIZATION_METHOD_APPLE_PAY  = 'apple_pay';
+    const TOKENIZATION_METHOD_GOOGLE_PAY = 'google_pay';
+
+    /**
      * @return string The instance URL for this resource. It needs to be special
      *    cased because cards are nested resources that may belong to different
      *    top-level resources.
