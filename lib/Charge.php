@@ -106,6 +106,14 @@ class Charge extends ApiResource
     const DECLINED_WITHDRAWAL_COUNT_LIMIT_EXCEEDED   = 'withdrawal_count_limit_exceeded';
 
     /**
+     * Possible string representations of the status of the charge.
+     * @link https://stripe.com/docs/api/charges/object#charge_object-status
+     */
+    const STATUS_FAILED    = 'failed';
+    const STATUS_PENDING   = 'pending';
+    const STATUS_SUCCEEDED = 'succeeded';
+
+    /**
      * @param array|null $params
      * @param array|string|null $options
      *

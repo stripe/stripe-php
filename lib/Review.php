@@ -22,12 +22,25 @@ namespace Stripe;
  *
  * @package Stripe
  */
-class Review extends \Stripe\ApiResource
+class Review extends ApiResource
 {
     const OBJECT_NAME = "review";
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
+    use ApiOperations\All;
+    use ApiOperations\Retrieve;
+
+    /**
+     * Possible string representations of the current, the opening or the closure reason of the review.
+     * Not all of these enumeration apply to all of the ´reason´ fields. Please consult the Review object to
+     * determine where these are apply.
+     * @link https://stripe.com/docs/api/radar/reviews/object
+     */
+    const REASON_APPROVED          = 'approved';
+    const REASON_DISPUTED          = 'disputed';
+    const REASON_MANUAL            = 'manual';
+    const REASON_REFUNDED          = 'refunded';
+    const REASON_REFUNDED_AS_FRAUD = 'refunded_as_fraud';
+    const REASON_RULE              = 'rule';
 
     /**
      * @param array|string|null $options
