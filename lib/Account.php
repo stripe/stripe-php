@@ -183,7 +183,7 @@ class Account extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return BankAccount|Card
+     * @return BankAccount[]|Card[]
      */
     public static function allExternalAccounts($id, $params = null, $opts = null)
     {
