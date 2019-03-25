@@ -112,7 +112,7 @@ class Transfer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return TransferReversal
+     * @return Collection The list of reversals.
      */
     public static function allReversals($id, $params = null, $opts = null)
     {

@@ -196,7 +196,7 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ApiResource
+     * @return Collection The list of sources.
      */
     public static function allSources($id, $params = null, $opts = null)
     {

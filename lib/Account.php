@@ -183,7 +183,7 @@ class Account extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return BankAccount|Card
+     * @return Collection The list of external accounts (BankAccount or Card).
      */
     public static function allExternalAccounts($id, $params = null, $opts = null)
     {
@@ -258,7 +258,7 @@ class Account extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return Person
+     * @return Collection The list of persons.
      */
     public static function allPersons($id, $params = null, $opts = null)
     {

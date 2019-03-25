@@ -89,7 +89,7 @@ class ApplicationFee extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ApplicationFeeRefund
+     * @return Collection The list of refunds.
      */
     public static function allRefunds($id, $params = null, $opts = null)
     {
