@@ -102,7 +102,7 @@ class SubscriptionSchedule extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return Revision
+     * @return Collection The list of revisions.
      */
     public static function allRevisions($id, $params = null, $opts = null)
     {
