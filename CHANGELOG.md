@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.31.2 - 2019-03-25
+* [#619](https://github.com/stripe/stripe-php/pull/619) Fix PHPDoc return types for list methods for nested resources
+
 ## 6.31.1 - 2019-03-22
 * [#612](https://github.com/stripe/stripe-php/pull/612) Add a lot of constants
 * [#614](https://github.com/stripe/stripe-php/pull/614) Add missing subscription status constants
