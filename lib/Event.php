@@ -53,6 +53,9 @@ class Event extends ApiResource
     const COUPON_CREATED                           = 'coupon.created';
     const COUPON_DELETED                           = 'coupon.deleted';
     const COUPON_UPDATED                           = 'coupon.updated';
+    const CREDIT_NOTE_CREATED                      = 'credit_note.created';
+    const CREDIT_NOTE_UPDATED                      = 'credit_note.updated';
+    const CREDIT_NOTE_VOIDED                       = 'credit_note.voided';
     const CUSTOMER_CREATED                         = 'customer.created';
     const CUSTOMER_DELETED                         = 'customer.deleted';
     const CUSTOMER_UPDATED                         = 'customer.updated';

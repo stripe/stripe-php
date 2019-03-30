@@ -85,6 +85,7 @@ abstract class Util
             \Stripe\Checkout\Session::OBJECT_NAME => 'Stripe\\Checkout\\Session',
             \Stripe\CountrySpec::OBJECT_NAME => 'Stripe\\CountrySpec',
             \Stripe\Coupon::OBJECT_NAME => 'Stripe\\Coupon',
+            \Stripe\CreditNote::OBJECT_NAME => 'Stripe\\CreditNote',
             \Stripe\Customer::OBJECT_NAME => 'Stripe\\Customer',
             \Stripe\Discount::OBJECT_NAME => 'Stripe\\Discount',
             \Stripe\Dispute::OBJECT_NAME => 'Stripe\\Dispute',
