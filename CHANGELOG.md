@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.31.3 - 2019-04-02
+* [#623](https://github.com/stripe/stripe-php/pull/623) Only use HTTP/2 with curl >= 7.60.0
+
 ## 6.31.2 - 2019-03-25
 * [#619](https://github.com/stripe/stripe-php/pull/619) Fix PHPDoc return types for list methods for nested resources
 
