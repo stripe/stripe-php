@@ -44,6 +44,8 @@ class CurlClient implements ClientInterface
 
     protected $enablePersistentConnections = null;
 
+    protected $enableHttp2 = null;
+
     protected $curlHandle = null;
 
     /**
@@ -68,6 +70,8 @@ class CurlClient implements ClientInterface
         // TODO: curl_reset requires PHP >= 5.5.0. Once we drop support for PHP 5.4, we can simply
         // initialize this to true.
         $this->enablePersistentConnections = function_exists('curl_reset');
+
+        $this->enableHttp2 = $this->canSafelyUseHttp2();
     }
 
     public function __destruct()
@@ -108,6 +112,22 @@ class CurlClient implements ClientInterface
     public function setEnablePersistentConnections($enable)
     {
         $this->enablePersistentConnections = $enable;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getEnableHttp2()
+    {
+        return $this->enableHttp2;
+    }
+
+    /**
+     * @param boolean $enable
+     */
+    public function setEnableHttp2($enable)
+    {
+        $this->enableHttp2 = $enable;
     }
 
     // USER DEFINED TIMEOUTS
@@ -228,7 +248,7 @@ class CurlClient implements ClientInterface
             $opts[CURLOPT_SSL_VERIFYPEER] = false;
         }
 
-        if (!isset($opts[CURLOPT_HTTP_VERSION])) {
+        if (!isset($opts[CURLOPT_HTTP_VERSION]) && $this->getEnableHttp2()) {
             // For HTTPS requests, enable HTTP/2, if supported
             $opts[CURLOPT_HTTP_VERSION] = CURL_HTTP_VERSION_2TLS;
         }
@@ -405,5 +425,18 @@ class CurlClient implements ClientInterface
         } else {
             $this->initCurlHandle();
         }
+    }
+
+    /**
+     * Indicates whether it is safe to use HTTP/2 or not.
+     *
+     * @return boolean
+     */
+    private function canSafelyUseHttp2()
+    {
+        // Versions of curl older than 7.60.0 don't respect GOAWAY frames
+        // (cf. https://github.com/curl/curl/issues/2416), which Stripe use.
+        $curlVersion = curl_version()['version'];
+        return (version_compare($curlVersion, '7.60.0') >= 0);
     }
 }
