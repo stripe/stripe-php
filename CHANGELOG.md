@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.31.4 - 2019-04-05
+* [#624](https://github.com/stripe/stripe-php/pull/624) Fix encoding of nested parameters in multipart requests
+
 ## 6.31.3 - 2019-04-02
 * [#623](https://github.com/stripe/stripe-php/pull/623) Only use HTTP/2 with curl >= 7.60.0
 
