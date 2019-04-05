@@ -40,6 +40,7 @@ class FileUploadCreationTest extends TestCase
         $resource = FileUpload::create([
             "purpose" => "dispute_evidence",
             "file" => $fp,
+            "file_link_data" => ["create" => true]
         ]);
         $this->assertInstanceOf("Stripe\\FileUpload", $resource);
     }
@@ -63,6 +64,7 @@ class FileUploadCreationTest extends TestCase
         $resource = FileUpload::create([
             "purpose" => "dispute_evidence",
             "file" => $curlFile,
+            "file_link_data" => ["create" => true]
         ]);
         $this->assertInstanceOf("Stripe\\FileUpload", $resource);
     }
