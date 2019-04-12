@@ -104,6 +104,9 @@ class Event extends ApiResource
     const PAYOUT_FAILED                            = 'payout.failed';
     const PAYOUT_PAID                              = 'payout.paid';
     const PAYOUT_UPDATED                           = 'payout.updated';
+    const PERSON_CREATED                           = 'person.created';
+    const PERSON_DELETED                           = 'person.deleted';
+    const PERSON_UPDATED                           = 'person.updated';
     const PING                                     = 'ping';
     const PLAN_CREATED                             = 'plan.created';
     const PLAN_DELETED                             = 'plan.deleted';

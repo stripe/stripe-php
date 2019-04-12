@@ -42,6 +42,37 @@ class Account extends ApiResource
     }
     use ApiOperations\Update;
 
+    /**
+     * Possible string representations of an account's business type.
+     * @link https://stripe.com/docs/api/accounts/object#account_object-business_type
+     */
+    const BUSINESS_TYPE_COMPANY    = 'company';
+    const BUSINESS_TYPE_INDIVIDUAL = 'individual';
+
+    /**
+     * Possible string representations of an account's capabilities.
+     * @link https://stripe.com/docs/api/accounts/object#account_object-capabilities
+     */
+    const CAPABILITY_CARD_PAYMENTS     = 'card_payments';
+    const CAPABILITY_LEGACY_PAYMENTS   = 'legacy_payments';
+    const CAPABILITY_PLATFORM_PAYMENTS = 'platform_payments';
+
+    /**
+     * Possible string representations of an account's capability status.
+     * @link https://stripe.com/docs/api/accounts/object#account_object-capabilities
+     */
+    const CAPABILITY_STATUS_ACTIVE   = 'active';
+    const CAPABILITY_STATUS_INACTIVE = 'inactive';
+    const CAPABILITY_STATUS_PENDING  = 'pending';
+
+    /**
+     * Possible string representations of an account's type.
+     * @link https://stripe.com/docs/api/accounts/object#account_object-type
+     */
+    const TYPE_CUSTOM   = 'custom';
+    const TYPE_EXPRESS  = 'express';
+    const TYPE_STANDARD = 'standard';
+
     public static function getSavedNestedResources()
     {
         static $savedNestedResources = null;
