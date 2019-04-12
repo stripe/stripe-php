@@ -37,7 +37,7 @@ class PlanTest extends TestCase
             'amount' => 100,
             'interval' => 'month',
             'currency' => 'usd',
-            'name' => self::TEST_RESOURCE_ID,
+            'nickname' => self::TEST_RESOURCE_ID,
             'id' => self::TEST_RESOURCE_ID
         ]);
         $this->assertInstanceOf("Stripe\\Plan", $resource);
