@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.31.5 - 2019-04-12
+* [#628](https://github.com/stripe/stripe-php/pull/628) Add constants for `person.*` event types
+* [#628](https://github.com/stripe/stripe-php/pull/628) Add missing constants for `Account` and `Person`
+
 ## 6.31.4 - 2019-04-05
 * [#624](https://github.com/stripe/stripe-php/pull/624) Fix encoding of nested parameters in multipart requests
 
