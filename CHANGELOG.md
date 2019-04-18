@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.32.0 - 2019-04-18
+* [#621](https://github.com/stripe/stripe-php/pull/621) Add support for `CreditNote`
+
 ## 6.31.5 - 2019-04-12
 * [#628](https://github.com/stripe/stripe-php/pull/628) Add constants for `person.*` event types
 * [#628](https://github.com/stripe/stripe-php/pull/628) Add missing constants for `Account` and `Person`
