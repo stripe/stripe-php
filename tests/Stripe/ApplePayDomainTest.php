@@ -46,7 +46,7 @@ class ApplePayDomainTest extends TestCase
             'delete',
             '/v1/apple_pay/domains/' . $resource->id
         );
-        $resource->delete();
+        $resource->selfDelete();
         $this->assertInstanceOf("Stripe\\ApplePayDomain", $resource);
     }
 }

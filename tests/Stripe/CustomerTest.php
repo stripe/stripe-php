@@ -69,7 +69,17 @@ class CustomerTest extends TestCase
             'delete',
             '/v1/customers/' . $resource->id
         );
-        $resource->delete();
+        $resource->selfDelete();
+        $this->assertInstanceOf("Stripe\\Customer", $resource);
+    }
+
+    public function testIsDeletableWithSelf()
+    {
+        $this->expectsRequest(
+            'delete',
+            '/v1/customers/' . self::TEST_RESOURCE_ID
+        );
+        $resource = Customer::delete(self::TEST_RESOURCE_ID);
         $this->assertInstanceOf("Stripe\\Customer", $resource);
     }
 

@@ -71,7 +71,7 @@ class WebhookEndpointTest extends TestCase
             'delete',
             '/v1/webhook_endpoints/' . self::TEST_RESOURCE_ID
         );
-        $resource->delete();
+        $resource->selfDelete();
         $this->assertInstanceOf("Stripe\\WebhookEndpoint", $resource);
     }
 }

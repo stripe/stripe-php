@@ -74,7 +74,7 @@ class PlanTest extends TestCase
             'delete',
             '/v1/plans/' . $resource->id
         );
-        $resource->delete();
+        $resource->selfDelete();
         $this->assertInstanceOf("Stripe\\Plan", $resource);
     }
 }

@@ -96,7 +96,7 @@ class SourceTest extends TestCase
             'delete',
             '/v1/customers/cus_123/sources/' . $resource->id
         );
-        $resource->delete();
+        $resource->selfDelete();
         $this->assertInstanceOf("Stripe\\Source", $resource);
     }
 

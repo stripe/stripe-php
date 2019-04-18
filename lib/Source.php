@@ -117,7 +117,7 @@ class Source extends ApiResource
      *
      * @deprecated Use the `detach` method instead.
      */
-    public function delete($params = null, $options = null)
+    public function selfDelete($params = null, $options = null)
     {
         $this->detach($params, $options);
     }

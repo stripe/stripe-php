@@ -73,7 +73,7 @@ class CouponTest extends TestCase
             'delete',
             '/v1/coupons/' . self::TEST_RESOURCE_ID
         );
-        $resource->delete();
+        $resource->selfDelete();
         $this->assertInstanceOf("Stripe\\Coupon", $resource);
     }
 }

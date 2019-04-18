@@ -71,7 +71,7 @@ class ReaderTest extends \Stripe\TestCase
             'delete',
             '/v1/terminal/readers/' . self::TEST_RESOURCE_ID
         );
-        $resource->delete();
+        $resource->selfDelete();
         $this->assertInstanceOf("Stripe\\Terminal\\Reader", $resource);
     }
 }

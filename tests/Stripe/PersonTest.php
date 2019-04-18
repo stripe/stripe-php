@@ -53,7 +53,7 @@ class PersonTest extends TestCase
             'delete',
             '/v1/accounts/' . self::TEST_ACCOUNT_ID . '/persons/' . self::TEST_RESOURCE_ID
         );
-        $resource->delete();
+        $resource->selfDelete();
         $this->assertSame("Stripe\\Person", get_class($resource));
     }
 }

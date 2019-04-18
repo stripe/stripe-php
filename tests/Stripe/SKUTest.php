@@ -76,7 +76,7 @@ class SKUTest extends TestCase
             'delete',
             '/v1/skus/' . $resource->id
         );
-        $resource->delete();
+        $resource->selfDelete();
         $this->assertInstanceOf("Stripe\\SKU", $resource);
     }
 }

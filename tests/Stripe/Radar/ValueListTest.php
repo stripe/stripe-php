@@ -71,7 +71,7 @@ class ValueListTest extends \Stripe\TestCase
             'delete',
             '/v1/radar/value_lists/' . self::TEST_RESOURCE_ID
         );
-        $resource->delete();
+        $resource->selfDelete();
         $this->assertInstanceOf("Stripe\\Radar\\ValueList", $resource);
     }
 }

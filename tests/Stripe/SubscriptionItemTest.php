@@ -76,7 +76,7 @@ class SubscriptionItemTest extends TestCase
             'delete',
             '/v1/subscription_items/' . $resource->id
         );
-        $resource->delete();
+        $resource->selfDelete();
         $this->assertInstanceOf("Stripe\\SubscriptionItem", $resource);
     }
 

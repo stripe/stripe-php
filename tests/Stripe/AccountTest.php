@@ -80,7 +80,7 @@ class AccountTest extends TestCase
             'delete',
             '/v1/accounts/' . $resource->id
         );
-        $resource->delete();
+        $resource->selfDelete();
         $this->assertInstanceOf("Stripe\\Account", $resource);
     }
 

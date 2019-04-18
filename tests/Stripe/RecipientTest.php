@@ -71,7 +71,7 @@ class RecipientTest extends TestCase
             'delete',
             '/v1/recipients/' . $resource->id
         );
-        $resource->delete();
+        $resource->selfDelete();
         $this->assertInstanceOf("Stripe\\Recipient", $resource);
     }
 

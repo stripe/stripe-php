@@ -88,7 +88,7 @@ class CardTest extends TestCase
             'delete',
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
-        $resource->delete();
+        $resource->selfDelete();
         $this->assertSame("Stripe\\Card", get_class($resource));
     }
 }

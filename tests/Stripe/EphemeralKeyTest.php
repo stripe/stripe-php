@@ -37,7 +37,7 @@ class EphemeralKeyTest extends TestCase
             'delete',
             '/v1/ephemeral_keys/' . $key->id
         );
-        $resource = $key->delete();
+        $resource = $key->selfDelete();
         $this->assertInstanceOf("Stripe\\EphemeralKey", $resource);
     }
 }

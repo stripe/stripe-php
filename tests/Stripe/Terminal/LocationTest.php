@@ -89,7 +89,7 @@ class LocationTest extends \Stripe\TestCase
             'delete',
             '/v1/terminal/locations/' . self::TEST_RESOURCE_ID
         );
-        $resource->delete();
+        $resource->selfDelete();
         $this->assertInstanceOf("Stripe\\Terminal\\Location", $resource);
     }
 }

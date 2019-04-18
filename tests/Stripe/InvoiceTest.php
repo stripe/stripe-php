@@ -70,7 +70,7 @@ class InvoiceTest extends TestCase
             'delete',
             '/v1/invoices/' . self::TEST_RESOURCE_ID
         );
-        $resource->delete();
+        $resource->selfDelete();
         $this->assertInstanceOf("Stripe\\Invoice", $resource);
     }
 

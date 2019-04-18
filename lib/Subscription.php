@@ -44,7 +44,7 @@ class Subscription extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Delete {
-        delete as protected _delete;
+        selfDelete as protected _selfDelete;
     }
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
@@ -80,7 +80,7 @@ class Subscription extends ApiResource
      */
     public function cancel($params = null, $opts = null)
     {
-        return $this->_delete($params, $opts);
+        return $this->_selfDelete($params, $opts);
     }
 
     /**
