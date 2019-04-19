@@ -247,7 +247,7 @@ class Account extends ApiResource
 
     /**
      * @param string|null $id The ID of the account to which the person belongs.
-     * @param array|null $personId The ID of the person to retrieve.
+     * @param string|null $personId The ID of the person to retrieve.
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -260,7 +260,7 @@ class Account extends ApiResource
 
     /**
      * @param string|null $id The ID of the account to which the person belongs.
-     * @param array|null $personId The ID of the person to update.
+     * @param string|null $personId The ID of the person to update.
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -273,7 +273,7 @@ class Account extends ApiResource
 
     /**
      * @param string|null $id The ID of the account to which the person belongs.
-     * @param array|null $personId The ID of the person to delete.
+     * @param string|null $personId The ID of the person to delete.
      * @param array|null $params
      * @param array|string|null $opts
      *
