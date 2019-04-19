@@ -118,9 +118,19 @@ class Charge extends ApiResource
      * @param array|string|null $options
      *
      * @return Charge The refunded charge.
+     *
+     * @deprecated This method is deprecated and planned for removal. Prefer using
+     *             \Stripe\Refund::create() instead.
+     * @see \Stripe\Refund::create()
      */
+    // TODO: remove in next major version
     public function refund($params = null, $options = null)
     {
+        trigger_error(
+            "This method is deprecated and planned for removal. Prefer using \Stripe\Refund::create() instead",
+            E_USER_DEPRECATED
+        );
+
         $url = $this->instanceUrl() . '/refund';
         list($response, $opts) = $this->_request('post', $url, $params, $options);
         $this->refreshFrom($response, $opts);
@@ -148,9 +158,19 @@ class Charge extends ApiResource
      * @deprecated Use the `save` method on the Dispute object
      *
      * @return array The updated dispute.
+     *
+     * @deprecated This method is deprecated and planned for removal. Prefer using
+     *             \Stripe\Dispute::update() instead.
+     * @see \Stripe\Dispute::update()
      */
+    // TODO: remove in next major version
     public function updateDispute($params = null, $options = null)
     {
+        trigger_error(
+            "This method is deprecated and planned for removal. Prefer using \Stripe\Dispute::update() instead",
+            E_USER_DEPRECATED
+        );
+
         $url = $this->instanceUrl() . '/dispute';
         list($response, $opts) = $this->_request('post', $url, $params, $options);
         $this->refreshFrom(['dispute' => $response], $opts, true);
@@ -163,9 +183,19 @@ class Charge extends ApiResource
      * @deprecated Use the `close` method on the Dispute object
      *
      * @return Charge The updated charge.
+     *
+     * @deprecated This method is deprecated and planned for removal. Prefer using
+     *             \Stripe\Dispute::close() instead.
+     * @see \Stripe\Dispute::close()
      */
+    // TODO: remove in next major version
     public function closeDispute($options = null)
     {
+        trigger_error(
+            "This method is deprecated and planned for removal. Prefer using \Stripe\Dispute::close() instead",
+            E_USER_DEPRECATED
+        );
+
         $url = $this->instanceUrl() . '/dispute/close';
         list($response, $opts) = $this->_request('post', $url, null, $options);
         $this->refreshFrom($response, $opts);
@@ -176,9 +206,21 @@ class Charge extends ApiResource
      * @param array|string|null $opts
      *
      * @return Charge The updated charge.
+     *
+     * @deprecated This method is deprecated and planned for removal. Prefer using
+     *             \Stripe\Charge::update() with
+     *             `['fraud_details' => ['user_report' => 'fraudulent']]` as the parameters instead.
+     * @see \Stripe\Charge::update()
      */
+    // TODO: remove in next major version
     public function markAsFraudulent($opts = null)
     {
+        trigger_error(
+            "This method is deprecated and planned for removal. Prefer using \Stripe\Charge::update() with " .
+            "`['fraud_details' => ['user_report' => 'fraudulent']]` as the parameters instead",
+            E_USER_DEPRECATED
+        );
+
         $params = ['fraud_details' => ['user_report' => 'fraudulent']];
         $url = $this->instanceUrl();
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
@@ -190,9 +232,21 @@ class Charge extends ApiResource
      * @param array|string|null $opts
      *
      * @return Charge The updated charge.
+     *
+     * @deprecated This method is deprecated and planned for removal. Prefer using
+     *             \Stripe\Charge::update() with
+     *             `['fraud_details' => ['user_report' => 'safe']]` as the parameters instead.
+     * @see \Stripe\Charge::update()
      */
+    // TODO: remove in next major version
     public function markAsSafe($opts = null)
     {
+        trigger_error(
+            "This method is deprecated and planned for removal. Prefer using \Stripe\Charge::update() with " .
+            "`['fraud_details' => ['user_report' => 'safe']]` as the parameters instead",
+            E_USER_DEPRECATED
+        );
+
         $params = ['fraud_details' => ['user_report' => 'safe']];
         $url = $this->instanceUrl();
         list($response, $opts) = $this->_request('post', $url, $params, $opts);

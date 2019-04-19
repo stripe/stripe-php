@@ -7,6 +7,16 @@ namespace Stripe;
  */
 class TestCase extends \PHPUnit_Framework_TestCase
 {
+    public static function errorHandler($errno, $errstr, $errfile, $errline)
+    {
+        // Silence deprecation erros
+        if ($errno === E_USER_DEPRECATED) {
+            return true;
+        }
+
+        return false;
+    }
+
     /** @var string original API base URL */
     protected $origApiBase;
 
@@ -27,6 +37,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
+        \set_error_handler([get_called_class(), "errorHandler"]);
+
         // Save original values so that we can restore them after running tests
         $this->origApiBase = Stripe::$apiBase;
         $this->origApiKey = Stripe::getApiKey();
@@ -57,6 +69,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
         Stripe::setClientId($this->origClientId);
         Stripe::setApiVersion($this->origApiVersion);
         Stripe::setAccountId($this->origAccountId);
+
+        \restore_error_handler();
     }
 
     /**
