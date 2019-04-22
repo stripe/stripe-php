@@ -6,6 +6,7 @@ class CustomerTest extends TestCase
 {
     const TEST_RESOURCE_ID = 'cus_123';
     const TEST_SOURCE_ID = 'ba_123';
+    const TEST_TAX_ID_ID = 'txi_123';
 
     public function testIsListable()
     {
@@ -262,5 +263,45 @@ class CustomerTest extends TestCase
             ],
         ];
         $this->assertSame($expected, $obj->serializeParameters());
+    }
+
+    public function testCanCreateTaxId()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/customers/' . self::TEST_RESOURCE_ID . '/tax_ids'
+        );
+        $resource = Customer::createTaxId(self::TEST_RESOURCE_ID, [
+            "type" => TaxId::TYPE_EU_VAT,
+            "value" => "11111",
+        ]);
+    }
+
+    public function testCanRetrieveTaxId()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/customers/' . self::TEST_RESOURCE_ID . '/tax_ids/' . self::TEST_TAX_ID_ID
+        );
+        $resource = Customer::retrieveTaxId(self::TEST_RESOURCE_ID, self::TEST_TAX_ID_ID);
+    }
+
+    public function testCanDeleteTaxId()
+    {
+        $this->expectsRequest(
+            'delete',
+            '/v1/customers/' . self::TEST_RESOURCE_ID . '/tax_ids/' . self::TEST_TAX_ID_ID
+        );
+        $resource = Customer::deleteTaxId(self::TEST_RESOURCE_ID, self::TEST_TAX_ID_ID);
+    }
+
+    public function testCanListTaxIds()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/customers/' . self::TEST_RESOURCE_ID . '/tax_ids'
+        );
+        $resources = Customer::allTaxIds(self::TEST_RESOURCE_ID);
+        $this->assertTrue(is_array($resources->data));
     }
 }

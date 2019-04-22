@@ -119,6 +119,7 @@ require(dirname(__FILE__) . '/lib/Subscription.php');
 require(dirname(__FILE__) . '/lib/SubscriptionItem.php');
 require(dirname(__FILE__) . '/lib/SubscriptionSchedule.php');
 require(dirname(__FILE__) . '/lib/SubscriptionScheduleRevision.php');
+require(dirname(__FILE__) . '/lib/TaxId.php');
 require(dirname(__FILE__) . '/lib/Terminal/ConnectionToken.php');
 require(dirname(__FILE__) . '/lib/Terminal/Location.php');
 require(dirname(__FILE__) . '/lib/Terminal/Reader.php');
