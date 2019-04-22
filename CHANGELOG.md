@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.33.0 - 2019-04-22
+* [#630](https://github.com/stripe/stripe-php/pull/630) Add support for the `TaxId` resource and APIs
+
 ## 6.32.1 - 2019-04-19
 * [#636](https://github.com/stripe/stripe-php/pull/636) Correct type of `$personId` in PHPDoc
 
