@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.34.0 - 2019-04-24
+* [#626](https://github.com/stripe/stripe-php/pull/626) Add support for the `TaxRate` resource and APIs
+* [#639](https://github.com/stripe/stripe-php/pull/639) Fix multiple phpdoc issues
+
 ## 6.33.0 - 2019-04-22
 * [#630](https://github.com/stripe/stripe-php/pull/630) Add support for the `TaxId` resource and APIs
 
