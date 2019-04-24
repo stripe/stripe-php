@@ -14,7 +14,7 @@ namespace Stripe;
  * @property string $customer
  * @property bool $deleted
  * @property bool $livemode
- * @property type $type
+ * @property string $type
  * @property string $value
  * @property mixed $verification
  */
@@ -33,6 +33,15 @@ class TaxId extends ApiResource
     const TYPE_EU_VAT  = 'eu_vat';
     const TYPE_NZ_GST  = 'nz_gst';
     const TYPE_UNKNOWN = 'unknown';
+
+    /**
+     * Possible string representations of the verification status.
+     * @link https://stripe.com/docs/api/customer_tax_ids/object#tax_id_object-verification
+     */
+    const VERIFICATION_STATUS_PENDING     = 'pending';
+    const VERIFICATION_STATUS_UNAVAILABLE = 'unavailable';
+    const VERIFICATION_STATUS_UNVERIFIED  = 'unverified';
+    const VERIFICATION_STATUS_VERIFIED    = 'verified';
 
     /**
      * @return string The API URL for this tax id.

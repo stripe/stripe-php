@@ -7,6 +7,8 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
+ * @property string $account_country
+ * @property string $account_name
  * @property int $amount_due
  * @property int $amount_paid
  * @property int $amount_remaining
@@ -19,8 +21,15 @@ namespace Stripe;
  * @property string $charge
  * @property int $created
  * @property string $currency
- * @property mixed $custom_fields
+ * @property array $custom_fields
  * @property string $customer
+ * @property mixed $customer_address
+ * @property string $customer_email
+ * @property string $customer_name
+ * @property string $customer_phone
+ * @property mixed $customer_shipping
+ * @property array $customer_tax_ids
+ * @property string $default_payment_method
  * @property string $default_source
  * @property string $description
  * @property Discount $discount
@@ -35,8 +44,11 @@ namespace Stripe;
  * @property int $next_payment_attempt
  * @property string $number
  * @property bool $paid
+ * @property string $payment_intent
  * @property int $period_end
  * @property int $period_start
+ * @property int $post_payment_credit_notes_amount
+ * @property int $pre_payment_credit_notes_amount
  * @property string $receipt_number
  * @property int $starting_balance
  * @property string $statement_descriptor
