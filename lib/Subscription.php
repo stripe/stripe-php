@@ -18,7 +18,9 @@ namespace Stripe;
  * @property int $current_period_start
  * @property string $customer
  * @property int $days_until_due
+ * @property string $default_payment_method
  * @property string $default_source
+ * @property array $default_tax_rates
  * @property Discount $discount
  * @property int $ended_at
  * @property Collection $items

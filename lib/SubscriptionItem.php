@@ -13,6 +13,7 @@ namespace Stripe;
  * @property Plan $plan
  * @property int $quantity
  * @property string $subscription
+ * @property array $tax_rates
  *
  * @package Stripe
  */

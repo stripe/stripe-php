@@ -31,6 +31,7 @@ namespace Stripe;
  * @property array $customer_tax_ids
  * @property string $default_payment_method
  * @property string $default_source
+ * @property array $default_tax_rates
  * @property string $description
  * @property Discount $discount
  * @property int $due_date
@@ -58,9 +59,9 @@ namespace Stripe;
  * @property int $subscription_proration_date
  * @property int $subtotal
  * @property int $tax
- * @property float $tax_percent
  * @property mixed $threshold_reason
  * @property int $total
+ * @property array $total_tax_amounts
  * @property int $webhooks_delivered_at
  *
  * @package Stripe
