@@ -20,6 +20,8 @@ namespace Stripe;
  * @property int $quantity
  * @property string $subscription
  * @property string $subscription_item
+ * @property array $tax_amounts
+ * @property array $tax_rates
  * @property string $type
  *
  * @package Stripe
