@@ -19,7 +19,7 @@ class SubscriptionItemTest extends TestCase
             "subscription" => "sub_123"
         ]);
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\SubscriptionItem", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\SubscriptionItem::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -29,7 +29,7 @@ class SubscriptionItemTest extends TestCase
             '/v1/subscription_items/' . self::TEST_RESOURCE_ID
         );
         $resource = SubscriptionItem::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\SubscriptionItem", $resource);
+        $this->assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
     }
 
     public function testIsCreatable()
@@ -42,7 +42,7 @@ class SubscriptionItemTest extends TestCase
             "plan" => "plan",
             "subscription" => "sub_123"
         ]);
-        $this->assertInstanceOf("Stripe\\SubscriptionItem", $resource);
+        $this->assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
     }
 
     public function testIsSaveable()
@@ -54,7 +54,7 @@ class SubscriptionItemTest extends TestCase
             '/v1/subscription_items/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf("Stripe\\SubscriptionItem", $resource);
+        $this->assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -66,7 +66,7 @@ class SubscriptionItemTest extends TestCase
         $resource = SubscriptionItem::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf("Stripe\\SubscriptionItem", $resource);
+        $this->assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
     }
 
     public function testIsDeletable()
@@ -77,7 +77,7 @@ class SubscriptionItemTest extends TestCase
             '/v1/subscription_items/' . $resource->id
         );
         $resource->delete();
-        $this->assertInstanceOf("Stripe\\SubscriptionItem", $resource);
+        $this->assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
     }
 
     public function testCanListUsageRecordSummaries()
@@ -89,6 +89,6 @@ class SubscriptionItemTest extends TestCase
         );
         $resources = $resource->usageRecordSummaries();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\UsageRecordSummary", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\UsageRecordSummary::class, $resources->data[0]);
     }
 }

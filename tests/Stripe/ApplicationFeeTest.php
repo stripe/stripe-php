@@ -15,7 +15,7 @@ class ApplicationFeeTest extends TestCase
         );
         $resources = ApplicationFee::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\ApplicationFee", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\ApplicationFee::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -25,7 +25,7 @@ class ApplicationFeeTest extends TestCase
             '/v1/application_fees/' . self::TEST_RESOURCE_ID
         );
         $resource = ApplicationFee::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\ApplicationFee", $resource);
+        $this->assertInstanceOf(\Stripe\ApplicationFee::class, $resource);
     }
 
     public function testIsRefundable()
@@ -36,7 +36,7 @@ class ApplicationFeeTest extends TestCase
             '/v1/application_fees/' . $fee->id . '/refunds'
         );
         $resource = $fee->refund();
-        $this->assertInstanceOf("Stripe\\ApplicationFee", $resource);
+        $this->assertInstanceOf(\Stripe\ApplicationFee::class, $resource);
         $this->assertSame($resource, $fee);
     }
 
@@ -47,7 +47,7 @@ class ApplicationFeeTest extends TestCase
             '/v1/application_fees/' . self::TEST_RESOURCE_ID . '/refunds'
         );
         $resource = ApplicationFee::createRefund(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\ApplicationFeeRefund", $resource);
+        $this->assertInstanceOf(\Stripe\ApplicationFeeRefund::class, $resource);
     }
 
     public function testCanRetrieveRefund()
@@ -57,7 +57,7 @@ class ApplicationFeeTest extends TestCase
             '/v1/application_fees/' . self::TEST_RESOURCE_ID . '/refunds/' . self::TEST_FEEREFUND_ID
         );
         $resource = ApplicationFee::retrieveRefund(self::TEST_RESOURCE_ID, self::TEST_FEEREFUND_ID);
-        $this->assertInstanceOf("Stripe\\ApplicationFeeRefund", $resource);
+        $this->assertInstanceOf(\Stripe\ApplicationFeeRefund::class, $resource);
     }
 
     public function testCanUpdateRefund()
@@ -67,7 +67,7 @@ class ApplicationFeeTest extends TestCase
             '/v1/application_fees/' . self::TEST_RESOURCE_ID . '/refunds/' . self::TEST_FEEREFUND_ID
         );
         $resource = ApplicationFee::updateRefund(self::TEST_RESOURCE_ID, self::TEST_FEEREFUND_ID);
-        $this->assertInstanceOf("Stripe\\ApplicationFeeRefund", $resource);
+        $this->assertInstanceOf(\Stripe\ApplicationFeeRefund::class, $resource);
     }
 
     public function testCanListRefunds()
@@ -78,6 +78,6 @@ class ApplicationFeeTest extends TestCase
         );
         $resources = ApplicationFee::allRefunds(self::TEST_RESOURCE_ID);
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\ApplicationFeeRefund", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\ApplicationFeeRefund::class, $resources->data[0]);
     }
 }

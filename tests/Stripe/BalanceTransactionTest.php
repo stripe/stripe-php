@@ -14,7 +14,7 @@ class BalanceTransactionTest extends TestCase
         );
         $resources = BalanceTransaction::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\BalanceTransaction", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\BalanceTransaction::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,6 +24,6 @@ class BalanceTransactionTest extends TestCase
             '/v1/balance/history/' . self::TEST_RESOURCE_ID
         );
         $resource = BalanceTransaction::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\BalanceTransaction", $resource);
+        $this->assertInstanceOf(\Stripe\BalanceTransaction::class, $resource);
     }
 }
