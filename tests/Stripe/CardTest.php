@@ -68,7 +68,7 @@ class CardTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame("Stripe\\Card", get_class($resource));
+        $this->assertSame(\Stripe\Card::class, get_class($resource));
     }
 
     /**
@@ -89,6 +89,6 @@ class CardTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertSame("Stripe\\Card", get_class($resource));
+        $this->assertSame(\Stripe\Card::class, get_class($resource));
     }
 }

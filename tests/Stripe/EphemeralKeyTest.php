@@ -15,7 +15,7 @@ class EphemeralKeyTest extends TestCase
         $resource = EphemeralKey::create([
             "customer" => "cus_123",
         ], ["stripe_version" => "2017-05-25"]);
-        $this->assertInstanceOf("Stripe\\EphemeralKey", $resource);
+        $this->assertInstanceOf(\Stripe\EphemeralKey::class, $resource);
     }
 
     /**
@@ -38,6 +38,6 @@ class EphemeralKeyTest extends TestCase
             '/v1/ephemeral_keys/' . $key->id
         );
         $resource = $key->delete();
-        $this->assertInstanceOf("Stripe\\EphemeralKey", $resource);
+        $this->assertInstanceOf(\Stripe\EphemeralKey::class, $resource);
     }
 }

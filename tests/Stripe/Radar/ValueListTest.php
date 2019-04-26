@@ -14,7 +14,7 @@ class ValueListTest extends \Stripe\TestCase
         );
         $resources = ValueList::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\Radar\\ValueList", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\Radar\ValueList::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class ValueListTest extends \Stripe\TestCase
             '/v1/radar/value_lists/' . self::TEST_RESOURCE_ID
         );
         $resource = ValueList::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\Radar\\ValueList", $resource);
+        $this->assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
     }
 
     public function testIsCreatable()
@@ -37,7 +37,7 @@ class ValueListTest extends \Stripe\TestCase
             "alias" => "alias",
             "name" => "name",
         ]);
-        $this->assertInstanceOf("Stripe\\Radar\\ValueList", $resource);
+        $this->assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
     }
 
     public function testIsSaveable()
@@ -49,7 +49,7 @@ class ValueListTest extends \Stripe\TestCase
             '/v1/radar/value_lists/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertInstanceOf("Stripe\\Radar\\ValueList", $resource);
+        $this->assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -61,7 +61,7 @@ class ValueListTest extends \Stripe\TestCase
         $resource = ValueList::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf("Stripe\\Radar\\ValueList", $resource);
+        $this->assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
     }
 
     public function testIsDeletable()
@@ -72,6 +72,6 @@ class ValueListTest extends \Stripe\TestCase
             '/v1/radar/value_lists/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertInstanceOf("Stripe\\Radar\\ValueList", $resource);
+        $this->assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
     }
 }

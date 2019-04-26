@@ -10,12 +10,12 @@ class AuthorizationTest extends \Stripe\TestCase
     {
         $resources = ScheduledQueryRun::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\Sigma\\ScheduledQueryRun", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\Sigma\ScheduledQueryRun::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
     {
         $resource = ScheduledQueryRun::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\Sigma\\ScheduledQueryRun", $resource);
+        $this->assertInstanceOf(\Stripe\Sigma\ScheduledQueryRun::class, $resource);
     }
 }
