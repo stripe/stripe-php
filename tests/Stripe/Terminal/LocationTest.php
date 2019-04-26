@@ -14,7 +14,7 @@ class LocationTest extends \Stripe\TestCase
         );
         $resources = Location::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\Terminal\\Location", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\Terminal\Location::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class LocationTest extends \Stripe\TestCase
             '/v1/terminal/locations/' . self::TEST_RESOURCE_ID
         );
         $resource = Location::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\Terminal\\Location", $resource);
+        $this->assertInstanceOf(\Stripe\Terminal\Location::class, $resource);
     }
 
     public function testIsSaveable()
@@ -37,7 +37,7 @@ class LocationTest extends \Stripe\TestCase
             '/v1/terminal/locations/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertInstanceOf("Stripe\\Terminal\\Location", $resource);
+        $this->assertInstanceOf(\Stripe\Terminal\Location::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -50,7 +50,7 @@ class LocationTest extends \Stripe\TestCase
         $resource = Location::update(self::TEST_RESOURCE_ID, [
             "display_name" => "new-name",
         ]);
-        $this->assertInstanceOf("Stripe\\Terminal\\Location", $resource);
+        $this->assertInstanceOf(\Stripe\Terminal\Location::class, $resource);
     }
 
     public function testIsCreatable()
@@ -79,7 +79,7 @@ class LocationTest extends \Stripe\TestCase
                 "city" => "San Francisco"
             ]
         ]);
-        $this->assertInstanceOf("Stripe\\Terminal\\Location", $resource);
+        $this->assertInstanceOf(\Stripe\Terminal\Location::class, $resource);
     }
 
     public function testIsDeletable()
@@ -90,6 +90,6 @@ class LocationTest extends \Stripe\TestCase
             '/v1/terminal/locations/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertInstanceOf("Stripe\\Terminal\\Location", $resource);
+        $this->assertInstanceOf(\Stripe\Terminal\Location::class, $resource);
     }
 }

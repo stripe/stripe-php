@@ -27,7 +27,7 @@ class CardholderTest extends \Stripe\TestCase
             $params
         );
         $resource = Cardholder::create($params);
-        $this->assertInstanceOf("Stripe\\Issuing\\Cardholder", $resource);
+        $this->assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resource);
     }
 
     public function testIsListable()
@@ -38,7 +38,7 @@ class CardholderTest extends \Stripe\TestCase
         );
         $resources = Cardholder::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\Issuing\\Cardholder", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -48,7 +48,7 @@ class CardholderTest extends \Stripe\TestCase
             '/v1/issuing/cardholders/' . self::TEST_RESOURCE_ID
         );
         $resource = Cardholder::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\Issuing\\Cardholder", $resource);
+        $this->assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resource);
     }
 
     public function testIsSaveable()
@@ -61,7 +61,7 @@ class CardholderTest extends \Stripe\TestCase
             '/v1/issuing/cardholders/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertInstanceOf("Stripe\\Issuing\\Cardholder", $resource);
+        $this->assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -74,6 +74,6 @@ class CardholderTest extends \Stripe\TestCase
         $resource = Cardholder::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf("Stripe\\Issuing\\Cardholder", $resource);
+        $this->assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resource);
     }
 }

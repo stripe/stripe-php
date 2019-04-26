@@ -14,7 +14,7 @@ class ReviewTest extends \Stripe\TestCase
             '/v1/reviews/' . self::TEST_RESOURCE_ID . '/approve'
         );
         $resource->approve();
-        $this->assertInstanceOf("Stripe\\Review", $resource);
+        $this->assertInstanceOf(\Stripe\Review::class, $resource);
     }
 
     public function testIsListable()
@@ -25,7 +25,7 @@ class ReviewTest extends \Stripe\TestCase
         );
         $resources = Review::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\Review", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\Review::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -35,6 +35,6 @@ class ReviewTest extends \Stripe\TestCase
             '/v1/reviews/' . self::TEST_RESOURCE_ID
         );
         $resource = Review::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\Review", $resource);
+        $this->assertInstanceOf(\Stripe\Review::class, $resource);
     }
 }
