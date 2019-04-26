@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.34.2 - 2019-04-26
+* [#642](https://github.com/stripe/stripe-php/pull/642) Fix an issue where existing idempotency keys would be overwritten when using automatic retries
+
 ## 6.34.1 - 2019-04-25
 * [#640](https://github.com/stripe/stripe-php/pull/640) Add missing phpdocs 
 
