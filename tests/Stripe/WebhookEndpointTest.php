@@ -14,7 +14,7 @@ class WebhookEndpointTest extends TestCase
         );
         $resources = WebhookEndpoint::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\WebhookEndpoint", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\WebhookEndpoint::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class WebhookEndpointTest extends TestCase
             '/v1/webhook_endpoints/' . self::TEST_RESOURCE_ID
         );
         $resource = WebhookEndpoint::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\WebhookEndpoint", $resource);
+        $this->assertInstanceOf(\Stripe\WebhookEndpoint::class, $resource);
     }
 
     public function testIsCreatable()
@@ -37,7 +37,7 @@ class WebhookEndpointTest extends TestCase
             'enabled_events' => ['charge.succeeded'],
             'url' => 'https://stripe.com',
         ]);
-        $this->assertInstanceOf("Stripe\\WebhookEndpoint", $resource);
+        $this->assertInstanceOf(\Stripe\WebhookEndpoint::class, $resource);
     }
 
     public function testIsSaveable()
@@ -49,7 +49,7 @@ class WebhookEndpointTest extends TestCase
             '/v1/webhook_endpoints/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertInstanceOf("Stripe\\WebhookEndpoint", $resource);
+        $this->assertInstanceOf(\Stripe\WebhookEndpoint::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -61,7 +61,7 @@ class WebhookEndpointTest extends TestCase
         $resource = WebhookEndpoint::update(self::TEST_RESOURCE_ID, [
             'enabled_events' => ['charge.succeeded'],
         ]);
-        $this->assertInstanceOf("Stripe\\WebhookEndpoint", $resource);
+        $this->assertInstanceOf(\Stripe\WebhookEndpoint::class, $resource);
     }
 
     public function testIsDeletable()
@@ -72,6 +72,6 @@ class WebhookEndpointTest extends TestCase
             '/v1/webhook_endpoints/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertInstanceOf("Stripe\\WebhookEndpoint", $resource);
+        $this->assertInstanceOf(\Stripe\WebhookEndpoint::class, $resource);
     }
 }
