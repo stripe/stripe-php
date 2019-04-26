@@ -14,7 +14,7 @@ class DisputeTest extends TestCase
         );
         $resources = Dispute::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\Dispute", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\Dispute::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class DisputeTest extends TestCase
             '/v1/disputes/' . self::TEST_RESOURCE_ID
         );
         $resource = Dispute::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\Dispute", $resource);
+        $this->assertInstanceOf(\Stripe\Dispute::class, $resource);
     }
 
     public function testIsSaveable()
@@ -36,7 +36,7 @@ class DisputeTest extends TestCase
             '/v1/disputes/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf("Stripe\\Dispute", $resource);
+        $this->assertInstanceOf(\Stripe\Dispute::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -48,7 +48,7 @@ class DisputeTest extends TestCase
         $resource = Dispute::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf("Stripe\\Dispute", $resource);
+        $this->assertInstanceOf(\Stripe\Dispute::class, $resource);
     }
 
     public function testIsClosable()
@@ -59,7 +59,7 @@ class DisputeTest extends TestCase
             '/v1/disputes/' . $dispute->id . '/close'
         );
         $resource = $dispute->close();
-        $this->assertInstanceOf("Stripe\\Dispute", $resource);
+        $this->assertInstanceOf(\Stripe\Dispute::class, $resource);
         $this->assertSame($resource, $dispute);
     }
 }

@@ -18,7 +18,7 @@ class UsageRecordTest extends TestCase
             'timestamp' => 12341234,
             'action' => 'set'
         ]);
-        $this->assertInstanceOf("Stripe\\UsageRecord", $resource);
+        $this->assertInstanceOf(\Stripe\UsageRecord::class, $resource);
     }
 
     /**

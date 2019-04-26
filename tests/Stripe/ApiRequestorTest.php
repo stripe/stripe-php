@@ -8,7 +8,7 @@ class ApiRequestorTest extends TestCase
 {
     public function testEncodeObjects()
     {
-        $reflector = new \ReflectionClass('Stripe\\ApiRequestor');
+        $reflector = new \ReflectionClass(\Stripe\ApiRequestor::class);
         $method = $reflector->getMethod('_encodeObjects');
         $method->setAccessible(true);
 
@@ -38,7 +38,7 @@ class ApiRequestorTest extends TestCase
 
     public function testHttpClientInjection()
     {
-        $reflector = new \ReflectionClass('Stripe\\ApiRequestor');
+        $reflector = new \ReflectionClass(\Stripe\ApiRequestor::class);
         $method = $reflector->getMethod('httpClient');
         $method->setAccessible(true);
 
@@ -52,7 +52,7 @@ class ApiRequestorTest extends TestCase
 
     public function testDefaultHeaders()
     {
-        $reflector = new \ReflectionClass('Stripe\\ApiRequestor');
+        $reflector = new \ReflectionClass(\Stripe\ApiRequestor::class);
         $method = $reflector->getMethod('_defaultHeaders');
         $method->setAccessible(true);
 

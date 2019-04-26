@@ -14,7 +14,7 @@ class AuthorizationTest extends \Stripe\TestCase
         );
         $resources = Authorization::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\Issuing\\Authorization", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\Issuing\Authorization::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class AuthorizationTest extends \Stripe\TestCase
             '/v1/issuing/authorizations/' . self::TEST_RESOURCE_ID
         );
         $resource = Authorization::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\Issuing\\Authorization", $resource);
+        $this->assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
     }
 
     public function testIsSaveable()
@@ -37,7 +37,7 @@ class AuthorizationTest extends \Stripe\TestCase
             '/v1/issuing/authorizations/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertInstanceOf("Stripe\\Issuing\\Authorization", $resource);
+        $this->assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -50,7 +50,7 @@ class AuthorizationTest extends \Stripe\TestCase
         $resource = Authorization::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf("Stripe\\Issuing\\Authorization", $resource);
+        $this->assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
     }
 
     public function testIsApprovable()
@@ -62,7 +62,7 @@ class AuthorizationTest extends \Stripe\TestCase
             '/v1/issuing/authorizations/' . self::TEST_RESOURCE_ID . '/approve'
         );
         $resource = $resource->approve();
-        $this->assertInstanceOf("Stripe\\Issuing\\Authorization", $resource);
+        $this->assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
     }
 
     public function testIsDeclinable()
@@ -74,6 +74,6 @@ class AuthorizationTest extends \Stripe\TestCase
             '/v1/issuing/authorizations/' . self::TEST_RESOURCE_ID . '/decline'
         );
         $resource = $resource->decline();
-        $this->assertInstanceOf("Stripe\\Issuing\\Authorization", $resource);
+        $this->assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
     }
 }

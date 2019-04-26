@@ -14,7 +14,7 @@ class ReportTypeTest extends \Stripe\TestCase
         );
         $resources = ReportType::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\Reporting\\ReportType", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\Reporting\ReportType::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,6 +24,6 @@ class ReportTypeTest extends \Stripe\TestCase
             '/v1/reporting/report_types/' . self::TEST_RESOURCE_ID
         );
         $resource = ReportType::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\Reporting\\ReportType", $resource);
+        $this->assertInstanceOf(\Stripe\Reporting\ReportType::class, $resource);
     }
 }

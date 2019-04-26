@@ -6,7 +6,7 @@ class BaseTest extends TestCase
 {
     public function createFixture($params = [])
     {
-        return $this->getMockForAbstractClass('Stripe\\Error\\Base', [
+        return $this->getMockForAbstractClass(\Stripe\Error\Base::class, [
             'message',
             200,
             '{"key": "value"}',
