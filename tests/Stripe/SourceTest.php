@@ -13,7 +13,7 @@ class SourceTest extends TestCase
             '/v1/sources/' . self::TEST_RESOURCE_ID
         );
         $resource = Source::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\Source", $resource);
+        $this->assertInstanceOf(\Stripe\Source::class, $resource);
     }
 
     public function testIsCreatable()
@@ -25,7 +25,7 @@ class SourceTest extends TestCase
         $resource = Source::create([
             "type" => "card"
         ]);
-        $this->assertInstanceOf("Stripe\\Source", $resource);
+        $this->assertInstanceOf(\Stripe\Source::class, $resource);
     }
 
     public function testIsSaveable()
@@ -37,7 +37,7 @@ class SourceTest extends TestCase
             '/v1/sources/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf("Stripe\\Source", $resource);
+        $this->assertInstanceOf(\Stripe\Source::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -49,7 +49,7 @@ class SourceTest extends TestCase
         $resource = Source::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf("Stripe\\Source", $resource);
+        $this->assertInstanceOf(\Stripe\Source::class, $resource);
     }
 
     public function testCanSaveCardExpiryDate()
@@ -97,7 +97,7 @@ class SourceTest extends TestCase
             '/v1/customers/cus_123/sources/' . $resource->id
         );
         $resource->delete();
-        $this->assertInstanceOf("Stripe\\Source", $resource);
+        $this->assertInstanceOf(\Stripe\Source::class, $resource);
     }
 
     /**
@@ -118,7 +118,7 @@ class SourceTest extends TestCase
         );
         $resources = $source->sourceTransactions();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\SourceTransaction", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
     }
 
     public function testCanVerify()
@@ -129,6 +129,6 @@ class SourceTest extends TestCase
             '/v1/sources/' . $resource->id . "/verify"
         );
         $resource->verify(["values" => [32, 45]]);
-        $this->assertInstanceOf("Stripe\\Source", $resource);
+        $this->assertInstanceOf(\Stripe\Source::class, $resource);
     }
 }

@@ -22,10 +22,10 @@ trait All
 
         list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
-        if (!is_a($obj, 'Stripe\\Collection')) {
-            $class = get_class($obj);
-            $message = "Expected type \"Stripe\\Collection\", got \"$class\" instead";
-            throw new \Stripe\Error\Api($message);
+        if (!($obj instanceof \Stripe\Collection)) {
+            throw new \Stripe\Error\Api(
+                'Expected type ' . \Stripe\Collection::class . ', got "' . get_class($obj) . '" instead.'
+            );
         }
         $obj->setLastResponse($response);
         $obj->setRequestParams($params);

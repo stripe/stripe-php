@@ -14,7 +14,7 @@ class IssuerFraudRecordTest extends TestCase
         );
         $resources = IssuerFraudRecord::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\IssuerFraudRecord", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\IssuerFraudRecord::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,6 +24,6 @@ class IssuerFraudRecordTest extends TestCase
             '/v1/issuer_fraud_records/' . self::TEST_RESOURCE_ID
         );
         $resource = IssuerFraudRecord::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\IssuerFraudRecord", $resource);
+        $this->assertInstanceOf(\Stripe\IssuerFraudRecord::class, $resource);
     }
 }

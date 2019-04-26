@@ -16,7 +16,7 @@ class ValueListItemTest extends \Stripe\TestCase
             "value_list" => "rsl_123",
         ]);
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\Radar\\ValueListItem", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -26,7 +26,7 @@ class ValueListItemTest extends \Stripe\TestCase
             '/v1/radar/value_list_items/' . self::TEST_RESOURCE_ID
         );
         $resource = ValueListItem::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\Radar\\ValueListItem", $resource);
+        $this->assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resource);
     }
 
     public function testIsCreatable()
@@ -39,7 +39,7 @@ class ValueListItemTest extends \Stripe\TestCase
             "value_list" => "rsl_123",
             "value" => "value",
         ]);
-        $this->assertInstanceOf("Stripe\\Radar\\ValueListItem", $resource);
+        $this->assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resource);
     }
 
     public function testIsDeletable()
@@ -50,6 +50,6 @@ class ValueListItemTest extends \Stripe\TestCase
             '/v1/radar/value_list_items/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertInstanceOf("Stripe\\Radar\\ValueListItem", $resource);
+        $this->assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resource);
     }
 }
