@@ -33,7 +33,7 @@ class CapabilityTest extends TestCase
             '/v1/accounts/' . self::TEST_ACCOUNT_ID . '/capabilities/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame("Stripe\\Capability", get_class($resource));
+        $this->assertInstanceOf(\Stripe\Capability::class, $resource);
     }
 
     /**

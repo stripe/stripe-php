@@ -14,7 +14,7 @@ class ChargeTest extends TestCase
         );
         $resources = Charge::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\Charge", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\Charge::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class ChargeTest extends TestCase
             '/v1/charges/' . self::TEST_RESOURCE_ID
         );
         $resource = Charge::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\Charge", $resource);
+        $this->assertInstanceOf(\Stripe\Charge::class, $resource);
     }
 
     public function testIsCreatable()
@@ -38,7 +38,7 @@ class ChargeTest extends TestCase
             "currency" => "usd",
             "source" => "tok_123"
         ]);
-        $this->assertInstanceOf("Stripe\\Charge", $resource);
+        $this->assertInstanceOf(\Stripe\Charge::class, $resource);
     }
 
     public function testIsSaveable()
@@ -50,7 +50,7 @@ class ChargeTest extends TestCase
             '/v1/charges/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf("Stripe\\Charge", $resource);
+        $this->assertInstanceOf(\Stripe\Charge::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -62,7 +62,7 @@ class ChargeTest extends TestCase
         $resource = Charge::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf("Stripe\\Charge", $resource);
+        $this->assertInstanceOf(\Stripe\Charge::class, $resource);
     }
 
     public function testCanRefund()
@@ -73,7 +73,7 @@ class ChargeTest extends TestCase
             '/v1/charges/' . $charge->id . '/refund'
         );
         $resource = $charge->refund();
-        $this->assertInstanceOf("Stripe\\Charge", $resource);
+        $this->assertInstanceOf(\Stripe\Charge::class, $resource);
         $this->assertSame($resource, $charge);
     }
 
@@ -85,7 +85,7 @@ class ChargeTest extends TestCase
             '/v1/charges/' . $charge->id . '/capture'
         );
         $resource = $charge->capture();
-        $this->assertInstanceOf("Stripe\\Charge", $resource);
+        $this->assertInstanceOf(\Stripe\Charge::class, $resource);
         $this->assertSame($resource, $charge);
     }
 
@@ -97,7 +97,7 @@ class ChargeTest extends TestCase
             '/v1/charges/' . $charge->id . '/dispute'
         );
         $resource = $charge->updateDispute();
-        $this->assertInstanceOf("Stripe\\Dispute", $resource);
+        $this->assertInstanceOf(\Stripe\Dispute::class, $resource);
     }
 
     public function testCanCloseDispute()
@@ -108,7 +108,7 @@ class ChargeTest extends TestCase
             '/v1/charges/' . $charge->id . '/dispute/close'
         );
         $resource = $charge->closeDispute();
-        $this->assertInstanceOf("Stripe\\Charge", $resource);
+        $this->assertInstanceOf(\Stripe\Charge::class, $resource);
         $this->assertSame($resource, $charge);
     }
 
@@ -121,7 +121,7 @@ class ChargeTest extends TestCase
             ['fraud_details' => ['user_report' => 'fraudulent']]
         );
         $resource = $charge->markAsFraudulent();
-        $this->assertInstanceOf("Stripe\\Charge", $resource);
+        $this->assertInstanceOf(\Stripe\Charge::class, $resource);
         $this->assertSame($resource, $charge);
     }
 
@@ -134,7 +134,7 @@ class ChargeTest extends TestCase
             ['fraud_details' => ['user_report' => 'safe']]
         );
         $resource = $charge->markAsSafe();
-        $this->assertInstanceOf("Stripe\\Charge", $resource);
+        $this->assertInstanceOf(\Stripe\Charge::class, $resource);
         $this->assertSame($resource, $charge);
     }
 }
