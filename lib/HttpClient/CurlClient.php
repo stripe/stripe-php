@@ -205,7 +205,7 @@ class CurlClient implements ClientInterface
         // It is only safe to retry network failures on POST requests if we
         // add an Idempotency-Key header
         if (($method == 'post') && (Stripe::$maxNetworkRetries > 0)) {
-            if (!isset($headers['Idempotency-Key'])) {
+            if (!$this->hasHeader($headers, "Idempotency-Key")) {
                 array_push($headers, 'Idempotency-Key: ' . $this->randomGenerator->uuid());
             }
         }
@@ -438,5 +438,23 @@ class CurlClient implements ClientInterface
         // (cf. https://github.com/curl/curl/issues/2416), which Stripe use.
         $curlVersion = curl_version()['version'];
         return (version_compare($curlVersion, '7.60.0') >= 0);
+    }
+
+    /**
+     * Checks if a list of headers contains a specific header name.
+     *
+     * @param string[] $headers
+     * @param string $name
+     * @return boolean
+     */
+    private function hasHeader($headers, $name)
+    {
+        foreach ($headers as $header) {
+            if (strncasecmp($header, "{$name}: ", strlen($name) + 2) === 0) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
