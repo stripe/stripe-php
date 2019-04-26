@@ -14,7 +14,7 @@ class RecipientTest extends TestCase
         );
         $resources = Recipient::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\Recipient", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\Recipient::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class RecipientTest extends TestCase
             '/v1/recipients/' . self::TEST_RESOURCE_ID
         );
         $resource = Recipient::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\Recipient", $resource);
+        $this->assertInstanceOf(\Stripe\Recipient::class, $resource);
     }
 
     public function testIsCreatable()
@@ -37,7 +37,7 @@ class RecipientTest extends TestCase
             "name" => "name",
             "type" => "individual"
         ]);
-        $this->assertInstanceOf("Stripe\\Recipient", $resource);
+        $this->assertInstanceOf(\Stripe\Recipient::class, $resource);
     }
 
     public function testIsSaveable()
@@ -49,7 +49,7 @@ class RecipientTest extends TestCase
             '/v1/recipients/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf("Stripe\\Recipient", $resource);
+        $this->assertInstanceOf(\Stripe\Recipient::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -61,7 +61,7 @@ class RecipientTest extends TestCase
         $resource = Recipient::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf("Stripe\\Recipient", $resource);
+        $this->assertInstanceOf(\Stripe\Recipient::class, $resource);
     }
 
     public function testIsDeletable()
@@ -72,7 +72,7 @@ class RecipientTest extends TestCase
             '/v1/recipients/' . $resource->id
         );
         $resource->delete();
-        $this->assertInstanceOf("Stripe\\Recipient", $resource);
+        $this->assertInstanceOf(\Stripe\Recipient::class, $resource);
     }
 
     public function testCanListTransfers()
@@ -93,6 +93,6 @@ class RecipientTest extends TestCase
         );
         $resources = $recipient->transfers();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\Transfer", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\Transfer::class, $resources->data[0]);
     }
 }

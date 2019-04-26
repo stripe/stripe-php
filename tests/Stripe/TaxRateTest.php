@@ -14,7 +14,7 @@ class TaxRateTest extends TestCase
         );
         $resources = TaxRate::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\TaxRate", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\TaxRate::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class TaxRateTest extends TestCase
             '/v1/tax_rates/' . self::TEST_RESOURCE_ID
         );
         $resource = TaxRate::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\TaxRate", $resource);
+        $this->assertInstanceOf(\Stripe\TaxRate::class, $resource);
     }
 
     public function testIsCreatable()
@@ -38,7 +38,7 @@ class TaxRateTest extends TestCase
             "inclusive" => false,
             "percentage" => 10.15,
         ]);
-        $this->assertInstanceOf("Stripe\\TaxRate", $resource);
+        $this->assertInstanceOf(\Stripe\TaxRate::class, $resource);
     }
 
     public function testIsSaveable()
@@ -50,7 +50,7 @@ class TaxRateTest extends TestCase
             '/v1/tax_rates/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertInstanceOf("Stripe\\TaxRate", $resource);
+        $this->assertInstanceOf(\Stripe\TaxRate::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -62,6 +62,6 @@ class TaxRateTest extends TestCase
         $resource = TaxRate::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf("Stripe\\TaxRate", $resource);
+        $this->assertInstanceOf(\Stripe\TaxRate::class, $resource);
     }
 }

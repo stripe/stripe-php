@@ -13,11 +13,11 @@ class StripeObjectTest extends TestCase
         // private attributes.
 
         // This is used to invoke the `deepCopy` protected function
-        $this->deepCopyReflector = new \ReflectionMethod('Stripe\\StripeObject', 'deepCopy');
+        $this->deepCopyReflector = new \ReflectionMethod(\Stripe\StripeObject::class, 'deepCopy');
         $this->deepCopyReflector->setAccessible(true);
 
         // This is used to access the `_opts` protected variable
-        $this->optsReflector = new \ReflectionProperty('Stripe\\StripeObject', '_opts');
+        $this->optsReflector = new \ReflectionProperty(\Stripe\StripeObject::class, '_opts');
         $this->optsReflector->setAccessible(true);
     }
 
@@ -480,7 +480,7 @@ EOS;
             'metadata' => [],
         ]);
 
-        $this->assertInstanceOf("Stripe\\StripeObject", $obj->metadata);
+        $this->assertInstanceOf(\Stripe\StripeObject::class, $obj->metadata);
     }
 
     public function testDeserializeMetadataWithKeyNamedMetadata()
@@ -489,7 +489,7 @@ EOS;
             'metadata' => ['metadata' => 'value'],
         ]);
 
-        $this->assertInstanceOf("Stripe\\StripeObject", $obj->metadata);
+        $this->assertInstanceOf(\Stripe\StripeObject::class, $obj->metadata);
         $this->assertEquals("value", $obj->metadata->metadata);
     }
 }

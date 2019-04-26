@@ -14,7 +14,7 @@ class ReaderTest extends \Stripe\TestCase
         );
         $resources = Reader::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\Terminal\\Reader", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\Terminal\Reader::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class ReaderTest extends \Stripe\TestCase
             '/v1/terminal/readers/' . self::TEST_RESOURCE_ID
         );
         $resource = Reader::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\Terminal\\Reader", $resource);
+        $this->assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
     }
 
     public function testIsSaveable()
@@ -37,7 +37,7 @@ class ReaderTest extends \Stripe\TestCase
             '/v1/terminal/readers/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertInstanceOf("Stripe\\Terminal\\Reader", $resource);
+        $this->assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -50,7 +50,7 @@ class ReaderTest extends \Stripe\TestCase
         $resource = Reader::update(self::TEST_RESOURCE_ID, [
             "label" => "new-name",
         ]);
-        $this->assertInstanceOf("Stripe\\Terminal\\Reader", $resource);
+        $this->assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
     }
 
     public function testIsCreatable()
@@ -61,7 +61,7 @@ class ReaderTest extends \Stripe\TestCase
             ["registration_code" => "a-b-c"]
         );
         $resource = Reader::create(['registration_code' => 'a-b-c']);
-        $this->assertInstanceOf("Stripe\\Terminal\\Reader", $resource);
+        $this->assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
     }
 
     public function testIsDeletable()
@@ -72,6 +72,6 @@ class ReaderTest extends \Stripe\TestCase
             '/v1/terminal/readers/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertInstanceOf("Stripe\\Terminal\\Reader", $resource);
+        $this->assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
     }
 }
