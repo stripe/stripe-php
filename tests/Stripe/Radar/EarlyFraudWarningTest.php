@@ -14,7 +14,7 @@ class EarlyFraudWarningTest extends \Stripe\TestCase
         );
         $resources = EarlyFraudWarning::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\Radar\\EarlyFraudWarning", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\Radar\EarlyFraudWarning::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,6 +24,6 @@ class EarlyFraudWarningTest extends \Stripe\TestCase
             '/v1/radar/early_fraud_warnings/' . self::TEST_RESOURCE_ID
         );
         $resource = EarlyFraudWarning::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\Radar\\EarlyFraudWarning", $resource);
+        $this->assertInstanceOf(\Stripe\Radar\EarlyFraudWarning::class, $resource);
     }
 }

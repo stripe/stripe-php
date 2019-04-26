@@ -15,7 +15,7 @@ class SubscriptionScheduleTest extends TestCase
         );
         $resources = SubscriptionSchedule::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\SubscriptionSchedule", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -25,7 +25,7 @@ class SubscriptionScheduleTest extends TestCase
             '/v1/subscription_schedules/' . self::TEST_RESOURCE_ID
         );
         $resource = SubscriptionSchedule::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\SubscriptionSchedule", $resource);
+        $this->assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resource);
     }
 
     public function testIsCreatable()
@@ -43,7 +43,7 @@ class SubscriptionScheduleTest extends TestCase
                 ],
             ],
         ]);
-        $this->assertInstanceOf("Stripe\\SubscriptionSchedule", $resource);
+        $this->assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resource);
     }
 
     public function testIsSaveable()
@@ -55,7 +55,7 @@ class SubscriptionScheduleTest extends TestCase
             '/v1/subscription_schedules/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf("Stripe\\SubscriptionSchedule", $resource);
+        $this->assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -67,7 +67,7 @@ class SubscriptionScheduleTest extends TestCase
         $resource = SubscriptionSchedule::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf("Stripe\\SubscriptionSchedule", $resource);
+        $this->assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resource);
     }
 
     public function testIsCancelable()
@@ -79,7 +79,7 @@ class SubscriptionScheduleTest extends TestCase
             []
         );
         $resource->cancel([]);
-        $this->assertInstanceOf("Stripe\\SubscriptionSchedule", $resource);
+        $this->assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resource);
     }
 
     public function testIsReleaseable()
@@ -91,6 +91,6 @@ class SubscriptionScheduleTest extends TestCase
             []
         );
         $resource->release([]);
-        $this->assertInstanceOf("Stripe\\SubscriptionSchedule", $resource);
+        $this->assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resource);
     }
 }

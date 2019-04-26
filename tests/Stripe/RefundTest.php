@@ -14,7 +14,7 @@ class RefundTest extends TestCase
         );
         $resources = Refund::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\Refund", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\Refund::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class RefundTest extends TestCase
             '/v1/refunds/' . self::TEST_RESOURCE_ID
         );
         $resource = Refund::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\Refund", $resource);
+        $this->assertInstanceOf(\Stripe\Refund::class, $resource);
     }
 
     public function testIsCreatable()
@@ -36,7 +36,7 @@ class RefundTest extends TestCase
         $resource = Refund::create([
             "charge" => "ch_123"
         ]);
-        $this->assertInstanceOf("Stripe\\Refund", $resource);
+        $this->assertInstanceOf(\Stripe\Refund::class, $resource);
     }
 
     public function testIsSaveable()
@@ -48,7 +48,7 @@ class RefundTest extends TestCase
             '/v1/refunds/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf("Stripe\\Refund", $resource);
+        $this->assertInstanceOf(\Stripe\Refund::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -60,6 +60,6 @@ class RefundTest extends TestCase
         $resource = Refund::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf("Stripe\\Refund", $resource);
+        $this->assertInstanceOf(\Stripe\Refund::class, $resource);
     }
 }
