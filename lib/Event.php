@@ -100,7 +100,7 @@ class Event extends ApiResource
     const ORDER_RETURN_CREATED                     = 'order_return.created';
     const PAYMENT_INTENT_AMOUNT_CAPTURABLE_UPDATED = 'payment_intent.amount_capturable_updated';
     const PAYMENT_INTENT_CREATED                   = 'payment_intent.created';
-    const PAYMENT_INTENT_FAILED                    = 'payment_intent.failed';
+    const PAYMENT_INTENT_PAYMENT_FAILED            = 'payment_intent.payment_failed';
     const PAYMENT_INTENT_SUCCEEDED                 = 'payment_intent.succeeded';
     const PAYOUT_CANCELED                          = 'payout.canceled';
     const PAYOUT_CREATED                           = 'payout.created';
