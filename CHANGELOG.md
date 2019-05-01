@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.34.3 - 2019-05-01
+* [#644](https://github.com/stripe/stripe-php/pull/644) Update return type to `static` to improve static analysis
+* [#645](https://github.com/stripe/stripe-php/pull/645) Fix constant for `payment_intent.payment_failed`
+
 ## 6.34.2 - 2019-04-26
 * [#642](https://github.com/stripe/stripe-php/pull/642) Fix an issue where existing idempotency keys would be overwritten when using automatic retries
 
