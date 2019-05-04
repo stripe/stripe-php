@@ -76,6 +76,7 @@ require(dirname(__FILE__) . '/lib/CountrySpec.php');
 require(dirname(__FILE__) . '/lib/Coupon.php');
 require(dirname(__FILE__) . '/lib/CreditNote.php');
 require(dirname(__FILE__) . '/lib/Customer.php');
+require(dirname(__FILE__) . '/lib/CustomerBalanceTransaction.php');
 require(dirname(__FILE__) . '/lib/Discount.php');
 require(dirname(__FILE__) . '/lib/Dispute.php');
 require(dirname(__FILE__) . '/lib/EphemeralKey.php');

@@ -88,6 +88,7 @@ abstract class Util
             \Stripe\Coupon::OBJECT_NAME => 'Stripe\\Coupon',
             \Stripe\CreditNote::OBJECT_NAME => 'Stripe\\CreditNote',
             \Stripe\Customer::OBJECT_NAME => 'Stripe\\Customer',
+            \Stripe\CustomerBalanceTransaction::OBJECT_NAME => 'Stripe\\CustomerBalanceTransaction',
             \Stripe\Discount::OBJECT_NAME => 'Stripe\\Discount',
             \Stripe\Dispute::OBJECT_NAME => 'Stripe\\Dispute',
             \Stripe\EphemeralKey::OBJECT_NAME => 'Stripe\\EphemeralKey',
