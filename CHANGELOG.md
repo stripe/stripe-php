@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.34.5 - 2019-05-06
+* [#647](https://github.com/stripe/stripe-php/pull/647) Set the return type to static for more operations
+
 ## 6.34.4 - 2019-05-06
 * [#650](https://github.com/stripe/stripe-php/pull/650) Add missing constants for Event types
 
