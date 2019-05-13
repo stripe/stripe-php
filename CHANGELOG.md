@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.34.6 - 2019-05-13
+* [#654](https://github.com/stripe/stripe-php/pull/654) Fix typo in definition of `Event::PAYMENT_METHOD_ATTACHED` constant
+
 ## 6.34.5 - 2019-05-06
 * [#647](https://github.com/stripe/stripe-php/pull/647) Set the return type to static for more operations
 
