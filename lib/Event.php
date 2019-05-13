@@ -107,7 +107,7 @@ class Event extends ApiResource
     const PAYMENT_INTENT_CREATED                    = 'payment_intent.created';
     const PAYMENT_INTENT_PAYMENT_FAILED             = 'payment_intent.payment_failed';
     const PAYMENT_INTENT_SUCCEEDED                  = 'payment_intent.succeeded';
-    const PAYMENT_METHOD_ATTACHED                   = 'payment_method.detached';
+    const PAYMENT_METHOD_ATTACHED                   = 'payment_method.attached';
     const PAYMENT_METHOD_CARD_AUTOMATICALLY_UPDATED = 'payment_method.card_automatically_updated';
     const PAYMENT_METHOD_DETACHED                   = 'payment_method.detached';
     const PAYMENT_METHOD_UPDATED                    = 'payment_method.updated';
