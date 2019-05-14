@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.35.0 - 2019-05-14
+* [#651](https://github.com/stripe/stripe-php/pull/651) Add support for the Capability resource and APIs
+
 ## 6.34.6 - 2019-05-13
 * [#654](https://github.com/stripe/stripe-php/pull/654) Fix typo in definition of `Event::PAYMENT_METHOD_ATTACHED` constant
 
