@@ -5,6 +5,7 @@ namespace Stripe;
 class AccountTest extends TestCase
 {
     const TEST_RESOURCE_ID = 'acct_123';
+    const TEST_CAPABILITY_ID = 'acap_123';
     const TEST_EXTERNALACCOUNT_ID = 'ba_123';
     const TEST_PERSON_ID = 'person_123';
 
@@ -127,6 +128,38 @@ class AccountTest extends TestCase
         $persons = $account->persons();
         $this->assertTrue(is_array($persons->data));
         $this->assertInstanceOf("Stripe\\Person", $persons->data[0]);
+    }
+
+    public function testCanRetrieveCapability()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/accounts/' . self::TEST_RESOURCE_ID . '/capabilities/' . self::TEST_CAPABILITY_ID
+        );
+        $resource = Account::retrieveCapability(self::TEST_RESOURCE_ID, self::TEST_CAPABILITY_ID);
+        $this->assertInstanceOf("Stripe\\Capability", $resource);
+    }
+
+    public function testCanUpdateCapability()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/accounts/' . self::TEST_RESOURCE_ID . '/capabilities/' . self::TEST_CAPABILITY_ID
+        );
+        $resource = Account::updateCapability(self::TEST_RESOURCE_ID, self::TEST_CAPABILITY_ID, [
+            "requested" => true,
+        ]);
+        $this->assertInstanceOf("Stripe\\Capability", $resource);
+    }
+
+    public function testCanListCapabilities()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/accounts/' . self::TEST_RESOURCE_ID . '/capabilities'
+        );
+        $resources = Account::allCapabilities(self::TEST_RESOURCE_ID);
+        $this->assertTrue(is_array($resources->data));
     }
 
     public function testCanCreateExternalAccount()
