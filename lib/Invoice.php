@@ -19,6 +19,7 @@ namespace Stripe;
  * @property string $billing
  * @property string $billing_reason
  * @property string $charge
+ * @property string $collection_method
  * @property int $created
  * @property string $currency
  * @property array $custom_fields
@@ -28,6 +29,7 @@ namespace Stripe;
  * @property string $customer_name
  * @property string $customer_phone
  * @property mixed $customer_shipping
+ * @property string $customer_tax_exempt
  * @property array $customer_tax_ids
  * @property string $default_payment_method
  * @property string $default_source

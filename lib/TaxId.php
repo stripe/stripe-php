@@ -12,7 +12,6 @@ namespace Stripe;
  * @property string $country
  * @property int $created
  * @property string $customer
- * @property bool $deleted
  * @property bool $livemode
  * @property string $type
  * @property string $value
