@@ -84,9 +84,19 @@ class WebhookTest extends TestCase
      * @expectedException \Stripe\Error\SignatureVerification
      * @expectedExceptionMessage Timestamp outside the tolerance zone
      */
-    public function testTimestampOutsideTolerance()
+    public function testTimestampTooOld()
     {
         $sigHeader = $this->generateHeader(["timestamp" => time() - 15]);
+        WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10);
+    }
+
+    /**
+     * @expectedException \Stripe\Error\SignatureVerification
+     * @expectedExceptionMessage Timestamp outside the tolerance zone
+     */
+    public function testTimestampTooRecent()
+    {
+        $sigHeader = $this->generateHeader(["timestamp" => time() + 15]);
         WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10);
     }
 
