@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.35.1 - 2019-05-20
+* [#658](https://github.com/stripe/stripe-php/pull/658) Use absolute value when checking timestamp tolerance
+
 ## 6.35.0 - 2019-05-14
 * [#651](https://github.com/stripe/stripe-php/pull/651) Add support for the Capability resource and APIs
 
