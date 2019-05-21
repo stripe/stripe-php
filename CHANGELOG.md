@@ -1,5 +1,10 @@
 # Changelog
 
+## 6.35.2 - 2019-05-20
+* [#655](https://github.com/stripe/stripe-php/pull/655) Add constants for payment intent statuses
+* [#659](https://github.com/stripe/stripe-php/pull/659) Fix PHPDoc for various nested Account actions
+* [#660](https://github.com/stripe/stripe-php/pull/660) Fix various PHPDoc
+
 ## 6.35.1 - 2019-05-20
 * [#658](https://github.com/stripe/stripe-php/pull/658) Use absolute value when checking timestamp tolerance
 
