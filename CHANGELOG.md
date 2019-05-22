@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.36.0 - 2019-05-22
+* [#661](https://github.com/stripe/stripe-php/pull/661) Add constants for new TaxId types
+* [#662](https://github.com/stripe/stripe-php/pull/662) Add constants for BalanceTransaction types
+
 ## 6.35.2 - 2019-05-20
 * [#655](https://github.com/stripe/stripe-php/pull/655) Add constants for payment intent statuses
 * [#659](https://github.com/stripe/stripe-php/pull/659) Fix PHPDoc for various nested Account actions
