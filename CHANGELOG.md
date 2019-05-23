@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.37.0 - 2019-05-23
+* [#663](https://github.com/stripe/stripe-php/pull/663) Add support for `radar.early_fraud_warning` resource
+
 ## 6.36.0 - 2019-05-22
 * [#661](https://github.com/stripe/stripe-php/pull/661) Add constants for new TaxId types
 * [#662](https://github.com/stripe/stripe-php/pull/662) Add constants for BalanceTransaction types
