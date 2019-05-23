@@ -117,6 +117,7 @@ abstract class Util
             \Stripe\Person::OBJECT_NAME => 'Stripe\\Person',
             \Stripe\Plan::OBJECT_NAME => 'Stripe\\Plan',
             \Stripe\Product::OBJECT_NAME => 'Stripe\\Product',
+            \Stripe\Radar\EarlyFraudWarning::OBJECT_NAME => 'Stripe\\Radar\\EarlyFraudWarning',
             \Stripe\Radar\ValueList::OBJECT_NAME => 'Stripe\\Radar\\ValueList',
             \Stripe\Radar\ValueListItem::OBJECT_NAME => 'Stripe\\Radar\\ValueListItem',
             \Stripe\Recipient::OBJECT_NAME => 'Stripe\\Recipient',
