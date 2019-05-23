@@ -2,7 +2,7 @@
 
 require_once(__DIR__ . '/StripeMock.php');
 
-define("MOCK_MINIMUM_VERSION", "0.56.0");
+define("MOCK_MINIMUM_VERSION", "0.57.0");
 
 if (\Stripe\StripeMock::start()) {
     register_shutdown_function('\Stripe\StripeMock::stop');

@@ -104,6 +104,7 @@ require(dirname(__FILE__) . '/lib/Payout.php');
 require(dirname(__FILE__) . '/lib/Person.php');
 require(dirname(__FILE__) . '/lib/Plan.php');
 require(dirname(__FILE__) . '/lib/Product.php');
+require(dirname(__FILE__) . '/lib/Radar/EarlyFraudWarning.php');
 require(dirname(__FILE__) . '/lib/Radar/ValueList.php');
 require(dirname(__FILE__) . '/lib/Radar/ValueListItem.php');
 require(dirname(__FILE__) . '/lib/Recipient.php');
