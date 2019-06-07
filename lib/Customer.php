@@ -11,7 +11,7 @@ namespace Stripe;
  * @property mixed $address
  * @property string $created
  * @property string $currency
- * @property string $default_source
+ * @property string|null $default_source
  * @property bool $delinquent
  * @property string $description
  * @property Discount $discount
