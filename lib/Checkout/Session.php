@@ -15,6 +15,7 @@ namespace Stripe\Checkout;
  * @property bool $livemode
  * @property string $payment_intent
  * @property string[] $payment_method_types
+ * @property string $submit_type
  * @property string $subscription
  * @property string $success_url
  *
