@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.37.1 - 2019-06-14
+* [#670](https://github.com/stripe/stripe-php/pull/670) Add new PHPDoc
+
 ## 6.37.0 - 2019-05-23
 * [#663](https://github.com/stripe/stripe-php/pull/663) Add support for `radar.early_fraud_warning` resource
 
