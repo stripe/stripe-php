@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.37.2 - 2019-06-17
+* [#671](https://github.com/stripe/stripe-php/pull/671) Add new PHPDoc
+* [#672](https://github.com/stripe/stripe-php/pull/672) Add constants for `submit_type` on Checkout `Session`
+
 ## 6.37.1 - 2019-06-14
 * [#670](https://github.com/stripe/stripe-php/pull/670) Add new PHPDoc
 
