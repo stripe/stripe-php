@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.38.0 - 2019-06-17
+* [#649](https://github.com/stripe/stripe-php/pull/649) Add support for `CustomerBalanceTransaction` resource and APIs
+
 ## 6.37.2 - 2019-06-17
 * [#671](https://github.com/stripe/stripe-php/pull/671) Add new PHPDoc
 * [#672](https://github.com/stripe/stripe-php/pull/672) Add constants for `submit_type` on Checkout `Session`
