@@ -7,6 +7,7 @@ class CustomerTest extends TestCase
     const TEST_RESOURCE_ID = 'cus_123';
     const TEST_SOURCE_ID = 'ba_123';
     const TEST_TAX_ID_ID = 'txi_123';
+    const TEST_CUSTOMER_BALANCE_TRANSACTION_ID = 'cbtxn_123';
 
     public function testIsListable()
     {
@@ -302,6 +303,46 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/tax_ids'
         );
         $resources = Customer::allTaxIds(self::TEST_RESOURCE_ID);
+        $this->assertTrue(is_array($resources->data));
+    }
+
+    public function testCanCreateBalanceTransaction()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/customers/' . self::TEST_RESOURCE_ID . '/balance_transactions'
+        );
+        $resource = Customer::createBalanceTransaction(self::TEST_RESOURCE_ID, [
+            "amount" => 1234,
+            "currency" => "usd",
+        ]);
+    }
+
+    public function testCanRetrieveBalanceTransaction()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/customers/' . self::TEST_RESOURCE_ID . '/balance_transactions/' . self::TEST_CUSTOMER_BALANCE_TRANSACTION_ID
+        );
+        $resource = Customer::retrieveBalanceTransaction(self::TEST_RESOURCE_ID, self::TEST_CUSTOMER_BALANCE_TRANSACTION_ID);
+    }
+
+    public function testCanUpdateBalanceTransaction()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/customers/' . self::TEST_RESOURCE_ID . '/balance_transactions/' . self::TEST_CUSTOMER_BALANCE_TRANSACTION_ID
+        );
+        $resource = Customer::updateBalanceTransaction(self::TEST_RESOURCE_ID, self::TEST_CUSTOMER_BALANCE_TRANSACTION_ID, ["description" => "new"]);
+    }
+
+    public function testCanListCustomerBalanceTransactions()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/customers/' . self::TEST_RESOURCE_ID . '/balance_transactions'
+        );
+        $resources = Customer::allBalanceTransactions(self::TEST_RESOURCE_ID);
         $this->assertTrue(is_array($resources->data));
     }
 }
