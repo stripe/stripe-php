@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.39.1 - 2019-06-25
+* [#674](https://github.com/stripe/stripe-php/pull/674) Add new constants for `collection_method` on `Invoice`
+
 ## 6.39.0 - 2019-06-24
 * [#673](https://github.com/stripe/stripe-php/pull/673) Enable request latency telemetry by default
 
