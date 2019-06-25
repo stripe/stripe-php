@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.39.0 - 2019-06-24
+* [#673](https://github.com/stripe/stripe-php/pull/673) Enable request latency telemetry by default
+
 ## 6.38.0 - 2019-06-17
 * [#649](https://github.com/stripe/stripe-php/pull/649) Add support for `CustomerBalanceTransaction` resource and APIs
 
