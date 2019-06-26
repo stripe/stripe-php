@@ -82,7 +82,7 @@ class CustomerBalanceTransaction extends ApiResource
     public static function update($_id, $_params = null, $_options = null)
     {
         $msg = "Customer Balance Transactions cannot be accessed without a customer ID. " .
-               "Update a balance transaction using Customer::updateBalanceTransaction('cus_123', 'cbtxn_123', $params) instead.";
+               "Update a balance transaction using Customer::updateBalanceTransaction('cus_123', 'cbtxn_123', \$params) instead.";
         throw new Error\InvalidRequest($msg, null);
     }
 }
