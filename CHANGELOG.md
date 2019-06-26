@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.39.2 - 2019-06-26
+* [#676](https://github.com/stripe/stripe-php/pull/676) Fix exception message in `CustomerBalanceTransaction::update()`
+
 ## 6.39.1 - 2019-06-25
 * [#674](https://github.com/stripe/stripe-php/pull/674) Add new constants for `collection_method` on `Invoice`
 
