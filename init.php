@@ -114,6 +114,7 @@ require(dirname(__FILE__) . '/lib/Refund.php');
 require(dirname(__FILE__) . '/lib/Reporting/ReportRun.php');
 require(dirname(__FILE__) . '/lib/Reporting/ReportType.php');
 require(dirname(__FILE__) . '/lib/Review.php');
+require(dirname(__FILE__) . '/lib/SetupIntent.php');
 require(dirname(__FILE__) . '/lib/SKU.php');
 require(dirname(__FILE__) . '/lib/Sigma/ScheduledQueryRun.php');
 require(dirname(__FILE__) . '/lib/Source.php');

@@ -127,6 +127,7 @@ abstract class Util
             \Stripe\Reporting\ReportRun::OBJECT_NAME => 'Stripe\\Reporting\\ReportRun',
             \Stripe\Reporting\ReportType::OBJECT_NAME => 'Stripe\\Reporting\\ReportType',
             \Stripe\Review::OBJECT_NAME => 'Stripe\\Review',
+            \Stripe\SetupIntent::OBJECT_NAME => 'Stripe\\SetupIntent',
             \Stripe\SKU::OBJECT_NAME => 'Stripe\\SKU',
             \Stripe\Sigma\ScheduledQueryRun::OBJECT_NAME => 'Stripe\\Sigma\\ScheduledQueryRun',
             \Stripe\Source::OBJECT_NAME => 'Stripe\\Source',
