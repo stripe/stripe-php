@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.40.0 - 2019-06-27
+* [#675](https://github.com/stripe/stripe-php/pull/675) Add support for `SetupIntent` resource and APIs
+
 ## 6.39.2 - 2019-06-26
 * [#676](https://github.com/stripe/stripe-php/pull/676) Fix exception message in `CustomerBalanceTransaction::update()`
 
