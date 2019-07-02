@@ -61,6 +61,7 @@ class PaymentIntent extends ApiResource
     const STATUS_REQUIRES_CAPTURE        = 'requires_capture';
     const STATUS_REQUIRES_CONFIRMATION   = 'requires_confirmation';
     const STATUS_REQUIRES_PAYMENT_METHOD = 'requires_payment_method';
+    const STATUS_REQUIRES_SOURCE         = 'requires_source';
     const STATUS_SUCCEEDED               = 'succeeded';
 
     /**
