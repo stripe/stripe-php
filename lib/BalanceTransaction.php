@@ -63,13 +63,4 @@ class BalanceTransaction extends ApiResource
     const TYPE_TRANSFER_CANCEL               = 'transfer_cancel';
     const TYPE_TRANSFER_FAILURE              = 'transfer_failure';
     const TYPE_TRANSFER_REFUND               = 'transfer_refund';
-
-    /**
-     * @return string The class URL for this resource. It needs to be special
-     *    cased because it doesn't fit into the standard resource pattern.
-     */
-    public static function classUrl()
-    {
-        return "/v1/balance/history";
-    }
 }
