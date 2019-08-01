@@ -10,7 +10,7 @@ class BalanceTransactionTest extends TestCase
     {
         $this->expectsRequest(
             'get',
-            '/v1/balance/history'
+            '/v1/balance_transactions'
         );
         $resources = BalanceTransaction::all();
         $this->assertTrue(is_array($resources->data));
@@ -21,7 +21,7 @@ class BalanceTransactionTest extends TestCase
     {
         $this->expectsRequest(
             'get',
-            '/v1/balance/history/' . self::TEST_RESOURCE_ID
+            '/v1/balance_transactions/' . self::TEST_RESOURCE_ID
         );
         $resource = BalanceTransaction::retrieve(self::TEST_RESOURCE_ID);
         $this->assertInstanceOf("Stripe\\BalanceTransaction", $resource);
