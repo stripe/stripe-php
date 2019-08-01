@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.41.0 - 2019-07-31
+* [#683](https://github.com/stripe/stripe-php/pull/683) Move the List Balance History API to `/v1/balance_transactions`
+
 ## 6.40.0 - 2019-06-27
 * [#675](https://github.com/stripe/stripe-php/pull/675) Add support for `SetupIntent` resource and APIs
 
