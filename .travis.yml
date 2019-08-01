@@ -1,22 +1,47 @@
 sudo: false
 
+dist: bionic
+
 language: php
 
-php:
-  - 5.4
-  - 5.5
-  - 5.6
-  - 7.0
-  - 7.1
-  - 7.2
-  - 7.3
+matrix:
+  include:
+    - php: 5.4
+      env: AUTOLOAD=1
+      dist: trusty
+    - php: 5.4
+      env: AUTOLOAD=0
+      dist: trusty
+    - php: 5.5
+      env: AUTOLOAD=1
+      dist: trusty
+    - php: 5.5
+      env: AUTOLOAD=0
+      dist: trusty
+    - php: 5.6
+      env: AUTOLOAD=1
+      dist: xenial
+    - php: 5.6
+      env: AUTOLOAD=0
+      dist: xenial
+    - php: 7.0
+      env: AUTOLOAD=1
+      dist: xenial
+    - php: 7.0
+      env: AUTOLOAD=0
+      dist: xenial
+    - php: 7.1
+      env: AUTOLOAD=1
+    - php: 7.1
+      env: AUTOLOAD=0
+    - php: 7.2
+      env: AUTOLOAD=1
+    - php: 7.2
+      env: AUTOLOAD=0
 
 env:
   global:
     - STRIPE_MOCK_VERSION=0.60.0
-  matrix:
-    - AUTOLOAD=1
-    - AUTOLOAD=0
 
 cache:
   directories:
