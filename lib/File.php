@@ -52,11 +52,7 @@ class File extends ApiResource
         }
         // Manually flatten params, otherwise curl's multipart encoder will
         // choke on nested arrays.
-        // TODO: use array_column() once we drop support for PHP 5.4
-        $flatParams = [];
-        foreach (\Stripe\Util\Util::flattenParams($params) as $pair) {
-            $flatParams[$pair[0]] = $pair[1];
-        }
+        $flatParams = array_column(\Stripe\Util\Util::flattenParams($params), 1, 0);
         return static::_create($flatParams, $opts);
     }
 }
