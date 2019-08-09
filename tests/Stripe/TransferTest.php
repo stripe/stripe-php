@@ -66,17 +66,6 @@ class TransferTest extends TestCase
         $this->assertInstanceOf(\Stripe\Transfer::class, $resource);
     }
 
-    public function testIsReversable()
-    {
-        $resource = Transfer::retrieve(self::TEST_RESOURCE_ID);
-        $this->expectsRequest(
-            'post',
-            '/v1/transfers/' . $resource->id . '/reversals'
-        );
-        $resource->reverse();
-        $this->assertInstanceOf(\Stripe\Transfer::class, $resource);
-    }
-
     public function testIsCancelable()
     {
         $transfer = Transfer::retrieve(self::TEST_RESOURCE_ID);
