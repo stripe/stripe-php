@@ -30,7 +30,6 @@ namespace Stripe;
  */
 class SubscriptionSchedule extends ApiResource
 {
-
     const OBJECT_NAME = "subscription_schedule";
 
     use ApiOperations\All;

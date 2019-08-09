@@ -20,7 +20,6 @@ namespace Stripe;
  */
 class Event extends ApiResource
 {
-
     const OBJECT_NAME = "event";
 
     /**

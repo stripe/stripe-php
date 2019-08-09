@@ -70,7 +70,6 @@ namespace Stripe;
  */
 class Invoice extends ApiResource
 {
-
     const OBJECT_NAME = "invoice";
 
     use ApiOperations\All;

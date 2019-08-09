@@ -12,7 +12,6 @@ namespace Stripe;
  */
 class BitcoinReceiver extends ApiResource
 {
-
     const OBJECT_NAME = "bitcoin_receiver";
 
     use ApiOperations\All;

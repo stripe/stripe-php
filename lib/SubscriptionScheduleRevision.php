@@ -20,7 +20,6 @@ namespace Stripe;
  */
 class SubscriptionScheduleRevision extends ApiResource
 {
-
     const OBJECT_NAME = "subscription_schedule_revision";
 
     use ApiOperations\All;

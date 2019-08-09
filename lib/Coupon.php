@@ -25,7 +25,6 @@ namespace Stripe;
  */
 class Coupon extends ApiResource
 {
-
     const OBJECT_NAME = "coupon";
 
     use ApiOperations\All;
