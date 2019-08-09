@@ -47,17 +47,6 @@ class Transfer extends ApiResource
     const SOURCE_TYPE_FINANCING      = 'financing';
 
     /**
-     * @return TransferReversal The created transfer reversal.
-     */
-    public function reverse($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/reversals';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-        return $this;
-    }
-
-    /**
      * @return Transfer The canceled transfer.
      */
     public function cancel()
