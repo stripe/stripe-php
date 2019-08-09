@@ -74,25 +74,4 @@ class RecipientTest extends TestCase
         $resource->delete();
         $this->assertInstanceOf(\Stripe\Recipient::class, $resource);
     }
-
-    public function testCanListTransfers()
-    {
-        $recipient = Recipient::retrieve(self::TEST_RESOURCE_ID);
-
-        // stripe-mock does not support this anymore so we stub it
-        $this->stubRequest(
-            'get',
-            '/v1/transfers',
-            ["recipient" => $recipient->id],
-            null,
-            false,
-            [
-                "object" => "list",
-                "data" => [["id" => "tr_123", "object" => "transfer"]]
-            ]
-        );
-        $resources = $recipient->transfers();
-        $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf(\Stripe\Transfer::class, $resources->data[0]);
-    }
 }
