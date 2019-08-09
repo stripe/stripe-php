@@ -135,7 +135,6 @@ abstract class Util
             \Stripe\Subscription::OBJECT_NAME => 'Stripe\\Subscription',
             \Stripe\SubscriptionItem::OBJECT_NAME => 'Stripe\\SubscriptionItem',
             \Stripe\SubscriptionSchedule::OBJECT_NAME => 'Stripe\\SubscriptionSchedule',
-            \Stripe\SubscriptionScheduleRevision::OBJECT_NAME => 'Stripe\\SubscriptionScheduleRevision',
             \Stripe\TaxId::OBJECT_NAME => 'Stripe\\TaxId',
             \Stripe\TaxRate::OBJECT_NAME => 'Stripe\\TaxRate',
             \Stripe\ThreeDSecure::OBJECT_NAME => 'Stripe\\ThreeDSecure',

@@ -93,36 +93,4 @@ class SubscriptionScheduleTest extends TestCase
         $resource->release([]);
         $this->assertInstanceOf("Stripe\\SubscriptionSchedule", $resource);
     }
-
-    public function testRevisions()
-    {
-        $schedule = SubscriptionSchedule::retrieve(self::TEST_RESOURCE_ID);
-        $this->expectsRequest(
-            'get',
-            '/v1/subscription_schedules/' . $schedule->id . '/revisions'
-        );
-        $revisions = $schedule->revisions();
-        $this->assertTrue(is_array($revisions->data));
-        $this->assertInstanceOf("Stripe\\SubscriptionScheduleRevision", $revisions->data[0]);
-    }
-
-    public function testCanRetrieveRevision()
-    {
-        $this->expectsRequest(
-            'get',
-            '/v1/subscription_schedules/' . self::TEST_RESOURCE_ID . '/revisions/' . self::TEST_REVISION_ID
-        );
-        $resource = SubscriptionSchedule::retrieveRevision(self::TEST_RESOURCE_ID, self::TEST_REVISION_ID);
-        $this->assertInstanceOf("Stripe\\SubscriptionScheduleRevision", $resource);
-    }
-
-    public function testCanListRevisions()
-    {
-        $this->expectsRequest(
-            'get',
-            '/v1/subscription_schedules/' . self::TEST_RESOURCE_ID . '/revisions'
-        );
-        $resources = SubscriptionSchedule::allRevisions(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
-    }
 }
