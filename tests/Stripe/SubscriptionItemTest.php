@@ -80,6 +80,19 @@ class SubscriptionItemTest extends TestCase
         $this->assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
     }
 
+    public function testCanCreateUsageRecord()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/subscription_items/' . self::TEST_RESOURCE_ID . '/usage_records'
+        );
+        $resource = SubscriptionItem::createUsageRecord(self::TEST_RESOURCE_ID, [
+            'quantity' => 100,
+            'timestamp' => 12341234,
+            'action' => 'set',
+        ]);
+    }
+
     public function testCanListUsageRecordSummaries()
     {
         $resource = SubscriptionItem::retrieve(self::TEST_RESOURCE_ID);
