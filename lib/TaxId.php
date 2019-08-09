@@ -19,7 +19,6 @@ namespace Stripe;
  */
 class TaxId extends ApiResource
 {
-
     const OBJECT_NAME = "tax_id";
 
     use ApiOperations\Delete;

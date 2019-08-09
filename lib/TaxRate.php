@@ -21,7 +21,6 @@ namespace Stripe;
  */
 class TaxRate extends ApiResource
 {
-
     const OBJECT_NAME = "tax_rate";
 
     use ApiOperations\All;

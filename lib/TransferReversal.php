@@ -20,7 +20,6 @@ namespace Stripe;
  */
 class TransferReversal extends ApiResource
 {
-
     const OBJECT_NAME = "transfer_reversal";
 
     use ApiOperations\Update {

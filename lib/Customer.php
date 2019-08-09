@@ -33,7 +33,6 @@ namespace Stripe;
  */
 class Customer extends ApiResource
 {
-
     const OBJECT_NAME = "customer";
 
     use ApiOperations\All;

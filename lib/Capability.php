@@ -17,7 +17,6 @@ namespace Stripe;
  */
 class Capability extends ApiResource
 {
-
     const OBJECT_NAME = "capability";
 
     use ApiOperations\Update;

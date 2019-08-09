@@ -53,7 +53,6 @@ namespace Stripe;
  */
 class Charge extends ApiResource
 {
-
     const OBJECT_NAME = "charge";
 
     use ApiOperations\All;

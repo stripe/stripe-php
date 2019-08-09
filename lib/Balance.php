@@ -15,7 +15,6 @@ namespace Stripe;
  */
 class Balance extends SingletonApiResource
 {
-
     const OBJECT_NAME = "balance";
 
     /**

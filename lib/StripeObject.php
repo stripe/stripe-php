@@ -153,7 +153,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         $nullval = null;
         if (!empty($this->_values) && array_key_exists($k, $this->_values)) {
             return $this->_values[$k];
-        } else if (!empty($this->_transientValues) && $this->_transientValues->includes($k)) {
+        } elseif (!empty($this->_transientValues) && $this->_transientValues->includes($k)) {
             $class = get_class($this);
             $attrs = join(', ', array_keys($this->_values));
             $message = "Stripe Notice: Undefined property of $class instance: $k. "

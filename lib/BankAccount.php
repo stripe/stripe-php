@@ -25,7 +25,6 @@ namespace Stripe;
  */
 class BankAccount extends ApiResource
 {
-
     const OBJECT_NAME = "bank_account";
 
     use ApiOperations\Delete;
@@ -93,12 +92,12 @@ class BankAccount extends ApiResource
         throw new Error\InvalidRequest($msg, null);
     }
 
-   /**
-     * @param array|null $params
-     * @param array|string|null $options
-     *
-     * @return BankAccount The verified bank account.
-     */
+    /**
+      * @param array|null $params
+      * @param array|string|null $options
+      *
+      * @return BankAccount The verified bank account.
+      */
     public function verify($params = null, $options = null)
     {
         $url = $this->instanceUrl() . '/verify';

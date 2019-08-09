@@ -19,7 +19,6 @@ namespace Stripe;
  */
 class SubscriptionItem extends ApiResource
 {
-
     const OBJECT_NAME = "subscription_item";
 
     use ApiOperations\All;

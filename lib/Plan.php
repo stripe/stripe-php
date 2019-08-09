@@ -29,7 +29,6 @@ namespace Stripe;
  */
 class Plan extends ApiResource
 {
-
     const OBJECT_NAME = "plan";
 
     use ApiOperations\All;

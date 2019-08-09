@@ -23,7 +23,6 @@ if (isset($_GET['code'])) {
 
     echo "<p>Success! Account <code>$accountId</code> is connected.</p>\n";
     echo "<p>Click <a href=\"?deauth=$accountId\">here</a> to disconnect the account.</p>\n";
-
 } elseif (isset($_GET['error'])) {
     // The user was redirect back from the OAuth form with an error.
     $error = $_GET['error'];
@@ -31,7 +30,6 @@ if (isset($_GET['code'])) {
 
     echo "<p>Error: code=" . htmlspecialchars($error, ENT_QUOTES) . ", description=" . htmlspecialchars($error_description, ENT_QUOTES) . "</p>\n";
     echo "<p>Click <a href=\"?\">here</a> to restart the OAuth flow.</p>\n";
-
 } elseif (isset($_GET['deauth'])) {
     // Deauthorization request
     $accountId = $_GET['deauth'];
@@ -46,7 +44,6 @@ if (isset($_GET['code'])) {
 
     echo "<p>Success! Account <code>" . htmlspecialchars($accountId, ENT_QUOTES) . "</code> is disconnected.</p>\n";
     echo "<p>Click <a href=\"?\">here</a> to restart the OAuth flow.</p>\n";
-
 } else {
     $url = \Stripe\OAuth::authorizeUrl([
         'scope' => 'read_only',
