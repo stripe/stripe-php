@@ -1,18 +1,13 @@
 {
-    "editor.renderWhitespace": "all",
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "[php]": {
-      "editor.detectIndentation": false,
-      "editor.insertSpaces": true,
-      "editor.rulers": [
-        100
-      ],
-      "editor.tabSize": 4,
-    },
+  // Show the path in the top window bar.
+  "window.title": "${rootName}${separator}${activeEditorMedium}",
 
-    // Linting
-    "phpcs.enable": true,
-    "phpcs.standard": "PSR2"
+  "editor.renderWhitespace": "all",
+
+  // Formatting
+  "editor.formatOnSave": true,
+
+  // Linting
+  "phpcs.enable": true,
+  "phpcs.standard": "PSR2"
 }
