@@ -1,7 +1,8 @@
 {
-    "recommendations": [
-        "felixfbecker.php-intellisense",
-        "ikappas.phpcs",
-        "emallin.phpunit"
-    ]
+  "recommendations": [
+    "felixfbecker.php-intellisense",
+    "ikappas.phpcs",
+    "emallin.phpunit",
+    "EditorConfig.editorconfig"
+  ]
 }
