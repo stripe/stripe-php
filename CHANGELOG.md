@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.43.0 - 2019-08-09
+* [#694](https://github.com/stripe/stripe-php/pull/694) Add `SubscriptionItem::createUsageRecord` method
+
 ## 6.42.0 - 2019-08-09
 * [#688](https://github.com/stripe/stripe-php/pull/688) Remove `SubscriptionScheduleRevision`
   * Note that this is technically a breaking change, however we've chosen to release it as a minor version in light of the fact that this resource and its API methods were virtually unused.
