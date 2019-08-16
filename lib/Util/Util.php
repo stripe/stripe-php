@@ -101,7 +101,6 @@ abstract class Util
             \Stripe\Invoice::OBJECT_NAME => \Stripe\Invoice::class,
             \Stripe\InvoiceItem::OBJECT_NAME => \Stripe\InvoiceItem::class,
             \Stripe\InvoiceLineItem::OBJECT_NAME => \Stripe\InvoiceLineItem::class,
-            \Stripe\IssuerFraudRecord::OBJECT_NAME => \Stripe\IssuerFraudRecord::class,
             \Stripe\Issuing\Authorization::OBJECT_NAME => \Stripe\Issuing\Authorization::class,
             \Stripe\Issuing\Card::OBJECT_NAME => \Stripe\Issuing\Card::class,
             \Stripe\Issuing\CardDetails::OBJECT_NAME => \Stripe\Issuing\CardDetails::class,
