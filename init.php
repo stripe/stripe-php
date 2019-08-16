@@ -87,7 +87,6 @@ require(dirname(__FILE__) . '/lib/FileLink.php');
 require(dirname(__FILE__) . '/lib/Invoice.php');
 require(dirname(__FILE__) . '/lib/InvoiceItem.php');
 require(dirname(__FILE__) . '/lib/InvoiceLineItem.php');
-require(dirname(__FILE__) . '/lib/IssuerFraudRecord.php');
 require(dirname(__FILE__) . '/lib/Issuing/Authorization.php');
 require(dirname(__FILE__) . '/lib/Issuing/Card.php');
 require(dirname(__FILE__) . '/lib/Issuing/CardDetails.php');
