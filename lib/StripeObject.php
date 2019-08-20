@@ -9,6 +9,8 @@ namespace Stripe;
  */
 class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
 {
+    protected static $_permanentAttributes = null;
+
     protected $_opts;
     protected $_originalValues;
     protected $_values;
@@ -23,13 +25,23 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      */
     public static function getPermanentAttributes()
     {
-        static $permanentAttributes = null;
-        if ($permanentAttributes === null) {
-            $permanentAttributes = new Util\Set([
+        if (self::$_permanentAttributes === null) {
+            self::$_permanentAttributes = new Util\Set([
                 'id',
             ]);
         }
-        return $permanentAttributes;
+        return self::$_permanentAttributes;
+    }
+
+    /**
+     * Set specific permanent attributes. Could be used for unit test when
+     * it needs to have a specific id on Stripe Object to test the code behavior
+     *
+     * @param array $permanentAttributes
+     */
+    public static function setPermanentAttributes(array $permanentAttributes)
+    {
+        self::$_permanentAttributes = new Util\Set($permanentAttributes);
     }
 
     /**
