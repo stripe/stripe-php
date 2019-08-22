@@ -79,6 +79,7 @@ require(dirname(__FILE__) . '/lib/CustomerBalanceTransaction.php');
 require(dirname(__FILE__) . '/lib/Discount.php');
 require(dirname(__FILE__) . '/lib/Dispute.php');
 require(dirname(__FILE__) . '/lib/EphemeralKey.php');
+require(dirname(__FILE__) . '/lib/ErrorObject.php');
 require(dirname(__FILE__) . '/lib/Event.php');
 require(dirname(__FILE__) . '/lib/ExchangeRate.php');
 require(dirname(__FILE__) . '/lib/File.php');
@@ -134,6 +135,7 @@ require(dirname(__FILE__) . '/lib/UsageRecordSummary.php');
 
 // OAuth
 require(dirname(__FILE__) . '/lib/OAuth.php');
+require(dirname(__FILE__) . '/lib/OAuthErrorObject.php');
 
 // Webhooks
 require(dirname(__FILE__) . '/lib/Webhook.php');
