@@ -239,6 +239,12 @@ Update bundled CA certificates from the [Mozilla cURL release][curl]:
 ./update_certs.php
 ```
 
+The library uses [PHP CS Fixer][php-cs-fixer] for code formatting. Code must be formatted before PRs are submitted, otherwise CI will fail. Run the formatter with:
+
+```bash
+./vendor/bin/php-cs-fixer fix -v .
+```
+
 ## Attention plugin developers
 
 Are you writing a plugin that integrates Stripe and embeds our library? Then please use the `setAppInfo` function to identify your plugin. For example:
@@ -256,6 +262,7 @@ See the "SSL / TLS compatibility issues" paragraph above for full context. If yo
 [composer]: https://getcomposer.org/
 [connect]: https://stripe.com/connect
 [curl]: http://curl.haxx.se/docs/caextract.html
-[psr3]: http://www.php-fig.org/psr/psr-3/
 [idempotency-keys]: https://stripe.com/docs/api/php#idempotent_requests
+[php-cs-fixer]: https://github.com/FriendsOfPHP/PHP-CS-Fixer
+[psr3]: http://www.php-fig.org/psr/psr-3/
 [stripe-mock]: https://github.com/stripe/stripe-mock

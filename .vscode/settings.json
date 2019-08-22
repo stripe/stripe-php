@@ -6,6 +6,8 @@
 
   // Formatting
   "editor.formatOnSave": true,
+  "phpformatter.composer": true,
+  "phpformatter.arguments": [""],
 
   // Linting
   "phpcs.enable": true,
