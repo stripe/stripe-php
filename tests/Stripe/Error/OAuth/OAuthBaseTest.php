@@ -2,15 +2,16 @@
 
 namespace Stripe;
 
-class BaseTest extends TestCase
+class OAuthBaseTest extends TestCase
 {
     public function createFixture()
     {
-        return $this->getMockForAbstractClass(\Stripe\Error\Base::class, [
-            'message',
+        return $this->getMockForAbstractClass(\Stripe\Error\OAuth\OAuthBase::class, [
+            'code',
+            'description',
             200,
-            '{"error": {"code": "some_code"}}',
-            ['error' => ['code' => 'some_code']],
+            '{"error": "code", "error_description": "description"}',
+            ['error' => 'code', 'error_description' => 'description'],
             [
                 'Some-Header' => 'Some Value',
                 'Request-Id' => 'req_test',
@@ -22,12 +23,13 @@ class BaseTest extends TestCase
     {
         $e = $this->createFixture();
         $this->assertSame(200, $e->getHttpStatus());
-        $this->assertSame('{"error": {"code": "some_code"}}', $e->getHttpBody());
-        $this->assertSame(['error' => ['code' => 'some_code']], $e->getJsonBody());
+        $this->assertSame('{"error": "code", "error_description": "description"}', $e->getHttpBody());
+        $this->assertSame(['error' => 'code', 'error_description' => 'description'], $e->getJsonBody());
         $this->assertSame('Some Value', $e->getHttpHeaders()['Some-Header']);
         $this->assertSame('req_test', $e->getRequestId());
         $this->assertNotNull($e->getError());
-        $this->assertSame('some_code', $e->getError()->code);
+        $this->assertSame('code', $e->getError()->error);
+        $this->assertSame('description', $e->getError()->error_description);
     }
 
     public function testToString()
