@@ -65,6 +65,8 @@ before_install:
     STRIPE_MOCK_PID=$!
   - export PATH="${PATH}:${PWD}/stripe-mock/stripe-mock_${STRIPE_MOCK_VERSION}"
 
-script: ./build.php ${AUTOLOAD}
+script:
+  - ./build.php ${AUTOLOAD}
+  - ./vendor/bin/php-cs-fixer fix -v --dry-run --using-cache=no .
 
 after_script: ./vendor/bin/coveralls -v
