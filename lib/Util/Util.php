@@ -32,31 +32,6 @@ abstract class Util
     }
 
     /**
-     * Recursively converts the PHP Stripe object to an array.
-     *
-     * @param array $values The PHP Stripe object to convert.
-     * @return array
-     */
-    public static function convertStripeObjectToArray($values)
-    {
-        $results = [];
-        foreach ($values as $k => $v) {
-            // FIXME: this is an encapsulation violation
-            if ($k[0] == '_') {
-                continue;
-            }
-            if ($v instanceof StripeObject) {
-                $results[$k] = $v->__toArray(true);
-            } elseif (is_array($v)) {
-                $results[$k] = self::convertStripeObjectToArray($v);
-            } else {
-                $results[$k] = $v;
-            }
-        }
-        return $results;
-    }
-
-    /**
      * Converts a response from the Stripe API to the corresponding PHP object.
      *
      * @param array $resp The response from the Stripe API.
