@@ -9,6 +9,9 @@ class StripeMock
     protected static $process = null;
     protected static $port = -1;
 
+    const PATH_SPEC = __DIR__ . '/openapi/spec3.json';
+    const PATH_FIXTURES = __DIR__ . '/openapi/fixtures3.json';
+
     /**
      * Starts a stripe-mock process with custom OpenAPI spec and fixtures files, if they exist.
      *
@@ -16,7 +19,7 @@ class StripeMock
      */
     public static function start()
     {
-        if (!file_exists(static::getPathSpec())) {
+        if (!file_exists(self::PATH_SPEC)) {
             return false;
         }
 
@@ -34,9 +37,9 @@ class StripeMock
             '-http-port',
             static::$port,
             '-spec',
-            static::getPathSpec(),
+            self::PATH_SPEC,
             '-fixtures',
-            static::getPathFixtures(),
+            self::PATH_FIXTURES,
         ]));
         static::$process->start();
         sleep(1);
@@ -91,29 +94,5 @@ class StripeMock
         socket_getsockname($sock, $addr, $port);
         socket_close($sock);
         return $port;
-    }
-
-    /**
-     * Returns the path to the custom OpenAPI specification file.
-     *
-     * @todo Change this to a constant expression once we drop support for PHP < 5.6.
-     *
-     * @return string the path to the custom OpenAPI specification file
-     */
-    private static function getPathSpec()
-    {
-        return  __DIR__ . '/openapi/spec3.json';
-    }
-
-    /**
-     * Returns the path to the custom OpenAPI fixtures file.
-     *
-     * @todo Change this to a constant expression once we drop support for PHP < 5.6.
-     *
-     * @return string the path to the custom OpenAPI fixtures file
-     */
-    private static function getPathFixtures()
-    {
-        return  __DIR__ . '/openapi/fixtures3.json';
     }
 }
