@@ -130,7 +130,7 @@ class CurlClientTest extends TestCase
 
         $curlClient = new CurlClient();
 
-        $this->assertTrue($this->shouldRetryMethod->invoke($curlClient, CURLE_OPERATION_TIMEOUTED, 0, 0));
+        $this->assertTrue($this->shouldRetryMethod->invoke($curlClient, CURLE_OPERATION_TIMEOUTED, true, 0, 0));
     }
 
     public function testShouldRetryOnConnectionFailure()
@@ -139,7 +139,7 @@ class CurlClientTest extends TestCase
 
         $curlClient = new CurlClient();
 
-        $this->assertTrue($this->shouldRetryMethod->invoke($curlClient, CURLE_COULDNT_CONNECT, 0, 0));
+        $this->assertTrue($this->shouldRetryMethod->invoke($curlClient, CURLE_COULDNT_CONNECT, true, 0, 0));
     }
 
     public function testShouldRetryOnConflict()
@@ -148,7 +148,34 @@ class CurlClientTest extends TestCase
 
         $curlClient = new CurlClient();
 
-        $this->assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 409, 0));
+        $this->assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, true, 409, 0));
+    }
+
+    public function testShouldRetryOn500AndNonPost()
+    {
+        Stripe::setMaxNetworkRetries(2);
+
+        $curlClient = new CurlClient();
+
+        $this->assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, false, 500, 0));
+    }
+
+    public function testShouldNotRetryOn500AndPost()
+    {
+        Stripe::setMaxNetworkRetries(2);
+
+        $curlClient = new CurlClient();
+
+        $this->assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, true, 500, 0));
+    }
+
+    public function testShouldRetryOn503()
+    {
+        Stripe::setMaxNetworkRetries(2);
+
+        $curlClient = new CurlClient();
+
+        $this->assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, true, 503, 0));
     }
 
     public function testShouldNotRetryAtMaximumCount()
@@ -157,7 +184,7 @@ class CurlClientTest extends TestCase
 
         $curlClient = new CurlClient();
 
-        $this->assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 0, Stripe::getMaxNetworkRetries()));
+        $this->assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, true, 0, Stripe::getMaxNetworkRetries()));
     }
 
     public function testShouldNotRetryOnCertValidationError()
@@ -166,7 +193,7 @@ class CurlClientTest extends TestCase
 
         $curlClient = new CurlClient();
 
-        $this->assertFalse($this->shouldRetryMethod->invoke($curlClient, CURLE_SSL_PEER_CERTIFICATE, -1, 0));
+        $this->assertFalse($this->shouldRetryMethod->invoke($curlClient, CURLE_SSL_PEER_CERTIFICATE, true, -1, 0));
     }
 
     public function testSleepTimeShouldGrowExponentially()

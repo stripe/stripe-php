@@ -258,6 +258,7 @@ class CurlClient implements ClientInterface
     private function executeRequestWithRetries($opts, $absUrl)
     {
         $numRetries = 0;
+        $isPost = array_key_exists(CURLOPT_POST, $opts) && $opts[CURLOPT_POST] == 1;
 
         while (true) {
             $rcode = 0;
@@ -277,7 +278,7 @@ class CurlClient implements ClientInterface
                 $this->closeCurlHandle();
             }
 
-            if ($this->shouldRetry($errno, $rcode, $numRetries)) {
+            if ($this->shouldRetry($errno, $isPost, $rcode, $numRetries)) {
                 $numRetries += 1;
                 $sleepSeconds = $this->sleepTime($numRetries);
                 usleep(intval($sleepSeconds * 1000000));
@@ -338,11 +339,12 @@ class CurlClient implements ClientInterface
      * socket errors that may represent an intermittent problem and some special
      * HTTP statuses.
      * @param int $errno
+     * @param bool $isPost
      * @param int $rcode
      * @param int $numRetries
      * @return bool
      */
-    private function shouldRetry($errno, $rcode, $numRetries)
+    private function shouldRetry($errno, $isPost, $rcode, $numRetries)
     {
         if ($numRetries >= Stripe::getMaxNetworkRetries()) {
             return false;
@@ -360,8 +362,22 @@ class CurlClient implements ClientInterface
             return true;
         }
 
-        // 409 conflict
+        // 409 Conflict
         if ($rcode === 409) {
+            return true;
+        }
+
+        // 500 Internal Server Error
+        //
+        // We only bother retrying these for non-POST requests. POSTs end up
+        // being cached by the idempotency layer so there's no purpose in
+        // retrying them.
+        if ($rcode >= 500 && !$isPost) {
+            return true;
+        }
+
+        // 503 Service Unavailable
+        if ($rcode == 503) {
             return true;
         }
 
