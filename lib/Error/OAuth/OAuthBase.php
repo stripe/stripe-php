@@ -27,4 +27,13 @@ class OAuthBase extends \Stripe\Error\Base
     {
         return $this->errorCode;
     }
+
+    protected function constructErrorObject()
+    {
+        if (is_null($this->jsonBody)) {
+            return null;
+        }
+
+        return \Stripe\ErrorObject::constructFrom($this->jsonBody);
+    }
 }
