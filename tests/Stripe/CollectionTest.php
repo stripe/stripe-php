@@ -25,6 +25,7 @@ class CollectionTest extends TestCase
             null,
             false,
             [
+                'object' => 'list',
                 'data' => [['id' => 1]],
                 'has_more' => true,
                 'url' => '/things',
@@ -102,6 +103,7 @@ class CollectionTest extends TestCase
             null,
             false,
             [
+                'object' => 'list',
                 'data' => [['id' => 2], ['id' => 3]],
                 'has_more' => false,
             ]
@@ -126,6 +128,7 @@ class CollectionTest extends TestCase
             null,
             false,
             [
+                'object' => 'list',
                 'data' => [['id' => 2], ['id' => 3]],
                 'has_more' => false,
             ]
