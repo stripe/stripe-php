@@ -243,7 +243,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         $this->_originalValues = self::deepCopy($values);
 
         if ($values instanceof StripeObject) {
-            $values = $values->__toArray(true);
+            $values = $values->toArray(true);
         }
 
         // Wipe old state before setting new.  This is useful for e.g. updating a
@@ -401,27 +401,53 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
 
     public function jsonSerialize()
     {
-        return $this->__toArray(true);
+        return $this->toArray(true);
     }
 
-    public function __toJSON()
+    /**
+     * Returns an associative array with the key and values composing the
+     * Stripe object.
+     *
+     * @return array The associative array.
+     */
+    public function toArray()
     {
-        return json_encode($this->__toArray(true), JSON_PRETTY_PRINT);
+        $maybeToArray = function ($value) {
+            if (is_null($value)) {
+                return null;
+            }
+
+            return method_exists($value, 'toArray') ? $value->toArray() : $value;
+        };
+
+        return array_reduce(array_keys($this->_values), function ($acc, $k) use ($maybeToArray) {
+            if ($k[0] == '_') {
+                return $acc;
+            }
+            $v = $this->_values[$k];
+            if (Util\Util::isList($v)) {
+                $acc[$k] = array_map($maybeToArray, $v);
+            } else {
+                $acc[$k] = $maybeToArray($v);
+            }
+            return $acc;
+        }, []);
+    }
+
+    /**
+     * Returns a pretty JSON representation of the Stripe object.
+     *
+     * @return string The JSON representation of the Stripe object.
+     */
+    public function toJSON()
+    {
+        return json_encode($this->toArray(true), JSON_PRETTY_PRINT);
     }
 
     public function __toString()
     {
         $class = get_class($this);
-        return $class . ' JSON: ' . $this->__toJSON();
-    }
-
-    public function __toArray($recursive = false)
-    {
-        if ($recursive) {
-            return Util\Util::convertStripeObjectToArray($this->_values);
-        } else {
-            return $this->_values;
-        }
+        return $class . ' JSON: ' . $this->toJSON();
     }
 
     /**
