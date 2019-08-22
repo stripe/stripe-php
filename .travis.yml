@@ -38,6 +38,10 @@ matrix:
       env: AUTOLOAD=1
     - php: 7.2
       env: AUTOLOAD=0
+    - php: 7.3
+      env: AUTOLOAD=1
+    - php: 7.3
+      env: AUTOLOAD=0
 
 env:
   global:
