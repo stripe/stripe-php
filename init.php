@@ -4,7 +4,6 @@
 require(dirname(__FILE__) . '/lib/Stripe.php');
 
 // Utilities
-require(dirname(__FILE__) . '/lib/Util/AutoPagingIterator.php');
 require(dirname(__FILE__) . '/lib/Util/CaseInsensitiveArray.php');
 require(dirname(__FILE__) . '/lib/Util/LoggerInterface.php');
 require(dirname(__FILE__) . '/lib/Util/DefaultLogger.php');

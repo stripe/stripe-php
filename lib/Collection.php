@@ -77,14 +77,30 @@ class Collection extends StripeObject implements \IteratorAggregate
     }
 
     /**
-     * @return Util\AutoPagingIterator An iterator that can be used to iterate
-     *    across all objects across all pages. As page boundaries are
+     * @return \Generator|StripeObject[] A generator that can be used to
+     *    iterate across all objects across all pages. As page boundaries are
      *    encountered, the next page will be fetched automatically for
      *    continued iteration.
      */
     public function autoPagingIterator()
     {
-        return new Util\AutoPagingIterator($this, $this->_requestParams);
+        $page = $this;
+        $params = $this->_requestParams;
+
+        while (true) {
+            $itemId = null;
+            foreach ($page as $item) {
+                $itemId = $item['id'];
+                yield $item;
+            }
+
+            if (!$page['has_more'] || is_null($itemId)) {
+                return;
+            }
+
+            $params = array_merge($params ?: [], ['starting_after' => $itemId]);
+            $page = $this->all($params, $this->_opts);
+        }
     }
 
     private function extractPathAndUpdateParams($params)
