@@ -38,6 +38,8 @@ class Card extends \Stripe\ApiResource
      * @param array|null $params
      * @param array|string|null $options
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return CardDetails The card details associated with that issuing card.
      */
     public function details($params = null, $options = null)

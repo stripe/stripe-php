@@ -16,26 +16,32 @@ require(dirname(__FILE__) . '/lib/Util/Util.php');
 require(dirname(__FILE__) . '/lib/HttpClient/ClientInterface.php');
 require(dirname(__FILE__) . '/lib/HttpClient/CurlClient.php');
 
-// Errors
-require(dirname(__FILE__) . '/lib/Error/Base.php');
-require(dirname(__FILE__) . '/lib/Error/Api.php');
-require(dirname(__FILE__) . '/lib/Error/ApiConnection.php');
-require(dirname(__FILE__) . '/lib/Error/Authentication.php');
-require(dirname(__FILE__) . '/lib/Error/Card.php');
-require(dirname(__FILE__) . '/lib/Error/Idempotency.php');
-require(dirname(__FILE__) . '/lib/Error/InvalidRequest.php');
-require(dirname(__FILE__) . '/lib/Error/Permission.php');
-require(dirname(__FILE__) . '/lib/Error/RateLimit.php');
-require(dirname(__FILE__) . '/lib/Error/SignatureVerification.php');
+// Exceptions
+require(dirname(__FILE__) . '/lib/Exception/ExceptionInterface.php');
+require(dirname(__FILE__) . '/lib/Exception/ApiErrorException.php');
+require(dirname(__FILE__) . '/lib/Exception/ApiConnectionException.php');
+require(dirname(__FILE__) . '/lib/Exception/AuthenticationException.php');
+require(dirname(__FILE__) . '/lib/Exception/BadMethodCallException.php');
+require(dirname(__FILE__) . '/lib/Exception/CardException.php');
+require(dirname(__FILE__) . '/lib/Exception/IdempotencyException.php');
+require(dirname(__FILE__) . '/lib/Exception/InvalidArgumentException.php');
+require(dirname(__FILE__) . '/lib/Exception/InvalidRequestException.php');
+require(dirname(__FILE__) . '/lib/Exception/PermissionException.php');
+require(dirname(__FILE__) . '/lib/Exception/RateLimitException.php');
+require(dirname(__FILE__) . '/lib/Exception/SignatureVerificationException.php');
+require(dirname(__FILE__) . '/lib/Exception/UnexpectedValueException.php');
+require(dirname(__FILE__) . '/lib/Exception/UnknownApiErrorException.php');
 
-// OAuth errors
-require(dirname(__FILE__) . '/lib/Error/OAuth/OAuthBase.php');
-require(dirname(__FILE__) . '/lib/Error/OAuth/InvalidClient.php');
-require(dirname(__FILE__) . '/lib/Error/OAuth/InvalidGrant.php');
-require(dirname(__FILE__) . '/lib/Error/OAuth/InvalidRequest.php');
-require(dirname(__FILE__) . '/lib/Error/OAuth/InvalidScope.php');
-require(dirname(__FILE__) . '/lib/Error/OAuth/UnsupportedGrantType.php');
-require(dirname(__FILE__) . '/lib/Error/OAuth/UnsupportedResponseType.php');
+// OAuth exceptions
+require(dirname(__FILE__) . '/lib/Exception/OAuth/ExceptionInterface.php');
+require(dirname(__FILE__) . '/lib/Exception/OAuth/OAuthErrorException.php');
+require(dirname(__FILE__) . '/lib/Exception/OAuth/InvalidClientException.php');
+require(dirname(__FILE__) . '/lib/Exception/OAuth/InvalidGrantException.php');
+require(dirname(__FILE__) . '/lib/Exception/OAuth/InvalidRequestException.php');
+require(dirname(__FILE__) . '/lib/Exception/OAuth/InvalidScopeException.php');
+require(dirname(__FILE__) . '/lib/Exception/OAuth/UnknownOAuthErrorException.php');
+require(dirname(__FILE__) . '/lib/Exception/OAuth/UnsupportedGrantTypeException.php');
+require(dirname(__FILE__) . '/lib/Exception/OAuth/UnsupportedResponseTypeException.php');
 
 // API operations
 require(dirname(__FILE__) . '/lib/ApiOperations/All.php');

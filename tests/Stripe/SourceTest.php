@@ -101,7 +101,7 @@ class SourceTest extends TestCase
     }
 
     /**
-     * @expectedException \Stripe\Error\Api
+     * @expectedException \Stripe\Exception\UnexpectedValueException
      */
     public function testIsNotDetachableWhenUnattached()
     {

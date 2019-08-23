@@ -31,7 +31,7 @@ class OAuthTest extends TestCase
     }
 
     /**
-     * @expectedException \Stripe\Error\Authentication
+     * @expectedException \Stripe\Exception\AuthenticationException
      * @expectedExceptionMessageRegExp #No client_id provided#
      */
     public function testRaisesAuthenticationErrorWhenNoClientId()

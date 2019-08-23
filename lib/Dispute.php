@@ -65,6 +65,8 @@ class Dispute extends ApiResource
     /**
      * @param array|string|null $options
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return Dispute The closed dispute.
      */
     public function close($options = null)

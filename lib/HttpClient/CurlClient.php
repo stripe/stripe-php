@@ -3,7 +3,7 @@
 namespace Stripe\HttpClient;
 
 use Stripe\Stripe;
-use Stripe\Error;
+use Stripe\Exception;
 use Stripe\Util;
 
 // @codingStandardsIgnoreStart
@@ -164,7 +164,7 @@ class CurlClient implements ClientInterface
         if (is_callable($this->defaultOptions)) { // call defaultOptions callback, set options to return value
             $opts = call_user_func_array($this->defaultOptions, func_get_args());
             if (!is_array($opts)) {
-                throw new Error\Api("Non-array value returned by defaultOptions CurlClient callback");
+                throw new Exception\UnexpectedValueException("Non-array value returned by defaultOptions CurlClient callback");
             }
         } elseif (is_array($this->defaultOptions)) { // set default curlopts from array
             $opts = $this->defaultOptions;
@@ -174,7 +174,7 @@ class CurlClient implements ClientInterface
 
         if ($method == 'get') {
             if ($hasFile) {
-                throw new Error\Api(
+                throw new Exception\UnexpectedValueException(
                     "Issuing a GET request with a file parameter"
                 );
             }
@@ -193,7 +193,7 @@ class CurlClient implements ClientInterface
                 $absUrl = "$absUrl?$encoded";
             }
         } else {
-            throw new Error\Api("Unrecognized method $method");
+            throw new Exception\UnexpectedValueException("Unrecognized method $method");
         }
 
         // It is only safe to retry network failures on POST requests if we
@@ -299,7 +299,7 @@ class CurlClient implements ClientInterface
      * @param int $errno
      * @param string $message
      * @param int $numRetries
-     * @throws Error\ApiConnection
+     * @throws Exception\ApiConnectionException
      */
     private function handleCurlError($url, $errno, $message, $numRetries)
     {
@@ -331,7 +331,7 @@ class CurlClient implements ClientInterface
             $msg .= "\n\nRequest was retried $numRetries times.";
         }
 
-        throw new Error\ApiConnection($msg);
+        throw new Exception\ApiConnectionException($msg);
     }
 
     /**

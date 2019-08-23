@@ -60,7 +60,7 @@ class RequestOptionsTest extends TestCase
     }
 
     /**
-     * @expectedException Stripe\Error\Api
+     * @expectedException Stripe\Exception\InvalidArgumentException
      */
     public function testWrongType()
     {

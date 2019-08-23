@@ -62,6 +62,8 @@ class Transfer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return TransferReversal
      */
     public static function createReversal($id, $params = null, $opts = null)
@@ -74,6 +76,8 @@ class Transfer extends ApiResource
      * @param array|null $reversalId The ID of the reversal to retrieve.
      * @param array|null $params
      * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return TransferReversal
      */
@@ -88,6 +92,8 @@ class Transfer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return TransferReversal
      */
     public static function updateReversal($id, $reversalId, $params = null, $opts = null)
@@ -99,6 +105,8 @@ class Transfer extends ApiResource
      * @param string|null $id The ID of the transfer on which to retrieve the reversals.
      * @param array|null $params
      * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return Collection The list of reversals.
      */
