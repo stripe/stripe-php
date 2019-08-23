@@ -104,10 +104,10 @@ class Card extends ApiResource
      */
     public static function retrieve($_id, $_opts = null)
     {
-        $msg = "Cards cannot be accessed without a customer, recipient or account ID. " .
-               "Retrieve a card using \$customer->sources->retrieve('card_id'), " .
-               "\$recipient->cards->retrieve('card_id'), or " .
-               "\$account->external_accounts->retrieve('card_id') instead.";
+        $msg = "Cards cannot be retrieved without a customer ID or an " .
+               "account ID. Retrieve a card using " .
+               "`Customer::retrieveSource('customer_id', 'card_id')` or " .
+               "`Account::retrieveExternalAccount('account_id', 'card_id')`.";
         throw new Error\InvalidRequest($msg, null);
     }
 
@@ -120,10 +120,11 @@ class Card extends ApiResource
      */
     public static function update($_id, $_params = null, $_options = null)
     {
-        $msg = "Cards cannot be accessed without a customer, recipient or account ID. " .
-               "Call save() on \$customer->sources->retrieve('card_id'), " .
-               "\$recipient->cards->retrieve('card_id'), or " .
-               "\$account->external_accounts->retrieve('card_id') instead.";
+        $msg = "Cards cannot be updated without a customer ID or an " .
+               "account ID. Update a card using " .
+               "`Customer::updateSource('customer_id', 'card_id', " .
+               "\$updateParams)` or `Account::updateExternalAccount(" .
+               "'account_id', 'card_id', \$updateParams)`.";
         throw new Error\InvalidRequest($msg, null);
     }
 }

@@ -47,8 +47,9 @@ class AlipayAccount extends ApiResource
      */
     public static function retrieve($_id, $_opts = null)
     {
-        $msg = "Alipay accounts cannot be accessed without a customer ID. " .
-               "Retrieve an Alipay account using \$customer->sources->retrieve('alipay_account_id') instead.";
+        $msg = "Alipay accounts cannot be retrieved without a customer ID. " .
+               "Retrieve an Alipay account using `Customer::retrieveSource(" .
+               "'customer_id', 'alipay_account_id')`.";
         throw new Error\InvalidRequest($msg, null);
     }
 
@@ -64,8 +65,9 @@ class AlipayAccount extends ApiResource
      */
     public static function update($_id, $_params = null, $_options = null)
     {
-        $msg = "Alipay accounts cannot be accessed without a customer ID. " .
-               "Call save() on \$customer->sources->retrieve('alipay_account_id') instead.";
+        $msg = "Alipay accounts cannot be updated without a customer ID. " .
+               "Update an Alipay account using `Customer::updateSource(" .
+               "'customer_id', 'alipay_account_id', \$updateParams)`.";
         throw new Error\InvalidRequest($msg, null);
     }
 }

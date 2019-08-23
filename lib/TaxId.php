@@ -73,8 +73,9 @@ class TaxId extends ApiResource
      */
     public static function retrieve($_id, $_opts = null)
     {
-        $msg = "Tax Ids cannot be accessed without a customer ID. " .
-               "Retrieve a Tax Id using Customer::retrieveTaxId('tax_id') instead.";
+        $msg = "Tax IDs cannot be retrieved without a customer ID. Retrieve " .
+               "a tax ID using `Customer::retrieveTaxId('customer_id', " .
+               "'tax_id_id')`.";
         throw new Error\InvalidRequest($msg, null);
     }
 }
