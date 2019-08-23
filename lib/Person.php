@@ -86,8 +86,9 @@ class Person extends ApiResource
      */
     public static function retrieve($_id, $_opts = null)
     {
-        $msg = "Persons cannot be accessed without an account ID. " .
-               "Retrieve a Person using \$account->retrievePerson('person_id') instead.";
+        $msg = "Persons cannot be retrieved without an account ID. Retrieve " .
+               "a person using `Account::retrievePerson('account_id', " .
+               "'person_id')`.";
         throw new Error\InvalidRequest($msg, null);
     }
 
@@ -100,8 +101,9 @@ class Person extends ApiResource
      */
     public static function update($_id, $_params = null, $_options = null)
     {
-        $msg = "Persons cannot be accessed without an account ID. " .
-               "Retrieve a Person using \$account->retrievePerson('person_id') instead.";
+        $msg = "Persons cannot be updated without an account ID. Update " .
+               "a person using `Account::updatePerson('account_id', " .
+               "'person_id', \$updateParams)`.";
         throw new Error\InvalidRequest($msg, null);
     }
 }
