@@ -116,14 +116,14 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     public function __set($k, $v)
     {
         if (static::getPermanentAttributes()->includes($k)) {
-            throw new \InvalidArgumentException(
+            throw new Exception\InvalidArgumentException(
                 "Cannot set $k on this object. HINT: you can't set: " .
                 join(', ', static::getPermanentAttributes()->toArray())
             );
         }
 
         if ($v === "") {
-            throw new \InvalidArgumentException(
+            throw new Exception\InvalidArgumentException(
                 'You cannot set \''.$k.'\'to an empty string. '
                 .'We interpret empty strings as NULL in requests. '
                 .'You may set obj->'.$k.' = NULL to delete the property'
@@ -367,7 +367,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             } elseif (isset($value->id)) {
                 return $value;
             } else {
-                throw new \InvalidArgumentException(
+                throw new Exception\InvalidArgumentException(
                     "Cannot save property `$key` containing an API resource of type " .
                     get_class($value) . ". It doesn't appear to be persisted and is " .
                     "not marked as `saveWithParent`."
@@ -508,7 +508,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         } elseif ($obj instanceof StripeObject) {
             $values = $obj->_values;
         } else {
-            throw new \InvalidArgumentException(
+            throw new Exception\InvalidArgumentException(
                 "empty_values got got unexpected object type: " . get_class($obj)
             );
         }

@@ -15,6 +15,8 @@ trait Update
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return static The updated resource.
      */
     public static function update($id, $params = null, $opts = null)
@@ -30,6 +32,8 @@ trait Update
 
     /**
      * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return static The saved resource.
      */

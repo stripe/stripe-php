@@ -1,12 +1,13 @@
 <?php
 
-namespace Stripe;
+namespace Stripe\Exception;
 
-class BaseTest extends TestCase
+class ApiErrorExceptionTest extends \Stripe\TestCase
 {
     public function createFixture()
     {
-        return $this->getMockForAbstractClass(\Stripe\Error\Base::class, [
+        $mock = $this->getMockForAbstractClass(ApiErrorException::class);
+        $instance = $mock::factory(
             'message',
             200,
             '{"error": {"code": "some_code"}}',
@@ -15,7 +16,9 @@ class BaseTest extends TestCase
                 'Some-Header' => 'Some Value',
                 'Request-Id' => 'req_test',
             ],
-        ]);
+            'some_code'
+        );
+        return $instance;
     }
 
     public function testGetters()
@@ -26,6 +29,7 @@ class BaseTest extends TestCase
         $this->assertSame(['error' => ['code' => 'some_code']], $e->getJsonBody());
         $this->assertSame('Some Value', $e->getHttpHeaders()['Some-Header']);
         $this->assertSame('req_test', $e->getRequestId());
+        $this->assertSame('some_code', $e->getStripeCode());
         $this->assertNotNull($e->getError());
         $this->assertSame('some_code', $e->getError()->code);
     }

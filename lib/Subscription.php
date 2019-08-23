@@ -80,6 +80,8 @@ class Subscription extends ApiResource
     /**
      * @param array|null $params
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return Subscription The deleted subscription.
      */
     public function cancel($params = null, $opts = null)
@@ -88,6 +90,8 @@ class Subscription extends ApiResource
     }
 
     /**
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return Subscription The updated subscription.
      */
     public function deleteDiscount()

@@ -89,7 +89,7 @@ class Card extends ApiResource
             $path = 'cards';
         } else {
             $msg = "Cards cannot be accessed without a customer ID, account ID or recipient ID.";
-            throw new Error\InvalidRequest($msg, null);
+            throw new Exception\UnexpectedValueException($msg);
         }
         $parentExtn = urlencode(Util\Util::utf8($parent));
         $extn = urlencode(Util\Util::utf8($this['id']));
@@ -100,7 +100,7 @@ class Card extends ApiResource
      * @param array|string $_id
      * @param array|string|null $_opts
      *
-     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Exception\BadMethodCallException
      */
     public static function retrieve($_id, $_opts = null)
     {
@@ -108,7 +108,7 @@ class Card extends ApiResource
                "account ID. Retrieve a card using " .
                "`Customer::retrieveSource('customer_id', 'card_id')` or " .
                "`Account::retrieveExternalAccount('account_id', 'card_id')`.";
-        throw new Error\InvalidRequest($msg, null);
+        throw new Exception\BadMethodCallException($msg);
     }
 
     /**
@@ -116,7 +116,7 @@ class Card extends ApiResource
      * @param array|null $_params
      * @param array|string|null $_options
      *
-     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Exception\BadMethodCallException
      */
     public static function update($_id, $_params = null, $_options = null)
     {
@@ -125,6 +125,6 @@ class Card extends ApiResource
                "`Customer::updateSource('customer_id', 'card_id', " .
                "\$updateParams)` or `Account::updateExternalAccount(" .
                "'account_id', 'card_id', \$updateParams)`.";
-        throw new Error\InvalidRequest($msg, null);
+        throw new Exception\BadMethodCallException($msg);
     }
 }

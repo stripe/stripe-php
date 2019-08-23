@@ -28,12 +28,15 @@ class EphemeralKey extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\InvalidArgumentException if stripe_version is missing
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return EphemeralKey The created key.
      */
     public static function create($params = null, $opts = null)
     {
         if (!$opts['stripe_version']) {
-            throw new \InvalidArgumentException('stripe_version must be specified to create an ephemeral key');
+            throw new Exception\InvalidArgumentException('stripe_version must be specified to create an ephemeral key');
         }
         return self::_create($params, $opts);
     }

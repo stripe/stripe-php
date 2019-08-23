@@ -43,7 +43,7 @@ class BankAccountTest extends TestCase
     }
 
     /**
-     * @expectedException \Stripe\Error\InvalidRequest
+     * @expectedException \Stripe\Exception\BadMethodCallException
      */
     public function testIsNotDirectlyRetrievable()
     {
@@ -63,7 +63,7 @@ class BankAccountTest extends TestCase
     }
 
     /**
-     * @expectedException \Stripe\Error\InvalidRequest
+     * @expectedException \Stripe\Exception\BadMethodCallException
      */
     public function testIsNotDirectlyUpdatable()
     {
