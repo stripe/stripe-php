@@ -46,7 +46,7 @@ class Stripe
     // @var int Maximum number of request retries
     public static $maxNetworkRetries = 0;
 
-    // @var boolean Whether client telemetry is enabled. Defaults to false.
+    // @var boolean Whether client telemetry is enabled. Defaults to true.
     public static $enableTelemetry = true;
 
     // @var float Maximum delay between retries, in seconds
