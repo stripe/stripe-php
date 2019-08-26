@@ -28,7 +28,7 @@ trait All
             );
         }
         $obj->setLastResponse($response);
-        $obj->setRequestParams($params);
+        $obj->setFilters($params);
         return $obj;
     }
 }

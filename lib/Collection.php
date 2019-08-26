@@ -18,7 +18,7 @@ class Collection extends StripeObject implements \IteratorAggregate
 
     use ApiOperations\Request;
 
-    protected $_requestParams = [];
+    protected $filters = [];
 
     /**
      * @return string The base URL for the given class.
@@ -28,31 +28,67 @@ class Collection extends StripeObject implements \IteratorAggregate
         return Stripe::$apiBase;
     }
 
-    public function setRequestParams($params)
+    /**
+     * Returns the filters.
+     *
+     * @param array $filters The filters.
+     */
+    public function getFilters($filters)
     {
-        $this->_requestParams = $params;
+        return $this->filters;
+    }
+
+    /**
+     * Sets the filters.
+     *
+     * @return array The filters.
+     */
+    public function setFilters($filters)
+    {
+        $this->filters = $filters;
+    }
+
+    public function offsetGet($k)
+    {
+        if (is_string($k)) {
+            return parent::offsetGet($k);
+        } else {
+            $msg = "You tried to access the {$k} index, but Collection " .
+                   "types only support string keys. (HINT: List calls " .
+                   "return an object with a `data` (which is the data " .
+                   "array). You likely want to call ->data[{$k}])";
+            throw new \InvalidArgumentException($msg);
+        }
     }
 
     public function all($params = null, $opts = null)
     {
+        self::_validateParams($params);
         list($url, $params) = $this->extractPathAndUpdateParams($params);
 
         list($response, $opts) = $this->_request('get', $url, $params, $opts);
-        $this->_requestParams = $params;
-        return Util\Util::convertToStripeObject($response, $opts);
+        $obj = Util\Util::convertToStripeObject($response, $opts);
+        if (!($obj instanceof \Stripe\Collection)) {
+            throw new \Stripe\Error\Api(
+                'Expected type ' . \Stripe\Collection::class . ', got "' . get_class($obj) . '" instead.'
+            );
+        }
+        $obj->setFilters($params);
+        return $obj;
     }
 
     public function create($params = null, $opts = null)
     {
+        self::_validateParams($params);
         list($url, $params) = $this->extractPathAndUpdateParams($params);
 
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->_requestParams = $params;
         return Util\Util::convertToStripeObject($response, $opts);
     }
 
     public function retrieve($id, $params = null, $opts = null)
     {
+        self::_validateParams($params);
         list($url, $params) = $this->extractPathAndUpdateParams($params);
 
         $id = Util\Util::utf8($id);
@@ -63,7 +99,6 @@ class Collection extends StripeObject implements \IteratorAggregate
             $params,
             $opts
         );
-        $this->_requestParams = $params;
         return Util\Util::convertToStripeObject($response, $opts);
     }
 
@@ -88,19 +123,89 @@ class Collection extends StripeObject implements \IteratorAggregate
         $params = $this->_requestParams;
 
         while (true) {
-            $itemId = null;
             foreach ($page as $item) {
-                $itemId = $item['id'];
                 yield $item;
             }
 
-            if (!$page['has_more'] || is_null($itemId)) {
-                return;
-            }
+            $page = $page->nextPage();
 
-            $params = array_merge($params ?: [], ['starting_after' => $itemId]);
-            $page = $this->all($params, $this->_opts);
+            if ($page->isEmpty()) {
+                break;
+            }
         }
+    }
+
+    /**
+     * Returns an empty collection. This is returned from {@see nextPage()}
+     * when we know that there isn't a next page in order to replicate the
+     * behavior of the API when it attempts to return a page beyond the last.
+     *
+     * @param array|string|null $opts
+     * @return Collection
+     */
+    public static function emptyCollection($opts = null)
+    {
+        return Collection::constructFrom(['data' => []], $opts);
+    }
+
+    /**
+     * Returns true if the page object contains no element.
+     *
+     * @return boolean
+     */
+    public function isEmpty()
+    {
+        return empty($this->data);
+    }
+
+    /**
+     * Fetches the next page in the resource list (if there is one).
+     *
+     * This method will try to respect the limit of the current page. If none
+     * was given, the default limit will be fetched again.
+     *
+     * @param array|null $params
+     * @param array|string|null $opts
+     * @return Collection
+     */
+    public function nextPage($params = null, $opts = null)
+    {
+        if (!$this->has_more) {
+            return static::emptyCollection($opts);
+        }
+
+        $lastId = end($this->data)->id;
+
+        $params = array_merge(
+            $this->filters,
+            ['starting_after' => $lastId],
+            $params ?: []
+        );
+
+        return $this->all($params, $opts);
+    }
+
+    /**
+     * Fetches the previous page in the resource list (if there is one).
+     *
+     * This method will try to respect the limit of the current page. If none
+     * was given, the default limit will be fetched again.
+     *
+     * @param array|null $params
+     * @param array|string|null $opts
+     * @return Collection
+     */
+    public function previousPage($params = null, $opts = null)
+    {
+        $firstId = $this->data[0]->id;
+
+        $params = array_merge(
+            $this->filters,
+            ['ending_before' => $firstId],
+            $params ?: []
+        );
+
+        return $this->all($params, $opts);
     }
 
     private function extractPathAndUpdateParams($params)
