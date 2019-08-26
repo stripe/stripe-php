@@ -65,6 +65,7 @@ namespace Stripe;
  * @property int $total
  * @property array $total_tax_amounts
  * @property int $webhooks_delivered_at
+ * @property bool $deleted
  *
  * @package Stripe
  */

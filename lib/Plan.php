@@ -26,6 +26,7 @@ namespace Stripe;
  * @property mixed $transform_usage
  * @property int $trial_period_days
  * @property string $usage_type
+ * @property bool $deleted
  */
 class Plan extends ApiResource
 {

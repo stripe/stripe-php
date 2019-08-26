@@ -24,6 +24,7 @@ namespace Stripe;
  * @property string $unit_label
  * @property int $updated
  * @property string $url
+ * @property bool $deleted
  *
  * @package Stripe
  */

@@ -19,6 +19,7 @@ namespace Stripe;
  * @property int $price
  * @property string $product
  * @property int $updated
+ * @property bool $deleted
  *
  * @package Stripe
  */

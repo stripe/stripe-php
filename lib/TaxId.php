@@ -16,6 +16,7 @@ namespace Stripe;
  * @property string $type
  * @property string $value
  * @property mixed $verification
+ * @property bool $deleted
  */
 class TaxId extends ApiResource
 {

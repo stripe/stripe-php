@@ -11,6 +11,7 @@ namespace Stripe;
  * @property int $end
  * @property int $start
  * @property string $subscription
+ * @property bool $deleted
  *
  * @package Stripe
  */

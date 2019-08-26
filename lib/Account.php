@@ -25,6 +25,7 @@ namespace Stripe;
  * @property mixed $settings
  * @property mixed $tos_acceptance
  * @property string $type
+ * @property bool $deleted
  *
  * @package Stripe
  */

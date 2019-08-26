@@ -33,6 +33,7 @@ namespace Stripe;
  * @property string $name
  * @property string $recipient
  * @property string $tokenization_method
+ * @property bool $deleted
  *
  * @package Stripe
  */

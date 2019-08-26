@@ -20,6 +20,7 @@ namespace Stripe;
  * @property StripeObject $metadata
  * @property string $routing_number
  * @property string $status
+ * @property bool $deleted
  *
  * @package Stripe
  */

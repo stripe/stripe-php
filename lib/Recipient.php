@@ -21,6 +21,7 @@ namespace Stripe;
  * @property string $name
  * @property string $rolled_back_from
  * @property string $type
+ * @property bool $deleted
  */
 class Recipient extends ApiResource
 {

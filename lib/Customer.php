@@ -28,6 +28,7 @@ namespace Stripe;
  * @property Collection $subscriptions
  * @property string $tax_exempt
  * @property Collection $tax_ids
+ * @property bool $deleted
  *
  * @package Stripe
  */

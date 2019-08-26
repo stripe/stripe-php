@@ -20,6 +20,7 @@ namespace Stripe;
  * @property int $redeem_by
  * @property int $times_redeemed
  * @property bool $valid
+ * @property bool $deleted
  *
  * @package Stripe
  */
