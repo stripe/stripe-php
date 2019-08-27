@@ -80,6 +80,8 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return ApiResource
      */
     public static function createSource($id, $params = null, $opts = null)
@@ -92,6 +94,8 @@ class Customer extends ApiResource
      * @param string|null $sourceId The ID of the source to retrieve.
      * @param array|null $params
      * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return ApiResource
      */
@@ -106,6 +110,8 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return ApiResource
      */
     public static function updateSource($id, $sourceId, $params = null, $opts = null)
@@ -119,6 +125,8 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return ApiResource
      */
     public static function deleteSource($id, $sourceId, $params = null, $opts = null)
@@ -131,6 +139,8 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return Collection The list of sources.
      */
     public static function allSources($id, $params = null, $opts = null)
@@ -142,6 +152,8 @@ class Customer extends ApiResource
      * @param string|null $id The ID of the customer on which to create the tax id.
      * @param array|null $params
      * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return ApiResource
      */
@@ -156,6 +168,8 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return ApiResource
      */
     public static function retrieveTaxId($id, $taxIdId, $params = null, $opts = null)
@@ -169,6 +183,8 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return ApiResource
      */
     public static function deleteTaxId($id, $taxIdId, $params = null, $opts = null)
@@ -180,6 +196,8 @@ class Customer extends ApiResource
      * @param string|null $id The ID of the customer on which to retrieve the tax ids.
      * @param array|null $params
      * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return Collection The list of tax ids.
      */
@@ -206,6 +224,8 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return ApiResource
      */
     public static function retrieveBalanceTransaction($id, $balanceTransactionId, $params = null, $opts = null)
@@ -219,6 +239,7 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return ApiResource
      */
@@ -231,6 +252,8 @@ class Customer extends ApiResource
      * @param string|null $id The ID of the customer on which to retrieve the customer balance transactions.
      * @param array|null $params
      * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return Collection The list of customer balance transactions.
      */

@@ -15,7 +15,7 @@ if (isset($_GET['code'])) {
             'grant_type' => 'authorization_code',
             'code' => $code,
         ]);
-    } catch (\Stripe\Error\OAuth\OAuthBase $e) {
+    } catch (\Stripe\Exception\OAuth\OAuthErrorException $e) {
         exit("Error: " . $e->getMessage());
     }
 
@@ -38,7 +38,7 @@ if (isset($_GET['code'])) {
         \Stripe\OAuth::deauthorize([
             'stripe_user_id' => $accountId,
         ]);
-    } catch (\Stripe\Error\OAuth\OAuthBase $e) {
+    } catch (\Stripe\Exception\OAuth\OAuthErrorException $e) {
         exit("Error: " . $e->getMessage());
     }
 

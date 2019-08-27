@@ -32,7 +32,7 @@ class WebhookTest extends TestCase
     }
 
     /**
-     * @expectedException \UnexpectedValueException
+     * @expectedException \Stripe\Exception\UnexpectedValueException
      */
     public function testInvalidJson()
     {
@@ -42,7 +42,7 @@ class WebhookTest extends TestCase
     }
 
     /**
-     * @expectedException \Stripe\Error\SignatureVerification
+     * @expectedException \Stripe\Exception\SignatureVerificationException
      */
     public function testValidJsonAndInvalidHeader()
     {
@@ -51,7 +51,7 @@ class WebhookTest extends TestCase
     }
 
     /**
-     * @expectedException \Stripe\Error\SignatureVerification
+     * @expectedException \Stripe\Exception\SignatureVerificationException
      * @expectedExceptionMessage Unable to extract timestamp and signatures from header
      */
     public function testMalformedHeader()
@@ -61,7 +61,7 @@ class WebhookTest extends TestCase
     }
 
     /**
-     * @expectedException \Stripe\Error\SignatureVerification
+     * @expectedException \Stripe\Exception\SignatureVerificationException
      * @expectedExceptionMessage No signatures found with expected scheme
      */
     public function testNoSignaturesWithExpectedScheme()
@@ -71,7 +71,7 @@ class WebhookTest extends TestCase
     }
 
     /**
-     * @expectedException \Stripe\Error\SignatureVerification
+     * @expectedException \Stripe\Exception\SignatureVerificationException
      * @expectedExceptionMessage No signatures found matching the expected signature for payload
      */
     public function testNoValidSignatureForPayload()
@@ -81,7 +81,7 @@ class WebhookTest extends TestCase
     }
 
     /**
-     * @expectedException \Stripe\Error\SignatureVerification
+     * @expectedException \Stripe\Exception\SignatureVerificationException
      * @expectedExceptionMessage Timestamp outside the tolerance zone
      */
     public function testTimestampTooOld()
@@ -91,7 +91,7 @@ class WebhookTest extends TestCase
     }
 
     /**
-     * @expectedException \Stripe\Error\SignatureVerification
+     * @expectedException \Stripe\Exception\SignatureVerificationException
      * @expectedExceptionMessage Timestamp outside the tolerance zone
      */
     public function testTimestampTooRecent()

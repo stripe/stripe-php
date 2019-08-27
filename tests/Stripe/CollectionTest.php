@@ -17,7 +17,7 @@ class CollectionTest extends TestCase
     }
 
     /**
-     * @expectedException \InvalidArgumentException
+     * @expectedException \Stripe\Exception\InvalidArgumentException
      * @expectedExceptionMessageRegExp /You tried to access the \d index/
      */
     public function testOffsetGetNumericIndex()

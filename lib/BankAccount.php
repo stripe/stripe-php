@@ -56,7 +56,7 @@ class BankAccount extends ApiResource
             $path = 'external_accounts';
         } else {
             $msg = "Bank accounts cannot be accessed without a customer ID or account ID.";
-            throw new Error\InvalidRequest($msg, null);
+            throw new Exception\UnexpectedValueException($msg, null);
         }
         $parentExtn = urlencode(Util\Util::utf8($parent));
         $extn = urlencode(Util\Util::utf8($this['id']));
@@ -67,7 +67,7 @@ class BankAccount extends ApiResource
      * @param array|string $_id
      * @param array|string|null $_opts
      *
-     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Exception\BadMethodCallException
      */
     public static function retrieve($_id, $_opts = null)
     {
@@ -76,7 +76,7 @@ class BankAccount extends ApiResource
                "`Customer::retrieveSource('customer_id', " .
                "'bank_account_id')` or `Account::retrieveExternalAccount(" .
                "'account_id', 'bank_account_id')`.";
-        throw new Error\InvalidRequest($msg, null);
+        throw new Exception\BadMethodCallException($msg, null);
     }
 
     /**
@@ -84,7 +84,7 @@ class BankAccount extends ApiResource
      * @param array|null $_params
      * @param array|string|null $_options
      *
-     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Exception\BadMethodCallException
      */
     public static function update($_id, $_params = null, $_options = null)
     {
@@ -93,12 +93,14 @@ class BankAccount extends ApiResource
                "`Customer::updateSource('customer_id', 'bank_account_id', " .
                "\$updateParams)` or `Account::updateExternalAccount(" .
                "'account_id', 'bank_account_id', \$updateParams)`.";
-        throw new Error\InvalidRequest($msg, null);
+        throw new Exception\BadMethodCallException($msg, null);
     }
 
     /**
       * @param array|null $params
       * @param array|string|null $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
       *
       * @return BankAccount The verified bank account.
       */

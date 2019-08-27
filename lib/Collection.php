@@ -57,7 +57,7 @@ class Collection extends StripeObject implements \IteratorAggregate
                    "types only support string keys. (HINT: List calls " .
                    "return an object with a `data` (which is the data " .
                    "array). You likely want to call ->data[{$k}])";
-            throw new \InvalidArgumentException($msg);
+            throw new Exception\InvalidArgumentException($msg);
         }
     }
 
@@ -69,7 +69,7 @@ class Collection extends StripeObject implements \IteratorAggregate
         list($response, $opts) = $this->_request('get', $url, $params, $opts);
         $obj = Util\Util::convertToStripeObject($response, $opts);
         if (!($obj instanceof \Stripe\Collection)) {
-            throw new \Stripe\Error\Api(
+            throw new \Stripe\Exception\UnexpectedValueException(
                 'Expected type ' . \Stripe\Collection::class . ', got "' . get_class($obj) . '" instead.'
             );
         }
@@ -212,7 +212,7 @@ class Collection extends StripeObject implements \IteratorAggregate
     {
         $url = parse_url($this->url);
         if (!isset($url['path'])) {
-            throw new Error\Api("Could not parse list url into parts: $url");
+            throw new Exception\UnexpectedValueException("Could not parse list url into parts: $url");
         }
 
         if (isset($url['query'])) {
