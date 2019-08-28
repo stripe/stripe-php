@@ -243,7 +243,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         $this->_originalValues = self::deepCopy($values);
 
         if ($values instanceof StripeObject) {
-            $values = $values->toArray(true);
+            $values = $values->toArray();
         }
 
         // Wipe old state before setting new.  This is useful for e.g. updating a
@@ -401,7 +401,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
 
     public function jsonSerialize()
     {
-        return $this->toArray(true);
+        return $this->toArray();
     }
 
     /**
@@ -441,7 +441,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      */
     public function toJSON()
     {
-        return json_encode($this->toArray(true), JSON_PRETTY_PRINT);
+        return json_encode($this->toArray(), JSON_PRETTY_PRINT);
     }
 
     public function __toString()
