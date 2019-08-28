@@ -289,12 +289,13 @@ class ApiRequestor
     /**
      * @param string $method
      * @param string $url
-     * @param array  $params
-     * @param array  $headers
+     * @param array $params
+     * @param array $headers
      *
      * @return array
      *
      * @throws Exception\AuthenticationException
+     * @throws Exception\ApiConnectionException
      */
     private function _requestRaw($method, $url, $params, $headers)
     {

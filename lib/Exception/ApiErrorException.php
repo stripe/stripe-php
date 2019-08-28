@@ -175,6 +175,9 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Gets the Stripe error code.
      *
+     * Cf. the `CODE_*` constants on {@see \Stripe\ErrorObject} for possible
+     * values.
+     *
      * @return string|null
      */
     public function getStripeCode()
