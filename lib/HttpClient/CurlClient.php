@@ -278,7 +278,7 @@ class CurlClient implements ClientInterface
                 $this->closeCurlHandle();
             }
 
-            if ($this->shouldRetry($errno, $isPost, $rcode, $numRetries)) {
+            if ($this->shouldRetry($errno, $isPost, $rcode, $rbody, $numRetries)) {
                 $numRetries += 1;
                 $sleepSeconds = $this->sleepTime($numRetries);
                 usleep(intval($sleepSeconds * 1000000));
@@ -338,13 +338,16 @@ class CurlClient implements ClientInterface
      * Checks if an error is a problem that we should retry on. This includes both
      * socket errors that may represent an intermittent problem and some special
      * HTTP statuses.
+     *
      * @param int $errno
      * @param bool $isPost
      * @param int $rcode
+     * @param string $rbody
      * @param int $numRetries
+     *
      * @return bool
      */
-    private function shouldRetry($errno, $isPost, $rcode, $numRetries)
+    private function shouldRetry($errno, $isPost, $rcode, $rbody, $numRetries)
     {
         if ($numRetries >= Stripe::getMaxNetworkRetries()) {
             return false;
@@ -365,6 +368,28 @@ class CurlClient implements ClientInterface
         // 409 Conflict
         if ($rcode === 409) {
             return true;
+        }
+
+        // 429 Too Many Requests
+        //
+        // There are a few different problems that can lead to a 429. The most
+        // common is rate limiting, on which we *don't* want to retry because
+        // that'd likely contribute to more contention problems. However, some
+        // 429s are lock timeouts, which is when a request conflicted with
+        // another request or an internal process on some particular object.
+        // These 429s are safe to retry.
+        if ($rcode === 429) {
+            // It's not great that we're doing this here. In a future version,
+            // we should decouple the retry logic from the CurlClient instance,
+            // so that we don't need to deserialize here (and also so that the
+            // retry logic applies to non-curl clients).
+            $resp = json_decode($rbody, true);
+            if ($resp !== null && array_key_exists('error', $resp)) {
+                $error = \Stripe\ErrorObject::constructFrom($resp['error']);
+                if ($error->code === \Stripe\ErrorObject::CODE_LOCK_TIMEOUT) {
+                    return true;
+                }
+            }
         }
 
         // 500 Internal Server Error
