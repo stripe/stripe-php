@@ -49,6 +49,8 @@ abstract class ApiResource extends StripeObject
 
     /**
      * @return ApiResource The refreshed resource.
+     *
+     * @throws Exception\ApiErrorException
      */
     public function refresh()
     {

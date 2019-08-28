@@ -21,8 +21,6 @@ class ApiResponse
      * @param integer $code
      * @param array|CaseInsensitiveArray|null $headers
      * @param array|null $json
-     *
-     * @return obj An APIResponse
      */
     public function __construct($body, $code, $headers, $json)
     {
