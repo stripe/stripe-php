@@ -1,5 +1,12 @@
 # Changelog
 
+## 6.43.1 - 2019-08-29
+* [#722](https://github.com/stripe/stripe-php/pull/722) Make `LoggerInterface::error` compatible with its PSR-3 counterpart
+* [#714](https://github.com/stripe/stripe-php/pull/714) Add `pending_setup_intent` property in `Subscription`
+* [#713](https://github.com/stripe/stripe-php/pull/713) Add typehint to `ApiResponse`
+* [#712](https://github.com/stripe/stripe-php/pull/712) Fix comment
+* [#701](https://github.com/stripe/stripe-php/pull/701) Start testing PHP 7.3
+
 ## 6.43.0 - 2019-08-09
 * [#694](https://github.com/stripe/stripe-php/pull/694) Add `SubscriptionItem::createUsageRecord` method
 
