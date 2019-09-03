@@ -38,7 +38,7 @@ class Capability extends ApiResource
         $id = $this['id'];
         $account = $this['account'];
         if (!$id) {
-            throw new Error\InvalidRequest(
+            throw new Exception\UnexpectedValueException(
                 "Could not determine which URL to request: " .
                 "class instance has invalid ID: $id",
                 null
@@ -57,13 +57,14 @@ class Capability extends ApiResource
      * @param array|string $_id
      * @param array|string|null $_opts
      *
-     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Exception\BadMethodCallException
      */
     public static function retrieve($_id, $_opts = null)
     {
-        $msg = "Capabilities cannot be accessed without an account ID. " .
-               "Retrieve a Capability using \$account->retrieveCapability('acap_123') instead.";
-        throw new Error\InvalidRequest($msg, null);
+        $msg = "Capabilities cannot be retrieved without an account ID. " .
+               "Retrieve a capability using `Account::retrieveCapability(" .
+               "'account_id', 'capability_id')`.";
+        throw new Exception\BadMethodCallException($msg, null);
     }
 
     /**
@@ -71,12 +72,13 @@ class Capability extends ApiResource
      * @param array|null $_params
      * @param array|string|null $_options
      *
-     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Exception\BadMethodCallException
      */
     public static function update($_id, $_params = null, $_options = null)
     {
-        $msg = "Capabilities cannot be accessed without an account ID. " .
-               "Update a Capability using \$account->updateCapability('acap_123') instead.";
-        throw new Error\InvalidRequest($msg, null);
+        $msg = "Capabilities cannot be updated without an account ID. " .
+               "Update a capability using `Account::updateCapability(" .
+               "'account_id', 'capability_id', \$updateParams)`.";
+        throw new Exception\BadMethodCallException($msg, null);
     }
 }

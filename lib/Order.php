@@ -41,6 +41,8 @@ class Order extends ApiResource
     use ApiOperations\Update;
 
     /**
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return Order The paid order.
      */
     public function pay($params = null, $opts = null)
@@ -52,6 +54,8 @@ class Order extends ApiResource
     }
 
     /**
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return OrderReturn The newly created return.
      */
     public function returnOrder($params = null, $opts = null)

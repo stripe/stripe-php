@@ -66,84 +66,6 @@ class Customer extends ApiResource
     const PATH_TAX_IDS = '/tax_ids';
 
     /**
-     * @param array|null $params
-     *
-     * @return InvoiceItem The resulting invoice item.
-     */
-    public function addInvoiceItem($params = null)
-    {
-        $params = $params ?: [];
-        $params['customer'] = $this->id;
-        $ii = InvoiceItem::create($params, $this->_opts);
-        return $ii;
-    }
-
-    /**
-     * @param array|null $params
-     *
-     * @return array An array of the customer's Invoices.
-     */
-    public function invoices($params = null)
-    {
-        $params = $params ?: [];
-        $params['customer'] = $this->id;
-        $invoices = Invoice::all($params, $this->_opts);
-        return $invoices;
-    }
-
-    /**
-     * @param array|null $params
-     *
-     * @return array An array of the customer's InvoiceItems.
-     */
-    public function invoiceItems($params = null)
-    {
-        $params = $params ?: [];
-        $params['customer'] = $this->id;
-        $iis = InvoiceItem::all($params, $this->_opts);
-        return $iis;
-    }
-
-    /**
-     * @param array|null $params
-     *
-     * @return array An array of the customer's Charges.
-     */
-    public function charges($params = null)
-    {
-        $params = $params ?: [];
-        $params['customer'] = $this->id;
-        $charges = Charge::all($params, $this->_opts);
-        return $charges;
-    }
-
-    /**
-     * @param array|null $params
-     *
-     * @return Subscription The updated subscription.
-     */
-    public function updateSubscription($params = null)
-    {
-        $url = $this->instanceUrl() . '/subscription';
-        list($response, $opts) = $this->_request('post', $url, $params);
-        $this->refreshFrom(['subscription' => $response], $opts, true);
-        return $this->subscription;
-    }
-
-    /**
-     * @param array|null $params
-     *
-     * @return Subscription The cancelled subscription.
-     */
-    public function cancelSubscription($params = null)
-    {
-        $url = $this->instanceUrl() . '/subscription';
-        list($response, $opts) = $this->_request('delete', $url, $params);
-        $this->refreshFrom(['subscription' => $response], $opts, true);
-        return $this->subscription;
-    }
-
-    /**
      * @return Customer The updated customer.
      */
     public function deleteDiscount()
@@ -158,6 +80,8 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return ApiResource
      */
     public static function createSource($id, $params = null, $opts = null)
@@ -170,6 +94,8 @@ class Customer extends ApiResource
      * @param string|null $sourceId The ID of the source to retrieve.
      * @param array|null $params
      * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return ApiResource
      */
@@ -184,6 +110,8 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return ApiResource
      */
     public static function updateSource($id, $sourceId, $params = null, $opts = null)
@@ -197,6 +125,8 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return ApiResource
      */
     public static function deleteSource($id, $sourceId, $params = null, $opts = null)
@@ -209,6 +139,8 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return Collection The list of sources.
      */
     public static function allSources($id, $params = null, $opts = null)
@@ -220,6 +152,8 @@ class Customer extends ApiResource
      * @param string|null $id The ID of the customer on which to create the tax id.
      * @param array|null $params
      * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return ApiResource
      */
@@ -234,6 +168,8 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return ApiResource
      */
     public static function retrieveTaxId($id, $taxIdId, $params = null, $opts = null)
@@ -247,6 +183,8 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return ApiResource
      */
     public static function deleteTaxId($id, $taxIdId, $params = null, $opts = null)
@@ -258,6 +196,8 @@ class Customer extends ApiResource
      * @param string|null $id The ID of the customer on which to retrieve the tax ids.
      * @param array|null $params
      * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return Collection The list of tax ids.
      */
@@ -284,6 +224,8 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return ApiResource
      */
     public static function retrieveBalanceTransaction($id, $balanceTransactionId, $params = null, $opts = null)
@@ -297,6 +239,7 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return ApiResource
      */
@@ -309,6 +252,8 @@ class Customer extends ApiResource
      * @param string|null $id The ID of the customer on which to retrieve the customer balance transactions.
      * @param array|null $params
      * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return Collection The list of customer balance transactions.
      */

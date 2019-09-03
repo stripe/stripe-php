@@ -3,25 +3,23 @@
 namespace Stripe\HttpClient;
 
 use Stripe\Stripe;
-use Stripe\Error;
+use Stripe\Exception;
 use Stripe\Util;
-
-// cURL constants are not defined in PHP < 5.5
 
 // @codingStandardsIgnoreStart
 // PSR2 requires all constants be upper case. Sadly, the CURL_SSLVERSION
 // constants do not abide by those rules.
 
-// Note the values 1 and 6 come from their position in the enum that
+// Note the values come from their position in the enums that
 // defines them in cURL's source code.
-if (!defined('CURL_SSLVERSION_TLSv1')) {
-    define('CURL_SSLVERSION_TLSv1', 1);
-}
+
+// Available since PHP 5.5.19 and 5.6.3
 if (!defined('CURL_SSLVERSION_TLSv1_2')) {
     define('CURL_SSLVERSION_TLSv1_2', 6);
 }
 // @codingStandardsIgnoreEnd
 
+// Available since PHP 7.0.7 and cURL 7.47.0
 if (!defined('CURL_HTTP_VERSION_2TLS')) {
     define('CURL_HTTP_VERSION_2TLS', 4);
 }
@@ -42,7 +40,7 @@ class CurlClient implements ClientInterface
 
     protected $userAgentInfo;
 
-    protected $enablePersistentConnections = null;
+    protected $enablePersistentConnections = true;
 
     protected $enableHttp2 = null;
 
@@ -66,10 +64,6 @@ class CurlClient implements ClientInterface
         $this->defaultOptions = $defaultOptions;
         $this->randomGenerator = $randomGenerator ?: new Util\RandomGenerator();
         $this->initUserAgentInfo();
-
-        // TODO: curl_reset requires PHP >= 5.5.0. Once we drop support for PHP 5.4, we can simply
-        // initialize this to true.
-        $this->enablePersistentConnections = function_exists('curl_reset');
 
         $this->enableHttp2 = $this->canSafelyUseHttp2();
     }
@@ -170,7 +164,7 @@ class CurlClient implements ClientInterface
         if (is_callable($this->defaultOptions)) { // call defaultOptions callback, set options to return value
             $opts = call_user_func_array($this->defaultOptions, func_get_args());
             if (!is_array($opts)) {
-                throw new Error\Api("Non-array value returned by defaultOptions CurlClient callback");
+                throw new Exception\UnexpectedValueException("Non-array value returned by defaultOptions CurlClient callback");
             }
         } elseif (is_array($this->defaultOptions)) { // set default curlopts from array
             $opts = $this->defaultOptions;
@@ -180,7 +174,7 @@ class CurlClient implements ClientInterface
 
         if ($method == 'get') {
             if ($hasFile) {
-                throw new Error\Api(
+                throw new Exception\UnexpectedValueException(
                     "Issuing a GET request with a file parameter"
                 );
             }
@@ -199,7 +193,7 @@ class CurlClient implements ClientInterface
                 $absUrl = "$absUrl?$encoded";
             }
         } else {
-            throw new Error\Api("Unrecognized method $method");
+            throw new Exception\UnexpectedValueException("Unrecognized method $method");
         }
 
         // It is only safe to retry network failures on POST requests if we
@@ -264,6 +258,7 @@ class CurlClient implements ClientInterface
     private function executeRequestWithRetries($opts, $absUrl)
     {
         $numRetries = 0;
+        $isPost = array_key_exists(CURLOPT_POST, $opts) && $opts[CURLOPT_POST] == 1;
 
         while (true) {
             $rcode = 0;
@@ -283,7 +278,7 @@ class CurlClient implements ClientInterface
                 $this->closeCurlHandle();
             }
 
-            if ($this->shouldRetry($errno, $rcode, $numRetries)) {
+            if ($this->shouldRetry($errno, $isPost, $rcode, $rbody, $numRetries)) {
                 $numRetries += 1;
                 $sleepSeconds = $this->sleepTime($numRetries);
                 usleep(intval($sleepSeconds * 1000000));
@@ -304,7 +299,7 @@ class CurlClient implements ClientInterface
      * @param int $errno
      * @param string $message
      * @param int $numRetries
-     * @throws Error\ApiConnection
+     * @throws Exception\ApiConnectionException
      */
     private function handleCurlError($url, $errno, $message, $numRetries)
     {
@@ -336,19 +331,23 @@ class CurlClient implements ClientInterface
             $msg .= "\n\nRequest was retried $numRetries times.";
         }
 
-        throw new Error\ApiConnection($msg);
+        throw new Exception\ApiConnectionException($msg);
     }
 
     /**
      * Checks if an error is a problem that we should retry on. This includes both
      * socket errors that may represent an intermittent problem and some special
      * HTTP statuses.
+     *
      * @param int $errno
+     * @param bool $isPost
      * @param int $rcode
+     * @param string $rbody
      * @param int $numRetries
+     *
      * @return bool
      */
-    private function shouldRetry($errno, $rcode, $numRetries)
+    private function shouldRetry($errno, $isPost, $rcode, $rbody, $numRetries)
     {
         if ($numRetries >= Stripe::getMaxNetworkRetries()) {
             return false;
@@ -366,8 +365,44 @@ class CurlClient implements ClientInterface
             return true;
         }
 
-        // 409 conflict
+        // 409 Conflict
         if ($rcode === 409) {
+            return true;
+        }
+
+        // 429 Too Many Requests
+        //
+        // There are a few different problems that can lead to a 429. The most
+        // common is rate limiting, on which we *don't* want to retry because
+        // that'd likely contribute to more contention problems. However, some
+        // 429s are lock timeouts, which is when a request conflicted with
+        // another request or an internal process on some particular object.
+        // These 429s are safe to retry.
+        if ($rcode === 429) {
+            // It's not great that we're doing this here. In a future version,
+            // we should decouple the retry logic from the CurlClient instance,
+            // so that we don't need to deserialize here (and also so that the
+            // retry logic applies to non-curl clients).
+            $resp = json_decode($rbody, true);
+            if ($resp !== null && array_key_exists('error', $resp)) {
+                $error = \Stripe\ErrorObject::constructFrom($resp['error']);
+                if ($error->code === \Stripe\ErrorObject::CODE_LOCK_TIMEOUT) {
+                    return true;
+                }
+            }
+        }
+
+        // 500 Internal Server Error
+        //
+        // We only bother retrying these for non-POST requests. POSTs end up
+        // being cached by the idempotency layer so there's no purpose in
+        // retrying them.
+        if ($rcode >= 500 && !$isPost) {
+            return true;
+        }
+
+        // 503 Service Unavailable
+        if ($rcode == 503) {
             return true;
         }
 

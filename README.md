@@ -14,7 +14,7 @@ API.
 
 ## Requirements
 
-PHP 5.4.0 and later.
+PHP 5.6.0 and later.
 
 ## Composer
 
@@ -63,6 +63,10 @@ echo $charge;
 See the [PHP API docs](https://stripe.com/docs/api/php#intro).
 
 ## Legacy Version Support
+
+### PHP 5.4 & 5.5
+
+If you are using PHP 5.4 or 5.5, you can download v6.21.1 ([zip](https://github.com/stripe/stripe-php/archive/v6.21.1.zip), [tar.gz](https://github.com/stripe/stripe-php/archive/v5.9.2.tar.gz)) from our [releases page](https://github.com/stripe/stripe-php/releases). This version will continue to work with new versions of the Stripe API for all common uses.
 
 ### PHP 5.3
 
@@ -235,6 +239,12 @@ Update bundled CA certificates from the [Mozilla cURL release][curl]:
 ./update_certs.php
 ```
 
+The library uses [PHP CS Fixer][php-cs-fixer] for code formatting. Code must be formatted before PRs are submitted, otherwise CI will fail. Run the formatter with:
+
+```bash
+./vendor/bin/php-cs-fixer fix -v .
+```
+
 ## Attention plugin developers
 
 Are you writing a plugin that integrates Stripe and embeds our library? Then please use the `setAppInfo` function to identify your plugin. For example:
@@ -252,6 +262,7 @@ See the "SSL / TLS compatibility issues" paragraph above for full context. If yo
 [composer]: https://getcomposer.org/
 [connect]: https://stripe.com/connect
 [curl]: http://curl.haxx.se/docs/caextract.html
-[psr3]: http://www.php-fig.org/psr/psr-3/
 [idempotency-keys]: https://stripe.com/docs/api/php#idempotent_requests
+[php-cs-fixer]: https://github.com/FriendsOfPHP/PHP-CS-Fixer
+[psr3]: http://www.php-fig.org/psr/psr-3/
 [stripe-mock]: https://github.com/stripe/stripe-mock

@@ -45,7 +45,7 @@ class CustomerBalanceTransaction extends ApiResource
         $id = $this['id'];
         $customer = $this['customer'];
         if (!$id) {
-            throw new Error\InvalidRequest(
+            throw new Exception\UnexpectedValueException(
                 "Could not determine which URL to request: class instance has invalid ID: $id",
                 null
             );
@@ -63,13 +63,15 @@ class CustomerBalanceTransaction extends ApiResource
      * @param array|string $_id
      * @param array|string|null $_opts
      *
-     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Exception\BadMethodCallException
      */
     public static function retrieve($_id, $_opts = null)
     {
-        $msg = "Customer Balance Transactions cannot be accessed without a customer ID. " .
-               "Retrieve a balance transaction using Customer::retrieveBalanceTransaction('cus_123', 'cbtxn_123') instead.";
-        throw new Error\InvalidRequest($msg, null);
+        $msg = "Customer Balance Transactions cannot be retrieved without a " .
+               "customer ID. Retrieve a Customer Balance Transaction using " .
+               "`Customer::retrieveBalanceTransaction('customer_id', " .
+               "'balance_transaction_id')`.";
+        throw new Exception\BadMethodCallException($msg, null);
     }
 
     /**
@@ -77,12 +79,14 @@ class CustomerBalanceTransaction extends ApiResource
      * @param array|null $_params
      * @param array|string|null $_options
      *
-     * @throws \Stripe\Error\InvalidRequest
+     * @throws \Stripe\Exception\BadMethodCallException
      */
     public static function update($_id, $_params = null, $_options = null)
     {
-        $msg = "Customer Balance Transactions cannot be accessed without a customer ID. " .
-               "Update a balance transaction using Customer::updateBalanceTransaction('cus_123', 'cbtxn_123', \$params) instead.";
-        throw new Error\InvalidRequest($msg, null);
+        $msg = "Customer Balance Transactions cannot be updated without a " .
+               "customer ID. Update a Customer Balance Transaction using " .
+               "`Customer::updateBalanceTransaction('customer_id', " .
+               "'balance_transaction_id', \$updateParams)`.";
+        throw new Exception\BadMethodCallException($msg, null);
     }
 }

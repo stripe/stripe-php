@@ -52,7 +52,7 @@ class CardTest extends TestCase
     }
 
     /**
-     * @expectedException \Stripe\Error\InvalidRequest
+     * @expectedException \Stripe\Exception\BadMethodCallException
      */
     public function testIsNotDirectlyRetrievable()
     {
@@ -68,11 +68,11 @@ class CardTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame("Stripe\\Card", get_class($resource));
+        $this->assertSame(\Stripe\Card::class, get_class($resource));
     }
 
     /**
-     * @expectedException \Stripe\Error\InvalidRequest
+     * @expectedException \Stripe\Exception\BadMethodCallException
      */
     public function testIsNotDirectlyUpdatable()
     {
@@ -89,6 +89,6 @@ class CardTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertSame("Stripe\\Card", get_class($resource));
+        $this->assertSame(\Stripe\Card::class, get_class($resource));
     }
 }

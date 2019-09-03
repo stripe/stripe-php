@@ -24,6 +24,6 @@ class TaxIdTest extends TestCase
             '/v1/customers/' . self::TEST_CUSTOMER_ID . '/tax_ids/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertSame("Stripe\\TaxId", get_class($resource));
+        $this->assertInstanceOf(\Stripe\TaxId::class, $resource);
     }
 }

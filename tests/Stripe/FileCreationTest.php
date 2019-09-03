@@ -42,16 +42,11 @@ class FileCreationTest extends TestCase
             "file" => $fp,
             "file_link_data" => ["create" => true]
         ]);
-        $this->assertInstanceOf("Stripe\\File", $resource);
+        $this->assertInstanceOf(\Stripe\File::class, $resource);
     }
 
-    public function testIsCreatableWithCurlFile()
+    public function testIsCreatableWithCURLFile()
     {
-        if (!class_exists('\CurlFile', false)) {
-            // Older PHP versions don't support this
-            return;
-        }
-
         $this->expectsRequest(
             'post',
             '/v1/files',
@@ -60,12 +55,12 @@ class FileCreationTest extends TestCase
             true,
             Stripe::$apiUploadBase
         );
-        $curlFile = new \CurlFile(dirname(__FILE__) . '/../data/test.png');
+        $curlFile = new \CURLFile(dirname(__FILE__) . '/../data/test.png');
         $resource = File::create([
             "purpose" => "dispute_evidence",
             "file" => $curlFile,
             "file_link_data" => ["create" => true]
         ]);
-        $this->assertInstanceOf("Stripe\\File", $resource);
+        $this->assertInstanceOf(\Stripe\File::class, $resource);
     }
 }

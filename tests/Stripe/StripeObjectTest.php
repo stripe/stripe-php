@@ -13,11 +13,11 @@ class StripeObjectTest extends TestCase
         // private attributes.
 
         // This is used to invoke the `deepCopy` protected function
-        $this->deepCopyReflector = new \ReflectionMethod('Stripe\\StripeObject', 'deepCopy');
+        $this->deepCopyReflector = new \ReflectionMethod(\Stripe\StripeObject::class, 'deepCopy');
         $this->deepCopyReflector->setAccessible(true);
 
         // This is used to access the `_opts` protected variable
-        $this->optsReflector = new \ReflectionProperty('Stripe\\StripeObject', '_opts');
+        $this->optsReflector = new \ReflectionProperty(\Stripe\StripeObject::class, '_opts');
         $this->optsReflector->setAccessible(true);
     }
 
@@ -82,31 +82,41 @@ class StripeObjectTest extends TestCase
 
     public function testToArray()
     {
-        $s = new StripeObject();
-        $s->foo = 'a';
+        $array = [
+            'foo' => 'a',
+            'list' => [1, 2, 3],
+            'null' => null,
+        ];
+        $s = StripeObject::constructFrom($array);
 
-        $converted = $s->__toArray();
+        $converted = $s->toArray();
 
         $this->assertInternalType('array', $converted);
-        $this->assertArrayHasKey('foo', $converted);
-        $this->assertEquals('a', $converted['foo']);
+        $this->assertEquals($array, $converted);
     }
 
-    public function testRecursiveToArray()
+    public function testToArrayRecursive()
     {
-        $s = new StripeObject();
-        $z = new StripeObject();
+        // deep nested associative array (when contained in an indexed array)
+        // or StripeObject
+        $nestedArray = ['id' => 7, 'foo' => 'bar'];
+        $nested = StripeObject::constructFrom($nestedArray);
 
-        $s->child = $z;
-        $z->foo = 'a';
+        $obj = StripeObject::constructFrom([
+            'id' => 1,
+            // simple associative array that contains a StripeObject to help us
+            // test deep recursion
+            'nested' => ['object' => 'list', 'data' => $nested],
+            'list' => [$nested],
+        ]);
 
-        $converted = $s->__toArray(true);
+        $expected = [
+            'id' => 1,
+            'nested' => ['object' => 'list', 'data' => $nestedArray],
+            'list' => [$nestedArray],
+        ];
 
-        $this->assertInternalType('array', $converted);
-        $this->assertArrayHasKey('child', $converted);
-        $this->assertInternalType('array', $converted['child']);
-        $this->assertArrayHasKey('foo', $converted['child']);
-        $this->assertEquals('a', $converted['child']['foo']);
+        $this->assertEquals($expected, $obj->toArray());
     }
 
     public function testNonexistentProperty()
@@ -134,7 +144,7 @@ class StripeObjectTest extends TestCase
         $s = new StripeObject();
         $s->foo = 'a';
 
-        $string = $s->__toString();
+        $string = (string)$s;
         $expected = <<<EOS
 Stripe\StripeObject JSON: {
     "foo": "a"
@@ -480,7 +490,7 @@ EOS;
             'metadata' => [],
         ]);
 
-        $this->assertInstanceOf("Stripe\\StripeObject", $obj->metadata);
+        $this->assertInstanceOf(\Stripe\StripeObject::class, $obj->metadata);
     }
 
     public function testDeserializeMetadataWithKeyNamedMetadata()
@@ -489,7 +499,7 @@ EOS;
             'metadata' => ['metadata' => 'value'],
         ]);
 
-        $this->assertInstanceOf("Stripe\\StripeObject", $obj->metadata);
+        $this->assertInstanceOf(\Stripe\StripeObject::class, $obj->metadata);
         $this->assertEquals("value", $obj->metadata->metadata);
     }
 }

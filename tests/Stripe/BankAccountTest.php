@@ -43,7 +43,7 @@ class BankAccountTest extends TestCase
     }
 
     /**
-     * @expectedException \Stripe\Error\InvalidRequest
+     * @expectedException \Stripe\Exception\BadMethodCallException
      */
     public function testIsNotDirectlyRetrievable()
     {
@@ -59,11 +59,11 @@ class BankAccountTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame("Stripe\\BankAccount", get_class($resource));
+        $this->assertSame(\Stripe\BankAccount::class, get_class($resource));
     }
 
     /**
-     * @expectedException \Stripe\Error\InvalidRequest
+     * @expectedException \Stripe\Exception\BadMethodCallException
      */
     public function testIsNotDirectlyUpdatable()
     {
@@ -80,7 +80,7 @@ class BankAccountTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertSame("Stripe\\BankAccount", get_class($resource));
+        $this->assertSame(\Stripe\BankAccount::class, get_class($resource));
     }
 
     public function testIsVerifiable()
@@ -94,6 +94,6 @@ class BankAccountTest extends TestCase
             ]
         );
         $resource->verify(["amounts" => [1, 2]]);
-        $this->assertInstanceOf("Stripe\\BankAccount", $resource);
+        $this->assertInstanceOf(\Stripe\BankAccount::class, $resource);
     }
 }

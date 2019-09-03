@@ -49,6 +49,8 @@ abstract class ApiResource extends StripeObject
 
     /**
      * @return ApiResource The refreshed resource.
+     *
+     * @throws Exception\ApiErrorException
      */
     public function refresh()
     {
@@ -94,7 +96,7 @@ abstract class ApiResource extends StripeObject
             $class = get_called_class();
             $message = "Could not determine which URL to request: "
                . "$class instance has invalid ID: $id";
-            throw new Error\InvalidRequest($message, null);
+            throw new Exception\UnexpectedValueException($message);
         }
         $id = Util\Util::utf8($id);
         $base = static::classUrl();

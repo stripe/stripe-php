@@ -14,7 +14,7 @@ class OrderReturnTest extends TestCase
         );
         $resources = OrderReturn::all();
         $this->assertTrue(is_array($resources->data));
-        $this->assertInstanceOf("Stripe\\OrderReturn", $resources->data[0]);
+        $this->assertInstanceOf(\Stripe\OrderReturn::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,6 +24,6 @@ class OrderReturnTest extends TestCase
             '/v1/order_returns/' . self::TEST_RESOURCE_ID
         );
         $resource = OrderReturn::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf("Stripe\\OrderReturn", $resource);
+        $this->assertInstanceOf(\Stripe\OrderReturn::class, $resource);
     }
 }
