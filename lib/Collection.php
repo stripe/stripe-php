@@ -31,21 +31,23 @@ class Collection extends StripeObject implements \IteratorAggregate
     /**
      * Returns the filters.
      *
-     * @param array $filters The filters.
+     * @return array The filters.
      */
-    public function getFilters($filters)
+    public function getFilters()
     {
         return $this->filters;
     }
 
     /**
-     * Sets the filters.
+     * Sets the filters, removing paging options.
      *
-     * @return array The filters.
+     * @param array $filters The filters.
      */
     public function setFilters($filters)
     {
         $this->filters = $filters;
+        unset($this->filters['starting_after']);
+        unset($this->filters['ending_before']);
     }
 
     public function offsetGet($k)
@@ -120,7 +122,6 @@ class Collection extends StripeObject implements \IteratorAggregate
     public function autoPagingIterator()
     {
         $page = $this;
-        $params = $this->_requestParams;
 
         while (true) {
             foreach ($page as $item) {
