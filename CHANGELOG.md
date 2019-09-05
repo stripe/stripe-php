@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.0.1 - 2019-09-05
+* [#728](https://github.com/stripe/stripe-php/pull/728) Clean up Collection
+
 ## 7.0.0 - 2019-09-03
 Major version release. The [migration guide](https://github.com/stripe/stripe-php/wiki/Migration-guide-for-v7) contains a detailed list of backwards-incompatible changes with upgrade instructions.
 
