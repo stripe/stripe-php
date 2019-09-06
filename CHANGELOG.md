@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.0.2 - 2019-09-06
+* [#729](https://github.com/stripe/stripe-php/pull/729) Fix usage of `SignatureVerificationException` in PHPDoc blocks
+
 ## 7.0.1 - 2019-09-05
 * [#728](https://github.com/stripe/stripe-php/pull/728) Clean up Collection
 
