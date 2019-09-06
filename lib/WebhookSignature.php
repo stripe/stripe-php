@@ -8,7 +8,7 @@ abstract class WebhookSignature
 
     /**
      * Verifies the signature header sent by Stripe. Throws an
-     * Exception\SignatureVerification exception if the verification fails for
+     * Exception\SignatureVerificationException exception if the verification fails for
      * any reason.
      *
      * @param string $payload the payload sent by Stripe.
@@ -17,7 +17,7 @@ abstract class WebhookSignature
      * @param string $secret secret used to generate the signature.
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time
-     * @throws Exception\SignatureVerification if the verification fails.
+     * @throws Exception\SignatureVerificationException if the verification fails.
      * @return bool
      */
     public static function verifyHeader($payload, $header, $secret, $tolerance = null)
