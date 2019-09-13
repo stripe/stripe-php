@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.1.0 - 2019-09-13
+* [#736](https://github.com/stripe/stripe-php/pull/736) Make `CaseInsensitiveArray` countable and traversable
+
 ## 7.0.2 - 2019-09-06
 * [#729](https://github.com/stripe/stripe-php/pull/729) Fix usage of `SignatureVerificationException` in PHPDoc blocks
 
