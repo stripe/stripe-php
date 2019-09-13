@@ -2,8 +2,6 @@
 
 namespace Stripe\Util;
 
-use ArrayAccess;
-
 /**
  * CaseInsensitiveArray is an array-like class that ignores case for keys.
  *
@@ -14,13 +12,23 @@ use ArrayAccess;
  * In the context of stripe-php, this is useful because the API will return headers with different
  * case depending on whether HTTP/2 is used or not (with HTTP/2, headers are always in lowercase).
  */
-class CaseInsensitiveArray implements ArrayAccess
+class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggregate
 {
-    private $container = array();
+    private $container = [];
 
-    public function __construct($initial_array = array())
+    public function __construct($initial_array = [])
     {
-        $this->container = array_map("strtolower", $initial_array);
+        $this->container = array_change_key_case($initial_array, CASE_LOWER);
+    }
+
+    public function count()
+    {
+        return count($this->container);
+    }
+
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->container);
     }
 
     public function offsetSet($offset, $value)
