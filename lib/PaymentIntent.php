@@ -22,6 +22,7 @@ namespace Stripe;
  * @property string $currency
  * @property string $customer
  * @property string $description
+ * @property string $invoice
  * @property mixed $last_payment_error
  * @property bool $livemode
  * @property StripeObject $metadata
