@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.1.1 - 2019-09-16
+* [#737](https://github.com/stripe/stripe-php/pull/737) Added new PHPDoc
+
 ## 7.1.0 - 2019-09-13
 * [#736](https://github.com/stripe/stripe-php/pull/736) Make `CaseInsensitiveArray` countable and traversable
 
