@@ -133,6 +133,9 @@ class Event extends ApiResource
     const REPORTING_REPORT_TYPE_UPDATED             = 'reporting.report_type.updated';
     const REVIEW_CLOSED                             = 'review.closed';
     const REVIEW_OPENED                             = 'review.opened';
+    const SETUP_INTENT_CREATED                      = 'setup_intent.created';
+    const SETUP_INTENT_SETUP_FAILED                 = 'setup_intent.setup_failed';
+    const SETUP_INTENT_SUCCEEDED                    = 'setup_intent.succeeded';
     const SIGMA_SCHEDULED_QUERY_RUN_CREATED         = 'sigma.scheduled_query_run.created';
     const SKU_CREATED                               = 'sku.created';
     const SKU_DELETED                               = 'sku.deleted';
