@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.2.1 - 2019-09-23
+* [#744](https://github.com/stripe/stripe-php/pull/744) Added new PHPDoc
+
 ## 7.2.0 - 2019-09-17
 * [#738](https://github.com/stripe/stripe-php/pull/738) Added missing constants for `SetupIntent` events
 
