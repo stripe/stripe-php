@@ -65,6 +65,7 @@ class Charge extends ApiResource
      * These strings are applicable to the decline_code property of the \Stripe\Exception\CardException exception.
      * @link https://stripe.com/docs/declines/codes
      */
+    const DECLINED_AUTHENTICATION_REQUIRED           = 'authentication_required';
     const DECLINED_APPROVE_WITH_ID                   = 'approve_with_id';
     const DECLINED_CALL_ISSUER                       = 'call_issuer';
     const DECLINED_CARD_NOT_SUPPORTED                = 'card_not_supported';
@@ -93,6 +94,8 @@ class Charge extends ApiResource
     const DECLINED_NEW_ACCOUNT_INFORMATION_AVAILABLE = 'new_account_information_available';
     const DECLINED_NO_ACTION_TAKEN                   = 'no_action_taken';
     const DECLINED_NOT_PERMITTED                     = 'not_permitted';
+    const DECLINED_OFFLINE_PIN_REQUIRED              = 'offline_pin_required';
+    const DECLINED_ONLINE_OR_OFFLINE_PIN_REQUIRED    = 'online_or_offline_pin_required';
     const DECLINED_PICKUP_CARD                       = 'pickup_card';
     const DECLINED_PIN_TRY_EXCEEDED                  = 'pin_try_exceeded';
     const DECLINED_PROCESSING_ERROR                  = 'processing_error';
