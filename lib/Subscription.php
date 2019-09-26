@@ -25,7 +25,7 @@ namespace Stripe;
  * @property Discount $discount
  * @property int $ended_at
  * @property Collection $items
- * @property string $latest_invoice
+ * @property string|null $latest_invoice
  * @property boolean $livemode
  * @property StripeObject $metadata
  * @property string $pending_setup_intent
