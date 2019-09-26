@@ -417,7 +417,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
                 return null;
             }
 
-            return method_exists($value, 'toArray') ? $value->toArray() : $value;
+            return is_object($value) && method_exists($value, 'toArray') ? $value->toArray() : $value;
         };
 
         return array_reduce(array_keys($this->_values), function ($acc, $k) use ($maybeToArray) {
