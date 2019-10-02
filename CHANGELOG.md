@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.3.0 - 2019-10-02
+* [#752](https://github.com/stripe/stripe-php/pull/752) Add `payment_intent.canceled` and `setup_intent.canceled` events
+* [#749](https://github.com/stripe/stripe-php/pull/749) Call `toArray()` on objects only
+
 ## 7.2.2 - 2019-09-24
 * [#746](https://github.com/stripe/stripe-php/pull/746) Add missing decline codes
 
