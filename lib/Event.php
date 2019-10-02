@@ -103,6 +103,7 @@ class Event extends ApiResource
     const ORDER_UPDATED                             = 'order.updated';
     const ORDER_RETURN_CREATED                      = 'order_return.created';
     const PAYMENT_INTENT_AMOUNT_CAPTURABLE_UPDATED  = 'payment_intent.amount_capturable_updated';
+    const PAYMENT_INTENT_CANCELED                   = 'payment_intent.canceled';
     const PAYMENT_INTENT_CREATED                    = 'payment_intent.created';
     const PAYMENT_INTENT_PAYMENT_FAILED             = 'payment_intent.payment_failed';
     const PAYMENT_INTENT_SUCCEEDED                  = 'payment_intent.succeeded';
@@ -133,6 +134,7 @@ class Event extends ApiResource
     const REPORTING_REPORT_TYPE_UPDATED             = 'reporting.report_type.updated';
     const REVIEW_CLOSED                             = 'review.closed';
     const REVIEW_OPENED                             = 'review.opened';
+    const SETUP_INTENT_CANCELED                     = 'setup_intent.canceled';
     const SETUP_INTENT_CREATED                      = 'setup_intent.created';
     const SETUP_INTENT_SETUP_FAILED                 = 'setup_intent.setup_failed';
     const SETUP_INTENT_SUCCEEDED                    = 'setup_intent.succeeded';
