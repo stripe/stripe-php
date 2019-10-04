@@ -204,18 +204,6 @@ class CurlClient implements ClientInterface
             }
         }
 
-        // Create a callback to capture HTTP headers for the response
-        $rheaders = new Util\CaseInsensitiveArray();
-        $headerCallback = function ($curl, $header_line) use (&$rheaders) {
-            // Ignore the HTTP request line (HTTP/1.1 200 OK)
-            if (strpos($header_line, ":") === false) {
-                return strlen($header_line);
-            }
-            list($key, $value) = explode(":", trim($header_line), 2);
-            $rheaders[trim($key)] = trim($value);
-            return strlen($header_line);
-        };
-
         // By default for large request body sizes (> 1024 bytes), cURL will
         // send a request without a body and with a `Expect: 100-continue`
         // header, which gives the server a chance to respond with an error
@@ -235,7 +223,6 @@ class CurlClient implements ClientInterface
         $opts[CURLOPT_RETURNTRANSFER] = true;
         $opts[CURLOPT_CONNECTTIMEOUT] = $this->connectTimeout;
         $opts[CURLOPT_TIMEOUT] = $this->timeout;
-        $opts[CURLOPT_HEADERFUNCTION] = $headerCallback;
         $opts[CURLOPT_HTTPHEADER] = $headers;
         $opts[CURLOPT_CAINFO] = Stripe::getCABundlePath();
         if (!Stripe::getVerifySslCerts()) {
@@ -247,7 +234,7 @@ class CurlClient implements ClientInterface
             $opts[CURLOPT_HTTP_VERSION] = CURL_HTTP_VERSION_2TLS;
         }
 
-        list($rbody, $rcode) = $this->executeRequestWithRetries($opts, $absUrl);
+        list($rbody, $rcode, $rheaders) = $this->executeRequestWithRetries($opts, $absUrl);
 
         return [$rbody, $rcode, $rheaders];
     }
@@ -263,6 +250,19 @@ class CurlClient implements ClientInterface
         while (true) {
             $rcode = 0;
             $errno = 0;
+
+            // Create a callback to capture HTTP headers for the response
+            $rheaders = new Util\CaseInsensitiveArray();
+            $headerCallback = function ($curl, $header_line) use (&$rheaders) {
+                // Ignore the HTTP request line (HTTP/1.1 200 OK)
+                if (strpos($header_line, ":") === false) {
+                    return strlen($header_line);
+                }
+                list($key, $value) = explode(":", trim($header_line), 2);
+                $rheaders[trim($key)] = trim($value);
+                return strlen($header_line);
+            };
+            $opts[CURLOPT_HEADERFUNCTION] = $headerCallback;
 
             $this->resetCurlHandle();
             curl_setopt_array($this->curlHandle, $opts);
@@ -291,7 +291,7 @@ class CurlClient implements ClientInterface
             $this->handleCurlError($absUrl, $errno, $message, $numRetries);
         }
 
-        return [$rbody, $rcode];
+        return [$rbody, $rcode, $rheaders];
     }
 
     /**
