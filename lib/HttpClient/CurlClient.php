@@ -366,11 +366,13 @@ class CurlClient implements ClientInterface
 
         // The API may ask us not to retry (eg; if doing so would be a no-op)
         // or advise us to retry (eg; in cases of lock timeouts); we defer to that.
-        if (isset($rheaders['stripe-should-retry']) && $rheaders['stripe-should-retry'] === 'false') {
-            return false;
-        }
-        if ($rheaders['stripe-should-retry'] === 'true') {
-            return true;
+        if (isset($rheaders['stripe-should-retry'])) {
+            if ($rheaders['stripe-should-retry'] === 'false') {
+                return false;
+            }
+            if ($rheaders['stripe-should-retry'] === 'true') {
+                return true;
+            }
         }
 
         // 409 Conflict
@@ -416,7 +418,7 @@ class CurlClient implements ClientInterface
         $sleepSeconds = max(Stripe::getInitialNetworkRetryDelay(), $sleepSeconds);
 
         // And never sleep less than the time the API asks us to wait, assuming it's a reasonable ask.
-        $retryAfter = floatval($rheaders['retry-after']);
+        $retryAfter = isset($rheaders['retry-after']) ? floatval($rheaders['retry-after']) : 0.0;
         if (floor($retryAfter) == $retryAfter && $retryAfter <= Stripe::getMaxRetryAfter()) {
             $sleepSeconds = max($sleepSeconds, $retryAfter);
         }
