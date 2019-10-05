@@ -278,7 +278,7 @@ class CurlClient implements ClientInterface
                 $this->closeCurlHandle();
             }
 
-            if ($this->shouldRetry($errno, $isPost, $rcode, $rbody, $numRetries)) {
+            if ($this->shouldRetry($errno, $rcode, $rheaders, $numRetries)) {
                 $numRetries += 1;
                 $sleepSeconds = $this->sleepTime($numRetries);
                 usleep(intval($sleepSeconds * 1000000));
@@ -340,14 +340,13 @@ class CurlClient implements ClientInterface
      * HTTP statuses.
      *
      * @param int $errno
-     * @param bool $isPost
      * @param int $rcode
-     * @param string $rbody
+     * @param array|CaseInsensitiveArray $rheaders
      * @param int $numRetries
      *
      * @return bool
      */
-    private function shouldRetry($errno, $isPost, $rcode, $rbody, $numRetries)
+    private function shouldRetry($errno, $rcode, $rheaders, $numRetries)
     {
         if ($numRetries >= Stripe::getMaxNetworkRetries()) {
             return false;
@@ -365,44 +364,26 @@ class CurlClient implements ClientInterface
             return true;
         }
 
+        // The API may ask us not to retry (eg; if doing so would be a no-op)
+        // or advise us to retry (eg; in cases of lock timeouts); we defer to that.
+        if ($rheaders['stripe-should-retry'] === 'false') {
+            return false;
+        }
+        if ($rheaders['stripe-should-retry'] === 'true') {
+            return true;
+        }
+
         // 409 Conflict
         if ($rcode === 409) {
             return true;
         }
 
-        // 429 Too Many Requests
+        // Retry on 500, 503, and other internal errors.
         //
-        // There are a few different problems that can lead to a 429. The most
-        // common is rate limiting, on which we *don't* want to retry because
-        // that'd likely contribute to more contention problems. However, some
-        // 429s are lock timeouts, which is when a request conflicted with
-        // another request or an internal process on some particular object.
-        // These 429s are safe to retry.
-        if ($rcode === 429) {
-            // It's not great that we're doing this here. In a future version,
-            // we should decouple the retry logic from the CurlClient instance,
-            // so that we don't need to deserialize here (and also so that the
-            // retry logic applies to non-curl clients).
-            $resp = json_decode($rbody, true);
-            if ($resp !== null && array_key_exists('error', $resp)) {
-                $error = \Stripe\ErrorObject::constructFrom($resp['error']);
-                if ($error->code === \Stripe\ErrorObject::CODE_LOCK_TIMEOUT) {
-                    return true;
-                }
-            }
-        }
-
-        // 500 Internal Server Error
-        //
-        // We only bother retrying these for non-POST requests. POSTs end up
-        // being cached by the idempotency layer so there's no purpose in
-        // retrying them.
-        if ($rcode >= 500 && !$isPost) {
-            return true;
-        }
-
-        // 503 Service Unavailable
-        if ($rcode == 503) {
+        // Note that we expect the stripe-should-retry header to be false
+        // in most cases when a 500 is returned, since our idempotency framework
+        // would typically replay it anyway.
+        if ($rcode >= 500) {
             return true;
         }
 
