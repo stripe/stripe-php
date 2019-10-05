@@ -366,7 +366,7 @@ class CurlClient implements ClientInterface
 
         // The API may ask us not to retry (eg; if doing so would be a no-op)
         // or advise us to retry (eg; in cases of lock timeouts); we defer to that.
-        if ($rheaders['stripe-should-retry'] === 'false') {
+        if (isset($rheaders['stripe-should-retry']) && $rheaders['stripe-should-retry'] === 'false') {
             return false;
         }
         if ($rheaders['stripe-should-retry'] === 'true') {
