@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.3.1 - 2019-10-07
+* [#755](https://github.com/stripe/stripe-php/pull/755) Respect Stripe-Should-Retry and Retry-After headers
+
 ## 7.3.0 - 2019-10-02
 * [#752](https://github.com/stripe/stripe-php/pull/752) Add `payment_intent.canceled` and `setup_intent.canceled` events
 * [#749](https://github.com/stripe/stripe-php/pull/749) Call `toArray()` on objects only
