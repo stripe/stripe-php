@@ -46,6 +46,8 @@ class CurlClient implements ClientInterface
 
     protected $curlHandle = null;
 
+    protected $requestStatusCallback = null;
+
     /**
      * CurlClient constructor.
      *
@@ -122,6 +124,33 @@ class CurlClient implements ClientInterface
     public function setEnableHttp2($enable)
     {
         $this->enableHttp2 = $enable;
+    }
+
+    /**
+     * @return callable|null
+     */
+    public function getRequestStatusCallback()
+    {
+        return $this->requestStatusCallback;
+    }
+
+    /**
+     * Sets a callback that is called after each request. The callback will
+     * receive the following parameters:
+     *
+     * 1. string $rbody The response body
+     * 2. integer $rcode The response status code
+     * 3. \Stripe\Util\CaseInsensitiveArray $rheaders The response headers
+     * 4. integer $errno The curl error number
+     * 5. string|null $message The curl error message
+     * 6. boolean $shouldRetry Whether the request will be retried
+     * 7. integer $numRetries The number of the retry attempt
+     *
+     * @param callable|null $requestStatusCallback
+     */
+    public function setRequestStatusCallback($requestStatusCallback)
+    {
+        $this->requestStatusCallback = $requestStatusCallback;
     }
 
     // USER DEFINED TIMEOUTS
@@ -250,6 +279,7 @@ class CurlClient implements ClientInterface
         while (true) {
             $rcode = 0;
             $errno = 0;
+            $message = null;
 
             // Create a callback to capture HTTP headers for the response
             $rheaders = new Util\CaseInsensitiveArray();
@@ -278,7 +308,16 @@ class CurlClient implements ClientInterface
                 $this->closeCurlHandle();
             }
 
-            if ($this->shouldRetry($errno, $rcode, $rheaders, $numRetries)) {
+            $shouldRetry = $this->shouldRetry($errno, $rcode, $rheaders, $numRetries);
+
+            if (is_callable($this->getRequestStatusCallback())) {
+                call_user_func_array(
+                    $this->getRequestStatusCallback(),
+                    [$rbody, $rcode, $rheaders, $errno, $message, $shouldRetry, $numRetries]
+                );
+            }
+
+            if ($shouldRetry) {
                 $numRetries += 1;
                 $sleepSeconds = $this->sleepTime($numRetries, $rheaders);
                 usleep(intval($sleepSeconds * 1000000));
