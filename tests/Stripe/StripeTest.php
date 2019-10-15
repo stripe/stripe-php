@@ -38,10 +38,7 @@ class StripeTest extends TestCase
 
         $this->assertTrue(is_callable(Stripe::getRetryInformCallback()));
 
-        $stripeReflection = new \ReflectionClass(Stripe::class);
-        $informMethod = $stripeReflection->getMethod('informOfRetry');
-        $informMethod->setAccessible(true);
-        $informMethod->invoke(null, 1);
+        Stripe::informOfRetry(1);
 
         $this->assertEquals(3, $test);
     }
