@@ -281,6 +281,7 @@ class CurlClient implements ClientInterface
             if ($this->shouldRetry($errno, $rcode, $rheaders, $numRetries)) {
                 $numRetries += 1;
                 $sleepSeconds = $this->sleepTime($numRetries, $rheaders);
+                Stripe::informOfRetry($numRetries);
                 usleep(intval($sleepSeconds * 1000000));
             } else {
                 break;

@@ -58,6 +58,9 @@ class Stripe
     // @var float Initial delay between retries, in seconds
     private static $initialNetworkRetryDelay = 0.5;
 
+    // @var callable|null A callback to inform when we attempt a retry.
+    public static $retryInformCallback;
+
     const VERSION = '7.3.1';
 
     /**
@@ -272,5 +275,33 @@ class Stripe
     public static function setEnableTelemetry($enableTelemetry)
     {
         self::$enableTelemetry = $enableTelemetry;
+    }
+
+    /**
+     * @return callable|null
+     */
+    public static function getRetryInformCallback()
+    {
+        return self::$retryInformCallback;
+    }
+
+    /**
+     * @param callable $retryInformCallback
+     */
+    public static function setRetryInformCallback(callable $retryInformCallback)
+    {
+        self::$retryInformCallback = $retryInformCallback;
+    }
+
+    /**
+     * If a client registered a callback to inform them of retries, call to inform.
+     * @param int $retryAttempt
+     */
+    public static function informOfRetry($retryAttempt)
+    {
+        if (!is_callable(self::$retryInformCallback)) {
+            return;
+        }
+        call_user_func_array(self::$retryInformCallback, [$retryAttempt]);
     }
 }
