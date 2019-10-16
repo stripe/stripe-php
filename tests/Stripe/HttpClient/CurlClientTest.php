@@ -297,4 +297,32 @@ class CurlClientTest extends TestCase
         $this->assertNotNull($headers['request-id']);
         $this->assertEquals($headers['request-id'], $headers['Request-Id']);
     }
+
+    public function testSetRequestStatusCallback()
+    {
+        try {
+            $called = false;
+
+            $curl = new CurlClient();
+            $curl->setRequestStatusCallback(function ($rbody, $rcode, $rheaders, $errno, $message, $willBeRetried, $numRetries) use (&$called) {
+                $called = true;
+
+                $this->assertTrue(is_string($rbody));
+                $this->assertEquals(200, $rcode);
+                $this->assertEquals('req_123', $rheaders['request-id']);
+                $this->assertEquals(0, $errno);
+                $this->assertNull($message);
+                $this->assertFalse($willBeRetried);
+                $this->assertEquals(0, $numRetries);
+            });
+
+            \Stripe\ApiRequestor::setHttpClient($curl);
+
+            Charge::all();
+
+            $this->assertTrue($called);
+        } finally {
+            \Stripe\ApiRequestor::setHttpClient(null);
+        }
+    }
 }
