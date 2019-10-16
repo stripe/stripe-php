@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.4.0 - 2019-10-15
+* [#764](https://github.com/stripe/stripe-php/pull/764) Add support for HTTP request monitoring callback
+
 ## 7.3.1 - 2019-10-07
 * [#755](https://github.com/stripe/stripe-php/pull/755) Respect Stripe-Should-Retry and Retry-After headers
 
