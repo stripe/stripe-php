@@ -43,6 +43,10 @@ require __DIR__ . '/lib/Exception/OAuth/UnknownOAuthErrorException.php';
 require __DIR__ . '/lib/Exception/OAuth/UnsupportedGrantTypeException.php';
 require __DIR__ . '/lib/Exception/OAuth/UnsupportedResponseTypeException.php';
 
+// StripeClient
+require __DIR__ . '/lib/StripeClientInterface.php';
+require __DIR__ . '/lib/StripeClient.php';
+
 // API operations
 require __DIR__ . '/lib/ApiOperations/All.php';
 require __DIR__ . '/lib/ApiOperations/Create.php';
