@@ -34,6 +34,11 @@ class ApiRequestorTest extends TestCase
         $v = false;
         $enc = $method->invoke(null, $v);
         $this->assertSame('false', $enc);
+
+        // Encodes null
+        $v = null;
+        $enc = $method->invoke(null, $v);
+        $this->assertSame('', $enc);
     }
 
     public function testHttpClientInjection()

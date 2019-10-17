@@ -79,6 +79,8 @@ class ApiRequestor
     {
         if ($d instanceof ApiResource) {
             return Util\Util::utf8($d->id);
+        } elseif ($d === null) {
+            return '';
         } elseif ($d === true) {
             return 'true';
         } elseif ($d === false) {
