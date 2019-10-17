@@ -54,3 +54,5 @@ if ($version != "master" && version_compare($version, MOCK_MINIMUM_VERSION) == -
 }
 
 require_once __DIR__ . '/TestCase.php';
+
+require_once __DIR__ . '/Stripe/Services/ServiceTestCase.php';
