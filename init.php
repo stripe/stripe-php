@@ -43,6 +43,10 @@ require(dirname(__FILE__) . '/lib/Exception/OAuth/UnknownOAuthErrorException.php
 require(dirname(__FILE__) . '/lib/Exception/OAuth/UnsupportedGrantTypeException.php');
 require(dirname(__FILE__) . '/lib/Exception/OAuth/UnsupportedResponseTypeException.php');
 
+// StripeClient
+require(dirname(__FILE__) . '/lib/StripeClientInterface.php');
+require(dirname(__FILE__) . '/lib/StripeClient.php');
+
 // API operations
 require(dirname(__FILE__) . '/lib/ApiOperations/All.php');
 require(dirname(__FILE__) . '/lib/ApiOperations/Create.php');
