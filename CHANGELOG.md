@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.5.0 - 2019-10-18
+* [#768](https://github.com/stripe/stripe-php/pull/768) Redact API key in `RequestOptions` debug info
+
 ## 7.4.0 - 2019-10-15
 * [#764](https://github.com/stripe/stripe-php/pull/764) Add support for HTTP request monitoring callback
 
