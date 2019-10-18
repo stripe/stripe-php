@@ -78,4 +78,19 @@ class RequestOptionsTest extends TestCase
         $opts->discardNonPersistentHeaders();
         $this->assertSame(['Stripe-Account' => 'foo'], $opts->headers);
     }
+
+    public function testDebugInfo()
+    {
+        $opts = Util\RequestOptions::parse(['api_key' => 'sk_test_1234567890abcdefghijklmn']);
+        $debugInfo = print_r($opts, true);
+        $this->assertContains("[apiKey] => sk_test_********************klmn", $debugInfo);
+
+        $opts = Util\RequestOptions::parse(['api_key' => 'sk_1234567890abcdefghijklmn']);
+        $debugInfo = print_r($opts, true);
+        $this->assertContains("[apiKey] => sk_********************klmn", $debugInfo);
+
+        $opts = Util\RequestOptions::parse(['api_key' => '1234567890abcdefghijklmn']);
+        $debugInfo = print_r($opts, true);
+        $this->assertContains("[apiKey] => ********************klmn", $debugInfo);
+    }
 }
