@@ -153,3 +153,8 @@ require __DIR__ . '/lib/OAuthErrorObject.php';
 // Webhooks
 require __DIR__ . '/lib/Webhook.php';
 require __DIR__ . '/lib/WebhookSignature.php';
+
+// Services
+require __DIR__ . '/lib/Service/AbstractService.php';
+require __DIR__ . '/lib/Service/CouponService.php';
+require __DIR__ . '/lib/Service/PaymentIntentService.php';
