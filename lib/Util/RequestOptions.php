@@ -25,6 +25,15 @@ class RequestOptions
         $this->apiBase = $base;
     }
 
+    public function __debugInfo()
+    {
+        return [
+            'apiKey' => $this->redactedApiKey(),
+            'headers' => $this->headers,
+            'apiBase' => $this->apiBase,
+        ];
+    }
+
     /**
      * Unpacks an options array and merges it into the existing RequestOptions
      * object.
@@ -104,5 +113,16 @@ class RequestOptions
            . 'per-request options, which must be an array. (HINT: you can set '
            . 'a global apiKey by "Stripe::setApiKey(<apiKey>)")';
         throw new Exception\InvalidArgumentException($message);
+    }
+
+    private function redactedApiKey()
+    {
+        $pieces = explode('_', $this->apiKey, 3);
+        $last = array_pop($pieces);
+        $redactedLast = strlen($last) > 4
+            ? (str_repeat('*', strlen($last) - 4) . substr($last, -4))
+            : $last;
+        array_push($pieces, $redactedLast);
+        return implode('_', $pieces);
     }
 }
