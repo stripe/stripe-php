@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.6.0 - 2019-10-22
+* [#770](https://github.com/stripe/stripe-php/pull/770) Add missing constants for Customer's `TaxId`
+
 ## 7.5.0 - 2019-10-18
 * [#768](https://github.com/stripe/stripe-php/pull/768) Redact API key in `RequestOptions` debug info
 
