@@ -22,7 +22,7 @@ namespace Stripe;
  * @property StripeObject $metadata
  * @property string $name
  * @property string $phone
- * @property string[] preferred_locales
+ * @property string[] $preferred_locales
  * @property mixed $shipping
  * @property Collection $sources
  * @property Collection $subscriptions

@@ -5,6 +5,7 @@ namespace Stripe\HttpClient;
 use Stripe\Stripe;
 use Stripe\Exception;
 use Stripe\Util;
+use Stripe\Util\CaseInsensitiveArray;
 
 // @codingStandardsIgnoreStart
 // PSR2 requires all constants be upper case. Sadly, the CURL_SSLVERSION
@@ -27,6 +28,11 @@ if (!defined('CURL_HTTP_VERSION_2TLS')) {
 class CurlClient implements ClientInterface
 {
     private static $instance;
+
+    /**
+     * @var \Stripe\Util\RandomGenerator
+     */
+    private $randomGenerator;
 
     public static function instance()
     {

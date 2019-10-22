@@ -361,7 +361,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         // user intended it to.
         if ($value === null) {
             return "";
-        } elseif (($value instanceof APIResource) && (!$value->saveWithParent)) {
+        } elseif (($value instanceof ApiResource) && (!$value->saveWithParent)) {
             if (!$unsaved) {
                 return null;
             } elseif (isset($value->id)) {
