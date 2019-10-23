@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.7.0 - 2019-10-23
+* [#776](https://github.com/stripe/stripe-php/pull/776) Add `CAPABILITY_TRANSFERS` to `Account`
+* [#778](https://github.com/stripe/stripe-php/pull/778) Add support for `TYPE_MX_RFC` type on `TaxId`
+
 ## 7.6.0 - 2019-10-22
 * [#770](https://github.com/stripe/stripe-php/pull/770) Add missing constants for Customer's `TaxId`
 
