@@ -31,6 +31,7 @@ class TaxId extends ApiResource
     const TYPE_CH_VAT  = 'ch_vat';
     const TYPE_EU_VAT  = 'eu_vat';
     const TYPE_IN_GST  = 'in_gst';
+    const TYPE_MX_RFC  = 'mx_rfc';
     const TYPE_NO_VAT  = 'no_vat';
     const TYPE_NZ_GST  = 'nz_gst';
     const TYPE_UNKNOWN = 'unknown';
