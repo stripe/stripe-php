@@ -55,6 +55,7 @@ class Account extends ApiResource
     const CAPABILITY_CARD_PAYMENTS     = 'card_payments';
     const CAPABILITY_LEGACY_PAYMENTS   = 'legacy_payments';
     const CAPABILITY_PLATFORM_PAYMENTS = 'platform_payments';
+    const CAPABILITY_TRANSFERS         = 'transfers';
 
     /**
      * Possible string representations of an account's capability status.
