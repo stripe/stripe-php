@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.7.1 - 2019-10-25
+* [#781](https://github.com/stripe/stripe-php/pull/781) Fix telemetry header
+* [#780](https://github.com/stripe/stripe-php/pull/780) Contributor Convenant
+
 ## 7.7.0 - 2019-10-23
 * [#776](https://github.com/stripe/stripe-php/pull/776) Add `CAPABILITY_TRANSFERS` to `Account`
 * [#778](https://github.com/stripe/stripe-php/pull/778) Add support for `TYPE_MX_RFC` type on `TaxId`
