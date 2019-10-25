@@ -90,7 +90,7 @@ class StripeTelemetryTest extends TestCase
                 }),
                 $this->anything(),
                 $this->anything()
-            )->willReturn(array(self::FAKE_VALID_RESPONSE, 200, ["request-id" => "123"]));
+            )->willReturn(array(self::FAKE_VALID_RESPONSE, 200, ["request-id" => ["req_123"]]));
 
         ApiRequestor::setHttpClient($stub);
 
@@ -103,7 +103,7 @@ class StripeTelemetryTest extends TestCase
         $this->assertArrayHasKey('X-Stripe-Client-Telemetry', $requestheaders);
 
         $data = json_decode($requestheaders['X-Stripe-Client-Telemetry'], true);
-        $this->assertEquals('123', $data['last_request_metrics']['request_id']);
+        $this->assertEquals('req_123', $data['last_request_metrics']['request_id']);
         $this->assertNotNull($data['last_request_metrics']['request_duration_ms']);
 
         ApiRequestor::setHttpClient(null);
