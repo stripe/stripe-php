@@ -156,4 +156,5 @@ require(dirname(__FILE__) . '/lib/WebhookSignature.php');
 require(dirname(__FILE__) . '/lib/Service/AbstractService.php');
 require(dirname(__FILE__) . '/lib/Service/CouponService.php');
 require(dirname(__FILE__) . '/lib/Service/FileService.php');
+require(dirname(__FILE__) . '/lib/Service/Issuing/CardService.php');
 require(dirname(__FILE__) . '/lib/Service/PaymentIntentService.php');
