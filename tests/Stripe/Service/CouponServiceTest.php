@@ -45,12 +45,11 @@ class CouponServiceTest extends \Stripe\TestCase
 
     public function testDelete()
     {
-        $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             "delete",
             "/v1/coupons/" . self::TEST_RESOURCE_ID
         );
-        $resource->delete();
+        $resource = $this->service->delete(self::TEST_RESOURCE_ID);
         $this->assertInstanceOf(\Stripe\Coupon::class, $resource);
     }
 
