@@ -129,7 +129,7 @@ class ApiRequestor
         if (!is_array($resp) || !isset($resp['error'])) {
             $msg = "Invalid response object from API: $rbody "
               . "(HTTP response code was $rcode)";
-            throw new Exception\UnexpectedValueException($msg, $rcode, $rbody, $resp, $rheaders);
+            throw new Exception\UnexpectedValueException($msg);
         }
 
         $errorData = $resp['error'];

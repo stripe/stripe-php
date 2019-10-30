@@ -38,6 +38,9 @@ class CurlClient implements ClientInterface
 
     protected $defaultOptions;
 
+    /** @var \Stripe\Util\RandomGenerator */
+    protected $randomGenerator;
+
     protected $userAgentInfo;
 
     protected $enablePersistentConnections = true;
@@ -380,7 +383,7 @@ class CurlClient implements ClientInterface
      *
      * @param int $errno
      * @param int $rcode
-     * @param array|CaseInsensitiveArray $rheaders
+     * @param array|\Stripe\Util\CaseInsensitiveArray $rheaders
      * @param int $numRetries
      *
      * @return bool
@@ -435,7 +438,7 @@ class CurlClient implements ClientInterface
      * Provides the number of seconds to wait before retrying a request.
      *
      * @param int $numRetries
-     * @param array|CaseInsensitiveArray $rheaders
+     * @param array|\Stripe\Util\CaseInsensitiveArray $rheaders
      *
      * @return int
      */

@@ -4,6 +4,12 @@ namespace Stripe;
 
 class StripeObjectTest extends TestCase
 {
+    /** @var \ReflectionMethod */
+    private $deepCopyReflector;
+
+    /** @var \ReflectionMethod */
+    private $optsReflector;
+
     /**
      * @before
      */
