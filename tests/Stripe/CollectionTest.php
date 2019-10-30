@@ -4,6 +4,9 @@ namespace Stripe;
 
 class CollectionTest extends TestCase
 {
+    /** @var \Stripe\Collection */
+    private $fixture;
+
     /**
      * @before
      */

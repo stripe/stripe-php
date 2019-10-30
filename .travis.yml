@@ -51,7 +51,7 @@ cache:
 before_install:
   # Install various build dependencies. We use `travis_retry` because Composer
   # will occasionally fail intermittently.
-  - travis_retry composer install
+  - travis_retry make vendor
 
   # Unpack and start stripe-mock so that the test suite can talk to it
   - |
@@ -68,5 +68,6 @@ before_install:
 script:
   - ./build.php ${AUTOLOAD}
   - ./vendor/bin/php-cs-fixer fix -v --dry-run --using-cache=no .
+  - if [[ `php -r "echo \version_compare(PHP_VERSION, '7.1', '>=');"` && $AUTOLOAD == 1 ]]; then make phpstan; fi
 
 after_script: ./vendor/bin/coveralls -v

@@ -6,6 +6,27 @@ use Stripe\HttpClient\CurlClient;
 
 class CurlClientTest extends TestCase
 {
+    /** @var \ReflectionProperty */
+    private $initialNetworkRetryDelayProperty;
+
+    /** @var \ReflectionProperty */
+    private $maxNetworkRetryDelayProperty;
+
+    /** @var double */
+    private $origInitialNetworkRetryDelay;
+
+    /** @var int */
+    private $origMaxNetworkRetries;
+
+    /** @var double */
+    private $origMaxNetworkRetryDelay;
+
+    /** @var \ReflectionMethod */
+    private $sleepTimeMethod;
+
+    /** @var \ReflectionMethod */
+    private $shouldRetryMethod;
+
     /**
      * @before
      */
@@ -60,7 +81,7 @@ class CurlClientTest extends TestCase
 
     private function createFakeRandomGenerator($returnValue = 1.0)
     {
-        $fakeRandomGenerator = $this->createMock('Stripe\Util\RandomGenerator', ['randFloat']);
+        $fakeRandomGenerator = $this->createMock('Stripe\Util\RandomGenerator');
         $fakeRandomGenerator->method('randFloat')->willReturn($returnValue);
         return $fakeRandomGenerator;
     }

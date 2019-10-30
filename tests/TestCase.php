@@ -140,7 +140,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
      *   Defaults to false.
      * @param string|null $base base URL (e.g. 'https://api.stripe.com')
      *
-     * @return PHPUnit_Framework_MockObject_Builder_InvocationMocker
+     * @return \PHPUnit_Framework_MockObject_Builder_InvocationMocker
      */
     private function prepareRequestMock(
         $method,

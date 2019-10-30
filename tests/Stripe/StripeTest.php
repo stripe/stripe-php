@@ -4,6 +4,9 @@ namespace Stripe;
 
 class StripeTest extends TestCase
 {
+    /** @var array */
+    protected $orig;
+
     /**
      * @before
      */

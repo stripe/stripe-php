@@ -1,0 +1,8 @@
+includes:
+	- phpstan-baseline.neon
+
+parameters:
+	level: 1
+	bootstrap: tests/bootstrap.php
+	autoload_directories:
+		- tests
