@@ -16,9 +16,9 @@ namespace Stripe\Issuing;
  * @property string $currency
  * @property string $dispute
  * @property bool $livemode
- * @property mixed $merchant_data
  * @property int $merchant_amount
  * @property string $merchant_currency
+ * @property mixed $merchant_data
  * @property \Stripe\StripeObject $metadata
  * @property string $type
  *
@@ -29,7 +29,6 @@ class Transaction extends \Stripe\ApiResource
     const OBJECT_NAME = "issuing.transaction";
 
     use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Create;
     use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
 }

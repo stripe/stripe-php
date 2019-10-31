@@ -8,9 +8,9 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property float $application_fee_percent
- * @property string $billing
  * @property int $billing_cycle_anchor
  * @property mixed $billing_thresholds
+ * @property int $cancel_at
  * @property bool $cancel_at_period_end
  * @property int $canceled_at
  * @property string $collection_method
@@ -26,13 +26,14 @@ namespace Stripe;
  * @property int $ended_at
  * @property Collection $items
  * @property string $latest_invoice
- * @property boolean $livemode
+ * @property bool $livemode
  * @property StripeObject $metadata
+ * @property int $next_pending_invoice_item_invoice
+ * @property mixed $pending_invoice_item_interval
  * @property string $pending_setup_intent
  * @property Plan $plan
  * @property int $quantity
- * @property SubscriptionSchedule $schedule
- * @property int $start
+ * @property string $schedule
  * @property int $start_date
  * @property string $status
  * @property float $tax_percent
@@ -79,6 +80,7 @@ class Subscription extends ApiResource
 
     /**
      * @param array|null $params
+     * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -90,14 +92,17 @@ class Subscription extends ApiResource
     }
 
     /**
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return Subscription The updated subscription.
      */
-    public function deleteDiscount()
+    public function deleteDiscount($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/discount';
-        list($response, $opts) = $this->_request('delete', $url);
+        list($response, $opts) = $this->_request('delete', $url, $params, $opts);
         $this->refreshFrom(['discount' => null], $opts, true);
     }
 }

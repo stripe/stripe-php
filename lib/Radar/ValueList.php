@@ -11,12 +11,10 @@ namespace Stripe\Radar;
  * @property int $created
  * @property string $created_by
  * @property string $item_type
- * @property Collection $list_items
+ * @property \Stripe\Collection $list_items
  * @property bool $livemode
  * @property StripeObject $metadata
- * @property mixed $name
- * @property int $updated
- * @property string $updated_by
+ * @property string $name
  *
  * @package Stripe\Radar
  */

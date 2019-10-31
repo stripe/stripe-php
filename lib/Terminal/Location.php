@@ -8,7 +8,6 @@ namespace Stripe\Terminal;
  * @property string $id
  * @property string $object
  * @property mixed $address
- * @property bool $deleted
  * @property string $display_name
  *
  * @package Stripe\Terminal

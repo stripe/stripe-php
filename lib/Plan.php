@@ -5,13 +5,12 @@ namespace Stripe;
 /**
  * Class Plan
  *
- * @package Stripe
- *
  * @property string $id
  * @property string $object
  * @property bool $active
  * @property string $aggregate_usage
  * @property int $amount
+ * @property string $amount_decimal
  * @property string $billing_scheme
  * @property int $created
  * @property string $currency
@@ -26,6 +25,8 @@ namespace Stripe;
  * @property mixed $transform_usage
  * @property int $trial_period_days
  * @property string $usage_type
+ *
+ * @package Stripe
  */
 class Plan extends ApiResource
 {

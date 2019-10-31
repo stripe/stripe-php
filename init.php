@@ -119,8 +119,8 @@ require(dirname(__FILE__) . '/lib/Reporting/ReportRun.php');
 require(dirname(__FILE__) . '/lib/Reporting/ReportType.php');
 require(dirname(__FILE__) . '/lib/Review.php');
 require(dirname(__FILE__) . '/lib/SetupIntent.php');
-require(dirname(__FILE__) . '/lib/SKU.php');
 require(dirname(__FILE__) . '/lib/Sigma/ScheduledQueryRun.php');
+require(dirname(__FILE__) . '/lib/SKU.php');
 require(dirname(__FILE__) . '/lib/Source.php');
 require(dirname(__FILE__) . '/lib/SourceTransaction.php');
 require(dirname(__FILE__) . '/lib/Subscription.php');
@@ -138,6 +138,7 @@ require(dirname(__FILE__) . '/lib/Transfer.php');
 require(dirname(__FILE__) . '/lib/TransferReversal.php');
 require(dirname(__FILE__) . '/lib/UsageRecord.php');
 require(dirname(__FILE__) . '/lib/UsageRecordSummary.php');
+require(dirname(__FILE__) . '/lib/WebhookEndpoint.php');
 
 // OAuth
 require(dirname(__FILE__) . '/lib/OAuth.php');
@@ -145,5 +146,4 @@ require(dirname(__FILE__) . '/lib/OAuthErrorObject.php');
 
 // Webhooks
 require(dirname(__FILE__) . '/lib/Webhook.php');
-require(dirname(__FILE__) . '/lib/WebhookEndpoint.php');
 require(dirname(__FILE__) . '/lib/WebhookSignature.php');

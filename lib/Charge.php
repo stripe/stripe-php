@@ -44,6 +44,7 @@ namespace Stripe;
  * @property mixed $source
  * @property string $source_transfer
  * @property string $statement_descriptor
+ * @property string $statement_descriptor_suffix
  * @property string $status
  * @property string $transfer
  * @property mixed $transfer_data
@@ -122,16 +123,16 @@ class Charge extends ApiResource
 
     /**
      * @param array|null $params
-     * @param array|string|null $options
+     * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return Charge The captured charge.
      */
-    public function capture($params = null, $options = null)
+    public function capture($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/capture';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }

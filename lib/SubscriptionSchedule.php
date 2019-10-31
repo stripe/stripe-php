@@ -7,22 +7,22 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property string $billing
  * @property mixed $billing_thresholds
  * @property int $canceled_at
+ * @property string $collection_method
  * @property int $completed_at
  * @property int $created
  * @property mixed $current_phase
  * @property string $customer
+ * @property string $default_payment_method
+ * @property string $end_behavior
  * @property mixed $invoice_settings
- * @property boolean $livemode
+ * @property bool $livemode
  * @property StripeObject $metadata
  * @property mixed $phases
  * @property int $released_at
  * @property string $released_subscription
- * @property string $renewal_behavior
  * @property mixed $renewal_interval
- * @property string $revision
  * @property string $status
  * @property string $subscription
  *
@@ -36,7 +36,6 @@ class SubscriptionSchedule extends ApiResource
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
-    use ApiOperations\NestedResource;
 
     /**
      * @param array|null $params

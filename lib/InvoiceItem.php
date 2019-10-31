@@ -24,6 +24,7 @@ namespace Stripe;
  * @property string $subscription_item
  * @property array $tax_rates
  * @property int $unit_amount
+ * @property string $unit_amount_decimal
  *
  * @package Stripe
  */

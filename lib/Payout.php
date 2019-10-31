@@ -80,14 +80,17 @@ class Payout extends ApiResource
     const TYPE_CARD         = 'card';
 
     /**
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return Payout The canceled payout.
      */
-    public function cancel()
+    public function cancel($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/cancel';
-        list($response, $opts) = $this->_request('post', $url);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }

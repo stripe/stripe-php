@@ -8,6 +8,7 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property string $application
+ * @property string $cancellation_reason
  * @property string $client_secret
  * @property int $created
  * @property string $customer
@@ -18,8 +19,10 @@ namespace Stripe;
  * @property mixed $next_action
  * @property string $on_behalf_of
  * @property string $payment_method
+ * @property mixed $payment_method_options
  * @property string[] $payment_method_types
  * @property string $status
+ * @property string $usage
  *
  * @package Stripe
  */
@@ -46,32 +49,32 @@ class SetupIntent extends ApiResource
 
     /**
      * @param array|null $params
-     * @param array|string|null $options
+     * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return SetupIntent The canceled setup intent.
      */
-    public function cancel($params = null, $options = null)
+    public function cancel($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/cancel';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }
 
     /**
      * @param array|null $params
-     * @param array|string|null $options
+     * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return SetupIntent The confirmed setup intent.
      */
-    public function confirm($params = null, $options = null)
+    public function confirm($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/confirm';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }

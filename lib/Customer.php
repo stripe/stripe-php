@@ -9,7 +9,7 @@ namespace Stripe;
  * @property string $object
  * @property mixed $address
  * @property int $balance
- * @property string $created
+ * @property int $created
  * @property string $currency
  * @property string $default_source
  * @property bool $delinquent
@@ -66,17 +66,20 @@ class Customer extends ApiResource
     const PATH_TAX_IDS = '/tax_ids';
 
     /**
+     * @param array|null $params
+     * @param array|string|null $options
+     *
      * @return Customer The updated customer.
      */
-    public function deleteDiscount()
+    public function deleteDiscount($params = null, $options = null)
     {
         $url = $this->instanceUrl() . '/discount';
-        list($response, $opts) = $this->_request('delete', $url);
+        list($response, $opts) = $this->_request('delete', $url, $params, $options);
         $this->refreshFrom(['discount' => null], $opts, true);
     }
 
     /**
-     * @param string|null $id The ID of the customer on which to create the source.
+     * @param string $id The ID of the customer on which to create the source.
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -90,8 +93,8 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the customer to which the source belongs.
-     * @param string|null $sourceId The ID of the source to retrieve.
+     * @param string $id The ID of the customer to which the source belongs.
+     * @param string $sourceId The ID of the source to retrieve.
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -105,8 +108,8 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the customer to which the source belongs.
-     * @param string|null $sourceId The ID of the source to update.
+     * @param string $id The ID of the customer to which the source belongs.
+     * @param string $sourceId The ID of the source to update.
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -120,8 +123,8 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the customer to which the source belongs.
-     * @param string|null $sourceId The ID of the source to delete.
+     * @param string $id The ID of the customer to which the source belongs.
+     * @param string $sourceId The ID of the source to delete.
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -135,7 +138,7 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the customer on which to retrieve the sources.
+     * @param string $id The ID of the customer on which to retrieve the sources.
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -149,13 +152,13 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the customer on which to create the tax id.
+     * @param string $id The ID of the customer on which to create the tax id.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return ApiResource
+     * @return TaxId
      */
     public static function createTaxId($id, $params = null, $opts = null)
     {
@@ -163,14 +166,14 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the customer to which the tax id belongs.
-     * @param string|null $taxIdId The ID of the tax id to retrieve.
+     * @param string $id The ID of the customer to which the tax id belongs.
+     * @param string $taxIdId The ID of the tax id to retrieve.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return ApiResource
+     * @return TaxId
      */
     public static function retrieveTaxId($id, $taxIdId, $params = null, $opts = null)
     {
@@ -178,14 +181,14 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the customer to which the tax id belongs.
-     * @param string|null $taxIdId The ID of the tax id to delete.
+     * @param string $id The ID of the customer to which the tax id belongs.
+     * @param string $taxIdId The ID of the tax id to delete.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return ApiResource
+     * @return TaxId
      */
     public static function deleteTaxId($id, $taxIdId, $params = null, $opts = null)
     {
@@ -193,7 +196,7 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the customer on which to retrieve the tax ids.
+     * @param string $id The ID of the customer on which to retrieve the tax ids.
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -207,11 +210,13 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the customer on which to create the balance transaction.
+     * @param string $id The ID of the customer on which to create the balance transaction.
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return ApiResource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return BalanceTransaction
      */
     public static function createBalanceTransaction($id, $params = null, $opts = null)
     {
@@ -219,14 +224,14 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the customer to which the balance transaction belongs.
-     * @param string|null $balanceTransactionId The ID of the balance transaction to retrieve.
+     * @param string $id The ID of the customer to which the balance transaction belongs.
+     * @param string $balanceTransactionId The ID of the balance transaction to retrieve.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return ApiResource
+     * @return BalanceTransaction
      */
     public static function retrieveBalanceTransaction($id, $balanceTransactionId, $params = null, $opts = null)
     {
@@ -234,14 +239,14 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the customer on which to update the balance transaction.
-     * @param string|null $balanceTransactionId The ID of the balance transaction to update.
+     * @param string $id The ID of the customer to which the balance transaction belongs.
+     * @param string $balanceTransactionId The ID of the balance transaction to update.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return ApiResource
+     * @return BalanceTransaction
      */
     public static function updateBalanceTransaction($id, $balanceTransactionId, $params = null, $opts = null)
     {
@@ -249,13 +254,13 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the customer on which to retrieve the customer balance transactions.
+     * @param string $id The ID of the customer on which to retrieve the balance transactions.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Collection The list of customer balance transactions.
+     * @return Collection The list of balance transactions.
      */
     public static function allBalanceTransactions($id, $params = null, $opts = null)
     {

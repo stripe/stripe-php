@@ -13,6 +13,7 @@ namespace Stripe\Checkout;
  * @property string $customer_email
  * @property mixed $display_items
  * @property bool $livemode
+ * @property string $mode
  * @property string $payment_intent
  * @property string[] $payment_method_types
  * @property string $setup_intent
@@ -20,7 +21,7 @@ namespace Stripe\Checkout;
  * @property string $subscription
  * @property string $success_url
  *
- * @package Stripe
+ * @package Stripe\Checkout
  */
 class Session extends \Stripe\ApiResource
 {

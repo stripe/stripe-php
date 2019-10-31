@@ -10,12 +10,12 @@ namespace Stripe\Issuing;
  * @property int $amount
  * @property int $created
  * @property string $currency
+ * @property string $disputed_transaction
  * @property mixed $evidence
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property string $reason
  * @property string $status
- * @property Transaction $transaction
  *
  * @package Stripe\Issuing
  */
