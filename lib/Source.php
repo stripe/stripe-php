@@ -9,8 +9,10 @@ namespace Stripe;
  * @property string $object
  * @property mixed $ach_credit_transfer
  * @property mixed $ach_debit
+ * @property mixed $acss_debit
  * @property mixed $alipay
  * @property int $amount
+ * @property mixed $au_becs_debit
  * @property mixed $bancontact
  * @property mixed $card
  * @property mixed $card_present
@@ -23,6 +25,7 @@ namespace Stripe;
  * @property string $flow
  * @property mixed $giropay
  * @property mixed $ideal
+ * @property mixed $klarna
  * @property bool $livemode
  * @property StripeObject $metadata
  * @property mixed $multibanco
@@ -30,15 +33,17 @@ namespace Stripe;
  * @property mixed $p24
  * @property mixed $receiver
  * @property mixed $redirect
+ * @property mixed $sepa_credit_transfer
  * @property mixed $sepa_debit
  * @property mixed $sofort
+ * @property mixed $source_order
  * @property string $statement_descriptor
  * @property string $status
  * @property mixed $three_d_secure
  * @property string $type
  * @property string $usage
  * @property mixed $wechat
-
+ *
  * @package Stripe
  */
 class Source extends ApiResource
@@ -77,14 +82,14 @@ class Source extends ApiResource
 
     /**
      * @param array|null $params
-     * @param array|string|null $options
+     * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\UnexpectedValueException if the source is not attached to a customer
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return Source The detached source.
      */
-    public function detach($params = null, $options = null)
+    public function detach($params = null, $opts = null)
     {
         self::_validateParams($params);
 
@@ -102,7 +107,7 @@ class Source extends ApiResource
             $extn = urlencode(Util\Util::utf8($id));
             $url = "$base/$parentExtn/sources/$extn";
 
-            list($response, $opts) = $this->_request('delete', $url, $params, $options);
+            list($response, $opts) = $this->_request('delete', $url, $params, $opts);
             $this->refreshFrom($response, $opts);
             return $this;
         } else {
@@ -114,33 +119,33 @@ class Source extends ApiResource
 
     /**
      * @param array|null $params
-     * @param array|string|null $options
+     * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return Collection The list of source transactions.
      */
-    public function sourceTransactions($params = null, $options = null)
+    public function sourceTransactions($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/source_transactions';
-        list($response, $opts) = $this->_request('get', $url, $params, $options);
-        $obj = Util\Util::convertToStripeObject($response, $opts);
+        list($response, $opts) = $this->_request('get', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response, $opts);
         $obj->setLastResponse($response);
         return $obj;
     }
 
     /**
      * @param array|null $params
-     * @param array|string|null $options
+     * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return Source The verified source.
      */
-    public function verify($params = null, $options = null)
+    public function verify($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/verify';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }

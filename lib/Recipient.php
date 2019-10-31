@@ -5,8 +5,6 @@ namespace Stripe;
 /**
  * Class Recipient
  *
- * @package Stripe
- *
  * @property string $id
  * @property string $object
  * @property mixed $active_account
@@ -21,6 +19,9 @@ namespace Stripe;
  * @property string $name
  * @property string $rolled_back_from
  * @property string $type
+ * @property bool $verified
+ *
+ * @package Stripe
  */
 class Recipient extends ApiResource
 {

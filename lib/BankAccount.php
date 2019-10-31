@@ -97,17 +97,17 @@ class BankAccount extends ApiResource
     }
 
     /**
-      * @param array|null $params
-      * @param array|string|null $options
+     * @param array|null $params
+     * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
-      *
-      * @return BankAccount The verified bank account.
-      */
-    public function verify($params = null, $options = null)
+     *
+     * @return BankAccount The verified bank account.
+     */
+    public function verify($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/verify';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }

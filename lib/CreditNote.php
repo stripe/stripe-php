@@ -8,10 +8,10 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property int $amount
- * @property string $customer_balance_transaction
  * @property int $created
  * @property string $currency
  * @property string $customer
+ * @property string $customer_balance_transaction
  * @property string $invoice
  * @property bool $livemode
  * @property string $memo
@@ -22,6 +22,7 @@ namespace Stripe;
  * @property string $refund
  * @property string $status
  * @property string $type
+ * @property int $voided_at
  *
  * @package Stripe
  */

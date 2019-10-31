@@ -9,11 +9,11 @@ namespace Stripe;
  * @property string $object
  * @property string $account
  * @property string $api_version
- * @property int    $created
- * @property mixed  $data
- * @property bool   $livemode
- * @property int    $pending_webhooks
- * @property mixed  $request
+ * @property int $created
+ * @property mixed $data
+ * @property bool $livemode
+ * @property int $pending_webhooks
+ * @property mixed $request
  * @property string $type
  *
  * @package Stripe
@@ -21,6 +21,9 @@ namespace Stripe;
 class Event extends ApiResource
 {
     const OBJECT_NAME = "event";
+
+    use ApiOperations\All;
+    use ApiOperations\Retrieve;
 
     /**
      * Possible string representations of event types.
@@ -166,7 +169,4 @@ class Event extends ApiResource
     const TRANSFER_CREATED                          = 'transfer.created';
     const TRANSFER_REVERSED                         = 'transfer.reversed';
     const TRANSFER_UPDATED                          = 'transfer.updated';
-
-    use ApiOperations\All;
-    use ApiOperations\Retrieve;
 }

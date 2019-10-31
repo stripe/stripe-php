@@ -178,6 +178,8 @@ class Account extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return Capability
      */
     public static function updateCapability($id, $capabilityId, $params = null, $opts = null)
@@ -288,16 +290,16 @@ class Account extends ApiResource
 
     /**
      * @param array|null $params
-     * @param array|string|null $options
+     * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return Collection The list of persons.
      */
-    public function persons($params = null, $options = null)
+    public function persons($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/persons';
-        list($response, $opts) = $this->_request('get', $url, $params, $options);
+        list($response, $opts) = $this->_request('get', $url, $params, $opts);
         $obj = Util\Util::convertToStripeObject($response, $opts);
         $obj->setLastResponse($response);
         return $obj;

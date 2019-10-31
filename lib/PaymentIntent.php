@@ -29,12 +29,15 @@ namespace Stripe;
  * @property mixed $next_action
  * @property string $on_behalf_of
  * @property string $payment_method
+ * @property mixed $payment_method_options
  * @property string[] $payment_method_types
  * @property string $receipt_email
  * @property string $review
+ * @property string $setup_future_usage
  * @property mixed $shipping
  * @property string $source
  * @property string $statement_descriptor
+ * @property string $statement_descriptor_suffix
  * @property string $status
  * @property mixed $transfer_data
  * @property string $transfer_group
@@ -65,48 +68,48 @@ class PaymentIntent extends ApiResource
 
     /**
      * @param array|null $params
-     * @param array|string|null $options
+     * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return PaymentIntent The canceled payment intent.
      */
-    public function cancel($params = null, $options = null)
+    public function cancel($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/cancel';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }
 
     /**
      * @param array|null $params
-     * @param array|string|null $options
+     * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return PaymentIntent The captured payment intent.
      */
-    public function capture($params = null, $options = null)
+    public function capture($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/capture';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }
 
     /**
      * @param array|null $params
-     * @param array|string|null $options
+     * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return PaymentIntent The confirmed payment intent.
      */
-    public function confirm($params = null, $options = null)
+    public function confirm($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/confirm';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }

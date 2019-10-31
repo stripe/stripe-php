@@ -33,7 +33,7 @@ class ApplicationFee extends ApiResource
     const PATH_REFUNDS = '/refunds';
 
     /**
-     * @param string|null $id The ID of the application fee on which to create the refund.
+     * @param string $id The ID of the application fee on which to create the fee refund.
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -47,8 +47,8 @@ class ApplicationFee extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the application fee to which the refund belongs.
-     * @param array|null $refundId The ID of the refund to retrieve.
+     * @param string $id The ID of the application fee to which the fee refund belongs.
+     * @param string $refundId The ID of the fee refund to retrieve.
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -62,8 +62,8 @@ class ApplicationFee extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the application fee to which the refund belongs.
-     * @param array|null $refundId The ID of the refund to update.
+     * @param string $id The ID of the application fee to which the fee refund belongs.
+     * @param string $refundId The ID of the fee refund to update.
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -77,13 +77,13 @@ class ApplicationFee extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the application fee on which to retrieve the refunds.
+     * @param string $id The ID of the application fee on which to retrieve the fee refunds.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Collection The list of refunds.
+     * @return Collection The list of fee refunds.
      */
     public static function allRefunds($id, $params = null, $opts = null)
     {

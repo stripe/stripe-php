@@ -7,6 +7,8 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
+ * @property string $api_version
+ * @property string $application
  * @property int $created
  * @property string[] $enabled_events
  * @property bool $livemode
