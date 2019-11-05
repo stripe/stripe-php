@@ -23,7 +23,7 @@ namespace Stripe;
  */
 class CustomerBalanceTransaction extends ApiResource
 {
-    const OBJECT_NAME = "customer_balance_transaction";
+    const OBJECT_NAME = 'customer_balance_transaction';
 
     /**
      * Possible string representations of a balance transaction's type.

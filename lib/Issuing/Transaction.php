@@ -26,7 +26,7 @@ namespace Stripe\Issuing;
  */
 class Transaction extends \Stripe\ApiResource
 {
-    const OBJECT_NAME = "issuing.transaction";
+    const OBJECT_NAME = 'issuing.transaction';
 
     use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Retrieve;

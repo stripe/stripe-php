@@ -26,7 +26,7 @@ namespace Stripe;
  */
 class Refund extends ApiResource
 {
-    const OBJECT_NAME = "refund";
+    const OBJECT_NAME = 'refund';
 
     use ApiOperations\All;
     use ApiOperations\Create;

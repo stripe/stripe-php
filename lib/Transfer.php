@@ -27,7 +27,7 @@ namespace Stripe;
  */
 class Transfer extends ApiResource
 {
-    const OBJECT_NAME = "transfer";
+    const OBJECT_NAME = 'transfer';
 
     use ApiOperations\All;
     use ApiOperations\Create;

@@ -21,7 +21,7 @@ namespace Stripe\Sigma;
  */
 class ScheduledQueryRun extends \Stripe\ApiResource
 {
-    const OBJECT_NAME = "scheduled_query_run";
+    const OBJECT_NAME = 'scheduled_query_run';
 
     use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Retrieve;

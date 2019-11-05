@@ -38,7 +38,7 @@ namespace Stripe;
  */
 class Card extends ApiResource
 {
-    const OBJECT_NAME = "card";
+    const OBJECT_NAME = 'card';
 
     use ApiOperations\Delete;
     use ApiOperations\Update;

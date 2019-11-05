@@ -14,7 +14,7 @@ namespace Stripe\Terminal;
  */
 class Location extends \Stripe\ApiResource
 {
-    const OBJECT_NAME = "terminal.location";
+    const OBJECT_NAME = 'terminal.location';
 
     use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Create;

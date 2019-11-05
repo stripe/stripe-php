@@ -46,7 +46,7 @@ namespace Stripe;
  */
 class PaymentIntent extends ApiResource
 {
-    const OBJECT_NAME = "payment_intent";
+    const OBJECT_NAME = 'payment_intent';
 
     use ApiOperations\All;
     use ApiOperations\Create;

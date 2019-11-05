@@ -24,7 +24,7 @@ class File extends ApiResource
     // versions, only `file` is used, but since stripe-php may be used with
     // any API version, we need to support deserializing the older
     // `file_upload` object into the same class.
-    const OBJECT_NAME = "file";
+    const OBJECT_NAME = 'file';
     const OBJECT_NAME_ALT = "file_upload";
 
     use ApiOperations\All;

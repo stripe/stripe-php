@@ -15,7 +15,7 @@ namespace Stripe;
  */
 class ApplePayDomain extends ApiResource
 {
-    const OBJECT_NAME = "apple_pay_domain";
+    const OBJECT_NAME = 'apple_pay_domain';
 
     use ApiOperations\All;
     use ApiOperations\Create;

@@ -19,7 +19,7 @@ namespace Stripe;
  */
 class FileLink extends ApiResource
 {
-    const OBJECT_NAME = "file_link";
+    const OBJECT_NAME = 'file_link';
 
     use ApiOperations\All;
     use ApiOperations\Create;
