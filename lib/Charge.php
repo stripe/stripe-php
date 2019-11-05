@@ -9,46 +9,46 @@ namespace Stripe;
  * @property string $object
  * @property int $amount
  * @property int $amount_refunded
- * @property string $application
- * @property string $application_fee
- * @property int $application_fee_amount
- * @property string $balance_transaction
+ * @property string|null $application
+ * @property string|null $application_fee
+ * @property int|null $application_fee_amount
+ * @property string|null $balance_transaction
  * @property mixed $billing_details
  * @property bool $captured
  * @property int $created
  * @property string $currency
- * @property string $customer
- * @property string $description
- * @property string $destination
- * @property string $dispute
- * @property string $failure_code
- * @property string $failure_message
- * @property mixed $fraud_details
- * @property string $invoice
+ * @property string|null $customer
+ * @property string|null $description
+ * @property string|null $destination
+ * @property string|null $dispute
+ * @property string|null $failure_code
+ * @property string|null $failure_message
+ * @property mixed|null $fraud_details
+ * @property string|null $invoice
  * @property bool $livemode
- * @property StripeObject $metadata
- * @property string $on_behalf_of
- * @property string $order
- * @property mixed $outcome
+ * @property \Stripe\StripeObject $metadata
+ * @property string|null $on_behalf_of
+ * @property string|null $order
+ * @property mixed|null $outcome
  * @property bool $paid
- * @property string $payment_intent
- * @property string $payment_method
- * @property mixed $payment_method_details
- * @property string $receipt_email
- * @property string $receipt_number
+ * @property string|null $payment_intent
+ * @property string|null $payment_method
+ * @property mixed|null $payment_method_details
+ * @property string|null $receipt_email
+ * @property string|null $receipt_number
  * @property string $receipt_url
  * @property bool $refunded
- * @property Collection $refunds
- * @property string $review
- * @property mixed $shipping
- * @property mixed $source
- * @property string $source_transfer
- * @property string $statement_descriptor
- * @property string $statement_descriptor_suffix
+ * @property \Stripe\Collection $refunds
+ * @property string|null $review
+ * @property mixed|null $shipping
+ * @property mixed|null $source
+ * @property string|null $source_transfer
+ * @property string|null $statement_descriptor
+ * @property string|null $statement_descriptor_suffix
  * @property string $status
  * @property string $transfer
- * @property mixed $transfer_data
- * @property string $transfer_group
+ * @property mixed|null $transfer_data
+ * @property string|null $transfer_group
  *
  * @package Stripe
  */

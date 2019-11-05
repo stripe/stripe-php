@@ -9,7 +9,7 @@ namespace Stripe\Reporting;
  * @property string $object
  * @property int $data_available_end
  * @property int $data_available_start
- * @property string[] $default_columns
+ * @property string[]|null $default_columns
  * @property string $name
  * @property int $updated
  * @property int $version

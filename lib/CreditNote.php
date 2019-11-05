@@ -11,18 +11,18 @@ namespace Stripe;
  * @property int $created
  * @property string $currency
  * @property string $customer
- * @property string $customer_balance_transaction
+ * @property string|null $customer_balance_transaction
  * @property string $invoice
  * @property bool $livemode
- * @property string $memo
- * @property StripeObject $metadata
+ * @property string|null $memo
+ * @property \Stripe\StripeObject $metadata
  * @property string $number
  * @property string $pdf
- * @property string $reason
- * @property string $refund
+ * @property string|null $reason
+ * @property string|null $refund
  * @property string $status
  * @property string $type
- * @property int $voided_at
+ * @property int|null $voided_at
  *
  * @package Stripe
  */

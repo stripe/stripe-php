@@ -7,38 +7,41 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property float $application_fee_percent
+ * @property float|null $application_fee_percent
  * @property int $billing_cycle_anchor
- * @property mixed $billing_thresholds
- * @property int $cancel_at
+ * @property mixed|null $billing_thresholds
+ * @property int|null $cancel_at
  * @property bool $cancel_at_period_end
- * @property int $canceled_at
- * @property string $collection_method
+ * @property int|null $canceled_at
+ * @property string|null $collection_method
  * @property int $created
  * @property int $current_period_end
  * @property int $current_period_start
  * @property string $customer
- * @property int $days_until_due
- * @property string $default_payment_method
- * @property string $default_source
- * @property array $default_tax_rates
- * @property Discount $discount
- * @property int $ended_at
- * @property Collection $items
- * @property string $latest_invoice
+ * @property int|null $days_until_due
+ * @property string|null $default_payment_method
+ * @property string|null $default_source
+ * @property array|null $default_tax_rates
+ * @property \Stripe\Discount|null $discount
+ * @property int|null $ended_at
+ * @property mixed $invoice_customer_balance_settings
+ * @property \Stripe\Collection $items
+ * @property string|null $latest_invoice
  * @property bool $livemode
- * @property StripeObject $metadata
- * @property int $next_pending_invoice_item_invoice
- * @property mixed $pending_invoice_item_interval
- * @property string $pending_setup_intent
- * @property Plan $plan
- * @property int $quantity
- * @property string $schedule
+ * @property \Stripe\StripeObject $metadata
+ * @property int|null $next_pending_invoice_item_invoice
+ * @property mixed|null $pending_invoice_item_interval
+ * @property string|null $pending_setup_intent
+ * @property \Stripe\Plan|null $plan
+ * @property int|null $quantity
+ * @property string|null $schedule
  * @property int $start_date
  * @property string $status
- * @property float $tax_percent
- * @property int $trial_end
- * @property int $trial_start
+ * @property float|null $tax_percent
+ * @property int|null $trial_end
+ * @property int|null $trial_start
+ * @property string $pending_setup_intent
+ * @property \Stripe\SubscriptionSchedule $schedule
  *
  * @package Stripe
  */

@@ -7,8 +7,8 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property mixed $business_profile
- * @property string $business_type
+ * @property mixed|null $business_profile
+ * @property string|null $business_type
  * @property mixed $capabilities
  * @property bool $charges_enabled
  * @property mixed $company
@@ -16,13 +16,13 @@ namespace Stripe;
  * @property int $created
  * @property string $default_currency
  * @property bool $details_submitted
- * @property string $email
- * @property Collection $external_accounts
+ * @property string|null $email
+ * @property \Stripe\Collection $external_accounts
  * @property mixed $individual
- * @property StripeObject $metadata
+ * @property \Stripe\StripeObject $metadata
  * @property bool $payouts_enabled
  * @property mixed $requirements
- * @property mixed $settings
+ * @property mixed|null $settings
  * @property mixed $tos_acceptance
  * @property string $type
  *

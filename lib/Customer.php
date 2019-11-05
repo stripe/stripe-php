@@ -7,27 +7,27 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property mixed $address
+ * @property mixed|null $address
  * @property int $balance
  * @property int $created
- * @property string $currency
- * @property string $default_source
- * @property bool $delinquent
- * @property string $description
- * @property Discount $discount
- * @property string $email
- * @property string $invoice_prefix
+ * @property string|null $currency
+ * @property string|null $default_source
+ * @property bool|null $delinquent
+ * @property string|null $description
+ * @property \Stripe\Discount|null $discount
+ * @property string|null $email
+ * @property string|null $invoice_prefix
  * @property mixed $invoice_settings
  * @property bool $livemode
- * @property StripeObject $metadata
- * @property string $name
- * @property string $phone
- * @property string[] $preferred_locales
- * @property mixed $shipping
- * @property Collection $sources
- * @property Collection $subscriptions
- * @property string $tax_exempt
- * @property Collection $tax_ids
+ * @property \Stripe\StripeObject $metadata
+ * @property string|null $name
+ * @property string|null $phone
+ * @property string[]|null $preferred_locales
+ * @property mixed|null $shipping
+ * @property \Stripe\Collection $sources
+ * @property \Stripe\Collection $subscriptions
+ * @property string|null $tax_exempt
+ * @property \Stripe\Collection $tax_ids
  *
  * @package Stripe
  */

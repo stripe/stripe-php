@@ -11,14 +11,14 @@ namespace Stripe;
  * @property int $amount
  * @property int $amount_refunded
  * @property string $application
- * @property string $balance_transaction
+ * @property string|null $balance_transaction
  * @property string $charge
  * @property int $created
  * @property string $currency
  * @property bool $livemode
- * @property string $originating_transaction
+ * @property string|null $originating_transaction
  * @property bool $refunded
- * @property Collection $refunds
+ * @property \Stripe\Collection $refunds
  *
  * @package Stripe
  */

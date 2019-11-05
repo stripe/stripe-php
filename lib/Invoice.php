@@ -7,63 +7,63 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property string $account_country
- * @property string $account_name
+ * @property string|null $account_country
+ * @property string|null $account_name
  * @property int $amount_due
  * @property int $amount_paid
  * @property int $amount_remaining
- * @property int $application_fee_amount
+ * @property int|null $application_fee_amount
  * @property int $attempt_count
  * @property bool $attempted
  * @property bool $auto_advance
- * @property string $billing_reason
- * @property string $charge
- * @property string $collection_method
+ * @property string|null $billing_reason
+ * @property string|null $charge
+ * @property string|null $collection_method
  * @property int $created
  * @property string $currency
- * @property array $custom_fields
+ * @property array|null $custom_fields
  * @property string $customer
- * @property mixed $customer_address
- * @property string $customer_email
- * @property string $customer_name
- * @property string $customer_phone
- * @property mixed $customer_shipping
- * @property string $customer_tax_exempt
- * @property array $customer_tax_ids
- * @property string $default_payment_method
- * @property string $default_source
- * @property array $default_tax_rates
- * @property string $description
- * @property Discount $discount
- * @property int $due_date
- * @property int $ending_balance
- * @property string $footer
- * @property string $hosted_invoice_url
- * @property string $invoice_pdf
- * @property Collection $lines
+ * @property mixed|null $customer_address
+ * @property string|null $customer_email
+ * @property string|null $customer_name
+ * @property string|null $customer_phone
+ * @property mixed|null $customer_shipping
+ * @property string|null $customer_tax_exempt
+ * @property array|null $customer_tax_ids
+ * @property string|null $default_payment_method
+ * @property string|null $default_source
+ * @property array|null $default_tax_rates
+ * @property string|null $description
+ * @property \Stripe\Discount|null $discount
+ * @property int|null $due_date
+ * @property int|null $ending_balance
+ * @property string|null $footer
+ * @property string|null $hosted_invoice_url
+ * @property string|null $invoice_pdf
+ * @property \Stripe\Collection $lines
  * @property bool $livemode
- * @property StripeObject $metadata
- * @property int $next_payment_attempt
- * @property string $number
+ * @property \Stripe\StripeObject|null $metadata
+ * @property int|null $next_payment_attempt
+ * @property string|null $number
  * @property bool $paid
- * @property string $payment_intent
+ * @property string|null $payment_intent
  * @property int $period_end
  * @property int $period_start
  * @property int $post_payment_credit_notes_amount
  * @property int $pre_payment_credit_notes_amount
- * @property string $receipt_number
+ * @property string|null $receipt_number
  * @property int $starting_balance
- * @property string $statement_descriptor
- * @property string $status
+ * @property string|null $statement_descriptor
+ * @property string|null $status
  * @property mixed $status_transitions
- * @property string $subscription
+ * @property string|null $subscription
  * @property int $subscription_proration_date
  * @property int $subtotal
- * @property int $tax
+ * @property int|null $tax
  * @property mixed $threshold_reason
  * @property int $total
- * @property array $total_tax_amounts
- * @property int $webhooks_delivered_at
+ * @property array|null $total_tax_amounts
+ * @property int|null $webhooks_delivered_at
  *
  * @package Stripe
  */

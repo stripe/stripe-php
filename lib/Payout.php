@@ -10,19 +10,19 @@ namespace Stripe;
  * @property int $amount
  * @property int $arrival_date
  * @property bool $automatic
- * @property string $balance_transaction
+ * @property string|null $balance_transaction
  * @property int $created
  * @property string $currency
- * @property string $description
- * @property string $destination
- * @property string $failure_balance_transaction
- * @property string $failure_code
- * @property string $failure_message
+ * @property string|null $description
+ * @property string|null $destination
+ * @property string|null $failure_balance_transaction
+ * @property string|null $failure_code
+ * @property string|null $failure_message
  * @property bool $livemode
- * @property StripeObject $metadata
+ * @property \Stripe\StripeObject $metadata
  * @property string $method
  * @property string $source_type
- * @property string $statement_descriptor
+ * @property string|null $statement_descriptor
  * @property string $status
  * @property string $type
  *

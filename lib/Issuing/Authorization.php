@@ -13,7 +13,7 @@ namespace Stripe\Issuing;
  * @property string $authorized_currency
  * @property \Stripe\Collection $balance_transactions
  * @property Card $card
- * @property string $cardholder
+ * @property string|null $cardholder
  * @property int $created
  * @property int $held_amount
  * @property string $held_currency

@@ -7,13 +7,13 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property mixed $billing_thresholds
+ * @property mixed|null $billing_thresholds
  * @property int $created
- * @property StripeObject $metadata
- * @property Plan $plan
+ * @property \Stripe\StripeObject $metadata
+ * @property \Stripe\Plan $plan
  * @property int $quantity
  * @property string $subscription
- * @property array $tax_rates
+ * @property array|null $tax_rates
  *
  * @package Stripe
  */
