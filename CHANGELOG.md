@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.9.0 - 2019-11-05
+* [#794](https://github.com/stripe/stripe-php/pull/794) Add PHPDoc to `ApiResponse`
+* [#792](https://github.com/stripe/stripe-php/pull/792) Use single quotes for `OBJECT_NAME` constants
+
 ## 7.8.0 - 2019-11-05
 * [#790](https://github.com/stripe/stripe-php/pull/790) Mark nullable fields in PHPDoc
 * [#788](https://github.com/stripe/stripe-php/pull/788) Early codegen fixes
