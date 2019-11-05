@@ -25,7 +25,7 @@ namespace Stripe;
  */
 class Dispute extends ApiResource
 {
-    const OBJECT_NAME = "dispute";
+    const OBJECT_NAME = 'dispute';
 
     use ApiOperations\All;
     use ApiOperations\Retrieve;

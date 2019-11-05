@@ -28,7 +28,7 @@ namespace Stripe;
  */
 class CreditNote extends ApiResource
 {
-    const OBJECT_NAME = "credit_note";
+    const OBJECT_NAME = 'credit_note';
 
     use ApiOperations\All;
     use ApiOperations\Create;

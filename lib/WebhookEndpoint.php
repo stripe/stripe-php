@@ -20,7 +20,7 @@ namespace Stripe;
  */
 class WebhookEndpoint extends ApiResource
 {
-    const OBJECT_NAME = "webhook_endpoint";
+    const OBJECT_NAME = 'webhook_endpoint';
 
     use ApiOperations\All;
     use ApiOperations\Create;

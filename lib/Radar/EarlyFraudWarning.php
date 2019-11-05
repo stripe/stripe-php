@@ -17,7 +17,7 @@ namespace Stripe\Radar;
  */
 class EarlyFraudWarning extends \Stripe\ApiResource
 {
-    const OBJECT_NAME = "radar.early_fraud_warning";
+    const OBJECT_NAME = 'radar.early_fraud_warning';
 
     use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Retrieve;

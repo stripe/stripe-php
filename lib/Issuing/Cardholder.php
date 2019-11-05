@@ -24,7 +24,7 @@ namespace Stripe\Issuing;
  */
 class Cardholder extends \Stripe\ApiResource
 {
-    const OBJECT_NAME = "issuing.cardholder";
+    const OBJECT_NAME = 'issuing.cardholder';
 
     use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Create;

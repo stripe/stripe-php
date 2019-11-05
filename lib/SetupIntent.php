@@ -28,7 +28,7 @@ namespace Stripe;
  */
 class SetupIntent extends ApiResource
 {
-    const OBJECT_NAME = "setup_intent";
+    const OBJECT_NAME = 'setup_intent';
 
     use ApiOperations\All;
     use ApiOperations\Create;

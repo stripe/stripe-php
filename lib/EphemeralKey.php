@@ -17,7 +17,7 @@ namespace Stripe;
  */
 class EphemeralKey extends ApiResource
 {
-    const OBJECT_NAME = "ephemeral_key";
+    const OBJECT_NAME = 'ephemeral_key';
 
     use ApiOperations\Create {
         create as protected _create;

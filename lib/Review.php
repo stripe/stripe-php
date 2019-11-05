@@ -24,7 +24,7 @@ namespace Stripe;
  */
 class Review extends ApiResource
 {
-    const OBJECT_NAME = "review";
+    const OBJECT_NAME = 'review';
 
     use ApiOperations\All;
     use ApiOperations\Retrieve;

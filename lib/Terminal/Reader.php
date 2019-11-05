@@ -19,7 +19,7 @@ namespace Stripe\Terminal;
  */
 class Reader extends \Stripe\ApiResource
 {
-    const OBJECT_NAME = "terminal.reader";
+    const OBJECT_NAME = 'terminal.reader';
 
     use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Create;
