@@ -18,18 +18,18 @@ namespace Stripe;
  * @property string $bitcoin_uri
  * @property int $created
  * @property string $currency
- * @property string $customer
- * @property string $description
- * @property string $email
+ * @property string|null $customer
+ * @property string|null $description
+ * @property string|null $email
  * @property bool $filled
  * @property string $inbound_address
  * @property bool $livemode
- * @property StripeObject $metadata
- * @property string $payment
- * @property string $refund_address
+ * @property \Stripe\StripeObject $metadata
+ * @property string|null $payment
+ * @property string|null $refund_address
  * @property mixed $transactions
  * @property bool $uncaptured_funds
- * @property bool $used_for_payment
+ * @property bool|null $used_for_payment
  *
  * @package Stripe
  */

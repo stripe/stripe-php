@@ -9,19 +9,19 @@ namespace Stripe;
  * @property string $object
  * @property int $amount
  * @property int $amount_reversed
- * @property string $balance_transaction
+ * @property string|null $balance_transaction
  * @property int $created
  * @property string $currency
- * @property string $description
- * @property string $destination
+ * @property string|null $description
+ * @property string|null $destination
  * @property string $destination_payment
  * @property bool $livemode
- * @property StripeObject $metadata
- * @property Collection $reversals
+ * @property \Stripe\StripeObject $metadata
+ * @property \Stripe\Collection $reversals
  * @property bool $reversed
- * @property string $source_transaction
- * @property string $source_type
- * @property string $transfer_group
+ * @property string|null $source_transaction
+ * @property string|null $source_type
+ * @property string|null $transfer_group
  *
  * @package Stripe
  */

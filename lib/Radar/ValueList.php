@@ -13,7 +13,7 @@ namespace Stripe\Radar;
  * @property string $item_type
  * @property \Stripe\Collection $list_items
  * @property bool $livemode
- * @property StripeObject $metadata
+ * @property \Stripe\StripeObject $metadata
  * @property string $name
  *
  * @package Stripe\Radar

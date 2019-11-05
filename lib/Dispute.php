@@ -16,8 +16,8 @@ namespace Stripe;
  * @property mixed $evidence_details
  * @property bool $is_charge_refundable
  * @property bool $livemode
- * @property StripeObject $metadata
- * @property string $network_reason_code
+ * @property \Stripe\StripeObject $metadata
+ * @property string|null $network_reason_code
  * @property string $reason
  * @property string $status
  *

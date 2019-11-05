@@ -12,8 +12,8 @@ namespace Stripe;
  * @property string $currency
  * @property OrderItem[] $items
  * @property bool $livemode
- * @property string $order
- * @property string $refund
+ * @property string|null $order
+ * @property string|null $refund
  *
  * @package Stripe
  */

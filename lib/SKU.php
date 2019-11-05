@@ -11,11 +11,11 @@ namespace Stripe;
  * @property mixed $attributes
  * @property int $created
  * @property string $currency
- * @property string $image
+ * @property string|null $image
  * @property mixed $inventory
  * @property bool $livemode
- * @property StripeObject $metadata
- * @property mixed $package_dimensions
+ * @property \Stripe\StripeObject $metadata
+ * @property mixed|null $package_dimensions
  * @property int $price
  * @property string $product
  * @property int $updated

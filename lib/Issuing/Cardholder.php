@@ -7,15 +7,15 @@ namespace Stripe\Issuing;
  *
  * @property string $id
  * @property string $object
- * @property mixed $authorization_controls
+ * @property mixed|null $authorization_controls
  * @property mixed $billing
  * @property int $created
- * @property string $email
+ * @property string|null $email
  * @property bool $is_default
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property string $name
- * @property string $phone_number
+ * @property string|null $phone_number
  * @property mixed $requirements
  * @property string $status
  * @property string $type

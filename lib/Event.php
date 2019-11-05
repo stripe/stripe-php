@@ -8,12 +8,12 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property string $account
- * @property string $api_version
+ * @property string|null $api_version
  * @property int $created
  * @property mixed $data
  * @property bool $livemode
  * @property int $pending_webhooks
- * @property mixed $request
+ * @property mixed|null $request
  * @property string $type
  *
  * @package Stripe

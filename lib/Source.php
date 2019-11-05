@@ -11,7 +11,7 @@ namespace Stripe;
  * @property mixed $ach_debit
  * @property mixed $acss_debit
  * @property mixed $alipay
- * @property int $amount
+ * @property int|null $amount
  * @property mixed $au_becs_debit
  * @property mixed $bancontact
  * @property mixed $card
@@ -19,7 +19,7 @@ namespace Stripe;
  * @property string $client_secret
  * @property mixed $code_verification
  * @property int $created
- * @property string $currency
+ * @property string|null $currency
  * @property string $customer
  * @property mixed $eps
  * @property string $flow
@@ -27,9 +27,9 @@ namespace Stripe;
  * @property mixed $ideal
  * @property mixed $klarna
  * @property bool $livemode
- * @property StripeObject $metadata
+ * @property \Stripe\StripeObject|null $metadata
  * @property mixed $multibanco
- * @property mixed $owner
+ * @property mixed|null $owner
  * @property mixed $p24
  * @property mixed $receiver
  * @property mixed $redirect
@@ -37,11 +37,11 @@ namespace Stripe;
  * @property mixed $sepa_debit
  * @property mixed $sofort
  * @property mixed $source_order
- * @property string $statement_descriptor
+ * @property string|null $statement_descriptor
  * @property string $status
  * @property mixed $three_d_secure
  * @property string $type
- * @property string $usage
+ * @property string|null $usage
  * @property mixed $wechat
  *
  * @package Stripe

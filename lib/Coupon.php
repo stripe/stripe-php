@@ -7,17 +7,17 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property int $amount_off
+ * @property int|null $amount_off
  * @property int $created
- * @property string $currency
+ * @property string|null $currency
  * @property string $duration
- * @property int $duration_in_months
+ * @property int|null $duration_in_months
  * @property bool $livemode
- * @property int $max_redemptions
- * @property StripeObject $metadata
- * @property string $name
- * @property float $percent_off
- * @property int $redeem_by
+ * @property int|null $max_redemptions
+ * @property \Stripe\StripeObject $metadata
+ * @property string|null $name
+ * @property float|null $percent_off
+ * @property int|null $redeem_by
  * @property int $times_redeemed
  * @property bool $valid
  *

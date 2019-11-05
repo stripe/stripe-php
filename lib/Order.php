@@ -8,25 +8,25 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property int $amount
- * @property int $amount_returned
- * @property string $application
- * @property int $application_fee
- * @property string $charge
+ * @property int|null $amount_returned
+ * @property string|null $application
+ * @property int|null $application_fee
+ * @property string|null $charge
  * @property int $created
  * @property string $currency
- * @property string $customer
- * @property string $email
+ * @property string|null $customer
+ * @property string|null $email
  * @property string $external_coupon_code
  * @property OrderItem[] $items
  * @property bool $livemode
- * @property StripeObject $metadata
- * @property Collection $returns
- * @property string $selected_shipping_method
- * @property mixed $shipping
- * @property array $shipping_methods
+ * @property \Stripe\StripeObject $metadata
+ * @property \Stripe\Collection|null $returns
+ * @property string|null $selected_shipping_method
+ * @property mixed|null $shipping
+ * @property array|null $shipping_methods
  * @property string $status
- * @property mixed $status_transitions
- * @property int $updated
+ * @property mixed|null $status_transitions
+ * @property int|null $updated
  * @property string $upstream_id
  *
  * @package Stripe
