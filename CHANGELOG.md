@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.8.0 - 2019-11-05
+* [#790](https://github.com/stripe/stripe-php/pull/790) Mark nullable fields in PHPDoc
+* [#788](https://github.com/stripe/stripe-php/pull/788) Early codegen fixes
+* [#787](https://github.com/stripe/stripe-php/pull/787) Use PHPStan in Travis CI
+
 ## 7.7.1 - 2019-10-25
 * [#781](https://github.com/stripe/stripe-php/pull/781) Fix telemetry header
 * [#780](https://github.com/stripe/stripe-php/pull/780) Contributor Convenant
