@@ -1,0 +1,69 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  php-cs-fixer:
+    name: PHP-CS-Fixer
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: PHP-CS-Fixer
+        uses: docker://oskarstark/php-cs-fixer-ga
+        with:
+          args: --diff-format=udiff --dry-run --show-progress=dots --using-cache=no --verbose .
+
+  phpstan:
+    name: PHPStan
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: PHPStan
+        uses: docker://oskarstark/phpstan-ga
+        with:
+          args: analyse -c phpstan.neon lib tests
+
+  tests:
+    name: Tests
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        env:
+          - AUTOLOAD=0
+          - AUTOLOAD=1
+        php-version:
+          - "5.6"
+          - "7.0"
+          - "7.1"
+          - "7.2"
+          - "7.3"
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Start stripe-mock
+        run: docker run -d -p 12111-12112:12111-12112 stripemock/stripe-mock && sleep 5
+
+      - name: Run test suite
+        run: ./build.php $env:AUTOLOAD
+
+      - name: Send code coverage report to coveralls.io
+        run: vendor/bin/php-coveralls -c .coveralls.github-actions.yml -v
+        env:
+          COVERALLS_RUN_LOCALLY: 1
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
