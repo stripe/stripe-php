@@ -45,7 +45,7 @@ class Collection extends StripeObject implements \IteratorAggregate
      */
     public function setFilters($filters)
     {
-        $this->filters = $filters;
+        $this->filters = (array) $filters;
         unset($this->filters['starting_after']);
         unset($this->filters['ending_before']);
     }
