@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.11.0 - 2019-11-06
+* [#797](https://github.com/stripe/stripe-php/pull/797) Add support for reverse pagination
+
 ## 7.10.0 - 2019-11-05
 * [#795](https://github.com/stripe/stripe-php/pull/795) Add support for `Mandate`
 
