@@ -83,6 +83,7 @@ abstract class Util
             \Stripe\Issuing\Dispute::OBJECT_NAME => \Stripe\Issuing\Dispute::class,
             \Stripe\Issuing\Transaction::OBJECT_NAME => \Stripe\Issuing\Transaction::class,
             \Stripe\LoginLink::OBJECT_NAME => \Stripe\LoginLink::class,
+            \Stripe\Mandate::OBJECT_NAME => \Stripe\Mandate::class,
             \Stripe\Order::OBJECT_NAME => \Stripe\Order::class,
             \Stripe\OrderItem::OBJECT_NAME => \Stripe\OrderItem::class,
             \Stripe\OrderReturn::OBJECT_NAME => \Stripe\OrderReturn::class,
