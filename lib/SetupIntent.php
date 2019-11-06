@@ -15,12 +15,14 @@ namespace Stripe;
  * @property string|null $description
  * @property mixed|null $last_setup_error
  * @property bool $livemode
+ * @property string|null $mandate
  * @property \Stripe\StripeObject $metadata
  * @property mixed|null $next_action
  * @property string|null $on_behalf_of
  * @property string|null $payment_method
  * @property mixed|null $payment_method_options
  * @property string[] $payment_method_types
+ * @property string|null $single_use_mandate
  * @property string $status
  * @property string $usage
  *

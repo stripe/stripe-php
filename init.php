@@ -100,6 +100,7 @@ require(dirname(__FILE__) . '/lib/Issuing/Cardholder.php');
 require(dirname(__FILE__) . '/lib/Issuing/Dispute.php');
 require(dirname(__FILE__) . '/lib/Issuing/Transaction.php');
 require(dirname(__FILE__) . '/lib/LoginLink.php');
+require(dirname(__FILE__) . '/lib/Mandate.php');
 require(dirname(__FILE__) . '/lib/Order.php');
 require(dirname(__FILE__) . '/lib/OrderItem.php');
 require(dirname(__FILE__) . '/lib/OrderReturn.php');
