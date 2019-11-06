@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.10.0 - 2019-11-05
+* [#795](https://github.com/stripe/stripe-php/pull/795) Add support for `Mandate`
+
 ## 7.9.0 - 2019-11-05
 * [#794](https://github.com/stripe/stripe-php/pull/794) Add PHPDoc to `ApiResponse`
 * [#792](https://github.com/stripe/stripe-php/pull/792) Use single quotes for `OBJECT_NAME` constants
