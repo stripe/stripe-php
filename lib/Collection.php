@@ -18,6 +18,7 @@ class Collection extends StripeObject implements \IteratorAggregate
 
     use ApiOperations\Request;
 
+    /** @var array */
     protected $filters = [];
 
     /**
@@ -46,8 +47,6 @@ class Collection extends StripeObject implements \IteratorAggregate
     public function setFilters($filters)
     {
         $this->filters = $filters;
-        unset($this->filters['starting_after']);
-        unset($this->filters['ending_before']);
     }
 
     public function offsetGet($k)
@@ -114,6 +113,15 @@ class Collection extends StripeObject implements \IteratorAggregate
     }
 
     /**
+     * @return \ArrayIterator An iterator that can be used to iterate
+     *    backwards across objects in the current page.
+     */
+    public function getReverseIterator()
+    {
+        return new \ArrayIterator(array_reverse($this->data));
+    }
+
+    /**
      * @return \Generator|StripeObject[] A generator that can be used to
      *    iterate across all objects across all pages. As page boundaries are
      *    encountered, the next page will be fetched automatically for
@@ -124,11 +132,18 @@ class Collection extends StripeObject implements \IteratorAggregate
         $page = $this;
 
         while (true) {
-            foreach ($page as $item) {
-                yield $item;
+            if (array_key_exists('ending_before', $this->filters) &&
+                !array_key_exists('starting_after', $this->filters)) {
+                foreach ($page->getReverseIterator() as $item) {
+                    yield $item;
+                }
+                $page = $page->previousPage();
+            } else {
+                foreach ($page as $item) {
+                    yield $item;
+                }
+                $page = $page->nextPage();
             }
-
-            $page = $page->nextPage();
 
             if ($page->isEmpty()) {
                 break;
@@ -178,7 +193,7 @@ class Collection extends StripeObject implements \IteratorAggregate
         $lastId = end($this->data)->id;
 
         $params = array_merge(
-            $this->filters,
+            $this->filters ?: [],
             ['starting_after' => $lastId],
             $params ?: []
         );
@@ -198,10 +213,14 @@ class Collection extends StripeObject implements \IteratorAggregate
      */
     public function previousPage($params = null, $opts = null)
     {
+        if (!$this->has_more) {
+            return static::emptyCollection($opts);
+        }
+
         $firstId = $this->data[0]->id;
 
         $params = array_merge(
-            $this->filters,
+            $this->filters ?: [],
             ['ending_before' => $firstId],
             $params ?: []
         );

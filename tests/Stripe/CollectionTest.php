@@ -86,12 +86,34 @@ class CollectionTest extends TestCase
 
     public function testCanIterate()
     {
+        $collection = Collection::constructFrom([
+            'data' => [['id' => 1], ['id' => 2], ['id' => 3]],
+            'has_more' => true,
+            'url' => '/things',
+        ]);
+
         $seen = [];
-        foreach ($this->fixture as $item) {
+        foreach ($collection as $item) {
             array_push($seen, $item['id']);
         }
 
-        $this->assertSame([1], $seen);
+        $this->assertSame([1, 2, 3], $seen);
+    }
+
+    public function testCanIterateBackwards()
+    {
+        $collection = Collection::constructFrom([
+            'data' => [['id' => 1], ['id' => 2], ['id' => 3]],
+            'has_more' => true,
+            'url' => '/things',
+        ]);
+
+        $seen = [];
+        foreach ($collection->getReverseIterator() as $item) {
+            array_push($seen, $item['id']);
+        }
+
+        $this->assertSame([3, 2, 1], $seen);
     }
 
     public function testSupportsIteratorToArray()
@@ -152,6 +174,38 @@ class CollectionTest extends TestCase
         }
 
         $this->assertSame([1, 2, 3], $seen);
+    }
+
+    public function testProvidesAutoPagingIteratorThatSupportsBackwardsPagination()
+    {
+        $this->stubRequest(
+            'GET',
+            '/things',
+            [
+                'ending_before' => 3,
+            ],
+            null,
+            false,
+            [
+                'object' => 'list',
+                'data' => [['id' => 1], ['id' => 2]],
+                'has_more' => false,
+            ]
+        );
+
+        $collection = Collection::constructFrom([
+            'data' => [['id' => 3]],
+            'has_more' => true,
+            'url' => '/things',
+        ]);
+        $collection->setFilters(['ending_before' => 4]);
+
+        $seen = [];
+        foreach ($collection->autoPagingIterator() as $item) {
+            array_push($seen, $item['id']);
+        }
+
+        $this->assertSame([3, 2, 1], $seen);
     }
 
     public function testHeaders()
