@@ -1,10 +1,8 @@
 <?php
 
-namespace Stripe;
+namespace Stripe\HttpClient;
 
-use Stripe\HttpClient\CurlClient;
-
-class CurlClientTest extends TestCase
+class CurlClientTest extends \Stripe\TestCase
 {
     /** @var \ReflectionProperty */
     private $initialNetworkRetryDelayProperty;
@@ -32,9 +30,9 @@ class CurlClientTest extends TestCase
      */
     public function saveOriginalNetworkValues()
     {
-        $this->origMaxNetworkRetries = Stripe::getMaxNetworkRetries();
-        $this->origMaxNetworkRetryDelay = Stripe::getMaxNetworkRetryDelay();
-        $this->origInitialNetworkRetryDelay = Stripe::getInitialNetworkRetryDelay();
+        $this->origMaxNetworkRetries = \Stripe\Stripe::getMaxNetworkRetries();
+        $this->origMaxNetworkRetryDelay = \Stripe\Stripe::getMaxNetworkRetryDelay();
+        $this->origInitialNetworkRetryDelay = \Stripe\Stripe::getInitialNetworkRetryDelay();
     }
 
     /**
@@ -50,7 +48,7 @@ class CurlClientTest extends TestCase
         $this->initialNetworkRetryDelayProperty = $stripeReflector->getProperty('initialNetworkRetryDelay');
         $this->initialNetworkRetryDelayProperty->setAccessible(true);
 
-        $curlClientReflector = new \ReflectionClass('Stripe\HttpClient\CurlClient');
+        $curlClientReflector = new \ReflectionClass('\Stripe\HttpClient\CurlClient');
 
         $this->shouldRetryMethod = $curlClientReflector->getMethod('shouldRetry');
         $this->shouldRetryMethod->setAccessible(true);
@@ -64,7 +62,7 @@ class CurlClientTest extends TestCase
      */
     public function restoreOriginalNetworkValues()
     {
-        Stripe::setMaxNetworkRetries($this->origMaxNetworkRetries);
+        \Stripe\Stripe::setMaxNetworkRetries($this->origMaxNetworkRetries);
         $this->setMaxNetworkRetryDelay($this->origMaxNetworkRetryDelay);
         $this->setInitialNetworkRetryDelay($this->origInitialNetworkRetryDelay);
     }
@@ -81,7 +79,7 @@ class CurlClientTest extends TestCase
 
     private function createFakeRandomGenerator($returnValue = 1.0)
     {
-        $fakeRandomGenerator = $this->createMock('Stripe\Util\RandomGenerator');
+        $fakeRandomGenerator = $this->createMock('\Stripe\Util\RandomGenerator');
         $fakeRandomGenerator->method('randFloat')->willReturn($returnValue);
         return $fakeRandomGenerator;
     }
@@ -147,7 +145,7 @@ class CurlClientTest extends TestCase
 
     public function testShouldRetryOnTimeout()
     {
-        Stripe::setMaxNetworkRetries(2);
+        \Stripe\Stripe::setMaxNetworkRetries(2);
 
         $curlClient = new CurlClient();
 
@@ -156,7 +154,7 @@ class CurlClientTest extends TestCase
 
     public function testShouldRetryOnConnectionFailure()
     {
-        Stripe::setMaxNetworkRetries(2);
+        \Stripe\Stripe::setMaxNetworkRetries(2);
 
         $curlClient = new CurlClient();
 
@@ -165,7 +163,7 @@ class CurlClientTest extends TestCase
 
     public function testShouldRetryOnConflict()
     {
-        Stripe::setMaxNetworkRetries(2);
+        \Stripe\Stripe::setMaxNetworkRetries(2);
 
         $curlClient = new CurlClient();
 
@@ -175,7 +173,7 @@ class CurlClientTest extends TestCase
 
     public function testShouldNotRetryOn429()
     {
-        Stripe::setMaxNetworkRetries(2);
+        \Stripe\Stripe::setMaxNetworkRetries(2);
 
         $curlClient = new CurlClient();
 
@@ -184,7 +182,7 @@ class CurlClientTest extends TestCase
 
     public function testShouldRetryOn500()
     {
-        Stripe::setMaxNetworkRetries(2);
+        \Stripe\Stripe::setMaxNetworkRetries(2);
 
         $curlClient = new CurlClient();
 
@@ -193,7 +191,7 @@ class CurlClientTest extends TestCase
 
     public function testShouldRetryOn503()
     {
-        Stripe::setMaxNetworkRetries(2);
+        \Stripe\Stripe::setMaxNetworkRetries(2);
 
         $curlClient = new CurlClient();
 
@@ -202,7 +200,7 @@ class CurlClientTest extends TestCase
 
     public function testShouldRetryOnStripeShouldRetryTrue()
     {
-        Stripe::setMaxNetworkRetries(2);
+        \Stripe\Stripe::setMaxNetworkRetries(2);
 
         $curlClient = new CurlClient();
 
@@ -212,7 +210,7 @@ class CurlClientTest extends TestCase
 
     public function testShouldNotRetryOnStripeShouldRetryFalse()
     {
-        Stripe::setMaxNetworkRetries(2);
+        \Stripe\Stripe::setMaxNetworkRetries(2);
 
         $curlClient = new CurlClient();
 
@@ -222,16 +220,16 @@ class CurlClientTest extends TestCase
 
     public function testShouldNotRetryAtMaximumCount()
     {
-        Stripe::setMaxNetworkRetries(2);
+        \Stripe\Stripe::setMaxNetworkRetries(2);
 
         $curlClient = new CurlClient();
 
-        $this->assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 0, [], Stripe::getMaxNetworkRetries()));
+        $this->assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 0, [], \Stripe\Stripe::getMaxNetworkRetries()));
     }
 
     public function testShouldNotRetryOnCertValidationError()
     {
-        Stripe::setMaxNetworkRetries(2);
+        \Stripe\Stripe::setMaxNetworkRetries(2);
 
         $curlClient = new CurlClient();
 
@@ -245,19 +243,19 @@ class CurlClientTest extends TestCase
         $curlClient = new CurlClient(null, $this->createFakeRandomGenerator());
 
         $this->assertEquals(
-            Stripe::getInitialNetworkRetryDelay() * 1,
+            \Stripe\Stripe::getInitialNetworkRetryDelay() * 1,
             $this->sleepTimeMethod->invoke($curlClient, 1, [])
         );
         $this->assertEquals(
-            Stripe::getInitialNetworkRetryDelay() * 2,
+            \Stripe\Stripe::getInitialNetworkRetryDelay() * 2,
             $this->sleepTimeMethod->invoke($curlClient, 2, [])
         );
         $this->assertEquals(
-            Stripe::getInitialNetworkRetryDelay() * 4,
+            \Stripe\Stripe::getInitialNetworkRetryDelay() * 4,
             $this->sleepTimeMethod->invoke($curlClient, 3, [])
         );
         $this->assertEquals(
-            Stripe::getInitialNetworkRetryDelay() * 8,
+            \Stripe\Stripe::getInitialNetworkRetryDelay() * 8,
             $this->sleepTimeMethod->invoke($curlClient, 4, [])
         );
     }
@@ -298,11 +296,11 @@ class CurlClientTest extends TestCase
 
         $curlClient = new CurlClient(null, $this->createFakeRandomGenerator($randomValue));
 
-        $baseValue = Stripe::getInitialNetworkRetryDelay() * (0.5 * (1 + $randomValue));
+        $baseValue = \Stripe\Stripe::getInitialNetworkRetryDelay() * (0.5 * (1 + $randomValue));
 
         // the initial value cannot be smaller than the base,
         // so the randomness is ignored
-        $this->assertEquals(Stripe::getInitialNetworkRetryDelay(), $this->sleepTimeMethod->invoke($curlClient, 1, []));
+        $this->assertEquals(\Stripe\Stripe::getInitialNetworkRetryDelay(), $this->sleepTimeMethod->invoke($curlClient, 1, []));
 
         // after the first one, the randomness is applied
         $this->assertEquals($baseValue * 2, $this->sleepTimeMethod->invoke($curlClient, 2, []));
@@ -312,7 +310,7 @@ class CurlClientTest extends TestCase
 
     public function testResponseHeadersCaseInsensitive()
     {
-        $charge = Charge::all();
+        $charge = \Stripe\Charge::all();
 
         $headers = $charge->getLastResponse()->headers;
         $this->assertNotNull($headers['request-id']);
@@ -339,7 +337,7 @@ class CurlClientTest extends TestCase
 
             \Stripe\ApiRequestor::setHttpClient($curl);
 
-            Charge::all();
+            \Stripe\Charge::all();
 
             $this->assertTrue($called);
         } finally {

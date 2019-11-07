@@ -28,7 +28,17 @@
     "friendsofphp/php-cs-fixer": "^2.15"
   },
   "autoload": {
-    "psr-4": { "Stripe\\" : "lib/" }
+    "psr-4": {
+      "Stripe\\": "lib/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Stripe\\": [
+        "tests/",
+        "tests/Stripe/"
+      ]
+    }
   },
   "extra": {
     "branch-alias": {

@@ -1,33 +1,33 @@
 <?php
 
-namespace Stripe;
+namespace Stripe\Util;
 
-class RequestOptionsTest extends TestCase
+class RequestOptionsTest extends \Stripe\TestCase
 {
     public function testStringAPIKey()
     {
-        $opts = Util\RequestOptions::parse("foo");
+        $opts = RequestOptions::parse("foo");
         $this->assertSame("foo", $opts->apiKey);
         $this->assertSame([], $opts->headers);
     }
 
     public function testNull()
     {
-        $opts = Util\RequestOptions::parse(null);
+        $opts = RequestOptions::parse(null);
         $this->assertSame(null, $opts->apiKey);
         $this->assertSame([], $opts->headers);
     }
 
     public function testEmptyArray()
     {
-        $opts = Util\RequestOptions::parse([]);
+        $opts = RequestOptions::parse([]);
         $this->assertSame(null, $opts->apiKey);
         $this->assertSame([], $opts->headers);
     }
 
     public function testAPIKeyArray()
     {
-        $opts = Util\RequestOptions::parse(
+        $opts = RequestOptions::parse(
             [
                 'api_key' => 'foo',
             ]
@@ -38,7 +38,7 @@ class RequestOptionsTest extends TestCase
 
     public function testIdempotentKeyArray()
     {
-        $opts = Util\RequestOptions::parse(
+        $opts = RequestOptions::parse(
             [
                 'idempotency_key' => 'foo',
             ]
@@ -49,7 +49,7 @@ class RequestOptionsTest extends TestCase
 
     public function testKeyArray()
     {
-        $opts = Util\RequestOptions::parse(
+        $opts = RequestOptions::parse(
             [
                 'idempotency_key' => 'foo',
                 'api_key' => 'foo'
@@ -64,12 +64,12 @@ class RequestOptionsTest extends TestCase
      */
     public function testWrongType()
     {
-        $opts = Util\RequestOptions::parse(5);
+        $opts = RequestOptions::parse(5);
     }
 
     public function testDiscardNonPersistentHeaders()
     {
-        $opts = Util\RequestOptions::parse(
+        $opts = RequestOptions::parse(
             [
                 'stripe_account' => 'foo',
                 'idempotency_key' => 'foo',
@@ -81,15 +81,15 @@ class RequestOptionsTest extends TestCase
 
     public function testDebugInfo()
     {
-        $opts = Util\RequestOptions::parse(['api_key' => 'sk_test_1234567890abcdefghijklmn']);
+        $opts = RequestOptions::parse(['api_key' => 'sk_test_1234567890abcdefghijklmn']);
         $debugInfo = print_r($opts, true);
         $this->assertContains("[apiKey] => sk_test_********************klmn", $debugInfo);
 
-        $opts = Util\RequestOptions::parse(['api_key' => 'sk_1234567890abcdefghijklmn']);
+        $opts = RequestOptions::parse(['api_key' => 'sk_1234567890abcdefghijklmn']);
         $debugInfo = print_r($opts, true);
         $this->assertContains("[apiKey] => sk_********************klmn", $debugInfo);
 
-        $opts = Util\RequestOptions::parse(['api_key' => '1234567890abcdefghijklmn']);
+        $opts = RequestOptions::parse(['api_key' => '1234567890abcdefghijklmn']);
         $debugInfo = print_r($opts, true);
         $this->assertContains("[apiKey] => ********************klmn", $debugInfo);
     }

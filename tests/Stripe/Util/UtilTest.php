@@ -1,16 +1,16 @@
 <?php
 
-namespace Stripe;
+namespace Stripe\Util;
 
-class UtilTest extends TestCase
+class UtilTest extends \Stripe\TestCase
 {
     public function testIsList()
     {
         $list = [5, 'nstaoush', []];
-        $this->assertTrue(Util\Util::isList($list));
+        $this->assertTrue(Util::isList($list));
 
         $notlist = [5, 'nstaoush', [], 'bar' => 'baz'];
-        $this->assertFalse(Util\Util::isList($notlist));
+        $this->assertFalse(Util::isList($notlist));
     }
 
     public function testThatPHPHasValueSemanticsForArrays()
@@ -24,7 +24,7 @@ class UtilTest extends TestCase
 
     public function testConvertStripeObjectToArrayIncludesId()
     {
-        $customer = Util\Util::convertToStripeObject(
+        $customer = Util::convertToStripeObject(
             [
                 'id' => 'cus_123',
                 'object' => 'customer',
@@ -38,22 +38,22 @@ class UtilTest extends TestCase
     {
         // UTF-8 string
         $x = "\xc3\xa9";
-        $this->assertSame(Util\Util::utf8($x), $x);
+        $this->assertSame(Util::utf8($x), $x);
 
         // Latin-1 string
         $x = "\xe9";
-        $this->assertSame(Util\Util::utf8($x), "\xc3\xa9");
+        $this->assertSame(Util::utf8($x), "\xc3\xa9");
 
         // Not a string
         $x = true;
-        $this->assertSame(Util\Util::utf8($x), $x);
+        $this->assertSame(Util::utf8($x), $x);
     }
 
     public function testObjectsToIds()
     {
         $params = [
             'foo' => 'bar',
-            'customer' => Util\Util::convertToStripeObject(
+            'customer' => Util::convertToStripeObject(
                 [
                     'id' => 'cus_123',
                     'object' => 'customer',
@@ -68,7 +68,7 @@ class UtilTest extends TestCase
                 'foo' => 'bar',
                 'customer' => 'cus_123',
             ],
-            Util\Util::objectsToIds($params)
+            Util::objectsToIds($params)
         );
     }
 
@@ -88,16 +88,16 @@ class UtilTest extends TestCase
 
         $this->assertSame(
             "a=3&b=%2Bfoo%3F&c=bar%26baz&d[a]=a&d[b]=b&e[0]=0&e[1]=1&f=",
-            Util\Util::encodeParameters($params)
+            Util::encodeParameters($params)
         );
     }
 
     public function testUrlEncode()
     {
-        $this->assertSame("foo", Util\Util::urlEncode("foo"));
-        $this->assertSame("foo%2B", Util\Util::urlEncode("foo+"));
-        $this->assertSame("foo%26", Util\Util::urlEncode("foo&"));
-        $this->assertSame("foo[bar]", Util\Util::urlEncode("foo[bar]"));
+        $this->assertSame("foo", Util::urlEncode("foo"));
+        $this->assertSame("foo%2B", Util::urlEncode("foo+"));
+        $this->assertSame("foo%26", Util::urlEncode("foo&"));
+        $this->assertSame("foo[bar]", Util::urlEncode("foo[bar]"));
     }
 
     public function testFlattenParams()
@@ -128,7 +128,7 @@ class UtilTest extends TestCase
                 ['f[1][foo]', '3'],
                 ['f[1][bar]', '4'],
             ],
-            Util\Util::flattenParams($params)
+            Util::flattenParams($params)
         );
     }
 }
