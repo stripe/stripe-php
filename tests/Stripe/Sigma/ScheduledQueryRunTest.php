@@ -2,7 +2,7 @@
 
 namespace Stripe\Sigma;
 
-class AuthorizationTest extends \Stripe\TestCase
+class ScheduledQueryRunTest extends \Stripe\TestCase
 {
     const TEST_RESOURCE_ID = 'sqr_123';
 
