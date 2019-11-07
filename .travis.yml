@@ -70,4 +70,4 @@ script:
   - ./vendor/bin/php-cs-fixer fix -v --dry-run --using-cache=no .
   - if [[ `php -r "echo \version_compare(PHP_VERSION, '7.1', '>=');"` && $AUTOLOAD == 1 ]]; then make phpstan; fi
 
-after_script: ./vendor/bin/coveralls -v
+after_script: ./vendor/bin/php-coveralls -v
