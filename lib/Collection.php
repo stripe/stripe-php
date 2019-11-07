@@ -132,8 +132,9 @@ class Collection extends StripeObject implements \IteratorAggregate
         $page = $this;
 
         while (true) {
-            if (array_key_exists('ending_before', $this->filters) &&
-                !array_key_exists('starting_after', $this->filters)) {
+            $filters = $this->filters ?: [];
+            if (array_key_exists('ending_before', $filters) &&
+                !array_key_exists('starting_after', $filters)) {
                 foreach ($page->getReverseIterator() as $item) {
                     yield $item;
                 }
