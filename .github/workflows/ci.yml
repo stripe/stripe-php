@@ -50,6 +50,13 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: ${{ matrix.php-version }}
+          extension-csv: curl, json, mbstring, simplexml, xdebug
+          coverage: xdebug
+
       - name: Validate composer.json and composer.lock
         run: composer validate
 
@@ -60,7 +67,9 @@ jobs:
         run: docker run -d -p 12111-12112:12111-12112 stripemock/stripe-mock && sleep 5
 
       - name: Run test suite
-        run: ./build.php $env:AUTOLOAD
+        run: |
+          php --version
+          ./build.php $env:AUTOLOAD
 
       - name: Send code coverage report to coveralls.io
         run: vendor/bin/php-coveralls -c .coveralls.github-actions.yml -v
