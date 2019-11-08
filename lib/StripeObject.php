@@ -509,7 +509,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             $values = $obj->_values;
         } else {
             throw new Exception\InvalidArgumentException(
-                "empty_values got got unexpected object type: " . get_class($obj)
+                "empty_values got unexpected object type: " . get_class($obj)
             );
         }
         $update = array_fill_keys(array_keys($values), "");
