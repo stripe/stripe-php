@@ -123,12 +123,11 @@ class SourceTest extends TestCase
 
     public function testCanListSourceTransactions()
     {
-        $source_id = self::TEST_RESOURCE_ID;
         $this->expectsRequest(
             'get',
-            '/v1/sources/' . $source_id . "/source_transactions"
+            '/v1/sources/' . self::TEST_RESOURCE_ID . "/source_transactions"
         );
-        $resources = Source::allSourceTransactions($source_id);
+        $resources = Source::allSourceTransactions(self::TEST_RESOURCE_ID);
         $this->assertTrue(is_array($resources->data));
         $this->assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
     }
