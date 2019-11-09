@@ -45,6 +45,8 @@ class SubscriptionItem extends ApiResource
     }
 
     /**
+     * @deprecated usageRecordSummaries is deprecated. Please use SubscriptionItem::allUsageRecordSummaries instead.
+     *
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -59,5 +61,19 @@ class SubscriptionItem extends ApiResource
         $obj = \Stripe\Util\Util::convertToStripeObject($response, $opts);
         $obj->setLastResponse($response);
         return $obj;
+    }
+
+    /**
+     * @param string $id
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return Collection The list of usage record summaries.
+     */
+    public static function allUsageRecordSummaries($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, '/usage_record_summaries', $params, $opts);
     }
 }

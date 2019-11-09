@@ -109,7 +109,7 @@ class SourceTest extends TestCase
         $resource->detach();
     }
 
-    public function testCanListSourceTransactions()
+    public function testCanListSourceTransactionsDeprecated()
     {
         $source = Source::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
@@ -117,6 +117,17 @@ class SourceTest extends TestCase
             '/v1/sources/' . $source->id . "/source_transactions"
         );
         $resources = $source->sourceTransactions();
+        $this->assertTrue(is_array($resources->data));
+        $this->assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
+    }
+
+    public function testCanListSourceTransactions()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/sources/' . self::TEST_RESOURCE_ID . "/source_transactions"
+        );
+        $resources = Source::allSourceTransactions(self::TEST_RESOURCE_ID);
         $this->assertTrue(is_array($resources->data));
         $this->assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
     }
