@@ -16,7 +16,7 @@ class CustomerTest extends TestCase
             '/v1/customers'
         );
         $resources = Customer::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Customer::class, $resources->data[0]);
     }
 
@@ -131,7 +131,7 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/sources'
         );
         $resources = Customer::allSources(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
     }
 
     public function testSerializeSourceString()
@@ -207,7 +207,7 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/tax_ids'
         );
         $resources = Customer::allTaxIds(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
     }
 
     public function testCanCreateBalanceTransaction()
@@ -247,6 +247,6 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/balance_transactions'
         );
         $resources = Customer::allBalanceTransactions(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
     }
 }

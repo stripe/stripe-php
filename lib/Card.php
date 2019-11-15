@@ -91,8 +91,8 @@ class Card extends ApiResource
             $msg = "Cards cannot be accessed without a customer ID, account ID or recipient ID.";
             throw new Exception\UnexpectedValueException($msg);
         }
-        $parentExtn = urlencode(Util\Util::utf8($parent));
-        $extn = urlencode(Util\Util::utf8($this['id']));
+        $parentExtn = \urlencode(Util\Util::utf8($parent));
+        $extn = \urlencode(Util\Util::utf8($this['id']));
         return "$base/$parentExtn/$path/$extn";
     }
 

@@ -13,7 +13,7 @@ class CouponTest extends TestCase
             '/v1/coupons'
         );
         $resources = Coupon::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Coupon::class, $resources->data[0]);
     }
 

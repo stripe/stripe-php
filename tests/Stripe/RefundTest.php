@@ -13,7 +13,7 @@ class RefundTest extends TestCase
             '/v1/refunds'
         );
         $resources = Refund::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Refund::class, $resources->data[0]);
     }
 

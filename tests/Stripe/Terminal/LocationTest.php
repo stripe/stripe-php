@@ -13,7 +13,7 @@ class LocationTest extends \Stripe\TestCase
             '/v1/terminal/locations'
         );
         $resources = Location::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Terminal\Location::class, $resources->data[0]);
     }
 

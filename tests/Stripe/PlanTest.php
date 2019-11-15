@@ -13,7 +13,7 @@ class PlanTest extends TestCase
             '/v1/plans'
         );
         $resources = Plan::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Plan::class, $resources->data[0]);
     }
 

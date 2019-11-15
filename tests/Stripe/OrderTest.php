@@ -13,7 +13,7 @@ class OrderTest extends TestCase
             '/v1/orders'
         );
         $resources = Order::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Order::class, $resources->data[0]);
     }
 

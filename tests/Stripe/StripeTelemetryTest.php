@@ -40,7 +40,7 @@ class StripeTelemetryTest extends TestCase
                 $this->callback(function ($headers) use (&$requestheaders) {
                     foreach ($headers as $index => $header) {
                         // capture the requested headers and format back to into an assoc array
-                        $components = explode(": ", $header, 2);
+                        $components = \explode(": ", $header, 2);
                         $requestheaders[$components[0]] = $components[1];
                     }
 
@@ -82,7 +82,7 @@ class StripeTelemetryTest extends TestCase
                 $this->callback(function ($headers) use (&$requestheaders) {
                     // capture the requested headers and format back to into an assoc array
                     foreach ($headers as $index => $header) {
-                        $components = explode(": ", $header, 2);
+                        $components = \explode(": ", $header, 2);
                         $requestheaders[$components[0]] = $components[1];
                     }
 
@@ -102,7 +102,7 @@ class StripeTelemetryTest extends TestCase
         Charge::all();
         $this->assertArrayHasKey('X-Stripe-Client-Telemetry', $requestheaders);
 
-        $data = json_decode($requestheaders['X-Stripe-Client-Telemetry'], true);
+        $data = \json_decode($requestheaders['X-Stripe-Client-Telemetry'], true);
         $this->assertEquals('req_123', $data['last_request_metrics']['request_id']);
         $this->assertNotNull($data['last_request_metrics']['request_duration_ms']);
 

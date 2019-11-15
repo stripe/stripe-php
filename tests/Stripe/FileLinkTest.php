@@ -13,7 +13,7 @@ class FileLinkTest extends TestCase
             '/v1/file_links'
         );
         $resources = FileLink::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\FileLink::class, $resources->data[0]);
     }
 

@@ -12,14 +12,14 @@ class WebhookTest extends TestCase
 
     private function generateHeader($opts = [])
     {
-        $timestamp = array_key_exists('timestamp', $opts) ? $opts['timestamp'] : time();
-        $payload = array_key_exists('payload', $opts) ? $opts['payload'] : self::EVENT_PAYLOAD;
-        $secret = array_key_exists('secret', $opts) ? $opts['secret'] : self::SECRET;
-        $scheme = array_key_exists('scheme', $opts) ? $opts['scheme'] : WebhookSignature::EXPECTED_SCHEME;
-        $signature = array_key_exists('signature', $opts) ? $opts['signature'] : null;
+        $timestamp = \array_key_exists('timestamp', $opts) ? $opts['timestamp'] : \time();
+        $payload = \array_key_exists('payload', $opts) ? $opts['payload'] : self::EVENT_PAYLOAD;
+        $secret = \array_key_exists('secret', $opts) ? $opts['secret'] : self::SECRET;
+        $scheme = \array_key_exists('scheme', $opts) ? $opts['scheme'] : WebhookSignature::EXPECTED_SCHEME;
+        $signature = \array_key_exists('signature', $opts) ? $opts['signature'] : null;
         if ($signature === null) {
             $signedPayload = "$timestamp.$payload";
-            $signature = hash_hmac("sha256", $signedPayload, $secret);
+            $signature = \hash_hmac("sha256", $signedPayload, $secret);
         }
         return "t=$timestamp,$scheme=$signature";
     }
@@ -86,7 +86,7 @@ class WebhookTest extends TestCase
      */
     public function testTimestampTooOld()
     {
-        $sigHeader = $this->generateHeader(["timestamp" => time() - 15]);
+        $sigHeader = $this->generateHeader(["timestamp" => \time() - 15]);
         WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10);
     }
 
@@ -96,7 +96,7 @@ class WebhookTest extends TestCase
      */
     public function testTimestampTooRecent()
     {
-        $sigHeader = $this->generateHeader(["timestamp" => time() + 15]);
+        $sigHeader = $this->generateHeader(["timestamp" => \time() + 15]);
         WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10);
     }
 

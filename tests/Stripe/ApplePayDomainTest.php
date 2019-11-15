@@ -13,7 +13,7 @@ class ApplePayDomainTest extends TestCase
             '/v1/apple_pay/domains'
         );
         $resources = ApplePayDomain::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\ApplePayDomain::class, $resources->data[0]);
     }
 

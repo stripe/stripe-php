@@ -13,7 +13,7 @@ class PayoutTest extends TestCase
             '/v1/payouts'
         );
         $resources = Payout::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Payout::class, $resources->data[0]);
     }
 

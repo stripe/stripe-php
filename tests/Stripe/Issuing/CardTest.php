@@ -13,7 +13,7 @@ class CardTest extends \Stripe\TestCase
             '/v1/issuing/cards'
         );
         $resources = Card::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Issuing\Card::class, $resources->data[0]);
     }
 

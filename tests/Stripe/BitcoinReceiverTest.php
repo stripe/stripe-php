@@ -16,7 +16,7 @@ class BitcoinReceiverTest extends TestCase
             'metadata' => [],
         ];
         return BitcoinReceiver::constructFrom(
-            array_merge($params, $base),
+            \array_merge($params, $base),
             new Util\RequestOptions()
         );
     }
@@ -46,8 +46,8 @@ class BitcoinReceiverTest extends TestCase
             '/v1/bitcoin/receivers'
         );
         $resources = BitcoinReceiver::all();
-        $this->assertTrue(is_array($resources->data));
-        $this->assertSame(\Stripe\BitcoinReceiver::class, get_class($resources->data[0]));
+        $this->assertTrue(\is_array($resources->data));
+        $this->assertSame(\Stripe\BitcoinReceiver::class, \get_class($resources->data[0]));
     }
 
     public function testIsRetrievable()
@@ -57,6 +57,6 @@ class BitcoinReceiverTest extends TestCase
             '/v1/bitcoin/receivers/' . self::TEST_RESOURCE_ID
         );
         $resource = BitcoinReceiver::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame(\Stripe\BitcoinReceiver::class, get_class($resource));
+        $this->assertSame(\Stripe\BitcoinReceiver::class, \get_class($resource));
     }
 }

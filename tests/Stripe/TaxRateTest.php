@@ -13,7 +13,7 @@ class TaxRateTest extends TestCase
             '/v1/tax_rates'
         );
         $resources = TaxRate::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\TaxRate::class, $resources->data[0]);
     }
 

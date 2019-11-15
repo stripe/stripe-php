@@ -13,7 +13,7 @@ class InvoiceTest extends TestCase
             '/v1/invoices'
         );
         $resources = Invoice::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Invoice::class, $resources->data[0]);
     }
 

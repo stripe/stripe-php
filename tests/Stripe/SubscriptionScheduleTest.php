@@ -14,7 +14,7 @@ class SubscriptionScheduleTest extends TestCase
             '/v1/subscription_schedules'
         );
         $resources = SubscriptionSchedule::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resources->data[0]);
     }
 

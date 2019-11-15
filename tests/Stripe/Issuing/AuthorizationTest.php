@@ -13,7 +13,7 @@ class AuthorizationTest extends \Stripe\TestCase
             '/v1/issuing/authorizations'
         );
         $resources = Authorization::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Issuing\Authorization::class, $resources->data[0]);
     }
 

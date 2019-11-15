@@ -16,8 +16,8 @@ class OAuthTest extends TestCase
             ],
         ]);
 
-        $uri = parse_url($uriStr);
-        parse_str($uri['query'], $params);
+        $uri = \parse_url($uriStr);
+        \parse_str($uri['query'], $params);
 
         $this->assertSame('https', $uri['scheme']);
         $this->assertSame('connect.stripe.com', $uri['host']);

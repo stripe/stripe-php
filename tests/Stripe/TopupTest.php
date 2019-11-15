@@ -13,7 +13,7 @@ class TopupTest extends TestCase
             '/v1/topups'
         );
         $resources = Topup::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Topup::class, $resources->data[0]);
     }
 

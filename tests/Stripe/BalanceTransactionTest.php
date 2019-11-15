@@ -13,7 +13,7 @@ class BalanceTransactionTest extends TestCase
             '/v1/balance_transactions'
         );
         $resources = BalanceTransaction::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\BalanceTransaction::class, $resources->data[0]);
     }
 

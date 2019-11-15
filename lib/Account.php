@@ -110,7 +110,7 @@ class Account extends ApiResource
      */
     public static function retrieve($id = null, $opts = null)
     {
-        if (!$opts && is_string($id) && substr($id, 0, 3) === 'sk_') {
+        if (!$opts && \is_string($id) && \substr($id, 0, 3) === 'sk_') {
             $opts = $id;
             $id = null;
         }
@@ -406,7 +406,7 @@ class Account extends ApiResource
         } else {
             $originalValue = [];
         }
-        if (($originalValue) && (count($originalValue) > count($additionalOwners))) {
+        if (($originalValue) && (\count($originalValue) > \count($additionalOwners))) {
             throw new Exception\InvalidArgumentException(
                 "You cannot delete an item from an array, you must instead set a new array"
             );
@@ -418,7 +418,7 @@ class Account extends ApiResource
 
             if ($update !== []) {
                 if (!$originalValue ||
-                    !array_key_exists($i, $originalValue) ||
+                    !\array_key_exists($i, $originalValue) ||
                     ($update != $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
                     $updateArr[$i] = $update;
                 }

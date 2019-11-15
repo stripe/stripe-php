@@ -16,7 +16,7 @@ class AccountTest extends TestCase
             '/v1/accounts'
         );
         $resources = Account::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Account::class, $resources->data[0]);
     }
 
@@ -126,7 +126,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . $account->id . '/persons'
         );
         $persons = $account->persons();
-        $this->assertTrue(is_array($persons->data));
+        $this->assertTrue(\is_array($persons->data));
         $this->assertInstanceOf(\Stripe\Person::class, $persons->data[0]);
     }
 
@@ -159,7 +159,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/capabilities'
         );
         $resources = Account::allCapabilities(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
     }
 
     public function testCanCreateExternalAccount()
@@ -213,7 +213,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts'
         );
         $resources = Account::allExternalAccounts(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
     }
 
     public function testCanCreateLoginLink()
@@ -281,7 +281,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons'
         );
         $resources = Account::allPersons(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
     }
 
     public function testSerializeNewAdditionalOwners()

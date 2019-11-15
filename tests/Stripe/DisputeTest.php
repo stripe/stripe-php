@@ -13,7 +13,7 @@ class DisputeTest extends TestCase
             '/v1/disputes'
         );
         $resources = Dispute::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Dispute::class, $resources->data[0]);
     }
 

@@ -27,7 +27,7 @@ class CaseInsensitiveArrayTest extends \Stripe\TestCase
     {
         $arr = new CaseInsensitiveArray(["One" => "1", "TWO" => "2"]);
 
-        $this->assertSame(2, count($arr));
+        $this->assertSame(2, \count($arr));
     }
 
     public function testIterable()

@@ -13,7 +13,7 @@ class SKUTest extends TestCase
             '/v1/skus'
         );
         $resources = SKU::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\SKU::class, $resources->data[0]);
     }
 

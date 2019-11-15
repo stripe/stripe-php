@@ -13,7 +13,7 @@ class SubscriptionTest extends TestCase
             '/v1/subscriptions'
         );
         $resources = Subscription::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Subscription::class, $resources->data[0]);
     }
 

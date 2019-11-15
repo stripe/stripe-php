@@ -19,7 +19,7 @@ class AlipayAccountTest extends TestCase
             'metadata' => [],
         ];
         return AlipayAccount::constructFrom(
-            array_merge($params, $base),
+            \array_merge($params, $base),
             new Util\RequestOptions()
         );
     }
@@ -50,7 +50,7 @@ class AlipayAccountTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame(\Stripe\AlipayAccount::class, get_class($resource));
+        $this->assertSame(\Stripe\AlipayAccount::class, \get_class($resource));
     }
 
     /**
@@ -71,6 +71,6 @@ class AlipayAccountTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertSame(\Stripe\AlipayAccount::class, get_class($resource));
+        $this->assertSame(\Stripe\AlipayAccount::class, \get_class($resource));
     }
 }

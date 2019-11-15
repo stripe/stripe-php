@@ -13,7 +13,7 @@ class RecipientTest extends TestCase
             '/v1/recipients'
         );
         $resources = Recipient::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Recipient::class, $resources->data[0]);
     }
 

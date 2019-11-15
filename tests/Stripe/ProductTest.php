@@ -13,7 +13,7 @@ class ProductTest extends TestCase
             '/v1/products'
         );
         $resources = Product::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Product::class, $resources->data[0]);
     }
 

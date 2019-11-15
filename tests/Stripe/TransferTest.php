@@ -14,7 +14,7 @@ class TransferTest extends TestCase
             '/v1/transfers'
         );
         $resources = Transfer::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Transfer::class, $resources->data[0]);
     }
 
@@ -123,7 +123,7 @@ class TransferTest extends TestCase
             '/v1/transfers/' . self::TEST_RESOURCE_ID . '/reversals'
         );
         $resources = Transfer::allReversals(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\TransferReversal::class, $resources->data[0]);
     }
 }

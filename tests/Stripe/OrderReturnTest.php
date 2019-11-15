@@ -13,7 +13,7 @@ class OrderReturnTest extends TestCase
             '/v1/order_returns'
         );
         $resources = OrderReturn::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\OrderReturn::class, $resources->data[0]);
     }
 

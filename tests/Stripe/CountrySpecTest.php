@@ -13,7 +13,7 @@ class CountrySpecTest extends TestCase
             '/v1/country_specs'
         );
         $resources = CountrySpec::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\CountrySpec::class, $resources->data[0]);
     }
 

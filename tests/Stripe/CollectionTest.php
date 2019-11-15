@@ -45,7 +45,7 @@ class CollectionTest extends TestCase
         );
 
         $resources = $this->fixture->all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
     }
 
     public function testCanRetrieve()
@@ -94,7 +94,7 @@ class CollectionTest extends TestCase
 
         $seen = [];
         foreach ($collection as $item) {
-            array_push($seen, $item['id']);
+            \array_push($seen, $item['id']);
         }
 
         $this->assertSame([1, 2, 3], $seen);
@@ -110,7 +110,7 @@ class CollectionTest extends TestCase
 
         $seen = [];
         foreach ($collection->getReverseIterator() as $item) {
-            array_push($seen, $item['id']);
+            \array_push($seen, $item['id']);
         }
 
         $this->assertSame([3, 2, 1], $seen);
@@ -119,8 +119,8 @@ class CollectionTest extends TestCase
     public function testSupportsIteratorToArray()
     {
         $seen = [];
-        foreach (iterator_to_array($this->fixture) as $item) {
-            array_push($seen, $item['id']);
+        foreach (\iterator_to_array($this->fixture) as $item) {
+            \array_push($seen, $item['id']);
         }
 
         $this->assertSame([1], $seen);
@@ -145,7 +145,7 @@ class CollectionTest extends TestCase
 
         $seen = [];
         foreach ($this->fixture->autoPagingIterator() as $item) {
-            array_push($seen, $item['id']);
+            \array_push($seen, $item['id']);
         }
 
         $this->assertSame([1, 2, 3], $seen);
@@ -169,8 +169,8 @@ class CollectionTest extends TestCase
         );
 
         $seen = [];
-        foreach (iterator_to_array($this->fixture->autoPagingIterator()) as $item) {
-            array_push($seen, $item['id']);
+        foreach (\iterator_to_array($this->fixture->autoPagingIterator()) as $item) {
+            \array_push($seen, $item['id']);
         }
 
         $this->assertSame([1, 2, 3], $seen);
@@ -202,7 +202,7 @@ class CollectionTest extends TestCase
 
         $seen = [];
         foreach ($collection->autoPagingIterator() as $item) {
-            array_push($seen, $item['id']);
+            \array_push($seen, $item['id']);
         }
 
         $this->assertSame([3, 2, 1], $seen);
@@ -269,7 +269,7 @@ class CollectionTest extends TestCase
         $nextPage = $this->fixture->nextPage();
         $ids = [];
         foreach ($nextPage->data as $element) {
-            array_push($ids, $element['id']);
+            \array_push($ids, $element['id']);
         }
         $this->assertEquals([2, 3], $ids);
     }

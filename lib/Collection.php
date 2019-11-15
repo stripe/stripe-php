@@ -51,7 +51,7 @@ class Collection extends StripeObject implements \IteratorAggregate
 
     public function offsetGet($k)
     {
-        if (is_string($k)) {
+        if (\is_string($k)) {
             return parent::offsetGet($k);
         } else {
             $msg = "You tried to access the {$k} index, but Collection " .
@@ -71,7 +71,7 @@ class Collection extends StripeObject implements \IteratorAggregate
         $obj = Util\Util::convertToStripeObject($response, $opts);
         if (!($obj instanceof \Stripe\Collection)) {
             throw new \Stripe\Exception\UnexpectedValueException(
-                'Expected type ' . \Stripe\Collection::class . ', got "' . get_class($obj) . '" instead.'
+                'Expected type ' . \Stripe\Collection::class . ', got "' . \get_class($obj) . '" instead.'
             );
         }
         $obj->setFilters($params);
@@ -93,7 +93,7 @@ class Collection extends StripeObject implements \IteratorAggregate
         list($url, $params) = $this->extractPathAndUpdateParams($params);
 
         $id = Util\Util::utf8($id);
-        $extn = urlencode($id);
+        $extn = \urlencode($id);
         list($response, $opts) = $this->_request(
             'get',
             "$url/$extn",
@@ -118,7 +118,7 @@ class Collection extends StripeObject implements \IteratorAggregate
      */
     public function getReverseIterator()
     {
-        return new \ArrayIterator(array_reverse($this->data));
+        return new \ArrayIterator(\array_reverse($this->data));
     }
 
     /**
@@ -133,8 +133,8 @@ class Collection extends StripeObject implements \IteratorAggregate
 
         while (true) {
             $filters = $this->filters ?: [];
-            if (array_key_exists('ending_before', $filters) &&
-                !array_key_exists('starting_after', $filters)) {
+            if (\array_key_exists('ending_before', $filters) &&
+                !\array_key_exists('starting_after', $filters)) {
                 foreach ($page->getReverseIterator() as $item) {
                     yield $item;
                 }
@@ -191,9 +191,9 @@ class Collection extends StripeObject implements \IteratorAggregate
             return static::emptyCollection($opts);
         }
 
-        $lastId = end($this->data)->id;
+        $lastId = \end($this->data)->id;
 
-        $params = array_merge(
+        $params = \array_merge(
             $this->filters ?: [],
             ['starting_after' => $lastId],
             $params ?: []
@@ -220,7 +220,7 @@ class Collection extends StripeObject implements \IteratorAggregate
 
         $firstId = $this->data[0]->id;
 
-        $params = array_merge(
+        $params = \array_merge(
             $this->filters ?: [],
             ['ending_before' => $firstId],
             $params ?: []
@@ -231,7 +231,7 @@ class Collection extends StripeObject implements \IteratorAggregate
 
     private function extractPathAndUpdateParams($params)
     {
-        $url = parse_url($this->url);
+        $url = \parse_url($this->url);
         if (!isset($url['path'])) {
             throw new Exception\UnexpectedValueException("Could not parse list url into parts: $url");
         }
@@ -240,8 +240,8 @@ class Collection extends StripeObject implements \IteratorAggregate
             // If the URL contains a query param, parse it out into $params so they
             // don't interact weirdly with each other.
             $query = [];
-            parse_str($url['query'], $query);
-            $params = array_merge($params ?: [], $query);
+            \parse_str($url['query'], $query);
+            $params = \array_merge($params ?: [], $query);
         }
 
         return [$url['path'], $params];

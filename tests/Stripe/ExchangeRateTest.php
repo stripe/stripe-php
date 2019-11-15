@@ -30,7 +30,7 @@ class ExchangeRateTest extends TestCase
         );
 
         $listRates = ExchangeRate::all();
-        $this->assertTrue(is_array($listRates->data));
+        $this->assertTrue(\is_array($listRates->data));
         $this->assertEquals('exchange_rate', $listRates->data[0]->object);
     }
 

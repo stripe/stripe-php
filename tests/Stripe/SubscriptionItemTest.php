@@ -18,7 +18,7 @@ class SubscriptionItemTest extends TestCase
         $resources = SubscriptionItem::all([
             "subscription" => "sub_123"
         ]);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\SubscriptionItem::class, $resources->data[0]);
     }
 
@@ -101,7 +101,7 @@ class SubscriptionItemTest extends TestCase
             '/v1/subscription_items/' . $resource->id . "/usage_record_summaries"
         );
         $resources = $resource->usageRecordSummaries();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\UsageRecordSummary::class, $resources->data[0]);
     }
 
@@ -112,7 +112,7 @@ class SubscriptionItemTest extends TestCase
             '/v1/subscription_items/' . self::TEST_RESOURCE_ID . "/usage_record_summaries"
         );
         $resources =SubscriptionItem::allUsageRecordSummaries(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\UsageRecordSummary::class, $resources->data[0]);
     }
 }

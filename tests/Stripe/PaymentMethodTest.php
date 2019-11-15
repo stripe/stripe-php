@@ -16,7 +16,7 @@ class PaymentMethodTest extends TestCase
             'customer' => 'cus_123',
             'type' => 'card',
         ]);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\PaymentMethod::class, $resources->data[0]);
     }
 

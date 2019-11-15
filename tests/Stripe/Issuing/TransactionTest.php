@@ -13,7 +13,7 @@ class TransactionTest extends \Stripe\TestCase
             '/v1/issuing/transactions'
         );
         $resources = Transaction::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertTrue(\is_array($resources->data));
         $this->assertInstanceOf(\Stripe\Issuing\Transaction::class, $resources->data[0]);
     }
 

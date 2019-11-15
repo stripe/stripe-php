@@ -49,12 +49,12 @@ class File extends ApiResource
     public static function create($params = null, $options = null)
     {
         $opts = \Stripe\Util\RequestOptions::parse($options);
-        if (is_null($opts->apiBase)) {
+        if (\is_null($opts->apiBase)) {
             $opts->apiBase = Stripe::$apiUploadBase;
         }
         // Manually flatten params, otherwise curl's multipart encoder will
         // choke on nested arrays.
-        $flatParams = array_column(\Stripe\Util\Util::flattenParams($params), 1, 0);
+        $flatParams = \array_column(\Stripe\Util\Util::flattenParams($params), 1, 0);
         return static::_create($flatParams, $opts);
     }
 }
