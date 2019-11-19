@@ -76,6 +76,7 @@ class Invoice extends ApiResource
     use ApiOperations\Delete;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
+    use ApiOperations\NestedResource;
 
     /**
      * Possible string representations of the billing reason.
@@ -113,6 +114,8 @@ class Invoice extends ApiResource
      */
     const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const BILLING_SEND_INVOICE         = 'send_invoice';
+
+    const PATH_LINES = '/lines';
 
     /**
      * @param array|null $params
@@ -209,5 +212,19 @@ class Invoice extends ApiResource
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
+    }
+
+    /**
+     * @param string $id The ID of the invoice on which to retrieve the lins.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return Collection The list of lines (InvoiceLineItem).
+     */
+    public static function allLines($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_LINES, $params, $opts);
     }
 }
