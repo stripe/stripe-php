@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.13.0 - 2019-11-19
+* [#808](https://github.com/stripe/stripe-php/pull/808) Add support for listing lines on an Invoice directly via `Invoice::allLines()`
+
 ## 7.12.0 - 2019-11-08
 
 -   [#805](https://github.com/stripe/stripe-php/pull/805) Add Source::allSourceTransactions and SubscriptionItem::allUsageRecordSummaries
