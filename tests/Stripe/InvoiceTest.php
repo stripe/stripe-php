@@ -5,6 +5,7 @@ namespace Stripe;
 class InvoiceTest extends TestCase
 {
     const TEST_RESOURCE_ID = 'in_123';
+    const TEST_LINE_ID = 'ii_123';
 
     public function testIsListable()
     {
@@ -142,5 +143,15 @@ class InvoiceTest extends TestCase
         $resource = $invoice->voidInvoice();
         $this->assertInstanceOf(\Stripe\Invoice::class, $resource);
         $this->assertSame($resource, $invoice);
+    }
+
+    public function testCanListLines()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/invoices/' . self::TEST_RESOURCE_ID . '/lines'
+        );
+        $resources = Invoice::allLines(self::TEST_RESOURCE_ID);
+        $this->assertTrue(is_array($resources->data));
     }
 }
