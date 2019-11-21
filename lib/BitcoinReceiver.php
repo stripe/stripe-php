@@ -5,6 +5,9 @@ namespace Stripe;
 /**
  * Class BitcoinReceiver
  *
+ * @deprecated Bitcoin receivers are deprecated. Please use the sources API instead.
+ * @link https://stripe.com/docs/sources/bitcoin
+ *
  * @property string $id
  * @property string $object
  * @property bool $active
