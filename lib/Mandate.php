@@ -9,10 +9,10 @@ namespace Stripe;
  * @property string $object
  * @property mixed $customer_acceptance
  * @property bool $livemode
- * @property mixed|null $multi_use
+ * @property mixed $multi_use
  * @property string $payment_method
  * @property mixed $payment_method_details
- * @property mixed|null $single_use
+ * @property mixed $single_use
  * @property string $status
  * @property string $type
  *

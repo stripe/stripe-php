@@ -10,37 +10,37 @@ namespace Stripe;
  * @property int $amount
  * @property int $amount_capturable
  * @property int $amount_received
- * @property string|null $application
- * @property int|null $application_fee_amount
- * @property int|null $canceled_at
- * @property string|null $cancellation_reason
+ * @property string $application
+ * @property int $application_fee_amount
+ * @property int $canceled_at
+ * @property string $cancellation_reason
  * @property string $capture_method
- * @property \Stripe\Collection $charges
- * @property string|null $client_secret
+ * @property mixed $charges
+ * @property string $client_secret
  * @property string $confirmation_method
  * @property int $created
  * @property string $currency
- * @property string|null $customer
- * @property string|null $description
- * @property string|null $invoice
- * @property mixed|null $last_payment_error
+ * @property string $customer
+ * @property string $description
+ * @property string $invoice
+ * @property mixed $last_payment_error
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
- * @property mixed|null $next_action
- * @property string|null $on_behalf_of
- * @property string|null $payment_method
- * @property mixed|null $payment_method_options
+ * @property mixed $next_action
+ * @property string $on_behalf_of
+ * @property string $payment_method
+ * @property mixed $payment_method_options
  * @property string[] $payment_method_types
- * @property string|null $receipt_email
- * @property string|null $review
- * @property string|null $setup_future_usage
- * @property mixed|null $shipping
- * @property string|null $source
- * @property string|null $statement_descriptor
- * @property string|null $statement_descriptor_suffix
+ * @property string $receipt_email
+ * @property string $review
+ * @property string $setup_future_usage
+ * @property mixed $shipping
+ * @property string $source
+ * @property string $statement_descriptor
+ * @property string $statement_descriptor_suffix
  * @property string $status
- * @property mixed|null $transfer_data
- * @property string|null $transfer_group
+ * @property mixed $transfer_data
+ * @property string $transfer_group
  *
  * @package Stripe
  */
@@ -81,7 +81,6 @@ class PaymentIntent extends ApiResource
         $this->refreshFrom($response, $opts);
         return $this;
     }
-
     /**
      * @param array|null $params
      * @param array|string|null $opts
@@ -97,7 +96,6 @@ class PaymentIntent extends ApiResource
         $this->refreshFrom($response, $opts);
         return $this;
     }
-
     /**
      * @param array|null $params
      * @param array|string|null $opts

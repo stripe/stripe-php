@@ -8,13 +8,13 @@ namespace Stripe\Reporting;
  * @property string $id
  * @property string $object
  * @property int $created
- * @property string|null $error
+ * @property string $error
  * @property bool $livemode
  * @property mixed $parameters
  * @property string $report_type
- * @property mixed|null $result
+ * @property mixed $result
  * @property string $status
- * @property int|null $succeeded_at
+ * @property int $succeeded_at
  *
  * @package Stripe\Reporting
  */

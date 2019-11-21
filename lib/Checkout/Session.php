@@ -7,18 +7,20 @@ namespace Stripe\Checkout;
  *
  * @property string $id
  * @property string $object
+ * @property string $billing_address_collection
  * @property string $cancel_url
- * @property string|null $client_reference_id
- * @property string|null $customer
- * @property string|null $customer_email
- * @property mixed|null $display_items
+ * @property string $client_reference_id
+ * @property string $customer
+ * @property string $customer_email
+ * @property mixed $display_items
  * @property bool $livemode
- * @property string|null $mode
- * @property string|null $payment_intent
+ * @property string $locale
+ * @property string $mode
+ * @property string $payment_intent
  * @property string[] $payment_method_types
- * @property string|null $setup_intent
- * @property string|null $submit_type
- * @property string|null $subscription
+ * @property string $setup_intent
+ * @property string $submit_type
+ * @property string $subscription
  * @property string $success_url
  *
  * @package Stripe\Checkout

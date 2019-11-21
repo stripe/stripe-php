@@ -7,18 +7,18 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property string|null $billing_zip
- * @property string|null $charge
- * @property string|null $closed_reason
+ * @property string $billing_zip
+ * @property string $charge
+ * @property string $closed_reason
  * @property int $created
- * @property string|null $ip_address
- * @property mixed|null $ip_address_location
+ * @property string $ip_address
+ * @property mixed $ip_address_location
  * @property bool $livemode
  * @property bool $open
  * @property string $opened_reason
  * @property string $payment_intent
  * @property string $reason
- * @property mixed|null $session
+ * @property mixed $session
  *
  * @package Stripe
  */

@@ -11,7 +11,7 @@ namespace Stripe\Radar;
  * @property int $created
  * @property string $created_by
  * @property string $item_type
- * @property \Stripe\Collection $list_items
+ * @property mixed $list_items
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property string $name

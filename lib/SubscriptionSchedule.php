@@ -7,24 +7,21 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property mixed|null $billing_thresholds
- * @property int|null $canceled_at
- * @property string|null $collection_method
- * @property int|null $completed_at
+ * @property int $canceled_at
+ * @property int $completed_at
  * @property int $created
- * @property mixed|null $current_phase
+ * @property mixed $current_phase
  * @property string $customer
- * @property string|null $default_payment_method
+ * @property mixed $default_settings
  * @property string $end_behavior
- * @property mixed|null $invoice_settings
  * @property bool $livemode
- * @property \Stripe\StripeObject|null $metadata
+ * @property \Stripe\StripeObject $metadata
  * @property mixed $phases
- * @property int|null $released_at
- * @property string|null $released_subscription
- * @property mixed|null $renewal_interval
+ * @property int $released_at
+ * @property string $released_subscription
+ * @property mixed $renewal_interval
  * @property string $status
- * @property string|null $subscription
+ * @property string $subscription
  *
  * @package Stripe
  */
@@ -52,7 +49,6 @@ class SubscriptionSchedule extends ApiResource
         $this->refreshFrom($response, $opts);
         return $this;
     }
-
     /**
      * @param array|null $params
      * @param array|string|null $opts

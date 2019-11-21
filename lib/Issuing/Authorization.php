@@ -11,9 +11,9 @@ namespace Stripe\Issuing;
  * @property string $authorization_method
  * @property int $authorized_amount
  * @property string $authorized_currency
- * @property \Stripe\Collection $balance_transactions
- * @property Card $card
- * @property string|null $cardholder
+ * @property mixed $balance_transactions
+ * @property mixed $card
+ * @property string $cardholder
  * @property int $created
  * @property int $held_amount
  * @property string $held_currency
@@ -25,8 +25,9 @@ namespace Stripe\Issuing;
  * @property int $pending_held_amount
  * @property mixed $request_history
  * @property string $status
- * @property array $transactions
+ * @property mixed $transactions
  * @property mixed $verification_data
+ * @property string $wallet_provider
  *
  * @package Stripe\Issuing
  */
@@ -53,7 +54,6 @@ class Authorization extends \Stripe\ApiResource
         $this->refreshFrom($response, $opts);
         return $this;
     }
-
     /**
      * @param array|null $params
      * @param array|string|null $opts

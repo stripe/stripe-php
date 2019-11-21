@@ -11,7 +11,7 @@ namespace Stripe;
  * @property mixed $ach_debit
  * @property mixed $acss_debit
  * @property mixed $alipay
- * @property int|null $amount
+ * @property int $amount
  * @property mixed $au_becs_debit
  * @property mixed $bancontact
  * @property mixed $card
@@ -19,7 +19,7 @@ namespace Stripe;
  * @property string $client_secret
  * @property mixed $code_verification
  * @property int $created
- * @property string|null $currency
+ * @property string $currency
  * @property string $customer
  * @property mixed $eps
  * @property string $flow
@@ -27,9 +27,9 @@ namespace Stripe;
  * @property mixed $ideal
  * @property mixed $klarna
  * @property bool $livemode
- * @property \Stripe\StripeObject|null $metadata
+ * @property \Stripe\StripeObject $metadata
  * @property mixed $multibanco
- * @property mixed|null $owner
+ * @property mixed $owner
  * @property mixed $p24
  * @property mixed $receiver
  * @property mixed $redirect
@@ -37,11 +37,11 @@ namespace Stripe;
  * @property mixed $sepa_debit
  * @property mixed $sofort
  * @property mixed $source_order
- * @property string|null $statement_descriptor
+ * @property string $statement_descriptor
  * @property string $status
  * @property mixed $three_d_secure
  * @property string $type
- * @property string|null $usage
+ * @property string $usage
  * @property mixed $wechat
  *
  * @package Stripe
@@ -51,7 +51,6 @@ class Source extends ApiResource
     const OBJECT_NAME = 'source';
 
     use ApiOperations\Create;
-    use ApiOperations\NestedResource;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
@@ -98,7 +97,7 @@ class Source extends ApiResource
         if (!$id) {
             $class = get_class($this);
             $msg = "Could not determine which URL to request: $class instance "
-             . "has invalid ID: $id";
+               . "has invalid ID: $id";
             throw new Exception\UnexpectedValueException($msg, null);
         }
 
@@ -113,14 +112,12 @@ class Source extends ApiResource
             return $this;
         } else {
             $message = "This source object does not appear to be currently attached "
-               . "to a customer object.";
+                 . "to a customer object.";
             throw new Exception\UnexpectedValueException($message);
         }
     }
 
     /**
-     * @deprecated sourceTransactions is deprecated. Please use Source::allSourceTransactions instead.
-     *
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -135,20 +132,6 @@ class Source extends ApiResource
         $obj = \Stripe\Util\Util::convertToStripeObject($response, $opts);
         $obj->setLastResponse($response);
         return $obj;
-    }
-
-    /**
-     * @param string $id
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return Collection The list of source transactions.
-     */
-    public static function allSourceTransactions($id, $params = null, $opts = null)
-    {
-        return self::_allNestedResources($id, '/source_transactions', $params, $opts);
     }
 
     /**

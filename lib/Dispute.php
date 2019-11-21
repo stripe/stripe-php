@@ -8,7 +8,7 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property int $amount
- * @property BalanceTransaction[] $balance_transactions
+ * @property mixed $balance_transactions
  * @property string $charge
  * @property int $created
  * @property string $currency
@@ -17,7 +17,8 @@ namespace Stripe;
  * @property bool $is_charge_refundable
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
- * @property string|null $network_reason_code
+ * @property string $network_reason_code
+ * @property string $payment_intent
  * @property string $reason
  * @property string $status
  *
@@ -64,17 +65,17 @@ class Dispute extends ApiResource
     const STATUS_WON                    = 'won';
 
     /**
+     * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return Dispute The closed dispute.
      */
-    // TODO: add $params to standardize signature
-    public function close($opts = null)
+    public function close($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/close';
-        list($response, $opts) = $this->_request('post', $url, null, $opts);
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
     }

@@ -9,7 +9,7 @@ namespace Stripe\Issuing;
  * @property string $object
  * @property mixed $authorization_controls
  * @property string $brand
- * @property \Stripe\Issuing\Cardholder|null $cardholder
+ * @property mixed $cardholder
  * @property int $created
  * @property string $currency
  * @property int $exp_month
@@ -18,10 +18,10 @@ namespace Stripe\Issuing;
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property string $name
- * @property mixed|null $pin
- * @property string|null $replacement_for
- * @property string|null $replacement_reason
- * @property mixed|null $shipping
+ * @property mixed $pin
+ * @property string $replacement_for
+ * @property string $replacement_reason
+ * @property mixed $shipping
  * @property string $status
  * @property string $type
  *

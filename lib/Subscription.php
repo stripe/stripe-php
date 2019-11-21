@@ -7,41 +7,39 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property float|null $application_fee_percent
+ * @property float $application_fee_percent
  * @property int $billing_cycle_anchor
- * @property mixed|null $billing_thresholds
- * @property int|null $cancel_at
+ * @property mixed $billing_thresholds
+ * @property int $cancel_at
  * @property bool $cancel_at_period_end
- * @property int|null $canceled_at
- * @property string|null $collection_method
+ * @property int $canceled_at
+ * @property string $collection_method
  * @property int $created
  * @property int $current_period_end
  * @property int $current_period_start
  * @property string $customer
- * @property int|null $days_until_due
- * @property string|null $default_payment_method
- * @property string|null $default_source
- * @property array|null $default_tax_rates
- * @property \Stripe\Discount|null $discount
- * @property int|null $ended_at
+ * @property int $days_until_due
+ * @property string $default_payment_method
+ * @property string $default_source
+ * @property mixed $default_tax_rates
+ * @property mixed $discount
+ * @property int $ended_at
  * @property mixed $invoice_customer_balance_settings
- * @property \Stripe\Collection $items
- * @property string|null $latest_invoice
+ * @property mixed $items
+ * @property string $latest_invoice
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
- * @property int|null $next_pending_invoice_item_invoice
- * @property mixed|null $pending_invoice_item_interval
- * @property string|null $pending_setup_intent
- * @property \Stripe\Plan|null $plan
- * @property int|null $quantity
- * @property string|null $schedule
+ * @property int $next_pending_invoice_item_invoice
+ * @property mixed $pending_invoice_item_interval
+ * @property string $pending_setup_intent
+ * @property mixed $plan
+ * @property int $quantity
+ * @property string $schedule
  * @property int $start_date
  * @property string $status
- * @property float|null $tax_percent
- * @property int|null $trial_end
- * @property int|null $trial_start
- * @property string $pending_setup_intent
- * @property \Stripe\SubscriptionSchedule $schedule
+ * @property float $tax_percent
+ * @property int $trial_end
+ * @property int $trial_start
  *
  * @package Stripe
  */
@@ -51,9 +49,6 @@ class Subscription extends ApiResource
 
     use ApiOperations\All;
     use ApiOperations\Create;
-    use ApiOperations\Delete {
-        delete as protected _delete;
-    }
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
@@ -70,6 +65,10 @@ class Subscription extends ApiResource
     const STATUS_INCOMPLETE         = 'incomplete';
     const STATUS_INCOMPLETE_EXPIRED = 'incomplete_expired';
 
+    use ApiOperations\Delete {
+        delete as protected _delete;
+      }
+
     public static function getSavedNestedResources()
     {
         static $savedNestedResources = null;
@@ -84,7 +83,7 @@ class Subscription extends ApiResource
     /**
      * @param array|null $params
      * @param array|string|null $opts
-     *
+           *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return Subscription The deleted subscription.

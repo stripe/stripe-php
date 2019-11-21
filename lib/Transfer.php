@@ -9,19 +9,19 @@ namespace Stripe;
  * @property string $object
  * @property int $amount
  * @property int $amount_reversed
- * @property string|null $balance_transaction
+ * @property string $balance_transaction
  * @property int $created
  * @property string $currency
- * @property string|null $description
- * @property string|null $destination
+ * @property string $description
+ * @property string $destination
  * @property string $destination_payment
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
- * @property \Stripe\Collection $reversals
+ * @property mixed $reversals
  * @property bool $reversed
- * @property string|null $source_transaction
- * @property string|null $source_type
- * @property string|null $transfer_group
+ * @property string $source_transaction
+ * @property string $source_type
+ * @property string $transfer_group
  *
  * @package Stripe
  */
@@ -31,11 +31,8 @@ class Transfer extends ApiResource
 
     use ApiOperations\All;
     use ApiOperations\Create;
-    use ApiOperations\NestedResource;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
-
-    const PATH_REVERSALS = '/reversals';
 
     /**
      * Possible string representations of the source type of the transfer.
@@ -61,6 +58,9 @@ class Transfer extends ApiResource
         $this->refreshFrom($response, $opts);
         return $this;
     }
+    use ApiOperations\NestedResource;
+
+    const PATH_REVERSALS = '/reversals';
 
     /**
      * @param string $id The ID of the transfer on which to create the transfer reversal.
@@ -86,8 +86,12 @@ class Transfer extends ApiResource
      *
      * @return TransferReversal
      */
-    public static function retrieveReversal($id, $reversalId, $params = null, $opts = null)
-    {
+    public static function retrieveReversal(
+        $id,
+        $reversalId,
+        $params = null,
+        $opts = null
+    ) {
         return self::_retrieveNestedResource($id, static::PATH_REVERSALS, $reversalId, $params, $opts);
     }
 
@@ -101,8 +105,12 @@ class Transfer extends ApiResource
      *
      * @return TransferReversal
      */
-    public static function updateReversal($id, $reversalId, $params = null, $opts = null)
-    {
+    public static function updateReversal(
+        $id,
+        $reversalId,
+        $params = null,
+        $opts = null
+    ) {
         return self::_updateNestedResource($id, static::PATH_REVERSALS, $reversalId, $params, $opts);
     }
 

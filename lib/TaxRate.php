@@ -9,10 +9,10 @@ namespace Stripe;
  * @property string $object
  * @property bool $active
  * @property int $created
- * @property string|null $description
+ * @property string $description
  * @property string $display_name
  * @property bool $inclusive
- * @property string|null $jurisdiction
+ * @property string $jurisdiction
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property float $percentage

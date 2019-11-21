@@ -11,14 +11,14 @@ namespace Stripe;
  * @property int $amount
  * @property int $amount_refunded
  * @property string $application
- * @property string|null $balance_transaction
+ * @property string $balance_transaction
  * @property string $charge
  * @property int $created
  * @property string $currency
  * @property bool $livemode
- * @property string|null $originating_transaction
+ * @property string $originating_transaction
  * @property bool $refunded
- * @property \Stripe\Collection $refunds
+ * @property mixed $refunds
  *
  * @package Stripe
  */
@@ -27,8 +27,9 @@ class ApplicationFee extends ApiResource
     const OBJECT_NAME = 'application_fee';
 
     use ApiOperations\All;
-    use ApiOperations\NestedResource;
     use ApiOperations\Retrieve;
+
+    use ApiOperations\NestedResource;
 
     const PATH_REFUNDS = '/refunds';
 
@@ -56,8 +57,12 @@ class ApplicationFee extends ApiResource
      *
      * @return ApplicationFeeRefund
      */
-    public static function retrieveRefund($id, $refundId, $params = null, $opts = null)
-    {
+    public static function retrieveRefund(
+        $id,
+        $refundId,
+        $params = null,
+        $opts = null
+    ) {
         return self::_retrieveNestedResource($id, static::PATH_REFUNDS, $refundId, $params, $opts);
     }
 
@@ -71,8 +76,12 @@ class ApplicationFee extends ApiResource
      *
      * @return ApplicationFeeRefund
      */
-    public static function updateRefund($id, $refundId, $params = null, $opts = null)
-    {
+    public static function updateRefund(
+        $id,
+        $refundId,
+        $params = null,
+        $opts = null
+    ) {
         return self::_updateNestedResource($id, static::PATH_REFUNDS, $refundId, $params, $opts);
     }
 

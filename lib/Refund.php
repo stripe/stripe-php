@@ -8,19 +8,20 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property int $amount
- * @property string|null $balance_transaction
- * @property string|null $charge
+ * @property string $balance_transaction
+ * @property string $charge
  * @property int $created
  * @property string $currency
  * @property string $description
  * @property string $failure_balance_transaction
  * @property string $failure_reason
  * @property \Stripe\StripeObject $metadata
- * @property string|null $reason
- * @property string|null $receipt_number
- * @property string|null $source_transfer_reversal
- * @property string|null $status
- * @property string|null $transfer_reversal
+ * @property string $payment_intent
+ * @property string $reason
+ * @property string $receipt_number
+ * @property string $source_transfer_reversal
+ * @property string $status
+ * @property string $transfer_reversal
  *
  * @package Stripe
  */

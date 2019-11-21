@@ -7,22 +7,22 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property string|null $application
- * @property string|null $cancellation_reason
- * @property string|null $client_secret
+ * @property string $application
+ * @property string $cancellation_reason
+ * @property string $client_secret
  * @property int $created
- * @property string|null $customer
- * @property string|null $description
- * @property mixed|null $last_setup_error
+ * @property string $customer
+ * @property string $description
+ * @property mixed $last_setup_error
  * @property bool $livemode
- * @property string|null $mandate
+ * @property string $mandate
  * @property \Stripe\StripeObject $metadata
- * @property mixed|null $next_action
- * @property string|null $on_behalf_of
- * @property string|null $payment_method
- * @property mixed|null $payment_method_options
+ * @property mixed $next_action
+ * @property string $on_behalf_of
+ * @property string $payment_method
+ * @property mixed $payment_method_options
  * @property string[] $payment_method_types
- * @property string|null $single_use_mandate
+ * @property string $single_use_mandate
  * @property string $status
  * @property string $usage
  *
@@ -64,7 +64,6 @@ class SetupIntent extends ApiResource
         $this->refreshFrom($response, $opts);
         return $this;
     }
-
     /**
      * @param array|null $params
      * @param array|string|null $opts

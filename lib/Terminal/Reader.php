@@ -7,13 +7,13 @@ namespace Stripe\Terminal;
  *
  * @property string $id
  * @property string $object
- * @property string|null $device_sw_version
+ * @property string $device_sw_version
  * @property string $device_type
- * @property string|null $ip_address
+ * @property string $ip_address
  * @property string $label
- * @property string|null $location
+ * @property string $location
  * @property string $serial_number
- * @property string|null $status
+ * @property string $status
  *
  * @package Stripe\Terminal
  */

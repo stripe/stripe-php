@@ -7,32 +7,32 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property string|null $account
- * @property string|null $address_city
- * @property string|null $address_country
- * @property string|null $address_line1
- * @property string|null $address_line1_check
- * @property string|null $address_line2
- * @property string|null $address_state
- * @property string|null $address_zip
- * @property string|null $address_zip_check
- * @property string[]|null $available_payout_methods
+ * @property string $account
+ * @property string $address_city
+ * @property string $address_country
+ * @property string $address_line1
+ * @property string $address_line1_check
+ * @property string $address_line2
+ * @property string $address_state
+ * @property string $address_zip
+ * @property string $address_zip_check
+ * @property string[] $available_payout_methods
  * @property string $brand
- * @property string|null $country
- * @property string|null $currency
- * @property string|null $customer
- * @property string|null $cvc_check
- * @property bool|null $default_for_currency
- * @property string|null $dynamic_last4
+ * @property string $country
+ * @property string $currency
+ * @property string $customer
+ * @property string $cvc_check
+ * @property bool $default_for_currency
+ * @property string $dynamic_last4
  * @property int $exp_month
  * @property int $exp_year
- * @property string|null $fingerprint
+ * @property string $fingerprint
  * @property string $funding
  * @property string $last4
  * @property \Stripe\StripeObject $metadata
- * @property string|null $name
- * @property string|null $recipient
- * @property string|null $tokenization_method
+ * @property string $name
+ * @property string $recipient
+ * @property string $tokenization_method
  *
  * @package Stripe
  */

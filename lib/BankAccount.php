@@ -7,18 +7,18 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property string|null $account
- * @property string|null $account_holder_name
- * @property string|null $account_holder_type
- * @property string|null $bank_name
+ * @property string $account
+ * @property string $account_holder_name
+ * @property string $account_holder_type
+ * @property string $bank_name
  * @property string $country
- * @property string|null $currency
- * @property string|null $customer
- * @property bool|null $default_for_currency
- * @property string|null $fingerprint
+ * @property string $currency
+ * @property string $customer
+ * @property bool $default_for_currency
+ * @property string $fingerprint
  * @property string $last4
- * @property \Stripe\StripeObject|null $metadata
- * @property string|null $routing_number
+ * @property \Stripe\StripeObject $metadata
+ * @property string $routing_number
  * @property string $status
  *
  * @package Stripe

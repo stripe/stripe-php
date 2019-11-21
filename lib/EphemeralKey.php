@@ -11,7 +11,6 @@ namespace Stripe;
  * @property int $expires
  * @property bool $livemode
  * @property string $secret
- * @property array $associated_objects
  *
  * @package Stripe
  */
@@ -19,10 +18,11 @@ class EphemeralKey extends ApiResource
 {
     const OBJECT_NAME = 'ephemeral_key';
 
+    use ApiOperations\Delete;
+
     use ApiOperations\Create {
         create as protected _create;
     }
-    use ApiOperations\Delete;
 
     /**
      * @param array|null $params

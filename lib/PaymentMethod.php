@@ -11,11 +11,11 @@ namespace Stripe;
  * @property mixed $card
  * @property mixed $card_present
  * @property int $created
- * @property string|null $customer
- * @property mixed|null $ideal
+ * @property string $customer
+ * @property mixed $ideal
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
- * @property mixed|null $sepa_debit
+ * @property mixed $sepa_debit
  * @property string $type
  *
  * @package Stripe
@@ -44,7 +44,6 @@ class PaymentMethod extends ApiResource
         $this->refreshFrom($response, $opts);
         return $this;
     }
-
     /**
      * @param array|null $params
      * @param array|string|null $opts

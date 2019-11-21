@@ -13,7 +13,7 @@ namespace Stripe;
  * @property int $created
  * @property string $currency
  * @property bool $livemode
- * @property string|null $redirect_url
+ * @property string $redirect_url
  * @property string $status
  *
  * @package Stripe

@@ -7,16 +7,16 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property mixed|null $active_account
- * @property \Stripe\Collection|null $cards
+ * @property mixed $active_account
+ * @property mixed $cards
  * @property int $created
- * @property string|null $default_card
- * @property string|null $description
- * @property string|null $email
+ * @property string $default_card
+ * @property string $description
+ * @property string $email
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
- * @property string|null $migrated_to
- * @property string|null $name
+ * @property string $migrated_to
+ * @property string $name
  * @property string $rolled_back_from
  * @property string $type
  * @property bool $verified

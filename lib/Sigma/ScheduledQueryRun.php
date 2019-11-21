@@ -10,7 +10,7 @@ namespace Stripe\Sigma;
  * @property int $created
  * @property int $data_load_time
  * @property mixed $error
- * @property \Stripe\File|null $file
+ * @property mixed $file
  * @property bool $livemode
  * @property int $result_available_until
  * @property string $sql

@@ -11,20 +11,21 @@ namespace Stripe;
  * @property string $currency
  * @property string $customer
  * @property int $date
- * @property string|null $description
+ * @property string $description
  * @property bool $discountable
- * @property string|null $invoice
+ * @property string $invoice
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property mixed $period
- * @property \Stripe\Plan|null $plan
+ * @property mixed $plan
  * @property bool $proration
  * @property int $quantity
- * @property string|null $subscription
+ * @property string $subscription
  * @property string $subscription_item
- * @property array|null $tax_rates
- * @property int|null $unit_amount
- * @property string|null $unit_amount_decimal
+ * @property mixed $tax_rates
+ * @property bool $unified_proration
+ * @property int $unit_amount
+ * @property string $unit_amount_decimal
  *
  * @package Stripe
  */

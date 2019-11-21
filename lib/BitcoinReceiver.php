@@ -5,9 +5,6 @@ namespace Stripe;
 /**
  * Class BitcoinReceiver
  *
- * @deprecated Bitcoin receivers are deprecated. Please use the sources API instead.
- * @link https://stripe.com/docs/sources/bitcoin
- *
  * @property string $id
  * @property string $object
  * @property bool $active
@@ -18,18 +15,18 @@ namespace Stripe;
  * @property string $bitcoin_uri
  * @property int $created
  * @property string $currency
- * @property string|null $customer
- * @property string|null $description
- * @property string|null $email
+ * @property string $customer
+ * @property string $description
+ * @property string $email
  * @property bool $filled
  * @property string $inbound_address
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
- * @property string|null $payment
- * @property string|null $refund_address
+ * @property string $payment
+ * @property string $refund_address
  * @property mixed $transactions
  * @property bool $uncaptured_funds
- * @property bool|null $used_for_payment
+ * @property bool $used_for_payment
  *
  * @package Stripe
  */

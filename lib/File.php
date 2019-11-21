@@ -8,30 +8,32 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property int $created
- * @property string|null $filename
- * @property \Stripe\Collection|null $links
+ * @property string $filename
+ * @property mixed $links
  * @property string $purpose
  * @property int $size
- * @property string|null $title
- * @property string|null $type
- * @property string|null $url
+ * @property string $title
+ * @property string $type
+ * @property string $url
  *
  * @package Stripe
  */
 class File extends ApiResource
 {
+    const OBJECT_NAME = 'file';
+
+    use ApiOperations\All;
+    use ApiOperations\Retrieve;
+
     // This resource can have two different object names. In latter API
     // versions, only `file` is used, but since stripe-php may be used with
     // any API version, we need to support deserializing the older
     // `file_upload` object into the same class.
-    const OBJECT_NAME = 'file';
-    const OBJECT_NAME_ALT = "file_upload";
+    const OBJECT_NAME_ALT = 'file_upload';
 
-    use ApiOperations\All;
     use ApiOperations\Create {
         create as protected _create;
     }
-    use ApiOperations\Retrieve;
 
     public static function classUrl()
     {
@@ -40,15 +42,15 @@ class File extends ApiResource
 
     /**
      * @param array|null $params
-     * @param array|string|null $options
+     * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return \Stripe\File The created resource.
      */
-    public static function create($params = null, $options = null)
+    public static function create($params = null, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($options);
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
         if (is_null($opts->apiBase)) {
             $opts->apiBase = Stripe::$apiUploadBase;
         }

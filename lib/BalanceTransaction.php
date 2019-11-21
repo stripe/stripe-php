@@ -11,12 +11,12 @@ namespace Stripe;
  * @property int $available_on
  * @property int $created
  * @property string $currency
- * @property string|null $description
- * @property float|null $exchange_rate
+ * @property string $description
+ * @property float $exchange_rate
  * @property int $fee
  * @property mixed $fee_details
  * @property int $net
- * @property string|null $source
+ * @property string $source
  * @property string $status
  * @property string $type
  *
