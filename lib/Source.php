@@ -118,6 +118,8 @@ class Source extends ApiResource
     }
 
     /**
+     * @deprecated sourceTransactions is deprecated. Please use Source::allSourceTransactions instead.
+     *
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -132,6 +134,20 @@ class Source extends ApiResource
         $obj = \Stripe\Util\Util::convertToStripeObject($response, $opts);
         $obj->setLastResponse($response);
         return $obj;
+    }
+
+    /**
+     * @param string $id
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws StripeExceptionApiErrorException if the request fails
+     *
+     * @return Collection The list of source transactions.
+     */
+    public static function allSourceTransactions($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, '/source_transactions', $params, $opts);
     }
 
     /**

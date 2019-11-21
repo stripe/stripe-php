@@ -46,19 +46,35 @@ class SubscriptionItem extends ApiResource
     }
 
     /**
+     * @deprecated usageRecordSummaries is deprecated. Please use SubscriptionItem::allUsageRecordSummaries instead.
+     *
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @throws StripeExceptionApiErrorException if the request fails
      *
-     * @return SubscriptionItem The list of subscription item.
+     * @return Collection The list of usage record summaries.
      */
     public function usageRecordSummaries($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/usage_record_summaries';
         list($response, $opts) = $this->_request('get', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response, $opts);
+        $obj = StripeUtilUtil::convertToStripeObject($response, $opts);
         $obj->setLastResponse($response);
         return $obj;
+    }
+
+    /**
+     * @param string $id
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws StripeExceptionApiErrorException if the request fails
+     *
+     * @return Collection The list of usage record summaries.
+     */
+    public static function allUsageRecordSummaries($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, '/usage_record_summaries', $params, $opts);
     }
 }

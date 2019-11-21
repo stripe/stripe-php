@@ -115,6 +115,8 @@ class Invoice extends ApiResource
     const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const BILLING_SEND_INVOICE         = 'send_invoice';
 
+    const PATH_LINES = '/lines';
+
     /**
      * @param array|null $params
      * @param array|string|null $opts
@@ -130,6 +132,20 @@ class Invoice extends ApiResource
         $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
         return $obj;
+    }
+
+    /**
+     * @param string $id The ID of the invoice on which to retrieve the lins.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws StripeExceptionApiErrorException if the request fails
+     *
+     * @return Collection The list of lines (InvoiceLineItem).
+     */
+    public static function allLines($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_LINES, $params, $opts);
     }
 
     /**
