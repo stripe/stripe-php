@@ -65,6 +65,19 @@ class CreditNoteTest extends TestCase
         $this->assertInstanceOf(\Stripe\CreditNote::class, $resource);
     }
 
+    public function testCanPreview()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/credit_notes/preview'
+        );
+        $resource = CreditNote::preview([
+            'amount' => 100,
+            'invoice' => 'in_123',
+        ]);
+        $this->assertInstanceOf(\Stripe\CreditNote::class, $resource);
+    }
+
     public function testCanVoidCreditNote()
     {
         $creditNote = CreditNote::retrieve(self::TEST_RESOURCE_ID);
