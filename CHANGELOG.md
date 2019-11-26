@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.14.0 - 2019-11-26
+* [#811](https://github.com/stripe/stripe-php/pull/811) Add support for `CreditNote` preview.
+
 ## 7.13.0 - 2019-11-19
 * [#808](https://github.com/stripe/stripe-php/pull/808) Add support for listing lines on an Invoice directly via `Invoice::allLines()`
 
