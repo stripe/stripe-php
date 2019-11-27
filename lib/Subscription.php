@@ -40,8 +40,6 @@ namespace Stripe;
  * @property float|null $tax_percent
  * @property int|null $trial_end
  * @property int|null $trial_start
- * @property string $pending_setup_intent
- * @property \Stripe\SubscriptionSchedule $schedule
  *
  * @package Stripe
  */
