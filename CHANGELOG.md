@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.14.1 - 2019-11-26
+* [#812](https://github.com/stripe/stripe-php/pull/812) Fix invalid PHPdoc on `Subscription`
+
 ## 7.14.0 - 2019-11-26
 * [#811](https://github.com/stripe/stripe-php/pull/811) Add support for `CreditNote` preview.
 
