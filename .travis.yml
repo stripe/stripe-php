@@ -30,14 +30,9 @@ matrix:
       env: AUTOLOAD=1
     - php: 7.3
       env: AUTOLOAD=0
-    - php: 7.4snapshot
+    - php: 7.4
       env: AUTOLOAD=1
-    - php: 7.4snapshot
-      env: AUTOLOAD=0
-  allow_failures:
-    - php: 7.4snapshot
-      env: AUTOLOAD=1
-    - php: 7.4snapshot
+    - php: 7.4
       env: AUTOLOAD=0
 
 env:
