@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.14.2 - 2019-12-04
+* [#816](https://github.com/stripe/stripe-php/pull/816) Disable autoloader when checking for `Throwable`
+
 ## 7.14.1 - 2019-11-26
 * [#812](https://github.com/stripe/stripe-php/pull/812) Fix invalid PHPdoc on `Subscription`
 
