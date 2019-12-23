@@ -7,23 +7,23 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property mixed|null $business_profile
+ * @property \Stripe\StripeObject|null $business_profile
  * @property string|null $business_type
- * @property mixed $capabilities
+ * @property \Stripe\StripeObject $capabilities
  * @property bool $charges_enabled
- * @property mixed $company
+ * @property \Stripe\StripeObject|null $company
  * @property string $country
  * @property int $created
  * @property string $default_currency
  * @property bool $details_submitted
  * @property string|null $email
  * @property \Stripe\Collection $external_accounts
- * @property mixed $individual
+ * @property \Stripe\Person|null $individual
  * @property \Stripe\StripeObject $metadata
  * @property bool $payouts_enabled
- * @property mixed $requirements
- * @property mixed|null $settings
- * @property mixed $tos_acceptance
+ * @property \Stripe\StripeObject $requirements
+ * @property \Stripe\StripeObject|null $settings
+ * @property \Stripe\StripeObject $tos_acceptance
  * @property string $type
  *
  * @package Stripe
