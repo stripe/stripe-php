@@ -135,7 +135,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Gets the JSON deserialized body.
      *
-     * @return array|null
+     * @return array<string, mixed>|null
      */
     public function getJsonBody()
     {
@@ -145,7 +145,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Sets the JSON deserialized body.
      *
-     * @param array|null $jsonBody
+     * @param array<string, mixed>|null $jsonBody
      */
     public function setJsonBody($jsonBody)
     {
