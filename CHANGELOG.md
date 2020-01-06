@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.15.0 - 2020-01-06
+* [#824](https://github.com/stripe/stripe-php/pull/824) Add constant `TYPE_SG_UEN` to `TaxId`
+
 ## 7.14.2 - 2019-12-04
 * [#816](https://github.com/stripe/stripe-php/pull/816) Disable autoloader when checking for `Throwable`
 
