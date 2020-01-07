@@ -40,15 +40,15 @@ class File extends ApiResource
 
     /**
      * @param array|null $params
-     * @param array|string|null $options
+     * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return \Stripe\File The created resource.
      */
-    public static function create($params = null, $options = null)
+    public static function create($params = null, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($options);
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
         if (is_null($opts->apiBase)) {
             $opts->apiBase = Stripe::$apiUploadBase;
         }

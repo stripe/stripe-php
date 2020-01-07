@@ -67,14 +67,14 @@ class Customer extends ApiResource
 
     /**
      * @param array|null $params
-     * @param array|string|null $options
+     * @param array|string|null $opts
      *
      * @return Customer The updated customer.
      */
-    public function deleteDiscount($params = null, $options = null)
+    public function deleteDiscount($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/discount';
-        list($response, $opts) = $this->_request('delete', $url, $params, $options);
+        list($response, $opts) = $this->_request('delete', $url, $params, $opts);
         $this->refreshFrom(['discount' => null], $opts, true);
     }
 
