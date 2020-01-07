@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.16.0 - 2020-01-06
+* [#826](https://github.com/stripe/stripe-php/pull/826) Rename remaining `$options` to `$opts`
+* [#825](https://github.com/stripe/stripe-php/pull/825) Update PHPDoc
+
 ## 7.15.0 - 2020-01-06
 * [#824](https://github.com/stripe/stripe-php/pull/824) Add constant `TYPE_SG_UEN` to `TaxId`
 
