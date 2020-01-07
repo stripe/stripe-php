@@ -24,7 +24,6 @@ namespace Stripe;
  * @property array|null $default_tax_rates
  * @property \Stripe\Discount|null $discount
  * @property int|null $ended_at
- * @property mixed $invoice_customer_balance_settings
  * @property \Stripe\Collection $items
  * @property string|null $latest_invoice
  * @property bool $livemode

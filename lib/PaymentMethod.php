@@ -7,6 +7,7 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
+ * @property mixed|null $au_becs_debit
  * @property mixed $billing_details
  * @property mixed $card
  * @property mixed $card_present

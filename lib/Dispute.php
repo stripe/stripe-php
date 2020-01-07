@@ -18,6 +18,7 @@ namespace Stripe;
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property string|null $network_reason_code
+ * @property string|null $payment_intent
  * @property string $reason
  * @property string $status
  *

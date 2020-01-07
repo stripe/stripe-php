@@ -9,6 +9,8 @@ namespace Stripe\Terminal;
  * @property string $object
  * @property mixed $address
  * @property string $display_name
+ * @property bool $livemode
+ * @property \Stripe\StripeObject $metadata
  *
  * @package Stripe\Terminal
  */
