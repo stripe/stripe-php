@@ -27,6 +27,7 @@ namespace Stripe\Issuing;
  * @property string $status
  * @property array $transactions
  * @property mixed $verification_data
+ * @property string|null $wallet_provider
  *
  * @package Stripe\Issuing
  */

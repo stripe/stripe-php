@@ -16,6 +16,7 @@ namespace Stripe;
  * @property int $fee
  * @property mixed $fee_details
  * @property int $net
+ * @property string $reporting_category
  * @property string|null $source
  * @property string $status
  * @property string $type

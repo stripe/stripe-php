@@ -12,7 +12,7 @@ namespace Stripe;
  * @property string|null $account_holder_type
  * @property string|null $bank_name
  * @property string $country
- * @property string|null $currency
+ * @property string $currency
  * @property string|null $customer
  * @property bool|null $default_for_currency
  * @property string|null $fingerprint

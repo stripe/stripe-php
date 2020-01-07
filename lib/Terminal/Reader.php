@@ -11,7 +11,9 @@ namespace Stripe\Terminal;
  * @property string $device_type
  * @property string|null $ip_address
  * @property string $label
+ * @property bool $livemode
  * @property string|null $location
+ * @property \Stripe\StripeObject $metadata
  * @property string $serial_number
  * @property string|null $status
  *
