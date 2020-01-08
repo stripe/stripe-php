@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.17.0 - 2020-01-08
+* [#821](https://github.com/stripe/stripe-php/pull/821) Improve PHPDoc types for `ApiErrorException.get/setJsonBody()` methods
+
 ## 7.16.0 - 2020-01-06
 * [#826](https://github.com/stripe/stripe-php/pull/826) Rename remaining `$options` to `$opts`
 * [#825](https://github.com/stripe/stripe-php/pull/825) Update PHPDoc
