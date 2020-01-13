@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.18.0 - 2020-01-13
+* [#829](https://github.com/stripe/stripe-php/pull/829) Don't call php_uname function if disabled by php.ini
+
 ## 7.17.0 - 2020-01-08
 * [#821](https://github.com/stripe/stripe-php/pull/821) Improve PHPDoc types for `ApiErrorException.get/setJsonBody()` methods
 
