@@ -34,6 +34,7 @@ class CreditNote extends ApiResource
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
+    use ApiOperations\NestedResource;
 
     /**
      * Possible string representations of the credit note reason.
@@ -57,6 +58,8 @@ class CreditNote extends ApiResource
      */
     const TYPE_POST_PAYMENT = 'post_payment';
     const TYPE_PRE_PAYMENT  = 'pre_payment';
+
+    const PATH_LINES = '/lines';
 
     /**
      * @param array|null $params
@@ -89,5 +92,19 @@ class CreditNote extends ApiResource
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
+    }
+
+    /**
+     * @param string $id The ID of the credit note on which to retrieve the lines.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return Collection The list of lines (CreditNoteLineItem).
+     */
+    public static function allLines($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_LINES, $params, $opts);
     }
 }

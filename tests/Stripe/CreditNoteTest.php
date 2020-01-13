@@ -89,4 +89,14 @@ class CreditNoteTest extends TestCase
         $this->assertInstanceOf(\Stripe\CreditNote::class, $resource);
         $this->assertSame($resource, $creditNote);
     }
+
+    public function testCanListLines()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/credit_notes/' . self::TEST_RESOURCE_ID . '/lines'
+        );
+        $resources = CreditNote::allLines(self::TEST_RESOURCE_ID);
+        $this->assertTrue(is_array($resources->data));
+    }
 }
