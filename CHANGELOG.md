@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.19.1 - 2020-01-14
+* [#831](https://github.com/stripe/stripe-php/pull/831) Fix incorrect `UnexpectedValueException` instantiation
+
 ## 7.19.0 - 2020-01-14
 * [#830](https://github.com/stripe/stripe-php/pull/830) Add support for `CreditNoteLineItem`
 
