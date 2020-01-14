@@ -422,7 +422,7 @@ class ApiRequestor
         if ($resp === null && $jsonError !== JSON_ERROR_NONE) {
             $msg = "Invalid response body from API: $rbody "
               . "(HTTP response code was $rcode, json_last_error() was $jsonError)";
-            throw new Exception\UnexpectedValueException($msg, $rcode, $rbody);
+            throw new Exception\UnexpectedValueException($msg, $rcode);
         }
 
         if ($rcode < 200 || $rcode >= 300) {
