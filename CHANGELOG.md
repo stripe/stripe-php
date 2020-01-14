@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.19.0 - 2020-01-14
+* [#830](https://github.com/stripe/stripe-php/pull/830) Add support for `CreditNoteLineItem`
+
 ## 7.18.0 - 2020-01-13
 * [#829](https://github.com/stripe/stripe-php/pull/829) Don't call php_uname function if disabled by php.ini
 
