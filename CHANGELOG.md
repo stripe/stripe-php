@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.20.0 - 2020-01-23
+* [#836](https://github.com/stripe/stripe-php/pull/836) Add new type values for `TaxId`
+
 ## 7.19.1 - 2020-01-14
 * [#831](https://github.com/stripe/stripe-php/pull/831) Fix incorrect `UnexpectedValueException` instantiation
 
