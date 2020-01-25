@@ -42,9 +42,9 @@ require_once('/path/to/stripe-php/init.php');
 
 The bindings require the following extensions in order to work properly:
 
-- [`curl`](https://secure.php.net/manual/en/book.curl.php), although you can use your own non-cURL client if you prefer
-- [`json`](https://secure.php.net/manual/en/book.json.php)
-- [`mbstring`](https://secure.php.net/manual/en/book.mbstring.php) (Multibyte String)
+-   [`curl`](https://secure.php.net/manual/en/book.curl.php), although you can use your own non-cURL client if you prefer
+-   [`json`](https://secure.php.net/manual/en/book.json.php)
+-   [`mbstring`](https://secure.php.net/manual/en/book.mbstring.php) (Multibyte String)
 
 If you use Composer, these dependencies should be handled automatically. If you install manually, you'll want to make sure that these extensions are available.
 
@@ -54,8 +54,12 @@ Simple usage looks like:
 
 ```php
 \Stripe\Stripe::setApiKey('sk_test_BQokikJOvBiI2HlWgH4olfQ2');
-$charge = \Stripe\Charge::create(['amount' => 2000, 'currency' => 'usd', 'source' => 'tok_189fqt2eZvKYlo2CTGBeg6Uq']);
-echo $charge;
+$customer = \Stripe\Customer::create([
+    'description' => 'example customer',
+    'email' => 'email@example.com',
+    'payment_method' => 'pm_card_visa',
+]);
+echo $customer;
 ```
 
 ## Documentation
@@ -72,21 +76,9 @@ If you are using PHP 5.4 or 5.5, you can download v6.21.1 ([zip](https://github.
 
 If you are using PHP 5.3, you can download v5.9.2 ([zip](https://github.com/stripe/stripe-php/archive/v5.9.2.zip), [tar.gz](https://github.com/stripe/stripe-php/archive/v5.9.2.tar.gz)) from our [releases page](https://github.com/stripe/stripe-php/releases). This version will continue to work with new versions of the Stripe API for all common uses.
 
-### PHP 5.2
-
-If you are using PHP 5.2, you can download v1.18.0 ([zip](https://github.com/stripe/stripe-php/archive/v1.18.0.zip), [tar.gz](https://github.com/stripe/stripe-php/archive/v1.18.0.tar.gz)) from our [releases page](https://github.com/stripe/stripe-php/releases). This version will continue to work with new versions of the Stripe API for all common uses.
-
-This legacy version may be included via `require_once("/path/to/stripe-php/lib/Stripe.php");`, and used like:
-
-```php
-Stripe::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
-$charge = Stripe_Charge::create(array('source' => 'tok_XXXXXXXX', 'amount' => 2000, 'currency' => 'usd'));
-echo $charge;
-```
-
 ## Custom Request Timeouts
 
-*NOTE:* We do not recommend decreasing the timeout for non-read-only calls (e.g. charge creation), since even if you locally timeout, the request on Stripe's side can still complete. If you are decreasing timeouts on these calls, make sure to use [idempotency tokens](https://stripe.com/docs/api/php#idempotent_requests) to avoid executing the same transaction twice as a result of timeout retry logic.
+_NOTE:_ We do not recommend decreasing the timeout for non-read-only calls (e.g. charge creation), since even if you locally timeout, the request on Stripe's side can still complete. If you are decreasing timeouts on these calls, make sure to use [idempotency tokens](https://stripe.com/docs/api/php#idempotent_requests) to avoid executing the same transaction twice as a result of timeout retry logic.
 
 To modify request timeouts (connect or total, in seconds) you'll need to tell the API client to use a CurlClient other than its default. You'll set the timeouts in that CurlClient.
 
@@ -133,8 +125,10 @@ end up there instead of `error_log`:
 You can access the data from the last API response on any object via `getLastResponse()`.
 
 ```php
-$charge = \Stripe\Charge::create(['amount' => 2000, 'currency' => 'usd', 'source' => 'tok_visa']);
-echo $charge->getLastResponse()->headers['Request-Id'];
+$customer = \Stripe\Customer::create([
+    'description' => 'example customer',
+]);
+echo $customer->getLastResponse()->headers['Request-Id'];
 ```
 
 ### SSL / TLS compatibility issues
@@ -155,12 +149,12 @@ one that uses [Stripe Connect][connect], it's also possible to set a
 per-request key and/or account:
 
 ```php
-\Stripe\Charge::all([], [
+$customers = \Stripe\Customer::all([],[
     'api_key' => 'sk_test_...',
     'stripe_account' => 'acct_...'
 ]);
 
-\Stripe\Charge::retrieve("ch_18atAXCdGbJFKhCuBAa4532Z", [
+\Stripe\Customer::retrieve("cus_123456789", [
     'api_key' => 'sk_test_...',
     'stripe_account' => 'acct_...'
 ]);
