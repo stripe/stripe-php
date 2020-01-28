@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.21.0 - 2020-01-28
+* [#839](https://github.com/stripe/stripe-php/pull/839) Add support for `TYPE_ES_CIF` on `TaxId`
+
 ## 7.20.0 - 2020-01-23
 * [#836](https://github.com/stripe/stripe-php/pull/836) Add new type values for `TaxId`
 
