@@ -30,6 +30,7 @@ class TaxId extends ApiResource
     const TYPE_AU_ABN  = 'au_abn';
     const TYPE_CA_BN   = 'ca_bn';
     const TYPE_CH_VAT  = 'ch_vat';
+    const TYPE_ES_CIF  = 'es_cif';
     const TYPE_EU_VAT  = 'eu_vat';
     const TYPE_HK_BR   = 'hk_br';
     const TYPE_IN_GST  = 'in_gst';
