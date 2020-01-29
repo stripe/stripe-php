@@ -156,6 +156,19 @@ class Account extends ApiResource
      * capabilities property which is a hash and not the sub-list of capabilities.
      */
 
+    /**
+     * @param string $id The ID of the account on which to retrieve the capabilities.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection The list of capabilities.
+     */
+    public static function allCapabilities($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_CAPABILITIES, $params, $opts);
+    }
 
     /**
      * @param string $id The ID of the account to which the capability belongs.
@@ -188,17 +201,17 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the account on which to retrieve the capabilities.
+     * @param string $id The ID of the account on which to retrieve the external accounts.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of capabilities.
+     * @return \Stripe\Collection The list of external accounts (BankAccount or Card).
      */
-    public static function allCapabilities($id, $params = null, $opts = null)
+    public static function allExternalAccounts($id, $params = null, $opts = null)
     {
-        return self::_allNestedResources($id, static::PATH_CAPABILITIES, $params, $opts);
+        return self::_allNestedResources($id, static::PATH_EXTERNAL_ACCOUNTS, $params, $opts);
     }
 
     /**
@@ -213,6 +226,21 @@ class Account extends ApiResource
     public static function createExternalAccount($id, $params = null, $opts = null)
     {
         return self::_createNestedResource($id, static::PATH_EXTERNAL_ACCOUNTS, $params, $opts);
+    }
+
+    /**
+     * @param string $id The ID of the account to which the external account belongs.
+     * @param string $externalAccountId The ID of the external account to delete.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\BankAccount|\Stripe\Card
+     */
+    public static function deleteExternalAccount($id, $externalAccountId, $params = null, $opts = null)
+    {
+        return self::_deleteNestedResource($id, static::PATH_EXTERNAL_ACCOUNTS, $externalAccountId, $params, $opts);
     }
 
     /**
@@ -243,35 +271,6 @@ class Account extends ApiResource
     public static function updateExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
         return self::_updateNestedResource($id, static::PATH_EXTERNAL_ACCOUNTS, $externalAccountId, $params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the account to which the external account belongs.
-     * @param string $externalAccountId The ID of the external account to delete.
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\BankAccount|\Stripe\Card
-     */
-    public static function deleteExternalAccount($id, $externalAccountId, $params = null, $opts = null)
-    {
-        return self::_deleteNestedResource($id, static::PATH_EXTERNAL_ACCOUNTS, $externalAccountId, $params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the account on which to retrieve the external accounts.
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection The list of external accounts (BankAccount or Card).
-     */
-    public static function allExternalAccounts($id, $params = null, $opts = null)
-    {
-        return self::_allNestedResources($id, static::PATH_EXTERNAL_ACCOUNTS, $params, $opts);
     }
 
     /**
@@ -306,6 +305,20 @@ class Account extends ApiResource
     }
 
     /**
+     * @param string $id The ID of the account on which to retrieve the persons.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection The list of persons.
+     */
+    public static function allPersons($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_PERSONS, $params, $opts);
+    }
+
+    /**
      * @param string $id The ID of the account on which to create the person.
      * @param array|null $params
      * @param array|string|null $opts
@@ -317,6 +330,21 @@ class Account extends ApiResource
     public static function createPerson($id, $params = null, $opts = null)
     {
         return self::_createNestedResource($id, static::PATH_PERSONS, $params, $opts);
+    }
+
+    /**
+     * @param string $id The ID of the account to which the person belongs.
+     * @param string $personId The ID of the person to delete.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Person
+     */
+    public static function deletePerson($id, $personId, $params = null, $opts = null)
+    {
+        return self::_deleteNestedResource($id, static::PATH_PERSONS, $personId, $params, $opts);
     }
 
     /**
@@ -347,35 +375,6 @@ class Account extends ApiResource
     public static function updatePerson($id, $personId, $params = null, $opts = null)
     {
         return self::_updateNestedResource($id, static::PATH_PERSONS, $personId, $params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the account to which the person belongs.
-     * @param string $personId The ID of the person to delete.
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Person
-     */
-    public static function deletePerson($id, $personId, $params = null, $opts = null)
-    {
-        return self::_deleteNestedResource($id, static::PATH_PERSONS, $personId, $params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the account on which to retrieve the persons.
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection The list of persons.
-     */
-    public static function allPersons($id, $params = null, $opts = null)
-    {
-        return self::_allNestedResources($id, static::PATH_PERSONS, $params, $opts);
     }
 
     public function serializeParameters($force = false)

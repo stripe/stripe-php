@@ -28,7 +28,8 @@ class SubscriptionItem extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    const PATH_USAGE_RECORDS = "/usage_records";
+    const PATH_USAGE_RECORDS = '/usage_records';
+    const PATH_USAGE_RECORD_SUMMARIES = '/usage_record_summaries';
 
     /**
      * @param string|null $id The ID of the subscription item on which to create the usage record.
@@ -64,16 +65,16 @@ class SubscriptionItem extends ApiResource
     }
 
     /**
-     * @param string $id
+     * @param string $id The ID of the subscription item on which to retrieve the usage record summaries.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Collection The list of usage record summaries.
+     * @return \Stripe\Collection The list of usage record summaries.
      */
     public static function allUsageRecordSummaries($id, $params = null, $opts = null)
     {
-        return self::_allNestedResources($id, '/usage_record_summaries', $params, $opts);
+        return self::_allNestedResources($id, static::PATH_USAGE_RECORD_SUMMARIES, $params, $opts);
     }
 }

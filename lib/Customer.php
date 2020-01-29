@@ -79,134 +79,17 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer on which to create the source.
+     * @param string $id The ID of the customer on which to retrieve the balance transactions.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
+     * @return \Stripe\Collection The list of balance transactions.
      */
-    public static function createSource($id, $params = null, $opts = null)
+    public static function allBalanceTransactions($id, $params = null, $opts = null)
     {
-        return self::_createNestedResource($id, static::PATH_SOURCES, $params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the customer to which the source belongs.
-     * @param string $sourceId The ID of the source to retrieve.
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
-     */
-    public static function retrieveSource($id, $sourceId, $params = null, $opts = null)
-    {
-        return self::_retrieveNestedResource($id, static::PATH_SOURCES, $sourceId, $params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the customer to which the source belongs.
-     * @param string $sourceId The ID of the source to update.
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
-     */
-    public static function updateSource($id, $sourceId, $params = null, $opts = null)
-    {
-        return self::_updateNestedResource($id, static::PATH_SOURCES, $sourceId, $params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the customer to which the source belongs.
-     * @param string $sourceId The ID of the source to delete.
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
-     */
-    public static function deleteSource($id, $sourceId, $params = null, $opts = null)
-    {
-        return self::_deleteNestedResource($id, static::PATH_SOURCES, $sourceId, $params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the customer on which to retrieve the sources.
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection The list of sources.
-     */
-    public static function allSources($id, $params = null, $opts = null)
-    {
-        return self::_allNestedResources($id, static::PATH_SOURCES, $params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the customer on which to create the tax id.
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\TaxId
-     */
-    public static function createTaxId($id, $params = null, $opts = null)
-    {
-        return self::_createNestedResource($id, static::PATH_TAX_IDS, $params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the customer to which the tax id belongs.
-     * @param string $taxIdId The ID of the tax id to retrieve.
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\TaxId
-     */
-    public static function retrieveTaxId($id, $taxIdId, $params = null, $opts = null)
-    {
-        return self::_retrieveNestedResource($id, static::PATH_TAX_IDS, $taxIdId, $params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the customer to which the tax id belongs.
-     * @param string $taxIdId The ID of the tax id to delete.
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\TaxId
-     */
-    public static function deleteTaxId($id, $taxIdId, $params = null, $opts = null)
-    {
-        return self::_deleteNestedResource($id, static::PATH_TAX_IDS, $taxIdId, $params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the customer on which to retrieve the tax ids.
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection The list of tax ids.
-     */
-    public static function allTaxIds($id, $params = null, $opts = null)
-    {
-        return self::_allNestedResources($id, static::PATH_TAX_IDS, $params, $opts);
+        return self::_allNestedResources($id, static::PATH_BALANCE_TRANSACTIONS, $params, $opts);
     }
 
     /**
@@ -254,16 +137,133 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer on which to retrieve the balance transactions.
+     * @param string $id The ID of the customer on which to retrieve the sources.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of balance transactions.
+     * @return \Stripe\Collection The list of sources.
      */
-    public static function allBalanceTransactions($id, $params = null, $opts = null)
+    public static function allSources($id, $params = null, $opts = null)
     {
-        return self::_allNestedResources($id, static::PATH_BALANCE_TRANSACTIONS, $params, $opts);
+        return self::_allNestedResources($id, static::PATH_SOURCES, $params, $opts);
+    }
+
+    /**
+     * @param string $id The ID of the customer on which to create the source.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
+     */
+    public static function createSource($id, $params = null, $opts = null)
+    {
+        return self::_createNestedResource($id, static::PATH_SOURCES, $params, $opts);
+    }
+
+    /**
+     * @param string $id The ID of the customer to which the source belongs.
+     * @param string $sourceId The ID of the source to delete.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
+     */
+    public static function deleteSource($id, $sourceId, $params = null, $opts = null)
+    {
+        return self::_deleteNestedResource($id, static::PATH_SOURCES, $sourceId, $params, $opts);
+    }
+
+    /**
+     * @param string $id The ID of the customer to which the source belongs.
+     * @param string $sourceId The ID of the source to retrieve.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
+     */
+    public static function retrieveSource($id, $sourceId, $params = null, $opts = null)
+    {
+        return self::_retrieveNestedResource($id, static::PATH_SOURCES, $sourceId, $params, $opts);
+    }
+
+    /**
+     * @param string $id The ID of the customer to which the source belongs.
+     * @param string $sourceId The ID of the source to update.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
+     */
+    public static function updateSource($id, $sourceId, $params = null, $opts = null)
+    {
+        return self::_updateNestedResource($id, static::PATH_SOURCES, $sourceId, $params, $opts);
+    }
+
+    /**
+     * @param string $id The ID of the customer on which to retrieve the tax ids.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection The list of tax ids.
+     */
+    public static function allTaxIds($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_TAX_IDS, $params, $opts);
+    }
+
+    /**
+     * @param string $id The ID of the customer on which to create the tax id.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\TaxId
+     */
+    public static function createTaxId($id, $params = null, $opts = null)
+    {
+        return self::_createNestedResource($id, static::PATH_TAX_IDS, $params, $opts);
+    }
+
+    /**
+     * @param string $id The ID of the customer to which the tax id belongs.
+     * @param string $taxIdId The ID of the tax id to delete.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\TaxId
+     */
+    public static function deleteTaxId($id, $taxIdId, $params = null, $opts = null)
+    {
+        return self::_deleteNestedResource($id, static::PATH_TAX_IDS, $taxIdId, $params, $opts);
+    }
+
+    /**
+     * @param string $id The ID of the customer to which the tax id belongs.
+     * @param string $taxIdId The ID of the tax id to retrieve.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\TaxId
+     */
+    public static function retrieveTaxId($id, $taxIdId, $params = null, $opts = null)
+    {
+        return self::_retrieveNestedResource($id, static::PATH_TAX_IDS, $taxIdId, $params, $opts);
     }
 }
