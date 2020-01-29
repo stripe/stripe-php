@@ -12,13 +12,13 @@ namespace Stripe;
  * @property string|null $closed_reason
  * @property int $created
  * @property string|null $ip_address
- * @property mixed|null $ip_address_location
+ * @property \Stripe\StripeObject|null $ip_address_location
  * @property bool $livemode
  * @property bool $open
  * @property string $opened_reason
  * @property string $payment_intent
  * @property string $reason
- * @property mixed|null $session
+ * @property \Stripe\StripeObject|null $session
  *
  * @package Stripe
  */

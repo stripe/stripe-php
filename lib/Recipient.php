@@ -7,7 +7,7 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property mixed|null $active_account
+ * @property \Stripe\BankAccount|null $active_account
  * @property \Stripe\Collection|null $cards
  * @property int $created
  * @property string|null $default_card

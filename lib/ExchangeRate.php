@@ -7,7 +7,7 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property mixed $rates
+ * @property \Stripe\StripeObject $rates
  *
  * @package Stripe
  */

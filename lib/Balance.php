@@ -6,10 +6,10 @@ namespace Stripe;
  * Class Balance
  *
  * @property string $object
- * @property array $available
- * @property array $connect_reserved
+ * @property \Stripe\StripeObject[] $available
+ * @property \Stripe\StripeObject[] $connect_reserved
  * @property bool $livemode
- * @property array $pending
+ * @property \Stripe\StripeObject[] $pending
  *
  * @package Stripe
  */

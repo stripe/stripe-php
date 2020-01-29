@@ -7,7 +7,7 @@ namespace Stripe\Terminal;
  *
  * @property string $id
  * @property string $object
- * @property mixed $address
+ * @property \Stripe\StripeObject $address
  * @property string $display_name
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
