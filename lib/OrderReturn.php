@@ -10,7 +10,7 @@ namespace Stripe;
  * @property int $amount
  * @property int $created
  * @property string $currency
- * @property OrderItem[] $items
+ * @property \Stripe\OrderItem[] $items
  * @property bool $livemode
  * @property string|null $order
  * @property string|null $refund

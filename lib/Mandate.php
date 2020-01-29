@@ -7,12 +7,12 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property mixed $customer_acceptance
+ * @property \Stripe\StripeObject $customer_acceptance
  * @property bool $livemode
- * @property mixed|null $multi_use
+ * @property \Stripe\StripeObject $multi_use
  * @property string $payment_method
- * @property mixed $payment_method_details
- * @property mixed|null $single_use
+ * @property \Stripe\StripeObject $payment_method_details
+ * @property \Stripe\StripeObject $single_use
  * @property string $status
  * @property string $type
  *

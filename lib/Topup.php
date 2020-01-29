@@ -17,7 +17,7 @@ namespace Stripe;
  * @property string|null $failure_message
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
- * @property mixed $source
+ * @property \Stripe\Source $source
  * @property string|null $statement_descriptor
  * @property string $status
  * @property string|null $transfer_group

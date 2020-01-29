@@ -16,13 +16,14 @@ namespace Stripe;
  * @property string|null $invoice
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
- * @property mixed $period
+ * @property \Stripe\StripeObject $period
  * @property \Stripe\Plan|null $plan
  * @property bool $proration
  * @property int $quantity
  * @property string|null $subscription
  * @property string $subscription_item
- * @property array|null $tax_rates
+ * @property \Stripe\TaxRate[]|null $tax_rates
+ * @property bool $unified_proration
  * @property int|null $unit_amount
  * @property string|null $unit_amount_decimal
  *

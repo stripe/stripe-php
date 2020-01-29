@@ -20,9 +20,9 @@ namespace Stripe;
  * @property \Stripe\StripeObject $metadata
  * @property string|null $nickname
  * @property string|null $product
- * @property mixed|null $tiers
+ * @property \Stripe\StripeObject[]|null $tiers
  * @property string|null $tiers_mode
- * @property mixed|null $transform_usage
+ * @property \Stripe\StripeObject|null $transform_usage
  * @property int|null $trial_period_days
  * @property string $usage_type
  *

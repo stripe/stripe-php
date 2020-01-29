@@ -11,7 +11,7 @@ namespace Stripe\Issuing;
  * @property int $created
  * @property string $currency
  * @property string $disputed_transaction
- * @property mixed $evidence
+ * @property \Stripe\StripeObject $evidence
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property string $reason

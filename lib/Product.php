@@ -7,7 +7,7 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property bool|null $active
+ * @property bool $active
  * @property string[]|null $attributes
  * @property string|null $caption
  * @property int $created
@@ -17,7 +17,7 @@ namespace Stripe;
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property string $name
- * @property mixed|null $package_dimensions
+ * @property \Stripe\StripeObject|null $package_dimensions
  * @property bool|null $shippable
  * @property string|null $statement_descriptor
  * @property string $type

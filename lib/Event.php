@@ -10,10 +10,10 @@ namespace Stripe;
  * @property string $account
  * @property string|null $api_version
  * @property int $created
- * @property mixed $data
+ * @property \Stripe\StripeObject $data
  * @property bool $livemode
  * @property int $pending_webhooks
- * @property mixed|null $request
+ * @property \Stripe\StripeObject|null $request
  * @property string $type
  *
  * @package Stripe

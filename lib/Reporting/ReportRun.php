@@ -10,9 +10,9 @@ namespace Stripe\Reporting;
  * @property int $created
  * @property string|null $error
  * @property bool $livemode
- * @property mixed $parameters
+ * @property \Stripe\StripeObject $parameters
  * @property string $report_type
- * @property mixed|null $result
+ * @property \Stripe\File|null $result
  * @property string $status
  * @property int|null $succeeded_at
  *

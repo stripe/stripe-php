@@ -27,7 +27,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $metadata
  * @property string|null $payment
  * @property string|null $refund_address
- * @property mixed $transactions
+ * @property \Stripe\Collection $transactions
  * @property bool $uncaptured_funds
  * @property bool|null $used_for_payment
  *

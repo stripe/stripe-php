@@ -8,14 +8,14 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property bool $active
- * @property mixed $attributes
+ * @property \Stripe\StripeObject $attributes
  * @property int $created
  * @property string $currency
  * @property string|null $image
- * @property mixed $inventory
+ * @property \Stripe\StripeObject $inventory
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
- * @property mixed|null $package_dimensions
+ * @property \Stripe\StripeObject|null $package_dimensions
  * @property int $price
  * @property string $product
  * @property int $updated

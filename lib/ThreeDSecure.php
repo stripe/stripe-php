@@ -9,7 +9,7 @@ namespace Stripe;
  * @property string $object
  * @property int $amount
  * @property bool $authenticated
- * @property mixed $card
+ * @property \Stripe\Card $card
  * @property int $created
  * @property string $currency
  * @property bool $livemode

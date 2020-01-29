@@ -12,9 +12,10 @@ namespace Stripe\Checkout;
  * @property string|null $client_reference_id
  * @property string|null $customer
  * @property string|null $customer_email
- * @property mixed|null $display_items
+ * @property \Stripe\StripeObject[]|null $display_items
  * @property bool $livemode
  * @property string|null $locale
+ * @property \Stripe\StripeObject|null $metadata
  * @property string|null $mode
  * @property string|null $payment_intent
  * @property string[] $payment_method_types
