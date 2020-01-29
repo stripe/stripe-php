@@ -33,6 +33,20 @@ class ApplicationFee extends ApiResource
     const PATH_REFUNDS = '/refunds';
 
     /**
+     * @param string $id The ID of the application fee on which to retrieve the fee refunds.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection The list of fee refunds.
+     */
+    public static function allRefunds($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_REFUNDS, $params, $opts);
+    }
+
+    /**
      * @param string $id The ID of the application fee on which to create the fee refund.
      * @param array|null $params
      * @param array|string|null $opts
@@ -74,19 +88,5 @@ class ApplicationFee extends ApiResource
     public static function updateRefund($id, $refundId, $params = null, $opts = null)
     {
         return self::_updateNestedResource($id, static::PATH_REFUNDS, $refundId, $params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the application fee on which to retrieve the fee refunds.
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection The list of fee refunds.
-     */
-    public static function allRefunds($id, $params = null, $opts = null)
-    {
-        return self::_allNestedResources($id, static::PATH_REFUNDS, $params, $opts);
     }
 }

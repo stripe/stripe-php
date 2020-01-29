@@ -63,6 +63,20 @@ class Transfer extends ApiResource
     }
 
     /**
+     * @param string $id The ID of the transfer on which to retrieve the transfer reversals.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection The list of transfer reversals.
+     */
+    public static function allReversals($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_REVERSALS, $params, $opts);
+    }
+
+    /**
      * @param string $id The ID of the transfer on which to create the transfer reversal.
      * @param array|null $params
      * @param array|string|null $opts
@@ -104,19 +118,5 @@ class Transfer extends ApiResource
     public static function updateReversal($id, $reversalId, $params = null, $opts = null)
     {
         return self::_updateNestedResource($id, static::PATH_REVERSALS, $reversalId, $params, $opts);
-    }
-
-    /**
-     * @param string $id The ID of the transfer on which to retrieve the transfer reversals.
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection The list of transfer reversals.
-     */
-    public static function allReversals($id, $params = null, $opts = null)
-    {
-        return self::_allNestedResources($id, static::PATH_REVERSALS, $params, $opts);
     }
 }
