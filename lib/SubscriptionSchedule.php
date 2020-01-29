@@ -7,22 +7,20 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property mixed|null $billing_thresholds
  * @property int|null $canceled_at
- * @property string|null $collection_method
  * @property int|null $completed_at
  * @property int $created
- * @property mixed|null $current_phase
+ * @property \Stripe\StripeObject|null $current_phase
  * @property string $customer
- * @property string|null $default_payment_method
+ * @property \Stripe\StripeObject $default_settings
  * @property string $end_behavior
  * @property mixed|null $invoice_settings
  * @property bool $livemode
  * @property \Stripe\StripeObject|null $metadata
- * @property mixed $phases
+ * @property \Stripe\StripeObject[] $phases
  * @property int|null $released_at
  * @property string|null $released_subscription
- * @property mixed|null $renewal_interval
+ * @property \Stripe\StripeObject|null $renewal_interval
  * @property string $status
  * @property string|null $subscription
  *

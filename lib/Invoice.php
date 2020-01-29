@@ -21,18 +21,18 @@ namespace Stripe;
  * @property string|null $collection_method
  * @property int $created
  * @property string $currency
- * @property array|null $custom_fields
+ * @property \Stripe\StripeObject[]|null $custom_fields
  * @property string $customer
- * @property mixed|null $customer_address
+ * @property \Stripe\StripeObject|null $customer_address
  * @property string|null $customer_email
  * @property string|null $customer_name
  * @property string|null $customer_phone
- * @property mixed|null $customer_shipping
+ * @property \Stripe\StripeObject|null $customer_shipping
  * @property string|null $customer_tax_exempt
- * @property array|null $customer_tax_ids
+ * @property \Stripe\StripeObject[]|null $customer_tax_ids
  * @property string|null $default_payment_method
  * @property string|null $default_source
- * @property array|null $default_tax_rates
+ * @property \Stripe\TaxRate[]|null $default_tax_rates
  * @property string|null $description
  * @property \Stripe\Discount|null $discount
  * @property int|null $due_date
@@ -55,14 +55,15 @@ namespace Stripe;
  * @property int $starting_balance
  * @property string|null $statement_descriptor
  * @property string|null $status
- * @property mixed $status_transitions
+ * @property \Stripe\StripeObject $status_transitions
  * @property string|null $subscription
  * @property int $subscription_proration_date
  * @property int $subtotal
  * @property int|null $tax
- * @property mixed $threshold_reason
+ * @property float|null $tax_percent
+ * @property \Stripe\StripeObject $threshold_reason
  * @property int $total
- * @property array|null $total_tax_amounts
+ * @property \Stripe\StripeObject[]|null $total_tax_amounts
  * @property int|null $webhooks_delivered_at
  *
  * @package Stripe

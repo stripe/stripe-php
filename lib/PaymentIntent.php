@@ -23,23 +23,23 @@ namespace Stripe;
  * @property string|null $customer
  * @property string|null $description
  * @property string|null $invoice
- * @property mixed|null $last_payment_error
+ * @property \Stripe\StripeObject|null $last_payment_error
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
- * @property mixed|null $next_action
+ * @property \Stripe\StripeObject|null $next_action
  * @property string|null $on_behalf_of
  * @property string|null $payment_method
- * @property mixed|null $payment_method_options
+ * @property \Stripe\StripeObject|null $payment_method_options
  * @property string[] $payment_method_types
  * @property string|null $receipt_email
  * @property string|null $review
  * @property string|null $setup_future_usage
- * @property mixed|null $shipping
+ * @property \Stripe\StripeObject|null $shipping
  * @property string|null $source
  * @property string|null $statement_descriptor
  * @property string|null $statement_descriptor_suffix
  * @property string $status
- * @property mixed|null $transfer_data
+ * @property \Stripe\StripeObject|null $transfer_data
  * @property string|null $transfer_group
  *
  * @package Stripe

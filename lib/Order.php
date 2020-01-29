@@ -17,15 +17,15 @@ namespace Stripe;
  * @property string|null $customer
  * @property string|null $email
  * @property string $external_coupon_code
- * @property OrderItem[] $items
+ * @property \Stripe\OrderItem[] $items
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property \Stripe\Collection|null $returns
  * @property string|null $selected_shipping_method
- * @property mixed|null $shipping
- * @property array|null $shipping_methods
+ * @property \Stripe\StripeObject|null $shipping
+ * @property \Stripe\StripeObject[]|null $shipping_methods
  * @property string $status
- * @property mixed|null $status_transitions
+ * @property \Stripe\StripeObject|null $status_transitions
  * @property int|null $updated
  * @property string $upstream_id
  *

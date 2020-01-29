@@ -7,16 +7,16 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property mixed|null $au_becs_debit
- * @property mixed $billing_details
- * @property mixed $card
- * @property mixed $card_present
+ * @property \Stripe\StripeObject $au_becs_debit
+ * @property \Stripe\StripeObject $billing_details
+ * @property \Stripe\StripeObject $card
+ * @property \Stripe\StripeObject $card_present
  * @property int $created
  * @property string|null $customer
- * @property mixed|null $ideal
+ * @property \Stripe\StripeObject $ideal
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
- * @property mixed|null $sepa_debit
+ * @property \Stripe\StripeObject $sepa_debit
  * @property string $type
  *
  * @package Stripe
