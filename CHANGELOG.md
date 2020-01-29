@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.21.1 - 2020-01-29
+* [#840](https://github.com/stripe/stripe-php/pull/840) Update phpdocs across multiple resources.
+
 ## 7.21.0 - 2020-01-28
 * [#839](https://github.com/stripe/stripe-php/pull/839) Add support for `TYPE_ES_CIF` on `TaxId`
 
