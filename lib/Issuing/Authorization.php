@@ -11,22 +11,22 @@ namespace Stripe\Issuing;
  * @property string $authorization_method
  * @property int $authorized_amount
  * @property string $authorized_currency
- * @property \Stripe\Collection $balance_transactions
- * @property Card $card
+ * @property \Stripe\BalanceTransaction[] $balance_transactions
+ * @property \Stripe\Issuing\Card $card
  * @property string|null $cardholder
  * @property int $created
  * @property int $held_amount
  * @property string $held_currency
  * @property bool $is_held_amount_controllable
  * @property bool $livemode
- * @property mixed $merchant_data
+ * @property \Stripe\StripeObject $merchant_data
  * @property \Stripe\StripeObject $metadata
  * @property int $pending_authorized_amount
  * @property int $pending_held_amount
- * @property mixed $request_history
+ * @property \Stripe\StripeObject[] $request_history
  * @property string $status
- * @property array $transactions
- * @property mixed $verification_data
+ * @property \Stripe\Issuing\Transaction[] $transactions
+ * @property \Stripe\StripeObject $verification_data
  * @property string|null $wallet_provider
  *
  * @package Stripe\Issuing

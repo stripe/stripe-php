@@ -7,42 +7,42 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property mixed $ach_credit_transfer
- * @property mixed $ach_debit
- * @property mixed $acss_debit
- * @property mixed $alipay
+ * @property \Stripe\StripeObject $ach_credit_transfer
+ * @property \Stripe\StripeObject $ach_debit
+ * @property \Stripe\StripeObject $acss_debit
+ * @property \Stripe\StripeObject $alipay
  * @property int|null $amount
- * @property mixed $au_becs_debit
- * @property mixed $bancontact
- * @property mixed $card
- * @property mixed $card_present
+ * @property \Stripe\StripeObject $au_becs_debit
+ * @property \Stripe\StripeObject $bancontact
+ * @property \Stripe\StripeObject $card
+ * @property \Stripe\StripeObject $card_present
  * @property string $client_secret
- * @property mixed $code_verification
+ * @property \Stripe\StripeObject $code_verification
  * @property int $created
  * @property string|null $currency
  * @property string $customer
- * @property mixed $eps
+ * @property \Stripe\StripeObject $eps
  * @property string $flow
- * @property mixed $giropay
- * @property mixed $ideal
- * @property mixed $klarna
+ * @property \Stripe\StripeObject $giropay
+ * @property \Stripe\StripeObject $ideal
+ * @property \Stripe\StripeObject $klarna
  * @property bool $livemode
  * @property \Stripe\StripeObject|null $metadata
- * @property mixed $multibanco
- * @property mixed|null $owner
- * @property mixed $p24
- * @property mixed $receiver
- * @property mixed $redirect
- * @property mixed $sepa_credit_transfer
- * @property mixed $sepa_debit
- * @property mixed $sofort
- * @property mixed $source_order
+ * @property \Stripe\StripeObject $multibanco
+ * @property \Stripe\StripeObject|null $owner
+ * @property \Stripe\StripeObject $p24
+ * @property \Stripe\StripeObject $receiver
+ * @property \Stripe\StripeObject $redirect
+ * @property \Stripe\StripeObject $sepa_credit_transfer
+ * @property \Stripe\StripeObject $sepa_debit
+ * @property \Stripe\StripeObject $sofort
+ * @property \Stripe\StripeObject $source_order
  * @property string|null $statement_descriptor
  * @property string $status
- * @property mixed $three_d_secure
+ * @property \Stripe\StripeObject $three_d_secure
  * @property string $type
  * @property string|null $usage
- * @property mixed $wechat
+ * @property \Stripe\StripeObject $wechat
  *
  * @package Stripe
  */

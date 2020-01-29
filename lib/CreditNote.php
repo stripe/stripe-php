@@ -12,15 +12,21 @@ namespace Stripe;
  * @property string $currency
  * @property string $customer
  * @property string|null $customer_balance_transaction
+ * @property int $discount_amount
  * @property string $invoice
+ * @property \Stripe\Collection $lines
  * @property bool $livemode
  * @property string|null $memo
  * @property \Stripe\StripeObject $metadata
  * @property string $number
+ * @property int|null $out_of_band_amount
  * @property string $pdf
  * @property string|null $reason
  * @property string|null $refund
  * @property string $status
+ * @property int $subtotal
+ * @property \Stripe\StripeObject[] $tax_amounts
+ * @property int $total
  * @property string $type
  * @property int|null $voided_at
  *
@@ -67,7 +73,7 @@ class CreditNote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return CreditNote The previewed credit note.
+     * @return \Stripe\CreditNote The previewed credit note.
      */
     public static function preview($params = null, $opts = null)
     {
@@ -101,7 +107,7 @@ class CreditNote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Collection The list of lines (CreditNoteLineItem).
+     * @return \Stripe\Collection The list of credit note line items.
      */
     public static function allLines($id, $params = null, $opts = null)
     {

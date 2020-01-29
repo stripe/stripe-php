@@ -13,7 +13,7 @@ namespace Stripe;
  * @property string|null $application_fee
  * @property int|null $application_fee_amount
  * @property string|null $balance_transaction
- * @property mixed $billing_details
+ * @property \Stripe\StripeObject $billing_details
  * @property bool $captured
  * @property int $created
  * @property string $currency
@@ -24,31 +24,31 @@ namespace Stripe;
  * @property bool $disputed
  * @property string|null $failure_code
  * @property string|null $failure_message
- * @property mixed|null $fraud_details
+ * @property \Stripe\StripeObject|null $fraud_details
  * @property string|null $invoice
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property string|null $on_behalf_of
  * @property string|null $order
- * @property mixed|null $outcome
+ * @property \Stripe\StripeObject|null $outcome
  * @property bool $paid
  * @property string|null $payment_intent
  * @property string|null $payment_method
- * @property mixed|null $payment_method_details
+ * @property \Stripe\StripeObject|null $payment_method_details
  * @property string|null $receipt_email
  * @property string|null $receipt_number
  * @property string $receipt_url
  * @property bool $refunded
  * @property \Stripe\Collection $refunds
  * @property string|null $review
- * @property mixed|null $shipping
- * @property mixed|null $source
+ * @property \Stripe\StripeObject|null $shipping
+ * @property \Stripe\StripeObject|null $source
  * @property string|null $source_transfer
  * @property string|null $statement_descriptor
  * @property string|null $statement_descriptor_suffix
  * @property string $status
  * @property string $transfer
- * @property mixed|null $transfer_data
+ * @property \Stripe\StripeObject|null $transfer_data
  * @property string|null $transfer_group
  *
  * @package Stripe

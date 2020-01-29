@@ -39,7 +39,7 @@ class ApplicationFee extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return ApplicationFeeRefund
+     * @return \Stripe\ApplicationFeeRefund
      */
     public static function createRefund($id, $params = null, $opts = null)
     {
@@ -54,7 +54,7 @@ class ApplicationFee extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return ApplicationFeeRefund
+     * @return \Stripe\ApplicationFeeRefund
      */
     public static function retrieveRefund($id, $refundId, $params = null, $opts = null)
     {
@@ -69,7 +69,7 @@ class ApplicationFee extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return ApplicationFeeRefund
+     * @return \Stripe\ApplicationFeeRefund
      */
     public static function updateRefund($id, $refundId, $params = null, $opts = null)
     {
@@ -83,7 +83,7 @@ class ApplicationFee extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Collection The list of fee refunds.
+     * @return \Stripe\Collection The list of fee refunds.
      */
     public static function allRefunds($id, $params = null, $opts = null)
     {

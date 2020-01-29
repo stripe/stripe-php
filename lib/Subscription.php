@@ -9,7 +9,7 @@ namespace Stripe;
  * @property string $object
  * @property float|null $application_fee_percent
  * @property int $billing_cycle_anchor
- * @property mixed|null $billing_thresholds
+ * @property \Stripe\StripeObject|null $billing_thresholds
  * @property int|null $cancel_at
  * @property bool $cancel_at_period_end
  * @property int|null $canceled_at
@@ -21,7 +21,7 @@ namespace Stripe;
  * @property int|null $days_until_due
  * @property string|null $default_payment_method
  * @property string|null $default_source
- * @property array|null $default_tax_rates
+ * @property \Stripe\TaxRate[]|null $default_tax_rates
  * @property \Stripe\Discount|null $discount
  * @property int|null $ended_at
  * @property \Stripe\Collection $items
@@ -29,8 +29,9 @@ namespace Stripe;
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property int|null $next_pending_invoice_item_invoice
- * @property mixed|null $pending_invoice_item_interval
+ * @property \Stripe\StripeObject|null $pending_invoice_item_interval
  * @property string|null $pending_setup_intent
+ * @property \Stripe\StripeObject|null $pending_update
  * @property \Stripe\Plan|null $plan
  * @property int|null $quantity
  * @property string|null $schedule

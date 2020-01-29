@@ -7,7 +7,7 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property mixed|null $address
+ * @property \Stripe\StripeObject|null $address
  * @property int $balance
  * @property int $created
  * @property string|null $currency
@@ -17,13 +17,13 @@ namespace Stripe;
  * @property \Stripe\Discount|null $discount
  * @property string|null $email
  * @property string|null $invoice_prefix
- * @property mixed $invoice_settings
+ * @property \Stripe\StripeObject $invoice_settings
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property string|null $name
  * @property string|null $phone
  * @property string[]|null $preferred_locales
- * @property mixed|null $shipping
+ * @property \Stripe\StripeObject|null $shipping
  * @property \Stripe\Collection $sources
  * @property \Stripe\Collection $subscriptions
  * @property string|null $tax_exempt
@@ -85,7 +85,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return ApiResource
+     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
      */
     public static function createSource($id, $params = null, $opts = null)
     {
@@ -100,7 +100,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return ApiResource
+     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
      */
     public static function retrieveSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -115,7 +115,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return ApiResource
+     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
      */
     public static function updateSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -130,7 +130,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return ApiResource
+     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
      */
     public static function deleteSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -144,7 +144,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Collection The list of sources.
+     * @return \Stripe\Collection The list of sources.
      */
     public static function allSources($id, $params = null, $opts = null)
     {
@@ -158,7 +158,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return TaxId
+     * @return \Stripe\TaxId
      */
     public static function createTaxId($id, $params = null, $opts = null)
     {
@@ -173,7 +173,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return TaxId
+     * @return \Stripe\TaxId
      */
     public static function retrieveTaxId($id, $taxIdId, $params = null, $opts = null)
     {
@@ -188,7 +188,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return TaxId
+     * @return \Stripe\TaxId
      */
     public static function deleteTaxId($id, $taxIdId, $params = null, $opts = null)
     {
@@ -202,7 +202,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Collection The list of tax ids.
+     * @return \Stripe\Collection The list of tax ids.
      */
     public static function allTaxIds($id, $params = null, $opts = null)
     {
@@ -216,7 +216,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return BalanceTransaction
+     * @return \Stripe\BalanceTransaction
      */
     public static function createBalanceTransaction($id, $params = null, $opts = null)
     {
@@ -231,7 +231,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return BalanceTransaction
+     * @return \Stripe\BalanceTransaction
      */
     public static function retrieveBalanceTransaction($id, $balanceTransactionId, $params = null, $opts = null)
     {
@@ -246,7 +246,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return BalanceTransaction
+     * @return \Stripe\BalanceTransaction
      */
     public static function updateBalanceTransaction($id, $balanceTransactionId, $params = null, $opts = null)
     {
@@ -260,7 +260,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Collection The list of balance transactions.
+     * @return \Stripe\Collection The list of balance transactions.
      */
     public static function allBalanceTransactions($id, $params = null, $opts = null)
     {
