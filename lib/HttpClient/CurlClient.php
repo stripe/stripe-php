@@ -448,7 +448,7 @@ class CurlClient implements ClientInterface
         // number of $numRetries so far as inputs. Do not allow the number to exceed
         // $maxNetworkRetryDelay.
         $sleepSeconds = min(
-            Stripe::getInitialNetworkRetryDelay() * 1.0 * pow(2, $numRetries - 1),
+            Stripe::getInitialNetworkRetryDelay() * 1.0 * 2 ** ($numRetries - 1),
             Stripe::getMaxNetworkRetryDelay()
         );
 
