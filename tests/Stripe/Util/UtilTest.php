@@ -31,7 +31,7 @@ class UtilTest extends \Stripe\TestCase
             ],
             null
         );
-        $this->assertTrue(array_key_exists("id", $customer->toArray()));
+        $this->assertArrayHasKey("id", $customer->toArray());
     }
 
     public function testUtf8()

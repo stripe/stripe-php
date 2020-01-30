@@ -14,7 +14,7 @@ class InvoiceTest extends TestCase
             '/v1/invoices'
         );
         $resources = Invoice::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\Invoice::class, $resources->data[0]);
     }
 
@@ -152,6 +152,6 @@ class InvoiceTest extends TestCase
             '/v1/invoices/' . self::TEST_RESOURCE_ID . '/lines'
         );
         $resources = Invoice::allLines(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
     }
 }

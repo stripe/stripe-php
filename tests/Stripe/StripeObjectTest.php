@@ -60,16 +60,16 @@ class StripeObjectTest extends TestCase
     public function testCount()
     {
         $s = new StripeObject();
-        $this->assertSame(0, count($s));
+        $this->assertCount(0, $s);
 
         $s['key1'] = 'value1';
-        $this->assertSame(1, count($s));
+        $this->assertCount(1, $s);
 
         $s['key2'] = 'value2';
-        $this->assertSame(2, count($s));
+        $this->assertCount(2, $s);
 
         unset($s['key1']);
-        $this->assertSame(1, count($s));
+        $this->assertCount(1, $s);
     }
 
     public function testKeys()
@@ -169,20 +169,18 @@ EOS;
         $this->assertSame($s->metadata, ['baz', 'qux']);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testSetPermanentAttribute()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $s = new StripeObject();
         $s->id = 'abc_123';
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testSetEmptyStringValue()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $s = new StripeObject();
         $s->foo = '';
     }

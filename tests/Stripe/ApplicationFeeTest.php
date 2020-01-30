@@ -14,7 +14,7 @@ class ApplicationFeeTest extends TestCase
             '/v1/application_fees'
         );
         $resources = ApplicationFee::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\ApplicationFee::class, $resources->data[0]);
     }
 
@@ -65,7 +65,7 @@ class ApplicationFeeTest extends TestCase
             '/v1/application_fees/' . self::TEST_RESOURCE_ID . '/refunds'
         );
         $resources = ApplicationFee::allRefunds(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\ApplicationFeeRefund::class, $resources->data[0]);
     }
 }

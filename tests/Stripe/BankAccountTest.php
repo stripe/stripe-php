@@ -42,11 +42,10 @@ class BankAccountTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \Stripe\Exception\BadMethodCallException
-     */
     public function testIsNotDirectlyRetrievable()
     {
+        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+
         BankAccount::retrieve(self::TEST_RESOURCE_ID);
     }
 
@@ -62,11 +61,10 @@ class BankAccountTest extends TestCase
         $this->assertSame(\Stripe\BankAccount::class, get_class($resource));
     }
 
-    /**
-     * @expectedException \Stripe\Exception\BadMethodCallException
-     */
     public function testIsNotDirectlyUpdatable()
     {
+        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+
         BankAccount::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);

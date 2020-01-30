@@ -33,11 +33,10 @@ class AlipayAccountTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \Stripe\Exception\BadMethodCallException
-     */
     public function testIsNotDirectlyRetrievable()
     {
+        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+
         AlipayAccount::retrieve(self::TEST_RESOURCE_ID);
     }
 
@@ -53,11 +52,10 @@ class AlipayAccountTest extends TestCase
         $this->assertSame(\Stripe\AlipayAccount::class, get_class($resource));
     }
 
-    /**
-     * @expectedException \Stripe\Exception\BadMethodCallException
-     */
     public function testIsNotDirectlyUpdatable()
     {
+        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+
         AlipayAccount::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);

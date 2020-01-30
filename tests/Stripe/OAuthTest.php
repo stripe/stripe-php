@@ -30,12 +30,11 @@ class OAuthTest extends TestCase
         $this->assertSame('US', $params['stripe_user']['country']);
     }
 
-    /**
-     * @expectedException \Stripe\Exception\AuthenticationException
-     * @expectedExceptionMessageRegExp #No client_id provided#
-     */
     public function testRaisesAuthenticationErrorWhenNoClientId()
     {
+        $this->expectException(\Stripe\Exception\AuthenticationException::class);
+        $this->expectExceptionMessageRegExp('#No client_id provided#');
+
         Stripe::setClientId(null);
         OAuth::authorizeUrl();
     }

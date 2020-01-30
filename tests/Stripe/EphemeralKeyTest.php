@@ -18,11 +18,10 @@ class EphemeralKeyTest extends TestCase
         $this->assertInstanceOf(\Stripe\EphemeralKey::class, $resource);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testIsNotCreatableWithoutAnExplicitApiVersion()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $resource = EphemeralKey::create([
             "customer" => "cus_123",
         ]);

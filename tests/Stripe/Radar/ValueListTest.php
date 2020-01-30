@@ -13,7 +13,7 @@ class ValueListTest extends \Stripe\TestCase
             '/v1/radar/value_lists'
         );
         $resources = ValueList::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\Radar\ValueList::class, $resources->data[0]);
     }
 

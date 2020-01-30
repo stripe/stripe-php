@@ -13,7 +13,7 @@ class PaymentIntentTest extends TestCase
             '/v1/payment_intents'
         );
         $resources = PaymentIntent::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\PaymentIntent::class, $resources->data[0]);
     }
 
