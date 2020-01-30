@@ -334,7 +334,6 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         return $updateParams;
     }
 
-
     public function serializeParamsValue($value, $original, $unsaved, $force, $key = null)
     {
         // The logic here is that essentially any object embedded in another

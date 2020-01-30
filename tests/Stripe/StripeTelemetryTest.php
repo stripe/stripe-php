@@ -29,7 +29,7 @@ class StripeTelemetryTest extends TestCase
 
         $stub = $this
             ->getMockBuilder("HttpClient\ClientInterface")
-            ->setMethods(array('request'))
+            ->setMethods(['request'])
             ->getMock();
 
         $stub->expects($this->any())
@@ -48,7 +48,7 @@ class StripeTelemetryTest extends TestCase
                 }),
                 $this->anything(),
                 $this->anything()
-            )->willReturn(array(self::FAKE_VALID_RESPONSE, 200, ["request-id" => "123"]));
+            )->willReturn([self::FAKE_VALID_RESPONSE, 200, ["request-id" => "123"]]);
 
         ApiRequestor::setHttpClient($stub);
 
@@ -71,7 +71,7 @@ class StripeTelemetryTest extends TestCase
 
         $stub = $this
             ->getMockBuilder("HttpClient\ClientInterface")
-            ->setMethods(array('request'))
+            ->setMethods(['request'])
             ->getMock();
 
         $stub->expects($this->any())
@@ -90,7 +90,7 @@ class StripeTelemetryTest extends TestCase
                 }),
                 $this->anything(),
                 $this->anything()
-            )->willReturn(array(self::FAKE_VALID_RESPONSE, 200, ["request-id" => ["req_123"]]));
+            )->willReturn([self::FAKE_VALID_RESPONSE, 200, ["request-id" => ["req_123"]]]);
 
         ApiRequestor::setHttpClient($stub);
 
