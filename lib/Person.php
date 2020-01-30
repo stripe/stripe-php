@@ -10,28 +10,28 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property string $account
- * @property mixed $address
- * @property mixed $address_kana
- * @property mixed $address_kanji
+ * @property \Stripe\StripeObject $address
+ * @property \Stripe\StripeObject|null $address_kana
+ * @property \Stripe\StripeObject|null $address_kanji
  * @property int $created
  * @property bool $deleted
- * @property mixed $dob
- * @property string $email
- * @property string $first_name
- * @property string $first_name_kana
- * @property string $first_name_kanji
- * @property string $gender
+ * @property \Stripe\StripeObject $dob
+ * @property string|null $email
+ * @property string|null $first_name
+ * @property string|null $first_name_kana
+ * @property string|null $first_name_kanji
+ * @property string|null $gender
  * @property bool $id_number_provided
- * @property string $last_name
- * @property string $last_name_kana
- * @property string $last_name_kanji
- * @property string $maiden_name
- * @property StripeObject $metadata
- * @property string $phone
- * @property mixed $relationship
- * @property mixed $requirements
+ * @property string|null $last_name
+ * @property string|null $last_name_kana
+ * @property string|null $last_name_kanji
+ * @property string|null $maiden_name
+ * @property \Stripe\StripeObject $metadata
+ * @property string|null $phone
+ * @property \Stripe\StripeObject $relationship
+ * @property \Stripe\StripeObject|null $requirements
  * @property bool $ssn_last_4_provided
- * @property mixed $verification
+ * @property \Stripe\StripeObject $verification
  */
 class Person extends ApiResource
 {

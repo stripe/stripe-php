@@ -8,7 +8,7 @@ namespace Stripe;
  * @property string $object
  * @property string $url
  * @property bool $has_more
- * @property mixed $data
+ * @property \Stripe\StripeObject[] $data
  *
  * @package Stripe
  */

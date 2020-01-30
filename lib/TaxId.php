@@ -15,7 +15,7 @@ namespace Stripe;
  * @property bool $livemode
  * @property string $type
  * @property string $value
- * @property mixed $verification
+ * @property \Stripe\StripeObject $verification
  */
 class TaxId extends ApiResource
 {

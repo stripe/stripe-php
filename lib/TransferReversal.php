@@ -12,7 +12,7 @@ namespace Stripe;
  * @property int $created
  * @property string $currency
  * @property string $destination_payment_refund
- * @property StripeObject $metadata
+ * @property \Stripe\StripeObject $metadata
  * @property string $source_refund
  * @property string $transfer
  *

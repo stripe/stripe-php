@@ -7,12 +7,12 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
+ * @property \Stripe\StripeObject $ach_credit_transfer
  * @property int $amount
  * @property int $created
  * @property string $customer_data
  * @property string $currency
  * @property string $type
- * @property mixed $ach_credit_transfer
  *
  * @package Stripe
  */

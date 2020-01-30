@@ -20,10 +20,10 @@ namespace Stripe;
  * @property string $failure_code
  * @property string $failure_message
  * @property bool $livemode
- * @property StripeObject $metadata
+ * @property \Stripe\StripeObject $metadata
  * @property string $method
  * @property string $recipient
- * @property mixed $reversals
+ * @property \Stripe\Collection $reversals
  * @property bool $reversed
  * @property string $source_type
  * @property string $statement_descriptor
