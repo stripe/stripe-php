@@ -188,7 +188,7 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Invoice The upcoming invoice.
+     * @return \Stripe\Invoice The upcoming invoice.
      */
     public static function upcoming($params = null, $opts = null)
     {
@@ -216,13 +216,13 @@ class Invoice extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the invoice on which to retrieve the lins.
+     * @param string $id The ID of the invoice on which to retrieve the lines.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Collection The list of lines (InvoiceLineItem).
+     * @return \Stripe\Collection The list of lines (InvoiceLineItem).
      */
     public static function allLines($id, $params = null, $opts = null)
     {

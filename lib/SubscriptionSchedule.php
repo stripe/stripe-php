@@ -12,7 +12,6 @@ namespace Stripe;
  * @property int $created
  * @property \Stripe\StripeObject|null $current_phase
  * @property string $customer
- * @property \Stripe\StripeObject $default_settings
  * @property string $end_behavior
  * @property mixed|null $invoice_settings
  * @property bool $livemode

@@ -69,7 +69,7 @@ class Customer extends ApiResource
      * @param array|null $params
      * @param array|string|null $opts
      *
-     * @return Customer The updated customer.
+     * @return \Stripe\Customer The updated customer.
      */
     public function deleteDiscount($params = null, $opts = null)
     {
@@ -79,13 +79,13 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer on which to retrieve the balance transactions.
+     * @param string $id The ID of the customer on which to retrieve the customer balance transactions.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of balance transactions.
+     * @return \Stripe\Collection The list of customer balance transactions.
      */
     public static function allBalanceTransactions($id, $params = null, $opts = null)
     {
@@ -93,13 +93,13 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer on which to create the balance transaction.
+     * @param string $id The ID of the customer on which to create the customer balance transaction.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\BalanceTransaction
+     * @return \Stripe\CustomerBalanceTransaction
      */
     public static function createBalanceTransaction($id, $params = null, $opts = null)
     {
@@ -107,14 +107,14 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer to which the balance transaction belongs.
-     * @param string $balanceTransactionId The ID of the balance transaction to retrieve.
+     * @param string $id The ID of the customer to which the customer balance transaction belongs.
+     * @param string $balanceTransactionId The ID of the customer balance transaction to retrieve.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\BalanceTransaction
+     * @return \Stripe\CustomerBalanceTransaction
      */
     public static function retrieveBalanceTransaction($id, $balanceTransactionId, $params = null, $opts = null)
     {
@@ -122,14 +122,14 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer to which the balance transaction belongs.
-     * @param string $balanceTransactionId The ID of the balance transaction to update.
+     * @param string $id The ID of the customer to which the customer balance transaction belongs.
+     * @param string $balanceTransactionId The ID of the customer balance transaction to update.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\BalanceTransaction
+     * @return \Stripe\CustomerBalanceTransaction
      */
     public static function updateBalanceTransaction($id, $balanceTransactionId, $params = null, $opts = null)
     {
@@ -137,13 +137,13 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer on which to retrieve the sources.
+     * @param string $id The ID of the customer on which to retrieve the payment sources.
      * @param array|null $params
      * @param array|string|null $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of sources.
+     * @return \Stripe\Collection The list of payment sources (AlipayAccount, BankAccount, BitcoinReceiver, Card or Source).
      */
     public static function allSources($id, $params = null, $opts = null)
     {
@@ -151,7 +151,7 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer on which to create the source.
+     * @param string $id The ID of the customer on which to create the payment source.
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -165,8 +165,8 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer to which the source belongs.
-     * @param string $sourceId The ID of the source to delete.
+     * @param string $id The ID of the customer to which the payment source belongs.
+     * @param string $sourceId The ID of the payment source to delete.
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -180,8 +180,8 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer to which the source belongs.
-     * @param string $sourceId The ID of the source to retrieve.
+     * @param string $id The ID of the customer to which the payment source belongs.
+     * @param string $sourceId The ID of the payment source to retrieve.
      * @param array|null $params
      * @param array|string|null $opts
      *
@@ -195,8 +195,8 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer to which the source belongs.
-     * @param string $sourceId The ID of the source to update.
+     * @param string $id The ID of the customer to which the payment source belongs.
+     * @param string $sourceId The ID of the payment source to update.
      * @param array|null $params
      * @param array|string|null $opts
      *

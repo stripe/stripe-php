@@ -101,7 +101,7 @@ class CreditNote extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the credit note on which to retrieve the lines.
+     * @param string $id The ID of the credit note on which to retrieve the credit note line items.
      * @param array|null $params
      * @param array|string|null $opts
      *

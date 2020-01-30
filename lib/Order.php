@@ -62,7 +62,7 @@ class Order extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return OrderReturn The newly created return.
+     * @return \Stripe\OrderReturn The newly created return.
      */
     public function returnOrder($params = null, $opts = null)
     {

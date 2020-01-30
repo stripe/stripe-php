@@ -69,7 +69,7 @@ class Dispute extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Dispute The closed dispute.
+     * @return \Stripe\Dispute The closed dispute.
      */
     // TODO: add $params to standardize signature
     public function close($opts = null)

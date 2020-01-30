@@ -22,7 +22,7 @@ class Balance extends SingletonApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Balance
+     * @return \Stripe\Balance
      */
     public static function retrieve($opts = null)
     {

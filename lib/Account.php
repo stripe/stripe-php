@@ -106,7 +106,7 @@ class Account extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Account
+     * @return \Stripe\Account
      */
     public static function retrieve($id = null, $opts = null)
     {
@@ -139,7 +139,7 @@ class Account extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return StripeObject Object containing the response from the API.
+     * @return \Stripe\StripeObject Object containing the response from the API.
      */
     public function deauthorize($clientId = null, $opts = null)
     {
