@@ -170,7 +170,6 @@ class CurlClientTest extends \Stripe\TestCase
         $this->assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 409, [], 0));
     }
 
-
     public function testShouldNotRetryOn429()
     {
         \Stripe\Stripe::setMaxNetworkRetries(2);

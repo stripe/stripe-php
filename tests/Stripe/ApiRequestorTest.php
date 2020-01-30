@@ -125,15 +125,15 @@ class ApiRequestorTest extends TestCase
         $this->stubRequest(
             'POST',
             '/v1/charges',
-            array(),
+            [],
             null,
             false,
-            array(
-                'error' => array(
+            [
+                'error' => [
                     'type' => 'idempotency_error',
                     'message' => "Keys for idempotent requests can only be used with the same parameters they were first used with. Try using a key other than 'abc' if you meant to execute a different request.",
-                ),
-            ),
+                ],
+            ],
             400
         );
 
