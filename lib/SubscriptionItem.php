@@ -38,7 +38,7 @@ class SubscriptionItem extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return ApiResource
+     * @return \Stripe\UsageRecord
      */
     public static function createUsageRecord($id, $params = null, $opts = null)
     {
@@ -53,7 +53,7 @@ class SubscriptionItem extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Collection The list of usage record summaries.
+     * @return \Stripe\Collection The list of usage record summaries.
      */
     public function usageRecordSummaries($params = null, $opts = null)
     {

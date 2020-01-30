@@ -42,7 +42,7 @@ class Card extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return CardDetails The card details associated with that issuing card.
+     * @return \Stripe\Issuing\CardDetails The card details associated with that issuing card.
      */
     public function details($params = null, $opts = null)
     {
