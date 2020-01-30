@@ -13,7 +13,7 @@ class ReaderTest extends \Stripe\TestCase
             '/v1/terminal/readers'
         );
         $resources = Reader::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\Terminal\Reader::class, $resources->data[0]);
     }
 

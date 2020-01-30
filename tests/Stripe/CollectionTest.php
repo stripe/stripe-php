@@ -19,12 +19,11 @@ class CollectionTest extends TestCase
         ]);
     }
 
-    /**
-     * @expectedException \Stripe\Exception\InvalidArgumentException
-     * @expectedExceptionMessageRegExp /You tried to access the \d index/
-     */
     public function testOffsetGetNumericIndex()
     {
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessageRegExp('/You tried to access the \\d index/');
+
         $this->fixture[0];
     }
 
@@ -45,7 +44,7 @@ class CollectionTest extends TestCase
         );
 
         $resources = $this->fixture->all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
     }
 
     public function testCanRetrieve()

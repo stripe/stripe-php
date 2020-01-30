@@ -13,7 +13,7 @@ class ReportTypeTest extends \Stripe\TestCase
             '/v1/reporting/report_types'
         );
         $resources = ReportType::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\Reporting\ReportType::class, $resources->data[0]);
     }
 

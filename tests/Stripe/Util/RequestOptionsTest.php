@@ -59,11 +59,10 @@ class RequestOptionsTest extends \Stripe\TestCase
         $this->assertSame(['Idempotency-Key' => 'foo'], $opts->headers);
     }
 
-    /**
-     * @expectedException Stripe\Exception\InvalidArgumentException
-     */
     public function testWrongType()
     {
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+
         $opts = RequestOptions::parse(5);
     }
 

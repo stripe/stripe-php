@@ -37,7 +37,7 @@ class CardholderTest extends \Stripe\TestCase
             '/v1/issuing/cardholders'
         );
         $resources = Cardholder::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resources->data[0]);
     }
 

@@ -31,7 +31,7 @@ class ReportRunTest extends \Stripe\TestCase
             '/v1/reporting/report_runs'
         );
         $resources = ReportRun::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\Reporting\ReportRun::class, $resources->data[0]);
     }
 

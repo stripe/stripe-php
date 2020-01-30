@@ -15,7 +15,7 @@ class ValueListItemTest extends \Stripe\TestCase
         $resources = ValueListItem::all([
             "value_list" => "rsl_123",
         ]);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resources->data[0]);
     }
 

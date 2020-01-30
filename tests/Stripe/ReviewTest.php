@@ -24,7 +24,7 @@ class ReviewTest extends \Stripe\TestCase
             '/v1/reviews'
         );
         $resources = Review::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\Review::class, $resources->data[0]);
     }
 

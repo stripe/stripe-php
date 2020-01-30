@@ -16,11 +16,10 @@ class CapabilityTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \Stripe\Exception\BadMethodCallException
-     */
     public function testIsNotDirectlyRetrievable()
     {
+        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+
         Capability::retrieve(self::TEST_RESOURCE_ID);
     }
 
@@ -36,11 +35,10 @@ class CapabilityTest extends TestCase
         $this->assertInstanceOf(\Stripe\Capability::class, $resource);
     }
 
-    /**
-     * @expectedException \Stripe\Exception\BadMethodCallException
-     */
     public function testIsNotDirectlyUpdatable()
     {
+        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+
         Capability::update(self::TEST_RESOURCE_ID, ["requested" => true]);
     }
 }

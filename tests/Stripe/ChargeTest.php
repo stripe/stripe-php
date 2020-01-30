@@ -13,7 +13,7 @@ class ChargeTest extends TestCase
             '/v1/charges'
         );
         $resources = Charge::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\Charge::class, $resources->data[0]);
     }
 

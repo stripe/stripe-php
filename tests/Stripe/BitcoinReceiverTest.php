@@ -46,7 +46,7 @@ class BitcoinReceiverTest extends TestCase
             '/v1/bitcoin/receivers'
         );
         $resources = BitcoinReceiver::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertSame(\Stripe\BitcoinReceiver::class, get_class($resources->data[0]));
     }
 

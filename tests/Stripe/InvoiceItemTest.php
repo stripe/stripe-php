@@ -13,7 +13,7 @@ class InvoiceItemTest extends TestCase
             '/v1/invoiceitems'
         );
         $resources = InvoiceItem::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\InvoiceItem::class, $resources->data[0]);
     }
 

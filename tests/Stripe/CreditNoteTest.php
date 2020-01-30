@@ -13,7 +13,7 @@ class CreditNoteTest extends TestCase
             '/v1/credit_notes'
         );
         $resources = CreditNote::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\CreditNote::class, $resources->data[0]);
     }
 
@@ -97,6 +97,6 @@ class CreditNoteTest extends TestCase
             '/v1/credit_notes/' . self::TEST_RESOURCE_ID . '/lines'
         );
         $resources = CreditNote::allLines(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
     }
 }

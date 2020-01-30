@@ -13,7 +13,7 @@ class EarlyFraudWarningTest extends \Stripe\TestCase
             '/v1/radar/early_fraud_warnings'
         );
         $resources = EarlyFraudWarning::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\Radar\EarlyFraudWarning::class, $resources->data[0]);
     }
 

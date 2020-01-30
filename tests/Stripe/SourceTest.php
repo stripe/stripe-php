@@ -100,11 +100,10 @@ class SourceTest extends TestCase
         $this->assertInstanceOf(\Stripe\Source::class, $resource);
     }
 
-    /**
-     * @expectedException \Stripe\Exception\UnexpectedValueException
-     */
     public function testIsNotDetachableWhenUnattached()
     {
+        $this->expectException(\Stripe\Exception\UnexpectedValueException::class);
+
         $resource = Source::retrieve(self::TEST_RESOURCE_ID);
         $resource->detach();
     }
@@ -117,7 +116,7 @@ class SourceTest extends TestCase
             '/v1/sources/' . $source->id . "/source_transactions"
         );
         $resources = $source->sourceTransactions();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
     }
 
@@ -128,7 +127,7 @@ class SourceTest extends TestCase
             '/v1/sources/' . self::TEST_RESOURCE_ID . "/source_transactions"
         );
         $resources = Source::allSourceTransactions(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
     }
 

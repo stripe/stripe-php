@@ -16,11 +16,10 @@ class PersonTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \Stripe\Exception\BadMethodCallException
-     */
     public function testIsNotDirectlyRetrievable()
     {
+        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+
         Person::retrieve(self::TEST_RESOURCE_ID);
     }
 
@@ -36,11 +35,10 @@ class PersonTest extends TestCase
         $this->assertSame(\Stripe\Person::class, get_class($resource));
     }
 
-    /**
-     * @expectedException \Stripe\Exception\BadMethodCallException
-     */
     public function testIsNotDirectlyUpdatable()
     {
+        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+
         Person::update(self::TEST_RESOURCE_ID, [
             "first_name" => ["John"],
         ]);

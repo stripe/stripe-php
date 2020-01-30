@@ -13,7 +13,7 @@ class SetupIntentTest extends TestCase
             '/v1/setup_intents'
         );
         $resources = SetupIntent::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\SetupIntent::class, $resources->data[0]);
     }
 

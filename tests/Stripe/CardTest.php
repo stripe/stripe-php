@@ -51,11 +51,10 @@ class CardTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \Stripe\Exception\BadMethodCallException
-     */
     public function testIsNotDirectlyRetrievable()
     {
+        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+
         Card::retrieve(self::TEST_RESOURCE_ID);
     }
 
@@ -71,11 +70,10 @@ class CardTest extends TestCase
         $this->assertSame(\Stripe\Card::class, get_class($resource));
     }
 
-    /**
-     * @expectedException \Stripe\Exception\BadMethodCallException
-     */
     public function testIsNotDirectlyUpdatable()
     {
+        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+
         Card::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);

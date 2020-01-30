@@ -13,7 +13,7 @@ class WebhookEndpointTest extends TestCase
             '/v1/webhook_endpoints'
         );
         $resources = WebhookEndpoint::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\WebhookEndpoint::class, $resources->data[0]);
     }
 

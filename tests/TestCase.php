@@ -5,7 +5,7 @@ namespace Stripe;
 /**
  * Base class for Stripe test cases.
  */
-class TestCase extends \PHPUnit_Framework_TestCase
+class TestCase extends \PHPUnit\Framework\TestCase
 {
     /** @var string original API base URL */
     protected $origApiBase;

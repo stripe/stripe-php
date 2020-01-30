@@ -13,7 +13,7 @@ class EventTest extends TestCase
             '/v1/events'
         );
         $resources = Event::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\Event::class, $resources->data[0]);
     }
 

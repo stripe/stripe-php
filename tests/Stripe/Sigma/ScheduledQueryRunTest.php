@@ -9,7 +9,7 @@ class ScheduledQueryRunTest extends \Stripe\TestCase
     public function testIsListable()
     {
         $resources = ScheduledQueryRun::all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\Sigma\ScheduledQueryRun::class, $resources->data[0]);
     }
 
