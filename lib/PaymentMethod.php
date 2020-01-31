@@ -13,6 +13,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $card_present
  * @property int $created
  * @property string|null $customer
+ * @property \Stripe\StripeObject $fpx
  * @property \Stripe\StripeObject $ideal
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
