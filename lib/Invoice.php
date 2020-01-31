@@ -77,6 +77,7 @@ class Invoice extends ApiResource
     use ApiOperations\Delete;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
+
     use ApiOperations\NestedResource;
 
     /**
@@ -117,6 +118,37 @@ class Invoice extends ApiResource
     const BILLING_SEND_INVOICE         = 'send_invoice';
 
     const PATH_LINES = '/lines';
+
+    /**
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Invoice The upcoming invoice.
+     */
+    public static function upcoming($params = null, $opts = null)
+    {
+        $url = static::classUrl() . '/upcoming';
+        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+        return $obj;
+    }
+
+    /**
+     * @param string $id The ID of the invoice on which to retrieve the lines.
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws StripeExceptionApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection The list of lines (InvoiceLineItem).
+     */
+    public static function allLines($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_LINES, $params, $opts);
+    }
 
     /**
      * @param array|null $params
@@ -188,23 +220,6 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Invoice The upcoming invoice.
-     */
-    public static function upcoming($params = null, $opts = null)
-    {
-        $url = static::classUrl() . '/upcoming';
-        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
-        $obj = Util\Util::convertToStripeObject($response->json, $opts);
-        $obj->setLastResponse($response);
-        return $obj;
-    }
-
-    /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return Invoice The voided invoice.
      */
     public function voidInvoice($params = null, $opts = null)
@@ -213,19 +228,5 @@ class Invoice extends ApiResource
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
         return $this;
-    }
-
-    /**
-     * @param string $id The ID of the invoice on which to retrieve the lines.
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection The list of lines (InvoiceLineItem).
-     */
-    public static function allLines($id, $params = null, $opts = null)
-    {
-        return self::_allNestedResources($id, static::PATH_LINES, $params, $opts);
     }
 }

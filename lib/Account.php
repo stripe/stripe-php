@@ -36,10 +36,11 @@ class Account extends ApiResource
     use ApiOperations\Create;
     use ApiOperations\Delete;
     use ApiOperations\NestedResource;
+    use ApiOperations\Update;
+
     use ApiOperations\Retrieve {
         retrieve as protected _retrieve;
     }
-    use ApiOperations\Update;
 
     /**
      * Possible string representations of an account's business type.
@@ -85,11 +86,6 @@ class Account extends ApiResource
         return $savedNestedResources;
     }
 
-    const PATH_CAPABILITIES = '/capabilities';
-    const PATH_EXTERNAL_ACCOUNTS = '/external_accounts';
-    const PATH_LOGIN_LINKS = '/login_links';
-    const PATH_PERSONS = '/persons';
-
     public function instanceUrl()
     {
         if ($this['id'] === null) {
@@ -97,6 +93,55 @@ class Account extends ApiResource
         } else {
             return parent::instanceUrl();
         }
+    }
+
+    public function serializeParameters($force = false)
+    {
+        $update = parent::serializeParameters($force);
+        if (isset($this->_values['legal_entity'])) {
+            $entity = $this['legal_entity'];
+            if (isset($entity->_values['additional_owners'])) {
+                $owners = $entity['additional_owners'];
+                $entityUpdate = isset($update['legal_entity']) ? $update['legal_entity'] : [];
+                $entityUpdate['additional_owners'] = $this->serializeAdditionalOwners($entity, $owners);
+                $update['legal_entity'] = $entityUpdate;
+            }
+        }
+        if (isset($this->_values['individual'])) {
+            $individual = $this['individual'];
+            if (($individual instanceof Person) && !isset($update['individual'])) {
+                $update['individual'] = $individual->serializeParameters($force);
+            }
+        }
+        return $update;
+    }
+
+    private function serializeAdditionalOwners($legalEntity, $additionalOwners)
+    {
+        if (isset($legalEntity->_originalValues['additional_owners'])) {
+            $originalValue = $legalEntity->_originalValues['additional_owners'];
+        } else {
+            $originalValue = [];
+        }
+        if (($originalValue) && (count($originalValue) > count($additionalOwners))) {
+            throw new Exception\InvalidArgumentException(
+                "You cannot delete an item from an array, you must instead set a new array"
+            );
+        }
+
+        $updateArr = [];
+        foreach ($additionalOwners as $i => $v) {
+            $update = ($v instanceof StripeObject) ? $v->serializeParameters() : $v;
+
+            if ($update !== []) {
+                if (!$originalValue ||
+                    !array_key_exists($i, $originalValue) ||
+                    ($update != $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
+                    $updateArr[$i] = $update;
+                }
+            }
+        }
+        return $updateArr;
     }
 
     /**
@@ -118,22 +163,6 @@ class Account extends ApiResource
     }
 
     /**
-     * @param array|null $params
-     * @param array|string|null $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return Account The rejected account.
-     */
-    public function reject($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/reject';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-        return $this;
-    }
-
-    /**
      * @param array|null $clientId
      * @param array|string|null $opts
      *
@@ -150,11 +179,30 @@ class Account extends ApiResource
         return OAuth::deauthorize($params, $opts);
     }
 
+    /**
+     * @param array|null $params
+     * @param array|string|null $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return Account The rejected account.
+     */
+    public function reject($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/reject';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+        return $this;
+    }
+    
     /*
      * Capabilities methods
      * We can not add the capabilities() method today as the Account object already has a
      * capabilities property which is a hash and not the sub-list of capabilities.
      */
+
+
+    const PATH_CAPABILITIES = '/capabilities';
 
     /**
      * @param string $id The ID of the account on which to retrieve the capabilities.
@@ -199,6 +247,8 @@ class Account extends ApiResource
     {
         return self::_updateNestedResource($id, static::PATH_CAPABILITIES, $capabilityId, $params, $opts);
     }
+
+    const PATH_EXTERNAL_ACCOUNTS = '/external_accounts';
 
     /**
      * @param string $id The ID of the account on which to retrieve the external accounts.
@@ -273,6 +323,8 @@ class Account extends ApiResource
         return self::_updateNestedResource($id, static::PATH_EXTERNAL_ACCOUNTS, $externalAccountId, $params, $opts);
     }
 
+    const PATH_LOGIN_LINKS = '/login_links';
+
     /**
      * @param string $id The ID of the account on which to create the login link.
      * @param array|null $params
@@ -286,6 +338,8 @@ class Account extends ApiResource
     {
         return self::_createNestedResource($id, static::PATH_LOGIN_LINKS, $params, $opts);
     }
+
+    const PATH_PERSONS = '/persons';
 
     /**
      * @param array|null $params
@@ -375,54 +429,5 @@ class Account extends ApiResource
     public static function updatePerson($id, $personId, $params = null, $opts = null)
     {
         return self::_updateNestedResource($id, static::PATH_PERSONS, $personId, $params, $opts);
-    }
-
-    public function serializeParameters($force = false)
-    {
-        $update = parent::serializeParameters($force);
-        if (isset($this->_values['legal_entity'])) {
-            $entity = $this['legal_entity'];
-            if (isset($entity->_values['additional_owners'])) {
-                $owners = $entity['additional_owners'];
-                $entityUpdate = isset($update['legal_entity']) ? $update['legal_entity'] : [];
-                $entityUpdate['additional_owners'] = $this->serializeAdditionalOwners($entity, $owners);
-                $update['legal_entity'] = $entityUpdate;
-            }
-        }
-        if (isset($this->_values['individual'])) {
-            $individual = $this['individual'];
-            if (($individual instanceof Person) && !isset($update['individual'])) {
-                $update['individual'] = $individual->serializeParameters($force);
-            }
-        }
-        return $update;
-    }
-
-    private function serializeAdditionalOwners($legalEntity, $additionalOwners)
-    {
-        if (isset($legalEntity->_originalValues['additional_owners'])) {
-            $originalValue = $legalEntity->_originalValues['additional_owners'];
-        } else {
-            $originalValue = [];
-        }
-        if (($originalValue) && (count($originalValue) > count($additionalOwners))) {
-            throw new Exception\InvalidArgumentException(
-                "You cannot delete an item from an array, you must instead set a new array"
-            );
-        }
-
-        $updateArr = [];
-        foreach ($additionalOwners as $i => $v) {
-            $update = ($v instanceof StripeObject) ? $v->serializeParameters() : $v;
-
-            if ($update !== []) {
-                if (!$originalValue ||
-                    !array_key_exists($i, $originalValue) ||
-                    ($update != $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
-                    $updateArr[$i] = $update;
-                }
-            }
-        }
-        return $updateArr;
     }
 }

@@ -30,6 +30,7 @@ class ApplicationFee extends ApiResource
     use ApiOperations\NestedResource;
     use ApiOperations\Retrieve;
 
+
     const PATH_REFUNDS = '/refunds';
 
     /**

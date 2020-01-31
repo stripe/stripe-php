@@ -51,9 +51,10 @@ class Source extends ApiResource
     const OBJECT_NAME = 'source';
 
     use ApiOperations\Create;
-    use ApiOperations\NestedResource;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
+
+    use ApiOperations\NestedResource;
 
     /**
      * Possible string representations of source flows.
