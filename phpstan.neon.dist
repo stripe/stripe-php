@@ -1,0 +1,10 @@
+includes:
+	- phpstan-baseline.neon
+
+parameters:
+	level: 1
+
+	bootstrap: tests/bootstrap.php
+
+	ignoreErrors:
+		- '#Unsafe usage of new static\(\).#'
