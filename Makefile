@@ -1,4 +1,4 @@
-export PHPSTAN_VERSION := 0.11.19
+export PHPSTAN_VERSION := 0.12.8
 
 vendor: composer.json
 	composer install
@@ -14,9 +14,9 @@ fmt: vendor
 .PHONY: fmt
 
 phpstan: vendor
-	vendor/bin/phpstan analyse -c phpstan.neon lib tests
+	vendor/bin/phpstan analyse lib tests
 .PHONY: phpstan
 
 phpstan-baseline: vendor
-	vendor/bin/phpstan analyse -c phpstan.neon --error-format baselineNeon lib tests > phpstan-baseline.neon
+	vendor/bin/phpstan analyse --error-format baselineNeon lib tests > phpstan-baseline.neon
 .PHONY: phpstan-baseline

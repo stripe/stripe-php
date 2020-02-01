@@ -19,3 +19,6 @@ clover.xml
 # Ignore PHP CS Fixer local config and cache
 .php_cs
 .php_cs.cache
+
+# Ignore PHPStan local config
+.phpstan.neon
