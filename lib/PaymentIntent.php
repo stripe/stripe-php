@@ -23,7 +23,7 @@ namespace Stripe;
  * @property string|null $customer
  * @property string|null $description
  * @property string|null $invoice
- * @property \Stripe\StripeObject|null $last_payment_error
+ * @property \Stripe\ErrorObject|null $last_payment_error
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property \Stripe\StripeObject|null $next_action
