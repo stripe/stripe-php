@@ -20,18 +20,20 @@ namespace Stripe;
  */
 class File extends ApiResource
 {
+    const OBJECT_NAME = 'file';
+
+    use ApiOperations\All;
+    use ApiOperations\Retrieve;
+
     // This resource can have two different object names. In latter API
     // versions, only `file` is used, but since stripe-php may be used with
     // any API version, we need to support deserializing the older
     // `file_upload` object into the same class.
-    const OBJECT_NAME = 'file';
-    const OBJECT_NAME_ALT = "file_upload";
+    const OBJECT_NAME_ALT = 'file_upload';
 
-    use ApiOperations\All;
     use ApiOperations\Create {
         create as protected _create;
     }
-    use ApiOperations\Retrieve;
 
     public static function classUrl()
     {

@@ -29,7 +29,6 @@ class SubscriptionItem extends ApiResource
     use ApiOperations\Update;
 
     const PATH_USAGE_RECORDS = '/usage_records';
-    const PATH_USAGE_RECORD_SUMMARIES = '/usage_record_summaries';
 
     /**
      * @param string|null $id The ID of the subscription item on which to create the usage record.
@@ -63,6 +62,8 @@ class SubscriptionItem extends ApiResource
         $obj->setLastResponse($response);
         return $obj;
     }
+
+    const PATH_USAGE_RECORD_SUMMARIES = '/usage_record_summaries';
 
     /**
      * @param string $id The ID of the subscription item on which to retrieve the usage record summaries.

@@ -61,10 +61,6 @@ class Customer extends ApiResource
         return $savedNestedResources;
     }
 
-    const PATH_BALANCE_TRANSACTIONS = '/balance_transactions';
-    const PATH_SOURCES = '/sources';
-    const PATH_TAX_IDS = '/tax_ids';
-
     /**
      * @param array|null $params
      * @param array|string|null $opts
@@ -77,6 +73,8 @@ class Customer extends ApiResource
         list($response, $opts) = $this->_request('delete', $url, $params, $opts);
         $this->refreshFrom(['discount' => null], $opts, true);
     }
+
+    const PATH_BALANCE_TRANSACTIONS = '/balance_transactions';
 
     /**
      * @param string $id The ID of the customer on which to retrieve the customer balance transactions.
@@ -135,6 +133,8 @@ class Customer extends ApiResource
     {
         return self::_updateNestedResource($id, static::PATH_BALANCE_TRANSACTIONS, $balanceTransactionId, $params, $opts);
     }
+
+    const PATH_SOURCES = '/sources';
 
     /**
      * @param string $id The ID of the customer on which to retrieve the payment sources.
@@ -208,6 +208,8 @@ class Customer extends ApiResource
     {
         return self::_updateNestedResource($id, static::PATH_SOURCES, $sourceId, $params, $opts);
     }
+
+    const PATH_TAX_IDS = '/tax_ids';
 
     /**
      * @param string $id The ID of the customer on which to retrieve the tax ids.

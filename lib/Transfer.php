@@ -35,8 +35,6 @@ class Transfer extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    const PATH_REVERSALS = '/reversals';
-
     /**
      * Possible string representations of the source type of the transfer.
      * @link https://stripe.com/docs/api/transfers/object#transfer_object-source_type
@@ -61,6 +59,8 @@ class Transfer extends ApiResource
         $this->refreshFrom($response, $opts);
         return $this;
     }
+
+    const PATH_REVERSALS = '/reversals';
 
     /**
      * @param string $id The ID of the transfer on which to retrieve the transfer reversals.
