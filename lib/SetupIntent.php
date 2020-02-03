@@ -13,7 +13,7 @@ namespace Stripe;
  * @property int $created
  * @property string|null $customer
  * @property string|null $description
- * @property \Stripe\StripeObject|null $last_setup_error
+ * @property \Stripe\ErrorObject|null $last_setup_error
  * @property bool $livemode
  * @property string|null $mandate
  * @property \Stripe\StripeObject $metadata
