@@ -19,11 +19,11 @@ class StripeMock
      */
     public static function start()
     {
-        if (!file_exists(self::PATH_SPEC)) {
+        if (!\file_exists(self::PATH_SPEC)) {
             return false;
         }
 
-        if (!is_null(static::$process) && static::$process->isRunning()) {
+        if (!\is_null(static::$process) && static::$process->isRunning()) {
             echo "stripe-mock already running on port " . static::$port . "\n";
             return true;
         }
@@ -32,7 +32,7 @@ class StripeMock
 
         echo "Starting stripe-mock on port " . static::$port . "...\n";
 
-        static::$process = new Process(join(' ', [
+        static::$process = new Process(\join(' ', [
             'stripe-mock',
             '-http-port',
             static::$port,
@@ -42,7 +42,7 @@ class StripeMock
             self::PATH_FIXTURES,
         ]));
         static::$process->start();
-        sleep(1);
+        \sleep(1);
 
         if (static::$process->isRunning()) {
             echo "Started stripe-mock, PID = " . static::$process->getPid() . "\n";
@@ -58,7 +58,7 @@ class StripeMock
      */
     public static function stop()
     {
-        if (is_null(static::$process) || !static::$process->isRunning()) {
+        if (\is_null(static::$process) || !static::$process->isRunning()) {
             return;
         }
 
@@ -87,12 +87,12 @@ class StripeMock
      */
     private static function findAvailablePort()
     {
-        $sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-        socket_bind($sock, "localhost", 0);
+        $sock = \socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+        \socket_bind($sock, "localhost", 0);
         $addr = null;
         $port = -1;
-        socket_getsockname($sock, $addr, $port);
-        socket_close($sock);
+        \socket_getsockname($sock, $addr, $port);
+        \socket_close($sock);
         return $port;
     }
 }

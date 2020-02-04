@@ -59,7 +59,7 @@ class ApiRequestor
                 'request_duration_ms' => $requestTelemetry->requestDuration,
         ]];
 
-        $result = json_encode($payload);
+        $result = \json_encode($payload);
         if ($result != false) {
             return $result;
         } else {
@@ -83,7 +83,7 @@ class ApiRequestor
             return 'true';
         } elseif ($d === false) {
             return 'false';
-        } elseif (is_array($d)) {
+        } elseif (\is_array($d)) {
             $res = [];
             foreach ($d as $k => $v) {
                 $res[$k] = self::_encodeObjects($v);
@@ -126,7 +126,7 @@ class ApiRequestor
      */
     public function handleErrorResponse($rbody, $rcode, $rheaders, $resp)
     {
-        if (!is_array($resp) || !isset($resp['error'])) {
+        if (!\is_array($resp) || !isset($resp['error'])) {
             $msg = "Invalid response object from API: $rbody "
               . "(HTTP response code was $rcode)";
             throw new Exception\UnexpectedValueException($msg);
@@ -135,7 +135,7 @@ class ApiRequestor
         $errorData = $resp['error'];
 
         $error = null;
-        if (is_string($errorData)) {
+        if (\is_string($errorData)) {
             $error = self::_specificOAuthError($rbody, $rcode, $rheaders, $resp, $errorData);
         }
         if (!$error) {
@@ -259,9 +259,9 @@ class ApiRequestor
     {
         $uaString = 'Stripe/v1 PhpBindings/' . Stripe::VERSION;
 
-        $langVersion = phpversion();
-        $uname_disabled = in_array('php_uname', explode(',', ini_get('disable_functions')));
-        $uname = $uname_disabled ? '(disabled)' : php_uname();
+        $langVersion = \phpversion();
+        $uname_disabled = \in_array('php_uname', \explode(',', \ini_get('disable_functions')));
+        $uname = $uname_disabled ? '(disabled)' : \php_uname();
 
         $appInfo = Stripe::getAppInfo();
         $ua = [
@@ -272,7 +272,7 @@ class ApiRequestor
             'uname' => $uname,
         ];
         if ($clientInfo) {
-            $ua = array_merge($clientInfo, $ua);
+            $ua = \array_merge($clientInfo, $ua);
         }
         if ($appInfo !== null) {
             $uaString .= ' ' . self::_formatAppInfo($appInfo);
@@ -280,7 +280,7 @@ class ApiRequestor
         }
 
         $defaultHeaders = [
-            'X-Stripe-Client-User-Agent' => json_encode($ua),
+            'X-Stripe-Client-User-Agent' => \json_encode($ua),
             'User-Agent' => $uaString,
             'Authorization' => 'Bearer ' . $apiKey,
         ];
@@ -317,7 +317,7 @@ class ApiRequestor
         // X-Stripe-Client-User-Agent header via the optional getUserAgentInfo()
         // method
         $clientUAInfo = null;
-        if (method_exists($this->httpClient(), 'getUserAgentInfo')) {
+        if (\method_exists($this->httpClient(), 'getUserAgentInfo')) {
             $clientUAInfo = $this->httpClient()->getUserAgentInfo();
         }
 
@@ -338,7 +338,7 @@ class ApiRequestor
 
         $hasFile = false;
         foreach ($params as $k => $v) {
-            if (is_resource($v)) {
+            if (\is_resource($v)) {
                 $hasFile = true;
                 $params[$k] = self::_processResourceParam($v);
             } elseif ($v instanceof \CURLFile) {
@@ -352,7 +352,7 @@ class ApiRequestor
             $defaultHeaders['Content-Type'] = 'application/x-www-form-urlencoded';
         }
 
-        $combinedHeaders = array_merge($defaultHeaders, $headers);
+        $combinedHeaders = \array_merge($defaultHeaders, $headers);
         $rawHeaders = [];
 
         foreach ($combinedHeaders as $header => $value) {
@@ -388,13 +388,13 @@ class ApiRequestor
      */
     private function _processResourceParam($resource)
     {
-        if (get_resource_type($resource) !== 'stream') {
+        if (\get_resource_type($resource) !== 'stream') {
             throw new Exception\InvalidArgumentException(
                 'Attempted to upload a resource that is not a stream'
             );
         }
 
-        $metaData = stream_get_meta_data($resource);
+        $metaData = \stream_get_meta_data($resource);
         if ($metaData['wrapper_type'] !== 'plainfile') {
             throw new Exception\InvalidArgumentException(
                 'Only plainfile resource streams are supported'
@@ -417,8 +417,8 @@ class ApiRequestor
      */
     private function _interpretResponse($rbody, $rcode, $rheaders)
     {
-        $resp = json_decode($rbody, true);
-        $jsonError = json_last_error();
+        $resp = \json_decode($rbody, true);
+        $jsonError = \json_last_error();
         if ($resp === null && $jsonError !== JSON_ERROR_NONE) {
             $msg = "Invalid response body from API: $rbody "
               . "(HTTP response code was $rcode, json_last_error() was $jsonError)";

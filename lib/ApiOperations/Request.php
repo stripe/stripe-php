@@ -16,7 +16,7 @@ trait Request
      */
     protected static function _validateParams($params = null)
     {
-        if ($params && !is_array($params)) {
+        if ($params && !\is_array($params)) {
             $message = "You must pass an array as the first argument to Stripe API "
                . "method calls.  (HINT: an example call to create a charge "
                . "would be: \"Stripe\\Charge::create(['amount' => 100, "

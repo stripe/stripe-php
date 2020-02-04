@@ -1,7 +1,10 @@
 <?php
 
 return PhpCsFixer\Config::create()
+    ->setRiskyAllowed(true)
     ->setRules([
+        '@PHP56Migration:risky' => true,
+        '@PHPUnit57Migration:risky' => true,
         '@PSR2' => true,
         'array_syntax' => ['syntax' => 'short'],
         'blank_line_after_opening_tag' => true,
@@ -9,5 +12,6 @@ return PhpCsFixer\Config::create()
             'elements' => ['method'],
         ],
         'linebreak_after_opening_tag' => true,
+        'native_function_invocation' => true,
     ])
 ;

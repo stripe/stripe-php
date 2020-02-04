@@ -127,8 +127,21 @@ class StripeObjectTest extends TestCase
 
     public function testNonexistentProperty()
     {
-        $s = new StripeObject();
-        $this->assertNull($s->nonexistent);
+        $capture = \tmpfile();
+        $origErrorLog = \ini_set('error_log', \stream_get_meta_data($capture)['uri']);
+
+        try {
+            $s = new StripeObject();
+            $this->assertNull($s->nonexistent);
+
+            $this->assertRegExp(
+                "/Stripe Notice: Undefined property of Stripe\\\\StripeObject instance: nonexistent/",
+                \stream_get_contents($capture)
+            );
+        } finally {
+            \ini_set('error_log', $origErrorLog);
+            \fclose($capture);
+        }
     }
 
     public function testPropertyDoesNotExists()
@@ -142,7 +155,7 @@ class StripeObjectTest extends TestCase
         $s = new StripeObject();
         $s->foo = 'a';
 
-        $this->assertEquals('{"foo":"a"}', json_encode($s));
+        $this->assertEquals('{"foo":"a"}', \json_encode($s));
     }
 
     public function testToString()
@@ -240,8 +253,8 @@ EOS;
         $obj = StripeObject::constructFrom([
             'foo' => ['0-index', '1-index', '2-index'],
         ]);
-        $obj->foo = array_fill(0, 4, 'new-value');
-        $this->assertSame(['foo' => array_fill(0, 4, 'new-value')], $obj->serializeParameters());
+        $obj->foo = \array_fill(0, 4, 'new-value');
+        $this->assertSame(['foo' => \array_fill(0, 4, 'new-value')], $obj->serializeParameters());
     }
 
     public function testSerializeParametersOnArrayOfHashes()
@@ -367,7 +380,7 @@ EOS;
                 $e->getMessage()
             );
         } catch (\Exception $e) {
-            $this->fail("Unexpected exception: " . get_class($e));
+            $this->fail("Unexpected exception: " . \get_class($e));
         }
     }
 
@@ -428,7 +441,7 @@ EOS;
         // objects which are different from each other
         $this->assertEquals($values["id"], $copyValues["id"]);
         $this->assertEquals($values["name"], $copyValues["name"]);
-        $this->assertEquals(count($values["arr"]), count($copyValues["arr"]));
+        $this->assertEquals(\count($values["arr"]), \count($copyValues["arr"]));
 
         // internal values of the copied StripeObject should be the same,
         // but the object itself should be new (hence the assertNotSame)
@@ -473,7 +486,7 @@ EOS;
     {
         $charge = Charge::constructFrom(["id" => 1], null);
         $copyCharge = $this->deepCopyReflector->invoke(null, $charge);
-        $this->assertEquals(get_class($charge), get_class($copyCharge));
+        $this->assertEquals(\get_class($charge), \get_class($copyCharge));
     }
 
     public function testIsDeleted()

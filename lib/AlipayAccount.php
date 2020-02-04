@@ -31,8 +31,8 @@ class AlipayAccount extends ApiResource
             $msg = "Alipay accounts cannot be accessed without a customer ID.";
             throw new Exception\UnexpectedValueException($msg);
         }
-        $parentExtn = urlencode(Util\Util::utf8($parent));
-        $extn = urlencode(Util\Util::utf8($this['id']));
+        $parentExtn = \urlencode(Util\Util::utf8($parent));
+        $extn = \urlencode(Util\Util::utf8($this['id']));
         return "$base/$parentExtn/$path/$extn";
     }
 

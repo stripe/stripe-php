@@ -59,12 +59,12 @@ class BitcoinReceiver extends ApiResource
             $base = Customer::classUrl();
             $parent = $this['customer'];
             $path = 'sources';
-            $parentExtn = urlencode(Util\Util::utf8($parent));
-            $extn = urlencode(Util\Util::utf8($this['id']));
+            $parentExtn = \urlencode(Util\Util::utf8($parent));
+            $extn = \urlencode(Util\Util::utf8($this['id']));
             return "$base/$parentExtn/$path/$extn";
         } else {
             $base = BitcoinReceiver::classUrl();
-            $extn = urlencode(Util\Util::utf8($this['id']));
+            $extn = \urlencode(Util\Util::utf8($this['id']));
             return "$base/$extn";
         }
     }

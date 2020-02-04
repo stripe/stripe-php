@@ -58,8 +58,8 @@ class BankAccount extends ApiResource
             $msg = "Bank accounts cannot be accessed without a customer ID or account ID.";
             throw new Exception\UnexpectedValueException($msg, null);
         }
-        $parentExtn = urlencode(Util\Util::utf8($parent));
-        $extn = urlencode(Util\Util::utf8($this['id']));
+        $parentExtn = \urlencode(Util\Util::utf8($parent));
+        $extn = \urlencode(Util\Util::utf8($this['id']));
         return "$base/$parentExtn/$path/$extn";
     }
 

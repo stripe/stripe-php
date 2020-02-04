@@ -19,7 +19,7 @@ class BankAccountTest extends TestCase
             'metadata' => [],
         ];
         return BankAccount::constructFrom(
-            array_merge($params, $base),
+            \array_merge($params, $base),
             new Util\RequestOptions()
         );
     }
@@ -58,7 +58,7 @@ class BankAccountTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame(\Stripe\BankAccount::class, get_class($resource));
+        $this->assertSame(\Stripe\BankAccount::class, \get_class($resource));
     }
 
     public function testIsNotDirectlyUpdatable()
@@ -78,7 +78,7 @@ class BankAccountTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertSame(\Stripe\BankAccount::class, get_class($resource));
+        $this->assertSame(\Stripe\BankAccount::class, \get_class($resource));
     }
 
     public function testIsVerifiable()
