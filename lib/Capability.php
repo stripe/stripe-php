@@ -12,7 +12,7 @@ namespace Stripe;
  * @property string $account
  * @property bool $requested
  * @property int $requested_at
- * @property mixed $requirements
+ * @property \Stripe\StripeObject $requirements
  * @property string $status
  */
 class Capability extends ApiResource

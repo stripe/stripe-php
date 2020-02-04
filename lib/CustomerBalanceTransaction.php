@@ -18,7 +18,7 @@ namespace Stripe;
  * @property int $ending_balance
  * @property string $invoice
  * @property bool $livemode
- * @property StripeObject $metadata
+ * @property \Stripe\StripeObject $metadata
  * @property string $type
  */
 class CustomerBalanceTransaction extends ApiResource
