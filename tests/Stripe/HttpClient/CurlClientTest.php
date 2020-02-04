@@ -120,7 +120,7 @@ class CurlClientTest extends \Stripe\TestCase
         // make sure closure-based options work properly, including argument passing
         $ref = null;
         $withClosure = new CurlClient(function ($method, $absUrl, $headers, $params, $hasFile) use (&$ref) {
-            $ref = func_get_args();
+            $ref = \func_get_args();
             return [];
         });
 

@@ -81,15 +81,15 @@ class RequestOptionsTest extends \Stripe\TestCase
     public function testDebugInfo()
     {
         $opts = RequestOptions::parse(['api_key' => 'sk_test_1234567890abcdefghijklmn']);
-        $debugInfo = print_r($opts, true);
+        $debugInfo = \print_r($opts, true);
         $this->assertContains("[apiKey] => sk_test_********************klmn", $debugInfo);
 
         $opts = RequestOptions::parse(['api_key' => 'sk_1234567890abcdefghijklmn']);
-        $debugInfo = print_r($opts, true);
+        $debugInfo = \print_r($opts, true);
         $this->assertContains("[apiKey] => sk_********************klmn", $debugInfo);
 
         $opts = RequestOptions::parse(['api_key' => '1234567890abcdefghijklmn']);
-        $debugInfo = print_r($opts, true);
+        $debugInfo = \print_r($opts, true);
         $this->assertContains("[apiKey] => ********************klmn", $debugInfo);
     }
 }

@@ -54,8 +54,8 @@ class CustomerBalanceTransaction extends ApiResource
         $customer = Util\Util::utf8($customer);
 
         $base = Customer::classUrl();
-        $customerExtn = urlencode($customer);
-        $extn = urlencode($id);
+        $customerExtn = \urlencode($customer);
+        $extn = \urlencode($id);
         return "$base/$customerExtn/balance_transactions/$extn";
     }
 

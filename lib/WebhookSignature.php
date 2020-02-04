@@ -60,7 +60,7 @@ abstract class WebhookSignature
         }
 
         // Check if timestamp is within tolerance
-        if (($tolerance > 0) && (abs(time() - $timestamp) > $tolerance)) {
+        if (($tolerance > 0) && (\abs(\time() - $timestamp) > $tolerance)) {
             throw Exception\SignatureVerificationException::factory(
                 "Timestamp outside the tolerance zone",
                 $payload,
@@ -80,15 +80,15 @@ abstract class WebhookSignature
      */
     private static function getTimestamp($header)
     {
-        $items = explode(",", $header);
+        $items = \explode(",", $header);
 
         foreach ($items as $item) {
-            $itemParts = explode("=", $item, 2);
+            $itemParts = \explode("=", $item, 2);
             if ($itemParts[0] == "t") {
-                if (!is_numeric($itemParts[1])) {
+                if (!\is_numeric($itemParts[1])) {
                     return -1;
                 }
-                return intval($itemParts[1]);
+                return \intval($itemParts[1]);
             }
         }
 
@@ -105,12 +105,12 @@ abstract class WebhookSignature
     private static function getSignatures($header, $scheme)
     {
         $signatures = [];
-        $items = explode(",", $header);
+        $items = \explode(",", $header);
 
         foreach ($items as $item) {
-            $itemParts = explode("=", $item, 2);
+            $itemParts = \explode("=", $item, 2);
             if ($itemParts[0] == $scheme) {
-                array_push($signatures, $itemParts[1]);
+                \array_push($signatures, $itemParts[1]);
             }
         }
 
@@ -128,6 +128,6 @@ abstract class WebhookSignature
      */
     private static function computeSignature($payload, $secret)
     {
-        return hash_hmac("sha256", $payload, $secret);
+        return \hash_hmac("sha256", $payload, $secret);
     }
 }

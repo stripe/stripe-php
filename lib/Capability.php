@@ -48,8 +48,8 @@ class Capability extends ApiResource
         $account = Util\Util::utf8($account);
 
         $base = Account::classUrl();
-        $accountExtn = urlencode($account);
-        $extn = urlencode($id);
+        $accountExtn = \urlencode($account);
+        $extn = \urlencode($id);
         return "$base/$accountExtn/capabilities/$extn";
     }
 

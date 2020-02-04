@@ -35,7 +35,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $this->origAccountId = Stripe::getAccountId();
 
         // Set up host and credentials for stripe-mock
-        Stripe::$apiBase = defined('MOCK_URL') ? MOCK_URL : 'http://localhost:12111';
+        Stripe::$apiBase = \defined('MOCK_URL') ? MOCK_URL : 'http://localhost:12111';
         Stripe::setApiKey("sk_test_123");
         Stripe::setClientId("ca_123");
         Stripe::setApiVersion(null);
@@ -121,7 +121,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $base = null
     ) {
         $this->prepareRequestMock($method, $path, $params, $headers, $hasFile, $base)
-            ->willReturn([json_encode($response), $rcode, []]);
+            ->willReturn([\json_encode($response), $rcode, []]);
     }
 
     /**
@@ -161,13 +161,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
             ->expects($this->once())
             ->method('request')
             ->with(
-                $this->identicalTo(strtolower($method)),
+                $this->identicalTo(\strtolower($method)),
                 $this->identicalTo($absUrl),
                 // for headers, we only check that all of the headers provided in $headers are
                 // present in the list of headers of the actual request
                 $headers === null ? $this->anything() : $this->callback(function ($array) use ($headers) {
                     foreach ($headers as $header) {
-                        if (!in_array($header, $array)) {
+                        if (!\in_array($header, $array)) {
                             return false;
                         }
                     }

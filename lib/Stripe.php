@@ -139,7 +139,7 @@ class Stripe
      */
     private static function getDefaultCABundlePath()
     {
-        return realpath(dirname(__FILE__) . '/../data/ca-certificates.crt');
+        return \realpath(\dirname(__FILE__) . '/../data/ca-certificates.crt');
     }
 
     /**

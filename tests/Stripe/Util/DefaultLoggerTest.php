@@ -1,28 +1,25 @@
 <?php
 
-// Test in a slightly different namespace than usual. See comment on
-// `error_log` below.
 namespace Stripe\Util;
 
 class DefaultLoggerTest extends \Stripe\TestCase
 {
     public function testDefaultLogger()
     {
-        $logger = new DefaultLogger();
-        $logger->error("message");
+        // DefaultLogger uses PHP's `error_log` function. In order to capture
+        // the output, we need to temporarily redirect it to a temporary file.
 
-        global $lastMessage;
-        $this->assertSame($lastMessage, "message");
+        $capture = \tmpfile();
+        $origErrorLog = \ini_set('error_log', \stream_get_meta_data($capture)['uri']);
+
+        try {
+            $logger = new DefaultLogger();
+            $logger->error("This is a test message");
+
+            $this->assertRegExp("/This is a test message/", \stream_get_contents($capture));
+        } finally {
+            \ini_set('error_log', $origErrorLog);
+            \fclose($capture);
+        }
     }
-}
-
-// This is a little terrible, but unfortunately there's no clean way to stub a
-// call to `error_log`. Here we overwrite it so that we can get the last arguments
-// that went to it. This is obviously bad, but luckily it's constrained to
-// being just in \Stripe\Util (i.e. won't interfere with PHPUnit for example)
-// and _just_ present when tests are running.
-function error_log($message)
-{
-    global $lastMessage;
-    $lastMessage = $message;
 }

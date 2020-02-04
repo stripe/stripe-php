@@ -63,7 +63,7 @@ class ApiRequestorTest extends TestCase
 
         $headers = $method->invoke(null, $apiKey, $clientInfo);
 
-        $ua = json_decode($headers['X-Stripe-Client-User-Agent']);
+        $ua = \json_decode($headers['X-Stripe-Client-User-Agent']);
         $this->assertSame($ua->application->name, 'MyTestApp');
         $this->assertSame($ua->application->version, '1.2.34');
         $this->assertSame($ua->application->url, 'https://mytestapp.example');
@@ -115,7 +115,7 @@ class ApiRequestorTest extends TestCase
             $this->assertSame('Missing id', $e->getMessage());
             $this->assertSame('id', $e->getStripeParam());
         } catch (\Exception $e) {
-            $this->fail("Unexpected exception: " . get_class($e));
+            $this->fail("Unexpected exception: " . \get_class($e));
         }
     }
 
@@ -144,7 +144,7 @@ class ApiRequestorTest extends TestCase
             $this->assertInternalType('array', $e->getJsonBody());
             $this->assertSame("Keys for idempotent requests can only be used with the same parameters they were first used with. Try using a key other than 'abc' if you meant to execute a different request.", $e->getMessage());
         } catch (\Exception $e) {
-            $this->fail("Unexpected exception: " . get_class($e));
+            $this->fail("Unexpected exception: " . \get_class($e));
         }
     }
 
@@ -173,7 +173,7 @@ class ApiRequestorTest extends TestCase
             $this->assertInternalType('array', $e->getJsonBody());
             $this->assertSame('You did not provide an API key.', $e->getMessage());
         } catch (\Exception $e) {
-            $this->fail("Unexpected exception: " . get_class($e));
+            $this->fail("Unexpected exception: " . \get_class($e));
         }
     }
 
@@ -209,7 +209,7 @@ class ApiRequestorTest extends TestCase
             $this->assertSame('generic_decline', $e->getDeclineCode());
             $this->assertSame('exp_month', $e->getStripeParam());
         } catch (\Exception $e) {
-            $this->fail("Unexpected exception: " . get_class($e));
+            $this->fail("Unexpected exception: " . \get_class($e));
         }
     }
 
@@ -238,7 +238,7 @@ class ApiRequestorTest extends TestCase
             $this->assertInternalType('array', $e->getJsonBody());
             $this->assertSame("The provided key 'sk_test_********************1234' does not have access to account 'foo' (or that account does not exist). Application access may have been revoked.", $e->getMessage());
         } catch (\Exception $e) {
-            $this->fail("Unexpected exception: " . get_class($e));
+            $this->fail("Unexpected exception: " . \get_class($e));
         }
     }
 
@@ -269,7 +269,7 @@ class ApiRequestorTest extends TestCase
             $this->assertSame('No such charge: foo', $e->getMessage());
             $this->assertSame('id', $e->getStripeParam());
         } catch (\Exception $e) {
-            $this->fail("Unexpected exception: " . get_class($e));
+            $this->fail("Unexpected exception: " . \get_class($e));
         }
     }
 
@@ -297,8 +297,8 @@ class ApiRequestorTest extends TestCase
             $this->assertInternalType('array', $e->getJsonBody());
             $this->assertSame('Too many requests', $e->getMessage());
         } catch (\Exception $e) {
-            var_dump($e);
-            $this->fail("Unexpected exception: " . get_class($e));
+            \var_dump($e);
+            $this->fail("Unexpected exception: " . \get_class($e));
         }
     }
 
@@ -327,7 +327,7 @@ class ApiRequestorTest extends TestCase
             $this->assertInternalType('array', $e->getJsonBody());
             $this->assertSame('Too many requests', $e->getMessage());
         } catch (\Exception $e) {
-            $this->fail("Unexpected exception: " . get_class($e));
+            $this->fail("Unexpected exception: " . \get_class($e));
         }
     }
 
@@ -355,7 +355,7 @@ class ApiRequestorTest extends TestCase
             $this->assertSame('invalid_request', $e->getStripeCode());
             $this->assertSame('No grant type specified', $e->getMessage());
         } catch (\Exception $e) {
-            $this->fail("Unexpected exception: " . get_class($e));
+            $this->fail("Unexpected exception: " . \get_class($e));
         }
     }
 
@@ -383,7 +383,7 @@ class ApiRequestorTest extends TestCase
             $this->assertSame('invalid_client', $e->getStripeCode());
             $this->assertSame('No authentication was provided. Send your secret API key using the Authorization header, or as a client_secret POST parameter.', $e->getMessage());
         } catch (\Exception $e) {
-            $this->fail("Unexpected exception: " . get_class($e));
+            $this->fail("Unexpected exception: " . \get_class($e));
         }
     }
 
@@ -411,7 +411,7 @@ class ApiRequestorTest extends TestCase
             $this->assertSame('invalid_grant', $e->getStripeCode());
             $this->assertSame('This authorization code has already been used. All tokens issued with this code have been revoked.', $e->getMessage());
         } catch (\Exception $e) {
-            $this->fail("Unexpected exception: " . get_class($e));
+            $this->fail("Unexpected exception: " . \get_class($e));
         }
     }
 
@@ -439,7 +439,7 @@ class ApiRequestorTest extends TestCase
             $this->assertSame('invalid_scope', $e->getStripeCode());
             $this->assertSame('Invalid scope provided: invalid_scope.', $e->getMessage());
         } catch (\Exception $e) {
-            $this->fail("Unexpected exception: " . get_class($e));
+            $this->fail("Unexpected exception: " . \get_class($e));
         }
     }
 
@@ -465,7 +465,7 @@ class ApiRequestorTest extends TestCase
             $this->assertSame(400, $e->getHttpStatus());
             $this->assertSame('unsupported_grant_type', $e->getStripeCode());
         } catch (\Exception $e) {
-            $this->fail("Unexpected exception: " . get_class($e));
+            $this->fail("Unexpected exception: " . \get_class($e));
         }
     }
 
@@ -493,7 +493,7 @@ class ApiRequestorTest extends TestCase
             $this->assertSame('unsupported_response_type', $e->getStripeCode());
             $this->assertSame("Only 'code' response_type is supported, but 'unsupported_response_type' was provided", $e->getMessage());
         } catch (\Exception $e) {
-            $this->fail("Unexpected exception: " . get_class($e));
+            $this->fail("Unexpected exception: " . \get_class($e));
         }
     }
 

@@ -40,7 +40,7 @@ trait Update
     public function save($opts = null)
     {
         $params = $this->serializeParameters();
-        if (count($params) > 0) {
+        if (\count($params) > 0) {
             $url = $this->instanceUrl();
             list($response, $opts) = $this->_request('post', $url, $params, $opts);
             $this->refreshFrom($response, $opts);

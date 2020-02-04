@@ -144,7 +144,7 @@ class ErrorObject extends StripeObject
         // Unlike most other API resources, the API will omit attributes in
         // error objects when they have a null value. We manually set default
         // values here to facilitate generic error handling.
-        $values = array_merge([
+        $values = \array_merge([
             'charge' => null,
             'code' => null,
             'decline_code' => null,

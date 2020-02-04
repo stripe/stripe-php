@@ -50,7 +50,7 @@ class RequestOptions
         if ($other_options->apiBase === null) {
             $other_options->apiBase = $this->apiBase;
         }
-        $other_options->headers = array_merge($this->headers, $other_options->headers);
+        $other_options->headers = \array_merge($this->headers, $other_options->headers);
         return $other_options;
     }
 
@@ -60,7 +60,7 @@ class RequestOptions
     public function discardNonPersistentHeaders()
     {
         foreach ($this->headers as $k => $v) {
-            if (!in_array($k, self::$HEADERS_TO_PERSIST)) {
+            if (!\in_array($k, self::$HEADERS_TO_PERSIST)) {
                 unset($this->headers[$k]);
             }
         }
@@ -78,31 +78,31 @@ class RequestOptions
             return $options;
         }
 
-        if (is_null($options)) {
+        if (\is_null($options)) {
             return new RequestOptions(null, [], null);
         }
 
-        if (is_string($options)) {
+        if (\is_string($options)) {
             return new RequestOptions($options, [], null);
         }
 
-        if (is_array($options)) {
+        if (\is_array($options)) {
             $headers = [];
             $key = null;
             $base = null;
-            if (array_key_exists('api_key', $options)) {
+            if (\array_key_exists('api_key', $options)) {
                 $key = $options['api_key'];
             }
-            if (array_key_exists('idempotency_key', $options)) {
+            if (\array_key_exists('idempotency_key', $options)) {
                 $headers['Idempotency-Key'] = $options['idempotency_key'];
             }
-            if (array_key_exists('stripe_account', $options)) {
+            if (\array_key_exists('stripe_account', $options)) {
                 $headers['Stripe-Account'] = $options['stripe_account'];
             }
-            if (array_key_exists('stripe_version', $options)) {
+            if (\array_key_exists('stripe_version', $options)) {
                 $headers['Stripe-Version'] = $options['stripe_version'];
             }
-            if (array_key_exists('api_base', $options)) {
+            if (\array_key_exists('api_base', $options)) {
                 $base = $options['api_base'];
             }
             return new RequestOptions($key, $headers, $base);
@@ -117,12 +117,12 @@ class RequestOptions
 
     private function redactedApiKey()
     {
-        $pieces = explode('_', $this->apiKey, 3);
-        $last = array_pop($pieces);
-        $redactedLast = strlen($last) > 4
-            ? (str_repeat('*', strlen($last) - 4) . substr($last, -4))
+        $pieces = \explode('_', $this->apiKey, 3);
+        $last = \array_pop($pieces);
+        $redactedLast = \strlen($last) > 4
+            ? (\str_repeat('*', \strlen($last) - 4) . \substr($last, -4))
             : $last;
-        array_push($pieces, $redactedLast);
-        return implode('_', $pieces);
+        \array_push($pieces, $redactedLast);
+        return \implode('_', $pieces);
     }
 }
