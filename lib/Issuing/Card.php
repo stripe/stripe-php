@@ -19,7 +19,7 @@ namespace Stripe\Issuing;
  * @property \Stripe\StripeObject $metadata
  * @property string $name
  * @property \Stripe\StripeObject|null $pin
- * @property string|null $replacement_for
+ * @property string|\Stripe\Issuing\Card|null $replacement_for
  * @property string|null $replacement_reason
  * @property \Stripe\StripeObject|null $shipping
  * @property string $status

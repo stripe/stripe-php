@@ -8,7 +8,7 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property string|null $billing_zip
- * @property string|null $charge
+ * @property string|\Stripe\Charge|null $charge
  * @property string|null $closed_reason
  * @property int $created
  * @property string|null $ip_address
@@ -16,7 +16,7 @@ namespace Stripe;
  * @property bool $livemode
  * @property bool $open
  * @property string $opened_reason
- * @property string $payment_intent
+ * @property string|\Stripe\PaymentIntent $payment_intent
  * @property string $reason
  * @property \Stripe\StripeObject|null $session
  *

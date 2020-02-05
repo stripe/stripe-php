@@ -19,7 +19,7 @@ namespace Stripe;
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property string|null $nickname
- * @property string|null $product
+ * @property string|\Stripe\Product|null $product
  * @property \Stripe\StripeObject[]|null $tiers
  * @property string|null $tiers_mode
  * @property \Stripe\StripeObject|null $transform_usage

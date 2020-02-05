@@ -17,7 +17,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject[] $fee_details
  * @property int $net
  * @property string $reporting_category
- * @property string|null $source
+ * @property string|\Stripe\StripeObject|null $source
  * @property string $status
  * @property string $type
  *

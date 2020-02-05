@@ -9,7 +9,7 @@ namespace Stripe;
  * @property string $object
  * @property int $amount
  * @property \Stripe\BalanceTransaction[] $balance_transactions
- * @property string $charge
+ * @property string|\Stripe\Charge $charge
  * @property int $created
  * @property string $currency
  * @property \Stripe\StripeObject $evidence
@@ -18,7 +18,7 @@ namespace Stripe;
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property string|null $network_reason_code
- * @property string|null $payment_intent
+ * @property string|\Stripe\PaymentIntent|null $payment_intent
  * @property string $reason
  * @property string $status
  *

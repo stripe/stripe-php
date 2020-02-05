@@ -11,10 +11,10 @@ namespace Stripe;
  * @property int|null $amount_returned
  * @property string|null $application
  * @property int|null $application_fee
- * @property string|null $charge
+ * @property string|\Stripe\Charge|null $charge
  * @property int $created
  * @property string $currency
- * @property string|null $customer
+ * @property string|\Stripe\Customer|null $customer
  * @property string|null $email
  * @property string $external_coupon_code
  * @property \Stripe\OrderItem[] $items

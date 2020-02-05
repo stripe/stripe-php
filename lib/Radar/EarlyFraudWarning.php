@@ -8,7 +8,7 @@ namespace Stripe\Radar;
  * @property string $id
  * @property string $object
  * @property bool $actionable
- * @property string $charge
+ * @property string|\Stripe\Charge $charge
  * @property int $created
  * @property string $fraud_type
  * @property bool $livemode

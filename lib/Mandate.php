@@ -10,7 +10,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $customer_acceptance
  * @property bool $livemode
  * @property \Stripe\StripeObject $multi_use
- * @property string $payment_method
+ * @property string|\Stripe\PaymentMethod $payment_method
  * @property \Stripe\StripeObject $payment_method_details
  * @property \Stripe\StripeObject $single_use
  * @property string $status
