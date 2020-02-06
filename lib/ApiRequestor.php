@@ -104,9 +104,9 @@ class ApiRequestor
      * @param array|null $params
      * @param array|null $headers
      *
-     * @return array tuple containing (ApiReponse, API key)
-     *
      * @throws Exception\ApiErrorException
+     *
+     * @return array tuple containing (ApiReponse, API key)
      */
     public function request($method, $url, $params = null, $headers = null)
     {
@@ -295,10 +295,10 @@ class ApiRequestor
      * @param array $params
      * @param array $headers
      *
-     * @return array
-     *
      * @throws Exception\AuthenticationException
      * @throws Exception\ApiConnectionException
+     *
+     * @return array
      */
     private function _requestRaw($method, $url, $params, $headers)
     {
@@ -384,9 +384,9 @@ class ApiRequestor
     /**
      * @param resource $resource
      *
-     * @return \CURLFile|string
-     *
      * @throws Exception\InvalidArgumentException
+     *
+     * @return \CURLFile|string
      */
     private function _processResourceParam($resource)
     {
@@ -412,10 +412,10 @@ class ApiRequestor
      * @param int    $rcode
      * @param array  $rheaders
      *
-     * @return array
-     *
      * @throws Exception\UnexpectedValueException
      * @throws Exception\ApiErrorException
+     *
+     * @return array
      */
     private function _interpretResponse($rbody, $rcode, $rheaders)
     {
