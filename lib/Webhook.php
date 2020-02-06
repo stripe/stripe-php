@@ -18,7 +18,9 @@ abstract class Webhook
      * @param string $secret secret used to generate the signature.
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time
+     *
      * @return Event the Event instance
+     *
      * @throws Exception\UnexpectedValueException if the payload is not valid JSON,
      * @throws Exception\SignatureVerificationException if the verification fails.
      */

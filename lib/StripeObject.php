@@ -218,7 +218,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      * This unfortunately needs to be public to be used in Util\Util
      *
      * @param array $values
-     * @param null|string|array|Util\RequestOptions $opts
+     * @param array|string|Util\RequestOptions|null $opts
      *
      * @return static The object constructed from the given values.
      */
@@ -233,8 +233,8 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      * Refreshes this object using the provided values.
      *
      * @param array $values
-     * @param null|string|array|Util\RequestOptions $opts
-     * @param boolean $partial Defaults to false.
+     * @param array|string|Util\RequestOptions|null $opts
+     * @param bool $partial Defaults to false.
      */
     public function refreshFrom($values, $opts, $partial = false)
     {
@@ -270,8 +270,8 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      * Mass assigns attributes on the model.
      *
      * @param array $values
-     * @param null|string|array|Util\RequestOptions $opts
-     * @param boolean $dirty Defaults to true.
+     * @param array|string|Util\RequestOptions|null $opts
+     * @param bool $dirty Defaults to true.
      */
     public function updateAttributes($values, $opts = null, $dirty = true)
     {
@@ -293,6 +293,8 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     }
 
     /**
+     * @param bool $force Defaults to false.
+     *
      * @return array A recursive mapping of attributes to values for this object,
      *    including the proper value for deleted attributes.
      */
@@ -479,6 +481,8 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     /**
      * Produces a deep copy of the given object including support for arrays
      * and StripeObjects.
+     *
+     * @param mixed $obj
      */
     protected static function deepCopy($obj)
     {
@@ -501,6 +505,8 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     /**
      * Returns a hash of empty values for all the values that are in the given
      * StripeObject.
+     *
+     * @param mixed $obj
      */
     public static function emptyValues($obj)
     {
@@ -528,7 +534,6 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      * Sets the last response from the Stripe API
      *
      * @param ApiResponse $resp
-     * @return void
      */
     public function setLastResponse($resp)
     {

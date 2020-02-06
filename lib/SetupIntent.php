@@ -40,7 +40,6 @@ class SetupIntent extends ApiResource
     /**
      * These constants are possible representations of the status field.
      *
-     *
      * @see https://stripe.com/docs/api/setup_intents/object#setup_intent_object-status
      */
     const STATUS_CANCELED                = 'canceled';
