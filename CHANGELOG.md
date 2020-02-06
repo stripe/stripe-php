@@ -1,5 +1,14 @@
 # Changelog
 
+## 7.23.0 - 2020-02-05
+* [#860](https://github.com/stripe/stripe-php/pull/860) Add PHPDoc types for expandable fields
+* [#858](https://github.com/stripe/stripe-php/pull/858) Use `native_function_invocation` PHPStan rule
+* [#857](https://github.com/stripe/stripe-php/pull/857) Update PHPDoc on nested resources
+* [#855](https://github.com/stripe/stripe-php/pull/855) PHPDoc: `StripeObject` -> `ErrorObject` where appropriate
+* [#837](https://github.com/stripe/stripe-php/pull/837) Autogen diff
+* [#854](https://github.com/stripe/stripe-php/pull/854) Upgrade PHPStan and fix settings
+* [#850](https://github.com/stripe/stripe-php/pull/850) Yet more PHPDoc updates
+
 ## 7.22.0 - 2020-01-31
 * [#849](https://github.com/stripe/stripe-php/pull/849) Add new constants for `type` on `TaxId`
 * [#843](https://github.com/stripe/stripe-php/pull/843) Even more PHPDoc fixes
