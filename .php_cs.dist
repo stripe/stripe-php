@@ -17,6 +17,7 @@ return PhpCsFixer\Config::create()
         'phpdoc_indent' => true,
         'phpdoc_inline_tag' => true,
         'phpdoc_no_access' => true,
+        'phpdoc_no_empty_return' => true,
         'phpdoc_scalar' => true,
     ])
 ;

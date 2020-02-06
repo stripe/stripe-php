@@ -532,7 +532,6 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      * Sets the last response from the Stripe API
      *
      * @param ApiResponse $resp
-     * @return void
      */
     public function setLastResponse($resp)
     {
