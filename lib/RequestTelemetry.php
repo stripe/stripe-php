@@ -6,6 +6,7 @@ namespace Stripe;
  * Class RequestTelemetry
  *
  * Tracks client request telemetry
+ *
  * @package Stripe
  */
 class RequestTelemetry

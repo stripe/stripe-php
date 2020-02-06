@@ -14,6 +14,7 @@ interface ClientInterface
      *
      * @throws \Stripe\Exception\ApiConnectionException
      * @throws \Stripe\Exception\UnexpectedValueException
+     *
      * @return array An array whose first element is raw request body, second
      *    element is HTTP status code and third array of HTTP headers.
      */

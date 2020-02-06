@@ -15,6 +15,7 @@ abstract class Util
      * integers starting at 0. Empty arrays are considered to be lists.
      *
      * @param array|mixed $array
+     *
      * @return bool true if the given object is a list.
      */
     public static function isList($array)
@@ -36,6 +37,7 @@ abstract class Util
      *
      * @param array $resp The response from the Stripe API.
      * @param array $opts
+     *
      * @return array|StripeObject
      */
     public static function convertToStripeObject($resp, $opts)
@@ -175,6 +177,7 @@ abstract class Util
      *
      * @param string $a one of the strings to compare.
      * @param string $b the other string to compare.
+     *
      * @return bool true if the strings are equal, false otherwise.
      */
     public static function secureCompare($a, $b)
@@ -204,6 +207,7 @@ abstract class Util
      * Also clears out null values.
      *
      * @param mixed $h
+     *
      * @return mixed
      */
     public static function objectsToIds($h)

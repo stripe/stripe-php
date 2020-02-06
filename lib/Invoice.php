@@ -114,8 +114,8 @@ class Invoice extends ApiResource
 
     /**
      * Possible string representations of the `billing` property.
-     * @deprecated Use `collection_method` instead.
      *
+     * @deprecated Use `collection_method` instead.
      * @see https://stripe.com/docs/api/invoices/object#invoice_object-billing
      */
     const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';

@@ -25,6 +25,7 @@ class TaxId extends ApiResource
 
     /**
      * Possible string representations of a tax id's type.
+     *
      * @link https://stripe.com/docs/api/customer_tax_ids/object#tax_id_object-type
      */
     const TYPE_AU_ABN  = 'au_abn';
@@ -46,6 +47,7 @@ class TaxId extends ApiResource
 
     /**
      * Possible string representations of the verification status.
+     *
      * @link https://stripe.com/docs/api/customer_tax_ids/object#tax_id_object-verification
      */
     const VERIFICATION_STATUS_PENDING     = 'pending';

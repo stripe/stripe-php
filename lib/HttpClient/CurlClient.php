@@ -343,6 +343,7 @@ class CurlClient implements ClientInterface
      * @param int $errno
      * @param string $message
      * @param int $numRetries
+     *
      * @throws Exception\ApiConnectionException
      */
     private function handleCurlError($url, $errno, $message, $numRetries)
@@ -521,6 +522,7 @@ class CurlClient implements ClientInterface
      *
      * @param string[] $headers
      * @param string $name
+     *
      * @return bool
      */
     private function hasHeader($headers, $name)

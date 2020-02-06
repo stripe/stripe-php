@@ -294,6 +294,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
 
     /**
      * @param bool $force Defaults to false.
+     *
      * @return array A recursive mapping of attributes to values for this object,
      *    including the proper value for deleted attributes.
      */
