@@ -9,18 +9,18 @@ namespace Stripe;
  * @property string $object
  * @property int $amount
  * @property string $currency
- * @property string $customer
+ * @property string|\Stripe\Customer $customer
  * @property int $date
  * @property string|null $description
  * @property bool $discountable
- * @property string|null $invoice
+ * @property string|\Stripe\Invoice|null $invoice
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property \Stripe\StripeObject $period
  * @property \Stripe\Plan|null $plan
  * @property bool $proration
  * @property int $quantity
- * @property string|null $subscription
+ * @property string|\Stripe\Subscription|null $subscription
  * @property string $subscription_item
  * @property \Stripe\TaxRate[]|null $tax_rates
  * @property bool $unified_proration

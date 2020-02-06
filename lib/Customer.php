@@ -11,7 +11,7 @@ namespace Stripe;
  * @property int $balance
  * @property int $created
  * @property string|null $currency
- * @property string|null $default_source
+ * @property string|\Stripe\StripeObject|null $default_source
  * @property bool|null $delinquent
  * @property string|null $description
  * @property \Stripe\Discount|null $discount

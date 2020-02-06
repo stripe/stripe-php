@@ -17,12 +17,12 @@ namespace Stripe;
  * @property bool $attempted
  * @property bool $auto_advance
  * @property string|null $billing_reason
- * @property string|null $charge
+ * @property string|\Stripe\Charge|null $charge
  * @property string|null $collection_method
  * @property int $created
  * @property string $currency
  * @property \Stripe\StripeObject[]|null $custom_fields
- * @property string $customer
+ * @property string|\Stripe\Customer $customer
  * @property \Stripe\StripeObject|null $customer_address
  * @property string|null $customer_email
  * @property string|null $customer_name
@@ -30,8 +30,8 @@ namespace Stripe;
  * @property \Stripe\StripeObject|null $customer_shipping
  * @property string|null $customer_tax_exempt
  * @property \Stripe\StripeObject[]|null $customer_tax_ids
- * @property string|null $default_payment_method
- * @property string|null $default_source
+ * @property string|\Stripe\PaymentMethod|null $default_payment_method
+ * @property string|\Stripe\StripeObject|null $default_source
  * @property \Stripe\TaxRate[]|null $default_tax_rates
  * @property string|null $description
  * @property \Stripe\Discount|null $discount
@@ -46,7 +46,7 @@ namespace Stripe;
  * @property int|null $next_payment_attempt
  * @property string|null $number
  * @property bool $paid
- * @property string|null $payment_intent
+ * @property string|\Stripe\PaymentIntent|null $payment_intent
  * @property int $period_end
  * @property int $period_start
  * @property int $post_payment_credit_notes_amount
@@ -56,7 +56,7 @@ namespace Stripe;
  * @property string|null $statement_descriptor
  * @property string|null $status
  * @property \Stripe\StripeObject $status_transitions
- * @property string|null $subscription
+ * @property string|\Stripe\Subscription|null $subscription
  * @property int $subscription_proration_date
  * @property int $subtotal
  * @property int|null $tax

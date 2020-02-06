@@ -7,16 +7,16 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property string $account
+ * @property string|\Stripe\Account $account
  * @property int $amount
  * @property int $amount_refunded
- * @property string $application
- * @property string|null $balance_transaction
- * @property string $charge
+ * @property string|\Stripe\StripeObject $application
+ * @property string|\Stripe\BalanceTransaction|null $balance_transaction
+ * @property string|\Stripe\Charge $charge
  * @property int $created
  * @property string $currency
  * @property bool $livemode
- * @property string|null $originating_transaction
+ * @property string|\Stripe\Charge|null $originating_transaction
  * @property bool $refunded
  * @property \Stripe\Collection $refunds
  *

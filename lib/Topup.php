@@ -8,7 +8,7 @@ namespace Stripe;
  * @property string $id
  * @property string $object
  * @property int $amount
- * @property string|null $balance_transaction
+ * @property string|\Stripe\BalanceTransaction|null $balance_transaction
  * @property int $created
  * @property string $currency
  * @property string|null $description

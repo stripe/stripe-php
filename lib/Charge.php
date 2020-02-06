@@ -9,27 +9,27 @@ namespace Stripe;
  * @property string $object
  * @property int $amount
  * @property int $amount_refunded
- * @property string|null $application
- * @property string|null $application_fee
+ * @property string|\Stripe\StripeObject|null $application
+ * @property string|\Stripe\ApplicationFee|null $application_fee
  * @property int|null $application_fee_amount
- * @property string|null $balance_transaction
+ * @property string|\Stripe\BalanceTransaction|null $balance_transaction
  * @property \Stripe\StripeObject $billing_details
  * @property bool $captured
  * @property int $created
  * @property string $currency
- * @property string|null $customer
+ * @property string|\Stripe\Customer|null $customer
  * @property string|null $description
- * @property string|null $destination
- * @property string|null $dispute
+ * @property string|\Stripe\Account|null $destination
+ * @property string|\Stripe\Dispute|null $dispute
  * @property bool $disputed
  * @property string|null $failure_code
  * @property string|null $failure_message
  * @property \Stripe\StripeObject|null $fraud_details
- * @property string|null $invoice
+ * @property string|\Stripe\Invoice|null $invoice
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
- * @property string|null $on_behalf_of
- * @property string|null $order
+ * @property string|\Stripe\Account|null $on_behalf_of
+ * @property string|\Stripe\Order|null $order
  * @property \Stripe\StripeObject|null $outcome
  * @property bool $paid
  * @property string|null $payment_intent
@@ -40,14 +40,14 @@ namespace Stripe;
  * @property string $receipt_url
  * @property bool $refunded
  * @property \Stripe\Collection $refunds
- * @property string|null $review
+ * @property string|\Stripe\Review|null $review
  * @property \Stripe\StripeObject|null $shipping
  * @property \Stripe\StripeObject|null $source
- * @property string|null $source_transfer
+ * @property string|\Stripe\Transfer|null $source_transfer
  * @property string|null $statement_descriptor
  * @property string|null $statement_descriptor_suffix
  * @property string $status
- * @property string $transfer
+ * @property string|\Stripe\Transfer $transfer
  * @property \Stripe\StripeObject|null $transfer_data
  * @property string|null $transfer_group
  *

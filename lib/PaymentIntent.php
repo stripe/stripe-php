@@ -10,7 +10,7 @@ namespace Stripe;
  * @property int $amount
  * @property int $amount_capturable
  * @property int $amount_received
- * @property string|null $application
+ * @property string|\Stripe\StripeObject|null $application
  * @property int|null $application_fee_amount
  * @property int|null $canceled_at
  * @property string|null $cancellation_reason
@@ -20,22 +20,22 @@ namespace Stripe;
  * @property string $confirmation_method
  * @property int $created
  * @property string $currency
- * @property string|null $customer
+ * @property string|\Stripe\Customer|null $customer
  * @property string|null $description
- * @property string|null $invoice
+ * @property string|\Stripe\Invoice|null $invoice
  * @property \Stripe\ErrorObject|null $last_payment_error
  * @property bool $livemode
  * @property \Stripe\StripeObject $metadata
  * @property \Stripe\StripeObject|null $next_action
- * @property string|null $on_behalf_of
- * @property string|null $payment_method
+ * @property string|\Stripe\Account|null $on_behalf_of
+ * @property string|\Stripe\PaymentMethod|null $payment_method
  * @property \Stripe\StripeObject|null $payment_method_options
  * @property string[] $payment_method_types
  * @property string|null $receipt_email
- * @property string|null $review
+ * @property string|\Stripe\Review|null $review
  * @property string|null $setup_future_usage
  * @property \Stripe\StripeObject|null $shipping
- * @property string|null $source
+ * @property string|\Stripe\StripeObject|null $source
  * @property string|null $statement_descriptor
  * @property string|null $statement_descriptor_suffix
  * @property string $status

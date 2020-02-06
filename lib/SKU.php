@@ -17,7 +17,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $metadata
  * @property \Stripe\StripeObject|null $package_dimensions
  * @property int $price
- * @property string $product
+ * @property string|\Stripe\Product $product
  * @property int $updated
  *
  * @package Stripe

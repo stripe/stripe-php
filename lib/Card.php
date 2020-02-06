@@ -7,7 +7,7 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property string|null $account
+ * @property string|\Stripe\Account|null $account
  * @property string|null $address_city
  * @property string|null $address_country
  * @property string|null $address_line1
@@ -20,7 +20,7 @@ namespace Stripe;
  * @property string $brand
  * @property string|null $country
  * @property string|null $currency
- * @property string|null $customer
+ * @property string|\Stripe\Customer|null $customer
  * @property string|null $cvc_check
  * @property bool|null $default_for_currency
  * @property string|null $dynamic_last4
@@ -31,7 +31,7 @@ namespace Stripe;
  * @property string $last4
  * @property \Stripe\StripeObject $metadata
  * @property string|null $name
- * @property string|null $recipient
+ * @property string|\Stripe\Recipient|null $recipient
  * @property string|null $tokenization_method
  *
  * @package Stripe

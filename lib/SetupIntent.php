@@ -7,22 +7,22 @@ namespace Stripe;
  *
  * @property string $id
  * @property string $object
- * @property string|null $application
+ * @property string|\Stripe\StripeObject|null $application
  * @property string|null $cancellation_reason
  * @property string|null $client_secret
  * @property int $created
- * @property string|null $customer
+ * @property string|\Stripe\Customer|null $customer
  * @property string|null $description
  * @property \Stripe\ErrorObject|null $last_setup_error
  * @property bool $livemode
- * @property string|null $mandate
+ * @property string|\Stripe\Mandate|null $mandate
  * @property \Stripe\StripeObject $metadata
  * @property \Stripe\StripeObject|null $next_action
- * @property string|null $on_behalf_of
- * @property string|null $payment_method
+ * @property string|\Stripe\Account|null $on_behalf_of
+ * @property string|\Stripe\PaymentMethod|null $payment_method
  * @property \Stripe\StripeObject|null $payment_method_options
  * @property string[] $payment_method_types
- * @property string|null $single_use_mandate
+ * @property string|\Stripe\Mandate|null $single_use_mandate
  * @property string $status
  * @property string $usage
  *

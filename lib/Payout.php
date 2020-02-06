@@ -10,12 +10,12 @@ namespace Stripe;
  * @property int $amount
  * @property int $arrival_date
  * @property bool $automatic
- * @property string|null $balance_transaction
+ * @property string|\Stripe\BalanceTransaction|null $balance_transaction
  * @property int $created
  * @property string $currency
  * @property string|null $description
- * @property string|null $destination
- * @property string|null $failure_balance_transaction
+ * @property string|\Stripe\StripeObject|null $destination
+ * @property string|\Stripe\BalanceTransaction|null $failure_balance_transaction
  * @property string|null $failure_code
  * @property string|null $failure_message
  * @property bool $livemode
