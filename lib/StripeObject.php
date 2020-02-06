@@ -218,7 +218,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      * This unfortunately needs to be public to be used in Util\Util
      *
      * @param array $values
-     * @param null|string|array|Util\RequestOptions $opts
+     * @param array|string|Util\RequestOptions|null $opts
      *
      * @return static The object constructed from the given values.
      */
@@ -233,7 +233,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      * Refreshes this object using the provided values.
      *
      * @param array $values
-     * @param null|string|array|Util\RequestOptions $opts
+     * @param array|string|Util\RequestOptions|null $opts
      * @param bool $partial Defaults to false.
      */
     public function refreshFrom($values, $opts, $partial = false)
@@ -270,7 +270,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      * Mass assigns attributes on the model.
      *
      * @param array $values
-     * @param null|string|array|Util\RequestOptions $opts
+     * @param array|string|Util\RequestOptions|null $opts
      * @param bool $dirty Defaults to true.
      */
     public function updateAttributes($values, $opts = null, $dirty = true)

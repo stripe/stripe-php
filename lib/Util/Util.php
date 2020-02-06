@@ -36,7 +36,7 @@ abstract class Util
      *
      * @param array $resp The response from the Stripe API.
      * @param array $opts
-     * @return StripeObject|array
+     * @return array|StripeObject
      */
     public static function convertToStripeObject($resp, $opts)
     {
@@ -144,9 +144,9 @@ abstract class Util
     }
 
     /**
-     * @param string|mixed $value A string to UTF8-encode.
+     * @param mixed|string $value A string to UTF8-encode.
      *
-     * @return string|mixed The UTF8-encoded string, or the object passed in if
+     * @return mixed|string The UTF8-encoded string, or the object passed in if
      *    it wasn't a string.
      */
     public static function utf8($value)
