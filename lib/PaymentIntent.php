@@ -56,7 +56,6 @@ class PaymentIntent extends ApiResource
     /**
      * These constants are possible representations of the status field.
      *
-     *
      * @see https://stripe.com/docs/api/payment_intents/object#payment_intent_object-status
      */
     const STATUS_CANCELED                = 'canceled';

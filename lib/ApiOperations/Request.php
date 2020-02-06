@@ -10,7 +10,7 @@ namespace Stripe\ApiOperations;
 trait Request
 {
     /**
-     * @param array|null|mixed $params The list of parameters to validate
+     * @param array|mixed|null $params The list of parameters to validate
      *
      * @throws \Stripe\Exception\InvalidArgumentException if $params exists and is not an array
      */

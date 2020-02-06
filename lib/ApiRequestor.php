@@ -46,9 +46,11 @@ class ApiRequestor
 
     /**
      * Creates a telemetry json blob for use in 'X-Stripe-Client-Telemetry' headers
+     *
      * @static
      *
      * @param RequestTelemetry $requestTelemetry
+     *
      * @return string
      */
     private static function _telemetryJson($requestTelemetry)
@@ -71,9 +73,9 @@ class ApiRequestor
     /**
      * @static
      *
-     * @param ApiResource|bool|array|mixed $d
+     * @param ApiResource|array|bool|mixed $d
      *
-     * @return ApiResource|array|string|mixed
+     * @return ApiResource|array|mixed|string
      */
     private static function _encodeObjects($d)
     {
@@ -194,7 +196,7 @@ class ApiRequestor
     /**
      * @static
      *
-     * @param string|bool $rbody
+     * @param bool|string $rbody
      * @param int         $rcode
      * @param array       $rheaders
      * @param array       $resp
@@ -227,9 +229,9 @@ class ApiRequestor
     /**
      * @static
      *
-     * @param null|array $appInfo
+     * @param array|null $appInfo
      *
-     * @return null|string
+     * @return string|null
      */
     private static function _formatAppInfo($appInfo)
     {

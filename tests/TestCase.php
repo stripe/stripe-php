@@ -105,7 +105,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param bool $hasFile Whether the request parameters contains a file.
      *   Defaults to false.
      * @param array $response
-     * @param integer $rcode
+     * @param int $rcode
      * @param string|null $base
      *
      * @return array

@@ -16,8 +16,8 @@ class OAuthErrorObject extends StripeObject
      * Refreshes this object using the provided values.
      *
      * @param array $values
-     * @param null|string|array|Util\RequestOptions $opts
-     * @param boolean $partial Defaults to false.
+     * @param array|string|Util\RequestOptions|null $opts
+     * @param bool $partial Defaults to false.
      */
     public function refreshFrom($values, $opts, $partial = false)
     {

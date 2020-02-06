@@ -27,7 +27,8 @@ class CustomerBalanceTransaction extends ApiResource
 
     /**
      * Possible string representations of a balance transaction's type.
-     * @link https://stripe.com/docs/api/customers/customer_balance_transaction_object#customer_balance_transaction_object-type
+     *
+     * @see https://stripe.com/docs/api/customers/customer_balance_transaction_object#customer_balance_transaction_object-type
      */
     const TYPE_ADJUSTEMENT             = 'adjustment';
     const TYPE_APPLIED_TO_INVOICE      = 'applied_to_invoice';

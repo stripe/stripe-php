@@ -23,7 +23,8 @@ class Capability extends ApiResource
 
     /**
      * Possible string representations of a capability's status.
-     * @link https://stripe.com/docs/api/capabilities/object#capability_object-status
+     *
+     * @see https://stripe.com/docs/api/capabilities/object#capability_object-status
      */
     const STATUS_ACTIVE      = 'active';
     const STATUS_INACTIVE    = 'inactive';

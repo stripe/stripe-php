@@ -159,7 +159,7 @@ class Stripe
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public static function getVerifySslCerts()
     {
@@ -167,7 +167,7 @@ class Stripe
     }
 
     /**
-     * @param boolean $verify
+     * @param bool $verify
      */
     public static function setVerifySslCerts($verify)
     {
@@ -202,8 +202,9 @@ class Stripe
 
     /**
      * @param string $appName The application's name
-     * @param string $appVersion The application's version
-     * @param string $appUrl The application's URL
+     * @param string|null $appVersion The application's version
+     * @param string|null $appUrl The application's URL
+     * @param string|null $appPartnerId The application's partner ID
      */
     public static function setAppInfo($appName, $appVersion = null, $appUrl = null, $appPartnerId = null)
     {
