@@ -43,7 +43,7 @@ class Person extends ApiResource
     /**
      * Possible string representations of a person's gender.
      *
-     * @link https://stripe.com/docs/api/persons/object#person_object-gender
+     * @see https://stripe.com/docs/api/persons/object#person_object-gender
      */
     const GENDER_MALE   = 'male';
     const GENDER_FEMALE = 'female';
@@ -51,7 +51,7 @@ class Person extends ApiResource
     /**
      * Possible string representations of a person's verification status.
      *
-     * @link https://stripe.com/docs/api/persons/object#person_object-verification-status
+     * @see https://stripe.com/docs/api/persons/object#person_object-verification-status
      */
     const VERIFICATION_STATUS_PENDING    = 'pending';
     const VERIFICATION_STATUS_UNVERIFIED = 'unverified';

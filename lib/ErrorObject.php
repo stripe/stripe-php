@@ -39,7 +39,7 @@ class ErrorObject extends StripeObject
     /**
      * Possible string representations of an error's code.
      *
-     * @link https://stripe.com/docs/error-codes
+     * @see https://stripe.com/docs/error-codes
      */
     const CODE_ACCOUNT_ALREADY_EXISTS                     = 'account_already_exists';
     const CODE_ACCOUNT_COUNTRY_INVALID_ADDRESS            = 'account_country_invalid_address';
