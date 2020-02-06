@@ -55,7 +55,8 @@ class Subscription extends ApiResource
     /**
      * These constants are possible representations of the status field.
      *
-     * @link https://stripe.com/docs/api#subscription_object-status
+     *
+     * @see https://stripe.com/docs/api#subscription_object-status
      */
     const STATUS_ACTIVE             = 'active';
     const STATUS_CANCELED           = 'canceled';

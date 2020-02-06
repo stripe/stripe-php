@@ -58,7 +58,8 @@ class Source extends ApiResource
 
     /**
      * Possible string representations of source flows.
-     * @link https://stripe.com/docs/api#source_object-flow
+     *
+     * @see https://stripe.com/docs/api#source_object-flow
      */
     const FLOW_REDIRECT          = 'redirect';
     const FLOW_RECEIVER          = 'receiver';
@@ -67,7 +68,8 @@ class Source extends ApiResource
 
     /**
      * Possible string representations of source statuses.
-     * @link https://stripe.com/docs/api#source_object-status
+     *
+     * @see https://stripe.com/docs/api#source_object-status
      */
     const STATUS_CANCELED   = 'canceled';
     const STATUS_CHARGEABLE = 'chargeable';
@@ -77,7 +79,8 @@ class Source extends ApiResource
 
     /**
      * Possible string representations of source usage.
-     * @link https://stripe.com/docs/api#source_object-usage
+     *
+     * @see https://stripe.com/docs/api#source_object-usage
      */
     const USAGE_REUSABLE   = 'reusable';
     const USAGE_SINGLE_USE = 'single_use';

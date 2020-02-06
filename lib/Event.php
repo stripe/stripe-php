@@ -27,7 +27,8 @@ class Event extends ApiResource
 
     /**
      * Possible string representations of event types.
-     * @link https://stripe.com/docs/api#event_types
+     *
+     * @see https://stripe.com/docs/api#event_types
      */
     const ACCOUNT_UPDATED                           = 'account.updated';
     const ACCOUNT_APPLICATION_AUTHORIZED            = 'account.application.authorized';

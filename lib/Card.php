@@ -45,7 +45,8 @@ class Card extends ApiResource
 
     /**
      * Possible string representations of the CVC check status.
-     * @link https://stripe.com/docs/api/cards/object#card_object-cvc_check
+     *
+     * @see https://stripe.com/docs/api/cards/object#card_object-cvc_check
      */
     const CVC_CHECK_FAIL        = 'fail';
     const CVC_CHECK_PASS        = 'pass';
@@ -54,7 +55,8 @@ class Card extends ApiResource
 
     /**
      * Possible string representations of the funding of the card.
-     * @link https://stripe.com/docs/api/cards/object#card_object-funding
+     *
+     * @see https://stripe.com/docs/api/cards/object#card_object-funding
      */
     const FUNDING_CREDIT  = 'credit';
     const FUNDING_DEBIT   = 'debit';
@@ -63,7 +65,8 @@ class Card extends ApiResource
 
     /**
      * Possible string representations of the tokenization method when using Apple Pay or Google Pay.
-     * @link https://stripe.com/docs/api/cards/object#card_object-tokenization_method
+     *
+     * @see https://stripe.com/docs/api/cards/object#card_object-tokenization_method
      */
     const TOKENIZATION_METHOD_APPLE_PAY  = 'apple_pay';
     const TOKENIZATION_METHOD_GOOGLE_PAY = 'google_pay';
