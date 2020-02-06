@@ -13,6 +13,7 @@ return PhpCsFixer\Config::create()
         ],
         'linebreak_after_opening_tag' => true,
         'native_function_invocation' => true,
+        'phpdoc_add_missing_param_annotation' => true,
         'phpdoc_scalar' => true,
     ])
 ;

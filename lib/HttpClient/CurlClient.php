@@ -63,6 +63,7 @@ class CurlClient implements ClientInterface
      * throw an exception if $defaultOptions returns a non-array value.
      *
      * @param array|callable|null $defaultOptions
+     * @param \Stripe\Util\RandomGenerator|null $randomGenerator
      */
     public function __construct($defaultOptions = null, $randomGenerator = null)
     {
@@ -273,6 +274,7 @@ class CurlClient implements ClientInterface
 
     /**
      * @param array $opts cURL options
+     * @param string $absUrl
      */
     private function executeRequestWithRetries($opts, $absUrl)
     {

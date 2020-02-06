@@ -293,6 +293,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     }
 
     /**
+     * @param bool $force Defaults to false.
      * @return array A recursive mapping of attributes to values for this object,
      *    including the proper value for deleted attributes.
      */
@@ -477,6 +478,8 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     /**
      * Produces a deep copy of the given object including support for arrays
      * and StripeObjects.
+     *
+     * @param mixed $obj
      */
     protected static function deepCopy($obj)
     {
@@ -499,6 +502,8 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     /**
      * Returns a hash of empty values for all the values that are in the given
      * StripeObject.
+     *
+     * @param mixed $obj
      */
     public static function emptyValues($obj)
     {

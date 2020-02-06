@@ -88,6 +88,10 @@ abstract class ApiResource extends StripeObject
     }
 
     /**
+     * @param string|null $id the ID of the resource
+     *
+     * @throws Exception\UnexpectedValueException if $id is null
+     *
      * @return string The instance endpoint URL for the given class.
      */
     public static function resourceUrl($id)
