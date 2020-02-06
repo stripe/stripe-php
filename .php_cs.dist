@@ -19,6 +19,7 @@ return PhpCsFixer\Config::create()
         'phpdoc_no_access' => true,
         'phpdoc_no_empty_return' => true,
         'phpdoc_no_useless_inheritdoc' => true,
+        'phpdoc_return_self_reference' => true,
         'phpdoc_scalar' => true,
     ])
 ;
