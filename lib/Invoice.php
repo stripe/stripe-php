@@ -82,7 +82,8 @@ class Invoice extends ApiResource
 
     /**
      * Possible string representations of the billing reason.
-     * @link https://stripe.com/docs/api/invoices/object#invoice_object-billing_reason
+     *
+     * @see https://stripe.com/docs/api/invoices/object#invoice_object-billing_reason
      */
     const BILLING_REASON_MANUAL                 = 'manual';
     const BILLING_REASON_SUBSCRIPTION           = 'subscription';
@@ -94,14 +95,16 @@ class Invoice extends ApiResource
 
     /**
      * Possible string representations of the `collection_method` property.
-     * @link https://stripe.com/docs/api/invoices/object#invoice_object-collection_method
+     *
+     * @see https://stripe.com/docs/api/invoices/object#invoice_object-collection_method
      */
     const COLLECTION_METHOD_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const COLLECTION_METHOD_SEND_INVOICE         = 'send_invoice';
 
     /**
      * Possible string representations of the invoice status.
-     * @link https://stripe.com/docs/api/invoices/object#invoice_object-status
+     *
+     * @see https://stripe.com/docs/api/invoices/object#invoice_object-status
      */
     const STATUS_DRAFT         = 'draft';
     const STATUS_OPEN          = 'open';
@@ -112,7 +115,8 @@ class Invoice extends ApiResource
     /**
      * Possible string representations of the `billing` property.
      * @deprecated Use `collection_method` instead.
-     * @link https://stripe.com/docs/api/invoices/object#invoice_object-billing
+     *
+     * @see https://stripe.com/docs/api/invoices/object#invoice_object-billing
      */
     const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const BILLING_SEND_INVOICE         = 'send_invoice';

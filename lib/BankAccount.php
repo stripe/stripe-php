@@ -32,7 +32,8 @@ class BankAccount extends ApiResource
 
     /**
      * Possible string representations of the bank verification status.
-     * @link https://stripe.com/docs/api/external_account_bank_accounts/object#account_bank_account_object-status
+     *
+     * @see https://stripe.com/docs/api/external_account_bank_accounts/object#account_bank_account_object-status
      */
     const STATUS_NEW                 = 'new';
     const STATUS_VALIDATED           = 'validated';

@@ -24,7 +24,8 @@ class EarlyFraudWarning extends \Stripe\ApiResource
 
     /**
      * Possible string representations of an early fraud warning's fraud type.
-     * @link https://stripe.com/docs/api/early_fraud_warnings/object#early_fraud_warning_object-fraud_type
+     *
+     * @see https://stripe.com/docs/api/early_fraud_warnings/object#early_fraud_warning_object-fraud_type
      */
     const FRAUD_TYPE_CARD_NEVER_RECEIVED         = 'card_never_received';
     const FRAUD_TYPE_FRAUDULENT_CARD_APPLICATION = 'fraudulent_card_application';
