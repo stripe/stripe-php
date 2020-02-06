@@ -28,5 +28,6 @@ return PhpCsFixer\Config::create()
         'phpdoc_types_order' => [
             'null_adjustment' => 'always_last',
         ],
+        'phpdoc_var_annotation_correct_order' => true,
     ])
 ;
