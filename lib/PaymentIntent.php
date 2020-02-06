@@ -35,7 +35,7 @@ namespace Stripe;
  * @property string|\Stripe\Review|null $review
  * @property string|null $setup_future_usage
  * @property \Stripe\StripeObject|null $shipping
- * @property string|\Stripe\StripeObject|\Stripe\StripeObject|null $source
+ * @property string|\Stripe\StripeObject|null $source
  * @property string|null $statement_descriptor
  * @property string|null $statement_descriptor_suffix
  * @property string $status

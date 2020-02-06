@@ -14,7 +14,7 @@ namespace Stripe;
  * @property int $created
  * @property string $currency
  * @property string|null $description
- * @property string|\Stripe\StripeObject|\Stripe\StripeObject|null $destination
+ * @property string|\Stripe\StripeObject|null $destination
  * @property string|\Stripe\BalanceTransaction|null $failure_balance_transaction
  * @property string|null $failure_code
  * @property string|null $failure_message
