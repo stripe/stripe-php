@@ -234,7 +234,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      *
      * @param array $values
      * @param null|string|array|Util\RequestOptions $opts
-     * @param boolean $partial Defaults to false.
+     * @param bool $partial Defaults to false.
      */
     public function refreshFrom($values, $opts, $partial = false)
     {
@@ -271,7 +271,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      *
      * @param array $values
      * @param null|string|array|Util\RequestOptions $opts
-     * @param boolean $dirty Defaults to true.
+     * @param bool $dirty Defaults to true.
      */
     public function updateAttributes($values, $opts = null, $dirty = true)
     {

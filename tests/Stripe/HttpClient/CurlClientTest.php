@@ -10,13 +10,13 @@ class CurlClientTest extends \Stripe\TestCase
     /** @var \ReflectionProperty */
     private $maxNetworkRetryDelayProperty;
 
-    /** @var double */
+    /** @var float */
     private $origInitialNetworkRetryDelay;
 
     /** @var int */
     private $origMaxNetworkRetries;
 
-    /** @var double */
+    /** @var float */
     private $origMaxNetworkRetryDelay;
 
     /** @var \ReflectionMethod */

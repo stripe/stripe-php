@@ -137,7 +137,7 @@ class ErrorObject extends StripeObject
      *
      * @param array $values
      * @param null|string|array|Util\RequestOptions $opts
-     * @param boolean $partial Defaults to false.
+     * @param bool $partial Defaults to false.
      */
     public function refreshFrom($values, $opts, $partial = false)
     {

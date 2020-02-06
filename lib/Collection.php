@@ -168,7 +168,7 @@ class Collection extends StripeObject implements \IteratorAggregate
     /**
      * Returns true if the page object contains no element.
      *
-     * @return boolean
+     * @return bool
      */
     public function isEmpty()
     {

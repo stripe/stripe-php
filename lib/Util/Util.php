@@ -15,7 +15,7 @@ abstract class Util
      * integers starting at 0. Empty arrays are considered to be lists.
      *
      * @param array|mixed $array
-     * @return boolean true if the given object is a list.
+     * @return bool true if the given object is a list.
      */
     public static function isList($array)
     {
@@ -327,7 +327,7 @@ abstract class Util
     /**
      * Returns UNIX timestamp in milliseconds
      *
-     * @return integer current time in millis
+     * @return int current time in millis
      */
     public static function currentTimeMillis()
     {

@@ -98,7 +98,7 @@ class CurlClient implements ClientInterface
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getEnablePersistentConnections()
     {
@@ -106,7 +106,7 @@ class CurlClient implements ClientInterface
     }
 
     /**
-     * @param boolean $enable
+     * @param bool $enable
      */
     public function setEnablePersistentConnections($enable)
     {
@@ -114,7 +114,7 @@ class CurlClient implements ClientInterface
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getEnableHttp2()
     {
@@ -122,7 +122,7 @@ class CurlClient implements ClientInterface
     }
 
     /**
-     * @param boolean $enable
+     * @param bool $enable
      */
     public function setEnableHttp2($enable)
     {
@@ -504,7 +504,7 @@ class CurlClient implements ClientInterface
     /**
      * Indicates whether it is safe to use HTTP/2 or not.
      *
-     * @return boolean
+     * @return bool
      */
     private function canSafelyUseHttp2()
     {
@@ -519,7 +519,7 @@ class CurlClient implements ClientInterface
      *
      * @param string[] $headers
      * @param string $name
-     * @return boolean
+     * @return bool
      */
     private function hasHeader($headers, $name)
     {
