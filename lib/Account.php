@@ -201,7 +201,6 @@ class Account extends ApiResource
      * capabilities property which is a hash and not the sub-list of capabilities.
      */
 
-
     const PATH_CAPABILITIES = '/capabilities';
 
     /**

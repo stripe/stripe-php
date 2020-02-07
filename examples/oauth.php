@@ -5,7 +5,6 @@ require('../init.php');
 \Stripe\Stripe::setApiKey(\getenv('STRIPE_SECRET_KEY'));
 \Stripe\Stripe::setClientId(\getenv('STRIPE_CLIENT_ID'));
 
-
 if (isset($_GET['code'])) {
     // The user was redirected back from the OAuth form with an authorization code.
     $code = $_GET['code'];
