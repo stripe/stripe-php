@@ -10,7 +10,7 @@ class DefaultLogger implements LoggerInterface
 {
     public $messageType = 0;
 
-    public $destination = null;
+    public $destination;
 
     public function error($message, array $context = [])
     {

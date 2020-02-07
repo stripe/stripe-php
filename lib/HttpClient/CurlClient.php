@@ -45,11 +45,11 @@ class CurlClient implements ClientInterface
 
     protected $enablePersistentConnections = true;
 
-    protected $enableHttp2 = null;
+    protected $enableHttp2;
 
-    protected $curlHandle = null;
+    protected $curlHandle;
 
-    protected $requestStatusCallback = null;
+    protected $requestStatusCallback;
 
     /**
      * CurlClient constructor.
