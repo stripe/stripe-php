@@ -2,7 +2,7 @@
 
 namespace Stripe;
 
-use \Symfony\Component\Process\Process;
+use Symfony\Component\Process\Process;
 
 class StripeMock
 {

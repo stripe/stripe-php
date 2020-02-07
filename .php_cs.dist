@@ -59,5 +59,6 @@ return PhpCsFixer\Config::create()
         'no_empty_statement' => true,
         'no_extra_blank_lines' => true,
         'no_homoglyph_names' => true,
+        'no_leading_import_slash' => true,
     ])
 ;
