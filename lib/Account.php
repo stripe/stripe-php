@@ -193,7 +193,7 @@ class Account extends ApiResource
         $this->refreshFrom($response, $opts);
         return $this;
     }
-    
+
     /*
      * Capabilities methods
      * We can not add the capabilities() method today as the Account object already has a

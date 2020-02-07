@@ -15,7 +15,7 @@ class ApiResponse
      * @var array|CaseInsensitiveArray|null
      */
     public $headers;
-    
+
     /**
      * @var string
      */
