@@ -29,6 +29,7 @@ return PhpCsFixer\Config::create()
         'final_internal_class' => true,
         'fopen_flag_order' => true,
         'fopen_flags' => true,
+        'fully_qualified_strict_types' => true,
         'linebreak_after_opening_tag' => true,
         'native_function_invocation' => true,
     ])
