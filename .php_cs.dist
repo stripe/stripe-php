@@ -44,6 +44,7 @@ return PhpCsFixer\Config::create()
         'magic_method_casing' => true,
         'method_chaining_indentation' => true,
         'modernize_types_casting' => true,
+        'multiline_comment_opening_closing' => true,
         'native_function_invocation' => true,
     ])
 ;
