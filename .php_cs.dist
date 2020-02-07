@@ -37,6 +37,7 @@ return PhpCsFixer\Config::create()
         'increment_style' => true,
         'is_null' => true,
         'linebreak_after_opening_tag' => true,
+        'logical_operators' => true,
         'native_function_invocation' => true,
     ])
 ;
