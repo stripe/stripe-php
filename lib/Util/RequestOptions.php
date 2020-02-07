@@ -60,7 +60,7 @@ class RequestOptions
     public function discardNonPersistentHeaders()
     {
         foreach ($this->headers as $k => $v) {
-            if (!\in_array($k, self::$HEADERS_TO_PERSIST)) {
+            if (!\in_array($k, self::$HEADERS_TO_PERSIST, true)) {
                 unset($this->headers[$k]);
             }
         }

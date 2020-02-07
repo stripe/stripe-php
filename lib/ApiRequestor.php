@@ -261,7 +261,7 @@ class ApiRequestor
         $uaString = 'Stripe/v1 PhpBindings/' . Stripe::VERSION;
 
         $langVersion = \PHP_VERSION;
-        $uname_disabled = \in_array('php_uname', \explode(',', \ini_get('disable_functions')));
+        $uname_disabled = \in_array('php_uname', \explode(',', \ini_get('disable_functions')), true);
         $uname = $uname_disabled ? '(disabled)' : \php_uname();
 
         $appInfo = Stripe::getAppInfo();

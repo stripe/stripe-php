@@ -106,4 +106,5 @@ return PhpCsFixer\Config::create()
         'standardize_increment' => true,
         'standardize_not_equals' => true,
         'strict_comparison' => true,
+        'strict_param' => true,
     ]);

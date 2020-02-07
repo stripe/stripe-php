@@ -167,7 +167,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
                 // present in the list of headers of the actual request
                 $headers === null ? static::anything() : static::callback(function ($array) use ($headers) {
                     foreach ($headers as $header) {
-                        if (!\in_array($header, $array)) {
+                        if (!\in_array($header, $array, true)) {
                             return false;
                         }
                     }
