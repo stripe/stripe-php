@@ -11,6 +11,6 @@ class ConnectionTokenTest extends \Stripe\TestCase
             '/v1/terminal/connection_tokens'
         );
         $resource = ConnectionToken::create();
-        $this->assertInstanceOf(\Stripe\Terminal\ConnectionToken::class, $resource);
+        static::assertInstanceOf(\Stripe\Terminal\ConnectionToken::class, $resource);
     }
 }

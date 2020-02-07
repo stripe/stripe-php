@@ -24,20 +24,20 @@ class OAuthErrorExceptionTest extends \Stripe\TestCase
     public function testGetters()
     {
         $e = $this->createFixture();
-        $this->assertSame(200, $e->getHttpStatus());
-        $this->assertSame('{"error": "code", "error_description": "description"}', $e->getHttpBody());
-        $this->assertSame(['error' => 'code', 'error_description' => 'description'], $e->getJsonBody());
-        $this->assertSame('Some Value', $e->getHttpHeaders()['Some-Header']);
-        $this->assertSame('req_test', $e->getRequestId());
-        $this->assertSame('code', $e->getStripeCode());
-        $this->assertNotNull($e->getError());
-        $this->assertSame('code', $e->getError()->error);
-        $this->assertSame('description', $e->getError()->error_description);
+        static::assertSame(200, $e->getHttpStatus());
+        static::assertSame('{"error": "code", "error_description": "description"}', $e->getHttpBody());
+        static::assertSame(['error' => 'code', 'error_description' => 'description'], $e->getJsonBody());
+        static::assertSame('Some Value', $e->getHttpHeaders()['Some-Header']);
+        static::assertSame('req_test', $e->getRequestId());
+        static::assertSame('code', $e->getStripeCode());
+        static::assertNotNull($e->getError());
+        static::assertSame('code', $e->getError()->error);
+        static::assertSame('description', $e->getError()->error_description);
     }
 
     public function testToString()
     {
         $e = $this->createFixture();
-        $this->assertContains("(Request req_test)", (string) $e);
+        static::assertContains("(Request req_test)", (string) $e);
     }
 }

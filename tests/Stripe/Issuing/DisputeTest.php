@@ -19,7 +19,7 @@ class DisputeTest extends \Stripe\TestCase
             $params
         );
         $resource = Dispute::create($params);
-        $this->assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
+        static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
     }
 
     public function testIsListable()
@@ -29,8 +29,8 @@ class DisputeTest extends \Stripe\TestCase
             '/v1/issuing/disputes'
         );
         $resources = Dispute::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\Issuing\Dispute::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -40,7 +40,7 @@ class DisputeTest extends \Stripe\TestCase
             '/v1/issuing/disputes/' . self::TEST_RESOURCE_ID
         );
         $resource = Dispute::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
+        static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
     }
 
     public function testIsSaveable()
@@ -53,7 +53,7 @@ class DisputeTest extends \Stripe\TestCase
             '/v1/issuing/disputes/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
+        static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -66,6 +66,6 @@ class DisputeTest extends \Stripe\TestCase
         $resource = Dispute::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
+        static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
     }
 }

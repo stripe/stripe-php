@@ -42,7 +42,7 @@ class FileCreationTest extends TestCase
             "file" => $fp,
             "file_link_data" => ["create" => true]
         ]);
-        $this->assertInstanceOf(\Stripe\File::class, $resource);
+        static::assertInstanceOf(\Stripe\File::class, $resource);
     }
 
     public function testIsCreatableWithCURLFile()
@@ -61,6 +61,6 @@ class FileCreationTest extends TestCase
             "file" => $curlFile,
             "file_link_data" => ["create" => true]
         ]);
-        $this->assertInstanceOf(\Stripe\File::class, $resource);
+        static::assertInstanceOf(\Stripe\File::class, $resource);
     }
 }

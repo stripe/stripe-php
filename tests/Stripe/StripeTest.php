@@ -28,6 +28,6 @@ class StripeTest extends TestCase
     public function testCABundlePathAccessors()
     {
         Stripe::setCABundlePath('path/to/ca/bundle');
-        $this->assertEquals('path/to/ca/bundle', Stripe::getCABundlePath());
+        static::assertEquals('path/to/ca/bundle', Stripe::getCABundlePath());
     }
 }

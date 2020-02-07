@@ -27,7 +27,7 @@ class BankAccountTest extends TestCase
     public function testHasCorrectUrlForCustomer()
     {
         $resource = $this->createFixture(['customer' => 'cus_123']);
-        $this->assertSame(
+        static::assertSame(
             "/v1/customers/cus_123/sources/" . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
@@ -36,7 +36,7 @@ class BankAccountTest extends TestCase
     public function testHasCorrectUrlForAccount()
     {
         $resource = $this->createFixture(['account' => 'acct_123']);
-        $this->assertSame(
+        static::assertSame(
             "/v1/accounts/acct_123/external_accounts/" . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
@@ -58,7 +58,7 @@ class BankAccountTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame(\Stripe\BankAccount::class, \get_class($resource));
+        static::assertSame(\Stripe\BankAccount::class, \get_class($resource));
     }
 
     public function testIsNotDirectlyUpdatable()
@@ -78,7 +78,7 @@ class BankAccountTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertSame(\Stripe\BankAccount::class, \get_class($resource));
+        static::assertSame(\Stripe\BankAccount::class, \get_class($resource));
     }
 
     public function testIsVerifiable()
@@ -92,6 +92,6 @@ class BankAccountTest extends TestCase
             ]
         );
         $resource->verify(["amounts" => [1, 2]]);
-        $this->assertInstanceOf(\Stripe\BankAccount::class, $resource);
+        static::assertInstanceOf(\Stripe\BankAccount::class, $resource);
     }
 }

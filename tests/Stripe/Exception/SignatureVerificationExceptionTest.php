@@ -7,8 +7,8 @@ class SignatureVerificationExceptionTest extends \Stripe\TestCase
     public function testGetters()
     {
         $e = SignatureVerificationException::factory('message', 'payload', 'sig_header');
-        $this->assertSame('message', $e->getMessage());
-        $this->assertSame('payload', $e->getHttpBody());
-        $this->assertSame('sig_header', $e->getSigHeader());
+        static::assertSame('message', $e->getMessage());
+        static::assertSame('payload', $e->getHttpBody());
+        static::assertSame('sig_header', $e->getSigHeader());
     }
 }

@@ -13,8 +13,8 @@ class CreditNoteTest extends TestCase
             '/v1/credit_notes'
         );
         $resources = CreditNote::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\CreditNote::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\CreditNote::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class CreditNoteTest extends TestCase
             '/v1/credit_notes/' . self::TEST_RESOURCE_ID
         );
         $resource = CreditNote::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\CreditNote::class, $resource);
+        static::assertInstanceOf(\Stripe\CreditNote::class, $resource);
     }
 
     public function testIsCreatable()
@@ -38,7 +38,7 @@ class CreditNoteTest extends TestCase
             "invoice" => "in_132",
             "reason" => "duplicate",
         ]);
-        $this->assertInstanceOf(\Stripe\CreditNote::class, $resource);
+        static::assertInstanceOf(\Stripe\CreditNote::class, $resource);
     }
 
     public function testIsSaveable()
@@ -50,7 +50,7 @@ class CreditNoteTest extends TestCase
             '/v1/credit_notes/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\CreditNote::class, $resource);
+        static::assertInstanceOf(\Stripe\CreditNote::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -62,7 +62,7 @@ class CreditNoteTest extends TestCase
         $resource = CreditNote::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\CreditNote::class, $resource);
+        static::assertInstanceOf(\Stripe\CreditNote::class, $resource);
     }
 
     public function testCanPreview()
@@ -75,7 +75,7 @@ class CreditNoteTest extends TestCase
             'amount' => 100,
             'invoice' => 'in_123',
         ]);
-        $this->assertInstanceOf(\Stripe\CreditNote::class, $resource);
+        static::assertInstanceOf(\Stripe\CreditNote::class, $resource);
     }
 
     public function testCanVoidCreditNote()
@@ -86,8 +86,8 @@ class CreditNoteTest extends TestCase
             '/v1/credit_notes/' . $creditNote->id . '/void'
         );
         $resource = $creditNote->voidCreditNote();
-        $this->assertInstanceOf(\Stripe\CreditNote::class, $resource);
-        $this->assertSame($resource, $creditNote);
+        static::assertInstanceOf(\Stripe\CreditNote::class, $resource);
+        static::assertSame($resource, $creditNote);
     }
 
     public function testCanListLines()
@@ -97,6 +97,6 @@ class CreditNoteTest extends TestCase
             '/v1/credit_notes/' . self::TEST_RESOURCE_ID . '/lines'
         );
         $resources = CreditNote::allLines(self::TEST_RESOURCE_ID);
-        $this->assertInternalType('array', $resources->data);
+        static::assertInternalType('array', $resources->data);
     }
 }

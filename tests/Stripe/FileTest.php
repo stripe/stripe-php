@@ -13,8 +13,8 @@ class FileTest extends TestCase
             '/v1/files'
         );
         $resources = File::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\File::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\File::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class FileTest extends TestCase
             '/v1/files/' . self::TEST_RESOURCE_ID
         );
         $resource = File::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\File::class, $resource);
+        static::assertInstanceOf(\Stripe\File::class, $resource);
     }
 
     public function testDeserializesFromFile()
@@ -32,7 +32,7 @@ class FileTest extends TestCase
         $obj = Util\Util::convertToStripeObject([
             'object' => 'file',
         ], null);
-        $this->assertInstanceOf(\Stripe\File::class, $obj);
+        static::assertInstanceOf(\Stripe\File::class, $obj);
     }
 
     public function testDeserializesFromFileUpload()
@@ -40,6 +40,6 @@ class FileTest extends TestCase
         $obj = Util\Util::convertToStripeObject([
             'object' => 'file_upload',
         ], null);
-        $this->assertInstanceOf(\Stripe\File::class, $obj);
+        static::assertInstanceOf(\Stripe\File::class, $obj);
     }
 }

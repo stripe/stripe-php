@@ -21,7 +21,7 @@ class ReportRunTest extends \Stripe\TestCase
             $params
         );
         $resource = ReportRun::create($params);
-        $this->assertInstanceOf(\Stripe\Reporting\ReportRun::class, $resource);
+        static::assertInstanceOf(\Stripe\Reporting\ReportRun::class, $resource);
     }
 
     public function testIsListable()
@@ -31,8 +31,8 @@ class ReportRunTest extends \Stripe\TestCase
             '/v1/reporting/report_runs'
         );
         $resources = ReportRun::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\Reporting\ReportRun::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Reporting\ReportRun::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -42,6 +42,6 @@ class ReportRunTest extends \Stripe\TestCase
             '/v1/reporting/report_runs/' . self::TEST_RESOURCE_ID
         );
         $resource = ReportRun::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\Reporting\ReportRun::class, $resource);
+        static::assertInstanceOf(\Stripe\Reporting\ReportRun::class, $resource);
     }
 }

@@ -8,7 +8,7 @@ class OAuthErrorObjectTest extends TestCase
     {
         $error = OAuthErrorObject::constructFrom([]);
 
-        $this->assertNull($error->error);
-        $this->assertNull($error->error_description);
+        static::assertNull($error->error);
+        static::assertNull($error->error_description);
     }
 }

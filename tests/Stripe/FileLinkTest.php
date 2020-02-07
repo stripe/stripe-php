@@ -13,8 +13,8 @@ class FileLinkTest extends TestCase
             '/v1/file_links'
         );
         $resources = FileLink::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\FileLink::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\FileLink::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class FileLinkTest extends TestCase
             '/v1/file_links/' . self::TEST_RESOURCE_ID
         );
         $resource = FileLink::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\FileLink::class, $resource);
+        static::assertInstanceOf(\Stripe\FileLink::class, $resource);
     }
 
     public function testIsCreatable()
@@ -36,7 +36,7 @@ class FileLinkTest extends TestCase
         $resource = FileLink::create([
             "file" => "file_123"
         ]);
-        $this->assertInstanceOf(\Stripe\FileLink::class, $resource);
+        static::assertInstanceOf(\Stripe\FileLink::class, $resource);
     }
 
     public function testIsSaveable()
@@ -48,7 +48,7 @@ class FileLinkTest extends TestCase
             '/v1/file_links/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\FileLink::class, $resource);
+        static::assertInstanceOf(\Stripe\FileLink::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -60,6 +60,6 @@ class FileLinkTest extends TestCase
         $resource = FileLink::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\FileLink::class, $resource);
+        static::assertInstanceOf(\Stripe\FileLink::class, $resource);
     }
 }

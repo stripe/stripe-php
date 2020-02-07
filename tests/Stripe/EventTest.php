@@ -13,8 +13,8 @@ class EventTest extends TestCase
             '/v1/events'
         );
         $resources = Event::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\Event::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Event::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,6 +24,6 @@ class EventTest extends TestCase
             '/v1/events/' . self::TEST_RESOURCE_ID
         );
         $resource = Event::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\Event::class, $resource);
+        static::assertInstanceOf(\Stripe\Event::class, $resource);
     }
 }

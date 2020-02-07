@@ -13,8 +13,8 @@ class SetupIntentTest extends TestCase
             '/v1/setup_intents'
         );
         $resources = SetupIntent::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\SetupIntent::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\SetupIntent::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class SetupIntentTest extends TestCase
             '/v1/setup_intents/' . self::TEST_RESOURCE_ID
         );
         $resource = SetupIntent::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\SetupIntent::class, $resource);
+        static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
     }
 
     public function testIsCreatable()
@@ -36,7 +36,7 @@ class SetupIntentTest extends TestCase
         $resource = SetupIntent::create([
             'payment_method_types' => ['card'],
         ]);
-        $this->assertInstanceOf(\Stripe\SetupIntent::class, $resource);
+        static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
     }
 
     public function testIsSaveable()
@@ -48,7 +48,7 @@ class SetupIntentTest extends TestCase
             '/v1/setup_intents/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\SetupIntent::class, $resource);
+        static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -63,7 +63,7 @@ class SetupIntentTest extends TestCase
                 "metadata" => ["key" => "value"],
             ]
         );
-        $this->assertInstanceOf(\Stripe\SetupIntent::class, $resource);
+        static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
     }
 
     public function testIsCancelable()
@@ -74,7 +74,7 @@ class SetupIntentTest extends TestCase
             '/v1/setup_intents/' . self::TEST_RESOURCE_ID . '/cancel'
         );
         $resource->cancel();
-        $this->assertInstanceOf(\Stripe\SetupIntent::class, $resource);
+        static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
     }
 
     public function testIsConfirmable()
@@ -85,6 +85,6 @@ class SetupIntentTest extends TestCase
             '/v1/setup_intents/' . self::TEST_RESOURCE_ID . '/confirm'
         );
         $resource->confirm();
-        $this->assertInstanceOf(\Stripe\SetupIntent::class, $resource);
+        static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
     }
 }

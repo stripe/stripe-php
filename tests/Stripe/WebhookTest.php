@@ -28,7 +28,7 @@ class WebhookTest extends TestCase
     {
         $sigHeader = $this->generateHeader();
         $event = Webhook::constructEvent(self::EVENT_PAYLOAD, $sigHeader, self::SECRET);
-        $this->assertEquals("evt_test_webhook", $event->id);
+        static::assertEquals("evt_test_webhook", $event->id);
     }
 
     public function testInvalidJson()
@@ -96,18 +96,18 @@ class WebhookTest extends TestCase
     public function testValidHeaderAndSignature()
     {
         $sigHeader = $this->generateHeader();
-        $this->assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10));
+        static::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10));
     }
 
     public function testHeaderContainsValidSignature()
     {
         $sigHeader = $this->generateHeader() . ",v1=bad_signature";
-        $this->assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10));
+        static::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10));
     }
 
     public function testTimestampOffButNoTolerance()
     {
         $sigHeader = $this->generateHeader(["timestamp" => 12345]);
-        $this->assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET));
+        static::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET));
     }
 }

@@ -13,8 +13,8 @@ class TransactionTest extends \Stripe\TestCase
             '/v1/issuing/transactions'
         );
         $resources = Transaction::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\Issuing\Transaction::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Issuing\Transaction::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class TransactionTest extends \Stripe\TestCase
             '/v1/issuing/transactions/' . self::TEST_RESOURCE_ID
         );
         $resource = Transaction::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\Issuing\Transaction::class, $resource);
+        static::assertInstanceOf(\Stripe\Issuing\Transaction::class, $resource);
     }
 
     public function testIsSaveable()
@@ -37,7 +37,7 @@ class TransactionTest extends \Stripe\TestCase
             '/v1/issuing/transactions/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\Issuing\Transaction::class, $resource);
+        static::assertInstanceOf(\Stripe\Issuing\Transaction::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -50,6 +50,6 @@ class TransactionTest extends \Stripe\TestCase
         $resource = Transaction::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\Issuing\Transaction::class, $resource);
+        static::assertInstanceOf(\Stripe\Issuing\Transaction::class, $resource);
     }
 }

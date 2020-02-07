@@ -10,7 +10,7 @@ class CapabilityTest extends TestCase
     public function testHasCorrectUrl()
     {
         $resource = \Stripe\Account::retrieveCapability(self::TEST_ACCOUNT_ID, self::TEST_RESOURCE_ID);
-        $this->assertSame(
+        static::assertSame(
             "/v1/accounts/" . self::TEST_ACCOUNT_ID . "/capabilities/" . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
@@ -32,7 +32,7 @@ class CapabilityTest extends TestCase
             '/v1/accounts/' . self::TEST_ACCOUNT_ID . '/capabilities/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\Capability::class, $resource);
+        static::assertInstanceOf(\Stripe\Capability::class, $resource);
     }
 
     public function testIsNotDirectlyUpdatable()

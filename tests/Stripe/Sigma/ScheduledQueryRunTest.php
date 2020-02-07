@@ -9,13 +9,13 @@ class ScheduledQueryRunTest extends \Stripe\TestCase
     public function testIsListable()
     {
         $resources = ScheduledQueryRun::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\Sigma\ScheduledQueryRun::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Sigma\ScheduledQueryRun::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
     {
         $resource = ScheduledQueryRun::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\Sigma\ScheduledQueryRun::class, $resource);
+        static::assertInstanceOf(\Stripe\Sigma\ScheduledQueryRun::class, $resource);
     }
 }

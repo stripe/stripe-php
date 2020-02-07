@@ -16,8 +16,8 @@ class AccountTest extends TestCase
             '/v1/accounts'
         );
         $resources = Account::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\Account::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Account::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -27,7 +27,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID
         );
         $resource = Account::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\Account::class, $resource);
+        static::assertInstanceOf(\Stripe\Account::class, $resource);
     }
 
     public function testIsRetrievableWithoutId()
@@ -37,7 +37,7 @@ class AccountTest extends TestCase
             '/v1/account'
         );
         $resource = Account::retrieve();
-        $this->assertInstanceOf(\Stripe\Account::class, $resource);
+        static::assertInstanceOf(\Stripe\Account::class, $resource);
     }
 
     public function testIsCreatable()
@@ -47,7 +47,7 @@ class AccountTest extends TestCase
             '/v1/accounts'
         );
         $resource = Account::create(["type" => "custom"]);
-        $this->assertInstanceOf(\Stripe\Account::class, $resource);
+        static::assertInstanceOf(\Stripe\Account::class, $resource);
     }
 
     public function testIsSaveable()
@@ -59,7 +59,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\Account::class, $resource);
+        static::assertInstanceOf(\Stripe\Account::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -71,7 +71,7 @@ class AccountTest extends TestCase
         $resource = Account::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\Account::class, $resource);
+        static::assertInstanceOf(\Stripe\Account::class, $resource);
     }
 
     public function testIsDeletable()
@@ -82,7 +82,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . $resource->id
         );
         $resource->delete();
-        $this->assertInstanceOf(\Stripe\Account::class, $resource);
+        static::assertInstanceOf(\Stripe\Account::class, $resource);
     }
 
     public function testIsRejectable()
@@ -93,8 +93,8 @@ class AccountTest extends TestCase
             '/v1/accounts/' . $account->id . '/reject'
         );
         $resource = $account->reject(["reason" => "fraud"]);
-        $this->assertInstanceOf(\Stripe\Account::class, $resource);
-        $this->assertSame($resource, $account);
+        static::assertInstanceOf(\Stripe\Account::class, $resource);
+        static::assertSame($resource, $account);
     }
 
     public function testIsDeauthorizable()
@@ -126,8 +126,8 @@ class AccountTest extends TestCase
             '/v1/accounts/' . $account->id . '/persons'
         );
         $persons = $account->persons();
-        $this->assertInternalType('array', $persons->data);
-        $this->assertInstanceOf(\Stripe\Person::class, $persons->data[0]);
+        static::assertInternalType('array', $persons->data);
+        static::assertInstanceOf(\Stripe\Person::class, $persons->data[0]);
     }
 
     public function testCanRetrieveCapability()
@@ -137,7 +137,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/capabilities/' . self::TEST_CAPABILITY_ID
         );
         $resource = Account::retrieveCapability(self::TEST_RESOURCE_ID, self::TEST_CAPABILITY_ID);
-        $this->assertInstanceOf(\Stripe\Capability::class, $resource);
+        static::assertInstanceOf(\Stripe\Capability::class, $resource);
     }
 
     public function testCanUpdateCapability()
@@ -149,7 +149,7 @@ class AccountTest extends TestCase
         $resource = Account::updateCapability(self::TEST_RESOURCE_ID, self::TEST_CAPABILITY_ID, [
             "requested" => true,
         ]);
-        $this->assertInstanceOf(\Stripe\Capability::class, $resource);
+        static::assertInstanceOf(\Stripe\Capability::class, $resource);
     }
 
     public function testCanListCapabilities()
@@ -159,7 +159,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/capabilities'
         );
         $resources = Account::allCapabilities(self::TEST_RESOURCE_ID);
-        $this->assertInternalType('array', $resources->data);
+        static::assertInternalType('array', $resources->data);
     }
 
     public function testCanCreateExternalAccount()
@@ -171,7 +171,7 @@ class AccountTest extends TestCase
         $resource = Account::createExternalAccount(self::TEST_RESOURCE_ID, [
             "external_account" => "btok_123",
         ]);
-        $this->assertInstanceOf(\Stripe\BankAccount::class, $resource);
+        static::assertInstanceOf(\Stripe\BankAccount::class, $resource);
     }
 
     public function testCanRetrieveExternalAccount()
@@ -181,7 +181,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts/' . self::TEST_EXTERNALACCOUNT_ID
         );
         $resource = Account::retrieveExternalAccount(self::TEST_RESOURCE_ID, self::TEST_EXTERNALACCOUNT_ID);
-        $this->assertInstanceOf(\Stripe\BankAccount::class, $resource);
+        static::assertInstanceOf(\Stripe\BankAccount::class, $resource);
     }
 
     public function testCanUpdateExternalAccount()
@@ -193,7 +193,7 @@ class AccountTest extends TestCase
         $resource = Account::updateExternalAccount(self::TEST_RESOURCE_ID, self::TEST_EXTERNALACCOUNT_ID, [
             "name" => "name",
         ]);
-        $this->assertInstanceOf(\Stripe\BankAccount::class, $resource);
+        static::assertInstanceOf(\Stripe\BankAccount::class, $resource);
     }
 
     public function testCanDeleteExternalAccount()
@@ -203,7 +203,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts/' . self::TEST_EXTERNALACCOUNT_ID
         );
         $resource = Account::deleteExternalAccount(self::TEST_RESOURCE_ID, self::TEST_EXTERNALACCOUNT_ID);
-        $this->assertTrue($resource->deleted);
+        static::assertTrue($resource->deleted);
     }
 
     public function testCanListExternalAccounts()
@@ -213,7 +213,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts'
         );
         $resources = Account::allExternalAccounts(self::TEST_RESOURCE_ID);
-        $this->assertInternalType('array', $resources->data);
+        static::assertInternalType('array', $resources->data);
     }
 
     public function testCanCreateLoginLink()
@@ -223,7 +223,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/login_links'
         );
         $resource = Account::createLoginLink(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\LoginLink::class, $resource);
+        static::assertInstanceOf(\Stripe\LoginLink::class, $resource);
     }
 
     public function testCanCreatePerson()
@@ -239,7 +239,7 @@ class AccountTest extends TestCase
                 "year" => 1980
             ]
         ]);
-        $this->assertInstanceOf(\Stripe\Person::class, $resource);
+        static::assertInstanceOf(\Stripe\Person::class, $resource);
     }
 
     public function testCanRetrievePerson()
@@ -249,7 +249,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons/' . self::TEST_PERSON_ID
         );
         $resource = Account::retrievePerson(self::TEST_RESOURCE_ID, self::TEST_PERSON_ID);
-        $this->assertInstanceOf(\Stripe\Person::class, $resource);
+        static::assertInstanceOf(\Stripe\Person::class, $resource);
     }
 
     public function testCanUpdatePerson()
@@ -261,7 +261,7 @@ class AccountTest extends TestCase
         $resource = Account::updatePerson(self::TEST_RESOURCE_ID, self::TEST_PERSON_ID, [
             "first_name" => "First name",
         ]);
-        $this->assertInstanceOf(\Stripe\Person::class, $resource);
+        static::assertInstanceOf(\Stripe\Person::class, $resource);
     }
 
     public function testCanDeletePerson()
@@ -271,7 +271,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons/' . self::TEST_PERSON_ID
         );
         $resource = Account::deletePerson(self::TEST_RESOURCE_ID, self::TEST_PERSON_ID);
-        $this->assertTrue($resource->deleted);
+        static::assertTrue($resource->deleted);
     }
 
     public function testCanListPersons()
@@ -281,7 +281,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons'
         );
         $resources = Account::allPersons(self::TEST_RESOURCE_ID);
-        $this->assertInternalType('array', $resources->data);
+        static::assertInternalType('array', $resources->data);
     }
 
     public function testSerializeNewAdditionalOwners()
@@ -303,7 +303,7 @@ class AccountTest extends TestCase
                 ],
             ],
         ];
-        $this->assertSame($expected, $obj->serializeParameters());
+        static::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeAddAdditionalOwners()
@@ -326,7 +326,7 @@ class AccountTest extends TestCase
                 ],
             ],
         ];
-        $this->assertSame($expected, $obj->serializeParameters());
+        static::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializePartiallyChangedAdditionalOwners()
@@ -349,7 +349,7 @@ class AccountTest extends TestCase
                 ],
             ],
         ];
-        $this->assertSame($expected, $obj->serializeParameters());
+        static::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeUnchangedAdditionalOwners()
@@ -369,7 +369,7 @@ class AccountTest extends TestCase
                 'additional_owners' => [],
             ],
         ];
-        $this->assertSame($expected, $obj->serializeParameters());
+        static::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeUnsetAdditionalOwners()
@@ -392,7 +392,7 @@ class AccountTest extends TestCase
                 'additional_owners' => '',
             ],
         ];
-        $this->assertSame($expected, $obj->serializeParameters());
+        static::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeAdditionalOwnersDeletedItem()
@@ -423,7 +423,7 @@ class AccountTest extends TestCase
         $expected = [
             'external_account' => 'btok_123',
         ];
-        $this->assertSame($expected, $obj->serializeParameters());
+        static::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeExternalAccountHash()
@@ -448,7 +448,7 @@ class AccountTest extends TestCase
                 'currency' => 'usd',
             ],
         ];
-        $this->assertSame($expected, $obj->serializeParameters());
+        static::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeBankAccountString()
@@ -461,7 +461,7 @@ class AccountTest extends TestCase
         $expected = [
             'bank_account' => 'btok_123',
         ];
-        $this->assertSame($expected, $obj->serializeParameters());
+        static::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeBankAccountHash()
@@ -486,7 +486,7 @@ class AccountTest extends TestCase
                 'currency' => 'usd',
             ],
         ];
-        $this->assertSame($expected, $obj->serializeParameters());
+        static::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeNewIndividual()
@@ -497,7 +497,7 @@ class AccountTest extends TestCase
         $obj->individual = ['first_name' => 'Jane'];
 
         $expected = ['individual' => ['first_name' => 'Jane']];
-        $this->assertSame($expected, $obj->serializeParameters());
+        static::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializePartiallyChangedIndividual()
@@ -512,7 +512,7 @@ class AccountTest extends TestCase
         $obj->individual = ['first_name' => 'Jane'];
 
         $expected = ['individual' => ['first_name' => 'Jane']];
-        $this->assertSame($expected, $obj->serializeParameters());
+        static::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeUnchangedIndividual()
@@ -526,7 +526,7 @@ class AccountTest extends TestCase
         ], null);
 
         $expected = ['individual' => []];
-        $this->assertSame($expected, $obj->serializeParameters());
+        static::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeUnsetIndividual()
@@ -541,6 +541,6 @@ class AccountTest extends TestCase
         $obj->individual = null;
 
         $expected = ['individual' => ''];
-        $this->assertSame($expected, $obj->serializeParameters());
+        static::assertSame($expected, $obj->serializeParameters());
     }
 }

@@ -27,7 +27,7 @@ class AlipayAccountTest extends TestCase
     public function testHasCorrectUrlForCustomer()
     {
         $resource = $this->createFixture(['customer' => 'cus_123']);
-        $this->assertSame(
+        static::assertSame(
             "/v1/customers/cus_123/sources/" . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
@@ -49,7 +49,7 @@ class AlipayAccountTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame(\Stripe\AlipayAccount::class, \get_class($resource));
+        static::assertSame(\Stripe\AlipayAccount::class, \get_class($resource));
     }
 
     public function testIsNotDirectlyUpdatable()
@@ -69,6 +69,6 @@ class AlipayAccountTest extends TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertSame(\Stripe\AlipayAccount::class, \get_class($resource));
+        static::assertSame(\Stripe\AlipayAccount::class, \get_class($resource));
     }
 }

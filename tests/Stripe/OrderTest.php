@@ -13,8 +13,8 @@ class OrderTest extends TestCase
             '/v1/orders'
         );
         $resources = Order::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\Order::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Order::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class OrderTest extends TestCase
             '/v1/orders/' . self::TEST_RESOURCE_ID
         );
         $resource = Order::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\Order::class, $resource);
+        static::assertInstanceOf(\Stripe\Order::class, $resource);
     }
 
     public function testIsCreatable()
@@ -36,7 +36,7 @@ class OrderTest extends TestCase
         $resource = Order::create([
             'currency' => 'usd'
         ]);
-        $this->assertInstanceOf(\Stripe\Order::class, $resource);
+        static::assertInstanceOf(\Stripe\Order::class, $resource);
     }
 
     public function testIsSaveable()
@@ -48,7 +48,7 @@ class OrderTest extends TestCase
             '/v1/orders/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\Order::class, $resource);
+        static::assertInstanceOf(\Stripe\Order::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -60,7 +60,7 @@ class OrderTest extends TestCase
         $resource = Order::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\Order::class, $resource);
+        static::assertInstanceOf(\Stripe\Order::class, $resource);
     }
 
     public function testIsPayable()
@@ -71,7 +71,7 @@ class OrderTest extends TestCase
             '/v1/orders/' . $resource->id . '/pay'
         );
         $resource->pay();
-        $this->assertInstanceOf(\Stripe\Order::class, $resource);
+        static::assertInstanceOf(\Stripe\Order::class, $resource);
     }
 
     public function testIsReturnable()
@@ -82,6 +82,6 @@ class OrderTest extends TestCase
             '/v1/orders/' . $order->id . '/returns'
         );
         $resource = $order->returnOrder();
-        $this->assertInstanceOf(\Stripe\OrderReturn::class, $resource);
+        static::assertInstanceOf(\Stripe\OrderReturn::class, $resource);
     }
 }

@@ -10,24 +10,24 @@ class CaseInsensitiveArrayTest extends \Stripe\TestCase
 
         $arr["thrEE"] = "3";
 
-        $this->assertSame("1", $arr["one"]);
-        $this->assertSame("1", $arr["One"]);
-        $this->assertSame("1", $arr["ONE"]);
+        static::assertSame("1", $arr["one"]);
+        static::assertSame("1", $arr["One"]);
+        static::assertSame("1", $arr["ONE"]);
 
-        $this->assertSame("2", $arr["two"]);
-        $this->assertSame("2", $arr["twO"]);
-        $this->assertSame("2", $arr["TWO"]);
+        static::assertSame("2", $arr["two"]);
+        static::assertSame("2", $arr["twO"]);
+        static::assertSame("2", $arr["TWO"]);
 
-        $this->assertSame("3", $arr["three"]);
-        $this->assertSame("3", $arr["ThReE"]);
-        $this->assertSame("3", $arr["THREE"]);
+        static::assertSame("3", $arr["three"]);
+        static::assertSame("3", $arr["ThReE"]);
+        static::assertSame("3", $arr["THREE"]);
     }
 
     public function testCount()
     {
         $arr = new CaseInsensitiveArray(["One" => "1", "TWO" => "2"]);
 
-        $this->assertCount(2, $arr);
+        static::assertCount(2, $arr);
     }
 
     public function testIterable()
@@ -40,7 +40,7 @@ class CaseInsensitiveArrayTest extends \Stripe\TestCase
             $seen[$k] = $v;
         }
 
-        $this->assertSame("1", $seen["one"]);
-        $this->assertSame("2", $seen["two"]);
+        static::assertSame("1", $seen["one"]);
+        static::assertSame("2", $seen["two"]);
     }
 }

@@ -18,8 +18,8 @@ class SubscriptionItemTest extends TestCase
         $resources = SubscriptionItem::all([
             "subscription" => "sub_123"
         ]);
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\SubscriptionItem::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\SubscriptionItem::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -29,7 +29,7 @@ class SubscriptionItemTest extends TestCase
             '/v1/subscription_items/' . self::TEST_RESOURCE_ID
         );
         $resource = SubscriptionItem::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
+        static::assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
     }
 
     public function testIsCreatable()
@@ -42,7 +42,7 @@ class SubscriptionItemTest extends TestCase
             "plan" => "plan",
             "subscription" => "sub_123"
         ]);
-        $this->assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
+        static::assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
     }
 
     public function testIsSaveable()
@@ -54,7 +54,7 @@ class SubscriptionItemTest extends TestCase
             '/v1/subscription_items/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
+        static::assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -66,7 +66,7 @@ class SubscriptionItemTest extends TestCase
         $resource = SubscriptionItem::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
+        static::assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
     }
 
     public function testIsDeletable()
@@ -77,7 +77,7 @@ class SubscriptionItemTest extends TestCase
             '/v1/subscription_items/' . $resource->id
         );
         $resource->delete();
-        $this->assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
+        static::assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
     }
 
     public function testCanCreateUsageRecord()
@@ -101,8 +101,8 @@ class SubscriptionItemTest extends TestCase
             '/v1/subscription_items/' . $resource->id . "/usage_record_summaries"
         );
         $resources = $resource->usageRecordSummaries();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\UsageRecordSummary::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\UsageRecordSummary::class, $resources->data[0]);
     }
 
     public function testCanListUsageRecordSummaries()
@@ -112,7 +112,7 @@ class SubscriptionItemTest extends TestCase
             '/v1/subscription_items/' . self::TEST_RESOURCE_ID . "/usage_record_summaries"
         );
         $resources =SubscriptionItem::allUsageRecordSummaries(self::TEST_RESOURCE_ID);
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\UsageRecordSummary::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\UsageRecordSummary::class, $resources->data[0]);
     }
 }

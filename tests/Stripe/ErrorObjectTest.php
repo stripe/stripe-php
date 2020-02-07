@@ -8,16 +8,16 @@ class ErrorObjectTest extends TestCase
     {
         $error = ErrorObject::constructFrom([]);
 
-        $this->assertNull($error->charge);
-        $this->assertNull($error->code);
-        $this->assertNull($error->decline_code);
-        $this->assertNull($error->doc_url);
-        $this->assertNull($error->message);
-        $this->assertNull($error->param);
-        $this->assertNull($error->payment_intent);
-        $this->assertNull($error->payment_method);
-        $this->assertNull($error->setup_intent);
-        $this->assertNull($error->source);
-        $this->assertNull($error->type);
+        static::assertNull($error->charge);
+        static::assertNull($error->code);
+        static::assertNull($error->decline_code);
+        static::assertNull($error->doc_url);
+        static::assertNull($error->message);
+        static::assertNull($error->param);
+        static::assertNull($error->payment_intent);
+        static::assertNull($error->payment_method);
+        static::assertNull($error->setup_intent);
+        static::assertNull($error->source);
+        static::assertNull($error->type);
     }
 }
