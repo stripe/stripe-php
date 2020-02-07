@@ -32,7 +32,7 @@ class StripeMock
 
         echo "Starting stripe-mock on port " . static::$port . "...\n";
 
-        static::$process = new Process(\join(' ', [
+        static::$process = new Process(\implode(' ', [
             'stripe-mock',
             '-http-port',
             static::$port,

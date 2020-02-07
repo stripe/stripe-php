@@ -118,7 +118,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         if (static::getPermanentAttributes()->includes($k)) {
             throw new Exception\InvalidArgumentException(
                 "Cannot set ${k} on this object. HINT: you can't set: " .
-                \join(', ', static::getPermanentAttributes()->toArray())
+                \implode(', ', static::getPermanentAttributes()->toArray())
             );
         }
 
@@ -155,7 +155,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             return $this->_values[$k];
         } elseif (!empty($this->_transientValues) && $this->_transientValues->includes($k)) {
             $class = \get_class($this);
-            $attrs = \join(', ', \array_keys($this->_values));
+            $attrs = \implode(', ', \array_keys($this->_values));
             $message = "Stripe Notice: Undefined property of ${class} instance: ${k}. "
                     . "HINT: The ${k} attribute was set in the past, however. "
                     . "It was then wiped when refreshing the object "
