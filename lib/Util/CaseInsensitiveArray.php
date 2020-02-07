@@ -63,8 +63,7 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
     {
         if (\is_string($v)) {
             return \strtolower($v);
-        } else {
-            return $v;
         }
+        return $v;
     }
 }

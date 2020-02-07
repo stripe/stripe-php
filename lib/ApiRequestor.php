@@ -63,10 +63,9 @@ class ApiRequestor
         $result = \json_encode($payload);
         if ($result != false) {
             return $result;
-        } else {
-            Stripe::getLogger()->error("Serializing telemetry payload failed!");
-            return "{}";
         }
+        Stripe::getLogger()->error("Serializing telemetry payload failed!");
+        return "{}";
     }
 
     /**
@@ -93,9 +92,8 @@ class ApiRequestor
                 $res[$k] = self::_encodeObjects($v);
             }
             return $res;
-        } else {
-            return Util\Util::utf8($d);
         }
+        return Util\Util::utf8($d);
     }
 
     /**
@@ -246,9 +244,8 @@ class ApiRequestor
                 $string .= ' (' . $appInfo['url'] . ')';
             }
             return $string;
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**

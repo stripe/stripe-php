@@ -165,11 +165,10 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
                     . "available on this object are: ${attrs}";
             Stripe::getLogger()->error($message);
             return $nullval;
-        } else {
-            $class = \get_class($this);
-            Stripe::getLogger()->error("Stripe Notice: Undefined property of ${class} instance: ${k}");
-            return $nullval;
         }
+        $class = \get_class($this);
+        Stripe::getLogger()->error("Stripe Notice: Undefined property of ${class} instance: ${k}");
+        return $nullval;
     }
 
     // Magic method for var_dump output. Only works with PHP >= 5.6
@@ -368,13 +367,12 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             }
             if (isset($value->id)) {
                 return $value;
-            } else {
-                throw new Exception\InvalidArgumentException(
+            }
+            throw new Exception\InvalidArgumentException(
                     "Cannot save property `${key}` containing an API resource of type " .
                     \get_class($value) . ". It doesn't appear to be persisted and is " .
                     "not marked as `saveWithParent`."
                 );
-            }
         } elseif (\is_array($value)) {
             if (Util\Util::isList($value)) {
                 // Sequential array, i.e. a list
@@ -495,9 +493,8 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
                 self::deepCopy($obj->_values),
                 clone $obj->_opts
             );
-        } else {
-            return $obj;
         }
+        return $obj;
     }
 
     /**

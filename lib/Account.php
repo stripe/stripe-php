@@ -90,9 +90,8 @@ class Account extends ApiResource
     {
         if ($this['id'] === null) {
             return '/v1/account';
-        } else {
-            return parent::instanceUrl();
         }
+        return parent::instanceUrl();
     }
 
     public function serializeParameters($force = false)

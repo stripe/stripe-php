@@ -77,5 +77,6 @@ return PhpCsFixer\Config::create()
         'no_unreachable_default_argument_value' => true,
         'no_unset_cast' => true,
         'no_unused_imports' => true,
+        'no_useless_else' => true,
     ])
 ;

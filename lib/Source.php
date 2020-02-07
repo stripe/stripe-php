@@ -112,11 +112,10 @@ class Source extends ApiResource
             list($response, $opts) = $this->_request('delete', $url, $params, $opts);
             $this->refreshFrom($response, $opts);
             return $this;
-        } else {
-            $message = "This source object does not appear to be currently attached "
-               . "to a customer object.";
-            throw new Exception\UnexpectedValueException($message);
         }
+        $message = "This source object does not appear to be currently attached "
+               . "to a customer object.";
+        throw new Exception\UnexpectedValueException($message);
     }
 
     /**

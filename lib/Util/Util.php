@@ -139,9 +139,8 @@ abstract class Util
                 $class = \Stripe\StripeObject::class;
             }
             return $class::constructFrom($resp, $opts);
-        } else {
-            return $resp;
         }
+        return $resp;
     }
 
     /**
@@ -165,9 +164,8 @@ abstract class Util
 
         if (\is_string($value) && self::$isMbstringAvailable && \mb_detect_encoding($value, "UTF-8", true) != "UTF-8") {
             return \utf8_encode($value);
-        } else {
-            return $value;
         }
+        return $value;
     }
 
     /**
@@ -186,17 +184,16 @@ abstract class Util
 
         if (self::$isHashEqualsAvailable) {
             return \hash_equals($a, $b);
-        } else {
-            if (\strlen($a) != \strlen($b)) {
-                return false;
-            }
-
-            $result = 0;
-            for ($i = 0; $i < \strlen($a); ++$i) {
-                $result |= \ord($a[$i]) ^ \ord($b[$i]);
-            }
-            return $result == 0;
         }
+        if (\strlen($a) != \strlen($b)) {
+            return false;
+        }
+
+        $result = 0;
+        for ($i = 0; $i < \strlen($a); ++$i) {
+            $result |= \ord($a[$i]) ^ \ord($b[$i]);
+        }
+        return $result == 0;
     }
 
     /**
@@ -228,9 +225,8 @@ abstract class Util
                 $results[$k] = static::objectsToIds($v);
             }
             return $results;
-        } else {
-            return $h;
         }
+        return $h;
     }
 
     /**
