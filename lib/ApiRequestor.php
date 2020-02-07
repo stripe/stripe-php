@@ -322,7 +322,7 @@ class ApiRequestor
             $clientUAInfo = $this->httpClient()->getUserAgentInfo();
         }
 
-        $absUrl = $this->_apiBase.$url;
+        $absUrl = $this->_apiBase . $url;
         $params = self::_encodeObjects($params);
         $defaultHeaders = $this->_defaultHeaders($myApiKey, $clientUAInfo);
         if (Stripe::$apiVersion) {

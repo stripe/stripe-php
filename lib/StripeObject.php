@@ -124,9 +124,9 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
 
         if ($v === "") {
             throw new Exception\InvalidArgumentException(
-                'You cannot set \''.$k.'\'to an empty string. '
-                .'We interpret empty strings as NULL in requests. '
-                .'You may set obj->'.$k.' = NULL to delete the property'
+                'You cannot set \'' . $k . '\'to an empty string. '
+                . 'We interpret empty strings as NULL in requests. '
+                . 'You may set obj->' . $k . ' = NULL to delete the property'
             );
         }
 

@@ -18,6 +18,9 @@ return PhpCsFixer\Config::create()
         'combine_consecutive_unsets' => true,
         'comment_to_phpdoc' => true,
         'compact_nullable_typehint' => true,
+        'concat_space' => [
+            'spacing' => 'one',
+        ],
         'linebreak_after_opening_tag' => true,
         'native_function_invocation' => true,
     ])
