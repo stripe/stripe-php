@@ -96,5 +96,6 @@ return PhpCsFixer\Config::create()
         'return_assignment' => true,
         'return_type_declaration' => true,
         'semicolon_after_instruction' => true,
+        'set_type_to_cast' => true,
     ])
 ;
