@@ -65,5 +65,6 @@ return PhpCsFixer\Config::create()
         'no_multiline_whitespace_around_double_arrow' => true,
         'no_null_property_initialization' => true,
         'no_short_bool_cast' => true,
+        'no_short_echo_tag' => true,
     ])
 ;
