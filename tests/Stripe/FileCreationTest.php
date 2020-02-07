@@ -40,7 +40,7 @@ class FileCreationTest extends TestCase
         $resource = File::create([
             "purpose" => "dispute_evidence",
             "file" => $fp,
-            "file_link_data" => ["create" => true]
+            "file_link_data" => ["create" => true],
         ]);
         static::assertInstanceOf(\Stripe\File::class, $resource);
     }
@@ -59,7 +59,7 @@ class FileCreationTest extends TestCase
         $resource = File::create([
             "purpose" => "dispute_evidence",
             "file" => $curlFile,
-            "file_link_data" => ["create" => true]
+            "file_link_data" => ["create" => true],
         ]);
         static::assertInstanceOf(\Stripe\File::class, $resource);
     }

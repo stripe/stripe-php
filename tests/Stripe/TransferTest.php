@@ -37,7 +37,7 @@ class TransferTest extends TestCase
         $resource = Transfer::create([
             "amount" => 100,
             "currency" => "usd",
-            "destination" => "acct_123"
+            "destination" => "acct_123",
         ]);
         static::assertInstanceOf(\Stripe\Transfer::class, $resource);
     }

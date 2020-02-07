@@ -431,7 +431,7 @@ EOS;
             "map" => [
                 "0" => StripeObject::constructFrom(["id" => "index0"], $opts),
                 "1" => "index1",
-                "2" => 2
+                "2" => 2,
             ],
         ];
 

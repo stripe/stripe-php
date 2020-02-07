@@ -35,7 +35,7 @@ class ProductTest extends TestCase
         );
         $resource = Product::create([
             'name' => 'name',
-            'type' => 'good'
+            'type' => 'good',
         ]);
         static::assertInstanceOf(\Stripe\Product::class, $resource);
     }

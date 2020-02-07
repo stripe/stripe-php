@@ -31,7 +31,7 @@ class SessionTest extends \Stripe\TestCase
                 'receipt_email' => 'test@stripe.com',
             ],
             'payment_method_types' => ['card'],
-            'success_url' => 'https://stripe.com/success'
+            'success_url' => 'https://stripe.com/success',
         ]);
         static::assertInstanceOf(\Stripe\Checkout\Session::class, $resource);
     }

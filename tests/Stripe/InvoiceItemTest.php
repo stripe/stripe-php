@@ -36,7 +36,7 @@ class InvoiceItemTest extends TestCase
         $resource = InvoiceItem::create([
             "amount" => 100,
             "currency" => "usd",
-            "customer" => "cus_123"
+            "customer" => "cus_123",
         ]);
         static::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
     }

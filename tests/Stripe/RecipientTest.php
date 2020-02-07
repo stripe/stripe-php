@@ -35,7 +35,7 @@ class RecipientTest extends TestCase
         );
         $resource = Recipient::create([
             "name" => "name",
-            "type" => "individual"
+            "type" => "individual",
         ]);
         static::assertInstanceOf(\Stripe\Recipient::class, $resource);
     }

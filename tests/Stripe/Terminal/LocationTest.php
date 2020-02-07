@@ -65,8 +65,8 @@ class LocationTest extends \Stripe\TestCase
                     "country" => "US",
                     "state" => "CA",
                     "postal_code" => "12345",
-                    "city" => "San Francisco"
-                ]
+                    "city" => "San Francisco",
+                ],
             ]
         );
         $resource = Location::create([
@@ -76,8 +76,8 @@ class LocationTest extends \Stripe\TestCase
                 "country" => "US",
                 "state" => "CA",
                 "postal_code" => "12345",
-                "city" => "San Francisco"
-            ]
+                "city" => "San Francisco",
+            ],
         ]);
         static::assertInstanceOf(\Stripe\Terminal\Location::class, $resource);
     }

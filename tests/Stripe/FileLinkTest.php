@@ -34,7 +34,7 @@ class FileLinkTest extends TestCase
             '/v1/file_links'
         );
         $resource = FileLink::create([
-            "file" => "file_123"
+            "file" => "file_123",
         ]);
         static::assertInstanceOf(\Stripe\FileLink::class, $resource);
     }

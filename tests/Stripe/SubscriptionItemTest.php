@@ -12,11 +12,11 @@ class SubscriptionItemTest extends TestCase
             'get',
             '/v1/subscription_items',
             [
-                "subscription" => "sub_123"
+                "subscription" => "sub_123",
             ]
         );
         $resources = SubscriptionItem::all([
-            "subscription" => "sub_123"
+            "subscription" => "sub_123",
         ]);
         static::assertInternalType('array', $resources->data);
         static::assertInstanceOf(\Stripe\SubscriptionItem::class, $resources->data[0]);
@@ -40,7 +40,7 @@ class SubscriptionItemTest extends TestCase
         );
         $resource = SubscriptionItem::create([
             "plan" => "plan",
-            "subscription" => "sub_123"
+            "subscription" => "sub_123",
         ]);
         static::assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
     }

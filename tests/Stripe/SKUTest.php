@@ -37,10 +37,10 @@ class SKUTest extends TestCase
             'currency'  => 'usd',
             'inventory' => [
                 'type'     => 'finite',
-                'quantity' => 1
+                'quantity' => 1,
             ],
             'price'     => 100,
-            'product'   => "prod_123"
+            'product'   => "prod_123",
         ]);
         static::assertInstanceOf(\Stripe\SKU::class, $resource);
     }

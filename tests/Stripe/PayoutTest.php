@@ -35,7 +35,7 @@ class PayoutTest extends TestCase
         );
         $resource = Payout::create([
             "amount" => 100,
-            "currency" => "usd"
+            "currency" => "usd",
         ]);
         static::assertInstanceOf(\Stripe\Payout::class, $resource);
     }

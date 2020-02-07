@@ -10,7 +10,7 @@ class ReportRunTest extends \Stripe\TestCase
     {
         $params = [
             "parameters" => [
-                "connected_account" => "acct_123"
+                "connected_account" => "acct_123",
             ],
             "report_type" => "activity.summary.1",
         ];

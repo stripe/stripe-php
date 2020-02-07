@@ -88,7 +88,7 @@ class BankAccountTest extends TestCase
             'post',
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID . "/verify",
             [
-                "amounts" => [1, 2]
+                "amounts" => [1, 2],
             ]
         );
         $resource->verify(["amounts" => [1, 2]]);

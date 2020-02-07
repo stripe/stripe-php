@@ -34,7 +34,7 @@ class SubscriptionTest extends TestCase
             '/v1/subscriptions'
         );
         $resource = Subscription::create([
-            "customer" => "cus_123"
+            "customer" => "cus_123",
         ]);
         static::assertInstanceOf(\Stripe\Subscription::class, $resource);
     }

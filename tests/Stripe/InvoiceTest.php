@@ -35,7 +35,7 @@ class InvoiceTest extends TestCase
             '/v1/invoices'
         );
         $resource = Invoice::create([
-            "customer" => "cus_123"
+            "customer" => "cus_123",
         ]);
         static::assertInstanceOf(\Stripe\Invoice::class, $resource);
     }

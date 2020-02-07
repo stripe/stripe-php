@@ -23,7 +23,7 @@ class SourceTest extends TestCase
             '/v1/sources'
         );
         $resource = Source::create([
-            "type" => "card"
+            "type" => "card",
         ]);
         static::assertInstanceOf(\Stripe\Source::class, $resource);
     }
@@ -73,7 +73,7 @@ class SourceTest extends TestCase
                 'card' => [
                     'exp_month' => 12,
                     'exp_year' => 2022,
-                ]
+                ],
             ],
             null,
             false,

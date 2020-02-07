@@ -25,7 +25,7 @@ class ThreeDSecureTest extends TestCase
         $resource = ThreeDSecure::create([
             "amount" => 100,
             "currency" => "usd",
-            "return_url" => "url"
+            "return_url" => "url",
         ]);
         static::assertInstanceOf(\Stripe\ThreeDSecure::class, $resource);
     }

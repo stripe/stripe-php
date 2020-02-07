@@ -36,7 +36,7 @@ class ChargeTest extends TestCase
         $resource = Charge::create([
             "amount" => 100,
             "currency" => "usd",
-            "source" => "tok_123"
+            "source" => "tok_123",
         ]);
         static::assertInstanceOf(\Stripe\Charge::class, $resource);
     }

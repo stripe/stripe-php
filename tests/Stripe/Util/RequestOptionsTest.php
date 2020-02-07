@@ -52,7 +52,7 @@ class RequestOptionsTest extends \Stripe\TestCase
         $opts = RequestOptions::parse(
             [
                 'idempotency_key' => 'foo',
-                'api_key' => 'foo'
+                'api_key' => 'foo',
             ]
         );
         static::assertSame('foo', $opts->apiKey);

@@ -236,8 +236,8 @@ class AccountTest extends TestCase
             "dob" => [
                 "day" => 1,
                 "month" => 1,
-                "year" => 1980
-            ]
+                "year" => 1980,
+            ],
         ]);
         static::assertInstanceOf(\Stripe\Person::class, $resource);
     }

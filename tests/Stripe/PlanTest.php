@@ -38,7 +38,7 @@ class PlanTest extends TestCase
             'interval' => 'month',
             'currency' => 'usd',
             'nickname' => self::TEST_RESOURCE_ID,
-            'id' => self::TEST_RESOURCE_ID
+            'id' => self::TEST_RESOURCE_ID,
         ]);
         static::assertInstanceOf(\Stripe\Plan::class, $resource);
     }

@@ -38,7 +38,7 @@ class TopupTest extends TestCase
             "currency" => "usd",
             "source" => "tok_123",
             "description" => "description",
-            "statement_descriptor" => "statement descriptor"
+            "statement_descriptor" => "statement descriptor",
         ]);
         static::assertInstanceOf(\Stripe\Topup::class, $resource);
     }

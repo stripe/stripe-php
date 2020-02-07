@@ -34,7 +34,7 @@ class OrderTest extends TestCase
             '/v1/orders'
         );
         $resource = Order::create([
-            'currency' => 'usd'
+            'currency' => 'usd',
         ]);
         static::assertInstanceOf(\Stripe\Order::class, $resource);
     }

@@ -34,7 +34,7 @@ class RefundTest extends TestCase
             '/v1/refunds'
         );
         $resource = Refund::create([
-            "charge" => "ch_123"
+            "charge" => "ch_123",
         ]);
         static::assertInstanceOf(\Stripe\Refund::class, $resource);
     }
