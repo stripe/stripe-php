@@ -511,7 +511,7 @@ class CurlClient implements ClientInterface
         // Versions of curl older than 7.60.0 don't respect GOAWAY frames
         // (cf. https://github.com/curl/curl/issues/2416), which Stripe use.
         $curlVersion = \curl_version()['version'];
-        return (\version_compare($curlVersion, '7.60.0') >= 0);
+        return \version_compare($curlVersion, '7.60.0') >= 0;
     }
 
     /**
