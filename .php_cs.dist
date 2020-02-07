@@ -15,6 +15,7 @@ return PhpCsFixer\Config::create()
             'elements' => ['method'],
         ],
         'class_definition' => true,
+        'combine_consecutive_unsets' => true,
         'linebreak_after_opening_tag' => true,
         'native_function_invocation' => true,
     ])
