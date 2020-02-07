@@ -36,7 +36,7 @@ class FileCreationTest extends TestCase
             true,
             Stripe::$apiUploadBase
         );
-        $fp = \fopen(\dirname(__FILE__) . '/../data/test.png', 'r');
+        $fp = \fopen(\dirname(__FILE__) . '/../data/test.png', 'rb');
         $resource = File::create([
             "purpose" => "dispute_evidence",
             "file" => $fp,

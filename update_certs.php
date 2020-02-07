@@ -4,7 +4,7 @@
 
 \set_time_limit(0); // unlimited max execution time
 
-$fp = \fopen(\dirname(__FILE__) . '/data/ca-certificates.crt', 'w+');
+$fp = \fopen(\dirname(__FILE__) . '/data/ca-certificates.crt', 'w+b');
 
 $options = [
     CURLOPT_FILE    => $fp,
