@@ -151,7 +151,7 @@ abstract class Util
      */
     public static function utf8($value)
     {
-        if (self::$isMbstringAvailable === null) {
+        if (null === self::$isMbstringAvailable) {
             self::$isMbstringAvailable = \function_exists('mb_detect_encoding');
 
             if (!self::$isMbstringAvailable) {
@@ -162,7 +162,7 @@ abstract class Util
             }
         }
 
-        if (\is_string($value) && self::$isMbstringAvailable && \mb_detect_encoding($value, "UTF-8", true) !== "UTF-8") {
+        if (\is_string($value) && self::$isMbstringAvailable && "UTF-8" !== \mb_detect_encoding($value, "UTF-8", true)) {
             return \utf8_encode($value);
         }
         return $value;
@@ -178,7 +178,7 @@ abstract class Util
      */
     public static function secureCompare($a, $b)
     {
-        if (self::$isHashEqualsAvailable === null) {
+        if (null === self::$isHashEqualsAvailable) {
             self::$isHashEqualsAvailable = \function_exists('hash_equals');
         }
 
@@ -193,7 +193,7 @@ abstract class Util
         for ($i = 0; $i < \strlen($a); ++$i) {
             $result |= \ord($a[$i]) ^ \ord($b[$i]);
         }
-        return $result === 0;
+        return 0 === $result;
     }
 
     /**

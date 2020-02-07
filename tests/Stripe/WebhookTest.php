@@ -17,7 +17,7 @@ class WebhookTest extends TestCase
         $secret = \array_key_exists('secret', $opts) ? $opts['secret'] : self::SECRET;
         $scheme = \array_key_exists('scheme', $opts) ? $opts['scheme'] : WebhookSignature::EXPECTED_SCHEME;
         $signature = \array_key_exists('signature', $opts) ? $opts['signature'] : null;
-        if ($signature === null) {
+        if (null === $signature) {
             $signedPayload = "{$timestamp}.{$payload}";
             $signature = \hash_hmac("sha256", $signedPayload, $secret);
         }

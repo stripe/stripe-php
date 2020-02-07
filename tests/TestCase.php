@@ -152,7 +152,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     ) {
         ApiRequestor::setHttpClient($this->clientMock);
 
-        if ($base === null) {
+        if (null === $base) {
             $base = Stripe::$apiBase;
         }
         $absUrl = $base . $path;
@@ -165,7 +165,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
                 static::identicalTo($absUrl),
                 // for headers, we only check that all of the headers provided in $headers are
                 // present in the list of headers of the actual request
-                $headers === null ? static::anything() : static::callback(function ($array) use ($headers) {
+                null === $headers ? static::anything() : static::callback(function ($array) use ($headers) {
                     foreach ($headers as $header) {
                         if (!\in_array($header, $array, true)) {
                             return false;
@@ -173,7 +173,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
                     }
                     return true;
                 }),
-                $params === null ? static::anything() : static::identicalTo($params),
+                null === $params ? static::anything() : static::identicalTo($params),
                 static::identicalTo($hasFile)
             );
     }

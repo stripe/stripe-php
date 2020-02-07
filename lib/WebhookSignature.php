@@ -25,7 +25,7 @@ abstract class WebhookSignature
         // Extract timestamp and signatures from header
         $timestamp = self::getTimestamp($header);
         $signatures = self::getSignatures($header, self::EXPECTED_SCHEME);
-        if ($timestamp === -1) {
+        if (-1 === $timestamp) {
             throw Exception\SignatureVerificationException::factory(
                 "Unable to extract timestamp and signatures from header",
                 $payload,
@@ -84,7 +84,7 @@ abstract class WebhookSignature
 
         foreach ($items as $item) {
             $itemParts = \explode("=", $item, 2);
-            if ($itemParts[0] === "t") {
+            if ("t" === $itemParts[0]) {
                 if (!\is_numeric($itemParts[1])) {
                     return -1;
                 }

@@ -14,12 +14,12 @@ if (!$autoload) {
 }
 
 \passthru('composer update', $returnStatus);
-if ($returnStatus !== 0) {
+if (0 !== $returnStatus) {
     exit(1);
 }
 
 $config = $autoload ? 'phpunit.xml' : 'phpunit.no_autoload.xml';
 \passthru("./vendor/bin/phpunit -c {$config}", $returnStatus);
-if ($returnStatus !== 0) {
+if (0 !== $returnStatus) {
     exit(1);
 }

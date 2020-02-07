@@ -77,7 +77,7 @@ class Account extends ApiResource
     public static function getSavedNestedResources()
     {
         static $savedNestedResources = null;
-        if ($savedNestedResources === null) {
+        if (null === $savedNestedResources) {
             $savedNestedResources = new Util\Set([
                 'external_account',
                 'bank_account',
@@ -88,7 +88,7 @@ class Account extends ApiResource
 
     public function instanceUrl()
     {
-        if ($this['id'] === null) {
+        if (null === $this['id']) {
             return '/v1/account';
         }
         return parent::instanceUrl();
@@ -154,7 +154,7 @@ class Account extends ApiResource
      */
     public static function retrieve($id = null, $opts = null)
     {
-        if (!$opts && \is_string($id) && \substr($id, 0, 3) === 'sk_') {
+        if (!$opts && \is_string($id) && 'sk_' === \substr($id, 0, 3)) {
             $opts = $id;
             $id = null;
         }

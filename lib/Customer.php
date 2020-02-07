@@ -53,7 +53,7 @@ class Customer extends ApiResource
     public static function getSavedNestedResources()
     {
         static $savedNestedResources = null;
-        if ($savedNestedResources === null) {
+        if (null === $savedNestedResources) {
             $savedNestedResources = new Util\Set([
                 'source',
             ]);

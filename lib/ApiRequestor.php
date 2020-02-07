@@ -61,7 +61,7 @@ class ApiRequestor
         ];
 
         $result = \json_encode($payload);
-        if ($result !== false) {
+        if (false !== $result) {
             return $result;
         }
         Stripe::getLogger()->error("Serializing telemetry payload failed!");
@@ -80,10 +80,10 @@ class ApiRequestor
         if ($d instanceof ApiResource) {
             return Util\Util::utf8($d->id);
         }
-        if ($d === true) {
+        if (true === $d) {
             return 'true';
         }
-        if ($d === false) {
+        if (false === $d) {
             return 'false';
         }
         if (\is_array($d)) {
@@ -170,10 +170,10 @@ class ApiRequestor
             case 400:
                 // 'rate_limit' code is deprecated, but left here for backwards compatibility
                 // for API versions earlier than 2015-09-08
-                if ($code === 'rate_limit') {
+                if ('rate_limit' === $code) {
                     return Exception\RateLimitException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code, $param);
                 }
-                if ($type === 'idempotency_error') {
+                if ('idempotency_error' === $type) {
                     return Exception\IdempotencyException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code);
                 }
 
@@ -235,12 +235,12 @@ class ApiRequestor
      */
     private static function _formatAppInfo($appInfo)
     {
-        if ($appInfo !== null) {
+        if (null !== $appInfo) {
             $string = $appInfo['name'];
-            if ($appInfo['version'] !== null) {
+            if (null !== $appInfo['version']) {
                 $string .= '/' . $appInfo['version'];
             }
-            if ($appInfo['url'] !== null) {
+            if (null !== $appInfo['url']) {
                 $string .= ' (' . $appInfo['url'] . ')';
             }
             return $string;
@@ -275,7 +275,7 @@ class ApiRequestor
         if ($clientInfo) {
             $ua = \array_merge($clientInfo, $ua);
         }
-        if ($appInfo !== null) {
+        if (null !== $appInfo) {
             $uaString .= ' ' . self::_formatAppInfo($appInfo);
             $ua['application'] = $appInfo;
         }
@@ -332,7 +332,7 @@ class ApiRequestor
             $defaultHeaders['Stripe-Account'] = Stripe::$accountId;
         }
 
-        if (Stripe::$enableTelemetry && self::$requestTelemetry !== null) {
+        if (Stripe::$enableTelemetry && null !== self::$requestTelemetry) {
             $defaultHeaders["X-Stripe-Client-Telemetry"] = self::_telemetryJson(self::$requestTelemetry);
         }
 
@@ -388,14 +388,14 @@ class ApiRequestor
      */
     private function _processResourceParam($resource)
     {
-        if (\get_resource_type($resource) !== 'stream') {
+        if ('stream' !== \get_resource_type($resource)) {
             throw new Exception\InvalidArgumentException(
                 'Attempted to upload a resource that is not a stream'
             );
         }
 
         $metaData = \stream_get_meta_data($resource);
-        if ($metaData['wrapper_type'] !== 'plainfile') {
+        if ('plainfile' !== $metaData['wrapper_type']) {
             throw new Exception\InvalidArgumentException(
                 'Only plainfile resource streams are supported'
             );
@@ -419,7 +419,7 @@ class ApiRequestor
     {
         $resp = \json_decode($rbody, true);
         $jsonError = \json_last_error();
-        if ($resp === null && $jsonError !== \JSON_ERROR_NONE) {
+        if (null === $resp && \JSON_ERROR_NONE !== $jsonError) {
             $msg = "Invalid response body from API: {$rbody} "
               . "(HTTP response code was {$rcode}, json_last_error() was {$jsonError})";
             throw new Exception\UnexpectedValueException($msg, $rcode);

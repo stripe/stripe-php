@@ -44,10 +44,10 @@ class RequestOptions
     public function merge($options)
     {
         $other_options = self::parse($options);
-        if ($other_options->apiKey === null) {
+        if (null === $other_options->apiKey) {
             $other_options->apiKey = $this->apiKey;
         }
-        if ($other_options->apiBase === null) {
+        if (null === $other_options->apiBase) {
             $other_options->apiBase = $this->apiBase;
         }
         $other_options->headers = \array_merge($this->headers, $other_options->headers);

@@ -204,7 +204,7 @@ class CurlClient implements ClientInterface
 
         $params = Util\Util::objectsToIds($params);
 
-        if ($method === 'get') {
+        if ('get' === $method) {
             if ($hasFile) {
                 throw new Exception\UnexpectedValueException(
                     "Issuing a GET request with a file parameter"
@@ -215,10 +215,10 @@ class CurlClient implements ClientInterface
                 $encoded = Util\Util::encodeParameters($params);
                 $absUrl = "{$absUrl}?{$encoded}";
             }
-        } elseif ($method === 'post') {
+        } elseif ('post' === $method) {
             $opts[\CURLOPT_POST] = 1;
             $opts[\CURLOPT_POSTFIELDS] = $hasFile ? $params : Util\Util::encodeParameters($params);
-        } elseif ($method === 'delete') {
+        } elseif ('delete' === $method) {
             $opts[\CURLOPT_CUSTOMREQUEST] = 'DELETE';
             if (\count($params) > 0) {
                 $encoded = Util\Util::encodeParameters($params);
@@ -230,7 +230,7 @@ class CurlClient implements ClientInterface
 
         // It is only safe to retry network failures on POST requests if we
         // add an Idempotency-Key header
-        if (($method === 'post') && (Stripe::$maxNetworkRetries > 0)) {
+        if (('post' === $method) && (Stripe::$maxNetworkRetries > 0)) {
             if (!$this->hasHeader($headers, "Idempotency-Key")) {
                 \array_push($headers, 'Idempotency-Key: ' . $this->randomGenerator->uuid());
             }
@@ -277,7 +277,7 @@ class CurlClient implements ClientInterface
     private function executeRequestWithRetries($opts, $absUrl)
     {
         $numRetries = 0;
-        $isPost = \array_key_exists(\CURLOPT_POST, $opts) && $opts[\CURLOPT_POST] === 1;
+        $isPost = \array_key_exists(\CURLOPT_POST, $opts) && 1 === $opts[\CURLOPT_POST];
 
         while (true) {
             $rcode = 0;
@@ -288,7 +288,7 @@ class CurlClient implements ClientInterface
             $rheaders = new Util\CaseInsensitiveArray();
             $headerCallback = function ($curl, $header_line) use (&$rheaders) {
                 // Ignore the HTTP request line (HTTP/1.1 200 OK)
-                if (\strpos($header_line, ":") === false) {
+                if (false === \strpos($header_line, ":")) {
                     return \strlen($header_line);
                 }
                 list($key, $value) = \explode(":", \trim($header_line), 2);
@@ -301,7 +301,7 @@ class CurlClient implements ClientInterface
             \curl_setopt_array($this->curlHandle, $opts);
             $rbody = \curl_exec($this->curlHandle);
 
-            if ($rbody === false) {
+            if (false === $rbody) {
                 $errno = \curl_errno($this->curlHandle);
                 $message = \curl_error($this->curlHandle);
             } else {
@@ -329,7 +329,7 @@ class CurlClient implements ClientInterface
             }
         }
 
-        if ($rbody === false) {
+        if (false === $rbody) {
             $this->handleCurlError($absUrl, $errno, $message, $numRetries);
         }
 
@@ -395,30 +395,30 @@ class CurlClient implements ClientInterface
         }
 
         // Retry on timeout-related problems (either on open or read).
-        if ($errno === \CURLE_OPERATION_TIMEOUTED) {
+        if (\CURLE_OPERATION_TIMEOUTED === $errno) {
             return true;
         }
 
         // Destination refused the connection, the connection was reset, or a
         // variety of other connection failures. This could occur from a single
         // saturated server, so retry in case it's intermittent.
-        if ($errno === \CURLE_COULDNT_CONNECT) {
+        if (\CURLE_COULDNT_CONNECT === $errno) {
             return true;
         }
 
         // The API may ask us not to retry (eg; if doing so would be a no-op)
         // or advise us to retry (eg; in cases of lock timeouts); we defer to that.
         if (isset($rheaders['stripe-should-retry'])) {
-            if ($rheaders['stripe-should-retry'] === 'false') {
+            if ('false' === $rheaders['stripe-should-retry']) {
                 return false;
             }
-            if ($rheaders['stripe-should-retry'] === 'true') {
+            if ('true' === $rheaders['stripe-should-retry']) {
                 return true;
             }
         }
 
         // 409 Conflict
-        if ($rcode === 409) {
+        if (409 === $rcode) {
             return true;
         }
 
@@ -524,7 +524,7 @@ class CurlClient implements ClientInterface
     private function hasHeader($headers, $name)
     {
         foreach ($headers as $header) {
-            if (\strncasecmp($header, "{$name}: ", \strlen($name) + 2) === 0) {
+            if (0 === \strncasecmp($header, "{$name}: ", \strlen($name) + 2)) {
                 return true;
             }
         }
