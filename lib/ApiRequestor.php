@@ -128,8 +128,8 @@ class ApiRequestor
     public function handleErrorResponse($rbody, $rcode, $rheaders, $resp)
     {
         if (!\is_array($resp) || !isset($resp['error'])) {
-            $msg = "Invalid response object from API: $rbody "
-              . "(HTTP response code was $rcode)";
+            $msg = "Invalid response object from API: ${rbody} "
+              . "(HTTP response code was ${rcode})";
             throw new Exception\UnexpectedValueException($msg);
         }
 
@@ -421,8 +421,8 @@ class ApiRequestor
         $resp = \json_decode($rbody, true);
         $jsonError = \json_last_error();
         if ($resp === null && $jsonError !== JSON_ERROR_NONE) {
-            $msg = "Invalid response body from API: $rbody "
-              . "(HTTP response code was $rcode, json_last_error() was $jsonError)";
+            $msg = "Invalid response body from API: ${rbody} "
+              . "(HTTP response code was ${rcode}, json_last_error() was ${jsonError})";
             throw new Exception\UnexpectedValueException($msg, $rcode);
         }
 

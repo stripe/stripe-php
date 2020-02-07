@@ -96,7 +96,7 @@ class Collection extends StripeObject implements \IteratorAggregate
         $extn = \urlencode($id);
         list($response, $opts) = $this->_request(
             'get',
-            "$url/$extn",
+            "${url}/${extn}",
             $params,
             $opts
         );
@@ -233,7 +233,7 @@ class Collection extends StripeObject implements \IteratorAggregate
     {
         $url = \parse_url($this->url);
         if (!isset($url['path'])) {
-            throw new Exception\UnexpectedValueException("Could not parse list url into parts: $url");
+            throw new Exception\UnexpectedValueException("Could not parse list url into parts: ${url}");
         }
 
         if (isset($url['query'])) {

@@ -117,7 +117,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     {
         if (static::getPermanentAttributes()->includes($k)) {
             throw new Exception\InvalidArgumentException(
-                "Cannot set $k on this object. HINT: you can't set: " .
+                "Cannot set ${k} on this object. HINT: you can't set: " .
                 \join(', ', static::getPermanentAttributes()->toArray())
             );
         }
@@ -156,17 +156,17 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         } elseif (!empty($this->_transientValues) && $this->_transientValues->includes($k)) {
             $class = \get_class($this);
             $attrs = \join(', ', \array_keys($this->_values));
-            $message = "Stripe Notice: Undefined property of $class instance: $k. "
-                    . "HINT: The $k attribute was set in the past, however. "
+            $message = "Stripe Notice: Undefined property of ${class} instance: ${k}. "
+                    . "HINT: The ${k} attribute was set in the past, however. "
                     . "It was then wiped when refreshing the object "
                     . "with the result returned by Stripe's API, "
                     . "probably as a result of a save(). The attributes currently "
-                    . "available on this object are: $attrs";
+                    . "available on this object are: ${attrs}";
             Stripe::getLogger()->error($message);
             return $nullval;
         } else {
             $class = \get_class($this);
-            Stripe::getLogger()->error("Stripe Notice: Undefined property of $class instance: $k");
+            Stripe::getLogger()->error("Stripe Notice: Undefined property of ${class} instance: ${k}");
             return $nullval;
         }
     }
@@ -367,7 +367,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
                 return $value;
             } else {
                 throw new Exception\InvalidArgumentException(
-                    "Cannot save property `$key` containing an API resource of type " .
+                    "Cannot save property `${key}` containing an API resource of type " .
                     \get_class($value) . ". It doesn't appear to be persisted and is " .
                     "not marked as `saveWithParent`."
                 );

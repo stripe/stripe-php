@@ -40,7 +40,7 @@ class Capability extends ApiResource
         if (!$id) {
             throw new Exception\UnexpectedValueException(
                 "Could not determine which URL to request: " .
-                "class instance has invalid ID: $id",
+                "class instance has invalid ID: ${id}",
                 null
             );
         }
@@ -50,7 +50,7 @@ class Capability extends ApiResource
         $base = Account::classUrl();
         $accountExtn = \urlencode($account);
         $extn = \urlencode($id);
-        return "$base/$accountExtn/capabilities/$extn";
+        return "${base}/${accountExtn}/capabilities/${extn}";
     }
 
     /**

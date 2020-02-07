@@ -25,6 +25,7 @@ return PhpCsFixer\Config::create()
         'ereg_to_preg' => true,
         'error_suppression' => true,
         'escape_implicit_backslashes' => true,
+        'explicit_string_variable' => true,
         'linebreak_after_opening_tag' => true,
         'native_function_invocation' => true,
     ])

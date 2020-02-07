@@ -62,7 +62,7 @@ class TaxId extends ApiResource
         $customer = $this['customer'];
         if (!$id) {
             throw new Exception\UnexpectedValueException(
-                "Could not determine which URL to request: class instance has invalid ID: $id"
+                "Could not determine which URL to request: class instance has invalid ID: ${id}"
             );
         }
         $id = Util\Util::utf8($id);
@@ -71,7 +71,7 @@ class TaxId extends ApiResource
         $base = Customer::classUrl();
         $customerExtn = \urlencode($customer);
         $extn = \urlencode($id);
-        return "$base/$customerExtn/tax_ids/$extn";
+        return "${base}/${customerExtn}/tax_ids/${extn}";
     }
 
     /**
