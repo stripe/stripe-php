@@ -82,13 +82,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $base = null
     ) {
         $this->prepareRequestMock($method, $path, $params, $headers, $hasFile, $base)
-            ->will($this->returnCallback(
+            ->willReturnCallback(
                 function ($method, $absUrl, $headers, $params, $hasFile) {
                     $curlClient = HttpClient\CurlClient::instance();
                     ApiRequestor::setHttpClient($curlClient);
                     return $curlClient->request($method, $absUrl, $headers, $params, $hasFile);
                 }
-            ));
+            );
     }
 
     /**
