@@ -57,7 +57,8 @@ class ApiRequestor
             'last_request_metrics' => [
                 'request_id' => $requestTelemetry->requestId,
                 'request_duration_ms' => $requestTelemetry->requestDuration,
-        ]];
+            ],
+        ];
 
         $result = \json_encode($payload);
         if ($result != false) {
