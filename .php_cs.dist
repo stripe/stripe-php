@@ -89,5 +89,6 @@ return PhpCsFixer\Config::create()
         'php_unit_method_casing' => true,
         'php_unit_mock_short_will_return' => true,
         'php_unit_ordered_covers' => true,
+        'php_unit_set_up_tear_down_visibility' => true,
     ])
 ;
