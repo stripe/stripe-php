@@ -7,7 +7,7 @@ class ApiErrorExceptionTest extends \Stripe\TestCase
     public function createFixture()
     {
         $mock = $this->getMockForAbstractClass(ApiErrorException::class);
-        $instance = $mock::factory(
+        return $mock::factory(
             'message',
             200,
             '{"error": {"code": "some_code"}}',
@@ -18,7 +18,6 @@ class ApiErrorExceptionTest extends \Stripe\TestCase
             ],
             'some_code'
         );
-        return $instance;
     }
 
     public function testGetters()

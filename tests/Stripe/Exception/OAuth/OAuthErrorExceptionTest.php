@@ -7,7 +7,7 @@ class OAuthErrorExceptionTest extends \Stripe\TestCase
     public function createFixture()
     {
         $mock = $this->getMockForAbstractClass(OAuthErrorException::class);
-        $instance = $mock::factory(
+        return $mock::factory(
             'description',
             200,
             '{"error": "code", "error_description": "description"}',
@@ -18,7 +18,6 @@ class OAuthErrorExceptionTest extends \Stripe\TestCase
             ],
             'code'
         );
-        return $instance;
     }
 
     public function testGetters()

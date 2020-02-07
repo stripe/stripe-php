@@ -513,8 +513,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
                 "empty_values got unexpected object type: " . \get_class($obj)
             );
         }
-        $update = \array_fill_keys(\array_keys($values), "");
-        return $update;
+        return \array_fill_keys(\array_keys($values), "");
     }
 
     /**

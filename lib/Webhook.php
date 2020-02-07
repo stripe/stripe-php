@@ -33,8 +33,6 @@ abstract class Webhook
               . "(json_last_error() was ${jsonError})";
             throw new Exception\UnexpectedValueException($msg);
         }
-        $event = Event::constructFrom($data);
-
-        return $event;
+        return Event::constructFrom($data);
     }
 }

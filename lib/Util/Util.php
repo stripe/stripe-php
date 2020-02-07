@@ -306,9 +306,7 @@ abstract class Util
         // characters back to their literals. This is fine by the server, and
         // makes these parameter strings easier to read.
         $s = \str_replace('%5B', '[', $s);
-        $s = \str_replace('%5D', ']', $s);
-
-        return $s;
+        return \str_replace('%5D', ']', $s);
     }
 
     public static function normalizeId($id)

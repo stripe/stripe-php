@@ -280,12 +280,11 @@ class ApiRequestor
             $ua['application'] = $appInfo;
         }
 
-        $defaultHeaders = [
+        return [
             'X-Stripe-Client-User-Agent' => \json_encode($ua),
             'User-Agent' => $uaString,
             'Authorization' => 'Bearer ' . $apiKey,
         ];
-        return $defaultHeaders;
     }
 
     /**
