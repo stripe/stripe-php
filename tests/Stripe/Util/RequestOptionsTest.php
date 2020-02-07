@@ -14,14 +14,14 @@ class RequestOptionsTest extends \Stripe\TestCase
     public function testNull()
     {
         $opts = RequestOptions::parse(null);
-        $this->assertSame(null, $opts->apiKey);
+        $this->assertNull($opts->apiKey);
         $this->assertSame([], $opts->headers);
     }
 
     public function testEmptyArray()
     {
         $opts = RequestOptions::parse([]);
-        $this->assertSame(null, $opts->apiKey);
+        $this->assertNull($opts->apiKey);
         $this->assertSame([], $opts->headers);
     }
 
@@ -43,7 +43,7 @@ class RequestOptionsTest extends \Stripe\TestCase
                 'idempotency_key' => 'foo',
             ]
         );
-        $this->assertSame(null, $opts->apiKey);
+        $this->assertNull($opts->apiKey);
         $this->assertSame(['Idempotency-Key' => 'foo'], $opts->headers);
     }
 
