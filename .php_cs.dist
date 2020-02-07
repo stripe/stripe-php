@@ -35,6 +35,7 @@ return PhpCsFixer\Config::create()
         'heredoc_to_nowdoc' => true,
         'implode_call' => true,
         'increment_style' => true,
+        'is_null' => true,
         'linebreak_after_opening_tag' => true,
         'native_function_invocation' => true,
     ])

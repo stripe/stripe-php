@@ -78,7 +78,7 @@ class RequestOptions
             return $options;
         }
 
-        if (\is_null($options)) {
+        if (null === $options) {
             return new RequestOptions(null, [], null);
         }
 

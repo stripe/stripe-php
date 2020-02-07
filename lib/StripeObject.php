@@ -412,7 +412,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     public function toArray()
     {
         $maybeToArray = function ($value) {
-            if (\is_null($value)) {
+            if (null === $value) {
                 return null;
             }
 

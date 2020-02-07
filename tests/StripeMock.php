@@ -23,7 +23,7 @@ class StripeMock
             return false;
         }
 
-        if (!\is_null(static::$process) && static::$process->isRunning()) {
+        if (null !== static::$process && static::$process->isRunning()) {
             echo "stripe-mock already running on port " . static::$port . "\n";
             return true;
         }
@@ -58,7 +58,7 @@ class StripeMock
      */
     public static function stop()
     {
-        if (\is_null(static::$process) || !static::$process->isRunning()) {
+        if (null === static::$process || !static::$process->isRunning()) {
             return;
         }
 

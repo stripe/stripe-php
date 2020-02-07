@@ -482,7 +482,7 @@ class CurlClient implements ClientInterface
      */
     private function closeCurlHandle()
     {
-        if (!\is_null($this->curlHandle)) {
+        if (null !== $this->curlHandle) {
             \curl_close($this->curlHandle);
             $this->curlHandle = null;
         }
@@ -494,7 +494,7 @@ class CurlClient implements ClientInterface
      */
     private function resetCurlHandle()
     {
-        if (!\is_null($this->curlHandle) && $this->getEnablePersistentConnections()) {
+        if (null !== $this->curlHandle && $this->getEnablePersistentConnections()) {
             \curl_reset($this->curlHandle);
         } else {
             $this->initCurlHandle();

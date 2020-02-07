@@ -219,7 +219,7 @@ abstract class Util
         } elseif (\is_array($h)) {
             $results = [];
             foreach ($h as $k => $v) {
-                if (\is_null($v)) {
+                if (null === $v) {
                     continue;
                 }
                 $results[$k] = static::objectsToIds($v);

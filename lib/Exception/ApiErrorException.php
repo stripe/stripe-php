@@ -209,7 +209,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
 
     protected function constructErrorObject()
     {
-        if (\is_null($this->jsonBody) || !\array_key_exists('error', $this->jsonBody)) {
+        if (null === $this->jsonBody || !\array_key_exists('error', $this->jsonBody)) {
             return null;
         }
 
