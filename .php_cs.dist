@@ -94,5 +94,6 @@ return PhpCsFixer\Config::create()
         'php_unit_test_case_static_method_calls' => true,
         'psr4' => true,
         'return_assignment' => true,
+        'return_type_declaration' => true,
     ])
 ;
