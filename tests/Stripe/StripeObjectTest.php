@@ -164,8 +164,8 @@ class StripeObjectTest extends TestCase
         $s->foo = 'a';
 
         $string = (string) $s;
-        $expected = <<<EOS
-Stripe\\StripeObject JSON: {
+        $expected = <<<'EOS'
+Stripe\StripeObject JSON: {
     "foo": "a"
 }
 EOS;
