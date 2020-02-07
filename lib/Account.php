@@ -135,7 +135,7 @@ class Account extends ApiResource
             if ($update !== []) {
                 if (!$originalValue ||
                     !\array_key_exists($i, $originalValue) ||
-                    ($update != $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
+                    ($update !== $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
                     $updateArr[$i] = $update;
                 }
             }

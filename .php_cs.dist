@@ -105,4 +105,5 @@ return PhpCsFixer\Config::create()
         'space_after_semicolon' => true,
         'standardize_increment' => true,
         'standardize_not_equals' => true,
+        'strict_comparison' => true,
     ]);

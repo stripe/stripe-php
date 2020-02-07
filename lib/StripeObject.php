@@ -422,7 +422,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         };
 
         return \array_reduce(\array_keys($this->_values), function ($acc, $k) use ($maybeToArray) {
-            if ($k[0] == '_') {
+            if ($k[0] === '_') {
                 return $acc;
             }
             $v = $this->_values[$k];

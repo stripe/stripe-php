@@ -204,7 +204,7 @@ class CurlClient implements ClientInterface
 
         $params = Util\Util::objectsToIds($params);
 
-        if ($method == 'get') {
+        if ($method === 'get') {
             if ($hasFile) {
                 throw new Exception\UnexpectedValueException(
                     "Issuing a GET request with a file parameter"
@@ -215,10 +215,10 @@ class CurlClient implements ClientInterface
                 $encoded = Util\Util::encodeParameters($params);
                 $absUrl = "{$absUrl}?{$encoded}";
             }
-        } elseif ($method == 'post') {
+        } elseif ($method === 'post') {
             $opts[\CURLOPT_POST] = 1;
             $opts[\CURLOPT_POSTFIELDS] = $hasFile ? $params : Util\Util::encodeParameters($params);
-        } elseif ($method == 'delete') {
+        } elseif ($method === 'delete') {
             $opts[\CURLOPT_CUSTOMREQUEST] = 'DELETE';
             if (\count($params) > 0) {
                 $encoded = Util\Util::encodeParameters($params);
@@ -230,7 +230,7 @@ class CurlClient implements ClientInterface
 
         // It is only safe to retry network failures on POST requests if we
         // add an Idempotency-Key header
-        if (($method == 'post') && (Stripe::$maxNetworkRetries > 0)) {
+        if (($method === 'post') && (Stripe::$maxNetworkRetries > 0)) {
             if (!$this->hasHeader($headers, "Idempotency-Key")) {
                 \array_push($headers, 'Idempotency-Key: ' . $this->randomGenerator->uuid());
             }
@@ -277,7 +277,7 @@ class CurlClient implements ClientInterface
     private function executeRequestWithRetries($opts, $absUrl)
     {
         $numRetries = 0;
-        $isPost = \array_key_exists(\CURLOPT_POST, $opts) && $opts[\CURLOPT_POST] == 1;
+        $isPost = \array_key_exists(\CURLOPT_POST, $opts) && $opts[\CURLOPT_POST] === 1;
 
         while (true) {
             $rcode = 0;
@@ -461,7 +461,7 @@ class CurlClient implements ClientInterface
 
         // And never sleep less than the time the API asks us to wait, assuming it's a reasonable ask.
         $retryAfter = isset($rheaders['retry-after']) ? (float) ($rheaders['retry-after']) : 0.0;
-        if (\floor($retryAfter) == $retryAfter && $retryAfter <= Stripe::getMaxRetryAfter()) {
+        if (\floor($retryAfter) === $retryAfter && $retryAfter <= Stripe::getMaxRetryAfter()) {
             $sleepSeconds = \max($sleepSeconds, $retryAfter);
         }
 

@@ -202,8 +202,8 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
      */
     public function __toString()
     {
-        $statusStr = ($this->getHttpStatus() == null) ? "" : "(Status {$this->getHttpStatus()}) ";
-        $idStr = ($this->getRequestId() == null) ? "" : "(Request {$this->getRequestId()}) ";
+        $statusStr = ($this->getHttpStatus() === null) ? "" : "(Status {$this->getHttpStatus()}) ";
+        $idStr = ($this->getRequestId() === null) ? "" : "(Request {$this->getRequestId()}) ";
         return "{$statusStr}{$idStr}{$this->getMessage()}";
     }
 

@@ -84,7 +84,7 @@ class Stripe
      */
     public static function getLogger()
     {
-        if (self::$logger == null) {
+        if (self::$logger === null) {
             return new Util\DefaultLogger();
         }
         return self::$logger;

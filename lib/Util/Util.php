@@ -162,7 +162,7 @@ abstract class Util
             }
         }
 
-        if (\is_string($value) && self::$isMbstringAvailable && \mb_detect_encoding($value, "UTF-8", true) != "UTF-8") {
+        if (\is_string($value) && self::$isMbstringAvailable && \mb_detect_encoding($value, "UTF-8", true) !== "UTF-8") {
             return \utf8_encode($value);
         }
         return $value;
@@ -185,7 +185,7 @@ abstract class Util
         if (self::$isHashEqualsAvailable) {
             return \hash_equals($a, $b);
         }
-        if (\strlen($a) != \strlen($b)) {
+        if (\strlen($a) !== \strlen($b)) {
             return false;
         }
 
@@ -193,7 +193,7 @@ abstract class Util
         for ($i = 0; $i < \strlen($a); ++$i) {
             $result |= \ord($a[$i]) ^ \ord($b[$i]);
         }
-        return $result == 0;
+        return $result === 0;
     }
 
     /**

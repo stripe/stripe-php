@@ -61,7 +61,7 @@ class ApiRequestor
         ];
 
         $result = \json_encode($payload);
-        if ($result != false) {
+        if ($result !== false) {
             return $result;
         }
         Stripe::getLogger()->error("Serializing telemetry payload failed!");
@@ -170,10 +170,10 @@ class ApiRequestor
             case 400:
                 // 'rate_limit' code is deprecated, but left here for backwards compatibility
                 // for API versions earlier than 2015-09-08
-                if ($code == 'rate_limit') {
+                if ($code === 'rate_limit') {
                     return Exception\RateLimitException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code, $param);
                 }
-                if ($type == 'idempotency_error') {
+                if ($type === 'idempotency_error') {
                     return Exception\IdempotencyException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code);
                 }
 
@@ -332,7 +332,7 @@ class ApiRequestor
             $defaultHeaders['Stripe-Account'] = Stripe::$accountId;
         }
 
-        if (Stripe::$enableTelemetry && self::$requestTelemetry != null) {
+        if (Stripe::$enableTelemetry && self::$requestTelemetry !== null) {
             $defaultHeaders["X-Stripe-Client-Telemetry"] = self::_telemetryJson(self::$requestTelemetry);
         }
 
