@@ -191,7 +191,7 @@ abstract class Util
             }
 
             $result = 0;
-            for ($i = 0; $i < \strlen($a); $i++) {
+            for ($i = 0; $i < \strlen($a); ++$i) {
                 $result |= \ord($a[$i]) ^ \ord($b[$i]);
             }
             return ($result == 0);
