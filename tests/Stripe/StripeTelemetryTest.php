@@ -28,7 +28,7 @@ class StripeTelemetryTest extends TestCase
         $requestheaders = null;
 
         $stub = $this
-            ->getMockBuilder("HttpClient\ClientInterface")
+            ->getMockBuilder("HttpClient\\ClientInterface")
             ->setMethods(['request'])
             ->getMock();
 
@@ -70,7 +70,7 @@ class StripeTelemetryTest extends TestCase
         $requestheaders = null;
 
         $stub = $this
-            ->getMockBuilder("HttpClient\ClientInterface")
+            ->getMockBuilder("HttpClient\\ClientInterface")
             ->setMethods(['request'])
             ->getMock();
 

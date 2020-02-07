@@ -165,7 +165,7 @@ class StripeObjectTest extends TestCase
 
         $string = (string) $s;
         $expected = <<<EOS
-Stripe\StripeObject JSON: {
+Stripe\\StripeObject JSON: {
     "foo": "a"
 }
 EOS;
@@ -375,7 +375,7 @@ EOS;
             $this->fail("Did not raise error");
         } catch (\InvalidArgumentException $e) {
             $this->assertSame(
-                "Cannot save property `customer` containing an API resource of type Stripe\Customer. " .
+                "Cannot save property `customer` containing an API resource of type Stripe\\Customer. " .
                 "It doesn't appear to be persisted and is not marked as `saveWithParent`.",
                 $e->getMessage()
             );
