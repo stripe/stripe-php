@@ -18,10 +18,10 @@ class WebhookTest extends TestCase
         $scheme = \array_key_exists('scheme', $opts) ? $opts['scheme'] : WebhookSignature::EXPECTED_SCHEME;
         $signature = \array_key_exists('signature', $opts) ? $opts['signature'] : null;
         if ($signature === null) {
-            $signedPayload = "${timestamp}.${payload}";
+            $signedPayload = "{$timestamp}.{$payload}";
             $signature = \hash_hmac("sha256", $signedPayload, $secret);
         }
-        return "t=${timestamp},${scheme}=${signature}";
+        return "t={$timestamp},{$scheme}={$signature}";
     }
 
     public function testValidJsonAndHeader()

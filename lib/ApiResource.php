@@ -84,7 +84,7 @@ abstract class ApiResource extends StripeObject
         // Replace dots with slashes for namespaced resources, e.g. if the object's name is
         // "foo.bar", then its URL will be "/v1/foo/bars".
         $base = \str_replace('.', '/', static::OBJECT_NAME);
-        return "/v1/${base}s";
+        return "/v1/{$base}s";
     }
 
     /**
@@ -95,13 +95,13 @@ abstract class ApiResource extends StripeObject
         if ($id === null) {
             $class = \get_called_class();
             $message = "Could not determine which URL to request: "
-               . "${class} instance has invalid ID: ${id}";
+               . "{$class} instance has invalid ID: {$id}";
             throw new Exception\UnexpectedValueException($message);
         }
         $id = Util\Util::utf8($id);
         $base = static::classUrl();
         $extn = \urlencode($id);
-        return "${base}/${extn}";
+        return "{$base}/{$extn}";
     }
 
     /**

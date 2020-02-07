@@ -34,7 +34,7 @@ class ApplicationFeeRefund extends ApiResource
         if (!$id) {
             throw new Exception\UnexpectedValueException(
                 "Could not determine which URL to request: " .
-                "class instance has invalid ID: ${id}",
+                "class instance has invalid ID: {$id}",
                 null
             );
         }
@@ -44,7 +44,7 @@ class ApplicationFeeRefund extends ApiResource
         $base = ApplicationFee::classUrl();
         $feeExtn = \urlencode($fee);
         $extn = \urlencode($id);
-        return "${base}/${feeExtn}/refunds/${extn}";
+        return "{$base}/{$feeExtn}/refunds/{$extn}";
     }
 
     /**

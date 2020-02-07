@@ -38,7 +38,7 @@ trait NestedResource
     {
         $url = static::resourceUrl($id) . $nestedPath;
         if ($nestedId !== null) {
-            $url .= "/${nestedId}";
+            $url .= "/{$nestedId}";
         }
         return $url;
     }

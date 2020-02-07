@@ -98,8 +98,8 @@ class Source extends ApiResource
         $id = $this['id'];
         if (!$id) {
             $class = \get_class($this);
-            $msg = "Could not determine which URL to request: ${class} instance "
-             . "has invalid ID: ${id}";
+            $msg = "Could not determine which URL to request: {$class} instance "
+             . "has invalid ID: {$id}";
             throw new Exception\UnexpectedValueException($msg, null);
         }
 
@@ -107,7 +107,7 @@ class Source extends ApiResource
             $base = Customer::classUrl();
             $parentExtn = \urlencode(Util\Util::utf8($this['customer']));
             $extn = \urlencode(Util\Util::utf8($id));
-            $url = "${base}/${parentExtn}/sources/${extn}";
+            $url = "{$base}/{$parentExtn}/sources/{$extn}";
 
             list($response, $opts) = $this->_request('delete', $url, $params, $opts);
             $this->refreshFrom($response, $opts);

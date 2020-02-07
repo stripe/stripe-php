@@ -20,8 +20,8 @@ if (isset($_GET['code'])) {
 
     $accountId = $resp->stripe_user_id;
 
-    echo "<p>Success! Account <code>${accountId}</code> is connected.</p>\n";
-    echo "<p>Click <a href=\"?deauth=${accountId}\">here</a> to disconnect the account.</p>\n";
+    echo "<p>Success! Account <code>{$accountId}</code> is connected.</p>\n";
+    echo "<p>Click <a href=\"?deauth={$accountId}\">here</a> to disconnect the account.</p>\n";
 } elseif (isset($_GET['error'])) {
     // The user was redirect back from the OAuth form with an error.
     $error = $_GET['error'];
@@ -47,5 +47,5 @@ if (isset($_GET['code'])) {
     $url = \Stripe\OAuth::authorizeUrl([
         'scope' => 'read_only',
     ]);
-    echo "<a href=\"${url}\">Connect with Stripe</a>\n";
+    echo "<a href=\"{$url}\">Connect with Stripe</a>\n";
 }

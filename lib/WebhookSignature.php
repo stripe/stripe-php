@@ -42,7 +42,7 @@ abstract class WebhookSignature
 
         // Check if expected signature is found in list of signatures from
         // header
-        $signedPayload = "${timestamp}.${payload}";
+        $signedPayload = "{$timestamp}.{$payload}";
         $expectedSignature = self::computeSignature($signedPayload, $secret);
         $signatureFound = false;
         foreach ($signatures as $signature) {
