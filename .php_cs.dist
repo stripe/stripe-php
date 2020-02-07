@@ -88,5 +88,6 @@ return PhpCsFixer\Config::create()
         'php_unit_fqcn_annotation' => true,
         'php_unit_method_casing' => true,
         'php_unit_mock_short_will_return' => true,
+        'php_unit_ordered_covers' => true,
     ])
 ;
