@@ -86,5 +86,6 @@ return PhpCsFixer\Config::create()
         'object_operator_without_whitespace' => true,
         'php_unit_construct' => true,
         'php_unit_fqcn_annotation' => true,
+        'php_unit_method_casing' => true,
     ])
 ;
