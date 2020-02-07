@@ -52,5 +52,6 @@ return PhpCsFixer\Config::create()
         'native_function_type_declaration_casing' => true,
         'new_with_braces' => true,
         'no_alias_functions' => true,
+        'no_alternative_syntax' => true,
     ])
 ;
