@@ -16,6 +16,7 @@ return PhpCsFixer\Config::create()
         ],
         'class_definition' => true,
         'combine_consecutive_unsets' => true,
+        'comment_to_phpdoc' => true,
         'linebreak_after_opening_tag' => true,
         'native_function_invocation' => true,
     ])
