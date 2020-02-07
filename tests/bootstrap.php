@@ -18,9 +18,9 @@ if (\Stripe\StripeMock::start()) {
 
 // Send a request to stripe-mock
 $ch = \curl_init(MOCK_URL);
-\curl_setopt($ch, CURLOPT_HEADER, 1);
-\curl_setopt($ch, CURLOPT_NOBODY, 1);
-\curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+\curl_setopt($ch, \CURLOPT_HEADER, 1);
+\curl_setopt($ch, \CURLOPT_NOBODY, 1);
+\curl_setopt($ch, \CURLOPT_RETURNTRANSFER, 1);
 $resp = \curl_exec($ch);
 
 if (\curl_errno($ch)) {

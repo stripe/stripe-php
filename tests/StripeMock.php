@@ -63,7 +63,7 @@ class StripeMock
         }
 
         echo "Stopping stripe-mock...\n";
-        static::$process->stop(0, SIGTERM);
+        static::$process->stop(0, \SIGTERM);
         static::$process->wait();
         static::$process = null;
         static::$port = -1;
@@ -87,7 +87,7 @@ class StripeMock
      */
     private static function findAvailablePort()
     {
-        $sock = \socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+        $sock = \socket_create(\AF_INET, \SOCK_STREAM, \SOL_TCP);
         \socket_bind($sock, "localhost", 0);
         $addr = null;
         $port = -1;

@@ -113,7 +113,7 @@ class CurlClientTest extends \Stripe\TestCase
     public function testDefaultOptions()
     {
         // make sure options array loads/saves properly
-        $optionsArray = [CURLOPT_PROXY => 'localhost:80'];
+        $optionsArray = [\CURLOPT_PROXY => 'localhost:80'];
         $withOptionsArray = new CurlClient($optionsArray);
         $this->assertSame($withOptionsArray->getDefaultOptions(), $optionsArray);
 
@@ -139,7 +139,7 @@ class CurlClientTest extends \Stripe\TestCase
     public function testSslOption()
     {
         // make sure options array loads/saves properly
-        $optionsArray = [CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1];
+        $optionsArray = [\CURLOPT_SSLVERSION => \CURL_SSLVERSION_TLSv1];
         $withOptionsArray = new CurlClient($optionsArray);
         $this->assertSame($withOptionsArray->getDefaultOptions(), $optionsArray);
     }
@@ -150,7 +150,7 @@ class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        $this->assertTrue($this->shouldRetryMethod->invoke($curlClient, CURLE_OPERATION_TIMEOUTED, 0, [], 0));
+        $this->assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_OPERATION_TIMEOUTED, 0, [], 0));
     }
 
     public function testShouldRetryOnConnectionFailure()
@@ -159,7 +159,7 @@ class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        $this->assertTrue($this->shouldRetryMethod->invoke($curlClient, CURLE_COULDNT_CONNECT, 0, [], 0));
+        $this->assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_COULDNT_CONNECT, 0, [], 0));
     }
 
     public function testShouldRetryOnConflict()
@@ -233,7 +233,7 @@ class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        $this->assertFalse($this->shouldRetryMethod->invoke($curlClient, CURLE_SSL_PEER_CERTIFICATE, -1, [], 0));
+        $this->assertFalse($this->shouldRetryMethod->invoke($curlClient, \CURLE_SSL_PEER_CERTIFICATE, -1, [], 0));
     }
 
     public function testSleepTimeShouldGrowExponentially()

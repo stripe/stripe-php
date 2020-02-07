@@ -18,7 +18,7 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
 
     public function __construct($initial_array = [])
     {
-        $this->container = \array_change_key_case($initial_array, CASE_LOWER);
+        $this->container = \array_change_key_case($initial_array, \CASE_LOWER);
     }
 
     public function count()

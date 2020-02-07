@@ -440,7 +440,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      */
     public function toJSON()
     {
-        return \json_encode($this->toArray(), JSON_PRETTY_PRINT);
+        return \json_encode($this->toArray(), \JSON_PRETTY_PRINT);
     }
 
     public function __toString()

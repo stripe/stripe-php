@@ -28,7 +28,7 @@ abstract class Webhook
 
         $data = \json_decode($payload, true);
         $jsonError = \json_last_error();
-        if ($data === null && $jsonError !== JSON_ERROR_NONE) {
+        if ($data === null && $jsonError !== \JSON_ERROR_NONE) {
             $msg = "Invalid payload: ${payload} "
               . "(json_last_error() was ${jsonError})";
             throw new Exception\UnexpectedValueException($msg);

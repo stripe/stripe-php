@@ -210,16 +210,16 @@ class CurlClient implements ClientInterface
                     "Issuing a GET request with a file parameter"
                 );
             }
-            $opts[CURLOPT_HTTPGET] = 1;
+            $opts[\CURLOPT_HTTPGET] = 1;
             if (\count($params) > 0) {
                 $encoded = Util\Util::encodeParameters($params);
                 $absUrl = "${absUrl}?${encoded}";
             }
         } elseif ($method == 'post') {
-            $opts[CURLOPT_POST] = 1;
-            $opts[CURLOPT_POSTFIELDS] = $hasFile ? $params : Util\Util::encodeParameters($params);
+            $opts[\CURLOPT_POST] = 1;
+            $opts[\CURLOPT_POSTFIELDS] = $hasFile ? $params : Util\Util::encodeParameters($params);
         } elseif ($method == 'delete') {
-            $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
+            $opts[\CURLOPT_CUSTOMREQUEST] = 'DELETE';
             if (\count($params) > 0) {
                 $encoded = Util\Util::encodeParameters($params);
                 $absUrl = "${absUrl}?${encoded}";
@@ -251,19 +251,19 @@ class CurlClient implements ClientInterface
         \array_push($headers, 'Expect: ');
 
         $absUrl = Util\Util::utf8($absUrl);
-        $opts[CURLOPT_URL] = $absUrl;
-        $opts[CURLOPT_RETURNTRANSFER] = true;
-        $opts[CURLOPT_CONNECTTIMEOUT] = $this->connectTimeout;
-        $opts[CURLOPT_TIMEOUT] = $this->timeout;
-        $opts[CURLOPT_HTTPHEADER] = $headers;
-        $opts[CURLOPT_CAINFO] = Stripe::getCABundlePath();
+        $opts[\CURLOPT_URL] = $absUrl;
+        $opts[\CURLOPT_RETURNTRANSFER] = true;
+        $opts[\CURLOPT_CONNECTTIMEOUT] = $this->connectTimeout;
+        $opts[\CURLOPT_TIMEOUT] = $this->timeout;
+        $opts[\CURLOPT_HTTPHEADER] = $headers;
+        $opts[\CURLOPT_CAINFO] = Stripe::getCABundlePath();
         if (!Stripe::getVerifySslCerts()) {
-            $opts[CURLOPT_SSL_VERIFYPEER] = false;
+            $opts[\CURLOPT_SSL_VERIFYPEER] = false;
         }
 
-        if (!isset($opts[CURLOPT_HTTP_VERSION]) && $this->getEnableHttp2()) {
+        if (!isset($opts[\CURLOPT_HTTP_VERSION]) && $this->getEnableHttp2()) {
             // For HTTPS requests, enable HTTP/2, if supported
-            $opts[CURLOPT_HTTP_VERSION] = CURL_HTTP_VERSION_2TLS;
+            $opts[\CURLOPT_HTTP_VERSION] = \CURL_HTTP_VERSION_2TLS;
         }
 
         list($rbody, $rcode, $rheaders) = $this->executeRequestWithRetries($opts, $absUrl);
@@ -277,7 +277,7 @@ class CurlClient implements ClientInterface
     private function executeRequestWithRetries($opts, $absUrl)
     {
         $numRetries = 0;
-        $isPost = \array_key_exists(CURLOPT_POST, $opts) && $opts[CURLOPT_POST] == 1;
+        $isPost = \array_key_exists(\CURLOPT_POST, $opts) && $opts[\CURLOPT_POST] == 1;
 
         while (true) {
             $rcode = 0;
@@ -295,7 +295,7 @@ class CurlClient implements ClientInterface
                 $rheaders[\trim($key)] = \trim($value);
                 return \strlen($header_line);
             };
-            $opts[CURLOPT_HEADERFUNCTION] = $headerCallback;
+            $opts[\CURLOPT_HEADERFUNCTION] = $headerCallback;
 
             $this->resetCurlHandle();
             \curl_setopt_array($this->curlHandle, $opts);
@@ -305,7 +305,7 @@ class CurlClient implements ClientInterface
                 $errno = \curl_errno($this->curlHandle);
                 $message = \curl_error($this->curlHandle);
             } else {
-                $rcode = \curl_getinfo($this->curlHandle, CURLINFO_HTTP_CODE);
+                $rcode = \curl_getinfo($this->curlHandle, \CURLINFO_HTTP_CODE);
             }
             if (!$this->getEnablePersistentConnections()) {
                 $this->closeCurlHandle();
@@ -346,16 +346,16 @@ class CurlClient implements ClientInterface
     private function handleCurlError($url, $errno, $message, $numRetries)
     {
         switch ($errno) {
-            case CURLE_COULDNT_CONNECT:
-            case CURLE_COULDNT_RESOLVE_HOST:
-            case CURLE_OPERATION_TIMEOUTED:
+            case \CURLE_COULDNT_CONNECT:
+            case \CURLE_COULDNT_RESOLVE_HOST:
+            case \CURLE_OPERATION_TIMEOUTED:
                 $msg = "Could not connect to Stripe (${url}).  Please check your "
                  . "internet connection and try again.  If this problem persists, "
                  . "you should check Stripe's service status at "
                  . "https://twitter.com/stripestatus, or";
                 break;
-            case CURLE_SSL_CACERT:
-            case CURLE_SSL_PEER_CERTIFICATE:
+            case \CURLE_SSL_CACERT:
+            case \CURLE_SSL_PEER_CERTIFICATE:
                 $msg = "Could not verify Stripe's SSL certificate.  Please make sure "
                  . "that your network is not intercepting certificates.  "
                  . "(Try going to ${url} in your browser.)  "
@@ -395,14 +395,14 @@ class CurlClient implements ClientInterface
         }
 
         // Retry on timeout-related problems (either on open or read).
-        if ($errno === CURLE_OPERATION_TIMEOUTED) {
+        if ($errno === \CURLE_OPERATION_TIMEOUTED) {
             return true;
         }
 
         // Destination refused the connection, the connection was reset, or a
         // variety of other connection failures. This could occur from a single
         // saturated server, so retry in case it's intermittent.
-        if ($errno === CURLE_COULDNT_CONNECT) {
+        if ($errno === \CURLE_COULDNT_CONNECT) {
             return true;
         }
 
