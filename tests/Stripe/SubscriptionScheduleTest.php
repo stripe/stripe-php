@@ -38,7 +38,7 @@ class SubscriptionScheduleTest extends TestCase
             "phases" => [
                 [
                     "plans" => [
-                        [ "plan" => "plan_123", "quantity" => 2],
+                        ["plan" => "plan_123", "quantity" => 2],
                     ],
                 ],
             ],

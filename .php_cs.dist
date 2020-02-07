@@ -110,4 +110,5 @@ return PhpCsFixer\Config::create()
         'string_line_ending' => true,
         'ternary_operator_spaces' => true,
         'trailing_comma_in_multiline_array' => true,
+        'trim_array_spaces' => true,
     ]);
