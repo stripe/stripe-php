@@ -321,7 +321,7 @@ class CurlClient implements ClientInterface
             }
 
             if ($shouldRetry) {
-                $numRetries += 1;
+                ++$numRetries;
                 $sleepSeconds = $this->sleepTime($numRetries, $rheaders);
                 \usleep((int) ($sleepSeconds * 1000000));
             } else {
