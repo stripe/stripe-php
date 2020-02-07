@@ -369,11 +369,12 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
                 return $value;
             }
             throw new Exception\InvalidArgumentException(
-                    "Cannot save property `${key}` containing an API resource of type " .
+                "Cannot save property `${key}` containing an API resource of type " .
                     \get_class($value) . ". It doesn't appear to be persisted and is " .
                     "not marked as `saveWithParent`."
-                );
-        } elseif (\is_array($value)) {
+            );
+        }
+        if (\is_array($value)) {
             if (Util\Util::isList($value)) {
                 // Sequential array, i.e. a list
                 $update = [];
