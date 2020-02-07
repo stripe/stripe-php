@@ -101,5 +101,6 @@ return PhpCsFixer\Config::create()
         'simple_to_complex_string_variable' => true,
         'single_blank_line_before_namespace' => true,
         'single_line_comment_style' => true,
+        'single_trait_insert_per_statement' => true,
     ])
 ;
