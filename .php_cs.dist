@@ -55,5 +55,6 @@ return PhpCsFixer\Config::create()
         'no_alternative_syntax' => true,
         'no_binary_string' => true,
         'no_blank_lines_after_class_opening' => true,
+        'no_empty_comment' => true,
     ])
 ;
