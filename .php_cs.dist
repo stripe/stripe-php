@@ -39,6 +39,7 @@ return PhpCsFixer\Config::create()
         'linebreak_after_opening_tag' => true,
         'logical_operators' => true,
         'lowercase_cast' => true,
+        'lowercase_static_reference' => true,
         'native_function_invocation' => true,
     ])
 ;
