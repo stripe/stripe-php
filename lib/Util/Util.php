@@ -131,7 +131,8 @@ abstract class Util
                 \array_push($mapped, self::convertToStripeObject($i, $opts));
             }
             return $mapped;
-        } elseif (\is_array($resp)) {
+        }
+        if (\is_array($resp)) {
             if (isset($resp['object']) && \is_string($resp['object']) && isset($types[$resp['object']])) {
                 $class = $types[$resp['object']];
             } else {
@@ -210,13 +211,15 @@ abstract class Util
     {
         if ($h instanceof \Stripe\ApiResource) {
             return $h->id;
-        } elseif (static::isList($h)) {
+        }
+        if (static::isList($h)) {
             $results = [];
             foreach ($h as $v) {
                 \array_push($results, static::objectsToIds($v));
             }
             return $results;
-        } elseif (\is_array($h)) {
+        }
+        if (\is_array($h)) {
             $results = [];
             foreach ($h as $k => $v) {
                 if (null === $v) {

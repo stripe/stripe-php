@@ -80,11 +80,14 @@ class ApiRequestor
     {
         if ($d instanceof ApiResource) {
             return Util\Util::utf8($d->id);
-        } elseif ($d === true) {
+        }
+        if ($d === true) {
             return 'true';
-        } elseif ($d === false) {
+        }
+        if ($d === false) {
             return 'false';
-        } elseif (\is_array($d)) {
+        }
+        if (\is_array($d)) {
             $res = [];
             foreach ($d as $k => $v) {
                 $res[$k] = self::_encodeObjects($v);

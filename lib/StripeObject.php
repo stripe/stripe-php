@@ -153,7 +153,8 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         $nullval = null;
         if (!empty($this->_values) && \array_key_exists($k, $this->_values)) {
             return $this->_values[$k];
-        } elseif (!empty($this->_transientValues) && $this->_transientValues->includes($k)) {
+        }
+        if (!empty($this->_transientValues) && $this->_transientValues->includes($k)) {
             $class = \get_class($this);
             $attrs = \implode(', ', \array_keys($this->_values));
             $message = "Stripe Notice: Undefined property of ${class} instance: ${k}. "
@@ -360,10 +361,12 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         // user intended it to.
         if ($value === null) {
             return "";
-        } elseif (($value instanceof ApiResource) && (!$value->saveWithParent)) {
+        }
+        if (($value instanceof ApiResource) && (!$value->saveWithParent)) {
             if (!$unsaved) {
                 return null;
-            } elseif (isset($value->id)) {
+            }
+            if (isset($value->id)) {
                 return $value;
             } else {
                 throw new Exception\InvalidArgumentException(
@@ -486,7 +489,8 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
                 $copy[$k] = self::deepCopy($v);
             }
             return $copy;
-        } elseif ($obj instanceof StripeObject) {
+        }
+        if ($obj instanceof StripeObject) {
             return $obj::constructFrom(
                 self::deepCopy($obj->_values),
                 clone $obj->_opts
