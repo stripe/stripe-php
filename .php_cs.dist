@@ -21,6 +21,7 @@ return PhpCsFixer\Config::create()
         'concat_space' => [
             'spacing' => 'one',
         ],
+        'declare_equal_normalize' => true,
         'linebreak_after_opening_tag' => true,
         'native_function_invocation' => true,
     ])
