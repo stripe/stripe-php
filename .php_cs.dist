@@ -10,6 +10,7 @@ return PhpCsFixer\Config::create()
         'array_indentation' => true,
         'array_syntax' => ['syntax' => 'short'],
         'blank_line_after_opening_tag' => true,
+        'cast_spaces' => true,
         'class_attributes_separation' => [
             'elements' => ['method'],
         ],

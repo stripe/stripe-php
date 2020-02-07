@@ -163,7 +163,7 @@ class StripeObjectTest extends TestCase
         $s = new StripeObject();
         $s->foo = 'a';
 
-        $string = (string)$s;
+        $string = (string) $s;
         $expected = <<<EOS
 Stripe\StripeObject JSON: {
     "foo": "a"
