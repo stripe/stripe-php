@@ -53,5 +53,6 @@ return PhpCsFixer\Config::create()
         'new_with_braces' => true,
         'no_alias_functions' => true,
         'no_alternative_syntax' => true,
+        'no_binary_string' => true,
     ])
 ;
