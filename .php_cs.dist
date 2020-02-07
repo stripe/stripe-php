@@ -14,6 +14,7 @@ return PhpCsFixer\Config::create()
         'class_attributes_separation' => [
             'elements' => ['method'],
         ],
+        'class_definition' => true,
         'linebreak_after_opening_tag' => true,
         'native_function_invocation' => true,
     ])
