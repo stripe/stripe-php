@@ -5,26 +5,26 @@ namespace Stripe;
 /**
  * Class Account
  *
- * @property string $id
- * @property string $object
- * @property \Stripe\StripeObject|null $business_profile
- * @property string|null $business_type
+ * @property string $id Unique identifier for the object.
+ * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property \Stripe\StripeObject|null $business_profile Business information about the account.
+ * @property string|null $business_type The business type.
  * @property \Stripe\StripeObject $capabilities
- * @property bool $charges_enabled
+ * @property bool $charges_enabled Whether the account can create live charges.
  * @property \Stripe\StripeObject $company
- * @property string $country
- * @property int $created
- * @property string $default_currency
- * @property bool $details_submitted
- * @property string|null $email
- * @property \Stripe\Collection $external_accounts
+ * @property string $country The account's country.
+ * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
+ * @property string $default_currency Three-letter ISO currency code representing the default currency for the account. This must be a currency that <a href="https://stripe.com/docs/payouts">Stripe supports in the account's country</a>.
+ * @property bool $details_submitted Whether account details have been submitted. Standard accounts cannot receive payouts before this is true.
+ * @property string|null $email The primary user's email address.
+ * @property \Stripe\Collection $external_accounts External accounts (bank accounts and debit cards) currently attached to this account
  * @property \Stripe\Person $individual
- * @property \Stripe\StripeObject $metadata
- * @property bool $payouts_enabled
+ * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property bool $payouts_enabled Whether Stripe can send payouts to this account.
  * @property \Stripe\StripeObject $requirements
- * @property \Stripe\StripeObject|null $settings
+ * @property \Stripe\StripeObject|null $settings Options for customizing how the account functions within Stripe.
  * @property \Stripe\StripeObject $tos_acceptance
- * @property string $type
+ * @property string $type The Stripe account type. Can be <code>standard</code>, <code>express</code>, or <code>custom</code>.
  *
  * @package Stripe
  */

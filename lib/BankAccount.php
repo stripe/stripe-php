@@ -5,21 +5,21 @@ namespace Stripe;
 /**
  * Class BankAccount
  *
- * @property string $id
- * @property string $object
- * @property string|\Stripe\Account|null $account
- * @property string|null $account_holder_name
- * @property string|null $account_holder_type
- * @property string|null $bank_name
- * @property string $country
- * @property string $currency
- * @property string|\Stripe\Customer|null $customer
- * @property bool|null $default_for_currency
- * @property string|null $fingerprint
- * @property string $last4
- * @property \Stripe\StripeObject|null $metadata
- * @property string|null $routing_number
- * @property string $status
+ * @property string $id Unique identifier for the object.
+ * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property string|\Stripe\Account|null $account The ID of the account that the bank account is associated with.
+ * @property string|null $account_holder_name The name of the person or business that owns the bank account.
+ * @property string|null $account_holder_type The type of entity that holds the account. This can be either <code>individual</code> or <code>company</code>.
+ * @property string|null $bank_name Name of the bank associated with the routing number (e.g., <code>WELLS FARGO</code>).
+ * @property string $country Two-letter ISO code representing the country the bank account is located in.
+ * @property string $currency Three-letter <a href="https://stripe.com/docs/payouts">ISO code for the currency</a> paid out to the bank account.
+ * @property string|\Stripe\Customer|null $customer The ID of the customer that the bank account is associated with.
+ * @property bool|null $default_for_currency Whether this bank account is the default external account for its currency.
+ * @property string|null $fingerprint Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
+ * @property string $last4 The last four digits of the bank account number.
+ * @property \Stripe\StripeObject|null $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property string|null $routing_number The routing transit number for the bank account.
+ * @property string $status <p>For bank accounts, possible values are <code>new</code>, <code>validated</code>, <code>verified</code>, <code>verification_failed</code>, or <code>errored</code>. A bank account that hasn't had any activity or validation performed is <code>new</code>. If Stripe can determine that the bank account exists, its status will be <code>validated</code>. Note that there often isn’t enough information to know (e.g., for smaller credit unions), and the validation is not always run. If customer bank account verification has succeeded, the bank account status will be <code>verified</code>. If the verification failed for any reason, such as microdeposit failure, the status will be <code>verification_failed</code>. If a transfer sent to this bank account fails, we'll set the status to <code>errored</code> and will not continue to send transfers until the bank details are updated.</p><p>For external accounts, possible values are <code>new</code> and <code>errored</code>. Validations aren't run against external accounts because they're only used for payouts. This means the other statuses don't apply. If a transfer fails, the status is set to <code>errored</code> and transfers are stopped until account details are updated.</p>
  *
  * @package Stripe
  */

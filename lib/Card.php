@@ -5,34 +5,34 @@ namespace Stripe;
 /**
  * Class Card
  *
- * @property string $id
- * @property string $object
- * @property string|\Stripe\Account|null $account
- * @property string|null $address_city
- * @property string|null $address_country
- * @property string|null $address_line1
- * @property string|null $address_line1_check
- * @property string|null $address_line2
- * @property string|null $address_state
- * @property string|null $address_zip
- * @property string|null $address_zip_check
- * @property string[]|null $available_payout_methods
- * @property string $brand
- * @property string|null $country
+ * @property string $id Unique identifier for the object.
+ * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property string|\Stripe\Account|null $account The account this card belongs to. This attribute will not be in the card object if the card belongs to a customer or recipient instead.
+ * @property string|null $address_city City/District/Suburb/Town/Village.
+ * @property string|null $address_country Billing address country, if provided when creating card.
+ * @property string|null $address_line1 Address line 1 (Street address/PO Box/Company name).
+ * @property string|null $address_line1_check If <code>address_line1</code> was provided, results of the check: <code>pass</code>, <code>fail</code>, <code>unavailable</code>, or <code>unchecked</code>.
+ * @property string|null $address_line2 Address line 2 (Apartment/Suite/Unit/Building).
+ * @property string|null $address_state State/County/Province/Region.
+ * @property string|null $address_zip ZIP or postal code.
+ * @property string|null $address_zip_check If <code>address_zip</code> was provided, results of the check: <code>pass</code>, <code>fail</code>, <code>unavailable</code>, or <code>unchecked</code>.
+ * @property string[]|null $available_payout_methods A set of available payout methods for this card. Will be either <code>[&quot;standard&quot;]</code> or <code>[&quot;standard&quot;, &quot;instant&quot;]</code>. Only values from this set should be passed as the <code>method</code> when creating a transfer.
+ * @property string $brand Card brand. Can be <code>American Express</code>, <code>Diners Club</code>, <code>Discover</code>, <code>JCB</code>, <code>MasterCard</code>, <code>UnionPay</code>, <code>Visa</code>, or <code>Unknown</code>.
+ * @property string|null $country Two-letter ISO code representing the country of the card. You could use this attribute to get a sense of the international breakdown of cards you've collected.
  * @property string|null $currency
- * @property string|\Stripe\Customer|null $customer
- * @property string|null $cvc_check
- * @property bool|null $default_for_currency
- * @property string|null $dynamic_last4
- * @property int $exp_month
- * @property int $exp_year
- * @property string|null $fingerprint
- * @property string $funding
- * @property string $last4
- * @property \Stripe\StripeObject $metadata
- * @property string|null $name
- * @property string|\Stripe\Recipient|null $recipient
- * @property string|null $tokenization_method
+ * @property string|\Stripe\Customer|null $customer The customer that this card belongs to. This attribute will not be in the card object if the card belongs to an account or recipient instead.
+ * @property string|null $cvc_check If a CVC was provided, results of the check: <code>pass</code>, <code>fail</code>, <code>unavailable</code>, or <code>unchecked</code>.
+ * @property bool|null $default_for_currency Whether this card is the default external account for its currency.
+ * @property string|null $dynamic_last4 (For tokenized numbers only.) The last four digits of the device account number.
+ * @property int $exp_month Two-digit number representing the card's expiration month.
+ * @property int $exp_year Four-digit number representing the card's expiration year.
+ * @property string|null $fingerprint Uniquely identifies this particular card number. You can use this attribute to check whether two customers who've signed up with you are using the same card number, for example.
+ * @property string $funding Card funding type. Can be <code>credit</code>, <code>debit</code>, <code>prepaid</code>, or <code>unknown</code>.
+ * @property string $last4 The last four digits of the card.
+ * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property string|null $name Cardholder name.
+ * @property string|\Stripe\Recipient|null $recipient The recipient that this card belongs to. This attribute will not be in the card object if the card belongs to a customer or account instead.
+ * @property string|null $tokenization_method If the card number is tokenized, this is the method that was used. Can be <code>amex_express_checkout</code>, <code>android_pay</code> (includes Google Pay), <code>apple_pay</code>, <code>masterpass</code>, <code>visa_checkout</code>, or null.
  *
  * @package Stripe
  */
