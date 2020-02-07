@@ -26,6 +26,7 @@ return PhpCsFixer\Config::create()
         'error_suppression' => true,
         'escape_implicit_backslashes' => true,
         'explicit_string_variable' => true,
+        'final_internal_class' => true,
         'linebreak_after_opening_tag' => true,
         'native_function_invocation' => true,
     ])
