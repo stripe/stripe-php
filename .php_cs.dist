@@ -41,6 +41,7 @@ return PhpCsFixer\Config::create()
         'lowercase_cast' => true,
         'lowercase_static_reference' => true,
         'magic_constant_casing' => true,
+        'magic_method_casing' => true,
         'native_function_invocation' => true,
     ])
 ;
