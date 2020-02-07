@@ -31,6 +31,7 @@ return PhpCsFixer\Config::create()
         'fopen_flags' => true,
         'fully_qualified_strict_types' => true,
         'function_to_constant' => true,
+        'function_typehint_space' => true,
         'linebreak_after_opening_tag' => true,
         'native_function_invocation' => true,
     ])
