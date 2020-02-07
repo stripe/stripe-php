@@ -323,7 +323,7 @@ class CurlClient implements ClientInterface
             if ($shouldRetry) {
                 $numRetries += 1;
                 $sleepSeconds = $this->sleepTime($numRetries, $rheaders);
-                \usleep(\intval($sleepSeconds * 1000000));
+                \usleep((int) ($sleepSeconds * 1000000));
             } else {
                 break;
             }
@@ -460,7 +460,7 @@ class CurlClient implements ClientInterface
         $sleepSeconds = \max(Stripe::getInitialNetworkRetryDelay(), $sleepSeconds);
 
         // And never sleep less than the time the API asks us to wait, assuming it's a reasonable ask.
-        $retryAfter = isset($rheaders['retry-after']) ? \floatval($rheaders['retry-after']) : 0.0;
+        $retryAfter = isset($rheaders['retry-after']) ? (float) ($rheaders['retry-after']) : 0.0;
         if (\floor($retryAfter) == $retryAfter && $retryAfter <= Stripe::getMaxRetryAfter()) {
             $sleepSeconds = \max($sleepSeconds, $retryAfter);
         }

@@ -88,7 +88,7 @@ abstract class WebhookSignature
                 if (!\is_numeric($itemParts[1])) {
                     return -1;
                 }
-                return \intval($itemParts[1]);
+                return (int) ($itemParts[1]);
             }
         }
 
