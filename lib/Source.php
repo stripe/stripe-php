@@ -117,7 +117,7 @@ class Source extends ApiResource
             return $this;
         }
         $message = "This source object does not appear to be currently attached "
-               . "to a customer object.";
+            . "to a customer object.";
         throw new Exception\UnexpectedValueException($message);
     }
 
