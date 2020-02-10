@@ -24,7 +24,7 @@ class BitcoinReceiverTest extends TestCase
     public function testHasCorrectStandaloneUrl()
     {
         $resource = $this->createFixture();
-        $this->assertSame(
+        static::assertSame(
             "/v1/bitcoin/receivers/" . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
@@ -33,7 +33,7 @@ class BitcoinReceiverTest extends TestCase
     public function testHasCorrectUrlForCustomer()
     {
         $resource = $this->createFixture(['customer' => 'cus_123']);
-        $this->assertSame(
+        static::assertSame(
             "/v1/customers/cus_123/sources/" . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
@@ -46,8 +46,8 @@ class BitcoinReceiverTest extends TestCase
             '/v1/bitcoin/receivers'
         );
         $resources = BitcoinReceiver::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertSame(\Stripe\BitcoinReceiver::class, \get_class($resources->data[0]));
+        static::assertInternalType('array', $resources->data);
+        static::assertSame(\Stripe\BitcoinReceiver::class, \get_class($resources->data[0]));
     }
 
     public function testIsRetrievable()
@@ -57,6 +57,6 @@ class BitcoinReceiverTest extends TestCase
             '/v1/bitcoin/receivers/' . self::TEST_RESOURCE_ID
         );
         $resource = BitcoinReceiver::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertSame(\Stripe\BitcoinReceiver::class, \get_class($resource));
+        static::assertSame(\Stripe\BitcoinReceiver::class, \get_class($resource));
     }
 }

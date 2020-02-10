@@ -10,7 +10,7 @@ class PersonTest extends TestCase
     public function testHasCorrectUrl()
     {
         $resource = \Stripe\Account::retrievePerson(self::TEST_ACCOUNT_ID, self::TEST_RESOURCE_ID);
-        $this->assertSame(
+        static::assertSame(
             "/v1/accounts/" . self::TEST_ACCOUNT_ID . "/persons/" . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
@@ -32,7 +32,7 @@ class PersonTest extends TestCase
             '/v1/accounts/' . self::TEST_ACCOUNT_ID . '/persons/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertSame(\Stripe\Person::class, \get_class($resource));
+        static::assertSame(\Stripe\Person::class, \get_class($resource));
     }
 
     public function testIsNotDirectlyUpdatable()
@@ -52,6 +52,6 @@ class PersonTest extends TestCase
             '/v1/accounts/' . self::TEST_ACCOUNT_ID . '/persons/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertSame(\Stripe\Person::class, \get_class($resource));
+        static::assertSame(\Stripe\Person::class, \get_class($resource));
     }
 }

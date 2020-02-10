@@ -13,8 +13,8 @@ class CouponTest extends TestCase
             '/v1/coupons'
         );
         $resources = Coupon::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\Coupon::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Coupon::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class CouponTest extends TestCase
             '/v1/coupons/' . self::TEST_RESOURCE_ID
         );
         $resource = Coupon::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\Coupon::class, $resource);
+        static::assertInstanceOf(\Stripe\Coupon::class, $resource);
     }
 
     public function testIsCreatable()
@@ -39,7 +39,7 @@ class CouponTest extends TestCase
             "duration_in_months" => 3,
             "id" => self::TEST_RESOURCE_ID,
         ]);
-        $this->assertInstanceOf(\Stripe\Coupon::class, $resource);
+        static::assertInstanceOf(\Stripe\Coupon::class, $resource);
     }
 
     public function testIsSaveable()
@@ -51,7 +51,7 @@ class CouponTest extends TestCase
             '/v1/coupons/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\Coupon::class, $resource);
+        static::assertInstanceOf(\Stripe\Coupon::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -63,7 +63,7 @@ class CouponTest extends TestCase
         $resource = Coupon::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\Coupon::class, $resource);
+        static::assertInstanceOf(\Stripe\Coupon::class, $resource);
     }
 
     public function testIsDeletable()
@@ -74,6 +74,6 @@ class CouponTest extends TestCase
             '/v1/coupons/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertInstanceOf(\Stripe\Coupon::class, $resource);
+        static::assertInstanceOf(\Stripe\Coupon::class, $resource);
     }
 }

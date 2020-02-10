@@ -13,8 +13,8 @@ class SKUTest extends TestCase
             '/v1/skus'
         );
         $resources = SKU::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\SKU::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\SKU::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class SKUTest extends TestCase
             '/v1/skus/' . self::TEST_RESOURCE_ID
         );
         $resource = SKU::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\SKU::class, $resource);
+        static::assertInstanceOf(\Stripe\SKU::class, $resource);
     }
 
     public function testIsCreatable()
@@ -37,12 +37,12 @@ class SKUTest extends TestCase
             'currency'  => 'usd',
             'inventory' => [
                 'type'     => 'finite',
-                'quantity' => 1
+                'quantity' => 1,
             ],
             'price'     => 100,
-            'product'   => "prod_123"
+            'product'   => "prod_123",
         ]);
-        $this->assertInstanceOf(\Stripe\SKU::class, $resource);
+        static::assertInstanceOf(\Stripe\SKU::class, $resource);
     }
 
     public function testIsSaveable()
@@ -54,7 +54,7 @@ class SKUTest extends TestCase
             '/v1/skus/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\SKU::class, $resource);
+        static::assertInstanceOf(\Stripe\SKU::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -66,7 +66,7 @@ class SKUTest extends TestCase
         $resource = SKU::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\SKU::class, $resource);
+        static::assertInstanceOf(\Stripe\SKU::class, $resource);
     }
 
     public function testIsDeletable()
@@ -77,6 +77,6 @@ class SKUTest extends TestCase
             '/v1/skus/' . $resource->id
         );
         $resource->delete();
-        $this->assertInstanceOf(\Stripe\SKU::class, $resource);
+        static::assertInstanceOf(\Stripe\SKU::class, $resource);
     }
 }

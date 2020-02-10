@@ -7,22 +7,22 @@ class RequestOptionsTest extends \Stripe\TestCase
     public function testStringAPIKey()
     {
         $opts = RequestOptions::parse("foo");
-        $this->assertSame("foo", $opts->apiKey);
-        $this->assertSame([], $opts->headers);
+        static::assertSame("foo", $opts->apiKey);
+        static::assertSame([], $opts->headers);
     }
 
     public function testNull()
     {
         $opts = RequestOptions::parse(null);
-        $this->assertSame(null, $opts->apiKey);
-        $this->assertSame([], $opts->headers);
+        static::assertNull($opts->apiKey);
+        static::assertSame([], $opts->headers);
     }
 
     public function testEmptyArray()
     {
         $opts = RequestOptions::parse([]);
-        $this->assertSame(null, $opts->apiKey);
-        $this->assertSame([], $opts->headers);
+        static::assertNull($opts->apiKey);
+        static::assertSame([], $opts->headers);
     }
 
     public function testAPIKeyArray()
@@ -32,8 +32,8 @@ class RequestOptionsTest extends \Stripe\TestCase
                 'api_key' => 'foo',
             ]
         );
-        $this->assertSame('foo', $opts->apiKey);
-        $this->assertSame([], $opts->headers);
+        static::assertSame('foo', $opts->apiKey);
+        static::assertSame([], $opts->headers);
     }
 
     public function testIdempotentKeyArray()
@@ -43,8 +43,8 @@ class RequestOptionsTest extends \Stripe\TestCase
                 'idempotency_key' => 'foo',
             ]
         );
-        $this->assertSame(null, $opts->apiKey);
-        $this->assertSame(['Idempotency-Key' => 'foo'], $opts->headers);
+        static::assertNull($opts->apiKey);
+        static::assertSame(['Idempotency-Key' => 'foo'], $opts->headers);
     }
 
     public function testKeyArray()
@@ -52,11 +52,11 @@ class RequestOptionsTest extends \Stripe\TestCase
         $opts = RequestOptions::parse(
             [
                 'idempotency_key' => 'foo',
-                'api_key' => 'foo'
+                'api_key' => 'foo',
             ]
         );
-        $this->assertSame('foo', $opts->apiKey);
-        $this->assertSame(['Idempotency-Key' => 'foo'], $opts->headers);
+        static::assertSame('foo', $opts->apiKey);
+        static::assertSame(['Idempotency-Key' => 'foo'], $opts->headers);
     }
 
     public function testWrongType()
@@ -75,21 +75,21 @@ class RequestOptionsTest extends \Stripe\TestCase
             ]
         );
         $opts->discardNonPersistentHeaders();
-        $this->assertSame(['Stripe-Account' => 'foo'], $opts->headers);
+        static::assertSame(['Stripe-Account' => 'foo'], $opts->headers);
     }
 
     public function testDebugInfo()
     {
         $opts = RequestOptions::parse(['api_key' => 'sk_test_1234567890abcdefghijklmn']);
         $debugInfo = \print_r($opts, true);
-        $this->assertContains("[apiKey] => sk_test_********************klmn", $debugInfo);
+        static::assertContains("[apiKey] => sk_test_********************klmn", $debugInfo);
 
         $opts = RequestOptions::parse(['api_key' => 'sk_1234567890abcdefghijklmn']);
         $debugInfo = \print_r($opts, true);
-        $this->assertContains("[apiKey] => sk_********************klmn", $debugInfo);
+        static::assertContains("[apiKey] => sk_********************klmn", $debugInfo);
 
         $opts = RequestOptions::parse(['api_key' => '1234567890abcdefghijklmn']);
         $debugInfo = \print_r($opts, true);
-        $this->assertContains("[apiKey] => ********************klmn", $debugInfo);
+        static::assertContains("[apiKey] => ********************klmn", $debugInfo);
     }
 }

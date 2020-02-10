@@ -2,7 +2,7 @@
 
 namespace Stripe;
 
-use \Symfony\Component\Process\Process;
+use Symfony\Component\Process\Process;
 
 class StripeMock
 {
@@ -23,7 +23,7 @@ class StripeMock
             return false;
         }
 
-        if (!\is_null(static::$process) && static::$process->isRunning()) {
+        if (null !== static::$process && static::$process->isRunning()) {
             echo "stripe-mock already running on port " . static::$port . "\n";
             return true;
         }
@@ -32,7 +32,7 @@ class StripeMock
 
         echo "Starting stripe-mock on port " . static::$port . "...\n";
 
-        static::$process = new Process(\join(' ', [
+        static::$process = new Process(\implode(' ', [
             'stripe-mock',
             '-http-port',
             static::$port,
@@ -58,12 +58,12 @@ class StripeMock
      */
     public static function stop()
     {
-        if (\is_null(static::$process) || !static::$process->isRunning()) {
+        if (null === static::$process || !static::$process->isRunning()) {
             return;
         }
 
         echo "Stopping stripe-mock...\n";
-        static::$process->stop(0, SIGTERM);
+        static::$process->stop(0, \SIGTERM);
         static::$process->wait();
         static::$process = null;
         static::$port = -1;
@@ -87,7 +87,7 @@ class StripeMock
      */
     private static function findAvailablePort()
     {
-        $sock = \socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+        $sock = \socket_create(\AF_INET, \SOCK_STREAM, \SOL_TCP);
         \socket_bind($sock, "localhost", 0);
         $addr = null;
         $port = -1;

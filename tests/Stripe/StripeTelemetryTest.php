@@ -28,16 +28,16 @@ class StripeTelemetryTest extends TestCase
         $requestheaders = null;
 
         $stub = $this
-            ->getMockBuilder("HttpClient\ClientInterface")
+            ->getMockBuilder("HttpClient\\ClientInterface")
             ->setMethods(['request'])
             ->getMock();
 
-        $stub->expects($this->any())
+        $stub->expects(static::any())
             ->method("request")
             ->with(
-                $this->anything(),
-                $this->anything(),
-                $this->callback(function ($headers) use (&$requestheaders) {
+                static::anything(),
+                static::anything(),
+                static::callback(function ($headers) use (&$requestheaders) {
                     foreach ($headers as $index => $header) {
                         // capture the requested headers and format back to into an assoc array
                         $components = \explode(": ", $header, 2);
@@ -46,19 +46,19 @@ class StripeTelemetryTest extends TestCase
 
                     return true;
                 }),
-                $this->anything(),
-                $this->anything()
+                static::anything(),
+                static::anything()
             )->willReturn([self::FAKE_VALID_RESPONSE, 200, ["request-id" => "123"]]);
 
         ApiRequestor::setHttpClient($stub);
 
         // make one request to capture its result
         Charge::all();
-        $this->assertArrayNotHasKey('X-Stripe-Client-Telemetry', $requestheaders);
+        static::assertArrayNotHasKey('X-Stripe-Client-Telemetry', $requestheaders);
 
         // make another request and verify telemetry isn't sent
         Charge::all();
-        $this->assertArrayNotHasKey('X-Stripe-Client-Telemetry', $requestheaders);
+        static::assertArrayNotHasKey('X-Stripe-Client-Telemetry', $requestheaders);
 
         ApiRequestor::setHttpClient(null);
     }
@@ -70,16 +70,16 @@ class StripeTelemetryTest extends TestCase
         $requestheaders = null;
 
         $stub = $this
-            ->getMockBuilder("HttpClient\ClientInterface")
+            ->getMockBuilder("HttpClient\\ClientInterface")
             ->setMethods(['request'])
             ->getMock();
 
-        $stub->expects($this->any())
+        $stub->expects(static::any())
             ->method("request")
             ->with(
-                $this->anything(),
-                $this->anything(),
-                $this->callback(function ($headers) use (&$requestheaders) {
+                static::anything(),
+                static::anything(),
+                static::callback(function ($headers) use (&$requestheaders) {
                     // capture the requested headers and format back to into an assoc array
                     foreach ($headers as $index => $header) {
                         $components = \explode(": ", $header, 2);
@@ -88,23 +88,23 @@ class StripeTelemetryTest extends TestCase
 
                     return true;
                 }),
-                $this->anything(),
-                $this->anything()
+                static::anything(),
+                static::anything()
             )->willReturn([self::FAKE_VALID_RESPONSE, 200, ["request-id" => ["req_123"]]]);
 
         ApiRequestor::setHttpClient($stub);
 
         // make one request to capture its result
         Charge::all();
-        $this->assertArrayNotHasKey('X-Stripe-Client-Telemetry', $requestheaders);
+        static::assertArrayNotHasKey('X-Stripe-Client-Telemetry', $requestheaders);
 
         // make another request to send the previous
         Charge::all();
-        $this->assertArrayHasKey('X-Stripe-Client-Telemetry', $requestheaders);
+        static::assertArrayHasKey('X-Stripe-Client-Telemetry', $requestheaders);
 
         $data = \json_decode($requestheaders['X-Stripe-Client-Telemetry'], true);
-        $this->assertEquals('req_123', $data['last_request_metrics']['request_id']);
-        $this->assertNotNull($data['last_request_metrics']['request_duration_ms']);
+        static::assertEquals('req_123', $data['last_request_metrics']['request_id']);
+        static::assertNotNull($data['last_request_metrics']['request_duration_ms']);
 
         ApiRequestor::setHttpClient(null);
     }

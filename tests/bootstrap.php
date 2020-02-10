@@ -18,9 +18,9 @@ if (\Stripe\StripeMock::start()) {
 
 // Send a request to stripe-mock
 $ch = \curl_init(MOCK_URL);
-\curl_setopt($ch, CURLOPT_HEADER, 1);
-\curl_setopt($ch, CURLOPT_NOBODY, 1);
-\curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+\curl_setopt($ch, \CURLOPT_HEADER, 1);
+\curl_setopt($ch, \CURLOPT_NOBODY, 1);
+\curl_setopt($ch, \CURLOPT_RETURNTRANSFER, 1);
 $resp = \curl_exec($ch);
 
 if (\curl_errno($ch)) {
@@ -34,19 +34,19 @@ $version = null;
 $headers = \explode("\n", $resp);
 foreach ($headers as $header) {
     $pair = \explode(":", $header, 2);
-    if ($pair[0] == "Stripe-Mock-Version") {
+    if ("Stripe-Mock-Version" === $pair[0]) {
         $version = \trim($pair[1]);
     }
 }
 
-if ($version === null) {
+if (null === $version) {
     echo "Could not retrieve Stripe-Mock-Version header. Are you sure " .
          "that the server at `" . MOCK_HOST . ":" . MOCK_PORT . "` is a stripe-mock " .
          "instance?";
     exit(1);
 }
 
-if ($version != "master" && \version_compare($version, MOCK_MINIMUM_VERSION) == -1) {
+if ("master" !== $version && -1 === \version_compare($version, MOCK_MINIMUM_VERSION)) {
     echo "Your version of stripe-mock (" . $version . ") is too old. The minimum " .
          "version to run this test suite is " . MOCK_MINIMUM_VERSION . ". " .
          "Please see its repository for upgrade instructions.\n";

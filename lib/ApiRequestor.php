@@ -57,15 +57,15 @@ class ApiRequestor
             'last_request_metrics' => [
                 'request_id' => $requestTelemetry->requestId,
                 'request_duration_ms' => $requestTelemetry->requestDuration,
-        ]];
+            ],
+        ];
 
         $result = \json_encode($payload);
-        if ($result != false) {
+        if (false !== $result) {
             return $result;
-        } else {
-            Stripe::getLogger()->error("Serializing telemetry payload failed!");
-            return "{}";
         }
+        Stripe::getLogger()->error("Serializing telemetry payload failed!");
+        return "{}";
     }
 
     /**
@@ -79,19 +79,21 @@ class ApiRequestor
     {
         if ($d instanceof ApiResource) {
             return Util\Util::utf8($d->id);
-        } elseif ($d === true) {
+        }
+        if (true === $d) {
             return 'true';
-        } elseif ($d === false) {
+        }
+        if (false === $d) {
             return 'false';
-        } elseif (\is_array($d)) {
+        }
+        if (\is_array($d)) {
             $res = [];
             foreach ($d as $k => $v) {
                 $res[$k] = self::_encodeObjects($v);
             }
             return $res;
-        } else {
-            return Util\Util::utf8($d);
         }
+        return Util\Util::utf8($d);
     }
 
     /**
@@ -127,8 +129,8 @@ class ApiRequestor
     public function handleErrorResponse($rbody, $rcode, $rheaders, $resp)
     {
         if (!\is_array($resp) || !isset($resp['error'])) {
-            $msg = "Invalid response object from API: $rbody "
-              . "(HTTP response code was $rcode)";
+            $msg = "Invalid response object from API: {$rbody} "
+              . "(HTTP response code was {$rcode})";
             throw new Exception\UnexpectedValueException($msg);
         }
 
@@ -168,10 +170,10 @@ class ApiRequestor
             case 400:
                 // 'rate_limit' code is deprecated, but left here for backwards compatibility
                 // for API versions earlier than 2015-09-08
-                if ($code == 'rate_limit') {
+                if ('rate_limit' === $code) {
                     return Exception\RateLimitException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code, $param);
                 }
-                if ($type == 'idempotency_error') {
+                if ('idempotency_error' === $type) {
                     return Exception\IdempotencyException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code);
                 }
 
@@ -233,18 +235,17 @@ class ApiRequestor
      */
     private static function _formatAppInfo($appInfo)
     {
-        if ($appInfo !== null) {
+        if (null !== $appInfo) {
             $string = $appInfo['name'];
-            if ($appInfo['version'] !== null) {
+            if (null !== $appInfo['version']) {
                 $string .= '/' . $appInfo['version'];
             }
-            if ($appInfo['url'] !== null) {
+            if (null !== $appInfo['url']) {
                 $string .= ' (' . $appInfo['url'] . ')';
             }
             return $string;
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**
@@ -259,8 +260,8 @@ class ApiRequestor
     {
         $uaString = 'Stripe/v1 PhpBindings/' . Stripe::VERSION;
 
-        $langVersion = \phpversion();
-        $uname_disabled = \in_array('php_uname', \explode(',', \ini_get('disable_functions')));
+        $langVersion = \PHP_VERSION;
+        $uname_disabled = \in_array('php_uname', \explode(',', \ini_get('disable_functions')), true);
         $uname = $uname_disabled ? '(disabled)' : \php_uname();
 
         $appInfo = Stripe::getAppInfo();
@@ -274,17 +275,16 @@ class ApiRequestor
         if ($clientInfo) {
             $ua = \array_merge($clientInfo, $ua);
         }
-        if ($appInfo !== null) {
+        if (null !== $appInfo) {
             $uaString .= ' ' . self::_formatAppInfo($appInfo);
             $ua['application'] = $appInfo;
         }
 
-        $defaultHeaders = [
+        return [
             'X-Stripe-Client-User-Agent' => \json_encode($ua),
             'User-Agent' => $uaString,
             'Authorization' => 'Bearer ' . $apiKey,
         ];
-        return $defaultHeaders;
     }
 
     /**
@@ -321,7 +321,7 @@ class ApiRequestor
             $clientUAInfo = $this->httpClient()->getUserAgentInfo();
         }
 
-        $absUrl = $this->_apiBase.$url;
+        $absUrl = $this->_apiBase . $url;
         $params = self::_encodeObjects($params);
         $defaultHeaders = $this->_defaultHeaders($myApiKey, $clientUAInfo);
         if (Stripe::$apiVersion) {
@@ -332,7 +332,7 @@ class ApiRequestor
             $defaultHeaders['Stripe-Account'] = Stripe::$accountId;
         }
 
-        if (Stripe::$enableTelemetry && self::$requestTelemetry != null) {
+        if (Stripe::$enableTelemetry && null !== self::$requestTelemetry) {
             $defaultHeaders["X-Stripe-Client-Telemetry"] = self::_telemetryJson(self::$requestTelemetry);
         }
 
@@ -388,14 +388,14 @@ class ApiRequestor
      */
     private function _processResourceParam($resource)
     {
-        if (\get_resource_type($resource) !== 'stream') {
+        if ('stream' !== \get_resource_type($resource)) {
             throw new Exception\InvalidArgumentException(
                 'Attempted to upload a resource that is not a stream'
             );
         }
 
         $metaData = \stream_get_meta_data($resource);
-        if ($metaData['wrapper_type'] !== 'plainfile') {
+        if ('plainfile' !== $metaData['wrapper_type']) {
             throw new Exception\InvalidArgumentException(
                 'Only plainfile resource streams are supported'
             );
@@ -419,9 +419,9 @@ class ApiRequestor
     {
         $resp = \json_decode($rbody, true);
         $jsonError = \json_last_error();
-        if ($resp === null && $jsonError !== JSON_ERROR_NONE) {
-            $msg = "Invalid response body from API: $rbody "
-              . "(HTTP response code was $rcode, json_last_error() was $jsonError)";
+        if (null === $resp && \JSON_ERROR_NONE !== $jsonError) {
+            $msg = "Invalid response body from API: {$rbody} "
+              . "(HTTP response code was {$rcode}, json_last_error() was {$jsonError})";
             throw new Exception\UnexpectedValueException($msg, $rcode);
         }
 

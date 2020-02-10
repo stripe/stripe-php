@@ -11,6 +11,6 @@ class BalanceTest extends TestCase
             '/v1/balance'
         );
         $resource = Balance::retrieve();
-        $this->assertInstanceOf(\Stripe\Balance::class, $resource);
+        static::assertInstanceOf(\Stripe\Balance::class, $resource);
     }
 }

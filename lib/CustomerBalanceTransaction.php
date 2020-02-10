@@ -46,7 +46,7 @@ class CustomerBalanceTransaction extends ApiResource
         $customer = $this['customer'];
         if (!$id) {
             throw new Exception\UnexpectedValueException(
-                "Could not determine which URL to request: class instance has invalid ID: $id",
+                "Could not determine which URL to request: class instance has invalid ID: {$id}",
                 null
             );
         }
@@ -56,7 +56,7 @@ class CustomerBalanceTransaction extends ApiResource
         $base = Customer::classUrl();
         $customerExtn = \urlencode($customer);
         $extn = \urlencode($id);
-        return "$base/$customerExtn/balance_transactions/$extn";
+        return "{$base}/{$customerExtn}/balance_transactions/{$extn}";
     }
 
     /**

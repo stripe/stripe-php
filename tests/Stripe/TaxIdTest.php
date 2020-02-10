@@ -10,7 +10,7 @@ class TaxIdTest extends TestCase
     public function testHasCorrectUrl()
     {
         $resource = \Stripe\Customer::retrieveTaxId(self::TEST_CUSTOMER_ID, self::TEST_RESOURCE_ID);
-        $this->assertSame(
+        static::assertSame(
             "/v1/customers/" . self::TEST_CUSTOMER_ID . "/tax_ids/" . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
@@ -24,6 +24,6 @@ class TaxIdTest extends TestCase
             '/v1/customers/' . self::TEST_CUSTOMER_ID . '/tax_ids/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        $this->assertInstanceOf(\Stripe\TaxId::class, $resource);
+        static::assertInstanceOf(\Stripe\TaxId::class, $resource);
     }
 }

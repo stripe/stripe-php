@@ -16,6 +16,6 @@ class AccountLinkTest extends TestCase
             "success_url" => "https://stripe.com/success",
             "type" => "custom_account_verification",
         ]);
-        $this->assertInstanceOf(\Stripe\AccountLink::class, $resource);
+        static::assertInstanceOf(\Stripe\AccountLink::class, $resource);
     }
 }

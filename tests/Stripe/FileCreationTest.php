@@ -36,13 +36,13 @@ class FileCreationTest extends TestCase
             true,
             Stripe::$apiUploadBase
         );
-        $fp = \fopen(\dirname(__FILE__) . '/../data/test.png', 'r');
+        $fp = \fopen(\dirname(__FILE__) . '/../data/test.png', 'rb');
         $resource = File::create([
             "purpose" => "dispute_evidence",
             "file" => $fp,
-            "file_link_data" => ["create" => true]
+            "file_link_data" => ["create" => true],
         ]);
-        $this->assertInstanceOf(\Stripe\File::class, $resource);
+        static::assertInstanceOf(\Stripe\File::class, $resource);
     }
 
     public function testIsCreatableWithCURLFile()
@@ -59,8 +59,8 @@ class FileCreationTest extends TestCase
         $resource = File::create([
             "purpose" => "dispute_evidence",
             "file" => $curlFile,
-            "file_link_data" => ["create" => true]
+            "file_link_data" => ["create" => true],
         ]);
-        $this->assertInstanceOf(\Stripe\File::class, $resource);
+        static::assertInstanceOf(\Stripe\File::class, $resource);
     }
 }

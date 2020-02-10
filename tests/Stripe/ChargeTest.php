@@ -13,8 +13,8 @@ class ChargeTest extends TestCase
             '/v1/charges'
         );
         $resources = Charge::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\Charge::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Charge::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class ChargeTest extends TestCase
             '/v1/charges/' . self::TEST_RESOURCE_ID
         );
         $resource = Charge::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\Charge::class, $resource);
+        static::assertInstanceOf(\Stripe\Charge::class, $resource);
     }
 
     public function testIsCreatable()
@@ -36,9 +36,9 @@ class ChargeTest extends TestCase
         $resource = Charge::create([
             "amount" => 100,
             "currency" => "usd",
-            "source" => "tok_123"
+            "source" => "tok_123",
         ]);
-        $this->assertInstanceOf(\Stripe\Charge::class, $resource);
+        static::assertInstanceOf(\Stripe\Charge::class, $resource);
     }
 
     public function testIsSaveable()
@@ -50,7 +50,7 @@ class ChargeTest extends TestCase
             '/v1/charges/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\Charge::class, $resource);
+        static::assertInstanceOf(\Stripe\Charge::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -62,7 +62,7 @@ class ChargeTest extends TestCase
         $resource = Charge::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\Charge::class, $resource);
+        static::assertInstanceOf(\Stripe\Charge::class, $resource);
     }
 
     public function testCanCapture()
@@ -73,7 +73,7 @@ class ChargeTest extends TestCase
             '/v1/charges/' . $charge->id . '/capture'
         );
         $resource = $charge->capture();
-        $this->assertInstanceOf(\Stripe\Charge::class, $resource);
-        $this->assertSame($resource, $charge);
+        static::assertInstanceOf(\Stripe\Charge::class, $resource);
+        static::assertSame($resource, $charge);
     }
 }

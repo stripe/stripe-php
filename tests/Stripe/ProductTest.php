@@ -13,8 +13,8 @@ class ProductTest extends TestCase
             '/v1/products'
         );
         $resources = Product::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\Product::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Product::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class ProductTest extends TestCase
             '/v1/products/' . self::TEST_RESOURCE_ID
         );
         $resource = Product::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\Product::class, $resource);
+        static::assertInstanceOf(\Stripe\Product::class, $resource);
     }
 
     public function testIsCreatable()
@@ -35,9 +35,9 @@ class ProductTest extends TestCase
         );
         $resource = Product::create([
             'name' => 'name',
-            'type' => 'good'
+            'type' => 'good',
         ]);
-        $this->assertInstanceOf(\Stripe\Product::class, $resource);
+        static::assertInstanceOf(\Stripe\Product::class, $resource);
     }
 
     public function testIsSaveable()
@@ -49,7 +49,7 @@ class ProductTest extends TestCase
             '/v1/products/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\Product::class, $resource);
+        static::assertInstanceOf(\Stripe\Product::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -61,7 +61,7 @@ class ProductTest extends TestCase
         $resource = Product::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\Product::class, $resource);
+        static::assertInstanceOf(\Stripe\Product::class, $resource);
     }
 
     public function testIsDeletable()
@@ -72,6 +72,6 @@ class ProductTest extends TestCase
             '/v1/products/' . $resource->id
         );
         $resource->delete();
-        $this->assertInstanceOf(\Stripe\Product::class, $resource);
+        static::assertInstanceOf(\Stripe\Product::class, $resource);
     }
 }

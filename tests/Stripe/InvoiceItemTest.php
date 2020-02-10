@@ -13,8 +13,8 @@ class InvoiceItemTest extends TestCase
             '/v1/invoiceitems'
         );
         $resources = InvoiceItem::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\InvoiceItem::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class InvoiceItemTest extends TestCase
             '/v1/invoiceitems/' . self::TEST_RESOURCE_ID
         );
         $resource = InvoiceItem::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
+        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
     }
 
     public function testIsCreatable()
@@ -36,9 +36,9 @@ class InvoiceItemTest extends TestCase
         $resource = InvoiceItem::create([
             "amount" => 100,
             "currency" => "usd",
-            "customer" => "cus_123"
+            "customer" => "cus_123",
         ]);
-        $this->assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
+        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
     }
 
     public function testIsSaveable()
@@ -50,7 +50,7 @@ class InvoiceItemTest extends TestCase
             '/v1/invoiceitems/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
+        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -62,7 +62,7 @@ class InvoiceItemTest extends TestCase
         $resource = InvoiceItem::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
+        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
     }
 
     public function testIsDeletable()
@@ -73,6 +73,6 @@ class InvoiceItemTest extends TestCase
             '/v1/invoiceitems/' . $invoiceItem->id
         );
         $resource = $invoiceItem->delete();
-        $this->assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
+        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
     }
 }

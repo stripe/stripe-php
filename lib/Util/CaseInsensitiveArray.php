@@ -18,7 +18,7 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
 
     public function __construct($initial_array = [])
     {
-        $this->container = \array_change_key_case($initial_array, CASE_LOWER);
+        $this->container = \array_change_key_case($initial_array, \CASE_LOWER);
     }
 
     public function count()
@@ -34,7 +34,7 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
     public function offsetSet($offset, $value)
     {
         $offset = static::maybeLowercase($offset);
-        if (\is_null($offset)) {
+        if (null === $offset) {
             $this->container[] = $value;
         } else {
             $this->container[$offset] = $value;
@@ -63,8 +63,7 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
     {
         if (\is_string($v)) {
             return \strtolower($v);
-        } else {
-            return $v;
         }
+        return $v;
     }
 }

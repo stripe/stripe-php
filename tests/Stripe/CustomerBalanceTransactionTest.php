@@ -10,7 +10,7 @@ class CustomerBalanceTransactionTest extends TestCase
     public function testHasCorrectUrl()
     {
         $resource = \Stripe\Customer::retrieveBalanceTransaction(self::TEST_CUSTOMER_ID, self::TEST_RESOURCE_ID);
-        $this->assertSame(
+        static::assertSame(
             "/v1/customers/" . self::TEST_CUSTOMER_ID . "/balance_transactions/" . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );

@@ -13,8 +13,8 @@ class PayoutTest extends TestCase
             '/v1/payouts'
         );
         $resources = Payout::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\Payout::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Payout::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class PayoutTest extends TestCase
             '/v1/payouts/' . self::TEST_RESOURCE_ID
         );
         $resource = Payout::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\Payout::class, $resource);
+        static::assertInstanceOf(\Stripe\Payout::class, $resource);
     }
 
     public function testIsCreatable()
@@ -35,9 +35,9 @@ class PayoutTest extends TestCase
         );
         $resource = Payout::create([
             "amount" => 100,
-            "currency" => "usd"
+            "currency" => "usd",
         ]);
-        $this->assertInstanceOf(\Stripe\Payout::class, $resource);
+        static::assertInstanceOf(\Stripe\Payout::class, $resource);
     }
 
     public function testIsSaveable()
@@ -49,7 +49,7 @@ class PayoutTest extends TestCase
             '/v1/payouts/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\Payout::class, $resource);
+        static::assertInstanceOf(\Stripe\Payout::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -61,7 +61,7 @@ class PayoutTest extends TestCase
         $resource = Payout::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\Payout::class, $resource);
+        static::assertInstanceOf(\Stripe\Payout::class, $resource);
     }
 
     public function testIsCancelable()
@@ -72,6 +72,6 @@ class PayoutTest extends TestCase
             '/v1/payouts/' . $resource->id . '/cancel'
         );
         $resource->cancel();
-        $this->assertInstanceOf(\Stripe\Payout::class, $resource);
+        static::assertInstanceOf(\Stripe\Payout::class, $resource);
     }
 }

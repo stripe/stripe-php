@@ -131,16 +131,16 @@ abstract class Util
                 \array_push($mapped, self::convertToStripeObject($i, $opts));
             }
             return $mapped;
-        } elseif (\is_array($resp)) {
+        }
+        if (\is_array($resp)) {
             if (isset($resp['object']) && \is_string($resp['object']) && isset($types[$resp['object']])) {
                 $class = $types[$resp['object']];
             } else {
                 $class = \Stripe\StripeObject::class;
             }
             return $class::constructFrom($resp, $opts);
-        } else {
-            return $resp;
         }
+        return $resp;
     }
 
     /**
@@ -151,22 +151,21 @@ abstract class Util
      */
     public static function utf8($value)
     {
-        if (self::$isMbstringAvailable === null) {
+        if (null === self::$isMbstringAvailable) {
             self::$isMbstringAvailable = \function_exists('mb_detect_encoding');
 
             if (!self::$isMbstringAvailable) {
                 \trigger_error("It looks like the mbstring extension is not enabled. " .
                     "UTF-8 strings will not properly be encoded. Ask your system " .
                     "administrator to enable the mbstring extension, or write to " .
-                    "support@stripe.com if you have any questions.", E_USER_WARNING);
+                    "support@stripe.com if you have any questions.", \E_USER_WARNING);
             }
         }
 
-        if (\is_string($value) && self::$isMbstringAvailable && \mb_detect_encoding($value, "UTF-8", true) != "UTF-8") {
+        if (\is_string($value) && self::$isMbstringAvailable && "UTF-8" !== \mb_detect_encoding($value, "UTF-8", true)) {
             return \utf8_encode($value);
-        } else {
-            return $value;
         }
+        return $value;
     }
 
     /**
@@ -179,23 +178,22 @@ abstract class Util
      */
     public static function secureCompare($a, $b)
     {
-        if (self::$isHashEqualsAvailable === null) {
+        if (null === self::$isHashEqualsAvailable) {
             self::$isHashEqualsAvailable = \function_exists('hash_equals');
         }
 
         if (self::$isHashEqualsAvailable) {
             return \hash_equals($a, $b);
-        } else {
-            if (\strlen($a) != \strlen($b)) {
-                return false;
-            }
-
-            $result = 0;
-            for ($i = 0; $i < \strlen($a); $i++) {
-                $result |= \ord($a[$i]) ^ \ord($b[$i]);
-            }
-            return ($result == 0);
         }
+        if (\strlen($a) !== \strlen($b)) {
+            return false;
+        }
+
+        $result = 0;
+        for ($i = 0; $i < \strlen($a); ++$i) {
+            $result |= \ord($a[$i]) ^ \ord($b[$i]);
+        }
+        return 0 === $result;
     }
 
     /**
@@ -210,24 +208,25 @@ abstract class Util
     {
         if ($h instanceof \Stripe\ApiResource) {
             return $h->id;
-        } elseif (static::isList($h)) {
+        }
+        if (static::isList($h)) {
             $results = [];
             foreach ($h as $v) {
                 \array_push($results, static::objectsToIds($v));
             }
             return $results;
-        } elseif (\is_array($h)) {
+        }
+        if (\is_array($h)) {
             $results = [];
             foreach ($h as $k => $v) {
-                if (\is_null($v)) {
+                if (null === $v) {
                     continue;
                 }
                 $results[$k] = static::objectsToIds($v);
             }
             return $results;
-        } else {
-            return $h;
         }
+        return $h;
     }
 
     /**
@@ -307,9 +306,7 @@ abstract class Util
         // characters back to their literals. This is fine by the server, and
         // makes these parameter strings easier to read.
         $s = \str_replace('%5B', '[', $s);
-        $s = \str_replace('%5D', ']', $s);
-
-        return $s;
+        return \str_replace('%5D', ']', $s);
     }
 
     public static function normalizeId($id)

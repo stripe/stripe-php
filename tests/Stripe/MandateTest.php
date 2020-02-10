@@ -13,6 +13,6 @@ class MandateTest extends TestCase
             '/v1/mandates/' . self::TEST_RESOURCE_ID
         );
         $resource = Mandate::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\Mandate::class, $resource);
+        static::assertInstanceOf(\Stripe\Mandate::class, $resource);
     }
 }

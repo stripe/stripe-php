@@ -77,7 +77,7 @@ class Account extends ApiResource
     public static function getSavedNestedResources()
     {
         static $savedNestedResources = null;
-        if ($savedNestedResources === null) {
+        if (null === $savedNestedResources) {
             $savedNestedResources = new Util\Set([
                 'external_account',
                 'bank_account',
@@ -88,11 +88,10 @@ class Account extends ApiResource
 
     public function instanceUrl()
     {
-        if ($this['id'] === null) {
+        if (null === $this['id']) {
             return '/v1/account';
-        } else {
-            return parent::instanceUrl();
         }
+        return parent::instanceUrl();
     }
 
     public function serializeParameters($force = false)
@@ -136,7 +135,7 @@ class Account extends ApiResource
             if ($update !== []) {
                 if (!$originalValue ||
                     !\array_key_exists($i, $originalValue) ||
-                    ($update != $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
+                    ($update !== $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
                     $updateArr[$i] = $update;
                 }
             }
@@ -155,7 +154,7 @@ class Account extends ApiResource
      */
     public static function retrieve($id = null, $opts = null)
     {
-        if (!$opts && \is_string($id) && \substr($id, 0, 3) === 'sk_') {
+        if (!$opts && \is_string($id) && 'sk_' === \substr($id, 0, 3)) {
             $opts = $id;
             $id = null;
         }
@@ -194,13 +193,12 @@ class Account extends ApiResource
         $this->refreshFrom($response, $opts);
         return $this;
     }
-    
+
     /*
      * Capabilities methods
      * We can not add the capabilities() method today as the Account object already has a
      * capabilities property which is a hash and not the sub-list of capabilities.
      */
-
 
     const PATH_CAPABILITIES = '/capabilities';
 

@@ -19,15 +19,15 @@ class OAuthTest extends TestCase
         $uri = \parse_url($uriStr);
         \parse_str($uri['query'], $params);
 
-        $this->assertSame('https', $uri['scheme']);
-        $this->assertSame('connect.stripe.com', $uri['host']);
-        $this->assertSame('/oauth/authorize', $uri['path']);
+        static::assertSame('https', $uri['scheme']);
+        static::assertSame('connect.stripe.com', $uri['host']);
+        static::assertSame('/oauth/authorize', $uri['path']);
 
-        $this->assertSame('ca_123', $params['client_id']);
-        $this->assertSame('read_write', $params['scope']);
-        $this->assertSame('test@example.com', $params['stripe_user']['email']);
-        $this->assertSame('https://example.com/profile/test', $params['stripe_user']['url']);
-        $this->assertSame('US', $params['stripe_user']['country']);
+        static::assertSame('ca_123', $params['client_id']);
+        static::assertSame('read_write', $params['scope']);
+        static::assertSame('test@example.com', $params['stripe_user']['email']);
+        static::assertSame('https://example.com/profile/test', $params['stripe_user']['url']);
+        static::assertSame('US', $params['stripe_user']['country']);
     }
 
     public function testRaisesAuthenticationErrorWhenNoClientId()
@@ -67,7 +67,7 @@ class OAuthTest extends TestCase
             'grant_type' => 'authorization_code',
             'code' => 'this_is_an_authorization_code',
         ]);
-        $this->assertSame('sk_access_token', $resp->access_token);
+        static::assertSame('sk_access_token', $resp->access_token);
     }
 
     public function testDeauthorize()
@@ -89,8 +89,8 @@ class OAuthTest extends TestCase
         );
 
         $resp = OAuth::deauthorize([
-                'stripe_user_id' => 'acct_test_deauth',
+            'stripe_user_id' => 'acct_test_deauth',
         ]);
-        $this->assertSame('acct_test_deauth', $resp->stripe_user_id);
+        static::assertSame('acct_test_deauth', $resp->stripe_user_id);
     }
 }

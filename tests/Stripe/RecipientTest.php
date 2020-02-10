@@ -13,8 +13,8 @@ class RecipientTest extends TestCase
             '/v1/recipients'
         );
         $resources = Recipient::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\Recipient::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Recipient::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -24,7 +24,7 @@ class RecipientTest extends TestCase
             '/v1/recipients/' . self::TEST_RESOURCE_ID
         );
         $resource = Recipient::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\Recipient::class, $resource);
+        static::assertInstanceOf(\Stripe\Recipient::class, $resource);
     }
 
     public function testIsCreatable()
@@ -35,9 +35,9 @@ class RecipientTest extends TestCase
         );
         $resource = Recipient::create([
             "name" => "name",
-            "type" => "individual"
+            "type" => "individual",
         ]);
-        $this->assertInstanceOf(\Stripe\Recipient::class, $resource);
+        static::assertInstanceOf(\Stripe\Recipient::class, $resource);
     }
 
     public function testIsSaveable()
@@ -49,7 +49,7 @@ class RecipientTest extends TestCase
             '/v1/recipients/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\Recipient::class, $resource);
+        static::assertInstanceOf(\Stripe\Recipient::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -61,7 +61,7 @@ class RecipientTest extends TestCase
         $resource = Recipient::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\Recipient::class, $resource);
+        static::assertInstanceOf(\Stripe\Recipient::class, $resource);
     }
 
     public function testIsDeletable()
@@ -72,6 +72,6 @@ class RecipientTest extends TestCase
             '/v1/recipients/' . $resource->id
         );
         $resource->delete();
-        $this->assertInstanceOf(\Stripe\Recipient::class, $resource);
+        static::assertInstanceOf(\Stripe\Recipient::class, $resource);
     }
 }

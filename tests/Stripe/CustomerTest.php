@@ -16,8 +16,8 @@ class CustomerTest extends TestCase
             '/v1/customers'
         );
         $resources = Customer::all();
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\Customer::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Customer::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -27,7 +27,7 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID
         );
         $resource = Customer::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\Customer::class, $resource);
+        static::assertInstanceOf(\Stripe\Customer::class, $resource);
     }
 
     public function testIsCreatable()
@@ -37,7 +37,7 @@ class CustomerTest extends TestCase
             '/v1/customers'
         );
         $resource = Customer::create();
-        $this->assertInstanceOf(\Stripe\Customer::class, $resource);
+        static::assertInstanceOf(\Stripe\Customer::class, $resource);
     }
 
     public function testIsSaveable()
@@ -49,7 +49,7 @@ class CustomerTest extends TestCase
             '/v1/customers/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\Customer::class, $resource);
+        static::assertInstanceOf(\Stripe\Customer::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -61,7 +61,7 @@ class CustomerTest extends TestCase
         $resource = Customer::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\Customer::class, $resource);
+        static::assertInstanceOf(\Stripe\Customer::class, $resource);
     }
 
     public function testIsDeletable()
@@ -72,7 +72,7 @@ class CustomerTest extends TestCase
             '/v1/customers/' . $resource->id
         );
         $resource->delete();
-        $this->assertInstanceOf(\Stripe\Customer::class, $resource);
+        static::assertInstanceOf(\Stripe\Customer::class, $resource);
     }
 
     public function testCanDeleteDiscount()
@@ -83,7 +83,7 @@ class CustomerTest extends TestCase
             '/v1/customers/' . $customer->id . '/discount'
         );
         $customer->deleteDiscount();
-        $this->assertSame($customer->discount, null);
+        static::assertSame($customer->discount, null);
     }
 
     public function testCanCreateSource()
@@ -112,7 +112,7 @@ class CustomerTest extends TestCase
         );
         $resource = Customer::updateSource(self::TEST_RESOURCE_ID, self::TEST_SOURCE_ID, ["name" => "name"]);
         // stripe-mock returns a Card on this method and not a bank account
-        $this->assertInstanceOf(\Stripe\Card::class, $resource);
+        static::assertInstanceOf(\Stripe\Card::class, $resource);
     }
 
     public function testCanDeleteSource()
@@ -131,7 +131,7 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/sources'
         );
         $resources = Customer::allSources(self::TEST_RESOURCE_ID);
-        $this->assertInternalType('array', $resources->data);
+        static::assertInternalType('array', $resources->data);
     }
 
     public function testSerializeSourceString()
@@ -144,7 +144,7 @@ class CustomerTest extends TestCase
         $expected = [
             'source' => 'tok_visa',
         ];
-        $this->assertSame($expected, $obj->serializeParameters());
+        static::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeSourceMap()
@@ -167,7 +167,7 @@ class CustomerTest extends TestCase
                 'exp_year' => 2032,
             ],
         ];
-        $this->assertSame($expected, $obj->serializeParameters());
+        static::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testCanCreateTaxId()
@@ -207,7 +207,7 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/tax_ids'
         );
         $resources = Customer::allTaxIds(self::TEST_RESOURCE_ID);
-        $this->assertInternalType('array', $resources->data);
+        static::assertInternalType('array', $resources->data);
     }
 
     public function testCanCreateBalanceTransaction()
@@ -247,6 +247,6 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/balance_transactions'
         );
         $resources = Customer::allBalanceTransactions(self::TEST_RESOURCE_ID);
-        $this->assertInternalType('array', $resources->data);
+        static::assertInternalType('array', $resources->data);
     }
 }

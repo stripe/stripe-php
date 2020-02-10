@@ -31,9 +31,9 @@ class SessionTest extends \Stripe\TestCase
                 'receipt_email' => 'test@stripe.com',
             ],
             'payment_method_types' => ['card'],
-            'success_url' => 'https://stripe.com/success'
+            'success_url' => 'https://stripe.com/success',
         ]);
-        $this->assertInstanceOf(\Stripe\Checkout\Session::class, $resource);
+        static::assertInstanceOf(\Stripe\Checkout\Session::class, $resource);
     }
 
     public function testIsRetrievable()
@@ -43,6 +43,6 @@ class SessionTest extends \Stripe\TestCase
             '/v1/checkout/sessions/' . self::TEST_RESOURCE_ID
         );
         $resource = Session::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\Checkout\Session::class, $resource);
+        static::assertInstanceOf(\Stripe\Checkout\Session::class, $resource);
     }
 }

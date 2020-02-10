@@ -30,8 +30,8 @@ class ExchangeRateTest extends TestCase
         );
 
         $listRates = ExchangeRate::all();
-        $this->assertInternalType('array', $listRates->data);
-        $this->assertEquals('exchange_rate', $listRates->data[0]->object);
+        static::assertInternalType('array', $listRates->data);
+        static::assertEquals('exchange_rate', $listRates->data[0]->object);
     }
 
     public function testIsRetrievable()
@@ -49,6 +49,6 @@ class ExchangeRateTest extends TestCase
             ]
         );
         $rates = ExchangeRate::retrieve("usd");
-        $this->assertEquals('exchange_rate', $rates->object);
+        static::assertEquals('exchange_rate', $rates->object);
     }
 }

@@ -16,8 +16,8 @@ class PaymentMethodTest extends TestCase
             'customer' => 'cus_123',
             'type' => 'card',
         ]);
-        $this->assertInternalType('array', $resources->data);
-        $this->assertInstanceOf(\Stripe\PaymentMethod::class, $resources->data[0]);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\PaymentMethod::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -27,7 +27,7 @@ class PaymentMethodTest extends TestCase
             '/v1/payment_methods/' . self::TEST_RESOURCE_ID
         );
         $resource = PaymentMethod::retrieve(self::TEST_RESOURCE_ID);
-        $this->assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
+        static::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
     }
 
     public function testIsCreatable()
@@ -39,7 +39,7 @@ class PaymentMethodTest extends TestCase
         $resource = PaymentMethod::create([
             'type' => 'card',
         ]);
-        $this->assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
+        static::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
     }
 
     public function testIsSaveable()
@@ -51,7 +51,7 @@ class PaymentMethodTest extends TestCase
             '/v1/payment_methods/' . $resource->id
         );
         $resource->save();
-        $this->assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
+        static::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -63,7 +63,7 @@ class PaymentMethodTest extends TestCase
         $resource = PaymentMethod::update(self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
         ]);
-        $this->assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
+        static::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
     }
 
     public function testCanAttach()
@@ -76,8 +76,8 @@ class PaymentMethodTest extends TestCase
         $resource = $resource->attach([
             'customer' => 'cus_123',
         ]);
-        $this->assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
-        $this->assertSame($resource, $resource);
+        static::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
+        static::assertSame($resource, $resource);
     }
 
     public function testCanDetach()
@@ -88,7 +88,7 @@ class PaymentMethodTest extends TestCase
             '/v1/payment_methods/' . $resource->id . '/detach'
         );
         $resource = $resource->detach();
-        $this->assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
-        $this->assertSame($resource, $resource);
+        static::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
+        static::assertSame($resource, $resource);
     }
 }
