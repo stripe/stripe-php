@@ -46,9 +46,11 @@ class ApiRequestor
 
     /**
      * Creates a telemetry json blob for use in 'X-Stripe-Client-Telemetry' headers
+     *
      * @static
      *
      * @param RequestTelemetry $requestTelemetry
+     *
      * @return string
      */
     private static function _telemetryJson($requestTelemetry)
@@ -71,9 +73,9 @@ class ApiRequestor
     /**
      * @static
      *
-     * @param ApiResource|bool|array|mixed $d
+     * @param ApiResource|array|bool|mixed $d
      *
-     * @return ApiResource|array|string|mixed
+     * @return ApiResource|array|mixed|string
      */
     private static function _encodeObjects($d)
     {
@@ -102,9 +104,9 @@ class ApiRequestor
      * @param array|null $params
      * @param array|null $headers
      *
-     * @return array tuple containing (ApiReponse, API key)
-     *
      * @throws Exception\ApiErrorException
+     *
+     * @return array tuple containing (ApiReponse, API key)
      */
     public function request($method, $url, $params = null, $headers = null)
     {
@@ -196,7 +198,7 @@ class ApiRequestor
     /**
      * @static
      *
-     * @param string|bool $rbody
+     * @param bool|string $rbody
      * @param int         $rcode
      * @param array       $rheaders
      * @param array       $resp
@@ -229,9 +231,9 @@ class ApiRequestor
     /**
      * @static
      *
-     * @param null|array $appInfo
+     * @param array|null $appInfo
      *
-     * @return null|string
+     * @return string|null
      */
     private static function _formatAppInfo($appInfo)
     {
@@ -293,10 +295,10 @@ class ApiRequestor
      * @param array $params
      * @param array $headers
      *
-     * @return array
-     *
      * @throws Exception\AuthenticationException
      * @throws Exception\ApiConnectionException
+     *
+     * @return array
      */
     private function _requestRaw($method, $url, $params, $headers)
     {
@@ -382,9 +384,9 @@ class ApiRequestor
     /**
      * @param resource $resource
      *
-     * @return \CURLFile|string
-     *
      * @throws Exception\InvalidArgumentException
+     *
+     * @return \CURLFile|string
      */
     private function _processResourceParam($resource)
     {
@@ -410,10 +412,10 @@ class ApiRequestor
      * @param int    $rcode
      * @param array  $rheaders
      *
-     * @return array
-     *
      * @throws Exception\UnexpectedValueException
      * @throws Exception\ApiErrorException
+     *
+     * @return array
      */
     private function _interpretResponse($rbody, $rcode, $rheaders)
     {

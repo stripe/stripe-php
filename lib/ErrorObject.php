@@ -38,7 +38,8 @@ class ErrorObject extends StripeObject
 {
     /**
      * Possible string representations of an error's code.
-     * @link https://stripe.com/docs/error-codes
+     *
+     * @see https://stripe.com/docs/error-codes
      */
     const CODE_ACCOUNT_ALREADY_EXISTS                     = 'account_already_exists';
     const CODE_ACCOUNT_COUNTRY_INVALID_ADDRESS            = 'account_country_invalid_address';
@@ -136,8 +137,8 @@ class ErrorObject extends StripeObject
      * Refreshes this object using the provided values.
      *
      * @param array $values
-     * @param null|string|array|Util\RequestOptions $opts
-     * @param boolean $partial Defaults to false.
+     * @param array|string|Util\RequestOptions|null $opts
+     * @param bool $partial Defaults to false.
      */
     public function refreshFrom($values, $opts, $partial = false)
     {

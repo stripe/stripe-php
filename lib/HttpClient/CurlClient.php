@@ -63,6 +63,7 @@ class CurlClient implements ClientInterface
      * throw an exception if $defaultOptions returns a non-array value.
      *
      * @param array|callable|null $defaultOptions
+     * @param \Stripe\Util\RandomGenerator|null $randomGenerator
      */
     public function __construct($defaultOptions = null, $randomGenerator = null)
     {
@@ -98,7 +99,7 @@ class CurlClient implements ClientInterface
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getEnablePersistentConnections()
     {
@@ -106,7 +107,7 @@ class CurlClient implements ClientInterface
     }
 
     /**
-     * @param boolean $enable
+     * @param bool $enable
      */
     public function setEnablePersistentConnections($enable)
     {
@@ -114,7 +115,7 @@ class CurlClient implements ClientInterface
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getEnableHttp2()
     {
@@ -122,7 +123,7 @@ class CurlClient implements ClientInterface
     }
 
     /**
-     * @param boolean $enable
+     * @param bool $enable
      */
     public function setEnableHttp2($enable)
     {
@@ -273,6 +274,7 @@ class CurlClient implements ClientInterface
 
     /**
      * @param array $opts cURL options
+     * @param string $absUrl
      */
     private function executeRequestWithRetries($opts, $absUrl)
     {
@@ -341,6 +343,7 @@ class CurlClient implements ClientInterface
      * @param int $errno
      * @param string $message
      * @param int $numRetries
+     *
      * @throws Exception\ApiConnectionException
      */
     private function handleCurlError($url, $errno, $message, $numRetries)
@@ -504,7 +507,7 @@ class CurlClient implements ClientInterface
     /**
      * Indicates whether it is safe to use HTTP/2 or not.
      *
-     * @return boolean
+     * @return bool
      */
     private function canSafelyUseHttp2()
     {
@@ -519,7 +522,8 @@ class CurlClient implements ClientInterface
      *
      * @param string[] $headers
      * @param string $name
-     * @return boolean
+     *
+     * @return bool
      */
     private function hasHeader($headers, $name)
     {

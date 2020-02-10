@@ -5,21 +5,21 @@ namespace Stripe;
 /**
  * Class BalanceTransaction
  *
- * @property string $id
- * @property string $object
- * @property int $amount
- * @property int $available_on
- * @property int $created
- * @property string $currency
- * @property string|null $description
- * @property float|null $exchange_rate
- * @property int $fee
- * @property \Stripe\StripeObject[] $fee_details
- * @property int $net
- * @property string $reporting_category
- * @property string|\Stripe\StripeObject|null $source
- * @property string $status
- * @property string $type
+ * @property string $id Unique identifier for the object.
+ * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property int $amount Gross amount of the transaction, in %s.
+ * @property int $available_on The date the transaction's net funds will become available in the Stripe balance.
+ * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
+ * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property string|null $description An arbitrary string attached to the object. Often useful for displaying to users.
+ * @property float|null $exchange_rate The exchange rate used, if applicable, for this transaction. Specifically, if money was converted from currency A to currency B, then the <code>amount</code> in currency A, times <code>exchange_rate</code>, would be the <code>amount</code> in currency B. For example, suppose you charged a customer 10.00 EUR. Then the PaymentIntent's <code>amount</code> would be <code>1000</code> and <code>currency</code> would be <code>eur</code>. Suppose this was converted into 12.34 USD in your Stripe account. Then the BalanceTransaction's <code>amount</code> would be <code>1234</code>, <code>currency</code> would be <code>usd</code>, and <code>exchange_rate</code> would be <code>1.234</code>.
+ * @property int $fee Fees (in %s) paid for this transaction.
+ * @property \Stripe\StripeObject[] $fee_details Detailed breakdown of fees (in %s) paid for this transaction.
+ * @property int $net Net amount of the transaction, in %s.
+ * @property string $reporting_category <a href="https://stripe.com/docs/reports/reporting-categories">Learn more</a> about how reporting categories can help you understand balance transactions from an accounting perspective.
+ * @property string|\Stripe\StripeObject|null $source The Stripe object to which this transaction is related.
+ * @property string $status If the transaction's net funds are available in the Stripe balance yet. Either <code>available</code> or <code>pending</code>.
+ * @property string $type Transaction type: <code>adjustment</code>, <code>advance</code>, <code>advance_funding</code>, <code>application_fee</code>, <code>application_fee_refund</code>, <code>charge</code>, <code>connect_collection_transfer</code>, <code>issuing_authorization_hold</code>, <code>issuing_authorization_release</code>, <code>issuing_transaction</code>, <code>payment</code>, <code>payment_failure_refund</code>, <code>payment_refund</code>, <code>payout</code>, <code>payout_cancel</code>, <code>payout_failure</code>, <code>refund</code>, <code>refund_failure</code>, <code>reserve_transaction</code>, <code>reserved_funds</code>, <code>stripe_fee</code>, <code>stripe_fx_fee</code>, <code>tax_fee</code>, <code>topup</code>, <code>topup_reversal</code>, <code>transfer</code>, <code>transfer_cancel</code>, <code>transfer_failure</code>, or <code>transfer_refund</code>. <a href="https://stripe.com/docs/reports/balance-transaction-types">Learn more</a> about balance transaction types and what they represent. If you are looking to classify transactions for accounting purposes, you might want to consider <code>reporting_category</code> instead.
  *
  * @package Stripe
  */
@@ -32,7 +32,8 @@ class BalanceTransaction extends ApiResource
 
     /**
      * Possible string representations of the type of balance transaction.
-     * @link https://stripe.com/docs/api/balance/balance_transaction#balance_transaction_object-type
+     *
+     * @see https://stripe.com/docs/api/balance/balance_transaction#balance_transaction_object-type
      */
     const TYPE_ADJUSTMENT                    = 'adjustment';
     const TYPE_ADVANCE                       = 'advance';

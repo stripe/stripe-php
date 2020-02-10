@@ -33,7 +33,7 @@ class Stripe
     /** @var string Path to the CA bundle used to verify SSL certificates */
     public static $caBundlePath = null;
 
-    /** @var boolean Defaults to true. */
+    /** @var bool Defaults to true. */
     public static $verifySslCerts = true;
 
     /** @var array The application's information (name, version, URL) */
@@ -48,7 +48,7 @@ class Stripe
     /** @var int Maximum number of request retries */
     public static $maxNetworkRetries = 0;
 
-    /** @var boolean Whether client telemetry is enabled. Defaults to true. */
+    /** @var bool Whether client telemetry is enabled. Defaults to true. */
     public static $enableTelemetry = true;
 
     /** @var float Maximum delay between retries, in seconds */
@@ -161,7 +161,7 @@ class Stripe
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public static function getVerifySslCerts()
     {
@@ -169,7 +169,7 @@ class Stripe
     }
 
     /**
-     * @param boolean $verify
+     * @param bool $verify
      */
     public static function setVerifySslCerts($verify)
     {
@@ -204,8 +204,9 @@ class Stripe
 
     /**
      * @param string $appName The application's name
-     * @param string $appVersion The application's version
-     * @param string $appUrl The application's URL
+     * @param string|null $appVersion The application's version
+     * @param string|null $appUrl The application's URL
+     * @param string|null $appPartnerId The application's partner ID
      */
     public static function setAppInfo($appName, $appVersion = null, $appUrl = null, $appPartnerId = null)
     {

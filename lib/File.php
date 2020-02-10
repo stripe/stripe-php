@@ -5,16 +5,16 @@ namespace Stripe;
 /**
  * Class File
  *
- * @property string $id
- * @property string $object
- * @property int $created
- * @property string|null $filename
- * @property \Stripe\Collection|null $links
- * @property string $purpose
- * @property int $size
- * @property string|null $title
- * @property string|null $type
- * @property string|null $url
+ * @property string $id Unique identifier for the object.
+ * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
+ * @property string|null $filename A filename for the file, suitable for saving to a filesystem.
+ * @property \Stripe\Collection|null $links A list of <a href="#file_links">file links</a> that point at this file.
+ * @property string $purpose The purpose of the file. Possible values are <code>additional_verification</code>, <code>business_icon</code>, <code>business_logo</code>, <code>customer_signature</code>, <code>dispute_evidence</code>, <code>finance_report_run</code>, <code>identity_document</code>, <code>pci_document</code>, <code>sigma_scheduled_query</code>, or <code>tax_document_user_upload</code>.
+ * @property int $size The size in bytes of the file object.
+ * @property string|null $title A user friendly title for the document.
+ * @property string|null $type The type of the file returned (e.g., <code>csv</code>, <code>pdf</code>, <code>jpg</code>, or <code>png</code>).
+ * @property string|null $url The URL from which the file can be downloaded using your live secret API key.
  *
  * @package Stripe
  */

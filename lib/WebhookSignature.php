@@ -17,7 +17,9 @@ abstract class WebhookSignature
      * @param string $secret secret used to generate the signature.
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time
+     *
      * @throws Exception\SignatureVerificationException if the verification fails.
+     *
      * @return bool
      */
     public static function verifyHeader($payload, $header, $secret, $tolerance = null)
@@ -75,6 +77,7 @@ abstract class WebhookSignature
      * Extracts the timestamp in a signature header.
      *
      * @param string $header the signature header
+     *
      * @return int the timestamp contained in the header, or -1 if no valid
      *  timestamp is found
      */
@@ -100,6 +103,7 @@ abstract class WebhookSignature
      *
      * @param string $header the signature header
      * @param string $scheme the signature scheme to look for.
+     *
      * @return array the list of signatures matching the provided scheme.
      */
     private static function getSignatures($header, $scheme)
@@ -124,6 +128,7 @@ abstract class WebhookSignature
      *
      * @param string $payload the payload to sign.
      * @param string $secret the secret used to generate the signature.
+     *
      * @return string the signature as a string.
      */
     private static function computeSignature($payload, $secret)

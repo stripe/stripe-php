@@ -5,20 +5,20 @@ namespace Stripe;
 /**
  * Class ApplicationFee
  *
- * @property string $id
- * @property string $object
- * @property string|\Stripe\Account $account
- * @property int $amount
- * @property int $amount_refunded
- * @property string|\Stripe\StripeObject $application
- * @property string|\Stripe\BalanceTransaction|null $balance_transaction
- * @property string|\Stripe\Charge $charge
- * @property int $created
- * @property string $currency
- * @property bool $livemode
- * @property string|\Stripe\Charge|null $originating_transaction
- * @property bool $refunded
- * @property \Stripe\Collection $refunds
+ * @property string $id Unique identifier for the object.
+ * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property string|\Stripe\Account $account ID of the Stripe account this fee was taken from.
+ * @property int $amount Amount earned, in %s.
+ * @property int $amount_refunded Amount in %s refunded (can be less than the amount attribute on the fee if a partial refund was issued)
+ * @property string|\Stripe\StripeObject $application ID of the Connect application that earned the fee.
+ * @property string|\Stripe\BalanceTransaction|null $balance_transaction Balance transaction that describes the impact of this collected application fee on your account balance (not including refunds).
+ * @property string|\Stripe\Charge $charge ID of the charge that the application fee was taken from.
+ * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
+ * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property string|\Stripe\Charge|null $originating_transaction ID of the corresponding charge on the platform account, if this fee was the result of a charge using the <code>destination</code> parameter.
+ * @property bool $refunded Whether the fee has been fully refunded. If the fee is only partially refunded, this attribute will still be false.
+ * @property \Stripe\Collection $refunds A list of refunds that have been applied to the fee.
  *
  * @package Stripe
  */

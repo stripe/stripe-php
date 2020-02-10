@@ -28,7 +28,7 @@ abstract class ApiResource extends StripeObject
     }
 
     /**
-     * @var boolean A flag that can be set a behavior that will cause this
+     * @var bool A flag that can be set a behavior that will cause this
      * resource to be encoded and sent up along with an update of its parent
      * resource. This is usually not desirable because resources are updated
      * individually on their own endpoints, but there are certain cases,
@@ -48,9 +48,9 @@ abstract class ApiResource extends StripeObject
     }
 
     /**
-     * @return ApiResource The refreshed resource.
-     *
      * @throws Exception\ApiErrorException
+     *
+     * @return ApiResource The refreshed resource.
      */
     public function refresh()
     {
@@ -88,6 +88,10 @@ abstract class ApiResource extends StripeObject
     }
 
     /**
+     * @param string|null $id the ID of the resource
+     *
+     * @throws Exception\UnexpectedValueException if $id is null
+     *
      * @return string The instance endpoint URL for the given class.
      */
     public static function resourceUrl($id)
