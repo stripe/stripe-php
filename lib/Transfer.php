@@ -5,23 +5,23 @@ namespace Stripe;
 /**
  * Class Transfer
  *
- * @property string $id
- * @property string $object
- * @property int $amount
- * @property int $amount_reversed
- * @property string|\Stripe\BalanceTransaction|null $balance_transaction
- * @property int $created
- * @property string $currency
- * @property string|null $description
- * @property string|\Stripe\Account|null $destination
- * @property string|\Stripe\Charge $destination_payment
- * @property bool $livemode
- * @property \Stripe\StripeObject $metadata
- * @property \Stripe\Collection $reversals
- * @property bool $reversed
- * @property string|\Stripe\Charge|null $source_transaction
- * @property string|null $source_type
- * @property string|null $transfer_group
+ * @property string $id Unique identifier for the object.
+ * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property int $amount Amount in %s to be transferred.
+ * @property int $amount_reversed Amount in %s reversed (can be less than the amount attribute on the transfer if a partial reversal was issued).
+ * @property string|\Stripe\BalanceTransaction|null $balance_transaction Balance transaction that describes the impact of this transfer on your account balance.
+ * @property int $created Time that this record of the transfer was first created.
+ * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property string|null $description An arbitrary string attached to the object. Often useful for displaying to users.
+ * @property string|\Stripe\Account|null $destination ID of the Stripe account the transfer was sent to.
+ * @property string|\Stripe\Charge $destination_payment If the destination is a Stripe account, this will be the ID of the payment that the destination account received for the transfer.
+ * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Stripe\Collection $reversals A list of reversals that have been applied to the transfer.
+ * @property bool $reversed Whether the transfer has been fully reversed. If the transfer is only partially reversed, this attribute will still be false.
+ * @property string|\Stripe\Charge|null $source_transaction ID of the charge or payment that was used to fund the transfer. If null, the transfer was funded from the available balance.
+ * @property string|null $source_type The source balance this transfer came from. One of <code>card</code> or <code>bank_account</code>.
+ * @property string|null $transfer_group A string that identifies this transaction as part of a group. See the <a href="https://stripe.com/docs/connect/charges-transfers#grouping-transactions">Connect documentation</a> for details.
  *
  * @package Stripe
  */
