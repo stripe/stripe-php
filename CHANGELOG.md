@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.24.0 - 2020-02-10
+* [#862](https://github.com/stripe/stripe-php/pull/862) Better PHPDoc
+* [#865](https://github.com/stripe/stripe-php/pull/865) Get closer to `@PhpCsFixer` standard ruleset
+
 ## 7.23.0 - 2020-02-05
 * [#860](https://github.com/stripe/stripe-php/pull/860) Add PHPDoc types for expandable fields
 * [#858](https://github.com/stripe/stripe-php/pull/858) Use `native_function_invocation` PHPStan rule
