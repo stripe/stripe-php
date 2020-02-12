@@ -19,8 +19,6 @@ namespace Stripe;
  * @property int $price The cost of the item as a positive integer in the smallest currency unit (that is, 100 cents to charge $1.00, or 100 to charge ¥100, Japanese Yen being a zero-decimal currency).
  * @property string|\Stripe\Product $product The ID of the product this SKU is associated with. The product must be currently active.
  * @property int $updated Time at which the object was last updated. Measured in seconds since the Unix epoch.
- *
- * @package Stripe
  */
 class SKU extends ApiResource
 {

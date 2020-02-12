@@ -5,8 +5,6 @@ namespace Stripe;
 /**
  * Class UsageRecord
  *
- * @package Stripe
- *
  * @property string $id
  * @property string $object
  * @property bool $livemode

@@ -40,8 +40,6 @@ namespace Stripe;
  * @property float|null $tax_percent If provided, each invoice created by this subscription will apply the tax rate, increasing the amount billed to the customer.
  * @property int|null $trial_end If the subscription has a trial, the end of that trial.
  * @property int|null $trial_start If the subscription has a trial, the beginning of that trial.
- *
- * @package Stripe
  */
 class Subscription extends ApiResource
 {

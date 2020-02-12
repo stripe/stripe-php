@@ -5,8 +5,6 @@ namespace Stripe\Exception;
 /**
  * CardException is thrown when a user enters a card that can't be charged for
  * some reason.
- *
- * @package Stripe\Exception
  */
 class CardException extends ApiErrorException
 {

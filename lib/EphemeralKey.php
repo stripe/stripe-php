@@ -12,8 +12,6 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $secret The key's secret. You can use this value to make authorized requests to the Stripe API.
  * @property array $associated_objects
- *
- * @package Stripe
  */
 class EphemeralKey extends ApiResource
 {

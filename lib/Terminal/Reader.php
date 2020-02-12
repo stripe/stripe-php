@@ -16,8 +16,6 @@ namespace Stripe\Terminal;
  * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $serial_number Serial number of the reader.
  * @property string|null $status The networking status of the reader.
- *
- * @package Stripe\Terminal
  */
 class Reader extends \Stripe\ApiResource
 {

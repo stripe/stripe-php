@@ -30,8 +30,6 @@ namespace Stripe;
  * @property \Stripe\Collection $transactions A list with one entry for each time that the customer sent bitcoin to the receiver. Hidden when viewing the receiver with a publishable key.
  * @property bool $uncaptured_funds This receiver contains uncaptured funds that can be used for a payment or refunded.
  * @property bool|null $used_for_payment Indicate if this source is used for payment.
- *
- * @package Stripe
  */
 class BitcoinReceiver extends ApiResource
 {

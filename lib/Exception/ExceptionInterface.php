@@ -6,8 +6,6 @@ namespace Stripe\Exception;
 if (\interface_exists(\Throwable::class, false)) {
     /**
      * The base interface for all Stripe exceptions.
-     *
-     * @package Stripe\Exception
      */
     interface ExceptionInterface extends \Throwable
     {
@@ -15,8 +13,6 @@ if (\interface_exists(\Throwable::class, false)) {
 } else {
     /**
      * The base interface for all Stripe exceptions.
-     *
-     * @package Stripe\Exception
      */
     // phpcs:disable PSR1.Classes.ClassDeclaration.MultipleClasses
     interface ExceptionInterface

@@ -4,8 +4,6 @@ namespace Stripe;
 
 /**
  * Class SingletonApiResource
- *
- * @package Stripe
  */
 abstract class SingletonApiResource extends ApiResource
 {

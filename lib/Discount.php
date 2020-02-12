@@ -11,8 +11,6 @@ namespace Stripe;
  * @property int $end
  * @property int $start
  * @property string $subscription
- *
- * @package Stripe
  */
 class Discount extends StripeObject
 {

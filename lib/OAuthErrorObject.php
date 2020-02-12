@@ -7,8 +7,6 @@ namespace Stripe;
  *
  * @property string $error
  * @property string $error_description
- *
- * @package Stripe
  */
 class OAuthErrorObject extends StripeObject
 {

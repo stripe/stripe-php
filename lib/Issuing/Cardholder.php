@@ -21,8 +21,6 @@ namespace Stripe\Issuing;
  * @property \Stripe\StripeObject $requirements
  * @property string $status Specifies whether to permit authorizations on this cardholder's cards.
  * @property string $type One of <code>individual</code> or <code>business_entity</code>.
- *
- * @package Stripe\Issuing
  */
 class Cardholder extends \Stripe\ApiResource
 {

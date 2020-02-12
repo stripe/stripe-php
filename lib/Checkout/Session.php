@@ -23,8 +23,6 @@ namespace Stripe\Checkout;
  * @property string|null $submit_type Describes the type of transaction being performed by Checkout in order to customize relevant text on the page, such as the submit button. <code>submit_type</code> can only be specified on Checkout Sessions in <code>payment</code> mode, but not Checkout Sessions in <code>subscription</code> or <code>setup</code> mode.
  * @property string|\Stripe\Subscription|null $subscription The ID of the subscription for Checkout Sessions in <code>subscription</code> mode.
  * @property string $success_url The URL the customer will be directed to after the payment or subscription creation is successful.
- *
- * @package Stripe\Checkout
  */
 class Session extends \Stripe\ApiResource
 {

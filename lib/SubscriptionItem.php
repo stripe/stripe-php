@@ -14,8 +14,6 @@ namespace Stripe;
  * @property int $quantity The <a href="https://stripe.com/docs/subscriptions/quantities">quantity</a> of the plan to which the customer should be subscribed.
  * @property string $subscription The <code>subscription</code> this <code>subscription_item</code> belongs to.
  * @property \Stripe\TaxRate[]|null $tax_rates The tax rates which apply to this <code>subscription_item</code>. When set, the <code>default_tax_rates</code> on the subscription do not apply to this <code>subscription_item</code>.
- *
- * @package Stripe
  */
 class SubscriptionItem extends ApiResource
 {

@@ -22,8 +22,6 @@ namespace Stripe;
  * @property string|\Stripe\TransferReversal|null $source_transfer_reversal The transfer reversal that is associated with the refund. Only present if the charge came from another Stripe account. See the Connect documentation for details.
  * @property string|null $status Status of the refund. For credit card refunds, this can be <code>pending</code>, <code>succeeded</code>, or <code>failed</code>. For other types of refunds, it can be <code>pending</code>, <code>succeeded</code>, <code>failed</code>, or <code>canceled</code>. Refer to our <a href="https://stripe.com/docs/refunds#failed-refunds">refunds</a> documentation for more details.
  * @property string|\Stripe\TransferReversal|null $transfer_reversal If the accompanying transfer was reversed, the transfer reversal object. Only applicable if the charge was created using the destination parameter.
- *
- * @package Stripe
  */
 class Refund extends ApiResource
 {

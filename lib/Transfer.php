@@ -22,8 +22,6 @@ namespace Stripe;
  * @property string|\Stripe\Charge|null $source_transaction ID of the charge or payment that was used to fund the transfer. If null, the transfer was funded from the available balance.
  * @property string|null $source_type The source balance this transfer came from. One of <code>card</code>, <code>fpx</code>, or <code>bank_account</code>.
  * @property string|null $transfer_group A string that identifies this transaction as part of a group. See the <a href="https://stripe.com/docs/connect/charges-transfers#grouping-transactions">Connect documentation</a> for details.
- *
- * @package Stripe
  */
 class Transfer extends ApiResource
 {

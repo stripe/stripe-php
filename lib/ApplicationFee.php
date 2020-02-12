@@ -19,8 +19,6 @@ namespace Stripe;
  * @property string|\Stripe\Charge|null $originating_transaction ID of the corresponding charge on the platform account, if this fee was the result of a charge using the <code>destination</code> parameter.
  * @property bool $refunded Whether the fee has been fully refunded. If the fee is only partially refunded, this attribute will still be false.
  * @property \Stripe\Collection $refunds A list of refunds that have been applied to the fee.
- *
- * @package Stripe
  */
 class ApplicationFee extends ApiResource
 {

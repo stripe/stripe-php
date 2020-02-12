@@ -5,8 +5,6 @@ namespace Stripe;
 /**
  * Class TaxId
  *
- * @package Stripe
- *
  * @property string $id
  * @property string $object
  * @property string $country

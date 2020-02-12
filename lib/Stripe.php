@@ -4,8 +4,6 @@ namespace Stripe;
 
 /**
  * Class Stripe
- *
- * @package Stripe
  */
 class Stripe
 {

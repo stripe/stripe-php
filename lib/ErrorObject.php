@@ -31,8 +31,6 @@ namespace Stripe;
  *    `api_connection_error`, `api_error`, `authentication_error`,
  *    `card_error`, `idempotency_error`, `invalid_request_error`, or
  *    `rate_limit_error`.
- *
- * @package Stripe
  */
 class ErrorObject extends StripeObject
 {

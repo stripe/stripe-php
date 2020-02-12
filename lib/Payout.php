@@ -25,8 +25,6 @@ namespace Stripe;
  * @property string|null $statement_descriptor Extra information about a payout to be displayed on the user's bank statement.
  * @property string $status Current status of the payout (<code>paid</code>, <code>pending</code>, <code>in_transit</code>, <code>canceled</code> or <code>failed</code>). A payout will be <code>pending</code> until it is submitted to the bank, at which point it becomes <code>in_transit</code>. It will then change to <code>paid</code> if the transaction goes through. If it does not go through successfully, its status will change to <code>failed</code> or <code>canceled</code>.
  * @property string $type Can be <code>bank_account</code> or <code>card</code>.
- *
- * @package Stripe
  */
 class Payout extends ApiResource
 {

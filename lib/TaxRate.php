@@ -16,8 +16,6 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property float $percentage This represents the tax rate percent out of 100.
- *
- * @package Stripe
  */
 class TaxRate extends ApiResource
 {

@@ -24,8 +24,6 @@ namespace Stripe;
  * @property string|null $unit_label A label that represents units of this product in Stripe and on customers’ receipts and invoices. When set, this will be included in associated invoice line item descriptions.
  * @property int $updated Time at which the object was last updated. Measured in seconds since the Unix epoch.
  * @property string|null $url A URL of a publicly-accessible webpage for this product. Only applicable to products of <code>type=good</code>.
- *
- * @package Stripe
  */
 class Product extends ApiResource
 {

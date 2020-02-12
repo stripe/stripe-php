@@ -15,8 +15,6 @@ namespace Stripe;
  * @property string|null $title A user friendly title for the document.
  * @property string|null $type The type of the file returned (e.g., <code>csv</code>, <code>pdf</code>, <code>jpg</code>, or <code>png</code>).
  * @property string|null $url The URL from which the file can be downloaded using your live secret API key.
- *
- * @package Stripe
  */
 class File extends ApiResource
 {

@@ -18,8 +18,6 @@ namespace Stripe;
  * @property string $type
  * @property int|null $unit_amount
  * @property string|null $unit_amount_decimal
- *
- * @package Stripe
  */
 class CreditNoteLineItem extends ApiResource
 {

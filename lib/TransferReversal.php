@@ -15,8 +15,6 @@ namespace Stripe;
  * @property \Stripe\StripeObject $metadata
  * @property string $source_refund
  * @property string $transfer
- *
- * @package Stripe
  */
 class TransferReversal extends ApiResource
 {

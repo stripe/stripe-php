@@ -5,8 +5,6 @@ namespace Stripe;
 /**
  * Class Capability
  *
- * @package Stripe
- *
  * @property string $id
  * @property string $object
  * @property string $account

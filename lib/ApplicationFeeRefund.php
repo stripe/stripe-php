@@ -13,8 +13,6 @@ namespace Stripe;
  * @property string $currency
  * @property string $fee
  * @property \Stripe\StripeObject $metadata
- *
- * @package Stripe
  */
 class ApplicationFeeRefund extends ApiResource
 {

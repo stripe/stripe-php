@@ -9,8 +9,6 @@ namespace Stripe;
  * @property string $url
  * @property bool $has_more
  * @property \Stripe\StripeObject[] $data
- *
- * @package Stripe
  */
 class Collection extends StripeObject implements \IteratorAggregate
 {

@@ -19,8 +19,6 @@ namespace Stripe;
  * @property string|\Stripe\PaymentIntent $payment_intent The PaymentIntent ID associated with this review, if one exists.
  * @property string $reason The reason the review is currently open or closed. One of <code>rule</code>, <code>manual</code>, <code>approved</code>, <code>refunded</code>, <code>refunded_as_fraud</code>, or <code>disputed</code>.
  * @property \Stripe\StripeObject|null $session Information related to the browsing session of the user who initiated the payment.
- *
- * @package Stripe
  */
 class Review extends ApiResource
 {

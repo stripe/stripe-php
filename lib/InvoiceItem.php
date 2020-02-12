@@ -26,8 +26,6 @@ namespace Stripe;
  * @property bool $unified_proration For prorations this indicates whether Stripe automatically grouped multiple related debit and credit line items into a single combined line item.
  * @property int|null $unit_amount Unit Amount (in the <code>currency</code> specified) of the invoice item.
  * @property string|null $unit_amount_decimal Same as <code>unit_amount</code>, but contains a decimal value with at most 12 decimal places.
- *
- * @package Stripe
  */
 class InvoiceItem extends ApiResource
 {

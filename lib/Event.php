@@ -15,8 +15,6 @@ namespace Stripe;
  * @property int $pending_webhooks Number of webhooks that have yet to be successfully delivered (i.e., to return a 20x response) to the URLs you've specified.
  * @property \Stripe\StripeObject|null $request Information on the API request that instigated the event.
  * @property string $type Description of the event (e.g., <code>invoice.created</code> or <code>charge.refunded</code>).
- *
- * @package Stripe
  */
 class Event extends ApiResource
 {

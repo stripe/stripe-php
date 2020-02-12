@@ -13,8 +13,6 @@ namespace Stripe\Reporting;
  * @property string $name Human-readable name of the Report Type
  * @property int $updated When this Report Type was latest updated. Measured in seconds since the Unix epoch.
  * @property int $version Version of the Report Type. Different versions report with the same ID will have the same purpose, but may take different run parameters or have different result schemas.
- *
- * @package Stripe\Reporting
  */
 class ReportType extends \Stripe\ApiResource
 {

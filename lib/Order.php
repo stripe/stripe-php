@@ -28,8 +28,6 @@ namespace Stripe;
  * @property \Stripe\StripeObject|null $status_transitions The timestamps at which the order status was updated.
  * @property int|null $updated Time at which the object was last updated. Measured in seconds since the Unix epoch.
  * @property string $upstream_id The user's order ID if it is different from the Stripe order ID.
- *
- * @package Stripe
  */
 class Order extends ApiResource
 {

@@ -65,8 +65,6 @@ namespace Stripe;
  * @property int $total Total after discounts and taxes.
  * @property \Stripe\StripeObject[]|null $total_tax_amounts The aggregate amounts calculated per tax rate for all line items.
  * @property int|null $webhooks_delivered_at The time at which webhooks for this invoice were successfully delivered (if the invoice had no webhooks to deliver, this will match <code>created</code>). Invoice payment is delayed until webhooks are delivered, or until all webhook delivery attempts have been exhausted.
- *
- * @package Stripe
  */
 class Invoice extends ApiResource
 {

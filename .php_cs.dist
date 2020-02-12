@@ -20,7 +20,6 @@ return PhpCsFixer\Config::create()
         'php_unit_test_class_requires_covers' => false,
         'phpdoc_align' => false,
         'phpdoc_annotation_without_dot' => false,
-        'phpdoc_no_package' => false,
         'phpdoc_summary' => false,
         'phpdoc_types_order' => [
             'null_adjustment' => 'always_last',

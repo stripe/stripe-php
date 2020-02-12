@@ -25,8 +25,6 @@ namespace Stripe;
  * @property \Stripe\StripeObject|null $settings Options for customizing how the account functions within Stripe.
  * @property \Stripe\StripeObject $tos_acceptance
  * @property string $type The Stripe account type. Can be <code>standard</code>, <code>express</code>, or <code>custom</code>.
- *
- * @package Stripe
  */
 class Account extends ApiResource
 {

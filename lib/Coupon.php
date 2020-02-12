@@ -20,8 +20,6 @@ namespace Stripe;
  * @property int|null $redeem_by Date after which the coupon can no longer be redeemed.
  * @property int $times_redeemed Number of times this coupon has been applied to a customer.
  * @property bool $valid Taking account of the above properties, whether this coupon can still be applied to a customer.
- *
- * @package Stripe
  */
 class Coupon extends ApiResource
 {

@@ -23,8 +23,6 @@ namespace Stripe;
  * @property array $tax_amounts
  * @property array $tax_rates
  * @property string $type
- *
- * @package Stripe
  */
 class InvoiceLineItem extends ApiResource
 {

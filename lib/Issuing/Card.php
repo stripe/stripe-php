@@ -24,8 +24,6 @@ namespace Stripe\Issuing;
  * @property \Stripe\StripeObject|null $shipping Where and how the card will be shipped.
  * @property string $status Whether authorizations can be approved on this card.
  * @property string $type The type of the card.
- *
- * @package Stripe\Issuing
  */
 class Card extends \Stripe\ApiResource
 {

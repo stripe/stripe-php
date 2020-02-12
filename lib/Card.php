@@ -33,8 +33,6 @@ namespace Stripe;
  * @property string|null $name Cardholder name.
  * @property string|\Stripe\Recipient|null $recipient The recipient that this card belongs to. This attribute will not be in the card object if the card belongs to a customer or account instead.
  * @property string|null $tokenization_method If the card number is tokenized, this is the method that was used. Can be <code>amex_express_checkout</code>, <code>android_pay</code> (includes Google Pay), <code>apple_pay</code>, <code>masterpass</code>, <code>visa_checkout</code>, or null.
- *
- * @package Stripe
  */
 class Card extends ApiResource
 {

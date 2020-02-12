@@ -21,8 +21,6 @@ namespace Stripe\Issuing;
  * @property \Stripe\StripeObject $merchant_data
  * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $type The nature of the transaction.
- *
- * @package Stripe\Issuing
  */
 class Transaction extends \Stripe\ApiResource
 {

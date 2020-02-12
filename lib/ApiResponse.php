@@ -6,8 +6,6 @@ use Stripe\Util\CaseInsensitiveArray;
 
 /**
  * Class ApiResponse
- *
- * @package Stripe
  */
 class ApiResponse
 {

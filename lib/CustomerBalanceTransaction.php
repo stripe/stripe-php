@@ -5,8 +5,6 @@ namespace Stripe;
 /**
  * Class CustomerBalanceTransaction
  *
- * @package Stripe
- *
  * @property string $id
  * @property string $object
  * @property int $amount

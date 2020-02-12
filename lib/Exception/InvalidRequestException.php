@@ -5,8 +5,6 @@ namespace Stripe\Exception;
 /**
  * InvalidRequestException is thrown when a request is initiated with invalid
  * parameters.
- *
- * @package Stripe\Exception
  */
 class InvalidRequestException extends ApiErrorException
 {

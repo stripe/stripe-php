@@ -15,8 +15,6 @@ namespace Stripe\Reporting;
  * @property \Stripe\File|null $result The file object representing the result of the report run (populated when <code>status=succeeded</code>).
  * @property string $status Status of this report run. This will be <code>pending</code> when the run is initially created. When the run finishes, this will be set to <code>succeeded</code> and the <code>result</code> field will be populated. Rarely, we may encounter an error, at which point this will be set to <code>failed</code> and the <code>error</code> field will be populated.
  * @property int|null $succeeded_at Timestamp at which this run successfully finished (populated when <code>status=succeeded</code>). Measured in seconds since the Unix epoch.
- *
- * @package Stripe\Reporting
  */
 class ReportRun extends \Stripe\ApiResource
 {

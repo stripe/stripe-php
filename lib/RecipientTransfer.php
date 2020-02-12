@@ -29,8 +29,6 @@ namespace Stripe;
  * @property string $statement_descriptor
  * @property string $status
  * @property string $type
- *
- * @package Stripe
  */
 class RecipientTransfer extends ApiResource
 {

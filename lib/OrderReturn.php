@@ -14,8 +14,6 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string|\Stripe\Order|null $order The order that this return includes items from.
  * @property string|\Stripe\Refund|null $refund The ID of the refund issued for this return.
- *
- * @package Stripe
  */
 class OrderReturn extends ApiResource
 {
