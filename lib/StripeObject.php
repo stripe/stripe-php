@@ -180,7 +180,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     // ArrayAccess methods
     public function offsetSet($k, $v)
     {
-        $this->$k = $v;
+        $this->{$k} = $v;
     }
 
     public function offsetExists($k)
@@ -190,7 +190,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
 
     public function offsetUnset($k)
     {
-        unset($this->$k);
+        unset($this->{$k});
     }
 
     public function offsetGet($k)
@@ -256,7 +256,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         }
 
         foreach ($removed->toArray() as $k) {
-            unset($this->$k);
+            unset($this->{$k});
         }
 
         $this->updateAttributes($values, $opts, false);

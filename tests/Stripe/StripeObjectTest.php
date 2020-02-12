@@ -43,7 +43,7 @@ class StripeObjectTest extends TestCase
         $s->foo = 'a';
         static::assertSame($s->foo, 'a');
         static::assertTrue(isset($s->foo));
-        unset($s->foo);
+        $s->foo = null;
         static::assertFalse(isset($s->foo));
     }
 
