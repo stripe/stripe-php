@@ -15,8 +15,8 @@ class SignatureVerificationException extends \Exception implements ExceptionInte
      * Creates a new SignatureVerificationException exception.
      *
      * @param string $message The exception message.
-     * @param string|null $httpBody The HTTP body as a string.
-     * @param string|null $sigHeader The `Stripe-Signature` HTTP header.
+     * @param null|string $httpBody The HTTP body as a string.
+     * @param null|string $sigHeader The `Stripe-Signature` HTTP header.
      *
      * @return SignatureVerificationException
      */
@@ -35,7 +35,7 @@ class SignatureVerificationException extends \Exception implements ExceptionInte
     /**
      * Gets the HTTP body as a string.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getHttpBody()
     {
@@ -45,7 +45,7 @@ class SignatureVerificationException extends \Exception implements ExceptionInte
     /**
      * Sets the HTTP body as a string.
      *
-     * @param string|null $httpBody
+     * @param null|string $httpBody
      */
     public function setHttpBody($httpBody)
     {
@@ -55,7 +55,7 @@ class SignatureVerificationException extends \Exception implements ExceptionInte
     /**
      * Gets the `Stripe-Signature` HTTP header.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getSigHeader()
     {
@@ -65,7 +65,7 @@ class SignatureVerificationException extends \Exception implements ExceptionInte
     /**
      * Sets the `Stripe-Signature` HTTP header.
      *
-     * @param string|null $sigHeader
+     * @param null|string $sigHeader
      */
     public function setSigHeader($sigHeader)
     {

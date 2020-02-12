@@ -9,25 +9,25 @@ namespace Stripe;
  * @property string $object
  * @property string $account
  * @property \Stripe\StripeObject $address
- * @property \Stripe\StripeObject|null $address_kana
- * @property \Stripe\StripeObject|null $address_kanji
+ * @property null|\Stripe\StripeObject $address_kana
+ * @property null|\Stripe\StripeObject $address_kanji
  * @property int $created
  * @property bool $deleted
  * @property \Stripe\StripeObject $dob
- * @property string|null $email
- * @property string|null $first_name
- * @property string|null $first_name_kana
- * @property string|null $first_name_kanji
- * @property string|null $gender
+ * @property null|string $email
+ * @property null|string $first_name
+ * @property null|string $first_name_kana
+ * @property null|string $first_name_kanji
+ * @property null|string $gender
  * @property bool $id_number_provided
- * @property string|null $last_name
- * @property string|null $last_name_kana
- * @property string|null $last_name_kanji
- * @property string|null $maiden_name
+ * @property null|string $last_name
+ * @property null|string $last_name_kana
+ * @property null|string $last_name_kanji
+ * @property null|string $maiden_name
  * @property \Stripe\StripeObject $metadata
- * @property string|null $phone
+ * @property null|string $phone
  * @property \Stripe\StripeObject $relationship
- * @property \Stripe\StripeObject|null $requirements
+ * @property null|\Stripe\StripeObject $requirements
  * @property bool $ssn_last_4_provided
  * @property \Stripe\StripeObject $verification
  */
@@ -81,7 +81,7 @@ class Person extends ApiResource
 
     /**
      * @param array|string $_id
-     * @param array|string|null $_opts
+     * @param null|array|string $_opts
      *
      * @throws \Stripe\Exception\BadMethodCallException
      */
@@ -96,8 +96,8 @@ class Person extends ApiResource
 
     /**
      * @param string $_id
-     * @param array|null $_params
-     * @param array|string|null $_options
+     * @param null|array $_params
+     * @param null|array|string $_options
      *
      * @throws \Stripe\Exception\BadMethodCallException
      */

@@ -10,8 +10,8 @@ namespace Stripe\ApiOperations;
 trait Delete
 {
     /**
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

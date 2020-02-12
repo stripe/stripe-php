@@ -21,9 +21,6 @@ return PhpCsFixer\Config::create()
         'phpdoc_align' => false,
         'phpdoc_annotation_without_dot' => false,
         'phpdoc_summary' => false,
-        'phpdoc_types_order' => [
-            'null_adjustment' => 'always_last',
-        ],
         'protected_to_private' => false,
         'self_accessor' => false,
         'single_quote' => false,

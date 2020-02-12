@@ -12,8 +12,8 @@ trait NestedResource
     /**
      * @param string $method
      * @param string $url
-     * @param array|null $params
-     * @param array|string|null $options
+     * @param null|array $params
+     * @param null|array|string $options
      *
      * @return \Stripe\StripeObject
      */
@@ -31,7 +31,7 @@ trait NestedResource
     /**
      * @param string $id
      * @param string $nestedPath
-     * @param string|null $nestedId
+     * @param null|string $nestedId
      *
      * @return string
      */
@@ -48,8 +48,8 @@ trait NestedResource
     /**
      * @param string $id
      * @param string $nestedPath
-     * @param array|null $params
-     * @param array|string|null $options
+     * @param null|array $params
+     * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -65,9 +65,9 @@ trait NestedResource
     /**
      * @param string $id
      * @param string $nestedPath
-     * @param string|null $nestedId
-     * @param array|null $params
-     * @param array|string|null $options
+     * @param null|string $nestedId
+     * @param null|array $params
+     * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -83,9 +83,9 @@ trait NestedResource
     /**
      * @param string $id
      * @param string $nestedPath
-     * @param string|null $nestedId
-     * @param array|null $params
-     * @param array|string|null $options
+     * @param null|string $nestedId
+     * @param null|array $params
+     * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -101,9 +101,9 @@ trait NestedResource
     /**
      * @param string $id
      * @param string $nestedPath
-     * @param string|null $nestedId
-     * @param array|null $params
-     * @param array|string|null $options
+     * @param null|string $nestedId
+     * @param null|array $params
+     * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -119,8 +119,8 @@ trait NestedResource
     /**
      * @param string $id
      * @param string $nestedPath
-     * @param array|null $params
-     * @param array|string|null $options
+     * @param null|array $params
+     * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

@@ -18,18 +18,18 @@ namespace Stripe;
  * @property string $bitcoin_uri This URI can be displayed to the customer as a clickable link (to activate their bitcoin client) or as a QR code (for mobile wallets).
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a> to which the bitcoin will be converted.
- * @property string|null $customer The customer ID of the bitcoin receiver.
- * @property string|null $description An arbitrary string attached to the object. Often useful for displaying to users.
- * @property string|null $email The customer's email address, set by the API call that creates the receiver.
+ * @property null|string $customer The customer ID of the bitcoin receiver.
+ * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
+ * @property null|string $email The customer's email address, set by the API call that creates the receiver.
  * @property bool $filled This flag is initially false and updates to true when the customer sends the <code>bitcoin_amount</code> to this receiver.
  * @property string $inbound_address A bitcoin address that is specific to this receiver. The customer can send bitcoin to this address to fill the receiver.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property string|null $payment The ID of the payment created from the receiver, if any. Hidden when viewing the receiver with a publishable key.
- * @property string|null $refund_address The refund address of this bitcoin receiver.
+ * @property null|string $payment The ID of the payment created from the receiver, if any. Hidden when viewing the receiver with a publishable key.
+ * @property null|string $refund_address The refund address of this bitcoin receiver.
  * @property \Stripe\Collection $transactions A list with one entry for each time that the customer sent bitcoin to the receiver. Hidden when viewing the receiver with a publishable key.
  * @property bool $uncaptured_funds This receiver contains uncaptured funds that can be used for a payment or refunded.
- * @property bool|null $used_for_payment Indicate if this source is used for payment.
+ * @property null|bool $used_for_payment Indicate if this source is used for payment.
  */
 class BitcoinReceiver extends ApiResource
 {

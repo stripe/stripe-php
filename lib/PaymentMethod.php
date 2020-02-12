@@ -12,7 +12,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $card
  * @property \Stripe\StripeObject $card_present
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property string|\Stripe\Customer|null $customer The ID of the Customer to which this PaymentMethod is saved. This will not be set when the PaymentMethod has not been saved to a Customer.
+ * @property null|string|\Stripe\Customer $customer The ID of the Customer to which this PaymentMethod is saved. This will not be set when the PaymentMethod has not been saved to a Customer.
  * @property \Stripe\StripeObject $fpx
  * @property \Stripe\StripeObject $ideal
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
@@ -30,8 +30,8 @@ class PaymentMethod extends ApiResource
     use ApiOperations\Update;
 
     /**
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -47,8 +47,8 @@ class PaymentMethod extends ApiResource
     }
 
     /**
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

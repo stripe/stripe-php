@@ -90,7 +90,7 @@ abstract class ApiResource extends StripeObject
     }
 
     /**
-     * @param string|null $id the ID of the resource
+     * @param null|string $id the ID of the resource
      *
      * @throws Exception\UnexpectedValueException if $id is null
      *

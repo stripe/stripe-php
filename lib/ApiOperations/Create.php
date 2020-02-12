@@ -10,8 +10,8 @@ namespace Stripe\ApiOperations;
 trait Create
 {
     /**
-     * @param array|null $params
-     * @param array|string|null $options
+     * @param null|array $params
+     * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

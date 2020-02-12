@@ -22,10 +22,10 @@ class Stripe
     /** @var string The base URL for the Stripe API uploads endpoint. */
     public static $apiUploadBase = 'https://files.stripe.com';
 
-    /** @var string|null The version of the Stripe API to use for requests. */
+    /** @var null|string The version of the Stripe API to use for requests. */
     public static $apiVersion = null;
 
-    /** @var string|null The account ID for connected accounts requests. */
+    /** @var null|string The account ID for connected accounts requests. */
     public static $accountId = null;
 
     /** @var string Path to the CA bundle used to verify SSL certificates */
@@ -38,7 +38,7 @@ class Stripe
     public static $appInfo = null;
 
     /**
-     * @var Util\LoggerInterface|null The logger to which the library will
+     * @var null|Util\LoggerInterface The logger to which the library will
      *   produce messages.
      */
     public static $logger = null;
@@ -203,9 +203,9 @@ class Stripe
 
     /**
      * @param string $appName The application's name
-     * @param string|null $appVersion The application's version
-     * @param string|null $appUrl The application's URL
-     * @param string|null $appPartnerId The application's partner ID
+     * @param null|string $appVersion The application's version
+     * @param null|string $appUrl The application's URL
+     * @param null|string $appPartnerId The application's partner ID
      */
     public static function setAppInfo($appName, $appVersion = null, $appUrl = null, $appPartnerId = null)
     {

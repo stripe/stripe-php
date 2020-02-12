@@ -8,12 +8,12 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string $account The connected account that originated the event.
- * @property string|null $api_version The Stripe API version used to render <code>data</code>. <em>Note: This property is populated only for events on or after October 31, 2014</em>.
+ * @property null|string $api_version The Stripe API version used to render <code>data</code>. <em>Note: This property is populated only for events on or after October 31, 2014</em>.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property \Stripe\StripeObject $data
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property int $pending_webhooks Number of webhooks that have yet to be successfully delivered (i.e., to return a 20x response) to the URLs you've specified.
- * @property \Stripe\StripeObject|null $request Information on the API request that instigated the event.
+ * @property null|\Stripe\StripeObject $request Information on the API request that instigated the event.
  * @property string $type Description of the event (e.g., <code>invoice.created</code> or <code>charge.refunded</code>).
  */
 class Event extends ApiResource

@@ -65,13 +65,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
      *
      * @param string $method HTTP method (e.g. 'post', 'get', etc.)
      * @param string $path relative path (e.g. '/v1/charges')
-     * @param array|null $params array of parameters. If null, parameters will
+     * @param null|array $params array of parameters. If null, parameters will
      *   not be checked.
-     * @param string[]|null $headers array of headers. Does not need to be
+     * @param null|string[] $headers array of headers. Does not need to be
      *   exhaustive. If null, headers are not checked.
      * @param bool $hasFile Whether the request parameters contains a file.
      *   Defaults to false.
-     * @param string|null $base base URL (e.g. 'https://api.stripe.com')
+     * @param null|string $base base URL (e.g. 'https://api.stripe.com')
      */
     protected function expectsRequest(
         $method,
@@ -99,15 +99,15 @@ class TestCase extends \PHPUnit\Framework\TestCase
      *
      * @param string $method HTTP method (e.g. 'post', 'get', etc.)
      * @param string $path relative path (e.g. '/v1/charges')
-     * @param array|null $params array of parameters. If null, parameters will
+     * @param null|array $params array of parameters. If null, parameters will
      *   not be checked.
-     * @param string[]|null $headers array of headers. Does not need to be
+     * @param null|string[] $headers array of headers. Does not need to be
      *   exhaustive. If null, headers are not checked.
      * @param bool $hasFile Whether the request parameters contains a file.
      *   Defaults to false.
      * @param array $response
      * @param int $rcode
-     * @param string|null $base
+     * @param null|string $base
      *
      * @return array
      */
@@ -133,13 +133,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
      *
      * @param string $method HTTP method (e.g. 'post', 'get', etc.)
      * @param string $path relative path (e.g. '/v1/charges')
-     * @param array|null $params array of parameters. If null, parameters will
+     * @param null|array $params array of parameters. If null, parameters will
      *   not be checked.
-     * @param string[]|null $headers array of headers. Does not need to be
+     * @param null|string[] $headers array of headers. Does not need to be
      *   exhaustive. If null, headers are not checked.
      * @param bool $hasFile Whether the request parameters contains a file.
      *   Defaults to false.
-     * @param string|null $base base URL (e.g. 'https://api.stripe.com')
+     * @param null|string $base base URL (e.g. 'https://api.stripe.com')
      *
      * @return \PHPUnit_Framework_MockObject_Builder_InvocationMocker
      */

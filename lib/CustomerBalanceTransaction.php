@@ -61,7 +61,7 @@ class CustomerBalanceTransaction extends ApiResource
 
     /**
      * @param array|string $_id
-     * @param array|string|null $_opts
+     * @param null|array|string $_opts
      *
      * @throws \Stripe\Exception\BadMethodCallException
      */
@@ -77,8 +77,8 @@ class CustomerBalanceTransaction extends ApiResource
 
     /**
      * @param string $_id
-     * @param array|null $_params
-     * @param array|string|null $_options
+     * @param null|array $_params
+     * @param null|array|string $_options
      *
      * @throws \Stripe\Exception\BadMethodCallException
      */

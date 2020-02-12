@@ -8,7 +8,7 @@ namespace Stripe;
 class ApiRequestor
 {
     /**
-     * @var string|null
+     * @var null|string
      */
     private $_apiKey;
 
@@ -30,8 +30,8 @@ class ApiRequestor
     /**
      * ApiRequestor constructor.
      *
-     * @param string|null $apiKey
-     * @param string|null $apiBase
+     * @param null|string $apiKey
+     * @param null|string $apiBase
      */
     public function __construct($apiKey = null, $apiBase = null)
     {
@@ -102,8 +102,8 @@ class ApiRequestor
     /**
      * @param string     $method
      * @param string     $url
-     * @param array|null $params
-     * @param array|null $headers
+     * @param null|array $params
+     * @param null|array $headers
      *
      * @throws Exception\ApiErrorException
      *
@@ -234,9 +234,9 @@ class ApiRequestor
     /**
      * @static
      *
-     * @param array|null $appInfo
+     * @param null|array $appInfo
      *
-     * @return string|null
+     * @return null|string
      */
     private static function _formatAppInfo($appInfo)
     {

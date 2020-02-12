@@ -7,8 +7,8 @@ abstract class OAuth
     /**
      * Generates a URL to Stripe's OAuth form.
      *
-     * @param array|null $params
-     * @param array|null $opts
+     * @param null|array $params
+     * @param null|array $opts
      *
      * @return string The URL to Stripe's OAuth form.
      */
@@ -31,8 +31,8 @@ abstract class OAuth
      * Use an authoriztion code to connect an account to your platform and
      * fetch the user's credentials.
      *
-     * @param array|null $params
-     * @param array|null $opts
+     * @param null|array $params
+     * @param null|array $opts
      *
      * @throws \Stripe\Exception\OAuth\OAuthErrorException if the request fails
      *
@@ -55,8 +55,8 @@ abstract class OAuth
     /**
      * Disconnects an account from your platform.
      *
-     * @param array|null $params
-     * @param array|null $opts
+     * @param null|array $params
+     * @param null|array $opts
      *
      * @throws \Stripe\Exception\OAuth\OAuthErrorException if the request fails
      *

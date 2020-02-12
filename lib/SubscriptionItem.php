@@ -7,13 +7,13 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property \Stripe\StripeObject|null $billing_thresholds Define thresholds at which an invoice will be sent, and the related subscription advanced to a new billing period
+ * @property null|\Stripe\StripeObject $billing_thresholds Define thresholds at which an invoice will be sent, and the related subscription advanced to a new billing period
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property \Stripe\Plan $plan
  * @property int $quantity The <a href="https://stripe.com/docs/subscriptions/quantities">quantity</a> of the plan to which the customer should be subscribed.
  * @property string $subscription The <code>subscription</code> this <code>subscription_item</code> belongs to.
- * @property \Stripe\TaxRate[]|null $tax_rates The tax rates which apply to this <code>subscription_item</code>. When set, the <code>default_tax_rates</code> on the subscription do not apply to this <code>subscription_item</code>.
+ * @property null|\Stripe\TaxRate[] $tax_rates The tax rates which apply to this <code>subscription_item</code>. When set, the <code>default_tax_rates</code> on the subscription do not apply to this <code>subscription_item</code>.
  */
 class SubscriptionItem extends ApiResource
 {
@@ -29,9 +29,9 @@ class SubscriptionItem extends ApiResource
     const PATH_USAGE_RECORDS = '/usage_records';
 
     /**
-     * @param string|null $id The ID of the subscription item on which to create the usage record.
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|string $id The ID of the subscription item on which to create the usage record.
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -45,8 +45,8 @@ class SubscriptionItem extends ApiResource
     /**
      * @deprecated usageRecordSummaries is deprecated. Please use SubscriptionItem::allUsageRecordSummaries instead.
      *
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -66,8 +66,8 @@ class SubscriptionItem extends ApiResource
 
     /**
      * @param string $id The ID of the subscription item on which to retrieve the usage record summaries.
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

@@ -12,8 +12,8 @@ trait Update
 {
     /**
      * @param string $id The ID of the resource to update.
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -32,7 +32,7 @@ trait Update
     }
 
     /**
-     * @param array|string|null $opts
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

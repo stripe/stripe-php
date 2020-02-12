@@ -47,7 +47,7 @@ class ApplicationFeeRefund extends ApiResource
     }
 
     /**
-     * @param array|string|null $opts
+     * @param null|array|string $opts
      *
      * @return ApplicationFeeRefund The saved refund.
      */

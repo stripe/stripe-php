@@ -13,7 +13,7 @@ namespace Stripe\Issuing;
  * @property string $authorized_currency The currency that was presented to the cardholder for the authorization. Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property \Stripe\BalanceTransaction[] $balance_transactions List of balance transactions associated with this authorization.
  * @property \Stripe\Issuing\Card $card
- * @property string|\Stripe\Issuing\Cardholder|null $cardholder The cardholder to whom this authorization belongs.
+ * @property null|string|\Stripe\Issuing\Cardholder $cardholder The cardholder to whom this authorization belongs.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property int $held_amount The amount the authorization is expected to be in <code>held_currency</code>. When Stripe holds funds from you, this is the amount reserved for the authorization. This will be <code>0</code> when the object is created, and increase after it has been approved. For multi-currency transactions, <code>held_amount</code> can be used to determine the expected exchange rate.
  * @property string $held_currency The currency of the <a href="https://stripe.com/docs/api#issuing_authorization_object-held_amount">held amount</a>. This will always be the card currency.
@@ -27,7 +27,7 @@ namespace Stripe\Issuing;
  * @property string $status The current status of the authorization in its lifecycle.
  * @property \Stripe\Issuing\Transaction[] $transactions List of <a href="https://stripe.com/docs/api/issuing/transactions">transactions</a> associated with this authorization.
  * @property \Stripe\StripeObject $verification_data
- * @property string|null $wallet_provider What, if any, digital wallet was used for this authorization. One of <code>apple_pay</code>, <code>google_pay</code>, or <code>samsung_pay</code>.
+ * @property null|string $wallet_provider What, if any, digital wallet was used for this authorization. One of <code>apple_pay</code>, <code>google_pay</code>, or <code>samsung_pay</code>.
  */
 class Authorization extends \Stripe\ApiResource
 {
@@ -38,8 +38,8 @@ class Authorization extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Update;
 
     /**
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -55,8 +55,8 @@ class Authorization extends \Stripe\ApiResource
     }
 
     /**
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

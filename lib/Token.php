@@ -9,7 +9,7 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property \Stripe\BankAccount $bank_account
  * @property \Stripe\Card $card
- * @property string|null $client_ip IP address of the client that generated the token.
+ * @property null|string $client_ip IP address of the client that generated the token.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $type Type of the token: <code>account</code>, <code>bank_account</code>, <code>card</code>, or <code>pii</code>.

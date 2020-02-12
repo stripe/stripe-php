@@ -16,7 +16,7 @@ class Balance extends SingletonApiResource
     const OBJECT_NAME = 'balance';
 
     /**
-     * @param array|string|null $opts
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

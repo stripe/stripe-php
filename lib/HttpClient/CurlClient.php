@@ -63,8 +63,8 @@ class CurlClient implements ClientInterface
      * Note that request() will silently ignore a non-callable, non-array $defaultOptions, and will
      * throw an exception if $defaultOptions returns a non-array value.
      *
-     * @param array|callable|null $defaultOptions
-     * @param \Stripe\Util\RandomGenerator|null $randomGenerator
+     * @param null|array|callable $defaultOptions
+     * @param null|\Stripe\Util\RandomGenerator $randomGenerator
      */
     public function __construct($defaultOptions = null, $randomGenerator = null)
     {
@@ -132,7 +132,7 @@ class CurlClient implements ClientInterface
     }
 
     /**
-     * @return callable|null
+     * @return null|callable
      */
     public function getRequestStatusCallback()
     {
@@ -151,7 +151,7 @@ class CurlClient implements ClientInterface
      * 6. boolean $shouldRetry Whether the request will be retried
      * 7. integer $numRetries The number of the retry attempt
      *
-     * @param callable|null $requestStatusCallback
+     * @param null|callable $requestStatusCallback
      */
     public function setRequestStatusCallback($requestStatusCallback)
     {

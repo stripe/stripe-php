@@ -19,11 +19,11 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
      * Creates a new API error exception.
      *
      * @param string $message The exception message.
-     * @param int|null $httpStatus The HTTP status code.
-     * @param string|null $httpBody The HTTP body as a string.
-     * @param array|null $jsonBody The JSON deserialized body.
-     * @param array|\Stripe\Util\CaseInsensitiveArray|null $httpHeaders The HTTP headers array.
-     * @param string|null $stripeCode The Stripe error code.
+     * @param null|int $httpStatus The HTTP status code.
+     * @param null|string $httpBody The HTTP body as a string.
+     * @param null|array $jsonBody The JSON deserialized body.
+     * @param null|array|\Stripe\Util\CaseInsensitiveArray $httpHeaders The HTTP headers array.
+     * @param null|string $stripeCode The Stripe error code.
      *
      * @return static
      */
@@ -55,7 +55,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Gets the Stripe error object.
      *
-     * @return \Stripe\ErrorObject|null
+     * @return null|\Stripe\ErrorObject
      */
     public function getError()
     {
@@ -65,7 +65,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Sets the Stripe error object.
      *
-     * @param \Stripe\ErrorObject|null $error
+     * @param null|\Stripe\ErrorObject $error
      */
     public function setError($error)
     {
@@ -75,7 +75,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Gets the HTTP body as a string.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getHttpBody()
     {
@@ -85,7 +85,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Sets the HTTP body as a string.
      *
-     * @param string|null $httpBody
+     * @param null|string $httpBody
      */
     public function setHttpBody($httpBody)
     {
@@ -95,7 +95,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Gets the HTTP headers array.
      *
-     * @return array|\Stripe\Util\CaseInsensitiveArray|null
+     * @return null|array|\Stripe\Util\CaseInsensitiveArray
      */
     public function getHttpHeaders()
     {
@@ -105,7 +105,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Sets the HTTP headers array.
      *
-     * @param array|\Stripe\Util\CaseInsensitiveArray|null $httpHeaders
+     * @param null|array|\Stripe\Util\CaseInsensitiveArray $httpHeaders
      */
     public function setHttpHeaders($httpHeaders)
     {
@@ -115,7 +115,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Gets the HTTP status code.
      *
-     * @return int|null
+     * @return null|int
      */
     public function getHttpStatus()
     {
@@ -125,7 +125,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Sets the HTTP status code.
      *
-     * @param int|null $httpStatus
+     * @param null|int $httpStatus
      */
     public function setHttpStatus($httpStatus)
     {
@@ -135,7 +135,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Gets the JSON deserialized body.
      *
-     * @return array<string, mixed>|null
+     * @return null|array<string, mixed>
      */
     public function getJsonBody()
     {
@@ -145,7 +145,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Sets the JSON deserialized body.
      *
-     * @param array<string, mixed>|null $jsonBody
+     * @param null|array<string, mixed> $jsonBody
      */
     public function setJsonBody($jsonBody)
     {
@@ -155,7 +155,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Gets the Stripe request ID.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getRequestId()
     {
@@ -165,7 +165,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Sets the Stripe request ID.
      *
-     * @param string|null $requestId
+     * @param null|string $requestId
      */
     public function setRequestId($requestId)
     {
@@ -178,7 +178,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
      * Cf. the `CODE_*` constants on {@see \Stripe\ErrorObject} for possible
      * values.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getStripeCode()
     {
@@ -188,7 +188,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Sets the Stripe error code.
      *
-     * @param string|null $stripeCode
+     * @param null|string $stripeCode
      */
     public function setStripeCode($stripeCode)
     {

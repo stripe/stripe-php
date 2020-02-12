@@ -11,7 +11,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $ach_debit
  * @property \Stripe\StripeObject $acss_debit
  * @property \Stripe\StripeObject $alipay
- * @property int|null $amount A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a zero-decimal currency) representing the total amount associated with the source. This is the amount for which the source will be chargeable once ready. Required for <code>single_use</code> sources.
+ * @property null|int $amount A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a zero-decimal currency) representing the total amount associated with the source. This is the amount for which the source will be chargeable once ready. Required for <code>single_use</code> sources.
  * @property \Stripe\StripeObject $au_becs_debit
  * @property \Stripe\StripeObject $bancontact
  * @property \Stripe\StripeObject $card
@@ -19,7 +19,7 @@ namespace Stripe;
  * @property string $client_secret The client secret of the source. Used for client-side retrieval using a publishable key.
  * @property \Stripe\StripeObject $code_verification
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property string|null $currency Three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a> associated with the source. This is the currency for which the source will be chargeable once ready. Required for <code>single_use</code> sources.
+ * @property null|string $currency Three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a> associated with the source. This is the currency for which the source will be chargeable once ready. Required for <code>single_use</code> sources.
  * @property string $customer The ID of the customer to which this source is attached. This will not be present when the source has not been attached to a customer.
  * @property \Stripe\StripeObject $eps
  * @property string $flow The authentication <code>flow</code> of the source. <code>flow</code> is one of <code>redirect</code>, <code>receiver</code>, <code>code_verification</code>, <code>none</code>.
@@ -27,9 +27,9 @@ namespace Stripe;
  * @property \Stripe\StripeObject $ideal
  * @property \Stripe\StripeObject $klarna
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property \Stripe\StripeObject|null $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property \Stripe\StripeObject $multibanco
- * @property \Stripe\StripeObject|null $owner Information about the owner of the payment instrument that may be used or required by particular source types.
+ * @property null|\Stripe\StripeObject $owner Information about the owner of the payment instrument that may be used or required by particular source types.
  * @property \Stripe\StripeObject $p24
  * @property \Stripe\StripeObject $receiver
  * @property \Stripe\StripeObject $redirect
@@ -37,11 +37,11 @@ namespace Stripe;
  * @property \Stripe\StripeObject $sepa_debit
  * @property \Stripe\StripeObject $sofort
  * @property \Stripe\StripeObject $source_order
- * @property string|null $statement_descriptor Extra information about a source. This will appear on your customer's statement every time you charge the source.
+ * @property null|string $statement_descriptor Extra information about a source. This will appear on your customer's statement every time you charge the source.
  * @property string $status The status of the source, one of <code>canceled</code>, <code>chargeable</code>, <code>consumed</code>, <code>failed</code>, or <code>pending</code>. Only <code>chargeable</code> sources can be used to create a charge.
  * @property \Stripe\StripeObject $three_d_secure
  * @property string $type The <code>type</code> of the source. The <code>type</code> is a payment method, one of <code>ach_credit_transfer</code>, <code>ach_debit</code>, <code>alipay</code>, <code>bancontact</code>, <code>card</code>, <code>card_present</code>, <code>eps</code>, <code>giropay</code>, <code>ideal</code>, <code>multibanco</code>, <code>klarna</code>, <code>p24</code>, <code>sepa_debit</code>, <code>sofort</code>, <code>three_d_secure</code>, or <code>wechat</code>. An additional hash is included on the source with a name matching this value. It contains additional information specific to the <a href="https://stripe.com/docs/sources">payment method</a> used.
- * @property string|null $usage Either <code>reusable</code> or <code>single_use</code>. Whether this source should be reusable or not. Some source types may or may not be reusable by construction, while others may leave the option at creation. If an incompatible value is passed, an error will be returned.
+ * @property null|string $usage Either <code>reusable</code> or <code>single_use</code>. Whether this source should be reusable or not. Some source types may or may not be reusable by construction, while others may leave the option at creation. If an incompatible value is passed, an error will be returned.
  * @property \Stripe\StripeObject $wechat
  */
 class Source extends ApiResource
@@ -84,8 +84,8 @@ class Source extends ApiResource
     const USAGE_SINGLE_USE = 'single_use';
 
     /**
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\UnexpectedValueException if the source is not attached to a customer
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -125,8 +125,8 @@ class Source extends ApiResource
     /**
      * @deprecated sourceTransactions is deprecated. Please use Source::allSourceTransactions instead.
      *
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -144,8 +144,8 @@ class Source extends ApiResource
 
     /**
      * @param string $id
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -157,8 +157,8 @@ class Source extends ApiResource
     }
 
     /**
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

@@ -49,7 +49,7 @@ class TransferReversal extends ApiResource
     }
 
     /**
-     * @param array|string|null $opts
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

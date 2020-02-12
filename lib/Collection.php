@@ -158,7 +158,7 @@ class Collection extends StripeObject implements \IteratorAggregate
      * when we know that there isn't a next page in order to replicate the
      * behavior of the API when it attempts to return a page beyond the last.
      *
-     * @param array|string|null $opts
+     * @param null|array|string $opts
      *
      * @return Collection
      */
@@ -183,8 +183,8 @@ class Collection extends StripeObject implements \IteratorAggregate
      * This method will try to respect the limit of the current page. If none
      * was given, the default limit will be fetched again.
      *
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @return Collection
      */
@@ -211,8 +211,8 @@ class Collection extends StripeObject implements \IteratorAggregate
      * This method will try to respect the limit of the current page. If none
      * was given, the default limit will be fetched again.
      *
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @return Collection
      */

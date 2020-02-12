@@ -77,7 +77,7 @@ class TaxId extends ApiResource
 
     /**
      * @param array|string $_id
-     * @param array|string|null $_opts
+     * @param null|array|string $_opts
      *
      * @throws \Stripe\Exception\BadMethodCallException
      */

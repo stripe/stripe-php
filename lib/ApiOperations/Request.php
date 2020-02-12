@@ -10,7 +10,7 @@ namespace Stripe\ApiOperations;
 trait Request
 {
     /**
-     * @param array|mixed|null $params The list of parameters to validate
+     * @param null|array|mixed $params The list of parameters to validate
      *
      * @throws \Stripe\Exception\InvalidArgumentException if $params exists and is not an array
      */
@@ -30,7 +30,7 @@ trait Request
      * @param string $method HTTP method ('get', 'post', etc.)
      * @param string $url URL for the request
      * @param array $params list of parameters for the request
-     * @param array|string|null $options
+     * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -49,7 +49,7 @@ trait Request
      * @param string $method HTTP method ('get', 'post', etc.)
      * @param string $url URL for the request
      * @param array $params list of parameters for the request
-     * @param array|string|null $options
+     * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

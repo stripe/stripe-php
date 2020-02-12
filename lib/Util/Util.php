@@ -261,7 +261,7 @@ abstract class Util
 
     /**
      * @param array $params
-     * @param string|null $parentKey
+     * @param null|string $parentKey
      *
      * @return array
      */
