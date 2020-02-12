@@ -111,7 +111,7 @@ class SubscriptionItemTest extends TestCase
             'get',
             '/v1/subscription_items/' . self::TEST_RESOURCE_ID . "/usage_record_summaries"
         );
-        $resources =SubscriptionItem::allUsageRecordSummaries(self::TEST_RESOURCE_ID);
+        $resources = SubscriptionItem::allUsageRecordSummaries(self::TEST_RESOURCE_ID);
         static::assertInternalType('array', $resources->data);
         static::assertInstanceOf(\Stripe\UsageRecordSummary::class, $resources->data[0]);
     }

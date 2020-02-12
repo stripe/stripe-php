@@ -47,7 +47,7 @@ class Account extends ApiResource
      *
      * @see https://stripe.com/docs/api/accounts/object#account_object-business_type
      */
-    const BUSINESS_TYPE_COMPANY    = 'company';
+    const BUSINESS_TYPE_COMPANY = 'company';
     const BUSINESS_TYPE_INDIVIDUAL = 'individual';
 
     /**
@@ -55,27 +55,27 @@ class Account extends ApiResource
      *
      * @see https://stripe.com/docs/api/accounts/object#account_object-capabilities
      */
-    const CAPABILITY_CARD_PAYMENTS     = 'card_payments';
-    const CAPABILITY_LEGACY_PAYMENTS   = 'legacy_payments';
+    const CAPABILITY_CARD_PAYMENTS = 'card_payments';
+    const CAPABILITY_LEGACY_PAYMENTS = 'legacy_payments';
     const CAPABILITY_PLATFORM_PAYMENTS = 'platform_payments';
-    const CAPABILITY_TRANSFERS         = 'transfers';
+    const CAPABILITY_TRANSFERS = 'transfers';
 
     /**
      * Possible string representations of an account's capability status.
      *
      * @see https://stripe.com/docs/api/accounts/object#account_object-capabilities
      */
-    const CAPABILITY_STATUS_ACTIVE   = 'active';
+    const CAPABILITY_STATUS_ACTIVE = 'active';
     const CAPABILITY_STATUS_INACTIVE = 'inactive';
-    const CAPABILITY_STATUS_PENDING  = 'pending';
+    const CAPABILITY_STATUS_PENDING = 'pending';
 
     /**
      * Possible string representations of an account's type.
      *
      * @see https://stripe.com/docs/api/accounts/object#account_object-type
      */
-    const TYPE_CUSTOM   = 'custom';
-    const TYPE_EXPRESS  = 'express';
+    const TYPE_CUSTOM = 'custom';
+    const TYPE_EXPRESS = 'express';
     const TYPE_STANDARD = 'standard';
 
     public static function getSavedNestedResources()

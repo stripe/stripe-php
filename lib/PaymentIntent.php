@@ -58,13 +58,13 @@ class PaymentIntent extends ApiResource
      *
      * @see https://stripe.com/docs/api/payment_intents/object#payment_intent_object-status
      */
-    const STATUS_CANCELED                = 'canceled';
-    const STATUS_PROCESSING              = 'processing';
-    const STATUS_REQUIRES_ACTION         = 'requires_action';
-    const STATUS_REQUIRES_CAPTURE        = 'requires_capture';
-    const STATUS_REQUIRES_CONFIRMATION   = 'requires_confirmation';
+    const STATUS_CANCELED = 'canceled';
+    const STATUS_PROCESSING = 'processing';
+    const STATUS_REQUIRES_ACTION = 'requires_action';
+    const STATUS_REQUIRES_CAPTURE = 'requires_capture';
+    const STATUS_REQUIRES_CONFIRMATION = 'requires_confirmation';
     const STATUS_REQUIRES_PAYMENT_METHOD = 'requires_payment_method';
-    const STATUS_SUCCEEDED               = 'succeeded';
+    const STATUS_SUCCEEDED = 'succeeded';
 
     /**
      * @param array|null $params

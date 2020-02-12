@@ -26,9 +26,9 @@ class Capability extends ApiResource
      *
      * @see https://stripe.com/docs/api/capabilities/object#capability_object-status
      */
-    const STATUS_ACTIVE      = 'active';
-    const STATUS_INACTIVE    = 'inactive';
-    const STATUS_PENDING     = 'pending';
+    const STATUS_ACTIVE = 'active';
+    const STATUS_INACTIVE = 'inactive';
+    const STATUS_PENDING = 'pending';
     const STATUS_UNREQUESTED = 'unrequested';
 
     /**

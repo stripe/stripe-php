@@ -29,8 +29,8 @@ class Token extends ApiResource
      *
      * @see https://stripe.com/docs/api/tokens/object#token_object-type
      */
-    const TYPE_ACCOUNT      = 'account';
+    const TYPE_ACCOUNT = 'account';
     const TYPE_BANK_ACCOUNT = 'bank_account';
-    const TYPE_CARD         = 'card';
-    const TYPE_PII          = 'pii';
+    const TYPE_CARD = 'card';
+    const TYPE_PII = 'pii';
 }

@@ -47,8 +47,8 @@ class Customer extends ApiResource
      *
      * @see https://stripe.com/docs/api/customers/object#customer_object-tax_exempt
      */
-    const TAX_EXEMPT_NONE    = 'none';
-    const TAX_EXEMPT_EXEMPT  = 'exempt';
+    const TAX_EXEMPT_NONE = 'none';
+    const TAX_EXEMPT_EXEMPT = 'exempt';
     const TAX_EXEMPT_REVERSE = 'reverse';
 
     public static function getSavedNestedResources()

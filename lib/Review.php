@@ -36,12 +36,12 @@ class Review extends ApiResource
      *
      * @see https://stripe.com/docs/api/radar/reviews/object
      */
-    const REASON_APPROVED          = 'approved';
-    const REASON_DISPUTED          = 'disputed';
-    const REASON_MANUAL            = 'manual';
-    const REASON_REFUNDED          = 'refunded';
+    const REASON_APPROVED = 'approved';
+    const REASON_DISPUTED = 'disputed';
+    const REASON_MANUAL = 'manual';
+    const REASON_REFUNDED = 'refunded';
     const REASON_REFUNDED_AS_FRAUD = 'refunded_as_fraud';
-    const REASON_RULE              = 'rule';
+    const REASON_RULE = 'rule';
 
     /**
      * @param array|null $params

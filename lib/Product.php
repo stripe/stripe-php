@@ -42,6 +42,6 @@ class Product extends ApiResource
      *
      * @see https://stripe.com/docs/api/service_products/object#service_product_object-type
      */
-    const TYPE_GOOD    = 'good';
+    const TYPE_GOOD = 'good';
     const TYPE_SERVICE = 'service';
 }

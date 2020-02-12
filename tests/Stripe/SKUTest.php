@@ -34,13 +34,13 @@ class SKUTest extends TestCase
             '/v1/skus'
         );
         $resource = SKU::create([
-            'currency'  => 'usd',
+            'currency' => 'usd',
             'inventory' => [
-                'type'     => 'finite',
+                'type' => 'finite',
                 'quantity' => 1,
             ],
-            'price'     => 100,
-            'product'   => "prod_123",
+            'price' => 100,
+            'product' => "prod_123",
         ]);
         static::assertInstanceOf(\Stripe\SKU::class, $resource);
     }

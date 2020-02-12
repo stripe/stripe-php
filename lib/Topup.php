@@ -38,10 +38,10 @@ class Topup extends ApiResource
      *
      * @see https://stripe.com/docs/api/topups/object#topup_object-status
      */
-    const STATUS_CANCELED  = 'canceled';
-    const STATUS_FAILED    = 'failed';
-    const STATUS_PENDING   = 'pending';
-    const STATUS_REVERSED  = 'reversed';
+    const STATUS_CANCELED = 'canceled';
+    const STATUS_FAILED = 'failed';
+    const STATUS_PENDING = 'pending';
+    const STATUS_REVERSED = 'reversed';
     const STATUS_SUCCEEDED = 'succeeded';
 
     /**

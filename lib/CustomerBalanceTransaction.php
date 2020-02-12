@@ -30,12 +30,12 @@ class CustomerBalanceTransaction extends ApiResource
      *
      * @see https://stripe.com/docs/api/customers/customer_balance_transaction_object#customer_balance_transaction_object-type
      */
-    const TYPE_ADJUSTEMENT             = 'adjustment';
-    const TYPE_APPLIED_TO_INVOICE      = 'applied_to_invoice';
-    const TYPE_CREDIT_NOTE             = 'credit_note';
-    const TYPE_INITIAL                 = 'initial';
-    const TYPE_INVOICE_TOO_LARGE       = 'invoice_too_large';
-    const TYPE_INVOICE_TOO_SMALL       = 'invoice_too_small';
+    const TYPE_ADJUSTEMENT = 'adjustment';
+    const TYPE_APPLIED_TO_INVOICE = 'applied_to_invoice';
+    const TYPE_CREDIT_NOTE = 'credit_note';
+    const TYPE_INITIAL = 'initial';
+    const TYPE_INVOICE_TOO_LARGE = 'invoice_too_large';
+    const TYPE_INVOICE_TOO_SMALL = 'invoice_too_small';
     const TYPE_UNSPENT_RECEIVER_CREDIT = 'unspent_receiver_credit';
 
     /**

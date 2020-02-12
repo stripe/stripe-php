@@ -39,17 +39,17 @@ class Refund extends ApiResource
      *
      * @see https://stripe.com/docs/api/refunds/object#refund_object-failure_reason
      */
-    const FAILURE_REASON                     = 'expired_or_canceled_card';
+    const FAILURE_REASON = 'expired_or_canceled_card';
     const FAILURE_REASON_LOST_OR_STOLEN_CARD = 'lost_or_stolen_card';
-    const FAILURE_REASON_UNKNOWN             = 'unknown';
+    const FAILURE_REASON_UNKNOWN = 'unknown';
 
     /**
      * Possible string representations of the refund reason.
      *
      * @see https://stripe.com/docs/api/refunds/object#refund_object-reason
      */
-    const REASON_DUPLICATE             = 'duplicate';
-    const REASON_FRAUDULENT            = 'fraudulent';
+    const REASON_DUPLICATE = 'duplicate';
+    const REASON_FRAUDULENT = 'fraudulent';
     const REASON_REQUESTED_BY_CUSTOMER = 'requested_by_customer';
 
     /**
@@ -57,8 +57,8 @@ class Refund extends ApiResource
      *
      * @see https://stripe.com/docs/api/refunds/object#refund_object-status
      */
-    const STATUS_CANCELED  = 'canceled';
-    const STATUS_FAILED    = 'failed';
-    const STATUS_PENDING   = 'pending';
+    const STATUS_CANCELED = 'canceled';
+    const STATUS_FAILED = 'failed';
+    const STATUS_PENDING = 'pending';
     const STATUS_SUCCEEDED = 'succeeded';
 }

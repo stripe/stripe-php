@@ -38,8 +38,8 @@ class Session extends \Stripe\ApiResource
      *
      * @see https://stripe.com/docs/api/checkout/sessions/create#create_checkout_session-submit_type
      */
-    const SUBMIT_TYPE_AUTO    = 'auto';
-    const SUBMIT_TYPE_BOOK    = 'book';
-    const SUBMIT_TYPE_DONATE  = 'donate';
-    const SUBMIT_TYPE_PAY     = 'pay';
+    const SUBMIT_TYPE_AUTO = 'auto';
+    const SUBMIT_TYPE_BOOK = 'book';
+    const SUBMIT_TYPE_DONATE = 'donate';
+    const SUBMIT_TYPE_PAY = 'pay';
 }

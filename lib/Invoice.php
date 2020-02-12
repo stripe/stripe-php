@@ -85,13 +85,13 @@ class Invoice extends ApiResource
      *
      * @see https://stripe.com/docs/api/invoices/object#invoice_object-billing_reason
      */
-    const BILLING_REASON_MANUAL                 = 'manual';
-    const BILLING_REASON_SUBSCRIPTION           = 'subscription';
-    const BILLING_REASON_SUBSCRIPTION_CREATE    = 'subscription_create';
-    const BILLING_REASON_SUBSCRIPTION_CYCLE     = 'subscription_cycle';
+    const BILLING_REASON_MANUAL = 'manual';
+    const BILLING_REASON_SUBSCRIPTION = 'subscription';
+    const BILLING_REASON_SUBSCRIPTION_CREATE = 'subscription_create';
+    const BILLING_REASON_SUBSCRIPTION_CYCLE = 'subscription_cycle';
     const BILLING_REASON_SUBSCRIPTION_THRESHOLD = 'subscription_threshold';
-    const BILLING_REASON_SUBSCRIPTION_UPDATE    = 'subscription_update';
-    const BILLING_REASON_UPCOMING               = 'upcoming';
+    const BILLING_REASON_SUBSCRIPTION_UPDATE = 'subscription_update';
+    const BILLING_REASON_UPCOMING = 'upcoming';
 
     /**
      * Possible string representations of the `collection_method` property.
@@ -99,18 +99,18 @@ class Invoice extends ApiResource
      * @see https://stripe.com/docs/api/invoices/object#invoice_object-collection_method
      */
     const COLLECTION_METHOD_CHARGE_AUTOMATICALLY = 'charge_automatically';
-    const COLLECTION_METHOD_SEND_INVOICE         = 'send_invoice';
+    const COLLECTION_METHOD_SEND_INVOICE = 'send_invoice';
 
     /**
      * Possible string representations of the invoice status.
      *
      * @see https://stripe.com/docs/api/invoices/object#invoice_object-status
      */
-    const STATUS_DRAFT         = 'draft';
-    const STATUS_OPEN          = 'open';
-    const STATUS_PAID          = 'paid';
+    const STATUS_DRAFT = 'draft';
+    const STATUS_OPEN = 'open';
+    const STATUS_PAID = 'paid';
     const STATUS_UNCOLLECTIBLE = 'uncollectible';
-    const STATUS_VOID          = 'void';
+    const STATUS_VOID = 'void';
 
     /**
      * Possible string representations of the `billing` property.
@@ -119,7 +119,7 @@ class Invoice extends ApiResource
      * @see https://stripe.com/docs/api/invoices/object#invoice_object-billing
      */
     const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
-    const BILLING_SEND_INVOICE         = 'send_invoice';
+    const BILLING_SEND_INVOICE = 'send_invoice';
 
     const PATH_LINES = '/lines';
 

@@ -28,32 +28,32 @@ class TaxId extends ApiResource
      *
      * @see https://stripe.com/docs/api/customer_tax_ids/object#tax_id_object-type
      */
-    const TYPE_AU_ABN  = 'au_abn';
-    const TYPE_CA_BN   = 'ca_bn';
-    const TYPE_CH_VAT  = 'ch_vat';
-    const TYPE_ES_CIF  = 'es_cif';
-    const TYPE_EU_VAT  = 'eu_vat';
-    const TYPE_HK_BR   = 'hk_br';
-    const TYPE_IN_GST  = 'in_gst';
-    const TYPE_MX_RFC  = 'mx_rfc';
-    const TYPE_NO_VAT  = 'no_vat';
-    const TYPE_NZ_GST  = 'nz_gst';
-    const TYPE_RU_INN  = 'ru_inn';
-    const TYPE_SG_UEN  = 'sg_uen';
-    const TYPE_TH_VAT  = 'th_vat';
-    const TYPE_TW_VAT  = 'tw_vat';
+    const TYPE_AU_ABN = 'au_abn';
+    const TYPE_CA_BN = 'ca_bn';
+    const TYPE_CH_VAT = 'ch_vat';
+    const TYPE_ES_CIF = 'es_cif';
+    const TYPE_EU_VAT = 'eu_vat';
+    const TYPE_HK_BR = 'hk_br';
+    const TYPE_IN_GST = 'in_gst';
+    const TYPE_MX_RFC = 'mx_rfc';
+    const TYPE_NO_VAT = 'no_vat';
+    const TYPE_NZ_GST = 'nz_gst';
+    const TYPE_RU_INN = 'ru_inn';
+    const TYPE_SG_UEN = 'sg_uen';
+    const TYPE_TH_VAT = 'th_vat';
+    const TYPE_TW_VAT = 'tw_vat';
     const TYPE_UNKNOWN = 'unknown';
-    const TYPE_ZA_VAT  = 'za_vat';
+    const TYPE_ZA_VAT = 'za_vat';
 
     /**
      * Possible string representations of the verification status.
      *
      * @see https://stripe.com/docs/api/customer_tax_ids/object#tax_id_object-verification
      */
-    const VERIFICATION_STATUS_PENDING     = 'pending';
+    const VERIFICATION_STATUS_PENDING = 'pending';
     const VERIFICATION_STATUS_UNAVAILABLE = 'unavailable';
-    const VERIFICATION_STATUS_UNVERIFIED  = 'unverified';
-    const VERIFICATION_STATUS_VERIFIED    = 'verified';
+    const VERIFICATION_STATUS_UNVERIFIED = 'unverified';
+    const VERIFICATION_STATUS_VERIFIED = 'verified';
 
     /**
      * @return string The API URL for this tax id.
