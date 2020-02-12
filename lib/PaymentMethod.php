@@ -35,7 +35,7 @@ class PaymentMethod extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return PaymentMethod The attached payment method.
+     * @return PaymentMethod the attached payment method
      */
     public function attach($params = null, $opts = null)
     {
@@ -52,7 +52,7 @@ class PaymentMethod extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return PaymentMethod The detached payment method.
+     * @return PaymentMethod the detached payment method
      */
     public function detach($params = null, $opts = null)
     {

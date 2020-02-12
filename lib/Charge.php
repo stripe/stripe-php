@@ -128,7 +128,7 @@ class Charge extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Charge The captured charge.
+     * @return Charge the captured charge
      */
     public function capture($params = null, $opts = null)
     {

@@ -24,7 +24,7 @@ class ThreeDSecure extends ApiResource
     use ApiOperations\Retrieve;
 
     /**
-     * @return string The endpoint URL for the given class.
+     * @return string the endpoint URL for the given class
      */
     public static function classUrl()
     {

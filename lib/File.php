@@ -44,7 +44,7 @@ class File extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\File The created resource.
+     * @return \Stripe\File the created file
      */
     public static function create($params = null, $opts = null)
     {

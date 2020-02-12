@@ -29,7 +29,7 @@ class SubscriptionItem extends ApiResource
     const PATH_USAGE_RECORDS = '/usage_records';
 
     /**
-     * @param null|string $id The ID of the subscription item on which to create the usage record.
+     * @param null|string $id the ID of the subscription item on which to create the usage record
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -50,7 +50,7 @@ class SubscriptionItem extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of usage record summaries.
+     * @return \Stripe\Collection the list of usage record summaries
      */
     public function usageRecordSummaries($params = null, $opts = null)
     {
@@ -65,13 +65,13 @@ class SubscriptionItem extends ApiResource
     const PATH_USAGE_RECORD_SUMMARIES = '/usage_record_summaries';
 
     /**
-     * @param string $id The ID of the subscription item on which to retrieve the usage record summaries.
+     * @param string $id the ID of the subscription item on which to retrieve the usage record summaries
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of usage record summaries.
+     * @return \Stripe\Collection the list of usage record summaries
      */
     public static function allUsageRecordSummaries($id, $params = null, $opts = null)
     {

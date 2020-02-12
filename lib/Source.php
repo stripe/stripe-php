@@ -90,7 +90,7 @@ class Source extends ApiResource
      * @throws \Stripe\Exception\UnexpectedValueException if the source is not attached to a customer
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Source The detached source.
+     * @return \Stripe\Source the detached source
      */
     public function detach($params = null, $opts = null)
     {
@@ -130,7 +130,7 @@ class Source extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of source transactions.
+     * @return \Stripe\Collection the list of source transactions
      */
     public function sourceTransactions($params = null, $opts = null)
     {
@@ -149,7 +149,7 @@ class Source extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of source transactions.
+     * @return \Stripe\Collection the list of source transactions
      */
     public static function allSourceTransactions($id, $params = null, $opts = null)
     {
@@ -162,7 +162,7 @@ class Source extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Source The verified source.
+     * @return Source the verified source
      */
     public function verify($params = null, $opts = null)
     {

@@ -38,8 +38,8 @@ class Stripe
     public static $appInfo = null;
 
     /**
-     * @var null|Util\LoggerInterface The logger to which the library will
-     *   produce messages.
+     * @var null|Util\LoggerInterface the logger to which the library will
+     *   produce messages
      */
     public static $logger = null;
 
@@ -61,7 +61,7 @@ class Stripe
     const VERSION = '7.24.0';
 
     /**
-     * @return string The API key used for requests.
+     * @return string the API key used for requests
      */
     public static function getApiKey()
     {
@@ -69,7 +69,7 @@ class Stripe
     }
 
     /**
-     * @return string The client_id used for Connect requests.
+     * @return string the client_id used for Connect requests
      */
     public static function getClientId()
     {
@@ -77,8 +77,8 @@ class Stripe
     }
 
     /**
-     * @return Util\LoggerInterface The logger to which the library will
-     *   produce messages.
+     * @return Util\LoggerInterface the logger to which the library will
+     *   produce messages
      */
     public static function getLogger()
     {
@@ -90,8 +90,8 @@ class Stripe
     }
 
     /**
-     * @param Util\LoggerInterface $logger The logger to which the library
-     *   will produce messages.
+     * @param Util\LoggerInterface $logger the logger to which the library
+     *   will produce messages
      */
     public static function setLogger($logger)
     {
@@ -128,7 +128,7 @@ class Stripe
     }
 
     /**
-     * @param string $apiVersion The API version to use for requests.
+     * @param string $apiVersion the API version to use for requests
      */
     public static function setApiVersion($apiVersion)
     {
@@ -177,7 +177,7 @@ class Stripe
 
     /**
      * @return string | null The Stripe account ID for connected account
-     *   requests.
+     *   requests
      */
     public static function getAccountId()
     {
@@ -185,8 +185,8 @@ class Stripe
     }
 
     /**
-     * @param string $accountId The Stripe account ID to set for connected
-     *   account requests.
+     * @param string $accountId the Stripe account ID to set for connected
+     *   account requests
      */
     public static function setAccountId($accountId)
     {

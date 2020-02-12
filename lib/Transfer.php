@@ -49,7 +49,7 @@ class Transfer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Transfer The canceled transfer.
+     * @return Transfer the canceled transfer
      */
     public function cancel($params = null, $opts = null)
     {
@@ -63,13 +63,13 @@ class Transfer extends ApiResource
     const PATH_REVERSALS = '/reversals';
 
     /**
-     * @param string $id The ID of the transfer on which to retrieve the transfer reversals.
+     * @param string $id the ID of the transfer on which to retrieve the transfer reversals
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of transfer reversals.
+     * @return \Stripe\Collection the list of transfer reversals
      */
     public static function allReversals($id, $params = null, $opts = null)
     {
@@ -77,7 +77,7 @@ class Transfer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the transfer on which to create the transfer reversal.
+     * @param string $id the ID of the transfer on which to create the transfer reversal
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -91,8 +91,8 @@ class Transfer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the transfer to which the transfer reversal belongs.
-     * @param string $reversalId The ID of the transfer reversal to retrieve.
+     * @param string $id the ID of the transfer to which the transfer reversal belongs
+     * @param string $reversalId the ID of the transfer reversal to retrieve
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -106,8 +106,8 @@ class Transfer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the transfer to which the transfer reversal belongs.
-     * @param string $reversalId The ID of the transfer reversal to update.
+     * @param string $id the ID of the transfer to which the transfer reversal belongs
+     * @param string $reversalId the ID of the transfer reversal to update
      * @param null|array $params
      * @param null|array|string $opts
      *

@@ -15,7 +15,7 @@ trait Delete
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return static The deleted resource.
+     * @return static the deleted resource
      */
     public function delete($params = null, $opts = null)
     {

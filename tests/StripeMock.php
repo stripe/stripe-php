@@ -15,7 +15,7 @@ class StripeMock
     /**
      * Starts a stripe-mock process with custom OpenAPI spec and fixtures files, if they exist.
      *
-     * @return bool true if a stripe-mock process was started, false otherwise.
+     * @return bool true if a stripe-mock process was started, false otherwise
      */
     public static function start()
     {

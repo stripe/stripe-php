@@ -10,7 +10,7 @@ abstract class OAuth
      * @param null|array $params
      * @param null|array $opts
      *
-     * @return string The URL to Stripe's OAuth form.
+     * @return string the URL to Stripe's OAuth form
      */
     public static function authorizeUrl($params = null, $opts = null)
     {
@@ -36,7 +36,7 @@ abstract class OAuth
      *
      * @throws \Stripe\Exception\OAuth\OAuthErrorException if the request fails
      *
-     * @return StripeObject Object containing the response from the API.
+     * @return StripeObject object containing the response from the API
      */
     public static function token($params = null, $opts = null)
     {
@@ -60,7 +60,7 @@ abstract class OAuth
      *
      * @throws \Stripe\Exception\OAuth\OAuthErrorException if the request fails
      *
-     * @return StripeObject Object containing the response from the API.
+     * @return StripeObject object containing the response from the API
      */
     public static function deauthorize($params = null, $opts = null)
     {

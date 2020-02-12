@@ -54,7 +54,7 @@ class TaxId extends ApiResource
     const VERIFICATION_STATUS_VERIFIED = 'verified';
 
     /**
-     * @return string The API URL for this tax id.
+     * @return string the API URL for this tax id
      */
     public function instanceUrl()
     {

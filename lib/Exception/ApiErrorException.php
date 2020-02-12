@@ -18,12 +18,12 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Creates a new API error exception.
      *
-     * @param string $message The exception message.
-     * @param null|int $httpStatus The HTTP status code.
-     * @param null|string $httpBody The HTTP body as a string.
-     * @param null|array $jsonBody The JSON deserialized body.
-     * @param null|array|\Stripe\Util\CaseInsensitiveArray $httpHeaders The HTTP headers array.
-     * @param null|string $stripeCode The Stripe error code.
+     * @param string $message the exception message
+     * @param null|int $httpStatus the HTTP status code
+     * @param null|string $httpBody the HTTP body as a string
+     * @param null|array $jsonBody the JSON deserialized body
+     * @param null|array|\Stripe\Util\CaseInsensitiveArray $httpHeaders the HTTP headers array
+     * @param null|string $stripeCode the Stripe error code
      *
      * @return static
      */

@@ -113,7 +113,7 @@ class Invoice extends ApiResource
     /**
      * Possible string representations of the `billing` property.
      *
-     * @deprecated Use `collection_method` instead.
+     * @deprecated use `collection_method` instead
      * @see https://stripe.com/docs/api/invoices/object#invoice_object-billing
      */
     const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
@@ -127,7 +127,7 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Invoice The upcoming invoice.
+     * @return \Stripe\Invoice the upcoming invoice
      */
     public static function upcoming($params = null, $opts = null)
     {
@@ -140,13 +140,13 @@ class Invoice extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the invoice on which to retrieve the lines.
+     * @param string $id the ID of the invoice on which to retrieve the lines
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws StripeExceptionApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of lines (InvoiceLineItem).
+     * @return \Stripe\Collection the list of lines (InvoiceLineItem)
      */
     public static function allLines($id, $params = null, $opts = null)
     {
@@ -159,7 +159,7 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Invoice The finalized invoice.
+     * @return Invoice the finalized invoice
      */
     public function finalizeInvoice($params = null, $opts = null)
     {
@@ -176,7 +176,7 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Invoice The uncollectible invoice.
+     * @return Invoice the uncollectible invoice
      */
     public function markUncollectible($params = null, $opts = null)
     {
@@ -193,7 +193,7 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Invoice The paid invoice.
+     * @return Invoice the paid invoice
      */
     public function pay($params = null, $opts = null)
     {
@@ -210,7 +210,7 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Invoice The sent invoice.
+     * @return Invoice the sent invoice
      */
     public function sendInvoice($params = null, $opts = null)
     {
@@ -227,7 +227,7 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Invoice The voided invoice.
+     * @return Invoice the voided invoice
      */
     public function voidInvoice($params = null, $opts = null)
     {

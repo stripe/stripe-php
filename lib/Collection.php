@@ -20,7 +20,7 @@ class Collection extends StripeObject implements \IteratorAggregate
     protected $filters = [];
 
     /**
-     * @return string The base URL for the given class.
+     * @return string the base URL for the given class
      */
     public static function baseUrl()
     {
@@ -30,7 +30,7 @@ class Collection extends StripeObject implements \IteratorAggregate
     /**
      * Returns the filters.
      *
-     * @return array The filters.
+     * @return array the filters
      */
     public function getFilters()
     {
@@ -40,7 +40,7 @@ class Collection extends StripeObject implements \IteratorAggregate
     /**
      * Sets the filters, removing paging options.
      *
-     * @param array $filters The filters.
+     * @param array $filters the filters
      */
     public function setFilters($filters)
     {
@@ -105,8 +105,8 @@ class Collection extends StripeObject implements \IteratorAggregate
     }
 
     /**
-     * @return \ArrayIterator An iterator that can be used to iterate
-     *    across objects in the current page.
+     * @return \ArrayIterator an iterator that can be used to iterate
+     *    across objects in the current page
      */
     public function getIterator()
     {
@@ -114,8 +114,8 @@ class Collection extends StripeObject implements \IteratorAggregate
     }
 
     /**
-     * @return \ArrayIterator An iterator that can be used to iterate
-     *    backwards across objects in the current page.
+     * @return \ArrayIterator an iterator that can be used to iterate
+     *    backwards across objects in the current page
      */
     public function getReverseIterator()
     {

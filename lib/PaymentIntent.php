@@ -70,7 +70,7 @@ class PaymentIntent extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return PaymentIntent The canceled payment intent.
+     * @return PaymentIntent the canceled payment intent
      */
     public function cancel($params = null, $opts = null)
     {
@@ -87,7 +87,7 @@ class PaymentIntent extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return PaymentIntent The captured payment intent.
+     * @return PaymentIntent the captured payment intent
      */
     public function capture($params = null, $opts = null)
     {
@@ -104,7 +104,7 @@ class PaymentIntent extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return PaymentIntent The confirmed payment intent.
+     * @return PaymentIntent the confirmed payment intent
      */
     public function confirm($params = null, $opts = null)
     {

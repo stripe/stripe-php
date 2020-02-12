@@ -72,7 +72,7 @@ class CreditNote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\CreditNote The previewed credit note.
+     * @return \Stripe\CreditNote the previewed credit note
      */
     public static function preview($params = null, $opts = null)
     {
@@ -90,7 +90,7 @@ class CreditNote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return CreditNote The voided credit note.
+     * @return CreditNote the voided credit note
      */
     public function voidCreditNote($params = null, $opts = null)
     {
@@ -104,13 +104,13 @@ class CreditNote extends ApiResource
     const PATH_LINES = '/lines';
 
     /**
-     * @param string $id The ID of the credit note on which to retrieve the credit note line items.
+     * @param string $id the ID of the credit note on which to retrieve the credit note line items
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of credit note line items.
+     * @return \Stripe\Collection the list of credit note line items
      */
     public static function allLines($id, $params = null, $opts = null)
     {

@@ -14,9 +14,9 @@ class SignatureVerificationException extends \Exception implements ExceptionInte
     /**
      * Creates a new SignatureVerificationException exception.
      *
-     * @param string $message The exception message.
-     * @param null|string $httpBody The HTTP body as a string.
-     * @param null|string $sigHeader The `Stripe-Signature` HTTP header.
+     * @param string $message the exception message
+     * @param null|string $httpBody the HTTP body as a string
+     * @param null|string $sigHeader the `Stripe-Signature` HTTP header
      *
      * @return SignatureVerificationException
      */

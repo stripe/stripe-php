@@ -222,7 +222,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      * @param array $values
      * @param null|array|string|Util\RequestOptions $opts
      *
-     * @return static The object constructed from the given values.
+     * @return static the object constructed from the given values
      */
     public static function constructFrom($values, $opts = null)
     {
@@ -237,7 +237,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      *
      * @param array $values
      * @param null|array|string|Util\RequestOptions $opts
-     * @param bool $partial Defaults to false.
+     * @param bool $partial defaults to false
      */
     public function refreshFrom($values, $opts, $partial = false)
     {
@@ -274,7 +274,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      *
      * @param array $values
      * @param null|array|string|Util\RequestOptions $opts
-     * @param bool $dirty Defaults to true.
+     * @param bool $dirty defaults to true
      */
     public function updateAttributes($values, $opts = null, $dirty = true)
     {
@@ -296,10 +296,10 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     }
 
     /**
-     * @param bool $force Defaults to false.
+     * @param bool $force defaults to false
      *
-     * @return array A recursive mapping of attributes to values for this object,
-     *    including the proper value for deleted attributes.
+     * @return array a recursive mapping of attributes to values for this object,
+     *    including the proper value for deleted attributes
      */
     public function serializeParameters($force = false)
     {
@@ -416,7 +416,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      * Returns an associative array with the key and values composing the
      * Stripe object.
      *
-     * @return array The associative array.
+     * @return array the associative array
      */
     public function toArray()
     {
@@ -446,7 +446,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     /**
      * Returns a pretty JSON representation of the Stripe object.
      *
-     * @return string The JSON representation of the Stripe object.
+     * @return string the JSON representation of the Stripe object
      */
     public function toJSON()
     {
@@ -555,7 +555,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      * Note that some, but not all, resources can indicate whether they have
      * been deleted.
      *
-     * @return bool Whether the resource is deleted.
+     * @return bool whether the resource is deleted
      */
     public function isDeleted()
     {

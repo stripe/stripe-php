@@ -17,7 +17,7 @@ abstract class SingletonApiResource extends ApiResource
     }
 
     /**
-     * @return string The endpoint associated with this singleton class.
+     * @return string the endpoint associated with this singleton class
      */
     public static function classUrl()
     {
@@ -29,7 +29,7 @@ abstract class SingletonApiResource extends ApiResource
     }
 
     /**
-     * @return string The endpoint associated with this singleton API resource.
+     * @return string the endpoint associated with this singleton API resource
      */
     public function instanceUrl()
     {

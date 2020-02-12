@@ -11,13 +11,13 @@ namespace Stripe\ApiOperations;
 trait Update
 {
     /**
-     * @param string $id The ID of the resource to update.
+     * @param string $id the ID of the resource to update
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return static The updated resource.
+     * @return static the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -36,7 +36,7 @@ trait Update
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return static The saved resource.
+     * @return static the saved resource
      */
     public function save($opts = null)
     {

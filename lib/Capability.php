@@ -30,7 +30,7 @@ class Capability extends ApiResource
     const STATUS_UNREQUESTED = 'unrequested';
 
     /**
-     * @return string The API URL for this Stripe account reversal.
+     * @return string the API URL for this Stripe account reversal
      */
     public function instanceUrl()
     {

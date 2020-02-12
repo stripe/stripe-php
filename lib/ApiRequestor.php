@@ -122,7 +122,7 @@ class ApiRequestor
     }
 
     /**
-     * @param string $rbody A JSON string.
+     * @param string $rbody a JSON string
      * @param int $rcode
      * @param array $rheaders
      * @param array $resp

@@ -65,7 +65,7 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Customer The updated customer.
+     * @return \Stripe\Customer the updated customer
      */
     public function deleteDiscount($params = null, $opts = null)
     {
@@ -77,13 +77,13 @@ class Customer extends ApiResource
     const PATH_BALANCE_TRANSACTIONS = '/balance_transactions';
 
     /**
-     * @param string $id The ID of the customer on which to retrieve the customer balance transactions.
+     * @param string $id the ID of the customer on which to retrieve the customer balance transactions
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of customer balance transactions.
+     * @return \Stripe\Collection the list of customer balance transactions
      */
     public static function allBalanceTransactions($id, $params = null, $opts = null)
     {
@@ -91,7 +91,7 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer on which to create the customer balance transaction.
+     * @param string $id the ID of the customer on which to create the customer balance transaction
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -105,8 +105,8 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer to which the customer balance transaction belongs.
-     * @param string $balanceTransactionId The ID of the customer balance transaction to retrieve.
+     * @param string $id the ID of the customer to which the customer balance transaction belongs
+     * @param string $balanceTransactionId the ID of the customer balance transaction to retrieve
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -120,8 +120,8 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer to which the customer balance transaction belongs.
-     * @param string $balanceTransactionId The ID of the customer balance transaction to update.
+     * @param string $id the ID of the customer to which the customer balance transaction belongs
+     * @param string $balanceTransactionId the ID of the customer balance transaction to update
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -137,13 +137,13 @@ class Customer extends ApiResource
     const PATH_SOURCES = '/sources';
 
     /**
-     * @param string $id The ID of the customer on which to retrieve the payment sources.
+     * @param string $id the ID of the customer on which to retrieve the payment sources
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of payment sources (AlipayAccount, BankAccount, BitcoinReceiver, Card or Source).
+     * @return \Stripe\Collection the list of payment sources (AlipayAccount, BankAccount, BitcoinReceiver, Card or Source)
      */
     public static function allSources($id, $params = null, $opts = null)
     {
@@ -151,7 +151,7 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer on which to create the payment source.
+     * @param string $id the ID of the customer on which to create the payment source
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -165,8 +165,8 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer to which the payment source belongs.
-     * @param string $sourceId The ID of the payment source to delete.
+     * @param string $id the ID of the customer to which the payment source belongs
+     * @param string $sourceId the ID of the payment source to delete
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -180,8 +180,8 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer to which the payment source belongs.
-     * @param string $sourceId The ID of the payment source to retrieve.
+     * @param string $id the ID of the customer to which the payment source belongs
+     * @param string $sourceId the ID of the payment source to retrieve
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -195,8 +195,8 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer to which the payment source belongs.
-     * @param string $sourceId The ID of the payment source to update.
+     * @param string $id the ID of the customer to which the payment source belongs
+     * @param string $sourceId the ID of the payment source to update
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -212,13 +212,13 @@ class Customer extends ApiResource
     const PATH_TAX_IDS = '/tax_ids';
 
     /**
-     * @param string $id The ID of the customer on which to retrieve the tax ids.
+     * @param string $id the ID of the customer on which to retrieve the tax ids
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of tax ids.
+     * @return \Stripe\Collection the list of tax ids
      */
     public static function allTaxIds($id, $params = null, $opts = null)
     {
@@ -226,7 +226,7 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer on which to create the tax id.
+     * @param string $id the ID of the customer on which to create the tax id
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -240,8 +240,8 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer to which the tax id belongs.
-     * @param string $taxIdId The ID of the tax id to delete.
+     * @param string $id the ID of the customer to which the tax id belongs
+     * @param string $taxIdId the ID of the tax id to delete
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -255,8 +255,8 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the customer to which the tax id belongs.
-     * @param string $taxIdId The ID of the tax id to retrieve.
+     * @param string $id the ID of the customer to which the tax id belongs
+     * @param string $taxIdId the ID of the tax id to retrieve
      * @param null|array $params
      * @param null|array|string $opts
      *

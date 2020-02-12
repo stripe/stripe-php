@@ -23,7 +23,7 @@ class ApplicationFeeRefund extends ApiResource
     }
 
     /**
-     * @return string The API URL for this Stripe refund.
+     * @return string the API URL for this Stripe refund
      */
     public function instanceUrl()
     {
@@ -49,7 +49,7 @@ class ApplicationFeeRefund extends ApiResource
     /**
      * @param null|array|string $opts
      *
-     * @return ApplicationFeeRefund The saved refund.
+     * @return ApplicationFeeRefund the saved refund
      */
     public function save($opts = null)
     {

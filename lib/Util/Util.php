@@ -16,7 +16,7 @@ abstract class Util
      *
      * @param array|mixed $array
      *
-     * @return bool true if the given object is a list.
+     * @return bool true if the given object is a list
      */
     public static function isList($array)
     {
@@ -36,7 +36,7 @@ abstract class Util
     /**
      * Converts a response from the Stripe API to the corresponding PHP object.
      *
-     * @param array $resp The response from the Stripe API.
+     * @param array $resp the response from the Stripe API
      * @param array $opts
      *
      * @return array|StripeObject
@@ -150,10 +150,10 @@ abstract class Util
     }
 
     /**
-     * @param mixed|string $value A string to UTF8-encode.
+     * @param mixed|string $value a string to UTF8-encode
      *
-     * @return mixed|string The UTF8-encoded string, or the object passed in if
-     *    it wasn't a string.
+     * @return mixed|string the UTF8-encoded string, or the object passed in if
+     *    it wasn't a string
      */
     public static function utf8($value)
     {
@@ -179,10 +179,10 @@ abstract class Util
      * Compares two strings for equality. The time taken is independent of the
      * number of characters that match.
      *
-     * @param string $a one of the strings to compare.
-     * @param string $b the other string to compare.
+     * @param string $a one of the strings to compare
+     * @param string $b the other string to compare
      *
-     * @return bool true if the strings are equal, false otherwise.
+     * @return bool true if the strings are equal, false otherwise
      */
     public static function secureCompare($a, $b)
     {
@@ -308,9 +308,9 @@ abstract class Util
     }
 
     /**
-     * @param string $key A string to URL-encode.
+     * @param string $key a string to URL-encode
      *
-     * @return string The URL-encoded string.
+     * @return string the URL-encoded string
      */
     public static function urlEncode($key)
     {

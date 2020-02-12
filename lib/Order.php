@@ -44,7 +44,7 @@ class Order extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\OrderReturn The newly created return.
+     * @return \Stripe\OrderReturn the newly created return
      */
     public function returnOrder($params = null, $opts = null)
     {
@@ -60,7 +60,7 @@ class Order extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Order The paid order.
+     * @return Order the paid order
      */
     public function pay($params = null, $opts = null)
     {

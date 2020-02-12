@@ -37,7 +37,7 @@ class CustomerBalanceTransaction extends ApiResource
     const TYPE_UNSPENT_RECEIVER_CREDIT = 'unspent_receiver_credit';
 
     /**
-     * @return string The API URL for this balance transaction.
+     * @return string the API URL for this balance transaction
      */
     public function instanceUrl()
     {

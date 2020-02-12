@@ -85,7 +85,7 @@ class Subscription extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Subscription The deleted subscription.
+     * @return \Stripe\Subscription the deleted subscription
      */
     public function cancel($params = null, $opts = null)
     {
@@ -98,7 +98,7 @@ class Subscription extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Subscription The updated subscription.
+     * @return \Stripe\Subscription the updated subscription
      */
     public function deleteDiscount($params = null, $opts = null)
     {

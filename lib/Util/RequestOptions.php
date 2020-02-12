@@ -7,7 +7,7 @@ use Stripe\Exception;
 class RequestOptions
 {
     /**
-     * @var array A list of headers that should be persisted across requests.
+     * @var array a list of headers that should be persisted across requests
      */
     public static $HEADERS_TO_PERSIST = [
         'Stripe-Account',

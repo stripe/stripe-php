@@ -11,14 +11,14 @@ abstract class WebhookSignature
      * Exception\SignatureVerificationException exception if the verification fails for
      * any reason.
      *
-     * @param string $payload the payload sent by Stripe.
+     * @param string $payload the payload sent by Stripe
      * @param string $header the contents of the signature header sent by
-     *  Stripe.
-     * @param string $secret secret used to generate the signature.
+     *  Stripe
+     * @param string $secret secret used to generate the signature
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time
      *
-     * @throws Exception\SignatureVerificationException if the verification fails.
+     * @throws Exception\SignatureVerificationException if the verification fails
      *
      * @return bool
      */
@@ -104,9 +104,9 @@ abstract class WebhookSignature
      * Extracts the signatures matching a given scheme in a signature header.
      *
      * @param string $header the signature header
-     * @param string $scheme the signature scheme to look for.
+     * @param string $scheme the signature scheme to look for
      *
-     * @return array the list of signatures matching the provided scheme.
+     * @return array the list of signatures matching the provided scheme
      */
     private static function getSignatures($header, $scheme)
     {
@@ -128,10 +128,10 @@ abstract class WebhookSignature
      *
      * The current scheme used by Stripe ("v1") is HMAC/SHA-256.
      *
-     * @param string $payload the payload to sign.
-     * @param string $secret the secret used to generate the signature.
+     * @param string $payload the payload to sign
+     * @param string $secret the secret used to generate the signature
      *
-     * @return string the signature as a string.
+     * @return string the signature as a string
      */
     private static function computeSignature($payload, $secret)
     {

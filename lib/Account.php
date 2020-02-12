@@ -150,8 +150,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param null|array|string $id The ID of the account to retrieve, or an
-     *     options array containing an `id` key.
+     * @param null|array|string $id the ID of the account to retrieve, or an
+     *     options array containing an `id` key
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -174,7 +174,7 @@ class Account extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\StripeObject Object containing the response from the API.
+     * @return \Stripe\StripeObject object containing the response from the API
      */
     public function deauthorize($clientId = null, $opts = null)
     {
@@ -192,7 +192,7 @@ class Account extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Account The rejected account.
+     * @return Account the rejected account
      */
     public function reject($params = null, $opts = null)
     {
@@ -212,13 +212,13 @@ class Account extends ApiResource
     const PATH_CAPABILITIES = '/capabilities';
 
     /**
-     * @param string $id The ID of the account on which to retrieve the capabilities.
+     * @param string $id the ID of the account on which to retrieve the capabilities
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of capabilities.
+     * @return \Stripe\Collection the list of capabilities
      */
     public static function allCapabilities($id, $params = null, $opts = null)
     {
@@ -226,8 +226,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the account to which the capability belongs.
-     * @param string $capabilityId The ID of the capability to retrieve.
+     * @param string $id the ID of the account to which the capability belongs
+     * @param string $capabilityId the ID of the capability to retrieve
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -241,8 +241,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the account to which the capability belongs.
-     * @param string $capabilityId The ID of the capability to update.
+     * @param string $id the ID of the account to which the capability belongs
+     * @param string $capabilityId the ID of the capability to update
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -258,13 +258,13 @@ class Account extends ApiResource
     const PATH_EXTERNAL_ACCOUNTS = '/external_accounts';
 
     /**
-     * @param string $id The ID of the account on which to retrieve the external accounts.
+     * @param string $id the ID of the account on which to retrieve the external accounts
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of external accounts (BankAccount or Card).
+     * @return \Stripe\Collection the list of external accounts (BankAccount or Card)
      */
     public static function allExternalAccounts($id, $params = null, $opts = null)
     {
@@ -272,7 +272,7 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the account on which to create the external account.
+     * @param string $id the ID of the account on which to create the external account
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -286,8 +286,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the account to which the external account belongs.
-     * @param string $externalAccountId The ID of the external account to delete.
+     * @param string $id the ID of the account to which the external account belongs
+     * @param string $externalAccountId the ID of the external account to delete
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -301,8 +301,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the account to which the external account belongs.
-     * @param string $externalAccountId The ID of the external account to retrieve.
+     * @param string $id the ID of the account to which the external account belongs
+     * @param string $externalAccountId the ID of the external account to retrieve
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -316,8 +316,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the account to which the external account belongs.
-     * @param string $externalAccountId The ID of the external account to update.
+     * @param string $id the ID of the account to which the external account belongs
+     * @param string $externalAccountId the ID of the external account to update
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -333,7 +333,7 @@ class Account extends ApiResource
     const PATH_LOGIN_LINKS = '/login_links';
 
     /**
-     * @param string $id The ID of the account on which to create the login link.
+     * @param string $id the ID of the account on which to create the login link
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -354,7 +354,7 @@ class Account extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of persons.
+     * @return \Stripe\Collection the list of persons
      */
     public function persons($params = null, $opts = null)
     {
@@ -367,13 +367,13 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the account on which to retrieve the persons.
+     * @param string $id the ID of the account on which to retrieve the persons
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection The list of persons.
+     * @return \Stripe\Collection the list of persons
      */
     public static function allPersons($id, $params = null, $opts = null)
     {
@@ -381,7 +381,7 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the account on which to create the person.
+     * @param string $id the ID of the account on which to create the person
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -395,8 +395,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the account to which the person belongs.
-     * @param string $personId The ID of the person to delete.
+     * @param string $id the ID of the account to which the person belongs
+     * @param string $personId the ID of the person to delete
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -410,8 +410,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the account to which the person belongs.
-     * @param string $personId The ID of the person to retrieve.
+     * @param string $id the ID of the account to which the person belongs
+     * @param string $personId the ID of the person to retrieve
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -425,8 +425,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string $id The ID of the account to which the person belongs.
-     * @param string $personId The ID of the person to update.
+     * @param string $id the ID of the account to which the person belongs
+     * @param string $personId the ID of the person to update
      * @param null|array $params
      * @param null|array|string $opts
      *

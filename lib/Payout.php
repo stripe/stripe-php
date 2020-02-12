@@ -87,7 +87,7 @@ class Payout extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Payout The canceled payout.
+     * @return Payout the canceled payout
      */
     public function cancel($params = null, $opts = null)
     {

@@ -105,7 +105,7 @@ class BankAccount extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return BankAccount The verified bank account.
+     * @return BankAccount the verified bank account
      */
     public function verify($params = null, $opts = null)
     {

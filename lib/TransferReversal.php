@@ -25,7 +25,7 @@ class TransferReversal extends ApiResource
     }
 
     /**
-     * @return string The API URL for this Stripe transfer reversal.
+     * @return string the API URL for this Stripe transfer reversal
      */
     public function instanceUrl()
     {
@@ -53,7 +53,7 @@ class TransferReversal extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return TransferReversal The saved reversal.
+     * @return TransferReversal the saved reversal
      */
     public function save($opts = null)
     {

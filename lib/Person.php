@@ -56,7 +56,7 @@ class Person extends ApiResource
     const VERIFICATION_STATUS_VERIFIED = 'verified';
 
     /**
-     * @return string The API URL for this Stripe account reversal.
+     * @return string the API URL for this Stripe account reversal
      */
     public function instanceUrl()
     {

@@ -50,7 +50,7 @@ abstract class ApiResource extends StripeObject
     /**
      * @throws Exception\ApiErrorException
      *
-     * @return ApiResource The refreshed resource.
+     * @return ApiResource the refreshed resource
      */
     public function refresh()
     {
@@ -70,7 +70,7 @@ abstract class ApiResource extends StripeObject
     }
 
     /**
-     * @return string The base URL for the given class.
+     * @return string the base URL for the given class
      */
     public static function baseUrl()
     {
@@ -78,7 +78,7 @@ abstract class ApiResource extends StripeObject
     }
 
     /**
-     * @return string The endpoint URL for the given class.
+     * @return string the endpoint URL for the given class
      */
     public static function classUrl()
     {
@@ -94,7 +94,7 @@ abstract class ApiResource extends StripeObject
      *
      * @throws Exception\UnexpectedValueException if $id is null
      *
-     * @return string The instance endpoint URL for the given class.
+     * @return string the instance endpoint URL for the given class
      */
     public static function resourceUrl($id)
     {
@@ -113,7 +113,7 @@ abstract class ApiResource extends StripeObject
     }
 
     /**
-     * @return string The full API URL for this API resource.
+     * @return string the full API URL for this API resource
      */
     public function instanceUrl()
     {
