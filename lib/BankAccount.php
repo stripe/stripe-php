@@ -57,10 +57,12 @@ class BankAccount extends ApiResource
             $path = 'external_accounts';
         } else {
             $msg = "Bank accounts cannot be accessed without a customer ID or account ID.";
+
             throw new Exception\UnexpectedValueException($msg, null);
         }
         $parentExtn = \urlencode(Util\Util::utf8($parent));
         $extn = \urlencode(Util\Util::utf8($this['id']));
+
         return "{$base}/{$parentExtn}/{$path}/{$extn}";
     }
 
@@ -77,6 +79,7 @@ class BankAccount extends ApiResource
                "`Customer::retrieveSource('customer_id', " .
                "'bank_account_id')` or `Account::retrieveExternalAccount(" .
                "'account_id', 'bank_account_id')`.";
+
         throw new Exception\BadMethodCallException($msg, null);
     }
 
@@ -94,6 +97,7 @@ class BankAccount extends ApiResource
                "`Customer::updateSource('customer_id', 'bank_account_id', " .
                "\$updateParams)` or `Account::updateExternalAccount(" .
                "'account_id', 'bank_account_id', \$updateParams)`.";
+
         throw new Exception\BadMethodCallException($msg, null);
     }
 
@@ -110,6 +114,7 @@ class BankAccount extends ApiResource
         $url = $this->instanceUrl() . '/verify';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 }

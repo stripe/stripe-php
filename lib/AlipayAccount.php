@@ -29,10 +29,12 @@ class AlipayAccount extends ApiResource
             $path = 'sources';
         } else {
             $msg = "Alipay accounts cannot be accessed without a customer ID.";
+
             throw new Exception\UnexpectedValueException($msg);
         }
         $parentExtn = \urlencode(Util\Util::utf8($parent));
         $extn = \urlencode(Util\Util::utf8($this['id']));
+
         return "{$base}/{$parentExtn}/{$path}/{$extn}";
     }
 
@@ -50,6 +52,7 @@ class AlipayAccount extends ApiResource
         $msg = "Alipay accounts cannot be retrieved without a customer ID. " .
                "Retrieve an Alipay account using `Customer::retrieveSource(" .
                "'customer_id', 'alipay_account_id')`.";
+
         throw new Exception\BadMethodCallException($msg);
     }
 
@@ -68,6 +71,7 @@ class AlipayAccount extends ApiResource
         $msg = "Alipay accounts cannot be updated without a customer ID. " .
                "Update an Alipay account using `Customer::updateSource(" .
                "'customer_id', 'alipay_account_id', \$updateParams)`.";
+
         throw new Exception\BadMethodCallException($msg);
     }
 }

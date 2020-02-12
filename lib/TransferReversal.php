@@ -46,6 +46,7 @@ class TransferReversal extends ApiResource
         $base = Transfer::classUrl();
         $transferExtn = \urlencode($transfer);
         $extn = \urlencode($id);
+
         return "{$base}/{$transferExtn}/reversals/{$extn}";
     }
 

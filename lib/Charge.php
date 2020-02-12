@@ -137,6 +137,7 @@ class Charge extends ApiResource
         $url = $this->instanceUrl() . '/capture';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 }

@@ -59,6 +59,7 @@ class Customer extends ApiResource
                 'source',
             ]);
         }
+
         return $savedNestedResources;
     }
 

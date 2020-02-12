@@ -77,6 +77,7 @@ class Subscription extends ApiResource
                 'source',
             ]);
         }
+
         return $savedNestedResources;
     }
 

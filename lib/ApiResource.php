@@ -24,6 +24,7 @@ abstract class ApiResource extends StripeObject
         if (null === $savedNestedResources) {
             $savedNestedResources = new Util\Set();
         }
+
         return $savedNestedResources;
     }
 
@@ -44,6 +45,7 @@ abstract class ApiResource extends StripeObject
             ($v instanceof ApiResource)) {
             $v->saveWithParent = true;
         }
+
         return $v;
     }
 
@@ -65,6 +67,7 @@ abstract class ApiResource extends StripeObject
         );
         $this->setLastResponse($response);
         $this->refreshFrom($response->json, $this->_opts);
+
         return $this;
     }
 
@@ -84,6 +87,7 @@ abstract class ApiResource extends StripeObject
         // Replace dots with slashes for namespaced resources, e.g. if the object's name is
         // "foo.bar", then its URL will be "/v1/foo/bars".
         $base = \str_replace('.', '/', static::OBJECT_NAME);
+
         return "/v1/{$base}s";
     }
 
@@ -100,11 +104,13 @@ abstract class ApiResource extends StripeObject
             $class = static::class;
             $message = "Could not determine which URL to request: "
                . "{$class} instance has invalid ID: {$id}";
+
             throw new Exception\UnexpectedValueException($message);
         }
         $id = Util\Util::utf8($id);
         $base = static::classUrl();
         $extn = \urlencode($id);
+
         return "{$base}/{$extn}";
     }
 

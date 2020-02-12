@@ -18,6 +18,7 @@ class BankAccountTest extends TestCase
             'object' => 'bank_account',
             'metadata' => [],
         ];
+
         return BankAccount::constructFrom(
             \array_merge($params, $base),
             new Util\RequestOptions()

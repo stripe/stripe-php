@@ -60,6 +60,7 @@ class SubscriptionItem extends ApiResource
         list($response, $opts) = $this->_request('get', $url, $params, $opts);
         $obj = \Stripe\Util\Util::convertToStripeObject($response, $opts);
         $obj->setLastResponse($response);
+
         return $obj;
     }
 

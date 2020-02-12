@@ -18,6 +18,7 @@ class AlipayAccountTest extends TestCase
             'object' => 'card',
             'metadata' => [],
         ];
+
         return AlipayAccount::constructFrom(
             \array_merge($params, $base),
             new Util\RequestOptions()

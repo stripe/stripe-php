@@ -21,6 +21,7 @@ class WebhookTest extends TestCase
             $signedPayload = "{$timestamp}.{$payload}";
             $signature = \hash_hmac("sha256", $signedPayload, $secret);
         }
+
         return "t={$timestamp},{$scheme}={$signature}";
     }
 

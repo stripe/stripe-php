@@ -81,6 +81,7 @@ class CurlClientTest extends \Stripe\TestCase
     {
         $fakeRandomGenerator = $this->createMock('\Stripe\Util\RandomGenerator');
         $fakeRandomGenerator->method('randFloat')->willReturn($returnValue);
+
         return $fakeRandomGenerator;
     }
 
@@ -121,6 +122,7 @@ class CurlClientTest extends \Stripe\TestCase
         $ref = null;
         $withClosure = new CurlClient(function ($method, $absUrl, $headers, $params, $hasFile) use (&$ref) {
             $ref = \func_get_args();
+
             return [];
         });
 

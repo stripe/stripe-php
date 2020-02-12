@@ -48,6 +48,7 @@ abstract class OAuth
             $params,
             null
         );
+
         return Util\Util::convertToStripeObject($response->json, $opts);
     }
 
@@ -73,6 +74,7 @@ abstract class OAuth
             $params,
             null
         );
+
         return Util\Util::convertToStripeObject($response->json, $opts);
     }
 
@@ -90,8 +92,10 @@ abstract class OAuth
               . 'after registering your account as a platform. See '
               . 'https://stripe.com/docs/connect/standard-accounts for details, '
               . 'or email support@stripe.com if you have any questions.';
+
             throw new Exception\AuthenticationException($msg);
         }
+
         return $clientId;
     }
 }

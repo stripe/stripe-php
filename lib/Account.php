@@ -87,6 +87,7 @@ class Account extends ApiResource
                 'bank_account',
             ]);
         }
+
         return $savedNestedResources;
     }
 
@@ -95,6 +96,7 @@ class Account extends ApiResource
         if (null === $this['id']) {
             return '/v1/account';
         }
+
         return parent::instanceUrl();
     }
 
@@ -116,6 +118,7 @@ class Account extends ApiResource
                 $update['individual'] = $individual->serializeParameters($force);
             }
         }
+
         return $update;
     }
 
@@ -144,6 +147,7 @@ class Account extends ApiResource
                 }
             }
         }
+
         return $updateArr;
     }
 
@@ -162,6 +166,7 @@ class Account extends ApiResource
             $opts = $id;
             $id = null;
         }
+
         return self::_retrieve($id, $opts);
     }
 
@@ -179,6 +184,7 @@ class Account extends ApiResource
             'client_id' => $clientId,
             'stripe_user_id' => $this->id,
         ];
+
         return OAuth::deauthorize($params, $opts);
     }
 
@@ -195,6 +201,7 @@ class Account extends ApiResource
         $url = $this->instanceUrl() . '/reject';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 
@@ -357,6 +364,7 @@ class Account extends ApiResource
         list($response, $opts) = $this->_request('get', $url, $params, $opts);
         $obj = Util\Util::convertToStripeObject($response, $opts);
         $obj->setLastResponse($response);
+
         return $obj;
     }
 

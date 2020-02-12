@@ -58,6 +58,7 @@ class Collection extends StripeObject implements \IteratorAggregate
                    "types only support string keys. (HINT: List calls " .
                    "return an object with a `data` (which is the data " .
                    "array). You likely want to call ->data[{$k}])";
+
         throw new Exception\InvalidArgumentException($msg);
     }
 
@@ -74,6 +75,7 @@ class Collection extends StripeObject implements \IteratorAggregate
             );
         }
         $obj->setFilters($params);
+
         return $obj;
     }
 
@@ -83,6 +85,7 @@ class Collection extends StripeObject implements \IteratorAggregate
         list($url, $params) = $this->extractPathAndUpdateParams($params);
 
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
+
         return Util\Util::convertToStripeObject($response, $opts);
     }
 
@@ -99,6 +102,7 @@ class Collection extends StripeObject implements \IteratorAggregate
             $params,
             $opts
         );
+
         return Util\Util::convertToStripeObject($response, $opts);
     }
 

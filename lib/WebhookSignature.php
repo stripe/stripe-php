@@ -50,6 +50,7 @@ abstract class WebhookSignature
         foreach ($signatures as $signature) {
             if (Util\Util::secureCompare($expectedSignature, $signature)) {
                 $signatureFound = true;
+
                 break;
             }
         }
@@ -91,6 +92,7 @@ abstract class WebhookSignature
                 if (!\is_numeric($itemParts[1])) {
                     return -1;
                 }
+
                 return (int) ($itemParts[1]);
             }
         }

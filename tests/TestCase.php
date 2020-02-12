@@ -86,6 +86,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
                 function ($method, $absUrl, $headers, $params, $hasFile) {
                     $curlClient = HttpClient\CurlClient::instance();
                     ApiRequestor::setHttpClient($curlClient);
+
                     return $curlClient->request($method, $absUrl, $headers, $params, $hasFile);
                 }
             );
@@ -171,6 +172,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
                             return false;
                         }
                     }
+
                     return true;
                 }),
                 null === $params ? static::anything() : static::identicalTo($params),

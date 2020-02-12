@@ -103,6 +103,7 @@ class Source extends ApiResource
             $class = \get_class($this);
             $msg = "Could not determine which URL to request: {$class} instance "
              . "has invalid ID: {$id}";
+
             throw new Exception\UnexpectedValueException($msg, null);
         }
 
@@ -114,10 +115,12 @@ class Source extends ApiResource
 
             list($response, $opts) = $this->_request('delete', $url, $params, $opts);
             $this->refreshFrom($response, $opts);
+
             return $this;
         }
         $message = "This source object does not appear to be currently attached "
                . "to a customer object.";
+
         throw new Exception\UnexpectedValueException($message);
     }
 
@@ -137,6 +140,7 @@ class Source extends ApiResource
         list($response, $opts) = $this->_request('get', $url, $params, $opts);
         $obj = \Stripe\Util\Util::convertToStripeObject($response, $opts);
         $obj->setLastResponse($response);
+
         return $obj;
     }
 
@@ -167,6 +171,7 @@ class Source extends ApiResource
         $url = $this->instanceUrl() . '/verify';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 }

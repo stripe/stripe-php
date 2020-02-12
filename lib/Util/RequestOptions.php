@@ -52,6 +52,7 @@ class RequestOptions
             $other_options->apiBase = $this->apiBase;
         }
         $other_options->headers = \array_merge($this->headers, $other_options->headers);
+
         return $other_options;
     }
 
@@ -107,6 +108,7 @@ class RequestOptions
             if (\array_key_exists('api_base', $options)) {
                 $base = $options['api_base'];
             }
+
             return new RequestOptions($key, $headers, $base);
         }
 
@@ -114,6 +116,7 @@ class RequestOptions
            . 'optional per-request apiKey, which must be a string, or '
            . 'per-request options, which must be an array. (HINT: you can set '
            . 'a global apiKey by "Stripe::setApiKey(<apiKey>)")';
+
         throw new Exception\InvalidArgumentException($message);
     }
 
@@ -125,6 +128,7 @@ class RequestOptions
             ? (\str_repeat('*', \strlen($last) - 4) . \substr($last, -4))
             : $last;
         \array_push($pieces, $redactedLast);
+
         return \implode('_', $pieces);
     }
 }

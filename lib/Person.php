@@ -77,6 +77,7 @@ class Person extends ApiResource
         $base = Account::classUrl();
         $accountExtn = \urlencode($account);
         $extn = \urlencode($id);
+
         return "{$base}/{$accountExtn}/persons/{$extn}";
     }
 
@@ -91,6 +92,7 @@ class Person extends ApiResource
         $msg = "Persons cannot be retrieved without an account ID. Retrieve " .
                "a person using `Account::retrievePerson('account_id', " .
                "'person_id')`.";
+
         throw new Exception\BadMethodCallException($msg, null);
     }
 
@@ -106,6 +108,7 @@ class Person extends ApiResource
         $msg = "Persons cannot be updated without an account ID. Update " .
                "a person using `Account::updatePerson('account_id', " .
                "'person_id', \$updateParams)`.";
+
         throw new Exception\BadMethodCallException($msg, null);
     }
 }

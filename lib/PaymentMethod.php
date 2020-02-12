@@ -44,6 +44,7 @@ class PaymentMethod extends ApiResource
         $url = $this->instanceUrl() . '/attach';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 
@@ -60,6 +61,7 @@ class PaymentMethod extends ApiResource
         $url = $this->instanceUrl() . '/detach';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 }

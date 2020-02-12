@@ -31,6 +31,7 @@ trait All
         }
         $obj->setLastResponse($response);
         $obj->setFilters($params);
+
         return $obj;
     }
 }

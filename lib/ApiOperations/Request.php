@@ -21,6 +21,7 @@ trait Request
                . "method calls.  (HINT: an example call to create a charge "
                . "would be: \"Stripe\\Charge::create(['amount' => 100, "
                . "'currency' => 'usd', 'source' => 'tok_1234'])\")";
+
             throw new \Stripe\Exception\InvalidArgumentException($message);
         }
     }
@@ -40,6 +41,7 @@ trait Request
         $opts = $this->_opts->merge($options);
         list($resp, $options) = static::_staticRequest($method, $url, $params, $opts);
         $this->setLastResponse($resp);
+
         return [$resp->json, $options];
     }
 
@@ -60,6 +62,7 @@ trait Request
         $requestor = new \Stripe\ApiRequestor($opts->apiKey, $baseUrl);
         list($response, $opts->apiKey) = $requestor->request($method, $url, $params, $opts->headers);
         $opts->discardNonPersistentHeaders();
+
         return [$response, $opts];
     }
 }

@@ -15,6 +15,7 @@ class BitcoinReceiverTest extends TestCase
             'object' => 'bitcoin_receiver',
             'metadata' => [],
         ];
+
         return BitcoinReceiver::constructFrom(
             \array_merge($params, $base),
             new Util\RequestOptions()

@@ -92,10 +92,12 @@ class Card extends ApiResource
             $path = 'cards';
         } else {
             $msg = "Cards cannot be accessed without a customer ID, account ID or recipient ID.";
+
             throw new Exception\UnexpectedValueException($msg);
         }
         $parentExtn = \urlencode(Util\Util::utf8($parent));
         $extn = \urlencode(Util\Util::utf8($this['id']));
+
         return "{$base}/{$parentExtn}/{$path}/{$extn}";
     }
 
@@ -111,6 +113,7 @@ class Card extends ApiResource
                "account ID. Retrieve a card using " .
                "`Customer::retrieveSource('customer_id', 'card_id')` or " .
                "`Account::retrieveExternalAccount('account_id', 'card_id')`.";
+
         throw new Exception\BadMethodCallException($msg);
     }
 
@@ -128,6 +131,7 @@ class Card extends ApiResource
                "`Customer::updateSource('customer_id', 'card_id', " .
                "\$updateParams)` or `Account::updateExternalAccount(" .
                "'account_id', 'card_id', \$updateParams)`.";
+
         throw new Exception\BadMethodCallException($msg);
     }
 }

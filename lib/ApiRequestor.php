@@ -67,6 +67,7 @@ class ApiRequestor
             return $result;
         }
         Stripe::getLogger()->error("Serializing telemetry payload failed!");
+
         return "{}";
     }
 
@@ -93,8 +94,10 @@ class ApiRequestor
             foreach ($d as $k => $v) {
                 $res[$k] = self::_encodeObjects($v);
             }
+
             return $res;
         }
+
         return Util\Util::utf8($d);
     }
 
@@ -116,6 +119,7 @@ class ApiRequestor
         $this->_requestRaw($method, $url, $params, $headers);
         $json = $this->_interpretResponse($rbody, $rcode, $rheaders);
         $resp = new ApiResponse($rbody, $rcode, $rheaders, $json);
+
         return [$resp, $myApiKey];
     }
 
@@ -133,6 +137,7 @@ class ApiRequestor
         if (!\is_array($resp) || !isset($resp['error'])) {
             $msg = "Invalid response object from API: {$rbody} "
               . "(HTTP response code was {$rcode})";
+
             throw new Exception\UnexpectedValueException($msg);
         }
 
@@ -245,8 +250,10 @@ class ApiRequestor
             if (null !== $appInfo['url']) {
                 $string .= ' (' . $appInfo['url'] . ')';
             }
+
             return $string;
         }
+
         return null;
     }
 
@@ -312,6 +319,7 @@ class ApiRequestor
               . '"Stripe::setApiKey(<API-KEY>)".  You can generate API keys from '
               . 'the Stripe web interface.  See https://stripe.com/api for '
               . 'details, or email support@stripe.com if you have any questions.';
+
             throw new Exception\AuthenticationException($msg);
         }
 
@@ -424,12 +432,14 @@ class ApiRequestor
         if (null === $resp && \JSON_ERROR_NONE !== $jsonError) {
             $msg = "Invalid response body from API: {$rbody} "
               . "(HTTP response code was {$rcode}, json_last_error() was {$jsonError})";
+
             throw new Exception\UnexpectedValueException($msg, $rcode);
         }
 
         if ($rcode < 200 || $rcode >= 300) {
             $this->handleErrorResponse($rbody, $rcode, $rheaders, $resp);
         }
+
         return $resp;
     }
 
@@ -461,6 +471,7 @@ class ApiRequestor
         if (!self::$_httpClient) {
             self::$_httpClient = HttpClient\CurlClient::instance();
         }
+
         return self::$_httpClient;
     }
 }

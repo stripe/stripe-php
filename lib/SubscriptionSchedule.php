@@ -47,6 +47,7 @@ class SubscriptionSchedule extends ApiResource
         $url = $this->instanceUrl() . '/cancel';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 
@@ -63,6 +64,7 @@ class SubscriptionSchedule extends ApiResource
         $url = $this->instanceUrl() . '/release';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 }

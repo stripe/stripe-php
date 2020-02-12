@@ -18,6 +18,7 @@ class CardTest extends TestCase
             'object' => 'card',
             'metadata' => [],
         ];
+
         return Card::constructFrom(
             \array_merge($params, $base),
             new Util\RequestOptions()

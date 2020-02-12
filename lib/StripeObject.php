@@ -29,6 +29,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
                 'id',
             ]);
         }
+
         return $permanentAttributes;
     }
 
@@ -96,6 +97,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
                 'metadata',
             ]);
         }
+
         return $additiveParams;
     }
 
@@ -164,10 +166,12 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
                     . "probably as a result of a save(). The attributes currently "
                     . "available on this object are: {$attrs}";
             Stripe::getLogger()->error($message);
+
             return $nullval;
         }
         $class = \get_class($this);
         Stripe::getLogger()->error("Stripe Notice: Undefined property of {$class} instance: {$k}");
+
         return $nullval;
     }
 
@@ -226,6 +230,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     {
         $obj = new static(isset($values['id']) ? $values['id'] : null);
         $obj->refreshFrom($values, $opts);
+
         return $obj;
     }
 
@@ -370,6 +375,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             if (isset($value->id)) {
                 return $value;
             }
+
             throw new Exception\InvalidArgumentException(
                 "Cannot save property `{$key}` containing an API resource of type " .
                     \get_class($value) . ". It doesn't appear to be persisted and is " .
@@ -396,6 +402,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             if ($original && $unsaved && $key && static::getAdditiveParams()->includes($key)) {
                 $update = \array_merge(self::emptyValues($original), $update);
             }
+
             return $update;
         } else {
             return $value;
@@ -433,6 +440,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             } else {
                 $acc[$k] = $maybeToArray($v);
             }
+
             return $acc;
         }, []);
     }
@@ -450,6 +458,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     public function __toString()
     {
         $class = \get_class($this);
+
         return $class . ' JSON: ' . $this->toJSON();
     }
 
@@ -491,6 +500,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             foreach ($obj as $k => $v) {
                 $copy[$k] = self::deepCopy($v);
             }
+
             return $copy;
         }
         if ($obj instanceof StripeObject) {
@@ -499,6 +509,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
                 clone $obj->_opts
             );
         }
+
         return $obj;
     }
 
@@ -519,6 +530,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
                 "empty_values got unexpected object type: " . \get_class($obj)
             );
         }
+
         return \array_fill_keys(\array_keys($values), "");
     }
 

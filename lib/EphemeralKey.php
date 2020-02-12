@@ -39,6 +39,7 @@ class EphemeralKey extends ApiResource
         if (!$opts || !isset($opts['stripe_version'])) {
             throw new Exception\InvalidArgumentException('stripe_version must be specified to create an ephemeral key');
         }
+
         return self::_create($params, $opts);
     }
 }

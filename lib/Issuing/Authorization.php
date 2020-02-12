@@ -52,6 +52,7 @@ class Authorization extends \Stripe\ApiResource
         $url = $this->instanceUrl() . '/approve';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 
@@ -68,6 +69,7 @@ class Authorization extends \Stripe\ApiResource
         $url = $this->instanceUrl() . '/decline';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 }

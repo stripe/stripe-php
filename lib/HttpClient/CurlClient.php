@@ -33,6 +33,7 @@ class CurlClient implements ClientInterface
         if (!self::$instance) {
             self::$instance = new self();
         }
+
         return self::$instance;
     }
 
@@ -168,12 +169,14 @@ class CurlClient implements ClientInterface
     public function setTimeout($seconds)
     {
         $this->timeout = (int) \max($seconds, 0);
+
         return $this;
     }
 
     public function setConnectTimeout($seconds)
     {
         $this->connectTimeout = (int) \max($seconds, 0);
+
         return $this;
     }
 
@@ -295,6 +298,7 @@ class CurlClient implements ClientInterface
                 }
                 list($key, $value) = \explode(":", \trim($header_line), 2);
                 $rheaders[\trim($key)] = \trim($value);
+
                 return \strlen($header_line);
             };
             $opts[\CURLOPT_HEADERFUNCTION] = $headerCallback;
@@ -356,6 +360,7 @@ class CurlClient implements ClientInterface
                  . "internet connection and try again.  If this problem persists, "
                  . "you should check Stripe's service status at "
                  . "https://twitter.com/stripestatus, or";
+
                 break;
             case \CURLE_SSL_CACERT:
             case \CURLE_SSL_PEER_CERTIFICATE:
@@ -363,6 +368,7 @@ class CurlClient implements ClientInterface
                  . "that your network is not intercepting certificates.  "
                  . "(Try going to {$url} in your browser.)  "
                  . "If this problem persists,";
+
                 break;
             default:
                 $msg = "Unexpected error communicating with Stripe.  "
@@ -514,6 +520,7 @@ class CurlClient implements ClientInterface
         // Versions of curl older than 7.60.0 don't respect GOAWAY frames
         // (cf. https://github.com/curl/curl/issues/2416), which Stripe use.
         $curlVersion = \curl_version()['version'];
+
         return \version_compare($curlVersion, '7.60.0') >= 0;
     }
 

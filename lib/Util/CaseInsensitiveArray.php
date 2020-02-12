@@ -44,6 +44,7 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
     public function offsetExists($offset)
     {
         $offset = static::maybeLowercase($offset);
+
         return isset($this->container[$offset]);
     }
 
@@ -56,6 +57,7 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
     public function offsetGet($offset)
     {
         $offset = static::maybeLowercase($offset);
+
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
@@ -64,6 +66,7 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
         if (\is_string($v)) {
             return \strtolower($v);
         }
+
         return $v;
     }
 }

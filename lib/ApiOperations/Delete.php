@@ -24,6 +24,7 @@ trait Delete
         $url = $this->instanceUrl();
         list($response, $opts) = $this->_request('delete', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 }

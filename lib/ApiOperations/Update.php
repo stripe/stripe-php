@@ -27,6 +27,7 @@ trait Update
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
+
         return $obj;
     }
 
@@ -45,6 +46,7 @@ trait Update
             list($response, $opts) = $this->_request('post', $url, $params, $opts);
             $this->refreshFrom($response, $opts);
         }
+
         return $this;
     }
 }

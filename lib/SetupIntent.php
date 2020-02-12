@@ -62,6 +62,7 @@ class SetupIntent extends ApiResource
         $url = $this->instanceUrl() . '/cancel';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 
@@ -78,6 +79,7 @@ class SetupIntent extends ApiResource
         $url = $this->instanceUrl() . '/confirm';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 }

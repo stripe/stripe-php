@@ -29,6 +29,7 @@ abstract class Util
         if (\array_keys($array) !== \range(0, \count($array) - 1)) {
             return false;
         }
+
         return true;
     }
 
@@ -132,6 +133,7 @@ abstract class Util
             foreach ($resp as $i) {
                 \array_push($mapped, self::convertToStripeObject($i, $opts));
             }
+
             return $mapped;
         }
         if (\is_array($resp)) {
@@ -140,8 +142,10 @@ abstract class Util
             } else {
                 $class = \Stripe\StripeObject::class;
             }
+
             return $class::constructFrom($resp, $opts);
         }
+
         return $resp;
     }
 
@@ -167,6 +171,7 @@ abstract class Util
         if (\is_string($value) && self::$isMbstringAvailable && "UTF-8" !== \mb_detect_encoding($value, "UTF-8", true)) {
             return \utf8_encode($value);
         }
+
         return $value;
     }
 
@@ -196,6 +201,7 @@ abstract class Util
         for ($i = 0; $i < \strlen($a); ++$i) {
             $result |= \ord($a[$i]) ^ \ord($b[$i]);
         }
+
         return 0 === $result;
     }
 
@@ -218,6 +224,7 @@ abstract class Util
             foreach ($h as $v) {
                 \array_push($results, static::objectsToIds($v));
             }
+
             return $results;
         }
         if (\is_array($h)) {
@@ -228,8 +235,10 @@ abstract class Util
                 }
                 $results[$k] = static::objectsToIds($v);
             }
+
             return $results;
         }
+
         return $h;
     }
 
@@ -246,6 +255,7 @@ abstract class Util
             list($k, $v) = $param;
             \array_push($pieces, self::urlEncode($k) . '=' . self::urlEncode($v));
         }
+
         return \implode('&', $pieces);
     }
 
@@ -310,6 +320,7 @@ abstract class Util
         // characters back to their literals. This is fine by the server, and
         // makes these parameter strings easier to read.
         $s = \str_replace('%5B', '[', $s);
+
         return \str_replace('%5D', ']', $s);
     }
 
@@ -322,6 +333,7 @@ abstract class Util
         } else {
             $params = [];
         }
+
         return [$id, $params];
     }
 

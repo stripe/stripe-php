@@ -44,6 +44,7 @@ class ApplicationFeeRefund extends ApiResource
         $base = ApplicationFee::classUrl();
         $feeExtn = \urlencode($fee);
         $extn = \urlencode($id);
+
         return "{$base}/{$feeExtn}/refunds/{$extn}";
     }
 

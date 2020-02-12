@@ -25,6 +25,7 @@ class StripeMock
 
         if (null !== static::$process && static::$process->isRunning()) {
             echo "stripe-mock already running on port " . static::$port . "\n";
+
             return true;
         }
 
@@ -93,6 +94,7 @@ class StripeMock
         $port = -1;
         \socket_getsockname($sock, $addr, $port);
         \socket_close($sock);
+
         return $port;
     }
 }

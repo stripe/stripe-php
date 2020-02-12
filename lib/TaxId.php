@@ -73,6 +73,7 @@ class TaxId extends ApiResource
         $base = Customer::classUrl();
         $customerExtn = \urlencode($customer);
         $extn = \urlencode($id);
+
         return "{$base}/{$customerExtn}/tax_ids/{$extn}";
     }
 
@@ -87,6 +88,7 @@ class TaxId extends ApiResource
         $msg = "Tax IDs cannot be retrieved without a customer ID. Retrieve " .
                "a tax ID using `Customer::retrieveTaxId('customer_id', " .
                "'tax_id_id')`.";
+
         throw new Exception\BadMethodCallException($msg);
     }
 }

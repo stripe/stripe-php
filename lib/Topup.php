@@ -57,6 +57,7 @@ class Topup extends ApiResource
         $url = $this->instanceUrl() . '/cancel';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 }

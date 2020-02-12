@@ -137,6 +137,7 @@ class Invoice extends ApiResource
         list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
         $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
+
         return $obj;
     }
 
@@ -167,6 +168,7 @@ class Invoice extends ApiResource
         $url = $this->instanceUrl() . '/finalize';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 
@@ -183,6 +185,7 @@ class Invoice extends ApiResource
         $url = $this->instanceUrl() . '/mark_uncollectible';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 
@@ -199,6 +202,7 @@ class Invoice extends ApiResource
         $url = $this->instanceUrl() . '/pay';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 
@@ -215,6 +219,7 @@ class Invoice extends ApiResource
         $url = $this->instanceUrl() . '/send';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 
@@ -231,6 +236,7 @@ class Invoice extends ApiResource
         $url = $this->instanceUrl() . '/void';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 }

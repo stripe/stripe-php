@@ -57,6 +57,7 @@ class CustomerBalanceTransaction extends ApiResource
         $base = Customer::classUrl();
         $customerExtn = \urlencode($customer);
         $extn = \urlencode($id);
+
         return "{$base}/{$customerExtn}/balance_transactions/{$extn}";
     }
 
@@ -72,6 +73,7 @@ class CustomerBalanceTransaction extends ApiResource
                "customer ID. Retrieve a Customer Balance Transaction using " .
                "`Customer::retrieveBalanceTransaction('customer_id', " .
                "'balance_transaction_id')`.";
+
         throw new Exception\BadMethodCallException($msg, null);
     }
 
@@ -88,6 +90,7 @@ class CustomerBalanceTransaction extends ApiResource
                "customer ID. Update a Customer Balance Transaction using " .
                "`Customer::updateBalanceTransaction('customer_id', " .
                "'balance_transaction_id', \$updateParams)`.";
+
         throw new Exception\BadMethodCallException($msg, null);
     }
 }

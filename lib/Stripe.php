@@ -87,6 +87,7 @@ class Stripe
         if (null === self::$logger) {
             return new Util\DefaultLogger();
         }
+
         return self::$logger;
     }
 
