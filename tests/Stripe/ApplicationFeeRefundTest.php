@@ -10,7 +10,7 @@ class ApplicationFeeRefundTest extends TestCase
     public function testIsSaveable()
     {
         $resource = ApplicationFee::retrieveRefund(self::TEST_FEE_ID, self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/application_fees/' . $resource->fee . '/refunds/' . $resource->id

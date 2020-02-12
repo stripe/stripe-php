@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class SourceTransaction
+ * Class SourceTransaction.
  *
  * @property string $id
  * @property string $object
@@ -13,8 +13,6 @@ namespace Stripe;
  * @property string $customer_data
  * @property string $currency
  * @property string $type
- *
- * @package Stripe
  */
 class SourceTransaction extends ApiResource
 {

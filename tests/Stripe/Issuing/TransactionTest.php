@@ -30,7 +30,7 @@ class TransactionTest extends \Stripe\TestCase
     public function testIsSaveable()
     {
         $resource = Transaction::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
 
         $this->expectsRequest(
             'post',
@@ -45,10 +45,10 @@ class TransactionTest extends \Stripe\TestCase
         $this->expectsRequest(
             'post',
             '/v1/issuing/transactions/' . self::TEST_RESOURCE_ID,
-            ["metadata" => ["key" => "value"]]
+            ['metadata' => ['key' => 'value']]
         );
         $resource = Transaction::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Issuing\Transaction::class, $resource);
     }

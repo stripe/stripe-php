@@ -46,14 +46,14 @@ class AccountTest extends TestCase
             'post',
             '/v1/accounts'
         );
-        $resource = Account::create(["type" => "custom"]);
+        $resource = Account::create(['type' => 'custom']);
         static::assertInstanceOf(\Stripe\Account::class, $resource);
     }
 
     public function testIsSaveable()
     {
         $resource = Account::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/accounts/' . $resource->id
@@ -69,7 +69,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID
         );
         $resource = Account::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Account::class, $resource);
     }
@@ -92,7 +92,7 @@ class AccountTest extends TestCase
             'post',
             '/v1/accounts/' . $account->id . '/reject'
         );
-        $resource = $account->reject(["reason" => "fraud"]);
+        $resource = $account->reject(['reason' => 'fraud']);
         static::assertInstanceOf(\Stripe\Account::class, $resource);
         static::assertSame($resource, $account);
     }
@@ -147,7 +147,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/capabilities/' . self::TEST_CAPABILITY_ID
         );
         $resource = Account::updateCapability(self::TEST_RESOURCE_ID, self::TEST_CAPABILITY_ID, [
-            "requested" => true,
+            'requested' => true,
         ]);
         static::assertInstanceOf(\Stripe\Capability::class, $resource);
     }
@@ -169,7 +169,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts'
         );
         $resource = Account::createExternalAccount(self::TEST_RESOURCE_ID, [
-            "external_account" => "btok_123",
+            'external_account' => 'btok_123',
         ]);
         static::assertInstanceOf(\Stripe\BankAccount::class, $resource);
     }
@@ -191,7 +191,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts/' . self::TEST_EXTERNALACCOUNT_ID
         );
         $resource = Account::updateExternalAccount(self::TEST_RESOURCE_ID, self::TEST_EXTERNALACCOUNT_ID, [
-            "name" => "name",
+            'name' => 'name',
         ]);
         static::assertInstanceOf(\Stripe\BankAccount::class, $resource);
     }
@@ -233,10 +233,10 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons'
         );
         $resource = Account::createPerson(self::TEST_RESOURCE_ID, [
-            "dob" => [
-                "day" => 1,
-                "month" => 1,
-                "year" => 1980,
+            'dob' => [
+                'day' => 1,
+                'month' => 1,
+                'year' => 1980,
             ],
         ]);
         static::assertInstanceOf(\Stripe\Person::class, $resource);
@@ -259,7 +259,7 @@ class AccountTest extends TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons/' . self::TEST_PERSON_ID
         );
         $resource = Account::updatePerson(self::TEST_RESOURCE_ID, self::TEST_PERSON_ID, [
-            "first_name" => "First name",
+            'first_name' => 'First name',
         ]);
         static::assertInstanceOf(\Stripe\Person::class, $resource);
     }

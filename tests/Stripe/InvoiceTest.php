@@ -35,7 +35,7 @@ class InvoiceTest extends TestCase
             '/v1/invoices'
         );
         $resource = Invoice::create([
-            "customer" => "cus_123",
+            'customer' => 'cus_123',
         ]);
         static::assertInstanceOf(\Stripe\Invoice::class, $resource);
     }
@@ -43,7 +43,7 @@ class InvoiceTest extends TestCase
     public function testIsSaveable()
     {
         $resource = Invoice::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/invoices/' . $resource->id
@@ -59,7 +59,7 @@ class InvoiceTest extends TestCase
             '/v1/invoices/' . self::TEST_RESOURCE_ID
         );
         $resource = Invoice::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Invoice::class, $resource);
     }
@@ -117,7 +117,7 @@ class InvoiceTest extends TestCase
             'get',
             '/v1/invoices/upcoming'
         );
-        $resource = Invoice::upcoming(["customer" => "cus_123"]);
+        $resource = Invoice::upcoming(['customer' => 'cus_123']);
         static::assertInstanceOf(\Stripe\Invoice::class, $resource);
     }
 

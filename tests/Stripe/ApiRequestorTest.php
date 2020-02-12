@@ -17,7 +17,7 @@ class ApiRequestorTest extends TestCase
         static::assertSame($enc, ['customer' => 'abcd']);
 
         // Preserves UTF-8
-        $v = ['customer' => "☃"];
+        $v = ['customer' => '☃'];
         $enc = $method->invoke(null, $v);
         static::assertSame($enc, $v);
 
@@ -108,14 +108,14 @@ class ApiRequestorTest extends TestCase
 
         try {
             Charge::create();
-            static::fail("Did not raise error");
+            static::fail('Did not raise error');
         } catch (Exception\InvalidRequestException $e) {
             static::assertSame(400, $e->getHttpStatus());
             static::assertInternalType('array', $e->getJsonBody());
             static::assertSame('Missing id', $e->getMessage());
             static::assertSame('id', $e->getStripeParam());
         } catch (\Exception $e) {
-            static::fail("Unexpected exception: " . \get_class($e));
+            static::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 
@@ -138,13 +138,13 @@ class ApiRequestorTest extends TestCase
 
         try {
             Charge::create();
-            static::fail("Did not raise error");
+            static::fail('Did not raise error');
         } catch (Exception\IdempotencyException $e) {
             static::assertSame(400, $e->getHttpStatus());
             static::assertInternalType('array', $e->getJsonBody());
             static::assertSame("Keys for idempotent requests can only be used with the same parameters they were first used with. Try using a key other than 'abc' if you meant to execute a different request.", $e->getMessage());
         } catch (\Exception $e) {
-            static::fail("Unexpected exception: " . \get_class($e));
+            static::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 
@@ -167,13 +167,13 @@ class ApiRequestorTest extends TestCase
 
         try {
             Charge::create();
-            static::fail("Did not raise error");
+            static::fail('Did not raise error');
         } catch (Exception\AuthenticationException $e) {
             static::assertSame(401, $e->getHttpStatus());
             static::assertInternalType('array', $e->getJsonBody());
             static::assertSame('You did not provide an API key.', $e->getMessage());
         } catch (\Exception $e) {
-            static::fail("Unexpected exception: " . \get_class($e));
+            static::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 
@@ -200,7 +200,7 @@ class ApiRequestorTest extends TestCase
 
         try {
             Charge::create();
-            static::fail("Did not raise error");
+            static::fail('Did not raise error');
         } catch (Exception\CardException $e) {
             static::assertSame(402, $e->getHttpStatus());
             static::assertInternalType('array', $e->getJsonBody());
@@ -209,7 +209,7 @@ class ApiRequestorTest extends TestCase
             static::assertSame('generic_decline', $e->getDeclineCode());
             static::assertSame('exp_month', $e->getStripeParam());
         } catch (\Exception $e) {
-            static::fail("Unexpected exception: " . \get_class($e));
+            static::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 
@@ -232,13 +232,13 @@ class ApiRequestorTest extends TestCase
 
         try {
             Account::retrieve('foo');
-            static::fail("Did not raise error");
+            static::fail('Did not raise error');
         } catch (Exception\PermissionException $e) {
             static::assertSame(403, $e->getHttpStatus());
             static::assertInternalType('array', $e->getJsonBody());
             static::assertSame("The provided key 'sk_test_********************1234' does not have access to account 'foo' (or that account does not exist). Application access may have been revoked.", $e->getMessage());
         } catch (\Exception $e) {
-            static::fail("Unexpected exception: " . \get_class($e));
+            static::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 
@@ -262,14 +262,14 @@ class ApiRequestorTest extends TestCase
 
         try {
             Charge::retrieve('foo');
-            static::fail("Did not raise error");
+            static::fail('Did not raise error');
         } catch (Exception\InvalidRequestException $e) {
             static::assertSame(404, $e->getHttpStatus());
             static::assertInternalType('array', $e->getJsonBody());
             static::assertSame('No such charge: foo', $e->getMessage());
             static::assertSame('id', $e->getStripeParam());
         } catch (\Exception $e) {
-            static::fail("Unexpected exception: " . \get_class($e));
+            static::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 
@@ -291,14 +291,14 @@ class ApiRequestorTest extends TestCase
 
         try {
             Charge::create();
-            static::fail("Did not raise error");
+            static::fail('Did not raise error');
         } catch (Exception\RateLimitException $e) {
             static::assertSame(429, $e->getHttpStatus());
             static::assertInternalType('array', $e->getJsonBody());
             static::assertSame('Too many requests', $e->getMessage());
         } catch (\Exception $e) {
             \var_dump($e);
-            static::fail("Unexpected exception: " . \get_class($e));
+            static::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 
@@ -321,13 +321,13 @@ class ApiRequestorTest extends TestCase
 
         try {
             Charge::create();
-            static::fail("Did not raise error");
+            static::fail('Did not raise error');
         } catch (Exception\RateLimitException $e) {
             static::assertSame(400, $e->getHttpStatus());
             static::assertInternalType('array', $e->getJsonBody());
             static::assertSame('Too many requests', $e->getMessage());
         } catch (\Exception $e) {
-            static::fail("Unexpected exception: " . \get_class($e));
+            static::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 
@@ -349,13 +349,13 @@ class ApiRequestorTest extends TestCase
 
         try {
             OAuth::token();
-            static::fail("Did not raise error");
+            static::fail('Did not raise error');
         } catch (Exception\OAuth\InvalidRequestException $e) {
             static::assertSame(400, $e->getHttpStatus());
             static::assertSame('invalid_request', $e->getStripeCode());
             static::assertSame('No grant type specified', $e->getMessage());
         } catch (\Exception $e) {
-            static::fail("Unexpected exception: " . \get_class($e));
+            static::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 
@@ -377,13 +377,13 @@ class ApiRequestorTest extends TestCase
 
         try {
             OAuth::token();
-            static::fail("Did not raise error");
+            static::fail('Did not raise error');
         } catch (Exception\OAuth\InvalidClientException $e) {
             static::assertSame(401, $e->getHttpStatus());
             static::assertSame('invalid_client', $e->getStripeCode());
             static::assertSame('No authentication was provided. Send your secret API key using the Authorization header, or as a client_secret POST parameter.', $e->getMessage());
         } catch (\Exception $e) {
-            static::fail("Unexpected exception: " . \get_class($e));
+            static::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 
@@ -405,13 +405,13 @@ class ApiRequestorTest extends TestCase
 
         try {
             OAuth::token();
-            static::fail("Did not raise error");
+            static::fail('Did not raise error');
         } catch (Exception\OAuth\InvalidGrantException $e) {
             static::assertSame(400, $e->getHttpStatus());
             static::assertSame('invalid_grant', $e->getStripeCode());
             static::assertSame('This authorization code has already been used. All tokens issued with this code have been revoked.', $e->getMessage());
         } catch (\Exception $e) {
-            static::fail("Unexpected exception: " . \get_class($e));
+            static::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 
@@ -433,13 +433,13 @@ class ApiRequestorTest extends TestCase
 
         try {
             OAuth::token();
-            static::fail("Did not raise error");
+            static::fail('Did not raise error');
         } catch (Exception\OAuth\InvalidScopeException $e) {
             static::assertSame(400, $e->getHttpStatus());
             static::assertSame('invalid_scope', $e->getStripeCode());
             static::assertSame('Invalid scope provided: invalid_scope.', $e->getMessage());
         } catch (\Exception $e) {
-            static::fail("Unexpected exception: " . \get_class($e));
+            static::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 
@@ -460,12 +460,12 @@ class ApiRequestorTest extends TestCase
 
         try {
             OAuth::token();
-            static::fail("Did not raise error");
+            static::fail('Did not raise error');
         } catch (Exception\OAuth\UnsupportedGrantTypeException $e) {
             static::assertSame(400, $e->getHttpStatus());
             static::assertSame('unsupported_grant_type', $e->getStripeCode());
         } catch (\Exception $e) {
-            static::fail("Unexpected exception: " . \get_class($e));
+            static::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 
@@ -487,13 +487,13 @@ class ApiRequestorTest extends TestCase
 
         try {
             OAuth::token();
-            static::fail("Did not raise error");
+            static::fail('Did not raise error');
         } catch (Exception\OAuth\UnsupportedResponseTypeException $e) {
             static::assertSame(400, $e->getHttpStatus());
             static::assertSame('unsupported_response_type', $e->getStripeCode());
             static::assertSame("Only 'code' response_type is supported, but 'unsupported_response_type' was provided", $e->getMessage());
         } catch (\Exception $e) {
-            static::fail("Unexpected exception: " . \get_class($e));
+            static::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 

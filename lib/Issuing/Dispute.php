@@ -3,7 +3,7 @@
 namespace Stripe\Issuing;
 
 /**
- * Class Dispute
+ * Class Dispute.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -16,8 +16,6 @@ namespace Stripe\Issuing;
  * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $reason Reason for this dispute. One of <code>fraudulent</code> or <code>other</code>.
  * @property string $status Current status of dispute. One of <code>unsubmitted</code>, <code>under_review</code>, <code>won</code>, or <code>lost</code>.
- *
- * @package Stripe\Issuing
  */
 class Dispute extends \Stripe\ApiResource
 {

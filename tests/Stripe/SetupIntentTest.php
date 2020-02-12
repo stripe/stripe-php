@@ -42,7 +42,7 @@ class SetupIntentTest extends TestCase
     public function testIsSaveable()
     {
         $resource = SetupIntent::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/setup_intents/' . self::TEST_RESOURCE_ID
@@ -60,7 +60,7 @@ class SetupIntentTest extends TestCase
         $resource = SetupIntent::update(
             self::TEST_RESOURCE_ID,
             [
-                "metadata" => ["key" => "value"],
+                'metadata' => ['key' => 'value'],
             ]
         );
         static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);

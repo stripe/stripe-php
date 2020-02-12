@@ -34,7 +34,7 @@ class FileLinkTest extends TestCase
             '/v1/file_links'
         );
         $resource = FileLink::create([
-            "file" => "file_123",
+            'file' => 'file_123',
         ]);
         static::assertInstanceOf(\Stripe\FileLink::class, $resource);
     }
@@ -42,7 +42,7 @@ class FileLinkTest extends TestCase
     public function testIsSaveable()
     {
         $resource = FileLink::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/file_links/' . $resource->id
@@ -58,7 +58,7 @@ class FileLinkTest extends TestCase
             '/v1/file_links/' . self::TEST_RESOURCE_ID
         );
         $resource = FileLink::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\FileLink::class, $resource);
     }

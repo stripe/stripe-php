@@ -5,8 +5,6 @@ namespace Stripe\Exception;
 /**
  * InvalidRequestException is thrown when a request is initiated with invalid
  * parameters.
- *
- * @package Stripe\Exception
  */
 class InvalidRequestException extends ApiErrorException
 {
@@ -15,13 +13,13 @@ class InvalidRequestException extends ApiErrorException
     /**
      * Creates a new InvalidRequestException exception.
      *
-     * @param string $message The exception message.
-     * @param int|null $httpStatus The HTTP status code.
-     * @param string|null $httpBody The HTTP body as a string.
-     * @param array|null $jsonBody The JSON deserialized body.
-     * @param array|\Stripe\Util\CaseInsensitiveArray|null $httpHeaders The HTTP headers array.
-     * @param string|null $stripeCode The Stripe error code.
-     * @param string|null $stripeParam The parameter related to the error.
+     * @param string $message the exception message
+     * @param null|int $httpStatus the HTTP status code
+     * @param null|string $httpBody the HTTP body as a string
+     * @param null|array $jsonBody the JSON deserialized body
+     * @param null|array|\Stripe\Util\CaseInsensitiveArray $httpHeaders the HTTP headers array
+     * @param null|string $stripeCode the Stripe error code
+     * @param null|string $stripeParam the parameter related to the error
      *
      * @return InvalidRequestException
      */
@@ -43,7 +41,7 @@ class InvalidRequestException extends ApiErrorException
     /**
      * Gets the parameter related to the error.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getStripeParam()
     {
@@ -53,7 +51,7 @@ class InvalidRequestException extends ApiErrorException
     /**
      * Sets the parameter related to the error.
      *
-     * @param string|null $stripeParam
+     * @param null|string $stripeParam
      */
     public function setStripeParam($stripeParam)
     {

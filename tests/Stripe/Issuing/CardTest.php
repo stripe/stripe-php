@@ -30,7 +30,7 @@ class CardTest extends \Stripe\TestCase
     public function testIsSaveable()
     {
         $resource = Card::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
 
         $this->expectsRequest(
             'post',
@@ -45,10 +45,10 @@ class CardTest extends \Stripe\TestCase
         $this->expectsRequest(
             'post',
             '/v1/issuing/cards/' . self::TEST_RESOURCE_ID,
-            ["metadata" => ["key" => "value"]]
+            ['metadata' => ['key' => 'value']]
         );
         $resource = Card::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Issuing\Card::class, $resource);
     }

@@ -3,12 +3,10 @@
 namespace Stripe;
 
 /**
- * Class OAuthErrorObject
+ * Class OAuthErrorObject.
  *
  * @property string $error
  * @property string $error_description
- *
- * @package Stripe
  */
 class OAuthErrorObject extends StripeObject
 {
@@ -16,8 +14,8 @@ class OAuthErrorObject extends StripeObject
      * Refreshes this object using the provided values.
      *
      * @param array $values
-     * @param array|string|Util\RequestOptions|null $opts
-     * @param bool $partial Defaults to false.
+     * @param null|array|string|Util\RequestOptions $opts
+     * @param bool $partial defaults to false
      */
     public function refreshFrom($values, $opts, $partial = false)
     {

@@ -18,6 +18,7 @@ class AlipayAccountTest extends TestCase
             'object' => 'card',
             'metadata' => [],
         ];
+
         return AlipayAccount::constructFrom(
             \array_merge($params, $base),
             new Util\RequestOptions()
@@ -28,7 +29,7 @@ class AlipayAccountTest extends TestCase
     {
         $resource = $this->createFixture(['customer' => 'cus_123']);
         static::assertSame(
-            "/v1/customers/cus_123/sources/" . self::TEST_RESOURCE_ID,
+            '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
     }
@@ -43,7 +44,7 @@ class AlipayAccountTest extends TestCase
     public function testIsSaveable()
     {
         $resource = $this->createFixture();
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
@@ -57,7 +58,7 @@ class AlipayAccountTest extends TestCase
         $this->expectException(\Stripe\Exception\BadMethodCallException::class);
 
         AlipayAccount::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
     }
 

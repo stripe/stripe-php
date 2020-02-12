@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class InvoiceLineItem
+ * Class InvoiceLineItem.
  *
  * @property string $id
  * @property string $object
@@ -16,10 +16,8 @@ namespace Stripe;
  * @property array $tax_amounts
  * @property array $tax_rates
  * @property string $type
- * @property int|null $unit_amount
- * @property string|null $unit_amount_decimal
- *
- * @package Stripe
+ * @property null|int $unit_amount
+ * @property null|string $unit_amount_decimal
  */
 class CreditNoteLineItem extends ApiResource
 {

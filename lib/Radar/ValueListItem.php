@@ -3,7 +3,7 @@
 namespace Stripe\Radar;
 
 /**
- * Class ValueListItem
+ * Class ValueListItem.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -12,8 +12,6 @@ namespace Stripe\Radar;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $value The value of the item.
  * @property string $value_list The identifier of the value list this item belongs to.
- *
- * @package Stripe\Radar
  */
 class ValueListItem extends \Stripe\ApiResource
 {

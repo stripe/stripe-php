@@ -12,11 +12,11 @@ class SubscriptionItemTest extends TestCase
             'get',
             '/v1/subscription_items',
             [
-                "subscription" => "sub_123",
+                'subscription' => 'sub_123',
             ]
         );
         $resources = SubscriptionItem::all([
-            "subscription" => "sub_123",
+            'subscription' => 'sub_123',
         ]);
         static::assertInternalType('array', $resources->data);
         static::assertInstanceOf(\Stripe\SubscriptionItem::class, $resources->data[0]);
@@ -39,8 +39,8 @@ class SubscriptionItemTest extends TestCase
             '/v1/subscription_items'
         );
         $resource = SubscriptionItem::create([
-            "plan" => "plan",
-            "subscription" => "sub_123",
+            'plan' => 'plan',
+            'subscription' => 'sub_123',
         ]);
         static::assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
     }
@@ -48,7 +48,7 @@ class SubscriptionItemTest extends TestCase
     public function testIsSaveable()
     {
         $resource = SubscriptionItem::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/subscription_items/' . $resource->id
@@ -64,7 +64,7 @@ class SubscriptionItemTest extends TestCase
             '/v1/subscription_items/' . self::TEST_RESOURCE_ID
         );
         $resource = SubscriptionItem::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
     }
@@ -98,7 +98,7 @@ class SubscriptionItemTest extends TestCase
         $resource = SubscriptionItem::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'get',
-            '/v1/subscription_items/' . $resource->id . "/usage_record_summaries"
+            '/v1/subscription_items/' . $resource->id . '/usage_record_summaries'
         );
         $resources = $resource->usageRecordSummaries();
         static::assertInternalType('array', $resources->data);
@@ -109,9 +109,9 @@ class SubscriptionItemTest extends TestCase
     {
         $this->expectsRequest(
             'get',
-            '/v1/subscription_items/' . self::TEST_RESOURCE_ID . "/usage_record_summaries"
+            '/v1/subscription_items/' . self::TEST_RESOURCE_ID . '/usage_record_summaries'
         );
-        $resources =SubscriptionItem::allUsageRecordSummaries(self::TEST_RESOURCE_ID);
+        $resources = SubscriptionItem::allUsageRecordSummaries(self::TEST_RESOURCE_ID);
         static::assertInternalType('array', $resources->data);
         static::assertInstanceOf(\Stripe\UsageRecordSummary::class, $resources->data[0]);
     }

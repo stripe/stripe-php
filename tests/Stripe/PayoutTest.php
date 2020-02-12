@@ -34,8 +34,8 @@ class PayoutTest extends TestCase
             '/v1/payouts'
         );
         $resource = Payout::create([
-            "amount" => 100,
-            "currency" => "usd",
+            'amount' => 100,
+            'currency' => 'usd',
         ]);
         static::assertInstanceOf(\Stripe\Payout::class, $resource);
     }
@@ -43,7 +43,7 @@ class PayoutTest extends TestCase
     public function testIsSaveable()
     {
         $resource = Payout::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/payouts/' . $resource->id
@@ -59,7 +59,7 @@ class PayoutTest extends TestCase
             '/v1/payouts/' . self::TEST_RESOURCE_ID
         );
         $resource = Payout::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Payout::class, $resource);
     }

@@ -12,8 +12,8 @@ trait NestedResource
     /**
      * @param string $method
      * @param string $url
-     * @param array|null $params
-     * @param array|string|null $options
+     * @param null|array $params
+     * @param null|array|string $options
      *
      * @return \Stripe\StripeObject
      */
@@ -24,13 +24,14 @@ trait NestedResource
         list($response, $opts) = static::_staticRequest($method, $url, $params, $options);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
+
         return $obj;
     }
 
     /**
      * @param string $id
      * @param string $nestedPath
-     * @param string|null $nestedId
+     * @param null|string $nestedId
      *
      * @return string
      */
@@ -40,14 +41,15 @@ trait NestedResource
         if (null !== $nestedId) {
             $url .= "/{$nestedId}";
         }
+
         return $url;
     }
 
     /**
      * @param string $id
      * @param string $nestedPath
-     * @param array|null $params
-     * @param array|string|null $options
+     * @param null|array $params
+     * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -56,15 +58,16 @@ trait NestedResource
     protected static function _createNestedResource($id, $nestedPath, $params = null, $options = null)
     {
         $url = static::_nestedResourceUrl($id, $nestedPath);
+
         return self::_nestedResourceOperation('post', $url, $params, $options);
     }
 
     /**
      * @param string $id
      * @param string $nestedPath
-     * @param string|null $nestedId
-     * @param array|null $params
-     * @param array|string|null $options
+     * @param null|string $nestedId
+     * @param null|array $params
+     * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -73,15 +76,16 @@ trait NestedResource
     protected static function _retrieveNestedResource($id, $nestedPath, $nestedId, $params = null, $options = null)
     {
         $url = static::_nestedResourceUrl($id, $nestedPath, $nestedId);
+
         return self::_nestedResourceOperation('get', $url, $params, $options);
     }
 
     /**
      * @param string $id
      * @param string $nestedPath
-     * @param string|null $nestedId
-     * @param array|null $params
-     * @param array|string|null $options
+     * @param null|string $nestedId
+     * @param null|array $params
+     * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -90,15 +94,16 @@ trait NestedResource
     protected static function _updateNestedResource($id, $nestedPath, $nestedId, $params = null, $options = null)
     {
         $url = static::_nestedResourceUrl($id, $nestedPath, $nestedId);
+
         return self::_nestedResourceOperation('post', $url, $params, $options);
     }
 
     /**
      * @param string $id
      * @param string $nestedPath
-     * @param string|null $nestedId
-     * @param array|null $params
-     * @param array|string|null $options
+     * @param null|string $nestedId
+     * @param null|array $params
+     * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -107,14 +112,15 @@ trait NestedResource
     protected static function _deleteNestedResource($id, $nestedPath, $nestedId, $params = null, $options = null)
     {
         $url = static::_nestedResourceUrl($id, $nestedPath, $nestedId);
+
         return self::_nestedResourceOperation('delete', $url, $params, $options);
     }
 
     /**
      * @param string $id
      * @param string $nestedPath
-     * @param array|null $params
-     * @param array|string|null $options
+     * @param null|array $params
+     * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -123,6 +129,7 @@ trait NestedResource
     protected static function _allNestedResources($id, $nestedPath, $params = null, $options = null)
     {
         $url = static::_nestedResourceUrl($id, $nestedPath);
+
         return self::_nestedResourceOperation('get', $url, $params, $options);
     }
 }

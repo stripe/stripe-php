@@ -35,9 +35,9 @@ class TransferTest extends TestCase
             '/v1/transfers'
         );
         $resource = Transfer::create([
-            "amount" => 100,
-            "currency" => "usd",
-            "destination" => "acct_123",
+            'amount' => 100,
+            'currency' => 'usd',
+            'destination' => 'acct_123',
         ]);
         static::assertInstanceOf(\Stripe\Transfer::class, $resource);
     }
@@ -45,7 +45,7 @@ class TransferTest extends TestCase
     public function testIsSaveable()
     {
         $resource = Transfer::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/transfers/' . $resource->id
@@ -61,7 +61,7 @@ class TransferTest extends TestCase
             '/v1/transfers/' . self::TEST_RESOURCE_ID
         );
         $resource = Transfer::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Transfer::class, $resource);
     }
@@ -110,7 +110,7 @@ class TransferTest extends TestCase
             self::TEST_RESOURCE_ID,
             self::TEST_REVERSAL_ID,
             [
-                "metadata" => ["key" => "value"],
+                'metadata' => ['key' => 'value'],
             ]
         );
         static::assertInstanceOf(\Stripe\TransferReversal::class, $resource);

@@ -10,17 +10,18 @@ namespace Stripe\ApiOperations;
 trait Request
 {
     /**
-     * @param array|mixed|null $params The list of parameters to validate
+     * @param null|array|mixed $params The list of parameters to validate
      *
      * @throws \Stripe\Exception\InvalidArgumentException if $params exists and is not an array
      */
     protected static function _validateParams($params = null)
     {
         if ($params && !\is_array($params)) {
-            $message = "You must pass an array as the first argument to Stripe API "
-               . "method calls.  (HINT: an example call to create a charge "
+            $message = 'You must pass an array as the first argument to Stripe API '
+               . 'method calls.  (HINT: an example call to create a charge '
                . "would be: \"Stripe\\Charge::create(['amount' => 100, "
                . "'currency' => 'usd', 'source' => 'tok_1234'])\")";
+
             throw new \Stripe\Exception\InvalidArgumentException($message);
         }
     }
@@ -29,7 +30,7 @@ trait Request
      * @param string $method HTTP method ('get', 'post', etc.)
      * @param string $url URL for the request
      * @param array $params list of parameters for the request
-     * @param array|string|null $options
+     * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -40,6 +41,7 @@ trait Request
         $opts = $this->_opts->merge($options);
         list($resp, $options) = static::_staticRequest($method, $url, $params, $opts);
         $this->setLastResponse($resp);
+
         return [$resp->json, $options];
     }
 
@@ -47,7 +49,7 @@ trait Request
      * @param string $method HTTP method ('get', 'post', etc.)
      * @param string $url URL for the request
      * @param array $params list of parameters for the request
-     * @param array|string|null $options
+     * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -60,6 +62,7 @@ trait Request
         $requestor = new \Stripe\ApiRequestor($opts->apiKey, $baseUrl);
         list($response, $opts->apiKey) = $requestor->request($method, $url, $params, $opts->headers);
         $opts->discardNonPersistentHeaders();
+
         return [$response, $opts];
     }
 }

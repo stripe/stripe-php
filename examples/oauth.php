@@ -1,6 +1,6 @@
 <?php
 
-require('../init.php');
+require '../init.php';
 
 \Stripe\Stripe::setApiKey(\getenv('STRIPE_SECRET_KEY'));
 \Stripe\Stripe::setClientId(\getenv('STRIPE_CLIENT_ID'));
@@ -15,7 +15,7 @@ if (isset($_GET['code'])) {
             'code' => $code,
         ]);
     } catch (\Stripe\Exception\OAuth\OAuthErrorException $e) {
-        exit("Error: " . $e->getMessage());
+        exit('Error: ' . $e->getMessage());
     }
 
     $accountId = $resp->stripe_user_id;
@@ -27,7 +27,7 @@ if (isset($_GET['code'])) {
     $error = $_GET['error'];
     $error_description = $_GET['error_description'];
 
-    echo "<p>Error: code=" . \htmlspecialchars($error, \ENT_QUOTES) . ", description=" . \htmlspecialchars($error_description, \ENT_QUOTES) . "</p>\n";
+    echo '<p>Error: code=' . \htmlspecialchars($error, \ENT_QUOTES) . ', description=' . \htmlspecialchars($error_description, \ENT_QUOTES) . "</p>\n";
     echo "<p>Click <a href=\"?\">here</a> to restart the OAuth flow.</p>\n";
 } elseif (isset($_GET['deauth'])) {
     // Deauthorization request
@@ -38,10 +38,10 @@ if (isset($_GET['code'])) {
             'stripe_user_id' => $accountId,
         ]);
     } catch (\Stripe\Exception\OAuth\OAuthErrorException $e) {
-        exit("Error: " . $e->getMessage());
+        exit('Error: ' . $e->getMessage());
     }
 
-    echo "<p>Success! Account <code>" . \htmlspecialchars($accountId, \ENT_QUOTES) . "</code> is disconnected.</p>\n";
+    echo '<p>Success! Account <code>' . \htmlspecialchars($accountId, \ENT_QUOTES) . "</code> is disconnected.</p>\n";
     echo "<p>Click <a href=\"?\">here</a> to restart the OAuth flow.</p>\n";
 } else {
     $url = \Stripe\OAuth::authorizeUrl([

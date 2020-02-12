@@ -45,7 +45,7 @@ class PaymentMethodTest extends TestCase
     public function testIsSaveable()
     {
         $resource = PaymentMethod::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/payment_methods/' . $resource->id
@@ -61,7 +61,7 @@ class PaymentMethodTest extends TestCase
             '/v1/payment_methods/' . self::TEST_RESOURCE_ID
         );
         $resource = PaymentMethod::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
     }

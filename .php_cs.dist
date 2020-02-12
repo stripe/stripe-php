@@ -11,27 +11,15 @@ return PhpCsFixer\Config::create()
         '@PHPUnit57Migration:risky' => true,
 
         // Diffs from @PhpCsFixer / @PhpCsFixer:risky
-        'binary_operator_spaces' => false,
-        'blank_line_before_statement' => false,
         'concat_space' => [
             'spacing' => 'one',
         ],
-        'dir_constant' => false,
-        'include' => false,
         'ordered_class_elements' => false,
         'php_unit_internal_class' => false,
-        'php_unit_strict' => false,
         'php_unit_test_class_requires_covers' => false,
         'phpdoc_align' => false,
-        'phpdoc_annotation_without_dot' => false,
-        'phpdoc_no_package' => false,
-        'phpdoc_summary' => false,
-        'phpdoc_types_order' => [
-            'null_adjustment' => 'always_last',
-        ],
         'protected_to_private' => false,
         'self_accessor' => false,
-        'single_quote' => false,
 
         // Should be included in @PhpCsFixer / @PhpCsFixer:risky according to doc, but need to be
         // enabled manually for some reason.

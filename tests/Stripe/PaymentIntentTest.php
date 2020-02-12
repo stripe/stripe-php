@@ -34,8 +34,8 @@ class PaymentIntentTest extends TestCase
             '/v1/payment_intents'
         );
         $resource = PaymentIntent::create([
-            "amount" => 100,
-            "currency" => "usd",
+            'amount' => 100,
+            'currency' => 'usd',
             'payment_method_types' => ['card'],
         ]);
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $resource);
@@ -44,7 +44,7 @@ class PaymentIntentTest extends TestCase
     public function testIsSaveable()
     {
         $resource = PaymentIntent::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/payment_intents/' . self::TEST_RESOURCE_ID
@@ -62,7 +62,7 @@ class PaymentIntentTest extends TestCase
         $resource = PaymentIntent::update(
             self::TEST_RESOURCE_ID,
             [
-                "metadata" => ["key" => "value"],
+                'metadata' => ['key' => 'value'],
             ]
         );
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $resource);

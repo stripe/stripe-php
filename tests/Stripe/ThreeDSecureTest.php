@@ -23,9 +23,9 @@ class ThreeDSecureTest extends TestCase
             '/v1/3d_secure'
         );
         $resource = ThreeDSecure::create([
-            "amount" => 100,
-            "currency" => "usd",
-            "return_url" => "url",
+            'amount' => 100,
+            'currency' => 'usd',
+            'return_url' => 'url',
         ]);
         static::assertInstanceOf(\Stripe\ThreeDSecure::class, $resource);
     }

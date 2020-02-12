@@ -13,7 +13,7 @@ class ValueListItemTest extends \Stripe\TestCase
             '/v1/radar/value_list_items'
         );
         $resources = ValueListItem::all([
-            "value_list" => "rsl_123",
+            'value_list' => 'rsl_123',
         ]);
         static::assertInternalType('array', $resources->data);
         static::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resources->data[0]);
@@ -36,8 +36,8 @@ class ValueListItemTest extends \Stripe\TestCase
             '/v1/radar/value_list_items'
         );
         $resource = ValueListItem::create([
-            "value_list" => "rsl_123",
-            "value" => "value",
+            'value_list' => 'rsl_123',
+            'value' => 'value',
         ]);
         static::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resource);
     }

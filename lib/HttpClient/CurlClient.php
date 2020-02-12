@@ -33,6 +33,7 @@ class CurlClient implements ClientInterface
         if (!self::$instance) {
             self::$instance = new self();
         }
+
         return self::$instance;
     }
 
@@ -62,8 +63,8 @@ class CurlClient implements ClientInterface
      * Note that request() will silently ignore a non-callable, non-array $defaultOptions, and will
      * throw an exception if $defaultOptions returns a non-array value.
      *
-     * @param array|callable|null $defaultOptions
-     * @param \Stripe\Util\RandomGenerator|null $randomGenerator
+     * @param null|array|callable $defaultOptions
+     * @param null|\Stripe\Util\RandomGenerator $randomGenerator
      */
     public function __construct($defaultOptions = null, $randomGenerator = null)
     {
@@ -83,7 +84,7 @@ class CurlClient implements ClientInterface
     {
         $curlVersion = \curl_version();
         $this->userAgentInfo = [
-            'httplib' =>  'curl ' . $curlVersion['version'],
+            'httplib' => 'curl ' . $curlVersion['version'],
             'ssllib' => $curlVersion['ssl_version'],
         ];
     }
@@ -131,7 +132,7 @@ class CurlClient implements ClientInterface
     }
 
     /**
-     * @return callable|null
+     * @return null|callable
      */
     public function getRequestStatusCallback()
     {
@@ -141,16 +142,17 @@ class CurlClient implements ClientInterface
     /**
      * Sets a callback that is called after each request. The callback will
      * receive the following parameters:
+     * <ol>
+     *   <li>string $rbody The response body</li>
+     *   <li>integer $rcode The response status code</li>
+     *   <li>\Stripe\Util\CaseInsensitiveArray $rheaders The response headers</li>
+     *   <li>integer $errno The curl error number</li>
+     *   <li>string|null $message The curl error message</li>
+     *   <li>boolean $shouldRetry Whether the request will be retried</li>
+     *   <li>integer $numRetries The number of the retry attempt</li>
+     * </ol>.
      *
-     * 1. string $rbody The response body
-     * 2. integer $rcode The response status code
-     * 3. \Stripe\Util\CaseInsensitiveArray $rheaders The response headers
-     * 4. integer $errno The curl error number
-     * 5. string|null $message The curl error message
-     * 6. boolean $shouldRetry Whether the request will be retried
-     * 7. integer $numRetries The number of the retry attempt
-     *
-     * @param callable|null $requestStatusCallback
+     * @param null|callable $requestStatusCallback
      */
     public function setRequestStatusCallback($requestStatusCallback)
     {
@@ -168,12 +170,14 @@ class CurlClient implements ClientInterface
     public function setTimeout($seconds)
     {
         $this->timeout = (int) \max($seconds, 0);
+
         return $this;
     }
 
     public function setConnectTimeout($seconds)
     {
         $this->connectTimeout = (int) \max($seconds, 0);
+
         return $this;
     }
 
@@ -197,7 +201,7 @@ class CurlClient implements ClientInterface
         if (\is_callable($this->defaultOptions)) { // call defaultOptions callback, set options to return value
             $opts = \call_user_func_array($this->defaultOptions, \func_get_args());
             if (!\is_array($opts)) {
-                throw new Exception\UnexpectedValueException("Non-array value returned by defaultOptions CurlClient callback");
+                throw new Exception\UnexpectedValueException('Non-array value returned by defaultOptions CurlClient callback');
             }
         } elseif (\is_array($this->defaultOptions)) { // set default curlopts from array
             $opts = $this->defaultOptions;
@@ -208,7 +212,7 @@ class CurlClient implements ClientInterface
         if ('get' === $method) {
             if ($hasFile) {
                 throw new Exception\UnexpectedValueException(
-                    "Issuing a GET request with a file parameter"
+                    'Issuing a GET request with a file parameter'
                 );
             }
             $opts[\CURLOPT_HTTPGET] = 1;
@@ -232,7 +236,7 @@ class CurlClient implements ClientInterface
         // It is only safe to retry network failures on POST requests if we
         // add an Idempotency-Key header
         if (('post' === $method) && (Stripe::$maxNetworkRetries > 0)) {
-            if (!$this->hasHeader($headers, "Idempotency-Key")) {
+            if (!$this->hasHeader($headers, 'Idempotency-Key')) {
                 \array_push($headers, 'Idempotency-Key: ' . $this->randomGenerator->uuid());
             }
         }
@@ -290,11 +294,12 @@ class CurlClient implements ClientInterface
             $rheaders = new Util\CaseInsensitiveArray();
             $headerCallback = function ($curl, $header_line) use (&$rheaders) {
                 // Ignore the HTTP request line (HTTP/1.1 200 OK)
-                if (false === \strpos($header_line, ":")) {
+                if (false === \strpos($header_line, ':')) {
                     return \strlen($header_line);
                 }
-                list($key, $value) = \explode(":", \trim($header_line), 2);
+                list($key, $value) = \explode(':', \trim($header_line), 2);
                 $rheaders[\trim($key)] = \trim($value);
+
                 return \strlen($header_line);
             };
             $opts[\CURLOPT_HEADERFUNCTION] = $headerCallback;
@@ -353,22 +358,24 @@ class CurlClient implements ClientInterface
             case \CURLE_COULDNT_RESOLVE_HOST:
             case \CURLE_OPERATION_TIMEOUTED:
                 $msg = "Could not connect to Stripe ({$url}).  Please check your "
-                 . "internet connection and try again.  If this problem persists, "
+                 . 'internet connection and try again.  If this problem persists, '
                  . "you should check Stripe's service status at "
-                 . "https://twitter.com/stripestatus, or";
+                 . 'https://twitter.com/stripestatus, or';
+
                 break;
             case \CURLE_SSL_CACERT:
             case \CURLE_SSL_PEER_CERTIFICATE:
                 $msg = "Could not verify Stripe's SSL certificate.  Please make sure "
-                 . "that your network is not intercepting certificates.  "
+                 . 'that your network is not intercepting certificates.  '
                  . "(Try going to {$url} in your browser.)  "
-                 . "If this problem persists,";
+                 . 'If this problem persists,';
+
                 break;
             default:
-                $msg = "Unexpected error communicating with Stripe.  "
-                 . "If this problem persists,";
+                $msg = 'Unexpected error communicating with Stripe.  '
+                 . 'If this problem persists,';
         }
-        $msg .= " let us know at support@stripe.com.";
+        $msg .= ' let us know at support@stripe.com.';
 
         $msg .= "\n\n(Network error [errno {$errno}]: {$message})";
 
@@ -514,6 +521,7 @@ class CurlClient implements ClientInterface
         // Versions of curl older than 7.60.0 don't respect GOAWAY frames
         // (cf. https://github.com/curl/curl/issues/2416), which Stripe use.
         $curlVersion = \curl_version()['version'];
+
         return \version_compare($curlVersion, '7.60.0') >= 0;
     }
 

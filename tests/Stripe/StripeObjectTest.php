@@ -98,7 +98,7 @@ class StripeObjectTest extends TestCase
         $converted = $s->toArray();
 
         static::assertInternalType('array', $converted);
-        static::assertEquals($array, $converted);
+        static::assertSame($array, $converted);
     }
 
     public function testToArrayRecursive()
@@ -122,7 +122,7 @@ class StripeObjectTest extends TestCase
             'list' => [$nestedArray],
         ];
 
-        static::assertEquals($expected, $obj->toArray());
+        static::assertSame($expected, $obj->toArray());
     }
 
     public function testNonexistentProperty()
@@ -135,7 +135,7 @@ class StripeObjectTest extends TestCase
             static::assertNull($s->nonexistent);
 
             static::assertRegExp(
-                "/Stripe Notice: Undefined property of Stripe\\\\StripeObject instance: nonexistent/",
+                '/Stripe Notice: Undefined property of Stripe\\\\StripeObject instance: nonexistent/',
                 \stream_get_contents($capture)
             );
         } finally {
@@ -155,7 +155,7 @@ class StripeObjectTest extends TestCase
         $s = new StripeObject();
         $s->foo = 'a';
 
-        static::assertEquals('{"foo":"a"}', \json_encode($s));
+        static::assertSame('{"foo":"a"}', \json_encode($s));
     }
 
     public function testToString()
@@ -169,7 +169,7 @@ Stripe\StripeObject JSON: {
     "foo": "a"
 }
 EOS;
-        static::assertEquals($expected, $string);
+        static::assertSame($expected, $string);
     }
 
     public function testReplaceNewNestedUpdatable()
@@ -372,15 +372,15 @@ EOS;
 
         try {
             $serialized = $obj->serializeParameters();
-            static::fail("Did not raise error");
+            static::fail('Did not raise error');
         } catch (\InvalidArgumentException $e) {
             static::assertSame(
-                "Cannot save property `customer` containing an API resource of type Stripe\\Customer. " .
+                'Cannot save property `customer` containing an API resource of type Stripe\\Customer. ' .
                 "It doesn't appear to be persisted and is not marked as `saveWithParent`.",
                 $e->getMessage()
             );
         } catch (\Exception $e) {
-            static::fail("Unexpected exception: " . \get_class($e));
+            static::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 
@@ -417,21 +417,21 @@ EOS;
     public function testDeepCopy()
     {
         $opts = [
-            "api_base" => Stripe::$apiBase,
-            "api_key" => "apikey",
+            'api_base' => Stripe::$apiBase,
+            'api_key' => 'apikey',
         ];
         $values = [
-            "id" => 1,
-            "name" => "Stripe",
-            "arr" => [
-                StripeObject::constructFrom(["id" => "index0"], $opts),
-                "index1",
+            'id' => 1,
+            'name' => 'Stripe',
+            'arr' => [
+                StripeObject::constructFrom(['id' => 'index0'], $opts),
+                'index1',
                 2,
             ],
-            "map" => [
-                "0" => StripeObject::constructFrom(["id" => "index0"], $opts),
-                "1" => "index1",
-                "2" => 2,
+            'map' => [
+                '0' => StripeObject::constructFrom(['id' => 'index0'], $opts),
+                '1' => 'index1',
+                '2' => 2,
             ],
         ];
 
@@ -439,54 +439,54 @@ EOS;
 
         // we can't compare the hashes directly because they have embedded
         // objects which are different from each other
-        static::assertEquals($values["id"], $copyValues["id"]);
-        static::assertEquals($values["name"], $copyValues["name"]);
-        static::assertEquals(\count($values["arr"]), \count($copyValues["arr"]));
+        static::assertSame($values['id'], $copyValues['id']);
+        static::assertSame($values['name'], $copyValues['name']);
+        static::assertSame(\count($values['arr']), \count($copyValues['arr']));
 
         // internal values of the copied StripeObject should be the same,
         // but the object itself should be new (hence the assertNotSame)
-        static::assertEquals($values["arr"][0]["id"], $copyValues["arr"][0]["id"]);
-        static::assertNotSame($values["arr"][0], $copyValues["arr"][0]);
+        static::assertSame($values['arr'][0]['id'], $copyValues['arr'][0]['id']);
+        static::assertNotSame($values['arr'][0], $copyValues['arr'][0]);
 
         // likewise, the Util\RequestOptions instance in _opts should have
         // copied values but be a new instance
-        static::assertEquals(
-            $this->optsReflector->getValue($values["arr"][0]),
-            $this->optsReflector->getValue($copyValues["arr"][0])
+        static::assertSame(
+            $this->optsReflector->getValue($values['arr'][0])->apiKey,
+            $this->optsReflector->getValue($copyValues['arr'][0])->apiKey
         );
         static::assertNotSame(
-            $this->optsReflector->getValue($values["arr"][0]),
-            $this->optsReflector->getValue($copyValues["arr"][0])
+            $this->optsReflector->getValue($values['arr'][0]),
+            $this->optsReflector->getValue($copyValues['arr'][0])
         );
 
         // scalars however, can be compared
-        static::assertEquals($values["arr"][1], $copyValues["arr"][1]);
-        static::assertEquals($values["arr"][2], $copyValues["arr"][2]);
+        static::assertSame($values['arr'][1], $copyValues['arr'][1]);
+        static::assertSame($values['arr'][2], $copyValues['arr'][2]);
 
         // and a similar story with the hash
-        static::assertEquals($values["map"]["0"]["id"], $copyValues["map"]["0"]["id"]);
-        static::assertNotSame($values["map"]["0"], $copyValues["map"]["0"]);
+        static::assertSame($values['map']['0']['id'], $copyValues['map']['0']['id']);
+        static::assertNotSame($values['map']['0'], $copyValues['map']['0']);
         static::assertNotSame(
-            $this->optsReflector->getValue($values["arr"][0]),
-            $this->optsReflector->getValue($copyValues["arr"][0])
+            $this->optsReflector->getValue($values['arr'][0]),
+            $this->optsReflector->getValue($copyValues['arr'][0])
         );
-        static::assertEquals(
-            $this->optsReflector->getValue($values["map"]["0"]),
-            $this->optsReflector->getValue($copyValues["map"]["0"])
+        static::assertSame(
+            $this->optsReflector->getValue($values['map']['0'])->apiKey,
+            $this->optsReflector->getValue($copyValues['map']['0'])->apiKey
         );
         static::assertNotSame(
-            $this->optsReflector->getValue($values["map"]["0"]),
-            $this->optsReflector->getValue($copyValues["map"]["0"])
+            $this->optsReflector->getValue($values['map']['0']),
+            $this->optsReflector->getValue($copyValues['map']['0'])
         );
-        static::assertEquals($values["map"]["1"], $copyValues["map"]["1"]);
-        static::assertEquals($values["map"]["2"], $copyValues["map"]["2"]);
+        static::assertSame($values['map']['1'], $copyValues['map']['1']);
+        static::assertSame($values['map']['2'], $copyValues['map']['2']);
     }
 
     public function testDeepCopyMaintainClass()
     {
-        $charge = Charge::constructFrom(["id" => 1], null);
+        $charge = Charge::constructFrom(['id' => 1], null);
         $copyCharge = $this->deepCopyReflector->invoke(null, $charge);
-        static::assertEquals(\get_class($charge), \get_class($copyCharge));
+        static::assertSame(\get_class($charge), \get_class($copyCharge));
     }
 
     public function testIsDeleted()
@@ -517,6 +517,6 @@ EOS;
         ]);
 
         static::assertInstanceOf(\Stripe\StripeObject::class, $obj->metadata);
-        static::assertEquals("value", $obj->metadata->metadata);
+        static::assertSame('value', $obj->metadata->metadata);
     }
 }

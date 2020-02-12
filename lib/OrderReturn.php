@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class OrderReturn
+ * Class OrderReturn.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -12,10 +12,8 @@ namespace Stripe;
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property \Stripe\OrderItem[] $items The items included in this order return.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property string|\Stripe\Order|null $order The order that this return includes items from.
- * @property string|\Stripe\Refund|null $refund The ID of the refund issued for this return.
- *
- * @package Stripe
+ * @property null|string|\Stripe\Order $order The order that this return includes items from.
+ * @property null|string|\Stripe\Refund $refund The ID of the refund issued for this return.
  */
 class OrderReturn extends ApiResource
 {

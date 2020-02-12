@@ -23,7 +23,7 @@ class SourceTest extends TestCase
             '/v1/sources'
         );
         $resource = Source::create([
-            "type" => "card",
+            'type' => 'card',
         ]);
         static::assertInstanceOf(\Stripe\Source::class, $resource);
     }
@@ -31,7 +31,7 @@ class SourceTest extends TestCase
     public function testIsSaveable()
     {
         $resource = Source::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/sources/' . $resource->id
@@ -47,7 +47,7 @@ class SourceTest extends TestCase
             '/v1/sources/' . self::TEST_RESOURCE_ID
         );
         $resource = Source::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Source::class, $resource);
     }
@@ -91,7 +91,7 @@ class SourceTest extends TestCase
     public function testIsDetachableWhenAttached()
     {
         $resource = Source::retrieve(self::TEST_RESOURCE_ID);
-        $resource->customer = "cus_123";
+        $resource->customer = 'cus_123';
         $this->expectsRequest(
             'delete',
             '/v1/customers/cus_123/sources/' . $resource->id
@@ -113,7 +113,7 @@ class SourceTest extends TestCase
         $source = Source::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'get',
-            '/v1/sources/' . $source->id . "/source_transactions"
+            '/v1/sources/' . $source->id . '/source_transactions'
         );
         $resources = $source->sourceTransactions();
         static::assertInternalType('array', $resources->data);
@@ -124,7 +124,7 @@ class SourceTest extends TestCase
     {
         $this->expectsRequest(
             'get',
-            '/v1/sources/' . self::TEST_RESOURCE_ID . "/source_transactions"
+            '/v1/sources/' . self::TEST_RESOURCE_ID . '/source_transactions'
         );
         $resources = Source::allSourceTransactions(self::TEST_RESOURCE_ID);
         static::assertInternalType('array', $resources->data);
@@ -136,9 +136,9 @@ class SourceTest extends TestCase
         $resource = Source::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'post',
-            '/v1/sources/' . $resource->id . "/verify"
+            '/v1/sources/' . $resource->id . '/verify'
         );
-        $resource->verify(["values" => [32, 45]]);
+        $resource->verify(['values' => [32, 45]]);
         static::assertInstanceOf(\Stripe\Source::class, $resource);
     }
 }

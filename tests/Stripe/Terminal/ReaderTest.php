@@ -30,7 +30,7 @@ class ReaderTest extends \Stripe\TestCase
     public function testIsSaveable()
     {
         $resource = Reader::retrieve(self::TEST_RESOURCE_ID);
-        $resource->label = "new-name";
+        $resource->label = 'new-name';
 
         $this->expectsRequest(
             'post',
@@ -45,10 +45,10 @@ class ReaderTest extends \Stripe\TestCase
         $this->expectsRequest(
             'post',
             '/v1/terminal/readers/' . self::TEST_RESOURCE_ID,
-            ["label" => "new-name"]
+            ['label' => 'new-name']
         );
         $resource = Reader::update(self::TEST_RESOURCE_ID, [
-            "label" => "new-name",
+            'label' => 'new-name',
         ]);
         static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
     }
@@ -58,7 +58,7 @@ class ReaderTest extends \Stripe\TestCase
         $this->expectsRequest(
             'post',
             '/v1/terminal/readers',
-            ["registration_code" => "a-b-c"]
+            ['registration_code' => 'a-b-c']
         );
         $resource = Reader::create(['registration_code' => 'a-b-c']);
         static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);

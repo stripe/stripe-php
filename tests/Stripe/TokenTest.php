@@ -22,7 +22,7 @@ class TokenTest extends TestCase
             'post',
             '/v1/tokens'
         );
-        $resource = Token::create(["card" => "tok_visa"]);
+        $resource = Token::create(['card' => 'tok_visa']);
         static::assertInstanceOf(\Stripe\Token::class, $resource);
     }
 }

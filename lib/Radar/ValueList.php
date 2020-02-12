@@ -3,7 +3,7 @@
 namespace Stripe\Radar;
 
 /**
- * Class ValueList
+ * Class ValueList.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -15,8 +15,6 @@ namespace Stripe\Radar;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $name The name of the value list.
- *
- * @package Stripe\Radar
  */
 class ValueList extends \Stripe\ApiResource
 {

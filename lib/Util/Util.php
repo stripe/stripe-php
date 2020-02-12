@@ -16,7 +16,7 @@ abstract class Util
      *
      * @param array|mixed $array
      *
-     * @return bool true if the given object is a list.
+     * @return bool true if the given object is a list
      */
     public static function isList($array)
     {
@@ -29,13 +29,14 @@ abstract class Util
         if (\array_keys($array) !== \range(0, \count($array) - 1)) {
             return false;
         }
+
         return true;
     }
 
     /**
      * Converts a response from the Stripe API to the corresponding PHP object.
      *
-     * @param array $resp The response from the Stripe API.
+     * @param array $resp the response from the Stripe API
      * @param array $opts
      *
      * @return array|StripeObject
@@ -132,6 +133,7 @@ abstract class Util
             foreach ($resp as $i) {
                 \array_push($mapped, self::convertToStripeObject($i, $opts));
             }
+
             return $mapped;
         }
         if (\is_array($resp)) {
@@ -140,16 +142,18 @@ abstract class Util
             } else {
                 $class = \Stripe\StripeObject::class;
             }
+
             return $class::constructFrom($resp, $opts);
         }
+
         return $resp;
     }
 
     /**
-     * @param mixed|string $value A string to UTF8-encode.
+     * @param mixed|string $value a string to UTF8-encode
      *
-     * @return mixed|string The UTF8-encoded string, or the object passed in if
-     *    it wasn't a string.
+     * @return mixed|string the UTF8-encoded string, or the object passed in if
+     *    it wasn't a string
      */
     public static function utf8($value)
     {
@@ -157,16 +161,17 @@ abstract class Util
             self::$isMbstringAvailable = \function_exists('mb_detect_encoding');
 
             if (!self::$isMbstringAvailable) {
-                \trigger_error("It looks like the mbstring extension is not enabled. " .
-                    "UTF-8 strings will not properly be encoded. Ask your system " .
-                    "administrator to enable the mbstring extension, or write to " .
-                    "support@stripe.com if you have any questions.", \E_USER_WARNING);
+                \trigger_error('It looks like the mbstring extension is not enabled. ' .
+                    'UTF-8 strings will not properly be encoded. Ask your system ' .
+                    'administrator to enable the mbstring extension, or write to ' .
+                    'support@stripe.com if you have any questions.', \E_USER_WARNING);
             }
         }
 
-        if (\is_string($value) && self::$isMbstringAvailable && "UTF-8" !== \mb_detect_encoding($value, "UTF-8", true)) {
+        if (\is_string($value) && self::$isMbstringAvailable && 'UTF-8' !== \mb_detect_encoding($value, 'UTF-8', true)) {
             return \utf8_encode($value);
         }
+
         return $value;
     }
 
@@ -174,10 +179,10 @@ abstract class Util
      * Compares two strings for equality. The time taken is independent of the
      * number of characters that match.
      *
-     * @param string $a one of the strings to compare.
-     * @param string $b the other string to compare.
+     * @param string $a one of the strings to compare
+     * @param string $b the other string to compare
      *
-     * @return bool true if the strings are equal, false otherwise.
+     * @return bool true if the strings are equal, false otherwise
      */
     public static function secureCompare($a, $b)
     {
@@ -196,6 +201,7 @@ abstract class Util
         for ($i = 0; $i < \strlen($a); ++$i) {
             $result |= \ord($a[$i]) ^ \ord($b[$i]);
         }
+
         return 0 === $result;
     }
 
@@ -218,6 +224,7 @@ abstract class Util
             foreach ($h as $v) {
                 \array_push($results, static::objectsToIds($v));
             }
+
             return $results;
         }
         if (\is_array($h)) {
@@ -228,8 +235,10 @@ abstract class Util
                 }
                 $results[$k] = static::objectsToIds($v);
             }
+
             return $results;
         }
+
         return $h;
     }
 
@@ -246,12 +255,13 @@ abstract class Util
             list($k, $v) = $param;
             \array_push($pieces, self::urlEncode($k) . '=' . self::urlEncode($v));
         }
+
         return \implode('&', $pieces);
     }
 
     /**
      * @param array $params
-     * @param string|null $parentKey
+     * @param null|string $parentKey
      *
      * @return array
      */
@@ -298,9 +308,9 @@ abstract class Util
     }
 
     /**
-     * @param string $key A string to URL-encode.
+     * @param string $key a string to URL-encode
      *
-     * @return string The URL-encoded string.
+     * @return string the URL-encoded string
      */
     public static function urlEncode($key)
     {
@@ -310,6 +320,7 @@ abstract class Util
         // characters back to their literals. This is fine by the server, and
         // makes these parameter strings easier to read.
         $s = \str_replace('%5B', '[', $s);
+
         return \str_replace('%5D', ']', $s);
     }
 
@@ -322,11 +333,12 @@ abstract class Util
         } else {
             $params = [];
         }
+
         return [$id, $params];
     }
 
     /**
-     * Returns UNIX timestamp in milliseconds
+     * Returns UNIX timestamp in milliseconds.
      *
      * @return int current time in millis
      */

@@ -34,7 +34,7 @@ class SubscriptionTest extends TestCase
             '/v1/subscriptions'
         );
         $resource = Subscription::create([
-            "customer" => "cus_123",
+            'customer' => 'cus_123',
         ]);
         static::assertInstanceOf(\Stripe\Subscription::class, $resource);
     }
@@ -42,7 +42,7 @@ class SubscriptionTest extends TestCase
     public function testIsSaveable()
     {
         $resource = Subscription::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/subscriptions/' . $resource->id
@@ -58,7 +58,7 @@ class SubscriptionTest extends TestCase
             '/v1/subscriptions/' . self::TEST_RESOURCE_ID
         );
         $resource = Subscription::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Subscription::class, $resource);
     }

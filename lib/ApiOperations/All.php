@@ -10,8 +10,8 @@ namespace Stripe\ApiOperations;
 trait All
 {
     /**
-     * @param array|null $params
-     * @param array|string|null $opts
+     * @param null|array $params
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -31,6 +31,7 @@ trait All
         }
         $obj->setLastResponse($response);
         $obj->setFilters($params);
+
         return $obj;
     }
 }

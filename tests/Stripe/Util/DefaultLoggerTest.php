@@ -14,9 +14,9 @@ class DefaultLoggerTest extends \Stripe\TestCase
 
         try {
             $logger = new DefaultLogger();
-            $logger->error("This is a test message");
+            $logger->error('This is a test message');
 
-            static::assertRegExp("/This is a test message/", \stream_get_contents($capture));
+            static::assertRegExp('/This is a test message/', \stream_get_contents($capture));
         } finally {
             \ini_set('error_log', $origErrorLog);
             \fclose($capture);

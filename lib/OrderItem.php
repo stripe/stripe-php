@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class OrderItem
+ * Class OrderItem.
  *
  * @property string $object
  * @property int $amount
@@ -12,8 +12,6 @@ namespace Stripe;
  * @property string $parent
  * @property int $quantity
  * @property string $type
- *
- * @package Stripe
  */
 class OrderItem extends StripeObject
 {

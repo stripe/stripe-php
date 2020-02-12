@@ -31,7 +31,7 @@ class UtilTest extends \Stripe\TestCase
             ],
             null
         );
-        static::assertArrayHasKey("id", $customer->toArray());
+        static::assertArrayHasKey('id', $customer->toArray());
     }
 
     public function testUtf8()
@@ -87,17 +87,17 @@ class UtilTest extends \Stripe\TestCase
         ];
 
         static::assertSame(
-            "a=3&b=%2Bfoo%3F&c=bar%26baz&d[a]=a&d[b]=b&e[0]=0&e[1]=1&f=",
+            'a=3&b=%2Bfoo%3F&c=bar%26baz&d[a]=a&d[b]=b&e[0]=0&e[1]=1&f=',
             Util::encodeParameters($params)
         );
     }
 
     public function testUrlEncode()
     {
-        static::assertSame("foo", Util::urlEncode("foo"));
-        static::assertSame("foo%2B", Util::urlEncode("foo+"));
-        static::assertSame("foo%26", Util::urlEncode("foo&"));
-        static::assertSame("foo[bar]", Util::urlEncode("foo[bar]"));
+        static::assertSame('foo', Util::urlEncode('foo'));
+        static::assertSame('foo%2B', Util::urlEncode('foo+'));
+        static::assertSame('foo%26', Util::urlEncode('foo&'));
+        static::assertSame('foo[bar]', Util::urlEncode('foo[bar]'));
     }
 
     public function testFlattenParams()

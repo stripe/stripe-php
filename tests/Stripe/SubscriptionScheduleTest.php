@@ -35,10 +35,10 @@ class SubscriptionScheduleTest extends TestCase
             '/v1/subscription_schedules'
         );
         $resource = SubscriptionSchedule::create([
-            "phases" => [
+            'phases' => [
                 [
-                    "plans" => [
-                        ["plan" => "plan_123", "quantity" => 2],
+                    'plans' => [
+                        ['plan' => 'plan_123', 'quantity' => 2],
                     ],
                 ],
             ],
@@ -49,7 +49,7 @@ class SubscriptionScheduleTest extends TestCase
     public function testIsSaveable()
     {
         $resource = SubscriptionSchedule::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/subscription_schedules/' . $resource->id
@@ -65,7 +65,7 @@ class SubscriptionScheduleTest extends TestCase
             '/v1/subscription_schedules/' . self::TEST_RESOURCE_ID
         );
         $resource = SubscriptionSchedule::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resource);
     }

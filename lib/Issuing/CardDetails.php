@@ -3,7 +3,7 @@
 namespace Stripe\Issuing;
 
 /**
- * Class CardDetails
+ * Class CardDetails.
  *
  * @property string $id
  * @property string $object
@@ -12,8 +12,6 @@ namespace Stripe\Issuing;
  * @property int $exp_month
  * @property int $exp_year
  * @property string $number
- *
- * @package Stripe\Issuing
  */
 class CardDetails extends \Stripe\ApiResource
 {

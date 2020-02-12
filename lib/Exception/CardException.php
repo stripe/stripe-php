@@ -5,8 +5,6 @@ namespace Stripe\Exception;
 /**
  * CardException is thrown when a user enters a card that can't be charged for
  * some reason.
- *
- * @package Stripe\Exception
  */
 class CardException extends ApiErrorException
 {
@@ -16,14 +14,14 @@ class CardException extends ApiErrorException
     /**
      * Creates a new CardException exception.
      *
-     * @param string $message The exception message.
-     * @param int|null $httpStatus The HTTP status code.
-     * @param string|null $httpBody The HTTP body as a string.
-     * @param array|null $jsonBody The JSON deserialized body.
-     * @param array|\Stripe\Util\CaseInsensitiveArray|null $httpHeaders The HTTP headers array.
-     * @param string|null $stripeCode The Stripe error code.
-     * @param string|null $declineCode The decline code.
-     * @param string|null $stripeParam The parameter related to the error.
+     * @param string $message the exception message
+     * @param null|int $httpStatus the HTTP status code
+     * @param null|string $httpBody the HTTP body as a string
+     * @param null|array $jsonBody the JSON deserialized body
+     * @param null|array|\Stripe\Util\CaseInsensitiveArray $httpHeaders the HTTP headers array
+     * @param null|string $stripeCode the Stripe error code
+     * @param null|string $declineCode the decline code
+     * @param null|string $stripeParam the parameter related to the error
      *
      * @return CardException
      */
@@ -47,7 +45,7 @@ class CardException extends ApiErrorException
     /**
      * Gets the decline code.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getDeclineCode()
     {
@@ -57,7 +55,7 @@ class CardException extends ApiErrorException
     /**
      * Sets the decline code.
      *
-     * @param string|null $declineCode
+     * @param null|string $declineCode
      */
     public function setDeclineCode($declineCode)
     {
@@ -67,7 +65,7 @@ class CardException extends ApiErrorException
     /**
      * Gets the parameter related to the error.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getStripeParam()
     {
@@ -77,7 +75,7 @@ class CardException extends ApiErrorException
     /**
      * Sets the parameter related to the error.
      *
-     * @param string|null $stripeParam
+     * @param null|string $stripeParam
      */
     public function setStripeParam($stripeParam)
     {

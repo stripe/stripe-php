@@ -15,6 +15,7 @@ class BitcoinReceiverTest extends TestCase
             'object' => 'bitcoin_receiver',
             'metadata' => [],
         ];
+
         return BitcoinReceiver::constructFrom(
             \array_merge($params, $base),
             new Util\RequestOptions()
@@ -25,7 +26,7 @@ class BitcoinReceiverTest extends TestCase
     {
         $resource = $this->createFixture();
         static::assertSame(
-            "/v1/bitcoin/receivers/" . self::TEST_RESOURCE_ID,
+            '/v1/bitcoin/receivers/' . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
     }
@@ -34,7 +35,7 @@ class BitcoinReceiverTest extends TestCase
     {
         $resource = $this->createFixture(['customer' => 'cus_123']);
         static::assertSame(
-            "/v1/customers/cus_123/sources/" . self::TEST_RESOURCE_ID,
+            '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
     }

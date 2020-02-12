@@ -7,6 +7,7 @@ class OAuthErrorExceptionTest extends \Stripe\TestCase
     public function createFixture()
     {
         $mock = $this->getMockForAbstractClass(OAuthErrorException::class);
+
         return $mock::factory(
             'description',
             200,
@@ -37,6 +38,6 @@ class OAuthErrorExceptionTest extends \Stripe\TestCase
     public function testToString()
     {
         $e = $this->createFixture();
-        static::assertContains("(Request req_test)", (string) $e);
+        static::assertContains('(Request req_test)', (string) $e);
     }
 }

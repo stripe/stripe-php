@@ -3,9 +3,7 @@
 namespace Stripe;
 
 /**
- * Class Capability
- *
- * @package Stripe
+ * Class Capability.
  *
  * @property string $id
  * @property string $object
@@ -26,13 +24,13 @@ class Capability extends ApiResource
      *
      * @see https://stripe.com/docs/api/capabilities/object#capability_object-status
      */
-    const STATUS_ACTIVE      = 'active';
-    const STATUS_INACTIVE    = 'inactive';
-    const STATUS_PENDING     = 'pending';
+    const STATUS_ACTIVE = 'active';
+    const STATUS_INACTIVE = 'inactive';
+    const STATUS_PENDING = 'pending';
     const STATUS_UNREQUESTED = 'unrequested';
 
     /**
-     * @return string The API URL for this Stripe account reversal.
+     * @return string the API URL for this Stripe account reversal
      */
     public function instanceUrl()
     {
@@ -40,7 +38,7 @@ class Capability extends ApiResource
         $account = $this['account'];
         if (!$id) {
             throw new Exception\UnexpectedValueException(
-                "Could not determine which URL to request: " .
+                'Could not determine which URL to request: ' .
                 "class instance has invalid ID: {$id}",
                 null
             );
@@ -51,35 +49,38 @@ class Capability extends ApiResource
         $base = Account::classUrl();
         $accountExtn = \urlencode($account);
         $extn = \urlencode($id);
+
         return "{$base}/{$accountExtn}/capabilities/{$extn}";
     }
 
     /**
      * @param array|string $_id
-     * @param array|string|null $_opts
+     * @param null|array|string $_opts
      *
      * @throws \Stripe\Exception\BadMethodCallException
      */
     public static function retrieve($_id, $_opts = null)
     {
-        $msg = "Capabilities cannot be retrieved without an account ID. " .
-               "Retrieve a capability using `Account::retrieveCapability(" .
+        $msg = 'Capabilities cannot be retrieved without an account ID. ' .
+               'Retrieve a capability using `Account::retrieveCapability(' .
                "'account_id', 'capability_id')`.";
+
         throw new Exception\BadMethodCallException($msg, null);
     }
 
     /**
      * @param string $_id
-     * @param array|null $_params
-     * @param array|string|null $_options
+     * @param null|array $_params
+     * @param null|array|string $_options
      *
      * @throws \Stripe\Exception\BadMethodCallException
      */
     public static function update($_id, $_params = null, $_options = null)
     {
-        $msg = "Capabilities cannot be updated without an account ID. " .
-               "Update a capability using `Account::updateCapability(" .
+        $msg = 'Capabilities cannot be updated without an account ID. ' .
+               'Update a capability using `Account::updateCapability(' .
                "'account_id', 'capability_id', \$updateParams)`.";
+
         throw new Exception\BadMethodCallException($msg, null);
     }
 }

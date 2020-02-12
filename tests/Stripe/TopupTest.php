@@ -34,11 +34,11 @@ class TopupTest extends TestCase
             '/v1/topups'
         );
         $resource = Topup::create([
-            "amount" => 100,
-            "currency" => "usd",
-            "source" => "tok_123",
-            "description" => "description",
-            "statement_descriptor" => "statement descriptor",
+            'amount' => 100,
+            'currency' => 'usd',
+            'source' => 'tok_123',
+            'description' => 'description',
+            'statement_descriptor' => 'statement descriptor',
         ]);
         static::assertInstanceOf(\Stripe\Topup::class, $resource);
     }
@@ -46,7 +46,7 @@ class TopupTest extends TestCase
     public function testIsSaveable()
     {
         $resource = Topup::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/topups/' . $resource->id
@@ -62,7 +62,7 @@ class TopupTest extends TestCase
             '/v1/topups/' . self::TEST_RESOURCE_ID
         );
         $resource = Topup::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Topup::class, $resource);
     }

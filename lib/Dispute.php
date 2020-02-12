@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class Dispute
+ * Class Dispute.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -17,12 +17,10 @@ namespace Stripe;
  * @property bool $is_charge_refundable If true, it is still possible to refund the disputed payment. Once the payment has been fully refunded, no further funds will be withdrawn from your Stripe account as a result of this dispute.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property string|null $network_reason_code Network-dependent reason code for the dispute.
- * @property string|\Stripe\PaymentIntent|null $payment_intent ID of the PaymentIntent that was disputed.
+ * @property null|string $network_reason_code Network-dependent reason code for the dispute.
+ * @property null|string|\Stripe\PaymentIntent $payment_intent ID of the PaymentIntent that was disputed.
  * @property string $reason Reason given by cardholder for dispute. Possible values are <code>bank_cannot_process</code>, <code>check_returned</code>, <code>credit_not_processed</code>, <code>customer_initiated</code>, <code>debit_not_authorized</code>, <code>duplicate</code>, <code>fraudulent</code>, <code>general</code>, <code>incorrect_account_details</code>, <code>insufficient_funds</code>, <code>product_not_received</code>, <code>product_unacceptable</code>, <code>subscription_canceled</code>, or <code>unrecognized</code>. Read more about <a href="https://stripe.com/docs/disputes/categories">dispute reasons</a>.
  * @property string $status Current status of dispute. Possible values are <code>warning_needs_response</code>, <code>warning_under_review</code>, <code>warning_closed</code>, <code>needs_response</code>, <code>under_review</code>, <code>charge_refunded</code>, <code>won</code>, or <code>lost</code>.
- *
- * @package Stripe
  */
 class Dispute extends ApiResource
 {
@@ -37,41 +35,41 @@ class Dispute extends ApiResource
      *
      * @see https://stripe.com/docs/api#dispute_object
      */
-    const REASON_BANK_CANNOT_PROCESS       = 'bank_cannot_process';
-    const REASON_CHECK_RETURNED            = 'check_returned';
-    const REASON_CREDIT_NOT_PROCESSED      = 'credit_not_processed';
-    const REASON_CUSTOMER_INITIATED        = 'customer_initiated';
-    const REASON_DEBIT_NOT_AUTHORIZED      = 'debit_not_authorized';
-    const REASON_DUPLICATE                 = 'duplicate';
-    const REASON_FRAUDULENT                = 'fraudulent';
-    const REASON_GENERAL                   = 'general';
+    const REASON_BANK_CANNOT_PROCESS = 'bank_cannot_process';
+    const REASON_CHECK_RETURNED = 'check_returned';
+    const REASON_CREDIT_NOT_PROCESSED = 'credit_not_processed';
+    const REASON_CUSTOMER_INITIATED = 'customer_initiated';
+    const REASON_DEBIT_NOT_AUTHORIZED = 'debit_not_authorized';
+    const REASON_DUPLICATE = 'duplicate';
+    const REASON_FRAUDULENT = 'fraudulent';
+    const REASON_GENERAL = 'general';
     const REASON_INCORRECT_ACCOUNT_DETAILS = 'incorrect_account_details';
-    const REASON_INSUFFICIENT_FUNDS        = 'insufficient_funds';
-    const REASON_PRODUCT_NOT_RECEIVED      = 'product_not_received';
-    const REASON_PRODUCT_UNACCEPTABLE      = 'product_unacceptable';
-    const REASON_SUBSCRIPTION_CANCELED     = 'subscription_canceled';
-    const REASON_UNRECOGNIZED              = 'unrecognized';
+    const REASON_INSUFFICIENT_FUNDS = 'insufficient_funds';
+    const REASON_PRODUCT_NOT_RECEIVED = 'product_not_received';
+    const REASON_PRODUCT_UNACCEPTABLE = 'product_unacceptable';
+    const REASON_SUBSCRIPTION_CANCELED = 'subscription_canceled';
+    const REASON_UNRECOGNIZED = 'unrecognized';
 
     /**
      * Possible string representations of dispute statuses.
      *
      * @see https://stripe.com/docs/api#dispute_object
      */
-    const STATUS_CHARGE_REFUNDED        = 'charge_refunded';
-    const STATUS_LOST                   = 'lost';
-    const STATUS_NEEDS_RESPONSE         = 'needs_response';
-    const STATUS_UNDER_REVIEW           = 'under_review';
-    const STATUS_WARNING_CLOSED         = 'warning_closed';
+    const STATUS_CHARGE_REFUNDED = 'charge_refunded';
+    const STATUS_LOST = 'lost';
+    const STATUS_NEEDS_RESPONSE = 'needs_response';
+    const STATUS_UNDER_REVIEW = 'under_review';
+    const STATUS_WARNING_CLOSED = 'warning_closed';
     const STATUS_WARNING_NEEDS_RESPONSE = 'warning_needs_response';
-    const STATUS_WARNING_UNDER_REVIEW   = 'warning_under_review';
-    const STATUS_WON                    = 'won';
+    const STATUS_WARNING_UNDER_REVIEW = 'warning_under_review';
+    const STATUS_WON = 'won';
 
     /**
-     * @param array|string|null $opts
+     * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Dispute The closed dispute.
+     * @return \Stripe\Dispute the closed dispute
      */
     // TODO: add $params to standardize signature
     public function close($opts = null)
@@ -79,6 +77,7 @@ class Dispute extends ApiResource
         $url = $this->instanceUrl() . '/close';
         list($response, $opts) = $this->_request('post', $url, null, $opts);
         $this->refreshFrom($response, $opts);
+
         return $this;
     }
 }
