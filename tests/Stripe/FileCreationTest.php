@@ -36,7 +36,7 @@ class FileCreationTest extends TestCase
             true,
             Stripe::$apiUploadBase
         );
-        $fp = \fopen(\dirname(__FILE__) . '/../data/test.png', 'rb');
+        $fp = \fopen(__DIR__ . '/../data/test.png', 'rb');
         $resource = File::create([
             "purpose" => "dispute_evidence",
             "file" => $fp,
@@ -55,7 +55,7 @@ class FileCreationTest extends TestCase
             true,
             Stripe::$apiUploadBase
         );
-        $curlFile = new \CURLFile(\dirname(__FILE__) . '/../data/test.png');
+        $curlFile = new \CURLFile(__DIR__ . '/../data/test.png');
         $resource = File::create([
             "purpose" => "dispute_evidence",
             "file" => $curlFile,

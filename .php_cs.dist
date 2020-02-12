@@ -16,7 +16,6 @@ return PhpCsFixer\Config::create()
         'concat_space' => [
             'spacing' => 'one',
         ],
-        'dir_constant' => false,
         'include' => false,
         'ordered_class_elements' => false,
         'php_unit_internal_class' => false,
