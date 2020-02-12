@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class TransferReversal
+ * Class TransferReversal.
  *
  * @property string $id
  * @property string $object

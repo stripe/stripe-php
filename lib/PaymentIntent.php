@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class PaymentIntent
+ * Class PaymentIntent.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class Capability
+ * Class Capability.
  *
  * @property string $id
  * @property string $object

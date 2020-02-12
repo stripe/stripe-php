@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class OrderItem
+ * Class OrderItem.
  *
  * @property string $object
  * @property int $amount

@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class RecipientTransfer
+ * Class RecipientTransfer.
  *
  * @property string $id
  * @property string $object

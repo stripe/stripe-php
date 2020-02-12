@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class Balance
+ * Class Balance.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property \Stripe\StripeObject[] $available Funds that are available to be transferred or paid out, whether automatically by Stripe or explicitly via the <a href="#transfers">Transfers API</a> or <a href="#payouts">Payouts API</a>. The available balance for each currency and payment type can be found in the <code>source_types</code> property.

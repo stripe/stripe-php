@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class BitcoinReceiver
+ * Class BitcoinReceiver.
  *
  * @deprecated Bitcoin receivers are deprecated. Please use the sources API instead.
  * @see https://stripe.com/docs/sources/bitcoin

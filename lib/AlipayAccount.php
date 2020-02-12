@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class AlipayAccount
+ * Class AlipayAccount.
  *
  * @deprecated Alipay accounts are deprecated. Please use the sources API instead.
  * @see https://stripe.com/docs/sources/alipay

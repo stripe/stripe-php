@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class Stripe
+ * Class Stripe.
  */
 class Stripe
 {

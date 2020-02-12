@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class Collection
+ * Class Collection.
  *
  * @property string $object
  * @property string $url

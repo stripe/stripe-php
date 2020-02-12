@@ -3,7 +3,7 @@
 namespace Stripe\Issuing;
 
 /**
- * Class CardDetails
+ * Class CardDetails.
  *
  * @property string $id
  * @property string $object

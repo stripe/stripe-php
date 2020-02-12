@@ -338,7 +338,7 @@ abstract class Util
     }
 
     /**
-     * Returns UNIX timestamp in milliseconds
+     * Returns UNIX timestamp in milliseconds.
      *
      * @return int current time in millis
      */

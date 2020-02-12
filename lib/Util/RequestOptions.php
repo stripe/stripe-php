@@ -69,7 +69,7 @@ class RequestOptions
     }
 
     /**
-     * Unpacks an options array into an RequestOptions object
+     * Unpacks an options array into an RequestOptions object.
      *
      * @param null|array|string $options a key => value array
      *

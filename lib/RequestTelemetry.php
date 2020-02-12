@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class RequestTelemetry
+ * Class RequestTelemetry.
  *
  * Tracks client request telemetry
  */

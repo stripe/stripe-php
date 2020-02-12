@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class InvoiceLineItem
+ * Class InvoiceLineItem.
  *
  * @property string $id
  * @property string $object

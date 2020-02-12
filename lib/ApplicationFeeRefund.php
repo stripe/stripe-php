@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class ApplicationFeeRefund
+ * Class ApplicationFeeRefund.
  *
  * @property string $id
  * @property string $object

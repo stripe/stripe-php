@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class CustomerBalanceTransaction
+ * Class CustomerBalanceTransaction.
  *
  * @property string $id
  * @property string $object

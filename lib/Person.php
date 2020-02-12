@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class Person
+ * Class Person.
  *
  * @property string $id
  * @property string $object

@@ -142,14 +142,15 @@ class CurlClient implements ClientInterface
     /**
      * Sets a callback that is called after each request. The callback will
      * receive the following parameters:
-     *
-     * 1. string $rbody The response body
-     * 2. integer $rcode The response status code
-     * 3. \Stripe\Util\CaseInsensitiveArray $rheaders The response headers
-     * 4. integer $errno The curl error number
-     * 5. string|null $message The curl error message
-     * 6. boolean $shouldRetry Whether the request will be retried
-     * 7. integer $numRetries The number of the retry attempt
+     * <ol>
+     *   <li>string $rbody The response body</li>
+     *   <li>integer $rcode The response status code</li>
+     *   <li>\Stripe\Util\CaseInsensitiveArray $rheaders The response headers</li>
+     *   <li>integer $errno The curl error number</li>
+     *   <li>string|null $message The curl error message</li>
+     *   <li>boolean $shouldRetry Whether the request will be retried</li>
+     *   <li>integer $numRetries The number of the retry attempt</li>
+     * </ol>.
      *
      * @param null|callable $requestStatusCallback
      */

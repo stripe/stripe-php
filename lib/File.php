@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class File
+ * Class File.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

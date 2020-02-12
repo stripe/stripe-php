@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class LoginLink
+ * Class LoginLink.
  *
  * @property string $object
  * @property int $created

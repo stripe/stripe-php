@@ -3,7 +3,7 @@
 namespace Stripe\Checkout;
 
 /**
- * Class Session
+ * Class Session.
  *
  * @property string $id Unique identifier for the object. Used to pass to <code>redirectToCheckout</code> in Stripe.js.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

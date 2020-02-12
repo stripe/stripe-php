@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class OAuthErrorObject
+ * Class OAuthErrorObject.
  *
  * @property string $error
  * @property string $error_description

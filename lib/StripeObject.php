@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class StripeObject
+ * Class StripeObject.
  */
 class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
 {
@@ -34,6 +34,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     /**
      * Additive objects are subobjects in the API that don't have the same
      * semantics as most subobjects, which are fully replaced when they're set.
+     *
      * This is best illustrated by example. The `source` parameter sent when
      * updating a subscription is *not* additive; if we set it:
      *
@@ -217,7 +218,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     }
 
     /**
-     * This unfortunately needs to be public to be used in Util\Util
+     * This unfortunately needs to be public to be used in Util\Util.
      *
      * @param array $values
      * @param null|array|string|Util\RequestOptions $opts
@@ -541,7 +542,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     }
 
     /**
-     * Sets the last response from the Stripe API
+     * Sets the last response from the Stripe API.
      *
      * @param ApiResponse $resp
      */

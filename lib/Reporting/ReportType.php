@@ -3,7 +3,7 @@
 namespace Stripe\Reporting;
 
 /**
- * Class ReportType
+ * Class ReportType.
  *
  * @property string $id The <a href="https://stripe.com/docs/reporting/statements/api#available-report-types">ID of the Report Type</a>, such as <code>balance.summary.1</code>.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

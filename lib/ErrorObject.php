@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class ErrorObject
+ * Class ErrorObject.
  *
  * @property string $charge For card errors, the ID of the failed charge.
  * @property string $code For some errors that could be handled

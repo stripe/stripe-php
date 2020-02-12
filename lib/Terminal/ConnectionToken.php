@@ -3,7 +3,7 @@
 namespace Stripe\Terminal;
 
 /**
- * Class ConnectionToken
+ * Class ConnectionToken.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string $location The id of the location that this connection token is scoped to.

@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class ApiResource
+ * Class ApiResource.
  */
 abstract class ApiResource extends StripeObject
 {

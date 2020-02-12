@@ -5,7 +5,7 @@ namespace Stripe;
 use Stripe\Util\CaseInsensitiveArray;
 
 /**
- * Class ApiResponse
+ * Class ApiResponse.
  */
 class ApiResponse
 {

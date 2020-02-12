@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class ApiRequestor
+ * Class ApiRequestor.
  */
 class ApiRequestor
 {
@@ -43,7 +43,7 @@ class ApiRequestor
     }
 
     /**
-     * Creates a telemetry json blob for use in 'X-Stripe-Client-Telemetry' headers
+     * Creates a telemetry json blob for use in 'X-Stripe-Client-Telemetry' headers.
      *
      * @static
      *

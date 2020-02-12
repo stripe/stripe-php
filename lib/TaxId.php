@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class TaxId
+ * Class TaxId.
  *
  * @property string $id
  * @property string $object

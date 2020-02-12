@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class UsageRecord
+ * Class UsageRecord.
  *
  * @property string $id
  * @property string $object

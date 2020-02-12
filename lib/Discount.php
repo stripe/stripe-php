@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class Discount
+ * Class Discount.
  *
  * @property string $object
  * @property Coupon $coupon

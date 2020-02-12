@@ -3,7 +3,7 @@
 namespace Stripe;
 
 /**
- * Class CountrySpec
+ * Class CountrySpec.
  *
  * @property string $id Unique identifier for the object. Represented as the ISO country code for this country.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
