@@ -1,6 +1,6 @@
 <?php
 
-require('../init.php');
+require '../init.php';
 
 \Stripe\Stripe::setApiKey(\getenv('STRIPE_SECRET_KEY'));
 \Stripe\Stripe::setClientId(\getenv('STRIPE_CLIENT_ID'));

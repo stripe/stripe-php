@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/StripeMock.php');
+require_once __DIR__ . '/StripeMock.php';
 
 \define("MOCK_MINIMUM_VERSION", "0.79.0");
 
