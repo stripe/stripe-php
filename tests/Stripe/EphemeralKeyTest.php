@@ -10,11 +10,11 @@ class EphemeralKeyTest extends TestCase
             'post',
             '/v1/ephemeral_keys',
             null,
-            ["Stripe-Version: 2017-05-25"]
+            ['Stripe-Version: 2017-05-25']
         );
         $resource = EphemeralKey::create([
-            "customer" => "cus_123",
-        ], ["stripe_version" => "2017-05-25"]);
+            'customer' => 'cus_123',
+        ], ['stripe_version' => '2017-05-25']);
         static::assertInstanceOf(\Stripe\EphemeralKey::class, $resource);
     }
 
@@ -23,15 +23,15 @@ class EphemeralKeyTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
 
         $resource = EphemeralKey::create([
-            "customer" => "cus_123",
+            'customer' => 'cus_123',
         ]);
     }
 
     public function testIsDeletable()
     {
         $key = EphemeralKey::create([
-            "customer" => "cus_123",
-        ], ["stripe_version" => "2017-05-25"]);
+            'customer' => 'cus_123',
+        ], ['stripe_version' => '2017-05-25']);
         $this->expectsRequest(
             'delete',
             '/v1/ephemeral_keys/' . $key->id

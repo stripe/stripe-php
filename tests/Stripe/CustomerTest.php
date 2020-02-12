@@ -43,7 +43,7 @@ class CustomerTest extends TestCase
     public function testIsSaveable()
     {
         $resource = Customer::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/customers/' . $resource->id
@@ -59,7 +59,7 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID
         );
         $resource = Customer::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Customer::class, $resource);
     }
@@ -92,7 +92,7 @@ class CustomerTest extends TestCase
             'post',
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/sources'
         );
-        $resource = Customer::createSource(self::TEST_RESOURCE_ID, ["source" => "btok_123"]);
+        $resource = Customer::createSource(self::TEST_RESOURCE_ID, ['source' => 'btok_123']);
     }
 
     public function testCanRetrieveSource()
@@ -110,7 +110,7 @@ class CustomerTest extends TestCase
             'post',
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/sources/' . self::TEST_SOURCE_ID
         );
-        $resource = Customer::updateSource(self::TEST_RESOURCE_ID, self::TEST_SOURCE_ID, ["name" => "name"]);
+        $resource = Customer::updateSource(self::TEST_RESOURCE_ID, self::TEST_SOURCE_ID, ['name' => 'name']);
         // stripe-mock returns a Card on this method and not a bank account
         static::assertInstanceOf(\Stripe\Card::class, $resource);
     }
@@ -177,8 +177,8 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/tax_ids'
         );
         $resource = Customer::createTaxId(self::TEST_RESOURCE_ID, [
-            "type" => TaxId::TYPE_EU_VAT,
-            "value" => "11111",
+            'type' => TaxId::TYPE_EU_VAT,
+            'value' => '11111',
         ]);
     }
 
@@ -217,8 +217,8 @@ class CustomerTest extends TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/balance_transactions'
         );
         $resource = Customer::createBalanceTransaction(self::TEST_RESOURCE_ID, [
-            "amount" => 1234,
-            "currency" => "usd",
+            'amount' => 1234,
+            'currency' => 'usd',
         ]);
     }
 
@@ -237,7 +237,7 @@ class CustomerTest extends TestCase
             'post',
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/balance_transactions/' . self::TEST_CUSTOMER_BALANCE_TRANSACTION_ID
         );
-        $resource = Customer::updateBalanceTransaction(self::TEST_RESOURCE_ID, self::TEST_CUSTOMER_BALANCE_TRANSACTION_ID, ["description" => "new"]);
+        $resource = Customer::updateBalanceTransaction(self::TEST_RESOURCE_ID, self::TEST_CUSTOMER_BALANCE_TRANSACTION_ID, ['description' => 'new']);
     }
 
     public function testCanListCustomerBalanceTransactions()

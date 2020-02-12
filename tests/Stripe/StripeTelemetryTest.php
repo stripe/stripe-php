@@ -28,19 +28,19 @@ class StripeTelemetryTest extends TestCase
         $requestheaders = null;
 
         $stub = $this
-            ->getMockBuilder("HttpClient\\ClientInterface")
+            ->getMockBuilder('HttpClient\\ClientInterface')
             ->setMethods(['request'])
             ->getMock();
 
         $stub->expects(static::any())
-            ->method("request")
+            ->method('request')
             ->with(
                 static::anything(),
                 static::anything(),
                 static::callback(function ($headers) use (&$requestheaders) {
                     foreach ($headers as $index => $header) {
                         // capture the requested headers and format back to into an assoc array
-                        $components = \explode(": ", $header, 2);
+                        $components = \explode(': ', $header, 2);
                         $requestheaders[$components[0]] = $components[1];
                     }
 
@@ -48,7 +48,7 @@ class StripeTelemetryTest extends TestCase
                 }),
                 static::anything(),
                 static::anything()
-            )->willReturn([self::FAKE_VALID_RESPONSE, 200, ["request-id" => "123"]]);
+            )->willReturn([self::FAKE_VALID_RESPONSE, 200, ['request-id' => '123']]);
 
         ApiRequestor::setHttpClient($stub);
 
@@ -70,19 +70,19 @@ class StripeTelemetryTest extends TestCase
         $requestheaders = null;
 
         $stub = $this
-            ->getMockBuilder("HttpClient\\ClientInterface")
+            ->getMockBuilder('HttpClient\\ClientInterface')
             ->setMethods(['request'])
             ->getMock();
 
         $stub->expects(static::any())
-            ->method("request")
+            ->method('request')
             ->with(
                 static::anything(),
                 static::anything(),
                 static::callback(function ($headers) use (&$requestheaders) {
                     // capture the requested headers and format back to into an assoc array
                     foreach ($headers as $index => $header) {
-                        $components = \explode(": ", $header, 2);
+                        $components = \explode(': ', $header, 2);
                         $requestheaders[$components[0]] = $components[1];
                     }
 
@@ -90,7 +90,7 @@ class StripeTelemetryTest extends TestCase
                 }),
                 static::anything(),
                 static::anything()
-            )->willReturn([self::FAKE_VALID_RESPONSE, 200, ["request-id" => ["req_123"]]]);
+            )->willReturn([self::FAKE_VALID_RESPONSE, 200, ['request-id' => ['req_123']]]);
 
         ApiRequestor::setHttpClient($stub);
 

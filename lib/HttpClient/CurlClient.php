@@ -201,7 +201,7 @@ class CurlClient implements ClientInterface
         if (\is_callable($this->defaultOptions)) { // call defaultOptions callback, set options to return value
             $opts = \call_user_func_array($this->defaultOptions, \func_get_args());
             if (!\is_array($opts)) {
-                throw new Exception\UnexpectedValueException("Non-array value returned by defaultOptions CurlClient callback");
+                throw new Exception\UnexpectedValueException('Non-array value returned by defaultOptions CurlClient callback');
             }
         } elseif (\is_array($this->defaultOptions)) { // set default curlopts from array
             $opts = $this->defaultOptions;
@@ -212,7 +212,7 @@ class CurlClient implements ClientInterface
         if ('get' === $method) {
             if ($hasFile) {
                 throw new Exception\UnexpectedValueException(
-                    "Issuing a GET request with a file parameter"
+                    'Issuing a GET request with a file parameter'
                 );
             }
             $opts[\CURLOPT_HTTPGET] = 1;
@@ -236,7 +236,7 @@ class CurlClient implements ClientInterface
         // It is only safe to retry network failures on POST requests if we
         // add an Idempotency-Key header
         if (('post' === $method) && (Stripe::$maxNetworkRetries > 0)) {
-            if (!$this->hasHeader($headers, "Idempotency-Key")) {
+            if (!$this->hasHeader($headers, 'Idempotency-Key')) {
                 \array_push($headers, 'Idempotency-Key: ' . $this->randomGenerator->uuid());
             }
         }
@@ -294,10 +294,10 @@ class CurlClient implements ClientInterface
             $rheaders = new Util\CaseInsensitiveArray();
             $headerCallback = function ($curl, $header_line) use (&$rheaders) {
                 // Ignore the HTTP request line (HTTP/1.1 200 OK)
-                if (false === \strpos($header_line, ":")) {
+                if (false === \strpos($header_line, ':')) {
                     return \strlen($header_line);
                 }
-                list($key, $value) = \explode(":", \trim($header_line), 2);
+                list($key, $value) = \explode(':', \trim($header_line), 2);
                 $rheaders[\trim($key)] = \trim($value);
 
                 return \strlen($header_line);
@@ -358,24 +358,24 @@ class CurlClient implements ClientInterface
             case \CURLE_COULDNT_RESOLVE_HOST:
             case \CURLE_OPERATION_TIMEOUTED:
                 $msg = "Could not connect to Stripe ({$url}).  Please check your "
-                 . "internet connection and try again.  If this problem persists, "
+                 . 'internet connection and try again.  If this problem persists, '
                  . "you should check Stripe's service status at "
-                 . "https://twitter.com/stripestatus, or";
+                 . 'https://twitter.com/stripestatus, or';
 
                 break;
             case \CURLE_SSL_CACERT:
             case \CURLE_SSL_PEER_CERTIFICATE:
                 $msg = "Could not verify Stripe's SSL certificate.  Please make sure "
-                 . "that your network is not intercepting certificates.  "
+                 . 'that your network is not intercepting certificates.  '
                  . "(Try going to {$url} in your browser.)  "
-                 . "If this problem persists,";
+                 . 'If this problem persists,';
 
                 break;
             default:
-                $msg = "Unexpected error communicating with Stripe.  "
-                 . "If this problem persists,";
+                $msg = 'Unexpected error communicating with Stripe.  '
+                 . 'If this problem persists,';
         }
-        $msg .= " let us know at support@stripe.com.";
+        $msg .= ' let us know at support@stripe.com.';
 
         $msg .= "\n\n(Network error [errno {$errno}]: {$message})";
 

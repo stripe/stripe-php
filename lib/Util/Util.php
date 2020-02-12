@@ -161,14 +161,14 @@ abstract class Util
             self::$isMbstringAvailable = \function_exists('mb_detect_encoding');
 
             if (!self::$isMbstringAvailable) {
-                \trigger_error("It looks like the mbstring extension is not enabled. " .
-                    "UTF-8 strings will not properly be encoded. Ask your system " .
-                    "administrator to enable the mbstring extension, or write to " .
-                    "support@stripe.com if you have any questions.", \E_USER_WARNING);
+                \trigger_error('It looks like the mbstring extension is not enabled. ' .
+                    'UTF-8 strings will not properly be encoded. Ask your system ' .
+                    'administrator to enable the mbstring extension, or write to ' .
+                    'support@stripe.com if you have any questions.', \E_USER_WARNING);
             }
         }
 
-        if (\is_string($value) && self::$isMbstringAvailable && "UTF-8" !== \mb_detect_encoding($value, "UTF-8", true)) {
+        if (\is_string($value) && self::$isMbstringAvailable && 'UTF-8' !== \mb_detect_encoding($value, 'UTF-8', true)) {
             return \utf8_encode($value);
         }
 

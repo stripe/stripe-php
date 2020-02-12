@@ -46,7 +46,7 @@ class PlanTest extends TestCase
     public function testIsSaveable()
     {
         $resource = Plan::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/plans/' . $resource->id
@@ -62,7 +62,7 @@ class PlanTest extends TestCase
             '/v1/plans/' . self::TEST_RESOURCE_ID
         );
         $resource = Plan::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Plan::class, $resource);
     }

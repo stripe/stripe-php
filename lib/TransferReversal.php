@@ -33,7 +33,7 @@ class TransferReversal extends ApiResource
         $transfer = $this['transfer'];
         if (!$id) {
             throw new Exception\UnexpectedValueException(
-                "Could not determine which URL to request: " .
+                'Could not determine which URL to request: ' .
                 "class instance has invalid ID: {$id}",
                 null
             );

@@ -26,6 +26,6 @@ class ScheduledQueryRun extends \Stripe\ApiResource
 
     public static function classUrl()
     {
-        return "/v1/sigma/scheduled_query_runs";
+        return '/v1/sigma/scheduled_query_runs';
     }
 }

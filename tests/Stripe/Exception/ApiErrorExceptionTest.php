@@ -37,6 +37,6 @@ class ApiErrorExceptionTest extends \Stripe\TestCase
     public function testToString()
     {
         $e = $this->createFixture();
-        static::assertContains("(Request req_test)", (string) $e);
+        static::assertContains('(Request req_test)', (string) $e);
     }
 }

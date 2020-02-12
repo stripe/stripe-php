@@ -6,8 +6,8 @@ class RequestOptionsTest extends \Stripe\TestCase
 {
     public function testStringAPIKey()
     {
-        $opts = RequestOptions::parse("foo");
-        static::assertSame("foo", $opts->apiKey);
+        $opts = RequestOptions::parse('foo');
+        static::assertSame('foo', $opts->apiKey);
         static::assertSame([], $opts->headers);
     }
 
@@ -82,14 +82,14 @@ class RequestOptionsTest extends \Stripe\TestCase
     {
         $opts = RequestOptions::parse(['api_key' => 'sk_test_1234567890abcdefghijklmn']);
         $debugInfo = \print_r($opts, true);
-        static::assertContains("[apiKey] => sk_test_********************klmn", $debugInfo);
+        static::assertContains('[apiKey] => sk_test_********************klmn', $debugInfo);
 
         $opts = RequestOptions::parse(['api_key' => 'sk_1234567890abcdefghijklmn']);
         $debugInfo = \print_r($opts, true);
-        static::assertContains("[apiKey] => sk_********************klmn", $debugInfo);
+        static::assertContains('[apiKey] => sk_********************klmn', $debugInfo);
 
         $opts = RequestOptions::parse(['api_key' => '1234567890abcdefghijklmn']);
         $debugInfo = \print_r($opts, true);
-        static::assertContains("[apiKey] => ********************klmn", $debugInfo);
+        static::assertContains('[apiKey] => ********************klmn', $debugInfo);
     }
 }

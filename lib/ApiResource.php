@@ -100,7 +100,7 @@ abstract class ApiResource extends StripeObject
     {
         if (null === $id) {
             $class = static::class;
-            $message = "Could not determine which URL to request: "
+            $message = 'Could not determine which URL to request: '
                . "{$class} instance has invalid ID: {$id}";
 
             throw new Exception\UnexpectedValueException($message);

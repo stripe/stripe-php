@@ -34,8 +34,8 @@ class RecipientTest extends TestCase
             '/v1/recipients'
         );
         $resource = Recipient::create([
-            "name" => "name",
-            "type" => "individual",
+            'name' => 'name',
+            'type' => 'individual',
         ]);
         static::assertInstanceOf(\Stripe\Recipient::class, $resource);
     }
@@ -43,7 +43,7 @@ class RecipientTest extends TestCase
     public function testIsSaveable()
     {
         $resource = Recipient::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/recipients/' . $resource->id
@@ -59,7 +59,7 @@ class RecipientTest extends TestCase
             '/v1/recipients/' . self::TEST_RESOURCE_ID
         );
         $resource = Recipient::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Recipient::class, $resource);
     }

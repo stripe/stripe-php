@@ -129,7 +129,7 @@ class Account extends ApiResource
         }
         if (($originalValue) && (\count($originalValue) > \count($additionalOwners))) {
             throw new Exception\InvalidArgumentException(
-                "You cannot delete an item from an array, you must instead set a new array"
+                'You cannot delete an item from an array, you must instead set a new array'
             );
         }
 

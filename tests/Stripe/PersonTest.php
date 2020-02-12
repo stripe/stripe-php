@@ -11,7 +11,7 @@ class PersonTest extends TestCase
     {
         $resource = \Stripe\Account::retrievePerson(self::TEST_ACCOUNT_ID, self::TEST_RESOURCE_ID);
         static::assertSame(
-            "/v1/accounts/" . self::TEST_ACCOUNT_ID . "/persons/" . self::TEST_RESOURCE_ID,
+            '/v1/accounts/' . self::TEST_ACCOUNT_ID . '/persons/' . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
     }
@@ -26,7 +26,7 @@ class PersonTest extends TestCase
     public function testIsSaveable()
     {
         $resource = \Stripe\Account::retrievePerson(self::TEST_ACCOUNT_ID, self::TEST_RESOURCE_ID);
-        $resource->first_name = "value";
+        $resource->first_name = 'value';
         $this->expectsRequest(
             'post',
             '/v1/accounts/' . self::TEST_ACCOUNT_ID . '/persons/' . self::TEST_RESOURCE_ID
@@ -40,7 +40,7 @@ class PersonTest extends TestCase
         $this->expectException(\Stripe\Exception\BadMethodCallException::class);
 
         Person::update(self::TEST_RESOURCE_ID, [
-            "first_name" => ["John"],
+            'first_name' => ['John'],
         ]);
     }
 

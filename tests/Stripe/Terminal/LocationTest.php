@@ -30,7 +30,7 @@ class LocationTest extends \Stripe\TestCase
     public function testIsSaveable()
     {
         $resource = Location::retrieve(self::TEST_RESOURCE_ID);
-        $resource->display_name = "new-name";
+        $resource->display_name = 'new-name';
 
         $this->expectsRequest(
             'post',
@@ -45,10 +45,10 @@ class LocationTest extends \Stripe\TestCase
         $this->expectsRequest(
             'post',
             '/v1/terminal/locations/' . self::TEST_RESOURCE_ID,
-            ["display_name" => "new-name"]
+            ['display_name' => 'new-name']
         );
         $resource = Location::update(self::TEST_RESOURCE_ID, [
-            "display_name" => "new-name",
+            'display_name' => 'new-name',
         ]);
         static::assertInstanceOf(\Stripe\Terminal\Location::class, $resource);
     }
@@ -59,24 +59,24 @@ class LocationTest extends \Stripe\TestCase
             'post',
             '/v1/terminal/locations',
             [
-                "display_name" => "name",
-                "address" => [
-                    "line1" => "line1",
-                    "country" => "US",
-                    "state" => "CA",
-                    "postal_code" => "12345",
-                    "city" => "San Francisco",
+                'display_name' => 'name',
+                'address' => [
+                    'line1' => 'line1',
+                    'country' => 'US',
+                    'state' => 'CA',
+                    'postal_code' => '12345',
+                    'city' => 'San Francisco',
                 ],
             ]
         );
         $resource = Location::create([
-            "display_name" => "name",
-            "address" => [
-                "line1" => "line1",
-                "country" => "US",
-                "state" => "CA",
-                "postal_code" => "12345",
-                "city" => "San Francisco",
+            'display_name' => 'name',
+            'address' => [
+                'line1' => 'line1',
+                'country' => 'US',
+                'state' => 'CA',
+                'postal_code' => '12345',
+                'city' => 'San Francisco',
             ],
         ]);
         static::assertInstanceOf(\Stripe\Terminal\Location::class, $resource);

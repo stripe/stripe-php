@@ -134,7 +134,7 @@ class CurlClientTest extends \Stripe\TestCase
             return 'thisShouldNotWork';
         });
         $this->expectException('Stripe\Exception\UnexpectedValueException');
-        $this->expectExceptionMessage("Non-array value returned by defaultOptions CurlClient callback");
+        $this->expectExceptionMessage('Non-array value returned by defaultOptions CurlClient callback');
         $withBadClosure->request('get', 'https://httpbin.org/status/200', [], [], false);
     }
 

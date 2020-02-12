@@ -123,7 +123,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             );
         }
 
-        if ("" === $v) {
+        if ('' === $v) {
             throw new Exception\InvalidArgumentException(
                 'You cannot set \'' . $k . '\'to an empty string. '
                 . 'We interpret empty strings as NULL in requests. '
@@ -160,9 +160,9 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             $attrs = \implode(', ', \array_keys($this->_values));
             $message = "Stripe Notice: Undefined property of {$class} instance: {$k}. "
                     . "HINT: The {$k} attribute was set in the past, however. "
-                    . "It was then wiped when refreshing the object "
+                    . 'It was then wiped when refreshing the object '
                     . "with the result returned by Stripe's API, "
-                    . "probably as a result of a save(). The attributes currently "
+                    . 'probably as a result of a save(). The attributes currently '
                     . "available on this object are: {$attrs}";
             Stripe::getLogger()->error($message);
 
@@ -284,7 +284,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             // This is necessary in case metadata is empty, as PHP arrays do
             // not differentiate between lists and hashes, and we consider
             // empty arrays to be lists.
-            if (("metadata" === $k) && (\is_array($v))) {
+            if (('metadata' === $k) && (\is_array($v))) {
                 $this->_values[$k] = StripeObject::constructFrom($v, $opts);
             } else {
                 $this->_values[$k] = Util\Util::convertToStripeObject($v, $opts);
@@ -365,7 +365,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         // anything with it because the integration is probably not working as the
         // user intended it to.
         if (null === $value) {
-            return "";
+            return '';
         }
         if (($value instanceof ApiResource) && (!$value->saveWithParent)) {
             if (!$unsaved) {
@@ -378,7 +378,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             throw new Exception\InvalidArgumentException(
                 "Cannot save property `{$key}` containing an API resource of type " .
                     \get_class($value) . ". It doesn't appear to be persisted and is " .
-                    "not marked as `saveWithParent`."
+                    'not marked as `saveWithParent`.'
             );
         }
         if (\is_array($value)) {
@@ -526,11 +526,11 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             $values = $obj->_values;
         } else {
             throw new Exception\InvalidArgumentException(
-                "empty_values got unexpected object type: " . \get_class($obj)
+                'empty_values got unexpected object type: ' . \get_class($obj)
             );
         }
 
-        return \array_fill_keys(\array_keys($values), "");
+        return \array_fill_keys(\array_keys($values), '');
     }
 
     /**

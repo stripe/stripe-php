@@ -53,8 +53,8 @@ class Collection extends StripeObject implements \IteratorAggregate
             return parent::offsetGet($k);
         }
         $msg = "You tried to access the {$k} index, but Collection " .
-                   "types only support string keys. (HINT: List calls " .
-                   "return an object with a `data` (which is the data " .
+                   'types only support string keys. (HINT: List calls ' .
+                   'return an object with a `data` (which is the data ' .
                    "array). You likely want to call ->data[{$k}])";
 
         throw new Exception\InvalidArgumentException($msg);

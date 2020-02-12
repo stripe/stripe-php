@@ -9,10 +9,10 @@ class ReportRunTest extends \Stripe\TestCase
     public function testIsCreatable()
     {
         $params = [
-            "parameters" => [
-                "connected_account" => "acct_123",
+            'parameters' => [
+                'connected_account' => 'acct_123',
             ],
-            "report_type" => "activity.summary.1",
+            'report_type' => 'activity.summary.1',
         ];
 
         $this->expectsRequest(

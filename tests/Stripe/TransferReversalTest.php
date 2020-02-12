@@ -10,7 +10,7 @@ class TransferReversalTest extends TestCase
     public function testIsSaveable()
     {
         $resource = Transfer::retrieveReversal(self::TEST_TRANSFER_ID, self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/transfers/' . $resource->transfer . '/reversals/' . $resource->id

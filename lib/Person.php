@@ -64,7 +64,7 @@ class Person extends ApiResource
         $account = $this['account'];
         if (!$id) {
             throw new Exception\UnexpectedValueException(
-                "Could not determine which URL to request: " .
+                'Could not determine which URL to request: ' .
                 "class instance has invalid ID: {$id}",
                 null
             );
@@ -87,7 +87,7 @@ class Person extends ApiResource
      */
     public static function retrieve($_id, $_opts = null)
     {
-        $msg = "Persons cannot be retrieved without an account ID. Retrieve " .
+        $msg = 'Persons cannot be retrieved without an account ID. Retrieve ' .
                "a person using `Account::retrievePerson('account_id', " .
                "'person_id')`.";
 
@@ -103,7 +103,7 @@ class Person extends ApiResource
      */
     public static function update($_id, $_params = null, $_options = null)
     {
-        $msg = "Persons cannot be updated without an account ID. Update " .
+        $msg = 'Persons cannot be updated without an account ID. Update ' .
                "a person using `Account::updatePerson('account_id', " .
                "'person_id', \$updateParams)`.";
 

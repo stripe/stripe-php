@@ -36,8 +36,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         // Set up host and credentials for stripe-mock
         Stripe::$apiBase = \defined('MOCK_URL') ? MOCK_URL : 'http://localhost:12111';
-        Stripe::setApiKey("sk_test_123");
-        Stripe::setClientId("ca_123");
+        Stripe::setApiKey('sk_test_123');
+        Stripe::setClientId('ca_123');
         Stripe::setApiVersion(null);
         Stripe::setAccountId(null);
 

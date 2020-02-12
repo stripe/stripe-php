@@ -29,7 +29,7 @@ class BankAccountTest extends TestCase
     {
         $resource = $this->createFixture(['customer' => 'cus_123']);
         static::assertSame(
-            "/v1/customers/cus_123/sources/" . self::TEST_RESOURCE_ID,
+            '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
     }
@@ -38,7 +38,7 @@ class BankAccountTest extends TestCase
     {
         $resource = $this->createFixture(['account' => 'acct_123']);
         static::assertSame(
-            "/v1/accounts/acct_123/external_accounts/" . self::TEST_RESOURCE_ID,
+            '/v1/accounts/acct_123/external_accounts/' . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
     }
@@ -53,7 +53,7 @@ class BankAccountTest extends TestCase
     public function testIsSaveable()
     {
         $resource = $this->createFixture();
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
@@ -67,7 +67,7 @@ class BankAccountTest extends TestCase
         $this->expectException(\Stripe\Exception\BadMethodCallException::class);
 
         BankAccount::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
     }
 
@@ -87,12 +87,12 @@ class BankAccountTest extends TestCase
         $resource = $this->createFixture();
         $this->expectsRequest(
             'post',
-            '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID . "/verify",
+            '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID . '/verify',
             [
-                "amounts" => [1, 2],
+                'amounts' => [1, 2],
             ]
         );
-        $resource->verify(["amounts" => [1, 2]]);
+        $resource->verify(['amounts' => [1, 2]]);
         static::assertInstanceOf(\Stripe\BankAccount::class, $resource);
     }
 }

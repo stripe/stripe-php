@@ -42,7 +42,7 @@ class OrderTest extends TestCase
     public function testIsSaveable()
     {
         $resource = Order::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/orders/' . $resource->id
@@ -58,7 +58,7 @@ class OrderTest extends TestCase
             '/v1/orders/' . self::TEST_RESOURCE_ID
         );
         $resource = Order::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Order::class, $resource);
     }

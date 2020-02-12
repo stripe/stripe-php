@@ -34,9 +34,9 @@ class CreditNoteTest extends TestCase
             '/v1/credit_notes'
         );
         $resource = CreditNote::create([
-            "amount" => 100,
-            "invoice" => "in_132",
-            "reason" => "duplicate",
+            'amount' => 100,
+            'invoice' => 'in_132',
+            'reason' => 'duplicate',
         ]);
         static::assertInstanceOf(\Stripe\CreditNote::class, $resource);
     }
@@ -44,7 +44,7 @@ class CreditNoteTest extends TestCase
     public function testIsSaveable()
     {
         $resource = CreditNote::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/credit_notes/' . $resource->id
@@ -60,7 +60,7 @@ class CreditNoteTest extends TestCase
             '/v1/credit_notes/' . self::TEST_RESOURCE_ID
         );
         $resource = CreditNote::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\CreditNote::class, $resource);
     }

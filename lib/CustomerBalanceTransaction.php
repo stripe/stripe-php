@@ -67,8 +67,8 @@ class CustomerBalanceTransaction extends ApiResource
      */
     public static function retrieve($_id, $_opts = null)
     {
-        $msg = "Customer Balance Transactions cannot be retrieved without a " .
-               "customer ID. Retrieve a Customer Balance Transaction using " .
+        $msg = 'Customer Balance Transactions cannot be retrieved without a ' .
+               'customer ID. Retrieve a Customer Balance Transaction using ' .
                "`Customer::retrieveBalanceTransaction('customer_id', " .
                "'balance_transaction_id')`.";
 
@@ -84,8 +84,8 @@ class CustomerBalanceTransaction extends ApiResource
      */
     public static function update($_id, $_params = null, $_options = null)
     {
-        $msg = "Customer Balance Transactions cannot be updated without a " .
-               "customer ID. Update a Customer Balance Transaction using " .
+        $msg = 'Customer Balance Transactions cannot be updated without a ' .
+               'customer ID. Update a Customer Balance Transaction using ' .
                "`Customer::updateBalanceTransaction('customer_id', " .
                "'balance_transaction_id', \$updateParams)`.";
 

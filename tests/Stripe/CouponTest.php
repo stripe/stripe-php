@@ -34,10 +34,10 @@ class CouponTest extends TestCase
             '/v1/coupons'
         );
         $resource = Coupon::create([
-            "percent_off" => 25,
-            "duration" => "repeating",
-            "duration_in_months" => 3,
-            "id" => self::TEST_RESOURCE_ID,
+            'percent_off' => 25,
+            'duration' => 'repeating',
+            'duration_in_months' => 3,
+            'id' => self::TEST_RESOURCE_ID,
         ]);
         static::assertInstanceOf(\Stripe\Coupon::class, $resource);
     }
@@ -45,7 +45,7 @@ class CouponTest extends TestCase
     public function testIsSaveable()
     {
         $resource = Coupon::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/coupons/' . self::TEST_RESOURCE_ID
@@ -61,7 +61,7 @@ class CouponTest extends TestCase
             '/v1/coupons/' . self::TEST_RESOURCE_ID
         );
         $resource = Coupon::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Coupon::class, $resource);
     }

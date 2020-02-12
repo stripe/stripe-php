@@ -34,9 +34,9 @@ class TaxRateTest extends TestCase
             '/v1/tax_rates'
         );
         $resource = TaxRate::create([
-            "display_name" => "name",
-            "inclusive" => false,
-            "percentage" => 10.15,
+            'display_name' => 'name',
+            'inclusive' => false,
+            'percentage' => 10.15,
         ]);
         static::assertInstanceOf(\Stripe\TaxRate::class, $resource);
     }
@@ -44,7 +44,7 @@ class TaxRateTest extends TestCase
     public function testIsSaveable()
     {
         $resource = TaxRate::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/tax_rates/' . self::TEST_RESOURCE_ID
@@ -60,7 +60,7 @@ class TaxRateTest extends TestCase
             '/v1/tax_rates/' . self::TEST_RESOURCE_ID
         );
         $resource = TaxRate::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\TaxRate::class, $resource);
     }

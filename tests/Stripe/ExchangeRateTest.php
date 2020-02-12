@@ -48,7 +48,7 @@ class ExchangeRateTest extends TestCase
                 'rates' => ['eur' => 0.845876],
             ]
         );
-        $rates = ExchangeRate::retrieve("usd");
+        $rates = ExchangeRate::retrieve('usd');
         static::assertEquals('exchange_rate', $rates->object);
     }
 }

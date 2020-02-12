@@ -40,7 +40,7 @@ class SKUTest extends TestCase
                 'quantity' => 1,
             ],
             'price' => 100,
-            'product' => "prod_123",
+            'product' => 'prod_123',
         ]);
         static::assertInstanceOf(\Stripe\SKU::class, $resource);
     }
@@ -48,7 +48,7 @@ class SKUTest extends TestCase
     public function testIsSaveable()
     {
         $resource = SKU::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/skus/' . $resource->id
@@ -64,7 +64,7 @@ class SKUTest extends TestCase
             '/v1/skus/' . self::TEST_RESOURCE_ID
         );
         $resource = SKU::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\SKU::class, $resource);
     }

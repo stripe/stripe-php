@@ -34,8 +34,8 @@ class ValueListTest extends \Stripe\TestCase
             '/v1/radar/value_lists'
         );
         $resource = ValueList::create([
-            "alias" => "alias",
-            "name" => "name",
+            'alias' => 'alias',
+            'name' => 'name',
         ]);
         static::assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
     }
@@ -43,7 +43,7 @@ class ValueListTest extends \Stripe\TestCase
     public function testIsSaveable()
     {
         $resource = ValueList::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/radar/value_lists/' . self::TEST_RESOURCE_ID
@@ -59,7 +59,7 @@ class ValueListTest extends \Stripe\TestCase
             '/v1/radar/value_lists/' . self::TEST_RESOURCE_ID
         );
         $resource = ValueList::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
     }

@@ -9,16 +9,16 @@ class CardholderTest extends \Stripe\TestCase
     public function testIsCreatable()
     {
         $params = [
-            "billing" => [
-                "address" => [
-                    "city" => "city",
-                    "country" => "US",
-                    "line1" => "line1",
-                    "postal_code" => "postal_code",
+            'billing' => [
+                'address' => [
+                    'city' => 'city',
+                    'country' => 'US',
+                    'line1' => 'line1',
+                    'postal_code' => 'postal_code',
                 ],
             ],
-            "name" => "Cardholder Name",
-            "type" => "individual",
+            'name' => 'Cardholder Name',
+            'type' => 'individual',
         ];
 
         $this->expectsRequest(
@@ -54,7 +54,7 @@ class CardholderTest extends \Stripe\TestCase
     public function testIsSaveable()
     {
         $resource = Cardholder::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
 
         $this->expectsRequest(
             'post',
@@ -69,10 +69,10 @@ class CardholderTest extends \Stripe\TestCase
         $this->expectsRequest(
             'post',
             '/v1/issuing/cardholders/' . self::TEST_RESOURCE_ID,
-            ["metadata" => ["key" => "value"]]
+            ['metadata' => ['key' => 'value']]
         );
         $resource = Cardholder::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resource);
     }

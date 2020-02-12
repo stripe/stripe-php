@@ -44,7 +44,7 @@ class BitcoinReceiver extends ApiResource
      */
     public static function classUrl()
     {
-        return "/v1/bitcoin/receivers";
+        return '/v1/bitcoin/receivers';
     }
 
     /**

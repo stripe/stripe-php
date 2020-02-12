@@ -11,7 +11,7 @@ class TaxIdTest extends TestCase
     {
         $resource = \Stripe\Customer::retrieveTaxId(self::TEST_CUSTOMER_ID, self::TEST_RESOURCE_ID);
         static::assertSame(
-            "/v1/customers/" . self::TEST_CUSTOMER_ID . "/tax_ids/" . self::TEST_RESOURCE_ID,
+            '/v1/customers/' . self::TEST_CUSTOMER_ID . '/tax_ids/' . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
     }

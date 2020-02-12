@@ -30,7 +30,7 @@ class DisputeTest extends TestCase
     public function testIsSaveable()
     {
         $resource = Dispute::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/disputes/' . $resource->id
@@ -46,7 +46,7 @@ class DisputeTest extends TestCase
             '/v1/disputes/' . self::TEST_RESOURCE_ID
         );
         $resource = Dispute::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Dispute::class, $resource);
     }

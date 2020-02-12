@@ -21,7 +21,6 @@ return PhpCsFixer\Config::create()
         'phpdoc_align' => false,
         'protected_to_private' => false,
         'self_accessor' => false,
-        'single_quote' => false,
 
         // Should be included in @PhpCsFixer / @PhpCsFixer:risky according to doc, but need to be
         // enabled manually for some reason.

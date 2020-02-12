@@ -9,8 +9,8 @@ class DisputeTest extends \Stripe\TestCase
     public function testIsCreatable()
     {
         $params = [
-            "reason" => "fraudulent",
-            "disputed_transaction" => "ipi_123",
+            'reason' => 'fraudulent',
+            'disputed_transaction' => 'ipi_123',
         ];
 
         $this->expectsRequest(
@@ -46,7 +46,7 @@ class DisputeTest extends \Stripe\TestCase
     public function testIsSaveable()
     {
         $resource = Dispute::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
 
         $this->expectsRequest(
             'post',
@@ -61,10 +61,10 @@ class DisputeTest extends \Stripe\TestCase
         $this->expectsRequest(
             'post',
             '/v1/issuing/disputes/' . self::TEST_RESOURCE_ID,
-            ["metadata" => ["key" => "value"]]
+            ['metadata' => ['key' => 'value']]
         );
         $resource = Dispute::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
     }

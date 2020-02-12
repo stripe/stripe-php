@@ -43,7 +43,7 @@ class ProductTest extends TestCase
     public function testIsSaveable()
     {
         $resource = Product::retrieve(self::TEST_RESOURCE_ID);
-        $resource->metadata["key"] = "value";
+        $resource->metadata['key'] = 'value';
         $this->expectsRequest(
             'post',
             '/v1/products/' . $resource->id
@@ -59,7 +59,7 @@ class ProductTest extends TestCase
             '/v1/products/' . self::TEST_RESOURCE_ID
         );
         $resource = Product::update(self::TEST_RESOURCE_ID, [
-            "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Product::class, $resource);
     }

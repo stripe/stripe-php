@@ -24,14 +24,14 @@ class StripeMock
         }
 
         if (null !== static::$process && static::$process->isRunning()) {
-            echo "stripe-mock already running on port " . static::$port . "\n";
+            echo 'stripe-mock already running on port ' . static::$port . "\n";
 
             return true;
         }
 
         static::$port = static::findAvailablePort();
 
-        echo "Starting stripe-mock on port " . static::$port . "...\n";
+        echo 'Starting stripe-mock on port ' . static::$port . "...\n";
 
         static::$process = new Process(\implode(' ', [
             'stripe-mock',
@@ -46,9 +46,9 @@ class StripeMock
         \sleep(1);
 
         if (static::$process->isRunning()) {
-            echo "Started stripe-mock, PID = " . static::$process->getPid() . "\n";
+            echo 'Started stripe-mock, PID = ' . static::$process->getPid() . "\n";
         } else {
-            die("stripe-mock terminated early, exit code = " . static::$process->wait());
+            die('stripe-mock terminated early, exit code = ' . static::$process->wait());
         }
 
         return true;
@@ -89,7 +89,7 @@ class StripeMock
     private static function findAvailablePort()
     {
         $sock = \socket_create(\AF_INET, \SOCK_STREAM, \SOL_TCP);
-        \socket_bind($sock, "localhost", 0);
+        \socket_bind($sock, 'localhost', 0);
         $addr = null;
         $port = -1;
         \socket_getsockname($sock, $addr, $port);

@@ -34,7 +34,7 @@ class ApplePayDomainTest extends TestCase
             '/v1/apple_pay/domains'
         );
         $resource = ApplePayDomain::create([
-            "domain_name" => "domain",
+            'domain_name' => 'domain',
         ]);
         static::assertInstanceOf(\Stripe\ApplePayDomain::class, $resource);
     }

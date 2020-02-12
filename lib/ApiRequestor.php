@@ -64,9 +64,9 @@ class ApiRequestor
         if (false !== $result) {
             return $result;
         }
-        Stripe::getLogger()->error("Serializing telemetry payload failed!");
+        Stripe::getLogger()->error('Serializing telemetry payload failed!');
 
-        return "{}";
+        return '{}';
     }
 
     /**
@@ -341,7 +341,7 @@ class ApiRequestor
         }
 
         if (Stripe::$enableTelemetry && null !== self::$requestTelemetry) {
-            $defaultHeaders["X-Stripe-Client-Telemetry"] = self::_telemetryJson(self::$requestTelemetry);
+            $defaultHeaders['X-Stripe-Client-Telemetry'] = self::_telemetryJson(self::$requestTelemetry);
         }
 
         $hasFile = false;
