@@ -2,8 +2,8 @@
 
 namespace Stripe\HttpClient;
 
-use Stripe\Stripe;
 use Stripe\Exception;
+use Stripe\Stripe;
 use Stripe\Util;
 
 // @codingStandardsIgnoreStart

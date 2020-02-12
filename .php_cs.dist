@@ -19,7 +19,6 @@ return PhpCsFixer\Config::create()
         'dir_constant' => false,
         'include' => false,
         'ordered_class_elements' => false,
-        'ordered_imports' => false,
         'php_unit_internal_class' => false,
         'php_unit_strict' => false,
         'php_unit_test_class_requires_covers' => false,
