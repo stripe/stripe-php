@@ -18,7 +18,6 @@ return PhpCsFixer\Config::create()
         ],
         'dir_constant' => false,
         'include' => false,
-        'no_superfluous_phpdoc_tags' => false,
         'ordered_class_elements' => false,
         'ordered_imports' => false,
         'php_unit_internal_class' => false,
