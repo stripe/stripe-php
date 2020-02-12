@@ -236,7 +236,7 @@ class CollectionTest extends TestCase
     public function testEmptyCollection()
     {
         $emptyCollection = Collection::emptyCollection();
-        static::assertEquals([], $emptyCollection->data);
+        static::assertSame([], $emptyCollection->data);
     }
 
     public function testIsEmpty()
@@ -270,7 +270,7 @@ class CollectionTest extends TestCase
         foreach ($nextPage->data as $element) {
             \array_push($ids, $element['id']);
         }
-        static::assertEquals([2, 3], $ids);
+        static::assertSame([2, 3], $ids);
     }
 
     public function testPreviousPage()
@@ -291,6 +291,6 @@ class CollectionTest extends TestCase
         );
 
         $previousPage = $this->fixture->previousPage();
-        static::assertEquals([], $previousPage->data);
+        static::assertSame([], $previousPage->data);
     }
 }

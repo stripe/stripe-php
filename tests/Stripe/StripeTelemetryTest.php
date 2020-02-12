@@ -103,7 +103,7 @@ class StripeTelemetryTest extends TestCase
         static::assertArrayHasKey('X-Stripe-Client-Telemetry', $requestheaders);
 
         $data = \json_decode($requestheaders['X-Stripe-Client-Telemetry'], true);
-        static::assertEquals('req_123', $data['last_request_metrics']['request_id']);
+        static::assertSame('req_123', $data['last_request_metrics']['request_id']);
         static::assertNotNull($data['last_request_metrics']['request_duration_ms']);
 
         ApiRequestor::setHttpClient(null);

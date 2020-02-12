@@ -29,7 +29,7 @@ class WebhookTest extends TestCase
     {
         $sigHeader = $this->generateHeader();
         $event = Webhook::constructEvent(self::EVENT_PAYLOAD, $sigHeader, self::SECRET);
-        static::assertEquals('evt_test_webhook', $event->id);
+        static::assertSame('evt_test_webhook', $event->id);
     }
 
     public function testInvalidJson()
