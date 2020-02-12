@@ -17,7 +17,6 @@ return PhpCsFixer\Config::create()
             'spacing' => 'one',
         ],
         'dir_constant' => false,
-        'explicit_indirect_variable' => false,
         'function_to_constant' => false,
         'include' => false,
         'no_superfluous_phpdoc_tags' => false,

@@ -39,7 +39,7 @@ abstract class ApiResource extends StripeObject
     public function __set($k, $v)
     {
         parent::__set($k, $v);
-        $v = $this->$k;
+        $v = $this->{$k};
         if ((static::getSavedNestedResources()->includes($k)) &&
             ($v instanceof ApiResource)) {
             $v->saveWithParent = true;
