@@ -20,7 +20,6 @@ return PhpCsFixer\Config::create()
         'function_to_constant' => false,
         'include' => false,
         'no_superfluous_phpdoc_tags' => false,
-        'no_unset_on_property' => false,
         'ordered_class_elements' => false,
         'ordered_imports' => false,
         'php_unit_internal_class' => false,
