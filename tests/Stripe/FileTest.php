@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class FileTest extends TestCase
+/**
+ * @internal
+ */
+final class FileTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'file_123';
 
     public function testIsListable()

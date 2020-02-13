@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class EventTest extends TestCase
+/**
+ * @internal
+ */
+final class EventTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'evt_123';
 
     public function testIsListable()

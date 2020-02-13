@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class SetupIntentTest extends TestCase
+/**
+ * @internal
+ */
+final class SetupIntentTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'seti_123';
 
     public function testIsListable()

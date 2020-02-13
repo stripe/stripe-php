@@ -2,8 +2,13 @@
 
 namespace Stripe\Terminal;
 
-class ConnectionTokenTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class ConnectionTokenTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     public function testIsCreatable()
     {
         $this->expectsRequest(

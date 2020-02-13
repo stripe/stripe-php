@@ -2,8 +2,13 @@
 
 namespace Stripe\Radar;
 
-class ValueListTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class ValueListTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     const TEST_RESOURCE_ID = 'rsl_123';
 
     public function testIsListable()

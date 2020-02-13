@@ -4,8 +4,13 @@ namespace Stripe;
 
 use Stripe\HttpClient\CurlClient;
 
-class ApiRequestorTest extends TestCase
+/**
+ * @internal
+ */
+final class ApiRequestorTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     public function testEncodeObjects()
     {
         $reflector = new \ReflectionClass(\Stripe\ApiRequestor::class);

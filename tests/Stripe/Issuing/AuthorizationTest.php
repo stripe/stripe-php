@@ -2,8 +2,13 @@
 
 namespace Stripe\Issuing;
 
-class AuthorizationTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class AuthorizationTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     const TEST_RESOURCE_ID = 'iauth_123';
 
     public function testIsListable()

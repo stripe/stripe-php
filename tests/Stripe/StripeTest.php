@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class StripeTest extends TestCase
+/**
+ * @internal
+ */
+final class StripeTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     /** @var array */
     protected $orig;
 

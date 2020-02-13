@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class ProductTest extends TestCase
+/**
+ * @internal
+ */
+final class ProductTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'prod_123';
 
     public function testIsListable()

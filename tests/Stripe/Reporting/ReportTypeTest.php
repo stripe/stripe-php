@@ -2,8 +2,13 @@
 
 namespace Stripe\Reporting;
 
-class ReportTypeTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class ReportTypeTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     const TEST_RESOURCE_ID = 'activity.summary.1';
 
     public function testIsListable()

@@ -53,4 +53,4 @@ if ('master' !== $version && -1 === \version_compare($version, MOCK_MINIMUM_VERS
     exit(1);
 }
 
-require_once __DIR__ . '/TestCase.php';
+require_once __DIR__ . '/TestHelper.php';

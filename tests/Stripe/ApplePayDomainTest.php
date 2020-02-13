@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class ApplePayDomainTest extends TestCase
+/**
+ * @internal
+ */
+final class ApplePayDomainTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'apwc_123';
 
     public function testIsListable()

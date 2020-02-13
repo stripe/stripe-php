@@ -2,8 +2,13 @@
 
 namespace Stripe\Terminal;
 
-class ReaderTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class ReaderTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     const TEST_RESOURCE_ID = 'rdr_123';
 
     public function testIsListable()

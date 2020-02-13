@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class WebhookEndpointTest extends TestCase
+/**
+ * @internal
+ */
+final class WebhookEndpointTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'we_123';
 
     public function testIsListable()

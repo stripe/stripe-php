@@ -2,8 +2,13 @@
 
 namespace Stripe\Exception;
 
-class SignatureVerificationExceptionTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class SignatureVerificationExceptionTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     public function testGetters()
     {
         $e = SignatureVerificationException::factory('message', 'payload', 'sig_header');

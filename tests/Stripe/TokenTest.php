@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class TokenTest extends TestCase
+/**
+ * @internal
+ */
+final class TokenTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'tok_123';
 
     public function testIsRetrievable()

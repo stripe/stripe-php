@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class BalanceTest extends TestCase
+/**
+ * @internal
+ */
+final class BalanceTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     public function testIsRetrievable()
     {
         $this->expectsRequest(

@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class OAuthTest extends TestCase
+/**
+ * @internal
+ */
+final class OAuthTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     public function testAuthorizeUrl()
     {
         $uriStr = OAuth::authorizeUrl([

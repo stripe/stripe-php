@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class StripeTelemetryTest extends TestCase
+/**
+ * @internal
+ */
+final class StripeTelemetryTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'acct_123';
     const TEST_EXTERNALACCOUNT_ID = 'ba_123';
     const TEST_PERSON_ID = 'person_123';
@@ -17,8 +22,6 @@ class StripeTelemetryTest extends TestCase
 
     protected function setUp()
     {
-        parent::setUp();
-
         // clear static telemetry data
         ApiRequestor::resetTelemetry();
     }

@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class TopupTest extends TestCase
+/**
+ * @internal
+ */
+final class TopupTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'tu_123';
 
     public function testIsListable()

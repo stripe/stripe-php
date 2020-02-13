@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class AccountLinkTest extends TestCase
+/**
+ * @internal
+ */
+final class AccountLinkTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     public function testIsCreatable()
     {
         $this->expectsRequest(

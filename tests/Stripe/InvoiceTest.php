@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class InvoiceTest extends TestCase
+/**
+ * @internal
+ */
+final class InvoiceTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'in_123';
     const TEST_LINE_ID = 'ii_123';
 

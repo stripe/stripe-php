@@ -2,8 +2,13 @@
 
 namespace Stripe\Checkout;
 
-class SessionTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class SessionTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     const TEST_RESOURCE_ID = 'cs_123';
 
     public function testIsCreatable()

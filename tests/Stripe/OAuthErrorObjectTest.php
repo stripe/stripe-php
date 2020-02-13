@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class OAuthErrorObjectTest extends TestCase
+/**
+ * @internal
+ */
+final class OAuthErrorObjectTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     public function testDefaultValues()
     {
         $error = OAuthErrorObject::constructFrom([]);

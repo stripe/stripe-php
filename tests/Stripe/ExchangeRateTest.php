@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class ExchangeRateTest extends TestCase
+/**
+ * @internal
+ */
+final class ExchangeRateTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     public function testIsListable()
     {
         $this->stubRequest(

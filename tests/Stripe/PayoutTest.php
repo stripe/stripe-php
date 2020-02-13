@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class PayoutTest extends TestCase
+/**
+ * @internal
+ */
+final class PayoutTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'po_123';
 
     public function testIsListable()

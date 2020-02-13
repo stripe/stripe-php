@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class WebhookTest extends TestCase
+/**
+ * @internal
+ */
+final class WebhookTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const EVENT_PAYLOAD = '{
   "id": "evt_test_webhook",
   "object": "event"

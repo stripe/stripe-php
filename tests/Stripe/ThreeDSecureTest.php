@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class ThreeDSecureTest extends TestCase
+/**
+ * @internal
+ */
+final class ThreeDSecureTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'tdsrc_123';
 
     public function testIsRetrievable()

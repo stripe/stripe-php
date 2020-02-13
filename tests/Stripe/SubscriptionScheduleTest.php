@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class SubscriptionScheduleTest extends TestCase
+/**
+ * @internal
+ */
+final class SubscriptionScheduleTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'sub_sched_123';
     const TEST_REVISION_ID = 'sub_sched_rev_123';
 

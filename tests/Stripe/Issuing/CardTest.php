@@ -2,8 +2,13 @@
 
 namespace Stripe\Issuing;
 
-class CardTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class CardTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     const TEST_RESOURCE_ID = 'ic_123';
 
     public function testIsListable()
