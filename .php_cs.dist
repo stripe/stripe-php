@@ -22,10 +22,10 @@ return PhpCsFixer\Config::create()
 
         // Should be included in @PhpCsFixer / @PhpCsFixer:risky according to doc, but need to be
         // enabled manually for some reason.
-        'fopen_flags' => true,
         'multiline_whitespace_before_semicolons' => true,
-        'native_function_invocation' => true,
 
         // Additional rules
+        'fopen_flags' => true,
         'linebreak_after_opening_tag' => true,
+        'native_function_invocation' => true,
     ]);
