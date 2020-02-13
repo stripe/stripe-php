@@ -20,12 +20,9 @@ return PhpCsFixer\Config::create()
         'protected_to_private' => false,
         'self_accessor' => false,
 
-        // Should be included in @PhpCsFixer / @PhpCsFixer:risky according to doc, but need to be
-        // enabled manually for some reason.
-        'multiline_whitespace_before_semicolons' => true,
-
         // Additional rules
         'fopen_flags' => true,
         'linebreak_after_opening_tag' => true,
         'native_function_invocation' => true,
-    ]);
+    ])
+;
