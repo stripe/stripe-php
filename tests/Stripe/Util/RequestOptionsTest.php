@@ -2,8 +2,13 @@
 
 namespace Stripe\Util;
 
-class RequestOptionsTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class RequestOptionsTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     public function testStringAPIKey()
     {
         $opts = RequestOptions::parse('foo');

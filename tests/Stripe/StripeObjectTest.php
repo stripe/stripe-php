@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class StripeObjectTest extends TestCase
+/**
+ * @internal
+ */
+final class StripeObjectTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     /** @var \ReflectionMethod */
     private $deepCopyReflector;
 

@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class CollectionTest extends TestCase
+/**
+ * @internal
+ */
+final class CollectionTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     /** @var \Stripe\Collection */
     private $fixture;
 

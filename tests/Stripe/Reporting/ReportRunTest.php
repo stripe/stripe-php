@@ -2,8 +2,13 @@
 
 namespace Stripe\Reporting;
 
-class ReportRunTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class ReportRunTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     const TEST_RESOURCE_ID = 'frr_123';
 
     public function testIsCreatable()

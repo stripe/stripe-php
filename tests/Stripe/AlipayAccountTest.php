@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class AlipayAccountTest extends TestCase
+/**
+ * @internal
+ */
+final class AlipayAccountTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'aliacc_123';
 
     // Because of the wildcard nature of sources, stripe-mock cannot currently

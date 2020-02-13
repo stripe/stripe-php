@@ -2,8 +2,13 @@
 
 namespace Stripe\Issuing;
 
-class DisputeTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class DisputeTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     const TEST_RESOURCE_ID = 'idp_123';
 
     public function testIsCreatable()

@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class ErrorObjectTest extends TestCase
+/**
+ * @internal
+ */
+final class ErrorObjectTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     public function testDefaultValues()
     {
         $error = ErrorObject::constructFrom([]);

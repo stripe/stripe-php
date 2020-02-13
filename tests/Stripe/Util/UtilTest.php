@@ -2,8 +2,13 @@
 
 namespace Stripe\Util;
 
-class UtilTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class UtilTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     public function testIsList()
     {
         $list = [5, 'nstaoush', []];

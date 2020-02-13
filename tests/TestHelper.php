@@ -3,9 +3,9 @@
 namespace Stripe;
 
 /**
- * Base class for Stripe test cases.
+ * Helper trait for Stripe test cases.
  */
-class TestCase extends \PHPUnit\Framework\TestCase
+trait TestHelper
 {
     /** @var string original API base URL */
     protected $origApiBase;
@@ -25,7 +25,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /** @var object HTTP client mocker */
     protected $clientMock;
 
-    protected function setUp()
+    /** @before */
+    protected function setUpConfig()
     {
         // Save original values so that we can restore them after running tests
         $this->origApiBase = Stripe::$apiBase;
@@ -48,7 +49,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
         ApiRequestor::setHttpClient(HttpClient\CurlClient::instance());
     }
 
-    protected function tearDown()
+    /** @after */
+    protected function tearDownConfig()
     {
         // Restore original values
         Stripe::$apiBase = $this->origApiBase;

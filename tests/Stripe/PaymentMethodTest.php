@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class PaymentMethodTest extends TestCase
+/**
+ * @internal
+ */
+final class PaymentMethodTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'pm_123';
 
     public function testIsListable()

@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class ReviewTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class ReviewTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     const TEST_RESOURCE_ID = 'prv_123';
 
     public function testIsApprovable()

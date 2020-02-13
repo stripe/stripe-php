@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class OrderReturnTest extends TestCase
+/**
+ * @internal
+ */
+final class OrderReturnTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'orret_123';
 
     public function testIsListable()

@@ -2,8 +2,13 @@
 
 namespace Stripe\Terminal;
 
-class LocationTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class LocationTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     const TEST_RESOURCE_ID = 'loc_123';
 
     public function testIsListable()

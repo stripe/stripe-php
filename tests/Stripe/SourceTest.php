@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class SourceTest extends TestCase
+/**
+ * @internal
+ */
+final class SourceTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'src_123';
 
     public function testIsRetrievable()

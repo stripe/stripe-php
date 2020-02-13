@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class TransferTest extends TestCase
+/**
+ * @internal
+ */
+final class TransferTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'tr_123';
     const TEST_REVERSAL_ID = 'trr_123';
 

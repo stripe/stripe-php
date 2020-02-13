@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class EphemeralKeyTest extends TestCase
+/**
+ * @internal
+ */
+final class EphemeralKeyTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     public function testIsCreatable()
     {
         $this->expectsRequest(

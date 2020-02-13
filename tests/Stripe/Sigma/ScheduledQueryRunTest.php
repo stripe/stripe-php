@@ -2,8 +2,13 @@
 
 namespace Stripe\Sigma;
 
-class ScheduledQueryRunTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class ScheduledQueryRunTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     const TEST_RESOURCE_ID = 'sqr_123';
 
     public function testIsListable()

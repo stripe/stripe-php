@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class MandateTest extends TestCase
+/**
+ * @internal
+ */
+final class MandateTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'mandate_123';
 
     public function testIsRetrievable()

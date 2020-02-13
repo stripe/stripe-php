@@ -2,8 +2,13 @@
 
 namespace Stripe\Radar;
 
-class EarlyFraudWarningTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class EarlyFraudWarningTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     const TEST_RESOURCE_ID = 'issfr_123';
 
     public function testIsListable()

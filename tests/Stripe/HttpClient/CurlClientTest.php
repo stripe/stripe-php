@@ -2,8 +2,13 @@
 
 namespace Stripe\HttpClient;
 
-class CurlClientTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class CurlClientTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     /** @var \ReflectionProperty */
     private $initialNetworkRetryDelayProperty;
 

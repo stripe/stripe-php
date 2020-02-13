@@ -2,8 +2,13 @@
 
 namespace Stripe\Exception\OAuth;
 
-class OAuthErrorExceptionTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class OAuthErrorExceptionTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     public function createFixture()
     {
         $mock = $this->getMockForAbstractClass(OAuthErrorException::class);

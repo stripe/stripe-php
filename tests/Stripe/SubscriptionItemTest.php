@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class SubscriptionItemTest extends TestCase
+/**
+ * @internal
+ */
+final class SubscriptionItemTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'si_123';
 
     public function testIsListable()

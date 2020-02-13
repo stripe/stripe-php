@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class InvoiceItemTest extends TestCase
+/**
+ * @internal
+ */
+final class InvoiceItemTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'ii_123';
 
     public function testIsListable()

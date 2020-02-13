@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class SKUTest extends TestCase
+/**
+ * @internal
+ */
+final class SKUTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'sku_123';
 
     public function testIsListable()

@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class CreditNoteTest extends TestCase
+/**
+ * @internal
+ */
+final class CreditNoteTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'cn_123';
 
     public function testIsListable()

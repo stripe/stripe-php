@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class BitcoinReceiverTest extends TestCase
+/**
+ * @internal
+ */
+final class BitcoinReceiverTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'btcrcv_123';
 
     // Because of the wildcard nature of sources, stripe-mock cannot currently

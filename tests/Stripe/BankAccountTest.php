@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class BankAccountTest extends TestCase
+/**
+ * @internal
+ */
+final class BankAccountTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'ba_123';
 
     // Because of the wildcard nature of sources, stripe-mock cannot currently

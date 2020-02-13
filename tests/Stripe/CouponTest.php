@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class CouponTest extends TestCase
+/**
+ * @internal
+ */
+final class CouponTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = '25OFF';
 
     public function testIsListable()

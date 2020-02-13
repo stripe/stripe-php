@@ -2,8 +2,13 @@
 
 namespace Stripe\Issuing;
 
-class TransactionTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class TransactionTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     const TEST_RESOURCE_ID = 'ipi_123';
 
     public function testIsListable()

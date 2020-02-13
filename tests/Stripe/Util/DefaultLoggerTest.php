@@ -2,8 +2,13 @@
 
 namespace Stripe\Util;
 
-class DefaultLoggerTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class DefaultLoggerTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     public function testDefaultLogger()
     {
         // DefaultLogger uses PHP's `error_log` function. In order to capture

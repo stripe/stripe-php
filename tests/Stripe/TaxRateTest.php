@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class TaxRateTest extends TestCase
+/**
+ * @internal
+ */
+final class TaxRateTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'txr_123';
 
     public function testIsListable()

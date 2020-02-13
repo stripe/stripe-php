@@ -2,8 +2,13 @@
 
 namespace Stripe\Util;
 
-class CaseInsensitiveArrayTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class CaseInsensitiveArrayTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     public function testArrayAccess()
     {
         $arr = new CaseInsensitiveArray(['One' => '1', 'TWO' => '2']);

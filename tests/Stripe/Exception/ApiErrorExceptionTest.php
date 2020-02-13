@@ -2,8 +2,13 @@
 
 namespace Stripe\Exception;
 
-class ApiErrorExceptionTest extends \Stripe\TestCase
+/**
+ * @internal
+ */
+final class ApiErrorExceptionTest extends \PHPUnit\Framework\TestCase
 {
+    use \Stripe\TestHelper;
+
     public function createFixture()
     {
         $mock = $this->getMockForAbstractClass(ApiErrorException::class);

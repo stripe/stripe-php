@@ -6,24 +6,30 @@ namespace Stripe;
  * These tests should really be part of `FileTest`, but because the file creation requests use a
  * different host, the tests for these methods need their own setup and teardown methods.
  */
-class FileCreationTest extends TestCase
+/**
+ * @internal
+ */
+final class FileCreationTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @before
-     */
+    use TestHelper;
+
+    private $origApiUploadBase;
+
+    /** @before */
     public function setUpUploadBase()
     {
-        Stripe::$apiUploadBase = Stripe::$apiBase;
+        $this->origApiBase = Stripe::$apiBase;
+        $this->origApiUploadBase = Stripe::$apiUploadBase;
+
+        Stripe::$apiUploadBase = \defined('MOCK_URL') ? MOCK_URL : 'http://localhost:12111';
         Stripe::$apiBase = null;
     }
 
-    /**
-     * @after
-     */
+    /** @after */
     public function tearDownUploadBase()
     {
-        Stripe::$apiBase = Stripe::$apiUploadBase;
-        Stripe::$apiUploadBase = 'https://files.stripe.com';
+        Stripe::$apiBase = $this->origApiBase;
+        Stripe::$apiUploadBase = $this->origApiUploadBase;
     }
 
     public function testIsCreatableWithFileHandle()

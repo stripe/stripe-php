@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class ApplicationFeeTest extends TestCase
+/**
+ * @internal
+ */
+final class ApplicationFeeTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'fee_123';
     const TEST_FEEREFUND_ID = 'fr_123';
 

@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class BalanceTransactionTest extends TestCase
+/**
+ * @internal
+ */
+final class BalanceTransactionTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'txn_123';
 
     public function testIsListable()

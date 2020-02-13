@@ -2,8 +2,13 @@
 
 namespace Stripe;
 
-class CountrySpecTest extends TestCase
+/**
+ * @internal
+ */
+final class CountrySpecTest extends \PHPUnit\Framework\TestCase
 {
+    use TestHelper;
+
     const TEST_RESOURCE_ID = 'US';
 
     public function testIsListable()
