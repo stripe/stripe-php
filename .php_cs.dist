@@ -17,7 +17,6 @@ return PhpCsFixer\Config::create()
         'ordered_class_elements' => false,
         'php_unit_test_class_requires_covers' => false,
         'phpdoc_align' => false,
-        'protected_to_private' => false,
         'self_accessor' => false,
 
         // Additional rules
