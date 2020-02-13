@@ -91,7 +91,8 @@ trait TestHelper
 
                     return $curlClient->request($method, $absUrl, $headers, $params, $hasFile);
                 }
-            );
+            )
+        ;
     }
 
     /**
@@ -124,7 +125,8 @@ trait TestHelper
         $base = null
     ) {
         $this->prepareRequestMock($method, $path, $params, $headers, $hasFile, $base)
-            ->willReturn([\json_encode($response), $rcode, []]);
+            ->willReturn([\json_encode($response), $rcode, []])
+        ;
     }
 
     /**
@@ -179,6 +181,7 @@ trait TestHelper
                 }),
                 null === $params ? static::anything() : static::identicalTo($params),
                 static::identicalTo($hasFile)
-            );
+            )
+        ;
     }
 }

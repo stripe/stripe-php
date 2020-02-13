@@ -33,7 +33,8 @@ final class StripeTelemetryTest extends \PHPUnit\Framework\TestCase
         $stub = $this
             ->getMockBuilder('HttpClient\\ClientInterface')
             ->setMethods(['request'])
-            ->getMock();
+            ->getMock()
+        ;
 
         $stub->expects(static::any())
             ->method('request')
@@ -75,7 +76,8 @@ final class StripeTelemetryTest extends \PHPUnit\Framework\TestCase
         $stub = $this
             ->getMockBuilder('HttpClient\\ClientInterface')
             ->setMethods(['request'])
-            ->getMock();
+            ->getMock()
+        ;
 
         $stub->expects(static::any())
             ->method('request')
