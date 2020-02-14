@@ -1,5 +1,14 @@
 # Changelog
 
+## 7.25.0 - 2020-02-14
+* [#879](https://github.com/stripe/stripe-php/pull/879) Make `\Stripe\Collection` implement `\Countable`
+* [#875](https://github.com/stripe/stripe-php/pull/875) Last set of PHP-CS-Fixer updates
+* [#874](https://github.com/stripe/stripe-php/pull/874) Enable php_unit_internal_class rule
+* [#873](https://github.com/stripe/stripe-php/pull/873) Add support for phpDocumentor in Makefile
+* [#872](https://github.com/stripe/stripe-php/pull/872) Another batch of PHP-CS-Fixer rule updates
+* [#871](https://github.com/stripe/stripe-php/pull/871) Fix a few PHPDoc comments
+* [#870](https://github.com/stripe/stripe-php/pull/870) More PHP-CS-Fixer tweaks
+
 ## 7.24.0 - 2020-02-10
 * [#862](https://github.com/stripe/stripe-php/pull/862) Better PHPDoc
 * [#865](https://github.com/stripe/stripe-php/pull/865) Get closer to `@PhpCsFixer` standard ruleset
