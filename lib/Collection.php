@@ -10,7 +10,7 @@ namespace Stripe;
  * @property bool $has_more
  * @property \Stripe\StripeObject[] $data
  */
-class Collection extends StripeObject implements \IteratorAggregate
+class Collection extends StripeObject implements \Countable, \IteratorAggregate
 {
     const OBJECT_NAME = 'list';
 
@@ -102,6 +102,14 @@ class Collection extends StripeObject implements \IteratorAggregate
         );
 
         return Util\Util::convertToStripeObject($response, $opts);
+    }
+
+    /**
+     * @return int the number of objects in the current page
+     */
+    public function count()
+    {
+        return \count($this->data);
     }
 
     /**

@@ -88,6 +88,19 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
         ]);
     }
 
+    public function testCanCount()
+    {
+        $collection = Collection::constructFrom([
+            'data' => [['id' => 1]],
+        ]);
+        static::assertCount(1, $collection);
+
+        $collection = Collection::constructFrom([
+            'data' => [['id' => 1], ['id' => 2], ['id' => 3]],
+        ]);
+        static::assertCount(3, $collection);
+    }
+
     public function testCanIterate()
     {
         $collection = Collection::constructFrom([
