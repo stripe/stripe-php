@@ -51,11 +51,6 @@ class PaymentIntent extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    /**
-     * These constants are possible representations of the status field.
-     *
-     * @see https://stripe.com/docs/api/payment_intents/object#payment_intent_object-status
-     */
     const STATUS_CANCELED = 'canceled';
     const STATUS_PROCESSING = 'processing';
     const STATUS_REQUIRES_ACTION = 'requires_action';

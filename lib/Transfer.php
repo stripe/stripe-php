@@ -33,11 +33,6 @@ class Transfer extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    /**
-     * Possible string representations of the source type of the transfer.
-     *
-     * @see https://stripe.com/docs/api/transfers/object#transfer_object-source_type
-     */
     const SOURCE_TYPE_ALIPAY_ACCOUNT = 'alipay_account';
     const SOURCE_TYPE_BANK_ACCOUNT = 'bank_account';
     const SOURCE_TYPE_CARD = 'card';

@@ -50,18 +50,13 @@ class Subscription extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    /**
-     * These constants are possible representations of the status field.
-     *
-     * @see https://stripe.com/docs/api#subscription_object-status
-     */
     const STATUS_ACTIVE = 'active';
     const STATUS_CANCELED = 'canceled';
+    const STATUS_INCOMPLETE = 'incomplete';
+    const STATUS_INCOMPLETE_EXPIRED = 'incomplete_expired';
     const STATUS_PAST_DUE = 'past_due';
     const STATUS_TRIALING = 'trialing';
     const STATUS_UNPAID = 'unpaid';
-    const STATUS_INCOMPLETE = 'incomplete';
-    const STATUS_INCOMPLETE_EXPIRED = 'incomplete_expired';
 
     use ApiOperations\Delete {
         delete as protected _delete;

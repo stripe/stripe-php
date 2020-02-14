@@ -31,11 +31,6 @@ class Topup extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    /**
-     * Possible string representations of the status of the top-up.
-     *
-     * @see https://stripe.com/docs/api/topups/object#topup_object-status
-     */
     const STATUS_CANCELED = 'canceled';
     const STATUS_FAILED = 'failed';
     const STATUS_PENDING = 'pending';

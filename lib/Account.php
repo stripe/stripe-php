@@ -36,45 +36,27 @@ class Account extends ApiResource
     use ApiOperations\NestedResource;
     use ApiOperations\Update;
 
-    use ApiOperations\Retrieve {
-        retrieve as protected _retrieve;
-    }
-
-    /**
-     * Possible string representations of an account's business type.
-     *
-     * @see https://stripe.com/docs/api/accounts/object#account_object-business_type
-     */
     const BUSINESS_TYPE_COMPANY = 'company';
+    const BUSINESS_TYPE_GOVERNMENT_ENTITY = 'government_entity';
     const BUSINESS_TYPE_INDIVIDUAL = 'individual';
+    const BUSINESS_TYPE_NON_PROFIT = 'non_profit';
 
-    /**
-     * Possible string representations of an account's capabilities.
-     *
-     * @see https://stripe.com/docs/api/accounts/object#account_object-capabilities
-     */
     const CAPABILITY_CARD_PAYMENTS = 'card_payments';
     const CAPABILITY_LEGACY_PAYMENTS = 'legacy_payments';
     const CAPABILITY_PLATFORM_PAYMENTS = 'platform_payments';
     const CAPABILITY_TRANSFERS = 'transfers';
 
-    /**
-     * Possible string representations of an account's capability status.
-     *
-     * @see https://stripe.com/docs/api/accounts/object#account_object-capabilities
-     */
     const CAPABILITY_STATUS_ACTIVE = 'active';
     const CAPABILITY_STATUS_INACTIVE = 'inactive';
     const CAPABILITY_STATUS_PENDING = 'pending';
 
-    /**
-     * Possible string representations of an account's type.
-     *
-     * @see https://stripe.com/docs/api/accounts/object#account_object-type
-     */
     const TYPE_CUSTOM = 'custom';
     const TYPE_EXPRESS = 'express';
     const TYPE_STANDARD = 'standard';
+
+    use ApiOperations\Retrieve {
+        retrieve as protected _retrieve;
+    }
 
     public static function getSavedNestedResources()
     {

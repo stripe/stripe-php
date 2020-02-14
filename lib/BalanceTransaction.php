@@ -28,11 +28,6 @@ class BalanceTransaction extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Retrieve;
 
-    /**
-     * Possible string representations of the type of balance transaction.
-     *
-     * @see https://stripe.com/docs/api/balance/balance_transaction#balance_transaction_object-type
-     */
     const TYPE_ADJUSTMENT = 'adjustment';
     const TYPE_ADVANCE = 'advance';
     const TYPE_ADVANCE_FUNDING = 'advance_funding';
