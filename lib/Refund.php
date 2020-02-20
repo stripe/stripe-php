@@ -44,4 +44,9 @@ class Refund extends ApiResource
     const STATUS_FAILED = 'failed';
     const STATUS_PENDING = 'pending';
     const STATUS_SUCCEEDED = 'succeeded';
+
+    /**
+     * @deprecated use FAILURE_REASON_EXPIRED_OR_CANCELED_CARD instead
+     */
+    const FAILURE_REASON = 'expired_or_canceled_card';
 }

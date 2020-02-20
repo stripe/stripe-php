@@ -79,7 +79,6 @@ class Invoice extends ApiResource
     const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const BILLING_SEND_INVOICE = 'send_invoice';
 
-    const BILLING_REASON_AUTOMATIC_PENDING_INVOICE_ITEM_INVOICE = 'automatic_pending_invoice_item_invoice';
     const BILLING_REASON_MANUAL = 'manual';
     const BILLING_REASON_SUBSCRIPTION = 'subscription';
     const BILLING_REASON_SUBSCRIPTION_CREATE = 'subscription_create';
