@@ -76,13 +76,9 @@ class Invoice extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    use ApiOperations\NestedResource;
+    const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
+    const BILLING_SEND_INVOICE = 'send_invoice';
 
-    /**
-     * Possible string representations of the billing reason.
-     *
-     * @see https://stripe.com/docs/api/invoices/object#invoice_object-billing_reason
-     */
     const BILLING_REASON_MANUAL = 'manual';
     const BILLING_REASON_SUBSCRIPTION = 'subscription';
     const BILLING_REASON_SUBSCRIPTION_CREATE = 'subscription_create';
@@ -91,33 +87,17 @@ class Invoice extends ApiResource
     const BILLING_REASON_SUBSCRIPTION_UPDATE = 'subscription_update';
     const BILLING_REASON_UPCOMING = 'upcoming';
 
-    /**
-     * Possible string representations of the `collection_method` property.
-     *
-     * @see https://stripe.com/docs/api/invoices/object#invoice_object-collection_method
-     */
     const COLLECTION_METHOD_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const COLLECTION_METHOD_SEND_INVOICE = 'send_invoice';
 
-    /**
-     * Possible string representations of the invoice status.
-     *
-     * @see https://stripe.com/docs/api/invoices/object#invoice_object-status
-     */
+    const STATUS_DELETED = 'deleted';
     const STATUS_DRAFT = 'draft';
     const STATUS_OPEN = 'open';
     const STATUS_PAID = 'paid';
     const STATUS_UNCOLLECTIBLE = 'uncollectible';
     const STATUS_VOID = 'void';
 
-    /**
-     * Possible string representations of the `billing` property.
-     *
-     * @deprecated use `collection_method` instead
-     * @see https://stripe.com/docs/api/invoices/object#invoice_object-billing
-     */
-    const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
-    const BILLING_SEND_INVOICE = 'send_invoice';
+    use ApiOperations\NestedResource;
 
     const PATH_LINES = '/lines';
 

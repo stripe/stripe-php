@@ -35,11 +35,6 @@ class Payout extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    /**
-     * Types of payout failure codes.
-     *
-     * @see https://stripe.com/docs/api#payout_failures
-     */
     const FAILURE_ACCOUNT_CLOSED = 'account_closed';
     const FAILURE_ACCOUNT_FROZEN = 'account_frozen';
     const FAILURE_BANK_ACCOUNT_RESTRICTED = 'bank_account_restricted';
@@ -54,30 +49,15 @@ class Payout extends ApiResource
     const FAILURE_NO_ACCOUNT = 'no_account';
     const FAILURE_UNSUPPORTED_CARD = 'unsupported_card';
 
-    /**
-     * Possible string representations of the payout methods.
-     *
-     * @see https://stripe.com/docs/api/payouts/object#payout_object-method
-     */
-    const METHOD_STANDARD = 'standard';
     const METHOD_INSTANT = 'instant';
+    const METHOD_STANDARD = 'standard';
 
-    /**
-     * Possible string representations of the status of the payout.
-     *
-     * @see https://stripe.com/docs/api/payouts/object#payout_object-status
-     */
     const STATUS_CANCELED = 'canceled';
-    const STATUS_IN_TRANSIT = 'in_transit';
     const STATUS_FAILED = 'failed';
+    const STATUS_IN_TRANSIT = 'in_transit';
     const STATUS_PAID = 'paid';
     const STATUS_PENDING = 'pending';
 
-    /**
-     * Possible string representations of the type of payout.
-     *
-     * @see https://stripe.com/docs/api/payouts/object#payout_object-type
-     */
     const TYPE_BANK_ACCOUNT = 'bank_account';
     const TYPE_CARD = 'card';
 

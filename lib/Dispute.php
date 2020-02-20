@@ -30,11 +30,6 @@ class Dispute extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    /**
-     * Possible string representations of dispute reasons.
-     *
-     * @see https://stripe.com/docs/api#dispute_object
-     */
     const REASON_BANK_CANNOT_PROCESS = 'bank_cannot_process';
     const REASON_CHECK_RETURNED = 'check_returned';
     const REASON_CREDIT_NOT_PROCESSED = 'credit_not_processed';
@@ -50,11 +45,6 @@ class Dispute extends ApiResource
     const REASON_SUBSCRIPTION_CANCELED = 'subscription_canceled';
     const REASON_UNRECOGNIZED = 'unrecognized';
 
-    /**
-     * Possible string representations of dispute statuses.
-     *
-     * @see https://stripe.com/docs/api#dispute_object
-     */
     const STATUS_CHARGE_REFUNDED = 'charge_refunded';
     const STATUS_LOST = 'lost';
     const STATUS_NEEDS_RESPONSE = 'needs_response';
