@@ -3,7 +3,14 @@
 namespace Stripe;
 
 /**
- * Class Plan.
+ * Plans define the base price, currency, and billing cycle for subscriptions. For
+ * example, you might have a &lt;currency&gt;5&lt;/currency&gt;/month plan that
+ * provides limited access to your products, and a
+ * &lt;currency&gt;15&lt;/currency&gt;/month plan that allows full access.
+ *
+ * Related guide: <a
+ * href="https://stripe.com/docs/billing/subscriptions/products-and-plans">Managing
+ * Products and Plans</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

@@ -3,13 +3,21 @@
 namespace Stripe;
 
 /**
- * Class File.
+ * This is an object representing a file hosted on Stripe's servers. The file may
+ * have been uploaded by yourself using the <a
+ * href="https://stripe.com/docs/api#create_file">create file</a> request (for
+ * example, when uploading dispute evidence) or it may have been created by Stripe
+ * (for example, the results of a <a href="#scheduled_queries">Sigma scheduled
+ * query</a>).
+ *
+ * Related guide: <a href="https://stripe.com/docs/file-upload">File Upload
+ * Guide</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $filename A filename for the file, suitable for saving to a filesystem.
- * @property null|\Stripe\Collection $links A list of <a href="#file_links">file links</a> that point at this file.
+ * @property null|\Stripe\Collection $links A list of <a href="https://stripe.com/docs/api#file_links">file links</a> that point at this file.
  * @property string $purpose The purpose of the file. Possible values are <code>additional_verification</code>, <code>business_icon</code>, <code>business_logo</code>, <code>customer_signature</code>, <code>dispute_evidence</code>, <code>finance_report_run</code>, <code>identity_document</code>, <code>pci_document</code>, <code>sigma_scheduled_query</code>, or <code>tax_document_user_upload</code>.
  * @property int $size The size in bytes of the file object.
  * @property null|string $title A user friendly title for the document.

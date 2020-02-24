@@ -3,7 +3,19 @@
 namespace Stripe;
 
 /**
- * Class Recipient.
+ * With <code>Recipient</code> objects, you can transfer money from your Stripe
+ * account to a third-party bank account or debit card. The API allows you to
+ * create, delete, and update your recipients. You can retrieve individual
+ * recipients as well as a list of all your recipients.
+ *
+ * <strong><code>Recipient</code> objects have been deprecated in favor of <a
+ * href="https://stripe.com/docs/connect">Connect</a>, specifically Connect's much
+ * more powerful <a href="https://stripe.com/docs/api#account">Account objects</a>.
+ * Stripe accounts that don't already use recipients can no longer begin doing so.
+ * Please use <code>Account</code> objects instead. If you are already using
+ * recipients, please see our <a
+ * href="https://stripe.com/docs/connect/recipient-account-migrations">migration
+ * guide</a> for more information.</strong>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

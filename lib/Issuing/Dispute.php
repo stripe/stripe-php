@@ -3,7 +3,12 @@
 namespace Stripe\Issuing;
 
 /**
- * Class Dispute.
+ * As a <a href="https://stripe.com/docs/issuing">card issuer</a>, you can <a
+ * href="https://stripe.com/docs/issuing/disputes">dispute</a> transactions that
+ * you do not recognize, suspect to be fraudulent, or have some other issue.
+ *
+ * Related guide: <a href="https://stripe.com/docs/issuing/disputes">Disputing
+ * Transactions</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

@@ -3,7 +3,10 @@
 namespace Stripe;
 
 /**
- * Class TaxRate.
+ * Tax rates can be applied to invoices and subscriptions to collect tax.
+ *
+ * Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax
+ * Rates</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

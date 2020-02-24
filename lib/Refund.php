@@ -3,7 +3,11 @@
 namespace Stripe;
 
 /**
- * Class Refund.
+ * <code>Refund</code> objects allow you to refund a charge that has previously
+ * been created but not yet refunded. Funds will be refunded to the credit or debit
+ * card that was originally charged.
+ *
+ * Related guide: <a href="https://stripe.com/docs/refunds">Refunds</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

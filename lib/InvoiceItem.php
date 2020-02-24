@@ -3,7 +3,14 @@
 namespace Stripe;
 
 /**
- * Class InvoiceItem.
+ * Sometimes you want to add a charge or credit to a customer, but actually charge
+ * or credit the customer's card only at the end of a regular billing cycle. This
+ * is useful for combining several charges (to minimize per-transaction fees), or
+ * for having Stripe tabulate your usage-based billing totals.
+ *
+ * Related guide: <a
+ * href="https://stripe.com/docs/billing/invoices/subscription#adding-upcoming-invoice-items">Subscription
+ * Invoices</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

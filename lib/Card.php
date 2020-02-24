@@ -3,7 +3,12 @@
 namespace Stripe;
 
 /**
- * Class Card.
+ * You can store multiple cards on a customer in order to charge the customer
+ * later. You can also store multiple debit cards on a recipient in order to
+ * transfer to those cards later.
+ *
+ * Related guide: <a href="https://stripe.com/docs/sources/cards">Card Payments
+ * with Sources</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

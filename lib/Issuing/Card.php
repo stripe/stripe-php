@@ -3,7 +3,8 @@
 namespace Stripe\Issuing;
 
 /**
- * Class Card.
+ * You can <a href="https://stripe.com/docs/issuing/cards">create physical or
+ * virtual cards</a> that are issued to cardholders.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
