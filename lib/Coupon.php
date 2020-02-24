@@ -3,7 +3,12 @@
 namespace Stripe;
 
 /**
- * Class Coupon.
+ * A coupon contains information about a percent-off or amount-off discount you
+ * might want to apply to a customer. Coupons may be applied to <a
+ * href="https://stripe.com/docs/api#invoices">invoices</a> or <a
+ * href="https://stripe.com/docs/api#create_order-coupon">orders</a>. Coupons do
+ * not work with conventional one-off <a
+ * href="https://stripe.com/docs/api#create_charge">charges</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

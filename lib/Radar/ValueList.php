@@ -3,7 +3,12 @@
 namespace Stripe\Radar;
 
 /**
- * Class ValueList.
+ * Value lists allow you to group values together which can then be referenced in
+ * rules.
+ *
+ * Related guide: <a
+ * href="https://stripe.com/docs/radar/lists#managing-list-items">Default Stripe
+ * Lists</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

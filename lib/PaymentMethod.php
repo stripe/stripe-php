@@ -3,7 +3,16 @@
 namespace Stripe;
 
 /**
- * Class PaymentMethod.
+ * PaymentMethod objects represent your customer's payment instruments. They can be
+ * used with <a
+ * href="https://stripe.com/docs/payments/payment-intents">PaymentIntents</a> to
+ * collect payments or saved to Customer objects to store instrument details for
+ * future payments.
+ *
+ * Related guides: <a
+ * href="https://stripe.com/docs/payments/payment-methods">Payment Methods</a> and
+ * <a href="https://stripe.com/docs/payments/more-payment-scenarios">More Payment
+ * Scenarios</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

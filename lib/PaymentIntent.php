@@ -3,7 +3,19 @@
 namespace Stripe;
 
 /**
- * Class PaymentIntent.
+ * A PaymentIntent guides you through the process of collecting a payment from your
+ * customer. We recommend that you create exactly one PaymentIntent for each order
+ * or customer session in your system. You can reference the PaymentIntent later to
+ * see the history of payment attempts for a particular session.
+ *
+ * A PaymentIntent transitions through <a
+ * href="https://stripe.com/docs/payments/intents#intent-statuses">multiple
+ * statuses</a> throughout its lifetime as it interfaces with Stripe.js to perform
+ * authentication flows and ultimately creates at most one successful charge.
+ *
+ * Related guide: <a
+ * href="https://stripe.com/docs/payments/payment-intents/creating-payment-intents">Payment
+ * Intents API</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -33,7 +45,7 @@ namespace Stripe;
  * @property string[] $payment_method_types The list of payment method types (e.g. card) that this PaymentIntent is allowed to use.
  * @property null|string $receipt_email Email address that the receipt for the resulting payment will be sent to.
  * @property null|string|\Stripe\Review $review ID of the review associated with this PaymentIntent, if any.
- * @property null|string $setup_future_usage <p>Indicates that you intend to make future payments with this PaymentIntent's payment method.</p><p>If present, the payment method used with this PaymentIntent can be <a href="https://stripe.com/docs/api/payment_methods/attach">attached</a> to a Customer, even after the transaction completes.</p><p>For more, learn to <a href="https://stripe.com/docs/payments/save-after-payment">save card details after a payment</a>.</p><p>Stripe uses <code>setup_future_usage</code> to dynamically optimize your payment flow and comply with regional legislation and network rules. For example, if your customer is impacted by <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>, using <code>off_session</code> will ensure that they are authenticated while processing this PaymentIntent. You will then be able to collect <a href="https://stripe.com/docs/payments/cards/charging-saved-cards#off-session-payments-with-saved-cards">off-session payments</a> for this customer.</p>
+ * @property null|string $setup_future_usage <p>Indicates that you intend to make future payments with this PaymentIntent's payment method.</p><p>If present, the payment method used with this PaymentIntent can be <a href="https://stripe.com/docs/api/payment_methods/attach">attached</a> to a Customer, even after the transaction completes.</p><p>For more, learn to <a href="https://stripe.com/docs/payments/save-during-payment">save card details during payment</a>.</p><p>Stripe uses <code>setup_future_usage</code> to dynamically optimize your payment flow and comply with regional legislation and network rules. For example, if your customer is impacted by <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>, using <code>off_session</code> will ensure that they are authenticated while processing this PaymentIntent. You will then be able to collect <a href="https://stripe.com/docs/payments/cards/charging-saved-cards#off-session-payments-with-saved-cards">off-session payments</a> for this customer.</p>
  * @property null|\Stripe\StripeObject $shipping Shipping information for this PaymentIntent.
  * @property null|string|\Stripe\StripeObject $source This is a legacy field that will be removed in the future. It is the ID of the Source object that is associated with this PaymentIntent, if one was supplied.
  * @property null|string $statement_descriptor For non-card charges, you can use this value as the complete description that appears on your customers’ statements. Must contain at least one letter, maximum 22 characters.

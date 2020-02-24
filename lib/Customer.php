@@ -3,7 +3,13 @@
 namespace Stripe;
 
 /**
- * Class Customer.
+ * <code>Customer</code> objects allow you to perform recurring charges, and to
+ * track multiple charges, that are associated with the same customer. The API
+ * allows you to create, delete, and update your customers. You can retrieve
+ * individual customers as well as a list of all your customers.
+ *
+ * Related guide: <a href="https://stripe.com/docs/saving-cards">Saving Cards with
+ * Customers</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

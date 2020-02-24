@@ -3,7 +3,16 @@
 namespace Stripe\Reporting;
 
 /**
- * Class ReportType.
+ * The Report Type resource corresponds to a particular type of report, such as the
+ * &quot;Activity summary&quot; or &quot;Itemized payouts&quot; reports. These
+ * objects are identified by an ID belonging to a set of enumerated values. See <a
+ * href="https://stripe.com/docs/reporting/statements/api">API Access to Reports
+ * documentation</a> for those Report Type IDs, along with required and optional
+ * parameters.
+ *
+ * Note that reports can only be run based on your live-mode data (not test-mode
+ * data), and thus related requests must be made with a <a
+ * href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.
  *
  * @property string $id The <a href="https://stripe.com/docs/reporting/statements/api#available-report-types">ID of the Report Type</a>, such as <code>balance.summary.1</code>.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

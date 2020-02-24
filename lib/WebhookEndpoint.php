@@ -3,7 +3,16 @@
 namespace Stripe;
 
 /**
- * Class WebhookEndpoint.
+ * You can configure <a href="https://stripe.com/docs/webhooks/">webhook
+ * endpoints</a> via the API to be notified about events that happen in your Stripe
+ * account or connected accounts.
+ *
+ * Most users configure webhooks from <a
+ * href="https://dashboard.stripe.com/webhooks">the dashboard</a>, which provides a
+ * user interface for registering and testing your webhook endpoints.
+ *
+ * Related guide: <a href="https://stripe.com/docs/webhooks/configure">Setting up
+ * Webhooks</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

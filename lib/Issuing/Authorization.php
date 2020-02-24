@@ -3,7 +3,13 @@
 namespace Stripe\Issuing;
 
 /**
- * Class Authorization.
+ * When an <a href="https://stripe.com/docs/issuing">issued card</a> is used to
+ * make a purchase, an Issuing <code>Authorization</code> object is created. <a
+ * href="https://stripe.com/docs/issuing/authorizations">Authorizations</a> must be
+ * approved for the purchase to be completed successfully.
+ *
+ * Related guide: <a href="https://stripe.com/docs/issuing/authorizations">Issued
+ * Card Authorizations</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -12,7 +18,7 @@ namespace Stripe\Issuing;
  * @property int $authorized_amount The amount that has been authorized. This will be <code>0</code> when the object is created, and increase after it has been approved.
  * @property string $authorized_currency The currency that was presented to the cardholder for the authorization. Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property \Stripe\BalanceTransaction[] $balance_transactions List of balance transactions associated with this authorization.
- * @property \Stripe\Issuing\Card $card
+ * @property \Stripe\Issuing\Card $card You can <a href="https://stripe.com/docs/issuing/cards">create physical or virtual cards</a> that are issued to cardholders.
  * @property null|string|\Stripe\Issuing\Cardholder $cardholder The cardholder to whom this authorization belongs.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property int $held_amount The amount the authorization is expected to be in <code>held_currency</code>. When Stripe holds funds from you, this is the amount reserved for the authorization. This will be <code>0</code> when the object is created, and increase after it has been approved. For multi-currency transactions, <code>held_amount</code> can be used to determine the expected exchange rate.

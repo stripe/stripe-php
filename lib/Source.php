@@ -3,7 +3,13 @@
 namespace Stripe;
 
 /**
- * Class Source.
+ * <code>Source</code> objects allow you to accept a variety of payment methods.
+ * They represent a customer's payment instrument, and can be used with the Stripe
+ * API just like a <code>Card</code> object: once chargeable, they can be charged,
+ * or can be attached to customers.
+ *
+ * Related guides: <a href="https://stripe.com/docs/sources">Sources API</a> and <a
+ * href="https://stripe.com/docs/sources/customers">Sources &amp; Customers</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

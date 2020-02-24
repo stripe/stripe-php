@@ -3,7 +3,41 @@
 namespace Stripe;
 
 /**
- * Class Invoice.
+ * Invoices are statements of amounts owed by a customer, and are either generated
+ * one-off, or generated periodically from a subscription.
+ *
+ * They contain <a href="https://stripe.com/docs/api#invoiceitems">invoice
+ * items</a>, and proration adjustments that may be caused by subscription
+ * upgrades/downgrades (if necessary).
+ *
+ * If your invoice is configured to be billed through automatic charges, Stripe
+ * automatically finalizes your invoice and attempts payment. Note that finalizing
+ * the invoice, <a
+ * href="https://stripe.com/docs/billing/invoices/workflow/#auto_advance">when
+ * automatic</a>, does not happen immediately as the invoice is created. Stripe
+ * waits until one hour after the last webhook was successfully sent (or the last
+ * webhook timed out after failing). If you (and the platforms you may have
+ * connected to) have no webhooks configured, Stripe waits one hour after creation
+ * to finalize the invoice.
+ *
+ * If your invoice is configured to be billed by sending an email, then based on
+ * your <a href="https://dashboard.stripe.com/account/billing/automatic'">email
+ * settings</a>, Stripe will email the invoice to your customer and await payment.
+ * These emails can contain a link to a hosted page to pay the invoice.
+ *
+ * Stripe applies any customer credit on the account before determining the amount
+ * due for the invoice (i.e., the amount that will be actually charged). If the
+ * amount due for the invoice is less than Stripe's <a
+ * href="/docs/currencies#minimum-and-maximum-charge-amounts">minimum allowed
+ * charge per currency</a>, the invoice is automatically marked paid, and we add
+ * the amount due to the customer's running account balance which is applied to the
+ * next invoice.
+ *
+ * More details on the customer's account balance are <a
+ * href="https://stripe.com/docs/api/customers/object#customer_object-account_balance">here</a>.
+ *
+ * Related guide: <a href="https://stripe.com/docs/billing/invoices/sending">Send
+ * Invoices to Customers</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

@@ -3,7 +3,13 @@
 namespace Stripe;
 
 /**
- * Class OrderReturn.
+ * A return represents the full or partial return of a number of <a
+ * href="https://stripe.com/docs/api#order_items">order items</a>. Returns always
+ * belong to an order, and may optionally contain a refund.
+ *
+ * Related guide: <a
+ * href="https://stripe.com/docs/orders/guide#handling-returns">Handling
+ * Returns</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
