@@ -4,76 +4,71 @@ namespace Stripe\Service;
 
 class CouponService extends AbstractService
 {
-    public function basePath()
-    {
-        return '/v1/coupons';
-    }
-
     /**
      * List all coupons.
      *
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection
      */
-    public function all($params = [], $opts = [])
+    public function all($params = null, $opts = null)
     {
-        return $this->allObjects($params, $opts);
+        return $this->request('get', '/v1/coupons', $params, $opts);
     }
 
     /**
      * Create a coupon.
      *
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Coupon
      */
-    public function create($params = [], $opts = [])
+    public function create($params = null, $opts = null)
     {
-        return $this->createObject($params, $opts);
+        return $this->request('post', '/v1/coupons', $params, $opts);
     }
 
     /**
      * Delete a coupon.
      *
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Coupon
      */
-    public function delete($id, $params = [], $opts = [])
+    public function delete($id, $params = null, $opts = null)
     {
-        return $this->deleteObject($id, $params, $opts);
+        return $this->request('delete', $this->buildPath('/v1/coupons/%s', $id), $params, $opts);
     }
 
     /**
      * Retrieve a coupon.
      *
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Coupon
      */
-    public function retrieve($id, $params = [], $opts = [])
+    public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->retrieveObject($id, $params, $opts);
+        return $this->request('get', $this->buildPath('/v1/coupons/%s', $id), $params, $opts);
     }
 
     /**
      * Update a coupon.
      *
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Coupon
      */
-    public function update($id, $params = [], $opts = [])
+    public function update($id, $params = null, $opts = null)
     {
-        return $this->updateObject($id, $params, $opts);
+        return $this->request('post', $this->buildPath('/v1/coupons/%s', $id), $params, $opts);
     }
 }
