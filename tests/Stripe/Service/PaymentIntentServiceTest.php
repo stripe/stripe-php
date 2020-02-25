@@ -11,7 +11,10 @@ final class PaymentIntentServiceTest extends \PHPUnit\Framework\TestCase
 
     const TEST_RESOURCE_ID = 'pi_123';
 
+    /** @var \Stripe\StripeClient */
     private $client;
+
+    /** @var PaymentIntentService */
     private $service;
 
     /**

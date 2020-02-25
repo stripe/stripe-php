@@ -11,7 +11,10 @@ final class CouponServiceTest extends \PHPUnit\Framework\TestCase
 
     const TEST_RESOURCE_ID = 'COUPON_ID';
 
+    /** @var \Stripe\StripeClient */
     private $client;
+
+    /** @var CouponService */
     private $service;
 
     /**

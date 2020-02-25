@@ -4,303 +4,289 @@ namespace Stripe\Service;
 
 class CustomerService extends AbstractService
 {
-    const BALANCE_TRANSACTIONS = 'balance_transactions';
-    const SOURCES = 'sources';
-    const TAX_IDS = 'tax_ids';
-
-    public function basePath()
-    {
-        return '/v1/customers';
-    }
-
     /**
      * List all customers.
      *
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection
      */
-    public function all($params = [], $opts = [])
+    public function all($params = null, $opts = null)
     {
-        return $this->allObjects($params, $opts);
+        return $this->request('get', '/v1/customers', $params, $opts);
     }
 
     /**
      * List customer balance transactions.
      *
-     * @param string $customerId
-     * @param array $params
-     * @param array $opts
+     * @param string $parentId
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection
      */
-    public function allBalanceTransactions($customerId, $params = [], $opts = [])
+    public function allBalanceTransactions($parentId, $params = null, $opts = null)
     {
-        return $this->allNestedObjects(self::BALANCE_TRANSACTIONS, $customerId, $params, $opts);
+        return $this->request('get', $this->buildPath('/v1/customers/%s/balance_transactions', $parentId), $params, $opts);
     }
 
     /**
      * List all sources.
      *
-     * @param string $customerId
-     * @param array $params
-     * @param array $opts
+     * @param string $parentId
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection
      */
-    public function allSources($customerId, $params = [], $opts = [])
+    public function allSources($parentId, $params = null, $opts = null)
     {
-        return $this->allNestedObjects(self::SOURCES, $customerId, $params, $opts);
+        return $this->request('get', $this->buildPath('/v1/customers/%s/sources', $parentId), $params, $opts);
     }
 
     /**
      * List all tax IDs.
      *
-     * @param string $customerId
-     * @param array $params
-     * @param array $opts
+     * @param string $parentId
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection
      */
-    public function allTaxIds($customerId, $params = [], $opts = [])
+    public function allTaxIds($parentId, $params = null, $opts = null)
     {
-        return $this->allNestedObjects(self::TAX_IDS, $customerId, $params, $opts);
+        return $this->request('get', $this->buildPath('/v1/customers/%s/tax_ids', $parentId), $params, $opts);
     }
 
     /**
      * Create a customer.
      *
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Customer
      */
-    public function create($params = [], $opts = [])
+    public function create($params = null, $opts = null)
     {
-        return $this->createObject($params, $opts);
+        return $this->request('post', '/v1/customers', $params, $opts);
     }
 
     /**
      * Create a balance transaction.
      *
-     * @param string $customerId
-     * @param array $params
-     * @param array $opts
+     * @param string $parentId
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\CustomerBalanceTransaction
      */
-    public function createBalanceTransaction($customerId, $params = [], $opts = [])
+    public function createBalanceTransaction($parentId, $params = null, $opts = null)
     {
-        return $this->createNestedObject(self::BALANCE_TRANSACTIONS, $customerId, $params, $opts);
+        return $this->request('post', $this->buildPath('/v1/customers/%s/balance_transactions', $parentId), $params, $opts);
     }
 
     /**
      * Create a source.
      *
-     * @param string $customerId
-     * @param array $params
-     * @param array $opts
+     * @param string $parentId
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\BankAccount|\Stripe\Card|\Stripe\Source
      */
-    public function createSource($customerId, $params = [], $opts = [])
+    public function createSource($parentId, $params = null, $opts = null)
     {
-        return $this->createNestedObject(self::SOURCES, $customerId, $params, $opts);
+        return $this->request('post', $this->buildPath('/v1/customers/%s/sources', $parentId), $params, $opts);
     }
 
     /**
      * Create a tax ID.
      *
-     * @param string $customerId
-     * @param array $params
-     * @param array $opts
+     * @param string $parentId
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\TaxId
      */
-    public function createTaxId($customerId, $params = [], $opts = [])
+    public function createTaxId($parentId, $params = null, $opts = null)
     {
-        return $this->createNestedObject(self::TAX_IDS, $customerId, $params, $opts);
+        return $this->request('post', $this->buildPath('/v1/customers/%s/tax_ids', $parentId), $params, $opts);
     }
 
     /**
      * Delete a customer.
      *
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Customer
      */
-    public function delete($id, $params = [], $opts = [])
+    public function delete($id, $params = null, $opts = null)
     {
-        return $this->deleteObject($id, $params, $opts);
+        return $this->request('delete', $this->buildPath('/v1/customers/%s', $id), $params, $opts);
     }
 
     /**
      * Delete a customer discount.
      *
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Discount
      */
-    public function deleteDiscount($id, $params = [], $opts = [])
+    public function deleteDiscount($id, $params = null, $opts = null)
     {
-        return $this->request('delete', $this->instancePath($id) . '/discount', $params, $opts);
+        return $this->request('delete', $this->buildPath('/v1/customers/%s/discount', $id), $params, $opts);
     }
 
     /**
      * Delete a source.
      *
-     * @param string $customerId
+     * @param string $parentId
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\BankAccount|\Stripe\Card|\Stripe\Source
      */
-    public function deleteSource($customerId, $id, $params = [], $opts = [])
+    public function deleteSource($parentId, $id, $params = null, $opts = null)
     {
-        return $this->deleteNestedObject(self::SOURCES, $customerId, $id, $params, $opts);
+        return $this->request('delete', $this->buildPath('/v1/customers/%s/sources/%s', $parentId, $id), $params, $opts);
     }
 
     /**
      * Delete a tax ID.
      *
-     * @param string $customerId
+     * @param string $parentId
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\TaxId
      */
-    public function deleteTaxId($customerId, $id, $params = [], $opts = [])
+    public function deleteTaxId($parentId, $id, $params = null, $opts = null)
     {
-        return $this->deleteNestedObject(self::TAX_IDS, $customerId, $id, $params, $opts);
+        return $this->request('delete', $this->buildPath('/v1/customers/%s/tax_ids/%s', $parentId, $id), $params, $opts);
     }
 
     /**
      * Retrieve a customer.
      *
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Customer
      */
-    public function retrieve($id, $params = [], $opts = [])
+    public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->retrieveObject($id, $params, $opts);
+        return $this->request('get', $this->buildPath('/v1/customers/%s', $id), $params, $opts);
     }
 
     /**
      * Retrieve a balance transaction.
      *
-     * @param string $customerId
+     * @param string $parentId
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\CustomerBalanceTransaction
      */
-    public function retrieveBalanceTransaction($customerId, $id, $params = [], $opts = [])
+    public function retrieveBalanceTransaction($parentId, $id, $params = null, $opts = null)
     {
-        return $this->retrieveNestedObject(self::BALANCE_TRANSACTIONS, $customerId, $id, $params, $opts);
+        return $this->request('get', $this->buildPath('/v1/customers/%s/balance_transactions/%s', $parentId, $id), $params, $opts);
     }
 
     /**
      * Retrieve a source.
      *
-     * @param string $customerId
+     * @param string $parentId
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\BankAccount|\Stripe\Card|\Stripe\Source
      */
-    public function retrieveSource($customerId, $id, $params = [], $opts = [])
+    public function retrieveSource($parentId, $id, $params = null, $opts = null)
     {
-        return $this->retrieveNestedObject(self::SOURCES, $customerId, $id, $params, $opts);
+        return $this->request('get', $this->buildPath('/v1/customers/%s/sources/%s', $parentId, $id), $params, $opts);
     }
 
     /**
      * Retrieve a tax ID.
      *
-     * @param string $customerId
+     * @param string $parentId
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\TaxId
      */
-    public function retrieveTaxId($customerId, $id, $params = [], $opts = [])
+    public function retrieveTaxId($parentId, $id, $params = null, $opts = null)
     {
-        return $this->retrieveNestedObject(self::TAX_IDS, $customerId, $id, $params, $opts);
+        return $this->request('get', $this->buildPath('/v1/customers/%s/tax_ids/%s', $parentId, $id), $params, $opts);
     }
 
     /**
      * Update a customer.
      *
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Customer
      */
-    public function update($id, $params = [], $opts = [])
+    public function update($id, $params = null, $opts = null)
     {
-        return $this->updateObject($id, $params, $opts);
+        return $this->request('post', $this->buildPath('/v1/customers/%s', $id), $params, $opts);
     }
 
     /**
      * Update a balance transaction.
      *
-     * @param string $customerId
+     * @param string $parentId
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\CustomerBalanceTransaction
      */
-    public function updateBalanceTransaction($customerId, $id, $params = [], $opts = [])
+    public function updateBalanceTransaction($parentId, $id, $params = null, $opts = null)
     {
-        return $this->updateNestedObject(self::BALANCE_TRANSACTIONS, $customerId, $id, $params, $opts);
+        return $this->request('post', $this->buildPath('/v1/customers/%s/balance_transactions/%s', $parentId, $id), $params, $opts);
     }
 
     /**
      * Update a source.
      *
-     * @param string $customerId
+     * @param string $parentId
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\BankAccount|\Stripe\Card|\Stripe\Source
      */
-    public function updateSource($customerId, $id, $params = [], $opts = [])
+    public function updateSource($parentId, $id, $params = null, $opts = null)
     {
-        return $this->updateNestedObject(self::SOURCES, $customerId, $id, $params, $opts);
+        return $this->request('post', $this->buildPath('/v1/customers/%s/sources/%s', $parentId, $id), $params, $opts);
     }
 
     /**
      * Verify a source.
      *
-     * @param string $customerId
+     * @param string $parentId
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\BankAccount
      */
-    public function verifySource($customerId, $id, $params = [], $opts = [])
+    public function verifySource($parentId, $id, $params = null, $opts = null)
     {
-        return $this->request(
-            'post',
-            $this->instanceNestedPath($customerId, self::SOURCES, $id) . '/verify',
-            $params,
-            $opts
-        );
+        return $this->request('post', $this->buildPath('/v1/customers/%s/sources/%s/verify', $parentId, $id), $params, $opts);
     }
 }
