@@ -4,33 +4,28 @@ namespace Stripe\Service;
 
 class FileService extends AbstractService
 {
-    public function basePath()
-    {
-        return '/v1/files';
-    }
-
     /**
      * List all files.
      *
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection
      */
-    public function all($params = [], $opts = [])
+    public function all($params = null, $opts = null)
     {
-        return $this->allObjects($params, $opts);
+        return $this->request('get', '/v1/files', $params, $opts);
     }
 
     /**
      * Create a file.
      *
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\File
      */
-    public function create($params = [], $opts = [])
+    public function create($params = null, $opts = null)
     {
         $opts = \Stripe\Util\RequestOptions::parse($opts);
         if (!isset($opts->apiBase)) {
@@ -38,23 +33,23 @@ class FileService extends AbstractService
         }
 
         // Manually flatten params, otherwise curl's multipart encoder will
-        // choke on nested arrays.
+        // choke on nested null|arrays.
         $flatParams = \array_column(\Stripe\Util\Util::flattenParams($params), 1, 0);
 
-        return $this->createObject($flatParams, $opts);
+        return $this->request('post', '/v1/files', $flatParams, $opts);
     }
 
     /**
      * Retrieve a file.
      *
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\File
      */
-    public function retrieve($id, $params = [], $opts = [])
+    public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->retrieveObject($id, $params, $opts);
+        return $this->request('get', $this->buildPath('/v1/files/%s', $id), $params, $opts);
     }
 }

@@ -14,7 +14,10 @@ final class CustomerServiceTest extends \PHPUnit\Framework\TestCase
     const TEST_SOURCE_ID = 'card_123';
     const TEST_TAX_ID_ID = 'txi_123';
 
+    /** @var \Stripe\StripeClient */
     private $client;
+
+    /** @var CustomerService */
     private $service;
 
     /**
