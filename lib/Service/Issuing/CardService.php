@@ -12,68 +12,68 @@ class CardService extends \Stripe\Service\AbstractService
     /**
      * List all cards.
      *
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection
      */
-    public function all($params = [], $opts = [])
+    public function all($params = null, $opts = null)
     {
-        return $this->allObjects($params, $opts);
+        return $this->request('get', '/v1/issuing/cards', $params, $opts);
     }
 
     /**
      * Create a card.
      *
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\Card
      */
-    public function create($params = [], $opts = [])
+    public function create($params = null, $opts = null)
     {
-        return $this->createObject($params, $opts);
+        return $this->request('post', '/v1/issuing/cards', $params, $opts);
     }
 
     /**
      * Retrieve a card details.
      *
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\CardDetails
      */
-    public function details($id, $params = [], $opts = [])
+    public function details($id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->instancePath($id) . '/details', $params, $opts);
+        return $this->request('get', $this->buildPath('/v1/issuing/cards/%s/details', $id), $params, $opts);
     }
 
     /**
      * Retrieve a card.
      *
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\Card
      */
-    public function retrieve($id, $params = [], $opts = [])
+    public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->retrieveObject($id, $params, $opts);
+        return $this->request('get', $this->buildPath('/v1/issuing/cards/%s', $id), $params, $opts);
     }
 
     /**
      * Update a card.
      *
      * @param string $id
-     * @param array $params
-     * @param array $opts
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\Card
      */
-    public function update($id, $params = [], $opts = [])
+    public function update($id, $params = null, $opts = null)
     {
-        return $this->updateObject($id, $params, $opts);
+        return $this->request('post', $this->buildPath('/v1/issuing/cards/%s', $id), $params, $opts);
     }
 }

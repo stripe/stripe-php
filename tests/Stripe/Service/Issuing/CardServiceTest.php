@@ -11,7 +11,10 @@ final class CardServiceTest extends \PHPUnit\Framework\TestCase
 
     const TEST_RESOURCE_ID = 'ic_123';
 
+    /** @var \Stripe\StripeClient */
     private $client;
+
+    /** @var CardService */
     private $service;
 
     /**
