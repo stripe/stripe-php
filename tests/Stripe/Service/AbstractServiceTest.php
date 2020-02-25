@@ -9,7 +9,10 @@ final class AbstractServiceTest extends \PHPUnit\Framework\TestCase
 {
     const TEST_RESOURCE_ID = '25OFF';
 
+    /** @var \Stripe\StripeClient */
     private $client;
+
+    /** @var CouponService */
     private $service;
 
     /**

@@ -11,7 +11,10 @@ final class FileServiceTest extends \PHPUnit\Framework\TestCase
 
     const TEST_RESOURCE_ID = 'file_123';
 
+    /** @var \Stripe\StripeClient */
     private $client;
+
+    /** @var FileService */
     private $service;
 
     /**
