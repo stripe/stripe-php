@@ -4,18 +4,18 @@ namespace Stripe\Service;
 
 /**
  * @internal
- * @covers \Stripe\Service\CouponService
+ * @covers \Stripe\Service\FileLinkService
  */
-final class CouponServiceTest extends \PHPUnit\Framework\TestCase
+final class FileLinkServiceTest extends \PHPUnit\Framework\TestCase
 {
     use \Stripe\TestHelper;
 
-    const TEST_RESOURCE_ID = 'COUPON_ID';
+    const TEST_RESOURCE_ID = 'link_123';
 
     /** @var \Stripe\StripeClient */
     private $client;
 
-    /** @var CouponService */
+    /** @var FileLinkService */
     private $service;
 
     /**
@@ -24,63 +24,51 @@ final class CouponServiceTest extends \PHPUnit\Framework\TestCase
     protected function setUpService()
     {
         $this->client = new \Stripe\StripeClient('sk_test_123', null, MOCK_URL);
-        $this->service = new CouponService($this->client);
+        $this->service = new FileLinkService($this->client);
     }
 
     public function testAll()
     {
         $this->expectsRequest(
             'get',
-            '/v1/coupons'
+            '/v1/file_links'
         );
         $resources = $this->service->all();
         static::assertInternalType('array', $resources->data);
-        static::assertInstanceOf(\Stripe\Coupon::class, $resources->data[0]);
+        static::assertInstanceOf(\Stripe\FileLink::class, $resources->data[0]);
     }
 
     public function testCreate()
     {
         $this->expectsRequest(
             'post',
-            '/v1/coupons'
+            '/v1/file_links'
         );
         $resource = $this->service->create([
-            'percent_off' => 25,
-            'duration' => 'repeating',
-            'duration_in_months' => 3,
+            'file' => 'file_123',
         ]);
-        static::assertInstanceOf(\Stripe\Coupon::class, $resource);
-    }
-
-    public function testDelete()
-    {
-        $this->expectsRequest(
-            'delete',
-            '/v1/coupons/' . self::TEST_RESOURCE_ID
-        );
-        $resource = $this->service->delete(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Coupon::class, $resource);
+        static::assertInstanceOf(\Stripe\FileLink::class, $resource);
     }
 
     public function testRetrieve()
     {
         $this->expectsRequest(
             'get',
-            '/v1/coupons/' . self::TEST_RESOURCE_ID
+            '/v1/file_links/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Coupon::class, $resource);
+        static::assertInstanceOf(\Stripe\FileLink::class, $resource);
     }
 
     public function testUpdate()
     {
         $this->expectsRequest(
             'post',
-            '/v1/coupons/' . self::TEST_RESOURCE_ID
+            '/v1/file_links/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Coupon::class, $resource);
+        static::assertInstanceOf(\Stripe\FileLink::class, $resource);
     }
 }

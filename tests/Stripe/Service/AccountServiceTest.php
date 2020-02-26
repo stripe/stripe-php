@@ -49,6 +49,7 @@ final class AccountServiceTest extends \PHPUnit\Framework\TestCase
         );
         $resources = $this->service->allCapabilities(self::TEST_RESOURCE_ID);
         static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Capability::class, $resources->data[0]);
     }
 
     public function testAllExternalAccounts()
@@ -59,6 +60,7 @@ final class AccountServiceTest extends \PHPUnit\Framework\TestCase
         );
         $resources = $this->service->allExternalAccounts(self::TEST_RESOURCE_ID);
         static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\BankAccount::class, $resources->data[0]);
     }
 
     public function testAllPersons()
@@ -69,6 +71,7 @@ final class AccountServiceTest extends \PHPUnit\Framework\TestCase
         );
         $resources = $this->service->allPersons(self::TEST_RESOURCE_ID);
         static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Person::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -127,6 +130,7 @@ final class AccountServiceTest extends \PHPUnit\Framework\TestCase
         );
         $resource = $this->service->delete(self::TEST_RESOURCE_ID);
         static::assertInstanceOf(\Stripe\Account::class, $resource);
+        static::assertTrue($resource->isDeleted());
     }
 
     public function testDeleteExternalAccount()
@@ -136,7 +140,8 @@ final class AccountServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts/' . self::TEST_EXTERNALACCOUNT_ID
         );
         $resource = $this->service->deleteExternalAccount(self::TEST_RESOURCE_ID, self::TEST_EXTERNALACCOUNT_ID);
-        static::assertTrue($resource->deleted);
+        static::assertInstanceOf(\Stripe\BankAccount::class, $resource);
+        static::assertTrue($resource->isDeleted());
     }
 
     public function testDeletePerson()
@@ -146,7 +151,8 @@ final class AccountServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons/' . self::TEST_PERSON_ID
         );
         $resource = $this->service->deletePerson(self::TEST_RESOURCE_ID, self::TEST_PERSON_ID);
-        static::assertTrue($resource->deleted);
+        static::assertInstanceOf(\Stripe\Person::class, $resource);
+        static::assertTrue($resource->isDeleted());
     }
 
     public function testReject()
