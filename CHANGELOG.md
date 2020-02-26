@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.26.0 - 2020-02-26
+* [#886](https://github.com/stripe/stripe-php/pull/886) Add support for listing Checkout `Session`
+* [#883](https://github.com/stripe/stripe-php/pull/883) Add PHPDoc class descriptions
+
 ## 7.25.0 - 2020-02-14
 * [#879](https://github.com/stripe/stripe-php/pull/879) Make `\Stripe\Collection` implement `\Countable`
 * [#875](https://github.com/stripe/stripe-php/pull/875) Last set of PHP-CS-Fixer updates
