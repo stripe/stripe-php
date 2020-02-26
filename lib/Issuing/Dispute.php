@@ -19,7 +19,7 @@ namespace Stripe\Issuing;
  * @property \Stripe\StripeObject $evidence
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property string $reason Reason for this dispute. One of <code>fraudulent</code> or <code>other</code>.
+ * @property string $reason Reason for this dispute. One of <code>duplicate</code>, <code>product_not_received</code>, <code>fraudulent</code>, or <code>other</code>.
  * @property string $status Current status of dispute. One of <code>unsubmitted</code>, <code>under_review</code>, <code>won</code>, or <code>lost</code>.
  */
 class Dispute extends \Stripe\ApiResource
