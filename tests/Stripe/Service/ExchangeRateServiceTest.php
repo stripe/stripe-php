@@ -27,14 +27,14 @@ final class ExchangeRateServiceTest extends \PHPUnit\Framework\TestCase
 
     public function testAll()
     {
-        $listRates = $this->service->all();
-        static::assertInternalType('array', $listRates->data);
-        static::assertSame('exchange_rate', $listRates->data[0]->object);
+        $resources = $this->service->all();
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\ExchangeRate::class, $resources->data[0]);
     }
 
     public function testRetrieve()
     {
-        $rates = $this->service->retrieve('usd');
-        static::assertSame('exchange_rate', $rates->object);
+        $resource = $this->service->retrieve('usd');
+        static::assertInstanceOf(\Stripe\ExchangeRate::class, $resource);
     }
 }

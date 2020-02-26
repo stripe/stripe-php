@@ -27,6 +27,17 @@ final class SourceServiceTest extends \PHPUnit\Framework\TestCase
         $this->service = new SourceService($this->client);
     }
 
+    public function testAllTransactions()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/sources/' . self::TEST_RESOURCE_ID . '/source_transactions'
+        );
+        $resources = $this->service->allTransactions(self::TEST_RESOURCE_ID);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
+    }
+
     public function testCreate()
     {
         $this->expectsRequest(
@@ -57,17 +68,6 @@ final class SourceServiceTest extends \PHPUnit\Framework\TestCase
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
         static::assertInstanceOf(\Stripe\Source::class, $resource);
-    }
-
-    public function testSourceTransactions()
-    {
-        $this->expectsRequest(
-            'get',
-            '/v1/sources/' . self::TEST_RESOURCE_ID . '/source_transactions'
-        );
-        $resources = $this->service->sourceTransactions(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
-        static::assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
     }
 
     public function testUpdate()

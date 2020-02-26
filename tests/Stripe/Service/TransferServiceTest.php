@@ -52,16 +52,19 @@ final class TransferServiceTest extends \PHPUnit\Framework\TestCase
 
     public function testCancel()
     {
-        $transfer = $this->service->retrieve(self::TEST_RESOURCE_ID);
-
         // stripe-mock does not support this anymore so we stub it
         $this->stubRequest(
             'post',
-            '/v1/transfers/' . $transfer->id . '/cancel'
+            '/v1/transfers/' . self::TEST_RESOURCE_ID . '/cancel',
+            [],
+            null,
+            false,
+            [
+                'object' => 'transfer',
+            ]
         );
-        $resource = $transfer->cancel();
+        $resource = $this->service->cancel(self::TEST_RESOURCE_ID);
         static::assertInstanceOf(\Stripe\Transfer::class, $resource);
-        static::assertSame($resource, $transfer);
     }
 
     public function testCreate()

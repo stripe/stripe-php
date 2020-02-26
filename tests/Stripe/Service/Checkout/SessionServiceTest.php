@@ -27,6 +27,17 @@ final class SessionServiceTest extends \PHPUnit\Framework\TestCase
         $this->service = new SessionService($this->client);
     }
 
+    public function testAll()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/checkout/sessions'
+        );
+        $resources = $this->service->all();
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\Checkout\Session::class, $resources->data[0]);
+    }
+
     public function testCreate()
     {
         $this->expectsRequest(

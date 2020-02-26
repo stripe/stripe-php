@@ -38,13 +38,13 @@ final class PayoutServiceTest extends \PHPUnit\Framework\TestCase
         static::assertInstanceOf(\Stripe\Payout::class, $resources->data[0]);
     }
 
-    public function testRetrieve()
+    public function testCancel()
     {
         $this->expectsRequest(
-            'get',
-            '/v1/payouts/' . self::TEST_RESOURCE_ID
+            'post',
+            '/v1/payouts/' . self::TEST_RESOURCE_ID . '/cancel'
         );
-        $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
+        $resource = $this->service->cancel(self::TEST_RESOURCE_ID);
         static::assertInstanceOf(\Stripe\Payout::class, $resource);
     }
 
@@ -61,6 +61,16 @@ final class PayoutServiceTest extends \PHPUnit\Framework\TestCase
         static::assertInstanceOf(\Stripe\Payout::class, $resource);
     }
 
+    public function testRetrieve()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/payouts/' . self::TEST_RESOURCE_ID
+        );
+        $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
+        static::assertInstanceOf(\Stripe\Payout::class, $resource);
+    }
+
     public function testUpdate()
     {
         $this->expectsRequest(
@@ -70,16 +80,6 @@ final class PayoutServiceTest extends \PHPUnit\Framework\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Payout::class, $resource);
-    }
-
-    public function testCancel()
-    {
-        $this->expectsRequest(
-            'post',
-            '/v1/payouts/' . self::TEST_RESOURCE_ID . '/cancel'
-        );
-        $resource = $this->service->cancel(self::TEST_RESOURCE_ID);
         static::assertInstanceOf(\Stripe\Payout::class, $resource);
     }
 }
