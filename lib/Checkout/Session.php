@@ -43,6 +43,7 @@ class Session extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'checkout.session';
 
+    use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Create;
     use \Stripe\ApiOperations\Retrieve;
 
