@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ * @covers \Stripe\Service\PaymentIntentService
  */
 final class PaymentIntentServiceTest extends \PHPUnit\Framework\TestCase
 {
@@ -35,6 +36,16 @@ final class PaymentIntentServiceTest extends \PHPUnit\Framework\TestCase
         $resources = $this->service->all();
         static::assertInternalType('array', $resources->data);
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $resources->data[0]);
+    }
+
+    public function testCancel()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/payment_intents/' . self::TEST_RESOURCE_ID . '/cancel'
+        );
+        $resource = $this->service->cancel(self::TEST_RESOURCE_ID);
+        static::assertInstanceOf(\Stripe\PaymentIntent::class, $resource);
     }
 
     public function testCapture()
