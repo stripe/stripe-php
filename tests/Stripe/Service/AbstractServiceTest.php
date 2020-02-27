@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ * @covers \Stripe\Service\AbstractService
  */
 final class AbstractServiceTest extends \PHPUnit\Framework\TestCase
 {
