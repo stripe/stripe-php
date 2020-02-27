@@ -63,6 +63,7 @@ require __DIR__ . '/lib/StripeObject.php';
 require __DIR__ . '/lib/ApiRequestor.php';
 require __DIR__ . '/lib/ApiResource.php';
 require __DIR__ . '/lib/SingletonApiResource.php';
+require __DIR__ . '/lib/Service/AbstractService.php';
 
 // Stripe API Resources
 require __DIR__ . '/lib/Account.php';
@@ -146,6 +147,63 @@ require __DIR__ . '/lib/UsageRecord.php';
 require __DIR__ . '/lib/UsageRecordSummary.php';
 require __DIR__ . '/lib/WebhookEndpoint.php';
 
+// Services
+require __DIR__ . '/lib/Service/AccountService.php';
+require __DIR__ . '/lib/Service/AccountLinkService.php';
+require __DIR__ . '/lib/Service/ApplePayDomainService.php';
+require __DIR__ . '/lib/Service/ApplicationFeeService.php';
+require __DIR__ . '/lib/Service/BalanceService.php';
+require __DIR__ . '/lib/Service/BalanceTransactionService.php';
+require __DIR__ . '/lib/Service/ChargeService.php';
+require __DIR__ . '/lib/Service/Checkout/SessionService.php';
+require __DIR__ . '/lib/Service/CountrySpecService.php';
+require __DIR__ . '/lib/Service/CouponService.php';
+require __DIR__ . '/lib/Service/CreditNoteService.php';
+require __DIR__ . '/lib/Service/CustomerService.php';
+require __DIR__ . '/lib/Service/DisputeService.php';
+require __DIR__ . '/lib/Service/EphemeralKeyService.php';
+require __DIR__ . '/lib/Service/EventService.php';
+require __DIR__ . '/lib/Service/ExchangeRateService.php';
+require __DIR__ . '/lib/Service/FileService.php';
+require __DIR__ . '/lib/Service/FileLinkService.php';
+require __DIR__ . '/lib/Service/InvoiceService.php';
+require __DIR__ . '/lib/Service/InvoiceItemService.php';
+require __DIR__ . '/lib/Service/Issuing/AuthorizationService.php';
+require __DIR__ . '/lib/Service/Issuing/CardService.php';
+require __DIR__ . '/lib/Service/Issuing/CardholderService.php';
+require __DIR__ . '/lib/Service/Issuing/DisputeService.php';
+require __DIR__ . '/lib/Service/Issuing/TransactionService.php';
+require __DIR__ . '/lib/Service/MandateService.php';
+require __DIR__ . '/lib/Service/OrderService.php';
+require __DIR__ . '/lib/Service/OrderReturnService.php';
+require __DIR__ . '/lib/Service/PaymentIntentService.php';
+require __DIR__ . '/lib/Service/PaymentMethodService.php';
+require __DIR__ . '/lib/Service/PayoutService.php';
+require __DIR__ . '/lib/Service/PlanService.php';
+require __DIR__ . '/lib/Service/ProductService.php';
+require __DIR__ . '/lib/Service/Radar/EarlyFraudWarningService.php';
+require __DIR__ . '/lib/Service/Radar/ValueListService.php';
+require __DIR__ . '/lib/Service/Radar/ValueListItemService.php';
+require __DIR__ . '/lib/Service/RefundService.php';
+require __DIR__ . '/lib/Service/Reporting/ReportRunService.php';
+require __DIR__ . '/lib/Service/Reporting/ReportTypeService.php';
+require __DIR__ . '/lib/Service/ReviewService.php';
+require __DIR__ . '/lib/Service/SetupIntentService.php';
+require __DIR__ . '/lib/Service/Sigma/ScheduledQueryRunService.php';
+require __DIR__ . '/lib/Service/SkuService.php';
+require __DIR__ . '/lib/Service/SourceService.php';
+require __DIR__ . '/lib/Service/SubscriptionService.php';
+require __DIR__ . '/lib/Service/SubscriptionItemService.php';
+require __DIR__ . '/lib/Service/SubscriptionScheduleService.php';
+require __DIR__ . '/lib/Service/TaxRateService.php';
+require __DIR__ . '/lib/Service/Terminal/ConnectionTokenService.php';
+require __DIR__ . '/lib/Service/Terminal/LocationService.php';
+require __DIR__ . '/lib/Service/Terminal/ReaderService.php';
+require __DIR__ . '/lib/Service/TokenService.php';
+require __DIR__ . '/lib/Service/TopupService.php';
+require __DIR__ . '/lib/Service/TransferService.php';
+require __DIR__ . '/lib/Service/WebhookEndpointService.php';
+
 // OAuth
 require __DIR__ . '/lib/OAuth.php';
 require __DIR__ . '/lib/OAuthErrorObject.php';
@@ -153,11 +211,3 @@ require __DIR__ . '/lib/OAuthErrorObject.php';
 // Webhooks
 require __DIR__ . '/lib/Webhook.php';
 require __DIR__ . '/lib/WebhookSignature.php';
-
-// Services
-require __DIR__ . '/lib/Service/AbstractService.php';
-require __DIR__ . '/lib/Service/CouponService.php';
-require __DIR__ . '/lib/Service/CustomerService.php';
-require __DIR__ . '/lib/Service/FileService.php';
-require __DIR__ . '/lib/Service/Issuing/CardService.php';
-require __DIR__ . '/lib/Service/PaymentIntentService.php';

@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ * @covers \Stripe\Service\CustomerService
  */
 final class CustomerServiceTest extends \PHPUnit\Framework\TestCase
 {
@@ -59,6 +60,7 @@ final class CustomerServiceTest extends \PHPUnit\Framework\TestCase
         );
         $resources = $this->service->allSources(self::TEST_RESOURCE_ID);
         static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\AlipayAccount::class, $resources->data[0]);
     }
 
     public function testAllTaxIds()
@@ -125,6 +127,7 @@ final class CustomerServiceTest extends \PHPUnit\Framework\TestCase
         );
         $resource = $this->service->delete(self::TEST_RESOURCE_ID);
         static::assertInstanceOf(\Stripe\Customer::class, $resource);
+        static::assertTrue($resource->isDeleted());
     }
 
     public function testDeleteDiscount()
@@ -135,6 +138,7 @@ final class CustomerServiceTest extends \PHPUnit\Framework\TestCase
         );
         $resource = $this->service->deleteDiscount(self::TEST_RESOURCE_ID);
         static::assertInstanceOf(\Stripe\Discount::class, $resource);
+        static::assertTrue($resource->isDeleted());
     }
 
     public function testDeleteSource()
@@ -154,6 +158,7 @@ final class CustomerServiceTest extends \PHPUnit\Framework\TestCase
         );
         $resource = $this->service->deleteTaxId(self::TEST_RESOURCE_ID, self::TEST_TAX_ID_ID);
         static::assertInstanceOf(\Stripe\TaxId::class, $resource);
+        static::assertTrue($resource->isDeleted());
     }
 
     public function testRetrieve()
@@ -242,5 +247,6 @@ final class CustomerServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/sources/' . self::TEST_SOURCE_ID . '/verify'
         );
         $resource = $this->service->verifySource(self::TEST_RESOURCE_ID, self::TEST_SOURCE_ID, ['amounts' => [32, 45]]);
+        static::assertInstanceOf(\Stripe\BankAccount::class, $resource);
     }
 }

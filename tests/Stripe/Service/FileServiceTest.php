@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ * @covers \Stripe\Service\FileService
  */
 final class FileServiceTest extends \PHPUnit\Framework\TestCase
 {
