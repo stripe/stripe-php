@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Dispute
  */
 final class DisputeTest extends \PHPUnit\Framework\TestCase
 {

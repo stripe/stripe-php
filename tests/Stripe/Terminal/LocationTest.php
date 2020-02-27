@@ -4,6 +4,7 @@ namespace Stripe\Terminal;
 
 /**
  * @internal
+ * @covers \Stripe\Terminal\Location
  */
 final class LocationTest extends \PHPUnit\Framework\TestCase
 {

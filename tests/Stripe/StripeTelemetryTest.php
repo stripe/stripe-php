@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @coversNothing
  */
 final class StripeTelemetryTest extends \PHPUnit\Framework\TestCase
 {

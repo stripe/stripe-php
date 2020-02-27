@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\ApplicationFeeRefund
  */
 final class ApplicationFeeRefundTest extends \PHPUnit\Framework\TestCase
 {

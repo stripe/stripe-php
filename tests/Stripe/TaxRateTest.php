@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\TaxRate
  */
 final class TaxRateTest extends \PHPUnit\Framework\TestCase
 {

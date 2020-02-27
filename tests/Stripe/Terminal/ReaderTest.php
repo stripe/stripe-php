@@ -4,6 +4,7 @@ namespace Stripe\Terminal;
 
 /**
  * @internal
+ * @covers \Stripe\Terminal\Reader
  */
 final class ReaderTest extends \PHPUnit\Framework\TestCase
 {

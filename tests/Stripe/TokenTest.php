@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Token
  */
 final class TokenTest extends \PHPUnit\Framework\TestCase
 {

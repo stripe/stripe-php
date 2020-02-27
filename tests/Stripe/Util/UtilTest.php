@@ -4,6 +4,7 @@ namespace Stripe\Util;
 
 /**
  * @internal
+ * @covers \Stripe\Util\Util
  */
 final class UtilTest extends \PHPUnit\Framework\TestCase
 {

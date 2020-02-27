@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\PaymentMethod
  */
 final class PaymentMethodTest extends \PHPUnit\Framework\TestCase
 {

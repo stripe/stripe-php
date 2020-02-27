@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\SubscriptionItem
  */
 final class SubscriptionItemTest extends \PHPUnit\Framework\TestCase
 {

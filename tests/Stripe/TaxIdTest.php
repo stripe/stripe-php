@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\TaxId
  */
 final class TaxIdTest extends \PHPUnit\Framework\TestCase
 {

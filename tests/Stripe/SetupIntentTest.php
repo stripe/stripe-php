@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\SetupIntent
  */
 final class SetupIntentTest extends \PHPUnit\Framework\TestCase
 {

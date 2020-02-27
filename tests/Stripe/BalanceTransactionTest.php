@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\BalanceTransaction
  */
 final class BalanceTransactionTest extends \PHPUnit\Framework\TestCase
 {

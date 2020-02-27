@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Coupon
  */
 final class CouponTest extends \PHPUnit\Framework\TestCase
 {

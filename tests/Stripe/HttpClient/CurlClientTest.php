@@ -4,6 +4,7 @@ namespace Stripe\HttpClient;
 
 /**
  * @internal
+ * @covers \Stripe\HttpClient\CurlClient
  */
 final class CurlClientTest extends \PHPUnit\Framework\TestCase
 {

@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Capability
  */
 final class CapabilityTest extends \PHPUnit\Framework\TestCase
 {

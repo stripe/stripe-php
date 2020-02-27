@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Transfer
  */
 final class TransferTest extends \PHPUnit\Framework\TestCase
 {

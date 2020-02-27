@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Plan
  */
 final class PlanTest extends \PHPUnit\Framework\TestCase
 {

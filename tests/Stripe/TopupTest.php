@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Topup
  */
 final class TopupTest extends \PHPUnit\Framework\TestCase
 {

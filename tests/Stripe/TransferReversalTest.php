@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\TransferReversal
  */
 final class TransferReversalTest extends \PHPUnit\Framework\TestCase
 {

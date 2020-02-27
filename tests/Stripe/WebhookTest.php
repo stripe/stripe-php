@@ -4,6 +4,8 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Webhook
+ * @covers \Stripe\WebhookSignature
  */
 final class WebhookTest extends \PHPUnit\Framework\TestCase
 {

@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Event
  */
 final class EventTest extends \PHPUnit\Framework\TestCase
 {

@@ -4,6 +4,7 @@ namespace Stripe\Checkout;
 
 /**
  * @internal
+ * @covers \Stripe\Checkout\Session
  */
 final class SessionTest extends \PHPUnit\Framework\TestCase
 {

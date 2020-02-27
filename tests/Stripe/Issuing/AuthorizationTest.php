@@ -4,6 +4,7 @@ namespace Stripe\Issuing;
 
 /**
  * @internal
+ * @covers \Stripe\Issuing\Authorization
  */
 final class AuthorizationTest extends \PHPUnit\Framework\TestCase
 {

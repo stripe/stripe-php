@@ -4,6 +4,7 @@ namespace Stripe\Terminal;
 
 /**
  * @internal
+ * @covers \Stripe\Terminal\ConnectionToken
  */
 final class ConnectionTokenTest extends \PHPUnit\Framework\TestCase
 {

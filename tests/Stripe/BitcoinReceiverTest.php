@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\BitcoinReceiver
  */
 final class BitcoinReceiverTest extends \PHPUnit\Framework\TestCase
 {

@@ -4,6 +4,7 @@ namespace Stripe\Reporting;
 
 /**
  * @internal
+ * @covers \Stripe\Reporting\ReportType
  */
 final class ReportTypeTest extends \PHPUnit\Framework\TestCase
 {

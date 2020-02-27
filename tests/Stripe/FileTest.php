@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\File
  */
 final class FileTest extends \PHPUnit\Framework\TestCase
 {

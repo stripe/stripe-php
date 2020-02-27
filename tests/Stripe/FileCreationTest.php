@@ -2,17 +2,18 @@
 
 namespace Stripe;
 
-/*
- * These tests should really be part of `FileTest`, but because the file creation requests use a
- * different host, the tests for these methods need their own setup and teardown methods.
- */
 /**
  * @internal
+ * @covers \Stripe\File
  */
 final class FileCreationTest extends \PHPUnit\Framework\TestCase
 {
+    // These tests should really be part of `FileTest`, but because the file creation requests use a
+    // different host, the tests for these methods need their own setup and teardown methods.
+
     use TestHelper;
 
+    /** @var null|string */
     private $origApiUploadBase;
 
     /** @before */

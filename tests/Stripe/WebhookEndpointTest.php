@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\WebhookEndpoint
  */
 final class WebhookEndpointTest extends \PHPUnit\Framework\TestCase
 {

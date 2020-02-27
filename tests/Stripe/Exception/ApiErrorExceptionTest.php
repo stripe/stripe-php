@@ -4,6 +4,7 @@ namespace Stripe\Exception;
 
 /**
  * @internal
+ * @covers \Stripe\Exception\ApiErrorException
  */
 final class ApiErrorExceptionTest extends \PHPUnit\Framework\TestCase
 {

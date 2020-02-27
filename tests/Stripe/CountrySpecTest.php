@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\CountrySpec
  */
 final class CountrySpecTest extends \PHPUnit\Framework\TestCase
 {
