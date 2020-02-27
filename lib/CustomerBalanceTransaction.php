@@ -72,7 +72,7 @@ class CustomerBalanceTransaction extends ApiResource
                "`Customer::retrieveBalanceTransaction('customer_id', " .
                "'balance_transaction_id')`.";
 
-        throw new Exception\BadMethodCallException($msg, null);
+        throw new Exception\BadMethodCallException($msg);
     }
 
     /**
@@ -89,6 +89,6 @@ class CustomerBalanceTransaction extends ApiResource
                "`Customer::updateBalanceTransaction('customer_id', " .
                "'balance_transaction_id', \$updateParams)`.";
 
-        throw new Exception\BadMethodCallException($msg, null);
+        throw new Exception\BadMethodCallException($msg);
     }
 }

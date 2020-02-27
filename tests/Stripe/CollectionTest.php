@@ -19,7 +19,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
     public function setUpFixture()
     {
         $this->fixture = Collection::constructFrom([
-            'data' => [['id' => 1]],
+            'data' => [['id' => '1']],
             'has_more' => true,
             'url' => '/things',
         ]);
@@ -43,7 +43,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
             false,
             [
                 'object' => 'list',
-                'data' => [['id' => 1]],
+                'data' => [['id' => '1']],
                 'has_more' => true,
                 'url' => '/things',
             ]
@@ -62,11 +62,11 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
             null,
             false,
             [
-                'id' => 1,
+                'id' => '1',
             ]
         );
 
-        $this->fixture->retrieve(1);
+        $this->fixture->retrieve('1');
     }
 
     public function testCanCreate()
@@ -80,7 +80,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
             null,
             false,
             [
-                'id' => 2,
+                'id' => '2',
             ]
         );
 
@@ -92,12 +92,12 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
     public function testCanCount()
     {
         $collection = Collection::constructFrom([
-            'data' => [['id' => 1]],
+            'data' => [['id' => '1']],
         ]);
         static::assertCount(1, $collection);
 
         $collection = Collection::constructFrom([
-            'data' => [['id' => 1], ['id' => 2], ['id' => 3]],
+            'data' => [['id' => '1'], ['id' => '2'], ['id' => '3']],
         ]);
         static::assertCount(3, $collection);
     }
@@ -105,7 +105,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
     public function testCanIterate()
     {
         $collection = Collection::constructFrom([
-            'data' => [['id' => 1], ['id' => 2], ['id' => 3]],
+            'data' => [['id' => '1'], ['id' => '2'], ['id' => '3']],
             'has_more' => true,
             'url' => '/things',
         ]);
@@ -115,13 +115,13 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
             \array_push($seen, $item['id']);
         }
 
-        static::assertSame([1, 2, 3], $seen);
+        static::assertSame(['1', '2', '3'], $seen);
     }
 
     public function testCanIterateBackwards()
     {
         $collection = Collection::constructFrom([
-            'data' => [['id' => 1], ['id' => 2], ['id' => 3]],
+            'data' => [['id' => '1'], ['id' => '2'], ['id' => '3']],
             'has_more' => true,
             'url' => '/things',
         ]);
@@ -131,7 +131,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
             \array_push($seen, $item['id']);
         }
 
-        static::assertSame([3, 2, 1], $seen);
+        static::assertSame(['3', '2', '1'], $seen);
     }
 
     public function testSupportsIteratorToArray()
@@ -141,7 +141,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
             \array_push($seen, $item['id']);
         }
 
-        static::assertSame([1], $seen);
+        static::assertSame(['1'], $seen);
     }
 
     public function testProvidesAutoPagingIterator()
@@ -150,13 +150,13 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
             'GET',
             '/things',
             [
-                'starting_after' => 1,
+                'starting_after' => '1',
             ],
             null,
             false,
             [
                 'object' => 'list',
-                'data' => [['id' => 2], ['id' => 3]],
+                'data' => [['id' => '2'], ['id' => '3']],
                 'has_more' => false,
             ]
         );
@@ -166,7 +166,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
             \array_push($seen, $item['id']);
         }
 
-        static::assertSame([1, 2, 3], $seen);
+        static::assertSame(['1', '2', '3'], $seen);
     }
 
     public function testAutoPagingIteratorSupportsIteratorToArray()
@@ -175,13 +175,13 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
             'GET',
             '/things',
             [
-                'starting_after' => 1,
+                'starting_after' => '1',
             ],
             null,
             false,
             [
                 'object' => 'list',
-                'data' => [['id' => 2], ['id' => 3]],
+                'data' => [['id' => '2'], ['id' => '3']],
                 'has_more' => false,
             ]
         );
@@ -191,7 +191,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
             \array_push($seen, $item['id']);
         }
 
-        static::assertSame([1, 2, 3], $seen);
+        static::assertSame(['1', '2', '3'], $seen);
     }
 
     public function testProvidesAutoPagingIteratorThatSupportsBackwardsPagination()
@@ -200,30 +200,30 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
             'GET',
             '/things',
             [
-                'ending_before' => 3,
+                'ending_before' => '3',
             ],
             null,
             false,
             [
                 'object' => 'list',
-                'data' => [['id' => 1], ['id' => 2]],
+                'data' => [['id' => '1'], ['id' => '2']],
                 'has_more' => false,
             ]
         );
 
         $collection = Collection::constructFrom([
-            'data' => [['id' => 3]],
+            'data' => [['id' => '3']],
             'has_more' => true,
             'url' => '/things',
         ]);
-        $collection->setFilters(['ending_before' => 4]);
+        $collection->setFilters(['ending_before' => '4']);
 
         $seen = [];
         foreach ($collection->autoPagingIterator() as $item) {
             \array_push($seen, $item['id']);
         }
 
-        static::assertSame([3, 2, 1], $seen);
+        static::assertSame(['3', '2', '1'], $seen);
     }
 
     public function testHeaders()
@@ -240,7 +240,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
             ],
             false,
             [
-                'id' => 2,
+                'id' => '2',
             ]
         );
 
@@ -263,7 +263,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
         $empty = Collection::constructFrom(['data' => []]);
         static::assertTrue($empty->isEmpty());
 
-        $notEmpty = Collection::constructFrom(['data' => [['id' => 1]]]);
+        $notEmpty = Collection::constructFrom(['data' => [['id' => '1']]]);
         static::assertFalse($notEmpty->isEmpty());
     }
 
@@ -273,13 +273,13 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
             'GET',
             '/things',
             [
-                'starting_after' => 1,
+                'starting_after' => '1',
             ],
             null,
             false,
             [
                 'object' => 'list',
-                'data' => [['id' => 2], ['id' => 3]],
+                'data' => [['id' => '2'], ['id' => '3']],
                 'has_more' => false,
             ]
         );
@@ -289,7 +289,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
         foreach ($nextPage->data as $element) {
             \array_push($ids, $element['id']);
         }
-        static::assertSame([2, 3], $ids);
+        static::assertSame(['2', '3'], $ids);
     }
 
     public function testPreviousPage()
@@ -298,7 +298,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
             'GET',
             '/things',
             [
-                'ending_before' => 1,
+                'ending_before' => '1',
             ],
             null,
             false,

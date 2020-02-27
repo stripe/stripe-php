@@ -314,7 +314,7 @@ abstract class Util
      */
     public static function urlEncode($key)
     {
-        $s = \urlencode($key);
+        $s = \urlencode((string) $key);
 
         // Don't use strict form encoding by changing the square bracket control
         // characters back to their literals. This is fine by the server, and

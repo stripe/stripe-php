@@ -91,7 +91,7 @@ class Person extends ApiResource
                "a person using `Account::retrievePerson('account_id', " .
                "'person_id')`.";
 
-        throw new Exception\BadMethodCallException($msg, null);
+        throw new Exception\BadMethodCallException($msg);
     }
 
     /**
@@ -107,6 +107,6 @@ class Person extends ApiResource
                "a person using `Account::updatePerson('account_id', " .
                "'person_id', \$updateParams)`.";
 
-        throw new Exception\BadMethodCallException($msg, null);
+        throw new Exception\BadMethodCallException($msg);
     }
 }
