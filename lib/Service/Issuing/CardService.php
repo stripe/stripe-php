@@ -4,16 +4,15 @@ namespace Stripe\Service\Issuing;
 
 class CardService extends \Stripe\Service\AbstractService
 {
-    public function basePath()
-    {
-        return '/v1/issuing/cards';
-    }
-
     /**
-     * List all cards.
+     * Returns a list of Issuing <code>Card</code> objects. The objects are sorted in
+     * descending order by creation date, with the most recently created object
+     * appearing first.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return \Stripe\Collection
      */
@@ -23,10 +22,12 @@ class CardService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a card.
+     * Creates an Issuing <code>Card</code> object.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return \Stripe\Issuing\Card
      */
@@ -36,13 +37,17 @@ class CardService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a card details.
+     * For virtual cards only. Retrieves an Issuing <code>card_details</code> object
+     * that contains <a href="/docs/issuing/cards/management#virtual-card-info">the
+     * sensitive details</a> of a virtual card.
      *
      * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Issuing\CardDetails
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Card
      */
     public function details($id, $params = null, $opts = null)
     {
@@ -50,11 +55,13 @@ class CardService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a card.
+     * Retrieves an Issuing <code>Card</code> object.
      *
      * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return \Stripe\Issuing\Card
      */
@@ -64,11 +71,14 @@ class CardService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update a card.
+     * Updates the specified Issuing <code>Card</code> object by setting the values of
+     * the parameters passed. Any parameters not provided will be left unchanged.
      *
      * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return \Stripe\Issuing\Card
      */
