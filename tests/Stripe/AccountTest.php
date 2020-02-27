@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Account
  */
 final class AccountTest extends \PHPUnit\Framework\TestCase
 {

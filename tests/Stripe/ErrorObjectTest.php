@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\ErrorObject
  */
 final class ErrorObjectTest extends \PHPUnit\Framework\TestCase
 {

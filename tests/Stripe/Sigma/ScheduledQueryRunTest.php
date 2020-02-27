@@ -4,6 +4,7 @@ namespace Stripe\Sigma;
 
 /**
  * @internal
+ * @covers \Stripe\Sigma\ScheduledQueryRun
  */
 final class ScheduledQueryRunTest extends \PHPUnit\Framework\TestCase
 {

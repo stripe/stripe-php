@@ -6,6 +6,7 @@ use Stripe\HttpClient\CurlClient;
 
 /**
  * @internal
+ * @covers \Stripe\ApiRequestor
  */
 final class ApiRequestorTest extends \PHPUnit\Framework\TestCase
 {

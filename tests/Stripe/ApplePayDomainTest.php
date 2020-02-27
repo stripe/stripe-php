@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\ApplePayDomain
  */
 final class ApplePayDomainTest extends \PHPUnit\Framework\TestCase
 {

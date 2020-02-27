@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\OAuth
  */
 final class OAuthTest extends \PHPUnit\Framework\TestCase
 {

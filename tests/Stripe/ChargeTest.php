@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Charge
  */
 final class ChargeTest extends \PHPUnit\Framework\TestCase
 {

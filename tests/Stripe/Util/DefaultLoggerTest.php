@@ -4,6 +4,7 @@ namespace Stripe\Util;
 
 /**
  * @internal
+ * @covers \Stripe\Util\DefaultLogger
  */
 final class DefaultLoggerTest extends \PHPUnit\Framework\TestCase
 {

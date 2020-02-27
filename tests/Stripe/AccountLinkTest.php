@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\AccountLink
  */
 final class AccountLinkTest extends \PHPUnit\Framework\TestCase
 {

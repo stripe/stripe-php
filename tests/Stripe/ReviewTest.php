@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Review
  */
 final class ReviewTest extends \PHPUnit\Framework\TestCase
 {

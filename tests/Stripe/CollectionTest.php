@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Collection
  */
 final class CollectionTest extends \PHPUnit\Framework\TestCase
 {

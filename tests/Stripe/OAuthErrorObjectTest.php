@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\OAuthErrorObject
  */
 final class OAuthErrorObjectTest extends \PHPUnit\Framework\TestCase
 {

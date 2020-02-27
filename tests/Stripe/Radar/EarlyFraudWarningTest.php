@@ -4,6 +4,7 @@ namespace Stripe\Radar;
 
 /**
  * @internal
+ * @covers \Stripe\Radar\EarlyFraudWarning
  */
 final class EarlyFraudWarningTest extends \PHPUnit\Framework\TestCase
 {

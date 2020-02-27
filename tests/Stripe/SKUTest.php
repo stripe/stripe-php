@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\SKU
  */
 final class SKUTest extends \PHPUnit\Framework\TestCase
 {

@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Mandate
  */
 final class MandateTest extends \PHPUnit\Framework\TestCase
 {

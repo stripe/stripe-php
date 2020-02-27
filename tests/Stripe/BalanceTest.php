@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Balance
  */
 final class BalanceTest extends \PHPUnit\Framework\TestCase
 {

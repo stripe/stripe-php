@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Invoice
  */
 final class InvoiceTest extends \PHPUnit\Framework\TestCase
 {

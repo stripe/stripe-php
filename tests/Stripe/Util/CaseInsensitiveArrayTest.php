@@ -4,6 +4,7 @@ namespace Stripe\Util;
 
 /**
  * @internal
+ * @covers \Stripe\Util\CaseInsensitiveArray
  */
 final class CaseInsensitiveArrayTest extends \PHPUnit\Framework\TestCase
 {

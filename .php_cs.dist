@@ -25,10 +25,6 @@ return PhpCsFixer\Config::create()
         // in the correct order.
         'ordered_class_elements' => false,
 
-        // This can be enabled once we update every test class and method with
-        // the correct `@covers` annotations.
-        'php_unit_test_class_requires_covers' => false,
-
         // Keep this disabled to avoid unnecessary diffs in PHPDoc comments of
         // codegen'd classes.
         'phpdoc_align' => false,

@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\ExchangeRate
  */
 final class ExchangeRateTest extends \PHPUnit\Framework\TestCase
 {
@@ -34,9 +35,9 @@ final class ExchangeRateTest extends \PHPUnit\Framework\TestCase
             ]
         );
 
-        $listRates = ExchangeRate::all();
-        static::assertInternalType('array', $listRates->data);
-        static::assertSame('exchange_rate', $listRates->data[0]->object);
+        $resources = ExchangeRate::all();
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\ExchangeRate::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -53,7 +54,7 @@ final class ExchangeRateTest extends \PHPUnit\Framework\TestCase
                 'rates' => ['eur' => 0.845876],
             ]
         );
-        $rates = ExchangeRate::retrieve('usd');
-        static::assertSame('exchange_rate', $rates->object);
+        $resource = ExchangeRate::retrieve('usd');
+        static::assertInstanceOf(\Stripe\ExchangeRate::class, $resource);
     }
 }

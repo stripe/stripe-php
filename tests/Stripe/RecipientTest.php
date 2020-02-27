@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Recipient
  */
 final class RecipientTest extends \PHPUnit\Framework\TestCase
 {

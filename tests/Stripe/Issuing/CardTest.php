@@ -4,6 +4,7 @@ namespace Stripe\Issuing;
 
 /**
  * @internal
+ * @covers \Stripe\Issuing\Card
  */
 final class CardTest extends \PHPUnit\Framework\TestCase
 {

@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Person
  */
 final class PersonTest extends \PHPUnit\Framework\TestCase
 {

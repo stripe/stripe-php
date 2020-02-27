@@ -4,6 +4,7 @@ namespace Stripe\Issuing;
 
 /**
  * @internal
+ * @covers \Stripe\Issuing\Transaction
  */
 final class TransactionTest extends \PHPUnit\Framework\TestCase
 {

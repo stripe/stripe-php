@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\Payout
  */
 final class PayoutTest extends \PHPUnit\Framework\TestCase
 {

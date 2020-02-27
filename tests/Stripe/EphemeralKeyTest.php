@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\EphemeralKey
  */
 final class EphemeralKeyTest extends \PHPUnit\Framework\TestCase
 {

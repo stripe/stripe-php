@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\FileLink
  */
 final class FileLinkTest extends \PHPUnit\Framework\TestCase
 {

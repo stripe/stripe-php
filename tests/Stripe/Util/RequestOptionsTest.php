@@ -4,6 +4,7 @@ namespace Stripe\Util;
 
 /**
  * @internal
+ * @covers \Stripe\Util\RequestOptions
  */
 final class RequestOptionsTest extends \PHPUnit\Framework\TestCase
 {

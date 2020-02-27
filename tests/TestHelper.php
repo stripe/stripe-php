@@ -7,22 +7,22 @@ namespace Stripe;
  */
 trait TestHelper
 {
-    /** @var string original API base URL */
+    /** @var null|string original API base URL */
     protected $origApiBase;
 
-    /** @var string original API key */
+    /** @var null|string original API key */
     protected $origApiKey;
 
-    /** @var string original client ID */
+    /** @var null|string original client ID */
     protected $origClientId;
 
-    /** @var string original API version */
+    /** @var null|string original API version */
     protected $origApiVersion;
 
-    /** @var string original account ID */
+    /** @var null|string original account ID */
     protected $origAccountId;
 
-    /** @var object HTTP client mocker */
+    /** @var \PHPUnit_Framework_MockObject_MockObject HTTP client mocker */
     protected $clientMock;
 
     /** @before */

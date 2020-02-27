@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\SubscriptionSchedule
  */
 final class SubscriptionScheduleTest extends \PHPUnit\Framework\TestCase
 {

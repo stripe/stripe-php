@@ -4,6 +4,7 @@ namespace Stripe\Radar;
 
 /**
  * @internal
+ * @covers \Stripe\Radar\ValueList
  */
 final class ValueListTest extends \PHPUnit\Framework\TestCase
 {

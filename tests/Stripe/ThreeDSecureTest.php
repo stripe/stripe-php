@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\ThreeDSecure
  */
 final class ThreeDSecureTest extends \PHPUnit\Framework\TestCase
 {

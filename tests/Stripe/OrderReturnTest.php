@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\OrderReturn
  */
 final class OrderReturnTest extends \PHPUnit\Framework\TestCase
 {

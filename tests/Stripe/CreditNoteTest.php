@@ -4,6 +4,7 @@ namespace Stripe;
 
 /**
  * @internal
+ * @covers \Stripe\CreditNote
  */
 final class CreditNoteTest extends \PHPUnit\Framework\TestCase
 {
