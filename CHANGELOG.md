@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.27.0 - 2020-02-28
+* [#889](https://github.com/stripe/stripe-php/pull/889) Add new constants for `type` on `TaxId`
+
 ## 7.26.0 - 2020-02-26
 * [#886](https://github.com/stripe/stripe-php/pull/886) Add support for listing Checkout `Session`
 * [#883](https://github.com/stripe/stripe-php/pull/883) Add PHPDoc class descriptions
