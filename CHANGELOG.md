@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.27.1 - 2020-03-03
+* [#890](https://github.com/stripe/stripe-php/pull/890) Update PHPdoc
+
 ## 7.27.0 - 2020-02-28
 * [#889](https://github.com/stripe/stripe-php/pull/889) Add new constants for `type` on `TaxId`
 
