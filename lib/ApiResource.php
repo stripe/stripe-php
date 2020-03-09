@@ -43,8 +43,6 @@ abstract class ApiResource extends StripeObject
             ($v instanceof ApiResource)) {
             $v->saveWithParent = true;
         }
-
-        return $v;
     }
 
     /**

@@ -65,7 +65,7 @@ class Capability extends ApiResource
                'Retrieve a capability using `Account::retrieveCapability(' .
                "'account_id', 'capability_id')`.";
 
-        throw new Exception\BadMethodCallException($msg, null);
+        throw new Exception\BadMethodCallException($msg);
     }
 
     /**
@@ -81,6 +81,6 @@ class Capability extends ApiResource
                'Update a capability using `Account::updateCapability(' .
                "'account_id', 'capability_id', \$updateParams)`.";
 
-        throw new Exception\BadMethodCallException($msg, null);
+        throw new Exception\BadMethodCallException($msg);
     }
 }
