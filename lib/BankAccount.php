@@ -89,7 +89,7 @@ class BankAccount extends ApiResource
                "'bank_account_id')` or `Account::retrieveExternalAccount(" .
                "'account_id', 'bank_account_id')`.";
 
-        throw new Exception\BadMethodCallException($msg);
+        throw new Exception\BadMethodCallException($msg, null);
     }
 
     /**
@@ -107,7 +107,7 @@ class BankAccount extends ApiResource
                '$updateParams)` or `Account::updateExternalAccount(' .
                "'account_id', 'bank_account_id', \$updateParams)`.";
 
-        throw new Exception\BadMethodCallException($msg);
+        throw new Exception\BadMethodCallException($msg, null);
     }
 
     /**
