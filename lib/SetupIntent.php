@@ -27,6 +27,9 @@ namespace Stripe;
  * By using SetupIntents, you ensure that your customers experience the minimum set
  * of required friction, even as regulations change over time.
  *
+ * Related guide: <a href="https://stripe.com/docs/payments/setup-intents">Setup
+ * Intents API</a>.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string|\Stripe\StripeObject $application ID of the Connect application that created the SetupIntent.
