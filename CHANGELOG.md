@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.27.3 - 2020-03-18
+* [#899](https://github.com/stripe/stripe-php/pull/899) Convert keys to strings in `StripeObject::toArray()`
+
 ## 7.27.2 - 2020-03-13
 * [#894](https://github.com/stripe/stripe-php/pull/894) Multiple PHPDocs changes
 
