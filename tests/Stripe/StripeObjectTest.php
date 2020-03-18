@@ -98,6 +98,10 @@ final class StripeObjectTest extends \PHPUnit\Framework\TestCase
             'foo' => 'a',
             'list' => [1, 2, 3],
             'null' => null,
+            'metadata' => [
+                'key' => 'value',
+                1 => 'one',
+            ],
         ];
         $s = StripeObject::constructFrom($array);
 
@@ -118,13 +122,13 @@ final class StripeObjectTest extends \PHPUnit\Framework\TestCase
             'id' => 1,
             // simple associative array that contains a StripeObject to help us
             // test deep recursion
-            'nested' => ['object' => 'list', 'data' => $nested],
+            'nested' => ['object' => 'list', 'data' => [$nested]],
             'list' => [$nested],
         ]);
 
         $expected = [
             'id' => 1,
-            'nested' => ['object' => 'list', 'data' => $nestedArray],
+            'nested' => ['object' => 'list', 'data' => [$nestedArray]],
             'list' => [$nestedArray],
         ];
 
