@@ -443,7 +443,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         };
 
         return \array_reduce(\array_keys($this->_values), function ($acc, $k) use ($maybeToArray) {
-            if ('_' === $k[0]) {
+            if ('_' === substr($k, 0, 1)) {
                 return $acc;
             }
             $v = $this->_values[$k];
