@@ -44,10 +44,6 @@ require __DIR__ . '/lib/Exception/OAuth/UnknownOAuthErrorException.php';
 require __DIR__ . '/lib/Exception/OAuth/UnsupportedGrantTypeException.php';
 require __DIR__ . '/lib/Exception/OAuth/UnsupportedResponseTypeException.php';
 
-// StripeClient
-require __DIR__ . '/lib/StripeClientInterface.php';
-require __DIR__ . '/lib/StripeClient.php';
-
 // API operations
 require __DIR__ . '/lib/ApiOperations/All.php';
 require __DIR__ . '/lib/ApiOperations/Create.php';
@@ -65,6 +61,12 @@ require __DIR__ . '/lib/ApiRequestor.php';
 require __DIR__ . '/lib/ApiResource.php';
 require __DIR__ . '/lib/SingletonApiResource.php';
 require __DIR__ . '/lib/Service/AbstractService.php';
+require __DIR__ . '/lib/Service/AbstractServiceFactory.php';
+
+// StripeClient
+require __DIR__ . '/lib/StripeClientInterface.php';
+require __DIR__ . '/lib/BaseStripeClient.php';
+require __DIR__ . '/lib/StripeClient.php';
 
 // Stripe API Resources
 require __DIR__ . '/lib/Account.php';
@@ -206,6 +208,15 @@ require __DIR__ . '/lib/Service/TokenService.php';
 require __DIR__ . '/lib/Service/TopupService.php';
 require __DIR__ . '/lib/Service/TransferService.php';
 require __DIR__ . '/lib/Service/WebhookEndpointService.php';
+
+// Service factories
+require __DIR__ . '/lib/Service/CoreServiceFactory.php';
+require __DIR__ . '/lib/Service/Checkout/CheckoutServiceFactory.php';
+require __DIR__ . '/lib/Service/Issuing/IssuingServiceFactory.php';
+require __DIR__ . '/lib/Service/Radar/RadarServiceFactory.php';
+require __DIR__ . '/lib/Service/Reporting/ReportingServiceFactory.php';
+require __DIR__ . '/lib/Service/Sigma/SigmaServiceFactory.php';
+require __DIR__ . '/lib/Service/Terminal/TerminalServiceFactory.php';
 
 // OAuth
 require __DIR__ . '/lib/OAuth.php';
