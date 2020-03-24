@@ -1,5 +1,3 @@
-
-
 parameters:
 	ignoreErrors:
 		-
@@ -11,5 +9,4 @@ parameters:
 			message: "#^Access to undefined constant Stripe\\\\SingletonApiResource\\:\\:OBJECT_NAME\\.$#"
 			count: 1
 			path: lib/SingletonApiResource.php
-
 

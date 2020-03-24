@@ -1,5 +1,5 @@
 export PHPDOCUMENTOR_VERSION := v3.0.0-rc
-export PHPSTAN_VERSION := 0.12.8
+export PHPSTAN_VERSION := 0.12.18
 
 vendor: composer.json
 	composer install
@@ -28,9 +28,9 @@ phpdoc: vendor/bin/phpdoc
 	vendor/bin/phpdoc
 
 phpstan: vendor/bin/phpstan
-	vendor/bin/phpstan analyse lib tests
+	php -d memory_limit=512M vendor/bin/phpstan analyse lib tests
 .PHONY: phpstan
 
 phpstan-baseline: vendor/bin/phpstan
-	vendor/bin/phpstan analyse --error-format baselineNeon lib tests > phpstan-baseline.neon
+	php -d memory_limit=512M vendor/bin/phpstan analyse lib tests --generate-baseline
 .PHONY: phpstan-baseline
