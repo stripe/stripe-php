@@ -126,7 +126,7 @@ class BaseStripeClient implements StripeClientInterface
      */
     public function request($method, $path, $params, $opts)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = \Stripe\Util\RequestOptions::parse($opts, true);
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new \Stripe\ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
         list($response, $opts->apiKey) = $requestor->request($method, $path, $params, $opts->headers);
