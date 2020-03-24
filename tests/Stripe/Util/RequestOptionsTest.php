@@ -10,28 +10,39 @@ final class RequestOptionsTest extends \PHPUnit\Framework\TestCase
 {
     use \Stripe\TestHelper;
 
-    public function testStringAPIKey()
+    public function testParseString()
     {
         $opts = RequestOptions::parse('foo');
         static::assertSame('foo', $opts->apiKey);
         static::assertSame([], $opts->headers);
+        static::assertNull($opts->apiBase);
     }
 
-    public function testNull()
+    public function testParseStringStrict()
+    {
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessageRegExp('#Do not pass a string for request options.#');
+
+        $opts = RequestOptions::parse('foo', true);
+    }
+
+    public function testParseNull()
     {
         $opts = RequestOptions::parse(null);
         static::assertNull($opts->apiKey);
         static::assertSame([], $opts->headers);
+        static::assertNull($opts->apiBase);
     }
 
-    public function testEmptyArray()
+    public function testParseArrayEmpty()
     {
         $opts = RequestOptions::parse([]);
         static::assertNull($opts->apiKey);
         static::assertSame([], $opts->headers);
+        static::assertNull($opts->apiBase);
     }
 
-    public function testAPIKeyArray()
+    public function testParseArrayWithAPIKey()
     {
         $opts = RequestOptions::parse(
             [
@@ -40,9 +51,10 @@ final class RequestOptionsTest extends \PHPUnit\Framework\TestCase
         );
         static::assertSame('foo', $opts->apiKey);
         static::assertSame([], $opts->headers);
+        static::assertNull($opts->apiBase);
     }
 
-    public function testIdempotentKeyArray()
+    public function testParseArrayWithIdempotencyKey()
     {
         $opts = RequestOptions::parse(
             [
@@ -51,25 +63,84 @@ final class RequestOptionsTest extends \PHPUnit\Framework\TestCase
         );
         static::assertNull($opts->apiKey);
         static::assertSame(['Idempotency-Key' => 'foo'], $opts->headers);
+        static::assertNull($opts->apiBase);
     }
 
-    public function testKeyArray()
+    public function testParseArrayWithAPIKeyAndIdempotencyKey()
     {
         $opts = RequestOptions::parse(
             [
-                'idempotency_key' => 'foo',
                 'api_key' => 'foo',
+                'idempotency_key' => 'foo',
             ]
         );
         static::assertSame('foo', $opts->apiKey);
         static::assertSame(['Idempotency-Key' => 'foo'], $opts->headers);
+        static::assertNull($opts->apiBase);
     }
 
-    public function testWrongType()
+    public function testParseArrayWithAPIKeyAndUnexpectedKeys()
+    {
+        $opts = RequestOptions::parse(
+            [
+                'api_key' => 'foo',
+                'foo' => 'bar',
+            ]
+        );
+        static::assertSame('foo', $opts->apiKey);
+        static::assertSame([], $opts->headers);
+        static::assertNull($opts->apiBase);
+    }
+
+    public function testParseArrayWithAPIKeyAndUnexpectedKeysStrict()
+    {
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Got unexpected keys in options array: foo');
+
+        $opts = RequestOptions::parse(
+            [
+                'api_key' => 'foo',
+                'foo' => 'bar',
+            ],
+            true
+        );
+    }
+
+    public function testParseArrayWithAPIBase()
+    {
+        $opts = RequestOptions::parse(
+            [
+                'api_base' => 'https://example.com',
+            ]
+        );
+        static::assertNull($opts->apiKey);
+        static::assertSame([], $opts->headers);
+        static::assertSame('https://example.com', $opts->apiBase);
+    }
+
+    public function testParseWrongType()
     {
         $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
 
         $opts = RequestOptions::parse(5);
+    }
+
+    public function testMerge()
+    {
+        $baseOpts = RequestOptions::parse(
+            [
+                'api_key' => 'foo',
+                'idempotency_key' => 'foo',
+            ]
+        );
+        $opts = $baseOpts->merge(
+            [
+                'idempotency_key' => 'bar',
+            ]
+        );
+        static::assertSame('foo', $opts->apiKey);
+        static::assertSame(['Idempotency-Key' => 'bar'], $opts->headers);
+        static::assertNull($opts->apiBase);
     }
 
     public function testDiscardNonPersistentHeaders()
