@@ -62,4 +62,26 @@ final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
         static::assertNotNull($charge);
         static::assertSame('ch_123', $charge->id);
     }
+
+    public function testRequestThrowsIfOptsIsString()
+    {
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessageRegExp('#Do not pass a string for request options.#');
+
+        $client = new BaseStripeClient(null, null, MOCK_URL);
+        $charge = $client->request('get', '/v1/charges/ch_123', [], 'foo');
+        static::assertNotNull($charge);
+        static::assertSame('ch_123', $charge->id);
+    }
+
+    public function testRequestThrowsIfOptsIsArrayWithUnexpectedKeys()
+    {
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Got unexpected keys in options array: foo');
+
+        $client = new BaseStripeClient(null, null, MOCK_URL);
+        $charge = $client->request('get', '/v1/charges/ch_123', [], ['foo' => 'bar']);
+        static::assertNotNull($charge);
+        static::assertSame('ch_123', $charge->id);
+    }
 }
