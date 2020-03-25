@@ -3,15 +3,19 @@
 namespace Stripe;
 
 /**
- * Class Capability.
+ * This is an object representing a capability for a Stripe account.
  *
- * @property string $id
- * @property string $object
- * @property string $account
- * @property bool $requested
- * @property int $requested_at
+ * Related guide: <a
+ * href="https://stripe.com/docs/connect/capabilities-overview">Capabilities
+ * Overview</a>.
+ *
+ * @property string $id The identifier for the capability.
+ * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property string|\Stripe\Account $account The account for which the capability enables functionality.
+ * @property bool $requested Whether the capability has been requested.
+ * @property null|int $requested_at Time at which the capability was requested. Measured in seconds since the Unix epoch.
  * @property \Stripe\StripeObject $requirements
- * @property string $status
+ * @property string $status The status of the capability. Can be <code>active</code>, <code>inactive</code>, <code>pending</code>, or <code>unrequested</code>.
  */
 class Capability extends ApiResource
 {
