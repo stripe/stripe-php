@@ -24,7 +24,7 @@ final class ApplicationFeeServiceTest extends \PHPUnit\Framework\TestCase
      */
     protected function setUpService()
     {
-        $this->client = new \Stripe\StripeClient('sk_test_123', null, MOCK_URL);
+        $this->client = new \Stripe\StripeClient(['api_key' => 'sk_test_123', 'api_base' => MOCK_URL]);
         $this->service = new ApplicationFeeService($this->client);
     }
 

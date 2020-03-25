@@ -23,7 +23,7 @@ final class FileServiceTest extends \PHPUnit\Framework\TestCase
      */
     protected function setUpService()
     {
-        $this->client = new \Stripe\StripeClient('sk_test_123', null, MOCK_URL);
+        $this->client = new \Stripe\StripeClient(['api_key' => 'sk_test_123', 'api_base' => MOCK_URL]);
         $this->service = new FileService($this->client);
     }
 
@@ -40,7 +40,7 @@ final class FileServiceTest extends \PHPUnit\Framework\TestCase
 
     public function testCreateWithCURLFile()
     {
-        $client = new \Stripe\StripeClient('sk_test_123', null, null, null, MOCK_URL);
+        $client = new \Stripe\StripeClient(['api_key' => 'sk_test_123', 'files_base' => MOCK_URL]);
         $service = new FileService($client);
 
         $this->expectsRequest(
@@ -62,7 +62,7 @@ final class FileServiceTest extends \PHPUnit\Framework\TestCase
 
     public function testCreateWithFileHandle()
     {
-        $client = new \Stripe\StripeClient('sk_test_123', null, null, null, MOCK_URL);
+        $client = new \Stripe\StripeClient(['api_key' => 'sk_test_123', 'files_base' => MOCK_URL]);
         $service = new FileService($client);
 
         $this->expectsRequest(

@@ -21,7 +21,7 @@ final class AbstractServiceTest extends \PHPUnit\Framework\TestCase
      */
     public function setUpMockService()
     {
-        $this->client = new \Stripe\StripeClient('sk_test_123', null, MOCK_URL);
+        $this->client = new \Stripe\StripeClient(['api_key' => 'sk_test_123', 'api_base' => MOCK_URL]);
         // Testing with CouponService, because testing abstract classes is hard in PHP :/
         $this->service = new \Stripe\Service\CouponService($this->client);
     }
