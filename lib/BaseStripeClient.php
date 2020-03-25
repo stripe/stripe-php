@@ -19,6 +19,9 @@ class BaseStripeClient implements StripeClientInterface
     /** @var null|string */
     private $clientId;
 
+    /** @var \Stripe\Util\RequestOptions */
+    private $defaultOpts;
+
     /** @var string */
     private $apiBase;
 
@@ -38,6 +41,10 @@ class BaseStripeClient implements StripeClientInterface
      *
      * - api_key (string): the Stripe API key, to be used in regular API requests.
      * - client_id (string): the Stripe client ID, to be used in OAuth requests.
+     * - stripe_account (string): a Stripe account ID. If set, all requests sent by the client
+     *   will automatically use the {@code Stripe-Account} header with that account ID.
+     * - stripe_version (string): a Stripe API verion. If set, all requests sent by the client
+     *   will include the {@code Stripe-Version} header with that API version.
      * - api_base (string): the base URL for regular API requests. Defaults to
      *   {@link DEFAULT_API_BASE}. Changing this should rarely be necessary.
      * - connect_base (string): the base URL for OAuth requests. Defaults to
@@ -57,6 +64,8 @@ class BaseStripeClient implements StripeClientInterface
         $defaults = [
             'api_key' => null,
             'client_id' => null,
+            'stripe_account' => null,
+            'stripe_version' => null,
             'api_base' => self::DEFAULT_API_BASE,
             'connect_base' => self::DEFAULT_CONNECT_BASE,
             'files_base' => self::DEFAULT_FILES_BASE,
@@ -79,6 +88,10 @@ class BaseStripeClient implements StripeClientInterface
 
         $this->apiKey = $apiKey;
         $this->clientId = $config['client_id'];
+        $this->defaultOpts = \Stripe\Util\RequestOptions::parse([
+            'stripe_account' => $config['stripe_account'],
+            'stripe_version' => $config['stripe_version'],
+        ]);
         $this->apiBase = $config['api_base'];
         $this->connectBase = $config['connect_base'];
         $this->filesBase = $config['files_base'];
@@ -146,7 +159,7 @@ class BaseStripeClient implements StripeClientInterface
      */
     public function request($method, $path, $params, $opts)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts, true);
+        $opts = $this->defaultOpts->merge($opts, true);
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new \Stripe\ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
         list($response, $opts->apiKey) = $requestor->request($method, $path, $params, $opts->headers);
