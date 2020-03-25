@@ -8,6 +8,16 @@ namespace Stripe;
  */
 final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
 {
+    /** @var \ReflectionProperty */
+    private $optsReflector;
+
+    /** @before */
+    protected function setUpOptsReflector()
+    {
+        $this->optsReflector = new \ReflectionProperty(\Stripe\StripeObject::class, '_opts');
+        $this->optsReflector->setAccessible(true);
+    }
+
     public function testCtorDoesNotThrowWhenNoParams()
     {
         $client = new BaseStripeClient();
@@ -36,9 +46,7 @@ final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
         $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
         $charge = $client->request('get', '/v1/charges/ch_123', [], []);
         static::assertNotNull($charge);
-        $optsReflector = new \ReflectionProperty(\Stripe\StripeObject::class, '_opts');
-        $optsReflector->setAccessible(true);
-        static::assertSame('sk_test_client', $optsReflector->getValue($charge)->apiKey);
+        static::assertSame('sk_test_client', $this->optsReflector->getValue($charge)->apiKey);
     }
 
     public function testRequestWithOptsApiKey()
@@ -46,9 +54,7 @@ final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
         $client = new BaseStripeClient(['api_base' => MOCK_URL]);
         $charge = $client->request('get', '/v1/charges/ch_123', [], ['api_key' => 'sk_test_opts']);
         static::assertNotNull($charge);
-        $optsReflector = new \ReflectionProperty(\Stripe\StripeObject::class, '_opts');
-        $optsReflector->setAccessible(true);
-        static::assertSame('sk_test_opts', $optsReflector->getValue($charge)->apiKey);
+        static::assertSame('sk_test_opts', $this->optsReflector->getValue($charge)->apiKey);
     }
 
     public function testRequestThrowsIfNoApiKeyInClientAndOpts()
@@ -82,5 +88,53 @@ final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
         $charge = $client->request('get', '/v1/charges/ch_123', [], ['foo' => 'bar']);
         static::assertNotNull($charge);
         static::assertSame('ch_123', $charge->id);
+    }
+
+    public function testRequestWithClientStripeVersion()
+    {
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_version' => '2020-03-02',
+            'api_base' => MOCK_URL,
+        ]);
+        $charge = $client->request('get', '/v1/charges/ch_123', [], []);
+        static::assertNotNull($charge);
+        static::assertSame('2020-03-02', $this->optsReflector->getValue($charge)->headers['Stripe-Version']);
+    }
+
+    public function testRequestWithOptsStripeVersion()
+    {
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_version' => '2020-03-02',
+            'api_base' => MOCK_URL,
+        ]);
+        $charge = $client->request('get', '/v1/charges/ch_123', [], ['stripe_version' => '2019-12-03']);
+        static::assertNotNull($charge);
+        static::assertSame('2019-12-03', $this->optsReflector->getValue($charge)->headers['Stripe-Version']);
+    }
+
+    public function testRequestWithClientStripeAccount()
+    {
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_account' => 'acct_123',
+            'api_base' => MOCK_URL,
+        ]);
+        $charge = $client->request('get', '/v1/charges/ch_123', [], []);
+        static::assertNotNull($charge);
+        static::assertSame('acct_123', $this->optsReflector->getValue($charge)->headers['Stripe-Account']);
+    }
+
+    public function testRequestWithOptsStripeAccount()
+    {
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_account' => 'acct_123',
+            'api_base' => MOCK_URL,
+        ]);
+        $charge = $client->request('get', '/v1/charges/ch_123', [], ['stripe_account' => 'acct_456']);
+        static::assertNotNull($charge);
+        static::assertSame('acct_456', $this->optsReflector->getValue($charge)->headers['Stripe-Account']);
     }
 }
