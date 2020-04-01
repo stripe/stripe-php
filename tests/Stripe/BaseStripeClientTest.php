@@ -25,10 +25,18 @@ final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
         static::assertNull($client->getApiKey());
     }
 
+    public function testCtorThrowsIfConfigIsUnexpectedType()
+    {
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('$config must be a string or an array');
+
+        $client = new BaseStripeClient(234);
+    }
+
     public function testCtorThrowsIfApiKeyIsEmpty()
     {
         $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
-        $this->expectExceptionMessage('API key cannot be the empty string.');
+        $this->expectExceptionMessage('api_key cannot be the empty string');
 
         $client = new BaseStripeClient('');
     }
@@ -36,9 +44,25 @@ final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
     public function testCtorThrowsIfApiKeyContainsWhitespace()
     {
         $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
-        $this->expectExceptionMessage('API key cannot contain whitespace.');
+        $this->expectExceptionMessage('api_key cannot contain whitespace');
 
         $client = new BaseStripeClient("sk_test_123\n");
+    }
+
+    public function testCtorThrowsIfApiKeyIsUnexpectedType()
+    {
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('api_key must be null or a string');
+
+        $client = new BaseStripeClient(['api_key' => 234]);
+    }
+
+    public function testCtorThrowsIfConfigArrayContainsUnexpectedKey()
+    {
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Found unknown key(s) in configuration array: foo');
+
+        $client = new BaseStripeClient(['foo' => 'bar']);
     }
 
     public function testRequestWithClientApiKey()

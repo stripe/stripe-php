@@ -13,23 +13,11 @@ class BaseStripeClient implements StripeClientInterface
     /** @var string default base URL for Stripe's Files API */
     const DEFAULT_FILES_BASE = 'https://files.stripe.com';
 
-    /** @var null|string */
-    private $apiKey;
-
-    /** @var null|string */
-    private $clientId;
+    /** @var array<string, mixed> */
+    private $config;
 
     /** @var \Stripe\Util\RequestOptions */
     private $defaultOpts;
-
-    /** @var string */
-    private $apiBase;
-
-    /** @var string */
-    private $connectBase;
-
-    /** @var string */
-    private $filesBase;
 
     /**
      * Initializes a new instance of the {@link BaseStripeClient} class.
@@ -39,18 +27,22 @@ class BaseStripeClient implements StripeClientInterface
      *
      * Configuration settings include the following options:
      *
-     * - api_key (string): the Stripe API key, to be used in regular API requests.
-     * - client_id (string): the Stripe client ID, to be used in OAuth requests.
-     * - stripe_account (string): a Stripe account ID. If set, all requests sent by the client
+     * - api_key (null|string): the Stripe API key, to be used in regular API requests.
+     * - client_id (null|string): the Stripe client ID, to be used in OAuth requests.
+     * - stripe_account (null|string): a Stripe account ID. If set, all requests sent by the client
      *   will automatically use the {@code Stripe-Account} header with that account ID.
-     * - stripe_version (string): a Stripe API verion. If set, all requests sent by the client
+     * - stripe_version (null|string): a Stripe API verion. If set, all requests sent by the client
      *   will include the {@code Stripe-Version} header with that API version.
+     *
+     * The following configuration settings are also available, though setting these should rarely be necessary
+     * (only useful if you want to send requests to a mock server like stripe-mock):
+     *
      * - api_base (string): the base URL for regular API requests. Defaults to
-     *   {@link DEFAULT_API_BASE}. Changing this should rarely be necessary.
+     *   {@link DEFAULT_API_BASE}.
      * - connect_base (string): the base URL for OAuth requests. Defaults to
-     *   {@link DEFAULT_CONNECT_BASE}. Changing this should rarely be necessary.
+     *   {@link DEFAULT_CONNECT_BASE}.
      * - files_base (string): the base URL for file creation requests. Defaults to
-     *   {@link DEFAULT_FILES_BASE}. Changing this should rarely be necessary.
+     *   {@link DEFAULT_FILES_BASE}.
      *
      * @param array<string, mixed>|string $config the API key as a string, or an array containing
      *   the client configuration settings
@@ -59,42 +51,19 @@ class BaseStripeClient implements StripeClientInterface
     {
         if (\is_string($config)) {
             $config = ['api_key' => $config];
+        } elseif (!\is_array($config)) {
+            throw new \Stripe\Exception\InvalidArgumentException('$config must be a string or an array');
         }
 
-        $defaults = [
-            'api_key' => null,
-            'client_id' => null,
-            'stripe_account' => null,
-            'stripe_version' => null,
-            'api_base' => self::DEFAULT_API_BASE,
-            'connect_base' => self::DEFAULT_CONNECT_BASE,
-            'files_base' => self::DEFAULT_FILES_BASE,
-        ];
-        $config = \array_merge($defaults, $config);
+        $config = \array_merge($this->getDefaultConfig(), $config);
+        $this->validateConfig($config);
 
-        $apiKey = $config['api_key'];
+        $this->config = $config;
 
-        if (null !== $apiKey && ('' === $apiKey)) {
-            $msg = 'API key cannot be the empty string.';
-
-            throw new \Stripe\Exception\InvalidArgumentException($msg);
-        }
-
-        if (null !== $apiKey && (\preg_match('/\s/', $apiKey))) {
-            $msg = 'API key cannot contain whitespace.';
-
-            throw new \Stripe\Exception\InvalidArgumentException($msg);
-        }
-
-        $this->apiKey = $apiKey;
-        $this->clientId = $config['client_id'];
         $this->defaultOpts = \Stripe\Util\RequestOptions::parse([
             'stripe_account' => $config['stripe_account'],
             'stripe_version' => $config['stripe_version'],
         ]);
-        $this->apiBase = $config['api_base'];
-        $this->connectBase = $config['connect_base'];
-        $this->filesBase = $config['files_base'];
     }
 
     /**
@@ -104,7 +73,7 @@ class BaseStripeClient implements StripeClientInterface
      */
     public function getApiKey()
     {
-        return $this->apiKey;
+        return $this->config['api_key'];
     }
 
     /**
@@ -114,7 +83,7 @@ class BaseStripeClient implements StripeClientInterface
      */
     public function getClientId()
     {
-        return $this->clientId;
+        return $this->config['client_id'];
     }
 
     /**
@@ -124,7 +93,7 @@ class BaseStripeClient implements StripeClientInterface
      */
     public function getApiBase()
     {
-        return $this->apiBase;
+        return $this->config['api_base'];
     }
 
     /**
@@ -134,7 +103,7 @@ class BaseStripeClient implements StripeClientInterface
      */
     public function getConnectBase()
     {
-        return $this->connectBase;
+        return $this->config['connect_base'];
     }
 
     /**
@@ -144,7 +113,7 @@ class BaseStripeClient implements StripeClientInterface
      */
     public function getFilesBase()
     {
-        return $this->filesBase;
+        return $this->config['files_base'];
     }
 
     /**
@@ -186,9 +155,89 @@ class BaseStripeClient implements StripeClientInterface
                 . 'StripeClient instance, or provide it on a per-request basis '
                 . 'using the `api_key` key in the $opts argument.';
 
-            throw new Exception\AuthenticationException($msg);
+            throw new \Stripe\Exception\AuthenticationException($msg);
         }
 
         return $apiKey;
+    }
+
+    /**
+     * TODO: replace this with a private constant when we drop support for PHP < 5.
+     *
+     * @return array<string, mixed>
+     */
+    private function getDefaultConfig()
+    {
+        return [
+            'api_key' => null,
+            'client_id' => null,
+            'stripe_account' => null,
+            'stripe_version' => null,
+            'api_base' => self::DEFAULT_API_BASE,
+            'connect_base' => self::DEFAULT_CONNECT_BASE,
+            'files_base' => self::DEFAULT_FILES_BASE,
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $config
+     *
+     * @throws \Stripe\Exception\InvalidArgumentException
+     */
+    private function validateConfig($config)
+    {
+        // api_key
+        if (null !== $config['api_key'] && !\is_string($config['api_key'])) {
+            throw new \Stripe\Exception\InvalidArgumentException('api_key must be null or a string');
+        }
+
+        if (null !== $config['api_key'] && ('' === $config['api_key'])) {
+            $msg = 'api_key cannot be the empty string';
+
+            throw new \Stripe\Exception\InvalidArgumentException($msg);
+        }
+
+        if (null !== $config['api_key'] && (\preg_match('/\s/', $config['api_key']))) {
+            $msg = 'api_key cannot contain whitespace';
+
+            throw new \Stripe\Exception\InvalidArgumentException($msg);
+        }
+
+        // client_id
+        if (null !== $config['client_id'] && !\is_string($config['client_id'])) {
+            throw new \Stripe\Exception\InvalidArgumentException('client_id must be null or a string');
+        }
+
+        // stripe_account
+        if (null !== $config['stripe_account'] && !\is_string($config['stripe_account'])) {
+            throw new \Stripe\Exception\InvalidArgumentException('stripe_account must be null or a string');
+        }
+
+        // stripe_version
+        if (null !== $config['stripe_version'] && !\is_string($config['stripe_version'])) {
+            throw new \Stripe\Exception\InvalidArgumentException('stripe_version must be null or a string');
+        }
+
+        // api_base
+        if (!\is_string($config['api_base'])) {
+            throw new \Stripe\Exception\InvalidArgumentException('api_base must be a string');
+        }
+
+        // connect_base
+        if (!\is_string($config['connect_base'])) {
+            throw new \Stripe\Exception\InvalidArgumentException('connect_base must be a string');
+        }
+
+        // files_base
+        if (!\is_string($config['files_base'])) {
+            throw new \Stripe\Exception\InvalidArgumentException('files_base must be a string');
+        }
+
+        // check absence of extra keys
+        $validConfigKeys = \array_keys($this->getDefaultConfig());
+        $extraConfigKeys = \array_diff(\array_keys($config), \array_keys($this->getDefaultConfig()));
+        if (!empty($extraConfigKeys)) {
+            throw new \Stripe\Exception\InvalidArgumentException('Found unknown key(s) in configuration array: ' . \implode(',', $extraConfigKeys));
+        }
     }
 }
