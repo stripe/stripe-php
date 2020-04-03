@@ -41,6 +41,8 @@ class CustomerBalanceTransaction extends ApiResource
     const TYPE_INVOICE_TOO_SMALL = 'invoice_too_small';
     const TYPE_UNSPENT_RECEIVER_CREDIT = 'unspent_receiver_credit';
 
+    const TYPE_ADJUSTEMENT = 'adjustment';
+
     /**
      * @return string the API URL for this balance transaction
      */
