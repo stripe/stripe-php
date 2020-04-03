@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.28.0 - 2020-04-03
+* [#912](https://github.com/stripe/stripe-php/pull/912) Preserve backwards compatibility for typoed `TYPE_ADJUSTEMENT` enum.
+* [#911](https://github.com/stripe/stripe-php/pull/911) Codegenerated PHPDoc for nested resources
+* [#902](https://github.com/stripe/stripe-php/pull/902) Update docstrings for nested resources
+
 ## 7.27.3 - 2020-03-18
 * [#899](https://github.com/stripe/stripe-php/pull/899) Convert keys to strings in `StripeObject::toArray()`
 
