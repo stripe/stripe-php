@@ -3,11 +3,12 @@
 namespace Stripe;
 
 /**
- * A SetupIntent guides you through the process of setting up a customer's payment
- * credentials for future payments. For example, you could use a SetupIntent to set
- * up your customer's card without immediately collecting a payment. Later, you can
- * use <a href="https://stripe.com/docs/api#payment_intents">PaymentIntents</a> to
- * drive the payment flow.
+ * A SetupIntent guides you through the process of setting up and saving a
+ * customer's payment credentials for future payments. For example, you could use a
+ * SetupIntent to set up and save your customer's card without immediately
+ * collecting a payment. Later, you can use <a
+ * href="https://stripe.com/docs/api#payment_intents">PaymentIntents</a> to drive
+ * the payment flow.
  *
  * Create a SetupIntent as soon as you're ready to collect your customer's payment
  * credentials. Do not maintain long-lived, unconfirmed SetupIntents as they may no
@@ -23,6 +24,13 @@ namespace Stripe;
  * Authentication</a> at the time of payment method collection in order to
  * streamline later <a
  * href="https://stripe.com/docs/payments/setup-intents">off-session payments</a>.
+ * If the SetupIntent is used with a <a
+ * href="https://stripe.com/docs/api#setup_intent_object-customer">Customer</a>,
+ * upon success, it will automatically attach the resulting payment method to that
+ * Customer. We recommend using SetupIntents or <a
+ * href="https://stripe.com/docs/api#payment_intent_object-setup_future_usage">setup_future_usage</a>
+ * on PaymentIntents to save payment methods in order to prevent saving invalid or
+ * unoptimized payment methods.
  *
  * By using SetupIntents, you ensure that your customers experience the minimum set
  * of required friction, even as regulations change over time.
@@ -36,7 +44,7 @@ namespace Stripe;
  * @property null|string $cancellation_reason Reason for cancellation of this SetupIntent, one of <code>abandoned</code>, <code>requested_by_customer</code>, or <code>duplicate</code>.
  * @property null|string $client_secret <p>The client secret of this SetupIntent. Used for client-side retrieval using a publishable key.</p><p>The client secret can be used to complete payment setup from your frontend. It should not be stored, logged, embedded in URLs, or exposed to anyone other than the customer. Make sure that you have TLS enabled on any page that includes the client secret.</p>
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|string|\Stripe\Customer $customer <p>ID of the Customer this SetupIntent belongs to, if one exists.</p><p>If present, payment methods used with this SetupIntent can only be attached to this Customer, and payment methods attached to other Customers cannot be used with this SetupIntent.</p>
+ * @property null|string|\Stripe\Customer $customer <p>ID of the Customer this SetupIntent belongs to, if one exists.</p><p>If present, the SetupIntent's payment method will be attached to the Customer on successful setup. Payment methods attached to other Customers cannot be used with this SetupIntent.</p>
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|\Stripe\ErrorObject $last_setup_error The error encountered in the previous SetupIntent confirmation.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.

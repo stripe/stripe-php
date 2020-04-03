@@ -41,19 +41,9 @@ class Person extends ApiResource
     use ApiOperations\Delete;
     use ApiOperations\Update;
 
-    /**
-     * Possible string representations of a person's gender.
-     *
-     * @see https://stripe.com/docs/api/persons/object#person_object-gender
-     */
-    const GENDER_MALE = 'male';
     const GENDER_FEMALE = 'female';
+    const GENDER_MALE = 'male';
 
-    /**
-     * Possible string representations of a person's verification status.
-     *
-     * @see https://stripe.com/docs/api/persons/object#person_object-verification-status
-     */
     const VERIFICATION_STATUS_PENDING = 'pending';
     const VERIFICATION_STATUS_UNVERIFIED = 'unverified';
     const VERIFICATION_STATUS_VERIFIED = 'verified';

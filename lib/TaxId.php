@@ -26,11 +26,6 @@ class TaxId extends ApiResource
 
     use ApiOperations\Delete;
 
-    /**
-     * Possible string representations of a tax id's type.
-     *
-     * @see https://stripe.com/docs/api/customer_tax_ids/object#tax_id_object-type
-     */
     const TYPE_AU_ABN = 'au_abn';
     const TYPE_CA_BN = 'ca_bn';
     const TYPE_CA_QST = 'ca_qst';
@@ -51,15 +46,10 @@ class TaxId extends ApiResource
     const TYPE_SG_UEN = 'sg_uen';
     const TYPE_TH_VAT = 'th_vat';
     const TYPE_TW_VAT = 'tw_vat';
-    const TYPE_US_EIN = 'us_ein';
     const TYPE_UNKNOWN = 'unknown';
+    const TYPE_US_EIN = 'us_ein';
     const TYPE_ZA_VAT = 'za_vat';
 
-    /**
-     * Possible string representations of the verification status.
-     *
-     * @see https://stripe.com/docs/api/customer_tax_ids/object#tax_id_object-verification
-     */
     const VERIFICATION_STATUS_PENDING = 'pending';
     const VERIFICATION_STATUS_UNAVAILABLE = 'unavailable';
     const VERIFICATION_STATUS_UNVERIFIED = 'unverified';
