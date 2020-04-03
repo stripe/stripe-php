@@ -33,12 +33,7 @@ class CustomerBalanceTransaction extends ApiResource
 {
     const OBJECT_NAME = 'customer_balance_transaction';
 
-    /**
-     * Possible string representations of a balance transaction's type.
-     *
-     * @see https://stripe.com/docs/api/customers/customer_balance_transaction_object#customer_balance_transaction_object-type
-     */
-    const TYPE_ADJUSTEMENT = 'adjustment';
+    const TYPE_ADJUSTMENT = 'adjustment';
     const TYPE_APPLIED_TO_INVOICE = 'applied_to_invoice';
     const TYPE_CREDIT_NOTE = 'credit_note';
     const TYPE_INITIAL = 'initial';

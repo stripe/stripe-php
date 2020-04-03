@@ -4,10 +4,12 @@ namespace Stripe\Issuing;
 
 /**
  * As a <a href="https://stripe.com/docs/issuing">card issuer</a>, you can <a
- * href="https://stripe.com/docs/issuing/disputes">dispute</a> transactions that
- * you do not recognize, suspect to be fraudulent, or have some other issue.
+ * href="https://stripe.com/docs/issuing/purchases/disputes">dispute</a>
+ * transactions that you do not recognize, suspect to be fraudulent, or have some
+ * other issue.
  *
- * Related guide: <a href="https://stripe.com/docs/issuing/disputes">Disputing
+ * Related guide: <a
+ * href="https://stripe.com/docs/issuing/purchases/disputes">Disputing
  * Transactions</a>
  *
  * @property string $id Unique identifier for the object.

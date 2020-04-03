@@ -20,6 +20,7 @@ namespace Stripe\Issuing;
  * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $name The name of the cardholder, printed on the card.
  * @property null|\Stripe\StripeObject $pin Metadata about the PIN on the card.
+ * @property null|string|\Stripe\Issuing\Card $replaced_by The latest card that replaces this card, if any.
  * @property null|string|\Stripe\Issuing\Card $replacement_for The card this card replaces, if any.
  * @property null|string $replacement_reason The reason why the previous card needed to be replaced.
  * @property null|\Stripe\StripeObject $shipping Where and how the card will be shipped.
