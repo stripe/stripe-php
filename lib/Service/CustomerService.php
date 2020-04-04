@@ -174,9 +174,9 @@ class CustomerService extends \Stripe\Service\AbstractService
 
     /**
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -191,9 +191,9 @@ class CustomerService extends \Stripe\Service\AbstractService
      * Deletes an existing <code>TaxID</code> object.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -226,9 +226,9 @@ class CustomerService extends \Stripe\Service\AbstractService
      * href="/docs/api/customers/object#customer_object-balance"><code>balance</code></a>.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -243,9 +243,9 @@ class CustomerService extends \Stripe\Service\AbstractService
      * Retrieve a specified source for a given customer.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -260,9 +260,9 @@ class CustomerService extends \Stripe\Service\AbstractService
      * Retrieves the <code>TaxID</code> object with the given identifier.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -306,9 +306,9 @@ class CustomerService extends \Stripe\Service\AbstractService
      * <code>description</code> and <code>metadata</code>.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -321,9 +321,9 @@ class CustomerService extends \Stripe\Service\AbstractService
 
     /**
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -336,9 +336,9 @@ class CustomerService extends \Stripe\Service\AbstractService
 
     /**
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

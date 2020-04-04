@@ -37,9 +37,9 @@ class SourceService extends \Stripe\Service\AbstractService
      * Delete a specified source for a given customer.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

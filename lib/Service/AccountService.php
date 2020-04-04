@@ -175,9 +175,9 @@ class AccountService extends \Stripe\Service\AbstractService
      * Delete a specified external account for a given account.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -196,9 +196,9 @@ class AccountService extends \Stripe\Service\AbstractService
      * <code>executive</code> on file.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -232,9 +232,9 @@ class AccountService extends \Stripe\Service\AbstractService
      * Retrieves information about the specified Account Capability.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -249,9 +249,9 @@ class AccountService extends \Stripe\Service\AbstractService
      * Retrieve a specified external account for a given account.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -266,9 +266,9 @@ class AccountService extends \Stripe\Service\AbstractService
      * Retrieves an existing person.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -308,9 +308,9 @@ class AccountService extends \Stripe\Service\AbstractService
      * Updates an existing Account Capability.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -330,9 +330,9 @@ class AccountService extends \Stripe\Service\AbstractService
      * changes.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -347,9 +347,9 @@ class AccountService extends \Stripe\Service\AbstractService
      * Updates an existing person.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

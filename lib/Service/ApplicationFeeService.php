@@ -88,9 +88,9 @@ class ApplicationFeeService extends \Stripe\Service\AbstractService
      * refund stored on the application fee.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -108,9 +108,9 @@ class ApplicationFeeService extends \Stripe\Service\AbstractService
      * This request only accepts metadata as an argument.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
