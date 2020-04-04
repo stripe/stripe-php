@@ -119,9 +119,9 @@ class TransferService extends \Stripe\Service\AbstractService
      * stored on the transfer.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -158,9 +158,9 @@ class TransferService extends \Stripe\Service\AbstractService
      * This request only accepts metadata and description as arguments.
      *
      * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

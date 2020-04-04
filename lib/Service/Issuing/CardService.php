@@ -38,7 +38,7 @@ class CardService extends \Stripe\Service\AbstractService
 
     /**
      * For virtual cards only. Retrieves an Issuing <code>card_details</code> object
-     * that contains <a href="/docs/issuing/cards/management#virtual-card-info">the
+     * that contains <a href="/docs/issuing/cards/virtual#virtual-card-info">the
      * sensitive details</a> of a virtual card.
      *
      * @param string $id
