@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.28.1 - 2020-04-10
+* [#915](https://github.com/stripe/stripe-php/pull/915) Improve PHPdocs for many classes
+
 ## 7.28.0 - 2020-04-03
 * [#912](https://github.com/stripe/stripe-php/pull/912) Preserve backwards compatibility for typoed `TYPE_ADJUSTEMENT` enum.
 * [#911](https://github.com/stripe/stripe-php/pull/911) Codegenerated PHPDoc for nested resources
