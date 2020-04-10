@@ -12,7 +12,7 @@ namespace Stripe\Issuing;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\Stripe\StripeObject $authorization_controls Spending rules that give you some control over how this cardholder's cards can be used. Refer to our <a href="https://stripe.com/docs/issuing/purchases/authorizations">authorizations</a> documentation for more details.
+ * @property null|\Stripe\StripeObject $authorization_controls [DEPRECATED] Spending rules that give you some control over how this cardholder's cards can be used. Refer to our <a href="https://stripe.com/docs/issuing/purchases/authorizations">authorizations</a> documentation for more details.
  * @property \Stripe\StripeObject $billing
  * @property null|\Stripe\StripeObject $company Additional information about a <code>company</code> cardholder.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -24,6 +24,7 @@ namespace Stripe\Issuing;
  * @property string $name The cardholder's name. This will be printed on cards issued to them.
  * @property null|string $phone_number The cardholder's phone number.
  * @property \Stripe\StripeObject $requirements
+ * @property null|\Stripe\StripeObject $spending_controls Spending rules that give you some control over how this cardholder's cards can be used. Refer to our <a href="https://stripe.com/docs/issuing/purchases/authorizations">authorizations</a> documentation for more details.
  * @property string $status Specifies whether to permit authorizations on this cardholder's cards.
  * @property string $type One of <code>individual</code> or <code>company</code>.
  */

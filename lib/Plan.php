@@ -8,9 +8,11 @@ namespace Stripe;
  * provides limited access to your products, and a
  * &lt;currency&gt;15&lt;/currency&gt;/month plan that allows full access.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/billing/subscriptions/products-and-plans">Managing
- * Products and Plans</a>.
+ * Related guides: <a
+ * href="https://stripe.com/docs/billing/subscriptions/set-up-subscription">Set up
+ * a subscription</a> and more about <a
+ * href="https://stripe.com/docs/billing/subscriptions/products-and-plans">products
+ * and plans</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
