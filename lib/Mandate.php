@@ -14,8 +14,8 @@ namespace Stripe;
  * @property string|\Stripe\PaymentMethod $payment_method ID of the payment method associated with this mandate.
  * @property \Stripe\StripeObject $payment_method_details
  * @property \Stripe\StripeObject $single_use
- * @property string $status The status of the Mandate, one of <code>pending</code>, <code>inactive</code>, or <code>active</code>. The Mandate can be used to initiate a payment only if status=active.
- * @property string $type The type of the mandate, one of <code>single_use</code> or <code>multi_use</code>
+ * @property string $status The status of the mandate, which indicates whether it can be used to initiate a payment.
+ * @property string $type The type of the mandate.
  */
 class Mandate extends ApiResource
 {

@@ -98,7 +98,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $threshold_reason
  * @property int $total Total after discounts and taxes.
  * @property null|\Stripe\StripeObject[] $total_tax_amounts The aggregate amounts calculated per tax rate for all line items.
- * @property null|int $webhooks_delivered_at The time at which webhooks for this invoice were successfully delivered (if the invoice had no webhooks to deliver, this will match <code>created</code>). Invoice payment is delayed until webhooks are delivered, or until all webhook delivery attempts have been exhausted.
+ * @property null|int $webhooks_delivered_at Invoices are automatically paid or sent 1 hour after webhooks are delivered, or until all webhook delivery attempts have <a href="https://stripe.com/docs/billing/webhooks#understand">been exhausted</a>. This field tracks the time when webhooks for this invoice were successfully delivered. If the invoice had no webhooks to deliver, this will be set while the invoice is being created.
  */
 class Invoice extends ApiResource
 {
