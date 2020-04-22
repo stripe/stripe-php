@@ -24,7 +24,6 @@ namespace Stripe;
  * @property \Stripe\StripeObject[] $phases Configuration for the subscription schedule's phases.
  * @property null|int $released_at Time at which the subscription schedule was released. Measured in seconds since the Unix epoch.
  * @property null|string $released_subscription ID of the subscription once managed by the subscription schedule (if it is released).
- * @property null|\Stripe\StripeObject $renewal_interval This field has been deprecated. Interval and duration at which the subscription schedule renews for when it ends if <code>renewal_behavior</code> is <code>renew</code>.
  * @property string $status The present status of the subscription schedule. Possible values are <code>not_started</code>, <code>active</code>, <code>completed</code>, <code>released</code>, and <code>canceled</code>. You can read more about the different states in our <a href="https://stripe.com/docs/billing/subscriptions/subscription-schedules">behavior guide</a>.
  * @property null|string|\Stripe\Subscription $subscription ID of the subscription managed by the subscription schedule.
  */

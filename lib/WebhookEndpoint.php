@@ -19,6 +19,7 @@ namespace Stripe;
  * @property null|string $api_version The API version events are rendered as for this webhook endpoint.
  * @property null|string $application The ID of the associated Connect application.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
+ * @property null|string $description An optional description of what the wehbook is used for.
  * @property string[] $enabled_events The list of events to enable for this endpoint. <code>['*']</code> indicates that all events are enabled, except those that require explicit selection.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
