@@ -70,6 +70,7 @@ require __DIR__ . '/lib/ApplicationFeeRefund.php';
 require __DIR__ . '/lib/Balance.php';
 require __DIR__ . '/lib/BalanceTransaction.php';
 require __DIR__ . '/lib/BankAccount.php';
+require __DIR__ . '/lib/BillingPortal/Session.php';
 require __DIR__ . '/lib/BitcoinReceiver.php';
 require __DIR__ . '/lib/BitcoinTransaction.php';
 require __DIR__ . '/lib/Capability.php';
