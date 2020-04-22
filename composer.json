@@ -25,7 +25,7 @@
     "php-coveralls/php-coveralls": "^2.1",
     "squizlabs/php_codesniffer": "^3.3",
     "symfony/process": "~3.4",
-    "friendsofphp/php-cs-fixer": "^2.15"
+    "friendsofphp/php-cs-fixer": "2.16.1"
   },
   "autoload": {
     "psr-4": {
