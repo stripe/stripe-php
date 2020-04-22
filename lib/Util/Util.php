@@ -57,6 +57,7 @@ abstract class Util
             \Stripe\Balance::OBJECT_NAME => \Stripe\Balance::class,
             \Stripe\BalanceTransaction::OBJECT_NAME => \Stripe\BalanceTransaction::class,
             \Stripe\BankAccount::OBJECT_NAME => \Stripe\BankAccount::class,
+            \Stripe\BillingPortal\Session::OBJECT_NAME => \Stripe\BillingPortal\Session::class,
             \Stripe\BitcoinReceiver::OBJECT_NAME => \Stripe\BitcoinReceiver::class,
             \Stripe\BitcoinTransaction::OBJECT_NAME => \Stripe\BitcoinTransaction::class,
             \Stripe\Capability::OBJECT_NAME => \Stripe\Capability::class,
