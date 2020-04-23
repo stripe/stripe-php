@@ -11,6 +11,7 @@ require __DIR__ . '/lib/Util/RandomGenerator.php';
 require __DIR__ . '/lib/Util/RequestOptions.php';
 require __DIR__ . '/lib/Util/Set.php';
 require __DIR__ . '/lib/Util/Util.php';
+require __DIR__ . '/lib/Util/ObjectTypes.php';
 
 // HttpClient
 require __DIR__ . '/lib/HttpClient/ClientInterface.php';
