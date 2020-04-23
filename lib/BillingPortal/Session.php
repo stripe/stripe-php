@@ -3,14 +3,14 @@
 namespace Stripe\BillingPortal;
 
 /**
- * A Session describes the instantiation of the Self-serve Portal for a particular
- * customer. By visiting the Self-serve Portal's URL, the customer can manage their
+ * A Session describes the instantiation of the self-serve portal for a particular
+ * customer. By visiting the self-serve portal's URL, the customer can manage their
  * subscriptions and view their invoice payment history. For security reasons,
  * Sessions are short-lived and will expire if the customer does not visit the URL.
  * Create Sessions on-demand.
  *
  * Related guide: <a
- * href="https://stripe.com/docs/billing/subscriptions/integrating-self-serve">Self-serve
+ * href="https://stripe.com/docs/billing/subscriptions/integrating-self-serve">self-serve
  * Portal</a>.
  *
  * @property string $id Unique identifier for the object.
