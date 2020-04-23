@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Stripe\Util;
 
@@ -8,9 +8,11 @@ namespace Stripe\Util;
  */
 final class ObjectTypesTest extends \PHPUnit\Framework\TestCase
 {
-  use \Stripe\TestHelper;
-  public function testMapping() {
-    static::assertSame(\Stripe\Util\ObjectTypes::mapping['charge'], \Stripe\Charge::class);
-    static::assertSame(\Stripe\Util\ObjectTypes::mapping['checkout.session'], \Stripe\Checkout\Session::class);
-  }
+    use \Stripe\TestHelper;
+
+    public function testMapping()
+    {
+        static::assertSame(\Stripe\Util\ObjectTypes::mapping['charge'], \Stripe\Charge::class);
+        static::assertSame(\Stripe\Util\ObjectTypes::mapping['checkout.session'], \Stripe\Checkout\Session::class);
+    }
 }
