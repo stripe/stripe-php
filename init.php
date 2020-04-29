@@ -112,6 +112,7 @@ require __DIR__ . '/lib/PaymentMethod.php';
 require __DIR__ . '/lib/Payout.php';
 require __DIR__ . '/lib/Person.php';
 require __DIR__ . '/lib/Plan.php';
+require __DIR__ . '/lib/Price.php';
 require __DIR__ . '/lib/Product.php';
 require __DIR__ . '/lib/Radar/EarlyFraudWarning.php';
 require __DIR__ . '/lib/Radar/ValueList.php';
