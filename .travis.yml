@@ -37,7 +37,7 @@ matrix:
 
 env:
   global:
-    - STRIPE_MOCK_VERSION=0.88.0
+    - STRIPE_MOCK_VERSION=0.89.0
 cache:
   directories:
     - $HOME/.composer/cache/files
