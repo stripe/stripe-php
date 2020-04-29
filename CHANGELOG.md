@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.30.0 - 2020-04-29
+* [#924](https://github.com/stripe/stripe-php/pull/924) Add support for the `Price` resource and APIs
+
 ## 7.29.0 - 2020-04-22
 * [#920](https://github.com/stripe/stripe-php/pull/920) Add support for the `Session` resource and APIs on the `BillingPortal` namespace
 
