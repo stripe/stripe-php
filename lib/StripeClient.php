@@ -11,6 +11,7 @@ namespace Stripe;
  * @property \Stripe\Service\ApplicationFeeService $applicationFees
  * @property \Stripe\Service\BalanceTransactionService $balanceTransactions
  * @property \Stripe\Service\BalanceService $balances
+ * @property \Stripe\Service\BillingPortal\BillingPortalServiceFactory $billingPortal
  * @property \Stripe\Service\ChargeService $charges
  * @property \Stripe\Service\Checkout\CheckoutServiceFactory $checkout
  * @property \Stripe\Service\CountrySpecService $countrySpecs
@@ -33,6 +34,7 @@ namespace Stripe;
  * @property \Stripe\Service\PaymentMethodService $paymentMethods
  * @property \Stripe\Service\PayoutService $payouts
  * @property \Stripe\Service\PlanService $plans
+ * @property \Stripe\Service\PriceService $prices
  * @property \Stripe\Service\ProductService $products
  * @property \Stripe\Service\Radar\RadarServiceFactory $radar
  * @property \Stripe\Service\RefundService $refunds
