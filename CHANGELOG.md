@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.31.0 - 2020-05-01
+* [#927](https://github.com/stripe/stripe-php/pull/927) Add support for new tax IDs
+
 ## 7.30.0 - 2020-04-29
 * [#924](https://github.com/stripe/stripe-php/pull/924) Add support for the `Price` resource and APIs
 
