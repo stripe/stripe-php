@@ -40,10 +40,7 @@ final class DisputeServiceTest extends \PHPUnit\Framework\TestCase
 
     public function testCreate()
     {
-        $params = [
-            'reason' => 'fraudulent',
-            'disputed_transaction' => 'ipi_123',
-        ];
+        $params = [];
 
         $this->expectsRequest(
             'post',

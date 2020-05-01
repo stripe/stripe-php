@@ -22,7 +22,10 @@ class AuthorizationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Approves a pending Issuing <code>Authorization</code> object.
+     * Approves a pending Issuing <code>Authorization</code> object. This request
+     * should be made within the timeout window of the <a
+     * href="/docs/issuing/controls/real-time-authorizations">real-time
+     * authorization</a> flow.
      *
      * @param string $id
      * @param null|array $params
@@ -38,7 +41,10 @@ class AuthorizationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Declines a pending Issuing <code>Authorization</code> object.
+     * Declines a pending Issuing <code>Authorization</code> object. This request
+     * should be made within the timeout window of the <a
+     * href="/docs/issuing/controls/real-time-authorizations">real time
+     * authorization</a> flow.
      *
      * @param string $id
      * @param null|array $params
