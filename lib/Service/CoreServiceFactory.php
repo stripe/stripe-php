@@ -11,6 +11,7 @@ namespace Stripe\Service;
  * @property ApplicationFeeService $applicationFees
  * @property BalanceTransactionService $balanceTransactions
  * @property BalanceService $balances
+ * @property BillingPortal\BillingPortalServiceFactory $billingPortal
  * @property ChargeService $charges
  * @property Checkout\CheckoutServiceFactory $checkout
  * @property CountrySpecService $countrySpecs
@@ -33,6 +34,7 @@ namespace Stripe\Service;
  * @property PaymentMethodService $paymentMethods
  * @property PayoutService $payouts
  * @property PlanService $plans
+ * @property PriceService $prices
  * @property ProductService $products
  * @property Radar\RadarServiceFactory $radar
  * @property RefundService $refunds
@@ -64,6 +66,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'applicationFees' => ApplicationFeeService::class,
         'balanceTransactions' => BalanceTransactionService::class,
         'balances' => BalanceService::class,
+        'billingPortal' => BillingPortal\BillingPortalServiceFactory::class,
         'charges' => ChargeService::class,
         'checkout' => Checkout\CheckoutServiceFactory::class,
         'countrySpecs' => CountrySpecService::class,
@@ -86,6 +89,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'paymentMethods' => PaymentMethodService::class,
         'payouts' => PayoutService::class,
         'plans' => PlanService::class,
+        'prices' => PriceService::class,
         'products' => ProductService::class,
         'radar' => Radar\RadarServiceFactory::class,
         'refunds' => RefundService::class,

@@ -1,21 +1,21 @@
 <?php
 
-namespace Stripe\Service\Issuing;
+namespace Stripe\Service;
 
 /**
  * @internal
- * @covers \Stripe\Service\Issuing\CardService
+ * @covers \Stripe\Service\PriceService
  */
-final class CardServiceTest extends \PHPUnit\Framework\TestCase
+final class PriceServiceTest extends \PHPUnit\Framework\TestCase
 {
     use \Stripe\TestHelper;
 
-    const TEST_RESOURCE_ID = 'ic_123';
+    const TEST_RESOURCE_ID = 'prod_123';
 
     /** @var \Stripe\StripeClient */
     private $client;
 
-    /** @var CardService */
+    /** @var PriceService */
     private $service;
 
     /**
@@ -24,52 +24,58 @@ final class CardServiceTest extends \PHPUnit\Framework\TestCase
     protected function setUpService()
     {
         $this->client = new \Stripe\StripeClient(['api_key' => 'sk_test_123', 'api_base' => MOCK_URL]);
-        $this->service = new CardService($this->client);
+        $this->service = new PriceService($this->client);
     }
 
     public function testAll()
     {
         $this->expectsRequest(
             'get',
-            '/v1/issuing/cards'
+            '/v1/prices'
         );
         $resources = $this->service->all();
         static::assertInternalType('array', $resources->data);
-        static::assertInstanceOf(\Stripe\Issuing\Card::class, $resources->data[0]);
+        static::assertInstanceOf(\Stripe\Price::class, $resources->data[0]);
     }
 
     public function testCreate()
     {
         $this->expectsRequest(
             'post',
-            '/v1/issuing/cards'
+            '/v1/prices'
         );
         $resource = $this->service->create([
+            'unit_amount' => 2000,
             'currency' => 'usd',
-            'type' => 'physical',
+            'recurring' => [
+                'interval' => 'month',
+            ],
+            'product_data' => [
+                'name' => 'Product Name',
+            ],
         ]);
-        static::assertInstanceOf(\Stripe\Issuing\Card::class, $resource);
+        static::assertInstanceOf(\Stripe\Price::class, $resource);
     }
 
     public function testRetrieve()
     {
         $this->expectsRequest(
             'get',
-            '/v1/issuing/cards/' . self::TEST_RESOURCE_ID
+            '/v1/prices/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Issuing\Card::class, $resource);
+        static::assertInstanceOf(\Stripe\Price::class, $resource);
     }
 
     public function testUpdate()
     {
         $this->expectsRequest(
             'post',
-            '/v1/issuing/cards/' . self::TEST_RESOURCE_ID
+            '/v1/prices/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Issuing\Card::class, $resource);
+        static::assertInstanceOf(\Stripe\Price::class, $resource);
     }
 }

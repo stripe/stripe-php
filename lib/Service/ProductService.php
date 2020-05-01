@@ -21,8 +21,7 @@ class ProductService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a new product object. To create a product for use with orders, see <a
-     * href="#create_product">Products</a>.
+     * Creates a new product object.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts

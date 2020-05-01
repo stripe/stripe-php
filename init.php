@@ -159,6 +159,7 @@ require __DIR__ . '/lib/Service/ApplePayDomainService.php';
 require __DIR__ . '/lib/Service/ApplicationFeeService.php';
 require __DIR__ . '/lib/Service/BalanceService.php';
 require __DIR__ . '/lib/Service/BalanceTransactionService.php';
+require __DIR__ . '/lib/Service/BillingPortal/SessionService.php';
 require __DIR__ . '/lib/Service/ChargeService.php';
 require __DIR__ . '/lib/Service/Checkout/SessionService.php';
 require __DIR__ . '/lib/Service/CountrySpecService.php';
@@ -185,6 +186,7 @@ require __DIR__ . '/lib/Service/PaymentIntentService.php';
 require __DIR__ . '/lib/Service/PaymentMethodService.php';
 require __DIR__ . '/lib/Service/PayoutService.php';
 require __DIR__ . '/lib/Service/PlanService.php';
+require __DIR__ . '/lib/Service/PriceService.php';
 require __DIR__ . '/lib/Service/ProductService.php';
 require __DIR__ . '/lib/Service/Radar/EarlyFraudWarningService.php';
 require __DIR__ . '/lib/Service/Radar/ValueListService.php';
@@ -211,6 +213,7 @@ require __DIR__ . '/lib/Service/WebhookEndpointService.php';
 
 // Service factories
 require __DIR__ . '/lib/Service/CoreServiceFactory.php';
+require __DIR__ . '/lib/Service/BillingPortal/BillingPortalServiceFactory.php';
 require __DIR__ . '/lib/Service/Checkout/CheckoutServiceFactory.php';
 require __DIR__ . '/lib/Service/Issuing/IssuingServiceFactory.php';
 require __DIR__ . '/lib/Service/Radar/RadarServiceFactory.php';
