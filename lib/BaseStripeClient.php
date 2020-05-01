@@ -128,6 +128,7 @@ class BaseStripeClient implements StripeClientInterface
      */
     public function request($method, $path, $params, $opts)
     {
+        $params = $this->prepareParams($params);
         $opts = $this->defaultOpts->merge($opts, true);
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new \Stripe\ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
@@ -159,6 +160,21 @@ class BaseStripeClient implements StripeClientInterface
         }
 
         return $apiKey;
+    }
+
+    private function prepareParams($params)
+    {
+        if (null === $params) {
+            return null;
+        }
+
+        \array_walk($params, function (&$value, $key) {
+            if (null === $value) {
+                $value = '';
+            }
+        });
+
+        return $params;
     }
 
     /**
