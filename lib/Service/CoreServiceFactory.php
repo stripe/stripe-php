@@ -9,8 +9,8 @@ namespace Stripe\Service;
  * @property AccountService $accounts
  * @property ApplePayDomainService $applePayDomains
  * @property ApplicationFeeService $applicationFees
- * @property BalanceTransactionService $balanceTransactions
  * @property BalanceService $balances
+ * @property BalanceTransactionService $balanceTransactions
  * @property BillingPortal\BillingPortalServiceFactory $billingPortal
  * @property ChargeService $charges
  * @property Checkout\CheckoutServiceFactory $checkout
@@ -45,8 +45,8 @@ namespace Stripe\Service;
  * @property SkuService $skus
  * @property SourceService $sources
  * @property SubscriptionItemService $subscriptionItems
- * @property SubscriptionScheduleService $subscriptionSchedules
  * @property SubscriptionService $subscriptions
+ * @property SubscriptionScheduleService $subscriptionSchedules
  * @property TaxRateService $taxRates
  * @property Terminal\TerminalServiceFactory $terminal
  * @property TokenService $tokens
@@ -64,8 +64,8 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'accounts' => AccountService::class,
         'applePayDomains' => ApplePayDomainService::class,
         'applicationFees' => ApplicationFeeService::class,
-        'balanceTransactions' => BalanceTransactionService::class,
         'balances' => BalanceService::class,
+        'balanceTransactions' => BalanceTransactionService::class,
         'billingPortal' => BillingPortal\BillingPortalServiceFactory::class,
         'charges' => ChargeService::class,
         'checkout' => Checkout\CheckoutServiceFactory::class,
@@ -100,8 +100,8 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'skus' => SkuService::class,
         'sources' => SourceService::class,
         'subscriptionItems' => SubscriptionItemService::class,
-        'subscriptionSchedules' => SubscriptionScheduleService::class,
         'subscriptions' => SubscriptionService::class,
+        'subscriptionSchedules' => SubscriptionScheduleService::class,
         'taxRates' => TaxRateService::class,
         'terminal' => Terminal\TerminalServiceFactory::class,
         'tokens' => TokenService::class,
