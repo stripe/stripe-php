@@ -32,9 +32,22 @@ abstract class AbstractService
         return $this->client;
     }
 
+    private static function formatParams($params)
+    {
+      $formatted = [];
+      foreach ($params as $k => $v) {
+        if (null === $v) {
+          $formatted[$k] = "";
+        } else {
+          $formatted[$k] = $v;
+        }
+      }
+      return $formatted;
+    }
+
     protected function request($method, $path, $params, $opts)
     {
-        return $this->getClient()->request($method, $path, $params, $opts);
+        return $this->getClient()->request($method, $path, static::formatParams($params), $opts);
     }
 
     protected function buildPath($basePath, ...$ids)
