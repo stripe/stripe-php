@@ -51,4 +51,15 @@ final class SessionTest extends \PHPUnit\Framework\TestCase
         $resource = Session::retrieve(self::TEST_RESOURCE_ID);
         static::assertInstanceOf(\Stripe\Checkout\Session::class, $resource);
     }
+
+    public function testCanListLineItems()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/checkout/sessions/' . self::TEST_RESOURCE_ID . '/line_items'
+        );
+        $resources = Session::allLineItems(self::TEST_RESOURCE_ID);
+        static::assertInternalType('array', $resources->data);
+        static::assertInstanceOf(\Stripe\LineItem::class, $resources->data[0]);
+    }
 }

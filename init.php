@@ -102,6 +102,7 @@ require __DIR__ . '/lib/Issuing/CardDetails.php';
 require __DIR__ . '/lib/Issuing/Cardholder.php';
 require __DIR__ . '/lib/Issuing/Dispute.php';
 require __DIR__ . '/lib/Issuing/Transaction.php';
+require __DIR__ . '/lib/LineItem.php';
 require __DIR__ . '/lib/LoginLink.php';
 require __DIR__ . '/lib/Mandate.php';
 require __DIR__ . '/lib/Order.php';
