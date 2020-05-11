@@ -26,6 +26,14 @@ final class AbstractServiceTest extends \PHPUnit\Framework\TestCase
         $this->service = new \Stripe\Service\CouponService($this->client);
     }
 
+    public function testNullGetsEmptyStringified()
+    {
+      $this->expectException(\Stripe\Exception\InvalidRequestException::class);
+      $this->service->update("id", [
+        "doesnotexist" => null
+      ]);
+    }
+
     public function testRetrieveThrowsIfIdNullIsNull()
     {
         $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
