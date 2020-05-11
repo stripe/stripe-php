@@ -32,8 +32,19 @@ abstract class AbstractService
         return $this->client;
     }
 
+    /**
+     * Translate null values to empty strings. For service methods,
+     * we interpret null as a request to unset the field, which
+     * corresponds to sending an empty string for the field to the
+     * API.
+     *
+     * @param null|array $params
+     */
     private static function formatParams($params)
     {
+      if (null === $params) {
+        return $params;
+      }
       $formatted = [];
       foreach ($params as $k => $v) {
         if (null === $v) {
