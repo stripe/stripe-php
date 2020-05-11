@@ -28,10 +28,10 @@ final class AbstractServiceTest extends \PHPUnit\Framework\TestCase
 
     public function testNullGetsEmptyStringified()
     {
-      $this->expectException(\Stripe\Exception\InvalidRequestException::class);
-      $this->service->update("id", [
-        "doesnotexist" => null
-      ]);
+        $this->expectException(\Stripe\Exception\InvalidRequestException::class);
+        $this->service->update('id', [
+            'doesnotexist' => null,
+        ]);
     }
 
     public function testRetrieveThrowsIfIdNullIsNull()

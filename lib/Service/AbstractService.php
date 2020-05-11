@@ -42,18 +42,19 @@ abstract class AbstractService
      */
     private static function formatParams($params)
     {
-      if (null === $params) {
-        return $params;
-      }
-      $formatted = [];
-      foreach ($params as $k => $v) {
-        if (null === $v) {
-          $formatted[$k] = "";
-        } else {
-          $formatted[$k] = $v;
+        if (null === $params) {
+            return $params;
         }
-      }
-      return $formatted;
+        $formatted = [];
+        foreach ($params as $k => $v) {
+            if (null === $v) {
+                $formatted[$k] = '';
+            } else {
+                $formatted[$k] = $v;
+            }
+        }
+
+        return $formatted;
     }
 
     protected function request($method, $path, $params, $opts)
