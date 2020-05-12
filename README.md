@@ -154,7 +154,7 @@ $customers = $stripe->customers->all([],[
     'stripe_account' => 'acct_...'
 ]);
 
-$stripe->customers->retrieve('cus_123456789', [
+$stripe->customers->retrieve('cus_123456789', [], [
     'api_key' => 'sk_test_...',
     'stripe_account' => 'acct_...'
 ]);
