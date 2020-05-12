@@ -48,6 +48,7 @@ class ObjectTypes
         \Stripe\Issuing\Cardholder::OBJECT_NAME => \Stripe\Issuing\Cardholder::class,
         \Stripe\Issuing\Dispute::OBJECT_NAME => \Stripe\Issuing\Dispute::class,
         \Stripe\Issuing\Transaction::OBJECT_NAME => \Stripe\Issuing\Transaction::class,
+        \Stripe\LineItem::OBJECT_NAME => \Stripe\LineItem::class,
         \Stripe\LoginLink::OBJECT_NAME => \Stripe\LoginLink::class,
         \Stripe\Mandate::OBJECT_NAME => \Stripe\Mandate::class,
         \Stripe\Order::OBJECT_NAME => \Stripe\Order::class,
