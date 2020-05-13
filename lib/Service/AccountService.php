@@ -78,10 +78,6 @@ class AccountService extends \Stripe\Service\AbstractService
      * href="https://dashboard.stripe.com/account/applications/settings">register your
      * platform</a>.
      *
-     * For Standard accounts, parameters other than <code>country</code>,
-     * <code>email</code>, and <code>type</code> are used to prefill the account
-     * application that we ask the account holder to complete.
-     *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
      *

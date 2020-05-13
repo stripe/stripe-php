@@ -9,8 +9,8 @@ namespace Stripe;
  * @property \Stripe\Service\AccountService $accounts
  * @property \Stripe\Service\ApplePayDomainService $applePayDomains
  * @property \Stripe\Service\ApplicationFeeService $applicationFees
+ * @property \Stripe\Service\BalanceService $balance
  * @property \Stripe\Service\BalanceTransactionService $balanceTransactions
- * @property \Stripe\Service\BalanceService $balances
  * @property \Stripe\Service\BillingPortal\BillingPortalServiceFactory $billingPortal
  * @property \Stripe\Service\ChargeService $charges
  * @property \Stripe\Service\Checkout\CheckoutServiceFactory $checkout

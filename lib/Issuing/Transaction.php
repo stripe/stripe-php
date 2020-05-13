@@ -26,7 +26,6 @@ namespace Stripe\Issuing;
  * @property string $merchant_currency The currency with which the merchant is taking payment.
  * @property \Stripe\StripeObject $merchant_data
  * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|\Stripe\StripeObject $purchase_details Additional purchase information that is optionally provided by the merchant.
  * @property string $type The nature of the transaction.
  */
 class Transaction extends \Stripe\ApiResource

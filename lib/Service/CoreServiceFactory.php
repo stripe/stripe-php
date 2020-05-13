@@ -9,7 +9,7 @@ namespace Stripe\Service;
  * @property AccountService $accounts
  * @property ApplePayDomainService $applePayDomains
  * @property ApplicationFeeService $applicationFees
- * @property BalanceService $balances
+ * @property BalanceService $balance
  * @property BalanceTransactionService $balanceTransactions
  * @property BillingPortal\BillingPortalServiceFactory $billingPortal
  * @property ChargeService $charges
@@ -64,7 +64,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'accounts' => AccountService::class,
         'applePayDomains' => ApplePayDomainService::class,
         'applicationFees' => ApplicationFeeService::class,
-        'balances' => BalanceService::class,
+        'balance' => BalanceService::class,
         'balanceTransactions' => BalanceTransactionService::class,
         'billingPortal' => BillingPortal\BillingPortalServiceFactory::class,
         'charges' => ChargeService::class,
