@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.33.0 - 2020-05-14
+* [#771](https://github.com/stripe/stripe-php/pull/771) Introduce client/services API
+
 ## 7.32.1 - 2020-05-13
 * [#932](https://github.com/stripe/stripe-php/pull/932) Fix multiple PHPDoc
 
