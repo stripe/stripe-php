@@ -26,6 +26,15 @@ final class AbstractServiceTest extends \PHPUnit\Framework\TestCase
         $this->service = new \Stripe\Service\CouponService($this->client);
     }
 
+    /**
+     * @before
+     */
+    public function setUpReflectors()
+    {
+      $this->formatParamsReflector = new \ReflectionMethod(\Stripe\Service\AbstractService::class, 'formatParams');
+      $this->formatParamsReflector->setAccessible(true);
+    }
+
     public function testNullGetsEmptyStringified()
     {
         $this->expectException(\Stripe\Exception\InvalidRequestException::class);
@@ -60,18 +69,18 @@ final class AbstractServiceTest extends \PHPUnit\Framework\TestCase
 
     public function testFormatParams()
     {
-        $result = \Stripe\Service\AbstractService::formatParams(['foo' => null]);
+        $result = $this->formatParamsReflector->invoke(null, ['foo' => null]);
         static::assertTrue('' === $result['foo']);
         static::assertTrue(null !== $result['foo']);
 
-        $result = \Stripe\Service\AbstractService::formatParams(['foo' => ['bar' => null, 'baz' => 1, 'nest' => ['triplynestednull' => null, 'triplynestednonnull' => 1]]]);
+        $result = $this->formatParamsReflector->invoke(null, ['foo' => ['bar' => null, 'baz' => 1, 'nest' => ['triplynestednull' => null, 'triplynestednonnull' => 1]]]);
         static::assertTrue('' === $result['foo']['bar']);
         static::assertTrue(null !== $result['foo']['bar']);
         static::assertTrue(1 === $result['foo']['baz']);
         static::assertTrue('' === $result['foo']['nest']['triplynestednull']);
         static::assertTrue(1 === $result['foo']['nest']['triplynestednonnull']);
 
-        $result = \Stripe\Service\AbstractService::formatParams(['foo' => ['zero', null, null, 'three'], 'toplevelnull' => null, 'toplevelnonnull' => 4]);
+        $result = $this->formatParamsReflector->invoke(null, ['foo' => ['zero', null, null, 'three'], 'toplevelnull' => null, 'toplevelnonnull' => 4]);
         static::assertTrue('zero' === $result['foo'][0]);
         static::assertTrue('' === $result['foo'][1]);
         static::assertTrue('' === $result['foo'][2]);

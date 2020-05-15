@@ -40,7 +40,7 @@ abstract class AbstractService
      *
      * @param null|array $params
      */
-    public static function formatParams($params)
+    private static function formatParams($params)
     {
         if (null === $params) {
             return null;
