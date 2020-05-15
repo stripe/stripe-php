@@ -31,8 +31,8 @@ final class AbstractServiceTest extends \PHPUnit\Framework\TestCase
      */
     public function setUpReflectors()
     {
-      $this->formatParamsReflector = new \ReflectionMethod(\Stripe\Service\AbstractService::class, 'formatParams');
-      $this->formatParamsReflector->setAccessible(true);
+        $this->formatParamsReflector = new \ReflectionMethod(\Stripe\Service\AbstractService::class, 'formatParams');
+        $this->formatParamsReflector->setAccessible(true);
     }
 
     public function testNullGetsEmptyStringified()
