@@ -68,5 +68,11 @@ final class AbstractServiceTest extends \PHPUnit\Framework\TestCase
         static::assertTrue('' === $result['foo']['bar']);
         static::assertTrue(null !== $result['foo']['bar']);
         static::assertTrue(1 === $result['foo']['baz']);
+
+        $result = \Stripe\Service\AbstractService::formatParams(['foo' => ["bar", null, null, "baz"]]);
+        static::assertTrue('bar' === $result['foo'][0]);
+        static::assertTrue('' === $result['foo'][1]);
+        static::assertTrue('' === $result['foo'][2]);
+        static::assertTrue('baz' === $result['foo'][3]);
     }
 }
