@@ -43,21 +43,15 @@ abstract class AbstractService
     public static function formatParams($params)
     {
         if (null === $params) {
-            return $params;
+            return null;
         }
-
-        $formatted = [];
-        foreach ($params as $k => $v) {
-            if (\is_array($v)) {
-                $formatted[$k] = static::formatParams($v);
-            } elseif (null === $v) {
-                $formatted[$k] = '';
-            } else {
-                $formatted[$k] = $v;
+        \array_walk_recursive($params, function (&$value, $key) {
+            if (null === $value) {
+                $value = '';
             }
-        }
+        });
 
-        return $formatted;
+        return $params;
     }
 
     protected function request($method, $path, $params, $opts)
