@@ -16,6 +16,9 @@ final class AbstractServiceTest extends \PHPUnit\Framework\TestCase
     /** @var CouponService */
     private $service;
 
+    /** @var \ReflectionMethod */
+    private $formatParamsReflector;
+
     /**
      * @before
      */
