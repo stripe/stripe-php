@@ -64,15 +64,19 @@ final class AbstractServiceTest extends \PHPUnit\Framework\TestCase
         static::assertTrue('' === $result['foo']);
         static::assertTrue(null !== $result['foo']);
 
-        $result = \Stripe\Service\AbstractService::formatParams(['foo' => ['bar' => null, 'baz' => 1]]);
+        $result = \Stripe\Service\AbstractService::formatParams(['foo' => ['bar' => null, 'baz' => 1, 'nest' => ["triplynestednull" => null, "triplynestednonnull" => 1]]]);
         static::assertTrue('' === $result['foo']['bar']);
         static::assertTrue(null !== $result['foo']['bar']);
         static::assertTrue(1 === $result['foo']['baz']);
+        static::assertTrue('' === $result['foo']['nest']['triplynestednull']);
+        static::assertTrue(1 === $result['foo']['nest']['triplynestednonnull']);
 
-        $result = \Stripe\Service\AbstractService::formatParams(['foo' => ["bar", null, null, "baz"]]);
-        static::assertTrue('bar' === $result['foo'][0]);
+        $result = \Stripe\Service\AbstractService::formatParams(['foo' => ["zero", null, null, "three"], 'toplevelnull' => null, 'toplevelnonnull' => 4]);
+        static::assertTrue('zero' === $result['foo'][0]);
         static::assertTrue('' === $result['foo'][1]);
         static::assertTrue('' === $result['foo'][2]);
-        static::assertTrue('baz' === $result['foo'][3]);
+        static::assertTrue('three' === $result['foo'][3]);
+        static::assertTrue('' === $result['toplevelnull']);
+        static::assertTrue(4 === $result['toplevelnonnull']);
     }
 }
