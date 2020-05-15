@@ -57,4 +57,16 @@ final class AbstractServiceTest extends \PHPUnit\Framework\TestCase
 
         $this->service->retrieve(' ');
     }
+
+    public function testFormatParams()
+    {
+        $result = \Stripe\Service\AbstractService::formatParams(['foo' => null]);
+        static::assertTrue('' === $result['foo']);
+        static::assertTrue(null !== $result['foo']);
+
+        $result = \Stripe\Service\AbstractService::formatParams(['foo' => ['bar' => null, 'baz' => 1]]);
+        static::assertTrue('' === $result['foo']['bar']);
+        static::assertTrue(null !== $result['foo']['bar']);
+        static::assertTrue(1 === $result['foo']['baz']);
+    }
 }

@@ -40,14 +40,17 @@ abstract class AbstractService
      *
      * @param null|array $params
      */
-    private static function formatParams($params)
+    public static function formatParams($params)
     {
         if (null === $params) {
             return $params;
         }
+
         $formatted = [];
         foreach ($params as $k => $v) {
-            if (null === $v) {
+            if (\is_array($v)) {
+                $formatted[$k] = static::formatParams($v);
+            } elseif (null === $v) {
                 $formatted[$k] = '';
             } else {
                 $formatted[$k] = $v;
