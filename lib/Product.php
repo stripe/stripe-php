@@ -6,17 +6,16 @@ namespace Stripe;
  * Products describe the specific goods or services you offer to your customers.
  * For example, you might offer a Standard and Premium version of your goods or
  * service; each version would be a separate Product. They can be used in
- * conjunction with <a href="https://stripe.com/docs/api#skus">SKUs</a> and <a
- * href="https://stripe.com/docs/api#plans">Plans</a> to configure pricing in
- * Checkout and Subscriptions.
+ * conjunction with <a href="https://stripe.com/docs/api#prices">Prices</a> to
+ * configure pricing in Checkout and Subscriptions.
  *
  * Related guides: <a
  * href="https://stripe.com/docs/billing/subscriptions/set-up-subscription">Set up
  * a subscription</a> or accept <a
  * href="https://stripe.com/docs/payments/checkout/client#create-products">one-time
  * payments with Checkout</a> and more about <a
- * href="https://stripe.com/docs/billing/subscriptions/products-and-plans">Products
- * and Plans</a>
+ * href="https://stripe.com/docs/billing/subscriptions/products-and-prices">Products
+ * and Prices</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
