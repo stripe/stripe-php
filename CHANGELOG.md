@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.34.0 - 2020-05-18
+* [#934](https://github.com/stripe/stripe-php/pull/934) Add support for `issuing_dispute` as a `type` on `BalanceTransaction`
+
 ## 7.33.1 - 2020-05-15
 * [#933](https://github.com/stripe/stripe-php/pull/933) Services bugfix: convert nested null params to empty strings
 
