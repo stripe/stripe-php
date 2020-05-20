@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.35.0 - 2020-05-20
+* [#936](https://github.com/stripe/stripe-php/pull/936) Add `anticipation_repayment` as a `type` on `BalanceTransaction`
+
 ## 7.34.0 - 2020-05-18
 * [#934](https://github.com/stripe/stripe-php/pull/934) Add support for `issuing_dispute` as a `type` on `BalanceTransaction`
 
