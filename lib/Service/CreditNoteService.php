@@ -44,8 +44,8 @@ class CreditNoteService extends \Stripe\Service\AbstractService
      * does not affect its <code>amount_due</code>. Instead, it can result in any
      * combination of the following:.
      *
-     * <ul>  <li>Refund: create a new refund (using <code>refund_amount</code>) or link
-     * an existing refund (using <code>refund</code>).</li>  <li>Customer balance
+     * <ul> <li>Refund: create a new refund (using <code>refund_amount</code>) or link
+     * an existing refund (using <code>refund</code>).</li> <li>Customer balance
      * credit: credit the customer’s balance (using <code>credit_amount</code>) which
      * will be automatically applied to their next invoice when it’s finalized.</li>
      * <li>Outside of Stripe credit: record the amount that is or will be credited
