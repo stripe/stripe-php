@@ -14,8 +14,7 @@ namespace Stripe;
  * a subscription</a> or accept <a
  * href="https://stripe.com/docs/payments/checkout/client#create-products">one-time
  * payments with Checkout</a> and more about <a
- * href="https://stripe.com/docs/billing/subscriptions/products-and-prices">Products
- * and Prices</a>
+ * href="https://stripe.com/docs/billing/prices-guide">Products and Prices</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

@@ -5,7 +5,7 @@ namespace Stripe\Service\BillingPortal;
 class SessionService extends \Stripe\Service\AbstractService
 {
     /**
-     * Creates a session of the self-serve Portal.
+     * Creates a session of the self-serve portal.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
