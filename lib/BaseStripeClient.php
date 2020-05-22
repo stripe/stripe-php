@@ -234,7 +234,6 @@ class BaseStripeClient implements StripeClientInterface
         }
 
         // check absence of extra keys
-        $validConfigKeys = \array_keys($this->getDefaultConfig());
         $extraConfigKeys = \array_diff(\array_keys($config), \array_keys($this->getDefaultConfig()));
         if (!empty($extraConfigKeys)) {
             throw new \Stripe\Exception\InvalidArgumentException('Found unknown key(s) in configuration array: ' . \implode(',', $extraConfigKeys));
