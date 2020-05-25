@@ -63,6 +63,10 @@ class Subscription extends ApiResource
     const STATUS_TRIALING = 'trialing';
     const STATUS_UNPAID = 'unpaid';
 
+    const ALLOW_INCOMPLETE = 'allow_incomplete';
+    const ERROR_IF_INCOMPLETE = 'error_if_incomplete';
+    const PENDING_IF_INCOMPLETE = 'pending_if_incomplete';
+
     use ApiOperations\Delete {
         delete as protected _delete;
       }
