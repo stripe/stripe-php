@@ -140,6 +140,24 @@ class BaseStripeClient implements StripeClientInterface
     }
 
     /**
+     * Sends a request to Stripe's API.
+     *
+     * @param string $method the HTTP method
+     * @param string $path the path of the request
+     * @param array $params the parameters of the request
+     * @param array|\Stripe\Util\RequestOptions $opts the special modifiers of the request
+     *
+     * @return \Stripe\Collection of ApiResources
+     */
+    public function requestCollection($method, $path, $params, $opts)
+    {
+         $obj = $this->request($method, $path, $params, $opts);
+         $obj->setFilters($params);
+
+         return $obj;
+    }
+
+    /**
      * @param \Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\AuthenticationException

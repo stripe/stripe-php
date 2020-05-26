@@ -38,6 +38,24 @@ final class SubscriptionServiceTest extends \PHPUnit\Framework\TestCase
         static::assertInstanceOf(\Stripe\Subscription::class, $resources->data[0]);
     }
 
+    public function testAllPagination()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/subscriptions'
+        );
+        $resources = $this->service->all([
+          'status' => 'all',
+          'limit' => 100,
+        ]);
+        var_dump($resources->getFilters());
+        $filters = $resources->getFilters();
+        static::assertEquals($filters, [
+          'status' => 'all',
+          'limit' => 100,
+        ]);
+    }
+
     public function testCancel()
     {
         $this->expectsRequest(
