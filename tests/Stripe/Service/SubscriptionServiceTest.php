@@ -45,13 +45,13 @@ final class SubscriptionServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/subscriptions'
         );
         $resources = $this->service->all([
-          'status' => 'all',
-          'limit' => 100,
+            'status' => 'all',
+            'limit' => 100,
         ]);
         $filters = $resources->getFilters();
-        static::assertEquals($filters, [
-          'status' => 'all',
-          'limit' => 100,
+        static::assertSame($filters, [
+            'status' => 'all',
+            'limit' => 100,
         ]);
     }
 

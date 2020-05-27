@@ -151,16 +151,16 @@ class BaseStripeClient implements StripeClientInterface
      */
     public function requestCollection($method, $path, $params, $opts)
     {
-         $obj = $this->request($method, $path, $params, $opts);
-         if (!($obj instanceof \Stripe\Collection)) {
-             $received_class = \get_class($obj);
-             $msg = "Expected to receive `Stripe\Collection` object from Stripe API. Instead received `{$received_class}`.";
-             throw new \Stripe\Exception\UnexpectedValueException
-             ($msg);
-         }
-         $obj->setFilters($params);
+        $obj = $this->request($method, $path, $params, $opts);
+        if (!($obj instanceof \Stripe\Collection)) {
+            $received_class = \get_class($obj);
+            $msg = "Expected to receive `Stripe\\Collection` object from Stripe API. Instead received `{$received_class}`.";
 
-         return $obj;
+            throw new \Stripe\Exception\UnexpectedValueException($msg);
+        }
+        $obj->setFilters($params);
+
+        return $obj;
     }
 
     /**

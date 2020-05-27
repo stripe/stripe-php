@@ -168,7 +168,6 @@ final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
         $charges = $client->requestCollection('get', '/v1/charges', [], []);
         static::assertNotNull($charges);
         static::assertSame('sk_test_client', $this->optsReflector->getValue($charges)->apiKey);
-
     }
 
     public function testRequestCollectionThrowsForNonList()
