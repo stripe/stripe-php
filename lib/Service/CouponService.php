@@ -16,7 +16,7 @@ class CouponService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->request('get', '/v1/coupons', $params, $opts);
+        return $this->requestCollection('get', '/v1/coupons', $params, $opts);
     }
 
     /**

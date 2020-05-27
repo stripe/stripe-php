@@ -18,7 +18,7 @@ class ValueListItemService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->request('get', '/v1/radar/value_list_items', $params, $opts);
+        return $this->requestCollection('get', '/v1/radar/value_list_items', $params, $opts);
     }
 
     /**

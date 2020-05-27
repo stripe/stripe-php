@@ -17,7 +17,7 @@ class AccountService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->request('get', '/v1/accounts', $params, $opts);
+        return $this->requestCollection('get', '/v1/accounts', $params, $opts);
     }
 
     /**
@@ -35,7 +35,7 @@ class AccountService extends \Stripe\Service\AbstractService
      */
     public function allCapabilities($parentId, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v1/accounts/%s/capabilities', $parentId), $params, $opts);
+        return $this->requestCollection('get', $this->buildPath('/v1/accounts/%s/capabilities', $parentId), $params, $opts);
     }
 
     /**
@@ -51,7 +51,7 @@ class AccountService extends \Stripe\Service\AbstractService
      */
     public function allExternalAccounts($parentId, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v1/accounts/%s/external_accounts', $parentId), $params, $opts);
+        return $this->requestCollection('get', $this->buildPath('/v1/accounts/%s/external_accounts', $parentId), $params, $opts);
     }
 
     /**
@@ -69,7 +69,7 @@ class AccountService extends \Stripe\Service\AbstractService
      */
     public function allPersons($parentId, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v1/accounts/%s/persons', $parentId), $params, $opts);
+        return $this->requestCollection('get', $this->buildPath('/v1/accounts/%s/persons', $parentId), $params, $opts);
     }
 
     /**

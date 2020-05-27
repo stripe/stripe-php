@@ -16,7 +16,7 @@ class EarlyFraudWarningService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->request('get', '/v1/radar/early_fraud_warnings', $params, $opts);
+        return $this->requestCollection('get', '/v1/radar/early_fraud_warnings', $params, $opts);
     }
 
     /**
