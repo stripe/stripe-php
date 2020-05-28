@@ -16,7 +16,7 @@ class LocationService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->request('get', '/v1/terminal/locations', $params, $opts);
+        return $this->requestCollection('get', '/v1/terminal/locations', $params, $opts);
     }
 
     /**

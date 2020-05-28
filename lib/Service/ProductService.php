@@ -17,7 +17,7 @@ class ProductService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->request('get', '/v1/products', $params, $opts);
+        return $this->requestCollection('get', '/v1/products', $params, $opts);
     }
 
     /**

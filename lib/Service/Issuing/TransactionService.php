@@ -18,7 +18,7 @@ class TransactionService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->request('get', '/v1/issuing/transactions', $params, $opts);
+        return $this->requestCollection('get', '/v1/issuing/transactions', $params, $opts);
     }
 
     /**

@@ -17,7 +17,7 @@ class ReportTypeService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->request('get', '/v1/reporting/report_types', $params, $opts);
+        return $this->requestCollection('get', '/v1/reporting/report_types', $params, $opts);
     }
 
     /**

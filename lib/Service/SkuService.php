@@ -17,7 +17,7 @@ class SkuService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->request('get', '/v1/skus', $params, $opts);
+        return $this->requestCollection('get', '/v1/skus', $params, $opts);
     }
 
     /**

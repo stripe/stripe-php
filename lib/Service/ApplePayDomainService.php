@@ -16,7 +16,7 @@ class ApplePayDomainService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->request('get', '/v1/apple_pay/domains', $params, $opts);
+        return $this->requestCollection('get', '/v1/apple_pay/domains', $params, $opts);
     }
 
     /**

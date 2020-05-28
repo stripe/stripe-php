@@ -17,7 +17,7 @@ class SubscriptionService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->request('get', '/v1/subscriptions', $params, $opts);
+        return $this->requestCollection('get', '/v1/subscriptions', $params, $opts);
     }
 
     /**

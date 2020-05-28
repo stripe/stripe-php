@@ -16,7 +16,7 @@ class CreditNoteService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->request('get', '/v1/credit_notes', $params, $opts);
+        return $this->requestCollection('get', '/v1/credit_notes', $params, $opts);
     }
 
     /**
@@ -34,7 +34,7 @@ class CreditNoteService extends \Stripe\Service\AbstractService
      */
     public function allLines($parentId, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v1/credit_notes/%s/lines', $parentId), $params, $opts);
+        return $this->requestCollection('get', $this->buildPath('/v1/credit_notes/%s/lines', $parentId), $params, $opts);
     }
 
     /**

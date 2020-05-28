@@ -16,7 +16,7 @@ class SubscriptionScheduleService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->request('get', '/v1/subscription_schedules', $params, $opts);
+        return $this->requestCollection('get', '/v1/subscription_schedules', $params, $opts);
     }
 
     /**

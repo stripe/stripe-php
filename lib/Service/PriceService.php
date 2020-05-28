@@ -16,7 +16,7 @@ class PriceService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->request('get', '/v1/prices', $params, $opts);
+        return $this->requestCollection('get', '/v1/prices', $params, $opts);
     }
 
     /**
