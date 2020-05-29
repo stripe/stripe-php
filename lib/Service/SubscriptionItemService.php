@@ -116,7 +116,7 @@ class SubscriptionItemService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves the invoice item with the given ID.
+     * Retrieves the subscription item with the given ID.
      *
      * @param string $id
      * @param null|array $params
