@@ -21,7 +21,7 @@ class PlanService extends \Stripe\Service\AbstractService
 
     /**
      * You can create plans using the API, or in the Stripe <a
-     * href="https://dashboard.stripe.com/subscriptions/products">Dashboard</a>.
+     * href="https://dashboard.stripe.com/products">Dashboard</a>.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
