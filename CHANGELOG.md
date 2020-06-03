@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.36.2 - 2020-06-03
+* [#946](https://github.com/stripe/stripe-php/pull/946) Update PHPDoc
+
 ## 7.36.1 - 2020-05-28
 * [#938](https://github.com/stripe/stripe-php/pull/938) Remove extra array_keys() call.
 * [#942](https://github.com/stripe/stripe-php/pull/942) fix autopagination for service methods
