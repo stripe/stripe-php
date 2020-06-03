@@ -31,7 +31,7 @@ namespace Stripe;
  * @property null|string $phone The person's phone number.
  * @property \Stripe\StripeObject $relationship
  * @property null|\Stripe\StripeObject $requirements Information about the requirements for this person, including what information needs to be collected, and by when.
- * @property bool $ssn_last_4_provided Whether the last 4 digits of this person's SSN have been provided.
+ * @property bool $ssn_last_4_provided Whether the last four digits of the person's Social Security number have been provided (U.S. only).
  * @property \Stripe\StripeObject $verification
  */
 class Person extends ApiResource
