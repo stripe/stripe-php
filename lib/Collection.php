@@ -241,6 +241,26 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
         return $this->all($params, $opts);
     }
 
+    /**
+     * Get the first item from the collection.
+     *
+     * @return null|\Stripe\StripeObject
+     */
+    public function first()
+    {
+        return \count($this->data) > 0 ? $this->data[0] : null;
+    }
+
+    /**
+     * Get the last item from the collection.
+     *
+     * @return null|\Stripe\StripeObject
+     */
+    public function last()
+    {
+        return \count($this->data) > 0 ? $this->data[\count($this->data) - 1] : null;
+    }
+
     private function extractPathAndUpdateParams($params)
     {
         $url = \parse_url($this->url);
