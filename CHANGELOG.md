@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.37.1 - 2020-06-11
+* [#952](https://github.com/stripe/stripe-php/pull/952) Improve PHPDoc
+
 ## 7.37.0 - 2020-06-09
 * [#950](https://github.com/stripe/stripe-php/pull/950) Add support for `id_npwp` and `my_frp` as `type` on `TaxId`
 
