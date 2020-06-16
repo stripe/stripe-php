@@ -18,7 +18,7 @@ namespace Stripe\Issuing;
  * @property null|string $email The cardholder's email address.
  * @property null|\Stripe\StripeObject $individual Additional information about an <code>individual</code> cardholder.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $name The cardholder's name. This will be printed on cards issued to them.
  * @property null|string $phone_number The cardholder's phone number.
  * @property \Stripe\StripeObject $requirements
