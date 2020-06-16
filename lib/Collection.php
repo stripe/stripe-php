@@ -252,7 +252,7 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
     }
 
     /**
-     * Get the last item from the collection.
+     * Gets the last item from the current page. Returns `null` if the current page is empty.
      *
      * @return null|\Stripe\StripeObject
      */
