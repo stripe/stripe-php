@@ -25,7 +25,7 @@ namespace Stripe\Issuing;
  * @property int $merchant_amount The amount that the merchant will receive, denominated in <code>merchant_currency</code> and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>. It will be different from <code>amount</code> if the merchant is taking payment in a different currency.
  * @property string $merchant_currency The currency with which the merchant is taking payment.
  * @property \Stripe\StripeObject $merchant_data
- * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|\Stripe\StripeObject $purchase_details Additional purchase information that is optionally provided by the merchant.
  * @property string $type The nature of the transaction.
  */

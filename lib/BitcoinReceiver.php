@@ -22,7 +22,7 @@ namespace Stripe;
  * @property bool $filled This flag is initially false and updates to true when the customer sends the <code>bitcoin_amount</code> to this receiver.
  * @property string $inbound_address A bitcoin address that is specific to this receiver. The customer can send bitcoin to this address to fill the receiver.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $payment The ID of the payment created from the receiver, if any. Hidden when viewing the receiver with a publishable key.
  * @property null|string $refund_address The refund address of this bitcoin receiver.
  * @property \Stripe\Collection $transactions A list with one entry for each time that the customer sent bitcoin to the receiver. Hidden when viewing the receiver with a publishable key.

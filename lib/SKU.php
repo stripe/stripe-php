@@ -24,7 +24,7 @@ namespace Stripe;
  * @property null|string $image The URL of an image for this SKU, meant to be displayable to the customer.
  * @property \Stripe\StripeObject $inventory
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|\Stripe\StripeObject $package_dimensions The dimensions of this SKU for shipping purposes.
  * @property int $price The cost of the item as a positive integer in the smallest currency unit (that is, 100 cents to charge $1.00, or 100 to charge ¥100, Japanese Yen being a zero-decimal currency).
  * @property string|\Stripe\Product $product The ID of the product this SKU is associated with. The product must be currently active.

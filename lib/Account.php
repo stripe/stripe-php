@@ -25,7 +25,7 @@ namespace Stripe;
  * @property null|string $email The primary user's email address.
  * @property \Stripe\Collection $external_accounts External accounts (bank accounts and debit cards) currently attached to this account
  * @property \Stripe\Person $individual <p>This is an object representing a person associated with a Stripe account.</p><p>Related guide: <a href="https://stripe.com/docs/connect/identity-verification-api#person-information">Handling Identity Verification with the API</a>.</p>
- * @property \Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property bool $payouts_enabled Whether Stripe can send payouts to this account.
  * @property \Stripe\StripeObject $requirements
  * @property null|\Stripe\StripeObject $settings Options for customizing how the account functions within Stripe.
