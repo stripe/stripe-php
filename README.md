@@ -260,3 +260,15 @@ See the "SSL / TLS compatibility issues" paragraph above for full context. If yo
 [php-cs-fixer]: https://github.com/FriendsOfPHP/PHP-CS-Fixer
 [psr3]: http://www.php-fig.org/psr/psr-3/
 [stripe-mock]: https://github.com/stripe/stripe-mock
+
+## Troubleshooting
+
+### `Class 'Stripe\StripeClient' not found`
+
+If you encounter errors when using snippets about `StripeClient` such as:
+
+```
+Fatal error: Uncaught Error: Class 'Stripe\StripeClient' not found in /Users/username/path/to/myscript.php
+```
+
+This may be due to using a `stripe-php` version older than [7.33.0](https://github.com/stripe/stripe-php/blob/master/CHANGELOG.md#7330---2020-05-14). Review the [migration guide](https://github.com/stripe/stripe-php/wiki/Migration-to-StripeClient-and-services-in-7.33.0) for the backwards-compatible client/services pattern changes.
