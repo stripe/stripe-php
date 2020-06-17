@@ -62,6 +62,10 @@ $customer = $stripe->customers->create([
 echo $customer;
 ```
 
+### Client/service patterns vs legacy patterns
+
+You can continue to use the legacy integration patterns used prior to version [7.33.0](https://github.com/stripe/stripe-php/blob/master/CHANGELOG.md#7330---2020-05-14). Review the [migration guide](https://github.com/stripe/stripe-php/wiki/Migration-to-StripeClient-and-services-in-7.33.0) for the backwards-compatible client/services pattern changes.
+
 ## Documentation
 
 See the [PHP API docs](https://stripe.com/docs/api/php#intro).
