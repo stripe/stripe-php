@@ -5,9 +5,9 @@ namespace Stripe\Service;
 class AccountLinkService extends \Stripe\Service\AbstractService
 {
     /**
-     * Creates an AccountLink object that returns a single-use Stripe URL that the user
-     * can redirect their user to in order to take them through the Connect Onboarding
-     * flow.
+     * Creates an AccountLink object that includes a single-use Stripe URL that the
+     * platform can redirect their user to in order to take them through the Connect
+     * Onboarding flow.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
