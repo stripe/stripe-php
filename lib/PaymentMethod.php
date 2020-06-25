@@ -44,6 +44,60 @@ class PaymentMethod extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const ACCOUNT_HOLDER_TYPE_COMPANY = 'company';
+    const ACCOUNT_HOLDER_TYPE_INDIVIDUAL = 'individual';
+
+    const BANK_ABN_AMRO = 'abn_amro';
+    const BANK_AFFIN_BANK = 'affin_bank';
+    const BANK_ALLIANCE_BANK = 'alliance_bank';
+    const BANK_AMBANK = 'ambank';
+    const BANK_ASN_BANK = 'asn_bank';
+    const BANK_BANK_ISLAM = 'bank_islam';
+    const BANK_BANK_MUAMALAT = 'bank_muamalat';
+    const BANK_BANK_RAKYAT = 'bank_rakyat';
+    const BANK_BSN = 'bsn';
+    const BANK_BUNQ = 'bunq';
+    const BANK_CIMB = 'cimb';
+    const BANK_DEUTSCHE_BANK = 'deutsche_bank';
+    const BANK_HANDELSBANKEN = 'handelsbanken';
+    const BANK_HONG_LEONG_BANK = 'hong_leong_bank';
+    const BANK_HSBC = 'hsbc';
+    const BANK_ING = 'ing';
+    const BANK_KFH = 'kfh';
+    const BANK_KNAB = 'knab';
+    const BANK_MAYBANK2E = 'maybank2e';
+    const BANK_MAYBANK2U = 'maybank2u';
+    const BANK_MONEYOU = 'moneyou';
+    const BANK_OCBC = 'ocbc';
+    const BANK_PB_ENTERPRISE = 'pb_enterprise';
+    const BANK_PUBLIC_BANK = 'public_bank';
+    const BANK_RABOBANK = 'rabobank';
+    const BANK_REGIOBANK = 'regiobank';
+    const BANK_RHB = 'rhb';
+    const BANK_SNS_BANK = 'sns_bank';
+    const BANK_STANDARD_CHARTERED = 'standard_chartered';
+    const BANK_TRIODOS_BANK = 'triodos_bank';
+    const BANK_UOB = 'uob';
+    const BANK_VAN_LANSCHOT = 'van_lanschot';
+
+    const TYPE_AMEX_EXPRESS_CHECKOUT = 'amex_express_checkout';
+    const TYPE_APPLE_PAY = 'apple_pay';
+    const TYPE_AU_BECS_DEBIT = 'au_becs_debit';
+    const TYPE_BACS_DEBIT = 'bacs_debit';
+    const TYPE_BANCONTACT = 'bancontact';
+    const TYPE_CARD = 'card';
+    const TYPE_CARD_PRESENT = 'card_present';
+    const TYPE_EPS = 'eps';
+    const TYPE_FPX = 'fpx';
+    const TYPE_GIROPAY = 'giropay';
+    const TYPE_GOOGLE_PAY = 'google_pay';
+    const TYPE_IDEAL = 'ideal';
+    const TYPE_MASTERPASS = 'masterpass';
+    const TYPE_P24 = 'p24';
+    const TYPE_SAMSUNG_PAY = 'samsung_pay';
+    const TYPE_SEPA_DEBIT = 'sepa_debit';
+    const TYPE_VISA_CHECKOUT = 'visa_checkout';
+
     /**
      * @param null|array $params
      * @param null|array|string $opts

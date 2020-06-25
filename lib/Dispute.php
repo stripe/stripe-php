@@ -37,21 +37,6 @@ class Dispute extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    const REASON_BANK_CANNOT_PROCESS = 'bank_cannot_process';
-    const REASON_CHECK_RETURNED = 'check_returned';
-    const REASON_CREDIT_NOT_PROCESSED = 'credit_not_processed';
-    const REASON_CUSTOMER_INITIATED = 'customer_initiated';
-    const REASON_DEBIT_NOT_AUTHORIZED = 'debit_not_authorized';
-    const REASON_DUPLICATE = 'duplicate';
-    const REASON_FRAUDULENT = 'fraudulent';
-    const REASON_GENERAL = 'general';
-    const REASON_INCORRECT_ACCOUNT_DETAILS = 'incorrect_account_details';
-    const REASON_INSUFFICIENT_FUNDS = 'insufficient_funds';
-    const REASON_PRODUCT_NOT_RECEIVED = 'product_not_received';
-    const REASON_PRODUCT_UNACCEPTABLE = 'product_unacceptable';
-    const REASON_SUBSCRIPTION_CANCELED = 'subscription_canceled';
-    const REASON_UNRECOGNIZED = 'unrecognized';
-
     const STATUS_CHARGE_REFUNDED = 'charge_refunded';
     const STATUS_LOST = 'lost';
     const STATUS_NEEDS_RESPONSE = 'needs_response';

@@ -44,6 +44,17 @@ class Order extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const STATUS_CANCELED = 'canceled';
+    const STATUS_CREATED = 'created';
+    const STATUS_FULFILLED = 'fulfilled';
+    const STATUS_PAID = 'paid';
+    const STATUS_RETURNED = 'returned';
+
+    const TYPE_DISCOUNT = 'discount';
+    const TYPE_SHIPPING = 'shipping';
+    const TYPE_SKU = 'sku';
+    const TYPE_TAX = 'tax';
+
     /**
      * @param null|array $params
      * @param null|array|string $opts

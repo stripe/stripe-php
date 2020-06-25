@@ -44,10 +44,9 @@ class Transfer extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    const SOURCE_TYPE_ALIPAY_ACCOUNT = 'alipay_account';
     const SOURCE_TYPE_BANK_ACCOUNT = 'bank_account';
     const SOURCE_TYPE_CARD = 'card';
-    const SOURCE_TYPE_FINANCING = 'financing';
+    const SOURCE_TYPE_FPX = 'fpx';
 
     /**
      * @param null|array $params

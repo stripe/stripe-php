@@ -20,4 +20,7 @@ namespace Stripe;
 class CreditNoteLineItem extends ApiResource
 {
     const OBJECT_NAME = 'credit_note_line_item';
+
+    const TYPE_CUSTOM_LINE_ITEM = 'custom_line_item';
+    const TYPE_INVOICE_LINE_ITEM = 'invoice_line_item';
 }

@@ -36,6 +36,29 @@ class SubscriptionSchedule extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const COLLECTION_METHOD_CHARGE_AUTOMATICALLY = 'charge_automatically';
+    const COLLECTION_METHOD_SEND_INVOICE = 'send_invoice';
+
+    const END_BEHAVIOR_CANCEL = 'cancel';
+    const END_BEHAVIOR_NONE = 'none';
+    const END_BEHAVIOR_RELEASE = 'release';
+    const END_BEHAVIOR_RENEW = 'renew';
+
+    const INTERVAL_DAY = 'day';
+    const INTERVAL_MONTH = 'month';
+    const INTERVAL_WEEK = 'week';
+    const INTERVAL_YEAR = 'year';
+
+    const PRORATION_BEHAVIOR_ALWAYS_INVOICE = 'always_invoice';
+    const PRORATION_BEHAVIOR_CREATE_PRORATIONS = 'create_prorations';
+    const PRORATION_BEHAVIOR_NONE = 'none';
+
+    const STATUS_ACTIVE = 'active';
+    const STATUS_CANCELED = 'canceled';
+    const STATUS_COMPLETED = 'completed';
+    const STATUS_NOT_STARTED = 'not_started';
+    const STATUS_RELEASED = 'released';
+
     /**
      * @param null|array $params
      * @param null|array|string $opts

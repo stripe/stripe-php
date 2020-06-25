@@ -67,9 +67,43 @@ class Charge extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    const STATUS_FAILED = 'failed';
-    const STATUS_PENDING = 'pending';
-    const STATUS_SUCCEEDED = 'succeeded';
+    const BANK_AFFIN_BANK = 'affin_bank';
+    const BANK_ALLIANCE_BANK = 'alliance_bank';
+    const BANK_AMBANK = 'ambank';
+    const BANK_BANK_ISLAM = 'bank_islam';
+    const BANK_BANK_MUAMALAT = 'bank_muamalat';
+    const BANK_BANK_RAKYAT = 'bank_rakyat';
+    const BANK_BSN = 'bsn';
+    const BANK_CIMB = 'cimb';
+    const BANK_DEUTSCHE_BANK = 'deutsche_bank';
+    const BANK_HONG_LEONG_BANK = 'hong_leong_bank';
+    const BANK_HSBC = 'hsbc';
+    const BANK_KFH = 'kfh';
+    const BANK_MAYBANK2E = 'maybank2e';
+    const BANK_MAYBANK2U = 'maybank2u';
+    const BANK_OCBC = 'ocbc';
+    const BANK_PB_ENTERPRISE = 'pb_enterprise';
+    const BANK_PUBLIC_BANK = 'public_bank';
+    const BANK_RHB = 'rhb';
+    const BANK_STANDARD_CHARTERED = 'standard_chartered';
+    const BANK_UOB = 'uob';
+
+    const RESULT_ATTEMPT_ACKNOWLEDGED = 'attempt_acknowledged';
+    const RESULT_AUTHENTICATED = 'authenticated';
+    const RESULT_FAILED = 'failed';
+    const RESULT_NOT_SUPPORTED = 'not_supported';
+    const RESULT_PROCESSING_ERROR = 'processing_error';
+
+    const TYPE_AMEX_EXPRESS_CHECKOUT = 'amex_express_checkout';
+    const TYPE_APPLE_PAY = 'apple_pay';
+    const TYPE_GOOGLE_PAY = 'google_pay';
+    const TYPE_MASTERPASS = 'masterpass';
+    const TYPE_SAMSUNG_PAY = 'samsung_pay';
+    const TYPE_VISA_CHECKOUT = 'visa_checkout';
+
+    const VERSION_1_0_2 = '1.0.2';
+    const VERSION_2_1_0 = '2.1.0';
+    const VERSION_2_2_0 = '2.2.0';
 
     /**
      * Possible string representations of decline codes.

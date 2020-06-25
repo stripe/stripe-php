@@ -42,6 +42,46 @@ class Authorization extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
 
+    const ADDRESS_LINE1_CHECK_MATCH = 'match';
+    const ADDRESS_LINE1_CHECK_MISMATCH = 'mismatch';
+    const ADDRESS_LINE1_CHECK_NOT_PROVIDED = 'not_provided';
+
+    const ADDRESS_POSTAL_CODE_CHECK_MATCH = 'match';
+    const ADDRESS_POSTAL_CODE_CHECK_MISMATCH = 'mismatch';
+    const ADDRESS_POSTAL_CODE_CHECK_NOT_PROVIDED = 'not_provided';
+
+    const AUTHORIZATION_METHOD_CHIP = 'chip';
+    const AUTHORIZATION_METHOD_CONTACTLESS = 'contactless';
+    const AUTHORIZATION_METHOD_KEYED_IN = 'keyed_in';
+    const AUTHORIZATION_METHOD_ONLINE = 'online';
+    const AUTHORIZATION_METHOD_SWIPE = 'swipe';
+
+    const CVC_CHECK_MATCH = 'match';
+    const CVC_CHECK_MISMATCH = 'mismatch';
+    const CVC_CHECK_NOT_PROVIDED = 'not_provided';
+
+    const EXPIRY_CHECK_MATCH = 'match';
+    const EXPIRY_CHECK_MISMATCH = 'mismatch';
+    const EXPIRY_CHECK_NOT_PROVIDED = 'not_provided';
+
+    const REASON_ACCOUNT_DISABLED = 'account_disabled';
+    const REASON_CARD_ACTIVE = 'card_active';
+    const REASON_CARD_INACTIVE = 'card_inactive';
+    const REASON_CARDHOLDER_INACTIVE = 'cardholder_inactive';
+    const REASON_CARDHOLDER_VERIFICATION_REQUIRED = 'cardholder_verification_required';
+    const REASON_INSUFFICIENT_FUNDS = 'insufficient_funds';
+    const REASON_NOT_ALLOWED = 'not_allowed';
+    const REASON_SPENDING_CONTROLS = 'spending_controls';
+    const REASON_SUSPECTED_FRAUD = 'suspected_fraud';
+    const REASON_VERIFICATION_FAILED = 'verification_failed';
+    const REASON_WEBHOOK_APPROVED = 'webhook_approved';
+    const REASON_WEBHOOK_DECLINED = 'webhook_declined';
+    const REASON_WEBHOOK_TIMEOUT = 'webhook_timeout';
+
+    const STATUS_CLOSED = 'closed';
+    const STATUS_PENDING = 'pending';
+    const STATUS_REVERSED = 'reversed';
+
     /**
      * @param null|array $params
      * @param null|array|string $opts

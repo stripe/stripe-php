@@ -32,4 +32,38 @@ class ReportRun extends \Stripe\ApiResource
     use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Create;
     use \Stripe\ApiOperations\Retrieve;
+
+    const REPORTING_CATEGORY_ADVANCE = 'advance';
+    const REPORTING_CATEGORY_ADVANCE_FUNDING = 'advance_funding';
+    const REPORTING_CATEGORY_ANTICIPATION_REPAYMENT = 'anticipation_repayment';
+    const REPORTING_CATEGORY_CHARGE = 'charge';
+    const REPORTING_CATEGORY_CHARGE_FAILURE = 'charge_failure';
+    const REPORTING_CATEGORY_CONNECT_COLLECTION_TRANSFER = 'connect_collection_transfer';
+    const REPORTING_CATEGORY_CONNECT_RESERVED_FUNDS = 'connect_reserved_funds';
+    const REPORTING_CATEGORY_DISPUTE = 'dispute';
+    const REPORTING_CATEGORY_DISPUTE_REVERSAL = 'dispute_reversal';
+    const REPORTING_CATEGORY_FEE = 'fee';
+    const REPORTING_CATEGORY_FINANCING_PAYDOWN = 'financing_paydown';
+    const REPORTING_CATEGORY_FINANCING_PAYDOWN_REVERSAL = 'financing_paydown_reversal';
+    const REPORTING_CATEGORY_FINANCING_PAYOUT = 'financing_payout';
+    const REPORTING_CATEGORY_FINANCING_PAYOUT_REVERSAL = 'financing_payout_reversal';
+    const REPORTING_CATEGORY_ISSUING_AUTHORIZATION_HOLD = 'issuing_authorization_hold';
+    const REPORTING_CATEGORY_ISSUING_AUTHORIZATION_RELEASE = 'issuing_authorization_release';
+    const REPORTING_CATEGORY_ISSUING_DISPUTE = 'issuing_dispute';
+    const REPORTING_CATEGORY_ISSUING_TRANSACTION = 'issuing_transaction';
+    const REPORTING_CATEGORY_NETWORK_COST = 'network_cost';
+    const REPORTING_CATEGORY_OTHER_ADJUSTMENT = 'other_adjustment';
+    const REPORTING_CATEGORY_PARTIAL_CAPTURE_REVERSAL = 'partial_capture_reversal';
+    const REPORTING_CATEGORY_PAYOUT = 'payout';
+    const REPORTING_CATEGORY_PAYOUT_REVERSAL = 'payout_reversal';
+    const REPORTING_CATEGORY_PLATFORM_EARNING = 'platform_earning';
+    const REPORTING_CATEGORY_PLATFORM_EARNING_REFUND = 'platform_earning_refund';
+    const REPORTING_CATEGORY_REFUND = 'refund';
+    const REPORTING_CATEGORY_REFUND_FAILURE = 'refund_failure';
+    const REPORTING_CATEGORY_RISK_RESERVED_FUNDS = 'risk_reserved_funds';
+    const REPORTING_CATEGORY_TAX = 'tax';
+    const REPORTING_CATEGORY_TOPUP = 'topup';
+    const REPORTING_CATEGORY_TOPUP_REVERSAL = 'topup_reversal';
+    const REPORTING_CATEGORY_TRANSFER = 'transfer';
+    const REPORTING_CATEGORY_TRANSFER_REVERSAL = 'transfer_reversal';
 }

@@ -49,12 +49,28 @@ class Price extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const AGGREGATE_USAGE_LAST_DURING_PERIOD = 'last_during_period';
+    const AGGREGATE_USAGE_LAST_EVER = 'last_ever';
+    const AGGREGATE_USAGE_MAX = 'max';
+    const AGGREGATE_USAGE_SUM = 'sum';
+
     const BILLING_SCHEME_PER_UNIT = 'per_unit';
     const BILLING_SCHEME_TIERED = 'tiered';
+
+    const INTERVAL_DAY = 'day';
+    const INTERVAL_MONTH = 'month';
+    const INTERVAL_WEEK = 'week';
+    const INTERVAL_YEAR = 'year';
+
+    const ROUND_DOWN = 'down';
+    const ROUND_UP = 'up';
 
     const TIERS_MODE_GRADUATED = 'graduated';
     const TIERS_MODE_VOLUME = 'volume';
 
     const TYPE_ONE_TIME = 'one_time';
     const TYPE_RECURRING = 'recurring';
+
+    const USAGE_TYPE_LICENSED = 'licensed';
+    const USAGE_TYPE_METERED = 'metered';
 }

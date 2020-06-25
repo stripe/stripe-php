@@ -36,4 +36,7 @@ class Transaction extends \Stripe\ApiResource
     use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
+
+    const TYPE_CAPTURE = 'capture';
+    const TYPE_REFUND = 'refund';
 }

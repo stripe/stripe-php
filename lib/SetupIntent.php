@@ -68,12 +68,32 @@ class SetupIntent extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const CANCELLATION_REASON_ABANDONED = 'abandoned';
+    const CANCELLATION_REASON_DUPLICATE = 'duplicate';
+    const CANCELLATION_REASON_REQUESTED_BY_CUSTOMER = 'requested_by_customer';
+
+    const REQUEST_THREE_D_SECURE_ANY = 'any';
+    const REQUEST_THREE_D_SECURE_AUTOMATIC = 'automatic';
+
     const STATUS_CANCELED = 'canceled';
     const STATUS_PROCESSING = 'processing';
     const STATUS_REQUIRES_ACTION = 'requires_action';
     const STATUS_REQUIRES_CONFIRMATION = 'requires_confirmation';
     const STATUS_REQUIRES_PAYMENT_METHOD = 'requires_payment_method';
     const STATUS_SUCCEEDED = 'succeeded';
+
+    const TYPE_API_CONNECTION_ERROR = 'api_connection_error';
+    const TYPE_API_ERROR = 'api_error';
+    const TYPE_AUTHENTICATION_ERROR = 'authentication_error';
+    const TYPE_CARD_ERROR = 'card_error';
+    const TYPE_IDEMPOTENCY_ERROR = 'idempotency_error';
+    const TYPE_INVALID_REQUEST_ERROR = 'invalid_request_error';
+    const TYPE_OFFLINE = 'offline';
+    const TYPE_ONLINE = 'online';
+    const TYPE_RATE_LIMIT_ERROR = 'rate_limit_error';
+
+    const USAGE_OFF_SESSION = 'off_session';
+    const USAGE_ON_SESSION = 'on_session';
 
     /**
      * @param null|array $params

@@ -48,8 +48,11 @@ class Token extends ApiResource
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
 
-    const TYPE_ACCOUNT = 'account';
-    const TYPE_BANK_ACCOUNT = 'bank_account';
-    const TYPE_CARD = 'card';
-    const TYPE_PII = 'pii';
+    const ACCOUNT_HOLDER_TYPE_COMPANY = 'company';
+    const ACCOUNT_HOLDER_TYPE_INDIVIDUAL = 'individual';
+
+    const BUSINESS_TYPE_COMPANY = 'company';
+    const BUSINESS_TYPE_GOVERNMENT_ENTITY = 'government_entity';
+    const BUSINESS_TYPE_INDIVIDUAL = 'individual';
+    const BUSINESS_TYPE_NON_PROFIT = 'non_profit';
 }

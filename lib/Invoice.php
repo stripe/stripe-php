@@ -110,26 +110,46 @@ class Invoice extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
-    const BILLING_SEND_INVOICE = 'send_invoice';
-
-    const BILLING_REASON_MANUAL = 'manual';
-    const BILLING_REASON_SUBSCRIPTION = 'subscription';
-    const BILLING_REASON_SUBSCRIPTION_CREATE = 'subscription_create';
-    const BILLING_REASON_SUBSCRIPTION_CYCLE = 'subscription_cycle';
-    const BILLING_REASON_SUBSCRIPTION_THRESHOLD = 'subscription_threshold';
-    const BILLING_REASON_SUBSCRIPTION_UPDATE = 'subscription_update';
-    const BILLING_REASON_UPCOMING = 'upcoming';
-
     const COLLECTION_METHOD_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const COLLECTION_METHOD_SEND_INVOICE = 'send_invoice';
 
-    const STATUS_DELETED = 'deleted';
     const STATUS_DRAFT = 'draft';
     const STATUS_OPEN = 'open';
     const STATUS_PAID = 'paid';
     const STATUS_UNCOLLECTIBLE = 'uncollectible';
     const STATUS_VOID = 'void';
+
+    const TYPE_AE_TRN = 'ae_trn';
+    const TYPE_AU_ABN = 'au_abn';
+    const TYPE_BR_CNPJ = 'br_cnpj';
+    const TYPE_BR_CPF = 'br_cpf';
+    const TYPE_CA_BN = 'ca_bn';
+    const TYPE_CA_QST = 'ca_qst';
+    const TYPE_CH_VAT = 'ch_vat';
+    const TYPE_CL_TIN = 'cl_tin';
+    const TYPE_ES_CIF = 'es_cif';
+    const TYPE_EU_VAT = 'eu_vat';
+    const TYPE_HK_BR = 'hk_br';
+    const TYPE_ID_NPWP = 'id_npwp';
+    const TYPE_IN_GST = 'in_gst';
+    const TYPE_JP_CN = 'jp_cn';
+    const TYPE_KR_BRN = 'kr_brn';
+    const TYPE_LI_UID = 'li_uid';
+    const TYPE_MX_RFC = 'mx_rfc';
+    const TYPE_MY_FRP = 'my_frp';
+    const TYPE_MY_ITN = 'my_itn';
+    const TYPE_MY_SST = 'my_sst';
+    const TYPE_NO_VAT = 'no_vat';
+    const TYPE_NZ_GST = 'nz_gst';
+    const TYPE_RU_INN = 'ru_inn';
+    const TYPE_SA_VAT = 'sa_vat';
+    const TYPE_SG_GST = 'sg_gst';
+    const TYPE_SG_UEN = 'sg_uen';
+    const TYPE_TH_VAT = 'th_vat';
+    const TYPE_TW_VAT = 'tw_vat';
+    const TYPE_UNKNOWN = 'unknown';
+    const TYPE_US_EIN = 'us_ein';
+    const TYPE_ZA_VAT = 'za_vat';
 
     use ApiOperations\NestedResource;
 

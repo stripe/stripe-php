@@ -48,9 +48,36 @@ class Customer extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    const TAX_EXEMPT_EXEMPT = 'exempt';
-    const TAX_EXEMPT_NONE = 'none';
-    const TAX_EXEMPT_REVERSE = 'reverse';
+    const TYPE_AE_TRN = 'ae_trn';
+    const TYPE_AU_ABN = 'au_abn';
+    const TYPE_BR_CNPJ = 'br_cnpj';
+    const TYPE_BR_CPF = 'br_cpf';
+    const TYPE_CA_BN = 'ca_bn';
+    const TYPE_CA_QST = 'ca_qst';
+    const TYPE_CH_VAT = 'ch_vat';
+    const TYPE_CL_TIN = 'cl_tin';
+    const TYPE_ES_CIF = 'es_cif';
+    const TYPE_EU_VAT = 'eu_vat';
+    const TYPE_HK_BR = 'hk_br';
+    const TYPE_ID_NPWP = 'id_npwp';
+    const TYPE_IN_GST = 'in_gst';
+    const TYPE_JP_CN = 'jp_cn';
+    const TYPE_KR_BRN = 'kr_brn';
+    const TYPE_LI_UID = 'li_uid';
+    const TYPE_MX_RFC = 'mx_rfc';
+    const TYPE_MY_FRP = 'my_frp';
+    const TYPE_MY_ITN = 'my_itn';
+    const TYPE_MY_SST = 'my_sst';
+    const TYPE_NO_VAT = 'no_vat';
+    const TYPE_NZ_GST = 'nz_gst';
+    const TYPE_RU_INN = 'ru_inn';
+    const TYPE_SA_VAT = 'sa_vat';
+    const TYPE_SG_GST = 'sg_gst';
+    const TYPE_SG_UEN = 'sg_uen';
+    const TYPE_TH_VAT = 'th_vat';
+    const TYPE_TW_VAT = 'tw_vat';
+    const TYPE_US_EIN = 'us_ein';
+    const TYPE_ZA_VAT = 'za_vat';
 
     public static function getSavedNestedResources()
     {

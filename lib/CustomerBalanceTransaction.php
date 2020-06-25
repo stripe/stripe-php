@@ -39,6 +39,8 @@ class CustomerBalanceTransaction extends ApiResource
     const TYPE_INITIAL = 'initial';
     const TYPE_INVOICE_TOO_LARGE = 'invoice_too_large';
     const TYPE_INVOICE_TOO_SMALL = 'invoice_too_small';
+    const TYPE_MIGRATION = 'migration';
+    const TYPE_UNAPPLIED_FROM_INVOICE = 'unapplied_from_invoice';
     const TYPE_UNSPENT_RECEIVER_CREDIT = 'unspent_receiver_credit';
 
     const TYPE_ADJUSTEMENT = 'adjustment';

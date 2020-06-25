@@ -30,4 +30,10 @@ class Reader extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Delete;
     use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
+
+    const DEVICE_TYPE_BBPOS_CHIPPER2X = 'bbpos_chipper2x';
+    const DEVICE_TYPE_VERIFONE_P400 = 'verifone_P400';
+
+    const STATUS_OFFLINE = 'offline';
+    const STATUS_ONLINE = 'online';
 }

@@ -55,8 +55,33 @@ class Subscription extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const BEHAVIOR_KEEP_AS_DRAFT = 'keep_as_draft';
+    const BEHAVIOR_MARK_UNCOLLECTIBLE = 'mark_uncollectible';
+    const BEHAVIOR_VOID = 'void';
+
+    const BILLING_CYCLE_ANCHOR_NOW = 'now';
+    const BILLING_CYCLE_ANCHOR_UNCHANGED = 'unchanged';
+
+    const COLLECTION_METHOD_CHARGE_AUTOMATICALLY = 'charge_automatically';
+    const COLLECTION_METHOD_SEND_INVOICE = 'send_invoice';
+
+    const INTERVAL_DAY = 'day';
+    const INTERVAL_MONTH = 'month';
+    const INTERVAL_WEEK = 'week';
+    const INTERVAL_YEAR = 'year';
+
+    const PAYMENT_BEHAVIOR_ALLOW_INCOMPLETE = 'allow_incomplete';
+    const PAYMENT_BEHAVIOR_ERROR_IF_INCOMPLETE = 'error_if_incomplete';
+    const PAYMENT_BEHAVIOR_PENDING_IF_INCOMPLETE = 'pending_if_incomplete';
+
+    const PRORATION_BEHAVIOR_ALWAYS_INVOICE = 'always_invoice';
+    const PRORATION_BEHAVIOR_CREATE_PRORATIONS = 'create_prorations';
+    const PRORATION_BEHAVIOR_NONE = 'none';
+
     const STATUS_ACTIVE = 'active';
+    const STATUS_ALL = 'all';
     const STATUS_CANCELED = 'canceled';
+    const STATUS_ENDED = 'ended';
     const STATUS_INCOMPLETE = 'incomplete';
     const STATUS_INCOMPLETE_EXPIRED = 'incomplete_expired';
     const STATUS_PAST_DUE = 'past_due';

@@ -39,4 +39,8 @@ class SKU extends ApiResource
     use ApiOperations\Delete;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
+
+    const TYPE_BUCKET = 'bucket';
+    const TYPE_FINITE = 'finite';
+    const TYPE_INFINITE = 'infinite';
 }

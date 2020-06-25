@@ -62,6 +62,75 @@ class PaymentIntent extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const ACCOUNT_HOLDER_TYPE_COMPANY = 'company';
+    const ACCOUNT_HOLDER_TYPE_INDIVIDUAL = 'individual';
+
+    const BANK_ABN_AMRO = 'abn_amro';
+    const BANK_AFFIN_BANK = 'affin_bank';
+    const BANK_ALLIANCE_BANK = 'alliance_bank';
+    const BANK_AMBANK = 'ambank';
+    const BANK_ASN_BANK = 'asn_bank';
+    const BANK_BANK_ISLAM = 'bank_islam';
+    const BANK_BANK_MUAMALAT = 'bank_muamalat';
+    const BANK_BANK_RAKYAT = 'bank_rakyat';
+    const BANK_BSN = 'bsn';
+    const BANK_BUNQ = 'bunq';
+    const BANK_CIMB = 'cimb';
+    const BANK_DEUTSCHE_BANK = 'deutsche_bank';
+    const BANK_HANDELSBANKEN = 'handelsbanken';
+    const BANK_HONG_LEONG_BANK = 'hong_leong_bank';
+    const BANK_HSBC = 'hsbc';
+    const BANK_ING = 'ing';
+    const BANK_KFH = 'kfh';
+    const BANK_KNAB = 'knab';
+    const BANK_MAYBANK2E = 'maybank2e';
+    const BANK_MAYBANK2U = 'maybank2u';
+    const BANK_MONEYOU = 'moneyou';
+    const BANK_OCBC = 'ocbc';
+    const BANK_PB_ENTERPRISE = 'pb_enterprise';
+    const BANK_PUBLIC_BANK = 'public_bank';
+    const BANK_RABOBANK = 'rabobank';
+    const BANK_REGIOBANK = 'regiobank';
+    const BANK_RHB = 'rhb';
+    const BANK_SNS_BANK = 'sns_bank';
+    const BANK_STANDARD_CHARTERED = 'standard_chartered';
+    const BANK_TRIODOS_BANK = 'triodos_bank';
+    const BANK_UOB = 'uob';
+    const BANK_VAN_LANSCHOT = 'van_lanschot';
+
+    const CANCELLATION_REASON_ABANDONED = 'abandoned';
+    const CANCELLATION_REASON_DUPLICATE = 'duplicate';
+    const CANCELLATION_REASON_FRAUDULENT = 'fraudulent';
+    const CANCELLATION_REASON_REQUESTED_BY_CUSTOMER = 'requested_by_customer';
+
+    const CAPTURE_METHOD_AUTOMATIC = 'automatic';
+    const CAPTURE_METHOD_MANUAL = 'manual';
+
+    const CONFIRMATION_METHOD_AUTOMATIC = 'automatic';
+    const CONFIRMATION_METHOD_MANUAL = 'manual';
+
+    const NETWORK_AMEX = 'amex';
+    const NETWORK_CARTES_BANCAIRES = 'cartes_bancaires';
+    const NETWORK_DINERS = 'diners';
+    const NETWORK_DISCOVER = 'discover';
+    const NETWORK_INTERAC = 'interac';
+    const NETWORK_JCB = 'jcb';
+    const NETWORK_MASTERCARD = 'mastercard';
+    const NETWORK_UNIONPAY = 'unionpay';
+    const NETWORK_UNKNOWN = 'unknown';
+    const NETWORK_VISA = 'visa';
+
+    const PREFERRED_LANGUAGE_DE = 'de';
+    const PREFERRED_LANGUAGE_EN = 'en';
+    const PREFERRED_LANGUAGE_FR = 'fr';
+    const PREFERRED_LANGUAGE_NL = 'nl';
+
+    const REQUEST_THREE_D_SECURE_ANY = 'any';
+    const REQUEST_THREE_D_SECURE_AUTOMATIC = 'automatic';
+
+    const SETUP_FUTURE_USAGE_OFF_SESSION = 'off_session';
+    const SETUP_FUTURE_USAGE_ON_SESSION = 'on_session';
+
     const STATUS_CANCELED = 'canceled';
     const STATUS_PROCESSING = 'processing';
     const STATUS_REQUIRES_ACTION = 'requires_action';
@@ -69,6 +138,26 @@ class PaymentIntent extends ApiResource
     const STATUS_REQUIRES_CONFIRMATION = 'requires_confirmation';
     const STATUS_REQUIRES_PAYMENT_METHOD = 'requires_payment_method';
     const STATUS_SUCCEEDED = 'succeeded';
+
+    const TYPE_API_CONNECTION_ERROR = 'api_connection_error';
+    const TYPE_API_ERROR = 'api_error';
+    const TYPE_AU_BECS_DEBIT = 'au_becs_debit';
+    const TYPE_AUTHENTICATION_ERROR = 'authentication_error';
+    const TYPE_BACS_DEBIT = 'bacs_debit';
+    const TYPE_BANCONTACT = 'bancontact';
+    const TYPE_CARD_ERROR = 'card_error';
+    const TYPE_CARD_PRESENT = 'card_present';
+    const TYPE_EPS = 'eps';
+    const TYPE_FPX = 'fpx';
+    const TYPE_GIROPAY = 'giropay';
+    const TYPE_IDEAL = 'ideal';
+    const TYPE_IDEMPOTENCY_ERROR = 'idempotency_error';
+    const TYPE_INVALID_REQUEST_ERROR = 'invalid_request_error';
+    const TYPE_OFFLINE = 'offline';
+    const TYPE_ONLINE = 'online';
+    const TYPE_P24 = 'p24';
+    const TYPE_RATE_LIMIT_ERROR = 'rate_limit_error';
+    const TYPE_SEPA_DEBIT = 'sepa_debit';
 
     /**
      * @param null|array $params

@@ -37,6 +37,34 @@ class Card extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
 
+    const CANCELLATION_REASON_LOST = 'lost';
+    const CANCELLATION_REASON_STOLEN = 'stolen';
+
+    const INTERVAL_ALL_TIME = 'all_time';
+    const INTERVAL_DAILY = 'daily';
+    const INTERVAL_MONTHLY = 'monthly';
+    const INTERVAL_PER_AUTHORIZATION = 'per_authorization';
+    const INTERVAL_WEEKLY = 'weekly';
+    const INTERVAL_YEARLY = 'yearly';
+
+    const REPLACEMENT_REASON_DAMAGED = 'damaged';
+    const REPLACEMENT_REASON_EXPIRED = 'expired';
+    const REPLACEMENT_REASON_LOST = 'lost';
+    const REPLACEMENT_REASON_STOLEN = 'stolen';
+
+    const SERVICE_EXPRESS = 'express';
+    const SERVICE_PRIORITY = 'priority';
+    const SERVICE_STANDARD = 'standard';
+
+    const STATUS_ACTIVE = 'active';
+    const STATUS_CANCELED = 'canceled';
+    const STATUS_INACTIVE = 'inactive';
+
+    const TYPE_BULK = 'bulk';
+    const TYPE_INDIVIDUAL = 'individual';
+    const TYPE_PHYSICAL = 'physical';
+    const TYPE_VIRTUAL = 'virtual';
+
     /**
      * @param null|array $params
      * @param null|array|string $opts

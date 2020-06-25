@@ -52,6 +52,8 @@ class CreditNote extends ApiResource
     const STATUS_ISSUED = 'issued';
     const STATUS_VOID = 'void';
 
+    const TYPE_CUSTOM_LINE_ITEM = 'custom_line_item';
+    const TYPE_INVOICE_LINE_ITEM = 'invoice_line_item';
     const TYPE_POST_PAYMENT = 'post_payment';
     const TYPE_PRE_PAYMENT = 'pre_payment';
 

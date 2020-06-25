@@ -31,6 +31,9 @@ class Review extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Retrieve;
 
+    const OPENED_REASON_MANUAL = 'manual';
+    const OPENED_REASON_RULE = 'rule';
+
     /**
      * Possible string representations of the current, the opening or the closure reason of the review.
      * Not all of these enumeration apply to all of the ´reason´ fields. Please consult the Review object to

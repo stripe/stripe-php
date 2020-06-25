@@ -63,11 +63,50 @@ class Source extends ApiResource
     const FLOW_RECEIVER = 'receiver';
     const FLOW_REDIRECT = 'redirect';
 
-    const STATUS_CANCELED = 'canceled';
-    const STATUS_CHARGEABLE = 'chargeable';
-    const STATUS_CONSUMED = 'consumed';
-    const STATUS_FAILED = 'failed';
+    const INTERVAL_ONE_TIME = 'one_time';
+    const INTERVAL_SCHEDULED = 'scheduled';
+    const INTERVAL_VARIABLE = 'variable';
+
+    const NOTIFICATION_METHOD_DEPRECATED_NONE = 'deprecated_none';
+    const NOTIFICATION_METHOD_EMAIL = 'email';
+    const NOTIFICATION_METHOD_MANUAL = 'manual';
+    const NOTIFICATION_METHOD_NONE = 'none';
+    const NOTIFICATION_METHOD_STRIPE_EMAIL = 'stripe_email';
+
+    const REFUND_ATTRIBUTES_METHOD_EMAIL = 'email';
+    const REFUND_ATTRIBUTES_METHOD_MANUAL = 'manual';
+    const REFUND_ATTRIBUTES_METHOD_NONE = 'none';
+
+    const STATUS_ACCEPTED = 'accepted';
     const STATUS_PENDING = 'pending';
+    const STATUS_REFUSED = 'refused';
+    const STATUS_REVOKED = 'revoked';
+
+    const TYPE_ACH_CREDIT_TRANSFER = 'ach_credit_transfer';
+    const TYPE_ACH_DEBIT = 'ach_debit';
+    const TYPE_ACSS_DEBIT = 'acss_debit';
+    const TYPE_ALIPAY = 'alipay';
+    const TYPE_AU_BECS_DEBIT = 'au_becs_debit';
+    const TYPE_BANCONTACT = 'bancontact';
+    const TYPE_CARD = 'card';
+    const TYPE_CARD_PRESENT = 'card_present';
+    const TYPE_DISCOUNT = 'discount';
+    const TYPE_EPS = 'eps';
+    const TYPE_GIROPAY = 'giropay';
+    const TYPE_IDEAL = 'ideal';
+    const TYPE_KLARNA = 'klarna';
+    const TYPE_MULTIBANCO = 'multibanco';
+    const TYPE_OFFLINE = 'offline';
+    const TYPE_ONLINE = 'online';
+    const TYPE_P24 = 'p24';
+    const TYPE_SEPA_CREDIT_TRANSFER = 'sepa_credit_transfer';
+    const TYPE_SEPA_DEBIT = 'sepa_debit';
+    const TYPE_SHIPPING = 'shipping';
+    const TYPE_SKU = 'sku';
+    const TYPE_SOFORT = 'sofort';
+    const TYPE_TAX = 'tax';
+    const TYPE_THREE_D_SECURE = 'three_d_secure';
+    const TYPE_WECHAT = 'wechat';
 
     const USAGE_REUSABLE = 'reusable';
     const USAGE_SINGLE_USE = 'single_use';

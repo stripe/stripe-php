@@ -51,6 +51,55 @@ class Session extends \Stripe\ApiResource
     use \Stripe\ApiOperations\NestedResource;
     use \Stripe\ApiOperations\Retrieve;
 
+    const BILLING_ADDRESS_COLLECTION_AUTO = 'auto';
+    const BILLING_ADDRESS_COLLECTION_REQUIRED = 'required';
+
+    const CAPTURE_METHOD_AUTOMATIC = 'automatic';
+    const CAPTURE_METHOD_MANUAL = 'manual';
+
+    const INTERVAL_DAY = 'day';
+    const INTERVAL_MONTH = 'month';
+    const INTERVAL_WEEK = 'week';
+    const INTERVAL_YEAR = 'year';
+
+    const LOCALE_AUTO = 'auto';
+    const LOCALE_BG = 'bg';
+    const LOCALE_CS = 'cs';
+    const LOCALE_DA = 'da';
+    const LOCALE_DE = 'de';
+    const LOCALE_EL = 'el';
+    const LOCALE_EN = 'en';
+    const LOCALE_ES = 'es';
+    const LOCALE_ET = 'et';
+    const LOCALE_FI = 'fi';
+    const LOCALE_FR = 'fr';
+    const LOCALE_HU = 'hu';
+    const LOCALE_IT = 'it';
+    const LOCALE_JA = 'ja';
+    const LOCALE_LT = 'lt';
+    const LOCALE_LV = 'lv';
+    const LOCALE_MS = 'ms';
+    const LOCALE_MT = 'mt';
+    const LOCALE_NB = 'nb';
+    const LOCALE_NL = 'nl';
+    const LOCALE_PL = 'pl';
+    const LOCALE_PT = 'pt';
+    const LOCALE_PT_BR = 'pt-BR';
+    const LOCALE_RO = 'ro';
+    const LOCALE_RU = 'ru';
+    const LOCALE_SK = 'sk';
+    const LOCALE_SL = 'sl';
+    const LOCALE_SV = 'sv';
+    const LOCALE_TR = 'tr';
+    const LOCALE_ZH = 'zh';
+
+    const MODE_PAYMENT = 'payment';
+    const MODE_SETUP = 'setup';
+    const MODE_SUBSCRIPTION = 'subscription';
+
+    const SETUP_FUTURE_USAGE_OFF_SESSION = 'off_session';
+    const SETUP_FUTURE_USAGE_ON_SESSION = 'on_session';
+
     const SUBMIT_TYPE_AUTO = 'auto';
     const SUBMIT_TYPE_BOOK = 'book';
     const SUBMIT_TYPE_DONATE = 'donate';

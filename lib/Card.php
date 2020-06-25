@@ -46,6 +46,9 @@ class Card extends ApiResource
     use ApiOperations\Delete;
     use ApiOperations\Update;
 
+    const ACCOUNT_HOLDER_TYPE_COMPANY = 'company';
+    const ACCOUNT_HOLDER_TYPE_INDIVIDUAL = 'individual';
+
     /**
      * Possible string representations of the CVC check status.
      *

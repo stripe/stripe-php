@@ -26,6 +26,11 @@ class TaxId extends ApiResource
 
     use ApiOperations\Delete;
 
+    const STATUS_PENDING = 'pending';
+    const STATUS_UNAVAILABLE = 'unavailable';
+    const STATUS_UNVERIFIED = 'unverified';
+    const STATUS_VERIFIED = 'verified';
+
     const TYPE_AE_TRN = 'ae_trn';
     const TYPE_AU_ABN = 'au_abn';
     const TYPE_BR_CNPJ = 'br_cnpj';
@@ -57,11 +62,6 @@ class TaxId extends ApiResource
     const TYPE_UNKNOWN = 'unknown';
     const TYPE_US_EIN = 'us_ein';
     const TYPE_ZA_VAT = 'za_vat';
-
-    const VERIFICATION_STATUS_PENDING = 'pending';
-    const VERIFICATION_STATUS_UNAVAILABLE = 'unavailable';
-    const VERIFICATION_STATUS_UNVERIFIED = 'unverified';
-    const VERIFICATION_STATUS_VERIFIED = 'verified';
 
     /**
      * @return string the API URL for this tax id

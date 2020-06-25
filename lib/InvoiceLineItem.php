@@ -27,4 +27,7 @@ namespace Stripe;
 class InvoiceLineItem extends ApiResource
 {
     const OBJECT_NAME = 'line_item';
+
+    const TYPE_INVOICEITEM = 'invoiceitem';
+    const TYPE_SUBSCRIPTION = 'subscription';
 }

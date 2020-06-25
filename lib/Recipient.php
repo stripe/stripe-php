@@ -42,4 +42,7 @@ class Recipient extends ApiResource
     use ApiOperations\Delete;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
+
+    const TYPE_CORPORATION = 'corporation';
+    const TYPE_INDIVIDUAL = 'individual';
 }

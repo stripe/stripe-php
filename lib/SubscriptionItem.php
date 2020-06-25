@@ -28,6 +28,19 @@ class SubscriptionItem extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const INTERVAL_DAY = 'day';
+    const INTERVAL_MONTH = 'month';
+    const INTERVAL_WEEK = 'week';
+    const INTERVAL_YEAR = 'year';
+
+    const PAYMENT_BEHAVIOR_ALLOW_INCOMPLETE = 'allow_incomplete';
+    const PAYMENT_BEHAVIOR_ERROR_IF_INCOMPLETE = 'error_if_incomplete';
+    const PAYMENT_BEHAVIOR_PENDING_IF_INCOMPLETE = 'pending_if_incomplete';
+
+    const PRORATION_BEHAVIOR_ALWAYS_INVOICE = 'always_invoice';
+    const PRORATION_BEHAVIOR_CREATE_PRORATIONS = 'create_prorations';
+    const PRORATION_BEHAVIOR_NONE = 'none';
+
     const PATH_USAGE_RECORDS = '/usage_records';
 
     /**

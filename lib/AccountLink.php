@@ -21,4 +21,10 @@ class AccountLink extends ApiResource
     const OBJECT_NAME = 'account_link';
 
     use ApiOperations\Create;
+
+    const COLLECT_CURRENTLY_DUE = 'currently_due';
+    const COLLECT_EVENTUALLY_DUE = 'eventually_due';
+
+    const TYPE_CUSTOM_ACCOUNT_UPDATE = 'custom_account_update';
+    const TYPE_CUSTOM_ACCOUNT_VERIFICATION = 'custom_account_verification';
 }
