@@ -18,13 +18,15 @@ abstract class Webhook
      * @param string $secret secret used to generate the signature
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time
+     * @param string $charset use a character set other than UTF-8 after decoding
+     *  the JSON payload (requires mbstring)
      *
      * @throws Exception\UnexpectedValueException if the payload is not valid JSON,
      * @throws Exception\SignatureVerificationException if the verification fails
      *
      * @return Event the Event instance
      */
-    public static function constructEvent($payload, $sigHeader, $secret, $tolerance = self::DEFAULT_TOLERANCE)
+    public static function constructEvent($payload, $sigHeader, $secret, $tolerance = self::DEFAULT_TOLERANCE, $charset = 'UTF-8')
     {
         WebhookSignature::verifyHeader($payload, $sigHeader, $secret, $tolerance);
 
@@ -35,6 +37,12 @@ abstract class Webhook
               . "(json_last_error() was {$jsonError})";
 
             throw new Exception\UnexpectedValueException($msg);
+        }
+
+        if (function_exists('mb_convert_encoding') && $charset !== 'UTF-8') {
+            $deData = mb_convert_encoding($data, $charset);
+            if ($deData !== null && $deData !== $data)
+                $data = $deData;
         }
 
         return Event::constructFrom($data);
