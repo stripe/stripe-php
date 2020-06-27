@@ -39,7 +39,7 @@ abstract class Webhook
             throw new Exception\UnexpectedValueException($msg);
         }
 
-        if (function_exists('mb_convert_encoding') && $charset !== 'UTF-8') {
+        if (version_compare(PHP_VERSION, '7.2.0') >= 0 && function_exists('mb_convert_encoding') && $charset !== 'UTF-8') {
             $deData = mb_convert_encoding($data, $charset);
             if ($deData !== null && $deData !== $data)
                 $data = $deData;
