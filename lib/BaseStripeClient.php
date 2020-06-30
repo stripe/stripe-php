@@ -17,7 +17,7 @@ class BaseStripeClient implements StripeClientInterface
     private $config;
 
     /** @var \Stripe\Util\RequestOptions */
-    private $defaultOpts;
+    protected $defaultOpts;
 
     /**
      * Initializes a new instance of the {@link BaseStripeClient} class.
