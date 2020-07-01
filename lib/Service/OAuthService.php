@@ -38,7 +38,6 @@ class OAuthService extends \Stripe\Service\AbstractService
 
         $base = ($opts && \array_key_exists('connect_base', $opts)) ? $opts['connect_base'] : $this->client->getConnectBase();
 
-        $clientId = $this->_getClientId($params);
         $params['client_id'] = $this->_getClientId($params);
         if (!\array_key_exists('response_type', $params)) {
             $params['response_type'] = 'code';
@@ -61,6 +60,8 @@ class OAuthService extends \Stripe\Service\AbstractService
      */
     public function token($params = null, $opts = null)
     {
+        $params = $params ?: [];
+        $params['client_id'] = $this->_getClientId($params);
         return $this->requestConnect('post', $this->buildPath('/oauth/token'), $params, $opts);
     }
 

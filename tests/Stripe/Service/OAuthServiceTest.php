@@ -55,12 +55,28 @@ final class OAuthServiceTest extends \PHPUnit\Framework\TestCase
         static::assertSame('US', $params['stripe_user']['country']);
     }
 
-    public function testRaisesAuthenticationErrorWhenNoClientId()
+    public function testAuthorizeUrlRaisesAuthenticationErrorWhenNoClientId()
     {
         $this->setUpServiceWithNoClientId();
         $this->expectException(\Stripe\Exception\AuthenticationException::class);
         $this->expectExceptionMessageRegExp('#No client_id provided#');
         $uriStr = $this->service->authorizeUrl();
+    }
+
+    public function testTokenRaisesAuthenticationErrorWhenNoClientId()
+    {
+        $this->setUpServiceWithNoClientId();
+        $this->expectException(\Stripe\Exception\AuthenticationException::class);
+        $this->expectExceptionMessageRegExp('#No client_id provided#');
+        $this->service->token();
+    }
+
+    public function testDeauthorizeRaisesAuthenticationErrorWhenNoClientId()
+    {
+        $this->setUpServiceWithNoClientId();
+        $this->expectException(\Stripe\Exception\AuthenticationException::class);
+        $this->expectExceptionMessageRegExp('#No client_id provided#');
+        $this->service->deauthorize();
     }
 
     public function testToken()
@@ -72,6 +88,7 @@ final class OAuthServiceTest extends \PHPUnit\Framework\TestCase
             [
                 'grant_type' => 'authorization_code',
                 'code' => 'this_is_an_authorization_code',
+                'client_id' => 'ca_123'
             ],
             null,
             false,

@@ -21,9 +21,6 @@ class RequestOptions
     /** @var null|string */
     public $apiBase;
 
-    /** @var null|string */
-    public $connectBase;
-
     /**
      * @param null|string $key
      * @param array<string, string> $headers
