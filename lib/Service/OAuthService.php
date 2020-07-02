@@ -17,9 +17,7 @@ class OAuthService extends \Stripe\Service\AbstractService
     protected function requestConnect($method, $path, $params, $opts)
     {
         $opts = \Stripe\Util\RequestOptions::parse($opts);
-        if (!isset($opts->apiBase)) {
-            $opts->apiBase = $this->client->getConnectBase();
-        }
+        $opts->apiBase = $this->_getBase($opts);
 
         return $this->request($method, $path, $params, $opts);
     }
@@ -36,7 +34,7 @@ class OAuthService extends \Stripe\Service\AbstractService
     {
         $params = $params ?: [];
 
-        $base = ($opts && \array_key_exists('connect_base', $opts)) ? $opts['connect_base'] : $this->client->getConnectBase();
+        $base = $this->_getBase($opts);
 
         $params['client_id'] = $this->_getClientId($params);
         if (!\array_key_exists('response_type', $params)) {
@@ -104,5 +102,12 @@ class OAuthService extends \Stripe\Service\AbstractService
         }
 
         return $this->client->getApiKey();
+    }
+
+    private function _getBase($opts)
+    {
+        return ($opts && \array_key_exists('api_base', $opts)) ?
+          $opts['api_base'] :
+          $this->client->getConnectBase();
     }
 }
