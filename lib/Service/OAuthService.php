@@ -109,7 +109,7 @@ class OAuthService extends \Stripe\Service\AbstractService
         // Throw an exception for the convenience of anybody migrating to
         // \Stripe\Service\OAuthService from \Stripe\OAuth, where `connect_base`
         // was the name of the parameter that behaves as `api_base` does here.
-        if (\array_key_exists('connect_base', $opts)) {
+        if ($opts && \array_key_exists('connect_base', $opts)) {
             throw new \Stripe\Exception\InvalidArgumentException('Use `api_base`, not `connect_base`');
         }
 
