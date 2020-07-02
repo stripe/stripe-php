@@ -34,6 +34,7 @@ class OAuthService extends \Stripe\Service\AbstractService
     {
         $params = $params ?: [];
 
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
         $base = $this->_getBase($opts);
 
         $params['client_id'] = $this->_getClientId($params);
@@ -109,11 +110,11 @@ class OAuthService extends \Stripe\Service\AbstractService
         // Throw an exception for the convenience of anybody migrating to
         // \Stripe\Service\OAuthService from \Stripe\OAuth, where `connect_base`
         // was the name of the parameter that behaves as `api_base` does here.
-        if ($opts && \array_key_exists('connect_base', $opts)) {
+        if (isset($opts->connect_base)) {
             throw new \Stripe\Exception\InvalidArgumentException('Use `api_base`, not `connect_base`');
         }
 
-        return ($opts && \array_key_exists('api_base', $opts)) ?
+        return (isset($opts->api_base)) ?
           $opts['api_base'] :
           $this->client->getConnectBase();
     }
