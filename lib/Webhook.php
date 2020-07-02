@@ -37,6 +37,8 @@ abstract class Webhook
             throw new Exception\UnexpectedValueException($msg);
         }
 
-        return Event::constructFrom($data);
+        $opts = isset($data['account']) ? ['stripe_account' => $data['account']] : null;
+
+        return Event::constructFrom($data, $opts);
     }
 }

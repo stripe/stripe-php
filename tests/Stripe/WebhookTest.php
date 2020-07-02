@@ -2,6 +2,8 @@
 
 namespace Stripe;
 
+use ReflectionClass;
+
 /**
  * @internal
  * @covers \Stripe\Webhook
@@ -13,7 +15,8 @@ final class WebhookTest extends \PHPUnit\Framework\TestCase
 
     const EVENT_PAYLOAD = '{
   "id": "evt_test_webhook",
-  "object": "event"
+  "object": "event",
+  "account": "connect_account_id"
 }';
     const SECRET = 'whsec_test_secret';
 
@@ -37,6 +40,11 @@ final class WebhookTest extends \PHPUnit\Framework\TestCase
         $sigHeader = $this->generateHeader();
         $event = Webhook::constructEvent(self::EVENT_PAYLOAD, $sigHeader, self::SECRET);
         static::assertSame('evt_test_webhook', $event->id);
+
+        $reflection = new ReflectionClass($event);
+        $property = $reflection->getProperty('_opts');
+        $property->setAccessible(true);
+        static::assertSame('connect_account_id', $property->getValue($event)->headers['Stripe-Account']);
     }
 
     public function testInvalidJson()
