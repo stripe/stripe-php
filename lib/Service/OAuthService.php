@@ -61,7 +61,7 @@ class OAuthService extends \Stripe\Service\AbstractService
         $params = $params ?: [];
         $params['client_secret'] = $this->_getClientSecret($params);
 
-        return $this->requestConnect('post', $this->buildPath('/oauth/token'), $params, $opts);
+        return $this->requestConnect('post', '/oauth/token', $params, $opts);
     }
 
     public function deauthorize($params = null, $opts = null)
@@ -69,7 +69,7 @@ class OAuthService extends \Stripe\Service\AbstractService
         $params = $params ?: [];
         $params['client_id'] = $this->_getClientId($params);
 
-        return $this->requestConnect('post', $this->buildPath('/oauth/deauthorize'), $params, $opts);
+        return $this->requestConnect('post', '/oauth/deauthorize', $params, $opts);
     }
 
     private function _getClientId($params = null)
