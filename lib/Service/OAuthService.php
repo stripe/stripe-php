@@ -16,7 +16,7 @@ class OAuthService extends \Stripe\Service\AbstractService
      */
     protected function requestConnect($method, $path, $params, $opts)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = $this->_parseOpts($opts);
         $opts->apiBase = $this->_getBase($opts);
 
         return $this->request($method, $path, $params, $opts);
@@ -34,7 +34,7 @@ class OAuthService extends \Stripe\Service\AbstractService
     {
         $params = $params ?: [];
 
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = $this->_parseOpts($opts);
         $base = $this->_getBase($opts);
 
         $params['client_id'] = $this->_getClientId($params);
@@ -65,6 +65,16 @@ class OAuthService extends \Stripe\Service\AbstractService
         return $this->requestConnect('post', '/oauth/token', $params, $opts);
     }
 
+    /**
+     * Disconnects an account from your platform.
+     *
+     * @param null|array $params
+     * @param null|array $opts
+     *
+     * @throws \Stripe\Exception\OAuth\OAuthErrorException if the request fails
+     *
+     * @return StripeObject object containing the response from the API
+     */
     public function deauthorize($params = null, $opts = null)
     {
         $params = $params ?: [];
@@ -105,17 +115,36 @@ class OAuthService extends \Stripe\Service\AbstractService
         return $this->client->getApiKey();
     }
 
-    private function _getBase($opts)
+    /**
+     * @param array|\Stripe\Util\RequestOptions $opts the special modifiers of the request
+     *
+     * @throws \Stripe\Exception\InvalidArgumentException
+     *
+     * @return \Stripe\Util\RequestOptions
+     */
+    private function _parseOpts($opts)
     {
-        // Throw an exception for the convenience of anybody migrating to
-        // \Stripe\Service\OAuthService from \Stripe\OAuth, where `connect_base`
-        // was the name of the parameter that behaves as `api_base` does here.
-        if (isset($opts->connect_base)) {
-            throw new \Stripe\Exception\InvalidArgumentException('Use `api_base`, not `connect_base`');
+        if (\is_array($opts)) {
+            if (\array_key_exists('connect_base', $opts)) {
+                // Throw an exception for the convenience of anybody migrating to
+                // \Stripe\Service\OAuthService from \Stripe\OAuth, where `connect_base`
+                // was the name of the parameter that behaves as `api_base` does here.
+                throw new \Stripe\Exception\InvalidArgumentException('Use `api_base`, not `connect_base`');
+            }
         }
 
-        return (isset($opts->api_base)) ?
-          $opts['api_base'] :
+        return \Stripe\Util\RequestOptions::parse($opts);
+    }
+
+    /**
+     * @param \Stripe\Util\RequestOptions $opts
+     *
+     * @return string
+     */
+    private function _getBase($opts)
+    {
+        return isset($opts->apiBase) ?
+          $opts->apiBase :
           $this->client->getConnectBase();
     }
 }

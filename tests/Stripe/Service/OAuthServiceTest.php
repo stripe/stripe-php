@@ -63,6 +63,14 @@ final class OAuthServiceTest extends \PHPUnit\Framework\TestCase
         $uriStr = $this->service->authorizeUrl();
     }
 
+    public function testAuthorizeUrlRaisesInvalidArgumentExceptionWhenConnectBase()
+    {
+        $this->setUpService();
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessageRegExp('#Use `api_base`#');
+        $uriStr = $this->service->authorizeUrl(null, ['connect_base' => 'foo']);
+    }
+
     public function testDeauthorizeRaisesAuthenticationErrorWhenNoClientId()
     {
         $this->setUpServiceWithNoClientId();
