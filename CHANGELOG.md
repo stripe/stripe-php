@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.40.0 - 2020-07-06
+* [#964](https://github.com/stripe/stripe-php/pull/964) Add OAuthService
+
 ## 7.39.0 - 2020-06-25
 * [#960](https://github.com/stripe/stripe-php/pull/960) Add constants for `payment_behavior` on `Subscription`
 
