@@ -225,6 +225,7 @@ require __DIR__ . '/lib/Service/Terminal/TerminalServiceFactory.php';
 // OAuth
 require __DIR__ . '/lib/OAuth.php';
 require __DIR__ . '/lib/OAuthErrorObject.php';
+require __DIR__ . '/lib/Service/OAuthService.php';
 
 // Webhooks
 require __DIR__ . '/lib/Webhook.php';
