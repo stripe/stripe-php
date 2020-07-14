@@ -22,7 +22,7 @@ namespace Stripe\Checkout;
  *
  * @property string $id Unique identifier for the object. Used to pass to <code>redirectToCheckout</code> in Stripe.js.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|string $billing_address_collection The value (<code>auto</code> or <code>required</code>) for whether Checkout collected the customer's billing address.
+ * @property null|string $billing_address_collection Describes whether Checkout should collect the customer's billing address.
  * @property string $cancel_url The URL the customer will be directed to if they decide to cancel payment and return to your website.
  * @property null|string $client_reference_id A unique string to reference the Checkout Session. This can be a customer ID, a cart ID, or similar, and can be used to reconcile the session with your internal systems.
  * @property null|string|\Stripe\Customer $customer The ID of the customer for this session. For Checkout Sessions in <code>payment</code> or <code>subscription</code> mode, Checkout will create a new customer object based on information provided during the session unless an existing customer was provided when the session was created.
@@ -50,6 +50,9 @@ class Session extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Create;
     use \Stripe\ApiOperations\NestedResource;
     use \Stripe\ApiOperations\Retrieve;
+
+    const BILLING_ADDRESS_COLLECTION_AUTO = 'auto';
+    const BILLING_ADDRESS_COLLECTION_REQUIRED = 'required';
 
     const SUBMIT_TYPE_AUTO = 'auto';
     const SUBMIT_TYPE_BOOK = 'book';

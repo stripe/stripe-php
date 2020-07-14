@@ -33,7 +33,7 @@ namespace Stripe;
  * @property null|string[] $preferred_locales The customer's preferred locales (languages), ordered by preference.
  * @property null|\Stripe\StripeObject $shipping Mailing and shipping address for the customer. Appears on invoices emailed to this customer.
  * @property \Stripe\Collection $sources The customer's payment sources, if any.
- * @property \Stripe\Collection $subscriptions The customer's current subscriptions, if any.
+ * @property null|\Stripe\Collection $subscriptions The customer's current subscriptions, if any.
  * @property null|string $tax_exempt Describes the customer's tax exemption status. One of <code>none</code>, <code>exempt</code>, or <code>reverse</code>. When set to <code>reverse</code>, invoice and receipt PDFs include the text <strong>&quot;Reverse charge&quot;</strong>.
  * @property \Stripe\Collection $tax_ids The customer's tax IDs.
  */
