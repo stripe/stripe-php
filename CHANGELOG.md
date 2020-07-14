@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.41.0 - 2020-07-14
+* [#971](https://github.com/stripe/stripe-php/pull/971) Adds enum values for `billing_address_collection` on Checkout `Session`
+
 ## 7.40.0 - 2020-07-06
 * [#964](https://github.com/stripe/stripe-php/pull/964) Add OAuthService
 
