@@ -12,10 +12,7 @@ namespace Stripe;
  * href="https://stripe.com/docs/connect">Connect</a>, specifically Connect's much
  * more powerful <a href="https://stripe.com/docs/api#account">Account objects</a>.
  * Stripe accounts that don't already use recipients can no longer begin doing so.
- * Please use <code>Account</code> objects instead. If you are already using
- * recipients, please see our <a
- * href="https://stripe.com/docs/connect/recipient-account-migrations">migration
- * guide</a> for more information.</strong>
+ * Please use <code>Account</code> objects instead.</strong>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

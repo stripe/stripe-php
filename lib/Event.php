@@ -24,7 +24,7 @@ namespace Stripe;
  * We also have a separate <a
  * href="http://en.wikipedia.org/wiki/Webhook">webhooks</a> system for sending the
  * <code>Event</code> objects directly to an endpoint on your server. Webhooks are
- * managed in your <a href="https://dashboard.stripe.com/account/webhooks'">account
+ * managed in your <a href="https://dashboard.stripe.com/account/webhooks">account
  * settings</a>, and our <a href="https://stripe.com/docs/webhooks">Using
  * Webhooks</a> guide will help you get set up.
  *
