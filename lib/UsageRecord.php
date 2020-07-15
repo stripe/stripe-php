@@ -4,7 +4,7 @@ namespace Stripe;
 
 /**
  * Usage records allow you to report customer usage and metrics to Stripe for
- * metered billing of subscription plans.
+ * metered billing of subscription prices.
  *
  * Related guide: <a
  * href="https://stripe.com/docs/billing/subscriptions/metered-billing">Metered

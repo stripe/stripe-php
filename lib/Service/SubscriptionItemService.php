@@ -23,7 +23,7 @@ class SubscriptionItemService extends \Stripe\Service\AbstractService
      * For the specified subscription item, returns a list of summary objects. Each
      * object in the list provides usage information that’s been summarized from
      * multiple usage records and over a subscription billing period (e.g., 15 usage
-     * records in the billing plan’s month of September).
+     * records in the month of September).
      *
      * The list is sorted in reverse-chronological order (newest first). The first list
      * item represents the most current usage period that hasn’t ended yet. Since new
