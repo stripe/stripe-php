@@ -18,7 +18,7 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $filename A filename for the file, suitable for saving to a filesystem.
  * @property null|\Stripe\Collection $links A list of <a href="https://stripe.com/docs/api#file_links">file links</a> that point at this file.
- * @property string $purpose The purpose of the file. Possible values are <code>additional_verification</code>, <code>business_icon</code>, <code>business_logo</code>, <code>customer_signature</code>, <code>dispute_evidence</code>, <code>document_provider_identity_document</code>, <code>finance_report_run</code>, <code>identity_document</code>, <code>pci_document</code>, <code>sigma_scheduled_query</code>, or <code>tax_document_user_upload</code>.
+ * @property string $purpose The <a href="https://stripe.com/docs/file-upload#uploading-a-file">purpose</a> of the uploaded file.
  * @property int $size The size in bytes of the file object.
  * @property null|string $title A user friendly title for the document.
  * @property null|string $type The type of the file returned (e.g., <code>csv</code>, <code>pdf</code>, <code>jpg</code>, or <code>png</code>).
@@ -30,6 +30,15 @@ class File extends ApiResource
 
     use ApiOperations\All;
     use ApiOperations\Retrieve;
+
+    const PURPOSE_ADDITIONAL_VERIFICATION = 'additional_verification';
+    const PURPOSE_BUSINESS_ICON = 'business_icon';
+    const PURPOSE_BUSINESS_LOGO = 'business_logo';
+    const PURPOSE_CUSTOMER_SIGNATURE = 'customer_signature';
+    const PURPOSE_DISPUTE_EVIDENCE = 'dispute_evidence';
+    const PURPOSE_IDENTITY_DOCUMENT = 'identity_document';
+    const PURPOSE_PCI_DOCUMENT = 'pci_document';
+    const PURPOSE_TAX_DOCUMENT_USER_UPLOAD = 'tax_document_user_upload';
 
     // This resource can have two different object names. In latter API
     // versions, only `file` is used, but since stripe-php may be used with
