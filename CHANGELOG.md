@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.42.0 - 2020-07-15
+* [#974](https://github.com/stripe/stripe-php/pull/974) Add new constants for `purpose` on `File`
+
 ## 7.41.1 - 2020-07-15
 * [#973](https://github.com/stripe/stripe-php/pull/973) Multiple PHPDoc fixes
 
