@@ -29,6 +29,7 @@ namespace Stripe;
  * @property null|string $maiden_name The person's maiden name.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $phone The person's phone number.
+ * @property string $political_exposure Indicates if the person or any of their representatives, family members, or other closely related persons, declares that they hold or have held an important public job or function, in any jurisdiction.
  * @property \Stripe\StripeObject $relationship
  * @property null|\Stripe\StripeObject $requirements Information about the requirements for this person, including what information needs to be collected, and by when.
  * @property bool $ssn_last_4_provided Whether the last four digits of the person's Social Security number have been provided (U.S. only).
@@ -43,6 +44,9 @@ class Person extends ApiResource
 
     const GENDER_FEMALE = 'female';
     const GENDER_MALE = 'male';
+
+    const POLITICAL_EXPOSURE_EXISTING = 'existing';
+    const POLITICAL_EXPOSURE_NONE = 'none';
 
     const VERIFICATION_STATUS_PENDING = 'pending';
     const VERIFICATION_STATUS_UNVERIFIED = 'unverified';
