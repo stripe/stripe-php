@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.43.0 - 2020-07-17
+* [#975](https://github.com/stripe/stripe-php/pull/975) Add support for `political_exposure` on `Person`
+
 ## 7.42.0 - 2020-07-15
 * [#974](https://github.com/stripe/stripe-php/pull/974) Add new constants for `purpose` on `File`
 
