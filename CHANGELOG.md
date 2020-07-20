@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.44.0 - 2020-07-20
+* [#948](https://github.com/stripe/stripe-php/pull/948) Add `first()` and `last()` functions to `Collection`
+
 ## 7.43.0 - 2020-07-17
 * [#975](https://github.com/stripe/stripe-php/pull/975) Add support for `political_exposure` on `Person`
 
