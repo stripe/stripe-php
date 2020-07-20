@@ -312,4 +312,28 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
         $previousPage = $this->fixture->previousPage();
         static::assertSame([], $previousPage->data);
     }
+
+    public function testFirst()
+    {
+        $collection = Collection::constructFrom([
+            'data' => [
+                ['content' => 'first'],
+                ['content' => 'middle'],
+                ['content' => 'last'],
+            ],
+        ]);
+        static::assertSame('first', $collection->first()['content']);
+    }
+
+    public function testLast()
+    {
+        $collection = Collection::constructFrom([
+            'data' => [
+                ['content' => 'first'],
+                ['content' => 'middle'],
+                ['content' => 'last'],
+            ],
+        ]);
+        static::assertSame('last', $collection->last()['content']);
+    }
 }
