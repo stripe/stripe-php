@@ -20,6 +20,7 @@ namespace Stripe;
  * @property int $date Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property bool $discountable If true, discounts will apply to this invoice item. Always false for prorations.
+ * @property null|(string|\Stripe\Discount)[] $discounts The discounts which apply to the invoice item. Item discounts are applied before invoice discounts. Use <code>expand[]=discounts</code> to expand each discount.
  * @property null|string|\Stripe\Invoice $invoice The ID of the invoice this invoice item belongs to.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
