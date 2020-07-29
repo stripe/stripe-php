@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.45.0 - 2020-07-28
+* [#981](https://github.com/stripe/stripe-php/pull/981) PHPdoc updates
+
 ## 7.44.0 - 2020-07-20
 * [#948](https://github.com/stripe/stripe-php/pull/948) Add `first()` and `last()` functions to `Collection`
 
