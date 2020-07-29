@@ -8,6 +8,7 @@ namespace Stripe;
  * @property int $amount The integer amount in <strong>%s</strong> representing the gross amount being credited for this line item, excluding (exclusive) tax and discounts.
  * @property null|string $description Description of the item being credited.
  * @property int $discount_amount The integer amount in <strong>%s</strong> representing the discount being credited for this line item.
+ * @property \Stripe\StripeObject[] $discount_amounts The amount of discount calculated per discount for this line item
  * @property string $invoice_line_item ID of the invoice line item being credited
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|int $quantity The number of units of product being credited.
