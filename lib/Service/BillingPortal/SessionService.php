@@ -1,3 +1,4 @@
+// File generated from our OpenAPI spec
 <?php
 
 namespace Stripe\Service\BillingPortal;
