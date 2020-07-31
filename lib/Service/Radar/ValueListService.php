@@ -1,5 +1,7 @@
 <?php
 
+// File generated from our OpenAPI spec
+
 namespace Stripe\Service\Radar;
 
 class ValueListService extends \Stripe\Service\AbstractService

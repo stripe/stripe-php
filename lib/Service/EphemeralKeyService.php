@@ -1,5 +1,7 @@
 <?php
 
+// File generated from our OpenAPI spec
+
 namespace Stripe\Service;
 
 class EphemeralKeyService extends \Stripe\Service\AbstractService

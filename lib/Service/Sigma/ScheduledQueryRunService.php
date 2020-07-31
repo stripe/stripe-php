@@ -1,5 +1,7 @@
 <?php
 
+// File generated from our OpenAPI spec
+
 namespace Stripe\Service\Sigma;
 
 class ScheduledQueryRunService extends \Stripe\Service\AbstractService
