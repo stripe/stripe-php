@@ -1,5 +1,7 @@
 <?php
 
+// File generated from our OpenAPI spec
+
 // Stripe singleton
 require __DIR__ . '/lib/Stripe.php';
 

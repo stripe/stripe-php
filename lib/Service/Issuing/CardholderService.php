@@ -1,5 +1,7 @@
 <?php
 
+// File generated from our OpenAPI spec
+
 namespace Stripe\Service\Issuing;
 
 class CardholderService extends \Stripe\Service\AbstractService

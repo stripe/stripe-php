@@ -1,5 +1,7 @@
 <?php
 
+// File generated from our OpenAPI spec
+
 namespace Stripe\Service\Terminal;
 
 class ReaderService extends \Stripe\Service\AbstractService
