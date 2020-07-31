@@ -77,6 +77,23 @@ class Customer extends ApiResource
         $this->refreshFrom(['discount' => null], $opts, true);
     }
 
+    /**
+     * @param string $id The ID of customer to be deleted.
+     * @param array|null $params
+     * @param array|string|null $options
+     *
+     * @return Obj
+     */
+    public static function delete($id, $params = null, $opts = null){
+        $url = static::classUrl().'/'.$id;
+
+        list($response, $opts) = static::_staticRequest('delete', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+        return $obj;
+    }
+
+    
     const PATH_BALANCE_TRANSACTIONS = '/balance_transactions';
 
     /**
