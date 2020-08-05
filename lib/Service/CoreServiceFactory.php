@@ -39,6 +39,7 @@ namespace Stripe\Service;
  * @property PlanService $plans
  * @property PriceService $prices
  * @property ProductService $products
+ * @property PromotionCodeService $promotionCodes
  * @property Radar\RadarServiceFactory $radar
  * @property RefundService $refunds
  * @property Reporting\ReportingServiceFactory $reporting
@@ -95,6 +96,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'plans' => PlanService::class,
         'prices' => PriceService::class,
         'products' => ProductService::class,
+        'promotionCodes' => PromotionCodeService::class,
         'radar' => Radar\RadarServiceFactory::class,
         'refunds' => RefundService::class,
         'reporting' => Reporting\ReportingServiceFactory::class,
