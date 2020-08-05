@@ -45,7 +45,7 @@ final class SubscriptionItemTest extends \PHPUnit\Framework\TestCase
             '/v1/subscription_items'
         );
         $resource = SubscriptionItem::create([
-            'plan' => 'plan',
+            'price' => 'price_123',
             'subscription' => 'sub_123',
         ]);
         static::assertInstanceOf(\Stripe\SubscriptionItem::class, $resource);
