@@ -55,7 +55,7 @@ class OAuthService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\OAuth\OAuthErrorException if the request fails
      *
-     * @return StripeObject object containing the response from the API
+     * @return \Stripe\StripeObject object containing the response from the API
      */
     public function token($params = null, $opts = null)
     {
@@ -73,7 +73,7 @@ class OAuthService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\OAuth\OAuthErrorException if the request fails
      *
-     * @return StripeObject object containing the response from the API
+     * @return \Stripe\StripeObject object containing the response from the API
      */
     public function deauthorize($params = null, $opts = null)
     {
