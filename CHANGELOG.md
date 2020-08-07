@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.46.1 - 2020-08-07
+* [#990](https://github.com/stripe/stripe-php/pull/990) PHPdoc changes
+
 ## 7.46.0 - 2020-08-05
 * [#989](https://github.com/stripe/stripe-php/pull/989) Add support for the `PromotionCode` resource and APIs
 
