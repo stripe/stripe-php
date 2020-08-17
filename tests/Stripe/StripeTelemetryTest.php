@@ -96,7 +96,7 @@ final class StripeTelemetryTest extends \PHPUnit\Framework\TestCase
                 }),
                 static::anything(),
                 static::anything()
-            )->willReturn([self::FAKE_VALID_RESPONSE, 200, ['request-id' => ['req_123']]]);
+            )->willReturn([self::FAKE_VALID_RESPONSE, 200, ['request-id' => 'req_123']]);
 
         ApiRequestor::setHttpClient($stub);
 
