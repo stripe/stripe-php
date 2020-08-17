@@ -17,6 +17,7 @@ namespace Stripe\Issuing;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount The total amount that was authorized or rejected. This amount is in the card's currency and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+ * @property null|\Stripe\StripeObject $amount_details Detailed breakdown of amount components. These amounts are denominated in <code>currency</code> and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
  * @property bool $approved Whether the authorization has been approved.
  * @property string $authorization_method How the card details were provided.
  * @property \Stripe\BalanceTransaction[] $balance_transactions List of balance transactions associated with this authorization.
