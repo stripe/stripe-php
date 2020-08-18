@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.48.0 - 2020-08-17
+* [#997](https://github.com/stripe/stripe-php/pull/997) PHPDocs updated
+* [#996](https://github.com/stripe/stripe-php/pull/996) Fixing telemetry
+
 ## 7.47.0 - 2020-08-13
 * [#994](https://github.com/stripe/stripe-php/pull/994) Nullable balance_transactions on issuing disputes
 * [#991](https://github.com/stripe/stripe-php/pull/991) Fix invalid return types in OAuthService
