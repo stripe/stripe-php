@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.49.0 - 2020-08-19
+* [#998](https://github.com/stripe/stripe-php/pull/998) PHPDocs updated
+
 ## 7.48.0 - 2020-08-17
 * [#997](https://github.com/stripe/stripe-php/pull/997) PHPDocs updated
 * [#996](https://github.com/stripe/stripe-php/pull/996) Fixing telemetry
