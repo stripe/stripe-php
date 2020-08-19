@@ -18,6 +18,7 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
+ * @property null|int $expires_at The time at which the file expires and is no longer available in epoch seconds.
  * @property null|string $filename A filename for the file, suitable for saving to a filesystem.
  * @property null|\Stripe\Collection $links A list of <a href="https://stripe.com/docs/api#file_links">file links</a> that point at this file.
  * @property string $purpose The <a href="https://stripe.com/docs/file-upload#uploading-a-file">purpose</a> of the uploaded file.
