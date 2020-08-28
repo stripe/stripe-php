@@ -57,6 +57,8 @@ class DisputeService extends \Stripe\Service\AbstractService
     /**
      * Updates the specified Issuing <code>Dispute</code> object by setting the values
      * of the parameters passed. Any parameters not provided will be left unchanged.
+     * Properties on the <code>evidence</code> object can be unset by passing in an
+     * empty string.
      *
      * @param string $id
      * @param null|array $params
