@@ -26,7 +26,6 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject[] $tax_amounts The amount of tax calculated per tax rate for this line item
  * @property null|\Stripe\TaxRate[] $tax_rates The tax rates which apply to the line item.
  * @property string $type A string identifying the type of the source of this line item, either an <code>invoiceitem</code> or a <code>subscription</code>.
- * @property bool $unified_proration For prorations this indicates whether Stripe automatically grouped multiple related debit and credit line items into a single combined line item.
  */
 class InvoiceLineItem extends ApiResource
 {
