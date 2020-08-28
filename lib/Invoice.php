@@ -97,7 +97,6 @@ namespace Stripe;
  * @property int $subscription_proration_date Only set for upcoming invoices that preview prorations. The time used to calculate prorations.
  * @property int $subtotal Total of all subscriptions, invoice items, and prorations on the invoice before any invoice level discount or tax is applied. Item discounts are already incorporated
  * @property null|int $tax The amount of tax on this invoice. This is the sum of all the tax amounts on this invoice.
- * @property null|float $tax_percent This percentage of the subtotal has been added to the total amount of the invoice, including invoice line items and discounts. This field is inherited from the subscription's <code>tax_percent</code> field, but can be changed before the invoice is paid. This field defaults to null.
  * @property \Stripe\StripeObject $threshold_reason
  * @property int $total Total after discounts and taxes.
  * @property null|\Stripe\StripeObject[] $total_discount_amounts The aggregate amounts calculated per discount across all line items.

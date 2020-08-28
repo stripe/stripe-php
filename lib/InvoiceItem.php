@@ -34,7 +34,6 @@ namespace Stripe;
  * @property null|string|\Stripe\Subscription $subscription The subscription that this invoice item has been created for, if any.
  * @property string $subscription_item The subscription item that this invoice item has been created for, if any.
  * @property null|\Stripe\TaxRate[] $tax_rates The tax rates which apply to the invoice item. When set, the <code>default_tax_rates</code> on the invoice do not apply to this invoice item.
- * @property bool $unified_proration For prorations this indicates whether Stripe automatically grouped multiple related debit and credit line items into a single combined line item.
  * @property null|int $unit_amount Unit Amount (in the <code>currency</code> specified) of the invoice item.
  * @property null|string $unit_amount_decimal Same as <code>unit_amount</code>, but contains a decimal value with at most 12 decimal places.
  */
