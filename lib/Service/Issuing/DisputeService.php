@@ -59,6 +59,26 @@ class DisputeService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Submits an Issuing <code>Dispute</code> to the card network. Stripe validates
+     * that all evidence fields required for the dispute’s reason are present. For more
+     * details, see <a
+     * href="/docs/issuing/purchases/disputes#dispute-reasons-and-evidence">Dispute
+     * reasons and evidence</a>.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Dispute
+     */
+    public function submit($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/issuing/disputes/%s/submit', $id), $params, $opts);
+    }
+
+    /**
      * Updates the specified Issuing <code>Dispute</code> object by setting the values
      * of the parameters passed. Any parameters not provided will be left unchanged.
      * Properties on the <code>evidence</code> object can be unset by passing in an
