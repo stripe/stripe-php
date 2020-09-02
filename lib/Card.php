@@ -23,7 +23,7 @@ namespace Stripe;
  * @property null|string $address_state State/County/Province/Region.
  * @property null|string $address_zip ZIP or postal code.
  * @property null|string $address_zip_check If <code>address_zip</code> was provided, results of the check: <code>pass</code>, <code>fail</code>, <code>unavailable</code>, or <code>unchecked</code>.
- * @property null|string[] $available_payout_methods A set of available payout methods for this card. Will be either <code>[&quot;standard&quot;]</code> or <code>[&quot;standard&quot;, &quot;instant&quot;]</code>. Only values from this set should be passed as the <code>method</code> when creating a transfer.
+ * @property null|string[] $available_payout_methods A set of available payout methods for this card. Only values from this set should be passed as the <code>method</code> when creating a payout.
  * @property string $brand Card brand. Can be <code>American Express</code>, <code>Diners Club</code>, <code>Discover</code>, <code>JCB</code>, <code>MasterCard</code>, <code>UnionPay</code>, <code>Visa</code>, or <code>Unknown</code>.
  * @property null|string $country Two-letter ISO code representing the country of the card. You could use this attribute to get a sense of the international breakdown of cards you've collected.
  * @property null|string $currency

@@ -43,8 +43,8 @@ final class SubscriptionScheduleTest extends \PHPUnit\Framework\TestCase
         $resource = SubscriptionSchedule::create([
             'phases' => [
                 [
-                    'plans' => [
-                        ['plan' => 'plan_123', 'quantity' => 2],
+                    'items' => [
+                        ['price' => 'price_123', 'quantity' => 2],
                     ],
                 ],
             ],

@@ -40,6 +40,7 @@ namespace Stripe\Checkout;
  * @property null|string $mode The mode of the Checkout Session, one of <code>payment</code>, <code>setup</code>, or <code>subscription</code>.
  * @property null|string|\Stripe\PaymentIntent $payment_intent The ID of the PaymentIntent for Checkout Sessions in <code>payment</code> mode.
  * @property string[] $payment_method_types A list of the types of payment methods (e.g. card) this Checkout Session is allowed to accept.
+ * @property string $payment_status The payment status of the Checkout Session, one of <code>paid</code>, <code>unpaid</code>, or <code>no_payment_required</code>. You can use this value to decide when to fulfill your customer's order.
  * @property null|string|\Stripe\SetupIntent $setup_intent The ID of the SetupIntent for Checkout Sessions in <code>setup</code> mode.
  * @property null|\Stripe\StripeObject $shipping Shipping information for this Checkout Session.
  * @property null|\Stripe\StripeObject $shipping_address_collection When set, provides configuration for Checkout to collect a shipping address from a customer.
@@ -59,6 +60,10 @@ class Session extends \Stripe\ApiResource
 
     const BILLING_ADDRESS_COLLECTION_AUTO = 'auto';
     const BILLING_ADDRESS_COLLECTION_REQUIRED = 'required';
+
+    const PAYMENT_STATUS_NO_PAYMENT_REQUIRED = 'no_payment_required';
+    const PAYMENT_STATUS_PAID = 'paid';
+    const PAYMENT_STATUS_UNPAID = 'unpaid';
 
     const SUBMIT_TYPE_AUTO = 'auto';
     const SUBMIT_TYPE_BOOK = 'book';

@@ -40,7 +40,9 @@ final class DisputeServiceTest extends \PHPUnit\Framework\TestCase
 
     public function testCreate()
     {
-        $params = [];
+        $params = [
+            'transaction' => 'ipi_123',
+        ];
 
         $this->expectsRequest(
             'post',
@@ -69,6 +71,19 @@ final class DisputeServiceTest extends \PHPUnit\Framework\TestCase
             ['metadata' => ['key' => 'value']]
         );
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
+            'metadata' => ['key' => 'value'],
+        ]);
+        static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
+    }
+
+    public function testSubmit()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/issuing/disputes/' . self::TEST_RESOURCE_ID . '/submit',
+            ['metadata' => ['key' => 'value']]
+        );
+        $resource = $this->service->submit(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
