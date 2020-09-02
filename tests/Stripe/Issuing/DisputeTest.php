@@ -14,7 +14,9 @@ final class DisputeTest extends \PHPUnit\Framework\TestCase
 
     public function testIsCreatable()
     {
-        $params = [];
+        $params = [
+            'transaction' => 'ipi_123',
+        ];
 
         $this->expectsRequest(
             'post',
@@ -54,6 +56,17 @@ final class DisputeTest extends \PHPUnit\Framework\TestCase
             []
         );
         $resource = Dispute::update(self::TEST_RESOURCE_ID, []);
+        static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
+    }
+
+    public function testIsSubmittable()
+    {
+        $resource = Dispute::retrieve(self::TEST_RESOURCE_ID);
+        $this->expectsRequest(
+            'post',
+            '/v1/issuing/disputes/' . self::TEST_RESOURCE_ID . '/submit'
+        );
+        $resource->submit();
         static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
     }
 }
