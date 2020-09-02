@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.51.0 - 2020-09-02
+* [#1007](https://github.com/stripe/stripe-php/pull/1007) Multiple API changes
+  * Add support for the Issuing Dispute Submit API
+  * Add constants for `payment_status` on Checkout `Session`
+* [#1003](https://github.com/stripe/stripe-php/pull/1003) Add trim to getSignatures to allow for leading whitespace.
+
 ## 7.50.0 - 2020-08-28
 * [#1005](https://github.com/stripe/stripe-php/pull/1005) Updated PHPDocs
 
