@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.52.0 - 2020-09-08
+* [#1010](https://github.com/stripe/stripe-php/pull/1010) Update PHPDocs
+
 ## 7.51.0 - 2020-09-02
 * [#1007](https://github.com/stripe/stripe-php/pull/1007) Multiple API changes
   * Add support for the Issuing Dispute Submit API
