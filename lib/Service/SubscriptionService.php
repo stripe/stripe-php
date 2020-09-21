@@ -56,7 +56,7 @@ class SubscriptionService extends \Stripe\Service\AbstractService
 
     /**
      * Creates a new subscription on an existing customer. Each customer can have up to
-     * 25 active or scheduled subscriptions.
+     * 500 active or scheduled subscriptions.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts

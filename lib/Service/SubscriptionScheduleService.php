@@ -41,7 +41,7 @@ class SubscriptionScheduleService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a new subscription schedule object. Each customer can have up to 25
+     * Creates a new subscription schedule object. Each customer can have up to 500
      * active or scheduled subscriptions.
      *
      * @param null|array $params
