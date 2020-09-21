@@ -258,6 +258,27 @@ class ApiRequestor
     /**
      * @static
      *
+     * @param string $disabledFunctionsOutput - String value of the 'disable_function' setting, as output by \ini_get('disable_functions')
+     * @param string $functionName - Name of the function we are interesting in seeing whether or not it is disabled
+     * @param mixed $disableFunctionsOutput
+     *
+     * @return bool
+     */
+    private static function _isDisabled($disableFunctionsOutput, $functionName)
+    {
+        $disabledFunctions = \explode(',', $disableFunctionsOutput);
+        foreach ($disabledFunctions as $disabledFunction) {
+            if (\trim($disabledFunction) === $functionName) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @static
+     *
      * @param string $apiKey
      * @param null   $clientInfo
      *
@@ -268,7 +289,7 @@ class ApiRequestor
         $uaString = 'Stripe/v1 PhpBindings/' . Stripe::VERSION;
 
         $langVersion = \PHP_VERSION;
-        $uname_disabled = \in_array('php_uname', \explode(',', \ini_get('disable_functions')), true);
+        $uname_disabled = static::_isDisabled(\ini_get('disable_functions'), 'php_uname');
         $uname = $uname_disabled ? '(disabled)' : \php_uname();
 
         $appInfo = Stripe::getAppInfo();

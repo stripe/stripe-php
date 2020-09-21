@@ -576,4 +576,38 @@ final class ApiRequestorTest extends \PHPUnit\Framework\TestCase
         );
         Charge::create([], ['stripe_account' => 'acct_123']);
     }
+
+    public function testIsDisabled()
+    {
+        $reflector = new \ReflectionClass(\Stripe\ApiRequestor::class);
+        $method = $reflector->getMethod('_isDisabled');
+        $method->setAccessible(true);
+
+        $result = $method->invoke(null, '', 'php_uname');
+        static::assertFalse($result);
+
+        $result = $method->invoke(null, 'exec', 'php_uname');
+        static::assertFalse($result);
+
+        $result = $method->invoke(null, 'exec, procopen', 'php_uname');
+        static::assertFalse($result);
+
+        $result = $method->invoke(null, 'exec,procopen', 'php_uname');
+        static::assertFalse($result);
+
+        $result = $method->invoke(null, 'exec,php_uname', 'php_uname');
+        static::assertTrue($result);
+
+        $result = $method->invoke(null, 'exec, php_uname', 'php_uname');
+        static::assertTrue($result);
+
+        $result = $method->invoke(null, 'php_uname, exec', 'php_uname');
+        static::assertTrue($result);
+
+        $result = $method->invoke(null, 'procopen,php_uname, exec', 'php_uname');
+        static::assertTrue($result);
+
+        $result = $method->invoke(null, 'procopen, php_uname, exec', 'php_uname');
+        static::assertTrue($result);
+    }
 }
