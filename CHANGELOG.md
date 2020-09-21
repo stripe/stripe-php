@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.53.0 - 2020-09-21
+* [#1016](https://github.com/stripe/stripe-php/pull/1016) Updated PHPDocs
+
 ## 7.52.0 - 2020-09-08
 * [#1010](https://github.com/stripe/stripe-php/pull/1010) Update PHPDocs
 
