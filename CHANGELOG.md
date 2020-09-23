@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.54.0 - 2020-09-23
+* [#1017](https://github.com/stripe/stripe-php/pull/1017) Updated PHPDoc
+
 ## 7.53.1 - 2020-09-22
 * [#1015](https://github.com/stripe/stripe-php/pull/1015) Bugfix: don't error on systems with php_uname in disablefunctions with whitespace
 
