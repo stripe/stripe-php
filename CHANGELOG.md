@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.55.0 - 2020-09-24
+* [#1018](https://github.com/stripe/stripe-php/pull/1018) Multiple API changes
+  * Updated PHPDocs
+  * Added `TYPE_CONTRIBUTION` as a constant on `BalanceTransaction`
+
 ## 7.54.0 - 2020-09-23
 * [#1017](https://github.com/stripe/stripe-php/pull/1017) Updated PHPDoc
 
