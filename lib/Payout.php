@@ -23,7 +23,7 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
- * @property null|string|\Stripe\StripeObject $destination ID of the bank account or card the payout was sent to.
+ * @property null|string|\Stripe\BankAccount|\Stripe\Card $destination ID of the bank account or card the payout was sent to.
  * @property null|string|\Stripe\BalanceTransaction $failure_balance_transaction If the payout failed or was canceled, this will be the ID of the balance transaction that reversed the initial balance transaction, and puts the funds from the failed payout back in your balance.
  * @property null|string $failure_code Error code explaining reason for payout failure if available. See <a href="https://stripe.com/docs/api#payout_failures">Types of payout failures</a> for a list of failure codes.
  * @property null|string $failure_message Message to user further explaining reason for payout failure if available.
