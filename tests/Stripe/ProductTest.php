@@ -41,7 +41,6 @@ final class ProductTest extends \PHPUnit\Framework\TestCase
         );
         $resource = Product::create([
             'name' => 'name',
-            'type' => 'good',
         ]);
         static::assertInstanceOf(\Stripe\Product::class, $resource);
     }
