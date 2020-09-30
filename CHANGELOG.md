@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.57.0 - 2020-09-29
+* [#1020](https://github.com/stripe/stripe-php/pull/1020) Add support for the `SetupAttempt` resource and List API
+
 ## 7.56.0 - 2020-09-25
 * [#1019](https://github.com/stripe/stripe-php/pull/1019) Update PHPDocs
 
