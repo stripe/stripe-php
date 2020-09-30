@@ -44,6 +44,7 @@ namespace Stripe\Service;
  * @property RefundService $refunds
  * @property Reporting\ReportingServiceFactory $reporting
  * @property ReviewService $reviews
+ * @property SetupAttemptService $setupAttempts
  * @property SetupIntentService $setupIntents
  * @property Sigma\SigmaServiceFactory $sigma
  * @property SkuService $skus
@@ -101,6 +102,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'refunds' => RefundService::class,
         'reporting' => Reporting\ReportingServiceFactory::class,
         'reviews' => ReviewService::class,
+        'setupAttempts' => SetupAttemptService::class,
         'setupIntents' => SetupIntentService::class,
         'sigma' => Sigma\SigmaServiceFactory::class,
         'skus' => SkuService::class,

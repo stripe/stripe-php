@@ -46,7 +46,6 @@ final class ProductServiceTest extends \PHPUnit\Framework\TestCase
         );
         $resource = $this->service->create([
             'name' => 'name',
-            'type' => 'good',
         ]);
         static::assertInstanceOf(\Stripe\Product::class, $resource);
     }
