@@ -14,10 +14,8 @@ abstract class AbstractService
 
     /**
      * Initializes a new instance of the {@link AbstractService} class.
-     *
-     * @param \Stripe\StripeClientInterface $client
      */
-    public function __construct($client)
+    public function __construct(\Stripe\StripeClientInterface $client)
     {
         $this->client = $client;
     }
