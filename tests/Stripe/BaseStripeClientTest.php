@@ -178,4 +178,27 @@ final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
         $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
         $client->requestCollection('get', '/v1/charges/ch_123', [], []);
     }
+
+    public function testRequestWithOptsInParamsWarns()
+    {
+        $this->expectException(\PHPUnit_Framework_Error_Warning::class);
+
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_account' => 'acct_123',
+            'api_base' => MOCK_URL,
+        ]);
+        $charge = $client->request(
+            'get',
+            '/v1/charges/ch_123',
+            [
+                'api_key' => 'sk_test_client',
+                'stripe_account' => 'acct_123',
+                'api_base' => MOCK_URL,
+            ],
+            ['stripe_account' => 'acct_456']
+        );
+        static::assertNotNull($charge);
+        static::assertSame('acct_456', $this->optsReflector->getValue($charge)->headers['Stripe-Account']);
+    }
 }
