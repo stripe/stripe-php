@@ -80,4 +80,15 @@ final class PayoutTest extends \PHPUnit\Framework\TestCase
         $resource->cancel();
         static::assertInstanceOf(\Stripe\Payout::class, $resource);
     }
+
+    public function testIsReverseable()
+    {
+        $resource = Payout::retrieve(self::TEST_RESOURCE_ID);
+        $this->expectsRequest(
+            'post',
+            '/v1/payouts/' . $resource->id . '/reverse'
+        );
+        $resource->reverse();
+        static::assertInstanceOf(\Stripe\Payout::class, $resource);
+    }
 }
