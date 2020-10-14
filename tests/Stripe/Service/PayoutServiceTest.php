@@ -71,6 +71,16 @@ final class PayoutServiceTest extends \PHPUnit\Framework\TestCase
         static::assertInstanceOf(\Stripe\Payout::class, $resource);
     }
 
+    public function testReverse()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/payouts/' . self::TEST_RESOURCE_ID . '/reverse'
+        );
+        $resource = $this->service->reverse(self::TEST_RESOURCE_ID);
+        static::assertInstanceOf(\Stripe\Payout::class, $resource);
+    }
+
     public function testUpdate()
     {
         $this->expectsRequest(

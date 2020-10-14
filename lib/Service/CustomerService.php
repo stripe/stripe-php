@@ -24,7 +24,7 @@ class CustomerService extends \Stripe\Service\AbstractService
 
     /**
      * Returns a list of transactions that updated the customer’s <a
-     * href="/docs/api/customers/object#customer_object-balance"><code>balance</code></a>.
+     * href="/docs/billing/customer/balance">balances</a>.
      *
      * @param string $parentId
      * @param null|array $params
@@ -87,8 +87,8 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates an immutable transaction that updates the customer’s <a
-     * href="/docs/api/customers/object#customer_object-balance"><code>balance</code></a>.
+     * Creates an immutable transaction that updates the customer’s credit <a
+     * href="/docs/billing/customer/balance">balance</a>.
      *
      * @param string $parentId
      * @param null|array $params
@@ -224,8 +224,8 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves a specific transaction that updated the customer’s <a
-     * href="/docs/api/customers/object#customer_object-balance"><code>balance</code></a>.
+     * Retrieves a specific customer balance transaction that updated the customer’s <a
+     * href="/docs/billing/customer/balance">balances</a>.
      *
      * @param string $parentId
      * @param string $id
@@ -304,7 +304,7 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Most customer balance transaction fields are immutable, but you may update its
+     * Most credit balance transaction fields are immutable, but you may update its
      * <code>description</code> and <code>metadata</code>.
      *
      * @param string $parentId

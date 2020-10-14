@@ -85,6 +85,29 @@ class PayoutService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Reverses a payout by debiting the destination bank account. Only payouts for
+     * connected accounts to US bank accounts may be reversed at this time. If the
+     * payout is in the <code>pending</code> status,
+     * <code>/v1/payouts/:id/cancel</code> should be used instead.
+     *
+     * By requesting a reversal via <code>/v1/payouts/:id/reverse</code>, you confirm
+     * that the authorized signatory of the selected bank account has authorized the
+     * debit on the bank account and that no other authorization is required.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Payout
+     */
+    public function reverse($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/payouts/%s/reverse', $id), $params, $opts);
+    }
+
+    /**
      * Updates the specified payout by setting the values of the parameters passed. Any
      * parameters not provided will be left unchanged. This request accepts only the
      * metadata as arguments.

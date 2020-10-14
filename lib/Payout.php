@@ -30,6 +30,8 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $method The method used to send this payout, which can be <code>standard</code> or <code>instant</code>. <code>instant</code> is only supported for payouts to debit cards. (See <a href="https://stripe.com/blog/instant-payouts-for-marketplaces">Instant payouts for marketplaces</a> for more information.)
+ * @property null|string|\Stripe\Payout $original_payout If the payout reverses another, this is the ID of the original payout.
+ * @property null|string|\Stripe\Payout $reversed_by If the payout was reversed, this is the ID of the payout that reverses this payout.
  * @property string $source_type The source balance this payout came from. One of <code>card</code>, <code>fpx</code>, or <code>bank_account</code>.
  * @property null|string $statement_descriptor Extra information about a payout to be displayed on the user's bank statement.
  * @property string $status Current status of the payout: <code>paid</code>, <code>pending</code>, <code>in_transit</code>, <code>canceled</code> or <code>failed</code>. A payout is <code>pending</code> until it is submitted to the bank, when it becomes <code>in_transit</code>. The status then changes to <code>paid</code> if the transaction goes through, or to <code>failed</code> or <code>canceled</code> (within 5 business days). Some failed payouts may initially show as <code>paid</code> but then change to <code>failed</code>.
@@ -81,6 +83,23 @@ class Payout extends ApiResource
     public function cancel($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/cancel';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return Payout the reversed payout
+     */
+    public function reverse($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/reverse';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
 
