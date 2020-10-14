@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.58.0 - 2020-10-14
+* [#1026](https://github.com/stripe/stripe-php/pull/1026) Add support for the Payout Reverse API
+
 ## 7.57.0 - 2020-09-29
 * [#1020](https://github.com/stripe/stripe-php/pull/1020) Add support for the `SetupAttempt` resource and List API
 
