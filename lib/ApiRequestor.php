@@ -27,6 +27,8 @@ class ApiRequestor
      */
     private static $requestTelemetry;
 
+    private static $OPTIONS_KEYS = ['api_key', 'idempotency_key', 'stripe_account', 'stripe_version', 'api_base'];
+
     /**
      * ApiRequestor constructor.
      *
@@ -348,6 +350,21 @@ class ApiRequestor
         $clientUAInfo = null;
         if (\method_exists($this->httpClient(), 'getUserAgentInfo')) {
             $clientUAInfo = $this->httpClient()->getUserAgentInfo();
+        }
+
+        if ($params && \is_array($params)) {
+            $optionKeysInParams = \array_filter(
+                static::$OPTIONS_KEYS,
+                function ($key) use ($params) {
+                    return \array_key_exists($key, $params);
+                }
+            );
+            if (\count($optionKeysInParams) > 0) {
+                $message = \sprintf('Options found in $params: %s. Options should '
+                  . 'be passed in their own array after $params. (HINT: pass an '
+                  . 'empty array to $params if you do not have any.)', \implode(', ', $optionKeysInParams));
+                \trigger_error($message, \E_USER_WARNING);
+            }
         }
 
         $absUrl = $this->_apiBase . $url;
