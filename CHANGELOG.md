@@ -1,7 +1,7 @@
 # Changelog
 
-## 7.59.0 - 2020-10-15
-* [#999](https://github.com/stripe/stripe-php/pull/999) Warn if opts are in params
+## 7.60.0 - 2020-10-15
+* [#1027](https://github.com/stripe/stripe-php/pull/1027) Warn if opts are in params
 
 ## 7.58.0 - 2020-10-14
 * [#1026](https://github.com/stripe/stripe-php/pull/1026) Add support for the Payout Reverse API
