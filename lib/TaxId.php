@@ -18,7 +18,7 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string|\Stripe\Customer $customer ID of the customer.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property string $type Type of the tax ID, one of <code>ae_trn</code>, <code>au_abn</code>, <code>br_cnpj</code>, <code>br_cpf</code>, <code>ca_bn</code>, <code>ca_qst</code>, <code>ch_vat</code>, <code>cl_tin</code>, <code>es_cif</code>, <code>eu_vat</code>, <code>hk_br</code>, <code>id_npwp</code>, <code>in_gst</code>, <code>jp_cn</code>, <code>kr_brn</code>, <code>li_uid</code>, <code>mx_rfc</code>, <code>my_frp</code>, <code>my_itn</code>, <code>my_sst</code>, <code>no_vat</code>, <code>nz_gst</code>, <code>ru_inn</code>, <code>sa_vat</code>, <code>sg_gst</code>, <code>sg_uen</code>, <code>th_vat</code>, <code>tw_vat</code>, <code>us_ein</code>, or <code>za_vat</code>. Note that some legacy tax IDs have type <code>unknown</code>
+ * @property string $type Type of the tax ID, one of <code>ae_trn</code>, <code>au_abn</code>, <code>br_cnpj</code>, <code>br_cpf</code>, <code>ca_bn</code>, <code>ca_qst</code>, <code>ch_vat</code>, <code>cl_tin</code>, <code>es_cif</code>, <code>eu_vat</code>, <code>hk_br</code>, <code>id_npwp</code>, <code>in_gst</code>, <code>jp_cn</code>, <code>jp_rn</code>, <code>kr_brn</code>, <code>li_uid</code>, <code>mx_rfc</code>, <code>my_frp</code>, <code>my_itn</code>, <code>my_sst</code>, <code>no_vat</code>, <code>nz_gst</code>, <code>ru_inn</code>, <code>ru_kpp</code>, <code>sa_vat</code>, <code>sg_gst</code>, <code>sg_uen</code>, <code>th_vat</code>, <code>tw_vat</code>, <code>us_ein</code>, or <code>za_vat</code>. Note that some legacy tax IDs have type <code>unknown</code>
  * @property string $value Value of the tax ID.
  * @property null|\Stripe\StripeObject $verification Tax ID verification information.
  */
@@ -42,6 +42,7 @@ class TaxId extends ApiResource
     const TYPE_ID_NPWP = 'id_npwp';
     const TYPE_IN_GST = 'in_gst';
     const TYPE_JP_CN = 'jp_cn';
+    const TYPE_JP_RN = 'jp_rn';
     const TYPE_KR_BRN = 'kr_brn';
     const TYPE_LI_UID = 'li_uid';
     const TYPE_MX_RFC = 'mx_rfc';
@@ -51,6 +52,7 @@ class TaxId extends ApiResource
     const TYPE_NO_VAT = 'no_vat';
     const TYPE_NZ_GST = 'nz_gst';
     const TYPE_RU_INN = 'ru_inn';
+    const TYPE_RU_KPP = 'ru_kpp';
     const TYPE_SA_VAT = 'sa_vat';
     const TYPE_SG_GST = 'sg_gst';
     const TYPE_SG_UEN = 'sg_uen';
