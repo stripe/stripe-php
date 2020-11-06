@@ -23,6 +23,9 @@ namespace Stripe;
  *    returned on a request involving a PaymentIntent.
  * @property PaymentMethod $payment_method The PaymentMethod object for errors
  *    returned on a request involving a PaymentMethod.
+ * @property string $payment_method_type If the error is specific to the type
+ *    of payment method, the payment method type that had a problem. This
+ *    field is only populated for invoice-related errors.
  * @property SetupIntent $setup_intent The SetupIntent object for errors
  *    returned on a request involving a SetupIntent.
  * @property StripeObject $source The source object for errors returned on a
