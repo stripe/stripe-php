@@ -91,7 +91,7 @@ class Source extends ApiResource
 
         $id = $this['id'];
         if (!$id) {
-            $class = \get_class($this);
+            $class = static::class;
             $msg = "Could not determine which URL to request: {$class} instance "
              . "has invalid ID: {$id}";
 
