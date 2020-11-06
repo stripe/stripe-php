@@ -23,7 +23,7 @@ abstract class Util
         if (!\is_array($array)) {
             return false;
         }
-        if ($array === []) {
+        if ([] === $array) {
             return true;
         }
         if (\array_keys($array) !== \range(0, \count($array) - 1)) {
