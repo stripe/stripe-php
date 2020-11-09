@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.62.0 - 2020-11-09
+* [#1041](https://github.com/stripe/stripe-php/pull/1041) Add missing constants on `Event`
+* [#1038](https://github.com/stripe/stripe-php/pull/1038) Update PHPDocs
+
 ## 7.61.0 - 2020-10-20
 * [#1030](https://github.com/stripe/stripe-php/pull/1030) Add support for `jp_rn` and `ru_kpp` as a `type` on `TaxId`
 
