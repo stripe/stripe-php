@@ -271,6 +271,10 @@ class CurlClient implements ClientInterface
             $opts[\CURLOPT_HTTP_VERSION] = \CURL_HTTP_VERSION_2TLS;
         }
 
+        // Stripe's API servers are only accessible over IPv4. Force IPv4 resolving to avoid
+        // potential issues (cf. https://github.com/stripe/stripe-php/issues/1045).
+        $opts[\CURLOPT_IPRESOLVE] = \CURL_IPRESOLVE_V4;
+
         list($rbody, $rcode, $rheaders) = $this->executeRequestWithRetries($opts, $absUrl);
 
         return [$rbody, $rcode, $rheaders];
@@ -283,7 +287,6 @@ class CurlClient implements ClientInterface
     private function executeRequestWithRetries($opts, $absUrl)
     {
         $numRetries = 0;
-        $isPost = \array_key_exists(\CURLOPT_POST, $opts) && 1 === $opts[\CURLOPT_POST];
 
         while (true) {
             $rcode = 0;
