@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.63.0 - 2020-11-17
+* [#1048](https://github.com/stripe/stripe-php/pull/1048) Update PHPDocs
+* [#1046](https://github.com/stripe/stripe-php/pull/1046) Force IPv4 resolving
+
 ## 7.62.0 - 2020-11-09
 * [#1041](https://github.com/stripe/stripe-php/pull/1041) Add missing constants on `Event`
 * [#1038](https://github.com/stripe/stripe-php/pull/1038) Update PHPDocs
