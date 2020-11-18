@@ -30,6 +30,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $eps
  * @property \Stripe\StripeObject $fpx
  * @property \Stripe\StripeObject $giropay
+ * @property \Stripe\StripeObject $grabpay
  * @property \Stripe\StripeObject $ideal
  * @property \Stripe\StripeObject $interac_present
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
