@@ -119,6 +119,16 @@ class Stripe
     }
 
     /**
+     * Sets the base URL for the Stripe API.
+     *
+     * @param string $apiKey
+     */
+    public static function setApiBase($apiBase)
+    {
+        self::$apiBase = $apiBase;
+    }
+
+    /**
      * @return string The API version used for requests. null if we're using the
      *    latest version.
      */
