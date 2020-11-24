@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.66.0 - 2020-11-24
+* [#1053](https://github.com/stripe/stripe-php/pull/1053) Update PHPDocs
+
 ## 7.65.0 - 2020-11-19
 * [#1050](https://github.com/stripe/stripe-php/pull/1050) Added constants for `proration_behavior` on `Subscription`
 
