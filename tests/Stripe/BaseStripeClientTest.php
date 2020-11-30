@@ -60,9 +60,9 @@ final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
     public function testCtorThrowsIfConfigArrayContainsUnexpectedKey()
     {
         $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Found unknown key(s) in configuration array: foo');
+        $this->expectExceptionMessage('Found unknown key(s) in configuration array: \'foo\', \'foo2\'');
 
-        $client = new BaseStripeClient(['foo' => 'bar']);
+        $client = new BaseStripeClient(['foo' => 'bar', 'foo2' => 'bar2']);
     }
 
     public function testRequestWithClientApiKey()
