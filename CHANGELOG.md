@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.66.1 - 2020-12-01
+* [#1054](https://github.com/stripe/stripe-php/pull/1054) Improve error message for invalid keys in StripeClient
+
 ## 7.66.0 - 2020-11-24
 * [#1053](https://github.com/stripe/stripe-php/pull/1053) Update PHPDocs
 
