@@ -366,6 +366,7 @@ class CurlClient implements ClientInterface
                  . 'https://twitter.com/stripestatus, or';
 
                 break;
+
             case \CURLE_SSL_CACERT:
             case \CURLE_SSL_PEER_CERTIFICATE:
                 $msg = "Could not verify Stripe's SSL certificate.  Please make sure "
@@ -374,6 +375,7 @@ class CurlClient implements ClientInterface
                  . 'If this problem persists,';
 
                 break;
+
             default:
                 $msg = 'Unexpected error communicating with Stripe.  '
                  . 'If this problem persists,';

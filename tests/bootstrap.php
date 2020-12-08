@@ -26,6 +26,7 @@ $resp = \curl_exec($ch);
 if (\curl_errno($ch)) {
     echo "Couldn't reach stripe-mock at `" . MOCK_HOST . ':' . MOCK_PORT . '`. Is ' .
          "it running? Please see README for setup instructions.\n";
+
     exit(1);
 }
 
@@ -43,6 +44,7 @@ if (null === $version) {
     echo 'Could not retrieve Stripe-Mock-Version header. Are you sure ' .
          'that the server at `' . MOCK_HOST . ':' . MOCK_PORT . '` is a stripe-mock ' .
          'instance?';
+
     exit(1);
 }
 
@@ -50,6 +52,7 @@ if ('master' !== $version && -1 === \version_compare($version, MOCK_MINIMUM_VERS
     echo 'Your version of stripe-mock (' . $version . ') is too old. The minimum ' .
          'version to run this test suite is ' . MOCK_MINIMUM_VERSION . '. ' .
          "Please see its repository for upgrade instructions.\n";
+
     exit(1);
 }
 
