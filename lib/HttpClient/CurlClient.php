@@ -237,7 +237,7 @@ class CurlClient implements ClientInterface
         // add an Idempotency-Key header
         if (('post' === $method) && (Stripe::$maxNetworkRetries > 0)) {
             if (!$this->hasHeader($headers, 'Idempotency-Key')) {
-                \array_push($headers, 'Idempotency-Key: ' . $this->randomGenerator->uuid());
+                $headers[] = 'Idempotency-Key: ' . $this->randomGenerator->uuid();
             }
         }
 
@@ -253,7 +253,7 @@ class CurlClient implements ClientInterface
         // we'll error under that condition. To compensate for that problem
         // for the time being, override cURL's behavior by simply always
         // sending an empty `Expect:` header.
-        \array_push($headers, 'Expect: ');
+        $headers[] = 'Expect: ';
 
         $absUrl = Util\Util::utf8($absUrl);
         $opts[\CURLOPT_URL] = $absUrl;
