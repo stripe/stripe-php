@@ -1,4 +1,4 @@
-export PHPDOCUMENTOR_VERSION := v3.0.0-rc
+export PHPDOCUMENTOR_VERSION := v3.0.0
 export PHPSTAN_VERSION := 0.12.18
 
 vendor: composer.json
