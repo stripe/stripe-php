@@ -116,7 +116,7 @@ abstract class WebhookSignature
         foreach ($items as $item) {
             $itemParts = \explode('=', $item, 2);
             if (\trim($itemParts[0]) === $scheme) {
-                \array_push($signatures, $itemParts[1]);
+                $signatures[] = $itemParts[1];
             }
         }
 

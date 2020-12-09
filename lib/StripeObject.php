@@ -397,7 +397,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
                 // Sequential array, i.e. a list
                 $update = [];
                 foreach ($value as $v) {
-                    \array_push($update, $this->serializeParamsValue($v, null, true, $force));
+                    $update[] = $this->serializeParamsValue($v, null, true, $force);
                 }
                 // This prevents an array that's unchanged from being resent.
                 if ($update !== $this->serializeParamsValue($original, null, true, $force, $key)) {

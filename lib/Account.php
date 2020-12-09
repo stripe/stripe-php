@@ -128,9 +128,9 @@ class Account extends ApiResource
             $update = ($v instanceof StripeObject) ? $v->serializeParameters() : $v;
 
             if ([] !== $update) {
-                if (!$originalValue ||
-                    !\array_key_exists($i, $originalValue) ||
-                    ($update !== $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
+                if (!$originalValue
+                    || !\array_key_exists($i, $originalValue)
+                    || ($update !== $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
                     $updateArr[$i] = $update;
                 }
             }

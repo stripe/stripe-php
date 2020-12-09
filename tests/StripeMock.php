@@ -48,7 +48,7 @@ class StripeMock
         if (static::$process->isRunning()) {
             echo 'Started stripe-mock, PID = ' . static::$process->getPid() . "\n";
         } else {
-            die('stripe-mock terminated early, exit code = ' . static::$process->wait());
+            exit('stripe-mock terminated early, exit code = ' . static::$process->wait());
         }
 
         return true;
