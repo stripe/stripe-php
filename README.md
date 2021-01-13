@@ -70,6 +70,9 @@ You can continue to use the legacy integration patterns used prior to version [7
 
 See the [PHP API docs](https://stripe.com/docs/api/php#intro).
 
+See [video demonstrations][youtube-playlist] covering how to use the library.
+
+
 ## Legacy Version Support
 
 ### PHP 5.4 & 5.5
@@ -264,3 +267,4 @@ See the "SSL / TLS compatibility issues" paragraph above for full context. If yo
 [php-cs-fixer]: https://github.com/FriendsOfPHP/PHP-CS-Fixer
 [psr3]: http://www.php-fig.org/psr/psr-3/
 [stripe-mock]: https://github.com/stripe/stripe-mock
+[youtube-playlist]: https://www.youtube.com/playlist?list=PLy1nL-pvL2M6cUbiHrfMkXxZ9j9SGBxFE
