@@ -34,6 +34,7 @@ class File extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Retrieve;
 
+    const PURPOSE_ACCOUNT_REQUIREMENT = 'account_requirement';
     const PURPOSE_ADDITIONAL_VERIFICATION = 'additional_verification';
     const PURPOSE_BUSINESS_ICON = 'business_icon';
     const PURPOSE_BUSINESS_LOGO = 'business_logo';
