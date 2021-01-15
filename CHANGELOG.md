@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.68.0 - 2021-01-14
+* [#1063](https://github.com/stripe/stripe-php/pull/1063) Multiple API changes
+* [#1061](https://github.com/stripe/stripe-php/pull/1061) Bump phpDocumentor to 3.0.0
+
 ## 7.67.0 - 2020-12-09
 * [#1060](https://github.com/stripe/stripe-php/pull/1060) Improve PHPDocs for `Discount`
 * [#1059](https://github.com/stripe/stripe-php/pull/1059) Upgrade PHPStan to 0.12.59
