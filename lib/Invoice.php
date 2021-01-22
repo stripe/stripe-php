@@ -32,11 +32,11 @@ namespace Stripe;
  * amount due for the invoice is less than Stripe's <a
  * href="/docs/currencies#minimum-and-maximum-charge-amounts">minimum allowed
  * charge per currency</a>, the invoice is automatically marked paid, and we add
- * the amount due to the customer's running account balance which is applied to the
- * next invoice.
+ * the amount due to the customer's credit balance which is applied to the next
+ * invoice.
  *
- * More details on the customer's account balance are <a
- * href="https://stripe.com/docs/api/customers/object#customer_object-account_balance">here</a>.
+ * More details on the customer's credit balance are <a
+ * href="https://stripe.com/docs/billing/customer/balance">here</a>.
  *
  * Related guide: <a href="https://stripe.com/docs/billing/invoices/sending">Send
  * Invoices to Customers</a>.
