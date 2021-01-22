@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.69.0 - 2021-01-21
+* [#1079](https://github.com/stripe/stripe-php/pull/1079) Update PHPDocs
+
 ## 7.68.0 - 2021-01-14
 * [#1063](https://github.com/stripe/stripe-php/pull/1063) Multiple API changes
 * [#1061](https://github.com/stripe/stripe-php/pull/1061) Bump phpDocumentor to 3.0.0
