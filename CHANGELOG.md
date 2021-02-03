@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.70.0 - 2021-02-03
+* [#1085](https://github.com/stripe/stripe-php/pull/1085) Update PHPDocs
+  * Add support for `nationality` on `Person`
+  * Add member `gb_vat` of `TaxID` enum
+
+
 ## 7.69.0 - 2021-01-21
 * [#1079](https://github.com/stripe/stripe-php/pull/1079) Update PHPDocs
 
