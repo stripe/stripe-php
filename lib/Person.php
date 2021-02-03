@@ -38,6 +38,7 @@ namespace Stripe;
  * @property null|string $last_name_kanji The Kanji variation of the person's last name (Japan only).
  * @property null|string $maiden_name The person's maiden name.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|string $nationality The country where the person is a national.
  * @property null|string $phone The person's phone number.
  * @property string $political_exposure Indicates if the person or any of their representatives, family members, or other closely related persons, declares that they hold or have held an important public job or function, in any jurisdiction.
  * @property \Stripe\StripeObject $relationship
