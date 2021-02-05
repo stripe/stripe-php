@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.71.0 - 2021-02-05
+* [#1087](https://github.com/stripe/stripe-php/pull/1087) Update PHPDocs
+* [#1086](https://github.com/stripe/stripe-php/pull/1086) Update CA cert bundle URL
+
 ## 7.70.0 - 2021-02-03
 * [#1085](https://github.com/stripe/stripe-php/pull/1085) Update PHPDocs
   * Add support for `nationality` on `Person`
