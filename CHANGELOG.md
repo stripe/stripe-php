@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.72.0 - 2021-02-08
+* [#1089](https://github.com/stripe/stripe-php/pull/1089) API Updates
+  * Add support for `afterpay_clearpay_payments` on `Account.capabilities`
+  * Add support for `payment_settings` on `Invoice`
+
 ## 7.71.0 - 2021-02-05
 * [#1087](https://github.com/stripe/stripe-php/pull/1087) Update PHPDocs
 * [#1086](https://github.com/stripe/stripe-php/pull/1086) Update CA cert bundle URL
