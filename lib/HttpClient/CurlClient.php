@@ -26,7 +26,7 @@ if (!\defined('CURL_HTTP_VERSION_2TLS')) {
 
 class CurlClient implements ClientInterface
 {
-    private static $instance;
+    protected static $instance;
 
     public static function instance()
     {
