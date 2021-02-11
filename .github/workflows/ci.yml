@@ -1,6 +1,10 @@
 name: CI
 
-on: [push, pull_request]
+on: 
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   php-cs-fixer:
@@ -46,6 +50,9 @@ jobs:
           - "7.1"
           - "7.2"
           - "7.3"
+          - "7.4"
+          - "8.0"
+          - "8.1"
 
     steps:
       - uses: actions/checkout@master
@@ -59,6 +66,15 @@ jobs:
 
       - name: Validate composer.json and composer.lock
         run: composer validate
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
