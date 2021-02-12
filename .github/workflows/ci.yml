@@ -31,8 +31,8 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: get composer
-        run: apt install -y composer
-
+        run: curl https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -o installer && echo "6de4cae7faf7bc6321c0a209a502c85763499932cbbfbb8b207784c9061fbc86" installer | sha256sum --check && php installer --install-dir=/usr/bin --filename=composer
+             
       - name: Validate composer.json and composer.lock
         run: composer validate
 
