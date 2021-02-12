@@ -30,6 +30,8 @@ jobs:
     container: php:${{ matrix.php-version }}-cli-buster
     steps:
       - uses: actions/checkout@master
+      - name: get composer
+        run: apt composer install
 
       - name: Validate composer.json and composer.lock
         run: composer validate
