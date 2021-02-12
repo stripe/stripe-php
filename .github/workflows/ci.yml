@@ -27,7 +27,7 @@ jobs:
       - name: PHPStan
         uses: docker://oskarstark/phpstan-ga
         with:
-          args: analyse -c phpstan.neon lib tests
+          args: analyse lib tests
 
   tests:
     name: Tests
