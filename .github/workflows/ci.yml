@@ -28,7 +28,7 @@ jobs:
             #- "8.0"
             #- "8.1"
     container:
-      imagename:php:${{ matrix.version }}-cli-buster
+      imagename:php:${{ matrix.php-version }}-cli-buster
     steps:
       - uses: actions/checkout@master
 
