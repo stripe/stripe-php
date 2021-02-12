@@ -1,12 +1,34 @@
 name: CI
 
-on: 
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push, pull_request]
 
 jobs:
+  php-cs-fixer:
+    name: PHP-CS-Fixer
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: PHP-CS-Fixer
+        uses: docker://oskarstark/php-cs-fixer-ga
+        with:
+          args: --diff-format=udiff --dry-run --show-progress=dots --using-cache=no --verbose .
+
+  phpstan:
+    name: PHPStan
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: PHPStan
+        uses: docker://oskarstark/phpstan-ga
+        with:
+          args: analyse -c phpstan.neon lib tests
+
   tests:
     name: Tests
 
@@ -16,25 +38,25 @@ jobs:
       fail-fast: false
       matrix:
         env:
-          # - AUTOLOAD=0
+          - AUTOLOAD=0
           - AUTOLOAD=1
         php-version:
-          #- "5.6"
-          #- "7.0"
-          #- "7.1"
-          #- "7.2"
-          - "7.3"
-            #- "7.4"
-            #- "8.0"
-            #- "8.1"
-    container: php:${{ matrix.php-version }}-cli-buster
+          # - "5.6"
+          # - "7.0"
+          # - "7.1"
+          # - "7.2"
+          # - "7.3"
+          - "7.4"
+
     steps:
       - uses: actions/checkout@master
-      - name: get composer
-        run: apt update && apt install -y git && curl https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -o installer && echo "6de4cae7faf7bc6321c0a209a502c85763499932cbbfbb8b207784c9061fbc86" installer | sha256sum --check && php installer --install-dir=/usr/bin --filename=composer
-             
-      - name: Validate composer.json and composer.lock
-        run: composer validate
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: ${{ matrix.php-version }}
+          extension-csv: curl, json, mbstring, simplexml, xdebug
+          coverage: xdebug
 
       - name: Get Composer Cache Directory
         id: composer-cache
@@ -44,6 +66,9 @@ jobs:
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
@@ -56,8 +81,8 @@ jobs:
           php --version
           ./build.php $env:AUTOLOAD
 
-      # - name: Send code coverage report to coveralls.io
-      #   run: vendor/bin/php-coveralls -c .coveralls.github-actions.yml -v
-      #   env:
-      #     COVERALLS_RUN_LOCALLY: 1
-      #     COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+      - name: Send code coverage report to coveralls.io
+        run: vendor/bin/php-coveralls -c .coveralls.github-actions.yml -v
+        env:
+          COVERALLS_RUN_LOCALLY: 1
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
