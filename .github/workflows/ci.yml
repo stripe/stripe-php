@@ -24,13 +24,29 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: ${{ matrix.php-version }}
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
-      - name: PHPStan
-        uses: docker://oskarstark/phpstan-ga
-        with:
-          args: analyse lib tests
+      - name: Run phpstan
+        run: make phpstan
 
   tests:
     name: Tests
