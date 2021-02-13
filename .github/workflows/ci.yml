@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Get PHPUnit
-        run: composer require phpunit
+        run: composer require phpunit/phpunit
 
       - name: PHPStan
         uses: docker://oskarstark/phpstan-ga
