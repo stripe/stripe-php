@@ -27,7 +27,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@master
         with:
-          php-version: ${{ matrix.php-version }}
+          php-version: 7.4
 
       - name: Get Composer Cache Directory
         id: composer-cache
