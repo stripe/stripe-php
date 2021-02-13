@@ -24,8 +24,8 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: Get PHPUnit
-        run: composer require phpunit/phpunit
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: PHPStan
         uses: docker://oskarstark/phpstan-ga
