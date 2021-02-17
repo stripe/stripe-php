@@ -1,6 +1,13 @@
 name: CI
 
-on: [push, pull_request]
+on: 
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   php-cs-fixer:
@@ -24,10 +31,31 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: PHPStan
-        uses: docker://oskarstark/phpstan-ga
+      - name: Setup PHP
+        uses: shivammathur/setup-php@master
         with:
-          args: analyse -c phpstan.neon lib tests
+          php-version: 7.4
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          # Conventionally you would hash "composer.lock", but we don't commit
+          # that, so we hash on "composer.json" instead.
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run phpstan
+        run: make phpstan
 
   tests:
     name: Tests
@@ -46,6 +74,7 @@ jobs:
           - "7.1"
           - "7.2"
           - "7.3"
+          - "7.4"
 
     steps:
       - uses: actions/checkout@master
@@ -56,6 +85,15 @@ jobs:
           php-version: ${{ matrix.php-version }}
           extension-csv: curl, json, mbstring, simplexml, xdebug
           coverage: xdebug
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
 
       - name: Validate composer.json and composer.lock
         run: composer validate
