@@ -83,7 +83,6 @@ jobs:
         uses: shivammathur/setup-php@master
         with:
           php-version: ${{ matrix.php-version }}
-          extension-csv: curl, json, mbstring, simplexml, xdebug
           coverage: xdebug
 
       - name: Get Composer Cache Directory
