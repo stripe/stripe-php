@@ -19,6 +19,7 @@ class ObjectTypes
         \Stripe\Balance::OBJECT_NAME => \Stripe\Balance::class,
         \Stripe\BalanceTransaction::OBJECT_NAME => \Stripe\BalanceTransaction::class,
         \Stripe\BankAccount::OBJECT_NAME => \Stripe\BankAccount::class,
+        \Stripe\BillingPortal\Configuration::OBJECT_NAME => \Stripe\BillingPortal\Configuration::class,
         \Stripe\BillingPortal\Session::OBJECT_NAME => \Stripe\BillingPortal\Session::class,
         \Stripe\BitcoinReceiver::OBJECT_NAME => \Stripe\BitcoinReceiver::class,
         \Stripe\BitcoinTransaction::OBJECT_NAME => \Stripe\BitcoinTransaction::class,
