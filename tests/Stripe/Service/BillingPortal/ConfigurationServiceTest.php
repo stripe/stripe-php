@@ -64,9 +64,7 @@ final class ConfigurationServiceTest extends \PHPUnit\Framework\TestCase
             'get',
             '/v1/billing_portal/configurations/bpc_xyz'
         );
-        $resource = $this->service->retrieve('bpc_xyz', [
-            'active' => false
-        ]);
+        $resource = $this->service->retrieve('bpc_xyz');
         static::assertInstanceOf(\Stripe\BillingPortal\Configuration::class, $resource);
     }
     public function testList()
