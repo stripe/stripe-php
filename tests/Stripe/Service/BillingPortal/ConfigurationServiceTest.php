@@ -34,19 +34,20 @@ final class ConfigurationServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/billing_portal/configurations'
         );
         $resource = $this->service->create([
-          'business_profile' => [
-            'terms_of_service_url' => 'https://example.com/tos',
-            'privacy_policy_url' => 'https://example.com/privacy',
-          ],
-          'features' => [
-            'customer_update' => [
-              'allowed_updates' => ['address'],
-              'enabled' => true
-            ]
-          ],
+            'business_profile' => [
+                'terms_of_service_url' => 'https://example.com/tos',
+                'privacy_policy_url' => 'https://example.com/privacy',
+            ],
+            'features' => [
+                'customer_update' => [
+                    'allowed_updates' => ['address'],
+                    'enabled' => true,
+                ],
+            ],
         ]);
         static::assertInstanceOf(\Stripe\BillingPortal\Configuration::class, $resource);
     }
+
     public function testUpdate()
     {
         $this->expectsRequest(
@@ -54,10 +55,11 @@ final class ConfigurationServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/billing_portal/configurations/bpc_xyz'
         );
         $resource = $this->service->update('bpc_xyz', [
-            'active' => false
+            'active' => false,
         ]);
         static::assertInstanceOf(\Stripe\BillingPortal\Configuration::class, $resource);
     }
+
     public function testRetrieve()
     {
         $this->expectsRequest(
@@ -67,6 +69,7 @@ final class ConfigurationServiceTest extends \PHPUnit\Framework\TestCase
         $resource = $this->service->retrieve('bpc_xyz');
         static::assertInstanceOf(\Stripe\BillingPortal\Configuration::class, $resource);
     }
+
     public function testList()
     {
         $this->expectsRequest(
