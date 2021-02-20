@@ -10,7 +10,7 @@ final class ConfigurationServiceTest extends \PHPUnit\Framework\TestCase
 {
     use \Stripe\TestHelper;
 
-    const TEST_RESOURCE_ID = 'cs_123';
+    const TEST_RESOURCE_ID = 'bpc_123';
 
     /** @var \Stripe\StripeClient */
     private $client;
