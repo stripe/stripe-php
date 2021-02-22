@@ -1,7 +1,10 @@
 # Changelog
 
+## 7.75.0 - 2021-02-22
+* [#1094](https://github.com/stripe/stripe-php/pull/1094) Add support for Billing Portal Configuration API
+
 ## 7.74.0 - 2021-02-17
-* [#1093](https://github.com/stripe/stripe-php/pull/1093) API Updates
+* [#1093](https://github.com/stripe/stripe-php/pull/1093) Update PHPDocs
   * Add support for on_behalf_of to Invoice
 
 ## 7.73.0 - 2021-02-16
