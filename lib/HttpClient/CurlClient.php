@@ -30,11 +30,11 @@ class CurlClient implements ClientInterface
 
     public static function instance()
     {
-        if (!self::$instance) {
-            self::$instance = new static();
+        if (!static::$instance) {
+            static::$instance = new static();
         }
 
-        return self::$instance;
+        return static::$instance;
     }
 
     protected $defaultOptions;
