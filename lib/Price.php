@@ -32,7 +32,7 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $lookup_key A lookup key used to retrieve prices dynamically from a static string.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|string $nickname A brief description of the plan, hidden from customers.
+ * @property null|string $nickname A brief description of the price, hidden from customers.
  * @property string|\Stripe\Product $product The ID of the product this price is associated with.
  * @property null|\Stripe\StripeObject $recurring The recurring components of a price such as <code>interval</code> and <code>usage_type</code>.
  * @property \Stripe\StripeObject[] $tiers Each element represents a pricing tier. This parameter requires <code>billing_scheme</code> to be set to <code>tiered</code>. See also the documentation for <code>billing_scheme</code>.
