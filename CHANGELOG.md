@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.76.0 - 2021-03-22
+* [#1100](https://github.com/stripe/stripe-php/pull/1100) Update PHPDocs
+  * Added support for `amount_shipping` on `Checkout.Session.total_details`
+* [#1088](https://github.com/stripe/stripe-php/pull/1088) Make possibility to extend CurlClient
+
 ## 7.75.0 - 2021-02-22
 * [#1094](https://github.com/stripe/stripe-php/pull/1094) Add support for Billing Portal Configuration API
 
