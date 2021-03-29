@@ -19,7 +19,7 @@ final class OrderReturnTest extends \PHPUnit\Framework\TestCase
             '/v1/order_returns'
         );
         $resources = OrderReturn::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\OrderReturn::class, $resources->data[0]);
     }
 

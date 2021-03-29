@@ -19,7 +19,7 @@ final class ProductTest extends \PHPUnit\Framework\TestCase
             '/v1/products'
         );
         $resources = Product::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Product::class, $resources->data[0]);
     }
 

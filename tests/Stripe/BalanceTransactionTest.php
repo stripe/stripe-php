@@ -19,7 +19,7 @@ final class BalanceTransactionTest extends \PHPUnit\Framework\TestCase
             '/v1/balance_transactions'
         );
         $resources = BalanceTransaction::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\BalanceTransaction::class, $resources->data[0]);
     }
 

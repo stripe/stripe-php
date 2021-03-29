@@ -19,7 +19,7 @@ final class PaymentIntentTest extends \PHPUnit\Framework\TestCase
             '/v1/payment_intents'
         );
         $resources = PaymentIntent::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $resources->data[0]);
     }
 

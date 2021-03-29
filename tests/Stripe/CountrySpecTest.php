@@ -19,7 +19,7 @@ final class CountrySpecTest extends \PHPUnit\Framework\TestCase
             '/v1/country_specs'
         );
         $resources = CountrySpec::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\CountrySpec::class, $resources->data[0]);
     }
 

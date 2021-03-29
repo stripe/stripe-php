@@ -19,7 +19,7 @@ final class ValueListTest extends \PHPUnit\Framework\TestCase
             '/v1/radar/value_lists'
         );
         $resources = ValueList::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Radar\ValueList::class, $resources->data[0]);
     }
 

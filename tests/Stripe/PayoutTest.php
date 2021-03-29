@@ -19,7 +19,7 @@ final class PayoutTest extends \PHPUnit\Framework\TestCase
             '/v1/payouts'
         );
         $resources = Payout::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Payout::class, $resources->data[0]);
     }
 

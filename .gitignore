@@ -29,3 +29,5 @@ clover.xml
 # Ignore phpDocumentor's local config and artifacts
 .phpdoc/*
 phpdoc.xml
+
+.phpunit.result.cache

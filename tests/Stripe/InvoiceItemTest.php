@@ -19,7 +19,7 @@ final class InvoiceItemTest extends \PHPUnit\Framework\TestCase
             '/v1/invoiceitems'
         );
         $resources = InvoiceItem::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\InvoiceItem::class, $resources->data[0]);
     }
 

@@ -34,7 +34,7 @@ final class EventServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/events'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Event::class, $resources->data[0]);
     }
 

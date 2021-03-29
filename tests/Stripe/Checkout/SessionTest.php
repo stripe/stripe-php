@@ -59,7 +59,7 @@ final class SessionTest extends \PHPUnit\Framework\TestCase
             '/v1/checkout/sessions/' . self::TEST_RESOURCE_ID . '/line_items'
         );
         $resources = Session::allLineItems(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\LineItem::class, $resources->data[0]);
     }
 }

@@ -19,7 +19,7 @@ final class CouponTest extends \PHPUnit\Framework\TestCase
             '/v1/coupons'
         );
         $resources = Coupon::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Coupon::class, $resources->data[0]);
     }
 

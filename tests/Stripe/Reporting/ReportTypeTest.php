@@ -19,7 +19,7 @@ final class ReportTypeTest extends \PHPUnit\Framework\TestCase
             '/v1/reporting/report_types'
         );
         $resources = ReportType::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Reporting\ReportType::class, $resources->data[0]);
     }
 

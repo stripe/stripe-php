@@ -34,7 +34,7 @@ final class PromotionCodeServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/promotion_codes'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\PromotionCode::class, $resources->data[0]);
     }
 

@@ -34,7 +34,7 @@ final class SessionServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/checkout/sessions'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Checkout\Session::class, $resources->data[0]);
     }
 

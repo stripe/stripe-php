@@ -34,7 +34,7 @@ final class TopupServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/topups'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Topup::class, $resources->data[0]);
     }
 

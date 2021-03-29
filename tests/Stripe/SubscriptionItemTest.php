@@ -24,7 +24,7 @@ final class SubscriptionItemTest extends \PHPUnit\Framework\TestCase
         $resources = SubscriptionItem::all([
             'subscription' => 'sub_123',
         ]);
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SubscriptionItem::class, $resources->data[0]);
     }
 
@@ -107,7 +107,7 @@ final class SubscriptionItemTest extends \PHPUnit\Framework\TestCase
             '/v1/subscription_items/' . $resource->id . '/usage_record_summaries'
         );
         $resources = $resource->usageRecordSummaries();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\UsageRecordSummary::class, $resources->data[0]);
     }
 
@@ -118,7 +118,7 @@ final class SubscriptionItemTest extends \PHPUnit\Framework\TestCase
             '/v1/subscription_items/' . self::TEST_RESOURCE_ID . '/usage_record_summaries'
         );
         $resources = SubscriptionItem::allUsageRecordSummaries(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\UsageRecordSummary::class, $resources->data[0]);
     }
 }

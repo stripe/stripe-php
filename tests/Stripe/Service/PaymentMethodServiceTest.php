@@ -37,7 +37,7 @@ final class PaymentMethodServiceTest extends \PHPUnit\Framework\TestCase
             'customer' => 'cus_123',
             'type' => 'card',
         ]);
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\PaymentMethod::class, $resources->data[0]);
     }
 

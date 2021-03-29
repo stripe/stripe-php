@@ -36,7 +36,7 @@ final class ExchangeRateTest extends \PHPUnit\Framework\TestCase
         );
 
         $resources = ExchangeRate::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\ExchangeRate::class, $resources->data[0]);
     }
 

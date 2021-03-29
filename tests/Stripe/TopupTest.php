@@ -19,7 +19,7 @@ final class TopupTest extends \PHPUnit\Framework\TestCase
             '/v1/topups'
         );
         $resources = Topup::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Topup::class, $resources->data[0]);
     }
 

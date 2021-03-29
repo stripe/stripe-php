@@ -19,7 +19,7 @@ final class EarlyFraudWarningTest extends \PHPUnit\Framework\TestCase
             '/v1/radar/early_fraud_warnings'
         );
         $resources = EarlyFraudWarning::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Radar\EarlyFraudWarning::class, $resources->data[0]);
     }
 

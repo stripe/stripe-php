@@ -35,7 +35,7 @@ final class SubscriptionScheduleServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/subscription_schedules'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resources->data[0]);
     }
 

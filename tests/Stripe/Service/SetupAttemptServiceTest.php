@@ -34,7 +34,7 @@ final class SetupAttemptServiceTest extends \PHPUnit\Framework\TestCase
         $resources = $this->service->all([
             'setup_intent' => 'si_123',
         ]);
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SetupAttempt::class, $resources->data[0]);
     }
 }

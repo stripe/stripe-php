@@ -20,7 +20,7 @@ final class SubscriptionScheduleTest extends \PHPUnit\Framework\TestCase
             '/v1/subscription_schedules'
         );
         $resources = SubscriptionSchedule::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resources->data[0]);
     }
 

@@ -34,7 +34,7 @@ final class ScheduledQueryRunServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/sigma/scheduled_query_runs'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Sigma\ScheduledQueryRun::class, $resources->data[0]);
     }
 

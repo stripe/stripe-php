@@ -19,7 +19,7 @@ final class SetupAttemptTest extends \PHPUnit\Framework\TestCase
         $resources = SetupAttempt::all([
             'setup_intent' => 'si_123',
         ]);
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SetupAttempt::class, $resources->data[0]);
     }
 }

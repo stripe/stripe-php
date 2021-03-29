@@ -15,7 +15,7 @@ final class ScheduledQueryRunTest extends \PHPUnit\Framework\TestCase
     public function testIsListable()
     {
         $resources = ScheduledQueryRun::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Sigma\ScheduledQueryRun::class, $resources->data[0]);
     }
 

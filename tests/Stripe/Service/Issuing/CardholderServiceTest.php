@@ -34,7 +34,7 @@ final class CardholderServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/issuing/cardholders'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resources->data[0]);
     }
 

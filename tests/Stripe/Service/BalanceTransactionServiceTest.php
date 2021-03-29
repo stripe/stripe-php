@@ -34,7 +34,7 @@ final class BalanceTransactionServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/balance_transactions'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\BalanceTransaction::class, $resources->data[0]);
     }
 

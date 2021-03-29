@@ -34,7 +34,7 @@ final class OrderServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/orders'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Order::class, $resources->data[0]);
     }
 

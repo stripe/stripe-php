@@ -19,7 +19,7 @@ final class SKUTest extends \PHPUnit\Framework\TestCase
             '/v1/skus'
         );
         $resources = SKU::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SKU::class, $resources->data[0]);
     }
 

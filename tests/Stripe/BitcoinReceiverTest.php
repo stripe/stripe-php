@@ -53,7 +53,7 @@ final class BitcoinReceiverTest extends \PHPUnit\Framework\TestCase
             '/v1/bitcoin/receivers'
         );
         $resources = BitcoinReceiver::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertSame(\Stripe\BitcoinReceiver::class, \get_class($resources->data[0]));
     }
 

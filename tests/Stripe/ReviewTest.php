@@ -30,7 +30,7 @@ final class ReviewTest extends \PHPUnit\Framework\TestCase
             '/v1/reviews'
         );
         $resources = Review::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Review::class, $resources->data[0]);
     }
 

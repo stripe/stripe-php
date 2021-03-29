@@ -19,7 +19,7 @@ final class WebhookEndpointTest extends \PHPUnit\Framework\TestCase
             '/v1/webhook_endpoints'
         );
         $resources = WebhookEndpoint::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\WebhookEndpoint::class, $resources->data[0]);
     }
 

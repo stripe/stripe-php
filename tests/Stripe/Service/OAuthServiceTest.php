@@ -59,7 +59,7 @@ final class OAuthServiceTest extends \PHPUnit\Framework\TestCase
     {
         $this->setUpServiceWithNoClientId();
         $this->expectException(\Stripe\Exception\AuthenticationException::class);
-        $this->expectExceptionMessageRegExp('#No client_id provided#');
+        $this->expectExceptionMessageMatches('#No client_id provided#');
         $uriStr = $this->service->authorizeUrl();
     }
 
@@ -67,7 +67,7 @@ final class OAuthServiceTest extends \PHPUnit\Framework\TestCase
     {
         $this->setUpService();
         $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('#Use `api_base`#');
+        $this->expectExceptionMessageMatches('#Use `api_base`#');
         $uriStr = $this->service->authorizeUrl(null, ['connect_base' => 'foo']);
     }
 
@@ -75,7 +75,7 @@ final class OAuthServiceTest extends \PHPUnit\Framework\TestCase
     {
         $this->setUpServiceWithNoClientId();
         $this->expectException(\Stripe\Exception\AuthenticationException::class);
-        $this->expectExceptionMessageRegExp('#No client_id provided#');
+        $this->expectExceptionMessageMatches('#No client_id provided#');
         $this->service->deauthorize();
     }
 

@@ -19,7 +19,7 @@ final class TaxRateTest extends \PHPUnit\Framework\TestCase
             '/v1/tax_rates'
         );
         $resources = TaxRate::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\TaxRate::class, $resources->data[0]);
     }
 

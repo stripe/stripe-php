@@ -88,7 +88,7 @@ final class ApiRequestorTest extends \PHPUnit\Framework\TestCase
     public function testRaisesAuthenticationErrorWhenNoApiKey()
     {
         $this->expectException(\Stripe\Exception\AuthenticationException::class);
-        $this->expectExceptionMessageRegExp('#No API key provided#');
+        $this->expectExceptionMessageMatches('#No API key provided#');
 
         Stripe::setApiKey(null);
         Charge::create();
@@ -117,7 +117,7 @@ final class ApiRequestorTest extends \PHPUnit\Framework\TestCase
             static::fail('Did not raise error');
         } catch (Exception\InvalidRequestException $e) {
             static::assertSame(400, $e->getHttpStatus());
-            static::assertInternalType('array', $e->getJsonBody());
+            static::assertIsArray($e->getJsonBody());
             static::assertSame('Missing id', $e->getMessage());
             static::assertSame('id', $e->getStripeParam());
         } catch (\Exception $e) {
@@ -147,7 +147,7 @@ final class ApiRequestorTest extends \PHPUnit\Framework\TestCase
             static::fail('Did not raise error');
         } catch (Exception\IdempotencyException $e) {
             static::assertSame(400, $e->getHttpStatus());
-            static::assertInternalType('array', $e->getJsonBody());
+            static::assertIsArray($e->getJsonBody());
             static::assertSame("Keys for idempotent requests can only be used with the same parameters they were first used with. Try using a key other than 'abc' if you meant to execute a different request.", $e->getMessage());
         } catch (\Exception $e) {
             static::fail('Unexpected exception: ' . \get_class($e));
@@ -176,7 +176,7 @@ final class ApiRequestorTest extends \PHPUnit\Framework\TestCase
             static::fail('Did not raise error');
         } catch (Exception\AuthenticationException $e) {
             static::assertSame(401, $e->getHttpStatus());
-            static::assertInternalType('array', $e->getJsonBody());
+            static::assertIsArray($e->getJsonBody());
             static::assertSame('You did not provide an API key.', $e->getMessage());
         } catch (\Exception $e) {
             static::fail('Unexpected exception: ' . \get_class($e));
@@ -209,7 +209,7 @@ final class ApiRequestorTest extends \PHPUnit\Framework\TestCase
             static::fail('Did not raise error');
         } catch (Exception\CardException $e) {
             static::assertSame(402, $e->getHttpStatus());
-            static::assertInternalType('array', $e->getJsonBody());
+            static::assertIsArray($e->getJsonBody());
             static::assertSame('Your card was declined.', $e->getMessage());
             static::assertSame('card_declined', $e->getStripeCode());
             static::assertSame('generic_decline', $e->getDeclineCode());
@@ -241,7 +241,7 @@ final class ApiRequestorTest extends \PHPUnit\Framework\TestCase
             static::fail('Did not raise error');
         } catch (Exception\PermissionException $e) {
             static::assertSame(403, $e->getHttpStatus());
-            static::assertInternalType('array', $e->getJsonBody());
+            static::assertIsArray($e->getJsonBody());
             static::assertSame("The provided key 'sk_test_********************1234' does not have access to account 'foo' (or that account does not exist). Application access may have been revoked.", $e->getMessage());
         } catch (\Exception $e) {
             static::fail('Unexpected exception: ' . \get_class($e));
@@ -271,7 +271,7 @@ final class ApiRequestorTest extends \PHPUnit\Framework\TestCase
             static::fail('Did not raise error');
         } catch (Exception\InvalidRequestException $e) {
             static::assertSame(404, $e->getHttpStatus());
-            static::assertInternalType('array', $e->getJsonBody());
+            static::assertIsArray($e->getJsonBody());
             static::assertSame('No such charge: foo', $e->getMessage());
             static::assertSame('id', $e->getStripeParam());
         } catch (\Exception $e) {
@@ -300,7 +300,7 @@ final class ApiRequestorTest extends \PHPUnit\Framework\TestCase
             static::fail('Did not raise error');
         } catch (Exception\RateLimitException $e) {
             static::assertSame(429, $e->getHttpStatus());
-            static::assertInternalType('array', $e->getJsonBody());
+            static::assertIsArray($e->getJsonBody());
             static::assertSame('Too many requests', $e->getMessage());
         } catch (\Exception $e) {
             \var_dump($e);
@@ -330,7 +330,7 @@ final class ApiRequestorTest extends \PHPUnit\Framework\TestCase
             static::fail('Did not raise error');
         } catch (Exception\RateLimitException $e) {
             static::assertSame(400, $e->getHttpStatus());
-            static::assertInternalType('array', $e->getJsonBody());
+            static::assertIsArray($e->getJsonBody());
             static::assertSame('Too many requests', $e->getMessage());
         } catch (\Exception $e) {
             static::fail('Unexpected exception: ' . \get_class($e));

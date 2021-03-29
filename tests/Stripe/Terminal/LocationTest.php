@@ -19,7 +19,7 @@ final class LocationTest extends \PHPUnit\Framework\TestCase
             '/v1/terminal/locations'
         );
         $resources = Location::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Terminal\Location::class, $resources->data[0]);
     }
 

@@ -34,7 +34,7 @@ final class ChargeServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/charges'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Charge::class, $resources->data[0]);
     }
 

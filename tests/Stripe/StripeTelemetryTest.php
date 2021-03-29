@@ -21,7 +21,7 @@ final class StripeTelemetryTest extends \PHPUnit\Framework\TestCase
       "url": "/v1/accounts"
     }';
 
-    protected function setUp()
+    protected function setUp(): void
     {
         // clear static telemetry data
         ApiRequestor::resetTelemetry();

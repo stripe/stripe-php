@@ -20,7 +20,7 @@ final class InvoiceTest extends \PHPUnit\Framework\TestCase
             '/v1/invoices'
         );
         $resources = Invoice::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Invoice::class, $resources->data[0]);
     }
 
@@ -158,6 +158,6 @@ final class InvoiceTest extends \PHPUnit\Framework\TestCase
             '/v1/invoices/' . self::TEST_RESOURCE_ID . '/lines'
         );
         $resources = Invoice::allLines(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
     }
 }

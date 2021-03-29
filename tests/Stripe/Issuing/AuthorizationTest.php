@@ -19,7 +19,7 @@ final class AuthorizationTest extends \PHPUnit\Framework\TestCase
             '/v1/issuing/authorizations'
         );
         $resources = Authorization::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resources->data[0]);
     }
 

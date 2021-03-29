@@ -36,7 +36,7 @@ final class ValueListItemServiceTest extends \PHPUnit\Framework\TestCase
         $resources = $this->service->all([
             'value_list' => 'rsl_123',
         ]);
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resources->data[0]);
     }
 

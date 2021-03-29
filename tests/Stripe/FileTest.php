@@ -19,7 +19,7 @@ final class FileTest extends \PHPUnit\Framework\TestCase
             '/v1/files'
         );
         $resources = File::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\File::class, $resources->data[0]);
     }
 

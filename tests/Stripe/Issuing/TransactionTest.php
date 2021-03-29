@@ -19,7 +19,7 @@ final class TransactionTest extends \PHPUnit\Framework\TestCase
             '/v1/issuing/transactions'
         );
         $resources = Transaction::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Issuing\Transaction::class, $resources->data[0]);
     }
 

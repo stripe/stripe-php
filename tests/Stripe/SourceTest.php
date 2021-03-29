@@ -122,7 +122,7 @@ final class SourceTest extends \PHPUnit\Framework\TestCase
             '/v1/sources/' . $source->id . '/source_transactions'
         );
         $resources = $source->sourceTransactions();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
     }
 
@@ -133,7 +133,7 @@ final class SourceTest extends \PHPUnit\Framework\TestCase
             '/v1/sources/' . self::TEST_RESOURCE_ID . '/source_transactions'
         );
         $resources = Source::allSourceTransactions(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
     }
 

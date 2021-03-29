@@ -35,7 +35,7 @@ final class TransferServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/transfers'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Transfer::class, $resources->data[0]);
     }
 
@@ -46,7 +46,7 @@ final class TransferServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/transfers/' . self::TEST_RESOURCE_ID . '/reversals'
         );
         $resources = $this->service->allReversals(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\TransferReversal::class, $resources->data[0]);
     }
 

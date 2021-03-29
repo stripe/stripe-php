@@ -20,7 +20,7 @@ final class TransferTest extends \PHPUnit\Framework\TestCase
             '/v1/transfers'
         );
         $resources = Transfer::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Transfer::class, $resources->data[0]);
     }
 
@@ -129,7 +129,7 @@ final class TransferTest extends \PHPUnit\Framework\TestCase
             '/v1/transfers/' . self::TEST_RESOURCE_ID . '/reversals'
         );
         $resources = Transfer::allReversals(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\TransferReversal::class, $resources->data[0]);
     }
 }

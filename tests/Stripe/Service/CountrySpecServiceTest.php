@@ -34,7 +34,7 @@ final class CountrySpecServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/country_specs'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\CountrySpec::class, $resources->data[0]);
     }
 

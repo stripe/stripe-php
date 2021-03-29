@@ -34,7 +34,7 @@ final class DisputeTest extends \PHPUnit\Framework\TestCase
             '/v1/issuing/disputes'
         );
         $resources = Dispute::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resources->data[0]);
     }
 

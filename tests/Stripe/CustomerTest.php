@@ -22,7 +22,7 @@ final class CustomerTest extends \PHPUnit\Framework\TestCase
             '/v1/customers'
         );
         $resources = Customer::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Customer::class, $resources->data[0]);
     }
 
@@ -137,7 +137,7 @@ final class CustomerTest extends \PHPUnit\Framework\TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/sources'
         );
         $resources = Customer::allSources(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
     }
 
     public function testSerializeSourceString()
@@ -213,7 +213,7 @@ final class CustomerTest extends \PHPUnit\Framework\TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/tax_ids'
         );
         $resources = Customer::allTaxIds(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
     }
 
     public function testCanCreateBalanceTransaction()
@@ -253,6 +253,6 @@ final class CustomerTest extends \PHPUnit\Framework\TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/balance_transactions'
         );
         $resources = Customer::allBalanceTransactions(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
     }
 }

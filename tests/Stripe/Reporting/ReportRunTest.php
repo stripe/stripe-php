@@ -37,7 +37,7 @@ final class ReportRunTest extends \PHPUnit\Framework\TestCase
             '/v1/reporting/report_runs'
         );
         $resources = ReportRun::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Reporting\ReportRun::class, $resources->data[0]);
     }
 

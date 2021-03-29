@@ -19,7 +19,7 @@ final class RecipientTest extends \PHPUnit\Framework\TestCase
             '/v1/recipients'
         );
         $resources = Recipient::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Recipient::class, $resources->data[0]);
     }
 

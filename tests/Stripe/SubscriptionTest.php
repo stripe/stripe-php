@@ -19,7 +19,7 @@ final class SubscriptionTest extends \PHPUnit\Framework\TestCase
             '/v1/subscriptions'
         );
         $resources = Subscription::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Subscription::class, $resources->data[0]);
     }
 

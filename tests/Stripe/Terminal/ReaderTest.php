@@ -19,7 +19,7 @@ final class ReaderTest extends \PHPUnit\Framework\TestCase
             '/v1/terminal/readers'
         );
         $resources = Reader::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resources->data[0]);
     }
 

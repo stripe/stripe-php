@@ -107,7 +107,7 @@ final class StripeObjectTest extends \PHPUnit\Framework\TestCase
 
         $converted = $s->toArray();
 
-        static::assertInternalType('array', $converted);
+        static::assertIsArray($converted);
         static::assertSame($array, $converted);
     }
 
@@ -144,7 +144,7 @@ final class StripeObjectTest extends \PHPUnit\Framework\TestCase
             $s = new StripeObject();
             static::assertNull($s->nonexistent);
 
-            static::assertRegExp(
+            static::assertMatchesRegularExpression(
                 '/Stripe Notice: Undefined property of Stripe\\\\StripeObject instance: nonexistent/',
                 \stream_get_contents($capture)
             );

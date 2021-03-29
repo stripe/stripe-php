@@ -334,7 +334,7 @@ final class CurlClientTest extends \PHPUnit\Framework\TestCase
             $curl->setRequestStatusCallback(function ($rbody, $rcode, $rheaders, $errno, $message, $willBeRetried, $numRetries) use (&$called) {
                 $called = true;
 
-                $this->assertInternalType('string', $rbody);
+                $this->assertIsString($rbody);
                 $this->assertSame(200, $rcode);
                 $this->assertSame('req_123', $rheaders['request-id']);
                 $this->assertSame(0, $errno);

@@ -28,7 +28,7 @@ final class ExchangeRateServiceTest extends \PHPUnit\Framework\TestCase
     public function testAll()
     {
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\ExchangeRate::class, $resources->data[0]);
     }
 

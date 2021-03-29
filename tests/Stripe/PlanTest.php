@@ -19,7 +19,7 @@ final class PlanTest extends \PHPUnit\Framework\TestCase
             '/v1/plans'
         );
         $resources = Plan::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Plan::class, $resources->data[0]);
     }
 

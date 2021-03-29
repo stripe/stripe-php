@@ -19,7 +19,7 @@ final class ApplePayDomainTest extends \PHPUnit\Framework\TestCase
             '/v1/apple_pay/domains'
         );
         $resources = ApplePayDomain::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\ApplePayDomain::class, $resources->data[0]);
     }
 

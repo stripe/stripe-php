@@ -34,7 +34,7 @@ final class RefundServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/refunds'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Refund::class, $resources->data[0]);
     }
 

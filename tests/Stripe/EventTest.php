@@ -19,7 +19,7 @@ final class EventTest extends \PHPUnit\Framework\TestCase
             '/v1/events'
         );
         $resources = Event::all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Event::class, $resources->data[0]);
     }
 

@@ -34,7 +34,7 @@ final class InvoiceItemServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/invoiceitems'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\InvoiceItem::class, $resources->data[0]);
     }
 

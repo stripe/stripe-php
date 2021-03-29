@@ -34,7 +34,7 @@ final class PlanServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/plans'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::assertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Plan::class, $resources->data[0]);
     }
 
