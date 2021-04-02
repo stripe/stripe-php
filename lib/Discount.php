@@ -5,7 +5,6 @@ namespace Stripe;
 /**
  * Class Discount.
  *
- * @property string $object
  * @property string $checkout_session The Checkout session that this coupon is applied to, if it is applied to a particular session in payment mode. Will not be present for subscription mode.
  * @property \Stripe\Coupon $coupon Hash describing the coupon applied to create this discount.
  * @property string|\Stripe\Customer $customer The ID of the customer associated with this discount.
