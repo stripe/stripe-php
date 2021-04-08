@@ -12,8 +12,8 @@ namespace Stripe\Reporting;
  * documentation</a> for those Report Type IDs, along with required and optional
  * parameters.
  *
- * Note that reports can only be run based on your live-mode data (not test-mode
- * data), and thus related requests must be made with a <a
+ * Note that certain report types can only be run based on your live-mode data (not
+ * test-mode data), and will error when queried without a <a
  * href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.
  *
  * @property string $id The <a href="https://stripe.com/docs/reporting/statements/api#available-report-types">ID of the Report Type</a>, such as <code>balance.summary.1</code>.
