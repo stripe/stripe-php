@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@master
 
       - name: PHP-CS-Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga
+        uses: docker://oskarstark/php-cs-fixer-ga:2.19.0
         with:
           args: --diff-format=udiff --dry-run --show-progress=dots --using-cache=no --verbose .
 
