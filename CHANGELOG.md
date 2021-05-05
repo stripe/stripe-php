@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.78.0 - 2021-05-05
+* [#1120](https://github.com/stripe/stripe-php/pull/1120) Update PHPDocs
+  * Add support for `Radar.EarlyFraudWarning.payment_intent`
+
 ## 7.77.0 - 2021-04-12
 * [#1110](https://github.com/stripe/stripe-php/pull/1110) Update PHPDocs
   * Add support for `acss_debit` on `PaymentMethod`
