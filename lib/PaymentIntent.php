@@ -122,4 +122,21 @@ class PaymentIntent extends ApiResource
 
         return $this;
     }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return PaymentIntent the verified payment intent
+     */
+    public function verifyMicrodeposits($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/verify_microdeposits';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
 }

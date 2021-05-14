@@ -58,6 +58,19 @@ final class SetupIntentServiceTest extends \PHPUnit\Framework\TestCase
         static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
     }
 
+    public function testVerifyMicrodeposits()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/setup_intents/' . self::TEST_RESOURCE_ID . '/verify_microdeposits'
+        );
+        $resource = $this->service->verifyMicrodeposits(self::TEST_RESOURCE_ID, [
+          "amounts" => [1, 2],
+          "client_secret" => "secret"
+        ]);
+        static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
+    }
+
     public function testCreate()
     {
         $this->expectsRequest(

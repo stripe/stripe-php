@@ -93,4 +93,15 @@ final class SetupIntentTest extends \PHPUnit\Framework\TestCase
         $resource->confirm();
         static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
     }
+
+    public function testIsMicrodepositVerifiable()
+    {
+        $resource = SetupIntent::retrieve(self::TEST_RESOURCE_ID);
+        $this->expectsRequest(
+            'post',
+            '/v1/setup_intents/' . self::TEST_RESOURCE_ID . '/verify_microdeposits'
+        );
+        $resource->verifyMicrodeposits(["client_secret" => "secret", "amounts" => [1, 2]]);
+        static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
+    }
 }
