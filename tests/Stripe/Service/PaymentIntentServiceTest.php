@@ -76,7 +76,6 @@ final class PaymentIntentServiceTest extends \PHPUnit\Framework\TestCase
         );
         $resource = $this->service->verifyMicrodeposits(self::TEST_RESOURCE_ID, [
             'amounts' => [1, 2],
-            'client_secret' => 'secret',
         ]);
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $resource);
     }
