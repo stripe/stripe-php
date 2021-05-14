@@ -109,15 +109,15 @@ final class PaymentIntentTest extends \PHPUnit\Framework\TestCase
 
     public function testIsMicrodepositVerifiable()
     {
-      $resource = PaymentIntent::retrieve(self::TEST_RESOURCE_ID);
-      $this->expectsRequest(
-          'post',
-          '/v1/payment_intents/' . self::TEST_RESOURCE_ID . '/verify_microdeposits'
-      );
-      $resource->verifyMicrodeposits([
-        "amounts" => [1, 2],
-        "client_secret" => "secret",
-      ]);
-      static::assertInstanceOf(\Stripe\PaymentIntent::class, $resource);
+        $resource = PaymentIntent::retrieve(self::TEST_RESOURCE_ID);
+        $this->expectsRequest(
+            'post',
+            '/v1/payment_intents/' . self::TEST_RESOURCE_ID . '/verify_microdeposits'
+        );
+        $resource->verifyMicrodeposits([
+            'amounts' => [1, 2],
+            'client_secret' => 'secret',
+        ]);
+        static::assertInstanceOf(\Stripe\PaymentIntent::class, $resource);
     }
 }

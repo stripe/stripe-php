@@ -101,7 +101,7 @@ final class SetupIntentTest extends \PHPUnit\Framework\TestCase
             'post',
             '/v1/setup_intents/' . self::TEST_RESOURCE_ID . '/verify_microdeposits'
         );
-        $resource->verifyMicrodeposits(["client_secret" => "secret", "amounts" => [1, 2]]);
+        $resource->verifyMicrodeposits(['client_secret' => 'secret', 'amounts' => [1, 2]]);
         static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
     }
 }
