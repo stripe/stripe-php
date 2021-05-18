@@ -42,6 +42,8 @@ class ObjectTypes
         \Stripe\File::OBJECT_NAME => \Stripe\File::class,
         \Stripe\File::OBJECT_NAME_ALT => \Stripe\File::class,
         \Stripe\FileLink::OBJECT_NAME => \Stripe\FileLink::class,
+        \Stripe\Identity\VerificationReport::OBJECT_NAME => \Stripe\Identity\VerificationReport::class,
+        \Stripe\Identity\VerificationSession::OBJECT_NAME => \Stripe\Identity\VerificationSession::class,
         \Stripe\Invoice::OBJECT_NAME => \Stripe\Invoice::class,
         \Stripe\InvoiceItem::OBJECT_NAME => \Stripe\InvoiceItem::class,
         \Stripe\InvoiceLineItem::OBJECT_NAME => \Stripe\InvoiceLineItem::class,
