@@ -2,6 +2,10 @@
 
 namespace Stripe\Identity;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class VerificationSessionTest extends \PHPUnit\Framework\TestCase
 {
     use \Stripe\TestHelper;
@@ -25,7 +29,7 @@ final class VerificationSessionTest extends \PHPUnit\Framework\TestCase
             '/v1/identity/verification_sessions'
         );
         $resource = VerificationSession::create([
-          "type" => "id_number"
+            'type' => 'id_number',
         ]);
         static::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resource);
     }
@@ -47,7 +51,7 @@ final class VerificationSessionTest extends \PHPUnit\Framework\TestCase
             '/v1/identity/verification_sessions/' . self::TEST_RESOURCE_ID
         );
         $resource = VerificationSession::update(self::TEST_RESOURCE_ID, [
-          "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resource);
     }

@@ -6,7 +6,7 @@ namespace Stripe\Service\Identity;
  * @internal
  * @covers \Stripe\Service\Identity\VerificationSessionService
  */
-final class VerificationSessionServiceText extends \PHPUnit\Framework\TestCase
+final class VerificationSessionServiceTest extends \PHPUnit\Framework\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -37,7 +37,7 @@ final class VerificationSessionServiceText extends \PHPUnit\Framework\TestCase
         static::assertInternalType('array', $resources->data);
         static::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resources->data[0]);
     }
-    
+
     public function testCreate()
     {
         $this->expectsRequest(
@@ -45,7 +45,7 @@ final class VerificationSessionServiceText extends \PHPUnit\Framework\TestCase
             '/v1/identity/verification_sessions'
         );
         $resource = $this->service->create([
-          "type" => "id_number"
+            'type' => 'id_number',
         ]);
         static::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resource);
     }
@@ -57,7 +57,7 @@ final class VerificationSessionServiceText extends \PHPUnit\Framework\TestCase
             '/v1/identity/verification_sessions/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
-          "metadata" => ["key" => "value"],
+            'metadata' => ['key' => 'value'],
         ]);
         static::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resource);
     }
@@ -81,5 +81,4 @@ final class VerificationSessionServiceText extends \PHPUnit\Framework\TestCase
         $resource = $this->service->redact(self::TEST_RESOURCE_ID);
         static::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resource);
     }
-
 }
