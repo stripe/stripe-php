@@ -101,7 +101,7 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Start stripe-mock
-        run: docker run -d -p 12111-12112:12111-12112 stripemock/stripe-mock && sleep 5
+        run: docker pull stripemock/stripe-mock && docker run -d -p 12111-12112:12111-12112 stripemock/stripe-mock && sleep 5
 
       - name: Run test suite
         run: |
