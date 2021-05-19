@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.79.0 - 2021-05-19
+* [#1126](https://github.com/stripe/stripe-php/pull/1126) API Updates
+  * Added support for new resource `Identity.VerificationReport`
+  * Added support for new resource `Identity.VerificationSession`
+  * `File#list.purpose` and `File.purpose` added new enum members: `identity_document_downloadable` and `selfie`.
+
 ## 7.78.0 - 2021-05-05
 * [#1120](https://github.com/stripe/stripe-php/pull/1120) Update PHPDocs
   * Add support for `Radar.EarlyFraudWarning.payment_intent`
