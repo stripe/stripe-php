@@ -40,8 +40,13 @@ class File extends ApiResource
     const PURPOSE_BUSINESS_LOGO = 'business_logo';
     const PURPOSE_CUSTOMER_SIGNATURE = 'customer_signature';
     const PURPOSE_DISPUTE_EVIDENCE = 'dispute_evidence';
+    const PURPOSE_DOCUMENT_PROVIDER_IDENTITY_DOCUMENT = 'document_provider_identity_document';
+    const PURPOSE_FINANCE_REPORT_RUN = 'finance_report_run';
     const PURPOSE_IDENTITY_DOCUMENT = 'identity_document';
+    const PURPOSE_IDENTITY_DOCUMENT_DOWNLOADABLE = 'identity_document_downloadable';
     const PURPOSE_PCI_DOCUMENT = 'pci_document';
+    const PURPOSE_SELFIE = 'selfie';
+    const PURPOSE_SIGMA_SCHEDULED_QUERY = 'sigma_scheduled_query';
     const PURPOSE_TAX_DOCUMENT_USER_UPLOAD = 'tax_document_user_upload';
 
     // This resource can have two different object names. In latter API
