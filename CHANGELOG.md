@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.80.0 - 2021-05-26
+* [#1130](https://github.com/stripe/stripe-php/pull/1130) Update PHPDocs
+
 ## 7.79.0 - 2021-05-19
 * [#1126](https://github.com/stripe/stripe-php/pull/1126) API Updates
   * Added support for new resource `Identity.VerificationReport`
