@@ -57,7 +57,7 @@ class Transfer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Transfer the canceled transfer
+     * @return \Stripe\Transfer the canceled transfer
      */
     public function cancel($params = null, $opts = null)
     {

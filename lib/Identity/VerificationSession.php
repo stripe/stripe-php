@@ -57,7 +57,7 @@ class VerificationSession extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return VerificationSession the canceled verification session
+     * @return \Stripe\VerificationSession the canceled verification session
      */
     public function cancel($params = null, $opts = null)
     {
@@ -74,7 +74,7 @@ class VerificationSession extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return VerificationSession the redacted verification session
+     * @return \Stripe\VerificationSession the redacted verification session
      */
     public function redact($params = null, $opts = null)
     {

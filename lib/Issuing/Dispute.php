@@ -40,7 +40,7 @@ class Dispute extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Dispute the submited dispute
+     * @return \Stripe\Dispute the submited dispute
      */
     public function submit($params = null, $opts = null)
     {

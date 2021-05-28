@@ -51,7 +51,7 @@ class Authorization extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Authorization the approved authorization
+     * @return \Stripe\Authorization the approved authorization
      */
     public function approve($params = null, $opts = null)
     {
@@ -68,7 +68,7 @@ class Authorization extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Authorization the declined authorization
+     * @return \Stripe\Authorization the declined authorization
      */
     public function decline($params = null, $opts = null)
     {

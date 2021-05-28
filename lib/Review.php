@@ -53,7 +53,7 @@ class Review extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Review the approved review
+     * @return \Stripe\Review the approved review
      */
     public function approve($params = null, $opts = null)
     {
