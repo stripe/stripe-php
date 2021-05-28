@@ -200,7 +200,7 @@ class Account extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Account the rejected account
+     * @return \Stripe\Account the rejected account
      */
     public function reject($params = null, $opts = null)
     {

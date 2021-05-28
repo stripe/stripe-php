@@ -68,7 +68,7 @@ class Order extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Order the paid order
+     * @return \Stripe\Order the paid order
      */
     public function pay($params = null, $opts = null)
     {

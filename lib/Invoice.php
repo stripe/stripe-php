@@ -143,24 +143,6 @@ class Invoice extends ApiResource
     const PATH_LINES = '/lines';
 
     /**
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Invoice the upcoming invoice
-     */
-    public static function upcoming($params = null, $opts = null)
-    {
-        $url = static::classUrl() . '/upcoming';
-        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
-        $obj = Util\Util::convertToStripeObject($response->json, $opts);
-        $obj->setLastResponse($response);
-
-        return $obj;
-    }
-
-    /**
      * @param string $id the ID of the invoice on which to retrieve the lines
      * @param null|array $params
      * @param null|array|string $opts
@@ -180,7 +162,7 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Invoice the finalized invoice
+     * @return \Stripe\Invoice the finalized invoice
      */
     public function finalizeInvoice($params = null, $opts = null)
     {
@@ -197,7 +179,7 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Invoice the uncollectible invoice
+     * @return \Stripe\Invoice the uncollectible invoice
      */
     public function markUncollectible($params = null, $opts = null)
     {
@@ -214,7 +196,7 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Invoice the paid invoice
+     * @return \Stripe\Invoice the paid invoice
      */
     public function pay($params = null, $opts = null)
     {
@@ -231,7 +213,7 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Invoice the sent invoice
+     * @return \Stripe\Invoice the sent invoice
      */
     public function sendInvoice($params = null, $opts = null)
     {
@@ -248,7 +230,25 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return Invoice the voided invoice
+     * @return \Stripe\Invoice the upcoming invoice
+     */
+    public static function upcoming($params = null, $opts = null)
+    {
+        $url = static::classUrl() . '/upcoming';
+        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Invoice the voided invoice
      */
     public function voidInvoice($params = null, $opts = null)
     {

@@ -146,11 +146,11 @@ class AccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * With <a href="/docs/connect">Connect</a>, you can delete Custom or Express
-     * accounts you manage.
+     * With <a href="/docs/connect">Connect</a>, you can delete accounts you manage.
      *
-     * Accounts created using test-mode keys can be deleted at any time. Accounts
-     * created using live-mode keys can only be deleted once all balances are zero.
+     * Accounts created using test-mode keys can be deleted at any time. Custom or
+     * Express accounts created using live-mode keys can only be deleted once all
+     * balances are zero.
      *
      * If you want to delete your own account, use the <a
      * href="https://dashboard.stripe.com/account">account information tab in your
