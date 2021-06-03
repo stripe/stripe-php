@@ -3,7 +3,14 @@
 namespace Stripe;
 
 /**
- * Class search results.
+ * Search results for an API resource.
+ *
+ * This behaves similarly to <code>Collection</code> in that they both wrap
+ * around a list of objects and provide pagination. However the
+ * <code>SearchResult</code> object paginates by relying on a
+ * <code>next_page</code> token included in the response rather than using
+ * object IDs and a <code>starting_before</code>/<code>ending_after</code>
+ * parameter. Thus, <code>SearchResult</code> only supports forwards pagination.
  *
  * @property string $object
  * @property string $url
