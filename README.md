@@ -72,7 +72,6 @@ See the [PHP API docs](https://stripe.com/docs/api/php#intro).
 
 See [video demonstrations][youtube-playlist] covering how to use the library.
 
-
 ## Legacy Version Support
 
 ### PHP 5.4 & 5.5
@@ -231,7 +230,7 @@ Install dependencies as mentioned above (which will resolve [PHPUnit](http://pac
 Or to run an individual test file:
 
 ```bash
-./vendor/bin/phpunit tests/UtilTest.php
+./vendor/bin/phpunit tests/Stripe/UtilTest.php
 ```
 
 Update bundled CA certificates from the [Mozilla cURL release][curl]:
