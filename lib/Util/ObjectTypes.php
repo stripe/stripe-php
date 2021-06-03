@@ -77,6 +77,7 @@ class ObjectTypes
         \Stripe\Reporting\ReportRun::OBJECT_NAME => \Stripe\Reporting\ReportRun::class,
         \Stripe\Reporting\ReportType::OBJECT_NAME => \Stripe\Reporting\ReportType::class,
         \Stripe\Review::OBJECT_NAME => \Stripe\Review::class,
+        \Stripe\SearchResult::OBJECT_NAME => \Stripe\SearchResult::class,
         \Stripe\SetupAttempt::OBJECT_NAME => \Stripe\SetupAttempt::class,
         \Stripe\SetupIntent::OBJECT_NAME => \Stripe\SetupIntent::class,
         \Stripe\Sigma\ScheduledQueryRun::OBJECT_NAME => \Stripe\Sigma\ScheduledQueryRun::class,
