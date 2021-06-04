@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.82.0 - 2021-06-04
+* [#1136](https://github.com/stripe/stripe-php/pull/1136) Update PHPDocs
+  * Add support for `controller` on `Account`.
+
 ## 7.81.0 - 2021-06-04
 * [#1135](https://github.com/stripe/stripe-php/pull/1135) API Updates
   * Add support for new resource `TaxCode`
