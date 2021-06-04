@@ -85,6 +85,7 @@ class ObjectTypes
         \Stripe\Subscription::OBJECT_NAME => \Stripe\Subscription::class,
         \Stripe\SubscriptionItem::OBJECT_NAME => \Stripe\SubscriptionItem::class,
         \Stripe\SubscriptionSchedule::OBJECT_NAME => \Stripe\SubscriptionSchedule::class,
+        \Stripe\TaxCode::OBJECT_NAME => \Stripe\TaxCode::class,
         \Stripe\TaxId::OBJECT_NAME => \Stripe\TaxId::class,
         \Stripe\TaxRate::OBJECT_NAME => \Stripe\TaxRate::class,
         \Stripe\Terminal\ConnectionToken::OBJECT_NAME => \Stripe\Terminal\ConnectionToken::class,

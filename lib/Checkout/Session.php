@@ -27,6 +27,7 @@ namespace Stripe\Checkout;
  * @property null|bool $allow_promotion_codes Enables user redeemable promotion codes.
  * @property null|int $amount_subtotal Total of all items before discounts or taxes are applied.
  * @property null|int $amount_total Total of all items after discounts and taxes are applied.
+ * @property \Stripe\StripeObject $automatic_tax
  * @property null|string $billing_address_collection Describes whether Checkout should collect the customer's billing address.
  * @property string $cancel_url The URL the customer will be directed to if they decide to cancel payment and return to your website.
  * @property null|string $client_reference_id A unique string to reference the Checkout Session. This can be a customer ID, a cart ID, or similar, and can be used to reconcile the Session with your internal systems.
