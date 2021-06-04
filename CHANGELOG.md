@@ -1,5 +1,14 @@
 # Changelog
 
+## 7.81.0 - 2021-06-04
+* [#1135](https://github.com/stripe/stripe-php/pull/1135) API Updates
+  * Add support for new resource `TaxCode`
+  * Add support for `automatic_tax` `Invoice` and`Checkout.Session`.
+  * Add support for `tax_behavior` on `Price`
+  * Add support for `tax_code` on `Product`
+  * Add support for `tax` on `Customer`
+  * Add support for `tax_type` enum on `TaxRate`
+
 ## 7.80.0 - 2021-05-26
 * [#1130](https://github.com/stripe/stripe-php/pull/1130) Update PHPDocs
 
