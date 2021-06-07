@@ -35,6 +35,7 @@ namespace Stripe;
  * @property null|string $nickname A brief description of the price, hidden from customers.
  * @property string|\Stripe\Product $product The ID of the product this price is associated with.
  * @property null|\Stripe\StripeObject $recurring The recurring components of a price such as <code>interval</code> and <code>usage_type</code>.
+ * @property null|string $tax_behavior Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One of <code>inclusive</code>, <code>exclusive</code>, or <code>unspecified</code>. Once specified as either <code>inclusive</code> or <code>exclusive</code>, it cannot be changed.
  * @property \Stripe\StripeObject[] $tiers Each element represents a pricing tier. This parameter requires <code>billing_scheme</code> to be set to <code>tiered</code>. See also the documentation for <code>billing_scheme</code>.
  * @property null|string $tiers_mode Defines if the tiering price should be <code>graduated</code> or <code>volume</code> based. In <code>volume</code>-based tiering, the maximum quantity within a period determines the per unit price. In <code>graduated</code> tiering, pricing can change as the quantity grows.
  * @property null|\Stripe\StripeObject $transform_quantity Apply a transformation to the reported usage or set quantity before computing the amount billed. Cannot be combined with <code>tiers</code>.
@@ -53,6 +54,10 @@ class Price extends ApiResource
 
     const BILLING_SCHEME_PER_UNIT = 'per_unit';
     const BILLING_SCHEME_TIERED = 'tiered';
+
+    const TAX_BEHAVIOR_EXCLUSIVE = 'exclusive';
+    const TAX_BEHAVIOR_INCLUSIVE = 'inclusive';
+    const TAX_BEHAVIOR_UNSPECIFIED = 'unspecified';
 
     const TIERS_MODE_GRADUATED = 'graduated';
     const TIERS_MODE_VOLUME = 'volume';

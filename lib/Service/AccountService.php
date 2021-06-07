@@ -278,11 +278,11 @@ class AccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates a connected <a href="/docs/connect/accounts">Express or Custom
-     * account</a> by setting the values of the parameters passed. Any parameters not
-     * provided are left unchanged. Most parameters can be changed only for Custom
-     * accounts. (These are marked <strong>Custom Only</strong> below.) Parameters
-     * marked <strong>Custom and Express</strong> are supported by both account types.
+     * Updates a <a href="/docs/connect/accounts">connected account</a> by setting the
+     * values of the parameters passed. Any parameters not provided are left unchanged.
+     * Most parameters can be changed only for Custom accounts. (These are marked
+     * <strong>Custom Only</strong> below.) Parameters marked <strong>Custom and
+     * Express</strong> are not supported for Standard accounts.
      *
      * To update your own account, use the <a
      * href="https://dashboard.stripe.com/account">Dashboard</a>. Refer to our <a
