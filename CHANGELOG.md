@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.83.0 - 2021-06-07
+* [#1140](https://github.com/stripe/stripe-php/pull/1140) API Updates
+  * Added support for `tax_id_collection` on `Checkout\Session` and `Checkout\Session#create`
+  * Update `Location` to be expandable on `Terminal\Reader`
+
 ## 7.82.0 - 2021-06-04
 * [#1136](https://github.com/stripe/stripe-php/pull/1136) Update PHPDocs
   * Add support for `controller` on `Account`.
