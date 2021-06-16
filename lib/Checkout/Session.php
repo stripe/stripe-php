@@ -52,6 +52,7 @@ namespace Stripe\Checkout;
  * @property string $success_url The URL the customer will be directed to after the payment or subscription creation is successful.
  * @property \Stripe\StripeObject $tax_id_collection
  * @property null|\Stripe\StripeObject $total_details Tax and discount details for the computed total amount.
+ * @property null|string $url The URL to the Checkout Session.
  */
 class Session extends \Stripe\ApiResource
 {
