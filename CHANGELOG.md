@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.84.0 - 2021-06-16
+* [#1141](https://github.com/stripe/stripe-php/pull/1141) Update PHPDocs
+  * Add support for `url` on `Checkout\Session`
+
+
 ## 7.83.0 - 2021-06-07
 * [#1140](https://github.com/stripe/stripe-php/pull/1140) API Updates
   * Added support for `tax_id_collection` on `Checkout\Session` and `Checkout\Session#create`
