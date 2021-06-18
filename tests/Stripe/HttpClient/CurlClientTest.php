@@ -9,6 +9,7 @@ namespace Stripe\HttpClient;
 final class CurlClientTest extends \PHPUnit\Framework\TestCase
 {
     use \Stripe\TestHelper;
+    use \Stripe\TestServer;
 
     /** @var \ReflectionProperty */
     private $initialNetworkRetryDelayProperty;
@@ -351,5 +352,121 @@ final class CurlClientTest extends \PHPUnit\Framework\TestCase
         } finally {
             \Stripe\ApiRequestor::setHttpClient(null);
         }
+    }
+
+    /**
+     * @after
+     */
+    public function tearDownTestServer()
+    {
+        $this->stopTestServer();
+    }
+
+    // This is a pretty flaky/uncertain way to try and get an
+    // http server to deliver the body in separate "chunks".
+    //
+    // It seems to work but feel free to just skip or delete
+    // if this flakes.
+    public function testExecuteRequestWithRetriesCallsWriteFunctionWithChunks()
+    {
+        $chunk1 = 'First, bytes';
+        $chunk2 = 'more bytes';
+        $chunk3 = 'final bytes';
+        $serverCode = <<<EOF
+<?php
+echo "{$chunk1}";
+ob_flush();
+flush();
+\\usleep(1000);
+echo "{$chunk2}";
+ob_flush();
+flush();
+\\usleep(1000);
+echo "{$chunk3}";
+ob_end_flush();
+exit();
+EOF;
+        $absUrl = $this->startTestServer($serverCode);
+        $opts = [];
+        $opts[\CURLOPT_HTTPGET] = 1;
+        $opts[\CURLOPT_URL] = $absUrl;
+        $opts[\CURLOPT_HTTPHEADER] = ['Authorization: Basic c2tfdGVzdF94eXo6'];
+        $curl = new CurlClient();
+        $receivedChunks = [];
+        $curl->executeStreamingRequestWithRetries($opts, $absUrl, function ($chunk) use (&$receivedChunks) {
+            $receivedChunks[] = $chunk;
+        });
+        static::assertSame([$chunk1, $chunk2, $chunk3], $receivedChunks);
+        $this->stopTestServer();
+    }
+
+    public function testExecuteStreamingRequestWithRetriesRetries()
+    {
+        $serverCode = <<<'EOF'
+<?php
+http_response_code(500);
+header("stripe-should-retry", "true");
+?>
+{}
+EOF;
+
+        $originalNRetries = \Stripe\Stripe::getMaxNetworkRetries();
+        \Stripe\Stripe::setMaxNetworkRetries(3);
+        $absUrl = $this->startTestServer($serverCode);
+        $opts = [];
+        $opts[\CURLOPT_HTTPGET] = 1;
+        $opts[\CURLOPT_URL] = $absUrl;
+        $opts[\CURLOPT_HTTPHEADER] = ['Authorization: Basic c2tfdGVzdF94eXo6'];
+        $curl = new CurlClient();
+        $receivedChunks = [];
+        $result = $curl->executeStreamingRequestWithRetries($opts, $absUrl, function ($chunk) use (&$receivedChunks) {
+            $receivedChunks[] = $chunk;
+        });
+        $nRequests = $this->stopTestServer();
+
+        static::assertSame([], $receivedChunks);
+        \Stripe\Stripe::setMaxNetworkRetries($originalNRetries);
+
+        static::assertSame(4, $nRequests);
+    }
+
+    public function testExecuteStreamingRequestWithRetriesHandlesDisconnect()
+    {
+        $serverCode = <<<'EOF'
+<?php
+http_response_code(200);
+header("Content-Length: 6");
+echo "12345";
+ob_flush();
+flush();
+exit();
+EOF;
+
+        $originalNRetries = \Stripe\Stripe::getMaxNetworkRetries();
+        \Stripe\Stripe::setMaxNetworkRetries(3);
+        $absUrl = $this->startTestServer($serverCode);
+        $opts = [];
+        $opts[\CURLOPT_HTTPGET] = 1;
+        $opts[\CURLOPT_URL] = $absUrl;
+        $opts[\CURLOPT_HTTPHEADER] = ['Authorization: Basic c2tfdGVzdF94eXo6'];
+        $curl = new CurlClient();
+        $receivedChunks = [];
+        $exception = null;
+
+        try {
+            $result = $curl->executeStreamingRequestWithRetries($opts, $absUrl, function ($chunk) use (&$receivedChunks) {
+                $receivedChunks[] = $chunk;
+            });
+        } catch (\Exception $e) {
+            $exception = $e;
+        }
+
+        $nRequests = $this->stopTestServer();
+        static::assertSame('Stripe\Exception\ApiConnectionException', \get_class($exception));
+
+        static::assertSame(['12345'], $receivedChunks);
+        \Stripe\Stripe::setMaxNetworkRetries($originalNRetries);
+
+        static::assertSame(1, $nRequests);
     }
 }

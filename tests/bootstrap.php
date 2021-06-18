@@ -68,3 +68,4 @@ if (\getenv('IS_RUNNING_PHPUNIT')) {
 }
 
 require_once __DIR__ . '/TestHelper.php';
+require_once __DIR__ . '/TestServer.php';
