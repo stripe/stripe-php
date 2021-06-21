@@ -76,16 +76,39 @@ trait TestServer
             throw new \Exception("Error starting test server on pid {$pid}, command failed: {$command}");
         }
 
-        while ($r = \fgets($this->serverStderr)) {
-            if (\str_contains($r, 'started')) {
+        while (true) {
+            $conn = @\fsockopen('localhost', $this->serverPort);
+            if (\is_resource($conn)) {
+                \fclose($conn);
+
                 break;
             }
-            if (\str_contains($r, 'Failed')) {
-                throw new \Exception("Error starting test server on pid {$pid}: " . $r . ' Was the port ' . $this->serverPort . ' already taken?');
-            }
+            \fclose($conn);
         }
 
         return 'localhost:' . $this->serverPort;
+    }
+
+    /**
+     * Dirty way to parse the stderr of `php -S` to see how many
+     * requests were sent. Not robust -- and the format of the
+     * output changes from PHP version to PHP version, so beware.
+     *
+     * @param mixed $s
+     */
+    private static function isPHPTestServerRequestLogLine($s)
+    {
+        if (\str_contains($s, 'Accepted')) {
+            return false;
+        }
+        if (\str_contains($s, 'Closing')) {
+            return false;
+        }
+
+        // Lines start with a left square bracket, and contain
+        // a status code in brackets followed by a colon, like [200]:
+        // or [404]:
+        return \preg_match('/^\[.*\[[0-9]{3}\]:/', $s);
     }
 
     /**
@@ -102,19 +125,33 @@ trait TestServer
         \stream_set_blocking($this->serverStderr, false);
         $lines = \explode(\PHP_EOL, \stream_get_contents($this->serverStderr));
         foreach ($lines as $line) {
-            if (\str_contains($line, 'Accepted')) {
+            if (self::isPHPTestServerRequestLogLine($line)) {
                 ++$n;
+            } else {
+                \flush();
+                \ob_flush();
             }
         }
-        while (true) {
+
+        for ($i = 0; $i < 20; ++$i) {
             $status = \proc_get_status($this->serverProc);
             if (!$status['running']) {
                 break;
             }
             $pid = $status['pid'];
+            // Kills any child processes -- the php test server
+            // appears to start up a child.
             \exec("pkill -P {$pid}");
+
+            // Kill the parent process.
+            \exec("kill {$pid}");
             \usleep(100000);
         }
+
+        if ($status['running']) {
+            throw new Exception('Could not kill test server');
+        }
+
         // echo "Terminated test server on pid $pid\n";
         \fclose($this->serverStderr);
         \proc_close($this->serverProc);
