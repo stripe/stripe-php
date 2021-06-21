@@ -93,7 +93,7 @@ trait TestServer
      * requests were sent. Not robust -- and the format of the
      * output changes from PHP version to PHP version, so beware.
      *
-     * @param mixed $s
+     * @param string $s
      */
     private static function isPHPTestServerRequestLogLine($s)
     {
