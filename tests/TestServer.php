@@ -83,7 +83,6 @@ trait TestServer
 
                 break;
             }
-            \fclose($conn);
         }
 
         return 'localhost:' . $this->serverPort;
