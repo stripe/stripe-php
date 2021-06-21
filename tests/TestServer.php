@@ -97,10 +97,10 @@ trait TestServer
      */
     private static function isPHPTestServerRequestLogLine($s)
     {
-        if (\str_contains($s, 'Accepted')) {
+        if (\strpos('Accepted', $s) !== false) {
             return false;
         }
-        if (\str_contains($s, 'Closing')) {
+        if (\strpos('Closing', $s) !== false) {
             return false;
         }
 
