@@ -56,7 +56,7 @@ trait Request
      *
      * @return array tuple containing (the JSON response, $options)
      */
-    protected function _requestStreaming($method, $url, $readBodyChunk, $params = [], $options = null)
+    protected function _requestStream($method, $url, $readBodyChunk, $params = [], $options = null)
     {
         $opts = $this->_opts->merge($options);
         static::_staticStreamingRequest($method, $url, $readBodyChunk, $params, $opts);
@@ -97,6 +97,6 @@ trait Request
         $opts = \Stripe\Util\RequestOptions::parse($options);
         $baseUrl = isset($opts->apiBase) ? $opts->apiBase : static::baseUrl();
         $requestor = new \Stripe\ApiRequestor($opts->apiKey, $baseUrl);
-        $requestor->requestStreaming($method, $url, $readBodyChunk, $params, $opts->headers);
+        $requestor->requestStream($method, $url, $readBodyChunk, $params, $opts->headers);
     }
 }

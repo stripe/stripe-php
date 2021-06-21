@@ -3,7 +3,7 @@
 namespace Stripe;
 
 // Fake resource that calls GET /v1/coupons/{coupon} but using
-// _requestStreaming to test the _requestStreaming interface.
+// _requestStream to test the _requestStream interface.
 
 class FooResource extends ApiResource
 {
@@ -13,7 +13,7 @@ class FooResource extends ApiResource
     public function pdf($readBodyChunk, $params = null, $opts = null)
     {
         $url = $this->instanceUrl();
-        list($opts) = $this->_requestStreaming('get', $url, $readBodyChunk, $params, $opts);
+        list($opts) = $this->_requestStream('get', $url, $readBodyChunk, $params, $opts);
 
         return $this;
     }

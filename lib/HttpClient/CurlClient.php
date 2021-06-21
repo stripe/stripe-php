@@ -287,7 +287,7 @@ class CurlClient implements ClientInterface
         return [$rbody, $rcode, $rheaders];
     }
 
-    public function requestStreaming($method, $absUrl, $headers, $params, $hasFile, $readBodyChunk)
+    public function requestStream($method, $absUrl, $headers, $params, $hasFile, $readBodyChunk)
     {
         list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile);
 

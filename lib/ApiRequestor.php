@@ -134,7 +134,7 @@ class ApiRequestor
      *
      * @return array tuple containing (ApiReponse, API key)
      */
-    public function requestStreaming($method, $url, $readBodyChunk, $params = null, $headers = null)
+    public function requestStream($method, $url, $readBodyChunk, $params = null, $headers = null)
     {
         $params = $params ?: [];
         $headers = $headers ?: [];
@@ -485,7 +485,7 @@ class ApiRequestor
 
         $requestStartMs = Util\Util::currentTimeMillis();
 
-        list($rbody, $rcode, $rheaders) = $this->httpClient()->requestStreaming(
+        list($rbody, $rcode, $rheaders) = $this->httpClient()->requestStream(
             $method,
             $absUrl,
             $rawHeaders,
