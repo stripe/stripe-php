@@ -97,13 +97,6 @@ trait TestServer
      */
     private static function isPHPTestServerRequestLogLine($s)
     {
-        if (false !== \strpos('Accepted', $s)) {
-            return false;
-        }
-        if (false !== \strpos('Closing', $s)) {
-            return false;
-        }
-
         // Lines start with a left square bracket, and contain
         // a status code in brackets followed by a colon, like [200]:
         // or [404]:
