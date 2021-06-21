@@ -132,6 +132,7 @@ trait TestServer
             }
         }
 
+        $status = [];
         for ($i = 0; $i < 20; ++$i) {
             $status = \proc_get_status($this->serverProc);
             if (!$status['running']) {
@@ -148,7 +149,7 @@ trait TestServer
         }
 
         if ($status['running']) {
-            throw new Exception('Could not kill test server');
+            throw new \Exception('Could not kill test server');
         }
 
         // echo "Terminated test server on pid $pid\n";
