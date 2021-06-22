@@ -390,8 +390,7 @@ class CurlClient implements ClientInterface
             &$numRetries,
             &$rcode,
             &$lastRHeaders,
-            &$errno,
-            &$message
+            &$errno
         ) {
             $lastRHeaders = $rheaders;
             $errno = \curl_errno($this->curlHandle);

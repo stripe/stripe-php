@@ -374,44 +374,6 @@ final class CurlClientTest extends \PHPUnit\Framework\TestCase
         $this->stopTestServer();
     }
 
-    // This is a pretty flaky/uncertain way to try and get an
-    // http server to deliver the body in separate "chunks".
-    //
-    // It seems to work but feel free to just skip or delete
-    // if this flakes.
-    public function testExecuteRequestWithRetriesCallsWriteFunctionWithChunks()
-    {
-        $chunk1 = 'First, bytes';
-        $chunk2 = 'more bytes';
-        $chunk3 = 'final bytes';
-        $serverCode = <<<EOF
-<?php
-echo "{$chunk1}";
-ob_flush();
-flush();
-\\usleep(1000);
-echo "{$chunk2}";
-ob_flush();
-flush();
-\\usleep(1000);
-echo "{$chunk3}";
-ob_end_flush();
-exit();
-EOF;
-        $absUrl = $this->startTestServer($serverCode);
-        $opts = [];
-        $opts[\CURLOPT_HTTPGET] = 1;
-        $opts[\CURLOPT_URL] = $absUrl;
-        $opts[\CURLOPT_HTTPHEADER] = ['Authorization: Basic c2tfdGVzdF94eXo6'];
-        $curl = new CurlClient();
-        $receivedChunks = [];
-        $curl->executeStreamingRequestWithRetries($opts, $absUrl, function ($chunk) use (&$receivedChunks) {
-            $receivedChunks[] = $chunk;
-        });
-        static::assertSame([$chunk1, $chunk2, $chunk3], $receivedChunks);
-        $this->stopTestServer();
-    }
-
     public function testExecuteStreamingRequestWithRetriesRetries()
     {
         $serverCode = <<<'EOF'
@@ -492,7 +454,7 @@ EOF;
         $curl = new CurlClient();
         $coupon = \Stripe\Coupon::retrieve('coupon_xyz');
 
-        $absUrl = \Stripe\Stripe::$apiBase . "/v1/coupons/xyz";
+        $absUrl = \Stripe\Stripe::$apiBase . '/v1/coupons/xyz';
         $opts[\CURLOPT_HTTPGET] = 1;
         $opts[\CURLOPT_URL] = $absUrl;
         $opts[\CURLOPT_HTTPHEADER] = ['Authorization: Basic c2tfdGVzdF94eXo6'];

@@ -24,17 +24,18 @@ trait TestServer
     // value to `stripe-mock`'s standard 12111.
     protected $serverPort = 12113;
 
-
     private function lint($path)
     {
-      $output = '';
-      $exitCode = null;
-      \exec("php -l {$path}", $output, $exitCode);
-      if (0 !== $exitCode) {
-          $text = \implode("\n", $output);
-          throw new \Exception("Error in test server code: {$text}");
-      }
+        $output = '';
+        $exitCode = null;
+        \exec("php -l {$path}", $output, $exitCode);
+        if (0 !== $exitCode) {
+            $text = \implode("\n", $output);
+
+            throw new \Exception("Error in test server code: {$text}");
+        }
     }
+
     /**
      * Makes a directory in a temporary path containing only an `index.php` file with
      * the specified content ($code).
@@ -59,6 +60,7 @@ trait TestServer
         \fclose($handle);
 
         $this->lint($indexPHP);
+
         return $dir;
     }
 
@@ -129,9 +131,6 @@ trait TestServer
         foreach ($lines as $line) {
             if (self::isPHPTestServerRequestLogLine($line)) {
                 ++$n;
-            } else {
-                \flush();
-                \ob_flush();
             }
         }
 
