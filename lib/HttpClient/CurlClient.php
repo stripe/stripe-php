@@ -319,14 +319,7 @@ class CurlClient implements ClientInterface
     {
         $rheaders = new Util\CaseInsensitiveArray();
         $headerCallback = function ($curl, $header_line) use (&$rheaders) {
-            // Ignore the HTTP request line (HTTP/1.1 200 OK)
-            if (false === \strpos($header_line, ':')) {
-                return \strlen($header_line);
-            }
-            list($key, $value) = \explode(':', \trim($header_line), 2);
-            $rheaders[\trim($key)] = \trim($value);
-
-            return \strlen($header_line);
+            return self::parseLineIntoHeaderArray($header_line, $rheaders);
         };
 
         $writeCallback = null;
@@ -339,6 +332,17 @@ class CurlClient implements ClientInterface
         };
 
         return [$headerCallback, $writeCallbackWrapper];
+    }
+
+    private static function parseLineIntoHeaderArray($line, &$headers)
+    {
+        if (false === \strpos($line, ':')) {
+            return \strlen($line);
+        }
+        list($key, $value) = \explode(':', \trim($line), 2);
+        $headers[\trim($key)] = \trim($value);
+
+        return \strlen($line);
     }
 
     /**
@@ -363,10 +367,6 @@ class CurlClient implements ClientInterface
         /** @var int */
         $numRetries = 0;
 
-        // Did the last request return statusCode < 300?
-        /** @var null|bool */
-        $succeeded = null;
-
         // Will contain the bytes of the body of the last request
         // if it was not successful and should not be retries
         /** @var null|string */
@@ -380,23 +380,27 @@ class CurlClient implements ClientInterface
         /** @var null|array */
         $lastRHeaders = null;
 
+        $errno = null;
+        $message = null;
+
         $determineWriteCallback = function ($rheaders) use (
             &$readBodyChunk,
             &$shouldRetry,
-            &$succeeded,
             &$rbody,
             &$numRetries,
             &$rcode,
-            &$lastRHeaders
+            &$lastRHeaders,
+            &$errno,
+            &$message
         ) {
             $lastRHeaders = $rheaders;
             $errno = \curl_errno($this->curlHandle);
+
             $rcode = \curl_getinfo($this->curlHandle, \CURLINFO_HTTP_CODE);
 
             // Send the bytes from the body of a successful request to the caller-provided $readBodyChunk.
             if ($rcode < 300) {
                 $rbody = null;
-                $succeeded = true;
 
                 return function ($curl, $data) use (&$readBodyChunk) {
                     // Don't expose the $curl handle to the user, and don't require them to
@@ -406,7 +410,6 @@ class CurlClient implements ClientInterface
                     return \strlen($data);
                 };
             }
-            $succeeded = false;
 
             $shouldRetry = $this->shouldRetry($errno, $rcode, $rheaders, $numRetries);
 
@@ -435,10 +438,24 @@ class CurlClient implements ClientInterface
 
             $shouldRetry = false;
             $rbody = null;
-            $succeeded = null;
             $this->resetCurlHandle();
             \curl_setopt_array($this->curlHandle, $opts);
             $result = \curl_exec($this->curlHandle);
+            $errno = \curl_errno($this->curlHandle);
+            if (0 !== $errno) {
+                $message = \curl_error($this->curlHandle);
+            }
+            if (!$this->getEnablePersistentConnections()) {
+                $this->closeCurlHandle();
+            }
+
+            if (\is_callable($this->getRequestStatusCallback())) {
+                \call_user_func_array(
+                    $this->getRequestStatusCallback(),
+                    [$rbody, $rcode, $lastRHeaders, $errno, $message, $shouldRetry, $numRetries]
+                );
+            }
+
             if ($shouldRetry) {
                 ++$numRetries;
                 $sleepSeconds = $this->sleepTime($numRetries, $lastRHeaders);
@@ -448,9 +465,7 @@ class CurlClient implements ClientInterface
             }
         }
 
-        $errno = \curl_errno($this->curlHandle);
         if (0 !== $errno) {
-            $message = \curl_error($this->curlHandle);
             $this->handleCurlError($absUrl, $errno, $message, $numRetries);
         }
 
@@ -473,14 +488,7 @@ class CurlClient implements ClientInterface
             // Create a callback to capture HTTP headers for the response
             $rheaders = new Util\CaseInsensitiveArray();
             $headerCallback = function ($curl, $header_line) use (&$rheaders) {
-                // Ignore the HTTP request line (HTTP/1.1 200 OK)
-                if (false === \strpos($header_line, ':')) {
-                    return \strlen($header_line);
-                }
-                list($key, $value) = \explode(':', \trim($header_line), 2);
-                $rheaders[\trim($key)] = \trim($value);
-
-                return \strlen($header_line);
+                return CurlClient::parseLineIntoHeaderArray($header_line, $rheaders);
             };
             $opts[\CURLOPT_HEADERFUNCTION] = $headerCallback;
 

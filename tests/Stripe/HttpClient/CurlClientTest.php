@@ -17,6 +17,9 @@ final class CurlClientTest extends \PHPUnit\Framework\TestCase
     /** @var \ReflectionProperty */
     private $maxNetworkRetryDelayProperty;
 
+    /** @var \ReflectionProperty */
+    private $curlHandle;
+
     /** @var float */
     private $origInitialNetworkRetryDelay;
 
@@ -62,6 +65,9 @@ final class CurlClientTest extends \PHPUnit\Framework\TestCase
 
         $this->sleepTimeMethod = $curlClientReflector->getMethod('sleepTime');
         $this->sleepTimeMethod->setAccessible(true);
+
+        $this->curlHandle = $curlClientReflector->getProperty('curlHandle');
+        $this->curlHandle->setAccessible(true);
     }
 
     /**
@@ -82,6 +88,12 @@ final class CurlClientTest extends \PHPUnit\Framework\TestCase
     private function setInitialNetworkRetryDelay($initialNetworkRetryDelay)
     {
         $this->initialNetworkRetryDelayProperty->setValue(null, $initialNetworkRetryDelay);
+    }
+
+    private function fastRetries()
+    {
+        $this->setInitialNetworkRetryDelay(0.001);
+        $this->setMaxNetworkRetryDelay(0.002);
     }
 
     private function createFakeRandomGenerator($returnValue = 1.0)
@@ -410,24 +422,31 @@ header("stripe-should-retry", "true");
 {}
 EOF;
 
-        $originalNRetries = \Stripe\Stripe::getMaxNetworkRetries();
         \Stripe\Stripe::setMaxNetworkRetries(3);
+        $this->fastRetries();
         $absUrl = $this->startTestServer($serverCode);
         $opts = [];
         $opts[\CURLOPT_HTTPGET] = 1;
         $opts[\CURLOPT_URL] = $absUrl;
         $opts[\CURLOPT_HTTPHEADER] = ['Authorization: Basic c2tfdGVzdF94eXo6'];
         $curl = new CurlClient();
+        $calls = [];
         $receivedChunks = [];
+
+        $curl->setRequestStatusCallback(function ($rbody, $rcode, $rheaders, $errno, $message, $willBeRetried, $numRetries) use (&$calls) {
+            $calls[] = [$rcode, $numRetries];
+        });
+
         $result = $curl->executeStreamingRequestWithRetries($opts, $absUrl, function ($chunk) use (&$receivedChunks) {
             $receivedChunks[] = $chunk;
         });
         $nRequests = $this->stopTestServer();
 
         static::assertSame([], $receivedChunks);
-        \Stripe\Stripe::setMaxNetworkRetries($originalNRetries);
 
         static::assertSame(4, $nRequests);
+
+        static::assertSame([[500, 0], [500, 1], [500, 2], [500, 3]], $calls);
     }
 
     public function testExecuteStreamingRequestWithRetriesHandlesDisconnect()
@@ -442,8 +461,7 @@ flush();
 exit();
 EOF;
 
-        $originalNRetries = \Stripe\Stripe::getMaxNetworkRetries();
-        \Stripe\Stripe::setMaxNetworkRetries(3);
+        $this->fastRetries();
         $absUrl = $this->startTestServer($serverCode);
         $opts = [];
         $opts[\CURLOPT_HTTPGET] = 1;
@@ -462,11 +480,34 @@ EOF;
         }
 
         $nRequests = $this->stopTestServer();
+        static::assertNotNull($exception);
         static::assertSame('Stripe\Exception\ApiConnectionException', \get_class($exception));
 
         static::assertSame(['12345'], $receivedChunks);
-        \Stripe\Stripe::setMaxNetworkRetries($originalNRetries);
-
         static::assertSame(1, $nRequests);
+    }
+
+    public function testExecuteStreamingRequestWithRetriesPersistentConnection()
+    {
+        $curl = new CurlClient();
+        $coupon = \Stripe\Coupon::retrieve('coupon_xyz');
+
+        $absUrl = \Stripe\Stripe::$apiBase . "/v1/coupons/xyz";
+        $opts[\CURLOPT_HTTPGET] = 1;
+        $opts[\CURLOPT_URL] = $absUrl;
+        $opts[\CURLOPT_HTTPHEADER] = ['Authorization: Basic c2tfdGVzdF94eXo6'];
+        $discardCallback = function ($chunk) {};
+        $curl->executeStreamingRequestWithRetries($opts, $absUrl, $discardCallback);
+        $firstHandle = $this->curlHandle->getValue($curl);
+
+        $curl->executeStreamingRequestWithRetries($opts, $absUrl, $discardCallback);
+        $secondHandle = $this->curlHandle->getValue($curl);
+
+        $curl->setEnablePersistentConnections(false);
+        $curl->executeStreamingRequestWithRetries($opts, $absUrl, $discardCallback);
+        $thirdHandle = $this->curlHandle->getValue($curl);
+
+        static::assertSame($firstHandle, $secondHandle);
+        static::assertNull($thirdHandle);
     }
 }

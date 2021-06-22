@@ -24,6 +24,17 @@ trait TestServer
     // value to `stripe-mock`'s standard 12111.
     protected $serverPort = 12113;
 
+
+    private function lint($path)
+    {
+      $output = '';
+      $exitCode = null;
+      \exec("php -l {$path}", $output, $exitCode);
+      if (0 !== $exitCode) {
+          $text = \implode("\n", $output);
+          throw new \Exception("Error in test server code: {$text}");
+      }
+    }
     /**
      * Makes a directory in a temporary path containing only an `index.php` file with
      * the specified content ($code).
@@ -33,9 +44,9 @@ trait TestServer
     private function makeTemporaryServerDirectory($code)
     {
         $dir = \sys_get_temp_dir() . \DIRECTORY_SEPARATOR . 'stripe-php-test-server';
-        $indexPhp = $dir . \DIRECTORY_SEPARATOR . 'index.php';
-        if (\is_file($indexPhp)) {
-            \unlink($indexPhp);
+        $indexPHP = $dir . \DIRECTORY_SEPARATOR . 'index.php';
+        if (\is_file($indexPHP)) {
+            \unlink($indexPHP);
         }
 
         if (\is_dir($dir)) {
@@ -43,10 +54,11 @@ trait TestServer
         }
 
         \mkdir($dir);
-        $handle = \fopen($indexPhp, 'wb');
+        $handle = \fopen($indexPHP, 'wb');
         \fwrite($handle, $code);
         \fclose($handle);
 
+        $this->lint($indexPHP);
         return $dir;
     }
 
@@ -67,8 +79,6 @@ trait TestServer
         );
 
         $pid = \proc_get_status($this->serverProc)['pid'];
-
-        // echo "Started test server on pid $pid\n";
 
         $this->serverStderr = $pipes[2];
 
@@ -138,14 +148,13 @@ trait TestServer
 
             // Kill the parent process.
             \exec("kill {$pid}");
-            \usleep(100000);
+            \usleep(10000);
         }
 
         if ($status['running']) {
             throw new \Exception('Could not kill test server');
         }
 
-        // echo "Terminated test server on pid $pid\n";
         \fclose($this->serverStderr);
         \proc_close($this->serverProc);
         $this->serverProc = null;
