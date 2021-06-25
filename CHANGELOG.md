@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.86.0 - 2021-06-25
+* [#1145](https://github.com/stripe/stripe-php/pull/1145) API Updates
+  * Add support for `boleto` on `PaymentMethod`.
+  * Add support for `il_vat` as a member of the `TaxID.Type` enum.
+
 ## 7.85.0 - 2021-06-18
 * [#1142](https://github.com/stripe/stripe-php/pull/1142) API Updates
   * Add support for new TaxId types: `ca_pst_mb`, `ca_pst_bc`, `ca_gst_hst`, and `ca_pst_sk`.
