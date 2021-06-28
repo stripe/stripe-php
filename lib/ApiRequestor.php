@@ -124,6 +124,28 @@ class ApiRequestor
     }
 
     /**
+     * @param string     $method
+     * @param string     $url
+     * @param callable $readBodyChunk
+     * @param null|array $params
+     * @param null|array $headers
+     *
+     * @throws Exception\ApiErrorException
+     *
+     * @return array tuple containing (ApiReponse, API key)
+     */
+    public function requestStream($method, $url, $readBodyChunk, $params = null, $headers = null)
+    {
+        $params = $params ?: [];
+        $headers = $headers ?: [];
+        list($rbody, $rcode, $rheaders, $myApiKey) =
+        $this->_requestRawStreaming($method, $url, $params, $headers, $readBodyChunk);
+        if ($rcode >= 300) {
+            $this->_interpretResponse($rbody, $rcode, $rheaders);
+        }
+    }
+
+    /**
      * @param string $rbody a JSON string
      * @param int $rcode
      * @param array $rheaders
@@ -328,18 +350,7 @@ class ApiRequestor
         ];
     }
 
-    /**
-     * @param string $method
-     * @param string $url
-     * @param array $params
-     * @param array $headers
-     *
-     * @throws Exception\AuthenticationException
-     * @throws Exception\ApiConnectionException
-     *
-     * @return array
-     */
-    private function _requestRaw($method, $url, $params, $headers)
+    private function _prepareRequest($method, $url, $params, $headers)
     {
         $myApiKey = $this->_apiKey;
         if (!$myApiKey) {
@@ -416,6 +427,24 @@ class ApiRequestor
             $rawHeaders[] = $header . ': ' . $value;
         }
 
+        return [$absUrl, $rawHeaders, $params, $hasFile, $myApiKey];
+    }
+
+    /**
+     * @param string $method
+     * @param string $url
+     * @param array $params
+     * @param array $headers
+     *
+     * @throws Exception\AuthenticationException
+     * @throws Exception\ApiConnectionException
+     *
+     * @return array
+     */
+    private function _requestRaw($method, $url, $params, $headers)
+    {
+        list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers);
+
         $requestStartMs = Util\Util::currentTimeMillis();
 
         list($rbody, $rcode, $rheaders) = $this->httpClient()->request(
@@ -424,6 +453,45 @@ class ApiRequestor
             $rawHeaders,
             $params,
             $hasFile
+        );
+
+        if (isset($rheaders['request-id'])
+        && \is_string($rheaders['request-id'])
+        && \strlen($rheaders['request-id']) > 0) {
+            self::$requestTelemetry = new RequestTelemetry(
+                $rheaders['request-id'],
+                Util\Util::currentTimeMillis() - $requestStartMs
+            );
+        }
+
+        return [$rbody, $rcode, $rheaders, $myApiKey];
+    }
+
+    /**
+     * @param string $method
+     * @param string $url
+     * @param array $params
+     * @param array $headers
+     * @param callable $readBodyChunk
+     *
+     * @throws Exception\AuthenticationException
+     * @throws Exception\ApiConnectionException
+     *
+     * @return array
+     */
+    private function _requestRawStreaming($method, $url, $params, $headers, $readBodyChunk)
+    {
+        list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers);
+
+        $requestStartMs = Util\Util::currentTimeMillis();
+
+        list($rbody, $rcode, $rheaders) = $this->httpClient()->requestStream(
+            $method,
+            $absUrl,
+            $rawHeaders,
+            $params,
+            $hasFile,
+            $readBodyChunk
         );
 
         if (isset($rheaders['request-id'])
