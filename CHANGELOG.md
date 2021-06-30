@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.87.0 - 2021-06-30
+* [#1149](https://github.com/stripe/stripe-php/pull/1149) API Updates
+  * Add support for `wechat_pay` on `PaymentMethod`
+* [#1143](https://github.com/stripe/stripe-php/pull/1143) Streaming requests
+* [#1138](https://github.com/stripe/stripe-php/pull/1138) Deprecate travis
+
 ## 7.86.0 - 2021-06-25
 * [#1145](https://github.com/stripe/stripe-php/pull/1145) API Updates
   * Add support for `boleto` on `PaymentMethod`.
