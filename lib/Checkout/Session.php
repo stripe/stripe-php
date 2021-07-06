@@ -70,6 +70,10 @@ class Session extends \Stripe\ApiResource
     const PAYMENT_STATUS_PAID = 'paid';
     const PAYMENT_STATUS_UNPAID = 'unpaid';
 
+    const MODE_PAYMENT = 'payment';
+    const MODE_SETUP = 'setup';
+    const MODE_SUBSCRIPTION = 'subscription';
+
     const SUBMIT_TYPE_AUTO = 'auto';
     const SUBMIT_TYPE_BOOK = 'book';
     const SUBMIT_TYPE_DONATE = 'donate';
