@@ -38,25 +38,6 @@ class QuoteService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * When retrieving a quote, there is an includable
-     * <strong>upfront.line_items</strong> property containing the first handful of
-     * those items. There is also a URL where you can retrieve the full (paginated)
-     * list of upfront line items.
-     *
-     * @param string $id
-     * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection
-     */
-    public function all($id, $params = null, $opts = null)
-    {
-        return $this->requestCollection('get', $this->buildPath('/v1/quotes/%s/computed_upfront_line_items', $id), $params, $opts);
-    }
-
-    /**
      * When retrieving a quote, there is an includable <strong>line_items</strong>
      * property containing the first handful of those items. There is also a URL where
      * you can retrieve the full (paginated) list of line items.

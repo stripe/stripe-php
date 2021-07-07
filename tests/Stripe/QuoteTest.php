@@ -42,9 +42,9 @@ final class QuoteTest extends \PHPUnit\Framework\TestCase
         $resource = Quote::create([
             'customer' => 'cus_xyz',
             'line_items' => [
-              ['price' => 'price_abc', 'quantity' => 5],
-              ['price' => 'price_xyz'],
-            ]
+                ['price' => 'price_abc', 'quantity' => 5],
+                ['price' => 'price_xyz'],
+            ],
         ]);
         static::assertInstanceOf(\Stripe\Quote::class, $resource);
     }
