@@ -102,7 +102,7 @@ class Quote extends ApiResource
      *
      * @return \Stripe\Quote the finalized quote
      */
-    public function finalize($params = null, $opts = null)
+    public function finalizeQuote($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/finalize';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);

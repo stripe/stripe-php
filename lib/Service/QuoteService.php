@@ -100,7 +100,7 @@ class QuoteService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\Quote
      */
-    public function finalize($id, $params = null, $opts = null)
+    public function finalizeQuote($id, $params = null, $opts = null)
     {
         return $this->request('post', $this->buildPath('/v1/quotes/%s/finalize', $id), $params, $opts);
     }
