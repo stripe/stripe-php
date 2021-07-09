@@ -198,6 +198,7 @@ trait TestHelper
         $base = null
     ) {
         ApiRequestor::setHttpClient($this->clientMock);
+
         if (null === $base) {
             $base = Stripe::$apiBase;
         }
@@ -221,7 +222,7 @@ trait TestHelper
                     return true;
                 }),
                 null === $params ? static::anything() : static::identicalTo($params),
-                static::identicalTo($hasFile),
+                static::identicalTo($hasFile)
             )
         ;
     }
@@ -278,7 +279,7 @@ trait TestHelper
                 }),
                 null === $params ? static::anything() : static::identicalTo($params),
                 static::identicalTo($hasFile),
-                static::anything(),
+                static::anything()
             )
         ;
     }
