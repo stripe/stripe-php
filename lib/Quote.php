@@ -138,7 +138,7 @@ class Quote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Quote the alled quote
+     * @return \Stripe\Collection list of LineItems
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {
