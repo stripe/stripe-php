@@ -116,7 +116,7 @@ final class QuoteServiceTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectsRequestStream(
             'get',
-            '/v1/quotes/' . self::TEST_RESOURCE_ID . '/pdf',
+            '/v1/quotes/' . self::TEST_RESOURCE_ID . '/pdf'
         );
         $output = '';
         $resources = $this->service->pdf(self::TEST_RESOURCE_ID, function ($chunk) use (&$output) {
