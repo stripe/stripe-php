@@ -53,6 +53,7 @@ require __DIR__ . '/lib/ApiOperations/Delete.php';
 require __DIR__ . '/lib/ApiOperations/NestedResource.php';
 require __DIR__ . '/lib/ApiOperations/Request.php';
 require __DIR__ . '/lib/ApiOperations/Retrieve.php';
+require __DIR__ . '/lib/ApiOperations/Search.php';
 require __DIR__ . '/lib/ApiOperations/Update.php';
 
 // Plumbing
@@ -137,6 +138,7 @@ require __DIR__ . '/lib/Refund.php';
 require __DIR__ . '/lib/Reporting/ReportRun.php';
 require __DIR__ . '/lib/Reporting/ReportType.php';
 require __DIR__ . '/lib/Review.php';
+require __DIR__ . '/lib/SearchResult.php';
 require __DIR__ . '/lib/SetupAttempt.php';
 require __DIR__ . '/lib/SetupIntent.php';
 require __DIR__ . '/lib/Sigma/ScheduledQueryRun.php';
