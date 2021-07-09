@@ -66,13 +66,13 @@ class Session extends \Stripe\ApiResource
     const BILLING_ADDRESS_COLLECTION_AUTO = 'auto';
     const BILLING_ADDRESS_COLLECTION_REQUIRED = 'required';
 
-    const PAYMENT_STATUS_NO_PAYMENT_REQUIRED = 'no_payment_required';
-    const PAYMENT_STATUS_PAID = 'paid';
-    const PAYMENT_STATUS_UNPAID = 'unpaid';
-
     const MODE_PAYMENT = 'payment';
     const MODE_SETUP = 'setup';
     const MODE_SUBSCRIPTION = 'subscription';
+
+    const PAYMENT_STATUS_NO_PAYMENT_REQUIRED = 'no_payment_required';
+    const PAYMENT_STATUS_PAID = 'paid';
+    const PAYMENT_STATUS_UNPAID = 'unpaid';
 
     const SUBMIT_TYPE_AUTO = 'auto';
     const SUBMIT_TYPE_BOOK = 'book';

@@ -93,6 +93,7 @@ namespace Stripe;
  * @property int $period_start Start of the usage period during which invoice items were added to this invoice.
  * @property int $post_payment_credit_notes_amount Total amount of all post-payment credit notes issued for this invoice.
  * @property int $pre_payment_credit_notes_amount Total amount of all pre-payment credit notes issued for this invoice.
+ * @property null|string|\Stripe\Quote $quote The quote this invoice was generated from.
  * @property null|string $receipt_number This is the transaction number that appears on email receipts sent for this invoice.
  * @property int $starting_balance Starting customer balance before the invoice is finalized. If the invoice has not been finalized yet, this will be the current customer balance.
  * @property null|string $statement_descriptor Extra information about an invoice for the customer's credit card statement.
@@ -122,6 +123,7 @@ class Invoice extends ApiResource
     const BILLING_SEND_INVOICE = 'send_invoice';
 
     const BILLING_REASON_MANUAL = 'manual';
+    const BILLING_REASON_QUOTE_ACCEPT = 'quote_accept';
     const BILLING_REASON_SUBSCRIPTION = 'subscription';
     const BILLING_REASON_SUBSCRIPTION_CREATE = 'subscription_create';
     const BILLING_REASON_SUBSCRIPTION_CYCLE = 'subscription_cycle';

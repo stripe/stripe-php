@@ -35,7 +35,7 @@ namespace Stripe\Issuing;
  * @property string $status The current status of the authorization in its lifecycle.
  * @property \Stripe\Issuing\Transaction[] $transactions List of <a href="https://stripe.com/docs/api/issuing/transactions">transactions</a> associated with this authorization.
  * @property \Stripe\StripeObject $verification_data
- * @property null|string $wallet What, if any, digital wallet was used for this authorization. One of <code>apple_pay</code>, <code>google_pay</code>, or <code>samsung_pay</code>.
+ * @property null|string $wallet The digital wallet used for this authorization. One of <code>apple_pay</code>, <code>google_pay</code>, or <code>samsung_pay</code>.
  */
 class Authorization extends \Stripe\ApiResource
 {

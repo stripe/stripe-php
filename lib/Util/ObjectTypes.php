@@ -67,6 +67,7 @@ class ObjectTypes
         \Stripe\Price::OBJECT_NAME => \Stripe\Price::class,
         \Stripe\Product::OBJECT_NAME => \Stripe\Product::class,
         \Stripe\PromotionCode::OBJECT_NAME => \Stripe\PromotionCode::class,
+        \Stripe\Quote::OBJECT_NAME => \Stripe\Quote::class,
         \Stripe\Radar\EarlyFraudWarning::OBJECT_NAME => \Stripe\Radar\EarlyFraudWarning::class,
         \Stripe\Radar\ValueList::OBJECT_NAME => \Stripe\Radar\ValueList::class,
         \Stripe\Radar\ValueListItem::OBJECT_NAME => \Stripe\Radar\ValueListItem::class,
