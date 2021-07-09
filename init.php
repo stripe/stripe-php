@@ -18,6 +18,7 @@ require __DIR__ . '/lib/Util/ObjectTypes.php';
 // HttpClient
 require __DIR__ . '/lib/HttpClient/ClientInterface.php';
 require __DIR__ . '/lib/HttpClient/CurlClient.php';
+require __DIR__ . '/lib/HttpClient/StreamingClientInterface.php';
 
 // Exceptions
 require __DIR__ . '/lib/Exception/ExceptionInterface.php';
@@ -66,9 +67,11 @@ require __DIR__ . '/lib/Service/AbstractService.php';
 require __DIR__ . '/lib/Service/AbstractServiceFactory.php';
 
 // StripeClient
-require __DIR__ . '/lib/StripeClientInterface.php';
 require __DIR__ . '/lib/BaseStripeClient.php';
+require __DIR__ . '/lib/BaseStripeClientInterface.php';
 require __DIR__ . '/lib/StripeClient.php';
+require __DIR__ . '/lib/StripeClientInterface.php';
+require __DIR__ . '/lib/StripeStreamingClientInterface.php';
 
 // Stripe API Resources
 require __DIR__ . '/lib/Account.php';
