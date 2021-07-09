@@ -24,7 +24,7 @@ if (!\defined('CURL_HTTP_VERSION_2TLS')) {
     \define('CURL_HTTP_VERSION_2TLS', 4);
 }
 
-class CurlClient implements ClientInterface
+class CurlClient implements ClientInterface, StreamingClientInterface
 {
     protected static $instance;
 
