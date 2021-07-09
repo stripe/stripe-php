@@ -105,7 +105,7 @@ final class QuoteTest extends \PHPUnit\Framework\TestCase
             'post',
             '/v1/quotes/' . self::TEST_RESOURCE_ID . '/finalize'
         );
-        $resource->finalize();
+        $resource->finalizeQuote();
         static::assertInstanceOf(\Stripe\Quote::class, $resource);
     }
 
@@ -115,18 +115,22 @@ final class QuoteTest extends \PHPUnit\Framework\TestCase
             'get',
             '/v1/quotes/' . self::TEST_RESOURCE_ID . '/line_items'
         );
-        $resources = Quote::listLineItems(self::TEST_RESOURCE_ID);
+        $resources = Quote::allLineItems(self::TEST_RESOURCE_ID);
         static::assertInternalType('array', $resources->data);
     }
 
     public function testCanPdf()
     {
         $resource = Quote::retrieve(self::TEST_RESOURCE_ID);
-        $this->expectsRequest(
-            'post',
-            '/v1/quotes/' . self::TEST_RESOURCE_ID . '/finalize'
+        $this->expectsRequestStream(
+            'get',
+            '/v1/quotes/' . self::TEST_RESOURCE_ID . '/pdf',
+            null
         );
-        $resource->pdf();
-        static::assertInstanceOf(\Stripe\Quote::class, $resource);
+        $output = '';
+        $resource->pdf(function ($chunk) use (&$output) {
+            $output .= $chunk;
+        });
+        static::assertSame('Stripe binary response', $output);
     }
 }

@@ -61,6 +61,26 @@ class Quote extends ApiResource
     const STATUS_OPEN = 'open';
 
     /**
+     * @param callable $readBodyChunkCallable
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\File the created file
+     */
+    public function pdf($readBodyChunkCallable, $params = null, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        if (null === $opts->apiBase) {
+            $opts->apiBase = Stripe::$apiUploadBase;
+        }
+
+        $url = $this->instanceUrl() . '/pdf';
+        $this->_requestStream('get', $url, $readBodyChunkCallable, $params, $opts);
+    }
+
+    /**
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -114,31 +134,19 @@ class Quote extends ApiResource
     /**
      * @param null|array $params
      * @param null|array|string $opts
+     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return \Stripe\Quote the alled quote
      */
-    public function allLineItems($params = null, $opts = null)
+    public static function allLineItems($id, $params = null, $opts = null)
     {
-        $url = $this->instanceUrl() . '/line_items';
-        list($response, $opts) = $this->_request('get', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response, $opts);
+        $url = static::resourceUrl($id) . '/line_items';
+        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
-    }
-
-    /**
-     * @param callable $readBodyChunkCallable
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     */
-    public function pdf($readBodyChunkCallable, $params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/pdf';
-        $this->_requestStream('get', $url, $readBodyChunkCallable, $params, $opts);
     }
 }
