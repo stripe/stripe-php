@@ -76,11 +76,13 @@ See [video demonstrations][youtube-playlist] covering how to use the library.
 
 ### PHP 5.4 & 5.5
 
-If you are using PHP 5.4 or 5.5, you can download v6.21.1 ([zip](https://github.com/stripe/stripe-php/archive/v6.21.1.zip), [tar.gz](https://github.com/stripe/stripe-php/archive/v6.21.1.tar.gz)) from our [releases page](https://github.com/stripe/stripe-php/releases). This version will continue to work with new versions of the Stripe API for all common uses.
+If you are using PHP 5.4 or 5.5, you should consider upgrading your environment as those versions have been past end of life since September 2015 and July 2016 respectively.
+Otherwise, you can still use Stripe by downloading stripe-php v6.43.1 ([zip](https://github.com/stripe/stripe-php/archive/v6.43.1.zip), [tar.gz](https://github.com/stripe/stripe-php/archive/v6.21.1.tar.gz)) from our [releases page](https://github.com/stripe/stripe-php/releases). This version will work but might not support recent features we added since the version was released and upgrading PHP is the best course of action.
 
 ### PHP 5.3
 
-If you are using PHP 5.3, you can download v5.9.2 ([zip](https://github.com/stripe/stripe-php/archive/v5.9.2.zip), [tar.gz](https://github.com/stripe/stripe-php/archive/v5.9.2.tar.gz)) from our [releases page](https://github.com/stripe/stripe-php/releases). This version will continue to work with new versions of the Stripe API for all common uses.
+If you are using PHP 5.3, you should upgrade your environment as this version has been past end of life since August 2014.
+Otherwise, you can download v5.9.2 ([zip](https://github.com/stripe/stripe-php/archive/v5.9.2.zip), [tar.gz](https://github.com/stripe/stripe-php/archive/v5.9.2.tar.gz)) from our [releases page](https://github.com/stripe/stripe-php/releases). This version will continue to work with new versions of the Stripe API for all common uses.
 
 ## Custom Request Timeouts
 
