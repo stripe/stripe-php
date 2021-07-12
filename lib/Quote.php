@@ -140,6 +140,25 @@ class Quote extends ApiResource
      *
      * @return \Stripe\Collection list of LineItems
      */
+    public static function allComputedUpfrontLineItems($id, $params = null, $opts = null)
+    {
+        $url = static::resourceUrl($id) . '/computed_upfront_line_items';
+        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     * @param mixed $id
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection list of LineItems
+     */
     public static function allLineItems($id, $params = null, $opts = null)
     {
         $url = static::resourceUrl($id) . '/line_items';

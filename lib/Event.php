@@ -72,6 +72,8 @@ class Event extends ApiResource
     const APPLICATION_FEE_REFUNDED = 'application_fee.refunded';
     const APPLICATION_FEE_REFUND_UPDATED = 'application_fee.refund.updated';
     const BALANCE_AVAILABLE = 'balance.available';
+    const BILLING_PORTAL_CONFIGURATION_CREATED = 'billing_portal.configuration.created';
+    const BILLING_PORTAL_CONFIGURATION_UPDATED = 'billing_portal.configuration.updated';
     const CAPABILITY_UPDATED = 'capability.updated';
     const CHARGE_CAPTURED = 'charge.captured';
     const CHARGE_EXPIRED = 'charge.expired';
@@ -115,6 +117,12 @@ class Event extends ApiResource
     const CUSTOMER_TAX_ID_DELETED = 'customer.tax_id.deleted';
     const CUSTOMER_TAX_ID_UPDATED = 'customer.tax_id.updated';
     const FILE_CREATED = 'file.created';
+    const IDENTITY_VERIFICATION_SESSION_CANCELED = 'identity.verification_session.canceled';
+    const IDENTITY_VERIFICATION_SESSION_CREATED = 'identity.verification_session.created';
+    const IDENTITY_VERIFICATION_SESSION_PROCESSING = 'identity.verification_session.processing';
+    const IDENTITY_VERIFICATION_SESSION_REDACTED = 'identity.verification_session.redacted';
+    const IDENTITY_VERIFICATION_SESSION_REQUIRES_INPUT = 'identity.verification_session.requires_input';
+    const IDENTITY_VERIFICATION_SESSION_VERIFIED = 'identity.verification_session.verified';
     const INVOICE_CREATED = 'invoice.created';
     const INVOICE_DELETED = 'invoice.deleted';
     const INVOICE_FINALIZATION_FAILED = 'invoice.finalization_failed';
