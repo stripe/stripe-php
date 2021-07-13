@@ -9,6 +9,9 @@ namespace Stripe;
  * @property string $url
  * @property bool $has_more
  * @property \Stripe\StripeObject[] $data
+ *
+ * @template TStripeObject of StripeObject
+ * @template-implements \IteratorAggregate<TStripeObject>
  */
 class Collection extends StripeObject implements \Countable, \IteratorAggregate
 {
@@ -60,6 +63,9 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
         throw new Exception\InvalidArgumentException($msg);
     }
 
+    /**
+     * @return Collection<TStripeObject>
+     */
     public function all($params = null, $opts = null)
     {
         self::_validateParams($params);
@@ -77,6 +83,9 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
         return $obj;
     }
 
+    /**
+     * @return TStripeObject
+     */
     public function create($params = null, $opts = null)
     {
         self::_validateParams($params);
@@ -87,6 +96,9 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
         return Util\Util::convertToStripeObject($response, $opts);
     }
 
+    /**
+     * @return TStripeObject
+     */
     public function retrieve($id, $params = null, $opts = null)
     {
         self::_validateParams($params);
