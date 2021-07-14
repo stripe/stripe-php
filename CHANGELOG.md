@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.89.0 - 2021-07-14
+* [#1158](https://github.com/stripe/stripe-php/pull/1158) API Updates
+  * Add support for `list_computed_upfront_line_items` method on resource `Quote`
+* [#1157](https://github.com/stripe/stripe-php/pull/1157) Improve readme for old PHP versions
+
 ## 7.88.0 - 2021-07-09
 * [#1152](https://github.com/stripe/stripe-php/pull/1152) API Updates
   * Add support for new resource `Quote`
