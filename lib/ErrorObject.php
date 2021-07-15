@@ -30,10 +30,8 @@ namespace Stripe;
  *    returned on a request involving a SetupIntent.
  * @property StripeObject $source The source object for errors returned on a
  *    request involving a source.
- * @property string $type The type of error returned. One of
- *    `api_connection_error`, `api_error`, `authentication_error`,
- *    `card_error`, `idempotency_error`, `invalid_request_error`, or
- *    `rate_limit_error`.
+ * @property string $type The type of error returned. One of `api_error`,
+ *   `card_error`, `idempotency_error`, or `invalid_request_error`.
  */
 class ErrorObject extends StripeObject
 {
