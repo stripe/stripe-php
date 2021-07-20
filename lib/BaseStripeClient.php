@@ -201,6 +201,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
 
             throw new \Stripe\Exception\UnexpectedValueException($msg);
         }
+        $obj->setFilters($params);
 
         return $obj;
     }
