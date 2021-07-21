@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.90.0 - 2021-07-20
+* [#1163](https://github.com/stripe/stripe-php/pull/1163) API Updates
+  * Add support for `wallet` on `Issuing.Transaction`
+* [#1160](https://github.com/stripe/stripe-php/pull/1160) Remove unused API error types from docs.
+
 ## 7.89.0 - 2021-07-14
 * [#1158](https://github.com/stripe/stripe-php/pull/1158) API Updates
   * Add support for `list_computed_upfront_line_items` method on resource `Quote`
