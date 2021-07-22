@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.91.0 - 2021-07-22
+* [#1164](https://github.com/stripe/stripe-php/pull/1164) API Updates
+  * Add support for new values `hr`, `ko`, and `vi` on enum `Checkout.Session.locale`
+  * Add support for `payment_settings` on `Subscription`
+
 ## 7.90.0 - 2021-07-20
 * [#1163](https://github.com/stripe/stripe-php/pull/1163) API Updates
   * Add support for `wallet` on `Issuing.Transaction`
