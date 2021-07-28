@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.92.0 - 2021-07-28
+* [#1167](https://github.com/stripe/stripe-php/pull/1167) API Updates
+  * Add support for `account_type` on `BankAccount`
+  * Add support for new value `redacted` on enum `Review.closed_reason`
+
 ## 7.91.0 - 2021-07-22
 * [#1164](https://github.com/stripe/stripe-php/pull/1164) API Updates
   * Add support for new values `hr`, `ko`, and `vi` on enum `Checkout.Session.locale`
