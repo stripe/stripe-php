@@ -355,8 +355,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      *
      * @param array $opts cURL options
      * @param string $absUrl
-     * @param callable @readBodyChunk
-     * @param mixed $readBodyChunk
+     * @param callable $readBodyChunk
      *
      * @return array
      */
