@@ -58,6 +58,12 @@ class PaymentMethodService extends \Stripe\Service\AbstractService
      * href="/docs/stripe-js/reference#stripe-create-payment-method">Stripe.js
      * reference</a> to learn how to create PaymentMethods via Stripe.js.
      *
+     * Instead of creating a PaymentMethod directly, we recommend using the <a
+     * href="/docs/payments/accept-a-payment">PaymentIntents</a> API to accept a
+     * payment immediately or the <a
+     * href="/docs/payments/save-and-reuse">SetupIntent</a> API to collect payment
+     * method details ahead of a future payment.
+     *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
      *
