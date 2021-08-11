@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\BillingPortal;
@@ -39,53 +40,4 @@ class Session extends \Stripe\ApiResource
     const OBJECT_NAME = 'billing_portal.session';
 
     use \Stripe\ApiOperations\Create;
-
-    const LOCALE_AUTO = 'auto';
-    const LOCALE_BG = 'bg';
-    const LOCALE_CS = 'cs';
-    const LOCALE_DA = 'da';
-    const LOCALE_DE = 'de';
-    const LOCALE_EL = 'el';
-    const LOCALE_EN = 'en';
-    const LOCALE_EN-AU = 'en-AU';
-    const LOCALE_EN-CA = 'en-CA';
-    const LOCALE_EN-GB = 'en-GB';
-    const LOCALE_EN-IE = 'en-IE';
-    const LOCALE_EN-IN = 'en-IN';
-    const LOCALE_EN-NZ = 'en-NZ';
-    const LOCALE_EN-SG = 'en-SG';
-    const LOCALE_ES = 'es';
-    const LOCALE_ES-419 = 'es-419';
-    const LOCALE_ET = 'et';
-    const LOCALE_FI = 'fi';
-    const LOCALE_FIL = 'fil';
-    const LOCALE_FR = 'fr';
-    const LOCALE_FR-CA = 'fr-CA';
-    const LOCALE_HR = 'hr';
-    const LOCALE_HU = 'hu';
-    const LOCALE_ID = 'id';
-    const LOCALE_IT = 'it';
-    const LOCALE_JA = 'ja';
-    const LOCALE_KO = 'ko';
-    const LOCALE_LT = 'lt';
-    const LOCALE_LV = 'lv';
-    const LOCALE_MS = 'ms';
-    const LOCALE_MT = 'mt';
-    const LOCALE_NB = 'nb';
-    const LOCALE_NL = 'nl';
-    const LOCALE_PL = 'pl';
-    const LOCALE_PT = 'pt';
-    const LOCALE_PT-BR = 'pt-BR';
-    const LOCALE_RO = 'ro';
-    const LOCALE_RU = 'ru';
-    const LOCALE_SK = 'sk';
-    const LOCALE_SL = 'sl';
-    const LOCALE_SV = 'sv';
-    const LOCALE_TH = 'th';
-    const LOCALE_TR = 'tr';
-    const LOCALE_VI = 'vi';
-    const LOCALE_ZH = 'zh';
-    const LOCALE_ZH-HK = 'zh-HK';
-    const LOCALE_ZH-TW = 'zh-TW';
-
 }
