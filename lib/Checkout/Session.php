@@ -24,6 +24,7 @@ namespace Stripe\Checkout;
  *
  * @property string $id Unique identifier for the object. Used to pass to <code>redirectToCheckout</code> in Stripe.js.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property null|\Stripe\StripeObject $after_expiration When set, provides configuration for actions to take if this Checkout Session expires.
  * @property null|bool $allow_promotion_codes Enables user redeemable promotion codes.
  * @property null|int $amount_subtotal Total of all items before discounts or taxes are applied.
  * @property null|int $amount_total Total of all items after discounts and taxes are applied.
@@ -31,10 +32,13 @@ namespace Stripe\Checkout;
  * @property null|string $billing_address_collection Describes whether Checkout should collect the customer's billing address.
  * @property string $cancel_url The URL the customer will be directed to if they decide to cancel payment and return to your website.
  * @property null|string $client_reference_id A unique string to reference the Checkout Session. This can be a customer ID, a cart ID, or similar, and can be used to reconcile the Session with your internal systems.
+ * @property null|\Stripe\StripeObject $consent Results of <code>consent_collection</code> for this session.
+ * @property null|\Stripe\StripeObject $consent_collection When set, provides configuration for the Checkout Session to gather active consent from customers.
  * @property null|string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string|\Stripe\Customer $customer The ID of the customer for this Session. For Checkout Sessions in <code>payment</code> or <code>subscription</code> mode, Checkout will create a new customer object based on information provided during the payment flow unless an existing customer was provided when the Session was created.
  * @property null|\Stripe\StripeObject $customer_details The customer details including the customer's tax exempt status and the customer's tax IDs. Only present on Sessions in <code>payment</code> or <code>subscription</code> mode.
  * @property null|string $customer_email If provided, this value will be used when the Customer object is created. If not provided, customers will be asked to enter their email address. Use this parameter to prefill customer data if you already have an email on file. To access information about the customer once the payment flow is complete, use the <code>customer</code> attribute.
+ * @property int $expires_at The timestamp at which the Checkout Session will expire.
  * @property \Stripe\Collection $line_items The line items purchased by the customer.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $locale The IETF language tag of the locale Checkout is displayed in. If blank or <code>auto</code>, the browser's locale is used.
@@ -44,6 +48,7 @@ namespace Stripe\Checkout;
  * @property null|\Stripe\StripeObject $payment_method_options Payment-method-specific configuration for the PaymentIntent or SetupIntent of this CheckoutSession.
  * @property string[] $payment_method_types A list of the types of payment methods (e.g. card) this Checkout Session is allowed to accept.
  * @property string $payment_status The payment status of the Checkout Session, one of <code>paid</code>, <code>unpaid</code>, or <code>no_payment_required</code>. You can use this value to decide when to fulfill your customer's order.
+ * @property null|string $recovered_from The ID of the original expired Checkout Session that triggered the recovery flow.
  * @property null|string|\Stripe\SetupIntent $setup_intent The ID of the SetupIntent for Checkout Sessions in <code>setup</code> mode.
  * @property null|\Stripe\StripeObject $shipping Shipping information for this Checkout Session.
  * @property null|\Stripe\StripeObject $shipping_address_collection When set, provides configuration for Checkout to collect a shipping address from a customer.
