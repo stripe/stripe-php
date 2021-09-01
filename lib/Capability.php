@@ -14,6 +14,7 @@ namespace Stripe;
  * @property string $id The identifier for the capability.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string|\Stripe\Account $account The account for which the capability enables functionality.
+ * @property \Stripe\StripeObject $future_requirements
  * @property bool $requested Whether the capability has been requested.
  * @property null|int $requested_at Time at which the capability was requested. Measured in seconds since the Unix epoch.
  * @property \Stripe\StripeObject $requirements
