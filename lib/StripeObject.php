@@ -2,6 +2,8 @@
 
 namespace Stripe;
 
+use ReturnTypeWillChange;
+
 /**
  * Class StripeObject.
  */
@@ -194,27 +196,32 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     }
 
     // ArrayAccess methods
+    #[ReturnTypeWillChange]
     public function offsetSet($k, $v)
     {
         $this->{$k} = $v;
     }
 
+    #[ReturnTypeWillChange]
     public function offsetExists($k)
     {
         return \array_key_exists($k, $this->_values);
     }
 
+    #[ReturnTypeWillChange]
     public function offsetUnset($k)
     {
         unset($this->{$k});
     }
 
+    #[ReturnTypeWillChange]
     public function offsetGet($k)
     {
         return \array_key_exists($k, $this->_values) ? $this->_values[$k] : null;
     }
 
     // Countable method
+    #[ReturnTypeWillChange]
     public function count()
     {
         return \count($this->_values);
@@ -419,6 +426,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         }
     }
 
+    #[ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return $this->toArray();
