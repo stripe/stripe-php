@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.96.0 - 2021-09-15
+* [#1178](https://github.com/stripe/stripe-php/pull/1178) API Updates
+  * Add support for livemode on Reporting.ReportType
+  * Add support for new value `rst` on enum `TaxRate.tax_type`
+
 ## 7.95.0 - 2021-09-01
 * [#1177](https://github.com/stripe/stripe-php/pull/1177) API Updates
   * Add support for `future_requirements` on `Account`, `Capability`, and `Person`
