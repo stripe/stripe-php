@@ -43,6 +43,7 @@ class TaxRate extends ApiResource
     const TAX_TYPE_HST = 'hst';
     const TAX_TYPE_PST = 'pst';
     const TAX_TYPE_QST = 'qst';
+    const TAX_TYPE_RST = 'rst';
     const TAX_TYPE_SALES_TAX = 'sales_tax';
     const TAX_TYPE_VAT = 'vat';
 }
