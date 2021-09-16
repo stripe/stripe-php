@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.97.0 - 2021-09-16
+* [#1181](https://github.com/stripe/stripe-php/pull/1181) API Updates
+  * Add support for `full_name_aliases` on `Person`
+
 ## 7.96.0 - 2021-09-15
 * [#1178](https://github.com/stripe/stripe-php/pull/1178) API Updates
   * Add support for livemode on Reporting.ReportType
