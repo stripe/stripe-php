@@ -2,6 +2,8 @@
 
 namespace Stripe\Util;
 
+use ReturnTypeWillChange;
+
 /**
  * CaseInsensitiveArray is an array-like class that ignores case for keys.
  *
@@ -21,16 +23,19 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
         $this->container = \array_change_key_case($initial_array, \CASE_LOWER);
     }
 
+    #[ReturnTypeWillChange]
     public function count()
     {
         return \count($this->container);
     }
 
+    #[ReturnTypeWillChange]
     public function getIterator()
     {
         return new \ArrayIterator($this->container);
     }
 
+    #[ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         $offset = static::maybeLowercase($offset);
@@ -41,6 +46,7 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
         }
     }
 
+    #[ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         $offset = static::maybeLowercase($offset);
@@ -48,12 +54,14 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
         return isset($this->container[$offset]);
     }
 
+    #[ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         $offset = static::maybeLowercase($offset);
         unset($this->container[$offset]);
     }
 
+    #[ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         $offset = static::maybeLowercase($offset);
