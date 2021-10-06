@@ -179,16 +179,6 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
         static::assertInstanceOf(\Stripe\Event::class, $result->data[0]);
     }
 
-    public function testCreateFile()
-    {
-        static::markTestSkipped('need test to intercept https://files.stripe.com issue');
-        $this->expectsRequest('post', '/v1/files');
-        $result = $this->client->files->create(
-            ['purpose' => 'dispute_xxxxxxxxxxxxx', 'file' => '{a file descriptor}']
-        );
-        static::assertInstanceOf(\Stripe\File::class, $result);
-    }
-
     public function testRetrieveFile()
     {
         $this->expectsRequest('get', '/v1/files/file_xxxxxxxxxxxxx');
@@ -694,157 +684,6 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
         static::assertInstanceOf(\Stripe\PaymentMethod::class, $result);
     }
 
-    public function testCreatePaymentSource()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest('post', '/v1/customers/cus_xxxxxxxxxxxxx/sources');
-        $result = $this->client->customers->createSource(
-            'cus_xxxxxxxxxxxxx',
-            ['source' => 'btok_xxxxxxxxxxxxx']
-        );
-        static::assertInstanceOf(\Stripe\PaymentSource::class, $result);
-    }
-
-    public function testRetrievePaymentSource()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'get',
-            '/v1/customers/cus_xxxxxxxxxxxxx/sources/ba_xxxxxxxxxxxxx'
-        );
-        $result = $this->client->customers->retrieveSource(
-            'cus_xxxxxxxxxxxxx',
-            'ba_xxxxxxxxxxxxx',
-            []
-        );
-        static::assertInstanceOf(\Stripe\PaymentSource::class, $result);
-    }
-
-    public function testUpdateBankAccount()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'post',
-            '/v1/customers/cus_xxxxxxxxxxxxx/sources/ba_xxxxxxxxxxxxx'
-        );
-        $result = $this->client->bankAccounts->update(
-            'cus_xxxxxxxxxxxxx',
-            'ba_xxxxxxxxxxxxx',
-            ['metadata' => ['order_id' => '6735']]
-        );
-        static::assertInstanceOf(\Stripe\BankAccount::class, $result);
-    }
-
-    public function testVerifyBankAccount()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'post',
-            '/v1/customers/cus_xxxxxxxxxxxxx/sources/ba_xxxxxxxxxxxxx/verify'
-        );
-        $result = $this->client->bankAccounts->verify(
-            'cus_xxxxxxxxxxxxx',
-            'ba_xxxxxxxxxxxxx',
-            ['amounts' => [32, 45]]
-        );
-        static::assertInstanceOf(\Stripe\BankAccount::class, $result);
-    }
-
-    public function testDeleteBankAccount()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'delete',
-            '/v1/customers/cus_xxxxxxxxxxxxx/sources/ba_xxxxxxxxxxxxx'
-        );
-        $result = $this->client->bankAccounts->delete(
-            'cus_xxxxxxxxxxxxx',
-            'ba_xxxxxxxxxxxxx',
-            []
-        );
-        static::assertInstanceOf(\Stripe\BankAccount::class, $result);
-    }
-
-    public function testListPaymentSource()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest('get', '/v1/customers/cus_xxxxxxxxxxxxx/sources');
-        $result = $this->client->customers->allSources(
-            'cus_xxxxxxxxxxxxx',
-            ['object' => 'bank_account', 'limit' => 3]
-        );
-        static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\PaymentSource::class, $result->data[0]);
-    }
-
-    public function testCreatePaymentSource2()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest('post', '/v1/customers/cus_xxxxxxxxxxxxx/sources');
-        $result = $this->client->customers->createSource(
-            'cus_xxxxxxxxxxxxx',
-            ['source' => 'tok_xxxx']
-        );
-        static::assertInstanceOf(\Stripe\PaymentSource::class, $result);
-    }
-
-    public function testRetrievePaymentSource2()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'get',
-            '/v1/customers/cus_xxxxxxxxxxxxx/sources/card_xxxxxxxxxxxxx'
-        );
-        $result = $this->client->customers->retrieveSource(
-            'cus_xxxxxxxxxxxxx',
-            'card_xxxxxxxxxxxxx',
-            []
-        );
-        static::assertInstanceOf(\Stripe\PaymentSource::class, $result);
-    }
-
-    public function testUpdateBankAccount2()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'post',
-            '/v1/customers/cus_xxxxxxxxxxxxx/sources/card_xxxxxxxxxxxxx'
-        );
-        $result = $this->client->bankAccounts->update(
-            'cus_xxxxxxxxxxxxx',
-            'card_xxxxxxxxxxxxx',
-            ['name' => 'Jenny Rosen']
-        );
-        static::assertInstanceOf(\Stripe\BankAccount::class, $result);
-    }
-
-    public function testDeleteBankAccount2()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'delete',
-            '/v1/customers/cus_xxxxxxxxxxxxx/sources/card_xxxxxxxxxxxxx'
-        );
-        $result = $this->client->bankAccounts->delete(
-            'cus_xxxxxxxxxxxxx',
-            'card_xxxxxxxxxxxxx',
-            []
-        );
-        static::assertInstanceOf(\Stripe\BankAccount::class, $result);
-    }
-
-    public function testListPaymentSource2()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest('get', '/v1/customers/cus_xxxxxxxxxxxxx/sources');
-        $result = $this->client->customers->allSources(
-            'cus_xxxxxxxxxxxxx',
-            ['object' => 'card', 'limit' => 3]
-        );
-        static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\PaymentSource::class, $result->data[0]);
-    }
-
     public function testRetrieveSource()
     {
         $this->expectsRequest('get', '/v1/sources/src_xxxxxxxxxxxxx');
@@ -1105,28 +944,6 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
             ]
         );
         static::assertInstanceOf(\Stripe\BillingPortal\Session::class, $result);
-    }
-
-    public function testCreateConfiguration()
-    {
-        static::markTestSkipped('example issues');
-        $this->expectsRequest('post', '/v1/billing_portal/configurations');
-        $result = $this->client->billingPortal->configurations->create(
-            [
-                'features' => [
-                    'customer_update' => [
-                        'allowed_updates' => ['email', 'tax_id'],
-                        'enabled' => true,
-                    ],
-                    'invoice_history' => ['enabled' => true],
-                ],
-                'business_profile' => [
-                    'privacy_policy_url' => 'https://example.com/privacy',
-                    'terms_of_service_url' => 'https://example.com/terms',
-                ],
-            ]
-        );
-        static::assertInstanceOf(\Stripe\BillingPortal\Configuration::class, $result);
     }
 
     public function testUpdateConfiguration()
@@ -1831,18 +1648,6 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
         static::assertInstanceOf(\Stripe\Capability::class, $result);
     }
 
-    public function testCapabilitiesAccount()
-    {
-        static::markTestSkipped('->capabilities vs. ->allCapabilities');
-        $this->expectsRequest(
-            'get',
-            '/v1/accounts/acct_xxxxxxxxxxxxx/capabilities'
-        );
-        $result = $this->client->accounts->capabilities('acct_xxxxxxxxxxxxx', []);
-        static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\Account::class, $result->data[0]);
-    }
-
     public function testListCountrySpec()
     {
         $this->expectsRequest('get', '/v1/country_specs');
@@ -1856,154 +1661,6 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
         $this->expectsRequest('get', '/v1/country_specs/US');
         $result = $this->client->countrySpecs->retrieve('US', []);
         static::assertInstanceOf(\Stripe\CountrySpec::class, $result);
-    }
-
-    public function testCreateExternalAccount()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'post',
-            '/v1/accounts/acct_xxxxxxxxxxxxx/external_accounts'
-        );
-        $result = $this->client->accounts->createExternalAccount(
-            'acct_xxxxxxxxxxxxx',
-            ['external_account' => 'btok_xxxxxxxxxxxxx']
-        );
-        static::assertInstanceOf(\Stripe\ExternalAccount::class, $result);
-    }
-
-    public function testRetrieveExternalAccount()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'get',
-            '/v1/accounts/acct_xxxxxxxxxxxxx/external_accounts/ba_xxxxxxxxxxxxx'
-        );
-        $result = $this->client->accounts->retrieveExternalAccount(
-            'acct_xxxxxxxxxxxxx',
-            'ba_xxxxxxxxxxxxx',
-            []
-        );
-        static::assertInstanceOf(\Stripe\ExternalAccount::class, $result);
-    }
-
-    public function testUpdateBankAccount3()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'post',
-            '/v1/accounts/acct_xxxxxxxxxxxxx/external_accounts/ba_xxxxxxxxxxxxx'
-        );
-        $result = $this->client->bankAccounts->update(
-            'acct_xxxxxxxxxxxxx',
-            'ba_xxxxxxxxxxxxx',
-            ['metadata' => ['order_id' => '6735']]
-        );
-        static::assertInstanceOf(\Stripe\BankAccount::class, $result);
-    }
-
-    public function testDeleteBankAccount3()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'delete',
-            '/v1/accounts/acct_xxxxxxxxxxxxx/external_accounts/ba_xxxxxxxxxxxxx'
-        );
-        $result = $this->client->bankAccounts->delete(
-            'acct_xxxxxxxxxxxxx',
-            'ba_xxxxxxxxxxxxx',
-            []
-        );
-        static::assertInstanceOf(\Stripe\BankAccount::class, $result);
-    }
-
-    public function testListExternalAccount()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'get',
-            '/v1/accounts/acct_xxxxxxxxxxxxx/external_accounts'
-        );
-        $result = $this->client->accounts->allExternalAccounts(
-            'acct_xxxxxxxxxxxxx',
-            ['object' => 'bank_account', 'limit' => 3]
-        );
-        static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\ExternalAccount::class, $result->data[0]);
-    }
-
-    public function testCreateExternalAccount2()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'post',
-            '/v1/accounts/acct_xxxxxxxxxxxxx/external_accounts'
-        );
-        $result = $this->client->accounts->createExternalAccount(
-            'acct_xxxxxxxxxxxxx',
-            ['external_account' => 'tok_xxxx_debit']
-        );
-        static::assertInstanceOf(\Stripe\ExternalAccount::class, $result);
-    }
-
-    public function testRetrieveExternalAccount2()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'get',
-            '/v1/accounts/acct_xxxxxxxxxxxxx/external_accounts/card_xxxxxxxxxxxxx'
-        );
-        $result = $this->client->accounts->retrieveExternalAccount(
-            'acct_xxxxxxxxxxxxx',
-            'card_xxxxxxxxxxxxx',
-            []
-        );
-        static::assertInstanceOf(\Stripe\ExternalAccount::class, $result);
-    }
-
-    public function testUpdateBankAccount4()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'post',
-            '/v1/accounts/acct_xxxxxxxxxxxxx/external_accounts/card_xxxxxxxxxxxxx'
-        );
-        $result = $this->client->bankAccounts->update(
-            'acct_xxxxxxxxxxxxx',
-            'card_xxxxxxxxxxxxx',
-            ['metadata' => ['order_id' => '6735']]
-        );
-        static::assertInstanceOf(\Stripe\BankAccount::class, $result);
-    }
-
-    public function testDeleteBankAccount4()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'delete',
-            '/v1/accounts/acct_xxxxxxxxxxxxx/external_accounts/card_xxxxxxxxxxxxx'
-        );
-        $result = $this->client->bankAccounts->delete(
-            'acct_xxxxxxxxxxxxx',
-            'card_xxxxxxxxxxxxx',
-            []
-        );
-        static::assertInstanceOf(\Stripe\BankAccount::class, $result);
-    }
-
-    public function testListExternalAccount2()
-    {
-        static::markTestSkipped('Polymorphic group');
-        $this->expectsRequest(
-            'get',
-            '/v1/accounts/acct_xxxxxxxxxxxxx/external_accounts'
-        );
-        $result = $this->client->accounts->allExternalAccounts(
-            'acct_xxxxxxxxxxxxx',
-            ['object' => 'card', 'limit' => 3]
-        );
-        static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\ExternalAccount::class, $result->data[0]);
     }
 
     public function testCreatePerson()
@@ -2801,19 +2458,6 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
         $result = $this->client->reporting->reportTypes->all([]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Reporting\ReportType::class, $result->data[0]);
-    }
-
-    public function testCreateWebhookEndpoint()
-    {
-        static::markTestSkipped('stripe-mock issue');
-        $this->expectsRequest('post', '/v1/webhook_endpoints');
-        $result = $this->client->webhookEndpoints->create(
-            [
-                'url' => 'https://example.com/my/webhook/endpoint',
-                'enabled_events' => ['charge.failed', 'charge.succeeded'],
-            ]
-        );
-        static::assertInstanceOf(\Stripe\WebhookEndpoint::class, $result);
     }
 
     public function testRetrieveWebhookEndpoint()
