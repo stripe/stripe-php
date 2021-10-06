@@ -10,6 +10,9 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
 {
     use TestHelper;
 
+    /** @var null|\Stripe\StripeClient */
+    private $client;
+
     /** @before */
     protected function setUpService()
     {
