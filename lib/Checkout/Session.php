@@ -48,6 +48,7 @@ namespace Stripe\Checkout;
  * @property null|\Stripe\StripeObject $payment_method_options Payment-method-specific configuration for the PaymentIntent or SetupIntent of this CheckoutSession.
  * @property string[] $payment_method_types A list of the types of payment methods (e.g. card) this Checkout Session is allowed to accept.
  * @property string $payment_status The payment status of the Checkout Session, one of <code>paid</code>, <code>unpaid</code>, or <code>no_payment_required</code>. You can use this value to decide when to fulfill your customer's order.
+ * @property \Stripe\StripeObject $phone_number_collection
  * @property null|string $recovered_from The ID of the original expired Checkout Session that triggered the recovery flow.
  * @property null|string|\Stripe\SetupIntent $setup_intent The ID of the SetupIntent for Checkout Sessions in <code>setup</code> mode.
  * @property null|\Stripe\StripeObject $shipping Shipping information for this Checkout Session.
