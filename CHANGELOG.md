@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.98.0 - 2021-10-07
+* [#1187](https://github.com/stripe/stripe-php/pull/1187) API Updates
+  * Add support for `phone_number_collection` on `Checkout.Session`
+  * Add support for new value `customer_id` on enum `Radar.ValueList.item_type`
+  * Add support for new value `bbpos_wisepos_e` on enum `Terminal.Reader.device_type`
+
 ## 7.97.0 - 2021-09-16
 * [#1181](https://github.com/stripe/stripe-php/pull/1181) API Updates
   * Add support for `full_name_aliases` on `Person`
