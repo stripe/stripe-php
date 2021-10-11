@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.99.0 - 2021-10-11
+* [#1188](https://github.com/stripe/stripe-php/pull/1188) API Updates
+  * Add support for `list_payment_methods` method on resource `Customer`
+
 ## 7.98.0 - 2021-10-07
 * [#1187](https://github.com/stripe/stripe-php/pull/1187) API Updates
   * Add support for `phone_number_collection` on `Checkout.Session`
