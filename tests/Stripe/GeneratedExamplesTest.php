@@ -2500,6 +2500,6 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
             ['type' => 'card']
         );
         static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\Customer::class, $result->data[0]);
+        static::assertInstanceOf(\Stripe\PaymentMethod::class, $result->data[0]);
     }
 }
