@@ -2491,4 +2491,15 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
         $result = $this->client->webhookEndpoints->delete('we_xxxxxxxxxxxxx', []);
         static::assertInstanceOf(\Stripe\WebhookEndpoint::class, $result);
     }
+
+    public function testListPaymentMethodsCustomer()
+    {
+        $this->expectsRequest('get', '/v1/customers/cus_xyz/payment_methods');
+        $result = $this->client->customers->allPaymentMethods(
+            'cus_xyz',
+            ['type' => 'card']
+        );
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\PaymentMethod::class, $result->data[0]);
+    }
 }
