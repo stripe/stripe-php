@@ -1565,7 +1565,7 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
         static::assertInstanceOf(\Stripe\ApplicationFee::class, $result->data[0]);
     }
 
-    public function testCreateApplicationFeeRefund()
+    public function testCreateFeeRefund()
     {
         $this->expectsRequest(
             'post',
@@ -1575,10 +1575,10 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
             'fee_xxxxxxxxxxxxx',
             []
         );
-        static::assertInstanceOf(\Stripe\ApplicationFeeRefund::class, $result);
+        static::assertInstanceOf(\Stripe\FeeRefund::class, $result);
     }
 
-    public function testRetrieveApplicationFeeRefund()
+    public function testRetrieveFeeRefund()
     {
         $this->expectsRequest(
             'get',
@@ -1589,10 +1589,10 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
             'fr_xxxxxxxxxxxxx',
             []
         );
-        static::assertInstanceOf(\Stripe\ApplicationFeeRefund::class, $result);
+        static::assertInstanceOf(\Stripe\FeeRefund::class, $result);
     }
 
-    public function testUpdateApplicationFeeRefund()
+    public function testUpdateFeeRefund()
     {
         $this->expectsRequest(
             'post',
@@ -1603,10 +1603,10 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
             'fr_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
-        static::assertInstanceOf(\Stripe\ApplicationFeeRefund::class, $result);
+        static::assertInstanceOf(\Stripe\FeeRefund::class, $result);
     }
 
-    public function testListApplicationFeeRefund()
+    public function testListFeeRefund()
     {
         $this->expectsRequest(
             'get',
@@ -1617,7 +1617,7 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
             ['limit' => 3]
         );
         static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\ApplicationFeeRefund::class, $result->data[0]);
+        static::assertInstanceOf(\Stripe\FeeRefund::class, $result->data[0]);
     }
 
     public function testRetrieveCapability()
@@ -1646,6 +1646,20 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
             ['requested' => true]
         );
         static::assertInstanceOf(\Stripe\Capability::class, $result);
+    }
+
+    public function testListCapability()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/accounts/acct_xxxxxxxxxxxxx/capabilities'
+        );
+        $result = $this->client->accounts->allCapabilities(
+            'acct_xxxxxxxxxxxxx',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\Capability::class, $result->data[0]);
     }
 
     public function testListCountrySpec()
@@ -2500,6 +2514,6 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
             ['type' => 'card']
         );
         static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\PaymentMethod::class, $result->data[0]);
+        static::assertInstanceOf(\Stripe\Customer::class, $result->data[0]);
     }
 }
