@@ -6,7 +6,7 @@ namespace Stripe\Service\Radar;
  * @internal
  * @covers \Stripe\Service\Radar\ValueListService
  */
-final class ValueListServiceTest extends \PHPUnit\Framework\TestCase
+final class ValueListServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -34,7 +34,7 @@ final class ValueListServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/radar/value_lists'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Radar\ValueList::class, $resources->data[0]);
     }
 

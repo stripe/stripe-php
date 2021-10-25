@@ -6,7 +6,7 @@ namespace Stripe\Service;
  * @internal
  * @covers \Stripe\Service\SubscriptionItemService
  */
-final class SubscriptionItemServiceTest extends \PHPUnit\Framework\TestCase
+final class SubscriptionItemServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -39,7 +39,7 @@ final class SubscriptionItemServiceTest extends \PHPUnit\Framework\TestCase
         $resources = $this->service->all([
             'subscription' => 'sub_123',
         ]);
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SubscriptionItem::class, $resources->data[0]);
     }
 
@@ -109,7 +109,7 @@ final class SubscriptionItemServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/subscription_items/' . self::TEST_RESOURCE_ID . '/usage_record_summaries'
         );
         $resources = $this->service->allUsageRecordSummaries(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\UsageRecordSummary::class, $resources->data[0]);
     }
 }

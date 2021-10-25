@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\OAuth
  */
-final class OAuthTest extends \PHPUnit\Framework\TestCase
+final class OAuthTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -39,7 +39,7 @@ final class OAuthTest extends \PHPUnit\Framework\TestCase
     public function testRaisesAuthenticationErrorWhenNoClientId()
     {
         $this->expectException(\Stripe\Exception\AuthenticationException::class);
-        $this->expectExceptionMessageRegExp('#No client_id provided#');
+        $this->compatExpectExceptionMessageMatches('#No client_id provided#');
 
         Stripe::setClientId(null);
         OAuth::authorizeUrl();

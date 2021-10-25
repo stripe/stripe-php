@@ -6,7 +6,7 @@ namespace Stripe\Radar;
  * @internal
  * @covers \Stripe\Radar\EarlyFraudWarning
  */
-final class EarlyFraudWarningTest extends \PHPUnit\Framework\TestCase
+final class EarlyFraudWarningTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -19,7 +19,7 @@ final class EarlyFraudWarningTest extends \PHPUnit\Framework\TestCase
             '/v1/radar/early_fraud_warnings'
         );
         $resources = EarlyFraudWarning::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Radar\EarlyFraudWarning::class, $resources->data[0]);
     }
 

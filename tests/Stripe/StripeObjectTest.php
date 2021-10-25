@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\StripeObject
  */
-final class StripeObjectTest extends \PHPUnit\Framework\TestCase
+final class StripeObjectTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -107,7 +107,7 @@ final class StripeObjectTest extends \PHPUnit\Framework\TestCase
 
         $converted = $s->toArray();
 
-        static::assertInternalType('array', $converted);
+        static::compatAssertIsArray($converted);
         static::assertSame($array, $converted);
     }
 

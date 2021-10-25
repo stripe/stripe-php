@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\SKU
  */
-final class SKUTest extends \PHPUnit\Framework\TestCase
+final class SKUTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class SKUTest extends \PHPUnit\Framework\TestCase
             '/v1/skus'
         );
         $resources = SKU::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SKU::class, $resources->data[0]);
     }
 

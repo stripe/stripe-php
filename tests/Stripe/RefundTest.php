@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Refund
  */
-final class RefundTest extends \PHPUnit\Framework\TestCase
+final class RefundTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class RefundTest extends \PHPUnit\Framework\TestCase
             '/v1/refunds'
         );
         $resources = Refund::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Refund::class, $resources->data[0]);
     }
 

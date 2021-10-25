@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @coversNothing
  */
-final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
+final class GeneratedExamplesTest extends \Stripe\TestCase
 {
     use TestHelper;
 

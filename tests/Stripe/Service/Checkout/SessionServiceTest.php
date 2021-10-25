@@ -6,7 +6,7 @@ namespace Stripe\Service\Checkout;
  * @internal
  * @covers \Stripe\Service\Checkout\SessionService
  */
-final class SessionServiceTest extends \PHPUnit\Framework\TestCase
+final class SessionServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -34,7 +34,7 @@ final class SessionServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/checkout/sessions'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Checkout\Session::class, $resources->data[0]);
     }
 

@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\TaxId
  */
-final class TaxIdTest extends \PHPUnit\Framework\TestCase
+final class TaxIdTest extends \Stripe\TestCase
 {
     use TestHelper;
 

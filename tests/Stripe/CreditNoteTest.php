@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\CreditNote
  */
-final class CreditNoteTest extends \PHPUnit\Framework\TestCase
+final class CreditNoteTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class CreditNoteTest extends \PHPUnit\Framework\TestCase
             '/v1/credit_notes'
         );
         $resources = CreditNote::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\CreditNote::class, $resources->data[0]);
     }
 
@@ -103,6 +103,6 @@ final class CreditNoteTest extends \PHPUnit\Framework\TestCase
             '/v1/credit_notes/' . self::TEST_RESOURCE_ID . '/lines'
         );
         $resources = CreditNote::allLines(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
     }
 }

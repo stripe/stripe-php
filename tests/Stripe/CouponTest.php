@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Coupon
  */
-final class CouponTest extends \PHPUnit\Framework\TestCase
+final class CouponTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class CouponTest extends \PHPUnit\Framework\TestCase
             '/v1/coupons'
         );
         $resources = Coupon::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Coupon::class, $resources->data[0]);
     }
 

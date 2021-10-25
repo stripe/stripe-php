@@ -6,7 +6,7 @@ namespace Stripe\Service;
  * @internal
  * @covers \Stripe\Service\BalanceService
  */
-final class BalanceServiceTest extends \PHPUnit\Framework\TestCase
+final class BalanceServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 

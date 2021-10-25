@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\ThreeDSecure
  */
-final class ThreeDSecureTest extends \PHPUnit\Framework\TestCase
+final class ThreeDSecureTest extends \Stripe\TestCase
 {
     use TestHelper;
 

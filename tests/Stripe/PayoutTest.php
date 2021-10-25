@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Payout
  */
-final class PayoutTest extends \PHPUnit\Framework\TestCase
+final class PayoutTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class PayoutTest extends \PHPUnit\Framework\TestCase
             '/v1/payouts'
         );
         $resources = Payout::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Payout::class, $resources->data[0]);
     }
 

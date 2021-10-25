@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Dispute
  */
-final class DisputeTest extends \PHPUnit\Framework\TestCase
+final class DisputeTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class DisputeTest extends \PHPUnit\Framework\TestCase
             '/v1/disputes'
         );
         $resources = Dispute::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Dispute::class, $resources->data[0]);
     }
 

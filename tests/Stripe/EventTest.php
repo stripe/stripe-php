@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Event
  */
-final class EventTest extends \PHPUnit\Framework\TestCase
+final class EventTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class EventTest extends \PHPUnit\Framework\TestCase
             '/v1/events'
         );
         $resources = Event::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Event::class, $resources->data[0]);
     }
 

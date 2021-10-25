@@ -6,7 +6,7 @@ namespace Stripe\Service;
  * @internal
  * @covers \Stripe\Service\InvoiceService
  */
-final class InvoiceServiceTest extends \PHPUnit\Framework\TestCase
+final class InvoiceServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -34,7 +34,7 @@ final class InvoiceServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/invoices'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Invoice::class, $resources->data[0]);
     }
 
@@ -45,7 +45,7 @@ final class InvoiceServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/invoices/' . self::TEST_RESOURCE_ID . '/lines'
         );
         $resources = $this->service->allLines(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
     }
 
     public function testCreate()
@@ -137,7 +137,7 @@ final class InvoiceServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/invoices/upcoming/lines'
         );
         $resources = $this->service->upcomingLines();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\InvoiceLineItem::class, $resources->data[0]);
     }
 

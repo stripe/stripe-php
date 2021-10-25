@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Recipient
  */
-final class RecipientTest extends \PHPUnit\Framework\TestCase
+final class RecipientTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class RecipientTest extends \PHPUnit\Framework\TestCase
             '/v1/recipients'
         );
         $resources = Recipient::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Recipient::class, $resources->data[0]);
     }
 

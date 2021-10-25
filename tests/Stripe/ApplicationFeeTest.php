@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\ApplicationFee
  */
-final class ApplicationFeeTest extends \PHPUnit\Framework\TestCase
+final class ApplicationFeeTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -20,7 +20,7 @@ final class ApplicationFeeTest extends \PHPUnit\Framework\TestCase
             '/v1/application_fees'
         );
         $resources = ApplicationFee::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\ApplicationFee::class, $resources->data[0]);
     }
 
@@ -71,7 +71,7 @@ final class ApplicationFeeTest extends \PHPUnit\Framework\TestCase
             '/v1/application_fees/' . self::TEST_RESOURCE_ID . '/refunds'
         );
         $resources = ApplicationFee::allRefunds(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\ApplicationFeeRefund::class, $resources->data[0]);
     }
 }

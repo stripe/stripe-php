@@ -6,7 +6,7 @@ namespace Stripe\Service;
  * @internal
  * @covers \Stripe\Service\CountrySpecService
  */
-final class CountrySpecServiceTest extends \PHPUnit\Framework\TestCase
+final class CountrySpecServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -34,7 +34,7 @@ final class CountrySpecServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/country_specs'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\CountrySpec::class, $resources->data[0]);
     }
 

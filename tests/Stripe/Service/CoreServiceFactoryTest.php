@@ -6,7 +6,7 @@ namespace Stripe\Service;
  * @internal
  * @covers \Stripe\Service\CoreServiceFactory
  */
-final class CoreServiceFactoryTest extends \PHPUnit\Framework\TestCase
+final class CoreServiceFactoryTest extends \Stripe\TestCase
 {
     /** @var \Stripe\StripeClient */
     private $client;

@@ -67,5 +67,6 @@ if (\getenv('IS_RUNNING_PHPUNIT')) {
     checkStripeMockReachable();
 }
 
+require_once __DIR__ . '/TestCase.php';
 require_once __DIR__ . '/TestHelper.php';
 require_once __DIR__ . '/TestServer.php';

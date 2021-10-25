@@ -6,7 +6,7 @@ namespace Stripe\Checkout;
  * @internal
  * @covers \Stripe\Checkout\Session
  */
-final class SessionTest extends \PHPUnit\Framework\TestCase
+final class SessionTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -59,7 +59,7 @@ final class SessionTest extends \PHPUnit\Framework\TestCase
             '/v1/checkout/sessions/' . self::TEST_RESOURCE_ID . '/line_items'
         );
         $resources = Session::allLineItems(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\LineItem::class, $resources->data[0]);
     }
 }

@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Token
  */
-final class TokenTest extends \PHPUnit\Framework\TestCase
+final class TokenTest extends \Stripe\TestCase
 {
     use TestHelper;
 

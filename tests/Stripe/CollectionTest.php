@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Collection
  */
-final class CollectionTest extends \PHPUnit\Framework\TestCase
+final class CollectionTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -28,7 +28,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
     public function testOffsetGetNumericIndex()
     {
         $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('/You tried to access the \\d index/');
+        $this->compatExpectExceptionMessageMatches('/You tried to access the \\d index/');
 
         $this->fixture[0];
     }
@@ -50,7 +50,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
         );
 
         $resources = $this->fixture->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
     }
 
     public function testCanRetrieve()

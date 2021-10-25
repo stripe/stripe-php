@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\ErrorObject
  */
-final class ErrorObjectTest extends \PHPUnit\Framework\TestCase
+final class ErrorObjectTest extends \Stripe\TestCase
 {
     use TestHelper;
 

@@ -6,7 +6,7 @@ namespace Stripe\Service;
  * @internal
  * @covers \Stripe\Service\BalanceTransactionService
  */
-final class BalanceTransactionServiceTest extends \PHPUnit\Framework\TestCase
+final class BalanceTransactionServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -34,7 +34,7 @@ final class BalanceTransactionServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/balance_transactions'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\BalanceTransaction::class, $resources->data[0]);
     }
 

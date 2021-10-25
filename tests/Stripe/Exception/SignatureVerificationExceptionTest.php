@@ -6,7 +6,7 @@ namespace Stripe\Exception;
  * @internal
  * @covers \Stripe\Exception\SignatureVerificationException
  */
-final class SignatureVerificationExceptionTest extends \PHPUnit\Framework\TestCase
+final class SignatureVerificationExceptionTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 

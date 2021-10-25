@@ -29,3 +29,6 @@ clover.xml
 # Ignore phpDocumentor's local config and artifacts
 .phpdoc/*
 phpdoc.xml
+
+# Ignore cached PHPUnit results.
+.phpunit.result.cache

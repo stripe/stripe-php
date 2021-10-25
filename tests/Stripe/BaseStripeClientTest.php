@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\BaseStripeClient
  */
-final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
+final class BaseStripeClientTest extends \Stripe\TestCase
 {
     /** @var \ReflectionProperty */
     private $optsReflector;
@@ -95,7 +95,7 @@ final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
     public function testRequestThrowsIfOptsIsString()
     {
         $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('#Do not pass a string for request options.#');
+        $this->compatExpectExceptionMessageMatches('#Do not pass a string for request options.#');
 
         $client = new BaseStripeClient(['api_base' => MOCK_URL]);
         $charge = $client->request('get', '/v1/charges/ch_123', [], 'foo');
@@ -181,7 +181,7 @@ final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
 
     public function testRequestWithOptsInParamsWarns()
     {
-        $this->expectException(\PHPUnit_Framework_Error_Warning::class);
+        $this->expectException(static::compatWarningClass());
         $this->expectExceptionMessage('Options found in $params: api_key, stripe_account, api_base. Options should be '
             . 'passed in their own array after $params. (HINT: pass an empty array to $params if you do not have any.)');
         $client = new BaseStripeClient([

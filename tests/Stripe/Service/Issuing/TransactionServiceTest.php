@@ -6,7 +6,7 @@ namespace Stripe\Service\Issuing;
  * @internal
  * @covers \Stripe\Service\Issuing\TransactionService
  */
-final class TransactionServiceTest extends \PHPUnit\Framework\TestCase
+final class TransactionServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -34,7 +34,7 @@ final class TransactionServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/issuing/transactions'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Issuing\Transaction::class, $resources->data[0]);
     }
 

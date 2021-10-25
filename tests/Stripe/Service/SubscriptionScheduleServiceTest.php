@@ -6,7 +6,7 @@ namespace Stripe\Service;
  * @internal
  * @covers \Stripe\Service\SubscriptionScheduleService
  */
-final class SubscriptionScheduleServiceTest extends \PHPUnit\Framework\TestCase
+final class SubscriptionScheduleServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -35,7 +35,7 @@ final class SubscriptionScheduleServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/subscription_schedules'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resources->data[0]);
     }
 

@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @coversNothing
  */
-final class StripeTelemetryTest extends \PHPUnit\Framework\TestCase
+final class StripeTelemetryTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -21,7 +21,7 @@ final class StripeTelemetryTest extends \PHPUnit\Framework\TestCase
       "url": "/v1/accounts"
     }';
 
-    protected function setUp()
+    protected function setUp() : void
     {
         // clear static telemetry data
         ApiRequestor::resetTelemetry();
