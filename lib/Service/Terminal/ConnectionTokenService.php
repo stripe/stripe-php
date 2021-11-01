@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Terminal;
@@ -22,4 +21,5 @@ class ConnectionTokenService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', '/v1/terminal/connection_tokens', $params, $opts);
     }
+
 }

@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -130,9 +129,9 @@ class Account extends ApiResource
             $update = ($v instanceof StripeObject) ? $v->serializeParameters() : $v;
 
             if ([] !== $update) {
-                if (!$originalValue
-                    || !\array_key_exists($i, $originalValue)
-                    || ($update !== $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
+                if (!$originalValue ||
+                    !\array_key_exists($i, $originalValue) ||
+                    ($update !== $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
                     $updateArr[$i] = $update;
                 }
             }
@@ -213,6 +212,7 @@ class Account extends ApiResource
         return $this;
     }
 
+    
     /*
      * Capabilities methods
      * We can not add the capabilities() method today as the Account object already has a
@@ -264,7 +264,6 @@ class Account extends ApiResource
     {
         return self::_updateNestedResource($id, static::PATH_CAPABILITIES, $capabilityId, $params, $opts);
     }
-
     const PATH_EXTERNAL_ACCOUNTS = '/external_accounts';
 
     /**
@@ -339,7 +338,6 @@ class Account extends ApiResource
     {
         return self::_updateNestedResource($id, static::PATH_EXTERNAL_ACCOUNTS, $externalAccountId, $params, $opts);
     }
-
     const PATH_LOGIN_LINKS = '/login_links';
 
     /**
@@ -355,7 +353,6 @@ class Account extends ApiResource
     {
         return self::_createNestedResource($id, static::PATH_LOGIN_LINKS, $params, $opts);
     }
-
     const PATH_PERSONS = '/persons';
 
     /**

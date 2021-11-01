@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Checkout;
@@ -7,8 +6,9 @@ namespace Stripe\Checkout;
 /**
  * A Checkout Session represents your customer's session as they pay for one-time
  * purchases or subscriptions through <a
- * href="https://stripe.com/docs/payments/checkout">Checkout</a>. We recommend
- * creating a new Session each time your customer attempts to pay.
+ * href="https://stripe.com/docs/payments/checkout">Checkout</a> or <a
+ * href="https://stripe.com/docs/payments/payment-links">Payment Links</a>. We
+ * recommend creating a new Session each time your customer attempts to pay.
  *
  * Once payment is successful, the Checkout Session will contain a reference to the
  * <a href="https://stripe.com/docs/api/customers">Customer</a>, and either the
@@ -84,6 +84,7 @@ class Session extends \Stripe\ApiResource
     const SUBMIT_TYPE_BOOK = 'book';
     const SUBMIT_TYPE_DONATE = 'donate';
     const SUBMIT_TYPE_PAY = 'pay';
+
 
     const PATH_LINE_ITEMS = '/line_items';
 

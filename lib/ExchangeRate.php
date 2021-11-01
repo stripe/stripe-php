@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -27,4 +26,5 @@ class ExchangeRate extends ApiResource
 
     use ApiOperations\All;
     use ApiOperations\Retrieve;
+
 }

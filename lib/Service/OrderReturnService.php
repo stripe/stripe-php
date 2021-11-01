@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -39,4 +38,5 @@ class OrderReturnService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v1/order_returns/%s', $id), $params, $opts);
     }
+
 }

@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Checkout;
@@ -70,4 +69,5 @@ class SessionService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v1/checkout/sessions/%s', $id), $params, $opts);
     }
+
 }

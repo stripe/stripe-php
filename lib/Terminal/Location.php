@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Terminal;
@@ -7,8 +6,8 @@ namespace Stripe\Terminal;
 /**
  * A Location represents a grouping of readers.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/terminal/creating-locations">Fleet Management</a>.
+ * Related guide: <a href="https://stripe.com/docs/terminal/fleet/locations">Fleet
+ * Management</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -26,4 +25,5 @@ class Location extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Delete;
     use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
+
 }

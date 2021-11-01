@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -122,4 +121,5 @@ class ApplicationFeeService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/application_fees/%s/refunds/%s', $parentId, $id), $params, $opts);
     }
+
 }
