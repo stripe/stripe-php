@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -46,4 +45,5 @@ class TaxRate extends ApiResource
     const TAX_TYPE_RST = 'rst';
     const TAX_TYPE_SALES_TAX = 'sales_tax';
     const TAX_TYPE_VAT = 'vat';
+
 }

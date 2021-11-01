@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -156,6 +155,7 @@ class Invoice extends ApiResource
      */
     public static function allLines($id, $params = null, $opts = null)
     {
+
         return self::_allNestedResources($id, static::PATH_LINES, $params, $opts);
     }
 
@@ -261,4 +261,5 @@ class Invoice extends ApiResource
 
         return $this;
     }
+
 }

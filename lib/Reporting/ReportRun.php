@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Reporting;
@@ -34,4 +33,5 @@ class ReportRun extends \Stripe\ApiResource
     use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Create;
     use \Stripe\ApiOperations\Retrieve;
+
 }

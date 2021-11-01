@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -67,4 +66,5 @@ class FileLinkService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/file_links/%s', $id), $params, $opts);
     }
+
 }

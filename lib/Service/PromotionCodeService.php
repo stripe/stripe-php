@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -69,4 +68,5 @@ class PromotionCodeService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/promotion_codes/%s', $id), $params, $opts);
     }
+
 }

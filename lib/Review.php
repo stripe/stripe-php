@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -63,4 +62,5 @@ class Review extends ApiResource
 
         return $this;
     }
+
 }

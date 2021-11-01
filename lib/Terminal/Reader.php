@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Terminal;
@@ -8,7 +7,7 @@ namespace Stripe\Terminal;
  * A Reader represents a physical device for accepting payment details.
  *
  * Related guide: <a
- * href="https://stripe.com/docs/terminal/readers/connecting">Connecting to a
+ * href="https://stripe.com/docs/terminal/payments/connect-reader">Connecting to a
  * Reader</a>.
  *
  * @property string $id Unique identifier for the object.
@@ -32,4 +31,5 @@ class Reader extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Delete;
     use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
+
 }

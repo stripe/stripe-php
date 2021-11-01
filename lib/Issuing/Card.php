@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Issuing;
@@ -56,4 +55,5 @@ class Card extends \Stripe\ApiResource
 
         return $obj;
     }
+
 }

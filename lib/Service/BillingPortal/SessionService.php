@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\BillingPortal;
@@ -20,4 +19,5 @@ class SessionService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', '/v1/billing_portal/sessions', $params, $opts);
     }
+
 }
