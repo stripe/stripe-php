@@ -1464,6 +1464,20 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
         static::assertInstanceOf(\Stripe\UsageRecord::class, $result);
     }
 
+    public function testListUsageRecordSummary()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/subscription_items/si_xxxxxxxxxxxxx/usage_record_summaries'
+        );
+        $result = $this->client->subscriptionItems->allUsageRecordSummaries(
+            'si_xxxxxxxxxxxxx',
+            ['limit' => 3]
+        );
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\UsageRecordSummary::class, $result->data[0]);
+    }
+
     public function testCreateAccount()
     {
         $this->expectsRequest('post', '/v1/accounts');
@@ -1646,6 +1660,20 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
             ['requested' => true]
         );
         static::assertInstanceOf(\Stripe\Capability::class, $result);
+    }
+
+    public function testListCapability()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/accounts/acct_xxxxxxxxxxxxx/capabilities'
+        );
+        $result = $this->client->accounts->allCapabilities(
+            'acct_xxxxxxxxxxxxx',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\Capability::class, $result->data[0]);
     }
 
     public function testListCountrySpec()
@@ -1860,6 +1888,27 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
         static::assertInstanceOf(\Stripe\TransferReversal::class, $result->data[0]);
     }
 
+    public function testRetrieveEarlyFraudWarning()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/radar/early_fraud_warnings/issfr_xxxxxxxxxxxxx'
+        );
+        $result = $this->client->radar->earlyFraudWarnings->retrieve(
+            'issfr_xxxxxxxxxxxxx',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Radar\EarlyFraudWarning::class, $result);
+    }
+
+    public function testListEarlyFraudWarning()
+    {
+        $this->expectsRequest('get', '/v1/radar/early_fraud_warnings');
+        $result = $this->client->radar->earlyFraudWarnings->all(['limit' => 3]);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\Radar\EarlyFraudWarning::class, $result->data[0]);
+    }
+
     public function testApproveReview()
     {
         $this->expectsRequest('post', '/v1/reviews/prv_xxxxxxxxxxxxx/approve');
@@ -1928,6 +1977,51 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
         $result = $this->client->radar->valueLists->all(['limit' => 3]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Radar\ValueList::class, $result->data[0]);
+    }
+
+    public function testCreateValueListItem()
+    {
+        $this->expectsRequest('post', '/v1/radar/value_list_items');
+        $result = $this->client->radar->valueListItems->create(
+            ['value_list' => 'rsl_xxxxxxxxxxxxx', 'value' => '1.2.3.4']
+        );
+        static::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $result);
+    }
+
+    public function testRetrieveValueListItem()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/radar/value_list_items/rsli_xxxxxxxxxxxxx'
+        );
+        $result = $this->client->radar->valueListItems->retrieve(
+            'rsli_xxxxxxxxxxxxx',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $result);
+    }
+
+    public function testDeleteValueListItem()
+    {
+        $this->expectsRequest(
+            'delete',
+            '/v1/radar/value_list_items/rsli_xxxxxxxxxxxxx'
+        );
+        $result = $this->client->radar->valueListItems->delete(
+            'rsli_xxxxxxxxxxxxx',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $result);
+    }
+
+    public function testListValueListItem()
+    {
+        $this->expectsRequest('get', '/v1/radar/value_list_items');
+        $result = $this->client->radar->valueListItems->all(
+            ['limit' => 3, 'value_list' => 'rsl_xxxxxxxxxxxxx']
+        );
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $result->data[0]);
     }
 
     public function testRetrieveAuthorization()
@@ -2406,6 +2500,27 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
         static::assertInstanceOf(\Stripe\SKU::class, $result);
     }
 
+    public function testRetrieveScheduledQueryRun()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/sigma/scheduled_query_runs/sqr_xxxxxxxxxxxxx'
+        );
+        $result = $this->client->sigma->scheduledQueryRuns->retrieve(
+            'sqr_xxxxxxxxxxxxx',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Sigma\ScheduledQueryRun::class, $result);
+    }
+
+    public function testListScheduledQueryRun()
+    {
+        $this->expectsRequest('get', '/v1/sigma/scheduled_query_runs');
+        $result = $this->client->sigma->scheduledQueryRuns->all(['limit' => 3]);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\Sigma\ScheduledQueryRun::class, $result->data[0]);
+    }
+
     public function testCreateReportRun()
     {
         $this->expectsRequest('post', '/v1/reporting/report_runs');
@@ -2490,16 +2605,5 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
         $this->expectsRequest('delete', '/v1/webhook_endpoints/we_xxxxxxxxxxxxx');
         $result = $this->client->webhookEndpoints->delete('we_xxxxxxxxxxxxx', []);
         static::assertInstanceOf(\Stripe\WebhookEndpoint::class, $result);
-    }
-
-    public function testListPaymentMethodsCustomer()
-    {
-        $this->expectsRequest('get', '/v1/customers/cus_xyz/payment_methods');
-        $result = $this->client->customers->allPaymentMethods(
-            'cus_xyz',
-            ['type' => 'card']
-        );
-        static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\PaymentMethod::class, $result->data[0]);
     }
 }
