@@ -3,10 +3,10 @@
 
 namespace Stripe\Service;
 
-class FileLinkService extends \Stripe\Service\AbstractService
+class ShippingRateService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of file links.
+     * Returns a list of your shipping rates.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -17,26 +17,26 @@ class FileLinkService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->requestCollection('get', '/v1/file_links', $params, $opts);
+        return $this->requestCollection('get', '/v1/shipping_rates', $params, $opts);
     }
 
     /**
-     * Creates a new file link object.
+     * Creates a new shipping rate object.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\FileLink
+     * @return \Stripe\ShippingRate
      */
     public function create($params = null, $opts = null)
     {
-        return $this->request('post', '/v1/file_links', $params, $opts);
+        return $this->request('post', '/v1/shipping_rates', $params, $opts);
     }
 
     /**
-     * Retrieves the file link with the given ID.
+     * Returns the shipping rate object with the given ID.
      *
      * @param string $id
      * @param null|array $params
@@ -44,15 +44,15 @@ class FileLinkService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\FileLink
+     * @return \Stripe\ShippingRate
      */
     public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v1/file_links/%s', $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v1/shipping_rates/%s', $id), $params, $opts);
     }
 
     /**
-     * Updates an existing file link object. Expired links can no longer be updated.
+     * Updates an existing shipping rate object.
      *
      * @param string $id
      * @param null|array $params
@@ -60,11 +60,11 @@ class FileLinkService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\FileLink
+     * @return \Stripe\ShippingRate
      */
     public function update($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v1/file_links/%s', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v1/shipping_rates/%s', $id), $params, $opts);
     }
 
 }

@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -31,6 +30,7 @@ class Balance extends SingletonApiResource
 {
     const OBJECT_NAME = 'balance';
 
+
     /**
      * @param null|array|string $opts
      *
@@ -42,4 +42,5 @@ class Balance extends SingletonApiResource
     {
         return self::_singletonRetrieve($opts);
     }
+
 }

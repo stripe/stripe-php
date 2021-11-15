@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -63,4 +62,5 @@ class FileService extends \Stripe\Service\AbstractService
 
         return $this->request('post', '/v1/files', $flatParams, $opts);
     }
+
 }

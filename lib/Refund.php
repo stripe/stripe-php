@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -52,7 +51,8 @@ class Refund extends ApiResource
     const STATUS_SUCCEEDED = 'succeeded';
 
     /**
-     * @deprecated use FAILURE_REASON_EXPIRED_OR_CANCELED_CARD instead
+     * @deprecated Use FAILURE_REASON_EXPIRED_OR_CANCELED_CARD instead.
      */
     const FAILURE_REASON = 'expired_or_canceled_card';
+
 }

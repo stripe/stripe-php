@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -48,8 +47,8 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * Capture the funds of an existing uncaptured PaymentIntent when its status is
      * <code>requires_capture</code>.
      *
-     * Uncaptured PaymentIntents will be canceled exactly seven days after they are
-     * created.
+     * Uncaptured PaymentIntents will be canceled a set number of days after they are
+     * created (7 by default).
      *
      * Learn more about <a href="/docs/payments/capture-later">separate authorization
      * and capture</a>.
@@ -178,4 +177,5 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/payment_intents/%s', $id), $params, $opts);
     }
+
 }

@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Identity;
@@ -16,8 +15,8 @@ class IdentityServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
-        'verificationReports' => VerificationReportService::class,
-        'verificationSessions' => VerificationSessionService::class,
+    'verificationReports' => VerificationReportService::class,
+    'verificationSessions' => VerificationSessionService::class,
     ];
 
     protected function getServiceClass($name)
