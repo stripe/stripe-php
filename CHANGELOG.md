@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.101.0 - 2021-11-16
+* [#1203](https://github.com/stripe/stripe-php/pull/1203) API Updates
+  * Add support for new resource `ShippingRate`
+  * Add support for `shipping_options` and `shipping_rate` on `Checkout.Session`
+  * Add support for `expire` method on resource `Checkout.Session`
+  * Add support for `status` on `Checkout.Session`
+  
+
 ## 7.100.0 - 2021-10-11
 * [#1190](https://github.com/stripe/stripe-php/pull/1190) API Updates
   * Add support for `klarna` on `PaymentMethod`.
