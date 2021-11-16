@@ -2606,4 +2606,57 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
         $result = $this->client->webhookEndpoints->delete('we_xxxxxxxxxxxxx', []);
         static::assertInstanceOf(\Stripe\WebhookEndpoint::class, $result);
     }
+
+    public function testExpireSession()
+    {
+        $this->expectsRequest('post', '/v1/checkout/sessions/sess_xyz/expire');
+        $result = $this->client->checkout->sessions->expire('sess_xyz', []);
+        static::assertInstanceOf(\Stripe\Checkout\Session::class, $result);
+    }
+
+    public function testCreateShippingRate()
+    {
+        $this->expectsRequest('post', '/v1/shipping_rates');
+        $result = $this->client->shippingRates->create(
+            [
+                'display_name' => 'Sample Shipper',
+                'fixed_amount' => ['currency' => 'usd', 'amount' => 400],
+                'type' => 'fixed_amount',
+            ]
+        );
+        static::assertInstanceOf(\Stripe\ShippingRate::class, $result);
+    }
+
+    public function testListShippingRate()
+    {
+        $this->expectsRequest('get', '/v1/shipping_rates');
+        $result = $this->client->shippingRates->all([]);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\ShippingRate::class, $result->data[0]);
+    }
+
+    public function testCreateSession3()
+    {
+        $this->expectsRequest('post', '/v1/checkout/sessions');
+        $result = $this->client->checkout->sessions->create(
+            [
+                'success_url' => 'https://example.com/success',
+                'cancel_url' => 'https://example.com/cancel',
+                'mode' => 'payment',
+                'shipping_options' => [
+                    ['shipping_rate' => 'shr_standard'],
+                    [
+                        'shipping_rate_data' => [
+                            'display_name' => 'Standard',
+                            'delivery_estimate' => [
+                                'minimum' => ['unit' => 'day', 'value' => 5],
+                                'maximum' => ['unit' => 'day', 'value' => 7],
+                            ],
+                        ],
+                    ],
+                ],
+            ]
+        );
+        static::assertInstanceOf(\Stripe\Checkout\Session::class, $result);
+    }
 }
