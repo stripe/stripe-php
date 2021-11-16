@@ -48,6 +48,7 @@ namespace Stripe\Service;
  * @property ReviewService $reviews
  * @property SetupAttemptService $setupAttempts
  * @property SetupIntentService $setupIntents
+ * @property ShippingRateService $shippingRates
  * @property Sigma\SigmaServiceFactory $sigma
  * @property SkuService $skus
  * @property SourceService $sources
@@ -109,6 +110,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'reviews' => ReviewService::class,
         'setupAttempts' => SetupAttemptService::class,
         'setupIntents' => SetupIntentService::class,
+        'shippingRates' => ShippingRateService::class,
         'sigma' => Sigma\SigmaServiceFactory::class,
         'skus' => SkuService::class,
         'sources' => SourceService::class,

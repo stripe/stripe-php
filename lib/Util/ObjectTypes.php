@@ -79,6 +79,7 @@ class ObjectTypes
         \Stripe\Review::OBJECT_NAME => \Stripe\Review::class,
         \Stripe\SetupAttempt::OBJECT_NAME => \Stripe\SetupAttempt::class,
         \Stripe\SetupIntent::OBJECT_NAME => \Stripe\SetupIntent::class,
+        \Stripe\ShippingRate::OBJECT_NAME => \Stripe\ShippingRate::class,
         \Stripe\Sigma\ScheduledQueryRun::OBJECT_NAME => \Stripe\Sigma\ScheduledQueryRun::class,
         \Stripe\SKU::OBJECT_NAME => \Stripe\SKU::class,
         \Stripe\Source::OBJECT_NAME => \Stripe\Source::class,

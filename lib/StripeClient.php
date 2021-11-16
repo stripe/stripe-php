@@ -48,6 +48,7 @@ namespace Stripe;
  * @property \Stripe\Service\ReviewService $reviews
  * @property \Stripe\Service\SetupAttemptService $setupAttempts
  * @property \Stripe\Service\SetupIntentService $setupIntents
+ * @property \Stripe\Service\ShippingRateService $shippingRates
  * @property \Stripe\Service\Sigma\SigmaServiceFactory $sigma
  * @property \Stripe\Service\SkuService $skus
  * @property \Stripe\Service\SourceService $sources
