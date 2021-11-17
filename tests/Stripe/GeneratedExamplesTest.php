@@ -2659,4 +2659,17 @@ final class GeneratedExamplesTest extends \PHPUnit\Framework\TestCase
         );
         static::assertInstanceOf(\Stripe\Checkout\Session::class, $result);
     }
+
+    public function testCreatePaymentIntent2()
+    {
+        $this->expectsRequest('post', '/v1/payment_intents');
+        $result = $this->client->paymentIntents->create(
+            [
+                'amount' => 1099,
+                'currency' => 'eur',
+                'automatic_payment_methods' => ['enabled' => true],
+            ]
+        );
+        static::assertInstanceOf(\Stripe\PaymentIntent::class, $result);
+    }
 }
