@@ -1,9 +1,12 @@
 # Changelog
 
+## 7.103.0 - 2021-11-19
+* [#1206](https://github.com/stripe/stripe-php/pull/1206) API Updates
+  * Add support for new value `jct` on enum `TaxRate.tax_type`
+
 ## 7.102.0 - 2021-11-17
 * [#1205](https://github.com/stripe/stripe-php/pull/1205) API Updates
   * Add support for `automatic_payment_methods` on `PaymentIntent`
-  
 
 ## 7.101.0 - 2021-11-16
 * [#1203](https://github.com/stripe/stripe-php/pull/1203) API Updates
@@ -11,7 +14,6 @@
   * Add support for `shipping_options` and `shipping_rate` on `Checkout.Session`
   * Add support for `expire` method on resource `Checkout.Session`
   * Add support for `status` on `Checkout.Session`
-  
 
 ## 7.100.0 - 2021-10-11
 * [#1190](https://github.com/stripe/stripe-php/pull/1190) API Updates
