@@ -21,7 +21,10 @@ final class StripeTelemetryTest extends \Stripe\TestCase
       "url": "/v1/accounts"
     }';
 
-    protected function setUp() : void
+    /**
+     * @before
+     */
+    protected function setUpTelemetry()
     {
         // clear static telemetry data
         ApiRequestor::resetTelemetry();
@@ -29,6 +32,8 @@ final class StripeTelemetryTest extends \Stripe\TestCase
 
     public function testNoTelemetrySentIfNotEnabled()
     {
+        Stripe::setEnableTelemetry(false);
+
         $requestheaders = null;
 
         $stub = $this
