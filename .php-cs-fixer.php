@@ -1,6 +1,6 @@
 <?php
 
-$config = PhpCsFixer\Config::create();
+$config = new PhpCsFixer\Config();
 $config->setRiskyAllowed(true);
 $config->setRules([
     // Rulesets
@@ -13,8 +13,11 @@ $config->setRules([
     // Additional rules
     'fopen_flags' => true,
     'linebreak_after_opening_tag' => true,
-    'native_constant_invocation' => true,
-    'native_function_invocation' => true,
+    // This one is non-deterministic based on what environment you are running it in and what `get_defined_constants` returns.
+    'native_constant_invocation' => false,
+    'native_function_invocation' => [
+        "strict" => false,
+    ],
 
     // --- Diffs from @PhpCsFixer / @PhpCsFixer:risky ---
 
@@ -41,4 +44,14 @@ $config->setRules([
     // `StripeObject`s for metadata. We can't use `self` there because it
     // needs to be a raw `StripeObject`.
     'self_accessor' => false,
+
+    // Visibility annotations are not supported by php5.6
+    'visibility_required' => false,
+
+    // Apparently "uninitialized" is distinct from "null" in some versions of PHP
+    // so I am defensively disabling this rule so as to not cause breaking changes
+    // but we can feel free to remove it in a major version (or maybe in a minor if
+    // we devote some effort into determining that it is safe)
+    'no_null_property_initialization' => false,
 ]);
+return $config;

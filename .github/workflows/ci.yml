@@ -19,9 +19,9 @@ jobs:
       - uses: actions/checkout@master
 
       - name: PHP-CS-Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga:2.19.0
+        uses: docker://oskarstark/php-cs-fixer-ga:3.2.1
         with:
-          args: --diff-format=udiff --dry-run --show-progress=dots --using-cache=no --verbose .
+          args: --format=txt --diff --dry-run --using-cache=no --verbose .
 
   phpstan:
     name: PHPStan
