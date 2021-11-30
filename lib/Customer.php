@@ -78,6 +78,8 @@ class Customer extends ApiResource
         $url = $this->instanceUrl() . '/discount';
         list($response, $opts) = $this->_request('delete', $url, $params, $opts);
         $this->refreshFrom(['discount' => null], $opts, true);
+
+        return $this;
     }
 
     /**

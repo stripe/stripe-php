@@ -153,8 +153,6 @@ trait TestHelper
      * @param array $response
      * @param int $rcode
      * @param null|string $base
-     *
-     * @return array
      */
     protected function stubRequest(
         $method,
