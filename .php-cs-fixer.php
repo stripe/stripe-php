@@ -1,5 +1,8 @@
 <?php
 
+$finder = PhpCsFixer\Finder::create()
+    ->notPath('tests/TestCase.php');
+
 $config = new PhpCsFixer\Config();
 $config->setRiskyAllowed(true);
 $config->setRules([
@@ -54,4 +57,5 @@ $config->setRules([
     // we devote some effort into determining that it is safe)
     'no_null_property_initialization' => false,
 ]);
+$config->setFinder($finder);
 return $config;

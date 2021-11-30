@@ -176,7 +176,7 @@ class Stripe
     }
 
     /**
-     * @return string | null The Stripe account ID for connected account
+     * @return null|string The Stripe account ID for connected account
      *   requests
      */
     public static function getAccountId()
@@ -194,7 +194,7 @@ class Stripe
     }
 
     /**
-     * @return array | null The application's information
+     * @return null|array The application's information
      */
     public static function getAppInfo()
     {
