@@ -160,7 +160,6 @@ class Customer extends ApiResource
     {
         return self::_updateNestedResource($id, static::PATH_BALANCE_TRANSACTIONS, $balanceTransactionId, $params, $opts);
     }
-
     const PATH_SOURCES = '/sources';
 
     /**
@@ -235,7 +234,6 @@ class Customer extends ApiResource
     {
         return self::_updateNestedResource($id, static::PATH_SOURCES, $sourceId, $params, $opts);
     }
-
     const PATH_TAX_IDS = '/tax_ids';
 
     /**
