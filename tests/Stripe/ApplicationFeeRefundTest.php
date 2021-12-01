@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\ApplicationFeeRefund
  */
-final class ApplicationFeeRefundTest extends \PHPUnit\Framework\TestCase
+final class ApplicationFeeRefundTest extends \Stripe\TestCase
 {
     use TestHelper;
 

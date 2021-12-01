@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\PaymentIntent
  */
-final class PaymentIntentTest extends \PHPUnit\Framework\TestCase
+final class PaymentIntentTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class PaymentIntentTest extends \PHPUnit\Framework\TestCase
             '/v1/payment_intents'
         );
         $resources = PaymentIntent::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $resources->data[0]);
     }
 

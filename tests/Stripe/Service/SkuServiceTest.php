@@ -6,7 +6,7 @@ namespace Stripe\Service;
  * @internal
  * @covers \Stripe\Service\SkuService
  */
-final class SkuServiceTest extends \PHPUnit\Framework\TestCase
+final class SkuServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -34,7 +34,7 @@ final class SkuServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/skus'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SKU::class, $resources->data[0]);
     }
 

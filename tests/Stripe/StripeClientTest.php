@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\StripeClient
  */
-final class StripeClientTest extends \PHPUnit\Framework\TestCase
+final class StripeClientTest extends \Stripe\TestCase
 {
     public function testExposesPropertiesForServices()
     {

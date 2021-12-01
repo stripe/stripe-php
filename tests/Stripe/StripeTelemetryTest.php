@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @coversNothing
  */
-final class StripeTelemetryTest extends \PHPUnit\Framework\TestCase
+final class StripeTelemetryTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -21,7 +21,10 @@ final class StripeTelemetryTest extends \PHPUnit\Framework\TestCase
       "url": "/v1/accounts"
     }';
 
-    protected function setUp()
+    /**
+     * @before
+     */
+    protected function setUpTelemetry()
     {
         // clear static telemetry data
         ApiRequestor::resetTelemetry();
@@ -29,6 +32,8 @@ final class StripeTelemetryTest extends \PHPUnit\Framework\TestCase
 
     public function testNoTelemetrySentIfNotEnabled()
     {
+        Stripe::setEnableTelemetry(false);
+
         $requestheaders = null;
 
         $stub = $this

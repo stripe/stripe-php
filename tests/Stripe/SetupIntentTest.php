@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\SetupIntent
  */
-final class SetupIntentTest extends \PHPUnit\Framework\TestCase
+final class SetupIntentTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class SetupIntentTest extends \PHPUnit\Framework\TestCase
             '/v1/setup_intents'
         );
         $resources = SetupIntent::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SetupIntent::class, $resources->data[0]);
     }
 

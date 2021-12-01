@@ -6,7 +6,7 @@ namespace Stripe\Service;
  * @internal
  * @covers \Stripe\Service\PaymentMethodService
  */
-final class PaymentMethodServiceTest extends \PHPUnit\Framework\TestCase
+final class PaymentMethodServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -37,7 +37,7 @@ final class PaymentMethodServiceTest extends \PHPUnit\Framework\TestCase
             'customer' => 'cus_123',
             'type' => 'card',
         ]);
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\PaymentMethod::class, $resources->data[0]);
     }
 

@@ -6,7 +6,7 @@ namespace Stripe\Service\Terminal;
  * @internal
  * @covers \Stripe\Service\Terminal\ConnectionTokenService
  */
-final class ConnectionTokenServiceTest extends \PHPUnit\Framework\TestCase
+final class ConnectionTokenServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 

@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Charge
  */
-final class ChargeTest extends \PHPUnit\Framework\TestCase
+final class ChargeTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class ChargeTest extends \PHPUnit\Framework\TestCase
             '/v1/charges'
         );
         $resources = Charge::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Charge::class, $resources->data[0]);
     }
 

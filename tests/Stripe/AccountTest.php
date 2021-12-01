@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Account
  */
-final class AccountTest extends \PHPUnit\Framework\TestCase
+final class AccountTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -22,7 +22,7 @@ final class AccountTest extends \PHPUnit\Framework\TestCase
             '/v1/accounts'
         );
         $resources = Account::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Account::class, $resources->data[0]);
     }
 
@@ -132,7 +132,7 @@ final class AccountTest extends \PHPUnit\Framework\TestCase
             '/v1/accounts/' . $account->id . '/persons'
         );
         $persons = $account->persons();
-        static::assertInternalType('array', $persons->data);
+        static::compatAssertIsArray($persons->data);
         static::assertInstanceOf(\Stripe\Person::class, $persons->data[0]);
     }
 
@@ -165,7 +165,7 @@ final class AccountTest extends \PHPUnit\Framework\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/capabilities'
         );
         $resources = Account::allCapabilities(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
     }
 
     public function testCanCreateExternalAccount()
@@ -219,7 +219,7 @@ final class AccountTest extends \PHPUnit\Framework\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts'
         );
         $resources = Account::allExternalAccounts(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
     }
 
     public function testCanCreateLoginLink()
@@ -287,7 +287,7 @@ final class AccountTest extends \PHPUnit\Framework\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons'
         );
         $resources = Account::allPersons(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
     }
 
     public function testSerializeNewAdditionalOwners()

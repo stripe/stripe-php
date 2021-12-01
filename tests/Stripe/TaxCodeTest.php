@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\TaxCode
  */
-final class TaxCodeTest extends \PHPUnit\Framework\TestCase
+final class TaxCodeTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class TaxCodeTest extends \PHPUnit\Framework\TestCase
             '/v1/tax_codes'
         );
         $resources = TaxCode::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\TaxCode::class, $resources->data[0]);
     }
 

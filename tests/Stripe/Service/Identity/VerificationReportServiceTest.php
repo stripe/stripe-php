@@ -6,7 +6,7 @@ namespace Stripe\Service\Identity;
  * @internal
  * @covers \Stripe\Service\Identity\VerificationReportService
  */
-final class VerificationReportServiceTest extends \PHPUnit\Framework\TestCase
+final class VerificationReportServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -34,7 +34,7 @@ final class VerificationReportServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/identity/verification_reports'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Identity\VerificationReport::class, $resources->data[0]);
     }
 

@@ -6,7 +6,7 @@ namespace Stripe\Util;
  * @internal
  * @covers \Stripe\Util\DefaultLogger
  */
-final class DefaultLoggerTest extends \PHPUnit\Framework\TestCase
+final class DefaultLoggerTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 

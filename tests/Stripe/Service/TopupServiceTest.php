@@ -6,7 +6,7 @@ namespace Stripe\Service;
  * @internal
  * @covers \Stripe\Service\TopupService
  */
-final class TopupServiceTest extends \PHPUnit\Framework\TestCase
+final class TopupServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -34,7 +34,7 @@ final class TopupServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/topups'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Topup::class, $resources->data[0]);
     }
 

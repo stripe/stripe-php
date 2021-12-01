@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Order
  */
-final class OrderTest extends \PHPUnit\Framework\TestCase
+final class OrderTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class OrderTest extends \PHPUnit\Framework\TestCase
             '/v1/orders'
         );
         $resources = Order::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Order::class, $resources->data[0]);
     }
 

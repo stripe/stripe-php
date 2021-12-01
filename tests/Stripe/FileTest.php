@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\File
  */
-final class FileTest extends \PHPUnit\Framework\TestCase
+final class FileTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class FileTest extends \PHPUnit\Framework\TestCase
             '/v1/files'
         );
         $resources = File::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\File::class, $resources->data[0]);
     }
 

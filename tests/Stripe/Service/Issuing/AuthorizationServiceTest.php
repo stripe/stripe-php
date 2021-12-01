@@ -6,7 +6,7 @@ namespace Stripe\Service\Issuing;
  * @internal
  * @covers \Stripe\Service\Issuing\AuthorizationService
  */
-final class AuthorizationServiceTest extends \PHPUnit\Framework\TestCase
+final class AuthorizationServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -34,7 +34,7 @@ final class AuthorizationServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/issuing/authorizations'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resources->data[0]);
     }
 

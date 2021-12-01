@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\BitcoinReceiver
  */
-final class BitcoinReceiverTest extends \PHPUnit\Framework\TestCase
+final class BitcoinReceiverTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -53,7 +53,7 @@ final class BitcoinReceiverTest extends \PHPUnit\Framework\TestCase
             '/v1/bitcoin/receivers'
         );
         $resources = BitcoinReceiver::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertSame(\Stripe\BitcoinReceiver::class, \get_class($resources->data[0]));
     }
 

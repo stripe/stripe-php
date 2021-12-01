@@ -6,7 +6,7 @@ namespace Stripe\Service;
  * @internal
  * @covers \Stripe\Service\ApplePayDomainService
  */
-final class ApplePayDomainServiceTest extends \PHPUnit\Framework\TestCase
+final class ApplePayDomainServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -34,7 +34,7 @@ final class ApplePayDomainServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/apple_pay/domains'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\ApplePayDomain::class, $resources->data[0]);
     }
 

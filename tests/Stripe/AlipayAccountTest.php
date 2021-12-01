@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\AlipayAccount
  */
-final class AlipayAccountTest extends \PHPUnit\Framework\TestCase
+final class AlipayAccountTest extends \Stripe\TestCase
 {
     use TestHelper;
 

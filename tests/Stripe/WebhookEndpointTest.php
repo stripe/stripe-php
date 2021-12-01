@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\WebhookEndpoint
  */
-final class WebhookEndpointTest extends \PHPUnit\Framework\TestCase
+final class WebhookEndpointTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class WebhookEndpointTest extends \PHPUnit\Framework\TestCase
             '/v1/webhook_endpoints'
         );
         $resources = WebhookEndpoint::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\WebhookEndpoint::class, $resources->data[0]);
     }
 

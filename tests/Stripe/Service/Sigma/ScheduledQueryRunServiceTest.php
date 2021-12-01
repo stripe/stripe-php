@@ -6,7 +6,7 @@ namespace Stripe\Service\Sigma;
  * @internal
  * @covers \Stripe\Service\Sigma\ScheduledQueryRunService
  */
-final class ScheduledQueryRunServiceTest extends \PHPUnit\Framework\TestCase
+final class ScheduledQueryRunServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -34,7 +34,7 @@ final class ScheduledQueryRunServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/sigma/scheduled_query_runs'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Sigma\ScheduledQueryRun::class, $resources->data[0]);
     }
 

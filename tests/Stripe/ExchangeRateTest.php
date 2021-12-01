@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\ExchangeRate
  */
-final class ExchangeRateTest extends \PHPUnit\Framework\TestCase
+final class ExchangeRateTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -36,7 +36,7 @@ final class ExchangeRateTest extends \PHPUnit\Framework\TestCase
         );
 
         $resources = ExchangeRate::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\ExchangeRate::class, $resources->data[0]);
     }
 

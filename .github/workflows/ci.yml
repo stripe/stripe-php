@@ -19,14 +19,20 @@ jobs:
       - uses: actions/checkout@master
 
       - name: PHP-CS-Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga:2.19.0
+        uses: docker://oskarstark/php-cs-fixer-ga:3.2.1
         with:
-          args: --diff-format=udiff --dry-run --show-progress=dots --using-cache=no --verbose .
+          args: --format=txt --diff --dry-run --using-cache=no --verbose .
 
   phpstan:
     name: PHPStan
 
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - "7.4"
 
     steps:
       - uses: actions/checkout@master
@@ -34,7 +40,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@master
         with:
-          php-version: 7.4
+          php-version: ${{ matrix.php-version }}
 
       - name: Get Composer Cache Directory
         id: composer-cache
@@ -75,6 +81,8 @@ jobs:
           - "7.2"
           - "7.3"
           - "7.4"
+          - "8.0"
+          - "8.1"
 
     steps:
       - uses: actions/checkout@master

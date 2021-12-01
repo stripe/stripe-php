@@ -6,7 +6,7 @@ namespace Stripe\Issuing;
  * @internal
  * @covers \Stripe\Issuing\Cardholder
  */
-final class CardholderTest extends \PHPUnit\Framework\TestCase
+final class CardholderTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -43,7 +43,7 @@ final class CardholderTest extends \PHPUnit\Framework\TestCase
             '/v1/issuing/cardholders'
         );
         $resources = Cardholder::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resources->data[0]);
     }
 
