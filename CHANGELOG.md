@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.104.0 - 2021-12-01
+* [#1211](https://github.com/stripe/stripe-php/pull/1211) PHPStan compatibility with PHP8.x
+* [#1209](https://github.com/stripe/stripe-php/pull/1209) PHPUnit compatibility with PHP 8.x
+
 ## 7.103.0 - 2021-11-19
 * [#1206](https://github.com/stripe/stripe-php/pull/1206) API Updates
   * Add support for new value `jct` on enum `TaxRate.tax_type`
