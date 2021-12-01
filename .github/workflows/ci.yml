@@ -56,6 +56,11 @@ jobs:
           # that, so we hash on "composer.json" instead.
           key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
 
+      # We run php-cs-fixer in a separate job, but the version we use is not compatible
+      # with all the versions of PHP that we want to execute PHPStan upon
+      - name: Trim dependency
+        run: composer remove --dev friendsofphp/php-cs-fixer
+
       - name: Validate composer.json and composer.lock
         run: composer validate
 
@@ -104,11 +109,10 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
 
-      # We run PHPStan in a separate job, and the version of PHPStan we use is not compatible
-      # with all the versions we support and run unit tests for. We need to temporarily remove it 
-      # from composer.json here, else composer install will fail due the version incompatibility.
+      # We run php-cs-fixer and PHPStan in separate jobs, but the versions we use are not compatible
+      # with all the versions of PHP that we want to execute PHPUnit upon
       - name: Trim dependency
-        run: composer remove --dev phpstan/phpstan && composer remove --dev friendsofphp/php-cs-fixer
+        run: composer remove --dev friendsofphp/php-cs-fixer phpstan/phpstan
 
       - name: Validate composer.json and composer.lock
         run: composer validate
