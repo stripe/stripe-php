@@ -135,8 +135,6 @@ class ApiRequestor
      * @param null|array $headers
      *
      * @throws Exception\ApiErrorException
-     *
-     * @return array tuple containing (ApiReponse, API key)
      */
     public function requestStream($method, $url, $readBodyChunkCallable, $params = null, $headers = null)
     {

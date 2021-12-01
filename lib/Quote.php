@@ -66,8 +66,6 @@ class Quote extends ApiResource
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\File the created file
      */
     public function pdf($readBodyChunkCallable, $params = null, $opts = null)
     {

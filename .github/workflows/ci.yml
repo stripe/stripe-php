@@ -32,7 +32,9 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
+          - "7.1"
           - "7.4"
+          - "8.1"
 
     steps:
       - uses: actions/checkout@master
@@ -53,6 +55,11 @@ jobs:
           # Conventionally you would hash "composer.lock", but we don't commit
           # that, so we hash on "composer.json" instead.
           key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
+
+      # We run php-cs-fixer in a separate job, but the version we use is not compatible
+      # with all the versions of PHP that we want to execute PHPStan upon
+      - name: Trim dependency
+        run: composer remove --dev friendsofphp/php-cs-fixer
 
       - name: Validate composer.json and composer.lock
         run: composer validate
@@ -102,6 +109,11 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
 
+      # We run php-cs-fixer and PHPStan in separate jobs, but the versions we use are not compatible
+      # with all the versions of PHP that we want to execute PHPUnit upon
+      - name: Trim dependency
+        run: composer remove --dev friendsofphp/php-cs-fixer phpstan/phpstan
+
       - name: Validate composer.json and composer.lock
         run: composer validate
 
@@ -115,9 +127,3 @@ jobs:
         run: |
           php --version
           ./build.php $env:AUTOLOAD
-
-      - name: Send code coverage report to coveralls.io
-        run: vendor/bin/php-coveralls -c .coveralls.github-actions.yml -v
-        env:
-          COVERALLS_RUN_LOCALLY: 1
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}

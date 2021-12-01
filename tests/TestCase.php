@@ -16,6 +16,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     public static function compatAssertIsArray($obj)
     {
         if (method_exists(static::class, 'assertIsArray')) {
+            // @phpstan-ignore-next-line
             static::assertIsArray($obj);
         } else {
             // @phpstan-ignore-next-line
@@ -26,6 +27,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     public function compatExpectExceptionMessageMatches($msg)
     {
         if (method_exists($this, 'expectExceptionMessageMatches')) {
+            // @phpstan-ignore-next-line
             $this->expectExceptionMessageMatches($msg);
         } else {
             // @phpstan-ignore-next-line
@@ -36,8 +38,10 @@ class TestCase extends \PHPUnit\Framework\TestCase
     public static function compatAssertStringContainsString($a, $b)
     {
         if (method_exists(static::class, 'assertStringContainsString')) {
+            // @phpstan-ignore-next-line
             static::assertStringContainsString($a, $b);
         } else {
+            // @phpstan-ignore-next-line
             static::assertContains($a, $b);
         }
     }
@@ -45,6 +49,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     public function compatAssertIsString($x)
     {
         if (method_exists($this, 'assertIsString')) {
+            // @phpstan-ignore-next-line
             static::assertIsString($x);
         } else {
             // @phpstan-ignore-next-line
@@ -55,6 +60,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     public static function compatWarningClass()
     {
         if (class_exists('\PHPUnit\Framework\Error\Warning')) {
+            // @phpstan-ignore-next-line
             return \PHPUnit\Framework\Error\Warning::class;
         }
 

@@ -53,8 +53,6 @@ trait Request
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return array tuple containing (the JSON response, $options)
      */
     protected function _requestStream($method, $url, $readBodyChunk, $params = [], $options = null)
     {
