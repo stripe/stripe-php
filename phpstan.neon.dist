@@ -9,3 +9,5 @@ parameters:
 
 	ignoreErrors:
 		- '#Unsafe usage of new static\(\).#'
+
+	reportUnmatchedIgnoredErrors: false
