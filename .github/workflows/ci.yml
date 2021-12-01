@@ -108,7 +108,7 @@ jobs:
       # with all the versions we support and run unit tests for. We need to temporarily remove it 
       # from composer.json here, else composer install will fail due the version incompatibility.
       - name: Trim dependency
-        run: composer remove --dev phpstan/phpstan
+        run: composer remove --dev phpstan/phpstan && composer remove --dev friendsofphp/php-cs-fixer
 
       - name: Validate composer.json and composer.lock
         run: composer validate
