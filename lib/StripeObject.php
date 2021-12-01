@@ -212,6 +212,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         unset($this->{$k});
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetGet($k)
     {
         return \array_key_exists($k, $this->_values) ? $this->_values[$k] : null;
@@ -423,6 +424,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         }
     }
 
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return $this->toArray();

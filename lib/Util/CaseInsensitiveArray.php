@@ -59,6 +59,7 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
         unset($this->container[$offset]);
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         $offset = static::maybeLowercase($offset);
