@@ -99,7 +99,7 @@ class Session extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Session the expired session
+     * @return \Stripe\Checkout\Session the expired session
      */
     public function expire($params = null, $opts = null)
     {
