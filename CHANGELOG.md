@@ -1,7 +1,8 @@
 # Changelog
 
 ## 7.105.0 - 2021-12-06
-* [#1213](https://github.com/stripe/stripe-php/pull/1213) PHP 8.1, missing ReturnTypeWillChange annotations
+* [#1213](https://github.com/stripe/stripe-php/pull/1213) PHP 8.1 missing ReturnTypeWillChange annotations.
+* As of this version, PHP 8.1 is officially supported.
 
 ## 7.104.0 - 2021-12-01
 * [#1211](https://github.com/stripe/stripe-php/pull/1211) PHPStan compatibility with PHP8.x
