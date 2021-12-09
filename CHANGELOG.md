@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.107.0 - 2021-12-09
+* [#1219](https://github.com/stripe/stripe-php/pull/1219) API Updates
+  * Add support for `metadata` on `BillingPortal.Configuration`
+  * Add support for `wallets` on `Issuing.Card`
+
 ## 7.106.0 - 2021-12-09
 * [#1218](https://github.com/stripe/stripe-php/pull/1218) API Updates
   * Add support for new values `ge_vat` and `ua_vat` on enum `TaxId.type`
