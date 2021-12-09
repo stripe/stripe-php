@@ -61,7 +61,7 @@ abstract class AbstractService
         if (null === $params) {
             return null;
         }
-        \array_walk_recursive($params, function (& $value, $key) {
+        \array_walk_recursive($params, function (&$value, $key) {
             if (null === $value) {
                 $value = '';
             }
