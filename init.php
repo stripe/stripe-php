@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 // Stripe singleton

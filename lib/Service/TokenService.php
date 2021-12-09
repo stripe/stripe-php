@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -38,5 +39,4 @@ class TokenService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v1/tokens/%s', $id), $params, $opts);
     }
-
 }

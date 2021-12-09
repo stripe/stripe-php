@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -91,5 +92,4 @@ class SkuService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/skus/%s', $id), $params, $opts);
     }
-
 }

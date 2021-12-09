@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -39,5 +40,4 @@ class EphemeralKeyService extends \Stripe\Service\AbstractService
 
         return $this->request('post', '/v1/ephemeral_keys', $params, $opts);
     }
-
 }

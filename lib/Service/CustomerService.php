@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -39,7 +40,7 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Returns a list of PaymentMethods for a given Customer
+     * Returns a list of PaymentMethods for a given Customer.
      *
      * @param string $id
      * @param null|array $params
@@ -365,5 +366,4 @@ class CustomerService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/customers/%s/sources/%s/verify', $parentId, $id), $params, $opts);
     }
-
 }

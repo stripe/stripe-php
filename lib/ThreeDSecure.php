@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -33,5 +34,4 @@ class ThreeDSecure extends ApiResource
     {
         return '/v1/3d_secure';
     }
-
 }

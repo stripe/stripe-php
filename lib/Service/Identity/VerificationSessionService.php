@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Identity;
@@ -6,7 +7,7 @@ namespace Stripe\Service\Identity;
 class VerificationSessionService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of VerificationSessions
+     * Returns a list of VerificationSessions.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -142,5 +143,4 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/identity/verification_sessions/%s', $id), $params, $opts);
     }
-
 }

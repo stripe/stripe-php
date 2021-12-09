@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -104,5 +105,4 @@ class Payout extends ApiResource
 
         return $this;
     }
-
 }

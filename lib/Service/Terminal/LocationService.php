@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Terminal;
@@ -85,5 +86,4 @@ class LocationService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/terminal/locations/%s', $id), $params, $opts);
     }
-
 }

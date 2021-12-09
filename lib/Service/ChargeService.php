@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -98,5 +99,4 @@ class ChargeService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/charges/%s', $id), $params, $opts);
     }
-
 }

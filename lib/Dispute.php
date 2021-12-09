@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -78,5 +79,4 @@ class Dispute extends ApiResource
 
         return $this;
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Sigma;
@@ -33,5 +34,4 @@ class ScheduledQueryRun extends \Stripe\ApiResource
     {
         return '/v1/sigma/scheduled_query_runs';
     }
-
 }

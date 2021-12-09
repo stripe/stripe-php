@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -35,5 +36,4 @@ class CountrySpecService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v1/country_specs/%s', $id), $params, $opts);
     }
-
 }

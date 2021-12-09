@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -235,5 +236,4 @@ class Event extends ApiResource
     const TRANSFER_CREATED = 'transfer.created';
     const TRANSFER_REVERSED = 'transfer.reversed';
     const TRANSFER_UPDATED = 'transfer.updated';
-
 }

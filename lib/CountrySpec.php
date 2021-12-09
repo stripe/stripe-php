@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -26,5 +27,4 @@ class CountrySpec extends ApiResource
 
     use ApiOperations\All;
     use ApiOperations\Retrieve;
-
 }

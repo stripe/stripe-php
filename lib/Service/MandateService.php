@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -20,5 +21,4 @@ class MandateService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v1/mandates/%s', $id), $params, $opts);
     }
-
 }

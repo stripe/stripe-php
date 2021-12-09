@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -19,5 +20,4 @@ class SetupAttemptService extends \Stripe\Service\AbstractService
     {
         return $this->requestCollection('get', '/v1/setup_attempts', $params, $opts);
     }
-
 }

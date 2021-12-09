@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Identity;
@@ -21,7 +22,7 @@ class VerificationReportService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves an existing VerificationReport
+     * Retrieves an existing VerificationReport.
      *
      * @param string $id
      * @param null|array $params
@@ -35,5 +36,4 @@ class VerificationReportService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v1/identity/verification_reports/%s', $id), $params, $opts);
     }
-
 }

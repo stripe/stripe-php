@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -84,5 +85,4 @@ class Capability extends ApiResource
 
         throw new Exception\BadMethodCallException($msg);
     }
-
 }
