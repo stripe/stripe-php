@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Terminal;
@@ -22,7 +21,9 @@ class LocationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a new <code>Location</code> object.
+     * Creates a new <code>Location</code> object. For further details, including which
+     * address fields are required in each country, see the <a
+     * href="/docs/terminal/fleet/locations">Manage locations</a> guide.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -84,4 +85,5 @@ class LocationService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/terminal/locations/%s', $id), $params, $opts);
     }
+
 }

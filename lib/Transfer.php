@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -67,6 +66,7 @@ class Transfer extends ApiResource
 
         return $this;
     }
+
 
     const PATH_REVERSALS = '/reversals';
 

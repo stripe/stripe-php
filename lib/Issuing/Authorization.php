@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Issuing;
@@ -78,4 +77,5 @@ class Authorization extends \Stripe\ApiResource
 
         return $this;
     }
+
 }

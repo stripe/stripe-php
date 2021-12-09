@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Checkout;
@@ -56,7 +55,7 @@ class SessionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * A Session can be expired when it is in one of these statuses: <code>open</code>.
+     * A Session can be expired when it is in one of these statuses: <code>open</code>
      *
      * After it expires, a customer can’t complete a Session and customers loading the
      * Session see a message saying the Session is expired.
@@ -89,4 +88,5 @@ class SessionService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v1/checkout/sessions/%s', $id), $params, $opts);
     }
+
 }

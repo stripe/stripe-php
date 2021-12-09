@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -54,4 +53,5 @@ class Token extends ApiResource
     const TYPE_BANK_ACCOUNT = 'bank_account';
     const TYPE_CARD = 'card';
     const TYPE_PII = 'pii';
+
 }

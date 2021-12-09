@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -130,9 +129,9 @@ class Account extends ApiResource
             $update = ($v instanceof StripeObject) ? $v->serializeParameters() : $v;
 
             if ([] !== $update) {
-                if (!$originalValue
-                    || !\array_key_exists($i, $originalValue)
-                    || ($update !== $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
+                if (!$originalValue ||
+                    !\array_key_exists($i, $originalValue) ||
+                    ($update !== $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
                     $updateArr[$i] = $update;
                 }
             }
@@ -213,6 +212,7 @@ class Account extends ApiResource
         return $this;
     }
 
+    
     /*
      * Capabilities methods
      * We can not add the capabilities() method today as the Account object already has a

@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -143,4 +142,5 @@ class Charge extends ApiResource
 
         return $this;
     }
+
 }

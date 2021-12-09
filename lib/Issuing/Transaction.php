@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Issuing;
@@ -41,4 +40,5 @@ class Transaction extends \Stripe\ApiResource
     use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
+
 }

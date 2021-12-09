@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Issuing;
@@ -29,6 +28,7 @@ namespace Stripe\Issuing;
  * @property \Stripe\StripeObject $spending_controls
  * @property string $status Whether authorizations can be approved on this card.
  * @property string $type The type of the card.
+ * @property null|\Stripe\StripeObject $wallets Information relating to digital wallets (like Apple Pay and Google Pay).
  */
 class Card extends \Stripe\ApiResource
 {
@@ -56,4 +56,5 @@ class Card extends \Stripe\ApiResource
 
         return $obj;
     }
+
 }

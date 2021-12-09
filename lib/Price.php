@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -64,4 +63,5 @@ class Price extends ApiResource
 
     const TYPE_ONE_TIME = 'one_time';
     const TYPE_RECURRING = 'recurring';
+
 }
