@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Issuing;
@@ -50,4 +49,5 @@ class Dispute extends \Stripe\ApiResource
 
         return $this;
     }
+
 }

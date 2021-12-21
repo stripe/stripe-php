@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -60,4 +59,5 @@ class Topup extends ApiResource
 
         return $this;
     }
+
 }

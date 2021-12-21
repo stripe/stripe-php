@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -76,14 +75,12 @@ class Customer extends ApiResource
         $url = $this->instanceUrl() . '/discount';
         list($response, $opts) = $this->_request('delete', $url, $params, $opts);
         $this->refreshFrom(['discount' => null], $opts, true);
-
         return $this;
     }
 
     /**
      * @param null|array $params
      * @param null|array|string $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -98,6 +95,7 @@ class Customer extends ApiResource
 
         return $obj;
     }
+
 
     const PATH_BALANCE_TRANSACTIONS = '/balance_transactions';
 
