@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.108.0 - 2021-12-22
+* [#1226](https://github.com/stripe/stripe-php/pull/1226) Upgrade php-cs-fixer to 3.4.0.
+* [#1222](https://github.com/stripe/stripe-php/pull/1222) API Updates
+  * Add support for `processing` on `PaymentIntent`
+* [#1220](https://github.com/stripe/stripe-php/pull/1220) API Updates
+
 ## 7.107.0 - 2021-12-09
 * [#1219](https://github.com/stripe/stripe-php/pull/1219) API Updates
   * Add support for `metadata` on `BillingPortal.Configuration`
