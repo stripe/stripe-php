@@ -1,6 +1,6 @@
 name: CI
 
-on: 
+on:
   push:
     branches: [ master ]
   pull_request:
@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@master
 
       - name: PHP-CS-Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga:3.2.1
+        uses: docker://oskarstark/php-cs-fixer-ga:3.4.0
         with:
           args: --format=txt --diff --dry-run --using-cache=no --verbose .
 
