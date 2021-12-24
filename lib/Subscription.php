@@ -64,6 +64,10 @@ class Subscription extends ApiResource
     const PRORATION_BEHAVIOR_CREATE_PRORATIONS = 'create_prorations';
     const PRORATION_BEHAVIOR_NONE = 'none';
 
+    const PAUSE_BEHAVIOR_MARK_UNCOLLECTIBLE = 'mark_uncollectible';
+    const PAUSE_BEHAVIOR_KEEP_AS_DRAFT = 'keep_as_draft';
+    const PAUSE_BEHAVIOR_VOID = 'void';
+
     const STATUS_ACTIVE = 'active';
     const STATUS_CANCELED = 'canceled';
     const STATUS_INCOMPLETE = 'incomplete';
