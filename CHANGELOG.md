@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.109.0 - 2022-01-12
+* [#1231](https://github.com/stripe/stripe-php/pull/1231) API Updates
+  * Add support for `customer_creation` on `Checkout.Session`
+* [#1227](https://github.com/stripe/stripe-php/pull/1227) Update docs URLs
+
 ## 7.108.0 - 2021-12-22
 * [#1226](https://github.com/stripe/stripe-php/pull/1226) Upgrade php-cs-fixer to 3.4.0.
 * [#1222](https://github.com/stripe/stripe-php/pull/1222) API Updates
