@@ -37,6 +37,7 @@ namespace Stripe\Checkout;
  * @property null|\Stripe\StripeObject $consent_collection When set, provides configuration for the Checkout Session to gather active consent from customers.
  * @property null|string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string|\Stripe\Customer $customer The ID of the customer for this Session. For Checkout Sessions in <code>payment</code> or <code>subscription</code> mode, Checkout will create a new customer object based on information provided during the payment flow unless an existing customer was provided when the Session was created.
+ * @property null|string $customer_creation Configure whether a Checkout Session creates a Customer when the Checkout Session completes.
  * @property null|\Stripe\StripeObject $customer_details The customer details including the customer's tax exempt status and the customer's tax IDs. Only present on Sessions in <code>payment</code> or <code>subscription</code> mode.
  * @property null|string $customer_email If provided, this value will be used when the Customer object is created. If not provided, customers will be asked to enter their email address. Use this parameter to prefill customer data if you already have an email on file. To access information about the customer once the payment flow is complete, use the <code>customer</code> attribute.
  * @property int $expires_at The timestamp at which the Checkout Session will expire.
@@ -75,6 +76,9 @@ class Session extends \Stripe\ApiResource
 
     const BILLING_ADDRESS_COLLECTION_AUTO = 'auto';
     const BILLING_ADDRESS_COLLECTION_REQUIRED = 'required';
+
+    const CUSTOMER_CREATION_ALWAYS = 'always';
+    const CUSTOMER_CREATION_IF_REQUIRED = 'if_required';
 
     const MODE_PAYMENT = 'payment';
     const MODE_SETUP = 'setup';
