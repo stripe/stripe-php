@@ -60,6 +60,7 @@ class ObjectTypes
         \Stripe\OrderItem::OBJECT_NAME => \Stripe\OrderItem::class,
         \Stripe\OrderReturn::OBJECT_NAME => \Stripe\OrderReturn::class,
         \Stripe\PaymentIntent::OBJECT_NAME => \Stripe\PaymentIntent::class,
+        \Stripe\PaymentLink::OBJECT_NAME => \Stripe\PaymentLink::class,
         \Stripe\PaymentMethod::OBJECT_NAME => \Stripe\PaymentMethod::class,
         \Stripe\Payout::OBJECT_NAME => \Stripe\Payout::class,
         \Stripe\Person::OBJECT_NAME => \Stripe\Person::class,
