@@ -334,7 +334,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
         return [$headerCallback, $writeCallbackWrapper];
     }
 
-    private static function parseLineIntoHeaderArray($line, & $headers)
+    private static function parseLineIntoHeaderArray($line, &$headers)
     {
         if (false === \strpos($line, ':')) {
             return \strlen($line);
