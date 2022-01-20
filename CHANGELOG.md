@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.111.0 - 2022-01-20
+* [#1233](https://github.com/stripe/stripe-php/pull/1233) API Updates
+  * Add support for new resource `PaymentLink`
+  * Add support for `payment_link` on `Checkout.Session`
+
 ## 7.110.0 - 2022-01-13
 * [#1232](https://github.com/stripe/stripe-php/pull/1232) API Updates
   * Add support for `paid_out_of_band` on `Invoice`
