@@ -2672,4 +2672,28 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         );
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $result);
     }
+
+    public function testCreatePaymentLink()
+    {
+        $this->expectsRequest('post', '/v1/payment_links');
+        $result = $this->client->paymentLinks->create(
+            ['line_items' => [['price' => 'price_xxxxxxxxxxxxx', 'quantity' => 1]]]
+        );
+        static::assertInstanceOf(\Stripe\PaymentLink::class, $result);
+    }
+
+    public function testListLineItemsPaymentLink()
+    {
+        $this->expectsRequest('get', '/v1/payment_links/pl_xyz/line_items');
+        $result = $this->client->paymentLinks->allLineItems('pl_xyz', []);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\LineItem::class, $result->data[0]);
+    }
+
+    public function testRetrievePaymentLink()
+    {
+        $this->expectsRequest('get', '/v1/payment_links/pl_xyz');
+        $result = $this->client->paymentLinks->retrieve('pl_xyz', []);
+        static::assertInstanceOf(\Stripe\PaymentLink::class, $result);
+    }
 }
