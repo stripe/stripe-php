@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.112.0 - 2022-01-25
+* [#1235](https://github.com/stripe/stripe-php/pull/1235) API Updates
+  * Add support for `phone_number_collection` on `PaymentLink`
+  * Add support for new value `is_vat` on enum `TaxId.type`
+  
+
 ## 7.111.0 - 2022-01-20
 * [#1233](https://github.com/stripe/stripe-php/pull/1233) API Updates
   * Add support for new resource `PaymentLink`
