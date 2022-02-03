@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Radar;
@@ -90,4 +89,5 @@ class ValueListService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/radar/value_lists/%s', $id), $params, $opts);
     }
+
 }

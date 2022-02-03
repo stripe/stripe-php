@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -43,6 +42,7 @@ class Refund extends ApiResource
     const FAILURE_REASON_UNKNOWN = 'unknown';
 
     const REASON_DUPLICATE = 'duplicate';
+    const REASON_EXPIRED_UNCAPTURED_CHARGE = 'expired_uncaptured_charge';
     const REASON_FRAUDULENT = 'fraudulent';
     const REASON_REQUESTED_BY_CUSTOMER = 'requested_by_customer';
 
@@ -52,7 +52,8 @@ class Refund extends ApiResource
     const STATUS_SUCCEEDED = 'succeeded';
 
     /**
-     * @deprecated use FAILURE_REASON_EXPIRED_OR_CANCELED_CARD instead
+     * @deprecated Use FAILURE_REASON_EXPIRED_OR_CANCELED_CARD instead.
      */
     const FAILURE_REASON = 'expired_or_canceled_card';
+
 }

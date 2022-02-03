@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 // Stripe singleton
@@ -236,9 +235,9 @@ require __DIR__ . '/lib/Service/TransferService.php';
 require __DIR__ . '/lib/Service/WebhookEndpointService.php';
 
 // Service factories
-require __DIR__ . '/lib/Service/CoreServiceFactory.php';
 require __DIR__ . '/lib/Service/BillingPortal/BillingPortalServiceFactory.php';
 require __DIR__ . '/lib/Service/Checkout/CheckoutServiceFactory.php';
+require __DIR__ . '/lib/Service/CoreServiceFactory.php';
 require __DIR__ . '/lib/Service/Identity/IdentityServiceFactory.php';
 require __DIR__ . '/lib/Service/Issuing/IssuingServiceFactory.php';
 require __DIR__ . '/lib/Service/Radar/RadarServiceFactory.php';

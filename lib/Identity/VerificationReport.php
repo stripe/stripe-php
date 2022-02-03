@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Identity;
@@ -42,4 +41,5 @@ class VerificationReport extends \Stripe\ApiResource
 
     const TYPE_DOCUMENT = 'document';
     const TYPE_ID_NUMBER = 'id_number';
+
 }

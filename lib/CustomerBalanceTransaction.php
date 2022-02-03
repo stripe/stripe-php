@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -34,6 +33,7 @@ namespace Stripe;
 class CustomerBalanceTransaction extends ApiResource
 {
     const OBJECT_NAME = 'customer_balance_transaction';
+
 
     const TYPE_ADJUSTMENT = 'adjustment';
     const TYPE_APPLIED_TO_INVOICE = 'applied_to_invoice';
@@ -100,4 +100,5 @@ class CustomerBalanceTransaction extends ApiResource
 
         throw new Exception\BadMethodCallException($msg);
     }
+
 }

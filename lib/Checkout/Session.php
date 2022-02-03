@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Checkout;
@@ -114,6 +113,7 @@ class Session extends \Stripe\ApiResource
 
         return $this;
     }
+
 
     const PATH_LINE_ITEMS = '/line_items';
 

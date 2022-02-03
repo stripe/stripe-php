@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -24,4 +23,5 @@ class Mandate extends ApiResource
     const OBJECT_NAME = 'mandate';
 
     use ApiOperations\Retrieve;
+
 }

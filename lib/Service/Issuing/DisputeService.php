@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Issuing;
@@ -96,4 +95,5 @@ class DisputeService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/issuing/disputes/%s', $id), $params, $opts);
     }
+
 }
