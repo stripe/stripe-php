@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.113.0 - 2022-02-03
+* [#1239](https://github.com/stripe/stripe-php/pull/1239) API Updates
+  * Add `REASON_EXPIRED_UNCAPTURED_CHARGE` enum value on `Refund`.
+
 ## 7.112.0 - 2022-01-25
 * [#1235](https://github.com/stripe/stripe-php/pull/1235) API Updates
   * Add support for `phone_number_collection` on `PaymentLink`
