@@ -43,6 +43,7 @@ class Refund extends ApiResource
     const FAILURE_REASON_UNKNOWN = 'unknown';
 
     const REASON_DUPLICATE = 'duplicate';
+    const REASON_EXPIRED_UNCAPTURED_CHARGE = 'expired_uncaptured_charge';
     const REASON_FRAUDULENT = 'fraudulent';
     const REASON_REQUESTED_BY_CUSTOMER = 'requested_by_customer';
 
