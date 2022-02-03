@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Issuing;
@@ -55,5 +56,4 @@ class TransactionService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/issuing/transactions/%s', $id), $params, $opts);
     }
-
 }

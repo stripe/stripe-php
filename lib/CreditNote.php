@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -91,7 +92,6 @@ class CreditNote extends ApiResource
 
         return $this;
     }
-
 
     const PATH_LINES = '/lines';
 

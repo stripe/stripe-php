@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -100,5 +101,4 @@ class CouponService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/coupons/%s', $id), $params, $opts);
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -8,7 +9,7 @@ class PaymentMethodService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of PaymentMethods. For listing a customer’s payment methods, you
      * should use <a href="/docs/api/payment_methods/customer_list">List a Customer’s
-     * PaymentMethods</a>
+     * PaymentMethods</a>.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -125,5 +126,4 @@ class PaymentMethodService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/payment_methods/%s', $id), $params, $opts);
     }
-
 }

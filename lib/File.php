@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -83,5 +84,4 @@ class File extends ApiResource
 
         return static::_create($flatParams, $opts);
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -28,5 +29,4 @@ class SetupAttempt extends ApiResource
     const OBJECT_NAME = 'setup_attempt';
 
     use ApiOperations\All;
-
 }

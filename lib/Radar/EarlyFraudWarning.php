@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Radar;
@@ -34,5 +35,4 @@ class EarlyFraudWarning extends \Stripe\ApiResource
     const FRAUD_TYPE_MADE_WITH_STOLEN_CARD = 'made_with_stolen_card';
     const FRAUD_TYPE_MISC = 'misc';
     const FRAUD_TYPE_UNAUTHORIZED_USE_OF_CARD = 'unauthorized_use_of_card';
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -67,5 +68,4 @@ class BalanceTransaction extends ApiResource
     const TYPE_TRANSFER_CANCEL = 'transfer_cancel';
     const TYPE_TRANSFER_FAILURE = 'transfer_failure';
     const TYPE_TRANSFER_REFUND = 'transfer_refund';
-
 }

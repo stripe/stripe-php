@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -51,6 +52,7 @@ class PaymentLink extends ApiResource
     /**
      * @param null|array $params
      * @param null|array|string $opts
+     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -65,5 +67,4 @@ class PaymentLink extends ApiResource
 
         return $obj;
     }
-
 }

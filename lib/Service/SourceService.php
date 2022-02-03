@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -106,5 +107,4 @@ class SourceService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/sources/%s/verify', $id), $params, $opts);
     }
-
 }

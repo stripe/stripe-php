@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -22,5 +23,4 @@ class LineItem extends ApiResource
     const OBJECT_NAME = 'item';
 
     use ApiOperations\All;
-
 }

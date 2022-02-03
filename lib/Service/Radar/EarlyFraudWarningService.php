@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Radar;
@@ -39,5 +40,4 @@ class EarlyFraudWarningService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v1/radar/early_fraud_warnings/%s', $id), $params, $opts);
     }
-
 }

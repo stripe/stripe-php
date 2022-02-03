@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -24,7 +25,6 @@ namespace Stripe;
 class ApplicationFeeRefund extends ApiResource
 {
     const OBJECT_NAME = 'fee_refund';
-
 
     use ApiOperations\Update {
         save as protected _save;
@@ -63,5 +63,4 @@ class ApplicationFeeRefund extends ApiResource
     {
         return $this->_save($opts);
     }
-
 }

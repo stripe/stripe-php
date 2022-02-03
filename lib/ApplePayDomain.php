@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -27,5 +28,4 @@ class ApplePayDomain extends ApiResource
     {
         return '/v1/apple_pay/domains';
     }
-
 }

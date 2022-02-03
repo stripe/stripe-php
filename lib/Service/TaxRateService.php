@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -37,7 +38,7 @@ class TaxRateService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves a tax rate with the given ID
+     * Retrieves a tax rate with the given ID.
      *
      * @param string $id
      * @param null|array $params
@@ -67,5 +68,4 @@ class TaxRateService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/tax_rates/%s', $id), $params, $opts);
     }
-
 }

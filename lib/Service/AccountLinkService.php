@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -21,5 +22,4 @@ class AccountLinkService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', '/v1/account_links', $params, $opts);
     }
-
 }

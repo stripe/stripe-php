@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -50,5 +51,4 @@ class Product extends ApiResource
 
     const TYPE_GOOD = 'good';
     const TYPE_SERVICE = 'service';
-
 }

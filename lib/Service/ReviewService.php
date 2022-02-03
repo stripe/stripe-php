@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -54,5 +55,4 @@ class ReviewService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v1/reviews/%s', $id), $params, $opts);
     }
-
 }

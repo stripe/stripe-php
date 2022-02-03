@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Radar;
@@ -27,5 +28,4 @@ class ValueListItem extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Create;
     use \Stripe\ApiOperations\Delete;
     use \Stripe\ApiOperations\Retrieve;
-
 }

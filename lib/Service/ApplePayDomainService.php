@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -66,5 +67,4 @@ class ApplePayDomainService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v1/apple_pay/domains/%s', $id), $params, $opts);
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Identity;
@@ -84,5 +85,4 @@ class VerificationSession extends \Stripe\ApiResource
 
         return $this;
     }
-
 }

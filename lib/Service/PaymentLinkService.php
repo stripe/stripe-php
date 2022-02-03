@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -85,5 +86,4 @@ class PaymentLinkService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/payment_links/%s', $id), $params, $opts);
     }
-
 }

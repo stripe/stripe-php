@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -147,5 +148,4 @@ class SubscriptionItemService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/subscription_items/%s', $id), $params, $opts);
     }
-
 }
