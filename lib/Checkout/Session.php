@@ -41,7 +41,7 @@ namespace Stripe\Checkout;
  * @property null|\Stripe\StripeObject $customer_details The customer details including the customer's tax exempt status and the customer's tax IDs. Only present on Sessions in <code>payment</code> or <code>subscription</code> mode.
  * @property null|string $customer_email If provided, this value will be used when the Customer object is created. If not provided, customers will be asked to enter their email address. Use this parameter to prefill customer data if you already have an email on file. To access information about the customer once the payment flow is complete, use the <code>customer</code> attribute.
  * @property int $expires_at The timestamp at which the Checkout Session will expire.
- * @property \Stripe\Collection $line_items The line items purchased by the customer.
+ * @property \Stripe\Collection<\Stripe\LineItem> $line_items The line items purchased by the customer.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $locale The IETF language tag of the locale Checkout is displayed in. If blank or <code>auto</code>, the browser's locale is used.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -124,7 +124,7 @@ class Session extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection the list of items
+     * @return \Stripe\Collection<\Stripe\item> the list of items
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {

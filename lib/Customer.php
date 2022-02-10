@@ -32,11 +32,11 @@ namespace Stripe;
  * @property null|string $phone The customer's phone number.
  * @property null|string[] $preferred_locales The customer's preferred locales (languages), ordered by preference.
  * @property null|\Stripe\StripeObject $shipping Mailing and shipping address for the customer. Appears on invoices emailed to this customer.
- * @property \Stripe\Collection $sources The customer's payment sources, if any.
- * @property \Stripe\Collection $subscriptions The customer's current subscriptions, if any.
+ * @property \Stripe\Collection<\Stripe\Account|\Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source> $sources The customer's payment sources, if any.
+ * @property \Stripe\Collection<\Stripe\Subscription> $subscriptions The customer's current subscriptions, if any.
  * @property \Stripe\StripeObject $tax
  * @property null|string $tax_exempt Describes the customer's tax exemption status. One of <code>none</code>, <code>exempt</code>, or <code>reverse</code>. When set to <code>reverse</code>, invoice and receipt PDFs include the text <strong>&quot;Reverse charge&quot;</strong>.
- * @property \Stripe\Collection $tax_ids The customer's tax IDs.
+ * @property \Stripe\Collection<\Stripe\TaxId> $tax_ids The customer's tax IDs.
  */
 class Customer extends ApiResource
 {
@@ -87,7 +87,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection list of PaymentMethods
+     * @return \Stripe\Collection<\Stripe\Customer> list of PaymentMethods
      */
     public static function allPaymentMethods($id, $params = null, $opts = null)
     {
@@ -108,7 +108,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection the list of customer balance transactions
+     * @return \Stripe\Collection<\Stripe\CustomerBalanceTransaction> the list of customer balance transactions
      */
     public static function allBalanceTransactions($id, $params = null, $opts = null)
     {
@@ -167,7 +167,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection the list of payment sources (AlipayAccount, BankAccount, BitcoinReceiver, Card or Source)
+     * @return \Stripe\Collection<\Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source> the list of payment sources (AlipayAccount, BankAccount, BitcoinReceiver, Card or Source)
      */
     public static function allSources($id, $params = null, $opts = null)
     {
@@ -241,7 +241,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection the list of tax ids
+     * @return \Stripe\Collection<\Stripe\TaxId> the list of tax ids
      */
     public static function allTaxIds($id, $params = null, $opts = null)
     {

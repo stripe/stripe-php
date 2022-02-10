@@ -49,7 +49,7 @@ namespace Stripe;
  * @property null|string $receipt_number This is the transaction number that appears on email receipts sent for this charge. This attribute will be <code>null</code> until a receipt has been sent.
  * @property null|string $receipt_url This is the URL to view the receipt for this charge. The receipt is kept up-to-date to the latest state of the charge, including any refunds. If the charge is for an Invoice, the receipt will be stylized as an Invoice receipt.
  * @property bool $refunded Whether the charge has been fully refunded. If the charge is only partially refunded, this attribute will still be false.
- * @property \Stripe\Collection $refunds A list of refunds that have been applied to the charge.
+ * @property \Stripe\Collection<\Stripe\Refund> $refunds A list of refunds that have been applied to the charge.
  * @property null|string|\Stripe\Review $review ID of the review associated with this charge if one exists.
  * @property null|\Stripe\StripeObject $shipping Shipping information for the charge.
  * @property null|\Stripe\Account|\Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source $source This is a legacy field that will be removed in the future. It contains the Source, Card, or BankAccount object used for the charge. For details about the payment method used for this charge, refer to <code>payment_method</code> or <code>payment_method_details</code> instead.
