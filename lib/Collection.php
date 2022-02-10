@@ -7,6 +7,7 @@ namespace Stripe;
  *
  * @template TStripeObject of StripeObject
  * @template-implements \IteratorAggregate<TStripeObject>
+ *
  * @property string $object
  * @property string $url
  * @property bool $has_more
@@ -64,7 +65,11 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
     }
 
     /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
      * @throws Exception\ApiErrorException
+     *
      * @return Collection<TStripeObject>
      */
     public function all($params = null, $opts = null)
@@ -85,7 +90,11 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
     }
 
     /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
      * @throws Exception\ApiErrorException
+     *
      * @return TStripeObject
      */
     public function create($params = null, $opts = null)
@@ -99,7 +108,12 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
     }
 
     /**
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
      * @throws Exception\ApiErrorException
+     *
      * @return TStripeObject
      */
     public function retrieve($id, $params = null, $opts = null)
