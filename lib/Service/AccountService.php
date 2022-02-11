@@ -15,7 +15,7 @@ class AccountService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection
+     * @return \Stripe\Collection<\Stripe\Account>
      */
     public function all($params = null, $opts = null)
     {
@@ -33,7 +33,7 @@ class AccountService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection
+     * @return \Stripe\Collection<\Stripe\Capability>
      */
     public function allCapabilities($parentId, $params = null, $opts = null)
     {
@@ -49,7 +49,7 @@ class AccountService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection
+     * @return \Stripe\Collection<\Stripe\BankAccount|\Stripe\Card>
      */
     public function allExternalAccounts($parentId, $params = null, $opts = null)
     {
@@ -67,7 +67,7 @@ class AccountService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection
+     * @return \Stripe\Collection<\Stripe\Person>
      */
     public function allPersons($parentId, $params = null, $opts = null)
     {

@@ -26,7 +26,7 @@ namespace Stripe;
  * @property null|float $application_fee_percent This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's Stripe account.
  * @property \Stripe\StripeObject $automatic_tax
  * @property string $billing_address_collection Configuration for collecting the customer's billing address.
- * @property \Stripe\Collection $line_items The line items representing what is being sold.
+ * @property \Stripe\Collection<\Stripe\LineItem> $line_items The line items representing what is being sold.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string|\Stripe\Account $on_behalf_of The account on behalf of which to charge. See the <a href="https://support.stripe.com/questions/sending-invoices-on-behalf-of-connected-accounts">Connect documentation</a> for details.
@@ -56,7 +56,7 @@ class PaymentLink extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection list of LineItems
+     * @return \Stripe\Collection<\Stripe\PaymentLink> list of LineItems
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {

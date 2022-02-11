@@ -14,7 +14,7 @@ class SessionService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection
+     * @return \Stripe\Collection<\Stripe\Checkout\Session>
      */
     public function all($params = null, $opts = null)
     {
@@ -33,7 +33,7 @@ class SessionService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection
+     * @return \Stripe\Collection<\Stripe\LineItem>
      */
     public function allLineItems($parentId, $params = null, $opts = null)
     {

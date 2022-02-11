@@ -75,7 +75,7 @@ class SubscriptionItem extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection the list of usage record summaries
+     * @return \Stripe\Collection<\Stripe\UsageRecordSummary> the list of usage record summaries
      */
     public static function allUsageRecordSummaries($id, $params = null, $opts = null)
     {
