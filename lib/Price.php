@@ -20,8 +20,8 @@ namespace Stripe;
  * href="https://stripe.com/docs/billing/subscriptions/set-up-subscription">Set up
  * a subscription</a>, <a
  * href="https://stripe.com/docs/billing/invoices/create">create an invoice</a>,
- * and more about <a href="https://stripe.com/docs/billing/prices-guide">products
- * and prices</a>.
+ * and more about <a
+ * href="https://stripe.com/docs/products-prices/overview">products and prices</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
