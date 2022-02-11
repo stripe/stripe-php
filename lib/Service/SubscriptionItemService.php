@@ -39,7 +39,7 @@ class SubscriptionItemService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\usage_record_summary>
+     * @return \Stripe\Collection<\Stripe\UsageRecordSummary>
      */
     public function allUsageRecordSummaries($parentId, $params = null, $opts = null)
     {

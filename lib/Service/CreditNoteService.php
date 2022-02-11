@@ -32,7 +32,7 @@ class CreditNoteService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\credit_note_line_item>
+     * @return \Stripe\Collection<\Stripe\CreditNoteLineItem>
      */
     public function allLines($parentId, $params = null, $opts = null)
     {

@@ -35,7 +35,7 @@ class InvoiceService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\line_item>
+     * @return \Stripe\Collection<\Stripe\LineItem>
      */
     public function allLines($parentId, $params = null, $opts = null)
     {
