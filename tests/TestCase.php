@@ -67,4 +67,25 @@ class TestCase extends \PHPUnit\Framework\TestCase
         // @phpstan-ignore-next-line
         return \PHPUnit_Framework_Error_Warning::class;
     }
+
+    public function compatExpectWarning($warningClass)
+    {
+        if (method_exists($this, 'expectWarning')) {
+            // @phpstan-ignore-next-line
+            $this->expectWarning($warningClass);
+        } else {
+            // @phpstan-ignore-next-line
+            $this->expectException($warningClass);
+        }
+    }
+
+    public static function compatAssertMatchesRegularExpression($text, $regex) {
+        if (method_exists(static::class, 'assertMatchesRegularExpression')) {
+            // @phpstan-ignore-next-line
+            static::assertMatchesRegularExpression($text, $regex);
+        } else {
+            // @phpstan-ignore-next-line
+            static::assertRegExp($text, $regex);
+        }
+    }
 }

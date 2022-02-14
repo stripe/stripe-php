@@ -2696,4 +2696,30 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $result = $this->client->paymentLinks->retrieve('pl_xyz', []);
         static::assertInstanceOf(\Stripe\PaymentLink::class, $result);
     }
+
+    public function testVerifyMicrodepositsPaymentIntent()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/payment_intents/pi_xxxxxxxxxxxxx/verify_microdeposits'
+        );
+        $result = $this->client->paymentIntents->verifyMicrodeposits(
+            'pi_xxxxxxxxxxxxx',
+            []
+        );
+        static::assertInstanceOf(\Stripe\PaymentIntent::class, $result);
+    }
+
+    public function testVerifyMicrodepositsSetupIntent()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/setup_intents/seti_xxxxxxxxxxxxx/verify_microdeposits'
+        );
+        $result = $this->client->setupIntents->verifyMicrodeposits(
+            'seti_xxxxxxxxxxxxx',
+            []
+        );
+        static::assertInstanceOf(\Stripe\SetupIntent::class, $result);
+    }
 }
