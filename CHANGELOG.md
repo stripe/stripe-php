@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.114.0 - 2022-02-15
+* [#1243](https://github.com/stripe/stripe-php/pull/1243) Add test
+* [#1240](https://github.com/stripe/stripe-php/pull/1240) API Updates
+  * Add support for `verify_microdeposits` method on resources `PaymentIntent` and `SetupIntent`
+  
+  
+* [#1241](https://github.com/stripe/stripe-php/pull/1241) Add generic parameter to \Stripe\Collection usages
+
 ## 7.113.0 - 2022-02-03
 * [#1239](https://github.com/stripe/stripe-php/pull/1239) API Updates
   * Add `REASON_EXPIRED_UNCAPTURED_CHARGE` enum value on `Refund`.
