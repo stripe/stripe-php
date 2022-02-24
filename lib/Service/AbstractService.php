@@ -7,6 +7,8 @@ namespace Stripe\Service;
  */
 abstract class AbstractService
 {
+    use ServiceNavigatorTrait;
+
     /**
      * @var \Stripe\StripeClientInterface
      */
