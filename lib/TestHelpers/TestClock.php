@@ -15,6 +15,7 @@ namespace Stripe\TestHelpers;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
+ * @property int $deletes_after Time at which this clock is scheduled to auto delete.
  * @property int $frozen_time Time at which all objects belonging to this clock are frozen.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $name The custom name supplied at creation.
