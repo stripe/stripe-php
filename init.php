@@ -158,6 +158,7 @@ require __DIR__ . '/lib/TaxRate.php';
 require __DIR__ . '/lib/Terminal/ConnectionToken.php';
 require __DIR__ . '/lib/Terminal/Location.php';
 require __DIR__ . '/lib/Terminal/Reader.php';
+require __DIR__ . '/lib/TestHelpers/TestClock.php';
 require __DIR__ . '/lib/ThreeDSecure.php';
 require __DIR__ . '/lib/Token.php';
 require __DIR__ . '/lib/Topup.php';
@@ -230,6 +231,7 @@ require __DIR__ . '/lib/Service/TaxRateService.php';
 require __DIR__ . '/lib/Service/Terminal/ConnectionTokenService.php';
 require __DIR__ . '/lib/Service/Terminal/LocationService.php';
 require __DIR__ . '/lib/Service/Terminal/ReaderService.php';
+require __DIR__ . '/lib/Service/TestHelpers/TestClockService.php';
 require __DIR__ . '/lib/Service/TokenService.php';
 require __DIR__ . '/lib/Service/TopupService.php';
 require __DIR__ . '/lib/Service/TransferService.php';
@@ -245,6 +247,7 @@ require __DIR__ . '/lib/Service/Radar/RadarServiceFactory.php';
 require __DIR__ . '/lib/Service/Reporting/ReportingServiceFactory.php';
 require __DIR__ . '/lib/Service/Sigma/SigmaServiceFactory.php';
 require __DIR__ . '/lib/Service/Terminal/TerminalServiceFactory.php';
+require __DIR__ . '/lib/Service/TestHelpers/TestHelpersServiceFactory.php';
 
 // OAuth
 require __DIR__ . '/lib/OAuth.php';

@@ -40,6 +40,7 @@ namespace Stripe;
  * @property null|string|\Stripe\Subscription $subscription The subscription that was created or updated from this quote.
  * @property \Stripe\StripeObject $subscription_data
  * @property null|string|\Stripe\SubscriptionSchedule $subscription_schedule The subscription schedule that was created or updated from this quote.
+ * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this quote belongs to.
  * @property \Stripe\StripeObject $total_details
  * @property null|\Stripe\StripeObject $transfer_data The account (if any) the payments will be attributed to for tax reporting, and where funds from each payment will be transferred to for each of the invoices.
  */
