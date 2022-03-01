@@ -3,7 +3,10 @@
 namespace Stripe\Service;
 
 /**
- * Trait for creatable resources. Adds a `create()` static method to the class.
+ * Trait for creatable resources and auxiliary services.
+ * Adds a `create()` static method to the class for creatable resources.
+ * Adds custom properties named like nested classes to parent of
+ * auxiliary services.
  *
  * This trait should only be applied to classes that derive from StripeObject.
  */
