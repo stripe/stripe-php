@@ -1,11 +1,18 @@
 # Changelog
 
+## 7.115.0 - 2022-03-01
+* [#1245](https://github.com/stripe/stripe-php/pull/1245) [#1247](https://github.com/stripe/stripe-php/pull/1247) API Updates
+  * Add support for new resource `TestHelpers.TestClock`
+  * Add support for `test_clock` on `Customer`, `Invoice`, `InvoiceItem`, `Quote`, `Subscription`, and `SubscriptionSchedule`
+  * Add support for `next_action` on `Refund`
+  * Add support for `konbini` on `PaymentMethod`
+* [#1244](https://github.com/stripe/stripe-php/pull/1244) API Updates
+  * Add support for new values `bbpos_wisepad3` and `stripe_m2` on enum `Terminal.Reader.device_type`
+
 ## 7.114.0 - 2022-02-15
 * [#1243](https://github.com/stripe/stripe-php/pull/1243) Add test
 * [#1240](https://github.com/stripe/stripe-php/pull/1240) API Updates
   * Add support for `verify_microdeposits` method on resources `PaymentIntent` and `SetupIntent`
-  
-  
 * [#1241](https://github.com/stripe/stripe-php/pull/1241) Add generic parameter to \Stripe\Collection usages
 
 ## 7.113.0 - 2022-02-03
