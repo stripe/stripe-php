@@ -63,6 +63,7 @@ require __DIR__ . '/lib/StripeObject.php';
 require __DIR__ . '/lib/ApiRequestor.php';
 require __DIR__ . '/lib/ApiResource.php';
 require __DIR__ . '/lib/SingletonApiResource.php';
+require __DIR__ . '/lib/Service/ServiceNavigatorTrait.php';
 require __DIR__ . '/lib/Service/AbstractService.php';
 require __DIR__ . '/lib/Service/AbstractServiceFactory.php';
 
