@@ -59,6 +59,7 @@ namespace Stripe\Service;
  * @property TaxCodeService $taxCodes
  * @property TaxRateService $taxRates
  * @property Terminal\TerminalServiceFactory $terminal
+ * @property TestHelpers\TestHelpersServiceFactory $testHelpers
  * @property TokenService $tokens
  * @property TopupService $topups
  * @property TransferService $transfers
@@ -122,6 +123,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'taxCodes' => TaxCodeService::class,
         'taxRates' => TaxRateService::class,
         'terminal' => Terminal\TerminalServiceFactory::class,
+        'testHelpers' => TestHelpers\TestHelpersServiceFactory::class,
         'tokens' => TokenService::class,
         'topups' => TopupService::class,
         'transfers' => TransferService::class,

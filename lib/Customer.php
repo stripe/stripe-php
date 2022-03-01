@@ -37,6 +37,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $tax
  * @property null|string $tax_exempt Describes the customer's tax exemption status. One of <code>none</code>, <code>exempt</code>, or <code>reverse</code>. When set to <code>reverse</code>, invoice and receipt PDFs include the text <strong>&quot;Reverse charge&quot;</strong>.
  * @property \Stripe\Collection<\Stripe\TaxId> $tax_ids The customer's tax IDs.
+ * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this customer belongs to.
  */
 class Customer extends ApiResource
 {

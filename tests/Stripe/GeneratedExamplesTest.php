@@ -2722,4 +2722,48 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         );
         static::assertInstanceOf(\Stripe\SetupIntent::class, $result);
     }
+
+    public function testCreateTestClock()
+    {
+        $this->expectsRequest('post', '/v1/test_helpers/test_clocks');
+        $result = $this->client->testHelpers->testClocks->create(
+            ['frozen_time' => 123, 'name' => 'cogsworth']
+        );
+        static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result);
+    }
+
+    public function testRetrieveTestClock()
+    {
+        $this->expectsRequest('get', '/v1/test_helpers/test_clocks/clock_xyz');
+        $result = $this->client->testHelpers->testClocks->retrieve('clock_xyz', []);
+        static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result);
+    }
+
+    public function testListTestClock()
+    {
+        $this->expectsRequest('get', '/v1/test_helpers/test_clocks');
+        $result = $this->client->testHelpers->testClocks->all([]);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result->data[0]);
+    }
+
+    public function testDeleteTestClock()
+    {
+        $this->expectsRequest('delete', '/v1/test_helpers/test_clocks/clock_xyz');
+        $result = $this->client->testHelpers->testClocks->delete('clock_xyz', []);
+        static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result);
+    }
+
+    public function testAdvanceTestClock()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/test_clocks/clock_xyz/advance'
+        );
+        $result = $this->client->testHelpers->testClocks->advance(
+            'clock_xyz',
+            ['frozen_time' => 142]
+        );
+        static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result);
+    }
 }

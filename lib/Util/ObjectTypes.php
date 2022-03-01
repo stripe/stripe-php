@@ -94,6 +94,7 @@ class ObjectTypes
         \Stripe\Terminal\ConnectionToken::OBJECT_NAME => \Stripe\Terminal\ConnectionToken::class,
         \Stripe\Terminal\Location::OBJECT_NAME => \Stripe\Terminal\Location::class,
         \Stripe\Terminal\Reader::OBJECT_NAME => \Stripe\Terminal\Reader::class,
+        \Stripe\TestHelpers\TestClock::OBJECT_NAME => \Stripe\TestHelpers\TestClock::class,
         \Stripe\ThreeDSecure::OBJECT_NAME => \Stripe\ThreeDSecure::class,
         \Stripe\Token::OBJECT_NAME => \Stripe\Token::class,
         \Stripe\Topup::OBJECT_NAME => \Stripe\Topup::class,
