@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.116.0 - 2022-03-02
+* [#1248](https://github.com/stripe/stripe-php/pull/1248) API Updates
+  * Add support for `proration_details` on `InvoiceLineItem`
+  
+
 ## 7.115.0 - 2022-03-01
 * [#1245](https://github.com/stripe/stripe-php/pull/1245) [#1247](https://github.com/stripe/stripe-php/pull/1247) API Updates
   * Add support for new resource `TestHelpers.TestClock`
