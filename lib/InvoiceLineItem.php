@@ -20,6 +20,7 @@ namespace Stripe;
  * @property null|\Stripe\Plan $plan The plan of the subscription, if the line item is a subscription or a proration.
  * @property null|\Stripe\Price $price The price of the line item.
  * @property bool $proration Whether this is a proration.
+ * @property null|\Stripe\StripeObject $proration_details Additional details for proration line items
  * @property null|int $quantity The quantity of the subscription, if the line item is a subscription or a proration.
  * @property null|string $subscription The subscription that the invoice item pertains to, if any.
  * @property string $subscription_item The subscription item that generated this invoice item. Left empty if the line item is not an explicit result of a subscription.
