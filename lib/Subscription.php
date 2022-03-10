@@ -58,6 +58,7 @@ class Subscription extends ApiResource
     use ApiOperations\Update;
 
     const PAYMENT_BEHAVIOR_ALLOW_INCOMPLETE = 'allow_incomplete';
+    const PAYMENT_BEHAVIOR_DEFAULT_INCOMPLETE = 'default_incomplete';
     const PAYMENT_BEHAVIOR_ERROR_IF_INCOMPLETE = 'error_if_incomplete';
     const PAYMENT_BEHAVIOR_PENDING_IF_INCOMPLETE = 'pending_if_incomplete';
 
