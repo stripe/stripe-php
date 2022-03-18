@@ -32,6 +32,10 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * <code>status=’requires_capture’</code>, the remaining
      * <code>amount_capturable</code> will automatically be refunded.
      *
+     * You cannot cancel the PaymentIntent for a Checkout Session. <a
+     * href="/docs/api/checkout/sessions/expire">Expire the Checkout Session</a>
+     * instead
+     *
      * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
