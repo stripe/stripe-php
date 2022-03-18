@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.117.0 - 2022-03-18
+* [#1254](https://github.com/stripe/stripe-php/pull/1254) API Updates
+  * Add support for `status` on `Card`
+* [#1251](https://github.com/stripe/stripe-php/pull/1251) Add support for SearchResult objects.
+* [#1249](https://github.com/stripe/stripe-php/pull/1249) Add missing constant for payment_behavior
+
 ## 7.116.0 - 2022-03-02
 * [#1248](https://github.com/stripe/stripe-php/pull/1248) API Updates
   * Add support for `proration_details` on `InvoiceLineItem`
