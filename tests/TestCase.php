@@ -79,7 +79,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
         }
     }
 
-    public static function compatAssertMatchesRegularExpression($text, $regex) {
+    public static function compatAssertMatchesRegularExpression($text, $regex)
+    {
         if (method_exists(static::class, 'assertMatchesRegularExpression')) {
             // @phpstan-ignore-next-line
             static::assertMatchesRegularExpression($text, $regex);
