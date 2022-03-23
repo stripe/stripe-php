@@ -57,4 +57,21 @@ class Refund extends ApiResource
      * @deprecated use FAILURE_REASON_EXPIRED_OR_CANCELED_CARD instead
      */
     const FAILURE_REASON = 'expired_or_canceled_card';
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Refund the canceled refund
+     */
+    public function cancel($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/cancel';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
 }
