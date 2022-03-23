@@ -228,6 +228,11 @@ class Event extends ApiResource
     const SUBSCRIPTION_SCHEDULE_UPDATED = 'subscription_schedule.updated';
     const TAX_RATE_CREATED = 'tax_rate.created';
     const TAX_RATE_UPDATED = 'tax_rate.updated';
+    const TEST_HELPERS_TEST_CLOCK_ADVANCING = 'test_helpers.test_clock.advancing';
+    const TEST_HELPERS_TEST_CLOCK_CREATED = 'test_helpers.test_clock.created';
+    const TEST_HELPERS_TEST_CLOCK_DELETED = 'test_helpers.test_clock.deleted';
+    const TEST_HELPERS_TEST_CLOCK_INTERNAL_FAILURE = 'test_helpers.test_clock.internal_failure';
+    const TEST_HELPERS_TEST_CLOCK_READY = 'test_helpers.test_clock.ready';
     const TOPUP_CANCELED = 'topup.canceled';
     const TOPUP_CREATED = 'topup.created';
     const TOPUP_FAILED = 'topup.failed';
