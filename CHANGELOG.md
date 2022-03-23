@@ -1,5 +1,12 @@
 # Changelog
 
+## 7.118.0 - 2022-03-23
+* [#1255](https://github.com/stripe/stripe-php/pull/1255) API Updates
+  * Add support for `cancel` method on resource `Refund`
+  * Add support for new values `bg_uic`, `hu_tin`, and `si_tin` on enum `TaxId.type`
+  * Add  `test_helpers.test_clock.advancing`, `test_helpers.test_clock.created`, `test_helpers.test_clock.deleted`, `test_helpers.test_clock.internal_failure`, and `test_helpers.test_clock.ready` events.
+  
+
 ## 7.117.0 - 2022-03-18
 * [#1254](https://github.com/stripe/stripe-php/pull/1254) API Updates
   * Add support for `status` on `Card`
