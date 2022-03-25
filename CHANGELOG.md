@@ -1,5 +1,12 @@
 # Changelog
 
+## 7.119.0 - 2022-03-25
+* [#1256](https://github.com/stripe/stripe-php/pull/1256) API Updates
+  * Add support for PayNow and US Bank Accounts Debits payments
+      * Add support for `paynow` and `us_bank_account` on `PaymentMethod`
+      * Add support for new values `paynow` and `us_bank_account` on enum `PaymentMethod.type`
+  * Add support for `failure_balance_transaction` on `Charge`
+
 ## 7.118.0 - 2022-03-23
 * [#1255](https://github.com/stripe/stripe-php/pull/1255) API Updates
   * Add support for `cancel` method on resource `Refund`
