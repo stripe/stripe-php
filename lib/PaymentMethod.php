@@ -42,9 +42,11 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property \Stripe\StripeObject $oxxo
  * @property \Stripe\StripeObject $p24
+ * @property \Stripe\StripeObject $paynow
  * @property \Stripe\StripeObject $sepa_debit
  * @property \Stripe\StripeObject $sofort
  * @property string $type The type of the PaymentMethod. An additional hash is included on the PaymentMethod with a name matching this value. It contains additional information specific to the PaymentMethod type.
+ * @property \Stripe\StripeObject $us_bank_account
  * @property \Stripe\StripeObject $wechat_pay
  */
 class PaymentMethod extends ApiResource
