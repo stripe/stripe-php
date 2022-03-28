@@ -69,6 +69,7 @@ class Charge extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
+    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const STATUS_FAILED = 'failed';
@@ -143,5 +144,20 @@ class Charge extends ApiResource
         $this->refreshFrom($response, $opts);
 
         return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<Charge> the charge search results
+     */
+    public static function search($params = null, $opts = null)
+    {
+        $url = '/v1/charges/search';
+
+        return self::_searchResource($url, $params, $opts);
     }
 }

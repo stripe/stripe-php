@@ -48,6 +48,7 @@ class Customer extends ApiResource
     use ApiOperations\Delete;
     use ApiOperations\NestedResource;
     use ApiOperations\Retrieve;
+    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const TAX_EXEMPT_EXEMPT = 'exempt';
@@ -98,6 +99,21 @@ class Customer extends ApiResource
         $obj->setLastResponse($response);
 
         return $obj;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<Customer> the customer search results
+     */
+    public static function search($params = null, $opts = null)
+    {
+        $url = '/v1/customers/search';
+
+        return self::_searchResource($url, $params, $opts);
     }
 
     const PATH_BALANCE_TRANSACTIONS = '/balance_transactions';

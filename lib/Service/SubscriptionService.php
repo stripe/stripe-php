@@ -114,6 +114,22 @@ class SubscriptionService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Search for subscriptions you’ve previously created using Stripe’s <a
+     * href="/docs/search#search-query-language">Search Query Language</a>.
+     *
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<\Stripe\Subscription>
+     */
+    public function search($params = null, $opts = null)
+    {
+        return $this->requestSearchResult('get', '/v1/subscriptions/search', $params, $opts);
+    }
+
+    /**
      * Updates an existing subscription on a customer to match the specified
      * parameters. When changing plans or quantities, we will optionally prorate the
      * price we charge next month to make up for any price changes. To preview how the

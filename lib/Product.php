@@ -49,8 +49,24 @@ class Product extends ApiResource
     use ApiOperations\Create;
     use ApiOperations\Delete;
     use ApiOperations\Retrieve;
+    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const TYPE_GOOD = 'good';
     const TYPE_SERVICE = 'service';
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<Product> the product search results
+     */
+    public static function search($params = null, $opts = null)
+    {
+        $url = '/v1/products/search';
+
+        return self::_searchResource($url, $params, $opts);
+    }
 }

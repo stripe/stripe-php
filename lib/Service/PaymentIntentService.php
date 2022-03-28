@@ -163,6 +163,22 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Search for PaymentIntents you’ve previously created using Stripe’s <a
+     * href="/docs/search#search-query-language">Search Query Language</a>.
+     *
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<\Stripe\PaymentIntent>
+     */
+    public function search($params = null, $opts = null)
+    {
+        return $this->requestSearchResult('get', '/v1/payment_intents/search', $params, $opts);
+    }
+
+    /**
      * Updates properties on a PaymentIntent object without confirming.
      *
      * Depending on which properties you update, you may need to confirm the

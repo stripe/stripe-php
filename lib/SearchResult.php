@@ -12,12 +12,16 @@ namespace Stripe;
  * object IDs and a <code>starting_before</code>/<code>ending_after</code>
  * parameter. Thus, <code>SearchResult</code> only supports forwards pagination.
  *
+ * The {@see $total_count} property is only available when
+ * the `expand` parameter contains `total_count`.
+ *
  * @template TStripeObject of StripeObject
  * @template-implements \IteratorAggregate<TStripeObject>
  *
  * @property string $object
  * @property string $url
  * @property string $next_page
+ * @property int $total_count
  * @property bool $has_more
  * @property TStripeObject[] $data
  */

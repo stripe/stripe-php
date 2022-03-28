@@ -291,6 +291,22 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Search for customers you’ve previously created using Stripe’s <a
+     * href="/docs/search#search-query-language">Search Query Language</a>.
+     *
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<\Stripe\Customer>
+     */
+    public function search($params = null, $opts = null)
+    {
+        return $this->requestSearchResult('get', '/v1/customers/search', $params, $opts);
+    }
+
+    /**
      * Updates the specified customer by setting the values of the parameters passed.
      * Any parameters not provided will be left unchanged. For example, if you pass the
      * <strong>source</strong> parameter, that becomes the customer’s active source
