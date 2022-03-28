@@ -44,7 +44,7 @@ final class ChargeServiceTest extends \Stripe\TestCase
             'get',
             '/v1/charges/search',
         );
-        $resources = $this->service->search(['query' => 'currency:USD']);
+        $resources = $this->service->search(['query' => 'currency:"USD"']);
         static::compatAssertIsArray($resources->data);
         static::assertEquals($resources->total_count, 1);
         static::assertInstanceOf(\Stripe\Charge::class, $resources->data[0]);
