@@ -153,6 +153,22 @@ class InvoiceService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Search for invoices you’ve previously created using Stripe’s <a
+     * href="/docs/search#search-query-language">Search Query Language</a>.
+     *
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<\Stripe\Invoice>
+     */
+    public function search($params = null, $opts = null)
+    {
+        return $this->requestSearchResult('get', '/v1/invoices/search', $params, $opts);
+    }
+
+    /**
      * Stripe will automatically send invoices to customers according to your <a
      * href="https://dashboard.stripe.com/account/billing/automatic">subscriptions
      * settings</a>. However, if you’d like to manually send an invoice to your

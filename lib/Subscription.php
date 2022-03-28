@@ -55,6 +55,7 @@ class Subscription extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
+    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const PAYMENT_BEHAVIOR_ALLOW_INCOMPLETE = 'allow_incomplete';
@@ -118,5 +119,20 @@ class Subscription extends ApiResource
         $this->refreshFrom(['discount' => null], $opts, true);
 
         return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<Subscription> the subscription search results
+     */
+    public static function search($params = null, $opts = null)
+    {
+        $url = '/v1/subscriptions/search';
+
+        return self::_searchResource($url, $params, $opts);
     }
 }

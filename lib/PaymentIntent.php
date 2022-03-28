@@ -64,6 +64,7 @@ class PaymentIntent extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
+    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const STATUS_CANCELED = 'canceled';
@@ -140,5 +141,20 @@ class PaymentIntent extends ApiResource
         $this->refreshFrom($response, $opts);
 
         return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<PaymentIntent> the payment intent search results
+     */
+    public static function search($params = null, $opts = null)
+    {
+        $url = '/v1/payment_intents/search';
+
+        return self::_searchResource($url, $params, $opts);
     }
 }
