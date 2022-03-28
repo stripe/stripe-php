@@ -42,7 +42,7 @@ final class ChargeServiceTest extends \Stripe\TestCase
     {
         $this->expectsRequest(
             'get',
-            '/v1/charges/search',
+            '/v1/charges/search'
         );
         $resources = $this->service->search(['query' => 'currency:"USD"']);
         static::compatAssertIsArray($resources->data);
