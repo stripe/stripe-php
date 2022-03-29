@@ -234,6 +234,7 @@ require __DIR__ . '/lib/Service/Terminal/ConnectionTokenService.php';
 require __DIR__ . '/lib/Service/Terminal/LocationService.php';
 require __DIR__ . '/lib/Service/Terminal/ReaderService.php';
 require __DIR__ . '/lib/Service/TestHelpers/TestClockService.php';
+require __DIR__ . '/lib/Service/TestHelpers/Terminal/ReaderService.php';
 require __DIR__ . '/lib/Service/TokenService.php';
 require __DIR__ . '/lib/Service/TopupService.php';
 require __DIR__ . '/lib/Service/TransferService.php';
