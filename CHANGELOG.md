@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.120.0 - 2022-03-29
+* [#1257](https://github.com/stripe/stripe-php/pull/1257) API Updates
+  * Add support for Search API
+    * Add support for `search` method on resources `Charge`, `Customer`, `Invoice`, `PaymentIntent`, `Price`, `Product`, and `Subscription`
+
 ## 7.119.0 - 2022-03-25
 * [#1256](https://github.com/stripe/stripe-php/pull/1256) API Updates
   * Add support for PayNow and US Bank Accounts Debits payments
@@ -12,7 +17,7 @@
   * Add support for `cancel` method on resource `Refund`
   * Add support for new values `bg_uic`, `hu_tin`, and `si_tin` on enum `TaxId.type`
   * Add  `test_helpers.test_clock.advancing`, `test_helpers.test_clock.created`, `test_helpers.test_clock.deleted`, `test_helpers.test_clock.internal_failure`, and `test_helpers.test_clock.ready` events.
-  
+
 
 ## 7.117.0 - 2022-03-18
 * [#1254](https://github.com/stripe/stripe-php/pull/1254) API Updates
@@ -23,7 +28,7 @@
 ## 7.116.0 - 2022-03-02
 * [#1248](https://github.com/stripe/stripe-php/pull/1248) API Updates
   * Add support for `proration_details` on `InvoiceLineItem`
-  
+
 
 ## 7.115.0 - 2022-03-01
 * [#1245](https://github.com/stripe/stripe-php/pull/1245) [#1247](https://github.com/stripe/stripe-php/pull/1247) API Updates
@@ -48,7 +53,7 @@
 * [#1235](https://github.com/stripe/stripe-php/pull/1235) API Updates
   * Add support for `phone_number_collection` on `PaymentLink`
   * Add support for new value `is_vat` on enum `TaxId.type`
-  
+
 
 ## 7.111.0 - 2022-01-20
 * [#1233](https://github.com/stripe/stripe-php/pull/1233) API Updates
