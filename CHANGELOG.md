@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.121.0 - 2022-03-30
+* [#1258](https://github.com/stripe/stripe-php/pull/1258) API Updates
+  * Add support for `cancel_action`, `process_payment_intent`, `process_setup_intent`, and `set_reader_display` methods on resource `Terminal.Reader`
+  * Add support for `action` on `Terminal.Reader`
+
 ## 7.120.0 - 2022-03-29
 * [#1257](https://github.com/stripe/stripe-php/pull/1257) API Updates
   * Add support for Search API
