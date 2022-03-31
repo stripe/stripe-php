@@ -163,6 +163,7 @@ class Event extends ApiResource
     const PAYMENT_INTENT_AMOUNT_CAPTURABLE_UPDATED = 'payment_intent.amount_capturable_updated';
     const PAYMENT_INTENT_CANCELED = 'payment_intent.canceled';
     const PAYMENT_INTENT_CREATED = 'payment_intent.created';
+    const PAYMENT_INTENT_PARTIALLY_FUNDED = 'payment_intent.partially_funded';
     const PAYMENT_INTENT_PAYMENT_FAILED = 'payment_intent.payment_failed';
     const PAYMENT_INTENT_PROCESSING = 'payment_intent.processing';
     const PAYMENT_INTENT_REQUIRES_ACTION = 'payment_intent.requires_action';
@@ -228,6 +229,8 @@ class Event extends ApiResource
     const SUBSCRIPTION_SCHEDULE_UPDATED = 'subscription_schedule.updated';
     const TAX_RATE_CREATED = 'tax_rate.created';
     const TAX_RATE_UPDATED = 'tax_rate.updated';
+    const TERMINAL_READER_ACTION_FAILED = 'terminal.reader.action_failed';
+    const TERMINAL_READER_ACTION_SUCCEEDED = 'terminal.reader.action_succeeded';
     const TEST_HELPERS_TEST_CLOCK_ADVANCING = 'test_helpers.test_clock.advancing';
     const TEST_HELPERS_TEST_CLOCK_CREATED = 'test_helpers.test_clock.created';
     const TEST_HELPERS_TEST_CLOCK_DELETED = 'test_helpers.test_clock.deleted';
