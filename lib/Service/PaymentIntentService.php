@@ -22,6 +22,26 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Manually reconcile the remaining amount for a customer_balance PaymentIntent.
+     *
+     * This can be used when the cash balance for <a
+     * href="docs/payments/customer-balance/reconciliation#cash-manual-reconciliation">a
+     * customer in manual reconciliation mode</a> received funds.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
+     */
+    public function applyCustomerBalance($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/payment_intents/%s/apply_customer_balance', $id), $params, $opts);
+    }
+
+    /**
      * A PaymentIntent object can be canceled when it is in one of these statuses:
      * <code>requires_payment_method</code>, <code>requires_capture</code>,
      * <code>requires_confirmation</code>, <code>requires_action</code>, or

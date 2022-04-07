@@ -81,6 +81,23 @@ class PaymentIntent extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
+     * @return \Stripe\PaymentIntent the applied payment intent
+     */
+    public function applyCustomerBalance($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/apply_customer_balance';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return \Stripe\PaymentIntent the canceled payment intent
      */
     public function cancel($params = null, $opts = null)
