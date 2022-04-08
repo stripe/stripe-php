@@ -20,8 +20,8 @@ namespace Stripe;
  * href="https://stripe.com/docs/billing/subscriptions/set-up-subscription">Set up
  * a subscription</a>, <a
  * href="https://stripe.com/docs/billing/invoices/create">create an invoice</a>,
- * and more about <a href="https://stripe.com/docs/billing/prices-guide">products
- * and prices</a>.
+ * and more about <a
+ * href="https://stripe.com/docs/products-prices/overview">products and prices</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -50,6 +50,7 @@ class Price extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
+    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const BILLING_SCHEME_PER_UNIT = 'per_unit';
@@ -64,4 +65,19 @@ class Price extends ApiResource
 
     const TYPE_ONE_TIME = 'one_time';
     const TYPE_RECURRING = 'recurring';
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<Price> the price search results
+     */
+    public static function search($params = null, $opts = null)
+    {
+        $url = '/v1/prices/search';
+
+        return self::_searchResource($url, $params, $opts);
+    }
 }

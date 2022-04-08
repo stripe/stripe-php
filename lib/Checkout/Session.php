@@ -37,15 +37,17 @@ namespace Stripe\Checkout;
  * @property null|\Stripe\StripeObject $consent_collection When set, provides configuration for the Checkout Session to gather active consent from customers.
  * @property null|string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string|\Stripe\Customer $customer The ID of the customer for this Session. For Checkout Sessions in <code>payment</code> or <code>subscription</code> mode, Checkout will create a new customer object based on information provided during the payment flow unless an existing customer was provided when the Session was created.
+ * @property null|string $customer_creation Configure whether a Checkout Session creates a Customer when the Checkout Session completes.
  * @property null|\Stripe\StripeObject $customer_details The customer details including the customer's tax exempt status and the customer's tax IDs. Only present on Sessions in <code>payment</code> or <code>subscription</code> mode.
  * @property null|string $customer_email If provided, this value will be used when the Customer object is created. If not provided, customers will be asked to enter their email address. Use this parameter to prefill customer data if you already have an email on file. To access information about the customer once the payment flow is complete, use the <code>customer</code> attribute.
  * @property int $expires_at The timestamp at which the Checkout Session will expire.
- * @property \Stripe\Collection $line_items The line items purchased by the customer.
+ * @property \Stripe\Collection<\Stripe\LineItem> $line_items The line items purchased by the customer.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $locale The IETF language tag of the locale Checkout is displayed in. If blank or <code>auto</code>, the browser's locale is used.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $mode The mode of the Checkout Session.
  * @property null|string|\Stripe\PaymentIntent $payment_intent The ID of the PaymentIntent for Checkout Sessions in <code>payment</code> mode.
+ * @property null|string|\Stripe\PaymentLink $payment_link The ID of the Payment Link that created this Session.
  * @property null|\Stripe\StripeObject $payment_method_options Payment-method-specific configuration for the PaymentIntent or SetupIntent of this CheckoutSession.
  * @property string[] $payment_method_types A list of the types of payment methods (e.g. card) this Checkout Session is allowed to accept.
  * @property string $payment_status The payment status of the Checkout Session, one of <code>paid</code>, <code>unpaid</code>, or <code>no_payment_required</code>. You can use this value to decide when to fulfill your customer's order.
@@ -62,7 +64,7 @@ namespace Stripe\Checkout;
  * @property string $success_url The URL the customer will be directed to after the payment or subscription creation is successful.
  * @property \Stripe\StripeObject $tax_id_collection
  * @property null|\Stripe\StripeObject $total_details Tax and discount details for the computed total amount.
- * @property null|string $url The URL to the Checkout Session.
+ * @property null|string $url The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout. If you’re using <a href="https://stripe.com/docs/payments/checkout/custom-domains">Custom Domains</a>, the URL will use your subdomain. Otherwise, it’ll use <code>checkout.stripe.com.</code>
  */
 class Session extends \Stripe\ApiResource
 {
@@ -75,6 +77,9 @@ class Session extends \Stripe\ApiResource
 
     const BILLING_ADDRESS_COLLECTION_AUTO = 'auto';
     const BILLING_ADDRESS_COLLECTION_REQUIRED = 'required';
+
+    const CUSTOMER_CREATION_ALWAYS = 'always';
+    const CUSTOMER_CREATION_IF_REQUIRED = 'if_required';
 
     const MODE_PAYMENT = 'payment';
     const MODE_SETUP = 'setup';
@@ -119,7 +124,7 @@ class Session extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection the list of items
+     * @return \Stripe\Collection<\Stripe\LineItem> the list of items
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {

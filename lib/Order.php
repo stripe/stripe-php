@@ -10,8 +10,8 @@ namespace Stripe;
  * create, retrieve, and pay individual orders, as well as list all orders. Orders
  * are identified by a unique, random ID.
  *
- * Related guide: <a href="https://stripe.com/docs/orders">Tax, Shipping, and
- * Inventory</a>.
+ * Related guide: <a href="https://stripe.com/docs/orders-legacy">Tax, Shipping,
+ * and Inventory</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -28,7 +28,7 @@ namespace Stripe;
  * @property \Stripe\OrderItem[] $items List of items constituting the order. An order can have up to 25 items.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|\Stripe\Collection $returns A list of returns that have taken place for this order.
+ * @property null|\Stripe\Collection<\Stripe\OrderReturn> $returns A list of returns that have taken place for this order.
  * @property null|string $selected_shipping_method The shipping method that is currently selected for this order, if any. If present, it is equal to one of the <code>id</code>s of shipping methods in the <code>shipping_methods</code> array. At order creation time, if there are multiple shipping methods, Stripe will automatically selected the first method.
  * @property null|\Stripe\StripeObject $shipping The shipping address for the order. Present if the order is for goods to be shipped.
  * @property null|\Stripe\StripeObject[] $shipping_methods A list of supported shipping methods for this order. The desired shipping method can be specified either by updating the order, or when paying it.

@@ -54,6 +54,7 @@ require __DIR__ . '/lib/ApiOperations/Delete.php';
 require __DIR__ . '/lib/ApiOperations/NestedResource.php';
 require __DIR__ . '/lib/ApiOperations/Request.php';
 require __DIR__ . '/lib/ApiOperations/Retrieve.php';
+require __DIR__ . '/lib/ApiOperations/Search.php';
 require __DIR__ . '/lib/ApiOperations/Update.php';
 
 // Plumbing
@@ -124,6 +125,7 @@ require __DIR__ . '/lib/Order.php';
 require __DIR__ . '/lib/OrderItem.php';
 require __DIR__ . '/lib/OrderReturn.php';
 require __DIR__ . '/lib/PaymentIntent.php';
+require __DIR__ . '/lib/PaymentLink.php';
 require __DIR__ . '/lib/PaymentMethod.php';
 require __DIR__ . '/lib/Payout.php';
 require __DIR__ . '/lib/Person.php';
@@ -141,6 +143,7 @@ require __DIR__ . '/lib/Refund.php';
 require __DIR__ . '/lib/Reporting/ReportRun.php';
 require __DIR__ . '/lib/Reporting/ReportType.php';
 require __DIR__ . '/lib/Review.php';
+require __DIR__ . '/lib/SearchResult.php';
 require __DIR__ . '/lib/SetupAttempt.php';
 require __DIR__ . '/lib/SetupIntent.php';
 require __DIR__ . '/lib/ShippingRate.php';
@@ -157,6 +160,7 @@ require __DIR__ . '/lib/TaxRate.php';
 require __DIR__ . '/lib/Terminal/ConnectionToken.php';
 require __DIR__ . '/lib/Terminal/Location.php';
 require __DIR__ . '/lib/Terminal/Reader.php';
+require __DIR__ . '/lib/TestHelpers/TestClock.php';
 require __DIR__ . '/lib/ThreeDSecure.php';
 require __DIR__ . '/lib/Token.php';
 require __DIR__ . '/lib/Topup.php';
@@ -200,6 +204,7 @@ require __DIR__ . '/lib/Service/MandateService.php';
 require __DIR__ . '/lib/Service/OrderService.php';
 require __DIR__ . '/lib/Service/OrderReturnService.php';
 require __DIR__ . '/lib/Service/PaymentIntentService.php';
+require __DIR__ . '/lib/Service/PaymentLinkService.php';
 require __DIR__ . '/lib/Service/PaymentMethodService.php';
 require __DIR__ . '/lib/Service/PayoutService.php';
 require __DIR__ . '/lib/Service/PlanService.php';
@@ -228,21 +233,24 @@ require __DIR__ . '/lib/Service/TaxRateService.php';
 require __DIR__ . '/lib/Service/Terminal/ConnectionTokenService.php';
 require __DIR__ . '/lib/Service/Terminal/LocationService.php';
 require __DIR__ . '/lib/Service/Terminal/ReaderService.php';
+require __DIR__ . '/lib/Service/TestHelpers/Terminal/ReaderService.php';
+require __DIR__ . '/lib/Service/TestHelpers/TestClockService.php';
 require __DIR__ . '/lib/Service/TokenService.php';
 require __DIR__ . '/lib/Service/TopupService.php';
 require __DIR__ . '/lib/Service/TransferService.php';
 require __DIR__ . '/lib/Service/WebhookEndpointService.php';
 
 // Service factories
-require __DIR__ . '/lib/Service/CoreServiceFactory.php';
 require __DIR__ . '/lib/Service/BillingPortal/BillingPortalServiceFactory.php';
 require __DIR__ . '/lib/Service/Checkout/CheckoutServiceFactory.php';
+require __DIR__ . '/lib/Service/CoreServiceFactory.php';
 require __DIR__ . '/lib/Service/Identity/IdentityServiceFactory.php';
 require __DIR__ . '/lib/Service/Issuing/IssuingServiceFactory.php';
 require __DIR__ . '/lib/Service/Radar/RadarServiceFactory.php';
 require __DIR__ . '/lib/Service/Reporting/ReportingServiceFactory.php';
 require __DIR__ . '/lib/Service/Sigma/SigmaServiceFactory.php';
 require __DIR__ . '/lib/Service/Terminal/TerminalServiceFactory.php';
+require __DIR__ . '/lib/Service/TestHelpers/TestHelpersServiceFactory.php';
 
 // OAuth
 require __DIR__ . '/lib/OAuth.php';

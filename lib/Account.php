@@ -22,11 +22,11 @@ namespace Stripe;
  * @property \Stripe\StripeObject $company
  * @property \Stripe\StripeObject $controller
  * @property string $country The account's country.
- * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
+ * @property int $created Time at which the account was connected. Measured in seconds since the Unix epoch.
  * @property string $default_currency Three-letter ISO currency code representing the default currency for the account. This must be a currency that <a href="https://stripe.com/docs/payouts">Stripe supports in the account's country</a>.
  * @property bool $details_submitted Whether account details have been submitted. Standard accounts cannot receive payouts before this is true.
  * @property null|string $email An email address associated with the account. You can treat this as metadata: it is not used for authentication or messaging account holders.
- * @property \Stripe\Collection $external_accounts External accounts (bank accounts and debit cards) currently attached to this account
+ * @property \Stripe\Collection<\Stripe\BankAccount|\Stripe\Card> $external_accounts External accounts (bank accounts and debit cards) currently attached to this account
  * @property \Stripe\StripeObject $future_requirements
  * @property \Stripe\Person $individual <p>This is an object representing a person associated with a Stripe account.</p><p>A platform cannot access a Standard or Express account's persons after the account starts onboarding, such as after generating an account link for the account. See the <a href="https://stripe.com/docs/connect/standard-accounts">Standard onboarding</a> or <a href="https://stripe.com/docs/connect/express-accounts">Express onboarding documentation</a> for information about platform pre-filling and account onboarding steps.</p><p>Related guide: <a href="https://stripe.com/docs/connect/identity-verification-api#person-information">Handling Identity Verification with the API</a>.</p>
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -184,7 +184,7 @@ class Account extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection the list of persons
+     * @return \Stripe\Collection<\Stripe\Person> the list of persons
      */
     public function persons($params = null, $opts = null)
     {
@@ -228,7 +228,7 @@ class Account extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection the list of capabilities
+     * @return \Stripe\Collection<\Stripe\Capability> the list of capabilities
      */
     public static function allCapabilities($id, $params = null, $opts = null)
     {
@@ -273,7 +273,7 @@ class Account extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection the list of external accounts (BankAccount or Card)
+     * @return \Stripe\Collection<\Stripe\BankAccount|\Stripe\Card> the list of external accounts (BankAccount or Card)
      */
     public static function allExternalAccounts($id, $params = null, $opts = null)
     {
@@ -362,7 +362,7 @@ class Account extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection the list of persons
+     * @return \Stripe\Collection<\Stripe\Person> the list of persons
      */
     public static function allPersons($id, $params = null, $opts = null)
     {

@@ -28,6 +28,7 @@ namespace Stripe;
  * @property null|string $released_subscription ID of the subscription once managed by the subscription schedule (if it is released).
  * @property string $status The present status of the subscription schedule. Possible values are <code>not_started</code>, <code>active</code>, <code>completed</code>, <code>released</code>, and <code>canceled</code>. You can read more about the different states in our <a href="https://stripe.com/docs/billing/subscriptions/subscription-schedules">behavior guide</a>.
  * @property null|string|\Stripe\Subscription $subscription ID of the subscription managed by the subscription schedule.
+ * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this subscription schedule belongs to.
  */
 class SubscriptionSchedule extends ApiResource
 {

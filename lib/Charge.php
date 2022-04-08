@@ -32,6 +32,7 @@ namespace Stripe;
  * @property null|string|\Stripe\Account $destination ID of an existing, connected Stripe account to transfer funds to if <code>transfer_data</code> was specified in the charge request.
  * @property null|string|\Stripe\Dispute $dispute Details about the dispute if the charge has been disputed.
  * @property bool $disputed Whether the charge has been disputed.
+ * @property null|string|\Stripe\BalanceTransaction $failure_balance_transaction ID of the balance transaction that describes the reversal of the balance on your account due to payment failure.
  * @property null|string $failure_code Error code explaining reason for charge failure if available (see <a href="https://stripe.com/docs/api#errors">the errors section</a> for a list of codes).
  * @property null|string $failure_message Message to user further explaining reason for charge failure if available.
  * @property null|\Stripe\StripeObject $fraud_details Information on fraud assessments for the charge.
@@ -49,7 +50,7 @@ namespace Stripe;
  * @property null|string $receipt_number This is the transaction number that appears on email receipts sent for this charge. This attribute will be <code>null</code> until a receipt has been sent.
  * @property null|string $receipt_url This is the URL to view the receipt for this charge. The receipt is kept up-to-date to the latest state of the charge, including any refunds. If the charge is for an Invoice, the receipt will be stylized as an Invoice receipt.
  * @property bool $refunded Whether the charge has been fully refunded. If the charge is only partially refunded, this attribute will still be false.
- * @property \Stripe\Collection $refunds A list of refunds that have been applied to the charge.
+ * @property \Stripe\Collection<\Stripe\Refund> $refunds A list of refunds that have been applied to the charge.
  * @property null|string|\Stripe\Review $review ID of the review associated with this charge if one exists.
  * @property null|\Stripe\StripeObject $shipping Shipping information for the charge.
  * @property null|\Stripe\Account|\Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source $source This is a legacy field that will be removed in the future. It contains the Source, Card, or BankAccount object used for the charge. For details about the payment method used for this charge, refer to <code>payment_method</code> or <code>payment_method_details</code> instead.
@@ -68,6 +69,7 @@ class Charge extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
+    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const STATUS_FAILED = 'failed';
@@ -142,5 +144,20 @@ class Charge extends ApiResource
         $this->refreshFrom($response, $opts);
 
         return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<Charge> the charge search results
+     */
+    public static function search($params = null, $opts = null)
+    {
+        $url = '/v1/charges/search';
+
+        return self::_searchResource($url, $params, $opts);
     }
 }

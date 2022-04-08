@@ -31,7 +31,7 @@ namespace Stripe;
  * @property null|\Stripe\TaxRate[] $default_tax_rates The tax rates that will apply to any subscription item that does not have <code>tax_rates</code> set. Invoices created will have their <code>default_tax_rates</code> populated from the subscription.
  * @property null|\Stripe\Discount $discount Describes the current discount applied to this subscription, if there is one. When billing, a discount applied to a subscription overrides a discount applied on a customer-wide basis.
  * @property null|int $ended_at If the subscription has ended, the date the subscription ended.
- * @property \Stripe\Collection $items List of subscription items, each with an attached price.
+ * @property \Stripe\Collection<\Stripe\SubscriptionItem> $items List of subscription items, each with an attached price.
  * @property null|string|\Stripe\Invoice $latest_invoice The most recent invoice this subscription has generated.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -44,6 +44,7 @@ namespace Stripe;
  * @property null|string|\Stripe\SubscriptionSchedule $schedule The schedule attached to the subscription
  * @property int $start_date Date when the subscription was first created. The date might differ from the <code>created</code> date due to backdating.
  * @property string $status <p>Possible values are <code>incomplete</code>, <code>incomplete_expired</code>, <code>trialing</code>, <code>active</code>, <code>past_due</code>, <code>canceled</code>, or <code>unpaid</code>.</p><p>For <code>collection_method=charge_automatically</code> a subscription moves into <code>incomplete</code> if the initial payment attempt fails. A subscription in this state can only have metadata and default_source updated. Once the first invoice is paid, the subscription moves into an <code>active</code> state. If the first invoice is not paid within 23 hours, the subscription transitions to <code>incomplete_expired</code>. This is a terminal state, the open invoice will be voided and no further invoices will be generated.</p><p>A subscription that is currently in a trial period is <code>trialing</code> and moves to <code>active</code> when the trial period is over.</p><p>If subscription <code>collection_method=charge_automatically</code> it becomes <code>past_due</code> when payment to renew it fails and <code>canceled</code> or <code>unpaid</code> (depending on your subscriptions settings) when Stripe has exhausted all payment retry attempts.</p><p>If subscription <code>collection_method=send_invoice</code> it becomes <code>past_due</code> when its invoice is not paid by the due date, and <code>canceled</code> or <code>unpaid</code> if it is still not paid by an additional deadline after that. Note that when a subscription has a status of <code>unpaid</code>, no subsequent invoices will be attempted (invoices will be created, but then immediately automatically closed). After receiving updated payment information from a customer, you may choose to reopen and pay their closed invoices.</p>
+ * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this subscription belongs to.
  * @property null|int $trial_end If the subscription has a trial, the end of that trial.
  * @property null|int $trial_start If the subscription has a trial, the beginning of that trial.
  */
@@ -54,9 +55,11 @@ class Subscription extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
+    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const PAYMENT_BEHAVIOR_ALLOW_INCOMPLETE = 'allow_incomplete';
+    const PAYMENT_BEHAVIOR_DEFAULT_INCOMPLETE = 'default_incomplete';
     const PAYMENT_BEHAVIOR_ERROR_IF_INCOMPLETE = 'error_if_incomplete';
     const PAYMENT_BEHAVIOR_PENDING_IF_INCOMPLETE = 'pending_if_incomplete';
 
@@ -116,5 +119,20 @@ class Subscription extends ApiResource
         $this->refreshFrom(['discount' => null], $opts, true);
 
         return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<Subscription> the subscription search results
+     */
+    public static function search($params = null, $opts = null)
+    {
+        $url = '/v1/subscriptions/search';
+
+        return self::_searchResource($url, $params, $opts);
     }
 }

@@ -30,7 +30,7 @@ namespace Stripe;
  * @property null|string $header A header that will be displayed on the quote PDF.
  * @property null|string|\Stripe\Invoice $invoice The invoice that was created from this quote.
  * @property null|\Stripe\StripeObject $invoice_settings All invoices will be billed using the specified settings.
- * @property \Stripe\Collection $line_items A list of items the customer is being quoted for.
+ * @property \Stripe\Collection<\Stripe\LineItem> $line_items A list of items the customer is being quoted for.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $number A unique number that identifies this particular quote. This number is assigned once the quote is <a href="https://stripe.com/docs/quotes/overview#finalize">finalized</a>.
@@ -40,6 +40,7 @@ namespace Stripe;
  * @property null|string|\Stripe\Subscription $subscription The subscription that was created or updated from this quote.
  * @property \Stripe\StripeObject $subscription_data
  * @property null|string|\Stripe\SubscriptionSchedule $subscription_schedule The subscription schedule that was created or updated from this quote.
+ * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this quote belongs to.
  * @property \Stripe\StripeObject $total_details
  * @property null|\Stripe\StripeObject $transfer_data The account (if any) the payments will be attributed to for tax reporting, and where funds from each payment will be transferred to for each of the invoices.
  */
@@ -136,7 +137,7 @@ class Quote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection list of LineItems
+     * @return \Stripe\Collection<\Stripe\Quote> list of LineItems
      */
     public static function allComputedUpfrontLineItems($id, $params = null, $opts = null)
     {
@@ -155,7 +156,7 @@ class Quote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection list of LineItems
+     * @return \Stripe\Collection<\Stripe\Quote> list of LineItems
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {

@@ -1,5 +1,79 @@
 # Changelog
 
+## 7.121.0 - 2022-03-30
+* [#1258](https://github.com/stripe/stripe-php/pull/1258) API Updates
+  * Add support for `cancel_action`, `process_payment_intent`, `process_setup_intent`, and `set_reader_display` methods on resource `Terminal.Reader`
+  * Add support for `action` on `Terminal.Reader`
+
+## 7.120.0 - 2022-03-29
+* [#1257](https://github.com/stripe/stripe-php/pull/1257) API Updates
+  * Add support for Search API
+    * Add support for `search` method on resources `Charge`, `Customer`, `Invoice`, `PaymentIntent`, `Price`, `Product`, and `Subscription`
+
+## 7.119.0 - 2022-03-25
+* [#1256](https://github.com/stripe/stripe-php/pull/1256) API Updates
+  * Add support for PayNow and US Bank Accounts Debits payments
+      * Add support for `paynow` and `us_bank_account` on `PaymentMethod`
+      * Add support for new values `paynow` and `us_bank_account` on enum `PaymentMethod.type`
+  * Add support for `failure_balance_transaction` on `Charge`
+
+## 7.118.0 - 2022-03-23
+* [#1255](https://github.com/stripe/stripe-php/pull/1255) API Updates
+  * Add support for `cancel` method on resource `Refund`
+  * Add support for new values `bg_uic`, `hu_tin`, and `si_tin` on enum `TaxId.type`
+  * Add  `test_helpers.test_clock.advancing`, `test_helpers.test_clock.created`, `test_helpers.test_clock.deleted`, `test_helpers.test_clock.internal_failure`, and `test_helpers.test_clock.ready` events.
+
+
+## 7.117.0 - 2022-03-18
+* [#1254](https://github.com/stripe/stripe-php/pull/1254) API Updates
+  * Add support for `status` on `Card`
+* [#1251](https://github.com/stripe/stripe-php/pull/1251) Add support for SearchResult objects.
+* [#1249](https://github.com/stripe/stripe-php/pull/1249) Add missing constant for payment_behavior
+
+## 7.116.0 - 2022-03-02
+* [#1248](https://github.com/stripe/stripe-php/pull/1248) API Updates
+  * Add support for `proration_details` on `InvoiceLineItem`
+
+
+## 7.115.0 - 2022-03-01
+* [#1245](https://github.com/stripe/stripe-php/pull/1245) [#1247](https://github.com/stripe/stripe-php/pull/1247) API Updates
+  * Add support for new resource `TestHelpers.TestClock`
+  * Add support for `test_clock` on `Customer`, `Invoice`, `InvoiceItem`, `Quote`, `Subscription`, and `SubscriptionSchedule`
+  * Add support for `next_action` on `Refund`
+  * Add support for `konbini` on `PaymentMethod`
+* [#1244](https://github.com/stripe/stripe-php/pull/1244) API Updates
+  * Add support for new values `bbpos_wisepad3` and `stripe_m2` on enum `Terminal.Reader.device_type`
+
+## 7.114.0 - 2022-02-15
+* [#1243](https://github.com/stripe/stripe-php/pull/1243) Add test
+* [#1240](https://github.com/stripe/stripe-php/pull/1240) API Updates
+  * Add support for `verify_microdeposits` method on resources `PaymentIntent` and `SetupIntent`
+* [#1241](https://github.com/stripe/stripe-php/pull/1241) Add generic parameter to \Stripe\Collection usages
+
+## 7.113.0 - 2022-02-03
+* [#1239](https://github.com/stripe/stripe-php/pull/1239) API Updates
+  * Add `REASON_EXPIRED_UNCAPTURED_CHARGE` enum value on `Refund`.
+
+## 7.112.0 - 2022-01-25
+* [#1235](https://github.com/stripe/stripe-php/pull/1235) API Updates
+  * Add support for `phone_number_collection` on `PaymentLink`
+  * Add support for new value `is_vat` on enum `TaxId.type`
+
+
+## 7.111.0 - 2022-01-20
+* [#1233](https://github.com/stripe/stripe-php/pull/1233) API Updates
+  * Add support for new resource `PaymentLink`
+  * Add support for `payment_link` on `Checkout.Session`
+
+## 7.110.0 - 2022-01-13
+* [#1232](https://github.com/stripe/stripe-php/pull/1232) API Updates
+  * Add support for `paid_out_of_band` on `Invoice`
+
+## 7.109.0 - 2022-01-12
+* [#1231](https://github.com/stripe/stripe-php/pull/1231) API Updates
+  * Add support for `customer_creation` on `Checkout.Session`
+* [#1227](https://github.com/stripe/stripe-php/pull/1227) Update docs URLs
+
 ## 7.108.0 - 2021-12-22
 * [#1226](https://github.com/stripe/stripe-php/pull/1226) Upgrade php-cs-fixer to 3.4.0.
 * [#1222](https://github.com/stripe/stripe-php/pull/1222) API Updates

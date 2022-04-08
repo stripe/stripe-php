@@ -2672,4 +2672,98 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         );
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $result);
     }
+
+    public function testCreatePaymentLink()
+    {
+        $this->expectsRequest('post', '/v1/payment_links');
+        $result = $this->client->paymentLinks->create(
+            ['line_items' => [['price' => 'price_xxxxxxxxxxxxx', 'quantity' => 1]]]
+        );
+        static::assertInstanceOf(\Stripe\PaymentLink::class, $result);
+    }
+
+    public function testListLineItemsPaymentLink()
+    {
+        $this->expectsRequest('get', '/v1/payment_links/pl_xyz/line_items');
+        $result = $this->client->paymentLinks->allLineItems('pl_xyz', []);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\LineItem::class, $result->data[0]);
+    }
+
+    public function testRetrievePaymentLink()
+    {
+        $this->expectsRequest('get', '/v1/payment_links/pl_xyz');
+        $result = $this->client->paymentLinks->retrieve('pl_xyz', []);
+        static::assertInstanceOf(\Stripe\PaymentLink::class, $result);
+    }
+
+    public function testVerifyMicrodepositsPaymentIntent()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/payment_intents/pi_xxxxxxxxxxxxx/verify_microdeposits'
+        );
+        $result = $this->client->paymentIntents->verifyMicrodeposits(
+            'pi_xxxxxxxxxxxxx',
+            []
+        );
+        static::assertInstanceOf(\Stripe\PaymentIntent::class, $result);
+    }
+
+    public function testVerifyMicrodepositsSetupIntent()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/setup_intents/seti_xxxxxxxxxxxxx/verify_microdeposits'
+        );
+        $result = $this->client->setupIntents->verifyMicrodeposits(
+            'seti_xxxxxxxxxxxxx',
+            []
+        );
+        static::assertInstanceOf(\Stripe\SetupIntent::class, $result);
+    }
+
+    public function testCreateTestClock()
+    {
+        $this->expectsRequest('post', '/v1/test_helpers/test_clocks');
+        $result = $this->client->testHelpers->testClocks->create(
+            ['frozen_time' => 123, 'name' => 'cogsworth']
+        );
+        static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result);
+    }
+
+    public function testRetrieveTestClock()
+    {
+        $this->expectsRequest('get', '/v1/test_helpers/test_clocks/clock_xyz');
+        $result = $this->client->testHelpers->testClocks->retrieve('clock_xyz', []);
+        static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result);
+    }
+
+    public function testListTestClock()
+    {
+        $this->expectsRequest('get', '/v1/test_helpers/test_clocks');
+        $result = $this->client->testHelpers->testClocks->all([]);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result->data[0]);
+    }
+
+    public function testDeleteTestClock()
+    {
+        $this->expectsRequest('delete', '/v1/test_helpers/test_clocks/clock_xyz');
+        $result = $this->client->testHelpers->testClocks->delete('clock_xyz', []);
+        static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result);
+    }
+
+    public function testAdvanceTestClock()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/test_clocks/clock_xyz/advance'
+        );
+        $result = $this->client->testHelpers->testClocks->advance(
+            'clock_xyz',
+            ['frozen_time' => 142]
+        );
+        static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result);
+    }
 }

@@ -14,11 +14,31 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection
+     * @return \Stripe\Collection<\Stripe\PaymentIntent>
      */
     public function all($params = null, $opts = null)
     {
         return $this->requestCollection('get', '/v1/payment_intents', $params, $opts);
+    }
+
+    /**
+     * Manually reconcile the remaining amount for a customer_balance PaymentIntent.
+     *
+     * This can be used when the cash balance for <a
+     * href="docs/payments/customer-balance/reconciliation#cash-manual-reconciliation">a
+     * customer in manual reconciliation mode</a> received funds.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
+     */
+    public function applyCustomerBalance($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/payment_intents/%s/apply_customer_balance', $id), $params, $opts);
     }
 
     /**
@@ -31,6 +51,10 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * operations on the PaymentIntent will fail with an error. For PaymentIntents with
      * <code>status=’requires_capture’</code>, the remaining
      * <code>amount_capturable</code> will automatically be refunded.
+     *
+     * You cannot cancel the PaymentIntent for a Checkout Session. <a
+     * href="/docs/api/checkout/sessions/expire">Expire the Checkout Session</a>
+     * instead
      *
      * @param string $id
      * @param null|array $params
@@ -159,6 +183,26 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Search for PaymentIntents you’ve previously created using Stripe’s <a
+     * href="/docs/search#search-query-language">Search Query Language</a>. Don’t use
+     * search in read-after-write flows where strict consistency is necessary. Under
+     * normal operating conditions, data is searchable in less than a minute.
+     * Occasionally, propagation of new or updated data can be up to an hour behind
+     * during outages. Search functionality is not available to merchants in India.
+     *
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<\Stripe\PaymentIntent>
+     */
+    public function search($params = null, $opts = null)
+    {
+        return $this->requestSearchResult('get', '/v1/payment_intents/search', $params, $opts);
+    }
+
+    /**
      * Updates properties on a PaymentIntent object without confirming.
      *
      * Depending on which properties you update, you may need to confirm the
@@ -178,5 +222,21 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     public function update($id, $params = null, $opts = null)
     {
         return $this->request('post', $this->buildPath('/v1/payment_intents/%s', $id), $params, $opts);
+    }
+
+    /**
+     * Verifies microdeposits on a PaymentIntent object.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
+     */
+    public function verifyMicrodeposits($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/payment_intents/%s/verify_microdeposits', $id), $params, $opts);
     }
 }

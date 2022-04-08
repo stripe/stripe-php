@@ -15,7 +15,7 @@ class SubscriptionService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection
+     * @return \Stripe\Collection<\Stripe\Subscription>
      */
     public function all($params = null, $opts = null)
     {
@@ -57,6 +57,17 @@ class SubscriptionService extends \Stripe\Service\AbstractService
     /**
      * Creates a new subscription on an existing customer. Each customer can have up to
      * 500 active or scheduled subscriptions.
+     *
+     * When you create a subscription with
+     * <code>collection_method=charge_automatically</code>, the first invoice is
+     * finalized as part of the request. The <code>payment_behavior</code> parameter
+     * determines the exact behavior of the initial payment.
+     *
+     * To start subscriptions where the first invoice always begins in a
+     * <code>draft</code> status, use <a
+     * href="/docs/billing/subscriptions/subscription-schedules#managing">subscription
+     * schedules</a> instead. Schedules provide the flexibility to model more complex
+     * billing configurations that change over time.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -100,6 +111,26 @@ class SubscriptionService extends \Stripe\Service\AbstractService
     public function retrieve($id, $params = null, $opts = null)
     {
         return $this->request('get', $this->buildPath('/v1/subscriptions/%s', $id), $params, $opts);
+    }
+
+    /**
+     * Search for subscriptions you’ve previously created using Stripe’s <a
+     * href="/docs/search#search-query-language">Search Query Language</a>. Don’t use
+     * search in read-after-write flows where strict consistency is necessary. Under
+     * normal operating conditions, data is searchable in less than a minute.
+     * Occasionally, propagation of new or updated data can be up to an hour behind
+     * during outages. Search functionality is not available to merchants in India.
+     *
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<\Stripe\Subscription>
+     */
+    public function search($params = null, $opts = null)
+    {
+        return $this->requestSearchResult('get', '/v1/subscriptions/search', $params, $opts);
     }
 
     /**
