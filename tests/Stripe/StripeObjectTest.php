@@ -13,7 +13,7 @@ final class StripeObjectTest extends \Stripe\TestCase
     /** @var \ReflectionMethod */
     private $deepCopyReflector;
 
-    /** @var \ReflectionMethod */
+    /** @var \ReflectionProperty */
     private $optsReflector;
 
     /**

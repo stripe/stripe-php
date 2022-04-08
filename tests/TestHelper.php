@@ -22,10 +22,10 @@ trait TestHelper
     /** @var null|string original account ID */
     protected $origAccountId;
 
-    /** @var \PHPUnit_Framework_MockObject_MockObject HTTP client mocker */
+    /** @var \PHPUnit\Framework\MockObject\MockObject HTTP client mocker */
     protected $clientMock;
 
-    /** @var \PHPUnit_Framework_MockObject_MockObject HTTP client mocker */
+    /** @var \PHPUnit\Framework\MockObject\MockObject HTTP client mocker */
     protected $streamingClientMock;
 
     /** @before */
@@ -185,7 +185,7 @@ trait TestHelper
      *   Defaults to false.
      * @param null|string $base base URL (e.g. 'https://api.stripe.com')
      *
-     * @return \PHPUnit_Framework_MockObject_Builder_InvocationMocker
+     * @return \PHPUnit\Framework\MockObject\Builder\InvocationMocker
      */
     private function prepareRequestMock(
         $method,
@@ -240,9 +240,8 @@ trait TestHelper
      * @param bool $hasFile Whether the request parameters contains a file.
      *   Defaults to false.
      * @param null|string $base base URL (e.g. 'https://api.stripe.com')
-     * @param string $requestMethod name of the method on httpclient to mock - 'request' or 'requestStream'
      *
-     * @return \PHPUnit_Framework_MockObject_Builder_InvocationMocker
+     * @return \PHPUnit\Framework\MockObject\Builder\InvocationMocker
      */
     private function prepareRequestStreamMock(
         $method,
