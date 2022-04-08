@@ -1,5 +1,12 @@
 # Changelog
 
+## 7.122.0 - 2022-04-08
+* [#1261](https://github.com/stripe/stripe-php/pull/1261) API Updates
+  * Add support for `apply_customer_balance` method on resource `PaymentIntent`
+* [#1259](https://github.com/stripe/stripe-php/pull/1259) API Updates
+  
+  * Add `payment_intent.partially_funded`, `terminal.reader.action_failed`, and `terminal.reader.action_succeeded` events.
+
 ## 7.121.0 - 2022-03-30
 * [#1258](https://github.com/stripe/stripe-php/pull/1258) API Updates
   * Add support for `cancel_action`, `process_payment_intent`, `process_setup_intent`, and `set_reader_display` methods on resource `Terminal.Reader`
