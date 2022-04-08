@@ -117,7 +117,7 @@ class ReaderService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Sets reader display.
+     * Sets reader display to show cart details.
      *
      * @param string $id
      * @param null|array $params
