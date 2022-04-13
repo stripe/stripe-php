@@ -5,11 +5,11 @@
 namespace Stripe;
 
 /**
- * PaymentMethod objects represent your customer's payment instruments. They can be
- * used with <a
+ * PaymentMethod objects represent your customer's payment instruments. You can use
+ * them with <a
  * href="https://stripe.com/docs/payments/payment-intents">PaymentIntents</a> to
- * collect payments or saved to Customer objects to store instrument details for
- * future payments.
+ * collect payments or save them to Customer objects to store instrument details
+ * for future payments.
  *
  * Related guides: <a
  * href="https://stripe.com/docs/payments/payment-methods">Payment Methods</a> and

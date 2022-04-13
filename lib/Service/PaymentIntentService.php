@@ -160,6 +160,47 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Perform an incremental authorization on an eligible <a
+     * href="/docs/api/payment_intents/object">PaymentIntent</a>. To be eligible, the
+     * PaymentIntent’s status must be <code>requires_capture</code> and <a
+     * href="/docs/api/charges/object#charge_object-payment_method_details-card_present-incremental_authorization_supported">incremental_authorization_supported</a>
+     * must be <code>true</code>.
+     *
+     * Incremental authorizations attempt to increase the authorized amount on your
+     * customer’s card to the new, higher <code>amount</code> provided. As with the
+     * initial authorization, incremental authorizations may be declined. A single
+     * PaymentIntent can call this endpoint multiple times to further increase the
+     * authorized amount.
+     *
+     * If the incremental authorization succeeds, the PaymentIntent object is returned
+     * with the updated <a
+     * href="/docs/api/payment_intents/object#payment_intent_object-amount">amount</a>.
+     * If the incremental authorization fails, a <a
+     * href="/docs/error-codes#card-declined">card_declined</a> error is returned, and
+     * no fields on the PaymentIntent or Charge are updated. The PaymentIntent object
+     * remains capturable for the previously authorized amount.
+     *
+     * Each PaymentIntent can have a maximum of 10 incremental authorization attempts,
+     * including declines. Once captured, a PaymentIntent can no longer be incremented.
+     *
+     * Learn more about <a
+     * href="/docs/terminal/features/incremental-authorizations">incremental
+     * authorizations</a>.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
+     */
+    public function incrementAuthorization($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/payment_intents/%s/increment_authorization', $id), $params, $opts);
+    }
+
+    /**
      * Retrieves the details of a PaymentIntent that has previously been created.
      *
      * Client-side retrieval using a publishable key is allowed when the
