@@ -1,10 +1,16 @@
 # Changelog
 
+## 7.123.0-beta.1 - 2022-04-13
+* [#2](https://github.com/pakrym-stripe/stripe-php/pull/2) API Updates
+  * Add support for new resource `FundingInstructions`
+  * Add support for `customer_balance` on `PaymentMethod`
+  * Add support for new value `customer_balance` on enum `PaymentMethod.type`
+
 ## 7.122.0 - 2022-04-08
 * [#1261](https://github.com/stripe/stripe-php/pull/1261) API Updates
   * Add support for `apply_customer_balance` method on resource `PaymentIntent`
 * [#1259](https://github.com/stripe/stripe-php/pull/1259) API Updates
-  
+
   * Add `payment_intent.partially_funded`, `terminal.reader.action_failed`, and `terminal.reader.action_succeeded` events.
 
 ## 7.121.0 - 2022-03-30
