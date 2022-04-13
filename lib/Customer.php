@@ -175,6 +175,35 @@ class Customer extends ApiResource
     {
         return self::_updateNestedResource($id, static::PATH_BALANCE_TRANSACTIONS, $balanceTransactionId, $params, $opts);
     }
+    const PATH_FUNDING_INSTRUCTIONS = '/funding_instructions';
+
+    /**
+     * @param string $id the ID of the customer on which to retrieve the funding instructions
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\funding_instructions> the list of funding instructions
+     */
+    public static function allFundingInstructions($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_FUNDING_INSTRUCTIONS, $params, $opts);
+    }
+
+    /**
+     * @param string $id the ID of the customer on which to create the funding instructions
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\funding_instructions
+     */
+    public static function createFundingInstruction($id, $params = null, $opts = null)
+    {
+        return self::_createNestedResource($id, static::PATH_FUNDING_INSTRUCTIONS, $params, $opts);
+    }
     const PATH_SOURCES = '/sources';
 
     /**
