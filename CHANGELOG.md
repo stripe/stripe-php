@@ -1,5 +1,12 @@
 # Changelog
 
+## 7.123.0 - 2022-04-13
+* [#1263](https://github.com/stripe/stripe-php/pull/1263) API Updates
+  * Add support for `increment_authorization` method on resource `PaymentIntent`
+* [#1262](https://github.com/stripe/stripe-php/pull/1262) Add support for updating the version of the repo
+* [#1230](https://github.com/stripe/stripe-php/pull/1230) Add PHPDoc return types
+* [#1242](https://github.com/stripe/stripe-php/pull/1242) Fix some PHPDoc in tests
+
 ## 7.122.0 - 2022-04-08
 * [#1261](https://github.com/stripe/stripe-php/pull/1261) API Updates
   * Add support for `apply_customer_balance` method on resource `PaymentIntent`
