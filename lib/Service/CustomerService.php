@@ -40,6 +40,22 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Retrieve all applicable funding instructions for a customer cash balance.
+     *
+     * @param string $parentId
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\funding_instructions>
+     */
+    public function allFundingInstructions($parentId, $params = null, $opts = null)
+    {
+        return $this->requestCollection('get', $this->buildPath('/v1/customers/%s/funding_instructions', $parentId), $params, $opts);
+    }
+
+    /**
      * Returns a list of PaymentMethods for a given Customer.
      *
      * @param string $id
@@ -117,6 +133,26 @@ class CustomerService extends \Stripe\Service\AbstractService
     public function createBalanceTransaction($parentId, $params = null, $opts = null)
     {
         return $this->request('post', $this->buildPath('/v1/customers/%s/balance_transactions', $parentId), $params, $opts);
+    }
+
+    /**
+     * Retrieve funding instructions for a customer cash balance. If funding
+     * instructions do not yet exist for the customer, new funding instructions will be
+     * created. If funding instructions have already been created for a given customer,
+     * the same funding instructions will be retrieved. In other words, we will return
+     * the same funding instructions each time.
+     *
+     * @param string $parentId
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\funding_instructions
+     */
+    public function createFundingInstruction($parentId, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/customers/%s/funding_instructions', $parentId), $params, $opts);
     }
 
     /**

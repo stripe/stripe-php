@@ -2766,4 +2766,19 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         );
         static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result);
     }
+
+    public function testCreateFundingInstructions()
+    {
+        $this->expectsRequest('post', '/v1/customers/cus_123/funding_instructions');
+        $result = $this->client->customers->createFundingInstruction('cus_123', []);
+        static::assertInstanceOf(\Stripe\FundingInstructions::class, $result);
+    }
+
+    public function testListFundingInstructions()
+    {
+        $this->expectsRequest('get', '/v1/customers/cus_123/funding_instructions');
+        $result = $this->client->customers->allFundingInstructions('cus_123', []);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\FundingInstructions::class, $result->data[0]);
+    }
 }
