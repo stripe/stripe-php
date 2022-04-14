@@ -28,4 +28,30 @@ class FundingInstructions extends ApiResource
     use ApiOperations\Create;
 
     const FUNDING_TYPE_BANK_TRANSFER = 'bank_transfer';
+
+    /**
+     * @param null|array|string $_opts
+     *
+     * @throws StripeExceptionBadMethodCallException
+     */
+    public static function all($_opts = null)
+    {
+        $msg = 'Funding instructions cannot be retrieved without a customer ID. Retrieve ' .
+               "a funding instruction using `Customer::allFundingInstructions('customer_id', {$params}, {$opts})`.";
+
+        throw new ExceptionBadMethodCallException($msg);
+    }
+
+    /**
+     * @param null|array|string $_opts
+     *
+     * @throws StripeExceptionBadMethodCallException
+     */
+    public static function create($_opts = null)
+    {
+        $msg = 'Funding instructions cannot be created without a customer ID. Create ' .
+               "a funding instruction using `Customer::createFundingInstruction('customer_id', {$params}, {$opts})`.";
+
+        throw new ExceptionBadMethodCallException($msg);
+    }
 }
