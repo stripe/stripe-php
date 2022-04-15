@@ -37,7 +37,7 @@ class FundingInstructions extends ApiResource
     public static function all($_opts = null)
     {
         $msg = 'Funding instructions cannot be retrieved without a customer ID. Retrieve ' .
-               "a funding instruction using `Customer::allFundingInstructions('customer_id', {$params}, {$opts})`.";
+               "a funding instruction using `Customer::allFundingInstructions('customer_id', ...)`.";
 
         throw new ExceptionBadMethodCallException($msg);
     }
@@ -50,7 +50,7 @@ class FundingInstructions extends ApiResource
     public static function create($_opts = null)
     {
         $msg = 'Funding instructions cannot be created without a customer ID. Create ' .
-               "a funding instruction using `Customer::createFundingInstruction('customer_id', {$params}, {$opts})`.";
+               "a funding instruction using `Customer::createFundingInstruction('customer_id', ...)`.";
 
         throw new ExceptionBadMethodCallException($msg);
     }
