@@ -32,25 +32,25 @@ class FundingInstructions extends ApiResource
     /**
      * @param null|array|string $_opts
      *
-     * @throws StripeExceptionBadMethodCallException
+     * @throws \Stripe\Exception\BadMethodCallException
      */
     public static function all($_opts = null)
     {
         $msg = 'Funding instructions cannot be retrieved without a customer ID. Retrieve ' .
-               "a funding instruction using `Customer::allFundingInstructions('customer_id', ...)`.";
+               "a funding instruction using `Customer::allFundingInstructions('customer_id', \$params, \$opts)`.";
 
-        throw new BadMethodCallException($msg);
+        throw new Exception\BadMethodCallException($msg);
     }
 
     /**
      * @param null|array|string $_opts
      *
-     * @throws StripeExceptionBadMethodCallException
+     * @throws \Stripe\Exception\BadMethodCallException
      */
     public static function create($_opts = null)
     {
         $msg = 'Funding instructions cannot be created without a customer ID. Create ' .
-               "a funding instruction using `Customer::createFundingInstruction('customer_id', ...)`.";
+               "a funding instruction using `Customer::createFundingInstruction('customer_id', \$params, \$opts)`.";
 
         throw new Exception\BadMethodCallException($msg);
     }
