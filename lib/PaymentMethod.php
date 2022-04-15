@@ -30,6 +30,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $card_present
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string|\Stripe\Customer $customer The ID of the Customer to which this PaymentMethod is saved. This will not be set when the PaymentMethod has not been saved to a Customer.
+ * @property \Stripe\StripeObject $customer_balance
  * @property \Stripe\StripeObject $eps
  * @property \Stripe\StripeObject $fpx
  * @property \Stripe\StripeObject $giropay

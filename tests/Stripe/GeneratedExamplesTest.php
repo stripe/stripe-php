@@ -2766,4 +2766,58 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         );
         static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result);
     }
+
+    public function testCreateFundingInstructions()
+    {
+        $this->expectsRequest('post', '/v1/customers/cus_123/funding_instructions');
+        $result = $this->client->customers->createFundingInstruction(
+            'cus_123',
+            [
+                'bank_transfer' => [
+                    'requested_address_types' => ['zengin'],
+                    'type' => 'jp_bank_transfer',
+                ],
+                'currency' => 'usd',
+                'funding_type' => 'bank_transfer',
+            ]
+        );
+        static::assertInstanceOf(\Stripe\FundingInstructions::class, $result);
+    }
+
+    public function testListFundingInstructions()
+    {
+        $this->expectsRequest('get', '/v1/customers/cus_123/funding_instructions');
+        $result = $this->client->customers->allFundingInstructions('cus_123', []);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\FundingInstructions::class, $result->data[0]);
+    }
+
+    public function testListConfiguration2()
+    {
+        $this->expectsRequest('get', '/v1/terminal/configurations');
+        $result = $this->client->terminal->configurations->all([]);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\Terminal\Configuration::class, $result->data[0]);
+    }
+
+    public function testRetrieveConfiguration2()
+    {
+        $this->expectsRequest('get', '/v1/terminal/configurations/uc_123');
+        $result = $this->client->terminal->configurations->retrieve('uc_123', []);
+        static::assertInstanceOf(\Stripe\Terminal\Configuration::class, $result);
+    }
+
+    public function testUpdateConfiguration2()
+    {
+        $this->expectsRequest('post', '/v1/terminal/configurations/uc_123');
+        $result = $this->client->terminal->configurations->update('uc_123', []);
+        static::assertInstanceOf(\Stripe\Terminal\Configuration::class, $result);
+    }
+
+    public function testDeleteConfiguration()
+    {
+        $this->expectsRequest('delete', '/v1/terminal/configurations/uc_123');
+        $result = $this->client->terminal->configurations->delete('uc_123', []);
+        static::assertInstanceOf(\Stripe\Terminal\Configuration::class, $result);
+    }
 }
