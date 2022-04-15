@@ -39,7 +39,7 @@ class FundingInstructions extends ApiResource
         $msg = 'Funding instructions cannot be retrieved without a customer ID. Retrieve ' .
                "a funding instruction using `Customer::allFundingInstructions('customer_id', ...)`.";
 
-        throw new ExceptionBadMethodCallException($msg);
+        throw new BadMethodCallException($msg);
     }
 
     /**
@@ -52,6 +52,6 @@ class FundingInstructions extends ApiResource
         $msg = 'Funding instructions cannot be created without a customer ID. Create ' .
                "a funding instruction using `Customer::createFundingInstruction('customer_id', ...)`.";
 
-        throw new ExceptionBadMethodCallException($msg);
+        throw new BadMethodCallException($msg);
     }
 }
