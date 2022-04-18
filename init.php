@@ -107,7 +107,6 @@ require __DIR__ . '/lib/Event.php';
 require __DIR__ . '/lib/ExchangeRate.php';
 require __DIR__ . '/lib/File.php';
 require __DIR__ . '/lib/FileLink.php';
-require __DIR__ . '/lib/FundingInstructions.php';
 require __DIR__ . '/lib/Identity/VerificationReport.php';
 require __DIR__ . '/lib/Identity/VerificationSession.php';
 require __DIR__ . '/lib/Invoice.php';

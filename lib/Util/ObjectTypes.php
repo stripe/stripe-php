@@ -42,7 +42,6 @@ class ObjectTypes
         \Stripe\File::OBJECT_NAME => \Stripe\File::class,
         \Stripe\File::OBJECT_NAME_ALT => \Stripe\File::class,
         \Stripe\FileLink::OBJECT_NAME => \Stripe\FileLink::class,
-        \Stripe\FundingInstructions::OBJECT_NAME => \Stripe\FundingInstructions::class,
         \Stripe\Identity\VerificationReport::OBJECT_NAME => \Stripe\Identity\VerificationReport::class,
         \Stripe\Identity\VerificationSession::OBJECT_NAME => \Stripe\Identity\VerificationSession::class,
         \Stripe\Invoice::OBJECT_NAME => \Stripe\Invoice::class,

@@ -2767,10 +2767,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result);
     }
 
-    public function testCreateFundingInstructions()
+    public function testCreateFundingInstructionsCustomer()
     {
         $this->expectsRequest('post', '/v1/customers/cus_123/funding_instructions');
-        $result = $this->client->customers->createFundingInstruction(
+        $result = $this->client->customers->createFundingInstructions(
             'cus_123',
             [
                 'bank_transfer' => [
@@ -2781,15 +2781,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
                 'funding_type' => 'bank_transfer',
             ]
         );
-        static::assertInstanceOf(\Stripe\FundingInstructions::class, $result);
-    }
-
-    public function testListFundingInstructions()
-    {
-        $this->expectsRequest('get', '/v1/customers/cus_123/funding_instructions');
-        $result = $this->client->customers->allFundingInstructions('cus_123', []);
-        static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\FundingInstructions::class, $result->data[0]);
+        static::assertInstanceOf(\Stripe\Customer::class, $result);
     }
 
     public function testListConfiguration2()
@@ -2810,7 +2802,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testUpdateConfiguration2()
     {
         $this->expectsRequest('post', '/v1/terminal/configurations/uc_123');
-        $result = $this->client->terminal->configurations->update('uc_123', []);
+        $result = $this->client->terminal->configurations->update(
+            'uc_123',
+            ['tipping' => ['usd' => ['fixed_amounts' => [10]]]]
+        );
         static::assertInstanceOf(\Stripe\Terminal\Configuration::class, $result);
     }
 
