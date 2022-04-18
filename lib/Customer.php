@@ -85,23 +85,6 @@ class Customer extends ApiResource
     /**
      * @param null|array $params
      * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Customer the created customer
-     */
-    public function createFundingInstructions($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/funding_instructions';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-
-        return $this;
-    }
-
-    /**
-     * @param null|array $params
-     * @param null|array|string $opts
      * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
