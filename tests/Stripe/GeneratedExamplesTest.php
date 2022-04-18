@@ -2781,7 +2781,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
                 'funding_type' => 'bank_transfer',
             ]
         );
-        static::assertInstanceOf(\Stripe\Customer::class, $result);
+        static::assertInstanceOf(\Stripe\FundingInstructions::class, $result);
     }
 
     public function testListConfiguration2()
