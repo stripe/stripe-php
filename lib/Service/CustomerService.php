@@ -132,7 +132,7 @@ class CustomerService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Customer
+     * @return \Stripe\FundingInstructions
      */
     public function createFundingInstructions($id, $params = null, $opts = null)
     {
