@@ -1,5 +1,15 @@
 # Changelog
 
+## 7.124.0 - 2022-04-18
+* [#1265](https://github.com/stripe/stripe-php/pull/1265) API Updates
+  * Add support for new resources `FundingInstructions` and `Terminal.Configuration`
+  * Add support for `create_funding_instructions` method on resource `Customer`
+  * Add support for `amount_details` on `PaymentIntent`
+  * Add support for `customer_balance` on `PaymentMethod`
+  * Add support for new value `customer_balance` on enum `PaymentMethod.type`
+  * Add support for `configuration_overrides` on `Terminal.Location`
+
+
 ## 7.123.0 - 2022-04-13
 * [#1263](https://github.com/stripe/stripe-php/pull/1263) API Updates
   * Add support for `increment_authorization` method on resource `PaymentIntent`
