@@ -24,34 +24,5 @@ class FundingInstructions extends ApiResource
 {
     const OBJECT_NAME = 'funding_instructions';
 
-    use ApiOperations\All;
-    use ApiOperations\Create;
-
     const FUNDING_TYPE_BANK_TRANSFER = 'bank_transfer';
-
-    /**
-     * @param null|array|string $_opts
-     *
-     * @throws \Stripe\Exception\BadMethodCallException
-     */
-    public static function all($_opts = null)
-    {
-        $msg = 'Funding instructions cannot be retrieved without a customer ID. Retrieve ' .
-               "a funding instruction using `Customer::allFundingInstructions('customer_id', \$params, \$opts)`.";
-
-        throw new Exception\BadMethodCallException($msg);
-    }
-
-    /**
-     * @param null|array|string $_opts
-     *
-     * @throws \Stripe\Exception\BadMethodCallException
-     */
-    public static function create($_opts = null)
-    {
-        $msg = 'Funding instructions cannot be created without a customer ID. Create ' .
-               "a funding instruction using `Customer::createFundingInstruction('customer_id', \$params, \$opts)`.";
-
-        throw new Exception\BadMethodCallException($msg);
-    }
 }

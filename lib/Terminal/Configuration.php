@@ -14,7 +14,7 @@ namespace Stripe\Terminal;
  * @property null|bool $is_account_default Whether this Configuration is the default for your account
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $tipping
- * @property \Stripe\StripeObject $verifone_P400
+ * @property \Stripe\StripeObject $verifone_p400
  */
 class Configuration extends \Stripe\ApiResource
 {

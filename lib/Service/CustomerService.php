@@ -40,22 +40,6 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve all applicable funding instructions for a customer cash balance.
-     *
-     * @param string $parentId
-     * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection<\Stripe\funding_instructions>
-     */
-    public function allFundingInstructions($parentId, $params = null, $opts = null)
-    {
-        return $this->requestCollection('get', $this->buildPath('/v1/customers/%s/funding_instructions', $parentId), $params, $opts);
-    }
-
-    /**
      * Returns a list of PaymentMethods for a given Customer.
      *
      * @param string $id
@@ -142,17 +126,17 @@ class CustomerService extends \Stripe\Service\AbstractService
      * the same funding instructions will be retrieved. In other words, we will return
      * the same funding instructions each time.
      *
-     * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\funding_instructions
+     * @return \Stripe\FundingInstructions
      */
-    public function createFundingInstruction($parentId, $params = null, $opts = null)
+    public function createFundingInstructions($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v1/customers/%s/funding_instructions', $parentId), $params, $opts);
+        return $this->request('post', $this->buildPath('/v1/customers/%s/funding_instructions', $id), $params, $opts);
     }
 
     /**
