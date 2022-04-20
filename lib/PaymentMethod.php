@@ -26,7 +26,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $bancontact
  * @property \Stripe\StripeObject $billing_details
  * @property \Stripe\StripeObject $boleto
- * @property \Stripe\StripeObject $card
+ * @property null|\Stripe\Card $card If this is a card PaymentMethod, this hash contains the user’s card details.
  * @property \Stripe\StripeObject $card_present
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string|\Stripe\Customer $customer The ID of the Customer to which this PaymentMethod is saved. This will not be set when the PaymentMethod has not been saved to a Customer.
