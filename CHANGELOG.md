@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.125.0 - 2022-04-21
+* [#1270](https://github.com/stripe/stripe-php/pull/1270) API Updates
+  * Add support for `expire` test helper method on resource `Refund`
+
 ## 7.124.0 - 2022-04-18
 * [#1265](https://github.com/stripe/stripe-php/pull/1265) API Updates
   * Add support for new resources `FundingInstructions` and `Terminal.Configuration`
