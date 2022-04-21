@@ -2815,4 +2815,11 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $result = $this->client->terminal->configurations->delete('uc_123', []);
         static::assertInstanceOf(\Stripe\Terminal\Configuration::class, $result);
     }
+
+    public function testExpireRefund()
+    {
+        $this->expectsRequest('post', '/v1/test_helpers/refunds/re_123/expire');
+        $result = $this->client->testHelpers->refunds->expire('re_123', []);
+        static::assertInstanceOf(\Stripe\Refund::class, $result);
+    }
 }
