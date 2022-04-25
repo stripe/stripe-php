@@ -165,6 +165,14 @@ final class CurlClientTest extends \Stripe\TestCase
         static::assertSame($withOptionsArray->getDefaultOptions(), $optionsArray);
     }
 
+    public function testIpResolveOption()
+    {
+        // make sure options array loads/saves properly
+        $optionsArray = [\CURLOPT_IPRESOLVE => \CURL_IPRESOLVE_WHATEVER];
+        $withOptionsArray = new CurlClient($optionsArray);
+        static::assertSame($withOptionsArray->getDefaultOptions(), $optionsArray);
+    }
+
     public function testShouldRetryOnTimeout()
     {
         \Stripe\Stripe::setMaxNetworkRetries(2);
