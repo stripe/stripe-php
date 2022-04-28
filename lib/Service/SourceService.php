@@ -29,7 +29,7 @@ class SourceService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Source
+     * @return \Stripe\Collection<\Stripe\SourceTransaction>
      */
     public function allTransactions($id, $params = null, $opts = null)
     {
