@@ -277,6 +277,22 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Retrieves a customer’s cash balance.
+     *
+     * @param string $parentId
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\cash_balance
+     */
+    public function retrieveCashBalance($parentId, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v1/customers/%s/cash_balance', $parentId), $params, $opts);
+    }
+
+    /**
      * Retrieve a specified source for a given customer.
      *
      * @param string $parentId
@@ -374,6 +390,22 @@ class CustomerService extends \Stripe\Service\AbstractService
     public function updateBalanceTransaction($parentId, $id, $params = null, $opts = null)
     {
         return $this->request('post', $this->buildPath('/v1/customers/%s/balance_transactions/%s', $parentId, $id), $params, $opts);
+    }
+
+    /**
+     * Updates a customer’s cash balance.
+     *
+     * @param string $parentId
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\cash_balance
+     */
+    public function updateCashBalance($parentId, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/customers/%s/cash_balance', $parentId), $params, $opts);
     }
 
     /**
