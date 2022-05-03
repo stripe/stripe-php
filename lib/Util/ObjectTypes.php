@@ -25,6 +25,7 @@ class ObjectTypes
         \Stripe\BitcoinTransaction::OBJECT_NAME => \Stripe\BitcoinTransaction::class,
         \Stripe\Capability::OBJECT_NAME => \Stripe\Capability::class,
         \Stripe\Card::OBJECT_NAME => \Stripe\Card::class,
+        \Stripe\CashBalance::OBJECT_NAME => \Stripe\CashBalance::class,
         \Stripe\Charge::OBJECT_NAME => \Stripe\Charge::class,
         \Stripe\Checkout\Session::OBJECT_NAME => \Stripe\Checkout\Session::class,
         \Stripe\Collection::OBJECT_NAME => \Stripe\Collection::class,

@@ -90,6 +90,7 @@ require __DIR__ . '/lib/BitcoinReceiver.php';
 require __DIR__ . '/lib/BitcoinTransaction.php';
 require __DIR__ . '/lib/Capability.php';
 require __DIR__ . '/lib/Card.php';
+require __DIR__ . '/lib/CashBalance.php';
 require __DIR__ . '/lib/Charge.php';
 require __DIR__ . '/lib/Checkout/Session.php';
 require __DIR__ . '/lib/Collection.php';
