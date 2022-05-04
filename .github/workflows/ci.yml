@@ -10,18 +10,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  php-cs-fixer:
-    name: PHP-CS-Fixer
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@master
-
-      - name: PHP-CS-Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga:3.4.0
-        with:
-          args: --format=txt --diff --dry-run --using-cache=no --verbose .
 
   phpstan:
     name: PHPStan
@@ -56,10 +44,10 @@ jobs:
           # that, so we hash on "composer.json" instead.
           key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
 
-      # We run php-cs-fixer in a separate job, but the version we use is not compatible
-      # with all the versions of PHP that we want to execute PHPStan upon
-      - name: Trim dependency
-        run: composer remove --dev friendsofphp/php-cs-fixer
+      # We have to downgrade the php-cs-fixer dependency as the one we use to
+      # format does not support all of our PHP versions.
+      - name: Downgrade php-cs-fixer
+        run: composer require --dev "friendsofphp/php-cs-fixer:3.5.0" --ignore-platform-reqs
 
       - name: Validate composer.json and composer.lock
         run: composer validate
@@ -109,10 +97,10 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
 
-      # We run php-cs-fixer and PHPStan in separate jobs, but the versions we use are not compatible
-      # with all the versions of PHP that we want to execute PHPUnit upon
-      - name: Trim dependency
-        run: composer remove --dev friendsofphp/php-cs-fixer phpstan/phpstan
+      # We have to downgrade the php-cs-fixer dependency as the one we use to
+      # format does not support all of our PHP versions.
+      - name: Downgrade php-cs-fixer
+        run: composer require --dev "friendsofphp/php-cs-fixer:3.5.0" --ignore-platform-reqs
 
       - name: Validate composer.json and composer.lock
         run: composer validate
