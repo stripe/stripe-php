@@ -32,7 +32,6 @@ namespace Stripe\Service;
  * @property Issuing\IssuingServiceFactory $issuing
  * @property MandateService $mandates
  * @property OAuthService $oauth
- * @property OrderReturnService $orderReturns
  * @property OrderService $orders
  * @property PaymentIntentService $paymentIntents
  * @property PaymentLinkService $paymentLinks
@@ -96,7 +95,6 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'issuing' => Issuing\IssuingServiceFactory::class,
         'mandates' => MandateService::class,
         'oauth' => OAuthService::class,
-        'orderReturns' => OrderReturnService::class,
         'orders' => OrderService::class,
         'paymentIntents' => PaymentIntentService::class,
         'paymentLinks' => PaymentLinkService::class,

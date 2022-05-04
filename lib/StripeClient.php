@@ -32,7 +32,6 @@ namespace Stripe;
  * @property \Stripe\Service\Issuing\IssuingServiceFactory $issuing
  * @property \Stripe\Service\MandateService $mandates
  * @property \Stripe\Service\OAuthService $oauth
- * @property \Stripe\Service\OrderReturnService $orderReturns
  * @property \Stripe\Service\OrderService $orders
  * @property \Stripe\Service\PaymentIntentService $paymentIntents
  * @property \Stripe\Service\PaymentLinkService $paymentLinks

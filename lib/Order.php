@@ -5,37 +5,32 @@
 namespace Stripe;
 
 /**
- * Order objects are created to handle end customers' purchases of previously
- * defined <a href="https://stripe.com/docs/api#products">products</a>. You can
- * create, retrieve, and pay individual orders, as well as list all orders. Orders
- * are identified by a unique, random ID.
- *
- * Related guide: <a href="https://stripe.com/docs/orders-legacy">Tax, Shipping,
- * and Inventory</a>.
+ * An Order describes a purchase being made by a customer, including the products
+ * &amp; quantities being purchased, the order status, the payment information, and
+ * the billing/shipping details.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property int $amount A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a zero-decimal currency) representing the total amount for the order.
- * @property null|int $amount_returned The total amount that was returned to the customer.
- * @property null|string $application ID of the Connect Application that created the order.
- * @property null|int $application_fee A fee in cents that will be applied to the order and transferred to the application owner’s Stripe account. The request must be made with an OAuth key or the Stripe-Account header in order to take an application fee. For more information, see the application fees documentation.
- * @property null|string|\Stripe\Charge $charge The ID of the payment used to pay for the order. Present if the order status is <code>paid</code>, <code>fulfilled</code>, or <code>refunded</code>.
+ * @property int $amount_subtotal Order cost before any discounts or taxes are applied. A positive integer representing the subtotal of the order in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency).
+ * @property int $amount_total Total order cost after discounts and taxes are applied. A positive integer representing the cost of the order in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). To submit an order, the total must be either 0 or at least $0.50 USD or <a href="https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts">equivalent in charge currency</a>.
+ * @property null|string|\Stripe\StripeObject $application ID of the Connect application that created the Order, if any.
+ * @property \Stripe\StripeObject $automatic_tax
+ * @property null|\Stripe\StripeObject $billing_details Customer billing details associated with the order.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property null|string|\Stripe\Customer $customer The customer used for the order.
- * @property null|string $email The email address of the customer placing the order.
- * @property string $external_coupon_code External coupon code to load for this order.
- * @property \Stripe\OrderItem[] $items List of items constituting the order. An order can have up to 25 items.
+ * @property null|string|\Stripe\Customer $customer The customer which this orders belongs to.
+ * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
+ * @property null|(string|\Stripe\Discount)[] $discounts The discounts applied to the order. Use <code>expand[]=discounts</code> to expand each discount.
+ * @property null|string $ip_address A recent IP address of the purchaser used for tax reporting and tax location inference.
+ * @property \Stripe\Collection<\Stripe\LineItem> $line_items A list of line items the customer is ordering. Each line item includes information about the product, the quantity, and the resulting cost. There is a maximum of 100 line items.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|\Stripe\Collection<\Stripe\OrderReturn> $returns A list of returns that have taken place for this order.
- * @property null|string $selected_shipping_method The shipping method that is currently selected for this order, if any. If present, it is equal to one of the <code>id</code>s of shipping methods in the <code>shipping_methods</code> array. At order creation time, if there are multiple shipping methods, Stripe will automatically selected the first method.
- * @property null|\Stripe\StripeObject $shipping The shipping address for the order. Present if the order is for goods to be shipped.
- * @property null|\Stripe\StripeObject[] $shipping_methods A list of supported shipping methods for this order. The desired shipping method can be specified either by updating the order, or when paying it.
- * @property string $status Current order status. One of <code>created</code>, <code>paid</code>, <code>canceled</code>, <code>fulfilled</code>, or <code>returned</code>. More details in the <a href="https://stripe.com/docs/orders/guide#understanding-order-statuses">Orders Guide</a>.
- * @property null|\Stripe\StripeObject $status_transitions The timestamps at which the order status was updated.
- * @property null|int $updated Time at which the object was last updated. Measured in seconds since the Unix epoch.
- * @property string $upstream_id The user's order ID if it is different from the Stripe order ID.
+ * @property \Stripe\StripeObject $payment
+ * @property null|\Stripe\StripeObject $shipping_cost The details of the customer cost of shipping, including the customer chosen ShippingRate.
+ * @property null|\Stripe\StripeObject $shipping_details Customer shipping information associated with the order.
+ * @property string $status The overall status of the order.
+ * @property \Stripe\StripeObject $tax_details
+ * @property \Stripe\StripeObject $total_details
  */
 class Order extends ApiResource
 {
@@ -46,20 +41,46 @@ class Order extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const STATUS_CANCELED = 'canceled';
+    const STATUS_COMPLETE = 'complete';
+    const STATUS_OPEN = 'open';
+    const STATUS_PROCESSING = 'processing';
+    const STATUS_SUBMITTED = 'submitted';
+
     /**
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\OrderReturn the newly created return
+     * @return \Stripe\Order the canceled order
      */
-    public function returnOrder($params = null, $opts = null)
+    public function cancel($params = null, $opts = null)
     {
-        $url = $this->instanceUrl() . '/returns';
+        $url = $this->instanceUrl() . '/cancel';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
 
-        return Util\Util::convertToStripeObject($response, $opts);
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     * @param mixed $id
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Order> list of LineItems
+     */
+    public static function allLineItems($id, $params = null, $opts = null)
+    {
+        $url = static::resourceUrl($id) . '/line_items';
+        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
     }
 
     /**
@@ -68,11 +89,11 @@ class Order extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Order the paid order
+     * @return \Stripe\Order the reopened order
      */
-    public function pay($params = null, $opts = null)
+    public function reopen($params = null, $opts = null)
     {
-        $url = $this->instanceUrl() . '/pay';
+        $url = $this->instanceUrl() . '/reopen';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
 
