@@ -5,8 +5,8 @@
 namespace Stripe\FinancialConnections;
 
 /**
- * @property string $id
- * @property string $object
+ * @property string $id Unique identifier for the object.
+ * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string $email The email address of the owner.
  * @property string $name The full name of the owner.
  * @property string $ownership The ownership object that this owner belongs to.
