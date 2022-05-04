@@ -5,6 +5,7 @@
 namespace Stripe\FinancialConnections;
 
 /**
+ * @property string $id
  * @property string $object
  * @property null|string $email The email address of the owner.
  * @property string $name The full name of the owner.
