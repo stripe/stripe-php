@@ -109,6 +109,8 @@ require __DIR__ . '/lib/ExchangeRate.php';
 require __DIR__ . '/lib/File.php';
 require __DIR__ . '/lib/FileLink.php';
 require __DIR__ . '/lib/FinancialConnections/Account.php';
+require __DIR__ . '/lib/FinancialConnections/AccountOwner.php';
+require __DIR__ . '/lib/FinancialConnections/AccountOwnership.php';
 require __DIR__ . '/lib/FinancialConnections/Session.php';
 require __DIR__ . '/lib/FundingInstructions.php';
 require __DIR__ . '/lib/Identity/VerificationReport.php';
