@@ -72,26 +72,6 @@ class OrderService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Submitting an Order transitions the status to <code>processing</code> and
-     * creates a PaymentIntent object so the order can be paid. If the Order has an
-     * <code>amount_total</code> of 0, no PaymentIntent object will be created. Once
-     * the order is submitted, its contents cannot be changed, unless the <a
-     * href="#reopen_order">reopen</a> method is called.
-     *
-     * @param string $id
-     * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Order
-     */
-    public function create($id, $params = null, $opts = null)
-    {
-        return $this->request('post', $this->buildPath('/v1/orders/%s/submit', $id), $params, $opts);
-    }
-
-    /**
      * Reopens a <code>processing</code> order.
      *
      * @param string $id
@@ -123,6 +103,26 @@ class OrderService extends \Stripe\Service\AbstractService
     public function retrieve($id, $params = null, $opts = null)
     {
         return $this->request('get', $this->buildPath('/v1/orders/%s', $id), $params, $opts);
+    }
+
+    /**
+     * Submitting an Order transitions the status to <code>processing</code> and
+     * creates a PaymentIntent object so the order can be paid. If the Order has an
+     * <code>amount_total</code> of 0, no PaymentIntent object will be created. Once
+     * the order is submitted, its contents cannot be changed, unless the <a
+     * href="#reopen_order">reopen</a> method is called.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Order
+     */
+    public function submit($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/orders/%s/submit', $id), $params, $opts);
     }
 
     /**
