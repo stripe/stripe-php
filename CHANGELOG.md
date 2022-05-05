@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.127.0 - 2022-05-05
+* [#1281](https://github.com/stripe/stripe-php/pull/1281) API Updates
+  * Add support for new resources `FinancialConnections.AccountOwner`, `FinancialConnections.AccountOwnership`, `FinancialConnections.Account`, and `FinancialConnections.Session`
+  
+* [#1278](https://github.com/stripe/stripe-php/pull/1278) Pin setup-php action version.
+* [#1277](https://github.com/stripe/stripe-php/pull/1277) API Updates
+  * Add support for `registered_address` on `Person`
+
 ## 7.126.0 - 2022-05-03
 * [#1276](https://github.com/stripe/stripe-php/pull/1276) API Updates
   * Add support for new resource `CashBalance`
