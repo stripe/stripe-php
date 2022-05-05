@@ -2380,79 +2380,6 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Terminal\Reader::class, $result->data[0]);
     }
 
-    public function testCreateOrder()
-    {
-        $this->expectsRequest('post', '/v1/orders');
-        $result = $this->client->orders->create(
-            [
-                'currency' => 'usd',
-                'email' => 'jenny.rosen@example.com',
-                'items' => [['type' => 'sku', 'parent' => 'sku_xxxxxxxxxxxxx']],
-                'shipping' => [
-                    'name' => 'Jenny Rosen',
-                    'address' => [
-                        'line1' => '1234 Main Street',
-                        'city' => 'San Francisco',
-                        'state' => 'CA',
-                        'country' => 'US',
-                        'postal_code' => '94111',
-                    ],
-                ],
-            ]
-        );
-        static::assertInstanceOf(\Stripe\Order::class, $result);
-    }
-
-    public function testRetrieveOrder()
-    {
-        $this->expectsRequest('get', '/v1/orders/or_xxxxxxxxxxxxx');
-        $result = $this->client->orders->retrieve('or_xxxxxxxxxxxxx', []);
-        static::assertInstanceOf(\Stripe\Order::class, $result);
-    }
-
-    public function testUpdateOrder()
-    {
-        $this->expectsRequest('post', '/v1/orders/or_xxxxxxxxxxxxx');
-        $result = $this->client->orders->update(
-            'or_xxxxxxxxxxxxx',
-            ['metadata' => ['order_id' => '6735']]
-        );
-        static::assertInstanceOf(\Stripe\Order::class, $result);
-    }
-
-    public function testPayOrder()
-    {
-        $this->expectsRequest('post', '/v1/orders/or_xxxxxxxxxxxxx/pay');
-        $result = $this->client->orders->pay(
-            'or_xxxxxxxxxxxxx',
-            ['source' => 'tok_xxxx']
-        );
-        static::assertInstanceOf(\Stripe\Order::class, $result);
-    }
-
-    public function testListOrder()
-    {
-        $this->expectsRequest('get', '/v1/orders');
-        $result = $this->client->orders->all(['limit' => 3]);
-        static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\Order::class, $result->data[0]);
-    }
-
-    public function testRetrieveOrderReturn()
-    {
-        $this->expectsRequest('get', '/v1/order_returns/orret_xxxxxxxxxxxxx');
-        $result = $this->client->orderReturns->retrieve('orret_xxxxxxxxxxxxx', []);
-        static::assertInstanceOf(\Stripe\OrderReturn::class, $result);
-    }
-
-    public function testListOrderReturn()
-    {
-        $this->expectsRequest('get', '/v1/order_returns');
-        $result = $this->client->orderReturns->all(['limit' => 3]);
-        static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\OrderReturn::class, $result->data[0]);
-    }
-
     public function testCreateSku()
     {
         $this->expectsRequest('post', '/v1/skus');
@@ -2821,5 +2748,64 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $this->expectsRequest('post', '/v1/test_helpers/refunds/re_123/expire');
         $result = $this->client->testHelpers->refunds->expire('re_123', []);
         static::assertInstanceOf(\Stripe\Refund::class, $result);
+    }
+
+    public function testCreateOrder()
+    {
+        $this->expectsRequest('post', '/v1/orders');
+        $result = $this->client->orders->create(
+            [
+                'description' => 'description',
+                'currency' => 'usd',
+                'line_items' => [['description' => 'my line item']],
+            ]
+        );
+        static::assertInstanceOf(\Stripe\Order::class, $result);
+    }
+
+    public function testUpdateOrder()
+    {
+        $this->expectsRequest('post', '/v1/orders/order_xyz');
+        $result = $this->client->orders->update('order_xyz', []);
+        static::assertInstanceOf(\Stripe\Order::class, $result);
+    }
+
+    public function testListLineItemsOrder()
+    {
+        $this->expectsRequest('get', '/v1/orders/order_xyz/line_items');
+        $result = $this->client->orders->allLineItems('order_xyz', []);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\LineItem::class, $result->data[0]);
+    }
+
+    public function testCancelOrder()
+    {
+        $this->expectsRequest('post', '/v1/orders/order_xyz/cancel');
+        $result = $this->client->orders->cancel('order_xyz', []);
+        static::assertInstanceOf(\Stripe\Order::class, $result);
+    }
+
+    public function testReopenOrder()
+    {
+        $this->expectsRequest('post', '/v1/orders/order_xyz/reopen');
+        $result = $this->client->orders->reopen('order_xyz', []);
+        static::assertInstanceOf(\Stripe\Order::class, $result);
+    }
+
+    public function testSubmitOrder()
+    {
+        $this->expectsRequest('post', '/v1/orders/order_xyz/submit');
+        $result = $this->client->orders->submit(
+            'order_xyz',
+            ['expected_total' => 100]
+        );
+        static::assertInstanceOf(\Stripe\Order::class, $result);
+    }
+
+    public function testUpdateOrder2()
+    {
+        $this->expectsRequest('post', '/v1/orders/order_xyz');
+        $result = $this->client->orders->update('order_xyz', []);
+        static::assertInstanceOf(\Stripe\Order::class, $result);
     }
 }
