@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.128.0 - 2022-05-05
+* [#1282](https://github.com/stripe/stripe-php/pull/1282) API Updates
+  * Add support for `default_price` on `Product`
+  * Add support for `instructions_email` on `Refund`
+  
+
 ## 7.127.0 - 2022-05-05
 * [#1281](https://github.com/stripe/stripe-php/pull/1281) API Updates
   * Add support for new resources `FinancialConnections.AccountOwner`, `FinancialConnections.AccountOwnership`, `FinancialConnections.Account`, and `FinancialConnections.Session`
