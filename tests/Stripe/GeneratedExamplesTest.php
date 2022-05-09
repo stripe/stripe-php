@@ -2808,4 +2808,65 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $result = $this->client->orders->update('order_xyz', []);
         static::assertInstanceOf(\Stripe\Order::class, $result);
     }
+
+    public function testRetrieveAccount2()
+    {
+        $this->expectsRequest('get', '/v1/financial_connections/accounts/fca_xyz');
+        $result = $this->client->financialConnections->accounts->retrieve(
+            'fca_xyz',
+            []
+        );
+        static::assertInstanceOf(\Stripe\FinancialConnections\Account::class, $result);
+    }
+
+    public function testRefreshAccount()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/financial_connections/accounts/fca_xyz/refresh'
+        );
+        $result = $this->client->financialConnections->accounts->refresh(
+            'fca_xyz',
+            ['features' => ['balance']]
+        );
+        static::assertInstanceOf(\Stripe\FinancialConnections\Account::class, $result);
+    }
+
+    public function testDisconnectAccount()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/financial_connections/accounts/fca_xyz/disconnect'
+        );
+        $result = $this->client->financialConnections->accounts->disconnect(
+            'fca_xyz',
+            []
+        );
+        static::assertInstanceOf(\Stripe\FinancialConnections\Account::class, $result);
+    }
+
+    public function testCreateSession4()
+    {
+        $this->expectsRequest('post', '/v1/financial_connections/sessions');
+        $result = $this->client->financialConnections->sessions->create(
+            [
+                'account_holder' => ['type' => 'customer', 'customer' => 'cus_123'],
+                'permissions' => ['balances'],
+            ]
+        );
+        static::assertInstanceOf(\Stripe\FinancialConnections\Session::class, $result);
+    }
+
+    public function testRetrieveSession2()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/financial_connections/sessions/fcsess_xyz'
+        );
+        $result = $this->client->financialConnections->sessions->retrieve(
+            'fcsess_xyz',
+            []
+        );
+        static::assertInstanceOf(\Stripe\FinancialConnections\Session::class, $result);
+    }
 }

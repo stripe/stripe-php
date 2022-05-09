@@ -127,7 +127,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\cash_balance
+     * @return \Stripe\CashBalance
      */
     public static function retrieveCashBalance($id, $cashBalanceId, $params = null, $opts = null)
     {
@@ -142,7 +142,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\cash_balance
+     * @return \Stripe\CashBalance
      */
     public static function updateCashBalance($id, $cashBalanceId, $params = null, $opts = null)
     {

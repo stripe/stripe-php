@@ -285,7 +285,7 @@ class CustomerService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\cash_balance
+     * @return \Stripe\CashBalance
      */
     public function retrieveCashBalance($parentId, $params = null, $opts = null)
     {
@@ -401,7 +401,7 @@ class CustomerService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\cash_balance
+     * @return \Stripe\CashBalance
      */
     public function updateCashBalance($parentId, $params = null, $opts = null)
     {
