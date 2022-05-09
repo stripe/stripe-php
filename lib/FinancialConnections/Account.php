@@ -73,7 +73,7 @@ class Account extends \Stripe\ApiResource
      *
      * @return \Stripe\FinancialConnections\Account the refreshed account
      */
-    public function refresh($params = null, $opts = null)
+    public function refreshAccount($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/refresh';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
