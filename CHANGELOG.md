@@ -1,5 +1,10 @@
 # Changelog
 
+## 8.1.0 - 2022-05-11
+* [#1284](https://github.com/stripe/stripe-php/pull/1284) API Updates
+  * Add support for `consent_collection`, `customer_creation`, `payment_intent_data`, `shipping_options`, `submit_type`, and `tax_id_collection` on `PaymentLink`
+  * Add support for `description` on `Subscription`
+
 ## 8.0.0 - 2022-05-09
 * [#1283](https://github.com/stripe/stripe-php/pull/1283) Major version release of v8.0.0. The [migration guide](https://github.com/stripe/stripe-php/wiki/Migration-Guide-for-v8) contains more information.
   (⚠️ = breaking changes):
