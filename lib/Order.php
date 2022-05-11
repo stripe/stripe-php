@@ -9,6 +9,8 @@ namespace Stripe;
  * &amp; quantities being purchased, the order status, the payment information, and
  * the billing/shipping details.
  *
+ * Related guide: <a href="https://stripe.com/docs/orders">Orders overview</a>
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount_subtotal Order cost before any discounts or taxes are applied. A positive integer representing the subtotal of the order in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency).

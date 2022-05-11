@@ -72,7 +72,7 @@ class OrderService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Reopens a <code>processing</code> order.
+     * Reopens a <code>submitted</code> order.
      *
      * @param string $id
      * @param null|array $params
