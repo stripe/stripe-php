@@ -30,6 +30,7 @@ class Account extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'financial_connections.account';
 
+    use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Retrieve;
 
     const CATEGORY_CASH = 'cash';
@@ -63,6 +64,25 @@ class Account extends \Stripe\ApiResource
         $this->refreshFrom($response, $opts);
 
         return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     * @param mixed $id
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\FinancialConnections\AccountOwner> list of BankConnectionsResourceOwners
+     */
+    public static function allOwners($id, $params = null, $opts = null)
+    {
+        $url = static::resourceUrl($id) . '/owners';
+        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
     }
 
     /**
