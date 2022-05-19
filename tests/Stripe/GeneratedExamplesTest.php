@@ -377,6 +377,112 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\FinancialConnections\AccountOwner::class, $result->data[0]);
     }
 
+    public function testFailInboundTransfer()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/treasury/inbound_transfers/ibt_123/fail'
+        );
+        $result = $this->client->testHelpers->treasury->inboundTransfers->fail(
+            'ibt_123',
+            ['failure_details' => ['code' => 'account_closed']]
+        );
+        static::assertInstanceOf(\Stripe\Treasury\InboundTransfer::class, $result);
+    }
+
+    public function testReturnInboundTransferInboundTransfer()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/treasury/inbound_transfers/ibt_123/return'
+        );
+        $result = $this->client->testHelpers->treasury->inboundTransfers->returnInboundTransfer(
+            'ibt_123',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Treasury\InboundTransfer::class, $result);
+    }
+
+    public function testSucceedInboundTransfer()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/treasury/inbound_transfers/ibt_123/succeed'
+        );
+        $result = $this->client->testHelpers->treasury->inboundTransfers->succeed(
+            'ibt_123',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Treasury\InboundTransfer::class, $result);
+    }
+
+    public function testPostOutboundTransfer()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/treasury/outbound_transfers/obt_123/post'
+        );
+        $result = $this->client->testHelpers->treasury->outboundTransfers->post(
+            'obt_123',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Treasury\OutboundTransfer::class, $result);
+    }
+
+    public function testFailOutboundTransfer()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/treasury/outbound_transfers/obt_123/fail'
+        );
+        $result = $this->client->testHelpers->treasury->outboundTransfers->fail(
+            'obt_123',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Treasury\OutboundTransfer::class, $result);
+    }
+
+    public function testReturnOutboundTransferOutboundTransfer()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/treasury/outbound_transfers/obt_123/return'
+        );
+        $result = $this->client->testHelpers->treasury->outboundTransfers->returnOutboundTransfer(
+            'obt_123',
+            ['returned_details' => ['code' => 'account_closed']]
+        );
+        static::assertInstanceOf(\Stripe\Treasury\OutboundTransfer::class, $result);
+    }
+
+    public function testCreateReceivedCredit()
+    {
+        $this->expectsRequest('post', '/v1/test_helpers/treasury/received_credits');
+        $result = $this->client->testHelpers->treasury->receivedCredits->create(
+            [
+                'financial_account' => 'fa_123',
+                'network' => 'ach',
+                'amount' => 1234,
+                'currency' => 'usd',
+            ]
+        );
+        static::assertInstanceOf(\Stripe\Treasury\ReceivedCredit::class, $result);
+    }
+
+    public function testCreateReceivedDebit()
+    {
+        $this->expectsRequest('post', '/v1/test_helpers/treasury/received_debits');
+        $result = $this->client->testHelpers->treasury->receivedDebits->create(
+            [
+                'financial_account' => 'fa_123',
+                'network' => 'ach',
+                'amount' => 1234,
+                'currency' => 'usd',
+            ]
+        );
+        static::assertInstanceOf(\Stripe\Treasury\ReceivedDebit::class, $result);
+    }
+
     public function testListCustomer()
     {
         $this->expectsRequest('get', '/v1/customers');
