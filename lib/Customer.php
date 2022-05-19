@@ -90,13 +90,32 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\Customer> list of PaymentMethods
+     * @return \Stripe\Collection<\Stripe\PaymentMethod> list of PaymentMethods
      */
     public static function allPaymentMethods($id, $params = null, $opts = null)
     {
         $url = static::resourceUrl($id) . '/payment_methods';
         list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * @param string $payment_method
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Customer the retrieved customer
+     */
+    public function retrievePaymentMethod($payment_method, $params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/payment_methods/' . $payment_method;
+        list($response, $opts) = $this->_request('get', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response, $opts);
         $obj->setLastResponse($response);
 
         return $obj;

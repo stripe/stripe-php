@@ -10,6 +10,7 @@ namespace Stripe\Service\TestHelpers;
  * @property RefundService $refunds
  * @property Terminal\TerminalServiceFactory $terminal
  * @property TestClockService $testClocks
+ * @property Treasury\TreasuryServiceFactory $treasury
  */
 class TestHelpersServiceFactory extends \Stripe\Service\AbstractServiceFactory
 {
@@ -20,6 +21,7 @@ class TestHelpersServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'refunds' => RefundService::class,
         'terminal' => Terminal\TerminalServiceFactory::class,
         'testClocks' => TestClockService::class,
+        'treasury' => Treasury\TreasuryServiceFactory::class,
     ];
 
     protected function getServiceClass($name)

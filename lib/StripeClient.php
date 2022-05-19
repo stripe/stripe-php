@@ -63,6 +63,7 @@ namespace Stripe;
  * @property \Stripe\Service\TokenService $tokens
  * @property \Stripe\Service\TopupService $topups
  * @property \Stripe\Service\TransferService $transfers
+ * @property \Stripe\Service\Treasury\TreasuryServiceFactory $treasury
  * @property \Stripe\Service\WebhookEndpointService $webhookEndpoints
  */
 class StripeClient extends BaseStripeClient

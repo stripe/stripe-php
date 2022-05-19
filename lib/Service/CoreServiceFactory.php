@@ -63,6 +63,7 @@ namespace Stripe\Service;
  * @property TokenService $tokens
  * @property TopupService $topups
  * @property TransferService $transfers
+ * @property Treasury\TreasuryServiceFactory $treasury
  * @property WebhookEndpointService $webhookEndpoints
  */
 class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
@@ -127,6 +128,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'tokens' => TokenService::class,
         'topups' => TopupService::class,
         'transfers' => TransferService::class,
+        'treasury' => Treasury\TreasuryServiceFactory::class,
         'webhookEndpoints' => WebhookEndpointService::class,
     ];
 

@@ -138,7 +138,7 @@ class Quote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\Quote> list of LineItems
+     * @return \Stripe\Collection<\Stripe\LineItem> list of LineItems
      */
     public static function allComputedUpfrontLineItems($id, $params = null, $opts = null)
     {
@@ -157,7 +157,7 @@ class Quote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\Quote> list of LineItems
+     * @return \Stripe\Collection<\Stripe\LineItem> list of LineItems
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {

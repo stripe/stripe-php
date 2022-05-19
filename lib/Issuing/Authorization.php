@@ -34,6 +34,7 @@ namespace Stripe\Issuing;
  * @property \Stripe\StripeObject[] $request_history History of every time <code>pending_request</code> was approved/denied, either by you directly or by Stripe (e.g. based on your <code>spending_controls</code>). If the merchant changes the authorization by performing an <a href="https://stripe.com/docs/issuing/purchases/authorizations">incremental authorization</a>, you can look at this field to see the previous requests for the authorization.
  * @property string $status The current status of the authorization in its lifecycle.
  * @property \Stripe\Issuing\Transaction[] $transactions List of <a href="https://stripe.com/docs/api/issuing/transactions">transactions</a> associated with this authorization.
+ * @property null|\Stripe\StripeObject $treasury <a href="https://stripe.com/docs/api/treasury">Treasury</a> details related to this authorization if it was created on a <a href="https://stripe.com/docs/api/treasury/financial_accounts">FinancialAccount</a>.
  * @property \Stripe\StripeObject $verification_data
  * @property null|string $wallet The digital wallet used for this authorization. One of <code>apple_pay</code>, <code>google_pay</code>, or <code>samsung_pay</code>.
  */
