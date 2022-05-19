@@ -285,7 +285,10 @@ require __DIR__ . '/lib/Service/Radar/RadarServiceFactory.php';
 require __DIR__ . '/lib/Service/Reporting/ReportingServiceFactory.php';
 require __DIR__ . '/lib/Service/Sigma/SigmaServiceFactory.php';
 require __DIR__ . '/lib/Service/Terminal/TerminalServiceFactory.php';
+require __DIR__ . '/lib/Service/TestHelpers/CoreServiceFactory.php';
+require __DIR__ . '/lib/Service/TestHelpers/Terminal/TerminalServiceFactory.php';
 require __DIR__ . '/lib/Service/TestHelpers/TestHelpersServiceFactory.php';
+require __DIR__ . '/lib/Service/TestHelpers/Treasury/TreasuryServiceFactory.php';
 require __DIR__ . '/lib/Service/Treasury/TreasuryServiceFactory.php';
 
 // OAuth
