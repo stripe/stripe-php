@@ -157,7 +157,7 @@ class RequestOptions
     /** @return string */
     private function redactedApiKey()
     {
-        if (is_null($this->apiKey)) {
+        if (null === $this->apiKey) {
             return '';
         }
 
