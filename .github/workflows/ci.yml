@@ -18,10 +18,29 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: PHP-CS-Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga:3.4.0
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          args: --format=txt --diff --dry-run --using-cache=no --verbose .
+          php-version: ${{ matrix.php-version }}
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: PHP-CS-Fixer
+        run: vendor/bin/php-cs-fixer fix --format=txt --diff --dry-run --using-cache=no --verbose .
 
   phpstan:
     name: PHPStan
