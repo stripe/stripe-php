@@ -1,5 +1,12 @@
 # Changelog
 
+## 8.3.0 - 2022-05-23
+* [#1294](https://github.com/stripe/stripe-php/pull/1294) API Updates
+  * Add support for new resource `Apps.Secret`
+  * Add support for `affirm` and `link` on `PaymentMethod`
+  * Add support for new values `affirm` and `link` on enum `PaymentMethod.type`
+* [#1289](https://github.com/stripe/stripe-php/pull/1289) fix: Update RequestOptions#redactedApiKey to stop exploding null.
+
 ## 8.2.0 - 2022-05-19
 * [#1286](https://github.com/stripe/stripe-php/pull/1286) API Updates
   * Add support for new resources `Treasury.CreditReversal`, `Treasury.DebitReversal`, `Treasury.FinancialAccountFeatures`, `Treasury.FinancialAccount`, `Treasury.FlowDetails`, `Treasury.InboundTransfer`, `Treasury.OutboundPayment`, `Treasury.OutboundTransfer`, `Treasury.ReceivedCredit`, `Treasury.ReceivedDebit`, `Treasury.TransactionEntry`, and `Treasury.Transaction`
