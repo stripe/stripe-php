@@ -168,5 +168,9 @@ final class RequestOptionsTest extends \Stripe\TestCase
         $opts = RequestOptions::parse(['api_key' => '1234567890abcdefghijklmn']);
         $debugInfo = \print_r($opts, true);
         static::compatAssertStringContainsString('[apiKey] => ********************klmn', $debugInfo);
+
+        $opts = RequestOptions::parse([]);
+        $debugInfo = \print_r($opts, true);
+        static::compatAssertStringContainsString("[apiKey] => \n", $debugInfo);
     }
 }
