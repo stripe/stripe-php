@@ -16,6 +16,7 @@ class ObjectTypes
         \Stripe\ApplePayDomain::OBJECT_NAME => \Stripe\ApplePayDomain::class,
         \Stripe\ApplicationFee::OBJECT_NAME => \Stripe\ApplicationFee::class,
         \Stripe\ApplicationFeeRefund::OBJECT_NAME => \Stripe\ApplicationFeeRefund::class,
+        \Stripe\Apps\Secret::OBJECT_NAME => \Stripe\Apps\Secret::class,
         \Stripe\Balance::OBJECT_NAME => \Stripe\Balance::class,
         \Stripe\BalanceTransaction::OBJECT_NAME => \Stripe\BalanceTransaction::class,
         \Stripe\BankAccount::OBJECT_NAME => \Stripe\BankAccount::class,
