@@ -26,6 +26,44 @@ class Stripe_Subscription extends Stripe_ApiResource
   }
 
   /**
+   * @param string $id The ID of the customer to retrieve.
+   * @param string|null $apiKey
+   *
+   * @return Stripe_Customer
+   */
+  public static function retrieve($id, $apiKey=null)
+  {
+//      echo $this->_apiKey;
+//      die();
+//    $requestor = new Stripe_ApiRequestor($this->_apiKey);
+//    $url = $this->instanceUrl() . '/subscription';
+//                    echo "==========\n";
+//          echo __LINE__;
+//          print_r($url);
+//                    echo "==========\n";
+//    list($response, $apiKey) = $requestor->request('retrieve', $url, $params);
+//    $this->refreshFrom(array('subscription' => $response), $apiKey, true);
+//    return $this->subscription;
+    
+    $class = get_class();
+    return self::_scopedRetrieveSub($class, $id, $apiKey);
+  }
+  
+  
+  /**
+   * @param array|null $params
+   * @param string|null $apiKey
+   *
+   * @return .
+   */
+  public static function create($params=null, $apiKey=null)
+  {
+    $class = get_class();
+    return self::_scopedCreate($class, $params, $apiKey);
+  }
+  
+  
+  /**
    * @param array|null $params
    * @return Stripe_Subscription The deleted subscription.
    */

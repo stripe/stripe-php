@@ -9,10 +9,10 @@ abstract class Stripe_ApiResource extends Stripe_Object
 
   protected static function _scopedRetrieve($class, $id, $options=null)
   {
-    $opts = Stripe_RequestOptions::parse($options);
-    $instance = new $class($id, $opts->apiKey);
-    $instance->refresh();
-    return $instance;
+        $opts = Stripe_RequestOptions::parse($options);
+        $instance = new $class($id, $opts->apiKey);
+        $instance->refresh();
+        return $instance;
   }
 
   /**
@@ -139,11 +139,19 @@ abstract class Stripe_ApiResource extends Stripe_Object
     $base = self::_scopedLsb($class, 'baseUrl');
     $requestor = new Stripe_ApiRequestor($opts->apiKey, $base);
     $url = self::_scopedLsb($class, 'classUrl', $class);
-    list($response, $apiKey) = 
-      $requestor->request('post', $url, $params, $opts->headers);
+    list($response, $apiKey) = $requestor->request('post', $url, $params, $opts->headers);
     return Stripe_Util::convertToStripeObject($response, $apiKey);
   }
 
+  protected static function _scopedRetrieveSub($class, $id, $options=null)
+  {
+        $opts = Stripe_RequestOptions::parse($options);
+        $instance = new $class($id, $opts->apiKey);
+        $instance->refresh();
+        return $instance;
+  }
+  
+  
   protected function _scopedSave($class, $options=null)
   {
     self::_validateCall('save', null, $options);
