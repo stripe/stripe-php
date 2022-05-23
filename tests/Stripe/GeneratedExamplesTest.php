@@ -483,6 +483,37 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Treasury\ReceivedDebit::class, $result);
     }
 
+    public function testCreateSecret()
+    {
+        $this->expectsRequest('post', '/v1/apps/secrets');
+        $result = $this->client->apps->secrets->create(
+            [
+                'name' => 'sec_123',
+                'payload' => 'very secret string',
+                'scope' => ['type' => 'account'],
+            ]
+        );
+        static::assertInstanceOf(\Stripe\Apps\Secret::class, $result);
+    }
+
+    public function testFindSecret()
+    {
+        $this->expectsRequest('get', '/v1/apps/secrets/find');
+        $result = $this->client->apps->secrets->find(
+            ['name' => 'sec_123', 'scope' => ['type' => 'account']]
+        );
+        static::assertInstanceOf(\Stripe\Apps\Secret::class, $result);
+    }
+
+    public function testDeleteWhereSecret()
+    {
+        $this->expectsRequest('post', '/v1/apps/secrets/delete');
+        $result = $this->client->apps->secrets->deleteWhere(
+            ['name' => 'sec_123', 'scope' => ['type' => 'account']]
+        );
+        static::assertInstanceOf(\Stripe\Apps\Secret::class, $result);
+    }
+
     public function testListCustomer()
     {
         $this->expectsRequest('get', '/v1/customers');

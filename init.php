@@ -81,6 +81,7 @@ require __DIR__ . '/lib/AlipayAccount.php';
 require __DIR__ . '/lib/ApplePayDomain.php';
 require __DIR__ . '/lib/ApplicationFee.php';
 require __DIR__ . '/lib/ApplicationFeeRefund.php';
+require __DIR__ . '/lib/Apps/Secret.php';
 require __DIR__ . '/lib/Balance.php';
 require __DIR__ . '/lib/BalanceTransaction.php';
 require __DIR__ . '/lib/BankAccount.php';
@@ -191,6 +192,7 @@ require __DIR__ . '/lib/Service/AccountService.php';
 require __DIR__ . '/lib/Service/AccountLinkService.php';
 require __DIR__ . '/lib/Service/ApplePayDomainService.php';
 require __DIR__ . '/lib/Service/ApplicationFeeService.php';
+require __DIR__ . '/lib/Service/Apps/SecretService.php';
 require __DIR__ . '/lib/Service/BalanceService.php';
 require __DIR__ . '/lib/Service/BalanceTransactionService.php';
 require __DIR__ . '/lib/Service/BillingPortal/ConfigurationService.php';
@@ -275,6 +277,7 @@ require __DIR__ . '/lib/Service/Treasury/TransactionEntryService.php';
 require __DIR__ . '/lib/Service/WebhookEndpointService.php';
 
 // Service factories
+require __DIR__ . '/lib/Service/Apps/AppsServiceFactory.php';
 require __DIR__ . '/lib/Service/BillingPortal/BillingPortalServiceFactory.php';
 require __DIR__ . '/lib/Service/Checkout/CheckoutServiceFactory.php';
 require __DIR__ . '/lib/Service/CoreServiceFactory.php';
