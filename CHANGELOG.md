@@ -1,5 +1,13 @@
 # Changelog
 
+## 8.4.0 - 2022-05-26
+* [#1296](https://github.com/stripe/stripe-php/pull/1296) API Updates
+  * Add support for `persons` method on resource `Account`
+  * Add support for `balance_transactions` method on resource `Customer`
+  * Add support for `id_number_secondary_provided` on `Person`
+* [#1295](https://github.com/stripe/stripe-php/pull/1295) API Updates
+
+
 ## 8.3.0 - 2022-05-23
 * [#1294](https://github.com/stripe/stripe-php/pull/1294) API Updates
   * Add support for new resource `Apps.Secret`
