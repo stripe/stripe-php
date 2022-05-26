@@ -35,6 +35,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $future_requirements Information about the upcoming new requirements for this person, including what information needs to be collected, and by when.
  * @property null|string $gender The person's gender (International regulations require either &quot;male&quot; or &quot;female&quot;).
  * @property bool $id_number_provided Whether the person's <code>id_number</code> was provided.
+ * @property bool $id_number_secondary_provided Whether the person's <code>id_number_secondary</code> was provided.
  * @property null|string $last_name The person's last name.
  * @property null|string $last_name_kana The Kana variation of the person's last name (Japan only).
  * @property null|string $last_name_kanji The Kanji variation of the person's last name (Japan only).
