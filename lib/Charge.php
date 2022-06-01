@@ -45,6 +45,7 @@ namespace Stripe;
  * @property null|string|\Stripe\PaymentIntent $payment_intent ID of the PaymentIntent associated with this charge, if one exists.
  * @property null|string $payment_method ID of the payment method used in this charge.
  * @property null|\Stripe\StripeObject $payment_method_details Details about the payment method at the time of the transaction.
+ * @property \Stripe\StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
  * @property null|string $receipt_email This is the email address that the receipt for this charge was sent to.
  * @property null|string $receipt_number This is the transaction number that appears on email receipts sent for this charge. This attribute will be <code>null</code> until a receipt has been sent.
  * @property null|string $receipt_url This is the URL to view the receipt for this charge. The receipt is kept up-to-date to the latest state of the charge, including any refunds. If the charge is for an Invoice, the receipt will be stylized as an Invoice receipt.

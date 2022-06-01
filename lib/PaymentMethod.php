@@ -46,6 +46,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $oxxo
  * @property \Stripe\StripeObject $p24
  * @property \Stripe\StripeObject $paynow
+ * @property \Stripe\StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
  * @property \Stripe\StripeObject $sepa_debit
  * @property \Stripe\StripeObject $sofort
  * @property string $type The type of the PaymentMethod. An additional hash is included on the PaymentMethod with a name matching this value. It contains additional information specific to the PaymentMethod type.
