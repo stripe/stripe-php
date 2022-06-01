@@ -1,5 +1,10 @@
 # Changelog
 
+## 8.5.0 - 2022-06-01
+* [#1298](https://github.com/stripe/stripe-php/pull/1298) API Updates
+  * Add support for `radar_options` on `Charge` and `PaymentMethod`
+  * Add support for new value `simulated_wisepos_e` on enum `Terminal.Reader.device_type`
+
 ## 8.4.0 - 2022-05-26
 * [#1296](https://github.com/stripe/stripe-php/pull/1296) API Updates
   * Add support for `persons` method on resource `Account`
