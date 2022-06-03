@@ -2,10 +2,8 @@
 
 # A list of files and folders those will be excluded from archives and the
 # Composer package (for purposes of making it smaller).
-/.coveralls.yml export-ignore
 /.github export-ignore
 /.gitattributes export-ignore
-/.travis.yml export-ignore
 /.vscode export-ignore
 /examples export-ignore
 /phpunit.xml export-ignore
