@@ -1,5 +1,9 @@
 # Changelog
 
+## 8.6.0 - 2022-06-08
+* [#1300](https://github.com/stripe/stripe-php/pull/1300) API Updates
+  * Add support for `attach_to_self` and `flow_directions` on `SetupAttempt`
+
 ## 8.5.0 - 2022-06-01
 * [#1298](https://github.com/stripe/stripe-php/pull/1298) API Updates
   * Add support for `radar_options` on `Charge` and `PaymentMethod`
@@ -51,7 +55,7 @@
 * [#1282](https://github.com/stripe/stripe-php/pull/1282) API Updates
   * Add support for `default_price` on `Product`
   * Add support for `instructions_email` on `Refund`
-  
+
 
 ## 7.127.0 - 2022-05-05
 * [#1281](https://github.com/stripe/stripe-php/pull/1281) API Updates
@@ -95,7 +99,7 @@
 * [#1261](https://github.com/stripe/stripe-php/pull/1261) API Updates
   * Add support for `apply_customer_balance` method on resource `PaymentIntent`
 * [#1259](https://github.com/stripe/stripe-php/pull/1259) API Updates
-  
+
   * Add `payment_intent.partially_funded`, `terminal.reader.action_failed`, and `terminal.reader.action_succeeded` events.
 
 ## 7.121.0 - 2022-03-30
