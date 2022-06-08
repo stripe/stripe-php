@@ -514,6 +514,23 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Apps\Secret::class, $result);
     }
 
+    public function testRetrieveCashBalance()
+    {
+        $this->expectsRequest('get', '/v1/customers/cus_123/cash_balance');
+        $result = $this->client->customers->retrieveCashBalance('cus_123', []);
+        static::assertInstanceOf(\Stripe\CashBalance::class, $result);
+    }
+
+    public function testUpdateCashBalance()
+    {
+        $this->expectsRequest('post', '/v1/customers/cus_123/cash_balance');
+        $result = $this->client->customers->updateCashBalance(
+            'cus_123',
+            ['settings' => ['reconciliation_mode' => 'manual']]
+        );
+        static::assertInstanceOf(\Stripe\CashBalance::class, $result);
+    }
+
     public function testListCustomer()
     {
         $this->expectsRequest('get', '/v1/customers');
