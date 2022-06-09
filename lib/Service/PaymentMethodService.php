@@ -7,8 +7,9 @@ namespace Stripe\Service;
 class PaymentMethodService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of PaymentMethods. For listing a customer’s payment methods, you
-     * should use <a href="/docs/api/payment_methods/customer_list">List a Customer’s
+     * Returns a list of PaymentMethods attached to the StripeAccount. For listing a
+     * customer’s payment methods, you should use <a
+     * href="/docs/api/payment_methods/customer_list">List a Customer’s
      * PaymentMethods</a>.
      *
      * @param null|array $params
@@ -96,7 +97,10 @@ class PaymentMethodService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves a PaymentMethod object.
+     * Retrieves a PaymentMethod object attached to the StripeAccount. To retrieve a
+     * payment method attached to a Customer, you should use <a
+     * href="/docs/api/payment_methods/customer">Retrieve a Customer’s
+     * PaymentMethods</a>.
      *
      * @param string $id
      * @param null|array $params

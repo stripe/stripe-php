@@ -293,7 +293,7 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves a PaymentMethod object.
+     * Retrieves a PaymentMethod object for a given Customer.
      *
      * @param string $parentId
      * @param string $id
