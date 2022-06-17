@@ -253,6 +253,7 @@ require __DIR__ . '/lib/Service/Terminal/ConfigurationService.php';
 require __DIR__ . '/lib/Service/Terminal/ConnectionTokenService.php';
 require __DIR__ . '/lib/Service/Terminal/LocationService.php';
 require __DIR__ . '/lib/Service/Terminal/ReaderService.php';
+require __DIR__ . '/lib/Service/TestHelpers/CustomerService.php';
 require __DIR__ . '/lib/Service/TestHelpers/RefundService.php';
 require __DIR__ . '/lib/Service/TestHelpers/Terminal/ReaderService.php';
 require __DIR__ . '/lib/Service/TestHelpers/TestClockService.php';

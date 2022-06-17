@@ -531,6 +531,19 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\CashBalance::class, $result);
     }
 
+    public function testFundCashBalanceCustomer()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/customers/cus_123/fund_cash_balance'
+        );
+        $result = $this->client->testHelpers->customers->fundCashBalance(
+            'cus_123',
+            ['amount' => 30, 'currency' => 'eur']
+        );
+        static::assertInstanceOf(\Stripe\CustomerBalanceTransaction::class, $result);
+    }
+
     public function testListCustomer()
     {
         $this->expectsRequest('get', '/v1/customers');
