@@ -20,14 +20,14 @@ namespace Stripe\Treasury;
  * @property bool $cancelable Returns <code>true</code> if the object can be canceled, and <code>false</code> otherwise.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property null|string $customer ID of the customer to whom an OutboundPayment is sent.
+ * @property null|string $customer ID of the <a href="https://stripe.com/docs/api/customers">customer</a> to whom an OutboundPayment is sent.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|string $destination_payment_method The PaymentMethod via which an OutboundPayment is sent. This field can be empty if the OutboundPayment was created using <code>destination_payment_method_data</code>.
  * @property null|\Stripe\StripeObject $destination_payment_method_details Details about the PaymentMethod for an OutboundPayment.
  * @property null|\Stripe\StripeObject $end_user_details Details about the end user.
  * @property int $expected_arrival_date The date when funds are expected to arrive in the destination account.
  * @property string $financial_account The FinancialAccount that funds were pulled from.
- * @property null|string $hosted_regulatory_receipt_url A hosted transaction receipt URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
+ * @property null|string $hosted_regulatory_receipt_url A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted transaction receipt</a> URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|\Stripe\StripeObject $returned_details Details about a returned OutboundPayment. Only set when the status is <code>returned</code>.
