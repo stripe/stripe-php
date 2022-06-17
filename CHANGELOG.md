@@ -1,5 +1,18 @@
 # Changelog
 
+## 8.7.0 - 2022-06-17
+* [#1306](https://github.com/stripe/stripe-php/pull/1306) API Updates
+  * Add support for `fund_cash_balance` test helper method on resource `Customer`
+  * Add support for `total_excluding_tax` on `CreditNote`
+  * Add support for `rendering_options` on `Invoice`
+* [#1307](https://github.com/stripe/stripe-php/pull/1307) Support updating pre-release versions
+* [#1305](https://github.com/stripe/stripe-php/pull/1305) Trigger workflows on beta branches
+* [#1302](https://github.com/stripe/stripe-php/pull/1302) API Updates
+  * Add support for `custom_unit_amount` on `Price`
+* [#1301](https://github.com/stripe/stripe-php/pull/1301) API Updates
+  
+  Documentation updates.
+
 ## 8.6.0 - 2022-06-08
 * [#1300](https://github.com/stripe/stripe-php/pull/1300) API Updates
   * Add support for `attach_to_self` and `flow_directions` on `SetupAttempt`
