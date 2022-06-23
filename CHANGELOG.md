@@ -1,5 +1,12 @@
 # Changelog
 
+## 8.8.0 - 2022-06-23
+* [#1302](https://github.com/stripe/stripe-php/pull/1302) API Updates
+  * Add support for `custom_unit_amount` on `Price`
+* [#1301](https://github.com/stripe/stripe-php/pull/1301) API Updates
+  
+  Documentation updates.
+
 ## 8.7.0 - 2022-06-17
 * [#1306](https://github.com/stripe/stripe-php/pull/1306) API Updates
   * Add support for `fund_cash_balance` test helper method on resource `Customer`
