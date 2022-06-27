@@ -2,6 +2,8 @@
 
 // File generated from our OpenAPI spec
 
+require __DIR__ . '/lib/Util/ApiVersion.php';
+
 // Stripe singleton
 require __DIR__ . '/lib/Stripe.php';
 

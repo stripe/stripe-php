@@ -32,6 +32,7 @@ namespace Stripe;
  * @property null|string|\Stripe\Refund $refund Refund related to this credit note.
  * @property string $status Status of this credit note, one of <code>issued</code> or <code>void</code>. Learn more about <a href="https://stripe.com/docs/billing/invoices/credit-notes#voiding">voiding credit notes</a>.
  * @property int $subtotal The integer amount in %s representing the amount of the credit note, excluding exclusive tax and invoice level discounts.
+ * @property null|int $subtotal_excluding_tax The integer amount in %s representing the amount of the credit note, excluding all tax and invoice level discounts.
  * @property \Stripe\StripeObject[] $tax_amounts The aggregate amounts calculated per tax rate for all line items.
  * @property int $total The integer amount in %s representing the total amount of the credit note, including tax and all discount.
  * @property null|int $total_excluding_tax The integer amount in %s representing the total amount of the credit note, excluding tax, but including discounts.
