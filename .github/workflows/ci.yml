@@ -5,13 +5,13 @@ on:
     branches:
       - master
       - beta
-      - release/**
+      - sdk-release/**
       - feature/**
   pull_request:
     branches:
       - master
       - beta
-      - release/**
+      - sdk-release/**
       - feature/**
 
   # Allows you to run this workflow manually from the Actions tab
