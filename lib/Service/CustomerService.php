@@ -48,7 +48,7 @@ class CustomerService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\Customer>
+     * @return \Stripe\Collection<\Stripe\PaymentMethod>
      */
     public function allPaymentMethods($id, $params = null, $opts = null)
     {
