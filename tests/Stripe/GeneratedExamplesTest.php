@@ -572,6 +572,16 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Token::class, $result);
     }
 
+    public function testListSetupAttempt()
+    {
+        $this->expectsRequest('get', '/v1/setup_attempts');
+        $result = $this->client->setupAttempts->all(
+            ['limit' => 3, 'setup_intent' => 'si_xyz']
+        );
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\SetupAttempt::class, $result->data[0]);
+    }
+
     public function testCreateAccountLink()
     {
         $this->expectsRequest('post', '/v1/account_links');
@@ -2649,14 +2659,6 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $this->expectsRequest('post', '/v1/reviews/prv_xxxxxxxxxxxxx/approve');
         $result = $this->client->reviews->approve('prv_xxxxxxxxxxxxx', []);
         static::assertInstanceOf(\Stripe\Review::class, $result);
-    }
-
-    public function testListSetupAttempt()
-    {
-        $this->expectsRequest('get', '/v1/setup_attempts');
-        $result = $this->client->setupAttempts->all(['limit' => 3]);
-        static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\SetupAttempt::class, $result->data[0]);
     }
 
     public function testListSetupIntent()
