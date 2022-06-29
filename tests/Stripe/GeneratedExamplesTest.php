@@ -582,6 +582,58 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\SetupAttempt::class, $result->data[0]);
     }
 
+    public function testDeliverCardCard()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/issuing/cards/card_123/shipping/deliver'
+        );
+        $result = $this->client->testHelpers->issuing->cards->deliverCard(
+            'card_123',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Issuing\Card::class, $result);
+    }
+
+    public function testFailCardCard()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/issuing/cards/card_123/shipping/fail'
+        );
+        $result = $this->client->testHelpers->issuing->cards->failCard(
+            'card_123',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Issuing\Card::class, $result);
+    }
+
+    public function testReturnCardCard()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/issuing/cards/card_123/shipping/return'
+        );
+        $result = $this->client->testHelpers->issuing->cards->returnCard(
+            'card_123',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Issuing\Card::class, $result);
+    }
+
+    public function testShipCardCard()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/issuing/cards/card_123/shipping/ship'
+        );
+        $result = $this->client->testHelpers->issuing->cards->shipCard(
+            'card_123',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Issuing\Card::class, $result);
+    }
+
     public function testCreateAccountLink()
     {
         $this->expectsRequest('post', '/v1/account_links');
