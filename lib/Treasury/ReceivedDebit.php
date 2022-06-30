@@ -22,6 +22,7 @@ namespace Stripe\Treasury;
  * @property \Stripe\StripeObject $linked_flows
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $network The network used for the ReceivedDebit.
+ * @property null|\Stripe\StripeObject $network_details Details specific to the money movement rails.
  * @property null|\Stripe\StripeObject $reversal_details Details describing when a ReceivedDebit might be reversed.
  * @property string $status Status of the ReceivedDebit. ReceivedDebits are created with a status of either <code>succeeded</code> (approved) or <code>failed</code> (declined). The failure reason can be found under the <code>failure_code</code>.
  * @property null|string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
