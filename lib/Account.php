@@ -54,6 +54,7 @@ class Account extends ApiResource
     const CAPABILITY_AFTERPAY_CLEARPAY_PAYMENTS = 'afterpay_clearpay_payments';
     const CAPABILITY_CARD_PAYMENTS = 'card_payments';
     const CAPABILITY_LEGACY_PAYMENTS = 'legacy_payments';
+    const CAPABILITY_KLARNA_PAYMENTS = 'klarna_payments';
     const CAPABILITY_PLATFORM_PAYMENTS = 'platform_payments';
     const CAPABILITY_TRANSFERS = 'transfers';
 
