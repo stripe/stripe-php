@@ -51,6 +51,7 @@ class Account extends ApiResource
     const BUSINESS_TYPE_INDIVIDUAL = 'individual';
     const BUSINESS_TYPE_NON_PROFIT = 'non_profit';
 
+    const CAPABILITY_AFFIRM_PAYMENTS = 'affirm_payments';
     const CAPABILITY_AFTERPAY_CLEARPAY_PAYMENTS = 'afterpay_clearpay_payments';
     const CAPABILITY_CARD_PAYMENTS = 'card_payments';
     const CAPABILITY_LEGACY_PAYMENTS = 'legacy_payments';
