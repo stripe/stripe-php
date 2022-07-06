@@ -410,7 +410,7 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates a customer’s cash balance.
+     * Changes the settings on a customer’s cash balance.
      *
      * @param string $parentId
      * @param null|array $params
