@@ -1,5 +1,12 @@
 # Changelog
 
+## 8.10.0 - 2022-07-07
+* [#1319](https://github.com/stripe/stripe-php/pull/1319) API Updates
+  * Add support for `currency_options` on `Coupon` and `Price`
+  * Add support for `currency` on `Subscription`
+* [#1318](https://github.com/stripe/stripe-php/pull/1318) API Updates
+  * Add support for new values financial_connections.account.created, financial_connections.account.deactivated, financial_connections.account.disconnected, financial_connections.account.reactivated, and financial_connections.account.refreshed_balance on `Event`.
+
 ## 8.9.0 - 2022-06-29
 * [#1316](https://github.com/stripe/stripe-php/pull/1316) API Updates
   * Add support for `deliver_card`, `fail_card`, `return_card`, and `ship_card` test helper methods on resource `Issuing.Card`
@@ -47,7 +54,6 @@
   * Add support for `id_number_secondary_provided` on `Person`
 * [#1295](https://github.com/stripe/stripe-php/pull/1295) API Updates
 
-
 ## 8.3.0 - 2022-05-23
 * [#1294](https://github.com/stripe/stripe-php/pull/1294) API Updates
   * Add support for new resource `Apps.Secret`
@@ -87,7 +93,6 @@
   * Add support for `default_price` on `Product`
   * Add support for `instructions_email` on `Refund`
 
-
 ## 7.127.0 - 2022-05-05
 * [#1281](https://github.com/stripe/stripe-php/pull/1281) API Updates
   * Add support for new resources `FinancialConnections.AccountOwner`, `FinancialConnections.AccountOwnership`, `FinancialConnections.Account`, and `FinancialConnections.Session`
@@ -117,7 +122,6 @@
   * Add support for `customer_balance` on `PaymentMethod`
   * Add support for new value `customer_balance` on enum `PaymentMethod.type`
   * Add support for `configuration_overrides` on `Terminal.Location`
-
 
 ## 7.123.0 - 2022-04-13
 * [#1263](https://github.com/stripe/stripe-php/pull/1263) API Updates
@@ -156,7 +160,6 @@
   * Add support for new values `bg_uic`, `hu_tin`, and `si_tin` on enum `TaxId.type`
   * Add  `test_helpers.test_clock.advancing`, `test_helpers.test_clock.created`, `test_helpers.test_clock.deleted`, `test_helpers.test_clock.internal_failure`, and `test_helpers.test_clock.ready` events.
 
-
 ## 7.117.0 - 2022-03-18
 * [#1254](https://github.com/stripe/stripe-php/pull/1254) API Updates
   * Add support for `status` on `Card`
@@ -166,7 +169,6 @@
 ## 7.116.0 - 2022-03-02
 * [#1248](https://github.com/stripe/stripe-php/pull/1248) API Updates
   * Add support for `proration_details` on `InvoiceLineItem`
-
 
 ## 7.115.0 - 2022-03-01
 * [#1245](https://github.com/stripe/stripe-php/pull/1245) [#1247](https://github.com/stripe/stripe-php/pull/1247) API Updates
@@ -191,7 +193,6 @@
 * [#1235](https://github.com/stripe/stripe-php/pull/1235) API Updates
   * Add support for `phone_number_collection` on `PaymentLink`
   * Add support for new value `is_vat` on enum `TaxId.type`
-
 
 ## 7.111.0 - 2022-01-20
 * [#1233](https://github.com/stripe/stripe-php/pull/1233) API Updates
@@ -337,7 +338,6 @@
 * [#1141](https://github.com/stripe/stripe-php/pull/1141) Update PHPDocs
   * Add support for `url` on `Checkout\Session`
 
-
 ## 7.83.0 - 2021-06-07
 * [#1140](https://github.com/stripe/stripe-php/pull/1140) API Updates
   * Added support for `tax_id_collection` on `Checkout\Session` and `Checkout\Session#create`
@@ -404,7 +404,6 @@
 * [#1085](https://github.com/stripe/stripe-php/pull/1085) Update PHPDocs
   * Add support for `nationality` on `Person`
   * Add member `gb_vat` of `TaxID` enum
-
 
 ## 7.69.0 - 2021-01-21
 * [#1079](https://github.com/stripe/stripe-php/pull/1079) Update PHPDocs
@@ -1727,3 +1726,4 @@ Pull requests included in this release:
 -   Add new Transfer resource
 -   Switch from using HTTP Basic auth to Bearer auth. (Note: Stripe will support Basic auth for the indefinite future, but recommends Bearer auth when possible going forward)
 -   Numerous test suite improvements
+

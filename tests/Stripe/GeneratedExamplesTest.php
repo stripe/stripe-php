@@ -211,6 +211,15 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\FinancialConnections\Session::class, $result);
     }
 
+    public function testUpcomingInvoice()
+    {
+        $this->expectsRequest('get', '/v1/invoices/upcoming');
+        $result = $this->client->invoices->upcoming(
+            ['customer' => 'cus_9utnxg47pWjV1e']
+        );
+        static::assertInstanceOf(\Stripe\Invoice::class, $result);
+    }
+
     public function testCreateOrder()
     {
         $this->expectsRequest('post', '/v1/orders');
