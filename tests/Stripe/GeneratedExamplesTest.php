@@ -329,6 +329,24 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\LineItem::class, $result->data[0]);
     }
 
+    public function testCreatePrice()
+    {
+        $this->expectsRequest('post', '/v1/prices');
+        $result = $this->client->prices->create(
+            [
+                'unit_amount' => 2000,
+                'currency' => 'usd',
+                'currency_options' => [
+                    'uah' => ['unit_amount' => 5000],
+                    'eur' => ['unit_amount' => 1800],
+                ],
+                'recurring' => ['interval' => 'month'],
+                'product' => 'prod_xxxxxxxxxxxxx',
+            ]
+        );
+        static::assertInstanceOf(\Stripe\Price::class, $result);
+    }
+
     public function testListSetupAttempt()
     {
         $this->expectsRequest('get', '/v1/setup_attempts');
@@ -2312,7 +2330,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Price::class, $result->data[0]);
     }
 
-    public function testCreatePrice()
+    public function testCreatePrice2()
     {
         $this->expectsRequest('post', '/v1/prices');
         $result = $this->client->prices->create(
