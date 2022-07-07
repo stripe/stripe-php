@@ -49,6 +49,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $processing If present, this property tells you about the processing state of the payment.
  * @property null|string $receipt_email Email address that the receipt for the resulting payment will be sent to. If <code>receipt_email</code> is specified for a payment in live mode, a receipt will be sent regardless of your <a href="https://dashboard.stripe.com/account/emails">email settings</a>.
  * @property null|string|\Stripe\Review $review ID of the review associated with this PaymentIntent, if any.
+ * @property string $secret_key_confirmation Indicates whether confirmation for this PaymentIntent using a secret key is <code>required</code> or <code>optional</code>.
  * @property null|string $setup_future_usage <p>Indicates that you intend to make future payments with this PaymentIntent's payment method.</p><p>Providing this parameter will <a href="https://stripe.com/docs/payments/save-during-payment">attach the payment method</a> to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete. If no Customer was provided, the payment method can still be <a href="https://stripe.com/docs/api/payment_methods/attach">attached</a> to a Customer after the transaction completes.</p><p>When processing card payments, Stripe also uses <code>setup_future_usage</code> to dynamically optimize your payment flow and comply with regional legislation and network rules, such as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.</p>
  * @property null|\Stripe\StripeObject $shipping Shipping information for this PaymentIntent.
  * @property null|string|\Stripe\Account|\Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source $source This is a legacy field that will be removed in the future. It is the ID of the Source object that is associated with this PaymentIntent, if one was supplied.
@@ -67,6 +68,9 @@ class PaymentIntent extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Search;
     use ApiOperations\Update;
+
+    const SECRET_KEY_CONFIRMATION_OPTIONAL = 'optional';
+    const SECRET_KEY_CONFIRMATION_REQUIRED = 'required';
 
     const STATUS_CANCELED = 'canceled';
     const STATUS_PROCESSING = 'processing';
