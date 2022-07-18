@@ -100,11 +100,15 @@ class Subscription extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Subscription the deleted subscription
+     * @return \Stripe\Subscription the updated subscription
      */
-    public function cancel($params = null, $opts = null)
+    public function deleteDiscount($params = null, $opts = null)
     {
-        return $this->_delete($params, $opts);
+        $url = $this->instanceUrl() . '/discount';
+        list($response, $opts) = $this->_request('delete', $url, $params, $opts);
+        $this->refreshFrom(['discount' => null], $opts, true);
+
+        return $this;
     }
 
     /**
@@ -113,13 +117,13 @@ class Subscription extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Subscription the updated subscription
+     * @return \Stripe\Subscription the canceled subscription
      */
-    public function deleteDiscount($params = null, $opts = null)
+    public function cancel($params = null, $opts = null)
     {
-        $url = $this->instanceUrl() . '/discount';
+        $url = $this->instanceUrl();
         list($response, $opts) = $this->_request('delete', $url, $params, $opts);
-        $this->refreshFrom(['discount' => null], $opts, true);
+        $this->refreshFrom($response, $opts);
 
         return $this;
     }
