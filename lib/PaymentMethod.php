@@ -26,6 +26,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $bacs_debit
  * @property \Stripe\StripeObject $bancontact
  * @property \Stripe\StripeObject $billing_details
+ * @property \Stripe\StripeObject $blik
  * @property \Stripe\StripeObject $boleto
  * @property \Stripe\StripeObject $card
  * @property \Stripe\StripeObject $card_present
