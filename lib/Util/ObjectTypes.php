@@ -74,6 +74,7 @@ class ObjectTypes
         \Stripe\Product::OBJECT_NAME => \Stripe\Product::class,
         \Stripe\PromotionCode::OBJECT_NAME => \Stripe\PromotionCode::class,
         \Stripe\Quote::OBJECT_NAME => \Stripe\Quote::class,
+        \Stripe\QuotePhaseConfiguration::OBJECT_NAME => \Stripe\QuotePhaseConfiguration::class,
         \Stripe\Radar\EarlyFraudWarning::OBJECT_NAME => \Stripe\Radar\EarlyFraudWarning::class,
         \Stripe\Radar\ValueList::OBJECT_NAME => \Stripe\Radar\ValueList::class,
         \Stripe\Radar\ValueListItem::OBJECT_NAME => \Stripe\Radar\ValueListItem::class,

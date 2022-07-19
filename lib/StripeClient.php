@@ -43,6 +43,7 @@ namespace Stripe;
  * @property \Stripe\Service\PriceService $prices
  * @property \Stripe\Service\ProductService $products
  * @property \Stripe\Service\PromotionCodeService $promotionCodes
+ * @property \Stripe\Service\QuotePhaseConfigurationService $quotePhaseConfigurations
  * @property \Stripe\Service\QuoteService $quotes
  * @property \Stripe\Service\Radar\RadarServiceFactory $radar
  * @property \Stripe\Service\RefundService $refunds

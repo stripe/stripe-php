@@ -90,6 +90,25 @@ class Account extends ApiResource
         return parent::instanceUrl();
     }
 
+    /**
+     * @param null|array|string $id the ID of the account to retrieve, or an
+     *     options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Account
+     */
+    public static function retrieve($id = null, $opts = null)
+    {
+        if (!$opts && \is_string($id) && 'sk_' === \substr($id, 0, 3)) {
+            $opts = $id;
+            $id = null;
+        }
+
+        return self::_retrieve($id, $opts);
+    }
+
     public function serializeParameters($force = false)
     {
         $update = parent::serializeParameters($force);
@@ -139,25 +158,6 @@ class Account extends ApiResource
         }
 
         return $updateArr;
-    }
-
-    /**
-     * @param null|array|string $id the ID of the account to retrieve, or an
-     *     options array containing an `id` key
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Account
-     */
-    public static function retrieve($id = null, $opts = null)
-    {
-        if (!$opts && \is_string($id) && 'sk_' === \substr($id, 0, 3)) {
-            $opts = $id;
-            $id = null;
-        }
-
-        return self::_retrieve($id, $opts);
     }
 
     /**
@@ -212,12 +212,6 @@ class Account extends ApiResource
 
         return $this;
     }
-
-    /*
-     * Capabilities methods
-     * We can not add the capabilities() method today as the Account object already has a
-     * capabilities property which is a hash and not the sub-list of capabilities.
-     */
 
     const PATH_CAPABILITIES = '/capabilities';
 

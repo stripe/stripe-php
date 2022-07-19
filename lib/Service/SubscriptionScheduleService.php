@@ -22,6 +22,22 @@ class SubscriptionScheduleService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Amends an existing subscription schedule.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SubscriptionSchedule
+     */
+    public function amend($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/subscription_schedules/%s/amend', $id), $params, $opts);
+    }
+
+    /**
      * Cancels a subscription schedule and its associated subscription immediately (if
      * the subscription schedule has an active subscription). A subscription schedule
      * can only be canceled if its status is <code>not_started</code> or

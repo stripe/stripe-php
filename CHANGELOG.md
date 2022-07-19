@@ -1,5 +1,15 @@
 # Changelog
 
+## 8.11.0 - 2022-07-18
+* [#1324](https://github.com/stripe/stripe-php/pull/1324) API Updates
+  * Add support for new value `blik` on enum `PaymentLink.payment_method_types[]`
+  * Add support for `blik` on `PaymentMethod`
+  * Add support for new value `blik` on enum `PaymentMethod.type`
+  * Add `Invoice.upcomingLines` method.
+  * Add `SourceService.allSourceTransactions` method.
+* [#1322](https://github.com/stripe/stripe-php/pull/1322) API Updates
+  * Change type of `source_type` on `Transfer` from nullable string to string (comment-only change)
+
 ## 8.10.0 - 2022-07-07
 * [#1319](https://github.com/stripe/stripe-php/pull/1319) API Updates
   * Add support for `currency_options` on `Coupon` and `Price`
