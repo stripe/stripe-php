@@ -43,7 +43,7 @@ namespace Stripe\Service;
  * @property PriceService $prices
  * @property ProductService $products
  * @property PromotionCodeService $promotionCodes
- * @property QuotePhaseConfigurationService $quotePhaseConfigurations
+ * @property QuotePhaseService $quotePhases
  * @property QuoteService $quotes
  * @property Radar\RadarServiceFactory $radar
  * @property RefundService $refunds
@@ -110,7 +110,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'prices' => PriceService::class,
         'products' => ProductService::class,
         'promotionCodes' => PromotionCodeService::class,
-        'quotePhaseConfigurations' => QuotePhaseConfigurationService::class,
+        'quotePhases' => QuotePhaseService::class,
         'quotes' => QuoteService::class,
         'radar' => Radar\RadarServiceFactory::class,
         'refunds' => RefundService::class,
