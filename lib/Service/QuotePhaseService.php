@@ -4,7 +4,7 @@
 
 namespace Stripe\Service;
 
-class QuotePhaseConfigurationService extends \Stripe\Service\AbstractService
+class QuotePhaseService extends \Stripe\Service\AbstractService
 {
     /**
      * Returns a list of quote phases.
@@ -14,7 +14,7 @@ class QuotePhaseConfigurationService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\QuotePhaseConfiguration>
+     * @return \Stripe\Collection<\Stripe\QuotePhase>
      */
     public function all($params = null, $opts = null)
     {
@@ -49,7 +49,7 @@ class QuotePhaseConfigurationService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\QuotePhaseConfiguration
+     * @return \Stripe\QuotePhase
      */
     public function retrieve($id, $params = null, $opts = null)
     {
