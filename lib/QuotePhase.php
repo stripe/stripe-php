@@ -25,7 +25,7 @@ namespace Stripe;
  * @property null|bool $trial If set to true the entire phase is counted as a trial and the customer will not be charged for any recurring fees.
  * @property null|int $trial_end When the trial ends within the phase.
  */
-class QuotePhaseConfiguration extends ApiResource
+class QuotePhase extends ApiResource
 {
     const OBJECT_NAME = 'quote_phase';
 
