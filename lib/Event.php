@@ -145,7 +145,6 @@ class Event extends ApiResource
     const INVOICEITEM_CREATED = 'invoiceitem.created';
     const INVOICEITEM_DELETED = 'invoiceitem.deleted';
     const INVOICEITEM_UPDATED = 'invoiceitem.updated';
-    const ISSUER_FRAUD_RECORD_CREATED = 'issuer_fraud_record.created';
     const ISSUING_AUTHORIZATION_CREATED = 'issuing_authorization.created';
     const ISSUING_AUTHORIZATION_REQUEST = 'issuing_authorization.request';
     const ISSUING_AUTHORIZATION_UPDATED = 'issuing_authorization.updated';
@@ -178,7 +177,6 @@ class Event extends ApiResource
     const PAYMENT_LINK_UPDATED = 'payment_link.updated';
     const PAYMENT_METHOD_ATTACHED = 'payment_method.attached';
     const PAYMENT_METHOD_AUTOMATICALLY_UPDATED = 'payment_method.automatically_updated';
-    const PAYMENT_METHOD_CARD_AUTOMATICALLY_UPDATED = 'payment_method.card_automatically_updated';
     const PAYMENT_METHOD_DETACHED = 'payment_method.detached';
     const PAYMENT_METHOD_UPDATED = 'payment_method.updated';
     const PAYOUT_CANCELED = 'payout.canceled';
@@ -189,7 +187,6 @@ class Event extends ApiResource
     const PERSON_CREATED = 'person.created';
     const PERSON_DELETED = 'person.deleted';
     const PERSON_UPDATED = 'person.updated';
-    const PING = 'ping';
     const PLAN_CREATED = 'plan.created';
     const PLAN_DELETED = 'plan.deleted';
     const PLAN_UPDATED = 'plan.updated';
@@ -200,7 +197,6 @@ class Event extends ApiResource
     const PRODUCT_DELETED = 'product.deleted';
     const PRODUCT_UPDATED = 'product.updated';
     const PROMOTION_CODE_CREATED = 'promotion_code.created';
-    const PROMOTION_CODE_DELETED = 'promotion_code.deleted';
     const PROMOTION_CODE_UPDATED = 'promotion_code.updated';
     const QUOTE_ACCEPTED = 'quote.accepted';
     const QUOTE_CANCELED = 'quote.canceled';
@@ -254,8 +250,6 @@ class Event extends ApiResource
     const TOPUP_REVERSED = 'topup.reversed';
     const TOPUP_SUCCEEDED = 'topup.succeeded';
     const TRANSFER_CREATED = 'transfer.created';
-    const TRANSFER_FAILED = 'transfer.failed';
-    const TRANSFER_PAID = 'transfer.paid';
     const TRANSFER_REVERSED = 'transfer.reversed';
     const TRANSFER_UPDATED = 'transfer.updated';
     const TREASURY_CREDIT_REVERSAL_CREATED = 'treasury.credit_reversal.created';
@@ -284,7 +278,6 @@ class Event extends ApiResource
     const TREASURY_OUTBOUND_TRANSFER_RETURNED = 'treasury.outbound_transfer.returned';
     const TREASURY_RECEIVED_CREDIT_CREATED = 'treasury.received_credit.created';
     const TREASURY_RECEIVED_CREDIT_FAILED = 'treasury.received_credit.failed';
-    const TREASURY_RECEIVED_CREDIT_REVERSED = 'treasury.received_credit.reversed';
     const TREASURY_RECEIVED_CREDIT_SUCCEEDED = 'treasury.received_credit.succeeded';
     const TREASURY_RECEIVED_DEBIT_CREATED = 'treasury.received_debit.created';
 }

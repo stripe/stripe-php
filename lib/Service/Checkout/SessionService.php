@@ -27,17 +27,17 @@ class SessionService extends \Stripe\Service\AbstractService
      * items. There is also a URL where you can retrieve the full (paginated) list of
      * line items.
      *
-     * @param string $parentId
+     * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\LineItem>
+     * @return \Stripe\Collection<\Stripe\Checkout\LineItem>
      */
-    public function allLineItems($parentId, $params = null, $opts = null)
+    public function allLineItems($id, $params = null, $opts = null)
     {
-        return $this->requestCollection('get', $this->buildPath('/v1/checkout/sessions/%s/line_items', $parentId), $params, $opts);
+        return $this->requestCollection('get', $this->buildPath('/v1/checkout/sessions/%s/line_items', $id), $params, $opts);
     }
 
     /**
