@@ -24,10 +24,6 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     /**
      * Manually reconcile the remaining amount for a customer_balance PaymentIntent.
      *
-     * This can be used when the cash balance for <a
-     * href="docs/payments/customer-balance/reconciliation#cash-manual-reconciliation">a
-     * customer in manual reconciliation mode</a> received funds.
-     *
      * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
