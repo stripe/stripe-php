@@ -1,5 +1,26 @@
 # Changelog
 
+## 8.12.0-beta.1 - 2022-07-22
+* [#1331](https://github.com/stripe/stripe-php/pull/1331) API Updates for beta branch
+  - Updated stable APIs to the latest version
+* [#1328](https://github.com/stripe/stripe-php/pull/1328) API Updates for beta branch
+  - Updated stable APIs to the latest version
+  - Add `QuotePhase` resource
+* [#1325](https://github.com/stripe/stripe-php/pull/1325) API Updates for beta branch
+  - Updated stable APIs to the latest version
+  - Add `QuotePhaseConfiguration` service.
+  - Add `Price.migrate_to` property
+  - Add `SubscriptionSchedule.amend` method.
+  - Add `Discount.subscription_item` property.
+  - Add `Quote.subscription_data.billing_behavior`, `billing_cycle_anchor`, `end_behavior`, `from_schedule`, `from_subscription`, `prebilling`, `proration_behavior` properties.
+  - Add `phases` parameter to `Quote.create`
+  - Add `Subscription.discounts`, `prebilling` properties.
+* [#1320](https://github.com/stripe/stripe-php/pull/1320) API Updates for beta branch
+  - Include `server_side_confirmation_beta=v1` beta
+  - Add `secretKeyConfirmation` to `PaymentIntent`
+* [#1317](https://github.com/stripe/stripe-php/pull/1317) API Updates for beta branch
+  - Updated stable APIs to the latest version
+
 ## 8.11.0 - 2022-07-18
 * [#1324](https://github.com/stripe/stripe-php/pull/1324) API Updates
   * Add support for new value `blik` on enum `PaymentLink.payment_method_types[]`
