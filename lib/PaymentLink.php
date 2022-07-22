@@ -64,9 +64,9 @@ class PaymentLink extends ApiResource
     const SUBMIT_TYPE_PAY = 'pay';
 
     /**
+     * @param string $id
      * @param null|array $params
      * @param null|array|string $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

@@ -67,9 +67,9 @@ class Account extends \Stripe\ApiResource
     }
 
     /**
+     * @param string $id
      * @param null|array $params
      * @param null|array|string $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

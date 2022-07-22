@@ -7,6 +7,22 @@ namespace Stripe\Service;
 class SourceService extends \Stripe\Service\AbstractService
 {
     /**
+     * List source transactions for a given source.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\SourceTransaction>
+     */
+    public function allSourceTransactions($id, $params = null, $opts = null)
+    {
+        return $this->requestCollection('get', $this->buildPath('/v1/sources/%s/source_transactions', $id), $params, $opts);
+    }
+
+    /**
      * @param string $id
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts

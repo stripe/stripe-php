@@ -23,6 +23,7 @@ namespace Stripe;
  * @property null|int $canceled_at If the subscription has been canceled, the date of that cancellation. If the subscription was canceled with <code>cancel_at_period_end</code>, <code>canceled_at</code> will reflect the time of the most recent update request, not the end of the subscription period when the subscription is automatically moved to a canceled state.
  * @property string $collection_method Either <code>charge_automatically</code>, or <code>send_invoice</code>. When charging automatically, Stripe will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, Stripe will email your customer an invoice with payment instructions.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
+ * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property int $current_period_end End of the current period that the subscription has been invoiced for. At the end of this period, a new invoice will be created.
  * @property int $current_period_start Start of the current period that the subscription has been invoiced for.
  * @property string|\Stripe\Customer $customer ID of the customer who owns the subscription.
@@ -99,11 +100,15 @@ class Subscription extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Subscription the deleted subscription
+     * @return \Stripe\Subscription the updated subscription
      */
-    public function cancel($params = null, $opts = null)
+    public function deleteDiscount($params = null, $opts = null)
     {
-        return $this->_delete($params, $opts);
+        $url = $this->instanceUrl() . '/discount';
+        list($response, $opts) = $this->_request('delete', $url, $params, $opts);
+        $this->refreshFrom(['discount' => null], $opts, true);
+
+        return $this;
     }
 
     /**
@@ -112,13 +117,13 @@ class Subscription extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Subscription the updated subscription
+     * @return \Stripe\Subscription the canceled subscription
      */
-    public function deleteDiscount($params = null, $opts = null)
+    public function cancel($params = null, $opts = null)
     {
-        $url = $this->instanceUrl() . '/discount';
+        $url = $this->instanceUrl();
         list($response, $opts) = $this->_request('delete', $url, $params, $opts);
-        $this->refreshFrom(['discount' => null], $opts, true);
+        $this->refreshFrom($response, $opts);
 
         return $this;
     }
