@@ -53,7 +53,9 @@ class Payout extends ApiResource
     const FAILURE_COULD_NOT_PROCESS = 'could_not_process';
     const FAILURE_DEBIT_NOT_AUTHORIZED = 'debit_not_authorized';
     const FAILURE_DECLINED = 'declined';
+    const FAILURE_INCORRECT_ACCOUNT_HOLDER_ADDRESS = 'incorrect_account_holder_address';
     const FAILURE_INCORRECT_ACCOUNT_HOLDER_NAME = 'incorrect_account_holder_name';
+    const FAILURE_INCORRECT_ACCOUNT_HOLDER_TAX_ID = 'incorrect_account_holder_tax_id';
     const FAILURE_INSUFFICIENT_FUNDS = 'insufficient_funds';
     const FAILURE_INVALID_ACCOUNT_NUMBER = 'invalid_account_number';
     const FAILURE_INVALID_CURRENCY = 'invalid_currency';

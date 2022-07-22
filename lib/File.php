@@ -59,11 +59,6 @@ class File extends ApiResource
         create as protected _create;
     }
 
-    public static function classUrl()
-    {
-        return '/v1/files';
-    }
-
     /**
      * @param null|array $params
      * @param null|array|string $opts
