@@ -150,6 +150,8 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     }
 
     /**
+     * @param mixed $k
+     *
      * @return bool
      */
     public function __isset($k)
@@ -191,7 +193,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     }
 
     /**
-     * Magic method for var_dump output. Only works with PHP >= 5.6
+     * Magic method for var_dump output. Only works with PHP >= 5.6.
      *
      * @return array
      */
