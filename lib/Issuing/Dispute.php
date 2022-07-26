@@ -15,7 +15,7 @@ namespace Stripe\Issuing;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property int $amount Disputed amount. Usually the amount of the <code>transaction</code>, but can differ (usually because of currency fluctuation).
+ * @property int $amount Disputed amount in the card's currency and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>. Usually the amount of the <code>transaction</code>, but can differ (usually because of currency fluctuation).
  * @property null|\Stripe\BalanceTransaction[] $balance_transactions List of balance transactions associated with the dispute.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency The currency the <code>transaction</code> was made in.
