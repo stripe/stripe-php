@@ -164,7 +164,6 @@ require __DIR__ . '/lib/Terminal/ConnectionToken.php';
 require __DIR__ . '/lib/Terminal/Location.php';
 require __DIR__ . '/lib/Terminal/Reader.php';
 require __DIR__ . '/lib/TestHelpers/TestClock.php';
-require __DIR__ . '/lib/ThreeDSecure.php';
 require __DIR__ . '/lib/Token.php';
 require __DIR__ . '/lib/Topup.php';
 require __DIR__ . '/lib/Transfer.php';

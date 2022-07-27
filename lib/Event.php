@@ -161,10 +161,6 @@ class Event extends ApiResource
     const ISSUING_TRANSACTION_UPDATED = 'issuing_transaction.updated';
     const MANDATE_UPDATED = 'mandate.updated';
     const ORDER_CREATED = 'order.created';
-    const ORDER_PAYMENT_FAILED = 'order.payment_failed';
-    const ORDER_PAYMENT_SUCCEEDED = 'order.payment_succeeded';
-    const ORDER_UPDATED = 'order.updated';
-    const ORDER_RETURN_CREATED = 'order_return.created';
     const PAYMENT_INTENT_AMOUNT_CAPTURABLE_UPDATED = 'payment_intent.amount_capturable_updated';
     const PAYMENT_INTENT_CANCELED = 'payment_intent.canceled';
     const PAYMENT_INTENT_CREATED = 'payment_intent.created';
