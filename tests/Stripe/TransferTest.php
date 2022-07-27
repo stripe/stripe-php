@@ -72,20 +72,6 @@ final class TransferTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Transfer::class, $resource);
     }
 
-    public function testIsCancelable()
-    {
-        $transfer = Transfer::retrieve(self::TEST_RESOURCE_ID);
-
-        // stripe-mock does not support this anymore so we stub it
-        $this->stubRequest(
-            'post',
-            '/v1/transfers/' . $transfer->id . '/cancel'
-        );
-        $resource = $transfer->cancel();
-        static::assertInstanceOf(\Stripe\Transfer::class, $resource);
-        static::assertSame($resource, $transfer);
-    }
-
     public function testCanCreateReversal()
     {
         $this->expectsRequest(
