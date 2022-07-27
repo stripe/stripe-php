@@ -121,7 +121,7 @@ final class SourceTest extends \Stripe\TestCase
             'get',
             '/v1/sources/' . $source->id . '/source_transactions'
         );
-        $resources = $source->sourceTransactions();
+        $resources = $source->allSourceTransactions();
         static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
     }

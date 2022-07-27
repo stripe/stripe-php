@@ -50,23 +50,6 @@ final class TransferServiceTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\TransferReversal::class, $resources->data[0]);
     }
 
-    public function testCancel()
-    {
-        // stripe-mock does not support this anymore so we stub it
-        $this->stubRequest(
-            'post',
-            '/v1/transfers/' . self::TEST_RESOURCE_ID . '/cancel',
-            [],
-            null,
-            false,
-            [
-                'object' => 'transfer',
-            ]
-        );
-        $resource = $this->service->cancel(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Transfer::class, $resource);
-    }
-
     public function testCreate()
     {
         $this->expectsRequest(
