@@ -295,9 +295,8 @@ class ApiRequestor
     /**
      * @static
      *
-     * @param string $disabledFunctionsOutput - String value of the 'disable_function' setting, as output by \ini_get('disable_functions')
+     * @param string $disableFunctionsOutput - String value of the 'disable_function' setting, as output by \ini_get('disable_functions')
      * @param string $functionName - Name of the function we are interesting in seeing whether or not it is disabled
-     * @param mixed $disableFunctionsOutput
      *
      * @return bool
      */
@@ -474,8 +473,7 @@ class ApiRequestor
      * @param string $url
      * @param array $params
      * @param array $headers
-     * @param callable $readBodyChunk
-     * @param mixed $readBodyChunkCallable
+     * @param callable $readBodyChunkCallable
      *
      * @throws Exception\AuthenticationException
      * @throws Exception\ApiConnectionException
