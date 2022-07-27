@@ -1,5 +1,10 @@
 # Changelog
 
+## 8.12.0 - 2022-07-25
+* [#1332](https://github.com/stripe/stripe-php/pull/1332) API Updates
+  * Add support for `default_currency` and `invoice_credit_balance` on `Customer`
+  
+
 ## 8.11.0 - 2022-07-18
 * [#1324](https://github.com/stripe/stripe-php/pull/1324) API Updates
   * Add support for new value `blik` on enum `PaymentLink.payment_method_types[]`
