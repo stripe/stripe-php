@@ -117,7 +117,7 @@ final class SourceTest extends \Stripe\TestCase
     public function testCanListSourceTransactionsDeprecated()
     {
         $source = Source::retrieve(self::TEST_RESOURCE_ID);
-        $resources = Source::allSourceTransactions("self::TEST_RESOURCE_ID");
+        $resources = Source::allSourceTransactions('self::TEST_RESOURCE_ID');
         $this->expectsRequest(
             'get',
             '/v1/sources/' . $source->id . '/source_transactions'
