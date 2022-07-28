@@ -106,7 +106,7 @@ final class SubscriptionItemTest extends \Stripe\TestCase
             'get',
             '/v1/subscription_items/' . $resource->id . '/usage_record_summaries'
         );
-        $resources = $resource->usageRecordSummaries();
+        $resources = $resource->allUsageRecordSummaries(self::TEST_RESOURCE_ID);
         static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\UsageRecordSummary::class, $resources->data[0]);
     }
