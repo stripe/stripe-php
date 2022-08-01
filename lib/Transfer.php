@@ -46,27 +46,9 @@ class Transfer extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    const SOURCE_TYPE_ALIPAY_ACCOUNT = 'alipay_account';
     const SOURCE_TYPE_BANK_ACCOUNT = 'bank_account';
     const SOURCE_TYPE_CARD = 'card';
-    const SOURCE_TYPE_FINANCING = 'financing';
-
-    /**
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Transfer the canceled transfer
-     */
-    public function cancel($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/cancel';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-
-        return $this;
-    }
+    const SOURCE_TYPE_FPX = 'fpx';
 
     const PATH_REVERSALS = '/reversals';
 

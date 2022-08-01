@@ -49,15 +49,6 @@ final class CardTest extends \Stripe\TestCase
         );
     }
 
-    public function testHasCorrectUrlForRecipient()
-    {
-        $resource = $this->createFixture(['recipient' => 'rp_123']);
-        static::assertSame(
-            '/v1/recipients/rp_123/cards/' . self::TEST_RESOURCE_ID,
-            $resource->instanceUrl()
-        );
-    }
-
     public function testIsNotDirectlyRetrievable()
     {
         $this->expectException(\Stripe\Exception\BadMethodCallException::class);

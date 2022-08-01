@@ -51,15 +51,6 @@ class Account extends ApiResource
     const BUSINESS_TYPE_INDIVIDUAL = 'individual';
     const BUSINESS_TYPE_NON_PROFIT = 'non_profit';
 
-    const CAPABILITY_CARD_PAYMENTS = 'card_payments';
-    const CAPABILITY_LEGACY_PAYMENTS = 'legacy_payments';
-    const CAPABILITY_PLATFORM_PAYMENTS = 'platform_payments';
-    const CAPABILITY_TRANSFERS = 'transfers';
-
-    const CAPABILITY_STATUS_ACTIVE = 'active';
-    const CAPABILITY_STATUS_INACTIVE = 'inactive';
-    const CAPABILITY_STATUS_PENDING = 'pending';
-
     const TYPE_CUSTOM = 'custom';
     const TYPE_EXPRESS = 'express';
     const TYPE_STANDARD = 'standard';
@@ -176,24 +167,6 @@ class Account extends ApiResource
         ];
 
         return OAuth::deauthorize($params, $opts);
-    }
-
-    /**
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection<\Stripe\Person> the list of persons
-     */
-    public function persons($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/persons';
-        list($response, $opts) = $this->_request('get', $url, $params, $opts);
-        $obj = Util\Util::convertToStripeObject($response, $opts);
-        $obj->setLastResponse($response);
-
-        return $obj;
     }
 
     /**

@@ -23,20 +23,6 @@ class SourceService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * @param string $id
-     * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Source
-     */
-    public function allTransactions($id, $params = null, $opts = null)
-    {
-        return $this->request('get', $this->buildPath('/v1/sources/%s/source_transactions', $id), $params, $opts);
-    }
-
-    /**
      * Creates a new source object.
      *
      * @param null|array $params

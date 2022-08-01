@@ -72,7 +72,6 @@ class Session extends \Stripe\ApiResource
 
     use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Create;
-    use \Stripe\ApiOperations\NestedResource;
     use \Stripe\ApiOperations\Retrieve;
 
     const BILLING_ADDRESS_COLLECTION_AUTO = 'auto';
@@ -115,19 +114,22 @@ class Session extends \Stripe\ApiResource
         return $this;
     }
 
-    const PATH_LINE_ITEMS = '/line_items';
-
     /**
-     * @param string $id the ID of the session on which to retrieve the items
+     * @param string $id
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\LineItem> the list of items
+     * @return \Stripe\Collection<\Stripe\LineItem> list of LineItems
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {
-        return self::_allNestedResources($id, static::PATH_LINE_ITEMS, $params, $opts);
+        $url = static::resourceUrl($id) . '/line_items';
+        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
     }
 }

@@ -60,7 +60,7 @@ final class CustomerServiceTest extends \Stripe\TestCase
         );
         $resources = $this->service->allSources(self::TEST_RESOURCE_ID);
         static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\AlipayAccount::class, $resources->data[0]);
+        static::assertInstanceOf(\Stripe\StripeObject::class, $resources->data[0]);
     }
 
     public function testAllTaxIds()
