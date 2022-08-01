@@ -99,7 +99,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $this->expectsRequest('get', '/v1/checkout/sessions/sess_xyz/line_items');
         $result = $this->client->checkout->sessions->allLineItems('sess_xyz', []);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\LineItem::class, $result->data[0]);
+        static::assertInstanceOf(\Stripe\Checkout\LineItem::class, $result->data[0]);
     }
 
     public function testRetrieveCashBalance()

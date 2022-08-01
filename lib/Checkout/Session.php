@@ -54,10 +54,10 @@ namespace Stripe\Checkout;
  * @property \Stripe\StripeObject $phone_number_collection
  * @property null|string $recovered_from The ID of the original expired Checkout Session that triggered the recovery flow.
  * @property null|string|\Stripe\SetupIntent $setup_intent The ID of the SetupIntent for Checkout Sessions in <code>setup</code> mode.
- * @property null|\Stripe\StripeObject $shipping Shipping information for this Checkout Session.
  * @property null|\Stripe\StripeObject $shipping_address_collection When set, provides configuration for Checkout to collect a shipping address from a customer.
+ * @property null|\Stripe\StripeObject $shipping_cost The details of the customer cost of shipping, including the customer chosen ShippingRate.
+ * @property null|\Stripe\StripeObject $shipping_details Shipping information for this Checkout Session.
  * @property \Stripe\StripeObject[] $shipping_options The shipping rate options applied to this Session.
- * @property null|string|\Stripe\ShippingRate $shipping_rate The ID of the ShippingRate for Checkout Sessions in <code>payment</code> mode.
  * @property null|string $status The status of the Checkout Session, one of <code>open</code>, <code>complete</code>, or <code>expired</code>.
  * @property null|string $submit_type Describes the type of transaction being performed by Checkout in order to customize relevant text on the page, such as the submit button. <code>submit_type</code> can only be specified on Checkout Sessions in <code>payment</code> mode, but not Checkout Sessions in <code>subscription</code> or <code>setup</code> mode.
  * @property null|string|\Stripe\Subscription $subscription The ID of the subscription for Checkout Sessions in <code>subscription</code> mode.
