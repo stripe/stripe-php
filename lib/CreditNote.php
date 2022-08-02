@@ -84,6 +84,24 @@ class CreditNote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
+     * @return \Stripe\Collection<\Stripe\CreditNoteLineItem> list of CreditNoteLineItems
+     */
+    public static function previewLines($params = null, $opts = null)
+    {
+        $url = static::classUrl() . '/preview/lines';
+        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return \Stripe\CreditNote the voided credit note
      */
     public function voidCreditNote($params = null, $opts = null)
