@@ -1,5 +1,20 @@
 # Changelog
 
+## 9.0.0 - 2022-08-02
+
+Breaking changes that arose during code generation of the library that we postponed for the next major version. For changes to the SDK, read more detailed description at https://github.com/stripe/stripe-php/wiki/Migration-guide-for-v9. For changes to the Stripe products, read more at https://stripe.com/docs/upgrades#2022-08-01.
+
+"⚠️" symbol highlights breaking changes.
+
+* [#1344](https://github.com/stripe/stripe-php/pull/1344) API Updates
+* [#1337](https://github.com/stripe/stripe-php/pull/1337) API Updates
+* [#1273](https://github.com/stripe/stripe-php/pull/1273) Add some PHPDoc return types and fixes
+* [#1341](https://github.com/stripe/stripe-php/pull/1341) Next major release changes
+
+## 8.12.0 - 2022-07-25
+* [#1332](https://github.com/stripe/stripe-php/pull/1332) API Updates
+  * Add support for `default_currency` and `invoice_credit_balance` on `Customer`
+
 ## 8.12.0-beta.1 - 2022-07-22
 * [#1331](https://github.com/stripe/stripe-php/pull/1331) API Updates for beta branch
   - Updated stable APIs to the latest version

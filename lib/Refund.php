@@ -56,11 +56,6 @@ class Refund extends ApiResource
     const STATUS_SUCCEEDED = 'succeeded';
 
     /**
-     * @deprecated use FAILURE_REASON_EXPIRED_OR_CANCELED_CARD instead
-     */
-    const FAILURE_REASON = 'expired_or_canceled_card';
-
-    /**
      * @param null|array $params
      * @param null|array|string $opts
      *
