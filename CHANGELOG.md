@@ -1,5 +1,10 @@
 # Changelog
 
+## 9.1.0-beta.1 - 2022-08-03
+* [#1345](https://github.com/stripe/stripe-php/pull/1345) API Updates for beta branch
+  - Updated stable APIs to the latest version
+  - Added the `Order` resource support
+
 ## 9.0.0 - 2022-08-02
 
 Breaking changes that arose during code generation of the library that we postponed for the next major version. For changes to the SDK, read more detailed description at https://github.com/stripe/stripe-php/wiki/Migration-guide-for-v9. For changes to the Stripe products, read more at https://stripe.com/docs/upgrades#2022-08-01.
