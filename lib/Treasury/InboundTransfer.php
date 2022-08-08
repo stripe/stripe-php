@@ -5,7 +5,9 @@
 namespace Stripe\Treasury;
 
 /**
- * Use InboundTransfers to add funds to your <a
+ * Use <a
+ * href="https://stripe.com/docs/treasury/moving-money/financial-accounts/into/inbound-transfers">InboundTransfers</a>
+ * to add funds to your <a
  * href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> via a
  * PaymentMethod that is owned by you. The funds will be transferred via an ACH
  * debit.
@@ -19,7 +21,7 @@ namespace Stripe\Treasury;
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|\Stripe\StripeObject $failure_details Details about this InboundTransfer's failure. Only set when status is <code>failed</code>.
  * @property string $financial_account The FinancialAccount that received the funds.
- * @property null|string $hosted_regulatory_receipt_url A hosted transaction receipt URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
+ * @property null|string $hosted_regulatory_receipt_url A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted transaction receipt</a> URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
  * @property \Stripe\StripeObject $linked_flows
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.

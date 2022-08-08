@@ -2,9 +2,17 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
+      - beta
+      - sdk-release/**
+      - feature/**
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
+      - beta
+      - sdk-release/**
+      - feature/**
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

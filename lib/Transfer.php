@@ -33,7 +33,7 @@ namespace Stripe;
  * @property \Stripe\Collection<\Stripe\TransferReversal> $reversals A list of reversals that have been applied to the transfer.
  * @property bool $reversed Whether the transfer has been fully reversed. If the transfer is only partially reversed, this attribute will still be false.
  * @property null|string|\Stripe\Charge $source_transaction ID of the charge or payment that was used to fund the transfer. If null, the transfer was funded from the available balance.
- * @property null|string $source_type The source balance this transfer came from. One of <code>card</code>, <code>fpx</code>, or <code>bank_account</code>.
+ * @property string $source_type The source balance this transfer came from. One of <code>card</code>, <code>fpx</code>, or <code>bank_account</code>.
  * @property null|string $transfer_group A string that identifies this transaction as part of a group. See the <a href="https://stripe.com/docs/connect/charges-transfers#transfer-options">Connect documentation</a> for details.
  */
 class Transfer extends ApiResource
@@ -46,27 +46,9 @@ class Transfer extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
-    const SOURCE_TYPE_ALIPAY_ACCOUNT = 'alipay_account';
     const SOURCE_TYPE_BANK_ACCOUNT = 'bank_account';
     const SOURCE_TYPE_CARD = 'card';
-    const SOURCE_TYPE_FINANCING = 'financing';
-
-    /**
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Transfer the canceled transfer
-     */
-    public function cancel($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/cancel';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-
-        return $this;
-    }
+    const SOURCE_TYPE_FPX = 'fpx';
 
     const PATH_REVERSALS = '/reversals';
 
