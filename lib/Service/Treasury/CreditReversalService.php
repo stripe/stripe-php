@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Treasury;
@@ -38,7 +39,7 @@ class CreditReversalService extends \Stripe\Service\AbstractService
     /**
      * Retrieves the details of an existing CreditReversal by passing the unique
      * CreditReversal ID from either the CreditReversal creation request or
-     * CreditReversal list
+     * CreditReversal list.
      *
      * @param string $id
      * @param null|array $params

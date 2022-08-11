@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -44,7 +45,6 @@ class SubscriptionItem extends ApiResource
     {
         return self::_createNestedResource($id, static::PATH_USAGE_RECORDS, $params, $opts);
     }
-
 
     const PATH_USAGE_RECORD_SUMMARIES = '/usage_record_summaries';
 
