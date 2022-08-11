@@ -90,7 +90,7 @@ class Stripe
     }
 
     /**
-     * @param Util\LoggerInterface|\Psr\Log\LoggerInterface $logger the logger to which the library
+     * @param \Psr\Log\LoggerInterface|Util\LoggerInterface $logger the logger to which the library
      *   will produce messages
      */
     public static function setLogger($logger)
