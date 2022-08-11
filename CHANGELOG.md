@@ -1,5 +1,12 @@
 # Changelog
 
+## 9.1.0 - 2022-08-11
+* [#1348](https://github.com/stripe/stripe-php/pull/1348) API Updates
+  * Add support for `payment_method_collection` on `Checkout.Session` and `PaymentLink`
+  
+* [#1346](https://github.com/stripe/stripe-php/pull/1346) API Updates
+  * Add support for `expires_at` on `Apps.Secret`
+
 ## 9.1.0-beta.1 - 2022-08-03
 * [#1345](https://github.com/stripe/stripe-php/pull/1345) API Updates for beta branch
   - Updated stable APIs to the latest version
