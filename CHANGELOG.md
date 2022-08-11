@@ -1,9 +1,14 @@
 # Changelog
 
+## 9.2.0-beta.1 - 2022-08-11
+* [#1349](https://github.com/stripe/stripe-php/pull/1349) API Updates for beta branch
+  - Updated stable APIs to the latest version
+  - Add `refundPayment` method to Terminal resource
+
 ## 9.1.0 - 2022-08-11
 * [#1348](https://github.com/stripe/stripe-php/pull/1348) API Updates
   * Add support for `payment_method_collection` on `Checkout.Session` and `PaymentLink`
-  
+
 * [#1346](https://github.com/stripe/stripe-php/pull/1346) API Updates
   * Add support for `expires_at` on `Apps.Secret`
 
@@ -80,7 +85,7 @@ Breaking changes that arose during code generation of the library that we postpo
 * [#1302](https://github.com/stripe/stripe-php/pull/1302) API Updates
   * Add support for `custom_unit_amount` on `Price`
 * [#1301](https://github.com/stripe/stripe-php/pull/1301) API Updates
-  
+
   Documentation updates.
 
 ## 8.7.0 - 2022-06-17
@@ -93,7 +98,7 @@ Breaking changes that arose during code generation of the library that we postpo
 * [#1302](https://github.com/stripe/stripe-php/pull/1302) API Updates
   * Add support for `custom_unit_amount` on `Price`
 * [#1301](https://github.com/stripe/stripe-php/pull/1301) API Updates
-  
+
   Documentation updates.
 
 ## 8.6.0 - 2022-06-08
