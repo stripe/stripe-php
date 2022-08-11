@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Reporting;
@@ -23,7 +22,7 @@ class ReportRunService extends \Stripe\Service\AbstractService
 
     /**
      * Creates a new object and begin running the report. (Certain report types require
-     * a <a href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.).
+     * a <a href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.)
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts

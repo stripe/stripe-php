@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -38,7 +37,7 @@ class TopupService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Top up the balance of an account.
+     * Top up the balance of an account
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts

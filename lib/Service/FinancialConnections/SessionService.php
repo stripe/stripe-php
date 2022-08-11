@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\FinancialConnections;
@@ -24,7 +23,7 @@ class SessionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves the details of a Financial Connections <code>Session</code>.
+     * Retrieves the details of a Financial Connections <code>Session</code>
      *
      * @param string $id
      * @param null|array $params

@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -18,6 +17,7 @@ namespace Stripe;
 class CashBalance extends ApiResource
 {
     const OBJECT_NAME = 'cash_balance';
+
 
     /**
      * @return string the API URL for this balance transaction

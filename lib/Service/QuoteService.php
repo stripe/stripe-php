@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -168,10 +167,10 @@ class QuoteService extends \Stripe\Service\AbstractService
      */
     public function pdf($id, $readBodyChunkCallable, $params = null, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
-        if (!isset($opts->apiBase)) {
-            $opts->apiBase = $this->getClient()->getFilesBase();
-        }
-        $this->requestStream('get', $this->buildPath('/v1/quotes/%s/pdf', $id), $readBodyChunkCallable, $params, $opts);
+      $opts = \Stripe\Util\RequestOptions::parse($opts);
+      if (!isset($opts->apiBase)) {
+          $opts->apiBase = $this->getClient()->getFilesBase();
+      }
+      $this->requestStream('get', $this->buildPath('/v1/quotes/%s/pdf', $id), $readBodyChunkCallable, $params, $opts);
     }
 }
