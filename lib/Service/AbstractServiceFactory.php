@@ -56,4 +56,17 @@ abstract class AbstractServiceFactory
 
         return null;
     }
+
+    /**
+     * Set the instance of a service that is instantiated externally
+     * This is useful for the cases where a mock service is created in the tests
+     * so it can be injected to the factory
+     *
+     * @param string $name
+     * @param \Stripe\Service\AbstractService  $instance
+     */
+    public function setServiceInstance($name, $instance)
+    {
+        $this->services[$name] = $instance;
+    }
 }

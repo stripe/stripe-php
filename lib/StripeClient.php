@@ -82,4 +82,14 @@ class StripeClient extends BaseStripeClient
 
         return $this->coreServiceFactory->__get($name);
     }
+
+    /**
+     * Returns the factory that is used for resolving the services
+     *
+     * @return \Stripe\Service\CoreServiceFactory
+     */
+    public function getServiceFactory()
+    {
+        return $this->coreServiceFactory;
+    }
 }
