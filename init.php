@@ -100,6 +100,7 @@ require __DIR__ . '/lib/CreditNote.php';
 require __DIR__ . '/lib/CreditNoteLineItem.php';
 require __DIR__ . '/lib/Customer.php';
 require __DIR__ . '/lib/CustomerBalanceTransaction.php';
+require __DIR__ . '/lib/CustomerCashBalanceTransaction.php';
 require __DIR__ . '/lib/Discount.php';
 require __DIR__ . '/lib/Dispute.php';
 require __DIR__ . '/lib/EphemeralKey.php';
