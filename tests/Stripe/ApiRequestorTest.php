@@ -506,6 +506,8 @@ final class ApiRequestorTest extends \Stripe\TestCase
     public function testHeaderStripeVersionGlobal()
     {
         Stripe::setApiVersion('2222-22-22');
+        Stripe::setApiVersion(Stripe::getApiVersion() + '; feature_beta=v3');
+
         $this->stubRequest(
             'POST',
             '/v1/charges',
