@@ -12,6 +12,7 @@ class ObjectTypes
     const mapping = [
         \Stripe\Account::OBJECT_NAME => \Stripe\Account::class,
         \Stripe\AccountLink::OBJECT_NAME => \Stripe\AccountLink::class,
+        \Stripe\AccountSession::OBJECT_NAME => \Stripe\AccountSession::class,
         \Stripe\ApplePayDomain::OBJECT_NAME => \Stripe\ApplePayDomain::class,
         \Stripe\ApplicationFee::OBJECT_NAME => \Stripe\ApplicationFee::class,
         \Stripe\ApplicationFeeRefund::OBJECT_NAME => \Stripe\ApplicationFeeRefund::class,

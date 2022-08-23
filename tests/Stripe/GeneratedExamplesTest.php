@@ -444,7 +444,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
             'cus_123',
             ['amount' => 30, 'currency' => 'eur']
         );
-        static::assertInstanceOf(\Stripe\CustomerBalanceTransaction::class, $result);
+        static::assertInstanceOf(\Stripe\CustomerCashBalanceTransaction::class, $result);
     }
 
     public function testDeliverCardCard()
