@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.3.0 - 2022-08-23
+* [#1355](https://github.com/stripe/stripe-php/pull/1355) API Updates
+  * Change type of `Treasury.OutboundTransfer.destination_payment_method` from `string` to `string | null`
+  * Change the return type of `CustomerService.fundCashBalance` test helper from `CustomerBalanceTransaction` to `CustomerCashBalanceTransaction`.
+    * This would generally be considered a breaking change, but we've worked with all existing users to migrate and are comfortable releasing this as a minor as it is solely a test helper method. This was essentially broken prior to this change. 
+
 ## 9.2.0 - 2022-08-19
 * [#1352](https://github.com/stripe/stripe-php/pull/1352) API Updates
   * Add support for new resource `CustomerCashBalanceTransaction`
