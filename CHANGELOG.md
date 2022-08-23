@@ -1,5 +1,10 @@
 # Changelog
 
+## 9.3.0-beta.1 - 2022-08-23
+* [#1354](https://github.com/stripe/stripe-php/pull/1354) API Updates for beta branch
+  - Updated stable APIs to the latest version
+  - `Stripe-Version` beta headers are not pinned by-default and need to be manually specified, please refer to [beta SDKs README section](https://github.com/stripe/stripe-php/blob/master/README.md#beta-sdks) 
+
 ## 9.2.0 - 2022-08-19
 * [#1352](https://github.com/stripe/stripe-php/pull/1352) API Updates
   * Add support for new resource `CustomerCashBalanceTransaction`
