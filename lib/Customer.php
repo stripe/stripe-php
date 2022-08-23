@@ -227,6 +227,36 @@ class Customer extends ApiResource
     {
         return self::_updateNestedResource($id, static::PATH_BALANCE_TRANSACTIONS, $balanceTransactionId, $params, $opts);
     }
+    const PATH_CASH_BALANCE_TRANSACTIONS = '/cash_balance_transactions';
+
+    /**
+     * @param string $id the ID of the customer on which to retrieve the customer cash balance transactions
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\CustomerCashBalanceTransaction> the list of customer cash balance transactions
+     */
+    public static function allCashBalanceTransactions($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_CASH_BALANCE_TRANSACTIONS, $params, $opts);
+    }
+
+    /**
+     * @param string $id the ID of the customer to which the customer cash balance transaction belongs
+     * @param string $cashBalanceTransactionId the ID of the customer cash balance transaction to retrieve
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CustomerCashBalanceTransaction
+     */
+    public static function retrieveCashBalanceTransaction($id, $cashBalanceTransactionId, $params = null, $opts = null)
+    {
+        return self::_retrieveNestedResource($id, static::PATH_CASH_BALANCE_TRANSACTIONS, $cashBalanceTransactionId, $params, $opts);
+    }
     const PATH_SOURCES = '/sources';
 
     /**

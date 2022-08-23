@@ -444,7 +444,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
             'cus_123',
             ['amount' => 30, 'currency' => 'eur']
         );
-        static::assertInstanceOf(\Stripe\CustomerBalanceTransaction::class, $result);
+        static::assertInstanceOf(\Stripe\CustomerCashBalanceTransaction::class, $result);
     }
 
     public function testDeliverCardCard()
@@ -1067,7 +1067,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $result = $this->client->charges->search(
             ['query' => 'amount>999 AND metadata[\'order_id\']:\'6735\'']
         );
-        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"Charge","namespaces":[]}}
+        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"Charge","namespaces":[]},"hasSearchResultType":true}
     }
 
     public function testListSession()
@@ -1399,7 +1399,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $result = $this->client->customers->search(
             ['query' => 'name:\'fakename\' AND metadata[\'foo\']:\'bar\'']
         );
-        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"Customer","namespaces":[]}}
+        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"Customer","namespaces":[]},"hasSearchResultType":true}
     }
 
     public function testSearchCustomer2()
@@ -1408,7 +1408,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $result = $this->client->customers->search(
             ['query' => 'name:\'fakename\' AND metadata[\'foo\']:\'bar\'']
         );
-        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"Customer","namespaces":[]}}
+        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"Customer","namespaces":[]},"hasSearchResultType":true}
     }
 
     public function testListDispute()
@@ -1794,7 +1794,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $result = $this->client->invoices->search(
             ['query' => 'total>999 AND metadata[\'order_id\']:\'6735\'']
         );
-        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"Invoice","namespaces":[]}}
+        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"Invoice","namespaces":[]},"hasSearchResultType":true}
     }
 
     public function testListAuthorization()
@@ -2135,7 +2135,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $result = $this->client->paymentIntents->search(
             ['query' => 'status:\'succeeded\' AND metadata[\'order_id\']:\'6735\'']
         );
-        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"PaymentIntent","namespaces":[]}}
+        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"PaymentIntent","namespaces":[]},"hasSearchResultType":true}
     }
 
     public function testListPaymentLink()
@@ -2378,7 +2378,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $result = $this->client->prices->search(
             ['query' => 'active:\'true\' AND metadata[\'order_id\']:\'6735\'']
         );
-        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"Price","namespaces":[]}}
+        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"Price","namespaces":[]},"hasSearchResultType":true}
     }
 
     public function testListProduct()
@@ -2426,7 +2426,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $result = $this->client->products->search(
             ['query' => 'active:\'true\' AND metadata[\'order_id\']:\'6735\'']
         );
-        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"Product","namespaces":[]}}
+        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"Product","namespaces":[]},"hasSearchResultType":true}
     }
 
     public function testListPromotionCode()
@@ -3144,7 +3144,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $result = $this->client->subscriptions->search(
             ['query' => 'status:\'active\' AND metadata[\'order_id\']:\'6735\'']
         );
-        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"Subscription","namespaces":[]}}
+        // TODO: assert proper instance, {"shape":"searchResultObject","type":{"shape":"ref","ref":"Subscription","namespaces":[]},"hasSearchResultType":true}
     }
 
     public function testListTaxCode()

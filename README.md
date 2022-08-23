@@ -11,6 +11,10 @@ classes for API resources that initialize themselves dynamically from API
 responses which makes it compatible with a wide range of versions of the Stripe
 API.
 
+## Support
+
+New features and bug fixes are released on the latest major version of the Stripe PHP library. If you are on an older major version, we recommend that you upgrade to the latest in order to use the new features and bug fixes including those for security vulnerabilities. Older major versions of the package will continue to be available for use, but will not be receiving any updates.
+
 ## Requirements
 
 PHP 5.6.0 and later.
