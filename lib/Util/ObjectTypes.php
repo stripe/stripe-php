@@ -33,6 +33,7 @@ class ObjectTypes
         \Stripe\CreditNoteLineItem::OBJECT_NAME => \Stripe\CreditNoteLineItem::class,
         \Stripe\Customer::OBJECT_NAME => \Stripe\Customer::class,
         \Stripe\CustomerBalanceTransaction::OBJECT_NAME => \Stripe\CustomerBalanceTransaction::class,
+        \Stripe\CustomerCashBalanceTransaction::OBJECT_NAME => \Stripe\CustomerCashBalanceTransaction::class,
         \Stripe\Discount::OBJECT_NAME => \Stripe\Discount::class,
         \Stripe\Dispute::OBJECT_NAME => \Stripe\Dispute::class,
         \Stripe\EphemeralKey::OBJECT_NAME => \Stripe\EphemeralKey::class,

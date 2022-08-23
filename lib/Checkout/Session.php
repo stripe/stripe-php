@@ -20,8 +20,8 @@ namespace Stripe\Checkout;
  * You can create a Checkout Session on your server and pass its ID to the client
  * to begin Checkout.
  *
- * Related guide: <a href="https://stripe.com/docs/payments/checkout/api">Checkout
- * Server Quickstart</a>.
+ * Related guide: <a href="https://stripe.com/docs/checkout/quickstart">Checkout
+ * Quickstart</a>.
  *
  * @property string $id Unique identifier for the object. Used to pass to <code>redirectToCheckout</code> in Stripe.js.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
