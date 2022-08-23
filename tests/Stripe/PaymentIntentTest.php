@@ -117,13 +117,13 @@ final class PaymentIntentTest extends \Stripe\TestCase
             [],
             null,
             false,
-            $response,
+            $response
         );
 
         $resource = PaymentIntent::retrieve(self::TEST_RESOURCE_ID);
         $error = $resource->last_payment_error;
         static::assertInstanceOf(\Stripe\ErrorObject::class, $error);
-        static::assertEquals('card_error', $error->type);
-        static::assertEquals('ch_123', $error->charge);
+        static::assertSame('card_error', $error->type);
+        static::assertSame('ch_123', $error->charge);
     }
 }
