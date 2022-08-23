@@ -116,5 +116,9 @@ class ObjectTypes
         \Stripe\UsageRecord::OBJECT_NAME => \Stripe\UsageRecord::class,
         \Stripe\UsageRecordSummary::OBJECT_NAME => \Stripe\UsageRecordSummary::class,
         \Stripe\WebhookEndpoint::OBJECT_NAME => \Stripe\WebhookEndpoint::class,
+        'api_error' => \Stripe\ErrorObject::class,
+        'card_error' => \Stripe\ErrorObject::class,
+        'idempotency_error' => \Stripe\ErrorObject::class,
+        'invalid_request_error' => \Stripe\ErrorObject::class,
     ];
 }

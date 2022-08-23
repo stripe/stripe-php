@@ -55,6 +55,9 @@ abstract class Util
         if (\is_array($resp)) {
             if (isset($resp['object']) && \is_string($resp['object']) && isset($types[$resp['object']])) {
                 $class = $types[$resp['object']];
+            // Error objects are a special case and use the "type" field instead of "object".
+            } elseif (isset($resp['type']) && \is_string($resp['type']) && isset($types[$resp['type']]) && \Stripe\ErrorObject::class === $types[$resp['type']]) {
+                $class = \Stripe\ErrorObject::class;
             } else {
                 $class = \Stripe\StripeObject::class;
             }

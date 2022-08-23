@@ -1,0 +1,62 @@
+{
+  "id": "pi_123",
+  "object": "payment_intent",
+  "amount": 100,
+  "amount_capturable": 0,
+  "amount_received": 0,
+  "application": null,
+  "application_fee_amount": null,
+  "canceled_at": null,
+  "cancellation_reason": null,
+  "capture_method": "automatic",
+  "charges": {
+    "object": "list",
+    "data": [
+      {
+        "id": "ch_123",
+        "object": "charge"
+      }
+    ],
+    "has_more": false,
+    "total_count": 1,
+    "url": "/v1/charges?payment_intent=pi_123"
+  },
+  "client_secret": null,
+  "confirmation_method": "publishable",
+  "created": 1541614878,
+  "currency": "eur",
+  "customer": "cus_DvnENrEbZJeIQE",
+  "description": "PaymentIntent Description",
+  "last_payment_error": {
+    "charge": "ch_123",
+    "code": "card_declined",
+    "decline_code": "generic_decline",
+    "doc_url": "https://stripe.com/docs/error-codes/card-declined",
+    "message": "Your card was declined.",
+    "source": {
+      "id": "card_123",
+      "object": "card",
+      "brand": "Visa",
+      "country": "US",
+      "customer": "cus_123",
+      "exp_month": 9,
+      "exp_year": 2019,
+      "fingerprint": "fingerprint",
+      "last4": "0341"
+    },
+    "type": "card_error"
+  },
+  "livemode": false,
+  "next_source_action": null,
+  "on_behalf_of": null,
+  "payment_method_types": ["card"],
+  "receipt_email": null,
+  "return_url": null,
+  "review": null,
+  "shipping": null,
+  "source": null,
+  "statement_descriptor": null,
+  "status": "requires_source",
+  "transfer_data": null,
+  "transfer_group": null
+}

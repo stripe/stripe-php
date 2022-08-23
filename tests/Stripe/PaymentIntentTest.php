@@ -106,4 +106,24 @@ final class PaymentIntentTest extends \Stripe\TestCase
         $resource->confirm();
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $resource);
     }
+
+    public function testLastPaymentErrorIsStripeError()
+    {
+        $response = json_decode(\file_get_contents('tests/data/payment_intent_last_payment_error_fixture.json'), true);
+
+        $this->stubRequest(
+            'GET',
+            '/v1/payment_intents/' . self::TEST_RESOURCE_ID,
+            [],
+            null,
+            false,
+            $response,
+        );
+
+        $resource = PaymentIntent::retrieve(self::TEST_RESOURCE_ID);
+        $error = $resource->last_payment_error;
+        static::assertInstanceOf(\Stripe\ErrorObject::class, $error);
+        static::assertEquals('card_error', $error->type);
+        static::assertEquals('ch_123', $error->charge);
+    }
 }
