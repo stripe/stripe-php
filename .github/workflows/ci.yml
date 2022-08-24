@@ -146,7 +146,7 @@ jobs:
           COVERALLS_SERVICE_NUMBER: ${{ github.run_id }}
 
   finish:
-    needs: test
+    needs: tests
     runs-on: ubuntu-latest
     steps:
       - name: Coveralls finished
