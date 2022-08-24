@@ -142,4 +142,4 @@ jobs:
         env:
           COVERALLS_RUN_LOCALLY: 1
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-          COVERALLS_FLAG_NAME: php-${{ matrix.php-version }}-autoload-${{ matrix.env }}
+          COVERALLS_FLAG_NAME: php-${{ matrix.php-version }}-${{ matrix.env }}
