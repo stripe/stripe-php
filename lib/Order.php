@@ -13,6 +13,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property int $amount_remaining
  * @property int $amount_subtotal Order cost before any discounts or taxes are applied. A positive integer representing the subtotal of the order in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency).
  * @property int $amount_total Total order cost after discounts and taxes are applied. A positive integer representing the cost of the order in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). To submit an order, the total must be either 0 or at least $0.50 USD or <a href="https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts">equivalent in charge currency</a>.
  * @property null|string|\Stripe\StripeObject $application ID of the Connect application that created the Order, if any.
@@ -20,6 +21,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $billing_details Customer billing details associated with the order.
  * @property null|string $client_secret <p>The client secret of this Order. Used for client-side retrieval using a publishable key.</p><p>The client secret can be used to complete a payment for an Order from your frontend. It should not be stored, logged, embedded in URLs, or exposed to anyone other than the customer. Make sure that you have TLS enabled on any page that includes the client secret.</p><p>Refer to our docs for <a href="https://stripe.com/docs/orders-beta/create-and-process">creating and processing an order</a> to learn about how client_secret should be handled.</p>
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
+ * @property \Stripe\StripeObject[] $credits The credits applied to the Order. At most 10 credits can be applied to an Order.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string|\Stripe\Customer $customer The customer which this orders belongs to.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
