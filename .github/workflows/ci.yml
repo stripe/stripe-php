@@ -138,7 +138,7 @@ jobs:
 
       - name: Coveralls
         run: vendor/bin/php-coveralls -c .coveralls.github-actions.yml -v
-        if: matrix.php-version == '8.1' && matrix.env == 'AUTOLOAD=0'
+        if: matrix.php-version == '8.1' && matrix.env == 'AUTOLOAD=1'
         env:
           COVERALLS_RUN_LOCALLY: 1
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
