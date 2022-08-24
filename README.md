@@ -219,7 +219,7 @@ We highly recommend keeping an eye on when the beta feature you are interested i
 If your beta feature requires a `Stripe-Version` header to be sent, use the `apiVersion` property of `config` object to set it:
 
 ```php
-Stripe::setApiVersion(Stripe::getApiVersion() + '; feature_beta=v3');
+Stripe::setApiVersion(Stripe::getApiVersion() . '; feature_beta=v3');
 ```
 
 ## Support
