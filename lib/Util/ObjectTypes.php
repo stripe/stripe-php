@@ -48,6 +48,8 @@ class ObjectTypes
         \Stripe\FinancialConnections\AccountOwnership::OBJECT_NAME => \Stripe\FinancialConnections\AccountOwnership::class,
         \Stripe\FinancialConnections\Session::OBJECT_NAME => \Stripe\FinancialConnections\Session::class,
         \Stripe\FundingInstructions::OBJECT_NAME => \Stripe\FundingInstructions::class,
+        \Stripe\GiftCards\Card::OBJECT_NAME => \Stripe\GiftCards\Card::class,
+        \Stripe\GiftCards\Transaction::OBJECT_NAME => \Stripe\GiftCards\Transaction::class,
         \Stripe\Identity\VerificationReport::OBJECT_NAME => \Stripe\Identity\VerificationReport::class,
         \Stripe\Identity\VerificationSession::OBJECT_NAME => \Stripe\Identity\VerificationSession::class,
         \Stripe\Invoice::OBJECT_NAME => \Stripe\Invoice::class,
