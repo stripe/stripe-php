@@ -137,7 +137,7 @@ jobs:
           ./build.php $env:AUTOLOAD
 
       - name: Coveralls
-        run: vendor/bin/php-coveralls -c .coveralls.github-actions.yml -v
+        run: ./vendor/bin/php-coveralls -v --coverage_clover='./dist/tests.clover' --json_path='./dist/coveralls-upload.json'
         if: matrix.php-version == '8.1' && matrix.env == 'AUTOLOAD=1'
         env:
           COVERALLS_RUN_LOCALLY: 1
