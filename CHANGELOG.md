@@ -1,5 +1,14 @@
 # Changelog
 
+## 9.4.0 - 2022-08-26
+* [#1362](https://github.com/stripe/stripe-php/pull/1362) API Updates
+  * Add support for `login_page` on `BillingPortal.Configuration`
+* [#1360](https://github.com/stripe/stripe-php/pull/1360) Add test coverage using Coveralls
+* [#1361](https://github.com/stripe/stripe-php/pull/1361) fix: Fix type hints for error objects.
+  * Update `Invoice.last_finalization_error`, `PaymentIntent.last_payment_error`, `SetupAttempt.setup_error` and `SetupIntent.setup_error` type to be `StripeObject`.
+    * Addresses https://github.com/stripe/stripe-php/issues/1353. The library today does not actually return a `ErrorObject` for these fields, so the type annotation was incorrect.  
+* [#1356](https://github.com/stripe/stripe-php/pull/1356) Add beta readme.md section
+
 ## 9.3.0 - 2022-08-23
 * [#1355](https://github.com/stripe/stripe-php/pull/1355) API Updates
   * Change type of `Treasury.OutboundTransfer.destination_payment_method` from `string` to `string | null`
