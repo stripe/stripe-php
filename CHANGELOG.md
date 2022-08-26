@@ -1,5 +1,10 @@
 # Changelog
 
+## 9.4.0-beta.1 - 2022-08-26
+* [#1358](https://github.com/stripe/stripe-php/pull/1358) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for the beta [Gift Card API](https://stripe.com/docs/gift-cards).
+
 ## 9.3.0 - 2022-08-23
 * [#1355](https://github.com/stripe/stripe-php/pull/1355) API Updates
   * Change type of `Treasury.OutboundTransfer.destination_payment_method` from `string` to `string | null`
