@@ -1,5 +1,10 @@
 # Changelog
 
+## 9.5.0 - 2022-09-06
+* [#1364](https://github.com/stripe/stripe-php/pull/1364) API Updates
+  * Add support for new value `terminal_reader_splashscreen` on enum `File.purpose`
+* [#1363](https://github.com/stripe/stripe-php/pull/1363) chore: Update PHP tests to handle search methods.
+
 ## 9.4.0 - 2022-08-26
 * [#1362](https://github.com/stripe/stripe-php/pull/1362) API Updates
   * Add support for `login_page` on `BillingPortal.Configuration`
