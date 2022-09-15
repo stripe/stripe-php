@@ -1,5 +1,13 @@
 # Changelog
 
+## 9.6.0 - 2022-09-15
+* [#1365](https://github.com/stripe/stripe-php/pull/1365) API Updates
+  * Add support for `from_invoice` and `latest_revision` on `Invoice`
+  * Add support for new value `pix` on enum `PaymentLink.payment_method_types[]`
+  * Add support for `pix` on `PaymentMethod`
+  * Add support for new value `pix` on enum `PaymentMethod.type`
+  * Add support for `created` on `Treasury.CreditReversal` and `Treasury.DebitReversal`
+
 ## 9.5.0 - 2022-09-06
 * [#1364](https://github.com/stripe/stripe-php/pull/1364) API Updates
   * Add support for new value `terminal_reader_splashscreen` on enum `File.purpose`
