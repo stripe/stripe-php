@@ -21,7 +21,7 @@ trait SingletonRetrieve
      */
     public static function retrieve($opts = null)
     {
-        $opts = Util\RequestOptions::parse($opts);
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
         $instance = new static(null, $opts);
         $instance->refresh();
 
