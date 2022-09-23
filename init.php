@@ -57,6 +57,7 @@ require __DIR__ . '/lib/ApiOperations/NestedResource.php';
 require __DIR__ . '/lib/ApiOperations/Request.php';
 require __DIR__ . '/lib/ApiOperations/Retrieve.php';
 require __DIR__ . '/lib/ApiOperations/Search.php';
+require __DIR__ . '/lib/ApiOperations/SingletonRetrieve.php';
 require __DIR__ . '/lib/ApiOperations/Update.php';
 
 // Plumbing
