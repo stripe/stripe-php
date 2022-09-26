@@ -47,6 +47,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $oxxo
  * @property \Stripe\StripeObject $p24
  * @property \Stripe\StripeObject $paynow
+ * @property \Stripe\StripeObject $pix
  * @property \Stripe\StripeObject $promptpay
  * @property \Stripe\StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
  * @property \Stripe\StripeObject $sepa_debit
