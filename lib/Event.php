@@ -74,6 +74,7 @@ class Event extends ApiResource
     const BILLING_PORTAL_CONFIGURATION_UPDATED = 'billing_portal.configuration.updated';
     const BILLING_PORTAL_SESSION_CREATED = 'billing_portal.session.created';
     const CAPABILITY_UPDATED = 'capability.updated';
+    const CAPITAL_FINANCING_TRANSACTION_CREATED = 'capital.financing_transaction.created';
     const CASH_BALANCE_FUNDS_AVAILABLE = 'cash_balance.funds_available';
     const CHARGE_CAPTURED = 'charge.captured';
     const CHARGE_DISPUTE_CLOSED = 'charge.dispute.closed';
