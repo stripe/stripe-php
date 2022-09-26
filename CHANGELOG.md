@@ -1,5 +1,10 @@
 # Changelog
 
+## 9.7.0-beta.1 - 2022-09-26
+* [#1368](https://github.com/stripe/stripe-php/pull/1368) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add `FinancingOffer`, `FinancingSummary` and `FinancingTransaction` resources.
+
 ## 9.6.0 - 2022-09-15
 * [#1365](https://github.com/stripe/stripe-php/pull/1365) API Updates
   * Add support for `from_invoice` and `latest_revision` on `Invoice`
@@ -19,7 +24,7 @@
 * [#1360](https://github.com/stripe/stripe-php/pull/1360) Add test coverage using Coveralls
 * [#1361](https://github.com/stripe/stripe-php/pull/1361) fix: Fix type hints for error objects.
   * Update `Invoice.last_finalization_error`, `PaymentIntent.last_payment_error`, `SetupAttempt.setup_error` and `SetupIntent.setup_error` type to be `StripeObject`.
-    * Addresses https://github.com/stripe/stripe-php/issues/1353. The library today does not actually return a `ErrorObject` for these fields, so the type annotation was incorrect.  
+    * Addresses https://github.com/stripe/stripe-php/issues/1353. The library today does not actually return a `ErrorObject` for these fields, so the type annotation was incorrect.
 * [#1356](https://github.com/stripe/stripe-php/pull/1356) Add beta readme.md section
 
 ## 9.4.0-beta.1 - 2022-08-26
