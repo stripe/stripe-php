@@ -1,5 +1,9 @@
 # Changelog
 
+## 9.7.0-beta.2 - 2022-10-07
+* [#1373](https://github.com/stripe/stripe-php/pull/1373) API Updates for beta branch
+  * Updated stable APIs to the latest version
+
 ## 9.7.0-beta.1 - 2022-09-26
 * [#1368](https://github.com/stripe/stripe-php/pull/1368) API Updates for beta branch
   * Updated stable APIs to the latest version
