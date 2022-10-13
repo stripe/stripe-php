@@ -51,7 +51,6 @@ namespace Stripe\Service;
  * @property SetupIntentService $setupIntents
  * @property ShippingRateService $shippingRates
  * @property Sigma\SigmaServiceFactory $sigma
- * @property SkuService $skus
  * @property SourceService $sources
  * @property SubscriptionItemService $subscriptionItems
  * @property SubscriptionService $subscriptions
@@ -116,7 +115,6 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'setupIntents' => SetupIntentService::class,
         'shippingRates' => ShippingRateService::class,
         'sigma' => Sigma\SigmaServiceFactory::class,
-        'skus' => SkuService::class,
         'sources' => SourceService::class,
         'subscriptionItems' => SubscriptionItemService::class,
         'subscriptions' => SubscriptionService::class,
