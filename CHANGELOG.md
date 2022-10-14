@@ -1,5 +1,12 @@
 # Changelog
 
+## 9.7.0 - 2022-10-13
+* [#1376](https://github.com/stripe/stripe-php/pull/1376) API Updates
+  * Add support for `network_data` on `Issuing.Authorization`
+* [#1374](https://github.com/stripe/stripe-php/pull/1374) Add request_log_url on ErrorObject
+* [#1370](https://github.com/stripe/stripe-php/pull/1370) API Updates
+  * Add support for `created` on `Checkout.Session`
+
 ## 9.7.0-beta.2 - 2022-10-07
 * [#1373](https://github.com/stripe/stripe-php/pull/1373) API Updates for beta branch
   * Updated stable APIs to the latest version
