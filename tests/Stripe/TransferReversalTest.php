@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\TransferReversal
  */
-final class TransferReversalTest extends \PHPUnit\Framework\TestCase
+final class TransferReversalTest extends \Stripe\TestCase
 {
     use TestHelper;
 

@@ -6,7 +6,7 @@ namespace Stripe\Service;
  * @internal
  * @covers \Stripe\Service\MandateService
  */
-final class MandateServiceTest extends \PHPUnit\Framework\TestCase
+final class MandateServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 

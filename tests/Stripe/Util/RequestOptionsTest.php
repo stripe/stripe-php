@@ -6,7 +6,7 @@ namespace Stripe\Util;
  * @internal
  * @covers \Stripe\Util\RequestOptions
  */
-final class RequestOptionsTest extends \PHPUnit\Framework\TestCase
+final class RequestOptionsTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -21,7 +21,7 @@ final class RequestOptionsTest extends \PHPUnit\Framework\TestCase
     public function testParseStringStrict()
     {
         $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('#Do not pass a string for request options.#');
+        $this->compatExpectExceptionMessageMatches('#Do not pass a string for request options.#');
 
         $opts = RequestOptions::parse('foo', true);
     }
@@ -159,14 +159,18 @@ final class RequestOptionsTest extends \PHPUnit\Framework\TestCase
     {
         $opts = RequestOptions::parse(['api_key' => 'sk_test_1234567890abcdefghijklmn']);
         $debugInfo = \print_r($opts, true);
-        static::assertContains('[apiKey] => sk_test_********************klmn', $debugInfo);
+        static::compatAssertStringContainsString('[apiKey] => sk_test_********************klmn', $debugInfo);
 
         $opts = RequestOptions::parse(['api_key' => 'sk_1234567890abcdefghijklmn']);
         $debugInfo = \print_r($opts, true);
-        static::assertContains('[apiKey] => sk_********************klmn', $debugInfo);
+        static::compatAssertStringContainsString('[apiKey] => sk_********************klmn', $debugInfo);
 
         $opts = RequestOptions::parse(['api_key' => '1234567890abcdefghijklmn']);
         $debugInfo = \print_r($opts, true);
-        static::assertContains('[apiKey] => ********************klmn', $debugInfo);
+        static::compatAssertStringContainsString('[apiKey] => ********************klmn', $debugInfo);
+
+        $opts = RequestOptions::parse([]);
+        $debugInfo = \print_r($opts, true);
+        static::compatAssertStringContainsString("[apiKey] => \n", $debugInfo);
     }
 }

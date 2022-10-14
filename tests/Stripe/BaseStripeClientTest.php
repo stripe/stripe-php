@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\BaseStripeClient
  */
-final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
+final class BaseStripeClientTest extends \Stripe\TestCase
 {
     /** @var \ReflectionProperty */
     private $optsReflector;
@@ -60,9 +60,9 @@ final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
     public function testCtorThrowsIfConfigArrayContainsUnexpectedKey()
     {
         $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Found unknown key(s) in configuration array: foo');
+        $this->expectExceptionMessage('Found unknown key(s) in configuration array: \'foo\', \'foo2\'');
 
-        $client = new BaseStripeClient(['foo' => 'bar']);
+        $client = new BaseStripeClient(['foo' => 'bar', 'foo2' => 'bar2']);
     }
 
     public function testRequestWithClientApiKey()
@@ -95,7 +95,7 @@ final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
     public function testRequestThrowsIfOptsIsString()
     {
         $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('#Do not pass a string for request options.#');
+        $this->compatExpectExceptionMessageMatches('#Do not pass a string for request options.#');
 
         $client = new BaseStripeClient(['api_base' => MOCK_URL]);
         $charge = $client->request('get', '/v1/charges/ch_123', [], 'foo');
@@ -177,5 +177,29 @@ final class BaseStripeClientTest extends \PHPUnit\Framework\TestCase
 
         $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
         $client->requestCollection('get', '/v1/charges/ch_123', [], []);
+    }
+
+    public function testRequestWithOptsInParamsWarns()
+    {
+        $this->compatExpectWarning(static::compatWarningClass());
+        $this->expectExceptionMessage('Options found in $params: api_key, stripe_account, api_base. Options should be '
+            . 'passed in their own array after $params. (HINT: pass an empty array to $params if you do not have any.)');
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_account' => 'acct_123',
+            'api_base' => MOCK_URL,
+        ]);
+        $charge = $client->request(
+            'get',
+            '/v1/charges/ch_123',
+            [
+                'api_key' => 'sk_test_client',
+                'stripe_account' => 'acct_123',
+                'api_base' => MOCK_URL,
+            ],
+            ['stripe_account' => 'acct_456']
+        );
+        static::assertNotNull($charge);
+        static::assertSame('acct_456', $this->optsReflector->getValue($charge)->headers['Stripe-Account']);
     }
 }

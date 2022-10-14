@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\TaxRate
  */
-final class TaxRateTest extends \PHPUnit\Framework\TestCase
+final class TaxRateTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class TaxRateTest extends \PHPUnit\Framework\TestCase
             '/v1/tax_rates'
         );
         $resources = TaxRate::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\TaxRate::class, $resources->data[0]);
     }
 

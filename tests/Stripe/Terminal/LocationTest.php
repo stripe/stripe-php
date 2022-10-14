@@ -6,7 +6,7 @@ namespace Stripe\Terminal;
  * @internal
  * @covers \Stripe\Terminal\Location
  */
-final class LocationTest extends \PHPUnit\Framework\TestCase
+final class LocationTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -19,7 +19,7 @@ final class LocationTest extends \PHPUnit\Framework\TestCase
             '/v1/terminal/locations'
         );
         $resources = Location::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Terminal\Location::class, $resources->data[0]);
     }
 

@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Product
  */
-final class ProductTest extends \PHPUnit\Framework\TestCase
+final class ProductTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class ProductTest extends \PHPUnit\Framework\TestCase
             '/v1/products'
         );
         $resources = Product::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Product::class, $resources->data[0]);
     }
 
@@ -41,7 +41,6 @@ final class ProductTest extends \PHPUnit\Framework\TestCase
         );
         $resource = Product::create([
             'name' => 'name',
-            'type' => 'good',
         ]);
         static::assertInstanceOf(\Stripe\Product::class, $resource);
     }

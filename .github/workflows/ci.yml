@@ -1,6 +1,21 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+      - beta
+      - sdk-release/**
+      - feature/**
+  pull_request:
+    branches:
+      - master
+      - beta
+      - sdk-release/**
+      - feature/**
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   php-cs-fixer:
@@ -12,22 +27,56 @@ jobs:
       - uses: actions/checkout@master
 
       - name: PHP-CS-Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga
+        uses: docker://oskarstark/php-cs-fixer-ga:3.4.0
         with:
-          args: --diff-format=udiff --dry-run --show-progress=dots --using-cache=no --verbose .
+          args: --format=txt --diff --dry-run --using-cache=no --verbose .
 
   phpstan:
     name: PHPStan
 
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - "7.1"
+          - "7.4"
+          - "8.1"
+
     steps:
       - uses: actions/checkout@master
 
-      - name: PHPStan
-        uses: docker://oskarstark/phpstan-ga
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          args: analyse -c phpstan.neon lib tests
+          php-version: ${{ matrix.php-version }}
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          # Conventionally you would hash "composer.lock", but we don't commit
+          # that, so we hash on "composer.json" instead.
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
+
+      # We run php-cs-fixer in a separate job, but the version we use is not compatible
+      # with all the versions of PHP that we want to execute PHPStan upon
+      - name: Trim dependency
+        run: composer remove --dev friendsofphp/php-cs-fixer
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run phpstan
+        run: make phpstan
 
   tests:
     name: Tests
@@ -46,16 +95,32 @@ jobs:
           - "7.1"
           - "7.2"
           - "7.3"
+          - "7.4"
+          - "8.0"
+          - "8.1"
 
     steps:
       - uses: actions/checkout@master
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@master
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          extension-csv: curl, json, mbstring, simplexml, xdebug
           coverage: xdebug
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
+
+      # We run php-cs-fixer and PHPStan in separate jobs, but the versions we use are not compatible
+      # with all the versions of PHP that we want to execute PHPUnit upon
+      - name: Trim dependency
+        run: composer remove --dev friendsofphp/php-cs-fixer phpstan/phpstan
 
       - name: Validate composer.json and composer.lock
         run: composer validate
@@ -64,15 +129,17 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Start stripe-mock
-        run: docker run -d -p 12111-12112:12111-12112 stripemock/stripe-mock && sleep 5
+        run: docker pull stripe/stripe-mock && docker run -d -p 12111-12112:12111-12112 stripe/stripe-mock && sleep 5
 
       - name: Run test suite
         run: |
           php --version
           ./build.php $env:AUTOLOAD
 
-      - name: Send code coverage report to coveralls.io
-        run: vendor/bin/php-coveralls -c .coveralls.github-actions.yml -v
+      - name: Coveralls
+        run: vendor/bin/php-coveralls -v --coverage_clover='clover.xml' --json_path='coveralls-upload.json'
+        if: matrix.php-version == '8.1' && matrix.env == 'AUTOLOAD=1'
         env:
           COVERALLS_RUN_LOCALLY: 1
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+          COVERALLS_FLAG_NAME: php-${{ matrix.php-version }}-${{ matrix.env }}

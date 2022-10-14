@@ -7,6 +7,14 @@ namespace Stripe;
 /**
  * This is an object representing a person associated with a Stripe account.
  *
+ * A platform cannot access a Standard or Express account's persons after the
+ * account starts onboarding, such as after generating an account link for the
+ * account. See the <a
+ * href="https://stripe.com/docs/connect/standard-accounts">Standard onboarding</a>
+ * or <a href="https://stripe.com/docs/connect/express-accounts">Express onboarding
+ * documentation</a> for information about platform pre-filling and account
+ * onboarding steps.
+ *
  * Related guide: <a
  * href="https://stripe.com/docs/connect/identity-verification-api#person-information">Handling
  * Identity Verification with the API</a>.
@@ -23,15 +31,20 @@ namespace Stripe;
  * @property null|string $first_name The person's first name.
  * @property null|string $first_name_kana The Kana variation of the person's first name (Japan only).
  * @property null|string $first_name_kanji The Kanji variation of the person's first name (Japan only).
+ * @property string[] $full_name_aliases A list of alternate names or aliases that the person is known by.
+ * @property null|\Stripe\StripeObject $future_requirements Information about the upcoming new requirements for this person, including what information needs to be collected, and by when.
  * @property null|string $gender The person's gender (International regulations require either &quot;male&quot; or &quot;female&quot;).
  * @property bool $id_number_provided Whether the person's <code>id_number</code> was provided.
+ * @property bool $id_number_secondary_provided Whether the person's <code>id_number_secondary</code> was provided.
  * @property null|string $last_name The person's last name.
  * @property null|string $last_name_kana The Kana variation of the person's last name (Japan only).
  * @property null|string $last_name_kanji The Kanji variation of the person's last name (Japan only).
  * @property null|string $maiden_name The person's maiden name.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|string $nationality The country where the person is a national.
  * @property null|string $phone The person's phone number.
  * @property string $political_exposure Indicates if the person or any of their representatives, family members, or other closely related persons, declares that they hold or have held an important public job or function, in any jurisdiction.
+ * @property \Stripe\StripeObject $registered_address
  * @property \Stripe\StripeObject $relationship
  * @property null|\Stripe\StripeObject $requirements Information about the requirements for this person, including what information needs to be collected, and by when.
  * @property bool $ssn_last_4_provided Whether the last four digits of the person's Social Security number have been provided (U.S. only).

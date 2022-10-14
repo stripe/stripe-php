@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Card
  */
-final class CardTest extends \PHPUnit\Framework\TestCase
+final class CardTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -45,15 +45,6 @@ final class CardTest extends \PHPUnit\Framework\TestCase
         $resource = $this->createFixture(['account' => 'acct_123']);
         static::assertSame(
             '/v1/accounts/acct_123/external_accounts/' . self::TEST_RESOURCE_ID,
-            $resource->instanceUrl()
-        );
-    }
-
-    public function testHasCorrectUrlForRecipient()
-    {
-        $resource = $this->createFixture(['recipient' => 'rp_123']);
-        static::assertSame(
-            '/v1/recipients/rp_123/cards/' . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
     }

@@ -11,17 +11,16 @@ namespace Stripe;
  * @property int $expires Time at which the key will expire. Measured in seconds since the Unix epoch.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $secret The key's secret. You can use this value to make authorized requests to the Stripe API.
- * @property array $associated_objects
  */
 class EphemeralKey extends ApiResource
 {
     const OBJECT_NAME = 'ephemeral_key';
 
-    use ApiOperations\Delete;
-
     use ApiOperations\Create {
         create as protected _create;
     }
+
+    use ApiOperations\Delete;
 
     /**
      * @param null|array $params

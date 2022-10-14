@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Source
  */
-final class SourceTest extends \PHPUnit\Framework\TestCase
+final class SourceTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -116,13 +116,12 @@ final class SourceTest extends \PHPUnit\Framework\TestCase
 
     public function testCanListSourceTransactionsDeprecated()
     {
-        $source = Source::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'get',
-            '/v1/sources/' . $source->id . '/source_transactions'
+            '/v1/sources/' . self::TEST_RESOURCE_ID . '/source_transactions'
         );
-        $resources = $source->sourceTransactions();
-        static::assertInternalType('array', $resources->data);
+        $resources = Source::allSourceTransactions(self::TEST_RESOURCE_ID);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
     }
 
@@ -133,7 +132,7 @@ final class SourceTest extends \PHPUnit\Framework\TestCase
             '/v1/sources/' . self::TEST_RESOURCE_ID . '/source_transactions'
         );
         $resources = Source::allSourceTransactions(self::TEST_RESOURCE_ID);
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
     }
 

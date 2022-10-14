@@ -6,7 +6,7 @@ namespace Stripe\Service\BillingPortal;
  * @internal
  * @covers \Stripe\Service\BillingPortal\SessionService
  */
-final class SessionServiceTest extends \PHPUnit\Framework\TestCase
+final class SessionServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 

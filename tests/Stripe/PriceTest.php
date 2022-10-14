@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Price
  */
-final class PriceTest extends \PHPUnit\Framework\TestCase
+final class PriceTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class PriceTest extends \PHPUnit\Framework\TestCase
             '/v1/prices'
         );
         $resources = Price::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Price::class, $resources->data[0]);
     }
 

@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\PromotionCode
  */
-final class PromotionCodeTest extends \PHPUnit\Framework\TestCase
+final class PromotionCodeTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class PromotionCodeTest extends \PHPUnit\Framework\TestCase
             '/v1/promotion_codes'
         );
         $resources = PromotionCode::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\PromotionCode::class, $resources->data[0]);
     }
 

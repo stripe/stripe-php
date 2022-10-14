@@ -14,6 +14,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property null|string|\Stripe\StripeObject $application ID of the Connect Application that created the schedule.
  * @property null|int $canceled_at Time at which the subscription schedule was canceled. Measured in seconds since the Unix epoch.
  * @property null|int $completed_at Time at which the subscription schedule was completed. Measured in seconds since the Unix epoch.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -28,6 +29,7 @@ namespace Stripe;
  * @property null|string $released_subscription ID of the subscription once managed by the subscription schedule (if it is released).
  * @property string $status The present status of the subscription schedule. Possible values are <code>not_started</code>, <code>active</code>, <code>completed</code>, <code>released</code>, and <code>canceled</code>. You can read more about the different states in our <a href="https://stripe.com/docs/billing/subscriptions/subscription-schedules">behavior guide</a>.
  * @property null|string|\Stripe\Subscription $subscription ID of the subscription managed by the subscription schedule.
+ * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this subscription schedule belongs to.
  */
 class SubscriptionSchedule extends ApiResource
 {
@@ -44,7 +46,7 @@ class SubscriptionSchedule extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return SubscriptionSchedule the canceled subscription schedule
+     * @return \Stripe\SubscriptionSchedule the canceled subscription schedule
      */
     public function cancel($params = null, $opts = null)
     {
@@ -61,7 +63,7 @@ class SubscriptionSchedule extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return SubscriptionSchedule the released subscription schedule
+     * @return \Stripe\SubscriptionSchedule the released subscription schedule
      */
     public function release($params = null, $opts = null)
     {

@@ -6,7 +6,7 @@ namespace Stripe\Exception;
  * @internal
  * @covers \Stripe\Exception\ApiErrorException
  */
-final class ApiErrorExceptionTest extends \PHPUnit\Framework\TestCase
+final class ApiErrorExceptionTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -43,6 +43,6 @@ final class ApiErrorExceptionTest extends \PHPUnit\Framework\TestCase
     public function testToString()
     {
         $e = $this->createFixture();
-        static::assertContains('(Request req_test)', (string) $e);
+        static::compatAssertStringContainsString('(Request req_test)', (string) $e);
     }
 }

@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Collection
  */
-final class CollectionTest extends \PHPUnit\Framework\TestCase
+final class CollectionTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -28,7 +28,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
     public function testOffsetGetNumericIndex()
     {
         $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
-        $this->expectExceptionMessageRegExp('/You tried to access the \\d index/');
+        $this->compatExpectExceptionMessageMatches('/You tried to access the \\d index/');
 
         $this->fixture[0];
     }
@@ -50,7 +50,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
         );
 
         $resources = $this->fixture->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
     }
 
     public function testCanRetrieve()
@@ -112,7 +112,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
 
         $seen = [];
         foreach ($collection as $item) {
-            \array_push($seen, $item['id']);
+            $seen[] = $item['id'];
         }
 
         static::assertSame(['1', '2', '3'], $seen);
@@ -128,7 +128,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
 
         $seen = [];
         foreach ($collection->getReverseIterator() as $item) {
-            \array_push($seen, $item['id']);
+            $seen[] = $item['id'];
         }
 
         static::assertSame(['3', '2', '1'], $seen);
@@ -138,7 +138,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
     {
         $seen = [];
         foreach (\iterator_to_array($this->fixture) as $item) {
-            \array_push($seen, $item['id']);
+            $seen[] = $item['id'];
         }
 
         static::assertSame(['1'], $seen);
@@ -163,7 +163,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
 
         $seen = [];
         foreach ($this->fixture->autoPagingIterator() as $item) {
-            \array_push($seen, $item['id']);
+            $seen[] = $item['id'];
         }
 
         static::assertSame(['1', '2', '3'], $seen);
@@ -188,7 +188,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
 
         $seen = [];
         foreach (\iterator_to_array($this->fixture->autoPagingIterator()) as $item) {
-            \array_push($seen, $item['id']);
+            $seen[] = $item['id'];
         }
 
         static::assertSame(['1', '2', '3'], $seen);
@@ -220,7 +220,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
 
         $seen = [];
         foreach ($collection->autoPagingIterator() as $item) {
-            \array_push($seen, $item['id']);
+            $seen[] = $item['id'];
         }
 
         static::assertSame(['3', '2', '1'], $seen);
@@ -287,7 +287,7 @@ final class CollectionTest extends \PHPUnit\Framework\TestCase
         $nextPage = $this->fixture->nextPage();
         $ids = [];
         foreach ($nextPage->data as $element) {
-            \array_push($ids, $element['id']);
+            $ids[] = $element['id'];
         }
         static::assertSame(['2', '3'], $ids);
     }

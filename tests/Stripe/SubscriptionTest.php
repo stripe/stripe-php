@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Subscription
  */
-final class SubscriptionTest extends \PHPUnit\Framework\TestCase
+final class SubscriptionTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class SubscriptionTest extends \PHPUnit\Framework\TestCase
             '/v1/subscriptions'
         );
         $resources = Subscription::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Subscription::class, $resources->data[0]);
     }
 

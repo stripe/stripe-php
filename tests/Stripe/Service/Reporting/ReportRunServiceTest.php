@@ -6,7 +6,7 @@ namespace Stripe\Service\Reporting;
  * @internal
  * @covers \Stripe\Service\Reporting\ReportRunService
  */
-final class ReportRunServiceTest extends \PHPUnit\Framework\TestCase
+final class ReportRunServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -34,7 +34,7 @@ final class ReportRunServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/reporting/report_runs'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Reporting\ReportRun::class, $resources->data[0]);
     }
 

@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\AccountLink
  */
-final class AccountLinkTest extends \PHPUnit\Framework\TestCase
+final class AccountLinkTest extends \Stripe\TestCase
 {
     use TestHelper;
 

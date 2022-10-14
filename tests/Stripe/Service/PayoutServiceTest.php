@@ -6,7 +6,7 @@ namespace Stripe\Service;
  * @internal
  * @covers \Stripe\Service\PayoutService
  */
-final class PayoutServiceTest extends \PHPUnit\Framework\TestCase
+final class PayoutServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -34,7 +34,7 @@ final class PayoutServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/payouts'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Payout::class, $resources->data[0]);
     }
 
@@ -68,6 +68,16 @@ final class PayoutServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/payouts/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
+        static::assertInstanceOf(\Stripe\Payout::class, $resource);
+    }
+
+    public function testReverse()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/payouts/' . self::TEST_RESOURCE_ID . '/reverse'
+        );
+        $resource = $this->service->reverse(self::TEST_RESOURCE_ID);
         static::assertInstanceOf(\Stripe\Payout::class, $resource);
     }
 

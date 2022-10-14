@@ -6,7 +6,7 @@ namespace Stripe\Service;
  * @internal
  * @covers \Stripe\Service\AbstractService
  */
-final class AbstractServiceTest extends \PHPUnit\Framework\TestCase
+final class AbstractServiceTest extends \Stripe\TestCase
 {
     const TEST_RESOURCE_ID = '25OFF';
 

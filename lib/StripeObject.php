@@ -149,6 +149,11 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         $this->_unsavedValues->add($k);
     }
 
+    /**
+     * @param mixed $k
+     *
+     * @return bool
+     */
     public function __isset($k)
     {
         return isset($this->_values[$k]);
@@ -169,7 +174,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             return $this->_values[$k];
         }
         if (!empty($this->_transientValues) && $this->_transientValues->includes($k)) {
-            $class = \get_class($this);
+            $class = static::class;
             $attrs = \implode(', ', \array_keys($this->_values));
             $message = "Stripe Notice: Undefined property of {$class} instance: {$k}. "
                     . "HINT: The {$k} attribute was set in the past, however. "
@@ -181,40 +186,64 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
 
             return $nullval;
         }
-        $class = \get_class($this);
+        $class = static::class;
         Stripe::getLogger()->error("Stripe Notice: Undefined property of {$class} instance: {$k}");
 
         return $nullval;
     }
 
-    // Magic method for var_dump output. Only works with PHP >= 5.6
+    /**
+     * Magic method for var_dump output. Only works with PHP >= 5.6.
+     *
+     * @return array
+     */
     public function __debugInfo()
     {
         return $this->_values;
     }
 
     // ArrayAccess methods
+
+    /**
+     * @return void
+     */
+    #[\ReturnTypeWillChange]
     public function offsetSet($k, $v)
     {
         $this->{$k} = $v;
     }
 
+    /**
+     * @return bool
+     */
+    #[\ReturnTypeWillChange]
     public function offsetExists($k)
     {
         return \array_key_exists($k, $this->_values);
     }
 
+    /**
+     * @return void
+     */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($k)
     {
         unset($this->{$k});
     }
 
+    /**
+     * @return mixed
+     */
+    #[\ReturnTypeWillChange]
     public function offsetGet($k)
     {
         return \array_key_exists($k, $this->_values) ? $this->_values[$k] : null;
     }
 
-    // Countable method
+    /**
+     * @return int
+     */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return \count($this->_values);
@@ -343,14 +372,12 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
 
         // a `null` that makes it out of `serializeParamsValue` signals an empty
         // value that we shouldn't appear in the serialized form of the object
-        $updateParams = \array_filter(
+        return \array_filter(
             $updateParams,
             function ($v) {
                 return null !== $v;
             }
         );
-
-        return $updateParams;
     }
 
     public function serializeParamsValue($value, $original, $unsaved, $force, $key = null)
@@ -399,7 +426,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
                 // Sequential array, i.e. a list
                 $update = [];
                 foreach ($value as $v) {
-                    \array_push($update, $this->serializeParamsValue($v, null, true, $force));
+                    $update[] = $this->serializeParamsValue($v, null, true, $force);
                 }
                 // This prevents an array that's unchanged from being resent.
                 if ($update !== $this->serializeParamsValue($original, null, true, $force, $key)) {
@@ -421,6 +448,10 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         }
     }
 
+    /**
+     * @return mixed
+     */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return $this->toArray();
@@ -469,7 +500,7 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
 
     public function __toString()
     {
-        $class = \get_class($this);
+        $class = static::class;
 
         return $class . ' JSON: ' . $this->toJSON();
     }

@@ -1,4 +1,7 @@
 <phpunit bootstrap="tests/bootstrap.no_autoload.php" colors="true">
+    <php>
+      <env name="IS_RUNNING_PHPUNIT" value="true"/>
+    </php>
     <testsuites>
         <testsuite name="Stripe PHP Test Suite">
             <directory suffix="Test.php">tests</directory>

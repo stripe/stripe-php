@@ -6,14 +6,14 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\StripeObject
  */
-final class StripeObjectTest extends \PHPUnit\Framework\TestCase
+final class StripeObjectTest extends \Stripe\TestCase
 {
     use TestHelper;
 
     /** @var \ReflectionMethod */
     private $deepCopyReflector;
 
-    /** @var \ReflectionMethod */
+    /** @var \ReflectionProperty */
     private $optsReflector;
 
     /**
@@ -107,7 +107,7 @@ final class StripeObjectTest extends \PHPUnit\Framework\TestCase
 
         $converted = $s->toArray();
 
-        static::assertInternalType('array', $converted);
+        static::compatAssertIsArray($converted);
         static::assertSame($array, $converted);
     }
 
@@ -144,7 +144,7 @@ final class StripeObjectTest extends \PHPUnit\Framework\TestCase
             $s = new StripeObject();
             static::assertNull($s->nonexistent);
 
-            static::assertRegExp(
+            static::compatAssertMatchesRegularExpression(
                 '/Stripe Notice: Undefined property of Stripe\\\\StripeObject instance: nonexistent/',
                 \stream_get_contents($capture)
             );

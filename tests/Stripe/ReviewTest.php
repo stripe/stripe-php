@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Review
  */
-final class ReviewTest extends \PHPUnit\Framework\TestCase
+final class ReviewTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -30,7 +30,7 @@ final class ReviewTest extends \PHPUnit\Framework\TestCase
             '/v1/reviews'
         );
         $resources = Review::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Review::class, $resources->data[0]);
     }
 

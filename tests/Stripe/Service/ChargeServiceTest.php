@@ -6,7 +6,7 @@ namespace Stripe\Service;
  * @internal
  * @covers \Stripe\Service\ChargeService
  */
-final class ChargeServiceTest extends \PHPUnit\Framework\TestCase
+final class ChargeServiceTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -34,7 +34,19 @@ final class ChargeServiceTest extends \PHPUnit\Framework\TestCase
             '/v1/charges'
         );
         $resources = $this->service->all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
+        static::assertInstanceOf(\Stripe\Charge::class, $resources->data[0]);
+    }
+
+    public function testSearch()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/charges/search'
+        );
+        $resources = $this->service->search(['query' => 'currency:"USD"']);
+        static::compatAssertIsArray($resources->data);
+        static::assertSame(1, $resources->total_count);
         static::assertInstanceOf(\Stripe\Charge::class, $resources->data[0]);
     }
 

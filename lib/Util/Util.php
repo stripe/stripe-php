@@ -23,7 +23,7 @@ abstract class Util
         if (!\is_array($array)) {
             return false;
         }
-        if ($array === []) {
+        if ([] === $array) {
             return true;
         }
         if (\array_keys($array) !== \range(0, \count($array) - 1)) {
@@ -47,7 +47,7 @@ abstract class Util
         if (self::isList($resp)) {
             $mapped = [];
             foreach ($resp as $i) {
-                \array_push($mapped, self::convertToStripeObject($i, $opts));
+                $mapped[] = self::convertToStripeObject($i, $opts);
             }
 
             return $mapped;
@@ -138,7 +138,7 @@ abstract class Util
         if (static::isList($h)) {
             $results = [];
             foreach ($h as $v) {
-                \array_push($results, static::objectsToIds($v));
+                $results[] = static::objectsToIds($v);
             }
 
             return $results;
@@ -169,7 +169,7 @@ abstract class Util
         $pieces = [];
         foreach ($flattenedParams as $param) {
             list($k, $v) = $param;
-            \array_push($pieces, self::urlEncode($k) . '=' . self::urlEncode($v));
+            $pieces[] = self::urlEncode($k) . '=' . self::urlEncode($v);
         }
 
         return \implode('&', $pieces);

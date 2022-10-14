@@ -6,7 +6,7 @@ namespace Stripe;
  * @internal
  * @covers \Stripe\Plan
  */
-final class PlanTest extends \PHPUnit\Framework\TestCase
+final class PlanTest extends \Stripe\TestCase
 {
     use TestHelper;
 
@@ -19,7 +19,7 @@ final class PlanTest extends \PHPUnit\Framework\TestCase
             '/v1/plans'
         );
         $resources = Plan::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Plan::class, $resources->data[0]);
     }
 

@@ -6,7 +6,7 @@ namespace Stripe\Terminal;
  * @internal
  * @covers \Stripe\Terminal\Reader
  */
-final class ReaderTest extends \PHPUnit\Framework\TestCase
+final class ReaderTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
@@ -19,7 +19,7 @@ final class ReaderTest extends \PHPUnit\Framework\TestCase
             '/v1/terminal/readers'
         );
         $resources = Reader::all();
-        static::assertInternalType('array', $resources->data);
+        static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resources->data[0]);
     }
 
