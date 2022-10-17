@@ -1,5 +1,48 @@
 # Changelog
 
+## 9.7.0 - 2022-10-13
+* [#1376](https://github.com/stripe/stripe-php/pull/1376) API Updates
+  * Add support for `network_data` on `Issuing.Authorization`
+* [#1374](https://github.com/stripe/stripe-php/pull/1374) Add request_log_url on ErrorObject
+* [#1370](https://github.com/stripe/stripe-php/pull/1370) API Updates
+  * Add support for `created` on `Checkout.Session`
+
+## 9.6.0 - 2022-09-15
+* [#1365](https://github.com/stripe/stripe-php/pull/1365) API Updates
+  * Add support for `from_invoice` and `latest_revision` on `Invoice`
+  * Add support for new value `pix` on enum `PaymentLink.payment_method_types[]`
+  * Add support for `pix` on `PaymentMethod`
+  * Add support for new value `pix` on enum `PaymentMethod.type`
+  * Add support for `created` on `Treasury.CreditReversal` and `Treasury.DebitReversal`
+
+## 9.5.0 - 2022-09-06
+* [#1364](https://github.com/stripe/stripe-php/pull/1364) API Updates
+  * Add support for new value `terminal_reader_splashscreen` on enum `File.purpose`
+* [#1363](https://github.com/stripe/stripe-php/pull/1363) chore: Update PHP tests to handle search methods.
+
+## 9.4.0 - 2022-08-26
+* [#1362](https://github.com/stripe/stripe-php/pull/1362) API Updates
+  * Add support for `login_page` on `BillingPortal.Configuration`
+* [#1360](https://github.com/stripe/stripe-php/pull/1360) Add test coverage using Coveralls
+* [#1361](https://github.com/stripe/stripe-php/pull/1361) fix: Fix type hints for error objects.
+  * Update `Invoice.last_finalization_error`, `PaymentIntent.last_payment_error`, `SetupAttempt.setup_error` and `SetupIntent.setup_error` type to be `StripeObject`.
+    * Addresses https://github.com/stripe/stripe-php/issues/1353. The library today does not actually return a `ErrorObject` for these fields, so the type annotation was incorrect.  
+* [#1356](https://github.com/stripe/stripe-php/pull/1356) Add beta readme.md section
+
+## 9.3.0 - 2022-08-23
+* [#1355](https://github.com/stripe/stripe-php/pull/1355) API Updates
+  * Change type of `Treasury.OutboundTransfer.destination_payment_method` from `string` to `string | null`
+  * Change the return type of `CustomerService.fundCashBalance` test helper from `CustomerBalanceTransaction` to `CustomerCashBalanceTransaction`.
+    * This would generally be considered a breaking change, but we've worked with all existing users to migrate and are comfortable releasing this as a minor as it is solely a test helper method. This was essentially broken prior to this change. 
+
+## 9.2.0 - 2022-08-19
+* [#1352](https://github.com/stripe/stripe-php/pull/1352) API Updates
+  * Add support for new resource `CustomerCashBalanceTransaction`
+  * Add support for `currency` on `PaymentLink`
+  * Add constant for `customer_cash_balance_transaction.created` webhook event.
+* [#1351](https://github.com/stripe/stripe-php/pull/1351) Add a support section to the readme
+* [#1304](https://github.com/stripe/stripe-php/pull/1304) Allow passing PSR-3 loggers to setLogger as they are compatible
+
 ## 9.1.0 - 2022-08-11
 * [#1348](https://github.com/stripe/stripe-php/pull/1348) API Updates
   * Add support for `payment_method_collection` on `Checkout.Session` and `PaymentLink`

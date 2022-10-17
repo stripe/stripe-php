@@ -23,7 +23,7 @@ namespace Stripe\Treasury;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
- * @property string $destination_payment_method The PaymentMethod used as the payment instrument for an OutboundTransfer.
+ * @property null|string $destination_payment_method The PaymentMethod used as the payment instrument for an OutboundTransfer.
  * @property \Stripe\StripeObject $destination_payment_method_details
  * @property int $expected_arrival_date The date when funds are expected to arrive in the destination account.
  * @property string $financial_account The FinancialAccount that funds were pulled from.

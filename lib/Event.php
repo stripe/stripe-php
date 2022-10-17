@@ -117,6 +117,7 @@ class Event extends ApiResource
     const CUSTOMER_TAX_ID_DELETED = 'customer.tax_id.deleted';
     const CUSTOMER_TAX_ID_UPDATED = 'customer.tax_id.updated';
     const CUSTOMER_UPDATED = 'customer.updated';
+    const CUSTOMER_CASH_BALANCE_TRANSACTION_CREATED = 'customer_cash_balance_transaction.created';
     const FILE_CREATED = 'file.created';
     const FINANCIAL_CONNECTIONS_ACCOUNT_CREATED = 'financial_connections.account.created';
     const FINANCIAL_CONNECTIONS_ACCOUNT_DEACTIVATED = 'financial_connections.account.deactivated';

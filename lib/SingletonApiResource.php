@@ -7,15 +7,6 @@ namespace Stripe;
  */
 abstract class SingletonApiResource extends ApiResource
 {
-    protected static function _singletonRetrieve($options = null)
-    {
-        $opts = Util\RequestOptions::parse($options);
-        $instance = new static(null, $opts);
-        $instance->refresh();
-
-        return $instance;
-    }
-
     /**
      * @return string the endpoint associated with this singleton class
      */

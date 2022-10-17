@@ -20,8 +20,8 @@ namespace Stripe\Checkout;
  * You can create a Checkout Session on your server and pass its ID to the client
  * to begin Checkout.
  *
- * Related guide: <a href="https://stripe.com/docs/payments/checkout/api">Checkout
- * Server Quickstart</a>.
+ * Related guide: <a href="https://stripe.com/docs/checkout/quickstart">Checkout
+ * Quickstart</a>.
  *
  * @property string $id Unique identifier for the object. Used to pass to <code>redirectToCheckout</code> in Stripe.js.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -35,6 +35,7 @@ namespace Stripe\Checkout;
  * @property null|string $client_reference_id A unique string to reference the Checkout Session. This can be a customer ID, a cart ID, or similar, and can be used to reconcile the Session with your internal systems.
  * @property null|\Stripe\StripeObject $consent Results of <code>consent_collection</code> for this session.
  * @property null|\Stripe\StripeObject $consent_collection When set, provides configuration for the Checkout Session to gather active consent from customers.
+ * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string|\Stripe\Customer $customer The ID of the customer for this Session. For Checkout Sessions in <code>payment</code> or <code>subscription</code> mode, Checkout will create a new customer object based on information provided during the payment flow unless an existing customer was provided when the Session was created.
  * @property null|string $customer_creation Configure whether a Checkout Session creates a Customer when the Checkout Session completes.
@@ -65,7 +66,7 @@ namespace Stripe\Checkout;
  * @property string $success_url The URL the customer will be directed to after the payment or subscription creation is successful.
  * @property \Stripe\StripeObject $tax_id_collection
  * @property null|\Stripe\StripeObject $total_details Tax and discount details for the computed total amount.
- * @property null|string $url The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout. If you’re using <a href="https://stripe.com/docs/payments/checkout/custom-domains">Custom Domains</a>, the URL will use your subdomain. Otherwise, it’ll use <code>checkout.stripe.com.</code>
+ * @property null|string $url The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout. If you’re using <a href="https://stripe.com/docs/payments/checkout/custom-domains">Custom Domains</a>, the URL will use your subdomain. Otherwise, it’ll use <code>checkout.stripe.com.</code> This value is only present when the session is active.
  */
 class Session extends \Stripe\ApiResource
 {
