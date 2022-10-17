@@ -138,7 +138,7 @@ jobs:
 
       - name: Coveralls
         run: vendor/bin/php-coveralls -v --coverage_clover='clover.xml' --json_path='coveralls-upload.json'
-        if: matrix.php-version == '8.1' && matrix.env == 'AUTOLOAD=1'
+        if: env.COVERALLS_REPO_TOKEN && matrix.php-version == '8.1' && matrix.env == 'AUTOLOAD=1'
         env:
           COVERALLS_RUN_LOCALLY: 1
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
