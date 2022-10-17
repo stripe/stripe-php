@@ -27,12 +27,14 @@ namespace Stripe;
  * @property \Stripe\StripeObject $automatic_tax
  * @property string $billing_address_collection Configuration for collecting the customer's billing address.
  * @property null|\Stripe\StripeObject $consent_collection When set, provides configuration to gather active consent from customers.
+ * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property string $customer_creation Configuration for Customer creation during checkout.
  * @property \Stripe\Collection<\Stripe\LineItem> $line_items The line items representing what is being sold.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string|\Stripe\Account $on_behalf_of The account on behalf of which to charge. See the <a href="https://support.stripe.com/questions/sending-invoices-on-behalf-of-connected-accounts">Connect documentation</a> for details.
  * @property null|\Stripe\StripeObject $payment_intent_data Indicates the parameters to be passed to PaymentIntent creation during checkout.
+ * @property string $payment_method_collection Configuration for collecting a payment method during checkout.
  * @property null|string[] $payment_method_types The list of payment method types that customers can use. When <code>null</code>, Stripe will dynamically show relevant payment methods you've enabled in your <a href="https://dashboard.stripe.com/settings/payment_methods">payment method settings</a>.
  * @property \Stripe\StripeObject $phone_number_collection
  * @property null|\Stripe\StripeObject $shipping_address_collection Configuration for collecting the customer's shipping address.
@@ -58,15 +60,18 @@ class PaymentLink extends ApiResource
     const CUSTOMER_CREATION_ALWAYS = 'always';
     const CUSTOMER_CREATION_IF_REQUIRED = 'if_required';
 
+    const PAYMENT_METHOD_COLLECTION_ALWAYS = 'always';
+    const PAYMENT_METHOD_COLLECTION_IF_REQUIRED = 'if_required';
+
     const SUBMIT_TYPE_AUTO = 'auto';
     const SUBMIT_TYPE_BOOK = 'book';
     const SUBMIT_TYPE_DONATE = 'donate';
     const SUBMIT_TYPE_PAY = 'pay';
 
     /**
+     * @param string $id
      * @param null|array $params
      * @param null|array|string $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

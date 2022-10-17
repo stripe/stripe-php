@@ -19,12 +19,14 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property \Stripe\StripeObject $acss_debit
+ * @property \Stripe\StripeObject $affirm
  * @property \Stripe\StripeObject $afterpay_clearpay
  * @property \Stripe\StripeObject $alipay
  * @property \Stripe\StripeObject $au_becs_debit
  * @property \Stripe\StripeObject $bacs_debit
  * @property \Stripe\StripeObject $bancontact
  * @property \Stripe\StripeObject $billing_details
+ * @property \Stripe\StripeObject $blik
  * @property \Stripe\StripeObject $boleto
  * @property \Stripe\StripeObject $card
  * @property \Stripe\StripeObject $card_present
@@ -39,11 +41,15 @@ namespace Stripe;
  * @property \Stripe\StripeObject $interac_present
  * @property \Stripe\StripeObject $klarna
  * @property \Stripe\StripeObject $konbini
+ * @property \Stripe\StripeObject $link
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property \Stripe\StripeObject $oxxo
  * @property \Stripe\StripeObject $p24
  * @property \Stripe\StripeObject $paynow
+ * @property \Stripe\StripeObject $pix
+ * @property \Stripe\StripeObject $promptpay
+ * @property \Stripe\StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
  * @property \Stripe\StripeObject $sepa_debit
  * @property \Stripe\StripeObject $sofort
  * @property string $type The type of the PaymentMethod. An additional hash is included on the PaymentMethod with a name matching this value. It contains additional information specific to the PaymentMethod type.

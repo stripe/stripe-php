@@ -58,7 +58,7 @@ class Stripe
     /** @var float Initial delay between retries, in seconds */
     private static $initialNetworkRetryDelay = 0.5;
 
-    const VERSION = '8.2.0';
+    const VERSION = '9.7.0';
 
     /**
      * @return string the API key used for requests
@@ -90,7 +90,7 @@ class Stripe
     }
 
     /**
-     * @param Util\LoggerInterface $logger the logger to which the library
+     * @param \Psr\Log\LoggerInterface|Util\LoggerInterface $logger the logger to which the library
      *   will produce messages
      */
     public static function setLogger($logger)

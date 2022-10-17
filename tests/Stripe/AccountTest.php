@@ -131,7 +131,7 @@ final class AccountTest extends \Stripe\TestCase
             'get',
             '/v1/accounts/' . $account->id . '/persons'
         );
-        $persons = $account->persons();
+        $persons = $account->allPersons(self::TEST_RESOURCE_ID);
         static::compatAssertIsArray($persons->data);
         static::assertInstanceOf(\Stripe\Person::class, $persons->data[0]);
     }

@@ -51,15 +51,6 @@ class Account extends ApiResource
     const BUSINESS_TYPE_INDIVIDUAL = 'individual';
     const BUSINESS_TYPE_NON_PROFIT = 'non_profit';
 
-    const CAPABILITY_CARD_PAYMENTS = 'card_payments';
-    const CAPABILITY_LEGACY_PAYMENTS = 'legacy_payments';
-    const CAPABILITY_PLATFORM_PAYMENTS = 'platform_payments';
-    const CAPABILITY_TRANSFERS = 'transfers';
-
-    const CAPABILITY_STATUS_ACTIVE = 'active';
-    const CAPABILITY_STATUS_INACTIVE = 'inactive';
-    const CAPABILITY_STATUS_PENDING = 'pending';
-
     const TYPE_CUSTOM = 'custom';
     const TYPE_EXPRESS = 'express';
     const TYPE_STANDARD = 'standard';
@@ -88,6 +79,25 @@ class Account extends ApiResource
         }
 
         return parent::instanceUrl();
+    }
+
+    /**
+     * @param null|array|string $id the ID of the account to retrieve, or an
+     *     options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Account
+     */
+    public static function retrieve($id = null, $opts = null)
+    {
+        if (!$opts && \is_string($id) && 'sk_' === \substr($id, 0, 3)) {
+            $opts = $id;
+            $id = null;
+        }
+
+        return self::_retrieve($id, $opts);
     }
 
     public function serializeParameters($force = false)
@@ -142,25 +152,6 @@ class Account extends ApiResource
     }
 
     /**
-     * @param null|array|string $id the ID of the account to retrieve, or an
-     *     options array containing an `id` key
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Account
-     */
-    public static function retrieve($id = null, $opts = null)
-    {
-        if (!$opts && \is_string($id) && 'sk_' === \substr($id, 0, 3)) {
-            $opts = $id;
-            $id = null;
-        }
-
-        return self::_retrieve($id, $opts);
-    }
-
-    /**
      * @param null|array $clientId
      * @param null|array|string $opts
      *
@@ -184,24 +175,6 @@ class Account extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\Person> the list of persons
-     */
-    public function persons($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/persons';
-        list($response, $opts) = $this->_request('get', $url, $params, $opts);
-        $obj = Util\Util::convertToStripeObject($response, $opts);
-        $obj->setLastResponse($response);
-
-        return $obj;
-    }
-
-    /**
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Account the rejected account
      */
     public function reject($params = null, $opts = null)
@@ -212,12 +185,6 @@ class Account extends ApiResource
 
         return $this;
     }
-
-    /*
-     * Capabilities methods
-     * We can not add the capabilities() method today as the Account object already has a
-     * capabilities property which is a hash and not the sub-list of capabilities.
-     */
 
     const PATH_CAPABILITIES = '/capabilities';
 

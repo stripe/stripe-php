@@ -23,11 +23,11 @@ namespace Stripe\Treasury;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
- * @property string $destination_payment_method The PaymentMethod used as the payment instrument for an OutboundTransfer.
+ * @property null|string $destination_payment_method The PaymentMethod used as the payment instrument for an OutboundTransfer.
  * @property \Stripe\StripeObject $destination_payment_method_details
  * @property int $expected_arrival_date The date when funds are expected to arrive in the destination account.
  * @property string $financial_account The FinancialAccount that funds were pulled from.
- * @property null|string $hosted_regulatory_receipt_url A hosted transaction receipt URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
+ * @property null|string $hosted_regulatory_receipt_url A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted transaction receipt</a> URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|\Stripe\StripeObject $returned_details Details about a returned OutboundTransfer. Only set when the status is <code>returned</code>.

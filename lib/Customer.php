@@ -16,14 +16,15 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|\Stripe\StripeObject $address The customer's address.
  * @property int $balance Current balance, if any, being stored on the customer. If negative, the customer has credit to apply to their next invoice. If positive, the customer has an amount owed that will be added to their next invoice. The balance does not refer to any unpaid invoices; it solely takes into account amounts that have yet to be successfully applied to any invoice. This balance is only taken into account as invoices are finalized.
- * @property null|\Stripe\CashBalance $cash_balance The current funds being held by Stripe on behalf of the customer. These funds can be applied towards payment intents with source &quot;cash_balance&quot;.The settings[reconciliation_mode] field describes whether these funds are applied to such payment intents manually or automatically.
+ * @property null|\Stripe\CashBalance $cash_balance The current funds being held by Stripe on behalf of the customer. These funds can be applied towards payment intents with source &quot;cash_balance&quot;. The settings[reconciliation_mode] field describes whether these funds are applied to such payment intents manually or automatically.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $currency Three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a> the customer can be charged in for recurring billing purposes.
- * @property null|string|\Stripe\Account|\Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source $default_source <p>ID of the default payment source for the customer.</p><p>If you are using payment methods created via the PaymentMethods API, see the <a href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a> field instead.</p>
+ * @property null|string|\Stripe\Account|\Stripe\BankAccount|\Stripe\Card|\Stripe\Source $default_source <p>ID of the default payment source for the customer.</p><p>If you are using payment methods created via the PaymentMethods API, see the <a href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a> field instead.</p>
  * @property null|bool $delinquent <p>When the customer's latest invoice is billed by charging automatically, <code>delinquent</code> is <code>true</code> if the invoice's latest charge failed. When the customer's latest invoice is billed by sending an invoice, <code>delinquent</code> is <code>true</code> if the invoice isn't paid by its due date.</p><p>If an invoice is marked uncollectible by <a href="https://stripe.com/docs/billing/automatic-collection">dunning</a>, <code>delinquent</code> doesn't get reset to <code>false</code>.</p>
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|\Stripe\Discount $discount Describes the current discount active on the customer, if there is one.
  * @property null|string $email The customer's email address.
+ * @property \Stripe\StripeObject $invoice_credit_balance The current multi-currency balances, if any, being stored on the customer. If positive in a currency, the customer has a credit to apply to their next invoice denominated in that currency. If negative, the customer has an amount owed that will be added to their next invoice denominated in that currency. These balances do not refer to any unpaid invoices. They solely track amounts that have yet to be successfully applied to any invoice. A balance in a particular currency is only applied to any invoice as an invoice in that currency is finalized.
  * @property null|string $invoice_prefix The prefix for the customer used to generate unique invoice numbers.
  * @property \Stripe\StripeObject $invoice_settings
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
@@ -33,7 +34,7 @@ namespace Stripe;
  * @property null|string $phone The customer's phone number.
  * @property null|string[] $preferred_locales The customer's preferred locales (languages), ordered by preference.
  * @property null|\Stripe\StripeObject $shipping Mailing and shipping address for the customer. Appears on invoices emailed to this customer.
- * @property \Stripe\Collection<\Stripe\Account|\Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source> $sources The customer's payment sources, if any.
+ * @property \Stripe\Collection<\Stripe\Account|\Stripe\BankAccount|\Stripe\Card|\Stripe\Source> $sources The customer's payment sources, if any.
  * @property \Stripe\Collection<\Stripe\Subscription> $subscriptions The customer's current subscriptions, if any.
  * @property \Stripe\StripeObject $tax
  * @property null|string $tax_exempt Describes the customer's tax exemption status. One of <code>none</code>, <code>exempt</code>, or <code>reverse</code>. When set to <code>reverse</code>, invoice and receipt PDFs include the text <strong>&quot;Reverse charge&quot;</strong>.
@@ -84,9 +85,9 @@ class Customer extends ApiResource
     }
 
     /**
+     * @param string $id
      * @param null|array $params
      * @param null|array|string $opts
-     * @param mixed $id
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -226,6 +227,36 @@ class Customer extends ApiResource
     {
         return self::_updateNestedResource($id, static::PATH_BALANCE_TRANSACTIONS, $balanceTransactionId, $params, $opts);
     }
+    const PATH_CASH_BALANCE_TRANSACTIONS = '/cash_balance_transactions';
+
+    /**
+     * @param string $id the ID of the customer on which to retrieve the customer cash balance transactions
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\CustomerCashBalanceTransaction> the list of customer cash balance transactions
+     */
+    public static function allCashBalanceTransactions($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_CASH_BALANCE_TRANSACTIONS, $params, $opts);
+    }
+
+    /**
+     * @param string $id the ID of the customer to which the customer cash balance transaction belongs
+     * @param string $cashBalanceTransactionId the ID of the customer cash balance transaction to retrieve
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CustomerCashBalanceTransaction
+     */
+    public static function retrieveCashBalanceTransaction($id, $cashBalanceTransactionId, $params = null, $opts = null)
+    {
+        return self::_retrieveNestedResource($id, static::PATH_CASH_BALANCE_TRANSACTIONS, $cashBalanceTransactionId, $params, $opts);
+    }
     const PATH_SOURCES = '/sources';
 
     /**
@@ -235,7 +266,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source> the list of payment sources (AlipayAccount, BankAccount, BitcoinReceiver, Card or Source)
+     * @return \Stripe\Collection<\Stripe\BankAccount|\Stripe\Card|\Stripe\Source> the list of payment sources (BankAccount, Card or Source)
      */
     public static function allSources($id, $params = null, $opts = null)
     {
@@ -249,7 +280,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
+     * @return \Stripe\BankAccount|\Stripe\Card|\Stripe\Source
      */
     public static function createSource($id, $params = null, $opts = null)
     {
@@ -264,7 +295,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
+     * @return \Stripe\BankAccount|\Stripe\Card|\Stripe\Source
      */
     public static function deleteSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -279,7 +310,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
+     * @return \Stripe\BankAccount|\Stripe\Card|\Stripe\Source
      */
     public static function retrieveSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -294,7 +325,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\AlipayAccount|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
+     * @return \Stripe\BankAccount|\Stripe\Card|\Stripe\Source
      */
     public static function updateSource($id, $sourceId, $params = null, $opts = null)
     {

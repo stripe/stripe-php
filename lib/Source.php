@@ -116,37 +116,22 @@ class Source extends ApiResource
     }
 
     /**
-     * @deprecated sourceTransactions is deprecated. Please use Source::allSourceTransactions instead.
-     *
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection the list of source transactions
-     */
-    public function sourceTransactions($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/source_transactions';
-        list($response, $opts) = $this->_request('get', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response, $opts);
-        $obj->setLastResponse($response);
-
-        return $obj;
-    }
-
-    /**
      * @param string $id
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection the list of source transactions
+     * @return \Stripe\Collection<\Stripe\SourceTransaction> list of SourceTransactions
      */
     public static function allSourceTransactions($id, $params = null, $opts = null)
     {
-        return self::_allNestedResources($id, '/source_transactions', $params, $opts);
+        $url = static::resourceUrl($id) . '/source_transactions';
+        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
     }
 
     /**
