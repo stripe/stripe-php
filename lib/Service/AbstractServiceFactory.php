@@ -60,7 +60,7 @@ abstract class AbstractServiceFactory
     /**
      * Set the instance of a service that is instantiated externally
      * This is useful for the cases where a mock service is created in the tests
-     * so it can be injected to the factory
+     * so it can be injected to the factory.
      *
      * @param string $name
      * @param \Stripe\Service\AbstractService  $instance

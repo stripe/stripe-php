@@ -84,7 +84,7 @@ class StripeClient extends BaseStripeClient
     }
 
     /**
-     * Returns the factory that is used for resolving the services
+     * Returns the factory that is used for resolving the services.
      *
      * @return \Stripe\Service\CoreServiceFactory
      */
