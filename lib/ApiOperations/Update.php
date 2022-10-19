@@ -37,6 +37,8 @@ trait Update
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @return static the saved resource
+     *
+     * @deprecated The save method is deprecated and for backwards compatibility only. Use the update method with the resource ID instead.
      */
     public function save($opts = null)
     {
