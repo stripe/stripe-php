@@ -45,6 +45,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $multibanco
  * @property null|\Stripe\StripeObject $owner Information about the owner of the payment instrument that may be used or required by particular source types.
  * @property \Stripe\StripeObject $p24
+ * @property \Stripe\StripeObject $paypal
  * @property \Stripe\StripeObject $receiver
  * @property \Stripe\StripeObject $redirect
  * @property \Stripe\StripeObject $sepa_credit_transfer
