@@ -10,6 +10,12 @@ namespace Stripe;
  * API just like a <code>Card</code> object: once chargeable, they can be charged,
  * or can be attached to customers.
  *
+ * Stripe doesn't recommend using the deprecated <a
+ * href="https://stripe.com/docs/api/sources">Sources API</a>. We recommend that
+ * you adopt the <a
+ * href="https://stripe.com/docs/api/payment_methods">PaymentMethods API</a>. This
+ * newer API provides access to our latest features and payment method types.
+ *
  * Related guides: <a href="https://stripe.com/docs/sources">Sources API</a> and <a
  * href="https://stripe.com/docs/sources/customers">Sources &amp; Customers</a>.
  *
@@ -39,6 +45,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $multibanco
  * @property null|\Stripe\StripeObject $owner Information about the owner of the payment instrument that may be used or required by particular source types.
  * @property \Stripe\StripeObject $p24
+ * @property \Stripe\StripeObject $paypal
  * @property \Stripe\StripeObject $receiver
  * @property \Stripe\StripeObject $redirect
  * @property \Stripe\StripeObject $sepa_credit_transfer
