@@ -1,5 +1,12 @@
 # Changelog
 
+## 9.9.0-beta.1 - 2022-10-21
+* [#1384](https://github.com/stripe/stripe-php/pull/1384) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `network_data` on `Issuing.Transaction`
+  * Add support for `paypal` on `Source`
+  * Add support for new value `paypal` on enum `Source.type`
+
 ## 9.8.0 - 2022-10-20
 * [#1383](https://github.com/stripe/stripe-php/pull/1383) API Updates
   * Add support for new values `jp_trn` and `ke_pin` on enum `TaxId.type`
