@@ -337,7 +337,7 @@ class CustomerService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Customer
+     * @return \Stripe\PaymentMethod
      */
     public function retrievePaymentMethod($parentId, $id, $params = null, $opts = null)
     {
