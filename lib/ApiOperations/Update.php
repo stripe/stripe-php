@@ -38,7 +38,7 @@ trait Update
      *
      * @return static the saved resource
      *
-     * @deprecated The save method is deprecated and for backwards compatibility only. Use the update method with the resource ID instead.
+     * @deprecated The `save` method is deprecated and will be removed in future major version of the library. Use the static method `update` on the resource instead.
      */
     public function save($opts = null)
     {
