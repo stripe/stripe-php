@@ -76,7 +76,8 @@ class StripeClient extends BaseStripeClient
 
     /**
      * @param $name
-     * @return Service\AbstractService|Service\AbstractServiceFactory|null
+     *
+     * @return null|Service\AbstractService|Service\AbstractServiceFactory
      */
     public function __get($name)
     {
@@ -85,7 +86,8 @@ class StripeClient extends BaseStripeClient
 
     /**
      * @param $name
-     * @return Service\AbstractService|Service\AbstractServiceFactory|null
+     *
+     * @return null|Service\AbstractService|Service\AbstractServiceFactory
      */
     public function getService($name)
     {
