@@ -46,6 +46,11 @@ abstract class AbstractServiceFactory
         return $this->getService($name);
     }
 
+    /**
+     * @param string $name
+     *
+     * @return null|AbstractService|AbstractServiceFactory
+     */
     public function getService($name)
     {
         $serviceClass = $this->getServiceClass($name);
