@@ -1,6 +1,7 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__)
     ->notPath('tests/TestCase.php');
 
 $config = new PhpCsFixer\Config();
