@@ -19,6 +19,8 @@ namespace Stripe\Capital;
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property \Stripe\StripeObject $offered_terms This is an object representing the terms of an offer of financing from Stripe Capital to a Connected account. This resource represents both the terms offered to the Connected account.
  * @property string $product_type Financing product identifier.
+ * @property string $replacement The ID of the financing offer that replaced this offer.
+ * @property string $replacement_for The ID of the financing offer that this offer is a replacement for.
  * @property string $status The current status of the offer.
  * @property string $type See <a href="https://stripe.com/docs/api/capital/connect_financing_object#financing_offer_object-financing_type">financing_type</a>.
  */
@@ -43,6 +45,7 @@ class FinancingOffer extends \Stripe\ApiResource
     const STATUS_FULLY_REPAID = 'fully_repaid';
     const STATUS_PAID_OUT = 'paid_out';
     const STATUS_REJECTED = 'rejected';
+    const STATUS_REPLACED = 'replaced';
     const STATUS_UNDELIVERED = 'undelivered';
 
     const TYPE_CASH_ADVANCE = 'cash_advance';

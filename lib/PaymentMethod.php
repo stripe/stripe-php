@@ -30,6 +30,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $boleto
  * @property \Stripe\StripeObject $card
  * @property \Stripe\StripeObject $card_present
+ * @property \Stripe\StripeObject $cashapp
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string|\Stripe\Customer $customer The ID of the Customer to which this PaymentMethod is saved. This will not be set when the PaymentMethod has not been saved to a Customer.
  * @property \Stripe\StripeObject $customer_balance
@@ -56,6 +57,7 @@ namespace Stripe;
  * @property string $type The type of the PaymentMethod. An additional hash is included on the PaymentMethod with a name matching this value. It contains additional information specific to the PaymentMethod type.
  * @property \Stripe\StripeObject $us_bank_account
  * @property \Stripe\StripeObject $wechat_pay
+ * @property \Stripe\StripeObject $zip
  */
 class PaymentMethod extends ApiResource
 {
