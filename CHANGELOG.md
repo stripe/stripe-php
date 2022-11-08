@@ -1,5 +1,25 @@
 # Changelog
 
+## 9.9.0 - 2022-11-08
+* [#1394](https://github.com/stripe/stripe-php/pull/1394) API Updates
+  * Add support for new values `eg_tin`, `ph_tin`, and `tr_tin` on enum `TaxId.type`
+* [#1389](https://github.com/stripe/stripe-php/pull/1389) API Updates
+  * Add support for `on_behalf_of` on `Subscription`
+* [#1379](https://github.com/stripe/stripe-php/pull/1379) Do not run Coveralls in PR-s
+
+## 9.8.0 - 2022-10-20
+* [#1383](https://github.com/stripe/stripe-php/pull/1383) API Updates
+  * Add support for new values `jp_trn` and `ke_pin` on enum `TaxId.type`
+* [#1293](https://github.com/stripe/stripe-php/pull/1293) Install deps in the install step of CI
+* [#1291](https://github.com/stripe/stripe-php/pull/1291) Fix: Configure finder for `friendsofphp/php-cs-fixer`
+
+## 9.7.0 - 2022-10-13
+* [#1376](https://github.com/stripe/stripe-php/pull/1376) API Updates
+  * Add support for `network_data` on `Issuing.Authorization`
+* [#1374](https://github.com/stripe/stripe-php/pull/1374) Add request_log_url on ErrorObject
+* [#1370](https://github.com/stripe/stripe-php/pull/1370) API Updates
+  * Add support for `created` on `Checkout.Session`
+
 ## 9.6.0 - 2022-09-15
 * [#1365](https://github.com/stripe/stripe-php/pull/1365) API Updates
   * Add support for `from_invoice` and `latest_revision` on `Invoice`
