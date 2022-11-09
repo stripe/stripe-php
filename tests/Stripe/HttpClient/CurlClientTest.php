@@ -387,7 +387,7 @@ final class CurlClientTest extends \Stripe\TestCase
         $serverCode = <<<'EOF'
 <?php
 http_response_code(500);
-header("stripe-should-retry", "true");
+header("stripe-should-retry: true");
 ?>
 {}
 EOF;
