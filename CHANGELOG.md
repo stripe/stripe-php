@@ -1,5 +1,12 @@
 # Changelog
 
+## 9.9.0 - 2022-11-08
+* [#1394](https://github.com/stripe/stripe-php/pull/1394) API Updates
+  * Add support for new values `eg_tin`, `ph_tin`, and `tr_tin` on enum `TaxId.type`
+* [#1389](https://github.com/stripe/stripe-php/pull/1389) API Updates
+  * Add support for `on_behalf_of` on `Subscription`
+* [#1379](https://github.com/stripe/stripe-php/pull/1379) Do not run Coveralls in PR-s
+
 ## 9.9.0-beta.2 - 2022-11-02
 * [#1390](https://github.com/stripe/stripe-php/pull/1390) API Updates for beta branch
   * Updated beta APIs to the latest stable version
