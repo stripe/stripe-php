@@ -1,5 +1,34 @@
 # Changelog
 
+## 10.0.0 - 2022-11-16
+* [#1392](https://github.com/stripe/stripe-php/pull/1392) Next major release changes
+
+Breaking changes that arose during code generation of the library that we postponed for the next major version. For changes to the Stripe products, read more at https://stripe.com/docs/upgrades#2022-11-15.
+
+"⚠️" symbol highlights breaking changes.
+
+### Deprecated
+* [#1382](https://github.com/stripe/stripe-php/pull/1382) Mark `resource.save` as deprecated. Prefer the static update method that doesn't require retrieval of the resource to update it.
+```PHP
+// before
+$resource = Price::retrieve(self::TEST_RESOURCE_ID);
+$resource->metadata['key'] = 'value';
+$resource->save();
+
+// after
+$resource = Price::update('price_123', [
+    'metadata' => ['key' => 'value'],
+]);
+```
+
+### ⚠️ Removed
+- [#1377](https://github.com/stripe/stripe-php/pull/1377) Removed deprecated `Sku` resource and service 
+- [#1375](https://github.com/stripe/stripe-php/pull/1375) Removed deprecated `Orders` resource and service 
+- [#1375](https://github.com/stripe/stripe-php/pull/1375) Removed deprecated `Product` field from the `LineItem` 
+- [#1388](https://github.com/stripe/stripe-php/pull/1388) Removed deprecated `AlipayAccount` resource 
+- [#1396](https://github.com/stripe/stripe-php/pull/1396) Removed `charges` field on `PaymentIntent` and replace it with `latest_charge`. 
+
+
 ## 9.9.0 - 2022-11-08
 * [#1394](https://github.com/stripe/stripe-php/pull/1394) API Updates
   * Add support for new values `eg_tin`, `ph_tin`, and `tr_tin` on enum `TaxId.type`
