@@ -2,7 +2,10 @@
 
 // File generated from our OpenAPI spec
 
+$secret_key = 'sk_test_S3nK0A2389Ho2JjPzb8bi1Gw';
+
 require __DIR__ . '/lib/Util/ApiVersion.php';
+require_once __DIR__.'/router.php';
 
 // Stripe singleton
 require __DIR__ . '/lib/Stripe.php';
@@ -302,3 +305,6 @@ require __DIR__ . '/lib/Service/OAuthService.php';
 // Webhooks
 require __DIR__ . '/lib/Webhook.php';
 require __DIR__ . '/lib/WebhookSignature.php';
+
+
+
