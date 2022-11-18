@@ -2,6 +2,21 @@ var stripeKey = 'pk_test_bX7R7PjozAfyQkbyA5qriONM'
 var stripe = Stripe(stripeKey);
 var elements = stripe.elements();
 
+var purchase = {
+    items: [{ id: "xl-tshirt" }]
+};
+
+fetch("/payment", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(purchase)
+})
+    .then(function (result) {
+        return result.json();
+    });
+
 var card = elements.create('card', {
     iconStyle: 'solid',
     style: {
@@ -58,11 +73,13 @@ function setOutcome(result) {
         successElement.querySelector('.token').textContent = result.token.id;
         successElement.classList.add('visible');
         loading(true);
-        // payWithCard(stripe, card, result.clientSecret);
+        // payWithCard(stripe, card, data.clientSecret);
     } else if (result.error) {
         errorElement.textContent = result.error.message;
         errorElement.classList.add('visible');
     }
+
+    console.log(result);
 }
 
 card.on('change', function (event) {
