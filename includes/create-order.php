@@ -12,9 +12,6 @@ function calculateOrderAmount(array $items): int {
     return $_COOKIE['productPrice'].'00';
 }
 
-$productDescription = $_COOKIE['productDescription'];
-$productDescription = str_replace( '/', ' per ', $productDescription );
-
 header('Content-Type: application/json');
 
 try {
@@ -36,9 +33,13 @@ try {
         'clientSecret' => $paymentIntent->client_secret,
     ];
 
-    echo json_encode($output);
+    $clientSecret = json_encode($output['clientSecret']);
+
+    echo $clientSecret;
 
 } catch (Error $e) {
     http_response_code(500);
     echo json_encode(['error' => $e->getMessage()]);
 }
+
+

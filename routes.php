@@ -70,7 +70,8 @@ post('/select-plan', function(){
 
 post('/order', 'views/order.php');
 post('/payment', 'includes/create-order.php');
-get('/payment', 'includes/create-order.php');
+// get('/payment', 'includes/create-order.php');
+get('/confirm', 'includes/confirm-payment.php');
 
 // ##################################################
 // ##################################################

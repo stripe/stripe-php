@@ -1,21 +1,27 @@
-var stripeKey = 'pk_test_bX7R7PjozAfyQkbyA5qriONM'
+var stripeKey = 'pk_test_bX7R7PjozAfyQkbyA5qriONM';
 var stripe = Stripe(stripeKey);
 var elements = stripe.elements();
+var url = '/payment';
 
 var purchase = {
-    items: [{ id: "xl-tshirt" }]
+    items: [{ id: "" }]
 };
 
-fetch("/payment", {
+var data = fetch(url, {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
     },
     body: JSON.stringify(purchase)
-})
-    .then(function (result) {
-        return result.json();
-    });
+}).then(function (result) {
+    return result.json().then(data => ({
+        clientSecret: data,
+        status: result.status
+    }))
+}).then(result => {
+    return result.clientSecret;
+});
+
 
 var card = elements.create('card', {
     iconStyle: 'solid',
@@ -73,13 +79,14 @@ function setOutcome(result) {
         successElement.querySelector('.token').textContent = result.token.id;
         successElement.classList.add('visible');
         loading(true);
-        // payWithCard(stripe, card, data.clientSecret);
+        // payWithCard(stripe, card, d.clientSecret);
     } else if (result.error) {
         errorElement.textContent = result.error.message;
         errorElement.classList.add('visible');
     }
 
-    console.log(result);
+    // console.log(result);
+    console.log(data);
 }
 
 card.on('change', function (event) {
@@ -93,6 +100,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
         name: form.querySelector('input[name=cardholder-name]').value,
     };
     stripe.createToken(card, extraDetails).then(setOutcome);
+
 });
 
 // Show a spinner on payment submission
@@ -114,12 +122,12 @@ var loading = function (isLoading) {
 // prompt the user to enter authentication details without leaving your page.
 var payWithCard = function (stripe, card, clientSecret) {
     loading(true);
-    stripe
-        .confirmCardPayment(clientSecret, {
-            payment_method: {
-                card: card
-            }
-        })
+    stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+            card: card
+        },
+        return_url: 'https://example.com/return_url',
+    })
         .then(function (result) {
             if (result.error) {
                 // Show error to your customer
@@ -129,6 +137,8 @@ var payWithCard = function (stripe, card, clientSecret) {
                 orderComplete(result.paymentIntent.id);
             }
         });
+
+
 };
 
 /* ------- UI helpers ------- */
@@ -156,3 +166,6 @@ var showError = function (errorMsgText) {
     }, 4000);
 };
 
+
+
+// payWithCard(stripe, card, data.clientSecret);
