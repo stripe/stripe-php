@@ -1,10 +1,10 @@
-<?php __getHeader(); 
+<?php __getHeader();
 
 $index = basename(__FILE__);
 
 ?>
 
-<div class="container mx-auto pt-5"  style="width:460px;">
+<div class="container mx-auto pt-5 minimalWidth">
 <form method="POST" action="select-plan" class="needs-validation" novalidate>
   <div class="form-group mb-3">
   <h1 class="mb-3">The Content Retreat</h1>

@@ -12,7 +12,12 @@
 
 get('/', 'views/create-customer.php');
 get('/select-plan', 'views/plan.php');
+get('/checkout', 'views/checkout.php');
+get('/order', 'views/order.php');
+get('/success', 'views/success.php');
 get('/end-session', 'views/end-session.php');
+get('/assets/css/addons.css', 'assets/css/addons.php');
+get('/assets/js/addons.js', 'assets/js/addons.php');
 
 // Dynamic GET. Example with 1 variable
 // The $id will be available in user.php
@@ -31,8 +36,10 @@ get('/user/$name/$last_name', 'views/full_name.php');
 get('/product/$type/color/$color', 'product.php');
 
 // A route with a callback
-get('/callback', function(){
+get('/callback', function ( ) {
+
   echo 'Callback executed';
+
 });
 
 // A route with a callback passing a variable
@@ -49,16 +56,21 @@ get('/callback/$name/$last_name', function($name, $last_name){
   echo "Callback executed. The full name is $name $last_name";
 });
 
+// POST
 // Create Customer
 post('/select-plan', function(){
-    
+
   global $secret_key;
-  
+
   require_once('includes/create-customer.php');
 
   require_once('views/plan.php');
 
 });
+
+post('/order', 'views/order.php');
+post('/payment', 'includes/create-order.php');
+
 // ##################################################
 // ##################################################
 // ##################################################

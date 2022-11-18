@@ -33,6 +33,7 @@ $productName = $product_name;
 
 setcookie('customerID', $customer->id, time()+60*60*24, '/');
 setcookie('customerEmail', $customer->email, time()+60*60*24, '/');
+setcookie('customerDetails', $customer->description, time()+60*60*24, '/');
 setcookie('productName', $product_name, time()+60*60*24, '/');
 
 $customerID = $_COOKIE['customerID'];
