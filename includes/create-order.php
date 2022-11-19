@@ -29,11 +29,20 @@ try {
         ],
     ]);
 
+    // Create Subscription
+
+    // $stripe->subscriptions->create([
+    //     'customer' => $customerID,
+    //     'items' => [
+    //     ['price' => 'price_1M2fFLCwnHW6CxPBawfu2tEI'],
+    //     ],
+    // ]);
+
     $output = [
         'clientSecret' => $paymentIntent->client_secret,
     ];
 
-    $clientSecret = json_encode($output['clientSecret']);
+    $clientSecret = json_encode($output);
 
     echo $clientSecret;
 

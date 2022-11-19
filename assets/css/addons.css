@@ -181,3 +181,7 @@ button:disabled {
     font-weight: 500;
     font-size: 15px;
 }
+
+.orderCompletedIcon {
+    text-align: center;
+}

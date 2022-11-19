@@ -16,6 +16,7 @@ get('/checkout', 'views/checkout.php');
 get('/order', 'views/order.php');
 get('/success', 'views/success.php');
 get('/end-session', 'views/end-session.php');
+get('/order-complete', 'views/order-complete.php');
 get('/assets/css/addons.css', 'assets/css/addons.php');
 get('/assets/js/addons.js', 'assets/js/addons.php');
 

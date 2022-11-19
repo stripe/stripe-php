@@ -1,4 +1,5 @@
 <?php
+
 __getHeader();
 
 if(!isset($_COOKIE['productPrice'])){
@@ -58,9 +59,9 @@ if(!isset($productPrice) || !isset($productDescription) ){
 
 
       <div class="outcome">
-      <div class="error" role="alert"></div>
-      <div class="success">Success! Your Stripe token is <span class="token"></span>
-      </div>
+      <div class="error" role="alert" id="card-error"></div>
+      <div class="success">Success! Your Stripe token is <span class="token"></span></div>
+      <div class="hidden result-message"><a>Order Completed</a></div>
 
 
         </form>

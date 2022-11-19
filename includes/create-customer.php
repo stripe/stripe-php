@@ -1,5 +1,7 @@
 <?php
 
+require 'vendor/autoload.php';
+
 // Create Customer from Form Submission
 
 $full_name = $_POST['full_name'];
@@ -22,8 +24,6 @@ $customer = $stripe->customers->create([
 $customerEmail = $customer->email;
 $customerID = $customer->id;
 
-// var_dump($customer);
-
 // Create Subscription with customer data generated above.
 // Create session for subscription creation.
 
@@ -40,9 +40,8 @@ $customerID = $_COOKIE['customerID'];
 $customerEmail = $_COOKIE['customerEmail'];
 $productName = $_COOKIE['productName'];
 
-echo "Email: $customerEmail / Product: $productName";
-
 if(empty($customerEmail)){
     header("Location: /select-plan");
 }
+
 
