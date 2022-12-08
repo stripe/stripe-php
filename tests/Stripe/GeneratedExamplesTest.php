@@ -2874,53 +2874,6 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Sigma\ScheduledQueryRun::class, $result);
     }
 
-    public function testListSku()
-    {
-        $this->expectsRequest('get', '/v1/skus');
-        $result = $this->client->skus->all(['limit' => 3]);
-        static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\SKU::class, $result->data[0]);
-    }
-
-    public function testCreateSku()
-    {
-        $this->expectsRequest('post', '/v1/skus');
-        $result = $this->client->skus->create(
-            [
-                'attributes' => ['size' => 'Medium', 'gender' => 'Unisex'],
-                'price' => 1500,
-                'currency' => 'usd',
-                'inventory' => ['type' => 'finite', 'quantity' => 500],
-                'product' => 'prod_xxxxxxxxxxxxx',
-            ]
-        );
-        static::assertInstanceOf(\Stripe\SKU::class, $result);
-    }
-
-    public function testDeleteSku()
-    {
-        $this->expectsRequest('delete', '/v1/skus/sku_xxxxxxxxxxxxx');
-        $result = $this->client->skus->delete('sku_xxxxxxxxxxxxx', []);
-        static::assertInstanceOf(\Stripe\SKU::class, $result);
-    }
-
-    public function testRetrieveSku()
-    {
-        $this->expectsRequest('get', '/v1/skus/sku_xxxxxxxxxxxxx');
-        $result = $this->client->skus->retrieve('sku_xxxxxxxxxxxxx', []);
-        static::assertInstanceOf(\Stripe\SKU::class, $result);
-    }
-
-    public function testUpdateSku()
-    {
-        $this->expectsRequest('post', '/v1/skus/sku_xxxxxxxxxxxxx');
-        $result = $this->client->skus->update(
-            'sku_xxxxxxxxxxxxx',
-            ['metadata' => ['order_id' => '6735']]
-        );
-        static::assertInstanceOf(\Stripe\SKU::class, $result);
-    }
-
     public function testRetrieveSource()
     {
         $this->expectsRequest('get', '/v1/sources/src_xxxxxxxxxxxxx');

@@ -37,7 +37,6 @@ namespace Stripe;
  * @property \Stripe\Service\Issuing\IssuingServiceFactory $issuing
  * @property \Stripe\Service\MandateService $mandates
  * @property \Stripe\Service\OAuthService $oauth
- * @property \Stripe\Service\OrderService $orders
  * @property \Stripe\Service\PaymentIntentService $paymentIntents
  * @property \Stripe\Service\PaymentLinkService $paymentLinks
  * @property \Stripe\Service\PaymentMethodService $paymentMethods
@@ -56,7 +55,6 @@ namespace Stripe;
  * @property \Stripe\Service\SetupIntentService $setupIntents
  * @property \Stripe\Service\ShippingRateService $shippingRates
  * @property \Stripe\Service\Sigma\SigmaServiceFactory $sigma
- * @property \Stripe\Service\SkuService $skus
  * @property \Stripe\Service\SourceService $sources
  * @property \Stripe\Service\SubscriptionItemService $subscriptionItems
  * @property \Stripe\Service\SubscriptionScheduleService $subscriptionSchedules
