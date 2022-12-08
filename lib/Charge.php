@@ -35,7 +35,7 @@ namespace Stripe;
  * @property null|string|\Stripe\Dispute $dispute Details about the dispute if the charge has been disputed.
  * @property bool $disputed Whether the charge has been disputed.
  * @property null|string|\Stripe\BalanceTransaction $failure_balance_transaction ID of the balance transaction that describes the reversal of the balance on your account due to payment failure.
- * @property null|string $failure_code Error code explaining reason for charge failure if available (see <a href="https://stripe.com/docs/api#errors">the errors section</a> for a list of codes).
+ * @property null|string $failure_code Error code explaining reason for charge failure if available (see <a href="https://stripe.com/docs/error-codes">the errors section</a> for a list of codes).
  * @property null|string $failure_message Message to user further explaining reason for charge failure if available.
  * @property null|\Stripe\StripeObject $fraud_details Information on fraud assessments for the charge.
  * @property null|string|\Stripe\Invoice $invoice ID of the invoice this charge is for if one exists.
