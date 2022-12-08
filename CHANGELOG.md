@@ -1,5 +1,13 @@
 # Changelog
 
+## 10.2.0-beta.1 - 2022-12-08
+* [#1408](https://github.com/stripe/stripe-php/pull/1408) API Updates for beta branch
+  * Updated stable APIs to the latest version
+* [#1406](https://github.com/stripe/stripe-php/pull/1406) API Updates for beta branch
+  * Updated stable APIs to the latest version
+* [#1398](https://github.com/stripe/stripe-php/pull/1398) API Updates for beta branch
+  * Updated stable APIs to the latest version
+
 ## 10.1.0 - 2022-12-06
 * [#1405](https://github.com/stripe/stripe-php/pull/1405) API Updates
   * Add support for `flow` on `BillingPortal.Session`
