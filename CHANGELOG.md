@@ -1,5 +1,25 @@
 # Changelog
 
+## 10.1.0 - 2022-12-06
+* [#1405](https://github.com/stripe/stripe-php/pull/1405) API Updates
+  * Add support for `flow` on `BillingPortal.Session`
+* [#1404](https://github.com/stripe/stripe-php/pull/1404) API Updates
+  * Remove support for resources `Order` and `Sku`
+  * Remove support for `all`, `cancel`, `create`, `list_line_items`, `reopen`, `retrieve`, `submit`, and `update` methods on resource `Order`
+  * Remove support for `all`, `create`, `delete`, `retrieve`, and `update` methods on resource `Sku`
+  * Add support for `custom_text` on `Checkout.Session` and `PaymentLink`
+  * Add support for `invoice_creation` and `invoice` on `Checkout.Session`
+  * Remove support for `product` on `LineItem`
+  * Add support for `latest_charge` on `PaymentIntent`
+  * Remove support for `charges` on `PaymentIntent`
+
+## 10.0.0 - 2022-11-16
+* [#1392](https://github.com/stripe/stripe-php/pull/1392) Next major release changes
+
+Breaking changes that arose during code generation of the library that we postponed for the next major version. For changes to the Stripe products, read more at https://stripe.com/docs/upgrades#2022-11-15.
+
+"⚠️" symbol highlights breaking changes.
+
 ## 9.9.0 - 2022-11-08
 * [#1394](https://github.com/stripe/stripe-php/pull/1394) API Updates
   * Add support for new values `eg_tin`, `ph_tin`, and `tr_tin` on enum `TaxId.type`

@@ -56,7 +56,6 @@ namespace Stripe;
  * @property \Stripe\Service\SetupIntentService $setupIntents
  * @property \Stripe\Service\ShippingRateService $shippingRates
  * @property \Stripe\Service\Sigma\SigmaServiceFactory $sigma
- * @property \Stripe\Service\SkuService $skus
  * @property \Stripe\Service\SourceService $sources
  * @property \Stripe\Service\SubscriptionItemService $subscriptionItems
  * @property \Stripe\Service\SubscriptionScheduleService $subscriptionSchedules
