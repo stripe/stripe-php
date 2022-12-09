@@ -165,12 +165,14 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
     }
 
     /**
+     * @param null|array $params
+     *
      * @return \Generator|TStripeObject[] A generator that can be used to
      *    iterate across all objects across all pages. As page boundaries are
      *    encountered, the next page will be fetched automatically for
      *    continued iteration.
      */
-    public function autoPagingIterator()
+    public function autoPagingIterator($params = null)
     {
         $page = $this;
 
@@ -181,12 +183,12 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
                 foreach ($page->getReverseIterator() as $item) {
                     yield $item;
                 }
-                $page = $page->previousPage();
+                $page = $page->previousPage($params);
             } else {
                 foreach ($page as $item) {
                     yield $item;
                 }
-                $page = $page->nextPage();
+                $page = $page->nextPage($params);
             }
 
             if ($page->isEmpty()) {
