@@ -40,8 +40,8 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     /**
      * A PaymentIntent object can be canceled when it is in one of these statuses:
      * <code>requires_payment_method</code>, <code>requires_capture</code>,
-     * <code>requires_confirmation</code>, <code>requires_action</code>, or
-     * <code>processing</code>.
+     * <code>requires_confirmation</code>, <code>requires_action</code> or, <a
+     * href="/docs/payments/intents">in rare cases</a>, <code>processing</code>.
      *
      * Once canceled, no additional charges will be made by the PaymentIntent and any
      * operations on the PaymentIntent will fail with an error. For PaymentIntents with
@@ -50,7 +50,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      *
      * You cannot cancel the PaymentIntent for a Checkout Session. <a
      * href="/docs/api/checkout/sessions/expire">Expire the Checkout Session</a>
-     * instead
+     * instead.
      *
      * @param string $id
      * @param null|array $params

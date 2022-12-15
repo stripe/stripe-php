@@ -1,5 +1,10 @@
 # Changelog
 
+## 10.2.0 - 2022-12-15
+* [#1411](https://github.com/stripe/stripe-php/pull/1411) API Updates
+  * Add support for new value `invoice_overpaid` on enum `CustomerBalanceTransaction.type`
+* [#1407](https://github.com/stripe/stripe-php/pull/1407) API Updates
+
 ## 10.2.0-beta.1 - 2022-12-08
 * [#1408](https://github.com/stripe/stripe-php/pull/1408) API Updates for beta branch
   * Updated stable APIs to the latest version
