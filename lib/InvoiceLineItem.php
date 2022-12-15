@@ -9,6 +9,7 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount The amount, in %s.
  * @property null|int $amount_excluding_tax The integer amount in %s representing the amount for this line item, excluding all tax and discounts.
+ * @property null|\Stripe\StripeObject $applies_to
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|\Stripe\StripeObject[] $discount_amounts The amount of discount calculated per discount for this line item.
