@@ -31,7 +31,7 @@ namespace Stripe\Checkout;
  * @property null|int $amount_total Total of all items after discounts and taxes are applied.
  * @property \Stripe\StripeObject $automatic_tax
  * @property null|string $billing_address_collection Describes whether Checkout should collect the customer's billing address.
- * @property string $cancel_url The URL the customer will be directed to if they decide to cancel payment and return to your website.
+ * @property null|string $cancel_url If set, Checkout displays a back button and customers will be directed to this URL if they decide to cancel payment and return to your website.
  * @property null|string $client_reference_id A unique string to reference the Checkout Session. This can be a customer ID, a cart ID, or similar, and can be used to reconcile the Session with your internal systems.
  * @property null|\Stripe\StripeObject $consent Results of <code>consent_collection</code> for this session.
  * @property null|\Stripe\StripeObject $consent_collection When set, provides configuration for the Checkout Session to gather active consent from customers.
