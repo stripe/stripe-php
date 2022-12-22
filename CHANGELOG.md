@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.3.0 - 2022-12-22
+* [#1413](https://github.com/stripe/stripe-php/pull/1413) API Updates
+  Change `CheckoutSession.cancel_url` to be nullable.
+
 ## 10.2.0 - 2022-12-15
 * [#1411](https://github.com/stripe/stripe-php/pull/1411) API Updates
   * Add support for new value `invoice_overpaid` on enum `CustomerBalanceTransaction.type`
