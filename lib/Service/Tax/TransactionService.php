@@ -2,9 +2,9 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\Service;
+namespace Stripe\Service\Tax;
 
-class TaxTransactionService extends \Stripe\Service\AbstractService
+class TransactionService extends \Stripe\Service\AbstractService
 {
     /**
      * Creates a Tax <code>Transaction</code> from a calculation.
@@ -14,7 +14,7 @@ class TaxTransactionService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\TaxTransaction
+     * @return \Stripe\Tax\Transaction
      */
     public function create($params = null, $opts = null)
     {
@@ -22,15 +22,14 @@ class TaxTransactionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a partial or full reversal of a previously created
-     * <code>Transaction</code>.
+     * Partially or fully reverses a previously created <code>Transaction</code>.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\TaxTransaction
+     * @return \Stripe\Tax\Transaction
      */
     public function createReversal($params = null, $opts = null)
     {
@@ -46,7 +45,7 @@ class TaxTransactionService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\TaxTransaction
+     * @return \Stripe\Tax\Transaction
      */
     public function retrieve($id, $params = null, $opts = null)
     {

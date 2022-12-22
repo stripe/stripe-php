@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.3.0 - 2022-12-22
+* [#1413](https://github.com/stripe/stripe-php/pull/1413) API Updates
+  Change `CheckoutSession.cancel_url` to be nullable.
+
 ## 10.3.0-beta.1 - 2022-12-15
 * [#1412](https://github.com/stripe/stripe-php/pull/1412) API Updates for beta branch
   * Updated stable APIs to the latest version

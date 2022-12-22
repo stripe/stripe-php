@@ -2,9 +2,9 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\Service;
+namespace Stripe\Service\Tax;
 
-class TaxCalculationService extends \Stripe\Service\AbstractService
+class CalculationService extends \Stripe\Service\AbstractService
 {
     /**
      * Retrieves the line items of a persisted tax calculation as a collection.
@@ -30,7 +30,7 @@ class TaxCalculationService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\TaxCalculation
+     * @return \Stripe\Tax\Calculation
      */
     public function create($params = null, $opts = null)
     {

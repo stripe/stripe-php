@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe;
+namespace Stripe\Tax;
 
 /**
  * A Tax <code>Transaction</code> records the tax collected from or refunded to
@@ -22,12 +22,12 @@ namespace Stripe;
  * @property int $tax_date Timestamp of date at which the tax rules and rates in effect applies for the calculation.
  * @property string $type If <code>reversal</code>, this transaction reverses an earlier transaction.
  */
-class TaxTransaction extends ApiResource
+class Transaction extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'tax.transaction';
 
-    use ApiOperations\Create;
-    use ApiOperations\Retrieve;
+    use \Stripe\ApiOperations\Create;
+    use \Stripe\ApiOperations\Retrieve;
 
     const TYPE_REVERSAL = 'reversal';
     const TYPE_TRANSACTION = 'transaction';
@@ -38,7 +38,7 @@ class TaxTransaction extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\TaxTransaction the created tax transaction
+     * @return \Stripe\Tax\Transaction the created transaction
      */
     public static function createReversal($params = null, $opts = null)
     {
