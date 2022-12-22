@@ -1,5 +1,10 @@
 # Changelog
 
+## 10.4.0-beta.1 - 2022-12-22
+* [#1414](https://github.com/stripe/stripe-php/pull/1414) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Move `$stripe->taxCalculations` to `$stripe->tax->calculations` and `$stripe->taxTransactions` to `$stripe->tax->transactions`
+
 ## 10.3.0 - 2022-12-22
 * [#1413](https://github.com/stripe/stripe-php/pull/1413) API Updates
   Change `CheckoutSession.cancel_url` to be nullable.
