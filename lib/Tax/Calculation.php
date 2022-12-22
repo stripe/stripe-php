@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe;
+namespace Stripe\Tax;
 
 /**
  * A Tax <code>Calculation</code> allows you to calculate the tax to collect from
@@ -23,11 +23,11 @@ namespace Stripe;
  * @property \Stripe\StripeObject[] $tax_breakdown Breakdown of individual tax amounts that add up to the total.
  * @property int $tax_date Timestamp of date at which the tax rules and rates in effect applies for the calculation.
  */
-class TaxCalculation extends ApiResource
+class Calculation extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'tax.calculation';
 
-    use ApiOperations\Create;
+    use \Stripe\ApiOperations\Create;
 
     /**
      * @param string $id
