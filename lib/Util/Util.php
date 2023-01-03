@@ -85,7 +85,7 @@ abstract class Util
         }
 
         if (\is_string($value) && self::$isMbstringAvailable && 'UTF-8' !== \mb_detect_encoding($value, 'UTF-8', true)) {
-            return mb_convert_encoding($value, 'UTF-8', mb_list_encodings());
+            return mb_convert_encoding($value, 'UTF-8', 'ISO-8859-1');
         }
 
         return $value;
