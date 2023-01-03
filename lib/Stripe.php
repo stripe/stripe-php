@@ -60,3 +60,6 @@ require(dirname(__FILE__) . '/Stripe/ApplicationFee.php');
 require(dirname(__FILE__) . '/Stripe/ApplicationFeeRefund.php');
 require(dirname(__FILE__) . '/Stripe/BitcoinReceiver.php');
 require(dirname(__FILE__) . '/Stripe/BitcoinTransaction.php');
+
+
+require(dirname(__FILE__) . '/Stripe/PaymentIntent.php');

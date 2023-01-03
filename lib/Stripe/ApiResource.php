@@ -64,7 +64,13 @@ abstract class Stripe_ApiResource extends Stripe_Object
     if (substr($class, 0, strlen('Stripe')) == 'Stripe') {
       $class = substr($class, strlen('Stripe'));
     }
-    $class = str_replace('_', '', $class);
+    if('_Payment_Intent' == $class){
+        $class = substr($class, 1);
+    }
+    else{
+        $class = str_replace('_', '', $class);
+    }
+
     $name = urlencode($class);
     $name = strtolower($name);
     return $name;
@@ -151,6 +157,16 @@ abstract class Stripe_ApiResource extends Stripe_Object
         return $instance;
   }
   
+  protected static function _scopedConfirm($class, $params=null, $options=null)
+  {
+//    self::_validateCall('confirm', $params, $options);
+    $opts = Stripe_RequestOptions::parse($options);
+    $base = self::_scopedLsb($class, 'baseUrl');
+    $requestor = new Stripe_ApiRequestor($opts->apiKey, $base);
+    $url = self::_scopedLsb($class, 'classUrl', $class);
+    list($response, $apiKey) = $requestor->request('post', $url, $params, $opts->headers);
+    return Stripe_Util::convertToStripeObject($response, $apiKey);
+  }
   
   protected function _scopedSave($class, $options=null)
   {
