@@ -74,7 +74,7 @@ abstract class Util
     public static function utf8($value)
     {
         if (null === self::$isMbstringAvailable) {
-            self::$isMbstringAvailable = \function_exists('mb_detect_encoding');
+            self::$isMbstringAvailable = \function_exists('mb_detect_encoding') && \function_exists('mb_convert_encoding');
 
             if (!self::$isMbstringAvailable) {
                 \trigger_error('It looks like the mbstring extension is not enabled. ' .
