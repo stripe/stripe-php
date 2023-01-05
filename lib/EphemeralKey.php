@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -15,11 +16,11 @@ class EphemeralKey extends ApiResource
 {
     const OBJECT_NAME = 'ephemeral_key';
 
-    use ApiOperations\Delete;
-
     use ApiOperations\Create {
         create as protected _create;
     }
+
+    use ApiOperations\Delete;
 
     /**
      * @param null|array $params

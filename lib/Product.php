@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -67,6 +68,7 @@ class Product extends ApiResource
     public static function search($params = null, $opts = null)
     {
         $url = '/v1/products/search';
+
         return self::_searchResource($url, $params, $opts);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -56,7 +57,7 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Returns a list of PaymentMethods for a given Customer
+     * Returns a list of PaymentMethods for a given Customer.
      *
      * @param string $id
      * @param null|array $params

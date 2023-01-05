@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -26,7 +27,6 @@ class ApplicationFee extends ApiResource
     use ApiOperations\All;
     use ApiOperations\NestedResource;
     use ApiOperations\Retrieve;
-
 
     const PATH_REFUNDS = '/refunds';
 
