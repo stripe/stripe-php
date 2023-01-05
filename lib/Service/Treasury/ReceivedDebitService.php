@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Treasury;
@@ -23,7 +22,7 @@ class ReceivedDebitService extends \Stripe\Service\AbstractService
 
     /**
      * Retrieves the details of an existing ReceivedDebit by passing the unique
-     * ReceivedDebit ID from the ReceivedDebit list.
+     * ReceivedDebit ID from the ReceivedDebit list
      *
      * @param string $id
      * @param null|array $params

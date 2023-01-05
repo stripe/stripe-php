@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -285,9 +284,9 @@ class Invoice extends ApiResource
     public static function search($params = null, $opts = null)
     {
         $url = '/v1/invoices/search';
-
         return self::_searchResource($url, $params, $opts);
     }
+
 
     const PATH_LINES = '/lines';
 

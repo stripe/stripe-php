@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
@@ -101,7 +100,7 @@ class PaymentMethodService extends \Stripe\Service\AbstractService
      * Retrieves a PaymentMethod object attached to the StripeAccount. To retrieve a
      * payment method attached to a Customer, you should use <a
      * href="/docs/api/payment_methods/customer">Retrieve a Customer’s
-     * PaymentMethods</a>.
+     * PaymentMethods</a>
      *
      * @param string $id
      * @param null|array $params

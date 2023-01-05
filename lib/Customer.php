@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -80,7 +79,6 @@ class Customer extends ApiResource
         $url = $this->instanceUrl() . '/discount';
         list($response, $opts) = $this->_request('delete', $url, $params, $opts);
         $this->refreshFrom(['discount' => null], $opts, true);
-
         return $this;
     }
 
@@ -133,9 +131,9 @@ class Customer extends ApiResource
     public static function search($params = null, $opts = null)
     {
         $url = '/v1/customers/search';
-
         return self::_searchResource($url, $params, $opts);
     }
+
 
     const PATH_CASH_BALANCE = '/cash_balance';
 
@@ -143,7 +141,6 @@ class Customer extends ApiResource
      * @param string $id the ID of the customer to which the cash balance belongs
      * @param null|array $params
      * @param null|array|string $opts
-     * @param mixed $cashBalanceId
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -158,7 +155,6 @@ class Customer extends ApiResource
      * @param string $id the ID of the customer to which the cash balance belongs
      * @param null|array $params
      * @param null|array|string $opts
-     * @param mixed $cashBalanceId
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
