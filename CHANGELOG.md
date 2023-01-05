@@ -1,5 +1,10 @@
 # Changelog
 
+## 10.4.0-beta.2 - 2023-01-05
+* [#1420](https://github.com/stripe/stripe-php/pull/1420) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `mark_stale_quote` method on resource `Quote`
+
 ## 10.4.0-beta.1 - 2022-12-22
 * [#1414](https://github.com/stripe/stripe-php/pull/1414) API Updates for beta branch
   * Updated stable APIs to the latest version
