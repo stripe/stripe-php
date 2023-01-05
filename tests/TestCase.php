@@ -10,11 +10,8 @@ namespace Stripe;
  * incompatible with PHP<=7.2, but PHP8 is incompatible with phpunit5.6.
  *
  * We can remove this class and these methods when we drop support for PHP 7.2 and all earlier versions.
- *
- * @internal
- * @coversNothing
  */
-final class TestCase extends \PHPUnit\Framework\TestCase
+class TestCase extends \PHPUnit\Framework\TestCase
 {
     public static function compatAssertIsArray($obj)
     {
