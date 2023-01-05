@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Capital;
@@ -41,7 +40,7 @@ class FinancingOfferService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Get the details of the financing offer.
+     * Get the details of the financing offer
      *
      * @param string $id
      * @param null|array $params

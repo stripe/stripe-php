@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -36,6 +35,7 @@ namespace Stripe;
 class TransferReversal extends ApiResource
 {
     const OBJECT_NAME = 'transfer_reversal';
+
 
     use ApiOperations\Update {
         save as protected _save;

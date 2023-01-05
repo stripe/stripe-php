@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\TestHelpers;
@@ -7,7 +6,7 @@ namespace Stripe\Service\TestHelpers;
 class CustomerService extends \Stripe\Service\AbstractService
 {
     /**
-     * Create an incoming testmode bank transfer.
+     * Create an incoming testmode bank transfer
      *
      * @param string $id
      * @param null|array $params

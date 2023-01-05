@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -209,6 +208,23 @@ class Quote extends ApiResource
         $obj->setLastResponse($response);
 
         return $obj;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Quote the marked quote
+     */
+    public function markStaleQuote($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/mark_stale';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
     }
 
     /**

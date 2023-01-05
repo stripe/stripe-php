@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Terminal;
@@ -101,7 +100,7 @@ class ReaderService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Initiates a refund on a Reader.
+     * Initiates a refund on a Reader
      *
      * @param string $id
      * @param null|array $params

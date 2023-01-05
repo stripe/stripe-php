@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\GiftCards;
@@ -7,7 +6,7 @@ namespace Stripe\Service\GiftCards;
 class TransactionService extends \Stripe\Service\AbstractService
 {
     /**
-     * List gift card transactions for a gift card.
+     * List gift card transactions for a gift card
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -22,7 +21,7 @@ class TransactionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Cancel a gift card transaction.
+     * Cancel a gift card transaction
      *
      * @param string $id
      * @param null|array $params
@@ -38,7 +37,7 @@ class TransactionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Confirm a gift card transaction.
+     * Confirm a gift card transaction
      *
      * @param string $id
      * @param null|array $params
@@ -54,7 +53,7 @@ class TransactionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a gift card transaction.
+     * Create a gift card transaction
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -85,7 +84,7 @@ class TransactionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update a gift card transaction.
+     * Update a gift card transaction
      *
      * @param string $id
      * @param null|array $params

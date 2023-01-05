@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\BillingPortal;
@@ -24,7 +23,7 @@ class ConfigurationService extends \Stripe\Service\AbstractService
 
     /**
      * Creates a configuration that describes the functionality and behavior of a
-     * PortalSession.
+     * PortalSession
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
