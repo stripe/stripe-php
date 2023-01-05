@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -108,6 +109,7 @@ class Subscription extends ApiResource
         $url = $this->instanceUrl() . '/discount';
         list($response, $opts) = $this->_request('delete', $url, $params, $opts);
         $this->refreshFrom(['discount' => null], $opts, true);
+
         return $this;
     }
 
@@ -139,6 +141,7 @@ class Subscription extends ApiResource
     public static function search($params = null, $opts = null)
     {
         $url = '/v1/subscriptions/search';
+
         return self::_searchResource($url, $params, $opts);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\FinancialConnections;
@@ -21,7 +22,7 @@ class AccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Lists all owners for a given <code>Account</code>
+     * Lists all owners for a given <code>Account</code>.
      *
      * @param string $id
      * @param null|array $params

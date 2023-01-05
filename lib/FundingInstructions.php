@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -11,7 +12,7 @@ namespace Stripe;
  * initiating a bank transfer to any account in the
  * <code>financial_addresses</code> field. Related guide: <a
  * href="https://stripe.com/docs/payments/customer-balance/funding-instructions">Customer
- * Balance - Funding Instructions</a> to learn more
+ * Balance - Funding Instructions</a> to learn more.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property \Stripe\StripeObject $bank_transfer
@@ -22,7 +23,6 @@ namespace Stripe;
 class FundingInstructions extends ApiResource
 {
     const OBJECT_NAME = 'funding_instructions';
-
 
     const FUNDING_TYPE_BANK_TRANSFER = 'bank_transfer';
 }
