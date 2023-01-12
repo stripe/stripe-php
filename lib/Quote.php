@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -130,7 +129,7 @@ class Quote extends ApiResource
      */
     public function draftQuote($params = null, $opts = null)
     {
-        $url = $this->instanceUrl() . '/draft';
+        $url = $this->instanceUrl() . '/mark_draft';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
 

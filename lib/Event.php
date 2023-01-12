@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -197,9 +196,12 @@ class Event extends ApiResource
     const PROMOTION_CODE_CREATED = 'promotion_code.created';
     const PROMOTION_CODE_UPDATED = 'promotion_code.updated';
     const QUOTE_ACCEPTED = 'quote.accepted';
+    const QUOTE_ACCEPTING = 'quote.accepting';
     const QUOTE_CANCELED = 'quote.canceled';
     const QUOTE_CREATED = 'quote.created';
     const QUOTE_FINALIZED = 'quote.finalized';
+    const QUOTE_REESTIMATED = 'quote.reestimated';
+    const QUOTE_STALE = 'quote.stale';
     const RADAR_EARLY_FRAUD_WARNING_CREATED = 'radar.early_fraud_warning.created';
     const RADAR_EARLY_FRAUD_WARNING_UPDATED = 'radar.early_fraud_warning.updated';
     const RECIPIENT_CREATED = 'recipient.created';

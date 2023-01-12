@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 require __DIR__ . '/lib/Util/ApiVersion.php';
@@ -165,6 +164,7 @@ require __DIR__ . '/lib/Subscription.php';
 require __DIR__ . '/lib/SubscriptionItem.php';
 require __DIR__ . '/lib/SubscriptionSchedule.php';
 require __DIR__ . '/lib/Tax/Calculation.php';
+require __DIR__ . '/lib/Tax/Registration.php';
 require __DIR__ . '/lib/Tax/Transaction.php';
 require __DIR__ . '/lib/TaxCode.php';
 require __DIR__ . '/lib/TaxId.php';
@@ -260,6 +260,7 @@ require __DIR__ . '/lib/Service/SubscriptionService.php';
 require __DIR__ . '/lib/Service/SubscriptionItemService.php';
 require __DIR__ . '/lib/Service/SubscriptionScheduleService.php';
 require __DIR__ . '/lib/Service/Tax/CalculationService.php';
+require __DIR__ . '/lib/Service/Tax/RegistrationService.php';
 require __DIR__ . '/lib/Service/Tax/TransactionService.php';
 require __DIR__ . '/lib/Service/TaxCodeService.php';
 require __DIR__ . '/lib/Service/TaxRateService.php';
