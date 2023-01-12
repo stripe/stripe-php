@@ -139,7 +139,7 @@ class QuoteService extends \Stripe\Service\AbstractService
      */
     public function draftQuote($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v1/quotes/%s/draft', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v1/quotes/%s/mark_draft', $id), $params, $opts);
     }
 
     /**
