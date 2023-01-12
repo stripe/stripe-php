@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\GiftCards;
@@ -6,7 +7,7 @@ namespace Stripe\Service\GiftCards;
 class CardService extends \Stripe\Service\AbstractService
 {
     /**
-     * List gift cards for an account
+     * List gift cards for an account.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -36,7 +37,7 @@ class CardService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a gift card by id
+     * Retrieve a gift card by id.
      *
      * @param string $id
      * @param null|array $params
@@ -52,7 +53,7 @@ class CardService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update a gift card
+     * Update a gift card.
      *
      * @param string $id
      * @param null|array $params

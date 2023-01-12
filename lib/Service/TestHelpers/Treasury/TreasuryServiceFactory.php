@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\TestHelpers\Treasury;
@@ -18,11 +19,11 @@ class TreasuryServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
-    'inboundTransfers' => InboundTransferService::class,
-    'outboundPayments' => OutboundPaymentService::class,
-    'outboundTransfers' => OutboundTransferService::class,
-    'receivedCredits' => ReceivedCreditService::class,
-    'receivedDebits' => ReceivedDebitService::class,
+        'inboundTransfers' => InboundTransferService::class,
+        'outboundPayments' => OutboundPaymentService::class,
+        'outboundTransfers' => OutboundTransferService::class,
+        'receivedCredits' => ReceivedCreditService::class,
+        'receivedDebits' => ReceivedDebitService::class,
     ];
 
     protected function getServiceClass($name)

@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -48,7 +49,6 @@ class Transfer extends ApiResource
     const SOURCE_TYPE_BANK_ACCOUNT = 'bank_account';
     const SOURCE_TYPE_CARD = 'card';
     const SOURCE_TYPE_FPX = 'fpx';
-
 
     const PATH_REVERSALS = '/reversals';
 
