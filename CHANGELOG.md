@@ -1,5 +1,11 @@
 # Changelog
 
+## 10.4.0-beta.3 - 2023-01-12
+* [#1423](https://github.com/stripe/stripe-php/pull/1423) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `Tax.Registration` resource.
+  * Change `draft_quote` method implementation from hitting `/v1/quotes/{quotes}/draft` to `/v1/quotes/{quotes}/mark_draft`
+
 ## 10.4.0-beta.2 - 2023-01-05
 * [#1420](https://github.com/stripe/stripe-php/pull/1420) API Updates for beta branch
   * Updated stable APIs to the latest version
