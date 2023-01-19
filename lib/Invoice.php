@@ -41,7 +41,7 @@ namespace Stripe;
  * Related guide: <a href="https://stripe.com/docs/billing/invoices/sending">Send
  * Invoices to Customers</a>.
  *
- * @property string $id Unique identifier for the object.
+ * @property string $id Unique identifier for the object. This property is always present unless the invoice is an upcoming invoice. See <a href="https://stripe.com/docs/api/invoices/upcoming">Retrieve an upcoming invoice</a> for more details.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string $account_country The country of the business associated with this invoice, most often the business creating the invoice.
  * @property null|string $account_name The public name of the business associated with this invoice, most often the business creating the invoice.
@@ -100,7 +100,7 @@ namespace Stripe;
  * @property null|string|\Stripe\Quote $quote The quote this invoice was generated from.
  * @property null|string $receipt_number This is the transaction number that appears on email receipts sent for this invoice.
  * @property null|\Stripe\StripeObject $rendering_options Options for invoice PDF rendering.
- * @property int $starting_balance Starting customer balance before the invoice is finalized. If the invoice has not been finalized yet, this will be the current customer balance.
+ * @property int $starting_balance Starting customer balance before the invoice is finalized. If the invoice has not been finalized yet, this will be the current customer balance. For revision invoices, this also includes any customer balance that was applied to the original invoice.
  * @property null|string $statement_descriptor Extra information about an invoice for the customer's credit card statement.
  * @property null|string $status The status of the invoice, one of <code>draft</code>, <code>open</code>, <code>paid</code>, <code>uncollectible</code>, or <code>void</code>. <a href="https://stripe.com/docs/billing/invoices/workflow#workflow-overview">Learn more</a>
  * @property \Stripe\StripeObject $status_transitions
