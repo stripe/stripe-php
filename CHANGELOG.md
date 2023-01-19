@@ -1,5 +1,14 @@
 # Changelog
 
+## 10.4.0 - 2023-01-19
+* [#1381](https://github.com/stripe/stripe-php/pull/1381) Add getService methods to StripeClient and AbstractServiceFactory to allow mocking
+* [#1424](https://github.com/stripe/stripe-php/pull/1424) API Updates
+
+  * Added `REFUND_CREATED`, `REFUND_UPDATED` event definitions.
+* [#1426](https://github.com/stripe/stripe-php/pull/1426) Ignore PHP version for formatting
+* [#1425](https://github.com/stripe/stripe-php/pull/1425) Fix Stripe::setAccountId parameter type
+* [#1418](https://github.com/stripe/stripe-php/pull/1418) Switch to mb_convert_encoding to fix utf8_encode deprecation warning
+
 ## 10.4.0-beta.3 - 2023-01-12
 * [#1423](https://github.com/stripe/stripe-php/pull/1423) API Updates for beta branch
   * Updated stable APIs to the latest version
