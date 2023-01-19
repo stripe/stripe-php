@@ -12,11 +12,11 @@ test: vendor
 .PHONY: test
 
 fmt: vendor
-	vendor/bin/php-cs-fixer fix -v --using-cache=no
+	PHP_CS_FIXER_IGNORE_ENV=true vendor/bin/php-cs-fixer fix -v --using-cache=no
 .PHONY: fmt
 
 fmtcheck: vendor
-	vendor/bin/php-cs-fixer fix -v --dry-run --using-cache=no
+	PHP_CS_FIXER_IGNORE_ENV=true vendor/bin/php-cs-fixer fix -v --dry-run --using-cache=no
 .PHONY: fmtcheck
 
 phpdoc: vendor/bin/phpdoc
