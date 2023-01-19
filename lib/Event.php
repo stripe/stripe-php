@@ -204,6 +204,8 @@ class Event extends ApiResource
     const RECIPIENT_CREATED = 'recipient.created';
     const RECIPIENT_DELETED = 'recipient.deleted';
     const RECIPIENT_UPDATED = 'recipient.updated';
+    const REFUND_CREATED = 'refund.created';
+    const REFUND_UPDATED = 'refund.updated';
     const REPORTING_REPORT_RUN_FAILED = 'reporting.report_run.failed';
     const REPORTING_REPORT_RUN_SUCCEEDED = 'reporting.report_run.succeeded';
     const REPORTING_REPORT_TYPE_UPDATED = 'reporting.report_type.updated';
