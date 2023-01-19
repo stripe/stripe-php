@@ -98,6 +98,7 @@ class ObjectTypes
         \Stripe\SubscriptionSchedule::OBJECT_NAME => \Stripe\SubscriptionSchedule::class,
         \Stripe\Tax\Calculation::OBJECT_NAME => \Stripe\Tax\Calculation::class,
         \Stripe\Tax\Registration::OBJECT_NAME => \Stripe\Tax\Registration::class,
+        \Stripe\Tax\Settings::OBJECT_NAME => \Stripe\Tax\Settings::class,
         \Stripe\Tax\Transaction::OBJECT_NAME => \Stripe\Tax\Transaction::class,
         \Stripe\TaxCode::OBJECT_NAME => \Stripe\TaxCode::class,
         \Stripe\TaxId::OBJECT_NAME => \Stripe\TaxId::class,
