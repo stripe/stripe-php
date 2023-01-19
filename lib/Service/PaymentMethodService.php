@@ -7,10 +7,10 @@ namespace Stripe\Service;
 class PaymentMethodService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of PaymentMethods attached to the StripeAccount. For listing a
-     * customer’s payment methods, you should use <a
+     * Returns a list of PaymentMethods for Treasury flows. If you want to list the
+     * PaymentMethods attached to a Customer for payments, you should use the <a
      * href="/docs/api/payment_methods/customer_list">List a Customer’s
-     * PaymentMethods</a>.
+     * PaymentMethods</a> API instead.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts

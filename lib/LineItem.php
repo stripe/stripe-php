@@ -17,7 +17,6 @@ namespace Stripe;
  * @property string $description An arbitrary string attached to the object. Often useful for displaying to users. Defaults to product name.
  * @property \Stripe\StripeObject[] $discounts The discounts applied to the line item.
  * @property null|\Stripe\Price $price The price used to generate the line item.
- * @property string|\Stripe\Product $product <p>The ID of the product for this line item.</p><p>This will always be the same as <code>price.product</code>.</p>
  * @property null|int $quantity The quantity of products being purchased.
  * @property \Stripe\StripeObject[] $taxes The taxes applied to the line item.
  */
