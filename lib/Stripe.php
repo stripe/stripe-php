@@ -185,7 +185,7 @@ class Stripe
     }
 
     /**
-     * @param string $accountId the Stripe account ID to set for connected
+     * @param null|string $accountId the Stripe account ID to set for connected
      *   account requests
      */
     public static function setAccountId($accountId)
