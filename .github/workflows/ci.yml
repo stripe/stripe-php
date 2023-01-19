@@ -64,13 +64,13 @@ jobs:
       # We run php-cs-fixer in a separate job, but the version we use is not compatible
       # with all the versions of PHP that we want to execute PHPStan upon
       - name: Trim dependency
-        run: composer remove --dev friendsofphp/php-cs-fixer
+        run: composer remove --dev --no-update friendsofphp/php-cs-fixer
 
-      - name: Validate composer.json and composer.lock
+      - name: Validate composer.json
         run: composer validate
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+        run: composer install --prefer-dist --no-progress
 
       - name: Run phpstan
         run: make phpstan
@@ -117,13 +117,13 @@ jobs:
       # We run php-cs-fixer and PHPStan in separate jobs, but the versions we use are not compatible
       # with all the versions of PHP that we want to execute PHPUnit upon
       - name: Trim dependency
-        run: composer remove --dev friendsofphp/php-cs-fixer phpstan/phpstan
+        run: composer remove --dev --no-update friendsofphp/php-cs-fixer phpstan/phpstan
 
-      - name: Validate composer.json and composer.lock
+      - name: Validate composer.json
         run: composer validate
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+        run: composer install --prefer-dist --no-progress
 
       - name: Start stripe-mock
         run: docker pull stripe/stripe-mock && docker run -d -p 12111-12112:12111-12112 stripe/stripe-mock && sleep 5
@@ -135,7 +135,7 @@ jobs:
 
       - name: Coveralls
         run: vendor/bin/php-coveralls -v --coverage_clover='clover.xml' --json_path='coveralls-upload.json'
-        if: matrix.php-version == '8.1' && matrix.env == 'AUTOLOAD=1'
+        if: env.COVERALLS_REPO_TOKEN && matrix.php-version == '8.1' && matrix.env == 'AUTOLOAD=1'
         env:
           COVERALLS_RUN_LOCALLY: 1
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
