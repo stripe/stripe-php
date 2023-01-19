@@ -1,5 +1,10 @@
 # Changelog
 
+## 10.5.0-beta.1 - 2023-01-19
+* [#1427](https://github.com/stripe/stripe-php/pull/1427) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `Tax.Settings` resource.
+
 ## 10.4.0 - 2023-01-19
 * [#1381](https://github.com/stripe/stripe-php/pull/1381) Add getService methods to StripeClient and AbstractServiceFactory to allow mocking
 * [#1424](https://github.com/stripe/stripe-php/pull/1424) API Updates
