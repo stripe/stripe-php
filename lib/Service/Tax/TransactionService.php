@@ -7,6 +7,37 @@ namespace Stripe\Service\Tax;
 class TransactionService extends \Stripe\Service\AbstractService
 {
     /**
+     * Retrieves the line items of a committed standalone transaction as a collection.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\LineItem>
+     */
+    public function allLineItems($id, $params = null, $opts = null)
+    {
+        return $this->requestCollection('get', $this->buildPath('/v1/tax/transactions/%s/line_items', $id), $params, $opts);
+    }
+
+    /**
+     * Lists Tax Transaction objects.
+     *
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Tax\Transaction>
+     */
+    public function allTransactions($params = null, $opts = null)
+    {
+        return $this->requestCollection('get', '/v1/tax/transactions', $params, $opts);
+    }
+
+    /**
      * Creates a Tax <code>Transaction</code> from a calculation.
      *
      * @param null|array $params

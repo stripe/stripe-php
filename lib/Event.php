@@ -200,6 +200,7 @@ class Event extends ApiResource
     const QUOTE_ACCEPTING = 'quote.accepting';
     const QUOTE_CANCELED = 'quote.canceled';
     const QUOTE_CREATED = 'quote.created';
+    const QUOTE_DRAFT = 'quote.draft';
     const QUOTE_FINALIZED = 'quote.finalized';
     const QUOTE_REESTIMATED = 'quote.reestimated';
     const QUOTE_STALE = 'quote.stale';
