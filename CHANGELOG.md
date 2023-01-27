@@ -1,5 +1,10 @@
 # Changelog
 
+## 10.5.0-beta.2 - 2023-01-26
+* [#1429](https://github.com/stripe/stripe-php/pull/1429) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `list_transactions` method on resource `Tax.Transaction`
+
 ## 10.5.0-beta.1 - 2023-01-19
 * [#1427](https://github.com/stripe/stripe-php/pull/1427) API Updates for beta branch
   * Updated stable APIs to the latest version
