@@ -271,7 +271,7 @@ Update bundled CA certificates from the [Mozilla cURL release][curl]:
 The library uses [PHP CS Fixer][php-cs-fixer] for code formatting. Code must be formatted before PRs are submitted, otherwise CI will fail. Run the formatter with:
 
 ```bash
-./vendor/bin/php-cs-fixer fix -v .
+.phive/php-cs-fixer fix -v .
 ```
 
 ## Attention plugin developers

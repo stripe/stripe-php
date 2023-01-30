@@ -23,13 +23,22 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        php-version:
+          - "8.1"
+
     steps:
       - uses: actions/checkout@master
 
-      - name: PHP-CS-Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga:3.4.0
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          args: --format=txt --diff --dry-run --using-cache=no --verbose
+          php-version: ${{ matrix.php-version }}
+          tools: phive
+
+      - name: PHP-CS-Fixer
+        run: .phive/php-cs-fixer fix --format=txt --diff --dry-run --using-cache=no --verbose
 
   phpstan:
     name: PHPStan
@@ -60,11 +69,6 @@ jobs:
           # Conventionally you would hash "composer.lock", but we don't commit
           # that, so we hash on "composer.json" instead.
           key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
-
-      # We run php-cs-fixer in a separate job, but the version we use is not compatible
-      # with all the versions of PHP that we want to execute PHPStan upon
-      - name: Trim dependency
-        run: composer remove --dev --no-update friendsofphp/php-cs-fixer
 
       - name: Validate composer.json
         run: composer validate
@@ -114,11 +118,6 @@ jobs:
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
-
-      # We run php-cs-fixer and PHPStan in separate jobs, but the versions we use are not compatible
-      # with all the versions of PHP that we want to execute PHPUnit upon
-      - name: Trim dependency
-        run: composer remove --dev --no-update friendsofphp/php-cs-fixer phpstan/phpstan
 
       - name: Validate composer.json
         run: composer validate
