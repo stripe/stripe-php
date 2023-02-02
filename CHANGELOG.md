@@ -1,5 +1,14 @@
 # Changelog
 
+## 10.5.0 - 2023-02-02
+* [#1439](https://github.com/stripe/stripe-php/pull/1439) API Updates
+  * Add support for `resume` method on resource `Subscription`
+  * Add support for `amount_shipping` and `shipping_cost` on `CreditNote` and `Invoice`
+  * Add support for `shipping_details` on `Invoice`
+  * Add support for `invoice_creation` on `PaymentLink`
+  * Add support for `trial_settings` on `Subscription`
+  * Add support for new value `paused` on enum `Subscription.status`
+
 ## 10.5.0-beta.2 - 2023-01-26
 * [#1429](https://github.com/stripe/stripe-php/pull/1429) API Updates for beta branch
   * Updated stable APIs to the latest version

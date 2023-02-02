@@ -110,8 +110,10 @@ class Event extends ApiResource
     const CUSTOMER_SOURCE_UPDATED = 'customer.source.updated';
     const CUSTOMER_SUBSCRIPTION_CREATED = 'customer.subscription.created';
     const CUSTOMER_SUBSCRIPTION_DELETED = 'customer.subscription.deleted';
+    const CUSTOMER_SUBSCRIPTION_PAUSED = 'customer.subscription.paused';
     const CUSTOMER_SUBSCRIPTION_PENDING_UPDATE_APPLIED = 'customer.subscription.pending_update_applied';
     const CUSTOMER_SUBSCRIPTION_PENDING_UPDATE_EXPIRED = 'customer.subscription.pending_update_expired';
+    const CUSTOMER_SUBSCRIPTION_RESUMED = 'customer.subscription.resumed';
     const CUSTOMER_SUBSCRIPTION_TRIAL_WILL_END = 'customer.subscription.trial_will_end';
     const CUSTOMER_SUBSCRIPTION_UPDATED = 'customer.subscription.updated';
     const CUSTOMER_TAX_ID_CREATED = 'customer.tax_id.created';
@@ -125,6 +127,10 @@ class Event extends ApiResource
     const FINANCIAL_CONNECTIONS_ACCOUNT_DISCONNECTED = 'financial_connections.account.disconnected';
     const FINANCIAL_CONNECTIONS_ACCOUNT_REACTIVATED = 'financial_connections.account.reactivated';
     const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_BALANCE = 'financial_connections.account.refreshed_balance';
+    const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_INFERRED_BALANCES = 'financial_connections.account.refreshed_inferred_balances';
+    const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_OWNERSHIP = 'financial_connections.account.refreshed_ownership';
+    const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_TRANSACTIONS = 'financial_connections.account.refreshed_transactions';
+    const FINANCIAL_CONNECTIONS_SESSION_UPDATED = 'financial_connections.session.updated';
     const IDENTITY_VERIFICATION_SESSION_CANCELED = 'identity.verification_session.canceled';
     const IDENTITY_VERIFICATION_SESSION_CREATED = 'identity.verification_session.created';
     const IDENTITY_VERIFICATION_SESSION_PROCESSING = 'identity.verification_session.processing';

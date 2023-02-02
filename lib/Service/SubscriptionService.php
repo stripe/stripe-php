@@ -98,6 +98,27 @@ class SubscriptionService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Initiates resumption of a paused subscription, optionally resetting the billing
+     * cycle anchor and creating prorations. If a resumption invoice is generated, it
+     * must be paid or marked uncollectible before the subscription will be unpaused.
+     * If payment succeeds the subscription will become <code>active</code>, and if
+     * payment fails the subscription will be <code>past_due</code>. The resumption
+     * invoice will void automatically if not paid by the expiration date.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Subscription
+     */
+    public function resume($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/subscriptions/%s/resume', $id), $params, $opts);
+    }
+
+    /**
      * Retrieves the subscription with the given ID.
      *
      * @param string $id
