@@ -72,27 +72,12 @@ class StripeClient extends BaseStripeClient
      */
     private $coreServiceFactory;
 
-    /**
-     * @param $name
-     *
-     * @return null|Service\AbstractService|Service\AbstractServiceFactory
-     */
     public function __get($name)
-    {
-        return $this->getService($name);
-    }
-
-    /**
-     * @param $name
-     *
-     * @return null|Service\AbstractService|Service\AbstractServiceFactory
-     */
-    public function getService($name)
     {
         if (null === $this->coreServiceFactory) {
             $this->coreServiceFactory = new \Stripe\Service\CoreServiceFactory($this);
         }
 
-        return $this->coreServiceFactory->getService($name);
+        return $this->coreServiceFactory->__get($name);
     }
 }
