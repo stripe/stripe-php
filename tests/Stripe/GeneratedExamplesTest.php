@@ -725,6 +725,16 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Capability::class, $result);
     }
 
+    public function testResumeSubscription()
+    {
+        $this->expectsRequest('post', '/v1/subscriptions/sub_xxxxxxxxxxxxx/resume');
+        $result = $this->client->subscriptions->resume(
+            'sub_xxxxxxxxxxxxx',
+            ['proration_date' => 1675400000, 'proration_behavior' => 'always_invoice']
+        );
+        static::assertInstanceOf(\Stripe\Subscription::class, $result);
+    }
+
     public function testCreateLoginLink()
     {
         $this->expectsRequest(
