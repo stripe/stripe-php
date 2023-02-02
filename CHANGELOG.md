@@ -1,5 +1,13 @@
 # Changelog
 
+## 10.6.0-beta.1 - 2023-02-02
+* [#1440](https://github.com/stripe/stripe-php/pull/1440) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `all` method on resource `Transaction`
+  * Add support for `inferred_balances_refresh`, `subscriptions`, and `transaction_refresh` on `FinancialConnections.Account`
+  * Add support for `manual_entry`, `prefetch`, `status_details`, and `status` on `FinancialConnections.Session`
+  * Add support for new resource `FinancialConnections.Transaction`
+
 ## 10.5.0 - 2023-02-02
 * [#1439](https://github.com/stripe/stripe-php/pull/1439) API Updates
   * Add support for `resume` method on resource `Subscription`
