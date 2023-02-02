@@ -15,8 +15,12 @@ namespace Stripe\FinancialConnections;
  * @property string $client_secret A value that will be passed to the client to launch the authentication flow.
  * @property \Stripe\StripeObject $filters
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property \Stripe\StripeObject $manual_entry
  * @property string[] $permissions Permissions requested for accounts collected during this session.
+ * @property null|string[] $prefetch Data features requested to be retrieved upon account creation.
  * @property string $return_url For webview integrations only. Upon completing OAuth login in the native browser, the user will be redirected to this URL to return to your app.
+ * @property string $status The current state of the session.
+ * @property \Stripe\StripeObject $status_details
  */
 class Session extends \Stripe\ApiResource
 {
@@ -24,4 +28,9 @@ class Session extends \Stripe\ApiResource
 
     use \Stripe\ApiOperations\Create;
     use \Stripe\ApiOperations\Retrieve;
+
+    const STATUS_CANCELLED = 'cancelled';
+    const STATUS_FAILED = 'failed';
+    const STATUS_PENDING = 'pending';
+    const STATUS_SUCCEEDED = 'succeeded';
 }

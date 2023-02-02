@@ -127,6 +127,10 @@ class Event extends ApiResource
     const FINANCIAL_CONNECTIONS_ACCOUNT_DISCONNECTED = 'financial_connections.account.disconnected';
     const FINANCIAL_CONNECTIONS_ACCOUNT_REACTIVATED = 'financial_connections.account.reactivated';
     const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_BALANCE = 'financial_connections.account.refreshed_balance';
+    const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_INFERRED_BALANCES = 'financial_connections.account.refreshed_inferred_balances';
+    const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_OWNERSHIP = 'financial_connections.account.refreshed_ownership';
+    const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_TRANSACTIONS = 'financial_connections.account.refreshed_transactions';
+    const FINANCIAL_CONNECTIONS_SESSION_UPDATED = 'financial_connections.session.updated';
     const IDENTITY_VERIFICATION_SESSION_CANCELED = 'identity.verification_session.canceled';
     const IDENTITY_VERIFICATION_SESSION_CREATED = 'identity.verification_session.created';
     const IDENTITY_VERIFICATION_SESSION_PROCESSING = 'identity.verification_session.processing';
