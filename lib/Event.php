@@ -109,8 +109,10 @@ class Event extends ApiResource
     const CUSTOMER_SOURCE_UPDATED = 'customer.source.updated';
     const CUSTOMER_SUBSCRIPTION_CREATED = 'customer.subscription.created';
     const CUSTOMER_SUBSCRIPTION_DELETED = 'customer.subscription.deleted';
+    const CUSTOMER_SUBSCRIPTION_PAUSED = 'customer.subscription.paused';
     const CUSTOMER_SUBSCRIPTION_PENDING_UPDATE_APPLIED = 'customer.subscription.pending_update_applied';
     const CUSTOMER_SUBSCRIPTION_PENDING_UPDATE_EXPIRED = 'customer.subscription.pending_update_expired';
+    const CUSTOMER_SUBSCRIPTION_RESUMED = 'customer.subscription.resumed';
     const CUSTOMER_SUBSCRIPTION_TRIAL_WILL_END = 'customer.subscription.trial_will_end';
     const CUSTOMER_SUBSCRIPTION_UPDATED = 'customer.subscription.updated';
     const CUSTOMER_TAX_ID_CREATED = 'customer.tax_id.created';
