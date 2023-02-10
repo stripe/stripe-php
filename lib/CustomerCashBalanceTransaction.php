@@ -34,6 +34,7 @@ class CustomerCashBalanceTransaction extends ApiResource
 
     const TYPE_APPLIED_TO_PAYMENT = 'applied_to_payment';
     const TYPE_FUNDED = 'funded';
+    const TYPE_FUNDING_REVERSED = 'funding_reversed';
     const TYPE_REFUNDED_FROM_PAYMENT = 'refunded_from_payment';
     const TYPE_RETURN_CANCELED = 'return_canceled';
     const TYPE_RETURN_INITIATED = 'return_initiated';
