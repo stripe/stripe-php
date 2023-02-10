@@ -10,6 +10,12 @@ namespace Stripe;
  * API just like a <code>Card</code> object: once chargeable, they can be charged,
  * or can be attached to customers.
  *
+ * Stripe doesn't recommend using the deprecated <a
+ * href="https://stripe.com/docs/api/sources">Sources API</a>. We recommend that
+ * you adopt the <a
+ * href="https://stripe.com/docs/api/payment_methods">PaymentMethods API</a>. This
+ * newer API provides access to our latest features and payment method types.
+ *
  * Related guides: <a href="https://stripe.com/docs/sources">Sources API</a> and <a
  * href="https://stripe.com/docs/sources/customers">Sources &amp; Customers</a>.
  *
@@ -116,37 +122,22 @@ class Source extends ApiResource
     }
 
     /**
-     * @deprecated sourceTransactions is deprecated. Please use Source::allSourceTransactions instead.
-     *
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection the list of source transactions
-     */
-    public function sourceTransactions($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/source_transactions';
-        list($response, $opts) = $this->_request('get', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response, $opts);
-        $obj->setLastResponse($response);
-
-        return $obj;
-    }
-
-    /**
      * @param string $id
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection the list of source transactions
+     * @return \Stripe\Collection<\Stripe\SourceTransaction> list of SourceTransactions
      */
     public static function allSourceTransactions($id, $params = null, $opts = null)
     {
-        return self::_allNestedResources($id, '/source_transactions', $params, $opts);
+        $url = static::resourceUrl($id) . '/source_transactions';
+        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
     }
 
     /**

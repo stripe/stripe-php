@@ -33,7 +33,7 @@ final class SourceServiceTest extends \Stripe\TestCase
             'get',
             '/v1/sources/' . self::TEST_RESOURCE_ID . '/source_transactions'
         );
-        $resources = $this->service->allTransactions(self::TEST_RESOURCE_ID);
+        $resources = $this->service->allSourceTransactions(self::TEST_RESOURCE_ID);
         static::compatAssertIsArray($resources->data);
         static::assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
     }

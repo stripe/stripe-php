@@ -22,7 +22,7 @@ final class DefaultLoggerTest extends \Stripe\TestCase
             $logger = new DefaultLogger();
             $logger->error('This is a test message');
 
-            static::assertRegExp('/This is a test message/', \stream_get_contents($capture));
+            static::compatAssertMatchesRegularExpression('/This is a test message/', \stream_get_contents($capture));
         } finally {
             \ini_set('error_log', $origErrorLog);
             \fclose($capture);

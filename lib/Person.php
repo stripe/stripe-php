@@ -35,6 +35,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $future_requirements Information about the upcoming new requirements for this person, including what information needs to be collected, and by when.
  * @property null|string $gender The person's gender (International regulations require either &quot;male&quot; or &quot;female&quot;).
  * @property bool $id_number_provided Whether the person's <code>id_number</code> was provided.
+ * @property bool $id_number_secondary_provided Whether the person's <code>id_number_secondary</code> was provided.
  * @property null|string $last_name The person's last name.
  * @property null|string $last_name_kana The Kana variation of the person's last name (Japan only).
  * @property null|string $last_name_kanji The Kanji variation of the person's last name (Japan only).
@@ -43,6 +44,7 @@ namespace Stripe;
  * @property null|string $nationality The country where the person is a national.
  * @property null|string $phone The person's phone number.
  * @property string $political_exposure Indicates if the person or any of their representatives, family members, or other closely related persons, declares that they hold or have held an important public job or function, in any jurisdiction.
+ * @property \Stripe\StripeObject $registered_address
  * @property \Stripe\StripeObject $relationship
  * @property null|\Stripe\StripeObject $requirements Information about the requirements for this person, including what information needs to be collected, and by when.
  * @property bool $ssn_last_4_provided Whether the last four digits of the person's Social Security number have been provided (U.S. only).

@@ -13,7 +13,7 @@ final class StripeObjectTest extends \Stripe\TestCase
     /** @var \ReflectionMethod */
     private $deepCopyReflector;
 
-    /** @var \ReflectionMethod */
+    /** @var \ReflectionProperty */
     private $optsReflector;
 
     /**
@@ -144,7 +144,7 @@ final class StripeObjectTest extends \Stripe\TestCase
             $s = new StripeObject();
             static::assertNull($s->nonexistent);
 
-            static::assertRegExp(
+            static::compatAssertMatchesRegularExpression(
                 '/Stripe Notice: Undefined property of Stripe\\\\StripeObject instance: nonexistent/',
                 \stream_get_contents($capture)
             );

@@ -8,6 +8,7 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount The amount, in %s.
+ * @property null|int $amount_excluding_tax The integer amount in %s representing the amount for this line item, excluding all tax and discounts.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|\Stripe\StripeObject[] $discount_amounts The amount of discount calculated per discount for this line item.
@@ -20,12 +21,14 @@ namespace Stripe;
  * @property null|\Stripe\Plan $plan The plan of the subscription, if the line item is a subscription or a proration.
  * @property null|\Stripe\Price $price The price of the line item.
  * @property bool $proration Whether this is a proration.
+ * @property null|\Stripe\StripeObject $proration_details Additional details for proration line items
  * @property null|int $quantity The quantity of the subscription, if the line item is a subscription or a proration.
  * @property null|string $subscription The subscription that the invoice item pertains to, if any.
  * @property string $subscription_item The subscription item that generated this invoice item. Left empty if the line item is not an explicit result of a subscription.
  * @property \Stripe\StripeObject[] $tax_amounts The amount of tax calculated per tax rate for this line item
  * @property \Stripe\TaxRate[] $tax_rates The tax rates which apply to the line item.
  * @property string $type A string identifying the type of the source of this line item, either an <code>invoiceitem</code> or a <code>subscription</code>.
+ * @property null|string $unit_amount_excluding_tax The amount in %s representing the unit amount for this line item, excluding all tax and discounts.
  */
 class InvoiceLineItem extends ApiResource
 {

@@ -20,8 +20,8 @@ namespace Stripe;
  * href="https://stripe.com/docs/billing/subscriptions/set-up-subscription">Set up
  * a subscription</a>, <a
  * href="https://stripe.com/docs/billing/invoices/create">create an invoice</a>,
- * and more about <a href="https://stripe.com/docs/billing/prices-guide">products
- * and prices</a>.
+ * and more about <a
+ * href="https://stripe.com/docs/products-prices/overview">products and prices</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -29,6 +29,8 @@ namespace Stripe;
  * @property string $billing_scheme Describes how to compute the price per period. Either <code>per_unit</code> or <code>tiered</code>. <code>per_unit</code> indicates that the fixed amount (specified in <code>unit_amount</code> or <code>unit_amount_decimal</code>) will be charged per unit in <code>quantity</code> (for prices with <code>usage_type=licensed</code>), or per unit of total usage (for prices with <code>usage_type=metered</code>). <code>tiered</code> indicates that the unit pricing will be computed using a tiering strategy as defined using the <code>tiers</code> and <code>tiers_mode</code> attributes.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property \Stripe\StripeObject $currency_options Prices defined in each available currency option. Each key must be a three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property null|\Stripe\StripeObject $custom_unit_amount When set, provides configuration for the amount to be adjusted by the customer during Checkout Sessions and Payment Links.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $lookup_key A lookup key used to retrieve prices dynamically from a static string. This may be up to 200 characters.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -50,6 +52,7 @@ class Price extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
+    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const BILLING_SCHEME_PER_UNIT = 'per_unit';
@@ -64,4 +67,19 @@ class Price extends ApiResource
 
     const TYPE_ONE_TIME = 'one_time';
     const TYPE_RECURRING = 'recurring';
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<Price> the price search results
+     */
+    public static function search($params = null, $opts = null)
+    {
+        $url = '/v1/prices/search';
+
+        return self::_searchResource($url, $params, $opts);
+    }
 }

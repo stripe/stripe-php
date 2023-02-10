@@ -154,8 +154,13 @@ class RequestOptions
         throw new \Stripe\Exception\InvalidArgumentException($message);
     }
 
+    /** @return string */
     private function redactedApiKey()
     {
+        if (null === $this->apiKey) {
+            return '';
+        }
+
         $pieces = \explode('_', $this->apiKey, 3);
         $last = \array_pop($pieces);
         $redactedLast = \strlen($last) > 4
