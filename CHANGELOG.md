@@ -1,5 +1,12 @@
 # Changelog
 
+## 10.7.0-beta.1 - 2023-02-16
+* [#1442](https://github.com/stripe/stripe-php/pull/1442) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `currency_conversion` on `Checkout.Session`
+  * Add support for `limits` on `FinancialConnections.Session`
+  * Remove support for `reference` on `Tax.Calculation`
+
 ## 10.6.0-beta.1 - 2023-02-02
 * [#1440](https://github.com/stripe/stripe-php/pull/1440) API Updates for beta branch
   * Updated stable APIs to the latest version
