@@ -25,11 +25,11 @@ namespace Stripe\Identity;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property \Stripe\StripeObject $document Result from a document check
- * @property \Stripe\StripeObject $id_number Result from an id_number check
+ * @property null|\Stripe\StripeObject $document Result from a document check
+ * @property null|\Stripe\StripeObject $id_number Result from an id_number check
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $options
- * @property \Stripe\StripeObject $selfie Result from a selfie check
+ * @property null|\Stripe\StripeObject $selfie Result from a selfie check
  * @property string $type Type of report.
  * @property null|string $verification_session ID of the VerificationSession that created this report.
  */

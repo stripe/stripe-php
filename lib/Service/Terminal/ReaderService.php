@@ -101,6 +101,22 @@ class ReaderService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Initiates a refund on a Reader.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Reader
+     */
+    public function refundPayment($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/terminal/readers/%s/refund_payment', $id), $params, $opts);
+    }
+
+    /**
      * Retrieves a <code>Reader</code> object.
      *
      * @param string $id

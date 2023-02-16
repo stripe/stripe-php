@@ -44,7 +44,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property string $account The connected account that originated the event.
+ * @property null|string $account The connected account that originated the event.
  * @property null|string $api_version The Stripe API version used to render <code>data</code>. <em>Note: This property is populated only for events on or after October 31, 2014</em>.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property \Stripe\StripeObject $data

@@ -10,13 +10,13 @@ namespace Stripe\Treasury;
  * the platform can control Features via the requested field.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property \Stripe\StripeObject $card_issuing Toggle settings for enabling/disabling a feature
- * @property \Stripe\StripeObject $deposit_insurance Toggle settings for enabling/disabling a feature
- * @property \Stripe\StripeObject $financial_addresses Settings related to Financial Addresses features on a Financial Account
- * @property \Stripe\StripeObject $inbound_transfers InboundTransfers contains inbound transfers features for a FinancialAccount.
- * @property \Stripe\StripeObject $intra_stripe_flows Toggle settings for enabling/disabling a feature
- * @property \Stripe\StripeObject $outbound_payments Settings related to Outbound Payments features on a Financial Account
- * @property \Stripe\StripeObject $outbound_transfers OutboundTransfers contains outbound transfers features for a FinancialAccount.
+ * @property null|\Stripe\StripeObject $card_issuing Toggle settings for enabling/disabling a feature
+ * @property null|\Stripe\StripeObject $deposit_insurance Toggle settings for enabling/disabling a feature
+ * @property null|\Stripe\StripeObject $financial_addresses Settings related to Financial Addresses features on a Financial Account
+ * @property null|\Stripe\StripeObject $inbound_transfers InboundTransfers contains inbound transfers features for a FinancialAccount.
+ * @property null|\Stripe\StripeObject $intra_stripe_flows Toggle settings for enabling/disabling a feature
+ * @property null|\Stripe\StripeObject $outbound_payments Settings related to Outbound Payments features on a Financial Account
+ * @property null|\Stripe\StripeObject $outbound_transfers OutboundTransfers contains outbound transfers features for a FinancialAccount.
  */
 class FinancialAccountFeatures extends \Stripe\ApiResource
 {

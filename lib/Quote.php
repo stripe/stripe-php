@@ -22,7 +22,7 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string|\Stripe\Customer $customer The customer which this quote belongs to. A customer is required before finalizing the quote. Once specified, it cannot be changed.
- * @property (string|\Stripe\TaxRate)[] $default_tax_rates The tax rates applied to this quote.
+ * @property null|(string|\Stripe\TaxRate)[] $default_tax_rates The tax rates applied to this quote.
  * @property null|string $description A description that will be displayed on the quote PDF.
  * @property (string|\Stripe\Discount)[] $discounts The discounts applied to this quote.
  * @property int $expires_at The date on which the quote will be canceled if in <code>open</code> or <code>draft</code> status. Measured in seconds since the Unix epoch.
@@ -31,7 +31,7 @@ namespace Stripe;
  * @property null|string $header A header that will be displayed on the quote PDF.
  * @property null|string|\Stripe\Invoice $invoice The invoice that was created from this quote.
  * @property null|\Stripe\StripeObject $invoice_settings All invoices will be billed using the specified settings.
- * @property \Stripe\Collection<\Stripe\LineItem> $line_items A list of items the customer is being quoted for.
+ * @property null|\Stripe\Collection<\Stripe\LineItem> $line_items A list of items the customer is being quoted for.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $number A unique number that identifies this particular quote. This number is assigned once the quote is <a href="https://stripe.com/docs/quotes/overview#finalize">finalized</a>.

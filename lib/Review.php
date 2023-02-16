@@ -22,7 +22,7 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property bool $open If <code>true</code>, the review needs action.
  * @property string $opened_reason The reason the review was opened. One of <code>rule</code> or <code>manual</code>.
- * @property string|\Stripe\PaymentIntent $payment_intent The PaymentIntent ID associated with this review, if one exists.
+ * @property null|string|\Stripe\PaymentIntent $payment_intent The PaymentIntent ID associated with this review, if one exists.
  * @property string $reason The reason the review is currently open or closed. One of <code>rule</code>, <code>manual</code>, <code>approved</code>, <code>refunded</code>, <code>refunded_as_fraud</code>, <code>disputed</code>, or <code>redacted</code>.
  * @property null|\Stripe\StripeObject $session Information related to the browsing session of the user who initiated the payment.
  */
