@@ -13,10 +13,10 @@ namespace Stripe\FinancialConnections;
  * @property null|\Stripe\StripeObject $account_holder The account holder for whom accounts are collected in this session.
  * @property \Stripe\Collection<\Stripe\FinancialConnections\Account> $accounts The accounts that were collected as part of this Session.
  * @property string $client_secret A value that will be passed to the client to launch the authentication flow.
- * @property \Stripe\StripeObject $filters
+ * @property null|\Stripe\StripeObject $filters
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string[] $permissions Permissions requested for accounts collected during this session.
- * @property string $return_url For webview integrations only. Upon completing OAuth login in the native browser, the user will be redirected to this URL to return to your app.
+ * @property null|string $return_url For webview integrations only. Upon completing OAuth login in the native browser, the user will be redirected to this URL to return to your app.
  */
 class Session extends \Stripe\ApiResource
 {

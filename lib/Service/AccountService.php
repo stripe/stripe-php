@@ -80,6 +80,12 @@ class AccountService extends \Stripe\Service\AbstractService
      * href="https://dashboard.stripe.com/account/applications/settings">register your
      * platform</a>.
      *
+     * If you’ve already collected information for your connected accounts, you <a
+     * href="/docs/connect/best-practices#onboarding">can pre-fill that information</a>
+     * when creating the account. Connect Onboarding won’t ask for the pre-filled
+     * information during account onboarding. You can pre-fill any information on the
+     * account.
+     *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
      *
@@ -281,9 +287,13 @@ class AccountService extends \Stripe\Service\AbstractService
     /**
      * Updates a <a href="/docs/connect/accounts">connected account</a> by setting the
      * values of the parameters passed. Any parameters not provided are left unchanged.
-     * Most parameters can be changed only for Custom accounts. (These are marked
-     * <strong>Custom Only</strong> below.) Parameters marked <strong>Custom and
-     * Express</strong> are not supported for Standard accounts.
+     *
+     * For Custom accounts, you can update any information on the account. For other
+     * accounts, you can update all information until that account has started to go
+     * through Connect Onboarding. Once you create an <a
+     * href="/docs/api/account_links">Account Link</a> for a Standard or Express
+     * account, some parameters can no longer be changed. These are marked as
+     * <strong>Custom Only</strong> or <strong>Custom and Express</strong> below.
      *
      * To update your own account, use the <a
      * href="https://dashboard.stripe.com/account">Dashboard</a>. Refer to our <a

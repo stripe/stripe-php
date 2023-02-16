@@ -725,16 +725,6 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Capability::class, $result);
     }
 
-    public function testResumeSubscription()
-    {
-        $this->expectsRequest('post', '/v1/subscriptions/sub_xxxxxxxxxxxxx/resume');
-        $result = $this->client->subscriptions->resume(
-            'sub_xxxxxxxxxxxxx',
-            ['proration_date' => 1675400000, 'proration_behavior' => 'always_invoice']
-        );
-        static::assertInstanceOf(\Stripe\Subscription::class, $result);
-    }
-
     public function testCreateLoginLink()
     {
         $this->expectsRequest(
@@ -881,6 +871,16 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\ApplicationFeeRefund::class, $result);
     }
 
+    public function testListSecret2()
+    {
+        $this->expectsRequest('get', '/v1/apps/secrets');
+        $result = $this->client->apps->secrets->all(
+            ['scope' => ['type' => 'account'], 'limit' => 2]
+        );
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\Apps\Secret::class, $result->data[0]);
+    }
+
     public function testCreateSecret2()
     {
         $this->expectsRequest('post', '/v1/apps/secrets');
@@ -979,7 +979,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
                 'amount' => 2000,
                 'currency' => 'usd',
                 'source' => 'tok_xxxx',
-                'description' => 'My First Test Charge (created for API docs)',
+                'description' => 'My First Test Charge (created for API docs at https://www.stripe.com/docs/api)',
             ]
         );
         static::assertInstanceOf(\Stripe\Charge::class, $result);
@@ -1033,7 +1033,6 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $result = $this->client->checkout->sessions->create(
             [
                 'success_url' => 'https://example.com/success',
-                'cancel_url' => 'https://example.com/cancel',
                 'line_items' => [['price' => 'price_xxxxxxxxxxxxx', 'quantity' => 2]],
                 'mode' => 'payment',
             ]
@@ -1209,7 +1208,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     {
         $this->expectsRequest('post', '/v1/customers');
         $result = $this->client->customers->create(
-            ['description' => 'My First Test Customer (created for API docs)']
+            [
+                'description' => 'My First Test Customer (created for API docs at https://www.stripe.com/docs/api)',
+            ]
         );
         static::assertInstanceOf(\Stripe\Customer::class, $result);
     }
@@ -1475,6 +1476,19 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
             '/v1/financial_connections/accounts/fca_xxxxxxxxxxxxx'
         );
         $result = $this->client->financialConnections->accounts->retrieve(
+            'fca_xxxxxxxxxxxxx',
+            []
+        );
+        static::assertInstanceOf(\Stripe\FinancialConnections\Account::class, $result);
+    }
+
+    public function testDisconnectAccount2()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/financial_connections/accounts/fca_xxxxxxxxxxxxx/disconnect'
+        );
+        $result = $this->client->financialConnections->accounts->disconnect(
             'fca_xxxxxxxxxxxxx',
             []
         );
@@ -1991,7 +2005,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
             [
                 'amount' => 2000,
                 'currency' => 'usd',
-                'payment_method_types' => ['card'],
+                'automatic_payment_methods' => ['enabled' => true],
             ]
         );
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $result);
@@ -2073,6 +2087,19 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $result);
     }
 
+    public function testVerifyMicrodepositsPaymentIntent2()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/payment_intents/pi_xxxxxxxxxxxxx/verify_microdeposits'
+        );
+        $result = $this->client->paymentIntents->verifyMicrodeposits(
+            'pi_xxxxxxxxxxxxx',
+            ['amounts' => [32, 45]]
+        );
+        static::assertInstanceOf(\Stripe\PaymentIntent::class, $result);
+    }
+
     public function testSearchPaymentIntent()
     {
         $this->expectsRequest('get', '/v1/payment_intents/search');
@@ -2135,8 +2162,8 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
                 'type' => 'card',
                 'card' => [
                     'number' => '4242424242424242',
-                    'exp_month' => 5,
-                    'exp_year' => 2023,
+                    'exp_month' => 8,
+                    'exp_year' => 2024,
                     'cvc' => '314',
                 ],
             ]
@@ -2755,6 +2782,19 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\SetupIntent::class, $result);
     }
 
+    public function testVerifyMicrodepositsSetupIntent2()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/setup_intents/seti_xxxxxxxxxxxxx/verify_microdeposits'
+        );
+        $result = $this->client->setupIntents->verifyMicrodeposits(
+            'seti_xxxxxxxxxxxxx',
+            ['amounts' => [32, 45]]
+        );
+        static::assertInstanceOf(\Stripe\SetupIntent::class, $result);
+    }
+
     public function testListShippingRate2()
     {
         $this->expectsRequest('get', '/v1/shipping_rates');
@@ -2929,7 +2969,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $result = $this->client->subscriptionSchedules->create(
             [
                 'customer' => 'cus_xxxxxxxxxxxxx',
-                'start_date' => 1652909005,
+                'start_date' => 1676070661,
                 'end_behavior' => 'release',
                 'phases' => [
                     [
@@ -3174,8 +3214,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
                 'address' => [
                     'line1' => '1234 Main Street',
                     'city' => 'San Francisco',
-                    'country' => 'US',
                     'postal_code' => '94111',
+                    'state' => 'CA',
+                    'country' => 'US',
                 ],
             ]
         );
@@ -3286,6 +3327,22 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Terminal\Reader::class, $result);
     }
 
+    public function testProcessSetupIntentReader()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/terminal/readers/tmr_xxxxxxxxxxxxx/process_setup_intent'
+        );
+        $result = $this->client->terminal->readers->processSetupIntent(
+            'tmr_xxxxxxxxxxxxx',
+            [
+                'setup_intent' => 'seti_xxxxxxxxxxxxx',
+                'customer_consent_collected' => true,
+            ]
+        );
+        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $result);
+    }
+
     public function testListTestClock2()
     {
         $this->expectsRequest('get', '/v1/test_helpers/test_clocks');
@@ -3337,7 +3394,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         );
         $result = $this->client->testHelpers->testClocks->advance(
             'clock_xxxxxxxxxxxxx',
-            ['frozen_time' => 1652390605]
+            ['frozen_time' => 1675552261]
         );
         static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result);
     }
@@ -3666,19 +3723,6 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Treasury\FinancialAccountFeatures::class, $result);
     }
 
-    public function testUpdateFeaturesFinancialAccount()
-    {
-        $this->expectsRequest(
-            'post',
-            '/v1/treasury/financial_accounts/fa_xxxxxxxxxxxxx/features'
-        );
-        $result = $this->client->treasury->financialAccounts->updateFeatures(
-            'fa_xxxxxxxxxxxxx',
-            ['card_issuing' => ['requested' => false]]
-        );
-        static::assertInstanceOf(\Stripe\Treasury\FinancialAccountFeatures::class, $result);
-    }
-
     public function testListInboundTransfer()
     {
         $this->expectsRequest('get', '/v1/treasury/inbound_transfers');
@@ -3748,7 +3792,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
                 'financial_account' => 'fa_xxxxxxxxxxxxx',
                 'amount' => 10000,
                 'currency' => 'usd',
-                'customer' => 'cu_xxxxxxxxxxxxx',
+                'customer' => 'cus_xxxxxxxxxxxxx',
                 'destination_payment_method' => 'pm_xxxxxxxxxxxxx',
                 'description' => 'OutboundPayment to a 3rd party',
             ]
@@ -3760,10 +3804,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     {
         $this->expectsRequest(
             'get',
-            '/v1/treasury/outbound_payments/obp_xxxxxxxxxxxxx'
+            '/v1/treasury/outbound_payments/bot_xxxxxxxxxxxxx'
         );
         $result = $this->client->treasury->outboundPayments->retrieve(
-            'obp_xxxxxxxxxxxxx',
+            'bot_xxxxxxxxxxxxx',
             []
         );
         static::assertInstanceOf(\Stripe\Treasury\OutboundPayment::class, $result);
@@ -3773,10 +3817,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     {
         $this->expectsRequest(
             'post',
-            '/v1/treasury/outbound_payments/obp_xxxxxxxxxxxxx/cancel'
+            '/v1/treasury/outbound_payments/bot_xxxxxxxxxxxxx/cancel'
         );
         $result = $this->client->treasury->outboundPayments->cancel(
-            'obp_xxxxxxxxxxxxx',
+            'bot_xxxxxxxxxxxxx',
             []
         );
         static::assertInstanceOf(\Stripe\Treasury\OutboundPayment::class, $result);

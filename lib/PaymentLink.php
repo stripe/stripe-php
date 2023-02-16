@@ -28,10 +28,11 @@ namespace Stripe;
  * @property string $billing_address_collection Configuration for collecting the customer's billing address.
  * @property null|\Stripe\StripeObject $consent_collection When set, provides configuration to gather active consent from customers.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property \Stripe\StripeObject[] $custom_fields Collect additional information from your customer using custom fields. Up to 2 fields are supported.
  * @property \Stripe\StripeObject $custom_text
  * @property string $customer_creation Configuration for Customer creation during checkout.
  * @property null|\Stripe\StripeObject $invoice_creation Configuration for creating invoice for payment mode payment links.
- * @property \Stripe\Collection<\Stripe\LineItem> $line_items The line items representing what is being sold.
+ * @property null|\Stripe\Collection<\Stripe\LineItem> $line_items The line items representing what is being sold.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string|\Stripe\Account $on_behalf_of The account on behalf of which to charge. See the <a href="https://support.stripe.com/questions/sending-invoices-on-behalf-of-connected-accounts">Connect documentation</a> for details.
