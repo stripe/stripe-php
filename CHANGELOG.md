@@ -1,5 +1,8 @@
 # Changelog
 
+## 10.6.1 - 2023-02-21
+* [#1443](https://github.com/stripe/stripe-php/pull/1443) Remove init.php from the list of ignored files
+
 ## 10.6.0 - 2023-02-16
 * [#1441](https://github.com/stripe/stripe-php/pull/1441) API Updates
   * Add support for `refund_payment` method on resource `Terminal.Reader`
