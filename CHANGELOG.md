@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.7.0 - 2023-02-23
+* [#1444](https://github.com/stripe/stripe-php/pull/1444) API Updates
+  * Add support for new value `igst` on enum `TaxRate.tax_type`
+
 ## 10.6.1 - 2023-02-21
 * [#1443](https://github.com/stripe/stripe-php/pull/1443) Remove init.php from the list of ignored files
 
