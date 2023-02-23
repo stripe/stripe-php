@@ -28,7 +28,7 @@ namespace Stripe\Issuing;
  * @property null|string $replacement_reason The reason why the previous card needed to be replaced.
  * @property null|\Stripe\StripeObject $shipping Where and how the card will be shipped.
  * @property \Stripe\StripeObject $spending_controls
- * @property string $status Whether authorizations can be approved on this card.
+ * @property string $status Whether authorizations can be approved on this card. May be blocked from activating cards depending on past-due Cardholder requirements. Defaults to <code>inactive</code>.
  * @property string $type The type of the card.
  * @property null|\Stripe\StripeObject $wallets Information relating to digital wallets (like Apple Pay and Google Pay).
  */
