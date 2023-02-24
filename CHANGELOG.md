@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.8.0-beta.1 - 2023-02-23
+* [#1445](https://github.com/stripe/stripe-php/pull/1445) API Updates for beta branch
+  * Updated stable APIs to the latest version
+
 ## 10.7.0 - 2023-02-23
 * [#1444](https://github.com/stripe/stripe-php/pull/1444) API Updates
   * Add support for new value `igst` on enum `TaxRate.tax_type`
