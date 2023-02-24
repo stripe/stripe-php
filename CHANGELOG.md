@@ -1,11 +1,30 @@
 # Changelog
 
+## 10.7.0 - 2023-02-23
+* [#1444](https://github.com/stripe/stripe-php/pull/1444) API Updates
+  * Add support for new value `igst` on enum `TaxRate.tax_type`
+
 ## 10.7.0-beta.1 - 2023-02-16
 * [#1442](https://github.com/stripe/stripe-php/pull/1442) API Updates for beta branch
   * Updated stable APIs to the latest version
   * Add support for `currency_conversion` on `Checkout.Session`
   * Add support for `limits` on `FinancialConnections.Session`
   * Remove support for `reference` on `Tax.Calculation`
+
+## 10.6.1 - 2023-02-21
+* [#1443](https://github.com/stripe/stripe-php/pull/1443) Remove init.php from the list of ignored files
+
+## 10.6.0 - 2023-02-16
+* [#1441](https://github.com/stripe/stripe-php/pull/1441) API Updates
+  * Add support for `refund_payment` method on resource `Terminal.Reader`
+  * Add support for `custom_fields` on `Checkout.Session` and `PaymentLink`
+* [#1236](https://github.com/stripe/stripe-php/pull/1236) subscription_proration_date not always presented in Invoice
+* [#1431](https://github.com/stripe/stripe-php/pull/1431) Fix: Do not use unbounded version constraint for `actions/checkout`
+* [#1436](https://github.com/stripe/stripe-php/pull/1436) Enhancement: Enable and configure `visibility_required` fixer
+* [#1432](https://github.com/stripe/stripe-php/pull/1432) Enhancement: Update `actions/cache`
+* [#1434](https://github.com/stripe/stripe-php/pull/1434) Fix: Remove parentheses
+* [#1433](https://github.com/stripe/stripe-php/pull/1433) Enhancement: Run tests on PHP 8.2
+* [#1438](https://github.com/stripe/stripe-php/pull/1438) Update .gitattributes
 
 ## 10.6.0-beta.1 - 2023-02-02
 * [#1440](https://github.com/stripe/stripe-php/pull/1440) API Updates for beta branch
