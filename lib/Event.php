@@ -74,6 +74,14 @@ class Event extends ApiResource
     const BILLING_PORTAL_CONFIGURATION_UPDATED = 'billing_portal.configuration.updated';
     const BILLING_PORTAL_SESSION_CREATED = 'billing_portal.session.created';
     const CAPABILITY_UPDATED = 'capability.updated';
+    const CAPITAL_FINANCING_OFFER_ACCEPTED = 'capital.financing_offer.accepted';
+    const CAPITAL_FINANCING_OFFER_CANCELED = 'capital.financing_offer.canceled';
+    const CAPITAL_FINANCING_OFFER_CREATED = 'capital.financing_offer.created';
+    const CAPITAL_FINANCING_OFFER_EXPIRED = 'capital.financing_offer.expired';
+    const CAPITAL_FINANCING_OFFER_FULLY_REPAID = 'capital.financing_offer.fully_repaid';
+    const CAPITAL_FINANCING_OFFER_PAID_OUT = 'capital.financing_offer.paid_out';
+    const CAPITAL_FINANCING_OFFER_REJECTED = 'capital.financing_offer.rejected';
+    const CAPITAL_FINANCING_OFFER_REPLACEMENT_CREATED = 'capital.financing_offer.replacement_created';
     const CAPITAL_FINANCING_TRANSACTION_CREATED = 'capital.financing_transaction.created';
     const CASH_BALANCE_FUNDS_AVAILABLE = 'cash_balance.funds_available';
     const CHARGE_CAPTURED = 'charge.captured';
