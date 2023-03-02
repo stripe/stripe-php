@@ -62,6 +62,8 @@ class ObjectTypes
         \Stripe\InvoiceLineItem::OBJECT_NAME => \Stripe\InvoiceLineItem::class,
         \Stripe\Issuing\Authorization::OBJECT_NAME => \Stripe\Issuing\Authorization::class,
         \Stripe\Issuing\Card::OBJECT_NAME => \Stripe\Issuing\Card::class,
+        \Stripe\Issuing\CardBundle::OBJECT_NAME => \Stripe\Issuing\CardBundle::class,
+        \Stripe\Issuing\CardDesign::OBJECT_NAME => \Stripe\Issuing\CardDesign::class,
         \Stripe\Issuing\CardDetails::OBJECT_NAME => \Stripe\Issuing\CardDetails::class,
         \Stripe\Issuing\Cardholder::OBJECT_NAME => \Stripe\Issuing\Cardholder::class,
         \Stripe\Issuing\Dispute::OBJECT_NAME => \Stripe\Issuing\Dispute::class,

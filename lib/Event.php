@@ -166,6 +166,9 @@ class Event extends ApiResource
     const ISSUING_AUTHORIZATION_UPDATED = 'issuing_authorization.updated';
     const ISSUING_CARD_CREATED = 'issuing_card.created';
     const ISSUING_CARD_UPDATED = 'issuing_card.updated';
+    const ISSUING_CARD_DESIGN_ACTIVATED = 'issuing_card_design.activated';
+    const ISSUING_CARD_DESIGN_DEACTIVATED = 'issuing_card_design.deactivated';
+    const ISSUING_CARD_DESIGN_UPDATED = 'issuing_card_design.updated';
     const ISSUING_CARDHOLDER_CREATED = 'issuing_cardholder.created';
     const ISSUING_CARDHOLDER_UPDATED = 'issuing_cardholder.updated';
     const ISSUING_DISPUTE_CLOSED = 'issuing_dispute.closed';
