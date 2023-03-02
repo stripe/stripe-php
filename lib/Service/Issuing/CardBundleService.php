@@ -1,0 +1,40 @@
+<?php
+
+// File generated from our OpenAPI spec
+
+namespace Stripe\Service\Issuing;
+
+class CardBundleService extends \Stripe\Service\AbstractService
+{
+    /**
+     * Returns a list of card bundle objects. The objects are sorted in descending
+     * order by creation date, with the most recently created object appearing first.
+     *
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Issuing\CardBundle>
+     */
+    public function all($params = null, $opts = null)
+    {
+        return $this->requestCollection('get', '/v1/issuing/card_bundles', $params, $opts);
+    }
+
+    /**
+     * Retrieves a card bundle object.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\CardBundle
+     */
+    public function retrieve($id, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v1/issuing/card_bundles/%s', $id), $params, $opts);
+    }
+}
