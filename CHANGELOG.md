@@ -1,5 +1,13 @@
 # Changelog
 
+## 10.9.0-beta.1 - 2023-03-02
+* [#1448](https://github.com/stripe/stripe-php/pull/1448) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for new resources `Issuing.CardBundle` and `Issuing.CardDesign`
+  * Add support for `all` and `retrieve` methods on resource `CardBundle`
+  * Add support for `all`, `retrieve`, and `update` methods on resource `CardDesign`
+  * Add support for `card_design` on `Issuing.Card`
+
 ## 10.8.0 - 2023-03-02
 * [#1447](https://github.com/stripe/stripe-php/pull/1447) API Updates
   * Add support for `reconciliation_status` on `Payout`
