@@ -1,5 +1,10 @@
 # Changelog
 
+## 10.8.0 - 2023-03-02
+* [#1447](https://github.com/stripe/stripe-php/pull/1447) API Updates
+  * Add support for `reconciliation_status` on `Payout`
+  * Add support for new value `lease_tax` on enum `TaxRate.tax_type`
+
 ## 10.7.0 - 2023-02-23
 * [#1444](https://github.com/stripe/stripe-php/pull/1444) API Updates
   * Add support for new value `igst` on enum `TaxRate.tax_type`
