@@ -1,5 +1,13 @@
 # Changelog
 
+## 10.10.0-beta.1 - 2023-03-09
+* [#1451](https://github.com/stripe/stripe-php/pull/1451) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Remove support for `list_transactions` method on resource `Tax.Transaction`
+  * Change type of `SubscriptionSchedule.applies_to` from `nullable(QuotesResourceQuoteLinesAppliesTo)` to `QuotesResourceQuoteLinesAppliesTo`
+  * Add support for `tax_summary` on `Tax.Calculation`
+  * Remove support for `tax_breakdown` on `Tax.Calculation`
+
 ## 10.9.0 - 2023-03-09
 * [#1450](https://github.com/stripe/stripe-php/pull/1450) API Updates
   * Add support for `cancellation_details` on `Subscription`
