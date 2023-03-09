@@ -68,22 +68,4 @@ class Transaction extends \Stripe\ApiResource
 
         return $obj;
     }
-
-    /**
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection<\Stripe\Tax\Transaction> list of TaxProductResourceTaxTransactions
-     */
-    public static function allTransactions($params = null, $opts = null)
-    {
-        $url = static::classUrl();
-        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
-        $obj->setLastResponse($response);
-
-        return $obj;
-    }
 }

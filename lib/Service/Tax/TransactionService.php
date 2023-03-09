@@ -23,21 +23,6 @@ class TransactionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Lists Tax Transaction objects.
-     *
-     * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection<\Stripe\Tax\Transaction>
-     */
-    public function allTransactions($params = null, $opts = null)
-    {
-        return $this->requestCollection('get', '/v1/tax/transactions', $params, $opts);
-    }
-
-    /**
      * Creates a Tax <code>Transaction</code> from a calculation.
      *
      * @param null|array $params
