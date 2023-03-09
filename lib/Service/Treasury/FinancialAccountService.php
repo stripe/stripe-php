@@ -62,7 +62,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Treasury\FinancialAccount
+     * @return \Stripe\Treasury\FinancialAccountFeatures
      */
     public function retrieveFeatures($id, $params = null, $opts = null)
     {
@@ -94,7 +94,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Treasury\FinancialAccount
+     * @return \Stripe\Treasury\FinancialAccountFeatures
      */
     public function updateFeatures($id, $params = null, $opts = null)
     {

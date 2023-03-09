@@ -1,5 +1,12 @@
 # Changelog
 
+## 10.9.0 - 2023-03-09
+* [#1450](https://github.com/stripe/stripe-php/pull/1450) API Updates
+  * Add support for `cancellation_details` on `Subscription`
+  * Fix return types on custom methods (extends https://github.com/stripe/stripe-php/pull/1446)
+  
+* [#1446](https://github.com/stripe/stripe-php/pull/1446) stripe->customers->retrievePaymentMethod returns the wrong class (type hint)
+
 ## 10.9.0-beta.1 - 2023-03-02
 * [#1448](https://github.com/stripe/stripe-php/pull/1448) API Updates for beta branch
   * Updated stable APIs to the latest version
