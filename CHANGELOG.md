@@ -1,5 +1,8 @@
 # Changelog
 
+## 10.9.1 - 2023-03-14
+* [#1453](https://github.com/stripe/stripe-php/pull/1453) Restore StripeClient.getService
+
 ## 10.9.0 - 2023-03-09
 * [#1450](https://github.com/stripe/stripe-php/pull/1450) API Updates
   * Add support for `cancellation_details` on `Subscription`
