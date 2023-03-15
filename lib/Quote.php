@@ -230,6 +230,7 @@ class Quote extends ApiResource
 
     /**
      * @param string $id
+     * @param string $preview_invoice
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -237,9 +238,9 @@ class Quote extends ApiResource
      *
      * @return \Stripe\Collection<\Stripe\InvoiceLineItem> list of InvoiceLineItems
      */
-    public static function previewInvoiceLines($id, $params = null, $opts = null)
+    public static function previewInvoiceLines($id, $preview_invoice, $params = null, $opts = null)
     {
-        $url = static::resourceUrl($id) . '/preview_invoice_lines';
+        $url = static::resourceUrl($id) . '/preview_invoices/' . $preview_invoice . '/lines';
         list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);

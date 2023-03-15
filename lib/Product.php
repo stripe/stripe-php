@@ -13,9 +13,8 @@ namespace Stripe;
  *
  * Related guides: <a
  * href="https://stripe.com/docs/billing/subscriptions/set-up-subscription">Set up
- * a subscription</a>, <a
- * href="https://stripe.com/docs/payments/payment-links/overview">share a Payment
- * Link</a>, <a
+ * a subscription</a>, <a href="https://stripe.com/docs/payment-links">share a
+ * Payment Link</a>, <a
  * href="https://stripe.com/docs/payments/accept-a-payment#create-product-prices-upfront">accept
  * payments with Checkout</a>, and more about <a
  * href="https://stripe.com/docs/products-prices/overview">Products and Prices</a>
