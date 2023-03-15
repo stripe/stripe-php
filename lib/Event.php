@@ -182,6 +182,7 @@ class Event extends ApiResource
     const PAYOUT_CREATED = 'payout.created';
     const PAYOUT_FAILED = 'payout.failed';
     const PAYOUT_PAID = 'payout.paid';
+    const PAYOUT_RECONCILIATION_COMPLETED = 'payout.reconciliation_completed';
     const PAYOUT_UPDATED = 'payout.updated';
     const PERSON_CREATED = 'person.created';
     const PERSON_DELETED = 'person.deleted';
