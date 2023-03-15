@@ -23,6 +23,8 @@ class ObjectTypes
         \Stripe\BillingPortal\Configuration::OBJECT_NAME => \Stripe\BillingPortal\Configuration::class,
         \Stripe\BillingPortal\Session::OBJECT_NAME => \Stripe\BillingPortal\Session::class,
         \Stripe\Capability::OBJECT_NAME => \Stripe\Capability::class,
+        \Stripe\Capital\FinancingOffer::OBJECT_NAME => \Stripe\Capital\FinancingOffer::class,
+        \Stripe\Capital\FinancingSummary::OBJECT_NAME => \Stripe\Capital\FinancingSummary::class,
         \Stripe\Capital\FinancingTransaction::OBJECT_NAME => \Stripe\Capital\FinancingTransaction::class,
         \Stripe\Card::OBJECT_NAME => \Stripe\Card::class,
         \Stripe\CashBalance::OBJECT_NAME => \Stripe\CashBalance::class,
