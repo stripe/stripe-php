@@ -44,6 +44,7 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string|\Stripe\StripeObject $application ID of the Connect application that created the SetupIntent.
  * @property null|bool $attach_to_self <p>If present, the SetupIntent's payment method will be attached to the in-context Stripe Account.</p><p>It can only be used for this Stripe Account’s own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer.</p>
+ * @property null|\Stripe\StripeObject $automatic_payment_methods Settings for automatic payment methods compatible with this Setup Intent
  * @property null|string $cancellation_reason Reason for cancellation of this SetupIntent, one of <code>abandoned</code>, <code>requested_by_customer</code>, or <code>duplicate</code>.
  * @property null|string $client_secret <p>The client secret of this SetupIntent. Used for client-side retrieval using a publishable key.</p><p>The client secret can be used to complete payment setup from your frontend. It should not be stored, logged, or exposed to anyone other than the customer. Make sure that you have TLS enabled on any page that includes the client secret.</p>
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
