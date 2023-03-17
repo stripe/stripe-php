@@ -1,5 +1,16 @@
 # Changelog
 
+## 10.11.0-beta.1 - 2023-03-16
+* [#1456](https://github.com/stripe/stripe-php/pull/1456) API Updates
+  * Add support for `create_from_calculation` method on resource `Tax.Transaction`
+  * Change type of `Invoice.applies_to` from `nullable(QuotesResourceQuoteLinesAppliesTo)` to `QuotesResourceQuoteLinesAppliesTo`
+  * Add support for `shipping_cost` on `Tax.Calculation` and `Tax.Transaction`
+  * Add support for `tax_breakdown` on `Tax.Calculation`
+  * Remove support for `tax_summary` on `Tax.Calculation`
+  
+  
+  
+
 ## 10.10.0-beta.1 - 2023-03-09
 * [#1451](https://github.com/stripe/stripe-php/pull/1451) API Updates for beta branch
   * Updated stable APIs to the latest version
