@@ -38,6 +38,21 @@ class TransactionService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Creates a Tax <code>Transaction</code> from a calculation.
+     *
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Tax\Transaction
+     */
+    public function createFromCalculation($params = null, $opts = null)
+    {
+        return $this->request('post', '/v1/tax/transactions/create_from_calculation', $params, $opts);
+    }
+
+    /**
      * Partially or fully reverses a previously created <code>Transaction</code>.
      *
      * @param null|array $params

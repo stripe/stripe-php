@@ -17,10 +17,11 @@ namespace Stripe\Tax;
  * @property null|int $expires_at Timestamp of date at which the tax calculation will expire. Empty if the calculation is an unsaved preview.
  * @property null|\Stripe\Collection<\Stripe\LineItem> $line_items The list of items the customer is purchasing.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property null|\Stripe\StripeObject $shipping_cost The shipping cost details for the calculation.
  * @property int $tax_amount_exclusive The amount of tax to be collected on top of the line item prices.
  * @property int $tax_amount_inclusive The amount of tax already included in the line item prices.
+ * @property \Stripe\StripeObject[] $tax_breakdown Breakdown of individual tax amounts that add up to the total.
  * @property int $tax_date Timestamp of date at which the tax rules and rates in effect applies for the calculation.
- * @property \Stripe\StripeObject[] $tax_summary Summary of individual tax amounts that add up to the total.
  */
 class Calculation extends \Stripe\ApiResource
 {

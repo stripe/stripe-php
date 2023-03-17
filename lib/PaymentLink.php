@@ -14,8 +14,8 @@ namespace Stripe;
  * href="https://stripe.com/docs/api/events/types#event_types-checkout.session.completed">checkout
  * session events</a> to track payments through payment links.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/payments/payment-links/api">Payment Links API</a>
+ * Related guide: <a href="https://stripe.com/docs/payment-links">Payment Links
+ * API</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

@@ -19,6 +19,7 @@ namespace Stripe\Tax;
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $reference A custom unique identifier, such as 'myOrder_123'.
  * @property null|\Stripe\StripeObject $reversal If <code>type=reversal</code>, contains information about what was reversed.
+ * @property null|\Stripe\StripeObject $shipping_cost The shipping cost details for the transaction.
  * @property int $tax_date Timestamp of date at which the tax rules and rates in effect applies for the calculation.
  * @property string $type If <code>reversal</code>, this transaction reverses an earlier transaction.
  */
@@ -31,6 +32,24 @@ class Transaction extends \Stripe\ApiResource
 
     const TYPE_REVERSAL = 'reversal';
     const TYPE_TRANSACTION = 'transaction';
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Tax\Transaction the created transaction
+     */
+    public static function createFromCalculation($params = null, $opts = null)
+    {
+        $url = static::classUrl() . '/create_from_calculation';
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 
     /**
      * @param null|array $params
