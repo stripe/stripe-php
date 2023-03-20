@@ -4022,4 +4022,19 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         );
         static::assertInstanceOf(\Stripe\Tax\Transaction::class, $result);
     }
+
+    public function testPreviewInvoiceLinesQuote()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/quotes/qt_xyz/preview_invoices/in_xyz/lines'
+        );
+        $result = $this->client->quotes->previewInvoiceLines(
+            'qt_xyz',
+            'in_xyz',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\InvoiceLineItem::class, $result->data[0]);
+    }
 }
