@@ -141,8 +141,9 @@ jobs:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
           COVERALLS_FLAG_NAME: php-${{ matrix.php-version }}-${{ matrix.env }}
 
+  publish:
   # Doesn't actually publish. The publish happens via a packagist webhook configured in the Github UI. But we still display a message here
-  - name: Publish
+    name: Publish
     if: >-
       (github.event_name == 'workflow_dispatch' || github.event_name == 'push') &&
       startsWith(github.ref, 'refs/tags/v') &&
