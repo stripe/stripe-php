@@ -12,7 +12,6 @@ test: vendor
 .PHONY: test
 
 ci-test: vendor
-	php --version
 	./build.php $$AUTOLOAD
 
 fmt: vendor
