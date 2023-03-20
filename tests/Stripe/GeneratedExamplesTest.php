@@ -4010,16 +4010,4 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         );
         static::assertInstanceOf(\Stripe\WebhookEndpoint::class, $result);
     }
-
-    public function testCreateFromCalculationTransaction()
-    {
-        $this->expectsRequest(
-            'post',
-            '/v1/tax/transactions/create_from_calculation'
-        );
-        $result = $this->client->tax->transactions->createFromCalculation(
-            ['calculation' => 'xxx', 'reference' => 'yyy']
-        );
-        static::assertInstanceOf(\Stripe\Tax\Transaction::class, $result);
-    }
 }
