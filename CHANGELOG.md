@@ -1,5 +1,15 @@
 # Changelog
 
+## 10.11.0 - 2023-03-23
+* [#1458](https://github.com/stripe/stripe-php/pull/1458) Update generated code
+  * Add support for new resources `Tax.CalculationLineItem`, `Tax.Calculation`, `Tax.TransactionLineItem`, and `Tax.Transaction`
+  * Add support for `create` and `list_line_items` methods on resource `Calculation`
+  * Add support for `create_from_calculation`, `create_reversal`, `create`, `list_line_items`, and `retrieve` methods on resource `Transaction`
+  * Add support for `currency_conversion` on `Checkout.Session`
+  * Add support for new value `automatic_async` on enum `PaymentIntent.capture_method`
+  * Add support for new value `link` on enum `PaymentLink.payment_method_types[]`
+  * Add support for `automatic_payment_methods` on `SetupIntent`
+
 ## 10.10.0 - 2023-03-16
 * [#1457](https://github.com/stripe/stripe-php/pull/1457) API Updates
   * Add support for `future_requirements` and `requirements` on `BankAccount`
@@ -19,7 +29,7 @@
 * [#1450](https://github.com/stripe/stripe-php/pull/1450) API Updates
   * Add support for `cancellation_details` on `Subscription`
   * Fix return types on custom methods (extends https://github.com/stripe/stripe-php/pull/1446)
-  
+
 * [#1446](https://github.com/stripe/stripe-php/pull/1446) stripe->customers->retrievePaymentMethod returns the wrong class (type hint)
 
 ## 10.8.0 - 2023-03-02
