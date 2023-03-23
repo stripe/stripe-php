@@ -11,6 +11,10 @@ test: vendor
 	vendor/bin/phpunit
 .PHONY: test
 
+ci-test: vendor
+	./build.php $$AUTOLOAD
+.PHONY: ci-test
+
 fmt: vendor
 	PHP_CS_FIXER_IGNORE_ENV=true vendor/bin/php-cs-fixer fix -v --using-cache=no
 .PHONY: fmt
