@@ -4023,6 +4023,14 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Tax\Transaction::class, $result);
     }
 
+    public function testListLineItemsCalculation()
+    {
+        $this->expectsRequest('get', '/v1/tax/calculations/xxx/line_items');
+        $result = $this->client->tax->calculations->allLineItems('xxx', []);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\Tax\CalculationLineItem::class, $result->data[0]);
+    }
+
     public function testPreviewInvoiceLinesQuote()
     {
         $this->expectsRequest(
