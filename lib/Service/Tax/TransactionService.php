@@ -15,7 +15,7 @@ class TransactionService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\Tax\Transaction>
+     * @return \Stripe\Collection<\Stripe\Tax\TransactionLineItem>
      */
     public function allLineItems($id, $params = null, $opts = null)
     {
