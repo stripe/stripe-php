@@ -1,5 +1,13 @@
 # Changelog
 
+## 10.12.0-beta.1 - 2023-03-23
+* [#1459](https://github.com/stripe/stripe-php/pull/1459) Update generated code for beta (new)
+  * Add support for new resources `Tax.CalculationLineItem` and `Tax.TransactionLineItem`
+  * Add support for `collect_inputs` method on resource `Terminal.Reader`
+  * Add support for `financing_offer` on `Capital.FinancingSummary`
+  * Add support for new value `link` on enum `PaymentLink.payment_method_types[]`
+  * Add support for `automatic_payment_methods` on `SetupIntent`
+
 ## 10.11.0-beta.1 - 2023-03-16
 * [#1456](https://github.com/stripe/stripe-php/pull/1456) API Updates
   * Add support for `create_from_calculation` method on resource `Tax.Transaction`
@@ -7,7 +15,7 @@
   * Add support for `shipping_cost` on `Tax.Calculation` and `Tax.Transaction`
   * Add support for `tax_breakdown` on `Tax.Calculation`
   * Remove support for `tax_summary` on `Tax.Calculation`
-  
+
 
 ## 10.10.0-beta.1 - 2023-03-09
 * [#1451](https://github.com/stripe/stripe-php/pull/1451) API Updates for beta branch
@@ -37,7 +45,7 @@
 * [#1450](https://github.com/stripe/stripe-php/pull/1450) API Updates
   * Add support for `cancellation_details` on `Subscription`
   * Fix return types on custom methods (extends https://github.com/stripe/stripe-php/pull/1446)
-  
+
 * [#1446](https://github.com/stripe/stripe-php/pull/1446) stripe->customers->retrievePaymentMethod returns the wrong class (type hint)
 
 ## 10.9.0-beta.1 - 2023-03-02
