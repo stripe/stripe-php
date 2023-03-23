@@ -5,8 +5,7 @@
 namespace Stripe\Tax;
 
 /**
- * A Tax <code>Transaction</code> records the tax collected from or refunded to
- * your customer.
+ * A Tax transaction records the tax collected from or refunded to your customer.
  *
  * @property string $id Unique identifier for the transaction.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
