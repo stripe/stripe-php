@@ -8,8 +8,6 @@
   * Add support for `tax_breakdown` on `Tax.Calculation`
   * Remove support for `tax_summary` on `Tax.Calculation`
   
-  
-  
 
 ## 10.10.0-beta.1 - 2023-03-09
 * [#1451](https://github.com/stripe/stripe-php/pull/1451) API Updates for beta branch
@@ -18,6 +16,22 @@
   * Change type of `SubscriptionSchedule.applies_to` from `nullable(QuotesResourceQuoteLinesAppliesTo)` to `QuotesResourceQuoteLinesAppliesTo`
   * Add support for `tax_summary` on `Tax.Calculation`
   * Remove support for `tax_breakdown` on `Tax.Calculation`
+
+
+## 10.10.0 - 2023-03-16
+* [#1457](https://github.com/stripe/stripe-php/pull/1457) API Updates
+  * Add support for `future_requirements` and `requirements` on `BankAccount`
+  * Add support for new value `automatic_async` on enum `PaymentIntent.capture_method`
+  * Add support for new value `cashapp` on enum `PaymentLink.payment_method_types[]`
+  * Add support for `cashapp` on `PaymentMethod`
+  * Add support for new value `cashapp` on enum `PaymentMethod.type`
+* [#1454](https://github.com/stripe/stripe-php/pull/1454) Update generated code (new)
+  * Add support for new value `cashapp` on enum `PaymentLink.payment_method_types[]`
+  * Add support for `cashapp` on `PaymentMethod`
+  * Add support for new value `cashapp` on enum `PaymentMethod.type`
+
+## 10.9.1 - 2023-03-14
+* [#1453](https://github.com/stripe/stripe-php/pull/1453) Restore StripeClient.getService
 
 ## 10.9.0 - 2023-03-09
 * [#1450](https://github.com/stripe/stripe-php/pull/1450) API Updates
