@@ -15,7 +15,7 @@ class CalculationService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\LineItem>
+     * @return \Stripe\Collection<\Stripe\Tax\CalculationLineItem>
      */
     public function allLineItems($id, $params = null, $opts = null)
     {

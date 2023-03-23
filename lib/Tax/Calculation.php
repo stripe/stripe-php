@@ -14,8 +14,8 @@ namespace Stripe\Tax;
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $customer The ID of an existing <a href="https://stripe.com/docs/api/customers/object">Customer</a> used for the resource.
  * @property \Stripe\StripeObject $customer_details
- * @property null|int $expires_at Timestamp of date at which the tax calculation will expire. Empty if the calculation is an unsaved preview.
- * @property null|\Stripe\Collection<\Stripe\LineItem> $line_items The list of items the customer is purchasing.
+ * @property null|int $expires_at Timestamp of date at which the tax calculation will expire.
+ * @property null|\Stripe\Collection<\Stripe\Tax\CalculationLineItem> $line_items The list of items the customer is purchasing.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $shipping_cost The shipping cost details for the calculation.
  * @property int $tax_amount_exclusive The amount of tax to be collected on top of the line item prices.
@@ -36,7 +36,7 @@ class Calculation extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\LineItem> list of TaxProductResourceTaxCalculationLineItems
+     * @return \Stripe\Collection<\Stripe\Tax\CalculationLineItem> list of TaxProductResourceTaxCalculationLineItems
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {

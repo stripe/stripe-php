@@ -38,6 +38,22 @@ class ReaderService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Initiates an input collection flow on a Reader.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Reader
+     */
+    public function collectInputs($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/terminal/readers/%s/collect_inputs', $id), $params, $opts);
+    }
+
+    /**
      * Creates a new <code>Reader</code> object.
      *
      * @param null|array $params
