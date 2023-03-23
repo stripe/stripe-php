@@ -14,7 +14,7 @@ namespace Stripe\Tax;
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $customer The ID of an existing <a href="https://stripe.com/docs/api/customers/object">Customer</a> used for the resource.
  * @property \Stripe\StripeObject $customer_details
- * @property null|\Stripe\Collection<\Stripe\LineItem> $line_items The tax collected or refunded, by line item.
+ * @property null|\Stripe\Collection<\Stripe\StripeObject> $line_items The tax collected or refunded, by line item.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $reference A custom unique identifier, such as 'myOrder_123'.
@@ -76,7 +76,7 @@ class Transaction extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\LineItem> list of TaxProductResourceTaxTransactionLineItems
+     * @return \Stripe\Collection<\Stripe\Tax\TransactionLineItem> list of TaxProductResourceTaxTransactionLineItems
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {
