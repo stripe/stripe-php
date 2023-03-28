@@ -38,6 +38,7 @@ class Registration extends \Stripe\ApiResource
     const STATUS_SCHEDULED = 'scheduled';
 
     const TYPE_DOMESTIC_SMALL_SELLER = 'domestic_small_seller';
+    const TYPE_IOSS = 'ioss';
     const TYPE_SIMPLIFIED = 'simplified';
     const TYPE_STANDARD = 'standard';
     const TYPE_VAT_OSS_NON_UNION = 'vat_oss_non_union';
