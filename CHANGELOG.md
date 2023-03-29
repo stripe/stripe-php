@@ -8,6 +8,16 @@
   * Add support for new value `link` on enum `PaymentLink.payment_method_types[]`
   * Add support for `automatic_payment_methods` on `SetupIntent`
 
+## 10.11.0 - 2023-03-23
+* [#1458](https://github.com/stripe/stripe-php/pull/1458) Update generated code
+  * Add support for new resources `Tax.CalculationLineItem`, `Tax.Calculation`, `Tax.TransactionLineItem`, and `Tax.Transaction`
+  * Add support for `create` and `list_line_items` methods on resource `Calculation`
+  * Add support for `create_from_calculation`, `create_reversal`, `create`, `list_line_items`, and `retrieve` methods on resource `Transaction`
+  * Add support for `currency_conversion` on `Checkout.Session`
+  * Add support for new value `automatic_async` on enum `PaymentIntent.capture_method`
+  * Add support for new value `link` on enum `PaymentLink.payment_method_types[]`
+  * Add support for `automatic_payment_methods` on `SetupIntent`
+
 ## 10.11.0-beta.1 - 2023-03-16
 * [#1456](https://github.com/stripe/stripe-php/pull/1456) API Updates
   * Add support for `create_from_calculation` method on resource `Tax.Transaction`
@@ -15,16 +25,6 @@
   * Add support for `shipping_cost` on `Tax.Calculation` and `Tax.Transaction`
   * Add support for `tax_breakdown` on `Tax.Calculation`
   * Remove support for `tax_summary` on `Tax.Calculation`
-
-
-## 10.10.0-beta.1 - 2023-03-09
-* [#1451](https://github.com/stripe/stripe-php/pull/1451) API Updates for beta branch
-  * Updated stable APIs to the latest version
-  * Remove support for `list_transactions` method on resource `Tax.Transaction`
-  * Change type of `SubscriptionSchedule.applies_to` from `nullable(QuotesResourceQuoteLinesAppliesTo)` to `QuotesResourceQuoteLinesAppliesTo`
-  * Add support for `tax_summary` on `Tax.Calculation`
-  * Remove support for `tax_breakdown` on `Tax.Calculation`
-
 
 ## 10.10.0 - 2023-03-16
 * [#1457](https://github.com/stripe/stripe-php/pull/1457) API Updates
@@ -37,6 +37,14 @@
   * Add support for new value `cashapp` on enum `PaymentLink.payment_method_types[]`
   * Add support for `cashapp` on `PaymentMethod`
   * Add support for new value `cashapp` on enum `PaymentMethod.type`
+
+## 10.10.0-beta.1 - 2023-03-09
+* [#1451](https://github.com/stripe/stripe-php/pull/1451) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Remove support for `list_transactions` method on resource `Tax.Transaction`
+  * Change type of `SubscriptionSchedule.applies_to` from `nullable(QuotesResourceQuoteLinesAppliesTo)` to `QuotesResourceQuoteLinesAppliesTo`
+  * Add support for `tax_summary` on `Tax.Calculation`
+  * Remove support for `tax_breakdown` on `Tax.Calculation`
 
 ## 10.9.1 - 2023-03-14
 * [#1453](https://github.com/stripe/stripe-php/pull/1453) Restore StripeClient.getService

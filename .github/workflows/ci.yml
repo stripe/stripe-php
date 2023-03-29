@@ -1,21 +1,22 @@
 name: CI
 
 on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch: {}
   push:
     branches:
       - master
       - beta
       - sdk-release/**
       - feature/**
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+*
   pull_request:
     branches:
       - master
       - beta
       - sdk-release/**
       - feature/**
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 
 jobs:
   php-cs-fixer:
