@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.13.0-beta.1 - 2023-03-30
+* [#1469](https://github.com/stripe/stripe-php/pull/1469) Update generated code
+  * Add support for new value `ioss` on enum `Tax.Registration.type`
+
 ## 10.12.0-beta.1 - 2023-03-23
 * [#1459](https://github.com/stripe/stripe-php/pull/1459) Update generated code for beta (new)
   * Add support for new resources `Tax.CalculationLineItem` and `Tax.TransactionLineItem`
