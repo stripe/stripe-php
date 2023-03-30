@@ -149,7 +149,6 @@ class Invoice extends ApiResource
     const COLLECTION_METHOD_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const COLLECTION_METHOD_SEND_INVOICE = 'send_invoice';
 
-    const STATUS_DELETED = 'deleted';
     const STATUS_DRAFT = 'draft';
     const STATUS_OPEN = 'open';
     const STATUS_PAID = 'paid';

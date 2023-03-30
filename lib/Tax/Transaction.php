@@ -26,7 +26,6 @@ class Transaction extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'tax.transaction';
 
-    use \Stripe\ApiOperations\Create;
     use \Stripe\ApiOperations\Retrieve;
 
     const TYPE_REVERSAL = 'reversal';
