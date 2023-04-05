@@ -4,6 +4,10 @@
 * [#1469](https://github.com/stripe/stripe-php/pull/1469) Update generated code
   * Add support for new value `ioss` on enum `Tax.Registration.type`
 
+## 10.12.1 - 2023-04-04
+* [#1473](https://github.com/stripe/stripe-php/pull/1473) Update generated code
+  * Add back `deleted` from `Invoice.status`.
+
 ## 10.12.0 - 2023-03-30
 * [#1470](https://github.com/stripe/stripe-php/pull/1470) Update generated code
   * Remove support for `create` method on resource `Tax.Transaction`
