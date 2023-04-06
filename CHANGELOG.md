@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.13.0-beta.2 - 2023-04-06
+* [#1472](https://github.com/stripe/stripe-php/pull/1472) Update generated code for beta
+  * Updated stable APIs to the latest version
+
 ## 10.13.0-beta.1 - 2023-03-30
 * [#1469](https://github.com/stripe/stripe-php/pull/1469) Update generated code
   * Add support for new value `ioss` on enum `Tax.Registration.type`
