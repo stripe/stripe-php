@@ -21,7 +21,7 @@ namespace Stripe;
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users. (Available on non-card refunds only)
  * @property null|string|\Stripe\BalanceTransaction $failure_balance_transaction If the refund failed, this balance transaction describes the adjustment made on your account balance that reverses the initial balance transaction.
  * @property null|string $failure_reason If the refund failed, the reason for refund failure if known. Possible values are <code>lost_or_stolen_card</code>, <code>expired_or_canceled_card</code>, <code>charge_for_pending_refund_disputed</code>, <code>insufficient_funds</code>, <code>declined</code>, <code>merchant_request</code> or <code>unknown</code>.
- * @property null|string $instructions_email Email to which refund instructions, if required, are sent to.
+ * @property null|string $instructions_email For payment methods without native refund support (e.g., Konbini, PromptPay), email for the customer to receive refund instructions.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|\Stripe\StripeObject $next_action
  * @property null|string|\Stripe\PaymentIntent $payment_intent ID of the PaymentIntent that was refunded.

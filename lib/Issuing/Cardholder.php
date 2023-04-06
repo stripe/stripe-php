@@ -26,7 +26,7 @@ namespace Stripe\Issuing;
  * @property \Stripe\StripeObject $requirements
  * @property null|\Stripe\StripeObject $spending_controls Rules that control spending across this cardholder's cards. Refer to our <a href="https://stripe.com/docs/issuing/controls/spending-controls">documentation</a> for more details.
  * @property string $status Specifies whether to permit authorizations on this cardholder's cards.
- * @property string $type One of <code>individual</code> or <code>company</code>.
+ * @property string $type One of <code>individual</code> or <code>company</code>. See <a href="https://stripe.com/docs/issuing/other/choose-cardholder">Choose a cardholder type</a> for more details.
  */
 class Cardholder extends \Stripe\ApiResource
 {

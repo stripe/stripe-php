@@ -4,6 +4,20 @@
 * [#1469](https://github.com/stripe/stripe-php/pull/1469) Update generated code
   * Add support for new value `ioss` on enum `Tax.Registration.type`
 
+## 10.12.1 - 2023-04-04
+* [#1473](https://github.com/stripe/stripe-php/pull/1473) Update generated code
+  * Add back `deleted` from `Invoice.status`.
+
+## 10.12.0 - 2023-03-30
+* [#1470](https://github.com/stripe/stripe-php/pull/1470) Update generated code
+  * Remove support for `create` method on resource `Tax.Transaction`
+    * This is not a breaking change, as this method was deprecated before the Tax Transactions API was released in favor of the `createFromCalculation` method.
+  * Remove support for value `deleted` from enum `Invoice.status`
+    * This is not a breaking change, as the value was never returned or accepted as input.
+* [#1468](https://github.com/stripe/stripe-php/pull/1468) Trigger workflow for tags
+* [#1467](https://github.com/stripe/stripe-php/pull/1467) Update generated code (new)
+  * Release specs are identical.
+
 ## 10.12.0-beta.1 - 2023-03-23
 * [#1459](https://github.com/stripe/stripe-php/pull/1459) Update generated code for beta (new)
   * Add support for new resources `Tax.CalculationLineItem` and `Tax.TransactionLineItem`
