@@ -74,6 +74,40 @@ class Reader extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
+     * @return \Stripe\Terminal\Reader the collected reader
+     */
+    public function collectPaymentMethod($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/collect_payment_method';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Reader the confirmed reader
+     */
+    public function confirmPaymentIntent($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/confirm_payment_intent';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return \Stripe\Terminal\Reader the processed reader
      */
     public function processPaymentIntent($params = null, $opts = null)
