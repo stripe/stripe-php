@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.13.0-beta.3 - 2023-04-13
+* [#1477](https://github.com/stripe/stripe-php/pull/1477) Update generated code for beta
+  * Add support for `collect_payment_method` and `confirm_payment_intent` methods on resource `Terminal.Reader`
+
 ## 10.13.0-beta.2 - 2023-04-06
 * [#1472](https://github.com/stripe/stripe-php/pull/1472) Update generated code for beta
   * Updated stable APIs to the latest version
