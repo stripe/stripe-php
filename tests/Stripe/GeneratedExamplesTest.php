@@ -4030,4 +4030,17 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Tax\CalculationLineItem::class, $result->data[0]);
     }
+
+    public function testCreatePaymentIntent3()
+    {
+        $this->expectsRequest('post', '/v1/payment_intents');
+        $result = $this->client->paymentIntents->create(
+            [
+                'amount' => 200,
+                'currency' => 'usd',
+                'payment_method_data' => ['type' => 'p24', 'p24' => ['bank' => 'blik']],
+            ]
+        );
+        static::assertInstanceOf(\Stripe\PaymentIntent::class, $result);
+    }
 }
