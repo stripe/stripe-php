@@ -261,6 +261,7 @@ class Event extends ApiResource
     const TAX_RATE_UPDATED = 'tax_rate.updated';
     const TERMINAL_READER_ACTION_FAILED = 'terminal.reader.action_failed';
     const TERMINAL_READER_ACTION_SUCCEEDED = 'terminal.reader.action_succeeded';
+    const TERMINAL_READER_ACTION_UPDATED = 'terminal.reader.action_updated';
     const TEST_HELPERS_TEST_CLOCK_ADVANCING = 'test_helpers.test_clock.advancing';
     const TEST_HELPERS_TEST_CLOCK_CREATED = 'test_helpers.test_clock.created';
     const TEST_HELPERS_TEST_CLOCK_DELETED = 'test_helpers.test_clock.deleted';
