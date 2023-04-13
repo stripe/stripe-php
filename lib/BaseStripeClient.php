@@ -126,12 +126,12 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      *
      * @return \Stripe\StripeObject the object returned by Stripe's API
      */
-    public function request($method, $path, $params, $opts)
+    public function request($method, $path, $params, $opts, $json = False)
     {
         $opts = $this->defaultOpts->merge($opts, true);
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new \Stripe\ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
-        list($response, $opts->apiKey) = $requestor->request($method, $path, $params, $opts->headers);
+        list($response, $opts->apiKey) = $requestor->request($method, $path, $params, $opts->headers, $json);
         $opts->discardNonPersistentHeaders();
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
