@@ -66,7 +66,7 @@ class DisputeService extends \Stripe\Service\AbstractService
      *
      * Depending on your dispute type, different evidence fields will give you a better
      * chance of winning your dispute. To figure out which evidence fields to provide,
-     * see our <a href="/docs/disputes/categories">guide to dispute types</a>.
+     * see our [guide to dispute types](/docs/disputes/categories).
      *
      * @param string $id
      * @param null|array $params

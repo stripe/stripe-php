@@ -14,12 +14,12 @@ namespace Stripe\Tax;
  * @property string $id Unique identifier for the transaction.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property null|string $customer The ID of an existing <a href="https://stripe.com/docs/api/customers/object">Customer</a> used for the resource.
+ * @property string $currency Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://stripe.com/docs/currencies).
+ * @property null|string $customer The ID of an existing [Customer](https://stripe.com/docs/api/customers/object) used for the resource.
  * @property \Stripe\StripeObject $customer_details
  * @property null|\Stripe\Collection<\Stripe\Tax\TransactionLineItem> $line_items The tax collected or refunded, by line item.
  * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Stripe\StripeObject $metadata Set of [key-value pairs](https://stripe.com/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $reference A custom unique identifier, such as 'myOrder_123'.
  * @property null|\Stripe\StripeObject $reversal If `type=reversal`, contains information about what was reversed.
  * @property null|\Stripe\StripeObject $shipping_cost The shipping cost details for the transaction.

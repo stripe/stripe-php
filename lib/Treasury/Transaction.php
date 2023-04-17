@@ -14,7 +14,7 @@ namespace Stripe\Treasury;
  * @property int $amount Amount (in cents) transferred.
  * @property \Stripe\StripeObject $balance_impact Change to a FinancialAccount's balance
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property string $currency Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://stripe.com/docs/currencies).
  * @property string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|\Stripe\Collection<\Stripe\Treasury\TransactionEntry> $entries A list of TransactionEntries that are part of this Transaction. This cannot be expanded in any list endpoints.
  * @property string $financial_account The FinancialAccount associated with this object.

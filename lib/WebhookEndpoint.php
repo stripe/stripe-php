@@ -24,8 +24,8 @@ namespace Stripe;
  * @property null|string $description An optional description of what the webhook is used for.
  * @property string[] $enabled_events The list of events to enable for this endpoint. `['*']` indicates that all events are enabled, except those that require explicit selection.
  * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
- * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|string $secret The endpoint's secret, used to generate <a href="https://stripe.com/docs/webhooks/signatures">webhook signatures</a>. Only returned at creation.
+ * @property \Stripe\StripeObject $metadata Set of [key-value pairs](https://stripe.com/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|string $secret The endpoint's secret, used to generate [webhook signatures](https://stripe.com/docs/webhooks/signatures). Only returned at creation.
  * @property string $status The status of the webhook. It can be `enabled` or `disabled`.
  * @property string $url The URL of the webhook endpoint.
  */

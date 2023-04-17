@@ -12,10 +12,10 @@ namespace Stripe\Checkout;
  * recommend creating a new Session each time your customer attempts to pay.
  *
  * Once payment is successful, the Checkout Session will contain a reference to the
- * <a href="https://stripe.com/docs/api/customers">Customer</a>, and either the
+ * [Customer](https://stripe.com/docs/api/customers), and either the
  * successful <a
  * href="https://stripe.com/docs/api/payment_intents">PaymentIntent</a> or an
- * active <a href="https://stripe.com/docs/api/subscriptions">Subscription</a>.
+ * active [Subscription](https://stripe.com/docs/api/subscriptions).
  *
  * You can create a Checkout Session on your server and redirect to its URL to
  * begin Checkout.
@@ -36,7 +36,7 @@ namespace Stripe\Checkout;
  * @property null|\Stripe\StripeObject $consent Results of `consent_collection` for this session.
  * @property null|\Stripe\StripeObject $consent_collection When set, provides configuration for the Checkout Session to gather active consent from customers.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property null|string $currency Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://stripe.com/docs/currencies).
  * @property null|\Stripe\StripeObject $currency_conversion Currency conversion details for automatic currency conversion sessions
  * @property \Stripe\StripeObject[] $custom_fields Collect additional information from your customer using custom fields. Up to 2 fields are supported.
  * @property \Stripe\StripeObject $custom_text
@@ -50,7 +50,7 @@ namespace Stripe\Checkout;
  * @property null|\Stripe\Collection<\Stripe\LineItem> $line_items The line items purchased by the customer.
  * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property null|string $locale The IETF language tag of the locale Checkout is displayed in. If blank or `auto`, the browser's locale is used.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Stripe\StripeObject $metadata Set of [key-value pairs](https://stripe.com/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $mode The mode of the Checkout Session.
  * @property null|string|\Stripe\PaymentIntent $payment_intent The ID of the PaymentIntent for Checkout Sessions in `payment` mode.
  * @property null|string|\Stripe\PaymentLink $payment_link The ID of the Payment Link that created this Session.
@@ -71,7 +71,7 @@ namespace Stripe\Checkout;
  * @property string $success_url The URL the customer will be directed to after the payment or subscription creation is successful.
  * @property null|\Stripe\StripeObject $tax_id_collection
  * @property null|\Stripe\StripeObject $total_details Tax and discount details for the computed total amount.
- * @property null|string $url The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout. If you’re using <a href="https://stripe.com/docs/payments/checkout/custom-domains">Custom Domains</a>, the URL will use your subdomain. Otherwise, it’ll use `checkout.stripe.com.` This value is only present when the session is active.
+ * @property null|string $url The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout. If you’re using [Custom Domains](https://stripe.com/docs/payments/checkout/custom-domains), the URL will use your subdomain. Otherwise, it’ll use `checkout.stripe.com.` This value is only present when the session is active.
  */
 class Session extends \Stripe\ApiResource
 {

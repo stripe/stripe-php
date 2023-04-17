@@ -44,8 +44,8 @@ class InvoiceService extends \Stripe\Service\AbstractService
 
     /**
      * This endpoint creates a draft invoice for a given customer. The invoice remains
-     * a draft until you <a href="#finalize_invoice">finalize</a> the invoice, which
-     * allows you to <a href="#pay_invoice">pay</a> or <a href="#send_invoice">send</a>
+     * a draft until you [finalize](#finalize_invoice) the invoice, which
+     * allows you to [pay](#pay_invoice) or [send](#send_invoice)
      * the invoice to your customers.
      *
      * @param null|array $params
@@ -271,7 +271,7 @@ class InvoiceService extends \Stripe\Service\AbstractService
 
     /**
      * Mark a finalized invoice as void. This cannot be undone. Voiding an invoice is
-     * similar to <a href="#delete_invoice">deletion</a>, however it only applies to
+     * similar to [deletion](#delete_invoice), however it only applies to
      * finalized invoices and maintains a papertrail where the invoice can still be
      * found.
      *

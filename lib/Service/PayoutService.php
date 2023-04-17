@@ -51,7 +51,7 @@ class PayoutService extends \Stripe\Service\AbstractService
      *
      * If you are creating a manual payout on a Stripe account that uses multiple
      * payment source types, you’ll need to specify the source type balance that the
-     * payout should draw from. The <a href="#balance_object">balance object</a>
+     * payout should draw from. The [balance object](#balance_object)
      * details available and pending amounts by source type.
      *
      * @param null|array $params

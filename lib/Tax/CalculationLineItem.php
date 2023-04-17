@@ -15,7 +15,7 @@ namespace Stripe\Tax;
  * @property null|string $reference A custom identifier for this line item.
  * @property string $tax_behavior Specifies whether the `amount` includes taxes. If `tax_behavior=inclusive`, then the amount includes taxes.
  * @property null|\Stripe\StripeObject[] $tax_breakdown Detailed account of taxes relevant to this line item.
- * @property string $tax_code The <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID used for this resource.
+ * @property string $tax_code The [tax code](https://stripe.com/docs/tax/tax-categories) ID used for this resource.
  */
 class CalculationLineItem extends \Stripe\ApiResource
 {

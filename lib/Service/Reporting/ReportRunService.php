@@ -23,7 +23,7 @@ class ReportRunService extends \Stripe\Service\AbstractService
 
     /**
      * Creates a new object and begin running the report. (Certain report types require
-     * a <a href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.).
+     * a [live-mode API key](https://stripe.com/docs/keys#test-live-modes).).
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts

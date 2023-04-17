@@ -45,7 +45,7 @@ class TransferService extends \Stripe\Service\AbstractService
 
     /**
      * To send funds from your Stripe account to a connected account, you create a new
-     * transfer object. Your <a href="#balance">Stripe balance</a> must be able to
+     * transfer object. Your [Stripe balance](#balance) must be able to
      * cover the transfer amount, or you’ll receive an “Insufficient Funds” error.
      *
      * @param null|array $params

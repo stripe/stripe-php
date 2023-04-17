@@ -10,12 +10,12 @@ namespace Stripe\Tax;
  * @property int $amount The line item amount in integer cents. If `tax_behavior=inclusive`, then this amount includes taxes. Otherwise, taxes were calculated on top of this amount.
  * @property int $amount_tax The amount of tax calculated for this line item, in integer cents.
  * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Stripe\StripeObject $metadata Set of [key-value pairs](https://stripe.com/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property int $quantity The number of units of the item being purchased. For reversals, this is the quantity reversed.
  * @property string $reference A custom identifier for this line item in the transaction.
  * @property null|\Stripe\StripeObject $reversal If `type=reversal`, contains information about what was reversed.
  * @property string $tax_behavior Specifies whether the `amount` includes taxes. If `tax_behavior=inclusive`, then the amount includes taxes.
- * @property string $tax_code The <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID used for this resource.
+ * @property string $tax_code The [tax code](https://stripe.com/docs/tax/tax-categories) ID used for this resource.
  * @property string $type If `reversal`, this line item reverses an earlier transaction.
  */
 class TransactionLineItem extends \Stripe\ApiResource

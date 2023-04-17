@@ -30,7 +30,7 @@ namespace Stripe;
  * settings</a>, and our <a href="https://stripe.com/docs/webhooks">Using
  * Webhooks</a> guide will help you get set up.
  *
- * When using <a href="https://stripe.com/docs/connect">Connect</a>, you can also
+ * When using [Connect](https://stripe.com/docs/connect), you can also
  * receive notifications of events that occur in connected accounts. For these
  * events, there will be an additional `account` attribute in the
  * received `Event` object.

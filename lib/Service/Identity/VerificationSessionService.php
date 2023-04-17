@@ -27,7 +27,7 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
      * href="/docs/identity/how-sessions-work">status</a>.
      *
      * Once canceled, future submission attempts are disabled. This cannot be undone.
-     * <a href="/docs/identity/verification-sessions#cancel">Learn more</a>.
+     * [Learn more](/docs/identity/verification-sessions#cancel).
      *
      * @param string $id
      * @param null|array $params
@@ -90,7 +90,7 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
      * `metadata` field will also be erased. Redacted objects cannot be
      * updated or used for any purpose.
      *
-     * <a href="/docs/identity/verification-sessions#redact">Learn more</a>.
+     * [Learn more](/docs/identity/verification-sessions#redact).
      *
      * @param string $id
      * @param null|array $params

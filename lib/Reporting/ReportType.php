@@ -16,7 +16,7 @@ namespace Stripe\Reporting;
  * test-mode data), and will error when queried without a <a
  * href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.
  *
- * @property string $id The <a href="https://stripe.com/docs/reporting/statements/api#available-report-types">ID of the Report Type</a>, such as `balance.summary.1`.
+ * @property string $id The [ID of the Report Type](https://stripe.com/docs/reporting/statements/api#available-report-types), such as `balance.summary.1`.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $data_available_end Most recent time for which this Report Type is available. Measured in seconds since the Unix epoch.
  * @property int $data_available_start Earliest time for which this Report Type is available. Measured in seconds since the Unix epoch.

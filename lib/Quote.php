@@ -20,22 +20,22 @@ namespace Stripe;
  * @property string $collection_method Either `charge_automatically`, or `send_invoice`. When charging automatically, Stripe will attempt to pay invoices at the end of the subscription cycle or on finalization using the default payment method attached to the subscription or customer. When sending an invoice, Stripe will email your customer an invoice with payment instructions and mark the subscription as `active`. Defaults to `charge_automatically`.
  * @property \Stripe\StripeObject $computed
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property null|string $currency Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://stripe.com/docs/currencies).
  * @property null|string|\Stripe\Customer $customer The customer which this quote belongs to. A customer is required before finalizing the quote. Once specified, it cannot be changed.
  * @property null|(string|\Stripe\TaxRate)[] $default_tax_rates The tax rates applied to this quote.
  * @property null|string $description A description that will be displayed on the quote PDF.
  * @property (string|\Stripe\Discount)[] $discounts The discounts applied to this quote.
  * @property int $expires_at The date on which the quote will be canceled if in `open` or `draft` status. Measured in seconds since the Unix epoch.
  * @property null|string $footer A footer that will be displayed on the quote PDF.
- * @property null|\Stripe\StripeObject $from_quote Details of the quote that was cloned. See the <a href="https://stripe.com/docs/quotes/clone">cloning documentation</a> for more details.
+ * @property null|\Stripe\StripeObject $from_quote Details of the quote that was cloned. See the [cloning documentation](https://stripe.com/docs/quotes/clone) for more details.
  * @property null|string $header A header that will be displayed on the quote PDF.
  * @property null|string|\Stripe\Invoice $invoice The invoice that was created from this quote.
  * @property null|\Stripe\StripeObject $invoice_settings All invoices will be billed using the specified settings.
  * @property null|\Stripe\Collection<\Stripe\LineItem> $line_items A list of items the customer is being quoted for.
  * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
- * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|string $number A unique number that identifies this particular quote. This number is assigned once the quote is <a href="https://stripe.com/docs/quotes/overview#finalize">finalized</a>.
- * @property null|string|\Stripe\Account $on_behalf_of The account on behalf of which to charge. See the <a href="https://support.stripe.com/questions/sending-invoices-on-behalf-of-connected-accounts">Connect documentation</a> for details.
+ * @property \Stripe\StripeObject $metadata Set of [key-value pairs](https://stripe.com/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|string $number A unique number that identifies this particular quote. This number is assigned once the quote is [finalized](https://stripe.com/docs/quotes/overview#finalize).
+ * @property null|string|\Stripe\Account $on_behalf_of The account on behalf of which to charge. See the [Connect documentation](https://support.stripe.com/questions/sending-invoices-on-behalf-of-connected-accounts) for details.
  * @property string $status The status of the quote.
  * @property \Stripe\StripeObject $status_transitions
  * @property null|string|\Stripe\Subscription $subscription The subscription that was created or updated from this quote.

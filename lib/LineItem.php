@@ -13,7 +13,7 @@ namespace Stripe;
  * @property int $amount_subtotal Total before any discounts or taxes are applied.
  * @property int $amount_tax Total tax amount applied. If no tax was applied, defaults to 0.
  * @property int $amount_total Total after discounts and taxes.
- * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property string $currency Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://stripe.com/docs/currencies).
  * @property string $description An arbitrary string attached to the object. Often useful for displaying to users. Defaults to product name.
  * @property null|\Stripe\StripeObject[] $discounts The discounts applied to the line item.
  * @property null|\Stripe\Price $price The price used to generate the line item.

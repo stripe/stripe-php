@@ -8,7 +8,7 @@ namespace Stripe;
  * Shipping rates describe the price of shipping presented to your customers and
  * can be applied to <a
  * href="https://stripe.com/docs/payments/checkout/shipping">Checkout Sessions</a>
- * and <a href="https://stripe.com/docs/orders/shipping">Orders</a> to collect
+ * and [Orders](https://stripe.com/docs/orders/shipping) to collect
  * shipping costs.
  *
  * @property string $id Unique identifier for the object.
@@ -19,9 +19,9 @@ namespace Stripe;
  * @property null|string $display_name The name of the shipping rate, meant to be displayable to the customer. This will appear on CheckoutSessions.
  * @property null|\Stripe\StripeObject $fixed_amount
  * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
- * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Stripe\StripeObject $metadata Set of [key-value pairs](https://stripe.com/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $tax_behavior Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of `inclusive`, `exclusive`, or `unspecified`.
- * @property null|string|\Stripe\TaxCode $tax_code A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID. The Shipping tax code is `txcd_92010001`.
+ * @property null|string|\Stripe\TaxCode $tax_code A [tax code](https://stripe.com/docs/tax/tax-categories) ID. The Shipping tax code is `txcd_92010001`.
  * @property string $type The type of calculation to use on the shipping rate. Can only be `fixed_amount` for now.
  */
 class ShippingRate extends ApiResource

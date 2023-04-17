@@ -28,7 +28,7 @@ class PaymentMethodService extends \Stripe\Service\AbstractService
      * Attaches a PaymentMethod object to a Customer.
      *
      * To attach a new PaymentMethod to a customer for future payments, we recommend
-     * you use a <a href="/docs/api/setup_intents">SetupIntent</a> or a PaymentIntent
+     * you use a [SetupIntent](/docs/api/setup_intents) or a PaymentIntent
      * with <a
      * href="/docs/api/payment_intents/create#create_payment_intent-setup_future_usage">setup_future_usage</a>.
      * These approaches will perform any necessary steps to set up the PaymentMethod

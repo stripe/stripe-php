@@ -20,13 +20,13 @@ namespace Stripe;
  * @property null|int $amount_off Amount (in the `currency` specified) that will be taken off the subtotal of any invoices for this customer.
  * @property null|\Stripe\StripeObject $applies_to
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|string $currency If `amount_off` has been set, the three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a> of the amount to take off.
- * @property null|\Stripe\StripeObject $currency_options Coupons defined in each available currency option. Each key must be a three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property null|string $currency If `amount_off` has been set, the three-letter [ISO code for the currency](https://stripe.com/docs/currencies) of the amount to take off.
+ * @property null|\Stripe\StripeObject $currency_options Coupons defined in each available currency option. Each key must be a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) and a [supported currency](https://stripe.com/docs/currencies).
  * @property string $duration One of `forever`, `once`, and `repeating`. Describes how long a customer who applies this coupon will get the discount.
  * @property null|int $duration_in_months If `duration` is `repeating`, the number of months the coupon applies. Null if coupon `duration` is `forever` or `once`.
  * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property null|int $max_redemptions Maximum number of times this coupon can be redeemed, in total, across all customers, before it is no longer valid.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Stripe\StripeObject $metadata Set of [key-value pairs](https://stripe.com/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name Name of the coupon displayed to customers on for instance invoices or receipts.
  * @property null|float $percent_off Percent that will be taken off the subtotal of any invoices for this customer for the duration of the coupon. For example, a coupon with percent_off of 50 will make a %s100 invoice %s50 instead.
  * @property null|int $redeem_by Date after which the coupon can no longer be redeemed.

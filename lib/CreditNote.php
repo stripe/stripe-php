@@ -16,7 +16,7 @@ namespace Stripe;
  * @property int $amount The integer amount in %s representing the total amount of the credit note, including tax.
  * @property int $amount_shipping This is the sum of all the shipping amounts.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property string $currency Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://stripe.com/docs/currencies).
  * @property string|\Stripe\Customer $customer ID of the customer.
  * @property null|string|\Stripe\CustomerBalanceTransaction $customer_balance_transaction Customer balance transaction related to this credit note.
  * @property int $discount_amount The integer amount in %s representing the total amount of discount that was credited.
@@ -25,14 +25,14 @@ namespace Stripe;
  * @property \Stripe\Collection<\Stripe\CreditNoteLineItem> $lines Line items that make up the credit note
  * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property null|string $memo Customer-facing text that appears on the credit note PDF.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Stripe\StripeObject $metadata Set of [key-value pairs](https://stripe.com/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $number A unique number that identifies this particular credit note and appears on the PDF of the credit note and its associated invoice.
  * @property null|int $out_of_band_amount Amount that was credited outside of Stripe.
  * @property string $pdf The link to download the PDF of the credit note.
  * @property null|string $reason Reason for issuing this credit note, one of `duplicate`, `fraudulent`, `order_change`, or `product_unsatisfactory`
  * @property null|string|\Stripe\Refund $refund Refund related to this credit note.
  * @property null|\Stripe\StripeObject $shipping_cost The details of the cost of shipping, including the ShippingRate applied to the invoice.
- * @property string $status Status of this credit note, one of `issued` or `void`. Learn more about <a href="https://stripe.com/docs/billing/invoices/credit-notes#voiding">voiding credit notes</a>.
+ * @property string $status Status of this credit note, one of `issued` or `void`. Learn more about [voiding credit notes](https://stripe.com/docs/billing/invoices/credit-notes#voiding).
  * @property int $subtotal The integer amount in %s representing the amount of the credit note, excluding exclusive tax and invoice level discounts.
  * @property null|int $subtotal_excluding_tax The integer amount in %s representing the amount of the credit note, excluding all tax and invoice level discounts.
  * @property \Stripe\StripeObject[] $tax_amounts The aggregate amounts calculated per tax rate for all line items.

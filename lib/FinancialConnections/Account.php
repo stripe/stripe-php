@@ -24,7 +24,7 @@ namespace Stripe\FinancialConnections;
  * @property null|string[] $permissions The list of permissions granted by this account.
  * @property string $status The status of the link to the account.
  * @property string $subcategory <p>If `category` is `cash`, one of:</p><p>- `checking` - `savings` - `other`</p><p>If `category` is `credit`, one of:</p><p>- `mortgage` - `line_of_credit` - `credit_card` - `other`</p><p>If `category` is `investment` or `other`, this will be `other`.</p>
- * @property string[] $supported_payment_method_types The <a href="https://stripe.com/docs/api/payment_methods/object#payment_method_object-type">PaymentMethod type</a>(s) that can be created from this account.
+ * @property string[] $supported_payment_method_types The [PaymentMethod type](https://stripe.com/docs/api/payment_methods/object#payment_method_object-type)(s) that can be created from this account.
  */
 class Account extends \Stripe\ApiResource
 {

@@ -13,7 +13,7 @@ namespace Stripe\Identity;
  *
  * Each VerificationReport contains a copy of any data collected by the user as
  * well as reference IDs which can be used to access collected images through the
- * <a href="https://stripe.com/docs/api/files">FileUpload</a> API. To configure and
+ * [FileUpload](https://stripe.com/docs/api/files) API. To configure and
  * create VerificationReports, use the <a
  * href="https://stripe.com/docs/api/identity/verification_sessions">VerificationSession</a>
  * API.

@@ -132,7 +132,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * After the PaymentIntent is created, attach a payment method and <a
      * href="/docs/api/payment_intents/confirm">confirm</a> to continue the payment.
      * You can read more about the different payment flows available via the Payment
-     * Intents API <a href="/docs/payments/payment-intents">here</a>.
+     * Intents API [here](/docs/payments/payment-intents).
      *
      * When `confirm=true` is used during creation, it is equivalent to
      * creating and confirming the PaymentIntent in the same call. You may use any

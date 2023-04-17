@@ -75,7 +75,7 @@ class AccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * With <a href="/docs/connect">Connect</a>, you can create Stripe accounts for
+     * With [Connect](/docs/connect), you can create Stripe accounts for
      * your users. To do this, you’ll first need to <a
      * href="https://dashboard.stripe.com/account/applications/settings">register your
      * platform</a>.
@@ -152,7 +152,7 @@ class AccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * With <a href="/docs/connect">Connect</a>, you can delete accounts you manage.
+     * With [Connect](/docs/connect), you can delete accounts you manage.
      *
      * Accounts created using test-mode keys can be deleted at any time. Standard
      * accounts created using live-mode keys cannot be deleted. Custom or Express
@@ -215,7 +215,7 @@ class AccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * With <a href="/docs/connect">Connect</a>, you may flag accounts as suspicious.
+     * With [Connect](/docs/connect), you may flag accounts as suspicious.
      *
      * Test-mode Custom and Express accounts can be rejected at any time. Accounts
      * created using live-mode keys may only be rejected once all balances are zero.
@@ -285,7 +285,7 @@ class AccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates a <a href="/docs/connect/accounts">connected account</a> by setting the
+     * Updates a [connected account](/docs/connect/accounts) by setting the
      * values of the parameters passed. Any parameters not provided are left unchanged.
      *
      * For Custom accounts, you can update any information on the account. For other
@@ -332,7 +332,7 @@ class AccountService extends \Stripe\Service\AbstractService
 
     /**
      * Updates the metadata, account holder name, account holder type of a bank account
-     * belonging to a <a href="/docs/connect/custom-accounts">Custom account</a>, and
+     * belonging to a [Custom account](/docs/connect/custom-accounts), and
      * optionally sets it as the default for its currency. Other bank account details
      * are not editable by design.
      *

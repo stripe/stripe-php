@@ -6,13 +6,13 @@ namespace Stripe\Treasury;
 
 /**
  * TransactionEntries represent individual units of money movements within a single
- * <a href="https://stripe.com/docs/api#transactions">Transaction</a>.
+ * [Transaction](https://stripe.com/docs/api#transactions).
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property \Stripe\StripeObject $balance_impact Change to a FinancialAccount's balance
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property string $currency Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://stripe.com/docs/currencies).
  * @property int $effective_at When the TransactionEntry will impact the FinancialAccount's balance.
  * @property string $financial_account The FinancialAccount associated with this object.
  * @property null|string $flow Token of the flow associated with the TransactionEntry.

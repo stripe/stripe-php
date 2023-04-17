@@ -5,7 +5,7 @@
 namespace Stripe;
 
 /**
- * <a href="https://stripe.com/docs/tax/tax-categories">Tax codes</a> classify
+ * [Tax codes](https://stripe.com/docs/tax/tax-categories) classify
  * goods and services for tax purposes.
  *
  * @property string $id Unique identifier for the object.

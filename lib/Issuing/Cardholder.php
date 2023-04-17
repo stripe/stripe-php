@@ -6,7 +6,7 @@ namespace Stripe\Issuing;
 
 /**
  * An Issuing `Cardholder` object represents an individual or business
- * entity who is <a href="https://stripe.com/docs/issuing">issued</a> cards.
+ * entity who is [issued](https://stripe.com/docs/issuing) cards.
  *
  * Related guide: <a
  * href="https://stripe.com/docs/issuing/cards#create-cardholder">How to create a
@@ -20,13 +20,13 @@ namespace Stripe\Issuing;
  * @property null|string $email The cardholder's email address.
  * @property null|\Stripe\StripeObject $individual Additional information about an `individual` cardholder.
  * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
- * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Stripe\StripeObject $metadata Set of [key-value pairs](https://stripe.com/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $name The cardholder's name. This will be printed on cards issued to them.
- * @property null|string $phone_number The cardholder's phone number. This is required for all cardholders who will be creating EU cards. See the <a href="https://stripe.com/docs/issuing/3d-secure#when-is-3d-secure-applied">3D Secure documentation</a> for more details.
+ * @property null|string $phone_number The cardholder's phone number. This is required for all cardholders who will be creating EU cards. See the [3D Secure documentation](https://stripe.com/docs/issuing/3d-secure#when-is-3d-secure-applied) for more details.
  * @property \Stripe\StripeObject $requirements
- * @property null|\Stripe\StripeObject $spending_controls Rules that control spending across this cardholder's cards. Refer to our <a href="https://stripe.com/docs/issuing/controls/spending-controls">documentation</a> for more details.
+ * @property null|\Stripe\StripeObject $spending_controls Rules that control spending across this cardholder's cards. Refer to our [documentation](https://stripe.com/docs/issuing/controls/spending-controls) for more details.
  * @property string $status Specifies whether to permit authorizations on this cardholder's cards.
- * @property string $type One of `individual` or `company`. See <a href="https://stripe.com/docs/issuing/other/choose-cardholder">Choose a cardholder type</a> for more details.
+ * @property string $type One of `individual` or `company`. See [Choose a cardholder type](https://stripe.com/docs/issuing/other/choose-cardholder) for more details.
  */
 class Cardholder extends \Stripe\ApiResource
 {

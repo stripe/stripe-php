@@ -93,7 +93,7 @@ class SetupIntentService extends \Stripe\Service\AbstractService
      * `client_secret` is provided in the query string.
      *
      * When retrieved with a publishable key, only a subset of properties will be
-     * returned. Please refer to the <a href="#setup_intent_object">SetupIntent</a>
+     * returned. Please refer to the [SetupIntent](#setup_intent_object)
      * object reference for more details.
      *
      * @param string $id

@@ -16,7 +16,7 @@ namespace Stripe;
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property \Stripe\StripeObject $bank_transfer
- * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property string $currency Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://stripe.com/docs/currencies).
  * @property string $funding_type The `funding_type` of the returned instructions
  * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  */

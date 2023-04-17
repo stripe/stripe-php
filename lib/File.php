@@ -20,8 +20,8 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|int $expires_at The time at which the file expires and is no longer available in epoch seconds.
  * @property null|string $filename A filename for the file, suitable for saving to a filesystem.
- * @property null|\Stripe\Collection<\Stripe\FileLink> $links A list of <a href="https://stripe.com/docs/api#file_links">file links</a> that point at this file.
- * @property string $purpose The <a href="https://stripe.com/docs/file-upload#uploading-a-file">purpose</a> of the uploaded file.
+ * @property null|\Stripe\Collection<\Stripe\FileLink> $links A list of [file links](https://stripe.com/docs/api#file_links) that point at this file.
+ * @property string $purpose The [purpose](https://stripe.com/docs/file-upload#uploading-a-file) of the uploaded file.
  * @property int $size The size in bytes of the file object.
  * @property null|string $title A user friendly title for the document.
  * @property null|string $type The type of the file returned (e.g., `csv`, `pdf`, `jpg`, or `png`).

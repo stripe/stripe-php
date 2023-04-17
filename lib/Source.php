@@ -16,7 +16,7 @@ namespace Stripe;
  * href="https://stripe.com/docs/api/payment_methods">PaymentMethods API</a>. This
  * newer API provides access to our latest features and payment method types.
  *
- * Related guides: <a href="https://stripe.com/docs/sources">Sources API</a> and <a
+ * Related guides: [Sources API](https://stripe.com/docs/sources) and <a
  * href="https://stripe.com/docs/sources/customers">Sources &amp; Customers</a>.
  *
  * @property string $id Unique identifier for the object.
@@ -33,7 +33,7 @@ namespace Stripe;
  * @property string $client_secret The client secret of the source. Used for client-side retrieval using a publishable key.
  * @property null|\Stripe\StripeObject $code_verification
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|string $currency Three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a> associated with the source. This is the currency for which the source will be chargeable once ready. Required for `single_use` sources.
+ * @property null|string $currency Three-letter [ISO code for the currency](https://stripe.com/docs/currencies) associated with the source. This is the currency for which the source will be chargeable once ready. Required for `single_use` sources.
  * @property null|string $customer The ID of the customer to which this source is attached. This will not be present when the source has not been attached to a customer.
  * @property null|\Stripe\StripeObject $eps
  * @property string $flow The authentication `flow` of the source. `flow` is one of `redirect`, `receiver`, `code_verification`, `none`.
@@ -41,7 +41,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $ideal
  * @property null|\Stripe\StripeObject $klarna
  * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Stripe\StripeObject $metadata Set of [key-value pairs](https://stripe.com/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|\Stripe\StripeObject $multibanco
  * @property null|\Stripe\StripeObject $owner Information about the owner of the payment instrument that may be used or required by particular source types.
  * @property null|\Stripe\StripeObject $p24
@@ -54,7 +54,7 @@ namespace Stripe;
  * @property null|string $statement_descriptor Extra information about a source. This will appear on your customer's statement every time you charge the source.
  * @property string $status The status of the source, one of `canceled`, `chargeable`, `consumed`, `failed`, or `pending`. Only `chargeable` sources can be used to create a charge.
  * @property null|\Stripe\StripeObject $three_d_secure
- * @property string $type The `type` of the source. The `type` is a payment method, one of `ach_credit_transfer`, `ach_debit`, `alipay`, `bancontact`, `card`, `card_present`, `eps`, `giropay`, `ideal`, `multibanco`, `klarna`, `p24`, `sepa_debit`, `sofort`, `three_d_secure`, or `wechat`. An additional hash is included on the source with a name matching this value. It contains additional information specific to the <a href="https://stripe.com/docs/sources">payment method</a> used.
+ * @property string $type The `type` of the source. The `type` is a payment method, one of `ach_credit_transfer`, `ach_debit`, `alipay`, `bancontact`, `card`, `card_present`, `eps`, `giropay`, `ideal`, `multibanco`, `klarna`, `p24`, `sepa_debit`, `sofort`, `three_d_secure`, or `wechat`. An additional hash is included on the source with a name matching this value. It contains additional information specific to the [payment method](https://stripe.com/docs/sources) used.
  * @property null|string $usage Either `reusable` or `single_use`. Whether this source should be reusable or not. Some source types may or may not be reusable by construction, while others may leave the option at creation. If an incompatible value is passed, an error will be returned.
  * @property null|\Stripe\StripeObject $wechat
  */
