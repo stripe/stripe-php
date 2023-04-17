@@ -5,11 +5,11 @@
 namespace Stripe;
 
 /**
- * These bank accounts are payment methods on <code>Customer</code> objects.
+ * These bank accounts are payment methods on `Customer` objects.
  *
  * On the other hand <a
  * href="https://stripe.com/docs/api#external_accounts">External Accounts</a> are
- * transfer destinations on <code>Account</code> objects for <a
+ * transfer destinations on `Account` objects for <a
  * href="https://stripe.com/docs/connect/custom-accounts">Custom accounts</a>. They
  * can be bank accounts or debit cards as well, and are documented in the links
  * above.
@@ -22,10 +22,10 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string|\Stripe\Account $account The ID of the account that the bank account is associated with.
  * @property null|string $account_holder_name The name of the person or business that owns the bank account.
- * @property null|string $account_holder_type The type of entity that holds the account. This can be either <code>individual</code> or <code>company</code>.
- * @property null|string $account_type The bank account type. This can only be <code>checking</code> or <code>savings</code> in most countries. In Japan, this can only be <code>futsu</code> or <code>toza</code>.
- * @property null|string[] $available_payout_methods A set of available payout methods for this bank account. Only values from this set should be passed as the <code>method</code> when creating a payout.
- * @property null|string $bank_name Name of the bank associated with the routing number (e.g., <code>WELLS FARGO</code>).
+ * @property null|string $account_holder_type The type of entity that holds the account. This can be either `individual` or `company`.
+ * @property null|string $account_type The bank account type. This can only be `checking` or `savings` in most countries. In Japan, this can only be `futsu` or `toza`.
+ * @property null|string[] $available_payout_methods A set of available payout methods for this bank account. Only values from this set should be passed as the `method` when creating a payout.
+ * @property null|string $bank_name Name of the bank associated with the routing number (e.g., `WELLS FARGO`).
  * @property string $country Two-letter ISO code representing the country the bank account is located in.
  * @property string $currency Three-letter <a href="https://stripe.com/docs/payouts">ISO code for the currency</a> paid out to the bank account.
  * @property null|string|\Stripe\Customer $customer The ID of the customer that the bank account is associated with.
@@ -36,7 +36,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|\Stripe\StripeObject $requirements Information about the requirements for the bank account, including what information needs to be collected.
  * @property null|string $routing_number The routing transit number for the bank account.
- * @property string $status <p>For bank accounts, possible values are <code>new</code>, <code>validated</code>, <code>verified</code>, <code>verification_failed</code>, or <code>errored</code>. A bank account that hasn't had any activity or validation performed is <code>new</code>. If Stripe can determine that the bank account exists, its status will be <code>validated</code>. Note that there often isn’t enough information to know (e.g., for smaller credit unions), and the validation is not always run. If customer bank account verification has succeeded, the bank account status will be <code>verified</code>. If the verification failed for any reason, such as microdeposit failure, the status will be <code>verification_failed</code>. If a transfer sent to this bank account fails, we'll set the status to <code>errored</code> and will not continue to send transfers until the bank details are updated.</p><p>For external accounts, possible values are <code>new</code>, <code>errored</code> and <code>verification_failed</code>. If a transfer fails, the status is set to <code>errored</code> and transfers are stopped until account details are updated. In India, if we can't <a href="https://support.stripe.com/questions/bank-account-ownership-verification">verify the owner of the bank account</a>, we'll set the status to <code>verification_failed</code>. Other validations aren't run against external accounts because they're only used for payouts. This means the other statuses don't apply.</p>
+ * @property string $status <p>For bank accounts, possible values are `new`, `validated`, `verified`, `verification_failed`, or `errored`. A bank account that hasn't had any activity or validation performed is `new`. If Stripe can determine that the bank account exists, its status will be `validated`. Note that there often isn’t enough information to know (e.g., for smaller credit unions), and the validation is not always run. If customer bank account verification has succeeded, the bank account status will be `verified`. If the verification failed for any reason, such as microdeposit failure, the status will be `verification_failed`. If a transfer sent to this bank account fails, we'll set the status to `errored` and will not continue to send transfers until the bank details are updated.</p><p>For external accounts, possible values are `new`, `errored` and `verification_failed`. If a transfer fails, the status is set to `errored` and transfers are stopped until account details are updated. In India, if we can't <a href="https://support.stripe.com/questions/bank-account-ownership-verification">verify the owner of the bank account</a>, we'll set the status to `verification_failed`. Other validations aren't run against external accounts because they're only used for payouts. This means the other statuses don't apply.</p>
  */
 class BankAccount extends ApiResource
 {
@@ -90,10 +90,10 @@ class BankAccount extends ApiResource
     public static function retrieve($_id, $_opts = null)
     {
         $msg = 'Bank accounts cannot be retrieved without a customer ID or ' .
-               'an account ID. Retrieve a bank account using ' .
-               "`Customer::retrieveSource('customer_id', " .
-               "'bank_account_id')` or `Account::retrieveExternalAccount(" .
-               "'account_id', 'bank_account_id')`.";
+            'an account ID. Retrieve a bank account using ' .
+            "`Customer::retrieveSource('customer_id', " .
+            "'bank_account_id')` or `Account::retrieveExternalAccount(" .
+            "'account_id', 'bank_account_id')`.";
 
         throw new Exception\BadMethodCallException($msg);
     }
@@ -108,10 +108,10 @@ class BankAccount extends ApiResource
     public static function update($_id, $_params = null, $_options = null)
     {
         $msg = 'Bank accounts cannot be updated without a customer ID or an ' .
-               'account ID. Update a bank account using ' .
-               "`Customer::updateSource('customer_id', 'bank_account_id', " .
-               '$updateParams)` or `Account::updateExternalAccount(' .
-               "'account_id', 'bank_account_id', \$updateParams)`.";
+            'account ID. Update a bank account using ' .
+            "`Customer::updateSource('customer_id', 'bank_account_id', " .
+            '$updateParams)` or `Account::updateExternalAccount(' .
+            "'account_id', 'bank_account_id', \$updateParams)`.";
 
         throw new Exception\BadMethodCallException($msg);
     }

@@ -7,8 +7,8 @@ namespace Stripe\Service\TestHelpers\Treasury;
 class OutboundPaymentService extends \Stripe\Service\AbstractService
 {
     /**
-     * Transitions a test mode created OutboundPayment to the <code>failed</code>
-     * status. The OutboundPayment must already be in the <code>processing</code>
+     * Transitions a test mode created OutboundPayment to the `failed`
+     * status. The OutboundPayment must already be in the `processing`
      * state.
      *
      * @param string $id
@@ -25,8 +25,8 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Transitions a test mode created OutboundPayment to the <code>posted</code>
-     * status. The OutboundPayment must already be in the <code>processing</code>
+     * Transitions a test mode created OutboundPayment to the `posted`
+     * status. The OutboundPayment must already be in the `processing`
      * state.
      *
      * @param string $id
@@ -43,8 +43,8 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Transitions a test mode created OutboundPayment to the <code>returned</code>
-     * status. The OutboundPayment must already be in the <code>processing</code>
+     * Transitions a test mode created OutboundPayment to the `returned`
+     * status. The OutboundPayment must already be in the `processing`
      * state.
      *
      * @param string $id

@@ -7,7 +7,7 @@ namespace Stripe\Service\Radar;
 class ValueListItemService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of <code>ValueListItem</code> objects. The objects are sorted in
+     * Returns a list of `ValueListItem` objects. The objects are sorted in
      * descending order by creation date, with the most recently created object
      * appearing first.
      *
@@ -24,7 +24,7 @@ class ValueListItemService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a new <code>ValueListItem</code> object, which is added to the specified
+     * Creates a new `ValueListItem` object, which is added to the specified
      * parent value list.
      *
      * @param null|array $params
@@ -40,7 +40,7 @@ class ValueListItemService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Deletes a <code>ValueListItem</code> object, removing it from its parent value
+     * Deletes a `ValueListItem` object, removing it from its parent value
      * list.
      *
      * @param string $id
@@ -57,7 +57,7 @@ class ValueListItemService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves a <code>ValueListItem</code> object.
+     * Retrieves a `ValueListItem` object.
      *
      * @param string $id
      * @param null|array $params

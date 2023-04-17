@@ -32,16 +32,16 @@ class PaymentMethodService extends \Stripe\Service\AbstractService
      * with <a
      * href="/docs/api/payment_intents/create#create_payment_intent-setup_future_usage">setup_future_usage</a>.
      * These approaches will perform any necessary steps to set up the PaymentMethod
-     * for future payments. Using the <code>/v1/payment_methods/:id/attach</code>
+     * for future payments. Using the `/v1/payment_methods/:id/attach`
      * endpoint without first using a SetupIntent or PaymentIntent with
-     * <code>setup_future_usage</code> does not optimize the PaymentMethod for future
+     * `setup_future_usage` does not optimize the PaymentMethod for future
      * use, which makes later declines and payment friction more likely. See <a
      * href="/docs/payments/payment-intents#future-usage">Optimizing cards for future
      * payments</a> for more information about setting up future payments.
      *
      * To use this PaymentMethod as the default for invoice or subscription payments,
      * set <a
-     * href="/docs/api/customers/update#update_customer-invoice_settings-default_payment_method"><code>invoice_settings.default_payment_method</code></a>,
+     * href="/docs/api/customers/update#update_customer-invoice_settings-default_payment_method">`invoice_settings.default_payment_method`</a>,
      * on the Customer to the PaymentMethod’s ID.
      *
      * @param string $id

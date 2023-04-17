@@ -7,7 +7,7 @@ namespace Stripe\Service\Terminal;
 class ReaderService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of <code>Reader</code> objects.
+     * Returns a list of `Reader` objects.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -38,7 +38,7 @@ class ReaderService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a new <code>Reader</code> object.
+     * Creates a new `Reader` object.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -53,7 +53,7 @@ class ReaderService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Deletes a <code>Reader</code> object.
+     * Deletes a `Reader` object.
      *
      * @param string $id
      * @param null|array $params
@@ -117,7 +117,7 @@ class ReaderService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves a <code>Reader</code> object.
+     * Retrieves a `Reader` object.
      *
      * @param string $id
      * @param null|array $params
@@ -149,7 +149,7 @@ class ReaderService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates a <code>Reader</code> object by setting the values of the parameters
+     * Updates a `Reader` object by setting the values of the parameters
      * passed. Any parameters not provided will be left unchanged.
      *
      * @param string $id

@@ -18,13 +18,13 @@ namespace Stripe\Tax;
  * @property null|string $customer The ID of an existing <a href="https://stripe.com/docs/api/customers/object">Customer</a> used for the resource.
  * @property \Stripe\StripeObject $customer_details
  * @property null|\Stripe\Collection<\Stripe\Tax\TransactionLineItem> $line_items The tax collected or refunded, by line item.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $reference A custom unique identifier, such as 'myOrder_123'.
- * @property null|\Stripe\StripeObject $reversal If <code>type=reversal</code>, contains information about what was reversed.
+ * @property null|\Stripe\StripeObject $reversal If `type=reversal`, contains information about what was reversed.
  * @property null|\Stripe\StripeObject $shipping_cost The shipping cost details for the transaction.
  * @property int $tax_date Timestamp of date at which the tax rules and rates in effect applies for the calculation.
- * @property string $type If <code>reversal</code>, this transaction reverses an earlier transaction.
+ * @property string $type If `reversal`, this transaction reverses an earlier transaction.
  */
 class Transaction extends \Stripe\ApiResource
 {

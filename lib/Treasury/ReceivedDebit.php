@@ -20,10 +20,10 @@ namespace Stripe\Treasury;
  * @property null|string $hosted_regulatory_receipt_url A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted transaction receipt</a> URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
  * @property null|\Stripe\StripeObject $initiating_payment_method_details
  * @property \Stripe\StripeObject $linked_flows
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property string $network The network used for the ReceivedDebit.
  * @property null|\Stripe\StripeObject $reversal_details Details describing when a ReceivedDebit might be reversed.
- * @property string $status Status of the ReceivedDebit. ReceivedDebits are created with a status of either <code>succeeded</code> (approved) or <code>failed</code> (declined). The failure reason can be found under the <code>failure_code</code>.
+ * @property string $status Status of the ReceivedDebit. ReceivedDebits are created with a status of either `succeeded` (approved) or `failed` (declined). The failure reason can be found under the `failure_code`.
  * @property null|string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
  */
 class ReceivedDebit extends \Stripe\ApiResource

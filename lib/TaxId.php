@@ -17,8 +17,8 @@ namespace Stripe;
  * @property null|string $country Two-letter ISO code representing the country of the tax ID.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string|\Stripe\Customer $customer ID of the customer.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property string $type Type of the tax ID, one of <code>ae_trn</code>, <code>au_abn</code>, <code>au_arn</code>, <code>bg_uic</code>, <code>br_cnpj</code>, <code>br_cpf</code>, <code>ca_bn</code>, <code>ca_gst_hst</code>, <code>ca_pst_bc</code>, <code>ca_pst_mb</code>, <code>ca_pst_sk</code>, <code>ca_qst</code>, <code>ch_vat</code>, <code>cl_tin</code>, <code>eg_tin</code>, <code>es_cif</code>, <code>eu_oss_vat</code>, <code>eu_vat</code>, <code>gb_vat</code>, <code>ge_vat</code>, <code>hk_br</code>, <code>hu_tin</code>, <code>id_npwp</code>, <code>il_vat</code>, <code>in_gst</code>, <code>is_vat</code>, <code>jp_cn</code>, <code>jp_rn</code>, <code>jp_trn</code>, <code>ke_pin</code>, <code>kr_brn</code>, <code>li_uid</code>, <code>mx_rfc</code>, <code>my_frp</code>, <code>my_itn</code>, <code>my_sst</code>, <code>no_vat</code>, <code>nz_gst</code>, <code>ph_tin</code>, <code>ru_inn</code>, <code>ru_kpp</code>, <code>sa_vat</code>, <code>sg_gst</code>, <code>sg_uen</code>, <code>si_tin</code>, <code>th_vat</code>, <code>tr_tin</code>, <code>tw_vat</code>, <code>ua_vat</code>, <code>us_ein</code>, or <code>za_vat</code>. Note that some legacy tax IDs have type <code>unknown</code>
+ * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
+ * @property string $type Type of the tax ID, one of `ae_trn`, `au_abn`, `au_arn`, `bg_uic`, `br_cnpj`, `br_cpf`, `ca_bn`, `ca_gst_hst`, `ca_pst_bc`, `ca_pst_mb`, `ca_pst_sk`, `ca_qst`, `ch_vat`, `cl_tin`, `eg_tin`, `es_cif`, `eu_oss_vat`, `eu_vat`, `gb_vat`, `ge_vat`, `hk_br`, `hu_tin`, `id_npwp`, `il_vat`, `in_gst`, `is_vat`, `jp_cn`, `jp_rn`, `jp_trn`, `ke_pin`, `kr_brn`, `li_uid`, `mx_rfc`, `my_frp`, `my_itn`, `my_sst`, `no_vat`, `nz_gst`, `ph_tin`, `ru_inn`, `ru_kpp`, `sa_vat`, `sg_gst`, `sg_uen`, `si_tin`, `th_vat`, `tr_tin`, `tw_vat`, `ua_vat`, `us_ein`, or `za_vat`. Note that some legacy tax IDs have type `unknown`
  * @property string $value Value of the tax ID.
  * @property null|\Stripe\StripeObject $verification Tax ID verification information.
  */
@@ -117,8 +117,8 @@ class TaxId extends ApiResource
     public static function retrieve($_id, $_opts = null)
     {
         $msg = 'Tax IDs cannot be retrieved without a customer ID. Retrieve ' .
-               "a tax ID using `Customer::retrieveTaxId('customer_id', " .
-               "'tax_id_id')`.";
+            "a tax ID using `Customer::retrieveTaxId('customer_id', " .
+            "'tax_id_id')`.";
 
         throw new Exception\BadMethodCallException($msg);
     }

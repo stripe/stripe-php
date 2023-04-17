@@ -39,7 +39,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $requirements
  * @property null|\Stripe\StripeObject $settings Options for customizing how the account functions within Stripe.
  * @property null|\Stripe\StripeObject $tos_acceptance
- * @property null|string $type The Stripe account type. Can be <code>standard</code>, <code>express</code>, or <code>custom</code>.
+ * @property null|string $type The Stripe account type. Can be `standard`, `express`, or `custom`.
  */
 class Account extends ApiResource
 {
@@ -145,9 +145,11 @@ class Account extends ApiResource
             $update = ($v instanceof StripeObject) ? $v->serializeParameters() : $v;
 
             if ([] !== $update) {
-                if (!$originalValue
+                if (
+                    !$originalValue
                     || !\array_key_exists($i, $originalValue)
-                    || ($update !== $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
+                    || ($update !== $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))
+                ) {
                     $updateArr[$i] = $update;
                 }
             }

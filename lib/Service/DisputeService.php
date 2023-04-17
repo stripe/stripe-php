@@ -25,8 +25,8 @@ class DisputeService extends \Stripe\Service\AbstractService
      * Closing the dispute for a charge indicates that you do not have any evidence to
      * submit and are essentially dismissing the dispute, acknowledging it as lost.
      *
-     * The status of the dispute will change from <code>needs_response</code> to
-     * <code>lost</code>. <em>Closing a dispute is irreversible</em>.
+     * The status of the dispute will change from `needs_response` to
+     * `lost`. <em>Closing a dispute is irreversible</em>.
      *
      * @param string $id
      * @param null|array $params

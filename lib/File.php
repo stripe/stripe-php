@@ -24,7 +24,7 @@ namespace Stripe;
  * @property string $purpose The <a href="https://stripe.com/docs/file-upload#uploading-a-file">purpose</a> of the uploaded file.
  * @property int $size The size in bytes of the file object.
  * @property null|string $title A user friendly title for the document.
- * @property null|string $type The type of the file returned (e.g., <code>csv</code>, <code>pdf</code>, <code>jpg</code>, or <code>png</code>).
+ * @property null|string $type The type of the file returned (e.g., `csv`, `pdf`, `jpg`, or `png`).
  * @property null|string $url The URL from which the file can be downloaded using your live secret API key.
  */
 class File extends ApiResource

@@ -26,7 +26,7 @@ namespace Stripe\Identity;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|\Stripe\StripeObject $last_error If present, this property tells you the last error encountered when processing the verification.
  * @property null|string|\Stripe\Identity\VerificationReport $last_verification_report ID of the most recent VerificationReport. <a href="https://stripe.com/docs/identity/verification-sessions#results">Learn more about accessing detailed verification results.</a>
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property \Stripe\StripeObject $options
  * @property null|\Stripe\StripeObject $redaction Redaction status of this VerificationSession. If the VerificationSession is not redacted, this field will be null.

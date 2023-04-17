@@ -39,7 +39,7 @@ class ProductService extends \Stripe\Service\AbstractService
 
     /**
      * Delete a product. Deleting a product is only possible if it has no prices
-     * associated with it. Additionally, deleting a product with <code>type=good</code>
+     * associated with it. Additionally, deleting a product with `type=good`
      * is only possible if it has no SKUs associated with it.
      *
      * @param string $id

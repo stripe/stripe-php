@@ -12,7 +12,7 @@ class BalanceTransactionService extends \Stripe\Service\AbstractService
      * in sorted order, with the most recent transactions appearing first.
      *
      * Note that this endpoint was previously called “Balance history” and used the
-     * path <code>/v1/balance/history</code>.
+     * path `/v1/balance/history`.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -30,7 +30,7 @@ class BalanceTransactionService extends \Stripe\Service\AbstractService
      * Retrieves the balance transaction with the given ID.
      *
      * Note that this endpoint previously used the path
-     * <code>/v1/balance/history/:id</code>.
+     * `/v1/balance/history/:id`.
      *
      * @param string $id
      * @param null|array $params

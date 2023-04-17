@@ -15,10 +15,10 @@ namespace Stripe\Terminal;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|\Stripe\StripeObject $action The most recent action performed by the reader.
  * @property null|string $device_sw_version The current software version of the reader.
- * @property string $device_type Type of reader, one of <code>bbpos_wisepad3</code>, <code>stripe_m2</code>, <code>bbpos_chipper2x</code>, <code>bbpos_wisepos_e</code>, <code>verifone_P400</code>, or <code>simulated_wisepos_e</code>.
+ * @property string $device_type Type of reader, one of `bbpos_wisepad3`, `stripe_m2`, `bbpos_chipper2x`, `bbpos_wisepos_e`, `verifone_P400`, or `simulated_wisepos_e`.
  * @property null|string $ip_address The local IP address of the reader.
  * @property string $label Custom label given to the reader for easier identification.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property null|string|\Stripe\Terminal\Location $location The location identifier of the reader.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $serial_number Serial number of the reader.

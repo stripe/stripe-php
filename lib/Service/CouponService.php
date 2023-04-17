@@ -27,14 +27,14 @@ class CouponService extends \Stripe\Service\AbstractService
      * Stripe dashboard. Coupon creation is also accessible via the API if you need to
      * create coupons on the fly.
      *
-     * A coupon has either a <code>percent_off</code> or an <code>amount_off</code> and
-     * <code>currency</code>. If you set an <code>amount_off</code>, that amount will
+     * A coupon has either a `percent_off` or an `amount_off` and
+     * `currency`. If you set an `amount_off`, that amount will
      * be subtracted from any invoice’s subtotal. For example, an invoice with a
      * subtotal of <currency>100</currency> will have a final total of
-     * <currency>0</currency> if a coupon with an <code>amount_off</code> of
+     * <currency>0</currency> if a coupon with an `amount_off` of
      * <amount>200</amount> is applied to it and an invoice with a subtotal of
      * <currency>300</currency> will have a final total of <currency>100</currency> if
-     * a coupon with an <code>amount_off</code> of <amount>200</amount> is applied to
+     * a coupon with an `amount_off` of <amount>200</amount> is applied to
      * it.
      *
      * @param null|array $params

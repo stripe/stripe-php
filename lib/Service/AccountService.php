@@ -196,9 +196,9 @@ class AccountService extends \Stripe\Service\AbstractService
     /**
      * Deletes an existing person’s relationship to the account’s legal entity. Any
      * person with a relationship for an account can be deleted through the API, except
-     * if the person is the <code>account_opener</code>. If your integration is using
-     * the <code>executive</code> parameter, you cannot delete the only verified
-     * <code>executive</code> on file.
+     * if the person is the `account_opener`. If your integration is using
+     * the `executive` parameter, you cannot delete the only verified
+     * `executive` on file.
      *
      * @param string $parentId
      * @param string $id

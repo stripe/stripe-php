@@ -8,7 +8,7 @@ class TestClockService extends \Stripe\Service\AbstractService
 {
     /**
      * Starts advancing a test clock to a specified time in the future. Advancement is
-     * done when status changes to <code>Ready</code>.
+     * done when status changes to `Ready`.
      *
      * @param string $id
      * @param null|array $params

@@ -22,12 +22,12 @@ class WebhookEndpointService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * A webhook endpoint must have a <code>url</code> and a list of
-     * <code>enabled_events</code>. You may optionally specify the Boolean
-     * <code>connect</code> parameter. If set to true, then a Connect webhook endpoint
-     * that notifies the specified <code>url</code> about events from all connected
+     * A webhook endpoint must have a `url` and a list of
+     * `enabled_events`. You may optionally specify the Boolean
+     * `connect` parameter. If set to true, then a Connect webhook endpoint
+     * that notifies the specified `url` about events from all connected
      * accounts is created; otherwise an account webhook endpoint that notifies the
-     * specified <code>url</code> only about events from your account is created. You
+     * specified `url` only about events from your account is created. You
      * can also create webhook endpoints in the <a
      * href="https://dashboard.stripe.com/account/webhooks">webhooks settings</a>
      * section of the Dashboard.
@@ -79,8 +79,8 @@ class WebhookEndpointService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates the webhook endpoint. You may edit the <code>url</code>, the list of
-     * <code>enabled_events</code>, and the status of your endpoint.
+     * Updates the webhook endpoint. You may edit the `url`, the list of
+     * `enabled_events`, and the status of your endpoint.
      *
      * @param string $id
      * @param null|array $params

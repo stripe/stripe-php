@@ -18,7 +18,7 @@ namespace Stripe\Tax;
  * @property \Stripe\StripeObject $customer_details
  * @property null|int $expires_at Timestamp of date at which the tax calculation will expire.
  * @property null|\Stripe\Collection<\Stripe\Tax\CalculationLineItem> $line_items The list of items the customer is purchasing.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property null|\Stripe\StripeObject $shipping_cost The shipping cost details for the calculation.
  * @property int $tax_amount_exclusive The amount of tax to be collected on top of the line item prices.
  * @property int $tax_amount_inclusive The amount of tax already included in the line item prices.

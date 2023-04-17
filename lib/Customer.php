@@ -20,14 +20,14 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $currency Three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a> the customer can be charged in for recurring billing purposes.
  * @property null|string|\Stripe\Account|\Stripe\BankAccount|\Stripe\Card|\Stripe\Source $default_source <p>ID of the default payment source for the customer.</p><p>If you are using payment methods created via the PaymentMethods API, see the <a href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a> field instead.</p>
- * @property null|bool $delinquent <p>When the customer's latest invoice is billed by charging automatically, <code>delinquent</code> is <code>true</code> if the invoice's latest charge failed. When the customer's latest invoice is billed by sending an invoice, <code>delinquent</code> is <code>true</code> if the invoice isn't paid by its due date.</p><p>If an invoice is marked uncollectible by <a href="https://stripe.com/docs/billing/automatic-collection">dunning</a>, <code>delinquent</code> doesn't get reset to <code>false</code>.</p>
+ * @property null|bool $delinquent <p>When the customer's latest invoice is billed by charging automatically, `delinquent` is `true` if the invoice's latest charge failed. When the customer's latest invoice is billed by sending an invoice, `delinquent` is `true` if the invoice isn't paid by its due date.</p><p>If an invoice is marked uncollectible by <a href="https://stripe.com/docs/billing/automatic-collection">dunning</a>, `delinquent` doesn't get reset to `false`.</p>
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|\Stripe\Discount $discount Describes the current discount active on the customer, if there is one.
  * @property null|string $email The customer's email address.
  * @property null|\Stripe\StripeObject $invoice_credit_balance The current multi-currency balances, if any, being stored on the customer. If positive in a currency, the customer has a credit to apply to their next invoice denominated in that currency. If negative, the customer has an amount owed that will be added to their next invoice denominated in that currency. These balances do not refer to any unpaid invoices. They solely track amounts that have yet to be successfully applied to any invoice. A balance in a particular currency is only applied to any invoice as an invoice in that currency is finalized.
  * @property null|string $invoice_prefix The prefix for the customer used to generate unique invoice numbers.
  * @property null|\Stripe\StripeObject $invoice_settings
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name The customer's full name or business name.
  * @property null|int $next_invoice_sequence The suffix of the customer's next invoice number, e.g., 0001.
@@ -37,7 +37,7 @@ namespace Stripe;
  * @property null|\Stripe\Collection<\Stripe\Account|\Stripe\BankAccount|\Stripe\Card|\Stripe\Source> $sources The customer's payment sources, if any.
  * @property null|\Stripe\Collection<\Stripe\Subscription> $subscriptions The customer's current subscriptions, if any.
  * @property null|\Stripe\StripeObject $tax
- * @property null|string $tax_exempt Describes the customer's tax exemption status. One of <code>none</code>, <code>exempt</code>, or <code>reverse</code>. When set to <code>reverse</code>, invoice and receipt PDFs include the text <strong>&quot;Reverse charge&quot;</strong>.
+ * @property null|string $tax_exempt Describes the customer's tax exemption status. One of `none`, `exempt`, or `reverse`. When set to `reverse`, invoice and receipt PDFs include the text <strong>&quot;Reverse charge&quot;</strong>.
  * @property null|\Stripe\Collection<\Stripe\TaxId> $tax_ids The customer's tax IDs.
  * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this customer belongs to.
  */

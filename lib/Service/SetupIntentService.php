@@ -23,8 +23,8 @@ class SetupIntentService extends \Stripe\Service\AbstractService
 
     /**
      * A SetupIntent object can be canceled when it is in one of these statuses:
-     * <code>requires_payment_method</code>, <code>requires_confirmation</code>, or
-     * <code>requires_action</code>.
+     * `requires_payment_method`, `requires_confirmation`, or
+     * `requires_action`.
      *
      * Once canceled, setup is abandoned and any operations on the SetupIntent will
      * fail with an error.
@@ -48,11 +48,11 @@ class SetupIntentService extends \Stripe\Service\AbstractService
      * “Save” button on a payment method management page on your website.
      *
      * If the selected payment method does not require any additional steps from the
-     * customer, the SetupIntent will transition to the <code>succeeded</code> status.
+     * customer, the SetupIntent will transition to the `succeeded` status.
      *
-     * Otherwise, it will transition to the <code>requires_action</code> status and
-     * suggest additional actions via <code>next_action</code>. If setup fails, the
-     * SetupIntent will transition to the <code>requires_payment_method</code> status.
+     * Otherwise, it will transition to the `requires_action` status and
+     * suggest additional actions via `next_action`. If setup fails, the
+     * SetupIntent will transition to the `requires_payment_method` status.
      *
      * @param string $id
      * @param null|array $params
@@ -90,7 +90,7 @@ class SetupIntentService extends \Stripe\Service\AbstractService
      * Retrieves the details of a SetupIntent that has previously been created.
      *
      * Client-side retrieval using a publishable key is allowed when the
-     * <code>client_secret</code> is provided in the query string.
+     * `client_secret` is provided in the query string.
      *
      * When retrieved with a publishable key, only a subset of properties will be
      * returned. Please refer to the <a href="#setup_intent_object">SetupIntent</a>

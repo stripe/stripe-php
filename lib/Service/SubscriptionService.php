@@ -8,7 +8,7 @@ class SubscriptionService extends \Stripe\Service\AbstractService
 {
     /**
      * By default, returns a list of subscriptions that have not been canceled. In
-     * order to list canceled subscriptions, specify <code>status=canceled</code>.
+     * order to list canceled subscriptions, specify `status=canceled`.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -59,12 +59,12 @@ class SubscriptionService extends \Stripe\Service\AbstractService
      * 500 active or scheduled subscriptions.
      *
      * When you create a subscription with
-     * <code>collection_method=charge_automatically</code>, the first invoice is
-     * finalized as part of the request. The <code>payment_behavior</code> parameter
+     * `collection_method=charge_automatically`, the first invoice is
+     * finalized as part of the request. The `payment_behavior` parameter
      * determines the exact behavior of the initial payment.
      *
      * To start subscriptions where the first invoice always begins in a
-     * <code>draft</code> status, use <a
+     * `draft` status, use <a
      * href="/docs/billing/subscriptions/subscription-schedules#managing">subscription
      * schedules</a> instead. Schedules provide the flexibility to model more complex
      * billing configurations that change over time.
@@ -101,8 +101,8 @@ class SubscriptionService extends \Stripe\Service\AbstractService
      * Initiates resumption of a paused subscription, optionally resetting the billing
      * cycle anchor and creating prorations. If a resumption invoice is generated, it
      * must be paid or marked uncollectible before the subscription will be unpaused.
-     * If payment succeeds the subscription will become <code>active</code>, and if
-     * payment fails the subscription will be <code>past_due</code>. The resumption
+     * If payment succeeds the subscription will become `active`, and if
+     * payment fails the subscription will be `past_due`. The resumption
      * invoice will void automatically if not paid by the expiration date.
      *
      * @param string $id

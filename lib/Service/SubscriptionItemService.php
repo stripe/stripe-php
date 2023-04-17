@@ -66,19 +66,19 @@ class SubscriptionItemService extends \Stripe\Service\AbstractService
      * Creates a usage record for a specified subscription item and date, and fills it
      * with a quantity.
      *
-     * Usage records provide <code>quantity</code> information that Stripe uses to
+     * Usage records provide `quantity` information that Stripe uses to
      * track how much a customer is using your service. With usage information and the
      * pricing model set up by the <a
      * href="https://stripe.com/docs/billing/subscriptions/metered-billing">metered
      * billing</a> plan, Stripe helps you send accurate invoices to your customers.
      *
-     * The default calculation for usage is to add up all the <code>quantity</code>
+     * The default calculation for usage is to add up all the `quantity`
      * values of the usage records within a billing period. You can change this default
-     * behavior with the billing plan’s <code>aggregate_usage</code> <a
+     * behavior with the billing plan’s `aggregate_usage` <a
      * href="/docs/api/plans/create#create_plan-aggregate_usage">parameter</a>. When
      * there is more than one usage record with the same timestamp, Stripe adds the
-     * <code>quantity</code> values together. In most cases, this is the desired
-     * resolution, however, you can change this behavior with the <code>action</code>
+     * `quantity` values together. In most cases, this is the desired
+     * resolution, however, you can change this behavior with the `action`
      * parameter.
      *
      * The default pricing model for metered billing is <a

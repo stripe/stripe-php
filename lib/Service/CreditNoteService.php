@@ -41,25 +41,25 @@ class CreditNoteService extends \Stripe\Service\AbstractService
 
     /**
      * Issue a credit note to adjust the amount of a finalized invoice. For a
-     * <code>status=open</code> invoice, a credit note reduces its
-     * <code>amount_due</code>. For a <code>status=paid</code> invoice, a credit note
-     * does not affect its <code>amount_due</code>. Instead, it can result in any
+     * `status=open` invoice, a credit note reduces its
+     * `amount_due`. For a `status=paid` invoice, a credit note
+     * does not affect its `amount_due`. Instead, it can result in any
      * combination of the following:.
      *
-     * <ul> <li>Refund: create a new refund (using <code>refund_amount</code>) or link
-     * an existing refund (using <code>refund</code>).</li> <li>Customer balance
-     * credit: credit the customer’s balance (using <code>credit_amount</code>) which
+     * <ul> <li>Refund: create a new refund (using `refund_amount`) or link
+     * an existing refund (using `refund`).</li> <li>Customer balance
+     * credit: credit the customer’s balance (using `credit_amount`) which
      * will be automatically applied to their next invoice when it’s finalized.</li>
      * <li>Outside of Stripe credit: record the amount that is or will be credited
-     * outside of Stripe (using <code>out_of_band_amount</code>).</li> </ul>
+     * outside of Stripe (using `out_of_band_amount`).</li> </ul>
      *
      * For post-payment credit notes the sum of the refund, credit and outside of
      * Stripe amounts must equal the credit note total.
      *
      * You may issue multiple credit notes for an invoice. Each credit note will
-     * increment the invoice’s <code>pre_payment_credit_notes_amount</code> or
-     * <code>post_payment_credit_notes_amount</code> depending on its
-     * <code>status</code> at the time of credit note creation.
+     * increment the invoice’s `pre_payment_credit_notes_amount` or
+     * `post_payment_credit_notes_amount` depending on its
+     * `status` at the time of credit note creation.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts

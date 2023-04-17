@@ -7,8 +7,8 @@ namespace Stripe\Service\TestHelpers\Issuing;
 class CardService extends \Stripe\Service\AbstractService
 {
     /**
-     * Updates the shipping status of the specified Issuing <code>Card</code> object to
-     * <code>delivered</code>.
+     * Updates the shipping status of the specified Issuing `Card` object to
+     * `delivered`.
      *
      * @param string $id
      * @param null|array $params
@@ -24,8 +24,8 @@ class CardService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates the shipping status of the specified Issuing <code>Card</code> object to
-     * <code>failure</code>.
+     * Updates the shipping status of the specified Issuing `Card` object to
+     * `failure`.
      *
      * @param string $id
      * @param null|array $params
@@ -41,8 +41,8 @@ class CardService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates the shipping status of the specified Issuing <code>Card</code> object to
-     * <code>returned</code>.
+     * Updates the shipping status of the specified Issuing `Card` object to
+     * `returned`.
      *
      * @param string $id
      * @param null|array $params
@@ -58,8 +58,8 @@ class CardService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates the shipping status of the specified Issuing <code>Card</code> object to
-     * <code>shipped</code>.
+     * Updates the shipping status of the specified Issuing `Card` object to
+     * `shipped`.
      *
      * @param string $id
      * @param null|array $params

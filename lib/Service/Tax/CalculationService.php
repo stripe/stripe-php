@@ -23,7 +23,7 @@ class CalculationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Calculates tax based on input and returns a Tax <code>Calculation</code> object.
+     * Calculates tax based on input and returns a Tax `Calculation` object.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts

@@ -163,7 +163,7 @@ class CustomerService extends \Stripe\Service\AbstractService
      * If the card’s owner has no default card, then the new card will become the
      * default. However, if the owner already has a default, then it will not change.
      * To change the default, you should <a href="/docs/api#update_customer">update the
-     * customer</a> to have a new <code>default_source</code>.
+     * customer</a> to have a new `default_source`.
      *
      * @param string $parentId
      * @param null|array $params
@@ -179,7 +179,7 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a new <code>TaxID</code> object for a customer.
+     * Creates a new `TaxID` object for a customer.
      *
      * @param string $parentId
      * @param null|array $params
@@ -243,7 +243,7 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Deletes an existing <code>TaxID</code> object.
+     * Deletes an existing `TaxID` object.
      *
      * @param string $parentId
      * @param string $id
@@ -362,7 +362,7 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves the <code>TaxID</code> object with the given identifier.
+     * Retrieves the `TaxID` object with the given identifier.
      *
      * @param string $parentId
      * @param string $id
@@ -405,7 +405,7 @@ class CustomerService extends \Stripe\Service\AbstractService
      * (e.g., a card) to be used for all charges in the future. When you update a
      * customer to a new valid card source by passing the <strong>source</strong>
      * parameter: for each of the customer’s current subscriptions, if the subscription
-     * bills automatically and is in the <code>past_due</code> state, then the latest
+     * bills automatically and is in the `past_due` state, then the latest
      * open invoice for the subscription with automatic collection enabled will be
      * retried. This retry will not count as an automatic retry, and will not affect
      * the next regularly scheduled payment for the invoice. Changing the
@@ -428,7 +428,7 @@ class CustomerService extends \Stripe\Service\AbstractService
 
     /**
      * Most credit balance transaction fields are immutable, but you may update its
-     * <code>description</code> and <code>metadata</code>.
+     * `description` and `metadata`.
      *
      * @param string $parentId
      * @param string $id

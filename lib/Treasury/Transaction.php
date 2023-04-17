@@ -21,7 +21,7 @@ namespace Stripe\Treasury;
  * @property null|string $flow ID of the flow that created the Transaction.
  * @property null|\Stripe\StripeObject $flow_details Details of the flow that created the Transaction.
  * @property string $flow_type Type of the flow that created the Transaction.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property string $status Status of the Transaction.
  * @property \Stripe\StripeObject $status_transitions
  */

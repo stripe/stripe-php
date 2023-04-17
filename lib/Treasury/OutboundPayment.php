@@ -11,28 +11,28 @@ namespace Stripe\Treasury;
  * href="https://stripe.com/docs/api#outbound_transfers">OutboundTransfer</a>.
  *
  * Simulate OutboundPayment state changes with the
- * <code>/v1/test_helpers/treasury/outbound_payments</code> endpoints. These
+ * `/v1/test_helpers/treasury/outbound_payments` endpoints. These
  * methods can only be called on test mode objects.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount Amount (in cents) transferred.
- * @property bool $cancelable Returns <code>true</code> if the object can be canceled, and <code>false</code> otherwise.
+ * @property bool $cancelable Returns `true` if the object can be canceled, and `false` otherwise.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $customer ID of the <a href="https://stripe.com/docs/api/customers">customer</a> to whom an OutboundPayment is sent.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
- * @property null|string $destination_payment_method The PaymentMethod via which an OutboundPayment is sent. This field can be empty if the OutboundPayment was created using <code>destination_payment_method_data</code>.
+ * @property null|string $destination_payment_method The PaymentMethod via which an OutboundPayment is sent. This field can be empty if the OutboundPayment was created using `destination_payment_method_data`.
  * @property null|\Stripe\StripeObject $destination_payment_method_details Details about the PaymentMethod for an OutboundPayment.
  * @property null|\Stripe\StripeObject $end_user_details Details about the end user.
  * @property int $expected_arrival_date The date when funds are expected to arrive in the destination account.
  * @property string $financial_account The FinancialAccount that funds were pulled from.
  * @property null|string $hosted_regulatory_receipt_url A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted transaction receipt</a> URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|\Stripe\StripeObject $returned_details Details about a returned OutboundPayment. Only set when the status is <code>returned</code>.
+ * @property null|\Stripe\StripeObject $returned_details Details about a returned OutboundPayment. Only set when the status is `returned`.
  * @property string $statement_descriptor The description that appears on the receiving end for an OutboundPayment (for example, bank statement for external bank transfer).
- * @property string $status Current status of the OutboundPayment: <code>processing</code>, <code>failed</code>, <code>posted</code>, <code>returned</code>, <code>canceled</code>. An OutboundPayment is <code>processing</code> if it has been created and is pending. The status changes to <code>posted</code> once the OutboundPayment has been &quot;confirmed&quot; and funds have left the account, or to <code>failed</code> or <code>canceled</code>. If an OutboundPayment fails to arrive at its destination, its status will change to <code>returned</code>.
+ * @property string $status Current status of the OutboundPayment: `processing`, `failed`, `posted`, `returned`, `canceled`. An OutboundPayment is `processing` if it has been created and is pending. The status changes to `posted` once the OutboundPayment has been &quot;confirmed&quot; and funds have left the account, or to `failed` or `canceled`. If an OutboundPayment fails to arrive at its destination, its status will change to `returned`.
  * @property \Stripe\StripeObject $status_transitions
  * @property string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
  */

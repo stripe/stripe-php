@@ -8,7 +8,7 @@ class SessionService extends \Stripe\Service\AbstractService
 {
     /**
      * To launch the Financial Connections authorization flow, create a
-     * <code>Session</code>. The session’s <code>client_secret</code> can be used to
+     * `Session`. The session’s `client_secret` can be used to
      * launch the flow using Stripe.js.
      *
      * @param null|array $params
@@ -24,7 +24,7 @@ class SessionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves the details of a Financial Connections <code>Session</code>.
+     * Retrieves the details of a Financial Connections `Session`.
      *
      * @param string $id
      * @param null|array $params

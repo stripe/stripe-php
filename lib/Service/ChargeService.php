@@ -47,7 +47,7 @@ class ChargeService extends \Stripe\Service\AbstractService
 
     /**
      * To charge a credit card or other payment source, you create a
-     * <code>Charge</code> object. If your API key is in test mode, the supplied
+     * `Charge` object. If your API key is in test mode, the supplied
      * payment source (e.g., card) won’t actually be charged, although everything else
      * will occur as if in live mode. (Stripe assumes that the charge would have
      * completed successfully).

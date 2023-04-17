@@ -7,7 +7,7 @@ namespace Stripe\Service\Terminal;
 class LocationService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of <code>Location</code> objects.
+     * Returns a list of `Location` objects.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -22,7 +22,7 @@ class LocationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a new <code>Location</code> object. For further details, including which
+     * Creates a new `Location` object. For further details, including which
      * address fields are required in each country, see the <a
      * href="/docs/terminal/fleet/locations">Manage locations</a> guide.
      *
@@ -39,7 +39,7 @@ class LocationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Deletes a <code>Location</code> object.
+     * Deletes a `Location` object.
      *
      * @param string $id
      * @param null|array $params
@@ -55,7 +55,7 @@ class LocationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves a <code>Location</code> object.
+     * Retrieves a `Location` object.
      *
      * @param string $id
      * @param null|array $params
@@ -71,7 +71,7 @@ class LocationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates a <code>Location</code> object by setting the values of the parameters
+     * Updates a `Location` object by setting the values of the parameters
      * passed. Any parameters not provided will be left unchanged.
      *
      * @param string $id

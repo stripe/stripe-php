@@ -13,17 +13,17 @@ namespace Stripe\FinancialConnections;
  * @property null|\Stripe\StripeObject $account_holder The account holder that this account belongs to.
  * @property null|\Stripe\StripeObject $balance The most recent information about the account's balance.
  * @property null|\Stripe\StripeObject $balance_refresh The state of the most recent attempt to refresh the account balance.
- * @property string $category The type of the account. Account category is further divided in <code>subcategory</code>.
+ * @property string $category The type of the account. Account category is further divided in `subcategory`.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $display_name A human-readable name that has been assigned to this account, either by the account holder or by the institution.
  * @property string $institution_name The name of the institution that holds this account.
  * @property null|string $last4 The last 4 digits of the account number. If present, this will be 4 numeric characters.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property null|string|\Stripe\FinancialConnections\AccountOwnership $ownership The most recent information about the account's owners.
  * @property null|\Stripe\StripeObject $ownership_refresh The state of the most recent attempt to refresh the account owners.
  * @property null|string[] $permissions The list of permissions granted by this account.
  * @property string $status The status of the link to the account.
- * @property string $subcategory <p>If <code>category</code> is <code>cash</code>, one of:</p><p>- <code>checking</code> - <code>savings</code> - <code>other</code></p><p>If <code>category</code> is <code>credit</code>, one of:</p><p>- <code>mortgage</code> - <code>line_of_credit</code> - <code>credit_card</code> - <code>other</code></p><p>If <code>category</code> is <code>investment</code> or <code>other</code>, this will be <code>other</code>.</p>
+ * @property string $subcategory <p>If `category` is `cash`, one of:</p><p>- `checking` - `savings` - `other`</p><p>If `category` is `credit`, one of:</p><p>- `mortgage` - `line_of_credit` - `credit_card` - `other`</p><p>If `category` is `investment` or `other`, this will be `other`.</p>
  * @property string[] $supported_payment_method_types The <a href="https://stripe.com/docs/api/payment_methods/object#payment_method_object-type">PaymentMethod type</a>(s) that can be created from this account.
  */
 class Account extends \Stripe\ApiResource

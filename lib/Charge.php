@@ -5,7 +5,7 @@
 namespace Stripe;
 
 /**
- * To charge a credit or a debit card, you create a <code>Charge</code> object. You
+ * To charge a credit or a debit card, you create a `Charge` object. You
  * can retrieve and refund individual charges as well as list all charges. Charges
  * are identified by a unique, random ID.
  *
@@ -31,7 +31,7 @@ namespace Stripe;
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string|\Stripe\Customer $customer ID of the customer this charge is for if one exists.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
- * @property null|string|\Stripe\Account $destination ID of an existing, connected Stripe account to transfer funds to if <code>transfer_data</code> was specified in the charge request.
+ * @property null|string|\Stripe\Account $destination ID of an existing, connected Stripe account to transfer funds to if `transfer_data` was specified in the charge request.
  * @property null|string|\Stripe\Dispute $dispute Details about the dispute if the charge has been disputed.
  * @property bool $disputed Whether the charge has been disputed.
  * @property null|string|\Stripe\BalanceTransaction $failure_balance_transaction ID of the balance transaction that describes the reversal of the balance on your account due to payment failure.
@@ -40,28 +40,28 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $fraud_details Information on fraud assessments for the charge.
  * @property null|string|\Stripe\Invoice $invoice ID of the invoice this charge is for if one exists.
  * @property null|\Stripe\StripeObject $level3
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string|\Stripe\Account $on_behalf_of The account (if any) the charge was made on behalf of without triggering an automatic transfer. See the <a href="https://stripe.com/docs/connect/charges-transfers">Connect documentation</a> for details.
  * @property null|\Stripe\StripeObject $outcome Details about whether the payment was accepted, and why. See <a href="https://stripe.com/docs/declines">understanding declines</a> for details.
- * @property bool $paid <code>true</code> if the charge succeeded, or was successfully authorized for later capture.
+ * @property bool $paid `true` if the charge succeeded, or was successfully authorized for later capture.
  * @property null|string|\Stripe\PaymentIntent $payment_intent ID of the PaymentIntent associated with this charge, if one exists.
  * @property null|string $payment_method ID of the payment method used in this charge.
  * @property null|\Stripe\StripeObject $payment_method_details Details about the payment method at the time of the transaction.
  * @property null|\Stripe\StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
  * @property null|string $receipt_email This is the email address that the receipt for this charge was sent to.
- * @property null|string $receipt_number This is the transaction number that appears on email receipts sent for this charge. This attribute will be <code>null</code> until a receipt has been sent.
+ * @property null|string $receipt_number This is the transaction number that appears on email receipts sent for this charge. This attribute will be `null` until a receipt has been sent.
  * @property null|string $receipt_url This is the URL to view the receipt for this charge. The receipt is kept up-to-date to the latest state of the charge, including any refunds. If the charge is for an Invoice, the receipt will be stylized as an Invoice receipt.
  * @property bool $refunded Whether the charge has been fully refunded. If the charge is only partially refunded, this attribute will still be false.
  * @property null|\Stripe\Collection<\Stripe\Refund> $refunds A list of refunds that have been applied to the charge.
  * @property null|string|\Stripe\Review $review ID of the review associated with this charge if one exists.
  * @property null|\Stripe\StripeObject $shipping Shipping information for the charge.
- * @property null|\Stripe\Account|\Stripe\BankAccount|\Stripe\Card|\Stripe\Source $source This is a legacy field that will be removed in the future. It contains the Source, Card, or BankAccount object used for the charge. For details about the payment method used for this charge, refer to <code>payment_method</code> or <code>payment_method_details</code> instead.
+ * @property null|\Stripe\Account|\Stripe\BankAccount|\Stripe\Card|\Stripe\Source $source This is a legacy field that will be removed in the future. It contains the Source, Card, or BankAccount object used for the charge. For details about the payment method used for this charge, refer to `payment_method` or `payment_method_details` instead.
  * @property null|string|\Stripe\Transfer $source_transfer The transfer ID which created this charge. Only present if the charge came from another Stripe account. <a href="https://stripe.com/docs/connect/destination-charges">See the Connect documentation</a> for details.
- * @property null|string $statement_descriptor For card charges, use <code>statement_descriptor_suffix</code> instead. Otherwise, you can use this value as the complete description of a charge on your customers’ statements. Must contain at least one letter, maximum 22 characters.
+ * @property null|string $statement_descriptor For card charges, use `statement_descriptor_suffix` instead. Otherwise, you can use this value as the complete description of a charge on your customers’ statements. Must contain at least one letter, maximum 22 characters.
  * @property null|string $statement_descriptor_suffix Provides information about the charge that customers see on their statements. Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set on the account to form the complete statement descriptor. Maximum 22 characters for the concatenated descriptor.
- * @property string $status The status of the payment is either <code>succeeded</code>, <code>pending</code>, or <code>failed</code>.
- * @property null|string|\Stripe\Transfer $transfer ID of the transfer to the <code>destination</code> account (only applicable if the charge was created using the <code>destination</code> parameter).
+ * @property string $status The status of the payment is either `succeeded`, `pending`, or `failed`.
+ * @property null|string|\Stripe\Transfer $transfer ID of the transfer to the `destination` account (only applicable if the charge was created using the `destination` parameter).
  * @property null|\Stripe\StripeObject $transfer_data An optional dictionary including the account to automatically transfer to as part of a destination charge. <a href="https://stripe.com/docs/connect/destination-charges">See the Connect documentation</a> for details.
  * @property null|string $transfer_group A string that identifies this transaction as part of a group. See the <a href="https://stripe.com/docs/connect/charges-transfers#transfer-options">Connect documentation</a> for details.
  */

@@ -7,7 +7,7 @@ namespace Stripe\Service\Terminal;
 class ConfigurationService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of <code>Configuration</code> objects.
+     * Returns a list of `Configuration` objects.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -22,7 +22,7 @@ class ConfigurationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a new <code>Configuration</code> object.
+     * Creates a new `Configuration` object.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -37,7 +37,7 @@ class ConfigurationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Deletes a <code>Configuration</code> object.
+     * Deletes a `Configuration` object.
      *
      * @param string $id
      * @param null|array $params
@@ -53,7 +53,7 @@ class ConfigurationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves a <code>Configuration</code> object.
+     * Retrieves a `Configuration` object.
      *
      * @param string $id
      * @param null|array $params
@@ -69,7 +69,7 @@ class ConfigurationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates a new <code>Configuration</code> object.
+     * Updates a new `Configuration` object.
      *
      * @param string $id
      * @param null|array $params

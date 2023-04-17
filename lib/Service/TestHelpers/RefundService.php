@@ -7,7 +7,7 @@ namespace Stripe\Service\TestHelpers;
 class RefundService extends \Stripe\Service\AbstractService
 {
     /**
-     * Expire a refund with a status of <code>requires_action</code>.
+     * Expire a refund with a status of `requires_action`.
      *
      * @param string $id
      * @param null|array $params

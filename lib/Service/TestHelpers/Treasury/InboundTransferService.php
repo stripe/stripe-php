@@ -7,8 +7,8 @@ namespace Stripe\Service\TestHelpers\Treasury;
 class InboundTransferService extends \Stripe\Service\AbstractService
 {
     /**
-     * Transitions a test mode created InboundTransfer to the <code>failed</code>
-     * status. The InboundTransfer must already be in the <code>processing</code>
+     * Transitions a test mode created InboundTransfer to the `failed`
+     * status. The InboundTransfer must already be in the `processing`
      * state.
      *
      * @param string $id
@@ -27,7 +27,7 @@ class InboundTransferService extends \Stripe\Service\AbstractService
     /**
      * Marks the test mode InboundTransfer object as returned and links the
      * InboundTransfer to a ReceivedDebit. The InboundTransfer must already be in the
-     * <code>succeeded</code> state.
+     * `succeeded` state.
      *
      * @param string $id
      * @param null|array $params
@@ -43,8 +43,8 @@ class InboundTransferService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Transitions a test mode created InboundTransfer to the <code>succeeded</code>
-     * status. The InboundTransfer must already be in the <code>processing</code>
+     * Transitions a test mode created InboundTransfer to the `succeeded`
+     * status. The InboundTransfer must already be in the `processing`
      * state.
      *
      * @param string $id

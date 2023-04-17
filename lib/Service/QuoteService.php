@@ -92,8 +92,8 @@ class QuoteService extends \Stripe\Service\AbstractService
 
     /**
      * A quote models prices and services for a customer. Default options for
-     * <code>header</code>, <code>description</code>, <code>footer</code>, and
-     * <code>expires_at</code> can be set in the dashboard via the <a
+     * `header`, `description`, `footer`, and
+     * `expires_at` can be set in the dashboard via the <a
      * href="https://dashboard.stripe.com/settings/billing/quote">quote template</a>.
      *
      * @param null|array $params

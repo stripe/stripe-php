@@ -5,7 +5,7 @@
 namespace Stripe;
 
 /**
- * <code>Application Fee Refund</code> objects allow you to refund an application
+ * `Application Fee Refund` objects allow you to refund an application
  * fee that has previously been created but not yet refunded. Funds will be
  * refunded to the Stripe account from which the fee was originally collected.
  *
@@ -40,7 +40,7 @@ class ApplicationFeeRefund extends ApiResource
         if (!$id) {
             throw new Exception\UnexpectedValueException(
                 'Could not determine which URL to request: ' .
-                "class instance has invalid ID: {$id}",
+                    "class instance has invalid ID: {$id}",
                 null
             );
         }

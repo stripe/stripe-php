@@ -7,7 +7,7 @@ namespace Stripe\Service\Radar;
 class ValueListService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of <code>ValueList</code> objects. The objects are sorted in
+     * Returns a list of `ValueList` objects. The objects are sorted in
      * descending order by creation date, with the most recently created object
      * appearing first.
      *
@@ -24,7 +24,7 @@ class ValueListService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a new <code>ValueList</code> object, which can then be referenced in
+     * Creates a new `ValueList` object, which can then be referenced in
      * rules.
      *
      * @param null|array $params
@@ -40,7 +40,7 @@ class ValueListService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Deletes a <code>ValueList</code> object, also deleting any items contained
+     * Deletes a `ValueList` object, also deleting any items contained
      * within the value list. To be deleted, a value list must not be referenced in any
      * rules.
      *
@@ -58,7 +58,7 @@ class ValueListService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves a <code>ValueList</code> object.
+     * Retrieves a `ValueList` object.
      *
      * @param string $id
      * @param null|array $params
@@ -74,9 +74,9 @@ class ValueListService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates a <code>ValueList</code> object by setting the values of the parameters
+     * Updates a `ValueList` object by setting the values of the parameters
      * passed. Any parameters not provided will be left unchanged. Note that
-     * <code>item_type</code> is immutable.
+     * `item_type` is immutable.
      *
      * @param string $id
      * @param null|array $params

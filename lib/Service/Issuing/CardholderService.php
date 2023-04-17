@@ -7,7 +7,7 @@ namespace Stripe\Service\Issuing;
 class CardholderService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of Issuing <code>Cardholder</code> objects. The objects are
+     * Returns a list of Issuing `Cardholder` objects. The objects are
      * sorted in descending order by creation date, with the most recently created
      * object appearing first.
      *
@@ -24,7 +24,7 @@ class CardholderService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a new Issuing <code>Cardholder</code> object that can be issued cards.
+     * Creates a new Issuing `Cardholder` object that can be issued cards.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -39,7 +39,7 @@ class CardholderService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves an Issuing <code>Cardholder</code> object.
+     * Retrieves an Issuing `Cardholder` object.
      *
      * @param string $id
      * @param null|array $params
@@ -55,7 +55,7 @@ class CardholderService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates the specified Issuing <code>Cardholder</code> object by setting the
+     * Updates the specified Issuing `Cardholder` object by setting the
      * values of the parameters passed. Any parameters not provided will be left
      * unchanged.
      *

@@ -18,7 +18,7 @@ namespace Stripe\Treasury;
  * @property null|string $flow Token of the flow associated with the TransactionEntry.
  * @property null|\Stripe\StripeObject $flow_details Details of the flow associated with the TransactionEntry.
  * @property string $flow_type Type of the flow associated with the TransactionEntry.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
  * @property string $type The specific money movement that generated the TransactionEntry.
  */

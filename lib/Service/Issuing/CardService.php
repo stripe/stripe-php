@@ -7,7 +7,7 @@ namespace Stripe\Service\Issuing;
 class CardService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of Issuing <code>Card</code> objects. The objects are sorted in
+     * Returns a list of Issuing `Card` objects. The objects are sorted in
      * descending order by creation date, with the most recently created object
      * appearing first.
      *
@@ -24,7 +24,7 @@ class CardService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates an Issuing <code>Card</code> object.
+     * Creates an Issuing `Card` object.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -39,7 +39,7 @@ class CardService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves an Issuing <code>Card</code> object.
+     * Retrieves an Issuing `Card` object.
      *
      * @param string $id
      * @param null|array $params
@@ -55,7 +55,7 @@ class CardService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates the specified Issuing <code>Card</code> object by setting the values of
+     * Updates the specified Issuing `Card` object by setting the values of
      * the parameters passed. Any parameters not provided will be left unchanged.
      *
      * @param string $id

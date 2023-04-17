@@ -24,8 +24,8 @@ class SubscriptionScheduleService extends \Stripe\Service\AbstractService
     /**
      * Cancels a subscription schedule and its associated subscription immediately (if
      * the subscription schedule has an active subscription). A subscription schedule
-     * can only be canceled if its status is <code>not_started</code> or
-     * <code>active</code>.
+     * can only be canceled if its status is `not_started` or
+     * `active`.
      *
      * @param string $id
      * @param null|array $params
@@ -59,10 +59,10 @@ class SubscriptionScheduleService extends \Stripe\Service\AbstractService
     /**
      * Releases the subscription schedule immediately, which will stop scheduling of
      * its phases, but leave any existing subscription in place. A schedule can only be
-     * released if its status is <code>not_started</code> or <code>active</code>. If
+     * released if its status is `not_started` or `active`. If
      * the subscription schedule is currently associated with a subscription, releasing
-     * it will remove its <code>subscription</code> property and set the subscription’s
-     * ID to the <code>released_subscription</code> property.
+     * it will remove its `subscription` property and set the subscription’s
+     * ID to the `released_subscription` property.
      *
      * @param string $id
      * @param null|array $params

@@ -7,7 +7,7 @@ namespace Stripe\Service\FinancialConnections;
 class AccountService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of Financial Connections <code>Account</code> objects.
+     * Returns a list of Financial Connections `Account` objects.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -22,7 +22,7 @@ class AccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Lists all owners for a given <code>Account</code>.
+     * Lists all owners for a given `Account`.
      *
      * @param string $id
      * @param null|array $params
@@ -38,7 +38,7 @@ class AccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Disables your access to a Financial Connections <code>Account</code>. You will
+     * Disables your access to a Financial Connections `Account`. You will
      * no longer be able to access data associated with the account (e.g. balances,
      * transactions).
      *
@@ -56,7 +56,7 @@ class AccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Refreshes the data associated with a Financial Connections <code>Account</code>.
+     * Refreshes the data associated with a Financial Connections `Account`.
      *
      * @param string $id
      * @param null|array $params
@@ -72,7 +72,7 @@ class AccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves the details of an Financial Connections <code>Account</code>.
+     * Retrieves the details of an Financial Connections `Account`.
      *
      * @param string $id
      * @param null|array $params

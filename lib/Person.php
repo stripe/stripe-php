@@ -34,8 +34,8 @@ namespace Stripe;
  * @property null|string[] $full_name_aliases A list of alternate names or aliases that the person is known by.
  * @property null|\Stripe\StripeObject $future_requirements Information about the upcoming new requirements for this person, including what information needs to be collected, and by when.
  * @property null|string $gender The person's gender (International regulations require either &quot;male&quot; or &quot;female&quot;).
- * @property null|bool $id_number_provided Whether the person's <code>id_number</code> was provided.
- * @property null|bool $id_number_secondary_provided Whether the person's <code>id_number_secondary</code> was provided.
+ * @property null|bool $id_number_provided Whether the person's `id_number` was provided.
+ * @property null|bool $id_number_secondary_provided Whether the person's `id_number_secondary` was provided.
  * @property null|string $last_name The person's last name.
  * @property null|string $last_name_kana The Kana variation of the person's last name (Japan only).
  * @property null|string $last_name_kanji The Kanji variation of the person's last name (Japan only).
@@ -77,7 +77,7 @@ class Person extends ApiResource
         if (!$id) {
             throw new Exception\UnexpectedValueException(
                 'Could not determine which URL to request: ' .
-                "class instance has invalid ID: {$id}",
+                    "class instance has invalid ID: {$id}",
                 null
             );
         }
@@ -100,8 +100,8 @@ class Person extends ApiResource
     public static function retrieve($_id, $_opts = null)
     {
         $msg = 'Persons cannot be retrieved without an account ID. Retrieve ' .
-               "a person using `Account::retrievePerson('account_id', " .
-               "'person_id')`.";
+            "a person using `Account::retrievePerson('account_id', " .
+            "'person_id')`.";
 
         throw new Exception\BadMethodCallException($msg);
     }
@@ -116,8 +116,8 @@ class Person extends ApiResource
     public static function update($_id, $_params = null, $_options = null)
     {
         $msg = 'Persons cannot be updated without an account ID. Update ' .
-               "a person using `Account::updatePerson('account_id', " .
-               "'person_id', \$updateParams)`.";
+            "a person using `Account::updatePerson('account_id', " .
+            "'person_id', \$updateParams)`.";
 
         throw new Exception\BadMethodCallException($msg);
     }

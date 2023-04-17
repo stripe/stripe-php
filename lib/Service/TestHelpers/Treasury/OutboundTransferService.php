@@ -7,8 +7,8 @@ namespace Stripe\Service\TestHelpers\Treasury;
 class OutboundTransferService extends \Stripe\Service\AbstractService
 {
     /**
-     * Transitions a test mode created OutboundTransfer to the <code>failed</code>
-     * status. The OutboundTransfer must already be in the <code>processing</code>
+     * Transitions a test mode created OutboundTransfer to the `failed`
+     * status. The OutboundTransfer must already be in the `processing`
      * state.
      *
      * @param string $id
@@ -25,8 +25,8 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Transitions a test mode created OutboundTransfer to the <code>posted</code>
-     * status. The OutboundTransfer must already be in the <code>processing</code>
+     * Transitions a test mode created OutboundTransfer to the `posted`
+     * status. The OutboundTransfer must already be in the `processing`
      * state.
      *
      * @param string $id
@@ -43,8 +43,8 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Transitions a test mode created OutboundTransfer to the <code>returned</code>
-     * status. The OutboundTransfer must already be in the <code>processing</code>
+     * Transitions a test mode created OutboundTransfer to the `returned`
+     * status. The OutboundTransfer must already be in the `processing`
      * state.
      *
      * @param string $id

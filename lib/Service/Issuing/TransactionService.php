@@ -7,7 +7,7 @@ namespace Stripe\Service\Issuing;
 class TransactionService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of Issuing <code>Transaction</code> objects. The objects are
+     * Returns a list of Issuing `Transaction` objects. The objects are
      * sorted in descending order by creation date, with the most recently created
      * object appearing first.
      *
@@ -24,7 +24,7 @@ class TransactionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves an Issuing <code>Transaction</code> object.
+     * Retrieves an Issuing `Transaction` object.
      *
      * @param string $id
      * @param null|array $params
@@ -40,7 +40,7 @@ class TransactionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates the specified Issuing <code>Transaction</code> object by setting the
+     * Updates the specified Issuing `Transaction` object by setting the
      * values of the parameters passed. Any parameters not provided will be left
      * unchanged.
      *

@@ -27,7 +27,7 @@ class TransferService extends \Stripe\Service\AbstractService
      * You can see a list of the reversals belonging to a specific transfer. Note that
      * the 10 most recent reversals are always available by default on the transfer
      * object. If you need more than those 10, you can use this API method and the
-     * <code>limit</code> and <code>starting_after</code> parameters to page through
+     * `limit` and `starting_after` parameters to page through
      * additional reversals.
      *
      * @param string $parentId

@@ -23,7 +23,7 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
 
     /**
      * A VerificationSession object can be canceled when it is in
-     * <code>requires_input</code> <a
+     * `requires_input` <a
      * href="/docs/identity/how-sessions-work">status</a>.
      *
      * Once canceled, future submission attempts are disabled. This cannot be undone.
@@ -46,8 +46,8 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
      * Creates a VerificationSession object.
      *
      * After the VerificationSession is created, display a verification modal using the
-     * session <code>client_secret</code> or send your users to the session’s
-     * <code>url</code>.
+     * session `client_secret` or send your users to the session’s
+     * `url`.
      *
      * If your API key is in test mode, verification checks won’t actually process,
      * though everything else will occur as if in live mode.
@@ -73,21 +73,21 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
      * including VerificationReports, Events, request logs, etc.
      *
      * A VerificationSession object can be redacted when it is in
-     * <code>requires_input</code> or <code>verified</code> <a
+     * `requires_input` or `verified` <a
      * href="/docs/identity/how-sessions-work">status</a>. Redacting a
-     * VerificationSession in <code>requires_action</code> state will automatically
+     * VerificationSession in `requires_action` state will automatically
      * cancel it.
      *
      * The redaction process may take up to four days. When the redaction process is in
-     * progress, the VerificationSession’s <code>redaction.status</code> field will be
-     * set to <code>processing</code>; when the process is finished, it will change to
-     * <code>redacted</code> and an <code>identity.verification_session.redacted</code>
+     * progress, the VerificationSession’s `redaction.status` field will be
+     * set to `processing`; when the process is finished, it will change to
+     * `redacted` and an `identity.verification_session.redacted`
      * event will be emitted.
      *
      * Redaction is irreversible. Redacted objects are still accessible in the Stripe
      * API, but all the fields that contain personal data will be replaced by the
-     * string <code>[redacted]</code> or a similar placeholder. The
-     * <code>metadata</code> field will also be erased. Redacted objects cannot be
+     * string `[redacted]` or a similar placeholder. The
+     * `metadata` field will also be erased. Redacted objects cannot be
      * updated or used for any purpose.
      *
      * <a href="/docs/identity/verification-sessions#redact">Learn more</a>.
@@ -108,8 +108,8 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
     /**
      * Retrieves the details of a VerificationSession that was previously created.
      *
-     * When the session status is <code>requires_input</code>, you can use this method
-     * to retrieve a valid <code>client_secret</code> or <code>url</code> to allow
+     * When the session status is `requires_input`, you can use this method
+     * to retrieve a valid `client_secret` or `url` to allow
      * re-submission.
      *
      * @param string $id
@@ -128,7 +128,7 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
     /**
      * Updates a VerificationSession object.
      *
-     * When the session status is <code>requires_input</code>, you can use this method
+     * When the session status is `requires_input`, you can use this method
      * to update the verification check and options.
      *
      * @param string $id

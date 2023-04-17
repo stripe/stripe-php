@@ -76,7 +76,7 @@ class SourceService extends \Stripe\Service\AbstractService
      * Updates the specified source by setting the values of the parameters passed. Any
      * parameters not provided will be left unchanged.
      *
-     * This request accepts the <code>metadata</code> and <code>owner</code> as
+     * This request accepts the `metadata` and `owner` as
      * arguments. It is also possible to update type specific information for selected
      * payment methods. Please refer to our <a href="/docs/sources">payment method
      * guides</a> for more detail.

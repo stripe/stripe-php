@@ -23,7 +23,7 @@ class TransactionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a Tax <code>Transaction</code> from a calculation.
+     * Creates a Tax `Transaction` from a calculation.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -38,7 +38,7 @@ class TransactionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Partially or fully reverses a previously created <code>Transaction</code>.
+     * Partially or fully reverses a previously created `Transaction`.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -53,7 +53,7 @@ class TransactionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves a Tax <code>Transaction</code> object.
+     * Retrieves a Tax `Transaction` object.
      *
      * @param string $id
      * @param null|array $params

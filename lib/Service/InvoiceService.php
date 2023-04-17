@@ -178,7 +178,7 @@ class InvoiceService extends \Stripe\Service\AbstractService
      * have already been paid, there will be no reference to the payment in the email.
      *
      * Requests made in test-mode result in no emails being sent, despite sending an
-     * <code>invoice.sent</code> event.
+     * `invoice.sent` event.
      *
      * @param string $id
      * @param null|array $params
@@ -209,12 +209,12 @@ class InvoiceService extends \Stripe\Service\AbstractService
      * You can preview the effects of updating a subscription, including a preview of
      * what proration will take place. To ensure that the actual proration is
      * calculated exactly the same as the previewed proration, you should pass a
-     * <code>proration_date</code> parameter when doing the actual subscription update.
+     * `proration_date` parameter when doing the actual subscription update.
      * The value passed in should be the same as the
-     * <code>subscription_proration_date</code> returned on the upcoming invoice
+     * `subscription_proration_date` returned on the upcoming invoice
      * resource. The recommended way to get only the prorations being previewed is to
-     * consider only proration line items where <code>period[start]</code> is equal to
-     * the <code>subscription_proration_date</code> on the upcoming invoice resource.
+     * consider only proration line items where `period[start]` is equal to
+     * the `subscription_proration_date` on the upcoming invoice resource.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -249,12 +249,12 @@ class InvoiceService extends \Stripe\Service\AbstractService
     /**
      * Draft invoices are fully editable. Once an invoice is <a
      * href="/docs/billing/invoices/workflow#finalized">finalized</a>, monetary values,
-     * as well as <code>collection_method</code>, become uneditable.
+     * as well as `collection_method`, become uneditable.
      *
      * If you would like to stop the Stripe Billing engine from automatically
      * finalizing, reattempting payments on, sending reminders for, or <a
      * href="/docs/billing/invoices/reconciliation">automatically reconciling</a>
-     * invoices, pass <code>auto_advance=false</code>.
+     * invoices, pass `auto_advance=false`.
      *
      * @param string $id
      * @param null|array $params

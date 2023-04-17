@@ -5,12 +5,12 @@ namespace Stripe;
 /**
  * Search results for an API resource.
  *
- * This behaves similarly to <code>Collection</code> in that they both wrap
+ * This behaves similarly to `Collection` in that they both wrap
  * around a list of objects and provide pagination. However the
- * <code>SearchResult</code> object paginates by relying on a
- * <code>next_page</code> token included in the response rather than using
- * object IDs and a <code>starting_before</code>/<code>ending_after</code>
- * parameter. Thus, <code>SearchResult</code> only supports forwards pagination.
+ * `SearchResult` object paginates by relying on a
+ * `next_page` token included in the response rather than using
+ * object IDs and a `starting_before`/`ending_after`
+ * parameter. Thus, `SearchResult` only supports forwards pagination.
  *
  * The {@see $total_count} property is only available when
  * the `expand` parameter contains `total_count`.
@@ -72,9 +72,9 @@ class SearchResult extends StripeObject implements \Countable, \IteratorAggregat
             return parent::offsetGet($k);
         }
         $msg = "You tried to access the {$k} index, but SearchResult " .
-                   'types only support string keys. (HINT: Search calls ' .
-                   'return an object with a `data` (which is the data ' .
-                   "array). You likely want to call ->data[{$k}])";
+            'types only support string keys. (HINT: Search calls ' .
+            'return an object with a `data` (which is the data ' .
+            "array). You likely want to call ->data[{$k}])";
 
         throw new Exception\InvalidArgumentException($msg);
     }

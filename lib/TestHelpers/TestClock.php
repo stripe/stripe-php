@@ -17,7 +17,7 @@ namespace Stripe\TestHelpers;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property int $deletes_after Time at which this clock is scheduled to auto delete.
  * @property int $frozen_time Time at which all objects belonging to this clock are frozen.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property null|string $name The custom name supplied at creation.
  * @property string $status The status of the Test Clock.
  */

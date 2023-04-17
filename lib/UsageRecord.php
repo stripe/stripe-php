@@ -14,7 +14,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
  * @property int $quantity The usage quantity for the specified date.
  * @property string $subscription_item The ID of the subscription item this usage record contains data for.
  * @property int $timestamp The timestamp when this usage occurred.

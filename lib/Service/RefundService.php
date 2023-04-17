@@ -25,10 +25,10 @@ class RefundService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Cancels a refund with a status of <code>requires_action</code>.
+     * Cancels a refund with a status of `requires_action`.
      *
      * Refunds in other states cannot be canceled, and only refunds for payment methods
-     * that require customer action will enter the <code>requires_action</code> state.
+     * that require customer action will enter the `requires_action` state.
      *
      * @param string $id
      * @param null|array $params
@@ -78,7 +78,7 @@ class RefundService extends \Stripe\Service\AbstractService
      * Updates the specified refund by setting the values of the parameters passed. Any
      * parameters not provided will be left unchanged.
      *
-     * This request only accepts <code>metadata</code> as an argument.
+     * This request only accepts `metadata` as an argument.
      *
      * @param string $id
      * @param null|array $params

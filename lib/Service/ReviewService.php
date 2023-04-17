@@ -7,8 +7,8 @@ namespace Stripe\Service;
 class ReviewService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of <code>Review</code> objects that have <code>open</code> set to
-     * <code>true</code>. The objects are sorted in descending order by creation date,
+     * Returns a list of `Review` objects that have `open` set to
+     * `true`. The objects are sorted in descending order by creation date,
      * with the most recently created object appearing first.
      *
      * @param null|array $params
@@ -24,7 +24,7 @@ class ReviewService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Approves a <code>Review</code> object, closing it and removing it from the list
+     * Approves a `Review` object, closing it and removing it from the list
      * of reviews.
      *
      * @param string $id
@@ -41,7 +41,7 @@ class ReviewService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves a <code>Review</code> object.
+     * Retrieves a `Review` object.
      *
      * @param string $id
      * @param null|array $params
