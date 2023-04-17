@@ -6,14 +6,12 @@ namespace Stripe;
 
 /**
  * This is an object representing a file hosted on Stripe's servers. The file may
- * have been uploaded by yourself using the <a
- * href="https://stripe.com/docs/api#create_file">create file</a> request (for
+ * have been uploaded by yourself using the [create file](https://stripe.com/docs/api#create_file) request (for
  * example, when uploading dispute evidence) or it may have been created by Stripe
- * (for example, the results of a <a href="#scheduled_queries">Sigma scheduled
- * query</a>).
+ * (for example, the results of a [Sigma scheduled
+ * query](#scheduled_queries)).
  *
- * Related guide: <a href="https://stripe.com/docs/file-upload">File Upload
- * Guide</a>.
+ * Related guide: [File Upload Guide](https://stripe.com/docs/file-upload).
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

@@ -5,27 +5,19 @@
 namespace Stripe;
 
 /**
- * Invoice Items represent the component lines of an <a
- * href="https://stripe.com/docs/api/invoices">invoice</a>. An invoice item is
+ * Invoice Items represent the component lines of an [invoice](https://stripe.com/docs/api/invoices). An invoice item is
  * added to an invoice by creating or updating it with an `invoice`
- * field, at which point it will be included as <a
- * href="https://stripe.com/docs/api/invoices/line_item">an invoice line item</a>
- * within <a
- * href="https://stripe.com/docs/api/invoices/object#invoice_object-lines">invoice.lines</a>.
+ * field, at which point it will be included as [an invoice line item](https://stripe.com/docs/api/invoices/line_item)
+ * within [invoice.lines](https://stripe.com/docs/api/invoices/object#invoice_object-lines).
  *
  * Invoice Items can be created before you are ready to actually send the invoice.
- * This can be particularly useful when combined with a <a
- * href="https://stripe.com/docs/api/subscriptions">subscription</a>. Sometimes you
+ * This can be particularly useful when combined with a [subscription](https://stripe.com/docs/api/subscriptions). Sometimes you
  * want to add a charge or credit to a customer, but actually charge or credit the
  * customer’s card only at the end of a regular billing cycle. This is useful for
  * combining several charges (to minimize per-transaction fees), or for having
  * Stripe tabulate your usage-based billing totals.
  *
- * Related guides: <a
- * href="https://stripe.com/docs/invoicing/integration">Integrate with the
- * Invoicing API</a>, <a
- * href="https://stripe.com/docs/billing/invoices/subscription#adding-upcoming-invoice-items">Subscription
- * Invoices</a>.
+ * Related guides: [Integrate with the Invoicing API](https://stripe.com/docs/invoicing/integration), [Subscription Invoices](https://stripe.com/docs/billing/invoices/subscription#adding-upcoming-invoice-items).
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

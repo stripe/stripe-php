@@ -7,8 +7,7 @@ namespace Stripe\Service;
 class AccountService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of accounts connected to your platform via <a
-     * href="/docs/connect">Connect</a>. If you’re not a platform, the list is empty.
+     * Returns a list of accounts connected to your platform via [Connect](/docs/connect). If you’re not a platform, the list is empty.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -76,12 +75,10 @@ class AccountService extends \Stripe\Service\AbstractService
 
     /**
      * With [Connect](/docs/connect), you can create Stripe accounts for
-     * your users. To do this, you’ll first need to <a
-     * href="https://dashboard.stripe.com/account/applications/settings">register your
-     * platform</a>.
+     * your users. To do this, you’ll first need to [register your
+     * platform](https://dashboard.stripe.com/account/applications/settings).
      *
-     * If you’ve already collected information for your connected accounts, you <a
-     * href="/docs/connect/best-practices#onboarding">can pre-fill that information</a>
+     * If you’ve already collected information for your connected accounts, you [can pre-fill that information](/docs/connect/best-practices#onboarding)
      * when creating the account. Connect Onboarding won’t ask for the pre-filled
      * information during account onboarding. You can pre-fill any information on the
      * account.
@@ -118,8 +115,7 @@ class AccountService extends \Stripe\Service\AbstractService
      * Creates a single-use login link for an Express account to access their Stripe
      * dashboard.
      *
-     * <strong>You may only create login links for <a
-     * href="/docs/connect/express-accounts">Express accounts</a> connected to your
+     * <strong>You may only create login links for [Express accounts](/docs/connect/express-accounts) connected to your
      * platform</strong>.
      *
      * @param string $parentId
@@ -159,9 +155,8 @@ class AccountService extends \Stripe\Service\AbstractService
      * accounts created using live-mode keys can only be deleted once all balances are
      * zero.
      *
-     * If you want to delete your own account, use the <a
-     * href="https://dashboard.stripe.com/account">account information tab in your
-     * account settings</a> instead.
+     * If you want to delete your own account, use the [account information tab in your
+     * account settings](https://dashboard.stripe.com/account) instead.
      *
      * @param string $id
      * @param null|array $params
@@ -290,14 +285,11 @@ class AccountService extends \Stripe\Service\AbstractService
      *
      * For Custom accounts, you can update any information on the account. For other
      * accounts, you can update all information until that account has started to go
-     * through Connect Onboarding. Once you create an <a
-     * href="/docs/api/account_links">Account Link</a> for a Standard or Express
+     * through Connect Onboarding. Once you create an [Account Link](/docs/api/account_links) for a Standard or Express
      * account, some parameters can no longer be changed. These are marked as
      * <strong>Custom Only</strong> or <strong>Custom and Express</strong> below.
      *
-     * To update your own account, use the <a
-     * href="https://dashboard.stripe.com/account">Dashboard</a>. Refer to our <a
-     * href="/docs/connect/updating-accounts">Connect</a> documentation to learn more
+     * To update your own account, use the [Dashboard](https://dashboard.stripe.com/account). Refer to our [Connect](/docs/connect/updating-accounts) documentation to learn more
      * about updating accounts.
      *
      * @param string $id

@@ -40,16 +40,14 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     /**
      * A PaymentIntent object can be canceled when it is in one of these statuses:
      * `requires_payment_method`, `requires_capture`,
-     * `requires_confirmation`, `requires_action` or, <a
-     * href="/docs/payments/intents">in rare cases</a>, `processing`.
+     * `requires_confirmation`, `requires_action` or, [in rare cases](/docs/payments/intents), `processing`.
      *
      * Once canceled, no additional charges will be made by the PaymentIntent and any
      * operations on the PaymentIntent will fail with an error. For PaymentIntents with
      * `status=’requires_capture’`, the remaining
      * `amount_capturable` will automatically be refunded.
      *
-     * You cannot cancel the PaymentIntent for a Checkout Session. <a
-     * href="/docs/api/checkout/sessions/expire">Expire the Checkout Session</a>
+     * You cannot cancel the PaymentIntent for a Checkout Session. [Expire the Checkout Session](/docs/api/checkout/sessions/expire)
      * instead.
      *
      * @param string $id
@@ -72,8 +70,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * Uncaptured PaymentIntents will be canceled a set number of days after they are
      * created (7 by default).
      *
-     * Learn more about <a href="/docs/payments/capture-later">separate authorization
-     * and capture</a>.
+     * Learn more about [separate authorization and capture](/docs/payments/capture-later).
      *
      * @param string $id
      * @param null|array $params
@@ -99,18 +96,15 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * `succeeded` status (or `requires_capture`, if
      * `capture_method` is set to `manual`). If the
      * `confirmation_method` is `automatic`, payment may be
-     * attempted using our <a
-     * href="/docs/stripe-js/reference#stripe-handle-card-payment">client SDKs</a> and
-     * the PaymentIntent’s <a
-     * href="#payment_intent_object-client_secret">client_secret</a>. After
+     * attempted using our [client SDKs](/docs/stripe-js/reference#stripe-handle-card-payment) and
+     * the PaymentIntent’s [client_secret](#payment_intent_object-client_secret). After
      * `next_action`s are handled by the client, no additional confirmation
      * is required to complete the payment. If the `confirmation_method` is
      * `manual`, all payment attempts must be initiated using a secret key.
      * If any actions are required for the payment, the PaymentIntent will return to
      * the `requires_confirmation` state after those actions are completed.
      * Your server needs to then explicitly re-confirm the PaymentIntent to initiate
-     * the next payment attempt. Read the <a
-     * href="/docs/payments/payment-intents/web-manual">expanded documentation</a> to
+     * the next payment attempt. Read the [expanded documentation](/docs/payments/payment-intents/web-manual) to
      * learn more about manual confirmation.
      *
      * @param string $id
@@ -129,15 +123,13 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     /**
      * Creates a PaymentIntent object.
      *
-     * After the PaymentIntent is created, attach a payment method and <a
-     * href="/docs/api/payment_intents/confirm">confirm</a> to continue the payment.
+     * After the PaymentIntent is created, attach a payment method and [confirm](/docs/api/payment_intents/confirm) to continue the payment.
      * You can read more about the different payment flows available via the Payment
      * Intents API [here](/docs/payments/payment-intents).
      *
      * When `confirm=true` is used during creation, it is equivalent to
      * creating and confirming the PaymentIntent in the same call. You may use any
-     * parameters available in the <a href="/docs/api/payment_intents/confirm">confirm
-     * API</a> when `confirm=true` is supplied.
+     * parameters available in the [confirm API](/docs/api/payment_intents/confirm) when `confirm=true` is supplied.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -152,10 +144,8 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Perform an incremental authorization on an eligible <a
-     * href="/docs/api/payment_intents/object">PaymentIntent</a>. To be eligible, the
-     * PaymentIntent’s status must be `requires_capture` and <a
-     * href="/docs/api/charges/object#charge_object-payment_method_details-card_present-incremental_authorization_supported">incremental_authorization_supported</a>
+     * Perform an incremental authorization on an eligible [PaymentIntent](/docs/api/payment_intents/object). To be eligible, the
+     * PaymentIntent’s status must be `requires_capture` and [incremental_authorization_supported](/docs/api/charges/object#charge_object-payment_method_details-card_present-incremental_authorization_supported)
      * must be `true`.
      *
      * Incremental authorizations attempt to increase the authorized amount on your
@@ -165,19 +155,15 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * authorized amount.
      *
      * If the incremental authorization succeeds, the PaymentIntent object is returned
-     * with the updated <a
-     * href="/docs/api/payment_intents/object#payment_intent_object-amount">amount</a>.
-     * If the incremental authorization fails, a <a
-     * href="/docs/error-codes#card-declined">card_declined</a> error is returned, and
+     * with the updated [amount](/docs/api/payment_intents/object#payment_intent_object-amount).
+     * If the incremental authorization fails, a [card_declined](/docs/error-codes#card-declined) error is returned, and
      * no fields on the PaymentIntent or Charge are updated. The PaymentIntent object
      * remains capturable for the previously authorized amount.
      *
      * Each PaymentIntent can have a maximum of 10 incremental authorization attempts,
      * including declines. Once captured, a PaymentIntent can no longer be incremented.
      *
-     * Learn more about <a
-     * href="/docs/terminal/features/incremental-authorizations">incremental
-     * authorizations</a>.
+     * Learn more about [incremental authorizations](/docs/terminal/features/incremental-authorizations).
      *
      * @param string $id
      * @param null|array $params
@@ -199,8 +185,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * `client_secret` is provided in the query string.
      *
      * When retrieved with a publishable key, only a subset of properties will be
-     * returned. Please refer to the <a href="#payment_intent_object">payment
-     * intent</a> object reference for more details.
+     * returned. Please refer to the [payment intent](#payment_intent_object) object reference for more details.
      *
      * @param string $id
      * @param null|array $params
@@ -216,8 +201,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Search for PaymentIntents you’ve previously created using Stripe’s <a
-     * href="/docs/search#search-query-language">Search Query Language</a>. Don’t use
+     * Search for PaymentIntents you’ve previously created using Stripe’s [Search Query Language](/docs/search#search-query-language). Don’t use
      * search in read-after-write flows where strict consistency is necessary. Under
      * normal operating conditions, data is searchable in less than a minute.
      * Occasionally, propagation of new or updated data can be up to an hour behind
@@ -241,8 +225,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * Depending on which properties you update, you may need to confirm the
      * PaymentIntent again. For example, updating the `payment_method` will
      * always require you to confirm the PaymentIntent again. If you prefer to update
-     * and confirm at the same time, we recommend updating properties via the <a
-     * href="/docs/api/payment_intents/confirm">confirm API</a> instead.
+     * and confirm at the same time, we recommend updating properties via the [confirm API](/docs/api/payment_intents/confirm) instead.
      *
      * @param string $id
      * @param null|array $params

@@ -42,8 +42,7 @@ class PayoutService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * To send funds to your own bank account, you create a new payout object. Your <a
-     * href="#balance">Stripe balance</a> must be able to cover the payout amount, or
+     * To send funds to your own bank account, you create a new payout object. Your [Stripe balance](#balance) must be able to cover the payout amount, or
      * you’ll receive an “Insufficient Funds” error.
      *
      * If your API key is in test mode, money won’t actually be sent, though everything

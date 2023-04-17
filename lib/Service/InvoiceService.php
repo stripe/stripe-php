@@ -63,8 +63,7 @@ class InvoiceService extends \Stripe\Service\AbstractService
     /**
      * Permanently deletes a one-off invoice draft. This cannot be undone. Attempts to
      * delete invoices that are no longer in a draft state will fail; once an invoice
-     * has been finalized or if an invoice is for a subscription, it must be <a
-     * href="#void_invoice">voided</a>.
+     * has been finalized or if an invoice is for a subscription, it must be [voided](#void_invoice).
      *
      * @param string $id
      * @param null|array $params
@@ -116,9 +115,7 @@ class InvoiceService extends \Stripe\Service\AbstractService
 
     /**
      * Stripe automatically creates and then attempts to collect payment on invoices
-     * for customers on subscriptions according to your <a
-     * href="https://dashboard.stripe.com/account/billing/automatic">subscriptions
-     * settings</a>. However, if you’d like to attempt payment on an invoice out of the
+     * for customers on subscriptions according to your [subscriptions settings](https://dashboard.stripe.com/account/billing/automatic). However, if you’d like to attempt payment on an invoice out of the
      * normal collection schedule or for some other reason, you can do so.
      *
      * @param string $id
@@ -151,8 +148,7 @@ class InvoiceService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Search for invoices you’ve previously created using Stripe’s <a
-     * href="/docs/search#search-query-language">Search Query Language</a>. Don’t use
+     * Search for invoices you’ve previously created using Stripe’s [Search Query Language](/docs/search#search-query-language). Don’t use
      * search in read-after-write flows where strict consistency is necessary. Under
      * normal operating conditions, data is searchable in less than a minute.
      * Occasionally, propagation of new or updated data can be up to an hour behind
@@ -171,9 +167,7 @@ class InvoiceService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Stripe will automatically send invoices to customers according to your <a
-     * href="https://dashboard.stripe.com/account/billing/automatic">subscriptions
-     * settings</a>. However, if you’d like to manually send an invoice to your
+     * Stripe will automatically send invoices to customers according to your [subscriptions settings](https://dashboard.stripe.com/account/billing/automatic). However, if you’d like to manually send an invoice to your
      * customer out of the normal schedule, you can do so. When sending invoices that
      * have already been paid, there will be no reference to the payment in the email.
      *
@@ -247,13 +241,11 @@ class InvoiceService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Draft invoices are fully editable. Once an invoice is <a
-     * href="/docs/billing/invoices/workflow#finalized">finalized</a>, monetary values,
+     * Draft invoices are fully editable. Once an invoice is [finalized](/docs/billing/invoices/workflow#finalized), monetary values,
      * as well as `collection_method`, become uneditable.
      *
      * If you would like to stop the Stripe Billing engine from automatically
-     * finalizing, reattempting payments on, sending reminders for, or <a
-     * href="/docs/billing/invoices/reconciliation">automatically reconciling</a>
+     * finalizing, reattempting payments on, sending reminders for, or [automatically reconciling](/docs/billing/invoices/reconciliation)
      * invoices, pass `auto_advance=false`.
      *
      * @param string $id

@@ -8,9 +8,7 @@ namespace Stripe;
  * A subscription schedule allows you to create and manage the lifecycle of a
  * subscription by predefining expected changes.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/billing/subscriptions/subscription-schedules">Subscription
- * Schedules</a>.
+ * Related guide: [Subscription Schedules](https://stripe.com/docs/billing/subscriptions/subscription-schedules).
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

@@ -7,18 +7,14 @@ namespace Stripe\Identity;
 /**
  * A VerificationSession guides you through the process of collecting and verifying
  * the identities of your users. It contains details about the type of
- * verification, such as what <a
- * href="/docs/identity/verification-checks">verification check</a> to perform.
+ * verification, such as what [verification check](/docs/identity/verification-checks) to perform.
  * Only create one VerificationSession for each verification in your system.
  *
- * A VerificationSession transitions through <a
- * href="/docs/identity/how-sessions-work">multiple statuses</a> throughout its
+ * A VerificationSession transitions through [multiple statuses](/docs/identity/how-sessions-work) throughout its
  * lifetime as it progresses through the verification flow. The VerificationSession
  * contains the user's verified data after verification checks are complete.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/identity/verification-sessions">The Verification
- * Sessions API</a>
+ * Related guide: [The Verification Sessions API](https://stripe.com/docs/identity/verification-sessions)
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

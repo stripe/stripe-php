@@ -8,9 +8,7 @@ namespace Stripe\Radar;
  * Value list items allow you to add specific values to a given Radar value list,
  * which can then be used in rules.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/radar/lists#managing-list-items">Managing List
- * Items</a>.
+ * Related guide: [Managing List Items](https://stripe.com/docs/radar/lists#managing-list-items).
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

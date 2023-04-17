@@ -8,9 +8,7 @@ namespace Stripe;
  * This object represents a customer of your business. It lets you create recurring
  * charges and track payments that belong to the same customer.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/payments/save-during-payment">Save a card during
- * payment</a>.
+ * Related guide: [Save a card during payment](https://stripe.com/docs/payments/save-during-payment).
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

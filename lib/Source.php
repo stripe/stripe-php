@@ -10,14 +10,11 @@ namespace Stripe;
  * API just like a `Card` object: once chargeable, they can be charged,
  * or can be attached to customers.
  *
- * Stripe doesn't recommend using the deprecated <a
- * href="https://stripe.com/docs/api/sources">Sources API</a>. We recommend that
- * you adopt the <a
- * href="https://stripe.com/docs/api/payment_methods">PaymentMethods API</a>. This
+ * Stripe doesn't recommend using the deprecated [Sources API](https://stripe.com/docs/api/sources). We recommend that
+ * you adopt the [PaymentMethods API](https://stripe.com/docs/api/payment_methods). This
  * newer API provides access to our latest features and payment method types.
  *
- * Related guides: [Sources API](https://stripe.com/docs/sources) and <a
- * href="https://stripe.com/docs/sources/customers">Sources &amp; Customers</a>.
+ * Related guides: [Sources API](https://stripe.com/docs/sources) and [Sources &amp; Customers](https://stripe.com/docs/sources/customers).
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

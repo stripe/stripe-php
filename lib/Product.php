@@ -11,13 +11,7 @@ namespace Stripe;
  * conjunction with [Prices](https://stripe.com/docs/api#prices) to
  * configure pricing in Payment Links, Checkout, and Subscriptions.
  *
- * Related guides: <a
- * href="https://stripe.com/docs/billing/subscriptions/set-up-subscription">Set up
- * a subscription</a>, <a href="https://stripe.com/docs/payment-links">share a
- * Payment Link</a>, <a
- * href="https://stripe.com/docs/payments/accept-a-payment#create-product-prices-upfront">accept
- * payments with Checkout</a>, and more about <a
- * href="https://stripe.com/docs/products-prices/overview">Products and Prices</a>
+ * Related guides: [Set up a subscription](https://stripe.com/docs/billing/subscriptions/set-up-subscription), [share a Payment Link](https://stripe.com/docs/payment-links), [accept payments with Checkout](https://stripe.com/docs/payments/accept-a-payment#create-product-prices-upfront), and more about [Products and Prices](https://stripe.com/docs/products-prices/overview)
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

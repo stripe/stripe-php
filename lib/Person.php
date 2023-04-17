@@ -9,15 +9,11 @@ namespace Stripe;
  *
  * A platform cannot access a Standard or Express account's persons after the
  * account starts onboarding, such as after generating an account link for the
- * account. See the <a
- * href="https://stripe.com/docs/connect/standard-accounts">Standard onboarding</a>
- * or <a href="https://stripe.com/docs/connect/express-accounts">Express onboarding
- * documentation</a> for information about platform pre-filling and account
+ * account. See the [Standard onboarding](https://stripe.com/docs/connect/standard-accounts)
+ * or [Express onboarding documentation](https://stripe.com/docs/connect/express-accounts) for information about platform pre-filling and account
  * onboarding steps.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/connect/identity-verification-api#person-information">Handling
- * Identity Verification with the API</a>.
+ * Related guide: [Handling Identity Verification with the API](https://stripe.com/docs/connect/identity-verification-api#person-information).
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

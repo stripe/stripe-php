@@ -78,8 +78,7 @@ class SourceService extends \Stripe\Service\AbstractService
      *
      * This request accepts the `metadata` and `owner` as
      * arguments. It is also possible to update type specific information for selected
-     * payment methods. Please refer to our <a href="/docs/sources">payment method
-     * guides</a> for more detail.
+     * payment methods. Please refer to our [payment method guides](/docs/sources) for more detail.
      *
      * @param string $id
      * @param null|array $params

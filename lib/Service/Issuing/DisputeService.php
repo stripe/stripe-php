@@ -26,9 +26,7 @@ class DisputeService extends \Stripe\Service\AbstractService
     /**
      * Creates an Issuing `Dispute` object. Individual pieces of evidence
      * within the `evidence` object are optional at this point. Stripe only
-     * validates that required evidence is present during submission. Refer to <a
-     * href="/docs/issuing/purchases/disputes#dispute-reasons-and-evidence">Dispute
-     * reasons and evidence</a> for more details about evidence requirements.
+     * validates that required evidence is present during submission. Refer to [Dispute reasons and evidence](/docs/issuing/purchases/disputes#dispute-reasons-and-evidence) for more details about evidence requirements.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -61,9 +59,7 @@ class DisputeService extends \Stripe\Service\AbstractService
     /**
      * Submits an Issuing `Dispute` to the card network. Stripe validates
      * that all evidence fields required for the dispute’s reason are present. For more
-     * details, see <a
-     * href="/docs/issuing/purchases/disputes#dispute-reasons-and-evidence">Dispute
-     * reasons and evidence</a>.
+     * details, see [Dispute reasons and evidence](/docs/issuing/purchases/disputes#dispute-reasons-and-evidence).
      *
      * @param string $id
      * @param null|array $params

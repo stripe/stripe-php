@@ -5,8 +5,7 @@
 namespace Stripe;
 
 /**
- * You can now model subscriptions more flexibly using the <a
- * href="https://stripe.com/docs/api#prices">Prices API</a>. It replaces the Plans
+ * You can now model subscriptions more flexibly using the [Prices API](https://stripe.com/docs/api#prices). It replaces the Plans
  * API and is backwards compatible to simplify your migration.
  *
  * Plans define the base price, currency, and billing cycle for recurring purchases
@@ -19,10 +18,7 @@ namespace Stripe;
  * For example, you might have a single &quot;gold&quot; product that has plans for
  * $10/month, $100/year, €9/month, and €90/year.
  *
- * Related guides: <a
- * href="https://stripe.com/docs/billing/subscriptions/set-up-subscription">Set up
- * a subscription</a> and more about <a
- * href="https://stripe.com/docs/products-prices/overview">products and prices</a>.
+ * Related guides: [Set up a subscription](https://stripe.com/docs/billing/subscriptions/set-up-subscription) and more about [products and prices](https://stripe.com/docs/products-prices/overview).
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

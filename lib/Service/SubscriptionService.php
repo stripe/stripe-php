@@ -27,8 +27,7 @@ class SubscriptionService extends \Stripe\Service\AbstractService
      * again for the subscription.
      *
      * Note, however, that any pending invoice items that you’ve created will still be
-     * charged for at the end of the period, unless manually <a
-     * href="#delete_invoiceitem">deleted</a>. If you’ve set the subscription to cancel
+     * charged for at the end of the period, unless manually [deleted](#delete_invoiceitem). If you’ve set the subscription to cancel
      * at the end of the period, any pending prorations will also be left in place and
      * collected at the end of the period. But if the subscription is set to cancel
      * immediately, pending prorations will be removed.
@@ -64,9 +63,8 @@ class SubscriptionService extends \Stripe\Service\AbstractService
      * determines the exact behavior of the initial payment.
      *
      * To start subscriptions where the first invoice always begins in a
-     * `draft` status, use <a
-     * href="/docs/billing/subscriptions/subscription-schedules#managing">subscription
-     * schedules</a> instead. Schedules provide the flexibility to model more complex
+     * `draft` status, use [subscription
+     * schedules](/docs/billing/subscriptions/subscription-schedules#managing) instead. Schedules provide the flexibility to model more complex
      * billing configurations that change over time.
      *
      * @param null|array $params
@@ -135,8 +133,7 @@ class SubscriptionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Search for subscriptions you’ve previously created using Stripe’s <a
-     * href="/docs/search#search-query-language">Search Query Language</a>. Don’t use
+     * Search for subscriptions you’ve previously created using Stripe’s [Search Query Language](/docs/search#search-query-language). Don’t use
      * search in read-after-write flows where strict consistency is necessary. Under
      * normal operating conditions, data is searchable in less than a minute.
      * Occasionally, propagation of new or updated data can be up to an hour behind
@@ -158,8 +155,7 @@ class SubscriptionService extends \Stripe\Service\AbstractService
      * Updates an existing subscription on a customer to match the specified
      * parameters. When changing plans or quantities, we will optionally prorate the
      * price we charge next month to make up for any price changes. To preview how the
-     * proration will be calculated, use the <a href="#upcoming_invoice">upcoming
-     * invoice</a> endpoint.
+     * proration will be calculated, use the [upcoming invoice](#upcoming_invoice) endpoint.
      *
      * @param string $id
      * @param null|array $params

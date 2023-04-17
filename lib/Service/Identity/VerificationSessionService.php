@@ -23,8 +23,7 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
 
     /**
      * A VerificationSession object can be canceled when it is in
-     * `requires_input` <a
-     * href="/docs/identity/how-sessions-work">status</a>.
+     * `requires_input` [status](/docs/identity/how-sessions-work).
      *
      * Once canceled, future submission attempts are disabled. This cannot be undone.
      * [Learn more](/docs/identity/verification-sessions#cancel).
@@ -52,8 +51,7 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
      * If your API key is in test mode, verification checks won’t actually process,
      * though everything else will occur as if in live mode.
      *
-     * Related guide: <a href="/docs/identity/verify-identity-documents">Verify your
-     * users’ identity documents</a>.
+     * Related guide: [Verify your users’ identity documents](/docs/identity/verify-identity-documents).
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -73,8 +71,7 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
      * including VerificationReports, Events, request logs, etc.
      *
      * A VerificationSession object can be redacted when it is in
-     * `requires_input` or `verified` <a
-     * href="/docs/identity/how-sessions-work">status</a>. Redacting a
+     * `requires_input` or `verified` [status](/docs/identity/how-sessions-work). Redacting a
      * VerificationSession in `requires_action` state will automatically
      * cancel it.
      *

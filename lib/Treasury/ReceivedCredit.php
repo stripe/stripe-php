@@ -5,8 +5,7 @@
 namespace Stripe\Treasury;
 
 /**
- * ReceivedCredits represent funds sent to a <a
- * href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> (for
+ * ReceivedCredits represent funds sent to a [FinancialAccount](https://stripe.com/docs/api#financial_accounts) (for
  * example, via ACH or wire). These money movements are not initiated from the
  * FinancialAccount.
  *

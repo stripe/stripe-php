@@ -5,8 +5,7 @@
 namespace Stripe\Treasury;
 
 /**
- * You can reverse some <a
- * href="https://stripe.com/docs/api#received_debits">ReceivedDebits</a> depending
+ * You can reverse some [ReceivedDebits](https://stripe.com/docs/api#received_debits) depending
  * on their network and source flow. Reversing a ReceivedDebit leads to the
  * creation of a new object known as a DebitReversal.
  *

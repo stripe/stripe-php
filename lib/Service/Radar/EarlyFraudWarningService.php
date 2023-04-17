@@ -25,8 +25,7 @@ class EarlyFraudWarningService extends \Stripe\Service\AbstractService
      * Retrieves the details of an early fraud warning that has previously been
      * created.
      *
-     * Please refer to the <a href="#early_fraud_warning_object">early fraud
-     * warning</a> object reference for more details.
+     * Please refer to the [early fraud warning](#early_fraud_warning_object) object reference for more details.
      *
      * @param string $id
      * @param null|array $params

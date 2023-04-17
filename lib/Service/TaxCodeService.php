@@ -7,8 +7,7 @@ namespace Stripe\Service;
 class TaxCodeService extends \Stripe\Service\AbstractService
 {
     /**
-     * A list of <a href="https://stripe.com/docs/tax/tax-categories">all tax codes
-     * available</a> to add to Products in order to allow specific tax calculations.
+     * A list of [all tax codes available](https://stripe.com/docs/tax/tax-categories) to add to Products in order to allow specific tax calculations.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts

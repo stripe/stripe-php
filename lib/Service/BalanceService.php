@@ -8,9 +8,7 @@ class BalanceService extends \Stripe\Service\AbstractService
 {
     /**
      * Retrieves the current account balance, based on the authentication that was used
-     * to make the request.  For a sample request, see <a
-     * href="/docs/connect/account-balances#accounting-for-negative-balances">Accounting
-     * for negative balances</a>.
+     * to make the request.  For a sample request, see [Accounting for negative balances](/docs/connect/account-balances#accounting-for-negative-balances).
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts

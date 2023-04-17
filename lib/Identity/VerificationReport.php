@@ -14,13 +14,10 @@ namespace Stripe\Identity;
  * Each VerificationReport contains a copy of any data collected by the user as
  * well as reference IDs which can be used to access collected images through the
  * [FileUpload](https://stripe.com/docs/api/files) API. To configure and
- * create VerificationReports, use the <a
- * href="https://stripe.com/docs/api/identity/verification_sessions">VerificationSession</a>
+ * create VerificationReports, use the [VerificationSession](https://stripe.com/docs/api/identity/verification_sessions)
  * API.
  *
- * Related guides: <a
- * href="https://stripe.com/docs/identity/verification-sessions#results">Accessing
- * verification results</a>.
+ * Related guides: [Accessing verification results](https://stripe.com/docs/identity/verification-sessions#results).
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

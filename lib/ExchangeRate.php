@@ -14,8 +14,7 @@ namespace Stripe;
  * If you want a guarantee that the charge is made with a certain exchange rate you
  * expect is current, you can pass in `exchange_rate` to charges
  * endpoints. If the value is no longer up to date, the charge won't go through.
- * Please refer to our <a href="https://stripe.com/docs/exchange-rates">Exchange
- * Rates API</a> guide for more details.
+ * Please refer to our [Exchange Rates API](https://stripe.com/docs/exchange-rates) guide for more details.
  *
  * @property string $id Unique identifier for the object. Represented as the three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) in lowercase.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

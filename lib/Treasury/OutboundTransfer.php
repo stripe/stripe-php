@@ -5,8 +5,7 @@
 namespace Stripe\Treasury;
 
 /**
- * Use OutboundTransfers to transfer funds from a <a
- * href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> to a
+ * Use OutboundTransfers to transfer funds from a [FinancialAccount](https://stripe.com/docs/api#financial_accounts) to a
  * PaymentMethod belonging to the same entity. To send funds to a different party,
  * use [OutboundPayments](https://stripe.com/docs/api#outbound_payments)
  * instead. You can send funds over ACH rails or through a domestic wire transfer

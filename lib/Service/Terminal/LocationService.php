@@ -23,8 +23,7 @@ class LocationService extends \Stripe\Service\AbstractService
 
     /**
      * Creates a new `Location` object. For further details, including which
-     * address fields are required in each country, see the <a
-     * href="/docs/terminal/fleet/locations">Manage locations</a> guide.
+     * address fields are required in each country, see the [Manage locations](/docs/terminal/fleet/locations) guide.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts

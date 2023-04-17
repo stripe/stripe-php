@@ -28,8 +28,7 @@ class WebhookEndpointService extends \Stripe\Service\AbstractService
      * that notifies the specified `url` about events from all connected
      * accounts is created; otherwise an account webhook endpoint that notifies the
      * specified `url` only about events from your account is created. You
-     * can also create webhook endpoints in the <a
-     * href="https://dashboard.stripe.com/account/webhooks">webhooks settings</a>
+     * can also create webhook endpoints in the [webhooks settings](https://dashboard.stripe.com/account/webhooks)
      * section of the Dashboard.
      *
      * @param null|array $params
@@ -45,9 +44,7 @@ class WebhookEndpointService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * You can also delete webhook endpoints via the <a
-     * href="https://dashboard.stripe.com/account/webhooks">webhook endpoint
-     * management</a> page of the Stripe dashboard.
+     * You can also delete webhook endpoints via the [webhook endpoint management](https://dashboard.stripe.com/account/webhooks) page of the Stripe dashboard.
      *
      * @param string $id
      * @param null|array $params

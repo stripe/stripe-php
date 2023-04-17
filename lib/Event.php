@@ -20,23 +20,17 @@ namespace Stripe;
  * example, a `charge.succeeded` event will contain a charge, and an
  * `invoice.payment_failed` event will contain an invoice.
  *
- * As with other API resources, you can use endpoints to retrieve an <a
- * href="https://stripe.com/docs/api#retrieve_event">individual event</a> or a <a
- * href="https://stripe.com/docs/api#list_events">list of events</a> from the API.
- * We also have a separate <a
- * href="http://en.wikipedia.org/wiki/Webhook">webhooks</a> system for sending the
+ * As with other API resources, you can use endpoints to retrieve an [individual event](https://stripe.com/docs/api#retrieve_event) or a [list of events](https://stripe.com/docs/api#list_events) from the API.
+ * We also have a separate [webhooks](http://en.wikipedia.org/wiki/Webhook) system for sending the
  * `Event` objects directly to an endpoint on your server. Webhooks are
- * managed in your <a href="https://dashboard.stripe.com/account/webhooks">account
- * settings</a>, and our <a href="https://stripe.com/docs/webhooks">Using
- * Webhooks</a> guide will help you get set up.
+ * managed in your [account settings](https://dashboard.stripe.com/account/webhooks), and our [Using Webhooks](https://stripe.com/docs/webhooks) guide will help you get set up.
  *
  * When using [Connect](https://stripe.com/docs/connect), you can also
  * receive notifications of events that occur in connected accounts. For these
  * events, there will be an additional `account` attribute in the
  * received `Event` object.
  *
- * <strong>NOTE:</strong> Right now, access to events through the <a
- * href="https://stripe.com/docs/api#retrieve_event">Retrieve Event API</a> is
+ * <strong>NOTE:</strong> Right now, access to events through the [Retrieve Event API](https://stripe.com/docs/api#retrieve_event) is
  * guaranteed only for 30 days.
  *
  * This class includes constants for the possible string representations of

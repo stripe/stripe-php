@@ -24,11 +24,10 @@ class ChargeService extends \Stripe\Service\AbstractService
 
     /**
      * Capture the payment of an existing, uncaptured, charge. This is the second half
-     * of the two-step payment flow, where first you <a href="#create_charge">created a
-     * charge</a> with the capture option set to false.
+     * of the two-step payment flow, where first you [created a
+     * charge](#create_charge) with the capture option set to false.
      *
-     * Uncaptured payments expire a set number of days after they are created (<a
-     * href="/docs/charges/placing-a-hold">7 by default</a>). If they are not captured
+     * Uncaptured payments expire a set number of days after they are created ([7 by default](/docs/charges/placing-a-hold)). If they are not captured
      * by that point in time, they will be marked as refunded and will no longer be
      * capturable.
      *
@@ -84,8 +83,7 @@ class ChargeService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Search for charges you’ve previously created using Stripe’s <a
-     * href="/docs/search#search-query-language">Search Query Language</a>. Don’t use
+     * Search for charges you’ve previously created using Stripe’s [Search Query Language](/docs/search#search-query-language). Don’t use
      * search in read-after-write flows where strict consistency is necessary. Under
      * normal operating conditions, data is searchable in less than a minute.
      * Occasionally, propagation of new or updated data can be up to an hour behind

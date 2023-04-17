@@ -8,8 +8,7 @@ namespace Stripe;
  * Reviews can be used to supplement automated fraud detection with human
  * expertise.
  *
- * Learn more about [Radar](/radar) and reviewing payments <a
- * href="https://stripe.com/docs/radar/reviews">here</a>.
+ * Learn more about [Radar](/radar) and reviewing payments [here](https://stripe.com/docs/radar/reviews).
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

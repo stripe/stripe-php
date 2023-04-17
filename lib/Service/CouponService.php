@@ -22,8 +22,7 @@ class CouponService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * You can create coupons easily via the <a
-     * href="https://dashboard.stripe.com/coupons">coupon management</a> page of the
+     * You can create coupons easily via the [coupon management](https://dashboard.stripe.com/coupons) page of the
      * Stripe dashboard. Coupon creation is also accessible via the API if you need to
      * create coupons on the fly.
      *
@@ -50,8 +49,7 @@ class CouponService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * You can delete coupons via the <a
-     * href="https://dashboard.stripe.com/coupons">coupon management</a> page of the
+     * You can delete coupons via the [coupon management](https://dashboard.stripe.com/coupons) page of the
      * Stripe dashboard. However, deleting a coupon does not affect any customers who
      * have already applied the coupon; it means that new customers can’t redeem the
      * coupon. You can also delete coupons via the API.

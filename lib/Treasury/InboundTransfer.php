@@ -5,10 +5,8 @@
 namespace Stripe\Treasury;
 
 /**
- * Use <a
- * href="https://stripe.com/docs/treasury/moving-money/financial-accounts/into/inbound-transfers">InboundTransfers</a>
- * to add funds to your <a
- * href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> via a
+ * Use [InboundTransfers](https://stripe.com/docs/treasury/moving-money/financial-accounts/into/inbound-transfers)
+ * to add funds to your [FinancialAccount](https://stripe.com/docs/api#financial_accounts) via a
  * PaymentMethod that is owned by you. The funds will be transferred via an ACH
  * debit.
  *

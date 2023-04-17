@@ -8,8 +8,7 @@ namespace Stripe;
  * Issue a credit note to adjust an invoice's amount after the invoice is
  * finalized.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/billing/invoices/credit-notes">Credit Notes</a>.
+ * Related guide: [Credit Notes](https://stripe.com/docs/billing/invoices/credit-notes).
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

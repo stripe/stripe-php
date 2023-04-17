@@ -5,8 +5,7 @@
 namespace Stripe\Treasury;
 
 /**
- * Transactions represent changes to a <a
- * href="https://stripe.com/docs/api#financial_accounts">FinancialAccount's</a>
+ * Transactions represent changes to a [FinancialAccount's](https://stripe.com/docs/api#financial_accounts)
  * balance.
  *
  * @property string $id Unique identifier for the object.

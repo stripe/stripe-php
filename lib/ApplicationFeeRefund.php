@@ -9,9 +9,7 @@ namespace Stripe;
  * fee that has previously been created but not yet refunded. Funds will be
  * refunded to the Stripe account from which the fee was originally collected.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/connect/destination-charges#refunding-app-fee">Refunding
- * Application Fees</a>.
+ * Related guide: [Refunding Application Fees](https://stripe.com/docs/connect/destination-charges#refunding-app-fee).
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

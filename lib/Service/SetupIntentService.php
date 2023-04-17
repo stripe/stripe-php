@@ -70,8 +70,7 @@ class SetupIntentService extends \Stripe\Service\AbstractService
     /**
      * Creates a SetupIntent object.
      *
-     * After the SetupIntent is created, attach a payment method and <a
-     * href="/docs/api/setup_intents/confirm">confirm</a> to collect any required
+     * After the SetupIntent is created, attach a payment method and [confirm](/docs/api/setup_intents/confirm) to collect any required
      * permissions to charge the payment method later.
      *
      * @param null|array $params

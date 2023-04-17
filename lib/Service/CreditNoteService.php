@@ -138,8 +138,7 @@ class CreditNoteService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Marks a credit note as void. Learn more about <a
-     * href="/docs/billing/invoices/credit-notes#voiding">voiding credit notes</a>.
+     * Marks a credit note as void. Learn more about [voiding credit notes](/docs/billing/invoices/credit-notes#voiding).
      *
      * @param string $id
      * @param null|array $params

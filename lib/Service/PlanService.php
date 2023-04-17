@@ -22,8 +22,8 @@ class PlanService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * You can now model subscriptions more flexibly using the <a href="#prices">Prices
-     * API</a>. It replaces the Plans API and is backwards compatible to simplify your
+     * You can now model subscriptions more flexibly using the [Prices
+     * API](#prices). It replaces the Plans API and is backwards compatible to simplify your
      * migration.
      *
      * @param null|array $params

@@ -39,8 +39,7 @@ class PromotionCodeService extends \Stripe\Service\AbstractService
 
     /**
      * Retrieves the promotion code with the given ID. In order to retrieve a promotion
-     * code by the customer-facing `code` use <a
-     * href="/docs/api/promotion_codes/list">list</a> with the desired
+     * code by the customer-facing `code` use [list](/docs/api/promotion_codes/list) with the desired
      * `code`.
      *
      * @param string $id

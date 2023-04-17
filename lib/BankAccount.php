@@ -7,16 +7,12 @@ namespace Stripe;
 /**
  * These bank accounts are payment methods on `Customer` objects.
  *
- * On the other hand <a
- * href="https://stripe.com/docs/api#external_accounts">External Accounts</a> are
- * transfer destinations on `Account` objects for <a
- * href="https://stripe.com/docs/connect/custom-accounts">Custom accounts</a>. They
+ * On the other hand [External Accounts](https://stripe.com/docs/api#external_accounts) are
+ * transfer destinations on `Account` objects for [Custom accounts](https://stripe.com/docs/connect/custom-accounts). They
  * can be bank accounts or debit cards as well, and are documented in the links
  * above.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/payments/bank-debits-transfers">Bank Debits and
- * Transfers</a>.
+ * Related guide: [Bank Debits and Transfers](https://stripe.com/docs/payments/bank-debits-transfers).
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
