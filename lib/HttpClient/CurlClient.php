@@ -193,13 +193,23 @@ class CurlClient implements ClientInterface, StreamingClientInterface
 
     // END OF USER DEFINED TIMEOUTS
 
-    private function constructUrlAndBody($method, $absUrl, $params, $hasFile)
+    /**
+     * @param string $method
+     * @param string $absUrl
+     * @param string $params
+     * @param bool $hasFile
+     * @param bool $jsonEncode
+     */
+    private function constructUrlAndBody($method, $absUrl, $params, $hasFile, $jsonEncode)
     {
         $params = Util\Util::objectsToIds($params);
         if ('post' === $method) {
             $absUrl = Util\Util::utf8($absUrl);
             if ($hasFile) {
                 return [$absUrl, $params];
+            }
+            if ($jsonEncode) {
+                return [$absUrl, \json_encode($params)];
             }
 
             return [$absUrl, Util\Util::encodeParameters($params)];
@@ -214,6 +224,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
 
         $absUrl = "{$absUrl}?{$encoded}";
         $absUrl = Util\Util::utf8($absUrl);
+
         return [$absUrl, null];
     }
 
@@ -224,10 +235,13 @@ class CurlClient implements ClientInterface, StreamingClientInterface
             if (!\is_array($ret)) {
                 throw new Exception\UnexpectedValueException('Non-array value returned by defaultOptions CurlClient callback');
             }
+
             return $ret;
-        } elseif (\is_array($this->defaultOptions)) { // set default curlopts from array
+        }
+        if (\is_array($this->defaultOptions)) { // set default curlopts from array
             return $this->defaultOptions;
         }
+
         return [];
     }
 
@@ -295,28 +309,37 @@ class CurlClient implements ClientInterface, StreamingClientInterface
         return $opts;
     }
 
-    private function constructRequest($method, $absUrl, $headers, $params, $hasFile) {
+    private function constructRequest($method, $absUrl, $headers, $params, $hasFile, $jsonEncode)
+    {
         $method = \strtolower($method);
 
         $opts = $this->calculateDefaultOptions($method, $absUrl, $headers, $params, $hasFile);
-        list($absUrl, $body) = $this->constructUrlAndBody($method, $absUrl, $params, $hasFile);
+        list($absUrl, $body) = $this->constructUrlAndBody($method, $absUrl, $params, $hasFile, $jsonEncode);
         $opts = $this->constructCurlOptions($method, $absUrl, $headers, $body, $opts);
 
         return [$opts, $absUrl];
     }
 
-    public function request($method, $absUrl, $headers, $params, $hasFile)
+    public function request($method, $absUrl, $headers, $params, $hasFile, $json = false)
     {
-        list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile);
+        if ($json && 'post' !== $method) {
+            throw new \Stripe\Exception\InvalidArgumentException('$json is only supported when $method = \'post\'');
+        }
+        list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile, $json);
         list($rbody, $rcode, $rheaders) = $this->executeRequestWithRetries($opts, $absUrl);
+
         return [$rbody, $rcode, $rheaders];
     }
 
-    public function requestStream($method, $absUrl, $headers, $params, $hasFile, $readBodyChunk)
+    public function requestStream($method, $absUrl, $headers, $params, $hasFile, $readBodyChunk, $json = false)
     {
-        list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile);
+        if ($json && 'post' !== $method) {
+            throw new \Stripe\Exception\InvalidArgumentException('$json is only supported when $method = \'post\'');
+        }
+        list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile, $json);
         $opts[\CURLOPT_RETURNTRANSFER] = false;
         list($rbody, $rcode, $rheaders) = $this->executeStreamingRequestWithRetries($opts, $absUrl, $readBodyChunk);
+
         return [$rbody, $rcode, $rheaders];
     }
 

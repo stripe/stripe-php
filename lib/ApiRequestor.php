@@ -110,17 +110,21 @@ class ApiRequestor
      * @param string     $url
      * @param null|array $params
      * @param null|array $headers
+     * @param mixed $json
      *
      * @throws Exception\ApiErrorException
      *
      * @return array tuple containing (ApiReponse, API key)
      */
-    public function request($method, $url, $params = null, $headers = null)
+    public function request($method, $url, $params = null, $headers = null, $json = false)
     {
+        if ($json && 'post' !== $method) {
+            throw new \Stripe\Exception\InvalidArgumentException('$json is only supported when $method = \'post\'');
+        }
         $params = $params ?: [];
         $headers = $headers ?: [];
         list($rbody, $rcode, $rheaders, $myApiKey) =
-        $this->_requestRaw($method, $url, $params, $headers);
+        $this->_requestRaw($method, $url, $params, $headers, $json);
         $json = $this->_interpretResponse($rbody, $rcode, $rheaders);
         $resp = new ApiResponse($rbody, $rcode, $rheaders, $json);
 
@@ -133,15 +137,19 @@ class ApiRequestor
      * @param callable $readBodyChunkCallable
      * @param null|array $params
      * @param null|array $headers
+     * @param mixed $json
      *
      * @throws Exception\ApiErrorException
      */
-    public function requestStream($method, $url, $readBodyChunkCallable, $params = null, $headers = null)
+    public function requestStream($method, $url, $readBodyChunkCallable, $params = null, $headers = null, $json = false)
     {
+        if ($json && method !== 'post') {
+            throw new \Stripe\Exception\InvalidArgumentException('$json is only supported when $method = \'post\'');
+        }
         $params = $params ?: [];
         $headers = $headers ?: [];
         list($rbody, $rcode, $rheaders, $myApiKey) =
-        $this->_requestRawStreaming($method, $url, $params, $headers, $readBodyChunkCallable);
+        $this->_requestRawStreaming($method, $url, $params, $headers, $readBodyChunkCallable, $json);
         if ($rcode >= 300) {
             $this->_interpretResponse($rbody, $rcode, $rheaders);
         }
@@ -351,7 +359,7 @@ class ApiRequestor
         ];
     }
 
-    private function _prepareRequest($method, $url, $params, $headers)
+    private function _prepareRequest($method, $url, $params, $headers, $json)
     {
         $myApiKey = $this->_apiKey;
         if (!$myApiKey) {
@@ -391,7 +399,9 @@ class ApiRequestor
         }
 
         $absUrl = $this->_apiBase . $url;
-        $params = self::_encodeObjects($params);
+        if (!$json) {
+            $params = self::_encodeObjects($params);
+        }
         $defaultHeaders = $this->_defaultHeaders($myApiKey, $clientUAInfo);
         if (Stripe::$apiVersion) {
             $defaultHeaders['Stripe-Version'] = Stripe::$apiVersion;
@@ -415,7 +425,9 @@ class ApiRequestor
             }
         }
 
-        if ($hasFile) {
+        if ($json) {
+            $defaultHeaders['Content-Type'] = 'application/json';
+        } elseif ($hasFile) {
             $defaultHeaders['Content-Type'] = 'multipart/form-data';
         } else {
             $defaultHeaders['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -436,15 +448,16 @@ class ApiRequestor
      * @param string $url
      * @param array $params
      * @param array $headers
+     * @param mixed $json
      *
      * @throws Exception\AuthenticationException
      * @throws Exception\ApiConnectionException
      *
      * @return array
      */
-    private function _requestRaw($method, $url, $params, $headers)
+    private function _requestRaw($method, $url, $params, $headers, $json)
     {
-        list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers);
+        list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $json);
 
         $requestStartMs = Util\Util::currentTimeMillis();
 
@@ -453,7 +466,8 @@ class ApiRequestor
             $absUrl,
             $rawHeaders,
             $params,
-            $hasFile
+            $hasFile,
+            $json
         );
 
         if (isset($rheaders['request-id'])
@@ -474,15 +488,16 @@ class ApiRequestor
      * @param array $params
      * @param array $headers
      * @param callable $readBodyChunkCallable
+     * @param mixed $json
      *
      * @throws Exception\AuthenticationException
      * @throws Exception\ApiConnectionException
      *
      * @return array
      */
-    private function _requestRawStreaming($method, $url, $params, $headers, $readBodyChunkCallable)
+    private function _requestRawStreaming($method, $url, $params, $headers, $readBodyChunkCallable, $json)
     {
-        list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers);
+        list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $json);
 
         $requestStartMs = Util\Util::currentTimeMillis();
 

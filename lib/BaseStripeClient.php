@@ -140,6 +140,42 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
+     * Sends a request to Stripe's API.
+     *
+     * @param string $method the HTTP method
+     * @param string $path the path of the request
+     * @param array $params the parameters of the request
+     * @param array $opts the special modifiers of the request
+     *
+     * @return \Stripe\StripeObject the object returned by Stripe's API
+     */
+    public function rawRequest($method, $path, $params, $opts)
+    {
+        if ('post' !== $method && null !== $params) {
+            throw new Exception\InvalidArgumentException('Error: rawRequest only supports $params on post requests. Please pass null and add your parameters to $path');
+        }
+        $json = null;
+        $headers = [];
+        if (\is_array($opts) && \array_key_exists('json', $opts)) {
+            $json = $opts['json'];
+            unset($opts['json']);
+        }
+        if (\is_array($opts) && \array_key_exists('headers', $opts)) {
+            $opts = clone $opts;
+            $headers = $opts['headers'] ?: [];
+            unset($opts['headers']);
+        }
+        $opts = $this->defaultOpts->merge($opts, true);
+        // Concatenate $headers to $opts->headers, removing duplicates.
+        $opts->headers = \array_unique(\array_merge($opts->headers, $headers));
+        $baseUrl = $opts->apiBase ?: $this->getApiBase();
+        $requestor = new \Stripe\ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
+        list($response) = $requestor->request($method, $path, $params, $opts->headers, $json);
+
+        return $response;
+    }
+
+    /**
      * Sends a request to Stripe's API, passing chunks of the streamed response
      * into a user-provided $readBodyChunkCallable callback.
      *
