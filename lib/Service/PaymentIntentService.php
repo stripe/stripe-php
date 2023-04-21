@@ -45,7 +45,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      *
      * Once canceled, no additional charges will be made by the PaymentIntent and any
      * operations on the PaymentIntent will fail with an error. For PaymentIntents with
-     * <code>status=’requires_capture’</code>, the remaining
+     * a <code>status</code> of <code>requires_capture</code>, the remaining
      * <code>amount_capturable</code> will automatically be refunded.
      *
      * You cannot cancel the PaymentIntent for a Checkout Session. <a
