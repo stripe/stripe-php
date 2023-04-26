@@ -147,7 +147,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * @param array $params the parameters of the request
      * @param array $opts the special modifiers of the request
      *
-     * @return \Stripe\StripeObject the object returned by Stripe's API
+     * @return \Stripe\ApiResponse
      */
     public function rawRequest($method, $path, $params, $opts)
     {

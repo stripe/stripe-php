@@ -2,6 +2,9 @@
 
 namespace Stripe;
 
+use function pcov\waiting;
+
+
 /**
  * @internal
  * @covers \Stripe\BaseStripeClient
@@ -250,7 +253,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->getMock()
         ;
         $curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{}', 200, []])
+            ->willReturn(['{"object": "xyz", "isPHPBestLanguage": true, "xyz": {"abc": 10}}', 200, []])
         ;
 
         $curlClientStub->expects(static::once())
@@ -271,9 +274,22 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_base' => MOCK_URL,
         ]);
         $params = ['foo' => 'bar', 'baz' => ['qux' => false]];
-        $client->rawRequest('post', '/v1/xyz', $params, [
+        $resp = $client->rawRequest('post', '/v1/xyz', $params, [
             'json' => true,
         ]);
+
+        $xyz_class = function () {
+            return new class() extends \Stripe\ApiResource {
+                const OBJECT_NAME = 'xyz';
+            };
+        };
+        $decoded = \json_decode($resp->body, true);
+        $xyz = $xyz_class()::constructFrom($decoded);
+
+        static::assertSame('xyz', $xyz->object);
+        static::assertTrue($xyz->isPHPBestLanguage);
+        static::assertSame(10, $xyz->xyz->abc);
+        static::assertInstanceof(\Stripe\StripeObject::class, $xyz->xyz);
     }
 
     public function testFormRawRequestPost()
