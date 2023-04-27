@@ -10,7 +10,7 @@ namespace Stripe\ApiOperations;
 trait NestedResource
 {
     /**
-     * @param string $method
+     * @param 'delete'|'get'|'post' $method
      * @param string $url
      * @param null|array $params
      * @param null|array|string $options

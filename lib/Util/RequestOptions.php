@@ -25,7 +25,6 @@ class RequestOptions
      * @param null|string $key
      * @param array<string, string> $headers
      * @param null|string $base
-     * @param bool $json
      */
     public function __construct($key = null, $headers = [], $base = null)
     {

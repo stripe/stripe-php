@@ -272,7 +272,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         ]);
         $params = ['foo' => 'bar', 'baz' => ['qux' => false]];
         $resp = $client->rawRequest('post', '/v1/xyz', $params, [
-            'json' => true,
+            'encoding' => 'json',
         ]);
 
         $decoded = \json_decode($resp->body, true);
@@ -313,7 +313,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         ]);
         $params = ['foo' => 'bar', 'baz' => ['qux' => false]];
         $client->rawRequest('post', '/v1/xyz', $params, [
-            'json' => false,
+            'encoding' => 'form',
         ]);
     }
 
@@ -328,7 +328,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('Error: rawRequest only supports $params on post requests. Please pass null and add your parameters to $path');
         $client->rawRequest('get', '/v1/xyz', $params, [
-            'json' => true,
+            'encoding' => 'json',
         ]);
     }
 }

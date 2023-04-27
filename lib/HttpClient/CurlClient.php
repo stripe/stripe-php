@@ -194,13 +194,13 @@ class CurlClient implements ClientInterface, StreamingClientInterface
     // END OF USER DEFINED TIMEOUTS
 
     /**
-     * @param string $method
+     * @param 'delete'|'get'|'post' $method
      * @param string $absUrl
      * @param string $params
      * @param bool $hasFile
-     * @param bool $jsonEncode
+     * @param 'form'|'json' $encoding
      */
-    private function constructUrlAndBody($method, $absUrl, $params, $hasFile, $jsonEncode)
+    private function constructUrlAndBody($method, $absUrl, $params, $hasFile, $encoding)
     {
         $params = Util\Util::objectsToIds($params);
         if ('post' === $method) {
@@ -208,7 +208,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
             if ($hasFile) {
                 return [$absUrl, $params];
             }
-            if ($jsonEncode) {
+            if ('json' === $encoding) {
                 return [$absUrl, \json_encode($params)];
             }
 
@@ -309,34 +309,59 @@ class CurlClient implements ClientInterface, StreamingClientInterface
         return $opts;
     }
 
-    private function constructRequest($method, $absUrl, $headers, $params, $hasFile, $jsonEncode)
+    /**
+     * @param 'delete'|'get'|'post' $method
+     * @param string $absUrl
+     * @param array $headers
+     * @param array $params
+     * @param bool $hasFile
+     * @param 'form'|'json' $encoding
+     */
+    private function constructRequest($method, $absUrl, $headers, $params, $hasFile, $encoding)
     {
         $method = \strtolower($method);
 
         $opts = $this->calculateDefaultOptions($method, $absUrl, $headers, $params, $hasFile);
-        list($absUrl, $body) = $this->constructUrlAndBody($method, $absUrl, $params, $hasFile, $jsonEncode);
+        list($absUrl, $body) = $this->constructUrlAndBody($method, $absUrl, $params, $hasFile, $encoding);
         $opts = $this->constructCurlOptions($method, $absUrl, $headers, $body, $opts);
 
         return [$opts, $absUrl];
     }
 
-    public function request($method, $absUrl, $headers, $params, $hasFile, $json = false)
+    /**
+     * @param 'delete'|'get'|'post' $method
+     * @param string $absUrl
+     * @param array $headers
+     * @param array $params
+     * @param bool $hasFile
+     * @param 'form'|'json' $encoding
+     */
+    public function request($method, $absUrl, $headers, $params, $hasFile, $encoding = 'form')
     {
-        if ($json && 'post' !== $method) {
-            throw new \Stripe\Exception\InvalidArgumentException('$json is only supported when $method = \'post\'');
+        if ('json' === $encoding && 'post' !== $method) {
+            throw new \Stripe\Exception\InvalidArgumentException('json encoding is only supported when $method = \'post\'');
         }
-        list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile, $json);
+        list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile, $encoding);
         list($rbody, $rcode, $rheaders) = $this->executeRequestWithRetries($opts, $absUrl);
 
         return [$rbody, $rcode, $rheaders];
     }
 
-    public function requestStream($method, $absUrl, $headers, $params, $hasFile, $readBodyChunk, $json = false)
+    /**
+     * @param 'delete'|'get'|'post' $method
+     * @param string $absUrl
+     * @param array $headers
+     * @param array $params
+     * @param bool $hasFile
+     * @param callable $readBodyChunk
+     * @param 'form'|'json' $encoding
+     */
+    public function requestStream($method, $absUrl, $headers, $params, $hasFile, $readBodyChunk, $encoding = 'form')
     {
-        if ($json && 'post' !== $method) {
-            throw new \Stripe\Exception\InvalidArgumentException('$json is only supported when $method = \'post\'');
+        if ('json' === $encoding && 'post' !== $method) {
+            throw new \Stripe\Exception\InvalidArgumentException('json encoding is only supported when $method = \'post\'');
         }
-        list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile, $json);
+        list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile, $encoding);
         $opts[\CURLOPT_RETURNTRANSFER] = false;
         list($rbody, $rcode, $rheaders) = $this->executeStreamingRequestWithRetries($opts, $absUrl, $readBodyChunk);
 

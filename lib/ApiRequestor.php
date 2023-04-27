@@ -106,25 +106,25 @@ class ApiRequestor
     }
 
     /**
-     * @param string     $method
+     * @param 'delete'|'get'|'post'     $method
      * @param string     $url
      * @param null|array $params
      * @param null|array $headers
-     * @param mixed $json
+     * @param 'form'|'json' $encoding
      *
      * @throws Exception\ApiErrorException
      *
      * @return array tuple containing (ApiReponse, API key)
      */
-    public function request($method, $url, $params = null, $headers = null, $json = false)
+    public function request($method, $url, $params = null, $headers = null, $encoding = 'form')
     {
-        if ($json && 'post' !== $method) {
-            throw new \Stripe\Exception\InvalidArgumentException('$json is only supported when $method = \'post\'');
+        if ('json' === $encoding && 'post' !== $method) {
+            throw new \Stripe\Exception\InvalidArgumentException('json encoding is only supported when $method = \'post\'');
         }
         $params = $params ?: [];
         $headers = $headers ?: [];
         list($rbody, $rcode, $rheaders, $myApiKey) =
-        $this->_requestRaw($method, $url, $params, $headers, $json);
+        $this->_requestRaw($method, $url, $params, $headers, $encoding);
         $json = $this->_interpretResponse($rbody, $rcode, $rheaders);
         $resp = new ApiResponse($rbody, $rcode, $rheaders, $json);
 
@@ -132,24 +132,24 @@ class ApiRequestor
     }
 
     /**
-     * @param string     $method
+     * @param 'delete'|'get'|'post'     $method
      * @param string     $url
      * @param callable $readBodyChunkCallable
      * @param null|array $params
      * @param null|array $headers
-     * @param mixed $json
+     * @param 'form'|'json' $encoding
      *
      * @throws Exception\ApiErrorException
      */
-    public function requestStream($method, $url, $readBodyChunkCallable, $params = null, $headers = null, $json = false)
+    public function requestStream($method, $url, $readBodyChunkCallable, $params = null, $headers = null, $encoding = 'form')
     {
-        if ($json && method !== 'post') {
-            throw new \Stripe\Exception\InvalidArgumentException('$json is only supported when $method = \'post\'');
+        if ('json' === $encoding && 'post' !== $method) {
+            throw new \Stripe\Exception\InvalidArgumentException('json encoding is only supported when $method = \'post\'');
         }
         $params = $params ?: [];
         $headers = $headers ?: [];
         list($rbody, $rcode, $rheaders, $myApiKey) =
-        $this->_requestRawStreaming($method, $url, $params, $headers, $readBodyChunkCallable, $json);
+        $this->_requestRawStreaming($method, $url, $params, $headers, $readBodyChunkCallable, $encoding);
         if ($rcode >= 300) {
             $this->_interpretResponse($rbody, $rcode, $rheaders);
         }
@@ -359,7 +359,14 @@ class ApiRequestor
         ];
     }
 
-    private function _prepareRequest($method, $url, $params, $headers, $json)
+    /**
+     * @param 'delete'|'get'|'post' $method
+     * @param string $url
+     * @param array $params
+     * @param array $headers
+     * @param 'form'|'json' $encoding
+     */
+    private function _prepareRequest($method, $url, $params, $headers, $encoding)
     {
         $myApiKey = $this->_apiKey;
         if (!$myApiKey) {
@@ -399,7 +406,7 @@ class ApiRequestor
         }
 
         $absUrl = $this->_apiBase . $url;
-        if (!$json) {
+        if ('form' === $encoding) {
             $params = self::_encodeObjects($params);
         }
         $defaultHeaders = $this->_defaultHeaders($myApiKey, $clientUAInfo);
@@ -425,12 +432,14 @@ class ApiRequestor
             }
         }
 
-        if ($json) {
-            $defaultHeaders['Content-Type'] = 'application/json';
-        } elseif ($hasFile) {
+        if ($hasFile) {
             $defaultHeaders['Content-Type'] = 'multipart/form-data';
-        } else {
+        } elseif ('json' === $encoding) {
+            $defaultHeaders['Content-Type'] = 'application/json';
+        } elseif ('form' === $encoding) {
             $defaultHeaders['Content-Type'] = 'application/x-www-form-urlencoded';
+        } else {
+            throw new Exception\InvalidArgumentException('Unknown encoding: ' . $encoding);
         }
 
         $combinedHeaders = \array_merge($defaultHeaders, $headers);
@@ -444,20 +453,20 @@ class ApiRequestor
     }
 
     /**
-     * @param string $method
+     * @param 'delete'|'get'|'post' $method
      * @param string $url
      * @param array $params
      * @param array $headers
-     * @param mixed $json
+     * @param 'form'|'json' $encoding
      *
      * @throws Exception\AuthenticationException
      * @throws Exception\ApiConnectionException
      *
      * @return array
      */
-    private function _requestRaw($method, $url, $params, $headers, $json)
+    private function _requestRaw($method, $url, $params, $headers, $encoding)
     {
-        list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $json);
+        list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $encoding);
 
         $requestStartMs = Util\Util::currentTimeMillis();
 
@@ -467,7 +476,7 @@ class ApiRequestor
             $rawHeaders,
             $params,
             $hasFile,
-            $json
+            $encoding
         );
 
         if (isset($rheaders['request-id'])
@@ -483,21 +492,21 @@ class ApiRequestor
     }
 
     /**
-     * @param string $method
+     * @param 'delete'|'get'|'post' $method
      * @param string $url
      * @param array $params
      * @param array $headers
      * @param callable $readBodyChunkCallable
-     * @param mixed $json
+     * @param 'form'|'json' $encoding
      *
      * @throws Exception\AuthenticationException
      * @throws Exception\ApiConnectionException
      *
      * @return array
      */
-    private function _requestRawStreaming($method, $url, $params, $headers, $readBodyChunkCallable, $json)
+    private function _requestRawStreaming($method, $url, $params, $headers, $readBodyChunkCallable, $encoding)
     {
-        list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $json);
+        list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $encoding);
 
         $requestStartMs = Util\Util::currentTimeMillis();
 
