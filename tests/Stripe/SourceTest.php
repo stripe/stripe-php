@@ -86,12 +86,15 @@ final class SourceTest extends \Stripe\TestCase
             $response
         );
 
-        $source->card->exp_month = 12;
-        $source->card->exp_year = 2022;
+        /** @var mixed $card */
+        $card = $source->card;
+
+        $card->exp_month = 12;
+        $card->exp_year = 2022;
         $source->save();
 
-        static::assertSame(12, $source->card->exp_month);
-        static::assertSame(2022, $source->card->exp_year);
+        static::assertSame(12, $source['card']['exp_month']);
+        static::assertSame(2022, $source['card']['exp_year']);
     }
 
     public function testIsDetachableWhenAttached()

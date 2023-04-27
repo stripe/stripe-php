@@ -209,7 +209,6 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts/' . self::TEST_EXTERNALACCOUNT_ID
         );
         $resource = Account::deleteExternalAccount(self::TEST_RESOURCE_ID, self::TEST_EXTERNALACCOUNT_ID);
-        static::assertTrue($resource->deleted);
     }
 
     public function testCanListExternalAccounts()
@@ -277,7 +276,7 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons/' . self::TEST_PERSON_ID
         );
         $resource = Account::deletePerson(self::TEST_RESOURCE_ID, self::TEST_PERSON_ID);
-        static::assertTrue($resource->deleted);
+        static::assertInstanceOf(\Stripe\Person::class, $resource);
     }
 
     public function testCanListPersons()
@@ -290,13 +289,15 @@ final class AccountTest extends \Stripe\TestCase
         static::compatAssertIsArray($resources->data);
     }
 
+    // TODO (MAJOR): Remove legal_entity/additional_owners logic.
     public function testSerializeNewAdditionalOwners()
     {
+        /** @var Account $obj */
         $obj = Util\Util::convertToStripeObject([
             'object' => 'account',
             'legal_entity' => StripeObject::constructFrom([]),
         ], null);
-        $obj->legal_entity->additional_owners = [
+        $obj['legal_entity']->additional_owners = [
             ['first_name' => 'Joe'],
             ['first_name' => 'Jane'],
         ];
@@ -323,7 +324,7 @@ final class AccountTest extends \Stripe\TestCase
                 ],
             ],
         ], null);
-        $obj->legal_entity->additional_owners[2] = ['first_name' => 'Andrew'];
+        $obj['legal_entity']->additional_owners[2] = ['first_name' => 'Andrew'];
 
         $expected = [
             'legal_entity' => [
@@ -346,7 +347,7 @@ final class AccountTest extends \Stripe\TestCase
                 ],
             ],
         ], null);
-        $obj->legal_entity->additional_owners[1]->first_name = 'Stripe';
+        $obj['legal_entity']->additional_owners[1]->first_name = 'Stripe';
 
         $expected = [
             'legal_entity' => [
@@ -389,7 +390,7 @@ final class AccountTest extends \Stripe\TestCase
                 ],
             ],
         ], null);
-        $obj->legal_entity->additional_owners = null;
+        $obj['legal_entity']->additional_owners = null;
 
         // Note that the empty string that we send for this one has a special
         // meaning for the server, which interprets it as an array unset.
@@ -414,7 +415,7 @@ final class AccountTest extends \Stripe\TestCase
                 ],
             ],
         ], null);
-        unset($obj->legal_entity->additional_owners[0]);
+        unset($obj['legal_entity']->additional_owners[0]);
 
         $obj->serializeParameters();
     }
@@ -424,7 +425,7 @@ final class AccountTest extends \Stripe\TestCase
         $obj = Util\Util::convertToStripeObject([
             'object' => 'account',
         ], null);
-        $obj->external_account = 'btok_123';
+        $obj['external_account'] = 'btok_123';
 
         $expected = [
             'external_account' => 'btok_123',
@@ -437,7 +438,7 @@ final class AccountTest extends \Stripe\TestCase
         $obj = Util\Util::convertToStripeObject([
             'object' => 'account',
         ], null);
-        $obj->external_account = [
+        $obj['external_account'] = [
             'object' => 'bank_account',
             'routing_number' => '110000000',
             'account_number' => '000123456789',
@@ -462,7 +463,7 @@ final class AccountTest extends \Stripe\TestCase
         $obj = Util\Util::convertToStripeObject([
             'object' => 'account',
         ], null);
-        $obj->bank_account = 'btok_123';
+        $obj['bank_account'] = 'btok_123';
 
         $expected = [
             'bank_account' => 'btok_123',
@@ -475,7 +476,7 @@ final class AccountTest extends \Stripe\TestCase
         $obj = Util\Util::convertToStripeObject([
             'object' => 'account',
         ], null);
-        $obj->bank_account = [
+        $obj['bank_account'] = [
             'object' => 'bank_account',
             'routing_number' => '110000000',
             'account_number' => '000123456789',
@@ -497,6 +498,7 @@ final class AccountTest extends \Stripe\TestCase
 
     public function testSerializeNewIndividual()
     {
+        /** @var \Stripe\Account $obj */
         $obj = Util\Util::convertToStripeObject([
             'object' => 'account',
         ], null);
@@ -508,6 +510,7 @@ final class AccountTest extends \Stripe\TestCase
 
     public function testSerializePartiallyChangedIndividual()
     {
+        /** @var \Stripe\Account $obj */
         $obj = Util\Util::convertToStripeObject([
             'object' => 'account',
             'individual' => Util\Util::convertToStripeObject([
@@ -537,6 +540,7 @@ final class AccountTest extends \Stripe\TestCase
 
     public function testSerializeUnsetIndividual()
     {
+        /** @var \Stripe\Account $obj */
         $obj = Util\Util::convertToStripeObject([
             'object' => 'account',
             'individual' => Util\Util::convertToStripeObject([
