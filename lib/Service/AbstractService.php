@@ -77,16 +77,22 @@ abstract class AbstractService
 
     protected function requestStream($method, $path, $readBodyChunkCallable, $params, $opts)
     {
+        // TODO (MAJOR): Add this method to StripeClientInterface
+        // @phpstan-ignore-next-line
         return $this->getStreamingClient()->requestStream($method, $path, $readBodyChunkCallable, self::formatParams($params), $opts);
     }
 
     protected function requestCollection($method, $path, $params, $opts)
     {
+        // TODO (MAJOR): Add this method to StripeClientInterface
+        // @phpstan-ignore-next-line
         return $this->getClient()->requestCollection($method, $path, self::formatParams($params), $opts);
     }
 
     protected function requestSearchResult($method, $path, $params, $opts)
     {
+        // TODO (MAJOR): Add this method to StripeClientInterface
+        // @phpstan-ignore-next-line
         return $this->getClient()->requestSearchResult($method, $path, self::formatParams($params), $opts);
     }
 
