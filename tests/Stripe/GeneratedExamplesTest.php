@@ -2291,6 +2291,20 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Plan::class, $result);
     }
 
+    public function testCreatePlan2()
+    {
+        $this->expectsRequest('post', '/v1/plans');
+        $result = $this->client->plans->create(
+            [
+                'amount' => 2000,
+                'currency' => 'usd',
+                'interval' => 'month',
+                'product' => ['name' => 'My product'],
+            ]
+        );
+        static::assertInstanceOf(\Stripe\Plan::class, $result);
+    }
+
     public function testDeletePlan()
     {
         $this->expectsRequest('delete', '/v1/plans/price_xxxxxxxxxxxxx');
