@@ -290,6 +290,7 @@ final class AccountTest extends \Stripe\TestCase
         static::compatAssertIsArray($resources->data);
     }
 
+    // TODO (MAJOR): Remove legal_entity/additional_owners logic.
     public function testSerializeNewAdditionalOwners()
     {
         $obj = Util\Util::convertToStripeObject([
