@@ -53,7 +53,7 @@ If you use Composer, these dependencies should be handled automatically. If you 
 Simple usage looks like:
 
 ```php
-$stripe = new \Stripe\StripeClient('sk_test_BQokikJOvBiI2HlWgH4olfQ2');
+$stripe = new \Stripe\StripeClient('sk_test_xyz');
 $customer = $stripe->customers->create([
     'description' => 'example customer',
     'email' => 'email@example.com',
@@ -221,6 +221,26 @@ If your beta feature requires a `Stripe-Version` header to be sent, use the `api
 
 ```php
 Stripe::setApiVersion(Stripe::getApiVersion() . '; feature_beta=v3');
+```
+
+### Custom requests
+
+If you would like to send a request to an undocumented API (for example you are in a private beta), or if you prefer to bypass the method definitions in the library and specify your request details directly, you can use the `rawRequest` method on the StripeClient.
+
+```php
+$stripe = new \Stripe\StripeClient('sk_test_xyz');
+$response = $stripe->rawRequest('post', '/v1/beta_endpoint', [
+  "caveat": "emptor"
+], [
+  "stripe_version" => "2022-11_15",
+]);
+// $response->body is a string, you can call $stripe->deserialize to get a \Stripe\StripeObject.
+$obj = $stripe->deserialize($response->body);
+
+// For GET requests, the params argument must be null, and you should write the query string explicitly.
+$get_response = $stripe->rawRequest('get', '/v1/beta_endpoint?caveat=emptor', null, [
+  "stripe_version" => "2022-11_15",
+]);
 ```
 
 ## Support
