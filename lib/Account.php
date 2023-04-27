@@ -105,8 +105,6 @@ class Account extends ApiResource
         return self::_retrieve($id, $opts);
     }
 
-    // TODO (MAJOR): Remove legal_entity/additional_owners logic. These properties are not present in API versions
-    // after 2019-02-19, so we ought to deprecate them from new releases of the library.
     public function serializeParameters($force = false)
     {
         $update = parent::serializeParameters($force);
@@ -129,7 +127,6 @@ class Account extends ApiResource
         return $update;
     }
 
-    // TODO (MAJOR): Remove legal_entity/additional_owners logic.
     private function serializeAdditionalOwners($legalEntity, $additionalOwners)
     {
         if (isset($legalEntity->_originalValues['additional_owners'])) {
