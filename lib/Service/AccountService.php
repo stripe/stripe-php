@@ -375,7 +375,7 @@ class AccountService extends \Stripe\Service\AbstractService
      *
      * @param null|string $id
      * @param null|array $params
-     * @param null|array|StripeUtilRequestOptions $opts
+     * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
