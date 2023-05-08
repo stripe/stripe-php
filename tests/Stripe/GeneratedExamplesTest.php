@@ -24,9 +24,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListSecret()
     {
         $this->expectsRequest('get', '/v1/apps/secrets');
-        $result = $this->client->apps->secrets->all(
-            ['scope' => ['type' => 'account'], 'limit' => 2]
-        );
+        $result = $this->client->apps->secrets->all([
+            'scope' => ['type' => 'account'],
+            'limit' => 2,
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Apps\Secret::class, $result->data[0]);
     }
@@ -34,56 +35,60 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateSecret()
     {
         $this->expectsRequest('post', '/v1/apps/secrets');
-        $result = $this->client->apps->secrets->create(
-            [
-                'name' => 'sec_123',
-                'payload' => 'very secret string',
-                'scope' => ['type' => 'account'],
-            ]
-        );
+        $result = $this->client->apps->secrets->create([
+            'name' => 'sec_123',
+            'payload' => 'very secret string',
+            'scope' => ['type' => 'account'],
+        ]);
         static::assertInstanceOf(\Stripe\Apps\Secret::class, $result);
     }
 
     public function testDeleteWhereSecret()
     {
         $this->expectsRequest('post', '/v1/apps/secrets/delete');
-        $result = $this->client->apps->secrets->deleteWhere(
-            ['name' => 'my-api-key', 'scope' => ['type' => 'account']]
-        );
+        $result = $this->client->apps->secrets->deleteWhere([
+            'name' => 'my-api-key',
+            'scope' => ['type' => 'account'],
+        ]);
         static::assertInstanceOf(\Stripe\Apps\Secret::class, $result);
     }
 
     public function testFindSecret()
     {
         $this->expectsRequest('get', '/v1/apps/secrets/find');
-        $result = $this->client->apps->secrets->find(
-            ['name' => 'sec_123', 'scope' => ['type' => 'account']]
-        );
+        $result = $this->client->apps->secrets->find([
+            'name' => 'sec_123',
+            'scope' => ['type' => 'account'],
+        ]);
         static::assertInstanceOf(\Stripe\Apps\Secret::class, $result);
     }
 
     public function testCreateSession()
     {
         $this->expectsRequest('post', '/v1/checkout/sessions');
-        $result = $this->client->checkout->sessions->create(
-            [
-                'success_url' => 'https://example.com/success',
-                'cancel_url' => 'https://example.com/cancel',
-                'mode' => 'payment',
-                'shipping_options' => [
-                    ['shipping_rate' => 'shr_standard'],
-                    [
-                        'shipping_rate_data' => [
-                            'display_name' => 'Standard',
-                            'delivery_estimate' => [
-                                'minimum' => ['unit' => 'day', 'value' => 5],
-                                'maximum' => ['unit' => 'day', 'value' => 7],
+        $result = $this->client->checkout->sessions->create([
+            'success_url' => 'https://example.com/success',
+            'cancel_url' => 'https://example.com/cancel',
+            'mode' => 'payment',
+            'shipping_options' => [
+                ['shipping_rate' => 'shr_standard'],
+                [
+                    'shipping_rate_data' => [
+                        'display_name' => 'Standard',
+                        'delivery_estimate' => [
+                            'minimum' => [
+                                'unit' => 'day',
+                                'value' => 5,
+                            ],
+                            'maximum' => [
+                                'unit' => 'day',
+                                'value' => 7,
                             ],
                         ],
                     ],
                 ],
-            ]
-        );
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\Checkout\Session::class, $result);
     }
 
@@ -197,12 +202,13 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateSession2()
     {
         $this->expectsRequest('post', '/v1/financial_connections/sessions');
-        $result = $this->client->financialConnections->sessions->create(
-            [
-                'account_holder' => ['type' => 'customer', 'customer' => 'cus_123'],
-                'permissions' => ['balances'],
-            ]
-        );
+        $result = $this->client->financialConnections->sessions->create([
+            'account_holder' => [
+                'type' => 'customer',
+                'customer' => 'cus_123',
+            ],
+            'permissions' => ['balances'],
+        ]);
         static::assertInstanceOf(\Stripe\FinancialConnections\Session::class, $result);
     }
 
@@ -222,22 +228,20 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testUpcomingInvoice()
     {
         $this->expectsRequest('get', '/v1/invoices/upcoming');
-        $result = $this->client->invoices->upcoming(
-            ['customer' => 'cus_9utnxg47pWjV1e']
-        );
+        $result = $this->client->invoices->upcoming([
+            'customer' => 'cus_9utnxg47pWjV1e',
+        ]);
         static::assertInstanceOf(\Stripe\Invoice::class, $result);
     }
 
     public function testCreatePaymentIntent()
     {
         $this->expectsRequest('post', '/v1/payment_intents');
-        $result = $this->client->paymentIntents->create(
-            [
-                'amount' => 1099,
-                'currency' => 'eur',
-                'automatic_payment_methods' => ['enabled' => true],
-            ]
-        );
+        $result = $this->client->paymentIntents->create([
+            'amount' => 1099,
+            'currency' => 'eur',
+            'automatic_payment_methods' => ['enabled' => true],
+        ]);
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $result);
     }
 
@@ -257,9 +261,14 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreatePaymentLink()
     {
         $this->expectsRequest('post', '/v1/payment_links');
-        $result = $this->client->paymentLinks->create(
-            ['line_items' => [['price' => 'price_xxxxxxxxxxxxx', 'quantity' => 1]]]
-        );
+        $result = $this->client->paymentLinks->create([
+            'line_items' => [
+                [
+                    'price' => 'price_xxxxxxxxxxxxx',
+                    'quantity' => 1,
+                ],
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\PaymentLink::class, $result);
     }
 
@@ -281,27 +290,26 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreatePrice()
     {
         $this->expectsRequest('post', '/v1/prices');
-        $result = $this->client->prices->create(
-            [
-                'unit_amount' => 2000,
-                'currency' => 'usd',
-                'currency_options' => [
-                    'uah' => ['unit_amount' => 5000],
-                    'eur' => ['unit_amount' => 1800],
-                ],
-                'recurring' => ['interval' => 'month'],
-                'product' => 'prod_xxxxxxxxxxxxx',
-            ]
-        );
+        $result = $this->client->prices->create([
+            'unit_amount' => 2000,
+            'currency' => 'usd',
+            'currency_options' => [
+                'uah' => ['unit_amount' => 5000],
+                'eur' => ['unit_amount' => 1800],
+            ],
+            'recurring' => ['interval' => 'month'],
+            'product' => 'prod_xxxxxxxxxxxxx',
+        ]);
         static::assertInstanceOf(\Stripe\Price::class, $result);
     }
 
     public function testListSetupAttempt()
     {
         $this->expectsRequest('get', '/v1/setup_attempts');
-        $result = $this->client->setupAttempts->all(
-            ['limit' => 3, 'setup_intent' => 'si_xyz']
-        );
+        $result = $this->client->setupAttempts->all([
+            'limit' => 3,
+            'setup_intent' => 'si_xyz',
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\SetupAttempt::class, $result->data[0]);
     }
@@ -330,13 +338,14 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateShippingRate()
     {
         $this->expectsRequest('post', '/v1/shipping_rates');
-        $result = $this->client->shippingRates->create(
-            [
-                'display_name' => 'Sample Shipper',
-                'fixed_amount' => ['currency' => 'usd', 'amount' => 400],
-                'type' => 'fixed_amount',
-            ]
-        );
+        $result = $this->client->shippingRates->create([
+            'display_name' => 'Sample Shipper',
+            'fixed_amount' => [
+                'currency' => 'usd',
+                'amount' => 400,
+            ],
+            'type' => 'fixed_amount',
+        ]);
         static::assertInstanceOf(\Stripe\ShippingRate::class, $result);
     }
 
@@ -380,7 +389,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         );
         $result = $this->client->testHelpers->customers->fundCashBalance(
             'cus_123',
-            ['amount' => 30, 'currency' => 'eur']
+            [
+                'amount' => 30,
+                'currency' => 'eur',
+            ]
         );
         static::assertInstanceOf(\Stripe\CustomerCashBalanceTransaction::class, $result);
     }
@@ -455,9 +467,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateTestClock()
     {
         $this->expectsRequest('post', '/v1/test_helpers/test_clocks');
-        $result = $this->client->testHelpers->testClocks->create(
-            ['frozen_time' => 123, 'name' => 'cogsworth']
-        );
+        $result = $this->client->testHelpers->testClocks->create([
+            'frozen_time' => 123,
+            'name' => 'cogsworth',
+        ]);
         static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result);
     }
 
@@ -569,58 +582,50 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateReceivedCredit()
     {
         $this->expectsRequest('post', '/v1/test_helpers/treasury/received_credits');
-        $result = $this->client->testHelpers->treasury->receivedCredits->create(
-            [
-                'financial_account' => 'fa_123',
-                'network' => 'ach',
-                'amount' => 1234,
-                'currency' => 'usd',
-            ]
-        );
+        $result = $this->client->testHelpers->treasury->receivedCredits->create([
+            'financial_account' => 'fa_123',
+            'network' => 'ach',
+            'amount' => 1234,
+            'currency' => 'usd',
+        ]);
         static::assertInstanceOf(\Stripe\Treasury\ReceivedCredit::class, $result);
     }
 
     public function testCreateReceivedDebit()
     {
         $this->expectsRequest('post', '/v1/test_helpers/treasury/received_debits');
-        $result = $this->client->testHelpers->treasury->receivedDebits->create(
-            [
-                'financial_account' => 'fa_123',
-                'network' => 'ach',
-                'amount' => 1234,
-                'currency' => 'usd',
-            ]
-        );
+        $result = $this->client->testHelpers->treasury->receivedDebits->create([
+            'financial_account' => 'fa_123',
+            'network' => 'ach',
+            'amount' => 1234,
+            'currency' => 'usd',
+        ]);
         static::assertInstanceOf(\Stripe\Treasury\ReceivedDebit::class, $result);
     }
 
     public function testCreateToken()
     {
         $this->expectsRequest('post', '/v1/tokens');
-        $result = $this->client->tokens->create(
-            [
-                'card' => [
-                    'number' => '4242424242424242',
-                    'exp_month' => '5',
-                    'exp_year' => '2023',
-                    'cvc' => '314',
-                ],
-            ]
-        );
+        $result = $this->client->tokens->create([
+            'card' => [
+                'number' => '4242424242424242',
+                'exp_month' => '5',
+                'exp_year' => '2023',
+                'cvc' => '314',
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\Token::class, $result);
     }
 
     public function testCreateAccountLink()
     {
         $this->expectsRequest('post', '/v1/account_links');
-        $result = $this->client->accountLinks->create(
-            [
-                'account' => 'acct_xxxxxxxxxxxxx',
-                'refresh_url' => 'https://example.com/reauth',
-                'return_url' => 'https://example.com/return',
-                'type' => 'account_onboarding',
-            ]
-        );
+        $result = $this->client->accountLinks->create([
+            'account' => 'acct_xxxxxxxxxxxxx',
+            'refresh_url' => 'https://example.com/reauth',
+            'return_url' => 'https://example.com/return',
+            'type' => 'account_onboarding',
+        ]);
         static::assertInstanceOf(\Stripe\AccountLink::class, $result);
     }
 
@@ -635,17 +640,15 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateAccount()
     {
         $this->expectsRequest('post', '/v1/accounts');
-        $result = $this->client->accounts->create(
-            [
-                'type' => 'custom',
-                'country' => 'US',
-                'email' => 'jenny.rosen@example.com',
-                'capabilities' => [
-                    'card_payments' => ['requested' => true],
-                    'transfers' => ['requested' => true],
-                ],
-            ]
-        );
+        $result = $this->client->accounts->create([
+            'type' => 'custom',
+            'country' => 'US',
+            'email' => 'jenny.rosen@example.com',
+            'capabilities' => [
+                'card_payments' => ['requested' => true],
+                'transfers' => ['requested' => true],
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\Account::class, $result);
     }
 
@@ -754,7 +757,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $this->expectsRequest('post', '/v1/accounts/acct_xxxxxxxxxxxxx/persons');
         $result = $this->client->accounts->createPerson(
             'acct_xxxxxxxxxxxxx',
-            ['first_name' => 'Jane', 'last_name' => 'Diaz']
+            [
+                'first_name' => 'Jane',
+                'last_name' => 'Diaz',
+            ]
         );
         static::assertInstanceOf(\Stripe\Person::class, $result);
     }
@@ -874,9 +880,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListSecret2()
     {
         $this->expectsRequest('get', '/v1/apps/secrets');
-        $result = $this->client->apps->secrets->all(
-            ['scope' => ['type' => 'account'], 'limit' => 2]
-        );
+        $result = $this->client->apps->secrets->all([
+            'scope' => ['type' => 'account'],
+            'limit' => 2,
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Apps\Secret::class, $result->data[0]);
     }
@@ -884,13 +891,11 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateSecret2()
     {
         $this->expectsRequest('post', '/v1/apps/secrets');
-        $result = $this->client->apps->secrets->create(
-            [
-                'name' => 'my-api-key',
-                'payload' => 'secret_key_xxxxxx',
-                'scope' => ['type' => 'account'],
-            ]
-        );
+        $result = $this->client->apps->secrets->create([
+            'name' => 'my-api-key',
+            'payload' => 'secret_key_xxxxxx',
+            'scope' => ['type' => 'account'],
+        ]);
         static::assertInstanceOf(\Stripe\Apps\Secret::class, $result);
     }
 
@@ -954,12 +959,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateSession3()
     {
         $this->expectsRequest('post', '/v1/billing_portal/sessions');
-        $result = $this->client->billingPortal->sessions->create(
-            [
-                'customer' => 'cus_xxxxxxxxxxxxx',
-                'return_url' => 'https://example.com/account',
-            ]
-        );
+        $result = $this->client->billingPortal->sessions->create([
+            'customer' => 'cus_xxxxxxxxxxxxx',
+            'return_url' => 'https://example.com/account',
+        ]);
         static::assertInstanceOf(\Stripe\BillingPortal\Session::class, $result);
     }
 
@@ -974,14 +977,12 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateCharge()
     {
         $this->expectsRequest('post', '/v1/charges');
-        $result = $this->client->charges->create(
-            [
-                'amount' => 2000,
-                'currency' => 'usd',
-                'source' => 'tok_xxxx',
-                'description' => 'My First Test Charge (created for API docs at https://www.stripe.com/docs/api)',
-            ]
-        );
+        $result = $this->client->charges->create([
+            'amount' => 2000,
+            'currency' => 'usd',
+            'source' => 'tok_xxxx',
+            'description' => 'My First Test Charge (created for API docs at https://www.stripe.com/docs/api)',
+        ]);
         static::assertInstanceOf(\Stripe\Charge::class, $result);
     }
 
@@ -1012,9 +1013,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testSearchCharge()
     {
         $this->expectsRequest('get', '/v1/charges/search');
-        $result = $this->client->charges->search(
-            ['query' => 'amount>999 AND metadata[\'order_id\']:\'6735\'']
-        );
+        $result = $this->client->charges->search([
+            'query' => 'amount>999 AND metadata[\'order_id\']:\'6735\'',
+        ]);
         static::assertInstanceOf(\Stripe\SearchResult::class, $result);
         static::assertInstanceOf(\Stripe\Charge::class, $result->data[0]);
     }
@@ -1030,13 +1031,16 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateSession4()
     {
         $this->expectsRequest('post', '/v1/checkout/sessions');
-        $result = $this->client->checkout->sessions->create(
-            [
-                'success_url' => 'https://example.com/success',
-                'line_items' => [['price' => 'price_xxxxxxxxxxxxx', 'quantity' => 2]],
-                'mode' => 'payment',
-            ]
-        );
+        $result = $this->client->checkout->sessions->create([
+            'success_url' => 'https://example.com/success',
+            'line_items' => [
+                [
+                    'price' => 'price_xxxxxxxxxxxxx',
+                    'quantity' => 2,
+                ],
+            ],
+            'mode' => 'payment',
+        ]);
         static::assertInstanceOf(\Stripe\Checkout\Session::class, $result);
     }
 
@@ -1089,13 +1093,11 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateCoupon()
     {
         $this->expectsRequest('post', '/v1/coupons');
-        $result = $this->client->coupons->create(
-            [
-                'percent_off' => 25.5,
-                'duration' => 'repeating',
-                'duration_in_months' => 3,
-            ]
-        );
+        $result = $this->client->coupons->create([
+            'percent_off' => 25.5,
+            'duration' => 'repeating',
+            'duration_in_months' => 3,
+        ]);
         static::assertInstanceOf(\Stripe\Coupon::class, $result);
     }
 
@@ -1134,18 +1136,16 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateCreditNote()
     {
         $this->expectsRequest('post', '/v1/credit_notes');
-        $result = $this->client->creditNotes->create(
-            [
-                'invoice' => 'in_xxxxxxxxxxxxx',
-                'lines' => [
-                    [
-                        'type' => 'invoice_line_item',
-                        'invoice_line_item' => 'il_xxxxxxxxxxxxx',
-                        'quantity' => 1,
-                    ],
+        $result = $this->client->creditNotes->create([
+            'invoice' => 'in_xxxxxxxxxxxxx',
+            'lines' => [
+                [
+                    'type' => 'invoice_line_item',
+                    'invoice_line_item' => 'il_xxxxxxxxxxxxx',
+                    'quantity' => 1,
                 ],
-            ]
-        );
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\CreditNote::class, $result);
     }
 
@@ -1173,18 +1173,16 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testPreviewCreditNote()
     {
         $this->expectsRequest('get', '/v1/credit_notes/preview');
-        $result = $this->client->creditNotes->preview(
-            [
-                'invoice' => 'in_xxxxxxxxxxxxx',
-                'lines' => [
-                    [
-                        'type' => 'invoice_line_item',
-                        'invoice_line_item' => 'il_xxxxxxxxxxxxx',
-                        'quantity' => 1,
-                    ],
+        $result = $this->client->creditNotes->preview([
+            'invoice' => 'in_xxxxxxxxxxxxx',
+            'lines' => [
+                [
+                    'type' => 'invoice_line_item',
+                    'invoice_line_item' => 'il_xxxxxxxxxxxxx',
+                    'quantity' => 1,
                 ],
-            ]
-        );
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\CreditNote::class, $result);
     }
 
@@ -1207,11 +1205,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateCustomer()
     {
         $this->expectsRequest('post', '/v1/customers');
-        $result = $this->client->customers->create(
-            [
-                'description' => 'My First Test Customer (created for API docs at https://www.stripe.com/docs/api)',
-            ]
-        );
+        $result = $this->client->customers->create([
+            'description' => 'My First Test Customer (created for API docs at https://www.stripe.com/docs/api)',
+        ]);
         static::assertInstanceOf(\Stripe\Customer::class, $result);
     }
 
@@ -1261,7 +1257,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         );
         $result = $this->client->customers->createBalanceTransaction(
             'cus_xxxxxxxxxxxxx',
-            ['amount' => -500, 'currency' => 'usd']
+            [
+                'amount' => -500,
+                'currency' => 'usd',
+            ]
         );
         static::assertInstanceOf(\Stripe\CustomerBalanceTransaction::class, $result);
     }
@@ -1310,7 +1309,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $this->expectsRequest('post', '/v1/customers/cus_xxxxxxxxxxxxx/tax_ids');
         $result = $this->client->customers->createTaxId(
             'cus_xxxxxxxxxxxxx',
-            ['type' => 'eu_vat', 'value' => 'DE123456789']
+            [
+                'type' => 'eu_vat',
+                'value' => 'DE123456789',
+            ]
         );
         static::assertInstanceOf(\Stripe\TaxId::class, $result);
     }
@@ -1346,9 +1348,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testSearchCustomer()
     {
         $this->expectsRequest('get', '/v1/customers/search');
-        $result = $this->client->customers->search(
-            ['query' => 'name:\'fakename\' AND metadata[\'foo\']:\'bar\'']
-        );
+        $result = $this->client->customers->search([
+            'query' => 'name:\'fakename\' AND metadata[\'foo\']:\'bar\'',
+        ]);
         static::assertInstanceOf(\Stripe\SearchResult::class, $result);
         static::assertInstanceOf(\Stripe\Customer::class, $result->data[0]);
     }
@@ -1356,9 +1358,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testSearchCustomer2()
     {
         $this->expectsRequest('get', '/v1/customers/search');
-        $result = $this->client->customers->search(
-            ['query' => 'name:\'fakename\' AND metadata[\'foo\']:\'bar\'']
-        );
+        $result = $this->client->customers->search([
+            'query' => 'name:\'fakename\' AND metadata[\'foo\']:\'bar\'',
+        ]);
         static::assertInstanceOf(\Stripe\SearchResult::class, $result);
         static::assertInstanceOf(\Stripe\Customer::class, $result->data[0]);
     }
@@ -1421,9 +1423,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateFileLink()
     {
         $this->expectsRequest('post', '/v1/file_links');
-        $result = $this->client->fileLinks->create(
-            ['file' => 'file_xxxxxxxxxxxxx']
-        );
+        $result = $this->client->fileLinks->create([
+            'file' => 'file_xxxxxxxxxxxxx',
+        ]);
         static::assertInstanceOf(\Stripe\FileLink::class, $result);
     }
 
@@ -1462,9 +1464,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListAccount3()
     {
         $this->expectsRequest('get', '/v1/financial_connections/accounts');
-        $result = $this->client->financialConnections->accounts->all(
-            ['account_holder' => ['customer' => 'cus_xxxxxxxxxxxxx']]
-        );
+        $result = $this->client->financialConnections->accounts->all([
+            'account_holder' => ['customer' => 'cus_xxxxxxxxxxxxx'],
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\FinancialConnections\Account::class, $result->data[0]);
     }
@@ -1503,7 +1505,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         );
         $result = $this->client->financialConnections->accounts->allOwners(
             'fca_xxxxxxxxxxxxx',
-            ['limit' => 3, 'ownership' => 'fcaowns_xxxxxxxxxxxxx']
+            [
+                'limit' => 3,
+                'ownership' => 'fcaowns_xxxxxxxxxxxxx',
+            ]
         );
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\FinancialConnections\AccountOwner::class, $result->data[0]);
@@ -1512,16 +1517,14 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateSession5()
     {
         $this->expectsRequest('post', '/v1/financial_connections/sessions');
-        $result = $this->client->financialConnections->sessions->create(
-            [
-                'account_holder' => [
-                    'type' => 'customer',
-                    'customer' => 'cus_xxxxxxxxxxxxx',
-                ],
-                'permissions' => ['payment_method', 'balances'],
-                'filters' => ['countries' => ['US']],
-            ]
-        );
+        $result = $this->client->financialConnections->sessions->create([
+            'account_holder' => [
+                'type' => 'customer',
+                'customer' => 'cus_xxxxxxxxxxxxx',
+            ],
+            'permissions' => ['payment_method', 'balances'],
+            'filters' => ['countries' => ['US']],
+        ]);
         static::assertInstanceOf(\Stripe\FinancialConnections\Session::class, $result);
     }
 
@@ -1562,9 +1565,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListVerificationSession()
     {
         $this->expectsRequest('get', '/v1/identity/verification_sessions');
-        $result = $this->client->identity->verificationSessions->all(
-            ['limit' => 3]
-        );
+        $result = $this->client->identity->verificationSessions->all([
+            'limit' => 3,
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $result->data[0]);
     }
@@ -1572,9 +1575,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateVerificationSession()
     {
         $this->expectsRequest('post', '/v1/identity/verification_sessions');
-        $result = $this->client->identity->verificationSessions->create(
-            ['type' => 'document']
-        );
+        $result = $this->client->identity->verificationSessions->create([
+            'type' => 'document',
+        ]);
         static::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $result);
     }
 
@@ -1641,9 +1644,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateInvoiceItem()
     {
         $this->expectsRequest('post', '/v1/invoiceitems');
-        $result = $this->client->invoiceItems->create(
-            ['customer' => 'cus_xxxxxxxxxxxxx', 'price' => 'price_xxxxxxxxxxxxx']
-        );
+        $result = $this->client->invoiceItems->create([
+            'customer' => 'cus_xxxxxxxxxxxxx',
+            'price' => 'price_xxxxxxxxxxxxx',
+        ]);
         static::assertInstanceOf(\Stripe\InvoiceItem::class, $result);
     }
 
@@ -1682,9 +1686,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateInvoice()
     {
         $this->expectsRequest('post', '/v1/invoices');
-        $result = $this->client->invoices->create(
-            ['customer' => 'cus_xxxxxxxxxxxxx']
-        );
+        $result = $this->client->invoices->create([
+            'customer' => 'cus_xxxxxxxxxxxxx',
+        ]);
         static::assertInstanceOf(\Stripe\Invoice::class, $result);
     }
 
@@ -1766,9 +1770,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testSearchInvoice()
     {
         $this->expectsRequest('get', '/v1/invoices/search');
-        $result = $this->client->invoices->search(
-            ['query' => 'total>999 AND metadata[\'order_id\']:\'6735\'']
-        );
+        $result = $this->client->invoices->search([
+            'query' => 'total>999 AND metadata[\'order_id\']:\'6735\'',
+        ]);
         static::assertInstanceOf(\Stripe\SearchResult::class, $result);
         static::assertInstanceOf(\Stripe\Invoice::class, $result->data[0]);
     }
@@ -1844,23 +1848,21 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateCardholder()
     {
         $this->expectsRequest('post', '/v1/issuing/cardholders');
-        $result = $this->client->issuing->cardholders->create(
-            [
-                'type' => 'individual',
-                'name' => 'Jenny Rosen',
-                'email' => 'jenny.rosen@example.com',
-                'phone_number' => '+18888675309',
-                'billing' => [
-                    'address' => [
-                        'line1' => '1234 Main Street',
-                        'city' => 'San Francisco',
-                        'state' => 'CA',
-                        'country' => 'US',
-                        'postal_code' => '94111',
-                    ],
+        $result = $this->client->issuing->cardholders->create([
+            'type' => 'individual',
+            'name' => 'Jenny Rosen',
+            'email' => 'jenny.rosen@example.com',
+            'phone_number' => '+18888675309',
+            'billing' => [
+                'address' => [
+                    'line1' => '1234 Main Street',
+                    'city' => 'San Francisco',
+                    'state' => 'CA',
+                    'country' => 'US',
+                    'postal_code' => '94111',
                 ],
-            ]
-        );
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $result);
     }
 
@@ -1895,13 +1897,11 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateCard()
     {
         $this->expectsRequest('post', '/v1/issuing/cards');
-        $result = $this->client->issuing->cards->create(
-            [
-                'cardholder' => 'ich_xxxxxxxxxxxxx',
-                'currency' => 'usd',
-                'type' => 'virtual',
-            ]
-        );
+        $result = $this->client->issuing->cards->create([
+            'cardholder' => 'ich_xxxxxxxxxxxxx',
+            'currency' => 'usd',
+            'type' => 'virtual',
+        ]);
         static::assertInstanceOf(\Stripe\Issuing\Card::class, $result);
     }
 
@@ -1933,15 +1933,13 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateDispute()
     {
         $this->expectsRequest('post', '/v1/issuing/disputes');
-        $result = $this->client->issuing->disputes->create(
-            [
-                'transaction' => 'ipi_xxxxxxxxxxxxx',
-                'evidence' => [
-                    'reason' => 'fraudulent',
-                    'fraudulent' => ['explanation' => 'Purchase was unrecognized.'],
-                ],
-            ]
-        );
+        $result = $this->client->issuing->disputes->create([
+            'transaction' => 'ipi_xxxxxxxxxxxxx',
+            'evidence' => [
+                'reason' => 'fraudulent',
+                'fraudulent' => ['explanation' => 'Purchase was unrecognized.'],
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $result);
     }
 
@@ -2011,13 +2009,11 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreatePaymentIntent2()
     {
         $this->expectsRequest('post', '/v1/payment_intents');
-        $result = $this->client->paymentIntents->create(
-            [
-                'amount' => 2000,
-                'currency' => 'usd',
-                'automatic_payment_methods' => ['enabled' => true],
-            ]
-        );
+        $result = $this->client->paymentIntents->create([
+            'amount' => 2000,
+            'currency' => 'usd',
+            'automatic_payment_methods' => ['enabled' => true],
+        ]);
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $result);
     }
 
@@ -2113,9 +2109,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testSearchPaymentIntent()
     {
         $this->expectsRequest('get', '/v1/payment_intents/search');
-        $result = $this->client->paymentIntents->search(
-            ['query' => 'status:\'succeeded\' AND metadata[\'order_id\']:\'6735\'']
-        );
+        $result = $this->client->paymentIntents->search([
+            'query' => 'status:\'succeeded\' AND metadata[\'order_id\']:\'6735\'',
+        ]);
         static::assertInstanceOf(\Stripe\SearchResult::class, $result);
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $result->data[0]);
     }
@@ -2131,9 +2127,14 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreatePaymentLink2()
     {
         $this->expectsRequest('post', '/v1/payment_links');
-        $result = $this->client->paymentLinks->create(
-            ['line_items' => [['price' => 'price_xxxxxxxxxxxxx', 'quantity' => 1]]]
-        );
+        $result = $this->client->paymentLinks->create([
+            'line_items' => [
+                [
+                    'price' => 'price_xxxxxxxxxxxxx',
+                    'quantity' => 1,
+                ],
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\PaymentLink::class, $result);
     }
 
@@ -2157,9 +2158,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListPaymentMethod()
     {
         $this->expectsRequest('get', '/v1/payment_methods');
-        $result = $this->client->paymentMethods->all(
-            ['customer' => 'cus_xxxxxxxxxxxxx', 'type' => 'card']
-        );
+        $result = $this->client->paymentMethods->all([
+            'customer' => 'cus_xxxxxxxxxxxxx',
+            'type' => 'card',
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\PaymentMethod::class, $result->data[0]);
     }
@@ -2167,17 +2169,15 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreatePaymentMethod()
     {
         $this->expectsRequest('post', '/v1/payment_methods');
-        $result = $this->client->paymentMethods->create(
-            [
-                'type' => 'card',
-                'card' => [
-                    'number' => '4242424242424242',
-                    'exp_month' => 8,
-                    'exp_year' => 2024,
-                    'cvc' => '314',
-                ],
-            ]
-        );
+        $result = $this->client->paymentMethods->create([
+            'type' => 'card',
+            'card' => [
+                'number' => '4242424242424242',
+                'exp_month' => 8,
+                'exp_year' => 2024,
+                'cvc' => '314',
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\PaymentMethod::class, $result);
     }
 
@@ -2232,9 +2232,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreatePayout()
     {
         $this->expectsRequest('post', '/v1/payouts');
-        $result = $this->client->payouts->create(
-            ['amount' => 1100, 'currency' => 'usd']
-        );
+        $result = $this->client->payouts->create([
+            'amount' => 1100,
+            'currency' => 'usd',
+        ]);
         static::assertInstanceOf(\Stripe\Payout::class, $result);
     }
 
@@ -2280,28 +2281,24 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreatePlan()
     {
         $this->expectsRequest('post', '/v1/plans');
-        $result = $this->client->plans->create(
-            [
-                'amount' => 2000,
-                'currency' => 'usd',
-                'interval' => 'month',
-                'product' => 'prod_xxxxxxxxxxxxx',
-            ]
-        );
+        $result = $this->client->plans->create([
+            'amount' => 2000,
+            'currency' => 'usd',
+            'interval' => 'month',
+            'product' => 'prod_xxxxxxxxxxxxx',
+        ]);
         static::assertInstanceOf(\Stripe\Plan::class, $result);
     }
 
     public function testCreatePlan2()
     {
         $this->expectsRequest('post', '/v1/plans');
-        $result = $this->client->plans->create(
-            [
-                'amount' => 2000,
-                'currency' => 'usd',
-                'interval' => 'month',
-                'product' => ['name' => 'My product'],
-            ]
-        );
+        $result = $this->client->plans->create([
+            'amount' => 2000,
+            'currency' => 'usd',
+            'interval' => 'month',
+            'product' => ['name' => 'My product'],
+        ]);
         static::assertInstanceOf(\Stripe\Plan::class, $result);
     }
 
@@ -2340,14 +2337,12 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreatePrice2()
     {
         $this->expectsRequest('post', '/v1/prices');
-        $result = $this->client->prices->create(
-            [
-                'unit_amount' => 2000,
-                'currency' => 'usd',
-                'recurring' => ['interval' => 'month'],
-                'product' => 'prod_xxxxxxxxxxxxx',
-            ]
-        );
+        $result = $this->client->prices->create([
+            'unit_amount' => 2000,
+            'currency' => 'usd',
+            'recurring' => ['interval' => 'month'],
+            'product' => 'prod_xxxxxxxxxxxxx',
+        ]);
         static::assertInstanceOf(\Stripe\Price::class, $result);
     }
 
@@ -2371,9 +2366,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testSearchPrice()
     {
         $this->expectsRequest('get', '/v1/prices/search');
-        $result = $this->client->prices->search(
-            ['query' => 'active:\'true\' AND metadata[\'order_id\']:\'6735\'']
-        );
+        $result = $this->client->prices->search([
+            'query' => 'active:\'true\' AND metadata[\'order_id\']:\'6735\'',
+        ]);
         static::assertInstanceOf(\Stripe\SearchResult::class, $result);
         static::assertInstanceOf(\Stripe\Price::class, $result->data[0]);
     }
@@ -2420,9 +2415,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testSearchProduct()
     {
         $this->expectsRequest('get', '/v1/products/search');
-        $result = $this->client->products->search(
-            ['query' => 'active:\'true\' AND metadata[\'order_id\']:\'6735\'']
-        );
+        $result = $this->client->products->search([
+            'query' => 'active:\'true\' AND metadata[\'order_id\']:\'6735\'',
+        ]);
         static::assertInstanceOf(\Stripe\SearchResult::class, $result);
         static::assertInstanceOf(\Stripe\Product::class, $result->data[0]);
     }
@@ -2473,12 +2468,15 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateQuote()
     {
         $this->expectsRequest('post', '/v1/quotes');
-        $result = $this->client->quotes->create(
-            [
-                'customer' => 'cus_xxxxxxxxxxxxx',
-                'line_items' => [['price' => 'price_xxxxxxxxxxxxx', 'quantity' => 2]],
-            ]
-        );
+        $result = $this->client->quotes->create([
+            'customer' => 'cus_xxxxxxxxxxxxx',
+            'line_items' => [
+                [
+                    'price' => 'price_xxxxxxxxxxxxx',
+                    'quantity' => 2,
+                ],
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\Quote::class, $result);
     }
 
@@ -2544,9 +2542,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListValueListItem()
     {
         $this->expectsRequest('get', '/v1/radar/value_list_items');
-        $result = $this->client->radar->valueListItems->all(
-            ['limit' => 3, 'value_list' => 'rsl_xxxxxxxxxxxxx']
-        );
+        $result = $this->client->radar->valueListItems->all([
+            'limit' => 3,
+            'value_list' => 'rsl_xxxxxxxxxxxxx',
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $result->data[0]);
     }
@@ -2554,9 +2553,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateValueListItem()
     {
         $this->expectsRequest('post', '/v1/radar/value_list_items');
-        $result = $this->client->radar->valueListItems->create(
-            ['value_list' => 'rsl_xxxxxxxxxxxxx', 'value' => '1.2.3.4']
-        );
+        $result = $this->client->radar->valueListItems->create([
+            'value_list' => 'rsl_xxxxxxxxxxxxx',
+            'value' => '1.2.3.4',
+        ]);
         static::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $result);
     }
 
@@ -2597,13 +2597,11 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateValueList()
     {
         $this->expectsRequest('post', '/v1/radar/value_lists');
-        $result = $this->client->radar->valueLists->create(
-            [
-                'alias' => 'custom_ip_xxxxxxxxxxxxx',
-                'name' => 'Custom IP Blocklist',
-                'item_type' => 'ip_address',
-            ]
-        );
+        $result = $this->client->radar->valueLists->create([
+            'alias' => 'custom_ip_xxxxxxxxxxxxx',
+            'name' => 'Custom IP Blocklist',
+            'item_type' => 'ip_address',
+        ]);
         static::assertInstanceOf(\Stripe\Radar\ValueList::class, $result);
     }
 
@@ -2684,15 +2682,13 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateReportRun()
     {
         $this->expectsRequest('post', '/v1/reporting/report_runs');
-        $result = $this->client->reporting->reportRuns->create(
-            [
-                'report_type' => 'balance.summary.1',
-                'parameters' => [
-                    'interval_start' => 1522540800,
-                    'interval_end' => 1525132800,
-                ],
-            ]
-        );
+        $result = $this->client->reporting->reportRuns->create([
+            'report_type' => 'balance.summary.1',
+            'parameters' => [
+                'interval_start' => 1522540800,
+                'interval_end' => 1525132800,
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\Reporting\ReportRun::class, $result);
     }
 
@@ -2760,9 +2756,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateSetupIntent()
     {
         $this->expectsRequest('post', '/v1/setup_intents');
-        $result = $this->client->setupIntents->create(
-            ['payment_method_types' => ['card']]
-        );
+        $result = $this->client->setupIntents->create([
+            'payment_method_types' => ['card'],
+        ]);
         static::assertInstanceOf(\Stripe\SetupIntent::class, $result);
     }
 
@@ -2830,13 +2826,14 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateShippingRate2()
     {
         $this->expectsRequest('post', '/v1/shipping_rates');
-        $result = $this->client->shippingRates->create(
-            [
-                'display_name' => 'Ground shipping',
-                'type' => 'fixed_amount',
-                'fixed_amount' => ['amount' => 500, 'currency' => 'usd'],
-            ]
-        );
+        $result = $this->client->shippingRates->create([
+            'display_name' => 'Ground shipping',
+            'type' => 'fixed_amount',
+            'fixed_amount' => [
+                'amount' => 500,
+                'currency' => 'usd',
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\ShippingRate::class, $result);
     }
 
@@ -2905,9 +2902,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListSubscriptionItem()
     {
         $this->expectsRequest('get', '/v1/subscription_items');
-        $result = $this->client->subscriptionItems->all(
-            ['subscription' => 'sub_xxxxxxxxxxxxx']
-        );
+        $result = $this->client->subscriptionItems->all([
+            'subscription' => 'sub_xxxxxxxxxxxxx',
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\SubscriptionItem::class, $result->data[0]);
     }
@@ -2915,13 +2912,11 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateSubscriptionItem()
     {
         $this->expectsRequest('post', '/v1/subscription_items');
-        $result = $this->client->subscriptionItems->create(
-            [
-                'subscription' => 'sub_xxxxxxxxxxxxx',
-                'price' => 'price_xxxxxxxxxxxxx',
-                'quantity' => 2,
-            ]
-        );
+        $result = $this->client->subscriptionItems->create([
+            'subscription' => 'sub_xxxxxxxxxxxxx',
+            'price' => 'price_xxxxxxxxxxxxx',
+            'quantity' => 2,
+        ]);
         static::assertInstanceOf(\Stripe\SubscriptionItem::class, $result);
     }
 
@@ -2974,7 +2969,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         );
         $result = $this->client->subscriptionItems->createUsageRecord(
             'si_xxxxxxxxxxxxx',
-            ['quantity' => 100, 'timestamp' => 1571252444]
+            [
+                'quantity' => 100,
+                'timestamp' => 1571252444,
+            ]
         );
         static::assertInstanceOf(\Stripe\UsageRecord::class, $result);
     }
@@ -2990,19 +2988,22 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateSubscriptionSchedule()
     {
         $this->expectsRequest('post', '/v1/subscription_schedules');
-        $result = $this->client->subscriptionSchedules->create(
-            [
-                'customer' => 'cus_xxxxxxxxxxxxx',
-                'start_date' => 1676070661,
-                'end_behavior' => 'release',
-                'phases' => [
-                    [
-                        'items' => [['price' => 'price_xxxxxxxxxxxxx', 'quantity' => 1]],
-                        'iterations' => 12,
+        $result = $this->client->subscriptionSchedules->create([
+            'customer' => 'cus_xxxxxxxxxxxxx',
+            'start_date' => 1676070661,
+            'end_behavior' => 'release',
+            'phases' => [
+                [
+                    'items' => [
+                        [
+                            'price' => 'price_xxxxxxxxxxxxx',
+                            'quantity' => 1,
+                        ],
                     ],
+                    'iterations' => 12,
                 ],
-            ]
-        );
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\SubscriptionSchedule::class, $result);
     }
 
@@ -3069,12 +3070,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateSubscription()
     {
         $this->expectsRequest('post', '/v1/subscriptions');
-        $result = $this->client->subscriptions->create(
-            [
-                'customer' => 'cus_xxxxxxxxxxxxx',
-                'items' => [['price' => 'price_xxxxxxxxxxxxx']],
-            ]
-        );
+        $result = $this->client->subscriptions->create([
+            'customer' => 'cus_xxxxxxxxxxxxx',
+            'items' => [['price' => 'price_xxxxxxxxxxxxx']],
+        ]);
         static::assertInstanceOf(\Stripe\Subscription::class, $result);
     }
 
@@ -3105,9 +3104,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testSearchSubscription()
     {
         $this->expectsRequest('get', '/v1/subscriptions/search');
-        $result = $this->client->subscriptions->search(
-            ['query' => 'status:\'active\' AND metadata[\'order_id\']:\'6735\'']
-        );
+        $result = $this->client->subscriptions->search([
+            'query' => 'status:\'active\' AND metadata[\'order_id\']:\'6735\'',
+        ]);
         static::assertInstanceOf(\Stripe\SearchResult::class, $result);
         static::assertInstanceOf(\Stripe\Subscription::class, $result->data[0]);
     }
@@ -3138,15 +3137,13 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateTaxRate()
     {
         $this->expectsRequest('post', '/v1/tax_rates');
-        $result = $this->client->taxRates->create(
-            [
-                'display_name' => 'VAT',
-                'description' => 'VAT Germany',
-                'jurisdiction' => 'DE',
-                'percentage' => 16,
-                'inclusive' => false,
-            ]
-        );
+        $result = $this->client->taxRates->create([
+            'display_name' => 'VAT',
+            'description' => 'VAT Germany',
+            'jurisdiction' => 'DE',
+            'percentage' => 16,
+            'inclusive' => false,
+        ]);
         static::assertInstanceOf(\Stripe\TaxRate::class, $result);
     }
 
@@ -3232,18 +3229,16 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateLocation()
     {
         $this->expectsRequest('post', '/v1/terminal/locations');
-        $result = $this->client->terminal->locations->create(
-            [
-                'display_name' => 'My First Store',
-                'address' => [
-                    'line1' => '1234 Main Street',
-                    'city' => 'San Francisco',
-                    'postal_code' => '94111',
-                    'state' => 'CA',
-                    'country' => 'US',
-                ],
-            ]
-        );
+        $result = $this->client->terminal->locations->create([
+            'display_name' => 'My First Store',
+            'address' => [
+                'line1' => '1234 Main Street',
+                'city' => 'San Francisco',
+                'postal_code' => '94111',
+                'state' => 'CA',
+                'country' => 'US',
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\Terminal\Location::class, $result);
     }
 
@@ -3288,13 +3283,11 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateReader()
     {
         $this->expectsRequest('post', '/v1/terminal/readers');
-        $result = $this->client->terminal->readers->create(
-            [
-                'registration_code' => 'puppies-plug-could',
-                'label' => 'Blue Rabbit',
-                'location' => 'tml_1234',
-            ]
-        );
+        $result = $this->client->terminal->readers->create([
+            'registration_code' => 'puppies-plug-could',
+            'label' => 'Blue Rabbit',
+            'location' => 'tml_1234',
+        ]);
         static::assertInstanceOf(\Stripe\Terminal\Reader::class, $result);
     }
 
@@ -3378,9 +3371,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateTestClock2()
     {
         $this->expectsRequest('post', '/v1/test_helpers/test_clocks');
-        $result = $this->client->testHelpers->testClocks->create(
-            ['frozen_time' => 1577836800]
-        );
+        $result = $this->client->testHelpers->testClocks->create([
+            'frozen_time' => 1577836800,
+        ]);
         static::assertInstanceOf(\Stripe\TestHelpers\TestClock::class, $result);
     }
 
@@ -3426,56 +3419,53 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateToken2()
     {
         $this->expectsRequest('post', '/v1/tokens');
-        $result = $this->client->tokens->create(
-            [
-                'bank_account' => [
-                    'country' => 'US',
-                    'currency' => 'usd',
-                    'account_holder_name' => 'Jenny Rosen',
-                    'account_holder_type' => 'individual',
-                    'routing_number' => '110000000',
-                    'account_number' => '000123456789',
-                ],
-            ]
-        );
+        $result = $this->client->tokens->create([
+            'bank_account' => [
+                'country' => 'US',
+                'currency' => 'usd',
+                'account_holder_name' => 'Jenny Rosen',
+                'account_holder_type' => 'individual',
+                'routing_number' => '110000000',
+                'account_number' => '000123456789',
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\Token::class, $result);
     }
 
     public function testCreateToken3()
     {
         $this->expectsRequest('post', '/v1/tokens');
-        $result = $this->client->tokens->create(
-            ['pii' => ['id_number' => '000000000']]
-        );
+        $result = $this->client->tokens->create([
+            'pii' => ['id_number' => '000000000'],
+        ]);
         static::assertInstanceOf(\Stripe\Token::class, $result);
     }
 
     public function testCreateToken4()
     {
         $this->expectsRequest('post', '/v1/tokens');
-        $result = $this->client->tokens->create(
-            [
-                'account' => [
-                    'individual' => ['first_name' => 'Jane', 'last_name' => 'Doe'],
-                    'tos_shown_and_accepted' => true,
+        $result = $this->client->tokens->create([
+            'account' => [
+                'individual' => [
+                    'first_name' => 'Jane',
+                    'last_name' => 'Doe',
                 ],
-            ]
-        );
+                'tos_shown_and_accepted' => true,
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\Token::class, $result);
     }
 
     public function testCreateToken5()
     {
         $this->expectsRequest('post', '/v1/tokens');
-        $result = $this->client->tokens->create(
-            [
-                'person' => [
-                    'first_name' => 'Jane',
-                    'last_name' => 'Doe',
-                    'relationship' => ['owner' => true],
-                ],
-            ]
-        );
+        $result = $this->client->tokens->create([
+            'person' => [
+                'first_name' => 'Jane',
+                'last_name' => 'Doe',
+                'relationship' => ['owner' => true],
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\Token::class, $result);
     }
 
@@ -3504,14 +3494,12 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateTopup()
     {
         $this->expectsRequest('post', '/v1/topups');
-        $result = $this->client->topups->create(
-            [
-                'amount' => 2000,
-                'currency' => 'usd',
-                'description' => 'Top-up for Jenny Rosen',
-                'statement_descriptor' => 'Top-up',
-            ]
-        );
+        $result = $this->client->topups->create([
+            'amount' => 2000,
+            'currency' => 'usd',
+            'description' => 'Top-up for Jenny Rosen',
+            'statement_descriptor' => 'Top-up',
+        ]);
         static::assertInstanceOf(\Stripe\Topup::class, $result);
     }
 
@@ -3550,14 +3538,12 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateTransfer()
     {
         $this->expectsRequest('post', '/v1/transfers');
-        $result = $this->client->transfers->create(
-            [
-                'amount' => 400,
-                'currency' => 'usd',
-                'destination' => 'acct_xxxxxxxxxxxxx',
-                'transfer_group' => 'ORDER_95',
-            ]
-        );
+        $result = $this->client->transfers->create([
+            'amount' => 400,
+            'currency' => 'usd',
+            'destination' => 'acct_xxxxxxxxxxxxx',
+            'transfer_group' => 'ORDER_95',
+        ]);
         static::assertInstanceOf(\Stripe\Transfer::class, $result);
     }
 
@@ -3630,9 +3616,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListCreditReversal()
     {
         $this->expectsRequest('get', '/v1/treasury/credit_reversals');
-        $result = $this->client->treasury->creditReversals->all(
-            ['financial_account' => 'fa_xxxxxxxxxxxxx', 'limit' => 3]
-        );
+        $result = $this->client->treasury->creditReversals->all([
+            'financial_account' => 'fa_xxxxxxxxxxxxx',
+            'limit' => 3,
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Treasury\CreditReversal::class, $result->data[0]);
     }
@@ -3640,9 +3627,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateCreditReversal()
     {
         $this->expectsRequest('post', '/v1/treasury/credit_reversals');
-        $result = $this->client->treasury->creditReversals->create(
-            ['received_credit' => 'rc_xxxxxxxxxxxxx']
-        );
+        $result = $this->client->treasury->creditReversals->create([
+            'received_credit' => 'rc_xxxxxxxxxxxxx',
+        ]);
         static::assertInstanceOf(\Stripe\Treasury\CreditReversal::class, $result);
     }
 
@@ -3662,9 +3649,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListDebitReversal()
     {
         $this->expectsRequest('get', '/v1/treasury/debit_reversals');
-        $result = $this->client->treasury->debitReversals->all(
-            ['financial_account' => 'fa_xxxxxxxxxxxxx', 'limit' => 3]
-        );
+        $result = $this->client->treasury->debitReversals->all([
+            'financial_account' => 'fa_xxxxxxxxxxxxx',
+            'limit' => 3,
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Treasury\DebitReversal::class, $result->data[0]);
     }
@@ -3672,9 +3660,9 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateDebitReversal()
     {
         $this->expectsRequest('post', '/v1/treasury/debit_reversals');
-        $result = $this->client->treasury->debitReversals->create(
-            ['received_debit' => 'rd_xxxxxxxxxxxxx']
-        );
+        $result = $this->client->treasury->debitReversals->create([
+            'received_debit' => 'rd_xxxxxxxxxxxxx',
+        ]);
         static::assertInstanceOf(\Stripe\Treasury\DebitReversal::class, $result);
     }
 
@@ -3702,9 +3690,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateFinancialAccount()
     {
         $this->expectsRequest('post', '/v1/treasury/financial_accounts');
-        $result = $this->client->treasury->financialAccounts->create(
-            ['supported_currencies' => ['usd'], 'features' => []]
-        );
+        $result = $this->client->treasury->financialAccounts->create([
+            'supported_currencies' => ['usd'],
+            'features' => [],
+        ]);
         static::assertInstanceOf(\Stripe\Treasury\FinancialAccount::class, $result);
     }
 
@@ -3750,9 +3739,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListInboundTransfer()
     {
         $this->expectsRequest('get', '/v1/treasury/inbound_transfers');
-        $result = $this->client->treasury->inboundTransfers->all(
-            ['financial_account' => 'fa_xxxxxxxxxxxxx', 'limit' => 3]
-        );
+        $result = $this->client->treasury->inboundTransfers->all([
+            'financial_account' => 'fa_xxxxxxxxxxxxx',
+            'limit' => 3,
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Treasury\InboundTransfer::class, $result->data[0]);
     }
@@ -3760,15 +3750,13 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateInboundTransfer()
     {
         $this->expectsRequest('post', '/v1/treasury/inbound_transfers');
-        $result = $this->client->treasury->inboundTransfers->create(
-            [
-                'financial_account' => 'fa_xxxxxxxxxxxxx',
-                'amount' => 10000,
-                'currency' => 'usd',
-                'origin_payment_method' => 'pm_xxxxxxxxxxxxx',
-                'description' => 'InboundTransfer from my bank account',
-            ]
-        );
+        $result = $this->client->treasury->inboundTransfers->create([
+            'financial_account' => 'fa_xxxxxxxxxxxxx',
+            'amount' => 10000,
+            'currency' => 'usd',
+            'origin_payment_method' => 'pm_xxxxxxxxxxxxx',
+            'description' => 'InboundTransfer from my bank account',
+        ]);
         static::assertInstanceOf(\Stripe\Treasury\InboundTransfer::class, $result);
     }
 
@@ -3801,9 +3789,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListOutboundPayment()
     {
         $this->expectsRequest('get', '/v1/treasury/outbound_payments');
-        $result = $this->client->treasury->outboundPayments->all(
-            ['financial_account' => 'fa_xxxxxxxxxxxxx', 'limit' => 3]
-        );
+        $result = $this->client->treasury->outboundPayments->all([
+            'financial_account' => 'fa_xxxxxxxxxxxxx',
+            'limit' => 3,
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Treasury\OutboundPayment::class, $result->data[0]);
     }
@@ -3811,16 +3800,14 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateOutboundPayment()
     {
         $this->expectsRequest('post', '/v1/treasury/outbound_payments');
-        $result = $this->client->treasury->outboundPayments->create(
-            [
-                'financial_account' => 'fa_xxxxxxxxxxxxx',
-                'amount' => 10000,
-                'currency' => 'usd',
-                'customer' => 'cus_xxxxxxxxxxxxx',
-                'destination_payment_method' => 'pm_xxxxxxxxxxxxx',
-                'description' => 'OutboundPayment to a 3rd party',
-            ]
-        );
+        $result = $this->client->treasury->outboundPayments->create([
+            'financial_account' => 'fa_xxxxxxxxxxxxx',
+            'amount' => 10000,
+            'currency' => 'usd',
+            'customer' => 'cus_xxxxxxxxxxxxx',
+            'destination_payment_method' => 'pm_xxxxxxxxxxxxx',
+            'description' => 'OutboundPayment to a 3rd party',
+        ]);
         static::assertInstanceOf(\Stripe\Treasury\OutboundPayment::class, $result);
     }
 
@@ -3853,9 +3840,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListOutboundTransfer()
     {
         $this->expectsRequest('get', '/v1/treasury/outbound_transfers');
-        $result = $this->client->treasury->outboundTransfers->all(
-            ['financial_account' => 'fa_xxxxxxxxxxxxx', 'limit' => 3]
-        );
+        $result = $this->client->treasury->outboundTransfers->all([
+            'financial_account' => 'fa_xxxxxxxxxxxxx',
+            'limit' => 3,
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Treasury\OutboundTransfer::class, $result->data[0]);
     }
@@ -3863,15 +3851,13 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreateOutboundTransfer()
     {
         $this->expectsRequest('post', '/v1/treasury/outbound_transfers');
-        $result = $this->client->treasury->outboundTransfers->create(
-            [
-                'financial_account' => 'fa_xxxxxxxxxxxxx',
-                'destination_payment_method' => 'pm_xxxxxxxxxxxxx',
-                'amount' => 500,
-                'currency' => 'usd',
-                'description' => 'OutboundTransfer to my external bank account',
-            ]
-        );
+        $result = $this->client->treasury->outboundTransfers->create([
+            'financial_account' => 'fa_xxxxxxxxxxxxx',
+            'destination_payment_method' => 'pm_xxxxxxxxxxxxx',
+            'amount' => 500,
+            'currency' => 'usd',
+            'description' => 'OutboundTransfer to my external bank account',
+        ]);
         static::assertInstanceOf(\Stripe\Treasury\OutboundTransfer::class, $result);
     }
 
@@ -3904,9 +3890,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListReceivedCredit()
     {
         $this->expectsRequest('get', '/v1/treasury/received_credits');
-        $result = $this->client->treasury->receivedCredits->all(
-            ['financial_account' => 'fa_xxxxxxxxxxxxx', 'limit' => 3]
-        );
+        $result = $this->client->treasury->receivedCredits->all([
+            'financial_account' => 'fa_xxxxxxxxxxxxx',
+            'limit' => 3,
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Treasury\ReceivedCredit::class, $result->data[0]);
     }
@@ -3927,9 +3914,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListReceivedDebit()
     {
         $this->expectsRequest('get', '/v1/treasury/received_debits');
-        $result = $this->client->treasury->receivedDebits->all(
-            ['financial_account' => 'fa_xxxxxxxxxxxxx', 'limit' => 3]
-        );
+        $result = $this->client->treasury->receivedDebits->all([
+            'financial_account' => 'fa_xxxxxxxxxxxxx',
+            'limit' => 3,
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Treasury\ReceivedDebit::class, $result->data[0]);
     }
@@ -3950,9 +3938,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListTransactionEntry()
     {
         $this->expectsRequest('get', '/v1/treasury/transaction_entries');
-        $result = $this->client->treasury->transactionEntries->all(
-            ['financial_account' => 'fa_xxxxxxxxxxxxx', 'limit' => 3]
-        );
+        $result = $this->client->treasury->transactionEntries->all([
+            'financial_account' => 'fa_xxxxxxxxxxxxx',
+            'limit' => 3,
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Treasury\TransactionEntry::class, $result->data[0]);
     }
@@ -3973,9 +3962,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testListTransaction2()
     {
         $this->expectsRequest('get', '/v1/treasury/transactions');
-        $result = $this->client->treasury->transactions->all(
-            ['financial_account' => 'fa_xxxxxxxxxxxxx', 'limit' => 3]
-        );
+        $result = $this->client->treasury->transactions->all([
+            'financial_account' => 'fa_xxxxxxxxxxxxx',
+            'limit' => 3,
+        ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\Treasury\Transaction::class, $result->data[0]);
     }
@@ -4031,9 +4021,10 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
             'post',
             '/v1/tax/transactions/create_from_calculation'
         );
-        $result = $this->client->tax->transactions->createFromCalculation(
-            ['calculation' => 'xxx', 'reference' => 'yyy']
-        );
+        $result = $this->client->tax->transactions->createFromCalculation([
+            'calculation' => 'xxx',
+            'reference' => 'yyy',
+        ]);
         static::assertInstanceOf(\Stripe\Tax\Transaction::class, $result);
     }
 
@@ -4048,13 +4039,14 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     public function testCreatePaymentIntent3()
     {
         $this->expectsRequest('post', '/v1/payment_intents');
-        $result = $this->client->paymentIntents->create(
-            [
-                'amount' => 200,
-                'currency' => 'usd',
-                'payment_method_data' => ['type' => 'p24', 'p24' => ['bank' => 'blik']],
-            ]
-        );
+        $result = $this->client->paymentIntents->create([
+            'amount' => 200,
+            'currency' => 'usd',
+            'payment_method_data' => [
+                'type' => 'p24',
+                'p24' => ['bank' => 'blik'],
+            ],
+        ]);
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $result);
     }
 }
