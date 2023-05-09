@@ -4049,4 +4049,12 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         ]);
         static::assertInstanceOf(\Stripe\PaymentIntent::class, $result);
     }
+
+    public function testListLineItemsQuote()
+    {
+        $this->expectsRequest('get', '/v1/quotes/qt_xxxxxxxxxxxxx/line_items');
+        $result = $this->client->quotes->allLineItems('qt_xxxxxxxxxxxxx', []);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\LineItem::class, $result->data[0]);
+    }
 }
