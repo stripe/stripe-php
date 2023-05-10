@@ -14,7 +14,7 @@ namespace Stripe\Tax;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property \Stripe\StripeObject $defaults
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property \Stripe\StripeObject[] $locations The places where your business is located.
+ * @property null|\Stripe\StripeObject[] $locations The places where your business is located.
  */
 class Settings extends \Stripe\SingletonApiResource
 {
