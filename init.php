@@ -150,6 +150,7 @@ require __DIR__ . '/lib/Price.php';
 require __DIR__ . '/lib/Product.php';
 require __DIR__ . '/lib/PromotionCode.php';
 require __DIR__ . '/lib/Quote.php';
+require __DIR__ . '/lib/QuoteLine.php';
 require __DIR__ . '/lib/QuotePhase.php';
 require __DIR__ . '/lib/Radar/EarlyFraudWarning.php';
 require __DIR__ . '/lib/Radar/ValueList.php';

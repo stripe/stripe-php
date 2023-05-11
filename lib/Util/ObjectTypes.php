@@ -82,6 +82,7 @@ class ObjectTypes
         \Stripe\Product::OBJECT_NAME => \Stripe\Product::class,
         \Stripe\PromotionCode::OBJECT_NAME => \Stripe\PromotionCode::class,
         \Stripe\Quote::OBJECT_NAME => \Stripe\Quote::class,
+        \Stripe\QuoteLine::OBJECT_NAME => \Stripe\QuoteLine::class,
         \Stripe\QuotePhase::OBJECT_NAME => \Stripe\QuotePhase::class,
         \Stripe\Radar\EarlyFraudWarning::OBJECT_NAME => \Stripe\Radar\EarlyFraudWarning::class,
         \Stripe\Radar\ValueList::OBJECT_NAME => \Stripe\Radar\ValueList::class,
