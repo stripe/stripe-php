@@ -1,5 +1,12 @@
 # Changelog
 
+## 10.14.0-beta.1 - 2023-05-11
+* [#1489](https://github.com/stripe/stripe-php/pull/1489) Update generated code for beta
+  * Add support for `head_office` on `Tax.Settings`
+* [#1497](https://github.com/stripe/stripe-php/pull/1497) Fix phpstan errors
+* [#1484](https://github.com/stripe/stripe-php/pull/1484) Update generated code for beta
+
+
 ## 10.13.0 - 2023-05-11
 * [#1490](https://github.com/stripe/stripe-php/pull/1490) Update generated code
   * Add support for `paypal` on `PaymentMethod`
