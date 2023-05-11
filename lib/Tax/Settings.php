@@ -8,8 +8,8 @@ namespace Stripe\Tax;
  * You can use Tax <code>Settings</code> to manage configurations used by Stripe
  * Tax calculations.
  *
- * Related guide: <a href="https://stripe.com/docs/tax/connect/settings">Account
- * settings</a>.
+ * Related guide: <a href="https://stripe.com/docs/tax/settings-api">Using the
+ * Settings API</a>.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property \Stripe\StripeObject $defaults

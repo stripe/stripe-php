@@ -14,6 +14,9 @@ namespace Stripe\Tax;
  * register to collect tax, see <a
  * href="https://stripe.com/docs/tax/registering">our guide</a>.
  *
+ * Related guide: <a href="https://stripe.com/docs/tax/registrations-api">Using the
+ * Registrations API</a>.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $active_from Time at which the registration becomes active. Measured in seconds since the Unix epoch.
