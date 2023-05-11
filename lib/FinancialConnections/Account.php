@@ -115,7 +115,7 @@ class Account extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\FinancialConnections\FinancialConnectionsAccountInferredBalance> the list of financial connections account inferred balances
+     * @return \Stripe\Collection<\Stripe\FinancialConnections\InferredBalance> the list of financial connections account inferred balances
      */
     public static function allInferredBalances($id, $params = null, $opts = null)
     {
