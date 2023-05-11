@@ -142,6 +142,7 @@ final class CustomerTest extends \Stripe\TestCase
 
     public function testSerializeSourceString()
     {
+        /** @var mixed $obj */
         $obj = Util\Util::convertToStripeObject([
             'object' => 'customer',
         ], null);
@@ -155,6 +156,7 @@ final class CustomerTest extends \Stripe\TestCase
 
     public function testSerializeSourceMap()
     {
+        /** @var mixed $obj */
         $obj = Util\Util::convertToStripeObject([
             'object' => 'customer',
         ], null);

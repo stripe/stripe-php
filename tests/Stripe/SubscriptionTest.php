@@ -94,6 +94,7 @@ final class SubscriptionTest extends \Stripe\TestCase
 
     public function testSerializeParametersItems()
     {
+        /** @var \Stripe\Subscription */
         $obj = Util\Util::convertToStripeObject([
             'object' => 'subscription',
             'items' => Util\Util::convertToStripeObject([

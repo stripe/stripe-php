@@ -4,6 +4,8 @@ namespace Stripe;
 
 /**
  * Class StripeObject.
+ *
+ * @property null|string $id
  */
 class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
 {

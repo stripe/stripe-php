@@ -24,8 +24,7 @@ class FinancingOfferService extends \Stripe\Service\AbstractService
 
     /**
      * Acknowledges that platform has received and delivered the financing_offer to the
-     * intended merchant recipient. This is required to make the application
-     * accessible.
+     * intended merchant recipient.
      *
      * @param string $id
      * @param null|array $params

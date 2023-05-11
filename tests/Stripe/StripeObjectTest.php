@@ -35,6 +35,7 @@ final class StripeObjectTest extends \Stripe\TestCase
 
     public function testArrayAccessorsSemantics()
     {
+        /** @var mixed $s */
         $s = new StripeObject();
         $s['foo'] = 'a';
         static::assertSame($s['foo'], 'a');
@@ -45,6 +46,7 @@ final class StripeObjectTest extends \Stripe\TestCase
 
     public function testNormalAccessorsSemantics()
     {
+        /** @var mixed $s */
         $s = new StripeObject();
         $s->foo = 'a';
         static::assertSame($s->foo, 'a');
@@ -55,6 +57,7 @@ final class StripeObjectTest extends \Stripe\TestCase
 
     public function testArrayAccessorsMatchNormalAccessors()
     {
+        /** @var mixed $s */
         $s = new StripeObject();
         $s->foo = 'a';
         static::assertSame($s['foo'], 'a');
@@ -65,6 +68,7 @@ final class StripeObjectTest extends \Stripe\TestCase
 
     public function testCount()
     {
+        /** @var mixed $s */
         $s = new StripeObject();
         static::assertCount(0, $s);
 
@@ -80,6 +84,7 @@ final class StripeObjectTest extends \Stripe\TestCase
 
     public function testKeys()
     {
+        /** @var mixed $s */
         $s = new StripeObject();
         $s->foo = 'bar';
         static::assertSame($s->keys(), ['foo']);
@@ -87,6 +92,7 @@ final class StripeObjectTest extends \Stripe\TestCase
 
     public function testValues()
     {
+        /** @var mixed $s */
         $s = new StripeObject();
         $s->foo = 'bar';
         static::assertSame($s->values(), ['bar']);
@@ -141,6 +147,7 @@ final class StripeObjectTest extends \Stripe\TestCase
         $origErrorLog = \ini_set('error_log', \stream_get_meta_data($capture)['uri']);
 
         try {
+            /** @var mixed $s */
             $s = new StripeObject();
             static::assertNull($s->nonexistent);
 
@@ -156,12 +163,14 @@ final class StripeObjectTest extends \Stripe\TestCase
 
     public function testPropertyDoesNotExists()
     {
+        /** @var mixed $s */
         $s = new StripeObject();
         static::assertNull($s['nonexistent']);
     }
 
     public function testJsonEncode()
     {
+        /** @var mixed $s */
         $s = new StripeObject();
         $s->foo = 'a';
 
@@ -170,6 +179,7 @@ final class StripeObjectTest extends \Stripe\TestCase
 
     public function testToString()
     {
+        /** @var mixed $s */
         $s = new StripeObject();
         $s->foo = 'a';
 
@@ -184,6 +194,7 @@ EOS;
 
     public function testReplaceNewNestedUpdatable()
     {
+        /** @var mixed $s */
         $s = new StripeObject();
 
         $s->metadata = ['bar'];
@@ -196,6 +207,7 @@ EOS;
     {
         $this->expectException(\InvalidArgumentException::class);
 
+        /** @var mixed $s */
         $s = new StripeObject();
         $s->id = 'abc_123';
     }
@@ -204,6 +216,7 @@ EOS;
     {
         $this->expectException(\InvalidArgumentException::class);
 
+        /** @var mixed $s */
         $s = new StripeObject();
         $s->foo = '';
     }
@@ -216,6 +229,7 @@ EOS;
 
     public function testSerializeParametersOnNewObjectWithSubObject()
     {
+        /** @var mixed $obj */
         $obj = new StripeObject();
         $obj->metadata = ['foo' => 'bar'];
         static::assertSame(['metadata' => ['foo' => 'bar']], $obj->serializeParameters());
@@ -230,6 +244,7 @@ EOS;
 
     public function testSerializeParametersOnMoreComplexObject()
     {
+        /** @var mixed $obj */
         $obj = StripeObject::constructFrom([
             'foo' => StripeObject::constructFrom([
                 'bar' => null,
@@ -242,6 +257,7 @@ EOS;
 
     public function testSerializeParametersOnArray()
     {
+        /** @var mixed $obj */
         $obj = StripeObject::constructFrom([
             'foo' => null,
         ]);
@@ -251,6 +267,7 @@ EOS;
 
     public function testSerializeParametersOnArrayThatShortens()
     {
+        /** @var mixed $obj */
         $obj = StripeObject::constructFrom([
             'foo' => ['0-index', '1-index', '2-index'],
         ]);
@@ -260,6 +277,7 @@ EOS;
 
     public function testSerializeParametersOnArrayThatLengthens()
     {
+        /** @var mixed $obj */
         $obj = StripeObject::constructFrom([
             'foo' => ['0-index', '1-index', '2-index'],
         ]);
@@ -269,17 +287,21 @@ EOS;
 
     public function testSerializeParametersOnArrayOfHashes()
     {
+        /** @var mixed $obj */
         $obj = StripeObject::constructFrom(['foo' => null]);
         $obj->foo = [
             StripeObject::constructFrom(['bar' => null]),
         ];
 
-        $obj->foo[0]->bar = 'baz';
+        /** @var mixed $first */
+        $first = $obj->foo[0];
+        $first->bar = 'baz';
         static::assertSame(['foo' => [['bar' => 'baz']]], $obj->serializeParameters());
     }
 
     public function testSerializeParametersDoesNotIncludeUnchangedValues()
     {
+        /** @var mixed $obj */
         $obj = StripeObject::constructFrom([
             'foo' => null,
         ]);
@@ -288,6 +310,7 @@ EOS;
 
     public function testSerializeParametersOnUnchangedArray()
     {
+        /** @var mixed $obj */
         $obj = StripeObject::constructFrom([
             'foo' => ['0-index', '1-index', '2-index'],
         ]);
@@ -297,6 +320,7 @@ EOS;
 
     public function testSerializeParametersWithStripeObject()
     {
+        /** @var mixed $obj */
         $obj = StripeObject::constructFrom([]);
         $obj->metadata = StripeObject::constructFrom(['foo' => 'bar']);
 
@@ -306,6 +330,7 @@ EOS;
 
     public function testSerializeParametersOnReplacedStripeObject()
     {
+        /** @var mixed $obj */
         $obj = StripeObject::constructFrom([
             'source' => StripeObject::constructFrom(['bar' => 'foo']),
         ]);
@@ -317,6 +342,7 @@ EOS;
 
     public function testSerializeParametersOnReplacedStripeObjectWhichIsMetadata()
     {
+        /** @var mixed $obj */
         $obj = StripeObject::constructFrom([
             'metadata' => StripeObject::constructFrom(['bar' => 'foo']),
         ]);
@@ -328,6 +354,7 @@ EOS;
 
     public function testSerializeParametersOnArrayOfStripeObjects()
     {
+        /** @var mixed $obj */
         $obj = StripeObject::constructFrom([]);
         $obj->metadata = [
             StripeObject::constructFrom(['foo' => 'bar']),
@@ -340,6 +367,7 @@ EOS;
     public function testSerializeParametersOnSetApiResource()
     {
         $customer = Customer::constructFrom(['id' => 'cus_123']);
+        /** @var mixed $obj */
         $obj = StripeObject::constructFrom([]);
 
         // the key here is that the property is set explicitly (and therefore
@@ -377,6 +405,7 @@ EOS;
         // probably not what the user expected to happen.
         $customer = Customer::constructFrom([]);
 
+        /** @var mixed $obj */
         $obj = StripeObject::constructFrom([]);
         $obj->customer = $customer;
 
@@ -513,6 +542,7 @@ EOS;
 
     public function testDeserializeEmptyMetadata()
     {
+        /** @var mixed $obj */
         $obj = StripeObject::constructFrom([
             'metadata' => [],
         ]);
@@ -522,11 +552,14 @@ EOS;
 
     public function testDeserializeMetadataWithKeyNamedMetadata()
     {
+        /** @var mixed $obj */
         $obj = StripeObject::constructFrom([
             'metadata' => ['metadata' => 'value'],
         ]);
 
         static::assertInstanceOf(\Stripe\StripeObject::class, $obj->metadata);
-        static::assertSame('value', $obj->metadata->metadata);
+        /** @var mixed $inner */
+        $inner = $obj->metadata;
+        static::assertSame('value', $inner->metadata);
     }
 }
