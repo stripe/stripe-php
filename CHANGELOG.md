@@ -1,5 +1,20 @@
 # Changelog
 
+## 10.13.0 - 2023-05-11
+* [#1490](https://github.com/stripe/stripe-php/pull/1490) Update generated code
+  * Add support for `paypal` on `PaymentMethod`
+  * Add support for `effective_percentage` on `TaxRate`
+* [#1488](https://github.com/stripe/stripe-php/pull/1488) Increment PHPStan to strictness level 2
+* [#1483](https://github.com/stripe/stripe-php/pull/1483) Update generated code
+
+* [#1480](https://github.com/stripe/stripe-php/pull/1480) Update generated code
+  * Change type of `Identity.VerificationSession.options` from `VerificationSessionOptions` to `nullable(VerificationSessionOptions)`
+  * Change type of `Identity.VerificationSession.type` from `enum('document'|'id_number')` to `nullable(enum('document'|'id_number'))`
+* [#1478](https://github.com/stripe/stripe-php/pull/1478) Update generated code
+  * Release specs are identical.
+* [#1475](https://github.com/stripe/stripe-php/pull/1475) Update generated code
+
+
 ## 10.12.1 - 2023-04-04
 * [#1473](https://github.com/stripe/stripe-php/pull/1473) Update generated code
   * Add back `deleted` from `Invoice.status`.
