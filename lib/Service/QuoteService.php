@@ -85,7 +85,7 @@ class QuoteService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\Quote>
+     * @return \Stripe\Collection<\Stripe\QuoteLine>
      */
     public function allLines($id, $params = null, $opts = null)
     {
