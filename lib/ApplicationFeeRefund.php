@@ -11,7 +11,7 @@ namespace Stripe;
  *
  * Related guide: <a
  * href="https://stripe.com/docs/connect/destination-charges#refunding-app-fee">Refunding
- * Application Fees</a>.
+ * application fees</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

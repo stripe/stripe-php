@@ -15,8 +15,8 @@ namespace Stripe;
  * href="https://stripe.com/docs/transfer-payout-split">transfer/payout split</a>.
  *
  * Related guide: <a
- * href="https://stripe.com/docs/connect/charges-transfers">Creating Separate
- * Charges and Transfers</a>.
+ * href="https://stripe.com/docs/connect/charges-transfers">Creating separate
+ * charges and transfers</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

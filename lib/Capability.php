@@ -9,7 +9,7 @@ namespace Stripe;
  *
  * Related guide: <a
  * href="https://stripe.com/docs/connect/account-capabilities">Account
- * capabilities</a>.
+ * capabilities</a>
  *
  * @property string $id The identifier for the capability.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

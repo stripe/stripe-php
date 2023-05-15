@@ -53,7 +53,7 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
      * though everything else will occur as if in live mode.
      *
      * Related guide: <a href="/docs/identity/verify-identity-documents">Verify your
-     * users’ identity documents</a>.
+     * users’ identity documents</a>
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts

@@ -9,7 +9,7 @@ namespace Stripe\Tax;
  *
  * Related guide: <a
  * href="https://stripe.com/docs/tax/custom#tax-transaction">Calculate tax in your
- * custom payment flow</a>.
+ * custom payment flow</a>
  *
  * @property string $id Unique identifier for the transaction.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

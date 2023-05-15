@@ -12,7 +12,7 @@ namespace Stripe;
  * initiating a bank transfer to any account in the
  * <code>financial_addresses</code> field. Related guide: <a
  * href="https://stripe.com/docs/payments/customer-balance/funding-instructions">Customer
- * Balance - Funding Instructions</a> to learn more.
+ * balance funding instructions</a>.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property \Stripe\StripeObject $bank_transfer

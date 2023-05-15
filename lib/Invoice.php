@@ -39,7 +39,7 @@ namespace Stripe;
  * href="https://stripe.com/docs/billing/customer/balance">here</a>.
  *
  * Related guide: <a href="https://stripe.com/docs/billing/invoices/sending">Send
- * Invoices to Customers</a>.
+ * invoices to customers</a>
  *
  * @property null|string $id Unique identifier for the object. This property is always present unless the invoice is an upcoming invoice. See <a href="https://stripe.com/docs/api/invoices/upcoming">Retrieve an upcoming invoice</a> for more details.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

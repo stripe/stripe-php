@@ -14,7 +14,7 @@ namespace Stripe;
  * user interface for registering and testing your webhook endpoints.
  *
  * Related guide: <a href="https://stripe.com/docs/webhooks/configure">Setting up
- * Webhooks</a>.
+ * webhooks</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

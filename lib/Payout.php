@@ -12,7 +12,7 @@ namespace Stripe;
  * on <a href="/docs/connect/manage-payout-schedule">varying schedules</a>,
  * depending on your country and industry.
  *
- * Related guide: <a href="https://stripe.com/docs/payouts">Receiving Payouts</a>.
+ * Related guide: <a href="https://stripe.com/docs/payouts">Receiving payouts</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

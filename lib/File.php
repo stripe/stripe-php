@@ -12,8 +12,8 @@ namespace Stripe;
  * (for example, the results of a <a href="#scheduled_queries">Sigma scheduled
  * query</a>).
  *
- * Related guide: <a href="https://stripe.com/docs/file-upload">File Upload
- * Guide</a>.
+ * Related guide: <a href="https://stripe.com/docs/file-upload">File upload
+ * guide</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

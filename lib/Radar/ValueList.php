@@ -10,7 +10,7 @@ namespace Stripe\Radar;
  *
  * Related guide: <a
  * href="https://stripe.com/docs/radar/lists#managing-list-items">Default Stripe
- * Lists</a>.
+ * lists</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

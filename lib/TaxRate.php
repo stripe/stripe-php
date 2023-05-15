@@ -13,7 +13,7 @@ namespace Stripe;
  * Sessions</a> to collect tax.
  *
  * Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax
- * Rates</a>.
+ * rates</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

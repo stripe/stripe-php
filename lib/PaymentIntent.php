@@ -16,7 +16,7 @@ namespace Stripe;
  * authentication flows and ultimately creates at most one successful charge.
  *
  * Related guide: <a
- * href="https://stripe.com/docs/payments/payment-intents">Payment Intents API</a>.
+ * href="https://stripe.com/docs/payments/payment-intents">Payment Intents API</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

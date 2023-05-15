@@ -21,7 +21,7 @@ namespace Stripe\Checkout;
  * begin Checkout.
  *
  * Related guide: <a href="https://stripe.com/docs/checkout/quickstart">Checkout
- * Quickstart</a>.
+ * quickstart</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

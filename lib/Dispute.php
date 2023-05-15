@@ -11,8 +11,7 @@ namespace Stripe;
  * about the dispute process in our <a href="/docs/disputes">Disputes and Fraud</a>
  * documentation.
  *
- * Related guide: <a href="https://stripe.com/docs/disputes">Disputes and
- * Fraud</a>.
+ * Related guide: <a href="https://stripe.com/docs/disputes">Disputes and fraud</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

@@ -15,8 +15,8 @@ namespace Stripe;
  * above.
  *
  * Related guide: <a
- * href="https://stripe.com/docs/payments/bank-debits-transfers">Bank Debits and
- * Transfers</a>.
+ * href="https://stripe.com/docs/payments/bank-debits-transfers">Bank debits and
+ * transfers</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

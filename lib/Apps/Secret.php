@@ -23,7 +23,7 @@ namespace Stripe\Apps;
  *
  * Related guide: <a
  * href="https://stripe.com/docs/stripe-apps/store-auth-data-custom-objects">Store
- * data between page reloads</a>.
+ * data between page reloads</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
