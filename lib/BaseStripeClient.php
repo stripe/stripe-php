@@ -171,6 +171,10 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             $headers = $opts['headers'] ?: [];
             unset($opts['headers']);
         }
+        if (\is_array($opts) && \array_key_exists('stripe_context', $opts)) {
+            $headers['Stripe-Context'] = $opts['stripe_context'];
+            unset($opts['stripe_context']);
+        }
         $opts = $this->defaultOpts->merge($opts, true);
         // Concatenate $headers to $opts->headers, removing duplicates.
         $opts->headers = \array_merge($opts->headers, $headers);
