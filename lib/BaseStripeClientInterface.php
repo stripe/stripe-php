@@ -60,6 +60,7 @@ interface BaseStripeClientInterface
      * Deserializes the raw JSON string returned by rawRequest into a similar class.
      *
      * @param string $json
+     *
      * @return \Stripe\StripeObject
      * */
     public function deserialize($json);

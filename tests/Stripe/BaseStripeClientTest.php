@@ -370,7 +370,5 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         // The library sends Content-Type even with no body, so assert this
         // But it would be more correct to not send Content-Type
         static::assertStringStartsWith('Content-Type: application/json', $content_type);
-
-
     }
 }

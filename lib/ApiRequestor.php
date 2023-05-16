@@ -110,7 +110,7 @@ class ApiRequestor
      * @param string     $url
      * @param null|array $params
      * @param null|array $headers
-     * @param 'standard'|'preview' $apiMode
+     * @param 'preview'|'standard' $apiMode
      *
      * @throws Exception\ApiErrorException
      *
@@ -137,7 +137,8 @@ class ApiRequestor
      * @param callable $readBodyChunkCallable
      * @param null|array $params
      * @param null|array $headers
-     * @param 'standard'|'preview' $encoding
+     * @param 'preview'|'standard' $encoding
+     * @param mixed $apiMode
      *
      * @throws Exception\ApiErrorException
      */
@@ -364,7 +365,7 @@ class ApiRequestor
      * @param string $url
      * @param array $params
      * @param array $headers
-     * @param 'standard'|'preview' $apiMode
+     * @param 'preview'|'standard' $apiMode
      */
     private function _prepareRequest($method, $url, $params, $headers, $apiMode)
     {
@@ -457,7 +458,7 @@ class ApiRequestor
      * @param string $url
      * @param array $params
      * @param array $headers
-     * @param 'standard'|'preview' $apiMode
+     * @param 'preview'|'standard' $apiMode
      *
      * @throws Exception\AuthenticationException
      * @throws Exception\ApiConnectionException
@@ -497,7 +498,7 @@ class ApiRequestor
      * @param array $params
      * @param array $headers
      * @param callable $readBodyChunkCallable
-     * @param 'standard'|'preview' $apiMode
+     * @param 'preview'|'standard' $apiMode
      *
      * @throws Exception\AuthenticationException
      * @throws Exception\ApiConnectionException

@@ -198,7 +198,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param string $absUrl
      * @param string $params
      * @param bool $hasFile
-     * @param 'standard'|'preview' $apiMode
+     * @param 'preview'|'standard' $apiMode
      */
     private function constructUrlAndBody($method, $absUrl, $params, $hasFile, $apiMode)
     {
@@ -315,7 +315,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param array $headers
      * @param array $params
      * @param bool $hasFile
-     * @param 'standard'|'preview' $apiMode
+     * @param 'preview'|'standard' $apiMode
      */
     private function constructRequest($method, $absUrl, $headers, $params, $hasFile, $apiMode)
     {
@@ -334,7 +334,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param array $headers
      * @param array $params
      * @param bool $hasFile
-     * @param 'standard'|'preview' $apiMode
+     * @param 'preview'|'standard' $apiMode
      */
     public function request($method, $absUrl, $headers, $params, $hasFile, $apiMode = 'standard')
     {
@@ -351,7 +351,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param array $params
      * @param bool $hasFile
      * @param callable $readBodyChunk
-     * @param 'standard'|'preview' $apiMode
+     * @param 'preview'|'standard' $apiMode
      */
     public function requestStream($method, $absUrl, $headers, $params, $hasFile, $readBodyChunk, $apiMode = 'standard')
     {

@@ -11,7 +11,7 @@ interface ClientInterface
      * @param array $params KV pairs for parameters. Can be nested for arrays and hashes
      * @param bool $hasFile Whether or not $params references a file (via an @ prefix or
      *                         CURLFile)
-     * @param 'standard'|'preview' $apiMode
+     * @param 'preview'|'standard' $apiMode
      *
      * @throws \Stripe\Exception\ApiConnectionException
      * @throws \Stripe\Exception\UnexpectedValueException
