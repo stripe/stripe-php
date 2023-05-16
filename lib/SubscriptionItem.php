@@ -5,8 +5,8 @@
 namespace Stripe;
 
 /**
- * Subscription items allow you to create customer subscriptions with more than one
- * plan, making it easy to represent complex billing relationships.
+ * Subscription items allow you to create customer subscriptions with more than
+ * one plan, making it easy to represent complex billing relationships.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

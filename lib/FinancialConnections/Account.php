@@ -5,8 +5,7 @@
 namespace Stripe\FinancialConnections;
 
 /**
- * A Financial Connections Account represents an account that exists outside of
- * Stripe, to which you have been granted some degree of access.
+ * A Financial Connections Account represents an account that exists outside of Stripe, to which you have been granted some degree of access.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

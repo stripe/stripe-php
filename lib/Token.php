@@ -8,30 +8,25 @@ namespace Stripe;
  * Tokenization is the process Stripe uses to collect sensitive card or bank
  * account details, or personally identifiable information (PII), directly from
  * your customers in a secure manner. A token representing this information is
- * returned to your server to use. You should use our <a
- * href="https://stripe.com/docs/payments">recommended payments integrations</a> to
- * perform this process client-side. This ensures that no sensitive card data
- * touches your server, and allows your integration to operate in a PCI-compliant
- * way.
+ * returned to your server to use. You should use our
+ * <a href="https://stripe.com/docs/payments">recommended payments integrations</a> to perform this process
+ * client-side. This ensures that no sensitive card data touches your server,
+ * and allows your integration to operate in a PCI-compliant way.
  *
- * If you cannot use client-side tokenization, you can also create tokens using the
- * API with either your publishable or secret API key. Keep in mind that if your
- * integration uses this method, you are responsible for any PCI compliance that
- * may be required, and you must keep your secret API key safe. Unlike with
+ * If you cannot use client-side tokenization, you can also create tokens using
+ * the API with either your publishable or secret API key. Keep in mind that if
+ * your integration uses this method, you are responsible for any PCI compliance
+ * that may be required, and you must keep your secret API key safe. Unlike with
  * client-side tokenization, your customer's information is not sent directly to
  * Stripe, so we cannot determine how it is handled or stored.
  *
  * Tokens cannot be stored or used more than once. To store card or bank account
- * information for later use, you can create <a
- * href="https://stripe.com/docs/api#customers">Customer</a> objects or <a
- * href="https://stripe.com/docs/api#external_accounts">Custom accounts</a>. Note
- * that <a href="https://stripe.com/docs/radar">Radar</a>, our integrated solution
- * for automatic fraud protection, performs best with integrations that use
- * client-side tokenization.
+ * information for later use, you can create <a href="https://stripe.com/docs/api#customers">Customer</a>
+ * objects or <a href="https://stripe.com/docs/api#external_accounts">Custom accounts</a>. Note that
+ * <a href="https://stripe.com/docs/radar">Radar</a>, our integrated solution for automatic fraud protection,
+ * performs best with integrations that use client-side tokenization.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/payments/accept-a-payment-charges#web-create-token">Accept
- * a payment with Charges and Tokens</a>
+ * Related guide: <a href="https://stripe.com/docs/payments/accept-a-payment-charges#web-create-token">Accept a payment with Charges and Tokens</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

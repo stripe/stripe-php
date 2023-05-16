@@ -9,14 +9,10 @@ namespace Stripe;
  * properties on the account like its current requirements or if the account is
  * enabled to make live charges or receive payouts.
  *
- * For Custom accounts, the properties below are always returned. For other
- * accounts, some properties are returned until that account has started to go
- * through Connect Onboarding. Once you create an <a
- * href="https://stripe.com/docs/api/account_links">Account Link</a> for a Standard
- * or Express account, some parameters are no longer returned. These are marked as
- * <strong>Custom Only</strong> or <strong>Custom and Express</strong> below. Learn
- * about the differences <a href="https://stripe.com/docs/connect/accounts">between
- * accounts</a>.
+ * For Custom accounts, the properties below are always returned. For other accounts, some properties are returned until that
+ * account has started to go through Connect Onboarding. Once you create an <a href="https://stripe.com/docs/api/account_links">Account Link</a>
+ * for a Standard or Express account, some parameters are no longer returned. These are marked as <strong>Custom Only</strong> or <strong>Custom and Express</strong>
+ * below. Learn about the differences <a href="https://stripe.com/docs/connect/accounts">between accounts</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
