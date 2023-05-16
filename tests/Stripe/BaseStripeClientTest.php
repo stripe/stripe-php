@@ -362,13 +362,18 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         static::assertArrayNotHasKey(\CURLOPT_POST, $opts);
         static::assertArrayNotHasKey(\CURLOPT_POSTFIELDS, $opts);
         $content_type = null;
+        $stripe_version = null;
         foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
             if (\str_starts_with($header, 'Content-Type:')) {
                 $content_type = $header;
+            }
+            if (\str_starts_with($header, 'Stripe-Version:')) {
+                $stripe_version = $header;
             }
         }
         // The library sends Content-Type even with no body, so assert this
         // But it would be more correct to not send Content-Type
         static::assertStringStartsWith('Content-Type: application/json', $content_type);
+        static::assertStringStartsWith('Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW, $stripe_version);
     }
 }

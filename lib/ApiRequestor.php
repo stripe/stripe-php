@@ -137,7 +137,7 @@ class ApiRequestor
      * @param callable $readBodyChunkCallable
      * @param null|array $params
      * @param null|array $headers
-     * @param 'preview'|'standard' $encoding
+     * @param 'preview'|'standard' $apiMode
      * @param mixed $apiMode
      *
      * @throws Exception\ApiErrorException
@@ -411,7 +411,10 @@ class ApiRequestor
             $params = self::_encodeObjects($params);
         }
         $defaultHeaders = $this->_defaultHeaders($myApiKey, $clientUAInfo);
-        if (Stripe::$apiVersion) {
+
+        if ('preview' === $apiMode) {
+            $defaultHeaders['Stripe-Version'] = \Stripe\Util\ApiVersion::PREVIEW;
+        } elseif (Stripe::$apiVersion) {
             $defaultHeaders['Stripe-Version'] = Stripe::$apiVersion;
         }
 
