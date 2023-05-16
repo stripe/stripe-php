@@ -5,17 +5,11 @@
 namespace Stripe;
 
 /**
- * A payment link is a shareable URL that will take your customers to a hosted
- * payment page. A payment link can be shared and used multiple times.
+ * A payment link is a shareable URL that will take your customers to a hosted payment page. A payment link can be shared and used multiple times.
  *
- * When a customer opens a payment link it will open a new <a
- * href="https://stripe.com/docs/api/checkout/sessions">checkout session</a> to
- * render the payment page. You can use <a
- * href="https://stripe.com/docs/api/events/types#event_types-checkout.session.completed">checkout
- * session events</a> to track payments through payment links.
+ * When a customer opens a payment link it will open a new <a href="https://stripe.com/docs/api/checkout/sessions">checkout session</a> to render the payment page. You can use <a href="https://stripe.com/docs/api/events/types#event_types-checkout.session.completed">checkout session events</a> to track payments through payment links.
  *
- * Related guide: <a href="https://stripe.com/docs/payment-links">Payment Links
- * API</a>
+ * Related guide: <a href="https://stripe.com/docs/payment-links">Payment Links API</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

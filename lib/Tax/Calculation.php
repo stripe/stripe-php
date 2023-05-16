@@ -7,8 +7,7 @@ namespace Stripe\Tax;
 /**
  * A Tax Calculation allows you to calculate the tax to collect from your customer.
  *
- * Related guide: <a href="https://stripe.com/docs/tax/custom">Calculate tax in
- * your custom payment flow</a>.
+ * Related guide: <a href="https://stripe.com/docs/tax/custom">Calculate tax in your custom payment flow</a>
  *
  * @property null|string $id Unique identifier for the calculation.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

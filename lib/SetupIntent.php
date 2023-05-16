@@ -5,40 +5,28 @@
 namespace Stripe;
 
 /**
- * A SetupIntent guides you through the process of setting up and saving a
- * customer's payment credentials for future payments. For example, you could use a
- * SetupIntent to set up and save your customer's card without immediately
- * collecting a payment. Later, you can use <a
- * href="https://stripe.com/docs/api#payment_intents">PaymentIntents</a> to drive
- * the payment flow.
+ * A SetupIntent guides you through the process of setting up and saving a customer's payment credentials for future payments.
+ * For example, you could use a SetupIntent to set up and save your customer's card without immediately collecting a payment.
+ * Later, you can use <a href="https://stripe.com/docs/api#payment_intents">PaymentIntents</a> to drive the payment flow.
  *
- * Create a SetupIntent as soon as you're ready to collect your customer's payment
- * credentials. Do not maintain long-lived, unconfirmed SetupIntents as they may no
- * longer be valid. The SetupIntent then transitions through multiple <a
- * href="https://stripe.com/docs/payments/intents#intent-statuses">statuses</a> as
- * it guides you through the setup process.
+ * Create a SetupIntent as soon as you're ready to collect your customer's payment credentials.
+ * Do not maintain long-lived, unconfirmed SetupIntents as they may no longer be valid.
+ * The SetupIntent then transitions through multiple <a href="https://stripe.com/docs/payments/intents#intent-statuses">statuses</a> as it guides
+ * you through the setup process.
  *
- * Successful SetupIntents result in payment credentials that are optimized for
- * future payments. For example, cardholders in <a
- * href="/guides/strong-customer-authentication">certain regions</a> may need to be
- * run through <a
- * href="https://stripe.com/docs/strong-customer-authentication">Strong Customer
- * Authentication</a> at the time of payment method collection in order to
- * streamline later <a
- * href="https://stripe.com/docs/payments/setup-intents">off-session payments</a>.
- * If the SetupIntent is used with a <a
- * href="https://stripe.com/docs/api#setup_intent_object-customer">Customer</a>,
- * upon success, it will automatically attach the resulting payment method to that
- * Customer. We recommend using SetupIntents or <a
- * href="https://stripe.com/docs/api#payment_intent_object-setup_future_usage">setup_future_usage</a>
- * on PaymentIntents to save payment methods in order to prevent saving invalid or
- * unoptimized payment methods.
+ * Successful SetupIntents result in payment credentials that are optimized for future payments.
+ * For example, cardholders in <a href="/guides/strong-customer-authentication">certain regions</a> may need to be run through
+ * <a href="https://stripe.com/docs/strong-customer-authentication">Strong Customer Authentication</a> at the time of payment method collection
+ * in order to streamline later <a href="https://stripe.com/docs/payments/setup-intents">off-session payments</a>.
+ * If the SetupIntent is used with a <a href="https://stripe.com/docs/api#setup_intent_object-customer">Customer</a>, upon success,
+ * it will automatically attach the resulting payment method to that Customer.
+ * We recommend using SetupIntents or <a href="https://stripe.com/docs/api#payment_intent_object-setup_future_usage">setup_future_usage</a> on
+ * PaymentIntents to save payment methods in order to prevent saving invalid or unoptimized payment methods.
  *
- * By using SetupIntents, you ensure that your customers experience the minimum set
- * of required friction, even as regulations change over time.
+ * By using SetupIntents, you ensure that your customers experience the minimum set of required friction,
+ * even as regulations change over time.
  *
- * Related guide: <a href="https://stripe.com/docs/payments/setup-intents">Setup
- * Intents API</a>.
+ * Related guide: <a href="https://stripe.com/docs/payments/setup-intents">Setup Intents API</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

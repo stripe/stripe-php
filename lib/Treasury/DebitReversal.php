@@ -5,10 +5,7 @@
 namespace Stripe\Treasury;
 
 /**
- * You can reverse some <a
- * href="https://stripe.com/docs/api#received_debits">ReceivedDebits</a> depending
- * on their network and source flow. Reversing a ReceivedDebit leads to the
- * creation of a new object known as a DebitReversal.
+ * You can reverse some <a href="https://stripe.com/docs/api#received_debits">ReceivedDebits</a> depending on their network and source flow. Reversing a ReceivedDebit leads to the creation of a new object known as a DebitReversal.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

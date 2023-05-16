@@ -5,11 +5,10 @@
 namespace Stripe;
 
 /**
- * Customers with certain payments enabled have a cash balance, representing funds
- * that were paid by the customer to a merchant, but have not yet been allocated to
- * a payment. Cash Balance Transactions represent when funds are moved into or out
- * of this balance. This includes funding by the customer, allocation to payments,
- * and refunds to the customer.
+ * Customers with certain payments enabled have a cash balance, representing funds that were paid
+ * by the customer to a merchant, but have not yet been allocated to a payment. Cash Balance Transactions
+ * represent when funds are moved into or out of this balance. This includes funding by the customer, allocation
+ * to payments, and refunds to the customer.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

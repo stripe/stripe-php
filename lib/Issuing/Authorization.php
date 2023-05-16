@@ -5,14 +5,11 @@
 namespace Stripe\Issuing;
 
 /**
- * When an <a href="https://stripe.com/docs/issuing">issued card</a> is used to
- * make a purchase, an Issuing <code>Authorization</code> object is created. <a
- * href="https://stripe.com/docs/issuing/purchases/authorizations">Authorizations</a>
- * must be approved for the purchase to be completed successfully.
+ * When an <a href="https://stripe.com/docs/issuing">issued card</a> is used to make a purchase, an Issuing <code>Authorization</code>
+ * object is created. <a href="https://stripe.com/docs/issuing/purchases/authorizations">Authorizations</a> must be approved for the
+ * purchase to be completed successfully.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/issuing/purchases/authorizations">Issued Card
- * Authorizations</a>.
+ * Related guide: <a href="https://stripe.com/docs/issuing/purchases/authorizations">Issued card authorizations</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

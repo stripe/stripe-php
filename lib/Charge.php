@@ -5,13 +5,11 @@
 namespace Stripe;
 
 /**
- * To charge a credit or a debit card, you create a <code>Charge</code> object. You
- * can retrieve and refund individual charges as well as list all charges. Charges
+ * To charge a credit or a debit card, you create a <code>Charge</code> object. You can
+ * retrieve and refund individual charges as well as list all charges. Charges
  * are identified by a unique, random ID.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/payments/accept-a-payment-charges">Accept a
- * payment with the Charges API</a>.
+ * Related guide: <a href="https://stripe.com/docs/payments/accept-a-payment-charges">Accept a payment with the Charges API</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

@@ -5,12 +5,10 @@
 namespace Stripe;
 
 /**
- * You can add one or multiple tax IDs to a <a
- * href="https://stripe.com/docs/api/customers">customer</a>. A customer's tax IDs
- * are displayed on invoices and credit notes issued for the customer.
+ * You can add one or multiple tax IDs to a <a href="https://stripe.com/docs/api/customers">customer</a>.
+ * A customer's tax IDs are displayed on invoices and credit notes issued for the customer.
  *
- * Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-ids">Customer
- * Tax Identification Numbers</a>.
+ * Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-ids">Customer tax identification numbers</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

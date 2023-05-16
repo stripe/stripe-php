@@ -9,8 +9,7 @@ namespace Stripe;
  * individual top-ups, as well as list all top-ups. Top-ups are identified by a
  * unique, random ID.
  *
- * Related guide: <a href="https://stripe.com/docs/connect/top-ups">Topping Up your
- * Platform Account</a>.
+ * Related guide: <a href="https://stripe.com/docs/connect/top-ups">Topping up your platform account</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

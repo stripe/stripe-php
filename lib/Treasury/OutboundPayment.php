@@ -5,14 +5,9 @@
 namespace Stripe\Treasury;
 
 /**
- * Use OutboundPayments to send funds to another party's external bank account or
- * <a href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a>.
- * To send money to an account belonging to the same user, use an <a
- * href="https://stripe.com/docs/api#outbound_transfers">OutboundTransfer</a>.
+ * Use OutboundPayments to send funds to another party's external bank account or <a href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a>. To send money to an account belonging to the same user, use an <a href="https://stripe.com/docs/api#outbound_transfers">OutboundTransfer</a>.
  *
- * Simulate OutboundPayment state changes with the
- * <code>/v1/test_helpers/treasury/outbound_payments</code> endpoints. These
- * methods can only be called on test mode objects.
+ * Simulate OutboundPayment state changes with the <code>/v1/test_helpers/treasury/outbound_payments</code> endpoints. These methods can only be called on test mode objects.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

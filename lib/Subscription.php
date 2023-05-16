@@ -7,9 +7,7 @@ namespace Stripe;
 /**
  * Subscriptions allow you to charge a customer on a recurring basis.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/billing/subscriptions/creating">Creating
- * Subscriptions</a>.
+ * Related guide: <a href="https://stripe.com/docs/billing/subscriptions/creating">Creating subscriptions</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

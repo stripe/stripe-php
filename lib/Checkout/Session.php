@@ -5,23 +5,20 @@
 namespace Stripe\Checkout;
 
 /**
- * A Checkout Session represents your customer's session as they pay for one-time
- * purchases or subscriptions through <a
- * href="https://stripe.com/docs/payments/checkout">Checkout</a> or <a
- * href="https://stripe.com/docs/payments/payment-links">Payment Links</a>. We
- * recommend creating a new Session each time your customer attempts to pay.
+ * A Checkout Session represents your customer's session as they pay for
+ * one-time purchases or subscriptions through <a href="https://stripe.com/docs/payments/checkout">Checkout</a>
+ * or <a href="https://stripe.com/docs/payments/payment-links">Payment Links</a>. We recommend creating a
+ * new Session each time your customer attempts to pay.
  *
- * Once payment is successful, the Checkout Session will contain a reference to the
- * <a href="https://stripe.com/docs/api/customers">Customer</a>, and either the
- * successful <a
- * href="https://stripe.com/docs/api/payment_intents">PaymentIntent</a> or an
- * active <a href="https://stripe.com/docs/api/subscriptions">Subscription</a>.
+ * Once payment is successful, the Checkout Session will contain a reference
+ * to the <a href="https://stripe.com/docs/api/customers">Customer</a>, and either the successful
+ * <a href="https://stripe.com/docs/api/payment_intents">PaymentIntent</a> or an active
+ * <a href="https://stripe.com/docs/api/subscriptions">Subscription</a>.
  *
- * You can create a Checkout Session on your server and redirect to its URL to
- * begin Checkout.
+ * You can create a Checkout Session on your server and redirect to its URL
+ * to begin Checkout.
  *
- * Related guide: <a href="https://stripe.com/docs/checkout/quickstart">Checkout
- * Quickstart</a>.
+ * Related guide: <a href="https://stripe.com/docs/checkout/quickstart">Checkout quickstart</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

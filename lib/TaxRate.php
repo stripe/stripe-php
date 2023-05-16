@@ -5,15 +5,9 @@
 namespace Stripe;
 
 /**
- * Tax rates can be applied to <a
- * href="https://stripe.com/docs/billing/invoices/tax-rates">invoices</a>, <a
- * href="https://stripe.com/docs/billing/subscriptions/taxes">subscriptions</a> and
- * <a
- * href="https://stripe.com/docs/payments/checkout/set-up-a-subscription#tax-rates">Checkout
- * Sessions</a> to collect tax.
+ * Tax rates can be applied to <a href="https://stripe.com/docs/billing/invoices/tax-rates">invoices</a>, <a href="https://stripe.com/docs/billing/subscriptions/taxes">subscriptions</a> and <a href="https://stripe.com/docs/payments/checkout/set-up-a-subscription#tax-rates">Checkout Sessions</a> to collect tax.
  *
- * Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax
- * Rates</a>.
+ * Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax rates</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -40,6 +34,8 @@ class TaxRate extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const TAX_TYPE_AMUSEMENT_TAX = 'amusement_tax';
+    const TAX_TYPE_COMMUNICATIONS_TAX = 'communications_tax';
     const TAX_TYPE_GST = 'gst';
     const TAX_TYPE_HST = 'hst';
     const TAX_TYPE_IGST = 'igst';
