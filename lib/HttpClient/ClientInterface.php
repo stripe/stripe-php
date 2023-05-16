@@ -11,7 +11,7 @@ interface ClientInterface
      * @param array $params KV pairs for parameters. Can be nested for arrays and hashes
      * @param bool $hasFile Whether or not $params references a file (via an @ prefix or
      *                         CURLFile)
-     * @param 'form'|'json' $encoding
+     * @param 'standard'|'preview' $apiMode
      *
      * @throws \Stripe\Exception\ApiConnectionException
      * @throws \Stripe\Exception\UnexpectedValueException
@@ -19,5 +19,5 @@ interface ClientInterface
      * @return array an array whose first element is raw request body, second
      *    element is HTTP status code and third array of HTTP headers
      */
-    public function request($method, $absUrl, $headers, $params, $hasFile, $encoding = 'form');
+    public function request($method, $absUrl, $headers, $params, $hasFile, $apiMode = 'standard');
 }

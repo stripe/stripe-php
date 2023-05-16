@@ -69,6 +69,7 @@ require __DIR__ . '/lib/ApiResource.php';
 require __DIR__ . '/lib/SingletonApiResource.php';
 require __DIR__ . '/lib/Service/AbstractService.php';
 require __DIR__ . '/lib/Service/AbstractServiceFactory.php';
+require __DIR__ . '/lib/Preview.php';
 
 // StripeClient
 require __DIR__ . '/lib/BaseStripeClientInterface.php';

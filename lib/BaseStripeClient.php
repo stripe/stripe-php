@@ -19,6 +19,9 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     /** @var \Stripe\Util\RequestOptions */
     private $defaultOpts;
 
+    /** @var \Stripe\Preview */
+    public $preview;
+
     /**
      * Initializes a new instance of the {@link BaseStripeClient} class.
      *
@@ -64,6 +67,8 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             'stripe_account' => $config['stripe_account'],
             'stripe_version' => $config['stripe_version'],
         ]);
+
+        $this->preview = new Preview($this);
     }
 
     /**
@@ -140,7 +145,9 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * Sends a request to Stripe's API.
+     * Sends a raw request to Stripe's API. This is the lowest level method for interacting
+     * with the Stripe API. This method is useful for interacting with endpoints that are not
+     * covered yet in stripe-php.
      *
      * @param 'delete'|'get'|'post' $method the HTTP method
      * @param string $path the path of the request
@@ -154,11 +161,11 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         if ('post' !== $method && null !== $params) {
             throw new Exception\InvalidArgumentException('Error: rawRequest only supports $params on post requests. Please pass null and add your parameters to $path');
         }
-        $encoding = 'form';
+        $apiMode = 'standard';
         $headers = [];
-        if (\is_array($opts) && \array_key_exists('encoding', $opts)) {
-            $encoding = $opts['encoding'];
-            unset($opts['encoding']);
+        if (\is_array($opts) && \array_key_exists('api_mode', $opts)) {
+            $apiMode = $opts['api_mode'];
+            unset($opts['api_mode']);
         }
         if (\is_array($opts) && \array_key_exists('headers', $opts)) {
             $opts = clone $opts;
@@ -170,7 +177,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $opts->headers = \array_unique(\array_merge($opts->headers, $headers));
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new \Stripe\ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
-        list($response) = $requestor->request($method, $path, $params, $opts->headers, $encoding);
+        list($response) = $requestor->request($method, $path, $params, $opts->headers, $apiMode);
 
         return $response;
     }
@@ -346,7 +353,10 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         }
     }
 
-    /** @param string $json
+    /**
+     * Deserializes the raw JSON string returned by rawRequest into a similar class.
+     *
+     * @param string $json
      * @return \Stripe\StripeObject
      * */
     public function deserialize($json)

@@ -198,9 +198,9 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param string $absUrl
      * @param string $params
      * @param bool $hasFile
-     * @param 'form'|'json' $encoding
+     * @param 'standard'|'preview' $apiMode
      */
-    private function constructUrlAndBody($method, $absUrl, $params, $hasFile, $encoding)
+    private function constructUrlAndBody($method, $absUrl, $params, $hasFile, $apiMode)
     {
         $params = Util\Util::objectsToIds($params);
         if ('post' === $method) {
@@ -208,7 +208,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
             if ($hasFile) {
                 return [$absUrl, $params];
             }
-            if ('json' === $encoding) {
+            if ('preview' === $apiMode) {
                 return [$absUrl, \json_encode($params)];
             }
 
@@ -315,14 +315,14 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param array $headers
      * @param array $params
      * @param bool $hasFile
-     * @param 'form'|'json' $encoding
+     * @param 'standard'|'preview' $apiMode
      */
-    private function constructRequest($method, $absUrl, $headers, $params, $hasFile, $encoding)
+    private function constructRequest($method, $absUrl, $headers, $params, $hasFile, $apiMode)
     {
         $method = \strtolower($method);
 
         $opts = $this->calculateDefaultOptions($method, $absUrl, $headers, $params, $hasFile);
-        list($absUrl, $body) = $this->constructUrlAndBody($method, $absUrl, $params, $hasFile, $encoding);
+        list($absUrl, $body) = $this->constructUrlAndBody($method, $absUrl, $params, $hasFile, $apiMode);
         $opts = $this->constructCurlOptions($method, $absUrl, $headers, $body, $opts);
 
         return [$opts, $absUrl];
@@ -334,14 +334,11 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param array $headers
      * @param array $params
      * @param bool $hasFile
-     * @param 'form'|'json' $encoding
+     * @param 'standard'|'preview' $apiMode
      */
-    public function request($method, $absUrl, $headers, $params, $hasFile, $encoding = 'form')
+    public function request($method, $absUrl, $headers, $params, $hasFile, $apiMode = 'standard')
     {
-        if ('json' === $encoding && 'post' !== $method) {
-            throw new \Stripe\Exception\InvalidArgumentException('json encoding is only supported when $method = \'post\'');
-        }
-        list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile, $encoding);
+        list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile, $apiMode);
         list($rbody, $rcode, $rheaders) = $this->executeRequestWithRetries($opts, $absUrl);
 
         return [$rbody, $rcode, $rheaders];
@@ -354,14 +351,11 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param array $params
      * @param bool $hasFile
      * @param callable $readBodyChunk
-     * @param 'form'|'json' $encoding
+     * @param 'standard'|'preview' $apiMode
      */
-    public function requestStream($method, $absUrl, $headers, $params, $hasFile, $readBodyChunk, $encoding = 'form')
+    public function requestStream($method, $absUrl, $headers, $params, $hasFile, $readBodyChunk, $apiMode = 'standard')
     {
-        if ('json' === $encoding && 'post' !== $method) {
-            throw new \Stripe\Exception\InvalidArgumentException('json encoding is only supported when $method = \'post\'');
-        }
-        list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile, $encoding);
+        list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile, $apiMode);
         $opts[\CURLOPT_RETURNTRANSFER] = false;
         list($rbody, $rcode, $rheaders) = $this->executeStreamingRequestWithRetries($opts, $absUrl, $readBodyChunk);
 

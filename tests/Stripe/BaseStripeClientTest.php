@@ -272,7 +272,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         ]);
         $params = ['foo' => 'bar', 'baz' => ['qux' => false]];
         $resp = $client->rawRequest('post', '/v1/xyz', $params, [
-            'encoding' => 'json',
+            'api_mode' => 'preview',
         ]);
 
         $decoded = \json_decode($resp->body, true);
@@ -313,7 +313,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         ]);
         $params = ['foo' => 'bar', 'baz' => ['qux' => false]];
         $client->rawRequest('post', '/v1/xyz', $params, [
-            'encoding' => 'form',
+            'api_mode' => 'standard',
         ]);
     }
 
@@ -328,7 +328,49 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('Error: rawRequest only supports $params on post requests. Please pass null and add your parameters to $path');
         $client->rawRequest('get', '/v1/xyz', $params, [
-            'encoding' => 'json',
+            'api_mode' => 'preview',
         ]);
+    }
+
+    public function testPreviewGetRequest()
+    {
+        $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
+            ->onlyMethods(['executeRequestWithRetries'])
+            ->getMock()
+        ;
+        $curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{}', 200, []])
+        ;
+
+        $opts = null;
+        $curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts_) use (&$opts) {
+                $opts = $opts_;
+
+                return true;
+            }), MOCK_URL . '/v1/xyz?foo=bar')
+        ;
+
+        ApiRequestor::setHttpClient($curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_account' => 'acct_123',
+            'api_base' => MOCK_URL,
+        ]);
+        $client->preview->get('/v1/xyz?foo=bar', []);
+        static::assertArrayNotHasKey(\CURLOPT_POST, $opts);
+        static::assertArrayNotHasKey(\CURLOPT_POSTFIELDS, $opts);
+        $content_type = null;
+        foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
+            if (\str_starts_with($header, 'Content-Type:')) {
+                $content_type = $header;
+            }
+        }
+        // The library sends Content-Type even with no body, so assert this
+        // But it would be more correct to not send Content-Type
+        static::assertStringStartsWith('Content-Type: application/json', $content_type);
+
+
     }
 }

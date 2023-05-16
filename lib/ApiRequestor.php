@@ -110,21 +110,21 @@ class ApiRequestor
      * @param string     $url
      * @param null|array $params
      * @param null|array $headers
-     * @param 'form'|'json' $encoding
+     * @param 'standard'|'preview' $apiMode
      *
      * @throws Exception\ApiErrorException
      *
      * @return array tuple containing (ApiReponse, API key)
      */
-    public function request($method, $url, $params = null, $headers = null, $encoding = 'form')
+    public function request($method, $url, $params = null, $headers = null, $apiMode = 'standard')
     {
-        if ('json' === $encoding && 'post' !== $method) {
-            throw new \Stripe\Exception\InvalidArgumentException('json encoding is only supported when $method = \'post\'');
-        }
+        // if ('preview' === $apiMode && 'post' !== $method) {
+        //     throw new \Stripe\Exception\InvalidArgumentException('json encoding is only supported when $method = \'post\'');
+        // }
         $params = $params ?: [];
         $headers = $headers ?: [];
         list($rbody, $rcode, $rheaders, $myApiKey) =
-        $this->_requestRaw($method, $url, $params, $headers, $encoding);
+        $this->_requestRaw($method, $url, $params, $headers, $apiMode);
         $json = $this->_interpretResponse($rbody, $rcode, $rheaders);
         $resp = new ApiResponse($rbody, $rcode, $rheaders, $json);
 
@@ -137,19 +137,19 @@ class ApiRequestor
      * @param callable $readBodyChunkCallable
      * @param null|array $params
      * @param null|array $headers
-     * @param 'form'|'json' $encoding
+     * @param 'standard'|'preview' $encoding
      *
      * @throws Exception\ApiErrorException
      */
-    public function requestStream($method, $url, $readBodyChunkCallable, $params = null, $headers = null, $encoding = 'form')
+    public function requestStream($method, $url, $readBodyChunkCallable, $params = null, $headers = null, $apiMode = 'standard')
     {
-        if ('json' === $encoding && 'post' !== $method) {
+        if ('preview' === $apiMode && 'post' !== $method) {
             throw new \Stripe\Exception\InvalidArgumentException('json encoding is only supported when $method = \'post\'');
         }
         $params = $params ?: [];
         $headers = $headers ?: [];
         list($rbody, $rcode, $rheaders, $myApiKey) =
-        $this->_requestRawStreaming($method, $url, $params, $headers, $readBodyChunkCallable, $encoding);
+        $this->_requestRawStreaming($method, $url, $params, $headers, $readBodyChunkCallable, $apiMode);
         if ($rcode >= 300) {
             $this->_interpretResponse($rbody, $rcode, $rheaders);
         }
@@ -364,9 +364,9 @@ class ApiRequestor
      * @param string $url
      * @param array $params
      * @param array $headers
-     * @param 'form'|'json' $encoding
+     * @param 'standard'|'preview' $apiMode
      */
-    private function _prepareRequest($method, $url, $params, $headers, $encoding)
+    private function _prepareRequest($method, $url, $params, $headers, $apiMode)
     {
         $myApiKey = $this->_apiKey;
         if (!$myApiKey) {
@@ -406,7 +406,7 @@ class ApiRequestor
         }
 
         $absUrl = $this->_apiBase . $url;
-        if ('form' === $encoding) {
+        if ('standard' === $apiMode) {
             $params = self::_encodeObjects($params);
         }
         $defaultHeaders = $this->_defaultHeaders($myApiKey, $clientUAInfo);
@@ -434,12 +434,12 @@ class ApiRequestor
 
         if ($hasFile) {
             $defaultHeaders['Content-Type'] = 'multipart/form-data';
-        } elseif ('json' === $encoding) {
+        } elseif ('preview' === $apiMode) {
             $defaultHeaders['Content-Type'] = 'application/json';
-        } elseif ('form' === $encoding) {
+        } elseif ('standard' === $apiMode) {
             $defaultHeaders['Content-Type'] = 'application/x-www-form-urlencoded';
         } else {
-            throw new Exception\InvalidArgumentException('Unknown encoding: ' . $encoding);
+            throw new Exception\InvalidArgumentException('Unknown API mode: ' . $apiMode);
         }
 
         $combinedHeaders = \array_merge($defaultHeaders, $headers);
@@ -457,16 +457,16 @@ class ApiRequestor
      * @param string $url
      * @param array $params
      * @param array $headers
-     * @param 'form'|'json' $encoding
+     * @param 'standard'|'preview' $apiMode
      *
      * @throws Exception\AuthenticationException
      * @throws Exception\ApiConnectionException
      *
      * @return array
      */
-    private function _requestRaw($method, $url, $params, $headers, $encoding)
+    private function _requestRaw($method, $url, $params, $headers, $apiMode)
     {
-        list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $encoding);
+        list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $apiMode);
 
         $requestStartMs = Util\Util::currentTimeMillis();
 
@@ -476,7 +476,7 @@ class ApiRequestor
             $rawHeaders,
             $params,
             $hasFile,
-            $encoding
+            $apiMode
         );
 
         if (isset($rheaders['request-id'])
@@ -497,16 +497,16 @@ class ApiRequestor
      * @param array $params
      * @param array $headers
      * @param callable $readBodyChunkCallable
-     * @param 'form'|'json' $encoding
+     * @param 'standard'|'preview' $apiMode
      *
      * @throws Exception\AuthenticationException
      * @throws Exception\ApiConnectionException
      *
      * @return array
      */
-    private function _requestRawStreaming($method, $url, $params, $headers, $readBodyChunkCallable, $encoding)
+    private function _requestRawStreaming($method, $url, $params, $headers, $readBodyChunkCallable, $apiMode)
     {
-        list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $encoding);
+        list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $apiMode);
 
         $requestStartMs = Util\Util::currentTimeMillis();
 
