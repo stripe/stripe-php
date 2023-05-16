@@ -168,13 +168,12 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             unset($opts['api_mode']);
         }
         if (\is_array($opts) && \array_key_exists('headers', $opts)) {
-            $opts = clone $opts;
             $headers = $opts['headers'] ?: [];
             unset($opts['headers']);
         }
         $opts = $this->defaultOpts->merge($opts, true);
         // Concatenate $headers to $opts->headers, removing duplicates.
-        $opts->headers = \array_unique(\array_merge($opts->headers, $headers));
+        $opts->headers = \array_merge($opts->headers, $headers);
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new \Stripe\ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
         list($response) = $requestor->request($method, $path, $params, $opts->headers, $apiMode);
