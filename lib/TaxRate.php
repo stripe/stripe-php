@@ -40,6 +40,8 @@ class TaxRate extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const TAX_TYPE_AMUSEMENT_TAX = 'amusement_tax';
+    const TAX_TYPE_COMMUNICATIONS_TAX = 'communications_tax';
     const TAX_TYPE_GST = 'gst';
     const TAX_TYPE_HST = 'hst';
     const TAX_TYPE_IGST = 'igst';
