@@ -206,7 +206,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     public function testJsonRawRequestGetWithURLParams()
     {
         $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
-            ->onlyMethods(['executeRequestWithRetries'])
+            ->setMethods(['executeRequestWithRetries'])
             ->getMock()
         ;
         $curlClientStub->method('executeRequestWithRetries')
@@ -246,7 +246,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     public function testJsonRawRequestPost()
     {
         $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
-            ->onlyMethods(['executeRequestWithRetries'])
+            ->setMethods(['executeRequestWithRetries'])
             ->getMock()
         ;
         $curlClientStub->method('executeRequestWithRetries')
@@ -287,7 +287,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     public function testFormRawRequestPost()
     {
         $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
-            ->onlyMethods(['executeRequestWithRetries'])
+            ->setMethods(['executeRequestWithRetries'])
             ->getMock()
         ;
         $curlClientStub->method('executeRequestWithRetries')
@@ -335,7 +335,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     public function testRawRequestWithStripeContextOption()
     {
         $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
-        ->onlyMethods(['executeRequestWithRetries'])
+        ->setMethods(['executeRequestWithRetries'])
         ->getMock()
         ;
         $curlClientStub->method('executeRequestWithRetries')
@@ -367,7 +367,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     public function testPreviewGetRequest()
     {
         $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
-            ->onlyMethods(['executeRequestWithRetries'])
+            ->setMethods(['executeRequestWithRetries'])
             ->getMock()
         ;
         $curlClientStub->method('executeRequestWithRetries')
