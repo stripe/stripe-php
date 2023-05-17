@@ -335,8 +335,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     public function testRawRequestWithStripeContextOption()
     {
         $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
-        ->setMethods(['executeRequestWithRetries'])
-        ->getMock()
+            ->setMethods(['executeRequestWithRetries'])
+            ->getMock()
         ;
         $curlClientStub->method('executeRequestWithRetries')
             ->willReturn(['{}', 200, []])
@@ -355,7 +355,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         $client = new BaseStripeClient([
             'api_key' => 'sk_test_client',
             'stripe_account' => 'acct_123',
-            'api_base' => MOCK_URL
+            'api_base' => MOCK_URL,
         ]);
         $params = [];
         $client->rawRequest('post', '/v1/xyz', $params, [
