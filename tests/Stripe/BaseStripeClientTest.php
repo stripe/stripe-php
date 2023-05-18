@@ -242,7 +242,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         }
         // The library sends Content-Type even with no body, so assert this
         // But it would be more correct to not send Content-Type
-        static::assertStringStartsWith('Content-Type: application/x-www-form-urlencoded', $content_type);
+        static::assertEquals('Content-Type: application/x-www-form-urlencoded', $content_type);
     }
 
     public function testJsonRawRequestPost()
@@ -395,7 +395,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         }
         // The library sends Content-Type even with no body, so assert this
         // But it would be more correct to not send Content-Type
-        static::assertStringStartsWith('Content-Type: application/json', $content_type);
-        static::assertStringStartsWith('Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW, $stripe_version);
+        static::assertEquals('Content-Type: application/json', $content_type);
+        static::assertEquals('Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW, $stripe_version);
     }
 }
