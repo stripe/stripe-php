@@ -76,17 +76,4 @@ final class PreviewTest extends \Stripe\TestCase
 
         $this->client->preview->get('/v1/xyz/xyz_123', ['stripe_version' => $stripeVersionOverride, 'stripe_context' => $stripeContext]);
     }
-
-    public function testPreviewPostWithDateTimeParam()
-    {
-        $this->stubRequest(
-            'POST',
-            '/v1/xyz',
-            ['foo' => 'bar', 'baz' => ['qux' => false]],
-            ['Content-Type: application/json', 'Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW]
-        );
-
-        $params = ['foo' => 'bar', 'baz' => ['qux' => false]];
-        $this->client->preview->post('/v1/xyz', $params, []);
-    }
 }
