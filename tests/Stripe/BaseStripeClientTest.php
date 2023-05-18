@@ -11,6 +11,11 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     /** @var \ReflectionProperty */
     private $optsReflector;
 
+    protected function headerStartsWith($header, $name)
+    {
+        return substr($header, 0, \strlen($name)) === $name;
+    }
+
     /** @before */
     protected function setUpOptsReflector()
     {
@@ -234,7 +239,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         static::assertArrayNotHasKey(\CURLOPT_POSTFIELDS, $opts);
         $content_type = null;
         foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
-            if (\str_starts_with($header, 'Content-Type:')) {
+            if (self::headerStartsWith($header, 'Content-Type:')) {
                 $content_type = $header;
             }
         }
@@ -278,10 +283,10 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         $decoded = \json_decode($resp->body, true);
         $xyz = \Stripe\StripeObject::constructFrom($decoded);
 
-        static::assertSame('xyz', $xyz->object); /** @phpstan-ignore-line */
-        static::assertTrue($xyz->isPHPBestLanguage); /** @phpstan-ignore-line */
-        static::assertSame(2, $xyz->abc->a); /** @phpstan-ignore-line */
-        static::assertInstanceof(\Stripe\StripeObject::class, $xyz->abc); /** @phpstan-ignore-line */
+        static::assertSame('xyz', $xyz->object); // @phpstan-ignore-line
+        static::assertTrue($xyz->isPHPBestLanguage); // @phpstan-ignore-line
+        static::assertSame(2, $xyz->abc->a); // @phpstan-ignore-line
+        static::assertInstanceof(\Stripe\StripeObject::class, $xyz->abc); // @phpstan-ignore-line
     }
 
     public function testFormRawRequestPost()
@@ -396,10 +401,10 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         $content_type = null;
         $stripe_version = null;
         foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
-            if (\str_starts_with($header, 'Content-Type:')) {
+            if (self::headerStartsWith($header, 'Content-Type:')) {
                 $content_type = $header;
             }
-            if (\str_starts_with($header, 'Stripe-Version:')) {
+            if (self::headerStartsWith($header, 'Stripe-Version:')) {
                 $stripe_version = $header;
             }
         }
