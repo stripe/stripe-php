@@ -118,9 +118,6 @@ class ApiRequestor
      */
     public function request($method, $url, $params = null, $headers = null, $apiMode = 'standard')
     {
-        // if ('preview' === $apiMode && 'post' !== $method) {
-        //     throw new \Stripe\Exception\InvalidArgumentException('json encoding is only supported when $method = \'post\'');
-        // }
         $params = $params ?: [];
         $headers = $headers ?: [];
         list($rbody, $rcode, $rheaders, $myApiKey) =
@@ -144,9 +141,6 @@ class ApiRequestor
      */
     public function requestStream($method, $url, $readBodyChunkCallable, $params = null, $headers = null, $apiMode = 'standard')
     {
-        if ('preview' === $apiMode && 'post' !== $method) {
-            throw new \Stripe\Exception\InvalidArgumentException('json encoding is only supported when $method = \'post\'');
-        }
         $params = $params ?: [];
         $headers = $headers ?: [];
         list($rbody, $rcode, $rheaders, $myApiKey) =
