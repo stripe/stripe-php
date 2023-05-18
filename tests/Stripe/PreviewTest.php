@@ -31,7 +31,7 @@ final class PreviewTest extends \Stripe\TestCase
             'GET',
             '/v1/xyz?foo=bar',
             [],
-            ['Content-Type: application/json', 'Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW],
+            ['Content-Type: application/json', 'Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW]
         );
 
         $this->client->preview->get('/v1/xyz?foo=bar', []);
@@ -43,7 +43,7 @@ final class PreviewTest extends \Stripe\TestCase
             'POST',
             '/v1/xyz',
             ['foo' => 'bar', 'baz' => ['qux' => false]],
-            ['Content-Type: application/json', 'Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW],
+            ['Content-Type: application/json', 'Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW]
         );
 
         $params = ['foo' => 'bar', 'baz' => ['qux' => false]];
@@ -56,7 +56,7 @@ final class PreviewTest extends \Stripe\TestCase
             'DELETE',
             '/v1/xyz/xyz_123',
             [],
-            ['Content-Type: application/json', 'Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW],
+            ['Content-Type: application/json', 'Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW]
         );
 
         $this->client->preview->delete('/v1/xyz/xyz_123', []);
@@ -71,9 +71,22 @@ final class PreviewTest extends \Stripe\TestCase
             'GET',
             '/v1/xyz/xyz_123',
             [],
-            ['Content-Type: application/json', 'Stripe-Version: ' . $stripeVersionOverride, 'Stripe-Context: ' . $stripeContext],
+            ['Content-Type: application/json', 'Stripe-Version: ' . $stripeVersionOverride, 'Stripe-Context: ' . $stripeContext]
         );
 
         $this->client->preview->get('/v1/xyz/xyz_123', ['stripe_version' => $stripeVersionOverride, 'stripe_context' => $stripeContext]);
+    }
+
+    public function testPreviewPostWithDateTimeParam()
+    {
+        $this->stubRequest(
+            'POST',
+            '/v1/xyz',
+            ['foo' => 'bar', 'baz' => ['qux' => false]],
+            ['Content-Type: application/json', 'Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW]
+        );
+
+        $params = ['foo' => 'bar', 'baz' => ['qux' => false]];
+        $this->client->preview->post('/v1/xyz', $params, []);
     }
 }

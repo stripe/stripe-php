@@ -278,10 +278,10 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         $decoded = \json_decode($resp->body, true);
         $xyz = \Stripe\StripeObject::constructFrom($decoded);
 
-        static::assertSame('xyz', $xyz->object);
-        static::assertTrue($xyz->isPHPBestLanguage);
-        static::assertSame(2, $xyz->abc->a);
-        static::assertInstanceof(\Stripe\StripeObject::class, $xyz->abc);
+        static::assertSame('xyz', $xyz->object); /** @phpstan-ignore-line */
+        static::assertTrue($xyz->isPHPBestLanguage); /** @phpstan-ignore-line */
+        static::assertSame(2, $xyz->abc->a); /** @phpstan-ignore-line */
+        static::assertInstanceof(\Stripe\StripeObject::class, $xyz->abc); /** @phpstan-ignore-line */
     }
 
     public function testFormRawRequestPost()
