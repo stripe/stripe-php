@@ -5,7 +5,7 @@ namespace Stripe;
 class Preview
 {
     /**
-     * @var \Stripe\BaseStripeClientInterface
+     * @var \Stripe\BaseStripeClient
      */
     protected $client;
 

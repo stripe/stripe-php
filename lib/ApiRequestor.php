@@ -406,7 +406,7 @@ class ApiRequestor
         }
         $defaultHeaders = $this->_defaultHeaders($myApiKey, $clientUAInfo);
 
-        if ('preview' === $apiMode && !isSet($headers['Stripe-Version'])) {
+        if ('preview' === $apiMode && !isset($headers['Stripe-Version'])) {
             $headers['Stripe-Version'] = \Stripe\Util\ApiVersion::PREVIEW;
         } elseif (Stripe::$apiVersion) {
             $headers['Stripe-Version'] = Stripe::$apiVersion;
