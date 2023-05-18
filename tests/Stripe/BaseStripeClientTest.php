@@ -212,9 +212,11 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     {
         $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock();
+            ->getMock()
+        ;
         $curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{}', 200, []]);
+            ->willReturn(['{}', 200, []])
+        ;
 
         $opts = null;
         $curlClientStub->expects(static::once())
@@ -223,7 +225,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
                 $opts = $opts_;
 
                 return true;
-            }), MOCK_URL . '/v1/xyz?foo=bar');
+            }), MOCK_URL . '/v1/xyz?foo=bar')
+        ;
 
         ApiRequestor::setHttpClient($curlClientStub);
         $client = new BaseStripeClient([
@@ -242,16 +245,18 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         }
         // The library sends Content-Type even with no body, so assert this
         // But it would be more correct to not send Content-Type
-        static::assertEquals('Content-Type: application/x-www-form-urlencoded', $content_type);
+        static::assertSame('Content-Type: application/x-www-form-urlencoded', $content_type);
     }
 
     public function testJsonRawRequestPost()
     {
         $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock();
+            ->getMock()
+        ;
         $curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{"object": "xyz", "isPHPBestLanguage": true, "abc": {"object": "abc", "a": 2}}', 200, []]);
+            ->willReturn(['{"object": "xyz", "isPHPBestLanguage": true, "abc": {"object": "abc", "a": 2}}', 200, []])
+        ;
 
         $curlClientStub->expects(static::once())
             ->method('executeRequestWithRetries')
@@ -261,7 +266,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
                 $this->assertContains('Content-Type: application/json', $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
-            }), MOCK_URL . '/v1/xyz');
+            }), MOCK_URL . '/v1/xyz')
+        ;
 
         ApiRequestor::setHttpClient($curlClientStub);
         $client = new BaseStripeClient([
@@ -287,9 +293,11 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     {
         $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock();
+            ->getMock()
+        ;
         $curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{}', 200, []]);
+            ->willReturn(['{}', 200, []])
+        ;
 
         $curlClientStub->expects(static::once())
             ->method('executeRequestWithRetries')
@@ -299,7 +307,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
                 $this->assertContains('Content-Type: application/x-www-form-urlencoded', $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
-            }), MOCK_URL . '/v1/xyz');
+            }), MOCK_URL . '/v1/xyz')
+        ;
 
         ApiRequestor::setHttpClient($curlClientStub);
         $client = new BaseStripeClient([
@@ -332,9 +341,11 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     {
         $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock();
+            ->getMock()
+        ;
         $curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{}', 200, []]);
+            ->willReturn(['{}', 200, []])
+        ;
 
         $curlClientStub->expects(static::once())
             ->method('executeRequestWithRetries')
@@ -342,7 +353,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
                 $this->assertContains('Stripe-Context: acct_123', $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
-            }), MOCK_URL . '/v1/xyz');
+            }), MOCK_URL . '/v1/xyz')
+        ;
 
         ApiRequestor::setHttpClient($curlClientStub);
         $client = new BaseStripeClient([
@@ -361,9 +373,11 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     {
         $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock();
+            ->getMock()
+        ;
         $curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{}', 200, []]);
+            ->willReturn(['{}', 200, []])
+        ;
 
         $opts = null;
         $curlClientStub->expects(static::once())
@@ -372,7 +386,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
                 $opts = $opts_;
 
                 return true;
-            }), MOCK_URL . '/v1/xyz?foo=bar');
+            }), MOCK_URL . '/v1/xyz?foo=bar')
+        ;
 
         ApiRequestor::setHttpClient($curlClientStub);
         $client = new BaseStripeClient([
@@ -395,7 +410,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         }
         // The library sends Content-Type even with no body, so assert this
         // But it would be more correct to not send Content-Type
-        static::assertEquals('Content-Type: application/json', $content_type);
-        static::assertEquals('Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW, $stripe_version);
+        static::assertSame('Content-Type: application/json', $content_type);
+        static::assertSame('Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW, $stripe_version);
     }
 }
