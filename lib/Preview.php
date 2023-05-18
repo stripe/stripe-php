@@ -16,7 +16,7 @@ class Preview
 
     private function getDefaultOpts($opts)
     {
-        return \array_merge(['api_mode' => 'preview', 'stripe_version' => \Stripe\Util\ApiVersion::PREVIEW], $opts);
+        return \array_merge(['api_mode' => 'preview'], $opts);
     }
 
     public function get($path, $opts)
