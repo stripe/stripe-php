@@ -7,4 +7,5 @@ namespace Stripe\Util;
 class ApiVersion
 {
     const CURRENT = '2022-11-15';
+    const PREVIEW = '2023-05-15.preview-v2';
 }
