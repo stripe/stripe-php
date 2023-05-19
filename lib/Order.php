@@ -5,9 +5,9 @@
 namespace Stripe;
 
 /**
- * An Order describes a purchase being made by a customer, including the products
- * &amp; quantities being purchased, the order status, the payment information, and
- * the billing/shipping details.
+ * An Order describes a purchase being made by a customer, including the
+ * products &amp; quantities being purchased, the order status, the payment information,
+ * and the billing/shipping details.
  *
  * Related guide: <a href="https://stripe.com/docs/orders">Orders overview</a>
  *

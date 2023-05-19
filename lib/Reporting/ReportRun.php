@@ -6,15 +6,13 @@ namespace Stripe\Reporting;
 
 /**
  * The Report Run object represents an instance of a report type generated with
- * specific run parameters. Once the object is created, Stripe begins processing
- * the report. When the report has finished running, it will give you a reference
- * to a file where you can retrieve your results. For an overview, see <a
- * href="https://stripe.com/docs/reporting/statements/api">API Access to
- * Reports</a>.
+ * specific run parameters. Once the object is created, Stripe begins processing the report.
+ * When the report has finished running, it will give you a reference to a file
+ * where you can retrieve your results. For an overview, see
+ * <a href="https://stripe.com/docs/reporting/statements/api">API Access to Reports</a>.
  *
- * Note that certain report types can only be run based on your live-mode data (not
- * test-mode data), and will error when queried without a <a
- * href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.
+ * Note that certain report types can only be run based on your live-mode data (not test-mode
+ * data), and will error when queried without a <a href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

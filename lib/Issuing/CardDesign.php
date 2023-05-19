@@ -5,8 +5,7 @@
 namespace Stripe\Issuing;
 
 /**
- * A Card Design is a logical grouping of a Card Bundle, card logo, and carrier
- * text that represents a product line.
+ * A Card Design is a logical grouping of a Card Bundle, card logo, and carrier text that represents a product line.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

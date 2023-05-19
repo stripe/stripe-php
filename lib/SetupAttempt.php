@@ -5,10 +5,10 @@
 namespace Stripe;
 
 /**
- * A SetupAttempt describes one attempted confirmation of a SetupIntent, whether
- * that confirmation was successful or unsuccessful. You can use SetupAttempts to
- * inspect details of a specific attempt at setting up a payment method using a
- * SetupIntent.
+ * A SetupAttempt describes one attempted confirmation of a SetupIntent,
+ * whether that confirmation was successful or unsuccessful. You can use
+ * SetupAttempts to inspect details of a specific attempt at setting up a
+ * payment method using a SetupIntent.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

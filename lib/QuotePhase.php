@@ -5,8 +5,7 @@
 namespace Stripe;
 
 /**
- * A quote phase describes the line items, coupons, and trialing status of a
- * subscription for a predefined time period.
+ * A quote phase describes the line items, coupons, and trialing status of a subscription for a predefined time period.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

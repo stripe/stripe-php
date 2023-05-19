@@ -9,8 +9,7 @@ namespace Stripe;
  * later. You can also store multiple debit cards on a recipient in order to
  * transfer to those cards later.
  *
- * Related guide: <a href="https://stripe.com/docs/sources/cards">Card Payments
- * with Sources</a>.
+ * Related guide: <a href="https://stripe.com/docs/sources/cards">Card payments with Sources</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

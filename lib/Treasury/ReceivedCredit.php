@@ -5,10 +5,7 @@
 namespace Stripe\Treasury;
 
 /**
- * ReceivedCredits represent funds sent to a <a
- * href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> (for
- * example, via ACH or wire). These money movements are not initiated from the
- * FinancialAccount.
+ * ReceivedCredits represent funds sent to a <a href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> (for example, via ACH or wire). These money movements are not initiated from the FinancialAccount.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

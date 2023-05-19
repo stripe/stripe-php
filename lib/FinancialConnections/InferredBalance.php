@@ -5,9 +5,7 @@
 namespace Stripe\FinancialConnections;
 
 /**
- * A historical balance for the account on a particular day. It may be sourced from
- * a balance snapshot provided by a financial institution, or inferred using
- * transactions data.
+ * A historical balance for the account on a particular day. It may be sourced from a balance snapshot provided by a financial institution, or inferred using transactions data.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

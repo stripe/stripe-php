@@ -7,12 +7,11 @@ namespace Stripe;
 /**
  * A dispute occurs when a customer questions your charge with their card issuer.
  * When this happens, you're given the opportunity to respond to the dispute with
- * evidence that shows that the charge is legitimate. You can find more information
- * about the dispute process in our <a href="/docs/disputes">Disputes and Fraud</a>
- * documentation.
+ * evidence that shows that the charge is legitimate. You can find more
+ * information about the dispute process in our <a href="/docs/disputes">Disputes and
+ * Fraud</a> documentation.
  *
- * Related guide: <a href="https://stripe.com/docs/disputes">Disputes and
- * Fraud</a>.
+ * Related guide: <a href="https://stripe.com/docs/disputes">Disputes and fraud</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

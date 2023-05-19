@@ -5,8 +5,7 @@
 namespace Stripe\Terminal;
 
 /**
- * A Configurations object represents how features should be configured for
- * terminal readers.
+ * A Configurations object represents how features should be configured for terminal readers.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

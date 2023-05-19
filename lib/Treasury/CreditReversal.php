@@ -5,10 +5,7 @@
 namespace Stripe\Treasury;
 
 /**
- * You can reverse some <a
- * href="https://stripe.com/docs/api#received_credits">ReceivedCredits</a>
- * depending on their network and source flow. Reversing a ReceivedCredit leads to
- * the creation of a new object known as a CreditReversal.
+ * You can reverse some <a href="https://stripe.com/docs/api#received_credits">ReceivedCredits</a> depending on their network and source flow. Reversing a ReceivedCredit leads to the creation of a new object known as a CreditReversal.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

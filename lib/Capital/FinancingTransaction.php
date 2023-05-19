@@ -5,8 +5,7 @@
 namespace Stripe\Capital;
 
 /**
- * This is an object representing the details of a transaction on a Capital
- * financing object.
+ * This is an object representing the details of a transaction on a Capital financing object.
  *
  * @property string $id A unique identifier for the financing transaction object.
  * @property string $object The object type: financing_transaction

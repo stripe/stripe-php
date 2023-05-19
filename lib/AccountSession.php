@@ -5,16 +5,13 @@
 namespace Stripe;
 
 /**
- * An AccountSession allows a Connect platform to grant access to a connected
- * account in Connect embedded components.
+ * An AccountSession allows a Connect platform to grant access to a connected account in Connect embedded components.
  *
- * We recommend that you create an AccountSession each time you need to display an
- * embedded component to your user. Do not save AccountSessions to your database as
- * they expire relatively quickly, and cannot be used more than once.
+ * We recommend that you create an AccountSession each time you need to display an embedded component
+ * to your user. Do not save AccountSessions to your database as they expire relatively
+ * quickly, and cannot be used more than once.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/connect/get-started-connect-embedded-components">Connect
- * embedded components</a>.
+ * Related guide: <a href="https://stripe.com/docs/connect/get-started-connect-embedded-components">Connect embedded components</a>
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string $account The ID of the account the AccountSession was created for

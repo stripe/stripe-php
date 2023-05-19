@@ -5,14 +5,12 @@
 namespace Stripe\GiftCards;
 
 /**
- * A gift card transaction represents a single transaction on a referenced gift
- * card. A transaction is in one of three states, <code>confirmed</code>,
- * <code>held</code> or <code>canceled</code>. A <code>confirmed</code> transaction
- * is one that has added/deducted funds. A <code>held</code> transaction has
- * created a temporary hold on funds, which can then be cancelled or confirmed. A
- * <code>held</code> transaction can be confirmed into a <code>confirmed</code>
- * transaction, or canceled into a <code>canceled</code> transaction. A
- * <code>canceled</code> transaction has no effect on a gift card's balance.
+ * A gift card transaction represents a single transaction on a referenced gift card.
+ * A transaction is in one of three states, <code>confirmed</code>, <code>held</code> or <code>canceled</code>. A <code>confirmed</code>
+ * transaction is one that has added/deducted funds. A <code>held</code> transaction has created a
+ * temporary hold on funds, which can then be cancelled or confirmed. A <code>held</code> transaction
+ * can be confirmed into a <code>confirmed</code> transaction, or canceled into a <code>canceled</code> transaction.
+ * A <code>canceled</code> transaction has no effect on a gift card's balance.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

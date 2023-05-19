@@ -7,9 +7,7 @@ namespace Stripe\Terminal;
 /**
  * A Reader represents a physical device for accepting payment details.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/terminal/payments/connect-reader">Connecting to a
- * Reader</a>.
+ * Related guide: <a href="https://stripe.com/docs/terminal/payments/connect-reader">Connecting to a reader</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

@@ -7,8 +7,7 @@ namespace Stripe\Terminal;
 /**
  * A Location represents a grouping of readers.
  *
- * Related guide: <a href="https://stripe.com/docs/terminal/fleet/locations">Fleet
- * Management</a>.
+ * Related guide: <a href="https://stripe.com/docs/terminal/fleet/locations">Fleet management</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

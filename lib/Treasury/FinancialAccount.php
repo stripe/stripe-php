@@ -5,9 +5,8 @@
 namespace Stripe\Treasury;
 
 /**
- * Stripe Treasury provides users with a container for money called a
- * FinancialAccount that is separate from their Payments balance. FinancialAccounts
- * serve as the source and destination of Treasury’s money movement APIs.
+ * Stripe Treasury provides users with a container for money called a FinancialAccount that is separate from their Payments balance.
+ * FinancialAccounts serve as the source and destination of Treasury’s money movement APIs.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

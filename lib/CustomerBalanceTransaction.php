@@ -5,17 +5,12 @@
 namespace Stripe;
 
 /**
- * Each customer has a <a
- * href="https://stripe.com/docs/api/customers/object#customer_object-balance"><code>balance</code></a>
- * value, which denotes a debit or credit that's automatically applied to their
- * next invoice upon finalization. You may modify the value directly by using the
- * <a href="https://stripe.com/docs/api/customers/update">update customer API</a>,
- * or by creating a Customer Balance Transaction, which increments or decrements
- * the customer's <code>balance</code> by the specified <code>amount</code>.
+ * Each customer has a <a href="https://stripe.com/docs/api/customers/object#customer_object-balance">Balance</a> value,
+ * which denotes a debit or credit that's automatically applied to their next invoice upon finalization.
+ * You may modify the value directly by using the <a href="https://stripe.com/docs/api/customers/update">update customer API</a>,
+ * or by creating a Customer Balance Transaction, which increments or decrements the customer's <code>balance</code> by the specified <code>amount</code>.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/billing/customer/balance">Customer Balance</a> to
- * learn more.
+ * Related guide: <a href="https://stripe.com/docs/billing/customer/balance">Customer balance</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

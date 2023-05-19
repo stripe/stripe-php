@@ -5,9 +5,7 @@
 namespace Stripe\Treasury;
 
 /**
- * ReceivedDebits represent funds pulled from a <a
- * href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a>.
- * These are not initiated from the FinancialAccount.
+ * ReceivedDebits represent funds pulled from a <a href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a>. These are not initiated from the FinancialAccount.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

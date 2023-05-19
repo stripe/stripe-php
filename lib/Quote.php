@@ -5,9 +5,8 @@
 namespace Stripe;
 
 /**
- * A Quote is a way to model prices that you'd like to provide to a customer. Once
- * accepted, it will automatically create an invoice, subscription or subscription
- * schedule.
+ * A Quote is a way to model prices that you'd like to provide to a customer.
+ * Once accepted, it will automatically create an invoice, subscription or subscription schedule.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

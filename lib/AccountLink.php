@@ -5,13 +5,10 @@
 namespace Stripe;
 
 /**
- * Account Links are the means by which a Connect platform grants a connected
- * account permission to access Stripe-hosted applications, such as Connect
- * Onboarding.
+ * Account Links are the means by which a Connect platform grants a connected account permission to access
+ * Stripe-hosted applications, such as Connect Onboarding.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/connect/connect-onboarding">Connect
- * Onboarding</a>.
+ * Related guide: <a href="https://stripe.com/docs/connect/connect-onboarding">Connect Onboarding</a>
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
