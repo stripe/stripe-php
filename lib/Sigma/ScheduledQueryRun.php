@@ -5,11 +5,10 @@
 namespace Stripe\Sigma;
 
 /**
- * If you have <a href="https://stripe.com/docs/sigma/scheduled-queries">scheduled
- * a Sigma query</a>, you'll receive a
- * <code>sigma.scheduled_query_run.created</code> webhook each time the query runs.
- * The webhook contains a <code>ScheduledQueryRun</code> object, which you can use
- * to retrieve the query results.
+ * If you have <a href="https://stripe.com/docs/sigma/scheduled-queries">scheduled a Sigma query</a>, you'll
+ * receive a <code>sigma.scheduled_query_run.created</code> webhook each time the query
+ * runs. The webhook contains a <code>ScheduledQueryRun</code> object, which you can use to
+ * retrieve the query results.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

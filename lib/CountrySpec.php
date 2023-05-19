@@ -9,8 +9,8 @@ namespace Stripe;
  * created. These requirements can differ depending on the account's country. The
  * Country Specs API makes these rules available to your integration.
  *
- * You can also view the information from this API call as <a
- * href="/docs/connect/required-verification-information">an online guide</a>.
+ * You can also view the information from this API call as <a href="/docs/connect/required-verification-information">an online
+ * guide</a>.
  *
  * @property string $id Unique identifier for the object. Represented as the ISO country code for this country.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

@@ -5,8 +5,7 @@
 namespace Stripe;
 
 /**
- * A Mandate is a record of the permission a customer has given you to debit their
- * payment method.
+ * A Mandate is a record of the permission a customer has given you to debit their payment method.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

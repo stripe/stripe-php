@@ -5,8 +5,8 @@
 namespace Stripe\Capital;
 
 /**
- * This is an object representing an offer of financing from Stripe Capital to a
- * Connect subaccount.
+ * This is an object representing an offer of financing from
+ * Stripe Capital to a Connect subaccount.
  *
  * @property string $id A unique identifier for the financing object.
  * @property string $object The object type: financing_offer.

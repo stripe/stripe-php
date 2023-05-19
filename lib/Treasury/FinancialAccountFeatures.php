@@ -5,9 +5,8 @@
 namespace Stripe\Treasury;
 
 /**
- * Encodes whether a FinancialAccount has access to a particular Feature, with a
- * <code>status</code> enum and associated <code>status_details</code>. Stripe or
- * the platform can control Features via the requested field.
+ * Encodes whether a FinancialAccount has access to a particular Feature, with a <code>status</code> enum and associated <code>status_details</code>.
+ * Stripe or the platform can control Features via the requested field.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|\Stripe\StripeObject $card_issuing Toggle settings for enabling/disabling a feature

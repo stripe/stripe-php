@@ -5,8 +5,7 @@
 namespace Stripe\FinancialConnections;
 
 /**
- * A Financial Connections Account represents an account that exists outside of
- * Stripe, to which you have been granted some degree of access.
+ * A Financial Connections Account represents an account that exists outside of Stripe, to which you have been granted some degree of access.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -87,6 +86,40 @@ class Account extends \Stripe\ApiResource
         $obj->setLastResponse($response);
 
         return $obj;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\FinancialConnections\Account the subscribed account
+     */
+    public function subscribe($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/subscribe';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\FinancialConnections\Account the unsubscribed account
+     */
+    public function unsubscribe($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/unsubscribe';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
     }
 
     /**

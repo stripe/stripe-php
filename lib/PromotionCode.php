@@ -5,9 +5,8 @@
 namespace Stripe;
 
 /**
- * A Promotion Code represents a customer-redeemable code for a <a
- * href="https://stripe.com/docs/api#coupons">coupon</a>. It can be used to create
- * multiple codes for a single coupon.
+ * A Promotion Code represents a customer-redeemable code for a <a href="https://stripe.com/docs/api#coupons">coupon</a>. It can be used to
+ * create multiple codes for a single coupon.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

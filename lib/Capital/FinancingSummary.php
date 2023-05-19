@@ -5,9 +5,8 @@
 namespace Stripe\Capital;
 
 /**
- * A financing object describes an account's current financing state. Used by
- * Connect platforms to read the state of Capital offered to their connected
- * accounts.
+ * A financing object describes an account's current financing state. Used by Connect
+ * platforms to read the state of Capital offered to their connected accounts.
  *
  * @property string $object The object type: financing_summary
  * @property null|\Stripe\StripeObject $details Additional information about the financing summary. Describes currency, advance amount, fee amount, withhold rate, remaining amount, paid amount, current repayment interval, repayment start date, and advance payout date.

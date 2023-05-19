@@ -5,9 +5,9 @@
 namespace Stripe;
 
 /**
- * To share the contents of a <code>File</code> object with non-Stripe users, you
- * can create a <code>FileLink</code>. <code>FileLink</code>s contain a URL that
- * can be used to retrieve the contents of the file without authentication.
+ * To share the contents of a <code>File</code> object with non-Stripe users, you can
+ * create a <code>FileLink</code>. <code>FileLink</code>s contain a URL that can be used to
+ * retrieve the contents of the file without authentication.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

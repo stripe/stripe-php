@@ -5,8 +5,7 @@
 namespace Stripe;
 
 /**
- * A quote line defines a set of changes that will be applied upon quote
- * acceptance.
+ * A quote line defines a set of changes that will be applied upon quote acceptance.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -15,7 +14,7 @@ namespace Stripe;
  * @property null|string $billing_cycle_anchor For a point-in-time operation, this attribute lets you set or update whether the subscription's billing cycle anchor is reset at the <code>starts_at</code> timestamp.
  * @property null|\Stripe\StripeObject $ends_at Details to identify the end of the time range modified by the proposed change. If not supplied, the quote line is considered a point-in-time operation that only affects the exact timestamp at <code>starts_at</code>, and a restricted set of attributes is supported on the quote line.
  * @property null|string $proration_behavior Changes to how Stripe handles prorations during the quote line's time span. Affects if and how prorations are created when a future phase starts.
- * @property null|string $set_schedule_end Timestsamp helper to end the underlying schedule early, based on the acompanying line's start or end date.
+ * @property null|string $set_schedule_end Timestamp helper to end the underlying schedule early, based on the acompanying line's start or end date.
  * @property null|\Stripe\StripeObject $starts_at Details to identify the earliest timestamp where the proposed change should take effect.
  * @property null|\Stripe\StripeObject $trial_settings Settings related to subscription trials.
  */

@@ -5,9 +5,7 @@
 namespace Stripe\Issuing;
 
 /**
- * A Card Bundle represents the bundle of physical items - card stock, carrier
- * letter, and envelope - that is shipped to a cardholder when you create a
- * physical card.
+ * A Card Bundle represents the bundle of physical items - card stock, carrier letter, and envelope - that is shipped to a cardholder when you create a physical card.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

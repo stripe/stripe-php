@@ -5,22 +5,20 @@
 namespace Stripe\BillingPortal;
 
 /**
- * The Billing customer portal is a Stripe-hosted UI for subscription and billing
- * management.
+ * The Billing customer portal is a Stripe-hosted UI for subscription and
+ * billing management.
  *
- * A portal configuration describes the functionality and features that you want to
- * provide to your customers through the portal.
+ * A portal configuration describes the functionality and features that you
+ * want to provide to your customers through the portal.
  *
- * A portal session describes the instantiation of the customer portal for a
- * particular customer. By visiting the session's URL, the customer can manage
- * their subscriptions and billing details. For security reasons, sessions are
- * short-lived and will expire if the customer does not visit the URL. Create
- * sessions on-demand when customers intend to manage their subscriptions and
- * billing details.
+ * A portal session describes the instantiation of the customer portal for
+ * a particular customer. By visiting the session's URL, the customer
+ * can manage their subscriptions and billing details. For security reasons,
+ * sessions are short-lived and will expire if the customer does not visit the URL.
+ * Create sessions on-demand when customers intend to manage their subscriptions
+ * and billing details.
  *
- * Learn more in the <a
- * href="https://stripe.com/docs/billing/subscriptions/integrating-customer-portal">integration
- * guide</a>.
+ * Learn more in the <a href="https://stripe.com/docs/billing/subscriptions/integrating-customer-portal">integration guide</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

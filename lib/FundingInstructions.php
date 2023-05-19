@@ -5,14 +5,11 @@
 namespace Stripe;
 
 /**
- * Each customer has a <a
- * href="https://stripe.com/docs/api/customers/object#customer_object-balance"><code>balance</code></a>
- * that is automatically applied to future invoices and payments using the
- * <code>customer_balance</code> payment method. Customers can fund this balance by
- * initiating a bank transfer to any account in the
- * <code>financial_addresses</code> field. Related guide: <a
- * href="https://stripe.com/docs/payments/customer-balance/funding-instructions">Customer
- * Balance - Funding Instructions</a> to learn more.
+ * Each customer has a <a href="https://stripe.com/docs/api/customers/object#customer_object-balance"><code>balance</code></a> that is
+ * automatically applied to future invoices and payments using the <code>customer_balance</code> payment method.
+ * Customers can fund this balance by initiating a bank transfer to any account in the
+ * <code>financial_addresses</code> field.
+ * Related guide: <a href="https://stripe.com/docs/payments/customer-balance/funding-instructions">Customer balance funding instructions</a>.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property \Stripe\StripeObject $bank_transfer

@@ -5,13 +5,10 @@
 namespace Stripe;
 
 /**
- * Balance transactions represent funds moving through your Stripe account. They're
- * created for every type of transaction that comes into or flows out of your
- * Stripe account balance.
+ * Balance transactions represent funds moving through your Stripe account.
+ * They're created for every type of transaction that comes into or flows out of your Stripe account balance.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/reports/balance-transaction-types">Balance
- * Transaction Types</a>.
+ * Related guide: <a href="https://stripe.com/docs/reports/balance-transaction-types">Balance transaction types</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
