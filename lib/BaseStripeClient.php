@@ -164,6 +164,42 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
+     * Sends a raw request to Stripe's API. This is the lowest level method for interacting
+     * with the Stripe API. This method is useful for interacting with endpoints that are not
+     * covered yet in stripe-php.
+     *
+     * @param 'delete'|'get'|'post' $method the HTTP method
+     * @param string $path the path of the request
+     * @param array $params the parameters of the request
+     * @param array $opts the special modifiers of the request
+     *
+     * @return \Stripe\ApiResponse
+     */
+    public function rawRequest($method, $path, $params, $opts)
+    {
+        if ('post' !== $method && null !== $params) {
+            throw new Exception\InvalidArgumentException('Error: rawRequest only supports $params on post requests. Please pass null and add your parameters to $path');
+        }
+        $headers = [];
+        if (\is_array($opts) && \array_key_exists('headers', $opts)) {
+            $headers = $opts['headers'] ?: [];
+            unset($opts['headers']);
+        }
+        if (\is_array($opts) && \array_key_exists('stripe_context', $opts)) {
+            $headers['Stripe-Context'] = $opts['stripe_context'];
+            unset($opts['stripe_context']);
+        }
+        $opts = $this->defaultOpts->merge($opts, true);
+        // Concatenate $headers to $opts->headers, removing duplicates.
+        $opts->headers = \array_merge($opts->headers, $headers);
+        $baseUrl = $opts->apiBase ?: $this->getApiBase();
+        $requestor = new \Stripe\ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
+        list($response) = $requestor->request($method, $path, $params, $opts->headers, ['raw_request']);
+
+        return $response;
+    }
+
+    /**
      * Sends a request to Stripe's API, passing chunks of the streamed response
      * into a user-provided $readBodyChunkCallable callback.
      *
@@ -326,5 +362,17 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
 
             throw new \Stripe\Exception\InvalidArgumentException('Found unknown key(s) in configuration array: ' . $invalidKeys);
         }
+    }
+
+    /**
+     * Deserializes the raw JSON string returned by rawRequest into a similar class.
+     *
+     * @param string $json
+     *
+     * @return \Stripe\StripeObject
+     * */
+    public function deserialize($json)
+    {
+        return \Stripe\Util\Util::convertToStripeObject(\json_decode($json, true), []);
     }
 }

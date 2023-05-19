@@ -366,6 +366,12 @@ class ApiRequestor
         ];
     }
 
+    /**
+     * @param 'delete'|'get'|'post' $method
+     * @param string $url
+     * @param array $params
+     * @param array $headers
+     */
     private function _prepareRequest($method, $url, $params, $headers)
     {
         $myApiKey = $this->_apiKey;
