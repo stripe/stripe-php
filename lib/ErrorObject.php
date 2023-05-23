@@ -41,10 +41,6 @@ class ErrorObject extends StripeObject
      * Possible string representations of an error's code.
      *
      * @see https://stripe.com/docs/error-codes
-     *
-     * @param mixed $values
-     * @param mixed $opts
-     * @param mixed $partial
      */
     // The beginning of the section generated from our OpenAPI spec
     const CODE_ACCOUNT_CLOSED = 'account_closed';
