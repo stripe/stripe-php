@@ -4057,4 +4057,29 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\LineItem::class, $result->data[0]);
     }
+
+    public function testCreateCalculation()
+    {
+        $this->expectsRequest('post', '/v1/tax/calculations');
+        $result = $this->client->tax->calculations->create([
+            'currency' => 'usd',
+            'line_items' => [
+                [
+                    'amount' => 1000,
+                    'reference' => 'L1',
+                ],
+            ],
+            'customer_details' => [
+                'address' => [
+                    'line1' => '354 Oyster Point Blvd',
+                    'city' => 'South San Francisco',
+                    'state' => 'CA',
+                    'postal_code' => '94080',
+                    'country' => 'US',
+                ],
+                'address_source' => 'shipping',
+            ],
+        ]);
+        static::assertInstanceOf(\Stripe\Tax\Calculation::class, $result);
+    }
 }
