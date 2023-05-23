@@ -52,6 +52,7 @@ namespace Stripe;
  * @property string $type The type of the PaymentMethod. An additional hash is included on the PaymentMethod with a name matching this value. It contains additional information specific to the PaymentMethod type.
  * @property null|\Stripe\StripeObject $us_bank_account
  * @property null|\Stripe\StripeObject $wechat_pay
+ * @property null|\Stripe\StripeObject $zip
  */
 class PaymentMethod extends ApiResource
 {
