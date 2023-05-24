@@ -151,12 +151,12 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      *
      * @param 'delete'|'get'|'post' $method the HTTP method
      * @param string $path the path of the request
-     * @param array $params the parameters of the request
+     * @param null|array $params the parameters of the request
      * @param array $opts the special modifiers of the request
      *
      * @return \Stripe\ApiResponse
      */
-    public function rawRequest($method, $path, $params, $opts)
+    public function rawRequest($method, $path, $params = null, $opts = [])
     {
         if ('post' !== $method && null !== $params) {
             throw new Exception\InvalidArgumentException('Error: rawRequest only supports $params on post requests. Please pass null and add your parameters to $path');
