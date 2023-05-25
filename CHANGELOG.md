@@ -1,5 +1,10 @@
 # Changelog
 
+## 10.15.0-beta.1 - 2023-05-25
+* [#1500](https://github.com/stripe/stripe-php/pull/1500) Update generated code for beta
+* [#1505](https://github.com/stripe/stripe-php/pull/1505) Handle developer message in preview error responses
+* [#1504](https://github.com/stripe/stripe-php/pull/1504) Add default values for preview and raw_request parameters
+
 ## 10.14.0-beta.2 - 2023-05-19
 * [#1498](https://github.com/stripe/stripe-php/pull/1498) Update generated code for beta
   * Add support for `subscribe` and `unsubscribe` methods on resource `FinancialConnections.Account`
