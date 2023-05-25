@@ -1,5 +1,15 @@
 # Changelog
 
+## 10.14.0 - 2023-05-25
+* [#1503](https://github.com/stripe/stripe-php/pull/1503) Update generated code
+  * Add support for `zip` on `PaymentMethod`
+  * Add support for new value `zip` on enum `PaymentMethod.type`
+* [#1502](https://github.com/stripe/stripe-php/pull/1502) Generate error codes
+* [#1501](https://github.com/stripe/stripe-php/pull/1501) Update generated code
+
+* [#1499](https://github.com/stripe/stripe-php/pull/1499) Update generated code
+  * Add support for new values `amusement_tax` and `communications_tax` on enum `TaxRate.tax_type`
+
 ## 10.13.0 - 2023-05-11
 * [#1490](https://github.com/stripe/stripe-php/pull/1490) Update generated code
   * Add support for `paypal` on `PaymentMethod`
