@@ -23,14 +23,15 @@ class ChargeService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Capture the payment of an existing, uncaptured, charge. This is the second half
-     * of the two-step payment flow, where first you <a href="#create_charge">created a
-     * charge</a> with the capture option set to false.
+     * Capture the payment of an existing, uncaptured charge that was created with the
+     * <code>capture</code> option set to false.
      *
      * Uncaptured payments expire a set number of days after they are created (<a
-     * href="/docs/charges/placing-a-hold">7 by default</a>). If they are not captured
-     * by that point in time, they will be marked as refunded and will no longer be
-     * capturable.
+     * href="/docs/charges/placing-a-hold">7 by default</a>), after which they are
+     * marked as refunded and capture attempts will fail.
+     *
+     * Don’t use this method to capture a PaymentIntent-initiated charge. Use <a
+     * href="/docs/api/payment_intents/capture">Capture a PaymentIntent</a>.
      *
      * @param string $id
      * @param null|array $params
@@ -46,11 +47,10 @@ class ChargeService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * To charge a credit card or other payment source, you create a
-     * <code>Charge</code> object. If your API key is in test mode, the supplied
-     * payment source (e.g., card) won’t actually be charged, although everything else
-     * will occur as if in live mode. (Stripe assumes that the charge would have
-     * completed successfully).
+     * Use the <a href="/docs/api/payment_intents">Payment Intents API</a> to initiate
+     * a new payment instead of using this method. Confirmation of the PaymentIntent
+     * creates the <code>Charge</code> object used to request payment, so this method
+     * is limited to legacy integrations.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
