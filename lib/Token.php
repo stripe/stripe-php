@@ -26,8 +26,6 @@ namespace Stripe;
  * <a href="https://stripe.com/docs/radar">Radar</a>, our integrated solution for automatic fraud protection,
  * performs best with integrations that use client-side tokenization.
  *
- * Related guide: <a href="https://stripe.com/docs/payments/accept-a-payment-charges#web-create-token">Accept a payment with Charges and Tokens</a>
- *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|\Stripe\BankAccount $bank_account <p>These bank accounts are payment methods on <code>Customer</code> objects.</p><p>On the other hand <a href="https://stripe.com/docs/api#external_accounts">External Accounts</a> are transfer destinations on <code>Account</code> objects for <a href="https://stripe.com/docs/connect/custom-accounts">Custom accounts</a>. They can be bank accounts or debit cards as well, and are documented in the links above.</p><p>Related guide: <a href="https://stripe.com/docs/payments/bank-debits-transfers">Bank debits and transfers</a></p>
