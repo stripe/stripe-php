@@ -503,6 +503,33 @@ final class ApiRequestorTest extends \Stripe\TestCase
         }
     }
 
+    public function testHandlesErrorWithDeveloperMessage()
+    {
+        $this->stubRequest(
+            'POST',
+            '/v1/charges',
+            [],
+            null,
+            false,
+            [
+                'error' => [
+                    'developer_message' => 'Unacceptable',
+                ],
+            ],
+            400
+        );
+
+        try {
+            Charge::create();
+            static::fail('Did not raise error');
+        } catch (Exception\InvalidRequestException $e) {
+            static::assertSame(400, $e->getHttpStatus());
+            static::assertSame('Unacceptable', $e->getMessage());
+        } catch (\Exception $e) {
+            static::fail('Unexpected exception: ' . \get_class($e));
+        }
+    }
+
     public function testHeaderStripeVersionGlobal()
     {
         Stripe::setApiVersion('2222-22-22');

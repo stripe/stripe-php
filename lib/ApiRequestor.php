@@ -194,7 +194,7 @@ class ApiRequestor
      */
     private static function _specificAPIError($rbody, $rcode, $rheaders, $resp, $errorData)
     {
-        $msg = isset($errorData['message']) ? $errorData['message'] : null;
+        $msg = isset($errorData['message']) ? $errorData['message'] : (isset($errorData['developer_message']) ? $errorData['developer_message'] : null);
         $param = isset($errorData['param']) ? $errorData['param'] : null;
         $code = isset($errorData['code']) ? $errorData['code'] : null;
         $type = isset($errorData['type']) ? $errorData['type'] : null;
