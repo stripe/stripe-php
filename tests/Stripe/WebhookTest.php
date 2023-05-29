@@ -79,7 +79,7 @@ final class WebhookTest extends \Stripe\TestCase
         $this->expectException(\Stripe\Exception\SignatureVerificationException::class);
         $this->expectExceptionMessage('No signatures found matching the expected signature for payload');
 
-        $sigHeader = $this->generateHeader(['signature' => 'bad_signature']);
+        $sigHeader = $this->generateHeader(['signature' => \hash('sha256', 'bad_signature')]);
         WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET);
     }
 
@@ -109,13 +109,13 @@ final class WebhookTest extends \Stripe\TestCase
 
     public function testHeaderContainsValidSignature()
     {
-        $sigHeader = $this->generateHeader() . ',v1=bad_signature';
+        $sigHeader = $this->generateHeader() . ',v1=' . \hash('sha256', 'bad_signature');
         static::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10));
     }
 
     public function testTimestampOffButNoTolerance()
     {
-        $sigHeader = $this->generateHeader(['timestamp' => 12345]);
+        $sigHeader = $this->generateHeader(['timestamp' => 1023456789]);
         static::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET));
     }
 }

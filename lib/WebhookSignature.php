@@ -26,7 +26,7 @@ abstract class WebhookSignature
     public static function verifyHeader($payload, $header, $secret, $tolerance = null)
     {
         // Extract timestamp and validate header
-        if (1 !== \preg_match('/^t=([0-9]+)(?:,v[0-9]=[0-9a-z_]+)+$/', $header, $matches)) {
+        if (1 !== \preg_match('/^t=([1-9][0-9]{9})(?:,v[0-9]=[0-9a-z]{64})+$/', $header, $matches)) {
             throw Exception\SignatureVerificationException::factory(
                 'Unable to extract timestamp and signatures from header',
                 $payload,
@@ -46,7 +46,7 @@ abstract class WebhookSignature
         }
 
         // Extracts all signatures for the expected scheme
-        if (!\preg_match_all('/(?:' . self::EXPECTED_SCHEME . '=([0-9a-z_]+))+/', $header, $matches)) {
+        if (!\preg_match_all('/(?:' . self::EXPECTED_SCHEME . '=([0-9a-z]{64}))+/', $header, $matches)) {
             throw Exception\SignatureVerificationException::factory(
                 'No signatures found with expected scheme',
                 $payload,
