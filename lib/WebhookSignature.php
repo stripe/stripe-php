@@ -16,8 +16,7 @@ abstract class WebhookSignature
      *  Stripe
      * @param string $secret secret used to generate the signature
      * @param int $tolerance maximum difference allowed between the header's
-     *  timestamp and the current time in seconds, requires a value > 0 to
-     *  validate it against the current time
+     *  timestamp and the current time
      *
      * @throws Exception\SignatureVerificationException if the verification fails
      *
@@ -25,28 +24,17 @@ abstract class WebhookSignature
      */
     public static function verifyHeader($payload, $header, $secret, $tolerance = null)
     {
-        // Extract timestamp and validate header
-        if (1 !== \preg_match('/^t=([1-9][0-9]{9})(?:,v[0-9]=[0-9a-z]{64})+$/', $header, $matches)) {
+        // Extract timestamp and signatures from header
+        $timestamp = self::getTimestamp($header);
+        $signatures = self::getSignatures($header, self::EXPECTED_SCHEME);
+        if (-1 === $timestamp) {
             throw Exception\SignatureVerificationException::factory(
                 'Unable to extract timestamp and signatures from header',
                 $payload,
                 $header
             );
         }
-
-        $timestamp = $matches[1];
-
-        // Check if timestamp is within tolerance
-        if (($tolerance > 0) && (\abs(\time() - $timestamp) > $tolerance)) {
-            throw Exception\SignatureVerificationException::factory(
-                'Timestamp outside the tolerance zone',
-                $payload,
-                $header
-            );
-        }
-
-        // Extracts all signatures for the expected scheme
-        if (!\preg_match_all('/(?:' . self::EXPECTED_SCHEME . '=([0-9a-z]{64}))+/', $header, $matches)) {
+        if (empty($signatures)) {
             throw Exception\SignatureVerificationException::factory(
                 'No signatures found with expected scheme',
                 $payload,
@@ -58,18 +46,81 @@ abstract class WebhookSignature
         // header
         $signedPayload = "{$timestamp}.{$payload}";
         $expectedSignature = self::computeSignature($signedPayload, $secret);
-
-        foreach ($matches[1] as $signature) {
+        $signatureFound = false;
+        foreach ($signatures as $signature) {
             if (Util\Util::secureCompare($expectedSignature, $signature)) {
-                return true;
+                $signatureFound = true;
+
+                break;
+            }
+        }
+        if (!$signatureFound) {
+            throw Exception\SignatureVerificationException::factory(
+                'No signatures found matching the expected signature for payload',
+                $payload,
+                $header
+            );
+        }
+
+        // Check if timestamp is within tolerance
+        if (($tolerance > 0) && (\abs(\time() - $timestamp) > $tolerance)) {
+            throw Exception\SignatureVerificationException::factory(
+                'Timestamp outside the tolerance zone',
+                $payload,
+                $header
+            );
+        }
+
+        return true;
+    }
+
+    /**
+     * Extracts the timestamp in a signature header.
+     *
+     * @param string $header the signature header
+     *
+     * @return int the timestamp contained in the header, or -1 if no valid
+     *  timestamp is found
+     */
+    private static function getTimestamp($header)
+    {
+        $items = \explode(',', $header);
+
+        foreach ($items as $item) {
+            $itemParts = \explode('=', $item, 2);
+            if ('t' === $itemParts[0]) {
+                if (!\is_numeric($itemParts[1])) {
+                    return -1;
+                }
+
+                return (int) ($itemParts[1]);
             }
         }
 
-        throw Exception\SignatureVerificationException::factory(
-            'No signatures found matching the expected signature for payload',
-            $payload,
-            $header
-        );
+        return -1;
+    }
+
+    /**
+     * Extracts the signatures matching a given scheme in a signature header.
+     *
+     * @param string $header the signature header
+     * @param string $scheme the signature scheme to look for
+     *
+     * @return array the list of signatures matching the provided scheme
+     */
+    private static function getSignatures($header, $scheme)
+    {
+        $signatures = [];
+        $items = \explode(',', $header);
+
+        foreach ($items as $item) {
+            $itemParts = \explode('=', $item, 2);
+            if (\trim($itemParts[0]) === $scheme) {
+                $signatures[] = $itemParts[1];
+            }
+        }
+
+        return $signatures;
     }
 
     /**
