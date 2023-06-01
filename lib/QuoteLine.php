@@ -14,6 +14,7 @@ namespace Stripe;
  * @property null|string $billing_cycle_anchor For a point-in-time operation, this attribute lets you set or update whether the subscription's billing cycle anchor is reset at the <code>starts_at</code> timestamp.
  * @property null|\Stripe\StripeObject $ends_at Details to identify the end of the time range modified by the proposed change. If not supplied, the quote line is considered a point-in-time operation that only affects the exact timestamp at <code>starts_at</code>, and a restricted set of attributes is supported on the quote line.
  * @property null|string $proration_behavior Changes to how Stripe handles prorations during the quote line's time span. Affects if and how prorations are created when a future phase starts.
+ * @property null|\Stripe\StripeObject $set_pause_collection Details to modify the pause_collection behavior of the subscription schedule.
  * @property null|string $set_schedule_end Timestamp helper to end the underlying schedule early, based on the acompanying line's start or end date.
  * @property null|\Stripe\StripeObject $starts_at Details to identify the earliest timestamp where the proposed change should take effect.
  * @property null|\Stripe\StripeObject $trial_settings Settings related to subscription trials.
