@@ -112,6 +112,8 @@ class Event extends ApiResource
     const CUSTOMER_SOURCE_DELETED = 'customer.source.deleted';
     const CUSTOMER_SOURCE_EXPIRING = 'customer.source.expiring';
     const CUSTOMER_SOURCE_UPDATED = 'customer.source.updated';
+    const CUSTOMER_SUBSCRIPTION_COLLECTION_PAUSED = 'customer.subscription.collection_paused';
+    const CUSTOMER_SUBSCRIPTION_COLLECTION_RESUMED = 'customer.subscription.collection_resumed';
     const CUSTOMER_SUBSCRIPTION_CREATED = 'customer.subscription.created';
     const CUSTOMER_SUBSCRIPTION_DELETED = 'customer.subscription.deleted';
     const CUSTOMER_SUBSCRIPTION_PAUSED = 'customer.subscription.paused';
