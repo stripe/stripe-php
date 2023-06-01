@@ -84,12 +84,15 @@ abstract class WebhookSignature
      */
     private static function getTimestamp($header)
     {
+        // NOTE: if multiple timestamps are given,
+        // only the first one is validated and others are silenty ignored
+
         $items = \explode(',', $header);
 
         foreach ($items as $item) {
             $itemParts = \explode('=', $item, 2);
             if ('t' === $itemParts[0]) {
-                if (!\is_numeric($itemParts[1])) {
+                if (false === \filter_var($itemParts[1], \FILTER_VALIDATE_INT) || (int) $itemParts[1] < 0) {
                     return -1;
                 }
 
