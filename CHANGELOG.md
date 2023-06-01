@@ -1,5 +1,11 @@
 # Changelog
 
+## 10.15.0-beta.2 - 2023-06-01
+* [#1507](https://github.com/stripe/stripe-php/pull/1507) Update generated code for beta
+  * Add support for `subscription_details` on `Invoice`
+  * Add support for `set_pause_collection` on `QuoteLine`
+  * Remove support for `locations` on `Tax.Settings`
+
 ## 10.15.0-beta.1 - 2023-05-25
 * [#1500](https://github.com/stripe/stripe-php/pull/1500) Update generated code for beta
 * [#1505](https://github.com/stripe/stripe-php/pull/1505) Handle developer message in preview error responses
