@@ -71,7 +71,7 @@ class ReaderService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Finializes a payment on a Reader.
+     * Finalizes a payment on a Reader.
      *
      * @param string $id
      * @param null|array $params
