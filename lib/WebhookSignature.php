@@ -92,7 +92,7 @@ abstract class WebhookSignature
         foreach ($items as $item) {
             $itemParts = \explode('=', $item, 2);
             if ('t' === $itemParts[0]) {
-                if ((string) \filter_var($itemParts[1], \FILTER_VALIDATE_INT) !== $itemParts[1] || (int) $itemParts[1] < 0) {
+                if ((string) \filter_var($itemParts[1], \FILTER_VALIDATE_INT) !== $itemParts[1] || $itemParts[1] < 0) {
                     return -1;
                 }
 
