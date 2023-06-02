@@ -109,7 +109,7 @@ final class WebhookTest extends \Stripe\TestCase
 
     public function testHeaderContainsValidSignature()
     {
-        $sigHeader = $this->generateHeader() . ',v1=bad_signature';
+        $sigHeader = $this->generateHeader() . ',' . WebhookSignature::EXPECTED_SCHEME . '=bad_signature';
         static::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10));
     }
 
