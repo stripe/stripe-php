@@ -118,4 +118,43 @@ final class WebhookTest extends \Stripe\TestCase
         $sigHeader = $this->generateHeader(['timestamp' => 12345]);
         static::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET));
     }
+
+    private function testInvalidTimestamp($timestamp)
+    {
+        $sigHeader = $this->generateHeader(['timestamp' => $timestamp]);
+
+        try {
+            WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET);
+        } catch (\Stripe\Exception\SignatureVerificationException $e) {
+            return $e->getMessage() === 'Unable to extract timestamp and signatures from header';
+        }
+    }
+
+    public function testTimestampInvalid()
+    {
+        $tests = [
+            "0x539",
+            "02471",
+            "9.1",
+            " 42",
+            "58635272821786587286382824657568871098287278276543219876543",
+            "0.0",
+            ".0",
+            "0.",
+            "1.8e617",
+            "1337e0",
+            "0E1",
+            "2E1",
+            "1e-2",
+            "-1.3e3",
+            " +3",
+            " -1.1",
+            "000",
+            "-1",
+        ];
+
+        foreach ($tests as $test) {
+            static::assertTrue($this->testInvalidTimestamp($test));
+        }
+    }
 }
