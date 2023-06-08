@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.15.0 - 2023-06-08
+* [#1506](https://github.com/stripe/stripe-php/pull/1506) Update generated code
+  * Add support for `preferred_locales` on `Issuing.Cardholder`
+
 ## 10.14.0 - 2023-05-25
 * [#1503](https://github.com/stripe/stripe-php/pull/1503) Update generated code
   * Add support for `zip` on `PaymentMethod`
