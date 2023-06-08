@@ -10,7 +10,6 @@ class ObjectTypes
      * @var array Mapping from object types to resource classes
      */
     const mapping = [
-        \Stripe\AcceptedFinancing::OBJECT_NAME => \Stripe\AcceptedFinancing::class,
         \Stripe\Account::OBJECT_NAME => \Stripe\Account::class,
         \Stripe\AccountLink::OBJECT_NAME => \Stripe\AccountLink::class,
         \Stripe\AccountSession::OBJECT_NAME => \Stripe\AccountSession::class,

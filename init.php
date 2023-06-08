@@ -79,7 +79,6 @@ require __DIR__ . '/lib/BaseStripeClient.php';
 require __DIR__ . '/lib/StripeClient.php';
 
 // Stripe API Resources
-require __DIR__ . '/lib/AcceptedFinancing.php';
 require __DIR__ . '/lib/Account.php';
 require __DIR__ . '/lib/AccountLink.php';
 require __DIR__ . '/lib/AccountSession.php';
@@ -205,7 +204,6 @@ require __DIR__ . '/lib/UsageRecordSummary.php';
 require __DIR__ . '/lib/WebhookEndpoint.php';
 
 // Services
-require __DIR__ . '/lib/Service/AcceptedFinancingService.php';
 require __DIR__ . '/lib/Service/AccountService.php';
 require __DIR__ . '/lib/Service/AccountLinkService.php';
 require __DIR__ . '/lib/Service/AccountSessionService.php';
