@@ -7,6 +7,7 @@ namespace Stripe\Service;
 /**
  * Service factory class for API resources in the root namespace.
  *
+ * @property AcceptedFinancingService $acceptedFinancing
  * @property AccountLinkService $accountLinks
  * @property AccountService $accounts
  * @property AccountSessionService $accountSessions
@@ -77,6 +78,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
+        'acceptedFinancing' => AcceptedFinancingService::class,
         'accountLinks' => AccountLinkService::class,
         'accounts' => AccountService::class,
         'accountSessions' => AccountSessionService::class,

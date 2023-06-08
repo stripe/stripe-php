@@ -7,6 +7,7 @@ namespace Stripe;
 /**
  * Client used to send requests to Stripe's API.
  *
+ * @property \Stripe\Service\AcceptedFinancingService $acceptedFinancing
  * @property \Stripe\Service\AccountLinkService $accountLinks
  * @property \Stripe\Service\AccountSessionService $accountSessions
  * @property \Stripe\Service\AccountService $accounts
