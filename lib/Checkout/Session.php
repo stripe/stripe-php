@@ -65,7 +65,7 @@ namespace Stripe\Checkout;
  * @property null|string $status The status of the Checkout Session, one of <code>open</code>, <code>complete</code>, or <code>expired</code>.
  * @property null|string $submit_type Describes the type of transaction being performed by Checkout in order to customize relevant text on the page, such as the submit button. <code>submit_type</code> can only be specified on Checkout Sessions in <code>payment</code> mode, but not Checkout Sessions in <code>subscription</code> or <code>setup</code> mode.
  * @property null|string|\Stripe\Subscription $subscription The ID of the subscription for Checkout Sessions in <code>subscription</code> mode.
- * @property string $success_url The URL the customer will be directed to after the payment or subscription creation is successful.
+ * @property null|string $success_url The URL the customer will be directed to after the payment or subscription creation is successful.
  * @property null|\Stripe\StripeObject $tax_id_collection
  * @property null|\Stripe\StripeObject $total_details Tax and discount details for the computed total amount.
  * @property null|string $url The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout. If you’re using <a href="https://stripe.com/docs/payments/checkout/custom-domains">Custom Domains</a>, the URL will use your subdomain. Otherwise, it’ll use <code>checkout.stripe.com.</code> This value is only present when the session is active.
