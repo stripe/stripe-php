@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.15.0 - 2023-06-08
+* [#1506](https://github.com/stripe/stripe-php/pull/1506) Update generated code
+  * Add support for `preferred_locales` on `Issuing.Cardholder`
+
 ## 10.15.0-beta.2 - 2023-06-01
 * [#1507](https://github.com/stripe/stripe-php/pull/1507) Update generated code for beta
   * Add support for `subscription_details` on `Invoice`
