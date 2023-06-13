@@ -4082,4 +4082,15 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         ]);
         static::assertInstanceOf(\Stripe\Tax\Calculation::class, $result);
     }
+
+    public function testPreviewLinesCreditNote()
+    {
+        $this->expectsRequest('get', '/v1/credit_notes/preview/lines');
+        $result = $this->client->creditNotes->previewLines([
+            'limit' => 3,
+            'invoice' => 'in_xxxxxxxxxxxxx',
+        ]);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\CreditNoteLineItem::class, $result->data[0]);
+    }
 }

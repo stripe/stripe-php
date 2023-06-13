@@ -94,8 +94,9 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * If the selected payment method requires additional authentication steps, the
      * PaymentIntent will transition to the <code>requires_action</code> status and
      * suggest additional actions via <code>next_action</code>. If payment fails, the
-     * PaymentIntent will transition to the <code>requires_payment_method</code>
-     * status. If payment succeeds, the PaymentIntent will transition to the
+     * PaymentIntent transitions to the <code>requires_payment_method</code> status or
+     * the <code>canceled</code> status if the confirmation limit is reached. If
+     * payment succeeds, the PaymentIntent will transition to the
      * <code>succeeded</code> status (or <code>requires_capture</code>, if
      * <code>capture_method</code> is set to <code>manual</code>). If the
      * <code>confirmation_method</code> is <code>automatic</code>, payment may be
