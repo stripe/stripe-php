@@ -14,7 +14,7 @@ namespace Stripe;
  * information, read about the
  * <a href="https://stripe.com/docs/transfer-payout-split">transfer/payout split</a>.
  *
- * Related guide: <a href="https://stripe.com/docs/connect/charges-transfers">Creating separate charges and transfers</a>
+ * Related guide: <a href="https://stripe.com/docs/connect/separate-charges-and-transfers">Creating separate charges and transfers</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -32,7 +32,7 @@ namespace Stripe;
  * @property bool $reversed Whether the transfer has been fully reversed. If the transfer is only partially reversed, this attribute will still be false.
  * @property null|string|\Stripe\Charge $source_transaction ID of the charge or payment that was used to fund the transfer. If null, the transfer was funded from the available balance.
  * @property null|string $source_type The source balance this transfer came from. One of <code>card</code>, <code>fpx</code>, or <code>bank_account</code>.
- * @property null|string $transfer_group A string that identifies this transaction as part of a group. See the <a href="https://stripe.com/docs/connect/charges-transfers#transfer-options">Connect documentation</a> for details.
+ * @property null|string $transfer_group A string that identifies this transaction as part of a group. See the <a href="https://stripe.com/docs/connect/separate-charges-and-transfers#transfer-options">Connect documentation</a> for details.
  */
 class Transfer extends ApiResource
 {
