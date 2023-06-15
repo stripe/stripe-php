@@ -23,7 +23,7 @@ namespace Stripe\GiftCards;
  * @property null|string $gift_card The gift card that this transaction occurred on
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $status Status of this transaction, one of <code>held</code>, <code>confirmed</code>, or <code>canceled</code>.
- * @property null|string $transfer_group A string that identifies this transaction as part of a group. See the <a href="https://stripe.com/docs/connect/charges-transfers">Connect documentation</a> for details.
+ * @property null|string $transfer_group A string that identifies this transaction as part of a group. See the <a href="https://stripe.com/docs/connect/separate-charges-and-transfers">Connect documentation</a> for details.
  */
 class Transaction extends \Stripe\ApiResource
 {
