@@ -1,5 +1,13 @@
 # Changelog
 
+## 10.16.0-beta.1 - 2023-06-22
+* [#1515](https://github.com/stripe/stripe-php/pull/1515) Update generated code for beta
+  * Add support for new resource `CustomerSession`
+  * Add support for `create` method on resource `CustomerSession`
+* [#1513](https://github.com/stripe/stripe-php/pull/1513) Update generated code for beta
+  * Add support for `payment_details` on `PaymentIntent`
+* [#1510](https://github.com/stripe/stripe-php/pull/1510) Update generated code for beta
+
 ## 10.15.0 - 2023-06-08
 * [#1506](https://github.com/stripe/stripe-php/pull/1506) Update generated code
   * Add support for `preferred_locales` on `Issuing.Cardholder`
