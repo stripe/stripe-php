@@ -202,41 +202,6 @@ class ErrorObject extends StripeObject
     const CODE_TRANSFER_SOURCE_BALANCE_PARAMETERS_MISMATCH = 'transfer_source_balance_parameters_mismatch';
     const CODE_TRANSFERS_NOT_ALLOWED = 'transfers_not_allowed';
     const CODE_URL_INVALID = 'url_invalid';
-    const CODE_IDEMPOTENCY_ERROR = 'idempotency_error';
-    const CODE_NOT_FOUND = 'not_found';
-    const CODE_FINANCIAL_ACCOUNT_BALANCE_DOES_NOT_SUPPORT_CURRENCY = 'financial_account_balance_does_not_support_currency';
-    const CODE_FINANCIAL_ACCOUNT_FEATURE_RESTRICTED = 'financial_account_feature_restricted';
-    const CODE_FINANCIAL_ACCOUNT_NOT_IN_OPEN_STATUS = 'financial_account_not_in_open_status';
-    const CODE_FINANCIAL_ADDRESSES_CREATION_LIMIT_EXCEEDED = 'financial_addresses_creation_limit_exceeded';
-    const CODE_FINANCIAL_ADDRESS_NOT_ACTIVE = 'financial_address_not_active';
-    const CODE_FINANCIAL_ADDRESSES_API_ONLY_IN_SANDBOX = 'financial_addresses_api_only_in_sandbox';
-    const CODE_FINANCIAL_ADDRESS_INVALID_PAGE_TOKEN = 'financial_address_invalid_page_token';
-    const CODE_OUTBOUND_PAYMENT_ALREADY_CANCELED = 'outbound_payment_already_canceled';
-    const CODE_OUTBOUND_PAYMENT_NOT_CANCELABLE = 'outbound_payment_not_cancelable';
-    const CODE_OUTBOUND_PAYMENT_ACCOUNT_NOT_CONFIGURED_AS_RECIPIENT = 'outbound_payment_account_not_configured_as_recipient';
-    const CODE_OUTBOUND_PAYMENT_DEFAULT_RECIPIENT_DESTINATION_NOT_FOUND = 'outbound_payment_default_recipient_destination_not_found';
-    const CODE_OUTBOUND_PAYMENT_FROM_BALANCE_INVALID = 'outbound_payment_from_balance_invalid';
-    const CODE_OUTBOUND_PAYMENT_FROM_BALANCE_UNSUPPORTED_CURRENCY = 'outbound_payment_from_balance_unsupported_currency';
-    const CODE_OUTBOUND_PAYMENT_INSUFFICIENT_FUNDS = 'outbound_payment_insufficient_funds';
-    const CODE_OUTBOUND_PAYMENT_INVALID_TO_DESTINATION = 'outbound_payment_invalid_to_destination';
-    const CODE_OUTBOUND_PAYMENT_NOT_ALLOWED = 'outbound_payment_not_allowed';
-    const CODE_OUTBOUND_PAYMENT_RECIPIENT_EMAIL_DOES_NOT_EXIST = 'outbound_payment_recipient_email_does_not_exist';
-    const CODE_OUTBOUND_PAYMENT_RECIPIENT_FEATURE_NOT_ACTIVE = 'outbound_payment_recipient_feature_not_active';
-    const CODE_OUTBOUND_PAYMENT_TO_RECIPIENT_INVALID = 'outbound_payment_to_recipient_invalid';
-    const CODE_OUTBOUND_PAYMENT_INVALID_PAGE_TOKEN = 'outbound_payment_invalid_page_token';
-    const CODE_OUTBOUND_TRANSFER_ALREADY_CANCELED = 'outbound_transfer_already_canceled';
-    const CODE_OUTBOUND_TRANSFER_NOT_CANCELABLE = 'outbound_transfer_not_cancelable';
-    const CODE_OUTBOUND_TRANSFER_FROM_BALANCE_INVALID = 'outbound_transfer_from_balance_invalid';
-    const CODE_OUTBOUND_TRANSFER_FROM_BALANCE_UNSUPPORTED_CURRENCY = 'outbound_transfer_from_balance_unsupported_currency';
-    const CODE_OUTBOUND_TRANSFER_INSUFFICIENT_FUNDS = 'outbound_transfer_insufficient_funds';
-    const CODE_OUTBOUND_TRANSFER_INVALID_TO_DESTINATION = 'outbound_transfer_invalid_to_destination';
-    const CODE_OUTBOUND_TRANSFER_NOT_ALLOWED = 'outbound_transfer_not_allowed';
-    const CODE_OUTBOUND_TRANSFER_INVALID_PAGE_TOKEN = 'outbound_transfer_invalid_page_token';
-    const CODE_BLOCKED_US_BANK_ACCOUNT = 'blocked_us_bank_account';
-    const CODE_INVALID_US_BANK_ACCOUNT = 'invalid_us_bank_account';
-    const CODE_LIMIT_US_BANK_ACCOUNT = 'limit_us_bank_account';
-    const CODE_UNSUPPORTED_US_BANK = 'unsupported_us_bank';
-    const CODE_US_BANK_ACCOUNT_CANNOT_BE_DEACTIVATED = 'us_bank_account_cannot_be_deactivated';
     // The end of the section generated from our OpenAPI spec
 
     /**
