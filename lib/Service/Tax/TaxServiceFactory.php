@@ -9,7 +9,7 @@ namespace Stripe\Service\Tax;
  *
  * @property CalculationService $calculations
  * @property RegistrationService $registrations
- * @property SettingsService $settings
+ * @property SettingService $settings
  * @property TransactionService $transactions
  */
 class TaxServiceFactory extends \Stripe\Service\AbstractServiceFactory
@@ -20,7 +20,7 @@ class TaxServiceFactory extends \Stripe\Service\AbstractServiceFactory
     private static $classMap = [
         'calculations' => CalculationService::class,
         'registrations' => RegistrationService::class,
-        'settings' => SettingsService::class,
+        'settings' => SettingService::class,
         'transactions' => TransactionService::class,
     ];
 
