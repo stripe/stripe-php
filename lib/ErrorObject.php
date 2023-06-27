@@ -54,6 +54,7 @@ class ErrorObject extends StripeObject
     const CODE_AMOUNT_TOO_LARGE = 'amount_too_large';
     const CODE_AMOUNT_TOO_SMALL = 'amount_too_small';
     const CODE_API_KEY_EXPIRED = 'api_key_expired';
+    const CODE_APPLICATION_FEES_NOT_ALLOWED = 'application_fees_not_allowed';
     const CODE_AUTHENTICATION_REQUIRED = 'authentication_required';
     const CODE_BALANCE_INSUFFICIENT = 'balance_insufficient';
     const CODE_BANK_ACCOUNT_BAD_ROUTING_NUMBERS = 'bank_account_bad_routing_numbers';
