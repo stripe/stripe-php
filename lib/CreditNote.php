@@ -19,6 +19,7 @@ namespace Stripe;
  * @property null|string|\Stripe\CustomerBalanceTransaction $customer_balance_transaction Customer balance transaction related to this credit note.
  * @property int $discount_amount The integer amount in %s representing the total amount of discount that was credited.
  * @property \Stripe\StripeObject[] $discount_amounts The aggregate amounts calculated per discount for all line items.
+ * @property null|int $effective_at The date when this credit note is in effect. Same as <code>created</code> unless overwritten. When defined, this value replaces the system-generated 'Date of issue' printed on the credit note PDF.
  * @property string|\Stripe\Invoice $invoice ID of the invoice.
  * @property \Stripe\Collection<\Stripe\CreditNoteLineItem> $lines Line items that make up the credit note
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.

@@ -5,7 +5,7 @@
 namespace Stripe;
 
 /**
- * A customer session allows you to grant client access to Stripe's frontend SDKs (like BillingJs)
+ * A customer session allows you to grant client access to Stripe's frontend SDKs (like StripeJs)
  * control over a customer.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
