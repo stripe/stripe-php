@@ -23,7 +23,7 @@ class Stripe
     public static $apiUploadBase = 'https://files.stripe.com';
 
     /** @var null|string The version of the Stripe API to use for requests. */
-    public static $apiVersion = null;
+    public static $apiVersion = \Stripe\Util\ApiVersion::CURRENT;
 
     /** @var null|string The account ID for connected accounts requests. */
     public static $accountId = null;
