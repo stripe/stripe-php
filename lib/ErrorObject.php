@@ -107,6 +107,7 @@ class ErrorObject extends StripeObject
     const CODE_INVALID_EXPIRY_YEAR = 'invalid_expiry_year';
     const CODE_INVALID_NUMBER = 'invalid_number';
     const CODE_INVALID_SOURCE_USAGE = 'invalid_source_usage';
+    const CODE_INVALID_TAX_LOCATION = 'invalid_tax_location';
     const CODE_INVOICE_NO_CUSTOMER_LINE_ITEMS = 'invoice_no_customer_line_items';
     const CODE_INVOICE_NO_PAYMENT_METHOD_TYPES = 'invoice_no_payment_method_types';
     const CODE_INVOICE_NO_SUBSCRIPTION_LINE_ITEMS = 'invoice_no_subscription_line_items';
