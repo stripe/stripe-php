@@ -76,6 +76,7 @@ class ObjectTypes
         \Stripe\PaymentIntent::OBJECT_NAME => \Stripe\PaymentIntent::class,
         \Stripe\PaymentLink::OBJECT_NAME => \Stripe\PaymentLink::class,
         \Stripe\PaymentMethod::OBJECT_NAME => \Stripe\PaymentMethod::class,
+        \Stripe\PaymentMethodConfiguration::OBJECT_NAME => \Stripe\PaymentMethodConfiguration::class,
         \Stripe\Payout::OBJECT_NAME => \Stripe\Payout::class,
         \Stripe\Person::OBJECT_NAME => \Stripe\Person::class,
         \Stripe\Plan::OBJECT_NAME => \Stripe\Plan::class,

@@ -41,6 +41,7 @@ namespace Stripe;
  * @property \Stripe\Service\OrderService $orders
  * @property \Stripe\Service\PaymentIntentService $paymentIntents
  * @property \Stripe\Service\PaymentLinkService $paymentLinks
+ * @property \Stripe\Service\PaymentMethodConfigurationService $paymentMethodConfigurations
  * @property \Stripe\Service\PaymentMethodService $paymentMethods
  * @property \Stripe\Service\PayoutService $payouts
  * @property \Stripe\Service\PlanService $plans
