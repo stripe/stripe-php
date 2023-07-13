@@ -4,7 +4,7 @@
 
 namespace Stripe\Service\Tax;
 
-class SettingService extends \Stripe\Service\AbstractService
+class SettingsService extends \Stripe\Service\AbstractService
 {
     /**
      * Retrieves Tax <code>Settings</code> for a merchant.
