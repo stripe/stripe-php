@@ -1,5 +1,15 @@
 # Changelog
 
+## 10.17.0 - 2023-07-13
+* [#1525](https://github.com/stripe/stripe-php/pull/1525) Update generated code
+  * Add support for new resource `Tax.Settings`
+  * Add support for `retrieve` and `update` methods on resource `Settings`
+  * Add support for new value `invalid_tax_location` on enum `StripeError.code`
+  * Add support for `product` on `Tax.TransactionLineItem`
+  * Add constant for `tax.settings.updated` webhook event
+* [#1520](https://github.com/stripe/stripe-php/pull/1520) Update generated code
+  * Release specs are identical.
+
 ## 10.16.0 - 2023-06-29
 * [#1517](https://github.com/stripe/stripe-php/pull/1517) Update generated code
   * Add support for new value `application_fees_not_allowed` on enum `StripeError.code`
