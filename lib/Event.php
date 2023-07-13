@@ -233,6 +233,7 @@ class Event extends ApiResource
     const SUBSCRIPTION_SCHEDULE_EXPIRING = 'subscription_schedule.expiring';
     const SUBSCRIPTION_SCHEDULE_RELEASED = 'subscription_schedule.released';
     const SUBSCRIPTION_SCHEDULE_UPDATED = 'subscription_schedule.updated';
+    const TAX_SETTINGS_UPDATED = 'tax.settings.updated';
     const TAX_RATE_CREATED = 'tax_rate.created';
     const TAX_RATE_UPDATED = 'tax_rate.updated';
     const TERMINAL_READER_ACTION_FAILED = 'terminal.reader.action_failed';
