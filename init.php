@@ -246,7 +246,7 @@ require __DIR__ . '/lib/Service/SubscriptionScheduleService.php';
 require __DIR__ . '/lib/Service/SubscriptionService.php';
 require __DIR__ . '/lib/Service/Tax/CalculationService.php';
 require __DIR__ . '/lib/Service/Tax/RegistrationService.php';
-require __DIR__ . '/lib/Service/Tax/SettingService.php';
+require __DIR__ . '/lib/Service/Tax/SettingsService.php';
 require __DIR__ . '/lib/Service/Tax/TaxServiceFactory.php';
 require __DIR__ . '/lib/Service/Tax/TransactionService.php';
 require __DIR__ . '/lib/Service/TaxCodeService.php';
