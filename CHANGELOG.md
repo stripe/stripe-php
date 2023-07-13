@@ -1,5 +1,16 @@
 # Changelog
 
+## 10.18.0-beta.1 - 2023-07-13
+* [#1527](https://github.com/stripe/stripe-php/pull/1527) Update generated code for beta
+  Release specs are identical.
+* [#1524](https://github.com/stripe/stripe-php/pull/1524) Update generated code for beta
+  * Add support for new resource `PaymentMethodConfiguration`
+  * Add support for `all`, `create`, `retrieve`, and `update` methods on resource `PaymentMethodConfiguration`
+  * Add support for `payment_method_configuration_details` on `PaymentIntent`
+  * Rename `Tax.SettingService` -> `Tax.SettingsService` (parity with main release)
+* [#1519](https://github.com/stripe/stripe-php/pull/1519) Update generated code for beta
+  * Rename `Tax.SettingsService` -> `Tax.SettingService`
+
 ## 10.17.0 - 2023-07-13
 * [#1525](https://github.com/stripe/stripe-php/pull/1525) Update generated code
   * Add support for new resource `Tax.Settings`
