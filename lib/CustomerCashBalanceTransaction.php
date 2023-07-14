@@ -21,7 +21,7 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property int $net_amount The amount by which the cash balance changed, represented in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>. A positive value represents funds being added to the cash balance, a negative value represents funds being removed from the cash balance.
  * @property null|\Stripe\StripeObject $refunded_from_payment
- * @property string $type The type of the cash balance transaction. One of <code>applied_to_payment</code>, <code>unapplied_from_payment</code>, <code>refunded_from_payment</code>, <code>funded</code>, <code>return_initiated</code>, or <code>return_canceled</code>. New types may be added in future. See <a href="https://stripe.com/docs/payments/customer-balance#types">Customer Balance</a> to learn more about these types.
+ * @property string $type The type of the cash balance transaction. New types may be added in future. See <a href="https://stripe.com/docs/payments/customer-balance#types">Customer Balance</a> to learn more about these types.
  * @property null|\Stripe\StripeObject $unapplied_from_payment
  */
 class CustomerCashBalanceTransaction extends ApiResource
