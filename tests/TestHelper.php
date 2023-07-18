@@ -71,7 +71,7 @@ trait TestHelper
      * Sets up a request expectation with the provided parameters. The request
      * will actually go through and be emitted.
      *
-     * @param string $method HTTP method (e.g. 'post', 'get', etc.)
+     * @param 'delete'|'get'|'post' $method HTTP method (e.g. 'post', 'get', etc.)
      * @param string $path relative path (e.g. '/v1/charges')
      * @param null|array $params array of parameters. If null, parameters will
      *   not be checked.
@@ -106,7 +106,7 @@ trait TestHelper
      * Sets up a request expectation with the provided parameters. The request
      * will actually go through and be emitted.
      *
-     * @param string $method HTTP method (e.g. 'post', 'get', etc.)
+     * @param 'delete'|'get'|'post' $method HTTP method (e.g. 'post', 'get', etc.)
      * @param string $path relative path (e.g. '/v1/charges')
      * @param null|array $params array of parameters. If null, parameters will
      *   not be checked.
@@ -142,7 +142,7 @@ trait TestHelper
      * will not actually be emitted, instead the provided response parameters
      * will be returned.
      *
-     * @param string $method HTTP method (e.g. 'post', 'get', etc.)
+     * @param 'delete'|'get'|'post' $method HTTP method (e.g. 'post', 'get', etc.)
      * @param string $path relative path (e.g. '/v1/charges')
      * @param null|array $params array of parameters. If null, parameters will
      *   not be checked.
@@ -175,7 +175,7 @@ trait TestHelper
      * prepare the client mocker to expect an invocation of the `request` method
      * with the provided arguments.
      *
-     * @param string $method HTTP method (e.g. 'post', 'get', etc.)
+     * @param 'delete'|'get'|'post' $method HTTP method (e.g. 'post', 'get', etc.)
      * @param string $path relative path (e.g. '/v1/charges')
      * @param null|array $params array of parameters. If null, parameters will
      *   not be checked.
@@ -231,7 +231,7 @@ trait TestHelper
      * prepare the client mocker to expect an invocation of the `request` method
      * with the provided arguments.
      *
-     * @param string $method HTTP method (e.g. 'post', 'get', etc.)
+     * @param 'delete'|'get'|'post' $method HTTP method (e.g. 'post', 'get', etc.)
      * @param string $path relative path (e.g. '/v1/charges')
      * @param null|array $params array of parameters. If null, parameters will
      *   not be checked.
