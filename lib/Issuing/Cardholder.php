@@ -5,12 +5,9 @@
 namespace Stripe\Issuing;
 
 /**
- * An Issuing <code>Cardholder</code> object represents an individual or business
- * entity who is <a href="https://stripe.com/docs/issuing">issued</a> cards.
+ * An Issuing <code>Cardholder</code> object represents an individual or business entity who is <a href="https://stripe.com/docs/issuing">issued</a> cards.
  *
- * Related guide: <a
- * href="https://stripe.com/docs/issuing/cards#create-cardholder">How to create a
- * Cardholder</a>
+ * Related guide: <a href="https://stripe.com/docs/issuing/cards#create-cardholder">How to create a cardholder</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -23,6 +20,7 @@ namespace Stripe\Issuing;
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $name The cardholder's name. This will be printed on cards issued to them.
  * @property null|string $phone_number The cardholder's phone number. This is required for all cardholders who will be creating EU cards. See the <a href="https://stripe.com/docs/issuing/3d-secure#when-is-3d-secure-applied">3D Secure documentation</a> for more details.
+ * @property null|string[] $preferred_locales The cardholder’s preferred locales (languages), ordered by preference. Locales can be <code>de</code>, <code>en</code>, <code>es</code>, <code>fr</code>, or <code>it</code>. This changes the language of the <a href="https://stripe.com/docs/issuing/3d-secure">3D Secure flow</a> and one-time password messages sent to the cardholder.
  * @property \Stripe\StripeObject $requirements
  * @property null|\Stripe\StripeObject $spending_controls Rules that control spending across this cardholder's cards. Refer to our <a href="https://stripe.com/docs/issuing/controls/spending-controls">documentation</a> for more details.
  * @property string $status Specifies whether to permit authorizations on this cardholder's cards.

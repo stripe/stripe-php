@@ -42,6 +42,8 @@ class ErrorObject extends StripeObject
      *
      * @see https://stripe.com/docs/error-codes
      */
+    // The beginning of the section generated from our OpenAPI spec
+    const CODE_ACCOUNT_CLOSED = 'account_closed';
     const CODE_ACCOUNT_COUNTRY_INVALID_ADDRESS = 'account_country_invalid_address';
     const CODE_ACCOUNT_ERROR_COUNTRY_CHANGE_REQUIRES_ADDITIONAL_STEPS = 'account_error_country_change_requires_additional_steps';
     const CODE_ACCOUNT_INFORMATION_MISMATCH = 'account_information_mismatch';
@@ -52,16 +54,20 @@ class ErrorObject extends StripeObject
     const CODE_AMOUNT_TOO_LARGE = 'amount_too_large';
     const CODE_AMOUNT_TOO_SMALL = 'amount_too_small';
     const CODE_API_KEY_EXPIRED = 'api_key_expired';
+    const CODE_APPLICATION_FEES_NOT_ALLOWED = 'application_fees_not_allowed';
     const CODE_AUTHENTICATION_REQUIRED = 'authentication_required';
     const CODE_BALANCE_INSUFFICIENT = 'balance_insufficient';
     const CODE_BANK_ACCOUNT_BAD_ROUTING_NUMBERS = 'bank_account_bad_routing_numbers';
     const CODE_BANK_ACCOUNT_DECLINED = 'bank_account_declined';
     const CODE_BANK_ACCOUNT_EXISTS = 'bank_account_exists';
+    const CODE_BANK_ACCOUNT_RESTRICTED = 'bank_account_restricted';
     const CODE_BANK_ACCOUNT_UNUSABLE = 'bank_account_unusable';
     const CODE_BANK_ACCOUNT_UNVERIFIED = 'bank_account_unverified';
     const CODE_BANK_ACCOUNT_VERIFICATION_FAILED = 'bank_account_verification_failed';
     const CODE_BILLING_INVALID_MANDATE = 'billing_invalid_mandate';
     const CODE_BITCOIN_UPGRADE_REQUIRED = 'bitcoin_upgrade_required';
+    const CODE_CAPTURE_CHARGE_AUTHORIZATION_EXPIRED = 'capture_charge_authorization_expired';
+    const CODE_CAPTURE_UNAUTHORIZED_PAYMENT = 'capture_unauthorized_payment';
     const CODE_CARD_DECLINE_RATE_LIMIT_EXCEEDED = 'card_decline_rate_limit_exceeded';
     const CODE_CARD_DECLINED = 'card_declined';
     const CODE_CARDHOLDER_PHONE_NUMBER_REQUIRED = 'cardholder_phone_number_required';
@@ -71,6 +77,7 @@ class ErrorObject extends StripeObject
     const CODE_CHARGE_EXCEEDS_SOURCE_LIMIT = 'charge_exceeds_source_limit';
     const CODE_CHARGE_EXPIRED_FOR_CAPTURE = 'charge_expired_for_capture';
     const CODE_CHARGE_INVALID_PARAMETER = 'charge_invalid_parameter';
+    const CODE_CHARGE_NOT_REFUNDABLE = 'charge_not_refundable';
     const CODE_CLEARING_CODE_UNSUPPORTED = 'clearing_code_unsupported';
     const CODE_COUNTRY_CODE_INVALID = 'country_code_invalid';
     const CODE_COUNTRY_UNSUPPORTED = 'country_unsupported';
@@ -85,6 +92,8 @@ class ErrorObject extends StripeObject
     const CODE_INCORRECT_CVC = 'incorrect_cvc';
     const CODE_INCORRECT_NUMBER = 'incorrect_number';
     const CODE_INCORRECT_ZIP = 'incorrect_zip';
+    const CODE_INSTANT_PAYOUTS_CONFIG_DISABLED = 'instant_payouts_config_disabled';
+    const CODE_INSTANT_PAYOUTS_CURRENCY_DISABLED = 'instant_payouts_currency_disabled';
     const CODE_INSTANT_PAYOUTS_LIMIT_EXCEEDED = 'instant_payouts_limit_exceeded';
     const CODE_INSTANT_PAYOUTS_UNSUPPORTED = 'instant_payouts_unsupported';
     const CODE_INSUFFICIENT_FUNDS = 'insufficient_funds';
@@ -98,6 +107,7 @@ class ErrorObject extends StripeObject
     const CODE_INVALID_EXPIRY_YEAR = 'invalid_expiry_year';
     const CODE_INVALID_NUMBER = 'invalid_number';
     const CODE_INVALID_SOURCE_USAGE = 'invalid_source_usage';
+    const CODE_INVALID_TAX_LOCATION = 'invalid_tax_location';
     const CODE_INVOICE_NO_CUSTOMER_LINE_ITEMS = 'invoice_no_customer_line_items';
     const CODE_INVOICE_NO_PAYMENT_METHOD_TYPES = 'invoice_no_payment_method_types';
     const CODE_INVOICE_NO_SUBSCRIPTION_LINE_ITEMS = 'invoice_no_subscription_line_items';
@@ -111,6 +121,7 @@ class ErrorObject extends StripeObject
     const CODE_NO_ACCOUNT = 'no_account';
     const CODE_NOT_ALLOWED_ON_STANDARD_ACCOUNT = 'not_allowed_on_standard_account';
     const CODE_OUT_OF_INVENTORY = 'out_of_inventory';
+    const CODE_OWNERSHIP_DECLARATION_NOT_ALLOWED = 'ownership_declaration_not_allowed';
     const CODE_PARAMETER_INVALID_EMPTY = 'parameter_invalid_empty';
     const CODE_PARAMETER_INVALID_INTEGER = 'parameter_invalid_integer';
     const CODE_PARAMETER_INVALID_STRING_BLANK = 'parameter_invalid_string_blank';
@@ -130,7 +141,9 @@ class ErrorObject extends StripeObject
     const CODE_PAYMENT_METHOD_BANK_ACCOUNT_ALREADY_VERIFIED = 'payment_method_bank_account_already_verified';
     const CODE_PAYMENT_METHOD_BANK_ACCOUNT_BLOCKED = 'payment_method_bank_account_blocked';
     const CODE_PAYMENT_METHOD_BILLING_DETAILS_ADDRESS_MISSING = 'payment_method_billing_details_address_missing';
+    const CODE_PAYMENT_METHOD_CONFIGURATION_FAILURES = 'payment_method_configuration_failures';
     const CODE_PAYMENT_METHOD_CURRENCY_MISMATCH = 'payment_method_currency_mismatch';
+    const CODE_PAYMENT_METHOD_CUSTOMER_DECLINE = 'payment_method_customer_decline';
     const CODE_PAYMENT_METHOD_INVALID_PARAMETER = 'payment_method_invalid_parameter';
     const CODE_PAYMENT_METHOD_INVALID_PARAMETER_TESTMODE = 'payment_method_invalid_parameter_testmode';
     const CODE_PAYMENT_METHOD_MICRODEPOSIT_FAILED = 'payment_method_microdeposit_failed';
@@ -139,17 +152,21 @@ class ErrorObject extends StripeObject
     const CODE_PAYMENT_METHOD_MICRODEPOSIT_VERIFICATION_ATTEMPTS_EXCEEDED = 'payment_method_microdeposit_verification_attempts_exceeded';
     const CODE_PAYMENT_METHOD_MICRODEPOSIT_VERIFICATION_DESCRIPTOR_CODE_MISMATCH = 'payment_method_microdeposit_verification_descriptor_code_mismatch';
     const CODE_PAYMENT_METHOD_MICRODEPOSIT_VERIFICATION_TIMEOUT = 'payment_method_microdeposit_verification_timeout';
+    const CODE_PAYMENT_METHOD_NOT_AVAILABLE = 'payment_method_not_available';
     const CODE_PAYMENT_METHOD_PROVIDER_DECLINE = 'payment_method_provider_decline';
     const CODE_PAYMENT_METHOD_PROVIDER_TIMEOUT = 'payment_method_provider_timeout';
     const CODE_PAYMENT_METHOD_UNACTIVATED = 'payment_method_unactivated';
     const CODE_PAYMENT_METHOD_UNEXPECTED_STATE = 'payment_method_unexpected_state';
     const CODE_PAYMENT_METHOD_UNSUPPORTED_TYPE = 'payment_method_unsupported_type';
+    const CODE_PAYOUT_RECONCILIATION_NOT_READY = 'payout_reconciliation_not_ready';
+    const CODE_PAYOUTS_LIMIT_EXCEEDED = 'payouts_limit_exceeded';
     const CODE_PAYOUTS_NOT_ALLOWED = 'payouts_not_allowed';
     const CODE_PLATFORM_ACCOUNT_REQUIRED = 'platform_account_required';
     const CODE_PLATFORM_API_KEY_EXPIRED = 'platform_api_key_expired';
     const CODE_POSTAL_CODE_INVALID = 'postal_code_invalid';
     const CODE_PROCESSING_ERROR = 'processing_error';
     const CODE_PRODUCT_INACTIVE = 'product_inactive';
+    const CODE_PROGRESSIVE_ONBOARDING_LIMIT_EXCEEDED = 'progressive_onboarding_limit_exceeded';
     const CODE_RATE_LIMIT = 'rate_limit';
     const CODE_REFER_TO_CUSTOMER = 'refer_to_customer';
     const CODE_REFUND_DISPUTED_PAYMENT = 'refund_disputed_payment';
@@ -162,14 +179,19 @@ class ErrorObject extends StripeObject
     const CODE_SETUP_ATTEMPT_FAILED = 'setup_attempt_failed';
     const CODE_SETUP_INTENT_AUTHENTICATION_FAILURE = 'setup_intent_authentication_failure';
     const CODE_SETUP_INTENT_INVALID_PARAMETER = 'setup_intent_invalid_parameter';
+    const CODE_SETUP_INTENT_MANDATE_INVALID = 'setup_intent_mandate_invalid';
     const CODE_SETUP_INTENT_SETUP_ATTEMPT_EXPIRED = 'setup_intent_setup_attempt_expired';
     const CODE_SETUP_INTENT_UNEXPECTED_STATE = 'setup_intent_unexpected_state';
     const CODE_SHIPPING_CALCULATION_FAILED = 'shipping_calculation_failed';
     const CODE_SKU_INACTIVE = 'sku_inactive';
     const CODE_STATE_UNSUPPORTED = 'state_unsupported';
+    const CODE_STATUS_TRANSITION_INVALID = 'status_transition_invalid';
     const CODE_TAX_ID_INVALID = 'tax_id_invalid';
     const CODE_TAXES_CALCULATION_FAILED = 'taxes_calculation_failed';
     const CODE_TERMINAL_LOCATION_COUNTRY_UNSUPPORTED = 'terminal_location_country_unsupported';
+    const CODE_TERMINAL_READER_BUSY = 'terminal_reader_busy';
+    const CODE_TERMINAL_READER_OFFLINE = 'terminal_reader_offline';
+    const CODE_TERMINAL_READER_TIMEOUT = 'terminal_reader_timeout';
     const CODE_TESTMODE_CHARGES_ONLY = 'testmode_charges_only';
     const CODE_TLS_VERSION_UNSUPPORTED = 'tls_version_unsupported';
     const CODE_TOKEN_ALREADY_USED = 'token_already_used';
@@ -177,6 +199,7 @@ class ErrorObject extends StripeObject
     const CODE_TRANSFER_SOURCE_BALANCE_PARAMETERS_MISMATCH = 'transfer_source_balance_parameters_mismatch';
     const CODE_TRANSFERS_NOT_ALLOWED = 'transfers_not_allowed';
     const CODE_URL_INVALID = 'url_invalid';
+    // The end of the section generated from our OpenAPI spec
 
     /**
      * Refreshes this object using the provided values.

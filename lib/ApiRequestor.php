@@ -325,7 +325,7 @@ class ApiRequestor
         $uaString = 'Stripe/v1 PhpBindings/' . Stripe::VERSION;
 
         $langVersion = \PHP_VERSION;
-        $uname_disabled = static::_isDisabled(\ini_get('disable_functions'), 'php_uname');
+        $uname_disabled = self::_isDisabled(\ini_get('disable_functions'), 'php_uname');
         $uname = $uname_disabled ? '(disabled)' : \php_uname();
 
         $appInfo = Stripe::getAppInfo();
@@ -377,7 +377,7 @@ class ApiRequestor
 
         if ($params && \is_array($params)) {
             $optionKeysInParams = \array_filter(
-                static::$OPTIONS_KEYS,
+                self::$OPTIONS_KEYS,
                 function ($key) use ($params) {
                     return \array_key_exists($key, $params);
                 }

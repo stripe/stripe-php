@@ -5,8 +5,7 @@
 namespace Stripe\FinancialConnections;
 
 /**
- * A Financial Connections Session is the secure way to programmatically launch the
- * client-side Stripe.js modal that lets your users link their accounts.
+ * A Financial Connections Session is the secure way to programmatically launch the client-side Stripe.js modal that lets your users link their accounts.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

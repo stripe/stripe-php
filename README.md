@@ -246,7 +246,7 @@ background terminal ([stripe-mock's README][stripe-mock] also contains
 instructions for installing via Homebrew and other methods):
 
 ```bash
-go get -u github.com/stripe/stripe-mock
+go install github.com/stripe/stripe-mock@latest
 stripe-mock
 ```
 

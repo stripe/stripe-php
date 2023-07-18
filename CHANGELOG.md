@@ -1,5 +1,54 @@
 # Changelog
 
+## 10.17.0 - 2023-07-13
+* [#1525](https://github.com/stripe/stripe-php/pull/1525) Update generated code
+  * Add support for new resource `Tax.Settings`
+  * Add support for `retrieve` and `update` methods on resource `Settings`
+  * Add support for new value `invalid_tax_location` on enum `StripeError.code`
+  * Add support for `product` on `Tax.TransactionLineItem`
+  * Add constant for `tax.settings.updated` webhook event
+* [#1520](https://github.com/stripe/stripe-php/pull/1520) Update generated code
+  * Release specs are identical.
+
+## 10.16.0 - 2023-06-29
+* [#1517](https://github.com/stripe/stripe-php/pull/1517) Update generated code
+  * Add support for new value `application_fees_not_allowed` on enum `StripeError.code`
+  * Add support for `effective_at` on `CreditNote` and `Invoice`
+  * Add support for `on_behalf_of` on `Mandate`
+* [#1514](https://github.com/stripe/stripe-php/pull/1514) Update generated code
+  * Release specs are identical.
+* [#1512](https://github.com/stripe/stripe-php/pull/1512) Update generated code
+  * Change type of `Checkout.Session.success_url` from `string` to `nullable(string)`
+
+## 10.15.0 - 2023-06-08
+* [#1506](https://github.com/stripe/stripe-php/pull/1506) Update generated code
+  * Add support for `preferred_locales` on `Issuing.Cardholder`
+
+## 10.14.0 - 2023-05-25
+* [#1503](https://github.com/stripe/stripe-php/pull/1503) Update generated code
+  * Add support for `zip` on `PaymentMethod`
+  * Add support for new value `zip` on enum `PaymentMethod.type`
+* [#1502](https://github.com/stripe/stripe-php/pull/1502) Generate error codes
+* [#1501](https://github.com/stripe/stripe-php/pull/1501) Update generated code
+
+* [#1499](https://github.com/stripe/stripe-php/pull/1499) Update generated code
+  * Add support for new values `amusement_tax` and `communications_tax` on enum `TaxRate.tax_type`
+
+## 10.13.0 - 2023-05-11
+* [#1490](https://github.com/stripe/stripe-php/pull/1490) Update generated code
+  * Add support for `paypal` on `PaymentMethod`
+  * Add support for `effective_percentage` on `TaxRate`
+* [#1488](https://github.com/stripe/stripe-php/pull/1488) Increment PHPStan to strictness level 2
+* [#1483](https://github.com/stripe/stripe-php/pull/1483) Update generated code
+
+* [#1480](https://github.com/stripe/stripe-php/pull/1480) Update generated code
+  * Change type of `Identity.VerificationSession.options` from `VerificationSessionOptions` to `nullable(VerificationSessionOptions)`
+  * Change type of `Identity.VerificationSession.type` from `enum('document'|'id_number')` to `nullable(enum('document'|'id_number'))`
+* [#1478](https://github.com/stripe/stripe-php/pull/1478) Update generated code
+  * Release specs are identical.
+* [#1475](https://github.com/stripe/stripe-php/pull/1475) Update generated code
+
+
 ## 10.12.1 - 2023-04-04
 * [#1473](https://github.com/stripe/stripe-php/pull/1473) Update generated code
   * Add back `deleted` from `Invoice.status`.

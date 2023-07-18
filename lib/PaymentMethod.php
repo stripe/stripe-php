@@ -5,16 +5,11 @@
 namespace Stripe;
 
 /**
- * PaymentMethod objects represent your customer's payment instruments. You can use
- * them with <a
- * href="https://stripe.com/docs/payments/payment-intents">PaymentIntents</a> to
- * collect payments or save them to Customer objects to store instrument details
- * for future payments.
+ * PaymentMethod objects represent your customer's payment instruments.
+ * You can use them with <a href="https://stripe.com/docs/payments/payment-intents">PaymentIntents</a> to collect payments or save them to
+ * Customer objects to store instrument details for future payments.
  *
- * Related guides: <a
- * href="https://stripe.com/docs/payments/payment-methods">Payment Methods</a> and
- * <a href="https://stripe.com/docs/payments/more-payment-scenarios">More Payment
- * Scenarios</a>.
+ * Related guides: <a href="https://stripe.com/docs/payments/payment-methods">Payment Methods</a> and <a href="https://stripe.com/docs/payments/more-payment-scenarios">More Payment Scenarios</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -48,6 +43,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $oxxo
  * @property null|\Stripe\StripeObject $p24
  * @property null|\Stripe\StripeObject $paynow
+ * @property null|\Stripe\StripeObject $paypal
  * @property null|\Stripe\StripeObject $pix
  * @property null|\Stripe\StripeObject $promptpay
  * @property null|\Stripe\StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
@@ -56,6 +52,7 @@ namespace Stripe;
  * @property string $type The type of the PaymentMethod. An additional hash is included on the PaymentMethod with a name matching this value. It contains additional information specific to the PaymentMethod type.
  * @property null|\Stripe\StripeObject $us_bank_account
  * @property null|\Stripe\StripeObject $wechat_pay
+ * @property null|\Stripe\StripeObject $zip
  */
 class PaymentMethod extends ApiResource
 {

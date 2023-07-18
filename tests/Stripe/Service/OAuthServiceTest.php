@@ -109,7 +109,7 @@ final class OAuthServiceTest extends \Stripe\TestCase
             'grant_type' => 'authorization_code',
             'code' => 'this_is_an_authorization_code',
         ]);
-        static::assertSame('sk_access_token', $resp->access_token);
+        static::assertSame('sk_access_token', $resp['access_token']);
     }
 
     public function testDeauthorize()
@@ -135,6 +135,6 @@ final class OAuthServiceTest extends \Stripe\TestCase
             'client_id' => 'ca_123',
             'stripe_user_id' => 'acct_test',
         ]);
-        static::assertSame('acct_test', $resp->stripe_user_id);
+        static::assertSame('acct_test', $resp['stripe_user_id']);
     }
 }
