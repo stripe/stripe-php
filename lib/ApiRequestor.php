@@ -129,7 +129,7 @@ class ApiRequestor
     }
 
     /**
-     * @param 'delete'|'get'|'post'     $method
+     * @param 'delete'|'get'|'post' $method
      * @param string     $url
      * @param callable $readBodyChunkCallable
      * @param null|array $params
