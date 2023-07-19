@@ -24,4 +24,11 @@ class Mandate extends ApiResource
     const OBJECT_NAME = 'mandate';
 
     use ApiOperations\Retrieve;
+
+    const STATUS_ACTIVE = 'active';
+    const STATUS_INACTIVE = 'inactive';
+    const STATUS_PENDING = 'pending';
+
+    const TYPE_MULTI_USE = 'multi_use';
+    const TYPE_SINGLE_USE = 'single_use';
 }

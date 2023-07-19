@@ -39,4 +39,11 @@ class Transaction extends \Stripe\ApiResource
     use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
+
+    const TYPE_CAPTURE = 'capture';
+    const TYPE_REFUND = 'refund';
+
+    const WALLET_APPLE_PAY = 'apple_pay';
+    const WALLET_GOOGLE_PAY = 'google_pay';
+    const WALLET_SAMSUNG_PAY = 'samsung_pay';
 }

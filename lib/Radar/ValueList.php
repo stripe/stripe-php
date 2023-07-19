@@ -29,4 +29,13 @@ class ValueList extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Delete;
     use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
+
+    const ITEM_TYPE_CARD_BIN = 'card_bin';
+    const ITEM_TYPE_CARD_FINGERPRINT = 'card_fingerprint';
+    const ITEM_TYPE_CASE_SENSITIVE_STRING = 'case_sensitive_string';
+    const ITEM_TYPE_COUNTRY = 'country';
+    const ITEM_TYPE_CUSTOMER_ID = 'customer_id';
+    const ITEM_TYPE_EMAIL = 'email';
+    const ITEM_TYPE_IP_ADDRESS = 'ip_address';
+    const ITEM_TYPE_STRING = 'string';
 }
