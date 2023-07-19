@@ -106,7 +106,7 @@ class ApiRequestor
     }
 
     /**
-     * @param string     $method
+     * @param 'delete'|'get'|'post' $method
      * @param string     $url
      * @param null|array $params
      * @param null|array $headers
@@ -128,7 +128,7 @@ class ApiRequestor
     }
 
     /**
-     * @param string     $method
+     * @param 'delete'|'get'|'post' $method
      * @param string     $url
      * @param callable $readBodyChunkCallable
      * @param null|array $params
@@ -432,7 +432,7 @@ class ApiRequestor
     }
 
     /**
-     * @param string $method
+     * @param 'delete'|'get'|'post' $method
      * @param string $url
      * @param array $params
      * @param array $headers
@@ -469,7 +469,7 @@ class ApiRequestor
     }
 
     /**
-     * @param string $method
+     * @param 'delete'|'get'|'post' $method
      * @param string $url
      * @param array $params
      * @param array $headers
