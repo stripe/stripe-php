@@ -27,7 +27,7 @@ trait Request
     }
 
     /**
-     * @param string $method HTTP method ('get', 'post', etc.)
+     * @param 'delete'|'get'|'post' $method HTTP method ('get', 'post', etc.)
      * @param string $url URL for the request
      * @param array $params list of parameters for the request
      * @param null|array|string $options
@@ -46,7 +46,7 @@ trait Request
     }
 
     /**
-     * @param string $method HTTP method ('get', 'post', etc.)
+     * @param 'delete'|'get'|'post' $method HTTP method ('get', 'post', etc.)
      * @param string $url URL for the request
      * @param callable $readBodyChunk function that will receive chunks of data from a successful request body
      * @param array $params list of parameters for the request
@@ -61,7 +61,7 @@ trait Request
     }
 
     /**
-     * @param string $method HTTP method ('get', 'post', etc.)
+     * @param 'delete'|'get'|'post' $method HTTP method ('get', 'post', etc.)
      * @param string $url URL for the request
      * @param array $params list of parameters for the request
      * @param null|array|string $options
@@ -82,7 +82,7 @@ trait Request
     }
 
     /**
-     * @param string $method HTTP method ('get', 'post', etc.)
+     * @param 'delete'|'get'|'post' $method HTTP method ('get', 'post', etc.)
      * @param string $url URL for the request
      * @param callable $readBodyChunk function that will receive chunks of data from a successful request body
      * @param array $params list of parameters for the request

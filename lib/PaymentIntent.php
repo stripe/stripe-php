@@ -93,6 +93,11 @@ class PaymentIntent extends ApiResource
     const STATUS_REQUIRES_PAYMENT_METHOD = 'requires_payment_method';
     const STATUS_SUCCEEDED = 'succeeded';
 
+    const CANCELLATION_REASON_DUPLICATE = 'duplicate';
+    const CANCELLATION_REASON_FRAUDULENT = 'fraudulent';
+    const CANCELLATION_REASON_REQUESTED_BY_CUSTOMER = 'requested_by_customer';
+    const CANCELLATION_REASON_ABANDONED = 'abandoned';
+
     /**
      * @param null|array $params
      * @param null|array|string $opts
