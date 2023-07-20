@@ -68,24 +68,6 @@ class Quote extends ApiResource
     const STATUS_STALE = 'stale';
 
     /**
-     * @param callable $readBodyChunkCallable
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     */
-    public function pdf($readBodyChunkCallable, $params = null, $opts = null)
-    {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
-        if (null === $opts->apiBase) {
-            $opts->apiBase = Stripe::$apiUploadBase;
-        }
-
-        $url = $this->instanceUrl() . '/pdf';
-        $this->_requestStream('get', $url, $readBodyChunkCallable, $params, $opts);
-    }
-
-    /**
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -225,6 +207,25 @@ class Quote extends ApiResource
         $this->refreshFrom($response, $opts);
 
         return $this;
+    }
+
+    /**
+     * @param callable $readBodyChunkCallable
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return void
+     */
+    public function pdf($readBodyChunkCallable, $params = null, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        if (!isset($opts->apiBase)) {
+            $opts->apiBase = Stripe::$apiUploadBase;
+        }
+        $url = $this->instanceUrl() . '/pdf';
+        $this->_requestStream('get', $url, $readBodyChunkCallable, $params, $opts);
     }
 
     /**

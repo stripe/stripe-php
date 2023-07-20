@@ -31,6 +31,12 @@ class Dispute extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
 
+    const STATUS_EXPIRED = 'expired';
+    const STATUS_LOST = 'lost';
+    const STATUS_SUBMITTED = 'submitted';
+    const STATUS_UNSUBMITTED = 'unsubmitted';
+    const STATUS_WON = 'won';
+
     /**
      * @param null|array $params
      * @param null|array|string $opts
