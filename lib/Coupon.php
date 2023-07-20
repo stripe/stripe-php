@@ -36,4 +36,8 @@ class Coupon extends ApiResource
     use ApiOperations\Delete;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
+
+    const DURATION_FOREVER = 'forever';
+    const DURATION_ONCE = 'once';
+    const DURATION_REPEATING = 'repeating';
 }

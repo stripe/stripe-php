@@ -5,9 +5,8 @@
 namespace Stripe;
 
 /**
- * Shipping rates describe the price of shipping presented to your customers and can be
- * applied to <a href="https://stripe.com/docs/payments/checkout/shipping">Checkout Sessions</a>
- * and <a href="https://stripe.com/docs/orders/shipping">Orders</a> to collect shipping costs.
+ * Shipping rates describe the price of shipping presented to your customers and
+ * applied to a purchase. For more information, see <a href="https://stripe.com/docs/payments/during-payment/charge-shipping">Charge for shipping</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

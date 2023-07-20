@@ -44,6 +44,16 @@ class Authorization extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
 
+    const AUTHORIZATION_METHOD_CHIP = 'chip';
+    const AUTHORIZATION_METHOD_CONTACTLESS = 'contactless';
+    const AUTHORIZATION_METHOD_KEYED_IN = 'keyed_in';
+    const AUTHORIZATION_METHOD_ONLINE = 'online';
+    const AUTHORIZATION_METHOD_SWIPE = 'swipe';
+
+    const STATUS_CLOSED = 'closed';
+    const STATUS_PENDING = 'pending';
+    const STATUS_REVERSED = 'reversed';
+
     /**
      * @param null|array $params
      * @param null|array|string $opts
