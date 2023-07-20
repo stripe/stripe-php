@@ -32,6 +32,15 @@ class Review extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Retrieve;
 
+    const CLOSED_REASON_APPROVED = 'approved';
+    const CLOSED_REASON_DISPUTED = 'disputed';
+    const CLOSED_REASON_REDACTED = 'redacted';
+    const CLOSED_REASON_REFUNDED = 'refunded';
+    const CLOSED_REASON_REFUNDED_AS_FRAUD = 'refunded_as_fraud';
+
+    const OPENED_REASON_MANUAL = 'manual';
+    const OPENED_REASON_RULE = 'rule';
+
     /**
      * Possible string representations of the current, the opening or the closure reason of the review.
      * Not all of these enumeration apply to all of the ´reason´ fields. Please consult the Review object to

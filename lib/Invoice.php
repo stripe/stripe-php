@@ -147,6 +147,10 @@ class Invoice extends ApiResource
     const COLLECTION_METHOD_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const COLLECTION_METHOD_SEND_INVOICE = 'send_invoice';
 
+    const CUSTOMER_TAX_EXEMPT_EXEMPT = 'exempt';
+    const CUSTOMER_TAX_EXEMPT_NONE = 'none';
+    const CUSTOMER_TAX_EXEMPT_REVERSE = 'reverse';
+
     /** @deprecated */
     const STATUS_DELETED = 'deleted';
     const STATUS_DRAFT = 'draft';
