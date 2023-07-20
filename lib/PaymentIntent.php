@@ -70,8 +70,26 @@ class PaymentIntent extends ApiResource
     use ApiOperations\Search;
     use ApiOperations\Update;
 
+    const CANCELLATION_REASON_ABANDONED = 'abandoned';
+    const CANCELLATION_REASON_AUTOMATIC = 'automatic';
+    const CANCELLATION_REASON_DUPLICATE = 'duplicate';
+    const CANCELLATION_REASON_FAILED_INVOICE = 'failed_invoice';
+    const CANCELLATION_REASON_FRAUDULENT = 'fraudulent';
+    const CANCELLATION_REASON_REQUESTED_BY_CUSTOMER = 'requested_by_customer';
+    const CANCELLATION_REASON_VOID_INVOICE = 'void_invoice';
+
+    const CAPTURE_METHOD_AUTOMATIC = 'automatic';
+    const CAPTURE_METHOD_AUTOMATIC_ASYNC = 'automatic_async';
+    const CAPTURE_METHOD_MANUAL = 'manual';
+
+    const CONFIRMATION_METHOD_AUTOMATIC = 'automatic';
+    const CONFIRMATION_METHOD_MANUAL = 'manual';
+
     const SECRET_KEY_CONFIRMATION_OPTIONAL = 'optional';
     const SECRET_KEY_CONFIRMATION_REQUIRED = 'required';
+
+    const SETUP_FUTURE_USAGE_OFF_SESSION = 'off_session';
+    const SETUP_FUTURE_USAGE_ON_SESSION = 'on_session';
 
     const STATUS_CANCELED = 'canceled';
     const STATUS_PROCESSING = 'processing';
@@ -80,11 +98,6 @@ class PaymentIntent extends ApiResource
     const STATUS_REQUIRES_CONFIRMATION = 'requires_confirmation';
     const STATUS_REQUIRES_PAYMENT_METHOD = 'requires_payment_method';
     const STATUS_SUCCEEDED = 'succeeded';
-
-    const CANCELLATION_REASON_DUPLICATE = 'duplicate';
-    const CANCELLATION_REASON_FRAUDULENT = 'fraudulent';
-    const CANCELLATION_REASON_REQUESTED_BY_CUSTOMER = 'requested_by_customer';
-    const CANCELLATION_REASON_ABANDONED = 'abandoned';
 
     /**
      * @param null|array $params

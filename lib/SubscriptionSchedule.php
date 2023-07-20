@@ -40,6 +40,20 @@ class SubscriptionSchedule extends ApiResource
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
+    const BILLING_BEHAVIOR_PRORATE_ON_NEXT_PHASE = 'prorate_on_next_phase';
+    const BILLING_BEHAVIOR_PRORATE_UP_FRONT = 'prorate_up_front';
+
+    const END_BEHAVIOR_CANCEL = 'cancel';
+    const END_BEHAVIOR_NONE = 'none';
+    const END_BEHAVIOR_RELEASE = 'release';
+    const END_BEHAVIOR_RENEW = 'renew';
+
+    const STATUS_ACTIVE = 'active';
+    const STATUS_CANCELED = 'canceled';
+    const STATUS_COMPLETED = 'completed';
+    const STATUS_NOT_STARTED = 'not_started';
+    const STATUS_RELEASED = 'released';
+
     /**
      * @param null|array $params
      * @param null|array|string $opts
