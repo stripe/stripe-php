@@ -81,9 +81,9 @@ class AccountService extends \Stripe\Service\AbstractService
      * platform</a>.
      *
      * If you’ve already collected information for your connected accounts, you <a
-     * href="/docs/connect/best-practices#onboarding">can pre-fill that information</a>
-     * when creating the account. Connect Onboarding won’t ask for the pre-filled
-     * information during account onboarding. You can pre-fill any information on the
+     * href="/docs/connect/best-practices#onboarding">can prefill that information</a>
+     * when creating the account. Connect Onboarding won’t ask for the prefilled
+     * information during account onboarding. You can prefill any information on the
      * account.
      *
      * @param null|array $params
