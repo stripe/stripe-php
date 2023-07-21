@@ -8,7 +8,7 @@ namespace Stripe;
  * This is an object representing a person associated with a Stripe account.
  *
  * A platform cannot access a Standard or Express account's persons after the account starts onboarding, such as after generating an account link for the account.
- * See the <a href="https://stripe.com/docs/connect/standard-accounts">Standard onboarding</a> or <a href="https://stripe.com/docs/connect/express-accounts">Express onboarding documentation</a> for information about platform pre-filling and account onboarding steps.
+ * See the <a href="https://stripe.com/docs/connect/standard-accounts">Standard onboarding</a> or <a href="https://stripe.com/docs/connect/express-accounts">Express onboarding documentation</a> for information about platform prefilling and account onboarding steps.
  *
  * Related guide: <a href="https://stripe.com/docs/connect/identity-verification-api#person-information">Handling identity verification with the API</a>
  *
