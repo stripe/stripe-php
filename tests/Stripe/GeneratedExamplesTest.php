@@ -18,7 +18,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
     /** @before */
     protected function setUpService()
     {
-        $this->client = new \Stripe\StripeClient(['api_key' => 'sk_test_123', 'api_base' => MOCK_URL]);
+        $this->client = new \Stripe\StripeClient(['api_key' => 'sk_test_123', 'api_base' => MOCK_URL, 'files_base' => MOCK_URL]);
     }
 
     public function testListSecret()
@@ -4107,5 +4107,16 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         ]);
         static::assertInstanceOf(\Stripe\Collection::class, $result);
         static::assertInstanceOf(\Stripe\CreditNoteLineItem::class, $result->data[0]);
+    }
+
+    public function testPdfQuote()
+    {
+        $this->expectsRequestStream('get', '/v1/quotes/qt_xxxxxxxxxxxxx/pdf');
+        $result = $this->client->quotes->pdf(
+            'qt_xxxxxxxxxxxxx',
+            function () {},
+            []
+        );
+        // TODO: assert proper instance, {"shape":"file"}
     }
 }
