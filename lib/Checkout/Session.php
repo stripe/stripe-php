@@ -52,6 +52,7 @@ namespace Stripe\Checkout;
  * @property null|string|\Stripe\PaymentIntent $payment_intent The ID of the PaymentIntent for Checkout Sessions in <code>payment</code> mode.
  * @property null|string|\Stripe\PaymentLink $payment_link The ID of the Payment Link that created this Session.
  * @property null|string $payment_method_collection Configure whether a Checkout Session should collect a payment method.
+ * @property null|\Stripe\StripeObject $payment_method_configuration_details Information about the payment method configuration used for this Checkout session.
  * @property null|\Stripe\StripeObject $payment_method_options Payment-method-specific configuration for the PaymentIntent or SetupIntent of this CheckoutSession.
  * @property string[] $payment_method_types A list of the types of payment methods (e.g. card) this Checkout Session is allowed to accept.
  * @property string $payment_status The payment status of the Checkout Session, one of <code>paid</code>, <code>unpaid</code>, or <code>no_payment_required</code>. You can use this value to decide when to fulfill your customer's order.
