@@ -201,7 +201,7 @@ class PaymentIntent extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\SearchResult<PaymentIntent> the payment intent search results
+     * @return \Stripe\SearchResult<\Stripe\PaymentIntent> the payment intent search results
      */
     public static function search($params = null, $opts = null)
     {

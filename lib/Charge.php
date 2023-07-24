@@ -152,7 +152,7 @@ class Charge extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\SearchResult<Charge> the charge search results
+     * @return \Stripe\SearchResult<\Stripe\Charge> the charge search results
      */
     public static function search($params = null, $opts = null)
     {

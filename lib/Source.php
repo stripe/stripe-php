@@ -145,7 +145,7 @@ class Source extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\SourceTransaction> list of SourceTransactions
+     * @return \Stripe\Collection<\Stripe\SourceTransaction> list of source transactions
      */
     public static function allSourceTransactions($id, $params = null, $opts = null)
     {

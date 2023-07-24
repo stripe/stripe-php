@@ -18,6 +18,7 @@ namespace Stripe\Apps;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
+ * @property null|bool $deleted If true, indicates that this secret has been deleted
  * @property null|int $expires_at The Unix timestamp for the expiry time of the secret, after which the secret deletes.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $name A name for the secret that's unique within the scope.
