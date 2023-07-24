@@ -54,8 +54,8 @@ class BalanceTransaction extends ApiResource
     const TYPE_PAYOUT_FAILURE = 'payout_failure';
     const TYPE_REFUND = 'refund';
     const TYPE_REFUND_FAILURE = 'refund_failure';
-    const TYPE_RESERVE_TRANSACTION = 'reserve_transaction';
     const TYPE_RESERVED_FUNDS = 'reserved_funds';
+    const TYPE_RESERVE_TRANSACTION = 'reserve_transaction';
     const TYPE_STRIPE_FEE = 'stripe_fee';
     const TYPE_STRIPE_FX_FEE = 'stripe_fx_fee';
     const TYPE_TAX_FEE = 'tax_fee';
