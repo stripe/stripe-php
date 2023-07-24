@@ -13,6 +13,17 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     /** @var string default base URL for Stripe's Files API */
     const DEFAULT_FILES_BASE = 'https://files.stripe.com';
 
+    /** @var array<string, null|string> */
+    const DEFAULT_CONFIG = [
+        'api_key' => null,
+        'client_id' => null,
+        'stripe_account' => null,
+        'stripe_version' => null,
+        'api_base' => self::DEFAULT_API_BASE,
+        'connect_base' => self::DEFAULT_CONNECT_BASE,
+        'files_base' => self::DEFAULT_FILES_BASE,
+    ];
+
     /** @var array<string, mixed> */
     private $config;
 
@@ -55,7 +66,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             throw new \Stripe\Exception\InvalidArgumentException('$config must be a string or an array');
         }
 
-        $config = \array_merge($this->getDefaultConfig(), $config);
+        $config = \array_merge(self::DEFAULT_CONFIG, $config);
         $this->validateConfig($config);
 
         $this->config = $config;
@@ -229,24 +240,6 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * TODO: replace this with a private constant when we drop support for PHP < 5.
-     *
-     * @return array<string, mixed>
-     */
-    private function getDefaultConfig()
-    {
-        return [
-            'api_key' => null,
-            'client_id' => null,
-            'stripe_account' => null,
-            'stripe_version' => null,
-            'api_base' => self::DEFAULT_API_BASE,
-            'connect_base' => self::DEFAULT_CONNECT_BASE,
-            'files_base' => self::DEFAULT_FILES_BASE,
-        ];
-    }
-
-    /**
      * @param array<string, mixed> $config
      *
      * @throws \Stripe\Exception\InvalidArgumentException
@@ -301,7 +294,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         }
 
         // check absence of extra keys
-        $extraConfigKeys = \array_diff(\array_keys($config), \array_keys($this->getDefaultConfig()));
+        $extraConfigKeys = \array_diff(\array_keys($config), \array_keys(self::DEFAULT_CONFIG));
         if (!empty($extraConfigKeys)) {
             // Wrap in single quote to more easily catch trailing spaces errors
             $invalidKeys = "'" . \implode("', '", $extraConfigKeys) . "'";
