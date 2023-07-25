@@ -4119,4 +4119,15 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         );
         // TODO: assert proper instance, {"shape":"file"}
     }
+
+    public function testPdfForm()
+    {
+        $this->expectsRequestStream('get', '/v1/tax/forms/form_xxxxxxxxxxxxx/pdf');
+        $result = $this->client->tax->forms->pdf(
+            'form_xxxxxxxxxxxxx',
+            function () {},
+            []
+        );
+        // TODO: assert proper instance, {"shape":"file"}
+    }
 }
