@@ -328,21 +328,6 @@ class Customer extends ApiResource
     {
         return self::_updateNestedResource($id, static::PATH_SOURCES, $sourceId, $params, $opts);
     }
-
-    /**
-     * @param string $id the ID of the undefined
-     * @param string $sourceId the ID of the payment source to verify
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\BankAccount|\Stripe\Card|\Stripe\Source
-     */
-    public static function verifySource($id, $sourceId, $params = null, $opts = null)
-    {
-        return self::_verifyNestedResource($id, static::PATH_SOURCES, $sourceId, $params, $opts);
-    }
     const PATH_TAX_IDS = '/tax_ids';
 
     /**
