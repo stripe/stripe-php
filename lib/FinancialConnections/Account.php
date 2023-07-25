@@ -76,7 +76,7 @@ class Account extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\FinancialConnections\AccountOwner> list of BankConnectionsResourceOwners
+     * @return \Stripe\Collection<\Stripe\FinancialConnections\AccountOwner> list of account owners
      */
     public static function allOwners($id, $params = null, $opts = null)
     {
@@ -86,6 +86,23 @@ class Account extends \Stripe\ApiResource
         $obj->setLastResponse($response);
 
         return $obj;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\FinancialConnections\Account the refreshed account
+     */
+    public function refreshAccount($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/refresh';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
     }
 
     /**
@@ -116,23 +133,6 @@ class Account extends \Stripe\ApiResource
     public function unsubscribe($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/unsubscribe';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-
-        return $this;
-    }
-
-    /**
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\FinancialConnections\Account the refreshed account
-     */
-    public function refreshAccount($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/refresh';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
 

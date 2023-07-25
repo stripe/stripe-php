@@ -64,7 +64,7 @@ class Price extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\SearchResult<Price> the price search results
+     * @return \Stripe\SearchResult<\Stripe\Price> the price search results
      */
     public static function search($params = null, $opts = null)
     {

@@ -228,6 +228,8 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Delete a specified source for a given customer.
+     *
      * @param string $parentId
      * @param string $id
      * @param null|array $params
@@ -461,6 +463,8 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Update a specified source for a given customer.
+     *
      * @param string $parentId
      * @param string $id
      * @param null|array $params
@@ -476,6 +480,8 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Verify a specified bank account for a given customer.
+     *
      * @param string $parentId
      * @param string $id
      * @param null|array $params

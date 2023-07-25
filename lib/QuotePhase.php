@@ -31,8 +31,6 @@ class QuotePhase extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Retrieve;
 
-    const BILLING_CYCLE_ANCHOR_RESET = 'reset';
-
     const COLLECTION_METHOD_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const COLLECTION_METHOD_SEND_INVOICE = 'send_invoice';
 
@@ -47,7 +45,7 @@ class QuotePhase extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\LineItem> list of LineItems
+     * @return \Stripe\Collection<\Stripe\LineItem> list of line items
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {

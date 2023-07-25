@@ -88,7 +88,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\PaymentMethod> list of PaymentMethods
+     * @return \Stripe\Collection<\Stripe\PaymentMethod> list of payment methods
      */
     public static function allPaymentMethods($id, $params = null, $opts = null)
     {
@@ -107,7 +107,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Customer the retrieved customer
+     * @return \Stripe\PaymentMethod the retrieved payment method
      */
     public function retrievePaymentMethod($payment_method, $params = null, $opts = null)
     {
@@ -125,7 +125,7 @@ class Customer extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\SearchResult<Customer> the customer search results
+     * @return \Stripe\SearchResult<\Stripe\Customer> the customer search results
      */
     public static function search($params = null, $opts = null)
     {

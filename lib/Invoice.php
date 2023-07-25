@@ -133,9 +133,6 @@ class Invoice extends ApiResource
     use ApiOperations\Search;
     use ApiOperations\Update;
 
-    const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
-    const BILLING_SEND_INVOICE = 'send_invoice';
-
     const BILLING_REASON_AUTOMATIC_PENDING_INVOICE_ITEM_INVOICE = 'automatic_pending_invoice_item_invoice';
     const BILLING_REASON_MANUAL = 'manual';
     const BILLING_REASON_QUOTE_ACCEPT = 'quote_accept';
@@ -153,13 +150,17 @@ class Invoice extends ApiResource
     const CUSTOMER_TAX_EXEMPT_NONE = 'none';
     const CUSTOMER_TAX_EXEMPT_REVERSE = 'reverse';
 
-    /** @deprecated */
-    const STATUS_DELETED = 'deleted';
     const STATUS_DRAFT = 'draft';
     const STATUS_OPEN = 'open';
     const STATUS_PAID = 'paid';
     const STATUS_UNCOLLECTIBLE = 'uncollectible';
     const STATUS_VOID = 'void';
+
+    const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
+    const BILLING_SEND_INVOICE = 'send_invoice';
+
+    /** @deprecated */
+    const STATUS_DELETED = 'deleted';
 
     /**
      * @param null|array $params
@@ -253,7 +254,7 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\InvoiceLineItem> list of InvoiceLineItems
+     * @return \Stripe\Collection<\Stripe\InvoiceLineItem> list of invoice line items
      */
     public static function upcomingLines($params = null, $opts = null)
     {
@@ -288,7 +289,7 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\SearchResult<Invoice> the invoice search results
+     * @return \Stripe\SearchResult<\Stripe\Invoice> the invoice search results
      */
     public static function search($params = null, $opts = null)
     {

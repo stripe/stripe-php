@@ -37,7 +37,7 @@ class Calculation extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\Tax\CalculationLineItem> list of TaxProductResourceTaxCalculationLineItems
+     * @return \Stripe\Collection<\Stripe\Tax\CalculationLineItem> list of calculation line items
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {
