@@ -36,6 +36,11 @@ class FormService extends \Stripe\Service\AbstractService
      */
     public function pdf($id, $readBodyChunkCallable, $params = null, $opts = null)
     {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        if (!isset($opts->apiBase)) {
+            $opts->apiBase = $this->getClient()->getFilesBase();
+        }
+
         return $this->requestStream('get', $this->buildPath('/v1/tax/forms/%s/pdf', $id), $readBodyChunkCallable, $params, $opts);
     }
 
