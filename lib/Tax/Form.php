@@ -45,7 +45,7 @@ class Form extends \Stripe\ApiResource
     {
         $opts = \Stripe\Util\RequestOptions::parse($opts);
         if (!isset($opts->apiBase)) {
-            $opts->apiBase = Stripe::$apiUploadBase;
+            $opts->apiBase = \Stripe\Stripe::$apiUploadBase;
         }
         $url = $this->instanceUrl() . '/pdf';
         $this->_requestStream('get', $url, $readBodyChunkCallable, $params, $opts);
