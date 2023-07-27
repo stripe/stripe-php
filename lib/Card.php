@@ -29,11 +29,14 @@ namespace Stripe;
  * @property null|string|\Stripe\Customer $customer The customer that this card belongs to. This attribute will not be in the card object if the card belongs to an account or recipient instead.
  * @property null|string $cvc_check If a CVC was provided, results of the check: <code>pass</code>, <code>fail</code>, <code>unavailable</code>, or <code>unchecked</code>. A result of unchecked indicates that CVC was provided but hasn't been checked yet. Checks are typically performed when attaching a card to a Customer object, or when creating a charge. For more details, see <a href="https://support.stripe.com/questions/check-if-a-card-is-valid-without-a-charge">Check if a card is valid without a charge</a>.
  * @property null|bool $default_for_currency Whether this card is the default external account for its currency.
+ * @property null|string $description A high-level description of the type of cards issued in this range. (For internal use only and not typically available in standard API requests.)
  * @property null|string $dynamic_last4 (For tokenized numbers only.) The last four digits of the device account number.
  * @property int $exp_month Two-digit number representing the card's expiration month.
  * @property int $exp_year Four-digit number representing the card's expiration year.
  * @property null|string $fingerprint <p>Uniquely identifies this particular card number. You can use this attribute to check whether two customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number.</p><p><em>Starting May 1, 2021, card fingerprint in India for Connect will change to allow two fingerprints for the same card --- one for India and one for the rest of the world.</em></p>
  * @property string $funding Card funding type. Can be <code>credit</code>, <code>debit</code>, <code>prepaid</code>, or <code>unknown</code>.
+ * @property null|string $iin Issuer identification number of the card. (For internal use only and not typically available in standard API requests.)
+ * @property null|string $issuer The name of the card's issuing bank. (For internal use only and not typically available in standard API requests.)
  * @property string $last4 The last four digits of the card.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name Cardholder name.

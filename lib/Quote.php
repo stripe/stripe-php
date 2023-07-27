@@ -119,7 +119,7 @@ class Quote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\LineItem> list of LineItems
+     * @return \Stripe\Collection<\Stripe\LineItem> list of line items
      */
     public static function allComputedUpfrontLineItems($id, $params = null, $opts = null)
     {
@@ -138,7 +138,7 @@ class Quote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\LineItem> list of LineItems
+     * @return \Stripe\Collection<\Stripe\LineItem> list of line items
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {
@@ -163,7 +163,7 @@ class Quote extends ApiResource
     {
         $opts = \Stripe\Util\RequestOptions::parse($opts);
         if (!isset($opts->apiBase)) {
-            $opts->apiBase = Stripe::$apiUploadBase;
+            $opts->apiBase = \Stripe\Stripe::$apiUploadBase;
         }
         $url = $this->instanceUrl() . '/pdf';
         $this->_requestStream('get', $url, $readBodyChunkCallable, $params, $opts);
