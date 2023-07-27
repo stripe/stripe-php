@@ -1,5 +1,14 @@
 # Changelog
 
+## 10.19.0 - 2023-07-27
+* [#1534](https://github.com/stripe/stripe-php/pull/1534) Update generated code
+  * Improve PHPDoc type for `ApplicationFee.refunds`
+  * Add support for `deleted` on `Apps.Secret`
+* [#1526](https://github.com/stripe/stripe-php/pull/1526) Add constants for payment intent cancellation reasons
+* [#1533](https://github.com/stripe/stripe-php/pull/1533) Update generated code
+  * Add support for new value `service_tax` on enum `TaxRate.tax_type`
+* [#1487](https://github.com/stripe/stripe-php/pull/1487) PHPDoc: use union of literals for $method parameter throughout
+
 ## 10.18.0 - 2023-07-20
 * [#1533](https://github.com/stripe/stripe-php/pull/1533) Update generated code
   * Add support for new value `service_tax` on enum `TaxRate.tax_type`
