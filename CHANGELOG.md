@@ -1,5 +1,8 @@
 # Changelog
 
+## 10.20.0-beta.1 - 2023-07-27
+  * Updated stable APIs to the latest version
+
 ## 10.18.0 - 2023-07-20
 * [#1533](https://github.com/stripe/stripe-php/pull/1533) Update generated code
   * Add support for new value `service_tax` on enum `TaxRate.tax_type`
