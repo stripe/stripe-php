@@ -22,7 +22,7 @@ namespace Stripe;
  * @property null|int $max_redemptions Maximum number of times this coupon can be redeemed, in total, across all customers, before it is no longer valid.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name Name of the coupon displayed to customers on for instance invoices or receipts.
- * @property null|float $percent_off Percent that will be taken off the subtotal of any invoices for this customer for the duration of the coupon. For example, a coupon with percent_off of 50 will make a %s100 invoice %s50 instead.
+ * @property null|float $percent_off Percent that will be taken off the subtotal of any invoices for this customer for the duration of the coupon. For example, a coupon with percent_off of 50 will make a $ (or local equivalent)100 invoice $ (or local equivalent)50 instead.
  * @property null|int $redeem_by Date after which the coupon can no longer be redeemed.
  * @property int $times_redeemed Number of times this coupon has been applied to a customer.
  * @property bool $valid Taking account of the above properties, whether this coupon can still be applied to a customer.

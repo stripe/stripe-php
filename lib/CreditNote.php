@@ -11,13 +11,13 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property int $amount The integer amount in %s representing the total amount of the credit note, including tax.
+ * @property int $amount The integer amount in cents (or local equivalent) representing the total amount of the credit note, including tax.
  * @property int $amount_shipping This is the sum of all the shipping amounts.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property string|\Stripe\Customer $customer ID of the customer.
  * @property null|string|\Stripe\CustomerBalanceTransaction $customer_balance_transaction Customer balance transaction related to this credit note.
- * @property int $discount_amount The integer amount in %s representing the total amount of discount that was credited.
+ * @property int $discount_amount The integer amount in cents (or local equivalent) representing the total amount of discount that was credited.
  * @property \Stripe\StripeObject[] $discount_amounts The aggregate amounts calculated per discount for all line items.
  * @property null|int $effective_at The date when this credit note is in effect. Same as <code>created</code> unless overwritten. When defined, this value replaces the system-generated 'Date of issue' printed on the credit note PDF.
  * @property string|\Stripe\Invoice $invoice ID of the invoice.
@@ -32,11 +32,11 @@ namespace Stripe;
  * @property null|string|\Stripe\Refund $refund Refund related to this credit note.
  * @property null|\Stripe\StripeObject $shipping_cost The details of the cost of shipping, including the ShippingRate applied to the invoice.
  * @property string $status Status of this credit note, one of <code>issued</code> or <code>void</code>. Learn more about <a href="https://stripe.com/docs/billing/invoices/credit-notes#voiding">voiding credit notes</a>.
- * @property int $subtotal The integer amount in %s representing the amount of the credit note, excluding exclusive tax and invoice level discounts.
- * @property null|int $subtotal_excluding_tax The integer amount in %s representing the amount of the credit note, excluding all tax and invoice level discounts.
+ * @property int $subtotal The integer amount in cents (or local equivalent) representing the amount of the credit note, excluding exclusive tax and invoice level discounts.
+ * @property null|int $subtotal_excluding_tax The integer amount in cents (or local equivalent) representing the amount of the credit note, excluding all tax and invoice level discounts.
  * @property \Stripe\StripeObject[] $tax_amounts The aggregate amounts calculated per tax rate for all line items.
- * @property int $total The integer amount in %s representing the total amount of the credit note, including tax and all discount.
- * @property null|int $total_excluding_tax The integer amount in %s representing the total amount of the credit note, excluding tax, but including discounts.
+ * @property int $total The integer amount in cents (or local equivalent) representing the total amount of the credit note, including tax and all discount.
+ * @property null|int $total_excluding_tax The integer amount in cents (or local equivalent) representing the total amount of the credit note, excluding tax, but including discounts.
  * @property string $type Type of this credit note, one of <code>pre_payment</code> or <code>post_payment</code>. A <code>pre_payment</code> credit note means it was issued when the invoice was open. A <code>post_payment</code> credit note means it was issued when the invoice was paid.
  * @property null|int $voided_at The time that the credit note was voided.
  */
