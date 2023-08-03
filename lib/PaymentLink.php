@@ -17,7 +17,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $after_completion
  * @property bool $allow_promotion_codes Whether user redeemable promotion codes are enabled.
  * @property null|int $application_fee_amount The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's Stripe account.
- * @property null|float $application_fee_percent This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner's Stripe account.
+ * @property null|float $application_fee_percent This represents the percentage of the subscription invoice total that will be transferred to the application owner's Stripe account.
  * @property \Stripe\StripeObject $automatic_tax
  * @property string $billing_address_collection Configuration for collecting the customer's billing address.
  * @property null|\Stripe\StripeObject $consent_collection When set, provides configuration to gather active consent from customers.
