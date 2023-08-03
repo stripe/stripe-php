@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.21.0-beta.1 - 2023-08-03
+* [#1541](https://github.com/stripe/stripe-php/pull/1541) Update generated code for beta
+  * Add support for `submit_card` test helper method on resource `Issuing.Card`
+
 ## 10.20.0-beta.2 - 2023-07-28
 * [#1537](https://github.com/stripe/stripe-php/pull/1537) Update generated code for beta
   * Release specs are identical.
