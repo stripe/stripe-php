@@ -13,7 +13,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property int $amount Amount, in %s.
+ * @property int $amount Amount, in cents (or local equivalent).
  * @property null|string|\Stripe\BalanceTransaction $balance_transaction Balance transaction that describes the impact on your account balance.
  * @property null|string|\Stripe\Charge $charge ID of the charge that was refunded.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
