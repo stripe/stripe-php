@@ -4,6 +4,12 @@
 * [#1541](https://github.com/stripe/stripe-php/pull/1541) Update generated code for beta
   * Add support for `submit_card` test helper method on resource `Issuing.Card`
 
+## 10.20.0 - 2023-08-03
+* [#1544](https://github.com/stripe/stripe-php/pull/1544) Update generated code
+* [#1539](https://github.com/stripe/stripe-php/pull/1539) Update generated code
+  * Add support for `subscription_details` on `Invoice`
+  * Add support for new values `sepa_debit_fingerprint` and `us_bank_account_fingerprint` on enum `Radar.ValueList.item_type`
+
 ## 10.20.0-beta.2 - 2023-07-28
 * [#1537](https://github.com/stripe/stripe-php/pull/1537) Update generated code for beta
   * Release specs are identical.
