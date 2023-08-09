@@ -160,8 +160,8 @@ class AccountService extends \Stripe\Service\AbstractService
      * zero.
      *
      * If you want to delete your own account, use the <a
-     * href="https://dashboard.stripe.com/account">account information tab in your
-     * account settings</a> instead.
+     * href="https://dashboard.stripe.com/settings/account">account information tab in
+     * your account settings</a> instead.
      *
      * @param string $id
      * @param null|array $params
@@ -296,9 +296,9 @@ class AccountService extends \Stripe\Service\AbstractService
      * <strong>Custom Only</strong> or <strong>Custom and Express</strong> below.
      *
      * To update your own account, use the <a
-     * href="https://dashboard.stripe.com/account">Dashboard</a>. Refer to our <a
-     * href="/docs/connect/updating-accounts">Connect</a> documentation to learn more
-     * about updating accounts.
+     * href="https://dashboard.stripe.com/settings/account">Dashboard</a>. Refer to our
+     * <a href="/docs/connect/updating-accounts">Connect</a> documentation to learn
+     * more about updating accounts.
      *
      * @param string $id
      * @param null|array $params
