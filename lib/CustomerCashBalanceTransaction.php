@@ -12,6 +12,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property null|\Stripe\StripeObject $adjusted_for_overdraft
  * @property null|\Stripe\StripeObject $applied_to_payment
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
@@ -31,6 +32,7 @@ class CustomerCashBalanceTransaction extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Retrieve;
 
+    const TYPE_ADJUSTED_FOR_OVERDRAFT = 'adjusted_for_overdraft';
     const TYPE_APPLIED_TO_PAYMENT = 'applied_to_payment';
     const TYPE_FUNDED = 'funded';
     const TYPE_FUNDING_REVERSED = 'funding_reversed';
