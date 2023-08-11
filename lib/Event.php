@@ -214,6 +214,7 @@ class Event extends ApiResource
     const PROMOTION_CODE_UPDATED = 'promotion_code.updated';
     const QUOTE_ACCEPTED = 'quote.accepted';
     const QUOTE_ACCEPTING = 'quote.accepting';
+    const QUOTE_ACCEPT_FAILED = 'quote.accept_failed';
     const QUOTE_CANCELED = 'quote.canceled';
     const QUOTE_CREATED = 'quote.created';
     const QUOTE_DRAFT = 'quote.draft';
