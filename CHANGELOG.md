@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.22.0-beta.1 - 2023-08-10
+* [#1545](https://github.com/stripe/stripe-php/pull/1545) Update generated code for beta
+  * Add support for `paypal` on `PaymentMethodConfiguration`
+
 ## 10.21.0-beta.1 - 2023-08-03
 * [#1541](https://github.com/stripe/stripe-php/pull/1541) Update generated code for beta
   * Add support for `submit_card` test helper method on resource `Issuing.Card`
