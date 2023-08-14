@@ -67,6 +67,24 @@ class PaymentIntent extends ApiResource
     use ApiOperations\Search;
     use ApiOperations\Update;
 
+    const CANCELLATION_REASON_ABANDONED = 'abandoned';
+    const CANCELLATION_REASON_AUTOMATIC = 'automatic';
+    const CANCELLATION_REASON_DUPLICATE = 'duplicate';
+    const CANCELLATION_REASON_FAILED_INVOICE = 'failed_invoice';
+    const CANCELLATION_REASON_FRAUDULENT = 'fraudulent';
+    const CANCELLATION_REASON_REQUESTED_BY_CUSTOMER = 'requested_by_customer';
+    const CANCELLATION_REASON_VOID_INVOICE = 'void_invoice';
+
+    const CAPTURE_METHOD_AUTOMATIC = 'automatic';
+    const CAPTURE_METHOD_AUTOMATIC_ASYNC = 'automatic_async';
+    const CAPTURE_METHOD_MANUAL = 'manual';
+
+    const CONFIRMATION_METHOD_AUTOMATIC = 'automatic';
+    const CONFIRMATION_METHOD_MANUAL = 'manual';
+
+    const SETUP_FUTURE_USAGE_OFF_SESSION = 'off_session';
+    const SETUP_FUTURE_USAGE_ON_SESSION = 'on_session';
+
     const STATUS_CANCELED = 'canceled';
     const STATUS_PROCESSING = 'processing';
     const STATUS_REQUIRES_ACTION = 'requires_action';
@@ -183,7 +201,7 @@ class PaymentIntent extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\SearchResult<PaymentIntent> the payment intent search results
+     * @return \Stripe\SearchResult<\Stripe\PaymentIntent> the payment intent search results
      */
     public static function search($params = null, $opts = null)
     {

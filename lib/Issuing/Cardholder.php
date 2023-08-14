@@ -34,4 +34,11 @@ class Cardholder extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Create;
     use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
+
+    const STATUS_ACTIVE = 'active';
+    const STATUS_BLOCKED = 'blocked';
+    const STATUS_INACTIVE = 'inactive';
+
+    const TYPE_COMPANY = 'company';
+    const TYPE_INDIVIDUAL = 'individual';
 }

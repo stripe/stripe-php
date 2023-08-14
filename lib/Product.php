@@ -56,7 +56,7 @@ class Product extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\SearchResult<Product> the product search results
+     * @return \Stripe\SearchResult<\Stripe\Product> the product search results
      */
     public static function search($params = null, $opts = null)
     {

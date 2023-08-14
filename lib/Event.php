@@ -63,8 +63,8 @@ class Event extends ApiResource
     const ACCOUNT_EXTERNAL_ACCOUNT_UPDATED = 'account.external_account.updated';
     const ACCOUNT_UPDATED = 'account.updated';
     const APPLICATION_FEE_CREATED = 'application_fee.created';
-    const APPLICATION_FEE_REFUND_UPDATED = 'application_fee.refund.updated';
     const APPLICATION_FEE_REFUNDED = 'application_fee.refunded';
+    const APPLICATION_FEE_REFUND_UPDATED = 'application_fee.refund.updated';
     const BALANCE_AVAILABLE = 'balance.available';
     const BILLING_PORTAL_CONFIGURATION_CREATED = 'billing_portal.configuration.created';
     const BILLING_PORTAL_CONFIGURATION_UPDATED = 'billing_portal.configuration.updated';
@@ -80,8 +80,8 @@ class Event extends ApiResource
     const CHARGE_EXPIRED = 'charge.expired';
     const CHARGE_FAILED = 'charge.failed';
     const CHARGE_PENDING = 'charge.pending';
-    const CHARGE_REFUND_UPDATED = 'charge.refund.updated';
     const CHARGE_REFUNDED = 'charge.refunded';
+    const CHARGE_REFUND_UPDATED = 'charge.refund.updated';
     const CHARGE_SUCCEEDED = 'charge.succeeded';
     const CHARGE_UPDATED = 'charge.updated';
     const CHECKOUT_SESSION_ASYNC_PAYMENT_FAILED = 'checkout.session.async_payment_failed';
@@ -94,6 +94,7 @@ class Event extends ApiResource
     const CREDIT_NOTE_CREATED = 'credit_note.created';
     const CREDIT_NOTE_UPDATED = 'credit_note.updated';
     const CREDIT_NOTE_VOIDED = 'credit_note.voided';
+    const CUSTOMER_CASH_BALANCE_TRANSACTION_CREATED = 'customer_cash_balance_transaction.created';
     const CUSTOMER_CREATED = 'customer.created';
     const CUSTOMER_DELETED = 'customer.deleted';
     const CUSTOMER_DISCOUNT_CREATED = 'customer.discount.created';
@@ -115,7 +116,6 @@ class Event extends ApiResource
     const CUSTOMER_TAX_ID_DELETED = 'customer.tax_id.deleted';
     const CUSTOMER_TAX_ID_UPDATED = 'customer.tax_id.updated';
     const CUSTOMER_UPDATED = 'customer.updated';
-    const CUSTOMER_CASH_BALANCE_TRANSACTION_CREATED = 'customer_cash_balance_transaction.created';
     const FILE_CREATED = 'file.created';
     const FINANCIAL_CONNECTIONS_ACCOUNT_CREATED = 'financial_connections.account.created';
     const FINANCIAL_CONNECTIONS_ACCOUNT_DEACTIVATED = 'financial_connections.account.deactivated';
@@ -128,6 +128,9 @@ class Event extends ApiResource
     const IDENTITY_VERIFICATION_SESSION_REDACTED = 'identity.verification_session.redacted';
     const IDENTITY_VERIFICATION_SESSION_REQUIRES_INPUT = 'identity.verification_session.requires_input';
     const IDENTITY_VERIFICATION_SESSION_VERIFIED = 'identity.verification_session.verified';
+    const INVOICEITEM_CREATED = 'invoiceitem.created';
+    const INVOICEITEM_DELETED = 'invoiceitem.deleted';
+    const INVOICEITEM_UPDATED = 'invoiceitem.updated';
     const INVOICE_CREATED = 'invoice.created';
     const INVOICE_DELETED = 'invoice.deleted';
     const INVOICE_FINALIZATION_FAILED = 'invoice.finalization_failed';
@@ -141,16 +144,13 @@ class Event extends ApiResource
     const INVOICE_UPCOMING = 'invoice.upcoming';
     const INVOICE_UPDATED = 'invoice.updated';
     const INVOICE_VOIDED = 'invoice.voided';
-    const INVOICEITEM_CREATED = 'invoiceitem.created';
-    const INVOICEITEM_DELETED = 'invoiceitem.deleted';
-    const INVOICEITEM_UPDATED = 'invoiceitem.updated';
     const ISSUING_AUTHORIZATION_CREATED = 'issuing_authorization.created';
     const ISSUING_AUTHORIZATION_REQUEST = 'issuing_authorization.request';
     const ISSUING_AUTHORIZATION_UPDATED = 'issuing_authorization.updated';
-    const ISSUING_CARD_CREATED = 'issuing_card.created';
-    const ISSUING_CARD_UPDATED = 'issuing_card.updated';
     const ISSUING_CARDHOLDER_CREATED = 'issuing_cardholder.created';
     const ISSUING_CARDHOLDER_UPDATED = 'issuing_cardholder.updated';
+    const ISSUING_CARD_CREATED = 'issuing_card.created';
+    const ISSUING_CARD_UPDATED = 'issuing_card.updated';
     const ISSUING_DISPUTE_CLOSED = 'issuing_dispute.closed';
     const ISSUING_DISPUTE_CREATED = 'issuing_dispute.created';
     const ISSUING_DISPUTE_FUNDS_REINSTATED = 'issuing_dispute.funds_reinstated';
@@ -235,6 +235,7 @@ class Event extends ApiResource
     const SUBSCRIPTION_SCHEDULE_UPDATED = 'subscription_schedule.updated';
     const TAX_RATE_CREATED = 'tax_rate.created';
     const TAX_RATE_UPDATED = 'tax_rate.updated';
+    const TAX_SETTINGS_UPDATED = 'tax.settings.updated';
     const TERMINAL_READER_ACTION_FAILED = 'terminal.reader.action_failed';
     const TERMINAL_READER_ACTION_SUCCEEDED = 'terminal.reader.action_succeeded';
     const TEST_HELPERS_TEST_CLOCK_ADVANCING = 'test_helpers.test_clock.advancing';

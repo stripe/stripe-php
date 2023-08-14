@@ -1,5 +1,30 @@
 # Changelog
 
+## 10.19.0 - 2023-07-27
+* [#1534](https://github.com/stripe/stripe-php/pull/1534) Update generated code
+  * Improve PHPDoc type for `ApplicationFee.refunds`
+  * Add support for `deleted` on `Apps.Secret`
+* [#1526](https://github.com/stripe/stripe-php/pull/1526) Add constants for payment intent cancellation reasons
+* [#1533](https://github.com/stripe/stripe-php/pull/1533) Update generated code
+  * Add support for new value `service_tax` on enum `TaxRate.tax_type`
+* [#1487](https://github.com/stripe/stripe-php/pull/1487) PHPDoc: use union of literals for $method parameter throughout
+
+## 10.18.0 - 2023-07-20
+* [#1533](https://github.com/stripe/stripe-php/pull/1533) Update generated code
+  * Add support for new value `service_tax` on enum `TaxRate.tax_type`
+* [#1526](https://github.com/stripe/stripe-php/pull/1526) Add constants for payment intent cancellation reasons
+* [#1487](https://github.com/stripe/stripe-php/pull/1487) PHPDoc: use union of literals for $method parameter throughout
+
+## 10.17.0 - 2023-07-13
+* [#1525](https://github.com/stripe/stripe-php/pull/1525) Update generated code
+  * Add support for new resource `Tax.Settings`
+  * Add support for `retrieve` and `update` methods on resource `Settings`
+  * Add support for new value `invalid_tax_location` on enum `StripeError.code`
+  * Add support for `product` on `Tax.TransactionLineItem`
+  * Add constant for `tax.settings.updated` webhook event
+* [#1520](https://github.com/stripe/stripe-php/pull/1520) Update generated code
+  * Release specs are identical.
+
 ## 10.16.0 - 2023-06-29
 * [#1517](https://github.com/stripe/stripe-php/pull/1517) Update generated code
   * Add support for new value `application_fees_not_allowed` on enum `StripeError.code`

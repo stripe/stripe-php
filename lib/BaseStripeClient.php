@@ -13,6 +13,18 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     /** @var string default base URL for Stripe's Files API */
     const DEFAULT_FILES_BASE = 'https://files.stripe.com';
 
+    /** @var array<string, null|string> */
+    const DEFAULT_CONFIG = [
+        'api_key' => null,
+        'client_id' => null,
+        'stripe_account' => null,
+        // Note, even if null, ApiRequestor will default this to Stripe::$apiVersion
+        'stripe_version' => null,
+        'api_base' => self::DEFAULT_API_BASE,
+        'connect_base' => self::DEFAULT_CONNECT_BASE,
+        'files_base' => self::DEFAULT_FILES_BASE,
+    ];
+
     /** @var array<string, mixed> */
     private $config;
 
@@ -55,7 +67,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             throw new \Stripe\Exception\InvalidArgumentException('$config must be a string or an array');
         }
 
-        $config = \array_merge($this->getDefaultConfig(), $config);
+        $config = \array_merge(self::DEFAULT_CONFIG, $config);
         $this->validateConfig($config);
 
         $this->config = $config;
@@ -119,7 +131,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     /**
      * Sends a request to Stripe's API.
      *
-     * @param string $method the HTTP method
+     * @param 'delete'|'get'|'post' $method the HTTP method
      * @param string $path the path of the request
      * @param array $params the parameters of the request
      * @param array|\Stripe\Util\RequestOptions $opts the special modifiers of the request
@@ -143,7 +155,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * Sends a request to Stripe's API, passing chunks of the streamed response
      * into a user-provided $readBodyChunkCallable callback.
      *
-     * @param string $method the HTTP method
+     * @param 'delete'|'get'|'post' $method the HTTP method
      * @param string $path the path of the request
      * @param callable $readBodyChunkCallable a function that will be called
      * @param array $params the parameters of the request
@@ -161,7 +173,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     /**
      * Sends a request to Stripe's API.
      *
-     * @param string $method the HTTP method
+     * @param 'delete'|'get'|'post' $method the HTTP method
      * @param string $path the path of the request
      * @param array $params the parameters of the request
      * @param array|\Stripe\Util\RequestOptions $opts the special modifiers of the request
@@ -185,7 +197,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     /**
      * Sends a request to Stripe's API.
      *
-     * @param string $method the HTTP method
+     * @param 'delete'|'get'|'post' $method the HTTP method
      * @param string $path the path of the request
      * @param array $params the parameters of the request
      * @param array|\Stripe\Util\RequestOptions $opts the special modifiers of the request
@@ -226,25 +238,6 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         }
 
         return $apiKey;
-    }
-
-    /**
-     * TODO: replace this with a private constant when we drop support for PHP < 5.
-     *
-     * @return array<string, mixed>
-     */
-    private function getDefaultConfig()
-    {
-        return [
-            'api_key' => null,
-            'client_id' => null,
-            'stripe_account' => null,
-            // Note, even if null, ApiRequestor will default this to Stripe::$apiVersion
-            'stripe_version' => null,
-            'api_base' => self::DEFAULT_API_BASE,
-            'connect_base' => self::DEFAULT_CONNECT_BASE,
-            'files_base' => self::DEFAULT_FILES_BASE,
-        ];
     }
 
     /**
@@ -302,7 +295,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         }
 
         // check absence of extra keys
-        $extraConfigKeys = \array_diff(\array_keys($config), \array_keys($this->getDefaultConfig()));
+        $extraConfigKeys = \array_diff(\array_keys($config), \array_keys(self::DEFAULT_CONFIG));
         if (!empty($extraConfigKeys)) {
             // Wrap in single quote to more easily catch trailing spaces errors
             $invalidKeys = "'" . \implode("', '", $extraConfigKeys) . "'";

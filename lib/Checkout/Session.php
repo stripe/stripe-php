@@ -128,7 +128,7 @@ class Session extends \Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\LineItem> list of LineItems
+     * @return \Stripe\Collection<\Stripe\LineItem> list of line items
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {

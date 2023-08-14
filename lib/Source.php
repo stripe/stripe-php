@@ -74,6 +74,26 @@ class Source extends ApiResource
     const STATUS_FAILED = 'failed';
     const STATUS_PENDING = 'pending';
 
+    const TYPE_ACH_CREDIT_TRANSFER = 'ach_credit_transfer';
+    const TYPE_ACH_DEBIT = 'ach_debit';
+    const TYPE_ACSS_DEBIT = 'acss_debit';
+    const TYPE_ALIPAY = 'alipay';
+    const TYPE_AU_BECS_DEBIT = 'au_becs_debit';
+    const TYPE_BANCONTACT = 'bancontact';
+    const TYPE_CARD = 'card';
+    const TYPE_CARD_PRESENT = 'card_present';
+    const TYPE_EPS = 'eps';
+    const TYPE_GIROPAY = 'giropay';
+    const TYPE_IDEAL = 'ideal';
+    const TYPE_KLARNA = 'klarna';
+    const TYPE_MULTIBANCO = 'multibanco';
+    const TYPE_P24 = 'p24';
+    const TYPE_SEPA_CREDIT_TRANSFER = 'sepa_credit_transfer';
+    const TYPE_SEPA_DEBIT = 'sepa_debit';
+    const TYPE_SOFORT = 'sofort';
+    const TYPE_THREE_D_SECURE = 'three_d_secure';
+    const TYPE_WECHAT = 'wechat';
+
     const USAGE_REUSABLE = 'reusable';
     const USAGE_SINGLE_USE = 'single_use';
 
@@ -125,7 +145,7 @@ class Source extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\SourceTransaction> list of SourceTransactions
+     * @return \Stripe\Collection<\Stripe\SourceTransaction> list of source transactions
      */
     public static function allSourceTransactions($id, $params = null, $opts = null)
     {

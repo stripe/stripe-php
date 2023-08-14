@@ -63,14 +63,8 @@ class Subscription extends ApiResource
     use ApiOperations\Search;
     use ApiOperations\Update;
 
-    const PAYMENT_BEHAVIOR_ALLOW_INCOMPLETE = 'allow_incomplete';
-    const PAYMENT_BEHAVIOR_DEFAULT_INCOMPLETE = 'default_incomplete';
-    const PAYMENT_BEHAVIOR_ERROR_IF_INCOMPLETE = 'error_if_incomplete';
-    const PAYMENT_BEHAVIOR_PENDING_IF_INCOMPLETE = 'pending_if_incomplete';
-
-    const PRORATION_BEHAVIOR_ALWAYS_INVOICE = 'always_invoice';
-    const PRORATION_BEHAVIOR_CREATE_PRORATIONS = 'create_prorations';
-    const PRORATION_BEHAVIOR_NONE = 'none';
+    const COLLECTION_METHOD_CHARGE_AUTOMATICALLY = 'charge_automatically';
+    const COLLECTION_METHOD_SEND_INVOICE = 'send_invoice';
 
     const STATUS_ACTIVE = 'active';
     const STATUS_CANCELED = 'canceled';
@@ -114,6 +108,15 @@ class Subscription extends ApiResource
         return $this;
     }
 
+    const PAYMENT_BEHAVIOR_ALLOW_INCOMPLETE = 'allow_incomplete';
+    const PAYMENT_BEHAVIOR_DEFAULT_INCOMPLETE = 'default_incomplete';
+    const PAYMENT_BEHAVIOR_ERROR_IF_INCOMPLETE = 'error_if_incomplete';
+    const PAYMENT_BEHAVIOR_PENDING_IF_INCOMPLETE = 'pending_if_incomplete';
+
+    const PRORATION_BEHAVIOR_ALWAYS_INVOICE = 'always_invoice';
+    const PRORATION_BEHAVIOR_CREATE_PRORATIONS = 'create_prorations';
+    const PRORATION_BEHAVIOR_NONE = 'none';
+
     /**
      * @param null|array $params
      * @param null|array|string $opts
@@ -154,7 +157,7 @@ class Subscription extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\SearchResult<Subscription> the subscription search results
+     * @return \Stripe\SearchResult<\Stripe\Subscription> the subscription search results
      */
     public static function search($params = null, $opts = null)
     {

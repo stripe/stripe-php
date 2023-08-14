@@ -85,7 +85,7 @@ class CreditNote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\CreditNoteLineItem> list of CreditNoteLineItems
+     * @return \Stripe\Collection<\Stripe\CreditNoteLineItem> list of credit note line items
      */
     public static function previewLines($params = null, $opts = null)
     {
