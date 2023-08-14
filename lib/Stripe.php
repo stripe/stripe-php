@@ -119,7 +119,7 @@ class Stripe
     }
 
     /**
-     * @return string The API version used for requests.
+     * @return string the API version used for requests
      */
     public static function getApiVersion()
     {
