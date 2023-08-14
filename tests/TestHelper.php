@@ -43,7 +43,6 @@ trait TestHelper
         Stripe::$apiUploadBase = \defined('MOCK_URL') ? MOCK_URL : 'http://localhost:12111';
         Stripe::setApiKey('sk_test_123');
         Stripe::setClientId('ca_123');
-        Stripe::setApiVersion(null);
         Stripe::setAccountId(null);
 
         // Set up the HTTP client mocker
@@ -63,7 +62,6 @@ trait TestHelper
         Stripe::setEnableTelemetry(false);
         Stripe::setApiKey($this->origApiKey);
         Stripe::setClientId($this->origClientId);
-        Stripe::setApiVersion($this->origApiVersion);
         Stripe::setAccountId($this->origAccountId);
     }
 
