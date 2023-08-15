@@ -128,6 +128,38 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         return $this->config['files_base'];
     }
 
+    /** @var bool */
+    public static $_globalApiVersionWarningSent = false;
+
+    /**
+     * @param \Stripe\Util\RequestOptions $opts
+     *
+     * @return void
+     */
+    private static function warnAboutGlobalApiVersion($opts)
+    {
+        if (
+            !self::$_globalApiVersionWarningSent
+            && null === $opts->headers['Stripe-Version']
+            && (Stripe::$_hasCalledSetApiVersion
+            || (\Stripe\Util\ApiVersion::CURRENT !== Stripe::$apiVersion))) {
+            self::$_globalApiVersionWarningSent = true;
+            @\trigger_error(
+                'Warning: you have initialized \Stripe\StripeClient without specifying stripe_version'
+                . ' but you have also explicitly set the global Stripe::$apiVersion away from'
+                . ' the default. This is not recommended. Currently, requests made with'
+                . ' \Stripe\StripeClient fall back to Stripe::$apiVersion, but this behavior may change'
+                . ' or be disallowed in future versions of stripe-php. To remove this warning, please'
+                . ' pass a value for stripe_version when constructing \Stripe\StripeClient. \n\n'
+                . '$stripe = new \Stripe\StripeClient(\n'
+                . '  "api_key" => "sk_test_123",\n'
+                . '  "stripe_version" => "YYYY-MM-DD",\n'
+                . ');',
+                \E_USER_DEPRECATED
+            );
+        }
+    }
+
     /**
      * Sends a request to Stripe's API.
      *
@@ -141,6 +173,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     public function request($method, $path, $params, $opts)
     {
         $opts = $this->defaultOpts->merge($opts, true);
+        self::warnAboutGlobalApiVersion($opts);
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new \Stripe\ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
         list($response, $opts->apiKey) = $requestor->request($method, $path, $params, $opts->headers);

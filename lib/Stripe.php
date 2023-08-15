@@ -126,12 +126,16 @@ class Stripe
         return self::$apiVersion;
     }
 
+    /** @var string FOR INTERNAL USE ONLY. Tracks whether the user has called `setApiVersion` */
+    public static $_hasCalledSetApiVersion = false;
+
     /**
      * @param string $apiVersion the API version to use for requests
      */
     public static function setApiVersion($apiVersion)
     {
         self::$apiVersion = $apiVersion;
+        self::$_hasCalledSetApiVersion = true;
     }
 
     /**
