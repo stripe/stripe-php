@@ -39,7 +39,7 @@ abstract class AbstractService
     }
 
     /**
-     * Gets the client used by this service to send requests.
+     * Gets the client used by this service to send streaming requests.
      *
      * @return \Stripe\StripeStreamingClientInterface
      */
@@ -77,23 +77,55 @@ abstract class AbstractService
 
     protected function requestStream($method, $path, $readBodyChunkCallable, $params, $opts)
     {
-        // TODO (MAJOR): Add this method to StripeClientInterface
-        // @phpstan-ignore-next-line
         return $this->getStreamingClient()->requestStream($method, $path, $readBodyChunkCallable, self::formatParams($params), $opts);
     }
 
+    /**
+     * Sends a request to Stripe's API.
+     *
+     * @param 'delete'|'get'|'post' $method the HTTP method
+     * @param string $path the path of the request
+     * @param array $params the parameters of the request
+     * @param array|\Stripe\Util\RequestOptions $opts the special modifiers of the request
+     *
+     * @return \Stripe\Collection of ApiResources
+     */
     protected function requestCollection($method, $path, $params, $opts)
     {
-        // TODO (MAJOR): Add this method to StripeClientInterface
-        // @phpstan-ignore-next-line
-        return $this->getClient()->requestCollection($method, $path, self::formatParams($params), $opts);
+        $obj = $this->request($method, $path, $params, $opts);
+        if (!($obj instanceof \Stripe\Collection)) {
+            $received_class = \get_class($obj);
+            $msg = "Expected to receive `Stripe\\Collection` object from Stripe API. Instead received `{$received_class}`.";
+
+            throw new \Stripe\Exception\UnexpectedValueException($msg);
+        }
+        $obj->setFilters($params);
+
+        return $obj;
     }
 
+    /**
+     * Sends a request to Stripe's API.
+     *
+     * @param 'delete'|'get'|'post' $method the HTTP method
+     * @param string $path the path of the request
+     * @param array $params the parameters of the request
+     * @param array|\Stripe\Util\RequestOptions $opts the special modifiers of the request
+     *
+     * @return \Stripe\SearchResult of ApiResources
+     */
     protected function requestSearchResult($method, $path, $params, $opts)
     {
-        // TODO (MAJOR): Add this method to StripeClientInterface
-        // @phpstan-ignore-next-line
-        return $this->getClient()->requestSearchResult($method, $path, self::formatParams($params), $opts);
+        $obj = $this->request($method, $path, $params, $opts);
+        if (!($obj instanceof \Stripe\SearchResult)) {
+            $received_class = \get_class($obj);
+            $msg = "Expected to receive `Stripe\\SearchResult` object from Stripe API. Instead received `{$received_class}`.";
+
+            throw new \Stripe\Exception\UnexpectedValueException($msg);
+        }
+        $obj->setFilters($params);
+
+        return $obj;
     }
 
     protected function buildPath($basePath, ...$ids)

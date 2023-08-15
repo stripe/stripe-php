@@ -19,6 +19,15 @@ final class AbstractServiceTest extends \Stripe\TestCase
     /** @var \ReflectionMethod */
     private $formatParamsReflector;
 
+    /** @var \ReflectionMethod */
+    private $requestCollectionReflector;
+
+    /** @var \ReflectionProperty */
+    private $clientReflector;
+
+    /** @var \ReflectionProperty */
+    private $optsReflector;
+
     /**
      * @before
      */
@@ -36,6 +45,15 @@ final class AbstractServiceTest extends \Stripe\TestCase
     {
         $this->formatParamsReflector = new \ReflectionMethod(\Stripe\Service\AbstractService::class, 'formatParams');
         $this->formatParamsReflector->setAccessible(true);
+
+        $this->requestCollectionReflector = new \ReflectionMethod(\Stripe\Service\AbstractService::class, 'requestCollection');
+        $this->requestCollectionReflector->setAccessible(true);
+
+        $this->clientReflector = new \ReflectionProperty(\Stripe\Service\AbstractService::class, 'client');
+        $this->clientReflector->setAccessible(true);
+
+        $this->optsReflector = new \ReflectionProperty(\Stripe\StripeObject::class, '_opts');
+        $this->optsReflector->setAccessible(true);
     }
 
     public function testNullGetsEmptyStringified()
@@ -90,5 +108,21 @@ final class AbstractServiceTest extends \Stripe\TestCase
         static::assertTrue('three' === $result['foo'][3]);
         static::assertTrue('' === $result['toplevelnull']);
         static::assertTrue(4 === $result['toplevelnonnull']);
+    }
+
+    public function testRequestCollectionWithClientApiKey()
+    {
+        $this->clientReflector->setValue($this->service, new \Stripe\BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]));
+        $charges = $this->requestCollectionReflector->invoke($this->service, 'get', '/v1/charges', [], []);
+        static::assertNotNull($charges);
+        static::assertSame('sk_test_client', $this->optsReflector->getValue($charges)->apiKey);
+    }
+
+    public function testRequestCollectionThrowsForNonList()
+    {
+        $this->expectException(\Stripe\Exception\UnexpectedValueException::class);
+        $this->expectExceptionMessage('Expected to receive `Stripe\Collection` object from Stripe API. Instead received `Stripe\Charge`.');
+
+        $this->requestCollectionReflector->invoke($this->service, 'get', '/v1/charges/ch_123', [], []);
     }
 }

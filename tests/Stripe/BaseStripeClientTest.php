@@ -162,23 +162,6 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         static::assertSame('acct_456', $this->optsReflector->getValue($charge)->headers['Stripe-Account']);
     }
 
-    public function testRequestCollectionWithClientApiKey()
-    {
-        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
-        $charges = $client->requestCollection('get', '/v1/charges', [], []);
-        static::assertNotNull($charges);
-        static::assertSame('sk_test_client', $this->optsReflector->getValue($charges)->apiKey);
-    }
-
-    public function testRequestCollectionThrowsForNonList()
-    {
-        $this->expectException(\Stripe\Exception\UnexpectedValueException::class);
-        $this->expectExceptionMessage('Expected to receive `Stripe\Collection` object from Stripe API. Instead received `Stripe\Charge`.');
-
-        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
-        $client->requestCollection('get', '/v1/charges/ch_123', [], []);
-    }
-
     public function testRequestWithOptsInParamsWarns()
     {
         $this->compatExpectWarning(static::compatWarningClass());
