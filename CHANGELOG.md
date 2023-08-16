@@ -37,7 +37,7 @@ To successfully upgrade to stripe-php v11, you must either
 
     Going forward, each major release of this library will be *pinned* by default to the latest Stripe API Version at the time of release.
 
-    That is, instead of upgrading stripe-php and separately upgrading your Stripe API Version through the Stripe Dashboard. whenever you upgrade major versions of stripe-php, you should also upgrade your integration to be compatible with the latest Stripe API version.
+    That is, instead of upgrading stripe-php and separately upgrading your Stripe API Version through the Stripe Dashboard, whenever you upgrade major versions of stripe-php, you should also upgrade your integration to be compatible with the latest Stripe API version.
 
 ### Other changes in v11.0.0
 " ⚠️" symbol highlights breaking changes.
