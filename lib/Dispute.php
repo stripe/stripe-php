@@ -28,7 +28,7 @@ namespace Stripe;
  * @property null|string $network_reason_code Network-dependent reason code for the dispute.
  * @property null|string|\Stripe\PaymentIntent $payment_intent ID of the PaymentIntent that was disputed.
  * @property string $reason Reason given by cardholder for dispute. Possible values are <code>bank_cannot_process</code>, <code>check_returned</code>, <code>credit_not_processed</code>, <code>customer_initiated</code>, <code>debit_not_authorized</code>, <code>duplicate</code>, <code>fraudulent</code>, <code>general</code>, <code>incorrect_account_details</code>, <code>insufficient_funds</code>, <code>product_not_received</code>, <code>product_unacceptable</code>, <code>subscription_canceled</code>, or <code>unrecognized</code>. Read more about <a href="https://stripe.com/docs/disputes/categories">dispute reasons</a>.
- * @property string $status Current status of dispute. Possible values are <code>warning_needs_response</code>, <code>warning_under_review</code>, <code>warning_closed</code>, <code>needs_response</code>, <code>under_review</code>, <code>charge_refunded</code>, <code>won</code>, or <code>lost</code>.
+ * @property string $status Current status of dispute. Possible values are <code>warning_needs_response</code>, <code>warning_under_review</code>, <code>warning_closed</code>, <code>needs_response</code>, <code>under_review</code>, <code>won</code>, or <code>lost</code>.
  */
 class Dispute extends ApiResource
 {
@@ -53,7 +53,6 @@ class Dispute extends ApiResource
     const REASON_SUBSCRIPTION_CANCELED = 'subscription_canceled';
     const REASON_UNRECOGNIZED = 'unrecognized';
 
-    const STATUS_CHARGE_REFUNDED = 'charge_refunded';
     const STATUS_LOST = 'lost';
     const STATUS_NEEDS_RESPONSE = 'needs_response';
     const STATUS_UNDER_REVIEW = 'under_review';
