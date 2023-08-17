@@ -33,7 +33,7 @@ To successfully upgrade to stripe-php v11, you must either
 
      If you were already initializing stripe-php with an explicit API Version, upgrading to v11 will not affect your integration.
 
-     Read the [v11 migration guide](https://github.com/stripe-php/wiki/Migration-guide-for-v11) for more details.
+     Read the [v11 migration guide](https://github.com/stripe/stripe-php/wiki/Migration-guide-for-v11) for more details.
 
     Going forward, each major release of this library will be *pinned* by default to the latest Stripe API Version at the time of release.
 
