@@ -1,9 +1,6 @@
 # Changelog
 
 ## 12.0.0 - 2023-08-18
-
-Note: please use stripe-php v12.0.0 and do not use v11.0.0. In v11, StripeClient does not correctly apply the new pinning behavior.
-
 **⚠️ ACTION REQUIRED: the breaking change in this release likely affects you ⚠️**
 
 ### Version pinning
