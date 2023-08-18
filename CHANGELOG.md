@@ -1,6 +1,10 @@
 # Changelog
 
+## 12.0.0 - 2023-08-18
 ## 11.0.0 - 2023-08-16
+
+Note: please use stripe-php v12.0.0 and do not use v11.0.0. In v11, StripeClient does not correctly apply the new pinning behavior.
+
 **⚠️ ACTION REQUIRED: the breaking change in this release likely affects you ⚠️**
 
 ### Version pinning
@@ -39,7 +43,7 @@ To successfully upgrade to stripe-php v11, you must either
 
     That is, instead of upgrading stripe-php and separately upgrading your Stripe API Version through the Stripe Dashboard, whenever you upgrade major versions of stripe-php, you should also upgrade your integration to be compatible with the latest Stripe API version.
 
-### Other changes in v11.0.0
+### Other changes
 " ⚠️" symbol highlights breaking changes.
 * [#1553](https://github.com/stripe/stripe-php/pull/1553)⚠️ Remove deprecated enum value `Invoice.STATUS_DELETE`
 
