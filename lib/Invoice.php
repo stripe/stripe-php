@@ -159,9 +159,6 @@ class Invoice extends ApiResource
     const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const BILLING_SEND_INVOICE = 'send_invoice';
 
-    /** @deprecated */
-    const STATUS_DELETED = 'deleted';
-
     /**
      * @param null|array $params
      * @param null|array|string $opts

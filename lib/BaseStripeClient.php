@@ -18,6 +18,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         'api_key' => null,
         'client_id' => null,
         'stripe_account' => null,
+        // Note, even if null, ApiRequestor will default this to Stripe::$apiVersion
         'stripe_version' => null,
         'api_base' => self::DEFAULT_API_BASE,
         'connect_base' => self::DEFAULT_CONNECT_BASE,

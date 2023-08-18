@@ -320,10 +320,11 @@ class ApiRequestor
      *
      * @param string $apiKey
      * @param null   $clientInfo
+     * @param mixed $apiMode
      *
      * @return array
      */
-    private static function _defaultHeaders($apiKey, $clientInfo = null)
+    private static function _defaultHeaders($apiKey, $apiMode, $clientInfo = null)
     {
         $uaString = 'Stripe/v1 PhpBindings/' . Stripe::VERSION;
 
@@ -351,6 +352,7 @@ class ApiRequestor
             'X-Stripe-Client-User-Agent' => \json_encode($ua),
             'User-Agent' => $uaString,
             'Authorization' => 'Bearer ' . $apiKey,
+            'Stripe-Version' => 'preview' === $apiMode ? \Stripe\Util\ApiVersion::PREVIEW : Stripe::getApiVersion(),
         ];
     }
 
@@ -404,13 +406,7 @@ class ApiRequestor
         if ('standard' === $apiMode) {
             $params = self::_encodeObjects($params);
         }
-        $defaultHeaders = $this->_defaultHeaders($myApiKey, $clientUAInfo);
-
-        if ('preview' === $apiMode && !isset($headers['Stripe-Version'])) {
-            $headers['Stripe-Version'] = \Stripe\Util\ApiVersion::PREVIEW;
-        } elseif (Stripe::$apiVersion) {
-            $headers['Stripe-Version'] = Stripe::$apiVersion;
-        }
+        $defaultHeaders = $this->_defaultHeaders($myApiKey, $apiMode, $clientUAInfo);
 
         if (Stripe::$accountId) {
             $defaultHeaders['Stripe-Account'] = Stripe::$accountId;
