@@ -50,7 +50,7 @@ To successfully upgrade to stripe-php v12, you must either
   * Remove support for `attributes`, `caption`, and `deactivate_on` on `Product`
 
 ## 11.0.0 - 2023-08-16
-Please do not use stripe-php v11. It did not correctly apply the pinning behavior and was removed from packagist
+Please do not use stripe-php v11. It did not correctly apply the [pinning behavior](https://github.com/stripe/stripe-php/blob/master/CHANGELOG.md#version-pinning) and was removed from packagist
 
 ## 10.21.0 - 2023-08-10
 * [#1546](https://github.com/stripe/stripe-php/pull/1546) Update generated code
