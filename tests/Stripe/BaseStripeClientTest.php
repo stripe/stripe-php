@@ -210,8 +210,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_key' => 'sk_test_client',
             'api_base' => MOCK_URL,
         ]);
-        $this->expectsRequest("get", "/v1/charges/ch_123", null, [
-            "Stripe-Version: " . \Stripe\Util\ApiVersion::CURRENT,
+        $this->expectsRequest('get', '/v1/charges/ch_123', null, [
+            'Stripe-Version: ' . \Stripe\Util\ApiVersion::CURRENT,
         ]);
         $charge = $client->request(
             'get',
