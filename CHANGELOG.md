@@ -11,13 +11,13 @@ Note: please use stripe-php v12.0.0 and do not use v11.0.0. In v11, StripeClient
 
 In this release, Stripe API Version `2023-08-16` (the latest at time of release) will be sent by default on all requests. This is a significant change with wide ramifications. The API version affects the properties you see on responses, the parameters you are allowed to send on requests, and so on. The previous default was to use your [Stripe account's default API version](https://stripe.com/docs/development/dashboard/request-logs#view-your-default-api-version).
 
-To successfully upgrade to stripe-php v11, you must either
+To successfully upgrade to stripe-php v12, you must either
 
 1. **(Recommended) Upgrade your integration to be compatible with API Version `2023-08-16`.**
 
    Please read the API Changelog carefully for each API Version from `2023-08-16` back to your [Stripe account's default API version](https://stripe.com/docs/development/dashboard/request-logs#view-your-default-api-version). Determine if you are using any of the APIs that have changed in a breaking way, and adjust your integration accordingly. Carefully test your changes with Stripe [Test Mode](https://stripe.com/docs/keys#test-live-modes) before deploying them to production.
 
-   You can read the [v11 migration guide](https://github.com/stripe/stripe-php/wiki/Migration-guide-for-v11) for more detailed instructions.
+   You can read the [v11 migration guide](https://github.com/stripe/stripe-php/wiki/Migration-guide-for-v12) for more detailed instructions.
 2. **(Alternative option) Specify a version other than `2023-08-16` when initializing `stripe-php`.**
 
      If you were previously initializing stripe-php without an explicit API Version, you can postpone modifying your integration by specifying a version equal to your [Stripe account's default API version](https://stripe.com/docs/development/dashboard/request-logs#view-your-default-api-version). For example:
@@ -35,9 +35,9 @@ To successfully upgrade to stripe-php v11, you must either
      + Stripe::setApiVersion('2020-08-27');
      ```
 
-     If you were already initializing stripe-php with an explicit API Version, upgrading to v11 will not affect your integration.
+     If you were already initializing stripe-php with an explicit API Version, upgrading to v12 will not affect your integration.
 
-     Read the [v11 migration guide](https://github.com/stripe/stripe-php/wiki/Migration-guide-for-v11) for more details.
+     Read the [v12 migration guide](https://github.com/stripe/stripe-php/wiki/Migration-guide-for-v12) for more details.
 
     Going forward, each major release of this library will be *pinned* by default to the latest Stripe API Version at the time of release.
 
