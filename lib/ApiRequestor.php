@@ -351,6 +351,7 @@ class ApiRequestor
             'X-Stripe-Client-User-Agent' => \json_encode($ua),
             'User-Agent' => $uaString,
             'Authorization' => 'Bearer ' . $apiKey,
+            'Stripe-Version' => Stripe::getApiVersion(),
         ];
     }
 
@@ -405,12 +406,6 @@ class ApiRequestor
             $params = self::_encodeObjects($params);
         }
         $defaultHeaders = $this->_defaultHeaders($myApiKey, $clientUAInfo);
-
-        if ('preview' === $apiMode && !isset($headers['Stripe-Version'])) {
-            $headers['Stripe-Version'] = \Stripe\Util\ApiVersion::PREVIEW;
-        } elseif (Stripe::$apiVersion) {
-            $headers['Stripe-Version'] = Stripe::$apiVersion;
-        }
 
         if (Stripe::$accountId) {
             $defaultHeaders['Stripe-Account'] = Stripe::$accountId;

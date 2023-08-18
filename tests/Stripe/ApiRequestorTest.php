@@ -82,6 +82,11 @@ final class ApiRequestorTest extends \Stripe\TestCase
             'Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp/1.2.34 (https://mytestapp.example)'
         );
 
+        static::assertSame(
+            $headers['Stripe-Version'],
+            Stripe::getApiVersion()
+        );
+
         static::assertSame($headers['Authorization'], 'Bearer ' . $apiKey);
     }
 

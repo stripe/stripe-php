@@ -1,15 +1,25 @@
 # Changelog
 
+## 12.0.0 - 2023-08-18
+**⚠️ ACTION REQUIRED: the breaking change in this release likely affects you ⚠️**
+
+## 11.0.0 - 2023-08-16
+Please do not use stripe-php v11. It did not correctly apply the pinning behavior and was removed from packagist
+
 ## 10.22.0-beta.1 - 2023-08-10
 * [#1545](https://github.com/stripe/stripe-php/pull/1545) Update generated code for beta
   * Add support for `paypal` on `PaymentMethodConfiguration`
+
+## 10.21.0 - 2023-08-10
+* [#1546](https://github.com/stripe/stripe-php/pull/1546) Update generated code
+  * Add support for new value `payment_reversal` on enum `BalanceTransaction.type`
+  * Add support for new value `adjusted_for_overdraft` on enum `CustomerBalanceTransaction.type`
 
 ## 10.21.0-beta.1 - 2023-08-03
 * [#1541](https://github.com/stripe/stripe-php/pull/1541) Update generated code for beta
   * Add support for `submit_card` test helper method on resource `Issuing.Card`
 
 ## 10.20.0 - 2023-08-03
-* [#1544](https://github.com/stripe/stripe-php/pull/1544) Update generated code
 * [#1539](https://github.com/stripe/stripe-php/pull/1539) Update generated code
   * Add support for `subscription_details` on `Invoice`
   * Add support for new values `sepa_debit_fingerprint` and `us_bank_account_fingerprint` on enum `Radar.ValueList.item_type`

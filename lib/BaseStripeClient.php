@@ -18,7 +18,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         'api_key' => null,
         'client_id' => null,
         'stripe_account' => null,
-        'stripe_version' => null,
+        'stripe_version' => \Stripe\Util\ApiVersion::CURRENT,
         'api_base' => self::DEFAULT_API_BASE,
         'connect_base' => self::DEFAULT_CONNECT_BASE,
         'files_base' => self::DEFAULT_FILES_BASE,
@@ -186,7 +186,14 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             $headers['Stripe-Context'] = $opts['stripe_context'];
             unset($opts['stripe_context']);
         }
-        $opts = $this->defaultOpts->merge($opts, true);
+
+        $defaultRawRequestOpts = $this->defaultOpts;
+        if ('preview' === $apiMode) {
+            $defaultRawRequestOpts = $defaultRawRequestOpts->merge(['stripe_version' => \Stripe\Util\ApiVersion::PREVIEW], true);
+        }
+
+        $opts = $defaultRawRequestOpts->merge($opts, true);
+
         // Concatenate $headers to $opts->headers, removing duplicates.
         $opts->headers = \array_merge($opts->headers, $headers);
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
