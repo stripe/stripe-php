@@ -8,6 +8,7 @@ namespace Stripe;
  */
 final class BaseStripeClientTest extends \Stripe\TestCase
 {
+    use TestHelper;
     /** @var \ReflectionProperty */
     private $optsReflector;
 
@@ -201,5 +202,22 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         );
         static::assertNotNull($charge);
         static::assertSame('acct_456', $this->optsReflector->getValue($charge)->headers['Stripe-Account']);
+    }
+
+    public function testRequestWithNoVersionDefaultsToPinnedVersion()
+    {
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'api_base' => MOCK_URL,
+        ]);
+        $this->expectsRequest("get", "/v1/charges/ch_123", null, [
+            "Stripe-Version: " . \Stripe\Util\ApiVersion::CURRENT,
+        ]);
+        $charge = $client->request(
+            'get',
+            '/v1/charges/ch_123',
+            [],
+            []
+        );
     }
 }
