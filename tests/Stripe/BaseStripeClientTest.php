@@ -2,12 +2,15 @@
 
 namespace Stripe;
 
+use Stripe\Util\ApiVersion;
+
 /**
  * @internal
  * @covers \Stripe\BaseStripeClient
  */
 final class BaseStripeClientTest extends \Stripe\TestCase
 {
+    use TestHelper;
     /** @var \ReflectionProperty */
     private $optsReflector;
 
@@ -208,6 +211,23 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         static::assertSame('acct_456', $this->optsReflector->getValue($charge)->headers['Stripe-Account']);
     }
 
+    public function testRequestWithNoVersionDefaultsToPinnedVersion()
+    {
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'api_base' => MOCK_URL,
+        ]);
+        $this->expectsRequest('get', '/v1/charges/ch_123', null, [
+            'Stripe-Version: ' . \Stripe\Util\ApiVersion::CURRENT,
+        ]);
+        $charge = $client->request(
+            'get',
+            '/v1/charges/ch_123',
+            [],
+            []
+        );
+    }
+
     public function testJsonRawRequestGetWithURLParams()
     {
         $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
@@ -238,14 +258,19 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         static::assertArrayNotHasKey(\CURLOPT_POST, $opts);
         static::assertArrayNotHasKey(\CURLOPT_POSTFIELDS, $opts);
         $content_type = null;
+        $stripe_version = null;
         foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
             if (self::headerStartsWith($header, 'Content-Type:')) {
                 $content_type = $header;
+            }
+            if (self::headerStartsWith($header, 'Stripe-Version:')) {
+                $stripe_version = $header;
             }
         }
         // The library sends Content-Type even with no body, so assert this
         // But it would be more correct to not send Content-Type
         static::assertSame('Content-Type: application/x-www-form-urlencoded', $content_type);
+        static::assertSame('Stripe-Version: ' . ApiVersion::CURRENT, $stripe_version);
     }
 
     public function testJsonRawRequestPost()
