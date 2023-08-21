@@ -15,6 +15,7 @@ namespace Stripe\FinancialConnections;
  * @property null|\Stripe\StripeObject $filters
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string[] $permissions Permissions requested for accounts collected during this session.
+ * @property null|string[] $prefetch Data features requested to be retrieved upon account creation.
  * @property null|string $return_url For webview integrations only. Upon completing OAuth login in the native browser, the user will be redirected to this URL to return to your app.
  */
 class Session extends \Stripe\ApiResource
