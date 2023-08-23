@@ -5,13 +5,10 @@
 namespace Stripe;
 
 /**
- * A subscription schedule allows you to create and manage the lifecycle of a subscription by predefining expected changes.
- *
- * Related guide: <a href="https://stripe.com/docs/billing/subscriptions/subscription-schedules">Subscription schedules</a>
- *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string|\Stripe\StripeObject $application ID of the Connect Application that created the schedule.
+ * @property \Stripe\StripeObject $applies_to
  * @property null|string $billing_behavior Configures when the subscription schedule generates prorations for phase transitions. Possible values are <code>prorate_on_next_phase</code> or <code>prorate_up_front</code> with the default being <code>prorate_on_next_phase</code>. <code>prorate_on_next_phase</code> will apply phase changes and generate prorations at transition time.<code>prorate_up_front</code> will bill for all phases within the current billing cycle up front.
  * @property null|int $canceled_at Time at which the subscription schedule was canceled. Measured in seconds since the Unix epoch.
  * @property null|int $completed_at Time at which the subscription schedule was completed. Measured in seconds since the Unix epoch.
@@ -30,14 +27,11 @@ namespace Stripe;
  * @property null|string|\Stripe\Subscription $subscription ID of the subscription managed by the subscription schedule.
  * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this subscription schedule belongs to.
  */
-class SubscriptionSchedule extends ApiResource
+class QuotePreviewSchedule extends ApiResource
 {
-    const OBJECT_NAME = 'subscription_schedule';
+    const OBJECT_NAME = 'quote_preview_schedule';
 
     use ApiOperations\All;
-    use ApiOperations\Create;
-    use ApiOperations\Retrieve;
-    use ApiOperations\Update;
 
     const BILLING_BEHAVIOR_PRORATE_ON_NEXT_PHASE = 'prorate_on_next_phase';
     const BILLING_BEHAVIOR_PRORATE_UP_FRONT = 'prorate_up_front';
@@ -52,55 +46,4 @@ class SubscriptionSchedule extends ApiResource
     const STATUS_COMPLETED = 'completed';
     const STATUS_NOT_STARTED = 'not_started';
     const STATUS_RELEASED = 'released';
-
-    /**
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\SubscriptionSchedule the amended subscription schedule
-     */
-    public function amend($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/amend';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-
-        return $this;
-    }
-
-    /**
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\SubscriptionSchedule the canceled subscription schedule
-     */
-    public function cancel($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/cancel';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-
-        return $this;
-    }
-
-    /**
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\SubscriptionSchedule the released subscription schedule
-     */
-    public function release($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/release';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-
-        return $this;
-    }
 }
