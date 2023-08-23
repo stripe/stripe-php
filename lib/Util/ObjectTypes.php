@@ -86,8 +86,6 @@ class ObjectTypes
         \Stripe\Quote::OBJECT_NAME => \Stripe\Quote::class,
         \Stripe\QuoteLine::OBJECT_NAME => \Stripe\QuoteLine::class,
         \Stripe\QuotePhase::OBJECT_NAME => \Stripe\QuotePhase::class,
-        \Stripe\QuotePreviewInvoice::OBJECT_NAME => \Stripe\QuotePreviewInvoice::class,
-        \Stripe\QuotePreviewSchedule::OBJECT_NAME => \Stripe\QuotePreviewSchedule::class,
         \Stripe\Radar\EarlyFraudWarning::OBJECT_NAME => \Stripe\Radar\EarlyFraudWarning::class,
         \Stripe\Radar\ValueList::OBJECT_NAME => \Stripe\Radar\ValueList::class,
         \Stripe\Radar\ValueListItem::OBJECT_NAME => \Stripe\Radar\ValueListItem::class,
