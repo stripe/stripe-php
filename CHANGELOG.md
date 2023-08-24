@@ -1,5 +1,11 @@
 # Changelog
 
+## 12.0.0-beta.1 - 2023-08-24
+* [#1549](https://github.com/stripe/stripe-php/pull/1549) Update generated code for beta
+  * Add support for new resources `QuotePreviewInvoice` and `QuotePreviewSchedule`
+  * Remove support for `applies_to` on `Invoice` and `SubscriptionSchedule`
+* [#1556](https://github.com/stripe/stripe-php/pull/1556) Merge master into beta
+
 ## 12.0.0 - 2023-08-18
 **⚠️ ACTION REQUIRED: the breaking change in this release likely affects you ⚠️**
 
