@@ -118,7 +118,7 @@ class QuoteService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\Invoice>
+     * @return \Stripe\Collection<\Stripe\StripeObject>
      */
     public function allPreviewInvoices($id, $params = null, $opts = null)
     {
@@ -134,7 +134,7 @@ class QuoteService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\SubscriptionSchedule>
+     * @return \Stripe\Collection<\Stripe\StripeObject>
      */
     public function allPreviewSubscriptionSchedules($id, $params = null, $opts = null)
     {

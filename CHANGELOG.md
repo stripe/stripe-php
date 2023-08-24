@@ -4,7 +4,7 @@
 **⚠️ ACTION REQUIRED: the breaking change in this release likely affects you ⚠️**
 
 ## 11.0.0 - 2023-08-16
-Please do not use stripe-php v11. It did not correctly apply the pinning behavior and was removed from packagist
+Please do not use stripe-php v11. It did not correctly apply the [pinning behavior](https://github.com/stripe/stripe-php/blob/master/CHANGELOG.md#version-pinning) and was removed from packagist
 
 ## 10.22.0-beta.1 - 2023-08-10
 * [#1545](https://github.com/stripe/stripe-php/pull/1545) Update generated code for beta

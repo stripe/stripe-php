@@ -255,7 +255,7 @@ class Quote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\Invoice> list of invoices
+     * @return \Stripe\Collection<\Stripe\StripeObject> list of quote preview invoices
      */
     public static function previewInvoices($id, $params = null, $opts = null)
     {
@@ -274,7 +274,7 @@ class Quote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\SubscriptionSchedule> list of subscription schedules
+     * @return \Stripe\Collection<\Stripe\StripeObject> list of quote preview schedules
      */
     public static function previewSubscriptionSchedules($id, $params = null, $opts = null)
     {
