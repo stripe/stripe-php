@@ -25,7 +25,7 @@ namespace Stripe;
  * @property null|string $first_name_kana The Kana variation of the person's first name (Japan only).
  * @property null|string $first_name_kanji The Kanji variation of the person's first name (Japan only).
  * @property null|string[] $full_name_aliases A list of alternate names or aliases that the person is known by.
- * @property null|\Stripe\StripeObject $future_requirements Information about the upcoming new requirements for this person, including what information needs to be collected, and by when.
+ * @property null|\Stripe\StripeObject $future_requirements Information about the <a href="https://stripe.com/docs/connect/custom-accounts/future-requirements">upcoming new requirements for this person</a>, including what information needs to be collected, and by when.
  * @property null|string $gender The person's gender (International regulations require either &quot;male&quot; or &quot;female&quot;).
  * @property null|bool $id_number_provided Whether the person's <code>id_number</code> was provided.
  * @property null|bool $id_number_secondary_provided Whether the person's <code>id_number_secondary</code> was provided.
