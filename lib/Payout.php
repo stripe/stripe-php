@@ -29,7 +29,7 @@ namespace Stripe;
  * @property null|string $failure_message Message to user further explaining reason for payout failure if available.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property string $method The method used to send this payout, which can be <code>standard</code> or <code>instant</code>. <code>instant</code> is only supported for payouts to debit cards. (See <a href="https://stripe.com/blog/instant-payouts-for-marketplaces">Instant payouts for marketplaces</a> for more information.)
+ * @property string $method The method used to send this payout, which can be <code>standard</code> or <code>instant</code>. <code>instant</code> is supported for payouts to debit cards and bank accounts in certain countries. (See <a href="https://stripe.com/docs/payouts/instant-payouts-banks">Bank support for Instant Payouts</a> for more information.)
  * @property null|string|\Stripe\Payout $original_payout If the payout reverses another, this is the ID of the original payout.
  * @property string $reconciliation_status If <code>completed</code>, the <a href="https://stripe.com/docs/api/balance_transactions/list#balance_transaction_list-payout">Balance Transactions API</a> may be used to list all Balance Transactions that were paid out in this payout.
  * @property null|string|\Stripe\Payout $reversed_by If the payout was reversed, this is the ID of the payout that reverses this payout.
