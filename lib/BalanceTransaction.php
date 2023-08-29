@@ -24,7 +24,7 @@ namespace Stripe;
  * @property string $reporting_category <a href="https://stripe.com/docs/reports/reporting-categories">Learn more</a> about how reporting categories can help you understand balance transactions from an accounting perspective.
  * @property null|string|\Stripe\StripeObject $source The Stripe object to which this transaction is related.
  * @property string $status If the transaction's net funds are available in the Stripe balance yet. Either <code>available</code> or <code>pending</code>.
- * @property string $type Transaction type: <code>adjustment</code>, <code>advance</code>, <code>advance_funding</code>, <code>anticipation_repayment</code>, <code>application_fee</code>, <code>application_fee_refund</code>, <code>charge</code>, <code>connect_collection_transfer</code>, <code>contribution</code>, <code>issuing_authorization_hold</code>, <code>issuing_authorization_release</code>, <code>issuing_dispute</code>, <code>issuing_transaction</code>, <code>obligation_inbound</code>, <code>obligation_outbound</code>, <code>obligation_reversal_inbound</code>, <code>obligation_reversal_outbound</code>, <code>obligation_payout</code>, <code>obligation_payout_failure</code>, <code>payment</code>, <code>payment_failure_refund</code>, <code>payment_refund</code>, <code>payment_reversal</code>, <code>payout</code>, <code>payout_cancel</code>, <code>payout_failure</code>, <code>refund</code>, <code>refund_failure</code>, <code>reserve_transaction</code>, <code>reserved_funds</code>, <code>stripe_fee</code>, <code>stripe_fx_fee</code>, <code>tax_fee</code>, <code>topup</code>, <code>topup_reversal</code>, <code>transfer</code>, <code>transfer_cancel</code>, <code>transfer_failure</code>, or <code>transfer_refund</code>. <a href="https://stripe.com/docs/reports/balance-transaction-types">Learn more</a> about balance transaction types and what they represent. If you are looking to classify transactions for accounting purposes, you might want to consider <code>reporting_category</code> instead.
+ * @property string $type Transaction type: <code>adjustment</code>, <code>advance</code>, <code>advance_funding</code>, <code>anticipation_repayment</code>, <code>application_fee</code>, <code>application_fee_refund</code>, <code>charge</code>, <code>connect_collection_transfer</code>, <code>contribution</code>, <code>issuing_authorization_hold</code>, <code>issuing_authorization_release</code>, <code>issuing_dispute</code>, <code>issuing_transaction</code>, <code>payment</code>, <code>payment_failure_refund</code>, <code>payment_refund</code>, <code>payment_reversal</code>, <code>payout</code>, <code>payout_cancel</code>, <code>payout_failure</code>, <code>refund</code>, <code>refund_failure</code>, <code>reserve_transaction</code>, <code>reserved_funds</code>, <code>stripe_fee</code>, <code>stripe_fx_fee</code>, <code>tax_fee</code>, <code>topup</code>, <code>topup_reversal</code>, <code>transfer</code>, <code>transfer_cancel</code>, <code>transfer_failure</code>, or <code>transfer_refund</code>. <a href="https://stripe.com/docs/reports/balance-transaction-types">Learn more</a> about balance transaction types and what they represent. If you are looking to classify transactions for accounting purposes, you might want to consider <code>reporting_category</code> instead.
  */
 class BalanceTransaction extends ApiResource
 {
@@ -46,12 +46,6 @@ class BalanceTransaction extends ApiResource
     const TYPE_ISSUING_AUTHORIZATION_RELEASE = 'issuing_authorization_release';
     const TYPE_ISSUING_DISPUTE = 'issuing_dispute';
     const TYPE_ISSUING_TRANSACTION = 'issuing_transaction';
-    const TYPE_OBLIGATION_INBOUND = 'obligation_inbound';
-    const TYPE_OBLIGATION_OUTBOUND = 'obligation_outbound';
-    const TYPE_OBLIGATION_PAYOUT = 'obligation_payout';
-    const TYPE_OBLIGATION_PAYOUT_FAILURE = 'obligation_payout_failure';
-    const TYPE_OBLIGATION_REVERSAL_INBOUND = 'obligation_reversal_inbound';
-    const TYPE_OBLIGATION_REVERSAL_OUTBOUND = 'obligation_reversal_outbound';
     const TYPE_PAYMENT = 'payment';
     const TYPE_PAYMENT_FAILURE_REFUND = 'payment_failure_refund';
     const TYPE_PAYMENT_REFUND = 'payment_refund';
