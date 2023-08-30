@@ -9,6 +9,7 @@ namespace Stripe\Service;
  *
  * @property AccountLinkService $accountLinks
  * @property AccountService $accounts
+ * @property AccountSessionService $accountSessions
  * @property ApplePayDomainService $applePayDomains
  * @property ApplicationFeeService $applicationFees
  * @property Apps\AppsServiceFactory $apps
@@ -74,6 +75,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
     private static $classMap = [
         'accountLinks' => AccountLinkService::class,
         'accounts' => AccountService::class,
+        'accountSessions' => AccountSessionService::class,
         'applePayDomains' => ApplePayDomainService::class,
         'applicationFees' => ApplicationFeeService::class,
         'apps' => Apps\AppsServiceFactory::class,
