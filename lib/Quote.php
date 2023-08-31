@@ -54,6 +54,7 @@ class Quote extends ApiResource
 
     use ApiOperations\All;
     use ApiOperations\Create;
+    use ApiOperations\NestedResource;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
@@ -249,44 +250,6 @@ class Quote extends ApiResource
     }
 
     /**
-     * @param string $id
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection<\Stripe\StripeObject> list of quote preview invoices
-     */
-    public static function previewInvoices($id, $params = null, $opts = null)
-    {
-        $url = static::resourceUrl($id) . '/preview_invoices';
-        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
-        $obj->setLastResponse($response);
-
-        return $obj;
-    }
-
-    /**
-     * @param string $id
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection<\Stripe\StripeObject> list of quote preview schedules
-     */
-    public static function previewSubscriptionSchedules($id, $params = null, $opts = null)
-    {
-        $url = static::resourceUrl($id) . '/preview_subscription_schedules';
-        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
-        $obj->setLastResponse($response);
-
-        return $obj;
-    }
-
-    /**
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -301,5 +264,36 @@ class Quote extends ApiResource
         $this->refreshFrom($response, $opts);
 
         return $this;
+    }
+
+    const PATH_PREVIEW_INVOICES = '/preview_invoices';
+
+    /**
+     * @param string $id the ID of the quote on which to retrieve the quote preview invoices
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\QuotePreviewInvoice> the list of quote preview invoices
+     */
+    public static function allPreviewInvoices($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_PREVIEW_INVOICES, $params, $opts);
+    }
+    const PATH_PREVIEW_SUBSCRIPTION_SCHEDULES = '/preview_subscription_schedules';
+
+    /**
+     * @param string $id the ID of the quote on which to retrieve the quote preview schedules
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\QuotePreviewSchedule> the list of quote preview schedules
+     */
+    public static function allPreviewSubscriptionSchedules($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_PREVIEW_SUBSCRIPTION_SCHEDULES, $params, $opts);
     }
 }

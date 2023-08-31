@@ -26,7 +26,7 @@ namespace Stripe;
  * @property null|string|\Stripe\Customer $customer The ID of the customer that the bank account is associated with.
  * @property null|bool $default_for_currency Whether this bank account is the default external account for its currency.
  * @property null|string $fingerprint Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
- * @property null|\Stripe\StripeObject $future_requirements Information about upcoming new requirements for the bank account, including what information needs to be collected.
+ * @property null|\Stripe\StripeObject $future_requirements Information about the <a href="https://stripe.com/docs/connect/custom-accounts/future-requirements">upcoming new requirements for the bank account</a>, including what information needs to be collected, and by when.
  * @property string $last4 The last four digits of the bank account number.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|\Stripe\StripeObject $requirements Information about the requirements for the bank account, including what information needs to be collected.
