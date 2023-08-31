@@ -79,6 +79,7 @@ require __DIR__ . '/lib/StripeClient.php';
 
 require __DIR__ . '/lib/Account.php';
 require __DIR__ . '/lib/AccountLink.php';
+require __DIR__ . '/lib/AccountSession.php';
 require __DIR__ . '/lib/ApplePayDomain.php';
 require __DIR__ . '/lib/ApplicationFee.php';
 require __DIR__ . '/lib/ApplicationFeeRefund.php';
@@ -148,6 +149,7 @@ require __DIR__ . '/lib/Review.php';
 require __DIR__ . '/lib/SearchResult.php';
 require __DIR__ . '/lib/Service/AccountLinkService.php';
 require __DIR__ . '/lib/Service/AccountService.php';
+require __DIR__ . '/lib/Service/AccountSessionService.php';
 require __DIR__ . '/lib/Service/ApplePayDomainService.php';
 require __DIR__ . '/lib/Service/ApplicationFeeService.php';
 require __DIR__ . '/lib/Service/Apps/AppsServiceFactory.php';
