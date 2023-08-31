@@ -1,4 +1,9 @@
-<phpunit bootstrap="tests/bootstrap.no_autoload.php" colors="true">
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+    bootstrap="tests/bootstrap.no_autoload.php"
+    colors="true"
+>
     <php>
       <env name="IS_RUNNING_PHPUNIT" value="true"/>
     </php>
