@@ -19,8 +19,8 @@ on:
       - feature/**
 
 jobs:
-  php-cs-fixer:
-    name: PHP-CS-Fixer
+  coding-standards:
+    name: Coding Standards
 
     runs-on: ubuntu-latest
 
@@ -32,8 +32,8 @@ jobs:
         with:
           args: --format=txt --diff --dry-run --using-cache=no --verbose
 
-  phpstan:
-    name: PHPStan
+  static-code-analysis:
+    name: Static Code Analysis
 
     runs-on: ubuntu-latest
 
