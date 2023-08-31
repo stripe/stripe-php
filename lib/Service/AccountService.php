@@ -314,7 +314,8 @@ class AccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates an existing Account Capability.
+     * Updates an existing Account Capability. Request or remove a capability by
+     * updating its <code>requested</code> parameter.
      *
      * @param string $parentId
      * @param string $id
