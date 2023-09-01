@@ -1,5 +1,9 @@
 # Changelog
 
+## 12.2.0-beta.1 - 2023-08-31
+* [#1559](https://github.com/stripe/stripe-php/pull/1559) Update generated code for beta
+  * Rename `Quote.previewInvoices` to `Quote.allPreviewInvoices` and `Quote.previewSubscriptionSchedules` to `Quote.allSubscriptionSchedules`
+
 ## 12.0.0-beta.1 - 2023-08-24
 * [#1549](https://github.com/stripe/stripe-php/pull/1549) Update generated code for beta
   * Add support for new resources `QuotePreviewInvoice` and `QuotePreviewSchedule`
