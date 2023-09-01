@@ -4,14 +4,26 @@
 * [#1559](https://github.com/stripe/stripe-php/pull/1559) Update generated code for beta
   * Rename `Quote.previewInvoices` to `Quote.allPreviewInvoices` and `Quote.previewSubscriptionSchedules` to `Quote.allSubscriptionSchedules`
 
+## 12.1.0 - 2023-08-31
+* [#1560](https://github.com/stripe/stripe-php/pull/1560) Update generated code
+  * Add support for new resource `AccountSession`
+  * Add support for `create` method on resource `AccountSession`
+  * Add support for new values `obligation_inbound`, `obligation_outbound`, `obligation_payout_failure`, `obligation_payout`, `obligation_reversal_inbound`, and `obligation_reversal_outbound` on enum `BalanceTransaction.type`
+  * Change type of `Event.type` from `string` to `enum`
+  * Add support for `application` on `PaymentLink`
+* [#1562](https://github.com/stripe/stripe-php/pull/1562) Nicer ApiErrorException::__toString()
+* [#1558](https://github.com/stripe/stripe-php/pull/1558) Update generated code
+  * Add support for `payment_method_details` on `Dispute`
+  * Add support for `prefetch` on `FinancialConnections.Session`
+
+## 12.0.0 - 2023-08-18
+**⚠️ ACTION REQUIRED: the breaking change in this release likely affects you ⚠️**
+
 ## 12.0.0-beta.1 - 2023-08-24
 * [#1549](https://github.com/stripe/stripe-php/pull/1549) Update generated code for beta
   * Add support for new resources `QuotePreviewInvoice` and `QuotePreviewSchedule`
   * Remove support for `applies_to` on `Invoice` and `SubscriptionSchedule`
 * [#1556](https://github.com/stripe/stripe-php/pull/1556) Merge master into beta
-
-## 12.0.0 - 2023-08-18
-**⚠️ ACTION REQUIRED: the breaking change in this release likely affects you ⚠️**
 
 ## 11.0.0 - 2023-08-16
 Please do not use stripe-php v11. It did not correctly apply the [pinning behavior](https://github.com/stripe/stripe-php/blob/master/CHANGELOG.md#version-pinning) and was removed from packagist
