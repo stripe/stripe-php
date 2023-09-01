@@ -5,7 +5,7 @@
 namespace Stripe;
 
 /**
- * A quote line defines a set of changes that will be applied upon quote acceptance.
+ * A quote line defines a set of changes, in the order provided, that will be applied upon quote acceptance.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
