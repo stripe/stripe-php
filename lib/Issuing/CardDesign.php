@@ -26,6 +26,7 @@ class CardDesign extends \Stripe\ApiResource
 
     const PREFERENCE_DEFAULT = 'default';
     const PREFERENCE_NONE = 'none';
+    const PREFERENCE_PLATFORM_DEFAULT = 'platform_default';
 
     const STATUS_ACTIVE = 'active';
     const STATUS_INACTIVE = 'inactive';
