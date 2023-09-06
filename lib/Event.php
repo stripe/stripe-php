@@ -353,6 +353,7 @@ class Event extends ApiResource
     const TYPE_IDENTITY_VERIFICATION_SESSION_VERIFIED = 'identity.verification_session.verified';
     const TYPE_INVOICEITEM_CREATED = 'invoiceitem.created';
     const TYPE_INVOICEITEM_DELETED = 'invoiceitem.deleted';
+    const TYPE_INVOICEITEM_UPDATED = 'invoiceitem.updated';
     const TYPE_INVOICE_CREATED = 'invoice.created';
     const TYPE_INVOICE_DELETED = 'invoice.deleted';
     const TYPE_INVOICE_FINALIZATION_FAILED = 'invoice.finalization_failed';
