@@ -42,6 +42,7 @@ namespace Stripe\Service;
  * @property PaymentIntentService $paymentIntents
  * @property PaymentLinkService $paymentLinks
  * @property PaymentMethodConfigurationService $paymentMethodConfigurations
+ * @property PaymentMethodDomainService $paymentMethodDomains
  * @property PaymentMethodService $paymentMethods
  * @property PayoutService $payouts
  * @property PlanService $plans
@@ -114,6 +115,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'paymentIntents' => PaymentIntentService::class,
         'paymentLinks' => PaymentLinkService::class,
         'paymentMethodConfigurations' => PaymentMethodConfigurationService::class,
+        'paymentMethodDomains' => PaymentMethodDomainService::class,
         'paymentMethods' => PaymentMethodService::class,
         'payouts' => PayoutService::class,
         'plans' => PlanService::class,
