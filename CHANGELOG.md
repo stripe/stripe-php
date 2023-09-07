@@ -1,5 +1,12 @@
 # Changelog
 
+## 12.3.0-beta.1 - 2023-09-07
+* [#1574](https://github.com/stripe/stripe-php/pull/1574) Update generated code for beta
+  * Release specs are identical.
+* [#1572](https://github.com/stripe/stripe-php/pull/1572) Update generated code for beta
+  * Remove support for `submit_card` test helper method on resource `Issuing.Card`
+  * Add support for new value `platform_default` on enum `Issuing.CardDesign.preference`
+
 ## 12.2.0 - 2023-09-07
 * [#1571](https://github.com/stripe/stripe-php/pull/1571) Update generated code
   * Add support for new resource `PaymentMethodDomain`
