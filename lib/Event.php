@@ -166,6 +166,7 @@ class Event extends ApiResource
     const ISSUING_CARD_CREATED = 'issuing_card.created';
     const ISSUING_CARD_DESIGN_ACTIVATED = 'issuing_card_design.activated';
     const ISSUING_CARD_DESIGN_DEACTIVATED = 'issuing_card_design.deactivated';
+    const ISSUING_CARD_DESIGN_REJECTED = 'issuing_card_design.rejected';
     const ISSUING_CARD_DESIGN_UPDATED = 'issuing_card_design.updated';
     const ISSUING_CARD_UPDATED = 'issuing_card.updated';
     const ISSUING_DISPUTE_CLOSED = 'issuing_dispute.closed';
@@ -415,6 +416,7 @@ class Event extends ApiResource
     const TYPE_ISSUING_CARD_CREATED = 'issuing_card.created';
     const TYPE_ISSUING_CARD_DESIGN_ACTIVATED = 'issuing_card_design.activated';
     const TYPE_ISSUING_CARD_DESIGN_DEACTIVATED = 'issuing_card_design.deactivated';
+    const TYPE_ISSUING_CARD_DESIGN_REJECTED = 'issuing_card_design.rejected';
     const TYPE_ISSUING_CARD_DESIGN_UPDATED = 'issuing_card_design.updated';
     const TYPE_ISSUING_CARD_UPDATED = 'issuing_card.updated';
     const TYPE_ISSUING_DISPUTE_CLOSED = 'issuing_dispute.closed';

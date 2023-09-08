@@ -23,6 +23,21 @@ class CardDesignService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Creates a card design object.
+     *
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\CardDesign
+     */
+    public function create($params = null, $opts = null)
+    {
+        return $this->request('post', '/v1/issuing/card_designs', $params, $opts);
+    }
+
+    /**
      * Retrieves a card design object.
      *
      * @param string $id
