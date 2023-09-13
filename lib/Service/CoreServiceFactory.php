@@ -19,6 +19,7 @@ namespace Stripe\Service;
  * @property Capital\CapitalServiceFactory $capital
  * @property ChargeService $charges
  * @property Checkout\CheckoutServiceFactory $checkout
+ * @property ConfirmationTokenService $confirmationTokens
  * @property CountrySpecService $countrySpecs
  * @property CouponService $coupons
  * @property CreditNoteService $creditNotes
@@ -92,6 +93,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'capital' => Capital\CapitalServiceFactory::class,
         'charges' => ChargeService::class,
         'checkout' => Checkout\CheckoutServiceFactory::class,
+        'confirmationTokens' => ConfirmationTokenService::class,
         'countrySpecs' => CountrySpecService::class,
         'coupons' => CouponService::class,
         'creditNotes' => CreditNoteService::class,
