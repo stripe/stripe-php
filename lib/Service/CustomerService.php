@@ -179,7 +179,7 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a new <code>TaxID</code> object for a customer.
+     * Creates a new <code>tax_id</code> object for a customer.
      *
      * @param string $parentId
      * @param null|array $params
@@ -245,7 +245,7 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Deletes an existing <code>TaxID</code> object.
+     * Deletes an existing <code>tax_id</code> object.
      *
      * @param string $parentId
      * @param string $id
@@ -364,7 +364,7 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves the <code>TaxID</code> object with the given identifier.
+     * Retrieves the <code>tax_id</code> object with the given identifier.
      *
      * @param string $parentId
      * @param string $id
