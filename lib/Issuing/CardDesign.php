@@ -15,7 +15,7 @@ namespace Stripe\Issuing;
  * @property null|string $lookup_key A lookup key used to retrieve card designs dynamically from a static string. This may be up to 200 characters.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name Friendly display name.
- * @property string $preference Whether this card design is used to create cards when one is not specified.
+ * @property \Stripe\StripeObject $preferences
  * @property \Stripe\StripeObject $rejection_reasons
  * @property string $status Whether this card design can be used to create cards.
  */
@@ -27,10 +27,6 @@ class CardDesign extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Create;
     use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
-
-    const PREFERENCE_DEFAULT = 'default';
-    const PREFERENCE_NONE = 'none';
-    const PREFERENCE_PLATFORM_DEFAULT = 'platform_default';
 
     const STATUS_ACTIVE = 'active';
     const STATUS_INACTIVE = 'inactive';
