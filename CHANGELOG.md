@@ -1,5 +1,26 @@
 # Changelog
 
+## 12.4.0-beta.1 - 2023-09-14
+* [#1575](https://github.com/stripe/stripe-php/pull/1575) Update generated code for beta
+  * Add support for new resource `ConfirmationToken`
+  * Add support for `retrieve` method on resource `ConfirmationToken`
+  * Add support for `create` method on resource `Issuing.CardDesign`
+  * Add support for `reject_testmode` test helper method on resource `Issuing.CardDesign`
+  * Add support for new value `issuing_card_design.rejected` on enum `Event.type`
+  * Add support for `features` on `Issuing.CardBundle`
+  * Add support for `card_logo`, `carrier_text`, `preferences`, and `rejection_reasons` on `Issuing.CardDesign`
+  * Remove support for `preference` on `Issuing.CardDesign`
+
+## 12.3.0 - 2023-09-14
+* [#1577](https://github.com/stripe/stripe-php/pull/1577) Update generated code
+  * Add support for new resource `PaymentMethodConfiguration`
+  * Add support for `all`, `create`, `retrieve`, and `update` methods on resource `PaymentMethodConfiguration`
+  * Add support for `payment_method_configuration_details` on `Checkout.Session`, `PaymentIntent`, and `SetupIntent`
+* [#1573](https://github.com/stripe/stripe-php/pull/1573) Update generated code
+  * Add support for `capture`, `create`, `expire`, `increment`, and `reverse` test helper methods on resource `Issuing.Authorization`
+  * Add support for `create_force_capture`, `create_unlinked_refund`, and `refund` test helper methods on resource `Issuing.Transaction`
+  * Add support for new value `stripe_tax_inactive` on enum `StripeError.code`
+
 ## 12.3.0-beta.1 - 2023-09-07
 * [#1574](https://github.com/stripe/stripe-php/pull/1574) Update generated code for beta
   * Release specs are identical.
