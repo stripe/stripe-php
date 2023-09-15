@@ -31,6 +31,7 @@ class ObjectTypes
         \Stripe\Charge::OBJECT_NAME => \Stripe\Charge::class,
         \Stripe\Checkout\Session::OBJECT_NAME => \Stripe\Checkout\Session::class,
         \Stripe\Collection::OBJECT_NAME => \Stripe\Collection::class,
+        \Stripe\ConfirmationToken::OBJECT_NAME => \Stripe\ConfirmationToken::class,
         \Stripe\CountrySpec::OBJECT_NAME => \Stripe\CountrySpec::class,
         \Stripe\Coupon::OBJECT_NAME => \Stripe\Coupon::class,
         \Stripe\CreditNote::OBJECT_NAME => \Stripe\CreditNote::class,
