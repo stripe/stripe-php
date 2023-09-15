@@ -4260,4 +4260,312 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         );
         // TODO: assert proper instance, {"shape":"file"}
     }
+
+    public function testListPaymentMethodConfiguration()
+    {
+        $this->expectsRequest('get', '/v1/payment_method_configurations');
+        $result = $this->client->paymentMethodConfigurations->all([
+            'application' => 'foo',
+        ]);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\PaymentMethodConfiguration::class, $result->data[0]);
+    }
+
+    public function testCreatePaymentMethodConfiguration()
+    {
+        $this->expectsRequest('post', '/v1/payment_method_configurations');
+        $result = $this->client->paymentMethodConfigurations->create([
+            'acss_debit' => ['display_preference' => ['preference' => 'none']],
+            'affirm' => ['display_preference' => ['preference' => 'none']],
+        ]);
+        static::assertInstanceOf(\Stripe\PaymentMethodConfiguration::class, $result);
+    }
+
+    public function testRetrievePaymentMethodConfiguration()
+    {
+        $this->expectsRequest('get', '/v1/payment_method_configurations/foo');
+        $result = $this->client->paymentMethodConfigurations->retrieve(
+            'foo',
+            []
+        );
+        static::assertInstanceOf(\Stripe\PaymentMethodConfiguration::class, $result);
+    }
+
+    public function testUpdatePaymentMethodConfiguration()
+    {
+        $this->expectsRequest('post', '/v1/payment_method_configurations/foo');
+        $result = $this->client->paymentMethodConfigurations->update(
+            'foo',
+            ['acss_debit' => ['display_preference' => ['preference' => 'on']]]
+        );
+        static::assertInstanceOf(\Stripe\PaymentMethodConfiguration::class, $result);
+    }
+
+    public function testCreateAuthorization()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/issuing/authorizations'
+        );
+        $result = $this->client->testHelpers->issuing->authorizations->create([
+            'amount' => 100,
+            'amount_details' => [
+                'atm_fee' => 10,
+                'cashback_amount' => 5,
+            ],
+            'authorization_method' => 'chip',
+            'card' => 'foo',
+            'currency' => 'usd',
+            'is_amount_controllable' => true,
+            'merchant_data' => [
+                'category' => 'ac_refrigeration_repair',
+                'city' => 'foo',
+                'country' => 'bar',
+                'name' => 'foo',
+                'network_id' => 'bar',
+                'postal_code' => 'foo',
+                'state' => 'bar',
+                'terminal_id' => 'foo',
+            ],
+            'network_data' => ['acquiring_institution_id' => 'foo'],
+            'verification_data' => [
+                'address_line1_check' => 'mismatch',
+                'address_postal_code_check' => 'match',
+                'cvc_check' => 'match',
+                'expiry_check' => 'mismatch',
+            ],
+            'wallet' => 'apple_pay',
+        ]);
+        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $result);
+    }
+
+    public function testCaptureAuthorization()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/issuing/authorizations/example_authorization/capture'
+        );
+        $result = $this->client->testHelpers->issuing->authorizations->capture(
+            'example_authorization',
+            [
+                'capture_amount' => 100,
+                'close_authorization' => true,
+                'purchase_details' => [
+                    'flight' => [
+                        'departure_at' => 1633651200,
+                        'passenger_name' => 'John Doe',
+                        'refundable' => true,
+                        'segments' => [
+                            [
+                                'arrival_airport_code' => 'SFO',
+                                'carrier' => 'Delta',
+                                'departure_airport_code' => 'LAX',
+                                'flight_number' => 'DL100',
+                                'service_class' => 'Economy',
+                                'stopover_allowed' => true,
+                            ],
+                        ],
+                        'travel_agency' => 'Orbitz',
+                    ],
+                    'fuel' => [
+                        'type' => 'diesel',
+                        'unit' => 'liter',
+                        'unit_cost_decimal' => '3.5',
+                        'volume_decimal' => '10',
+                    ],
+                    'lodging' => [
+                        'check_in_at' => 1633651200,
+                        'nights' => 2,
+                    ],
+                    'receipt' => [
+                        [
+                            'description' => 'Room charge',
+                            'quantity' => '1',
+                            'total' => 200,
+                            'unit_cost' => 200,
+                        ],
+                    ],
+                    'reference' => 'foo',
+                ],
+            ]
+        );
+        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $result);
+    }
+
+    public function testExpireAuthorization()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/issuing/authorizations/example_authorization/expire'
+        );
+        $result = $this->client->testHelpers->issuing->authorizations->expire(
+            'example_authorization',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $result);
+    }
+
+    public function testIncrementAuthorization()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/issuing/authorizations/example_authorization/increment'
+        );
+        $result = $this->client->testHelpers->issuing->authorizations->increment(
+            'example_authorization',
+            [
+                'increment_amount' => 50,
+                'is_amount_controllable' => true,
+            ]
+        );
+        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $result);
+    }
+
+    public function testReverseAuthorization()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/issuing/authorizations/example_authorization/reverse'
+        );
+        $result = $this->client->testHelpers->issuing->authorizations->reverse(
+            'example_authorization',
+            ['reverse_amount' => 20]
+        );
+        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $result);
+    }
+
+    public function testCreateForceCaptureTransaction()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/issuing/transactions/create_force_capture'
+        );
+        $result = $this->client->testHelpers->issuing->transactions->createForceCapture([
+            'amount' => 100,
+            'card' => 'foo',
+            'currency' => 'usd',
+            'merchant_data' => [
+                'category' => 'ac_refrigeration_repair',
+                'city' => 'foo',
+                'country' => 'US',
+                'name' => 'foo',
+                'network_id' => 'bar',
+                'postal_code' => '10001',
+                'state' => 'NY',
+                'terminal_id' => 'foo',
+            ],
+            'purchase_details' => [
+                'flight' => [
+                    'departure_at' => 1633651200,
+                    'passenger_name' => 'John Doe',
+                    'refundable' => true,
+                    'segments' => [
+                        [
+                            'arrival_airport_code' => 'SFO',
+                            'carrier' => 'Delta',
+                            'departure_airport_code' => 'LAX',
+                            'flight_number' => 'DL100',
+                            'service_class' => 'Economy',
+                            'stopover_allowed' => true,
+                        ],
+                    ],
+                    'travel_agency' => 'Orbitz',
+                ],
+                'fuel' => [
+                    'type' => 'diesel',
+                    'unit' => 'liter',
+                    'unit_cost_decimal' => '3.5',
+                    'volume_decimal' => '10',
+                ],
+                'lodging' => [
+                    'check_in_at' => 1533651200,
+                    'nights' => 2,
+                ],
+                'receipt' => [
+                    [
+                        'description' => 'Room charge',
+                        'quantity' => '1',
+                        'total' => 200,
+                        'unit_cost' => 200,
+                    ],
+                ],
+                'reference' => 'foo',
+            ],
+        ]);
+        static::assertInstanceOf(\Stripe\Issuing\Transaction::class, $result);
+    }
+
+    public function testCreateUnlinkedRefundTransaction()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/issuing/transactions/create_unlinked_refund'
+        );
+        $result = $this->client->testHelpers->issuing->transactions->createUnlinkedRefund([
+            'amount' => 100,
+            'card' => 'foo',
+            'currency' => 'usd',
+            'merchant_data' => [
+                'category' => 'ac_refrigeration_repair',
+                'city' => 'foo',
+                'country' => 'bar',
+                'name' => 'foo',
+                'network_id' => 'bar',
+                'postal_code' => 'foo',
+                'state' => 'bar',
+                'terminal_id' => 'foo',
+            ],
+            'purchase_details' => [
+                'flight' => [
+                    'departure_at' => 1533651200,
+                    'passenger_name' => 'John Doe',
+                    'refundable' => true,
+                    'segments' => [
+                        [
+                            'arrival_airport_code' => 'SFO',
+                            'carrier' => 'Delta',
+                            'departure_airport_code' => 'LAX',
+                            'flight_number' => 'DL100',
+                            'service_class' => 'Economy',
+                            'stopover_allowed' => true,
+                        ],
+                    ],
+                    'travel_agency' => 'Orbitz',
+                ],
+                'fuel' => [
+                    'type' => 'diesel',
+                    'unit' => 'liter',
+                    'unit_cost_decimal' => '3.5',
+                    'volume_decimal' => '10',
+                ],
+                'lodging' => [
+                    'check_in_at' => 1533651200,
+                    'nights' => 2,
+                ],
+                'receipt' => [
+                    [
+                        'description' => 'Room charge',
+                        'quantity' => '1',
+                        'total' => 200,
+                        'unit_cost' => 200,
+                    ],
+                ],
+                'reference' => 'foo',
+            ],
+        ]);
+        static::assertInstanceOf(\Stripe\Issuing\Transaction::class, $result);
+    }
+
+    public function testRefundTransaction()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/issuing/transactions/example_transaction/refund'
+        );
+        $result = $this->client->testHelpers->issuing->transactions->refund(
+            'example_transaction',
+            ['refund_amount' => 50]
+        );
+        static::assertInstanceOf(\Stripe\Issuing\Transaction::class, $result);
+    }
 }

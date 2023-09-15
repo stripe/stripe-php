@@ -37,6 +37,7 @@ namespace Stripe\Service;
  * @property OAuthService $oauth
  * @property PaymentIntentService $paymentIntents
  * @property PaymentLinkService $paymentLinks
+ * @property PaymentMethodConfigurationService $paymentMethodConfigurations
  * @property PaymentMethodDomainService $paymentMethodDomains
  * @property PaymentMethodService $paymentMethods
  * @property PayoutService $payouts
@@ -104,6 +105,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'oauth' => OAuthService::class,
         'paymentIntents' => PaymentIntentService::class,
         'paymentLinks' => PaymentLinkService::class,
+        'paymentMethodConfigurations' => PaymentMethodConfigurationService::class,
         'paymentMethodDomains' => PaymentMethodDomainService::class,
         'paymentMethods' => PaymentMethodService::class,
         'payouts' => PayoutService::class,
