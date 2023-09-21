@@ -76,6 +76,7 @@ namespace Stripe;
  * @property null|int $ending_balance Ending customer balance after the invoice is finalized. Invoices are finalized approximately an hour after successful webhook delivery or when payment collection is attempted for the invoice. If the invoice has not been finalized yet, this will be null.
  * @property null|string $footer Footer displayed on the invoice.
  * @property null|\Stripe\StripeObject $from_invoice Details of the invoice that was cloned. See the <a href="https://stripe.com/docs/invoicing/invoice-revisions">revision documentation</a> for more details.
+ * @property null|\Stripe\StripeObject $issuer The connected account that issues the invoice. The invoice is presented with the branding and support information of the specified account.
  * @property null|\Stripe\StripeObject $last_finalization_error The error encountered during the previous attempt to finalize the invoice. This field is cleared when the invoice is successfully finalized.
  * @property null|string|\Stripe\Invoice $latest_revision The ID of the most recent non-draft revision of this invoice
  * @property \Stripe\Collection<\Stripe\InvoiceLineItem> $lines The individual line items that make up the invoice. <code>lines</code> is sorted as follows: (1) pending invoice items (including prorations) in reverse chronological order, (2) subscription items in reverse chronological order, and (3) invoice items added after invoice creation in chronological order.
