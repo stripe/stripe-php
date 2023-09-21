@@ -1,5 +1,10 @@
 # Changelog
 
+## 12.5.0-beta.1 - 2023-09-21
+* [#1578](https://github.com/stripe/stripe-php/pull/1578) Update generated code for beta
+  * Remove support for `customer` on `ConfirmationToken`
+  * Add support for `issuer` on `Invoice`
+
 ## 12.4.0-beta.1 - 2023-09-14
 * [#1575](https://github.com/stripe/stripe-php/pull/1575) Update generated code for beta
   * Add support for new resource `ConfirmationToken`
