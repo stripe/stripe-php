@@ -179,6 +179,7 @@ class Event extends ApiResource
     const ISSUING_TRANSACTION_CREATED = 'issuing_transaction.created';
     const ISSUING_TRANSACTION_UPDATED = 'issuing_transaction.updated';
     const MANDATE_UPDATED = 'mandate.updated';
+    const ORDER_CREATED = 'order.created';
     const PAYMENT_INTENT_AMOUNT_CAPTURABLE_UPDATED = 'payment_intent.amount_capturable_updated';
     const PAYMENT_INTENT_CANCELED = 'payment_intent.canceled';
     const PAYMENT_INTENT_CREATED = 'payment_intent.created';
@@ -224,6 +225,9 @@ class Event extends ApiResource
     const QUOTE_STALE = 'quote.stale';
     const RADAR_EARLY_FRAUD_WARNING_CREATED = 'radar.early_fraud_warning.created';
     const RADAR_EARLY_FRAUD_WARNING_UPDATED = 'radar.early_fraud_warning.updated';
+    const RECIPIENT_CREATED = 'recipient.created';
+    const RECIPIENT_DELETED = 'recipient.deleted';
+    const RECIPIENT_UPDATED = 'recipient.updated';
     const REFUND_CREATED = 'refund.created';
     const REFUND_UPDATED = 'refund.updated';
     const REPORTING_REPORT_RUN_FAILED = 'reporting.report_run.failed';
@@ -237,6 +241,9 @@ class Event extends ApiResource
     const SETUP_INTENT_SETUP_FAILED = 'setup_intent.setup_failed';
     const SETUP_INTENT_SUCCEEDED = 'setup_intent.succeeded';
     const SIGMA_SCHEDULED_QUERY_RUN_CREATED = 'sigma.scheduled_query_run.created';
+    const SKU_CREATED = 'sku.created';
+    const SKU_DELETED = 'sku.deleted';
+    const SKU_UPDATED = 'sku.updated';
     const SOURCE_CANCELED = 'source.canceled';
     const SOURCE_CHARGEABLE = 'source.chargeable';
     const SOURCE_FAILED = 'source.failed';
@@ -422,6 +429,7 @@ class Event extends ApiResource
     const TYPE_ISSUING_TRANSACTION_CREATED = 'issuing_transaction.created';
     const TYPE_ISSUING_TRANSACTION_UPDATED = 'issuing_transaction.updated';
     const TYPE_MANDATE_UPDATED = 'mandate.updated';
+    const TYPE_ORDER_CREATED = 'order.created';
     const TYPE_PAYMENT_INTENT_AMOUNT_CAPTURABLE_UPDATED = 'payment_intent.amount_capturable_updated';
     const TYPE_PAYMENT_INTENT_CANCELED = 'payment_intent.canceled';
     const TYPE_PAYMENT_INTENT_CREATED = 'payment_intent.created';
@@ -467,6 +475,9 @@ class Event extends ApiResource
     const TYPE_QUOTE_STALE = 'quote.stale';
     const TYPE_RADAR_EARLY_FRAUD_WARNING_CREATED = 'radar.early_fraud_warning.created';
     const TYPE_RADAR_EARLY_FRAUD_WARNING_UPDATED = 'radar.early_fraud_warning.updated';
+    const TYPE_RECIPIENT_CREATED = 'recipient.created';
+    const TYPE_RECIPIENT_DELETED = 'recipient.deleted';
+    const TYPE_RECIPIENT_UPDATED = 'recipient.updated';
     const TYPE_REFUND_CREATED = 'refund.created';
     const TYPE_REFUND_UPDATED = 'refund.updated';
     const TYPE_REPORTING_REPORT_RUN_FAILED = 'reporting.report_run.failed';
@@ -480,6 +491,9 @@ class Event extends ApiResource
     const TYPE_SETUP_INTENT_SETUP_FAILED = 'setup_intent.setup_failed';
     const TYPE_SETUP_INTENT_SUCCEEDED = 'setup_intent.succeeded';
     const TYPE_SIGMA_SCHEDULED_QUERY_RUN_CREATED = 'sigma.scheduled_query_run.created';
+    const TYPE_SKU_CREATED = 'sku.created';
+    const TYPE_SKU_DELETED = 'sku.deleted';
+    const TYPE_SKU_UPDATED = 'sku.updated';
     const TYPE_SOURCE_CANCELED = 'source.canceled';
     const TYPE_SOURCE_CHARGEABLE = 'source.chargeable';
     const TYPE_SOURCE_FAILED = 'source.failed';
