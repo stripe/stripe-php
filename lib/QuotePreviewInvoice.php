@@ -95,6 +95,7 @@ namespace Stripe;
  * @property int $pre_payment_credit_notes_amount Total amount of all pre-payment credit notes issued for this invoice.
  * @property null|string|\Stripe\Quote $quote The quote this invoice was generated from.
  * @property null|string $receipt_number This is the transaction number that appears on email receipts sent for this invoice.
+ * @property null|\Stripe\StripeObject $rendering The rendering-related settings that control how the invoice is displayed on customer-facing surfaces such as PDF and Hosted Invoice Page.
  * @property null|\Stripe\StripeObject $rendering_options Options for invoice PDF rendering.
  * @property null|\Stripe\StripeObject $shipping_cost The details of the cost of shipping, including the ShippingRate applied on the invoice.
  * @property null|\Stripe\StripeObject $shipping_details Shipping details for the invoice. The Invoice PDF will use the <code>shipping_details</code> value if it is set, otherwise the PDF will render the shipping address from the customer.
