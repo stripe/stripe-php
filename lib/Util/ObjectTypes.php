@@ -12,6 +12,7 @@ class ObjectTypes
             \Stripe\Collection::OBJECT_NAME => \Stripe\Collection::class,
             \Stripe\Issuing\CardDetails::OBJECT_NAME => \Stripe\Issuing\CardDetails::class,
             \Stripe\SearchResult::OBJECT_NAME => \Stripe\SearchResult::class,
+            \Stripe\File::OBJECT_NAME_ALT => \Stripe\File::class,
             // The beginning of the section generated from our OpenAPI spec
             \Stripe\Account::OBJECT_NAME => \Stripe\Account::class,
             \Stripe\AccountLink::OBJECT_NAME => \Stripe\AccountLink::class,
