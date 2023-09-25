@@ -1,7 +1,5 @@
 <?php
 
-// File generated from our OpenAPI spec
-
 require __DIR__ . '/lib/Util/ApiVersion.php';
 
 // Stripe singleton
@@ -71,6 +69,11 @@ require __DIR__ . '/lib/Service/AbstractService.php';
 require __DIR__ . '/lib/Service/AbstractServiceFactory.php';
 require __DIR__ . '/lib/Preview.php';
 
+require __DIR__ . '/lib/Collection.php';
+require __DIR__ . '/lib/SearchResult.php';
+require __DIR__ . '/lib/ErrorObject.php';
+require __DIR__ . '/lib/Issuing/CardDetails.php';
+
 // StripeClient
 require __DIR__ . '/lib/BaseStripeClientInterface.php';
 require __DIR__ . '/lib/StripeClientInterface.php';
@@ -78,6 +81,7 @@ require __DIR__ . '/lib/StripeStreamingClientInterface.php';
 require __DIR__ . '/lib/BaseStripeClient.php';
 require __DIR__ . '/lib/StripeClient.php';
 
+// The beginning of the section generated from our OpenAPI spec
 require __DIR__ . '/lib/Account.php';
 require __DIR__ . '/lib/AccountLink.php';
 require __DIR__ . '/lib/AccountSession.php';
@@ -98,7 +102,6 @@ require __DIR__ . '/lib/Card.php';
 require __DIR__ . '/lib/CashBalance.php';
 require __DIR__ . '/lib/Charge.php';
 require __DIR__ . '/lib/Checkout/Session.php';
-require __DIR__ . '/lib/Collection.php';
 require __DIR__ . '/lib/ConfirmationToken.php';
 require __DIR__ . '/lib/CountrySpec.php';
 require __DIR__ . '/lib/Coupon.php';
@@ -111,7 +114,6 @@ require __DIR__ . '/lib/CustomerSession.php';
 require __DIR__ . '/lib/Discount.php';
 require __DIR__ . '/lib/Dispute.php';
 require __DIR__ . '/lib/EphemeralKey.php';
-require __DIR__ . '/lib/ErrorObject.php';
 require __DIR__ . '/lib/Event.php';
 require __DIR__ . '/lib/ExchangeRate.php';
 require __DIR__ . '/lib/File.php';
@@ -134,7 +136,6 @@ require __DIR__ . '/lib/Issuing/Authorization.php';
 require __DIR__ . '/lib/Issuing/Card.php';
 require __DIR__ . '/lib/Issuing/CardBundle.php';
 require __DIR__ . '/lib/Issuing/CardDesign.php';
-require __DIR__ . '/lib/Issuing/CardDetails.php';
 require __DIR__ . '/lib/Issuing/Cardholder.php';
 require __DIR__ . '/lib/Issuing/Dispute.php';
 require __DIR__ . '/lib/Issuing/Transaction.php';
@@ -165,7 +166,6 @@ require __DIR__ . '/lib/Refund.php';
 require __DIR__ . '/lib/Reporting/ReportRun.php';
 require __DIR__ . '/lib/Reporting/ReportType.php';
 require __DIR__ . '/lib/Review.php';
-require __DIR__ . '/lib/SearchResult.php';
 require __DIR__ . '/lib/Service/AccountLinkService.php';
 require __DIR__ . '/lib/Service/AccountService.php';
 require __DIR__ . '/lib/Service/AccountSessionService.php';
@@ -337,6 +337,8 @@ require __DIR__ . '/lib/Treasury/TransactionEntry.php';
 require __DIR__ . '/lib/UsageRecord.php';
 require __DIR__ . '/lib/UsageRecordSummary.php';
 require __DIR__ . '/lib/WebhookEndpoint.php';
+
+// The end of the section generated from our OpenAPI spec
 
 // OAuth
 require __DIR__ . '/lib/OAuth.php';

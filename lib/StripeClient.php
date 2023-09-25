@@ -1,15 +1,15 @@
 <?php
 
-// File generated from our OpenAPI spec
-
 namespace Stripe;
 
 /**
  * Client used to send requests to Stripe's API.
  *
+ * @property \Stripe\Service\OAuthService $oauth
+ * // The beginning of the section generated from our OpenAPI spec
  * @property \Stripe\Service\AccountLinkService $accountLinks
- * @property \Stripe\Service\AccountSessionService $accountSessions
  * @property \Stripe\Service\AccountService $accounts
+ * @property \Stripe\Service\AccountSessionService $accountSessions
  * @property \Stripe\Service\ApplePayDomainService $applePayDomains
  * @property \Stripe\Service\ApplicationFeeService $applicationFees
  * @property \Stripe\Service\Apps\AppsServiceFactory $apps
@@ -23,8 +23,8 @@ namespace Stripe;
  * @property \Stripe\Service\CountrySpecService $countrySpecs
  * @property \Stripe\Service\CouponService $coupons
  * @property \Stripe\Service\CreditNoteService $creditNotes
- * @property \Stripe\Service\CustomerSessionService $customerSessions
  * @property \Stripe\Service\CustomerService $customers
+ * @property \Stripe\Service\CustomerSessionService $customerSessions
  * @property \Stripe\Service\DisputeService $disputes
  * @property \Stripe\Service\EphemeralKeyService $ephemeralKeys
  * @property \Stripe\Service\EventService $events
@@ -38,7 +38,6 @@ namespace Stripe;
  * @property \Stripe\Service\InvoiceService $invoices
  * @property \Stripe\Service\Issuing\IssuingServiceFactory $issuing
  * @property \Stripe\Service\MandateService $mandates
- * @property \Stripe\Service\OAuthService $oauth
  * @property \Stripe\Service\OrderService $orders
  * @property \Stripe\Service\PaymentIntentService $paymentIntents
  * @property \Stripe\Service\PaymentLinkService $paymentLinks
@@ -62,8 +61,8 @@ namespace Stripe;
  * @property \Stripe\Service\Sigma\SigmaServiceFactory $sigma
  * @property \Stripe\Service\SourceService $sources
  * @property \Stripe\Service\SubscriptionItemService $subscriptionItems
- * @property \Stripe\Service\SubscriptionScheduleService $subscriptionSchedules
  * @property \Stripe\Service\SubscriptionService $subscriptions
+ * @property \Stripe\Service\SubscriptionScheduleService $subscriptionSchedules
  * @property \Stripe\Service\Tax\TaxServiceFactory $tax
  * @property \Stripe\Service\TaxCodeService $taxCodes
  * @property \Stripe\Service\TaxRateService $taxRates
@@ -74,6 +73,7 @@ namespace Stripe;
  * @property \Stripe\Service\TransferService $transfers
  * @property \Stripe\Service\Treasury\TreasuryServiceFactory $treasury
  * @property \Stripe\Service\WebhookEndpointService $webhookEndpoints
+ * // The end of the section generated from our OpenAPI spec
  */
 class StripeClient extends BaseStripeClient
 {
