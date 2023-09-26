@@ -81,7 +81,6 @@ require __DIR__ . '/lib/BaseStripeClient.php';
 require __DIR__ . '/lib/StripeClient.php';
 
 // The beginning of the section generated from our OpenAPI spec
-
 require __DIR__ . '/lib/Account.php';
 require __DIR__ . '/lib/AccountLink.php';
 require __DIR__ . '/lib/AccountSession.php';
