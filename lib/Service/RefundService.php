@@ -7,10 +7,9 @@ namespace Stripe\Service;
 class RefundService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of all refunds you’ve previously created. The refunds are
-     * returned in sorted order, with the most recent refunds appearing first. For
-     * convenience, the 10 most recent refunds are always available by default on the
-     * charge object.
+     * Returns a list of all refunds you created. We return the refunds in sorted
+     * order, with the most recent refunds appearing first The 10 most recent refunds
+     * are always available by default on the Charge object.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -27,8 +26,8 @@ class RefundService extends \Stripe\Service\AbstractService
     /**
      * Cancels a refund with a status of <code>requires_action</code>.
      *
-     * Refunds in other states cannot be canceled, and only refunds for payment methods
-     * that require customer action will enter the <code>requires_action</code> state.
+     * You can’t cancel refunds in other states. Only refunds for payment methods that
+     * require customer action can enter the <code>requires_action</code> state.
      *
      * @param string $id
      * @param null|array $params
@@ -87,8 +86,8 @@ class RefundService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates the specified refund by setting the values of the parameters passed. Any
-     * parameters not provided will be left unchanged.
+     * Updates the refund that you specify by setting the values of the passed
+     * parameters. Any parameters that you don’t provide remain unchanged.
      *
      * This request only accepts <code>metadata</code> as an argument.
      *
