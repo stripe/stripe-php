@@ -4568,4 +4568,11 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         );
         static::assertInstanceOf(\Stripe\Issuing\Transaction::class, $result);
     }
+
+    public function testDeleteDiscountSubscription()
+    {
+        $this->expectsRequest('delete', '/v1/subscriptions/sub_xyz/discount');
+        $result = $this->client->subscriptions->deleteDiscount('sub_xyz', []);
+        static::assertInstanceOf(\Stripe\Discount::class, $result);
+    }
 }
