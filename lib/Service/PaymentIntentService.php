@@ -39,17 +39,17 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * A PaymentIntent object can be canceled when it is in one of these statuses:
+     * You can cancel a PaymentIntent object when it’s in one of these statuses:
      * <code>requires_payment_method</code>, <code>requires_capture</code>,
      * <code>requires_confirmation</code>, <code>requires_action</code> or, <a
      * href="/docs/payments/intents">in rare cases</a>, <code>processing</code>.
      *
-     * Once canceled, no additional charges will be made by the PaymentIntent and any
-     * operations on the PaymentIntent will fail with an error. For PaymentIntents with
-     * a <code>status</code> of <code>requires_capture</code>, the remaining
-     * <code>amount_capturable</code> will automatically be refunded.
+     * After it’s canceled, no additional charges are made by the PaymentIntent and any
+     * operations on the PaymentIntent fail with an error. For PaymentIntents with a
+     * <code>status</code> of <code>requires_capture</code>, the remaining
+     * <code>amount_capturable</code> is automatically refunded.
      *
-     * You cannot cancel the PaymentIntent for a Checkout Session. <a
+     * You can’t cancel the PaymentIntent for a Checkout Session. <a
      * href="/docs/api/checkout/sessions/expire">Expire the Checkout Session</a>
      * instead.
      *
@@ -70,8 +70,8 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * Capture the funds of an existing uncaptured PaymentIntent when its status is
      * <code>requires_capture</code>.
      *
-     * Uncaptured PaymentIntents will be canceled a set number of days after they are
-     * created (7 by default).
+     * Uncaptured PaymentIntents are cancelled a set number of days (7 by default)
+     * after their creation.
      *
      * Learn more about <a href="/docs/payments/capture-later">separate authorization
      * and capture</a>.
