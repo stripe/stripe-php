@@ -22,7 +22,8 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Manually reconcile the remaining amount for a customer_balance PaymentIntent.
+     * Manually reconcile the remaining amount for a <code>customer_balance</code>
+     * PaymentIntent.
      *
      * @param string $id
      * @param null|array $params
@@ -132,13 +133,13 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      *
      * After the PaymentIntent is created, attach a payment method and <a
      * href="/docs/api/payment_intents/confirm">confirm</a> to continue the payment.
-     * You can read more about the different payment flows available via the Payment
-     * Intents API <a href="/docs/payments/payment-intents">here</a>.
+     * Learn more about <a href="/docs/payments/payment-intents">the available payment
+     * flows with the Payment Intents API</a>.
      *
-     * When <code>confirm=true</code> is used during creation, it is equivalent to
-     * creating and confirming the PaymentIntent in the same call. You may use any
+     * When you use <code>confirm=true</code> during creation, it’s equivalent to
+     * creating and confirming the PaymentIntent in the same call. You can use any
      * parameters available in the <a href="/docs/api/payment_intents/confirm">confirm
-     * API</a> when <code>confirm=true</code> is supplied.
+     * API</a> when you supply <code>confirm=true</code>.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -160,21 +161,22 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * must be <code>true</code>.
      *
      * Incremental authorizations attempt to increase the authorized amount on your
-     * customer’s card to the new, higher <code>amount</code> provided. As with the
-     * initial authorization, incremental authorizations may be declined. A single
+     * customer’s card to the new, higher <code>amount</code> provided. Similar to the
+     * initial authorization, incremental authorizations can be declined. A single
      * PaymentIntent can call this endpoint multiple times to further increase the
      * authorized amount.
      *
-     * If the incremental authorization succeeds, the PaymentIntent object is returned
-     * with the updated <a
+     * If the incremental authorization succeeds, the PaymentIntent object returns with
+     * the updated <a
      * href="/docs/api/payment_intents/object#payment_intent_object-amount">amount</a>.
      * If the incremental authorization fails, a <a
-     * href="/docs/error-codes#card-declined">card_declined</a> error is returned, and
-     * no fields on the PaymentIntent or Charge are updated. The PaymentIntent object
+     * href="/docs/error-codes#card-declined">card_declined</a> error returns, and no
+     * other fields on the PaymentIntent or Charge update. The PaymentIntent object
      * remains capturable for the previously authorized amount.
      *
      * Each PaymentIntent can have a maximum of 10 incremental authorization attempts,
-     * including declines. Once captured, a PaymentIntent can no longer be incremented.
+     * including declines. After it’s captured, a PaymentIntent can no longer be
+     * incremented.
      *
      * Learn more about <a
      * href="/docs/terminal/features/incremental-authorizations">incremental
