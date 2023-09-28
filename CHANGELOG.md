@@ -1,5 +1,10 @@
 # Changelog
 
+## 12.5.0 - 2023-09-28
+* [#1582](https://github.com/stripe/stripe-php/pull/1582) Generate Discount, SourceTransaction and use sections in more places
+* [#1584](https://github.com/stripe/stripe-php/pull/1584) Update generated code
+  * Add support for `rendering` on `Invoice`
+
 ## 12.4.0 - 2023-09-21
 * [#1579](https://github.com/stripe/stripe-php/pull/1579) Update generated code
   * Add back constant for `invoiceitem.updated` webhook event.  This was mistakenly removed in v12.2.0.
