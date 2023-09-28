@@ -4,10 +4,10 @@
 
 namespace Stripe\Service\Issuing;
 
-class CardBundleService extends \Stripe\Service\AbstractService
+class PhysicalBundleService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of card bundle objects. The objects are sorted in descending
+     * Returns a list of physical bundle objects. The objects are sorted in descending
      * order by creation date, with the most recently created object appearing first.
      *
      * @param null|array $params
@@ -15,15 +15,15 @@ class CardBundleService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\CardBundle>
+     * @return \Stripe\Collection<\Stripe\Issuing\PhysicalBundle>
      */
     public function all($params = null, $opts = null)
     {
-        return $this->requestCollection('get', '/v1/issuing/card_bundles', $params, $opts);
+        return $this->requestCollection('get', '/v1/issuing/physical_bundles', $params, $opts);
     }
 
     /**
-     * Retrieves a card bundle object.
+     * Retrieves a physical bundle object.
      *
      * @param string $id
      * @param null|array $params
@@ -31,10 +31,10 @@ class CardBundleService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Issuing\CardBundle
+     * @return \Stripe\Issuing\PhysicalBundle
      */
     public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v1/issuing/card_bundles/%s', $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v1/issuing/physical_bundles/%s', $id), $params, $opts);
     }
 }

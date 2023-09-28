@@ -47,6 +47,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $data
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property int $pending_webhooks Number of webhooks that haven't been successfully delivered (for example, to return a 20x response) to the URLs you specify.
+ * @property null|\Stripe\StripeObject $reason Information about the action that causes the event. Only present when the event is triggered by an API request or an <a href="https://stripe.com/docs/billing/revenue-recovery/automations">Automation</a> action.
  * @property null|\Stripe\StripeObject $request Information on the API request that triggers the event.
  * @property string $type Description of the event (for example, <code>invoice.created</code> or <code>charge.refunded</code>).
  */
@@ -117,6 +118,7 @@ class Event extends ApiResource
     const CUSTOMER_SUBSCRIPTION_COLLECTION_PAUSED = 'customer.subscription.collection_paused';
     const CUSTOMER_SUBSCRIPTION_COLLECTION_RESUMED = 'customer.subscription.collection_resumed';
     const CUSTOMER_SUBSCRIPTION_CREATED = 'customer.subscription.created';
+    const CUSTOMER_SUBSCRIPTION_CUSTOM_EVENT = 'customer.subscription.custom_event';
     const CUSTOMER_SUBSCRIPTION_DELETED = 'customer.subscription.deleted';
     const CUSTOMER_SUBSCRIPTION_PAUSED = 'customer.subscription.paused';
     const CUSTOMER_SUBSCRIPTION_PENDING_UPDATE_APPLIED = 'customer.subscription.pending_update_applied';
@@ -166,16 +168,16 @@ class Event extends ApiResource
     const ISSUING_CARDHOLDER_CREATED = 'issuing_cardholder.created';
     const ISSUING_CARDHOLDER_UPDATED = 'issuing_cardholder.updated';
     const ISSUING_CARD_CREATED = 'issuing_card.created';
-    const ISSUING_CARD_DESIGN_ACTIVATED = 'issuing_card_design.activated';
-    const ISSUING_CARD_DESIGN_DEACTIVATED = 'issuing_card_design.deactivated';
-    const ISSUING_CARD_DESIGN_REJECTED = 'issuing_card_design.rejected';
-    const ISSUING_CARD_DESIGN_UPDATED = 'issuing_card_design.updated';
     const ISSUING_CARD_UPDATED = 'issuing_card.updated';
     const ISSUING_DISPUTE_CLOSED = 'issuing_dispute.closed';
     const ISSUING_DISPUTE_CREATED = 'issuing_dispute.created';
     const ISSUING_DISPUTE_FUNDS_REINSTATED = 'issuing_dispute.funds_reinstated';
     const ISSUING_DISPUTE_SUBMITTED = 'issuing_dispute.submitted';
     const ISSUING_DISPUTE_UPDATED = 'issuing_dispute.updated';
+    const ISSUING_PERSONALIZATION_DESIGN_ACTIVATED = 'issuing_personalization_design.activated';
+    const ISSUING_PERSONALIZATION_DESIGN_DEACTIVATED = 'issuing_personalization_design.deactivated';
+    const ISSUING_PERSONALIZATION_DESIGN_REJECTED = 'issuing_personalization_design.rejected';
+    const ISSUING_PERSONALIZATION_DESIGN_UPDATED = 'issuing_personalization_design.updated';
     const ISSUING_TRANSACTION_CREATED = 'issuing_transaction.created';
     const ISSUING_TRANSACTION_UPDATED = 'issuing_transaction.updated';
     const MANDATE_UPDATED = 'mandate.updated';
@@ -367,6 +369,7 @@ class Event extends ApiResource
     const TYPE_CUSTOMER_SUBSCRIPTION_COLLECTION_PAUSED = 'customer.subscription.collection_paused';
     const TYPE_CUSTOMER_SUBSCRIPTION_COLLECTION_RESUMED = 'customer.subscription.collection_resumed';
     const TYPE_CUSTOMER_SUBSCRIPTION_CREATED = 'customer.subscription.created';
+    const TYPE_CUSTOMER_SUBSCRIPTION_CUSTOM_EVENT = 'customer.subscription.custom_event';
     const TYPE_CUSTOMER_SUBSCRIPTION_DELETED = 'customer.subscription.deleted';
     const TYPE_CUSTOMER_SUBSCRIPTION_PAUSED = 'customer.subscription.paused';
     const TYPE_CUSTOMER_SUBSCRIPTION_PENDING_UPDATE_APPLIED = 'customer.subscription.pending_update_applied';
@@ -416,16 +419,16 @@ class Event extends ApiResource
     const TYPE_ISSUING_CARDHOLDER_CREATED = 'issuing_cardholder.created';
     const TYPE_ISSUING_CARDHOLDER_UPDATED = 'issuing_cardholder.updated';
     const TYPE_ISSUING_CARD_CREATED = 'issuing_card.created';
-    const TYPE_ISSUING_CARD_DESIGN_ACTIVATED = 'issuing_card_design.activated';
-    const TYPE_ISSUING_CARD_DESIGN_DEACTIVATED = 'issuing_card_design.deactivated';
-    const TYPE_ISSUING_CARD_DESIGN_REJECTED = 'issuing_card_design.rejected';
-    const TYPE_ISSUING_CARD_DESIGN_UPDATED = 'issuing_card_design.updated';
     const TYPE_ISSUING_CARD_UPDATED = 'issuing_card.updated';
     const TYPE_ISSUING_DISPUTE_CLOSED = 'issuing_dispute.closed';
     const TYPE_ISSUING_DISPUTE_CREATED = 'issuing_dispute.created';
     const TYPE_ISSUING_DISPUTE_FUNDS_REINSTATED = 'issuing_dispute.funds_reinstated';
     const TYPE_ISSUING_DISPUTE_SUBMITTED = 'issuing_dispute.submitted';
     const TYPE_ISSUING_DISPUTE_UPDATED = 'issuing_dispute.updated';
+    const TYPE_ISSUING_PERSONALIZATION_DESIGN_ACTIVATED = 'issuing_personalization_design.activated';
+    const TYPE_ISSUING_PERSONALIZATION_DESIGN_DEACTIVATED = 'issuing_personalization_design.deactivated';
+    const TYPE_ISSUING_PERSONALIZATION_DESIGN_REJECTED = 'issuing_personalization_design.rejected';
+    const TYPE_ISSUING_PERSONALIZATION_DESIGN_UPDATED = 'issuing_personalization_design.updated';
     const TYPE_ISSUING_TRANSACTION_CREATED = 'issuing_transaction.created';
     const TYPE_ISSUING_TRANSACTION_UPDATED = 'issuing_transaction.updated';
     const TYPE_MANDATE_UPDATED = 'mandate.updated';
