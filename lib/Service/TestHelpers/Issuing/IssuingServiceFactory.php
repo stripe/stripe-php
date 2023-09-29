@@ -8,8 +8,8 @@ namespace Stripe\Service\TestHelpers\Issuing;
  * Service factory class for API resources in the Issuing namespace.
  *
  * @property AuthorizationService $authorizations
- * @property CardDesignService $cardDesigns
  * @property CardService $cards
+ * @property PersonalizationDesignService $personalizationDesigns
  * @property TransactionService $transactions
  */
 class IssuingServiceFactory extends \Stripe\Service\AbstractServiceFactory
@@ -19,8 +19,8 @@ class IssuingServiceFactory extends \Stripe\Service\AbstractServiceFactory
      */
     private static $classMap = [
         'authorizations' => AuthorizationService::class,
-        'cardDesigns' => CardDesignService::class,
         'cards' => CardService::class,
+        'personalizationDesigns' => PersonalizationDesignService::class,
         'transactions' => TransactionService::class,
     ];
 

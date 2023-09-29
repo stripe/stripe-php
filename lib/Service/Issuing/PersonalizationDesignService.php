@@ -4,41 +4,42 @@
 
 namespace Stripe\Service\Issuing;
 
-class CardDesignService extends \Stripe\Service\AbstractService
+class PersonalizationDesignService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of card design objects. The objects are sorted in descending
-     * order by creation date, with the most recently created object appearing first.
+     * Returns a list of personalization design objects. The objects are sorted in
+     * descending order by creation date, with the most recently created object
+     * appearing first.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\CardDesign>
+     * @return \Stripe\Collection<\Stripe\Issuing\PersonalizationDesign>
      */
     public function all($params = null, $opts = null)
     {
-        return $this->requestCollection('get', '/v1/issuing/card_designs', $params, $opts);
+        return $this->requestCollection('get', '/v1/issuing/personalization_designs', $params, $opts);
     }
 
     /**
-     * Creates a card design object.
+     * Creates a personalization design object.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Issuing\CardDesign
+     * @return \Stripe\Issuing\PersonalizationDesign
      */
     public function create($params = null, $opts = null)
     {
-        return $this->request('post', '/v1/issuing/card_designs', $params, $opts);
+        return $this->request('post', '/v1/issuing/personalization_designs', $params, $opts);
     }
 
     /**
-     * Retrieves a card design object.
+     * Retrieves a personalization design object.
      *
      * @param string $id
      * @param null|array $params
@@ -46,15 +47,15 @@ class CardDesignService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Issuing\CardDesign
+     * @return \Stripe\Issuing\PersonalizationDesign
      */
     public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v1/issuing/card_designs/%s', $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v1/issuing/personalization_designs/%s', $id), $params, $opts);
     }
 
     /**
-     * Updates a card design object.
+     * Updates a card personalization object.
      *
      * @param string $id
      * @param null|array $params
@@ -62,10 +63,10 @@ class CardDesignService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Issuing\CardDesign
+     * @return \Stripe\Issuing\PersonalizationDesign
      */
     public function update($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v1/issuing/card_designs/%s', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v1/issuing/personalization_designs/%s', $id), $params, $opts);
     }
 }

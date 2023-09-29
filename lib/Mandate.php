@@ -5,18 +5,18 @@
 namespace Stripe;
 
 /**
- * A Mandate is a record of the permission a customer has given you to debit their payment method.
+ * A Mandate is a record of the permission that your customer gives you to debit their payment method.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property \Stripe\StripeObject $customer_acceptance
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $multi_use
- * @property null|string $on_behalf_of The account (if any) for which the mandate is intended.
+ * @property null|string $on_behalf_of The account (if any) that the mandate is intended for.
  * @property string|\Stripe\PaymentMethod $payment_method ID of the payment method associated with this mandate.
  * @property \Stripe\StripeObject $payment_method_details
  * @property null|\Stripe\StripeObject $single_use
- * @property string $status The status of the mandate, which indicates whether it can be used to initiate a payment.
+ * @property string $status The mandate status indicates whether or not you can use it to initiate a payment.
  * @property string $type The type of the mandate.
  */
 class Mandate extends ApiResource

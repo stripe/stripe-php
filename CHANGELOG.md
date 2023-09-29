@@ -1,5 +1,10 @@
 # Changelog
 
+## 12.5.0 - 2023-09-28
+* [#1582](https://github.com/stripe/stripe-php/pull/1582) Generate Discount, SourceTransaction and use sections in more places
+* [#1584](https://github.com/stripe/stripe-php/pull/1584) Update generated code
+  * Add support for `rendering` on `Invoice`
+
 ## 12.5.0-beta.1 - 2023-09-21
 * [#1578](https://github.com/stripe/stripe-php/pull/1578) Update generated code for beta
   * Remove support for `customer` on `ConfirmationToken`
