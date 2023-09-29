@@ -1,5 +1,10 @@
 # Changelog
 
+## 12.6.0-beta.1 - 2023-09-28
+* [#1585](https://github.com/stripe/stripe-php/pull/1585) Update generated code for beta
+  * Rename resources `Issuing.CardDesign` and `Issuing.CardBundle` to `Issuing.PersonalizationDesign` and `Issuing.PhysicalBundle`
+  * Add support for `reason` on `Event`
+
 ## 12.5.0 - 2023-09-28
 * [#1582](https://github.com/stripe/stripe-php/pull/1582) Generate Discount, SourceTransaction and use sections in more places
 * [#1584](https://github.com/stripe/stripe-php/pull/1584) Update generated code
