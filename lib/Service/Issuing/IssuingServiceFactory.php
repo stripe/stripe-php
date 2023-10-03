@@ -13,6 +13,7 @@ namespace Stripe\Service\Issuing;
  * @property DisputeService $disputes
  * @property PersonalizationDesignService $personalizationDesigns
  * @property PhysicalBundleService $physicalBundles
+ * @property TokenService $tokens
  * @property TransactionService $transactions
  */
 class IssuingServiceFactory extends \Stripe\Service\AbstractServiceFactory
@@ -27,6 +28,7 @@ class IssuingServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'disputes' => DisputeService::class,
         'personalizationDesigns' => PersonalizationDesignService::class,
         'physicalBundles' => PhysicalBundleService::class,
+        'tokens' => TokenService::class,
         'transactions' => TransactionService::class,
     ];
 

@@ -104,7 +104,7 @@ class QuoteService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\Collection<\Stripe\InvoiceLineItem>
      */
-    public function allPreviewInvoiceLines($parentId, $id, $params = null, $opts = null)
+    public function allLinesPreviewInvoice($parentId, $id, $params = null, $opts = null)
     {
         return $this->requestCollection('get', $this->buildPath('/v1/quotes/%s/preview_invoices/%s/lines', $parentId, $id), $params, $opts);
     }
@@ -134,7 +134,7 @@ class QuoteService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\QuotePreviewSchedule>
+     * @return \Stripe\Collection<\Stripe\QuotePreviewSubscriptionSchedule>
      */
     public function allPreviewSubscriptionSchedules($parentId, $params = null, $opts = null)
     {
@@ -176,22 +176,6 @@ class QuoteService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Converts a stale quote to draft.
-     *
-     * @param string $id
-     * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Quote
-     */
-    public function draftQuote($id, $params = null, $opts = null)
-    {
-        return $this->request('post', $this->buildPath('/v1/quotes/%s/mark_draft', $id), $params, $opts);
-    }
-
-    /**
      * Finalizes the quote.
      *
      * @param string $id
@@ -208,6 +192,22 @@ class QuoteService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Converts a stale quote to draft.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Quote
+     */
+    public function markDraft($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/quotes/%s/mark_draft', $id), $params, $opts);
+    }
+
+    /**
      * Converts a draft or open quote to stale.
      *
      * @param string $id
@@ -218,7 +218,7 @@ class QuoteService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\Quote
      */
-    public function markStaleQuote($id, $params = null, $opts = null)
+    public function markStale($id, $params = null, $opts = null)
     {
         return $this->request('post', $this->buildPath('/v1/quotes/%s/mark_stale', $id), $params, $opts);
     }

@@ -108,23 +108,6 @@ class Quote extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Quote the drafted quote
-     */
-    public function draftQuote($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/mark_draft';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-
-        return $this;
-    }
-
-    /**
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Quote the finalized quote
      */
     public function finalizeQuote($params = null, $opts = null)
@@ -201,7 +184,24 @@ class Quote extends ApiResource
      *
      * @return \Stripe\Quote the marked quote
      */
-    public function markStaleQuote($params = null, $opts = null)
+    public function markDraft($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/mark_draft';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Quote the marked quote
+     */
+    public function markStale($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/mark_stale';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
@@ -227,26 +227,6 @@ class Quote extends ApiResource
         }
         $url = $this->instanceUrl() . '/pdf';
         $this->_requestStream('get', $url, $readBodyChunkCallable, $params, $opts);
-    }
-
-    /**
-     * @param string $id
-     * @param string $preview_invoice
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection<\Stripe\InvoiceLineItem> list of invoice line items
-     */
-    public static function previewInvoiceLines($id, $preview_invoice, $params = null, $opts = null)
-    {
-        $url = static::resourceUrl($id) . '/preview_invoices/' . $preview_invoice . '/lines';
-        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
-        $obj->setLastResponse($response);
-
-        return $obj;
     }
 
     /**
@@ -284,13 +264,13 @@ class Quote extends ApiResource
     const PATH_PREVIEW_SUBSCRIPTION_SCHEDULES = '/preview_subscription_schedules';
 
     /**
-     * @param string $id the ID of the quote on which to retrieve the quote preview schedules
+     * @param string $id the ID of the quote on which to retrieve the quote preview subscription schedules
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\QuotePreviewSchedule> the list of quote preview schedules
+     * @return \Stripe\Collection<\Stripe\QuotePreviewSubscriptionSchedule> the list of quote preview subscription schedules
      */
     public static function allPreviewSubscriptionSchedules($id, $params = null, $opts = null)
     {
