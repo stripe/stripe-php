@@ -10,6 +10,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property null|bool $allow_backdated_lines Allow quote lines to have <code>starts_at</code> in the past if collection is paused between <code>starts_at</code> and now.
  * @property int $amount_subtotal Total before any discounts or taxes are applied.
  * @property int $amount_total Total after discounts and taxes are applied.
  * @property null|string|\Stripe\StripeObject $application ID of the Connect Application that created the quote.
