@@ -12,15 +12,15 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property int $amount Gross amount of the transaction (in cents (or local equivalent)).
+ * @property int $amount Gross amount of this transaction (in cents (or local equivalent)). A positive value represents funds charged to another party, and a negative value represents funds sent to another party.
  * @property int $available_on The date that the transaction's net funds become available in the Stripe balance.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|float $exchange_rate If applicable, this transaction uses an exchange rate. If money converts from currency A to currency B, then the <code>amount</code> in currency A, multipled by the <code>exchange_rate</code>, equals the <code>amount</code> in currency B. For example, if you charge a customer 10.00 EUR, the PaymentIntent's <code>amount</code> is <code>1000</code> and <code>currency</code> is <code>eur</code>. If this converts to 12.34 USD in your Stripe account, the BalanceTransaction's <code>amount</code> is <code>1234</code>, its <code>currency</code> is <code>usd</code>, and the <code>exchange_rate</code> is <code>1.234</code>.
- * @property int $fee Fees (in cents (or local equivalent)) paid for this transaction.
+ * @property int $fee Fees (in cents (or local equivalent)) paid for this transaction. Represented as a positive integer when assessed.
  * @property \Stripe\StripeObject[] $fee_details Detailed breakdown of fees (in cents (or local equivalent)) paid for this transaction.
- * @property int $net Net amount of the transaction (in cents (or local equivalent)).
+ * @property int $net Net impact to a Stripe balance (in cents (or local equivalent)). A positive value represents incrementing a Stripe balance, and a negative value decrementing a Stripe balance. You can calculate the net impact of a transaction on a balance by <code>amount</code> - <code>fee</code>
  * @property string $reporting_category Learn more about how [reporting categories] (https://stripe.com/docs/reports/reporting-categories) can help you understand balance transactions from an accounting perspective.
  * @property null|string|\Stripe\StripeObject $source This transaction relates to the Stripe object.
  * @property string $status The transaction's net funds status in the Stripe balance, which are either <code>available</code> or <code>pending</code>.
