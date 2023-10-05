@@ -146,23 +146,4 @@ class QuotePreviewInvoice extends ApiResource
     const STATUS_PAID = 'paid';
     const STATUS_UNCOLLECTIBLE = 'uncollectible';
     const STATUS_VOID = 'void';
-
-    /**
-     * @param string $id
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection<\Stripe\InvoiceLineItem> list of invoice line items
-     */
-    public static function allLines($id, $params = null, $opts = null)
-    {
-        $url = static::resourceUrl($id) . '/lines';
-        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
-        $obj->setLastResponse($response);
-
-        return $obj;
-    }
 }

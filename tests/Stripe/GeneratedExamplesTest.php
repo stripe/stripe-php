@@ -4192,13 +4192,13 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Tax\CalculationLineItem::class, $result->data[0]);
     }
 
-    public function testListLinesQuotePreviewInvoice()
+    public function testListPreviewInvoiceLinesQuote()
     {
         $this->expectsRequest(
             'get',
             '/v1/quotes/qt_xyz/preview_invoices/in_xyz/lines'
         );
-        $result = $this->client->quotes->allLinesPreviewInvoice(
+        $result = $this->client->quotes->allPreviewInvoiceLines(
             'qt_xyz',
             'in_xyz',
             []

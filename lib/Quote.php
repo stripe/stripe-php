@@ -178,6 +178,26 @@ class Quote extends ApiResource
     }
 
     /**
+     * @param string $id
+     * @param string $preview_invoice
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\InvoiceLineItem> list of invoice line items
+     */
+    public static function allPreviewInvoiceLines($id, $preview_invoice, $params = null, $opts = null)
+    {
+        $url = static::resourceUrl($id) . '/preview_invoices/' . $preview_invoice . '/lines';
+        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
      * @param null|array $params
      * @param null|array|string $opts
      *

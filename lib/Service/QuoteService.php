@@ -104,7 +104,7 @@ class QuoteService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\Collection<\Stripe\InvoiceLineItem>
      */
-    public function allLinesPreviewInvoice($parentId, $id, $params = null, $opts = null)
+    public function allPreviewInvoiceLines($parentId, $id, $params = null, $opts = null)
     {
         return $this->requestCollection('get', $this->buildPath('/v1/quotes/%s/preview_invoices/%s/lines', $parentId, $id), $params, $opts);
     }
