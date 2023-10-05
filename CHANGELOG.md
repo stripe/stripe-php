@@ -7,6 +7,13 @@
   * Add support for `allow_backdated_lines` on `Quote`
   * Rename `previewInvoiceLines` to `allPreviewInvoiceLines` on resource `Quote`
 
+## 12.6.0 - 2023-10-05
+* [#1586](https://github.com/stripe/stripe-php/pull/1586) Update generated code
+  * Add support for new resource `Issuing.Token`
+  * Add support for `all`, `retrieve`, and `update` methods on resource `Token`
+  * Add support for `token` on `Issuing.Authorization` and `Issuing.Transaction`
+* [#1569](https://github.com/stripe/stripe-php/pull/1569) Fix: Do not bother removing `friendsofphp/php-cs-fixer`
+
 ## 12.6.0-beta.1 - 2023-09-28
 * [#1585](https://github.com/stripe/stripe-php/pull/1585) Update generated code for beta
   * Rename resources `Issuing.CardDesign` and `Issuing.CardBundle` to `Issuing.PersonalizationDesign` and `Issuing.PhysicalBundle`
