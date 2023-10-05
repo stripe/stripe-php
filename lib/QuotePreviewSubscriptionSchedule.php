@@ -27,9 +27,9 @@ namespace Stripe;
  * @property null|string|\Stripe\Subscription $subscription ID of the subscription managed by the subscription schedule.
  * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this subscription schedule belongs to.
  */
-class QuotePreviewSchedule extends ApiResource
+class QuotePreviewSubscriptionSchedule extends ApiResource
 {
-    const OBJECT_NAME = 'quote_preview_schedule';
+    const OBJECT_NAME = 'quote_preview_subscription_schedule';
 
     use ApiOperations\All;
 

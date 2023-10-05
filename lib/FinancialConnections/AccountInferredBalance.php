@@ -12,7 +12,7 @@ namespace Stripe\FinancialConnections;
  * @property int $as_of The time for which this balance was calculated, measured in seconds since the Unix epoch. If the balance was computed by Stripe and not provided directly by a financial institution, it will always be 23:59:59 UTC.
  * @property \Stripe\StripeObject $current <p>The balances owed to (or by) the account holder.</p><p>Each key is a three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase.</p><p>Each value is a integer amount. A positive amount indicates money owed to the account holder. A negative amount indicates money owed by the account holder.</p>
  */
-class InferredBalance extends \Stripe\ApiResource
+class AccountInferredBalance extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'financial_connections.account_inferred_balance';
 

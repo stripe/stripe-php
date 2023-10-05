@@ -62,11 +62,6 @@ jobs:
           # that, so we hash on "composer.json" instead.
           key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
 
-      # We run php-cs-fixer in a separate job, but the version we use is not compatible
-      # with all the versions of PHP that we want to execute PHPStan upon
-      - name: Trim dependency
-        run: composer remove --dev --no-update friendsofphp/php-cs-fixer
-
       - name: Validate composer.json
         run: composer validate
 
