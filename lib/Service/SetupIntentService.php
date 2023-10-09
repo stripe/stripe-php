@@ -22,11 +22,11 @@ class SetupIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * A SetupIntent object can be canceled when it is in one of these statuses:
+     * You can cancel a SetupIntent object when it’s in one of these statuses:
      * <code>requires_payment_method</code>, <code>requires_confirmation</code>, or
      * <code>requires_action</code>.
      *
-     * Once canceled, setup is abandoned and any operations on the SetupIntent will
+     * After you cancel it, setup is abandoned and any operations on the SetupIntent
      * fail with an error.
      *
      * @param string $id
