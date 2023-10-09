@@ -10,6 +10,7 @@ namespace Stripe\Service\Issuing;
  * @property AuthorizationService $authorizations
  * @property CardholderService $cardholders
  * @property CardService $cards
+ * @property CreditUnderwritingRecordService $creditUnderwritingRecords
  * @property DisputeService $disputes
  * @property PersonalizationDesignService $personalizationDesigns
  * @property PhysicalBundleService $physicalBundles
@@ -25,6 +26,7 @@ class IssuingServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'authorizations' => AuthorizationService::class,
         'cardholders' => CardholderService::class,
         'cards' => CardService::class,
+        'creditUnderwritingRecords' => CreditUnderwritingRecordService::class,
         'disputes' => DisputeService::class,
         'personalizationDesigns' => PersonalizationDesignService::class,
         'physicalBundles' => PhysicalBundleService::class,

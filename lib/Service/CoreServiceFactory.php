@@ -8,6 +8,7 @@ namespace Stripe\Service;
  * @property OAuthService $oauth
  * // Doc: The beginning of the section generated from our OpenAPI spec
  * @property AccountLinkService $accountLinks
+ * @property AccountNoticeService $accountNotices
  * @property AccountService $accounts
  * @property AccountSessionService $accountSessions
  * @property ApplePayDomainService $applePayDomains
@@ -84,6 +85,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'oauth' => OAuthService::class,
         // Class Map: The beginning of the section generated from our OpenAPI spec
         'accountLinks' => AccountLinkService::class,
+        'accountNotices' => AccountNoticeService::class,
         'accounts' => AccountService::class,
         'accountSessions' => AccountSessionService::class,
         'applePayDomains' => ApplePayDomainService::class,

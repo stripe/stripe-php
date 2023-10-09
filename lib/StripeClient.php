@@ -8,6 +8,7 @@ namespace Stripe;
  * @property \Stripe\Service\OAuthService $oauth
  * // The beginning of the section generated from our OpenAPI spec
  * @property \Stripe\Service\AccountLinkService $accountLinks
+ * @property \Stripe\Service\AccountNoticeService $accountNotices
  * @property \Stripe\Service\AccountService $accounts
  * @property \Stripe\Service\AccountSessionService $accountSessions
  * @property \Stripe\Service\ApplePayDomainService $applePayDomains
