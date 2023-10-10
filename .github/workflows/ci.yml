@@ -130,12 +130,12 @@ jobs:
           make ci-test
 
       - name: Coveralls
-        run: vendor/bin/php-coveralls -v --coverage_clover='clover.xml' --json_path='coveralls-upload.json'
-        if: env.COVERALLS_REPO_TOKEN && matrix.php-version == '8.2' && matrix.env == 'AUTOLOAD=1'
-        env:
-          COVERALLS_RUN_LOCALLY: 1
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-          COVERALLS_FLAG_NAME: php-${{ matrix.php-version }}-${{ matrix.env }}
+        if: matrix.php-version == '8.2' && matrix.env == 'AUTOLOAD=1'
+        uses: coverallsapp/github-action@v2
+        with:
+          files: clover.xml
+          flag-name: php-${{ matrix.php-version }}-${{ matrix.env }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
   publish:
   # Doesn't actually publish. The publish happens via a packagist webhook configured in the Github UI. But we still display a message here
