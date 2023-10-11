@@ -1,5 +1,10 @@
 # Changelog
 
+## 12.7.0 - 2023-10-11
+* [#1589](https://github.com/stripe/stripe-php/pull/1589) Update generated code
+  * Add support for `client_secret`, `redirect_on_completion`, `return_url`, and `ui_mode` on `Checkout.Session`
+  * Add support for `offline` on `Terminal.Configuration`
+
 ## 12.7.0-beta.1 - 2023-10-05
 * [#1587](https://github.com/stripe/stripe-php/pull/1587) Update generated code for beta
   * Add support for `mark_draft` and `mark_stale` methods on resource `Quote`
