@@ -30,6 +30,7 @@ namespace Stripe\Checkout;
  * @property null|string $billing_address_collection Describes whether Checkout should collect the customer's billing address.
  * @property null|string $cancel_url If set, Checkout displays a back button and customers will be directed to this URL if they decide to cancel payment and return to your website.
  * @property null|string $client_reference_id A unique string to reference the Checkout Session. This can be a customer ID, a cart ID, or similar, and can be used to reconcile the Session with your internal systems.
+ * @property null|string $client_secret Client secret to be used when initializing Stripe.js embedded checkout.
  * @property null|\Stripe\StripeObject $consent Results of <code>consent_collection</code> for this session.
  * @property null|\Stripe\StripeObject $consent_collection When set, provides configuration for the Checkout Session to gather active consent from customers.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -58,6 +59,8 @@ namespace Stripe\Checkout;
  * @property string $payment_status The payment status of the Checkout Session, one of <code>paid</code>, <code>unpaid</code>, or <code>no_payment_required</code>. You can use this value to decide when to fulfill your customer's order.
  * @property null|\Stripe\StripeObject $phone_number_collection
  * @property null|string $recovered_from The ID of the original expired Checkout Session that triggered the recovery flow.
+ * @property null|string $redirect_on_completion Applies to Checkout Sessions with <code>ui_mode: embedded</code>. By default, Stripe will always redirect to your return_url after a successful confirmation. If you set <code>redirect_on_completion: 'if_required'</code>, then we will only redirect if your user chooses a redirect-based payment method.
+ * @property null|string $return_url Applies to Checkout Sessions with <code>ui_mode: embedded</code>. The URL to redirect your customer back to after they authenticate or cancel their payment on the payment method's app or site.
  * @property null|string|\Stripe\SetupIntent $setup_intent The ID of the SetupIntent for Checkout Sessions in <code>setup</code> mode.
  * @property null|\Stripe\StripeObject $shipping_address_collection When set, provides configuration for Checkout to collect a shipping address from a customer.
  * @property null|\Stripe\StripeObject $shipping_cost The details of the customer cost of shipping, including the customer chosen ShippingRate.
@@ -69,6 +72,7 @@ namespace Stripe\Checkout;
  * @property null|string $success_url The URL the customer will be directed to after the payment or subscription creation is successful.
  * @property null|\Stripe\StripeObject $tax_id_collection
  * @property null|\Stripe\StripeObject $total_details Tax and discount details for the computed total amount.
+ * @property null|string $ui_mode The UI mode of the Session. Can be <code>hosted</code> (default) or <code>embedded</code>.
  * @property null|string $url The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout. If you’re using <a href="https://stripe.com/docs/payments/checkout/custom-domains">Custom Domains</a>, the URL will use your subdomain. Otherwise, it’ll use <code>checkout.stripe.com.</code> This value is only present when the session is active.
  */
 class Session extends \Stripe\ApiResource
@@ -96,6 +100,10 @@ class Session extends \Stripe\ApiResource
     const PAYMENT_STATUS_PAID = 'paid';
     const PAYMENT_STATUS_UNPAID = 'unpaid';
 
+    const REDIRECT_ON_COMPLETION_ALWAYS = 'always';
+    const REDIRECT_ON_COMPLETION_IF_REQUIRED = 'if_required';
+    const REDIRECT_ON_COMPLETION_NEVER = 'never';
+
     const STATUS_COMPLETE = 'complete';
     const STATUS_EXPIRED = 'expired';
     const STATUS_OPEN = 'open';
@@ -104,6 +112,9 @@ class Session extends \Stripe\ApiResource
     const SUBMIT_TYPE_BOOK = 'book';
     const SUBMIT_TYPE_DONATE = 'donate';
     const SUBMIT_TYPE_PAY = 'pay';
+
+    const UI_MODE_EMBEDDED = 'embedded';
+    const UI_MODE_HOSTED = 'hosted';
 
     /**
      * @param null|array $params

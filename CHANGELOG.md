@@ -1,11 +1,23 @@
 # Changelog
 
+## 12.7.0 - 2023-10-11
+* [#1589](https://github.com/stripe/stripe-php/pull/1589) Update generated code
+  * Add support for `client_secret`, `redirect_on_completion`, `return_url`, and `ui_mode` on `Checkout.Session`
+  * Add support for `offline` on `Terminal.Configuration`
+
 ## 12.7.0-beta.1 - 2023-10-05
 * [#1587](https://github.com/stripe/stripe-php/pull/1587) Update generated code for beta
   * Add support for `mark_draft` and `mark_stale` methods on resource `Quote`
   * Remove support for `draft_quote` and `mark_stale_quote` methods on resource `Quote`
   * Add support for `allow_backdated_lines` on `Quote`
   * Rename `previewInvoiceLines` to `allPreviewInvoiceLines` on resource `Quote`
+
+## 12.6.0 - 2023-10-05
+* [#1586](https://github.com/stripe/stripe-php/pull/1586) Update generated code
+  * Add support for new resource `Issuing.Token`
+  * Add support for `all`, `retrieve`, and `update` methods on resource `Token`
+  * Add support for `token` on `Issuing.Authorization` and `Issuing.Transaction`
+* [#1569](https://github.com/stripe/stripe-php/pull/1569) Fix: Do not bother removing `friendsofphp/php-cs-fixer`
 
 ## 12.6.0-beta.1 - 2023-09-28
 * [#1585](https://github.com/stripe/stripe-php/pull/1585) Update generated code for beta

@@ -63,6 +63,8 @@ class Event extends ApiResource
     const ACCOUNT_EXTERNAL_ACCOUNT_CREATED = 'account.external_account.created';
     const ACCOUNT_EXTERNAL_ACCOUNT_DELETED = 'account.external_account.deleted';
     const ACCOUNT_EXTERNAL_ACCOUNT_UPDATED = 'account.external_account.updated';
+    const ACCOUNT_NOTICE_CREATED = 'account_notice.created';
+    const ACCOUNT_NOTICE_UPDATED = 'account_notice.updated';
     const ACCOUNT_UPDATED = 'account.updated';
     const APPLICATION_FEE_CREATED = 'application_fee.created';
     const APPLICATION_FEE_REFUNDED = 'application_fee.refunded';
@@ -314,6 +316,8 @@ class Event extends ApiResource
     const TYPE_ACCOUNT_EXTERNAL_ACCOUNT_CREATED = 'account.external_account.created';
     const TYPE_ACCOUNT_EXTERNAL_ACCOUNT_DELETED = 'account.external_account.deleted';
     const TYPE_ACCOUNT_EXTERNAL_ACCOUNT_UPDATED = 'account.external_account.updated';
+    const TYPE_ACCOUNT_NOTICE_CREATED = 'account_notice.created';
+    const TYPE_ACCOUNT_NOTICE_UPDATED = 'account_notice.updated';
     const TYPE_ACCOUNT_UPDATED = 'account.updated';
     const TYPE_APPLICATION_FEE_CREATED = 'application_fee.created';
     const TYPE_APPLICATION_FEE_REFUNDED = 'application_fee.refunded';

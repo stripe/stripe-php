@@ -16,6 +16,7 @@ class ObjectTypes
             // The beginning of the section generated from our OpenAPI spec
             \Stripe\Account::OBJECT_NAME => \Stripe\Account::class,
             \Stripe\AccountLink::OBJECT_NAME => \Stripe\AccountLink::class,
+            \Stripe\AccountNotice::OBJECT_NAME => \Stripe\AccountNotice::class,
             \Stripe\AccountSession::OBJECT_NAME => \Stripe\AccountSession::class,
             \Stripe\ApplePayDomain::OBJECT_NAME => \Stripe\ApplePayDomain::class,
             \Stripe\ApplicationFee::OBJECT_NAME => \Stripe\ApplicationFee::class,
@@ -67,6 +68,7 @@ class ObjectTypes
             \Stripe\Issuing\Authorization::OBJECT_NAME => \Stripe\Issuing\Authorization::class,
             \Stripe\Issuing\Card::OBJECT_NAME => \Stripe\Issuing\Card::class,
             \Stripe\Issuing\Cardholder::OBJECT_NAME => \Stripe\Issuing\Cardholder::class,
+            \Stripe\Issuing\CreditUnderwritingRecord::OBJECT_NAME => \Stripe\Issuing\CreditUnderwritingRecord::class,
             \Stripe\Issuing\Dispute::OBJECT_NAME => \Stripe\Issuing\Dispute::class,
             \Stripe\Issuing\PersonalizationDesign::OBJECT_NAME => \Stripe\Issuing\PersonalizationDesign::class,
             \Stripe\Issuing\PhysicalBundle::OBJECT_NAME => \Stripe\Issuing\PhysicalBundle::class,
