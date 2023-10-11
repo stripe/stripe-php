@@ -1,5 +1,12 @@
 # Changelog
 
+## 12.8.0-beta.1 - 2023-10-11
+* [#1588](https://github.com/stripe/stripe-php/pull/1588) Update generated code for beta
+  * Add support for new resources `AccountNotice` and `Issuing.CreditUnderwritingRecord`
+  * Add support for `all`, `retrieve`, and `update` methods on resource `AccountNotice`
+  * Add support for `all`, `correct`, `create_from_application`, `create_from_proactive_review`, `report_decision`, and `retrieve` methods on resource `CreditUnderwritingRecord`
+  * Add support for new values `account_notice.created` and `account_notice.updated` on enum `Event.type`
+
 ## 12.7.0 - 2023-10-11
 * [#1589](https://github.com/stripe/stripe-php/pull/1589) Update generated code
   * Add support for `client_secret`, `redirect_on_completion`, `return_url`, and `ui_mode` on `Checkout.Session`
