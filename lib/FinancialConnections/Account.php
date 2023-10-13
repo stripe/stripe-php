@@ -142,13 +142,13 @@ class Account extends \Stripe\ApiResource
     const PATH_INFERRED_BALANCES = '/inferred_balances';
 
     /**
-     * @param string $id the ID of the account on which to retrieve the financial connections account inferred balances
+     * @param string $id the ID of the account on which to retrieve the account inferred balances
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\FinancialConnections\AccountInferredBalance> the list of financial connections account inferred balances
+     * @return \Stripe\Collection<\Stripe\FinancialConnections\AccountInferredBalance> the list of account inferred balances
      */
     public static function allInferredBalances($id, $params = null, $opts = null)
     {
