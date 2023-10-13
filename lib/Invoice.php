@@ -298,13 +298,13 @@ class Invoice extends ApiResource
     const PATH_LINES = '/lines';
 
     /**
-     * @param string $id the ID of the invoice on which to retrieve the line items
+     * @param string $id the ID of the invoice on which to retrieve the invoice line items
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\LineItem> the list of line items
+     * @return \Stripe\Collection<\Stripe\InvoiceLineItem> the list of invoice line items
      */
     public static function allLines($id, $params = null, $opts = null)
     {
