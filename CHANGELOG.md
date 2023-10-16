@@ -1,5 +1,10 @@
 # Changelog
 
+## 13.0.0 - 2023-10-16
+* This release changes the pinned API version to `2023-10-16`. Please read the [API Upgrade Guide](https://stripe.com/docs/upgrades#2023-10-16) and carefully review the API changes before upgrading `stripe-php` package.
+* [#1593](https://github.com/stripe/stripe-php/pull/1593) Update generated code
+  - Added `additional_tos_acceptances` field on `Person`
+
 ## 12.8.0 - 2023-10-16
 * [#1590](https://github.com/stripe/stripe-php/pull/1590) Update generated code
   * Add support for new values `issuing_token.created` and `issuing_token.updated` on enum `Event.type`
