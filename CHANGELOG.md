@@ -1,5 +1,9 @@
 # Changelog
 
+## 12.8.0 - 2023-10-16
+* [#1590](https://github.com/stripe/stripe-php/pull/1590) Update generated code
+  * Add support for new values `issuing_token.created` and `issuing_token.updated` on enum `Event.type`
+
 ## 12.7.0 - 2023-10-11
 * [#1589](https://github.com/stripe/stripe-php/pull/1589) Update generated code
   * Add support for `client_secret`, `redirect_on_completion`, `return_url`, and `ui_mode` on `Checkout.Session`
