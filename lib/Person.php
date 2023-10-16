@@ -15,6 +15,7 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string $account The account the person is associated with.
+ * @property null|\Stripe\StripeObject $additional_tos_acceptances
  * @property null|\Stripe\StripeObject $address
  * @property null|\Stripe\StripeObject $address_kana The Kana variation of the person's address (Japan only).
  * @property null|\Stripe\StripeObject $address_kanji The Kanji variation of the person's address (Japan only).
