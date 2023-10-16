@@ -1,5 +1,9 @@
 # Changelog
 
+## 12.8.0 - 2023-10-16
+* [#1590](https://github.com/stripe/stripe-php/pull/1590) Update generated code
+  * Add support for new values `issuing_token.created` and `issuing_token.updated` on enum `Event.type`
+
 ## 12.8.0-beta.1 - 2023-10-11
 * [#1588](https://github.com/stripe/stripe-php/pull/1588) Update generated code for beta
   * Add support for new resources `AccountNotice` and `Issuing.CreditUnderwritingRecord`

@@ -180,6 +180,8 @@ class Event extends ApiResource
     const ISSUING_PERSONALIZATION_DESIGN_DEACTIVATED = 'issuing_personalization_design.deactivated';
     const ISSUING_PERSONALIZATION_DESIGN_REJECTED = 'issuing_personalization_design.rejected';
     const ISSUING_PERSONALIZATION_DESIGN_UPDATED = 'issuing_personalization_design.updated';
+    const ISSUING_TOKEN_CREATED = 'issuing_token.created';
+    const ISSUING_TOKEN_UPDATED = 'issuing_token.updated';
     const ISSUING_TRANSACTION_CREATED = 'issuing_transaction.created';
     const ISSUING_TRANSACTION_UPDATED = 'issuing_transaction.updated';
     const MANDATE_UPDATED = 'mandate.updated';
@@ -433,6 +435,8 @@ class Event extends ApiResource
     const TYPE_ISSUING_PERSONALIZATION_DESIGN_DEACTIVATED = 'issuing_personalization_design.deactivated';
     const TYPE_ISSUING_PERSONALIZATION_DESIGN_REJECTED = 'issuing_personalization_design.rejected';
     const TYPE_ISSUING_PERSONALIZATION_DESIGN_UPDATED = 'issuing_personalization_design.updated';
+    const TYPE_ISSUING_TOKEN_CREATED = 'issuing_token.created';
+    const TYPE_ISSUING_TOKEN_UPDATED = 'issuing_token.updated';
     const TYPE_ISSUING_TRANSACTION_CREATED = 'issuing_transaction.created';
     const TYPE_ISSUING_TRANSACTION_UPDATED = 'issuing_transaction.updated';
     const TYPE_MANDATE_UPDATED = 'mandate.updated';

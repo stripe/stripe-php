@@ -31,13 +31,13 @@ class ApplicationFee extends ApiResource
     const PATH_REFUNDS = '/refunds';
 
     /**
-     * @param string $id the ID of the application fee on which to retrieve the fee refunds
+     * @param string $id the ID of the application fee on which to retrieve the application fee refunds
      * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\ApplicationFeeRefund> the list of fee refunds
+     * @return \Stripe\Collection<\Stripe\ApplicationFeeRefund> the list of application fee refunds
      */
     public static function allRefunds($id, $params = null, $opts = null)
     {
@@ -45,7 +45,7 @@ class ApplicationFee extends ApiResource
     }
 
     /**
-     * @param string $id the ID of the application fee on which to create the fee refund
+     * @param string $id the ID of the application fee on which to create the application fee refund
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -59,8 +59,8 @@ class ApplicationFee extends ApiResource
     }
 
     /**
-     * @param string $id the ID of the application fee to which the fee refund belongs
-     * @param string $refundId the ID of the fee refund to retrieve
+     * @param string $id the ID of the application fee to which the application fee refund belongs
+     * @param string $refundId the ID of the application fee refund to retrieve
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -74,8 +74,8 @@ class ApplicationFee extends ApiResource
     }
 
     /**
-     * @param string $id the ID of the application fee to which the fee refund belongs
-     * @param string $refundId the ID of the fee refund to update
+     * @param string $id the ID of the application fee to which the application fee refund belongs
+     * @param string $refundId the ID of the application fee refund to update
      * @param null|array $params
      * @param null|array|string $opts
      *
