@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.1.0-beta.1 - 2023-10-17
+* [#1594](https://github.com/stripe/stripe-php/pull/1594) Update generated code for beta
+  - Update pinned API version to `2023-10-16`
+
 ## 13.0.0 - 2023-10-16
 * This release changes the pinned API version to `2023-10-16`. Please read the [API Upgrade Guide](https://stripe.com/docs/upgrades#2023-10-16) and carefully review the API changes before upgrading `stripe-php` package.
 * [#1593](https://github.com/stripe/stripe-php/pull/1593) Update generated code
