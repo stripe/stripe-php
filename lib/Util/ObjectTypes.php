@@ -77,6 +77,7 @@ class ObjectTypes
             \Stripe\LineItem::OBJECT_NAME => \Stripe\LineItem::class,
             \Stripe\LoginLink::OBJECT_NAME => \Stripe\LoginLink::class,
             \Stripe\Mandate::OBJECT_NAME => \Stripe\Mandate::class,
+            \Stripe\Margin::OBJECT_NAME => \Stripe\Margin::class,
             \Stripe\Order::OBJECT_NAME => \Stripe\Order::class,
             \Stripe\PaymentIntent::OBJECT_NAME => \Stripe\PaymentIntent::class,
             \Stripe\PaymentLink::OBJECT_NAME => \Stripe\PaymentLink::class,
