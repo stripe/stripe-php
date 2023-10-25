@@ -5,9 +5,9 @@
 namespace Stripe\Issuing;
 
 /**
- * Every time an applicant submits an application for a Charge Card product your Platform offers, or every time your Platform takes a proactive credit decision on an existing account, you must record the decision by creating a new CreditUnderwritingRecord object on a Connected account.
+ * Every time an applicant submits an application for a Charge Card product your platform offers, or every time your platform takes a proactive credit decision on an existing account, you must record the decision by creating a new <code>CreditUnderwritingRecord</code> object on a connected account.
  *
- * <a href="https://stripe.com/docs/issuing/coming_soon">Follow the guide</a> to learn about your requirements as a Platform.
+ * <a href="https://stripe.com/docs/issuing/credit/report-credit-decisions-and-manage-aans">Follow the guide</a> to learn about your requirements as a platform.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
