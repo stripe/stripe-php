@@ -1,5 +1,12 @@
 # Changelog
 
+## 13.2.0-beta.1 - 2023-10-26
+* [#1596](https://github.com/stripe/stripe-php/pull/1596) Update generated code for beta
+  * Add support for new resource `Margin`
+  * Add support for `all`, `create`, `retrieve`, and `update` methods on resource `Margin`
+  * Add support for `default_margins` and `total_margin_amounts` on `Invoice`
+  * Add support for `margins` on `InvoiceItem`
+
 ## 13.1.0 - 2023-10-26
 * [#1595](https://github.com/stripe/stripe-php/pull/1595) Update generated code
   * Add support for new value `balance_invalid_parameter` on enum `StripeError.code`
