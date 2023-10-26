@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.1.0 - 2023-10-26
+* [#1595](https://github.com/stripe/stripe-php/pull/1595) Update generated code
+  * Add support for new value `balance_invalid_parameter` on enum `StripeError.code`
+
 ## 13.1.0-beta.1 - 2023-10-17
 * [#1594](https://github.com/stripe/stripe-php/pull/1594) Update generated code for beta
   - Update pinned API version to `2023-10-16`
