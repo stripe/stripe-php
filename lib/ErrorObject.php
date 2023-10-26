@@ -57,6 +57,7 @@ class ErrorObject extends StripeObject
     const CODE_APPLICATION_FEES_NOT_ALLOWED = 'application_fees_not_allowed';
     const CODE_AUTHENTICATION_REQUIRED = 'authentication_required';
     const CODE_BALANCE_INSUFFICIENT = 'balance_insufficient';
+    const CODE_BALANCE_INVALID_PARAMETER = 'balance_invalid_parameter';
     const CODE_BANK_ACCOUNT_BAD_ROUTING_NUMBERS = 'bank_account_bad_routing_numbers';
     const CODE_BANK_ACCOUNT_DECLINED = 'bank_account_declined';
     const CODE_BANK_ACCOUNT_EXISTS = 'bank_account_exists';

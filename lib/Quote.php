@@ -42,7 +42,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $status_transitions
  * @property null|string|\Stripe\Subscription $subscription The subscription that was created or updated from this quote.
  * @property \Stripe\StripeObject $subscription_data
- * @property null|\Stripe\StripeObject[] $subscription_data_overrides
+ * @property null|\Stripe\StripeObject[] $subscription_data_overrides List representing overrides for <code>subscription_data</code> configurations for specific subscription schedules.
  * @property null|string|\Stripe\SubscriptionSchedule $subscription_schedule The subscription schedule that was created or updated from this quote.
  * @property null|\Stripe\StripeObject[] $subscription_schedules The subscription schedules that were created or updated from this quote.
  * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this quote belongs to.

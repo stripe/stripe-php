@@ -72,7 +72,7 @@ class CreditUnderwritingRecordService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update a <code>CreditUnderwritingRecord</code> object from an decision made on a
+     * Update a <code>CreditUnderwritingRecord</code> object from a decision made on a
      * credit application.
      *
      * @param string $id
