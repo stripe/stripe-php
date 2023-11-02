@@ -39,5 +39,6 @@ class CustomerCashBalanceTransaction extends ApiResource
     const TYPE_REFUNDED_FROM_PAYMENT = 'refunded_from_payment';
     const TYPE_RETURN_CANCELED = 'return_canceled';
     const TYPE_RETURN_INITIATED = 'return_initiated';
+    const TYPE_TRANSFERRED_TO_BALANCE = 'transferred_to_balance';
     const TYPE_UNAPPLIED_FROM_PAYMENT = 'unapplied_from_payment';
 }
