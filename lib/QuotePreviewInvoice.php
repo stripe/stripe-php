@@ -47,6 +47,7 @@ namespace Stripe;
  * @property int $amount_paid The amount, in cents (or local equivalent), that was paid.
  * @property int $amount_remaining The difference between amount_due and amount_paid, in cents (or local equivalent).
  * @property int $amount_shipping This is the sum of all the shipping amounts.
+ * @property null|\Stripe\StripeObject[] $amounts_due List of expected payments and corresponding due dates. This value will be null for invoices where collection_method=charge_automatically.
  * @property null|string|\Stripe\StripeObject $application ID of the Connect Application that created the invoice.
  * @property null|int $application_fee_amount The fee in cents (or local equivalent) that will be applied to the invoice and transferred to the application owner's Stripe account when the invoice is paid.
  * @property \Stripe\StripeObject $applies_to
@@ -90,6 +91,7 @@ namespace Stripe;
  * @property bool $paid_out_of_band Returns true if the invoice was manually marked paid, returns false if the invoice hasn't been paid yet or was paid on Stripe.
  * @property null|string|\Stripe\PaymentIntent $payment_intent The PaymentIntent associated with this invoice. The PaymentIntent is generated when the invoice is finalized, and can then be used to pay the invoice. Note that voiding an invoice will cancel the PaymentIntent.
  * @property \Stripe\StripeObject $payment_settings
+ * @property null|\Stripe\Collection<\Stripe\InvoicePayment> $payments Payments for this invoice
  * @property int $period_end End of the usage period during which invoice items were added to this invoice.
  * @property int $period_start Start of the usage period during which invoice items were added to this invoice.
  * @property int $post_payment_credit_notes_amount Total amount of all post-payment credit notes issued for this invoice.

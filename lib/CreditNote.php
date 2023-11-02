@@ -28,8 +28,11 @@ namespace Stripe;
  * @property string $number A unique number that identifies this particular credit note and appears on the PDF of the credit note and its associated invoice.
  * @property null|int $out_of_band_amount Amount that was credited outside of Stripe.
  * @property string $pdf The link to download the PDF of the credit note.
+ * @property null|int $post_payment_amount
+ * @property null|int $pre_payment_amount
  * @property null|string $reason Reason for issuing this credit note, one of <code>duplicate</code>, <code>fraudulent</code>, <code>order_change</code>, or <code>product_unsatisfactory</code>
  * @property null|string|\Stripe\Refund $refund Refund related to this credit note.
+ * @property null|\Stripe\StripeObject[] $refunds Refunds related to this credit note.
  * @property null|\Stripe\StripeObject $shipping_cost The details of the cost of shipping, including the ShippingRate applied to the invoice.
  * @property string $status Status of this credit note, one of <code>issued</code> or <code>void</code>. Learn more about <a href="https://stripe.com/docs/billing/invoices/credit-notes#voiding">voiding credit notes</a>.
  * @property int $subtotal The integer amount in cents (or local equivalent) representing the amount of the credit note, excluding exclusive tax and invoice level discounts.

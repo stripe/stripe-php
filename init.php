@@ -133,6 +133,7 @@ require __DIR__ . '/lib/Identity/VerificationSession.php';
 require __DIR__ . '/lib/Invoice.php';
 require __DIR__ . '/lib/InvoiceItem.php';
 require __DIR__ . '/lib/InvoiceLineItem.php';
+require __DIR__ . '/lib/InvoicePayment.php';
 require __DIR__ . '/lib/Issuing/Authorization.php';
 require __DIR__ . '/lib/Issuing/Card.php';
 require __DIR__ . '/lib/Issuing/Cardholder.php';

@@ -43,6 +43,50 @@ class InvoiceService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * When retrieving an invoice, there is an includable payments property containing
+     * the first handful of those items. There is also a URL where you can retrieve the
+     * full (paginated) list of payments.
+     *
+     * @param string $parentId
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\InvoicePayment>
+     */
+    public function allPayments($parentId, $params = null, $opts = null)
+    {
+        return $this->requestCollection('get', $this->buildPath('/v1/invoices/%s/payments', $parentId), $params, $opts);
+    }
+
+    /**
+     * Attaches a PaymentIntent to the invoice, adding it to the list of
+     * <code>payments</code>. When the PaymentIntent’s status changes to
+     * <code>succeeded</code>, the payment is credited to the invoice, increasing its
+     * <code>amount_paid</code>. When the invoice is fully paid, the invoice’s status
+     * becomes <code>paid</code>.
+     *
+     * If the PaymentIntent’s status is already <code>succeeded</code> when it is
+     * attached, it is credited to the invoice immediately.
+     *
+     * Related guide: <a href="/docs/invoicing/payments/create">Create an invoice
+     * payment</a>
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Invoice
+     */
+    public function attachPaymentIntent($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/invoices/%s/attach_payment_intent', $id), $params, $opts);
+    }
+
+    /**
      * This endpoint creates a draft invoice for a given customer. The invoice remains
      * a draft until you <a href="#finalize_invoice">finalize</a> the invoice, which
      * allows you to <a href="#pay_invoice">pay</a> or <a href="#send_invoice">send</a>
@@ -148,6 +192,23 @@ class InvoiceService extends \Stripe\Service\AbstractService
     public function retrieve($id, $params = null, $opts = null)
     {
         return $this->request('get', $this->buildPath('/v1/invoices/%s', $id), $params, $opts);
+    }
+
+    /**
+     * Retrieves the invoice payment with the given ID.
+     *
+     * @param string $parentId
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\InvoicePayment
+     */
+    public function retrievePayment($parentId, $id, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v1/invoices/%s/payments/%s', $parentId, $id), $params, $opts);
     }
 
     /**

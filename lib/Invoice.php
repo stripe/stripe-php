@@ -47,6 +47,7 @@ namespace Stripe;
  * @property int $amount_paid The amount, in cents (or local equivalent), that was paid.
  * @property int $amount_remaining The difference between amount_due and amount_paid, in cents (or local equivalent).
  * @property int $amount_shipping This is the sum of all the shipping amounts.
+ * @property null|\Stripe\StripeObject[] $amounts_due List of expected payments and corresponding due dates. This value will be null for invoices where collection_method=charge_automatically.
  * @property null|string|\Stripe\StripeObject $application ID of the Connect Application that created the invoice.
  * @property null|int $application_fee_amount The fee in cents (or local equivalent) that will be applied to the invoice and transferred to the application owner's Stripe account when the invoice is paid.
  * @property int $attempt_count Number of payment attempts made for this invoice, from the perspective of the payment retry schedule. Any payment attempt counts as the first attempt, and subsequently only automatic retries increment the attempt count. In other words, manual payment attempts after the first attempt do not affect the retry schedule.
@@ -94,6 +95,7 @@ namespace Stripe;
  * @property bool $paid_out_of_band Returns true if the invoice was manually marked paid, returns false if the invoice hasn't been paid yet or was paid on Stripe.
  * @property null|string|\Stripe\PaymentIntent $payment_intent The PaymentIntent associated with this invoice. The PaymentIntent is generated when the invoice is finalized, and can then be used to pay the invoice. Note that voiding an invoice will cancel the PaymentIntent.
  * @property \Stripe\StripeObject $payment_settings
+ * @property null|\Stripe\Collection<\Stripe\InvoicePayment> $payments Payments for this invoice
  * @property int $period_end End of the usage period during which invoice items were added to this invoice.
  * @property int $period_start Start of the usage period during which invoice items were added to this invoice.
  * @property int $post_payment_credit_notes_amount Total amount of all post-payment credit notes issued for this invoice.
@@ -161,6 +163,23 @@ class Invoice extends ApiResource
 
     const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const BILLING_SEND_INVOICE = 'send_invoice';
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Invoice the attached invoice
+     */
+    public function attachPaymentIntent($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/attach_payment_intent';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
 
     /**
      * @param null|array $params
@@ -298,6 +317,36 @@ class Invoice extends ApiResource
         return self::_searchResource($url, $params, $opts);
     }
 
+    const PATH_PAYMENTS = '/payments';
+
+    /**
+     * @param string $id the ID of the invoice on which to retrieve the invoice payments
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\InvoicePayment> the list of invoice payments
+     */
+    public static function allPayments($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_PAYMENTS, $params, $opts);
+    }
+
+    /**
+     * @param string $id the ID of the invoice to which the invoice payment belongs
+     * @param string $paymentId the ID of the invoice payment to retrieve
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\InvoicePayment
+     */
+    public static function retrievePayment($id, $paymentId, $params = null, $opts = null)
+    {
+        return self::_retrieveNestedResource($id, static::PATH_PAYMENTS, $paymentId, $params, $opts);
+    }
     const PATH_LINES = '/lines';
 
     /**
