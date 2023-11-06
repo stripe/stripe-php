@@ -569,7 +569,8 @@ EOS;
     public function testConstructFromIdPassing()
     {
         $obj = StripeObject::constructFrom(['inner' => ['id' => ['foo' => 'bar']]]);
-        static::assertSame(['foo' => 'bar'], $obj->inner->id->toArray());
+
+        static::assertSame(['foo' => 'bar'], $obj['inner']->id->toArray());
         static::assertSame([], $this->retrieveOptionsReflector->getValue($obj));
     }
 
