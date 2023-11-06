@@ -243,6 +243,7 @@ abstract class Util
     public static function normalizeId($id)
     {
         if (\is_array($id)) {
+            // see https://github.com/stripe/stripe-php/pull/1602
             if (!isset($id['id'])) {
                 return [null, $id];
             }
