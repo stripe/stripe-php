@@ -8,6 +8,9 @@
   * Add support for `amounts_due` and `payments` on `Invoice`
   * Add support for `created` on `Issuing.PersonalizationDesign`
 
+## 13.2.1 - 2023-11-06
+* [#1602](https://github.com/stripe/stripe-php/pull/1602) Fix error when "id" is not a string.
+
 ## 13.2.0 - 2023-11-02
 * [#1599](https://github.com/stripe/stripe-php/pull/1599) Update generated code
   * Add support for new resource `Tax.Registration`
