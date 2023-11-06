@@ -16,6 +16,9 @@ final class StripeObjectTest extends \Stripe\TestCase
     /** @var \ReflectionProperty */
     private $optsReflector;
 
+    /** @var \ReflectionProperty */
+    private $retrieveOptionsReflector;
+
     /**
      * @before
      */
@@ -31,6 +34,10 @@ final class StripeObjectTest extends \Stripe\TestCase
         // This is used to access the `_opts` protected variable
         $this->optsReflector = new \ReflectionProperty(\Stripe\StripeObject::class, '_opts');
         $this->optsReflector->setAccessible(true);
+
+        // This is used to access the `_retrieveOptions` protected variable
+        $this->retrieveOptionsReflector = new \ReflectionProperty(\Stripe\StripeObject::class, '_retrieveOptions');
+        $this->retrieveOptionsReflector->setAccessible(true);
     }
 
     public function testArrayAccessorsSemantics()
@@ -538,6 +545,32 @@ EOS;
 
         $obj = StripeObject::constructFrom(['deleted' => true]);
         static::assertTrue($obj->isDeleted());
+    }
+
+    public function testConstructorIdPassing()
+    {
+        $obj = new StripeObject(['id' => 'id_foo', 'other' => 'bar']);
+        static::assertSame('id_foo', $obj->id);
+        static::assertSame(['other' => 'bar'], $this->retrieveOptionsReflector->getValue($obj));
+
+        $obj = new StripeObject('id_foo');
+        static::assertSame('id_foo', $obj->id);
+        static::assertSame([], $this->retrieveOptionsReflector->getValue($obj));
+
+        $obj = new StripeObject(['id' => 'id_foo']);
+        static::assertSame('id_foo', $obj->id);
+        static::assertSame([], $this->retrieveOptionsReflector->getValue($obj));
+
+        $obj = new StripeObject(['id' => ['foo' => 'bar']]);
+        static::assertSame(['foo' => 'bar'], $obj->id);
+        static::assertSame([], $this->retrieveOptionsReflector->getValue($obj));
+    }
+
+    public function testConstructFromIdPassing()
+    {
+        $obj = StripeObject::constructFrom(['inner' => ['id' => ['foo' => 'bar']]]);
+        static::assertSame(['foo' => 'bar'], $obj->inner->id->toArray());
+        static::assertSame([], $this->retrieveOptionsReflector->getValue($obj));
     }
 
     public function testDeserializeEmptyMetadata()

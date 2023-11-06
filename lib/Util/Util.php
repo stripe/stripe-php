@@ -243,6 +243,9 @@ abstract class Util
     public static function normalizeId($id)
     {
         if (\is_array($id)) {
+            if (!isset($id['id'])) {
+                return [null, $id];
+            }
             $params = $id;
             $id = $params['id'];
             unset($params['id']);
