@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.3.0 - 2023-11-09
+* [#1603](https://github.com/stripe/stripe-php/pull/1603) Update generated code
+  * Add support for new value `terminal_reader_hardware_fault` on enum `StripeError.code`
+
 ## 13.2.1 - 2023-11-06
 * [#1602](https://github.com/stripe/stripe-php/pull/1602) Fix error when "id" is not a string.
 
