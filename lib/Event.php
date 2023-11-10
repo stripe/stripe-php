@@ -229,6 +229,7 @@ class Event extends ApiResource
     const QUOTE_DRAFT = 'quote.draft';
     const QUOTE_FINALIZED = 'quote.finalized';
     const QUOTE_REESTIMATED = 'quote.reestimated';
+    const QUOTE_REESTIMATE_FAILED = 'quote.reestimate_failed';
     const QUOTE_STALE = 'quote.stale';
     const RADAR_EARLY_FRAUD_WARNING_CREATED = 'radar.early_fraud_warning.created';
     const RADAR_EARLY_FRAUD_WARNING_UPDATED = 'radar.early_fraud_warning.updated';
@@ -485,6 +486,7 @@ class Event extends ApiResource
     const TYPE_QUOTE_DRAFT = 'quote.draft';
     const TYPE_QUOTE_FINALIZED = 'quote.finalized';
     const TYPE_QUOTE_REESTIMATED = 'quote.reestimated';
+    const TYPE_QUOTE_REESTIMATE_FAILED = 'quote.reestimate_failed';
     const TYPE_QUOTE_STALE = 'quote.stale';
     const TYPE_RADAR_EARLY_FRAUD_WARNING_CREATED = 'radar.early_fraud_warning.created';
     const TYPE_RADAR_EARLY_FRAUD_WARNING_UPDATED = 'radar.early_fraud_warning.updated';

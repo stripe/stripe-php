@@ -19,6 +19,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $invoice_settings The invoice settings applicable during this phase.
  * @property null|int $iterations Integer representing the multiplier applied to the price interval. For example, <code>iterations=2</code> applied to a price with <code>interval=month</code> and <code>interval_count=3</code> results in a phase of duration <code>2 * 3 months = 6 months</code>.
  * @property null|\Stripe\Collection<\Stripe\LineItem> $line_items A list of items the customer is being quoted for.
+ * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that will declaratively set metadata on the subscription schedule's phases when the quote is accepted.
  * @property string $proration_behavior If the quote will prorate when transitioning to this phase. Possible values are <code>create_prorations</code> and <code>none</code>.
  * @property \Stripe\StripeObject $total_details
  * @property null|bool $trial If set to true the entire phase is counted as a trial and the customer will not be charged for any recurring fees.

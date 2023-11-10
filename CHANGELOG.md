@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.3.0 - 2023-11-09
+* [#1603](https://github.com/stripe/stripe-php/pull/1603) Update generated code
+  * Add support for new value `terminal_reader_hardware_fault` on enum `StripeError.code`
+
 ## 13.3.0-beta.1 - 2023-11-02
 * [#1598](https://github.com/stripe/stripe-php/pull/1598) Update generated code for beta
   * Add support for `attach_payment_intent` method on resource `Invoice`
@@ -7,6 +11,9 @@
   * Add support for new value `invoice.payment.overpaid` on enum `Event.type`
   * Add support for `amounts_due` and `payments` on `Invoice`
   * Add support for `created` on `Issuing.PersonalizationDesign`
+
+## 13.2.1 - 2023-11-06
+* [#1602](https://github.com/stripe/stripe-php/pull/1602) Fix error when "id" is not a string.
 
 ## 13.2.0 - 2023-11-02
 * [#1599](https://github.com/stripe/stripe-php/pull/1599) Update generated code
