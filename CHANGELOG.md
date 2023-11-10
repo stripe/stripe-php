@@ -1,5 +1,10 @@
 # Changelog
 
+## 13.4.0-beta.1 - 2023-11-10
+* [#1600](https://github.com/stripe/stripe-php/pull/1600) Update generated code for beta
+  * Add support for new value `quote.reestimate_failed` on enum `Event.type`
+  * Add support for `metadata` on `QuotePhase`
+
 ## 13.3.0 - 2023-11-09
 * [#1603](https://github.com/stripe/stripe-php/pull/1603) Update generated code
   * Add support for new value `terminal_reader_hardware_fault` on enum `StripeError.code`
