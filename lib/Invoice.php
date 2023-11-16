@@ -310,4 +310,19 @@ class Invoice extends ApiResource
     {
         return self::_allNestedResources($id, static::PATH_LINES, $params, $opts);
     }
+
+    /**
+     * @param string $id the ID of the invoice to which the invoice line item belongs
+     * @param string $lineId the ID of the invoice line item to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\InvoiceLineItem
+     */
+    public static function updateLine($id, $lineId, $params = null, $opts = null)
+    {
+        return self::_updateNestedResource($id, static::PATH_LINES, $lineId, $params, $opts);
+    }
 }
