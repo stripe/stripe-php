@@ -1,5 +1,11 @@
 # Changelog
 
+## 13.4.0 - 2023-11-21
+* [#1608](https://github.com/stripe/stripe-php/pull/1608) Update generated code
+  Add support for `transferred_to_balance` to `CustomerCashBalanceTransaction`
+* [#1605](https://github.com/stripe/stripe-php/pull/1605) Update generated code
+  * Add support for `network_data` on `Issuing.Transaction`
+
 ## 13.3.0 - 2023-11-09
 * [#1603](https://github.com/stripe/stripe-php/pull/1603) Update generated code
   * Add support for new value `terminal_reader_hardware_fault` on enum `StripeError.code`
