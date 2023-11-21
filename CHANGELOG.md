@@ -1,5 +1,11 @@
 # Changelog
 
+## 13.4.0 - 2023-11-21
+* [#1608](https://github.com/stripe/stripe-php/pull/1608) Update generated code
+  Add support for `transferred_to_balance` to `CustomerCashBalanceTransaction`
+* [#1605](https://github.com/stripe/stripe-php/pull/1605) Update generated code
+  * Add support for `network_data` on `Issuing.Transaction`
+
 ## 13.4.0-beta.1 - 2023-11-10
 * [#1600](https://github.com/stripe/stripe-php/pull/1600) Update generated code for beta
   * Add support for new value `quote.reestimate_failed` on enum `Event.type`
