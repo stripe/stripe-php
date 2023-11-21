@@ -1,5 +1,12 @@
 # Changelog
 
+## 13.5.0-beta.1 - 2023-11-21
+* [#1606](https://github.com/stripe/stripe-php/pull/1606) Update generated code for beta
+  * Add support for `components` and `created` on `CustomerSession`
+* [#1600](https://github.com/stripe/stripe-php/pull/1600) Update generated code for beta
+  * Add support for new value `quote.reestimate_failed` on enum `Event.type`
+  * Add support for `metadata` on `QuotePhase`
+
 ## 13.4.0 - 2023-11-21
 * [#1608](https://github.com/stripe/stripe-php/pull/1608) Update generated code
   Add support for `transferred_to_balance` to `CustomerCashBalanceTransaction`
