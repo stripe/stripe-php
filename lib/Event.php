@@ -101,6 +101,13 @@ class Event extends ApiResource
     const CHECKOUT_SESSION_ASYNC_PAYMENT_SUCCEEDED = 'checkout.session.async_payment_succeeded';
     const CHECKOUT_SESSION_COMPLETED = 'checkout.session.completed';
     const CHECKOUT_SESSION_EXPIRED = 'checkout.session.expired';
+    const CLIMATE_ORDER_CANCELED = 'climate.order.canceled';
+    const CLIMATE_ORDER_CREATED = 'climate.order.created';
+    const CLIMATE_ORDER_DELAYED = 'climate.order.delayed';
+    const CLIMATE_ORDER_DELIVERED = 'climate.order.delivered';
+    const CLIMATE_ORDER_PRODUCT_SUBSTITUTED = 'climate.order.product_substituted';
+    const CLIMATE_PRODUCT_CREATED = 'climate.product.created';
+    const CLIMATE_PRODUCT_PRICING_UPDATED = 'climate.product.pricing_updated';
     const COUPON_CREATED = 'coupon.created';
     const COUPON_DELETED = 'coupon.deleted';
     const COUPON_UPDATED = 'coupon.updated';

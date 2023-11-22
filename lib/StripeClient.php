@@ -20,6 +20,7 @@ namespace Stripe;
  * @property \Stripe\Service\Capital\CapitalServiceFactory $capital
  * @property \Stripe\Service\ChargeService $charges
  * @property \Stripe\Service\Checkout\CheckoutServiceFactory $checkout
+ * @property \Stripe\Service\Climate\ClimateServiceFactory $climate
  * @property \Stripe\Service\ConfirmationTokenService $confirmationTokens
  * @property \Stripe\Service\CountrySpecService $countrySpecs
  * @property \Stripe\Service\CouponService $coupons
