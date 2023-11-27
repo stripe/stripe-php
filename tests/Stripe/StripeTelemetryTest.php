@@ -105,8 +105,10 @@ final class StripeTelemetryTest extends \Stripe\TestCase
 
         ApiRequestor::setHttpClient($stub);
 
+        $cus = new \Stripe\Customer('cus_xyz');
+        $cus->description = 'test';
         // make one request to capture its result
-        Charge::all();
+        $cus->save();
         static::assertArrayNotHasKey('X-Stripe-Client-Telemetry', $requestheaders);
 
         // make another request to send the previous
@@ -115,6 +117,7 @@ final class StripeTelemetryTest extends \Stripe\TestCase
 
         $data = \json_decode($requestheaders['X-Stripe-Client-Telemetry'], true);
         static::assertSame('req_123', $data['last_request_metrics']['request_id']);
+        static::assertSame(['save'], $data['last_request_metrics']['usage']);
         static::assertNotNull($data['last_request_metrics']['request_duration_ms']);
 
         ApiRequestor::setHttpClient(null);
