@@ -155,7 +155,7 @@ final class StripeTelemetryTest extends \Stripe\TestCase
 
         ApiRequestor::setHttpClient($stub);
 
-        $client = new \Stripe\StripeClient("sk_test_123");
+        $client = new \Stripe\StripeClient('sk_test_123');
         $client->customers->create(['description' => 'test']);
         static::assertArrayNotHasKey('X-Stripe-Client-Telemetry', $requestheaders);
         $client->customers->create(['description' => 'test2']);

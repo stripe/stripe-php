@@ -31,6 +31,7 @@ trait Request
      * @param string $url URL for the request
      * @param array $params list of parameters for the request
      * @param null|array|string $options
+     * @param mixed $usage
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -51,6 +52,7 @@ trait Request
      * @param callable $readBodyChunk function that will receive chunks of data from a successful request body
      * @param array $params list of parameters for the request
      * @param null|array|string $options
+     * @param mixed $usage
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
