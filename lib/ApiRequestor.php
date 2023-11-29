@@ -113,7 +113,7 @@ class ApiRequestor
      * @param string     $url
      * @param null|array $params
      * @param null|array $headers
-     * @param array $usage
+     * @param string[] $usage
      *
      * @throws Exception\ApiErrorException
      *
@@ -137,7 +137,7 @@ class ApiRequestor
      * @param callable $readBodyChunkCallable
      * @param null|array $params
      * @param null|array $headers
-     * @param array $usage
+     * @param string[] $usage
      *
      * @throws Exception\ApiErrorException
      */
@@ -439,7 +439,7 @@ class ApiRequestor
      * @param string $url
      * @param array $params
      * @param array $headers
-     * @param array $usage
+     * @param string[] $usage
      *
      * @throws Exception\AuthenticationException
      * @throws Exception\ApiConnectionException
@@ -478,7 +478,7 @@ class ApiRequestor
      * @param string $url
      * @param array $params
      * @param array $headers
-     * @param array $usage
+     * @param string[] $usage
      * @param callable $readBodyChunkCallable
      *
      * @throws Exception\AuthenticationException
