@@ -21,7 +21,7 @@ class RequestTelemetry
      *
      * @param string $requestId the request's request ID
      * @param int $requestDuration the request's duration in milliseconds
-     * @param string[] $usage tracked behaviors
+     * @param string[] $usage names of tracked behaviors associated with this request
      */
     public function __construct($requestId, $requestDuration, $usage = [])
     {
