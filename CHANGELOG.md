@@ -1,5 +1,8 @@
 # Changelog
 
+## 13.6.0-beta.1 - 2023-11-30
+* [#1610](https://github.com/stripe/stripe-php/pull/1610) Update generated code for beta
+
 ## 13.5.0-beta.1 - 2023-11-21
 * [#1606](https://github.com/stripe/stripe-php/pull/1606) Update generated code for beta
   * Add support for `components` and `created` on `CustomerSession`
