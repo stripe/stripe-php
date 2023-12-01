@@ -18,6 +18,7 @@ namespace Stripe\Service;
  * @property BillingPortal\BillingPortalServiceFactory $billingPortal
  * @property ChargeService $charges
  * @property Checkout\CheckoutServiceFactory $checkout
+ * @property Climate\ClimateServiceFactory $climate
  * @property CountrySpecService $countrySpecs
  * @property CouponService $coupons
  * @property CreditNoteService $creditNotes
@@ -88,6 +89,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'billingPortal' => BillingPortal\BillingPortalServiceFactory::class,
         'charges' => ChargeService::class,
         'checkout' => Checkout\CheckoutServiceFactory::class,
+        'climate' => Climate\ClimateServiceFactory::class,
         'countrySpecs' => CountrySpecService::class,
         'coupons' => CouponService::class,
         'creditNotes' => CreditNoteService::class,

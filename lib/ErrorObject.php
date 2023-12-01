@@ -88,6 +88,7 @@ class ErrorObject extends StripeObject
     const CODE_DEBIT_NOT_AUTHORIZED = 'debit_not_authorized';
     const CODE_EMAIL_INVALID = 'email_invalid';
     const CODE_EXPIRED_CARD = 'expired_card';
+    const CODE_FINANCIAL_CONNECTIONS_ACCOUNT_INACTIVE = 'financial_connections_account_inactive';
     const CODE_IDEMPOTENCY_KEY_IN_USE = 'idempotency_key_in_use';
     const CODE_INCORRECT_ADDRESS = 'incorrect_address';
     const CODE_INCORRECT_CVC = 'incorrect_cvc';
