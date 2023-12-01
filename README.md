@@ -190,7 +190,7 @@ an intermittent network problem:
 [Idempotency keys][idempotency-keys] are added to requests to guarantee that
 retries are safe.
 
-### Request latency telemetry
+### Telemetry
 
 By default, the library sends telemetry to Stripe regarding request latency and feature usage. These
 numbers help Stripe improve the overall latency of its API for all users, and
