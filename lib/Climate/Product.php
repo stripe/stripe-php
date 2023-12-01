@@ -14,7 +14,7 @@ namespace Stripe\Climate;
  * @property \Stripe\StripeObject $current_prices_per_metric_ton Current prices for a metric ton of carbon removal in a currency's smallest unit.
  * @property null|int $delivery_year The year in which the carbon removal is expected to be delivered.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|string $metric_tons_available The quantity of metric tons available for reservation.
+ * @property string $metric_tons_available The quantity of metric tons available for reservation.
  * @property string $name The Climate product's name.
  * @property \Stripe\Climate\Supplier[] $suppliers The carbon removal suppliers that fulfill orders for this Climate product.
  */
