@@ -78,7 +78,7 @@ trait Request
         $opts = \Stripe\Util\RequestOptions::parse($options);
         $baseUrl = isset($opts->apiBase) ? $opts->apiBase : static::baseUrl();
         $requestor = new \Stripe\ApiRequestor($opts->apiKey, $baseUrl);
-        list($response, $opts->apiKey) = $requestor->request($method, $url, $params, $opts->headers, $usage);
+        list($response, $opts->apiKey) = $requestor->request($method, $url, $params, $opts->headers, 'standard', $usage);
         $opts->discardNonPersistentHeaders();
 
         return [$response, $opts];
