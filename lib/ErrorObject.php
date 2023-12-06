@@ -85,6 +85,7 @@ class ErrorObject extends StripeObject
     const CODE_COUPON_EXPIRED = 'coupon_expired';
     const CODE_CUSTOMER_MAX_PAYMENT_METHODS = 'customer_max_payment_methods';
     const CODE_CUSTOMER_MAX_SUBSCRIPTIONS = 'customer_max_subscriptions';
+    const CODE_CUSTOMER_TAX_LOCATION_INVALID = 'customer_tax_location_invalid';
     const CODE_DEBIT_NOT_AUTHORIZED = 'debit_not_authorized';
     const CODE_EMAIL_INVALID = 'email_invalid';
     const CODE_EXPIRED_CARD = 'expired_card';
