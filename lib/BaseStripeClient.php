@@ -142,7 +142,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $opts = $this->defaultOpts->merge($opts, true);
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new \Stripe\ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
-        list($response, $opts->apiKey) = $requestor->request($method, $path, $params, $opts->headers);
+        list($response, $opts->apiKey) = $requestor->request($method, $path, $params, $opts->headers, ['stripe_client']);
         $opts->discardNonPersistentHeaders();
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
@@ -166,7 +166,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $opts = $this->defaultOpts->merge($opts, true);
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new \Stripe\ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
-        list($response, $opts->apiKey) = $requestor->requestStream($method, $path, $readBodyChunkCallable, $params, $opts->headers);
+        list($response, $opts->apiKey) = $requestor->requestStream($method, $path, $readBodyChunkCallable, $params, $opts->headers, ['stripe_client']);
     }
 
     /**
