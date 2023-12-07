@@ -65,6 +65,9 @@ class ApiRequestor
                 'request_duration_ms' => $requestTelemetry->requestDuration,
             ],
         ];
+        if (\count($requestTelemetry->usage) > 0) {
+            $payload['last_request_metrics']['usage'] = $requestTelemetry->usage;
+        }
 
         $result = \json_encode($payload);
         if (false !== $result) {
@@ -111,17 +114,18 @@ class ApiRequestor
      * @param null|array $params
      * @param null|array $headers
      * @param 'preview'|'standard' $apiMode
+     * @param string[] $usage
      *
      * @throws Exception\ApiErrorException
      *
      * @return array tuple containing (ApiReponse, API key)
      */
-    public function request($method, $url, $params = null, $headers = null, $apiMode = 'standard')
+    public function request($method, $url, $params = null, $headers = null, $apiMode = 'standard', $usage = [])
     {
         $params = $params ?: [];
         $headers = $headers ?: [];
         list($rbody, $rcode, $rheaders, $myApiKey) =
-        $this->_requestRaw($method, $url, $params, $headers, $apiMode);
+        $this->_requestRaw($method, $url, $params, $headers, $apiMode, $usage);
         $json = $this->_interpretResponse($rbody, $rcode, $rheaders);
         $resp = new ApiResponse($rbody, $rcode, $rheaders, $json);
 
@@ -135,16 +139,16 @@ class ApiRequestor
      * @param null|array $params
      * @param null|array $headers
      * @param 'preview'|'standard' $apiMode
-     * @param mixed $apiMode
+     * @param string[] $usage
      *
      * @throws Exception\ApiErrorException
      */
-    public function requestStream($method, $url, $readBodyChunkCallable, $params = null, $headers = null, $apiMode = 'standard')
+    public function requestStream($method, $url, $readBodyChunkCallable, $params = null, $headers = null, $apiMode = 'standard', $usage = [])
     {
         $params = $params ?: [];
         $headers = $headers ?: [];
         list($rbody, $rcode, $rheaders, $myApiKey) =
-        $this->_requestRawStreaming($method, $url, $params, $headers, $readBodyChunkCallable, $apiMode);
+        $this->_requestRawStreaming($method, $url, $params, $headers, $apiMode, $usage, $readBodyChunkCallable);
         if ($rcode >= 300) {
             $this->_interpretResponse($rbody, $rcode, $rheaders);
         }
@@ -451,13 +455,14 @@ class ApiRequestor
      * @param array $params
      * @param array $headers
      * @param 'preview'|'standard' $apiMode
+     * @param string[] $usage
      *
      * @throws Exception\AuthenticationException
      * @throws Exception\ApiConnectionException
      *
      * @return array
      */
-    private function _requestRaw($method, $url, $params, $headers, $apiMode)
+    private function _requestRaw($method, $url, $params, $headers, $apiMode, $usage)
     {
         list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $apiMode);
 
@@ -477,7 +482,8 @@ class ApiRequestor
         && '' !== $rheaders['request-id']) {
             self::$requestTelemetry = new RequestTelemetry(
                 $rheaders['request-id'],
-                Util\Util::currentTimeMillis() - $requestStartMs
+                Util\Util::currentTimeMillis() - $requestStartMs,
+                $usage
             );
         }
 
@@ -489,6 +495,7 @@ class ApiRequestor
      * @param string $url
      * @param array $params
      * @param array $headers
+     * @param string[] $usage
      * @param callable $readBodyChunkCallable
      * @param 'preview'|'standard' $apiMode
      *
@@ -497,7 +504,7 @@ class ApiRequestor
      *
      * @return array
      */
-    private function _requestRawStreaming($method, $url, $params, $headers, $readBodyChunkCallable, $apiMode)
+    private function _requestRawStreaming($method, $url, $params, $headers, $apiMode, $usage, $readBodyChunkCallable)
     {
         list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $apiMode);
 
