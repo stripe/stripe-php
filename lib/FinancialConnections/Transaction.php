@@ -25,6 +25,7 @@ class Transaction extends \Stripe\ApiResource
     const OBJECT_NAME = 'financial_connections.transaction';
 
     use \Stripe\ApiOperations\All;
+    use \Stripe\ApiOperations\Retrieve;
 
     const STATUS_PENDING = 'pending';
     const STATUS_POSTED = 'posted';
