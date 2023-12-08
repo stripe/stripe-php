@@ -1,5 +1,10 @@
 # Changelog
 
+## 13.7.0-beta.1 - 2023-12-08
+* [#1617](https://github.com/stripe/stripe-php/pull/1617) Update generated code for beta
+  * Add support for `retrieve` method on resource `FinancialConnections.Transaction`
+* [#1616](https://github.com/stripe/stripe-php/pull/1616) Merge master into beta
+
 ## 13.6.0 - 2023-12-07
 * [#1613](https://github.com/stripe/stripe-php/pull/1613) Update generated code
   * Add support for new values `customer_tax_location_invalid` and `financial_connections_no_successful_transaction_refresh` on enum `StripeError.code`
