@@ -42,7 +42,6 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $giropay
  * @property null|\Stripe\StripeObject $google_pay
  * @property null|\Stripe\StripeObject $grabpay
- * @property null|\Stripe\StripeObject $id_bank_transfer
  * @property null|\Stripe\StripeObject $ideal
  * @property bool $is_default The default configuration is used whenever a payment method configuration is not specified.
  * @property null|\Stripe\StripeObject $jcb
@@ -50,19 +49,15 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $konbini
  * @property null|\Stripe\StripeObject $link
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Stripe\StripeObject $multibanco
  * @property string $name The configuration's name.
- * @property null|\Stripe\StripeObject $netbanking
  * @property null|\Stripe\StripeObject $oxxo
  * @property null|\Stripe\StripeObject $p24
  * @property null|string $parent For child configs, the configuration's parent configuration.
- * @property null|\Stripe\StripeObject $pay_by_bank
  * @property null|\Stripe\StripeObject $paynow
  * @property null|\Stripe\StripeObject $paypal
  * @property null|\Stripe\StripeObject $promptpay
  * @property null|\Stripe\StripeObject $sepa_debit
  * @property null|\Stripe\StripeObject $sofort
- * @property null|\Stripe\StripeObject $upi
  * @property null|\Stripe\StripeObject $us_bank_account
  * @property null|\Stripe\StripeObject $wechat_pay
  */
