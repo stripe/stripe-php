@@ -190,6 +190,7 @@ class ErrorObject extends StripeObject
     const CODE_SETUP_INTENT_MANDATE_INVALID = 'setup_intent_mandate_invalid';
     const CODE_SETUP_INTENT_SETUP_ATTEMPT_EXPIRED = 'setup_intent_setup_attempt_expired';
     const CODE_SETUP_INTENT_UNEXPECTED_STATE = 'setup_intent_unexpected_state';
+    const CODE_SHIPPING_ADDRESS_INVALID = 'shipping_address_invalid';
     const CODE_SHIPPING_CALCULATION_FAILED = 'shipping_calculation_failed';
     const CODE_SKU_INACTIVE = 'sku_inactive';
     const CODE_STATE_UNSUPPORTED = 'state_unsupported';
