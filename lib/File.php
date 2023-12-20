@@ -8,7 +8,7 @@ namespace Stripe;
  * This object represents files hosted on Stripe's servers. You can upload
  * files with the <a href="https://stripe.com/docs/api#create_file">create file</a> request
  * (for example, when uploading dispute evidence). Stripe also
- * creates files independetly (for example, the results of a <a href="#scheduled_queries">Sigma scheduled
+ * creates files independently (for example, the results of a <a href="#scheduled_queries">Sigma scheduled
  * query</a>).
  *
  * Related guide: <a href="https://stripe.com/docs/file-upload">File upload guide</a>
