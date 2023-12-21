@@ -3124,6 +3124,22 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\TaxRate::class, $result);
     }
 
+    public function testTaxSettingsGet()
+    {
+        $this->expectsRequest('get', '/v1/tax/settings');
+        $result = $this->client->tax->settings->retrieve([]);
+        static::assertInstanceOf(\Stripe\Tax\Settings::class, $result);
+    }
+
+    public function testTaxSettingsPost()
+    {
+        $this->expectsRequest('post', '/v1/tax/settings');
+        $result = $this->client->tax->settings->update([
+            'defaults' => ['tax_code' => 'txcd_10000000'],
+        ]);
+        static::assertInstanceOf(\Stripe\Tax\Settings::class, $result);
+    }
+
     public function testTaxTransactionsCreateFromCalculationPost()
     {
         $this->expectsRequest(
