@@ -67,7 +67,7 @@ namespace Stripe\Checkout;
  * @property null|\Stripe\StripeObject $shipping_details Shipping information for this Checkout Session.
  * @property \Stripe\StripeObject[] $shipping_options The shipping rate options applied to this Session.
  * @property null|string $status The status of the Checkout Session, one of <code>open</code>, <code>complete</code>, or <code>expired</code>.
- * @property null|string $submit_type Describes the type of transaction being performed by Checkout in order to customize relevant text on the page, such as the submit button. <code>submit_type</code> can only be specified on Checkout Sessions in <code>payment</code> mode, but not Checkout Sessions in <code>subscription</code> or <code>setup</code> mode.
+ * @property null|string $submit_type Describes the type of transaction being performed by Checkout in order to customize relevant text on the page, such as the submit button. <code>submit_type</code> can only be specified on Checkout Sessions in <code>payment</code> mode, but not Checkout Sessions in <code>subscription</code> or <code>setup</code> mode. Possible values are <code>auto</code>, <code>pay</code>, <code>book</code>, <code>donate</code>. If blank or <code>auto</code>, <code>pay</code> is used.
  * @property null|string|\Stripe\Subscription $subscription The ID of the subscription for Checkout Sessions in <code>subscription</code> mode.
  * @property null|string $success_url The URL the customer will be directed to after the payment or subscription creation is successful.
  * @property null|\Stripe\StripeObject $tax_id_collection

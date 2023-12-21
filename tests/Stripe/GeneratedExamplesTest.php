@@ -3153,6 +3153,38 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\TaxRate::class, $result);
     }
 
+    public function testTaxRegistrationsGet()
+    {
+        $this->expectsRequest('get', '/v1/tax/registrations');
+        $result = $this->client->tax->registrations->all(['status' => 'all']);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\Tax\Registration::class, $result->data[0]);
+    }
+
+    public function testTaxRegistrationsPost()
+    {
+        $this->expectsRequest('post', '/v1/tax/registrations');
+        $result = $this->client->tax->registrations->create([
+            'country' => 'IE',
+            'country_options' => ['ie' => ['type' => 'oss_union']],
+            'active_from' => 'now',
+        ]);
+        static::assertInstanceOf(\Stripe\Tax\Registration::class, $result);
+    }
+
+    public function testTaxRegistrationsPost2()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/tax/registrations/taxreg_xxxxxxxxxxxxx'
+        );
+        $result = $this->client->tax->registrations->update(
+            'taxreg_xxxxxxxxxxxxx',
+            ['expires_at' => 'now']
+        );
+        static::assertInstanceOf(\Stripe\Tax\Registration::class, $result);
+    }
+
     public function testTaxSettingsGet()
     {
         $this->expectsRequest('get', '/v1/tax/settings');
