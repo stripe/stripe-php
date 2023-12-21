@@ -1136,6 +1136,32 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\FinancialConnections\Account::class, $result);
     }
 
+    public function testFinancialConnectionsAccountsSubscribePost()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/financial_connections/accounts/fa_123/subscribe'
+        );
+        $result = $this->client->financialConnections->accounts->subscribe(
+            'fa_123',
+            ['features' => ['transactions']]
+        );
+        static::assertInstanceOf(\Stripe\FinancialConnections\Account::class, $result);
+    }
+
+    public function testFinancialConnectionsAccountsUnsubscribePost()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/financial_connections/accounts/fa_123/unsubscribe'
+        );
+        $result = $this->client->financialConnections->accounts->unsubscribe(
+            'fa_123',
+            ['features' => ['transactions']]
+        );
+        static::assertInstanceOf(\Stripe\FinancialConnections\Account::class, $result);
+    }
+
     public function testFinancialConnectionsSessionsGet()
     {
         $this->expectsRequest(
@@ -1187,6 +1213,29 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
             'filters' => ['countries' => ['US']],
         ]);
         static::assertInstanceOf(\Stripe\FinancialConnections\Session::class, $result);
+    }
+
+    public function testFinancialConnectionsTransactionsGet()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/financial_connections/transactions/tr_123'
+        );
+        $result = $this->client->financialConnections->transactions->retrieve(
+            'tr_123',
+            []
+        );
+        static::assertInstanceOf(\Stripe\FinancialConnections\Transaction::class, $result);
+    }
+
+    public function testFinancialConnectionsTransactionsGet2()
+    {
+        $this->expectsRequest('get', '/v1/financial_connections/transactions');
+        $result = $this->client->financialConnections->transactions->all([
+            'account' => 'fca_xyz',
+        ]);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\FinancialConnections\Transaction::class, $result->data[0]);
     }
 
     public function testIdentityVerificationReportsGet()
