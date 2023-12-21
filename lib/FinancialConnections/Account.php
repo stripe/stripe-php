@@ -23,7 +23,9 @@ namespace Stripe\FinancialConnections;
  * @property null|string[] $permissions The list of permissions granted by this account.
  * @property string $status The status of the link to the account.
  * @property string $subcategory <p>If <code>category</code> is <code>cash</code>, one of:</p><p>- <code>checking</code> - <code>savings</code> - <code>other</code></p><p>If <code>category</code> is <code>credit</code>, one of:</p><p>- <code>mortgage</code> - <code>line_of_credit</code> - <code>credit_card</code> - <code>other</code></p><p>If <code>category</code> is <code>investment</code> or <code>other</code>, this will be <code>other</code>.</p>
+ * @property null|string[] $subscriptions The list of data refresh subscriptions requested on this account.
  * @property string[] $supported_payment_method_types The <a href="https://stripe.com/docs/api/payment_methods/object#payment_method_object-type">PaymentMethod type</a>(s) that can be created from this account.
+ * @property null|\Stripe\StripeObject $transaction_refresh The state of the most recent attempt to refresh the account transactions.
  */
 class Account extends \Stripe\ApiResource
 {
@@ -95,6 +97,40 @@ class Account extends \Stripe\ApiResource
     public function refreshAccount($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/refresh';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\FinancialConnections\Account the subscribed account
+     */
+    public function subscribe($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/subscribe';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\FinancialConnections\Account the unsubscribed account
+     */
+    public function unsubscribe($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/unsubscribe';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
 

@@ -86,4 +86,38 @@ class AccountService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v1/financial_connections/accounts/%s', $id), $params, $opts);
     }
+
+    /**
+     * Subscribes to periodic refreshes of data associated with a Financial Connections
+     * <code>Account</code>.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\FinancialConnections\Account
+     */
+    public function subscribe($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/financial_connections/accounts/%s/subscribe', $id), $params, $opts);
+    }
+
+    /**
+     * Unsubscribes from periodic refreshes of data associated with a Financial
+     * Connections <code>Account</code>.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\FinancialConnections\Account
+     */
+    public function unsubscribe($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/financial_connections/accounts/%s/unsubscribe', $id), $params, $opts);
+    }
 }

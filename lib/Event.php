@@ -130,6 +130,7 @@ class Event extends ApiResource
     const FINANCIAL_CONNECTIONS_ACCOUNT_DISCONNECTED = 'financial_connections.account.disconnected';
     const FINANCIAL_CONNECTIONS_ACCOUNT_REACTIVATED = 'financial_connections.account.reactivated';
     const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_BALANCE = 'financial_connections.account.refreshed_balance';
+    const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_TRANSACTIONS = 'financial_connections.account.refreshed_transactions';
     const IDENTITY_VERIFICATION_SESSION_CANCELED = 'identity.verification_session.canceled';
     const IDENTITY_VERIFICATION_SESSION_CREATED = 'identity.verification_session.created';
     const IDENTITY_VERIFICATION_SESSION_PROCESSING = 'identity.verification_session.processing';
@@ -363,6 +364,7 @@ class Event extends ApiResource
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_DISCONNECTED = 'financial_connections.account.disconnected';
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_REACTIVATED = 'financial_connections.account.reactivated';
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_BALANCE = 'financial_connections.account.refreshed_balance';
+    const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_TRANSACTIONS = 'financial_connections.account.refreshed_transactions';
     const TYPE_IDENTITY_VERIFICATION_SESSION_CANCELED = 'identity.verification_session.canceled';
     const TYPE_IDENTITY_VERIFICATION_SESSION_CREATED = 'identity.verification_session.created';
     const TYPE_IDENTITY_VERIFICATION_SESSION_PROCESSING = 'identity.verification_session.processing';
