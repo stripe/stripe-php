@@ -1136,6 +1136,32 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\FinancialConnections\Account::class, $result);
     }
 
+    public function testFinancialConnectionsAccountsSubscribePost()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/financial_connections/accounts/fa_123/subscribe'
+        );
+        $result = $this->client->financialConnections->accounts->subscribe(
+            'fa_123',
+            ['features' => ['transactions']]
+        );
+        static::assertInstanceOf(\Stripe\FinancialConnections\Account::class, $result);
+    }
+
+    public function testFinancialConnectionsAccountsUnsubscribePost()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/financial_connections/accounts/fa_123/unsubscribe'
+        );
+        $result = $this->client->financialConnections->accounts->unsubscribe(
+            'fa_123',
+            ['features' => ['transactions']]
+        );
+        static::assertInstanceOf(\Stripe\FinancialConnections\Account::class, $result);
+    }
+
     public function testFinancialConnectionsSessionsGet()
     {
         $this->expectsRequest(
@@ -1187,6 +1213,29 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
             'filters' => ['countries' => ['US']],
         ]);
         static::assertInstanceOf(\Stripe\FinancialConnections\Session::class, $result);
+    }
+
+    public function testFinancialConnectionsTransactionsGet()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/financial_connections/transactions/tr_123'
+        );
+        $result = $this->client->financialConnections->transactions->retrieve(
+            'tr_123',
+            []
+        );
+        static::assertInstanceOf(\Stripe\FinancialConnections\Transaction::class, $result);
+    }
+
+    public function testFinancialConnectionsTransactionsGet2()
+    {
+        $this->expectsRequest('get', '/v1/financial_connections/transactions');
+        $result = $this->client->financialConnections->transactions->all([
+            'account' => 'fca_xyz',
+        ]);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\FinancialConnections\Transaction::class, $result->data[0]);
     }
 
     public function testIdentityVerificationReportsGet()
@@ -3151,6 +3200,54 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
             ['active' => false]
         );
         static::assertInstanceOf(\Stripe\TaxRate::class, $result);
+    }
+
+    public function testTaxRegistrationsGet()
+    {
+        $this->expectsRequest('get', '/v1/tax/registrations');
+        $result = $this->client->tax->registrations->all(['status' => 'all']);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\Tax\Registration::class, $result->data[0]);
+    }
+
+    public function testTaxRegistrationsPost()
+    {
+        $this->expectsRequest('post', '/v1/tax/registrations');
+        $result = $this->client->tax->registrations->create([
+            'country' => 'IE',
+            'country_options' => ['ie' => ['type' => 'oss_union']],
+            'active_from' => 'now',
+        ]);
+        static::assertInstanceOf(\Stripe\Tax\Registration::class, $result);
+    }
+
+    public function testTaxRegistrationsPost2()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/tax/registrations/taxreg_xxxxxxxxxxxxx'
+        );
+        $result = $this->client->tax->registrations->update(
+            'taxreg_xxxxxxxxxxxxx',
+            ['expires_at' => 'now']
+        );
+        static::assertInstanceOf(\Stripe\Tax\Registration::class, $result);
+    }
+
+    public function testTaxSettingsGet()
+    {
+        $this->expectsRequest('get', '/v1/tax/settings');
+        $result = $this->client->tax->settings->retrieve([]);
+        static::assertInstanceOf(\Stripe\Tax\Settings::class, $result);
+    }
+
+    public function testTaxSettingsPost()
+    {
+        $this->expectsRequest('post', '/v1/tax/settings');
+        $result = $this->client->tax->settings->update([
+            'defaults' => ['tax_code' => 'txcd_10000000'],
+        ]);
+        static::assertInstanceOf(\Stripe\Tax\Settings::class, $result);
     }
 
     public function testTaxTransactionsCreateFromCalculationPost()

@@ -30,7 +30,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $from_quote Details of the quote that was cloned. See the <a href="https://stripe.com/docs/quotes/clone">cloning documentation</a> for more details.
  * @property null|string $header A header that will be displayed on the quote PDF.
  * @property null|string|\Stripe\Invoice $invoice The invoice that was created from this quote.
- * @property null|\Stripe\StripeObject $invoice_settings All invoices will be billed using the specified settings.
+ * @property \Stripe\StripeObject $invoice_settings
  * @property null|\Stripe\Collection<\Stripe\LineItem> $line_items A list of items the customer is being quoted for.
  * @property null|string[] $lines A list of lines on the quote. These lines describe changes, in the order provided, that will be used to create new subscription schedules or update existing subscription schedules when the quote is accepted.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
