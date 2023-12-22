@@ -1,5 +1,13 @@
 # Changelog
 
+## 13.8.0-beta.1 - 2023-12-22
+* [#1622](https://github.com/stripe/stripe-php/pull/1622) Update generated code for beta
+  * Add support for new value `shipping_address_invalid` on enum `StripeError.code`
+  * Change type of `Invoice.issuer` from `nullable(ConnectAccountReference)` to `ConnectAccountReference`
+  * Add support for `ship_from_details` on `Tax.Calculation` and `Tax.Transaction`
+* [#1618](https://github.com/stripe/stripe-php/pull/1618) Update generated code for beta
+
+
 ## 13.7.0 - 2023-12-22
 * [#1621](https://github.com/stripe/stripe-php/pull/1621) Update generated code
   * Add support for new resource `FinancialConnections.Transaction`
