@@ -53,7 +53,7 @@ jobs:
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
-          echo "::set-output name=dir::$(composer config cache-files-dir)"
+          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - uses: actions/cache@v3
         with:
@@ -105,7 +105,7 @@ jobs:
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
-          echo "::set-output name=dir::$(composer config cache-files-dir)"
+          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
       - uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
@@ -138,7 +138,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
   publish:
-  # Doesn't actually publish. The publish happens via a packagist webhook configured in the Github UI. But we still display a message here
+    # Doesn't actually publish. The publish happens via a packagist webhook configured in the Github UI. But we still display a message here
     name: Publish
     if: >-
       (github.event_name == 'workflow_dispatch' || github.event_name == 'push') &&
