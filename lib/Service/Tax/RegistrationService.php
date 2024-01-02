@@ -37,6 +37,22 @@ class RegistrationService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Returns a Tax <code>Registration</code> object.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Tax\Registration
+     */
+    public function retrieve($id, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v1/tax/registrations/%s', $id), $params, $opts);
+    }
+
+    /**
      * Updates an existing Tax <code>Registration</code> object.
      *
      * A registration cannot be deleted after it has been created. If you wish to end a
