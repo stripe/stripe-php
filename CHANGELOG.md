@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.8.0 - 2024-01-04
+* [#1627](https://github.com/stripe/stripe-php/pull/1627) Update generated code
+  * Add support for `retrieve` method on resource `Tax.Registration`
+
 ## 13.7.0 - 2023-12-22
 * [#1621](https://github.com/stripe/stripe-php/pull/1621) Update generated code
   * Add support for new resource `FinancialConnections.Transaction`
