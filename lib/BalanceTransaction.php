@@ -48,8 +48,12 @@ class BalanceTransaction extends ApiResource
     const TYPE_ISSUING_AUTHORIZATION_RELEASE = 'issuing_authorization_release';
     const TYPE_ISSUING_DISPUTE = 'issuing_dispute';
     const TYPE_ISSUING_TRANSACTION = 'issuing_transaction';
+    const TYPE_OBLIGATION_INBOUND = 'obligation_inbound';
     const TYPE_OBLIGATION_OUTBOUND = 'obligation_outbound';
+    const TYPE_OBLIGATION_PAYOUT = 'obligation_payout';
+    const TYPE_OBLIGATION_PAYOUT_FAILURE = 'obligation_payout_failure';
     const TYPE_OBLIGATION_REVERSAL_INBOUND = 'obligation_reversal_inbound';
+    const TYPE_OBLIGATION_REVERSAL_OUTBOUND = 'obligation_reversal_outbound';
     const TYPE_PAYMENT = 'payment';
     const TYPE_PAYMENT_FAILURE_REFUND = 'payment_failure_refund';
     const TYPE_PAYMENT_NETWORK_RESERVE_HOLD = 'payment_network_reserve_hold';
