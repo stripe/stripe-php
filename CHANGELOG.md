@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.10.0-beta.1 - 2024-01-12
+* [#1628](https://github.com/stripe/stripe-php/pull/1628) Update generated code for beta
+* [#1626](https://github.com/stripe/stripe-php/pull/1626) Update generated code for beta
+
 ## 13.9.0 - 2024-01-12
 * [#1629](https://github.com/stripe/stripe-php/pull/1629) Update generated code
   * Add support for new resource `CustomerSession`
