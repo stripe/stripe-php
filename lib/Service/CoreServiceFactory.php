@@ -23,6 +23,7 @@ namespace Stripe\Service;
  * @property CouponService $coupons
  * @property CreditNoteService $creditNotes
  * @property CustomerService $customers
+ * @property CustomerSessionService $customerSessions
  * @property DisputeService $disputes
  * @property EphemeralKeyService $ephemeralKeys
  * @property EventService $events
@@ -94,6 +95,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'coupons' => CouponService::class,
         'creditNotes' => CreditNoteService::class,
         'customers' => CustomerService::class,
+        'customerSessions' => CustomerSessionService::class,
         'disputes' => DisputeService::class,
         'ephemeralKeys' => EphemeralKeyService::class,
         'events' => EventService::class,
