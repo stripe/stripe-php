@@ -707,6 +707,16 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\CreditNote::class, $result);
     }
 
+    public function testCustomerSessionsPost()
+    {
+        $this->expectsRequest('post', '/v1/customer_sessions');
+        $result = $this->client->customerSessions->create([
+            'customer' => 'cus_123',
+            'components' => ['buy_button' => ['enabled' => true]],
+        ]);
+        static::assertInstanceOf(\Stripe\CustomerSession::class, $result);
+    }
+
     public function testCustomersBalanceTransactionsGet()
     {
         $this->expectsRequest(
