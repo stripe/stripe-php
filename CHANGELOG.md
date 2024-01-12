@@ -1,9 +1,15 @@
 # Changelog
 
+## 13.9.0 - 2024-01-12
+* [#1629](https://github.com/stripe/stripe-php/pull/1629) Update generated code
+  * Add support for new resource `CustomerSession`
+  * Add support for `create` method on resource `CustomerSession`
+  * Remove support for values `obligation_inbound`, `obligation_payout_failure`, `obligation_payout`, and `obligation_reversal_outbound` from enum `BalanceTransaction.type`
+  * Add support for `billing_cycle_anchor_config` on `Subscription`
+
 ## 13.9.0-beta.1 - 2024-01-04
 * [#1626](https://github.com/stripe/stripe-php/pull/1626) Update generated code for beta
   * Updated stable APIs to the latest version
-
 
 ## 13.8.0 - 2024-01-04
 * [#1627](https://github.com/stripe/stripe-php/pull/1627) Update generated code
