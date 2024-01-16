@@ -293,7 +293,7 @@ class Invoice extends ApiResource
     {
         $url = '/v1/invoices/search';
 
-        return self::_searchResource($url, $params, $opts);
+        return static::_requestPage($url, \Stripe\SearchResult::class, $params, $opts);
     }
 
     const PATH_LINES = '/lines';

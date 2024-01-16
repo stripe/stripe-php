@@ -131,7 +131,7 @@ class Customer extends ApiResource
     {
         $url = '/v1/customers/search';
 
-        return self::_searchResource($url, $params, $opts);
+        return static::_requestPage($url, \Stripe\SearchResult::class, $params, $opts);
     }
 
     const PATH_CASH_BALANCE = '/cash_balance';
