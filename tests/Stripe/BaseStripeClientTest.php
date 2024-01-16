@@ -289,7 +289,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->getMock()
         ;
         $curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{}', 200, ["request-id" => "req_123"]])
+            ->willReturn(['{}', 200, ['request-id' => 'req_123']])
         ;
 
         $curlClientStub->expects(static::once())
@@ -306,7 +306,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         $client->rawRequest('post', '/v1/xyz', [], [
             'api_mode' => 'standard',
         ]);
-        static::assertEquals(["raw_request"], $this->apiRequestorReflector->getStaticPropertyValue('requestTelemetry')->usage);
+        static::assertSame(['raw_request'], $this->apiRequestorReflector->getStaticPropertyValue('requestTelemetry')->usage);
     }
 
     public function testJsonRawRequestPost()
