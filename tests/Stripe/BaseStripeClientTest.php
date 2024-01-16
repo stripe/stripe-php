@@ -306,7 +306,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         $client->rawRequest('post', '/v1/xyz', [], [
             'api_mode' => 'standard',
         ]);
-        static::assertSame(['raw_request'], $this->apiRequestorReflector->getStaticPropertyValue('requestTelemetry')->usage);
+        // Can't use ->getStaticPropertyValue because this has a bug until PHP 7.4.9: https://bugs.php.net/bug.php?id=69804
+        static::assertSame(['raw_request'], $this->apiRequestorReflector->getStaticProperties()['requestTelemetry']->usage);
     }
 
     public function testJsonRawRequestPost()
