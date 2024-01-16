@@ -198,7 +198,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $opts->headers = \array_merge($opts->headers, $headers);
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new \Stripe\ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
-        list($response) = $requestor->request($method, $path, $params, $opts->headers, $apiMode);
+        list($response) = $requestor->request($method, $path, $params, $opts->headers, $apiMode, ['raw_request']);
 
         return $response;
     }

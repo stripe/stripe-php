@@ -14,6 +14,9 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     /** @var \ReflectionProperty */
     private $optsReflector;
 
+    /** @var \ReflectionClass */
+    private $apiRequestorReflector;
+
     protected function headerStartsWith($header, $name)
     {
         return substr($header, 0, \strlen($name)) === $name;
@@ -24,6 +27,12 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     {
         $this->optsReflector = new \ReflectionProperty(\Stripe\StripeObject::class, '_opts');
         $this->optsReflector->setAccessible(true);
+    }
+
+    /** @before */
+    protected function setUpApiRequestorReflector()
+    {
+        $this->apiRequestorReflector = new \ReflectionClass(\Stripe\ApiRequestor::class);
     }
 
     public function testCtorDoesNotThrowWhenNoParams()
@@ -271,6 +280,34 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         // But it would be more correct to not send Content-Type
         static::assertSame('Content-Type: application/x-www-form-urlencoded', $content_type);
         static::assertSame('Stripe-Version: ' . ApiVersion::CURRENT, $stripe_version);
+    }
+
+    public function testRawRequestUsageTelemetry()
+    {
+        $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
+            ->setMethods(['executeRequestWithRetries'])
+            ->getMock()
+        ;
+        $curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{}', 200, ['request-id' => 'req_123']])
+        ;
+
+        $curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                return true;
+            }), MOCK_URL . '/v1/xyz')
+        ;
+        ApiRequestor::setHttpClient($curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'api_base' => MOCK_URL,
+        ]);
+        $client->rawRequest('post', '/v1/xyz', [], [
+            'api_mode' => 'standard',
+        ]);
+        // Can't use ->getStaticPropertyValue because this has a bug until PHP 7.4.9: https://bugs.php.net/bug.php?id=69804
+        static::assertSame(['raw_request'], $this->apiRequestorReflector->getStaticProperties()['requestTelemetry']->usage);
     }
 
     public function testJsonRawRequestPost()
