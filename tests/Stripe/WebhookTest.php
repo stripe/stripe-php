@@ -38,7 +38,7 @@ final class WebhookTest extends \Stripe\TestCase
         $sigHeader = $this->generateHeader();
         $event = Webhook::constructEvent(self::EVENT_PAYLOAD, $sigHeader, self::SECRET);
         static::assertSame('evt_test_webhook', $event->id);
-        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $event->data->object);
+        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $event->data->__get('object'));
     }
 
     public function testInvalidJson()
