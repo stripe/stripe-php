@@ -37,6 +37,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $card
  * @property null|\Stripe\StripeObject $cartes_bancaires
  * @property null|\Stripe\StripeObject $cashapp
+ * @property null|\Stripe\StripeObject $customer_balance
  * @property null|\Stripe\StripeObject $eps
  * @property null|\Stripe\StripeObject $fpx
  * @property null|\Stripe\StripeObject $giropay
