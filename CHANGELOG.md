@@ -1,5 +1,8 @@
 # Changelog
 
+## 13.10.0-beta.2 - 2024-01-19
+* [#1632](https://github.com/stripe/stripe-php/pull/1632) Beta: report usage of `rawRequest`
+
 ## 13.10.0-beta.1 - 2024-01-12
 * [#1628](https://github.com/stripe/stripe-php/pull/1628) Update generated code for beta
 * [#1626](https://github.com/stripe/stripe-php/pull/1626) Update generated code for beta
