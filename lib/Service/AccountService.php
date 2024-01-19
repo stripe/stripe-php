@@ -291,9 +291,9 @@ class AccountService extends \Stripe\Service\AbstractService
      * For Custom accounts, you can update any information on the account. For other
      * accounts, you can update all information until that account has started to go
      * through Connect Onboarding. Once you create an <a
-     * href="/docs/api/account_links">Account Link</a> for a Standard or Express
-     * account, some parameters can no longer be changed. These are marked as
-     * <strong>Custom Only</strong> or <strong>Custom and Express</strong> below.
+     * href="/docs/api/account_links">Account Link</a> or <a
+     * href="/docs/api/account_sessions">Account Session</a>, some properties can only
+     * be changed or updated for Custom accounts.
      *
      * To update your own account, use the <a
      * href="https://dashboard.stripe.com/settings/account">Dashboard</a>. Refer to our
