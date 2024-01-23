@@ -23,7 +23,7 @@ namespace Stripe;
  * @property string $billing_address_collection Configuration for collecting the customer's billing address.
  * @property null|\Stripe\StripeObject $consent_collection When set, provides configuration to gather active consent from customers.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property \Stripe\StripeObject[] $custom_fields Collect additional information from your customer using custom fields. Up to 2 fields are supported.
+ * @property \Stripe\StripeObject[] $custom_fields Collect additional information from your customer using custom fields. Up to 3 fields are supported.
  * @property \Stripe\StripeObject $custom_text
  * @property string $customer_creation Configuration for Customer creation during checkout.
  * @property null|string $inactive_message The custom message to be displayed to a customer when a payment link is no longer active.
