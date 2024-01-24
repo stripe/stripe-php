@@ -12,6 +12,7 @@ namespace Stripe\Capital;
  * @property string $object The object type: financing_offer.
  * @property null|\Stripe\StripeObject $accepted_terms This is an object representing the terms of an offer of financing from Stripe Capital to a Connected account. This resource represents the terms accepted by the Connected account, which may differ from those offered.
  * @property string $account The ID of the merchant associated with this financing object.
+ * @property null|int $charged_off_at The time at which this financing offer was charged off, if applicable. Given in seconds since unix epoch.
  * @property int $created Time at which the offer was created. Given in seconds since unix epoch.
  * @property float $expires_after Time at which the offer expires. Given in seconds since unix epoch.
  * @property null|string $financing_type The type of financing being offered.
