@@ -155,6 +155,6 @@ class Charge extends ApiResource
     {
         $url = '/v1/charges/search';
 
-        return self::_searchResource($url, $params, $opts);
+        return static::_requestPage($url, \Stripe\SearchResult::class, $params, $opts);
     }
 }

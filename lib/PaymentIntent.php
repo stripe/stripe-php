@@ -208,6 +208,6 @@ class PaymentIntent extends ApiResource
     {
         $url = '/v1/payment_intents/search';
 
-        return self::_searchResource($url, $params, $opts);
+        return static::_requestPage($url, \Stripe\SearchResult::class, $params, $opts);
     }
 }
