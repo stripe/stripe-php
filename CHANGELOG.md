@@ -1,5 +1,11 @@
 # Changelog
 
+## 13.10.0-beta.3 - 2024-01-25
+* [#1634](https://github.com/stripe/stripe-php/pull/1634) Update generated code for beta
+  * Add support for `create_preview` method on resource `Invoice`
+  * Add support for `charged_off_at` on `Capital.FinancingOffer`
+  * Add support for `enhanced_eligibility_types` on `Dispute`
+
 ## 13.10.0-beta.2 - 2024-01-19
 * [#1632](https://github.com/stripe/stripe-php/pull/1632) Beta: report usage of `rawRequest`
 
