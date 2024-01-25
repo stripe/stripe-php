@@ -18,6 +18,7 @@ namespace Stripe;
  * @property string|\Stripe\Charge $charge ID of the charge that's disputed.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property null|string[] $enhanced_eligibility_types List of eligibility types that are included in <code>enhanced_evidence</code>.
  * @property \Stripe\StripeObject $evidence
  * @property \Stripe\StripeObject $evidence_details
  * @property bool $is_charge_refundable If true, it's still possible to refund the disputed payment. After the payment has been fully refunded, no further funds are withdrawn from your Stripe account as a result of this dispute.
