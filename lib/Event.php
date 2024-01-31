@@ -120,6 +120,7 @@ class Event extends ApiResource
     const CUSTOMER_DISCOUNT_CREATED = 'customer.discount.created';
     const CUSTOMER_DISCOUNT_DELETED = 'customer.discount.deleted';
     const CUSTOMER_DISCOUNT_UPDATED = 'customer.discount.updated';
+    const CUSTOMER_ENTITLEMENT_SUMMARY_UPDATED = 'customer.entitlement_summary.updated';
     const CUSTOMER_SOURCE_CREATED = 'customer.source.created';
     const CUSTOMER_SOURCE_DELETED = 'customer.source.deleted';
     const CUSTOMER_SOURCE_EXPIRING = 'customer.source.expiring';
@@ -384,6 +385,7 @@ class Event extends ApiResource
     const TYPE_CUSTOMER_DISCOUNT_CREATED = 'customer.discount.created';
     const TYPE_CUSTOMER_DISCOUNT_DELETED = 'customer.discount.deleted';
     const TYPE_CUSTOMER_DISCOUNT_UPDATED = 'customer.discount.updated';
+    const TYPE_CUSTOMER_ENTITLEMENT_SUMMARY_UPDATED = 'customer.entitlement_summary.updated';
     const TYPE_CUSTOMER_SOURCE_CREATED = 'customer.source.created';
     const TYPE_CUSTOMER_SOURCE_DELETED = 'customer.source.deleted';
     const TYPE_CUSTOMER_SOURCE_EXPIRING = 'customer.source.expiring';
