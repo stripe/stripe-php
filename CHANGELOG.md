@@ -1,5 +1,17 @@
 # Changelog
 
+## 13.10.0 - 2024-02-01
+* [#1636](https://github.com/stripe/stripe-php/pull/1636) Update generated code
+  * Add support for new value `swish` on enum `PaymentLink.payment_method_types[]`
+  * Add support for `swish` on `PaymentMethod`
+  * Add support for new value `swish` on enum `PaymentMethod.type`
+  * Add support for `jurisdiction_level` on `TaxRate`
+  * Change type of `Terminal.Reader.status` from `string` to `enum('offline'|'online')`
+* [#1633](https://github.com/stripe/stripe-php/pull/1633) Update generated code
+  * Add support for `issuer` on `Invoice`
+  * Add support for `customer_balance` on `PaymentMethodConfiguration`
+* [#1630](https://github.com/stripe/stripe-php/pull/1630) Add paginated requests helper function and use in Search and All
+
 ## 13.9.0 - 2024-01-12
 * [#1629](https://github.com/stripe/stripe-php/pull/1629) Update generated code
   * Add support for new resource `CustomerSession`
