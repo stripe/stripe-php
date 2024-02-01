@@ -7,8 +7,8 @@ namespace Stripe\Tax;
 /**
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property int $amount The line item amount in integer cents. If <code>tax_behavior=inclusive</code>, then this amount includes taxes. Otherwise, taxes were calculated on top of this amount.
- * @property int $amount_tax The amount of tax calculated for this line item, in integer cents.
+ * @property int $amount The line item amount in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>. If <code>tax_behavior=inclusive</code>, then this amount includes taxes. Otherwise, taxes were calculated on top of this amount.
+ * @property int $amount_tax The amount of tax calculated for this line item, in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $product The ID of an existing <a href="https://stripe.com/docs/api/products/object">Product</a>.
  * @property int $quantity The number of units of the item being purchased. For reversals, this is the quantity reversed.
