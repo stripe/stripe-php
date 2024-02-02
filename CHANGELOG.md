@@ -1,5 +1,12 @@
 # Changelog
 
+## 13.11.0-beta.1 - 2024-02-01
+* [#1637](https://github.com/stripe/stripe-php/pull/1637) Update generated code for beta
+  * Add support for new resources `Entitlements.Event` and `Entitlements.Feature`
+  * Add support for `create` method on resource `Event`
+  * Add support for `all` and `create` methods on resource `Feature`
+  * Add support for new value `customer.entitlement_summary.updated` on enum `Event.type`
+
 ## 13.10.0 - 2024-02-01
 * [#1636](https://github.com/stripe/stripe-php/pull/1636) Update generated code
   * Add support for new value `swish` on enum `PaymentLink.payment_method_types[]`
