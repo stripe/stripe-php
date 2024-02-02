@@ -19,6 +19,7 @@ namespace Stripe;
  * @property null|float $effective_percentage Actual/effective tax rate percentage out of 100. For tax calculations with automatic_tax[enabled]=true, this percentage reflects the rate actually used to calculate tax based on the product's taxability and whether the user is registered to collect taxes in the corresponding jurisdiction.
  * @property bool $inclusive This specifies if the tax rate is inclusive or exclusive.
  * @property null|string $jurisdiction The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer’s invoice.
+ * @property null|string $jurisdiction_level The level of the jurisdiction that imposes this tax rate. Will be <code>null</code> for manually defined tax rates.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property float $percentage Tax rate percentage out of 100. For tax calculations with automatic_tax[enabled]=true, this percentage includes the statutory tax rate of non-taxable jurisdictions.
@@ -33,6 +34,13 @@ class TaxRate extends ApiResource
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
+
+    const JURISDICTION_LEVEL_CITY = 'city';
+    const JURISDICTION_LEVEL_COUNTRY = 'country';
+    const JURISDICTION_LEVEL_COUNTY = 'county';
+    const JURISDICTION_LEVEL_DISTRICT = 'district';
+    const JURISDICTION_LEVEL_MULTIPLE = 'multiple';
+    const JURISDICTION_LEVEL_STATE = 'state';
 
     const TAX_TYPE_AMUSEMENT_TAX = 'amusement_tax';
     const TAX_TYPE_COMMUNICATIONS_TAX = 'communications_tax';

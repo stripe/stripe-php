@@ -39,6 +39,9 @@ class Reader extends \Stripe\ApiResource
     const DEVICE_TYPE_STRIPE_M2 = 'stripe_m2';
     const DEVICE_TYPE_VERIFONE_P400 = 'verifone_P400';
 
+    const STATUS_OFFLINE = 'offline';
+    const STATUS_ONLINE = 'online';
+
     /**
      * @param null|array $params
      * @param null|array|string $opts
