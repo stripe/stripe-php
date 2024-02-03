@@ -24,6 +24,8 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         'files_base' => self::DEFAULT_FILES_BASE,
     ];
 
+    const IDEMPOTENCY_KEY = 'idempotency_key';
+
     /** @var array<string, mixed> */
     private $config;
 
