@@ -4,8 +4,12 @@
 
 namespace Stripe\Service\FinancialConnections;
 
-// /** @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions */
-// /** @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions */
+/**
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ */
+/**
+ * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ */
 class SessionService extends \Stripe\Service\AbstractService
 {
     /**

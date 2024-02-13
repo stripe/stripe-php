@@ -4,8 +4,12 @@
 
 namespace Stripe\Service\Climate;
 
-// /** @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions */
-// /** @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions */
+/**
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ */
+/**
+ * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ */
 class ProductService extends \Stripe\Service\AbstractService
 {
     /**

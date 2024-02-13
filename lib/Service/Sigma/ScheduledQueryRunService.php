@@ -4,8 +4,12 @@
 
 namespace Stripe\Service\Sigma;
 
-// /** @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions */
-// /** @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions */
+/**
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ */
+/**
+ * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ */
 class ScheduledQueryRunService extends \Stripe\Service\AbstractService
 {
     /**
