@@ -21,8 +21,27 @@ class Settings extends \Stripe\SingletonApiResource
     const OBJECT_NAME = 'tax.settings';
 
     use \Stripe\ApiOperations\SingletonRetrieve;
-    use \Stripe\ApiOperations\Update;
 
     const STATUS_ACTIVE = 'active';
     const STATUS_PENDING = 'pending';
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return static the updated resource
+     */
+    public static function update($params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = '/v1/tax/settings';
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 }
