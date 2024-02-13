@@ -4,6 +4,8 @@
 
 namespace Stripe\Service;
 
+// /** @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions */
+// /** @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions */
 class PriceService extends \Stripe\Service\AbstractService
 {
     /**
@@ -12,7 +14,7 @@ class PriceService extends \Stripe\Service\AbstractService
      * For the list of inactive prices, set <code>active</code> to false.
      *
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -28,7 +30,7 @@ class PriceService extends \Stripe\Service\AbstractService
      * one-time.
      *
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -44,7 +46,7 @@ class PriceService extends \Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -64,7 +66,7 @@ class PriceService extends \Stripe\Service\AbstractService
      * during outages. Search functionality is not available to merchants in India.
      *
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -81,7 +83,7 @@ class PriceService extends \Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

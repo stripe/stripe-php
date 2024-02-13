@@ -4,6 +4,8 @@
 
 namespace Stripe\Service;
 
+// /** @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions */
+// /** @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions */
 class EventService extends \Stripe\Service\AbstractService
 {
     /**
@@ -14,7 +16,7 @@ class EventService extends \Stripe\Service\AbstractService
      * <code>Stripe-Version</code> header).
      *
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -31,7 +33,7 @@ class EventService extends \Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *

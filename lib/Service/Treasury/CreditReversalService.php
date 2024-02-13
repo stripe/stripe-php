@@ -4,13 +4,15 @@
 
 namespace Stripe\Service\Treasury;
 
+// /** @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions */
+// /** @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions */
 class CreditReversalService extends \Stripe\Service\AbstractService
 {
     /**
      * Returns a list of CreditReversals.
      *
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -25,7 +27,7 @@ class CreditReversalService extends \Stripe\Service\AbstractService
      * Reverses a ReceivedCredit and creates a CreditReversal object.
      *
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -43,7 +45,7 @@ class CreditReversalService extends \Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
