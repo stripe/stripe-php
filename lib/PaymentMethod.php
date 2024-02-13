@@ -44,6 +44,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $p24
  * @property null|\Stripe\StripeObject $paynow
  * @property null|\Stripe\StripeObject $paypal
+ * @property null|\Stripe\StripeObject $payto
  * @property null|\Stripe\StripeObject $pix
  * @property null|\Stripe\StripeObject $promptpay
  * @property null|\Stripe\StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
@@ -91,6 +92,7 @@ class PaymentMethod extends ApiResource
     const TYPE_P24 = 'p24';
     const TYPE_PAYNOW = 'paynow';
     const TYPE_PAYPAL = 'paypal';
+    const TYPE_PAYTO = 'payto';
     const TYPE_PIX = 'pix';
     const TYPE_PROMPTPAY = 'promptpay';
     const TYPE_REVOLUT_PAY = 'revolut_pay';
