@@ -4,6 +4,12 @@
 
 namespace Stripe\Service\Terminal;
 
+/**
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ */
+/**
+ * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ */
 class ConnectionTokenService extends \Stripe\Service\AbstractService
 {
     /**
@@ -12,7 +18,7 @@ class ConnectionTokenService extends \Stripe\Service\AbstractService
      * an endpoint that creates and returns a connection token.
      *
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
