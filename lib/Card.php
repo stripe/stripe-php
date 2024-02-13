@@ -37,6 +37,7 @@ namespace Stripe;
  * @property string $last4 The last four digits of the card.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name Cardholder name.
+ * @property null|\Stripe\StripeObject $networks
  * @property null|string $status For external accounts that are cards, possible values are <code>new</code> and <code>errored</code>. If a payout fails, the status is set to <code>errored</code> and <a href="https://stripe.com/docs/payouts#payout-schedule">scheduled payouts</a> are stopped until account details are updated.
  * @property null|string $tokenization_method If the card number is tokenized, this is the method that was used. Can be <code>android_pay</code> (includes Google Pay), <code>apple_pay</code>, <code>masterpass</code>, <code>visa_checkout</code>, or null.
  */
