@@ -59,7 +59,7 @@ class InvoiceService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\InvoicePayment>
+     * @return \Stripe\Collection<\Stripe\StripeObject>
      */
     public function allPayments($parentId, $params = null, $opts = null)
     {
@@ -245,7 +245,7 @@ class InvoiceService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\InvoicePayment
+     * @return \Stripe\StripeObject
      */
     public function retrievePayment($parentId, $id, $params = null, $opts = null)
     {
