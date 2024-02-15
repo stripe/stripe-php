@@ -61,6 +61,7 @@ namespace Stripe\Service;
  * @property SubscriptionScheduleService $subscriptionSchedules
  * @property Tax\TaxServiceFactory $tax
  * @property TaxCodeService $taxCodes
+ * @property TaxIdService $taxIds
  * @property TaxRateService $taxRates
  * @property Terminal\TerminalServiceFactory $terminal
  * @property TestHelpers\TestHelpersServiceFactory $testHelpers
@@ -133,6 +134,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'subscriptionSchedules' => SubscriptionScheduleService::class,
         'tax' => Tax\TaxServiceFactory::class,
         'taxCodes' => TaxCodeService::class,
+        'taxIds' => TaxIdService::class,
         'taxRates' => TaxRateService::class,
         'terminal' => Terminal\TerminalServiceFactory::class,
         'testHelpers' => TestHelpers\TestHelpersServiceFactory::class,
