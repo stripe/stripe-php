@@ -2,6 +2,10 @@
 
 namespace Stripe\Util;
 
+/**
+ * @phpstan-type RequestOptionsArray array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_version?: string, api_base?: string }
+ * @psalm-type RequestOptionsArray = array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_version?: string, api_base?: string }
+ */
 class RequestOptions
 {
     /**
