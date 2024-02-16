@@ -44,6 +44,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $p24
  * @property null|\Stripe\StripeObject $paynow
  * @property null|\Stripe\StripeObject $paypal
+ * @property null|\Stripe\StripeObject $payto
  * @property null|\Stripe\StripeObject $pix
  * @property null|\Stripe\StripeObject $promptpay
  * @property null|\Stripe\StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
@@ -51,6 +52,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $sepa_debit
  * @property null|\Stripe\StripeObject $sofort
  * @property null|\Stripe\StripeObject $swish
+ * @property null|\Stripe\StripeObject $twint
  * @property string $type The type of the PaymentMethod. An additional hash is included on the PaymentMethod with a name matching this value. It contains additional information specific to the PaymentMethod type.
  * @property null|\Stripe\StripeObject $us_bank_account
  * @property null|\Stripe\StripeObject $wechat_pay
@@ -91,12 +93,14 @@ class PaymentMethod extends ApiResource
     const TYPE_P24 = 'p24';
     const TYPE_PAYNOW = 'paynow';
     const TYPE_PAYPAL = 'paypal';
+    const TYPE_PAYTO = 'payto';
     const TYPE_PIX = 'pix';
     const TYPE_PROMPTPAY = 'promptpay';
     const TYPE_REVOLUT_PAY = 'revolut_pay';
     const TYPE_SEPA_DEBIT = 'sepa_debit';
     const TYPE_SOFORT = 'sofort';
     const TYPE_SWISH = 'swish';
+    const TYPE_TWINT = 'twint';
     const TYPE_US_BANK_ACCOUNT = 'us_bank_account';
     const TYPE_WECHAT_PAY = 'wechat_pay';
     const TYPE_ZIP = 'zip';

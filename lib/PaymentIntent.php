@@ -173,6 +173,23 @@ class PaymentIntent extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
+     * @return \Stripe\PaymentIntent the decremented payment intent
+     */
+    public function decrementAuthorization($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/decrement_authorization';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return \Stripe\PaymentIntent the incremented payment intent
      */
     public function incrementAuthorization($params = null, $opts = null)

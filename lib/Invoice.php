@@ -95,7 +95,7 @@ namespace Stripe;
  * @property bool $paid_out_of_band Returns true if the invoice was manually marked paid, returns false if the invoice hasn't been paid yet or was paid on Stripe.
  * @property null|string|\Stripe\PaymentIntent $payment_intent The PaymentIntent associated with this invoice. The PaymentIntent is generated when the invoice is finalized, and can then be used to pay the invoice. Note that voiding an invoice will cancel the PaymentIntent.
  * @property \Stripe\StripeObject $payment_settings
- * @property null|\Stripe\Collection<\Stripe\InvoicePayment> $payments Payments for this invoice
+ * @property null|\Stripe\Collection<\Stripe\StripeObject> $payments Payments for this invoice
  * @property int $period_end End of the usage period during which invoice items were added to this invoice.
  * @property int $period_start Start of the usage period during which invoice items were added to this invoice.
  * @property int $post_payment_credit_notes_amount Total amount of all post-payment credit notes issued for this invoice.
@@ -335,6 +335,21 @@ class Invoice extends ApiResource
         return static::_requestPage($url, \Stripe\SearchResult::class, $params, $opts);
     }
 
+    const PATH_LINES = '/lines';
+
+    /**
+     * @param string $id the ID of the invoice on which to retrieve the invoice line items
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\InvoiceLineItem> the list of invoice line items
+     */
+    public static function allLines($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_LINES, $params, $opts);
+    }
     const PATH_PAYMENTS = '/payments';
 
     /**
@@ -364,20 +379,5 @@ class Invoice extends ApiResource
     public static function retrievePayment($id, $paymentId, $params = null, $opts = null)
     {
         return self::_retrieveNestedResource($id, static::PATH_PAYMENTS, $paymentId, $params, $opts);
-    }
-    const PATH_LINES = '/lines';
-
-    /**
-     * @param string $id the ID of the invoice on which to retrieve the invoice line items
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection<\Stripe\InvoiceLineItem> the list of invoice line items
-     */
-    public static function allLines($id, $params = null, $opts = null)
-    {
-        return self::_allNestedResources($id, static::PATH_LINES, $params, $opts);
     }
 }

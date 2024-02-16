@@ -19,6 +19,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $mandate_data Data used for generating a Mandate.
  * @property null|string $payment_intent ID of the PaymentIntent that this ConfirmationToken was used to confirm, or null if this ConfirmationToken has not yet been used.
  * @property null|string|\Stripe\PaymentMethod $payment_method ID of an existing PaymentMethod.
+ * @property null|\Stripe\StripeObject $payment_method_options Payment-method-specific configuration for this ConfirmationToken.
  * @property null|\Stripe\StripeObject $payment_method_preview Payment details collected by the Payment Element, used to create a PaymentMethod when a PaymentIntent or SetupIntent is confirmed with this ConfirmationToken.
  * @property null|string $return_url Return URL used to confirm the Intent.
  * @property null|string $setup_future_usage <p>Indicates that you intend to make future payments with this ConfirmationToken's payment method.</p><p>The presence of this property will <a href="https://stripe.com/docs/payments/save-during-payment">attach the payment method</a> to the PaymentIntent's Customer, if present, after the PaymentIntent is confirmed and any required actions from the user are complete.</p>

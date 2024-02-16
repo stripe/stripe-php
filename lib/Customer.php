@@ -134,37 +134,6 @@ class Customer extends ApiResource
         return static::_requestPage($url, \Stripe\SearchResult::class, $params, $opts);
     }
 
-    const PATH_CASH_BALANCE = '/cash_balance';
-
-    /**
-     * @param string $id the ID of the customer to which the cash balance belongs
-     * @param null|array $params
-     * @param null|array|string $opts
-     * @param mixed $cashBalanceId
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\CashBalance
-     */
-    public static function retrieveCashBalance($id, $cashBalanceId, $params = null, $opts = null)
-    {
-        return self::_retrieveNestedResource($id, static::PATH_CASH_BALANCE, $params, $opts);
-    }
-
-    /**
-     * @param string $id the ID of the customer to which the cash balance belongs
-     * @param null|array $params
-     * @param null|array|string $opts
-     * @param mixed $cashBalanceId
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\CashBalance
-     */
-    public static function updateCashBalance($id, $cashBalanceId, $params = null, $opts = null)
-    {
-        return self::_updateNestedResource($id, static::PATH_CASH_BALANCE, $params, $opts);
-    }
     const PATH_BALANCE_TRANSACTIONS = '/balance_transactions';
 
     /**
@@ -254,37 +223,6 @@ class Customer extends ApiResource
     {
         return self::_retrieveNestedResource($id, static::PATH_CASH_BALANCE_TRANSACTIONS, $cashBalanceTransactionId, $params, $opts);
     }
-    const PATH_ENTITLEMENTS = '/entitlements';
-
-    /**
-     * @param string $id the ID of the customer on which to retrieve the customer entitlements
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection<\Stripe\CustomerEntitlement> the list of customer entitlements
-     */
-    public static function allEntitlements($id, $params = null, $opts = null)
-    {
-        return self::_allNestedResources($id, static::PATH_ENTITLEMENTS, $params, $opts);
-    }
-    const PATH_ENTITLEMENT_SUMMARY = '/entitlement_summary';
-
-    /**
-     * @param string $id the ID of the customer to which the customer entitlement summary belongs
-     * @param null|array $params
-     * @param null|array|string $opts
-     * @param mixed $entitlementSummaryId
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\CustomerEntitlementSummary
-     */
-    public static function retrieveEntitlementSummary($id, $entitlementSummaryId, $params = null, $opts = null)
-    {
-        return self::_retrieveNestedResource($id, static::PATH_ENTITLEMENT_SUMMARY, $params, $opts);
-    }
     const PATH_SOURCES = '/sources';
 
     /**
@@ -359,6 +297,37 @@ class Customer extends ApiResource
     {
         return self::_updateNestedResource($id, static::PATH_SOURCES, $sourceId, $params, $opts);
     }
+    const PATH_CASH_BALANCE = '/cash_balance';
+
+    /**
+     * @param string $id the ID of the customer to which the cash balance belongs
+     * @param null|array $params
+     * @param null|array|string $opts
+     * @param mixed $cashBalanceId
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CashBalance
+     */
+    public static function retrieveCashBalance($id, $cashBalanceId, $params = null, $opts = null)
+    {
+        return self::_retrieveNestedResource($id, static::PATH_CASH_BALANCE, $params, $opts);
+    }
+
+    /**
+     * @param string $id the ID of the customer to which the cash balance belongs
+     * @param null|array $params
+     * @param null|array|string $opts
+     * @param mixed $cashBalanceId
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CashBalance
+     */
+    public static function updateCashBalance($id, $cashBalanceId, $params = null, $opts = null)
+    {
+        return self::_updateNestedResource($id, static::PATH_CASH_BALANCE, $params, $opts);
+    }
     const PATH_TAX_IDS = '/tax_ids';
 
     /**
@@ -417,5 +386,36 @@ class Customer extends ApiResource
     public static function retrieveTaxId($id, $taxIdId, $params = null, $opts = null)
     {
         return self::_retrieveNestedResource($id, static::PATH_TAX_IDS, $taxIdId, $params, $opts);
+    }
+    const PATH_ENTITLEMENTS = '/entitlements';
+
+    /**
+     * @param string $id the ID of the customer on which to retrieve the customer entitlements
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\CustomerEntitlement> the list of customer entitlements
+     */
+    public static function allEntitlements($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_ENTITLEMENTS, $params, $opts);
+    }
+    const PATH_ENTITLEMENT_SUMMARY = '/entitlement_summary';
+
+    /**
+     * @param string $id the ID of the customer to which the customer entitlement summary belongs
+     * @param null|array $params
+     * @param null|array|string $opts
+     * @param mixed $entitlementSummaryId
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CustomerEntitlementSummary
+     */
+    public static function retrieveEntitlementSummary($id, $entitlementSummaryId, $params = null, $opts = null)
+    {
+        return self::_retrieveNestedResource($id, static::PATH_ENTITLEMENT_SUMMARY, $params, $opts);
     }
 }

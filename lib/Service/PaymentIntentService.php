@@ -4,13 +4,19 @@
 
 namespace Stripe\Service;
 
+/**
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ */
+/**
+ * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ */
 class PaymentIntentService extends \Stripe\Service\AbstractService
 {
     /**
      * Returns a list of PaymentIntents.
      *
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -27,7 +33,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -55,7 +61,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -78,7 +84,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -111,13 +117,11 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * If any actions are required for the payment, the PaymentIntent will return to
      * the <code>requires_confirmation</code> state after those actions are completed.
      * Your server needs to then explicitly re-confirm the PaymentIntent to initiate
-     * the next payment attempt. Read the <a
-     * href="/docs/payments/payment-intents/web-manual">expanded documentation</a> to
-     * learn more about manual confirmation.
+     * the next payment attempt.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -142,7 +146,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * API</a> when you supply <code>confirm=true</code>.
      *
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -151,6 +155,38 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     public function create($params = null, $opts = null)
     {
         return $this->request('post', '/v1/payment_intents', $params, $opts);
+    }
+
+    /**
+     * Perform an decremental authorization on an eligible <a
+     * href="/docs/api/payment_intents/object">PaymentIntent</a>. To be eligible, the
+     * PaymentIntent’s status must be <code>requires_capture</code> and <a
+     * href="/docs/api/charges/object#charge_object-payment_method_details-card-decremental_authorization">decremental_authorization.status</a>
+     * must be <code>available</code>.
+     *
+     * Decremental authorizations decrease the authorized amount on your customer’s
+     * card to the new, lower <code>amount</code> provided. A single PaymentIntent can
+     * call this endpoint multiple times to further decrease the authorized amount.
+     *
+     * After decrement, the PaymentIntent object returns with the updated <a
+     * href="/docs/api/payment_intents/object#payment_intent_object-amount">amount</a>.
+     * The PaymentIntent will now be capturable up to the new authorized amount.
+     *
+     * Each PaymentIntent can have a maximum of 10 decremental or incremental
+     * authorization attempts, including declines. After it’s captured, a PaymentIntent
+     * can no longer be decremented.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
+     */
+    public function decrementAuthorization($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/payment_intents/%s/decrement_authorization', $id), $params, $opts);
     }
 
     /**
@@ -184,7 +220,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -207,7 +243,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -227,7 +263,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * during outages. Search functionality is not available to merchants in India.
      *
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -249,7 +285,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
@@ -265,7 +301,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|array|\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
