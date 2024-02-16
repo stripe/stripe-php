@@ -1,5 +1,12 @@
 # Changelog
 
+## 13.12.0-beta.1 - 2024-02-16
+* [#1643](https://github.com/stripe/stripe-php/pull/1643) Update generated code for beta
+  * Add support for `decrement_authorization` method on resource `PaymentIntent`
+  * Add support for `payment_method_options` on `ConfirmationToken`
+  * Add support for `payto` and `twint` on `PaymentMethod`
+  * Add support for new values `payto` and `twint` on enum `PaymentMethod.type`
+
 ## 13.11.0 - 2024-02-15
 * [#1639](https://github.com/stripe/stripe-php/pull/1639) Update generated code
   * Add support for `networks` on `Card`
