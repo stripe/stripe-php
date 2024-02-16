@@ -1,5 +1,14 @@
 # Changelog
 
+## 13.11.0 - 2024-02-15
+* [#1639](https://github.com/stripe/stripe-php/pull/1639) Update generated code
+  * Add support for `networks` on `Card`
+  * Add support for new value `financial_connections.account.refreshed_ownership` on enum `Event.type`
+* [#1648](https://github.com/stripe/stripe-php/pull/1648) Remove broken methods on CustomerCashBalanceTransaction
+  * Bugfix: remove support for `CustomerCashBalanceTransaction::all` and `CustomerCashBalanceTransaction::retrieve`. These methods were included in the library unintentionally and never functioned.
+* [#1647](https://github.com/stripe/stripe-php/pull/1647) Fix \Stripe\Tax\Settings::update
+* [#1646](https://github.com/stripe/stripe-php/pull/1646) Add more specific PHPDoc and Psalm type for RequestOptions arrays on services
+
 ## 13.10.0 - 2024-02-01
 * [#1636](https://github.com/stripe/stripe-php/pull/1636) Update generated code
   * Add support for new value `swish` on enum `PaymentLink.payment_method_types[]`
