@@ -274,6 +274,7 @@ require __DIR__ . '/lib/Service/Tax/SettingsService.php';
 require __DIR__ . '/lib/Service/Tax/TaxServiceFactory.php';
 require __DIR__ . '/lib/Service/Tax/TransactionService.php';
 require __DIR__ . '/lib/Service/TaxCodeService.php';
+require __DIR__ . '/lib/Service/TaxIdService.php';
 require __DIR__ . '/lib/Service/TaxRateService.php';
 require __DIR__ . '/lib/Service/Terminal/ConfigurationService.php';
 require __DIR__ . '/lib/Service/Terminal/ConnectionTokenService.php';

@@ -69,6 +69,7 @@ namespace Stripe;
  * @property \Stripe\Service\SubscriptionScheduleService $subscriptionSchedules
  * @property \Stripe\Service\Tax\TaxServiceFactory $tax
  * @property \Stripe\Service\TaxCodeService $taxCodes
+ * @property \Stripe\Service\TaxIdService $taxIds
  * @property \Stripe\Service\TaxRateService $taxRates
  * @property \Stripe\Service\Terminal\TerminalServiceFactory $terminal
  * @property \Stripe\Service\TestHelpers\TestHelpersServiceFactory $testHelpers
