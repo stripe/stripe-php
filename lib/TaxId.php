@@ -25,7 +25,10 @@ class TaxId extends ApiResource
 {
     const OBJECT_NAME = 'tax_id';
 
+    use ApiOperations\All;
+    use ApiOperations\Create;
     use ApiOperations\Delete;
+    use ApiOperations\Retrieve;
 
     const TYPE_AD_NRT = 'ad_nrt';
     const TYPE_AE_TRN = 'ae_trn';
@@ -100,41 +103,4 @@ class TaxId extends ApiResource
     const VERIFICATION_STATUS_UNAVAILABLE = 'unavailable';
     const VERIFICATION_STATUS_UNVERIFIED = 'unverified';
     const VERIFICATION_STATUS_VERIFIED = 'verified';
-
-    /**
-     * @return string the API URL for this tax id
-     */
-    public function instanceUrl()
-    {
-        $id = $this['id'];
-        $customer = $this['customer'];
-        if (!$id) {
-            throw new Exception\UnexpectedValueException(
-                "Could not determine which URL to request: class instance has invalid ID: {$id}"
-            );
-        }
-        $id = Util\Util::utf8($id);
-        $customer = Util\Util::utf8($customer);
-
-        $base = Customer::classUrl();
-        $customerExtn = \urlencode($customer);
-        $extn = \urlencode($id);
-
-        return "{$base}/{$customerExtn}/tax_ids/{$extn}";
-    }
-
-    /**
-     * @param array|string $_id
-     * @param null|array|string $_opts
-     *
-     * @throws \Stripe\Exception\BadMethodCallException
-     */
-    public static function retrieve($_id, $_opts = null)
-    {
-        $msg = 'Tax IDs cannot be retrieved without a customer ID. Retrieve ' .
-               "a tax ID using `Customer::retrieveTaxId('customer_id', " .
-               "'tax_id_id')`.";
-
-        throw new Exception\BadMethodCallException($msg);
-    }
 }
