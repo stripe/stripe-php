@@ -1,5 +1,13 @@
 # Changelog
 
+## 13.12.0 - 2024-02-22
+* [#1651](https://github.com/stripe/stripe-php/pull/1651) Update generated code
+  * Add support for `client_reference_id` on `Identity.VerificationReport` and `Identity.VerificationSession`
+  * Remove support for value `service_tax` from enum `TaxRate.tax_type`
+* [#1650](https://github.com/stripe/stripe-php/pull/1650) Add TaxIds API
+  * Add support for `all`, `create`, `delete`, and `retrieve` methods on resource `TaxId`
+  * The `instanceUrl` function on `TaxId` now returns the top-level `/v1/tax_ids/{id}` path instead of the `/v1/customers/{customer}/tax_ids/{id}` path.
+
 ## 13.11.0 - 2024-02-15
 * [#1639](https://github.com/stripe/stripe-php/pull/1639) Update generated code
   * Add support for `networks` on `Card`
