@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.13.0-beta.1 - 2024-02-23
+* [#1652](https://github.com/stripe/stripe-php/pull/1652) Update generated code for beta
+
+
 ## 13.12.0 - 2024-02-22
 * [#1651](https://github.com/stripe/stripe-php/pull/1651) Update generated code
   * Add support for `client_reference_id` on `Identity.VerificationReport` and `Identity.VerificationSession`
