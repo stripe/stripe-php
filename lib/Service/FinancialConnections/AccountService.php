@@ -37,7 +37,7 @@ class AccountService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\StripeObject>
+     * @return \Stripe\Collection<\Stripe\FinancialConnections\AccountInferredBalance>
      */
     public function allInferredBalances($parentId, $params = null, $opts = null)
     {

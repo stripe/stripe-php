@@ -11,7 +11,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|string|\Stripe\StripeObject $application ID of the Connect Application that created the subscription.
+ * @property null|string|\Stripe\Application $application ID of the Connect Application that created the subscription.
  * @property null|float $application_fee_percent A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice total that will be transferred to the application owner's Stripe account.
  * @property \Stripe\StripeObject $automatic_tax
  * @property int $billing_cycle_anchor The reference point that aligns future <a href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</a> dates. It sets the day of week for <code>week</code> intervals, the day of month for <code>month</code> and <code>year</code> intervals, and the month of year for <code>year</code> intervals. The timestamp is in UTC format.

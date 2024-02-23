@@ -29,7 +29,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|string|\Stripe\StripeObject $application ID of the Connect application that created the SetupIntent.
+ * @property null|string|\Stripe\Application $application ID of the Connect application that created the SetupIntent.
  * @property null|bool $attach_to_self <p>If present, the SetupIntent's payment method will be attached to the in-context Stripe Account.</p><p>It can only be used for this Stripe Account’s own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer.</p>
  * @property null|\Stripe\StripeObject $automatic_payment_methods Settings for dynamic payment methods compatible with this Setup Intent
  * @property null|string $cancellation_reason Reason for cancellation of this SetupIntent, one of <code>abandoned</code>, <code>requested_by_customer</code>, or <code>duplicate</code>.
