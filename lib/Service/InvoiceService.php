@@ -59,7 +59,7 @@ class InvoiceService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\StripeObject>
+     * @return \Stripe\Collection<\Stripe\InvoicePayment>
      */
     public function allPayments($parentId, $params = null, $opts = null)
     {
@@ -245,7 +245,7 @@ class InvoiceService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\StripeObject
+     * @return \Stripe\InvoicePayment
      */
     public function retrievePayment($parentId, $id, $params = null, $opts = null)
     {
@@ -369,6 +369,28 @@ class InvoiceService extends \Stripe\Service\AbstractService
     public function update($id, $params = null, $opts = null)
     {
         return $this->request('post', $this->buildPath('/v1/invoices/%s', $id), $params, $opts);
+    }
+
+    /**
+     * Updates an invoice’s line item. Some fields, such as <code>tax_amounts</code>,
+     * only live on the invoice line item, so they can only be updated through this
+     * endpoint. Other fields, such as <code>amount</code>, live on both the invoice
+     * item and the invoice line item, so updates on this endpoint will propagate to
+     * the invoice item as well. Updating an invoice’s line item is only possible
+     * before the invoice is finalized.
+     *
+     * @param string $parentId
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\InvoiceLineItem
+     */
+    public function updateLine($parentId, $id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/invoices/%s/lines/%s', $parentId, $id), $params, $opts);
     }
 
     /**

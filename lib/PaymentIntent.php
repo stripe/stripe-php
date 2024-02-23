@@ -23,7 +23,7 @@ namespace Stripe;
  * @property int $amount_capturable Amount that can be captured from this PaymentIntent.
  * @property null|\Stripe\StripeObject $amount_details
  * @property int $amount_received Amount that this PaymentIntent collects.
- * @property null|string|\Stripe\StripeObject $application ID of the Connect application that created the PaymentIntent.
+ * @property null|string|\Stripe\Application $application ID of the Connect application that created the PaymentIntent.
  * @property null|int $application_fee_amount The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's Stripe account. The amount of the application fee collected will be capped at the total payment amount. For more information, see the PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use case for connected accounts</a>.
  * @property null|\Stripe\StripeObject $automatic_payment_methods Settings to configure compatible payment methods from the <a href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>
  * @property null|int $canceled_at Populated when <code>status</code> is <code>canceled</code>, this is the time at which the PaymentIntent was canceled. Measured in seconds since the Unix epoch.

@@ -71,7 +71,7 @@ class CustomerService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\StripeObject>
+     * @return \Stripe\Collection<\Stripe\CustomerEntitlement>
      */
     public function allEntitlements($parentId, $params = null, $opts = null)
     {
@@ -360,7 +360,7 @@ class CustomerService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\StripeObject
+     * @return \Stripe\CustomerEntitlementSummary
      */
     public function retrieveEntitlementSummary($parentId, $params = null, $opts = null)
     {
