@@ -48,9 +48,6 @@ class Person extends ApiResource
 {
     const OBJECT_NAME = 'person';
 
-    use ApiOperations\Delete;
-    use ApiOperations\Update;
-
     const GENDER_FEMALE = 'female';
     const GENDER_MALE = 'male';
 
@@ -60,6 +57,9 @@ class Person extends ApiResource
     const VERIFICATION_STATUS_PENDING = 'pending';
     const VERIFICATION_STATUS_UNVERIFIED = 'unverified';
     const VERIFICATION_STATUS_VERIFIED = 'verified';
+
+    use ApiOperations\Delete;
+    use ApiOperations\Update;
 
     /**
      * @return string the API URL for this Stripe account reversal
