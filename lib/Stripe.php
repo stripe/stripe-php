@@ -135,6 +135,19 @@ class Stripe
     }
 
     /**
+     * @param string $betaName the name of the feature beta
+     * @param string $betaVersion version to be used
+     */
+    public static function addBetaVersion($betaName, $betaVersion)
+    {
+        if (false !== strpos(self::$apiVersion, '; ' . $betaName . '=')) {
+            throw new \Exception('Stripe version header ' . self::$apiVersion . ' already contains entry for beta ' . $betaName);
+        }
+
+        self::$apiVersion = self::$apiVersion . '; ' . $betaName . '=' . $betaVersion;
+    }
+
+    /**
      * @return string
      */
     private static function getDefaultCABundlePath()
