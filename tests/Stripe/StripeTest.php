@@ -43,7 +43,7 @@ final class StripeTest extends \Stripe\TestCase
         Stripe::addBetaVersion('feature_beta', 'v3');
         static::assertSame(Stripe::$apiVersion, '2024-02-26; feature_beta=v3');
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage('Stripe version header 2024-02-26 already contains entry for beta feature_beta');
+        $this->expectExceptionMessage('Stripe version header 2024-02-26; feature_beta=v3 already contains entry for beta feature_beta');
         Stripe::addBetaVersion('feature_beta', 'v1');
     }
 }
