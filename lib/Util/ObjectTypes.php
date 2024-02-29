@@ -53,7 +53,6 @@ class ObjectTypes
             \Stripe\CustomerSession::OBJECT_NAME => \Stripe\CustomerSession::class,
             \Stripe\Discount::OBJECT_NAME => \Stripe\Discount::class,
             \Stripe\Dispute::OBJECT_NAME => \Stripe\Dispute::class,
-            \Stripe\Entitlements\Event::OBJECT_NAME => \Stripe\Entitlements\Event::class,
             \Stripe\Entitlements\Feature::OBJECT_NAME => \Stripe\Entitlements\Feature::class,
             \Stripe\EphemeralKey::OBJECT_NAME => \Stripe\EphemeralKey::class,
             \Stripe\Event::OBJECT_NAME => \Stripe\Event::class,

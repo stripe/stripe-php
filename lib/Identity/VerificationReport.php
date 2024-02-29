@@ -26,7 +26,7 @@ namespace Stripe\Identity;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $options
  * @property null|\Stripe\StripeObject $selfie Result from a selfie check
- * @property null|string $type Type of report.
+ * @property string $type Type of report.
  * @property null|string $verification_session ID of the VerificationSession that created this report.
  */
 class VerificationReport extends \Stripe\ApiResource

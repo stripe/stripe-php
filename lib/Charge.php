@@ -65,6 +65,7 @@ class Charge extends ApiResource
 
     use ApiOperations\All;
     use ApiOperations\Create;
+    use ApiOperations\NestedResource;
     use ApiOperations\Retrieve;
     use ApiOperations\Search;
     use ApiOperations\Update;
@@ -156,5 +157,36 @@ class Charge extends ApiResource
         $url = '/v1/charges/search';
 
         return static::_requestPage($url, \Stripe\SearchResult::class, $params, $opts);
+    }
+
+    const PATH_REFUNDS = '/refunds';
+
+    /**
+     * @param string $id the ID of the charge on which to retrieve the refunds
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Refund> the list of refunds
+     */
+    public static function allRefunds($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_REFUNDS, $params, $opts);
+    }
+
+    /**
+     * @param string $id the ID of the charge to which the refund belongs
+     * @param string $refundId the ID of the refund to retrieve
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Refund
+     */
+    public static function retrieveRefund($id, $refundId, $params = null, $opts = null)
+    {
+        return self::_retrieveNestedResource($id, static::PATH_REFUNDS, $refundId, $params, $opts);
     }
 }

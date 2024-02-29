@@ -7,7 +7,6 @@ namespace Stripe\Service\Entitlements;
 /**
  * Service factory class for API resources in the Entitlements namespace.
  *
- * @property EventService $events
  * @property FeatureService $features
  */
 class EntitlementsServiceFactory extends \Stripe\Service\AbstractServiceFactory
@@ -16,7 +15,6 @@ class EntitlementsServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
-        'events' => EventService::class,
         'features' => FeatureService::class,
     ];
 

@@ -27,7 +27,7 @@ namespace Stripe\Checkout;
  * @property null|int $amount_subtotal Total of all items before discounts or taxes are applied.
  * @property null|int $amount_total Total of all items after discounts and taxes are applied.
  * @property \Stripe\StripeObject $automatic_tax
- * @property null|string $billing_address_collection Describes whether Checkout should collect the customer's billing address.
+ * @property null|string $billing_address_collection Describes whether Checkout should collect the customer's billing address. Defaults to <code>auto</code>.
  * @property null|string $cancel_url If set, Checkout displays a back button and customers will be directed to this URL if they decide to cancel payment and return to your website.
  * @property null|string $client_reference_id A unique string to reference the Checkout Session. This can be a customer ID, a cart ID, or similar, and can be used to reconcile the Session with your internal systems.
  * @property null|string $client_secret Client secret to be used when initializing Stripe.js embedded checkout.
@@ -40,7 +40,7 @@ namespace Stripe\Checkout;
  * @property \Stripe\StripeObject $custom_text
  * @property null|string|\Stripe\Customer $customer The ID of the customer for this Session. For Checkout Sessions in <code>subscription</code> mode or Checkout Sessions with <code>customer_creation</code> set as <code>always</code> in <code>payment</code> mode, Checkout will create a new customer object based on information provided during the payment flow unless an existing customer was provided when the Session was created.
  * @property null|string $customer_creation Configure whether a Checkout Session creates a Customer when the Checkout Session completes.
- * @property null|\Stripe\StripeObject $customer_details The customer details including the customer's tax exempt status and the customer's tax IDs. Only the customer's email is present on Sessions in <code>setup</code> mode.
+ * @property null|\Stripe\StripeObject $customer_details The customer details including the customer's tax exempt status and the customer's tax IDs. Customer's address details are not present on Sessions in <code>setup</code> mode.
  * @property null|string $customer_email If provided, this value will be used when the Customer object is created. If not provided, customers will be asked to enter their email address. Use this parameter to prefill customer data if you already have an email on file. To access information about the customer once the payment flow is complete, use the <code>customer</code> attribute.
  * @property int $expires_at The timestamp at which the Checkout Session will expire.
  * @property null|string|\Stripe\Invoice $invoice ID of the invoice created by the Checkout Session, if it exists.
@@ -52,14 +52,14 @@ namespace Stripe\Checkout;
  * @property string $mode The mode of the Checkout Session.
  * @property null|string|\Stripe\PaymentIntent $payment_intent The ID of the PaymentIntent for Checkout Sessions in <code>payment</code> mode.
  * @property null|string|\Stripe\PaymentLink $payment_link The ID of the Payment Link that created this Session.
- * @property null|string $payment_method_collection Configure whether a Checkout Session should collect a payment method.
+ * @property null|string $payment_method_collection Configure whether a Checkout Session should collect a payment method. Defaults to <code>always</code>.
  * @property null|\Stripe\StripeObject $payment_method_configuration_details Information about the payment method configuration used for this Checkout session if using dynamic payment methods.
  * @property null|\Stripe\StripeObject $payment_method_options Payment-method-specific configuration for the PaymentIntent or SetupIntent of this CheckoutSession.
  * @property string[] $payment_method_types A list of the types of payment methods (e.g. card) this Checkout Session is allowed to accept.
  * @property string $payment_status The payment status of the Checkout Session, one of <code>paid</code>, <code>unpaid</code>, or <code>no_payment_required</code>. You can use this value to decide when to fulfill your customer's order.
  * @property null|\Stripe\StripeObject $phone_number_collection
  * @property null|string $recovered_from The ID of the original expired Checkout Session that triggered the recovery flow.
- * @property null|string $redirect_on_completion Applies to Checkout Sessions with <code>ui_mode: embedded</code>. By default, Stripe will always redirect to your return_url after a successful confirmation. If you set <code>redirect_on_completion: 'if_required'</code>, then we will only redirect if your user chooses a redirect-based payment method.
+ * @property null|string $redirect_on_completion This parameter applies to <code>ui_mode: embedded</code>. Learn more about the <a href="https://stripe.com/docs/payments/checkout/custom-redirect-behavior">redirect behavior</a> of embedded sessions. Defaults to <code>always</code>.
  * @property null|string $return_url Applies to Checkout Sessions with <code>ui_mode: embedded</code>. The URL to redirect your customer back to after they authenticate or cancel their payment on the payment method's app or site.
  * @property null|string|\Stripe\SetupIntent $setup_intent The ID of the SetupIntent for Checkout Sessions in <code>setup</code> mode.
  * @property null|\Stripe\StripeObject $shipping_address_collection When set, provides configuration for Checkout to collect a shipping address from a customer.
@@ -72,7 +72,7 @@ namespace Stripe\Checkout;
  * @property null|string $success_url The URL the customer will be directed to after the payment or subscription creation is successful.
  * @property null|\Stripe\StripeObject $tax_id_collection
  * @property null|\Stripe\StripeObject $total_details Tax and discount details for the computed total amount.
- * @property null|string $ui_mode The UI mode of the Session. Can be <code>hosted</code> (default) or <code>embedded</code>.
+ * @property null|string $ui_mode The UI mode of the Session. Defaults to <code>hosted</code>.
  * @property null|string $url The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout. If you’re using <a href="https://stripe.com/docs/payments/checkout/custom-domains">Custom Domains</a>, the URL will use your subdomain. Otherwise, it’ll use <code>checkout.stripe.com.</code> This value is only present when the session is active.
  */
 class Session extends \Stripe\ApiResource
