@@ -8,9 +8,14 @@
   * Add support for `livemode` on `Issuing.PersonalizationDesign`
 * [#1656](https://github.com/stripe/stripe-php/pull/1656)  Add helper to set beta version
 
+## 13.13.0 - 2024-02-29
+* [#1654](https://github.com/stripe/stripe-php/pull/1654) Update generated code
+  * Change type of `Identity.VerificationSession.type` from `nullable(enum('document'|'id_number'))` to `enum('document'|'id_number')`
+  * Add resources `Application`, `ConnectCollectionTransfer`, `PlatformTaxFee`, `ReserveTransaction`, `SourceMandateNotification`, and `TaxDeductedAtSource`. These classes have no methods on them, and are used to provide more complete types for PHPDocs.
+* [#1657](https://github.com/stripe/stripe-php/pull/1657) Update readme to use addBetaVersion
+
 ## 13.13.0-beta.1 - 2024-02-23
 * [#1652](https://github.com/stripe/stripe-php/pull/1652) Update generated code for beta
-
 
 ## 13.12.0 - 2024-02-22
 * [#1651](https://github.com/stripe/stripe-php/pull/1651) Update generated code
