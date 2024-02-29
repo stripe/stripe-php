@@ -208,7 +208,6 @@ Stripe has features in the beta phase that can be accessed via the beta version 
 We would love for you to try these and share feedback with us before these features reach the stable phase.
 Use the `composer require` command with an exact version specified to install the beta version of the stripe-php pacakge.
 
-
 ```bash
 composer require stripe/stripe-php:v9.2.0-beta.1
 ```
@@ -218,10 +217,10 @@ composer require stripe/stripe-php:v9.2.0-beta.1
 
 We highly recommend keeping an eye on when the beta feature you are interested in goes from beta to stable so that you can move from using a beta version of the SDK to the stable version.
 
-If your beta feature requires a `Stripe-Version` header to be sent, use the `apiVersion` property of `config` object to set it:
+If your beta feature requires a `Stripe-Version` header to be sent, set the `apiVersion` property of `config` object by using the function `addBetaVersion`:
 
 ```php
-Stripe::setApiVersion(Stripe::getApiVersion() . '; feature_beta=v3');
+Stripe::addBetaVersion("feature_beta", "v3");
 ```
 
 ## Support
