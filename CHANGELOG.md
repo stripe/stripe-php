@@ -1,5 +1,13 @@
 # Changelog
 
+## 13.14.0-beta.1 - 2024-02-29
+* [#1655](https://github.com/stripe/stripe-php/pull/1655) Update generated code for beta
+  * Remove support for resource `Entitlements.Event`
+  * Change type of `ConfirmationToken.mandate_data` from `nullable(ConfirmationTokensResourceMandateData)` to `ConfirmationTokensResourceMandateData`
+  * Remove support for `quantity` and `type` on `Entitlements.Feature`
+  * Add support for `livemode` on `Issuing.PersonalizationDesign`
+* [#1656](https://github.com/stripe/stripe-php/pull/1656)  Add helper to set beta version
+
 ## 13.13.0-beta.1 - 2024-02-23
 * [#1652](https://github.com/stripe/stripe-php/pull/1652) Update generated code for beta
 
