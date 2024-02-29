@@ -10,7 +10,7 @@ namespace Stripe;
  * @property string|\Stripe\Account $account ID of the Stripe account this fee was taken from.
  * @property int $amount Amount earned, in cents (or local equivalent).
  * @property int $amount_refunded Amount in cents (or local equivalent) refunded (can be less than the amount attribute on the fee if a partial refund was issued)
- * @property string|\Stripe\StripeObject $application ID of the Connect application that earned the fee.
+ * @property string|\Stripe\Application $application ID of the Connect application that earned the fee.
  * @property null|string|\Stripe\BalanceTransaction $balance_transaction Balance transaction that describes the impact of this collected application fee on your account balance (not including refunds).
  * @property string|\Stripe\Charge $charge ID of the charge that the application fee was taken from.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.

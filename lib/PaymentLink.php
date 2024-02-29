@@ -16,11 +16,11 @@ namespace Stripe;
  * @property bool $active Whether the payment link's <code>url</code> is active. If <code>false</code>, customers visiting the URL will be shown a page saying that the link has been deactivated.
  * @property \Stripe\StripeObject $after_completion
  * @property bool $allow_promotion_codes Whether user redeemable promotion codes are enabled.
- * @property null|string|\Stripe\StripeObject $application The ID of the Connect application that created the Payment Link.
+ * @property null|string|\Stripe\Application $application The ID of the Connect application that created the Payment Link.
  * @property null|int $application_fee_amount The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's Stripe account.
  * @property null|float $application_fee_percent This represents the percentage of the subscription invoice total that will be transferred to the application owner's Stripe account.
  * @property \Stripe\StripeObject $automatic_tax
- * @property string $billing_address_collection Configuration for collecting the customer's billing address.
+ * @property string $billing_address_collection Configuration for collecting the customer's billing address. Defaults to <code>auto</code>.
  * @property null|\Stripe\StripeObject $consent_collection When set, provides configuration to gather active consent from customers.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property \Stripe\StripeObject[] $custom_fields Collect additional information from your customer using custom fields. Up to 3 fields are supported.
@@ -33,7 +33,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string|\Stripe\Account $on_behalf_of The account on behalf of which to charge. See the <a href="https://support.stripe.com/questions/sending-invoices-on-behalf-of-connected-accounts">Connect documentation</a> for details.
  * @property null|\Stripe\StripeObject $payment_intent_data Indicates the parameters to be passed to PaymentIntent creation during checkout.
- * @property string $payment_method_collection Configuration for collecting a payment method during checkout.
+ * @property string $payment_method_collection Configuration for collecting a payment method during checkout. Defaults to <code>always</code>.
  * @property null|string[] $payment_method_types The list of payment method types that customers can use. When <code>null</code>, Stripe will dynamically show relevant payment methods you've enabled in your <a href="https://dashboard.stripe.com/settings/payment_methods">payment method settings</a>.
  * @property \Stripe\StripeObject $phone_number_collection
  * @property null|\Stripe\StripeObject $restrictions Settings that restrict the usage of a payment link.

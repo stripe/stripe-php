@@ -22,12 +22,12 @@ class Capability extends ApiResource
 {
     const OBJECT_NAME = 'capability';
 
-    use ApiOperations\Update;
-
     const STATUS_ACTIVE = 'active';
     const STATUS_INACTIVE = 'inactive';
     const STATUS_PENDING = 'pending';
     const STATUS_UNREQUESTED = 'unrequested';
+
+    use ApiOperations\Update;
 
     /**
      * @return string the API URL for this Stripe account reversal
