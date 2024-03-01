@@ -3174,6 +3174,38 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         // TODO: assert proper instance, {"shape":"file"}
     }
 
+    public function testTaxIdsDelete()
+    {
+        $this->expectsRequest('delete', '/v1/tax_ids/taxid_123');
+        $result = $this->client->taxIds->delete('taxid_123', []);
+        static::assertInstanceOf(\Stripe\TaxId::class, $result);
+    }
+
+    public function testTaxIdsGet()
+    {
+        $this->expectsRequest('get', '/v1/tax_ids');
+        $result = $this->client->taxIds->all([]);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\TaxId::class, $result->data[0]);
+    }
+
+    public function testTaxIdsGet2()
+    {
+        $this->expectsRequest('get', '/v1/tax_ids/taxid_123');
+        $result = $this->client->taxIds->retrieve('taxid_123', []);
+        static::assertInstanceOf(\Stripe\TaxId::class, $result);
+    }
+
+    public function testTaxIdsPost()
+    {
+        $this->expectsRequest('post', '/v1/tax_ids');
+        $result = $this->client->taxIds->create([
+            'type' => 'eu_vat',
+            'value' => '123',
+        ]);
+        static::assertInstanceOf(\Stripe\TaxId::class, $result);
+    }
+
     public function testTaxRatesGet()
     {
         $this->expectsRequest('get', '/v1/tax_rates');
