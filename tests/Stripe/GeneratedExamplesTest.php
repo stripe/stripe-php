@@ -792,6 +792,20 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\CashBalance::class, $result);
     }
 
+    public function testCustomersCashBalanceTransactionsGet()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/customers/cus_123/cash_balance_transactions'
+        );
+        $result = $this->client->customers->allCashBalanceTransactions(
+            'cus_123',
+            ['limit' => 3]
+        );
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\CustomerCashBalanceTransaction::class, $result->data[0]);
+    }
+
     public function testCustomersDelete()
     {
         $this->expectsRequest('delete', '/v1/customers/cus_xxxxxxxxxxxxx');
