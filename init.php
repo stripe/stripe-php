@@ -289,6 +289,7 @@ require __DIR__ . '/lib/Service/Terminal/ConnectionTokenService.php';
 require __DIR__ . '/lib/Service/Terminal/LocationService.php';
 require __DIR__ . '/lib/Service/Terminal/ReaderService.php';
 require __DIR__ . '/lib/Service/Terminal/TerminalServiceFactory.php';
+require __DIR__ . '/lib/Service/TestHelpers/ConfirmationTokenService.php';
 require __DIR__ . '/lib/Service/TestHelpers/CustomerService.php';
 require __DIR__ . '/lib/Service/TestHelpers/Issuing/AuthorizationService.php';
 require __DIR__ . '/lib/Service/TestHelpers/Issuing/CardService.php';
