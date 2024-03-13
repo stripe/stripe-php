@@ -13,6 +13,23 @@ namespace Stripe\Service;
 class InvoiceService extends \Stripe\Service\AbstractService
 {
     /**
+     * Adds multiple line items to an invoice. This is only possible when an invoice is
+     * still a draft.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Invoice
+     */
+    public function addLines($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/invoices/%s/add_lines', $id), $params, $opts);
+    }
+
+    /**
      * You can list all invoices, or list the invoices for a specific customer. The
      * invoices are returned sorted by creation date, with the most recently created
      * invoices appearing first.
@@ -220,6 +237,23 @@ class InvoiceService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Removes multiple line items from an invoice. This is only possible when an
+     * invoice is still a draft.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Invoice
+     */
+    public function removeLines($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/invoices/%s/remove_lines', $id), $params, $opts);
+    }
+
+    /**
      * Retrieves the invoice with the given ID.
      *
      * @param string $id
@@ -391,6 +425,23 @@ class InvoiceService extends \Stripe\Service\AbstractService
     public function updateLine($parentId, $id, $params = null, $opts = null)
     {
         return $this->request('post', $this->buildPath('/v1/invoices/%s/lines/%s', $parentId, $id), $params, $opts);
+    }
+
+    /**
+     * Updates multiple line items on an invoice. This is only possible when an invoice
+     * is still a draft.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Invoice
+     */
+    public function updateLines($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/invoices/%s/update_lines', $id), $params, $opts);
     }
 
     /**
