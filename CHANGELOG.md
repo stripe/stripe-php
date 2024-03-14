@@ -1,5 +1,12 @@
 # Changelog
 
+## 13.14.0 - 2024-03-14
+* [#1660](https://github.com/stripe/stripe-php/pull/1660) Update generated code
+  * Add support for new resources `Issuing.PersonalizationDesign` and `Issuing.PhysicalBundle`
+  * Add support for `all`, `create`, `retrieve`, and `update` methods on resource `PersonalizationDesign`
+  * Add support for `all` and `retrieve` methods on resource `PhysicalBundle`
+  * Add support for `personalization_design` on `Issuing.Card`
+
 ## 13.13.0 - 2024-02-29
 * [#1654](https://github.com/stripe/stripe-php/pull/1654) Update generated code
   * Change type of `Identity.VerificationSession.type` from `nullable(enum('document'|'id_number'))` to `enum('document'|'id_number')`
