@@ -1710,6 +1710,67 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $result);
     }
 
+    public function testIssuingPersonalizationDesignsGet()
+    {
+        $this->expectsRequest('get', '/v1/issuing/personalization_designs');
+        $result = $this->client->issuing->personalizationDesigns->all([]);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\Issuing\PersonalizationDesign::class, $result->data[0]);
+    }
+
+    public function testIssuingPersonalizationDesignsGet2()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/issuing/personalization_designs/pd_xyz'
+        );
+        $result = $this->client->issuing->personalizationDesigns->retrieve(
+            'pd_xyz',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Issuing\PersonalizationDesign::class, $result);
+    }
+
+    public function testIssuingPersonalizationDesignsPost()
+    {
+        $this->expectsRequest('post', '/v1/issuing/personalization_designs');
+        $result = $this->client->issuing->personalizationDesigns->create([
+            'physical_bundle' => 'pb_xyz',
+        ]);
+        static::assertInstanceOf(\Stripe\Issuing\PersonalizationDesign::class, $result);
+    }
+
+    public function testIssuingPersonalizationDesignsPost2()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/issuing/personalization_designs/pd_xyz'
+        );
+        $result = $this->client->issuing->personalizationDesigns->update(
+            'pd_xyz',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Issuing\PersonalizationDesign::class, $result);
+    }
+
+    public function testIssuingPhysicalBundlesGet()
+    {
+        $this->expectsRequest('get', '/v1/issuing/physical_bundles');
+        $result = $this->client->issuing->physicalBundles->all([]);
+        static::assertInstanceOf(\Stripe\Collection::class, $result);
+        static::assertInstanceOf(\Stripe\Issuing\PhysicalBundle::class, $result->data[0]);
+    }
+
+    public function testIssuingPhysicalBundlesGet2()
+    {
+        $this->expectsRequest('get', '/v1/issuing/physical_bundles/pb_xyz');
+        $result = $this->client->issuing->physicalBundles->retrieve(
+            'pb_xyz',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Issuing\PhysicalBundle::class, $result);
+    }
+
     public function testIssuingTransactionsGet()
     {
         $this->expectsRequest('get', '/v1/issuing/transactions');
@@ -3735,6 +3796,45 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
             []
         );
         static::assertInstanceOf(\Stripe\Issuing\Card::class, $result);
+    }
+
+    public function testTestHelpersIssuingPersonalizationDesignsActivatePost()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/issuing/personalization_designs/pd_xyz/activate'
+        );
+        $result = $this->client->testHelpers->issuing->personalizationDesigns->activate(
+            'pd_xyz',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Issuing\PersonalizationDesign::class, $result);
+    }
+
+    public function testTestHelpersIssuingPersonalizationDesignsDeactivatePost()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/issuing/personalization_designs/pd_xyz/deactivate'
+        );
+        $result = $this->client->testHelpers->issuing->personalizationDesigns->deactivate(
+            'pd_xyz',
+            []
+        );
+        static::assertInstanceOf(\Stripe\Issuing\PersonalizationDesign::class, $result);
+    }
+
+    public function testTestHelpersIssuingPersonalizationDesignsRejectPost()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/test_helpers/issuing/personalization_designs/pd_xyz/reject'
+        );
+        $result = $this->client->testHelpers->issuing->personalizationDesigns->reject(
+            'pd_xyz',
+            ['rejection_reasons' => ['card_logo' => ['geographic_location']]]
+        );
+        static::assertInstanceOf(\Stripe\Issuing\PersonalizationDesign::class, $result);
     }
 
     public function testTestHelpersIssuingTransactionsCreateForceCapturePost()
