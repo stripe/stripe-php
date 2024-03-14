@@ -1,5 +1,12 @@
 # Changelog
 
+## 13.14.0 - 2024-03-14
+* [#1660](https://github.com/stripe/stripe-php/pull/1660) Update generated code
+  * Add support for new resources `Issuing.PersonalizationDesign` and `Issuing.PhysicalBundle`
+  * Add support for `all`, `create`, `retrieve`, and `update` methods on resource `PersonalizationDesign`
+  * Add support for `all` and `retrieve` methods on resource `PhysicalBundle`
+  * Add support for `personalization_design` on `Issuing.Card`
+
 ## 13.14.0-beta.1 - 2024-02-29
 * [#1655](https://github.com/stripe/stripe-php/pull/1655) Update generated code for beta
   * Remove support for resource `Entitlements.Event`

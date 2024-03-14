@@ -16,6 +16,7 @@ namespace Stripe;
  * @property \Stripe\Service\Apps\AppsServiceFactory $apps
  * @property \Stripe\Service\BalanceService $balance
  * @property \Stripe\Service\BalanceTransactionService $balanceTransactions
+ * @property \Stripe\Service\Billing\BillingServiceFactory $billing
  * @property \Stripe\Service\BillingPortal\BillingPortalServiceFactory $billingPortal
  * @property \Stripe\Service\Capital\CapitalServiceFactory $capital
  * @property \Stripe\Service\ChargeService $charges
