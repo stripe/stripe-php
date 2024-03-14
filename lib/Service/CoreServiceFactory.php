@@ -16,6 +16,7 @@ namespace Stripe\Service;
  * @property Apps\AppsServiceFactory $apps
  * @property BalanceService $balance
  * @property BalanceTransactionService $balanceTransactions
+ * @property Billing\BillingServiceFactory $billing
  * @property BillingPortal\BillingPortalServiceFactory $billingPortal
  * @property Capital\CapitalServiceFactory $capital
  * @property ChargeService $charges
@@ -97,6 +98,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'apps' => Apps\AppsServiceFactory::class,
         'balance' => BalanceService::class,
         'balanceTransactions' => BalanceTransactionService::class,
+        'billing' => Billing\BillingServiceFactory::class,
         'billingPortal' => BillingPortal\BillingPortalServiceFactory::class,
         'capital' => Capital\CapitalServiceFactory::class,
         'charges' => ChargeService::class,
