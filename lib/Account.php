@@ -103,15 +103,6 @@ class Account extends ApiResource
     public function serializeParameters($force = false)
     {
         $update = parent::serializeParameters($force);
-        if (isset($this->_values['legal_entity'])) {
-            $entity = $this['legal_entity'];
-            if (isset($entity->_values['additional_owners'])) {
-                $owners = $entity['additional_owners'];
-                $entityUpdate = isset($update['legal_entity']) ? $update['legal_entity'] : [];
-                $entityUpdate['additional_owners'] = $this->serializeAdditionalOwners($entity, $owners);
-                $update['legal_entity'] = $entityUpdate;
-            }
-        }
         if (isset($this->_values['individual'])) {
             $individual = $this['individual'];
             if (($individual instanceof Person) && !isset($update['individual'])) {
@@ -120,35 +111,6 @@ class Account extends ApiResource
         }
 
         return $update;
-    }
-
-    private function serializeAdditionalOwners($legalEntity, $additionalOwners)
-    {
-        if (isset($legalEntity->_originalValues['additional_owners'])) {
-            $originalValue = $legalEntity->_originalValues['additional_owners'];
-        } else {
-            $originalValue = [];
-        }
-        if (($originalValue) && (\count($originalValue) > \count($additionalOwners))) {
-            throw new Exception\InvalidArgumentException(
-                'You cannot delete an item from an array, you must instead set a new array'
-            );
-        }
-
-        $updateArr = [];
-        foreach ($additionalOwners as $i => $v) {
-            $update = ($v instanceof StripeObject) ? $v->serializeParameters() : $v;
-
-            if ([] !== $update) {
-                if (!$originalValue
-                    || !\array_key_exists($i, $originalValue)
-                    || ($update !== $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
-                    $updateArr[$i] = $update;
-                }
-            }
-        }
-
-        return $updateArr;
     }
 
     /**
