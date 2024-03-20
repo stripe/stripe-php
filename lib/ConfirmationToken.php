@@ -18,7 +18,6 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $mandate_data Data used for generating a Mandate.
  * @property null|string $payment_intent ID of the PaymentIntent that this ConfirmationToken was used to confirm, or null if this ConfirmationToken has not yet been used.
- * @property null|string|\Stripe\PaymentMethod $payment_method ID of an existing PaymentMethod.
  * @property null|\Stripe\StripeObject $payment_method_options Payment-method-specific configuration for this ConfirmationToken.
  * @property null|\Stripe\StripeObject $payment_method_preview Payment details collected by the Payment Element, used to create a PaymentMethod when a PaymentIntent or SetupIntent is confirmed with this ConfirmationToken.
  * @property null|string $return_url Return URL used to confirm the Intent.
