@@ -103,6 +103,7 @@ class ObjectTypes
             \Stripe\PlatformTaxFee::OBJECT_NAME => \Stripe\PlatformTaxFee::class,
             \Stripe\Price::OBJECT_NAME => \Stripe\Price::class,
             \Stripe\Product::OBJECT_NAME => \Stripe\Product::class,
+            \Stripe\ProductFeature::OBJECT_NAME => \Stripe\ProductFeature::class,
             \Stripe\PromotionCode::OBJECT_NAME => \Stripe\PromotionCode::class,
             \Stripe\Quote::OBJECT_NAME => \Stripe\Quote::class,
             \Stripe\QuoteLine::OBJECT_NAME => \Stripe\QuoteLine::class,

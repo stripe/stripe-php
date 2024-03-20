@@ -171,6 +171,7 @@ require __DIR__ . '/lib/Plan.php';
 require __DIR__ . '/lib/PlatformTaxFee.php';
 require __DIR__ . '/lib/Price.php';
 require __DIR__ . '/lib/Product.php';
+require __DIR__ . '/lib/ProductFeature.php';
 require __DIR__ . '/lib/PromotionCode.php';
 require __DIR__ . '/lib/Quote.php';
 require __DIR__ . '/lib/QuoteLine.php';
