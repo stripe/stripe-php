@@ -35,6 +35,7 @@ class ObjectTypes
             \Stripe\Climate\Order::OBJECT_NAME => \Stripe\Climate\Order::class,
             \Stripe\Climate\Product::OBJECT_NAME => \Stripe\Climate\Product::class,
             \Stripe\Climate\Supplier::OBJECT_NAME => \Stripe\Climate\Supplier::class,
+            \Stripe\ConfirmationToken::OBJECT_NAME => \Stripe\ConfirmationToken::class,
             \Stripe\ConnectCollectionTransfer::OBJECT_NAME => \Stripe\ConnectCollectionTransfer::class,
             \Stripe\CountrySpec::OBJECT_NAME => \Stripe\CountrySpec::class,
             \Stripe\Coupon::OBJECT_NAME => \Stripe\Coupon::class,
