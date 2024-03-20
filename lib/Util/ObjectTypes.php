@@ -69,6 +69,7 @@ class ObjectTypes
             \Stripe\FinancialConnections\AccountOwnership::OBJECT_NAME => \Stripe\FinancialConnections\AccountOwnership::class,
             \Stripe\FinancialConnections\Session::OBJECT_NAME => \Stripe\FinancialConnections\Session::class,
             \Stripe\FinancialConnections\Transaction::OBJECT_NAME => \Stripe\FinancialConnections\Transaction::class,
+            \Stripe\Forwarding\Request::OBJECT_NAME => \Stripe\Forwarding\Request::class,
             \Stripe\FundingInstructions::OBJECT_NAME => \Stripe\FundingInstructions::class,
             \Stripe\GiftCards\Card::OBJECT_NAME => \Stripe\GiftCards\Card::class,
             \Stripe\GiftCards\Transaction::OBJECT_NAME => \Stripe\GiftCards\Transaction::class,

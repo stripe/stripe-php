@@ -36,6 +36,7 @@ namespace Stripe;
  * @property \Stripe\Service\FileLinkService $fileLinks
  * @property \Stripe\Service\FileService $files
  * @property \Stripe\Service\FinancialConnections\FinancialConnectionsServiceFactory $financialConnections
+ * @property \Stripe\Service\Forwarding\ForwardingServiceFactory $forwarding
  * @property \Stripe\Service\GiftCards\GiftCardsServiceFactory $giftCards
  * @property \Stripe\Service\Identity\IdentityServiceFactory $identity
  * @property \Stripe\Service\InvoiceItemService $invoiceItems
