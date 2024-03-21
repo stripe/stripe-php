@@ -91,6 +91,10 @@ class ErrorObject extends StripeObject
     const CODE_EXPIRED_CARD = 'expired_card';
     const CODE_FINANCIAL_CONNECTIONS_ACCOUNT_INACTIVE = 'financial_connections_account_inactive';
     const CODE_FINANCIAL_CONNECTIONS_NO_SUCCESSFUL_TRANSACTION_REFRESH = 'financial_connections_no_successful_transaction_refresh';
+    const CODE_FORWARDING_API_INACTIVE = 'forwarding_api_inactive';
+    const CODE_FORWARDING_API_INVALID_PARAMETER = 'forwarding_api_invalid_parameter';
+    const CODE_FORWARDING_API_UPSTREAM_CONNECTION_ERROR = 'forwarding_api_upstream_connection_error';
+    const CODE_FORWARDING_API_UPSTREAM_CONNECTION_TIMEOUT = 'forwarding_api_upstream_connection_timeout';
     const CODE_GIFT_CARD_BALANCE_INSUFFICIENT = 'gift_card_balance_insufficient';
     const CODE_GIFT_CARD_CODE_EXISTS = 'gift_card_code_exists';
     const CODE_GIFT_CARD_INACTIVE = 'gift_card_inactive';
