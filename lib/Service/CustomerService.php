@@ -63,22 +63,6 @@ class CustomerService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a list of entitlements for a customer.
-     *
-     * @param string $parentId
-     * @param null|array $params
-     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection<\Stripe\CustomerEntitlement>
-     */
-    public function allEntitlements($parentId, $params = null, $opts = null)
-    {
-        return $this->requestCollection('get', $this->buildPath('/v1/customers/%s/entitlements', $parentId), $params, $opts);
-    }
-
-    /**
      * Returns a list of PaymentMethods for a given Customer.
      *
      * @param string $id
@@ -349,22 +333,6 @@ class CustomerService extends \Stripe\Service\AbstractService
     public function retrieveCashBalanceTransaction($parentId, $id, $params = null, $opts = null)
     {
         return $this->request('get', $this->buildPath('/v1/customers/%s/cash_balance_transactions/%s', $parentId, $id), $params, $opts);
-    }
-
-    /**
-     * Retrieve the entitlement summary for a customer.
-     *
-     * @param string $parentId
-     * @param null|array $params
-     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\CustomerEntitlementSummary
-     */
-    public function retrieveEntitlementSummary($parentId, $params = null, $opts = null)
-    {
-        return $this->request('get', $this->buildPath('/v1/customers/%s/entitlement_summary', $parentId), $params, $opts);
     }
 
     /**
