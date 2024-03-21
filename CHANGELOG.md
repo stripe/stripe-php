@@ -1,5 +1,16 @@
 # Changelog
 
+## 13.16.0-beta.1 - 2024-03-21
+* [#1661](https://github.com/stripe/stripe-php/pull/1661) Update generated code for beta
+  * Add support for new resources `Entitlements.ActiveEntitlementSummary` and `Entitlements.ActiveEntitlement`
+  * Add support for `all` method on resource `ActiveEntitlement`
+  * Add support for `use_stripe_sdk` on `ConfirmationToken`
+  * Remove support for `payment_method` on `ConfirmationToken`
+  * Change type of `ConfirmationToken.mandate_data` from `ConfirmationTokensResourceMandateData` to `nullable(ConfirmationTokensResourceMandateData)`
+  * Add support for `active` and `metadata` on `Entitlements.Feature`
+  * Add support for new value `entitlements.active_entitlement_summary.updated` on enum `Event.type`
+  * Remove support for value `customer.entitlement_summary.updated` from enum `Event.type`
+
 ## 13.15.0-beta.1 - 2024-03-14
 * [#1659](https://github.com/stripe/stripe-php/pull/1659) Update generated code for beta
   * Add support for new resources `Billing.MeterEventAdjustment`, `Billing.MeterEvent`, and `Billing.Meter`
