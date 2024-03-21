@@ -19,6 +19,7 @@ namespace Stripe\Service;
  * @property ChargeService $charges
  * @property Checkout\CheckoutServiceFactory $checkout
  * @property Climate\ClimateServiceFactory $climate
+ * @property ConfirmationTokenService $confirmationTokens
  * @property CountrySpecService $countrySpecs
  * @property CouponService $coupons
  * @property CreditNoteService $creditNotes
@@ -31,6 +32,7 @@ namespace Stripe\Service;
  * @property FileLinkService $fileLinks
  * @property FileService $files
  * @property FinancialConnections\FinancialConnectionsServiceFactory $financialConnections
+ * @property Forwarding\ForwardingServiceFactory $forwarding
  * @property Identity\IdentityServiceFactory $identity
  * @property InvoiceItemService $invoiceItems
  * @property InvoiceService $invoices
@@ -92,6 +94,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'charges' => ChargeService::class,
         'checkout' => Checkout\CheckoutServiceFactory::class,
         'climate' => Climate\ClimateServiceFactory::class,
+        'confirmationTokens' => ConfirmationTokenService::class,
         'countrySpecs' => CountrySpecService::class,
         'coupons' => CouponService::class,
         'creditNotes' => CreditNoteService::class,
@@ -104,6 +107,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'fileLinks' => FileLinkService::class,
         'files' => FileService::class,
         'financialConnections' => FinancialConnections\FinancialConnectionsServiceFactory::class,
+        'forwarding' => Forwarding\ForwardingServiceFactory::class,
         'identity' => Identity\IdentityServiceFactory::class,
         'invoiceItems' => InvoiceItemService::class,
         'invoices' => InvoiceService::class,
