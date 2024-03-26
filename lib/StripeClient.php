@@ -19,6 +19,7 @@ namespace Stripe;
  * @property \Stripe\Service\ChargeService $charges
  * @property \Stripe\Service\Checkout\CheckoutServiceFactory $checkout
  * @property \Stripe\Service\Climate\ClimateServiceFactory $climate
+ * @property \Stripe\Service\ConfirmationTokenService $confirmationTokens
  * @property \Stripe\Service\CountrySpecService $countrySpecs
  * @property \Stripe\Service\CouponService $coupons
  * @property \Stripe\Service\CreditNoteService $creditNotes
@@ -31,6 +32,7 @@ namespace Stripe;
  * @property \Stripe\Service\FileLinkService $fileLinks
  * @property \Stripe\Service\FileService $files
  * @property \Stripe\Service\FinancialConnections\FinancialConnectionsServiceFactory $financialConnections
+ * @property \Stripe\Service\Forwarding\ForwardingServiceFactory $forwarding
  * @property \Stripe\Service\Identity\IdentityServiceFactory $identity
  * @property \Stripe\Service\InvoiceItemService $invoiceItems
  * @property \Stripe\Service\InvoiceService $invoices
