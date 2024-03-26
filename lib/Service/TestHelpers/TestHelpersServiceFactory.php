@@ -7,6 +7,7 @@ namespace Stripe\Service\TestHelpers;
 /**
  * Service factory class for API resources in the TestHelpers namespace.
  *
+ * @property ConfirmationTokenService $confirmationTokens
  * @property CustomerService $customers
  * @property Issuing\IssuingServiceFactory $issuing
  * @property RefundService $refunds
@@ -20,6 +21,7 @@ class TestHelpersServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
+        'confirmationTokens' => ConfirmationTokenService::class,
         'customers' => CustomerService::class,
         'issuing' => Issuing\IssuingServiceFactory::class,
         'refunds' => RefundService::class,
