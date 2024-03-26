@@ -20,6 +20,8 @@ namespace Stripe\Forwarding;
  * Forwarding Requests are synchronous requests that return a response or time out according to
  * Stripe’s limits.
  *
+ * Related guide: <a href="https://docs.stripe.com/payments/forwarding">Forward card details to third-party API endpoints</a>.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string $config The Forwarding Config used when making the forwarded request. The config specifes the HTTP method, merchant credentials, connection settings, and supported destination URLs.
