@@ -11,6 +11,16 @@
   * Add support for new value `entitlements.active_entitlement_summary.updated` on enum `Event.type`
   * Remove support for value `customer.entitlement_summary.updated` from enum `Event.type`
 
+## 13.15.0 - 2024-03-21
+* [#1664](https://github.com/stripe/stripe-php/pull/1664) Update generated code
+  * Add support for new resources `ConfirmationToken` and `Forwarding.Request`
+  * Add support for `retrieve` method on resource `ConfirmationToken`
+  * Add support for `all`, `create`, and `retrieve` methods on resource `Request`
+  * Add support for new values `forwarding_api_inactive`, `forwarding_api_invalid_parameter`, `forwarding_api_upstream_connection_error`, and `forwarding_api_upstream_connection_timeout` on enum `StripeError.code`
+  * Add support for `mobilepay` on `PaymentMethod`
+  * Add support for new value `mobilepay` on enum `PaymentMethod.type`
+  * Add support for `name` on `Terminal.Configuration`
+
 ## 13.15.0-beta.1 - 2024-03-14
 * [#1659](https://github.com/stripe/stripe-php/pull/1659) Update generated code for beta
   * Add support for new resources `Billing.MeterEventAdjustment`, `Billing.MeterEvent`, and `Billing.Meter`
