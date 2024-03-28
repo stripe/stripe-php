@@ -11,7 +11,7 @@ namespace Stripe\Issuing;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string|\Stripe\Issuing\Card $card Card associated with this token.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|string $device_fingerprint The hashed ID derived from the device ID from the card network associated with the token
+ * @property null|string $device_fingerprint The hashed ID derived from the device ID from the card network associated with the token.
  * @property null|string $last4 The last four digits of the token.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $network The token service provider / card network associated with the token.
