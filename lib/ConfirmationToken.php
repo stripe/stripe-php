@@ -9,7 +9,9 @@ namespace Stripe;
  * to your server for confirming a PaymentIntent or SetupIntent. If the confirmation
  * is successful, values present on the ConfirmationToken are written onto the Intent.
  *
- * To learn more or request access, visit the related guided: <a href="https://stripe.com/docs/payments/finalize-payments-on-the-server-confirmation-tokens">Finalize payments on the server using Confirmation Tokens</a>.
+ * To learn more about how to use ConfirmationToken, visit the related guides:
+ * - <a href="https://stripe.com/docs/payments/finalize-payments-on-the-server">Finalize payments on the server</a>
+ * - <a href="https://stripe.com/docs/payments/build-a-two-step-confirmation">Build two-step confirmation</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
