@@ -138,12 +138,12 @@ class Event extends ApiResource
     const IDENTITY_VERIFICATION_SESSION_REDACTED = 'identity.verification_session.redacted';
     const IDENTITY_VERIFICATION_SESSION_REQUIRES_INPUT = 'identity.verification_session.requires_input';
     const IDENTITY_VERIFICATION_SESSION_VERIFIED = 'identity.verification_session.verified';
-    const INVOICEITEM_CREATED = 'invoiceitem.created';
-    const INVOICEITEM_DELETED = 'invoiceitem.deleted';
     const INVOICE_CREATED = 'invoice.created';
     const INVOICE_DELETED = 'invoice.deleted';
     const INVOICE_FINALIZATION_FAILED = 'invoice.finalization_failed';
     const INVOICE_FINALIZED = 'invoice.finalized';
+    const INVOICE_ITEM_CREATED = 'invoiceitem.created';
+    const INVOICE_ITEM_DELETED = 'invoiceitem.deleted';
     const INVOICE_MARKED_UNCOLLECTIBLE = 'invoice.marked_uncollectible';
     const INVOICE_PAID = 'invoice.paid';
     const INVOICE_PAYMENT_ACTION_REQUIRED = 'invoice.payment_action_required';
