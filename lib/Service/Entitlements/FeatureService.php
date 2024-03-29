@@ -41,4 +41,20 @@ class FeatureService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', '/v1/entitlements/features', $params, $opts);
     }
+
+    /**
+     * Update a feature’s metadata or permanently deactivate it.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Entitlements\Feature
+     */
+    public function update($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/entitlements/features/%s', $id), $params, $opts);
+    }
 }
