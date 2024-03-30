@@ -303,6 +303,12 @@ class InvoiceService extends \Stripe\Service\AbstractService
      * finalized invoices and maintains a papertrail where the invoice can still be
      * found.
      *
+     * Consult with local regulations to determine whether and how an invoice might be
+     * amended, canceled, or voided in the jurisdiction you’re doing business in. You
+     * might need to <a href="#create_invoice">issue another invoice</a> or <a
+     * href="#create_credit_note">credit note</a> instead. Stripe recommends that you
+     * consult with your legal counsel for advice specific to your business.
+     *
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
