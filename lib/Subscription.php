@@ -33,7 +33,7 @@ namespace Stripe;
  * @property null|\Stripe\TaxRate[] $default_tax_rates The tax rates that will apply to any subscription item that does not have <code>tax_rates</code> set. Invoices created will have their <code>default_tax_rates</code> populated from the subscription.
  * @property null|string $description The subscription's description, meant to be displayable to the customer. Use this field to optionally store an explanation of the subscription for rendering in Stripe surfaces and certain local payment methods UIs.
  * @property null|\Stripe\Discount $discount Describes the current discount applied to this subscription, if there is one. When billing, a discount applied to a subscription overrides a discount applied on a customer-wide basis. This field has been deprecated and will be removed in a future API version. Use <code>discounts</code> instead.
- * @property null|(string|\Stripe\Discount)[] $discounts The discounts applied to the subscription. Subscription item discounts are applied before subscription discounts. Use <code>expand[]=discounts</code> to expand each discount.
+ * @property (string|\Stripe\Discount)[] $discounts The discounts applied to the subscription. Subscription item discounts are applied before subscription discounts. Use <code>expand[]=discounts</code> to expand each discount.
  * @property null|int $ended_at If the subscription has ended, the date the subscription ended.
  * @property \Stripe\Collection<\Stripe\SubscriptionItem> $items List of subscription items, each with an attached price.
  * @property null|string|\Stripe\Invoice $latest_invoice The most recent invoice this subscription has generated.

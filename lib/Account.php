@@ -32,6 +32,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|bool $payouts_enabled Whether Stripe can send payouts to this account.
  * @property null|\Stripe\StripeObject $requirements
+ * @property null|\Stripe\StripeObject $risk_controls
  * @property null|\Stripe\StripeObject $settings Options for customizing how the account functions within Stripe.
  * @property null|\Stripe\StripeObject $tos_acceptance
  * @property null|string $type The Stripe account type. Can be <code>standard</code>, <code>express</code>, or <code>custom</code>.

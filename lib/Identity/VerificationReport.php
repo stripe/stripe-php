@@ -22,11 +22,14 @@ namespace Stripe\Identity;
  * @property null|string $client_reference_id A string to reference this user. This can be a customer ID, a session ID, or similar, and can be used to reconcile this verification with your internal systems.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|\Stripe\StripeObject $document Result from a document check
+ * @property null|\Stripe\StripeObject $email Result from a email check
  * @property null|\Stripe\StripeObject $id_number Result from an id_number check
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $options
+ * @property null|\Stripe\StripeObject $phone Result from a phone check
  * @property null|\Stripe\StripeObject $selfie Result from a selfie check
  * @property string $type Type of report.
+ * @property null|string $verification_flow The configuration token of a Verification Flow from the dashboard.
  * @property null|string $verification_session ID of the VerificationSession that created this report.
  */
 class VerificationReport extends \Stripe\ApiResource
@@ -38,4 +41,5 @@ class VerificationReport extends \Stripe\ApiResource
 
     const TYPE_DOCUMENT = 'document';
     const TYPE_ID_NUMBER = 'id_number';
+    const TYPE_VERIFICATION_FLOW = 'verification_flow';
 }

@@ -22,4 +22,5 @@ class Feature extends \Stripe\ApiResource
 
     use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\Create;
+    use \Stripe\ApiOperations\Update;
 }
