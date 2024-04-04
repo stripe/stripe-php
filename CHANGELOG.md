@@ -1,5 +1,13 @@
 # Changelog
 
+## 13.18.0-beta.1 - 2024-04-04
+* [#1671](https://github.com/stripe/stripe-php/pull/1671) Update generated code for beta
+  * Add support for `update` method on resource `Entitlements.Feature`
+  * Add support for `risk_controls` on `Account`
+  * Change type of `Subscription.discounts` and `SubscriptionItem.discounts` from `nullable(array(expandable($Discount)))` to `array(expandable($Discount))`
+* [#1665](https://github.com/stripe/stripe-php/pull/1665) Update generated code for beta
+
+
 ## 13.16.0 - 2024-03-28
 * [#1666](https://github.com/stripe/stripe-php/pull/1666) Update generated code
   * Add support for new resources `Billing.MeterEventAdjustment`, `Billing.MeterEvent`, and `Billing.Meter`
