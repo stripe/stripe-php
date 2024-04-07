@@ -13,7 +13,7 @@ namespace Stripe;
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|\Stripe\StripeObject[] $discount_amounts The amount of discount calculated per discount for this line item.
  * @property bool $discountable If true, discounts will apply to this line item. Always false for prorations.
- * @property null|(string|\Stripe\Discount)[] $discounts The discounts applied to the invoice line item. Line item discounts are applied before invoice discounts. Use <code>expand[]=discounts</code> to expand each discount.
+ * @property (string|\Stripe\Discount)[] $discounts The discounts applied to the invoice line item. Line item discounts are applied before invoice discounts. Use <code>expand[]=discounts</code> to expand each discount.
  * @property null|string $invoice The ID of the invoice that contains this line item.
  * @property null|string|\Stripe\InvoiceItem $invoice_item The ID of the <a href="https://stripe.com/docs/api/invoiceitems">invoice item</a> associated with this line item if any.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.

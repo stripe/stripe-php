@@ -1,5 +1,17 @@
 # Changelog
 
+## 13.17.0 - 2024-04-04
+* [#1670](https://github.com/stripe/stripe-php/pull/1670) Update generated code
+  * Add support for `subscription_item` on `Discount`
+  * Add support for `email` and `phone` on `Identity.VerificationReport`
+  * Add support for `verification_flow` on `Identity.VerificationReport` and `Identity.VerificationSession`
+  * Add support for new value `verification_flow` on enums `Identity.VerificationReport.type` and `Identity.VerificationSession.type`
+  * Add support for `provided_details` on `Identity.VerificationSession`
+  * Change type of `Invoice.discounts` from `nullable(array(expandable(deletable($Discount))))` to `array(expandable(deletable($Discount)))`
+  * Add support for `zip` on `PaymentMethodConfiguration`
+  * Add support for `discounts` on `SubscriptionItem` and `Subscription`
+  * Add support for new value `mobile_phone_reader` on enum `Terminal.Reader.device_type`
+
 ## 13.16.0 - 2024-03-28
 * [#1666](https://github.com/stripe/stripe-php/pull/1666) Update generated code
   * Add support for new resources `Billing.MeterEventAdjustment`, `Billing.MeterEvent`, and `Billing.Meter`
