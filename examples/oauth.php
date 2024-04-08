@@ -16,7 +16,7 @@ if (isset($_GET['code'])) {
         ]);
     } catch (\Stripe\Exception\OAuth\OAuthErrorException $e) {
         exit('Error: ' . $e->getMessage());
-    }
+    }//Comment
 
     $accountId = $resp->stripe_user_id;
 
