@@ -27,6 +27,7 @@ namespace Stripe\Service;
  * @property CustomerService $customers
  * @property CustomerSessionService $customerSessions
  * @property DisputeService $disputes
+ * @property Entitlements\EntitlementsServiceFactory $entitlements
  * @property EphemeralKeyService $ephemeralKeys
  * @property EventService $events
  * @property ExchangeRateService $exchangeRates
@@ -103,6 +104,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'customers' => CustomerService::class,
         'customerSessions' => CustomerSessionService::class,
         'disputes' => DisputeService::class,
+        'entitlements' => Entitlements\EntitlementsServiceFactory::class,
         'ephemeralKeys' => EphemeralKeyService::class,
         'events' => EventService::class,
         'exchangeRates' => ExchangeRateService::class,

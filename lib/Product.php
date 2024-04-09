@@ -41,6 +41,7 @@ class Product extends ApiResource
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Delete;
+    use ApiOperations\NestedResource;
     use ApiOperations\Retrieve;
     use ApiOperations\Search;
     use ApiOperations\Update;
@@ -61,5 +62,65 @@ class Product extends ApiResource
         $url = '/v1/products/search';
 
         return static::_requestPage($url, \Stripe\SearchResult::class, $params, $opts);
+    }
+
+    const PATH_FEATURES = '/features';
+
+    /**
+     * @param string $id the ID of the product on which to retrieve the product features
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\ProductFeature> the list of product features
+     */
+    public static function allFeatures($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_FEATURES, $params, $opts);
+    }
+
+    /**
+     * @param string $id the ID of the product on which to create the product feature
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ProductFeature
+     */
+    public static function createFeature($id, $params = null, $opts = null)
+    {
+        return self::_createNestedResource($id, static::PATH_FEATURES, $params, $opts);
+    }
+
+    /**
+     * @param string $id the ID of the product to which the product feature belongs
+     * @param string $featureId the ID of the product feature to delete
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ProductFeature
+     */
+    public static function deleteFeature($id, $featureId, $params = null, $opts = null)
+    {
+        return self::_deleteNestedResource($id, static::PATH_FEATURES, $featureId, $params, $opts);
+    }
+
+    /**
+     * @param string $id the ID of the product to which the product feature belongs
+     * @param string $featureId the ID of the product feature to retrieve
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ProductFeature
+     */
+    public static function retrieveFeature($id, $featureId, $params = null, $opts = null)
+    {
+        return self::_retrieveNestedResource($id, static::PATH_FEATURES, $featureId, $params, $opts);
     }
 }

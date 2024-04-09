@@ -27,6 +27,7 @@ namespace Stripe;
  * @property \Stripe\Service\CustomerService $customers
  * @property \Stripe\Service\CustomerSessionService $customerSessions
  * @property \Stripe\Service\DisputeService $disputes
+ * @property \Stripe\Service\Entitlements\EntitlementsServiceFactory $entitlements
  * @property \Stripe\Service\EphemeralKeyService $ephemeralKeys
  * @property \Stripe\Service\EventService $events
  * @property \Stripe\Service\ExchangeRateService $exchangeRates

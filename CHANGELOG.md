@@ -1,5 +1,13 @@
 # Changelog
 
+## 13.18.0 - 2024-04-09
+* [#1675](https://github.com/stripe/stripe-php/pull/1675) Update generated code
+  * Add support for new resources `Entitlements.ActiveEntitlement` and `Entitlements.Feature`
+  * Add support for `all` and `retrieve` methods on resource `ActiveEntitlement`
+  * Add support for `all`, `create`, `retrieve`, and `update` methods on resource `Feature`
+  * Add support for new value `none` on enum `Account.type`
+  * Add support for `cancel`, `event_name`, and `type` on `Billing.MeterEventAdjustment`
+
 ## 13.17.0 - 2024-04-04
 * [#1670](https://github.com/stripe/stripe-php/pull/1670) Update generated code
   * Add support for `subscription_item` on `Discount`
