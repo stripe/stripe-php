@@ -29,6 +29,22 @@ class ProductService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Retrieve a list of features for a product.
+     *
+     * @param string $parentId
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\ProductFeature>
+     */
+    public function allFeatures($parentId, $params = null, $opts = null)
+    {
+        return $this->requestCollection('get', $this->buildPath('/v1/products/%s/features', $parentId), $params, $opts);
+    }
+
+    /**
      * Creates a new product object.
      *
      * @param null|array $params
@@ -41,6 +57,22 @@ class ProductService extends \Stripe\Service\AbstractService
     public function create($params = null, $opts = null)
     {
         return $this->request('post', '/v1/products', $params, $opts);
+    }
+
+    /**
+     * Creates a product_feature, which represents a feature attachment to a product.
+     *
+     * @param string $parentId
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ProductFeature
+     */
+    public function createFeature($parentId, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/products/%s/features', $parentId), $params, $opts);
     }
 
     /**
@@ -62,6 +94,23 @@ class ProductService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Deletes the feature attachment to a product.
+     *
+     * @param string $parentId
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ProductFeature
+     */
+    public function deleteFeature($parentId, $id, $params = null, $opts = null)
+    {
+        return $this->request('delete', $this->buildPath('/v1/products/%s/features/%s', $parentId, $id), $params, $opts);
+    }
+
+    /**
      * Retrieves the details of an existing product. Supply the unique product ID from
      * either a product creation request or the product list, and Stripe will return
      * the corresponding product information.
@@ -77,6 +126,23 @@ class ProductService extends \Stripe\Service\AbstractService
     public function retrieve($id, $params = null, $opts = null)
     {
         return $this->request('get', $this->buildPath('/v1/products/%s', $id), $params, $opts);
+    }
+
+    /**
+     * Retrieves a product_feature, which represents a feature attachment to a product.
+     *
+     * @param string $parentId
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ProductFeature
+     */
+    public function retrieveFeature($parentId, $id, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v1/products/%s/features/%s', $parentId, $id), $params, $opts);
     }
 
     /**

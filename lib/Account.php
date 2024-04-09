@@ -53,6 +53,7 @@ class Account extends ApiResource
 
     const TYPE_CUSTOM = 'custom';
     const TYPE_EXPRESS = 'express';
+    const TYPE_NONE = 'none';
     const TYPE_STANDARD = 'standard';
 
     use ApiOperations\Retrieve {
