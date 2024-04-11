@@ -10,6 +10,8 @@ namespace Stripe;
  *
  * Related guide: <a href="https://stripe.com/docs/billing/subscriptions/metered-billing">Metered billing</a>
  *
+ * This is our legacy usage-based billing API. See the <a href="https://docs.stripe.com/billing/subscriptions/usage-based">updated usage-based billing docs</a>.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
