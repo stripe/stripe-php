@@ -20,9 +20,9 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string|\Stripe\Price $default_price The ID of the <a href="https://stripe.com/docs/api/prices">Price</a> object that is the default price for this product.
  * @property null|string $description The product's description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.
- * @property \Stripe\StripeObject[] $features A list of up to 15 marketing features for this product. These are displayed in <a href="https://stripe.com/docs/payments/checkout/pricing-table">pricing tables</a>.
  * @property string[] $images A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property \Stripe\StripeObject[] $marketing_features A list of up to 15 marketing features for this product. These are displayed in <a href="https://stripe.com/docs/payments/checkout/pricing-table">pricing tables</a>.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $name The product's name, meant to be displayable to the customer.
  * @property null|\Stripe\StripeObject $package_dimensions The dimensions of this product for shipping purposes.
@@ -108,5 +108,20 @@ class Product extends ApiResource
     public static function deleteFeature($id, $featureId, $params = null, $opts = null)
     {
         return self::_deleteNestedResource($id, static::PATH_FEATURES, $featureId, $params, $opts);
+    }
+
+    /**
+     * @param string $id the ID of the product to which the product feature belongs
+     * @param string $featureId the ID of the product feature to retrieve
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ProductFeature
+     */
+    public static function retrieveFeature($id, $featureId, $params = null, $opts = null)
+    {
+        return self::_retrieveNestedResource($id, static::PATH_FEATURES, $featureId, $params, $opts);
     }
 }

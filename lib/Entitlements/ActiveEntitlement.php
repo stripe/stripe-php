@@ -18,4 +18,5 @@ class ActiveEntitlement extends \Stripe\ApiResource
     const OBJECT_NAME = 'entitlements.active_entitlement';
 
     use \Stripe\ApiOperations\All;
+    use \Stripe\ApiOperations\Retrieve;
 }

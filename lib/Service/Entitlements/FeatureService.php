@@ -43,6 +43,22 @@ class FeatureService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Retrieves a feature.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Entitlements\Feature
+     */
+    public function retrieve($id, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v1/entitlements/features/%s', $id), $params, $opts);
+    }
+
+    /**
      * Update a feature’s metadata or permanently deactivate it.
      *
      * @param string $id

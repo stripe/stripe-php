@@ -297,34 +297,6 @@ class CurlClient implements ClientInterface, StreamingClientInterface
             $opts[\CURLOPT_HTTP_VERSION] = \CURL_HTTP_VERSION_2TLS;
         }
 
-        // If the user didn't explicitly specify a CURLOPT_IPRESOLVE option, we
-        // force IPv4 resolving as Stripe's API servers are only accessible over
-        // IPv4 (see. https://github.com/stripe/stripe-php/issues/1045).
-        // We let users specify a custom option in case they need to say proxy
-        // through an IPv6 proxy.
-        if (!isset($opts[\CURLOPT_IPRESOLVE])) {
-            $opts[\CURLOPT_IPRESOLVE] = \CURL_IPRESOLVE_V4;
-        }
-
-        return $opts;
-    }
-
-    /**
-     * @param 'delete'|'get'|'post' $method
-     * @param string $absUrl
-     * @param array $headers
-     * @param array $params
-     * @param bool $hasFile
-     * @param 'preview'|'standard' $apiMode
-     */
-    private function constructRequest($method, $absUrl, $headers, $params, $hasFile, $apiMode)
-    {
-        $method = \strtolower($method);
-
-        $opts = $this->calculateDefaultOptions($method, $absUrl, $headers, $params, $hasFile);
-        list($absUrl, $body) = $this->constructUrlAndBody($method, $absUrl, $params, $hasFile, $apiMode);
-        $opts = $this->constructCurlOptions($method, $absUrl, $headers, $body, $opts);
-
         return [$opts, $absUrl];
     }
 

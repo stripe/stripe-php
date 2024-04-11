@@ -26,4 +26,20 @@ class ActiveEntitlementService extends \Stripe\Service\AbstractService
     {
         return $this->requestCollection('get', '/v1/entitlements/active_entitlements', $params, $opts);
     }
+
+    /**
+     * Retrieve an active entitlement.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Entitlements\ActiveEntitlement
+     */
+    public function retrieve($id, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v1/entitlements/active_entitlements/%s', $id), $params, $opts);
+    }
 }
