@@ -297,6 +297,25 @@ class CurlClient implements ClientInterface, StreamingClientInterface
             $opts[\CURLOPT_HTTP_VERSION] = \CURL_HTTP_VERSION_2TLS;
         }
 
+        return $opts;
+    }
+
+    /**
+     * @param 'delete'|'get'|'post' $method
+     * @param string $absUrl
+     * @param array $headers
+     * @param array $params
+     * @param bool $hasFile
+     * @param 'preview'|'standard' $apiMode
+     */
+    private function constructRequest($method, $absUrl, $headers, $params, $hasFile, $apiMode)
+    {
+        $method = \strtolower($method);
+
+        $opts = $this->calculateDefaultOptions($method, $absUrl, $headers, $params, $hasFile);
+        list($absUrl, $body) = $this->constructUrlAndBody($method, $absUrl, $params, $hasFile, $apiMode);
+        $opts = $this->constructCurlOptions($method, $absUrl, $headers, $body, $opts);
+
         return [$opts, $absUrl];
     }
 
