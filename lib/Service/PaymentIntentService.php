@@ -158,7 +158,7 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Perform an decremental authorization on an eligible <a
+     * Perform a decremental authorization on an eligible <a
      * href="/docs/api/payment_intents/object">PaymentIntent</a>. To be eligible, the
      * PaymentIntent’s status must be <code>requires_capture</code> and <a
      * href="/docs/api/charges/object#charge_object-payment_method_details-card-decremental_authorization">decremental_authorization.status</a>
@@ -173,8 +173,8 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
      * The PaymentIntent will now be capturable up to the new authorized amount.
      *
      * Each PaymentIntent can have a maximum of 10 decremental or incremental
-     * authorization attempts, including declines. After it’s captured, a PaymentIntent
-     * can no longer be decremented.
+     * authorization attempts, including declines. After it’s fully captured, a
+     * PaymentIntent can no longer be decremented.
      *
      * @param string $id
      * @param null|array $params

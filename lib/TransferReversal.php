@@ -17,7 +17,7 @@ namespace Stripe;
  * transfer only if the destination account has enough balance to cover the
  * reversal.
  *
- * Related guide: <a href="https://stripe.com/docs/connect/separate-charges-and-transfers#reversing-transfers">Reversing transfers</a>
+ * Related guide: <a href="https://stripe.com/docs/connect/separate-charges-and-transfers#reverse-transfers">Reverse transfers</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
