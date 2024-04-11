@@ -27,6 +27,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $affirm
  * @property null|\Stripe\StripeObject $afterpay_clearpay
  * @property null|\Stripe\StripeObject $alipay
+ * @property null|\Stripe\StripeObject $amazon_pay
  * @property null|\Stripe\StripeObject $apple_pay
  * @property null|string $application For child configs, the Connect application associated with the configuration.
  * @property null|\Stripe\StripeObject $au_becs_debit
