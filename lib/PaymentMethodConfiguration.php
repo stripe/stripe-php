@@ -27,6 +27,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $affirm
  * @property null|\Stripe\StripeObject $afterpay_clearpay
  * @property null|\Stripe\StripeObject $alipay
+ * @property null|\Stripe\StripeObject $amazon_pay
  * @property null|\Stripe\StripeObject $apple_pay
  * @property null|string $application For child configs, the Connect application associated with the configuration.
  * @property null|\Stripe\StripeObject $au_becs_debit
@@ -50,6 +51,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $konbini
  * @property null|\Stripe\StripeObject $link
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property null|\Stripe\StripeObject $multibanco
  * @property string $name The configuration's name.
  * @property null|\Stripe\StripeObject $oxxo
  * @property null|\Stripe\StripeObject $p24
