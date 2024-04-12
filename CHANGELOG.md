@@ -1,5 +1,9 @@
 # Changelog
 
+## 14.2.0-beta.1 - 2024-04-11
+* [#1674](https://github.com/stripe/stripe-php/pull/1674) Merged from master
+
+
 ## 14.0.0 - 2024-04-10
 * [#1673](https://github.com/stripe/stripe-php/pull/1673)
 
