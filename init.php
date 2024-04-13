@@ -119,6 +119,7 @@ require __DIR__ . '/lib/CustomerSession.php';
 require __DIR__ . '/lib/Discount.php';
 require __DIR__ . '/lib/Dispute.php';
 require __DIR__ . '/lib/Entitlements/ActiveEntitlement.php';
+require __DIR__ . '/lib/Entitlements/ActiveEntitlementSummary.php';
 require __DIR__ . '/lib/Entitlements/Feature.php';
 require __DIR__ . '/lib/EphemeralKey.php';
 require __DIR__ . '/lib/Event.php';
