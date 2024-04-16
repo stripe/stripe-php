@@ -52,6 +52,7 @@ class ObjectTypes
             \Stripe\Discount::OBJECT_NAME => \Stripe\Discount::class,
             \Stripe\Dispute::OBJECT_NAME => \Stripe\Dispute::class,
             \Stripe\Entitlements\ActiveEntitlement::OBJECT_NAME => \Stripe\Entitlements\ActiveEntitlement::class,
+            \Stripe\Entitlements\ActiveEntitlementSummary::OBJECT_NAME => \Stripe\Entitlements\ActiveEntitlementSummary::class,
             \Stripe\Entitlements\Feature::OBJECT_NAME => \Stripe\Entitlements\Feature::class,
             \Stripe\EphemeralKey::OBJECT_NAME => \Stripe\EphemeralKey::class,
             \Stripe\Event::OBJECT_NAME => \Stripe\Event::class,

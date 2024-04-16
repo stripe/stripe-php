@@ -124,6 +124,7 @@ class Event extends ApiResource
     const CUSTOMER_TAX_ID_DELETED = 'customer.tax_id.deleted';
     const CUSTOMER_TAX_ID_UPDATED = 'customer.tax_id.updated';
     const CUSTOMER_UPDATED = 'customer.updated';
+    const ENTITLEMENTS_ACTIVE_ENTITLEMENT_SUMMARY_UPDATED = 'entitlements.active_entitlement_summary.updated';
     const FILE_CREATED = 'file.created';
     const FINANCIAL_CONNECTIONS_ACCOUNT_CREATED = 'financial_connections.account.created';
     const FINANCIAL_CONNECTIONS_ACCOUNT_DEACTIVATED = 'financial_connections.account.deactivated';
@@ -351,6 +352,7 @@ class Event extends ApiResource
     const TYPE_CUSTOMER_TAX_ID_DELETED = 'customer.tax_id.deleted';
     const TYPE_CUSTOMER_TAX_ID_UPDATED = 'customer.tax_id.updated';
     const TYPE_CUSTOMER_UPDATED = 'customer.updated';
+    const TYPE_ENTITLEMENTS_ACTIVE_ENTITLEMENT_SUMMARY_UPDATED = 'entitlements.active_entitlement_summary.updated';
     const TYPE_FILE_CREATED = 'file.created';
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_CREATED = 'financial_connections.account.created';
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_DEACTIVATED = 'financial_connections.account.deactivated';
