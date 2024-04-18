@@ -165,6 +165,24 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
+     * @return \Stripe\Invoice the created invoice
+     */
+    public static function createPreview($params = null, $opts = null)
+    {
+        $url = static::classUrl() . '/create_preview';
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return \Stripe\Invoice the finalized invoice
      */
     public function finalizeInvoice($params = null, $opts = null)
