@@ -37,6 +37,8 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * href="/docs/issuing/controls/real-time-authorizations#authorization-handling">respond
      * directly to the webhook request to approve an authorization</a>.
      *
+     * @deprecated  this method is deprecated, please refer to the description for details
+     *
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -57,6 +59,8 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * authorization</a> flow. This method is deprecated. Instead, <a
      * href="/docs/issuing/controls/real-time-authorizations#authorization-handling">respond
      * directly to the webhook request to decline an authorization</a>.
+     *
+     * @deprecated  this method is deprecated, please refer to the description for details
      *
      * @param string $id
      * @param null|array $params
