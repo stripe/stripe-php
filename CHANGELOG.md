@@ -1,5 +1,11 @@
 # Changelog
 
+## 14.3.0 - 2024-04-18
+* [#1681](https://github.com/stripe/stripe-php/pull/1681) Update generated code
+  * Add support for `create_preview` method on resource `Invoice`
+  * Add support for `saved_payment_method_options` on `Checkout.Session`
+* [#1682](https://github.com/stripe/stripe-php/pull/1682) Added @throws to autoPagingIterator. Fixes [#1678](https://github.com/stripe/stripe-php/issues/1678)
+
 ## 14.2.0 - 2024-04-16
 * [#1680](https://github.com/stripe/stripe-php/pull/1680) Update generated code
   * Add support for new resource `Entitlements.ActiveEntitlementSummary`
