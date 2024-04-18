@@ -1,5 +1,9 @@
 # Changelog
 
+## 14.4.0-beta.1 - 2024-04-18
+* [#1679](https://github.com/stripe/stripe-php/pull/1679) Update generated code for beta
+
+
 ## 14.2.0 - 2024-04-16
 * [#1680](https://github.com/stripe/stripe-php/pull/1680) Update generated code
   * Add support for new resource `Entitlements.ActiveEntitlementSummary`
