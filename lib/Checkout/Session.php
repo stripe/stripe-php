@@ -61,6 +61,7 @@ namespace Stripe\Checkout;
  * @property null|string $recovered_from The ID of the original expired Checkout Session that triggered the recovery flow.
  * @property null|string $redirect_on_completion This parameter applies to <code>ui_mode: embedded</code>. Learn more about the <a href="https://stripe.com/docs/payments/checkout/custom-redirect-behavior">redirect behavior</a> of embedded sessions. Defaults to <code>always</code>.
  * @property null|string $return_url Applies to Checkout Sessions with <code>ui_mode: embedded</code>. The URL to redirect your customer back to after they authenticate or cancel their payment on the payment method's app or site.
+ * @property null|\Stripe\StripeObject $saved_payment_method_options Controls saved payment method settings for the session. Only available in <code>payment</code> and <code>subscription</code> mode.
  * @property null|string|\Stripe\SetupIntent $setup_intent The ID of the SetupIntent for Checkout Sessions in <code>setup</code> mode.
  * @property null|\Stripe\StripeObject $shipping_address_collection When set, provides configuration for Checkout to collect a shipping address from a customer.
  * @property null|\Stripe\StripeObject $shipping_cost The details of the customer cost of shipping, including the customer chosen ShippingRate.

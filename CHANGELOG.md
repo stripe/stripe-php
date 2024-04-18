@@ -1,8 +1,22 @@
 # Changelog
 
+## 14.2.0 - 2024-04-16
+* [#1680](https://github.com/stripe/stripe-php/pull/1680) Update generated code
+  * Add support for new resource `Entitlements.ActiveEntitlementSummary`
+  * Add support for new value `entitlements.active_entitlement_summary.updated` on enum `Event.type`
+  * Remove support for `config` on `Forwarding.Request`. This field is no longer used by the Forwarding Request API.
+  * Add support for `swish` on `PaymentMethodConfiguration`
+
 ## 14.2.0-beta.1 - 2024-04-11
 * [#1674](https://github.com/stripe/stripe-php/pull/1674) Merged from master
 
+## 14.1.0 - 2024-04-11
+* [#1677](https://github.com/stripe/stripe-php/pull/1677) Update generated code
+  * Add support for new values `billing_policy_remote_function_response_invalid`, `billing_policy_remote_function_timeout`, `billing_policy_remote_function_unexpected_status_code`, and `billing_policy_remote_function_unreachable` on enum `StripeError.code`
+  * Change type of `Billing.MeterEventAdjustment.cancel` from `BillingMeterResourceBillingMeterEventAdjustmentCancel` to `nullable(BillingMeterResourceBillingMeterEventAdjustmentCancel)`
+  * Add support for `amazon_pay` on `PaymentMethodConfiguration` and `PaymentMethod`
+  * Add support for new value `amazon_pay` on enum `PaymentMethod.type`
+  * Add support for new values `bh_vat`, `kz_bin`, `ng_tin`, and `om_vat` on enum `TaxId.type`
 
 ## 14.0.0 - 2024-04-10
 * [#1673](https://github.com/stripe/stripe-php/pull/1673)
