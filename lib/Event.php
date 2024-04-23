@@ -47,7 +47,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $data
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property int $pending_webhooks Number of webhooks that haven't been successfully delivered (for example, to return a 20x response) to the URLs you specify.
- * @property null|\Stripe\StripeObject $reason Information about the action that causes the event. Only present when the event is triggered by an API request or an <a href="https://stripe.com/docs/billing/revenue-recovery/automations">Automation</a> action.
+ * @property null|\Stripe\StripeObject $reason Information about the action that causes the event. Only present when the event is triggered by an API request or an <a href="https://stripe.com/docs/billing/automations">Automation</a> action.
  * @property null|\Stripe\StripeObject $request Information on the API request that triggers the event.
  * @property string $type Description of the event (for example, <code>invoice.created</code> or <code>charge.refunded</code>).
  */
