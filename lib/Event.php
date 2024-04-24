@@ -26,10 +26,10 @@ namespace Stripe;
  * <code>Event</code> objects directly to an endpoint on your server. You can manage
  * webhooks in your
  * <a href="https://dashboard.stripe.com/account/webhooks">account settings</a>. Learn how
- * to <a href="https://stripe.com/docs/webhooks">listen for events</a>
+ * to <a href="https://docs.stripe.com/webhooks">listen for events</a>
  * so that your integration can automatically trigger reactions.
  *
- * When using <a href="https://stripe.com/docs/connect">Connect</a>, you can also receive event notifications
+ * When using <a href="https://docs.stripe.com/connect">Connect</a>, you can also receive event notifications
  * that occur in connected accounts. For these events, there's an
  * additional <code>account</code> attribute in the received <code>Event</code> object.
  *
@@ -47,7 +47,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $data
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property int $pending_webhooks Number of webhooks that haven't been successfully delivered (for example, to return a 20x response) to the URLs you specify.
- * @property null|\Stripe\StripeObject $reason Information about the action that causes the event. Only present when the event is triggered by an API request or an <a href="https://stripe.com/docs/billing/automations">Automation</a> action.
+ * @property null|\Stripe\StripeObject $reason Information about the action that causes the event. Only present when the event is triggered by an API request or an <a href="https://docs.stripe.com/billing/automations">Automation</a> action.
  * @property null|\Stripe\StripeObject $request Information on the API request that triggers the event.
  * @property string $type Description of the event (for example, <code>invoice.created</code> or <code>charge.refunded</code>).
  */
