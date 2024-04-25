@@ -1,5 +1,10 @@
 # Changelog
 
+## 14.4.0 - 2024-04-25
+* [#1684](https://github.com/stripe/stripe-php/pull/1684) Update generated code
+  * Change type of `Entitlements.ActiveEntitlement.feature` from `string` to `expandable($Entitlements.Feature)`
+  * Add support for `mobilepay` on `PaymentMethodConfiguration`
+
 ## 14.3.0 - 2024-04-18
 * [#1681](https://github.com/stripe/stripe-php/pull/1681) Update generated code
   * Add support for `create_preview` method on resource `Invoice`
