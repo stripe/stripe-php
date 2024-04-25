@@ -1,5 +1,9 @@
 # Changelog
 
+## 14.5.0-beta.1 - 2024-04-25
+* [#1683](https://github.com/stripe/stripe-php/pull/1683) Update generated code for beta
+  * Add support for `cancel_subscription_schedule` on `QuoteLine`
+
 ## 14.4.0-beta.1 - 2024-04-18
 * [#1679](https://github.com/stripe/stripe-php/pull/1679) Update generated code for beta
 
