@@ -26,10 +26,10 @@ namespace Stripe;
  * <code>Event</code> objects directly to an endpoint on your server. You can manage
  * webhooks in your
  * <a href="https://dashboard.stripe.com/account/webhooks">account settings</a>. Learn how
- * to <a href="https://stripe.com/docs/webhooks">listen for events</a>
+ * to <a href="https://docs.stripe.com/webhooks">listen for events</a>
  * so that your integration can automatically trigger reactions.
  *
- * When using <a href="https://stripe.com/docs/connect">Connect</a>, you can also receive event notifications
+ * When using <a href="https://docs.stripe.com/connect">Connect</a>, you can also receive event notifications
  * that occur in connected accounts. For these events, there's an
  * additional <code>account</code> attribute in the received <code>Event</code> object.
  *
