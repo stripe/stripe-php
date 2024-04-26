@@ -18,7 +18,7 @@ namespace Stripe\GiftCards;
  * @property null|\Stripe\StripeObject $created_by The related Stripe objects that created this gift card.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property \Stripe\Collection<\Stripe\GiftCards\Transaction> $transactions Transactions on this gift card.
+ * @property null|\Stripe\Collection<\Stripe\GiftCards\Transaction> $transactions Transactions on this gift card.
  */
 class Card extends \Stripe\ApiResource
 {
