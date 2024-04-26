@@ -96,8 +96,8 @@ namespace Stripe;
  * @property null|string|\Stripe\PaymentIntent $payment_intent The PaymentIntent associated with this invoice. The PaymentIntent is generated when the invoice is finalized, and can then be used to pay the invoice. Note that voiding an invoice will cancel the PaymentIntent.
  * @property \Stripe\StripeObject $payment_settings
  * @property null|\Stripe\Collection<\Stripe\InvoicePayment> $payments Payments for this invoice
- * @property int $period_end End of the usage period during which invoice items were added to this invoice.
- * @property int $period_start Start of the usage period during which invoice items were added to this invoice.
+ * @property int $period_end End of the usage period during which invoice items were added to this invoice. This looks back one period for a subscription invoice. Use the <a href="/api/invoices/line_item#invoice_line_item_object-period">line item period</a> to get the service period for each price.
+ * @property int $period_start Start of the usage period during which invoice items were added to this invoice. This looks back one period for a subscription invoice. Use the <a href="/api/invoices/line_item#invoice_line_item_object-period">line item period</a> to get the service period for each price.
  * @property int $post_payment_credit_notes_amount Total amount of all post-payment credit notes issued for this invoice.
  * @property int $pre_payment_credit_notes_amount Total amount of all pre-payment credit notes issued for this invoice.
  * @property null|string|\Stripe\Quote $quote The quote this invoice was generated from.
