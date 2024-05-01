@@ -42,6 +42,8 @@ class Customer extends ApiResource
 {
     const OBJECT_NAME = 'customer';
 
+    const CREATE_DEPRECATED_PARAMS = ['balance'];
+
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Delete;
