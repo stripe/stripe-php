@@ -3,6 +3,7 @@
     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
     bootstrap="tests/bootstrap.no_autoload.php"
     colors="true"
+    convertDeprecationsToExceptions="true"
 >
     <php>
       <env name="IS_RUNNING_PHPUNIT" value="true"/>

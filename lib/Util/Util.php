@@ -303,7 +303,7 @@ abstract class Util
 
         $deprecated_param = end($parts);
         if (\array_key_exists($deprecated_param, $cur)) {
-            @trigger_error(
+            trigger_error(
                 "The {$deprecated_param} parameter is deprecated and will be removed in a future version. " .
                 'Please refer to the changelog for more information.',
                 E_USER_DEPRECATED

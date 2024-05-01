@@ -66,6 +66,9 @@ $config->setRules([
     // We have to support `@return void` to satisfy Symfony deprecations helper.
     // See https://github.com/stripe/stripe-php/pull/1230
     'phpdoc_no_empty_return' => false,
+
+    // For warning sdk users about deprecations
+    'error_suppression' => false,
 ]);
 $config->setFinder($finder);
 return $config;
