@@ -137,4 +137,30 @@ final class UtilTest extends \Stripe\TestCase
             Util::flattenParams($params)
         );
     }
+
+    public function testTriggerDeprecatedParamWarnsOnFindingADeprecatedParam()
+    {
+        $this->compatExpectDeprecation(static::compatDeprecatedClass());
+        Util::triggerDeprecatedParamWarnings(['foo' => true], ['foo']);
+    }
+
+    public function testTriggerDeprecatedParamDoesNotWarn()
+    {
+        Util::triggerDeprecatedParamWarnings(['foo' => true], []);
+        Util::triggerDeprecatedParamWarnings(['foo' => true], ['bar']);
+        Util::triggerDeprecatedParamWarnings(['foo' => true], ['']);
+        static::assertTrue(true);
+    }
+
+    public function testTriggerDeprecatedParamWarnsOnFindingANestedDeprecatedParam()
+    {
+        $this->compatExpectDeprecation(static::compatDeprecatedClass());
+        Util::triggerDeprecatedParamWarnings(['foo' => ['bar' => true]], ['foo.bar']);
+    }
+
+    public function testTriggerDeprecatedParamWarnsOnFindingANestedDeprecatedParamArray()
+    {
+        $this->compatExpectDeprecation(static::compatDeprecatedClass());
+        Util::triggerDeprecatedParamWarnings(['foo' => [['car' => true], [1], ['bar' => true]]], ['foo.bar']);
+    }
 }

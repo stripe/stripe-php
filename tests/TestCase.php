@@ -68,6 +68,27 @@ class TestCase extends \PHPUnit\Framework\TestCase
         return \PHPUnit_Framework_Error_Warning::class;
     }
 
+    public static function compatDeprecatedClass() {
+        if (class_exists('\PHPUnit\Framework\Error\Deprecated')) {
+            // @phpstan-ignore-next-line
+            return \PHPUnit\Framework\Error\Deprecated::class;
+        }
+
+        // @phpstan-ignore-next-line
+        return \PHPUnit_Framework_Error_Deprecated::class;
+    }
+
+    public function compatExpectDeprecation($deprecationClass)
+    {
+        if (method_exists($this, 'expectDeprecation')) {
+            // @phpstan-ignore-next-line
+            $this->expectDeprecation();
+        } else {
+            // @phpstan-ignore-next-line
+            $this->expectException($deprecationClass);
+        }
+    }
+
     public function compatExpectWarning($warningClass)
     {
         if (method_exists($this, 'expectWarning')) {

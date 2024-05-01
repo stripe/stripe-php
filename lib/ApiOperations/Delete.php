@@ -2,6 +2,8 @@
 
 namespace Stripe\ApiOperations;
 
+use Stripe\Util\Util;
+
 /**
  * Trait for deletable resources. Adds a `delete()` method to the class.
  *
@@ -20,6 +22,10 @@ trait Delete
     public function delete($params = null, $opts = null)
     {
         self::_validateParams($params);
+        $className = static::class;
+        if (\defined("{$className}::DEPRECATED_PARAMS")) {
+            Util::triggerDeprecatedParamWarnings($params, static::DEPRECATED_PARAMS);
+        }
 
         $url = $this->instanceUrl();
         list($response, $opts) = $this->_request('delete', $url, $params, $opts);

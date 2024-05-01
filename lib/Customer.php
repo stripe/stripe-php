@@ -41,6 +41,7 @@ namespace Stripe;
 class Customer extends ApiResource
 {
     const OBJECT_NAME = 'customer';
+    const DEPRECATED_PARAMS = ['balance'];
 
     use ApiOperations\All;
     use ApiOperations\Create;

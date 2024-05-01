@@ -2,6 +2,8 @@
 
 namespace Stripe\ApiOperations;
 
+use Stripe\Util\Util;
+
 /**
  * Trait for searchable resources.
  *
@@ -20,6 +22,11 @@ trait Search
      */
     protected static function _searchResource($searchUrl, $params = null, $opts = null)
     {
+        $className = static::class;
+        if (\defined("{$className}::DEPRECATED_PARAMS")) {
+            Util::triggerDeprecatedParamWarnings($params, static::DEPRECATED_PARAMS);
+        }
+
         return static::_requestPage($searchUrl, \Stripe\SearchResult::class, $params, $opts);
     }
 }

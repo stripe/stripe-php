@@ -2,6 +2,8 @@
 
 namespace Stripe\ApiOperations;
 
+use Stripe\Util\Util;
+
 /**
  * Trait for updatable resources. Adds an `update()` static method and a
  * `save()` method to the class.
@@ -22,6 +24,11 @@ trait Update
     public static function update($id, $params = null, $opts = null)
     {
         self::_validateParams($params);
+        $className = static::class;
+        if (\defined("{$className}::DEPRECATED_PARAMS")) {
+            Util::triggerDeprecatedParamWarnings($params, static::DEPRECATED_PARAMS);
+        }
+
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);

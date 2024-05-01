@@ -2,6 +2,8 @@
 
 namespace Stripe\ApiOperations;
 
+use Stripe\Util\Util;
+
 /**
  * Trait for creatable resources. Adds a `create()` static method to the class.
  *
@@ -20,6 +22,11 @@ trait Create
     public static function create($params = null, $options = null)
     {
         self::_validateParams($params);
+        $className = static::class;
+        if (\defined("{$className}::DEPRECATED_PARAMS")) {
+            Util::triggerDeprecatedParamWarnings($params, static::DEPRECATED_PARAMS);
+        }
+
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);

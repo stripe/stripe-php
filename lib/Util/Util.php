@@ -266,4 +266,54 @@ abstract class Util
     {
         return (int) \round(\microtime(true) * 1000);
     }
+
+    /**
+     * Triggers a E_USER_DEPRECATED warning if a deprecated parameter is used in Stripe API reqyest.
+     *
+     * @param $params
+     * @param $deprecatedParams
+     *
+     * @return void
+     */
+    public static function triggerDeprecatedParamWarnings($params = null, $deprecatedParams = null)
+    {
+        if ($params && \is_array($deprecatedParams)) {
+            foreach ($deprecatedParams as $deprecatedParam) {
+                self::_triggerNestedDeprecatedParamWarnings($params, explode('.', $deprecatedParam));
+            }
+        }
+    }
+
+    protected static function _triggerNestedDeprecatedParamWarnings($params, $parts)
+    {
+        $cur = $params;
+
+        for ($i = 0, $count = \count($parts) - 1; $i < $count; ++$i) {
+            $part = $parts[$i];
+            if (\is_array($cur[$part])) {
+                foreach ($cur[$part] as $key => $item) {
+                    if (\is_int($key)) {
+                        // For handling for array of arrays, we only pass the item, since it would likely be an array
+                        self::_triggerNestedDeprecatedParamWarnings($item, \array_slice($parts, $i + 1));
+                    } else {
+                        // Handling for associative array
+                        self::_triggerNestedDeprecatedParamWarnings([$key => $item], \array_slice($parts, $i + 1));
+                    }
+                }
+            }
+            if (!\array_key_exists($part, $cur)) {
+                return;
+            }
+            $cur = $cur[$part];
+        }
+
+        $deprecated_param = end($parts);
+        if (\array_key_exists($deprecated_param, $cur)) {
+            @trigger_error(
+                "The {$deprecated_param} parameter is deprecated and will be removed in a future version. " .
+                'Please refer to the changelog for more information.',
+                E_USER_DEPRECATED
+            );
+        }
+    }
 }

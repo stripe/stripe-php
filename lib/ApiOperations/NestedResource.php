@@ -2,6 +2,8 @@
 
 namespace Stripe\ApiOperations;
 
+use Stripe\Util\Util;
+
 /**
  * Trait for resources that have nested resources.
  *
@@ -20,6 +22,11 @@ trait NestedResource
     protected static function _nestedResourceOperation($method, $url, $params = null, $options = null)
     {
         self::_validateParams($params);
+
+        $className = static::class;
+        if (\defined("{$className}::DEPRECATED_PARAMS")) {
+            Util::triggerDeprecatedParamWarnings($params, static::DEPRECATED_PARAMS);
+        }
 
         list($response, $opts) = static::_staticRequest($method, $url, $params, $options);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
