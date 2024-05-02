@@ -1,5 +1,10 @@
 # Changelog
 
+## 14.6.0-beta.1 - 2024-05-02
+* [#1689](https://github.com/stripe/stripe-php/pull/1689) Update generated code for beta
+  * Add support for `rechnung` on `PaymentMethod`
+  * Add support for new value `rechnung` on enum `PaymentMethod.type`
+
 ## 14.5.0-beta.1 - 2024-04-25
 * [#1683](https://github.com/stripe/stripe-php/pull/1683) Update generated code for beta
   * Add support for `cancel_subscription_schedule` on `QuoteLine`
