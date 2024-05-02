@@ -51,6 +51,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $pix
  * @property null|\Stripe\StripeObject $promptpay
  * @property null|\Stripe\StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
+ * @property null|\Stripe\StripeObject $rechnung
  * @property null|\Stripe\StripeObject $revolut_pay
  * @property null|\Stripe\StripeObject $sepa_debit
  * @property null|\Stripe\StripeObject $sofort
@@ -102,6 +103,7 @@ class PaymentMethod extends ApiResource
     const TYPE_PAYTO = 'payto';
     const TYPE_PIX = 'pix';
     const TYPE_PROMPTPAY = 'promptpay';
+    const TYPE_RECHNUNG = 'rechnung';
     const TYPE_REVOLUT_PAY = 'revolut_pay';
     const TYPE_SEPA_DEBIT = 'sepa_debit';
     const TYPE_SOFORT = 'sofort';
