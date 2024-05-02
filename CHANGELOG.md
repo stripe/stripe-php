@@ -1,5 +1,10 @@
 # Changelog
 
+## 14.5.0 - 2024-05-02
+* [#1688](https://github.com/stripe/stripe-php/pull/1688) Update generated code
+  * Add support for new value `shipping_address_invalid` on enum `StripeError.code`
+  * Add support for `ship_from_details` on `Tax.Calculation` and `Tax.Transaction`
+
 ## 14.4.0 - 2024-04-25
 * [#1684](https://github.com/stripe/stripe-php/pull/1684) Update generated code
   * Change type of `Entitlements.ActiveEntitlement.feature` from `string` to `expandable($Entitlements.Feature)`
