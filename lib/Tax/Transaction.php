@@ -20,6 +20,7 @@ namespace Stripe\Tax;
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $reference A custom unique identifier, such as 'myOrder_123'.
  * @property null|\Stripe\StripeObject $reversal If <code>type=reversal</code>, contains information about what was reversed.
+ * @property null|\Stripe\StripeObject $ship_from_details The details of the ship from location, such as the address.
  * @property null|\Stripe\StripeObject $shipping_cost The shipping cost details for the transaction.
  * @property int $tax_date Timestamp of date at which the tax rules and rates in effect applies for the calculation.
  * @property string $type If <code>reversal</code>, this transaction reverses an earlier transaction.
