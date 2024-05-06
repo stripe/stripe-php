@@ -29,6 +29,7 @@ namespace Stripe\Treasury;
  * @property string $statement_descriptor The description that appears on the receiving end for an OutboundPayment (for example, bank statement for external bank transfer).
  * @property string $status Current status of the OutboundPayment: <code>processing</code>, <code>failed</code>, <code>posted</code>, <code>returned</code>, <code>canceled</code>. An OutboundPayment is <code>processing</code> if it has been created and is pending. The status changes to <code>posted</code> once the OutboundPayment has been &quot;confirmed&quot; and funds have left the account, or to <code>failed</code> or <code>canceled</code>. If an OutboundPayment fails to arrive at its destination, its status will change to <code>returned</code>.
  * @property \Stripe\StripeObject $status_transitions
+ * @property null|\Stripe\StripeObject $tracking_details Details about network-specific tracking information if available.
  * @property string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
  */
 class OutboundPayment extends \Stripe\ApiResource
