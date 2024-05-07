@@ -29,7 +29,7 @@ namespace Stripe;
  * @property null|string $country The account's country.
  * @property null|int $created Time at which the account was connected. Measured in seconds since the Unix epoch.
  * @property null|string $default_currency Three-letter ISO currency code representing the default currency for the account. This must be a currency that <a href="https://stripe.com/docs/payouts">Stripe supports in the account's country</a>.
- * @property null|bool $details_submitted Whether account details have been submitted. Accounts with Stripe Dashboard access, which includes Standard accounts, cannot receive payouts before this is true.
+ * @property null|bool $details_submitted Whether account details have been submitted. Accounts with Stripe Dashboard access, which includes Standard accounts, cannot receive payouts before this is true. Accounts where this is false should be directed to <a href="/connect/onboarding">an onboarding flow</a> to finish submitting account details.
  * @property null|string $email An email address associated with the account. It's not used for authentication and Stripe doesn't market to this field without explicit approval from the platform.
  * @property null|\Stripe\Collection<\Stripe\BankAccount|\Stripe\Card> $external_accounts External accounts (bank accounts and debit cards) currently attached to this account. External accounts are only returned for requests where <code>controller[is_controller]</code> is true.
  * @property null|\Stripe\StripeObject $future_requirements
