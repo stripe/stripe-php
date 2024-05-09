@@ -4,6 +4,12 @@
 * [#1691](https://github.com/stripe/stripe-php/pull/1691) Update generated code for beta
   * No new beta features. Merging changes from the main branch.
 
+## 14.6.0 - 2024-05-09
+* [#1692](https://github.com/stripe/stripe-php/pull/1692) Update generated code
+  * Add support for `update` test helper method on resources `Treasury.OutboundPayment` and `Treasury.OutboundTransfer`
+  * Add support for new values `treasury.outbound_payment.tracking_details_updated` and `treasury.outbound_transfer.tracking_details_updated` on enum `Event.type`
+  * Add support for `allow_redisplay` on `PaymentMethod`
+  * Add support for `tracking_details` on `Treasury.OutboundPayment` and `Treasury.OutboundTransfer`
 
 ## 14.6.0-beta.1 - 2024-05-02
 * [#1689](https://github.com/stripe/stripe-php/pull/1689) Update generated code for beta
