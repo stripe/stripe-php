@@ -1,5 +1,12 @@
 # Changelog
 
+## 14.6.0 - 2024-05-09
+* [#1692](https://github.com/stripe/stripe-php/pull/1692) Update generated code
+  * Add support for `update` test helper method on resources `Treasury.OutboundPayment` and `Treasury.OutboundTransfer`
+  * Add support for new values `treasury.outbound_payment.tracking_details_updated` and `treasury.outbound_transfer.tracking_details_updated` on enum `Event.type`
+  * Add support for `allow_redisplay` on `PaymentMethod`
+  * Add support for `tracking_details` on `Treasury.OutboundPayment` and `Treasury.OutboundTransfer`
+
 ## 14.5.0 - 2024-05-02
 * [#1688](https://github.com/stripe/stripe-php/pull/1688) Update generated code
   * Add support for new value `shipping_address_invalid` on enum `StripeError.code`
