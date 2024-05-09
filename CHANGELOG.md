@@ -5,6 +5,11 @@
   * Add support for `rechnung` on `PaymentMethod`
   * Add support for new value `rechnung` on enum `PaymentMethod.type`
 
+## 14.5.0 - 2024-05-02
+* [#1688](https://github.com/stripe/stripe-php/pull/1688) Update generated code
+  * Add support for new value `shipping_address_invalid` on enum `StripeError.code`
+  * Add support for `ship_from_details` on `Tax.Calculation` and `Tax.Transaction`
+
 ## 14.5.0-beta.1 - 2024-04-25
 * [#1683](https://github.com/stripe/stripe-php/pull/1683) Update generated code for beta
   * Add support for `cancel_subscription_schedule` on `QuoteLine`
