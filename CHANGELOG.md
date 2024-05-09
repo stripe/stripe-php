@@ -1,5 +1,10 @@
 # Changelog
 
+## 14.7.0-beta.1 - 2024-05-09
+* [#1691](https://github.com/stripe/stripe-php/pull/1691) Update generated code for beta
+  * No new beta features. Merging changes from the main branch.
+
+
 ## 14.6.0-beta.1 - 2024-05-02
 * [#1689](https://github.com/stripe/stripe-php/pull/1689) Update generated code for beta
   * Add support for `rechnung` on `PaymentMethod`
