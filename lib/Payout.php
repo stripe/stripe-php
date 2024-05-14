@@ -17,6 +17,8 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount The amount (in cents (or local equivalent)) that transfers to your bank account or debit card.
+ * @property null|string|\Stripe\ApplicationFee $application_fee The application fee (if any) for the payout. <a href="https://stripe.com/docs/connect/instant-payouts#monetization-and-fees">See the Connect documentation</a> for details.
+ * @property null|int $application_fee_amount The amount of the application fee (if any) requested for the payout. <a href="https://stripe.com/docs/connect/instant-payouts#monetization-and-fees">See the Connect documentation</a> for details.
  * @property int $arrival_date Date that you can expect the payout to arrive in the bank. This factors in delays to account for weekends or bank holidays.
  * @property bool $automatic Returns <code>true</code> if the payout is created by an <a href="https://stripe.com/docs/payouts#payout-schedule">automated payout schedule</a> and <code>false</code> if it's <a href="https://stripe.com/docs/payouts#manual-payouts">requested manually</a>.
  * @property null|string|\Stripe\BalanceTransaction $balance_transaction ID of the balance transaction that describes the impact of this payout on your account balance.
