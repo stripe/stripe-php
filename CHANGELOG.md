@@ -1,5 +1,9 @@
 # Changelog
 
+## 14.8.0-beta.1 - 2024-05-16
+* [#1693](https://github.com/stripe/stripe-php/pull/1693) Update generated code for beta
+
+
 ## 14.7.0-beta.1 - 2024-05-09
 * [#1691](https://github.com/stripe/stripe-php/pull/1691) Update generated code for beta
   * No new beta features. Merging changes from the main branch.
