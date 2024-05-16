@@ -17,6 +17,7 @@ namespace Stripe\Issuing;
  * @property string $currency The currency the <code>transaction</code> was made in.
  * @property \Stripe\StripeObject $evidence
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property null|string $loss_reason The enum that describes the dispute loss outcome. If the dispute is not lost, this field will be absent. New enum values may be added in the future, so be sure to handle unknown values.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $status Current status of the dispute.
  * @property string|\Stripe\Issuing\Transaction $transaction The transaction being disputed.
@@ -30,6 +31,27 @@ class Dispute extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Create;
     use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
+
+    const LOSS_REASON_CARDHOLDER_AUTHENTICATION_ISSUER_LIABILITY = 'cardholder_authentication_issuer_liability';
+    const LOSS_REASON_ECI5_TOKEN_TRANSACTION_WITH_TAVV = 'eci5_token_transaction_with_tavv';
+    const LOSS_REASON_EXCESS_DISPUTES_IN_TIMEFRAME = 'excess_disputes_in_timeframe';
+    const LOSS_REASON_HAS_NOT_MET_THE_MINIMUM_DISPUTE_AMOUNT_REQUIREMENTS = 'has_not_met_the_minimum_dispute_amount_requirements';
+    const LOSS_REASON_INVALID_DUPLICATE_DISPUTE = 'invalid_duplicate_dispute';
+    const LOSS_REASON_INVALID_INCORRECT_AMOUNT_DISPUTE = 'invalid_incorrect_amount_dispute';
+    const LOSS_REASON_INVALID_NO_AUTHORIZATION = 'invalid_no_authorization';
+    const LOSS_REASON_INVALID_USE_OF_DISPUTES = 'invalid_use_of_disputes';
+    const LOSS_REASON_MERCHANDISE_DELIVERED_OR_SHIPPED = 'merchandise_delivered_or_shipped';
+    const LOSS_REASON_MERCHANDISE_OR_SERVICE_AS_DESCRIBED = 'merchandise_or_service_as_described';
+    const LOSS_REASON_NOT_CANCELLED = 'not_cancelled';
+    const LOSS_REASON_OTHER = 'other';
+    const LOSS_REASON_REFUND_ISSUED = 'refund_issued';
+    const LOSS_REASON_SUBMITTED_BEYOND_ALLOWABLE_TIME_LIMIT = 'submitted_beyond_allowable_time_limit';
+    const LOSS_REASON_TRANSACTION_3DS_REQUIRED = 'transaction_3ds_required';
+    const LOSS_REASON_TRANSACTION_APPROVED_AFTER_PRIOR_FRAUD_DISPUTE = 'transaction_approved_after_prior_fraud_dispute';
+    const LOSS_REASON_TRANSACTION_AUTHORIZED = 'transaction_authorized';
+    const LOSS_REASON_TRANSACTION_ELECTRONICALLY_READ = 'transaction_electronically_read';
+    const LOSS_REASON_TRANSACTION_QUALIFIES_FOR_VISA_EASY_PAYMENT_SERVICE = 'transaction_qualifies_for_visa_easy_payment_service';
+    const LOSS_REASON_TRANSACTION_UNATTENDED = 'transaction_unattended';
 
     const STATUS_EXPIRED = 'expired';
     const STATUS_LOST = 'lost';
