@@ -3,6 +3,12 @@
 ## 14.8.0-beta.1 - 2024-05-16
 * [#1693](https://github.com/stripe/stripe-php/pull/1693) Update generated code for beta
 
+## 14.7.0 - 2024-05-16
+* [#1694](https://github.com/stripe/stripe-php/pull/1694) Update generated code
+  * Add support for `fee_source` on `ApplicationFee`
+  * Add support for `loss_reason` on `Issuing.Dispute`
+  * Add support for `application_fee_amount` and `application_fee` on `Payout`
+  * Add support for `stripe_s700` on `Terminal.Configuration`
 
 ## 14.7.0-beta.1 - 2024-05-09
 * [#1691](https://github.com/stripe/stripe-php/pull/1691) Update generated code for beta
