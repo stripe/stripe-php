@@ -227,13 +227,13 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'name' => 'MyTestApp',
             'version' => '1.2.34',
             'url' => 'https://mytestapp.example',
-            'appPartnerId' => 'partner_1234'
+            'appPartnerId' => 'partner_1234',
         ];
 
         $client = new BaseStripeClient([
             'api_key' => 'sk_test_appinfo',
             'api_base' => MOCK_URL,
-            'app_info' => $appInfo
+            'app_info' => $appInfo,
         ]);
 
         $this->expectsRequest('get', '/v1/charges/ch_123', null, [
@@ -249,7 +249,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_base' => MOCK_URL,
             'app_info' => [
                 'name' => 'MyTestApp',
-            ]
+            ],
         ]);
 
         $this->expectsRequest('get', '/v1/charges/ch_123', null, [
@@ -257,7 +257,6 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         ]);
         $charge = $client->request('get', '/v1/charges/ch_123', [], []);
     }
-
 
     public function testClientAppInfoFallsBackToGlobal()
     {
@@ -283,7 +282,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
                 'name' => 'MyTestApp',
                 'version' => '2.3.45',
                 'url' => 'https://mytestapp.example',
-            ]
+            ],
         ]);
 
         $this->expectsRequest('get', '/v1/charges/ch_123', null, [

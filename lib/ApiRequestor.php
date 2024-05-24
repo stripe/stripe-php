@@ -18,7 +18,7 @@ class ApiRequestor
     private $_apiBase;
 
     /**
-     * @var array|null
+     * @var null|array
      */
     private $_appInfo;
 
@@ -43,6 +43,7 @@ class ApiRequestor
      *
      * @param null|string $apiKey
      * @param null|string $apiBase
+     * @param null|mixed $appInfo
      */
     public function __construct($apiKey = null, $apiBase = null, $appInfo = null)
     {
@@ -290,10 +291,10 @@ class ApiRequestor
     {
         if (null !== $appInfo) {
             $string = $appInfo['name'];
-            if (array_key_exists('version', $appInfo) && null !== $appInfo['version']) {
+            if (\array_key_exists('version', $appInfo) && null !== $appInfo['version']) {
                 $string .= '/' . $appInfo['version'];
             }
-            if (array_key_exists('version', $appInfo) && null !== $appInfo['url']) {
+            if (\array_key_exists('version', $appInfo) && null !== $appInfo['url']) {
                 $string .= ' (' . $appInfo['url'] . ')';
             }
 
@@ -326,8 +327,8 @@ class ApiRequestor
     /**
      * @static
      *
-     * @param string     $apiKey the Stripe API key, to be used in regular API requests.
-     * @param null       $clientInfo client user agent information.
+     * @param string     $apiKey the Stripe API key, to be used in regular API requests
+     * @param null       $clientInfo client user agent information
      * @param null       $appInfo information to identify a plugin that integrates Stripe using this library
      *
      * @return array
@@ -341,7 +342,7 @@ class ApiRequestor
         $uname = $uname_disabled ? '(disabled)' : \php_uname();
 
         // Fallback to global configuration to maintain backwards compatibility.
-        $appInfo = $appInfo ? $appInfo : Stripe::getAppInfo();
+        $appInfo = $appInfo ?: Stripe::getAppInfo();
         $ua = [
             'bindings_version' => Stripe::VERSION,
             'lang' => 'php',
