@@ -220,4 +220,75 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             []
         );
     }
+
+    public function testSetClientAppInfo()
+    {
+        $appInfo = [
+            'name' => 'MyTestApp',
+            'version' => '1.2.34',
+            'url' => 'https://mytestapp.example',
+            'appPartnerId' => 'partner_1234'
+        ];
+
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_appinfo',
+            'api_base' => MOCK_URL,
+            'app_info' => $appInfo
+        ]);
+
+        $this->expectsRequest('get', '/v1/charges/ch_123', null, [
+            'User-Agent: ' . 'Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp/1.2.34 (https://mytestapp.example)',
+        ]);
+        $charge = $client->request('get', '/v1/charges/ch_123', [], []);
+    }
+
+    public function testSetClientAppInfoOnlyName()
+    {
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_appinfo',
+            'api_base' => MOCK_URL,
+            'app_info' => [
+                'name' => 'MyTestApp',
+            ]
+        ]);
+
+        $this->expectsRequest('get', '/v1/charges/ch_123', null, [
+            'User-Agent: ' . 'Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp',
+        ]);
+        $charge = $client->request('get', '/v1/charges/ch_123', [], []);
+    }
+
+
+    public function testClientAppInfoFallsBackToGlobal()
+    {
+        Stripe::setAppInfo('MyTestApp', '1.2.34', 'https://mytestapp.example');
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_appinfo',
+            'api_base' => MOCK_URL,
+        ]);
+
+        $this->expectsRequest('get', '/v1/charges/ch_123', null, [
+            'User-Agent: ' . 'Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp/1.2.34 (https://mytestapp.example)',
+        ]);
+        $charge = $client->request('get', '/v1/charges/ch_123', [], []);
+    }
+
+    public function testClientAppInfoOverridesGlobal()
+    {
+        Stripe::setAppInfo('NotMyTestApp', '1.2.34', 'https://notmytestapp.example');
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_appinfo',
+            'api_base' => MOCK_URL,
+            'app_info' => [
+                'name' => 'MyTestApp',
+                'version' => '2.3.45',
+                'url' => 'https://mytestapp.example',
+            ]
+        ]);
+
+        $this->expectsRequest('get', '/v1/charges/ch_123', null, [
+            'User-Agent: ' . 'Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp/2.3.45 (https://mytestapp.example)',
+        ]);
+        $charge = $client->request('get', '/v1/charges/ch_123', [], []);
+    }
 }
