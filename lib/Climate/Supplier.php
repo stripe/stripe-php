@@ -19,10 +19,33 @@ class Supplier extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'climate.supplier';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
-
     const REMOVAL_PATHWAY_BIOMASS_CARBON_REMOVAL_AND_STORAGE = 'biomass_carbon_removal_and_storage';
     const REMOVAL_PATHWAY_DIRECT_AIR_CAPTURE = 'direct_air_capture';
     const REMOVAL_PATHWAY_ENHANCED_WEATHERING = 'enhanced_weathering';
+
+    /**
+     * Lists all available Climate supplier objects.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/climate/suppliers', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves a Climate supplier object.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

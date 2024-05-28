@@ -28,9 +28,6 @@ class ReceivedDebit extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'treasury.received_debit';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
-
     const FAILURE_CODE_ACCOUNT_CLOSED = 'account_closed';
     const FAILURE_CODE_ACCOUNT_FROZEN = 'account_frozen';
     const FAILURE_CODE_INSUFFICIENT_FUNDS = 'insufficient_funds';
@@ -42,4 +39,31 @@ class ReceivedDebit extends \Stripe\ApiResource
 
     const STATUS_FAILED = 'failed';
     const STATUS_SUCCEEDED = 'succeeded';
+
+    /**
+     * Returns a list of ReceivedDebits.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/treasury/received_debits', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of an existing ReceivedDebit by passing the unique
+     * ReceivedDebit ID from the ReceivedDebit list.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

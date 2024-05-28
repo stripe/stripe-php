@@ -29,8 +29,33 @@ class Secret extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'apps.secret';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Create;
+    /**
+     * Create or replace a secret in the secret store.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * List all secrets stored on the given scope.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/apps/secrets', \Stripe\Collection::class, $params, $opts);
+    }
 
     /**
      * @param null|array $params

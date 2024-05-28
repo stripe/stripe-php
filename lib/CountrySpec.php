@@ -25,6 +25,29 @@ class CountrySpec extends ApiResource
 {
     const OBJECT_NAME = 'country_spec';
 
-    use ApiOperations\All;
-    use ApiOperations\Retrieve;
+    /**
+     * Lists all Country Spec objects available in the API.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/country_specs', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Returns a Country Spec for a given Country code.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

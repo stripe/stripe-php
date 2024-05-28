@@ -19,13 +19,37 @@ class PhysicalBundle extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'issuing.physical_bundle';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
-
     const STATUS_ACTIVE = 'active';
     const STATUS_INACTIVE = 'inactive';
     const STATUS_REVIEW = 'review';
 
     const TYPE_CUSTOM = 'custom';
     const TYPE_STANDARD = 'standard';
+
+    /**
+     * Returns a list of physical bundle objects. The objects are sorted in descending
+     * order by creation date, with the most recently created object appearing first.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/issuing/physical_bundles', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves a physical bundle object.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

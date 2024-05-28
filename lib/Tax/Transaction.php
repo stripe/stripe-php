@@ -29,10 +29,23 @@ class Transaction extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'tax.transaction';
 
-    use \Stripe\ApiOperations\Retrieve;
-
     const TYPE_REVERSAL = 'reversal';
     const TYPE_TRANSACTION = 'transaction';
+
+    /**
+     * Retrieves a Tax <code>Transaction</code> object.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 
     /**
      * @param null|array $params

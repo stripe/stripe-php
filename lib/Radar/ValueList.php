@@ -24,10 +24,6 @@ class ValueList extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'radar.value_list';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Create;
-    use \Stripe\ApiOperations\Delete;
-    use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
 
     const ITEM_TYPE_CARD_BIN = 'card_bin';
@@ -40,4 +36,88 @@ class ValueList extends \Stripe\ApiResource
     const ITEM_TYPE_SEPA_DEBIT_FINGERPRINT = 'sepa_debit_fingerprint';
     const ITEM_TYPE_STRING = 'string';
     const ITEM_TYPE_US_BANK_ACCOUNT_FINGERPRINT = 'us_bank_account_fingerprint';
+
+    /**
+     * Creates a new <code>ValueList</code> object, which can then be referenced in
+     * rules.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Deletes a <code>ValueList</code> object, also deleting any items contained
+     * within the value list. To be deleted, a value list must not be referenced in any
+     * rules.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public function delete($params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = $this->instanceUrl();
+        list($response, $opts) = $this->_request('delete', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * Returns a list of <code>ValueList</code> objects. The objects are sorted in
+     * descending order by creation date, with the most recently created object
+     * appearing first.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/radar/value_lists', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves a <code>ValueList</code> object.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates a <code>ValueList</code> object by setting the values of the parameters
+     * passed. Any parameters not provided will be left unchanged. Note that
+     * <code>item_type</code> is immutable.
+     *
+     * @param mixed $id
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 }

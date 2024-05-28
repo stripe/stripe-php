@@ -27,9 +27,6 @@ class Transaction extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'treasury.transaction';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
-
     const FLOW_TYPE_CREDIT_REVERSAL = 'credit_reversal';
     const FLOW_TYPE_DEBIT_REVERSAL = 'debit_reversal';
     const FLOW_TYPE_INBOUND_TRANSFER = 'inbound_transfer';
@@ -43,4 +40,30 @@ class Transaction extends \Stripe\ApiResource
     const STATUS_OPEN = 'open';
     const STATUS_POSTED = 'posted';
     const STATUS_VOID = 'void';
+
+    /**
+     * Retrieves a list of Transaction objects.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/treasury/transactions', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of an existing Transaction.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

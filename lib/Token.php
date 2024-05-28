@@ -40,11 +40,45 @@ class Token extends ApiResource
 {
     const OBJECT_NAME = 'token';
 
-    use ApiOperations\Create;
-    use ApiOperations\Retrieve;
-
     const TYPE_ACCOUNT = 'account';
     const TYPE_BANK_ACCOUNT = 'bank_account';
     const TYPE_CARD = 'card';
     const TYPE_PII = 'pii';
+
+    /**
+     * Creates a single-use token that represents a bank account’s details. You can use
+     * this token with any API method in place of a bank account dictionary. You can
+     * only use this token once. To do so, attach it to a <a href="#accounts">connected
+     * account</a> where <a
+     * href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+     * is <code>application</code>, which includes Custom accounts.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Retrieves the token with the given ID.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

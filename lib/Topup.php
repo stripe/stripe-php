@@ -32,9 +32,6 @@ class Topup extends ApiResource
 {
     const OBJECT_NAME = 'topup';
 
-    use ApiOperations\All;
-    use ApiOperations\Create;
-    use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
     const STATUS_CANCELED = 'canceled';
@@ -42,6 +39,70 @@ class Topup extends ApiResource
     const STATUS_PENDING = 'pending';
     const STATUS_REVERSED = 'reversed';
     const STATUS_SUCCEEDED = 'succeeded';
+
+    /**
+     * Top up the balance of an account.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Returns a list of top-ups.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/topups', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of a top-up that has previously been created. Supply the
+     * unique top-up ID that was returned from your previous request, and Stripe will
+     * return the corresponding top-up information.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates the metadata of a top-up. Other top-up details are not editable by
+     * design.
+     *
+     * @param mixed $id
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 
     /**
      * @param null|array $params

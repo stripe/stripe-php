@@ -24,8 +24,6 @@ class Token extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'issuing.token';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
 
     const NETWORK_MASTERCARD = 'mastercard';
@@ -39,4 +37,49 @@ class Token extends \Stripe\ApiResource
     const WALLET_PROVIDER_APPLE_PAY = 'apple_pay';
     const WALLET_PROVIDER_GOOGLE_PAY = 'google_pay';
     const WALLET_PROVIDER_SAMSUNG_PAY = 'samsung_pay';
+
+    /**
+     * Lists all Issuing <code>Token</code> objects for a given card.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/issuing/tokens', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves an Issuing <code>Token</code> object.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Attempts to update the specified Issuing <code>Token</code> object to the status
+     * specified.
+     *
+     * @param mixed $id
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 }

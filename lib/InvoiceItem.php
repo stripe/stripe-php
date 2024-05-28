@@ -45,9 +45,89 @@ class InvoiceItem extends ApiResource
 {
     const OBJECT_NAME = 'invoiceitem';
 
-    use ApiOperations\All;
-    use ApiOperations\Create;
-    use ApiOperations\Delete;
-    use ApiOperations\Retrieve;
     use ApiOperations\Update;
+
+    /**
+     * Creates an item to be added to a draft invoice (up to 250 items per invoice). If
+     * no invoice is specified, the item will be on the next invoice created for the
+     * customer specified.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Deletes an invoice item, removing it from an invoice. Deleting invoice items is
+     * only possible when they’re not attached to invoices, or if it’s attached to a
+     * draft invoice.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public function delete($params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = $this->instanceUrl();
+        list($response, $opts) = $this->_request('delete', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * Returns a list of your invoice items. Invoice items are returned sorted by
+     * creation date, with the most recently created invoice items appearing first.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/invoiceitems', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the invoice item with the given ID.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates the amount or description of an invoice item on an upcoming invoice.
+     * Updating an invoice item is only possible before the invoice it’s attached to is
+     * closed.
+     *
+     * @param mixed $id
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 }

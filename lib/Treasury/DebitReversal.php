@@ -27,14 +27,53 @@ class DebitReversal extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'treasury.debit_reversal';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Create;
-    use \Stripe\ApiOperations\Retrieve;
-
     const NETWORK_ACH = 'ach';
     const NETWORK_CARD = 'card';
 
     const STATUS_FAILED = 'failed';
     const STATUS_PROCESSING = 'processing';
     const STATUS_SUCCEEDED = 'succeeded';
+
+    /**
+     * Reverses a ReceivedDebit and creates a DebitReversal object.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Returns a list of DebitReversals.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/treasury/debit_reversals', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves a DebitReversal object.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

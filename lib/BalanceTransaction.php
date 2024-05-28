@@ -30,9 +30,6 @@ class BalanceTransaction extends ApiResource
 {
     const OBJECT_NAME = 'balance_transaction';
 
-    use ApiOperations\All;
-    use ApiOperations\Retrieve;
-
     const TYPE_ADJUSTMENT = 'adjustment';
     const TYPE_ADVANCE = 'advance';
     const TYPE_ADVANCE_FUNDING = 'advance_funding';
@@ -73,4 +70,38 @@ class BalanceTransaction extends ApiResource
     const TYPE_TRANSFER_CANCEL = 'transfer_cancel';
     const TYPE_TRANSFER_FAILURE = 'transfer_failure';
     const TYPE_TRANSFER_REFUND = 'transfer_refund';
+
+    /**
+     * Returns a list of transactions that have contributed to the Stripe account
+     * balance (e.g., charges, transfers, and so forth). The transactions are returned
+     * in sorted order, with the most recent transactions appearing first.
+     *
+     * Note that this endpoint was previously called “Balance history” and used the
+     * path <code>/v1/balance/history</code>.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/balance_transactions', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the balance transaction with the given ID.
+     *
+     * Note that this endpoint previously used the path
+     * <code>/v1/balance/history/:id</code>.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

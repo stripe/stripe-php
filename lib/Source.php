@@ -59,8 +59,6 @@ class Source extends ApiResource
 {
     const OBJECT_NAME = 'source';
 
-    use ApiOperations\Create;
-    use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
     const FLOW_CODE_VERIFICATION = 'code_verification';
@@ -96,6 +94,64 @@ class Source extends ApiResource
 
     const USAGE_REUSABLE = 'reusable';
     const USAGE_SINGLE_USE = 'single_use';
+
+    /**
+     * Creates a new source object.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Retrieves an existing source object. Supply the unique source ID from a source
+     * creation request and Stripe will return the corresponding up-to-date source
+     * object information.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates the specified source by setting the values of the parameters passed. Any
+     * parameters not provided will be left unchanged.
+     *
+     * This request accepts the <code>metadata</code> and <code>owner</code> as
+     * arguments. It is also possible to update type specific information for selected
+     * payment methods. Please refer to our <a href="/docs/sources">payment method
+     * guides</a> for more detail.
+     *
+     * @param mixed $id
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 
     use ApiOperations\NestedResource;
 

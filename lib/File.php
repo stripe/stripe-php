@@ -29,9 +29,6 @@ class File extends ApiResource
 {
     const OBJECT_NAME = 'file';
 
-    use ApiOperations\All;
-    use ApiOperations\Retrieve;
-
     const PURPOSE_ACCOUNT_REQUIREMENT = 'account_requirement';
     const PURPOSE_ADDITIONAL_VERIFICATION = 'additional_verification';
     const PURPOSE_BUSINESS_ICON = 'business_icon';
@@ -47,6 +44,36 @@ class File extends ApiResource
     const PURPOSE_SIGMA_SCHEDULED_QUERY = 'sigma_scheduled_query';
     const PURPOSE_TAX_DOCUMENT_USER_UPLOAD = 'tax_document_user_upload';
     const PURPOSE_TERMINAL_READER_SPLASHSCREEN = 'terminal_reader_splashscreen';
+
+    /**
+     * Returns a list of the files that your account has access to. Stripe sorts and
+     * returns the files by their creation dates, placing the most recently created
+     * files at the top.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/files', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of an existing file object. After you supply a unique file
+     * ID, Stripe returns the corresponding file object. Learn how to <a
+     * href="/docs/file-upload#download-file-contents">access file contents</a>.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 
     // This resource can have two different object names. In latter API
     // versions, only `file` is used, but since stripe-php may be used with

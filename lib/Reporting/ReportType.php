@@ -28,6 +28,30 @@ class ReportType extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'reporting.report_type';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
+    /**
+     * Returns a full list of Report Types.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/reporting/report_types', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of a Report Type. (Certain report types require a <a
+     * href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.).
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }
