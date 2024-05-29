@@ -131,9 +131,9 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * Gets the app info for this client
+     * Gets the app info for this client.
      *
-     * @return array|null information to identify a plugin that integrates Stripe using this library
+     * @return null|array information to identify a plugin that integrates Stripe using this library
      */
     public function getAppInfo()
     {

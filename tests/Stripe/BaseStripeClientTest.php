@@ -223,10 +223,11 @@ final class BaseStripeClientTest extends \Stripe\TestCase
 
     private function assertAppInfo($ua, $ua_dict, $headers)
     {
-        $this->assertContains($ua, $headers);
+        static::assertContains($ua, $headers);
         foreach ($headers as $element) {
             if (strpos($element, 'X-Stripe-Client-User-Agent')) {
-                $this->assertStringContainsString($ua_dict, $element);
+                static::assertStringContainsString($ua_dict, $element);
+
                 break;
             }
         }
@@ -383,7 +384,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         $client = new BaseStripeClient([
             'api_key' => 'sk_test_appinfo',
             'app_info' => [
-                'name' => "MyTestApp",
+                'name' => 'MyTestApp',
                 'foo' => 'bar',
             ],
         ]);
