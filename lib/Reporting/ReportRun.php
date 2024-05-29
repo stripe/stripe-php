@@ -29,7 +29,47 @@ class ReportRun extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'reporting.report_run';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Create;
-    use \Stripe\ApiOperations\Retrieve;
+    /**
+     * Creates a new object and begin running the report. (Certain report types require
+     * a <a href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.).
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Returns a list of Report Runs, with the most recent appearing first.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/reporting/report_runs', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of an existing Report Run.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

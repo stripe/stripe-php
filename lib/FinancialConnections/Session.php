@@ -26,11 +26,42 @@ class Session extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'financial_connections.session';
 
-    use \Stripe\ApiOperations\Create;
-    use \Stripe\ApiOperations\Retrieve;
-
     const STATUS_CANCELLED = 'cancelled';
     const STATUS_FAILED = 'failed';
     const STATUS_PENDING = 'pending';
     const STATUS_SUCCEEDED = 'succeeded';
+
+    /**
+     * To launch the Financial Connections authorization flow, create a
+     * <code>Session</code>. The session’s <code>client_secret</code> can be used to
+     * launch the flow using Stripe.js.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Retrieves the details of a Financial Connections <code>Session</code>.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

@@ -57,9 +57,6 @@ class SetupIntent extends ApiResource
 {
     const OBJECT_NAME = 'setup_intent';
 
-    use ApiOperations\All;
-    use ApiOperations\Create;
-    use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
     const CANCELLATION_REASON_ABANDONED = 'abandoned';
@@ -72,6 +69,78 @@ class SetupIntent extends ApiResource
     const STATUS_REQUIRES_CONFIRMATION = 'requires_confirmation';
     const STATUS_REQUIRES_PAYMENT_METHOD = 'requires_payment_method';
     const STATUS_SUCCEEDED = 'succeeded';
+
+    /**
+     * Creates a SetupIntent object.
+     *
+     * After you create the SetupIntent, attach a payment method and <a
+     * href="/docs/api/setup_intents/confirm">confirm</a> it to collect any required
+     * permissions to charge the payment method later.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Returns a list of SetupIntents.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/setup_intents', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of a SetupIntent that has previously been created.
+     *
+     * Client-side retrieval using a publishable key is allowed when the
+     * <code>client_secret</code> is provided in the query string.
+     *
+     * When retrieved with a publishable key, only a subset of properties will be
+     * returned. Please refer to the <a href="#setup_intent_object">SetupIntent</a>
+     * object reference for more details.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates a SetupIntent object.
+     *
+     * @param mixed $id
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 
     /**
      * @param null|array $params

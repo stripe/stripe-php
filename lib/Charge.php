@@ -63,16 +63,82 @@ class Charge extends ApiResource
 {
     const OBJECT_NAME = 'charge';
 
-    use ApiOperations\All;
-    use ApiOperations\Create;
     use ApiOperations\NestedResource;
-    use ApiOperations\Retrieve;
     use ApiOperations\Search;
     use ApiOperations\Update;
 
     const STATUS_FAILED = 'failed';
     const STATUS_PENDING = 'pending';
     const STATUS_SUCCEEDED = 'succeeded';
+
+    /**
+     * This method is no longer recommended—use the <a
+     * href="/docs/api/payment_intents">Payment Intents API</a> to initiate a new
+     * payment instead. Confirmation of the PaymentIntent creates the
+     * <code>Charge</code> object used to request payment.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Returns a list of charges you’ve previously created. The charges are returned in
+     * sorted order, with the most recent charges appearing first.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/charges', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of a charge that has previously been created. Supply the
+     * unique charge ID that was returned from your previous request, and Stripe will
+     * return the corresponding charge information. The same information is returned
+     * when creating or refunding the charge.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates the specified charge by setting the values of the parameters passed. Any
+     * parameters not provided will be left unchanged.
+     *
+     * @param mixed $id
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 
     /**
      * Possible string representations of decline codes.

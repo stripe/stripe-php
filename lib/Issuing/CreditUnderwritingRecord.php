@@ -26,11 +26,36 @@ class CreditUnderwritingRecord extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'issuing.credit_underwriting_record';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
-
     const CREATED_FROM_APPLICATION = 'application';
     const CREATED_FROM_PROACTIVE_REVIEW = 'proactive_review';
+
+    /**
+     * Retrieves a list of <code>CreditUnderwritingRecord</code> objects. The objects
+     * are sorted in descending order by creation date, with the most-recently-created
+     * object appearing first.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/issuing/credit_underwriting_records', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves a <code>CreditUnderwritingRecord</code> object.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 
     /**
      * @param null|array $params

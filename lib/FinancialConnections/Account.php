@@ -32,9 +32,7 @@ class Account extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'financial_connections.account';
 
-    use \Stripe\ApiOperations\All;
     use \Stripe\ApiOperations\NestedResource;
-    use \Stripe\ApiOperations\Retrieve;
 
     const CATEGORY_CASH = 'cash';
     const CATEGORY_CREDIT = 'credit';
@@ -51,6 +49,32 @@ class Account extends \Stripe\ApiResource
     const SUBCATEGORY_MORTGAGE = 'mortgage';
     const SUBCATEGORY_OTHER = 'other';
     const SUBCATEGORY_SAVINGS = 'savings';
+
+    /**
+     * Returns a list of Financial Connections <code>Account</code> objects.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/financial_connections/accounts', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of an Financial Connections <code>Account</code>.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 
     /**
      * @param null|array $params

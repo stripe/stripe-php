@@ -22,10 +22,34 @@ class FinancingTransaction extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'capital.financing_transaction';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
-
     const TYPE_PAYMENT = 'payment';
     const TYPE_PAYOUT = 'payout';
     const TYPE_REVERSAL = 'reversal';
+
+    /**
+     * Returns a list of financing transactions. The transactions are returned in
+     * sorted order, with the most recent transactions appearing first.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/capital/financing_transactions', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves a financing transaction for a financing offer.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

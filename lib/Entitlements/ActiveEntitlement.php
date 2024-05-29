@@ -17,6 +17,29 @@ class ActiveEntitlement extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'entitlements.active_entitlement';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
+    /**
+     * Retrieve a list of active entitlements for a customer.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/entitlements/active_entitlements', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieve an active entitlement.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

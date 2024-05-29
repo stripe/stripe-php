@@ -25,11 +25,6 @@ class TaxId extends ApiResource
 {
     const OBJECT_NAME = 'tax_id';
 
-    use ApiOperations\All;
-    use ApiOperations\Create;
-    use ApiOperations\Delete;
-    use ApiOperations\Retrieve;
-
     const TYPE_AD_NRT = 'ad_nrt';
     const TYPE_AE_TRN = 'ae_trn';
     const TYPE_AR_CUIT = 'ar_cuit';
@@ -102,6 +97,65 @@ class TaxId extends ApiResource
     const TYPE_VE_RIF = 've_rif';
     const TYPE_VN_TIN = 'vn_tin';
     const TYPE_ZA_VAT = 'za_vat';
+
+    /**
+     * Creates a new account or customer <code>tax_id</code> object.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Deletes an existing account or customer <code>tax_id</code> object.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public function delete($params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = $this->instanceUrl();
+        list($response, $opts) = $this->_request('delete', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * Returns a list of tax IDs.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/tax_ids', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves an account or customer <code>tax_id</code> object.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 
     const VERIFICATION_STATUS_PENDING = 'pending';
     const VERIFICATION_STATUS_UNAVAILABLE = 'unavailable';

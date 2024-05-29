@@ -39,16 +39,95 @@ class Product extends ApiResource
 {
     const OBJECT_NAME = 'product';
 
-    use ApiOperations\All;
-    use ApiOperations\Create;
-    use ApiOperations\Delete;
     use ApiOperations\NestedResource;
-    use ApiOperations\Retrieve;
     use ApiOperations\Search;
     use ApiOperations\Update;
 
     const TYPE_GOOD = 'good';
     const TYPE_SERVICE = 'service';
+
+    /**
+     * Creates a new product object.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Delete a product. Deleting a product is only possible if it has no prices
+     * associated with it. Additionally, deleting a product with <code>type=good</code>
+     * is only possible if it has no SKUs associated with it.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public function delete($params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = $this->instanceUrl();
+        list($response, $opts) = $this->_request('delete', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * Returns a list of your products. The products are returned sorted by creation
+     * date, with the most recently created products appearing first.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/products', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of an existing product. Supply the unique product ID from
+     * either a product creation request or the product list, and Stripe will return
+     * the corresponding product information.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates the specific product by setting the values of the parameters passed. Any
+     * parameters not provided will be left unchanged.
+     *
+     * @param mixed $id
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 
     /**
      * @param null|array $params

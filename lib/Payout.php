@@ -44,9 +44,6 @@ class Payout extends ApiResource
 {
     const OBJECT_NAME = 'payout';
 
-    use ApiOperations\All;
-    use ApiOperations\Create;
-    use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
     const METHOD_INSTANT = 'instant';
@@ -64,6 +61,83 @@ class Payout extends ApiResource
 
     const TYPE_BANK_ACCOUNT = 'bank_account';
     const TYPE_CARD = 'card';
+
+    /**
+     * To send funds to your own bank account, create a new payout object. Your <a
+     * href="#balance">Stripe balance</a> must cover the payout amount. If it doesn’t,
+     * you receive an “Insufficient Funds” error.
+     *
+     * If your API key is in test mode, money won’t actually be sent, though every
+     * other action occurs as if you’re in live mode.
+     *
+     * If you create a manual payout on a Stripe account that uses multiple payment
+     * source types, you need to specify the source type balance that the payout draws
+     * from. The <a href="#balance_object">balance object</a> details available and
+     * pending amounts by source type.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Returns a list of existing payouts sent to third-party bank accounts or payouts
+     * that Stripe sent to you. The payouts return in sorted order, with the most
+     * recently created payouts appearing first.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/payouts', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of an existing payout. Supply the unique payout ID from
+     * either a payout creation request or the payout list. Stripe returns the
+     * corresponding payout information.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates the specified payout by setting the values of the parameters you pass.
+     * We don’t change parameters that you don’t provide. This request only accepts the
+     * metadata as arguments.
+     *
+     * @param mixed $id
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 
     const FAILURE_ACCOUNT_CLOSED = 'account_closed';
     const FAILURE_ACCOUNT_FROZEN = 'account_frozen';

@@ -35,15 +35,56 @@ class OutboundTransfer extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'treasury.outbound_transfer';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Create;
-    use \Stripe\ApiOperations\Retrieve;
-
     const STATUS_CANCELED = 'canceled';
     const STATUS_FAILED = 'failed';
     const STATUS_POSTED = 'posted';
     const STATUS_PROCESSING = 'processing';
     const STATUS_RETURNED = 'returned';
+
+    /**
+     * Creates an OutboundTransfer.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Returns a list of OutboundTransfers sent from the specified FinancialAccount.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/treasury/outbound_transfers', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of an existing OutboundTransfer by passing the unique
+     * OutboundTransfer ID from either the OutboundTransfer creation request or
+     * OutboundTransfer list.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 
     /**
      * @param null|array $params

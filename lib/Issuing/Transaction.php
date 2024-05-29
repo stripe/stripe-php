@@ -38,8 +38,6 @@ class Transaction extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'issuing.transaction';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
 
     const TYPE_CAPTURE = 'capture';
@@ -48,4 +46,52 @@ class Transaction extends \Stripe\ApiResource
     const WALLET_APPLE_PAY = 'apple_pay';
     const WALLET_GOOGLE_PAY = 'google_pay';
     const WALLET_SAMSUNG_PAY = 'samsung_pay';
+
+    /**
+     * Returns a list of Issuing <code>Transaction</code> objects. The objects are
+     * sorted in descending order by creation date, with the most recently created
+     * object appearing first.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/issuing/transactions', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves an Issuing <code>Transaction</code> object.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates the specified Issuing <code>Transaction</code> object by setting the
+     * values of the parameters passed. Any parameters not provided will be left
+     * unchanged.
+     *
+     * @param mixed $id
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 }

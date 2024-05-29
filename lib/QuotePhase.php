@@ -29,15 +29,38 @@ class QuotePhase extends ApiResource
 {
     const OBJECT_NAME = 'quote_phase';
 
-    use ApiOperations\All;
-    use ApiOperations\Retrieve;
-
     const COLLECTION_METHOD_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const COLLECTION_METHOD_SEND_INVOICE = 'send_invoice';
 
     const PRORATION_BEHAVIOR_ALWAYS_INVOICE = 'always_invoice';
     const PRORATION_BEHAVIOR_CREATE_PRORATIONS = 'create_prorations';
     const PRORATION_BEHAVIOR_NONE = 'none';
+
+    /**
+     * Returns a list of quote phases.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/quote_phases', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the quote phase with the given ID.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 
     /**
      * @param string $id

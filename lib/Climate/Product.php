@@ -22,6 +22,29 @@ class Product extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'climate.product';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
+    /**
+     * Lists all available Climate product objects.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/climate/products', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of a Climate product with the given ID.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

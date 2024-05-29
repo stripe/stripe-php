@@ -32,14 +32,53 @@ class InboundTransfer extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'treasury.inbound_transfer';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Create;
-    use \Stripe\ApiOperations\Retrieve;
-
     const STATUS_CANCELED = 'canceled';
     const STATUS_FAILED = 'failed';
     const STATUS_PROCESSING = 'processing';
     const STATUS_SUCCEEDED = 'succeeded';
+
+    /**
+     * Creates an InboundTransfer.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Returns a list of InboundTransfers sent from the specified FinancialAccount.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/treasury/inbound_transfers', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of an existing InboundTransfer.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 
     /**
      * @param null|array $params

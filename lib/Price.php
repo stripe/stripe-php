@@ -39,9 +39,6 @@ class Price extends ApiResource
 {
     const OBJECT_NAME = 'price';
 
-    use ApiOperations\All;
-    use ApiOperations\Create;
-    use ApiOperations\Retrieve;
     use ApiOperations\Search;
     use ApiOperations\Update;
 
@@ -57,6 +54,71 @@ class Price extends ApiResource
 
     const TYPE_ONE_TIME = 'one_time';
     const TYPE_RECURRING = 'recurring';
+
+    /**
+     * Creates a new price for an existing product. The price can be recurring or
+     * one-time.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Returns a list of your active prices, excluding <a
+     * href="/docs/products-prices/pricing-models#inline-pricing">inline prices</a>.
+     * For the list of inactive prices, set <code>active</code> to false.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/prices', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the price with the given ID.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates the specified price by setting the values of the parameters passed. Any
+     * parameters not provided are left unchanged.
+     *
+     * @param mixed $id
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 
     /**
      * @param null|array $params

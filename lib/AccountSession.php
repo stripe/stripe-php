@@ -24,5 +24,21 @@ class AccountSession extends ApiResource
 {
     const OBJECT_NAME = 'account_session';
 
-    use ApiOperations\Create;
+    /**
+     * Creates a AccountSession object that includes a single-use token that the
+     * platform can use on their front-end to grant client-side API access.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 }

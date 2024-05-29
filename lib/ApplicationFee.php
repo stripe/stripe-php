@@ -25,9 +25,35 @@ class ApplicationFee extends ApiResource
 {
     const OBJECT_NAME = 'application_fee';
 
-    use ApiOperations\All;
     use ApiOperations\NestedResource;
-    use ApiOperations\Retrieve;
+
+    /**
+     * Returns a list of application fees you’ve previously collected. The application
+     * fees are returned in sorted order, with the most recent fees appearing first.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/application_fees', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of an application fee that your account has collected. The
+     * same information is returned when refunding the application fee.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 
     const PATH_REFUNDS = '/refunds';
 

@@ -29,9 +29,6 @@ class FinancingOffer extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'capital.financing_offer';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
-
     const FINANCING_TYPE_CASH_ADVANCE = 'cash_advance';
     const FINANCING_TYPE_FLEX_LOAN = 'flex_loan';
 
@@ -51,6 +48,33 @@ class FinancingOffer extends \Stripe\ApiResource
 
     const TYPE_CASH_ADVANCE = 'cash_advance';
     const TYPE_FLEX_LOAN = 'flex_loan';
+
+    /**
+     * Retrieves the financing offers available for Connected accounts that belong to
+     * your platform.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/capital/financing_offers', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Get the details of the financing offer.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 
     /**
      * @param null|array $params

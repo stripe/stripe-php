@@ -36,9 +36,6 @@ class Card extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'issuing.card';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Create;
-    use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
 
     const CANCELLATION_REASON_DESIGN_REJECTED = 'design_rejected';
@@ -56,4 +53,68 @@ class Card extends \Stripe\ApiResource
 
     const TYPE_PHYSICAL = 'physical';
     const TYPE_VIRTUAL = 'virtual';
+
+    /**
+     * Creates an Issuing <code>Card</code> object.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Returns a list of Issuing <code>Card</code> objects. The objects are sorted in
+     * descending order by creation date, with the most recently created object
+     * appearing first.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/issuing/cards', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves an Issuing <code>Card</code> object.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates the specified Issuing <code>Card</code> object by setting the values of
+     * the parameters passed. Any parameters not provided will be left unchanged.
+     *
+     * @param mixed $id
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 }

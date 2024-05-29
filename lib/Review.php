@@ -29,9 +29,6 @@ class Review extends ApiResource
 {
     const OBJECT_NAME = 'review';
 
-    use ApiOperations\All;
-    use ApiOperations\Retrieve;
-
     const CLOSED_REASON_APPROVED = 'approved';
     const CLOSED_REASON_DISPUTED = 'disputed';
     const CLOSED_REASON_REDACTED = 'redacted';
@@ -40,6 +37,34 @@ class Review extends ApiResource
 
     const OPENED_REASON_MANUAL = 'manual';
     const OPENED_REASON_RULE = 'rule';
+
+    /**
+     * Returns a list of <code>Review</code> objects that have <code>open</code> set to
+     * <code>true</code>. The objects are sorted in descending order by creation date,
+     * with the most recently created object appearing first.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/reviews', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves a <code>Review</code> object.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 
     /**
      * Possible string representations of the current, the opening or the closure reason of the review.

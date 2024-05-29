@@ -26,8 +26,31 @@ class ScheduledQueryRun extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'scheduled_query_run';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
+    /**
+     * Returns a list of scheduled query runs.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/sigma/scheduled_query_runs', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of an scheduled query run.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 
     public static function classUrl()
     {

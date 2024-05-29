@@ -24,10 +24,33 @@ class Transaction extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'financial_connections.transaction';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
-
     const STATUS_PENDING = 'pending';
     const STATUS_POSTED = 'posted';
     const STATUS_VOID = 'void';
+
+    /**
+     * Returns a list of Financial Connections <code>Transaction</code> objects.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/financial_connections/transactions', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of a Financial Connections <code>Transaction</code>.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

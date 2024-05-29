@@ -27,9 +27,6 @@ class Dispute extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'issuing.dispute';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Create;
-    use \Stripe\ApiOperations\Retrieve;
     use \Stripe\ApiOperations\Update;
 
     const LOSS_REASON_CARDHOLDER_AUTHENTICATION_ISSUER_LIABILITY = 'cardholder_authentication_issuer_liability';
@@ -58,6 +55,76 @@ class Dispute extends \Stripe\ApiResource
     const STATUS_SUBMITTED = 'submitted';
     const STATUS_UNSUBMITTED = 'unsubmitted';
     const STATUS_WON = 'won';
+
+    /**
+     * Creates an Issuing <code>Dispute</code> object. Individual pieces of evidence
+     * within the <code>evidence</code> object are optional at this point. Stripe only
+     * validates that required evidence is present during submission. Refer to <a
+     * href="/docs/issuing/purchases/disputes#dispute-reasons-and-evidence">Dispute
+     * reasons and evidence</a> for more details about evidence requirements.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $options
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Returns a list of Issuing <code>Dispute</code> objects. The objects are sorted
+     * in descending order by creation date, with the most recently created object
+     * appearing first.
+     *
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function all($params = null, $opts = null)
+    {
+        return static::_requestPage('/v1/issuing/disputes', \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves an Issuing <code>Dispute</code> object.
+     *
+     * @param mixed $id
+     * @param null|mixed $opts
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates the specified Issuing <code>Dispute</code> object by setting the values
+     * of the parameters passed. Any parameters not provided will be left unchanged.
+     * Properties on the <code>evidence</code> object can be unset by passing in an
+     * empty string.
+     *
+     * @param mixed $id
+     * @param null|mixed $params
+     * @param null|mixed $opts
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 
     /**
      * @param null|array $params
