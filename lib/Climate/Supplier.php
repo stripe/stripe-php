@@ -26,19 +26,29 @@ class Supplier extends \Stripe\ApiResource
     /**
      * Lists all available Climate supplier objects.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Climate\Supplier> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
-        return static::_requestPage('/v1/climate/suppliers', \Stripe\Collection::class, $params, $opts);
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
      * Retrieves a Climate supplier object.
      *
-     * @param mixed $id
-     * @param null|mixed $opts
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Climate\Supplier
      */
     public static function retrieve($id, $opts = null)
     {

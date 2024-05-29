@@ -33,13 +33,18 @@ class ReportRun extends \Stripe\ApiResource
      * Creates a new object and begin running the report. (Certain report types require
      * a <a href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.).
      *
-     * @param null|mixed $params
-     * @param null|mixed $options
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Reporting\ReportRun the created resource
      */
     public static function create($params = null, $options = null)
     {
         self::_validateParams($params);
         $url = static::classUrl();
+
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
@@ -50,19 +55,29 @@ class ReportRun extends \Stripe\ApiResource
     /**
      * Returns a list of Report Runs, with the most recent appearing first.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Reporting\ReportRun> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
-        return static::_requestPage('/v1/reporting/report_runs', \Stripe\Collection::class, $params, $opts);
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
      * Retrieves the details of an existing Report Run.
      *
-     * @param mixed $id
-     * @param null|mixed $opts
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Reporting\ReportRun
      */
     public static function retrieve($id, $opts = null)
     {

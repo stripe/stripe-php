@@ -25,13 +25,18 @@ class ValueListItem extends \Stripe\ApiResource
      * Creates a new <code>ValueListItem</code> object, which is added to the specified
      * parent value list.
      *
-     * @param null|mixed $params
-     * @param null|mixed $options
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Radar\ValueListItem the created resource
      */
     public static function create($params = null, $options = null)
     {
         self::_validateParams($params);
         $url = static::classUrl();
+
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
@@ -43,12 +48,17 @@ class ValueListItem extends \Stripe\ApiResource
      * Deletes a <code>ValueListItem</code> object, removing it from its parent value
      * list.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Radar\ValueListItem the deleted resource
      */
     public function delete($params = null, $opts = null)
     {
         self::_validateParams($params);
+
         $url = $this->instanceUrl();
         list($response, $opts) = $this->_request('delete', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
@@ -61,19 +71,29 @@ class ValueListItem extends \Stripe\ApiResource
      * descending order by creation date, with the most recently created object
      * appearing first.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Radar\ValueListItem> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
-        return static::_requestPage('/v1/radar/value_list_items', \Stripe\Collection::class, $params, $opts);
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
      * Retrieves a <code>ValueListItem</code> object.
      *
-     * @param mixed $id
-     * @param null|mixed $opts
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Radar\ValueListItem
      */
     public static function retrieve($id, $opts = null)
     {

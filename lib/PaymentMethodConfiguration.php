@@ -76,13 +76,18 @@ class PaymentMethodConfiguration extends ApiResource
     /**
      * Creates a payment method configuration.
      *
-     * @param null|mixed $params
-     * @param null|mixed $options
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentMethodConfiguration the created resource
      */
     public static function create($params = null, $options = null)
     {
         self::_validateParams($params);
         $url = static::classUrl();
+
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
@@ -93,19 +98,29 @@ class PaymentMethodConfiguration extends ApiResource
     /**
      * List payment method configurations.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\PaymentMethodConfiguration> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
-        return static::_requestPage('/v1/payment_method_configurations', \Stripe\Collection::class, $params, $opts);
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
      * Retrieve payment method configuration.
      *
-     * @param mixed $id
-     * @param null|mixed $opts
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentMethodConfiguration
      */
     public static function retrieve($id, $opts = null)
     {
@@ -119,14 +134,19 @@ class PaymentMethodConfiguration extends ApiResource
     /**
      * Update payment method configuration.
      *
-     * @param mixed $id
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param string $id the ID of the resource to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentMethodConfiguration the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {
         self::_validateParams($params);
         $url = static::resourceUrl($id);
+
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);

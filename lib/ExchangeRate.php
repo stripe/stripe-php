@@ -44,20 +44,30 @@ class ExchangeRate extends ApiResource
      * Returns a list of objects that contain the rates at which foreign currencies are
      * converted to one another. Only shows the currencies for which Stripe supports.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\ExchangeRate> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
-        return static::_requestPage('/v1/exchange_rates', \Stripe\Collection::class, $params, $opts);
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
      * Retrieves the exchange rates from the given currency to every supported
      * currency.
      *
-     * @param mixed $id
-     * @param null|mixed $opts
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ExchangeRate
      */
     public static function retrieve($id, $opts = null)
     {

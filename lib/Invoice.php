@@ -158,13 +158,18 @@ class Invoice extends ApiResource
      * allows you to <a href="#pay_invoice">pay</a> or <a href="#send_invoice">send</a>
      * the invoice to your customers.
      *
-     * @param null|mixed $params
-     * @param null|mixed $options
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Invoice the created resource
      */
     public static function create($params = null, $options = null)
     {
         self::_validateParams($params);
         $url = static::classUrl();
+
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
@@ -178,12 +183,17 @@ class Invoice extends ApiResource
      * has been finalized or if an invoice is for a subscription, it must be <a
      * href="#void_invoice">voided</a>.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Invoice the deleted resource
      */
     public function delete($params = null, $opts = null)
     {
         self::_validateParams($params);
+
         $url = $this->instanceUrl();
         list($response, $opts) = $this->_request('delete', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
@@ -196,19 +206,29 @@ class Invoice extends ApiResource
      * invoices are returned sorted by creation date, with the most recently created
      * invoices appearing first.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Invoice> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
-        return static::_requestPage('/v1/invoices', \Stripe\Collection::class, $params, $opts);
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
      * Retrieves the invoice with the given ID.
      *
-     * @param mixed $id
-     * @param null|mixed $opts
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Invoice
      */
     public static function retrieve($id, $opts = null)
     {
@@ -229,14 +249,19 @@ class Invoice extends ApiResource
      * href="/docs/billing/invoices/reconciliation">automatically reconciling</a>
      * invoices, pass <code>auto_advance=false</code>.
      *
-     * @param mixed $id
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param string $id the ID of the resource to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Invoice the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {
         self::_validateParams($params);
         $url = static::resourceUrl($id);
+
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);

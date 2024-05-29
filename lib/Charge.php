@@ -77,13 +77,18 @@ class Charge extends ApiResource
      * payment instead. Confirmation of the PaymentIntent creates the
      * <code>Charge</code> object used to request payment.
      *
-     * @param null|mixed $params
-     * @param null|mixed $options
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Charge the created resource
      */
     public static function create($params = null, $options = null)
     {
         self::_validateParams($params);
         $url = static::classUrl();
+
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
@@ -95,12 +100,18 @@ class Charge extends ApiResource
      * Returns a list of charges you’ve previously created. The charges are returned in
      * sorted order, with the most recent charges appearing first.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Charge> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
-        return static::_requestPage('/v1/charges', \Stripe\Collection::class, $params, $opts);
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
@@ -109,8 +120,12 @@ class Charge extends ApiResource
      * return the corresponding charge information. The same information is returned
      * when creating or refunding the charge.
      *
-     * @param mixed $id
-     * @param null|mixed $opts
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Charge
      */
     public static function retrieve($id, $opts = null)
     {
@@ -125,14 +140,19 @@ class Charge extends ApiResource
      * Updates the specified charge by setting the values of the parameters passed. Any
      * parameters not provided will be left unchanged.
      *
-     * @param mixed $id
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param string $id the ID of the resource to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Charge the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {
         self::_validateParams($params);
         $url = static::resourceUrl($id);
+
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);

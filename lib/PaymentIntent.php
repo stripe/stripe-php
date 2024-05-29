@@ -104,13 +104,18 @@ class PaymentIntent extends ApiResource
      * parameters available in the <a href="/docs/api/payment_intents/confirm">confirm
      * API</a> when you supply <code>confirm=true</code>.
      *
-     * @param null|mixed $params
-     * @param null|mixed $options
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent the created resource
      */
     public static function create($params = null, $options = null)
     {
         self::_validateParams($params);
         $url = static::classUrl();
+
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
@@ -121,12 +126,18 @@ class PaymentIntent extends ApiResource
     /**
      * Returns a list of PaymentIntents.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\PaymentIntent> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
-        return static::_requestPage('/v1/payment_intents', \Stripe\Collection::class, $params, $opts);
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
@@ -139,8 +150,12 @@ class PaymentIntent extends ApiResource
      * of properties. Refer to the <a href="#payment_intent_object">payment intent</a>
      * object reference for more details.
      *
-     * @param mixed $id
-     * @param null|mixed $opts
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
      */
     public static function retrieve($id, $opts = null)
     {
@@ -160,14 +175,19 @@ class PaymentIntent extends ApiResource
      * and confirm at the same time, we recommend updating properties through the <a
      * href="/docs/api/payment_intents/confirm">confirm API</a> instead.
      *
-     * @param mixed $id
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param string $id the ID of the resource to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {
         self::_validateParams($params);
         $url = static::resourceUrl($id);
+
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);

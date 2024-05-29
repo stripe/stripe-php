@@ -27,13 +27,18 @@ class Session extends \Stripe\ApiResource
      * <code>Session</code>. The session’s <code>client_secret</code> can be used to
      * launch the flow using Stripe.js.
      *
-     * @param null|mixed $params
-     * @param null|mixed $options
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\FinancialConnections\Session the created resource
      */
     public static function create($params = null, $options = null)
     {
         self::_validateParams($params);
         $url = static::classUrl();
+
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
@@ -44,8 +49,12 @@ class Session extends \Stripe\ApiResource
     /**
      * Retrieves the details of a Financial Connections <code>Session</code>.
      *
-     * @param mixed $id
-     * @param null|mixed $opts
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\FinancialConnections\Session
      */
     public static function retrieve($id, $opts = null)
     {

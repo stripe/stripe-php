@@ -41,12 +41,17 @@ class BankAccount extends ApiResource
     /**
      * Delete a specified external account for a given account.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\BankAccount the deleted resource
      */
     public function delete($params = null, $opts = null)
     {
         self::_validateParams($params);
+
         $url = $this->instanceUrl();
         list($response, $opts) = $this->_request('delete', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
@@ -117,10 +122,10 @@ class BankAccount extends ApiResource
     public static function update($_id, $_params = null, $_options = null)
     {
         $msg = 'Bank accounts cannot be updated without a customer ID or an ' .
-               'account ID. Update a bank account using ' .
-               "`Customer::updateSource('customer_id', 'bank_account_id', " .
-               '$updateParams)` or `Account::updateExternalAccount(' .
-               "'account_id', 'bank_account_id', \$updateParams)`.";
+                   'account ID. Update a bank account using ' .
+                   "`Customer::updateSource('customer_id', 'bank_account_id', " .
+                   '$updateParams)` or `Account::updateExternalAccount(' .
+                   "'account_id', 'bank_account_id', \$updateParams)`.";
 
         throw new Exception\BadMethodCallException($msg);
     }

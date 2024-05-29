@@ -35,7 +35,11 @@ class Balance extends SingletonApiResource
      * href="/docs/connect/account-balances#accounting-for-negative-balances">Accounting
      * for negative balances</a>.
      *
-     * @param null|mixed $opts
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Balance
      */
     public static function retrieve($opts = null)
     {
