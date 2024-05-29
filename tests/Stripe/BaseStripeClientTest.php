@@ -249,7 +249,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->with(static::callback(function ($opts) {
                 $this->assertAppInfo(
                     'User-Agent: ' . 'Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp/1.2.34 (https://mytestapp.example)',
-                    '{"name": "MyTestApp","version":"1.2.34","url":"https://mytestapp.example","appPartnerId":"partner_1234"}',
+                    '{"name": "MyTestApp","version":"1.2.34","url":"https://mytestapp.example","partner_id":"partner_1234"}',
                     $opts[\CURLOPT_HTTPHEADER]
                 );
 
@@ -260,7 +260,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'name' => 'MyTestApp',
             'version' => '1.2.34',
             'url' => 'https://mytestapp.example',
-            'appPartnerId' => 'partner_1234',
+            'partner_id' => 'partner_1234',
         ];
         ApiRequestor::setHttpClient($curlClientStub);
         $client = new BaseStripeClient([
