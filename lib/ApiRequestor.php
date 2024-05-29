@@ -43,7 +43,7 @@ class ApiRequestor
      *
      * @param null|string $apiKey
      * @param null|string $apiBase
-     * @param null|mixed $appInfo
+     * @param null|array $appInfo
      */
     public function __construct($apiKey = null, $apiBase = null, $appInfo = null)
     {
@@ -294,7 +294,7 @@ class ApiRequestor
             if (\array_key_exists('version', $appInfo) && null !== $appInfo['version']) {
                 $string .= '/' . $appInfo['version'];
             }
-            if (\array_key_exists('version', $appInfo) && null !== $appInfo['url']) {
+            if (\array_key_exists('url', $appInfo) && null !== $appInfo['url']) {
                 $string .= ' (' . $appInfo['url'] . ')';
             }
 

@@ -131,9 +131,9 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * Gets the app info for this client.
+     * Gets the app info for this client
      *
-     * @return null|array information to identify a plugin that integrates Stripe using this library
+     * @return array|null information to identify a plugin that integrates Stripe using this library
      */
     public function getAppInfo()
     {
@@ -311,7 +311,6 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             throw new \Stripe\Exception\InvalidArgumentException('app_info must be an array');
         }
 
-        // TODO: match to below?
         $appInfoKeys = ['name', 'version', 'url', 'appPartnerId'];
         if (null !== $config['app_info'] && array_diff_key($config['app_info'], array_flip($appInfoKeys))) {
             $msg = 'app_info must be of type array{name: string, version?: string, url?: string, appPartnerId?: string}';
