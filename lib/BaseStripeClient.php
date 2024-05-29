@@ -41,7 +41,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      *
      * - api_key (null|string): the Stripe API key, to be used in regular API requests.
      * - app_info (null|array): information to identify a plugin that integrates Stripe using this library.
-     *                          Expects: array{name: string, version?: string, url?: string, appPartnerId?: string}
+     *                          Expects: array{name: string, version?: string, url?: string, partner_id?: string}
      * - client_id (null|string): the Stripe client ID, to be used in OAuth requests.
      * - stripe_account (null|string): a Stripe account ID. If set, all requests sent by the client
      *   will automatically use the {@code Stripe-Account} header with that account ID.
@@ -311,9 +311,9 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             throw new \Stripe\Exception\InvalidArgumentException('app_info must be an array');
         }
 
-        $appInfoKeys = ['name', 'version', 'url', 'appPartnerId'];
+        $appInfoKeys = ['name', 'version', 'url', 'partner_id'];
         if (null !== $config['app_info'] && array_diff_key($config['app_info'], array_flip($appInfoKeys))) {
-            $msg = 'app_info must be of type array{name: string, version?: string, url?: string, appPartnerId?: string}';
+            $msg = 'app_info must be of type array{name: string, version?: string, url?: string, partner_id?: string}';
 
             throw new \Stripe\Exception\InvalidArgumentException($msg);
         }
