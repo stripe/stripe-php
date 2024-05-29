@@ -3,6 +3,10 @@
 ## 14.9.0-beta.1 - 2024-05-23
 * [#1696](https://github.com/stripe/stripe-php/pull/1696) Update generated code for beta
 
+## 14.8.0 - 2024-05-23
+* [#1698](https://github.com/stripe/stripe-php/pull/1698) Update generated code
+  * Add support for new value `terminal_reader_invalid_location_for_payment` on enum `StripeError.code`
+* [#1697](https://github.com/stripe/stripe-php/pull/1697) Rename section for object type generation
 
 ## 14.8.0-beta.1 - 2024-05-16
 * [#1693](https://github.com/stripe/stripe-php/pull/1693) Update generated code for beta

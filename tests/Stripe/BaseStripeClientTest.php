@@ -237,6 +237,175 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         );
     }
 
+    private function assertAppInfo($ua, $ua_dict, $headers)
+    {
+        static::assertContains($ua, $headers);
+        foreach ($headers as $element) {
+            if (strpos($element, 'X-Stripe-Client-User-Agent')) {
+                static::assertStringContainsString($ua_dict, $element);
+
+                break;
+            }
+        }
+    }
+
+    public function testSetClientAppInfo()
+    {
+        $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
+            ->setMethods(['executeRequestWithRetries'])
+            ->getMock()
+        ;
+
+        $curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "charge"}', 200, []])
+        ;
+
+        $curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                $this->assertAppInfo(
+                    'User-Agent: ' . 'Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp/1.2.34 (https://mytestapp.example)',
+                    '{"name": "MyTestApp","version":"1.2.34","url":"https://mytestapp.example","partner_id":"partner_1234"}',
+                    $opts[\CURLOPT_HTTPHEADER]
+                );
+
+                return true;
+            }), MOCK_URL . '/v1/charges/ch_123')
+        ;
+        $appInfo = [
+            'name' => 'MyTestApp',
+            'version' => '1.2.34',
+            'url' => 'https://mytestapp.example',
+            'partner_id' => 'partner_1234',
+        ];
+        ApiRequestor::setHttpClient($curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_appinfo',
+            'api_base' => MOCK_URL,
+            'app_info' => $appInfo,
+        ]);
+
+        $client->request('get', '/v1/charges/ch_123', [], []);
+    }
+
+    public function testSetClientAppInfoOnlyName()
+    {
+        $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
+            ->setMethods(['executeRequestWithRetries'])
+            ->getMock()
+        ;
+
+        $curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "charge"}', 200, []])
+        ;
+
+        $curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                $this->assertAppInfo(
+                    'User-Agent: ' . 'Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp',
+                    '{"name": "MyTestApp"}',
+                    $opts[\CURLOPT_HTTPHEADER]
+                );
+
+                return true;
+            }), MOCK_URL . '/v1/charges/ch_123')
+        ;
+        ApiRequestor::setHttpClient($curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_appinfo',
+            'api_base' => MOCK_URL,
+            'app_info' => [
+                'name' => 'MyTestApp',
+            ],
+        ]);
+        $client->request('get', '/v1/charges/ch_123', [], []);
+    }
+
+    public function testClientAppInfoFallsBackToGlobal()
+    {
+        $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
+            ->setMethods(['executeRequestWithRetries'])
+            ->getMock()
+        ;
+
+        $curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "charge"}', 200, []])
+        ;
+
+        $curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                $this->assertAppInfo(
+                    'User-Agent: ' . 'Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp/1.2.34 (https://mytestapp.example)',
+                    '{"name": "MyTestApp","version":"1.2.34","url":"https://mytestapp.example"}',
+                    $opts[\CURLOPT_HTTPHEADER]
+                );
+
+                return true;
+            }), MOCK_URL . '/v1/charges/ch_123')
+        ;
+        ApiRequestor::setHttpClient($curlClientStub);
+        Stripe::setAppInfo('MyTestApp', '1.2.34', 'https://mytestapp.example');
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_appinfo',
+            'api_base' => MOCK_URL,
+        ]);
+        $client->request('get', '/v1/charges/ch_123', [], []);
+    }
+
+    public function testClientAppInfoOverridesGlobal()
+    {
+        $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
+            ->setMethods(['executeRequestWithRetries'])
+            ->getMock()
+        ;
+
+        $curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "charge"}', 200, []])
+        ;
+
+        $curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                $headers = $opts[\CURLOPT_HTTPHEADER];
+                $this->assertAppInfo(
+                    'User-Agent: ' . 'Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp/2.3.45 (https://mytestapp.example)',
+                    '{"name": "MyTestApp","version":"2.3.45","url":"https://mytestapp.example"}',
+                    $opts[\CURLOPT_HTTPHEADER]
+                );
+
+                return true;
+            }), MOCK_URL . '/v1/charges/ch_123')
+        ;
+
+        ApiRequestor::setHttpClient($curlClientStub);
+        Stripe::setAppInfo('NotMyTestApp', '1.2.34', 'https://notmytestapp.example');
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_appinfo',
+            'api_base' => MOCK_URL,
+            'app_info' => [
+                'name' => 'MyTestApp',
+                'version' => '2.3.45',
+                'url' => 'https://mytestapp.example',
+            ],
+        ]);
+
+        $client->request('get', '/v1/charges/ch_123', [], []);
+    }
+
+    public function testConfigValidationFindsExtraAppInfoKeys()
+    {
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_appinfo',
+            'app_info' => [
+                'name' => 'MyTestApp',
+                'foo' => 'bar',
+            ],
+        ]);
+    }
+
     public function testJsonRawRequestGetWithURLParams()
     {
         $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
