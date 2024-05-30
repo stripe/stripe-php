@@ -45,9 +45,6 @@ class Account extends ApiResource
 {
     const OBJECT_NAME = 'account';
 
-    use ApiOperations\All;
-    use ApiOperations\Create;
-    use ApiOperations\Delete;
     use ApiOperations\NestedResource;
     use ApiOperations\Update;
 
@@ -60,6 +57,129 @@ class Account extends ApiResource
     const TYPE_EXPRESS = 'express';
     const TYPE_NONE = 'none';
     const TYPE_STANDARD = 'standard';
+
+    /**
+     * With <a href="/docs/connect">Connect</a>, you can create Stripe accounts for
+     * your users. To do this, you’ll first need to <a
+     * href="https://dashboard.stripe.com/account/applications/settings">register your
+     * platform</a>.
+     *
+     * If you’ve already collected information for your connected accounts, you <a
+     * href="/docs/connect/best-practices#onboarding">can prefill that information</a>
+     * when creating the account. Connect Onboarding won’t ask for the prefilled
+     * information during account onboarding. You can prefill any information on the
+     * account.
+     *
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Account the created resource
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * With <a href="/connect">Connect</a>, you can delete accounts you manage.
+     *
+     * Test-mode accounts can be deleted at any time.
+     *
+     * Live-mode accounts where Stripe is responsible for negative account balances
+     * cannot be deleted, which includes Standard accounts. Live-mode accounts where
+     * your platform is liable for negative account balances, which includes Custom and
+     * Express accounts, can be deleted when all <a
+     * href="/api/balance/balanace_object">balances</a> are zero.
+     *
+     * If you want to delete your own account, use the <a
+     * href="https://dashboard.stripe.com/settings/account">account information tab in
+     * your account settings</a> instead.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Account the deleted resource
+     */
+    public function delete($params = null, $opts = null)
+    {
+        self::_validateParams($params);
+
+        $url = $this->instanceUrl();
+        list($response, $opts) = $this->_request('delete', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * Returns a list of accounts connected to your platform via <a
+     * href="/docs/connect">Connect</a>. If you’re not a platform, the list is empty.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Account> of ApiResources
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Updates a <a href="/connect/accounts">connected account</a> by setting the
+     * values of the parameters passed. Any parameters not provided are left unchanged.
+     *
+     * For accounts where <a
+     * href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+     * is <code>application</code>, which includes Custom accounts, you can update any
+     * information on the account.
+     *
+     * For accounts where <a
+     * href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+     * is <code>stripe</code>, which includes Standard and Express accounts, you can
+     * update all information until you create an <a href="/api/account_links">Account
+     * Link</a> or <a href="/api/account_sessions">Account Session</a> to start Connect
+     * onboarding, after which some properties can no longer be updated.
+     *
+     * To update your own account, use the <a
+     * href="https://dashboard.stripe.com/settings/account">Dashboard</a>. Refer to our
+     * <a href="/docs/connect/updating-accounts">Connect</a> documentation to learn
+     * more about updating accounts.
+     *
+     * @param string $id the ID of the resource to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Account the updated resource
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 
     use ApiOperations\Retrieve {
         retrieve as protected _retrieve;

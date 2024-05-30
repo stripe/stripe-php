@@ -27,8 +27,6 @@ class Capability extends ApiResource
     const STATUS_PENDING = 'pending';
     const STATUS_UNREQUESTED = 'unrequested';
 
-    use ApiOperations\Update;
-
     /**
      * @return string the API URL for this Stripe account reversal
      */
@@ -78,9 +76,32 @@ class Capability extends ApiResource
     public static function update($_id, $_params = null, $_options = null)
     {
         $msg = 'Capabilities cannot be updated without an account ID. ' .
-               'Update a capability using `Account::updateCapability(' .
-               "'account_id', 'capability_id', \$updateParams)`.";
+                   'Update a capability using `Account::updateCapability(' .
+                   "'account_id', 'capability_id', \$updateParams)`.";
 
         throw new Exception\BadMethodCallException($msg);
+    }
+
+    /**
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return static the saved resource
+     *
+     * @deprecated The `save` method is deprecated and will be removed in a
+     *     future major version of the library. Use the static method `update`
+     *     on the resource instead.
+     */
+    public function save($opts = null)
+    {
+        $params = $this->serializeParameters();
+        if (\count($params) > 0) {
+            $url = $this->instanceUrl();
+            list($response, $opts) = $this->_request('post', $url, $params, $opts, ['save']);
+            $this->refreshFrom($response, $opts);
+        }
+
+        return $this;
     }
 }

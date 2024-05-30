@@ -25,9 +25,6 @@ class TransactionEntry extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'treasury.transaction_entry';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
-
     const FLOW_TYPE_CREDIT_REVERSAL = 'credit_reversal';
     const FLOW_TYPE_DEBIT_REVERSAL = 'debit_reversal';
     const FLOW_TYPE_INBOUND_TRANSFER = 'inbound_transfer';
@@ -58,4 +55,40 @@ class TransactionEntry extends \Stripe\ApiResource
     const TYPE_OUTBOUND_TRANSFER_RETURN = 'outbound_transfer_return';
     const TYPE_RECEIVED_CREDIT = 'received_credit';
     const TYPE_RECEIVED_DEBIT = 'received_debit';
+
+    /**
+     * Retrieves a list of TransactionEntry objects.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Treasury\TransactionEntry> of ApiResources
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves a TransactionEntry object.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\TransactionEntry
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

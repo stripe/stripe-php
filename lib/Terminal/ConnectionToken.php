@@ -17,5 +17,27 @@ class ConnectionToken extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'terminal.connection_token';
 
-    use \Stripe\ApiOperations\Create;
+    /**
+     * To connect to a reader the Stripe Terminal SDK needs to retrieve a short-lived
+     * connection token from Stripe, proxied through your server. On your backend, add
+     * an endpoint that creates and returns a connection token.
+     *
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\ConnectionToken the created resource
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 }

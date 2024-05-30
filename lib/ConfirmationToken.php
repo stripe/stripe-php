@@ -31,8 +31,25 @@ class ConfirmationToken extends ApiResource
 {
     const OBJECT_NAME = 'confirmation_token';
 
-    use ApiOperations\Retrieve;
-
     const SETUP_FUTURE_USAGE_OFF_SESSION = 'off_session';
     const SETUP_FUTURE_USAGE_ON_SESSION = 'on_session';
+
+    /**
+     * Retrieves an existing ConfirmationToken object.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ConfirmationToken
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }
