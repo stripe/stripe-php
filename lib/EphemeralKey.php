@@ -16,11 +16,30 @@ class EphemeralKey extends ApiResource
 {
     const OBJECT_NAME = 'ephemeral_key';
 
+    /**
+     * Invalidates a short-lived API key for a given resource.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\EphemeralKey the deleted resource
+     */
+    public function delete($params = null, $opts = null)
+    {
+        self::_validateParams($params);
+
+        $url = $this->instanceUrl();
+        list($response, $opts) = $this->_request('delete', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
     use ApiOperations\Create {
         create as protected _create;
     }
-
-    use ApiOperations\Delete;
 
     /**
      * @param null|array $params

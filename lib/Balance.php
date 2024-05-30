@@ -29,5 +29,24 @@ class Balance extends SingletonApiResource
 {
     const OBJECT_NAME = 'balance';
 
-    use ApiOperations\SingletonRetrieve;
+    /**
+     * Retrieves the current account balance, based on the authentication that was used
+     * to make the request.  For a sample request, see <a
+     * href="/docs/connect/account-balances#accounting-for-negative-balances">Accounting
+     * for negative balances</a>.
+     *
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Balance
+     */
+    public static function retrieve($opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static(null, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

@@ -24,8 +24,6 @@ class AccountNotice extends ApiResource
 {
     const OBJECT_NAME = 'account_notice';
 
-    use ApiOperations\All;
-    use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
     const REASON_ISSUING_ACCOUNT_CLOSED_FOR_INACTIVITY = 'issuing.account_closed_for_inactivity';
@@ -38,4 +36,65 @@ class AccountNotice extends ApiResource
     const REASON_ISSUING_DISPUTE_LOST = 'issuing.dispute_lost';
     const REASON_ISSUING_DISPUTE_SUBMITTED = 'issuing.dispute_submitted';
     const REASON_ISSUING_DISPUTE_WON = 'issuing.dispute_won';
+
+    /**
+     * Retrieves a list of <code>AccountNotice</code> objects. The objects are sorted
+     * in descending order by creation date, with the most-recently-created object
+     * appearing first.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\AccountNotice> of ApiResources
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves an <code>AccountNotice</code> object.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\AccountNotice
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates an <code>AccountNotice</code> object.
+     *
+     * @param string $id the ID of the resource to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\AccountNotice the updated resource
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 }

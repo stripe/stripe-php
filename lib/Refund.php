@@ -36,9 +36,6 @@ class Refund extends ApiResource
 {
     const OBJECT_NAME = 'refund';
 
-    use ApiOperations\All;
-    use ApiOperations\Create;
-    use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
     const FAILURE_REASON_EXPIRED_OR_CANCELED_CARD = 'expired_or_canceled_card';
@@ -55,6 +52,104 @@ class Refund extends ApiResource
     const STATUS_PENDING = 'pending';
     const STATUS_REQUIRES_ACTION = 'requires_action';
     const STATUS_SUCCEEDED = 'succeeded';
+
+    /**
+     * When you create a new refund, you must specify a Charge or a PaymentIntent
+     * object on which to create it.
+     *
+     * Creating a new refund will refund a charge that has previously been created but
+     * not yet refunded. Funds will be refunded to the credit or debit card that was
+     * originally charged.
+     *
+     * You can optionally refund only part of a charge. You can do so multiple times,
+     * until the entire charge has been refunded.
+     *
+     * Once entirely refunded, a charge can’t be refunded again. This method will raise
+     * an error when called on an already-refunded charge, or when trying to refund
+     * more money than is left on a charge.
+     *
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Refund the created resource
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Returns a list of all refunds you created. We return the refunds in sorted
+     * order, with the most recent refunds appearing first The 10 most recent refunds
+     * are always available by default on the Charge object.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Refund> of ApiResources
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of an existing refund.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Refund
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates the refund that you specify by setting the values of the passed
+     * parameters. Any parameters that you don’t provide remain unchanged.
+     *
+     * This request only accepts <code>metadata</code> as an argument.
+     *
+     * @param string $id the ID of the resource to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Refund the updated resource
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 
     /**
      * @param null|array $params

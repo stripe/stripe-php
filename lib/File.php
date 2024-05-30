@@ -29,9 +29,6 @@ class File extends ApiResource
 {
     const OBJECT_NAME = 'file';
 
-    use ApiOperations\All;
-    use ApiOperations\Retrieve;
-
     const PURPOSE_ACCOUNT_REQUIREMENT = 'account_requirement';
     const PURPOSE_ADDITIONAL_VERIFICATION = 'additional_verification';
     const PURPOSE_BUSINESS_ICON = 'business_icon';
@@ -47,6 +44,46 @@ class File extends ApiResource
     const PURPOSE_SIGMA_SCHEDULED_QUERY = 'sigma_scheduled_query';
     const PURPOSE_TAX_DOCUMENT_USER_UPLOAD = 'tax_document_user_upload';
     const PURPOSE_TERMINAL_READER_SPLASHSCREEN = 'terminal_reader_splashscreen';
+
+    /**
+     * Returns a list of the files that your account has access to. Stripe sorts and
+     * returns the files by their creation dates, placing the most recently created
+     * files at the top.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\File> of ApiResources
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of an existing file object. After you supply a unique file
+     * ID, Stripe returns the corresponding file object. Learn how to <a
+     * href="/docs/file-upload#download-file-contents">access file contents</a>.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\File
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 
     // This resource can have two different object names. In latter API
     // versions, only `file` is used, but since stripe-php may be used with

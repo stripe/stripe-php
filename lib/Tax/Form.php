@@ -25,12 +25,48 @@ class Form extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'tax.form';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
-
     const TYPE_US_1099_K = 'us_1099_k';
     const TYPE_US_1099_MISC = 'us_1099_misc';
     const TYPE_US_1099_NEC = 'us_1099_nec';
+
+    /**
+     * Returns a list of tax forms which were previously created. The tax forms are
+     * returned in sorted order, with the oldest tax forms appearing first.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Tax\Form> of ApiResources
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of a tax form that has previously been created. Supply the
+     * unique tax form ID that was returned from your previous request, and Stripe will
+     * return the corresponding tax form information.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Tax\Form
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 
     /**
      * @param callable $readBodyChunkCallable

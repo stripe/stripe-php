@@ -17,9 +17,26 @@ class FinancingSummary extends \Stripe\SingletonApiResource
 {
     const OBJECT_NAME = 'capital.financing_summary';
 
-    use \Stripe\ApiOperations\SingletonRetrieve;
-
     const STATUS_ACCEPTED = 'accepted';
     const STATUS_DELIVERED = 'delivered';
     const STATUS_NONE = 'none';
+
+    /**
+     * Retrieve the financing state for the account that was authenticated in the
+     * request.
+     *
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Capital\FinancingSummary
+     */
+    public static function retrieve($opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static(null, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

@@ -26,11 +26,46 @@ class CreditUnderwritingRecord extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'issuing.credit_underwriting_record';
 
-    use \Stripe\ApiOperations\All;
-    use \Stripe\ApiOperations\Retrieve;
-
     const CREATED_FROM_APPLICATION = 'application';
     const CREATED_FROM_PROACTIVE_REVIEW = 'proactive_review';
+
+    /**
+     * Retrieves a list of <code>CreditUnderwritingRecord</code> objects. The objects
+     * are sorted in descending order by creation date, with the most-recently-created
+     * object appearing first.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Issuing\CreditUnderwritingRecord> of ApiResources
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves a <code>CreditUnderwritingRecord</code> object.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\CreditUnderwritingRecord
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 
     /**
      * @param null|array $params
