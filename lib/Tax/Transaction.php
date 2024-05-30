@@ -35,8 +35,12 @@ class Transaction extends \Stripe\ApiResource
     /**
      * Retrieves a Tax <code>Transaction</code> object.
      *
-     * @param mixed $id
-     * @param null|mixed $opts
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Tax\Transaction
      */
     public static function retrieve($id, $opts = null)
     {

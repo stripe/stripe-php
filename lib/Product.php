@@ -49,13 +49,18 @@ class Product extends ApiResource
     /**
      * Creates a new product object.
      *
-     * @param null|mixed $params
-     * @param null|mixed $options
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Product the created resource
      */
     public static function create($params = null, $options = null)
     {
         self::_validateParams($params);
         $url = static::classUrl();
+
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
@@ -68,12 +73,17 @@ class Product extends ApiResource
      * associated with it. Additionally, deleting a product with <code>type=good</code>
      * is only possible if it has no SKUs associated with it.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Product the deleted resource
      */
     public function delete($params = null, $opts = null)
     {
         self::_validateParams($params);
+
         $url = $this->instanceUrl();
         list($response, $opts) = $this->_request('delete', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
@@ -85,12 +95,18 @@ class Product extends ApiResource
      * Returns a list of your products. The products are returned sorted by creation
      * date, with the most recently created products appearing first.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Product> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
-        return static::_requestPage('/v1/products', \Stripe\Collection::class, $params, $opts);
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
@@ -98,8 +114,12 @@ class Product extends ApiResource
      * either a product creation request or the product list, and Stripe will return
      * the corresponding product information.
      *
-     * @param mixed $id
-     * @param null|mixed $opts
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Product
      */
     public static function retrieve($id, $opts = null)
     {
@@ -114,14 +134,19 @@ class Product extends ApiResource
      * Updates the specific product by setting the values of the parameters passed. Any
      * parameters not provided will be left unchanged.
      *
-     * @param mixed $id
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param string $id the ID of the resource to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Product the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {
         self::_validateParams($params);
         $url = static::resourceUrl($id);
+
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);

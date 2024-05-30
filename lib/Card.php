@@ -48,12 +48,17 @@ class Card extends ApiResource
     /**
      * Delete a specified external account for a given account.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Card the deleted resource
      */
     public function delete($params = null, $opts = null)
     {
         self::_validateParams($params);
+
         $url = $this->instanceUrl();
         list($response, $opts) = $this->_request('delete', $url, $params, $opts);
         $this->refreshFrom($response, $opts);

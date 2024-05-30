@@ -79,12 +79,18 @@ class BalanceTransaction extends ApiResource
      * Note that this endpoint was previously called “Balance history” and used the
      * path <code>/v1/balance/history</code>.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\BalanceTransaction> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
-        return static::_requestPage('/v1/balance_transactions', \Stripe\Collection::class, $params, $opts);
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
@@ -93,8 +99,12 @@ class BalanceTransaction extends ApiResource
      * Note that this endpoint previously used the path
      * <code>/v1/balance/history/:id</code>.
      *
-     * @param mixed $id
-     * @param null|mixed $opts
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\BalanceTransaction
      */
     public static function retrieve($id, $opts = null)
     {

@@ -20,20 +20,30 @@ class TaxCode extends ApiResource
      * A list of <a href="https://stripe.com/docs/tax/tax-categories">all tax codes
      * available</a> to add to Products in order to allow specific tax calculations.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\TaxCode> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
-        return static::_requestPage('/v1/tax_codes', \Stripe\Collection::class, $params, $opts);
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
      * Retrieves the details of an existing tax code. Supply the unique tax code ID and
      * Stripe will return the corresponding tax code information.
      *
-     * @param mixed $id
-     * @param null|mixed $opts
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\TaxCode
      */
     public static function retrieve($id, $opts = null)
     {

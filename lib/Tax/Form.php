@@ -33,12 +33,18 @@ class Form extends \Stripe\ApiResource
      * Returns a list of tax forms which were previously created. The tax forms are
      * returned in sorted order, with the oldest tax forms appearing first.
      *
-     * @param null|mixed $params
-     * @param null|mixed $opts
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Tax\Form> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
-        return static::_requestPage('/v1/tax/forms', \Stripe\Collection::class, $params, $opts);
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
@@ -46,8 +52,12 @@ class Form extends \Stripe\ApiResource
      * unique tax form ID that was returned from your previous request, and Stripe will
      * return the corresponding tax form information.
      *
-     * @param mixed $id
-     * @param null|mixed $opts
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Tax\Form
      */
     public static function retrieve($id, $opts = null)
     {

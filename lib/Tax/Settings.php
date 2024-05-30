@@ -26,7 +26,11 @@ class Settings extends \Stripe\SingletonApiResource
     /**
      * Retrieves Tax <code>Settings</code> for a merchant.
      *
-     * @param null|mixed $opts
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Tax\Settings
      */
     public static function retrieve($opts = null)
     {

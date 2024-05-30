@@ -25,7 +25,11 @@ class FinancingSummary extends \Stripe\SingletonApiResource
      * Retrieve the financing state for the account that was authenticated in the
      * request.
      *
-     * @param null|mixed $opts
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Capital\FinancingSummary
      */
     public static function retrieve($opts = null)
     {
