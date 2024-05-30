@@ -108,8 +108,8 @@ class Person extends ApiResource
     public static function update($_id, $_params = null, $_options = null)
     {
         $msg = 'Persons cannot be updated without an account ID. Update ' .
-                   "a person using `Account::updatePerson('account_id', " .
-                   "'person_id', \$updateParams)`.";
+                "a person using `Account::updatePerson('account_id', " .
+                "'person_id', \$updateParams)`.";
 
         throw new Exception\BadMethodCallException($msg);
     }
