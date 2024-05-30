@@ -9,7 +9,7 @@ namespace Stripe\Issuing;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\Stripe\StripeObject $features
+ * @property \Stripe\StripeObject $features
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $name Friendly display name.
  * @property string $status Whether this physical bundle can be used to create cards.
