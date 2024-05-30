@@ -1,5 +1,9 @@
 # Changelog
 
+## 14.10.0-beta.1 - 2024-05-30
+* [#1699](https://github.com/stripe/stripe-php/pull/1699) Update generated code for beta
+  * Keeping up with the changes from version 14.9.0
+
 ## 14.9.0-beta.1 - 2024-05-23
 * [#1696](https://github.com/stripe/stripe-php/pull/1696) Update generated code for beta
 
