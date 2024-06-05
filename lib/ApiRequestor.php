@@ -207,7 +207,13 @@ class ApiRequestor
         $param = isset($errorData['param']) ? $errorData['param'] : null;
         $code = isset($errorData['code']) ? $errorData['code'] : null;
         $type = isset($errorData['type']) ? $errorData['type'] : null;
-        $declineCode = isset($errorData['decline_code']) ? $errorData['decline_code'] : null;
+        if (isset($errorData['decline_code'])) {
+            $declineCode = $errorData['decline_code'];
+        } else if (isset($errorData['failure_code'])) {
+            $declineCode = $errorData['failure_code'];
+        } else {
+            $declineCode = null;
+        }
 
         switch ($rcode) {
             case 400:
