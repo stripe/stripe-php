@@ -35,6 +35,7 @@ namespace Stripe;
  * @property null|\Stripe\Discount $discount Describes the current discount applied to this subscription, if there is one. When billing, a discount applied to a subscription overrides a discount applied on a customer-wide basis. This field has been deprecated and will be removed in a future API version. Use <code>discounts</code> instead.
  * @property (string|\Stripe\Discount)[] $discounts The discounts applied to the subscription. Subscription item discounts are applied before subscription discounts. Use <code>expand[]=discounts</code> to expand each discount.
  * @property null|int $ended_at If the subscription has ended, the date the subscription ended.
+ * @property \Stripe\StripeObject $invoice_settings
  * @property \Stripe\Collection<\Stripe\SubscriptionItem> $items List of subscription items, each with an attached price.
  * @property null|string|\Stripe\Invoice $latest_invoice The most recent invoice this subscription has generated.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
