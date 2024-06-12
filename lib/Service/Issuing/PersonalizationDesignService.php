@@ -6,6 +6,8 @@ namespace Stripe\Service\Issuing;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ */
+/**
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class PersonalizationDesignService extends \Stripe\Service\AbstractService

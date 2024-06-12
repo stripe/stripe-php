@@ -6,6 +6,8 @@ namespace Stripe\Service\Capital;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ */
+/**
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class FinancingOfferService extends \Stripe\Service\AbstractService
