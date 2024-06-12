@@ -101,6 +101,7 @@ class ObjectTypes
             \Stripe\Payout::OBJECT_NAME => \Stripe\Payout::class,
             \Stripe\Person::OBJECT_NAME => \Stripe\Person::class,
             \Stripe\Plan::OBJECT_NAME => \Stripe\Plan::class,
+            \Stripe\PlatformTaxFee::OBJECT_NAME => \Stripe\PlatformTaxFee::class,
             \Stripe\Price::OBJECT_NAME => \Stripe\Price::class,
             \Stripe\Product::OBJECT_NAME => \Stripe\Product::class,
             \Stripe\ProductFeature::OBJECT_NAME => \Stripe\ProductFeature::class,
