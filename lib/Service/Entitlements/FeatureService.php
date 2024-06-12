@@ -6,8 +6,6 @@ namespace Stripe\Service\Entitlements;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
- */
-/**
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class FeatureService extends \Stripe\Service\AbstractService

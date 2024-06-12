@@ -6,8 +6,6 @@ namespace Stripe\Service\GiftCards;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
- */
-/**
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class TransactionService extends \Stripe\Service\AbstractService
