@@ -6,8 +6,6 @@ namespace Stripe\Service\Reporting;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
- */
-/**
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class ReportRunService extends \Stripe\Service\AbstractService
