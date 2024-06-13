@@ -1,5 +1,13 @@
 # Changelog
 
+## 14.10.0 - 2024-06-13
+* [#1706](https://github.com/stripe/stripe-php/pull/1706) Update generated code
+  * Add support for `multibanco` on `PaymentMethodConfiguration` and `PaymentMethod`
+  * Add support for `twint` on `PaymentMethod`
+  * Add support for new values `multibanco` and `twint` on enum `PaymentMethod.type`
+  * Add support for `invoice_settings` on `Subscription`
+  * Add support for new value `de_stn` on enum `TaxId.type`
+
 ## 14.10.0-beta.1 - 2024-05-30
 * [#1699](https://github.com/stripe/stripe-php/pull/1699) Update generated code for beta
   * Keeping up with the changes from version 14.9.0
