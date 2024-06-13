@@ -1,5 +1,8 @@
 # Changelog
 
+## 14.11.0-beta.1 - 2024-06-13
+* [#1705](https://github.com/stripe/stripe-php/pull/1705) Syncing changes from 14.10.0 release
+
 ## 14.10.0 - 2024-06-13
 * [#1706](https://github.com/stripe/stripe-php/pull/1706) Update generated code
   * Add support for `multibanco` on `PaymentMethodConfiguration` and `PaymentMethod`
