@@ -6,8 +6,6 @@ namespace Stripe\Service\Treasury;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
- */
-/**
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class ReceivedCreditService extends \Stripe\Service\AbstractService

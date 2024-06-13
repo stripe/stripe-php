@@ -6,8 +6,6 @@ namespace Stripe\Service\Apps;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
- */
-/**
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class SecretService extends \Stripe\Service\AbstractService

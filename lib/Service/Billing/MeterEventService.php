@@ -6,8 +6,6 @@ namespace Stripe\Service\Billing;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
- */
-/**
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class MeterEventService extends \Stripe\Service\AbstractService
