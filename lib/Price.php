@@ -38,7 +38,6 @@ class Price extends ApiResource
 {
     const OBJECT_NAME = 'price';
 
-    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const BILLING_SCHEME_PER_UNIT = 'per_unit';

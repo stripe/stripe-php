@@ -43,7 +43,6 @@ class Customer extends ApiResource
     const OBJECT_NAME = 'customer';
 
     use ApiOperations\NestedResource;
-    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const TAX_EXEMPT_EXEMPT = 'exempt';
