@@ -62,7 +62,6 @@ class PaymentIntent extends ApiResource
 {
     const OBJECT_NAME = 'payment_intent';
 
-    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const CANCELLATION_REASON_ABANDONED = 'abandoned';
