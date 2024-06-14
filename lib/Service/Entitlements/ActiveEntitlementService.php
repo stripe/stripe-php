@@ -6,8 +6,6 @@ namespace Stripe\Service\Entitlements;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
- */
-/**
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class ActiveEntitlementService extends \Stripe\Service\AbstractService
