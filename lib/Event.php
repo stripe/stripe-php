@@ -54,9 +54,6 @@ class Event extends ApiResource
 {
     const OBJECT_NAME = 'event';
 
-    use ApiOperations\All;
-    use ApiOperations\Retrieve;
-
     const ACCOUNT_APPLICATION_AUTHORIZED = 'account.application.authorized';
     const ACCOUNT_APPLICATION_DEAUTHORIZED = 'account.application.deauthorized';
     const ACCOUNT_EXTERNAL_ACCOUNT_CREATED = 'account.external_account.created';
@@ -166,6 +163,10 @@ class Event extends ApiResource
     const ISSUING_DISPUTE_FUNDS_REINSTATED = 'issuing_dispute.funds_reinstated';
     const ISSUING_DISPUTE_SUBMITTED = 'issuing_dispute.submitted';
     const ISSUING_DISPUTE_UPDATED = 'issuing_dispute.updated';
+    const ISSUING_PERSONALIZATION_DESIGN_ACTIVATED = 'issuing_personalization_design.activated';
+    const ISSUING_PERSONALIZATION_DESIGN_DEACTIVATED = 'issuing_personalization_design.deactivated';
+    const ISSUING_PERSONALIZATION_DESIGN_REJECTED = 'issuing_personalization_design.rejected';
+    const ISSUING_PERSONALIZATION_DESIGN_UPDATED = 'issuing_personalization_design.updated';
     const ISSUING_TOKEN_CREATED = 'issuing_token.created';
     const ISSUING_TOKEN_UPDATED = 'issuing_token.updated';
     const ISSUING_TRANSACTION_CREATED = 'issuing_transaction.created';
@@ -396,6 +397,10 @@ class Event extends ApiResource
     const TYPE_ISSUING_DISPUTE_FUNDS_REINSTATED = 'issuing_dispute.funds_reinstated';
     const TYPE_ISSUING_DISPUTE_SUBMITTED = 'issuing_dispute.submitted';
     const TYPE_ISSUING_DISPUTE_UPDATED = 'issuing_dispute.updated';
+    const TYPE_ISSUING_PERSONALIZATION_DESIGN_ACTIVATED = 'issuing_personalization_design.activated';
+    const TYPE_ISSUING_PERSONALIZATION_DESIGN_DEACTIVATED = 'issuing_personalization_design.deactivated';
+    const TYPE_ISSUING_PERSONALIZATION_DESIGN_REJECTED = 'issuing_personalization_design.rejected';
+    const TYPE_ISSUING_PERSONALIZATION_DESIGN_UPDATED = 'issuing_personalization_design.updated';
     const TYPE_ISSUING_TOKEN_CREATED = 'issuing_token.created';
     const TYPE_ISSUING_TOKEN_UPDATED = 'issuing_token.updated';
     const TYPE_ISSUING_TRANSACTION_CREATED = 'issuing_transaction.created';
@@ -516,4 +521,45 @@ class Event extends ApiResource
     const TYPE_TREASURY_RECEIVED_CREDIT_FAILED = 'treasury.received_credit.failed';
     const TYPE_TREASURY_RECEIVED_CREDIT_SUCCEEDED = 'treasury.received_credit.succeeded';
     const TYPE_TREASURY_RECEIVED_DEBIT_CREATED = 'treasury.received_debit.created';
+
+    /**
+     * List events, going back up to 30 days. Each event data is rendered according to
+     * Stripe API version at its creation time, specified in <a
+     * href="https://docs.stripe.com/api/events/object">event object</a>
+     * <code>api_version</code> attribute (not according to your current Stripe API
+     * version or <code>Stripe-Version</code> header).
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Event> of ApiResources
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of an event. Supply the unique identifier of the event,
+     * which you might have received in a webhook.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Event
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

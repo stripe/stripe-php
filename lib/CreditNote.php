@@ -44,10 +44,7 @@ class CreditNote extends ApiResource
 {
     const OBJECT_NAME = 'credit_note';
 
-    use ApiOperations\All;
-    use ApiOperations\Create;
     use ApiOperations\NestedResource;
-    use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
     const REASON_DUPLICATE = 'duplicate';
@@ -60,6 +57,106 @@ class CreditNote extends ApiResource
 
     const TYPE_POST_PAYMENT = 'post_payment';
     const TYPE_PRE_PAYMENT = 'pre_payment';
+
+    /**
+     * Issue a credit note to adjust the amount of a finalized invoice. For a
+     * <code>status=open</code> invoice, a credit note reduces its
+     * <code>amount_due</code>. For a <code>status=paid</code> invoice, a credit note
+     * does not affect its <code>amount_due</code>. Instead, it can result in any
+     * combination of the following:.
+     *
+     * <ul> <li>Refund: create a new refund (using <code>refund_amount</code>) or link
+     * an existing refund (using <code>refund</code>).</li> <li>Customer balance
+     * credit: credit the customer’s balance (using <code>credit_amount</code>) which
+     * will be automatically applied to their next invoice when it’s finalized.</li>
+     * <li>Outside of Stripe credit: record the amount that is or will be credited
+     * outside of Stripe (using <code>out_of_band_amount</code>).</li> </ul>
+     *
+     * For post-payment credit notes the sum of the refund, credit and outside of
+     * Stripe amounts must equal the credit note total.
+     *
+     * You may issue multiple credit notes for an invoice. Each credit note will
+     * increment the invoice’s <code>pre_payment_credit_notes_amount</code> or
+     * <code>post_payment_credit_notes_amount</code> depending on its
+     * <code>status</code> at the time of credit note creation.
+     *
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CreditNote the created resource
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Returns a list of credit notes.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\CreditNote> of ApiResources
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the credit note object with the given identifier.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CreditNote
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates an existing credit note.
+     *
+     * @param string $id the ID of the resource to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CreditNote the updated resource
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 
     /**
      * @param null|array $params

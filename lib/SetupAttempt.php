@@ -30,5 +30,20 @@ class SetupAttempt extends ApiResource
 {
     const OBJECT_NAME = 'setup_attempt';
 
-    use ApiOperations\All;
+    /**
+     * Returns a list of SetupAttempts that associate with a provided SetupIntent.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\SetupAttempt> of ApiResources
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+    }
 }

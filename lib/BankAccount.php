@@ -8,8 +8,7 @@ namespace Stripe;
  * These bank accounts are payment methods on <code>Customer</code> objects.
  *
  * On the other hand <a href="/api#external_accounts">External Accounts</a> are transfer
- * destinations on <code>Account</code> objects for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
- * is <code>application</code>, which includes <a href="/connect/custom-accounts">Custom accounts</a>.
+ * destinations on <code>Account</code> objects for connected accounts.
  * They can be bank accounts or debit cards as well, and are documented in the links above.
  *
  * Related guide: <a href="/payments/bank-debits-transfers">Bank debits and transfers</a>
@@ -38,8 +37,26 @@ class BankAccount extends ApiResource
 {
     const OBJECT_NAME = 'bank_account';
 
-    use ApiOperations\Delete;
-    use ApiOperations\Update;
+    /**
+     * Delete a specified external account for a given account.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\BankAccount the deleted resource
+     */
+    public function delete($params = null, $opts = null)
+    {
+        self::_validateParams($params);
+
+        $url = $this->instanceUrl();
+        list($response, $opts) = $this->_request('delete', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
 
     /**
      * Possible string representations of the bank verification status.
@@ -110,6 +127,29 @@ class BankAccount extends ApiResource
                "'account_id', 'bank_account_id', \$updateParams)`.";
 
         throw new Exception\BadMethodCallException($msg);
+    }
+
+    /**
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return static the saved resource
+     *
+     * @deprecated The `save` method is deprecated and will be removed in a
+     *     future major version of the library. Use the static method `update`
+     *     on the resource instead.
+     */
+    public function save($opts = null)
+    {
+        $params = $this->serializeParameters();
+        if (\count($params) > 0) {
+            $url = $this->instanceUrl();
+            list($response, $opts) = $this->_request('post', $url, $params, $opts, ['save']);
+            $this->refreshFrom($response, $opts);
+        }
+
+        return $this;
     }
 
     /**

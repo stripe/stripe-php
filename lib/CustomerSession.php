@@ -20,5 +20,27 @@ class CustomerSession extends ApiResource
 {
     const OBJECT_NAME = 'customer_session';
 
-    use ApiOperations\Create;
+    /**
+     * Creates a customer session object that includes a single-use client secret that
+     * you can use on your front-end to grant client-side API access for certain
+     * customer resources.
+     *
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CustomerSession the created resource
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 }

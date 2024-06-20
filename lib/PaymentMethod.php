@@ -43,6 +43,7 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|\Stripe\StripeObject $mobilepay
+ * @property null|\Stripe\StripeObject $multibanco
  * @property null|\Stripe\StripeObject $oxxo
  * @property null|\Stripe\StripeObject $p24
  * @property null|\Stripe\StripeObject $paynow
@@ -54,6 +55,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $sepa_debit
  * @property null|\Stripe\StripeObject $sofort
  * @property null|\Stripe\StripeObject $swish
+ * @property null|\Stripe\StripeObject $twint
  * @property string $type The type of the PaymentMethod. An additional hash is included on the PaymentMethod with a name matching this value. It contains additional information specific to the PaymentMethod type.
  * @property null|\Stripe\StripeObject $us_bank_account
  * @property null|\Stripe\StripeObject $wechat_pay
@@ -63,9 +65,6 @@ class PaymentMethod extends ApiResource
 {
     const OBJECT_NAME = 'payment_method';
 
-    use ApiOperations\All;
-    use ApiOperations\Create;
-    use ApiOperations\Retrieve;
     use ApiOperations\Update;
 
     const ALLOW_REDISPLAY_ALWAYS = 'always';
@@ -96,6 +95,7 @@ class PaymentMethod extends ApiResource
     const TYPE_KONBINI = 'konbini';
     const TYPE_LINK = 'link';
     const TYPE_MOBILEPAY = 'mobilepay';
+    const TYPE_MULTIBANCO = 'multibanco';
     const TYPE_OXXO = 'oxxo';
     const TYPE_P24 = 'p24';
     const TYPE_PAYNOW = 'paynow';
@@ -106,9 +106,106 @@ class PaymentMethod extends ApiResource
     const TYPE_SEPA_DEBIT = 'sepa_debit';
     const TYPE_SOFORT = 'sofort';
     const TYPE_SWISH = 'swish';
+    const TYPE_TWINT = 'twint';
     const TYPE_US_BANK_ACCOUNT = 'us_bank_account';
     const TYPE_WECHAT_PAY = 'wechat_pay';
     const TYPE_ZIP = 'zip';
+
+    /**
+     * Creates a PaymentMethod object. Read the <a
+     * href="/docs/stripe-js/reference#stripe-create-payment-method">Stripe.js
+     * reference</a> to learn how to create PaymentMethods via Stripe.js.
+     *
+     * Instead of creating a PaymentMethod directly, we recommend using the <a
+     * href="/docs/payments/accept-a-payment">PaymentIntents</a> API to accept a
+     * payment immediately or the <a
+     * href="/docs/payments/save-and-reuse">SetupIntent</a> API to collect payment
+     * method details ahead of a future payment.
+     *
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentMethod the created resource
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Returns a list of PaymentMethods for Treasury flows. If you want to list the
+     * PaymentMethods attached to a Customer for payments, you should use the <a
+     * href="/docs/api/payment_methods/customer_list">List a Customer’s
+     * PaymentMethods</a> API instead.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\PaymentMethod> of ApiResources
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves a PaymentMethod object attached to the StripeAccount. To retrieve a
+     * payment method attached to a Customer, you should use <a
+     * href="/docs/api/payment_methods/customer">Retrieve a Customer’s
+     * PaymentMethods</a>.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentMethod
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates a PaymentMethod object. A PaymentMethod must be attached a customer to
+     * be updated.
+     *
+     * @param string $id the ID of the resource to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentMethod the updated resource
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 
     /**
      * @param null|array $params

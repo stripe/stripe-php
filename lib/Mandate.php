@@ -23,12 +23,29 @@ class Mandate extends ApiResource
 {
     const OBJECT_NAME = 'mandate';
 
-    use ApiOperations\Retrieve;
-
     const STATUS_ACTIVE = 'active';
     const STATUS_INACTIVE = 'inactive';
     const STATUS_PENDING = 'pending';
 
     const TYPE_MULTI_USE = 'multi_use';
     const TYPE_SINGLE_USE = 'single_use';
+
+    /**
+     * Retrieves a Mandate object.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Mandate
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

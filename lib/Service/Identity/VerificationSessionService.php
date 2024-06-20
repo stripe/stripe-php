@@ -6,8 +6,6 @@ namespace Stripe\Service\Identity;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
- */
-/**
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class VerificationSessionService extends \Stripe\Service\AbstractService

@@ -28,7 +28,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\Stripe\BankAccount $bank_account <p>These bank accounts are payment methods on <code>Customer</code> objects.</p><p>On the other hand <a href="/api#external_accounts">External Accounts</a> are transfer destinations on <code>Account</code> objects for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>application</code>, which includes <a href="/connect/custom-accounts">Custom accounts</a>. They can be bank accounts or debit cards as well, and are documented in the links above.</p><p>Related guide: <a href="/payments/bank-debits-transfers">Bank debits and transfers</a></p>
+ * @property null|\Stripe\BankAccount $bank_account <p>These bank accounts are payment methods on <code>Customer</code> objects.</p><p>On the other hand <a href="/api#external_accounts">External Accounts</a> are transfer destinations on <code>Account</code> objects for connected accounts. They can be bank accounts or debit cards as well, and are documented in the links above.</p><p>Related guide: <a href="/payments/bank-debits-transfers">Bank debits and transfers</a></p>
  * @property null|\Stripe\Card $card <p>You can store multiple cards on a customer in order to charge the customer later. You can also store multiple debit cards on a recipient in order to transfer to those cards later.</p><p>Related guide: <a href="https://stripe.com/docs/sources/cards">Card payments with Sources</a></p>
  * @property null|string $client_ip IP address of the client that generates the token.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -40,11 +40,54 @@ class Token extends ApiResource
 {
     const OBJECT_NAME = 'token';
 
-    use ApiOperations\Create;
-    use ApiOperations\Retrieve;
-
     const TYPE_ACCOUNT = 'account';
     const TYPE_BANK_ACCOUNT = 'bank_account';
     const TYPE_CARD = 'card';
     const TYPE_PII = 'pii';
+
+    /**
+     * Creates a single-use token that represents a bank account’s details. You can use
+     * this token with any API method in place of a bank account dictionary. You can
+     * only use this token once. To do so, attach it to a <a href="#accounts">connected
+     * account</a> where <a
+     * href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+     * is <code>application</code>, which includes Custom accounts.
+     *
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Token the created resource
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Retrieves the token with the given ID.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Token
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }

@@ -35,6 +35,7 @@ namespace Stripe;
  * @property null|\Stripe\Discount $discount Describes the current discount applied to this subscription, if there is one. When billing, a discount applied to a subscription overrides a discount applied on a customer-wide basis. This field has been deprecated and will be removed in a future API version. Use <code>discounts</code> instead.
  * @property (string|\Stripe\Discount)[] $discounts The discounts applied to the subscription. Subscription item discounts are applied before subscription discounts. Use <code>expand[]=discounts</code> to expand each discount.
  * @property null|int $ended_at If the subscription has ended, the date the subscription ended.
+ * @property \Stripe\StripeObject $invoice_settings
  * @property \Stripe\Collection<\Stripe\SubscriptionItem> $items List of subscription items, each with an attached price.
  * @property null|string|\Stripe\Invoice $latest_invoice The most recent invoice this subscription has generated.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
@@ -59,9 +60,6 @@ class Subscription extends ApiResource
 {
     const OBJECT_NAME = 'subscription';
 
-    use ApiOperations\All;
-    use ApiOperations\Create;
-    use ApiOperations\Retrieve;
     use ApiOperations\Search;
     use ApiOperations\Update;
 
@@ -76,6 +74,145 @@ class Subscription extends ApiResource
     const STATUS_PAUSED = 'paused';
     const STATUS_TRIALING = 'trialing';
     const STATUS_UNPAID = 'unpaid';
+
+    /**
+     * Creates a new subscription on an existing customer. Each customer can have up to
+     * 500 active or scheduled subscriptions.
+     *
+     * When you create a subscription with
+     * <code>collection_method=charge_automatically</code>, the first invoice is
+     * finalized as part of the request. The <code>payment_behavior</code> parameter
+     * determines the exact behavior of the initial payment.
+     *
+     * To start subscriptions where the first invoice always begins in a
+     * <code>draft</code> status, use <a
+     * href="/docs/billing/subscriptions/subscription-schedules#managing">subscription
+     * schedules</a> instead. Schedules provide the flexibility to model more complex
+     * billing configurations that change over time.
+     *
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Subscription the created resource
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * By default, returns a list of subscriptions that have not been canceled. In
+     * order to list canceled subscriptions, specify <code>status=canceled</code>.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Subscription> of ApiResources
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the subscription with the given ID.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Subscription
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates an existing subscription to match the specified parameters. When
+     * changing prices or quantities, we optionally prorate the price we charge next
+     * month to make up for any price changes. To preview how the proration is
+     * calculated, use the <a href="/docs/api/invoices/upcoming">upcoming invoice</a>
+     * endpoint.
+     *
+     * By default, we prorate subscription changes. For example, if a customer signs up
+     * on May 1 for a <currency>100</currency> price, they’ll be billed
+     * <currency>100</currency> immediately. If on May 15 they switch to a
+     * <currency>200</currency> price, then on June 1 they’ll be billed
+     * <currency>250</currency> (<currency>200</currency> for a renewal of her
+     * subscription, plus a <currency>50</currency> prorating adjustment for half of
+     * the previous month’s <currency>100</currency> difference). Similarly, a
+     * downgrade generates a credit that is applied to the next invoice. We also
+     * prorate when you make quantity changes.
+     *
+     * Switching prices does not normally change the billing date or generate an
+     * immediate charge unless:
+     *
+     * <ul> <li>The billing interval is changed (for example, from monthly to
+     * yearly).</li> <li>The subscription moves from free to paid, or paid to
+     * free.</li> <li>A trial starts or ends.</li> </ul>
+     *
+     * In these cases, we apply a credit for the unused time on the previous price,
+     * immediately charge the customer using the new price, and reset the billing date.
+     *
+     * If you want to charge for an upgrade immediately, pass
+     * <code>proration_behavior</code> as <code>always_invoice</code> to create
+     * prorations, automatically invoice the customer for those proration adjustments,
+     * and attempt to collect payment. If you pass <code>create_prorations</code>, the
+     * prorations are created but not automatically invoiced. If you want to bill the
+     * customer for the prorations before the subscription’s renewal date, you need to
+     * manually <a href="/docs/api/invoices/create">invoice the customer</a>.
+     *
+     * If you don’t want to prorate, set the <code>proration_behavior</code> option to
+     * <code>none</code>. With this option, the customer is billed
+     * <currency>100</currency> on May 1 and <currency>200</currency> on June 1.
+     * Similarly, if you set <code>proration_behavior</code> to <code>none</code> when
+     * switching between different billing intervals (for example, from monthly to
+     * yearly), we don’t generate any credits for the old subscription’s unused time.
+     * We still reset the billing date and bill immediately for the new subscription.
+     *
+     * Updating the quantity on a subscription many times in an hour may result in <a
+     * href="/docs/rate-limits">rate limiting</a>. If you need to bill for a frequently
+     * changing quantity, consider integrating <a
+     * href="/docs/billing/subscriptions/usage-based">usage-based billing</a> instead.
+     *
+     * @param string $id the ID of the resource to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Subscription the updated resource
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 
     use ApiOperations\Delete {
         delete as protected _delete;

@@ -36,4 +36,32 @@ class InvoiceLineItem extends ApiResource
     const OBJECT_NAME = 'line_item';
 
     use ApiOperations\Update;
+
+    /**
+     * Updates an invoice’s line item. Some fields, such as <code>tax_amounts</code>,
+     * only live on the invoice line item, so they can only be updated through this
+     * endpoint. Other fields, such as <code>amount</code>, live on both the invoice
+     * item and the invoice line item, so updates on this endpoint will propagate to
+     * the invoice item as well. Updating an invoice’s line item is only possible
+     * before the invoice is finalized.
+     *
+     * @param string $id the ID of the resource to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\InvoiceLineItem the updated resource
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 }

@@ -62,9 +62,6 @@ class PaymentIntent extends ApiResource
 {
     const OBJECT_NAME = 'payment_intent';
 
-    use ApiOperations\All;
-    use ApiOperations\Create;
-    use ApiOperations\Retrieve;
     use ApiOperations\Search;
     use ApiOperations\Update;
 
@@ -93,6 +90,110 @@ class PaymentIntent extends ApiResource
     const STATUS_REQUIRES_CONFIRMATION = 'requires_confirmation';
     const STATUS_REQUIRES_PAYMENT_METHOD = 'requires_payment_method';
     const STATUS_SUCCEEDED = 'succeeded';
+
+    /**
+     * Creates a PaymentIntent object.
+     *
+     * After the PaymentIntent is created, attach a payment method and <a
+     * href="/docs/api/payment_intents/confirm">confirm</a> to continue the payment.
+     * Learn more about <a href="/docs/payments/payment-intents">the available payment
+     * flows with the Payment Intents API</a>.
+     *
+     * When you use <code>confirm=true</code> during creation, it’s equivalent to
+     * creating and confirming the PaymentIntent in the same call. You can use any
+     * parameters available in the <a href="/docs/api/payment_intents/confirm">confirm
+     * API</a> when you supply <code>confirm=true</code>.
+     *
+     * @param null|array $params
+     * @param null|array|string $options
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent the created resource
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Returns a list of PaymentIntents.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\PaymentIntent> of ApiResources
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of a PaymentIntent that has previously been created.
+     *
+     * You can retrieve a PaymentIntent client-side using a publishable key when the
+     * <code>client_secret</code> is in the query string.
+     *
+     * If you retrieve a PaymentIntent with a publishable key, it only returns a subset
+     * of properties. Refer to the <a href="#payment_intent_object">payment intent</a>
+     * object reference for more details.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Updates properties on a PaymentIntent object without confirming.
+     *
+     * Depending on which properties you update, you might need to confirm the
+     * PaymentIntent again. For example, updating the <code>payment_method</code>
+     * always requires you to confirm the PaymentIntent again. If you prefer to update
+     * and confirm at the same time, we recommend updating properties through the <a
+     * href="/docs/api/payment_intents/confirm">confirm API</a> instead.
+     *
+     * @param string $id the ID of the resource to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent the updated resource
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 
     /**
      * @param null|array $params
