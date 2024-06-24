@@ -169,7 +169,6 @@ require __DIR__ . '/lib/PaymentMethodDomain.php';
 require __DIR__ . '/lib/Payout.php';
 require __DIR__ . '/lib/Person.php';
 require __DIR__ . '/lib/Plan.php';
-require __DIR__ . '/lib/PlatformTaxFee.php';
 require __DIR__ . '/lib/Price.php';
 require __DIR__ . '/lib/Product.php';
 require __DIR__ . '/lib/ProductFeature.php';

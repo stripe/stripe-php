@@ -130,7 +130,6 @@ class Invoice extends ApiResource
     const OBJECT_NAME = 'invoice';
 
     use ApiOperations\NestedResource;
-    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const BILLING_REASON_AUTOMATIC_PENDING_INVOICE_ITEM_INVOICE = 'automatic_pending_invoice_item_invoice';

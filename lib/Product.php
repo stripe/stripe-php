@@ -40,7 +40,6 @@ class Product extends ApiResource
     const OBJECT_NAME = 'product';
 
     use ApiOperations\NestedResource;
-    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const TYPE_GOOD = 'good';

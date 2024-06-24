@@ -64,7 +64,6 @@ class Charge extends ApiResource
     const OBJECT_NAME = 'charge';
 
     use ApiOperations\NestedResource;
-    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const STATUS_FAILED = 'failed';
