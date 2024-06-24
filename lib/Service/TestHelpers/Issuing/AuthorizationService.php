@@ -58,6 +58,23 @@ class AuthorizationService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Finalize the amount on an Authorization prior to capture, when the initial
+     * authorization was for an estimated amount.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Authorization
+     */
+    public function finalizeAmount($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/test_helpers/issuing/authorizations/%s/finalize_amount', $id), $params, $opts);
+    }
+
+    /**
      * Increment a test-mode Authorization.
      *
      * @param string $id

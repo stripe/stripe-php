@@ -4,12 +4,11 @@
 
   "editor.renderWhitespace": "all",
 
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+
   // Formatting
   "editor.formatOnSave": true,
-  "phpformatter.composer": true,
-  "phpformatter.arguments": [""],
-
-  // Linting
-  "phpcs.enable": true,
-  "phpcs.standard": "PSR2"
+  "intelephense.format.braces": "psr12"
 }

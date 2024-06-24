@@ -11,3 +11,7 @@ parameters:
 		- '#Unsafe usage of new static\(\).#'
 
 	reportUnmatchedIgnoredErrors: false
+
+	paths:
+		- lib
+		- tests
