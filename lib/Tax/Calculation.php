@@ -30,7 +30,8 @@ class Calculation extends \Stripe\ApiResource
     const OBJECT_NAME = 'tax.calculation';
 
     /**
-     * Calculates tax based on input and returns a Tax <code>Calculation</code> object.
+     * Calculates tax based on the input and returns a Tax <code>Calculation</code>
+     * object.
      *
      * @param null|array $params
      * @param null|array|string $options

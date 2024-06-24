@@ -3645,7 +3645,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
                         'type' => 'diesel',
                         'unit' => 'liter',
                         'unit_cost_decimal' => '3.5',
-                        'volume_decimal' => '10',
+                        'quantity_decimal' => '10',
                     ],
                     'lodging' => [
                         'check_in_at' => 1633651200,
@@ -3878,7 +3878,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
                     'type' => 'diesel',
                     'unit' => 'liter',
                     'unit_cost_decimal' => '3.5',
-                    'volume_decimal' => '10',
+                    'quantity_decimal' => '10',
                 ],
                 'lodging' => [
                     'check_in_at' => 1533651200,
@@ -3939,7 +3939,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
                     'type' => 'diesel',
                     'unit' => 'liter',
                     'unit_cost_decimal' => '3.5',
-                    'volume_decimal' => '10',
+                    'quantity_decimal' => '10',
                 ],
                 'lodging' => [
                     'check_in_at' => 1533651200,
