@@ -60,7 +60,6 @@ class Subscription extends ApiResource
 {
     const OBJECT_NAME = 'subscription';
 
-    use ApiOperations\Search;
     use ApiOperations\Update;
 
     const COLLECTION_METHOD_CHARGE_AUTOMATICALLY = 'charge_automatically';
