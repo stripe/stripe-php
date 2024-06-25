@@ -1,5 +1,21 @@
 # Changelog
 
+## 15.0.0 - 2024-06-24
+* [#1714](https://github.com/stripe/stripe-php/pull/1714)
+
+  This release changes the pinned API version to 2024-06-20. Please read the [API Upgrade Guide](https://stripe.com/docs/upgrades#2024-06-20) and carefully review the API changes before upgrading.
+
+  ### ⚠️ Breaking changes
+
+    * Remove the unused resource `PlatformTaxFee`
+    * Remove the protected method `_searchResource` on resources Charge, Customer, Invoice, PaymentIntent, Price, Product, and Subscription as it is no longer used.
+
+  ### Additions
+
+  * Add support for `finalize_amount` test helper method on resource `Issuing.Authorization`
+  * Add support for `fleet` and `fuel` on `Issuing.Authorization`
+  * Add support for new value `ch_uid` on enum `TaxId.type`
+
 ## 14.11.0-beta.1 - 2024-06-13
 * [#1705](https://github.com/stripe/stripe-php/pull/1705) Syncing changes from 14.10.0 release
 
