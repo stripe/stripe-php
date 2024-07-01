@@ -8,6 +8,7 @@ namespace Stripe\Service\FinancialConnections;
  * Service factory class for API resources in the FinancialConnections namespace.
  *
  * @property AccountService $accounts
+ * @property InstitutionService $institutions
  * @property SessionService $sessions
  * @property TransactionService $transactions
  */
@@ -18,6 +19,7 @@ class FinancialConnectionsServiceFactory extends \Stripe\Service\AbstractService
      */
     private static $classMap = [
         'accounts' => AccountService::class,
+        'institutions' => InstitutionService::class,
         'sessions' => SessionService::class,
         'transactions' => TransactionService::class,
     ];
