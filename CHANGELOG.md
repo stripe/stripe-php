@@ -1,5 +1,13 @@
 # Changelog
 
+## 15.2.0-beta.1 - 2024-07-05
+* [#1719](https://github.com/stripe/stripe-php/pull/1719) Update generated code for beta
+  * Add support for new resource `FinancialConnections.Institution`
+  * Add support for `all` and `retrieve` methods on resource `Institution`
+  * Add support for new value `balance` on enum `FinancialConnections.Account.subscriptions[]`
+* [#1712](https://github.com/stripe/stripe-php/pull/1712) Update generated code for beta
+
+
 ## 15.0.0 - 2024-06-24
 * [#1714](https://github.com/stripe/stripe-php/pull/1714)
 
