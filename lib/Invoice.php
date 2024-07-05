@@ -277,6 +277,23 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
+     * @return \Stripe\Invoice the added invoice
+     */
+    public function addLines($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/add_lines';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return \Stripe\Invoice the created invoice
      */
     public static function createPreview($params = null, $opts = null)
@@ -346,6 +363,23 @@ class Invoice extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
+     * @return \Stripe\Invoice the removed invoice
+     */
+    public function removeLines($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/remove_lines';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return \Stripe\Invoice the sent invoice
      */
     public function sendInvoice($params = null, $opts = null)
@@ -391,6 +425,23 @@ class Invoice extends ApiResource
         $obj->setLastResponse($response);
 
         return $obj;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Invoice the updated invoice
+     */
+    public function updateLines($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/update_lines';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
     }
 
     /**
