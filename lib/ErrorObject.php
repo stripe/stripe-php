@@ -143,7 +143,6 @@ class ErrorObject extends StripeObject
     const CODE_PARAMETERS_EXCLUSIVE = 'parameters_exclusive';
     const CODE_PAYMENT_INTENT_ACTION_REQUIRED = 'payment_intent_action_required';
     const CODE_PAYMENT_INTENT_AUTHENTICATION_FAILURE = 'payment_intent_authentication_failure';
-    const CODE_PAYMENT_INTENT_FX_QUOTE_INVALID = 'payment_intent_fx_quote_invalid';
     const CODE_PAYMENT_INTENT_INCOMPATIBLE_PAYMENT_METHOD = 'payment_intent_incompatible_payment_method';
     const CODE_PAYMENT_INTENT_INVALID_PARAMETER = 'payment_intent_invalid_parameter';
     const CODE_PAYMENT_INTENT_KONBINI_REJECTED_CONFIRMATION_NUMBER = 'payment_intent_konbini_rejected_confirmation_number';
