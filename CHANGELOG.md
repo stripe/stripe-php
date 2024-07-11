@@ -1,5 +1,9 @@
 # Changelog
 
+## 15.3.0-beta.1 - 2024-07-11
+* [#1720](https://github.com/stripe/stripe-php/pull/1720) Update generated code for beta
+
+
 ## 15.2.0-beta.1 - 2024-07-05
 * [#1719](https://github.com/stripe/stripe-php/pull/1719) Update generated code for beta
   * Add support for new resource `FinancialConnections.Institution`
