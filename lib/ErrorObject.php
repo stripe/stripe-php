@@ -66,10 +66,6 @@ class ErrorObject extends StripeObject
     const CODE_BANK_ACCOUNT_UNVERIFIED = 'bank_account_unverified';
     const CODE_BANK_ACCOUNT_VERIFICATION_FAILED = 'bank_account_verification_failed';
     const CODE_BILLING_INVALID_MANDATE = 'billing_invalid_mandate';
-    const CODE_BILLING_POLICY_REMOTE_FUNCTION_RESPONSE_INVALID = 'billing_policy_remote_function_response_invalid';
-    const CODE_BILLING_POLICY_REMOTE_FUNCTION_TIMEOUT = 'billing_policy_remote_function_timeout';
-    const CODE_BILLING_POLICY_REMOTE_FUNCTION_UNEXPECTED_STATUS_CODE = 'billing_policy_remote_function_unexpected_status_code';
-    const CODE_BILLING_POLICY_REMOTE_FUNCTION_UNREACHABLE = 'billing_policy_remote_function_unreachable';
     const CODE_BITCOIN_UPGRADE_REQUIRED = 'bitcoin_upgrade_required';
     const CODE_CAPTURE_CHARGE_AUTHORIZATION_EXPIRED = 'capture_charge_authorization_expired';
     const CODE_CAPTURE_UNAUTHORIZED_PAYMENT = 'capture_unauthorized_payment';
@@ -143,7 +139,6 @@ class ErrorObject extends StripeObject
     const CODE_PARAMETERS_EXCLUSIVE = 'parameters_exclusive';
     const CODE_PAYMENT_INTENT_ACTION_REQUIRED = 'payment_intent_action_required';
     const CODE_PAYMENT_INTENT_AUTHENTICATION_FAILURE = 'payment_intent_authentication_failure';
-    const CODE_PAYMENT_INTENT_FX_QUOTE_INVALID = 'payment_intent_fx_quote_invalid';
     const CODE_PAYMENT_INTENT_INCOMPATIBLE_PAYMENT_METHOD = 'payment_intent_incompatible_payment_method';
     const CODE_PAYMENT_INTENT_INVALID_PARAMETER = 'payment_intent_invalid_parameter';
     const CODE_PAYMENT_INTENT_KONBINI_REJECTED_CONFIRMATION_NUMBER = 'payment_intent_konbini_rejected_confirmation_number';
