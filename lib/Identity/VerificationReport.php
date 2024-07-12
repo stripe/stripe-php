@@ -15,7 +15,7 @@ namespace Stripe\Identity;
  * API. To configure and create VerificationReports, use the
  * <a href="https://stripe.com/docs/api/identity/verification_sessions">VerificationSession</a> API.
  *
- * Related guides: <a href="https://stripe.com/docs/identity/verification-sessions#results">Accessing verification results</a>.
+ * Related guide: <a href="https://stripe.com/docs/identity/verification-sessions#results">Accessing verification results</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
