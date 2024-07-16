@@ -129,6 +129,7 @@ class ObjectTypes
             \Stripe\Subscription::OBJECT_NAME => \Stripe\Subscription::class,
             \Stripe\SubscriptionItem::OBJECT_NAME => \Stripe\SubscriptionItem::class,
             \Stripe\SubscriptionSchedule::OBJECT_NAME => \Stripe\SubscriptionSchedule::class,
+            \Stripe\Tax\Association::OBJECT_NAME => \Stripe\Tax\Association::class,
             \Stripe\Tax\Calculation::OBJECT_NAME => \Stripe\Tax\Calculation::class,
             \Stripe\Tax\CalculationLineItem::OBJECT_NAME => \Stripe\Tax\CalculationLineItem::class,
             \Stripe\Tax\Form::OBJECT_NAME => \Stripe\Tax\Form::class,
