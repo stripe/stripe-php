@@ -544,8 +544,8 @@ class Event extends ApiResource
     }
 
     /**
-     * Retrieves the details of an event. Supply the unique identifier of the event,
-     * which you might have received in a webhook.
+     * Retrieves the details of an event if it was created in the last 30 days. Supply
+     * the unique identifier of the event, which you might have received in a webhook.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
