@@ -179,6 +179,7 @@ class Event extends ApiResource
     const ISSUING_DISPUTE_CLOSED = 'issuing_dispute.closed';
     const ISSUING_DISPUTE_CREATED = 'issuing_dispute.created';
     const ISSUING_DISPUTE_FUNDS_REINSTATED = 'issuing_dispute.funds_reinstated';
+    const ISSUING_DISPUTE_FUNDS_RESCINDED = 'issuing_dispute.funds_rescinded';
     const ISSUING_DISPUTE_SUBMITTED = 'issuing_dispute.submitted';
     const ISSUING_DISPUTE_UPDATED = 'issuing_dispute.updated';
     const ISSUING_PERSONALIZATION_DESIGN_ACTIVATED = 'issuing_personalization_design.activated';
@@ -438,6 +439,7 @@ class Event extends ApiResource
     const TYPE_ISSUING_DISPUTE_CLOSED = 'issuing_dispute.closed';
     const TYPE_ISSUING_DISPUTE_CREATED = 'issuing_dispute.created';
     const TYPE_ISSUING_DISPUTE_FUNDS_REINSTATED = 'issuing_dispute.funds_reinstated';
+    const TYPE_ISSUING_DISPUTE_FUNDS_RESCINDED = 'issuing_dispute.funds_rescinded';
     const TYPE_ISSUING_DISPUTE_SUBMITTED = 'issuing_dispute.submitted';
     const TYPE_ISSUING_DISPUTE_UPDATED = 'issuing_dispute.updated';
     const TYPE_ISSUING_PERSONALIZATION_DESIGN_ACTIVATED = 'issuing_personalization_design.activated';
