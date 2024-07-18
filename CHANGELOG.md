@@ -1,5 +1,11 @@
 # Changelog
 
+## 15.3.0 - 2024-07-18
+* [#1724](https://github.com/stripe/stripe-php/pull/1724) Update generated code
+  * Add support for new value `issuing_dispute.funds_rescinded` on enum `Event.type`
+  * Add support for new value `stripe_s700` on enum `Terminal.Reader.device_type`
+* [#1722](https://github.com/stripe/stripe-php/pull/1722) Update changelog
+
 ## 15.2.0 - 2024-07-11
 * [#1721](https://github.com/stripe/stripe-php/pull/1721) Update generated code
     * ⚠️ Remove support for values `billing_policy_remote_function_response_invalid`, `billing_policy_remote_function_timeout`, `billing_policy_remote_function_unexpected_status_code`, and `billing_policy_remote_function_unreachable` from enum `StripeError.code`.
