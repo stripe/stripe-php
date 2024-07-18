@@ -59,6 +59,7 @@ namespace Stripe;
  * @property null|string $parent For child configs, the configuration's parent configuration.
  * @property null|\Stripe\StripeObject $paynow
  * @property null|\Stripe\StripeObject $paypal
+ * @property null|\Stripe\StripeObject $payto
  * @property null|\Stripe\StripeObject $promptpay
  * @property null|\Stripe\StripeObject $revolut_pay
  * @property null|\Stripe\StripeObject $sepa_debit
