@@ -1,5 +1,11 @@
 # Changelog
 
+## 15.3.0 - 2024-07-18
+* [#1724](https://github.com/stripe/stripe-php/pull/1724) Update generated code
+  * Add support for new value `issuing_dispute.funds_rescinded` on enum `Event.type`
+  * Add support for new value `stripe_s700` on enum `Terminal.Reader.device_type`
+* [#1722](https://github.com/stripe/stripe-php/pull/1722) Update changelog
+
 ## 15.3.0-beta.1 - 2024-07-11
 * [#1720](https://github.com/stripe/stripe-php/pull/1720) Update generated code for beta
 
