@@ -14,6 +14,7 @@ namespace Stripe\Treasury;
  * @property \Stripe\StripeObject $balance Balance information for the FinancialAccount
  * @property string $country Two-letter country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>).
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
+ * @property null|string $display_name The display name for the FinancialAccount. Use this field to customize the names of the FinancialAccounts for your connected accounts. Unlike the <code>nickname</code> field, <code>display_name</code> is not internal metadata and will be exposed to connected accounts.
  * @property null|\Stripe\Treasury\FinancialAccountFeatures $features Encodes whether a FinancialAccount has access to a particular Feature, with a <code>status</code> enum and associated <code>status_details</code>. Stripe or the platform can control Features via the requested field.
  * @property \Stripe\StripeObject[] $financial_addresses The set of credentials that resolve to a FinancialAccount.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
