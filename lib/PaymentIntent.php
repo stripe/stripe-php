@@ -38,7 +38,7 @@ namespace Stripe;
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|string|\Stripe\Invoice $invoice ID of the invoice that created this PaymentIntent, if it exists.
  * @property null|\Stripe\StripeObject $last_payment_error The payment error encountered in the previous PaymentIntent confirmation. It will be cleared if the PaymentIntent is later updated for any reason.
- * @property null|string|\Stripe\Charge $latest_charge The latest charge created by this PaymentIntent.
+ * @property null|string|\Stripe\Charge $latest_charge ID of the latest <a href="https://stripe.com/docs/api/charges">Charge object</a> created by this PaymentIntent. This property is <code>null</code> until PaymentIntent confirmation is attempted.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Learn more about <a href="https://stripe.com/docs/payments/payment-intents/creating-payment-intents#storing-information-in-metadata">storing information in metadata</a>.
  * @property null|\Stripe\StripeObject $next_action If present, this property tells you what actions you need to take in order for your customer to fulfill a payment using the provided source.
