@@ -65,6 +65,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $sepa_debit
  * @property null|\Stripe\StripeObject $sofort
  * @property null|\Stripe\StripeObject $swish
+ * @property null|\Stripe\StripeObject $twint
  * @property null|\Stripe\StripeObject $us_bank_account
  * @property null|\Stripe\StripeObject $wechat_pay
  * @property null|\Stripe\StripeObject $zip
