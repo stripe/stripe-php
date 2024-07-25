@@ -1,5 +1,11 @@
 # Changelog
 
+## 15.4.0 - 2024-07-25
+* [#1726](https://github.com/stripe/stripe-php/pull/1726) Update generated code
+  * Add support for `update` method on resource `Checkout.Session`
+  * Add support for new values `invoice.overdue` and `invoice.will_be_due` on enum `Event.type`
+  * Add support for `twint` on `PaymentMethodConfiguration`
+
 ## 15.3.0 - 2024-07-18
 * [#1724](https://github.com/stripe/stripe-php/pull/1724) Update generated code
   * Add support for new value `issuing_dispute.funds_rescinded` on enum `Event.type`
