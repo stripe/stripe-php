@@ -80,6 +80,8 @@ class Session extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'checkout.session';
 
+    use \Stripe\ApiOperations\Update;
+
     const BILLING_ADDRESS_COLLECTION_AUTO = 'auto';
     const BILLING_ADDRESS_COLLECTION_REQUIRED = 'required';
 
@@ -169,6 +171,29 @@ class Session extends \Stripe\ApiResource
         $instance->refresh();
 
         return $instance;
+    }
+
+    /**
+     * Updates a Session object.
+     *
+     * @param string $id the ID of the resource to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Checkout\Session the updated resource
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
     }
 
     /**
