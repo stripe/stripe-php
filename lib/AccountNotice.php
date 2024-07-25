@@ -27,6 +27,9 @@ class AccountNotice extends ApiResource
     use ApiOperations\Update;
 
     const REASON_ISSUING_ACCOUNT_CLOSED_FOR_INACTIVITY = 'issuing.account_closed_for_inactivity';
+    const REASON_ISSUING_ACCOUNT_CLOSED_FOR_NOT_PROVIDING_BUSINESS_MODEL_CLARIFICATION = 'issuing.account_closed_for_not_providing_business_model_clarification';
+    const REASON_ISSUING_ACCOUNT_CLOSED_FOR_NOT_PROVIDING_URL_CLARIFICATION = 'issuing.account_closed_for_not_providing_url_clarification';
+    const REASON_ISSUING_ACCOUNT_CLOSED_FOR_NOT_PROVIDING_USE_CASE_CLARIFICATION = 'issuing.account_closed_for_not_providing_use_case_clarification';
     const REASON_ISSUING_ACCOUNT_CLOSED_FOR_TERMS_OF_SERVICE_VIOLATION = 'issuing.account_closed_for_terms_of_service_violation';
     const REASON_ISSUING_APPLICATION_REJECTED_FOR_FAILURE_TO_VERIFY = 'issuing.application_rejected_for_failure_to_verify';
     const REASON_ISSUING_CREDIT_APPLICATION_REJECTED = 'issuing.credit_application_rejected';

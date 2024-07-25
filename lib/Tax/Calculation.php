@@ -11,7 +11,7 @@ namespace Stripe\Tax;
  *
  * @property null|string $id Unique identifier for the calculation.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property int $amount_total Total after taxes.
+ * @property int $amount_total Total amount after taxes in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $customer The ID of an existing <a href="https://stripe.com/docs/api/customers/object">Customer</a> used for the resource.
  * @property \Stripe\StripeObject $customer_details

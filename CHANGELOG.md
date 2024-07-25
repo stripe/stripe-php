@@ -1,8 +1,25 @@
 # Changelog
 
+## 15.4.0 - 2024-07-25
+* [#1726](https://github.com/stripe/stripe-php/pull/1726) Update generated code
+  * Add support for `update` method on resource `Checkout.Session`
+  * Add support for new values `invoice.overdue` and `invoice.will_be_due` on enum `Event.type`
+  * Add support for `twint` on `PaymentMethodConfiguration`
+
+## 15.3.0 - 2024-07-18
+* [#1724](https://github.com/stripe/stripe-php/pull/1724) Update generated code
+  * Add support for new value `issuing_dispute.funds_rescinded` on enum `Event.type`
+  * Add support for new value `stripe_s700` on enum `Terminal.Reader.device_type`
+* [#1722](https://github.com/stripe/stripe-php/pull/1722) Update changelog
+
 ## 15.3.0-beta.1 - 2024-07-11
 * [#1720](https://github.com/stripe/stripe-php/pull/1720) Update generated code for beta
 
+## 15.2.0 - 2024-07-11
+* [#1721](https://github.com/stripe/stripe-php/pull/1721) Update generated code
+    * ⚠️ Remove support for values `billing_policy_remote_function_response_invalid`, `billing_policy_remote_function_timeout`, `billing_policy_remote_function_unexpected_status_code`, and `billing_policy_remote_function_unreachable` from enum `StripeError.code`.
+    * ⚠️ Remove support for value `payment_intent_fx_quote_invalid` from enum `StripeError.code`. The was mistakenly released last week.
+    * Add support for `payment_method_options` on `ConfirmationToken`
 
 ## 15.2.0-beta.1 - 2024-07-05
 * [#1719](https://github.com/stripe/stripe-php/pull/1719) Update generated code for beta
