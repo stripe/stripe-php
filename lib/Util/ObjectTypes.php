@@ -25,6 +25,8 @@ class ObjectTypes
             \Stripe\Balance::OBJECT_NAME => \Stripe\Balance::class,
             \Stripe\BalanceTransaction::OBJECT_NAME => \Stripe\BalanceTransaction::class,
             \Stripe\BankAccount::OBJECT_NAME => \Stripe\BankAccount::class,
+            \Stripe\Billing\Alert::OBJECT_NAME => \Stripe\Billing\Alert::class,
+            \Stripe\Billing\AlertTriggered::OBJECT_NAME => \Stripe\Billing\AlertTriggered::class,
             \Stripe\Billing\Meter::OBJECT_NAME => \Stripe\Billing\Meter::class,
             \Stripe\Billing\MeterEvent::OBJECT_NAME => \Stripe\Billing\MeterEvent::class,
             \Stripe\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\Billing\MeterEventAdjustment::class,
