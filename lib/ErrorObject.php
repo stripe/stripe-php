@@ -76,6 +76,7 @@ class ErrorObject extends StripeObject
     const CODE_CHARGE_ALREADY_REFUNDED = 'charge_already_refunded';
     const CODE_CHARGE_DISPUTED = 'charge_disputed';
     const CODE_CHARGE_EXCEEDS_SOURCE_LIMIT = 'charge_exceeds_source_limit';
+    const CODE_CHARGE_EXCEEDS_TRANSACTION_LIMIT = 'charge_exceeds_transaction_limit';
     const CODE_CHARGE_EXPIRED_FOR_CAPTURE = 'charge_expired_for_capture';
     const CODE_CHARGE_INVALID_PARAMETER = 'charge_invalid_parameter';
     const CODE_CHARGE_NOT_REFUNDABLE = 'charge_not_refundable';
