@@ -300,6 +300,23 @@ class Invoice extends ApiResource
      *
      * @return \Stripe\Invoice the attached invoice
      */
+    public function attachPayment($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/attach_payment';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Invoice the attached invoice
+     */
     public function attachPaymentIntent($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/attach_payment_intent';
