@@ -130,6 +130,7 @@ class Event extends ApiResource
     const CUSTOMER_SUBSCRIPTION_PAUSED = 'customer.subscription.paused';
     const CUSTOMER_SUBSCRIPTION_PENDING_UPDATE_APPLIED = 'customer.subscription.pending_update_applied';
     const CUSTOMER_SUBSCRIPTION_PENDING_UPDATE_EXPIRED = 'customer.subscription.pending_update_expired';
+    const CUSTOMER_SUBSCRIPTION_PRICE_MIGRATION_FAILED = 'customer.subscription.price_migration_failed';
     const CUSTOMER_SUBSCRIPTION_RESUMED = 'customer.subscription.resumed';
     const CUSTOMER_SUBSCRIPTION_TRIAL_WILL_END = 'customer.subscription.trial_will_end';
     const CUSTOMER_SUBSCRIPTION_UPDATED = 'customer.subscription.updated';
@@ -265,6 +266,7 @@ class Event extends ApiResource
     const SUBSCRIPTION_SCHEDULE_COMPLETED = 'subscription_schedule.completed';
     const SUBSCRIPTION_SCHEDULE_CREATED = 'subscription_schedule.created';
     const SUBSCRIPTION_SCHEDULE_EXPIRING = 'subscription_schedule.expiring';
+    const SUBSCRIPTION_SCHEDULE_PRICE_MIGRATION_FAILED = 'subscription_schedule.price_migration_failed';
     const SUBSCRIPTION_SCHEDULE_RELEASED = 'subscription_schedule.released';
     const SUBSCRIPTION_SCHEDULE_UPDATED = 'subscription_schedule.updated';
     const TAX_FORM_UPDATED = 'tax.form.updated';
@@ -393,6 +395,7 @@ class Event extends ApiResource
     const TYPE_CUSTOMER_SUBSCRIPTION_PAUSED = 'customer.subscription.paused';
     const TYPE_CUSTOMER_SUBSCRIPTION_PENDING_UPDATE_APPLIED = 'customer.subscription.pending_update_applied';
     const TYPE_CUSTOMER_SUBSCRIPTION_PENDING_UPDATE_EXPIRED = 'customer.subscription.pending_update_expired';
+    const TYPE_CUSTOMER_SUBSCRIPTION_PRICE_MIGRATION_FAILED = 'customer.subscription.price_migration_failed';
     const TYPE_CUSTOMER_SUBSCRIPTION_RESUMED = 'customer.subscription.resumed';
     const TYPE_CUSTOMER_SUBSCRIPTION_TRIAL_WILL_END = 'customer.subscription.trial_will_end';
     const TYPE_CUSTOMER_SUBSCRIPTION_UPDATED = 'customer.subscription.updated';
@@ -528,6 +531,7 @@ class Event extends ApiResource
     const TYPE_SUBSCRIPTION_SCHEDULE_COMPLETED = 'subscription_schedule.completed';
     const TYPE_SUBSCRIPTION_SCHEDULE_CREATED = 'subscription_schedule.created';
     const TYPE_SUBSCRIPTION_SCHEDULE_EXPIRING = 'subscription_schedule.expiring';
+    const TYPE_SUBSCRIPTION_SCHEDULE_PRICE_MIGRATION_FAILED = 'subscription_schedule.price_migration_failed';
     const TYPE_SUBSCRIPTION_SCHEDULE_RELEASED = 'subscription_schedule.released';
     const TYPE_SUBSCRIPTION_SCHEDULE_UPDATED = 'subscription_schedule.updated';
     const TYPE_TAX_FORM_UPDATED = 'tax.form.updated';

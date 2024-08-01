@@ -37,6 +37,7 @@ namespace Stripe;
  * @property null|int $ended_at If the subscription has ended, the date the subscription ended.
  * @property \Stripe\StripeObject $invoice_settings
  * @property \Stripe\Collection<\Stripe\SubscriptionItem> $items List of subscription items, each with an attached price.
+ * @property null|\Stripe\StripeObject $last_price_migration_error Details of the most recent price migration that failed for the subscription.
  * @property null|string|\Stripe\Invoice $latest_invoice The most recent invoice this subscription has generated.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.

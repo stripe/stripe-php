@@ -82,6 +82,38 @@ class InvoiceService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Attaches a PaymentIntent or an Out of Band Payment to the invoice, adding it to
+     * the list of <code>payments</code>.
+     *
+     * For Out of Band Payment, the payment is credited to the invoice immediately,
+     * increasing the <code>amount_paid</code> of the invoice and subsequently
+     * transitioning the status of the invoice to <code>paid</code> if necessary.
+     *
+     * For the PaymentIntent, when the PaymentIntent’s status changes to
+     * <code>succeeded</code>, the payment is credited to the invoice, increasing its
+     * <code>amount_paid</code>. When the invoice is fully paid, the invoice’s status
+     * becomes <code>paid</code>.
+     *
+     * If the PaymentIntent’s status is already <code>succeeded</code> when it’s
+     * attached, it’s credited to the invoice immediately.
+     *
+     * See: <a href="/docs/invoicing/payments/create">Create an invoice payment</a> to
+     * learn more.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Invoice
+     */
+    public function attachPayment($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/invoices/%s/attach_payment', $id), $params, $opts);
+    }
+
+    /**
      * Attaches a PaymentIntent to the invoice, adding it to the list of
      * <code>payments</code>. When the PaymentIntent’s status changes to
      * <code>succeeded</code>, the payment is credited to the invoice, increasing its
