@@ -5,6 +5,12 @@
   * Add support for `attach_payment` method on resource `Invoice`
   * Add support for `last_price_migration_error` on `SubscriptionSchedule` and `Subscription`
 
+## 15.5.0 - 2024-08-01
+* [#1727](https://github.com/stripe/stripe-php/pull/1727) Update generated code
+  * Add support for new resources `Billing.AlertTriggered` and `Billing.Alert`
+  * Add support for new value `charge_exceeds_transaction_limit` on enum `StripeError.code`
+  * Add support for new value `billing.alert.triggered` on enum `Event.type`
+
 ## 15.5.0-beta.1 - 2024-07-25
 * [#1723](https://github.com/stripe/stripe-php/pull/1723) Update generated code for beta
   * Add support for new resources `Billing.AlertTriggered`, `Billing.Alert`, and `Tax.Association`
