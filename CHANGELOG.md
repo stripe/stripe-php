@@ -1,5 +1,11 @@
 # Changelog
 
+## 15.5.0 - 2024-08-01
+* [#1727](https://github.com/stripe/stripe-php/pull/1727) Update generated code
+  * Add support for new resources `Billing.AlertTriggered` and `Billing.Alert`
+  * Add support for new value `charge_exceeds_transaction_limit` on enum `StripeError.code`
+  * Add support for new value `billing.alert.triggered` on enum `Event.type`
+
 ## 15.4.0 - 2024-07-25
 * [#1726](https://github.com/stripe/stripe-php/pull/1726) Update generated code
   * Add support for `update` method on resource `Checkout.Session`
