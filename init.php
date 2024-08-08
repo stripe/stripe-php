@@ -181,6 +181,7 @@ require __DIR__ . '/lib/Service/Apps/AppsServiceFactory.php';
 require __DIR__ . '/lib/Service/Apps/SecretService.php';
 require __DIR__ . '/lib/Service/BalanceService.php';
 require __DIR__ . '/lib/Service/BalanceTransactionService.php';
+require __DIR__ . '/lib/Service/Billing/AlertService.php';
 require __DIR__ . '/lib/Service/Billing/BillingServiceFactory.php';
 require __DIR__ . '/lib/Service/Billing/MeterEventAdjustmentService.php';
 require __DIR__ . '/lib/Service/Billing/MeterEventService.php';
