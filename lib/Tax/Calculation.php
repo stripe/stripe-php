@@ -53,6 +53,26 @@ class Calculation extends \Stripe\ApiResource
     }
 
     /**
+     * Retrieves a Tax <code>Calculation</code> object, if the calculation hasn’t
+     * expired.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Tax\Calculation
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
      * @param string $id
      * @param null|array $params
      * @param null|array|string $opts

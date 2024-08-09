@@ -42,4 +42,21 @@ class CalculationService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', '/v1/tax/calculations', $params, $opts);
     }
+
+    /**
+     * Retrieves a Tax <code>Calculation</code> object, if the calculation hasn’t
+     * expired.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Tax\Calculation
+     */
+    public function retrieve($id, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v1/tax/calculations/%s', $id), $params, $opts);
+    }
 }
