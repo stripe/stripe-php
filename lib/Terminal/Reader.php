@@ -20,7 +20,7 @@ namespace Stripe\Terminal;
  * @property null|string|\Stripe\Terminal\Location $location The location identifier of the reader.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $serial_number Serial number of the reader.
- * @property null|string $status The networking status of the reader.
+ * @property null|string $status The networking status of the reader. We do not recommend using this field in flows that may block taking payments.
  */
 class Reader extends \Stripe\ApiResource
 {

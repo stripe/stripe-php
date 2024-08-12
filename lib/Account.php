@@ -99,7 +99,7 @@ class Account extends ApiResource
      * cannot be deleted, which includes Standard accounts. Live-mode accounts where
      * your platform is liable for negative account balances, which includes Custom and
      * Express accounts, can be deleted when all <a
-     * href="/api/balance/balanace_object">balances</a> are zero.
+     * href="/api/balance/balance_object">balances</a> are zero.
      *
      * If you want to delete your own account, use the <a
      * href="https://dashboard.stripe.com/settings/account">account information tab in
