@@ -1,5 +1,10 @@
 # Changelog
 
+## 15.7.0-beta.1 - 2024-08-12
+* [#1730](https://github.com/stripe/stripe-php/pull/1730) Update generated code for beta
+  * Add support for new value `custom` on enum `Checkout.Session.ui_mode`
+  * Add support for new value `payto` on enum `PaymentLink.payment_method_types[]`
+
 ## 15.6.0 - 2024-08-08
 * [#1729](https://github.com/stripe/stripe-php/pull/1729) Update generated code
   * Add support for `activate`, `all`, `archive`, `create`, `deactivate`, and `retrieve` methods on resource `Billing.Alert`
