@@ -4,6 +4,9 @@
 * [#1735](https://github.com/stripe/stripe-php/pull/1735) Update generated code for beta
   * Add support for `collected_information` and `permissions` on `Checkout.Session`
 
+## 15.7.0 - 2024-08-15
+* [#1736](https://github.com/stripe/stripe-php/pull/1736) Update generated code
+
 ## 15.7.0-beta.1 - 2024-08-12
 * [#1730](https://github.com/stripe/stripe-php/pull/1730) Update generated code for beta
   * Add support for new value `custom` on enum `Checkout.Session.ui_mode`

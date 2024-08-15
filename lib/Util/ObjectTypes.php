@@ -87,6 +87,7 @@ class ObjectTypes
             \Stripe\Issuing\Cardholder::OBJECT_NAME => \Stripe\Issuing\Cardholder::class,
             \Stripe\Issuing\CreditUnderwritingRecord::OBJECT_NAME => \Stripe\Issuing\CreditUnderwritingRecord::class,
             \Stripe\Issuing\Dispute::OBJECT_NAME => \Stripe\Issuing\Dispute::class,
+            \Stripe\Issuing\DisputeSettlementDetail::OBJECT_NAME => \Stripe\Issuing\DisputeSettlementDetail::class,
             \Stripe\Issuing\PersonalizationDesign::OBJECT_NAME => \Stripe\Issuing\PersonalizationDesign::class,
             \Stripe\Issuing\PhysicalBundle::OBJECT_NAME => \Stripe\Issuing\PhysicalBundle::class,
             \Stripe\Issuing\Token::OBJECT_NAME => \Stripe\Issuing\Token::class,
