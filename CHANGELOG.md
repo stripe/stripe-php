@@ -1,5 +1,9 @@
 # Changelog
 
+## 15.7.0 - 2024-08-15
+* [#1736](https://github.com/stripe/stripe-php/pull/1736) Update generated code
+
+
 ## 15.6.0 - 2024-08-08
 * [#1729](https://github.com/stripe/stripe-php/pull/1729) Update generated code
   * Add support for `activate`, `all`, `archive`, `create`, `deactivate`, and `retrieve` methods on resource `Billing.Alert`
