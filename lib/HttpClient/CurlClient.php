@@ -199,7 +199,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
 
         $opts = [];
         if (\is_callable($this->defaultOptions)) { // call defaultOptions callback, set options to return value
-            $opts = \call_user_func_array($this->defaultOptions, \func_get_args());
+            $opts = \call_user_func_array($this->defaultOptions, [$method, $absUrl, $headers, $params, $hasFile]);
             if (!\is_array($opts)) {
                 throw new Exception\UnexpectedValueException('Non-array value returned by defaultOptions CurlClient callback');
             }
