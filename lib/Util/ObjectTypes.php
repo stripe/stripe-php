@@ -29,6 +29,7 @@ class ObjectTypes
             \Stripe\Billing\Alert::OBJECT_NAME => \Stripe\Billing\Alert::class,
             \Stripe\Billing\AlertTriggered::OBJECT_NAME => \Stripe\Billing\AlertTriggered::class,
             \Stripe\Billing\Meter::OBJECT_NAME => \Stripe\Billing\Meter::class,
+            \Stripe\Billing\MeterErrorReport::OBJECT_NAME => \Stripe\Billing\MeterErrorReport::class,
             \Stripe\Billing\MeterEvent::OBJECT_NAME => \Stripe\Billing\MeterEvent::class,
             \Stripe\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\Billing\MeterEventAdjustment::class,
             \Stripe\Billing\MeterEventSummary::OBJECT_NAME => \Stripe\Billing\MeterEventSummary::class,
