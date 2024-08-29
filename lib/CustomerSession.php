@@ -8,6 +8,10 @@ namespace Stripe;
  * A Customer Session allows you to grant Stripe's frontend SDKs (like Stripe.js) client-side access
  * control over a Customer.
  *
+ * Related guides: <a href="/payments/accept-a-payment-deferred?platform=web&amp;type=payment#save-payment-methods">Customer Session with the Payment Element</a>,
+ * <a href="/payments/checkout/pricing-table#customer-session">Customer Session with the Pricing Table</a>,
+ * <a href="/payment-links/buy-button#pass-an-existing-customer">Customer Session with the Buy Button</a>.
+ *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string $client_secret <p>The client secret of this Customer Session. Used on the client to set up secure access to the given <code>customer</code>.</p><p>The client secret can be used to provide access to <code>customer</code> from your frontend. It should not be stored, logged, or exposed to anyone other than the relevant customer. Make sure that you have TLS enabled on any page that includes the client secret.</p>
  * @property null|\Stripe\StripeObject $components Configuration for the components supported by this Customer Session.

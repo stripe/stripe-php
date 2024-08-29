@@ -5,6 +5,10 @@
 namespace Stripe;
 
 /**
+ * Invoice Line Items represent the individual lines within an <a href="https://stripe.com/docs/api/invoices">invoice</a> and only exist within the context of an invoice.
+ *
+ * Each line item is backed by either an <a href="https://stripe.com/docs/api/invoiceitems">invoice item</a> or a <a href="https://stripe.com/docs/api/subscription_items">subscription item</a>.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount The amount, in cents (or local equivalent).
