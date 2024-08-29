@@ -1,5 +1,11 @@
 # Changelog
 
+## 15.8.0 - 2024-08-29
+* [#1742](https://github.com/stripe/stripe-php/pull/1742) Generate SDK for OpenAPI spec version 1230
+  * Add support for new value `issuing_regulatory_reporting` on enum `File.purpose`
+  * Add support for new value `hr_oib` on enum `TaxId.type`
+  * Add support for `status_details` on `TestHelpers.TestClock`
+
 ## 15.8.0-beta.1 - 2024-08-15
 * [#1735](https://github.com/stripe/stripe-php/pull/1735) Update generated code for beta
   * Add support for `collected_information` and `permissions` on `Checkout.Session`
