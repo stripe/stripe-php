@@ -12,6 +12,7 @@ namespace Stripe\Billing;
  * @property string $alert_type Defines the type of the alert.
  * @property null|\Stripe\StripeObject $filter Limits the scope of the alert to a specific <a href="https://stripe.com/docs/api/customers">customer</a>.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property null|\Stripe\StripeObject $spend_threshold_config Encapsulates configuration of the spend to monitoring spend on a <a href="https://stripe.com/docs/api/subscriptions/object">Subscription</a> or <a href="https://stripe.com/docs/api/subscription_items/object">Subscription item</a>.
  * @property null|string $status Status of the alert. This can be active, inactive or archived.
  * @property string $title Title of the alert.
  * @property null|\Stripe\StripeObject $usage_threshold_config Encapsulates configuration of the alert to monitor usage on a specific <a href="https://stripe.com/docs/api/billing/meter">Billing Meter</a>.
@@ -19,6 +20,9 @@ namespace Stripe\Billing;
 class Alert extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'billing.alert';
+
+    const ALERT_TYPE_SPEND_THRESHOLD = 'spend_threshold';
+    const ALERT_TYPE_USAGE_THRESHOLD = 'usage_threshold';
 
     const STATUS_ACTIVE = 'active';
     const STATUS_ARCHIVED = 'archived';
