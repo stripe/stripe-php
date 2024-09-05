@@ -1,5 +1,16 @@
 # Changelog
 
+## 15.9.0-beta.1 - 2024-09-05
+* [#1738](https://github.com/stripe/stripe-php/pull/1738) Update generated code for beta
+  * Add support for new resources `Billing.MeterErrorReport` and `Terminal.ReaderCollectedData`
+  * Add support for `retrieve` method on resource `ReaderCollectedData`
+  * Add support for new value `terminal_reader_collected_data_invalid` on enum `StripeError.code`
+  * Add support for new value `billing.meter_error_report.triggered` on enum `Event.type`
+  * Add support for `regulatory_reporting_file` on `Issuing.CreditUnderwritingRecord`
+  * Add support for new value `mb_way` on enum `PaymentLink.payment_method_types[]`
+  * Add support for `mb_way` on `PaymentMethod`
+  * Add support for new value `mb_way` on enum `PaymentMethod.type`
+
 ## 15.8.0 - 2024-08-29
 * [#1742](https://github.com/stripe/stripe-php/pull/1742) Generate SDK for OpenAPI spec version 1230
   * Add support for new value `issuing_regulatory_reporting` on enum `File.purpose`
