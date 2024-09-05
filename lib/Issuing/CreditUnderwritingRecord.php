@@ -20,6 +20,7 @@ namespace Stripe\Issuing;
  * @property null|int $decision_deadline For underwriting initiated by an application, a decision must be taken 30 days after the submission.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|string $regulatory_reporting_file File containing regulatory reporting data for the decision. Required if you are subject to this <a href="https://stripe.com/docs/issuing/credit/report-required-regulatory-data-for-credit-decisions">reporting requirement</a>.
  * @property null|\Stripe\StripeObject $underwriting_exception If an exception to the usual underwriting criteria was made for this application, details about the exception must be provided. Exceptions should only be granted in rare circumstances, in consultation with Stripe Compliance.
  */
 class CreditUnderwritingRecord extends \Stripe\ApiResource
