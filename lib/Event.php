@@ -334,6 +334,7 @@ class Event extends ApiResource
     const TYPE_APPLICATION_FEE_REFUND_UPDATED = 'application_fee.refund.updated';
     const TYPE_BALANCE_AVAILABLE = 'balance.available';
     const TYPE_BILLING_ALERT_TRIGGERED = 'billing.alert.triggered';
+    const TYPE_BILLING_METER_ERROR_REPORT_TRIGGERED = 'billing.meter_error_report.triggered';
     const TYPE_BILLING_PORTAL_CONFIGURATION_CREATED = 'billing_portal.configuration.created';
     const TYPE_BILLING_PORTAL_CONFIGURATION_UPDATED = 'billing_portal.configuration.updated';
     const TYPE_BILLING_PORTAL_SESSION_CREATED = 'billing_portal.session.created';
