@@ -37,23 +37,6 @@ class QuotePhase extends ApiResource
     const PRORATION_BEHAVIOR_NONE = 'none';
 
     /**
-     * Returns a list of quote phases.
-     *
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection<\Stripe\QuotePhase> of ApiResources
-     */
-    public static function all($params = null, $opts = null)
-    {
-        $url = static::classUrl();
-
-        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
-    }
-
-    /**
      * Retrieves the quote phase with the given ID.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
