@@ -37,6 +37,7 @@ namespace Stripe;
  * @property \Stripe\Service\Forwarding\ForwardingServiceFactory $forwarding
  * @property \Stripe\Service\Identity\IdentityServiceFactory $identity
  * @property \Stripe\Service\InvoiceItemService $invoiceItems
+ * @property \Stripe\Service\InvoiceRenderingTemplateService $invoiceRenderingTemplates
  * @property \Stripe\Service\InvoiceService $invoices
  * @property \Stripe\Service\Issuing\IssuingServiceFactory $issuing
  * @property \Stripe\Service\MandateService $mandates
