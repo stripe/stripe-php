@@ -1,5 +1,10 @@
 # Changelog
 
+## 15.9.0 - 2024-09-12
+* [#1737](https://github.com/stripe/stripe-php/pull/1737) Update generated code
+  * Add support for new resource `InvoiceRenderingTemplate`
+  * Add support for `all`, `archive`, `retrieve`, and `unarchive` methods on resource `InvoiceRenderingTemplate`
+
 ## 15.8.0 - 2024-08-29
 * [#1742](https://github.com/stripe/stripe-php/pull/1742) Generate SDK for OpenAPI spec version 1230
   * Add support for new value `issuing_regulatory_reporting` on enum `File.purpose`
