@@ -73,6 +73,7 @@ class ObjectTypes
             \Stripe\Invoice::OBJECT_NAME => \Stripe\Invoice::class,
             \Stripe\InvoiceItem::OBJECT_NAME => \Stripe\InvoiceItem::class,
             \Stripe\InvoiceLineItem::OBJECT_NAME => \Stripe\InvoiceLineItem::class,
+            \Stripe\InvoiceRenderingTemplate::OBJECT_NAME => \Stripe\InvoiceRenderingTemplate::class,
             \Stripe\Issuing\Authorization::OBJECT_NAME => \Stripe\Issuing\Authorization::class,
             \Stripe\Issuing\Card::OBJECT_NAME => \Stripe\Issuing\Card::class,
             \Stripe\Issuing\Cardholder::OBJECT_NAME => \Stripe\Issuing\Cardholder::class,
