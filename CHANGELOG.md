@@ -1,5 +1,13 @@
 # Changelog
 
+## 15.10.0-beta.1 - 2024-09-13
+* [#1743](https://github.com/stripe/stripe-php/pull/1743) Update generated code for beta
+  * Add support for new resources `Issuing.DisputeSettlementDetail` and `Issuing.Settlement`
+  * Add support for `all` and `retrieve` methods on resource `DisputeSettlementDetail`
+  * Remove support for `all` method on resource `QuotePhase`
+  * Add support for new values `issuing_dispute_settlement_detail.created`, `issuing_dispute_settlement_detail.updated`, `issuing_settlement.created`, and `issuing_settlement.updated` on enum `Event.type`
+  * Add support for `settlement` on `Issuing.Transaction`
+
 ## 15.9.0-beta.1 - 2024-09-05
 * [#1738](https://github.com/stripe/stripe-php/pull/1738) Update generated code for beta
   * Add support for new resources `Billing.MeterErrorReport` and `Terminal.ReaderCollectedData`
