@@ -11,21 +11,6 @@ namespace Stripe\Service;
 class QuotePhaseService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of quote phases.
-     *
-     * @param null|array $params
-     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
-     * @return \Stripe\Collection<\Stripe\QuotePhase>
-     */
-    public function all($params = null, $opts = null)
-    {
-        return $this->requestCollection('get', '/v1/quote_phases', $params, $opts);
-    }
-
-    /**
      * When retrieving a quote phase, there is an includable
      * <strong>line_items</strong> property containing the first handful of those
      * items. There is also a URL where you can retrieve the full (paginated) list of

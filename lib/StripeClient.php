@@ -40,6 +40,7 @@ namespace Stripe;
  * @property \Stripe\Service\GiftCards\GiftCardsServiceFactory $giftCards
  * @property \Stripe\Service\Identity\IdentityServiceFactory $identity
  * @property \Stripe\Service\InvoiceItemService $invoiceItems
+ * @property \Stripe\Service\InvoiceRenderingTemplateService $invoiceRenderingTemplates
  * @property \Stripe\Service\InvoiceService $invoices
  * @property \Stripe\Service\Issuing\IssuingServiceFactory $issuing
  * @property \Stripe\Service\MandateService $mandates
