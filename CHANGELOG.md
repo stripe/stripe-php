@@ -1,5 +1,12 @@
 # Changelog
 
+## 15.10.0 - 2024-09-18
+* [#1747](https://github.com/stripe/stripe-php/pull/1747) Update generated code
+  * Add support for new value `international_transaction` on enum `Treasury.ReceivedDebit.failure_code`
+* [#1745](https://github.com/stripe/stripe-php/pull/1745) Update generated code
+  * Add support for new value `terminal_reader_invalid_location_for_activation` on enum `StripeError.code`
+  * Add support for `automatically_finalizes_at` on `Invoice`
+
 ## 15.9.0 - 2024-09-12
 * [#1737](https://github.com/stripe/stripe-php/pull/1737) Update generated code
   * Add support for new resource `InvoiceRenderingTemplate`
