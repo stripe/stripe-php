@@ -1,5 +1,12 @@
 # Changelog
 
+## 15.10.0 - 2024-09-18
+* [#1747](https://github.com/stripe/stripe-php/pull/1747) Update generated code
+  * Add support for new value `international_transaction` on enum `Treasury.ReceivedDebit.failure_code`
+* [#1745](https://github.com/stripe/stripe-php/pull/1745) Update generated code
+  * Add support for new value `terminal_reader_invalid_location_for_activation` on enum `StripeError.code`
+  * Add support for `automatically_finalizes_at` on `Invoice`
+
 ## 15.10.0-beta.1 - 2024-09-13
 * [#1743](https://github.com/stripe/stripe-php/pull/1743) Update generated code for beta
   * Add support for new resources `Issuing.DisputeSettlementDetail` and `Issuing.Settlement`
@@ -7,6 +14,11 @@
   * Remove support for `all` method on resource `QuotePhase`
   * Add support for new values `issuing_dispute_settlement_detail.created`, `issuing_dispute_settlement_detail.updated`, `issuing_settlement.created`, and `issuing_settlement.updated` on enum `Event.type`
   * Add support for `settlement` on `Issuing.Transaction`
+
+## 15.9.0 - 2024-09-12
+* [#1737](https://github.com/stripe/stripe-php/pull/1737) Update generated code
+  * Add support for new resource `InvoiceRenderingTemplate`
+  * Add support for `all`, `archive`, `retrieve`, and `unarchive` methods on resource `InvoiceRenderingTemplate`
 
 ## 15.9.0-beta.1 - 2024-09-05
 * [#1738](https://github.com/stripe/stripe-php/pull/1738) Update generated code for beta

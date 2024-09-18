@@ -114,7 +114,6 @@ class ObjectTypes
             \Stripe\PromotionCode::OBJECT_NAME => \Stripe\PromotionCode::class,
             \Stripe\Quote::OBJECT_NAME => \Stripe\Quote::class,
             \Stripe\QuoteLine::OBJECT_NAME => \Stripe\QuoteLine::class,
-            \Stripe\QuotePhase::OBJECT_NAME => \Stripe\QuotePhase::class,
             \Stripe\QuotePreviewInvoice::OBJECT_NAME => \Stripe\QuotePreviewInvoice::class,
             \Stripe\QuotePreviewSubscriptionSchedule::OBJECT_NAME => \Stripe\QuotePreviewSubscriptionSchedule::class,
             \Stripe\Radar\EarlyFraudWarning::OBJECT_NAME => \Stripe\Radar\EarlyFraudWarning::class,
