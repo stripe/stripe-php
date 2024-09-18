@@ -1,5 +1,11 @@
 # Changelog
 
+## 15.11.0-beta.1 - 2024-09-18
+* [#1748](https://github.com/stripe/stripe-php/pull/1748) Update generated code for beta
+  * Remove support for resource `QuotePhase`
+  * Remove support for `list_line_items` and `retrieve` methods on resource `QuotePhase`
+  * Add support for new value `rechnung` on enum `PaymentLink.payment_method_types[]`
+
 ## 15.10.0 - 2024-09-18
 * [#1747](https://github.com/stripe/stripe-php/pull/1747) Update generated code
   * Add support for new value `international_transaction` on enum `Treasury.ReceivedDebit.failure_code`
