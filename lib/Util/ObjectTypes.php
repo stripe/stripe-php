@@ -157,30 +157,11 @@ class ObjectTypes
      */
     const v2Mapping = [
         // v2 object classes: The beginning of the section generated from our OpenAPI spec
-        \Stripe\V2\Account::OBJECT_NAME => \Stripe\V2\Account::class,
-        \Stripe\V2\AccountLink::OBJECT_NAME => \Stripe\V2\AccountLink::class,
-        \Stripe\V2\Adjustment::OBJECT_NAME => \Stripe\V2\Adjustment::class,
         \Stripe\V2\Billing\MeterEventAdjustmentV2::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustmentV2::class,
         \Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \Stripe\V2\Billing\MeterEventSession::class,
         \Stripe\V2\Billing\MeterEventV2::OBJECT_NAME => \Stripe\V2\Billing\MeterEventV2::class,
         \Stripe\V2\Event::OBJECT_NAME => \Stripe\V2\Event::class,
         \Stripe\V2\EventDestination::OBJECT_NAME => \Stripe\V2\EventDestination::class,
-        \Stripe\V2\FinancialAccount::OBJECT_NAME => \Stripe\V2\FinancialAccount::class,
-        \Stripe\V2\FinancialAccountBalance::OBJECT_NAME => \Stripe\V2\FinancialAccountBalance::class,
-        \Stripe\V2\FinancialAddress::OBJECT_NAME => \Stripe\V2\FinancialAddress::class,
-        \Stripe\V2\FinancialAddressCreditSimulation::OBJECT_NAME => \Stripe\V2\FinancialAddressCreditSimulation::class,
-        \Stripe\V2\FinancialAddressGeneratedMicrodeposits::OBJECT_NAME => \Stripe\V2\FinancialAddressGeneratedMicrodeposits::class,
-        \Stripe\V2\InboundTransfer::OBJECT_NAME => \Stripe\V2\InboundTransfer::class,
-        \Stripe\V2\OutboundPayment::OBJECT_NAME => \Stripe\V2\OutboundPayment::class,
-        \Stripe\V2\OutboundTransfer::OBJECT_NAME => \Stripe\V2\OutboundTransfer::class,
-        \Stripe\V2\PaymentMethods\Card::OBJECT_NAME => \Stripe\V2\PaymentMethods\Card::class,
-        \Stripe\V2\PaymentMethods\GbBankAccount::OBJECT_NAME => \Stripe\V2\PaymentMethods\GbBankAccount::class,
-        \Stripe\V2\PaymentMethods\OutboundDestination::OBJECT_NAME => \Stripe\V2\PaymentMethods\OutboundDestination::class,
-        \Stripe\V2\PaymentMethods\UsBankAccount::OBJECT_NAME => \Stripe\V2\PaymentMethods\UsBankAccount::class,
-        \Stripe\V2\ReceivedCredit::OBJECT_NAME => \Stripe\V2\ReceivedCredit::class,
-        \Stripe\V2\ReceivedDebit::OBJECT_NAME => \Stripe\V2\ReceivedDebit::class,
-        \Stripe\V2\Transaction::OBJECT_NAME => \Stripe\V2\Transaction::class,
-        \Stripe\V2\TransactionEntry::OBJECT_NAME => \Stripe\V2\TransactionEntry::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
 }
