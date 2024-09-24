@@ -508,6 +508,106 @@ final class ApiRequestorTest extends \Stripe\TestCase
         }
     }
 
+    public function testRaisesV2Error()
+    {
+        $this->stubRequest(
+            'POST',
+            '/v2/outbound_transfers/obt_123/cancel',
+            [],
+            null,
+            false,
+            [
+                'error' => [
+                    'type' => 'already_canceled',
+                    'code' => 'canceled',
+                    'message' => 'already canceled',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $client = new StripeClient('sk_test_123');
+            $client->v2->outboundTransfers->cancel('obt_123');
+            static::fail('Did not raise error');
+        } catch (Exception\AlreadyCanceledException $e) {
+            static::assertSame(400, $e->getHttpStatus());
+            static::assertSame('already_canceled', $e->getError()->type);
+            static::assertSame('canceled', $e->getStripeCode());
+            static::assertSame('already canceled', $e->getMessage());
+        } catch (\Exception $e) {
+            static::fail('Unexpected exception: ' . \get_class($e));
+        }
+    }
+
+    public function testRaisesV2ErrorWithCustomFields()
+    {
+        $this->stubRequest(
+            'POST',
+            '/v2/payment_methods/us_bank_accounts',
+            ['account_number' => '123', 'routing_number' => '456'],
+            null,
+            false,
+            [
+                'error' => [
+                    'type' => 'invalid_payment_method',
+                    'code' => 'invalid_us_bank_account',
+                    'message' => 'bank account is invalid',
+                    'invalid_param' => 'routing_number',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $client = new StripeClient('sk_test_123');
+            $client->v2->paymentMethods->usBankAccounts->create(['account_number' => '123', 'routing_number' => '456']);
+            static::fail('Did not raise error');
+        } catch (Exception\InvalidPaymentMethodException $e) {
+            static::assertSame(400, $e->getHttpStatus());
+            static::assertSame('invalid_payment_method', $e->getError()->type);
+            static::assertSame('invalid_us_bank_account', $e->getStripeCode());
+            static::assertSame('routing_number', $e->getInvalidParam());
+        } catch (\Exception $e) {
+            static::fail('Unexpected exception: ' . \get_class($e));
+        }
+    }
+
+    public function testV2CallsFallBackToV1Errors()
+    {
+        $this->stubRequest(
+            'POST',
+            '/v2/outbound_transfers/obt_123/cancel',
+            [],
+            null,
+            false,
+            [
+                'error' => [
+                    'code' => 'invalid_request',
+                    'message' => 'your request is invalid',
+                    'param' => 'invalid_param',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $client = new StripeClient('sk_test_123');
+            $client->v2->outboundTransfers->cancel('obt_123');
+            static::fail('Did not raise error');
+        } catch (Exception\InvalidRequestException $e) {
+            static::assertSame(400, $e->getHttpStatus());
+            static::assertSame('invalid_param', $e->getStripeParam());
+            static::assertSame('invalid_request', $e->getStripeCode());
+            static::assertSame('your request is invalid', $e->getMessage());
+        } catch (\Exception $e) {
+            static::fail('Unexpected exception: ' . \get_class($e));
+        }
+    }
+
     public function testHeaderStripeVersionGlobal()
     {
         Stripe::setApiVersion('2222-22-22');
@@ -580,6 +680,25 @@ final class ApiRequestorTest extends \Stripe\TestCase
             ]
         );
         Charge::create([], ['stripe_account' => 'acct_123']);
+    }
+
+    public function testHeaderStripeContextRequestOptions()
+    {
+        $this->stubRequest(
+            'POST',
+            '/v2/accounts',
+            [],
+            [
+                'Stripe-Context: wksp_123',
+            ],
+            false,
+            ['object' => 'account'],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        $client = new StripeClient('sk_test_123');
+        $client->v2->accounts->create([], ['stripe_context' => 'wksp_123']);
     }
 
     public function testIsDisabled()

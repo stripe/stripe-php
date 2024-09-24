@@ -98,6 +98,26 @@ final class UtilTest extends \Stripe\TestCase
         );
     }
 
+    public function testEncodeParametersForV2Api()
+    {
+        $params = [
+            'a' => 3,
+            'b' => '+foo?',
+            'c' => 'bar&baz',
+            'd' => ['a' => 'a', 'b' => 'b'],
+            'e' => [0, 1],
+            'f' => '',
+
+            // note the empty hash won't even show up in the request
+            'g' => [],
+        ];
+
+        static::assertSame(
+            'a=3&b=%2Bfoo%3F&c=bar%26baz&d[a]=a&d[b]=b&e=0&e=1&f=',
+            Util::encodeParameters($params, 'v2')
+        );
+    }
+
     public function testUrlEncode()
     {
         static::assertSame('foo', Util::urlEncode('foo'));

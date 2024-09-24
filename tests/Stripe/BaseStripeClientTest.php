@@ -2,6 +2,9 @@
 
 namespace Stripe;
 
+use ReflectionClass;
+use Stripe\Util\ApiVersion;
+
 /**
  * @internal
  * @covers \Stripe\BaseStripeClient
@@ -9,14 +12,40 @@ namespace Stripe;
 final class BaseStripeClientTest extends \Stripe\TestCase
 {
     use TestHelper;
+
     /** @var \ReflectionProperty */
     private $optsReflector;
+
+    /** @var \ReflectionClass */
+    private $apiRequestorReflector;
+
+    private $curlClientStub;
+
+    protected function headerStartsWith($header, $name)
+    {
+        return substr($header, 0, \strlen($name)) === $name;
+    }
 
     /** @before */
     protected function setUpOptsReflector()
     {
         $this->optsReflector = new \ReflectionProperty(\Stripe\StripeObject::class, '_opts');
         $this->optsReflector->setAccessible(true);
+    }
+
+    /** @before */
+    protected function setUpApiRequestorReflector()
+    {
+        $this->apiRequestorReflector = new \ReflectionClass(\Stripe\ApiRequestor::class);
+    }
+
+    /** @before */
+    protected function setUpCurlClientStub()
+    {
+        $this->curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
+            ->setMethods(['executeRequestWithRetries'])
+            ->getMock()
+        ;
     }
 
     public function testCtorDoesNotThrowWhenNoParams()
@@ -221,6 +250,280 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         );
     }
 
+    public function testJsonRawRequestGetWithURLParams()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{}', 200, []])
+        ;
+
+        $opts = null;
+        $this->curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts_) use (&$opts) {
+                $opts = $opts_;
+
+                return true;
+            }), MOCK_URL . '/v1/xyz?foo=bar')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_account' => 'acct_123',
+            'api_base' => MOCK_URL,
+        ]);
+        $client->rawRequest('get', '/v1/xyz?foo=bar', null, []);
+        static::assertArrayNotHasKey(\CURLOPT_POST, $opts);
+        static::assertArrayNotHasKey(\CURLOPT_POSTFIELDS, $opts);
+        $content_type = null;
+        $stripe_version = null;
+        foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
+            if (self::headerStartsWith($header, 'Content-Type:')) {
+                $content_type = $header;
+            }
+            if (self::headerStartsWith($header, 'Stripe-Version:')) {
+                $stripe_version = $header;
+            }
+        }
+        // The library sends Content-Type even with no body, so assert this
+        // But it would be more correct to not send Content-Type
+        static::assertSame('Content-Type: application/x-www-form-urlencoded', $content_type);
+        static::assertSame('Stripe-Version: ' . ApiVersion::CURRENT, $stripe_version);
+    }
+
+    public function testRawRequestUsageTelemetry()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{}', 200, ['request-id' => 'req_123']])
+        ;
+
+        $this->curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                return true;
+            }), MOCK_URL . '/v1/xyz')
+        ;
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'api_base' => MOCK_URL,
+        ]);
+        $client->rawRequest('post', '/v1/xyz', [], []);
+        // Can't use ->getStaticPropertyValue because this has a bug until PHP 7.4.9: https://bugs.php.net/bug.php?id=69804
+        static::assertSame(['raw_request'], $this->apiRequestorReflector->getStaticProperties()['requestTelemetry']->usage);
+    }
+
+    public function testJsonRawRequestPost()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "xyz", "isPHPBestLanguage": true, "abc": {"object": "abc", "a": 2}}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                $this->assertSame(1, $opts[\CURLOPT_POST]);
+                $this->assertSame('{"foo":"bar","baz":{"qux":false}}', $opts[\CURLOPT_POSTFIELDS]);
+                $this->assertContains('Content-Type: application/json', $opts[\CURLOPT_HTTPHEADER]);
+
+                return true;
+            }), MOCK_URL . '/v2/xyz')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_account' => 'acct_123',
+            'api_base' => MOCK_URL,
+        ]);
+        $params = ['foo' => 'bar', 'baz' => ['qux' => false]];
+        $resp = $client->rawRequest('post', '/v2/xyz', $params, []);
+
+        $xyz = $client->deserialize($resp->body, 'v2');
+
+        static::assertSame('xyz', $xyz->object); // @phpstan-ignore-line
+        static::assertTrue($xyz->isPHPBestLanguage); // @phpstan-ignore-line
+        static::assertSame(2, $xyz->abc->a); // @phpstan-ignore-line
+        static::assertInstanceof(\Stripe\StripeObject::class, $xyz->abc); // @phpstan-ignore-line
+    }
+
+    public function testFormRawRequestPost()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                $this->assertSame(1, $opts[\CURLOPT_POST]);
+                $this->assertSame('foo=bar&baz[qux]=false', $opts[\CURLOPT_POSTFIELDS]);
+                $this->assertContains('Content-Type: application/x-www-form-urlencoded', $opts[\CURLOPT_HTTPHEADER]);
+
+                return true;
+            }), MOCK_URL . '/v1/xyz')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_account' => 'acct_123',
+            'api_base' => MOCK_URL,
+        ]);
+        $params = ['foo' => 'bar', 'baz' => ['qux' => false]];
+        $client->rawRequest('post', '/v1/xyz', $params, []);
+    }
+
+    public function testJsonRawRequestGetWithNonNullParams()
+    {
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_account' => 'acct_123',
+            'api_base' => MOCK_URL,
+        ]);
+        $params = [];
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Error: rawRequest only supports $params on post requests. Please pass null and add your parameters to $path');
+        $client->rawRequest('get', '/v2/xyz', $params, []);
+    }
+
+    public function testRawRequestWithStripeContextOption()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                $this->assertContains('Stripe-Context: acct_123', $opts[\CURLOPT_HTTPHEADER]);
+
+                return true;
+            }), MOCK_URL . '/v2/xyz')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_account' => 'acct_123',
+            'api_base' => MOCK_URL,
+        ]);
+        $params = [];
+        $client->rawRequest('post', '/v2/xyz', $params, [
+            'stripe_context' => 'acct_123',
+        ]);
+    }
+
+    public function testV2GetRequest()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "account"}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                $this->assertSame(1, $opts[\CURLOPT_HTTPGET]);
+                $this->assertContains('Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW, $opts[\CURLOPT_HTTPHEADER]);
+
+                // The library sends Content-Type even with no body, so assert this
+                // But it would be more correct to not send Content-Type
+                $this->assertContains('Content-Type: application/json', $opts[\CURLOPT_HTTPHEADER]);
+
+                return true;
+            }), MOCK_URL . '/v2/accounts/acct_123')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_version' => '2222-22-22.preview-v2',
+            'api_base' => MOCK_URL,
+        ]);
+        $account = $client->request('get', '/v2/accounts/acct_123', [], []);
+        static::assertNotNull($account);
+        static::assertInstanceOf(\Stripe\V2\Account::class, $account);
+    }
+
+    public function testV2PostRequest()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "account"}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                $this->assertSame(1, $opts[\CURLOPT_POST]);
+                $this->assertSame('{"foo":"bar"}', $opts[\CURLOPT_POSTFIELDS]);
+                $this->assertContains('Content-Type: application/json', $opts[\CURLOPT_HTTPHEADER]);
+
+                return true;
+            }), MOCK_URL . '/v2/accounts')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_version' => '2222-22-22.preview-v2',
+            'api_base' => MOCK_URL,
+        ]);
+
+        $account = $client->request('post', '/v2/accounts', ['foo' => 'bar'], []);
+        static::assertNotNull($account);
+        static::assertInstanceOf(\Stripe\V2\Account::class, $account);
+    }
+
+    public function testV2RequestWithClientStripeContext()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "account"}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                $this->assertContains('Stripe-Context: acct_123', $opts[\CURLOPT_HTTPHEADER]);
+
+                return true;
+            }), MOCK_URL . '/v2/accounts')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_context' => 'acct_123',
+            'api_base' => MOCK_URL,
+        ]);
+
+        $client->request('post', '/v2/accounts', [], []);
+    }
+
+    public function testV2RequestWithOptsStripeContext()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "account"}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                $this->assertContains('Stripe-Context: acct_456', $opts[\CURLOPT_HTTPHEADER]);
+
+                return true;
+            }), MOCK_URL . '/v2/accounts')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_context' => 'acct_123',
+            'api_base' => MOCK_URL,
+        ]);
+
+        $client->request('post', '/v2/accounts', [], ['stripe_context' => 'acct_456']);
+    }
+
     private function assertAppInfo($ua, $ua_dict, $headers)
     {
         static::assertContains($ua, $headers);
@@ -388,5 +691,274 @@ final class BaseStripeClientTest extends \Stripe\TestCase
                 'foo' => 'bar',
             ],
         ]);
+    }
+
+    public function testParseThinEvent()
+    {
+        $jsonEvent = [
+            'id' => 'evt_234',
+            'object' => 'event',
+            'type' => 'financial_account.balance.opened',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'related_object' => [
+                'id' => 'fa_123',
+                'type' => 'financial_account',
+                'url' => '/v2/financial_accounts/fa_123',
+                'stripe_context' => 'acct_123',
+            ],
+        ];
+        $rc = new ReflectionClass(\Stripe\ThinEvent::class);
+        $prop = $rc->getProperty('_opts');
+        $prop->setAccessible(true);
+
+        $eventData = json_encode($jsonEvent);
+        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL, 'stripe_account' => 'acc_123']);
+
+        $sigHeader = WebhookTest::generateHeader(['payload' => $eventData]);
+        $event = $client->parseThinEvent($eventData, $sigHeader, WebhookTest::SECRET);
+
+        static::assertInstanceOf(\Stripe\V2\Event\FinancialAccountBalanceOpenedEvent::class, $event);
+        static::assertSame('evt_234', $event->id);
+        static::assertSame('financial_account.balance.opened', $event->type);
+        static::assertSame('event', $event->object);
+        static::assertSame('2022-02-15T00:27:45.330Z', $event->created);
+        static::assertSame('fa_123', $event->related_object->id);
+
+        static::assertSame('sk_test_client', $prop->getValue($event)->apiKey);
+        static::assertSame('acc_123', $prop->getValue($event)->headers['Stripe-Account']);
+    }
+
+    public function testParseThinEventBadSigHeader()
+    {
+        $jsonEvent = [
+            'id' => 'evt_234',
+            'object' => 'event',
+            'type' => 'financial_account.balance.opened',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'related_object' => [
+                'id' => 'fa_123',
+                'type' => 'financial_account',
+                'url' => '/v2/financial_accounts/fa_123',
+                'stripe_context' => 'acct_123',
+            ],
+        ];
+        $rc = new ReflectionClass(\Stripe\ThinEvent::class);
+        $prop = $rc->getProperty('_opts');
+        $prop->setAccessible(true);
+
+        $eventData = json_encode($jsonEvent);
+        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL, 'stripe_account' => 'acc_123']);
+
+        $this->expectException(\Stripe\Exception\SignatureVerificationException::class);
+
+        $client->parseThinEvent($eventData, 'invalid header', WebhookTest::SECRET);
+    }
+
+    public function testV2FetchDataFetchesAndDeserializesEventData()
+    {
+        $jsonEvent = [
+            'id' => 'evt_234',
+            'object' => 'event',
+            'type' => 'financial_account.balance.opened',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'related_object' => [
+                'id' => 'fa_123',
+                'type' => 'financial_account',
+                'url' => '/v2/financial_accounts/fa_123',
+                'stripe_context' => 'acct_123',
+            ],
+            'data' => ['containing_compartment_id' => 'compid', 'id' => 'foo'],
+        ];
+
+        $eventData = json_encode($jsonEvent);
+        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
+
+        $sigHeader = WebhookTest::generateHeader(['payload' => $eventData]);
+        $event = $client->parseThinEvent($eventData, $sigHeader, WebhookTest::SECRET);
+        $this->stubRequest(
+            'GET',
+            '/v2/events/evt_234',
+            null,
+            null,
+            false,
+            $jsonEvent
+        );
+
+        static::assertInstanceOf(\Stripe\V2\Event\FinancialAccountBalanceOpenedEvent::class, $event);
+        $data = $event->fetchData();
+
+        static::assertInstanceOf(\Stripe\V2\EventData\FinancialAccountBalanceOpenedEventData::class, $data);
+        static::assertSame('foo', $data->id);
+        // @phpstan-ignore-next-line
+        static::assertSame('compid', $data->containing_compartment_id);
+    }
+
+    public function testV2FetchObjectFetchesDeserializesObject()
+    {
+        $jsonEvent = [
+            'id' => 'evt_234',
+            'object' => 'event',
+            'type' => 'financial_account.balance.opened',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'related_object' => [
+                'id' => 'fa_123',
+                'type' => 'financial_account',
+                'url' => '/v2/financial_accounts/fa_123',
+                'stripe_context' => 'acct_123',
+            ],
+        ];
+        $eventData = json_encode($jsonEvent);
+        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
+
+        $sigHeader = WebhookTest::generateHeader(['payload' => $eventData]);
+        $event = $client->parseThinEvent($eventData, $sigHeader, WebhookTest::SECRET);
+
+        $response = json_decode(file_get_contents('tests/fixtures/financial_account.json'));
+
+        $this->stubRequest(
+            'get',
+            '/v2/financial_accounts/fa_123',
+            null,
+            null,
+            false,
+            $response
+        );
+
+        $rc = new ReflectionClass(\Stripe\V2\FinancialAccount::class);
+        $prop = $rc->getProperty('_opts');
+        $prop->setAccessible(true);
+
+        $financialAccount = $event->fetchObject();
+        static::assertInstanceOf(\Stripe\V2\FinancialAccount::class, $financialAccount);
+        static::assertSame('fa_123', $financialAccount->id);
+        static::assertSame('sk_test_client', $prop->getValue($event)->apiKey);
+    }
+
+    public function testV2FetchObjectNoRelatedObject()
+    {
+        $jsonEvent = [
+            'id' => 'evt_234',
+            'object' => 'event',
+            'type' => 'financial_account.balance.opened',
+            'created' => '2022-02-15T00:27:45.330Z',
+        ];
+        $eventData = json_encode($jsonEvent);
+        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
+
+        $sigHeader = WebhookTest::generateHeader(['payload' => $eventData]);
+        $event = $client->parseThinEvent($eventData, $sigHeader, WebhookTest::SECRET);
+
+        $financialAccount = $event->fetchObject();
+        static::assertNull($financialAccount);
+    }
+
+    public function testV2PreviewVersionInRawRequest()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "account"}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                $this->assertContains('Stripe-Version: ' . ApiVersion::PREVIEW, $opts[\CURLOPT_HTTPHEADER]);
+
+                return true;
+            }), MOCK_URL . '/v2/accounts/acct_123')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'api_base' => MOCK_URL,
+        ]);
+        $params = [];
+        $client->rawRequest('post', '/v2/accounts/acct_123', $params, []);
+    }
+
+    public function testV2OverridesPreviewVersionIfPassedInRawRequestOptions()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "account"}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                $this->assertContains('Stripe-Version: 2222-22-22.preview-v2', $opts[\CURLOPT_HTTPHEADER]);
+
+                return true;
+            }), MOCK_URL . '/v2/accounts/acct_123')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'api_base' => MOCK_URL,
+        ]);
+        $params = [];
+        $client->rawRequest('post', '/v2/accounts/acct_123', $params, [
+            'stripe_version' => '2222-22-22.preview-v2',
+        ]);
+    }
+
+    public function testV2OverridesPreviewVersionIfPassedInRequestOptions()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "account"}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                $this->assertContains('Stripe-Version: 2222-22-22.preview-v2', $opts[\CURLOPT_HTTPHEADER]);
+
+                return true;
+            }), MOCK_URL . '/v2/accounts/acct_123')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'api_base' => MOCK_URL,
+        ]);
+        $account = $client->request('get', '/v2/accounts/acct_123', [], ['stripe_version' => '2222-22-22.preview-v2']);
+        static::assertNotNull($account);
+        static::assertInstanceOf(\Stripe\V2\Account::class, $account);
+    }
+
+    public function testV1AndV2Request()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "account"}', 200, []])
+        ;
+
+        $this->curlClientStub
+            ->method('executeRequestWithRetries')
+            ->withConsecutive([static::callback(function ($opts) {
+                $this->assertContains('Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW, $opts[\CURLOPT_HTTPHEADER]);
+
+                return true;
+            }), MOCK_URL . '/v2/accounts/acct_123'], [
+                static::callback(function ($opts) {
+                    $this->assertContains('Stripe-Version: ' . ApiVersion::CURRENT, $opts[\CURLOPT_HTTPHEADER]);
+
+                    return true;
+                }), MOCK_URL . '/v1/accounts/acct_123',
+            ])
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'api_base' => MOCK_URL,
+        ]);
+        $account = $client->request('get', '/v2/accounts/acct_123', [], []);
+        static::assertNotNull($account);
+        static::assertInstanceOf(\Stripe\V2\Account::class, $account);
+
+        $account = $client->request('get', '/v1/accounts/acct_123', [], []);
+        static::assertNotNull($account);
+        static::assertInstanceOf(\Stripe\Account::class, $account);
     }
 }

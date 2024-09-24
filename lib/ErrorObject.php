@@ -203,7 +203,6 @@ class ErrorObject extends StripeObject
     const CODE_TERMINAL_LOCATION_COUNTRY_UNSUPPORTED = 'terminal_location_country_unsupported';
     const CODE_TERMINAL_READER_BUSY = 'terminal_reader_busy';
     const CODE_TERMINAL_READER_HARDWARE_FAULT = 'terminal_reader_hardware_fault';
-    const CODE_TERMINAL_READER_INVALID_LOCATION_FOR_ACTIVATION = 'terminal_reader_invalid_location_for_activation';
     const CODE_TERMINAL_READER_INVALID_LOCATION_FOR_PAYMENT = 'terminal_reader_invalid_location_for_payment';
     const CODE_TERMINAL_READER_OFFLINE = 'terminal_reader_offline';
     const CODE_TERMINAL_READER_TIMEOUT = 'terminal_reader_timeout';
@@ -223,8 +222,9 @@ class ErrorObject extends StripeObject
      * @param array $values
      * @param null|array|string|Util\RequestOptions $opts
      * @param bool $partial defaults to false
+     * @param 'v1'|'v2' $apiMode
      */
-    public function refreshFrom($values, $opts, $partial = false)
+    public function refreshFrom($values, $opts, $partial = false, $apiMode = 'v1')
     {
         // Unlike most other API resources, the API will omit attributes in
         // error objects when they have a null value. We manually set default

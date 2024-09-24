@@ -1,0 +1,14 @@
+{
+  "id": "fa_123",
+  "object": "financial_account",
+  "balance_types": [
+    "storage"
+  ],
+  "country": "US",
+  "created": "2023-10-20T05:47:49.766Z",
+  "description": "",
+  "requested_currencies": [
+    "usd"
+  ],
+  "status": "open"
+}

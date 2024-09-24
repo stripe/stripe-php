@@ -5,9 +5,6 @@
 namespace Stripe;
 
 /**
- * Invoice Rendering Templates are used to configure how invoices are rendered on surfaces like the PDF. Invoice Rendering Templates
- * can be created from within the Dashboard, and they can be used over the API when creating invoices.
- *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.

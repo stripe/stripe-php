@@ -13,6 +13,7 @@ require __DIR__ . '/lib/Util/RandomGenerator.php';
 require __DIR__ . '/lib/Util/RequestOptions.php';
 require __DIR__ . '/lib/Util/Set.php';
 require __DIR__ . '/lib/Util/Util.php';
+require __DIR__ . '/lib/Util/EventTypes.php';
 require __DIR__ . '/lib/Util/ObjectTypes.php';
 
 // HttpClient
@@ -65,10 +66,12 @@ require __DIR__ . '/lib/StripeObject.php';
 require __DIR__ . '/lib/ApiRequestor.php';
 require __DIR__ . '/lib/ApiResource.php';
 require __DIR__ . '/lib/SingletonApiResource.php';
+require __DIR__ . '/lib/Service/ServiceNavigatorTrait.php';
 require __DIR__ . '/lib/Service/AbstractService.php';
 require __DIR__ . '/lib/Service/AbstractServiceFactory.php';
 
 require __DIR__ . '/lib/Collection.php';
+require __DIR__ . '/lib/V2/Collection.php';
 require __DIR__ . '/lib/SearchResult.php';
 require __DIR__ . '/lib/ErrorObject.php';
 require __DIR__ . '/lib/Issuing/CardDetails.php';

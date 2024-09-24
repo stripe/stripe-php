@@ -37,17 +37,18 @@ abstract class Util
      * Converts a response from the Stripe API to the corresponding PHP object.
      *
      * @param array $resp the response from the Stripe API
-     * @param array $opts
+     * @param array|RequestOptions $opts
+     * @param 'v1'|'v2' $apiMode whether the response is from a v1 or v2 API
      *
      * @return array|StripeObject
      */
-    public static function convertToStripeObject($resp, $opts)
+    public static function convertToStripeObject($resp, $opts, $apiMode = 'v1')
     {
-        $types = \Stripe\Util\ObjectTypes::mapping;
+        $types = 'v1' === $apiMode ? \Stripe\Util\ObjectTypes::mapping : \Stripe\Util\ObjectTypes::v2Mapping;
         if (self::isList($resp)) {
             $mapped = [];
             foreach ($resp as $i) {
-                $mapped[] = self::convertToStripeObject($i, $opts);
+                $mapped[] = self::convertToStripeObject($i, $opts, $apiMode);
             }
 
             return $mapped;
@@ -55,11 +56,19 @@ abstract class Util
         if (\is_array($resp)) {
             if (isset($resp['object']) && \is_string($resp['object']) && isset($types[$resp['object']])) {
                 $class = $types[$resp['object']];
+                if ('v2' === $apiMode && 'event' === $resp['object']) {
+                    $eventTypes = \Stripe\Util\EventTypes::thinEventMapping;
+                    $class = $eventTypes[$resp['type']];
+                }
+            } elseif (\array_key_exists('data', $resp) && \array_key_exists('next_page', $resp)) {
+                // TODO: this is a horrible hack. The API needs
+                // to return something for `object` here.
+                $class = \Stripe\V2\Collection::class;
             } else {
                 $class = \Stripe\StripeObject::class;
             }
 
-            return $class::constructFrom($resp, $opts);
+            return $class::constructFrom($resp, $opts, $apiMode);
         }
 
         return $resp;
@@ -160,12 +169,13 @@ abstract class Util
 
     /**
      * @param array $params
+     * @param mixed $apiMode
      *
      * @return string
      */
-    public static function encodeParameters($params)
+    public static function encodeParameters($params, $apiMode = 'v1')
     {
-        $flattenedParams = self::flattenParams($params);
+        $flattenedParams = self::flattenParams($params, null, $apiMode);
         $pieces = [];
         foreach ($flattenedParams as $param) {
             list($k, $v) = $param;
@@ -178,20 +188,20 @@ abstract class Util
     /**
      * @param array $params
      * @param null|string $parentKey
+     * @param mixed $apiMode
      *
      * @return array
      */
-    public static function flattenParams($params, $parentKey = null)
+    public static function flattenParams($params, $parentKey = null, $apiMode = 'v1')
     {
         $result = [];
 
         foreach ($params as $key => $value) {
             $calculatedKey = $parentKey ? "{$parentKey}[{$key}]" : $key;
-
             if (self::isList($value)) {
-                $result = \array_merge($result, self::flattenParamsList($value, $calculatedKey));
+                $result = \array_merge($result, self::flattenParamsList($value, $calculatedKey, $apiMode));
             } elseif (\is_array($value)) {
-                $result = \array_merge($result, self::flattenParams($value, $calculatedKey));
+                $result = \array_merge($result, self::flattenParams($value, $calculatedKey, $apiMode));
             } else {
                 \array_push($result, [$calculatedKey, $value]);
             }
@@ -203,10 +213,11 @@ abstract class Util
     /**
      * @param array $value
      * @param string $calculatedKey
+     * @param mixed $apiMode
      *
      * @return array
      */
-    public static function flattenParamsList($value, $calculatedKey)
+    public static function flattenParamsList($value, $calculatedKey, $apiMode = 'v1')
     {
         $result = [];
 
@@ -216,7 +227,11 @@ abstract class Util
             } elseif (\is_array($elem)) {
                 $result = \array_merge($result, self::flattenParams($elem, "{$calculatedKey}[{$i}]"));
             } else {
-                \array_push($result, ["{$calculatedKey}[{$i}]", $elem]);
+                if ('v2' === $apiMode) {
+                    \array_push($result, ["{$calculatedKey}", $elem]);
+                } else {
+                    \array_push($result, ["{$calculatedKey}[{$i}]", $elem]);
+                }
             }
         }
 
@@ -265,5 +280,15 @@ abstract class Util
     public static function currentTimeMillis()
     {
         return (int) \round(\microtime(true) * 1000);
+    }
+
+    public static function getApiMode($path)
+    {
+        $apiMode = 'v1';
+        if ('/v2' === substr($path, 0, 3)) {
+            $apiMode = 'v2';
+        }
+
+        return $apiMode;
     }
 }
