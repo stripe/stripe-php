@@ -16,7 +16,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     const DEFAULT_FILES_BASE = 'https://files.stripe.com';
 
     /** @var string default base URL for Stripe's Meter Events API */
-    const DEFAULT_EVENTS_BASE = 'https://events.stripe.com';
+    const DEFAULT_METER_EVENTS_BASE = 'https://meter-events.stripe.com';
 
     /** @var array<string, null|string> */
     const DEFAULT_CONFIG = [
@@ -29,7 +29,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         'api_base' => self::DEFAULT_API_BASE,
         'connect_base' => self::DEFAULT_CONNECT_BASE,
         'files_base' => self::DEFAULT_FILES_BASE,
-        'events_base' => self::DEFAULT_EVENTS_BASE,
+        'meter_events_base' => self::DEFAULT_METER_EVENTS_BASE,
     ];
 
     /** @var array<string, mixed> */
@@ -66,8 +66,8 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      *   {@link DEFAULT_CONNECT_BASE}.
      * - files_base (string): the base URL for file creation requests. Defaults to
      *   {@link DEFAULT_FILES_BASE}.
-     * - events_base (string): the base URL for high throughput requests. Defaults to
-     *   {@link DEFAULT_EVENTS_BASE}.
+     * - meter_events_base (string): the base URL for high throughput requests. Defaults to
+     *   {@link DEFAULT_METER_EVENTS_BASE}.
      *
      * @param array<string, mixed>|string $config the API key as a string, or an array containing
      *   the client configuration settings
@@ -143,13 +143,13 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * Gets the base URL for Stripe's Events API.
+     * Gets the base URL for Stripe's Meter Events API.
      *
-     * @return string the base URL for Stripe's Events API
+     * @return string the base URL for Stripe's Meter Events API
      */
-    public function getEventsBase()
+    public function getMeterEventsBase()
     {
-        return $this->config['events_base'];
+        return $this->config['meter_events_base'];
     }
 
     /**
@@ -189,12 +189,6 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $opts->discardNonPersistentHeaders();
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts, $apiMode);
         $obj->setLastResponse($response);
-
-        // Auto-paginating V2 APIs require params to be passed with the request.
-        // V1 APIs can be paginated simply by using the starting_after/ending_before field.
-        if ($obj instanceof \Stripe\V2\Collection) {
-            $obj->setLastRequest($path, $params);
-        }
 
         return $obj;
     }
@@ -439,7 +433,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * Returns a V2\Event instance using the provided JSON payload. Throws an
+     * Returns a V2\Events instance using the provided JSON payload. Throws an
      * Exception\UnexpectedValueException if the payload is not valid JSON, and
      * an Exception\SignatureVerificationException if the signature
      * verification fails for any reason.
@@ -451,8 +445,8 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time. Defaults to 300 seconds (5 min)
      *
-     * @throws Exception\UnexpectedValueException if the payload is not valid JSON,
      * @throws Exception\SignatureVerificationException if the verification fails
+     * @throws Exception\UnexpectedValueException if the payload is not valid JSON,
      *
      * @return \Stripe\ThinEvent
      */
@@ -461,14 +455,19 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $eventData = Util::utf8($payload);
         WebhookSignature::verifyHeader($payload, $sigHeader, $secret, $tolerance);
 
-        $eventData = \json_decode($eventData, true);
-        $opts = $this->defaultOpts->merge(['api_key' => $this->getApiKey()]);
-
-        return \Stripe\Util\Util::convertToStripeObject($eventData, $opts, 'v2');
+        try {
+            return Util::json_decode_thin_event_object(
+                $eventData,
+                '\Stripe\ThinEvent'
+            );
+        } catch (\ReflectionException $e) {
+            // Fail gracefully
+            return new \Stripe\ThinEvent();
+        }
     }
 
     /**
-     * Returns an Event instance using the provided JSON payload. Throws an
+     * Returns an Events instance using the provided JSON payload. Throws an
      * Exception\UnexpectedValueException if the payload is not valid JSON, and
      * an Exception\SignatureVerificationException if the signature
      * verification fails for any reason.

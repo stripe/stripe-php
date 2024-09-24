@@ -38,7 +38,7 @@ final class StripeClientTest extends \Stripe\TestCase
             false,
             [
                 'data' => [['id' => '1', 'object' => 'account']],
-                'next_page' => null,
+                'next_page_url' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -56,11 +56,11 @@ final class StripeClientTest extends \Stripe\TestCase
 
         $curlClientStub->method('executeRequestWithRetries')
             ->willReturnOnConsecutiveCalls([
-                '{"data": [{"id": "acct_123", "object": "account"}, {"id": "acct_456", "object": "account"}], "next_page": "page_2"}',
+                '{"data": [{"id": "acct_123", "object": "account"}, {"id": "acct_456", "object": "account"}], "next_page_url": "/v2/accounts?limit=2&page=page_2"}',
                 200,
                 [],
             ], [
-                '{"data": [{"id": "acct_789", "object": "account"}], "next_page": null}',
+                '{"data": [{"id": "acct_789", "object": "account"}], "next_page_url": null}',
                 200,
                 [],
             ])

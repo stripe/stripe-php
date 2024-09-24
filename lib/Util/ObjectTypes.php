@@ -157,10 +157,13 @@ class ObjectTypes
      */
     const v2Mapping = [
         // v2 object classes: The beginning of the section generated from our OpenAPI spec
-        \Stripe\ThinEvent::OBJECT_NAME => \Stripe\ThinEvent::class,
         \Stripe\V2\Account::OBJECT_NAME => \Stripe\V2\Account::class,
         \Stripe\V2\AccountLink::OBJECT_NAME => \Stripe\V2\AccountLink::class,
         \Stripe\V2\Adjustment::OBJECT_NAME => \Stripe\V2\Adjustment::class,
+        \Stripe\V2\Billing\MeterEventAdjustmentV2::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustmentV2::class,
+        \Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \Stripe\V2\Billing\MeterEventSession::class,
+        \Stripe\V2\Billing\MeterEventV2::OBJECT_NAME => \Stripe\V2\Billing\MeterEventV2::class,
+        \Stripe\V2\Event::OBJECT_NAME => \Stripe\V2\Event::class,
         \Stripe\V2\EventDestination::OBJECT_NAME => \Stripe\V2\EventDestination::class,
         \Stripe\V2\FinancialAccount::OBJECT_NAME => \Stripe\V2\FinancialAccount::class,
         \Stripe\V2\FinancialAccountBalance::OBJECT_NAME => \Stripe\V2\FinancialAccountBalance::class,

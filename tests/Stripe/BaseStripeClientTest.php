@@ -2,7 +2,6 @@
 
 namespace Stripe;
 
-use ReflectionClass;
 use Stripe\Util\ApiVersion;
 
 /**
@@ -707,9 +706,6 @@ final class BaseStripeClientTest extends \Stripe\TestCase
                 'stripe_context' => 'acct_123',
             ],
         ];
-        $rc = new ReflectionClass(\Stripe\ThinEvent::class);
-        $prop = $rc->getProperty('_opts');
-        $prop->setAccessible(true);
 
         $eventData = json_encode($jsonEvent);
         $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL, 'stripe_account' => 'acc_123']);
@@ -717,139 +713,11 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         $sigHeader = WebhookTest::generateHeader(['payload' => $eventData]);
         $event = $client->parseThinEvent($eventData, $sigHeader, WebhookTest::SECRET);
 
-        static::assertInstanceOf(\Stripe\V2\Event\FinancialAccountBalanceOpenedEvent::class, $event);
+        static::assertNotInstanceOf(\Stripe\StripeObject::class, $event);
         static::assertSame('evt_234', $event->id);
         static::assertSame('financial_account.balance.opened', $event->type);
-        static::assertSame('event', $event->object);
         static::assertSame('2022-02-15T00:27:45.330Z', $event->created);
         static::assertSame('fa_123', $event->related_object->id);
-
-        static::assertSame('sk_test_client', $prop->getValue($event)->apiKey);
-        static::assertSame('acc_123', $prop->getValue($event)->headers['Stripe-Account']);
-    }
-
-    public function testParseThinEventBadSigHeader()
-    {
-        $jsonEvent = [
-            'id' => 'evt_234',
-            'object' => 'event',
-            'type' => 'financial_account.balance.opened',
-            'created' => '2022-02-15T00:27:45.330Z',
-            'related_object' => [
-                'id' => 'fa_123',
-                'type' => 'financial_account',
-                'url' => '/v2/financial_accounts/fa_123',
-                'stripe_context' => 'acct_123',
-            ],
-        ];
-        $rc = new ReflectionClass(\Stripe\ThinEvent::class);
-        $prop = $rc->getProperty('_opts');
-        $prop->setAccessible(true);
-
-        $eventData = json_encode($jsonEvent);
-        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL, 'stripe_account' => 'acc_123']);
-
-        $this->expectException(\Stripe\Exception\SignatureVerificationException::class);
-
-        $client->parseThinEvent($eventData, 'invalid header', WebhookTest::SECRET);
-    }
-
-    public function testV2FetchDataFetchesAndDeserializesEventData()
-    {
-        $jsonEvent = [
-            'id' => 'evt_234',
-            'object' => 'event',
-            'type' => 'financial_account.balance.opened',
-            'created' => '2022-02-15T00:27:45.330Z',
-            'related_object' => [
-                'id' => 'fa_123',
-                'type' => 'financial_account',
-                'url' => '/v2/financial_accounts/fa_123',
-                'stripe_context' => 'acct_123',
-            ],
-            'data' => ['containing_compartment_id' => 'compid', 'id' => 'foo'],
-        ];
-
-        $eventData = json_encode($jsonEvent);
-        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
-
-        $sigHeader = WebhookTest::generateHeader(['payload' => $eventData]);
-        $event = $client->parseThinEvent($eventData, $sigHeader, WebhookTest::SECRET);
-        $this->stubRequest(
-            'GET',
-            '/v2/events/evt_234',
-            null,
-            null,
-            false,
-            $jsonEvent
-        );
-
-        static::assertInstanceOf(\Stripe\V2\Event\FinancialAccountBalanceOpenedEvent::class, $event);
-        $data = $event->fetchData();
-
-        static::assertInstanceOf(\Stripe\V2\EventData\FinancialAccountBalanceOpenedEventData::class, $data);
-        static::assertSame('foo', $data->id);
-        // @phpstan-ignore-next-line
-        static::assertSame('compid', $data->containing_compartment_id);
-    }
-
-    public function testV2FetchObjectFetchesDeserializesObject()
-    {
-        $jsonEvent = [
-            'id' => 'evt_234',
-            'object' => 'event',
-            'type' => 'financial_account.balance.opened',
-            'created' => '2022-02-15T00:27:45.330Z',
-            'related_object' => [
-                'id' => 'fa_123',
-                'type' => 'financial_account',
-                'url' => '/v2/financial_accounts/fa_123',
-                'stripe_context' => 'acct_123',
-            ],
-        ];
-        $eventData = json_encode($jsonEvent);
-        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
-
-        $sigHeader = WebhookTest::generateHeader(['payload' => $eventData]);
-        $event = $client->parseThinEvent($eventData, $sigHeader, WebhookTest::SECRET);
-
-        $response = json_decode(file_get_contents('tests/fixtures/financial_account.json'));
-
-        $this->stubRequest(
-            'get',
-            '/v2/financial_accounts/fa_123',
-            null,
-            null,
-            false,
-            $response
-        );
-
-        $rc = new ReflectionClass(\Stripe\V2\FinancialAccount::class);
-        $prop = $rc->getProperty('_opts');
-        $prop->setAccessible(true);
-
-        $financialAccount = $event->fetchObject();
-        static::assertInstanceOf(\Stripe\V2\FinancialAccount::class, $financialAccount);
-        static::assertSame('fa_123', $financialAccount->id);
-        static::assertSame('sk_test_client', $prop->getValue($event)->apiKey);
-    }
-
-    public function testV2FetchObjectNoRelatedObject()
-    {
-        $jsonEvent = [
-            'id' => 'evt_234',
-            'object' => 'event',
-            'type' => 'financial_account.balance.opened',
-            'created' => '2022-02-15T00:27:45.330Z',
-        ];
-        $eventData = json_encode($jsonEvent);
-        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
-
-        $sigHeader = WebhookTest::generateHeader(['payload' => $eventData]);
-        $event = $client->parseThinEvent($eventData, $sigHeader, WebhookTest::SECRET);
-
-        $financialAccount = $event->fetchObject();
-        static::assertNull($financialAccount);
     }
 
     public function testV2PreviewVersionInRawRequest()

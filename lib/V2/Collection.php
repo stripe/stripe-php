@@ -8,8 +8,8 @@ namespace Stripe\V2;
  * @template TStripeObject of \Stripe\StripeObject
  * @template-implements \IteratorAggregate<TStripeObject>
  *
- * @property null|string $next_page
- * @property null|string $previous_page
+ * @property null|string $next_page_url
+ * @property null|string $previous_page_url
  * @property TStripeObject[] $data
  */
 class Collection extends \Stripe\StripeObject implements \Countable, \IteratorAggregate
@@ -18,36 +18,12 @@ class Collection extends \Stripe\StripeObject implements \Countable, \IteratorAg
 
     use \Stripe\ApiOperations\Request;
 
-    /** @var array{string, mixed} */
-    protected $lastRequest = [];
-
     /**
      * @return string the base URL for the given class
      */
     public static function baseUrl()
     {
         return \Stripe\Stripe::$apiBase;
-    }
-
-    /**
-     * Returns last request details.
-     *
-     * @return array{string, mixed} an array containing last request url and params
-     */
-    public function getLastRequest()
-    {
-        return $this->lastRequest;
-    }
-
-    /**
-     * Sets last request details.
-     *
-     * @param string $url URL path of the last request
-     * @param array $params params used to make the last request
-     */
-    public function setLastRequest($url, $params)
-    {
-        $this->lastRequest = [$url, $params];
     }
 
     /**
@@ -106,23 +82,20 @@ class Collection extends \Stripe\StripeObject implements \Countable, \IteratorAg
     public function autoPagingIterator()
     {
         $page = $this->data;
-        $next_page = $this->next_page;
-        list($url, $params) = $this->getLastRequest();
+        $next_page_url = $this->next_page_url;
 
         while (true) {
             foreach ($page as $item) {
                 yield $item;
             }
-            if (null === $next_page) {
+            if (null === $next_page_url) {
                 break;
             }
 
-            $new_params = $params;
-            $new_params['page'] = $next_page;
             list($response, $opts) = $this->_request(
                 'get',
-                $url,
-                $new_params,
+                $next_page_url,
+                null,
                 null,
                 [],
                 'v2'
@@ -131,7 +104,7 @@ class Collection extends \Stripe\StripeObject implements \Countable, \IteratorAg
             /** @phpstan-ignore-next-line */
             $page = $obj->data;
             /** @phpstan-ignore-next-line */
-            $next_page = $obj->next_page;
+            $next_page_url = $obj->next_page_url;
         }
     }
 }

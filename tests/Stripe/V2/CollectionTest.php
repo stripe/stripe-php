@@ -23,9 +23,8 @@ final class CollectionTest extends \Stripe\TestCase
                 ['id' => 'pm_123', 'object' => 'pageablemodel'],
                 ['id' => 'pm_456', 'object' => 'pageablemodel'],
             ],
-            'next_page' => 'page_2',
+            'next_page_url' => '/v2/pageablemodel?page=page_2',
         ], ['api_key' => 'sk_test', 'stripe_context' => 'wksp_123'], 'v2');
-        $this->fixture->setLastRequest('/v2/pageablemodels', []);
     }
 
     public function testOffsetGetNumericIndex()
@@ -99,7 +98,6 @@ final class CollectionTest extends \Stripe\TestCase
             ],
             'next_page' => null,
         ]);
-        $lo->setLastRequest('/v2/pageablemodels', []);
 
         $seen = [];
         foreach ($lo->autoPagingIterator() as $item) {
@@ -115,14 +113,13 @@ final class CollectionTest extends \Stripe\TestCase
             'data' => [
                 ['id' => '1'],
             ],
-            'next_page' => 'page_2',
+            'next_page_url' => '/v2/pageablemodel?foo=bar&page=page_2',
         ]);
-        $lo->setLastRequest('/v2/pageablemodels', ['foo' => 'bar']);
 
         $this->stubRequest(
             'GET',
-            '/v2/pageablemodels',
-            ['foo' => 'bar', 'page' => 'page_2'],
+            '/v2/pageablemodel?foo=bar&page=page_2',
+            null,
             null,
             false,
             [
@@ -130,7 +127,7 @@ final class CollectionTest extends \Stripe\TestCase
                     ['id' => '2'],
                     ['id' => '3'],
                 ],
-                'next_page' => null,
+                'next_page_url' => null,
             ]
         );
 
@@ -146,15 +143,13 @@ final class CollectionTest extends \Stripe\TestCase
     {
         $this->stubRequest(
             'GET',
-            '/v2/pageablemodels',
-            [
-                'page' => 'page_2',
-            ],
+            '/v2/pageablemodel?page=page_2',
+            null,
             null,
             false,
             [
                 'data' => [['id' => 'pm_789']],
-                'next_page' => null,
+                'next_page_url' => null,
             ]
         );
 
@@ -175,11 +170,11 @@ final class CollectionTest extends \Stripe\TestCase
 
         $curlClientStub->method('executeRequestWithRetries')
             ->willReturnOnConsecutiveCalls([
-                '{"data": [{"id": "pm_777"}], "next_page": "page_3"}',
+                '{"data": [{"id": "pm_777"}], "next_page_url": "page_3"}',
                 200,
                 [],
             ], [
-                '{"data": [{"id": "pm_888"}], "next_page": null}',
+                '{"data": [{"id": "pm_888"}], "next_page_url": null}',
                 200,
                 [],
             ])

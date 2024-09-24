@@ -682,6 +682,31 @@ final class ApiRequestorTest extends \Stripe\TestCase
         Charge::create([], ['stripe_account' => 'acct_123']);
     }
 
+    public function testHeaderNullStripeAccountRequestOptionsDoesntSendHeader()
+    {
+        $this->stubRequest(
+            'POST',
+            '/v1/charges',
+            [],
+            function ($array) {
+                foreach ($array as $header) {
+                    // polyfilled str_starts_with from https://gist.github.com/juliyvchirkov/8f325f9ac534fe736b504b93a1a8b2ce
+                    if (0 === strpos(\strtolower($header), 'stripe-account')) {
+                        return false;
+                    }
+                }
+
+                return true;
+            },
+            false,
+            [
+                'id' => 'ch_123',
+                'object' => 'charge',
+            ]
+        );
+        Charge::create([], ['stripe_account' => null]);
+    }
+
     public function testHeaderStripeContextRequestOptions()
     {
         $this->stubRequest(

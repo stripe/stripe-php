@@ -129,15 +129,21 @@ class RequestOptions
                 unset($options['idempotency_key']);
             }
             if (\array_key_exists('stripe_account', $options)) {
-                $headers['Stripe-Account'] = $options['stripe_account'];
+                if (null !== $options['stripe_account']) {
+                    $headers['Stripe-Account'] = $options['stripe_account'];
+                }
                 unset($options['stripe_account']);
             }
             if (\array_key_exists('stripe_context', $options)) {
-                $headers['Stripe-Context'] = $options['stripe_context'];
+                if (null !== $options['stripe_context']) {
+                    $headers['Stripe-Context'] = $options['stripe_context'];
+                }
                 unset($options['stripe_context']);
             }
             if (\array_key_exists('stripe_version', $options)) {
-                $headers['Stripe-Version'] = $options['stripe_version'];
+                if (null !== $options['stripe_version']) {
+                    $headers['Stripe-Version'] = $options['stripe_version'];
+                }
                 unset($options['stripe_version']);
             }
             if (\array_key_exists('api_base', $options)) {

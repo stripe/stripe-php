@@ -266,6 +266,16 @@ class ApiRequestor
             case 'idempotency_error':
                 return Exception\IdempotencyException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code);
             // The beginning of the section generated from our OpenAPI spec
+            case 'temporary_session_expired':
+                return Exception\TemporarySessionExpiredException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
             case 'financial_account_not_open':
                 return Exception\FinancialAccountNotOpenException::factory(
                     $msg,
