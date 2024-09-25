@@ -176,10 +176,6 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     {
         $defaultRequestOpts = $this->defaultOpts;
         $apiMode = \Stripe\Util\Util::getApiMode($path);
-        // TODO: Remove this when we GA v2.
-        if (!(\is_array($opts) && \array_key_exists('stripe_version', $opts)) && 'v2' === $apiMode) {
-            $defaultRequestOpts = $defaultRequestOpts->merge(['stripe_version' => \Stripe\Util\ApiVersion::PREVIEW], true);
-        }
 
         $opts = $defaultRequestOpts->merge($opts, true);
 
@@ -222,9 +218,6 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         }
 
         $defaultRawRequestOpts = $this->defaultOpts;
-        if (!(\is_array($opts) && \array_key_exists('stripe_version', $opts)) && 'v2' === $apiMode) {
-            $defaultRawRequestOpts = $defaultRawRequestOpts->merge(['stripe_version' => \Stripe\Util\ApiVersion::PREVIEW], true);
-        }
 
         $opts = $defaultRawRequestOpts->merge($opts, true);
 

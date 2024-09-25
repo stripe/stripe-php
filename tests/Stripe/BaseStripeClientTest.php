@@ -423,7 +423,6 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->method('executeRequestWithRetries')
             ->with(static::callback(function ($opts) {
                 $this->assertSame(1, $opts[\CURLOPT_HTTPGET]);
-                $this->assertContains('Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW, $opts[\CURLOPT_HTTPHEADER]);
 
                 // The library sends Content-Type even with no body, so assert this
                 // But it would be more correct to not send Content-Type
@@ -720,30 +719,6 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         static::assertSame('fa_123', $event->related_object->id);
     }
 
-    public function testV2PreviewVersionInRawRequest()
-    {
-        $this->curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{"object": "account"}', 200, []])
-        ;
-
-        $this->curlClientStub->expects(static::once())
-            ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
-                $this->assertContains('Stripe-Version: ' . ApiVersion::PREVIEW, $opts[\CURLOPT_HTTPHEADER]);
-
-                return true;
-            }), MOCK_URL . '/v2/accounts/acct_123')
-        ;
-
-        ApiRequestor::setHttpClient($this->curlClientStub);
-        $client = new BaseStripeClient([
-            'api_key' => 'sk_test_client',
-            'api_base' => MOCK_URL,
-        ]);
-        $params = [];
-        $client->rawRequest('post', '/v2/accounts/acct_123', $params, []);
-    }
-
     public function testV2OverridesPreviewVersionIfPassedInRawRequestOptions()
     {
         $this->curlClientStub->method('executeRequestWithRetries')
@@ -804,7 +779,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         $this->curlClientStub
             ->method('executeRequestWithRetries')
             ->withConsecutive([static::callback(function ($opts) {
-                $this->assertContains('Stripe-Version: ' . \Stripe\Util\ApiVersion::PREVIEW, $opts[\CURLOPT_HTTPHEADER]);
+                $this->assertContains('Stripe-Version: ' . ApiVersion::CURRENT, $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
             }), MOCK_URL . '/v2/accounts/acct_123'], [
