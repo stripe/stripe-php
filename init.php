@@ -135,7 +135,6 @@ require __DIR__ . '/lib/EventData/V1BillingMeterErrorReportTriggeredEventData.ph
 require __DIR__ . '/lib/EventData/V1BillingMeterNoMeterFoundEventData.php';
 require __DIR__ . '/lib/Events/V1BillingMeterErrorReportTriggeredEvent.php';
 require __DIR__ . '/lib/Events/V1BillingMeterNoMeterFoundEvent.php';
-require __DIR__ . '/lib/Events/V2CoreEventDestinationPingEvent.php';
 require __DIR__ . '/lib/Exception/TemporarySessionExpiredException.php';
 require __DIR__ . '/lib/ExchangeRate.php';
 require __DIR__ . '/lib/File.php';
@@ -375,7 +374,6 @@ require __DIR__ . '/lib/UsageRecordSummary.php';
 require __DIR__ . '/lib/V2/Billing/MeterEventAdjustmentV2.php';
 require __DIR__ . '/lib/V2/Billing/MeterEventSession.php';
 require __DIR__ . '/lib/V2/Billing/MeterEventV2.php';
-require __DIR__ . '/lib/V2/EventDestination.php';
 require __DIR__ . '/lib/WebhookEndpoint.php';
 
 // The end of the section generated from our OpenAPI spec
