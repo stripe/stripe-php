@@ -129,7 +129,6 @@ class ApiRequestor
      */
     public function request($method, $url, $params = null, $headers = null, $apiMode = 'v1', $usage = [])
     {
-        $params = $params ?: [];
         $headers = $headers ?: [];
         list($rbody, $rcode, $rheaders, $myApiKey) =
             $this->_requestRaw($method, $url, $params, $headers, $apiMode, $usage);
@@ -224,7 +223,7 @@ class ApiRequestor
                     return Exception\IdempotencyException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code);
                 }
 
-            // no break
+                // no break
             case 404:
                 return Exception\InvalidRequestException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code, $param);
 
@@ -265,7 +264,7 @@ class ApiRequestor
         switch ($type) {
             case 'idempotency_error':
                 return Exception\IdempotencyException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code);
-            // The beginning of the section generated from our OpenAPI spec
+                // The beginning of the section generated from our OpenAPI spec
             case 'temporary_session_expired':
                 return Exception\TemporarySessionExpiredException::factory(
                     $msg,
@@ -276,7 +275,7 @@ class ApiRequestor
                     $code
                 );
 
-            // The end of the section generated from our OpenAPI spec
+                // The end of the section generated from our OpenAPI spec
             default:
                 return self::_specificV1APIError($rbody, $rcode, $rheaders, $resp, $errorData);
         }
@@ -469,12 +468,14 @@ class ApiRequestor
         }
 
         $hasFile = false;
-        foreach ($params as $k => $v) {
-            if (\is_resource($v)) {
-                $hasFile = true;
-                $params[$k] = self::_processResourceParam($v);
-            } elseif ($v instanceof \CURLFile) {
-                $hasFile = true;
+        if (null !== $params) {
+            foreach ($params as $k => $v) {
+                if (\is_resource($v)) {
+                    $hasFile = true;
+                    $params[$k] = self::_processResourceParam($v);
+                } elseif ($v instanceof \CURLFile) {
+                    $hasFile = true;
+                }
             }
         }
 

@@ -46,7 +46,7 @@ abstract class Util
     {
         $types = 'v1' === $apiMode ? \Stripe\Util\ObjectTypes::mapping
             : \Stripe\Util\ObjectTypes::v2Mapping;
-        if (self::isList($resp)) {
+        if ($resp && self::isList($resp)) {
             $mapped = [];
             foreach ($resp as $i) {
                 $mapped[] = self::convertToStripeObject($i, $opts, $apiMode);
