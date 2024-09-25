@@ -3,9 +3,7 @@
 // require 'vendor/autoload.php'; // Make sure to include Composer's autoload file
 require '../init.php';
 
-use Stripe\StripeClient;
-
-class NewExample
+class new_example
 {
     private $apiKey;
 
@@ -16,13 +14,13 @@ class NewExample
 
     public function doSomethingGreat()
     {
-        print("Hello World\n");
+        echo "Hello World\n";
         // $client = new \Stripe\StripeClient($this->apiKey);
     }
 }
 
 // Usage
-$apiKey = "{{API_KEY}}";
+$apiKey = '{{API_KEY}}';
 
 $example = new NewExample($apiKey);
 $example->doSomethingGreat();

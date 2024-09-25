@@ -2,9 +2,7 @@
 
 require 'vendor/autoload.php'; // Make sure to include Composer's autoload file
 
-use Stripe\StripeClient;
-
-class MeterEventManager
+class meter_event_stream
 {
     private $apiKey;
     private $meterEventSession;
@@ -19,8 +17,8 @@ class MeterEventManager
     {
         // Check if session is null or expired
         if (
-            $this->meterEventSession === null ||
-            $this->meterEventSession->expires_at <= time()
+            null === $this->meterEventSession
+            || $this->meterEventSession->expires_at <= time()
         ) {
             // Create a new meter event session in case the existing session expired
             $client = new \Stripe\StripeClient($this->apiKey);
@@ -42,8 +40,8 @@ class MeterEventManager
 }
 
 // Usage
-$apiKey = "{{API_KEY}}";
-$customerId = "{{CUSTOMER_ID}}";
+$apiKey = '{{API_KEY}}';
+$customerId = '{{CUSTOMER_ID}}';
 
 $manager = new MeterEventManager($apiKey);
 $manager->sendMeterEvent([
