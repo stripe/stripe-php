@@ -3591,7 +3591,7 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
             'tmr_xxxxxxxxxxxxx',
             [
                 'setup_intent' => 'seti_xxxxxxxxxxxxx',
-                'customer_consent_collected' => true,
+                'allow_redisplay' => 'always',
             ]
         );
         static::assertInstanceOf(\Stripe\Terminal\Reader::class, $result);
