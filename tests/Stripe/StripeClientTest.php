@@ -28,25 +28,6 @@ final class StripeClientTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Service\Issuing\CardService::class, $this->client->issuing->cards);
     }
 
-    public function testV2FinancialAccountsServiceNavigation()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/financial_accounts/fa_123/balances',
-            null,
-            null,
-            false,
-            [
-                'data' => [['id' => '1', 'object' => 'account']],
-                'next_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $fas = $this->client->v2->financialAccounts->balances->all('fa_123');
-        static::assertInstanceOf(\Stripe\V2\Collection::class, $fas);
-    }
-
     public function testListMethodReturnsPageableCollection()
     {
         $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
@@ -56,11 +37,11 @@ final class StripeClientTest extends \Stripe\TestCase
 
         $curlClientStub->method('executeRequestWithRetries')
             ->willReturnOnConsecutiveCalls([
-                '{"data": [{"id": "acct_123", "object": "account"}, {"id": "acct_456", "object": "account"}], "next_page_url": "/v2/accounts?limit=2&page=page_2"}',
+                '{"data": [{"id": "evnt_123", "object": "event", "type": "v1.billing.meter.no_meter_found"}, {"id": "evnt_456", "object": "event", "type": "v1.billing.meter.no_meter_found"}], "next_page_url": "/v2/core/events?limit=2&page=page_2"}',
                 200,
                 [],
             ], [
-                '{"data": [{"id": "acct_789", "object": "account"}], "next_page_url": null}',
+                '{"data": [{"id": "evnt_789", "object": "event", "type": "v1.billing.meter.no_meter_found"}], "next_page_url": null}',
                 200,
                 [],
             ])
@@ -76,8 +57,8 @@ final class StripeClientTest extends \Stripe\TestCase
         $curlClientStub->expects(static::exactly(2))
             ->method('executeRequestWithRetries')
             ->withConsecutive(
-                [$cb, MOCK_URL . '/v2/accounts?limit=2'],
-                [$cb, MOCK_URL . '/v2/accounts?limit=2&page=page_2']
+                [$cb, MOCK_URL . '/v2/core/events?limit=2'],
+                [$cb, MOCK_URL . '/v2/core/events?limit=2&page=page_2']
             )
         ;
 
@@ -88,15 +69,15 @@ final class StripeClientTest extends \Stripe\TestCase
             'api_base' => MOCK_URL,
         ]);
 
-        $accounts = $client->v2->accounts->all(['limit' => 2]);
-        static::assertInstanceOf(\Stripe\V2\Collection::class, $accounts);
-        static::assertInstanceOf(\Stripe\V2\Account::class, $accounts->data[0]);
+        $events = $client->v2->core->events->all(['limit' => 2]);
+        static::assertInstanceOf(\Stripe\V2\Collection::class, $events);
+        static::assertInstanceOf(\Stripe\V2\Event::class, $events->data[0]);
 
         $seen = [];
-        foreach ($accounts->autoPagingIterator() as $account) {
-            $seen[] = $account['id'];
+        foreach ($events->autoPagingIterator() as $event) {
+            $seen[] = $event['id'];
         }
 
-        static::assertSame(['acct_123', 'acct_456', 'acct_789'], $seen);
+        static::assertSame(['evnt_123', 'evnt_456', 'evnt_789'], $seen);
     }
 }

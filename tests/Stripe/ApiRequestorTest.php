@@ -2,6 +2,7 @@
 
 namespace Stripe;
 
+use Stripe\Exception\TemporarySessionExpiredException;
 use Stripe\HttpClient\CurlClient;
 
 /**
@@ -511,16 +512,16 @@ final class ApiRequestorTest extends \Stripe\TestCase
     public function testRaisesV2Error()
     {
         $this->stubRequest(
-            'POST',
-            '/v2/outbound_transfers/obt_123/cancel',
+            'GET',
+            '/v2/core/events/evt_123',
             [],
             null,
             false,
             [
                 'error' => [
-                    'type' => 'already_canceled',
-                    'code' => 'canceled',
-                    'message' => 'already canceled',
+                    'type' => 'temporary_session_expired',
+                    'code' => 'session_bad',
+                    'message' => 'you messed up',
                 ],
             ],
             400,
@@ -529,47 +530,13 @@ final class ApiRequestorTest extends \Stripe\TestCase
 
         try {
             $client = new StripeClient('sk_test_123');
-            $client->v2->outboundTransfers->cancel('obt_123');
+            $client->v2->core->events->retrieve('evt_123');
             static::fail('Did not raise error');
-        } catch (Exception\AlreadyCanceledException $e) {
+        } catch (TemporarySessionExpiredException $e) {
             static::assertSame(400, $e->getHttpStatus());
-            static::assertSame('already_canceled', $e->getError()->type);
-            static::assertSame('canceled', $e->getStripeCode());
-            static::assertSame('already canceled', $e->getMessage());
-        } catch (\Exception $e) {
-            static::fail('Unexpected exception: ' . \get_class($e));
-        }
-    }
-
-    public function testRaisesV2ErrorWithCustomFields()
-    {
-        $this->stubRequest(
-            'POST',
-            '/v2/payment_methods/us_bank_accounts',
-            ['account_number' => '123', 'routing_number' => '456'],
-            null,
-            false,
-            [
-                'error' => [
-                    'type' => 'invalid_payment_method',
-                    'code' => 'invalid_us_bank_account',
-                    'message' => 'bank account is invalid',
-                    'invalid_param' => 'routing_number',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $client = new StripeClient('sk_test_123');
-            $client->v2->paymentMethods->usBankAccounts->create(['account_number' => '123', 'routing_number' => '456']);
-            static::fail('Did not raise error');
-        } catch (Exception\InvalidPaymentMethodException $e) {
-            static::assertSame(400, $e->getHttpStatus());
-            static::assertSame('invalid_payment_method', $e->getError()->type);
-            static::assertSame('invalid_us_bank_account', $e->getStripeCode());
-            static::assertSame('routing_number', $e->getInvalidParam());
+            static::assertSame('temporary_session_expired', $e->getError()->type);
+            static::assertSame('session_bad', $e->getStripeCode());
+            static::assertSame('you messed up', $e->getMessage());
         } catch (\Exception $e) {
             static::fail('Unexpected exception: ' . \get_class($e));
         }
@@ -578,8 +545,8 @@ final class ApiRequestorTest extends \Stripe\TestCase
     public function testV2CallsFallBackToV1Errors()
     {
         $this->stubRequest(
-            'POST',
-            '/v2/outbound_transfers/obt_123/cancel',
+            'GET',
+            '/v2/core/events/evt_123',
             [],
             null,
             false,
@@ -596,7 +563,7 @@ final class ApiRequestorTest extends \Stripe\TestCase
 
         try {
             $client = new StripeClient('sk_test_123');
-            $client->v2->outboundTransfers->cancel('obt_123');
+            $client->v2->core->events->retrieve('evt_123');
             static::fail('Did not raise error');
         } catch (Exception\InvalidRequestException $e) {
             static::assertSame(400, $e->getHttpStatus());
@@ -711,19 +678,19 @@ final class ApiRequestorTest extends \Stripe\TestCase
     {
         $this->stubRequest(
             'POST',
-            '/v2/accounts',
+            '/v2/billing/meter_event_session',
             [],
             [
                 'Stripe-Context: wksp_123',
             ],
             false,
-            ['object' => 'account'],
+            ['object' => 'billing.meter_event_session'],
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
 
         $client = new StripeClient('sk_test_123');
-        $client->v2->accounts->create([], ['stripe_context' => 'wksp_123']);
+        $client->v2->billing->meterEventSession->create([], ['stripe_context' => 'wksp_123']);
     }
 
     public function testIsDisabled()

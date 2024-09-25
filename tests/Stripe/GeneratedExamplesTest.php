@@ -577,20 +577,6 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Checkout\Session::class, $result);
     }
 
-    public function testCoreEventsGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/core/events/ll_123',
-            [],
-            [],
-            false,
-            ['object' => \Stripe\V2\Event::OBJECT_NAME]
-        );
-        $result = $this->client->v2->core->events->retrieve('ll_123', []);
-        static::assertInstanceOf(\Stripe\V2\Event::class, $result);
-    }
-
     public function testCountrySpecsGet()
     {
         $this->expectsRequest('get', '/v1/country_specs');

@@ -61,7 +61,11 @@ abstract class Util
                 $class = $types[$resp['object']];
                 if ('v2' === $apiMode && 'event' === $resp['object']) {
                     $eventTypes = \Stripe\Util\EventTypes::thinEventMapping;
-                    $class = $eventTypes[$resp['type']];
+                    if (\array_key_exists('type', $resp) && \array_key_exists($resp['type'], $eventTypes)) {
+                        $class = $eventTypes[$resp['type']];
+                    } else {
+                        $class = \Stripe\StripeObject::class;
+                    }
                 }
             } elseif (\array_key_exists('data', $resp) && \array_key_exists('next_page_url', $resp)) {
                 // TODO: this is a horrible hack. The API needs

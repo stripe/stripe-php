@@ -416,7 +416,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     public function testV2GetRequest()
     {
         $this->curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{"object": "account"}', 200, []])
+            ->willReturn(['{"object": "billing.meter_event_session"}', 200, []])
         ;
 
         $this->curlClientStub->expects(static::once())
@@ -429,7 +429,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
                 $this->assertContains('Content-Type: application/json', $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
-            }), MOCK_URL . '/v2/accounts/acct_123')
+            }), MOCK_URL . '/v2/billing/meter_event_session')
         ;
 
         ApiRequestor::setHttpClient($this->curlClientStub);
@@ -438,15 +438,15 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'stripe_version' => '2222-22-22.preview-v2',
             'api_base' => MOCK_URL,
         ]);
-        $account = $client->request('get', '/v2/accounts/acct_123', [], []);
-        static::assertNotNull($account);
-        static::assertInstanceOf(\Stripe\V2\Account::class, $account);
+        $meterEventSession = $client->request('get', '/v2/billing/meter_event_session', [], []);
+        static::assertNotNull($meterEventSession);
+        static::assertInstanceOf(\Stripe\V2\Billing\MeterEventSession::class, $meterEventSession);
     }
 
     public function testV2PostRequest()
     {
         $this->curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{"object": "account"}', 200, []])
+            ->willReturn(['{"object": "billing.meter_event_session"}', 200, []])
         ;
 
         $this->curlClientStub->expects(static::once())
@@ -457,7 +457,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
                 $this->assertContains('Content-Type: application/json', $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
-            }), MOCK_URL . '/v2/accounts')
+            }), MOCK_URL . '/v2/billing/meter_event_session')
         ;
 
         ApiRequestor::setHttpClient($this->curlClientStub);
@@ -467,9 +467,9 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_base' => MOCK_URL,
         ]);
 
-        $account = $client->request('post', '/v2/accounts', ['foo' => 'bar'], []);
-        static::assertNotNull($account);
-        static::assertInstanceOf(\Stripe\V2\Account::class, $account);
+        $meterEventSession = $client->request('post', '/v2/billing/meter_event_session', ['foo' => 'bar'], []);
+        static::assertNotNull($meterEventSession);
+        static::assertInstanceOf(\Stripe\V2\Billing\MeterEventSession::class, $meterEventSession);
     }
 
     public function testV2RequestWithClientStripeContext()
@@ -748,7 +748,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     public function testV2OverridesPreviewVersionIfPassedInRequestOptions()
     {
         $this->curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{"object": "account"}', 200, []])
+            ->willReturn(['{"object": "billing.meter_event_session"}', 200, []])
         ;
 
         $this->curlClientStub->expects(static::once())
@@ -757,7 +757,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
                 $this->assertContains('Stripe-Version: 2222-22-22.preview-v2', $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
-            }), MOCK_URL . '/v2/accounts/acct_123')
+            }), MOCK_URL . '/v2/billing/meter_event_session/bmes_123')
         ;
 
         ApiRequestor::setHttpClient($this->curlClientStub);
@@ -765,15 +765,15 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_key' => 'sk_test_client',
             'api_base' => MOCK_URL,
         ]);
-        $account = $client->request('get', '/v2/accounts/acct_123', [], ['stripe_version' => '2222-22-22.preview-v2']);
-        static::assertNotNull($account);
-        static::assertInstanceOf(\Stripe\V2\Account::class, $account);
+        $meterEventSession = $client->request('get', '/v2/billing/meter_event_session/bmes_123', [], ['stripe_version' => '2222-22-22.preview-v2']);
+        static::assertNotNull($meterEventSession);
+        static::assertInstanceOf(\Stripe\V2\Billing\MeterEventSession::class, $meterEventSession);
     }
 
     public function testV1AndV2Request()
     {
         $this->curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{"object": "account"}', 200, []])
+            ->willReturnOnConsecutiveCalls(['{"object": "billing.meter_event_session"}', 200, []], ['{"object": "billing.meter_event"}', 200, []])
         ;
 
         $this->curlClientStub
@@ -782,12 +782,12 @@ final class BaseStripeClientTest extends \Stripe\TestCase
                 $this->assertContains('Stripe-Version: ' . ApiVersion::CURRENT, $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
-            }), MOCK_URL . '/v2/accounts/acct_123'], [
+            }), MOCK_URL . '/v2/billing/meter_event_session/bmes_123'], [
                 static::callback(function ($opts) {
                     $this->assertContains('Stripe-Version: ' . ApiVersion::CURRENT, $opts[\CURLOPT_HTTPHEADER]);
 
                     return true;
-                }), MOCK_URL . '/v1/accounts/acct_123',
+                }), MOCK_URL . '/v1/billing/meter_event/bmes_123',
             ])
         ;
 
@@ -796,12 +796,12 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_key' => 'sk_test_client',
             'api_base' => MOCK_URL,
         ]);
-        $account = $client->request('get', '/v2/accounts/acct_123', [], []);
-        static::assertNotNull($account);
-        static::assertInstanceOf(\Stripe\V2\Account::class, $account);
+        $meterEventSession = $client->request('get', '/v2/billing/meter_event_session/bmes_123', [], []);
+        static::assertNotNull($meterEventSession);
+        static::assertInstanceOf(\Stripe\V2\Billing\MeterEventSession::class, $meterEventSession);
 
-        $account = $client->request('get', '/v1/accounts/acct_123', [], []);
-        static::assertNotNull($account);
-        static::assertInstanceOf(\Stripe\Account::class, $account);
+        $meterEvent = $client->request('get', '/v1/billing/meter_event/bmes_123', [], []);
+        static::assertNotNull($meterEvent);
+        static::assertInstanceOf(\Stripe\Billing\MeterEvent::class, $meterEvent);
     }
 }
