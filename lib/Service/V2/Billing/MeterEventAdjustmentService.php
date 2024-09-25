@@ -18,7 +18,7 @@ class MeterEventAdjustmentService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\V2\Billing\MeterEventAdjustmentV2
+     * @return \Stripe\V2\Billing\MeterEventAdjustment
      */
     public function create($params = null, $opts = null)
     {

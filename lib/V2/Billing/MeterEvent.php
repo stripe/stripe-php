@@ -15,7 +15,7 @@ namespace Stripe\V2\Billing;
  * @property \Stripe\StripeObject $payload The payload of the event. This must contain the fields corresponding to a meter’s <code>customer_mapping.event_payload_key</code> (default is <code>stripe_customer_id</code>) and <code>value_settings.event_payload_key</code> (default is <code>value</code>). Read more about the payload.
  * @property int $timestamp The time of the event. Must be within the past 35 calendar days or up to 5 minutes in the future. Defaults to current timestamp if not specified.
  */
-class MeterEventV2 extends \Stripe\ApiResource
+class MeterEvent extends \Stripe\ApiResource
 {
-    const OBJECT_NAME = 'v2.billing.meter_event';
+    const OBJECT_NAME = 'billing.meter_event';
 }

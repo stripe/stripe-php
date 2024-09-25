@@ -157,9 +157,9 @@ class ObjectTypes
      */
     const v2Mapping = [
         // v2 object classes: The beginning of the section generated from our OpenAPI spec
-        \Stripe\V2\Billing\MeterEventAdjustmentV2::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustmentV2::class,
+        \Stripe\V2\Billing\MeterEvent::OBJECT_NAME => \Stripe\V2\Billing\MeterEvent::class,
+        \Stripe\V2\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustment::class,
         \Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \Stripe\V2\Billing\MeterEventSession::class,
-        \Stripe\V2\Billing\MeterEventV2::OBJECT_NAME => \Stripe\V2\Billing\MeterEventV2::class,
         \Stripe\V2\Event::OBJECT_NAME => \Stripe\V2\Event::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
