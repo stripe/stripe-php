@@ -3581,22 +3581,6 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Terminal\Reader::class, $result);
     }
 
-    public function testTerminalReadersProcessSetupIntentPost()
-    {
-        $this->expectsRequest(
-            'post',
-            '/v1/terminal/readers/tmr_xxxxxxxxxxxxx/process_setup_intent'
-        );
-        $result = $this->client->terminal->readers->processSetupIntent(
-            'tmr_xxxxxxxxxxxxx',
-            [
-                'setup_intent' => 'seti_xxxxxxxxxxxxx',
-                'allow_redisplay' => 'always',
-            ]
-        );
-        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $result);
-    }
-
     public function testTestHelpersCustomersFundCashBalancePost()
     {
         $this->expectsRequest(
