@@ -160,6 +160,10 @@ class ObjectTypes
      * @var array Mapping from v2 object types to resource classes
      */
     const v2Mapping = [
+        // V1 Class needed for fetching the right related object
+        // TODO: Make a more standardized fix in codegen for all languages
+        \Stripe\Billing\Meter::OBJECT_NAME => \Stripe\Billing\Meter::class,
+
         // v2 object classes: The beginning of the section generated from our OpenAPI spec
         \Stripe\V2\Billing\MeterEvent::OBJECT_NAME => \Stripe\V2\Billing\MeterEvent::class,
         \Stripe\V2\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustment::class,
