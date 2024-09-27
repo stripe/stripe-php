@@ -148,6 +148,7 @@ final class RequestOptionsTest extends \Stripe\TestCase
         $opts = RequestOptions::parse(
             [
                 'stripe_account' => 'foo',
+                'stripe_context' => 'foo',
                 'idempotency_key' => 'foo',
             ]
         );

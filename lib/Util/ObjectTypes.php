@@ -155,4 +155,16 @@ class ObjectTypes
             \Stripe\WebhookEndpoint::OBJECT_NAME => \Stripe\WebhookEndpoint::class,
             // object classes: The end of the section generated from our OpenAPI spec
         ];
+
+    /**
+     * @var array Mapping from v2 object types to resource classes
+     */
+    const v2Mapping = [
+        // v2 object classes: The beginning of the section generated from our OpenAPI spec
+        \Stripe\V2\Billing\MeterEvent::OBJECT_NAME => \Stripe\V2\Billing\MeterEvent::class,
+        \Stripe\V2\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustment::class,
+        \Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \Stripe\V2\Billing\MeterEventSession::class,
+        \Stripe\V2\Event::OBJECT_NAME => \Stripe\V2\Event::class,
+        // v2 object classes: The end of the section generated from our OpenAPI spec
+    ];
 }

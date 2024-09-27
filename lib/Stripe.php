@@ -43,12 +43,18 @@ class Stripe
      */
     public static $logger = null;
 
+    // this is set higher (to `2`) in all other SDKs, but PHP gets a special exception
+    // because PHP scripts are run as short one-offs rather than long-lived servers.
+    // We didn't want to risk messing up integrations by setting a higher default
+    // since that would have worse side effects than other more long-running languages.
     /** @var int Maximum number of request retries */
     public static $maxNetworkRetries = 0;
 
     /** @var bool Whether client telemetry is enabled. Defaults to true. */
     public static $enableTelemetry = true;
 
+    // this is 5s in other languages
+    // see note on `maxNetworkRetries` for more info
     /** @var float Maximum delay between retries, in seconds */
     private static $maxNetworkRetryDelay = 2.0;
 
