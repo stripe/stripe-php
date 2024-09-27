@@ -209,6 +209,13 @@ class CurlClient implements ClientInterface, StreamingClientInterface
                 return [$absUrl, $params];
             }
             if ('v2' === $apiMode) {
+                if (\is_array($params) && 0 === \count($params)) {
+                    // Send a request with empty body if we have no params set
+                    // Setting the second parameter as null prevents the CURLOPT_POSTFIELDS
+                    // from being set with the '[]', which is result of `json_encode([]).
+                    return [$absUrl, null];
+                }
+
                 return [$absUrl, \json_encode($params)];
             }
 
