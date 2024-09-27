@@ -24,6 +24,7 @@ $app->post('/webhook', function ($request, $response) use ($client, $webhook_sec
             // Record the failures and alert your team
             // Add your logic here
         }
+
         return $response->withStatus(200);
     } catch (\Exception $e) {
         return $response->withStatus(400)->withJson(['error' => $e->getMessage()]);
