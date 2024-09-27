@@ -37,11 +37,11 @@ final class StripeClientTest extends \Stripe\TestCase
 
         $curlClientStub->method('executeRequestWithRetries')
             ->willReturnOnConsecutiveCalls([
-                '{"data": [{"id": "evnt_123", "object": "event", "type": "v1.billing.meter.no_meter_found"}, {"id": "evnt_456", "object": "event", "type": "v1.billing.meter.no_meter_found"}], "next_page_url": "/v2/core/events?limit=2&page=page_2"}',
+                '{"data": [{"id": "evnt_123", "object": "v2.core.event", "type": "v1.billing.meter.no_meter_found"}, {"id": "evnt_456", "object": "v2.core.event", "type": "v1.billing.meter.no_meter_found"}], "next_page_url": "/v2/core/events?limit=2&page=page_2"}',
                 200,
                 [],
             ], [
-                '{"data": [{"id": "evnt_789", "object": "event", "type": "v1.billing.meter.no_meter_found"}], "next_page_url": null}',
+                '{"data": [{"id": "evnt_789", "object": "v2.core.event", "type": "v1.billing.meter.no_meter_found"}], "next_page_url": null}',
                 200,
                 [],
             ])
@@ -71,7 +71,7 @@ final class StripeClientTest extends \Stripe\TestCase
 
         $events = $client->v2->core->events->all(['limit' => 2]);
         static::assertInstanceOf(\Stripe\V2\Collection::class, $events);
-        static::assertInstanceOf(\Stripe\V2\Event::class, $events->data[0]);
+        static::assertInstanceOf(\Stripe\Events\V1BillingMeterNoMeterFoundEvent::class, $events->data[0]);
 
         $seen = [];
         foreach ($events->autoPagingIterator() as $event) {
