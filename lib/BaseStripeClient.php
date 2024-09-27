@@ -184,6 +184,11 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         list($response, $opts->apiKey) = $requestor->request($method, $path, $params, $opts->headers, $apiMode, ['stripe_client']);
         $opts->discardNonPersistentHeaders();
         $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts, $apiMode);
+        if (\is_array($obj)) {
+            // Edge case for v2 endpoints that return empty/void response
+            // Example: client->v2->billing->meterEventStream->create
+            $obj = new \Stripe\StripeObject();
+        }
         $obj->setLastResponse($response);
 
         return $obj;

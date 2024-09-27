@@ -833,4 +833,29 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         static::assertNotNull($meterEvent);
         static::assertInstanceOf(\Stripe\Billing\MeterEvent::class, $meterEvent);
     }
+
+    public function testV2RequestWithEmptyResponse()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                return true;
+            }), MOCK_URL . '/v2/billing/meter_event_stream')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_version' => '2222-22-22.preview-v2',
+            'api_base' => MOCK_URL,
+        ]);
+
+        $meterEventStream = $client->request('post', '/v2/billing/meter_event_stream', [], []);
+        static::assertNotNull($meterEventStream);
+        static::assertInstanceOf(\Stripe\StripeObject::class, $meterEventStream);
+    }
 }
