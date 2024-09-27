@@ -472,6 +472,35 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\V2\Billing\MeterEventSession::class, $meterEventSession);
     }
 
+    public function testV2PostRequestWithEmptyParams()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "billing.meter_event_session"}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(static::once())
+            ->method('executeRequestWithRetries')
+            ->with(static::callback(function ($opts) {
+                $this->assertSame(1, $opts[\CURLOPT_POST]);
+                $this->assertArrayNotHasKey(\CURLOPT_POSTFIELDS, $opts);
+                $this->assertContains('Content-Type: application/json', $opts[\CURLOPT_HTTPHEADER]);
+
+                return true;
+            }), MOCK_URL . '/v2/billing/meter_event_session')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_version' => '2222-22-22.preview-v2',
+            'api_base' => MOCK_URL,
+        ]);
+
+        $meterEventSession = $client->request('post', '/v2/billing/meter_event_session', [], []);
+        static::assertNotNull($meterEventSession);
+        static::assertInstanceOf(\Stripe\V2\Billing\MeterEventSession::class, $meterEventSession);
+    }
+
     public function testV2RequestWithClientStripeContext()
     {
         $this->curlClientStub->method('executeRequestWithRetries')
