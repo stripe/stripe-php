@@ -161,7 +161,7 @@ class ObjectTypes
      */
     const v2Mapping = [
         // V1 Class needed for fetching the right related object
-        // TODO: Make a more standardized fix in codegen for all languages
+        // TODO: https://go/j/DEVSDK-2204 Make a more standardized fix in codegen for all languages
         \Stripe\Billing\Meter::OBJECT_NAME => \Stripe\Billing\Meter::class,
 
         // v2 object classes: The beginning of the section generated from our OpenAPI spec
