@@ -278,6 +278,10 @@ class ApiRequestor
 
             // The end of the section generated from our OpenAPI spec
             default:
+                if ('invalid_fields' === $code) {
+                    $param = isset($errorData['param']) ? $errorData['param'] : null;
+                    return Exception\InvalidRequestException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code, $param);
+                }
                 return self::_specificV1APIError($rbody, $rcode, $rheaders, $resp, $errorData);
         }
     }

@@ -542,6 +542,39 @@ final class ApiRequestorTest extends \Stripe\TestCase
         }
     }
 
+    public function testV2WithInvalidFieldsReturnsInvalidRequest()
+    {
+        $this->stubRequest(
+            'GET',
+            '/v2/core/events/evt_123',
+            [],
+            null,
+            false,
+            [
+                'error' => [
+                    'code' => 'invalid_fields',
+                    'message' => 'your request is invalid',
+                    'param' => 'invalid_param',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $client = new StripeClient('sk_test_123');
+            $client->v2->core->events->retrieve('evt_123');
+            static::fail('Did not raise error');
+        } catch (Exception\InvalidRequestException $e) {
+            static::assertSame(400, $e->getHttpStatus());
+            static::assertSame('invalid_param', $e->getStripeParam());
+            static::assertSame('invalid_fields', $e->getStripeCode());
+            static::assertSame('your request is invalid', $e->getMessage());
+        } catch (\Exception $e) {
+            static::fail('Unexpected exception: ' . \get_class($e));
+        }
+    }
+
     public function testV2CallsFallBackToV1Errors()
     {
         $this->stubRequest(
