@@ -4,19 +4,13 @@
 
 namespace Stripe\Events;
 
+/**
+ * @property \Stripe\RelatedObject Object containing the reference to API resource relevant to the event
+ * @property \Stripe\EventData\V1BillingMeterErrorReportTriggeredEventData data associated with the event
+ */
 class V1BillingMeterErrorReportTriggeredEvent extends \Stripe\V2\Event
 {
     const LOOKUP_TYPE = 'v1.billing.meter.error_report_triggered';
-
-    /**
-     * @var \Stripe\EventData\V1BillingMeterErrorReportTriggeredEventData data associated with the event
-     */
-    public $data;
-
-    /**
-     * @var \Stripe\RelatedObject Object containing the reference to API resource relevant to the event
-     */
-    public $related_object;
 
     /**
      * Retrieves the related object from the API. Make an API request on every call.
