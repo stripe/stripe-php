@@ -5,7 +5,7 @@
 namespace Stripe\Events;
 
 /**
- * @property \Stripe\EventData\V1BillingMeterNoMeterFoundEventData data associated with the event
+ * @property \Stripe\EventData\V1BillingMeterNoMeterFoundEventData $data data associated with the event
  */
 class V1BillingMeterNoMeterFoundEvent extends \Stripe\V2\Event
 {

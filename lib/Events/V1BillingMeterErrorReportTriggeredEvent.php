@@ -5,8 +5,8 @@
 namespace Stripe\Events;
 
 /**
- * @property \Stripe\RelatedObject Object containing the reference to API resource relevant to the event
- * @property \Stripe\EventData\V1BillingMeterErrorReportTriggeredEventData data associated with the event
+ * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
+ * @property \Stripe\EventData\V1BillingMeterErrorReportTriggeredEventData $data data associated with the event
  */
 class V1BillingMeterErrorReportTriggeredEvent extends \Stripe\V2\Event
 {
