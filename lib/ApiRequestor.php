@@ -225,6 +225,7 @@ class ApiRequestor
                 }
 
             // no break
+            // fall through in generic 400 or 404, returns InvalidRequestException by default
             case 404:
                 return Exception\InvalidRequestException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code, $param);
 
