@@ -3,8 +3,8 @@
 namespace Stripe\Util;
 
 /**
- * @phpstan-type RequestOptionsArray array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_version?: string, api_base?: string }
- * @psalm-type RequestOptionsArray = array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_version?: string, api_base?: string }
+ * @phpstan-type RequestOptionsArray array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_context?: string, stripe_version?: string, api_base?: string }
+ * @psalm-type RequestOptionsArray = array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_context?: string, stripe_version?: string, api_base?: string }
  */
 class RequestOptions
 {
@@ -129,11 +129,21 @@ class RequestOptions
                 unset($options['idempotency_key']);
             }
             if (\array_key_exists('stripe_account', $options)) {
-                $headers['Stripe-Account'] = $options['stripe_account'];
+                if (null !== $options['stripe_account']) {
+                    $headers['Stripe-Account'] = $options['stripe_account'];
+                }
                 unset($options['stripe_account']);
             }
+            if (\array_key_exists('stripe_context', $options)) {
+                if (null !== $options['stripe_context']) {
+                    $headers['Stripe-Context'] = $options['stripe_context'];
+                }
+                unset($options['stripe_context']);
+            }
             if (\array_key_exists('stripe_version', $options)) {
-                $headers['Stripe-Version'] = $options['stripe_version'];
+                if (null !== $options['stripe_version']) {
+                    $headers['Stripe-Version'] = $options['stripe_version'];
+                }
                 unset($options['stripe_version']);
             }
             if (\array_key_exists('api_base', $options)) {
@@ -151,9 +161,9 @@ class RequestOptions
         }
 
         $message = 'The second argument to Stripe API method calls is an '
-           . 'optional per-request apiKey, which must be a string, or '
-           . 'per-request options, which must be an array. (HINT: you can set '
-           . 'a global apiKey by "Stripe::setApiKey(<apiKey>)")';
+            . 'optional per-request apiKey, which must be a string, or '
+            . 'per-request options, which must be an array. (HINT: you can set '
+            . 'a global apiKey by "Stripe::setApiKey(<apiKey>)")';
 
         throw new \Stripe\Exception\InvalidArgumentException($message);
     }

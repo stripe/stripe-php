@@ -223,6 +223,26 @@ If your beta feature requires a `Stripe-Version` header to be sent, set the `api
 Stripe::addBetaVersion("feature_beta", "v3");
 ```
 
+### Custom requests
+
+If you would like to send a request to an undocumented API (for example you are in a private beta), or if you prefer to bypass the method definitions in the library and specify your request details directly, you can use the `rawRequest` method on the StripeClient.
+
+```php
+$stripe = new \Stripe\StripeClient('sk_test_xyz');
+$response = $stripe->rawRequest('post', '/v1/beta_endpoint', [
+  "caveat": "emptor"
+], [
+  "stripe_version" => "2022-11_15",
+]);
+// $response->body is a string, you can call $stripe->deserialize to get a \Stripe\StripeObject.
+$obj = $stripe->deserialize($response->body);
+
+// For GET requests, the params argument must be null, and you should write the query string explicitly.
+$get_response = $stripe->rawRequest('get', '/v1/beta_endpoint?caveat=emptor', null, [
+  "stripe_version" => "2022-11_15",
+]);
+```
+
 ## Support
 
 New features and bug fixes are released on the latest major version of the Stripe PHP library. If you are on an older major version, we recommend that you upgrade to the latest in order to use the new features and bug fixes including those for security vulnerabilities. Older major versions of the package will continue to be available for use, but will not be receiving any updates.

@@ -24,6 +24,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Note that for line items with <code>type=subscription</code>, <code>metadata</code> reflects the current metadata from the subscription associated with the line item, unless the invoice line was directly updated with different metadata after creation.
  * @property \Stripe\StripeObject $period
  * @property null|\Stripe\Plan $plan The plan of the subscription, if the line item is a subscription or a proration.
+ * @property null|\Stripe\StripeObject[] $pretax_credit_amounts
  * @property null|\Stripe\Price $price The price of the line item.
  * @property bool $proration Whether this is a proration.
  * @property null|\Stripe\StripeObject $proration_details Additional details for proration line items
