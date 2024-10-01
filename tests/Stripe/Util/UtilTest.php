@@ -171,11 +171,7 @@ final class UtilTest extends \Stripe\TestCase
                 'id' => 'fa_123',
                 'type' => 'financial_account',
                 'url' => '/v2/financial_accounts/fa_123',
-            ],
-            'reason' => [
-                'id' => 'id_123',
-                'idempotency_key' => 'key_123',
-            ],
+            ]
         ]);
 
         $event = Util::json_decode_thin_event_object($eventData, ThinEvent::class);
@@ -186,8 +182,6 @@ final class UtilTest extends \Stripe\TestCase
         static::assertSame('fa_123', $event->related_object->id);
         static::assertSame('financial_account', $event->related_object->type);
         static::assertSame('/v2/financial_accounts/fa_123', $event->related_object->url);
-        static::assertSame('id_123', $event->reason->id);
-        static::assertSame('key_123', $event->reason->idempotency_key);
     }
 
     public function testJsonDecodeThinEventObjectWithNoRelatedObject()
@@ -205,22 +199,5 @@ final class UtilTest extends \Stripe\TestCase
         static::assertSame('financial_account.balance.opened', $event->type);
         static::assertSame('2022-02-15T00:27:45.330Z', $event->created);
         static::assertNull($event->related_object);
-    }
-
-    public function testJsonDecodeThinEventObjectWithNoReasonObject()
-    {
-        $eventData = json_encode([
-            'id' => 'evt_234',
-            'object' => 'event',
-            'type' => 'financial_account.balance.opened',
-            'created' => '2022-02-15T00:27:45.330Z',
-        ]);
-
-        $event = Util::json_decode_thin_event_object($eventData, ThinEvent::class);
-        static::assertInstanceOf(ThinEvent::class, $event);
-        static::assertSame('evt_234', $event->id);
-        static::assertSame('financial_account.balance.opened', $event->type);
-        static::assertSame('2022-02-15T00:27:45.330Z', $event->created);
-        static::assertNull($event->reason);
     }
 }
