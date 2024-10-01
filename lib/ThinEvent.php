@@ -12,6 +12,8 @@ namespace Stripe;
  * @property string             $created  Time at which the object was created.
  * @property null|string        $context  Authentication context needed to fetch the event or related object.
  * @property null|RelatedObject $related_object Object containing the reference to API resource relevant to the event.
+ * @property null|Reason $reason Reason for the event.
+ * @property bool $livemode Livemode indicates if the event is from a production(true) or test(false) account.
  */
 class ThinEvent
 {
@@ -20,4 +22,6 @@ class ThinEvent
     public $created;
     public $context;
     public $related_object;
+    public $reason;
+    public $livemode;
 }
