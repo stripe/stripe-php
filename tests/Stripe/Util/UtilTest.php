@@ -171,7 +171,7 @@ final class UtilTest extends \Stripe\TestCase
                 'id' => 'fa_123',
                 'type' => 'financial_account',
                 'url' => '/v2/financial_accounts/fa_123',
-            ]
+            ],
         ]);
 
         $event = Util::json_decode_thin_event_object($eventData, ThinEvent::class);
