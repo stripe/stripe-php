@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php'; // Make sure to include Composer's autoload file
 
-class meter_event_stream
+class MeterEventManager
 {
     private $apiKey;
     private $meterEventSession;
