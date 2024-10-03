@@ -18,7 +18,7 @@ final class WebhookTest extends \Stripe\TestCase
 }';
     const SECRET = 'whsec_test_secret';
 
-    private function generateHeader($opts = [])
+    public static function generateHeader($opts = [])
     {
         $timestamp = \array_key_exists('timestamp', $opts) ? $opts['timestamp'] : \time();
         $payload = \array_key_exists('payload', $opts) ? $opts['payload'] : self::EVENT_PAYLOAD;

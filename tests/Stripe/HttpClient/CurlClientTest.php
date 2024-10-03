@@ -35,6 +35,9 @@ final class CurlClientTest extends \Stripe\TestCase
     /** @var \ReflectionMethod */
     private $shouldRetryMethod;
 
+    /** @var \ReflectionMethod */
+    private $constructCurlOptionsMethod;
+
     /**
      * @before
      */
@@ -68,6 +71,9 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $this->curlHandle = $curlClientReflector->getProperty('curlHandle');
         $this->curlHandle->setAccessible(true);
+
+        $this->constructCurlOptionsMethod = $curlClientReflector->getMethod('constructCurlOptions');
+        $this->constructCurlOptionsMethod->setAccessible(true);
     }
 
     /**
@@ -337,6 +343,89 @@ final class CurlClientTest extends \Stripe\TestCase
         static::assertSame($baseValue * 8, $this->sleepTimeMethod->invoke($curlClient, 4, []));
     }
 
+    /**
+     * Checks if a list of headers contains a specific header name. Copied from CurlClient.
+     *
+     * @param string[] $headers
+     * @param string $name
+     *
+     * @return bool
+     */
+    private function hasHeader($headers, $name)
+    {
+        foreach ($headers as $header) {
+            if (0 === \strncasecmp($header, "{$name}: ", \strlen($name) + 2)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function testIdempotencyKeyV2PostRequestsNoRetry()
+    {
+        \Stripe\Stripe::setMaxNetworkRetries(0);
+        $curlClient = new CurlClient();
+        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v2');
+        $headers = $curlOpts[\CURLOPT_HTTPHEADER];
+        static::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
+    }
+
+    public function testIdempotencyKeyV2DeleteRequestsNoRetry()
+    {
+        \Stripe\Stripe::setMaxNetworkRetries(0);
+        $curlClient = new CurlClient();
+        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'delete', '', [], '', [], 'v2');
+        $headers = $curlOpts[\CURLOPT_HTTPHEADER];
+        static::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
+    }
+
+    public function testIdempotencyKeyAllV2RequestsWithRetry()
+    {
+        \Stripe\Stripe::setMaxNetworkRetries(3);
+        $curlClient = new CurlClient();
+        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v2');
+        $headers = $curlOpts[\CURLOPT_HTTPHEADER];
+        static::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
+    }
+
+    // we don't want this behavior - write requests should basically always have an IK. But until we fix it, let's test it
+    public function testNoIdempotencyKeyV1PostRequestsNoRetry()
+    {
+        \Stripe\Stripe::setMaxNetworkRetries(0);
+        $curlClient = new CurlClient();
+        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v1');
+        $headers = $curlOpts[\CURLOPT_HTTPHEADER];
+        static::assertFalse($this->hasHeader($headers, 'Idempotency-Key'));
+    }
+
+    public function testNoIdempotencyKeyV1DeleteRequestsNoRetry()
+    {
+        \Stripe\Stripe::setMaxNetworkRetries(0);
+        $curlClient = new CurlClient();
+        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'delete', '', [], '', [], 'v1');
+        $headers = $curlOpts[\CURLOPT_HTTPHEADER];
+        static::assertFalse($this->hasHeader($headers, 'Idempotency-Key'));
+    }
+
+    public function testIdempotencyKeyV1PostRequestsWithRetry()
+    {
+        \Stripe\Stripe::setMaxNetworkRetries(3);
+        $curlClient = new CurlClient();
+        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v1');
+        $headers = $curlOpts[\CURLOPT_HTTPHEADER];
+        static::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
+    }
+
+    public function testNoIdempotencyKeyV1DeleteRequestsWithRetry()
+    {
+        \Stripe\Stripe::setMaxNetworkRetries(3);
+        $curlClient = new CurlClient();
+        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'delete', '', [], '', [], 'v1');
+        $headers = $curlOpts[\CURLOPT_HTTPHEADER];
+        static::assertFalse($this->hasHeader($headers, 'Idempotency-Key'));
+    }
+
     public function testResponseHeadersCaseInsensitive()
     {
         $charge = \Stripe\Charge::all();
@@ -466,7 +555,8 @@ EOF;
         $opts[\CURLOPT_HTTPGET] = 1;
         $opts[\CURLOPT_URL] = $absUrl;
         $opts[\CURLOPT_HTTPHEADER] = ['Authorization: Basic c2tfdGVzdF94eXo6'];
-        $discardCallback = function ($chunk) {};
+        $discardCallback = function ($chunk) {
+        };
         $curl->executeStreamingRequestWithRetries($opts, $absUrl, $discardCallback);
         $firstHandle = $this->curlHandle->getValue($curl);
 

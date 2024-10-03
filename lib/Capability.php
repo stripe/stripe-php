@@ -16,7 +16,7 @@ namespace Stripe;
  * @property bool $requested Whether the capability has been requested.
  * @property null|int $requested_at Time at which the capability was requested. Measured in seconds since the Unix epoch.
  * @property null|\Stripe\StripeObject $requirements
- * @property string $status The status of the capability. Can be <code>active</code>, <code>inactive</code>, <code>pending</code>, or <code>unrequested</code>.
+ * @property string $status The status of the capability.
  */
 class Capability extends ApiResource
 {

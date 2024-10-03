@@ -177,8 +177,9 @@ trait TestHelper
      * @param string $path relative path (e.g. '/v1/charges')
      * @param null|array $params array of parameters. If null, parameters will
      *   not be checked.
-     * @param null|string[] $headers array of headers. Does not need to be
-     *   exhaustive. If null, headers are not checked.
+     * @param null|callable|string[] $headers array of headers or a callback to implement
+     *   custom logic.  String array does not does not need to be exhaustive. If null,
+     *   headers are not checked.
      * @param bool $hasFile Whether the request parameters contains a file.
      *   Defaults to false.
      * @param null|string $base base URL (e.g. 'https://api.stripe.com')
@@ -208,15 +209,17 @@ trait TestHelper
                 static::identicalTo($absUrl),
                 // for headers, we only check that all of the headers provided in $headers are
                 // present in the list of headers of the actual request
-                null === $headers ? static::anything() : static::callback(function ($array) use ($headers) {
-                    foreach ($headers as $header) {
-                        if (!\in_array($header, $array, true)) {
-                            return false;
+                null === $headers ? static::anything() : static::callback(
+                    \is_callable($headers) ? $headers : function ($array) use ($headers) {
+                        foreach ($headers as $header) {
+                            if (!\in_array($header, $array, true)) {
+                                return false;
+                            }
                         }
-                    }
 
-                    return true;
-                }),
+                        return true;
+                    }
+                ),
                 null === $params ? static::anything() : static::identicalTo($params),
                 static::identicalTo($hasFile)
             )
@@ -233,8 +236,9 @@ trait TestHelper
      * @param string $path relative path (e.g. '/v1/charges')
      * @param null|array $params array of parameters. If null, parameters will
      *   not be checked.
-     * @param null|string[] $headers array of headers. Does not need to be
-     *   exhaustive. If null, headers are not checked.
+     * @param null|callable|string[] $headers array of headers or a callback to implement
+     *   custom logic.  String array does not does not need to be exhaustive. If null,
+     *   headers are not checked.
      * @param bool $hasFile Whether the request parameters contains a file.
      *   Defaults to false.
      * @param null|string $base base URL (e.g. 'https://api.stripe.com')
@@ -263,15 +267,17 @@ trait TestHelper
                 static::identicalTo($absUrl),
                 // for headers, we only check that all of the headers provided in $headers are
                 // present in the list of headers of the actual request
-                null === $headers ? static::anything() : static::callback(function ($array) use ($headers) {
-                    foreach ($headers as $header) {
-                        if (!\in_array($header, $array, true)) {
-                            return false;
+                null === $headers ? static::anything() : static::callback(
+                    \is_callable($headers) ? $headers : function ($array) use ($headers) {
+                        foreach ($headers as $header) {
+                            if (!\in_array($header, $array, true)) {
+                                return false;
+                            }
                         }
-                    }
 
-                    return true;
-                }),
+                        return true;
+                    }
+                ),
                 null === $params ? static::anything() : static::identicalTo($params),
                 static::identicalTo($hasFile),
                 static::anything()
