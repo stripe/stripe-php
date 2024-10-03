@@ -198,7 +198,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param string $absUrl
      * @param string $params
      * @param bool $hasFile
-     * @param 'preview'|'standard' $apiMode
+     * @param 'v1'|'v2' $apiMode
      */
     private function constructUrlAndBody($method, $absUrl, $params, $hasFile, $apiMode)
     {
@@ -208,7 +208,14 @@ class CurlClient implements ClientInterface, StreamingClientInterface
             if ($hasFile) {
                 return [$absUrl, $params];
             }
-            if ('preview' === $apiMode) {
+            if ('v2' === $apiMode) {
+                if (\is_array($params) && 0 === \count($params)) {
+                    // Send a request with empty body if we have no params set
+                    // Setting the second parameter as null prevents the CURLOPT_POSTFIELDS
+                    // from being set with the '[]', which is result of `json_encode([]).
+                    return [$absUrl, null];
+                }
+
                 return [$absUrl, \json_encode($params)];
             }
 
@@ -220,7 +227,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
         if (0 === \count($params)) {
             return [Util\Util::utf8($absUrl), null];
         }
-        $encoded = Util\Util::encodeParameters($params);
+        $encoded = Util\Util::encodeParameters($params, $apiMode);
 
         $absUrl = "{$absUrl}?{$encoded}";
         $absUrl = Util\Util::utf8($absUrl);
@@ -245,7 +252,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
         return [];
     }
 
-    private function constructCurlOptions($method, $absUrl, $headers, $body, $opts)
+    private function constructCurlOptions($method, $absUrl, $headers, $body, $opts, $apiMode)
     {
         if ('get' === $method) {
             $opts[\CURLOPT_HTTPGET] = 1;
@@ -260,11 +267,18 @@ class CurlClient implements ClientInterface, StreamingClientInterface
         if ($body) {
             $opts[\CURLOPT_POSTFIELDS] = $body;
         }
-        // It is only safe to retry network failures on POST requests if we
-        // add an Idempotency-Key header
-        if (('post' === $method) && (Stripe::$maxNetworkRetries > 0)) {
-            if (!$this->hasHeader($headers, 'Idempotency-Key')) {
-                $headers[] = 'Idempotency-Key: ' . $this->randomGenerator->uuid();
+        // this is a little verbose, but makes v1 vs v2 behavior really clear
+        if (!$this->hasHeader($headers, 'Idempotency-Key')) {
+            // all v2 requests should have an IK
+            if ('v2' === $apiMode) {
+                if ('post' === $method || 'delete' === $method) {
+                    $headers[] = 'Idempotency-Key: ' . $this->randomGenerator->uuid();
+                }
+            } else {
+                // v1 requests should keep old behavior for consistency
+                if ('post' === $method && Stripe::$maxNetworkRetries > 0) {
+                    $headers[] = 'Idempotency-Key: ' . $this->randomGenerator->uuid();
+                }
             }
         }
 
@@ -306,7 +320,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param array $headers
      * @param array $params
      * @param bool $hasFile
-     * @param 'preview'|'standard' $apiMode
+     * @param 'v1'|'v2' $apiMode
      */
     private function constructRequest($method, $absUrl, $headers, $params, $hasFile, $apiMode)
     {
@@ -314,7 +328,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
 
         $opts = $this->calculateDefaultOptions($method, $absUrl, $headers, $params, $hasFile);
         list($absUrl, $body) = $this->constructUrlAndBody($method, $absUrl, $params, $hasFile, $apiMode);
-        $opts = $this->constructCurlOptions($method, $absUrl, $headers, $body, $opts);
+        $opts = $this->constructCurlOptions($method, $absUrl, $headers, $body, $opts, $apiMode);
 
         return [$opts, $absUrl];
     }
@@ -325,9 +339,9 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param array $headers
      * @param array $params
      * @param bool $hasFile
-     * @param 'preview'|'standard' $apiMode
+     * @param 'v1'|'v2' $apiMode
      */
-    public function request($method, $absUrl, $headers, $params, $hasFile, $apiMode = 'standard')
+    public function request($method, $absUrl, $headers, $params, $hasFile, $apiMode = 'v1')
     {
         list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile, $apiMode);
         list($rbody, $rcode, $rheaders) = $this->executeRequestWithRetries($opts, $absUrl);
@@ -342,9 +356,9 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param array $params
      * @param bool $hasFile
      * @param callable $readBodyChunk
-     * @param 'preview'|'standard' $apiMode
+     * @param 'v1'|'v2' $apiMode
      */
-    public function requestStream($method, $absUrl, $headers, $params, $hasFile, $readBodyChunk, $apiMode = 'standard')
+    public function requestStream($method, $absUrl, $headers, $params, $hasFile, $readBodyChunk, $apiMode = 'v1')
     {
         list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile, $apiMode);
         $opts[\CURLOPT_RETURNTRANSFER] = false;
@@ -438,15 +452,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
         $errno = null;
         $message = null;
 
-        $determineWriteCallback = function ($rheaders) use (
-            &$readBodyChunk,
-            &$shouldRetry,
-            &$rbody,
-            &$numRetries,
-            &$rcode,
-            &$lastRHeaders,
-            &$errno
-        ) {
+        $determineWriteCallback = function ($rheaders) use (&$readBodyChunk, &$shouldRetry, &$rbody, &$numRetries, &$rcode, &$lastRHeaders, &$errno) {
             $lastRHeaders = $rheaders;
             $errno = \curl_errno($this->curlHandle);
 
@@ -600,24 +606,24 @@ class CurlClient implements ClientInterface, StreamingClientInterface
             case \CURLE_COULDNT_RESOLVE_HOST:
             case \CURLE_OPERATION_TIMEOUTED:
                 $msg = "Could not connect to Stripe ({$url}).  Please check your "
-                 . 'internet connection and try again.  If this problem persists, '
-                 . "you should check Stripe's service status at "
-                 . 'https://twitter.com/stripestatus, or';
+                    . 'internet connection and try again.  If this problem persists, '
+                    . "you should check Stripe's service status at "
+                    . 'https://twitter.com/stripestatus, or';
 
                 break;
 
             case \CURLE_SSL_CACERT:
             case \CURLE_SSL_PEER_CERTIFICATE:
                 $msg = "Could not verify Stripe's SSL certificate.  Please make sure "
-                 . 'that your network is not intercepting certificates.  '
-                 . "(Try going to {$url} in your browser.)  "
-                 . 'If this problem persists,';
+                    . 'that your network is not intercepting certificates.  '
+                    . "(Try going to {$url} in your browser.)  "
+                    . 'If this problem persists,';
 
                 break;
 
             default:
                 $msg = 'Unexpected error communicating with Stripe.  '
-                 . 'If this problem persists,';
+                    . 'If this problem persists,';
         }
         $msg .= ' let us know at support@stripe.com.';
 
