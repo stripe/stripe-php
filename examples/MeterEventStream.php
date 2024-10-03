@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php'; // Make sure to include Composer's autoload file
 
-class MeterEventManager
+class MeterEventStream
 {
     private $apiKey;
     private $meterEventSession;
@@ -43,7 +43,7 @@ class MeterEventManager
 $apiKey = '{{API_KEY}}';
 $customerId = '{{CUSTOMER_ID}}';
 
-$manager = new MeterEventManager($apiKey);
+$manager = new MeterEventStream($apiKey);
 $manager->sendMeterEvent([
     'event_name' => 'alpaca_ai_tokens',
     'payload' => [
