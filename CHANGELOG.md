@@ -5,6 +5,10 @@
        * the http method as parameter instead of the dedicated methods in the `Preview` class
        * an `apiMode` of `v1` instead of `standard` and `v2` instead of `preview`.
 
+## 16.1.0 - 2024-10-03
+* [#1765](https://github.com/stripe/stripe-php/pull/1765) Update generated code
+  * Remove the support for resource `Margin` that was accidentally made public in the last release
+
 ## 16.0.0 - 2024-10-01
 * [#1756](https://github.com/stripe/stripe-php/pull/1756) Support for APIs in the new API version 2024-09-30.acacia
 
