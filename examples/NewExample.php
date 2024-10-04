@@ -1,9 +1,9 @@
 <?php
 
-// require 'vendor/autoload.php'; // Make sure to include Composer's autoload file
-require '../init.php';
+require 'vendor/autoload.php'; // Make sure to include Composer's autoload file
+//require '../init.php';
 
-class new_example
+class NewExample
 {
     private $apiKey;
 
