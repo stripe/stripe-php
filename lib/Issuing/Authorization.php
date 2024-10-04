@@ -52,6 +52,7 @@ class Authorization extends \Stripe\ApiResource
     const AUTHORIZATION_METHOD_SWIPE = 'swipe';
 
     const STATUS_CLOSED = 'closed';
+    const STATUS_EXPIRED = 'expired';
     const STATUS_PENDING = 'pending';
     const STATUS_REVERSED = 'reversed';
 

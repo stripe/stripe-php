@@ -37,16 +37,20 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $grabpay
  * @property null|\Stripe\StripeObject $ideal
  * @property null|\Stripe\StripeObject $interac_present
+ * @property null|\Stripe\StripeObject $kakao_pay
  * @property null|\Stripe\StripeObject $klarna
  * @property null|\Stripe\StripeObject $konbini
+ * @property null|\Stripe\StripeObject $kr_card
  * @property null|\Stripe\StripeObject $link
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $mb_way
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|\Stripe\StripeObject $mobilepay
  * @property null|\Stripe\StripeObject $multibanco
+ * @property null|\Stripe\StripeObject $naver_pay
  * @property null|\Stripe\StripeObject $oxxo
  * @property null|\Stripe\StripeObject $p24
+ * @property null|\Stripe\StripeObject $payco
  * @property null|\Stripe\StripeObject $paynow
  * @property null|\Stripe\StripeObject $paypal
  * @property null|\Stripe\StripeObject $payto
@@ -55,6 +59,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
  * @property null|\Stripe\StripeObject $rechnung
  * @property null|\Stripe\StripeObject $revolut_pay
+ * @property null|\Stripe\StripeObject $samsung_pay
  * @property null|\Stripe\StripeObject $sepa_debit
  * @property null|\Stripe\StripeObject $sofort
  * @property null|\Stripe\StripeObject $swish
@@ -94,14 +99,18 @@ class PaymentMethod extends ApiResource
     const TYPE_GRABPAY = 'grabpay';
     const TYPE_IDEAL = 'ideal';
     const TYPE_INTERAC_PRESENT = 'interac_present';
+    const TYPE_KAKAO_PAY = 'kakao_pay';
     const TYPE_KLARNA = 'klarna';
     const TYPE_KONBINI = 'konbini';
+    const TYPE_KR_CARD = 'kr_card';
     const TYPE_LINK = 'link';
     const TYPE_MB_WAY = 'mb_way';
     const TYPE_MOBILEPAY = 'mobilepay';
     const TYPE_MULTIBANCO = 'multibanco';
+    const TYPE_NAVER_PAY = 'naver_pay';
     const TYPE_OXXO = 'oxxo';
     const TYPE_P24 = 'p24';
+    const TYPE_PAYCO = 'payco';
     const TYPE_PAYNOW = 'paynow';
     const TYPE_PAYPAL = 'paypal';
     const TYPE_PAYTO = 'payto';
@@ -109,6 +118,7 @@ class PaymentMethod extends ApiResource
     const TYPE_PROMPTPAY = 'promptpay';
     const TYPE_RECHNUNG = 'rechnung';
     const TYPE_REVOLUT_PAY = 'revolut_pay';
+    const TYPE_SAMSUNG_PAY = 'samsung_pay';
     const TYPE_SEPA_DEBIT = 'sepa_debit';
     const TYPE_SOFORT = 'sofort';
     const TYPE_SWISH = 'swish';

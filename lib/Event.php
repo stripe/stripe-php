@@ -247,6 +247,7 @@ class Event extends ApiResource
     const RADAR_EARLY_FRAUD_WARNING_CREATED = 'radar.early_fraud_warning.created';
     const RADAR_EARLY_FRAUD_WARNING_UPDATED = 'radar.early_fraud_warning.updated';
     const REFUND_CREATED = 'refund.created';
+    const REFUND_FAILED = 'refund.failed';
     const REFUND_UPDATED = 'refund.updated';
     const REPORTING_REPORT_RUN_FAILED = 'reporting.report_run.failed';
     const REPORTING_REPORT_RUN_SUCCEEDED = 'reporting.report_run.succeeded';
@@ -517,6 +518,7 @@ class Event extends ApiResource
     const TYPE_RADAR_EARLY_FRAUD_WARNING_CREATED = 'radar.early_fraud_warning.created';
     const TYPE_RADAR_EARLY_FRAUD_WARNING_UPDATED = 'radar.early_fraud_warning.updated';
     const TYPE_REFUND_CREATED = 'refund.created';
+    const TYPE_REFUND_FAILED = 'refund.failed';
     const TYPE_REFUND_UPDATED = 'refund.updated';
     const TYPE_REPORTING_REPORT_RUN_FAILED = 'reporting.report_run.failed';
     const TYPE_REPORTING_REPORT_RUN_SUCCEEDED = 'reporting.report_run.succeeded';

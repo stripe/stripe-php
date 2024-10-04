@@ -13,12 +13,12 @@ namespace Stripe\Billing;
  * @property \Stripe\StripeObject $applicability_config
  * @property string $category The category of this credit grant.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property string|\Stripe\Customer $customer Id of the customer to whom the credit was granted.
+ * @property string|\Stripe\Customer $customer ID of the customer to whom the credit was granted.
  * @property null|int $effective_at The time when the credit becomes effective i.e when it is eligible to be used.
  * @property null|int $expires_at The time when the credit will expire. If not present, the credit will never expire.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|string $name A descriptive name shown in dashboard and on invoices.
+ * @property null|string $name A descriptive name shown in dashboard.
  * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this credit grant belongs to.
  * @property int $updated Time at which the object was last updated. Measured in seconds since the Unix epoch.
  * @property null|int $voided_at The time when this credit grant was voided. If not present, the credit grant hasn't been voided.
