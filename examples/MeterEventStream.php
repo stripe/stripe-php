@@ -11,7 +11,6 @@
  * This example expects a billing meter with an event_name of 'alpaca_ai_tokens'.  If you have
  * a different meter event name, you can change it before running this example.
  */
-
 require 'vendor/autoload.php'; // Make sure to include Composer's autoload file
 
 class MeterEventStream
