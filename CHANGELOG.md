@@ -1,5 +1,19 @@
 # Changelog
 
+## 16.2.0-beta.2 - 2024-10-08
+* [#1749](https://github.com/stripe/stripe-php/pull/1749) Update generated code for beta
+  * Add support for `submit_card` test helper method on resource `Issuing.Card`
+  * Add support for `groups` on `Account`
+  * Add support for new value `payout_statement_descriptor_profanity` on enum `StripeError.code`
+  * Add support for new value `refund.failed` on enum `Event.type`
+  * Add support for `metadata` on `Forwarding.Request`
+  * Add support for new value `expired` on enum `Issuing.Authorization.status`
+  * Add support for `kakao_pay`, `kr_card`, `naver_pay`, `payco`, and `samsung_pay` on `PaymentMethod`
+  * Add support for new values `kakao_pay`, `kr_card`, `naver_pay`, `payco`, and `samsung_pay` on enum `PaymentMethod.type`
+  * Add support for new values `by_tin`, `ma_vat`, `md_vat`, `tz_vat`, `uz_tin`, and `uz_vat` on enum `TaxId.type`
+  * Add support for `flat_amount` and `rate_type` on `TaxRate`
+  * Add support for new value `retail_delivery_fee` on enum `TaxRate.tax_type`
+
 ## 16.2.0-beta.1 - 2024-10-03
 * [#1766](https://github.com/stripe/stripe-php/pull/1766) The `Preview` class has been removed. Please use [rawRequest](https://github.com/stripe/stripe-php?tab=readme-ov-file#custom-requests) instead which accepts
        * the http method as parameter instead of the dedicated methods in the `Preview` class
