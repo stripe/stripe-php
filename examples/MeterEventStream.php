@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * Use the high-throughput MeterEventStream to report create billing meter events.
+ *
+ * In this example, we:
+ *   - create a meter event session and store the session's authentication token
+ *   - define an event with a payload
+ *   - use the meterEventStream service to create an event stream that reports this event
+ *
+ * This example expects a billing meter with an event_name of 'alpaca_ai_tokens'.  If you have
+ * a different meter event name, you can change it before running this example.
+ */
 require 'vendor/autoload.php'; // Make sure to include Composer's autoload file
 
 class MeterEventStream
