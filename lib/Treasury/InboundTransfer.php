@@ -113,4 +113,21 @@ class InboundTransfer extends \Stripe\ApiResource
 
         return $this;
     }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\InboundTransfer the confirmed inbound transfer
+     */
+    public function confirm($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/confirm';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
 }

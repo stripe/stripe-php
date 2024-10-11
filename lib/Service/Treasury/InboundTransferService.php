@@ -42,6 +42,22 @@ class InboundTransferService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Confirm an InboundTransfer.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\InboundTransfer
+     */
+    public function confirm($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/treasury/inbound_transfers/%s/confirm', $id), $params, $opts);
+    }
+
+    /**
      * Creates an InboundTransfer.
      *
      * @param null|array $params
