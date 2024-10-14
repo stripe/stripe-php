@@ -25,6 +25,7 @@ class Form extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'tax.form';
 
+    const TYPE_CA_MRDP = 'ca_mrdp';
     const TYPE_US_1099_K = 'us_1099_k';
     const TYPE_US_1099_MISC = 'us_1099_misc';
     const TYPE_US_1099_NEC = 'us_1099_nec';
