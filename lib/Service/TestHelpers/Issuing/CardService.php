@@ -80,8 +80,8 @@ class CardService extends \Stripe\Service\AbstractService
 
     /**
      * Updates the shipping status of the specified Issuing <code>Card</code> object to
-     * <code>submitted</code>. This method is only available with Stripe Version
-     * ‘2024-09-30.acacia’ or above.
+     * <code>submitted</code>. This method requires Stripe Version ‘2024-09-30.acacia’
+     * or later.
      *
      * @param string $id
      * @param null|array $params
