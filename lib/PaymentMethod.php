@@ -18,6 +18,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $afterpay_clearpay
  * @property null|\Stripe\StripeObject $alipay
  * @property null|string $allow_redisplay This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”.
+ * @property null|\Stripe\StripeObject $alma
  * @property null|\Stripe\StripeObject $amazon_pay
  * @property null|\Stripe\StripeObject $au_becs_debit
  * @property null|\Stripe\StripeObject $bacs_debit
@@ -83,6 +84,7 @@ class PaymentMethod extends ApiResource
     const TYPE_AFFIRM = 'affirm';
     const TYPE_AFTERPAY_CLEARPAY = 'afterpay_clearpay';
     const TYPE_ALIPAY = 'alipay';
+    const TYPE_ALMA = 'alma';
     const TYPE_AMAZON_PAY = 'amazon_pay';
     const TYPE_AU_BECS_DEBIT = 'au_becs_debit';
     const TYPE_BACS_DEBIT = 'bacs_debit';
