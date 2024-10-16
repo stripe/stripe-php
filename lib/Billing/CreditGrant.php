@@ -5,13 +5,16 @@
 namespace Stripe\Billing;
 
 /**
- * A credit grant is a resource that records a grant of billing credits to a customer.
+ * A credit grant is an API resource that documents the allocation of some billing credits to a customer.
+ *
+ * Related guide: <a href="https://docs.stripe.com/billing/subscriptions/usage-based/billing-credits">Billing credits</a>
+ * end
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property \Stripe\StripeObject $amount
  * @property \Stripe\StripeObject $applicability_config
- * @property string $category The category of this credit grant.
+ * @property string $category The category of this credit grant. This is for tracking purposes and will not be displayed to the customer.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string|\Stripe\Customer $customer ID of the customer to whom the billing credits are granted.
  * @property null|int $effective_at The time when the billing credits become effective i.e when they are eligible to be used.
