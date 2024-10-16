@@ -32,4 +32,14 @@ class V1BillingMeterErrorReportTriggeredEvent extends \Stripe\V2\Event
 
         return \Stripe\Util\Util::convertToStripeObject($object, $options, 'v2');
     }
+
+    public static function constructFrom($values, $opts = null, $apiMode = 'v2')
+    {
+        $evt = parent::constructFrom($values, $opts, $apiMode);
+        if (null !== $evt->data) {
+            $evt->data = \Stripe\EventData\V1BillingMeterErrorReportTriggeredEventData::constructFrom($evt->data, $opts, $apiMode);
+        }
+
+        return $evt;
+    }
 }
