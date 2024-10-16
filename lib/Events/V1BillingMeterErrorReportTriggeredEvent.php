@@ -21,16 +21,17 @@ class V1BillingMeterErrorReportTriggeredEvent extends \Stripe\V2\Event
      */
     public function fetchRelatedObject()
     {
+        $apiMode = \Stripe\Util\Util::getApiMode($this->related_object->url);
         list($object, $options) = $this->_request(
             'get',
             $this->related_object->url,
             [],
             ['stripe_account' => $this->context],
             [],
-            'v2'
+            $apiMode
         );
 
-        return \Stripe\Util\Util::convertToStripeObject($object, $options, 'v2');
+        return \Stripe\Util\Util::convertToStripeObject($object, $options, $apiMode);
     }
 
     public static function constructFrom($values, $opts = null, $apiMode = 'v2')
