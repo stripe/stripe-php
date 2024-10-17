@@ -11,10 +11,15 @@ namespace Stripe\Tax;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property null|\Stripe\StripeObject $au_serr
+ * @property null|\Stripe\StripeObject $ca_mrdp
  * @property null|string|\Stripe\Tax\Form $corrected_by The form that corrects this form, if any.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
+ * @property null|\Stripe\StripeObject $eu_dac7
  * @property \Stripe\StripeObject[] $filing_statuses A list of tax filing statuses. Note that a filing status will only be included if the form has been filed directly with the jurisdiction’s tax authority.
+ * @property null|\Stripe\StripeObject $gb_mrdp
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property null|\Stripe\StripeObject $nz_mrdp
  * @property \Stripe\StripeObject $payee
  * @property string $type The type of the tax form. An additional hash is included on the tax form with a name matching this value. It contains additional information specific to the tax form type.
  * @property null|\Stripe\StripeObject $us_1099_k
