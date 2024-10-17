@@ -18,6 +18,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $afterpay_clearpay
  * @property null|\Stripe\StripeObject $alipay
  * @property null|string $allow_redisplay This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”.
+ * @property null|\Stripe\StripeObject $alma
  * @property null|\Stripe\StripeObject $amazon_pay
  * @property null|\Stripe\StripeObject $au_becs_debit
  * @property null|\Stripe\StripeObject $bacs_debit
@@ -34,6 +35,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $eps
  * @property null|\Stripe\StripeObject $fpx
  * @property null|\Stripe\StripeObject $giropay
+ * @property null|\Stripe\StripeObject $gopay
  * @property null|\Stripe\StripeObject $grabpay
  * @property null|\Stripe\StripeObject $ideal
  * @property null|\Stripe\StripeObject $interac_present
@@ -56,11 +58,13 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $payto
  * @property null|\Stripe\StripeObject $pix
  * @property null|\Stripe\StripeObject $promptpay
+ * @property null|\Stripe\StripeObject $qris
  * @property null|\Stripe\StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
  * @property null|\Stripe\StripeObject $rechnung
  * @property null|\Stripe\StripeObject $revolut_pay
  * @property null|\Stripe\StripeObject $samsung_pay
  * @property null|\Stripe\StripeObject $sepa_debit
+ * @property null|\Stripe\StripeObject $shopeepay
  * @property null|\Stripe\StripeObject $sofort
  * @property null|\Stripe\StripeObject $swish
  * @property null|\Stripe\StripeObject $twint
@@ -83,6 +87,7 @@ class PaymentMethod extends ApiResource
     const TYPE_AFFIRM = 'affirm';
     const TYPE_AFTERPAY_CLEARPAY = 'afterpay_clearpay';
     const TYPE_ALIPAY = 'alipay';
+    const TYPE_ALMA = 'alma';
     const TYPE_AMAZON_PAY = 'amazon_pay';
     const TYPE_AU_BECS_DEBIT = 'au_becs_debit';
     const TYPE_BACS_DEBIT = 'bacs_debit';
@@ -96,6 +101,7 @@ class PaymentMethod extends ApiResource
     const TYPE_EPS = 'eps';
     const TYPE_FPX = 'fpx';
     const TYPE_GIROPAY = 'giropay';
+    const TYPE_GOPAY = 'gopay';
     const TYPE_GRABPAY = 'grabpay';
     const TYPE_IDEAL = 'ideal';
     const TYPE_INTERAC_PRESENT = 'interac_present';
@@ -116,10 +122,12 @@ class PaymentMethod extends ApiResource
     const TYPE_PAYTO = 'payto';
     const TYPE_PIX = 'pix';
     const TYPE_PROMPTPAY = 'promptpay';
+    const TYPE_QRIS = 'qris';
     const TYPE_RECHNUNG = 'rechnung';
     const TYPE_REVOLUT_PAY = 'revolut_pay';
     const TYPE_SAMSUNG_PAY = 'samsung_pay';
     const TYPE_SEPA_DEBIT = 'sepa_debit';
+    const TYPE_SHOPEEPAY = 'shopeepay';
     const TYPE_SOFORT = 'sofort';
     const TYPE_SWISH = 'swish';
     const TYPE_TWINT = 'twint';
