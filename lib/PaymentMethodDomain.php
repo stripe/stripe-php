@@ -12,6 +12,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property \Stripe\StripeObject $amazon_pay Indicates the status of a specific payment method on a payment method domain.
  * @property \Stripe\StripeObject $apple_pay Indicates the status of a specific payment method on a payment method domain.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $domain_name The domain name that this payment method domain object represents.
