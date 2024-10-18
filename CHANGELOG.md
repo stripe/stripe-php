@@ -1,5 +1,14 @@
 # Changelog
 
+## 16.1.1 - 2024-10-18
+* [#1775](https://github.com/stripe/stripe-php/pull/1775) Deserialize into correct v2 EventData types
+  * Fixes a bug where v2 EventData was not being deserialized into the appropriate type for `V1BillingMeterErrorReportTriggeredEvent` and `V1BillingMeterNoMeterFoundEvent`
+* [#1776](https://github.com/stripe/stripe-php/pull/1776) update object tags for meter-related classes
+  
+  - fixes a bug where the `object` property of the `MeterEvent`, `MeterEventAdjustment`, and `MeterEventSession` didn't match the server.
+* [#1773](https://github.com/stripe/stripe-php/pull/1773) Clean up examples
+* [#1771](https://github.com/stripe/stripe-php/pull/1771) Renamed example file names
+
 ## 16.1.0 - 2024-10-03
 * [#1765](https://github.com/stripe/stripe-php/pull/1765) Update generated code
   * Remove the support for resource `Margin` that was accidentally made public in the last release
