@@ -1,5 +1,16 @@
 # Changelog
 
+## 16.2.0-beta.3 - 2024-10-18
+* [#1774](https://github.com/stripe/stripe-php/pull/1774) Update generated code for beta
+  * Remove support for value `expired` from enum `Issuing.Authorization.status`
+  * Add support for new values `alma`, `gopay`, `qris`, and `shopeepay` on enum `PaymentLink.payment_method_types[]`
+  * Add support for `alma` on `PaymentMethodConfiguration` and `PaymentMethod`
+  * Add support for `gopay`, `qris`, and `shopeepay` on `PaymentMethod`
+  * Add support for new values `alma`, `gopay`, `qris`, and `shopeepay` on enum `PaymentMethod.type`
+  * Add support for `amazon_pay` on `PaymentMethodDomain`
+  * Add support for `au_serr`, `ca_mrdp`, `eu_dac7`, `gb_mrdp`, and `nz_mrdp` on `Tax.Form`
+  * Add support for new values `au_serr`, `ca_mrdp`, `eu_dac7`, `gb_mrdp`, and `nz_mrdp` on enum `Tax.Form.type`
+
 ## 16.2.0-beta.2 - 2024-10-08
 * [#1749](https://github.com/stripe/stripe-php/pull/1749) Update generated code for beta
   * Add support for `submit_card` test helper method on resource `Issuing.Card`
