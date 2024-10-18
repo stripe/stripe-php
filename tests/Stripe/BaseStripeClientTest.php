@@ -416,7 +416,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     public function testV2GetRequest()
     {
         $this->curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{"object": "billing.meter_event_session"}', 200, []])
+            ->willReturn(['{"object": "v2.billing.meter_event_session"}', 200, []])
         ;
 
         $this->curlClientStub->expects(static::once())
@@ -446,7 +446,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     public function testV2PostRequest()
     {
         $this->curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{"object": "billing.meter_event_session"}', 200, []])
+            ->willReturn(['{"object": "v2.billing.meter_event_session"}', 200, []])
         ;
 
         $this->curlClientStub->expects(static::once())
@@ -475,7 +475,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     public function testV2PostRequestWithEmptyParams()
     {
         $this->curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{"object": "billing.meter_event_session"}', 200, []])
+            ->willReturn(['{"object": "v2.billing.meter_event_session"}', 200, []])
         ;
 
         $this->curlClientStub->expects(static::once())
@@ -777,7 +777,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     public function testV2OverridesPreviewVersionIfPassedInRequestOptions()
     {
         $this->curlClientStub->method('executeRequestWithRetries')
-            ->willReturn(['{"object": "billing.meter_event_session"}', 200, []])
+            ->willReturn(['{"object": "v2.billing.meter_event_session"}', 200, []])
         ;
 
         $this->curlClientStub->expects(static::once())
@@ -802,7 +802,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     public function testV1AndV2Request()
     {
         $this->curlClientStub->method('executeRequestWithRetries')
-            ->willReturnOnConsecutiveCalls(['{"object": "billing.meter_event_session"}', 200, []], ['{"object": "billing.meter_event"}', 200, []])
+            ->willReturnOnConsecutiveCalls(['{"object": "v2.billing.meter_event_session"}', 200, []], ['{"object": "billing.meter_event"}', 200, []])
         ;
 
         $this->curlClientStub
@@ -816,7 +816,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
                     $this->assertContains('Stripe-Version: ' . ApiVersion::CURRENT, $opts[\CURLOPT_HTTPHEADER]);
 
                     return true;
-                }), MOCK_URL . '/v1/billing/meter_event/bmes_123',
+                }),
+                MOCK_URL . '/v1/billing/meter_event/bmes_123',
             ])
         ;
 
