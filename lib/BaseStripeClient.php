@@ -191,6 +191,13 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         }
         $obj->setLastResponse($response);
 
+        // Auto-paginating V2 APIs require params to be passed with the request.
+        // V1 APIs can be paginated simply by using the starting_after/ending_before field.
+        if ($obj instanceof \Stripe\V2\Collection) {
+            $obj->setLastRequest($path, $params);
+        }
+
+
         return $obj;
     }
 

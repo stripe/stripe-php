@@ -10,6 +10,8 @@ namespace Stripe\V2;
  *
  * @property null|string $next_page_url
  * @property null|string $previous_page_url
+ * @property null|string $next_page
+ * @property null|string $previous_page
  * @property TStripeObject[] $data
  */
 class Collection extends \Stripe\StripeObject implements \Countable, \IteratorAggregate
@@ -17,6 +19,30 @@ class Collection extends \Stripe\StripeObject implements \Countable, \IteratorAg
     const OBJECT_NAME = 'list';
 
     use \Stripe\ApiOperations\Request;
+
+    /** @var array{string, mixed} */
+    protected $lastRequest = [];
+
+     /**
+     * Returns last request details.
+     *
+     * @return array{string, mixed} an array containing last request url and params
+     */
+    public function getLastRequest()
+    {
+        return $this->lastRequest;
+    }
+
+    /**
+     * Sets last request details.
+     *
+     * @param string $url URL path of the last request
+     * @param array $params params used to make the last request
+     */
+    public function setLastRequest($url, $params)
+    {
+        $this->lastRequest = [$url, $params];
+    }
 
     /**
      * @return string the base URL for the given class
@@ -41,6 +67,20 @@ class Collection extends \Stripe\StripeObject implements \Countable, \IteratorAg
             "array). You likely want to call ->data[{$k}])";
 
         throw new \Stripe\Exception\InvalidArgumentException($msg);
+    }
+
+    /**
+     * Returns an empty collection. This is returned from {@see nextPage()}
+     * when we know that there isn't a next page in order to replicate the
+     * behavior of the API when it attempts to return a page beyond the last.
+     *
+     * @param null|array|string $opts
+     *
+     * @return Collection
+     */
+    public static function emptyCollection($opts = null)
+    {
+        return Collection::constructFrom(['data' => []], $opts);
     }
 
     /**
@@ -81,30 +121,49 @@ class Collection extends \Stripe\StripeObject implements \Countable, \IteratorAg
      */
     public function autoPagingIterator()
     {
-        $page = $this->data;
-        $next_page_url = $this->next_page_url;
+        $page = $this;
 
         while (true) {
-            foreach ($page as $item) {
+            foreach ($page->data as $item) {
                 yield $item;
             }
-            if (null === $next_page_url) {
+            if (!isset($page->next_page) && !isset($page->next_page_url)) {
                 break;
             }
 
+            $page = $page->fetch_next_page();
+        }
+    }
+
+    private function fetch_next_page()
+    {
+        if (!isset($this->next_page) && !isset($this->next_page_url)) {
+            return static::emptyCollection([]);
+        }
+
+        if (isset($this->next_page)) {
+            list($url, $params) = $this->getLastRequest();
+            $new_params = $params;
+            $new_params['page'] = $this->next_page;
             list($response, $opts) = $this->_request(
                 'get',
-                $next_page_url,
-                null,
+                $url,
+                $new_params,
                 null,
                 [],
                 'v2'
             );
-            $obj = \Stripe\Util\Util::convertToStripeObject($response, $opts, 'v2');
-            /** @phpstan-ignore-next-line */
-            $page = $obj->data;
-            /** @phpstan-ignore-next-line */
-            $next_page_url = $obj->next_page_url;
+            return \Stripe\Util\Util::convertToStripeObject($response, $opts, 'v2');
+        } else {
+            list($response, $opts) = $this->_request(
+                'get',
+                $this->next_page_url,
+                [],
+                null,
+                [],
+                'v2'
+            );
+            return \Stripe\Util\Util::convertToStripeObject($response, $opts, 'v2');
         }
     }
 }

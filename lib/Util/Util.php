@@ -67,7 +67,7 @@ abstract class Util
                         $class = \Stripe\StripeObject::class;
                     }
                 }
-            } elseif (\array_key_exists('data', $resp) && \array_key_exists('next_page_url', $resp)) {
+            } elseif (\array_key_exists('data', $resp) && (\array_key_exists('next_page_url', $resp) || \array_key_exists('next_page', $resp))) {
                 // TODO: this is a horrible hack. The API needs
                 // to return something for `object` here.
                 $class = \Stripe\V2\Collection::class;

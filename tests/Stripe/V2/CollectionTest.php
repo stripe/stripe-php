@@ -25,7 +25,7 @@ final class CollectionTest extends \Stripe\TestCase
             ],
             'next_page_url' => '/v2/pageablemodel?page=page_2',
             'previous_page_url' => null,
-        ], ['api_key' => 'sk_test', 'stripe_context' => 'wksp_123'], 'v2');
+        ], ['api_key' => 'sk_test', 'stripe_account' => 'acct_123'], 'v2');
     }
 
     public function testOffsetGetNumericIndex()
@@ -93,6 +93,7 @@ final class CollectionTest extends \Stripe\TestCase
 
     public function testAutoPagingIteratorSupportsOnePage()
     {
+
         $lo = \Stripe\V2\Collection::constructFrom([
             'data' => [
                 ['id' => '1'],
@@ -145,6 +146,39 @@ final class CollectionTest extends \Stripe\TestCase
         static::assertSame(['1', '2', '3'], $seen);
     }
 
+    public function testNextPageAutoPagingIteratorSupportsTwoPages()
+    {
+        $lo = \Stripe\V2\Collection::constructFrom([
+            'data' => [
+                ['id' => '1'],
+            ],
+            'next_page' => 'page_2',
+        ]);
+        $lo->setLastRequest('/v2/pageablemodels', ['foo' => 'bar']);
+
+        $this->stubRequest(
+            'GET',
+            '/v2/pageablemodels',
+            ['foo' => 'bar', 'page' => 'page_2'],
+            null,
+            false,
+            [
+                'data' => [
+                    ['id' => '2'],
+                    ['id' => '3'],
+                ],
+                'next_page' => null,
+            ]
+        );
+
+        $seen = [];
+        foreach ($lo->autoPagingIterator() as $item) {
+            $seen[] = $item['id'];
+        }
+
+        static::assertSame(['1', '2', '3'], $seen);
+    }
+
     public function testAutoPagingIteratorSupportsIteratorToArray()
     {
         $this->stubRequest(
@@ -177,11 +211,11 @@ final class CollectionTest extends \Stripe\TestCase
 
         $curlClientStub->method('executeRequestWithRetries')
             ->willReturnOnConsecutiveCalls([
-                '{"data": [{"id": "pm_777"}], "next_page_url": "/v2/pageablemodel?page_3", "previous_page_url": "/v2/pageablemodel?page_1"}',
+                '{"data": [{"id": "pm_777"}], "next_page_url": "/v2/pageablemodel?page=page_3", "previous_page_url": "/v2/pageablemodel?page=page_1"}',
                 200,
                 [],
             ], [
-                '{"data": [{"id": "pm_888"}], "next_page_url": null, "previous_page_url": "/v2/pageablemodel?page_2"}',
+                '{"data": [{"id": "pm_888"}], "next_page_url": null, "previous_page_url": "/v2/pageablemodel?page=page_2"}',
                 200,
                 [],
             ])
@@ -191,7 +225,7 @@ final class CollectionTest extends \Stripe\TestCase
             ->method('executeRequestWithRetries')
             ->with(static::callback(function ($opts) {
                 $this->assertContains('Authorization: Bearer sk_test', $opts[\CURLOPT_HTTPHEADER]);
-                $this->assertContains('Stripe-Context: wksp_123', $opts[\CURLOPT_HTTPHEADER]);
+                $this->assertContains('Stripe-Account: acct_123', $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
             }))
