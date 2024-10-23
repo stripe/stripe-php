@@ -45,6 +45,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $giropay
  * @property null|\Stripe\StripeObject $google_pay
  * @property null|\Stripe\StripeObject $grabpay
+ * @property null|\Stripe\StripeObject $id_bank_transfer
  * @property null|\Stripe\StripeObject $ideal
  * @property bool $is_default The default configuration is used whenever a payment method configuration is not specified.
  * @property null|\Stripe\StripeObject $jcb
