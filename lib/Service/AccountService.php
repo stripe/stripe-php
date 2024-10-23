@@ -119,8 +119,7 @@ class AccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a single-use login link for a connected account to access the Express
-     * Dashboard.
+     * Creates a login link for a connected account to access the Express Dashboard.
      *
      * <strong>You can only create login links for accounts that use the <a
      * href="/connect/express-dashboard">Express Dashboard</a> and are connected to
