@@ -332,6 +332,7 @@ require __DIR__ . '/lib/Service/V2/Billing/MeterEventService.php';
 require __DIR__ . '/lib/Service/V2/Billing/MeterEventSessionService.php';
 require __DIR__ . '/lib/Service/V2/Billing/MeterEventStreamService.php';
 require __DIR__ . '/lib/Service/V2/Core/CoreServiceFactory.php';
+require __DIR__ . '/lib/Service/V2/Core/EventDestinationService.php';
 require __DIR__ . '/lib/Service/V2/Core/EventService.php';
 require __DIR__ . '/lib/Service/V2/V2ServiceFactory.php';
 require __DIR__ . '/lib/Service/WebhookEndpointService.php';
@@ -380,6 +381,7 @@ require __DIR__ . '/lib/UsageRecordSummary.php';
 require __DIR__ . '/lib/V2/Billing/MeterEvent.php';
 require __DIR__ . '/lib/V2/Billing/MeterEventAdjustment.php';
 require __DIR__ . '/lib/V2/Billing/MeterEventSession.php';
+require __DIR__ . '/lib/V2/EventDestination.php';
 require __DIR__ . '/lib/WebhookEndpoint.php';
 
 // The end of the section generated from our OpenAPI spec
