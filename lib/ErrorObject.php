@@ -169,7 +169,6 @@ class ErrorObject extends StripeObject
     const CODE_PAYMENT_METHOD_UNEXPECTED_STATE = 'payment_method_unexpected_state';
     const CODE_PAYMENT_METHOD_UNSUPPORTED_TYPE = 'payment_method_unsupported_type';
     const CODE_PAYOUT_RECONCILIATION_NOT_READY = 'payout_reconciliation_not_ready';
-    const CODE_PAYOUT_STATEMENT_DESCRIPTOR_PROFANITY = 'payout_statement_descriptor_profanity';
     const CODE_PAYOUTS_LIMIT_EXCEEDED = 'payouts_limit_exceeded';
     const CODE_PAYOUTS_NOT_ALLOWED = 'payouts_not_allowed';
     const CODE_PLATFORM_ACCOUNT_REQUIRED = 'platform_account_required';
