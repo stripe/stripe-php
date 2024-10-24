@@ -180,15 +180,12 @@ class ObjectTypes
      * @var array Mapping from v2 object types to resource classes
      */
     const v2Mapping = [
-        // V1 Class needed for fetching the right related object
-        // TODO: https://go/j/DEVSDK-2204 Make a more standardized fix in codegen for all languages
-        \Stripe\Billing\Meter::OBJECT_NAME => \Stripe\Billing\Meter::class,
-
         // v2 object classes: The beginning of the section generated from our OpenAPI spec
         \Stripe\V2\Billing\MeterEvent::OBJECT_NAME => \Stripe\V2\Billing\MeterEvent::class,
         \Stripe\V2\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustment::class,
         \Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \Stripe\V2\Billing\MeterEventSession::class,
         \Stripe\V2\Event::OBJECT_NAME => \Stripe\V2\Event::class,
+        \Stripe\V2\EventDestination::OBJECT_NAME => \Stripe\V2\EventDestination::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
 }

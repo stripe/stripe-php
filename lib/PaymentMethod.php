@@ -37,6 +37,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $giropay
  * @property null|\Stripe\StripeObject $gopay
  * @property null|\Stripe\StripeObject $grabpay
+ * @property null|\Stripe\StripeObject $id_bank_transfer
  * @property null|\Stripe\StripeObject $ideal
  * @property null|\Stripe\StripeObject $interac_present
  * @property null|\Stripe\StripeObject $kakao_pay
@@ -104,6 +105,7 @@ class PaymentMethod extends ApiResource
     const TYPE_GOPAY = 'gopay';
     const TYPE_GRABPAY = 'grabpay';
     const TYPE_IDEAL = 'ideal';
+    const TYPE_ID_BANK_TRANSFER = 'id_bank_transfer';
     const TYPE_INTERAC_PRESENT = 'interac_present';
     const TYPE_KAKAO_PAY = 'kakao_pay';
     const TYPE_KLARNA = 'klarna';

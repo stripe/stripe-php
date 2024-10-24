@@ -276,6 +276,22 @@ class PaymentIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Trigger an external action on a PaymentIntent.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
+     */
+    public function triggerAction($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/test/payment_intents/%s/trigger_action', $id), $params, $opts);
+    }
+
+    /**
      * Updates properties on a PaymentIntent object without confirming.
      *
      * Depending on which properties you update, you might need to confirm the
