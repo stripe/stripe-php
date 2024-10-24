@@ -5,20 +5,23 @@
 namespace Stripe\Billing;
 
 /**
- * A credit grant is a resource that records a grant of some credit to a customer.
+ * A credit grant is an API resource that documents the allocation of some billing credits to a customer.
+ *
+ * Related guide: <a href="https://docs.stripe.com/billing/subscriptions/usage-based/billing-credits">Billing credits</a>
+ * end
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property \Stripe\StripeObject $amount
  * @property \Stripe\StripeObject $applicability_config
- * @property string $category The category of this credit grant.
+ * @property string $category The category of this credit grant. This is for tracking purposes and will not be displayed to the customer.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property string|\Stripe\Customer $customer Id of the customer to whom the credit was granted.
- * @property null|int $effective_at The time when the credit becomes effective i.e when it is eligible to be used.
- * @property null|int $expires_at The time when the credit will expire. If not present, the credit will never expire.
+ * @property string|\Stripe\Customer $customer ID of the customer to whom the billing credits are granted.
+ * @property null|int $effective_at The time when the billing credits become effective i.e when they are eligible to be used.
+ * @property null|int $expires_at The time when the billing credits will expire. If not present, the billing credits will never expire.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|string $name A descriptive name shown in dashboard and on invoices.
+ * @property null|string $name A descriptive name shown in dashboard.
  * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this credit grant belongs to.
  * @property int $updated Time at which the object was last updated. Measured in seconds since the Unix epoch.
  * @property null|int $voided_at The time when this credit grant was voided. If not present, the credit grant hasn't been voided.

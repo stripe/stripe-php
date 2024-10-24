@@ -174,6 +174,7 @@ class Event extends ApiResource
     const ISSUING_TOKEN_CREATED = 'issuing_token.created';
     const ISSUING_TOKEN_UPDATED = 'issuing_token.updated';
     const ISSUING_TRANSACTION_CREATED = 'issuing_transaction.created';
+    const ISSUING_TRANSACTION_PURCHASE_DETAILS_RECEIPT_UPDATED = 'issuing_transaction.purchase_details_receipt_updated';
     const ISSUING_TRANSACTION_UPDATED = 'issuing_transaction.updated';
     const MANDATE_UPDATED = 'mandate.updated';
     const PAYMENT_INTENT_AMOUNT_CAPTURABLE_UPDATED = 'payment_intent.amount_capturable_updated';
@@ -217,6 +218,7 @@ class Event extends ApiResource
     const RADAR_EARLY_FRAUD_WARNING_CREATED = 'radar.early_fraud_warning.created';
     const RADAR_EARLY_FRAUD_WARNING_UPDATED = 'radar.early_fraud_warning.updated';
     const REFUND_CREATED = 'refund.created';
+    const REFUND_FAILED = 'refund.failed';
     const REFUND_UPDATED = 'refund.updated';
     const REPORTING_REPORT_RUN_FAILED = 'reporting.report_run.failed';
     const REPORTING_REPORT_RUN_SUCCEEDED = 'reporting.report_run.succeeded';
@@ -412,6 +414,7 @@ class Event extends ApiResource
     const TYPE_ISSUING_TOKEN_CREATED = 'issuing_token.created';
     const TYPE_ISSUING_TOKEN_UPDATED = 'issuing_token.updated';
     const TYPE_ISSUING_TRANSACTION_CREATED = 'issuing_transaction.created';
+    const TYPE_ISSUING_TRANSACTION_PURCHASE_DETAILS_RECEIPT_UPDATED = 'issuing_transaction.purchase_details_receipt_updated';
     const TYPE_ISSUING_TRANSACTION_UPDATED = 'issuing_transaction.updated';
     const TYPE_MANDATE_UPDATED = 'mandate.updated';
     const TYPE_PAYMENT_INTENT_AMOUNT_CAPTURABLE_UPDATED = 'payment_intent.amount_capturable_updated';
@@ -455,6 +458,7 @@ class Event extends ApiResource
     const TYPE_RADAR_EARLY_FRAUD_WARNING_CREATED = 'radar.early_fraud_warning.created';
     const TYPE_RADAR_EARLY_FRAUD_WARNING_UPDATED = 'radar.early_fraud_warning.updated';
     const TYPE_REFUND_CREATED = 'refund.created';
+    const TYPE_REFUND_FAILED = 'refund.failed';
     const TYPE_REFUND_UPDATED = 'refund.updated';
     const TYPE_REPORTING_REPORT_RUN_FAILED = 'reporting.report_run.failed';
     const TYPE_REPORTING_REPORT_RUN_SUCCEEDED = 'reporting.report_run.succeeded';
