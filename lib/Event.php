@@ -198,6 +198,7 @@ class Event extends ApiResource
     const ISSUING_TOKEN_CREATED = 'issuing_token.created';
     const ISSUING_TOKEN_UPDATED = 'issuing_token.updated';
     const ISSUING_TRANSACTION_CREATED = 'issuing_transaction.created';
+    const ISSUING_TRANSACTION_PURCHASE_DETAILS_RECEIPT_UPDATED = 'issuing_transaction.purchase_details_receipt_updated';
     const ISSUING_TRANSACTION_UPDATED = 'issuing_transaction.updated';
     const MANDATE_UPDATED = 'mandate.updated';
     const PAYMENT_INTENT_AMOUNT_CAPTURABLE_UPDATED = 'payment_intent.amount_capturable_updated';
@@ -469,6 +470,7 @@ class Event extends ApiResource
     const TYPE_ISSUING_TOKEN_CREATED = 'issuing_token.created';
     const TYPE_ISSUING_TOKEN_UPDATED = 'issuing_token.updated';
     const TYPE_ISSUING_TRANSACTION_CREATED = 'issuing_transaction.created';
+    const TYPE_ISSUING_TRANSACTION_PURCHASE_DETAILS_RECEIPT_UPDATED = 'issuing_transaction.purchase_details_receipt_updated';
     const TYPE_ISSUING_TRANSACTION_UPDATED = 'issuing_transaction.updated';
     const TYPE_MANDATE_UPDATED = 'mandate.updated';
     const TYPE_PAYMENT_INTENT_AMOUNT_CAPTURABLE_UPDATED = 'payment_intent.amount_capturable_updated';

@@ -308,6 +308,24 @@ class PaymentIntent extends ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
+     * @return \Stripe\PaymentIntent the triggered payment intent
+     */
+    public static function triggerAction($params = null, $opts = null)
+    {
+        $url = '/v1/test/payment_intents/{intent}/trigger_action';
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
      * @return \Stripe\PaymentIntent the verified payment intent
      */
     public function verifyMicrodeposits($params = null, $opts = null)
