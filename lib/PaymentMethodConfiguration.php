@@ -44,7 +44,9 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $fpx
  * @property null|\Stripe\StripeObject $giropay
  * @property null|\Stripe\StripeObject $google_pay
+ * @property null|\Stripe\StripeObject $gopay
  * @property null|\Stripe\StripeObject $grabpay
+ * @property null|\Stripe\StripeObject $id_bank_transfer
  * @property null|\Stripe\StripeObject $ideal
  * @property bool $is_default The default configuration is used whenever a payment method configuration is not specified.
  * @property null|\Stripe\StripeObject $jcb
@@ -62,8 +64,10 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $paypal
  * @property null|\Stripe\StripeObject $payto
  * @property null|\Stripe\StripeObject $promptpay
+ * @property null|\Stripe\StripeObject $qris
  * @property null|\Stripe\StripeObject $revolut_pay
  * @property null|\Stripe\StripeObject $sepa_debit
+ * @property null|\Stripe\StripeObject $shopeepay
  * @property null|\Stripe\StripeObject $sofort
  * @property null|\Stripe\StripeObject $swish
  * @property null|\Stripe\StripeObject $twint

@@ -1,5 +1,23 @@
 # Changelog
 
+## 16.2.0 - 2024-10-29
+* [#1772](https://github.com/stripe/stripe-php/pull/1772) Update generated code
+  * Add support for new resource `V2.EventDestinations`
+  * Add support for `create`, `retrieve`, `update`, `list`, `delete`, `disable`, `enable` and `ping` methods on resource `V2.EventDestinations`
+  * Add support for `submit_card` test helper method on resource `Issuing.Card`
+  * Add support for `groups` on `Account`
+  * Add support for `enhanced_eligibility_types` on `Dispute`
+  * Add support for new values `issuing_transaction.purchase_details_receipt_updated` and `refund.failed` on enum `Event.type`
+  * Add support for `metadata` on `Forwarding.Request`
+  * Add support for new value `alma` on enum `PaymentLink.payment_method_types[]`
+  * Add support for `alma` on `PaymentMethodConfiguration` and `PaymentMethod`
+  * Add support for `kakao_pay`, `kr_card`, `naver_pay`, `payco`, and `samsung_pay` on `PaymentMethod`
+  * Add support for new values `alma`, `kakao_pay`, `kr_card`, `naver_pay`, `payco`, and `samsung_pay` on enum `PaymentMethod.type`
+  * Add support for `amazon_pay` on `PaymentMethodDomain`
+  * Add support for new values `by_tin`, `ma_vat`, `md_vat`, `tz_vat`, `uz_tin`, and `uz_vat` on enum `TaxId.type`
+  * Add support for `flat_amount` and `rate_type` on `TaxRate`
+  * Add support for new value `retail_delivery_fee` on enum `TaxRate.tax_type`
+
 ## 16.2.0-beta.3 - 2024-10-18
 * [#1774](https://github.com/stripe/stripe-php/pull/1774) Update generated code for beta
   * Remove support for value `expired` from enum `Issuing.Authorization.status`
@@ -29,6 +47,15 @@
 * [#1766](https://github.com/stripe/stripe-php/pull/1766) The `Preview` class has been removed. Please use [rawRequest](https://github.com/stripe/stripe-php?tab=readme-ov-file#custom-requests) instead which accepts
        * the http method as parameter instead of the dedicated methods in the `Preview` class
        * an `apiMode` of `v1` instead of `standard` and `v2` instead of `preview`.
+
+## 16.1.1 - 2024-10-18
+* [#1775](https://github.com/stripe/stripe-php/pull/1775) Deserialize into correct v2 EventData types
+  * Fixes a bug where v2 EventData was not being deserialized into the appropriate type for `V1BillingMeterErrorReportTriggeredEvent` and `V1BillingMeterNoMeterFoundEvent`
+* [#1776](https://github.com/stripe/stripe-php/pull/1776) update object tags for meter-related classes
+  
+  - fixes a bug where the `object` property of the `MeterEvent`, `MeterEventAdjustment`, and `MeterEventSession` didn't match the server.
+* [#1773](https://github.com/stripe/stripe-php/pull/1773) Clean up examples
+* [#1771](https://github.com/stripe/stripe-php/pull/1771) Renamed example file names
 
 ## 16.1.0 - 2024-10-03
 * [#1765](https://github.com/stripe/stripe-php/pull/1765) Update generated code
