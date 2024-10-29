@@ -21,7 +21,7 @@ namespace Stripe\Treasury;
  * @property null|string[] $pending_features The array of paths to pending Features in the Features hash.
  * @property null|\Stripe\StripeObject $platform_restrictions The set of functionalities that the platform can restrict on the FinancialAccount.
  * @property null|string[] $restricted_features The array of paths to restricted Features in the Features hash.
- * @property string $status The enum specifying what state the account is in.
+ * @property string $status Status of this FinancialAccount.
  * @property \Stripe\StripeObject $status_details
  * @property string[] $supported_currencies The currencies the FinancialAccount can hold a balance in. Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase.
  */

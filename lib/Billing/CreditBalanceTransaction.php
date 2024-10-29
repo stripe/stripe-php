@@ -10,13 +10,13 @@ namespace Stripe\Billing;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|\Stripe\StripeObject $credit Credit details for this balance transaction. Only present if type is <code>credit</code>.
- * @property string|\Stripe\Billing\CreditGrant $credit_grant The credit grant associated with this balance transaction.
- * @property null|\Stripe\StripeObject $debit Debit details for this balance transaction. Only present if type is <code>debit</code>.
- * @property int $effective_at The effective time of this balance transaction.
+ * @property null|\Stripe\StripeObject $credit Credit details for this credit balance transaction. Only present if type is <code>credit</code>.
+ * @property string|\Stripe\Billing\CreditGrant $credit_grant The credit grant associated with this credit balance transaction.
+ * @property null|\Stripe\StripeObject $debit Debit details for this credit balance transaction. Only present if type is <code>debit</code>.
+ * @property int $effective_at The effective time of this credit balance transaction.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this credit balance transaction belongs to.
- * @property null|string $type The type of balance transaction (credit or debit).
+ * @property null|string $type The type of credit balance transaction (credit or debit).
  */
 class CreditBalanceTransaction extends \Stripe\ApiResource
 {
