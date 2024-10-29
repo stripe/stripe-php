@@ -1,7 +1,7 @@
 # Changelog
 
 ## 16.2.0 - 2024-10-29
-* [#1772](https://github.com/stripe/stripe-php/pull/1772) Update generated code
+* [#1772](https://github.com/stripe/stripe-php/pull/1772) This release changes the pinned API version to `2024-10-28.acacia`.
   * Add support for new resource `V2.EventDestinations`
   * Add support for `create`, `retrieve`, `update`, `list`, `delete`, `disable`, `enable` and `ping` methods on resource `V2.EventDestinations`
   * Add support for `submit_card` test helper method on resource `Issuing.Card`
@@ -22,7 +22,7 @@
 * [#1775](https://github.com/stripe/stripe-php/pull/1775) Deserialize into correct v2 EventData types
   * Fixes a bug where v2 EventData was not being deserialized into the appropriate type for `V1BillingMeterErrorReportTriggeredEvent` and `V1BillingMeterNoMeterFoundEvent`
 * [#1776](https://github.com/stripe/stripe-php/pull/1776) update object tags for meter-related classes
-  
+
   - fixes a bug where the `object` property of the `MeterEvent`, `MeterEventAdjustment`, and `MeterEventSession` didn't match the server.
 * [#1773](https://github.com/stripe/stripe-php/pull/1773) Clean up examples
 * [#1771](https://github.com/stripe/stripe-php/pull/1771) Renamed example file names
