@@ -1,5 +1,12 @@
 # Changelog
 
+## 16.3.0-beta.1 - 2024-10-29
+* [#1780](https://github.com/stripe/stripe-php/pull/1780) Update generated code for beta
+  * Add support for `trigger_action` method on resource `PaymentIntent`
+  * Remove support for value `payout_statement_descriptor_profanity` from enum `StripeError.code`
+  * Add support for `id_bank_transfer` on `PaymentMethodConfiguration` and `PaymentMethod`
+  * Add support for `gopay`, `qris`, and `shopeepay` on `PaymentMethodConfiguration`
+
 ## 16.2.0 - 2024-10-29
 * [#1772](https://github.com/stripe/stripe-php/pull/1772) Update generated code
   * Add support for new resource `V2.EventDestinations`
