@@ -29,7 +29,7 @@ namespace Stripe\Identity;
  * @property null|\Stripe\StripeObject $phone Result from a phone check
  * @property null|\Stripe\StripeObject $selfie Result from a selfie check
  * @property string $type Type of report.
- * @property null|string $verification_flow The configuration token of a Verification Flow from the dashboard.
+ * @property null|string $verification_flow The configuration token of a verification flow from the dashboard.
  * @property null|string $verification_session ID of the VerificationSession that created this report.
  */
 class VerificationReport extends \Stripe\ApiResource

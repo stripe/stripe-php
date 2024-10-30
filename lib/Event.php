@@ -166,6 +166,7 @@ class Event extends ApiResource
     const INVOICE_OVERDUE = 'invoice.overdue';
     const INVOICE_PAID = 'invoice.paid';
     const INVOICE_PAYMENT_ACTION_REQUIRED = 'invoice.payment_action_required';
+    const INVOICE_PAYMENT_ATTEMPT_REQUIRED = 'invoice.payment_attempt_required';
     const INVOICE_PAYMENT_FAILED = 'invoice.payment_failed';
     const INVOICE_PAYMENT_OVERPAID = 'invoice.payment.overpaid';
     const INVOICE_PAYMENT_SUCCEEDED = 'invoice.payment_succeeded';
@@ -189,6 +190,7 @@ class Event extends ApiResource
     const ISSUING_DISPUTE_SETTLEMENT_DETAIL_UPDATED = 'issuing_dispute_settlement_detail.updated';
     const ISSUING_DISPUTE_SUBMITTED = 'issuing_dispute.submitted';
     const ISSUING_DISPUTE_UPDATED = 'issuing_dispute.updated';
+    const ISSUING_FRAUD_LIABILITY_DEBIT_CREATED = 'issuing_fraud_liability_debit.created';
     const ISSUING_PERSONALIZATION_DESIGN_ACTIVATED = 'issuing_personalization_design.activated';
     const ISSUING_PERSONALIZATION_DESIGN_DEACTIVATED = 'issuing_personalization_design.deactivated';
     const ISSUING_PERSONALIZATION_DESIGN_REJECTED = 'issuing_personalization_design.rejected';
@@ -438,6 +440,7 @@ class Event extends ApiResource
     const TYPE_INVOICE_OVERDUE = 'invoice.overdue';
     const TYPE_INVOICE_PAID = 'invoice.paid';
     const TYPE_INVOICE_PAYMENT_ACTION_REQUIRED = 'invoice.payment_action_required';
+    const TYPE_INVOICE_PAYMENT_ATTEMPT_REQUIRED = 'invoice.payment_attempt_required';
     const TYPE_INVOICE_PAYMENT_FAILED = 'invoice.payment_failed';
     const TYPE_INVOICE_PAYMENT_OVERPAID = 'invoice.payment.overpaid';
     const TYPE_INVOICE_PAYMENT_SUCCEEDED = 'invoice.payment_succeeded';
@@ -461,6 +464,7 @@ class Event extends ApiResource
     const TYPE_ISSUING_DISPUTE_SETTLEMENT_DETAIL_UPDATED = 'issuing_dispute_settlement_detail.updated';
     const TYPE_ISSUING_DISPUTE_SUBMITTED = 'issuing_dispute.submitted';
     const TYPE_ISSUING_DISPUTE_UPDATED = 'issuing_dispute.updated';
+    const TYPE_ISSUING_FRAUD_LIABILITY_DEBIT_CREATED = 'issuing_fraud_liability_debit.created';
     const TYPE_ISSUING_PERSONALIZATION_DESIGN_ACTIVATED = 'issuing_personalization_design.activated';
     const TYPE_ISSUING_PERSONALIZATION_DESIGN_DEACTIVATED = 'issuing_personalization_design.deactivated';
     const TYPE_ISSUING_PERSONALIZATION_DESIGN_REJECTED = 'issuing_personalization_design.rejected';
