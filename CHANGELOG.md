@@ -1,7 +1,7 @@
 # Changelog
 
 ## 16.2.0 - 2024-10-29
-* [#1772](https://github.com/stripe/stripe-php/pull/1772) Update generated code
+* [#1772](https://github.com/stripe/stripe-php/pull/1772) This release changes the pinned API version to `2024-10-28.acacia`.
   * Add support for new resource `V2.EventDestinations`
   * Add support for `create`, `retrieve`, `update`, `list`, `delete`, `disable`, `enable` and `ping` methods on resource `V2.EventDestinations`
   * Add support for `submit_card` test helper method on resource `Issuing.Card`
