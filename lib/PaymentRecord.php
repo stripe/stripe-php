@@ -34,4 +34,109 @@ class PaymentRecord extends ApiResource
 
     const CUSTOMER_PRESENCE_OFF_SESSION = 'off_session';
     const CUSTOMER_PRESENCE_ON_SESSION = 'on_session';
+
+    /**
+     * Retrieves a Payment Record with the given ID.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentRecord
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentRecord the reported payment record
+     */
+    public static function reportPayment($params = null, $opts = null)
+    {
+        $url = static::classUrl() . '/report_payment';
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentRecord the reported payment record
+     */
+    public function reportPaymentAttempt($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/report_payment_attempt';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentRecord the reported payment record
+     */
+    public function reportPaymentAttemptCanceled($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/report_payment_attempt_canceled';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentRecord the reported payment record
+     */
+    public function reportPaymentAttemptFailed($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/report_payment_attempt_failed';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentRecord the reported payment record
+     */
+    public function reportPaymentAttemptGuaranteed($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/report_payment_attempt_guaranteed';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
 }

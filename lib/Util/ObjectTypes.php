@@ -104,6 +104,7 @@ class ObjectTypes
             \Stripe\Mandate::OBJECT_NAME => \Stripe\Mandate::class,
             \Stripe\Margin::OBJECT_NAME => \Stripe\Margin::class,
             \Stripe\Order::OBJECT_NAME => \Stripe\Order::class,
+            \Stripe\PaymentAttemptRecord::OBJECT_NAME => \Stripe\PaymentAttemptRecord::class,
             \Stripe\PaymentIntent::OBJECT_NAME => \Stripe\PaymentIntent::class,
             \Stripe\PaymentLink::OBJECT_NAME => \Stripe\PaymentLink::class,
             \Stripe\PaymentMethod::OBJECT_NAME => \Stripe\PaymentMethod::class,
