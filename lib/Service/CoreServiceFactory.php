@@ -46,11 +46,13 @@ namespace Stripe\Service;
  * @property MandateService $mandates
  * @property MarginService $margins
  * @property OrderService $orders
+ * @property PaymentAttemptRecordService $paymentAttemptRecords
  * @property PaymentIntentService $paymentIntents
  * @property PaymentLinkService $paymentLinks
  * @property PaymentMethodConfigurationService $paymentMethodConfigurations
  * @property PaymentMethodDomainService $paymentMethodDomains
  * @property PaymentMethodService $paymentMethods
+ * @property PaymentRecordService $paymentRecords
  * @property PayoutService $payouts
  * @property PlanService $plans
  * @property PriceService $prices
@@ -130,11 +132,13 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'mandates' => MandateService::class,
         'margins' => MarginService::class,
         'orders' => OrderService::class,
+        'paymentAttemptRecords' => PaymentAttemptRecordService::class,
         'paymentIntents' => PaymentIntentService::class,
         'paymentLinks' => PaymentLinkService::class,
         'paymentMethodConfigurations' => PaymentMethodConfigurationService::class,
         'paymentMethodDomains' => PaymentMethodDomainService::class,
         'paymentMethods' => PaymentMethodService::class,
+        'paymentRecords' => PaymentRecordService::class,
         'payouts' => PayoutService::class,
         'plans' => PlanService::class,
         'prices' => PriceService::class,
