@@ -38,6 +38,7 @@ namespace Stripe;
  * @property string $source_type The source balance this payout came from, which can be one of the following: <code>card</code>, <code>fpx</code>, or <code>bank_account</code>.
  * @property null|string $statement_descriptor Extra information about a payout that displays on the user's bank statement.
  * @property string $status Current status of the payout: <code>paid</code>, <code>pending</code>, <code>in_transit</code>, <code>canceled</code> or <code>failed</code>. A payout is <code>pending</code> until it's submitted to the bank, when it becomes <code>in_transit</code>. The status changes to <code>paid</code> if the transaction succeeds, or to <code>failed</code> or <code>canceled</code> (within 5 business days). Some payouts that fail might initially show as <code>paid</code>, then change to <code>failed</code>.
+ * @property null|\Stripe\StripeObject $trace_id A value that generates from the beneficiary's bank that allows users to track payouts with their bank. Banks might call this a &quot;reference number&quot; or something similar.
  * @property string $type Can be <code>bank_account</code> or <code>card</code>.
  */
 class Payout extends ApiResource

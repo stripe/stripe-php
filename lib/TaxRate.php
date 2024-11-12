@@ -56,6 +56,7 @@ class TaxRate extends ApiResource
     const TAX_TYPE_RETAIL_DELIVERY_FEE = 'retail_delivery_fee';
     const TAX_TYPE_RST = 'rst';
     const TAX_TYPE_SALES_TAX = 'sales_tax';
+    const TAX_TYPE_SERVICE_TAX = 'service_tax';
     const TAX_TYPE_VAT = 'vat';
 
     /**

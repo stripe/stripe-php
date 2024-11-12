@@ -43,7 +43,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $next_action If present, this property tells you what actions you need to take in order for your customer to fulfill a payment using the provided source.
  * @property null|string|\Stripe\Account $on_behalf_of The account (if any) for which the funds of the PaymentIntent are intended. See the PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use case for connected accounts</a> for details.
  * @property null|string|\Stripe\PaymentMethod $payment_method ID of the payment method used in this PaymentIntent.
- * @property null|\Stripe\StripeObject $payment_method_configuration_details Information about the payment method configuration used for this PaymentIntent.
+ * @property null|\Stripe\StripeObject $payment_method_configuration_details Information about the <a href="https://stripe.com/docs/api/payment_method_configurations">payment method configuration</a> used for this PaymentIntent.
  * @property null|\Stripe\StripeObject $payment_method_options Payment-method-specific configuration for this PaymentIntent.
  * @property string[] $payment_method_types The list of payment method types (e.g. card) that this PaymentIntent is allowed to use.
  * @property null|\Stripe\StripeObject $processing If present, this property tells you about the processing state of the payment.

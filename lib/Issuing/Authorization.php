@@ -18,11 +18,12 @@ namespace Stripe\Issuing;
  * @property bool $approved Whether the authorization has been approved.
  * @property string $authorization_method How the card details were provided.
  * @property \Stripe\BalanceTransaction[] $balance_transactions List of balance transactions associated with this authorization.
- * @property \Stripe\Issuing\Card $card You can <a href="https://stripe.com/docs/issuing/cards">create physical or virtual cards</a> that are issued to cardholders.
+ * @property \Stripe\Issuing\Card $card You can <a href="https://stripe.com/docs/issuing">create physical or virtual cards</a> that are issued to cardholders.
  * @property null|string|\Stripe\Issuing\Cardholder $cardholder The cardholder to whom this authorization belongs.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency The currency of the cardholder. This currency can be different from the currency presented at authorization and the <code>merchant_currency</code> field on this authorization. Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|\Stripe\StripeObject $fleet Fleet-specific information for authorizations using Fleet cards.
+ * @property null|\Stripe\StripeObject[] $fraud_challenges Fraud challenges sent to the cardholder, if this authorization was declined for fraud risk reasons.
  * @property null|\Stripe\StripeObject $fuel Information about fuel that was purchased with this transaction. Typically this information is received from the merchant after the authorization has been approved and the fuel dispensed.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property int $merchant_amount The total amount that was authorized or rejected. This amount is in the <code>merchant_currency</code> and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>. <code>merchant_amount</code> should be the same as <code>amount</code>, unless <code>merchant_currency</code> and <code>currency</code> are different.
@@ -37,6 +38,7 @@ namespace Stripe\Issuing;
  * @property \Stripe\Issuing\Transaction[] $transactions List of <a href="https://stripe.com/docs/api/issuing/transactions">transactions</a> associated with this authorization.
  * @property null|\Stripe\StripeObject $treasury <a href="https://stripe.com/docs/api/treasury">Treasury</a> details related to this authorization if it was created on a <a href="https://stripe.com/docs/api/treasury/financial_accounts">FinancialAccount</a>.
  * @property \Stripe\StripeObject $verification_data
+ * @property null|bool $verified_by_fraud_challenge Whether the authorization bypassed fraud risk checks because the cardholder has previously completed a fraud challenge on a similar high-risk authorization from the same merchant.
  * @property null|string $wallet The digital wallet used for this transaction. One of <code>apple_pay</code>, <code>google_pay</code>, or <code>samsung_pay</code>. Will populate as <code>null</code> when no digital wallet was utilized.
  */
 class Authorization extends \Stripe\ApiResource
