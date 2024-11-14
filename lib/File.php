@@ -37,6 +37,7 @@ class File extends ApiResource
     const PURPOSE_DISPUTE_EVIDENCE = 'dispute_evidence';
     const PURPOSE_DOCUMENT_PROVIDER_IDENTITY_DOCUMENT = 'document_provider_identity_document';
     const PURPOSE_FINANCE_REPORT_RUN = 'finance_report_run';
+    const PURPOSE_FINANCIAL_ACCOUNT_STATEMENT = 'financial_account_statement';
     const PURPOSE_IDENTITY_DOCUMENT = 'identity_document';
     const PURPOSE_IDENTITY_DOCUMENT_DOWNLOADABLE = 'identity_document_downloadable';
     const PURPOSE_ISSUING_REGULATORY_REPORTING = 'issuing_regulatory_reporting';

@@ -114,6 +114,7 @@ class Session extends \Stripe\ApiResource
     const SUBMIT_TYPE_BOOK = 'book';
     const SUBMIT_TYPE_DONATE = 'donate';
     const SUBMIT_TYPE_PAY = 'pay';
+    const SUBMIT_TYPE_SUBSCRIBE = 'subscribe';
 
     const UI_MODE_CUSTOM = 'custom';
     const UI_MODE_EMBEDDED = 'embedded';

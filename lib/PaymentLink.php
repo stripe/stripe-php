@@ -64,6 +64,7 @@ class PaymentLink extends ApiResource
     const SUBMIT_TYPE_BOOK = 'book';
     const SUBMIT_TYPE_DONATE = 'donate';
     const SUBMIT_TYPE_PAY = 'pay';
+    const SUBMIT_TYPE_SUBSCRIBE = 'subscribe';
 
     /**
      * Creates a payment link.

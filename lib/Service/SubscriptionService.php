@@ -184,7 +184,7 @@ class SubscriptionService extends \Stripe\Service\AbstractService
      * In these cases, we apply a credit for the unused time on the previous price,
      * immediately charge the customer using the new price, and reset the billing date.
      * Learn about how <a
-     * href="/billing/subscriptions/upgrade-downgrade#immediate-payment">Stripe
+     * href="/docs/billing/subscriptions/upgrade-downgrade#immediate-payment">Stripe
      * immediately attempts payment for subscription changes</a>.
      *
      * If you want to charge for an upgrade immediately, pass
