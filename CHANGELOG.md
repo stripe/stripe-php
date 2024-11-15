@@ -1,5 +1,9 @@
 # Changelog
 
+## 16.3.0-beta.3 - 2024-11-14
+* [#1784](https://github.com/stripe/stripe-php/pull/1784) Update generated code for beta
+
+
 ## 16.3.0-beta.2 - 2024-11-07
 * [#1783](https://github.com/stripe/stripe-php/pull/1783) Update generated code for beta
   * Add support for new resources `Issuing.FraudLiabilityDebit`, `PaymentAttemptRecord`, and `PaymentRecord`
