@@ -1,5 +1,17 @@
 # Changelog
 
+## 16.3.0 - 2024-11-20
+* [#1786](https://github.com/stripe/stripe-php/pull/1786) This release changes the pinned API version to `2024-11-20.acacia`.
+  * Add support for `respond` test helper method on resource `Issuing.Authorization`
+  * Add support for `adaptive_pricing` on `Checkout.Session`
+  * Add support for new value `subscribe` on enums `Checkout.Session.submit_type` and `PaymentLink.submit_type`
+  * Add support for new value `financial_account_statement` on enum `File.purpose`
+  * Add support for `fraud_challenges` and `verified_by_fraud_challenge` on `Issuing.Authorization`
+  * Add support for `trace_id` on `Payout`
+  * Add support for new value `li_vat` on enum `TaxId.type`
+  * Add support for new value `service_tax` on enum `TaxRate.tax_type`
+  * Change type of `Treasury.InboundTransfer.origin_payment_method` from `string` to `nullable(string)`
+
 ## 16.2.0 - 2024-10-29
 * [#1772](https://github.com/stripe/stripe-php/pull/1772) This release changes the pinned API version to `2024-10-28.acacia`.
   * Add support for new resource `V2.EventDestinations`
@@ -22,7 +34,7 @@
 * [#1775](https://github.com/stripe/stripe-php/pull/1775) Deserialize into correct v2 EventData types
   * Fixes a bug where v2 EventData was not being deserialized into the appropriate type for `V1BillingMeterErrorReportTriggeredEvent` and `V1BillingMeterNoMeterFoundEvent`
 * [#1776](https://github.com/stripe/stripe-php/pull/1776) update object tags for meter-related classes
-  
+
   - fixes a bug where the `object` property of the `MeterEvent`, `MeterEventAdjustment`, and `MeterEventSession` didn't match the server.
 * [#1773](https://github.com/stripe/stripe-php/pull/1773) Clean up examples
 * [#1771](https://github.com/stripe/stripe-php/pull/1771) Renamed example file names
