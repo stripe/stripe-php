@@ -7,7 +7,7 @@ namespace Stripe\Issuing;
 /**
  * An Issuing <code>Cardholder</code> object represents an individual or business entity who is <a href="https://stripe.com/docs/issuing">issued</a> cards.
  *
- * Related guide: <a href="https://stripe.com/docs/issuing/cards#create-cardholder">How to create a cardholder</a>
+ * Related guide: <a href="https://stripe.com/docs/issuing/cards/virtual/issue-cards#create-cardholder">How to create a cardholder</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
