@@ -1,5 +1,12 @@
 # Changelog
 
+## 16.4.0-beta.1 - 2024-11-21
+* [#1788](https://github.com/stripe/stripe-php/pull/1788) Update generated code for beta
+  * Add support for `network_advice_code` and `network_decline_code` on `StripeError`
+  * Add support for new value `invoice.overpaid` on enum `Event.type`
+  * Add support for `adjustable_quantity`, `display`, and `metadata` on `LineItem`
+  * Change type of `LineItem.description` from `string` to `nullable(string)`
+
 ## 16.3.0 - 2024-11-20
 * [#1786](https://github.com/stripe/stripe-php/pull/1786) This release changes the pinned API version to `2024-11-20.acacia`.
   * Add support for `respond` test helper method on resource `Issuing.Authorization`
