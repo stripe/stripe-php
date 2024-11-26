@@ -57,7 +57,8 @@ class MeterService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Deactivates a billing meter.
+     * When a meter is deactivated, no more meter events will be accepted for this
+     * meter. You can’t attach a deactivated meter to a price.
      *
      * @param string $id
      * @param null|array $params
@@ -73,7 +74,8 @@ class MeterService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Reactivates a billing meter.
+     * When a meter is reactivated, events for this meter can be accepted and you can
+     * attach the meter to a price.
      *
      * @param string $id
      * @param null|array $params
