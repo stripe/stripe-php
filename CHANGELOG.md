@@ -1,5 +1,9 @@
 # Changelog
 
+## 16.4.0-beta.2 - 2024-12-05
+* [#1790](https://github.com/stripe/stripe-php/pull/1790) Update generated code for beta
+  * Add support for new values `payout_minimum_balance_hold` and `payout_minimum_balance_release` on enum `BalanceTransaction.type`
+
 ## 16.4.0-beta.1 - 2024-11-21
 * [#1788](https://github.com/stripe/stripe-php/pull/1788) Update generated code for beta
   * Add support for `network_advice_code` and `network_decline_code` on `StripeError`
