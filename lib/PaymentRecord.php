@@ -15,7 +15,6 @@ namespace Stripe;
  * @property \Stripe\StripeObject $amount_canceled A representation of an amount of money, consisting of an amount and a currency.
  * @property \Stripe\StripeObject $amount_failed A representation of an amount of money, consisting of an amount and a currency.
  * @property \Stripe\StripeObject $amount_guaranteed A representation of an amount of money, consisting of an amount and a currency.
- * @property \Stripe\StripeObject $amount_refunded A representation of an amount of money, consisting of an amount and a currency.
  * @property \Stripe\StripeObject $amount_requested A representation of an amount of money, consisting of an amount and a currency.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|\Stripe\StripeObject $customer_details Customer information for this payment.
