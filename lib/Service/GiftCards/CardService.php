@@ -60,7 +60,7 @@ class CardService extends \Stripe\Service\AbstractService
      * Update a gift card.
      *
      * @param string $id
-     * @param null|array{active?: bool, expand?: string[], metadata?: null|StripeObject} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

@@ -44,7 +44,7 @@ class TopupService extends \Stripe\Service\AbstractService
     /**
      * Top up the balance of an account.
      *
-     * @param null|array{amount: int, currency: string, description?: string, expand?: string[], metadata?: null|StripeObject, source?: string, statement_descriptor?: string, transfer_group?: string} $params
+     * @param null|array{amount: int, currency: string, description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject, source?: string, statement_descriptor?: string, transfer_group?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -79,7 +79,7 @@ class TopupService extends \Stripe\Service\AbstractService
      * design.
      *
      * @param string $id
-     * @param null|array{description?: string, expand?: string[], metadata?: null|StripeObject} $params
+     * @param null|array{description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

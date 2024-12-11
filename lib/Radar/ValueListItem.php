@@ -48,7 +48,7 @@ class ValueListItem extends \Stripe\ApiResource
      * Deletes a <code>ValueListItem</code> object, removing it from its parent value
      * list.
      *
-     * @param null|array{{}} $params
+     * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

@@ -79,7 +79,7 @@ class ProductService extends \Stripe\Service\AbstractService
      * is only possible if it has no SKUs associated with it.
      *
      * @param string $id
-     * @param null|array{{}} $params
+     * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -96,7 +96,7 @@ class ProductService extends \Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param string $id
-     * @param null|array{{}} $params
+     * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -168,7 +168,7 @@ class ProductService extends \Stripe\Service\AbstractService
      * parameters not provided will be left unchanged.
      *
      * @param string $id
-     * @param null|array{active?: bool, default_price?: string, description?: null|string, expand?: string[], images?: null|string[], marketing_features?: null|array{name: string}[], metadata?: null|StripeObject, name?: string, package_dimensions?: null|array{height: float, length: float, weight: float, width: float}, shippable?: bool, statement_descriptor?: string, tax_code?: null|string, unit_label?: null|string, url?: null|string} $params
+     * @param null|array{active?: bool, default_price?: string, description?: null|string, expand?: string[], images?: null|string[], marketing_features?: null|array{name: string}[], metadata?: null|\Stripe\StripeObject, name?: string, package_dimensions?: null|array{height: float, length: float, weight: float, width: float}, shippable?: bool, statement_descriptor?: string, tax_code?: null|string, unit_label?: null|string, url?: null|string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

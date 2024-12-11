@@ -44,7 +44,7 @@ class TaxIdService extends \Stripe\Service\AbstractService
      * Deletes an existing account or customer <code>tax_id</code> object.
      *
      * @param string $id
-     * @param null|array{{}} $params
+     * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

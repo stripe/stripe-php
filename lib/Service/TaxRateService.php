@@ -61,7 +61,7 @@ class TaxRateService extends \Stripe\Service\AbstractService
      * Updates an existing tax rate.
      *
      * @param string $id
-     * @param null|array{active?: bool, country?: string, description?: string, display_name?: string, expand?: string[], jurisdiction?: string, metadata?: null|StripeObject, state?: string, tax_type?: string} $params
+     * @param null|array{active?: bool, country?: string, description?: string, display_name?: string, expand?: string[], jurisdiction?: string, metadata?: null|\Stripe\StripeObject, state?: string, tax_type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

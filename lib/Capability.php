@@ -12,10 +12,10 @@ namespace Stripe;
  * @property string $id The identifier for the capability.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string|\Stripe\Account $account The account for which the capability enables functionality.
- * @property object{alternatives: null|object{alternative_fields_due: string[], original_fields_due: string[]}&\Stripe\StripeObject&\stdClass[], current_deadline: null|int, currently_due: string[], disabled_reason: null|string, errors: object{code: string, reason: string, requirement: string}&\Stripe\StripeObject&\stdClass[], eventually_due: string[], past_due: string[], pending_verification: string[]}&\Stripe\StripeObject&\stdClass $future_requirements
+ * @property (object{alternatives: null|(object{alternative_fields_due: string[], original_fields_due: string[]}&\Stripe\StripeObject&\stdClass)[], current_deadline: null|int, currently_due: string[], disabled_reason: null|string, errors: (object{code: string, reason: string, requirement: string}&\Stripe\StripeObject&\stdClass)[], eventually_due: string[], past_due: string[], pending_verification: string[]}&\Stripe\StripeObject&\stdClass) $future_requirements
  * @property bool $requested Whether the capability has been requested.
  * @property null|int $requested_at Time at which the capability was requested. Measured in seconds since the Unix epoch.
- * @property object{alternatives: null|object{alternative_fields_due: string[], original_fields_due: string[]}&\Stripe\StripeObject&\stdClass[], current_deadline: null|int, currently_due: string[], disabled_reason: null|string, errors: object{code: string, reason: string, requirement: string}&\Stripe\StripeObject&\stdClass[], eventually_due: string[], past_due: string[], pending_verification: string[]}&\Stripe\StripeObject&\stdClass $requirements
+ * @property (object{alternatives: null|(object{alternative_fields_due: string[], original_fields_due: string[]}&\Stripe\StripeObject&\stdClass)[], current_deadline: null|int, currently_due: string[], disabled_reason: null|string, errors: (object{code: string, reason: string, requirement: string}&\Stripe\StripeObject&\stdClass)[], eventually_due: string[], past_due: string[], pending_verification: string[]}&\Stripe\StripeObject&\stdClass) $requirements
  * @property string $status The status of the capability.
  */
 class Capability extends ApiResource

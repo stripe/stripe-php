@@ -38,7 +38,7 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @deprecated  this method is deprecated, please refer to the description for details
      *
      * @param string $id
-     * @param null|array{amount?: int, expand?: string[], metadata?: null|StripeObject} $params
+     * @param null|array{amount?: int, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -61,7 +61,7 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @deprecated  this method is deprecated, please refer to the description for details
      *
      * @param string $id
-     * @param null|array{expand?: string[], metadata?: null|StripeObject} $params
+     * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -95,7 +95,7 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * unchanged.
      *
      * @param string $id
-     * @param null|array{expand?: string[], metadata?: null|StripeObject} $params
+     * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

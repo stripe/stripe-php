@@ -75,7 +75,7 @@ class TransferService extends \Stripe\Service\AbstractService
      * reverse more money than is left on a transfer.
      *
      * @param string $parentId
-     * @param null|array{amount?: int, description?: string, expand?: string[], metadata?: null|StripeObject, refund_application_fee?: bool} $params
+     * @param null|array{amount?: int, description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject, refund_application_fee?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -131,7 +131,7 @@ class TransferService extends \Stripe\Service\AbstractService
      * This request accepts only metadata as an argument.
      *
      * @param string $id
-     * @param null|array{description?: string, expand?: string[], metadata?: null|StripeObject} $params
+     * @param null|array{description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -151,7 +151,7 @@ class TransferService extends \Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param string $id
-     * @param null|array{expand?: string[], metadata?: null|StripeObject} $params
+     * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

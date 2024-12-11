@@ -44,7 +44,7 @@ class ApplePayDomainService extends \Stripe\Service\AbstractService
      * Delete an apple pay domain.
      *
      * @param string $id
-     * @param null|array{{}} $params
+     * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

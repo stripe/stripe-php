@@ -18,8 +18,8 @@ namespace Stripe;
  * @property null|int $expires_at Date at which the promotion code can no longer be redeemed.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|int $max_redemptions Maximum number of times this promotion code can be redeemed.
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property object{currency_options?: \Stripe\StripeObject, first_time_transaction: bool, minimum_amount: null|int, minimum_amount_currency: null|string}&\Stripe\StripeObject&\stdClass $restrictions
+ * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property (object{currency_options?: \Stripe\StripeObject, first_time_transaction: bool, minimum_amount: null|int, minimum_amount_currency: null|string}&\Stripe\StripeObject&\stdClass) $restrictions
  * @property int $times_redeemed Number of times this promotion code has been used.
  */
 class PromotionCode extends ApiResource
@@ -95,7 +95,7 @@ class PromotionCode extends ApiResource
      * passed. Most fields are, by design, not editable.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{active?: bool, expand?: string[], metadata?: null|StripeObject, restrictions?: array{currency_options?: \Stripe\StripeObject}} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|\Stripe\StripeObject, restrictions?: array{currency_options?: \Stripe\StripeObject}} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

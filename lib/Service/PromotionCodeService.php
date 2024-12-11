@@ -65,7 +65,7 @@ class PromotionCodeService extends \Stripe\Service\AbstractService
      * passed. Most fields are, by design, not editable.
      *
      * @param string $id
-     * @param null|array{active?: bool, expand?: string[], metadata?: null|StripeObject, restrictions?: array{currency_options?: \Stripe\StripeObject}} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|\Stripe\StripeObject, restrictions?: array{currency_options?: \Stripe\StripeObject}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
