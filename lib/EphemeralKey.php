@@ -19,7 +19,7 @@ class EphemeralKey extends ApiResource
     /**
      * Invalidates a short-lived API key for a given resource.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

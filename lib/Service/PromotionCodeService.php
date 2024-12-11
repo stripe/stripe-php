@@ -13,7 +13,7 @@ class PromotionCodeService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of your promotion codes.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, code?: string, coupon?: string, created?: int|array, customer?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -29,7 +29,7 @@ class PromotionCodeService extends \Stripe\Service\AbstractService
      * A promotion code points to a coupon. You can optionally restrict the code to a
      * specific customer, redemption limit, and expiration date.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, code?: string, coupon: string, customer?: string, expand?: string[], expires_at?: int, max_redemptions?: int, metadata?: \Stripe\StripeObject, restrictions?: array{currency_options?: \Stripe\StripeObject, first_time_transaction?: bool, minimum_amount?: int, minimum_amount_currency?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -48,7 +48,7 @@ class PromotionCodeService extends \Stripe\Service\AbstractService
      * <code>code</code>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -65,7 +65,7 @@ class PromotionCodeService extends \Stripe\Service\AbstractService
      * passed. Most fields are, by design, not editable.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|\Stripe\StripeObject, restrictions?: array{currency_options?: \Stripe\StripeObject}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

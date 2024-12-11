@@ -31,7 +31,7 @@ class ReportType extends \Stripe\ApiResource
     /**
      * Returns a full list of Report Types.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

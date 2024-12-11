@@ -9,7 +9,7 @@ namespace Stripe\FinancialConnections;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property \Stripe\StripeObject $features
+ * @property (object{balances: (object{supported: bool}&\Stripe\StripeObject&\stdClass), ownership: (object{supported: bool}&\Stripe\StripeObject&\stdClass), payment_method: (object{supported: bool}&\Stripe\StripeObject&\stdClass), transactions: (object{supported: bool}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass) $features
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $name The name of this institution.
  * @property string[] $routing_numbers A list of routing numbers which are known to correspond to this institution. Due to the many to many relationship between institutions and routing numbers, this list may not be comprehensive and routing numbers may also be shared between institutions.
@@ -27,7 +27,7 @@ class Institution extends \Stripe\ApiResource
     /**
      * Returns a list of Financial Connections <code>Institution</code> objects.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

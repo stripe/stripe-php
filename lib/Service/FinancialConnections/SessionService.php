@@ -15,7 +15,7 @@ class SessionService extends \Stripe\Service\AbstractService
      * <code>Session</code>. The session’s <code>client_secret</code> can be used to
      * launch the flow using Stripe.js.
      *
-     * @param null|array $params
+     * @param null|array{account_holder: array{account?: string, customer?: string, type: string}, expand?: string[], filters?: array{account_subcategories?: string[], countries?: string[], institution?: string}, limits?: array{accounts: int}, manual_entry?: array{mode?: string}, permissions: string[], prefetch?: string[], return_url?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -31,7 +31,7 @@ class SessionService extends \Stripe\Service\AbstractService
      * Retrieves the details of a Financial Connections <code>Session</code>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

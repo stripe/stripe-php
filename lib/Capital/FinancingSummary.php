@@ -9,7 +9,7 @@ namespace Stripe\Capital;
  * platforms to read the state of Capital offered to their connected accounts.
  *
  * @property string $object The object type: financing_summary
- * @property null|\Stripe\StripeObject $details Additional information about the financing summary. Describes currency, advance amount, fee amount, withhold rate, remaining amount, paid amount, current repayment interval, repayment start date, and advance payout date.
+ * @property null|(object{advance_amount: int, advance_paid_out_at: null|float, currency: string, current_repayment_interval: null|(object{due_at: float, paid_amount: null|int, remaining_amount: int}&\Stripe\StripeObject&\stdClass), fee_amount: int, paid_amount: int, remaining_amount: int, repayments_begin_at: null|float, withhold_rate: float}&\Stripe\StripeObject&\stdClass) $details Additional information about the financing summary. Describes currency, advance amount, fee amount, withhold rate, remaining amount, paid amount, current repayment interval, repayment start date, and advance payout date.
  * @property null|string $financing_offer The Financing Offer ID this Financing Summary corresponds to
  * @property null|string $status Status of the Connected Account's financing. <a href="https://stripe.com/docs/api/capital/financing_summary">/v1/capital/financing_summary</a> will only return <code>details</code> for <code>paid_out</code> financing.
  */

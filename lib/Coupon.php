@@ -12,7 +12,7 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|int $amount_off Amount (in the <code>currency</code> specified) that will be taken off the subtotal of any invoices for this customer.
- * @property null|\Stripe\StripeObject $applies_to
+ * @property null|(object{products: string[]}&\Stripe\StripeObject&\stdClass) $applies_to
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $currency If <code>amount_off</code> has been set, the three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a> of the amount to take off.
  * @property null|\Stripe\StripeObject $currency_options Coupons defined in each available currency option. Each key must be a three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a href="https://stripe.com/docs/currencies">supported currency</a>.
@@ -54,7 +54,7 @@ class Coupon extends ApiResource
      * a coupon with an <code>amount_off</code> of <amount>200</amount> is applied to
      * it.
      *
-     * @param null|array $params
+     * @param null|array{amount_off?: int, applies_to?: array{products?: string[]}, currency?: string, currency_options?: \Stripe\StripeObject, duration?: string, duration_in_months?: int, expand?: string[], id?: string, max_redemptions?: int, metadata?: null|\Stripe\StripeObject, name?: string, percent_off?: float, redeem_by?: int} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -101,7 +101,7 @@ class Coupon extends ApiResource
     /**
      * Returns a list of your coupons.
      *
-     * @param null|array $params
+     * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -139,7 +139,7 @@ class Coupon extends ApiResource
      * amount_off) are, by design, not editable.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{currency_options?: \Stripe\StripeObject, expand?: string[], metadata?: null|\Stripe\StripeObject, name?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

@@ -13,7 +13,7 @@ class PaymentAttemptRecordService extends \Stripe\Service\AbstractService
     /**
      * List all the Payment Attempt Records attached to the specified Payment Record.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], payment_record: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -29,7 +29,7 @@ class PaymentAttemptRecordService extends \Stripe\Service\AbstractService
      * Retrieves a Payment Attempt Record with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

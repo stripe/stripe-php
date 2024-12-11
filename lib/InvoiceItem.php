@@ -30,7 +30,7 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|(string|\Stripe\Margin)[] $margins The margins which apply to the invoice item. When set, the <code>default_margins</code> on the invoice do not apply to this invoice item.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property \Stripe\StripeObject $period
+ * @property (object{end: int, start: int}&\Stripe\StripeObject&\stdClass) $period
  * @property null|\Stripe\Plan $plan If the invoice item is a proration, the plan of the subscription that the proration was computed for.
  * @property null|\Stripe\Price $price The price of the invoice item.
  * @property bool $proration Whether the invoice item was created automatically as a proration adjustment when the customer switched plans.
@@ -53,7 +53,7 @@ class InvoiceItem extends ApiResource
      * no invoice is specified, the item will be on the next invoice created for the
      * customer specified.
      *
-     * @param null|array $params
+     * @param null|array{amount?: int, currency?: string, customer: string, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], invoice?: string, margins?: string[], metadata?: null|\Stripe\StripeObject, period?: array{end: int, start: int}, price?: string, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, subscription?: string, tax_behavior?: string, tax_code?: null|string, tax_rates?: string[], unit_amount?: int, unit_amount_decimal?: string} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -99,7 +99,7 @@ class InvoiceItem extends ApiResource
      * Returns a list of your invoice items. Invoice items are returned sorted by
      * creation date, with the most recently created invoice items appearing first.
      *
-     * @param null|array $params
+     * @param null|array{created?: int|array, customer?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, pending?: bool, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -138,7 +138,7 @@ class InvoiceItem extends ApiResource
      * closed.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{amount?: int, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], margins?: null|string[], metadata?: null|\Stripe\StripeObject, period?: array{end: int, start: int}, price?: string, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_behavior?: string, tax_code?: null|string, tax_rates?: null|string[], unit_amount?: int, unit_amount_decimal?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

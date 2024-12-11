@@ -15,7 +15,7 @@ class DisputeSettlementDetailService extends \Stripe\Service\AbstractService
      * objects are sorted in descending order by creation date, with the most recently
      * created object appearing first.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, settlement?: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -31,7 +31,7 @@ class DisputeSettlementDetailService extends \Stripe\Service\AbstractService
      * Retrieves an Issuing <code>DisputeSettlementDetail</code> object.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
