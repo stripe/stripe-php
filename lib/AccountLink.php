@@ -24,7 +24,7 @@ class AccountLink extends ApiResource
      * platform can redirect their user to in order to take them through the Connect
      * Onboarding flow.
      *
-     * @param null|array $params
+     * @param null|array{account: string, collect?: string, collection_options?: array{fields?: string, future_requirements?: string}, expand?: string[], refresh_url?: string, return_url?: string, type: string} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

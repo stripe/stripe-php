@@ -12,9 +12,9 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property bool $active Whether the shipping rate can be used for new purchases. Defaults to <code>true</code>.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|\Stripe\StripeObject $delivery_estimate The estimated range for how long shipping will take, meant to be displayable to the customer. This will appear on CheckoutSessions.
+ * @property null|object{maximum: null|object{unit: string, value: int}&\Stripe\StripeObject&\stdClass, minimum: null|object{unit: string, value: int}&\Stripe\StripeObject&\stdClass}&\Stripe\StripeObject&\stdClass $delivery_estimate The estimated range for how long shipping will take, meant to be displayable to the customer. This will appear on CheckoutSessions.
  * @property null|string $display_name The name of the shipping rate, meant to be displayable to the customer. This will appear on CheckoutSessions.
- * @property null|\Stripe\StripeObject $fixed_amount
+ * @property null|object{amount: int, currency: string, currency_options?: \Stripe\StripeObject}&\Stripe\StripeObject&\stdClass $fixed_amount
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $tax_behavior Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of <code>inclusive</code>, <code>exclusive</code>, or <code>unspecified</code>.
@@ -36,7 +36,7 @@ class ShippingRate extends ApiResource
     /**
      * Creates a new shipping rate object.
      *
-     * @param null|array $params
+     * @param null|array{delivery_estimate?: array{maximum?: array{unit: string, value: int}, minimum?: array{unit: string, value: int}}, display_name: string, expand?: string[], fixed_amount?: array{amount: int, currency: string, currency_options?: \Stripe\StripeObject}, metadata?: \Stripe\StripeObject, tax_behavior?: string, tax_code?: string, type?: string} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -58,7 +58,7 @@ class ShippingRate extends ApiResource
     /**
      * Returns a list of your shipping rates.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, created?: int|array, currency?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -95,7 +95,7 @@ class ShippingRate extends ApiResource
      * Updates an existing shipping rate object.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{active?: bool, expand?: string[], fixed_amount?: array{currency_options?: \Stripe\StripeObject}, metadata?: null|StripeObject, tax_behavior?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

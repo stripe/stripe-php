@@ -13,7 +13,7 @@ class AccountService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of Financial Connections <code>Account</code> objects.
      *
-     * @param null|array $params
+     * @param null|array{account_holder?: array{account?: string, customer?: string}, ending_before?: string, expand?: string[], limit?: int, session?: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -30,7 +30,7 @@ class AccountService extends \Stripe\Service\AbstractService
      * <code>Account</code>.
      *
      * @param string $parentId
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -46,7 +46,7 @@ class AccountService extends \Stripe\Service\AbstractService
      * Lists all owners for a given <code>Account</code>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, ownership: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -64,7 +64,7 @@ class AccountService extends \Stripe\Service\AbstractService
      * transactions).
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -80,7 +80,7 @@ class AccountService extends \Stripe\Service\AbstractService
      * Refreshes the data associated with a Financial Connections <code>Account</code>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], features: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -96,7 +96,7 @@ class AccountService extends \Stripe\Service\AbstractService
      * Retrieves the details of an Financial Connections <code>Account</code>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -113,7 +113,7 @@ class AccountService extends \Stripe\Service\AbstractService
      * <code>Account</code>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], features: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -130,7 +130,7 @@ class AccountService extends \Stripe\Service\AbstractService
      * Connections <code>Account</code>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], features: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

@@ -18,7 +18,7 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|int $expires_at The file expires and isn't available at this time in epoch seconds.
  * @property null|string $filename The suitable name for saving the file to a filesystem.
- * @property null|\Stripe\Collection<\Stripe\FileLink> $links A list of <a href="https://stripe.com/docs/api#file_links">file links</a> that point at this file.
+ * @property null|Collection<\Stripe\FileLink> $links A list of <a href="https://stripe.com/docs/api#file_links">file links</a> that point at this file.
  * @property string $purpose The <a href="https://stripe.com/docs/file-upload#uploading-a-file">purpose</a> of the uploaded file.
  * @property int $size The size of the file object in bytes.
  * @property null|string $title A suitable title for the document.
@@ -52,7 +52,7 @@ class File extends ApiResource
      * returns the files by their creation dates, placing the most recently created
      * files at the top.
      *
-     * @param null|array $params
+     * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, purpose?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

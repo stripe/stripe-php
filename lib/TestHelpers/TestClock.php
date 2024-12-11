@@ -17,7 +17,7 @@ namespace Stripe\TestHelpers;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $name The custom name supplied at creation.
  * @property string $status The status of the Test Clock.
- * @property \Stripe\StripeObject $status_details
+ * @property object{advancing?: object{target_frozen_time: int}&\Stripe\StripeObject&\stdClass}&\Stripe\StripeObject&\stdClass $status_details
  */
 class TestClock extends \Stripe\ApiResource
 {
@@ -30,7 +30,7 @@ class TestClock extends \Stripe\ApiResource
     /**
      * Creates a new test clock that can be attached to new customers and quotes.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], frozen_time: int, name?: string} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -52,7 +52,7 @@ class TestClock extends \Stripe\ApiResource
     /**
      * Deletes a test clock.
      *
-     * @param null|array $params
+     * @param null|array{{}} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -73,7 +73,7 @@ class TestClock extends \Stripe\ApiResource
     /**
      * Returns a list of your test clocks.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

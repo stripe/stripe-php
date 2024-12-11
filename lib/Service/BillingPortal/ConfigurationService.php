@@ -14,7 +14,7 @@ class ConfigurationService extends \Stripe\Service\AbstractService
      * Returns a list of configurations that describe the functionality of the customer
      * portal.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, ending_before?: string, expand?: string[], is_default?: bool, limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -30,7 +30,7 @@ class ConfigurationService extends \Stripe\Service\AbstractService
      * Creates a configuration that describes the functionality and behavior of a
      * PortalSession.
      *
-     * @param null|array $params
+     * @param null|array{business_profile?: array{headline?: null|string, privacy_policy_url?: string, terms_of_service_url?: string}, default_return_url?: null|string, expand?: string[], features: array{customer_update?: array{allowed_updates?: null|string[], enabled: bool}, invoice_history?: array{enabled: bool}, payment_method_update?: array{enabled: bool}, subscription_cancel?: array{cancellation_reason?: array{enabled: bool, options: null|string[]}, enabled: bool, mode?: string, proration_behavior?: string}, subscription_update?: array{default_allowed_updates?: null|string[], enabled: bool, products?: null|array{prices: string[], product: string}[], proration_behavior?: string, schedule_at_period_end?: array{conditions?: array{type: string}[]}}}, login_page?: array{enabled: bool}, metadata?: \Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -47,7 +47,7 @@ class ConfigurationService extends \Stripe\Service\AbstractService
      * portal.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -63,7 +63,7 @@ class ConfigurationService extends \Stripe\Service\AbstractService
      * Updates a configuration that describes the functionality of the customer portal.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{active?: bool, business_profile?: array{headline?: null|string, privacy_policy_url?: null|string, terms_of_service_url?: null|string}, default_return_url?: null|string, expand?: string[], features?: array{customer_update?: array{allowed_updates?: null|string[], enabled?: bool}, invoice_history?: array{enabled: bool}, payment_method_update?: array{enabled: bool}, subscription_cancel?: array{cancellation_reason?: array{enabled: bool, options?: null|string[]}, enabled?: bool, mode?: string, proration_behavior?: string}, subscription_update?: array{default_allowed_updates?: null|string[], enabled?: bool, products?: null|array{prices: string[], product: string}[], proration_behavior?: string, schedule_at_period_end?: array{conditions?: null|array{type: string}[]}}}, login_page?: array{enabled: bool}, metadata?: null|StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

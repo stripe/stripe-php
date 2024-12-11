@@ -16,7 +16,7 @@ class InboundTransferService extends \Stripe\Service\AbstractService
      * state.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], failure_details?: array{code?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -34,7 +34,7 @@ class InboundTransferService extends \Stripe\Service\AbstractService
      * <code>succeeded</code> state.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -52,7 +52,7 @@ class InboundTransferService extends \Stripe\Service\AbstractService
      * state.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

@@ -9,24 +9,24 @@ namespace Stripe\FinancialConnections;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\Stripe\StripeObject $account_holder The account holder that this account belongs to.
- * @property null|\Stripe\StripeObject $balance The most recent information about the account's balance.
- * @property null|\Stripe\StripeObject $balance_refresh The state of the most recent attempt to refresh the account balance.
+ * @property null|object{account?: string|\Stripe\Account, customer?: string|\Stripe\Customer, type: string}&\Stripe\StripeObject&\stdClass $account_holder The account holder that this account belongs to.
+ * @property null|object{as_of: int, cash?: object{available: null|StripeObject}&\Stripe\StripeObject&\stdClass, credit?: object{used: null|StripeObject}&\Stripe\StripeObject&\stdClass, current: \Stripe\StripeObject, type: string}&\Stripe\StripeObject&\stdClass $balance The most recent information about the account's balance.
+ * @property null|object{last_attempted_at: int, next_refresh_available_at: null|int, status: string}&\Stripe\StripeObject&\stdClass $balance_refresh The state of the most recent attempt to refresh the account balance.
  * @property string $category The type of the account. Account category is further divided in <code>subcategory</code>.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $display_name A human-readable name that has been assigned to this account, either by the account holder or by the institution.
- * @property null|\Stripe\StripeObject $inferred_balances_refresh The state of the most recent attempt to refresh the account's inferred balance history.
+ * @property null|object{last_attempted_at: int, next_refresh_available_at: null|int, status: string}&\Stripe\StripeObject&\stdClass $inferred_balances_refresh The state of the most recent attempt to refresh the account's inferred balance history.
  * @property string $institution_name The name of the institution that holds this account.
  * @property null|string $last4 The last 4 digits of the account number. If present, this will be 4 numeric characters.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string|\Stripe\FinancialConnections\AccountOwnership $ownership The most recent information about the account's owners.
- * @property null|\Stripe\StripeObject $ownership_refresh The state of the most recent attempt to refresh the account owners.
+ * @property null|object{last_attempted_at: int, next_refresh_available_at: null|int, status: string}&\Stripe\StripeObject&\stdClass $ownership_refresh The state of the most recent attempt to refresh the account owners.
  * @property null|string[] $permissions The list of permissions granted by this account.
  * @property string $status The status of the link to the account.
  * @property string $subcategory <p>If <code>category</code> is <code>cash</code>, one of:</p><p>- <code>checking</code> - <code>savings</code> - <code>other</code></p><p>If <code>category</code> is <code>credit</code>, one of:</p><p>- <code>mortgage</code> - <code>line_of_credit</code> - <code>credit_card</code> - <code>other</code></p><p>If <code>category</code> is <code>investment</code> or <code>other</code>, this will be <code>other</code>.</p>
  * @property null|string[] $subscriptions The list of data refresh subscriptions requested on this account.
  * @property string[] $supported_payment_method_types The <a href="https://stripe.com/docs/api/payment_methods/object#payment_method_object-type">PaymentMethod type</a>(s) that can be created from this account.
- * @property null|\Stripe\StripeObject $transaction_refresh The state of the most recent attempt to refresh the account transactions.
+ * @property null|object{id: string, last_attempted_at: int, next_refresh_available_at: null|int, status: string}&\Stripe\StripeObject&\stdClass $transaction_refresh The state of the most recent attempt to refresh the account transactions.
  */
 class Account extends \Stripe\ApiResource
 {
@@ -53,7 +53,7 @@ class Account extends \Stripe\ApiResource
     /**
      * Returns a list of Financial Connections <code>Account</code> objects.
      *
-     * @param null|array $params
+     * @param null|array{account_holder?: array{account?: string, customer?: string}, ending_before?: string, expand?: string[], limit?: int, session?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

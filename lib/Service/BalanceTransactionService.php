@@ -18,7 +18,7 @@ class BalanceTransactionService extends \Stripe\Service\AbstractService
      * Note that this endpoint was previously called “Balance history” and used the
      * path <code>/v1/balance/history</code>.
      *
-     * @param null|array $params
+     * @param null|array{created?: int|array, currency?: string, ending_before?: string, expand?: string[], limit?: int, payout?: string, source?: string, starting_after?: string, type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -37,7 +37,7 @@ class BalanceTransactionService extends \Stripe\Service\AbstractService
      * <code>/v1/balance/history/:id</code>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

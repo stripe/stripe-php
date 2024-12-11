@@ -14,7 +14,7 @@ class FinancingOfferService extends \Stripe\Service\AbstractService
      * Retrieves the financing offers available for Connected accounts that belong to
      * your platform.
      *
-     * @param null|array $params
+     * @param null|array{connected_account?: string, created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -31,7 +31,7 @@ class FinancingOfferService extends \Stripe\Service\AbstractService
      * intended merchant recipient.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -47,7 +47,7 @@ class FinancingOfferService extends \Stripe\Service\AbstractService
      * Get the details of the financing offer.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

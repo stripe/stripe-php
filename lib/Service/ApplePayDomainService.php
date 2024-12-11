@@ -13,7 +13,7 @@ class ApplePayDomainService extends \Stripe\Service\AbstractService
     /**
      * List apple pay domains.
      *
-     * @param null|array $params
+     * @param null|array{domain_name?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -28,7 +28,7 @@ class ApplePayDomainService extends \Stripe\Service\AbstractService
     /**
      * Create an apple pay domain.
      *
-     * @param null|array $params
+     * @param null|array{domain_name: string, expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -44,7 +44,7 @@ class ApplePayDomainService extends \Stripe\Service\AbstractService
      * Delete an apple pay domain.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{{}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -60,7 +60,7 @@ class ApplePayDomainService extends \Stripe\Service\AbstractService
      * Retrieve an apple pay domain.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
