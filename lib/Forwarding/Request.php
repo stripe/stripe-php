@@ -26,12 +26,12 @@ namespace Stripe\Forwarding;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $payment_method The PaymentMethod to insert into the forwarded request. Forwarding previously consumed PaymentMethods is allowed.
  * @property string[] $replacements The field kinds to be replaced in the forwarded request.
- * @property null|object{destination_duration: int, destination_ip_address: string}&\Stripe\StripeObject&\stdClass $request_context Context about the request from Stripe's servers to the destination endpoint.
- * @property null|object{body: string, headers: object{name: string, value: string}&\Stripe\StripeObject&\stdClass[], http_method: string}&\Stripe\StripeObject&\stdClass $request_details The request that was sent to the destination endpoint. We redact any sensitive fields.
- * @property null|object{body: string, headers: object{name: string, value: string}&\Stripe\StripeObject&\stdClass[], status: int}&\Stripe\StripeObject&\stdClass $response_details The response that the destination endpoint returned to us. We redact any sensitive fields.
+ * @property null|(object{destination_duration: int, destination_ip_address: string}&\Stripe\StripeObject&\stdClass) $request_context Context about the request from Stripe's servers to the destination endpoint.
+ * @property null|(object{body: string, headers: (object{name: string, value: string}&\Stripe\StripeObject&\stdClass)[], http_method: string}&\Stripe\StripeObject&\stdClass) $request_details The request that was sent to the destination endpoint. We redact any sensitive fields.
+ * @property null|(object{body: string, headers: (object{name: string, value: string}&\Stripe\StripeObject&\stdClass)[], status: int}&\Stripe\StripeObject&\stdClass) $response_details The response that the destination endpoint returned to us. We redact any sensitive fields.
  * @property null|string $url The destination URL for the forwarded request. Must be supported by the config.
  */
 class Request extends \Stripe\ApiResource

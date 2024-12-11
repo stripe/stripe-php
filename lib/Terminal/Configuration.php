@@ -9,15 +9,15 @@ namespace Stripe\Terminal;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|object{splashscreen?: string|\Stripe\File}&\Stripe\StripeObject&\stdClass $bbpos_wisepos_e
+ * @property null|(object{splashscreen?: string|\Stripe\File}&\Stripe\StripeObject&\stdClass) $bbpos_wisepos_e
  * @property null|bool $is_account_default Whether this Configuration is the default for your account
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $name String indicating the name of the Configuration object, set by the user
- * @property object{enabled: null|bool}&\Stripe\StripeObject&\stdClass $offline
- * @property null|object{end_hour: int, start_hour: int}&\Stripe\StripeObject&\stdClass $reboot_window
- * @property null|object{splashscreen?: string|\Stripe\File}&\Stripe\StripeObject&\stdClass $stripe_s700
- * @property object{aud?: object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass, cad?: object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass, chf?: object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass, czk?: object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass, dkk?: object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass, eur?: object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass, gbp?: object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass, hkd?: object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass, myr?: object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass, nok?: object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass, nzd?: object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass, pln?: object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass, sek?: object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass, sgd?: object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass, usd?: object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass}&\Stripe\StripeObject&\stdClass $tipping
- * @property null|object{splashscreen?: string|\Stripe\File}&\Stripe\StripeObject&\stdClass $verifone_p400
+ * @property (object{enabled: null|bool}&\Stripe\StripeObject&\stdClass) $offline
+ * @property null|(object{end_hour: int, start_hour: int}&\Stripe\StripeObject&\stdClass) $reboot_window
+ * @property null|(object{splashscreen?: string|\Stripe\File}&\Stripe\StripeObject&\stdClass) $stripe_s700
+ * @property (object{aud?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass), cad?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass), chf?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass), czk?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass), dkk?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass), eur?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass), gbp?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass), hkd?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass), myr?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass), nok?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass), nzd?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass), pln?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass), sek?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass), sgd?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass), usd?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass) $tipping
+ * @property null|(object{splashscreen?: string|\Stripe\File}&\Stripe\StripeObject&\stdClass) $verifone_p400
  */
 class Configuration extends \Stripe\ApiResource
 {
@@ -50,7 +50,7 @@ class Configuration extends \Stripe\ApiResource
     /**
      * Deletes a <code>Configuration</code> object.
      *
-     * @param null|array{{}} $params
+     * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

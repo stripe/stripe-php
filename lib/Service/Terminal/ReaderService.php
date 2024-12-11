@@ -93,7 +93,7 @@ class ReaderService extends \Stripe\Service\AbstractService
     /**
      * Creates a new <code>Reader</code> object.
      *
-     * @param null|array{expand?: string[], label?: string, location?: string, metadata?: null|StripeObject, registration_code: string} $params
+     * @param null|array{expand?: string[], label?: string, location?: string, metadata?: null|\Stripe\StripeObject, registration_code: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -109,7 +109,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * Deletes a <code>Reader</code> object.
      *
      * @param string $id
-     * @param null|array{{}} $params
+     * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -206,7 +206,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * passed. Any parameters not provided will be left unchanged.
      *
      * @param string $id
-     * @param null|array{expand?: string[], label?: null|string, metadata?: null|StripeObject} $params
+     * @param null|array{expand?: string[], label?: null|string, metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

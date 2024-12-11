@@ -11,20 +11,20 @@ namespace Stripe\Tax;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|object{reporting_period_end_date: string, reporting_period_start_date: string}&\Stripe\StripeObject&\stdClass $au_serr
- * @property null|object{reporting_period_end_date: string, reporting_period_start_date: string}&\Stripe\StripeObject&\stdClass $ca_mrdp
+ * @property null|(object{reporting_period_end_date: string, reporting_period_start_date: string}&\Stripe\StripeObject&\stdClass) $au_serr
+ * @property null|(object{reporting_period_end_date: string, reporting_period_start_date: string}&\Stripe\StripeObject&\stdClass) $ca_mrdp
  * @property null|string|\Stripe\Tax\Form $corrected_by The form that corrects this form, if any.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|object{reporting_period_end_date: string, reporting_period_start_date: string}&\Stripe\StripeObject&\stdClass $eu_dac7
- * @property (object{effective_at: int, jurisdiction: object{country: string, level: string, state: null|string}&\Stripe\StripeObject&\stdClass, value: string}&\Stripe\StripeObject&\stdClass)[] $filing_statuses A list of tax filing statuses. Note that a filing status will only be included if the form has been filed directly with the jurisdiction’s tax authority.
- * @property null|object{reporting_period_end_date: string, reporting_period_start_date: string}&\Stripe\StripeObject&\stdClass $gb_mrdp
+ * @property null|(object{reporting_period_end_date: string, reporting_period_start_date: string}&\Stripe\StripeObject&\stdClass) $eu_dac7
+ * @property ((object{effective_at: int, jurisdiction: (object{country: string, level: string, state: null|string}&\Stripe\StripeObject&\stdClass), value: string}&\Stripe\StripeObject&\stdClass))[] $filing_statuses A list of tax filing statuses. Note that a filing status will only be included if the form has been filed directly with the jurisdiction’s tax authority.
+ * @property null|(object{reporting_period_end_date: string, reporting_period_start_date: string}&\Stripe\StripeObject&\stdClass) $gb_mrdp
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|object{reporting_period_end_date: string, reporting_period_start_date: string}&\Stripe\StripeObject&\stdClass $nz_mrdp
- * @property object{account: null|string|\Stripe\Account, external_reference: null|string, type: string}&\Stripe\StripeObject&\stdClass $payee
+ * @property null|(object{reporting_period_end_date: string, reporting_period_start_date: string}&\Stripe\StripeObject&\stdClass) $nz_mrdp
+ * @property (object{account: null|string|\Stripe\Account, external_reference: null|string, type: string}&\Stripe\StripeObject&\stdClass) $payee
  * @property string $type The type of the tax form. An additional hash is included on the tax form with a name matching this value. It contains additional information specific to the tax form type.
- * @property null|object{reporting_year: int}&\Stripe\StripeObject&\stdClass $us_1099_k
- * @property null|object{reporting_year: int}&\Stripe\StripeObject&\stdClass $us_1099_misc
- * @property null|object{reporting_year: int}&\Stripe\StripeObject&\stdClass $us_1099_nec
+ * @property null|(object{reporting_year: int}&\Stripe\StripeObject&\stdClass) $us_1099_k
+ * @property null|(object{reporting_year: int}&\Stripe\StripeObject&\stdClass) $us_1099_misc
+ * @property null|(object{reporting_year: int}&\Stripe\StripeObject&\stdClass) $us_1099_nec
  */
 class Form extends \Stripe\ApiResource
 {

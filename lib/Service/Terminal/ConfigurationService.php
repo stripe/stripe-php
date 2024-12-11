@@ -44,7 +44,7 @@ class ConfigurationService extends \Stripe\Service\AbstractService
      * Deletes a <code>Configuration</code> object.
      *
      * @param string $id
-     * @param null|array{{}} $params
+     * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

@@ -84,7 +84,7 @@ class Feature extends \Stripe\ApiResource
      * Update a feature’s metadata or permanently deactivate it.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{active?: bool, expand?: string[], metadata?: null|StripeObject, name?: string} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|\Stripe\StripeObject, name?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

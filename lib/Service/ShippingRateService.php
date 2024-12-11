@@ -60,7 +60,7 @@ class ShippingRateService extends \Stripe\Service\AbstractService
      * Updates an existing shipping rate object.
      *
      * @param string $id
-     * @param null|array{active?: bool, expand?: string[], fixed_amount?: array{currency_options?: \Stripe\StripeObject}, metadata?: null|StripeObject, tax_behavior?: string} $params
+     * @param null|array{active?: bool, expand?: string[], fixed_amount?: array{currency_options?: \Stripe\StripeObject}, metadata?: null|\Stripe\StripeObject, tax_behavior?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

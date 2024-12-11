@@ -15,7 +15,7 @@ class MeterEventSessionService extends \Stripe\Service\AbstractService
      * stream. Authentication tokens are only valid for 15 minutes, so you will need to
      * create a new meter event session when your token expires.
      *
-     * @param null|array{{}} $params
+     * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

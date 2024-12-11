@@ -17,9 +17,9 @@ namespace Stripe;
  * @property string|\Stripe\Invoice $invoice The invoice that was paid.
  * @property null|bool $is_default Stripe automatically creates a default InvoicePayment when the invoice is finalized, and keeps it synchronized with the invoice’s <code>amount_remaining</code>. The PaymentIntent associated with the default payment can’t be edited or canceled directly.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property object{charge?: string|\Stripe\Charge, payment_intent?: string|\Stripe\PaymentIntent, payment_record?: string|\Stripe\PaymentRecord, type: string}&\Stripe\StripeObject&\stdClass $payment
+ * @property (object{charge?: string|\Stripe\Charge, payment_intent?: string|\Stripe\PaymentIntent, payment_record?: string|\Stripe\PaymentRecord, type: string}&\Stripe\StripeObject&\stdClass) $payment
  * @property string $status The status of the payment, one of <code>open</code>, <code>paid</code>, or <code>canceled</code>.
- * @property object{canceled_at: null|int, paid_at: null|int}&\Stripe\StripeObject&\stdClass $status_transitions
+ * @property (object{canceled_at: null|int, paid_at: null|int}&\Stripe\StripeObject&\stdClass) $status_transitions
  */
 class InvoicePayment extends ApiResource
 {

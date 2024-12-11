@@ -116,7 +116,7 @@ class Transfer extends ApiResource
      * This request accepts only metadata as an argument.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{description?: string, expand?: string[], metadata?: null|StripeObject} $params
+     * @param null|array{description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

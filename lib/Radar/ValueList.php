@@ -65,7 +65,7 @@ class ValueList extends \Stripe\ApiResource
      * within the value list. To be deleted, a value list must not be referenced in any
      * rules.
      *
-     * @param null|array{{}} $params
+     * @param null|array $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

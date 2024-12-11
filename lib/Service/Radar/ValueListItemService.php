@@ -48,7 +48,7 @@ class ValueListItemService extends \Stripe\Service\AbstractService
      * list.
      *
      * @param string $id
-     * @param null|array{{}} $params
+     * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

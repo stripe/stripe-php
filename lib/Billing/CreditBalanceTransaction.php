@@ -10,9 +10,9 @@ namespace Stripe\Billing;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|object{amount: object{monetary: null|object{currency: string, value: int}&\Stripe\StripeObject&\stdClass, type: string}&\Stripe\StripeObject&\stdClass, type: string}&\Stripe\StripeObject&\stdClass $credit Credit details for this credit balance transaction. Only present if type is <code>credit</code>.
+ * @property null|(object{amount: (object{monetary: null|(object{currency: string, value: int}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass) $credit Credit details for this credit balance transaction. Only present if type is <code>credit</code>.
  * @property string|\Stripe\Billing\CreditGrant $credit_grant The credit grant associated with this credit balance transaction.
- * @property null|object{amount: object{monetary: null|object{currency: string, value: int}&\Stripe\StripeObject&\stdClass, type: string}&\Stripe\StripeObject&\stdClass, credits_applied: null|object{invoice: string|\Stripe\Invoice, invoice_line_item: string}&\Stripe\StripeObject&\stdClass, type: string}&\Stripe\StripeObject&\stdClass $debit Debit details for this credit balance transaction. Only present if type is <code>debit</code>.
+ * @property null|(object{amount: (object{monetary: null|(object{currency: string, value: int}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass), credits_applied: null|(object{invoice: string|\Stripe\Invoice, invoice_line_item: string}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass) $debit Debit details for this credit balance transaction. Only present if type is <code>debit</code>.
  * @property int $effective_at The effective time of this credit balance transaction.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this credit balance transaction belongs to.

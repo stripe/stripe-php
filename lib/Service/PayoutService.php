@@ -117,7 +117,7 @@ class PayoutService extends \Stripe\Service\AbstractService
      * metadata as arguments.
      *
      * @param string $id
-     * @param null|array{expand?: string[], metadata?: null|StripeObject} $params
+     * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

@@ -29,7 +29,7 @@ class EventService extends \Stripe\Service\AbstractService
      * Retrieves the details of an event.
      *
      * @param string $id
-     * @param null|array{{}} $params
+     * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

@@ -84,7 +84,7 @@ class PriceService extends \Stripe\Service\AbstractService
      * parameters not provided are left unchanged.
      *
      * @param string $id
-     * @param null|array{active?: bool, currency_options?: null|StripeObject, expand?: string[], lookup_key?: string, metadata?: null|StripeObject, migrate_to?: null|array{behavior: string, effective_after?: int, price: string}, nickname?: string, tax_behavior?: string, transfer_lookup_key?: bool} $params
+     * @param null|array{active?: bool, currency_options?: null|\Stripe\StripeObject, expand?: string[], lookup_key?: string, metadata?: null|\Stripe\StripeObject, migrate_to?: null|array{behavior: string, effective_after?: int, price: string}, nickname?: string, tax_behavior?: string, transfer_lookup_key?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

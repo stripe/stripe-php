@@ -28,7 +28,7 @@ class FileLinkService extends \Stripe\Service\AbstractService
     /**
      * Creates a new file link object.
      *
-     * @param null|array{expand?: string[], expires_at?: int, file: string, metadata?: null|StripeObject} $params
+     * @param null|array{expand?: string[], expires_at?: int, file: string, metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -60,7 +60,7 @@ class FileLinkService extends \Stripe\Service\AbstractService
      * Updates an existing file link object. Expired links can no longer be updated.
      *
      * @param string $id
-     * @param null|array{expand?: string[], expires_at?: null|int|array, metadata?: null|StripeObject} $params
+     * @param null|array{expand?: string[], expires_at?: null|int|array, metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
