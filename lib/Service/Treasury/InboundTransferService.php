@@ -13,7 +13,7 @@ class InboundTransferService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of InboundTransfers sent from the specified FinancialAccount.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -29,7 +29,7 @@ class InboundTransferService extends \Stripe\Service\AbstractService
      * Cancels an InboundTransfer.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -44,7 +44,7 @@ class InboundTransferService extends \Stripe\Service\AbstractService
     /**
      * Creates an InboundTransfer.
      *
-     * @param null|array $params
+     * @param null|array{amount: int, currency: string, description?: string, expand?: string[], financial_account: string, metadata?: \Stripe\StripeObject, origin_payment_method: string, statement_descriptor?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -60,7 +60,7 @@ class InboundTransferService extends \Stripe\Service\AbstractService
      * Retrieves the details of an existing InboundTransfer.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

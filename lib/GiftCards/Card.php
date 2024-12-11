@@ -15,9 +15,9 @@ namespace Stripe\GiftCards;
  * @property int $amount_held The amount of funds marked as held.
  * @property null|string $code Code used to redeem this gift card.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|\Stripe\StripeObject $created_by The related Stripe objects that created this gift card.
+ * @property null|object{checkout?: object{checkout_session: string, line_item: null|string}&\Stripe\StripeObject&\stdClass, order?: object{line_item: null|string, order: string}&\Stripe\StripeObject&\stdClass, payment?: object{payment_intent: string}&\Stripe\StripeObject&\stdClass, type: string}&\Stripe\StripeObject&\stdClass $created_by The related Stripe objects that created this gift card.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|\Stripe\Collection<\Stripe\GiftCards\Transaction> $transactions Transactions on this gift card.
  */
 class Card extends \Stripe\ApiResource
@@ -29,7 +29,7 @@ class Card extends \Stripe\ApiResource
     /**
      * Creates a new gift card object.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, created_by?: array{payment: array{payment_intent: string}, type: string}, currency: string, expand?: string[], initial_amount?: int, metadata?: \Stripe\StripeObject} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -51,7 +51,7 @@ class Card extends \Stripe\ApiResource
     /**
      * List gift cards for an account.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -88,7 +88,7 @@ class Card extends \Stripe\ApiResource
      * Update a gift card.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|StripeObject} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

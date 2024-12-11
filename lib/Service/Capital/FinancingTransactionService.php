@@ -14,7 +14,7 @@ class FinancingTransactionService extends \Stripe\Service\AbstractService
      * Returns a list of financing transactions. The transactions are returned in
      * sorted order, with the most recent transactions appearing first.
      *
-     * @param null|array $params
+     * @param null|array{charge?: string, ending_before?: string, expand?: string[], financing_offer?: string, limit?: int, reversed_transaction?: string, starting_after?: string, treasury_transaction?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -30,7 +30,7 @@ class FinancingTransactionService extends \Stripe\Service\AbstractService
      * Retrieves a financing transaction for a financing offer.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

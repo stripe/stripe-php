@@ -14,7 +14,7 @@ class RefundService extends \Stripe\Service\AbstractService
      * Expire a refund with a status of <code>requires_action</code>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

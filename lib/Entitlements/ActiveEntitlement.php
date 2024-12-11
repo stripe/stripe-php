@@ -20,7 +20,7 @@ class ActiveEntitlement extends \Stripe\ApiResource
     /**
      * Retrieve a list of active entitlements for a customer.
      *
-     * @param null|array $params
+     * @param null|array{customer: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

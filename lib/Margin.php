@@ -13,7 +13,7 @@ namespace Stripe;
  * @property bool $active Whether the margin can be applied to invoices, invoice items, or invoice line items. Defaults to <code>true</code>.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name Name of the margin that's displayed on, for example, invoices.
  * @property float $percent_off Percent that will be taken off the subtotal before tax (after all other discounts and promotions) of any invoice to which the margin is applied.
  * @property int $updated Time at which the object was last updated. Measured in seconds since the Unix epoch.
@@ -32,7 +32,7 @@ class Margin extends ApiResource
      * a customer. Calculation of prorations do not include any partner margins applied
      * on the original invoice item.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: \Stripe\StripeObject, name?: string, percent_off: float} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -54,7 +54,7 @@ class Margin extends ApiResource
     /**
      * Retrieve a list of your margins.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -92,7 +92,7 @@ class Margin extends ApiResource
      * editable.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: \Stripe\StripeObject, name?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

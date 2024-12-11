@@ -17,13 +17,13 @@ namespace Stripe;
  * @property null|string $closed_reason The reason the review was closed, or null if it has not yet been closed. One of <code>approved</code>, <code>refunded</code>, <code>refunded_as_fraud</code>, <code>disputed</code>, or <code>redacted</code>.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $ip_address The IP address where the payment originated.
- * @property null|\Stripe\StripeObject $ip_address_location Information related to the location of the payment. Note that this information is an approximation and attempts to locate the nearest population center - it should not be used to determine a specific address.
+ * @property null|object{city: null|string, country: null|string, latitude: null|float, longitude: null|float, region: null|string}&\Stripe\StripeObject&\stdClass $ip_address_location Information related to the location of the payment. Note that this information is an approximation and attempts to locate the nearest population center - it should not be used to determine a specific address.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property bool $open If <code>true</code>, the review needs action.
  * @property string $opened_reason The reason the review was opened. One of <code>rule</code> or <code>manual</code>.
  * @property null|string|\Stripe\PaymentIntent $payment_intent The PaymentIntent ID associated with this review, if one exists.
  * @property string $reason The reason the review is currently open or closed. One of <code>rule</code>, <code>manual</code>, <code>approved</code>, <code>refunded</code>, <code>refunded_as_fraud</code>, <code>disputed</code>, or <code>redacted</code>.
- * @property null|\Stripe\StripeObject $session Information related to the browsing session of the user who initiated the payment.
+ * @property null|object{browser: null|string, device: null|string, platform: null|string, version: null|string}&\Stripe\StripeObject&\stdClass $session Information related to the browsing session of the user who initiated the payment.
  */
 class Review extends ApiResource
 {
@@ -43,7 +43,7 @@ class Review extends ApiResource
      * <code>true</code>. The objects are sorted in descending order by creation date,
      * with the most recently created object appearing first.
      *
-     * @param null|array $params
+     * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

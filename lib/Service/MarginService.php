@@ -13,7 +13,7 @@ class MarginService extends \Stripe\Service\AbstractService
     /**
      * Retrieve a list of your margins.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -33,7 +33,7 @@ class MarginService extends \Stripe\Service\AbstractService
      * a customer. Calculation of prorations do not include any partner margins applied
      * on the original invoice item.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: \Stripe\StripeObject, name?: string, percent_off: float} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -49,7 +49,7 @@ class MarginService extends \Stripe\Service\AbstractService
      * Retrieve a margin object with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -66,7 +66,7 @@ class MarginService extends \Stripe\Service\AbstractService
      * editable.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: \Stripe\StripeObject, name?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

@@ -13,7 +13,7 @@ class TransactionService extends \Stripe\Service\AbstractService
     /**
      * List gift card transactions for a gift card.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], gift_card?: string, limit?: int, starting_after?: string, transfer_group?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -29,7 +29,7 @@ class TransactionService extends \Stripe\Service\AbstractService
      * Cancel a gift card transaction.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -45,7 +45,7 @@ class TransactionService extends \Stripe\Service\AbstractService
      * Confirm a gift card transaction.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -60,7 +60,7 @@ class TransactionService extends \Stripe\Service\AbstractService
     /**
      * Create a gift card transaction.
      *
-     * @param null|array $params
+     * @param null|array{amount: int, confirm?: bool, created_by?: array{payment: array{payment_intent: string}, type: string}, currency: string, description?: string, expand?: string[], gift_card: string, metadata?: \Stripe\StripeObject, transfer_group?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -76,7 +76,7 @@ class TransactionService extends \Stripe\Service\AbstractService
      * Retrieves the gift card transaction.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -92,7 +92,7 @@ class TransactionService extends \Stripe\Service\AbstractService
      * Update a gift card transaction.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{description?: string, expand?: string[], metadata?: null|StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

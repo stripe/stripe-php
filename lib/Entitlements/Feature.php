@@ -25,7 +25,7 @@ class Feature extends \Stripe\ApiResource
     /**
      * Creates a feature.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], lookup_key: string, metadata?: \Stripe\StripeObject, name: string} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -47,7 +47,7 @@ class Feature extends \Stripe\ApiResource
     /**
      * Retrieve a list of features.
      *
-     * @param null|array $params
+     * @param null|array{archived?: bool, ending_before?: string, expand?: string[], limit?: int, lookup_key?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -84,7 +84,7 @@ class Feature extends \Stripe\ApiResource
      * Update a feature’s metadata or permanently deactivate it.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|StripeObject, name?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

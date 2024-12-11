@@ -14,7 +14,7 @@ class CustomerService extends \Stripe\Service\AbstractService
      * Create an incoming testmode bank transfer.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{amount: int, currency: string, expand?: string[], reference?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

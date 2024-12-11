@@ -13,7 +13,7 @@ class EventDestinationService extends \Stripe\Service\AbstractService
     /**
      * Lists all event destinations.
      *
-     * @param null|array $params
+     * @param null|array{include?: string[], limit?: int, page?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -28,7 +28,7 @@ class EventDestinationService extends \Stripe\Service\AbstractService
     /**
      * Create a new event destination.
      *
-     * @param null|array $params
+     * @param null|array{description?: string, enabled_events: string[], event_payload: string, events_from?: string[], include?: string[], metadata?: \Stripe\StripeObject, name: string, snapshot_api_version?: string, type: string, amazon_eventbridge?: array{aws_account_id: string, aws_region: string}, webhook_endpoint?: array{url: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -44,7 +44,7 @@ class EventDestinationService extends \Stripe\Service\AbstractService
      * Delete an event destination.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{{}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -60,7 +60,7 @@ class EventDestinationService extends \Stripe\Service\AbstractService
      * Disable an event destination.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{{}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -76,7 +76,7 @@ class EventDestinationService extends \Stripe\Service\AbstractService
      * Enable an event destination.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{{}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -92,7 +92,7 @@ class EventDestinationService extends \Stripe\Service\AbstractService
      * Send a `ping` event to an event destination.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{{}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -108,7 +108,7 @@ class EventDestinationService extends \Stripe\Service\AbstractService
      * Retrieves the details of an event destination.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{include?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -124,7 +124,7 @@ class EventDestinationService extends \Stripe\Service\AbstractService
      * Update the details of an event destination.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{description?: string, enabled_events?: string[], include?: string[], metadata?: \Stripe\StripeObject, name?: string, webhook_endpoint?: array{url: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

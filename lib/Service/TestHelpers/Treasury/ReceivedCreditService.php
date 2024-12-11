@@ -15,7 +15,7 @@ class ReceivedCreditService extends \Stripe\Service\AbstractService
      * party. In live mode, you can’t directly create ReceivedCredits initiated by
      * third parties.
      *
-     * @param null|array $params
+     * @param null|array{amount: int, currency: string, description?: string, expand?: string[], financial_account: string, initiating_payment_method_details?: array{type: string, us_bank_account?: array{account_holder_name?: string, account_number?: string, routing_number?: string}}, network: string, network_details?: array{ach?: array{addenda?: string}, type: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

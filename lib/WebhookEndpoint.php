@@ -43,7 +43,7 @@ class WebhookEndpoint extends ApiResource
      * href="https://dashboard.stripe.com/account/webhooks">webhooks settings</a>
      * section of the Dashboard.
      *
-     * @param null|array $params
+     * @param null|array{api_version?: string, connect?: bool, description?: null|string, enabled_events: string[], expand?: string[], metadata?: null|StripeObject, url: string} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -67,7 +67,7 @@ class WebhookEndpoint extends ApiResource
      * href="https://dashboard.stripe.com/account/webhooks">webhook endpoint
      * management</a> page of the Stripe dashboard.
      *
-     * @param null|array $params
+     * @param null|array{{}} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -88,7 +88,7 @@ class WebhookEndpoint extends ApiResource
     /**
      * Returns a list of your webhook endpoints.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -126,7 +126,7 @@ class WebhookEndpoint extends ApiResource
      * <code>enabled_events</code>, and the status of your endpoint.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{description?: null|string, disabled?: bool, enabled_events?: string[], expand?: string[], metadata?: null|StripeObject, url?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

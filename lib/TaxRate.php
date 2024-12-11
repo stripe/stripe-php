@@ -17,12 +17,12 @@ namespace Stripe;
  * @property null|string $description An arbitrary string attached to the tax rate for your internal use only. It will not be visible to your customers.
  * @property string $display_name The display name of the tax rates as it will appear to your customer on their receipt email, PDF, and the hosted invoice page.
  * @property null|float $effective_percentage Actual/effective tax rate percentage out of 100. For tax calculations with automatic_tax[enabled]=true, this percentage reflects the rate actually used to calculate tax based on the product's taxability and whether the user is registered to collect taxes in the corresponding jurisdiction.
- * @property null|\Stripe\StripeObject $flat_amount The amount of the tax rate when the <code>rate_type</code> is <code>flat_amount</code>. Tax rates with <code>rate_type</code> <code>percentage</code> can vary based on the transaction, resulting in this field being <code>null</code>. This field exposes the amount and currency of the flat tax rate.
+ * @property null|object{amount: int, currency: string}&\Stripe\StripeObject&\stdClass $flat_amount The amount of the tax rate when the <code>rate_type</code> is <code>flat_amount</code>. Tax rates with <code>rate_type</code> <code>percentage</code> can vary based on the transaction, resulting in this field being <code>null</code>. This field exposes the amount and currency of the flat tax rate.
  * @property bool $inclusive This specifies if the tax rate is inclusive or exclusive.
  * @property null|string $jurisdiction The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer’s invoice.
  * @property null|string $jurisdiction_level The level of the jurisdiction that imposes this tax rate. Will be <code>null</code> for manually defined tax rates.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property float $percentage Tax rate percentage out of 100. For tax calculations with automatic_tax[enabled]=true, this percentage includes the statutory tax rate of non-taxable jurisdictions.
  * @property null|string $rate_type Indicates the type of tax rate applied to the taxable amount. This value can be <code>null</code> when no tax applies to the location.
  * @property null|string $state <a href="https://en.wikipedia.org/wiki/ISO_3166-2:US">ISO 3166-2 subdivision code</a>, without country prefix. For example, &quot;NY&quot; for New York, United States.
@@ -62,7 +62,7 @@ class TaxRate extends ApiResource
     /**
      * Creates a new tax rate.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, country?: string, description?: string, display_name: string, expand?: string[], inclusive: bool, jurisdiction?: string, metadata?: \Stripe\StripeObject, percentage: float, state?: string, tax_type?: string} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -85,7 +85,7 @@ class TaxRate extends ApiResource
      * Returns a list of your tax rates. Tax rates are returned sorted by creation
      * date, with the most recently created tax rates appearing first.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, created?: int|array, ending_before?: string, expand?: string[], inclusive?: bool, limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -122,7 +122,7 @@ class TaxRate extends ApiResource
      * Updates an existing tax rate.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{active?: bool, country?: string, description?: string, display_name?: string, expand?: string[], jurisdiction?: string, metadata?: null|StripeObject, state?: string, tax_type?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
