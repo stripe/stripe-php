@@ -22,6 +22,7 @@ namespace Stripe;
  * @property null|string $address_state State/County/Province/Region.
  * @property null|string $address_zip ZIP or postal code.
  * @property null|string $address_zip_check If <code>address_zip</code> was provided, results of the check: <code>pass</code>, <code>fail</code>, <code>unavailable</code>, or <code>unchecked</code>.
+ * @property null|string $allow_redisplay This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”.
  * @property null|string[] $available_payout_methods A set of available payout methods for this card. Only values from this set should be passed as the <code>method</code> when creating a payout.
  * @property string $brand Card brand. Can be <code>American Express</code>, <code>Diners Club</code>, <code>Discover</code>, <code>Eftpos Australia</code>, <code>Girocard</code>, <code>JCB</code>, <code>MasterCard</code>, <code>UnionPay</code>, <code>Visa</code>, or <code>Unknown</code>.
  * @property null|string $country Two-letter ISO code representing the country of the card. You could use this attribute to get a sense of the international breakdown of cards you've collected.
@@ -45,6 +46,10 @@ namespace Stripe;
 class Card extends ApiResource
 {
     const OBJECT_NAME = 'card';
+
+    const ALLOW_REDISPLAY_ALWAYS = 'always';
+    const ALLOW_REDISPLAY_LIMITED = 'limited';
+    const ALLOW_REDISPLAY_UNSPECIFIED = 'unspecified';
 
     const REGULATED_STATUS_REGULATED = 'regulated';
     const REGULATED_STATUS_UNREGULATED = 'unregulated';
