@@ -1,5 +1,10 @@
 # Changelog
 
+## 16.4.0-beta.3 - 2024-12-12
+* [#1792](https://github.com/stripe/stripe-php/pull/1792) Update generated code for beta
+  * Add support for `allow_redisplay` on `Card` and `Source`
+  * Remove support for `amount_refunded` on `PaymentRecord`
+
 ## 16.4.0-beta.2 - 2024-12-05
 * [#1790](https://github.com/stripe/stripe-php/pull/1790) Update generated code for beta
   * Add support for new values `payout_minimum_balance_hold` and `payout_minimum_balance_release` on enum `BalanceTransaction.type`
