@@ -22,6 +22,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $ach_debit
  * @property null|\Stripe\StripeObject $acss_debit
  * @property null|\Stripe\StripeObject $alipay
+ * @property null|string $allow_redisplay This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”.
  * @property null|int $amount A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a zero-decimal currency) representing the total amount associated with the source. This is the amount for which the source will be chargeable once ready. Required for <code>single_use</code> sources.
  * @property null|\Stripe\StripeObject $au_becs_debit
  * @property null|\Stripe\StripeObject $bancontact
@@ -60,6 +61,10 @@ class Source extends ApiResource
     const OBJECT_NAME = 'source';
 
     use ApiOperations\Update;
+
+    const ALLOW_REDISPLAY_ALWAYS = 'always';
+    const ALLOW_REDISPLAY_LIMITED = 'limited';
+    const ALLOW_REDISPLAY_UNSPECIFIED = 'unspecified';
 
     const FLOW_CODE_VERIFICATION = 'code_verification';
     const FLOW_NONE = 'none';
