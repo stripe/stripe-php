@@ -12,10 +12,10 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property \Stripe\StripeObject $amount_canceled A representation of an amount of money, consisting of an amount and a currency.
- * @property \Stripe\StripeObject $amount_failed A representation of an amount of money, consisting of an amount and a currency.
- * @property \Stripe\StripeObject $amount_guaranteed A representation of an amount of money, consisting of an amount and a currency.
- * @property \Stripe\StripeObject $amount_requested A representation of an amount of money, consisting of an amount and a currency.
+ * @property (object{currency: string, value: int}&\Stripe\StripeObject&\stdClass) $amount_canceled A representation of an amount of money, consisting of an amount and a currency.
+ * @property (object{currency: string, value: int}&\Stripe\StripeObject&\stdClass) $amount_failed A representation of an amount of money, consisting of an amount and a currency.
+ * @property (object{currency: string, value: int}&\Stripe\StripeObject&\stdClass) $amount_guaranteed A representation of an amount of money, consisting of an amount and a currency.
+ * @property (object{currency: string, value: int}&\Stripe\StripeObject&\stdClass) $amount_requested A representation of an amount of money, consisting of an amount and a currency.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|(object{customer: null|string, email: null|string, name: null|string, phone: null|string}&\Stripe\StripeObject&\stdClass) $customer_details Customer information for this payment.
  * @property null|string $customer_presence Indicates whether the customer was present in your checkout flow during this payment.

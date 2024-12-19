@@ -18,10 +18,10 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\Stripe\StripeObject $ach_credit_transfer
- * @property null|\Stripe\StripeObject $ach_debit
- * @property null|\Stripe\StripeObject $acss_debit
- * @property null|\Stripe\StripeObject $alipay
+ * @property (object{account_number?: null|string, bank_name?: null|string, fingerprint?: null|string, refund_account_holder_name?: null|string, refund_account_holder_type?: null|string, refund_routing_number?: null|string, routing_number?: null|string, swift_code?: null|string}&\Stripe\StripeObject&\stdClass) $ach_credit_transfer
+ * @property (object{bank_name?: null|string, country?: null|string, fingerprint?: null|string, last4?: null|string, routing_number?: null|string, type?: null|string}&\Stripe\StripeObject&\stdClass) $ach_debit
+ * @property (object{bank_address_city?: null|string, bank_address_line_1?: null|string, bank_address_line_2?: null|string, bank_address_postal_code?: null|string, bank_name?: null|string, category?: null|string, country?: null|string, fingerprint?: null|string, last4?: null|string, routing_number?: null|string}&\Stripe\StripeObject&\stdClass) $acss_debit
+ * @property (object{data_string?: null|string, native_url?: null|string, statement_descriptor?: null|string}&\Stripe\StripeObject&\stdClass) $alipay
  * @property null|string $allow_redisplay This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”.
  * @property null|int $amount A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a zero-decimal currency) representing the total amount associated with the source. This is the amount for which the source will be chargeable once ready. Required for <code>single_use</code> sources.
  * @property (object{bsb_number?: null|string, fingerprint?: null|string, last4?: null|string}&\Stripe\StripeObject&\stdClass) $au_becs_debit
