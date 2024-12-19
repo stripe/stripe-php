@@ -17,7 +17,7 @@ namespace Stripe\GiftCards;
  * @property null|int $amount The amount of this transaction. A positive value indicates that funds were added to the gift card. A negative value indicates that funds were removed from the gift card.
  * @property null|int $confirmed_at Time at which the transaction was confirmed. Measured in seconds since the Unix epoch.
  * @property null|int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|\Stripe\StripeObject $created_by The related Stripe objects that created this gift card transaction.
+ * @property null|(object{checkout?: (object{checkout_session: string, line_item: null|string}&\Stripe\StripeObject&\stdClass), order?: (object{line_item: null|string, order: string}&\Stripe\StripeObject&\stdClass), payment?: (object{payment_intent: string}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass) $created_by The related Stripe objects that created this gift card transaction.
  * @property null|string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|string $gift_card The gift card that this transaction occurred on
@@ -39,7 +39,7 @@ class Transaction extends \Stripe\ApiResource
     /**
      * Create a gift card transaction.
      *
-     * @param null|array $params
+     * @param null|array{amount: int, confirm?: bool, created_by?: array{payment: array{payment_intent: string}, type: string}, currency: string, description?: string, expand?: string[], gift_card: string, metadata?: \Stripe\StripeObject, transfer_group?: string} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -61,7 +61,7 @@ class Transaction extends \Stripe\ApiResource
     /**
      * List gift card transactions for a gift card.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], gift_card?: string, limit?: int, starting_after?: string, transfer_group?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -98,7 +98,7 @@ class Transaction extends \Stripe\ApiResource
      * Update a gift card transaction.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

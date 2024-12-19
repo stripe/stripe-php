@@ -37,7 +37,7 @@ class DisputeSettlementDetail extends \Stripe\ApiResource
      * objects are sorted in descending order by creation date, with the most recently
      * created object appearing first.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, settlement?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

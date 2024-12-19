@@ -13,7 +13,7 @@ class CouponService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of your coupons.
      *
-     * @param null|array $params
+     * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -41,7 +41,7 @@ class CouponService extends \Stripe\Service\AbstractService
      * a coupon with an <code>amount_off</code> of <amount>200</amount> is applied to
      * it.
      *
-     * @param null|array $params
+     * @param null|array{amount_off?: int, applies_to?: array{products?: string[]}, currency?: string, currency_options?: \Stripe\StripeObject, duration?: string, duration_in_months?: int, expand?: string[], id?: string, max_redemptions?: int, metadata?: null|\Stripe\StripeObject, name?: string, percent_off?: float, redeem_by?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -77,7 +77,7 @@ class CouponService extends \Stripe\Service\AbstractService
      * Retrieves the coupon with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -94,7 +94,7 @@ class CouponService extends \Stripe\Service\AbstractService
      * amount_off) are, by design, not editable.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{currency_options?: \Stripe\StripeObject, expand?: string[], metadata?: null|\Stripe\StripeObject, name?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

@@ -43,7 +43,7 @@ class Topup extends ApiResource
     /**
      * Top up the balance of an account.
      *
-     * @param null|array $params
+     * @param null|array{amount: int, currency: string, description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject, source?: string, statement_descriptor?: string, transfer_group?: string} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -65,7 +65,7 @@ class Topup extends ApiResource
     /**
      * Returns a list of top-ups.
      *
-     * @param null|array $params
+     * @param null|array{amount?: int|array, created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -105,7 +105,7 @@ class Topup extends ApiResource
      * design.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

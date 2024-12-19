@@ -13,7 +13,7 @@ class FileLinkService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of file links.
      *
-     * @param null|array $params
+     * @param null|array{created?: int|array, ending_before?: string, expand?: string[], expired?: bool, file?: string, limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -28,7 +28,7 @@ class FileLinkService extends \Stripe\Service\AbstractService
     /**
      * Creates a new file link object.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], expires_at?: int, file: string, metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -44,7 +44,7 @@ class FileLinkService extends \Stripe\Service\AbstractService
      * Retrieves the file link with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -60,7 +60,7 @@ class FileLinkService extends \Stripe\Service\AbstractService
      * Updates an existing file link object. Expired links can no longer be updated.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], expires_at?: null|string|int|array, metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

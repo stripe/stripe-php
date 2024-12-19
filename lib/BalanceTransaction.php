@@ -19,7 +19,7 @@ namespace Stripe;
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|float $exchange_rate If applicable, this transaction uses an exchange rate. If money converts from currency A to currency B, then the <code>amount</code> in currency A, multipled by the <code>exchange_rate</code>, equals the <code>amount</code> in currency B. For example, if you charge a customer 10.00 EUR, the PaymentIntent's <code>amount</code> is <code>1000</code> and <code>currency</code> is <code>eur</code>. If this converts to 12.34 USD in your Stripe account, the BalanceTransaction's <code>amount</code> is <code>1234</code>, its <code>currency</code> is <code>usd</code>, and the <code>exchange_rate</code> is <code>1.234</code>.
  * @property int $fee Fees (in cents (or local equivalent)) paid for this transaction. Represented as a positive integer when assessed.
- * @property \Stripe\StripeObject[] $fee_details Detailed breakdown of fees (in cents (or local equivalent)) paid for this transaction.
+ * @property ((object{amount: int, application: null|string, currency: string, description: null|string, type: string}&\Stripe\StripeObject&\stdClass))[] $fee_details Detailed breakdown of fees (in cents (or local equivalent)) paid for this transaction.
  * @property int $net Net impact to a Stripe balance (in cents (or local equivalent)). A positive value represents incrementing a Stripe balance, and a negative value decrementing a Stripe balance. You can calculate the net impact of a transaction on a balance by <code>amount</code> - <code>fee</code>
  * @property string $reporting_category Learn more about how <a href="https://stripe.com/docs/reports/reporting-categories">reporting categories</a> can help you understand balance transactions from an accounting perspective.
  * @property null|string|\Stripe\ApplicationFee|\Stripe\ApplicationFeeRefund|\Stripe\Charge|\Stripe\ConnectCollectionTransfer|\Stripe\CustomerCashBalanceTransaction|\Stripe\Dispute|\Stripe\Issuing\Authorization|\Stripe\Issuing\Dispute|\Stripe\Issuing\Transaction|\Stripe\Payout|\Stripe\Refund|\Stripe\ReserveTransaction|\Stripe\TaxDeductedAtSource|\Stripe\Topup|\Stripe\Transfer|\Stripe\TransferReversal $source This transaction relates to the Stripe object.
@@ -81,7 +81,7 @@ class BalanceTransaction extends ApiResource
      * Note that this endpoint was previously called “Balance history” and used the
      * path <code>/v1/balance/history</code>.
      *
-     * @param null|array $params
+     * @param null|array{created?: int|array, currency?: string, ending_before?: string, expand?: string[], limit?: int, payout?: string, source?: string, starting_after?: string, type?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

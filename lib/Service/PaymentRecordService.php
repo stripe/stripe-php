@@ -15,7 +15,7 @@ class PaymentRecordService extends \Stripe\Service\AbstractService
      * initialized and later report updates through the other report_* methods, or
      * report Payment  Records in a terminal state directly, through this method.
      *
-     * @param null|array $params
+     * @param null|array{amount_requested: array{currency: string, value: int}, customer_details?: array{customer?: string, email?: string, name?: string, phone?: string}, customer_presence?: string, description?: string, expand?: string[], failed?: array{failed_at: int}, guaranteed?: array{guaranteed_at: int}, initiated_at: int, metadata?: \Stripe\StripeObject, outcome?: string, payment_method_details: array{billing_details?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: string, name?: string, phone?: string}, custom?: array{display_name?: string, type?: string}, payment_method?: string, type?: string}, payment_reference: string, shipping_details?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, name?: string, phone?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -33,7 +33,7 @@ class PaymentRecordService extends \Stripe\Service\AbstractService
      * failed.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{description?: string, expand?: string[], failed?: array{failed_at: int}, guaranteed?: array{guaranteed_at: int}, initiated_at: int, metadata?: \Stripe\StripeObject, outcome?: string, payment_method_details?: array{billing_details?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: string, name?: string, phone?: string}, custom?: array{display_name?: string, type?: string}, payment_method?: string, type?: string}, shipping_details?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, name?: string, phone?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -50,7 +50,7 @@ class PaymentRecordService extends \Stripe\Service\AbstractService
      * canceled.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{canceled_at: int, expand?: string[], metadata?: \Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -67,7 +67,7 @@ class PaymentRecordService extends \Stripe\Service\AbstractService
      * failed or errored.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], failed_at: int, metadata?: \Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -84,7 +84,7 @@ class PaymentRecordService extends \Stripe\Service\AbstractService
      * guaranteed.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], guaranteed_at: int, metadata?: \Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -100,7 +100,7 @@ class PaymentRecordService extends \Stripe\Service\AbstractService
      * Retrieves a Payment Record with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

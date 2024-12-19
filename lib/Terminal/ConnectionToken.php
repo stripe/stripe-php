@@ -22,7 +22,7 @@ class ConnectionToken extends \Stripe\ApiResource
      * connection token from Stripe, proxied through your server. On your backend, add
      * an endpoint that creates and returns a connection token.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], location?: string} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

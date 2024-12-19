@@ -16,7 +16,7 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
      * state.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -34,7 +34,7 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
      * state.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -52,7 +52,7 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
      * state.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], returned_details?: array{code?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -70,7 +70,7 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
      * <code>canceled</code> or <code>failed</code> states.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], tracking_details: array{ach?: array{trace_id: string}, type: string, us_domestic_wire?: array{chips?: string, imad?: string, omad?: string}}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

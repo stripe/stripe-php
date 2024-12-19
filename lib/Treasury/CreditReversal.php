@@ -19,7 +19,7 @@ namespace Stripe\Treasury;
  * @property string $network The rails used to reverse the funds.
  * @property string $received_credit The ReceivedCredit being reversed.
  * @property string $status Status of the CreditReversal
- * @property \Stripe\StripeObject $status_transitions
+ * @property (object{posted_at: null|int}&\Stripe\StripeObject&\stdClass) $status_transitions
  * @property null|string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
  */
 class CreditReversal extends \Stripe\ApiResource
@@ -36,7 +36,7 @@ class CreditReversal extends \Stripe\ApiResource
     /**
      * Reverses a ReceivedCredit and creates a CreditReversal object.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], metadata?: \Stripe\StripeObject, received_credit: string} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -58,7 +58,7 @@ class CreditReversal extends \Stripe\ApiResource
     /**
      * Returns a list of CreditReversals.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], financial_account: string, limit?: int, received_credit?: string, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

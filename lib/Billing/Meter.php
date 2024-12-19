@@ -12,16 +12,16 @@ namespace Stripe\Billing;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property \Stripe\StripeObject $customer_mapping
- * @property \Stripe\StripeObject $default_aggregation
+ * @property (object{event_payload_key: string, type: string}&\Stripe\StripeObject&\stdClass) $customer_mapping
+ * @property (object{formula: string}&\Stripe\StripeObject&\stdClass) $default_aggregation
  * @property string $display_name The meter's name.
  * @property string $event_name The name of the meter event to record usage for. Corresponds with the <code>event_name</code> field on meter events.
  * @property null|string $event_time_window The time window to pre-aggregate meter events for, if any.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $status The meter's status.
- * @property \Stripe\StripeObject $status_transitions
+ * @property (object{deactivated_at: null|int}&\Stripe\StripeObject&\stdClass) $status_transitions
  * @property int $updated Time at which the object was last updated. Measured in seconds since the Unix epoch.
- * @property \Stripe\StripeObject $value_settings
+ * @property (object{event_payload_key: string}&\Stripe\StripeObject&\stdClass) $value_settings
  */
 class Meter extends \Stripe\ApiResource
 {
@@ -39,7 +39,7 @@ class Meter extends \Stripe\ApiResource
     /**
      * Creates a billing meter.
      *
-     * @param null|array $params
+     * @param null|array{customer_mapping?: array{event_payload_key: string, type: string}, default_aggregation: array{formula: string}, display_name: string, event_name: string, event_time_window?: string, expand?: string[], value_settings?: array{event_payload_key: string}} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -61,7 +61,7 @@ class Meter extends \Stripe\ApiResource
     /**
      * Retrieve a list of billing meters.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -98,7 +98,7 @@ class Meter extends \Stripe\ApiResource
      * Updates a billing meter.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{display_name?: string, expand?: string[]} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

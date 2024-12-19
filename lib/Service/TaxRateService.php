@@ -14,7 +14,7 @@ class TaxRateService extends \Stripe\Service\AbstractService
      * Returns a list of your tax rates. Tax rates are returned sorted by creation
      * date, with the most recently created tax rates appearing first.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, created?: int|array, ending_before?: string, expand?: string[], inclusive?: bool, limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -29,7 +29,7 @@ class TaxRateService extends \Stripe\Service\AbstractService
     /**
      * Creates a new tax rate.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, country?: string, description?: string, display_name: string, expand?: string[], inclusive: bool, jurisdiction?: string, metadata?: \Stripe\StripeObject, percentage: float, state?: string, tax_type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -45,7 +45,7 @@ class TaxRateService extends \Stripe\Service\AbstractService
      * Retrieves a tax rate with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -61,7 +61,7 @@ class TaxRateService extends \Stripe\Service\AbstractService
      * Updates an existing tax rate.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{active?: bool, country?: string, description?: string, display_name?: string, expand?: string[], jurisdiction?: string, metadata?: null|\Stripe\StripeObject, state?: string, tax_type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

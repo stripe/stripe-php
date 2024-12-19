@@ -14,7 +14,7 @@ class ConfirmationTokenService extends \Stripe\Service\AbstractService
      * Retrieves an existing ConfirmationToken object.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

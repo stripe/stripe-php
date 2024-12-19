@@ -13,7 +13,7 @@ class PlanService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of your plans.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, created?: int|array, ending_before?: string, expand?: string[], limit?: int, product?: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -30,7 +30,7 @@ class PlanService extends \Stripe\Service\AbstractService
      * API</a>. It replaces the Plans API and is backwards compatible to simplify your
      * migration.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, aggregate_usage?: string, amount?: int, amount_decimal?: string, billing_scheme?: string, currency: string, expand?: string[], id?: string, interval: string, interval_count?: int, metadata?: null|\Stripe\StripeObject, meter?: string, nickname?: string, product?: string|array, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: string|int|array})[], tiers_mode?: string, transform_usage?: array{divide_by: int, round: string}, trial_period_days?: int, usage_type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -63,7 +63,7 @@ class PlanService extends \Stripe\Service\AbstractService
      * Retrieves the plan with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -81,7 +81,7 @@ class PlanService extends \Stripe\Service\AbstractService
      * plan’s ID, amount, currency, or billing cycle.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|\Stripe\StripeObject, nickname?: string, product?: string, trial_period_days?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
