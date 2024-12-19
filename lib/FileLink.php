@@ -87,7 +87,7 @@ class FileLink extends ApiResource
      * Updates an existing file link object. Expired links can no longer be updated.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{expand?: string[], expires_at?: null|int|array, metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{expand?: string[], expires_at?: null|string|int|array, metadata?: null|\Stripe\StripeObject} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

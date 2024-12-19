@@ -92,7 +92,7 @@ class SubscriptionItemService extends \Stripe\Service\AbstractService
      * model.
      *
      * @param string $parentId
-     * @param null|array{action?: string, expand?: string[], quantity: int, timestamp?: int|array} $params
+     * @param null|array{action?: string, expand?: string[], quantity: int, timestamp?: string|int|array} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
