@@ -14,7 +14,7 @@ class SubscriptionService extends \Stripe\Service\AbstractService
      * By default, returns a list of subscriptions that have not been canceled. In
      * order to list canceled subscriptions, specify <code>status=canceled</code>.
      *
-     * @param null|array $params
+     * @param null|array{automatic_tax?: array{enabled: bool}, collection_method?: string, created?: int|array, current_period_end?: int|array, current_period_start?: int|array, customer?: string, ending_before?: string, expand?: string[], limit?: int, plan?: string, price?: string, starting_after?: string, status?: string, test_clock?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -45,7 +45,7 @@ class SubscriptionService extends \Stripe\Service\AbstractService
      * allowing the customer to cancel the subscription at all.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{cancellation_details?: array{comment?: null|string, feedback?: null|string}, expand?: string[], invoice_now?: bool, prorate?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -72,7 +72,7 @@ class SubscriptionService extends \Stripe\Service\AbstractService
      * schedules</a> instead. Schedules provide the flexibility to model more complex
      * billing configurations that change over time.
      *
-     * @param null|array $params
+     * @param null|array{add_invoice_items?: (array{discounts?: array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], price?: string, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], application_fee_percent?: null|float, automatic_tax?: array{enabled: bool, liability?: array{account?: string, type: string}}, backdate_start_date?: int, billing_cycle_anchor?: int, billing_cycle_anchor_config?: array{day_of_month: int, hour?: int, minute?: int, month?: int, second?: int}, billing_thresholds?: null|array{amount_gte?: int, reset_billing_cycle_anchor?: bool}, cancel_at?: int, cancel_at_period_end?: bool, collection_method?: string, coupon?: string, currency?: string, customer: string, days_until_due?: int, default_payment_method?: string, default_source?: string, default_tax_rates?: null|string[], description?: string, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], invoice_settings?: array{account_tax_ids?: null|string[], issuer?: array{account?: string, type: string}}, items?: (array{billing_thresholds?: null|array{usage_gte: int}, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], metadata?: \Stripe\StripeObject, plan?: string, price?: string, price_data?: array{currency: string, product: string, recurring: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[], trial?: array{converts_to?: string[], type: string}})[], metadata?: null|\Stripe\StripeObject, off_session?: bool, on_behalf_of?: null|string, payment_behavior?: string, payment_settings?: array{payment_method_options?: array{acss_debit?: null|array{mandate_options?: array{transaction_type?: string}, verification_method?: string}, bancontact?: null|array{preferred_language?: string}, card?: null|array{mandate_options?: array{amount?: int, amount_type?: string, description?: string}, network?: string, request_three_d_secure?: string}, customer_balance?: null|array{bank_transfer?: array{eu_bank_transfer?: array{country: string}, type?: string}, funding_type?: string}, id_bank_transfer?: null|array{}, konbini?: null|array{}, sepa_debit?: null|array{}, us_bank_account?: null|array{financial_connections?: array{filters?: array{account_subcategories?: string[], institution?: string}, permissions?: string[], prefetch?: string[]}, verification_method?: string}}, payment_method_types?: null|string[], save_default_payment_method?: string}, pending_invoice_item_interval?: null|array{interval: string, interval_count?: int}, prebilling?: array{iterations: int, update_behavior?: string}, promotion_code?: string, proration_behavior?: string, transfer_data?: array{amount_percent?: float, destination: string}, trial_end?: string|int|array, trial_from_plan?: bool, trial_period_days?: int, trial_settings?: array{end_behavior: array{missing_payment_method: string}}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -109,7 +109,7 @@ class SubscriptionService extends \Stripe\Service\AbstractService
      * invoice will void automatically if not paid by the expiration date.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{billing_cycle_anchor?: string, expand?: string[], proration_behavior?: string, proration_date?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -125,7 +125,7 @@ class SubscriptionService extends \Stripe\Service\AbstractService
      * Retrieves the subscription with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -145,7 +145,7 @@ class SubscriptionService extends \Stripe\Service\AbstractService
      * Occasionally, propagation of new or updated data can be up to an hour behind
      * during outages. Search functionality is not available to merchants in India.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], limit?: int, page?: string, query: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -209,7 +209,7 @@ class SubscriptionService extends \Stripe\Service\AbstractService
      * href="/docs/billing/subscriptions/usage-based">usage-based billing</a> instead.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{add_invoice_items?: (array{discounts?: array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], price?: string, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], application_fee_percent?: null|float, automatic_tax?: array{enabled: bool, liability?: array{account?: string, type: string}}, billing_cycle_anchor?: string, billing_thresholds?: null|array{amount_gte?: int, reset_billing_cycle_anchor?: bool}, cancel_at?: null|int, cancel_at_period_end?: bool, cancellation_details?: array{comment?: null|string, feedback?: null|string}, collection_method?: string, coupon?: string, days_until_due?: int, default_payment_method?: string, default_source?: null|string, default_tax_rates?: null|string[], description?: null|string, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], invoice_settings?: array{account_tax_ids?: null|string[], issuer?: array{account?: string, type: string}}, items?: (array{billing_thresholds?: null|array{usage_gte: int}, clear_usage?: bool, deleted?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], id?: string, metadata?: null|\Stripe\StripeObject, plan?: string, price?: string, price_data?: array{currency: string, product: string, recurring: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], metadata?: null|\Stripe\StripeObject, off_session?: bool, on_behalf_of?: null|string, pause_collection?: null|array{behavior: string, resumes_at?: int}, payment_behavior?: string, payment_settings?: array{payment_method_options?: array{acss_debit?: null|array{mandate_options?: array{transaction_type?: string}, verification_method?: string}, bancontact?: null|array{preferred_language?: string}, card?: null|array{mandate_options?: array{amount?: int, amount_type?: string, description?: string}, network?: string, request_three_d_secure?: string}, customer_balance?: null|array{bank_transfer?: array{eu_bank_transfer?: array{country: string}, type?: string}, funding_type?: string}, id_bank_transfer?: null|array{}, konbini?: null|array{}, sepa_debit?: null|array{}, us_bank_account?: null|array{financial_connections?: array{filters?: array{account_subcategories?: string[], institution?: string}, permissions?: string[], prefetch?: string[]}, verification_method?: string}}, payment_method_types?: null|string[], save_default_payment_method?: string}, pending_invoice_item_interval?: null|array{interval: string, interval_count?: int}, prebilling?: array{iterations: int, update_behavior?: string}, promotion_code?: string, proration_behavior?: string, proration_date?: int, transfer_data?: null|array{amount_percent?: float, destination: string}, trial_end?: string|int|array, trial_from_plan?: bool, trial_settings?: array{end_behavior: array{missing_payment_method: string}}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

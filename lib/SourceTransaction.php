@@ -12,15 +12,15 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\Stripe\StripeObject $ach_credit_transfer
+ * @property null|(object{customer_data?: string, fingerprint?: string, last4?: string, routing_number?: string}&\Stripe\StripeObject&\stdClass) $ach_credit_transfer
  * @property int $amount A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a zero-decimal currency) representing the amount your customer has pushed to the receiver.
- * @property null|\Stripe\StripeObject $chf_credit_transfer
+ * @property null|(object{reference?: string, sender_address_country?: string, sender_address_line1?: string, sender_iban?: string, sender_name?: string}&\Stripe\StripeObject&\stdClass) $chf_credit_transfer
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property null|\Stripe\StripeObject $gbp_credit_transfer
+ * @property null|(object{fingerprint?: string, funding_method?: string, last4?: string, reference?: string, sender_account_number?: string, sender_name?: string, sender_sort_code?: string}&\Stripe\StripeObject&\stdClass) $gbp_credit_transfer
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Stripe\StripeObject $paper_check
- * @property null|\Stripe\StripeObject $sepa_credit_transfer
+ * @property null|(object{available_at?: string, invoices?: string}&\Stripe\StripeObject&\stdClass) $paper_check
+ * @property null|(object{reference?: string, sender_iban?: string, sender_name?: string}&\Stripe\StripeObject&\stdClass) $sepa_credit_transfer
  * @property string $source The ID of the source this transaction is attached to.
  * @property string $status The status of the transaction, one of <code>succeeded</code>, <code>pending</code>, or <code>failed</code>.
  * @property string $type The type of source this transaction is attached to.

@@ -19,7 +19,7 @@ namespace Stripe;
  * @property string[] $supported_payment_currencies Currencies that can be accepted in the specified country (for payments).
  * @property string[] $supported_payment_methods Payment methods available in the specified country. You may need to enable some payment methods (e.g., <a href="https://stripe.com/docs/ach">ACH</a>) on your account before they appear in this list. The <code>stripe</code> payment method refers to <a href="https://stripe.com/docs/connect/destination-charges">charging through your platform</a>.
  * @property string[] $supported_transfer_countries Countries that can accept transfers from the specified country.
- * @property \Stripe\StripeObject $verification_fields
+ * @property (object{company: (object{additional: string[], minimum: string[]}&\Stripe\StripeObject&\stdClass), individual: (object{additional: string[], minimum: string[]}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass) $verification_fields
  */
 class CountrySpec extends ApiResource
 {
@@ -28,7 +28,7 @@ class CountrySpec extends ApiResource
     /**
      * Lists all Country Spec objects available in the API.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

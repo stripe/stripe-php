@@ -14,7 +14,7 @@ class FormService extends \Stripe\Service\AbstractService
      * Returns a list of tax forms which were previously created. The tax forms are
      * returned in sorted order, with the oldest tax forms appearing first.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, payee: array{account?: string, external_reference?: string, type?: string}, starting_after?: string, type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -31,7 +31,7 @@ class FormService extends \Stripe\Service\AbstractService
      *
      * @param string $id
      * @param callable $readBodyChunkCallable
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -54,7 +54,7 @@ class FormService extends \Stripe\Service\AbstractService
      * return the corresponding tax form information.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

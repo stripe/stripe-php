@@ -15,7 +15,7 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * sorted in descending order by creation date, with the most recently created
      * object appearing first.
      *
-     * @param null|array $params
+     * @param null|array{card?: string, cardholder?: string, created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -38,7 +38,7 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @deprecated  this method is deprecated, please refer to the description for details
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{amount?: int, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -61,7 +61,7 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @deprecated  this method is deprecated, please refer to the description for details
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -77,7 +77,7 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * Retrieves an Issuing <code>Authorization</code> object.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -95,7 +95,7 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * unchanged.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

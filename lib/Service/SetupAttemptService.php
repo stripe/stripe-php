@@ -13,7 +13,7 @@ class SetupAttemptService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of SetupAttempts that associate with a provided SetupIntent.
      *
-     * @param null|array $params
+     * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, setup_intent: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

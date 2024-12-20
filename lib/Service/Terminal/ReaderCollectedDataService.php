@@ -14,7 +14,7 @@ class ReaderCollectedDataService extends \Stripe\Service\AbstractService
      * Retrieve data collected using Reader hardware.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

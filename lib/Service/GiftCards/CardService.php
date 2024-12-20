@@ -13,7 +13,7 @@ class CardService extends \Stripe\Service\AbstractService
     /**
      * List gift cards for an account.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -28,7 +28,7 @@ class CardService extends \Stripe\Service\AbstractService
     /**
      * Creates a new gift card object.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, created_by?: array{payment: array{payment_intent: string}, type: string}, currency: string, expand?: string[], initial_amount?: int, metadata?: \Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -44,7 +44,7 @@ class CardService extends \Stripe\Service\AbstractService
      * Retrieve a gift card by id.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -60,7 +60,7 @@ class CardService extends \Stripe\Service\AbstractService
      * Update a gift card.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -76,7 +76,7 @@ class CardService extends \Stripe\Service\AbstractService
      * Validates a gift card code, returning the matching gift card object if it
      * exists.
      *
-     * @param null|array $params
+     * @param null|array{code: string, expand?: string[], giftcard_pin?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

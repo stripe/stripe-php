@@ -15,7 +15,7 @@ class AccountNoticeService extends \Stripe\Service\AbstractService
      * in descending order by creation date, with the most-recently-created object
      * appearing first.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, sent?: bool, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -31,7 +31,7 @@ class AccountNoticeService extends \Stripe\Service\AbstractService
      * Retrieves an <code>AccountNotice</code> object.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -47,7 +47,7 @@ class AccountNoticeService extends \Stripe\Service\AbstractService
      * Updates an <code>AccountNotice</code> object.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{email: array{plain_text: string, recipient: string, subject: string}, expand?: string[], metadata?: \Stripe\StripeObject, sent_at: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

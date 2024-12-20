@@ -14,7 +14,7 @@ class EphemeralKeyService extends \Stripe\Service\AbstractService
      * Invalidates a short-lived API key for a given resource.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

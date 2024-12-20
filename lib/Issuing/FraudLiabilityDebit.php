@@ -25,7 +25,7 @@ class FraudLiabilityDebit extends \Stripe\ApiResource
      * are sorted in descending order by creation date, with the most recently created
      * object appearing first.
      *
-     * @param null|array $params
+     * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

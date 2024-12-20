@@ -50,7 +50,7 @@ class Transfer extends ApiResource
      * transfer object. Your <a href="#balance">Stripe balance</a> must be able to
      * cover the transfer amount, or you’ll receive an “Insufficient Funds” error.
      *
-     * @param null|array $params
+     * @param null|array{amount?: int, currency: string, description?: string, destination: string, expand?: string[], metadata?: \Stripe\StripeObject, source_transaction?: string, source_type?: string, transfer_group?: string} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -74,7 +74,7 @@ class Transfer extends ApiResource
      * are returned in sorted order, with the most recently created transfers appearing
      * first.
      *
-     * @param null|array $params
+     * @param null|array{created?: int|array, destination?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, transfer_group?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -116,7 +116,7 @@ class Transfer extends ApiResource
      * This request accepts only metadata as an argument.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

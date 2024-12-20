@@ -15,7 +15,7 @@ namespace Stripe\FinancialConnections;
  * @property string $description The description of this transaction.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $status The status of the transaction.
- * @property \Stripe\StripeObject $status_transitions
+ * @property (object{posted_at: null|int, void_at: null|int}&\Stripe\StripeObject&\stdClass) $status_transitions
  * @property int $transacted_at Time at which the transaction was transacted. Measured in seconds since the Unix epoch.
  * @property string $transaction_refresh The token of the transaction refresh that last updated or created this transaction.
  * @property int $updated Time at which the object was last updated. Measured in seconds since the Unix epoch.
@@ -31,7 +31,7 @@ class Transaction extends \Stripe\ApiResource
     /**
      * Returns a list of Financial Connections <code>Transaction</code> objects.
      *
-     * @param null|array $params
+     * @param null|array{account: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, transacted_at?: int|array, transaction_refresh?: array{after: string}} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

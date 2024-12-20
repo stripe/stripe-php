@@ -19,18 +19,18 @@ namespace Stripe\Treasury;
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|string $destination_payment_method The PaymentMethod used as the payment instrument for an OutboundTransfer.
- * @property \Stripe\StripeObject $destination_payment_method_details
+ * @property (object{billing_details: (object{address: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject&\stdClass), email: null|string, name: null|string}&\Stripe\StripeObject&\stdClass), type: string, us_bank_account?: (object{account_holder_type: null|string, account_type: null|string, bank_name: null|string, fingerprint: null|string, last4: null|string, mandate?: string|\Stripe\Mandate, network: string, routing_number: null|string}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass) $destination_payment_method_details
  * @property int $expected_arrival_date The date when funds are expected to arrive in the destination account.
  * @property string $financial_account The FinancialAccount that funds were pulled from.
  * @property null|string $hosted_regulatory_receipt_url A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted transaction receipt</a> URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|\Stripe\StripeObject $network_details Details about the network used for the OutboundTransfer.
- * @property null|\Stripe\StripeObject $returned_details Details about a returned OutboundTransfer. Only set when the status is <code>returned</code>.
+ * @property null|(object{ach?: null|(object{addenda: null|string}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass) $network_details Details about the network used for the OutboundTransfer.
+ * @property null|(object{code: string, transaction: string|\Stripe\Treasury\Transaction}&\Stripe\StripeObject&\stdClass) $returned_details Details about a returned OutboundTransfer. Only set when the status is <code>returned</code>.
  * @property string $statement_descriptor Information about the OutboundTransfer to be sent to the recipient account.
  * @property string $status Current status of the OutboundTransfer: <code>processing</code>, <code>failed</code>, <code>canceled</code>, <code>posted</code>, <code>returned</code>. An OutboundTransfer is <code>processing</code> if it has been created and is pending. The status changes to <code>posted</code> once the OutboundTransfer has been &quot;confirmed&quot; and funds have left the account, or to <code>failed</code> or <code>canceled</code>. If an OutboundTransfer fails to arrive at its destination, its status will change to <code>returned</code>.
- * @property \Stripe\StripeObject $status_transitions
- * @property null|\Stripe\StripeObject $tracking_details Details about network-specific tracking information if available.
+ * @property (object{canceled_at: null|int, failed_at: null|int, posted_at: null|int, returned_at: null|int}&\Stripe\StripeObject&\stdClass) $status_transitions
+ * @property null|(object{ach?: (object{trace_id: string}&\Stripe\StripeObject&\stdClass), type: string, us_domestic_wire?: (object{chips: null|string, imad: null|string, omad: null|string}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass) $tracking_details Details about network-specific tracking information if available.
  * @property string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
  */
 class OutboundTransfer extends \Stripe\ApiResource
@@ -46,7 +46,7 @@ class OutboundTransfer extends \Stripe\ApiResource
     /**
      * Creates an OutboundTransfer.
      *
-     * @param null|array $params
+     * @param null|array{amount: int, currency: string, description?: string, destination_payment_method?: string, destination_payment_method_options?: array{us_bank_account?: null|array{network?: string}}, expand?: string[], financial_account: string, metadata?: \Stripe\StripeObject, network_details?: array{ach?: array{addenda?: string}, type: string}, statement_descriptor?: string} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -68,7 +68,7 @@ class OutboundTransfer extends \Stripe\ApiResource
     /**
      * Returns a list of OutboundTransfers sent from the specified FinancialAccount.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

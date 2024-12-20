@@ -23,7 +23,7 @@ namespace Stripe\Apps;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $name A name for the secret that's unique within the scope.
  * @property null|string $payload The plaintext secret value to be stored.
- * @property \Stripe\StripeObject $scope
+ * @property (object{type: string, user?: string}&\Stripe\StripeObject&\stdClass) $scope
  */
 class Secret extends \Stripe\ApiResource
 {
@@ -32,7 +32,7 @@ class Secret extends \Stripe\ApiResource
     /**
      * Create or replace a secret in the secret store.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], expires_at?: int, name: string, payload: string, scope: array{type: string, user?: string}} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -54,7 +54,7 @@ class Secret extends \Stripe\ApiResource
     /**
      * List all secrets stored on the given scope.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, scope: array{type: string, user?: string}, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

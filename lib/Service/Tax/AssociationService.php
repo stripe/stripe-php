@@ -13,7 +13,7 @@ class AssociationService extends \Stripe\Service\AbstractService
     /**
      * Finds a tax association object by PaymentIntent id.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], payment_intent: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
