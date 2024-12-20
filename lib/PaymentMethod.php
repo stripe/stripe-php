@@ -55,7 +55,7 @@ namespace Stripe;
  * @property (object{bank: null|string}&\Stripe\StripeObject&\stdClass) $p24
  * @property null|(object{}&\Stripe\StripeObject&\stdClass) $payco
  * @property null|(object{}&\Stripe\StripeObject&\stdClass) $paynow
- * @property (object{fingerprint?: null|string, payer_email: null|string, payer_id: null|string, verified_email?: null|string}&\Stripe\StripeObject&\stdClass) $paypal
+ * @property (object{country: null|string, fingerprint?: null|string, payer_email: null|string, payer_id: null|string, verified_email?: null|string}&\Stripe\StripeObject&\stdClass) $paypal
  * @property (object{bsb_number: null|string, last4: null|string, pay_id: null|string}&\Stripe\StripeObject&\stdClass) $payto
  * @property null|(object{}&\Stripe\StripeObject&\stdClass) $pix
  * @property null|(object{}&\Stripe\StripeObject&\stdClass) $promptpay
