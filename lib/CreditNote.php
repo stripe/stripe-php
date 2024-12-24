@@ -30,7 +30,7 @@ namespace Stripe;
  * @property string $pdf The link to download the PDF of the credit note.
  * @property null|int $post_payment_amount
  * @property null|int $pre_payment_amount
- * @property null|((object{amount: int, credit_balance_transaction?: string|\Stripe\Billing\CreditBalanceTransaction, discount?: string|\Stripe\Discount, type: string}&\Stripe\StripeObject&\stdClass))[] $pretax_credit_amounts The pretax credit amounts (ex: discount, credit grants, etc) for all line items.
+ * @property ((object{amount: int, credit_balance_transaction?: string|\Stripe\Billing\CreditBalanceTransaction, discount?: string|\Stripe\Discount, type: string}&\Stripe\StripeObject&\stdClass))[] $pretax_credit_amounts The pretax credit amounts (ex: discount, credit grants, etc) for all line items.
  * @property null|string $reason Reason for issuing this credit note, one of <code>duplicate</code>, <code>fraudulent</code>, <code>order_change</code>, or <code>product_unsatisfactory</code>
  * @property null|string|\Stripe\Refund $refund Refund related to this credit note.
  * @property null|((object{amount_refunded: int, refund: string|\Stripe\Refund}&\Stripe\StripeObject&\stdClass))[] $refunds Refunds related to this credit note.
