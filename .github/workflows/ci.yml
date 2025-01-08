@@ -80,7 +80,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        autload:
+        autoload:
           - "0"
           - "1"
         php-version:
