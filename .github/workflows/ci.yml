@@ -37,11 +37,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        php-version:
-          - "8.2"
-
     steps:
       - uses: extractions/setup-just@v2
       - uses: actions/checkout@v3
@@ -49,7 +44,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-version }}
+          php-version: "8.2"
 
       - name: Get Composer Cache Directory
         id: composer-cache
