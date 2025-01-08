@@ -73,8 +73,6 @@ jobs:
         run: just lint
 
   tests:
-    name: Tests
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -93,6 +91,7 @@ jobs:
           - "8.0"
           - "8.1"
           - "8.2"
+    name: Tests (php@${{ matrix.php-version }}, AUTOLOAD=${{ matrix.autoload }})
 
     steps:
       - uses: extractions/setup-just@v2
@@ -126,14 +125,11 @@ jobs:
       - uses: stripe/openapi/actions/stripe-mock@master
 
       - name: Run test suite
-        env:
-          AUTOLOAD: ${{ matrix.autoload }}
         # --yes skips the confirmation dialogue for the CI test, which modifies files
         run: |
           php --version
           echo "autoload is: $AUTOLOAD"
-          make ci-test
-          just --yes ci-test
+          just --yes ci-test ${{ matrix.autoload }}
 
   publish:
     # Doesn't actually publish. The publish happens via a packagist webhook configured in the Github UI. But we still display a message here
