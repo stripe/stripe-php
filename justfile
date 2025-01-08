@@ -12,14 +12,17 @@ _default:
 install:
     composer install
 
+# ⭐ run full unit test suite; needs stripe-mock
 [no-exit-message]
 test *args:
     phpunit {{ args }}
 
+# run tests in CI; can use autoload mode (or not)
 [confirm("This will modify local files and is intended for use in CI; do you want to proceed?")]
 ci-test autoload:
     ./build.php {{ autoload }}
 
+# ⭐ format all files
 format *args:
     PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix -v --using-cache=no {{ args }}
 
@@ -27,8 +30,10 @@ format *args:
 [private]
 alias codegen-format := format
 
+# check formatting for, but don't modify, files
 format-check: (format "--dry-run")
 
+# ⭐ statically analyze code
 lint *args:
     php -d memory_limit=512M vendor/bin/phpstan analyse lib tests {{args}}
 
