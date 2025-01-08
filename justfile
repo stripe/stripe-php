@@ -21,7 +21,6 @@ test *options:
 [group('CI')]
 [confirm("This will modify local files and is intended for use in CI; do you want to proceed?")]
 ci-test autoload:
-    echo "running build.php with argument: {{ autoload }}"
     ./build.php {{ autoload }}
 
 [group('useful')]
