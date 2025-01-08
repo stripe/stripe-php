@@ -128,7 +128,6 @@ jobs:
         # --yes skips the confirmation dialogue for the CI test, which modifies files
         run: |
           php --version
-          echo "autoload is: $AUTOLOAD"
           just --yes ci-test ${{ matrix.autoload }}
 
   publish:
