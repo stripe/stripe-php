@@ -28,6 +28,7 @@ test *options:
 
 [group('CI')]
 ci-test:
+    echo "got $AUTOLOAD"
     ./build.php $AUTOLOAD
 
 [group('useful')]
