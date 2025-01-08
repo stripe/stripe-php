@@ -1,3 +1,5 @@
+# NOTE: this file is deprecated and slated for deletion; prefer using the equivalent `just` commands.
+
 export PHPDOCUMENTOR_VERSION := v3.0.0
 
 vendor: composer.json

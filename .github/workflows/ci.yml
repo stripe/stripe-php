@@ -43,6 +43,7 @@ jobs:
           - "8.2"
 
     steps:
+      - uses: extractions/setup-just@v2
       - uses: actions/checkout@v3
 
       - name: Setup PHP
@@ -69,7 +70,7 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Run phpstan
-        run: make phpstan
+        run: just lint
 
   tests:
     name: Tests
@@ -94,13 +95,13 @@ jobs:
           - "8.2"
 
     steps:
+      - uses: extractions/setup-just@v2
       - uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          coverage: xdebug
 
       - name: Get Composer Cache Directory
         id: composer-cache
@@ -127,15 +128,7 @@ jobs:
       - name: Run test suite
         run: |
           php --version
-          make ci-test
-
-      - name: Coveralls
-        if: matrix.php-version == '8.2' && matrix.env == 'AUTOLOAD=1'
-        uses: coverallsapp/github-action@v2
-        with:
-          files: clover.xml
-          flag-name: php-${{ matrix.php-version }}-${{ matrix.env }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          just ci-test
 
   publish:
     # Doesn't actually publish. The publish happens via a packagist webhook configured in the Github UI. But we still display a message here
