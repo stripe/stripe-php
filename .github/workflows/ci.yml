@@ -80,9 +80,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        env:
-          - AUTOLOAD=0
-          - AUTOLOAD=1
+        autload:
+          - "0"
+          - "1"
         php-version:
           - "5.6"
           - "7.0"
@@ -126,6 +126,8 @@ jobs:
       - uses: stripe/openapi/actions/stripe-mock@master
 
       - name: Run test suite
+        env:
+          AUTOLOAD: ${{ matrix.autoload }}
         # --yes skips the confirmation dialogue for the CI test, which modifies files
         run: |
           php --version

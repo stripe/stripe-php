@@ -11,15 +11,7 @@ _default:
 # install vendored dependencies; only used locally
 [group('useful')]
 install:
-    #!/usr/bin/env bash
-    set -euo pipefail
-
     composer install
-
-    if [ ! -f vendor/bin/phpdoc ]; then
-        curl -sfL https://github.com/phpDocumentor/phpDocumentor/releases/download/$(PHPDOCUMENTOR_VERSION)/phpDocumentor.phar -o vendor/bin/phpdoc
-        chmod +x vendor/bin/phpdoc
-    fi
 
 [no-exit-message]
 [group('useful')]
@@ -62,4 +54,12 @@ update-version version:
 
 [group('misc')]
 phpdoc:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    if [ ! -f vendor/bin/phpdoc ]; then
+        curl -sfL https://github.com/phpDocumentor/phpDocumentor/releases/download/{{ PHPDOCUMENTOR_VERSION }}/phpDocumentor.phar -o vendor/bin/phpdoc
+        chmod +x vendor/bin/phpdoc
+    fi
+
     phpdoc
