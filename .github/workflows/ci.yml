@@ -126,10 +126,12 @@ jobs:
       - uses: stripe/openapi/actions/stripe-mock@master
 
       - name: Run test suite
+        # --yes skips the confirmation dialogue for the CI test, which modifies files
         run: |
           php --version
           echo "autoload is: $AUTOLOAD"
-          just ci-test
+          make ci-test
+          just --yes ci-test
 
   publish:
     # Doesn't actually publish. The publish happens via a packagist webhook configured in the Github UI. But we still display a message here

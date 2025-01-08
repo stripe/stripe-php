@@ -14,6 +14,7 @@ test: vendor
 .PHONY: test
 
 ci-test: vendor
+	echo "calling build with $$AUTOLOAD"
 	./build.php $$AUTOLOAD
 .PHONY: ci-test
 

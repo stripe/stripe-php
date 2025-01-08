@@ -27,6 +27,7 @@ test *options:
     phpunit {{ options }}
 
 [group('CI')]
+[confirm("This will modify local and is mostly just for CI; do you want to proceed?")]
 ci-test:
     echo "got $AUTOLOAD"
     ./build.php $AUTOLOAD
