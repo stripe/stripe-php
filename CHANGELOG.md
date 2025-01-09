@@ -1,5 +1,12 @@
 # Changelog
 
+## 16.5.0-beta.2 - 2025-01-09
+* [#1796](https://github.com/stripe/stripe-php/pull/1796) Update generated code for beta
+  * Add support for `close` method on resource `Treasury.FinancialAccount`
+  * Add support for `advice_code` on `StripeError`
+  * Add support for `brand_product` on `Card`
+  * Add support for `is_default` and `nickname` on `Treasury.FinancialAccount`
+
 ## 16.5.0-beta.1 - 2024-12-20
 * [#1794](https://github.com/stripe/stripe-php/pull/1794) Improved php type hints
   
