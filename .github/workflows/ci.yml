@@ -89,7 +89,11 @@ jobs:
     name: Tests (php@${{ matrix.php-version }}, AUTOLOAD=${{ matrix.autoload }})
 
     steps:
-      - uses: extractions/setup-just@v2
+      - name: Install just
+        run: |
+          sudo apt-get update
+          sudo apt-get install just
+
       - uses: actions/checkout@v3
 
       - name: Setup PHP
