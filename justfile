@@ -8,13 +8,13 @@ export PATH := "vendor/bin:" + env_var('PATH')
 _default:
     just --list --unsorted
 
-# install vendored dependencies; only used locally
-install:
-    composer install
+# install vendored dependencies
+install *args:
+    composer install {{ if is_dependency() == "true" {"--quiet"} else {""} }} {{ args }}
 
 # ⭐ run full unit test suite; needs stripe-mock
 [no-exit-message]
-test *args:
+test *args: install
     phpunit {{ args }}
 
 # run tests in CI; can use autoload mode (or not)
@@ -23,7 +23,7 @@ ci-test autoload:
     ./build.php {{ autoload }}
 
 # ⭐ format all files
-format *args:
+format *args: install
     PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix -v --using-cache=no {{ args }}
 
 # for backwards compatibility; ideally removed later
