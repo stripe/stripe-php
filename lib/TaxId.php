@@ -206,6 +206,92 @@ class TaxId extends ApiResource
         return $instance;
     }
 
+    /**
+     * Returns all the type Ids supported by stripe.
+     * 
+     * https://docs.stripe.com/billing/customer/tax-ids#supported-tax-id
+     * 
+     * @return string[]
+     */
+    public static function getAllTaxIdTypes(): array
+    {
+        return [
+            self::TYPE_AD_NRT,
+            self::TYPE_AE_TRN,
+            self::TYPE_AR_CUIT,
+            self::TYPE_AU_ABN,
+            self::TYPE_AU_ARN,
+            self::TYPE_BG_UIC,
+            self::TYPE_BH_VAT,
+            self::TYPE_BO_TIN,
+            self::TYPE_BR_CNPJ,
+            self::TYPE_BR_CPF,
+            self::TYPE_CA_BN,
+            self::TYPE_CA_GST_HST,
+            self::TYPE_CA_PST_BC,
+            self::TYPE_CA_PST_MB,
+            self::TYPE_CA_PST_SK,
+            self::TYPE_CA_QST,
+            self::TYPE_CH_VAT,
+            self::TYPE_CL_TIN,
+            self::TYPE_CN_TIN,
+            self::TYPE_CO_NIT,
+            self::TYPE_CR_TIN,
+            self::TYPE_DE_STN,
+            self::TYPE_DO_RCN,
+            self::TYPE_EC_RUC,
+            self::TYPE_EG_TIN,
+            self::TYPE_ES_CIF,
+            self::TYPE_EU_OSS_VAT,
+            self::TYPE_EU_VAT,
+            self::TYPE_GB_VAT,
+            self::TYPE_GE_VAT,
+            self::TYPE_HK_BR,
+            self::TYPE_HU_TIN,
+            self::TYPE_ID_NPWP,
+            self::TYPE_IL_VAT,
+            self::TYPE_IN_GST,
+            self::TYPE_IS_VAT,
+            self::TYPE_JP_CN,
+            self::TYPE_JP_RN,
+            self::TYPE_JP_TRN,
+            self::TYPE_KE_PIN,
+            self::TYPE_KR_BRN,
+            self::TYPE_KZ_BIN,
+            self::TYPE_LI_UID,
+            self::TYPE_MX_RFC,
+            self::TYPE_MY_FRP,
+            self::TYPE_MY_ITN,
+            self::TYPE_MY_SST,
+            self::TYPE_NG_TIN,
+            self::TYPE_NO_VAT,
+            self::TYPE_NO_VOEC,
+            self::TYPE_NZ_GST,
+            self::TYPE_OM_VAT,
+            self::TYPE_PE_RUC,
+            self::TYPE_PH_TIN,
+            self::TYPE_RO_TIN,
+            self::TYPE_RS_PIB,
+            self::TYPE_RU_INN,
+            self::TYPE_RU_KPP,
+            self::TYPE_SA_VAT,
+            self::TYPE_SG_GST,
+            self::TYPE_SG_UEN,
+            self::TYPE_SI_TIN,
+            self::TYPE_SV_NIT,
+            self::TYPE_TH_VAT,
+            self::TYPE_TR_TIN,
+            self::TYPE_TW_VAT,
+            self::TYPE_UA_VAT,
+            self::TYPE_UNKNOWN,
+            self::TYPE_US_EIN,
+            self::TYPE_UY_RUC,
+            self::TYPE_VE_RIF,
+            self::TYPE_VN_TIN,
+            self::TYPE_ZA_VAT,
+        ];
+    }
+
     const VERIFICATION_STATUS_PENDING = 'pending';
     const VERIFICATION_STATUS_UNAVAILABLE = 'unavailable';
     const VERIFICATION_STATUS_UNVERIFIED = 'unverified';
