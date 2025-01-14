@@ -37,18 +37,14 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        php-version:
-          - "8.2"
-
     steps:
+      - uses: extractions/setup-just@v2
       - uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-version }}
+          php-version: "8.2"
 
       - name: Get Composer Cache Directory
         id: composer-cache
@@ -69,19 +65,17 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Run phpstan
-        run: make phpstan
+        run: just lint
 
   tests:
-    name: Tests
-
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
-        env:
-          - AUTOLOAD=0
-          - AUTOLOAD=1
+        autoload:
+          - "0"
+          - "1"
         php-version:
           - "5.6"
           - "7.0"
@@ -92,15 +86,16 @@ jobs:
           - "8.0"
           - "8.1"
           - "8.2"
+    name: Tests (php@${{ matrix.php-version }}, AUTOLOAD=${{ matrix.autoload }})
 
     steps:
+      - uses: extractions/setup-just@v2
       - uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          coverage: xdebug
 
       - name: Get Composer Cache Directory
         id: composer-cache
@@ -125,17 +120,10 @@ jobs:
       - uses: stripe/openapi/actions/stripe-mock@master
 
       - name: Run test suite
+        # --yes skips the confirmation dialogue for the CI test, which modifies files
         run: |
           php --version
-          make ci-test
-
-      - name: Coveralls
-        if: matrix.php-version == '8.2' && matrix.env == 'AUTOLOAD=1'
-        uses: coverallsapp/github-action@v2
-        with:
-          files: clover.xml
-          flag-name: php-${{ matrix.php-version }}-${{ matrix.env }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          just --yes ci-test ${{ matrix.autoload }}
 
   publish:
     # Doesn't actually publish. The publish happens via a packagist webhook configured in the Github UI. But we still display a message here
