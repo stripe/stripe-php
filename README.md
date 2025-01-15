@@ -248,6 +248,8 @@ New features and bug fixes are released on the latest major version of the Strip
 
 ## Development
 
+[Contribution guidelines for this project](CONTRIBUTING.md)
+
 We use [just](https://github.com/casey/just) for conveniently running development tasks. You can use them directly, or copy the commands out of the `justfile`. To our help docs, run `just`.
 
 To get started, install [Composer][composer]. For example, on Mac OS:
