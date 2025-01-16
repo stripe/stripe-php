@@ -1,6 +1,6 @@
-import? '../sdk-codegen/justfile'
-
 set quiet
+
+import? '../sdk-codegen/utils.just'
 
 # make vendored executables callable directly
 export PATH := "vendor/bin:" + env_var('PATH')
@@ -25,10 +25,6 @@ ci-test autoload:
 # ⭐ format all files
 format *args: install
     PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix -v --using-cache=no {{ args }}
-
-# for backwards compatibility; ideally removed later
-[private]
-alias codegen-format := format
 
 # check formatting for, but don't modify, files
 format-check: (format "--dry-run")
