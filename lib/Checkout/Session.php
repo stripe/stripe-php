@@ -43,6 +43,7 @@ namespace Stripe\Checkout;
  * @property null|string $customer_creation Configure whether a Checkout Session creates a Customer when the Checkout Session completes.
  * @property null|\Stripe\StripeObject $customer_details The customer details including the customer's tax exempt status and the customer's tax IDs. Customer's address details are not present on Sessions in <code>setup</code> mode.
  * @property null|string $customer_email If provided, this value will be used when the Customer object is created. If not provided, customers will be asked to enter their email address. Use this parameter to prefill customer data if you already have an email on file. To access information about the customer once the payment flow is complete, use the <code>customer</code> attribute.
+ * @property null|\Stripe\StripeObject[] $discounts List of coupons and promotion codes attached to the Checkout Session.
  * @property int $expires_at The timestamp at which the Checkout Session will expire.
  * @property null|string|\Stripe\Invoice $invoice ID of the invoice created by the Checkout Session, if it exists.
  * @property null|\Stripe\StripeObject $invoice_creation Details on the state of invoice creation for the Checkout Session.
