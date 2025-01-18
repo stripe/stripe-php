@@ -4,7 +4,6 @@
 [![Latest Stable Version](https://poser.pugx.org/stripe/stripe-php/v/stable.svg)](https://packagist.org/packages/stripe/stripe-php)
 [![Total Downloads](https://poser.pugx.org/stripe/stripe-php/downloads.svg)](https://packagist.org/packages/stripe/stripe-php)
 [![License](https://poser.pugx.org/stripe/stripe-php/license.svg)](https://packagist.org/packages/stripe/stripe-php)
-[![Code Coverage](https://coveralls.io/repos/stripe/stripe-php/badge.svg?branch=master)](https://coveralls.io/r/stripe/stripe-php?branch=master)
 
 The Stripe PHP library provides convenient access to the Stripe API from
 applications written in the PHP language. It includes a pre-defined set of
@@ -249,7 +248,11 @@ New features and bug fixes are released on the latest major version of the Strip
 
 ## Development
 
-Get [Composer][composer]. For example, on Mac OS:
+[Contribution guidelines for this project](CONTRIBUTING.md)
+
+We use [just](https://github.com/casey/just) for conveniently running development tasks. You can use them directly, or copy the commands out of the `justfile`. To our help docs, run `just`.
+
+To get started, install [Composer][composer]. For example, on Mac OS:
 
 ```bash
 brew install composer
@@ -258,7 +261,8 @@ brew install composer
 Install dependencies:
 
 ```bash
-composer install
+just install
+# or: composer install
 ```
 
 The test suite depends on [stripe-mock], so make sure to fetch and run it from a
@@ -273,13 +277,15 @@ stripe-mock
 Install dependencies as mentioned above (which will resolve [PHPUnit](http://packagist.org/packages/phpunit/phpunit)), then you can run the test suite:
 
 ```bash
-./vendor/bin/phpunit
+just test
+# or: ./vendor/bin/phpunit
 ```
 
 Or to run an individual test file:
 
 ```bash
-./vendor/bin/phpunit tests/Stripe/UtilTest.php
+just test tests/Stripe/UtilTest.php
+# or: ./vendor/bin/phpunit tests/Stripe/UtilTest.php
 ```
 
 Update bundled CA certificates from the [Mozilla cURL release][curl]:
@@ -291,7 +297,8 @@ Update bundled CA certificates from the [Mozilla cURL release][curl]:
 The library uses [PHP CS Fixer][php-cs-fixer] for code formatting. Code must be formatted before PRs are submitted, otherwise CI will fail. Run the formatter with:
 
 ```bash
-./vendor/bin/php-cs-fixer fix -v .
+just format
+# or: ./vendor/bin/php-cs-fixer fix -v .
 ```
 
 ## Attention plugin developers
