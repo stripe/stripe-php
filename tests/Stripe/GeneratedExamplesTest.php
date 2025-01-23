@@ -577,6 +577,20 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         static::assertInstanceOf(\Stripe\Checkout\Session::class, $result);
     }
 
+    public function testCoreEventsGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/events/ll_123',
+            [],
+            [],
+            false,
+            ['object' => \Stripe\V2\Event::OBJECT_NAME]
+        );
+        $result = $this->client->v2->core->events->retrieve('ll_123', []);
+        static::assertInstanceOf(\Stripe\V2\Event::class, $result);
+    }
+
     public function testCountrySpecsGet()
     {
         $this->expectsRequest('get', '/v1/country_specs');
@@ -3606,6 +3620,22 @@ final class GeneratedExamplesTest extends \Stripe\TestCase
         $result = $this->client->terminal->readers->processPaymentIntent(
             'tmr_xxxxxxxxxxxxx',
             ['payment_intent' => 'pi_xxxxxxxxxxxxx']
+        );
+        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $result);
+    }
+
+    public function testTerminalReadersProcessSetupIntentPost()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/terminal/readers/tmr_xxxxxxxxxxxxx/process_setup_intent'
+        );
+        $result = $this->client->terminal->readers->processSetupIntent(
+            'tmr_xxxxxxxxxxxxx',
+            [
+                'setup_intent' => 'seti_xxxxxxxxxxxxx',
+                'allow_redisplay' => 'always',
+            ]
         );
         static::assertInstanceOf(\Stripe\Terminal\Reader::class, $result);
     }
