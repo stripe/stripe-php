@@ -1,5 +1,9 @@
 # Changelog
 
+## 16.5.0-beta.3 - 2025-01-23
+* [#1803](https://github.com/stripe/stripe-php/pull/1803) Update generated code for beta
+  * V2 Events now are subclass of `\Stripe\V2\Event`.
+
 ## 16.5.0-beta.2 - 2025-01-09
 * [#1796](https://github.com/stripe/stripe-php/pull/1796) Update generated code for beta
   * Add support for `close` method on resource `Treasury.FinancialAccount`
