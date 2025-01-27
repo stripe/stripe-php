@@ -50,6 +50,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $naver_pay
  * @property null|\Stripe\StripeObject $oxxo
  * @property null|\Stripe\StripeObject $p24
+ * @property null|\Stripe\StripeObject $pay_by_bank
  * @property null|\Stripe\StripeObject $payco
  * @property null|\Stripe\StripeObject $paynow
  * @property null|\Stripe\StripeObject $paypal
@@ -111,6 +112,7 @@ class PaymentMethod extends ApiResource
     const TYPE_PAYCO = 'payco';
     const TYPE_PAYNOW = 'paynow';
     const TYPE_PAYPAL = 'paypal';
+    const TYPE_PAY_BY_BANK = 'pay_by_bank';
     const TYPE_PIX = 'pix';
     const TYPE_PROMPTPAY = 'promptpay';
     const TYPE_REVOLUT_PAY = 'revolut_pay';

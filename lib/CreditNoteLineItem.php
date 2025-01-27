@@ -16,7 +16,7 @@ namespace Stripe;
  * @property \Stripe\StripeObject[] $discount_amounts The amount of discount calculated per discount for this line item
  * @property null|string $invoice_line_item ID of the invoice line item being credited
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Stripe\StripeObject[] $pretax_credit_amounts The pretax credit amounts (ex: discount, credit grants, etc) for this line item.
+ * @property \Stripe\StripeObject[] $pretax_credit_amounts The pretax credit amounts (ex: discount, credit grants, etc) for this line item.
  * @property null|int $quantity The number of units of product being credited.
  * @property \Stripe\StripeObject[] $tax_amounts The amount of tax calculated per tax rate for this line item
  * @property \Stripe\TaxRate[] $tax_rates The tax rates which apply to the line item.
