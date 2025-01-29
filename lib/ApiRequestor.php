@@ -562,7 +562,7 @@ class ApiRequestor
 
         $requestStartMs = Util\Util::currentTimeMillis();
 
-        list($rbody, $rcode, $rheaders) = $this->streamingHttpClient()->requestStream(
+        list($rbody, $rcode, $rheaders) = self::streamingHttpClient()->requestStream(
             $method,
             $absUrl,
             $rawHeaders,
@@ -685,7 +685,7 @@ class ApiRequestor
     /**
      * @return HttpClient\StreamingClientInterface
      */
-    private function streamingHttpClient()
+    public static function streamingHttpClient()
     {
         if (!self::$_streamingHttpClient) {
             self::$_streamingHttpClient = HttpClient\CurlClient::instance();
