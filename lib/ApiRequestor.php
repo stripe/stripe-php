@@ -436,8 +436,8 @@ class ApiRequestor
         // X-Stripe-Client-User-Agent header via the optional getUserAgentInfo()
         // method
         $clientUAInfo = null;
-        if (\method_exists($this->httpClient(), 'getUserAgentInfo')) {
-            $clientUAInfo = $this->httpClient()->getUserAgentInfo();
+        if (\method_exists(self::httpClient(), 'getUserAgentInfo')) {
+            $clientUAInfo = self::httpClient()->getUserAgentInfo();
         }
 
         if ($params && \is_array($params)) {
@@ -518,7 +518,7 @@ class ApiRequestor
 
         $requestStartMs = Util\Util::currentTimeMillis();
 
-        list($rbody, $rcode, $rheaders) = $this->httpClient()->request(
+        list($rbody, $rcode, $rheaders) = self::httpClient()->request(
             $method,
             $absUrl,
             $rawHeaders,
@@ -673,7 +673,7 @@ class ApiRequestor
     /**
      * @return HttpClient\ClientInterface
      */
-    private function httpClient()
+    public static function httpClient()
     {
         if (!self::$_httpClient) {
             self::$_httpClient = HttpClient\CurlClient::instance();
