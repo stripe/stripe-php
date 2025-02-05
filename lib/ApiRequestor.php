@@ -516,6 +516,12 @@ class ApiRequestor
     {
         list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $apiMode);
 
+        // for some reason, PHP users will sometimes include null bytes in their paths, which leads to cryptic server 400s.
+        // we'll be louder about this to help catch issues earlier.
+        if (false !== \strpos($absUrl, "\0") || false !== \strpos($absUrl, '%00')) {
+            throw new Exception\BadMethodCallException("URLs may not contain null bytes ('\\0'); double check any IDs you're including with the request.");
+        }
+
         $requestStartMs = Util\Util::currentTimeMillis();
 
         list($rbody, $rcode, $rheaders) = self::httpClient()->request(
