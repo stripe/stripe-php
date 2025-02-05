@@ -224,8 +224,8 @@ class ApiRequestor
                     return Exception\IdempotencyException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code);
                 }
 
-                // fall through in generic 400 or 404, returns InvalidRequestException by default
-                // no break
+            // fall through in generic 400 or 404, returns InvalidRequestException by default
+            // no break
             case 404:
                 return Exception\InvalidRequestException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code, $param);
 
@@ -266,7 +266,7 @@ class ApiRequestor
         switch ($type) {
             case 'idempotency_error':
                 return Exception\IdempotencyException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code);
-                // The beginning of the section generated from our OpenAPI spec
+            // The beginning of the section generated from our OpenAPI spec
             case 'temporary_session_expired':
                 return Exception\TemporarySessionExpiredException::factory(
                     $msg,
@@ -277,7 +277,7 @@ class ApiRequestor
                     $code
                 );
 
-                // The end of the section generated from our OpenAPI spec
+            // The end of the section generated from our OpenAPI spec
             default:
                 return self::_specificV1APIError($rbody, $rcode, $rheaders, $resp, $errorData);
         }
