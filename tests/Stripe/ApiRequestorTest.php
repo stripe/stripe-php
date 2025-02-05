@@ -729,7 +729,7 @@ final class ApiRequestorTest extends \Stripe\TestCase
 
     public function testRaisesForNullBytesInResourceMethod()
     {
-        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+        $this->expectException(\Stripe\Exception\InvalidRequestException::class);
         $this->compatExpectExceptionMessageMatches('#null byte#');
 
         Charge::retrieve("abc_123\0");
@@ -737,7 +737,7 @@ final class ApiRequestorTest extends \Stripe\TestCase
 
     public function testRaisesForNullBytesInRawRequest()
     {
-        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+        $this->expectException(\Stripe\Exception\InvalidRequestException::class);
         $this->compatExpectExceptionMessageMatches('#null byte#');
 
         $client = new BaseStripeClient([
