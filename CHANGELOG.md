@@ -1,5 +1,9 @@
 # Changelog
 
+## 16.6.0-beta.1 - 2025-02-07
+* [#1808](https://github.com/stripe/stripe-php/pull/1808) Update generated code for beta
+
+
 ## 16.5.0 - 2025-01-27
 * [#1804](https://github.com/stripe/stripe-php/pull/1804) Update generated code
   * Add support for `close` method on resource `Treasury.FinancialAccount`
