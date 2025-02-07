@@ -726,4 +726,23 @@ final class ApiRequestorTest extends \Stripe\TestCase
         $result = $method->invoke(null, 'procopen, php_uname, exec', 'php_uname');
         static::assertTrue($result);
     }
+
+    public function testRaisesForNullBytesInResourceMethod()
+    {
+        $this->expectException(\Stripe\Exception\InvalidRequestException::class);
+        $this->compatExpectExceptionMessageMatches('#null byte#');
+
+        Charge::retrieve("abc_123\0");
+    }
+
+    public function testRaisesForNullBytesInRawRequest()
+    {
+        $this->expectException(\Stripe\Exception\InvalidRequestException::class);
+        $this->compatExpectExceptionMessageMatches('#null byte#');
+
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+        ]);
+        $client->rawRequest('get', "/v1/xyz\0");
+    }
 }
