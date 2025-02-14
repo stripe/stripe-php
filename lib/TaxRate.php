@@ -5,9 +5,9 @@
 namespace Stripe;
 
 /**
- * Tax rates can be applied to <a href="https://stripe.com/docs/billing/invoices/tax-rates">invoices</a>, <a href="https://stripe.com/docs/billing/subscriptions/taxes">subscriptions</a> and <a href="https://stripe.com/docs/payments/checkout/set-up-a-subscription#tax-rates">Checkout Sessions</a> to collect tax.
+ * Tax rates can be applied to <a href="/invoicing/taxes/tax-rates">invoices</a>, <a href="/billing/taxes/tax-rates">subscriptions</a> and <a href="/payments/checkout/use-manual-tax-rates">Checkout Sessions</a> to collect tax.
  *
- * Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax rates</a>
+ * Related guide: <a href="/billing/taxes/tax-rates">Tax rates</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -25,7 +25,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property float $percentage Tax rate percentage out of 100. For tax calculations with automatic_tax[enabled]=true, this percentage includes the statutory tax rate of non-taxable jurisdictions.
  * @property null|string $rate_type Indicates the type of tax rate applied to the taxable amount. This value can be <code>null</code> when no tax applies to the location.
- * @property null|string $state <a href="https://en.wikipedia.org/wiki/ISO_3166-2:US">ISO 3166-2 subdivision code</a>, without country prefix. For example, &quot;NY&quot; for New York, United States.
+ * @property null|string $state <a href="https://en.wikipedia.org/wiki/ISO_3166-2">ISO 3166-2 subdivision code</a>, without country prefix. For example, &quot;NY&quot; for New York, United States.
  * @property null|string $tax_type The high-level tax type, such as <code>vat</code> or <code>sales_tax</code>.
  */
 class TaxRate extends ApiResource
