@@ -3,6 +3,9 @@
 ## 16.6.0-beta.1 - 2025-02-07
 * [#1808](https://github.com/stripe/stripe-php/pull/1808) Update generated code for beta
 
+## 16.5.1 - 2025-02-07
+* [#1811](https://github.com/stripe/stripe-php/pull/1811) Include a useful error message when a null byte is found in the URL path
+* [#1810](https://github.com/stripe/stripe-php/pull/1810) Make `httpClient()` a public, static method
 
 ## 16.5.0 - 2025-01-27
 * [#1804](https://github.com/stripe/stripe-php/pull/1804) Update generated code
