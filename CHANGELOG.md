@@ -1,5 +1,11 @@
 # Changelog
 
+## 16.6.0 - 2025-02-24
+* [#1809](https://github.com/stripe/stripe-php/pull/1809) Update generated code
+  * Add support for `priority` on `Billing.CreditGrant`
+  * Add support for `collected_information` on `Checkout.Session`
+* [#1816](https://github.com/stripe/stripe-php/pull/1816) add codeowners file
+
 ## 16.5.1 - 2025-02-07
 * [#1811](https://github.com/stripe/stripe-php/pull/1811) Include a useful error message when a null byte is found in the URL path
 * [#1810](https://github.com/stripe/stripe-php/pull/1810) Make `httpClient()` a public, static method
