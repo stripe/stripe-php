@@ -436,8 +436,8 @@ class ApiRequestor
         // X-Stripe-Client-User-Agent header via the optional getUserAgentInfo()
         // method
         $clientUAInfo = null;
-        if (\method_exists($this->httpClient(), 'getUserAgentInfo')) {
-            $clientUAInfo = $this->httpClient()->getUserAgentInfo();
+        if (\method_exists(self::httpClient(), 'getUserAgentInfo')) {
+            $clientUAInfo = self::httpClient()->getUserAgentInfo();
         }
 
         if ($params && \is_array($params)) {
@@ -516,9 +516,15 @@ class ApiRequestor
     {
         list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $apiMode);
 
+        // for some reason, PHP users will sometimes include null bytes in their paths, which leads to cryptic server 400s.
+        // we'll be louder about this to help catch issues earlier.
+        if (false !== \strpos($absUrl, "\0") || false !== \strpos($absUrl, '%00')) {
+            throw new Exception\InvalidRequestException("URLs may not contain null bytes ('\\0'); double check any IDs you're including with the request.");
+        }
+
         $requestStartMs = Util\Util::currentTimeMillis();
 
-        list($rbody, $rcode, $rheaders) = $this->httpClient()->request(
+        list($rbody, $rcode, $rheaders) = self::httpClient()->request(
             $method,
             $absUrl,
             $rawHeaders,
@@ -562,7 +568,7 @@ class ApiRequestor
 
         $requestStartMs = Util\Util::currentTimeMillis();
 
-        list($rbody, $rcode, $rheaders) = $this->streamingHttpClient()->requestStream(
+        list($rbody, $rcode, $rheaders) = self::streamingHttpClient()->requestStream(
             $method,
             $absUrl,
             $rawHeaders,
@@ -673,7 +679,7 @@ class ApiRequestor
     /**
      * @return HttpClient\ClientInterface
      */
-    private function httpClient()
+    public static function httpClient()
     {
         if (!self::$_httpClient) {
             self::$_httpClient = HttpClient\CurlClient::instance();
@@ -685,7 +691,7 @@ class ApiRequestor
     /**
      * @return HttpClient\StreamingClientInterface
      */
-    private function streamingHttpClient()
+    public static function streamingHttpClient()
     {
         if (!self::$_streamingHttpClient) {
             self::$_streamingHttpClient = HttpClient\CurlClient::instance();

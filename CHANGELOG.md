@@ -1,5 +1,25 @@
 # Changelog
 
+## 16.5.1 - 2025-02-07
+* [#1811](https://github.com/stripe/stripe-php/pull/1811) Include a useful error message when a null byte is found in the URL path
+* [#1810](https://github.com/stripe/stripe-php/pull/1810) Make `httpClient()` a public, static method
+
+## 16.5.0 - 2025-01-27
+* [#1804](https://github.com/stripe/stripe-php/pull/1804) Update generated code
+  * Add support for `close` method on resource `Treasury.FinancialAccount`
+  * Add support for `advice_code` on `StripeError`
+  * Add support for `discounts` on `Checkout.Session`
+  * Add support for new value `pay_by_bank` on enum `PaymentLink.payment_method_types[]`
+  * Add support for `pay_by_bank` on `PaymentMethodConfiguration` and `PaymentMethod`
+  * Add support for new value `pay_by_bank` on enum `PaymentMethod.type`
+  * Add support for `is_default` and `nickname` on `Treasury.FinancialAccount`
+* [#1805](https://github.com/stripe/stripe-php/pull/1805) Restore testCoreEventsGet generated test
+* [#1807](https://github.com/stripe/stripe-php/pull/1807) minor justfile fixes
+* [#1806](https://github.com/stripe/stripe-php/pull/1806) Added CONTRIBUTING.md file
+* [#1802](https://github.com/stripe/stripe-php/pull/1802) ensure dependencies are installed for format and test recipes
+* [#1801](https://github.com/stripe/stripe-php/pull/1801) Add justfile, remove coveralls, and fix AUTOLOAD in CI
+* [#1797](https://github.com/stripe/stripe-php/pull/1797) Added pull request template
+
 ## 16.4.0 - 2024-12-18
 * [#1793](https://github.com/stripe/stripe-php/pull/1793) This release changes the pinned API version to `2024-12-18.acacia`.
   * Add support for `network_advice_code` and `network_decline_code` on `StripeError`
