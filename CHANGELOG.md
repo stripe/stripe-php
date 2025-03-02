@@ -13,7 +13,6 @@
 ## 16.5.0 - 2025-01-27
 * [#1804](https://github.com/stripe/stripe-php/pull/1804) Update generated code
   * Add support for `close` method on resource `Treasury.FinancialAccount`
-  * Add support for `advice_code` on `StripeError`
   * Add support for `discounts` on `Checkout.Session`
   * Add support for new value `pay_by_bank` on enum `PaymentLink.payment_method_types[]`
   * Add support for `pay_by_bank` on `PaymentMethodConfiguration` and `PaymentMethod`
@@ -28,7 +27,6 @@
 
 ## 16.4.0 - 2024-12-18
 * [#1793](https://github.com/stripe/stripe-php/pull/1793) This release changes the pinned API version to `2024-12-18.acacia`.
-  * Add support for `network_advice_code` and `network_decline_code` on `StripeError`
   * Add support for new values `payout_minimum_balance_hold` and `payout_minimum_balance_release` on enum `BalanceTransaction.type`
   * Add support for `allow_redisplay` on `Card` and `Source`
   * Add support for `regulated_status` on `Card`
