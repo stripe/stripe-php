@@ -30,8 +30,8 @@ class EventService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves the details of an event. Supply the unique identifier of the event,
-     * which you might have received in a webhook.
+     * Retrieves the details of an event if it was created in the last 30 days. Supply
+     * the unique identifier of the event, which you might have received in a webhook.
      *
      * @param string $id
      * @param null|array $params

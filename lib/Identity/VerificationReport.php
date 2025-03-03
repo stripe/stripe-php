@@ -15,7 +15,7 @@ namespace Stripe\Identity;
  * API. To configure and create VerificationReports, use the
  * <a href="https://stripe.com/docs/api/identity/verification_sessions">VerificationSession</a> API.
  *
- * Related guides: <a href="https://stripe.com/docs/identity/verification-sessions#results">Accessing verification results</a>.
+ * Related guide: <a href="https://stripe.com/docs/identity/verification-sessions#results">Accessing verification results</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -29,7 +29,7 @@ namespace Stripe\Identity;
  * @property null|\Stripe\StripeObject $phone Result from a phone check
  * @property null|\Stripe\StripeObject $selfie Result from a selfie check
  * @property string $type Type of report.
- * @property null|string $verification_flow The configuration token of a Verification Flow from the dashboard.
+ * @property null|string $verification_flow The configuration token of a verification flow from the dashboard.
  * @property null|string $verification_session ID of the VerificationSession that created this report.
  */
 class VerificationReport extends \Stripe\ApiResource

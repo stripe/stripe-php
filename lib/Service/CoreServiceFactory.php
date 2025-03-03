@@ -37,6 +37,7 @@ namespace Stripe\Service;
  * @property Forwarding\ForwardingServiceFactory $forwarding
  * @property Identity\IdentityServiceFactory $identity
  * @property InvoiceItemService $invoiceItems
+ * @property InvoiceRenderingTemplateService $invoiceRenderingTemplates
  * @property InvoiceService $invoices
  * @property Issuing\IssuingServiceFactory $issuing
  * @property MandateService $mandates
@@ -73,6 +74,7 @@ namespace Stripe\Service;
  * @property TopupService $topups
  * @property TransferService $transfers
  * @property Treasury\TreasuryServiceFactory $treasury
+ * @property V2\V2ServiceFactory $v2
  * @property WebhookEndpointService $webhookEndpoints
  * // Doc: The end of the section generated from our OpenAPI spec
  */
@@ -114,6 +116,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'forwarding' => Forwarding\ForwardingServiceFactory::class,
         'identity' => Identity\IdentityServiceFactory::class,
         'invoiceItems' => InvoiceItemService::class,
+        'invoiceRenderingTemplates' => InvoiceRenderingTemplateService::class,
         'invoices' => InvoiceService::class,
         'issuing' => Issuing\IssuingServiceFactory::class,
         'mandates' => MandateService::class,
@@ -150,6 +153,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'topups' => TopupService::class,
         'transfers' => TransferService::class,
         'treasury' => Treasury\TreasuryServiceFactory::class,
+        'v2' => V2\V2ServiceFactory::class,
         'webhookEndpoints' => WebhookEndpointService::class,
         // Class Map: The end of the section generated from our OpenAPI spec
     ];

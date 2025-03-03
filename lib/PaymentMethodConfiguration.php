@@ -27,6 +27,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $affirm
  * @property null|\Stripe\StripeObject $afterpay_clearpay
  * @property null|\Stripe\StripeObject $alipay
+ * @property null|\Stripe\StripeObject $alma
  * @property null|\Stripe\StripeObject $amazon_pay
  * @property null|\Stripe\StripeObject $apple_pay
  * @property null|string $application For child configs, the Connect application associated with the configuration.
@@ -57,6 +58,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $oxxo
  * @property null|\Stripe\StripeObject $p24
  * @property null|string $parent For child configs, the configuration's parent configuration.
+ * @property null|\Stripe\StripeObject $pay_by_bank
  * @property null|\Stripe\StripeObject $paynow
  * @property null|\Stripe\StripeObject $paypal
  * @property null|\Stripe\StripeObject $promptpay
@@ -64,6 +66,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $sepa_debit
  * @property null|\Stripe\StripeObject $sofort
  * @property null|\Stripe\StripeObject $swish
+ * @property null|\Stripe\StripeObject $twint
  * @property null|\Stripe\StripeObject $us_bank_account
  * @property null|\Stripe\StripeObject $wechat_pay
  * @property null|\Stripe\StripeObject $zip

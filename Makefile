@@ -1,3 +1,5 @@
+# NOTE: this file is deprecated and slated for deletion; prefer using the equivalent `just` commands.
+
 export PHPDOCUMENTOR_VERSION := v3.0.0
 
 vendor: composer.json
@@ -12,6 +14,7 @@ test: vendor
 .PHONY: test
 
 ci-test: vendor
+	echo "calling build with $$AUTOLOAD"
 	./build.php $$AUTOLOAD
 .PHONY: ci-test
 

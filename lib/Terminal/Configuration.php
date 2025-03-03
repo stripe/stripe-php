@@ -14,6 +14,7 @@ namespace Stripe\Terminal;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $name String indicating the name of the Configuration object, set by the user
  * @property null|\Stripe\StripeObject $offline
+ * @property null|\Stripe\StripeObject $reboot_window
  * @property null|\Stripe\StripeObject $stripe_s700
  * @property null|\Stripe\StripeObject $tipping
  * @property null|\Stripe\StripeObject $verifone_p400

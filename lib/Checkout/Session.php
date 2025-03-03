@@ -22,6 +22,7 @@ namespace Stripe\Checkout;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property null|\Stripe\StripeObject $adaptive_pricing Settings for price localization with <a href="https://docs.stripe.com/payments/checkout/adaptive-pricing">Adaptive Pricing</a>.
  * @property null|\Stripe\StripeObject $after_expiration When set, provides configuration for actions to take if this Checkout Session expires.
  * @property null|bool $allow_promotion_codes Enables user redeemable promotion codes.
  * @property null|int $amount_subtotal Total of all items before discounts or taxes are applied.
@@ -31,17 +32,19 @@ namespace Stripe\Checkout;
  * @property null|string $cancel_url If set, Checkout displays a back button and customers will be directed to this URL if they decide to cancel payment and return to your website.
  * @property null|string $client_reference_id A unique string to reference the Checkout Session. This can be a customer ID, a cart ID, or similar, and can be used to reconcile the Session with your internal systems.
  * @property null|string $client_secret Client secret to be used when initializing Stripe.js embedded checkout.
+ * @property null|\Stripe\StripeObject $collected_information Information about the customer collected within the Checkout Session.
  * @property null|\Stripe\StripeObject $consent Results of <code>consent_collection</code> for this session.
  * @property null|\Stripe\StripeObject $consent_collection When set, provides configuration for the Checkout Session to gather active consent from customers.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property null|\Stripe\StripeObject $currency_conversion Currency conversion details for automatic currency conversion sessions
+ * @property null|\Stripe\StripeObject $currency_conversion Currency conversion details for <a href="https://docs.stripe.com/payments/checkout/adaptive-pricing">Adaptive Pricing</a> sessions
  * @property \Stripe\StripeObject[] $custom_fields Collect additional information from your customer using custom fields. Up to 3 fields are supported.
  * @property \Stripe\StripeObject $custom_text
  * @property null|string|\Stripe\Customer $customer The ID of the customer for this Session. For Checkout Sessions in <code>subscription</code> mode or Checkout Sessions with <code>customer_creation</code> set as <code>always</code> in <code>payment</code> mode, Checkout will create a new customer object based on information provided during the payment flow unless an existing customer was provided when the Session was created.
  * @property null|string $customer_creation Configure whether a Checkout Session creates a Customer when the Checkout Session completes.
  * @property null|\Stripe\StripeObject $customer_details The customer details including the customer's tax exempt status and the customer's tax IDs. Customer's address details are not present on Sessions in <code>setup</code> mode.
  * @property null|string $customer_email If provided, this value will be used when the Customer object is created. If not provided, customers will be asked to enter their email address. Use this parameter to prefill customer data if you already have an email on file. To access information about the customer once the payment flow is complete, use the <code>customer</code> attribute.
+ * @property null|\Stripe\StripeObject[] $discounts List of coupons and promotion codes attached to the Checkout Session.
  * @property int $expires_at The timestamp at which the Checkout Session will expire.
  * @property null|string|\Stripe\Invoice $invoice ID of the invoice created by the Checkout Session, if it exists.
  * @property null|\Stripe\StripeObject $invoice_creation Details on the state of invoice creation for the Checkout Session.
@@ -59,7 +62,7 @@ namespace Stripe\Checkout;
  * @property string $payment_status The payment status of the Checkout Session, one of <code>paid</code>, <code>unpaid</code>, or <code>no_payment_required</code>. You can use this value to decide when to fulfill your customer's order.
  * @property null|\Stripe\StripeObject $phone_number_collection
  * @property null|string $recovered_from The ID of the original expired Checkout Session that triggered the recovery flow.
- * @property null|string $redirect_on_completion This parameter applies to <code>ui_mode: embedded</code>. Learn more about the <a href="https://stripe.com/docs/payments/checkout/custom-redirect-behavior">redirect behavior</a> of embedded sessions. Defaults to <code>always</code>.
+ * @property null|string $redirect_on_completion This parameter applies to <code>ui_mode: embedded</code>. Learn more about the <a href="https://stripe.com/docs/payments/checkout/custom-success-page?payment-ui=embedded-form">redirect behavior</a> of embedded sessions. Defaults to <code>always</code>.
  * @property null|string $return_url Applies to Checkout Sessions with <code>ui_mode: embedded</code>. The URL to redirect your customer back to after they authenticate or cancel their payment on the payment method's app or site.
  * @property null|\Stripe\StripeObject $saved_payment_method_options Controls saved payment method settings for the session. Only available in <code>payment</code> and <code>subscription</code> mode.
  * @property null|string|\Stripe\SetupIntent $setup_intent The ID of the SetupIntent for Checkout Sessions in <code>setup</code> mode. You can't confirm or cancel the SetupIntent for a Checkout Session. To cancel, <a href="https://stripe.com/docs/api/checkout/sessions/expire">expire the Checkout Session</a> instead.
@@ -79,6 +82,8 @@ namespace Stripe\Checkout;
 class Session extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'checkout.session';
+
+    use \Stripe\ApiOperations\Update;
 
     const BILLING_ADDRESS_COLLECTION_AUTO = 'auto';
     const BILLING_ADDRESS_COLLECTION_REQUIRED = 'required';
@@ -109,6 +114,7 @@ class Session extends \Stripe\ApiResource
     const SUBMIT_TYPE_BOOK = 'book';
     const SUBMIT_TYPE_DONATE = 'donate';
     const SUBMIT_TYPE_PAY = 'pay';
+    const SUBMIT_TYPE_SUBSCRIBE = 'subscribe';
 
     const UI_MODE_EMBEDDED = 'embedded';
     const UI_MODE_HOSTED = 'hosted';
@@ -169,6 +175,29 @@ class Session extends \Stripe\ApiResource
         $instance->refresh();
 
         return $instance;
+    }
+
+    /**
+     * Updates a Session object.
+     *
+     * @param string $id the ID of the resource to update
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Checkout\Session the updated resource
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
     }
 
     /**

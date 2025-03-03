@@ -25,6 +25,11 @@ class ObjectTypes
             \Stripe\Balance::OBJECT_NAME => \Stripe\Balance::class,
             \Stripe\BalanceTransaction::OBJECT_NAME => \Stripe\BalanceTransaction::class,
             \Stripe\BankAccount::OBJECT_NAME => \Stripe\BankAccount::class,
+            \Stripe\Billing\Alert::OBJECT_NAME => \Stripe\Billing\Alert::class,
+            \Stripe\Billing\AlertTriggered::OBJECT_NAME => \Stripe\Billing\AlertTriggered::class,
+            \Stripe\Billing\CreditBalanceSummary::OBJECT_NAME => \Stripe\Billing\CreditBalanceSummary::class,
+            \Stripe\Billing\CreditBalanceTransaction::OBJECT_NAME => \Stripe\Billing\CreditBalanceTransaction::class,
+            \Stripe\Billing\CreditGrant::OBJECT_NAME => \Stripe\Billing\CreditGrant::class,
             \Stripe\Billing\Meter::OBJECT_NAME => \Stripe\Billing\Meter::class,
             \Stripe\Billing\MeterEvent::OBJECT_NAME => \Stripe\Billing\MeterEvent::class,
             \Stripe\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\Billing\MeterEventAdjustment::class,
@@ -71,6 +76,7 @@ class ObjectTypes
             \Stripe\Invoice::OBJECT_NAME => \Stripe\Invoice::class,
             \Stripe\InvoiceItem::OBJECT_NAME => \Stripe\InvoiceItem::class,
             \Stripe\InvoiceLineItem::OBJECT_NAME => \Stripe\InvoiceLineItem::class,
+            \Stripe\InvoiceRenderingTemplate::OBJECT_NAME => \Stripe\InvoiceRenderingTemplate::class,
             \Stripe\Issuing\Authorization::OBJECT_NAME => \Stripe\Issuing\Authorization::class,
             \Stripe\Issuing\Card::OBJECT_NAME => \Stripe\Issuing\Card::class,
             \Stripe\Issuing\Cardholder::OBJECT_NAME => \Stripe\Issuing\Cardholder::class,
@@ -148,4 +154,17 @@ class ObjectTypes
             \Stripe\WebhookEndpoint::OBJECT_NAME => \Stripe\WebhookEndpoint::class,
             // object classes: The end of the section generated from our OpenAPI spec
         ];
+
+    /**
+     * @var array Mapping from v2 object types to resource classes
+     */
+    const v2Mapping = [
+        // v2 object classes: The beginning of the section generated from our OpenAPI spec
+        \Stripe\V2\Billing\MeterEvent::OBJECT_NAME => \Stripe\V2\Billing\MeterEvent::class,
+        \Stripe\V2\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustment::class,
+        \Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \Stripe\V2\Billing\MeterEventSession::class,
+        \Stripe\V2\Event::OBJECT_NAME => \Stripe\V2\Event::class,
+        \Stripe\V2\EventDestination::OBJECT_NAME => \Stripe\V2\EventDestination::class,
+        // v2 object classes: The end of the section generated from our OpenAPI spec
+    ];
 }

@@ -93,4 +93,20 @@ class SessionService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v1/checkout/sessions/%s', $id), $params, $opts);
     }
+
+    /**
+     * Updates a Session object.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Checkout\Session
+     */
+    public function update($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/checkout/sessions/%s', $id), $params, $opts);
+    }
 }

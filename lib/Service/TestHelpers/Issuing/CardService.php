@@ -77,4 +77,22 @@ class CardService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/test_helpers/issuing/cards/%s/shipping/ship', $id), $params, $opts);
     }
+
+    /**
+     * Updates the shipping status of the specified Issuing <code>Card</code> object to
+     * <code>submitted</code>. This method requires Stripe Version ‘2024-09-30.acacia’
+     * or later.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Card
+     */
+    public function submitCard($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/test_helpers/issuing/cards/%s/shipping/submit', $id), $params, $opts);
+    }
 }

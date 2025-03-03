@@ -5,9 +5,11 @@
 namespace Stripe\Treasury;
 
 /**
- * Use OutboundTransfers to transfer funds from a <a href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> to a PaymentMethod belonging to the same entity. To send funds to a different party, use <a href="https://stripe.com/docs/api#outbound_payments">OutboundPayments</a> instead. You can send funds over ACH rails or through a domestic wire transfer to a user's own external bank account.
+ * Use <a href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-transfers">OutboundTransfers</a> to transfer funds from a <a href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> to a PaymentMethod belonging to the same entity. To send funds to a different party, use <a href="https://stripe.com/docs/api#outbound_payments">OutboundPayments</a> instead. You can send funds over ACH rails or through a domestic wire transfer to a user's own external bank account.
  *
  * Simulate OutboundTransfer state changes with the <code>/v1/test_helpers/treasury/outbound_transfers</code> endpoints. These methods can only be called on test mode objects.
+ *
+ * Related guide: <a href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-transfers">Moving money with Treasury using OutboundTransfer objects</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

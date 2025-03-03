@@ -18,7 +18,7 @@ namespace Stripe\BillingPortal;
  * Create sessions on-demand when customers intend to manage their subscriptions
  * and billing details.
  *
- * Learn more in the <a href="https://stripe.com/docs/billing/subscriptions/integrating-customer-portal">integration guide</a>.
+ * Related guide: <a href="/customer-management">Customer management</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
