@@ -21,6 +21,7 @@ namespace Stripe\Billing;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name A descriptive name shown in dashboard.
+ * @property null|int $priority The priority for applying this credit grant. The highest priority is 0 and the lowest is 100.
  * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this credit grant belongs to.
  * @property int $updated Time at which the object was last updated. Measured in seconds since the Unix epoch.
  * @property null|int $voided_at The time when this credit grant was voided. If not present, the credit grant hasn't been voided.
@@ -37,7 +38,7 @@ class CreditGrant extends \Stripe\ApiResource
     /**
      * Creates a credit grant.
      *
-     * @param null|array{amount: array{monetary?: array{currency: string, value: int}, type: string}, applicability_config: array{scope: array{price_type: string, prices?: array{id: string}[]}}, category: string, customer: string, effective_at?: int, expand?: string[], expires_at?: int, metadata?: \Stripe\StripeObject, name?: string} $params
+     * @param null|array{amount: array{monetary?: array{currency: string, value: int}, type: string}, applicability_config: array{scope: array{price_type?: string, prices?: array{id: string}[]}}, category: string, customer: string, effective_at?: int, expand?: string[], expires_at?: int, metadata?: \Stripe\StripeObject, name?: string, priority?: int} $params
      * @param null|array|string $options
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

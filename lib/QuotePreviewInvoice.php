@@ -44,7 +44,7 @@ namespace Stripe;
  * @property null|string $account_name The public name of the business associated with this invoice, most often the business creating the invoice.
  * @property null|(string|\Stripe\TaxId)[] $account_tax_ids The account tax IDs associated with the invoice. Only editable when the invoice is a draft.
  * @property int $amount_due Final amount due at this time for this invoice. If the invoice's total is smaller than the minimum charge amount, for example, or if there is account credit that can be applied to the invoice, the <code>amount_due</code> may be 0. If there is a positive <code>starting_balance</code> for the invoice (the customer owes money), the <code>amount_due</code> will also take that into account. The charge that gets generated for the invoice will be for the amount specified in <code>amount_due</code>.
- * @property null|int $amount_overpaid Amount that was overpaid on the invoice. Overpayments are debited to the customer's credit balance.
+ * @property null|int $amount_overpaid Amount that was overpaid on the invoice. The amount overpaid is credited to the customer's credit balance.
  * @property int $amount_paid The amount, in cents (or local equivalent), that was paid.
  * @property int $amount_remaining The difference between amount_due and amount_paid, in cents (or local equivalent).
  * @property int $amount_shipping This is the sum of all the shipping amounts.

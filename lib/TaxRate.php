@@ -24,7 +24,7 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property float $percentage Tax rate percentage out of 100. For tax calculations with automatic_tax[enabled]=true, this percentage includes the statutory tax rate of non-taxable jurisdictions.
- * @property null|string $rate_type Indicates the type of tax rate applied to the taxable amount. This value can be <code>null</code> when no tax applies to the location.
+ * @property null|string $rate_type Indicates the type of tax rate applied to the taxable amount. This value can be <code>null</code> when no tax applies to the location. This field is only present for TaxRates created by Stripe Tax.
  * @property null|string $state <a href="https://en.wikipedia.org/wiki/ISO_3166-2">ISO 3166-2 subdivision code</a>, without country prefix. For example, &quot;NY&quot; for New York, United States.
  * @property null|string $tax_type The high-level tax type, such as <code>vat</code> or <code>sales_tax</code>.
  */
