@@ -13,7 +13,7 @@ class EventService extends \Stripe\Service\AbstractService
     /**
      * List events, going back up to 30 days.
      *
-     * @param null|array{limit?: int, object_id: string, page?: string} $params
+     * @param null|array{created_gt?: string, created_gte?: string, created_lt?: string, created_lte?: string, delivery_success?: bool, limit?: int, object_id?: string, page?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails

@@ -44,7 +44,7 @@ namespace Stripe;
  * @property null|string $account_name The public name of the business associated with this invoice, most often the business creating the invoice.
  * @property null|(string|\Stripe\TaxId)[] $account_tax_ids The account tax IDs associated with the invoice. Only editable when the invoice is a draft.
  * @property int $amount_due Final amount due at this time for this invoice. If the invoice's total is smaller than the minimum charge amount, for example, or if there is account credit that can be applied to the invoice, the <code>amount_due</code> may be 0. If there is a positive <code>starting_balance</code> for the invoice (the customer owes money), the <code>amount_due</code> will also take that into account. The charge that gets generated for the invoice will be for the amount specified in <code>amount_due</code>.
- * @property null|int $amount_overpaid Amount that was overpaid on the invoice. Overpayments are debited to the customer's credit balance.
+ * @property null|int $amount_overpaid Amount that was overpaid on the invoice. The amount overpaid is credited to the customer's credit balance.
  * @property int $amount_paid The amount, in cents (or local equivalent), that was paid.
  * @property int $amount_remaining The difference between amount_due and amount_paid, in cents (or local equivalent).
  * @property int $amount_shipping This is the sum of all the shipping amounts.
@@ -107,7 +107,7 @@ namespace Stripe;
  * @property null|string $statement_descriptor Extra information about an invoice for the customer's credit card statement.
  * @property null|string $status The status of the invoice, one of <code>draft</code>, <code>open</code>, <code>paid</code>, <code>uncollectible</code>, or <code>void</code>. <a href="https://stripe.com/docs/billing/invoices/workflow#workflow-overview">Learn more</a>
  * @property (object{finalized_at: null|int, marked_uncollectible_at: null|int, paid_at: null|int, voided_at: null|int}&\Stripe\StripeObject&\stdClass) $status_transitions
- * @property null|string|\Stripe\Subscription $subscription
+ * @property null|string|\Stripe\Subscription $subscription The subscription that this invoice was prepared for, if any.
  * @property null|(object{metadata: null|\Stripe\StripeObject, pause_collection?: null|(object{behavior: string, resumes_at: null|int}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass) $subscription_details Details about the subscription that created this invoice.
  * @property null|int $subscription_proration_date Only set for upcoming invoices that preview prorations. The time used to calculate prorations.
  * @property int $subtotal Total of all subscriptions, invoice items, and prorations on the invoice before any invoice level discount or exclusive tax is applied. Item discounts are already incorporated

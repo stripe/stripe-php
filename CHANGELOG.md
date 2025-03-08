@@ -1,13 +1,21 @@
 # Changelog
 
+## 16.6.0 - 2025-02-24
+* [#1809](https://github.com/stripe/stripe-php/pull/1809) Update generated code
+  * Add support for `priority` on `Billing.CreditGrant`
+  * Add support for `collected_information` on `Checkout.Session`
+* [#1816](https://github.com/stripe/stripe-php/pull/1816) add codeowners file
+
 ## 16.6.0-beta.1 - 2025-02-07
 * [#1808](https://github.com/stripe/stripe-php/pull/1808) Update generated code for beta
 
+## 16.5.1 - 2025-02-07
+* [#1811](https://github.com/stripe/stripe-php/pull/1811) Include a useful error message when a null byte is found in the URL path
+* [#1810](https://github.com/stripe/stripe-php/pull/1810) Make `httpClient()` a public, static method
 
 ## 16.5.0 - 2025-01-27
 * [#1804](https://github.com/stripe/stripe-php/pull/1804) Update generated code
   * Add support for `close` method on resource `Treasury.FinancialAccount`
-  * Add support for `advice_code` on `StripeError`
   * Add support for `discounts` on `Checkout.Session`
   * Add support for new value `pay_by_bank` on enum `PaymentLink.payment_method_types[]`
   * Add support for `pay_by_bank` on `PaymentMethodConfiguration` and `PaymentMethod`
@@ -58,7 +66,6 @@
 
 ## 16.4.0 - 2024-12-18
 * [#1793](https://github.com/stripe/stripe-php/pull/1793) This release changes the pinned API version to `2024-12-18.acacia`.
-  * Add support for `network_advice_code` and `network_decline_code` on `StripeError`
   * Add support for new values `payout_minimum_balance_hold` and `payout_minimum_balance_release` on enum `BalanceTransaction.type`
   * Add support for `allow_redisplay` on `Card` and `Source`
   * Add support for `regulated_status` on `Card`

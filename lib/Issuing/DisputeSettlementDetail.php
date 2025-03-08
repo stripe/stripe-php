@@ -17,6 +17,7 @@ namespace Stripe\Issuing;
  * @property string $event_type The type of event corresponding to this dispute settlement detail, representing the stage in the dispute network lifecycle.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $network The card network for this dispute settlement detail. One of [&quot;visa&quot;, &quot;mastercard&quot;, &quot;maestro&quot;]
+ * @property null|(object{processing_date: null|string}&\Stripe\StripeObject&\stdClass) $network_data Details about the transaction, such as processing dates, set by the card network.
  * @property null|string $settlement The ID of the linked card network settlement.
  */
 class DisputeSettlementDetail extends \Stripe\ApiResource
