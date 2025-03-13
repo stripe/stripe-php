@@ -1,5 +1,9 @@
 # Changelog
 
+## 16.6.0-beta.1 - 2025-02-07
+* [#1808](https://github.com/stripe/stripe-php/pull/1808) Update generated code for beta
+
+
 ## 16.6.0 - 2025-02-24
 * [#1809](https://github.com/stripe/stripe-php/pull/1809) Update generated code
   * Add support for `priority` on `Billing.CreditGrant`
@@ -13,6 +17,7 @@
 ## 16.5.0 - 2025-01-27
 * [#1804](https://github.com/stripe/stripe-php/pull/1804) Update generated code
   * Add support for `close` method on resource `Treasury.FinancialAccount`
+  * Add support for `advice_code` on `StripeError`
   * Add support for `discounts` on `Checkout.Session`
   * Add support for new value `pay_by_bank` on enum `PaymentLink.payment_method_types[]`
   * Add support for `pay_by_bank` on `PaymentMethodConfiguration` and `PaymentMethod`
@@ -25,14 +30,67 @@
 * [#1801](https://github.com/stripe/stripe-php/pull/1801) Add justfile, remove coveralls, and fix AUTOLOAD in CI
 * [#1797](https://github.com/stripe/stripe-php/pull/1797) Added pull request template
 
+## 16.5.0-beta.3 - 2025-01-23
+* [#1803](https://github.com/stripe/stripe-php/pull/1803) Update generated code for beta
+  * V2 Events now are subclass of `\Stripe\V2\Event`.
+
+## 16.5.0-beta.2 - 2025-01-09
+* [#1796](https://github.com/stripe/stripe-php/pull/1796) Update generated code for beta
+  * Add support for `close` method on resource `Treasury.FinancialAccount`
+  * Add support for `advice_code` on `StripeError`
+  * Add support for `brand_product` on `Card`
+  * Add support for `is_default` and `nickname` on `Treasury.FinancialAccount`
+
+## 16.5.0-beta.1 - 2024-12-20
+* [#1794](https://github.com/stripe/stripe-php/pull/1794) Improved php type hints
+
+  ### Adds Create/Update/Retrieve/Delete/All/Search parameters
+
+  You will now be able to get type hints of the keys that can passed without switching out of your IDE. Eg.
+  ```php
+  * @param null|array{customer:string, components: array} $params
+  ```
+
+  <img width="417" alt="PHPStorm IDE with array type hints" src="https://github.com/user-attachments/assets/e914dcda-354f-4df2-b82e-217ad931e71d">
+
+  ### Updated StripeObject class properties
+  We changed the type of class properties from `StripeObject` to something more specific.
+
+  For example: Invoice settings was defined as a StripeObject in Customer resource.
+
+  https://github.com/stripe/stripe-php/blob/bae10cd799404f0f4862ec03810c5ff8ca634b30/lib/Customer.php#L25
+
+  Now you will be able to reference `custom_fields` and `rendering_options` on `customer->invoice_settings` without PHPStan complaining.
+  ```php
+  * @property object{custom_fields: null|object{name: string, value: string}&\Stripe\StripeObject&\stdClass[], default_payment_method: null|string|\Stripe\PaymentMethod, footer: null|string, rendering_options: null|object{amount_tax_display: null|string, template: null|string}&\Stripe\StripeObject&\stdClass}&\Stripe\StripeObject&\stdClass $invoice_settings
+   */
+  ```
+
 ## 16.4.0 - 2024-12-18
 * [#1793](https://github.com/stripe/stripe-php/pull/1793) This release changes the pinned API version to `2024-12-18.acacia`.
+  * Add support for `network_advice_code` and `network_decline_code` on `StripeError`
   * Add support for new values `payout_minimum_balance_hold` and `payout_minimum_balance_release` on enum `BalanceTransaction.type`
   * Add support for `allow_redisplay` on `Card` and `Source`
   * Add support for `regulated_status` on `Card`
   * Add support for new value `request_signature` on enum `Forwarding.Request.replacements[]`
   * Change type of `LineItem.description` from `string` to `nullable(string)`
   * Add support for new values `al_tin`, `am_tin`, `ao_tin`, `ba_tin`, `bb_tin`, `bs_tin`, `cd_nif`, `gn_nif`, `kh_tin`, `me_pib`, `mk_vat`, `mr_nif`, `np_pan`, `sn_ninea`, `sr_fin`, `tj_tin`, `ug_tin`, `zm_tin`, and `zw_tin` on enum `TaxId.type`
+
+## 16.4.0-beta.3 - 2024-12-12
+* [#1792](https://github.com/stripe/stripe-php/pull/1792) Update generated code for beta
+  * Add support for `allow_redisplay` on `Card` and `Source`
+  * Remove support for `amount_refunded` on `PaymentRecord`
+
+## 16.4.0-beta.2 - 2024-12-05
+* [#1790](https://github.com/stripe/stripe-php/pull/1790) Update generated code for beta
+  * Add support for new values `payout_minimum_balance_hold` and `payout_minimum_balance_release` on enum `BalanceTransaction.type`
+
+## 16.4.0-beta.1 - 2024-11-21
+* [#1788](https://github.com/stripe/stripe-php/pull/1788) Update generated code for beta
+  * Add support for `network_advice_code` and `network_decline_code` on `StripeError`
+  * Add support for new value `invoice.overpaid` on enum `Event.type`
+  * Add support for `adjustable_quantity`, `display`, and `metadata` on `LineItem`
+  * Change type of `LineItem.description` from `string` to `nullable(string)`
 
 ## 16.3.0 - 2024-11-20
 * [#1786](https://github.com/stripe/stripe-php/pull/1786) This release changes the pinned API version to `2024-11-20.acacia`.
@@ -3043,4 +3101,3 @@ Pull requests included in this release:
 -   Add new Transfer resource
 -   Switch from using HTTP Basic auth to Bearer auth. (Note: Stripe will support Basic auth for the indefinite future, but recommends Bearer auth when possible going forward)
 -   Numerous test suite improvements
-
