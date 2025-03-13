@@ -15,7 +15,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|string|\Stripe\Account $account The ID of the account that the bank account is associated with.
+ * @property null|string|\Stripe\Account $account The account this bank account belongs to. Only applicable on Accounts (not customers or recipients) This property is only available when returned as an <a href="/api/external_account_bank_accounts/object">External Account</a> where <a href="/api/accounts/object#account_object-controller-is_controller">controller.is_controller</a> is <code>true</code>.
  * @property null|string $account_holder_name The name of the person or business that owns the bank account.
  * @property null|string $account_holder_type The type of entity that holds the account. This can be either <code>individual</code> or <code>company</code>.
  * @property null|string $account_type The bank account type. This can only be <code>checking</code> or <code>savings</code> in most countries. In Japan, this can only be <code>futsu</code> or <code>toza</code>.

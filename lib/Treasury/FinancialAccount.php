@@ -38,8 +38,8 @@ class FinancialAccount extends \Stripe\ApiResource
     const STATUS_OPEN = 'open';
 
     /**
-     * Creates a new FinancialAccount. For now, each connected account can only have
-     * one FinancialAccount.
+     * Creates a new FinancialAccount. Each connected account can have up to three
+     * FinancialAccounts by default.
      *
      * @param null|array{display_name?: null|string, expand?: string[], features?: array{card_issuing?: array{requested: bool}, deposit_insurance?: array{requested: bool}, financial_addresses?: array{aba?: array{bank?: string, requested: bool}}, inbound_transfers?: array{ach?: array{requested: bool}}, intra_stripe_flows?: array{requested: bool}, outbound_payments?: array{ach?: array{requested: bool}, us_domestic_wire?: array{requested: bool}}, outbound_transfers?: array{ach?: array{requested: bool}, us_domestic_wire?: array{requested: bool}}}, metadata?: \Stripe\StripeObject, nickname?: null|string, platform_restrictions?: array{inbound_flows?: string, outbound_flows?: string}, supported_currencies: string[]} $params
      * @param null|array|string $options
