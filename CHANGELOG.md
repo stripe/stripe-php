@@ -3,7 +3,6 @@
 ## 16.6.0-beta.1 - 2025-02-07
 * [#1808](https://github.com/stripe/stripe-php/pull/1808) Update generated code for beta
 
-
 ## 16.6.0 - 2025-02-24
 * [#1809](https://github.com/stripe/stripe-php/pull/1809) Update generated code
   * Add support for `priority` on `Billing.CreditGrant`
