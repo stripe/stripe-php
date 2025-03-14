@@ -14,7 +14,7 @@ class TopupService extends AbstractService
     /**
      * Returns a list of top-ups.
      *
-     * @param null|array{amount?: int|array, created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
+     * @param null|array{amount?: array|int, created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Topup>

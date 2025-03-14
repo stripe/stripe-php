@@ -14,7 +14,7 @@ namespace Stripe\Tax;
  * @property int $quantity The number of units of the item being purchased. For reversals, this is the quantity reversed.
  * @property null|string $reference A custom identifier for this line item.
  * @property string $tax_behavior Specifies whether the <code>amount</code> includes taxes. If <code>tax_behavior=inclusive</code>, then the amount includes taxes.
- * @property null|((object{amount: int, jurisdiction: (object{country: string, display_name: string, level: string, state: null|string}&\Stripe\StripeObject&\stdClass), sourcing: string, tax_rate_details: null|(object{display_name: string, percentage_decimal: string, tax_type: string}&\Stripe\StripeObject&\stdClass), taxability_reason: string, taxable_amount: int}&\Stripe\StripeObject&\stdClass))[] $tax_breakdown Detailed account of taxes relevant to this line item.
+ * @property null|((object{amount: int, jurisdiction: (object{country: string, display_name: string, level: string, state: null|string}&\stdClass&\Stripe\StripeObject), sourcing: string, tax_rate_details: null|(object{display_name: string, percentage_decimal: string, tax_type: string}&\stdClass&\Stripe\StripeObject), taxability_reason: string, taxable_amount: int}&\stdClass&\Stripe\StripeObject))[] $tax_breakdown Detailed account of taxes relevant to this line item.
  * @property string $tax_code The <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID used for this resource.
  */
 class CalculationLineItem extends \Stripe\ApiResource

@@ -6,6 +6,7 @@ namespace Stripe\Service\Capital;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class FinancingTransactionService extends \Stripe\Service\AbstractService
@@ -17,9 +18,9 @@ class FinancingTransactionService extends \Stripe\Service\AbstractService
      * @param null|array{charge?: string, ending_before?: string, expand?: string[], financing_offer?: string, limit?: int, reversed_transaction?: string, starting_after?: string, treasury_transaction?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Capital\FinancingTransaction>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -33,9 +34,9 @@ class FinancingTransactionService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Capital\FinancingTransaction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

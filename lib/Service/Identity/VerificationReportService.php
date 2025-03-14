@@ -14,7 +14,7 @@ class VerificationReportService extends \Stripe\Service\AbstractService
     /**
      * List all verification reports.
      *
-     * @param null|array{client_reference_id?: string, created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string, verification_session?: string} $params
+     * @param null|array{client_reference_id?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string, verification_session?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Identity\VerificationReport>

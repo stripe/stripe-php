@@ -14,7 +14,7 @@ class PromotionCodeService extends AbstractService
     /**
      * Returns a list of your promotion codes.
      *
-     * @param null|array{active?: bool, code?: string, coupon?: string, created?: int|array, customer?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|array{active?: bool, code?: string, coupon?: string, created?: array|int, customer?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\PromotionCode>

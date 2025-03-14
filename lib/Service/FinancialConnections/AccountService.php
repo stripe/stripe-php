@@ -34,9 +34,9 @@ class AccountService extends \Stripe\Service\AbstractService
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\FinancialConnections\AccountInferredBalance>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function allInferredBalances($parentId, $params = null, $opts = null)
     {

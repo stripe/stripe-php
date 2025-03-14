@@ -14,7 +14,7 @@ class TransactionEntryService extends \Stripe\Service\AbstractService
     /**
      * Retrieves a list of TransactionEntry objects.
      *
-     * @param null|array{created?: int|array, effective_at?: int|array, ending_before?: string, expand?: string[], financial_account: string, limit?: int, order_by?: string, starting_after?: string, transaction?: string} $params
+     * @param null|array{created?: array|int, effective_at?: array|int, ending_before?: string, expand?: string[], financial_account: string, limit?: int, order_by?: string, starting_after?: string, transaction?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Treasury\TransactionEntry>

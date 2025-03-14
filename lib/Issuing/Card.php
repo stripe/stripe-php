@@ -26,11 +26,11 @@ namespace Stripe\Issuing;
  * @property null|Card|string $replaced_by The latest card that replaces this card, if any.
  * @property null|Card|string $replacement_for The card this card replaces, if any.
  * @property null|string $replacement_reason The reason why the previous card needed to be replaced.
- * @property null|(object{address: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject&\stdClass), address_validation: null|(object{mode: string, normalized_address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject&\stdClass), result: null|string}&\Stripe\StripeObject&\stdClass), carrier: null|string, customs: null|(object{eori_number: null|string}&\Stripe\StripeObject&\stdClass), eta: null|int, name: string, phone_number: null|string, require_signature: null|bool, service: string, status: null|string, tracking_number: null|string, tracking_url: null|string, type: string}&\Stripe\StripeObject&\stdClass) $shipping Where and how the card will be shipped.
- * @property (object{allowed_categories: null|string[], allowed_merchant_countries: null|string[], blocked_categories: null|string[], blocked_merchant_countries: null|string[], spending_limits: null|((object{amount: int, categories: null|string[], interval: string}&\Stripe\StripeObject&\stdClass))[], spending_limits_currency: null|string}&\Stripe\StripeObject&\stdClass) $spending_controls
+ * @property null|(object{address: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\stdClass&\Stripe\StripeObject), address_validation: null|(object{mode: string, normalized_address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\stdClass&\Stripe\StripeObject), result: null|string}&\stdClass&\Stripe\StripeObject), carrier: null|string, customs: null|(object{eori_number: null|string}&\stdClass&\Stripe\StripeObject), eta: null|int, name: string, phone_number: null|string, require_signature: null|bool, service: string, status: null|string, tracking_number: null|string, tracking_url: null|string, type: string}&\stdClass&\Stripe\StripeObject) $shipping Where and how the card will be shipped.
+ * @property (object{allowed_categories: null|string[], allowed_merchant_countries: null|string[], blocked_categories: null|string[], blocked_merchant_countries: null|string[], spending_limits: null|((object{amount: int, categories: null|string[], interval: string}&\stdClass&\Stripe\StripeObject))[], spending_limits_currency: null|string}&\stdClass&\Stripe\StripeObject) $spending_controls
  * @property string $status Whether authorizations can be approved on this card. May be blocked from activating cards depending on past-due Cardholder requirements. Defaults to <code>inactive</code>.
  * @property string $type The type of the card.
- * @property null|(object{apple_pay: (object{eligible: bool, ineligible_reason: null|string}&\Stripe\StripeObject&\stdClass), google_pay: (object{eligible: bool, ineligible_reason: null|string}&\Stripe\StripeObject&\stdClass), primary_account_identifier: null|string}&\Stripe\StripeObject&\stdClass) $wallets Information relating to digital wallets (like Apple Pay and Google Pay).
+ * @property null|(object{apple_pay: (object{eligible: bool, ineligible_reason: null|string}&\stdClass&\Stripe\StripeObject), google_pay: (object{eligible: bool, ineligible_reason: null|string}&\stdClass&\Stripe\StripeObject), primary_account_identifier: null|string}&\stdClass&\Stripe\StripeObject) $wallets Information relating to digital wallets (like Apple Pay and Google Pay).
  */
 class Card extends \Stripe\ApiResource
 {
@@ -81,7 +81,7 @@ class Card extends \Stripe\ApiResource
      * descending order by creation date, with the most recently created object
      * appearing first.
      *
-     * @param null|array{cardholder?: string, created?: int|array, ending_before?: string, exp_month?: int, exp_year?: int, expand?: string[], last4?: string, limit?: int, personalization_design?: string, starting_after?: string, status?: string, type?: string} $params
+     * @param null|array{cardholder?: string, created?: array|int, ending_before?: string, exp_month?: int, exp_year?: int, expand?: string[], last4?: string, limit?: int, personalization_design?: string, starting_after?: string, status?: string, type?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<Card> of ApiResources

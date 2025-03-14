@@ -10,7 +10,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|(object{usage_gte: null|int}&\Stripe\StripeObject&\stdClass) $billing_thresholds Define thresholds at which an invoice will be sent, and the related subscription advanced to a new billing period
+ * @property null|(object{usage_gte: null|int}&\stdClass&StripeObject) $billing_thresholds Define thresholds at which an invoice will be sent, and the related subscription advanced to a new billing period
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property (Discount|string)[] $discounts The discounts applied to the subscription item. Subscription item discounts are applied before subscription discounts. Use <code>expand[]=discounts</code> to expand each discount.
  * @property StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -18,8 +18,8 @@ namespace Stripe;
  * @property Price $price <p>Prices define the unit cost, currency, and (optional) billing cycle for both recurring and one-time purchases of products. <a href="https://stripe.com/docs/api#products">Products</a> help you track inventory or provisioning, and prices help you track payment terms. Different physical goods or levels of service should be represented by products, and pricing options should be represented by prices. This approach lets you change prices without having to change your provisioning scheme.</p><p>For example, you might have a single &quot;gold&quot; product that has prices for $10/month, $100/year, and €9 once.</p><p>Related guides: <a href="https://stripe.com/docs/billing/subscriptions/set-up-subscription">Set up a subscription</a>, <a href="https://stripe.com/docs/billing/invoices/create">create an invoice</a>, and more about <a href="https://stripe.com/docs/products-prices/overview">products and prices</a>.</p>
  * @property null|int $quantity The <a href="https://stripe.com/docs/subscriptions/quantities">quantity</a> of the plan to which the customer should be subscribed.
  * @property string $subscription The <code>subscription</code> this <code>subscription_item</code> belongs to.
- * @property null|\Stripe\TaxRate[] $tax_rates The tax rates which apply to this <code>subscription_item</code>. When set, the <code>default_tax_rates</code> on the subscription do not apply to this <code>subscription_item</code>.
- * @property null|(object{converts_to?: null|string[], type: string}&\Stripe\StripeObject&\stdClass) $trial Options that configure the trial on the subscription item.
+ * @property null|TaxRate[] $tax_rates The tax rates which apply to this <code>subscription_item</code>. When set, the <code>default_tax_rates</code> on the subscription do not apply to this <code>subscription_item</code>.
+ * @property null|(object{converts_to?: null|string[], type: string}&\stdClass&StripeObject) $trial Options that configure the trial on the subscription item.
  */
 class SubscriptionItem extends ApiResource
 {
@@ -32,7 +32,7 @@ class SubscriptionItem extends ApiResource
      * Adds a new item to an existing subscription. No existing items will be changed
      * or replaced.
      *
-     * @param null|array{billing_thresholds?: null|array{usage_gte: int}, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], metadata?: \Stripe\StripeObject, payment_behavior?: string, plan?: string, price?: string, price_data?: array{currency: string, product: string, recurring: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, proration_behavior?: string, proration_date?: int, quantity?: int, subscription: string, tax_rates?: null|string[], trial?: array{converts_to?: string[], type: string}} $params
+     * @param null|array{billing_thresholds?: null|array{usage_gte: int}, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], metadata?: StripeObject, payment_behavior?: string, plan?: string, price?: string, price_data?: array{currency: string, product: string, recurring: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, proration_behavior?: string, proration_date?: int, quantity?: int, subscription: string, tax_rates?: null|string[], trial?: array{converts_to?: string[], type: string}} $params
      * @param null|array|string $options
      *
      * @return SubscriptionItem the created resource
@@ -113,7 +113,7 @@ class SubscriptionItem extends ApiResource
      * Updates the plan or quantity of an item on a current subscription.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{billing_thresholds?: null|array{usage_gte: int}, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], metadata?: null|\Stripe\StripeObject, off_session?: bool, payment_behavior?: string, plan?: string, price?: string, price_data?: array{currency: string, product: string, recurring: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, proration_behavior?: string, proration_date?: int, quantity?: int, tax_rates?: null|string[]} $params
+     * @param null|array{billing_thresholds?: null|array{usage_gte: int}, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], metadata?: null|StripeObject, off_session?: bool, payment_behavior?: string, plan?: string, price?: string, price_data?: array{currency: string, product: string, recurring: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, proration_behavior?: string, proration_date?: int, quantity?: int, tax_rates?: null|string[]} $params
      * @param null|array|string $opts
      *
      * @return SubscriptionItem the updated resource

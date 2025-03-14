@@ -14,7 +14,7 @@ class CreditNoteService extends AbstractService
     /**
      * Returns a list of credit notes.
      *
-     * @param null|array{created?: int|array, customer?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, starting_after?: string} $params
+     * @param null|array{created?: array|int, customer?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\CreditNote>
@@ -49,7 +49,7 @@ class CreditNoteService extends AbstractService
      * <code>status=open</code> invoice, a credit note reduces its
      * <code>amount_due</code>. For a <code>status=paid</code> invoice, a credit note
      * does not affect its <code>amount_due</code>. Instead, it can result in any
-     * combination of the following:.
+     * combination of the following:
      *
      * <ul> <li>Refund: create a new refund (using <code>refund_amount</code>) or link
      * an existing refund (using <code>refund</code>).</li> <li>Customer balance

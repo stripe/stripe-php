@@ -15,7 +15,7 @@ class ApplicationFeeService extends AbstractService
      * Returns a list of application fees you’ve previously collected. The application
      * fees are returned in sorted order, with the most recent fees appearing first.
      *
-     * @param null|array{charge?: string, created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|array{charge?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\ApplicationFee>

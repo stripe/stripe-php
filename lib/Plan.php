@@ -29,10 +29,10 @@ namespace Stripe;
  * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $meter The meter tracking the usage of a metered price
  * @property null|string $nickname A brief description of the plan, hidden from customers.
- * @property null|string|\Stripe\Product $product The product whose pricing this plan determines.
- * @property ((object{flat_amount: null|int, flat_amount_decimal: null|string, unit_amount: null|int, unit_amount_decimal: null|string, up_to: null|int}&\Stripe\StripeObject&\stdClass))[] $tiers Each element represents a pricing tier. This parameter requires <code>billing_scheme</code> to be set to <code>tiered</code>. See also the documentation for <code>billing_scheme</code>.
+ * @property null|Product|string $product The product whose pricing this plan determines.
+ * @property ((object{flat_amount: null|int, flat_amount_decimal: null|string, unit_amount: null|int, unit_amount_decimal: null|string, up_to: null|int}&\stdClass&StripeObject))[] $tiers Each element represents a pricing tier. This parameter requires <code>billing_scheme</code> to be set to <code>tiered</code>. See also the documentation for <code>billing_scheme</code>.
  * @property null|string $tiers_mode Defines if the tiering price should be <code>graduated</code> or <code>volume</code> based. In <code>volume</code>-based tiering, the maximum quantity within a period determines the per unit price. In <code>graduated</code> tiering, pricing can change as the quantity grows.
- * @property null|(object{divide_by: int, round: string}&\Stripe\StripeObject&\stdClass) $transform_usage Apply a transformation to the reported usage or set quantity before computing the amount billed. Cannot be combined with <code>tiers</code>.
+ * @property null|(object{divide_by: int, round: string}&\stdClass&StripeObject) $transform_usage Apply a transformation to the reported usage or set quantity before computing the amount billed. Cannot be combined with <code>tiers</code>.
  * @property null|int $trial_period_days Default number of trial days when subscribing a customer to this plan using <a href="https://stripe.com/docs/api#create_subscription-trial_from_plan"><code>trial_from_plan=true</code></a>.
  * @property string $usage_type Configures how the quantity per period should be determined. Can be either <code>metered</code> or <code>licensed</code>. <code>licensed</code> automatically bills the <code>quantity</code> set when adding it to a subscription. <code>metered</code> aggregates the total usage based on usage records. Defaults to <code>licensed</code>.
  */
@@ -66,7 +66,7 @@ class Plan extends ApiResource
      * API</a>. It replaces the Plans API and is backwards compatible to simplify your
      * migration.
      *
-     * @param null|array{active?: bool, aggregate_usage?: string, amount?: int, amount_decimal?: string, billing_scheme?: string, currency: string, expand?: string[], id?: string, interval: string, interval_count?: int, metadata?: null|\Stripe\StripeObject, meter?: string, nickname?: string, product?: string|array, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: string|int|array})[], tiers_mode?: string, transform_usage?: array{divide_by: int, round: string}, trial_period_days?: int, usage_type?: string} $params
+     * @param null|array{active?: bool, aggregate_usage?: string, amount?: int, amount_decimal?: string, billing_scheme?: string, currency: string, expand?: string[], id?: string, interval: string, interval_count?: int, metadata?: null|StripeObject, meter?: string, nickname?: string, product?: array|string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: array|int|string})[], tiers_mode?: string, transform_usage?: array{divide_by: int, round: string}, trial_period_days?: int, usage_type?: string} $params
      * @param null|array|string $options
      *
      * @return Plan the created resource
@@ -110,7 +110,7 @@ class Plan extends ApiResource
     /**
      * Returns a list of your plans.
      *
-     * @param null|array{active?: bool, created?: int|array, ending_before?: string, expand?: string[], limit?: int, product?: string, starting_after?: string} $params
+     * @param null|array{active?: bool, created?: array|int, ending_before?: string, expand?: string[], limit?: int, product?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Plan> of ApiResources
@@ -149,7 +149,7 @@ class Plan extends ApiResource
      * plan’s ID, amount, currency, or billing cycle.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{active?: bool, expand?: string[], metadata?: null|\Stripe\StripeObject, nickname?: string, product?: string, trial_period_days?: int} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|StripeObject, nickname?: string, product?: string, trial_period_days?: int} $params
      * @param null|array|string $opts
      *
      * @return Plan the updated resource

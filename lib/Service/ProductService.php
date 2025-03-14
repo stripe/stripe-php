@@ -15,7 +15,7 @@ class ProductService extends AbstractService
      * Returns a list of your products. The products are returned sorted by creation
      * date, with the most recently created products appearing first.
      *
-     * @param null|array{active?: bool, created?: int|array, ending_before?: string, expand?: string[], ids?: string[], limit?: int, shippable?: bool, starting_after?: string, type?: string, url?: string} $params
+     * @param null|array{active?: bool, created?: array|int, ending_before?: string, expand?: string[], ids?: string[], limit?: int, shippable?: bool, starting_after?: string, type?: string, url?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Product>
@@ -46,7 +46,7 @@ class ProductService extends AbstractService
     /**
      * Creates a new product object.
      *
-     * @param null|array{active?: bool, default_price_data?: array{currency: string, currency_options?: \Stripe\StripeObject, custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, recurring?: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, description?: string, expand?: string[], id?: string, images?: string[], marketing_features?: array{name: string}[], metadata?: \Stripe\StripeObject, name: string, package_dimensions?: array{height: float, length: float, weight: float, width: float}, provisioning?: array{gift_card?: array{fixed_amount?: array{amount: int, currency: string}, type: string}, type: string}, shippable?: bool, statement_descriptor?: string, tax_code?: string, type?: string, unit_label?: string, url?: string} $params
+     * @param null|array{active?: bool, default_price_data?: array{currency: string, currency_options?: \Stripe\StripeObject, custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, metadata?: \Stripe\StripeObject, recurring?: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, description?: string, expand?: string[], id?: string, images?: string[], marketing_features?: array{name: string}[], metadata?: \Stripe\StripeObject, name: string, package_dimensions?: array{height: float, length: float, weight: float, width: float}, provisioning?: array{gift_card?: array{fixed_amount?: array{amount: int, currency: string}, type: string}, type: string}, shippable?: bool, statement_descriptor?: string, tax_code?: string, type?: string, unit_label?: string, url?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Product

@@ -15,7 +15,7 @@ class CustomerService extends AbstractService
      * Returns a list of your customers. The customers are returned sorted by creation
      * date, with the most recent customers appearing first.
      *
-     * @param null|array{created?: int|array, email?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, test_clock?: string} $params
+     * @param null|array{created?: array|int, email?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, test_clock?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Customer>

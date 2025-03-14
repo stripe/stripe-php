@@ -22,19 +22,19 @@ namespace Stripe\Identity;
  * @property null|string $client_reference_id A string to reference this user. This can be a customer ID, a session ID, or similar, and can be used to reconcile this verification with your internal systems.
  * @property null|string $client_secret The short-lived client secret used by Stripe.js to <a href="https://stripe.com/docs/js/identity/modal">show a verification modal</a> inside your app. This client secret expires after 24 hours and can only be used once. Don’t store it, log it, embed it in a URL, or expose it to anyone other than the user. Make sure that you have TLS enabled on any page that includes the client secret. Refer to our docs on <a href="https://stripe.com/docs/identity/verification-sessions#client-secret">passing the client secret to the frontend</a> to learn more.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|(object{code: null|string, reason: null|string}&\Stripe\StripeObject&\stdClass) $last_error If present, this property tells you the last error encountered when processing the verification.
- * @property null|string|\Stripe\Identity\VerificationReport $last_verification_report ID of the most recent VerificationReport. <a href="https://stripe.com/docs/identity/verification-sessions#results">Learn more about accessing detailed verification results.</a>
+ * @property null|(object{code: null|string, reason: null|string}&\stdClass&\Stripe\StripeObject) $last_error If present, this property tells you the last error encountered when processing the verification.
+ * @property null|string|VerificationReport $last_verification_report ID of the most recent VerificationReport. <a href="https://stripe.com/docs/identity/verification-sessions#results">Learn more about accessing detailed verification results.</a>
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|(object{document?: (object{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}&\Stripe\StripeObject&\stdClass), email?: (object{require_verification?: bool}&\Stripe\StripeObject&\stdClass), id_number?: (object{}&\Stripe\StripeObject&\stdClass), phone?: (object{require_verification?: bool}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass) $options A set of options for the session’s verification checks.
- * @property null|(object{email?: string, phone?: string}&\Stripe\StripeObject&\stdClass) $provided_details Details provided about the user being verified. These details may be shown to the user.
- * @property null|(object{status: string}&\Stripe\StripeObject&\stdClass) $redaction Redaction status of this VerificationSession. If the VerificationSession is not redacted, this field will be null.
- * @property null|string $related_customer Token referencing a Customer resource.
+ * @property null|(object{document?: (object{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}&\stdClass&\Stripe\StripeObject), email?: (object{require_verification?: bool}&\stdClass&\Stripe\StripeObject), id_number?: (object{}&\stdClass&\Stripe\StripeObject), phone?: (object{require_verification?: bool}&\stdClass&\Stripe\StripeObject)}&\stdClass&\Stripe\StripeObject) $options A set of options for the session’s verification checks.
+ * @property null|(object{email?: string, phone?: string}&\stdClass&\Stripe\StripeObject) $provided_details Details provided about the user being verified. These details may be shown to the user.
+ * @property null|(object{status: string}&\stdClass&\Stripe\StripeObject) $redaction Redaction status of this VerificationSession. If the VerificationSession is not redacted, this field will be null.
+ * @property null|string $related_customer Customer ID
  * @property string $status Status of this VerificationSession. <a href="https://stripe.com/docs/identity/how-sessions-work">Learn more about the lifecycle of sessions</a>.
  * @property string $type The type of <a href="https://stripe.com/docs/identity/verification-checks">verification check</a> to be performed.
  * @property null|string $url The short-lived URL that you use to redirect a user to Stripe to submit their identity information. This URL expires after 48 hours and can only be used once. Don’t store it, log it, send it in emails or expose it to anyone other than the user. Refer to our docs on <a href="https://stripe.com/docs/identity/verify-identity-documents?platform=web&amp;type=redirect">verifying identity documents</a> to learn how to redirect users to Stripe.
  * @property null|string $verification_flow The configuration token of a verification flow from the dashboard.
- * @property null|(object{address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject&\stdClass), dob?: null|(object{day: null|int, month: null|int, year: null|int}&\Stripe\StripeObject&\stdClass), email: null|string, first_name: null|string, id_number?: null|string, id_number_type: null|string, last_name: null|string, phone: null|string}&\Stripe\StripeObject&\stdClass) $verified_outputs The user’s verified data.
+ * @property null|(object{address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\stdClass&\Stripe\StripeObject), dob?: null|(object{day: null|int, month: null|int, year: null|int}&\stdClass&\Stripe\StripeObject), email: null|string, first_name: null|string, id_number?: null|string, id_number_type: null|string, last_name: null|string, phone: null|string}&\stdClass&\Stripe\StripeObject) $verified_outputs The user’s verified data.
  */
 class VerificationSession extends \Stripe\ApiResource
 {
@@ -86,7 +86,7 @@ class VerificationSession extends \Stripe\ApiResource
     /**
      * Returns a list of VerificationSessions.
      *
-     * @param null|array{client_reference_id?: string, created?: int|array, ending_before?: string, expand?: string[], limit?: int, related_customer?: string, starting_after?: string, status?: string} $params
+     * @param null|array{client_reference_id?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, related_customer?: string, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<VerificationSession> of ApiResources

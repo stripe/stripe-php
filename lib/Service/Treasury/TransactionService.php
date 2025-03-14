@@ -14,7 +14,7 @@ class TransactionService extends \Stripe\Service\AbstractService
     /**
      * Retrieves a list of Transaction objects.
      *
-     * @param null|array{created?: int|array, ending_before?: string, expand?: string[], financial_account: string, limit?: int, order_by?: string, starting_after?: string, status?: string, status_transitions?: array{posted_at?: int|array}} $params
+     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], financial_account: string, limit?: int, order_by?: string, starting_after?: string, status?: string, status_transitions?: array{posted_at?: array|int}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Treasury\Transaction>

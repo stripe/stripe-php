@@ -11,7 +11,7 @@ namespace Stripe\Terminal;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|(object{collect_inputs?: (object{inputs: ((object{custom_text: null|(object{description: null|string, skip_button: null|string, submit_button: null|string, title: null|string}&\Stripe\StripeObject&\stdClass), email?: (object{value: null|string}&\Stripe\StripeObject&\stdClass), numeric?: (object{value: null|string}&\Stripe\StripeObject&\stdClass), phone?: (object{value: null|string}&\Stripe\StripeObject&\stdClass), required: null|bool, selection?: (object{choices: ((object{style: null|string, value: string}&\Stripe\StripeObject&\stdClass))[], value: null|string}&\Stripe\StripeObject&\stdClass), signature?: (object{value: null|string}&\Stripe\StripeObject&\stdClass), skipped?: bool, text?: (object{value: null|string}&\Stripe\StripeObject&\stdClass), toggles: null|((object{default_value: null|string, description: null|string, title: null|string, value: null|string}&\Stripe\StripeObject&\stdClass))[], type: string}&\Stripe\StripeObject&\stdClass))[], metadata: null|\Stripe\StripeObject}&\Stripe\StripeObject&\stdClass), collect_payment_method?: (object{account?: string, collect_config?: (object{enable_customer_cancellation?: bool, skip_tipping?: bool, tipping?: (object{amount_eligible?: int}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass), payment_intent: string|\Stripe\PaymentIntent, payment_method?: \Stripe\PaymentMethod}&\Stripe\StripeObject&\stdClass), confirm_payment_intent?: (object{account?: string, payment_intent: string|\Stripe\PaymentIntent}&\Stripe\StripeObject&\stdClass), failure_code: null|string, failure_message: null|string, process_payment_intent?: (object{account?: string, payment_intent: string|\Stripe\PaymentIntent, process_config?: (object{enable_customer_cancellation?: bool, skip_tipping?: bool, tipping?: (object{amount_eligible?: int}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass), process_setup_intent?: (object{generated_card?: string, process_config?: (object{enable_customer_cancellation?: bool}&\Stripe\StripeObject&\stdClass), setup_intent: string|\Stripe\SetupIntent}&\Stripe\StripeObject&\stdClass), refund_payment?: (object{account?: string, amount?: int, charge?: string|\Stripe\Charge, metadata?: \Stripe\StripeObject, payment_intent?: string|\Stripe\PaymentIntent, reason?: string, refund?: string|\Stripe\Refund, refund_application_fee?: bool, refund_payment_config?: (object{enable_customer_cancellation?: bool}&\Stripe\StripeObject&\stdClass), reverse_transfer?: bool}&\Stripe\StripeObject&\stdClass), set_reader_display?: (object{cart: null|(object{currency: string, line_items: (object{amount: int, description: string, quantity: int}&\Stripe\StripeObject&\stdClass)[], tax: null|int, total: int}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass), status: string, type: string}&\Stripe\StripeObject&\stdClass) $action The most recent action performed by the reader.
+ * @property null|(object{collect_inputs?: (object{inputs: ((object{custom_text: null|(object{description: null|string, skip_button: null|string, submit_button: null|string, title: null|string}&\stdClass&\Stripe\StripeObject), email?: (object{value: null|string}&\stdClass&\Stripe\StripeObject), numeric?: (object{value: null|string}&\stdClass&\Stripe\StripeObject), phone?: (object{value: null|string}&\stdClass&\Stripe\StripeObject), required: null|bool, selection?: (object{choices: ((object{style: null|string, value: string}&\stdClass&\Stripe\StripeObject))[], value: null|string}&\stdClass&\Stripe\StripeObject), signature?: (object{value: null|string}&\stdClass&\Stripe\StripeObject), skipped?: bool, text?: (object{value: null|string}&\stdClass&\Stripe\StripeObject), toggles: null|((object{default_value: null|string, description: null|string, title: null|string, value: null|string}&\stdClass&\Stripe\StripeObject))[], type: string}&\stdClass&\Stripe\StripeObject))[], metadata: null|\Stripe\StripeObject}&\stdClass&\Stripe\StripeObject), collect_payment_method?: (object{account?: string, collect_config?: (object{enable_customer_cancellation?: bool, skip_tipping?: bool, tipping?: (object{amount_eligible?: int}&\stdClass&\Stripe\StripeObject)}&\stdClass&\Stripe\StripeObject), payment_intent: string|\Stripe\PaymentIntent, payment_method?: \Stripe\PaymentMethod}&\stdClass&\Stripe\StripeObject), confirm_payment_intent?: (object{account?: string, payment_intent: string|\Stripe\PaymentIntent}&\stdClass&\Stripe\StripeObject), failure_code: null|string, failure_message: null|string, process_payment_intent?: (object{account?: string, payment_intent: string|\Stripe\PaymentIntent, process_config?: (object{enable_customer_cancellation?: bool, skip_tipping?: bool, tipping?: (object{amount_eligible?: int}&\stdClass&\Stripe\StripeObject)}&\stdClass&\Stripe\StripeObject)}&\stdClass&\Stripe\StripeObject), process_setup_intent?: (object{generated_card?: string, process_config?: (object{enable_customer_cancellation?: bool}&\stdClass&\Stripe\StripeObject), setup_intent: string|\Stripe\SetupIntent}&\stdClass&\Stripe\StripeObject), refund_payment?: (object{account?: string, amount?: int, charge?: string|\Stripe\Charge, metadata?: \Stripe\StripeObject, payment_intent?: string|\Stripe\PaymentIntent, reason?: string, refund?: string|\Stripe\Refund, refund_application_fee?: bool, refund_payment_config?: (object{enable_customer_cancellation?: bool}&\stdClass&\Stripe\StripeObject), reverse_transfer?: bool}&\stdClass&\Stripe\StripeObject), set_reader_display?: (object{cart: null|(object{currency: string, line_items: (object{amount: int, description: string, quantity: int}&\stdClass&\Stripe\StripeObject)[], tax: null|int, total: int}&\stdClass&\Stripe\StripeObject), type: string}&\stdClass&\Stripe\StripeObject), status: string, type: string}&\stdClass&\Stripe\StripeObject) $action The most recent action performed by the reader.
  * @property null|string $device_sw_version The current software version of the reader.
  * @property string $device_type Type of reader, one of <code>bbpos_wisepad3</code>, <code>stripe_m2</code>, <code>stripe_s700</code>, <code>bbpos_chipper2x</code>, <code>bbpos_wisepos_e</code>, <code>verifone_P400</code>, <code>simulated_wisepos_e</code>, or <code>mobile_phone_reader</code>.
  * @property null|string $ip_address The local IP address of the reader.
@@ -164,9 +164,9 @@ class Reader extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Reader the processed reader
+     * @return Reader the collected reader
      *
-     * @return \Stripe\Terminal\Reader the collected reader
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function collectInputs($params = null, $opts = null)
     {
@@ -181,9 +181,9 @@ class Reader extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Reader the collected reader
      *
-     * @return \Stripe\Terminal\Reader the collected reader
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function collectPaymentMethod($params = null, $opts = null)
     {
@@ -198,9 +198,9 @@ class Reader extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Reader the confirmed reader
      *
-     * @return \Stripe\Terminal\Reader the confirmed reader
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function confirmPaymentIntent($params = null, $opts = null)
     {
@@ -215,9 +215,9 @@ class Reader extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Reader the processed reader
      *
-     * @return \Stripe\Terminal\Reader the processed reader
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function processPaymentIntent($params = null, $opts = null)
     {

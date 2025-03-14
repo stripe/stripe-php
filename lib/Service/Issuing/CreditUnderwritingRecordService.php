@@ -6,6 +6,7 @@ namespace Stripe\Service\Issuing;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class CreditUnderwritingRecordService extends \Stripe\Service\AbstractService
@@ -18,9 +19,9 @@ class CreditUnderwritingRecordService extends \Stripe\Service\AbstractService
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Issuing\CreditUnderwritingRecord>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -34,9 +35,9 @@ class CreditUnderwritingRecordService extends \Stripe\Service\AbstractService
      * @param null|array{application?: array{application_method?: string, purpose: string, submitted_at: int}, credit_user?: array{email: string, name: string}, decided_at?: int, decision?: array{application_rejected?: array{reason_other_explanation?: string, reasons: string[]}, credit_limit_approved?: array{amount: int, currency?: string}, credit_limit_decreased?: array{amount: int, currency?: string, reason_other_explanation?: string, reasons: string[]}, credit_line_closed?: array{reason_other_explanation?: string, reasons: string[]}, type: string}, expand?: string[], metadata?: \Stripe\StripeObject, regulatory_reporting_file?: string, underwriting_exception?: array{explanation: string, original_decision_type: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\CreditUnderwritingRecord
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function correct($id, $params = null, $opts = null)
     {
@@ -50,9 +51,9 @@ class CreditUnderwritingRecordService extends \Stripe\Service\AbstractService
      * @param null|array{application: array{application_method?: string, purpose: string, submitted_at: int}, credit_user: array{email: string, name: string}, expand?: string[], metadata?: \Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\CreditUnderwritingRecord
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function createFromApplication($params = null, $opts = null)
     {
@@ -66,9 +67,9 @@ class CreditUnderwritingRecordService extends \Stripe\Service\AbstractService
      * @param null|array{credit_user: array{email: string, name: string}, decided_at: int, decision: array{credit_limit_approved?: array{amount: int, currency?: string}, credit_limit_decreased?: array{amount: int, currency?: string, reason_other_explanation?: string, reasons: string[]}, credit_line_closed?: array{reason_other_explanation?: string, reasons: string[]}, type: string}, expand?: string[], metadata?: \Stripe\StripeObject, regulatory_reporting_file?: string, underwriting_exception?: array{explanation: string, original_decision_type: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\CreditUnderwritingRecord
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function createFromProactiveReview($params = null, $opts = null)
     {
@@ -83,9 +84,9 @@ class CreditUnderwritingRecordService extends \Stripe\Service\AbstractService
      * @param null|array{decided_at: int, decision: array{application_rejected?: array{reason_other_explanation?: string, reasons: string[]}, credit_limit_approved?: array{amount: int, currency?: string}, type: string}, expand?: string[], metadata?: \Stripe\StripeObject, regulatory_reporting_file?: string, underwriting_exception?: array{explanation: string, original_decision_type: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\CreditUnderwritingRecord
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function reportDecision($id, $params = null, $opts = null)
     {
@@ -99,9 +100,9 @@ class CreditUnderwritingRecordService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\CreditUnderwritingRecord
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

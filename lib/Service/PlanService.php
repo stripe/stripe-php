@@ -14,7 +14,7 @@ class PlanService extends AbstractService
     /**
      * Returns a list of your plans.
      *
-     * @param null|array{active?: bool, created?: int|array, ending_before?: string, expand?: string[], limit?: int, product?: string, starting_after?: string} $params
+     * @param null|array{active?: bool, created?: array|int, ending_before?: string, expand?: string[], limit?: int, product?: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Plan>
@@ -31,7 +31,7 @@ class PlanService extends AbstractService
      * API</a>. It replaces the Plans API and is backwards compatible to simplify your
      * migration.
      *
-     * @param null|array{active?: bool, aggregate_usage?: string, amount?: int, amount_decimal?: string, billing_scheme?: string, currency: string, expand?: string[], id?: string, interval: string, interval_count?: int, metadata?: null|\Stripe\StripeObject, meter?: string, nickname?: string, product?: string|array, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: string|int|array})[], tiers_mode?: string, transform_usage?: array{divide_by: int, round: string}, trial_period_days?: int, usage_type?: string} $params
+     * @param null|array{active?: bool, aggregate_usage?: string, amount?: int, amount_decimal?: string, billing_scheme?: string, currency: string, expand?: string[], id?: string, interval: string, interval_count?: int, metadata?: null|\Stripe\StripeObject, meter?: string, nickname?: string, product?: array|string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: array|int|string})[], tiers_mode?: string, transform_usage?: array{divide_by: int, round: string}, trial_period_days?: int, usage_type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Plan

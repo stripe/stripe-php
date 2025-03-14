@@ -6,6 +6,7 @@ namespace Stripe\Service\GiftCards;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class TransactionService extends \Stripe\Service\AbstractService
@@ -16,9 +17,9 @@ class TransactionService extends \Stripe\Service\AbstractService
      * @param null|array{ending_before?: string, expand?: string[], gift_card?: string, limit?: int, starting_after?: string, transfer_group?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\GiftCards\Transaction>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -32,9 +33,9 @@ class TransactionService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\GiftCards\Transaction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -48,9 +49,9 @@ class TransactionService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\GiftCards\Transaction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function confirm($id, $params = null, $opts = null)
     {
@@ -63,9 +64,9 @@ class TransactionService extends \Stripe\Service\AbstractService
      * @param null|array{amount: int, confirm?: bool, created_by?: array{payment: array{payment_intent: string}, type: string}, currency: string, description?: string, expand?: string[], gift_card: string, metadata?: \Stripe\StripeObject, transfer_group?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\GiftCards\Transaction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -79,9 +80,9 @@ class TransactionService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\GiftCards\Transaction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -95,9 +96,9 @@ class TransactionService extends \Stripe\Service\AbstractService
      * @param null|array{description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\GiftCards\Transaction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

@@ -17,7 +17,7 @@ namespace Stripe\GiftCards;
  * @property null|int $amount The amount of this transaction. A positive value indicates that funds were added to the gift card. A negative value indicates that funds were removed from the gift card.
  * @property null|int $confirmed_at Time at which the transaction was confirmed. Measured in seconds since the Unix epoch.
  * @property null|int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|(object{checkout?: (object{checkout_session: string, line_item: null|string}&\Stripe\StripeObject&\stdClass), order?: (object{line_item: null|string, order: string}&\Stripe\StripeObject&\stdClass), payment?: (object{payment_intent: string}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass) $created_by The related Stripe objects that created this gift card transaction.
+ * @property null|(object{checkout?: (object{checkout_session: string, line_item: null|string}&\stdClass&\Stripe\StripeObject), order?: (object{line_item: null|string, order: string}&\stdClass&\Stripe\StripeObject), payment?: (object{payment_intent: string}&\stdClass&\Stripe\StripeObject), type: string}&\stdClass&\Stripe\StripeObject) $created_by The related Stripe objects that created this gift card transaction.
  * @property null|string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|string $gift_card The gift card that this transaction occurred on
@@ -42,9 +42,9 @@ class Transaction extends \Stripe\ApiResource
      * @param null|array{amount: int, confirm?: bool, created_by?: array{payment: array{payment_intent: string}, type: string}, currency: string, description?: string, expand?: string[], gift_card: string, metadata?: \Stripe\StripeObject, transfer_group?: string} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Transaction the created resource
      *
-     * @return \Stripe\GiftCards\Transaction the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -64,9 +64,9 @@ class Transaction extends \Stripe\ApiResource
      * @param null|array{ending_before?: string, expand?: string[], gift_card?: string, limit?: int, starting_after?: string, transfer_group?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Transaction> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\GiftCards\Transaction> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -81,9 +81,9 @@ class Transaction extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Transaction
      *
-     * @return \Stripe\GiftCards\Transaction
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -101,9 +101,9 @@ class Transaction extends \Stripe\ApiResource
      * @param null|array{description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Transaction the updated resource
      *
-     * @return \Stripe\GiftCards\Transaction the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -121,9 +121,9 @@ class Transaction extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Transaction the canceled transaction
      *
-     * @return \Stripe\GiftCards\Transaction the canceled transaction
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function cancel($params = null, $opts = null)
     {
@@ -138,9 +138,9 @@ class Transaction extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Transaction the confirmed transaction
      *
-     * @return \Stripe\GiftCards\Transaction the confirmed transaction
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function confirm($params = null, $opts = null)
     {
