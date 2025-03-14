@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Person
  */
-final class PersonTest extends \Stripe\TestCase
+final class PersonTest extends TestCase
 {
     use TestHelper;
 
@@ -15,8 +16,8 @@ final class PersonTest extends \Stripe\TestCase
 
     public function testHasCorrectUrl()
     {
-        $resource = \Stripe\Account::retrievePerson(self::TEST_ACCOUNT_ID, self::TEST_RESOURCE_ID);
-        static::assertSame(
+        $resource = Account::retrievePerson(self::TEST_ACCOUNT_ID, self::TEST_RESOURCE_ID);
+        self::assertSame(
             '/v1/accounts/' . self::TEST_ACCOUNT_ID . '/persons/' . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
@@ -24,26 +25,26 @@ final class PersonTest extends \Stripe\TestCase
 
     public function testIsNotDirectlyRetrievable()
     {
-        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+        $this->expectException(Exception\BadMethodCallException::class);
 
         Person::retrieve(self::TEST_RESOURCE_ID);
     }
 
     public function testIsSaveable()
     {
-        $resource = \Stripe\Account::retrievePerson(self::TEST_ACCOUNT_ID, self::TEST_RESOURCE_ID);
+        $resource = Account::retrievePerson(self::TEST_ACCOUNT_ID, self::TEST_RESOURCE_ID);
         $resource->first_name = 'value';
         $this->expectsRequest(
             'post',
             '/v1/accounts/' . self::TEST_ACCOUNT_ID . '/persons/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        static::assertSame(\Stripe\Person::class, \get_class($resource));
+        self::assertSame(Person::class, \get_class($resource));
     }
 
     public function testIsNotDirectlyUpdatable()
     {
-        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+        $this->expectException(Exception\BadMethodCallException::class);
 
         Person::update(self::TEST_RESOURCE_ID, [
             'first_name' => ['John'],
@@ -52,12 +53,12 @@ final class PersonTest extends \Stripe\TestCase
 
     public function testIsDeletable()
     {
-        $resource = \Stripe\Account::retrievePerson(self::TEST_ACCOUNT_ID, self::TEST_RESOURCE_ID);
+        $resource = Account::retrievePerson(self::TEST_ACCOUNT_ID, self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'delete',
             '/v1/accounts/' . self::TEST_ACCOUNT_ID . '/persons/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        static::assertSame(\Stripe\Person::class, \get_class($resource));
+        self::assertSame(Person::class, \get_class($resource));
     }
 }

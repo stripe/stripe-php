@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Product
  */
-final class ProductTest extends \Stripe\TestCase
+final class ProductTest extends TestCase
 {
     use TestHelper;
 
@@ -19,8 +20,8 @@ final class ProductTest extends \Stripe\TestCase
             '/v1/products'
         );
         $resources = Product::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Product::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(Product::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -30,7 +31,7 @@ final class ProductTest extends \Stripe\TestCase
             '/v1/products/' . self::TEST_RESOURCE_ID
         );
         $resource = Product::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Product::class, $resource);
+        self::assertInstanceOf(Product::class, $resource);
     }
 
     public function testIsCreatable()
@@ -42,7 +43,7 @@ final class ProductTest extends \Stripe\TestCase
         $resource = Product::create([
             'name' => 'name',
         ]);
-        static::assertInstanceOf(\Stripe\Product::class, $resource);
+        self::assertInstanceOf(Product::class, $resource);
     }
 
     public function testIsSaveable()
@@ -54,7 +55,7 @@ final class ProductTest extends \Stripe\TestCase
             '/v1/products/' . $resource->id
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\Product::class, $resource);
+        self::assertInstanceOf(Product::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -66,7 +67,7 @@ final class ProductTest extends \Stripe\TestCase
         $resource = Product::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Product::class, $resource);
+        self::assertInstanceOf(Product::class, $resource);
     }
 
     public function testIsDeletable()
@@ -77,6 +78,6 @@ final class ProductTest extends \Stripe\TestCase
             '/v1/products/' . $resource->id
         );
         $resource->delete();
-        static::assertInstanceOf(\Stripe\Product::class, $resource);
+        self::assertInstanceOf(Product::class, $resource);
     }
 }

@@ -22,7 +22,7 @@ namespace Stripe;
  * @property ((object{amount: int, application: null|string, currency: string, description: null|string, type: string}&\Stripe\StripeObject&\stdClass))[] $fee_details Detailed breakdown of fees (in cents (or local equivalent)) paid for this transaction.
  * @property int $net Net impact to a Stripe balance (in cents (or local equivalent)). A positive value represents incrementing a Stripe balance, and a negative value decrementing a Stripe balance. You can calculate the net impact of a transaction on a balance by <code>amount</code> - <code>fee</code>
  * @property string $reporting_category Learn more about how <a href="https://stripe.com/docs/reports/reporting-categories">reporting categories</a> can help you understand balance transactions from an accounting perspective.
- * @property null|string|\Stripe\ApplicationFee|\Stripe\ApplicationFeeRefund|\Stripe\Charge|\Stripe\ConnectCollectionTransfer|\Stripe\CustomerCashBalanceTransaction|\Stripe\Dispute|\Stripe\Issuing\Authorization|\Stripe\Issuing\Dispute|\Stripe\Issuing\Transaction|\Stripe\Payout|\Stripe\Refund|\Stripe\ReserveTransaction|\Stripe\TaxDeductedAtSource|\Stripe\Topup|\Stripe\Transfer|\Stripe\TransferReversal $source This transaction relates to the Stripe object.
+ * @property null|ApplicationFee|ApplicationFeeRefund|Charge|ConnectCollectionTransfer|CustomerCashBalanceTransaction|Dispute|Issuing\Authorization|Issuing\Dispute|Issuing\Transaction|Payout|Refund|ReserveTransaction|string|TaxDeductedAtSource|Topup|Transfer|TransferReversal $source This transaction relates to the Stripe object.
  * @property string $status The transaction's net funds status in the Stripe balance, which are either <code>available</code> or <code>pending</code>.
  * @property string $type Transaction type: <code>adjustment</code>, <code>advance</code>, <code>advance_funding</code>, <code>anticipation_repayment</code>, <code>application_fee</code>, <code>application_fee_refund</code>, <code>charge</code>, <code>climate_order_purchase</code>, <code>climate_order_refund</code>, <code>connect_collection_transfer</code>, <code>contribution</code>, <code>issuing_authorization_hold</code>, <code>issuing_authorization_release</code>, <code>issuing_dispute</code>, <code>issuing_transaction</code>, <code>obligation_outbound</code>, <code>obligation_reversal_inbound</code>, <code>payment</code>, <code>payment_failure_refund</code>, <code>payment_network_reserve_hold</code>, <code>payment_network_reserve_release</code>, <code>payment_refund</code>, <code>payment_reversal</code>, <code>payment_unreconciled</code>, <code>payout</code>, <code>payout_cancel</code>, <code>payout_failure</code>, <code>payout_minimum_balance_hold</code>, <code>payout_minimum_balance_release</code>, <code>refund</code>, <code>refund_failure</code>, <code>reserve_transaction</code>, <code>reserved_funds</code>, <code>stripe_fee</code>, <code>stripe_fx_fee</code>, <code>tax_fee</code>, <code>topup</code>, <code>topup_reversal</code>, <code>transfer</code>, <code>transfer_cancel</code>, <code>transfer_failure</code>, or <code>transfer_refund</code>. Learn more about <a href="https://stripe.com/docs/reports/balance-transaction-types">balance transaction types and what they represent</a>. To classify transactions for accounting purposes, consider <code>reporting_category</code> instead.
  */
@@ -84,15 +84,15 @@ class BalanceTransaction extends ApiResource
      * @param null|array{created?: int|array, currency?: string, ending_before?: string, expand?: string[], limit?: int, payout?: string, source?: string, starting_after?: string, type?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<BalanceTransaction> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\BalanceTransaction> of ApiResources
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+        return static::_requestPage($url, Collection::class, $params, $opts);
     }
 
     /**
@@ -104,13 +104,13 @@ class BalanceTransaction extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return BalanceTransaction
      *
-     * @return \Stripe\BalanceTransaction
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 

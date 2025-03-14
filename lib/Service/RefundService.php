@@ -6,9 +6,10 @@ namespace Stripe\Service;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class RefundService extends \Stripe\Service\AbstractService
+class RefundService extends AbstractService
 {
     /**
      * Returns a list of all refunds you created. We return the refunds in sorted
@@ -18,9 +19,9 @@ class RefundService extends \Stripe\Service\AbstractService
      * @param null|array{charge?: string, created?: int|array, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Refund>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -37,9 +38,9 @@ class RefundService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Refund
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -64,9 +65,9 @@ class RefundService extends \Stripe\Service\AbstractService
      * @param null|array{amount?: int, charge?: string, currency?: string, customer?: string, expand?: string[], instructions_email?: string, metadata?: null|\Stripe\StripeObject, origin?: string, payment_intent?: string, reason?: string, refund_application_fee?: bool, reverse_transfer?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Refund
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -80,9 +81,9 @@ class RefundService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Refund
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -99,9 +100,9 @@ class RefundService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Refund
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

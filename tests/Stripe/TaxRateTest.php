@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\TaxRate
  */
-final class TaxRateTest extends \Stripe\TestCase
+final class TaxRateTest extends TestCase
 {
     use TestHelper;
 
@@ -19,8 +20,8 @@ final class TaxRateTest extends \Stripe\TestCase
             '/v1/tax_rates'
         );
         $resources = TaxRate::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\TaxRate::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(TaxRate::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -30,7 +31,7 @@ final class TaxRateTest extends \Stripe\TestCase
             '/v1/tax_rates/' . self::TEST_RESOURCE_ID
         );
         $resource = TaxRate::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\TaxRate::class, $resource);
+        self::assertInstanceOf(TaxRate::class, $resource);
     }
 
     public function testIsCreatable()
@@ -44,7 +45,7 @@ final class TaxRateTest extends \Stripe\TestCase
             'inclusive' => false,
             'percentage' => 10.15,
         ]);
-        static::assertInstanceOf(\Stripe\TaxRate::class, $resource);
+        self::assertInstanceOf(TaxRate::class, $resource);
     }
 
     public function testIsSaveable()
@@ -56,7 +57,7 @@ final class TaxRateTest extends \Stripe\TestCase
             '/v1/tax_rates/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\TaxRate::class, $resource);
+        self::assertInstanceOf(TaxRate::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -68,6 +69,6 @@ final class TaxRateTest extends \Stripe\TestCase
         $resource = TaxRate::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\TaxRate::class, $resource);
+        self::assertInstanceOf(TaxRate::class, $resource);
     }
 }

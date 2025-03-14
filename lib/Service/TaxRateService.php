@@ -6,9 +6,10 @@ namespace Stripe\Service;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class TaxRateService extends \Stripe\Service\AbstractService
+class TaxRateService extends AbstractService
 {
     /**
      * Returns a list of your tax rates. Tax rates are returned sorted by creation
@@ -17,9 +18,9 @@ class TaxRateService extends \Stripe\Service\AbstractService
      * @param null|array{active?: bool, created?: int|array, ending_before?: string, expand?: string[], inclusive?: bool, limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\TaxRate>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -32,9 +33,9 @@ class TaxRateService extends \Stripe\Service\AbstractService
      * @param null|array{active?: bool, country?: string, description?: string, display_name: string, expand?: string[], inclusive: bool, jurisdiction?: string, metadata?: \Stripe\StripeObject, percentage: float, state?: string, tax_type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\TaxRate
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -48,9 +49,9 @@ class TaxRateService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\TaxRate
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -64,9 +65,9 @@ class TaxRateService extends \Stripe\Service\AbstractService
      * @param null|array{active?: bool, country?: string, description?: string, display_name?: string, expand?: string[], jurisdiction?: string, metadata?: null|\Stripe\StripeObject, state?: string, tax_type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\TaxRate
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

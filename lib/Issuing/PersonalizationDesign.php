@@ -38,9 +38,9 @@ class PersonalizationDesign extends \Stripe\ApiResource
      * @param null|array{card_logo?: string, carrier_text?: array{footer_body?: null|string, footer_title?: null|string, header_body?: null|string, header_title?: null|string}, expand?: string[], lookup_key?: string, metadata?: \Stripe\StripeObject, name?: string, physical_bundle: string, preferences?: array{is_default: bool}, transfer_lookup_key?: bool} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PersonalizationDesign the created resource
      *
-     * @return \Stripe\Issuing\PersonalizationDesign the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -62,9 +62,9 @@ class PersonalizationDesign extends \Stripe\ApiResource
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, lookup_keys?: string[], preferences?: array{is_default?: bool, is_platform_default?: bool}, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<PersonalizationDesign> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\PersonalizationDesign> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -79,9 +79,9 @@ class PersonalizationDesign extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PersonalizationDesign
      *
-     * @return \Stripe\Issuing\PersonalizationDesign
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -99,9 +99,9 @@ class PersonalizationDesign extends \Stripe\ApiResource
      * @param null|array{card_logo?: null|string, carrier_text?: null|array{footer_body?: null|string, footer_title?: null|string, header_body?: null|string, header_title?: null|string}, expand?: string[], lookup_key?: null|string, metadata?: \Stripe\StripeObject, name?: null|string, physical_bundle?: string, preferences?: array{is_default: bool}, transfer_lookup_key?: bool} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PersonalizationDesign the updated resource
      *
-     * @return \Stripe\Issuing\PersonalizationDesign the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {

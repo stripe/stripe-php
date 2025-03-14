@@ -6,6 +6,7 @@ namespace Stripe\Service\Issuing;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class PersonalizationDesignService extends \Stripe\Service\AbstractService
@@ -18,9 +19,9 @@ class PersonalizationDesignService extends \Stripe\Service\AbstractService
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, lookup_keys?: string[], preferences?: array{is_default?: bool, is_platform_default?: bool}, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Issuing\PersonalizationDesign>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -33,9 +34,9 @@ class PersonalizationDesignService extends \Stripe\Service\AbstractService
      * @param null|array{card_logo?: string, carrier_text?: array{footer_body?: null|string, footer_title?: null|string, header_body?: null|string, header_title?: null|string}, expand?: string[], lookup_key?: string, metadata?: \Stripe\StripeObject, name?: string, physical_bundle: string, preferences?: array{is_default: bool}, transfer_lookup_key?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\PersonalizationDesign
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -49,9 +50,9 @@ class PersonalizationDesignService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\PersonalizationDesign
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -65,9 +66,9 @@ class PersonalizationDesignService extends \Stripe\Service\AbstractService
      * @param null|array{card_logo?: null|string, carrier_text?: null|array{footer_body?: null|string, footer_title?: null|string, header_body?: null|string, header_title?: null|string}, expand?: string[], lookup_key?: null|string, metadata?: \Stripe\StripeObject, name?: null|string, physical_bundle?: string, preferences?: array{is_default: bool}, transfer_lookup_key?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\PersonalizationDesign
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

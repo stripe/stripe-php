@@ -6,9 +6,10 @@ namespace Stripe\Service;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class InvoiceItemService extends \Stripe\Service\AbstractService
+class InvoiceItemService extends AbstractService
 {
     /**
      * Returns a list of your invoice items. Invoice items are returned sorted by
@@ -17,9 +18,9 @@ class InvoiceItemService extends \Stripe\Service\AbstractService
      * @param null|array{created?: int|array, customer?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, pending?: bool, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\InvoiceItem>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -34,9 +35,9 @@ class InvoiceItemService extends \Stripe\Service\AbstractService
      * @param null|array{amount?: int, currency?: string, customer: string, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], invoice?: string, margins?: string[], metadata?: null|\Stripe\StripeObject, period?: array{end: int, start: int}, price?: string, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, subscription?: string, tax_behavior?: string, tax_code?: null|string, tax_rates?: string[], unit_amount?: int, unit_amount_decimal?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\InvoiceItem
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -52,9 +53,9 @@ class InvoiceItemService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\InvoiceItem
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -68,9 +69,9 @@ class InvoiceItemService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\InvoiceItem
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -86,9 +87,9 @@ class InvoiceItemService extends \Stripe\Service\AbstractService
      * @param null|array{amount?: int, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], margins?: null|string[], metadata?: null|\Stripe\StripeObject, period?: array{end: int, start: int}, price?: string, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_behavior?: string, tax_code?: null|string, tax_rates?: null|string[], unit_amount?: int, unit_amount_decimal?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\InvoiceItem
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

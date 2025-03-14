@@ -27,9 +27,9 @@ class MeterEventAdjustment extends \Stripe\ApiResource
      * @param null|array{cancel?: array{identifier?: string}, event_name: string, expand?: string[], type: string} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return MeterEventAdjustment the created resource
      *
-     * @return \Stripe\Billing\MeterEventAdjustment the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {

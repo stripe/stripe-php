@@ -50,9 +50,9 @@ class OutboundPayment extends \Stripe\ApiResource
      * @param null|array{amount: int, currency: string, customer?: string, description?: string, destination_payment_method?: string, destination_payment_method_data?: array{billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string}, financial_account?: string, metadata?: \Stripe\StripeObject, type: string, us_bank_account?: array{account_holder_type?: string, account_number?: string, account_type?: string, financial_connections_account?: string, routing_number?: string}}, destination_payment_method_options?: array{us_bank_account?: null|array{network?: string}}, end_user_details?: array{ip_address?: string, present: bool}, expand?: string[], financial_account: string, metadata?: \Stripe\StripeObject, statement_descriptor?: string} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return OutboundPayment the created resource
      *
-     * @return \Stripe\Treasury\OutboundPayment the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -72,9 +72,9 @@ class OutboundPayment extends \Stripe\ApiResource
      * @param null|array{created?: int|array, customer?: string, ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<OutboundPayment> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Treasury\OutboundPayment> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -91,9 +91,9 @@ class OutboundPayment extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return OutboundPayment
      *
-     * @return \Stripe\Treasury\OutboundPayment
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -108,9 +108,9 @@ class OutboundPayment extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return OutboundPayment the canceled outbound payment
      *
-     * @return \Stripe\Treasury\OutboundPayment the canceled outbound payment
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function cancel($params = null, $opts = null)
     {

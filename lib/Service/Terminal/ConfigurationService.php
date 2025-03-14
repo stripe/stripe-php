@@ -6,6 +6,7 @@ namespace Stripe\Service\Terminal;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class ConfigurationService extends \Stripe\Service\AbstractService
@@ -16,9 +17,9 @@ class ConfigurationService extends \Stripe\Service\AbstractService
      * @param null|array{ending_before?: string, expand?: string[], is_account_default?: bool, limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Terminal\Configuration>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -31,9 +32,9 @@ class ConfigurationService extends \Stripe\Service\AbstractService
      * @param null|array{bbpos_wisepos_e?: array{splashscreen?: null|string}, expand?: string[], name?: string, offline?: null|array{enabled: bool}, reboot_window?: array{end_hour: int, start_hour: int}, stripe_s700?: array{splashscreen?: null|string}, tipping?: null|array{aud?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, cad?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, chf?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, czk?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, dkk?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, eur?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, gbp?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, hkd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, jpy?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, myr?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, nok?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, nzd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, pln?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, sek?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, sgd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, usd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}}, verifone_p400?: array{splashscreen?: null|string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Terminal\Configuration
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -47,9 +48,9 @@ class ConfigurationService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Terminal\Configuration
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -63,9 +64,9 @@ class ConfigurationService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Terminal\Configuration
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -79,9 +80,9 @@ class ConfigurationService extends \Stripe\Service\AbstractService
      * @param null|array{bbpos_wisepos_e?: null|array{splashscreen?: null|string}, expand?: string[], name?: string, offline?: null|array{enabled: bool}, reboot_window?: null|array{end_hour: int, start_hour: int}, stripe_s700?: null|array{splashscreen?: null|string}, tipping?: null|array{aud?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, cad?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, chf?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, czk?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, dkk?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, eur?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, gbp?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, hkd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, jpy?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, myr?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, nok?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, nzd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, pln?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, sek?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, sgd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, usd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}}, verifone_p400?: null|array{splashscreen?: null|string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Terminal\Configuration
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

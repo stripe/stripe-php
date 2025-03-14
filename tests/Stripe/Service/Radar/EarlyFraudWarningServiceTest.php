@@ -4,6 +4,7 @@ namespace Stripe\Service\Radar;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\Radar\EarlyFraudWarningService
  */
 final class EarlyFraudWarningServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class EarlyFraudWarningServiceTest extends \Stripe\TestCase
             '/v1/radar/early_fraud_warnings'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Radar\EarlyFraudWarning::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Radar\EarlyFraudWarning::class, $resources->data[0]);
     }
 
     public function testRetrieve()
@@ -45,6 +46,6 @@ final class EarlyFraudWarningServiceTest extends \Stripe\TestCase
             '/v1/radar/early_fraud_warnings/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Radar\EarlyFraudWarning::class, $resource);
+        self::assertInstanceOf(\Stripe\Radar\EarlyFraudWarning::class, $resource);
     }
 }

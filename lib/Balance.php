@@ -37,13 +37,13 @@ class Balance extends SingletonApiResource
      *
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Balance
      *
-     * @return \Stripe\Balance
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static(null, $opts);
         $instance->refresh();
 

@@ -31,9 +31,9 @@ class Configuration extends \Stripe\ApiResource
      * @param null|array{bbpos_wisepos_e?: array{splashscreen?: null|string}, expand?: string[], name?: string, offline?: null|array{enabled: bool}, reboot_window?: array{end_hour: int, start_hour: int}, stripe_s700?: array{splashscreen?: null|string}, tipping?: null|array{aud?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, cad?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, chf?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, czk?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, dkk?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, eur?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, gbp?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, hkd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, jpy?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, myr?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, nok?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, nzd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, pln?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, sek?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, sgd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, usd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}}, verifone_p400?: array{splashscreen?: null|string}} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Configuration the created resource
      *
-     * @return \Stripe\Terminal\Configuration the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -53,9 +53,9 @@ class Configuration extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Configuration the deleted resource
      *
-     * @return \Stripe\Terminal\Configuration the deleted resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function delete($params = null, $opts = null)
     {
@@ -74,9 +74,9 @@ class Configuration extends \Stripe\ApiResource
      * @param null|array{ending_before?: string, expand?: string[], is_account_default?: bool, limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Configuration> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Terminal\Configuration> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -91,9 +91,9 @@ class Configuration extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Configuration
      *
-     * @return \Stripe\Terminal\Configuration
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -111,9 +111,9 @@ class Configuration extends \Stripe\ApiResource
      * @param null|array{bbpos_wisepos_e?: null|array{splashscreen?: null|string}, expand?: string[], name?: string, offline?: null|array{enabled: bool}, reboot_window?: null|array{end_hour: int, start_hour: int}, stripe_s700?: null|array{splashscreen?: null|string}, tipping?: null|array{aud?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, cad?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, chf?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, czk?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, dkk?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, eur?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, gbp?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, hkd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, jpy?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, myr?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, nok?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, nzd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, pln?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, sek?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, sgd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, usd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}}, verifone_p400?: null|array{splashscreen?: null|string}} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Configuration the updated resource
      *
-     * @return \Stripe\Terminal\Configuration the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {

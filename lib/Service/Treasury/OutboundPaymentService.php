@@ -6,6 +6,7 @@ namespace Stripe\Service\Treasury;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class OutboundPaymentService extends \Stripe\Service\AbstractService
@@ -16,9 +17,9 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
      * @param null|array{created?: int|array, customer?: string, ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Treasury\OutboundPayment>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -32,9 +33,9 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Treasury\OutboundPayment
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -47,9 +48,9 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
      * @param null|array{amount: int, currency: string, customer?: string, description?: string, destination_payment_method?: string, destination_payment_method_data?: array{billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string}, financial_account?: string, metadata?: \Stripe\StripeObject, type: string, us_bank_account?: array{account_holder_type?: string, account_number?: string, account_type?: string, financial_connections_account?: string, routing_number?: string}}, destination_payment_method_options?: array{us_bank_account?: null|array{network?: string}}, end_user_details?: array{ip_address?: string, present: bool}, expand?: string[], financial_account: string, metadata?: \Stripe\StripeObject, statement_descriptor?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Treasury\OutboundPayment
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -65,9 +66,9 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Treasury\OutboundPayment
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

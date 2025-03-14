@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\TaxRateService
  */
 final class TaxRateServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class TaxRateServiceTest extends \Stripe\TestCase
             '/v1/tax_rates'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\TaxRate::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\TaxRate::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -49,7 +50,7 @@ final class TaxRateServiceTest extends \Stripe\TestCase
             'inclusive' => false,
             'percentage' => 10.15,
         ]);
-        static::assertInstanceOf(\Stripe\TaxRate::class, $resource);
+        self::assertInstanceOf(\Stripe\TaxRate::class, $resource);
     }
 
     public function testRetrieve()
@@ -59,7 +60,7 @@ final class TaxRateServiceTest extends \Stripe\TestCase
             '/v1/tax_rates/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\TaxRate::class, $resource);
+        self::assertInstanceOf(\Stripe\TaxRate::class, $resource);
     }
 
     public function testUpdate()
@@ -71,6 +72,6 @@ final class TaxRateServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\TaxRate::class, $resource);
+        self::assertInstanceOf(\Stripe\TaxRate::class, $resource);
     }
 }

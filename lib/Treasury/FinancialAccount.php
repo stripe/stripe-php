@@ -44,9 +44,9 @@ class FinancialAccount extends \Stripe\ApiResource
      * @param null|array{display_name?: null|string, expand?: string[], features?: array{card_issuing?: array{requested: bool}, deposit_insurance?: array{requested: bool}, financial_addresses?: array{aba?: array{bank?: string, requested: bool}}, inbound_transfers?: array{ach?: array{requested: bool}}, intra_stripe_flows?: array{requested: bool}, outbound_payments?: array{ach?: array{requested: bool}, us_domestic_wire?: array{requested: bool}}, outbound_transfers?: array{ach?: array{requested: bool}, us_domestic_wire?: array{requested: bool}}}, metadata?: \Stripe\StripeObject, nickname?: null|string, platform_restrictions?: array{inbound_flows?: string, outbound_flows?: string}, supported_currencies: string[]} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return FinancialAccount the created resource
      *
-     * @return \Stripe\Treasury\FinancialAccount the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -66,9 +66,9 @@ class FinancialAccount extends \Stripe\ApiResource
      * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<FinancialAccount> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Treasury\FinancialAccount> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -83,9 +83,9 @@ class FinancialAccount extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return FinancialAccount
      *
-     * @return \Stripe\Treasury\FinancialAccount
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -103,9 +103,9 @@ class FinancialAccount extends \Stripe\ApiResource
      * @param null|array{display_name?: null|string, expand?: string[], features?: array{card_issuing?: array{requested: bool}, deposit_insurance?: array{requested: bool}, financial_addresses?: array{aba?: array{bank?: string, requested: bool}}, inbound_transfers?: array{ach?: array{requested: bool}}, intra_stripe_flows?: array{requested: bool}, outbound_payments?: array{ach?: array{requested: bool}, us_domestic_wire?: array{requested: bool}}, outbound_transfers?: array{ach?: array{requested: bool}, us_domestic_wire?: array{requested: bool}}}, forwarding_settings?: array{financial_account?: string, payment_method?: string, type: string}, metadata?: \Stripe\StripeObject, nickname?: null|string, platform_restrictions?: array{inbound_flows?: string, outbound_flows?: string}} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return FinancialAccount the updated resource
      *
-     * @return \Stripe\Treasury\FinancialAccount the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -123,9 +123,9 @@ class FinancialAccount extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return FinancialAccount the closed financial account
      *
-     * @return \Stripe\Treasury\FinancialAccount the closed financial account
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function close($params = null, $opts = null)
     {
@@ -140,9 +140,9 @@ class FinancialAccount extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return FinancialAccountFeatures the retrieved financial account features
      *
-     * @return \Stripe\Treasury\FinancialAccountFeatures the retrieved financial account features
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieveFeatures($params = null, $opts = null)
     {
@@ -158,9 +158,9 @@ class FinancialAccount extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return FinancialAccountFeatures the updated financial account features
      *
-     * @return \Stripe\Treasury\FinancialAccountFeatures the updated financial account features
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function updateFeatures($params = null, $opts = null)
     {

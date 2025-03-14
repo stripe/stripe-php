@@ -6,9 +6,10 @@ namespace Stripe\Service;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class CouponService extends \Stripe\Service\AbstractService
+class CouponService extends AbstractService
 {
     /**
      * Returns a list of your coupons.
@@ -16,9 +17,9 @@ class CouponService extends \Stripe\Service\AbstractService
      * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Coupon>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -44,9 +45,9 @@ class CouponService extends \Stripe\Service\AbstractService
      * @param null|array{amount_off?: int, applies_to?: array{products?: string[]}, currency?: string, currency_options?: \Stripe\StripeObject, duration?: string, duration_in_months?: int, expand?: string[], id?: string, max_redemptions?: int, metadata?: null|\Stripe\StripeObject, name?: string, percent_off?: float, redeem_by?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Coupon
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -64,9 +65,9 @@ class CouponService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Coupon
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -80,9 +81,9 @@ class CouponService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Coupon
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -97,9 +98,9 @@ class CouponService extends \Stripe\Service\AbstractService
      * @param null|array{currency_options?: \Stripe\StripeObject, expand?: string[], metadata?: null|\Stripe\StripeObject, name?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Coupon
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

@@ -66,9 +66,9 @@ class Dispute extends \Stripe\ApiResource
      * @param null|array{amount?: int, evidence?: array{canceled?: null|array{additional_documentation?: null|string, canceled_at?: null|int, cancellation_policy_provided?: null|bool, cancellation_reason?: null|string, expected_at?: null|int, explanation?: null|string, product_description?: null|string, product_type?: null|string, return_status?: null|string, returned_at?: null|int}, duplicate?: null|array{additional_documentation?: null|string, card_statement?: null|string, cash_receipt?: null|string, check_image?: null|string, explanation?: null|string, original_transaction?: string}, fraudulent?: null|array{additional_documentation?: null|string, explanation?: null|string}, merchandise_not_as_described?: null|array{additional_documentation?: null|string, explanation?: null|string, received_at?: null|int, return_description?: null|string, return_status?: null|string, returned_at?: null|int}, no_valid_authorization?: null|array{additional_documentation?: null|string, explanation?: null|string}, not_received?: null|array{additional_documentation?: null|string, expected_at?: null|int, explanation?: null|string, product_description?: null|string, product_type?: null|string}, other?: null|array{additional_documentation?: null|string, explanation?: null|string, product_description?: null|string, product_type?: null|string}, reason?: string, service_not_as_described?: null|array{additional_documentation?: null|string, canceled_at?: null|int, cancellation_reason?: null|string, explanation?: null|string, received_at?: null|int}}, expand?: string[], metadata?: \Stripe\StripeObject, transaction?: string, treasury?: array{received_debit: string}} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Dispute the created resource
      *
-     * @return \Stripe\Issuing\Dispute the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -90,9 +90,9 @@ class Dispute extends \Stripe\ApiResource
      * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string, transaction?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Dispute> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\Dispute> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -107,9 +107,9 @@ class Dispute extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Dispute
      *
-     * @return \Stripe\Issuing\Dispute
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -130,9 +130,9 @@ class Dispute extends \Stripe\ApiResource
      * @param null|array{amount?: int, evidence?: array{canceled?: null|array{additional_documentation?: null|string, canceled_at?: null|int, cancellation_policy_provided?: null|bool, cancellation_reason?: null|string, expected_at?: null|int, explanation?: null|string, product_description?: null|string, product_type?: null|string, return_status?: null|string, returned_at?: null|int}, duplicate?: null|array{additional_documentation?: null|string, card_statement?: null|string, cash_receipt?: null|string, check_image?: null|string, explanation?: null|string, original_transaction?: string}, fraudulent?: null|array{additional_documentation?: null|string, explanation?: null|string}, merchandise_not_as_described?: null|array{additional_documentation?: null|string, explanation?: null|string, received_at?: null|int, return_description?: null|string, return_status?: null|string, returned_at?: null|int}, no_valid_authorization?: null|array{additional_documentation?: null|string, explanation?: null|string}, not_received?: null|array{additional_documentation?: null|string, expected_at?: null|int, explanation?: null|string, product_description?: null|string, product_type?: null|string}, other?: null|array{additional_documentation?: null|string, explanation?: null|string, product_description?: null|string, product_type?: null|string}, reason?: string, service_not_as_described?: null|array{additional_documentation?: null|string, canceled_at?: null|int, cancellation_reason?: null|string, explanation?: null|string, received_at?: null|int}}, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Dispute the updated resource
      *
-     * @return \Stripe\Issuing\Dispute the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -150,9 +150,9 @@ class Dispute extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Dispute the submited dispute
      *
-     * @return \Stripe\Issuing\Dispute the submited dispute
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function submit($params = null, $opts = null)
     {

@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\PaymentMethodService
  */
 final class PaymentMethodServiceTest extends \Stripe\TestCase
@@ -37,8 +38,8 @@ final class PaymentMethodServiceTest extends \Stripe\TestCase
             'customer' => 'cus_123',
             'type' => 'card',
         ]);
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\PaymentMethod::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\PaymentMethod::class, $resources->data[0]);
     }
 
     public function testAttach()
@@ -50,7 +51,7 @@ final class PaymentMethodServiceTest extends \Stripe\TestCase
         $resource = $this->service->attach(self::TEST_RESOURCE_ID, [
             'customer' => 'cus_123',
         ]);
-        static::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
+        self::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
     }
 
     public function testCreate()
@@ -62,7 +63,7 @@ final class PaymentMethodServiceTest extends \Stripe\TestCase
         $resource = $this->service->create([
             'type' => 'card',
         ]);
-        static::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
+        self::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
     }
 
     public function testDetach()
@@ -72,7 +73,7 @@ final class PaymentMethodServiceTest extends \Stripe\TestCase
             '/v1/payment_methods/' . self::TEST_RESOURCE_ID . '/detach'
         );
         $resource = $this->service->detach(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
+        self::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
     }
 
     public function testRetrieve()
@@ -82,7 +83,7 @@ final class PaymentMethodServiceTest extends \Stripe\TestCase
             '/v1/payment_methods/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
+        self::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
     }
 
     public function testUpdate()
@@ -94,6 +95,6 @@ final class PaymentMethodServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
+        self::assertInstanceOf(\Stripe\PaymentMethod::class, $resource);
     }
 }

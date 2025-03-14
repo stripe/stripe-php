@@ -16,9 +16,9 @@ namespace Stripe;
  * @property null|string $display_name The name of the shipping rate, meant to be displayable to the customer. This will appear on CheckoutSessions.
  * @property null|(object{amount: int, currency: string, currency_options?: \Stripe\StripeObject}&\Stripe\StripeObject&\stdClass) $fixed_amount
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $tax_behavior Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of <code>inclusive</code>, <code>exclusive</code>, or <code>unspecified</code>.
- * @property null|string|\Stripe\TaxCode $tax_code A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID. The Shipping tax code is <code>txcd_92010001</code>.
+ * @property null|string|TaxCode $tax_code A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID. The Shipping tax code is <code>txcd_92010001</code>.
  * @property string $type The type of calculation to use on the shipping rate.
  */
 class ShippingRate extends ApiResource
@@ -39,9 +39,9 @@ class ShippingRate extends ApiResource
      * @param null|array{delivery_estimate?: array{maximum?: array{unit: string, value: int}, minimum?: array{unit: string, value: int}}, display_name: string, expand?: string[], fixed_amount?: array{amount: int, currency: string, currency_options?: \Stripe\StripeObject}, metadata?: \Stripe\StripeObject, tax_behavior?: string, tax_code?: string, type?: string} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ShippingRate the created resource
      *
-     * @return \Stripe\ShippingRate the created resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -49,7 +49,7 @@ class ShippingRate extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -61,15 +61,15 @@ class ShippingRate extends ApiResource
      * @param null|array{active?: bool, created?: int|array, currency?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<ShippingRate> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\ShippingRate> of ApiResources
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+        return static::_requestPage($url, Collection::class, $params, $opts);
     }
 
     /**
@@ -78,13 +78,13 @@ class ShippingRate extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ShippingRate
      *
-     * @return \Stripe\ShippingRate
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -98,9 +98,9 @@ class ShippingRate extends ApiResource
      * @param null|array{active?: bool, expand?: string[], fixed_amount?: array{currency_options?: \Stripe\StripeObject}, metadata?: null|\Stripe\StripeObject, tax_behavior?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ShippingRate the updated resource
      *
-     * @return \Stripe\ShippingRate the updated resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -108,7 +108,7 @@ class ShippingRate extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;

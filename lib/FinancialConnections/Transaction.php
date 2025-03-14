@@ -34,9 +34,9 @@ class Transaction extends \Stripe\ApiResource
      * @param null|array{account: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, transacted_at?: int|array, transaction_refresh?: array{after: string}} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Transaction> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\FinancialConnections\Transaction> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -51,9 +51,9 @@ class Transaction extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Transaction
      *
-     * @return \Stripe\FinancialConnections\Transaction
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

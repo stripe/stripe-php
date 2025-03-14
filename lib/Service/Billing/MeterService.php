@@ -6,6 +6,7 @@ namespace Stripe\Service\Billing;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class MeterService extends \Stripe\Service\AbstractService
@@ -16,9 +17,9 @@ class MeterService extends \Stripe\Service\AbstractService
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Billing\Meter>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -32,9 +33,9 @@ class MeterService extends \Stripe\Service\AbstractService
      * @param null|array{customer: string, end_time: int, ending_before?: string, expand?: string[], limit?: int, start_time: int, starting_after?: string, value_grouping_window?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Billing\MeterEventSummary>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function allEventSummaries($parentId, $params = null, $opts = null)
     {
@@ -47,9 +48,9 @@ class MeterService extends \Stripe\Service\AbstractService
      * @param null|array{customer_mapping?: array{event_payload_key: string, type: string}, default_aggregation: array{formula: string}, display_name: string, event_name: string, event_time_window?: string, expand?: string[], value_settings?: array{event_payload_key: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Billing\Meter
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -64,9 +65,9 @@ class MeterService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Billing\Meter
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function deactivate($id, $params = null, $opts = null)
     {
@@ -81,9 +82,9 @@ class MeterService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Billing\Meter
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function reactivate($id, $params = null, $opts = null)
     {
@@ -97,9 +98,9 @@ class MeterService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Billing\Meter
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -113,9 +114,9 @@ class MeterService extends \Stripe\Service\AbstractService
      * @param null|array{display_name?: string, expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Billing\Meter
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

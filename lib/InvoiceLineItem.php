@@ -17,9 +17,9 @@ namespace Stripe;
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|((object{amount: int, discount: string|\Stripe\Discount}&\Stripe\StripeObject&\stdClass))[] $discount_amounts The amount of discount calculated per discount for this line item.
  * @property bool $discountable If true, discounts will apply to this line item. Always false for prorations.
- * @property (string|\Stripe\Discount)[] $discounts The discounts applied to the invoice line item. Line item discounts are applied before invoice discounts. Use <code>expand[]=discounts</code> to expand each discount.
+ * @property (Discount|string)[] $discounts The discounts applied to the invoice line item. Line item discounts are applied before invoice discounts. Use <code>expand[]=discounts</code> to expand each discount.
  * @property null|string $invoice The ID of the invoice that contains this line item.
- * @property null|string|\Stripe\InvoiceItem $invoice_item The ID of the <a href="https://stripe.com/docs/api/invoiceitems">invoice item</a> associated with this line item if any.
+ * @property null|InvoiceItem|string $invoice_item The ID of the <a href="https://stripe.com/docs/api/invoiceitems">invoice item</a> associated with this line item if any.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|((object{amount: int, margin: string|\Stripe\Margin}&\Stripe\StripeObject&\stdClass))[] $margin_amounts The amount of margin calculated per margin for this line item.
  * @property null|(string|\Stripe\Margin)[] $margins The margins applied to the line item. When set, the <code>default_margins</code> on the invoice do not apply to the line item. Use <code>expand[]=margins</code> to expand each margin.
@@ -56,9 +56,9 @@ class InvoiceLineItem extends ApiResource
      * @param null|array{amount?: int, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], margins?: null|string[], metadata?: null|\Stripe\StripeObject, period?: array{end: int, start: int}, price?: string, price_data?: array{currency: string, product?: string, product_data?: array{description?: string, images?: string[], metadata?: \Stripe\StripeObject, name: string, tax_code?: string}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_amounts?: null|array{amount: int, tax_rate_data: array{country?: string, description?: string, display_name: string, inclusive: bool, jurisdiction?: string, percentage: float, state?: string, tax_type?: string}, taxable_amount: int}[], tax_rates?: null|string[]} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return InvoiceLineItem the updated resource
      *
-     * @return \Stripe\InvoiceLineItem the updated resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -66,7 +66,7 @@ class InvoiceLineItem extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;

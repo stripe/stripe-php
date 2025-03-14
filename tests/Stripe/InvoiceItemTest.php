@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\InvoiceItem
  */
-final class InvoiceItemTest extends \Stripe\TestCase
+final class InvoiceItemTest extends TestCase
 {
     use TestHelper;
 
@@ -19,8 +20,8 @@ final class InvoiceItemTest extends \Stripe\TestCase
             '/v1/invoiceitems'
         );
         $resources = InvoiceItem::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(InvoiceItem::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -30,7 +31,7 @@ final class InvoiceItemTest extends \Stripe\TestCase
             '/v1/invoiceitems/' . self::TEST_RESOURCE_ID
         );
         $resource = InvoiceItem::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
+        self::assertInstanceOf(InvoiceItem::class, $resource);
     }
 
     public function testIsCreatable()
@@ -44,7 +45,7 @@ final class InvoiceItemTest extends \Stripe\TestCase
             'currency' => 'usd',
             'customer' => 'cus_123',
         ]);
-        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
+        self::assertInstanceOf(InvoiceItem::class, $resource);
     }
 
     public function testIsSaveable()
@@ -56,7 +57,7 @@ final class InvoiceItemTest extends \Stripe\TestCase
             '/v1/invoiceitems/' . $resource->id
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
+        self::assertInstanceOf(InvoiceItem::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -68,7 +69,7 @@ final class InvoiceItemTest extends \Stripe\TestCase
         $resource = InvoiceItem::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
+        self::assertInstanceOf(InvoiceItem::class, $resource);
     }
 
     public function testIsDeletable()
@@ -79,6 +80,6 @@ final class InvoiceItemTest extends \Stripe\TestCase
             '/v1/invoiceitems/' . $invoiceItem->id
         );
         $resource = $invoiceItem->delete();
-        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
+        self::assertInstanceOf(InvoiceItem::class, $resource);
     }
 }

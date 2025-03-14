@@ -88,9 +88,9 @@ class PaymentMethodConfiguration extends ApiResource
      * @param null|array{acss_debit?: array{display_preference?: array{preference?: string}}, affirm?: array{display_preference?: array{preference?: string}}, afterpay_clearpay?: array{display_preference?: array{preference?: string}}, alipay?: array{display_preference?: array{preference?: string}}, alma?: array{display_preference?: array{preference?: string}}, amazon_pay?: array{display_preference?: array{preference?: string}}, apple_pay?: array{display_preference?: array{preference?: string}}, apple_pay_later?: array{display_preference?: array{preference?: string}}, au_becs_debit?: array{display_preference?: array{preference?: string}}, bacs_debit?: array{display_preference?: array{preference?: string}}, bancontact?: array{display_preference?: array{preference?: string}}, blik?: array{display_preference?: array{preference?: string}}, boleto?: array{display_preference?: array{preference?: string}}, card?: array{display_preference?: array{preference?: string}}, cartes_bancaires?: array{display_preference?: array{preference?: string}}, cashapp?: array{display_preference?: array{preference?: string}}, customer_balance?: array{display_preference?: array{preference?: string}}, eps?: array{display_preference?: array{preference?: string}}, expand?: string[], fpx?: array{display_preference?: array{preference?: string}}, giropay?: array{display_preference?: array{preference?: string}}, google_pay?: array{display_preference?: array{preference?: string}}, gopay?: array{display_preference?: array{preference?: string}}, grabpay?: array{display_preference?: array{preference?: string}}, id_bank_transfer?: array{display_preference?: array{preference?: string}}, ideal?: array{display_preference?: array{preference?: string}}, jcb?: array{display_preference?: array{preference?: string}}, klarna?: array{display_preference?: array{preference?: string}}, konbini?: array{display_preference?: array{preference?: string}}, link?: array{display_preference?: array{preference?: string}}, mobilepay?: array{display_preference?: array{preference?: string}}, multibanco?: array{display_preference?: array{preference?: string}}, name?: string, oxxo?: array{display_preference?: array{preference?: string}}, p24?: array{display_preference?: array{preference?: string}}, parent?: string, pay_by_bank?: array{display_preference?: array{preference?: string}}, paynow?: array{display_preference?: array{preference?: string}}, paypal?: array{display_preference?: array{preference?: string}}, payto?: array{display_preference?: array{preference?: string}}, promptpay?: array{display_preference?: array{preference?: string}}, qris?: array{display_preference?: array{preference?: string}}, revolut_pay?: array{display_preference?: array{preference?: string}}, sepa_debit?: array{display_preference?: array{preference?: string}}, shopeepay?: array{display_preference?: array{preference?: string}}, sofort?: array{display_preference?: array{preference?: string}}, swish?: array{display_preference?: array{preference?: string}}, twint?: array{display_preference?: array{preference?: string}}, us_bank_account?: array{display_preference?: array{preference?: string}}, wechat_pay?: array{display_preference?: array{preference?: string}}, zip?: array{display_preference?: array{preference?: string}}} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PaymentMethodConfiguration the created resource
      *
-     * @return \Stripe\PaymentMethodConfiguration the created resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -98,7 +98,7 @@ class PaymentMethodConfiguration extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -110,15 +110,15 @@ class PaymentMethodConfiguration extends ApiResource
      * @param null|array{application?: null|string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<PaymentMethodConfiguration> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\PaymentMethodConfiguration> of ApiResources
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+        return static::_requestPage($url, Collection::class, $params, $opts);
     }
 
     /**
@@ -127,13 +127,13 @@ class PaymentMethodConfiguration extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PaymentMethodConfiguration
      *
-     * @return \Stripe\PaymentMethodConfiguration
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -147,9 +147,9 @@ class PaymentMethodConfiguration extends ApiResource
      * @param null|array{acss_debit?: array{display_preference?: array{preference?: string}}, active?: bool, affirm?: array{display_preference?: array{preference?: string}}, afterpay_clearpay?: array{display_preference?: array{preference?: string}}, alipay?: array{display_preference?: array{preference?: string}}, alma?: array{display_preference?: array{preference?: string}}, amazon_pay?: array{display_preference?: array{preference?: string}}, apple_pay?: array{display_preference?: array{preference?: string}}, apple_pay_later?: array{display_preference?: array{preference?: string}}, au_becs_debit?: array{display_preference?: array{preference?: string}}, bacs_debit?: array{display_preference?: array{preference?: string}}, bancontact?: array{display_preference?: array{preference?: string}}, blik?: array{display_preference?: array{preference?: string}}, boleto?: array{display_preference?: array{preference?: string}}, card?: array{display_preference?: array{preference?: string}}, cartes_bancaires?: array{display_preference?: array{preference?: string}}, cashapp?: array{display_preference?: array{preference?: string}}, customer_balance?: array{display_preference?: array{preference?: string}}, eps?: array{display_preference?: array{preference?: string}}, expand?: string[], fpx?: array{display_preference?: array{preference?: string}}, giropay?: array{display_preference?: array{preference?: string}}, google_pay?: array{display_preference?: array{preference?: string}}, gopay?: array{display_preference?: array{preference?: string}}, grabpay?: array{display_preference?: array{preference?: string}}, id_bank_transfer?: array{display_preference?: array{preference?: string}}, ideal?: array{display_preference?: array{preference?: string}}, jcb?: array{display_preference?: array{preference?: string}}, klarna?: array{display_preference?: array{preference?: string}}, konbini?: array{display_preference?: array{preference?: string}}, link?: array{display_preference?: array{preference?: string}}, mobilepay?: array{display_preference?: array{preference?: string}}, multibanco?: array{display_preference?: array{preference?: string}}, name?: string, oxxo?: array{display_preference?: array{preference?: string}}, p24?: array{display_preference?: array{preference?: string}}, pay_by_bank?: array{display_preference?: array{preference?: string}}, paynow?: array{display_preference?: array{preference?: string}}, paypal?: array{display_preference?: array{preference?: string}}, payto?: array{display_preference?: array{preference?: string}}, promptpay?: array{display_preference?: array{preference?: string}}, qris?: array{display_preference?: array{preference?: string}}, revolut_pay?: array{display_preference?: array{preference?: string}}, sepa_debit?: array{display_preference?: array{preference?: string}}, shopeepay?: array{display_preference?: array{preference?: string}}, sofort?: array{display_preference?: array{preference?: string}}, swish?: array{display_preference?: array{preference?: string}}, twint?: array{display_preference?: array{preference?: string}}, us_bank_account?: array{display_preference?: array{preference?: string}}, wechat_pay?: array{display_preference?: array{preference?: string}}, zip?: array{display_preference?: array{preference?: string}}} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PaymentMethodConfiguration the updated resource
      *
-     * @return \Stripe\PaymentMethodConfiguration the updated resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -157,7 +157,7 @@ class PaymentMethodConfiguration extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;

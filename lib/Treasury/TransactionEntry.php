@@ -18,7 +18,7 @@ namespace Stripe\Treasury;
  * @property null|(object{credit_reversal?: \Stripe\Treasury\CreditReversal, debit_reversal?: \Stripe\Treasury\DebitReversal, inbound_transfer?: \Stripe\Treasury\InboundTransfer, issuing_authorization?: \Stripe\Issuing\Authorization, outbound_payment?: \Stripe\Treasury\OutboundPayment, outbound_transfer?: \Stripe\Treasury\OutboundTransfer, received_credit?: \Stripe\Treasury\ReceivedCredit, received_debit?: \Stripe\Treasury\ReceivedDebit, type: string}&\Stripe\StripeObject&\stdClass) $flow_details Details of the flow associated with the TransactionEntry.
  * @property string $flow_type Type of the flow associated with the TransactionEntry.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
+ * @property string|Transaction $transaction The Transaction associated with this object.
  * @property string $type The specific money movement that generated the TransactionEntry.
  */
 class TransactionEntry extends \Stripe\ApiResource
@@ -62,9 +62,9 @@ class TransactionEntry extends \Stripe\ApiResource
      * @param null|array{created?: int|array, effective_at?: int|array, ending_before?: string, expand?: string[], financial_account: string, limit?: int, order_by?: string, starting_after?: string, transaction?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<TransactionEntry> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Treasury\TransactionEntry> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -79,9 +79,9 @@ class TransactionEntry extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return TransactionEntry
      *
-     * @return \Stripe\Treasury\TransactionEntry
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

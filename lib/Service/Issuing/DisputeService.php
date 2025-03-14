@@ -6,6 +6,7 @@ namespace Stripe\Service\Issuing;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class DisputeService extends \Stripe\Service\AbstractService
@@ -18,9 +19,9 @@ class DisputeService extends \Stripe\Service\AbstractService
      * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string, transaction?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Issuing\Dispute>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -37,9 +38,9 @@ class DisputeService extends \Stripe\Service\AbstractService
      * @param null|array{amount?: int, evidence?: array{canceled?: null|array{additional_documentation?: null|string, canceled_at?: null|int, cancellation_policy_provided?: null|bool, cancellation_reason?: null|string, expected_at?: null|int, explanation?: null|string, product_description?: null|string, product_type?: null|string, return_status?: null|string, returned_at?: null|int}, duplicate?: null|array{additional_documentation?: null|string, card_statement?: null|string, cash_receipt?: null|string, check_image?: null|string, explanation?: null|string, original_transaction?: string}, fraudulent?: null|array{additional_documentation?: null|string, explanation?: null|string}, merchandise_not_as_described?: null|array{additional_documentation?: null|string, explanation?: null|string, received_at?: null|int, return_description?: null|string, return_status?: null|string, returned_at?: null|int}, no_valid_authorization?: null|array{additional_documentation?: null|string, explanation?: null|string}, not_received?: null|array{additional_documentation?: null|string, expected_at?: null|int, explanation?: null|string, product_description?: null|string, product_type?: null|string}, other?: null|array{additional_documentation?: null|string, explanation?: null|string, product_description?: null|string, product_type?: null|string}, reason?: string, service_not_as_described?: null|array{additional_documentation?: null|string, canceled_at?: null|int, cancellation_reason?: null|string, explanation?: null|string, received_at?: null|int}}, expand?: string[], metadata?: \Stripe\StripeObject, transaction?: string, treasury?: array{received_debit: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\Dispute
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -53,9 +54,9 @@ class DisputeService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\Dispute
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -73,9 +74,9 @@ class DisputeService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\Dispute
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function submit($id, $params = null, $opts = null)
     {
@@ -92,9 +93,9 @@ class DisputeService extends \Stripe\Service\AbstractService
      * @param null|array{amount?: int, evidence?: array{canceled?: null|array{additional_documentation?: null|string, canceled_at?: null|int, cancellation_policy_provided?: null|bool, cancellation_reason?: null|string, expected_at?: null|int, explanation?: null|string, product_description?: null|string, product_type?: null|string, return_status?: null|string, returned_at?: null|int}, duplicate?: null|array{additional_documentation?: null|string, card_statement?: null|string, cash_receipt?: null|string, check_image?: null|string, explanation?: null|string, original_transaction?: string}, fraudulent?: null|array{additional_documentation?: null|string, explanation?: null|string}, merchandise_not_as_described?: null|array{additional_documentation?: null|string, explanation?: null|string, received_at?: null|int, return_description?: null|string, return_status?: null|string, returned_at?: null|int}, no_valid_authorization?: null|array{additional_documentation?: null|string, explanation?: null|string}, not_received?: null|array{additional_documentation?: null|string, expected_at?: null|int, explanation?: null|string, product_description?: null|string, product_type?: null|string}, other?: null|array{additional_documentation?: null|string, explanation?: null|string, product_description?: null|string, product_type?: null|string}, reason?: string, service_not_as_described?: null|array{additional_documentation?: null|string, canceled_at?: null|int, cancellation_reason?: null|string, explanation?: null|string, received_at?: null|int}}, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\Dispute
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

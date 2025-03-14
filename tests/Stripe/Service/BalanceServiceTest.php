@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\BalanceService
  */
 final class BalanceServiceTest extends \Stripe\TestCase
@@ -32,6 +33,6 @@ final class BalanceServiceTest extends \Stripe\TestCase
             '/v1/balance'
         );
         $resource = $this->service->retrieve();
-        static::assertInstanceOf(\Stripe\Balance::class, $resource);
+        self::assertInstanceOf(\Stripe\Balance::class, $resource);
     }
 }

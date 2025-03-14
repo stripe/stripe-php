@@ -18,8 +18,8 @@ namespace Stripe\Issuing;
  * @property bool $approved Whether the authorization has been approved.
  * @property string $authorization_method How the card details were provided.
  * @property \Stripe\BalanceTransaction[] $balance_transactions List of balance transactions associated with this authorization.
- * @property \Stripe\Issuing\Card $card You can <a href="https://stripe.com/docs/issuing">create physical or virtual cards</a> that are issued to cardholders.
- * @property null|string|\Stripe\Issuing\Cardholder $cardholder The cardholder to whom this authorization belongs.
+ * @property Card $card You can <a href="https://stripe.com/docs/issuing">create physical or virtual cards</a> that are issued to cardholders.
+ * @property null|Cardholder|string $cardholder The cardholder to whom this authorization belongs.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency The currency of the cardholder. This currency can be different from the currency presented at authorization and the <code>merchant_currency</code> field on this authorization. Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|(object{cardholder_prompt_data: null|(object{alphanumeric_id: null|string, driver_id: null|string, odometer: null|int, unspecified_id: null|string, user_id: null|string, vehicle_number: null|string}&\Stripe\StripeObject&\stdClass), purchase_type: null|string, reported_breakdown: null|(object{fuel: null|(object{gross_amount_decimal: null|string}&\Stripe\StripeObject&\stdClass), non_fuel: null|(object{gross_amount_decimal: null|string}&\Stripe\StripeObject&\stdClass), tax: null|(object{local_amount_decimal: null|string, national_amount_decimal: null|string}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass), service_type: null|string}&\Stripe\StripeObject&\stdClass) $fleet Fleet-specific information for authorizations using Fleet cards.
@@ -65,9 +65,9 @@ class Authorization extends \Stripe\ApiResource
      * @param null|array{card?: string, cardholder?: string, created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Authorization> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\Authorization> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -82,9 +82,9 @@ class Authorization extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Authorization
      *
-     * @return \Stripe\Issuing\Authorization
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -104,9 +104,9 @@ class Authorization extends \Stripe\ApiResource
      * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Authorization the updated resource
      *
-     * @return \Stripe\Issuing\Authorization the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -124,9 +124,9 @@ class Authorization extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Authorization the approved authorization
      *
-     * @return \Stripe\Issuing\Authorization the approved authorization
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function approve($params = null, $opts = null)
     {
@@ -141,9 +141,9 @@ class Authorization extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Authorization the declined authorization
      *
-     * @return \Stripe\Issuing\Authorization the declined authorization
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function decline($params = null, $opts = null)
     {

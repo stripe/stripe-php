@@ -6,6 +6,7 @@ namespace Stripe\Service\V2\Core;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class EventService extends \Stripe\Service\AbstractService
@@ -16,9 +17,9 @@ class EventService extends \Stripe\Service\AbstractService
      * @param null|array{limit?: int, object_id: string, page?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\V2\Collection<\Stripe\V2\Event>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -32,9 +33,9 @@ class EventService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\V2\Event
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

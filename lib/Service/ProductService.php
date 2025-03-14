@@ -6,9 +6,10 @@ namespace Stripe\Service;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class ProductService extends \Stripe\Service\AbstractService
+class ProductService extends AbstractService
 {
     /**
      * Returns a list of your products. The products are returned sorted by creation
@@ -17,9 +18,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array{active?: bool, created?: int|array, ending_before?: string, expand?: string[], ids?: string[], limit?: int, shippable?: bool, starting_after?: string, type?: string, url?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Product>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -33,9 +34,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\ProductFeature>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function allFeatures($parentId, $params = null, $opts = null)
     {
@@ -48,9 +49,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array{active?: bool, default_price_data?: array{currency: string, currency_options?: \Stripe\StripeObject, custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, recurring?: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, description?: string, expand?: string[], id?: string, images?: string[], marketing_features?: array{name: string}[], metadata?: \Stripe\StripeObject, name: string, package_dimensions?: array{height: float, length: float, weight: float, width: float}, provisioning?: array{gift_card?: array{fixed_amount?: array{amount: int, currency: string}, type: string}, type: string}, shippable?: bool, statement_descriptor?: string, tax_code?: string, type?: string, unit_label?: string, url?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Product
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -64,9 +65,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array{entitlement_feature: string, expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\ProductFeature
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function createFeature($parentId, $params = null, $opts = null)
     {
@@ -82,9 +83,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Product
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -99,9 +100,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\ProductFeature
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function deleteFeature($parentId, $id, $params = null, $opts = null)
     {
@@ -117,9 +118,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Product
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -134,9 +135,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\ProductFeature
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieveFeature($parentId, $id, $params = null, $opts = null)
     {
@@ -154,9 +155,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[], limit?: int, page?: string, query: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\SearchResult<\Stripe\Product>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function search($params = null, $opts = null)
     {
@@ -171,9 +172,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array{active?: bool, default_price?: string, description?: null|string, expand?: string[], images?: null|string[], marketing_features?: null|array{name: string}[], metadata?: null|\Stripe\StripeObject, name?: string, package_dimensions?: null|array{height: float, length: float, weight: float, width: float}, shippable?: bool, statement_descriptor?: string, tax_code?: null|string, unit_label?: null|string, url?: null|string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Product
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

@@ -6,6 +6,7 @@ namespace Stripe\Service\Treasury;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class OutboundTransferService extends \Stripe\Service\AbstractService
@@ -16,9 +17,9 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
      * @param null|array{ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Treasury\OutboundTransfer>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -32,9 +33,9 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Treasury\OutboundTransfer
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -47,9 +48,9 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
      * @param null|array{amount: int, currency: string, description?: string, destination_payment_method?: string, destination_payment_method_data?: array{financial_account?: string, type: string}, destination_payment_method_options?: array{us_bank_account?: null|array{network?: string}}, expand?: string[], financial_account: string, metadata?: \Stripe\StripeObject, network_details?: array{ach?: array{addenda?: string}, type: string}, statement_descriptor?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Treasury\OutboundTransfer
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -65,9 +66,9 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Treasury\OutboundTransfer
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

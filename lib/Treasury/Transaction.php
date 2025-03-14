@@ -14,7 +14,7 @@ namespace Stripe\Treasury;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property string $description An arbitrary string attached to the object. Often useful for displaying to users.
- * @property null|\Stripe\Collection<\Stripe\Treasury\TransactionEntry> $entries A list of TransactionEntries that are part of this Transaction. This cannot be expanded in any list endpoints.
+ * @property null|\Stripe\Collection<TransactionEntry> $entries A list of TransactionEntries that are part of this Transaction. This cannot be expanded in any list endpoints.
  * @property string $financial_account The FinancialAccount associated with this object.
  * @property null|string $flow ID of the flow that created the Transaction.
  * @property null|(object{credit_reversal?: \Stripe\Treasury\CreditReversal, debit_reversal?: \Stripe\Treasury\DebitReversal, inbound_transfer?: \Stripe\Treasury\InboundTransfer, issuing_authorization?: \Stripe\Issuing\Authorization, outbound_payment?: \Stripe\Treasury\OutboundPayment, outbound_transfer?: \Stripe\Treasury\OutboundTransfer, received_credit?: \Stripe\Treasury\ReceivedCredit, received_debit?: \Stripe\Treasury\ReceivedDebit, type: string}&\Stripe\StripeObject&\stdClass) $flow_details Details of the flow that created the Transaction.
@@ -47,9 +47,9 @@ class Transaction extends \Stripe\ApiResource
      * @param null|array{created?: int|array, ending_before?: string, expand?: string[], financial_account: string, limit?: int, order_by?: string, starting_after?: string, status?: string, status_transitions?: array{posted_at?: int|array}} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Transaction> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Treasury\Transaction> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -64,9 +64,9 @@ class Transaction extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Transaction
      *
-     * @return \Stripe\Treasury\Transaction
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

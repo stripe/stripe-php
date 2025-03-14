@@ -22,7 +22,7 @@ namespace Stripe\BillingPortal;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property string|\Stripe\BillingPortal\Configuration $configuration The configuration used by this session, describing the features available.
+ * @property Configuration|string $configuration The configuration used by this session, describing the features available.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $customer The ID of the customer for this session.
  * @property null|(object{after_completion: (object{hosted_confirmation: null|(object{custom_message: null|string}&\Stripe\StripeObject&\stdClass), redirect: null|(object{return_url: string}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass), subscription_cancel: null|(object{retention: null|(object{coupon_offer: null|(object{coupon: string}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass), subscription: string}&\Stripe\StripeObject&\stdClass), subscription_update: null|(object{subscription: string}&\Stripe\StripeObject&\stdClass), subscription_update_confirm: null|(object{discounts: null|((object{coupon: null|string, promotion_code: null|string}&\Stripe\StripeObject&\stdClass))[], items: ((object{id: null|string, price: null|string, quantity?: int}&\Stripe\StripeObject&\stdClass))[], subscription: string}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass) $flow Information about a specific flow for the customer to go through. See the <a href="https://stripe.com/docs/customer-management/portal-deep-links">docs</a> to learn more about using customer portal deep links and flows.
@@ -42,9 +42,9 @@ class Session extends \Stripe\ApiResource
      * @param null|array{configuration?: string, customer: string, expand?: string[], flow_data?: array{after_completion?: array{hosted_confirmation?: array{custom_message?: string}, redirect?: array{return_url: string}, type: string}, subscription_cancel?: array{retention?: array{coupon_offer: array{coupon: string}, type: string}, subscription: string}, subscription_update?: array{subscription: string}, subscription_update_confirm?: array{discounts?: array{coupon?: string, promotion_code?: string}[], items: array{id: string, price?: string, quantity?: int}[], subscription: string}, type: string}, locale?: string, on_behalf_of?: string, return_url?: string} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Session the created resource
      *
-     * @return \Stripe\BillingPortal\Session the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {

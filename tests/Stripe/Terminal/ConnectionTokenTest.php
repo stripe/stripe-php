@@ -4,6 +4,7 @@ namespace Stripe\Terminal;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Terminal\ConnectionToken
  */
 final class ConnectionTokenTest extends \Stripe\TestCase
@@ -17,6 +18,6 @@ final class ConnectionTokenTest extends \Stripe\TestCase
             '/v1/terminal/connection_tokens'
         );
         $resource = ConnectionToken::create();
-        static::assertInstanceOf(\Stripe\Terminal\ConnectionToken::class, $resource);
+        self::assertInstanceOf(ConnectionToken::class, $resource);
     }
 }

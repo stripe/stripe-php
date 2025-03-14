@@ -28,8 +28,8 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\Stripe\BankAccount $bank_account <p>These bank accounts are payment methods on <code>Customer</code> objects.</p><p>On the other hand <a href="/api#external_accounts">External Accounts</a> are transfer destinations on <code>Account</code> objects for connected accounts. They can be bank accounts or debit cards as well, and are documented in the links above.</p><p>Related guide: <a href="/payments/bank-debits-transfers">Bank debits and transfers</a></p>
- * @property null|\Stripe\Card $card <p>You can store multiple cards on a customer in order to charge the customer later. You can also store multiple debit cards on a recipient in order to transfer to those cards later.</p><p>Related guide: <a href="https://stripe.com/docs/sources/cards">Card payments with Sources</a></p>
+ * @property null|BankAccount $bank_account <p>These bank accounts are payment methods on <code>Customer</code> objects.</p><p>On the other hand <a href="/api#external_accounts">External Accounts</a> are transfer destinations on <code>Account</code> objects for connected accounts. They can be bank accounts or debit cards as well, and are documented in the links above.</p><p>Related guide: <a href="/payments/bank-debits-transfers">Bank debits and transfers</a></p>
+ * @property null|Card $card <p>You can store multiple cards on a customer in order to charge the customer later. You can also store multiple debit cards on a recipient in order to transfer to those cards later.</p><p>Related guide: <a href="https://stripe.com/docs/sources/cards">Card payments with Sources</a></p>
  * @property null|string $client_ip IP address of the client that generates the token.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
@@ -56,9 +56,9 @@ class Token extends ApiResource
      * @param null|array{account?: array{business_type?: string, company?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, address_kana?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}, address_kanji?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}, directors_provided?: bool, directorship_declaration?: array{date?: int, ip?: string, user_agent?: string}, executives_provided?: bool, export_license_id?: string, export_purpose_code?: string, name?: string, name_kana?: string, name_kanji?: string, owners_provided?: bool, ownership_declaration?: array{date?: int, ip?: string, user_agent?: string}, ownership_declaration_shown_and_signed?: bool, ownership_exemption_reason?: null|string, phone?: string, registration_number?: string, structure?: null|string, tax_id?: string, tax_id_registrar?: string, vat_id?: string, verification?: array{document?: array{back?: string, front?: string}}}, individual?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, address_kana?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}, address_kanji?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}, dob?: null|array{day: int, month: int, year: int}, email?: string, first_name?: string, first_name_kana?: string, first_name_kanji?: string, full_name_aliases?: null|string[], gender?: string, id_number?: string, id_number_secondary?: string, last_name?: string, last_name_kana?: string, last_name_kanji?: string, maiden_name?: string, metadata?: null|\Stripe\StripeObject, phone?: string, political_exposure?: string, registered_address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, relationship?: array{director?: bool, executive?: bool, owner?: bool, percent_ownership?: null|float, title?: string}, ssn_last_4?: string, verification?: array{additional_document?: array{back?: string, front?: string}, document?: array{back?: string, front?: string}}}, tos_shown_and_accepted?: bool}, bank_account?: array{account_holder_name?: string, account_holder_type?: string, account_number: string, account_type?: string, country: string, currency?: string, payment_method?: string, routing_number?: string}, card?: string|array, customer?: string, cvc_update?: array{cvc: string}, expand?: string[], person?: array{additional_tos_acceptances?: array{account?: array{date?: int, ip?: string, user_agent?: null|string}}, address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, address_kana?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}, address_kanji?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}, dob?: null|array{day: int, month: int, year: int}, documents?: array{company_authorization?: array{files?: string[]}, passport?: array{files?: string[]}, visa?: array{files?: string[]}}, email?: string, first_name?: string, first_name_kana?: string, first_name_kanji?: string, full_name_aliases?: null|string[], gender?: string, id_number?: string, id_number_secondary?: string, last_name?: string, last_name_kana?: string, last_name_kanji?: string, maiden_name?: string, metadata?: null|\Stripe\StripeObject, nationality?: string, phone?: string, political_exposure?: string, registered_address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, relationship?: array{authorizer?: bool, director?: bool, executive?: bool, legal_guardian?: bool, owner?: bool, percent_ownership?: null|float, representative?: bool, title?: string}, ssn_last_4?: string, verification?: array{additional_document?: array{back?: string, front?: string}, document?: array{back?: string, front?: string}}}, pii?: array{id_number?: string}} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Token the created resource
      *
-     * @return \Stripe\Token the created resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -66,7 +66,7 @@ class Token extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -78,13 +78,13 @@ class Token extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Token
      *
-     * @return \Stripe\Token
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 

@@ -4,6 +4,7 @@ namespace Stripe\Util;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Util\CaseInsensitiveArray
  */
 final class CaseInsensitiveArrayTest extends \Stripe\TestCase
@@ -16,24 +17,24 @@ final class CaseInsensitiveArrayTest extends \Stripe\TestCase
 
         $arr['thrEE'] = '3';
 
-        static::assertSame('1', $arr['one']);
-        static::assertSame('1', $arr['One']);
-        static::assertSame('1', $arr['ONE']);
+        self::assertSame('1', $arr['one']);
+        self::assertSame('1', $arr['One']);
+        self::assertSame('1', $arr['ONE']);
 
-        static::assertSame('2', $arr['two']);
-        static::assertSame('2', $arr['twO']);
-        static::assertSame('2', $arr['TWO']);
+        self::assertSame('2', $arr['two']);
+        self::assertSame('2', $arr['twO']);
+        self::assertSame('2', $arr['TWO']);
 
-        static::assertSame('3', $arr['three']);
-        static::assertSame('3', $arr['ThReE']);
-        static::assertSame('3', $arr['THREE']);
+        self::assertSame('3', $arr['three']);
+        self::assertSame('3', $arr['ThReE']);
+        self::assertSame('3', $arr['THREE']);
     }
 
     public function testCount()
     {
         $arr = new CaseInsensitiveArray(['One' => '1', 'TWO' => '2']);
 
-        static::assertCount(2, $arr);
+        self::assertCount(2, $arr);
     }
 
     public function testIterable()
@@ -46,7 +47,7 @@ final class CaseInsensitiveArrayTest extends \Stripe\TestCase
             $seen[$k] = $v;
         }
 
-        static::assertSame('1', $seen['one']);
-        static::assertSame('2', $seen['two']);
+        self::assertSame('1', $seen['one']);
+        self::assertSame('2', $seen['two']);
     }
 }

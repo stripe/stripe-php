@@ -6,9 +6,10 @@ namespace Stripe\Service;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class QuoteService extends \Stripe\Service\AbstractService
+class QuoteService extends AbstractService
 {
     /**
      * Accepts the specified quote.
@@ -17,9 +18,9 @@ class QuoteService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Quote
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function accept($id, $params = null, $opts = null)
     {
@@ -32,9 +33,9 @@ class QuoteService extends \Stripe\Service\AbstractService
      * @param null|array{customer?: string, ending_before?: string, expand?: string[], from_subscription?: string, limit?: int, starting_after?: string, status?: string, test_clock?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Quote>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -51,9 +52,9 @@ class QuoteService extends \Stripe\Service\AbstractService
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\LineItem>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function allComputedUpfrontLineItems($id, $params = null, $opts = null)
     {
@@ -69,9 +70,9 @@ class QuoteService extends \Stripe\Service\AbstractService
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\LineItem>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function allLineItems($id, $params = null, $opts = null)
     {
@@ -152,9 +153,9 @@ class QuoteService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Quote
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -170,9 +171,9 @@ class QuoteService extends \Stripe\Service\AbstractService
      * @param null|array{allow_backdated_lines?: bool, application_fee_amount?: null|int, application_fee_percent?: null|float, automatic_tax?: array{enabled: bool, liability?: array{account?: string, type: string}}, collection_method?: string, customer?: string, default_tax_rates?: null|string[], description?: null|string, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], expires_at?: int, footer?: null|string, from_quote?: array{is_revision?: bool, quote: string}, header?: null|string, invoice_settings?: array{days_until_due?: int, issuer?: array{account?: string, type: string}}, line_items?: (array{discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], price?: string, price_data?: array{currency: string, product: string, recurring?: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], lines?: (array{actions?: (array{add_discount?: array{coupon?: string, discount?: string, discount_end?: array{type: string}, index?: int, promotion_code?: string}, add_item?: array{discounts?: array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], metadata?: \Stripe\StripeObject, price: string, quantity?: int, tax_rates?: string[], trial?: array{converts_to?: string[], type: string}}, add_metadata?: \Stripe\StripeObject, remove_discount?: array{coupon?: string, discount?: string, promotion_code?: string}, remove_item?: array{price: string}, remove_metadata?: string[], set_discounts?: array{coupon?: string, discount?: string, promotion_code?: string}[], set_items?: array{discounts?: array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], metadata?: \Stripe\StripeObject, price: string, quantity?: int, tax_rates?: string[], trial?: array{converts_to?: string[], type: string}}[], set_metadata?: null|\Stripe\StripeObject, type: string})[], applies_to?: array{new_reference?: string, subscription_schedule?: string, type: string}, billing_cycle_anchor?: string, cancel_subscription_schedule?: array{cancel_at: string, invoice_now?: bool, prorate?: bool}, ends_at?: array{discount_end?: array{discount: string}, duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, proration_behavior?: string, set_pause_collection?: array{set?: array{behavior: string}, type: string}, set_schedule_end?: string, starts_at?: array{discount_end?: array{discount: string}, line_ends_at?: array{index?: int}, timestamp?: int, type: string}, trial_settings?: array{end_behavior?: array{prorate_up_front?: string}}})[], metadata?: \Stripe\StripeObject, on_behalf_of?: null|string, subscription_data?: array{bill_on_acceptance?: array{bill_from?: array{line_starts_at?: array{id?: string, index?: int}, timestamp?: int, type: string}, bill_until?: array{duration?: array{interval: string, interval_count: int}, line_ends_at?: array{id?: string, index?: int}, timestamp?: int, type: string}}, billing_behavior?: string, billing_cycle_anchor?: null|string, description?: string, effective_date?: null|string|int|array, end_behavior?: string, from_subscription?: string, metadata?: \Stripe\StripeObject, prebilling?: null|array{iterations: int}, proration_behavior?: string, trial_period_days?: null|int}, subscription_data_overrides?: array{applies_to: array{new_reference?: string, subscription_schedule?: string, type: string}, bill_on_acceptance?: array{bill_from?: array{line_starts_at?: array{id?: string, index?: int}, timestamp?: int, type: string}, bill_until?: array{duration?: array{interval: string, interval_count: int}, line_ends_at?: array{id?: string, index?: int}, timestamp?: int, type: string}}, billing_behavior?: string, customer?: string, description?: string, end_behavior?: string, proration_behavior?: string}[], test_clock?: string, transfer_data?: null|array{amount?: int, amount_percent?: float, destination: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Quote
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -186,9 +187,9 @@ class QuoteService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[], expires_at?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Quote
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function finalizeQuote($id, $params = null, $opts = null)
     {
@@ -236,9 +237,9 @@ class QuoteService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return mixed
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function pdf($id, $readBodyChunkCallable, $params = null, $opts = null)
     {
@@ -273,9 +274,9 @@ class QuoteService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Quote
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -289,9 +290,9 @@ class QuoteService extends \Stripe\Service\AbstractService
      * @param null|array{allow_backdated_lines?: bool, application_fee_amount?: null|int, application_fee_percent?: null|float, automatic_tax?: array{enabled: bool, liability?: array{account?: string, type: string}}, collection_method?: string, customer?: string, default_tax_rates?: null|string[], description?: null|string, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], expires_at?: int, footer?: null|string, header?: null|string, invoice_settings?: array{days_until_due?: int, issuer?: array{account?: string, type: string}}, line_items?: (array{discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], id?: string, price?: string, price_data?: array{currency: string, product: string, recurring?: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], lines?: (array{actions?: (array{add_discount?: array{coupon?: string, discount?: string, discount_end?: array{type: string}, index?: int, promotion_code?: string}, add_item?: array{discounts?: array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], metadata?: \Stripe\StripeObject, price: string, quantity?: int, tax_rates?: string[], trial?: array{converts_to?: string[], type: string}}, add_metadata?: \Stripe\StripeObject, remove_discount?: array{coupon?: string, discount?: string, promotion_code?: string}, remove_item?: array{price: string}, remove_metadata?: string[], set_discounts?: array{coupon?: string, discount?: string, promotion_code?: string}[], set_items?: array{discounts?: array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], metadata?: \Stripe\StripeObject, price: string, quantity?: int, tax_rates?: string[], trial?: array{converts_to?: string[], type: string}}[], set_metadata?: null|\Stripe\StripeObject, type: string})[], applies_to?: array{new_reference?: string, subscription_schedule?: string, type: string}, billing_cycle_anchor?: string, cancel_subscription_schedule?: array{cancel_at: string, invoice_now?: bool, prorate?: bool}, ends_at?: array{discount_end?: array{discount: string}, duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, id?: string, proration_behavior?: string, set_pause_collection?: array{set?: array{behavior: string}, type: string}, set_schedule_end?: string, starts_at?: array{discount_end?: array{discount: string}, line_ends_at?: array{id?: string, index?: int}, timestamp?: int, type: string}, trial_settings?: array{end_behavior?: array{prorate_up_front?: string}}})[], metadata?: \Stripe\StripeObject, on_behalf_of?: null|string, subscription_data?: array{bill_on_acceptance?: null|array{bill_from?: array{line_starts_at?: array{id?: string, index?: int}, timestamp?: int, type: string}, bill_until?: array{duration?: array{interval: string, interval_count: int}, line_ends_at?: array{id?: string, index?: int}, timestamp?: int, type: string}}, billing_behavior?: string, billing_cycle_anchor?: null|string, description?: null|string, effective_date?: null|string|int|array, end_behavior?: string, metadata?: \Stripe\StripeObject, prebilling?: null|array{iterations: int}, proration_behavior?: string, trial_period_days?: null|int}, subscription_data_overrides?: null|(array{applies_to: array{new_reference?: string, subscription_schedule?: string, type: string}, bill_on_acceptance?: null|array{bill_from?: array{line_starts_at?: array{id?: string, index?: int}, timestamp?: int, type: string}, bill_until?: array{duration?: array{interval: string, interval_count: int}, line_ends_at?: array{id?: string, index?: int}, timestamp?: int, type: string}}, billing_behavior?: string, customer?: string, description?: null|string, end_behavior?: string, proration_behavior?: string})[], transfer_data?: null|array{amount?: int, amount_percent?: float, destination: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Quote
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

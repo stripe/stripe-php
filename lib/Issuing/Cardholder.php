@@ -45,9 +45,9 @@ class Cardholder extends \Stripe\ApiResource
      * @param null|array{billing: array{address: array{city: string, country: string, line1: string, line2?: string, postal_code: string, state?: string}}, company?: array{tax_id?: string}, email?: string, expand?: string[], individual?: array{card_issuing?: array{user_terms_acceptance?: array{date?: int, ip?: string, user_agent?: null|string}}, dob?: array{day: int, month: int, year: int}, first_name?: string, last_name?: string, verification?: array{document?: array{back?: string, front?: string}}}, metadata?: \Stripe\StripeObject, name: string, phone_number?: string, preferred_locales?: string[], spending_controls?: array{allowed_categories?: string[], allowed_merchant_countries?: string[], blocked_categories?: string[], blocked_merchant_countries?: string[], spending_limits?: array{amount: int, categories?: string[], interval: string}[], spending_limits_currency?: string}, status?: string, type?: string} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Cardholder the created resource
      *
-     * @return \Stripe\Issuing\Cardholder the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -69,9 +69,9 @@ class Cardholder extends \Stripe\ApiResource
      * @param null|array{created?: int|array, email?: string, ending_before?: string, expand?: string[], limit?: int, phone_number?: string, starting_after?: string, status?: string, type?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Cardholder> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\Cardholder> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -86,9 +86,9 @@ class Cardholder extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Cardholder
      *
-     * @return \Stripe\Issuing\Cardholder
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -108,9 +108,9 @@ class Cardholder extends \Stripe\ApiResource
      * @param null|array{billing?: array{address: array{city: string, country: string, line1: string, line2?: string, postal_code: string, state?: string}}, company?: array{tax_id?: string}, email?: string, expand?: string[], individual?: array{card_issuing?: array{user_terms_acceptance?: array{date?: int, ip?: string, user_agent?: null|string}}, dob?: array{day: int, month: int, year: int}, first_name?: string, last_name?: string, verification?: array{document?: array{back?: string, front?: string}}}, metadata?: \Stripe\StripeObject, phone_number?: string, preferred_locales?: string[], spending_controls?: array{allowed_categories?: string[], allowed_merchant_countries?: string[], blocked_categories?: string[], blocked_merchant_countries?: string[], spending_limits?: array{amount: int, categories?: string[], interval: string}[], spending_limits_currency?: string}, status?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Cardholder the updated resource
      *
-     * @return \Stripe\Issuing\Cardholder the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {

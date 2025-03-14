@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Dispute
  */
-final class DisputeTest extends \Stripe\TestCase
+final class DisputeTest extends TestCase
 {
     use TestHelper;
 
@@ -19,8 +20,8 @@ final class DisputeTest extends \Stripe\TestCase
             '/v1/disputes'
         );
         $resources = Dispute::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Dispute::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(Dispute::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -30,7 +31,7 @@ final class DisputeTest extends \Stripe\TestCase
             '/v1/disputes/' . self::TEST_RESOURCE_ID
         );
         $resource = Dispute::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Dispute::class, $resource);
+        self::assertInstanceOf(Dispute::class, $resource);
     }
 
     public function testIsSaveable()
@@ -42,7 +43,7 @@ final class DisputeTest extends \Stripe\TestCase
             '/v1/disputes/' . $resource->id
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\Dispute::class, $resource);
+        self::assertInstanceOf(Dispute::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -54,7 +55,7 @@ final class DisputeTest extends \Stripe\TestCase
         $resource = Dispute::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Dispute::class, $resource);
+        self::assertInstanceOf(Dispute::class, $resource);
     }
 
     public function testIsClosable()
@@ -65,7 +66,7 @@ final class DisputeTest extends \Stripe\TestCase
             '/v1/disputes/' . $dispute->id . '/close'
         );
         $resource = $dispute->close();
-        static::assertInstanceOf(\Stripe\Dispute::class, $resource);
-        static::assertSame($resource, $dispute);
+        self::assertInstanceOf(Dispute::class, $resource);
+        self::assertSame($resource, $dispute);
     }
 }
