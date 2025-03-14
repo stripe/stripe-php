@@ -1511,15 +1511,6 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(Invoice::class, $result);
     }
 
-    public function testInvoicesUpcomingGet()
-    {
-        $this->expectsRequest('get', '/v1/invoices/upcoming');
-        $result = $this->client->invoices->upcoming([
-            'customer' => 'cus_9utnxg47pWjV1e',
-        ]);
-        self::assertInstanceOf(Invoice::class, $result);
-    }
-
     public function testInvoicesVoidPost()
     {
         $this->expectsRequest('post', '/v1/invoices/in_xxxxxxxxxxxxx/void');
