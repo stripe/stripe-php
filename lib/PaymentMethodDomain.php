@@ -34,9 +34,9 @@ class PaymentMethodDomain extends ApiResource
      * @param null|array{domain_name: string, enabled?: bool, expand?: string[]} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PaymentMethodDomain the created resource
      *
-     * @return \Stripe\PaymentMethodDomain the created resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -44,7 +44,7 @@ class PaymentMethodDomain extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -56,15 +56,15 @@ class PaymentMethodDomain extends ApiResource
      * @param null|array{domain_name?: string, enabled?: bool, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<PaymentMethodDomain> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\PaymentMethodDomain> of ApiResources
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+        return static::_requestPage($url, Collection::class, $params, $opts);
     }
 
     /**
@@ -73,13 +73,13 @@ class PaymentMethodDomain extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PaymentMethodDomain
      *
-     * @return \Stripe\PaymentMethodDomain
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -93,9 +93,9 @@ class PaymentMethodDomain extends ApiResource
      * @param null|array{enabled?: bool, expand?: string[]} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PaymentMethodDomain the updated resource
      *
-     * @return \Stripe\PaymentMethodDomain the updated resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -103,7 +103,7 @@ class PaymentMethodDomain extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -113,9 +113,9 @@ class PaymentMethodDomain extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PaymentMethodDomain the validated payment method domain
      *
-     * @return \Stripe\PaymentMethodDomain the validated payment method domain
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function validate($params = null, $opts = null)
     {

@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Payout
  */
-final class PayoutTest extends \Stripe\TestCase
+final class PayoutTest extends TestCase
 {
     use TestHelper;
 
@@ -19,8 +20,8 @@ final class PayoutTest extends \Stripe\TestCase
             '/v1/payouts'
         );
         $resources = Payout::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Payout::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(Payout::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -30,7 +31,7 @@ final class PayoutTest extends \Stripe\TestCase
             '/v1/payouts/' . self::TEST_RESOURCE_ID
         );
         $resource = Payout::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Payout::class, $resource);
+        self::assertInstanceOf(Payout::class, $resource);
     }
 
     public function testIsCreatable()
@@ -43,7 +44,7 @@ final class PayoutTest extends \Stripe\TestCase
             'amount' => 100,
             'currency' => 'usd',
         ]);
-        static::assertInstanceOf(\Stripe\Payout::class, $resource);
+        self::assertInstanceOf(Payout::class, $resource);
     }
 
     public function testIsSaveable()
@@ -55,7 +56,7 @@ final class PayoutTest extends \Stripe\TestCase
             '/v1/payouts/' . $resource->id
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\Payout::class, $resource);
+        self::assertInstanceOf(Payout::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -67,7 +68,7 @@ final class PayoutTest extends \Stripe\TestCase
         $resource = Payout::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Payout::class, $resource);
+        self::assertInstanceOf(Payout::class, $resource);
     }
 
     public function testIsCancelable()
@@ -78,7 +79,7 @@ final class PayoutTest extends \Stripe\TestCase
             '/v1/payouts/' . $resource->id . '/cancel'
         );
         $resource->cancel();
-        static::assertInstanceOf(\Stripe\Payout::class, $resource);
+        self::assertInstanceOf(Payout::class, $resource);
     }
 
     public function testIsReverseable()
@@ -89,6 +90,6 @@ final class PayoutTest extends \Stripe\TestCase
             '/v1/payouts/' . $resource->id . '/reverse'
         );
         $resource->reverse();
-        static::assertInstanceOf(\Stripe\Payout::class, $resource);
+        self::assertInstanceOf(Payout::class, $resource);
     }
 }

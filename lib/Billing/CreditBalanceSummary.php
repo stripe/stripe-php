@@ -21,9 +21,9 @@ class CreditBalanceSummary extends \Stripe\SingletonApiResource
      *
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditBalanceSummary
      *
-     * @return \Stripe\Billing\CreditBalanceSummary
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($opts = null)
     {

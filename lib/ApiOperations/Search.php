@@ -14,9 +14,9 @@ trait Search
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\SearchResult of ApiResources
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     protected static function _searchResource($searchUrl, $params = null, $opts = null)
     {

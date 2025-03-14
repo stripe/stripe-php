@@ -67,9 +67,9 @@ class VerificationSession extends \Stripe\ApiResource
      * @param null|array{client_reference_id?: string, expand?: string[], metadata?: \Stripe\StripeObject, options?: array{document?: null|array{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}}, provided_details?: array{email?: string, phone?: string}, related_customer?: string, return_url?: string, type?: string, verification_flow?: string} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return VerificationSession the created resource
      *
-     * @return \Stripe\Identity\VerificationSession the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -89,9 +89,9 @@ class VerificationSession extends \Stripe\ApiResource
      * @param null|array{client_reference_id?: string, created?: int|array, ending_before?: string, expand?: string[], limit?: int, related_customer?: string, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<VerificationSession> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Identity\VerificationSession> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -110,9 +110,9 @@ class VerificationSession extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return VerificationSession
      *
-     * @return \Stripe\Identity\VerificationSession
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -133,9 +133,9 @@ class VerificationSession extends \Stripe\ApiResource
      * @param null|array{expand?: string[], metadata?: \Stripe\StripeObject, options?: array{document?: null|array{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}}, provided_details?: array{email?: string, phone?: string}, type?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return VerificationSession the updated resource
      *
-     * @return \Stripe\Identity\VerificationSession the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -153,9 +153,9 @@ class VerificationSession extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return VerificationSession the canceled verification session
      *
-     * @return \Stripe\Identity\VerificationSession the canceled verification session
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function cancel($params = null, $opts = null)
     {
@@ -170,9 +170,9 @@ class VerificationSession extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return VerificationSession the redacted verification session
      *
-     * @return \Stripe\Identity\VerificationSession the redacted verification session
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function redact($params = null, $opts = null)
     {

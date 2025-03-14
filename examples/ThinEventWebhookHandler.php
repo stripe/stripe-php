@@ -14,10 +14,10 @@ require 'vendor/autoload.php';
 $api_key = getenv('STRIPE_API_KEY');
 $webhook_secret = getenv('WEBHOOK_SECRET');
 
-$app = new \Slim\App();
-$client = new \Stripe\StripeClient($api_key);
+$app = new Slim\App();
+$client = new Stripe\StripeClient($api_key);
 
-$app->post('/webhook', function ($request, $response) use ($client, $webhook_secret) {
+$app->post('/webhook', static function ($request, $response) use ($client, $webhook_secret) {
     $webhook_body = $request->getBody()->getContents();
     $sig_header = $request->getHeaderLine('Stripe-Signature');
 
@@ -26,7 +26,7 @@ $app->post('/webhook', function ($request, $response) use ($client, $webhook_sec
 
         // Fetch the event data to understand the failure
         $event = $client->v2->core->events->retrieve($thin_event->id);
-        if ($event instanceof \Stripe\Events\V1BillingMeterErrorReportTriggeredEvent) {
+        if ($event instanceof Stripe\Events\V1BillingMeterErrorReportTriggeredEvent) {
             $meter = $event->fetchRelatedObject();
             $meter_id = $meter->id;
 
@@ -35,7 +35,7 @@ $app->post('/webhook', function ($request, $response) use ($client, $webhook_sec
         }
 
         return $response->withStatus(200);
-    } catch (\Exception $e) {
+    } catch (Exception $e) {
         return $response->withStatus(400)->withJson(['error' => $e->getMessage()]);
     }
 });

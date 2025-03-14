@@ -49,9 +49,9 @@ class OutboundTransfer extends \Stripe\ApiResource
      * @param null|array{amount: int, currency: string, description?: string, destination_payment_method?: string, destination_payment_method_data?: array{financial_account?: string, type: string}, destination_payment_method_options?: array{us_bank_account?: null|array{network?: string}}, expand?: string[], financial_account: string, metadata?: \Stripe\StripeObject, network_details?: array{ach?: array{addenda?: string}, type: string}, statement_descriptor?: string} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return OutboundTransfer the created resource
      *
-     * @return \Stripe\Treasury\OutboundTransfer the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -71,9 +71,9 @@ class OutboundTransfer extends \Stripe\ApiResource
      * @param null|array{ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<OutboundTransfer> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Treasury\OutboundTransfer> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -90,9 +90,9 @@ class OutboundTransfer extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return OutboundTransfer
      *
-     * @return \Stripe\Treasury\OutboundTransfer
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -107,9 +107,9 @@ class OutboundTransfer extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return OutboundTransfer the canceled outbound transfer
      *
-     * @return \Stripe\Treasury\OutboundTransfer the canceled outbound transfer
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function cancel($params = null, $opts = null)
     {

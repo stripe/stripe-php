@@ -4,6 +4,7 @@ namespace Stripe\Exception\OAuth;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Exception\OAuth\OAuthErrorException
  */
 final class OAuthErrorExceptionTest extends \Stripe\TestCase
@@ -30,20 +31,20 @@ final class OAuthErrorExceptionTest extends \Stripe\TestCase
     public function testGetters()
     {
         $e = $this->createFixture();
-        static::assertSame(200, $e->getHttpStatus());
-        static::assertSame('{"error": "code", "error_description": "description"}', $e->getHttpBody());
-        static::assertSame(['error' => 'code', 'error_description' => 'description'], $e->getJsonBody());
-        static::assertSame('Some Value', $e->getHttpHeaders()['Some-Header']);
-        static::assertSame('req_test', $e->getRequestId());
-        static::assertSame('code', $e->getStripeCode());
-        static::assertNotNull($e->getError());
-        static::assertSame('code', $e->getError()->error);
-        static::assertSame('description', $e->getError()->error_description);
+        self::assertSame(200, $e->getHttpStatus());
+        self::assertSame('{"error": "code", "error_description": "description"}', $e->getHttpBody());
+        self::assertSame(['error' => 'code', 'error_description' => 'description'], $e->getJsonBody());
+        self::assertSame('Some Value', $e->getHttpHeaders()['Some-Header']);
+        self::assertSame('req_test', $e->getRequestId());
+        self::assertSame('code', $e->getStripeCode());
+        self::assertNotNull($e->getError());
+        self::assertSame('code', $e->getError()->error);
+        self::assertSame('description', $e->getError()->error_description);
     }
 
     public function testToString()
     {
         $e = $this->createFixture();
-        static::compatAssertStringContainsString('(Request req_test)', (string) $e);
+        self::compatAssertStringContainsString('(Request req_test)', (string) $e);
     }
 }

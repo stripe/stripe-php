@@ -14,8 +14,8 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount Disputed amount. Usually the amount of the charge, but it can differ (usually because of currency fluctuation or because only part of the order is disputed).
- * @property \Stripe\BalanceTransaction[] $balance_transactions List of zero, one, or two balance transactions that show funds withdrawn and reinstated to your Stripe account as a result of this dispute.
- * @property string|\Stripe\Charge $charge ID of the charge that's disputed.
+ * @property BalanceTransaction[] $balance_transactions List of zero, one, or two balance transactions that show funds withdrawn and reinstated to your Stripe account as a result of this dispute.
+ * @property Charge|string $charge ID of the charge that's disputed.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property string[] $enhanced_eligibility_types List of eligibility types that are included in <code>enhanced_evidence</code>.
@@ -23,7 +23,7 @@ namespace Stripe;
  * @property (object{due_by: null|int, enhanced_eligibility: (object{visa_compelling_evidence_3?: (object{required_actions: string[], status: string}&\Stripe\StripeObject&\stdClass), visa_compliance?: (object{status: string}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass), has_evidence: bool, past_due: bool, submission_count: int}&\Stripe\StripeObject&\stdClass) $evidence_details
  * @property bool $is_charge_refundable If true, it's still possible to refund the disputed payment. After the payment has been fully refunded, no further funds are withdrawn from your Stripe account as a result of this dispute.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $network_reason_code Network-dependent reason code for the dispute.
  * @property null|string|\Stripe\PaymentIntent $payment_intent ID of the PaymentIntent that's disputed.
  * @property (object{amazon_pay?: (object{dispute_type: null|string}&\Stripe\StripeObject&\stdClass), card?: (object{brand: string, case_type: string, network_reason_code: null|string}&\Stripe\StripeObject&\stdClass), klarna?: (object{reason_code: null|string}&\Stripe\StripeObject&\stdClass), paypal?: (object{case_id: null|string, reason_code: null|string}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass) $payment_method_details
@@ -65,15 +65,15 @@ class Dispute extends ApiResource
      * @param null|array{charge?: string, created?: int|array, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<Dispute> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Dispute> of ApiResources
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+        return static::_requestPage($url, Collection::class, $params, $opts);
     }
 
     /**
@@ -82,13 +82,13 @@ class Dispute extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Dispute
      *
-     * @return \Stripe\Dispute
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -110,9 +110,9 @@ class Dispute extends ApiResource
      * @param null|array{evidence?: array{access_activity_log?: string, billing_address?: string, cancellation_policy?: string, cancellation_policy_disclosure?: string, cancellation_rebuttal?: string, customer_communication?: string, customer_email_address?: string, customer_name?: string, customer_purchase_ip?: string, customer_signature?: string, duplicate_charge_documentation?: string, duplicate_charge_explanation?: string, duplicate_charge_id?: string, enhanced_evidence?: null|array{visa_compelling_evidence_3?: array{disputed_transaction?: array{customer_account_id?: null|string, customer_device_fingerprint?: null|string, customer_device_id?: null|string, customer_email_address?: null|string, customer_purchase_ip?: null|string, merchandise_or_services?: string, product_description?: null|string, shipping_address?: array{city?: null|string, country?: null|string, line1?: null|string, line2?: null|string, postal_code?: null|string, state?: null|string}}, prior_undisputed_transactions?: (array{charge: string, customer_account_id?: null|string, customer_device_fingerprint?: null|string, customer_device_id?: null|string, customer_email_address?: null|string, customer_purchase_ip?: null|string, product_description?: null|string, shipping_address?: array{city?: null|string, country?: null|string, line1?: null|string, line2?: null|string, postal_code?: null|string, state?: null|string}})[]}, visa_compliance?: array{fee_acknowledged?: bool}}, product_description?: string, receipt?: string, refund_policy?: string, refund_policy_disclosure?: string, refund_refusal_explanation?: string, service_date?: string, service_documentation?: string, shipping_address?: string, shipping_carrier?: string, shipping_date?: string, shipping_documentation?: string, shipping_tracking_number?: string, uncategorized_file?: string, uncategorized_text?: string}, expand?: string[], metadata?: null|\Stripe\StripeObject, submit?: bool} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Dispute the updated resource
      *
-     * @return \Stripe\Dispute the updated resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -120,7 +120,7 @@ class Dispute extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -130,9 +130,9 @@ class Dispute extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Dispute the closed dispute
      *
-     * @return \Stripe\Dispute the closed dispute
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function close($params = null, $opts = null)
     {

@@ -56,9 +56,9 @@ class Account extends \Stripe\ApiResource
      * @param null|array{account_holder?: array{account?: string, customer?: string}, ending_before?: string, expand?: string[], limit?: int, session?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Account> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\FinancialConnections\Account> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -73,9 +73,9 @@ class Account extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Account
      *
-     * @return \Stripe\FinancialConnections\Account
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -90,9 +90,9 @@ class Account extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Account the disconnected account
      *
-     * @return \Stripe\FinancialConnections\Account the disconnected account
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function disconnect($params = null, $opts = null)
     {
@@ -108,9 +108,9 @@ class Account extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<AccountOwner> list of account owners
      *
-     * @return \Stripe\Collection<\Stripe\FinancialConnections\AccountOwner> list of account owners
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function allOwners($id, $params = null, $opts = null)
     {
@@ -126,9 +126,9 @@ class Account extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Account the refreshed account
      *
-     * @return \Stripe\FinancialConnections\Account the refreshed account
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function refreshAccount($params = null, $opts = null)
     {
@@ -143,9 +143,9 @@ class Account extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Account the subscribed account
      *
-     * @return \Stripe\FinancialConnections\Account the subscribed account
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function subscribe($params = null, $opts = null)
     {
@@ -160,9 +160,9 @@ class Account extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Account the unsubscribed account
      *
-     * @return \Stripe\FinancialConnections\Account the unsubscribed account
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function unsubscribe($params = null, $opts = null)
     {

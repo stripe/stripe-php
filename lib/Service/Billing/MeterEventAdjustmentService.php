@@ -6,6 +6,7 @@ namespace Stripe\Service\Billing;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class MeterEventAdjustmentService extends \Stripe\Service\AbstractService
@@ -16,9 +17,9 @@ class MeterEventAdjustmentService extends \Stripe\Service\AbstractService
      * @param null|array{cancel?: array{identifier?: string}, event_name: string, expand?: string[], type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Billing\MeterEventAdjustment
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {

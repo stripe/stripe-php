@@ -6,9 +6,10 @@ namespace Stripe\Service;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class SetupAttemptService extends \Stripe\Service\AbstractService
+class SetupAttemptService extends AbstractService
 {
     /**
      * Returns a list of SetupAttempts that associate with a provided SetupIntent.
@@ -16,9 +17,9 @@ class SetupAttemptService extends \Stripe\Service\AbstractService
      * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, setup_intent: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\SetupAttempt>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {

@@ -6,6 +6,7 @@ namespace Stripe\V2;
  * Class V2 Collection.
  *
  * @template TStripeObject of \Stripe\StripeObject
+ *
  * @template-implements \IteratorAggregate<TStripeObject>
  *
  * @property null|string $next_page_url
@@ -35,10 +36,10 @@ class Collection extends \Stripe\StripeObject implements \Countable, \IteratorAg
         if (\is_string($k)) {
             return parent::offsetGet($k);
         }
-        $msg = "You tried to access the {$k} index, but V2Collection " .
-            'types only support string keys. (HINT: List calls ' .
-            'return an object with a `data` (which is the data ' .
-            "array). You likely want to call ->data[{$k}])";
+        $msg = "You tried to access the {$k} index, but V2Collection "
+            . 'types only support string keys. (HINT: List calls '
+            . 'return an object with a `data` (which is the data '
+            . "array). You likely want to call ->data[{$k}])";
 
         throw new \Stripe\Exception\InvalidArgumentException($msg);
     }
@@ -72,12 +73,12 @@ class Collection extends \Stripe\StripeObject implements \Countable, \IteratorAg
     }
 
     /**
-     * @throws \Stripe\Exception\ApiErrorException
-     *
      * @return \Generator|TStripeObject[] A generator that can be used to
      *    iterate across all objects across all pages. As page boundaries are
      *    encountered, the next page will be fetched automatically for
      *    continued iteration.
+     *
+     * @throws \Stripe\Exception\ApiErrorException
      */
     public function autoPagingIterator()
     {

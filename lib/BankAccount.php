@@ -15,7 +15,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|string|\Stripe\Account $account The ID of the account that the bank account is associated with.
+ * @property null|Account|string $account The ID of the account that the bank account is associated with.
  * @property null|string $account_holder_name The name of the person or business that owns the bank account.
  * @property null|string $account_holder_type The type of entity that holds the account. This can be either <code>individual</code> or <code>company</code>.
  * @property null|string $account_type The bank account type. This can only be <code>checking</code> or <code>savings</code> in most countries. In Japan, this can only be <code>futsu</code> or <code>toza</code>.
@@ -23,7 +23,7 @@ namespace Stripe;
  * @property null|string $bank_name Name of the bank associated with the routing number (e.g., <code>WELLS FARGO</code>).
  * @property string $country Two-letter ISO code representing the country the bank account is located in.
  * @property string $currency Three-letter <a href="https://stripe.com/docs/payouts">ISO code for the currency</a> paid out to the bank account.
- * @property null|string|\Stripe\Customer $customer The ID of the customer that the bank account is associated with.
+ * @property null|Customer|string $customer The ID of the customer that the bank account is associated with.
  * @property null|bool $default_for_currency Whether this bank account is the default external account for its currency.
  * @property null|string $fingerprint Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
  * @property null|(object{currently_due: null|string[], errors: null|(object{code: string, reason: string, requirement: string}&\Stripe\StripeObject&\stdClass)[], past_due: null|string[], pending_verification: null|string[]}&\Stripe\StripeObject&\stdClass) $future_requirements Information about the <a href="https://stripe.com/docs/connect/custom-accounts/future-requirements">upcoming new requirements for the bank account</a>, including what information needs to be collected, and by when.
@@ -43,9 +43,9 @@ class BankAccount extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return BankAccount the deleted resource
      *
-     * @return \Stripe\BankAccount the deleted resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function delete($params = null, $opts = null)
     {
@@ -98,15 +98,15 @@ class BankAccount extends ApiResource
      * @param array|string $_id
      * @param null|array|string $_opts
      *
-     * @throws \Stripe\Exception\BadMethodCallException
+     * @throws Exception\BadMethodCallException
      */
     public static function retrieve($_id, $_opts = null)
     {
-        $msg = 'Bank accounts cannot be retrieved without a customer ID or ' .
-               'an account ID. Retrieve a bank account using ' .
-               "`Customer::retrieveSource('customer_id', " .
-               "'bank_account_id')` or `Account::retrieveExternalAccount(" .
-               "'account_id', 'bank_account_id')`.";
+        $msg = 'Bank accounts cannot be retrieved without a customer ID or '
+               . 'an account ID. Retrieve a bank account using '
+               . "`Customer::retrieveSource('customer_id', "
+               . "'bank_account_id')` or `Account::retrieveExternalAccount("
+               . "'account_id', 'bank_account_id')`.";
 
         throw new Exception\BadMethodCallException($msg);
     }
@@ -116,15 +116,15 @@ class BankAccount extends ApiResource
      * @param null|array $_params
      * @param null|array|string $_options
      *
-     * @throws \Stripe\Exception\BadMethodCallException
+     * @throws Exception\BadMethodCallException
      */
     public static function update($_id, $_params = null, $_options = null)
     {
-        $msg = 'Bank accounts cannot be updated without a customer ID or an ' .
-               'account ID. Update a bank account using ' .
-               "`Customer::updateSource('customer_id', 'bank_account_id', " .
-               '$updateParams)` or `Account::updateExternalAccount(' .
-               "'account_id', 'bank_account_id', \$updateParams)`.";
+        $msg = 'Bank accounts cannot be updated without a customer ID or an '
+               . 'account ID. Update a bank account using '
+               . "`Customer::updateSource('customer_id', 'bank_account_id', "
+               . '$updateParams)` or `Account::updateExternalAccount('
+               . "'account_id', 'bank_account_id', \$updateParams)`.";
 
         throw new Exception\BadMethodCallException($msg);
     }
@@ -132,9 +132,9 @@ class BankAccount extends ApiResource
     /**
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return static the saved resource
+     *
+     * @throws Exception\ApiErrorException if the request fails
      *
      * @deprecated The `save` method is deprecated and will be removed in a
      *     future major version of the library. Use the static method `update`
@@ -156,9 +156,9 @@ class BankAccount extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return BankAccount the verified bank account
+     *
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function verify($params = null, $opts = null)
     {

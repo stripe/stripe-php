@@ -40,9 +40,9 @@ class DebitReversal extends \Stripe\ApiResource
      * @param null|array{expand?: string[], metadata?: \Stripe\StripeObject, received_debit: string} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return DebitReversal the created resource
      *
-     * @return \Stripe\Treasury\DebitReversal the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -62,9 +62,9 @@ class DebitReversal extends \Stripe\ApiResource
      * @param null|array{ending_before?: string, expand?: string[], financial_account: string, limit?: int, received_debit?: string, resolution?: string, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<DebitReversal> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Treasury\DebitReversal> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -79,9 +79,9 @@ class DebitReversal extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return DebitReversal
      *
-     * @return \Stripe\Treasury\DebitReversal
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

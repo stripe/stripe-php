@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\FileService
  */
 final class FileServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class FileServiceTest extends \Stripe\TestCase
             '/v1/files'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\File::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\File::class, $resources->data[0]);
     }
 
     public function testCreateWithCURLFile()
@@ -57,7 +58,7 @@ final class FileServiceTest extends \Stripe\TestCase
             'file' => $curlFile,
             'file_link_data' => ['create' => true],
         ]);
-        static::assertInstanceOf(\Stripe\File::class, $resource);
+        self::assertInstanceOf(\Stripe\File::class, $resource);
     }
 
     public function testCreateWithFileHandle()
@@ -79,7 +80,7 @@ final class FileServiceTest extends \Stripe\TestCase
             'file' => $fp,
             'file_link_data' => ['create' => true],
         ]);
-        static::assertInstanceOf(\Stripe\File::class, $resource);
+        self::assertInstanceOf(\Stripe\File::class, $resource);
     }
 
     public function testRetrieve()
@@ -89,6 +90,6 @@ final class FileServiceTest extends \Stripe\TestCase
             '/v1/files/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\File::class, $resource);
+        self::assertInstanceOf(\Stripe\File::class, $resource);
     }
 }

@@ -6,6 +6,7 @@ use Stripe\ThinEvent;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Util\Util
  */
 final class UtilTest extends \Stripe\TestCase
@@ -15,10 +16,10 @@ final class UtilTest extends \Stripe\TestCase
     public function testIsList()
     {
         $list = [5, 'nstaoush', []];
-        static::assertTrue(Util::isList($list));
+        self::assertTrue(Util::isList($list));
 
         $notlist = [5, 'nstaoush', [], 'bar' => 'baz'];
-        static::assertFalse(Util::isList($notlist));
+        self::assertFalse(Util::isList($notlist));
     }
 
     public function testThatPHPHasValueSemanticsForArrays()
@@ -27,7 +28,7 @@ final class UtilTest extends \Stripe\TestCase
         $derived = $original;
         $derived['php-arrays'] = 'reference-semantics';
 
-        static::assertSame('value-semantics', $original['php-arrays']);
+        self::assertSame('value-semantics', $original['php-arrays']);
     }
 
     public function testConvertStripeObjectToArrayIncludesId()
@@ -39,22 +40,22 @@ final class UtilTest extends \Stripe\TestCase
             ],
             null
         );
-        static::assertArrayHasKey('id', $customer->toArray());
+        self::assertArrayHasKey('id', $customer->toArray());
     }
 
     public function testUtf8()
     {
         // UTF-8 string
         $x = "\xc3\xa9";
-        static::assertSame(Util::utf8($x), $x);
+        self::assertSame(Util::utf8($x), $x);
 
         // Latin-1 string
         $x = "\xe9";
-        static::assertSame(Util::utf8($x), "\xc3\xa9");
+        self::assertSame(Util::utf8($x), "\xc3\xa9");
 
         // Not a string
         $x = true;
-        static::assertSame(Util::utf8($x), $x);
+        self::assertSame(Util::utf8($x), $x);
     }
 
     public function testObjectsToIds()
@@ -71,7 +72,7 @@ final class UtilTest extends \Stripe\TestCase
             'null_value' => null,
         ];
 
-        static::assertSame(
+        self::assertSame(
             [
                 'foo' => 'bar',
                 'customer' => 'cus_123',
@@ -94,7 +95,7 @@ final class UtilTest extends \Stripe\TestCase
             'g' => [],
         ];
 
-        static::assertSame(
+        self::assertSame(
             'a=3&b=%2Bfoo%3F&c=bar%26baz&d[a]=a&d[b]=b&e[0]=0&e[1]=1&f=',
             Util::encodeParameters($params)
         );
@@ -114,7 +115,7 @@ final class UtilTest extends \Stripe\TestCase
             'g' => [],
         ];
 
-        static::assertSame(
+        self::assertSame(
             'a=3&b=%2Bfoo%3F&c=bar%26baz&d[a]=a&d[b]=b&e=0&e=1&f=',
             Util::encodeParameters($params, 'v2')
         );
@@ -122,10 +123,10 @@ final class UtilTest extends \Stripe\TestCase
 
     public function testUrlEncode()
     {
-        static::assertSame('foo', Util::urlEncode('foo'));
-        static::assertSame('foo%2B', Util::urlEncode('foo+'));
-        static::assertSame('foo%26', Util::urlEncode('foo&'));
-        static::assertSame('foo[bar]', Util::urlEncode('foo[bar]'));
+        self::assertSame('foo', Util::urlEncode('foo'));
+        self::assertSame('foo%2B', Util::urlEncode('foo+'));
+        self::assertSame('foo%26', Util::urlEncode('foo&'));
+        self::assertSame('foo[bar]', Util::urlEncode('foo[bar]'));
     }
 
     public function testFlattenParams()
@@ -142,7 +143,7 @@ final class UtilTest extends \Stripe\TestCase
             ],
         ];
 
-        static::assertSame(
+        self::assertSame(
             [
                 ['a', 3],
                 ['b', '+foo?'],
@@ -179,15 +180,15 @@ final class UtilTest extends \Stripe\TestCase
         ]);
 
         $event = Util::json_decode_thin_event_object($eventData, ThinEvent::class);
-        static::assertInstanceOf(ThinEvent::class, $event);
-        static::assertSame('evt_234', $event->id);
-        static::assertSame('financial_account.balance.opened', $event->type);
-        static::assertSame('2022-02-15T00:27:45.330Z', $event->created);
-        static::assertSame('fa_123', $event->related_object->id);
-        static::assertSame('financial_account', $event->related_object->type);
-        static::assertSame('/v2/financial_accounts/fa_123', $event->related_object->url);
-        static::assertSame('id_123', $event->reason->id);
-        static::assertSame('key_123', $event->reason->idempotency_key);
+        self::assertInstanceOf(ThinEvent::class, $event);
+        self::assertSame('evt_234', $event->id);
+        self::assertSame('financial_account.balance.opened', $event->type);
+        self::assertSame('2022-02-15T00:27:45.330Z', $event->created);
+        self::assertSame('fa_123', $event->related_object->id);
+        self::assertSame('financial_account', $event->related_object->type);
+        self::assertSame('/v2/financial_accounts/fa_123', $event->related_object->url);
+        self::assertSame('id_123', $event->reason->id);
+        self::assertSame('key_123', $event->reason->idempotency_key);
     }
 
     public function testJsonDecodeThinEventObjectWithNoRelatedObject()
@@ -200,11 +201,11 @@ final class UtilTest extends \Stripe\TestCase
         ]);
 
         $event = Util::json_decode_thin_event_object($eventData, ThinEvent::class);
-        static::assertInstanceOf(ThinEvent::class, $event);
-        static::assertSame('evt_234', $event->id);
-        static::assertSame('financial_account.balance.opened', $event->type);
-        static::assertSame('2022-02-15T00:27:45.330Z', $event->created);
-        static::assertNull($event->related_object);
+        self::assertInstanceOf(ThinEvent::class, $event);
+        self::assertSame('evt_234', $event->id);
+        self::assertSame('financial_account.balance.opened', $event->type);
+        self::assertSame('2022-02-15T00:27:45.330Z', $event->created);
+        self::assertNull($event->related_object);
     }
 
     public function testJsonDecodeThinEventObjectWithNoReasonObject()
@@ -217,10 +218,10 @@ final class UtilTest extends \Stripe\TestCase
         ]);
 
         $event = Util::json_decode_thin_event_object($eventData, ThinEvent::class);
-        static::assertInstanceOf(ThinEvent::class, $event);
-        static::assertSame('evt_234', $event->id);
-        static::assertSame('financial_account.balance.opened', $event->type);
-        static::assertSame('2022-02-15T00:27:45.330Z', $event->created);
-        static::assertNull($event->reason);
+        self::assertInstanceOf(ThinEvent::class, $event);
+        self::assertSame('evt_234', $event->id);
+        self::assertSame('financial_account.balance.opened', $event->type);
+        self::assertSame('2022-02-15T00:27:45.330Z', $event->created);
+        self::assertNull($event->reason);
     }
 }

@@ -4,6 +4,7 @@ namespace Stripe\Issuing;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Issuing\Dispute
  */
 final class DisputeTest extends \Stripe\TestCase
@@ -24,7 +25,7 @@ final class DisputeTest extends \Stripe\TestCase
             $params
         );
         $resource = Dispute::create($params);
-        static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
+        self::assertInstanceOf(Dispute::class, $resource);
     }
 
     public function testIsListable()
@@ -34,8 +35,8 @@ final class DisputeTest extends \Stripe\TestCase
             '/v1/issuing/disputes'
         );
         $resources = Dispute::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(Dispute::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -45,7 +46,7 @@ final class DisputeTest extends \Stripe\TestCase
             '/v1/issuing/disputes/' . self::TEST_RESOURCE_ID
         );
         $resource = Dispute::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
+        self::assertInstanceOf(Dispute::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -56,7 +57,7 @@ final class DisputeTest extends \Stripe\TestCase
             []
         );
         $resource = Dispute::update(self::TEST_RESOURCE_ID, []);
-        static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
+        self::assertInstanceOf(Dispute::class, $resource);
     }
 
     public function testIsSubmittable()
@@ -67,6 +68,6 @@ final class DisputeTest extends \Stripe\TestCase
             '/v1/issuing/disputes/' . self::TEST_RESOURCE_ID . '/submit'
         );
         $resource->submit();
-        static::assertInstanceOf(\Stripe\Issuing\Dispute::class, $resource);
+        self::assertInstanceOf(Dispute::class, $resource);
     }
 }

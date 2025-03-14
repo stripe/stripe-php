@@ -15,16 +15,16 @@ namespace Stripe;
  * @property int $amount_shipping This is the sum of all the shipping amounts.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property string|\Stripe\Customer $customer ID of the customer.
- * @property null|string|\Stripe\CustomerBalanceTransaction $customer_balance_transaction Customer balance transaction related to this credit note.
+ * @property Customer|string $customer ID of the customer.
+ * @property null|CustomerBalanceTransaction|string $customer_balance_transaction Customer balance transaction related to this credit note.
  * @property int $discount_amount The integer amount in cents (or local equivalent) representing the total amount of discount that was credited.
  * @property ((object{amount: int, discount: string|\Stripe\Discount}&\Stripe\StripeObject&\stdClass))[] $discount_amounts The aggregate amounts calculated per discount for all line items.
  * @property null|int $effective_at The date when this credit note is in effect. Same as <code>created</code> unless overwritten. When defined, this value replaces the system-generated 'Date of issue' printed on the credit note PDF.
- * @property string|\Stripe\Invoice $invoice ID of the invoice.
- * @property \Stripe\Collection<\Stripe\CreditNoteLineItem> $lines Line items that make up the credit note
+ * @property Invoice|string $invoice ID of the invoice.
+ * @property Collection<CreditNoteLineItem> $lines Line items that make up the credit note
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $memo Customer-facing text that appears on the credit note PDF.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $number A unique number that identifies this particular credit note and appears on the PDF of the credit note and its associated invoice.
  * @property null|int $out_of_band_amount Amount that was credited outside of Stripe.
  * @property string $pdf The link to download the PDF of the credit note.
@@ -87,9 +87,9 @@ class CreditNote extends ApiResource
      * @param null|array{amount?: int, credit_amount?: int, effective_at?: int, email_type?: string, expand?: string[], invoice: string, lines?: (array{amount?: int, description?: string, invoice_line_item?: string, quantity?: int, tax_amounts?: null|array{amount: int, tax_rate: string, taxable_amount: int}[], tax_rates?: null|string[], type: string, unit_amount?: int, unit_amount_decimal?: string})[], memo?: string, metadata?: \Stripe\StripeObject, out_of_band_amount?: int, reason?: string, refund?: string, refund_amount?: int, refunds?: array{amount_refunded?: int, refund?: string}[], shipping_cost?: array{shipping_rate?: string}} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditNote the created resource
      *
-     * @return \Stripe\CreditNote the created resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -97,7 +97,7 @@ class CreditNote extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -109,15 +109,15 @@ class CreditNote extends ApiResource
      * @param null|array{created?: int|array, customer?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<CreditNote> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\CreditNote> of ApiResources
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+        return static::_requestPage($url, Collection::class, $params, $opts);
     }
 
     /**
@@ -126,13 +126,13 @@ class CreditNote extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditNote
      *
-     * @return \Stripe\CreditNote
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -146,9 +146,9 @@ class CreditNote extends ApiResource
      * @param null|array{expand?: string[], memo?: string, metadata?: \Stripe\StripeObject} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditNote the updated resource
      *
-     * @return \Stripe\CreditNote the updated resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -156,7 +156,7 @@ class CreditNote extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -166,15 +166,15 @@ class CreditNote extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditNote the previewed credit note
      *
-     * @return \Stripe\CreditNote the previewed credit note
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function preview($params = null, $opts = null)
     {
         $url = static::classUrl() . '/preview';
         list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -184,15 +184,15 @@ class CreditNote extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<CreditNoteLineItem> list of credit note line items
      *
-     * @return \Stripe\Collection<\Stripe\CreditNoteLineItem> list of credit note line items
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function previewLines($params = null, $opts = null)
     {
         $url = static::classUrl() . '/preview/lines';
         list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -202,9 +202,9 @@ class CreditNote extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditNote the voided credit note
      *
-     * @return \Stripe\CreditNote the voided credit note
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function voidCreditNote($params = null, $opts = null)
     {
@@ -222,9 +222,9 @@ class CreditNote extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<CreditNoteLineItem> the list of credit note line items
      *
-     * @return \Stripe\Collection<\Stripe\CreditNoteLineItem> the list of credit note line items
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function allLines($id, $params = null, $opts = null)
     {

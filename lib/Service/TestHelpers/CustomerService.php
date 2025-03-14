@@ -6,6 +6,7 @@ namespace Stripe\Service\TestHelpers;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class CustomerService extends \Stripe\Service\AbstractService
@@ -17,9 +18,9 @@ class CustomerService extends \Stripe\Service\AbstractService
      * @param null|array{amount: int, currency: string, expand?: string[], reference?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\CustomerCashBalanceTransaction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function fundCashBalance($id, $params = null, $opts = null)
     {

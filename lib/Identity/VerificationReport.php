@@ -46,9 +46,9 @@ class VerificationReport extends \Stripe\ApiResource
      * @param null|array{client_reference_id?: string, created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string, verification_session?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<VerificationReport> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Identity\VerificationReport> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -63,9 +63,9 @@ class VerificationReport extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return VerificationReport
      *
-     * @return \Stripe\Identity\VerificationReport
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

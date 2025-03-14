@@ -45,9 +45,9 @@ class InboundTransfer extends \Stripe\ApiResource
      * @param null|array{amount: int, currency: string, description?: string, expand?: string[], financial_account: string, metadata?: \Stripe\StripeObject, origin_payment_method: string, statement_descriptor?: string} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return InboundTransfer the created resource
      *
-     * @return \Stripe\Treasury\InboundTransfer the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -67,9 +67,9 @@ class InboundTransfer extends \Stripe\ApiResource
      * @param null|array{ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<InboundTransfer> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Treasury\InboundTransfer> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -84,9 +84,9 @@ class InboundTransfer extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return InboundTransfer
      *
-     * @return \Stripe\Treasury\InboundTransfer
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -101,9 +101,9 @@ class InboundTransfer extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return InboundTransfer the canceled inbound transfer
      *
-     * @return \Stripe\Treasury\InboundTransfer the canceled inbound transfer
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function cancel($params = null, $opts = null)
     {

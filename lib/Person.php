@@ -33,7 +33,7 @@ namespace Stripe;
  * @property null|string $last_name_kana The Kana variation of the person's last name (Japan only).
  * @property null|string $last_name_kanji The Kanji variation of the person's last name (Japan only).
  * @property null|string $maiden_name The person's maiden name.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $nationality The country where the person is a national.
  * @property null|string $phone The person's phone number.
  * @property null|string $political_exposure Indicates if the person or any of their representatives, family members, or other closely related persons, declares that they hold or have held an important public job or function, in any jurisdiction.
@@ -68,8 +68,8 @@ class Person extends ApiResource
         $account = $this['account'];
         if (!$id) {
             throw new Exception\UnexpectedValueException(
-                'Could not determine which URL to request: ' .
-                "class instance has invalid ID: {$id}",
+                'Could not determine which URL to request: '
+                . "class instance has invalid ID: {$id}",
                 null
             );
         }
@@ -87,13 +87,13 @@ class Person extends ApiResource
      * @param array|string $_id
      * @param null|array|string $_opts
      *
-     * @throws \Stripe\Exception\BadMethodCallException
+     * @throws Exception\BadMethodCallException
      */
     public static function retrieve($_id, $_opts = null)
     {
-        $msg = 'Persons cannot be retrieved without an account ID. Retrieve ' .
-               "a person using `Account::retrievePerson('account_id', " .
-               "'person_id')`.";
+        $msg = 'Persons cannot be retrieved without an account ID. Retrieve '
+               . "a person using `Account::retrievePerson('account_id', "
+               . "'person_id')`.";
 
         throw new Exception\BadMethodCallException($msg);
     }
@@ -103,13 +103,13 @@ class Person extends ApiResource
      * @param null|array $_params
      * @param null|array|string $_options
      *
-     * @throws \Stripe\Exception\BadMethodCallException
+     * @throws Exception\BadMethodCallException
      */
     public static function update($_id, $_params = null, $_options = null)
     {
-        $msg = 'Persons cannot be updated without an account ID. Update ' .
-                "a person using `Account::updatePerson('account_id', " .
-                "'person_id', \$updateParams)`.";
+        $msg = 'Persons cannot be updated without an account ID. Update '
+                . "a person using `Account::updatePerson('account_id', "
+                . "'person_id', \$updateParams)`.";
 
         throw new Exception\BadMethodCallException($msg);
     }
@@ -117,9 +117,9 @@ class Person extends ApiResource
     /**
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return static the saved resource
+     *
+     * @throws Exception\ApiErrorException if the request fails
      *
      * @deprecated The `save` method is deprecated and will be removed in a
      *     future major version of the library. Use the static method `update`

@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\BalanceTransaction
  */
-final class BalanceTransactionTest extends \Stripe\TestCase
+final class BalanceTransactionTest extends TestCase
 {
     use TestHelper;
 
@@ -19,8 +20,8 @@ final class BalanceTransactionTest extends \Stripe\TestCase
             '/v1/balance_transactions'
         );
         $resources = BalanceTransaction::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\BalanceTransaction::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(BalanceTransaction::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -30,6 +31,6 @@ final class BalanceTransactionTest extends \Stripe\TestCase
             '/v1/balance_transactions/' . self::TEST_RESOURCE_ID
         );
         $resource = BalanceTransaction::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\BalanceTransaction::class, $resource);
+        self::assertInstanceOf(BalanceTransaction::class, $resource);
     }
 }

@@ -4,6 +4,7 @@ namespace Stripe\Terminal;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Terminal\Reader
  */
 final class ReaderTest extends \Stripe\TestCase
@@ -19,8 +20,8 @@ final class ReaderTest extends \Stripe\TestCase
             '/v1/terminal/readers'
         );
         $resources = Reader::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(Reader::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -30,7 +31,7 @@ final class ReaderTest extends \Stripe\TestCase
             '/v1/terminal/readers/' . self::TEST_RESOURCE_ID
         );
         $resource = Reader::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
+        self::assertInstanceOf(Reader::class, $resource);
     }
 
     public function testIsSaveable()
@@ -43,7 +44,7 @@ final class ReaderTest extends \Stripe\TestCase
             '/v1/terminal/readers/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
+        self::assertInstanceOf(Reader::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -56,7 +57,7 @@ final class ReaderTest extends \Stripe\TestCase
         $resource = Reader::update(self::TEST_RESOURCE_ID, [
             'label' => 'new-name',
         ]);
-        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
+        self::assertInstanceOf(Reader::class, $resource);
     }
 
     public function testIsCreatable()
@@ -67,7 +68,7 @@ final class ReaderTest extends \Stripe\TestCase
             ['registration_code' => 'a-b-c']
         );
         $resource = Reader::create(['registration_code' => 'a-b-c']);
-        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
+        self::assertInstanceOf(Reader::class, $resource);
     }
 
     public function testIsDeletable()
@@ -78,6 +79,6 @@ final class ReaderTest extends \Stripe\TestCase
             '/v1/terminal/readers/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
+        self::assertInstanceOf(Reader::class, $resource);
     }
 }

@@ -5,7 +5,7 @@ namespace Stripe;
 /**
  * Client used to send requests to Stripe's API.
  *
- * @property \Stripe\Service\OAuthService $oauth
+ * @property Service\OAuthService $oauth
  * // The beginning of the section generated from our OpenAPI spec
  * @property \Stripe\Service\AccountLinkService $accountLinks
  * @property \Stripe\Service\AccountNoticeService $accountNotices
@@ -88,7 +88,7 @@ namespace Stripe;
 class StripeClient extends BaseStripeClient
 {
     /**
-     * @var \Stripe\Service\CoreServiceFactory
+     * @var Service\CoreServiceFactory
      */
     private $coreServiceFactory;
 
@@ -100,7 +100,7 @@ class StripeClient extends BaseStripeClient
     public function getService($name)
     {
         if (null === $this->coreServiceFactory) {
-            $this->coreServiceFactory = new \Stripe\Service\CoreServiceFactory($this);
+            $this->coreServiceFactory = new Service\CoreServiceFactory($this);
         }
 
         return $this->coreServiceFactory->getService($name);

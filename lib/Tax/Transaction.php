@@ -39,9 +39,9 @@ class Transaction extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Transaction
      *
-     * @return \Stripe\Tax\Transaction
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -56,9 +56,9 @@ class Transaction extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Transaction the created transaction
      *
-     * @return \Stripe\Tax\Transaction the created transaction
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function createFromCalculation($params = null, $opts = null)
     {
@@ -74,9 +74,9 @@ class Transaction extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Transaction the created transaction
      *
-     * @return \Stripe\Tax\Transaction the created transaction
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function createReversal($params = null, $opts = null)
     {
@@ -93,9 +93,9 @@ class Transaction extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<TransactionLineItem> list of transaction line items
      *
-     * @return \Stripe\Collection<\Stripe\Tax\TransactionLineItem> list of transaction line items
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {
