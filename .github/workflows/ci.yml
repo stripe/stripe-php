@@ -25,12 +25,34 @@ jobs:
     runs-on: "ubuntu-24.04"
 
     steps:
+      - uses: extractions/setup-just@v2
       - uses: actions/checkout@v3
 
-      - name: PHP-CS-Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga@sha256:f810030b75416a01445ff6b69f9f4771e99322f478719ee4e6edab32e167afd6
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          args: --format=txt --diff --dry-run --using-cache=no --verbose
+          php-version: "8.2"
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          # Conventionally you would hash "composer.lock", but we don't commit
+          # that, so we hash on "composer.json" instead.
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
+
+      - name: Validate composer.json
+        run: composer validate
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run PHP-CS-Fixer
+        run: just format
 
   phpstan:
     name: PHPStan
