@@ -6,9 +6,10 @@ namespace Stripe\Service;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class InvoiceRenderingTemplateService extends \Stripe\Service\AbstractService
+class InvoiceRenderingTemplateService extends AbstractService
 {
     /**
      * List all templates, ordered by creation date, with the most recently created
@@ -17,9 +18,9 @@ class InvoiceRenderingTemplateService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\InvoiceRenderingTemplate>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -36,9 +37,9 @@ class InvoiceRenderingTemplateService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\InvoiceRenderingTemplate
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function archive($id, $params = null, $opts = null)
     {
@@ -54,9 +55,9 @@ class InvoiceRenderingTemplateService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\InvoiceRenderingTemplate
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -71,9 +72,9 @@ class InvoiceRenderingTemplateService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\InvoiceRenderingTemplate
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function unarchive($id, $params = null, $opts = null)
     {

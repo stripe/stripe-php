@@ -125,9 +125,9 @@ class Session extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Session the created resource
      *
-     * @return \Stripe\Checkout\Session the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -147,9 +147,9 @@ class Session extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Session> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Checkout\Session> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -164,9 +164,9 @@ class Session extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Session
      *
-     * @return \Stripe\Checkout\Session
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -184,9 +184,9 @@ class Session extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Session the updated resource
      *
-     * @return \Stripe\Checkout\Session the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -204,9 +204,9 @@ class Session extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Session the expired session
      *
-     * @return \Stripe\Checkout\Session the expired session
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function expire($params = null, $opts = null)
     {
@@ -222,9 +222,9 @@ class Session extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\LineItem> list of line items
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {

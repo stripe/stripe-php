@@ -6,6 +6,7 @@ namespace Stripe\Service\V2\Billing;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class MeterEventStreamService extends \Stripe\Service\AbstractService
@@ -18,9 +19,9 @@ class MeterEventStreamService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\TemporarySessionExpiredException
-     *
      * @return void
+     *
+     * @throws \Stripe\Exception\TemporarySessionExpiredException
      */
     public function create($params = null, $opts = null)
     {

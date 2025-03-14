@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\SubscriptionSchedule
  */
-final class SubscriptionScheduleTest extends \Stripe\TestCase
+final class SubscriptionScheduleTest extends TestCase
 {
     use TestHelper;
 
@@ -20,8 +21,8 @@ final class SubscriptionScheduleTest extends \Stripe\TestCase
             '/v1/subscription_schedules'
         );
         $resources = SubscriptionSchedule::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(SubscriptionSchedule::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -31,7 +32,7 @@ final class SubscriptionScheduleTest extends \Stripe\TestCase
             '/v1/subscription_schedules/' . self::TEST_RESOURCE_ID
         );
         $resource = SubscriptionSchedule::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resource);
+        self::assertInstanceOf(SubscriptionSchedule::class, $resource);
     }
 
     public function testIsCreatable()
@@ -49,7 +50,7 @@ final class SubscriptionScheduleTest extends \Stripe\TestCase
                 ],
             ],
         ]);
-        static::assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resource);
+        self::assertInstanceOf(SubscriptionSchedule::class, $resource);
     }
 
     public function testIsSaveable()
@@ -61,7 +62,7 @@ final class SubscriptionScheduleTest extends \Stripe\TestCase
             '/v1/subscription_schedules/' . $resource->id
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resource);
+        self::assertInstanceOf(SubscriptionSchedule::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -73,7 +74,7 @@ final class SubscriptionScheduleTest extends \Stripe\TestCase
         $resource = SubscriptionSchedule::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resource);
+        self::assertInstanceOf(SubscriptionSchedule::class, $resource);
     }
 
     public function testIsCancelable()
@@ -85,7 +86,7 @@ final class SubscriptionScheduleTest extends \Stripe\TestCase
             []
         );
         $resource->cancel([]);
-        static::assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resource);
+        self::assertInstanceOf(SubscriptionSchedule::class, $resource);
     }
 
     public function testIsReleaseable()
@@ -97,6 +98,6 @@ final class SubscriptionScheduleTest extends \Stripe\TestCase
             []
         );
         $resource->release([]);
-        static::assertInstanceOf(\Stripe\SubscriptionSchedule::class, $resource);
+        self::assertInstanceOf(SubscriptionSchedule::class, $resource);
     }
 }

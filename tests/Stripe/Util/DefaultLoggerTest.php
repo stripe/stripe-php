@@ -4,6 +4,7 @@ namespace Stripe\Util;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Util\DefaultLogger
  */
 final class DefaultLoggerTest extends \Stripe\TestCase
@@ -22,7 +23,7 @@ final class DefaultLoggerTest extends \Stripe\TestCase
             $logger = new DefaultLogger();
             $logger->error('This is a test message');
 
-            static::compatAssertMatchesRegularExpression('/This is a test message/', \stream_get_contents($capture));
+            self::compatAssertMatchesRegularExpression('/This is a test message/', \stream_get_contents($capture));
         } finally {
             \ini_set('error_log', $origErrorLog);
             \fclose($capture);

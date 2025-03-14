@@ -15,9 +15,9 @@ class V1BillingMeterErrorReportTriggeredEvent extends \Stripe\V2\Event
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Billing\Meter
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function fetchRelatedObject()
     {

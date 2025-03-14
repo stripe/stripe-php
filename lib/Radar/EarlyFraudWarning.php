@@ -37,9 +37,9 @@ class EarlyFraudWarning extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<EarlyFraudWarning> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Radar\EarlyFraudWarning> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -58,9 +58,9 @@ class EarlyFraudWarning extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return EarlyFraudWarning
      *
-     * @return \Stripe\Radar\EarlyFraudWarning
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

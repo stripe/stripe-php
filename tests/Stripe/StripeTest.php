@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Stripe
  */
-final class StripeTest extends \Stripe\TestCase
+final class StripeTest extends TestCase
 {
     use TestHelper;
 
@@ -34,6 +35,6 @@ final class StripeTest extends \Stripe\TestCase
     public function testCABundlePathAccessors()
     {
         Stripe::setCABundlePath('path/to/ca/bundle');
-        static::assertSame('path/to/ca/bundle', Stripe::getCABundlePath());
+        self::assertSame('path/to/ca/bundle', Stripe::getCABundlePath());
     }
 }

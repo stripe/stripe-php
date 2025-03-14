@@ -6,6 +6,7 @@ namespace Stripe\Service\Tax;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class TransactionService extends \Stripe\Service\AbstractService
@@ -17,9 +18,9 @@ class TransactionService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Tax\TransactionLineItem>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function allLineItems($id, $params = null, $opts = null)
     {
@@ -33,9 +34,9 @@ class TransactionService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Tax\Transaction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function createFromCalculation($params = null, $opts = null)
     {
@@ -48,9 +49,9 @@ class TransactionService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Tax\Transaction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function createReversal($params = null, $opts = null)
     {
@@ -64,9 +65,9 @@ class TransactionService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Tax\Transaction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

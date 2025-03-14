@@ -4,6 +4,7 @@ namespace Stripe\Issuing;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Issuing\Authorization
  */
 final class AuthorizationTest extends \Stripe\TestCase
@@ -19,8 +20,8 @@ final class AuthorizationTest extends \Stripe\TestCase
             '/v1/issuing/authorizations'
         );
         $resources = Authorization::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(Authorization::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -30,7 +31,7 @@ final class AuthorizationTest extends \Stripe\TestCase
             '/v1/issuing/authorizations/' . self::TEST_RESOURCE_ID
         );
         $resource = Authorization::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
+        self::assertInstanceOf(Authorization::class, $resource);
     }
 
     public function testIsSaveable()
@@ -43,7 +44,7 @@ final class AuthorizationTest extends \Stripe\TestCase
             '/v1/issuing/authorizations/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
+        self::assertInstanceOf(Authorization::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -56,7 +57,7 @@ final class AuthorizationTest extends \Stripe\TestCase
         $resource = Authorization::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
+        self::assertInstanceOf(Authorization::class, $resource);
     }
 
     public function testIsApprovable()
@@ -68,7 +69,7 @@ final class AuthorizationTest extends \Stripe\TestCase
             '/v1/issuing/authorizations/' . self::TEST_RESOURCE_ID . '/approve'
         );
         $resource = $resource->approve();
-        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
+        self::assertInstanceOf(Authorization::class, $resource);
     }
 
     public function testIsDeclinable()
@@ -80,6 +81,6 @@ final class AuthorizationTest extends \Stripe\TestCase
             '/v1/issuing/authorizations/' . self::TEST_RESOURCE_ID . '/decline'
         );
         $resource = $resource->decline();
-        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
+        self::assertInstanceOf(Authorization::class, $resource);
     }
 }

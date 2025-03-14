@@ -6,6 +6,7 @@ namespace Stripe\Service\TestHelpers\Issuing;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class AuthorizationService extends \Stripe\Service\AbstractService
@@ -17,9 +18,9 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\Authorization
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function capture($id, $params = null, $opts = null)
     {
@@ -32,9 +33,9 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\Authorization
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -48,9 +49,9 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\Authorization
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function expire($id, $params = null, $opts = null)
     {
@@ -65,9 +66,9 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\Authorization
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function finalizeAmount($id, $params = null, $opts = null)
     {
@@ -81,9 +82,9 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\Authorization
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function increment($id, $params = null, $opts = null)
     {
@@ -98,9 +99,9 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\Authorization
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function respond($id, $params = null, $opts = null)
     {
@@ -114,9 +115,9 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Issuing\Authorization
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function reverse($id, $params = null, $opts = null)
     {

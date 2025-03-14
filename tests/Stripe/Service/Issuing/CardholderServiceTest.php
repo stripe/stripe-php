@@ -4,6 +4,7 @@ namespace Stripe\Service\Issuing;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\Issuing\CardholderService
  */
 final class CardholderServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class CardholderServiceTest extends \Stripe\TestCase
             '/v1/issuing/cardholders'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -59,7 +60,7 @@ final class CardholderServiceTest extends \Stripe\TestCase
             $params
         );
         $resource = $this->service->create($params);
-        static::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resource);
+        self::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resource);
     }
 
     public function testRetrieve()
@@ -69,7 +70,7 @@ final class CardholderServiceTest extends \Stripe\TestCase
             '/v1/issuing/cardholders/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resource);
+        self::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resource);
     }
 
     public function testUpdate()
@@ -82,6 +83,6 @@ final class CardholderServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resource);
+        self::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resource);
     }
 }

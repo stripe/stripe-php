@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\ExchangeRateService
  */
 final class ExchangeRateServiceTest extends \Stripe\TestCase
@@ -28,13 +29,13 @@ final class ExchangeRateServiceTest extends \Stripe\TestCase
     public function testAll()
     {
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\ExchangeRate::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\ExchangeRate::class, $resources->data[0]);
     }
 
     public function testRetrieve()
     {
         $resource = $this->service->retrieve('usd');
-        static::assertInstanceOf(\Stripe\ExchangeRate::class, $resource);
+        self::assertInstanceOf(\Stripe\ExchangeRate::class, $resource);
     }
 }

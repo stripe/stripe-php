@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\WebhookEndpoint
  */
-final class WebhookEndpointTest extends \Stripe\TestCase
+final class WebhookEndpointTest extends TestCase
 {
     use TestHelper;
 
@@ -19,8 +20,8 @@ final class WebhookEndpointTest extends \Stripe\TestCase
             '/v1/webhook_endpoints'
         );
         $resources = WebhookEndpoint::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\WebhookEndpoint::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(WebhookEndpoint::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -30,7 +31,7 @@ final class WebhookEndpointTest extends \Stripe\TestCase
             '/v1/webhook_endpoints/' . self::TEST_RESOURCE_ID
         );
         $resource = WebhookEndpoint::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\WebhookEndpoint::class, $resource);
+        self::assertInstanceOf(WebhookEndpoint::class, $resource);
     }
 
     public function testIsCreatable()
@@ -43,7 +44,7 @@ final class WebhookEndpointTest extends \Stripe\TestCase
             'enabled_events' => ['charge.succeeded'],
             'url' => 'https://stripe.com',
         ]);
-        static::assertInstanceOf(\Stripe\WebhookEndpoint::class, $resource);
+        self::assertInstanceOf(WebhookEndpoint::class, $resource);
     }
 
     public function testIsSaveable()
@@ -55,7 +56,7 @@ final class WebhookEndpointTest extends \Stripe\TestCase
             '/v1/webhook_endpoints/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\WebhookEndpoint::class, $resource);
+        self::assertInstanceOf(WebhookEndpoint::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -67,7 +68,7 @@ final class WebhookEndpointTest extends \Stripe\TestCase
         $resource = WebhookEndpoint::update(self::TEST_RESOURCE_ID, [
             'enabled_events' => ['charge.succeeded'],
         ]);
-        static::assertInstanceOf(\Stripe\WebhookEndpoint::class, $resource);
+        self::assertInstanceOf(WebhookEndpoint::class, $resource);
     }
 
     public function testIsDeletable()
@@ -78,6 +79,6 @@ final class WebhookEndpointTest extends \Stripe\TestCase
             '/v1/webhook_endpoints/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        static::assertInstanceOf(\Stripe\WebhookEndpoint::class, $resource);
+        self::assertInstanceOf(WebhookEndpoint::class, $resource);
     }
 }

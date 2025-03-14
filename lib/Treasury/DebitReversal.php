@@ -21,7 +21,7 @@ namespace Stripe\Treasury;
  * @property string $received_debit The ReceivedDebit being reversed.
  * @property string $status Status of the DebitReversal
  * @property \Stripe\StripeObject $status_transitions
- * @property null|string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
+ * @property null|string|Transaction $transaction The Transaction associated with this object.
  */
 class DebitReversal extends \Stripe\ApiResource
 {
@@ -40,9 +40,9 @@ class DebitReversal extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return DebitReversal the created resource
      *
-     * @return \Stripe\Treasury\DebitReversal the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -62,9 +62,9 @@ class DebitReversal extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<DebitReversal> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Treasury\DebitReversal> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -79,9 +79,9 @@ class DebitReversal extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return DebitReversal
      *
-     * @return \Stripe\Treasury\DebitReversal
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

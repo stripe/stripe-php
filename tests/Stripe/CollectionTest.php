@@ -4,13 +4,14 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Collection
  */
-final class CollectionTest extends \Stripe\TestCase
+final class CollectionTest extends TestCase
 {
     use TestHelper;
 
-    /** @var \Stripe\Collection */
+    /** @var Collection */
     private $fixture;
 
     /**
@@ -27,8 +28,8 @@ final class CollectionTest extends \Stripe\TestCase
 
     public function testOffsetGetNumericIndex()
     {
-        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
-        $this->compatExpectExceptionMessageMatches('/You tried to access the \\d index/');
+        $this->expectException(Exception\InvalidArgumentException::class);
+        $this->compatExpectExceptionMessageMatches('/You tried to access the \d index/');
 
         $this->fixture[0];
     }
@@ -50,7 +51,7 @@ final class CollectionTest extends \Stripe\TestCase
         );
 
         $resources = $this->fixture->all();
-        static::compatAssertIsArray($resources->data);
+        self::compatAssertIsArray($resources->data);
     }
 
     public function testCanRetrieve()
@@ -94,12 +95,12 @@ final class CollectionTest extends \Stripe\TestCase
         $collection = Collection::constructFrom([
             'data' => [['id' => '1']],
         ]);
-        static::assertCount(1, $collection);
+        self::assertCount(1, $collection);
 
         $collection = Collection::constructFrom([
             'data' => [['id' => '1'], ['id' => '2'], ['id' => '3']],
         ]);
-        static::assertCount(3, $collection);
+        self::assertCount(3, $collection);
     }
 
     public function testCanIterate()
@@ -115,7 +116,7 @@ final class CollectionTest extends \Stripe\TestCase
             $seen[] = $item['id'];
         }
 
-        static::assertSame(['1', '2', '3'], $seen);
+        self::assertSame(['1', '2', '3'], $seen);
     }
 
     public function testCanIterateBackwards()
@@ -131,7 +132,7 @@ final class CollectionTest extends \Stripe\TestCase
             $seen[] = $item['id'];
         }
 
-        static::assertSame(['3', '2', '1'], $seen);
+        self::assertSame(['3', '2', '1'], $seen);
     }
 
     public function testSupportsIteratorToArray()
@@ -141,7 +142,7 @@ final class CollectionTest extends \Stripe\TestCase
             $seen[] = $item['id'];
         }
 
-        static::assertSame(['1'], $seen);
+        self::assertSame(['1'], $seen);
     }
 
     public function testProvidesAutoPagingIterator()
@@ -166,7 +167,7 @@ final class CollectionTest extends \Stripe\TestCase
             $seen[] = $item['id'];
         }
 
-        static::assertSame(['1', '2', '3'], $seen);
+        self::assertSame(['1', '2', '3'], $seen);
     }
 
     public function testAutoPagingIteratorSupportsIteratorToArray()
@@ -191,7 +192,7 @@ final class CollectionTest extends \Stripe\TestCase
             $seen[] = $item['id'];
         }
 
-        static::assertSame(['1', '2', '3'], $seen);
+        self::assertSame(['1', '2', '3'], $seen);
     }
 
     public function testProvidesAutoPagingIteratorThatSupportsBackwardsPagination()
@@ -223,7 +224,7 @@ final class CollectionTest extends \Stripe\TestCase
             $seen[] = $item['id'];
         }
 
-        static::assertSame(['3', '2', '1'], $seen);
+        self::assertSame(['3', '2', '1'], $seen);
     }
 
     public function testHeaders()
@@ -255,16 +256,16 @@ final class CollectionTest extends \Stripe\TestCase
     public function testEmptyCollection()
     {
         $emptyCollection = Collection::emptyCollection();
-        static::assertSame([], $emptyCollection->data);
+        self::assertSame([], $emptyCollection->data);
     }
 
     public function testIsEmpty()
     {
         $empty = Collection::constructFrom(['data' => []]);
-        static::assertTrue($empty->isEmpty());
+        self::assertTrue($empty->isEmpty());
 
         $notEmpty = Collection::constructFrom(['data' => [['id' => '1']]]);
-        static::assertFalse($notEmpty->isEmpty());
+        self::assertFalse($notEmpty->isEmpty());
     }
 
     public function testNextPage()
@@ -289,7 +290,7 @@ final class CollectionTest extends \Stripe\TestCase
         foreach ($nextPage->data as $element) {
             $ids[] = $element['id'];
         }
-        static::assertSame(['2', '3'], $ids);
+        self::assertSame(['2', '3'], $ids);
     }
 
     public function testPreviousPage()
@@ -310,7 +311,7 @@ final class CollectionTest extends \Stripe\TestCase
         );
 
         $previousPage = $this->fixture->previousPage();
-        static::assertSame([], $previousPage->data);
+        self::assertSame([], $previousPage->data);
     }
 
     public function testFirst()
@@ -322,7 +323,7 @@ final class CollectionTest extends \Stripe\TestCase
                 ['content' => 'last'],
             ],
         ]);
-        static::assertSame('first', $collection->first()['content']);
+        self::assertSame('first', $collection->first()['content']);
     }
 
     public function testLast()
@@ -334,6 +335,6 @@ final class CollectionTest extends \Stripe\TestCase
                 ['content' => 'last'],
             ],
         ]);
-        static::assertSame('last', $collection->last()['content']);
+        self::assertSame('last', $collection->last()['content']);
     }
 }

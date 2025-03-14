@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Charge
  */
-final class ChargeTest extends \Stripe\TestCase
+final class ChargeTest extends TestCase
 {
     use TestHelper;
 
@@ -19,8 +20,8 @@ final class ChargeTest extends \Stripe\TestCase
             '/v1/charges'
         );
         $resources = Charge::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Charge::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(Charge::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -30,7 +31,7 @@ final class ChargeTest extends \Stripe\TestCase
             '/v1/charges/' . self::TEST_RESOURCE_ID
         );
         $resource = Charge::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Charge::class, $resource);
+        self::assertInstanceOf(Charge::class, $resource);
     }
 
     public function testIsCreatable()
@@ -44,7 +45,7 @@ final class ChargeTest extends \Stripe\TestCase
             'currency' => 'usd',
             'source' => 'tok_123',
         ]);
-        static::assertInstanceOf(\Stripe\Charge::class, $resource);
+        self::assertInstanceOf(Charge::class, $resource);
     }
 
     public function testIsSaveable()
@@ -56,7 +57,7 @@ final class ChargeTest extends \Stripe\TestCase
             '/v1/charges/' . $resource->id
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\Charge::class, $resource);
+        self::assertInstanceOf(Charge::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -68,7 +69,7 @@ final class ChargeTest extends \Stripe\TestCase
         $resource = Charge::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Charge::class, $resource);
+        self::assertInstanceOf(Charge::class, $resource);
     }
 
     public function testCanCapture()
@@ -79,7 +80,7 @@ final class ChargeTest extends \Stripe\TestCase
             '/v1/charges/' . $charge->id . '/capture'
         );
         $resource = $charge->capture();
-        static::assertInstanceOf(\Stripe\Charge::class, $resource);
-        static::assertSame($resource, $charge);
+        self::assertInstanceOf(Charge::class, $resource);
+        self::assertSame($resource, $charge);
     }
 }

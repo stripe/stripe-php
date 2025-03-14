@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\TaxCodeService
  */
 final class TaxCodeServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class TaxCodeServiceTest extends \Stripe\TestCase
             '/v1/tax_codes'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\TaxCode::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\TaxCode::class, $resources->data[0]);
     }
 
     public function testRetrieve()
@@ -45,6 +46,6 @@ final class TaxCodeServiceTest extends \Stripe\TestCase
             '/v1/tax_codes/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\TaxCode::class, $resource);
+        self::assertInstanceOf(\Stripe\TaxCode::class, $resource);
     }
 }

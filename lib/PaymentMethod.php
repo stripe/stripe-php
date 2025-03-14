@@ -13,60 +13,60 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\Stripe\StripeObject $acss_debit
- * @property null|\Stripe\StripeObject $affirm
- * @property null|\Stripe\StripeObject $afterpay_clearpay
- * @property null|\Stripe\StripeObject $alipay
+ * @property null|StripeObject $acss_debit
+ * @property null|StripeObject $affirm
+ * @property null|StripeObject $afterpay_clearpay
+ * @property null|StripeObject $alipay
  * @property null|string $allow_redisplay This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”.
- * @property null|\Stripe\StripeObject $alma
- * @property null|\Stripe\StripeObject $amazon_pay
- * @property null|\Stripe\StripeObject $au_becs_debit
- * @property null|\Stripe\StripeObject $bacs_debit
- * @property null|\Stripe\StripeObject $bancontact
- * @property \Stripe\StripeObject $billing_details
- * @property null|\Stripe\StripeObject $blik
- * @property null|\Stripe\StripeObject $boleto
- * @property null|\Stripe\StripeObject $card
- * @property null|\Stripe\StripeObject $card_present
- * @property null|\Stripe\StripeObject $cashapp
+ * @property null|StripeObject $alma
+ * @property null|StripeObject $amazon_pay
+ * @property null|StripeObject $au_becs_debit
+ * @property null|StripeObject $bacs_debit
+ * @property null|StripeObject $bancontact
+ * @property StripeObject $billing_details
+ * @property null|StripeObject $blik
+ * @property null|StripeObject $boleto
+ * @property null|StripeObject $card
+ * @property null|StripeObject $card_present
+ * @property null|StripeObject $cashapp
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|string|\Stripe\Customer $customer The ID of the Customer to which this PaymentMethod is saved. This will not be set when the PaymentMethod has not been saved to a Customer.
- * @property null|\Stripe\StripeObject $customer_balance
- * @property null|\Stripe\StripeObject $eps
- * @property null|\Stripe\StripeObject $fpx
- * @property null|\Stripe\StripeObject $giropay
- * @property null|\Stripe\StripeObject $grabpay
- * @property null|\Stripe\StripeObject $ideal
- * @property null|\Stripe\StripeObject $interac_present
- * @property null|\Stripe\StripeObject $kakao_pay
- * @property null|\Stripe\StripeObject $klarna
- * @property null|\Stripe\StripeObject $konbini
- * @property null|\Stripe\StripeObject $kr_card
- * @property null|\Stripe\StripeObject $link
+ * @property null|Customer|string $customer The ID of the Customer to which this PaymentMethod is saved. This will not be set when the PaymentMethod has not been saved to a Customer.
+ * @property null|StripeObject $customer_balance
+ * @property null|StripeObject $eps
+ * @property null|StripeObject $fpx
+ * @property null|StripeObject $giropay
+ * @property null|StripeObject $grabpay
+ * @property null|StripeObject $ideal
+ * @property null|StripeObject $interac_present
+ * @property null|StripeObject $kakao_pay
+ * @property null|StripeObject $klarna
+ * @property null|StripeObject $konbini
+ * @property null|StripeObject $kr_card
+ * @property null|StripeObject $link
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|\Stripe\StripeObject $mobilepay
- * @property null|\Stripe\StripeObject $multibanco
- * @property null|\Stripe\StripeObject $naver_pay
- * @property null|\Stripe\StripeObject $oxxo
- * @property null|\Stripe\StripeObject $p24
- * @property null|\Stripe\StripeObject $pay_by_bank
- * @property null|\Stripe\StripeObject $payco
- * @property null|\Stripe\StripeObject $paynow
- * @property null|\Stripe\StripeObject $paypal
- * @property null|\Stripe\StripeObject $pix
- * @property null|\Stripe\StripeObject $promptpay
- * @property null|\Stripe\StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
- * @property null|\Stripe\StripeObject $revolut_pay
- * @property null|\Stripe\StripeObject $samsung_pay
- * @property null|\Stripe\StripeObject $sepa_debit
- * @property null|\Stripe\StripeObject $sofort
- * @property null|\Stripe\StripeObject $swish
- * @property null|\Stripe\StripeObject $twint
+ * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $mobilepay
+ * @property null|StripeObject $multibanco
+ * @property null|StripeObject $naver_pay
+ * @property null|StripeObject $oxxo
+ * @property null|StripeObject $p24
+ * @property null|StripeObject $pay_by_bank
+ * @property null|StripeObject $payco
+ * @property null|StripeObject $paynow
+ * @property null|StripeObject $paypal
+ * @property null|StripeObject $pix
+ * @property null|StripeObject $promptpay
+ * @property null|StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
+ * @property null|StripeObject $revolut_pay
+ * @property null|StripeObject $samsung_pay
+ * @property null|StripeObject $sepa_debit
+ * @property null|StripeObject $sofort
+ * @property null|StripeObject $swish
+ * @property null|StripeObject $twint
  * @property string $type The type of the PaymentMethod. An additional hash is included on the PaymentMethod with a name matching this value. It contains additional information specific to the PaymentMethod type.
- * @property null|\Stripe\StripeObject $us_bank_account
- * @property null|\Stripe\StripeObject $wechat_pay
- * @property null|\Stripe\StripeObject $zip
+ * @property null|StripeObject $us_bank_account
+ * @property null|StripeObject $wechat_pay
+ * @property null|StripeObject $zip
  */
 class PaymentMethod extends ApiResource
 {
@@ -139,9 +139,9 @@ class PaymentMethod extends ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PaymentMethod the created resource
      *
-     * @return \Stripe\PaymentMethod the created resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -149,7 +149,7 @@ class PaymentMethod extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -164,15 +164,15 @@ class PaymentMethod extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<PaymentMethod> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\PaymentMethod> of ApiResources
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+        return static::_requestPage($url, Collection::class, $params, $opts);
     }
 
     /**
@@ -184,13 +184,13 @@ class PaymentMethod extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PaymentMethod
      *
-     * @return \Stripe\PaymentMethod
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -205,9 +205,9 @@ class PaymentMethod extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PaymentMethod the updated resource
      *
-     * @return \Stripe\PaymentMethod the updated resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -215,7 +215,7 @@ class PaymentMethod extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -225,9 +225,9 @@ class PaymentMethod extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PaymentMethod the attached payment method
      *
-     * @return \Stripe\PaymentMethod the attached payment method
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function attach($params = null, $opts = null)
     {
@@ -242,9 +242,9 @@ class PaymentMethod extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PaymentMethod the detached payment method
      *
-     * @return \Stripe\PaymentMethod the detached payment method
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function detach($params = null, $opts = null)
     {

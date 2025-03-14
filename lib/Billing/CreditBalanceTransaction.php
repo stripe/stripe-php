@@ -11,7 +11,7 @@ namespace Stripe\Billing;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|\Stripe\StripeObject $credit Credit details for this credit balance transaction. Only present if type is <code>credit</code>.
- * @property string|\Stripe\Billing\CreditGrant $credit_grant The credit grant associated with this credit balance transaction.
+ * @property CreditGrant|string $credit_grant The credit grant associated with this credit balance transaction.
  * @property null|\Stripe\StripeObject $debit Debit details for this credit balance transaction. Only present if type is <code>debit</code>.
  * @property int $effective_at The effective time of this credit balance transaction.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
@@ -31,9 +31,9 @@ class CreditBalanceTransaction extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<CreditBalanceTransaction> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Billing\CreditBalanceTransaction> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -48,9 +48,9 @@ class CreditBalanceTransaction extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditBalanceTransaction
      *
-     * @return \Stripe\Billing\CreditBalanceTransaction
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\QuoteService
  */
 final class QuoteServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class QuoteServiceTest extends \Stripe\TestCase
             '/v1/quotes'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Quote::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Quote::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -47,7 +48,7 @@ final class QuoteServiceTest extends \Stripe\TestCase
         $resource = $this->service->create([
             'customer' => 'cus_123',
         ]);
-        static::assertInstanceOf(\Stripe\Quote::class, $resource);
+        self::assertInstanceOf(\Stripe\Quote::class, $resource);
     }
 
     public function testRetrieve()
@@ -57,7 +58,7 @@ final class QuoteServiceTest extends \Stripe\TestCase
             '/v1/quotes/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Quote::class, $resource);
+        self::assertInstanceOf(\Stripe\Quote::class, $resource);
     }
 
     public function testUpdate()
@@ -69,7 +70,7 @@ final class QuoteServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Quote::class, $resource);
+        self::assertInstanceOf(\Stripe\Quote::class, $resource);
     }
 
     public function testFinalizeQuote()
@@ -79,7 +80,7 @@ final class QuoteServiceTest extends \Stripe\TestCase
             '/v1/quotes/' . self::TEST_RESOURCE_ID . '/finalize'
         );
         $resource = $this->service->finalizeQuote(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Quote::class, $resource);
+        self::assertInstanceOf(\Stripe\Quote::class, $resource);
     }
 
     public function testCancel()
@@ -89,7 +90,7 @@ final class QuoteServiceTest extends \Stripe\TestCase
             '/v1/quotes/' . self::TEST_RESOURCE_ID . '/cancel'
         );
         $resource = $this->service->cancel(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Quote::class, $resource);
+        self::assertInstanceOf(\Stripe\Quote::class, $resource);
     }
 
     public function testAccept()
@@ -99,7 +100,7 @@ final class QuoteServiceTest extends \Stripe\TestCase
             '/v1/quotes/' . self::TEST_RESOURCE_ID . '/cancel'
         );
         $resource = $this->service->cancel(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Quote::class, $resource);
+        self::assertInstanceOf(\Stripe\Quote::class, $resource);
     }
 
     public function testAllLines()
@@ -109,7 +110,7 @@ final class QuoteServiceTest extends \Stripe\TestCase
             '/v1/quotes/' . self::TEST_RESOURCE_ID . '/line_items'
         );
         $resources = $this->service->allLineItems(self::TEST_RESOURCE_ID);
-        static::compatAssertIsArray($resources->data);
+        self::compatAssertIsArray($resources->data);
     }
 
     public function testPdf()
@@ -119,9 +120,9 @@ final class QuoteServiceTest extends \Stripe\TestCase
             '/v1/quotes/' . self::TEST_RESOURCE_ID . '/pdf'
         );
         $output = '';
-        $resources = $this->service->pdf(self::TEST_RESOURCE_ID, function ($chunk) use (&$output) {
+        $resources = $this->service->pdf(self::TEST_RESOURCE_ID, static function ($chunk) use (&$output) {
             $output .= $chunk;
         });
-        static::assertSame('Stripe binary response', $output);
+        self::assertSame('Stripe binary response', $output);
     }
 }

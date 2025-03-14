@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Quote
  */
-final class QuoteTest extends \Stripe\TestCase
+final class QuoteTest extends TestCase
 {
     use TestHelper;
 
@@ -19,8 +20,8 @@ final class QuoteTest extends \Stripe\TestCase
             '/v1/quotes'
         );
         $resources = Quote::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Quote::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(Quote::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -30,7 +31,7 @@ final class QuoteTest extends \Stripe\TestCase
             '/v1/quotes/' . self::TEST_RESOURCE_ID
         );
         $resource = Quote::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Quote::class, $resource);
+        self::assertInstanceOf(Quote::class, $resource);
     }
 
     public function testIsCreatable()
@@ -46,7 +47,7 @@ final class QuoteTest extends \Stripe\TestCase
                 ['price' => 'price_xyz'],
             ],
         ]);
-        static::assertInstanceOf(\Stripe\Quote::class, $resource);
+        self::assertInstanceOf(Quote::class, $resource);
     }
 
     public function testIsSaveable()
@@ -58,7 +59,7 @@ final class QuoteTest extends \Stripe\TestCase
             '/v1/quotes/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\Quote::class, $resource);
+        self::assertInstanceOf(Quote::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -73,7 +74,7 @@ final class QuoteTest extends \Stripe\TestCase
                 'metadata' => ['key' => 'value'],
             ]
         );
-        static::assertInstanceOf(\Stripe\Quote::class, $resource);
+        self::assertInstanceOf(Quote::class, $resource);
     }
 
     public function testIsAcceptable()
@@ -84,7 +85,7 @@ final class QuoteTest extends \Stripe\TestCase
             '/v1/quotes/' . self::TEST_RESOURCE_ID . '/accept'
         );
         $resource->accept();
-        static::assertInstanceOf(\Stripe\Quote::class, $resource);
+        self::assertInstanceOf(Quote::class, $resource);
     }
 
     public function testIsCancelable()
@@ -95,7 +96,7 @@ final class QuoteTest extends \Stripe\TestCase
             '/v1/quotes/' . self::TEST_RESOURCE_ID . '/cancel'
         );
         $resource->cancel();
-        static::assertInstanceOf(\Stripe\Quote::class, $resource);
+        self::assertInstanceOf(Quote::class, $resource);
     }
 
     public function testIsFinalizable()
@@ -106,7 +107,7 @@ final class QuoteTest extends \Stripe\TestCase
             '/v1/quotes/' . self::TEST_RESOURCE_ID . '/finalize'
         );
         $resource->finalizeQuote();
-        static::assertInstanceOf(\Stripe\Quote::class, $resource);
+        self::assertInstanceOf(Quote::class, $resource);
     }
 
     public function testCanListLineItems()
@@ -116,7 +117,7 @@ final class QuoteTest extends \Stripe\TestCase
             '/v1/quotes/' . self::TEST_RESOURCE_ID . '/line_items'
         );
         $resources = Quote::allLineItems(self::TEST_RESOURCE_ID);
-        static::compatAssertIsArray($resources->data);
+        self::compatAssertIsArray($resources->data);
     }
 
     public function testCanPdf()
@@ -128,9 +129,9 @@ final class QuoteTest extends \Stripe\TestCase
             null
         );
         $output = '';
-        $resource->pdf(function ($chunk) use (&$output) {
+        $resource->pdf(static function ($chunk) use (&$output) {
             $output .= $chunk;
         });
-        static::assertSame('Stripe binary response', $output);
+        self::assertSame('Stripe binary response', $output);
     }
 }

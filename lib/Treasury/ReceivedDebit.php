@@ -22,7 +22,7 @@ namespace Stripe\Treasury;
  * @property string $network The network used for the ReceivedDebit.
  * @property null|\Stripe\StripeObject $reversal_details Details describing when a ReceivedDebit might be reversed.
  * @property string $status Status of the ReceivedDebit. ReceivedDebits are created with a status of either <code>succeeded</code> (approved) or <code>failed</code> (declined). The failure reason can be found under the <code>failure_code</code>.
- * @property null|string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
+ * @property null|string|Transaction $transaction The Transaction associated with this object.
  */
 class ReceivedDebit extends \Stripe\ApiResource
 {
@@ -47,9 +47,9 @@ class ReceivedDebit extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<ReceivedDebit> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Treasury\ReceivedDebit> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -65,9 +65,9 @@ class ReceivedDebit extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ReceivedDebit
      *
-     * @return \Stripe\Treasury\ReceivedDebit
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
