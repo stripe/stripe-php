@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Source
  */
-final class SourceTest extends \Stripe\TestCase
+final class SourceTest extends TestCase
 {
     use TestHelper;
 
@@ -19,7 +20,7 @@ final class SourceTest extends \Stripe\TestCase
             '/v1/sources/' . self::TEST_RESOURCE_ID
         );
         $resource = Source::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Source::class, $resource);
+        self::assertInstanceOf(Source::class, $resource);
     }
 
     public function testIsCreatable()
@@ -31,7 +32,7 @@ final class SourceTest extends \Stripe\TestCase
         $resource = Source::create([
             'type' => 'card',
         ]);
-        static::assertInstanceOf(\Stripe\Source::class, $resource);
+        self::assertInstanceOf(Source::class, $resource);
     }
 
     public function testIsSaveable()
@@ -43,7 +44,7 @@ final class SourceTest extends \Stripe\TestCase
             '/v1/sources/' . $resource->id
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\Source::class, $resource);
+        self::assertInstanceOf(Source::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -55,7 +56,7 @@ final class SourceTest extends \Stripe\TestCase
         $resource = Source::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Source::class, $resource);
+        self::assertInstanceOf(Source::class, $resource);
     }
 
     public function testCanSaveCardExpiryDate()
@@ -93,8 +94,8 @@ final class SourceTest extends \Stripe\TestCase
         $card->exp_year = 2022;
         $source->save();
 
-        static::assertSame(12, $source['card']['exp_month']);
-        static::assertSame(2022, $source['card']['exp_year']);
+        self::assertSame(12, $source['card']['exp_month']);
+        self::assertSame(2022, $source['card']['exp_year']);
     }
 
     public function testIsDetachableWhenAttached()
@@ -106,12 +107,12 @@ final class SourceTest extends \Stripe\TestCase
             '/v1/customers/cus_123/sources/' . $resource->id
         );
         $resource->detach();
-        static::assertInstanceOf(\Stripe\Source::class, $resource);
+        self::assertInstanceOf(Source::class, $resource);
     }
 
     public function testIsNotDetachableWhenUnattached()
     {
-        $this->expectException(\Stripe\Exception\UnexpectedValueException::class);
+        $this->expectException(Exception\UnexpectedValueException::class);
 
         $resource = Source::retrieve(self::TEST_RESOURCE_ID);
         $resource->detach();
@@ -124,8 +125,8 @@ final class SourceTest extends \Stripe\TestCase
             '/v1/sources/' . self::TEST_RESOURCE_ID . '/source_transactions'
         );
         $resources = Source::allSourceTransactions(self::TEST_RESOURCE_ID);
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(SourceTransaction::class, $resources->data[0]);
     }
 
     public function testCanListSourceTransactions()
@@ -135,8 +136,8 @@ final class SourceTest extends \Stripe\TestCase
             '/v1/sources/' . self::TEST_RESOURCE_ID . '/source_transactions'
         );
         $resources = Source::allSourceTransactions(self::TEST_RESOURCE_ID);
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(SourceTransaction::class, $resources->data[0]);
     }
 
     public function testCanVerify()
@@ -147,6 +148,6 @@ final class SourceTest extends \Stripe\TestCase
             '/v1/sources/' . $resource->id . '/verify'
         );
         $resource->verify(['values' => [32, 45]]);
-        static::assertInstanceOf(\Stripe\Source::class, $resource);
+        self::assertInstanceOf(Source::class, $resource);
     }
 }

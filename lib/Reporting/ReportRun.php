@@ -19,7 +19,7 @@ namespace Stripe\Reporting;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $error If something should go wrong during the run, a message about the failure (populated when <code>status=failed</code>).
  * @property bool $livemode <code>true</code> if the report is run on live mode data and <code>false</code> if it is run on test mode data.
- * @property (object{columns?: string[], connected_account?: string, currency?: string, interval_end?: int, interval_start?: int, payout?: string, reporting_category?: string, timezone?: string}&\Stripe\StripeObject&\stdClass) $parameters
+ * @property (object{columns?: string[], connected_account?: string, currency?: string, interval_end?: int, interval_start?: int, payout?: string, reporting_category?: string, timezone?: string}&\stdClass&\Stripe\StripeObject) $parameters
  * @property string $report_type The ID of the <a href="https://stripe.com/docs/reports/report-types">report type</a> to run, such as <code>&quot;balance.summary.1&quot;</code>.
  * @property null|\Stripe\File $result The file object representing the result of the report run (populated when <code>status=succeeded</code>).
  * @property string $status Status of this report run. This will be <code>pending</code> when the run is initially created. When the run finishes, this will be set to <code>succeeded</code> and the <code>result</code> field will be populated. Rarely, we may encounter an error, at which point this will be set to <code>failed</code> and the <code>error</code> field will be populated.
@@ -36,9 +36,9 @@ class ReportRun extends \Stripe\ApiResource
      * @param null|array{expand?: string[], parameters?: array{columns?: string[], connected_account?: string, currency?: string, interval_end?: int, interval_start?: int, payout?: string, reporting_category?: string, timezone?: string}, report_type: string} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ReportRun the created resource
      *
-     * @return \Stripe\Reporting\ReportRun the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -55,12 +55,12 @@ class ReportRun extends \Stripe\ApiResource
     /**
      * Returns a list of Report Runs, with the most recent appearing first.
      *
-     * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<ReportRun> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Reporting\ReportRun> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -75,9 +75,9 @@ class ReportRun extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ReportRun
      *
-     * @return \Stripe\Reporting\ReportRun
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

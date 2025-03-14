@@ -4,6 +4,7 @@ namespace Stripe\Util;
 
 /**
  * @phpstan-type RequestOptionsArray array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_context?: string, stripe_version?: string, api_base?: string }
+ *
  * @psalm-type RequestOptionsArray = array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_context?: string, stripe_version?: string, api_base?: string }
  */
 class RequestOptions
@@ -90,9 +91,9 @@ class RequestOptions
      * @param null|array|RequestOptions|string $options a key => value array
      * @param bool $strict when true, forbid string form and arbitrary keys in array form
      *
-     * @throws \Stripe\Exception\InvalidArgumentException
-     *
      * @return RequestOptions
+     *
+     * @throws \Stripe\Exception\InvalidArgumentException
      */
     public static function parse($options, $strict = false)
     {

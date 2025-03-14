@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\SetupIntentService
  */
 final class SetupIntentServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class SetupIntentServiceTest extends \Stripe\TestCase
             '/v1/setup_intents'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\SetupIntent::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\SetupIntent::class, $resources->data[0]);
     }
 
     public function testCancel()
@@ -45,7 +46,7 @@ final class SetupIntentServiceTest extends \Stripe\TestCase
             '/v1/setup_intents/' . self::TEST_RESOURCE_ID . '/cancel'
         );
         $resource = $this->service->cancel(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
+        self::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
     }
 
     public function testConfirm()
@@ -55,7 +56,7 @@ final class SetupIntentServiceTest extends \Stripe\TestCase
             '/v1/setup_intents/' . self::TEST_RESOURCE_ID . '/confirm'
         );
         $resource = $this->service->confirm(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
+        self::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
     }
 
     public function testCreate()
@@ -67,7 +68,7 @@ final class SetupIntentServiceTest extends \Stripe\TestCase
         $resource = $this->service->create([
             'payment_method_types' => ['card'],
         ]);
-        static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
+        self::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
     }
 
     public function testRetrieve()
@@ -77,7 +78,7 @@ final class SetupIntentServiceTest extends \Stripe\TestCase
             '/v1/setup_intents/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
+        self::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
     }
 
     public function testUpdate()
@@ -92,6 +93,6 @@ final class SetupIntentServiceTest extends \Stripe\TestCase
                 'metadata' => ['key' => 'value'],
             ]
         );
-        static::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
+        self::assertInstanceOf(\Stripe\SetupIntent::class, $resource);
     }
 }

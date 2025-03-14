@@ -4,13 +4,14 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\StripeClient
  */
-final class StripeClientTest extends \Stripe\TestCase
+final class StripeClientTest extends TestCase
 {
-    use \Stripe\TestHelper;
+    use TestHelper;
 
-    /** @var \Stripe\StripeClient */
+    /** @var StripeClient */
     private $client;
 
     /**
@@ -23,14 +24,14 @@ final class StripeClientTest extends \Stripe\TestCase
 
     public function testExposesPropertiesForServices()
     {
-        static::assertInstanceOf(\Stripe\Service\CouponService::class, $this->client->coupons);
-        static::assertInstanceOf(\Stripe\Service\Issuing\IssuingServiceFactory::class, $this->client->issuing);
-        static::assertInstanceOf(\Stripe\Service\Issuing\CardService::class, $this->client->issuing->cards);
+        self::assertInstanceOf(Service\CouponService::class, $this->client->coupons);
+        self::assertInstanceOf(Service\Issuing\IssuingServiceFactory::class, $this->client->issuing);
+        self::assertInstanceOf(Service\Issuing\CardService::class, $this->client->issuing->cards);
     }
 
     public function testListMethodReturnsPageableCollection()
     {
-        $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
+        $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
             ->getMock()
         ;
@@ -47,14 +48,14 @@ final class StripeClientTest extends \Stripe\TestCase
             ])
         ;
 
-        $cb = static::callback(function ($opts) {
+        $cb = self::callback(function ($opts) {
             $this->assertContains('Authorization: Bearer sk_test_client', $opts[\CURLOPT_HTTPHEADER]);
             $this->assertContains('Content-Type: application/json', $opts[\CURLOPT_HTTPHEADER]);
 
             return true;
         });
 
-        $curlClientStub->expects(static::exactly(2))
+        $curlClientStub->expects(self::exactly(2))
             ->method('executeRequestWithRetries')
             ->withConsecutive(
                 [$cb, MOCK_URL . '/v2/core/events?limit=2'],
@@ -70,14 +71,14 @@ final class StripeClientTest extends \Stripe\TestCase
         ]);
 
         $events = $client->v2->core->events->all(['limit' => 2]);
-        static::assertInstanceOf(\Stripe\V2\Collection::class, $events);
-        static::assertInstanceOf(\Stripe\Events\V1BillingMeterNoMeterFoundEvent::class, $events->data[0]);
+        self::assertInstanceOf(V2\Collection::class, $events);
+        self::assertInstanceOf(Events\V1BillingMeterNoMeterFoundEvent::class, $events->data[0]);
 
         $seen = [];
         foreach ($events->autoPagingIterator() as $event) {
             $seen[] = $event['id'];
         }
 
-        static::assertSame(['evnt_123', 'evnt_456', 'evnt_789'], $seen);
+        self::assertSame(['evnt_123', 'evnt_456', 'evnt_789'], $seen);
     }
 }

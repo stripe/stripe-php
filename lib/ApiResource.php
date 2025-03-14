@@ -11,7 +11,7 @@ abstract class ApiResource extends StripeObject
     use ApiOperations\Request;
 
     /**
-     * @return \Stripe\Util\Set A list of fields that can be their own type of
+     * @return Util\Set A list of fields that can be their own type of
      * API resource (say a nested card under an account for example), and if
      * that resource is set, it should be transmitted to the API on a create or
      * update. Doing so is not the default behavior because API resources
@@ -40,16 +40,16 @@ abstract class ApiResource extends StripeObject
     {
         parent::__set($k, $v);
         $v = $this->{$k};
-        if ((static::getSavedNestedResources()->includes($k))
+        if (static::getSavedNestedResources()->includes($k)
             && ($v instanceof ApiResource)) {
             $v->saveWithParent = true;
         }
     }
 
     /**
-     * @throws Exception\ApiErrorException
-     *
      * @return ApiResource the refreshed resource
+     *
+     * @throws Exception\ApiErrorException
      */
     public function refresh()
     {
@@ -93,9 +93,9 @@ abstract class ApiResource extends StripeObject
     /**
      * @param null|string $id the ID of the resource
      *
-     * @throws Exception\UnexpectedValueException if $id is null
-     *
      * @return string the instance endpoint URL for the given class
+     *
+     * @throws Exception\UnexpectedValueException if $id is null
      */
     public static function resourceUrl($id)
     {

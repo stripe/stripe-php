@@ -6,6 +6,7 @@ namespace Stripe\Service\Apps;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class SecretService extends \Stripe\Service\AbstractService
@@ -16,9 +17,9 @@ class SecretService extends \Stripe\Service\AbstractService
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, scope: array{type: string, user?: string}, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Apps\Secret>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -31,9 +32,9 @@ class SecretService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[], expires_at?: int, name: string, payload: string, scope: array{type: string, user?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Apps\Secret
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -46,9 +47,9 @@ class SecretService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[], name: string, scope: array{type: string, user?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Apps\Secret
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function deleteWhere($params = null, $opts = null)
     {
@@ -61,9 +62,9 @@ class SecretService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[], name: string, scope: array{type: string, user?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Apps\Secret
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function find($params = null, $opts = null)
     {

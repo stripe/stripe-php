@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\BalanceTransactionService
  */
 final class BalanceTransactionServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class BalanceTransactionServiceTest extends \Stripe\TestCase
             '/v1/balance_transactions'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\BalanceTransaction::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\BalanceTransaction::class, $resources->data[0]);
     }
 
     public function testRetrieve()
@@ -45,6 +46,6 @@ final class BalanceTransactionServiceTest extends \Stripe\TestCase
             '/v1/balance_transactions/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\BalanceTransaction::class, $resource);
+        self::assertInstanceOf(\Stripe\BalanceTransaction::class, $resource);
     }
 }

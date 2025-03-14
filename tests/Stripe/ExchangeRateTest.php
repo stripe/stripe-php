@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\ExchangeRate
  */
-final class ExchangeRateTest extends \Stripe\TestCase
+final class ExchangeRateTest extends TestCase
 {
     use TestHelper;
 
@@ -36,8 +37,8 @@ final class ExchangeRateTest extends \Stripe\TestCase
         );
 
         $resources = ExchangeRate::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\ExchangeRate::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(ExchangeRate::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -55,6 +56,6 @@ final class ExchangeRateTest extends \Stripe\TestCase
             ]
         );
         $resource = ExchangeRate::retrieve('usd');
-        static::assertInstanceOf(\Stripe\ExchangeRate::class, $resource);
+        self::assertInstanceOf(ExchangeRate::class, $resource);
     }
 }

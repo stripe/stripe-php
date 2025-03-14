@@ -4,6 +4,7 @@ namespace Stripe\Service\Reporting;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\Reporting\ReportTypeService
  */
 final class ReportTypeServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class ReportTypeServiceTest extends \Stripe\TestCase
             '/v1/reporting/report_types'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Reporting\ReportType::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Reporting\ReportType::class, $resources->data[0]);
     }
 
     public function testRetrieve()
@@ -45,6 +46,6 @@ final class ReportTypeServiceTest extends \Stripe\TestCase
             '/v1/reporting/report_types/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Reporting\ReportType::class, $resource);
+        self::assertInstanceOf(\Stripe\Reporting\ReportType::class, $resource);
     }
 }

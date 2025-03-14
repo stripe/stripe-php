@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\ChargeService
  */
 final class ChargeServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class ChargeServiceTest extends \Stripe\TestCase
             '/v1/charges'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Charge::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Charge::class, $resources->data[0]);
     }
 
     public function testSearch()
@@ -45,9 +46,9 @@ final class ChargeServiceTest extends \Stripe\TestCase
             '/v1/charges/search'
         );
         $resources = $this->service->search(['query' => 'currency:"USD"']);
-        static::compatAssertIsArray($resources->data);
-        static::assertSame(1, $resources->total_count);
-        static::assertInstanceOf(\Stripe\Charge::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertSame(1, $resources->total_count);
+        self::assertInstanceOf(\Stripe\Charge::class, $resources->data[0]);
     }
 
     public function testCapture()
@@ -57,7 +58,7 @@ final class ChargeServiceTest extends \Stripe\TestCase
             '/v1/charges/' . self::TEST_RESOURCE_ID . '/capture'
         );
         $resource = $this->service->capture(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Charge::class, $resource);
+        self::assertInstanceOf(\Stripe\Charge::class, $resource);
     }
 
     public function testCreate()
@@ -71,7 +72,7 @@ final class ChargeServiceTest extends \Stripe\TestCase
             'currency' => 'usd',
             'source' => 'tok_123',
         ]);
-        static::assertInstanceOf(\Stripe\Charge::class, $resource);
+        self::assertInstanceOf(\Stripe\Charge::class, $resource);
     }
 
     public function testRetrieve()
@@ -81,7 +82,7 @@ final class ChargeServiceTest extends \Stripe\TestCase
             '/v1/charges/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Charge::class, $resource);
+        self::assertInstanceOf(\Stripe\Charge::class, $resource);
     }
 
     public function testUpdate()
@@ -93,6 +94,6 @@ final class ChargeServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Charge::class, $resource);
+        self::assertInstanceOf(\Stripe\Charge::class, $resource);
     }
 }

@@ -4,6 +4,7 @@ namespace Stripe\Service\TestHelpers\Terminal;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\TestHelpers\Terminal\ReaderService
  */
 final class ReaderServiceTest extends \Stripe\TestCase
@@ -34,6 +35,6 @@ final class ReaderServiceTest extends \Stripe\TestCase
             '/v1/test_helpers/terminal/readers/' . self::TEST_RESOURCE_ID . '/present_payment_method'
         );
         $resource = $this->service->presentPaymentMethod(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
+        self::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
     }
 }

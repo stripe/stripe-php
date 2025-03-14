@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\StripeObject
  */
-final class StripeObjectTest extends \Stripe\TestCase
+final class StripeObjectTest extends TestCase
 {
     use TestHelper;
 
@@ -28,15 +29,15 @@ final class StripeObjectTest extends \Stripe\TestCase
         // private attributes.
 
         // This is used to invoke the `deepCopy` protected function
-        $this->deepCopyReflector = new \ReflectionMethod(\Stripe\StripeObject::class, 'deepCopy');
+        $this->deepCopyReflector = new \ReflectionMethod(StripeObject::class, 'deepCopy');
         $this->deepCopyReflector->setAccessible(true);
 
         // This is used to access the `_opts` protected variable
-        $this->optsReflector = new \ReflectionProperty(\Stripe\StripeObject::class, '_opts');
+        $this->optsReflector = new \ReflectionProperty(StripeObject::class, '_opts');
         $this->optsReflector->setAccessible(true);
 
         // This is used to access the `_retrieveOptions` protected variable
-        $this->retrieveOptionsReflector = new \ReflectionProperty(\Stripe\StripeObject::class, '_retrieveOptions');
+        $this->retrieveOptionsReflector = new \ReflectionProperty(StripeObject::class, '_retrieveOptions');
         $this->retrieveOptionsReflector->setAccessible(true);
     }
 
@@ -45,10 +46,10 @@ final class StripeObjectTest extends \Stripe\TestCase
         /** @var mixed $s */
         $s = new StripeObject();
         $s['foo'] = 'a';
-        static::assertSame($s['foo'], 'a');
-        static::assertTrue(isset($s['foo']));
+        self::assertSame($s['foo'], 'a');
+        self::assertTrue(isset($s['foo']));
         unset($s['foo']);
-        static::assertFalse(isset($s['foo']));
+        self::assertFalse(isset($s['foo']));
     }
 
     public function testNormalAccessorsSemantics()
@@ -56,10 +57,10 @@ final class StripeObjectTest extends \Stripe\TestCase
         /** @var mixed $s */
         $s = new StripeObject();
         $s->foo = 'a';
-        static::assertSame($s->foo, 'a');
-        static::assertTrue(isset($s->foo));
+        self::assertSame($s->foo, 'a');
+        self::assertTrue(isset($s->foo));
         $s->foo = null;
-        static::assertFalse(isset($s->foo));
+        self::assertFalse(isset($s->foo));
     }
 
     public function testArrayAccessorsMatchNormalAccessors()
@@ -67,26 +68,26 @@ final class StripeObjectTest extends \Stripe\TestCase
         /** @var mixed $s */
         $s = new StripeObject();
         $s->foo = 'a';
-        static::assertSame($s['foo'], 'a');
+        self::assertSame($s['foo'], 'a');
 
         $s['bar'] = 'b';
-        static::assertSame($s->bar, 'b');
+        self::assertSame($s->bar, 'b');
     }
 
     public function testCount()
     {
         /** @var mixed $s */
         $s = new StripeObject();
-        static::assertCount(0, $s);
+        self::assertCount(0, $s);
 
         $s['key1'] = 'value1';
-        static::assertCount(1, $s);
+        self::assertCount(1, $s);
 
         $s['key2'] = 'value2';
-        static::assertCount(2, $s);
+        self::assertCount(2, $s);
 
         unset($s['key1']);
-        static::assertCount(1, $s);
+        self::assertCount(1, $s);
     }
 
     public function testKeys()
@@ -94,7 +95,7 @@ final class StripeObjectTest extends \Stripe\TestCase
         /** @var mixed $s */
         $s = new StripeObject();
         $s->foo = 'bar';
-        static::assertSame($s->keys(), ['foo']);
+        self::assertSame($s->keys(), ['foo']);
     }
 
     public function testValues()
@@ -102,7 +103,7 @@ final class StripeObjectTest extends \Stripe\TestCase
         /** @var mixed $s */
         $s = new StripeObject();
         $s->foo = 'bar';
-        static::assertSame($s->values(), ['bar']);
+        self::assertSame($s->values(), ['bar']);
     }
 
     public function testToArray()
@@ -120,8 +121,8 @@ final class StripeObjectTest extends \Stripe\TestCase
 
         $converted = $s->toArray();
 
-        static::compatAssertIsArray($converted);
-        static::assertSame($array, $converted);
+        self::compatAssertIsArray($converted);
+        self::assertSame($array, $converted);
     }
 
     public function testToArrayRecursive()
@@ -145,7 +146,7 @@ final class StripeObjectTest extends \Stripe\TestCase
             'list' => [$nestedArray],
         ];
 
-        static::assertSame($expected, $obj->toArray());
+        self::assertSame($expected, $obj->toArray());
     }
 
     public function testNonexistentProperty()
@@ -156,10 +157,10 @@ final class StripeObjectTest extends \Stripe\TestCase
         try {
             /** @var mixed $s */
             $s = new StripeObject();
-            static::assertNull($s->nonexistent);
+            self::assertNull($s->nonexistent);
 
-            static::compatAssertMatchesRegularExpression(
-                '/Stripe Notice: Undefined property of Stripe\\\\StripeObject instance: nonexistent/',
+            self::compatAssertMatchesRegularExpression(
+                '/Stripe Notice: Undefined property of Stripe\\\StripeObject instance: nonexistent/',
                 \stream_get_contents($capture)
             );
         } finally {
@@ -172,7 +173,7 @@ final class StripeObjectTest extends \Stripe\TestCase
     {
         /** @var mixed $s */
         $s = new StripeObject();
-        static::assertNull($s['nonexistent']);
+        self::assertNull($s['nonexistent']);
     }
 
     public function testJsonEncode()
@@ -181,7 +182,7 @@ final class StripeObjectTest extends \Stripe\TestCase
         $s = new StripeObject();
         $s->foo = 'a';
 
-        static::assertSame('{"foo":"a"}', \json_encode($s));
+        self::assertSame('{"foo":"a"}', \json_encode($s));
     }
 
     public function testToString()
@@ -196,7 +197,7 @@ Stripe\StripeObject JSON: {
     "foo": "a"
 }
 EOS;
-        static::assertSame($expected, $string);
+        self::assertSame($expected, $string);
     }
 
     public function testReplaceNewNestedUpdatable()
@@ -205,9 +206,9 @@ EOS;
         $s = new StripeObject();
 
         $s->metadata = ['bar'];
-        static::assertSame($s->metadata, ['bar']);
+        self::assertSame($s->metadata, ['bar']);
         $s->metadata = ['baz', 'qux'];
-        static::assertSame($s->metadata, ['baz', 'qux']);
+        self::assertSame($s->metadata, ['baz', 'qux']);
     }
 
     public function testSetPermanentAttribute()
@@ -231,7 +232,7 @@ EOS;
     public function testSerializeParametersOnEmptyObject()
     {
         $obj = StripeObject::constructFrom([]);
-        static::assertSame([], $obj->serializeParameters());
+        self::assertSame([], $obj->serializeParameters());
     }
 
     public function testSerializeParametersOnNewObjectWithSubObject()
@@ -239,14 +240,14 @@ EOS;
         /** @var mixed $obj */
         $obj = new StripeObject();
         $obj->metadata = ['foo' => 'bar'];
-        static::assertSame(['metadata' => ['foo' => 'bar']], $obj->serializeParameters());
+        self::assertSame(['metadata' => ['foo' => 'bar']], $obj->serializeParameters());
     }
 
     public function testSerializeParametersOnBasicObject()
     {
         $obj = StripeObject::constructFrom(['foo' => null]);
         $obj->updateAttributes(['foo' => 'bar']);
-        static::assertSame(['foo' => 'bar'], $obj->serializeParameters());
+        self::assertSame(['foo' => 'bar'], $obj->serializeParameters());
     }
 
     public function testSerializeParametersOnMoreComplexObject()
@@ -259,7 +260,7 @@ EOS;
             ]),
         ]);
         $obj->foo->bar = 'newbar';
-        static::assertSame(['foo' => ['bar' => 'newbar']], $obj->serializeParameters());
+        self::assertSame(['foo' => ['bar' => 'newbar']], $obj->serializeParameters());
     }
 
     public function testSerializeParametersOnArray()
@@ -269,7 +270,7 @@ EOS;
             'foo' => null,
         ]);
         $obj->foo = ['new-value'];
-        static::assertSame(['foo' => ['new-value']], $obj->serializeParameters());
+        self::assertSame(['foo' => ['new-value']], $obj->serializeParameters());
     }
 
     public function testSerializeParametersOnArrayThatShortens()
@@ -279,7 +280,7 @@ EOS;
             'foo' => ['0-index', '1-index', '2-index'],
         ]);
         $obj->foo = ['new-value'];
-        static::assertSame(['foo' => ['new-value']], $obj->serializeParameters());
+        self::assertSame(['foo' => ['new-value']], $obj->serializeParameters());
     }
 
     public function testSerializeParametersOnArrayThatLengthens()
@@ -289,7 +290,7 @@ EOS;
             'foo' => ['0-index', '1-index', '2-index'],
         ]);
         $obj->foo = \array_fill(0, 4, 'new-value');
-        static::assertSame(['foo' => \array_fill(0, 4, 'new-value')], $obj->serializeParameters());
+        self::assertSame(['foo' => \array_fill(0, 4, 'new-value')], $obj->serializeParameters());
     }
 
     public function testSerializeParametersOnArrayOfHashes()
@@ -303,7 +304,7 @@ EOS;
         /** @var mixed $first */
         $first = $obj->foo[0];
         $first->bar = 'baz';
-        static::assertSame(['foo' => [['bar' => 'baz']]], $obj->serializeParameters());
+        self::assertSame(['foo' => [['bar' => 'baz']]], $obj->serializeParameters());
     }
 
     public function testSerializeParametersDoesNotIncludeUnchangedValues()
@@ -312,7 +313,7 @@ EOS;
         $obj = StripeObject::constructFrom([
             'foo' => null,
         ]);
-        static::assertSame([], $obj->serializeParameters());
+        self::assertSame([], $obj->serializeParameters());
     }
 
     public function testSerializeParametersOnUnchangedArray()
@@ -322,7 +323,7 @@ EOS;
             'foo' => ['0-index', '1-index', '2-index'],
         ]);
         $obj->foo = ['0-index', '1-index', '2-index'];
-        static::assertSame([], $obj->serializeParameters());
+        self::assertSame([], $obj->serializeParameters());
     }
 
     public function testSerializeParametersWithStripeObject()
@@ -332,7 +333,7 @@ EOS;
         $obj->metadata = StripeObject::constructFrom(['foo' => 'bar']);
 
         $serialized = $obj->serializeParameters();
-        static::assertSame(['foo' => 'bar'], $serialized['metadata']);
+        self::assertSame(['foo' => 'bar'], $serialized['metadata']);
     }
 
     public function testSerializeParametersOnReplacedStripeObject()
@@ -344,7 +345,7 @@ EOS;
         $obj->source = StripeObject::constructFrom(['baz' => 'foo']);
 
         $serialized = $obj->serializeParameters();
-        static::assertSame(['baz' => 'foo'], $serialized['source']);
+        self::assertSame(['baz' => 'foo'], $serialized['source']);
     }
 
     public function testSerializeParametersOnReplacedStripeObjectWhichIsMetadata()
@@ -356,7 +357,7 @@ EOS;
         $obj->metadata = StripeObject::constructFrom(['baz' => 'foo']);
 
         $serialized = $obj->serializeParameters();
-        static::assertSame(['bar' => '', 'baz' => 'foo'], $serialized['metadata']);
+        self::assertSame(['bar' => '', 'baz' => 'foo'], $serialized['metadata']);
     }
 
     public function testSerializeParametersOnArrayOfStripeObjects()
@@ -368,7 +369,7 @@ EOS;
         ];
 
         $serialized = $obj->serializeParameters();
-        static::assertSame([['foo' => 'bar']], $serialized['metadata']);
+        self::assertSame([['foo' => 'bar']], $serialized['metadata']);
     }
 
     public function testSerializeParametersOnSetApiResource()
@@ -382,7 +383,7 @@ EOS;
         $obj->customer = $customer;
 
         $serialized = $obj->serializeParameters();
-        static::assertSame(['customer' => $customer], $serialized);
+        self::assertSame(['customer' => $customer], $serialized);
     }
 
     public function testSerializeParametersOnNotSetApiResource()
@@ -391,7 +392,7 @@ EOS;
         $obj = StripeObject::constructFrom(['customer' => $customer]);
 
         $serialized = $obj->serializeParameters();
-        static::assertSame([], $serialized);
+        self::assertSame([], $serialized);
     }
 
     public function testSerializeParametersOnApiResourceFlaggedWithSaveWithParent()
@@ -402,7 +403,7 @@ EOS;
         $obj = StripeObject::constructFrom(['customer' => $customer]);
 
         $serialized = $obj->serializeParameters();
-        static::assertSame(['customer' => []], $serialized);
+        self::assertSame(['customer' => []], $serialized);
     }
 
     public function testSerializeParametersRaisesExceotionOnOtherEmbeddedApiResources()
@@ -418,15 +419,15 @@ EOS;
 
         try {
             $serialized = $obj->serializeParameters();
-            static::fail('Did not raise error');
+            self::fail('Did not raise error');
         } catch (\InvalidArgumentException $e) {
-            static::assertSame(
-                'Cannot save property `customer` containing an API resource of type Stripe\\Customer. ' .
-                "It doesn't appear to be persisted and is not marked as `saveWithParent`.",
+            self::assertSame(
+                'Cannot save property `customer` containing an API resource of type Stripe\Customer. '
+                . "It doesn't appear to be persisted and is not marked as `saveWithParent`.",
                 $e->getMessage()
             );
         } catch (\Exception $e) {
-            static::fail('Unexpected exception: ' . \get_class($e));
+            self::fail('Unexpected exception: ' . \get_class($e));
         }
     }
 
@@ -440,7 +441,7 @@ EOS;
         ]);
 
         $serialized = $obj->serializeParameters(true);
-        static::assertSame(['id' => 'id', 'metadata' => ['bar' => 'foo']], $serialized);
+        self::assertSame(['id' => 'id', 'metadata' => ['bar' => 'foo']], $serialized);
     }
 
     public function testDirty()
@@ -457,7 +458,7 @@ EOS;
         $obj->dirty();
 
         $serialized = $obj->serializeParameters();
-        static::assertSame(['id' => 'id', 'metadata' => ['bar' => 'foo']], $serialized);
+        self::assertSame(['id' => 'id', 'metadata' => ['bar' => 'foo']], $serialized);
     }
 
     public function testDeepCopy()
@@ -485,93 +486,93 @@ EOS;
 
         // we can't compare the hashes directly because they have embedded
         // objects which are different from each other
-        static::assertSame($values['id'], $copyValues['id']);
-        static::assertSame($values['name'], $copyValues['name']);
-        static::assertSame(\count($values['arr']), \count($copyValues['arr']));
+        self::assertSame($values['id'], $copyValues['id']);
+        self::assertSame($values['name'], $copyValues['name']);
+        self::assertSame(\count($values['arr']), \count($copyValues['arr']));
 
         // internal values of the copied StripeObject should be the same,
         // but the object itself should be new (hence the assertNotSame)
-        static::assertSame($values['arr'][0]['id'], $copyValues['arr'][0]['id']);
-        static::assertNotSame($values['arr'][0], $copyValues['arr'][0]);
+        self::assertSame($values['arr'][0]['id'], $copyValues['arr'][0]['id']);
+        self::assertNotSame($values['arr'][0], $copyValues['arr'][0]);
 
         // likewise, the Util\RequestOptions instance in _opts should have
         // copied values but be a new instance
-        static::assertSame(
+        self::assertSame(
             $this->optsReflector->getValue($values['arr'][0])->apiKey,
             $this->optsReflector->getValue($copyValues['arr'][0])->apiKey
         );
-        static::assertNotSame(
+        self::assertNotSame(
             $this->optsReflector->getValue($values['arr'][0]),
             $this->optsReflector->getValue($copyValues['arr'][0])
         );
 
         // scalars however, can be compared
-        static::assertSame($values['arr'][1], $copyValues['arr'][1]);
-        static::assertSame($values['arr'][2], $copyValues['arr'][2]);
+        self::assertSame($values['arr'][1], $copyValues['arr'][1]);
+        self::assertSame($values['arr'][2], $copyValues['arr'][2]);
 
         // and a similar story with the hash
-        static::assertSame($values['map']['0']['id'], $copyValues['map']['0']['id']);
-        static::assertNotSame($values['map']['0'], $copyValues['map']['0']);
-        static::assertNotSame(
+        self::assertSame($values['map']['0']['id'], $copyValues['map']['0']['id']);
+        self::assertNotSame($values['map']['0'], $copyValues['map']['0']);
+        self::assertNotSame(
             $this->optsReflector->getValue($values['arr'][0]),
             $this->optsReflector->getValue($copyValues['arr'][0])
         );
-        static::assertSame(
+        self::assertSame(
             $this->optsReflector->getValue($values['map']['0'])->apiKey,
             $this->optsReflector->getValue($copyValues['map']['0'])->apiKey
         );
-        static::assertNotSame(
+        self::assertNotSame(
             $this->optsReflector->getValue($values['map']['0']),
             $this->optsReflector->getValue($copyValues['map']['0'])
         );
-        static::assertSame($values['map']['1'], $copyValues['map']['1']);
-        static::assertSame($values['map']['2'], $copyValues['map']['2']);
+        self::assertSame($values['map']['1'], $copyValues['map']['1']);
+        self::assertSame($values['map']['2'], $copyValues['map']['2']);
     }
 
     public function testDeepCopyMaintainClass()
     {
         $charge = Charge::constructFrom(['id' => 1], null);
         $copyCharge = $this->deepCopyReflector->invoke(null, $charge);
-        static::assertSame(\get_class($charge), \get_class($copyCharge));
+        self::assertSame(\get_class($charge), \get_class($copyCharge));
     }
 
     public function testIsDeleted()
     {
         $obj = StripeObject::constructFrom([]);
-        static::assertFalse($obj->isDeleted());
+        self::assertFalse($obj->isDeleted());
 
         $obj = StripeObject::constructFrom(['deleted' => false]);
-        static::assertFalse($obj->isDeleted());
+        self::assertFalse($obj->isDeleted());
 
         $obj = StripeObject::constructFrom(['deleted' => true]);
-        static::assertTrue($obj->isDeleted());
+        self::assertTrue($obj->isDeleted());
     }
 
     public function testConstructorIdPassing()
     {
         $obj = new StripeObject(['id' => 'id_foo', 'other' => 'bar']);
-        static::assertSame('id_foo', $obj->id);
-        static::assertSame(['other' => 'bar'], $this->retrieveOptionsReflector->getValue($obj));
+        self::assertSame('id_foo', $obj->id);
+        self::assertSame(['other' => 'bar'], $this->retrieveOptionsReflector->getValue($obj));
 
         $obj = new StripeObject('id_foo');
-        static::assertSame('id_foo', $obj->id);
-        static::assertSame([], $this->retrieveOptionsReflector->getValue($obj));
+        self::assertSame('id_foo', $obj->id);
+        self::assertSame([], $this->retrieveOptionsReflector->getValue($obj));
 
         $obj = new StripeObject(['id' => 'id_foo']);
-        static::assertSame('id_foo', $obj->id);
-        static::assertSame([], $this->retrieveOptionsReflector->getValue($obj));
+        self::assertSame('id_foo', $obj->id);
+        self::assertSame([], $this->retrieveOptionsReflector->getValue($obj));
 
         $obj = new StripeObject(['id' => ['foo' => 'bar']]);
-        static::assertSame(['foo' => 'bar'], $obj->id);
-        static::assertSame([], $this->retrieveOptionsReflector->getValue($obj));
+        self::assertSame(['foo' => 'bar'], $obj->id);
+        self::assertSame([], $this->retrieveOptionsReflector->getValue($obj));
     }
 
     public function testConstructFromIdPassing()
     {
         $obj = StripeObject::constructFrom(['inner' => ['id' => ['foo' => 'bar']]]);
 
-        static::assertSame(['foo' => 'bar'], $obj['inner']->id->toArray());
-        static::assertSame([], $this->retrieveOptionsReflector->getValue($obj));
+        self::assertSame(['foo' => 'bar'], $obj['inner']->id->toArray());
+        self::assertSame([], $this->retrieveOptionsReflector->getValue($obj));
     }
 
     public function testDeserializeEmptyMetadata()
@@ -581,7 +582,7 @@ EOS;
             'metadata' => [],
         ]);
 
-        static::assertInstanceOf(\Stripe\StripeObject::class, $obj->metadata);
+        self::assertInstanceOf(StripeObject::class, $obj->metadata);
     }
 
     public function testDeserializeMetadataWithKeyNamedMetadata()
@@ -591,9 +592,9 @@ EOS;
             'metadata' => ['metadata' => 'value'],
         ]);
 
-        static::assertInstanceOf(\Stripe\StripeObject::class, $obj->metadata);
+        self::assertInstanceOf(StripeObject::class, $obj->metadata);
         /** @var mixed $inner */
         $inner = $obj->metadata;
-        static::assertSame('value', $inner->metadata);
+        self::assertSame('value', $inner->metadata);
     }
 }

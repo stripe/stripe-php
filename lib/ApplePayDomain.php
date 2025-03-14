@@ -21,9 +21,9 @@ class ApplePayDomain extends ApiResource
      * @param null|array{domain_name: string, expand?: string[]} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ApplePayDomain the created resource
      *
-     * @return \Stripe\ApplePayDomain the created resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -31,7 +31,7 @@ class ApplePayDomain extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -43,9 +43,9 @@ class ApplePayDomain extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ApplePayDomain the deleted resource
      *
-     * @return \Stripe\ApplePayDomain the deleted resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function delete($params = null, $opts = null)
     {
@@ -64,15 +64,15 @@ class ApplePayDomain extends ApiResource
      * @param null|array{domain_name?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<ApplePayDomain> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\ApplePayDomain> of ApiResources
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+        return static::_requestPage($url, Collection::class, $params, $opts);
     }
 
     /**
@@ -81,13 +81,13 @@ class ApplePayDomain extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ApplePayDomain
      *
-     * @return \Stripe\ApplePayDomain
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 

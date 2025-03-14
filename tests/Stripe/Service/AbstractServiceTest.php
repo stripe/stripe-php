@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\AbstractService
  */
 final class AbstractServiceTest extends \Stripe\TestCase
@@ -26,7 +27,7 @@ final class AbstractServiceTest extends \Stripe\TestCase
     {
         $this->client = new \Stripe\StripeClient(['api_key' => 'sk_test_123', 'api_base' => MOCK_URL]);
         // Testing with CouponService, because testing abstract classes is hard in PHP :/
-        $this->service = new \Stripe\Service\CouponService($this->client);
+        $this->service = new CouponService($this->client);
     }
 
     /**
@@ -34,7 +35,7 @@ final class AbstractServiceTest extends \Stripe\TestCase
      */
     public function setUpReflectors()
     {
-        $this->formatParamsReflector = new \ReflectionMethod(\Stripe\Service\AbstractService::class, 'formatParams');
+        $this->formatParamsReflector = new \ReflectionMethod(AbstractService::class, 'formatParams');
         $this->formatParamsReflector->setAccessible(true);
     }
 
@@ -73,22 +74,22 @@ final class AbstractServiceTest extends \Stripe\TestCase
     public function testFormatParams()
     {
         $result = $this->formatParamsReflector->invoke(null, ['foo' => null]);
-        static::assertTrue('' === $result['foo']);
-        static::assertTrue(null !== $result['foo']);
+        self::assertTrue('' === $result['foo']);
+        self::assertTrue(null !== $result['foo']);
 
         $result = $this->formatParamsReflector->invoke(null, ['foo' => ['bar' => null, 'baz' => 1, 'nest' => ['triplynestednull' => null, 'triplynestednonnull' => 1]]]);
-        static::assertTrue('' === $result['foo']['bar']);
-        static::assertTrue(null !== $result['foo']['bar']);
-        static::assertTrue(1 === $result['foo']['baz']);
-        static::assertTrue('' === $result['foo']['nest']['triplynestednull']);
-        static::assertTrue(1 === $result['foo']['nest']['triplynestednonnull']);
+        self::assertTrue('' === $result['foo']['bar']);
+        self::assertTrue(null !== $result['foo']['bar']);
+        self::assertTrue(1 === $result['foo']['baz']);
+        self::assertTrue('' === $result['foo']['nest']['triplynestednull']);
+        self::assertTrue(1 === $result['foo']['nest']['triplynestednonnull']);
 
         $result = $this->formatParamsReflector->invoke(null, ['foo' => ['zero', null, null, 'three'], 'toplevelnull' => null, 'toplevelnonnull' => 4]);
-        static::assertTrue('zero' === $result['foo'][0]);
-        static::assertTrue('' === $result['foo'][1]);
-        static::assertTrue('' === $result['foo'][2]);
-        static::assertTrue('three' === $result['foo'][3]);
-        static::assertTrue('' === $result['toplevelnull']);
-        static::assertTrue(4 === $result['toplevelnonnull']);
+        self::assertTrue('zero' === $result['foo'][0]);
+        self::assertTrue('' === $result['foo'][1]);
+        self::assertTrue('' === $result['foo'][2]);
+        self::assertTrue('three' === $result['foo'][3]);
+        self::assertTrue('' === $result['toplevelnull']);
+        self::assertTrue(4 === $result['toplevelnonnull']);
     }
 }

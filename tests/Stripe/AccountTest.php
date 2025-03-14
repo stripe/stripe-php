@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Account
  */
-final class AccountTest extends \Stripe\TestCase
+final class AccountTest extends TestCase
 {
     use TestHelper;
 
@@ -22,8 +23,8 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts'
         );
         $resources = Account::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Account::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(Account::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -33,7 +34,7 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID
         );
         $resource = Account::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Account::class, $resource);
+        self::assertInstanceOf(Account::class, $resource);
     }
 
     public function testIsRetrievableWithoutId()
@@ -43,7 +44,7 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/account'
         );
         $resource = Account::retrieve();
-        static::assertInstanceOf(\Stripe\Account::class, $resource);
+        self::assertInstanceOf(Account::class, $resource);
     }
 
     public function testIsCreatable()
@@ -53,7 +54,7 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts'
         );
         $resource = Account::create(['type' => 'custom']);
-        static::assertInstanceOf(\Stripe\Account::class, $resource);
+        self::assertInstanceOf(Account::class, $resource);
     }
 
     public function testIsSaveable()
@@ -65,7 +66,7 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts/' . $resource->id
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\Account::class, $resource);
+        self::assertInstanceOf(Account::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -77,7 +78,7 @@ final class AccountTest extends \Stripe\TestCase
         $resource = Account::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Account::class, $resource);
+        self::assertInstanceOf(Account::class, $resource);
     }
 
     public function testIsDeletable()
@@ -88,7 +89,7 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts/' . $resource->id
         );
         $resource->delete();
-        static::assertInstanceOf(\Stripe\Account::class, $resource);
+        self::assertInstanceOf(Account::class, $resource);
     }
 
     public function testIsRejectable()
@@ -99,8 +100,8 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts/' . $account->id . '/reject'
         );
         $resource = $account->reject(['reason' => 'fraud']);
-        static::assertInstanceOf(\Stripe\Account::class, $resource);
-        static::assertSame($resource, $account);
+        self::assertInstanceOf(Account::class, $resource);
+        self::assertSame($resource, $account);
     }
 
     public function testIsDeauthorizable()
@@ -132,8 +133,8 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts/' . $account->id . '/persons'
         );
         $persons = $account->allPersons(self::TEST_RESOURCE_ID);
-        static::compatAssertIsArray($persons->data);
-        static::assertInstanceOf(\Stripe\Person::class, $persons->data[0]);
+        self::compatAssertIsArray($persons->data);
+        self::assertInstanceOf(Person::class, $persons->data[0]);
     }
 
     public function testCanRetrieveCapability()
@@ -143,7 +144,7 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/capabilities/' . self::TEST_CAPABILITY_ID
         );
         $resource = Account::retrieveCapability(self::TEST_RESOURCE_ID, self::TEST_CAPABILITY_ID);
-        static::assertInstanceOf(\Stripe\Capability::class, $resource);
+        self::assertInstanceOf(Capability::class, $resource);
     }
 
     public function testCanUpdateCapability()
@@ -155,7 +156,7 @@ final class AccountTest extends \Stripe\TestCase
         $resource = Account::updateCapability(self::TEST_RESOURCE_ID, self::TEST_CAPABILITY_ID, [
             'requested' => true,
         ]);
-        static::assertInstanceOf(\Stripe\Capability::class, $resource);
+        self::assertInstanceOf(Capability::class, $resource);
     }
 
     public function testCanListCapabilities()
@@ -165,7 +166,7 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/capabilities'
         );
         $resources = Account::allCapabilities(self::TEST_RESOURCE_ID);
-        static::compatAssertIsArray($resources->data);
+        self::compatAssertIsArray($resources->data);
     }
 
     public function testCanCreateExternalAccount()
@@ -177,7 +178,7 @@ final class AccountTest extends \Stripe\TestCase
         $resource = Account::createExternalAccount(self::TEST_RESOURCE_ID, [
             'external_account' => 'btok_123',
         ]);
-        static::assertInstanceOf(\Stripe\BankAccount::class, $resource);
+        self::assertInstanceOf(BankAccount::class, $resource);
     }
 
     public function testCanRetrieveExternalAccount()
@@ -187,7 +188,7 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts/' . self::TEST_EXTERNALACCOUNT_ID
         );
         $resource = Account::retrieveExternalAccount(self::TEST_RESOURCE_ID, self::TEST_EXTERNALACCOUNT_ID);
-        static::assertInstanceOf(\Stripe\BankAccount::class, $resource);
+        self::assertInstanceOf(BankAccount::class, $resource);
     }
 
     public function testCanUpdateExternalAccount()
@@ -199,7 +200,7 @@ final class AccountTest extends \Stripe\TestCase
         $resource = Account::updateExternalAccount(self::TEST_RESOURCE_ID, self::TEST_EXTERNALACCOUNT_ID, [
             'name' => 'name',
         ]);
-        static::assertInstanceOf(\Stripe\BankAccount::class, $resource);
+        self::assertInstanceOf(BankAccount::class, $resource);
     }
 
     public function testCanDeleteExternalAccount()
@@ -218,7 +219,7 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts'
         );
         $resources = Account::allExternalAccounts(self::TEST_RESOURCE_ID);
-        static::compatAssertIsArray($resources->data);
+        self::compatAssertIsArray($resources->data);
     }
 
     public function testCanCreateLoginLink()
@@ -228,7 +229,7 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/login_links'
         );
         $resource = Account::createLoginLink(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\LoginLink::class, $resource);
+        self::assertInstanceOf(LoginLink::class, $resource);
     }
 
     public function testCanCreatePerson()
@@ -244,7 +245,7 @@ final class AccountTest extends \Stripe\TestCase
                 'year' => 1980,
             ],
         ]);
-        static::assertInstanceOf(\Stripe\Person::class, $resource);
+        self::assertInstanceOf(Person::class, $resource);
     }
 
     public function testCanRetrievePerson()
@@ -254,7 +255,7 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons/' . self::TEST_PERSON_ID
         );
         $resource = Account::retrievePerson(self::TEST_RESOURCE_ID, self::TEST_PERSON_ID);
-        static::assertInstanceOf(\Stripe\Person::class, $resource);
+        self::assertInstanceOf(Person::class, $resource);
     }
 
     public function testCanUpdatePerson()
@@ -266,7 +267,7 @@ final class AccountTest extends \Stripe\TestCase
         $resource = Account::updatePerson(self::TEST_RESOURCE_ID, self::TEST_PERSON_ID, [
             'first_name' => 'First name',
         ]);
-        static::assertInstanceOf(\Stripe\Person::class, $resource);
+        self::assertInstanceOf(Person::class, $resource);
     }
 
     public function testCanDeletePerson()
@@ -276,7 +277,7 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons/' . self::TEST_PERSON_ID
         );
         $resource = Account::deletePerson(self::TEST_RESOURCE_ID, self::TEST_PERSON_ID);
-        static::assertInstanceOf(\Stripe\Person::class, $resource);
+        self::assertInstanceOf(Person::class, $resource);
     }
 
     public function testCanListPersons()
@@ -286,7 +287,7 @@ final class AccountTest extends \Stripe\TestCase
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons'
         );
         $resources = Account::allPersons(self::TEST_RESOURCE_ID);
-        static::compatAssertIsArray($resources->data);
+        self::compatAssertIsArray($resources->data);
     }
 
     // TODO (MAJOR): Remove legal_entity/additional_owners logic.
@@ -310,7 +311,7 @@ final class AccountTest extends \Stripe\TestCase
                 ],
             ],
         ];
-        static::assertSame($expected, $obj->serializeParameters());
+        self::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeAddAdditionalOwners()
@@ -333,7 +334,7 @@ final class AccountTest extends \Stripe\TestCase
                 ],
             ],
         ];
-        static::assertSame($expected, $obj->serializeParameters());
+        self::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializePartiallyChangedAdditionalOwners()
@@ -356,7 +357,7 @@ final class AccountTest extends \Stripe\TestCase
                 ],
             ],
         ];
-        static::assertSame($expected, $obj->serializeParameters());
+        self::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeUnchangedAdditionalOwners()
@@ -376,7 +377,7 @@ final class AccountTest extends \Stripe\TestCase
                 'additional_owners' => [],
             ],
         ];
-        static::assertSame($expected, $obj->serializeParameters());
+        self::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeUnsetAdditionalOwners()
@@ -399,7 +400,7 @@ final class AccountTest extends \Stripe\TestCase
                 'additional_owners' => '',
             ],
         ];
-        static::assertSame($expected, $obj->serializeParameters());
+        self::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeAdditionalOwnersDeletedItem()
@@ -430,7 +431,7 @@ final class AccountTest extends \Stripe\TestCase
         $expected = [
             'external_account' => 'btok_123',
         ];
-        static::assertSame($expected, $obj->serializeParameters());
+        self::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeExternalAccountHash()
@@ -455,7 +456,7 @@ final class AccountTest extends \Stripe\TestCase
                 'currency' => 'usd',
             ],
         ];
-        static::assertSame($expected, $obj->serializeParameters());
+        self::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeBankAccountString()
@@ -468,7 +469,7 @@ final class AccountTest extends \Stripe\TestCase
         $expected = [
             'bank_account' => 'btok_123',
         ];
-        static::assertSame($expected, $obj->serializeParameters());
+        self::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeBankAccountHash()
@@ -493,24 +494,24 @@ final class AccountTest extends \Stripe\TestCase
                 'currency' => 'usd',
             ],
         ];
-        static::assertSame($expected, $obj->serializeParameters());
+        self::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeNewIndividual()
     {
-        /** @var \Stripe\Account $obj */
+        /** @var Account $obj */
         $obj = Util\Util::convertToStripeObject([
             'object' => 'account',
         ], null);
         $obj->individual = ['first_name' => 'Jane'];
 
         $expected = ['individual' => ['first_name' => 'Jane']];
-        static::assertSame($expected, $obj->serializeParameters());
+        self::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializePartiallyChangedIndividual()
     {
-        /** @var \Stripe\Account $obj */
+        /** @var Account $obj */
         $obj = Util\Util::convertToStripeObject([
             'object' => 'account',
             'individual' => Util\Util::convertToStripeObject([
@@ -521,7 +522,7 @@ final class AccountTest extends \Stripe\TestCase
         $obj->individual = ['first_name' => 'Jane'];
 
         $expected = ['individual' => ['first_name' => 'Jane']];
-        static::assertSame($expected, $obj->serializeParameters());
+        self::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeUnchangedIndividual()
@@ -535,12 +536,12 @@ final class AccountTest extends \Stripe\TestCase
         ], null);
 
         $expected = ['individual' => []];
-        static::assertSame($expected, $obj->serializeParameters());
+        self::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeUnsetIndividual()
     {
-        /** @var \Stripe\Account $obj */
+        /** @var Account $obj */
         $obj = Util\Util::convertToStripeObject([
             'object' => 'account',
             'individual' => Util\Util::convertToStripeObject([
@@ -551,6 +552,6 @@ final class AccountTest extends \Stripe\TestCase
         $obj->individual = null;
 
         $expected = ['individual' => ''];
-        static::assertSame($expected, $obj->serializeParameters());
+        self::assertSame($expected, $obj->serializeParameters());
     }
 }

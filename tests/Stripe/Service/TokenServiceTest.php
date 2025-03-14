@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\TokenService
  */
 final class TokenServiceTest extends \Stripe\TestCase
@@ -34,7 +35,7 @@ final class TokenServiceTest extends \Stripe\TestCase
             '/v1/tokens'
         );
         $resource = $this->service->create(['card' => 'tok_visa']);
-        static::assertInstanceOf(\Stripe\Token::class, $resource);
+        self::assertInstanceOf(\Stripe\Token::class, $resource);
     }
 
     public function testRetrieve()
@@ -44,6 +45,6 @@ final class TokenServiceTest extends \Stripe\TestCase
             '/v1/tokens/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Token::class, $resource);
+        self::assertInstanceOf(\Stripe\Token::class, $resource);
     }
 }

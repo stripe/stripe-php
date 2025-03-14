@@ -4,6 +4,7 @@ namespace Stripe\Tax;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Terminal\ConnectionToken
  */
 final class SettingsTest extends \Stripe\TestCase
@@ -21,6 +22,6 @@ final class SettingsTest extends \Stripe\TestCase
                 'tax_behavior' => 'exclusive',
             ],
         ]);
-        static::assertInstanceOf(\Stripe\Tax\Settings::class, $resource);
+        self::assertInstanceOf(Settings::class, $resource);
     }
 }

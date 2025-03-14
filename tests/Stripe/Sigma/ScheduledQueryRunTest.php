@@ -4,6 +4,7 @@ namespace Stripe\Sigma;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Sigma\ScheduledQueryRun
  */
 final class ScheduledQueryRunTest extends \Stripe\TestCase
@@ -15,13 +16,13 @@ final class ScheduledQueryRunTest extends \Stripe\TestCase
     public function testIsListable()
     {
         $resources = ScheduledQueryRun::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Sigma\ScheduledQueryRun::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(ScheduledQueryRun::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
     {
         $resource = ScheduledQueryRun::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Sigma\ScheduledQueryRun::class, $resource);
+        self::assertInstanceOf(ScheduledQueryRun::class, $resource);
     }
 }

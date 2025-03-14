@@ -4,6 +4,4 @@
 
 namespace Stripe\Exception;
 
-class TemporarySessionExpiredException extends ApiErrorException
-{
-}
+class TemporarySessionExpiredException extends ApiErrorException {}

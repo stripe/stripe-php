@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\TransferService
  */
 final class TransferServiceTest extends \Stripe\TestCase
@@ -35,8 +36,8 @@ final class TransferServiceTest extends \Stripe\TestCase
             '/v1/transfers'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Transfer::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Transfer::class, $resources->data[0]);
     }
 
     public function testAllReversals()
@@ -46,8 +47,8 @@ final class TransferServiceTest extends \Stripe\TestCase
             '/v1/transfers/' . self::TEST_RESOURCE_ID . '/reversals'
         );
         $resources = $this->service->allReversals(self::TEST_RESOURCE_ID);
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\TransferReversal::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\TransferReversal::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -61,7 +62,7 @@ final class TransferServiceTest extends \Stripe\TestCase
             'currency' => 'usd',
             'destination' => 'acct_123',
         ]);
-        static::assertInstanceOf(\Stripe\Transfer::class, $resource);
+        self::assertInstanceOf(\Stripe\Transfer::class, $resource);
     }
 
     public function testCreateReversal()
@@ -71,7 +72,7 @@ final class TransferServiceTest extends \Stripe\TestCase
             '/v1/transfers/' . self::TEST_RESOURCE_ID . '/reversals'
         );
         $resource = $this->service->createReversal(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\TransferReversal::class, $resource);
+        self::assertInstanceOf(\Stripe\TransferReversal::class, $resource);
     }
 
     public function testRetrieve()
@@ -81,7 +82,7 @@ final class TransferServiceTest extends \Stripe\TestCase
             '/v1/transfers/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Transfer::class, $resource);
+        self::assertInstanceOf(\Stripe\Transfer::class, $resource);
     }
 
     public function testRetrieveReversal()
@@ -91,7 +92,7 @@ final class TransferServiceTest extends \Stripe\TestCase
             '/v1/transfers/' . self::TEST_RESOURCE_ID . '/reversals/' . self::TEST_REVERSAL_ID
         );
         $resource = $this->service->retrieveReversal(self::TEST_RESOURCE_ID, self::TEST_REVERSAL_ID);
-        static::assertInstanceOf(\Stripe\TransferReversal::class, $resource);
+        self::assertInstanceOf(\Stripe\TransferReversal::class, $resource);
     }
 
     public function testUpdate()
@@ -103,7 +104,7 @@ final class TransferServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Transfer::class, $resource);
+        self::assertInstanceOf(\Stripe\Transfer::class, $resource);
     }
 
     public function testUpdateReversal()
@@ -119,6 +120,6 @@ final class TransferServiceTest extends \Stripe\TestCase
                 'metadata' => ['key' => 'value'],
             ]
         );
-        static::assertInstanceOf(\Stripe\TransferReversal::class, $resource);
+        self::assertInstanceOf(\Stripe\TransferReversal::class, $resource);
     }
 }

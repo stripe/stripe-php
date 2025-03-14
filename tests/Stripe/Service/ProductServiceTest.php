@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\ProductService
  */
 final class ProductServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class ProductServiceTest extends \Stripe\TestCase
             '/v1/products'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Product::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Product::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -47,7 +48,7 @@ final class ProductServiceTest extends \Stripe\TestCase
         $resource = $this->service->create([
             'name' => 'name',
         ]);
-        static::assertInstanceOf(\Stripe\Product::class, $resource);
+        self::assertInstanceOf(\Stripe\Product::class, $resource);
     }
 
     public function testDelete()
@@ -57,7 +58,7 @@ final class ProductServiceTest extends \Stripe\TestCase
             '/v1/products/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->delete(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Product::class, $resource);
+        self::assertInstanceOf(\Stripe\Product::class, $resource);
     }
 
     public function testRetrieve()
@@ -67,7 +68,7 @@ final class ProductServiceTest extends \Stripe\TestCase
             '/v1/products/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Product::class, $resource);
+        self::assertInstanceOf(\Stripe\Product::class, $resource);
     }
 
     public function testUpdate()
@@ -79,6 +80,6 @@ final class ProductServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Product::class, $resource);
+        self::assertInstanceOf(\Stripe\Product::class, $resource);
     }
 }

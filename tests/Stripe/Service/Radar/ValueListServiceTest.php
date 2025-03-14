@@ -4,6 +4,7 @@ namespace Stripe\Service\Radar;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\Radar\ValueListService
  */
 final class ValueListServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class ValueListServiceTest extends \Stripe\TestCase
             '/v1/radar/value_lists'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Radar\ValueList::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Radar\ValueList::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -48,7 +49,7 @@ final class ValueListServiceTest extends \Stripe\TestCase
             'alias' => 'alias',
             'name' => 'name',
         ]);
-        static::assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
+        self::assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
     }
 
     public function testDelete()
@@ -58,8 +59,8 @@ final class ValueListServiceTest extends \Stripe\TestCase
             '/v1/radar/value_lists/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->delete(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
-        static::assertTrue($resource->isDeleted());
+        self::assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
+        self::assertTrue($resource->isDeleted());
     }
 
     public function testRetrieve()
@@ -69,7 +70,7 @@ final class ValueListServiceTest extends \Stripe\TestCase
             '/v1/radar/value_lists/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
+        self::assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
     }
 
     public function testUpdate()
@@ -81,6 +82,6 @@ final class ValueListServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
+        self::assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
     }
 }

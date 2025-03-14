@@ -4,6 +4,7 @@ namespace Stripe\Exception;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Exception\ApiErrorException
  */
 final class ApiErrorExceptionTest extends \Stripe\TestCase
@@ -30,21 +31,21 @@ final class ApiErrorExceptionTest extends \Stripe\TestCase
     public function testGetters()
     {
         $e = $this->createFixture();
-        static::assertSame(200, $e->getHttpStatus());
-        static::assertSame('{"error": {"code": "some_code"}}', $e->getHttpBody());
-        static::assertSame(['error' => ['code' => 'some_code']], $e->getJsonBody());
-        static::assertSame('Some Value', $e->getHttpHeaders()['Some-Header']);
-        static::assertSame('req_test', $e->getRequestId());
-        static::assertSame('some_code', $e->getStripeCode());
-        static::assertNotNull($e->getError());
-        static::assertSame('some_code', $e->getError()->code);
+        self::assertSame(200, $e->getHttpStatus());
+        self::assertSame('{"error": {"code": "some_code"}}', $e->getHttpBody());
+        self::assertSame(['error' => ['code' => 'some_code']], $e->getJsonBody());
+        self::assertSame('Some Value', $e->getHttpHeaders()['Some-Header']);
+        self::assertSame('req_test', $e->getRequestId());
+        self::assertSame('some_code', $e->getStripeCode());
+        self::assertNotNull($e->getError());
+        self::assertSame('some_code', $e->getError()->code);
     }
 
     public function testToString()
     {
         $e = $this->createFixture();
-        static::compatAssertStringContainsString('(Request req_test)', (string) $e);
-        static::compatAssertStringContainsString('Error sending request to Stripe', (string) $e);
-        static::compatAssertStringContainsString('Stack trace:', (string) $e);
+        self::compatAssertStringContainsString('(Request req_test)', (string) $e);
+        self::compatAssertStringContainsString('Error sending request to Stripe', (string) $e);
+        self::compatAssertStringContainsString('Stack trace:', (string) $e);
     }
 }

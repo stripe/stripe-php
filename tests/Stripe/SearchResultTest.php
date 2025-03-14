@@ -4,13 +4,14 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\SearchResult
  */
-final class SearchResultTest extends \Stripe\TestCase
+final class SearchResultTest extends TestCase
 {
     use TestHelper;
 
-    /** @var \Stripe\SearchResult */
+    /** @var SearchResult */
     private $fixture;
 
     /**
@@ -28,8 +29,8 @@ final class SearchResultTest extends \Stripe\TestCase
 
     public function testOffsetGetNumericIndex()
     {
-        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
-        $this->compatExpectExceptionMessageMatches('/You tried to access the \\d index/');
+        $this->expectException(Exception\InvalidArgumentException::class);
+        $this->compatExpectExceptionMessageMatches('/You tried to access the \d index/');
 
         $this->fixture[0];
     }
@@ -59,12 +60,12 @@ final class SearchResultTest extends \Stripe\TestCase
         $SearchResult = SearchResult::constructFrom([
             'data' => [['id' => '1']],
         ]);
-        static::assertCount(1, $SearchResult);
+        self::assertCount(1, $SearchResult);
 
         $SearchResult = SearchResult::constructFrom([
             'data' => [['id' => '1'], ['id' => '2'], ['id' => '3']],
         ]);
-        static::assertCount(3, $SearchResult);
+        self::assertCount(3, $SearchResult);
     }
 
     public function testCanIterate()
@@ -81,7 +82,7 @@ final class SearchResultTest extends \Stripe\TestCase
             $seen[] = $item['id'];
         }
 
-        static::assertSame(['1', '2', '3'], $seen);
+        self::assertSame(['1', '2', '3'], $seen);
     }
 
     public function testSupportsIteratorToArray()
@@ -91,7 +92,7 @@ final class SearchResultTest extends \Stripe\TestCase
             $seen[] = $item['id'];
         }
 
-        static::assertSame(['1'], $seen);
+        self::assertSame(['1'], $seen);
     }
 
     public function testProvidesAutoPagingIterator()
@@ -116,7 +117,7 @@ final class SearchResultTest extends \Stripe\TestCase
             $seen[] = $item['id'];
         }
 
-        static::assertSame(['1', '2', '3'], $seen);
+        self::assertSame(['1', '2', '3'], $seen);
     }
 
     public function testAutoPagingIteratorReusesFilters()
@@ -148,7 +149,7 @@ final class SearchResultTest extends \Stripe\TestCase
             $seen[] = $item['id'];
         }
 
-        static::assertSame(['1', '2', '3'], $seen);
+        self::assertSame(['1', '2', '3'], $seen);
     }
 
     public function testAutoPagingIteratorSupportsIteratorToArray()
@@ -173,22 +174,22 @@ final class SearchResultTest extends \Stripe\TestCase
             $seen[] = $item['id'];
         }
 
-        static::assertSame(['1', '2', '3'], $seen);
+        self::assertSame(['1', '2', '3'], $seen);
     }
 
     public function testEmptySearchResult()
     {
         $emptySearchResult = SearchResult::emptySearchResult();
-        static::assertSame([], $emptySearchResult->data);
+        self::assertSame([], $emptySearchResult->data);
     }
 
     public function testIsEmpty()
     {
         $empty = SearchResult::constructFrom(['data' => []]);
-        static::assertTrue($empty->isEmpty());
+        self::assertTrue($empty->isEmpty());
 
         $notEmpty = SearchResult::constructFrom(['data' => [['id' => '1']]]);
-        static::assertFalse($notEmpty->isEmpty());
+        self::assertFalse($notEmpty->isEmpty());
     }
 
     public function testNextPage()
@@ -213,7 +214,7 @@ final class SearchResultTest extends \Stripe\TestCase
         foreach ($nextPage->data as $element) {
             $ids[] = $element['id'];
         }
-        static::assertSame(['2', '3'], $ids);
+        self::assertSame(['2', '3'], $ids);
     }
 
     public function testNextPageReusesFilters()
@@ -245,7 +246,7 @@ final class SearchResultTest extends \Stripe\TestCase
         foreach ($nextPage->data as $element) {
             $ids[] = $element['id'];
         }
-        static::assertSame(['2', '3'], $ids);
+        self::assertSame(['2', '3'], $ids);
     }
 
     public function testFirst()
@@ -257,7 +258,7 @@ final class SearchResultTest extends \Stripe\TestCase
                 ['content' => 'last'],
             ],
         ]);
-        static::assertSame('first', $SearchResult->first()['content']);
+        self::assertSame('first', $SearchResult->first()['content']);
     }
 
     public function testLast()
@@ -269,6 +270,6 @@ final class SearchResultTest extends \Stripe\TestCase
                 ['content' => 'last'],
             ],
         ]);
-        static::assertSame('last', $SearchResult->last()['content']);
+        self::assertSame('last', $SearchResult->last()['content']);
     }
 }

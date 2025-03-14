@@ -14,9 +14,9 @@ trait SingletonRetrieve
      * @param null|array|string $opts the ID of the API resource to retrieve,
      *     or an options array containing an `id` key
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return static
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($opts = null)
     {

@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\ReviewService
  */
 final class ReviewServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class ReviewServiceTest extends \Stripe\TestCase
             '/v1/reviews'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Review::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Review::class, $resources->data[0]);
     }
 
     public function testApprove()
@@ -45,7 +46,7 @@ final class ReviewServiceTest extends \Stripe\TestCase
             '/v1/reviews/' . self::TEST_RESOURCE_ID . '/approve'
         );
         $resource = $this->service->approve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Review::class, $resource);
+        self::assertInstanceOf(\Stripe\Review::class, $resource);
     }
 
     public function testRetrieve()
@@ -55,6 +56,6 @@ final class ReviewServiceTest extends \Stripe\TestCase
             '/v1/reviews/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Review::class, $resource);
+        self::assertInstanceOf(\Stripe\Review::class, $resource);
     }
 }

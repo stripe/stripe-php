@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\InvoiceItemService
  */
 final class InvoiceItemServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class InvoiceItemServiceTest extends \Stripe\TestCase
             '/v1/invoiceitems'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\InvoiceItem::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -49,7 +50,7 @@ final class InvoiceItemServiceTest extends \Stripe\TestCase
             'currency' => 'usd',
             'customer' => 'cus_123',
         ]);
-        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
+        self::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
     }
 
     public function testDelete()
@@ -59,7 +60,7 @@ final class InvoiceItemServiceTest extends \Stripe\TestCase
             '/v1/invoiceitems/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->delete(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
+        self::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
     }
 
     public function testRetrieve()
@@ -69,7 +70,7 @@ final class InvoiceItemServiceTest extends \Stripe\TestCase
             '/v1/invoiceitems/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
+        self::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
     }
 
     public function testUpdate()
@@ -81,6 +82,6 @@ final class InvoiceItemServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
+        self::assertInstanceOf(\Stripe\InvoiceItem::class, $resource);
     }
 }

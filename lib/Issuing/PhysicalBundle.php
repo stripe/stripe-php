@@ -9,7 +9,7 @@ namespace Stripe\Issuing;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property (object{card_logo: string, carrier_text: string, second_line: string}&\Stripe\StripeObject&\stdClass) $features
+ * @property (object{card_logo: string, carrier_text: string, second_line: string}&\stdClass&\Stripe\StripeObject) $features
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $name Friendly display name.
  * @property string $status Whether this physical bundle can be used to create cards.
@@ -33,9 +33,9 @@ class PhysicalBundle extends \Stripe\ApiResource
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string, type?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<PhysicalBundle> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\PhysicalBundle> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -50,9 +50,9 @@ class PhysicalBundle extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PhysicalBundle
      *
-     * @return \Stripe\Issuing\PhysicalBundle
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

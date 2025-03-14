@@ -4,6 +4,7 @@ namespace Stripe\Service\Identity;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\Identity\VerificationSessionService
  */
 final class VerificationSessionServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class VerificationSessionServiceTest extends \Stripe\TestCase
             '/v1/identity/verification_sessions'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -47,7 +48,7 @@ final class VerificationSessionServiceTest extends \Stripe\TestCase
         $resource = $this->service->create([
             'type' => 'id_number',
         ]);
-        static::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resource);
+        self::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resource);
     }
 
     public function testUpdate()
@@ -59,7 +60,7 @@ final class VerificationSessionServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resource);
+        self::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resource);
     }
 
     public function testCancel()
@@ -69,7 +70,7 @@ final class VerificationSessionServiceTest extends \Stripe\TestCase
             '/v1/identity/verification_sessions/' . self::TEST_RESOURCE_ID . '/cancel'
         );
         $resource = $this->service->cancel(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resource);
+        self::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resource);
     }
 
     public function testRedact()
@@ -79,6 +80,6 @@ final class VerificationSessionServiceTest extends \Stripe\TestCase
             '/v1/identity/verification_sessions/' . self::TEST_RESOURCE_ID . '/redact'
         );
         $resource = $this->service->redact(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resource);
+        self::assertInstanceOf(\Stripe\Identity\VerificationSession::class, $resource);
     }
 }

@@ -4,6 +4,7 @@ namespace Stripe\Util;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Util\ObjectTypes
  */
 final class ObjectTypesTest extends \Stripe\TestCase
@@ -12,7 +13,7 @@ final class ObjectTypesTest extends \Stripe\TestCase
 
     public function testMapping()
     {
-        static::assertSame(\Stripe\Util\ObjectTypes::mapping['charge'], \Stripe\Charge::class);
-        static::assertSame(\Stripe\Util\ObjectTypes::mapping['checkout.session'], \Stripe\Checkout\Session::class);
+        self::assertSame(ObjectTypes::mapping['charge'], \Stripe\Charge::class);
+        self::assertSame(ObjectTypes::mapping['checkout.session'], \Stripe\Checkout\Session::class);
     }
 }

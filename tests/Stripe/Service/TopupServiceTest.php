@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\TopupService
  */
 final class TopupServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class TopupServiceTest extends \Stripe\TestCase
             '/v1/topups'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Topup::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Topup::class, $resources->data[0]);
     }
 
     public function testCancel()
@@ -45,7 +46,7 @@ final class TopupServiceTest extends \Stripe\TestCase
             '/v1/topups/' . self::TEST_RESOURCE_ID . '/cancel'
         );
         $resource = $this->service->cancel(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Topup::class, $resource);
+        self::assertInstanceOf(\Stripe\Topup::class, $resource);
     }
 
     public function testCreate()
@@ -61,7 +62,7 @@ final class TopupServiceTest extends \Stripe\TestCase
             'description' => 'description',
             'statement_descriptor' => 'statement descriptor',
         ]);
-        static::assertInstanceOf(\Stripe\Topup::class, $resource);
+        self::assertInstanceOf(\Stripe\Topup::class, $resource);
     }
 
     public function testRetrieve()
@@ -71,7 +72,7 @@ final class TopupServiceTest extends \Stripe\TestCase
             '/v1/topups/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Topup::class, $resource);
+        self::assertInstanceOf(\Stripe\Topup::class, $resource);
     }
 
     public function testUpdate()
@@ -83,6 +84,6 @@ final class TopupServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Topup::class, $resource);
+        self::assertInstanceOf(\Stripe\Topup::class, $resource);
     }
 }

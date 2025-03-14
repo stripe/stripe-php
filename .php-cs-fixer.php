@@ -22,6 +22,9 @@ $config->setRules([
     'native_function_invocation' => [
         "strict" => false,
     ],
+    // We can remove this after we deprecate PHP 5.6.
+    // bug: https://bugs.php.net/bug.php?id=66773
+    'fully_qualified_strict_types' => ['import_symbols' => false],
 
     // --- Diffs from @PhpCsFixer / @PhpCsFixer:risky ---
 

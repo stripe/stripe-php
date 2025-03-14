@@ -4,6 +4,7 @@ namespace Stripe\Service\Issuing;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\Issuing\AuthorizationService
  */
 final class AuthorizationServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class AuthorizationServiceTest extends \Stripe\TestCase
             '/v1/issuing/authorizations'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resources->data[0]);
     }
 
     public function testApprove()
@@ -45,7 +46,7 @@ final class AuthorizationServiceTest extends \Stripe\TestCase
             '/v1/issuing/authorizations/' . self::TEST_RESOURCE_ID . '/approve'
         );
         $resource = $this->service->approve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
+        self::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
     }
 
     public function testDecline()
@@ -55,7 +56,7 @@ final class AuthorizationServiceTest extends \Stripe\TestCase
             '/v1/issuing/authorizations/' . self::TEST_RESOURCE_ID . '/decline'
         );
         $resource = $this->service->decline(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
+        self::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
     }
 
     public function testRetrieve()
@@ -65,7 +66,7 @@ final class AuthorizationServiceTest extends \Stripe\TestCase
             '/v1/issuing/authorizations/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
+        self::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
     }
 
     public function testUpdate()
@@ -78,6 +79,6 @@ final class AuthorizationServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
+        self::assertInstanceOf(\Stripe\Issuing\Authorization::class, $resource);
     }
 }

@@ -15,9 +15,9 @@ trait Update
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return static the updated resource
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -34,9 +34,9 @@ trait Update
     /**
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return static the saved resource
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @deprecated The `save` method is deprecated and will be removed in a
      *     future major version of the library. Use the static method `update`

@@ -6,21 +6,22 @@ namespace Stripe\Service;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class FileService extends \Stripe\Service\AbstractService
+class FileService extends AbstractService
 {
     /**
      * Returns a list of the files that your account has access to. Stripe sorts and
      * returns the files by their creation dates, placing the most recently created
      * files at the top.
      *
-     * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, purpose?: string, starting_after?: string} $params
+     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, purpose?: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\File>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -36,9 +37,9 @@ class FileService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\File
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

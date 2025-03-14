@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\CoreServiceFactory
  */
 final class CoreServiceFactoryTest extends \Stripe\TestCase
@@ -25,13 +26,13 @@ final class CoreServiceFactoryTest extends \Stripe\TestCase
 
     public function testExposesPropertiesForServices()
     {
-        static::assertInstanceOf(CouponService::class, $this->serviceFactory->coupons);
-        static::assertInstanceOf(\Stripe\Service\Issuing\IssuingServiceFactory::class, $this->serviceFactory->issuing);
+        self::assertInstanceOf(CouponService::class, $this->serviceFactory->coupons);
+        self::assertInstanceOf(Issuing\IssuingServiceFactory::class, $this->serviceFactory->issuing);
     }
 
     public function testMultipleCallsReturnSameInstance()
     {
         $service = $this->serviceFactory->coupons;
-        static::assertSame($service, $this->serviceFactory->coupons);
+        self::assertSame($service, $this->serviceFactory->coupons);
     }
 }

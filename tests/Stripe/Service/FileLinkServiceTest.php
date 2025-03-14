@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\FileLinkService
  */
 final class FileLinkServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class FileLinkServiceTest extends \Stripe\TestCase
             '/v1/file_links'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\FileLink::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\FileLink::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -47,7 +48,7 @@ final class FileLinkServiceTest extends \Stripe\TestCase
         $resource = $this->service->create([
             'file' => 'file_123',
         ]);
-        static::assertInstanceOf(\Stripe\FileLink::class, $resource);
+        self::assertInstanceOf(\Stripe\FileLink::class, $resource);
     }
 
     public function testRetrieve()
@@ -57,7 +58,7 @@ final class FileLinkServiceTest extends \Stripe\TestCase
             '/v1/file_links/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\FileLink::class, $resource);
+        self::assertInstanceOf(\Stripe\FileLink::class, $resource);
     }
 
     public function testUpdate()
@@ -69,6 +70,6 @@ final class FileLinkServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\FileLink::class, $resource);
+        self::assertInstanceOf(\Stripe\FileLink::class, $resource);
     }
 }

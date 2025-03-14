@@ -34,9 +34,9 @@ abstract class OAuth
      * @param null|array $params
      * @param null|array $opts
      *
-     * @throws \Stripe\Exception\OAuth\OAuthErrorException if the request fails
-     *
      * @return StripeObject object containing the response from the API
+     *
+     * @throws Exception\OAuth\OAuthErrorException if the request fails
      */
     public static function token($params = null, $opts = null)
     {
@@ -58,9 +58,9 @@ abstract class OAuth
      * @param null|array $params
      * @param null|array $opts
      *
-     * @throws \Stripe\Exception\OAuth\OAuthErrorException if the request fails
-     *
      * @return StripeObject object containing the response from the API
+     *
+     * @throws Exception\OAuth\OAuthErrorException if the request fails
      */
     public static function deauthorize($params = null, $opts = null)
     {

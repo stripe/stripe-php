@@ -44,8 +44,8 @@ abstract class Util
      */
     public static function convertToStripeObject($resp, $opts, $apiMode = 'v1')
     {
-        $types = 'v1' === $apiMode ? \Stripe\Util\ObjectTypes::mapping
-            : \Stripe\Util\ObjectTypes::v2Mapping;
+        $types = 'v1' === $apiMode ? ObjectTypes::mapping
+            : ObjectTypes::v2Mapping;
         if (self::isList($resp)) {
             $mapped = [];
             foreach ($resp as $i) {
@@ -60,7 +60,7 @@ abstract class Util
             ) {
                 $class = $types[$resp['object']];
                 if ('v2' === $apiMode && ('v2.core.event' === $resp['object'])) {
-                    $eventTypes = \Stripe\Util\EventTypes::thinEventMapping;
+                    $eventTypes = EventTypes::thinEventMapping;
                     if (\array_key_exists('type', $resp) && \array_key_exists($resp['type'], $eventTypes)) {
                         $class = $eventTypes[$resp['type']];
                     } else {
@@ -72,7 +72,7 @@ abstract class Util
                 // to return something for `object` here.
                 $class = \Stripe\V2\Collection::class;
             } else {
-                $class = \Stripe\StripeObject::class;
+                $class = StripeObject::class;
             }
 
             return $class::constructFrom($resp, $opts, $apiMode);
@@ -130,12 +130,10 @@ abstract class Util
 
             if (!self::$isMbstringAvailable) {
                 \trigger_error(
-                    'It looks like the mbstring extension is not enabled. ' .
-                    'UTF-8 strings will not properly be encoded. Ask your system '
-                    .
-                    'administrator to enable the mbstring extension, or write to '
-                    .
-                    'support@stripe.com if you have any questions.',
+                    'It looks like the mbstring extension is not enabled. '
+                    . 'UTF-8 strings will not properly be encoded. Ask your system '
+                    . 'administrator to enable the mbstring extension, or write to '
+                    . 'support@stripe.com if you have any questions.',
                     \E_USER_WARNING
                 );
             }
@@ -262,7 +260,7 @@ abstract class Util
                     self::flattenParams($value, $calculatedKey, $apiMode)
                 );
             } else {
-                \array_push($result, [$calculatedKey, $value]);
+                $result[] = [$calculatedKey, $value];
             }
         }
 
@@ -296,9 +294,9 @@ abstract class Util
                 );
             } else {
                 if ('v2' === $apiMode) {
-                    \array_push($result, ["{$calculatedKey}", $elem]);
+                    $result[] = ["{$calculatedKey}", $elem];
                 } else {
-                    \array_push($result, ["{$calculatedKey}[{$i}]", $elem]);
+                    $result[] = ["{$calculatedKey}[{$i}]", $elem];
                 }
             }
         }

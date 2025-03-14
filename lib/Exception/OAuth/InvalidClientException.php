@@ -7,6 +7,4 @@ namespace Stripe\Exception\OAuth;
  * the stripe_user_id does not exist or is not connected to your application,
  * or the API key mode (live or test mode) does not match the client_id mode.
  */
-class InvalidClientException extends OAuthErrorException
-{
-}
+class InvalidClientException extends OAuthErrorException {}

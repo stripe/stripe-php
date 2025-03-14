@@ -25,9 +25,9 @@ class MeterEvent extends \Stripe\ApiResource
      * @param null|array{event_name: string, expand?: string[], identifier?: string, payload: \Stripe\StripeObject, timestamp?: int} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return MeterEvent the created resource
      *
-     * @return \Stripe\Billing\MeterEvent the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {

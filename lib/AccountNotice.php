@@ -13,10 +13,10 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|int $deadline When present, the deadline for sending the notice to meet the relevant regulations.
- * @property null|(object{plain_text: string, recipient: string, subject: string}&\Stripe\StripeObject&\stdClass) $email Information about the email when sent.
- * @property null|(object{capability: null|string, issuing_credit_underwriting_record?: null|string, issuing_dispute: null|string}&\Stripe\StripeObject&\stdClass) $linked_objects Information about objects related to the notice.
+ * @property null|(object{plain_text: string, recipient: string, subject: string}&\stdClass&StripeObject) $email Information about the email when sent.
+ * @property null|(object{capability: null|string, issuing_credit_underwriting_record?: null|string, issuing_dispute: null|string}&\stdClass&StripeObject) $linked_objects Information about objects related to the notice.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $reason Reason the notice is being sent. The reason determines what copy the notice must contain. See the <a href="https://stripe.com/docs/issuing/compliance-us/issuing-regulated-customer-notices">regulated customer notices</a> guide. All reasons might not apply to your integration, and Stripe might add new reasons in the future, so we recommend an internal warning when you receive an unknown reason.
  * @property null|int $sent_at Date when the notice was sent. When absent, you must send the notice, update the content of the email and date when it was sent.
  */
@@ -48,15 +48,15 @@ class AccountNotice extends ApiResource
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, sent?: bool, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<AccountNotice> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\AccountNotice> of ApiResources
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+        return static::_requestPage($url, Collection::class, $params, $opts);
     }
 
     /**
@@ -65,13 +65,13 @@ class AccountNotice extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return AccountNotice
      *
-     * @return \Stripe\AccountNotice
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -82,12 +82,12 @@ class AccountNotice extends ApiResource
      * Updates an <code>AccountNotice</code> object.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{email: array{plain_text: string, recipient: string, subject: string}, expand?: string[], metadata?: \Stripe\StripeObject, sent_at: int} $params
+     * @param null|array{email: array{plain_text: string, recipient: string, subject: string}, expand?: string[], metadata?: StripeObject, sent_at: int} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return AccountNotice the updated resource
      *
-     * @return \Stripe\AccountNotice the updated resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -95,7 +95,7 @@ class AccountNotice extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;

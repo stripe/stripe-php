@@ -4,6 +4,7 @@ namespace Stripe\Identity;
 
 /**
  * @internal
+ *
  * @coversNothing
  */
 final class VerificationReportTest extends \Stripe\TestCase
@@ -18,8 +19,8 @@ final class VerificationReportTest extends \Stripe\TestCase
             '/v1/identity/verification_reports'
         );
         $resources = VerificationReport::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Identity\VerificationReport::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(VerificationReport::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -29,6 +30,6 @@ final class VerificationReportTest extends \Stripe\TestCase
             '/v1/identity/verification_reports/' . self::TEST_RESOURCE_ID
         );
         $resource = VerificationReport::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Identity\VerificationReport::class, $resource);
+        self::assertInstanceOf(VerificationReport::class, $resource);
     }
 }

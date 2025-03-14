@@ -39,7 +39,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
 
     protected $defaultOptions;
 
-    /** @var \Stripe\Util\RandomGenerator */
+    /** @var Util\RandomGenerator */
     protected $randomGenerator;
 
     protected $userAgentInfo;
@@ -64,7 +64,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * throw an exception if $defaultOptions returns a non-array value.
      *
      * @param null|array|callable $defaultOptions
-     * @param null|\Stripe\Util\RandomGenerator $randomGenerator
+     * @param null|Util\RandomGenerator $randomGenerator
      */
     public function __construct($defaultOptions = null, $randomGenerator = null)
     {
@@ -388,12 +388,12 @@ class CurlClient implements ClientInterface, StreamingClientInterface
     private function useHeadersToDetermineWriteCallback($opts, $determineWriteCallback)
     {
         $rheaders = new Util\CaseInsensitiveArray();
-        $headerCallback = function ($curl, $header_line) use (&$rheaders) {
+        $headerCallback = static function ($curl, $header_line) use (&$rheaders) {
             return self::parseLineIntoHeaderArray($header_line, $rheaders);
         };
 
         $writeCallback = null;
-        $writeCallbackWrapper = function ($curl, $data) use (&$writeCallback, &$rheaders, &$determineWriteCallback) {
+        $writeCallbackWrapper = static function ($curl, $data) use (&$writeCallback, &$rheaders, &$determineWriteCallback) {
             if (null === $writeCallback) {
                 $writeCallback = \call_user_func_array($determineWriteCallback, [$rheaders]);
             }
@@ -462,7 +462,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
             if ($rcode < 300) {
                 $rbody = null;
 
-                return function ($curl, $data) use (&$readBodyChunk) {
+                return static function ($curl, $data) use (&$readBodyChunk) {
                     // Don't expose the $curl handle to the user, and don't require them to
                     // return the length of $data.
                     \call_user_func_array($readBodyChunk, [$data]);
@@ -475,7 +475,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
 
             // Discard the body from an unsuccessful request that should be retried.
             if ($shouldRetry) {
-                return function ($curl, $data) {
+                return static function ($curl, $data) {
                     return \strlen($data);
                 };
             } else {
@@ -483,7 +483,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
                 // which exception to throw to the user.
                 $rbody = '';
 
-                return function ($curl, $data) use (&$rbody) {
+                return static function ($curl, $data) use (&$rbody) {
                     $rbody .= $data;
 
                     return \strlen($data);
@@ -547,7 +547,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
 
             // Create a callback to capture HTTP headers for the response
             $rheaders = new Util\CaseInsensitiveArray();
-            $headerCallback = function ($curl, $header_line) use (&$rheaders) {
+            $headerCallback = static function ($curl, $header_line) use (&$rheaders) {
                 return CurlClient::parseLineIntoHeaderArray($header_line, $rheaders);
             };
             $opts[\CURLOPT_HEADERFUNCTION] = $headerCallback;
@@ -643,7 +643,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      *
      * @param int $errno
      * @param int $rcode
-     * @param array|\Stripe\Util\CaseInsensitiveArray $rheaders
+     * @param array|Util\CaseInsensitiveArray $rheaders
      * @param int $numRetries
      *
      * @return bool
@@ -698,7 +698,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * Provides the number of seconds to wait before retrying a request.
      *
      * @param int $numRetries
-     * @param array|\Stripe\Util\CaseInsensitiveArray $rheaders
+     * @param array|Util\CaseInsensitiveArray $rheaders
      *
      * @return int
      */

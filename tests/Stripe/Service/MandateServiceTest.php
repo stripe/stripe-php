@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\MandateService
  */
 final class MandateServiceTest extends \Stripe\TestCase
@@ -34,6 +35,6 @@ final class MandateServiceTest extends \Stripe\TestCase
             '/v1/mandates/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Mandate::class, $resource);
+        self::assertInstanceOf(\Stripe\Mandate::class, $resource);
     }
 }

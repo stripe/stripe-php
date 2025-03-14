@@ -4,6 +4,7 @@ namespace Stripe\Reporting;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Reporting\ReportRun
  */
 final class ReportRunTest extends \Stripe\TestCase
@@ -27,7 +28,7 @@ final class ReportRunTest extends \Stripe\TestCase
             $params
         );
         $resource = ReportRun::create($params);
-        static::assertInstanceOf(\Stripe\Reporting\ReportRun::class, $resource);
+        self::assertInstanceOf(ReportRun::class, $resource);
     }
 
     public function testIsListable()
@@ -37,8 +38,8 @@ final class ReportRunTest extends \Stripe\TestCase
             '/v1/reporting/report_runs'
         );
         $resources = ReportRun::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Reporting\ReportRun::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(ReportRun::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -48,6 +49,6 @@ final class ReportRunTest extends \Stripe\TestCase
             '/v1/reporting/report_runs/' . self::TEST_RESOURCE_ID
         );
         $resource = ReportRun::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Reporting\ReportRun::class, $resource);
+        self::assertInstanceOf(ReportRun::class, $resource);
     }
 }

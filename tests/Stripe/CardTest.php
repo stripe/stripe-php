@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Card
  */
-final class CardTest extends \Stripe\TestCase
+final class CardTest extends TestCase
 {
     use TestHelper;
 
@@ -34,7 +35,7 @@ final class CardTest extends \Stripe\TestCase
     public function testHasCorrectUrlForCustomer()
     {
         $resource = $this->createFixture(['customer' => 'cus_123']);
-        static::assertSame(
+        self::assertSame(
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
@@ -43,7 +44,7 @@ final class CardTest extends \Stripe\TestCase
     public function testHasCorrectUrlForAccount()
     {
         $resource = $this->createFixture(['account' => 'acct_123']);
-        static::assertSame(
+        self::assertSame(
             '/v1/accounts/acct_123/external_accounts/' . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
@@ -51,7 +52,7 @@ final class CardTest extends \Stripe\TestCase
 
     public function testIsNotDirectlyRetrievable()
     {
-        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+        $this->expectException(Exception\BadMethodCallException::class);
 
         Card::retrieve(self::TEST_RESOURCE_ID);
     }
@@ -65,12 +66,12 @@ final class CardTest extends \Stripe\TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        static::assertSame(\Stripe\Card::class, \get_class($resource));
+        self::assertSame(Card::class, \get_class($resource));
     }
 
     public function testIsNotDirectlyUpdatable()
     {
-        $this->expectException(\Stripe\Exception\BadMethodCallException::class);
+        $this->expectException(Exception\BadMethodCallException::class);
 
         Card::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
@@ -85,6 +86,6 @@ final class CardTest extends \Stripe\TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        static::assertSame(\Stripe\Card::class, \get_class($resource));
+        self::assertSame(Card::class, \get_class($resource));
     }
 }

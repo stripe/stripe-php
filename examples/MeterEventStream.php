@@ -32,7 +32,7 @@ class MeterEventStream
             || $this->meterEventSession->expires_at <= time()
         ) {
             // Create a new meter event session in case the existing session expired
-            $client = new \Stripe\StripeClient($this->apiKey);
+            $client = new Stripe\StripeClient($this->apiKey);
             $this->meterEventSession = $client->v2->billing->meterEventSession->create();
         }
     }
@@ -43,7 +43,7 @@ class MeterEventStream
         $this->refreshMeterEventSession();
 
         // Create a meter event with the current session's authentication token
-        $client = new \Stripe\StripeClient($this->meterEventSession->authentication_token);
+        $client = new Stripe\StripeClient($this->meterEventSession->authentication_token);
         $client->v2->billing->meterEventStream->create([
             'events' => [$meterEvent],
         ]);

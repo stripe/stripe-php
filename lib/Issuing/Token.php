@@ -9,13 +9,13 @@ namespace Stripe\Issuing;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property string|\Stripe\Issuing\Card $card Card associated with this token.
+ * @property Card|string $card Card associated with this token.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $device_fingerprint The hashed ID derived from the device ID from the card network associated with the token.
  * @property null|string $last4 The last four digits of the token.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $network The token service provider / card network associated with the token.
- * @property null|(object{device?: (object{device_fingerprint?: string, ip_address?: string, location?: string, name?: string, phone_number?: string, type?: string}&\Stripe\StripeObject&\stdClass), mastercard?: (object{card_reference_id?: string, token_reference_id: string, token_requestor_id: string, token_requestor_name?: string}&\Stripe\StripeObject&\stdClass), type: string, visa?: (object{card_reference_id: string, token_reference_id: string, token_requestor_id: string, token_risk_score?: string}&\Stripe\StripeObject&\stdClass), wallet_provider?: (object{account_id?: string, account_trust_score?: int, card_number_source?: string, cardholder_address?: (object{line1: string, postal_code: string}&\Stripe\StripeObject&\stdClass), cardholder_name?: string, device_trust_score?: int, hashed_account_email_address?: string, reason_codes?: string[], suggested_decision?: string, suggested_decision_version?: string}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass) $network_data
+ * @property null|(object{device?: (object{device_fingerprint?: string, ip_address?: string, location?: string, name?: string, phone_number?: string, type?: string}&\stdClass&\Stripe\StripeObject), mastercard?: (object{card_reference_id?: string, token_reference_id: string, token_requestor_id: string, token_requestor_name?: string}&\stdClass&\Stripe\StripeObject), type: string, visa?: (object{card_reference_id: string, token_reference_id: string, token_requestor_id: string, token_risk_score?: string}&\stdClass&\Stripe\StripeObject), wallet_provider?: (object{account_id?: string, account_trust_score?: int, card_number_source?: string, cardholder_address?: (object{line1: string, postal_code: string}&\stdClass&\Stripe\StripeObject), cardholder_name?: string, device_trust_score?: int, hashed_account_email_address?: string, reason_codes?: string[], suggested_decision?: string, suggested_decision_version?: string}&\stdClass&\Stripe\StripeObject)}&\stdClass&\Stripe\StripeObject) $network_data
  * @property int $network_updated_at Time at which the token was last updated by the card network. Measured in seconds since the Unix epoch.
  * @property string $status The usage state of the token.
  * @property null|string $wallet_provider The digital wallet for this token, if one was used.
@@ -41,12 +41,12 @@ class Token extends \Stripe\ApiResource
     /**
      * Lists all Issuing <code>Token</code> objects for a given card.
      *
-     * @param null|array{card: string, created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
+     * @param null|array{card: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Token> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\Token> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -61,9 +61,9 @@ class Token extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Token
      *
-     * @return \Stripe\Issuing\Token
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -82,9 +82,9 @@ class Token extends \Stripe\ApiResource
      * @param null|array{expand?: string[], status: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Token the updated resource
      *
-     * @return \Stripe\Issuing\Token the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {

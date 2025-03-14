@@ -7,6 +7,4 @@ namespace Stripe\Exception\OAuth;
  * error from the OAuth API it doesn't know about. Receiving this error usually
  * means that your client library is outdated and should be upgraded.
  */
-class UnknownOAuthErrorException extends OAuthErrorException
-{
-}
+class UnknownOAuthErrorException extends OAuthErrorException {}

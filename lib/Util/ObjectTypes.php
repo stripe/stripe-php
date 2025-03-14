@@ -7,8 +7,8 @@ class ObjectTypes
     /**
      * @var array Mapping from object types to resource classes
      */
-    const mapping =
-        [
+    const mapping
+        = [
             \Stripe\Collection::OBJECT_NAME => \Stripe\Collection::class,
             \Stripe\Issuing\CardDetails::OBJECT_NAME => \Stripe\Issuing\CardDetails::class,
             \Stripe\SearchResult::OBJECT_NAME => \Stripe\SearchResult::class,

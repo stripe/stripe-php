@@ -19,10 +19,10 @@ abstract class Webhook
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time
      *
+     * @return Event the Events instance
+     *
      * @throws Exception\UnexpectedValueException if the payload is not valid JSON,
      * @throws Exception\SignatureVerificationException if the verification fails
-     *
-     * @return Event the Events instance
      */
     public static function constructEvent($payload, $sigHeader, $secret, $tolerance = self::DEFAULT_TOLERANCE)
     {

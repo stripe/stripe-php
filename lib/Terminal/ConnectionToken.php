@@ -25,9 +25,9 @@ class ConnectionToken extends \Stripe\ApiResource
      * @param null|array{expand?: string[], location?: string} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ConnectionToken the created resource
      *
-     * @return \Stripe\Terminal\ConnectionToken the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {

@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Transfer
  */
-final class TransferTest extends \Stripe\TestCase
+final class TransferTest extends TestCase
 {
     use TestHelper;
 
@@ -20,8 +21,8 @@ final class TransferTest extends \Stripe\TestCase
             '/v1/transfers'
         );
         $resources = Transfer::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Transfer::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(Transfer::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -31,7 +32,7 @@ final class TransferTest extends \Stripe\TestCase
             '/v1/transfers/' . self::TEST_RESOURCE_ID
         );
         $resource = Transfer::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Transfer::class, $resource);
+        self::assertInstanceOf(Transfer::class, $resource);
     }
 
     public function testIsCreatable()
@@ -45,7 +46,7 @@ final class TransferTest extends \Stripe\TestCase
             'currency' => 'usd',
             'destination' => 'acct_123',
         ]);
-        static::assertInstanceOf(\Stripe\Transfer::class, $resource);
+        self::assertInstanceOf(Transfer::class, $resource);
     }
 
     public function testIsSaveable()
@@ -57,7 +58,7 @@ final class TransferTest extends \Stripe\TestCase
             '/v1/transfers/' . $resource->id
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\Transfer::class, $resource);
+        self::assertInstanceOf(Transfer::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -69,7 +70,7 @@ final class TransferTest extends \Stripe\TestCase
         $resource = Transfer::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Transfer::class, $resource);
+        self::assertInstanceOf(Transfer::class, $resource);
     }
 
     public function testCanCreateReversal()
@@ -79,7 +80,7 @@ final class TransferTest extends \Stripe\TestCase
             '/v1/transfers/' . self::TEST_RESOURCE_ID . '/reversals'
         );
         $resource = Transfer::createReversal(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\TransferReversal::class, $resource);
+        self::assertInstanceOf(TransferReversal::class, $resource);
     }
 
     public function testCanRetrieveReversal()
@@ -89,7 +90,7 @@ final class TransferTest extends \Stripe\TestCase
             '/v1/transfers/' . self::TEST_RESOURCE_ID . '/reversals/' . self::TEST_REVERSAL_ID
         );
         $resource = Transfer::retrieveReversal(self::TEST_RESOURCE_ID, self::TEST_REVERSAL_ID);
-        static::assertInstanceOf(\Stripe\TransferReversal::class, $resource);
+        self::assertInstanceOf(TransferReversal::class, $resource);
     }
 
     public function testCanUpdateReversal()
@@ -105,7 +106,7 @@ final class TransferTest extends \Stripe\TestCase
                 'metadata' => ['key' => 'value'],
             ]
         );
-        static::assertInstanceOf(\Stripe\TransferReversal::class, $resource);
+        self::assertInstanceOf(TransferReversal::class, $resource);
     }
 
     public function testCanListReversal()
@@ -115,7 +116,7 @@ final class TransferTest extends \Stripe\TestCase
             '/v1/transfers/' . self::TEST_RESOURCE_ID . '/reversals'
         );
         $resources = Transfer::allReversals(self::TEST_RESOURCE_ID);
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\TransferReversal::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(TransferReversal::class, $resources->data[0]);
     }
 }

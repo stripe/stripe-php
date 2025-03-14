@@ -6,6 +6,7 @@ namespace Stripe;
  * Class Collection.
  *
  * @template TStripeObject of StripeObject
+ *
  * @template-implements \IteratorAggregate<TStripeObject>
  *
  * @property string $object
@@ -59,10 +60,10 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
         if (\is_string($k)) {
             return parent::offsetGet($k);
         }
-        $msg = "You tried to access the {$k} index, but Collection " .
-                   'types only support string keys. (HINT: List calls ' .
-                   'return an object with a `data` (which is the data ' .
-                   "array). You likely want to call ->data[{$k}])";
+        $msg = "You tried to access the {$k} index, but Collection "
+                   . 'types only support string keys. (HINT: List calls '
+                   . 'return an object with a `data` (which is the data '
+                   . "array). You likely want to call ->data[{$k}])";
 
         throw new Exception\InvalidArgumentException($msg);
     }
@@ -71,9 +72,9 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws Exception\ApiErrorException
-     *
      * @return Collection<TStripeObject>
+     *
+     * @throws Exception\ApiErrorException
      */
     public function all($params = null, $opts = null)
     {
@@ -82,9 +83,9 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
 
         list($response, $opts) = $this->_request('get', $url, $params, $opts);
         $obj = Util\Util::convertToStripeObject($response, $opts);
-        if (!($obj instanceof \Stripe\Collection)) {
-            throw new \Stripe\Exception\UnexpectedValueException(
-                'Expected type ' . \Stripe\Collection::class . ', got "' . \get_class($obj) . '" instead.'
+        if (!$obj instanceof Collection) {
+            throw new Exception\UnexpectedValueException(
+                'Expected type ' . Collection::class . ', got "' . \get_class($obj) . '" instead.'
             );
         }
         $obj->setFilters($params);
@@ -96,9 +97,9 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws Exception\ApiErrorException
-     *
      * @return TStripeObject
+     *
+     * @throws Exception\ApiErrorException
      */
     public function create($params = null, $opts = null)
     {
@@ -115,9 +116,9 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws Exception\ApiErrorException
-     *
      * @return TStripeObject
+     *
+     * @throws Exception\ApiErrorException
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -165,12 +166,12 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @throws Exception\ApiErrorException
-     *
      * @return \Generator|TStripeObject[] A generator that can be used to
      *    iterate across all objects across all pages. As page boundaries are
      *    encountered, the next page will be fetched automatically for
      *    continued iteration.
+     *
+     * @throws Exception\ApiErrorException
      */
     public function autoPagingIterator()
     {
@@ -230,9 +231,9 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws Exception\ApiErrorException
-     *
      * @return Collection<TStripeObject>
+     *
+     * @throws Exception\ApiErrorException
      */
     public function nextPage($params = null, $opts = null)
     {
@@ -260,9 +261,9 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws Exception\ApiErrorException
-     *
      * @return Collection<TStripeObject>
+     *
+     * @throws Exception\ApiErrorException
      */
     public function previousPage($params = null, $opts = null)
     {

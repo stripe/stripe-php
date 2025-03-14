@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\SetupAttemptService
  */
 final class SetupAttemptServiceTest extends \Stripe\TestCase
@@ -34,7 +35,7 @@ final class SetupAttemptServiceTest extends \Stripe\TestCase
         $resources = $this->service->all([
             'setup_intent' => 'si_123',
         ]);
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\SetupAttempt::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\SetupAttempt::class, $resources->data[0]);
     }
 }

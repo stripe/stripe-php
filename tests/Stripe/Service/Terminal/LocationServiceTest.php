@@ -4,6 +4,7 @@ namespace Stripe\Service\Terminal;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\Terminal\LocationService
  */
 final class LocationServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class LocationServiceTest extends \Stripe\TestCase
             '/v1/terminal/locations'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Terminal\Location::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Terminal\Location::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -66,7 +67,7 @@ final class LocationServiceTest extends \Stripe\TestCase
                 ],
             ]
         );
-        static::assertInstanceOf(\Stripe\Terminal\Location::class, $resource);
+        self::assertInstanceOf(\Stripe\Terminal\Location::class, $resource);
     }
 
     public function testDelete()
@@ -76,7 +77,7 @@ final class LocationServiceTest extends \Stripe\TestCase
             '/v1/terminal/locations/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->delete(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Terminal\Location::class, $resource);
+        self::assertInstanceOf(\Stripe\Terminal\Location::class, $resource);
     }
 
     public function testRetrieve()
@@ -86,7 +87,7 @@ final class LocationServiceTest extends \Stripe\TestCase
             '/v1/terminal/locations/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Terminal\Location::class, $resource);
+        self::assertInstanceOf(\Stripe\Terminal\Location::class, $resource);
     }
 
     public function testUpdate()
@@ -98,6 +99,6 @@ final class LocationServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Terminal\Location::class, $resource);
+        self::assertInstanceOf(\Stripe\Terminal\Location::class, $resource);
     }
 }

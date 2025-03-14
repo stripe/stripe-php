@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\OAuthErrorObject
  */
-final class OAuthErrorObjectTest extends \Stripe\TestCase
+final class OAuthErrorObjectTest extends TestCase
 {
     use TestHelper;
 
@@ -14,7 +15,7 @@ final class OAuthErrorObjectTest extends \Stripe\TestCase
     {
         $error = OAuthErrorObject::constructFrom([]);
 
-        static::assertNull($error->error);
-        static::assertNull($error->error_description);
+        self::assertNull($error->error);
+        self::assertNull($error->error_description);
     }
 }

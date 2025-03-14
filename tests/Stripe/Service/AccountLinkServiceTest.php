@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\AccountLinkService
  */
 final class AccountLinkServiceTest extends \Stripe\TestCase
@@ -37,6 +38,6 @@ final class AccountLinkServiceTest extends \Stripe\TestCase
             'return_url' => 'https://stripe.com/return_url',
             'type' => 'account_onboarding',
         ]);
-        static::assertInstanceOf(\Stripe\AccountLink::class, $resource);
+        self::assertInstanceOf(\Stripe\AccountLink::class, $resource);
     }
 }

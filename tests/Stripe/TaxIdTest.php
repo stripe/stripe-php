@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\TaxId
  */
-final class TaxIdTest extends \Stripe\TestCase
+final class TaxIdTest extends TestCase
 {
     use TestHelper;
 
@@ -19,8 +20,8 @@ final class TaxIdTest extends \Stripe\TestCase
             '/v1/tax_ids'
         );
         $resources = TaxId::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\TaxId::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(TaxId::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -29,9 +30,9 @@ final class TaxIdTest extends \Stripe\TestCase
             'get',
             '/v1/tax_ids/' . self::TEST_RESOURCE_ID
         );
-        $resource = \Stripe\TaxId::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\TaxId::class, $resource);
-        static::assertSame(
+        $resource = TaxId::retrieve(self::TEST_RESOURCE_ID);
+        self::assertInstanceOf(TaxId::class, $resource);
+        self::assertSame(
             '/v1/tax_ids/' . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );
@@ -44,17 +45,17 @@ final class TaxIdTest extends \Stripe\TestCase
             '/v1/tax_ids'
         );
         $resource = TaxId::create(['type' => 'eu_vat', 'value' => 'DE123456789']);
-        static::assertInstanceOf(\Stripe\TaxId::class, $resource);
+        self::assertInstanceOf(TaxId::class, $resource);
     }
 
     public function testIsDeletable()
     {
-        $resource = \Stripe\TaxId::retrieve(self::TEST_RESOURCE_ID);
+        $resource = TaxId::retrieve(self::TEST_RESOURCE_ID);
         $this->expectsRequest(
             'delete',
             '/v1/tax_ids/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        static::assertInstanceOf(\Stripe\TaxId::class, $resource);
+        self::assertInstanceOf(TaxId::class, $resource);
     }
 }

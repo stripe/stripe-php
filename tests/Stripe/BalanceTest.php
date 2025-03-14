@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Balance
  */
-final class BalanceTest extends \Stripe\TestCase
+final class BalanceTest extends TestCase
 {
     use TestHelper;
 
@@ -17,6 +18,6 @@ final class BalanceTest extends \Stripe\TestCase
             '/v1/balance'
         );
         $resource = Balance::retrieve();
-        static::assertInstanceOf(\Stripe\Balance::class, $resource);
+        self::assertInstanceOf(Balance::class, $resource);
     }
 }

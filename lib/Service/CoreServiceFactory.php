@@ -85,7 +85,7 @@ namespace Stripe\Service;
  * @property WebhookEndpointService $webhookEndpoints
  * // Doc: The end of the section generated from our OpenAPI spec
  */
-class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
+class CoreServiceFactory extends AbstractServiceFactory
 {
     /**
      * @var array<string, string>

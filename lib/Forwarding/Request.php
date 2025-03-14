@@ -29,9 +29,9 @@ namespace Stripe\Forwarding;
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $payment_method The PaymentMethod to insert into the forwarded request. Forwarding previously consumed PaymentMethods is allowed.
  * @property string[] $replacements The field kinds to be replaced in the forwarded request.
- * @property null|(object{destination_duration: int, destination_ip_address: string}&\Stripe\StripeObject&\stdClass) $request_context Context about the request from Stripe's servers to the destination endpoint.
- * @property null|(object{body: string, headers: (object{name: string, value: string}&\Stripe\StripeObject&\stdClass)[], http_method: string}&\Stripe\StripeObject&\stdClass) $request_details The request that was sent to the destination endpoint. We redact any sensitive fields.
- * @property null|(object{body: string, headers: (object{name: string, value: string}&\Stripe\StripeObject&\stdClass)[], status: int}&\Stripe\StripeObject&\stdClass) $response_details The response that the destination endpoint returned to us. We redact any sensitive fields.
+ * @property null|(object{destination_duration: int, destination_ip_address: string}&\stdClass&\Stripe\StripeObject) $request_context Context about the request from Stripe's servers to the destination endpoint.
+ * @property null|(object{body: string, headers: (object{name: string, value: string}&\stdClass&\Stripe\StripeObject)[], http_method: string}&\stdClass&\Stripe\StripeObject) $request_details The request that was sent to the destination endpoint. We redact any sensitive fields.
+ * @property null|(object{body: string, headers: (object{name: string, value: string}&\stdClass&\Stripe\StripeObject)[], status: int}&\stdClass&\Stripe\StripeObject) $response_details The response that the destination endpoint returned to us. We redact any sensitive fields.
  * @property null|string $url The destination URL for the forwarded request. Must be supported by the config.
  */
 class Request extends \Stripe\ApiResource
@@ -44,9 +44,9 @@ class Request extends \Stripe\ApiResource
      * @param null|array{expand?: string[], metadata?: \Stripe\StripeObject, payment_method: string, replacements: string[], request: array{body?: string, headers?: array{name: string, value: string}[]}, url: string} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Request the created resource
      *
-     * @return \Stripe\Forwarding\Request the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -66,9 +66,9 @@ class Request extends \Stripe\ApiResource
      * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Request> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Forwarding\Request> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -83,9 +83,9 @@ class Request extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Request
      *
-     * @return \Stripe\Forwarding\Request
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

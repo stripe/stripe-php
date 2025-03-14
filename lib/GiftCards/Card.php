@@ -15,10 +15,10 @@ namespace Stripe\GiftCards;
  * @property int $amount_held The amount of funds marked as held.
  * @property null|string $code Code used to redeem this gift card.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|(object{checkout?: (object{checkout_session: string, line_item: null|string}&\Stripe\StripeObject&\stdClass), order?: (object{line_item: null|string, order: string}&\Stripe\StripeObject&\stdClass), payment?: (object{payment_intent: string}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass) $created_by The related Stripe objects that created this gift card.
+ * @property null|(object{checkout?: (object{checkout_session: string, line_item: null|string}&\stdClass&\Stripe\StripeObject), order?: (object{line_item: null|string, order: string}&\stdClass&\Stripe\StripeObject), payment?: (object{payment_intent: string}&\stdClass&\Stripe\StripeObject), type: string}&\stdClass&\Stripe\StripeObject) $created_by The related Stripe objects that created this gift card.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|\Stripe\Collection<\Stripe\GiftCards\Transaction> $transactions Transactions on this gift card.
+ * @property null|\Stripe\Collection<Transaction> $transactions Transactions on this gift card.
  */
 class Card extends \Stripe\ApiResource
 {
@@ -32,9 +32,9 @@ class Card extends \Stripe\ApiResource
      * @param null|array{active?: bool, created_by?: array{payment: array{payment_intent: string}, type: string}, currency: string, expand?: string[], initial_amount?: int, metadata?: \Stripe\StripeObject} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Card the created resource
      *
-     * @return \Stripe\GiftCards\Card the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -54,9 +54,9 @@ class Card extends \Stripe\ApiResource
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Card> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\GiftCards\Card> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -71,9 +71,9 @@ class Card extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Card
      *
-     * @return \Stripe\GiftCards\Card
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -91,9 +91,9 @@ class Card extends \Stripe\ApiResource
      * @param null|array{active?: bool, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Card the updated resource
      *
-     * @return \Stripe\GiftCards\Card the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -111,9 +111,9 @@ class Card extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Card the validated card
      *
-     * @return \Stripe\GiftCards\Card the validated card
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function validate($params = null, $opts = null)
     {

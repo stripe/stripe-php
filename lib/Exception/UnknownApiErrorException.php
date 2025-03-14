@@ -7,6 +7,4 @@ namespace Stripe\Exception;
  * error from the API it doesn't know about. Receiving this error usually
  * means that your client library is outdated and should be upgraded.
  */
-class UnknownApiErrorException extends ApiErrorException
-{
-}
+class UnknownApiErrorException extends ApiErrorException {}

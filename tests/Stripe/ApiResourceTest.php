@@ -21,9 +21,10 @@ class FooResource extends ApiResource
 
 /**
  * @internal
+ *
  * @coversNothing
  */
-final class ApiResourceTest extends \Stripe\TestCase
+final class ApiResourceTest extends TestCase
 {
     use TestHelper;
 
@@ -31,13 +32,13 @@ final class ApiResourceTest extends \Stripe\TestCase
     {
         $foo = FooResource::retrieve('foo');
         $body = '';
-        $readBodyChunk = function ($chunk) use (&$body) {
+        $readBodyChunk = static function ($chunk) use (&$body) {
             $body .= $chunk;
         };
 
         $foo->pdf($readBodyChunk);
 
         $parsed = \json_decode($body, true);
-        static::assertSame($parsed['object'], 'coupon');
+        self::assertSame($parsed['object'], 'coupon');
     }
 }

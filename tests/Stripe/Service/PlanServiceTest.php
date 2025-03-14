@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\PlanService
  */
 final class PlanServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class PlanServiceTest extends \Stripe\TestCase
             '/v1/plans'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Plan::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Plan::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -51,7 +52,7 @@ final class PlanServiceTest extends \Stripe\TestCase
             'nickname' => self::TEST_RESOURCE_ID,
             'id' => self::TEST_RESOURCE_ID,
         ]);
-        static::assertInstanceOf(\Stripe\Plan::class, $resource);
+        self::assertInstanceOf(\Stripe\Plan::class, $resource);
     }
 
     public function testDelete()
@@ -61,7 +62,7 @@ final class PlanServiceTest extends \Stripe\TestCase
             '/v1/plans/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->delete(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Plan::class, $resource);
+        self::assertInstanceOf(\Stripe\Plan::class, $resource);
     }
 
     public function testRetrieve()
@@ -71,7 +72,7 @@ final class PlanServiceTest extends \Stripe\TestCase
             '/v1/plans/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Plan::class, $resource);
+        self::assertInstanceOf(\Stripe\Plan::class, $resource);
     }
 
     public function testUpdate()
@@ -83,6 +84,6 @@ final class PlanServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Plan::class, $resource);
+        self::assertInstanceOf(\Stripe\Plan::class, $resource);
     }
 }

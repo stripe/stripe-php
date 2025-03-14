@@ -4,6 +4,7 @@ namespace Stripe\Service\BillingPortal;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\BillingPortal\SessionService
  */
 final class SessionServiceTest extends \Stripe\TestCase
@@ -37,6 +38,6 @@ final class SessionServiceTest extends \Stripe\TestCase
             'customer' => 'cus_123',
             'return_url' => 'https://stripe.com/return',
         ]);
-        static::assertInstanceOf(\Stripe\BillingPortal\Session::class, $resource);
+        self::assertInstanceOf(\Stripe\BillingPortal\Session::class, $resource);
     }
 }

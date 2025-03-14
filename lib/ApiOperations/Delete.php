@@ -13,9 +13,9 @@ trait Delete
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return static the deleted resource
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function delete($params = null, $opts = null)
     {

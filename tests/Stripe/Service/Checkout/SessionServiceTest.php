@@ -4,6 +4,7 @@ namespace Stripe\Service\Checkout;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\Checkout\SessionService
  */
 final class SessionServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class SessionServiceTest extends \Stripe\TestCase
             '/v1/checkout/sessions'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Checkout\Session::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Checkout\Session::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -65,7 +66,7 @@ final class SessionServiceTest extends \Stripe\TestCase
             'payment_method_types' => ['card'],
             'success_url' => 'https://stripe.com/success',
         ]);
-        static::assertInstanceOf(\Stripe\Checkout\Session::class, $resource);
+        self::assertInstanceOf(\Stripe\Checkout\Session::class, $resource);
     }
 
     public function testRetrieve()
@@ -75,6 +76,6 @@ final class SessionServiceTest extends \Stripe\TestCase
             '/v1/checkout/sessions/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Checkout\Session::class, $resource);
+        self::assertInstanceOf(\Stripe\Checkout\Session::class, $resource);
     }
 }

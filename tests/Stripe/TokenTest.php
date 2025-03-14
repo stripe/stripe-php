@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Token
  */
-final class TokenTest extends \Stripe\TestCase
+final class TokenTest extends TestCase
 {
     use TestHelper;
 
@@ -19,7 +20,7 @@ final class TokenTest extends \Stripe\TestCase
             '/v1/tokens/' . self::TEST_RESOURCE_ID
         );
         $resource = Token::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Token::class, $resource);
+        self::assertInstanceOf(Token::class, $resource);
     }
 
     public function testIsCreatable()
@@ -29,6 +30,6 @@ final class TokenTest extends \Stripe\TestCase
             '/v1/tokens'
         );
         $resource = Token::create(['card' => 'tok_visa']);
-        static::assertInstanceOf(\Stripe\Token::class, $resource);
+        self::assertInstanceOf(Token::class, $resource);
     }
 }

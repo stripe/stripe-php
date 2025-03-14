@@ -11,7 +11,7 @@ namespace Stripe\Terminal;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject&\stdClass) $address
+ * @property (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\stdClass&\Stripe\StripeObject) $address
  * @property null|string $configuration_overrides The ID of a configuration that will be used to customize all readers in this location.
  * @property string $display_name The display name of the location.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
@@ -31,9 +31,9 @@ class Location extends \Stripe\ApiResource
      * @param null|array{address: array{city?: string, country: string, line1?: string, line2?: string, postal_code?: string, state?: string}, configuration_overrides?: string, display_name: string, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Location the created resource
      *
-     * @return \Stripe\Terminal\Location the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -53,9 +53,9 @@ class Location extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Location the deleted resource
      *
-     * @return \Stripe\Terminal\Location the deleted resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function delete($params = null, $opts = null)
     {
@@ -74,9 +74,9 @@ class Location extends \Stripe\ApiResource
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Location> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Terminal\Location> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -91,9 +91,9 @@ class Location extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Location
      *
-     * @return \Stripe\Terminal\Location
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -112,9 +112,9 @@ class Location extends \Stripe\ApiResource
      * @param null|array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, configuration_overrides?: null|string, display_name?: string, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Location the updated resource
      *
-     * @return \Stripe\Terminal\Location the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {

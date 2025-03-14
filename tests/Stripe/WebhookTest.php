@@ -4,10 +4,11 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Webhook
  * @covers \Stripe\WebhookSignature
  */
-final class WebhookTest extends \Stripe\TestCase
+final class WebhookTest extends TestCase
 {
     use TestHelper;
 
@@ -37,13 +38,13 @@ final class WebhookTest extends \Stripe\TestCase
     {
         $sigHeader = $this->generateHeader();
         $event = Webhook::constructEvent(self::EVENT_PAYLOAD, $sigHeader, self::SECRET);
-        static::assertSame('evt_test_webhook', $event->id);
-        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $event->data->__get('object'));
+        self::assertSame('evt_test_webhook', $event->id);
+        self::assertInstanceOf(Terminal\Reader::class, $event->data->__get('object'));
     }
 
     public function testInvalidJson()
     {
-        $this->expectException(\Stripe\Exception\UnexpectedValueException::class);
+        $this->expectException(Exception\UnexpectedValueException::class);
 
         $payload = 'this is not valid JSON';
         $sigHeader = $this->generateHeader(['payload' => $payload]);
@@ -52,7 +53,7 @@ final class WebhookTest extends \Stripe\TestCase
 
     public function testValidJsonAndInvalidHeader()
     {
-        $this->expectException(\Stripe\Exception\SignatureVerificationException::class);
+        $this->expectException(Exception\SignatureVerificationException::class);
 
         $sigHeader = 'bad_header';
         Webhook::constructEvent(self::EVENT_PAYLOAD, $sigHeader, self::SECRET);
@@ -60,7 +61,7 @@ final class WebhookTest extends \Stripe\TestCase
 
     public function testMalformedHeader()
     {
-        $this->expectException(\Stripe\Exception\SignatureVerificationException::class);
+        $this->expectException(Exception\SignatureVerificationException::class);
         $this->expectExceptionMessage('Unable to extract timestamp and signatures from header');
 
         $sigHeader = "i'm not even a real signature header";
@@ -69,7 +70,7 @@ final class WebhookTest extends \Stripe\TestCase
 
     public function testNoSignaturesWithExpectedScheme()
     {
-        $this->expectException(\Stripe\Exception\SignatureVerificationException::class);
+        $this->expectException(Exception\SignatureVerificationException::class);
         $this->expectExceptionMessage('No signatures found with expected scheme');
 
         $sigHeader = $this->generateHeader(['scheme' => 'v0']);
@@ -78,7 +79,7 @@ final class WebhookTest extends \Stripe\TestCase
 
     public function testNoValidSignatureForPayload()
     {
-        $this->expectException(\Stripe\Exception\SignatureVerificationException::class);
+        $this->expectException(Exception\SignatureVerificationException::class);
         $this->expectExceptionMessage('No signatures found matching the expected signature for payload');
 
         $sigHeader = $this->generateHeader(['signature' => 'bad_signature']);
@@ -87,7 +88,7 @@ final class WebhookTest extends \Stripe\TestCase
 
     public function testTimestampTooOld()
     {
-        $this->expectException(\Stripe\Exception\SignatureVerificationException::class);
+        $this->expectException(Exception\SignatureVerificationException::class);
         $this->expectExceptionMessage('Timestamp outside the tolerance zone');
 
         $sigHeader = $this->generateHeader(['timestamp' => \time() - 15]);
@@ -96,7 +97,7 @@ final class WebhookTest extends \Stripe\TestCase
 
     public function testTimestampTooRecent()
     {
-        $this->expectException(\Stripe\Exception\SignatureVerificationException::class);
+        $this->expectException(Exception\SignatureVerificationException::class);
         $this->expectExceptionMessage('Timestamp outside the tolerance zone');
 
         $sigHeader = $this->generateHeader(['timestamp' => \time() + 15]);
@@ -106,18 +107,18 @@ final class WebhookTest extends \Stripe\TestCase
     public function testValidHeaderAndSignature()
     {
         $sigHeader = $this->generateHeader();
-        static::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10));
+        self::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10));
     }
 
     public function testHeaderContainsValidSignature()
     {
         $sigHeader = $this->generateHeader() . ',v1=bad_signature';
-        static::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10));
+        self::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10));
     }
 
     public function testTimestampOffButNoTolerance()
     {
         $sigHeader = $this->generateHeader(['timestamp' => 12345]);
-        static::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET));
+        self::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET));
     }
 }

@@ -90,7 +90,7 @@ trait TestHelper
         ApiRequestor::setHttpClient($this->clientMock);
         $this->prepareRequestMock($method, $path, $params, $headers, $hasFile, $base)
             ->willReturnCallback(
-                function ($method, $absUrl, $headers, $params, $hasFile) {
+                static function ($method, $absUrl, $headers, $params, $hasFile) {
                     $curlClient = HttpClient\CurlClient::instance();
                     ApiRequestor::setHttpClient($curlClient);
 
@@ -125,7 +125,7 @@ trait TestHelper
         ApiRequestor::setStreamingHttpClient($this->streamingClientMock);
         $this->prepareRequestStreamMock($method, $path, $params, $headers, $hasFile, $base)
             ->willReturnCallback(
-                function ($method, $absUrl, $readBodyChunkCallable, $headers, $params, $hasFile) {
+                static function ($method, $absUrl, $readBodyChunkCallable, $headers, $params, $hasFile) {
                     $curlClient = HttpClient\CurlClient::instance();
                     ApiRequestor::setStreamingHttpClient($curlClient);
 
@@ -210,7 +210,7 @@ trait TestHelper
                 // for headers, we only check that all of the headers provided in $headers are
                 // present in the list of headers of the actual request
                 null === $headers ? static::anything() : static::callback(
-                    \is_callable($headers) ? $headers : function ($array) use ($headers) {
+                    \is_callable($headers) ? $headers : static function ($array) use ($headers) {
                         foreach ($headers as $header) {
                             if (!\in_array($header, $array, true)) {
                                 return false;
@@ -268,7 +268,7 @@ trait TestHelper
                 // for headers, we only check that all of the headers provided in $headers are
                 // present in the list of headers of the actual request
                 null === $headers ? static::anything() : static::callback(
-                    \is_callable($headers) ? $headers : function ($array) use ($headers) {
+                    \is_callable($headers) ? $headers : static function ($array) use ($headers) {
                         foreach ($headers as $header) {
                             if (!\in_array($header, $array, true)) {
                                 return false;

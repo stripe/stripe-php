@@ -4,6 +4,7 @@ namespace Stripe\Service\Terminal;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\Terminal\ReaderService
  */
 final class ReaderServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class ReaderServiceTest extends \Stripe\TestCase
             '/v1/terminal/readers'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Terminal\Reader::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -46,7 +47,7 @@ final class ReaderServiceTest extends \Stripe\TestCase
             ['registration_code' => 'a-b-c']
         );
         $resource = $this->service->create(['registration_code' => 'a-b-c']);
-        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
+        self::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
     }
 
     public function testDelete()
@@ -56,7 +57,7 @@ final class ReaderServiceTest extends \Stripe\TestCase
             '/v1/terminal/readers/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->delete(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
+        self::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
     }
 
     public function testRetrieve()
@@ -66,7 +67,7 @@ final class ReaderServiceTest extends \Stripe\TestCase
             '/v1/terminal/readers/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
+        self::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
     }
 
     public function testUpdate()
@@ -78,6 +79,6 @@ final class ReaderServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
+        self::assertInstanceOf(\Stripe\Terminal\Reader::class, $resource);
     }
 }

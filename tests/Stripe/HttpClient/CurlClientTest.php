@@ -4,6 +4,7 @@ namespace Stripe\HttpClient;
 
 /**
  * @internal
+ *
  * @covers \Stripe\HttpClient\CurlClient
  */
 final class CurlClientTest extends \Stripe\TestCase
@@ -113,27 +114,27 @@ final class CurlClientTest extends \Stripe\TestCase
     public function testTimeout()
     {
         $curl = new CurlClient();
-        static::assertSame(CurlClient::DEFAULT_TIMEOUT, $curl->getTimeout());
-        static::assertSame(CurlClient::DEFAULT_CONNECT_TIMEOUT, $curl->getConnectTimeout());
+        self::assertSame(CurlClient::DEFAULT_TIMEOUT, $curl->getTimeout());
+        self::assertSame(CurlClient::DEFAULT_CONNECT_TIMEOUT, $curl->getConnectTimeout());
 
         // implicitly tests whether we're returning the CurlClient instance
         $curl = $curl->setConnectTimeout(1)->setTimeout(10);
-        static::assertSame(1, $curl->getConnectTimeout());
-        static::assertSame(10, $curl->getTimeout());
+        self::assertSame(1, $curl->getConnectTimeout());
+        self::assertSame(10, $curl->getTimeout());
 
         $curl->setTimeout(-1);
         $curl->setConnectTimeout(-999);
-        static::assertSame(0, $curl->getTimeout());
-        static::assertSame(0, $curl->getConnectTimeout());
+        self::assertSame(0, $curl->getTimeout());
+        self::assertSame(0, $curl->getConnectTimeout());
     }
 
     public function testUserAgentInfo()
     {
         $curl = new CurlClient();
         $uaInfo = $curl->getUserAgentInfo();
-        static::assertNotNull($uaInfo);
-        static::assertNotNull($uaInfo['httplib']);
-        static::assertNotNull($uaInfo['ssllib']);
+        self::assertNotNull($uaInfo);
+        self::assertNotNull($uaInfo['httplib']);
+        self::assertNotNull($uaInfo['ssllib']);
     }
 
     public function testDefaultOptions()
@@ -141,21 +142,21 @@ final class CurlClientTest extends \Stripe\TestCase
         // make sure options array loads/saves properly
         $optionsArray = [\CURLOPT_PROXY => 'localhost:80'];
         $withOptionsArray = new CurlClient($optionsArray);
-        static::assertSame($withOptionsArray->getDefaultOptions(), $optionsArray);
+        self::assertSame($withOptionsArray->getDefaultOptions(), $optionsArray);
 
         // make sure closure-based options work properly, including argument passing
         $ref = null;
-        $withClosure = new CurlClient(function ($method, $absUrl, $headers, $params, $hasFile) use (&$ref) {
+        $withClosure = new CurlClient(static function ($method, $absUrl, $headers, $params, $hasFile) use (&$ref) {
             $ref = \func_get_args();
 
             return [];
         });
 
         $withClosure->request('get', 'https://httpbin.org/status/200', [], [], false);
-        static::assertSame($ref, ['get', 'https://httpbin.org/status/200', [], [], false]);
+        self::assertSame($ref, ['get', 'https://httpbin.org/status/200', [], [], false]);
 
         // this is the last test case that will run, since it'll throw an exception at the end
-        $withBadClosure = new CurlClient(function () {
+        $withBadClosure = new CurlClient(static function () {
             return 'thisShouldNotWork';
         });
         $this->expectException('Stripe\Exception\UnexpectedValueException');
@@ -168,7 +169,7 @@ final class CurlClientTest extends \Stripe\TestCase
         // make sure options array loads/saves properly
         $optionsArray = [\CURLOPT_SSLVERSION => \CURL_SSLVERSION_TLSv1];
         $withOptionsArray = new CurlClient($optionsArray);
-        static::assertSame($withOptionsArray->getDefaultOptions(), $optionsArray);
+        self::assertSame($withOptionsArray->getDefaultOptions(), $optionsArray);
     }
 
     public function testIpResolveOption()
@@ -176,7 +177,7 @@ final class CurlClientTest extends \Stripe\TestCase
         // make sure options array loads/saves properly
         $optionsArray = [\CURLOPT_IPRESOLVE => \CURL_IPRESOLVE_WHATEVER];
         $withOptionsArray = new CurlClient($optionsArray);
-        static::assertSame($withOptionsArray->getDefaultOptions(), $optionsArray);
+        self::assertSame($withOptionsArray->getDefaultOptions(), $optionsArray);
     }
 
     public function testShouldRetryOnTimeout()
@@ -185,7 +186,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        static::assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_OPERATION_TIMEOUTED, 0, [], 0));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_OPERATION_TIMEOUTED, 0, [], 0));
     }
 
     public function testShouldRetryOnConnectionFailure()
@@ -194,7 +195,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        static::assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_COULDNT_CONNECT, 0, [], 0));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_COULDNT_CONNECT, 0, [], 0));
     }
 
     public function testShouldRetryOnConflict()
@@ -203,7 +204,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        static::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 409, [], 0));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 409, [], 0));
     }
 
     public function testShouldNotRetryOn429()
@@ -212,7 +213,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        static::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 429, [], 0));
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 429, [], 0));
     }
 
     public function testShouldRetryOn500()
@@ -221,7 +222,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        static::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 500, [], 0));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 500, [], 0));
     }
 
     public function testShouldRetryOn503()
@@ -230,7 +231,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        static::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 503, [], 0));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 503, [], 0));
     }
 
     public function testShouldRetryOnStripeShouldRetryTrue()
@@ -239,8 +240,8 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        static::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 400, [], 0));
-        static::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 400, ['stripe-should-retry' => 'true'], 0));
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 400, [], 0));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 400, ['stripe-should-retry' => 'true'], 0));
     }
 
     public function testShouldNotRetryOnStripeShouldRetryFalse()
@@ -249,8 +250,8 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        static::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 500, [], 0));
-        static::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 500, ['stripe-should-retry' => 'false'], 0));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 500, [], 0));
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 500, ['stripe-should-retry' => 'false'], 0));
     }
 
     public function testShouldNotRetryAtMaximumCount()
@@ -259,7 +260,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        static::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 0, [], \Stripe\Stripe::getMaxNetworkRetries()));
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 0, [], \Stripe\Stripe::getMaxNetworkRetries()));
     }
 
     public function testShouldNotRetryOnCertValidationError()
@@ -268,7 +269,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        static::assertFalse($this->shouldRetryMethod->invoke($curlClient, \CURLE_SSL_PEER_CERTIFICATE, -1, [], 0));
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, \CURLE_SSL_PEER_CERTIFICATE, -1, [], 0));
     }
 
     public function testSleepTimeShouldGrowExponentially()
@@ -277,19 +278,19 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient(null, $this->createFakeRandomGenerator());
 
-        static::assertSame(
+        self::assertSame(
             \Stripe\Stripe::getInitialNetworkRetryDelay() * 1,
             $this->sleepTimeMethod->invoke($curlClient, 1, [])
         );
-        static::assertSame(
+        self::assertSame(
             \Stripe\Stripe::getInitialNetworkRetryDelay() * 2,
             $this->sleepTimeMethod->invoke($curlClient, 2, [])
         );
-        static::assertSame(
+        self::assertSame(
             \Stripe\Stripe::getInitialNetworkRetryDelay() * 4,
             $this->sleepTimeMethod->invoke($curlClient, 3, [])
         );
-        static::assertSame(
+        self::assertSame(
             \Stripe\Stripe::getInitialNetworkRetryDelay() * 8,
             $this->sleepTimeMethod->invoke($curlClient, 4, [])
         );
@@ -302,10 +303,10 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient(null, $this->createFakeRandomGenerator());
 
-        static::assertSame(1.0, $this->sleepTimeMethod->invoke($curlClient, 1, []));
-        static::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 2, []));
-        static::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 3, []));
-        static::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 4, []));
+        self::assertSame(1.0, $this->sleepTimeMethod->invoke($curlClient, 1, []));
+        self::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 2, []));
+        self::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 3, []));
+        self::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 4, []));
     }
 
     public function testSleepTimeShouldRespectRetryAfter()
@@ -316,11 +317,11 @@ final class CurlClientTest extends \Stripe\TestCase
         $curlClient = new CurlClient(null, $this->createFakeRandomGenerator());
 
         // Uses max of default and header.
-        static::assertSame(10.0, $this->sleepTimeMethod->invoke($curlClient, 1, ['retry-after' => '10']));
-        static::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 2, ['retry-after' => '1']));
+        self::assertSame(10.0, $this->sleepTimeMethod->invoke($curlClient, 1, ['retry-after' => '10']));
+        self::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 2, ['retry-after' => '1']));
 
         // Ignores excessively large values.
-        static::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 2, ['retry-after' => '100']));
+        self::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 2, ['retry-after' => '100']));
     }
 
     public function testSleepTimeShouldAddSomeRandomness()
@@ -335,12 +336,12 @@ final class CurlClientTest extends \Stripe\TestCase
 
         // the initial value cannot be smaller than the base,
         // so the randomness is ignored
-        static::assertSame(\Stripe\Stripe::getInitialNetworkRetryDelay(), $this->sleepTimeMethod->invoke($curlClient, 1, []));
+        self::assertSame(\Stripe\Stripe::getInitialNetworkRetryDelay(), $this->sleepTimeMethod->invoke($curlClient, 1, []));
 
         // after the first one, the randomness is applied
-        static::assertSame($baseValue * 2, $this->sleepTimeMethod->invoke($curlClient, 2, []));
-        static::assertSame($baseValue * 4, $this->sleepTimeMethod->invoke($curlClient, 3, []));
-        static::assertSame($baseValue * 8, $this->sleepTimeMethod->invoke($curlClient, 4, []));
+        self::assertSame($baseValue * 2, $this->sleepTimeMethod->invoke($curlClient, 2, []));
+        self::assertSame($baseValue * 4, $this->sleepTimeMethod->invoke($curlClient, 3, []));
+        self::assertSame($baseValue * 8, $this->sleepTimeMethod->invoke($curlClient, 4, []));
     }
 
     /**
@@ -368,7 +369,7 @@ final class CurlClientTest extends \Stripe\TestCase
         $curlClient = new CurlClient();
         $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v2');
         $headers = $curlOpts[\CURLOPT_HTTPHEADER];
-        static::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
+        self::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
     }
 
     public function testIdempotencyKeyV2DeleteRequestsNoRetry()
@@ -377,7 +378,7 @@ final class CurlClientTest extends \Stripe\TestCase
         $curlClient = new CurlClient();
         $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'delete', '', [], '', [], 'v2');
         $headers = $curlOpts[\CURLOPT_HTTPHEADER];
-        static::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
+        self::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
     }
 
     public function testIdempotencyKeyAllV2RequestsWithRetry()
@@ -386,7 +387,7 @@ final class CurlClientTest extends \Stripe\TestCase
         $curlClient = new CurlClient();
         $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v2');
         $headers = $curlOpts[\CURLOPT_HTTPHEADER];
-        static::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
+        self::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
     }
 
     // we don't want this behavior - write requests should basically always have an IK. But until we fix it, let's test it
@@ -396,7 +397,7 @@ final class CurlClientTest extends \Stripe\TestCase
         $curlClient = new CurlClient();
         $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v1');
         $headers = $curlOpts[\CURLOPT_HTTPHEADER];
-        static::assertFalse($this->hasHeader($headers, 'Idempotency-Key'));
+        self::assertFalse($this->hasHeader($headers, 'Idempotency-Key'));
     }
 
     public function testNoIdempotencyKeyV1DeleteRequestsNoRetry()
@@ -405,7 +406,7 @@ final class CurlClientTest extends \Stripe\TestCase
         $curlClient = new CurlClient();
         $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'delete', '', [], '', [], 'v1');
         $headers = $curlOpts[\CURLOPT_HTTPHEADER];
-        static::assertFalse($this->hasHeader($headers, 'Idempotency-Key'));
+        self::assertFalse($this->hasHeader($headers, 'Idempotency-Key'));
     }
 
     public function testIdempotencyKeyV1PostRequestsWithRetry()
@@ -414,7 +415,7 @@ final class CurlClientTest extends \Stripe\TestCase
         $curlClient = new CurlClient();
         $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v1');
         $headers = $curlOpts[\CURLOPT_HTTPHEADER];
-        static::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
+        self::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
     }
 
     public function testNoIdempotencyKeyV1DeleteRequestsWithRetry()
@@ -423,7 +424,7 @@ final class CurlClientTest extends \Stripe\TestCase
         $curlClient = new CurlClient();
         $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'delete', '', [], '', [], 'v1');
         $headers = $curlOpts[\CURLOPT_HTTPHEADER];
-        static::assertFalse($this->hasHeader($headers, 'Idempotency-Key'));
+        self::assertFalse($this->hasHeader($headers, 'Idempotency-Key'));
     }
 
     public function testResponseHeadersCaseInsensitive()
@@ -431,8 +432,8 @@ final class CurlClientTest extends \Stripe\TestCase
         $charge = \Stripe\Charge::all();
 
         $headers = $charge->getLastResponse()->headers;
-        static::assertNotNull($headers['request-id']);
-        static::assertSame($headers['request-id'], $headers['Request-Id']);
+        self::assertNotNull($headers['request-id']);
+        self::assertSame($headers['request-id'], $headers['Request-Id']);
     }
 
     public function testSetRequestStatusCallback()
@@ -457,7 +458,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
             \Stripe\Charge::all();
 
-            static::assertTrue($called);
+            self::assertTrue($called);
         } finally {
             \Stripe\ApiRequestor::setHttpClient(null);
         }
@@ -492,20 +493,20 @@ EOF;
         $calls = [];
         $receivedChunks = [];
 
-        $curl->setRequestStatusCallback(function ($rbody, $rcode, $rheaders, $errno, $message, $willBeRetried, $numRetries) use (&$calls) {
+        $curl->setRequestStatusCallback(static function ($rbody, $rcode, $rheaders, $errno, $message, $willBeRetried, $numRetries) use (&$calls) {
             $calls[] = [$rcode, $numRetries];
         });
 
-        $result = $curl->executeStreamingRequestWithRetries($opts, $absUrl, function ($chunk) use (&$receivedChunks) {
+        $result = $curl->executeStreamingRequestWithRetries($opts, $absUrl, static function ($chunk) use (&$receivedChunks) {
             $receivedChunks[] = $chunk;
         });
         $nRequests = $this->stopTestServer();
 
-        static::assertSame([], $receivedChunks);
+        self::assertSame([], $receivedChunks);
 
-        static::assertSame(4, $nRequests);
+        self::assertSame(4, $nRequests);
 
-        static::assertSame([[500, 0], [500, 1], [500, 2], [500, 3]], $calls);
+        self::assertSame([[500, 0], [500, 1], [500, 2], [500, 3]], $calls);
     }
 
     public function testExecuteStreamingRequestWithRetriesHandlesDisconnect()
@@ -531,7 +532,7 @@ EOF;
         $exception = null;
 
         try {
-            $result = $curl->executeStreamingRequestWithRetries($opts, $absUrl, function ($chunk) use (&$receivedChunks) {
+            $result = $curl->executeStreamingRequestWithRetries($opts, $absUrl, static function ($chunk) use (&$receivedChunks) {
                 $receivedChunks[] = $chunk;
             });
         } catch (\Exception $e) {
@@ -539,11 +540,11 @@ EOF;
         }
 
         $nRequests = $this->stopTestServer();
-        static::assertNotNull($exception);
-        static::assertSame('Stripe\Exception\ApiConnectionException', \get_class($exception));
+        self::assertNotNull($exception);
+        self::assertSame('Stripe\Exception\ApiConnectionException', \get_class($exception));
 
-        static::assertSame(['12345'], $receivedChunks);
-        static::assertSame(1, $nRequests);
+        self::assertSame(['12345'], $receivedChunks);
+        self::assertSame(1, $nRequests);
     }
 
     public function testExecuteStreamingRequestWithRetriesPersistentConnection()
@@ -555,8 +556,7 @@ EOF;
         $opts[\CURLOPT_HTTPGET] = 1;
         $opts[\CURLOPT_URL] = $absUrl;
         $opts[\CURLOPT_HTTPHEADER] = ['Authorization: Basic c2tfdGVzdF94eXo6'];
-        $discardCallback = function ($chunk) {
-        };
+        $discardCallback = static function ($chunk) {};
         $curl->executeStreamingRequestWithRetries($opts, $absUrl, $discardCallback);
         $firstHandle = $this->curlHandle->getValue($curl);
 
@@ -567,7 +567,7 @@ EOF;
         $curl->executeStreamingRequestWithRetries($opts, $absUrl, $discardCallback);
         $thirdHandle = $this->curlHandle->getValue($curl);
 
-        static::assertSame($firstHandle, $secondHandle);
-        static::assertNull($thirdHandle);
+        self::assertSame($firstHandle, $secondHandle);
+        self::assertNull($thirdHandle);
     }
 }

@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\OAuthService
  */
 final class OAuthServiceTest extends \Stripe\TestCase
@@ -44,15 +45,15 @@ final class OAuthServiceTest extends \Stripe\TestCase
         $uri = \parse_url($uriStr);
         \parse_str($uri['query'], $params);
 
-        static::assertSame('https', $uri['scheme']);
-        static::assertSame('connect.stripe.com', $uri['host']);
-        static::assertSame('/oauth/authorize', $uri['path']);
+        self::assertSame('https', $uri['scheme']);
+        self::assertSame('connect.stripe.com', $uri['host']);
+        self::assertSame('/oauth/authorize', $uri['path']);
 
-        static::assertSame('ca_123', $params['client_id']);
-        static::assertSame('read_write', $params['scope']);
-        static::assertSame('test@example.com', $params['stripe_user']['email']);
-        static::assertSame('https://example.com/profile/test', $params['stripe_user']['url']);
-        static::assertSame('US', $params['stripe_user']['country']);
+        self::assertSame('ca_123', $params['client_id']);
+        self::assertSame('read_write', $params['scope']);
+        self::assertSame('test@example.com', $params['stripe_user']['email']);
+        self::assertSame('https://example.com/profile/test', $params['stripe_user']['url']);
+        self::assertSame('US', $params['stripe_user']['country']);
     }
 
     public function testAuthorizeUrlRaisesAuthenticationErrorWhenNoClientId()
@@ -109,7 +110,7 @@ final class OAuthServiceTest extends \Stripe\TestCase
             'grant_type' => 'authorization_code',
             'code' => 'this_is_an_authorization_code',
         ]);
-        static::assertSame('sk_access_token', $resp['access_token']);
+        self::assertSame('sk_access_token', $resp['access_token']);
     }
 
     public function testDeauthorize()
@@ -135,6 +136,6 @@ final class OAuthServiceTest extends \Stripe\TestCase
             'client_id' => 'ca_123',
             'stripe_user_id' => 'acct_test',
         ]);
-        static::assertSame('acct_test', $resp['stripe_user_id']);
+        self::assertSame('acct_test', $resp['stripe_user_id']);
     }
 }

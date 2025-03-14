@@ -14,23 +14,23 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount Amount, in cents (or local equivalent).
- * @property null|string|\Stripe\BalanceTransaction $balance_transaction Balance transaction that describes the impact on your account balance.
- * @property null|string|\Stripe\Charge $charge ID of the charge that's refunded.
+ * @property null|BalanceTransaction|string $balance_transaction Balance transaction that describes the impact on your account balance.
+ * @property null|Charge|string $charge ID of the charge that's refunded.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. You can use this for displaying to users (available on non-card refunds only).
- * @property (object{affirm?: (object{}&\Stripe\StripeObject&\stdClass), afterpay_clearpay?: (object{}&\Stripe\StripeObject&\stdClass), alipay?: (object{}&\Stripe\StripeObject&\stdClass), alma?: (object{}&\Stripe\StripeObject&\stdClass), amazon_pay?: (object{}&\Stripe\StripeObject&\stdClass), au_bank_transfer?: (object{}&\Stripe\StripeObject&\stdClass), blik?: (object{network_decline_code: null|string, reference: null|string, reference_status: null|string}&\Stripe\StripeObject&\stdClass), br_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\Stripe\StripeObject&\stdClass), card?: (object{reference?: string, reference_status?: string, reference_type?: string, type: string}&\Stripe\StripeObject&\stdClass), cashapp?: (object{}&\Stripe\StripeObject&\stdClass), customer_cash_balance?: (object{}&\Stripe\StripeObject&\stdClass), eps?: (object{}&\Stripe\StripeObject&\stdClass), eu_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\Stripe\StripeObject&\stdClass), gb_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\Stripe\StripeObject&\stdClass), giropay?: (object{}&\Stripe\StripeObject&\stdClass), grabpay?: (object{}&\Stripe\StripeObject&\stdClass), id_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\Stripe\StripeObject&\stdClass), jp_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\Stripe\StripeObject&\stdClass), klarna?: (object{}&\Stripe\StripeObject&\stdClass), multibanco?: (object{reference: null|string, reference_status: null|string}&\Stripe\StripeObject&\stdClass), mx_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\Stripe\StripeObject&\stdClass), p24?: (object{reference: null|string, reference_status: null|string}&\Stripe\StripeObject&\stdClass), paynow?: (object{}&\Stripe\StripeObject&\stdClass), paypal?: (object{}&\Stripe\StripeObject&\stdClass), pix?: (object{}&\Stripe\StripeObject&\stdClass), revolut?: (object{}&\Stripe\StripeObject&\stdClass), sofort?: (object{}&\Stripe\StripeObject&\stdClass), swish?: (object{network_decline_code: null|string, reference: null|string, reference_status: null|string}&\Stripe\StripeObject&\stdClass), th_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\Stripe\StripeObject&\stdClass), type: string, us_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\Stripe\StripeObject&\stdClass), wechat_pay?: (object{}&\Stripe\StripeObject&\stdClass), zip?: (object{}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass) $destination_details
- * @property null|string|\Stripe\BalanceTransaction $failure_balance_transaction After the refund fails, this balance transaction describes the adjustment made on your account balance that reverses the initial balance transaction.
+ * @property (object{affirm?: (object{}&\stdClass&StripeObject), afterpay_clearpay?: (object{}&\stdClass&StripeObject), alipay?: (object{}&\stdClass&StripeObject), alma?: (object{}&\stdClass&StripeObject), amazon_pay?: (object{}&\stdClass&StripeObject), au_bank_transfer?: (object{}&\stdClass&StripeObject), blik?: (object{network_decline_code: null|string, reference: null|string, reference_status: null|string}&\stdClass&StripeObject), br_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\stdClass&StripeObject), card?: (object{reference?: string, reference_status?: string, reference_type?: string, type: string}&\stdClass&StripeObject), cashapp?: (object{}&\stdClass&StripeObject), customer_cash_balance?: (object{}&\stdClass&StripeObject), eps?: (object{}&\stdClass&StripeObject), eu_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\stdClass&StripeObject), gb_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\stdClass&StripeObject), giropay?: (object{}&\stdClass&StripeObject), grabpay?: (object{}&\stdClass&StripeObject), id_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\stdClass&StripeObject), jp_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\stdClass&StripeObject), klarna?: (object{}&\stdClass&StripeObject), multibanco?: (object{reference: null|string, reference_status: null|string}&\stdClass&StripeObject), mx_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\stdClass&StripeObject), p24?: (object{reference: null|string, reference_status: null|string}&\stdClass&StripeObject), paynow?: (object{}&\stdClass&StripeObject), paypal?: (object{}&\stdClass&StripeObject), pix?: (object{}&\stdClass&StripeObject), revolut?: (object{}&\stdClass&StripeObject), sofort?: (object{}&\stdClass&StripeObject), swish?: (object{network_decline_code: null|string, reference: null|string, reference_status: null|string}&\stdClass&StripeObject), th_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\stdClass&StripeObject), type: string, us_bank_transfer?: (object{reference: null|string, reference_status: null|string}&\stdClass&StripeObject), wechat_pay?: (object{}&\stdClass&StripeObject), zip?: (object{}&\stdClass&StripeObject)}&\stdClass&StripeObject) $destination_details
+ * @property null|BalanceTransaction|string $failure_balance_transaction After the refund fails, this balance transaction describes the adjustment made on your account balance that reverses the initial balance transaction.
  * @property null|string $failure_reason Provides the reason for the refund failure. Possible values are: <code>lost_or_stolen_card</code>, <code>expired_or_canceled_card</code>, <code>charge_for_pending_refund_disputed</code>, <code>insufficient_funds</code>, <code>declined</code>, <code>merchant_request</code>, or <code>unknown</code>.
  * @property null|string $instructions_email For payment methods without native refund support (for example, Konbini, PromptPay), provide an email address for the customer to receive refund instructions.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|(object{display_details?: (object{email_sent: (object{email_sent_at: int, email_sent_to: string}&\Stripe\StripeObject&\stdClass), expires_at: int}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass) $next_action
- * @property null|string|\Stripe\PaymentIntent $payment_intent ID of the PaymentIntent that's refunded.
+ * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|(object{display_details?: (object{email_sent: (object{email_sent_at: int, email_sent_to: string}&\stdClass&StripeObject), expires_at: int}&\stdClass&StripeObject), type: string}&\stdClass&StripeObject) $next_action
+ * @property null|PaymentIntent|string $payment_intent ID of the PaymentIntent that's refunded.
  * @property null|string $reason Reason for the refund, which is either user-provided (<code>duplicate</code>, <code>fraudulent</code>, or <code>requested_by_customer</code>) or generated by Stripe internally (<code>expired_uncaptured_charge</code>).
  * @property null|string $receipt_number This is the transaction number that appears on email receipts sent for this refund.
- * @property null|string|\Stripe\TransferReversal $source_transfer_reversal The transfer reversal that's associated with the refund. Only present if the charge came from another Stripe account.
+ * @property null|string|TransferReversal $source_transfer_reversal The transfer reversal that's associated with the refund. Only present if the charge came from another Stripe account.
  * @property null|string $status Status of the refund. This can be <code>pending</code>, <code>requires_action</code>, <code>succeeded</code>, <code>failed</code>, or <code>canceled</code>. Learn more about <a href="https://stripe.com/docs/refunds#failed-refunds">failed refunds</a>.
- * @property null|string|\Stripe\TransferReversal $transfer_reversal This refers to the transfer reversal object if the accompanying transfer reverses. This is only applicable if the charge was created using the destination parameter.
+ * @property null|string|TransferReversal $transfer_reversal This refers to the transfer reversal object if the accompanying transfer reverses. This is only applicable if the charge was created using the destination parameter.
  */
 class Refund extends ApiResource
 {
@@ -68,12 +68,12 @@ class Refund extends ApiResource
      * an error when called on an already-refunded charge, or when trying to refund
      * more money than is left on a charge.
      *
-     * @param null|array{amount?: int, charge?: string, currency?: string, customer?: string, expand?: string[], instructions_email?: string, metadata?: null|\Stripe\StripeObject, origin?: string, payment_intent?: string, reason?: string, refund_application_fee?: bool, reverse_transfer?: bool} $params
+     * @param null|array{amount?: int, charge?: string, currency?: string, customer?: string, expand?: string[], instructions_email?: string, metadata?: null|StripeObject, origin?: string, payment_intent?: string, reason?: string, refund_application_fee?: bool, reverse_transfer?: bool} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Refund the created resource
      *
-     * @return \Stripe\Refund the created resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -81,7 +81,7 @@ class Refund extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -92,18 +92,18 @@ class Refund extends ApiResource
      * order, with the most recent refunds appearing first. The 10 most recent refunds
      * are always available by default on the Charge object.
      *
-     * @param null|array{charge?: string, created?: int|array, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, starting_after?: string} $params
+     * @param null|array{charge?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<Refund> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Refund> of ApiResources
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+        return static::_requestPage($url, Collection::class, $params, $opts);
     }
 
     /**
@@ -112,13 +112,13 @@ class Refund extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Refund
      *
-     * @return \Stripe\Refund
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -132,12 +132,12 @@ class Refund extends ApiResource
      * This request only accepts <code>metadata</code> as an argument.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{expand?: string[], metadata?: null|StripeObject} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Refund the updated resource
      *
-     * @return \Stripe\Refund the updated resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -145,7 +145,7 @@ class Refund extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -155,9 +155,9 @@ class Refund extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Refund the canceled refund
      *
-     * @return \Stripe\Refund the canceled refund
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function cancel($params = null, $opts = null)
     {

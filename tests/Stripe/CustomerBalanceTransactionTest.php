@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\CustomerBalanceTransaction
  */
-final class CustomerBalanceTransactionTest extends \Stripe\TestCase
+final class CustomerBalanceTransactionTest extends TestCase
 {
     use TestHelper;
 
@@ -15,8 +16,8 @@ final class CustomerBalanceTransactionTest extends \Stripe\TestCase
 
     public function testHasCorrectUrl()
     {
-        $resource = \Stripe\Customer::retrieveBalanceTransaction(self::TEST_CUSTOMER_ID, self::TEST_RESOURCE_ID);
-        static::assertSame(
+        $resource = Customer::retrieveBalanceTransaction(self::TEST_CUSTOMER_ID, self::TEST_RESOURCE_ID);
+        self::assertSame(
             '/v1/customers/' . self::TEST_CUSTOMER_ID . '/balance_transactions/' . self::TEST_RESOURCE_ID,
             $resource->instanceUrl()
         );

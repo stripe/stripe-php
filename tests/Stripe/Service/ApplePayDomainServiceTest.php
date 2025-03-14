@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\ApplePayDomainService
  */
 final class ApplePayDomainServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class ApplePayDomainServiceTest extends \Stripe\TestCase
             '/v1/apple_pay/domains'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\ApplePayDomain::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\ApplePayDomain::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -47,7 +48,7 @@ final class ApplePayDomainServiceTest extends \Stripe\TestCase
         $resource = $this->service->create([
             'domain_name' => 'domain',
         ]);
-        static::assertInstanceOf(\Stripe\ApplePayDomain::class, $resource);
+        self::assertInstanceOf(\Stripe\ApplePayDomain::class, $resource);
     }
 
     public function testDelete()
@@ -57,7 +58,7 @@ final class ApplePayDomainServiceTest extends \Stripe\TestCase
             '/v1/apple_pay/domains/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->delete(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\ApplePayDomain::class, $resource);
+        self::assertInstanceOf(\Stripe\ApplePayDomain::class, $resource);
     }
 
     public function testRetrieve()
@@ -67,6 +68,6 @@ final class ApplePayDomainServiceTest extends \Stripe\TestCase
             '/v1/apple_pay/domains/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\ApplePayDomain::class, $resource);
+        self::assertInstanceOf(\Stripe\ApplePayDomain::class, $resource);
     }
 }

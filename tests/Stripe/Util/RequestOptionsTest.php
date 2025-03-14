@@ -4,6 +4,7 @@ namespace Stripe\Util;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Util\RequestOptions
  */
 final class RequestOptionsTest extends \Stripe\TestCase
@@ -13,9 +14,9 @@ final class RequestOptionsTest extends \Stripe\TestCase
     public function testParseString()
     {
         $opts = RequestOptions::parse('foo');
-        static::assertSame('foo', $opts->apiKey);
-        static::assertSame([], $opts->headers);
-        static::assertNull($opts->apiBase);
+        self::assertSame('foo', $opts->apiKey);
+        self::assertSame([], $opts->headers);
+        self::assertNull($opts->apiBase);
     }
 
     public function testParseStringStrict()
@@ -29,17 +30,17 @@ final class RequestOptionsTest extends \Stripe\TestCase
     public function testParseNull()
     {
         $opts = RequestOptions::parse(null);
-        static::assertNull($opts->apiKey);
-        static::assertSame([], $opts->headers);
-        static::assertNull($opts->apiBase);
+        self::assertNull($opts->apiKey);
+        self::assertSame([], $opts->headers);
+        self::assertNull($opts->apiBase);
     }
 
     public function testParseArrayEmpty()
     {
         $opts = RequestOptions::parse([]);
-        static::assertNull($opts->apiKey);
-        static::assertSame([], $opts->headers);
-        static::assertNull($opts->apiBase);
+        self::assertNull($opts->apiKey);
+        self::assertSame([], $opts->headers);
+        self::assertNull($opts->apiBase);
     }
 
     public function testParseArrayWithAPIKey()
@@ -49,9 +50,9 @@ final class RequestOptionsTest extends \Stripe\TestCase
                 'api_key' => 'foo',
             ]
         );
-        static::assertSame('foo', $opts->apiKey);
-        static::assertSame([], $opts->headers);
-        static::assertNull($opts->apiBase);
+        self::assertSame('foo', $opts->apiKey);
+        self::assertSame([], $opts->headers);
+        self::assertNull($opts->apiBase);
     }
 
     public function testParseArrayWithIdempotencyKey()
@@ -61,9 +62,9 @@ final class RequestOptionsTest extends \Stripe\TestCase
                 'idempotency_key' => 'foo',
             ]
         );
-        static::assertNull($opts->apiKey);
-        static::assertSame(['Idempotency-Key' => 'foo'], $opts->headers);
-        static::assertNull($opts->apiBase);
+        self::assertNull($opts->apiKey);
+        self::assertSame(['Idempotency-Key' => 'foo'], $opts->headers);
+        self::assertNull($opts->apiBase);
     }
 
     public function testParseArrayWithAPIKeyAndIdempotencyKey()
@@ -74,9 +75,9 @@ final class RequestOptionsTest extends \Stripe\TestCase
                 'idempotency_key' => 'foo',
             ]
         );
-        static::assertSame('foo', $opts->apiKey);
-        static::assertSame(['Idempotency-Key' => 'foo'], $opts->headers);
-        static::assertNull($opts->apiBase);
+        self::assertSame('foo', $opts->apiKey);
+        self::assertSame(['Idempotency-Key' => 'foo'], $opts->headers);
+        self::assertNull($opts->apiBase);
     }
 
     public function testParseArrayWithAPIKeyAndUnexpectedKeys()
@@ -87,9 +88,9 @@ final class RequestOptionsTest extends \Stripe\TestCase
                 'foo' => 'bar',
             ]
         );
-        static::assertSame('foo', $opts->apiKey);
-        static::assertSame([], $opts->headers);
-        static::assertNull($opts->apiBase);
+        self::assertSame('foo', $opts->apiKey);
+        self::assertSame([], $opts->headers);
+        self::assertNull($opts->apiBase);
     }
 
     public function testParseArrayWithAPIKeyAndUnexpectedKeysStrict()
@@ -113,9 +114,9 @@ final class RequestOptionsTest extends \Stripe\TestCase
                 'api_base' => 'https://example.com',
             ]
         );
-        static::assertNull($opts->apiKey);
-        static::assertSame([], $opts->headers);
-        static::assertSame('https://example.com', $opts->apiBase);
+        self::assertNull($opts->apiKey);
+        self::assertSame([], $opts->headers);
+        self::assertSame('https://example.com', $opts->apiBase);
     }
 
     public function testParseWrongType()
@@ -138,9 +139,9 @@ final class RequestOptionsTest extends \Stripe\TestCase
                 'idempotency_key' => 'bar',
             ]
         );
-        static::assertSame('foo', $opts->apiKey);
-        static::assertSame(['Idempotency-Key' => 'bar'], $opts->headers);
-        static::assertNull($opts->apiBase);
+        self::assertSame('foo', $opts->apiKey);
+        self::assertSame(['Idempotency-Key' => 'bar'], $opts->headers);
+        self::assertNull($opts->apiBase);
     }
 
     public function testDiscardNonPersistentHeaders()
@@ -153,25 +154,25 @@ final class RequestOptionsTest extends \Stripe\TestCase
             ]
         );
         $opts->discardNonPersistentHeaders();
-        static::assertSame(['Stripe-Account' => 'foo'], $opts->headers);
+        self::assertSame(['Stripe-Account' => 'foo'], $opts->headers);
     }
 
     public function testDebugInfo()
     {
         $opts = RequestOptions::parse(['api_key' => 'sk_test_1234567890abcdefghijklmn']);
         $debugInfo = \print_r($opts, true);
-        static::compatAssertStringContainsString('[apiKey] => sk_test_********************klmn', $debugInfo);
+        self::compatAssertStringContainsString('[apiKey] => sk_test_********************klmn', $debugInfo);
 
         $opts = RequestOptions::parse(['api_key' => 'sk_1234567890abcdefghijklmn']);
         $debugInfo = \print_r($opts, true);
-        static::compatAssertStringContainsString('[apiKey] => sk_********************klmn', $debugInfo);
+        self::compatAssertStringContainsString('[apiKey] => sk_********************klmn', $debugInfo);
 
         $opts = RequestOptions::parse(['api_key' => '1234567890abcdefghijklmn']);
         $debugInfo = \print_r($opts, true);
-        static::compatAssertStringContainsString('[apiKey] => ********************klmn', $debugInfo);
+        self::compatAssertStringContainsString('[apiKey] => ********************klmn', $debugInfo);
 
         $opts = RequestOptions::parse([]);
         $debugInfo = \print_r($opts, true);
-        static::compatAssertStringContainsString("[apiKey] => \n", $debugInfo);
+        self::compatAssertStringContainsString("[apiKey] => \n", $debugInfo);
     }
 }

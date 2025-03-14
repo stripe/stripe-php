@@ -13,7 +13,7 @@ namespace Stripe\Billing;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $status Status of the alert. This can be active, inactive or archived.
  * @property string $title Title of the alert.
- * @property null|(object{filters: null|((object{customer: null|string|\Stripe\Customer, type: string}&\Stripe\StripeObject&\stdClass))[], gte: int, meter: string|\Stripe\Billing\Meter, recurrence: string}&\Stripe\StripeObject&\stdClass) $usage_threshold Encapsulates configuration of the alert to monitor usage on a specific <a href="https://stripe.com/docs/api/billing/meter">Billing Meter</a>.
+ * @property null|(object{filters: null|((object{customer: null|string|\Stripe\Customer, type: string}&\stdClass&\Stripe\StripeObject))[], gte: int, meter: Meter|string, recurrence: string}&\stdClass&\Stripe\StripeObject) $usage_threshold Encapsulates configuration of the alert to monitor usage on a specific <a href="https://stripe.com/docs/api/billing/meter">Billing Meter</a>.
  */
 class Alert extends \Stripe\ApiResource
 {
@@ -29,9 +29,9 @@ class Alert extends \Stripe\ApiResource
      * @param null|array{alert_type: string, expand?: string[], title: string, usage_threshold?: array{filters?: array{customer?: string, type: string}[], gte: int, meter?: string, recurrence: string}} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Alert the created resource
      *
-     * @return \Stripe\Billing\Alert the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -51,9 +51,9 @@ class Alert extends \Stripe\ApiResource
      * @param null|array{alert_type?: string, ending_before?: string, expand?: string[], limit?: int, meter?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Alert> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Billing\Alert> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -68,9 +68,9 @@ class Alert extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Alert
      *
-     * @return \Stripe\Billing\Alert
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -85,9 +85,9 @@ class Alert extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Alert the activated alert
      *
-     * @return \Stripe\Billing\Alert the activated alert
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function activate($params = null, $opts = null)
     {
@@ -102,9 +102,9 @@ class Alert extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Alert the archived alert
      *
-     * @return \Stripe\Billing\Alert the archived alert
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function archive($params = null, $opts = null)
     {
@@ -119,9 +119,9 @@ class Alert extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Alert the deactivated alert
      *
-     * @return \Stripe\Billing\Alert the deactivated alert
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function deactivate($params = null, $opts = null)
     {

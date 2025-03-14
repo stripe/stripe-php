@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\CountrySpecService
  */
 final class CountrySpecServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class CountrySpecServiceTest extends \Stripe\TestCase
             '/v1/country_specs'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\CountrySpec::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\CountrySpec::class, $resources->data[0]);
     }
 
     public function testRetrieve()
@@ -45,6 +46,6 @@ final class CountrySpecServiceTest extends \Stripe\TestCase
             '/v1/country_specs/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\CountrySpec::class, $resource);
+        self::assertInstanceOf(\Stripe\CountrySpec::class, $resource);
     }
 }

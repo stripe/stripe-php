@@ -22,9 +22,9 @@ class EphemeralKey extends ApiResource
      * @param null|array{expand?: string[]} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return EphemeralKey the deleted resource
      *
-     * @return \Stripe\EphemeralKey the deleted resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function delete($params = null, $opts = null)
     {
@@ -45,10 +45,10 @@ class EphemeralKey extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\InvalidArgumentException if stripe_version is missing
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return EphemeralKey the created key
      *
-     * @return \Stripe\EphemeralKey the created key
+     * @throws Exception\InvalidArgumentException if stripe_version is missing
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $opts = null)
     {

@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\DisputeService
  */
 final class DisputeServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class DisputeServiceTest extends \Stripe\TestCase
             '/v1/disputes'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Dispute::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Dispute::class, $resources->data[0]);
     }
 
     public function testClose()
@@ -45,7 +46,7 @@ final class DisputeServiceTest extends \Stripe\TestCase
             '/v1/disputes/' . self::TEST_RESOURCE_ID . '/close'
         );
         $resource = $this->service->close(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Dispute::class, $resource);
+        self::assertInstanceOf(\Stripe\Dispute::class, $resource);
     }
 
     public function testRetrieve()
@@ -55,7 +56,7 @@ final class DisputeServiceTest extends \Stripe\TestCase
             '/v1/disputes/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Dispute::class, $resource);
+        self::assertInstanceOf(\Stripe\Dispute::class, $resource);
     }
 
     public function testUpdate()
@@ -67,6 +68,6 @@ final class DisputeServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Dispute::class, $resource);
+        self::assertInstanceOf(\Stripe\Dispute::class, $resource);
     }
 }

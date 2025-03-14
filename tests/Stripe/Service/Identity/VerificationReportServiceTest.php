@@ -4,6 +4,7 @@ namespace Stripe\Service\Identity;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\Identity\VerificationReportService
  */
 final class VerificationReportServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class VerificationReportServiceTest extends \Stripe\TestCase
             '/v1/identity/verification_reports'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Identity\VerificationReport::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Identity\VerificationReport::class, $resources->data[0]);
     }
 
     public function testRetrieve()
@@ -45,6 +46,6 @@ final class VerificationReportServiceTest extends \Stripe\TestCase
             '/v1/identity/verification_reports/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Identity\VerificationReport::class, $resource);
+        self::assertInstanceOf(\Stripe\Identity\VerificationReport::class, $resource);
     }
 }

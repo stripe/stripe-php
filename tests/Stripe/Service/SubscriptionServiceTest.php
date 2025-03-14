@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\SubscriptionService
  */
 final class SubscriptionServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class SubscriptionServiceTest extends \Stripe\TestCase
             '/v1/subscriptions'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Subscription::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Subscription::class, $resources->data[0]);
     }
 
     public function testAllPagination()
@@ -49,7 +50,7 @@ final class SubscriptionServiceTest extends \Stripe\TestCase
             'limit' => 100,
         ]);
         $filters = $resources->getFilters();
-        static::assertSame($filters, [
+        self::assertSame($filters, [
             'status' => 'all',
             'limit' => 100,
         ]);
@@ -62,7 +63,7 @@ final class SubscriptionServiceTest extends \Stripe\TestCase
             '/v1/subscriptions/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->cancel(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Subscription::class, $resource);
+        self::assertInstanceOf(\Stripe\Subscription::class, $resource);
     }
 
     public function testCreate()
@@ -74,7 +75,7 @@ final class SubscriptionServiceTest extends \Stripe\TestCase
         $resource = $this->service->create([
             'customer' => 'cus_123',
         ]);
-        static::assertInstanceOf(\Stripe\Subscription::class, $resource);
+        self::assertInstanceOf(\Stripe\Subscription::class, $resource);
     }
 
     public function testDeleteDiscount()
@@ -84,8 +85,8 @@ final class SubscriptionServiceTest extends \Stripe\TestCase
             '/v1/subscriptions/' . self::TEST_RESOURCE_ID . '/discount'
         );
         $resource = $this->service->deleteDiscount(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Discount::class, $resource);
-        static::assertTrue($resource->isDeleted());
+        self::assertInstanceOf(\Stripe\Discount::class, $resource);
+        self::assertTrue($resource->isDeleted());
     }
 
     public function testRetrieve()
@@ -95,7 +96,7 @@ final class SubscriptionServiceTest extends \Stripe\TestCase
             '/v1/subscriptions/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Subscription::class, $resource);
+        self::assertInstanceOf(\Stripe\Subscription::class, $resource);
     }
 
     public function testUpdate()
@@ -107,6 +108,6 @@ final class SubscriptionServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Subscription::class, $resource);
+        self::assertInstanceOf(\Stripe\Subscription::class, $resource);
     }
 }

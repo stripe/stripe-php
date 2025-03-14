@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\RefundService
  */
 final class RefundServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class RefundServiceTest extends \Stripe\TestCase
             '/v1/refunds'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Refund::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Refund::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -47,7 +48,7 @@ final class RefundServiceTest extends \Stripe\TestCase
         $resource = $this->service->create([
             'charge' => 'ch_123',
         ]);
-        static::assertInstanceOf(\Stripe\Refund::class, $resource);
+        self::assertInstanceOf(\Stripe\Refund::class, $resource);
     }
 
     public function testRetrieve()
@@ -57,7 +58,7 @@ final class RefundServiceTest extends \Stripe\TestCase
             '/v1/refunds/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Refund::class, $resource);
+        self::assertInstanceOf(\Stripe\Refund::class, $resource);
     }
 
     public function testUpdate()
@@ -69,6 +70,6 @@ final class RefundServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Refund::class, $resource);
+        self::assertInstanceOf(\Stripe\Refund::class, $resource);
     }
 }

@@ -17,7 +17,7 @@ namespace Stripe\Issuing;
  * @property string $event_type The type of event corresponding to this dispute settlement detail, representing the stage in the dispute network lifecycle.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $network The card network for this dispute settlement detail. One of [&quot;visa&quot;, &quot;mastercard&quot;, &quot;maestro&quot;]
- * @property null|(object{processing_date: null|string}&\Stripe\StripeObject&\stdClass) $network_data Details about the transaction, such as processing dates, set by the card network.
+ * @property null|(object{processing_date: null|string}&\stdClass&\Stripe\StripeObject) $network_data Details about the transaction, such as processing dates, set by the card network.
  * @property null|string $settlement The ID of the linked card network settlement.
  */
 class DisputeSettlementDetail extends \Stripe\ApiResource
@@ -41,9 +41,9 @@ class DisputeSettlementDetail extends \Stripe\ApiResource
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, settlement?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<DisputeSettlementDetail> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\DisputeSettlementDetail> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -58,9 +58,9 @@ class DisputeSettlementDetail extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return DisputeSettlementDetail
      *
-     * @return \Stripe\Issuing\DisputeSettlementDetail
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

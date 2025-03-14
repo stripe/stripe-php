@@ -4,6 +4,7 @@ namespace Stripe\Issuing;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Issuing\Card
  */
 final class CardTest extends \Stripe\TestCase
@@ -19,8 +20,8 @@ final class CardTest extends \Stripe\TestCase
             '/v1/issuing/cards'
         );
         $resources = Card::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Issuing\Card::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(Card::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -30,7 +31,7 @@ final class CardTest extends \Stripe\TestCase
             '/v1/issuing/cards/' . self::TEST_RESOURCE_ID
         );
         $resource = Card::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Issuing\Card::class, $resource);
+        self::assertInstanceOf(Card::class, $resource);
     }
 
     public function testIsSaveable()
@@ -43,7 +44,7 @@ final class CardTest extends \Stripe\TestCase
             '/v1/issuing/cards/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\Issuing\Card::class, $resource);
+        self::assertInstanceOf(Card::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -56,6 +57,6 @@ final class CardTest extends \Stripe\TestCase
         $resource = Card::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Issuing\Card::class, $resource);
+        self::assertInstanceOf(Card::class, $resource);
     }
 }
