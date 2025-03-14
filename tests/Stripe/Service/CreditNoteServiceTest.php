@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\CreditNoteService
  */
 final class CreditNoteServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class CreditNoteServiceTest extends \Stripe\TestCase
             '/v1/credit_notes'
         );
         $resources = $this->service->all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\CreditNote::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\CreditNote::class, $resources->data[0]);
     }
 
     public function testAllLines()
@@ -45,8 +46,8 @@ final class CreditNoteServiceTest extends \Stripe\TestCase
             '/v1/credit_notes/' . self::TEST_RESOURCE_ID . '/lines'
         );
         $resources = $this->service->allLines(self::TEST_RESOURCE_ID);
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\CreditNoteLineItem::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\CreditNoteLineItem::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -60,7 +61,7 @@ final class CreditNoteServiceTest extends \Stripe\TestCase
             'invoice' => 'in_132',
             'reason' => 'duplicate',
         ]);
-        static::assertInstanceOf(\Stripe\CreditNote::class, $resource);
+        self::assertInstanceOf(\Stripe\CreditNote::class, $resource);
     }
 
     public function testPreview()
@@ -73,7 +74,7 @@ final class CreditNoteServiceTest extends \Stripe\TestCase
             'amount' => 100,
             'invoice' => 'in_123',
         ]);
-        static::assertInstanceOf(\Stripe\CreditNote::class, $resource);
+        self::assertInstanceOf(\Stripe\CreditNote::class, $resource);
     }
 
     public function testPreviewLines()
@@ -86,8 +87,8 @@ final class CreditNoteServiceTest extends \Stripe\TestCase
             'amount' => 100,
             'invoice' => 'in_123',
         ]);
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\CreditNoteLineItem::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\CreditNoteLineItem::class, $resources->data[0]);
     }
 
     public function testRetrieve()
@@ -97,7 +98,7 @@ final class CreditNoteServiceTest extends \Stripe\TestCase
             '/v1/credit_notes/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\CreditNote::class, $resource);
+        self::assertInstanceOf(\Stripe\CreditNote::class, $resource);
     }
 
     public function testUpdate()
@@ -109,7 +110,7 @@ final class CreditNoteServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\CreditNote::class, $resource);
+        self::assertInstanceOf(\Stripe\CreditNote::class, $resource);
     }
 
     public function testVoidCreditNote()
@@ -119,6 +120,6 @@ final class CreditNoteServiceTest extends \Stripe\TestCase
             '/v1/credit_notes/' . self::TEST_RESOURCE_ID . '/void'
         );
         $resource = $this->service->voidCreditNote(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\CreditNote::class, $resource);
+        self::assertInstanceOf(\Stripe\CreditNote::class, $resource);
     }
 }

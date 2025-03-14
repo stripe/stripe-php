@@ -28,9 +28,9 @@ class Settings extends \Stripe\SingletonApiResource
      *
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Settings
      *
-     * @return \Stripe\Tax\Settings
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($opts = null)
     {
@@ -45,9 +45,9 @@ class Settings extends \Stripe\SingletonApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return static the updated resource
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($params = null, $opts = null)
     {
@@ -64,9 +64,9 @@ class Settings extends \Stripe\SingletonApiResource
     /**
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return static the saved resource
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
      * @deprecated The `save` method is deprecated and will be removed in a
      *     future major version of the library. Use the static method `update`

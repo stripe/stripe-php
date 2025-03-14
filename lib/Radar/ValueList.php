@@ -15,7 +15,7 @@ namespace Stripe\Radar;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $created_by The name or email address of the user who created this value list.
  * @property string $item_type The type of items in the value list. One of <code>card_fingerprint</code>, <code>us_bank_account_fingerprint</code>, <code>sepa_debit_fingerprint</code>, <code>card_bin</code>, <code>email</code>, <code>ip_address</code>, <code>country</code>, <code>string</code>, <code>case_sensitive_string</code>, or <code>customer_id</code>.
- * @property \Stripe\Collection<\Stripe\Radar\ValueListItem> $list_items List of items contained within this value list.
+ * @property \Stripe\Collection<ValueListItem> $list_items List of items contained within this value list.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $name The name of the value list.
@@ -44,9 +44,9 @@ class ValueList extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ValueList the created resource
      *
-     * @return \Stripe\Radar\ValueList the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -68,9 +68,9 @@ class ValueList extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ValueList the deleted resource
      *
-     * @return \Stripe\Radar\ValueList the deleted resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function delete($params = null, $opts = null)
     {
@@ -91,9 +91,9 @@ class ValueList extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<ValueList> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Radar\ValueList> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -108,9 +108,9 @@ class ValueList extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ValueList
      *
-     * @return \Stripe\Radar\ValueList
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -130,9 +130,9 @@ class ValueList extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ValueList the updated resource
      *
-     * @return \Stripe\Radar\ValueList the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {

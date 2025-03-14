@@ -4,10 +4,11 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Event
  * @covers \Stripe\V2\Event
  */
-final class EventTest extends \Stripe\TestCase
+final class EventTest extends TestCase
 {
     use TestHelper;
 
@@ -20,8 +21,8 @@ final class EventTest extends \Stripe\TestCase
             '/v1/events'
         );
         $resources = Event::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Event::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(Event::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -31,7 +32,7 @@ final class EventTest extends \Stripe\TestCase
             '/v1/events/' . self::TEST_RESOURCE_ID
         );
         $resource = Event::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Event::class, $resource);
+        self::assertInstanceOf(Event::class, $resource);
     }
 
     public function testV2EventDataDeserializesIntoType()
@@ -67,8 +68,8 @@ final class EventTest extends \Stripe\TestCase
 
         $event = $client->v2->core->events->retrieve('evt_123');
 
-        static::assertInstanceOf(\Stripe\Events\V1BillingMeterErrorReportTriggeredEvent::class, $event);
-        static::assertInstanceOf(\Stripe\EventData\V1BillingMeterErrorReportTriggeredEventData::class, $event->data);
+        self::assertInstanceOf(Events\V1BillingMeterErrorReportTriggeredEvent::class, $event);
+        self::assertInstanceOf(EventData\V1BillingMeterErrorReportTriggeredEventData::class, $event->data);
     }
 
     public function testV2EventFetchRelatedObject()
@@ -88,8 +89,8 @@ final class EventTest extends \Stripe\TestCase
         ];
 
         // right now PHP only supports one request per unit test
-        $fullEvent = \Stripe\Util\Util::convertToStripeObject($jsonEvent, [], 'v2');
-        static::assertInstanceOf(\Stripe\Events\V1BillingMeterErrorReportTriggeredEvent::class, $fullEvent);
+        $fullEvent = Util\Util::convertToStripeObject($jsonEvent, [], 'v2');
+        self::assertInstanceOf(Events\V1BillingMeterErrorReportTriggeredEvent::class, $fullEvent);
         $this->stubRequest(
             'GET',
             '/v1/billing/meters/mtr_123',
@@ -101,7 +102,7 @@ final class EventTest extends \Stripe\TestCase
             MOCK_URL
         );
         $meter = $fullEvent->fetchRelatedObject();
-        static::assertInstanceOf(\Stripe\Billing\Meter::class, $meter);
-        static::assertSame('mtr_123', $meter->id);
+        self::assertInstanceOf(Billing\Meter::class, $meter);
+        self::assertSame('mtr_123', $meter->id);
     }
 }

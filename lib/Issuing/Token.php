@@ -9,7 +9,7 @@ namespace Stripe\Issuing;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property string|\Stripe\Issuing\Card $card Card associated with this token.
+ * @property Card|string $card Card associated with this token.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $device_fingerprint The hashed ID derived from the device ID from the card network associated with the token.
  * @property null|string $last4 The last four digits of the token.
@@ -44,9 +44,9 @@ class Token extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Token> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\Token> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -61,9 +61,9 @@ class Token extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Token
      *
-     * @return \Stripe\Issuing\Token
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -82,9 +82,9 @@ class Token extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Token the updated resource
      *
-     * @return \Stripe\Issuing\Token the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {

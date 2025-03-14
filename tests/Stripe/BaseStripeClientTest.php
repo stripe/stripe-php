@@ -6,9 +6,10 @@ use Stripe\Util\ApiVersion;
 
 /**
  * @internal
+ *
  * @covers \Stripe\BaseStripeClient
  */
-final class BaseStripeClientTest extends \Stripe\TestCase
+final class BaseStripeClientTest extends TestCase
 {
     use TestHelper;
 
@@ -28,20 +29,20 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     /** @before */
     protected function setUpOptsReflector()
     {
-        $this->optsReflector = new \ReflectionProperty(\Stripe\StripeObject::class, '_opts');
+        $this->optsReflector = new \ReflectionProperty(StripeObject::class, '_opts');
         $this->optsReflector->setAccessible(true);
     }
 
     /** @before */
     protected function setUpApiRequestorReflector()
     {
-        $this->apiRequestorReflector = new \ReflectionClass(\Stripe\ApiRequestor::class);
+        $this->apiRequestorReflector = new \ReflectionClass(ApiRequestor::class);
     }
 
     /** @before */
     protected function setUpCurlClientStub()
     {
-        $this->curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
+        $this->curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
             ->getMock()
         ;
@@ -50,13 +51,13 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     public function testCtorDoesNotThrowWhenNoParams()
     {
         $client = new BaseStripeClient();
-        static::assertNotNull($client);
-        static::assertNull($client->getApiKey());
+        self::assertNotNull($client);
+        self::assertNull($client->getApiKey());
     }
 
     public function testCtorThrowsIfConfigIsUnexpectedType()
     {
-        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('$config must be a string or an array');
 
         $client = new BaseStripeClient(234);
@@ -64,7 +65,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
 
     public function testCtorThrowsIfApiKeyIsEmpty()
     {
-        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('api_key cannot be the empty string');
 
         $client = new BaseStripeClient('');
@@ -72,7 +73,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
 
     public function testCtorThrowsIfApiKeyContainsWhitespace()
     {
-        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('api_key cannot contain whitespace');
 
         $client = new BaseStripeClient("sk_test_123\n");
@@ -80,7 +81,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
 
     public function testCtorThrowsIfApiKeyIsUnexpectedType()
     {
-        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('api_key must be null or a string');
 
         $client = new BaseStripeClient(['api_key' => 234]);
@@ -88,7 +89,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
 
     public function testCtorThrowsIfConfigArrayContainsUnexpectedKey()
     {
-        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('Found unknown key(s) in configuration array: \'foo\', \'foo2\'');
 
         $client = new BaseStripeClient(['foo' => 'bar', 'foo2' => 'bar2']);
@@ -98,49 +99,49 @@ final class BaseStripeClientTest extends \Stripe\TestCase
     {
         $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
         $charge = $client->request('get', '/v1/charges/ch_123', [], []);
-        static::assertNotNull($charge);
-        static::assertSame('sk_test_client', $this->optsReflector->getValue($charge)->apiKey);
+        self::assertNotNull($charge);
+        self::assertSame('sk_test_client', $this->optsReflector->getValue($charge)->apiKey);
     }
 
     public function testRequestWithOptsApiKey()
     {
         $client = new BaseStripeClient(['api_base' => MOCK_URL]);
         $charge = $client->request('get', '/v1/charges/ch_123', [], ['api_key' => 'sk_test_opts']);
-        static::assertNotNull($charge);
-        static::assertSame('sk_test_opts', $this->optsReflector->getValue($charge)->apiKey);
+        self::assertNotNull($charge);
+        self::assertSame('sk_test_opts', $this->optsReflector->getValue($charge)->apiKey);
     }
 
     public function testRequestThrowsIfNoApiKeyInClientAndOpts()
     {
-        $this->expectException(\Stripe\Exception\AuthenticationException::class);
+        $this->expectException(Exception\AuthenticationException::class);
         $this->expectExceptionMessage('No API key provided.');
 
         $client = new BaseStripeClient(['api_base' => MOCK_URL]);
         $charge = $client->request('get', '/v1/charges/ch_123', [], []);
-        static::assertNotNull($charge);
-        static::assertSame('ch_123', $charge->id);
+        self::assertNotNull($charge);
+        self::assertSame('ch_123', $charge->id);
     }
 
     public function testRequestThrowsIfOptsIsString()
     {
-        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $this->compatExpectExceptionMessageMatches('#Do not pass a string for request options.#');
 
         $client = new BaseStripeClient(['api_base' => MOCK_URL]);
         $charge = $client->request('get', '/v1/charges/ch_123', [], 'foo');
-        static::assertNotNull($charge);
-        static::assertSame('ch_123', $charge->id);
+        self::assertNotNull($charge);
+        self::assertSame('ch_123', $charge->id);
     }
 
     public function testRequestThrowsIfOptsIsArrayWithUnexpectedKeys()
     {
-        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('Got unexpected keys in options array: foo');
 
         $client = new BaseStripeClient(['api_base' => MOCK_URL]);
         $charge = $client->request('get', '/v1/charges/ch_123', [], ['foo' => 'bar']);
-        static::assertNotNull($charge);
-        static::assertSame('ch_123', $charge->id);
+        self::assertNotNull($charge);
+        self::assertSame('ch_123', $charge->id);
     }
 
     public function testRequestWithClientStripeVersion()
@@ -151,8 +152,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_base' => MOCK_URL,
         ]);
         $charge = $client->request('get', '/v1/charges/ch_123', [], []);
-        static::assertNotNull($charge);
-        static::assertSame('2020-03-02', $this->optsReflector->getValue($charge)->headers['Stripe-Version']);
+        self::assertNotNull($charge);
+        self::assertSame('2020-03-02', $this->optsReflector->getValue($charge)->headers['Stripe-Version']);
     }
 
     public function testRequestWithOptsStripeVersion()
@@ -163,8 +164,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_base' => MOCK_URL,
         ]);
         $charge = $client->request('get', '/v1/charges/ch_123', [], ['stripe_version' => '2019-12-03']);
-        static::assertNotNull($charge);
-        static::assertSame('2019-12-03', $this->optsReflector->getValue($charge)->headers['Stripe-Version']);
+        self::assertNotNull($charge);
+        self::assertSame('2019-12-03', $this->optsReflector->getValue($charge)->headers['Stripe-Version']);
     }
 
     public function testRequestWithClientStripeAccount()
@@ -175,8 +176,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_base' => MOCK_URL,
         ]);
         $charge = $client->request('get', '/v1/charges/ch_123', [], []);
-        static::assertNotNull($charge);
-        static::assertSame('acct_123', $this->optsReflector->getValue($charge)->headers['Stripe-Account']);
+        self::assertNotNull($charge);
+        self::assertSame('acct_123', $this->optsReflector->getValue($charge)->headers['Stripe-Account']);
     }
 
     public function testRequestWithOptsStripeAccount()
@@ -187,21 +188,21 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_base' => MOCK_URL,
         ]);
         $charge = $client->request('get', '/v1/charges/ch_123', [], ['stripe_account' => 'acct_456']);
-        static::assertNotNull($charge);
-        static::assertSame('acct_456', $this->optsReflector->getValue($charge)->headers['Stripe-Account']);
+        self::assertNotNull($charge);
+        self::assertSame('acct_456', $this->optsReflector->getValue($charge)->headers['Stripe-Account']);
     }
 
     public function testRequestCollectionWithClientApiKey()
     {
         $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
         $charges = $client->requestCollection('get', '/v1/charges', [], []);
-        static::assertNotNull($charges);
-        static::assertSame('sk_test_client', $this->optsReflector->getValue($charges)->apiKey);
+        self::assertNotNull($charges);
+        self::assertSame('sk_test_client', $this->optsReflector->getValue($charges)->apiKey);
     }
 
     public function testRequestCollectionThrowsForNonList()
     {
-        $this->expectException(\Stripe\Exception\UnexpectedValueException::class);
+        $this->expectException(Exception\UnexpectedValueException::class);
         $this->expectExceptionMessage('Expected to receive `Stripe\Collection` object from Stripe API. Instead received `Stripe\Charge`.');
 
         $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
@@ -210,7 +211,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
 
     public function testRequestWithOptsInParamsWarns()
     {
-        $this->compatExpectWarning(static::compatWarningClass());
+        $this->compatExpectWarning(self::compatWarningClass());
         $this->expectExceptionMessage('Options found in $params: api_key, stripe_account, api_base. Options should be '
             . 'passed in their own array after $params. (HINT: pass an empty array to $params if you do not have any.)');
         $client = new BaseStripeClient([
@@ -228,8 +229,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ],
             ['stripe_account' => 'acct_456']
         );
-        static::assertNotNull($charge);
-        static::assertSame('acct_456', $this->optsReflector->getValue($charge)->headers['Stripe-Account']);
+        self::assertNotNull($charge);
+        self::assertSame('acct_456', $this->optsReflector->getValue($charge)->headers['Stripe-Account']);
     }
 
     public function testRequestWithNoVersionDefaultsToPinnedVersion()
@@ -239,7 +240,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_base' => MOCK_URL,
         ]);
         $this->expectsRequest('get', '/v1/charges/ch_123', null, [
-            'Stripe-Version: ' . \Stripe\Util\ApiVersion::CURRENT,
+            'Stripe-Version: ' . ApiVersion::CURRENT,
         ]);
         $charge = $client->request(
             'get',
@@ -256,9 +257,9 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         ;
 
         $opts = null;
-        $this->curlClientStub->expects(static::once())
+        $this->curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts_) use (&$opts) {
+            ->with(self::callback(static function ($opts_) use (&$opts) {
                 $opts = $opts_;
 
                 return true;
@@ -272,8 +273,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_base' => MOCK_URL,
         ]);
         $client->rawRequest('get', '/v1/xyz?foo=bar', null, []);
-        static::assertArrayNotHasKey(\CURLOPT_POST, $opts);
-        static::assertArrayNotHasKey(\CURLOPT_POSTFIELDS, $opts);
+        self::assertArrayNotHasKey(\CURLOPT_POST, $opts);
+        self::assertArrayNotHasKey(\CURLOPT_POSTFIELDS, $opts);
         $content_type = null;
         $stripe_version = null;
         foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
@@ -286,8 +287,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         }
         // The library sends Content-Type even with no body, so assert this
         // But it would be more correct to not send Content-Type
-        static::assertSame('Content-Type: application/x-www-form-urlencoded', $content_type);
-        static::assertSame('Stripe-Version: ' . ApiVersion::CURRENT, $stripe_version);
+        self::assertSame('Content-Type: application/x-www-form-urlencoded', $content_type);
+        self::assertSame('Stripe-Version: ' . ApiVersion::CURRENT, $stripe_version);
     }
 
     public function testRawRequestUsageTelemetry()
@@ -296,9 +297,9 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{}', 200, ['request-id' => 'req_123']])
         ;
 
-        $this->curlClientStub->expects(static::once())
+        $this->curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(static function ($opts) {
                 return true;
             }), MOCK_URL . '/v1/xyz')
         ;
@@ -309,7 +310,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         ]);
         $client->rawRequest('post', '/v1/xyz', [], []);
         // Can't use ->getStaticPropertyValue because this has a bug until PHP 7.4.9: https://bugs.php.net/bug.php?id=69804
-        static::assertSame(['raw_request'], $this->apiRequestorReflector->getStaticProperties()['requestTelemetry']->usage);
+        self::assertSame(['raw_request'], $this->apiRequestorReflector->getStaticProperties()['requestTelemetry']->usage);
     }
 
     public function testJsonRawRequestPost()
@@ -318,9 +319,9 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{"object": "xyz", "isPHPBestLanguage": true, "abc": {"object": "abc", "a": 2}}', 200, []])
         ;
 
-        $this->curlClientStub->expects(static::once())
+        $this->curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(function ($opts) {
                 $this->assertSame(1, $opts[\CURLOPT_POST]);
                 $this->assertSame('{"foo":"bar","baz":{"qux":false}}', $opts[\CURLOPT_POSTFIELDS]);
                 $this->assertContains('Content-Type: application/json', $opts[\CURLOPT_HTTPHEADER]);
@@ -340,10 +341,10 @@ final class BaseStripeClientTest extends \Stripe\TestCase
 
         $xyz = $client->deserialize($resp->body, 'v2');
 
-        static::assertSame('xyz', $xyz->object); // @phpstan-ignore-line
-        static::assertTrue($xyz->isPHPBestLanguage); // @phpstan-ignore-line
-        static::assertSame(2, $xyz->abc->a); // @phpstan-ignore-line
-        static::assertInstanceof(\Stripe\StripeObject::class, $xyz->abc); // @phpstan-ignore-line
+        self::assertSame('xyz', $xyz->object); // @phpstan-ignore-line
+        self::assertTrue($xyz->isPHPBestLanguage); // @phpstan-ignore-line
+        self::assertSame(2, $xyz->abc->a); // @phpstan-ignore-line
+        self::assertInstanceof(StripeObject::class, $xyz->abc); // @phpstan-ignore-line
     }
 
     public function testFormRawRequestPost()
@@ -352,9 +353,9 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{}', 200, []])
         ;
 
-        $this->curlClientStub->expects(static::once())
+        $this->curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(function ($opts) {
                 $this->assertSame(1, $opts[\CURLOPT_POST]);
                 $this->assertSame('foo=bar&baz[qux]=false', $opts[\CURLOPT_POSTFIELDS]);
                 $this->assertContains('Content-Type: application/x-www-form-urlencoded', $opts[\CURLOPT_HTTPHEADER]);
@@ -381,7 +382,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_base' => MOCK_URL,
         ]);
         $params = [];
-        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('Error: rawRequest only supports $params on post requests. Please pass null and add your parameters to $path');
         $client->rawRequest('get', '/v2/xyz', $params, []);
     }
@@ -392,9 +393,9 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{}', 200, []])
         ;
 
-        $this->curlClientStub->expects(static::once())
+        $this->curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(function ($opts) {
                 $this->assertContains('Stripe-Context: acct_123', $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
@@ -419,9 +420,9 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{"object": "v2.billing.meter_event_session"}', 200, []])
         ;
 
-        $this->curlClientStub->expects(static::once())
+        $this->curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(function ($opts) {
                 $this->assertSame(1, $opts[\CURLOPT_HTTPGET]);
 
                 // The library sends Content-Type even with no body, so assert this
@@ -439,8 +440,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_base' => MOCK_URL,
         ]);
         $meterEventSession = $client->request('get', '/v2/billing/meter_event_session', [], []);
-        static::assertNotNull($meterEventSession);
-        static::assertInstanceOf(\Stripe\V2\Billing\MeterEventSession::class, $meterEventSession);
+        self::assertNotNull($meterEventSession);
+        self::assertInstanceOf(V2\Billing\MeterEventSession::class, $meterEventSession);
     }
 
     public function testV2PostRequest()
@@ -449,9 +450,9 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{"object": "v2.billing.meter_event_session"}', 200, []])
         ;
 
-        $this->curlClientStub->expects(static::once())
+        $this->curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(function ($opts) {
                 $this->assertSame(1, $opts[\CURLOPT_POST]);
                 $this->assertSame('{"foo":"bar"}', $opts[\CURLOPT_POSTFIELDS]);
                 $this->assertContains('Content-Type: application/json', $opts[\CURLOPT_HTTPHEADER]);
@@ -468,8 +469,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         ]);
 
         $meterEventSession = $client->request('post', '/v2/billing/meter_event_session', ['foo' => 'bar'], []);
-        static::assertNotNull($meterEventSession);
-        static::assertInstanceOf(\Stripe\V2\Billing\MeterEventSession::class, $meterEventSession);
+        self::assertNotNull($meterEventSession);
+        self::assertInstanceOf(V2\Billing\MeterEventSession::class, $meterEventSession);
     }
 
     public function testV2PostRequestWithEmptyParams()
@@ -478,9 +479,9 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{"object": "v2.billing.meter_event_session"}', 200, []])
         ;
 
-        $this->curlClientStub->expects(static::once())
+        $this->curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(function ($opts) {
                 $this->assertSame(1, $opts[\CURLOPT_POST]);
                 $this->assertArrayNotHasKey(\CURLOPT_POSTFIELDS, $opts);
                 $this->assertContains('Content-Type: application/json', $opts[\CURLOPT_HTTPHEADER]);
@@ -497,8 +498,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         ]);
 
         $meterEventSession = $client->request('post', '/v2/billing/meter_event_session', [], []);
-        static::assertNotNull($meterEventSession);
-        static::assertInstanceOf(\Stripe\V2\Billing\MeterEventSession::class, $meterEventSession);
+        self::assertNotNull($meterEventSession);
+        self::assertInstanceOf(V2\Billing\MeterEventSession::class, $meterEventSession);
     }
 
     public function testV2RequestWithClientStripeContext()
@@ -507,9 +508,9 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{"object": "account"}', 200, []])
         ;
 
-        $this->curlClientStub->expects(static::once())
+        $this->curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(function ($opts) {
                 $this->assertContains('Stripe-Context: acct_123', $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
@@ -532,9 +533,9 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{"object": "account"}', 200, []])
         ;
 
-        $this->curlClientStub->expects(static::once())
+        $this->curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(function ($opts) {
                 $this->assertContains('Stripe-Context: acct_456', $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
@@ -553,10 +554,10 @@ final class BaseStripeClientTest extends \Stripe\TestCase
 
     private function assertAppInfo($ua, $ua_dict, $headers)
     {
-        static::assertContains($ua, $headers);
+        self::assertContains($ua, $headers);
         foreach ($headers as $element) {
             if (strpos($element, 'X-Stripe-Client-User-Agent')) {
-                static::assertStringContainsString($ua_dict, $element);
+                self::assertStringContainsString($ua_dict, $element);
 
                 break;
             }
@@ -565,7 +566,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
 
     public function testSetClientAppInfo()
     {
-        $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
+        $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
             ->getMock()
         ;
@@ -574,11 +575,11 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{"object": "charge"}', 200, []])
         ;
 
-        $curlClientStub->expects(static::once())
+        $curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(function ($opts) {
                 $this->assertAppInfo(
-                    'User-Agent: ' . 'Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp/1.2.34 (https://mytestapp.example)',
+                    'User-Agent: Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp/1.2.34 (https://mytestapp.example)',
                     '{"name": "MyTestApp","version":"1.2.34","url":"https://mytestapp.example","partner_id":"partner_1234"}',
                     $opts[\CURLOPT_HTTPHEADER]
                 );
@@ -604,7 +605,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
 
     public function testSetClientAppInfoOnlyName()
     {
-        $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
+        $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
             ->getMock()
         ;
@@ -613,11 +614,11 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{"object": "charge"}', 200, []])
         ;
 
-        $curlClientStub->expects(static::once())
+        $curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(function ($opts) {
                 $this->assertAppInfo(
-                    'User-Agent: ' . 'Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp',
+                    'User-Agent: Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp',
                     '{"name": "MyTestApp"}',
                     $opts[\CURLOPT_HTTPHEADER]
                 );
@@ -638,7 +639,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
 
     public function testClientAppInfoFallsBackToGlobal()
     {
-        $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
+        $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
             ->getMock()
         ;
@@ -647,11 +648,11 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{"object": "charge"}', 200, []])
         ;
 
-        $curlClientStub->expects(static::once())
+        $curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(function ($opts) {
                 $this->assertAppInfo(
-                    'User-Agent: ' . 'Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp/1.2.34 (https://mytestapp.example)',
+                    'User-Agent: Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp/1.2.34 (https://mytestapp.example)',
                     '{"name": "MyTestApp","version":"1.2.34","url":"https://mytestapp.example"}',
                     $opts[\CURLOPT_HTTPHEADER]
                 );
@@ -670,7 +671,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
 
     public function testClientAppInfoOverridesGlobal()
     {
-        $curlClientStub = $this->getMockBuilder(\Stripe\HttpClient\CurlClient::class)
+        $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
             ->getMock()
         ;
@@ -679,12 +680,12 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{"object": "charge"}', 200, []])
         ;
 
-        $curlClientStub->expects(static::once())
+        $curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(function ($opts) {
                 $headers = $opts[\CURLOPT_HTTPHEADER];
                 $this->assertAppInfo(
-                    'User-Agent: ' . 'Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp/2.3.45 (https://mytestapp.example)',
+                    'User-Agent: Stripe/v1 PhpBindings/' . Stripe::VERSION . ' MyTestApp/2.3.45 (https://mytestapp.example)',
                     '{"name": "MyTestApp","version":"2.3.45","url":"https://mytestapp.example"}',
                     $opts[\CURLOPT_HTTPHEADER]
                 );
@@ -710,7 +711,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
 
     public function testConfigValidationFindsExtraAppInfoKeys()
     {
-        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $client = new BaseStripeClient([
             'api_key' => 'sk_test_appinfo',
             'app_info' => [
@@ -741,11 +742,11 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         $sigHeader = WebhookTest::generateHeader(['payload' => $eventData]);
         $event = $client->parseThinEvent($eventData, $sigHeader, WebhookTest::SECRET);
 
-        static::assertNotInstanceOf(\Stripe\StripeObject::class, $event);
-        static::assertSame('evt_234', $event->id);
-        static::assertSame('financial_account.balance.opened', $event->type);
-        static::assertSame('2022-02-15T00:27:45.330Z', $event->created);
-        static::assertSame('fa_123', $event->related_object->id);
+        self::assertNotInstanceOf(StripeObject::class, $event);
+        self::assertSame('evt_234', $event->id);
+        self::assertSame('financial_account.balance.opened', $event->type);
+        self::assertSame('2022-02-15T00:27:45.330Z', $event->created);
+        self::assertSame('fa_123', $event->related_object->id);
     }
 
     public function testV2OverridesPreviewVersionIfPassedInRawRequestOptions()
@@ -754,9 +755,9 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{"object": "account"}', 200, []])
         ;
 
-        $this->curlClientStub->expects(static::once())
+        $this->curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(function ($opts) {
                 $this->assertContains('Stripe-Version: 2222-22-22.preview-v2', $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
@@ -780,9 +781,9 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{"object": "v2.billing.meter_event_session"}', 200, []])
         ;
 
-        $this->curlClientStub->expects(static::once())
+        $this->curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(function ($opts) {
                 $this->assertContains('Stripe-Version: 2222-22-22.preview-v2', $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
@@ -795,8 +796,8 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_base' => MOCK_URL,
         ]);
         $meterEventSession = $client->request('get', '/v2/billing/meter_event_session/bmes_123', [], ['stripe_version' => '2222-22-22.preview-v2']);
-        static::assertNotNull($meterEventSession);
-        static::assertInstanceOf(\Stripe\V2\Billing\MeterEventSession::class, $meterEventSession);
+        self::assertNotNull($meterEventSession);
+        self::assertInstanceOf(V2\Billing\MeterEventSession::class, $meterEventSession);
     }
 
     public function testV1AndV2Request()
@@ -807,12 +808,12 @@ final class BaseStripeClientTest extends \Stripe\TestCase
 
         $this->curlClientStub
             ->method('executeRequestWithRetries')
-            ->withConsecutive([static::callback(function ($opts) {
+            ->withConsecutive([self::callback(function ($opts) {
                 $this->assertContains('Stripe-Version: ' . ApiVersion::CURRENT, $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
             }), MOCK_URL . '/v2/billing/meter_event_session/bmes_123'], [
-                static::callback(function ($opts) {
+                self::callback(function ($opts) {
                     $this->assertContains('Stripe-Version: ' . ApiVersion::CURRENT, $opts[\CURLOPT_HTTPHEADER]);
 
                     return true;
@@ -827,12 +828,12 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             'api_base' => MOCK_URL,
         ]);
         $meterEventSession = $client->request('get', '/v2/billing/meter_event_session/bmes_123', [], []);
-        static::assertNotNull($meterEventSession);
-        static::assertInstanceOf(\Stripe\V2\Billing\MeterEventSession::class, $meterEventSession);
+        self::assertNotNull($meterEventSession);
+        self::assertInstanceOf(V2\Billing\MeterEventSession::class, $meterEventSession);
 
         $meterEvent = $client->request('get', '/v1/billing/meter_event/bmes_123', [], []);
-        static::assertNotNull($meterEvent);
-        static::assertInstanceOf(\Stripe\Billing\MeterEvent::class, $meterEvent);
+        self::assertNotNull($meterEvent);
+        self::assertInstanceOf(Billing\MeterEvent::class, $meterEvent);
     }
 
     public function testV2RequestWithEmptyResponse()
@@ -841,9 +842,9 @@ final class BaseStripeClientTest extends \Stripe\TestCase
             ->willReturn(['{}', 200, []])
         ;
 
-        $this->curlClientStub->expects(static::once())
+        $this->curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
-            ->with(static::callback(function ($opts) {
+            ->with(self::callback(static function ($opts) {
                 return true;
             }), MOCK_URL . '/v2/billing/meter_event_stream')
         ;
@@ -856,7 +857,7 @@ final class BaseStripeClientTest extends \Stripe\TestCase
         ]);
 
         $meterEventStream = $client->request('post', '/v2/billing/meter_event_stream', [], []);
-        static::assertNotNull($meterEventStream);
-        static::assertInstanceOf(\Stripe\StripeObject::class, $meterEventStream);
+        self::assertNotNull($meterEventStream);
+        self::assertInstanceOf(StripeObject::class, $meterEventStream);
     }
 }

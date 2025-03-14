@@ -1,5 +1,6 @@
 #!/usr/bin/env php
 <?php
+
 \chdir(__DIR__);
 
 $autoload = (int) $argv[1];

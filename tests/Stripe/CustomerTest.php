@@ -4,9 +4,10 @@ namespace Stripe;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Customer
  */
-final class CustomerTest extends \Stripe\TestCase
+final class CustomerTest extends TestCase
 {
     use TestHelper;
 
@@ -22,8 +23,8 @@ final class CustomerTest extends \Stripe\TestCase
             '/v1/customers'
         );
         $resources = Customer::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Customer::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(Customer::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -33,7 +34,7 @@ final class CustomerTest extends \Stripe\TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID
         );
         $resource = Customer::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Customer::class, $resource);
+        self::assertInstanceOf(Customer::class, $resource);
     }
 
     public function testIsCreatable()
@@ -43,7 +44,7 @@ final class CustomerTest extends \Stripe\TestCase
             '/v1/customers'
         );
         $resource = Customer::create();
-        static::assertInstanceOf(\Stripe\Customer::class, $resource);
+        self::assertInstanceOf(Customer::class, $resource);
     }
 
     public function testIsSaveable()
@@ -55,7 +56,7 @@ final class CustomerTest extends \Stripe\TestCase
             '/v1/customers/' . $resource->id
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\Customer::class, $resource);
+        self::assertInstanceOf(Customer::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -67,7 +68,7 @@ final class CustomerTest extends \Stripe\TestCase
         $resource = Customer::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Customer::class, $resource);
+        self::assertInstanceOf(Customer::class, $resource);
     }
 
     public function testIsDeletable()
@@ -78,7 +79,7 @@ final class CustomerTest extends \Stripe\TestCase
             '/v1/customers/' . $resource->id
         );
         $resource->delete();
-        static::assertInstanceOf(\Stripe\Customer::class, $resource);
+        self::assertInstanceOf(Customer::class, $resource);
     }
 
     public function testCanDeleteDiscount()
@@ -89,7 +90,7 @@ final class CustomerTest extends \Stripe\TestCase
             '/v1/customers/' . $customer->id . '/discount'
         );
         $customer->deleteDiscount();
-        static::assertSame($customer->discount, null);
+        self::assertSame($customer->discount, null);
     }
 
     public function testCanCreateSource()
@@ -118,7 +119,7 @@ final class CustomerTest extends \Stripe\TestCase
         );
         $resource = Customer::updateSource(self::TEST_RESOURCE_ID, self::TEST_SOURCE_ID, ['name' => 'name']);
         // stripe-mock returns a Card on this method and not a bank account
-        static::assertInstanceOf(\Stripe\Card::class, $resource);
+        self::assertInstanceOf(Card::class, $resource);
     }
 
     public function testCanDeleteSource()
@@ -137,7 +138,7 @@ final class CustomerTest extends \Stripe\TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/sources'
         );
         $resources = Customer::allSources(self::TEST_RESOURCE_ID);
-        static::compatAssertIsArray($resources->data);
+        self::compatAssertIsArray($resources->data);
     }
 
     public function testSerializeSourceString()
@@ -151,7 +152,7 @@ final class CustomerTest extends \Stripe\TestCase
         $expected = [
             'source' => 'tok_visa',
         ];
-        static::assertSame($expected, $obj->serializeParameters());
+        self::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testSerializeSourceMap()
@@ -175,7 +176,7 @@ final class CustomerTest extends \Stripe\TestCase
                 'exp_year' => 2032,
             ],
         ];
-        static::assertSame($expected, $obj->serializeParameters());
+        self::assertSame($expected, $obj->serializeParameters());
     }
 
     public function testCanCreateTaxId()
@@ -215,7 +216,7 @@ final class CustomerTest extends \Stripe\TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/tax_ids'
         );
         $resources = Customer::allTaxIds(self::TEST_RESOURCE_ID);
-        static::compatAssertIsArray($resources->data);
+        self::compatAssertIsArray($resources->data);
     }
 
     public function testCanCreateBalanceTransaction()
@@ -255,6 +256,6 @@ final class CustomerTest extends \Stripe\TestCase
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/balance_transactions'
         );
         $resources = Customer::allBalanceTransactions(self::TEST_RESOURCE_ID);
-        static::compatAssertIsArray($resources->data);
+        self::compatAssertIsArray($resources->data);
     }
 }

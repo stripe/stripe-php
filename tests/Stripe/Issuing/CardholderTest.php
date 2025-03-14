@@ -4,6 +4,7 @@ namespace Stripe\Issuing;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Issuing\Cardholder
  */
 final class CardholderTest extends \Stripe\TestCase
@@ -33,7 +34,7 @@ final class CardholderTest extends \Stripe\TestCase
             $params
         );
         $resource = Cardholder::create($params);
-        static::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resource);
+        self::assertInstanceOf(Cardholder::class, $resource);
     }
 
     public function testIsListable()
@@ -43,8 +44,8 @@ final class CardholderTest extends \Stripe\TestCase
             '/v1/issuing/cardholders'
         );
         $resources = Cardholder::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(Cardholder::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -54,7 +55,7 @@ final class CardholderTest extends \Stripe\TestCase
             '/v1/issuing/cardholders/' . self::TEST_RESOURCE_ID
         );
         $resource = Cardholder::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resource);
+        self::assertInstanceOf(Cardholder::class, $resource);
     }
 
     public function testIsSaveable()
@@ -67,7 +68,7 @@ final class CardholderTest extends \Stripe\TestCase
             '/v1/issuing/cardholders/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resource);
+        self::assertInstanceOf(Cardholder::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -80,6 +81,6 @@ final class CardholderTest extends \Stripe\TestCase
         $resource = Cardholder::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Issuing\Cardholder::class, $resource);
+        self::assertInstanceOf(Cardholder::class, $resource);
     }
 }

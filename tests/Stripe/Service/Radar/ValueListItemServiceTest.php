@@ -4,6 +4,7 @@ namespace Stripe\Service\Radar;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\Radar\ValueListItemService
  */
 final class ValueListItemServiceTest extends \Stripe\TestCase
@@ -36,8 +37,8 @@ final class ValueListItemServiceTest extends \Stripe\TestCase
         $resources = $this->service->all([
             'value_list' => 'rsl_123',
         ]);
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -50,7 +51,7 @@ final class ValueListItemServiceTest extends \Stripe\TestCase
             'value_list' => 'rsl_123',
             'value' => 'value',
         ]);
-        static::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resource);
+        self::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resource);
     }
 
     public function testDelete()
@@ -60,8 +61,8 @@ final class ValueListItemServiceTest extends \Stripe\TestCase
             '/v1/radar/value_list_items/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->delete(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resource);
-        static::assertTrue($resource->isDeleted());
+        self::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resource);
+        self::assertTrue($resource->isDeleted());
     }
 
     public function testRetrieve()
@@ -71,6 +72,6 @@ final class ValueListItemServiceTest extends \Stripe\TestCase
             '/v1/radar/value_list_items/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resource);
+        self::assertInstanceOf(\Stripe\Radar\ValueListItem::class, $resource);
     }
 }

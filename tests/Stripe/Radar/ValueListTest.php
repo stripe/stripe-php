@@ -4,6 +4,7 @@ namespace Stripe\Radar;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Radar\ValueList
  */
 final class ValueListTest extends \Stripe\TestCase
@@ -19,8 +20,8 @@ final class ValueListTest extends \Stripe\TestCase
             '/v1/radar/value_lists'
         );
         $resources = ValueList::all();
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\Radar\ValueList::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(ValueList::class, $resources->data[0]);
     }
 
     public function testIsRetrievable()
@@ -30,7 +31,7 @@ final class ValueListTest extends \Stripe\TestCase
             '/v1/radar/value_lists/' . self::TEST_RESOURCE_ID
         );
         $resource = ValueList::retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
+        self::assertInstanceOf(ValueList::class, $resource);
     }
 
     public function testIsCreatable()
@@ -43,7 +44,7 @@ final class ValueListTest extends \Stripe\TestCase
             'alias' => 'alias',
             'name' => 'name',
         ]);
-        static::assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
+        self::assertInstanceOf(ValueList::class, $resource);
     }
 
     public function testIsSaveable()
@@ -55,7 +56,7 @@ final class ValueListTest extends \Stripe\TestCase
             '/v1/radar/value_lists/' . self::TEST_RESOURCE_ID
         );
         $resource->save();
-        static::assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
+        self::assertInstanceOf(ValueList::class, $resource);
     }
 
     public function testIsUpdatable()
@@ -67,7 +68,7 @@ final class ValueListTest extends \Stripe\TestCase
         $resource = ValueList::update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
+        self::assertInstanceOf(ValueList::class, $resource);
     }
 
     public function testIsDeletable()
@@ -78,6 +79,6 @@ final class ValueListTest extends \Stripe\TestCase
             '/v1/radar/value_lists/' . self::TEST_RESOURCE_ID
         );
         $resource->delete();
-        static::assertInstanceOf(\Stripe\Radar\ValueList::class, $resource);
+        self::assertInstanceOf(ValueList::class, $resource);
     }
 }

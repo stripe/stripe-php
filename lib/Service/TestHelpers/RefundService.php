@@ -6,6 +6,7 @@ namespace Stripe\Service\TestHelpers;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class RefundService extends \Stripe\Service\AbstractService
@@ -17,9 +18,9 @@ class RefundService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Refund
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function expire($id, $params = null, $opts = null)
     {

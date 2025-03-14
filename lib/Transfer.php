@@ -20,17 +20,17 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount Amount in cents (or local equivalent) to be transferred.
  * @property int $amount_reversed Amount in cents (or local equivalent) reversed (can be less than the amount attribute on the transfer if a partial reversal was issued).
- * @property null|string|\Stripe\BalanceTransaction $balance_transaction Balance transaction that describes the impact of this transfer on your account balance.
+ * @property null|BalanceTransaction|string $balance_transaction Balance transaction that describes the impact of this transfer on your account balance.
  * @property int $created Time that this record of the transfer was first created.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
- * @property null|string|\Stripe\Account $destination ID of the Stripe account the transfer was sent to.
- * @property null|string|\Stripe\Charge $destination_payment If the destination is a Stripe account, this will be the ID of the payment that the destination account received for the transfer.
+ * @property null|Account|string $destination ID of the Stripe account the transfer was sent to.
+ * @property null|Charge|string $destination_payment If the destination is a Stripe account, this will be the ID of the payment that the destination account received for the transfer.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property \Stripe\Collection<\Stripe\TransferReversal> $reversals A list of reversals that have been applied to the transfer.
+ * @property StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property Collection<TransferReversal> $reversals A list of reversals that have been applied to the transfer.
  * @property bool $reversed Whether the transfer has been fully reversed. If the transfer is only partially reversed, this attribute will still be false.
- * @property null|string|\Stripe\Charge $source_transaction ID of the charge that was used to fund the transfer. If null, the transfer was funded from the available balance.
+ * @property null|Charge|string $source_transaction ID of the charge that was used to fund the transfer. If null, the transfer was funded from the available balance.
  * @property null|string $source_type The source balance this transfer came from. One of <code>card</code>, <code>fpx</code>, or <code>bank_account</code>.
  * @property null|string $transfer_group A string that identifies this transaction as part of a group. See the <a href="https://stripe.com/docs/connect/separate-charges-and-transfers#transfer-options">Connect documentation</a> for details.
  */
@@ -53,9 +53,9 @@ class Transfer extends ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Transfer the created resource
      *
-     * @return \Stripe\Transfer the created resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -63,7 +63,7 @@ class Transfer extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -77,15 +77,15 @@ class Transfer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<Transfer> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Transfer> of ApiResources
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+        return static::_requestPage($url, Collection::class, $params, $opts);
     }
 
     /**
@@ -96,13 +96,13 @@ class Transfer extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Transfer
      *
-     * @return \Stripe\Transfer
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -119,9 +119,9 @@ class Transfer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Transfer the updated resource
      *
-     * @return \Stripe\Transfer the updated resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -129,7 +129,7 @@ class Transfer extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -142,9 +142,9 @@ class Transfer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<TransferReversal> the list of transfer reversals
      *
-     * @return \Stripe\Collection<\Stripe\TransferReversal> the list of transfer reversals
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function allReversals($id, $params = null, $opts = null)
     {
@@ -156,9 +156,9 @@ class Transfer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return TransferReversal
      *
-     * @return \Stripe\TransferReversal
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function createReversal($id, $params = null, $opts = null)
     {
@@ -171,9 +171,9 @@ class Transfer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return TransferReversal
      *
-     * @return \Stripe\TransferReversal
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieveReversal($id, $reversalId, $params = null, $opts = null)
     {
@@ -186,9 +186,9 @@ class Transfer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return TransferReversal
      *
-     * @return \Stripe\TransferReversal
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function updateReversal($id, $reversalId, $params = null, $opts = null)
     {

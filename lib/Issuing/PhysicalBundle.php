@@ -33,9 +33,9 @@ class PhysicalBundle extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<PhysicalBundle> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\PhysicalBundle> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -50,9 +50,9 @@ class PhysicalBundle extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PhysicalBundle
      *
-     * @return \Stripe\Issuing\PhysicalBundle
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

@@ -4,6 +4,7 @@ namespace Stripe\Service;
 
 /**
  * @internal
+ *
  * @covers \Stripe\Service\SourceService
  */
 final class SourceServiceTest extends \Stripe\TestCase
@@ -34,8 +35,8 @@ final class SourceServiceTest extends \Stripe\TestCase
             '/v1/sources/' . self::TEST_RESOURCE_ID . '/source_transactions'
         );
         $resources = $this->service->allSourceTransactions(self::TEST_RESOURCE_ID);
-        static::compatAssertIsArray($resources->data);
-        static::assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
+        self::compatAssertIsArray($resources->data);
+        self::assertInstanceOf(\Stripe\SourceTransaction::class, $resources->data[0]);
     }
 
     public function testCreate()
@@ -47,7 +48,7 @@ final class SourceServiceTest extends \Stripe\TestCase
         $resource = $this->service->create([
             'type' => 'card',
         ]);
-        static::assertInstanceOf(\Stripe\Source::class, $resource);
+        self::assertInstanceOf(\Stripe\Source::class, $resource);
     }
 
     public function testDetach()
@@ -57,7 +58,7 @@ final class SourceServiceTest extends \Stripe\TestCase
             '/v1/customers/cus_123/sources/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->detach('cus_123', self::TEST_RESOURCE_ID);
-        //static::assertInstanceOf(\Stripe\Source::class, $resource);
+        // static::assertInstanceOf(\Stripe\Source::class, $resource);
     }
 
     public function testRetrieve()
@@ -67,7 +68,7 @@ final class SourceServiceTest extends \Stripe\TestCase
             '/v1/sources/' . self::TEST_RESOURCE_ID
         );
         $resource = $this->service->retrieve(self::TEST_RESOURCE_ID);
-        static::assertInstanceOf(\Stripe\Source::class, $resource);
+        self::assertInstanceOf(\Stripe\Source::class, $resource);
     }
 
     public function testUpdate()
@@ -79,7 +80,7 @@ final class SourceServiceTest extends \Stripe\TestCase
         $resource = $this->service->update(self::TEST_RESOURCE_ID, [
             'metadata' => ['key' => 'value'],
         ]);
-        static::assertInstanceOf(\Stripe\Source::class, $resource);
+        self::assertInstanceOf(\Stripe\Source::class, $resource);
     }
 
     public function testVerify()
@@ -89,6 +90,6 @@ final class SourceServiceTest extends \Stripe\TestCase
             '/v1/sources/' . self::TEST_RESOURCE_ID . '/verify'
         );
         $resource = $this->service->verify(self::TEST_RESOURCE_ID, ['values' => [32, 45]]);
-        static::assertInstanceOf(\Stripe\Source::class, $resource);
+        self::assertInstanceOf(\Stripe\Source::class, $resource);
     }
 }

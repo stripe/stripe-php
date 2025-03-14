@@ -13,7 +13,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|string|\Stripe\Account $account The account this card belongs to. This attribute will not be in the card object if the card belongs to a customer or recipient instead. This property is only available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>application</code>, which includes Custom accounts.
+ * @property null|Account|string $account The account this card belongs to. This attribute will not be in the card object if the card belongs to a customer or recipient instead. This property is only available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>application</code>, which includes Custom accounts.
  * @property null|string $address_city City/District/Suburb/Town/Village.
  * @property null|string $address_country Billing address country, if provided when creating card.
  * @property null|string $address_line1 Address line 1 (Street address/PO Box/Company name).
@@ -27,7 +27,7 @@ namespace Stripe;
  * @property string $brand Card brand. Can be <code>American Express</code>, <code>Diners Club</code>, <code>Discover</code>, <code>Eftpos Australia</code>, <code>Girocard</code>, <code>JCB</code>, <code>MasterCard</code>, <code>UnionPay</code>, <code>Visa</code>, or <code>Unknown</code>.
  * @property null|string $country Two-letter ISO code representing the country of the card. You could use this attribute to get a sense of the international breakdown of cards you've collected.
  * @property null|string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO code for currency</a> in lowercase. Must be a <a href="https://docs.stripe.com/currencies">supported currency</a>. Only applicable on accounts (not customers or recipients). The card can be used as a transfer destination for funds in this currency. This property is only available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>application</code>, which includes Custom accounts.
- * @property null|string|\Stripe\Customer $customer The customer that this card belongs to. This attribute will not be in the card object if the card belongs to an account or recipient instead.
+ * @property null|Customer|string $customer The customer that this card belongs to. This attribute will not be in the card object if the card belongs to an account or recipient instead.
  * @property null|string $cvc_check If a CVC was provided, results of the check: <code>pass</code>, <code>fail</code>, <code>unavailable</code>, or <code>unchecked</code>. A result of unchecked indicates that CVC was provided but hasn't been checked yet. Checks are typically performed when attaching a card to a Customer object, or when creating a charge. For more details, see <a href="https://support.stripe.com/questions/check-if-a-card-is-valid-without-a-charge">Check if a card is valid without a charge</a>.
  * @property null|bool $default_for_currency Whether this card is the default external account for its currency. This property is only available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>application</code>, which includes Custom accounts.
  * @property null|string $dynamic_last4 (For tokenized numbers only.) The last four digits of the device account number.
@@ -36,9 +36,9 @@ namespace Stripe;
  * @property null|string $fingerprint <p>Uniquely identifies this particular card number. You can use this attribute to check whether two customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number.</p><p><em>As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.</em></p>
  * @property string $funding Card funding type. Can be <code>credit</code>, <code>debit</code>, <code>prepaid</code>, or <code>unknown</code>.
  * @property string $last4 The last four digits of the card.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name Cardholder name.
- * @property null|\Stripe\StripeObject $networks
+ * @property null|StripeObject $networks
  * @property null|string $regulated_status Status of a card based on the card issuer.
  * @property null|string $status For external accounts that are cards, possible values are <code>new</code> and <code>errored</code>. If a payout fails, the status is set to <code>errored</code> and <a href="https://stripe.com/docs/payouts#payout-schedule">scheduled payouts</a> are stopped until account details are updated.
  * @property null|string $tokenization_method If the card number is tokenized, this is the method that was used. Can be <code>android_pay</code> (includes Google Pay), <code>apple_pay</code>, <code>masterpass</code>, <code>visa_checkout</code>, or null.
@@ -60,9 +60,9 @@ class Card extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Card the deleted resource
      *
-     * @return \Stripe\Card the deleted resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function delete($params = null, $opts = null)
     {
@@ -133,14 +133,14 @@ class Card extends ApiResource
      * @param array|string $_id
      * @param null|array|string $_opts
      *
-     * @throws \Stripe\Exception\BadMethodCallException
+     * @throws Exception\BadMethodCallException
      */
     public static function retrieve($_id, $_opts = null)
     {
-        $msg = 'Cards cannot be retrieved without a customer ID or an ' .
-               'account ID. Retrieve a card using ' .
-               "`Customer::retrieveSource('customer_id', 'card_id')` or " .
-               "`Account::retrieveExternalAccount('account_id', 'card_id')`.";
+        $msg = 'Cards cannot be retrieved without a customer ID or an '
+               . 'account ID. Retrieve a card using '
+               . "`Customer::retrieveSource('customer_id', 'card_id')` or "
+               . "`Account::retrieveExternalAccount('account_id', 'card_id')`.";
 
         throw new Exception\BadMethodCallException($msg);
     }
@@ -150,15 +150,15 @@ class Card extends ApiResource
      * @param null|array $_params
      * @param null|array|string $_options
      *
-     * @throws \Stripe\Exception\BadMethodCallException
+     * @throws Exception\BadMethodCallException
      */
     public static function update($_id, $_params = null, $_options = null)
     {
-        $msg = 'Cards cannot be updated without a customer ID or an ' .
-               'account ID. Update a card using ' .
-               "`Customer::updateSource('customer_id', 'card_id', " .
-               '$updateParams)` or `Account::updateExternalAccount(' .
-               "'account_id', 'card_id', \$updateParams)`.";
+        $msg = 'Cards cannot be updated without a customer ID or an '
+               . 'account ID. Update a card using '
+               . "`Customer::updateSource('customer_id', 'card_id', "
+               . '$updateParams)` or `Account::updateExternalAccount('
+               . "'account_id', 'card_id', \$updateParams)`.";
 
         throw new Exception\BadMethodCallException($msg);
     }
@@ -166,9 +166,9 @@ class Card extends ApiResource
     /**
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return static the saved resource
+     *
+     * @throws Exception\ApiErrorException if the request fails
      *
      * @deprecated The `save` method is deprecated and will be removed in a
      *     future major version of the library. Use the static method `update`

@@ -20,26 +20,26 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\Stripe\StripeObject $business_profile Business information about the account.
+ * @property null|StripeObject $business_profile Business information about the account.
  * @property null|string $business_type The business type. After you create an <a href="/api/account_links">Account Link</a> or <a href="/api/account_sessions">Account Session</a>, this property is only returned for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>application</code>, which includes Custom accounts.
- * @property null|\Stripe\StripeObject $capabilities
+ * @property null|StripeObject $capabilities
  * @property null|bool $charges_enabled Whether the account can process charges.
- * @property null|\Stripe\StripeObject $company
- * @property null|\Stripe\StripeObject $controller
+ * @property null|StripeObject $company
+ * @property null|StripeObject $controller
  * @property null|string $country The account's country.
  * @property null|int $created Time at which the account was connected. Measured in seconds since the Unix epoch.
  * @property null|string $default_currency Three-letter ISO currency code representing the default currency for the account. This must be a currency that <a href="https://stripe.com/docs/payouts">Stripe supports in the account's country</a>.
  * @property null|bool $details_submitted Whether account details have been submitted. Accounts with Stripe Dashboard access, which includes Standard accounts, cannot receive payouts before this is true. Accounts where this is false should be directed to <a href="/connect/onboarding">an onboarding flow</a> to finish submitting account details.
  * @property null|string $email An email address associated with the account. It's not used for authentication and Stripe doesn't market to this field without explicit approval from the platform.
- * @property null|\Stripe\Collection<\Stripe\BankAccount|\Stripe\Card> $external_accounts External accounts (bank accounts and debit cards) currently attached to this account. External accounts are only returned for requests where <code>controller[is_controller]</code> is true.
- * @property null|\Stripe\StripeObject $future_requirements
- * @property null|\Stripe\StripeObject $groups The groups associated with the account.
- * @property null|\Stripe\Person $individual <p>This is an object representing a person associated with a Stripe account.</p><p>A platform cannot access a person for an account where <a href="/api/accounts/object#account_object-controller-requirement_collection">account.controller.requirement_collection</a> is <code>stripe</code>, which includes Standard and Express accounts, after creating an Account Link or Account Session to start Connect onboarding.</p><p>See the <a href="/connect/standard-accounts">Standard onboarding</a> or <a href="/connect/express-accounts">Express onboarding</a> documentation for information about prefilling information and account onboarding steps. Learn more about <a href="/connect/handling-api-verification#person-information">handling identity verification with the API</a>.</p>
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|Collection<BankAccount|Card> $external_accounts External accounts (bank accounts and debit cards) currently attached to this account. External accounts are only returned for requests where <code>controller[is_controller]</code> is true.
+ * @property null|StripeObject $future_requirements
+ * @property null|StripeObject $groups The groups associated with the account.
+ * @property null|Person $individual <p>This is an object representing a person associated with a Stripe account.</p><p>A platform cannot access a person for an account where <a href="/api/accounts/object#account_object-controller-requirement_collection">account.controller.requirement_collection</a> is <code>stripe</code>, which includes Standard and Express accounts, after creating an Account Link or Account Session to start Connect onboarding.</p><p>See the <a href="/connect/standard-accounts">Standard onboarding</a> or <a href="/connect/express-accounts">Express onboarding</a> documentation for information about prefilling information and account onboarding steps. Learn more about <a href="/connect/handling-api-verification#person-information">handling identity verification with the API</a>.</p>
+ * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|bool $payouts_enabled Whether the funds in this account can be paid out.
- * @property null|\Stripe\StripeObject $requirements
- * @property null|\Stripe\StripeObject $settings Options for customizing how the account functions within Stripe.
- * @property null|\Stripe\StripeObject $tos_acceptance
+ * @property null|StripeObject $requirements
+ * @property null|StripeObject $settings Options for customizing how the account functions within Stripe.
+ * @property null|StripeObject $tos_acceptance
  * @property null|string $type The Stripe account type. Can be <code>standard</code>, <code>express</code>, <code>custom</code>, or <code>none</code>.
  */
 class Account extends ApiResource
@@ -74,9 +74,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Account the created resource
      *
-     * @return \Stripe\Account the created resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -84,7 +84,7 @@ class Account extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -108,9 +108,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Account the deleted resource
      *
-     * @return \Stripe\Account the deleted resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function delete($params = null, $opts = null)
     {
@@ -130,15 +130,15 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<Account> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Account> of ApiResources
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+        return static::_requestPage($url, Collection::class, $params, $opts);
     }
 
     /**
@@ -166,9 +166,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Account the updated resource
      *
-     * @return \Stripe\Account the updated resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -176,7 +176,7 @@ class Account extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -213,9 +213,9 @@ class Account extends ApiResource
      *     options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Account
      *
-     * @return \Stripe\Account
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id = null, $opts = null)
     {
@@ -256,7 +256,7 @@ class Account extends ApiResource
         } else {
             $originalValue = [];
         }
-        if (($originalValue) && (\count($originalValue) > \count($additionalOwners))) {
+        if ($originalValue && (\count($originalValue) > \count($additionalOwners))) {
             throw new Exception\InvalidArgumentException(
                 'You cannot delete an item from an array, you must instead set a new array'
             );
@@ -282,9 +282,9 @@ class Account extends ApiResource
      * @param null|array $clientId
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return StripeObject object containing the response from the API
      *
-     * @return \Stripe\StripeObject object containing the response from the API
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function deauthorize($clientId = null, $opts = null)
     {
@@ -300,9 +300,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Account the rejected account
      *
-     * @return \Stripe\Account the rejected account
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function reject($params = null, $opts = null)
     {
@@ -320,9 +320,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<Capability> the list of capabilities
      *
-     * @return \Stripe\Collection<\Stripe\Capability> the list of capabilities
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function allCapabilities($id, $params = null, $opts = null)
     {
@@ -335,9 +335,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Capability
      *
-     * @return \Stripe\Capability
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieveCapability($id, $capabilityId, $params = null, $opts = null)
     {
@@ -350,9 +350,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Capability
      *
-     * @return \Stripe\Capability
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function updateCapability($id, $capabilityId, $params = null, $opts = null)
     {
@@ -365,9 +365,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<BankAccount|Card> the list of external accounts (BankAccount or Card)
      *
-     * @return \Stripe\Collection<\Stripe\BankAccount|\Stripe\Card> the list of external accounts (BankAccount or Card)
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function allExternalAccounts($id, $params = null, $opts = null)
     {
@@ -379,9 +379,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return BankAccount|Card
      *
-     * @return \Stripe\BankAccount|\Stripe\Card
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function createExternalAccount($id, $params = null, $opts = null)
     {
@@ -394,9 +394,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return BankAccount|Card
      *
-     * @return \Stripe\BankAccount|\Stripe\Card
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function deleteExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
@@ -409,9 +409,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return BankAccount|Card
      *
-     * @return \Stripe\BankAccount|\Stripe\Card
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieveExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
@@ -424,9 +424,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return BankAccount|Card
      *
-     * @return \Stripe\BankAccount|\Stripe\Card
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function updateExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
@@ -439,9 +439,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return LoginLink
      *
-     * @return \Stripe\LoginLink
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function createLoginLink($id, $params = null, $opts = null)
     {
@@ -454,9 +454,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<Person> the list of persons
      *
-     * @return \Stripe\Collection<\Stripe\Person> the list of persons
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function allPersons($id, $params = null, $opts = null)
     {
@@ -468,9 +468,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Person
      *
-     * @return \Stripe\Person
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function createPerson($id, $params = null, $opts = null)
     {
@@ -483,9 +483,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Person
      *
-     * @return \Stripe\Person
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function deletePerson($id, $personId, $params = null, $opts = null)
     {
@@ -498,9 +498,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Person
      *
-     * @return \Stripe\Person
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrievePerson($id, $personId, $params = null, $opts = null)
     {
@@ -513,9 +513,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Person
      *
-     * @return \Stripe\Person
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function updatePerson($id, $personId, $params = null, $opts = null)
     {
