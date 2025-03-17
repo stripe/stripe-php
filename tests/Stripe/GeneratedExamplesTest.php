@@ -634,8 +634,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->expectsRequest('post', '/v1/coupons');
         $result = $this->client->coupons->create([
             'percent_off' => 25.5,
-            'duration' => 'repeating',
-            'duration_in_months' => 3,
+            'duration' => 'once',
         ]);
         self::assertInstanceOf(Coupon::class, $result);
     }
