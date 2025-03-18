@@ -634,8 +634,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->expectsRequest('post', '/v1/coupons');
         $result = $this->client->coupons->create([
             'percent_off' => 25.5,
-            'duration' => 'repeating',
-            'duration_in_months' => 3,
+            'duration' => 'once',
         ]);
         self::assertInstanceOf(Coupon::class, $result);
     }
@@ -1508,15 +1507,6 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->expectsRequest('post', '/v1/invoices/in_xxxxxxxxxxxxx/send');
         $result = $this->client->invoices->sendInvoice('in_xxxxxxxxxxxxx', []);
-        self::assertInstanceOf(Invoice::class, $result);
-    }
-
-    public function testInvoicesUpcomingGet()
-    {
-        $this->expectsRequest('get', '/v1/invoices/upcoming');
-        $result = $this->client->invoices->upcoming([
-            'customer' => 'cus_9utnxg47pWjV1e',
-        ]);
         self::assertInstanceOf(Invoice::class, $result);
     }
 
