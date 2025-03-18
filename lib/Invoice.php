@@ -299,8 +299,9 @@ class Invoice extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Invoice the created invoice
      * @return Invoice the attached invoice
+     *
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function attachPayment($params = null, $opts = null)
     {

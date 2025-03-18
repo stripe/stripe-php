@@ -164,8 +164,9 @@ class Reader extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Reader the processed reader
      * @return Reader the collected reader
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function collectInputs($params = null, $opts = null)
     {

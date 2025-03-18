@@ -139,8 +139,9 @@ class SubscriptionSchedule extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return SubscriptionSchedule the canceled subscription schedule
      * @return SubscriptionSchedule the amended subscription schedule
+     *
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function amend($params = null, $opts = null)
     {
