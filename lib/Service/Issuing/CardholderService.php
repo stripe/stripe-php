@@ -16,7 +16,7 @@ class CardholderService extends \Stripe\Service\AbstractService
      * sorted in descending order by creation date, with the most recently created
      * object appearing first.
      *
-     * @param null|array{created?: int|array, email?: string, ending_before?: string, expand?: string[], limit?: int, phone_number?: string, starting_after?: string, status?: string, type?: string} $params
+     * @param null|array{created?: array|int, email?: string, ending_before?: string, expand?: string[], limit?: int, phone_number?: string, starting_after?: string, status?: string, type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Issuing\Cardholder>

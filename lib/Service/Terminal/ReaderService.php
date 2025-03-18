@@ -49,9 +49,9 @@ class ReaderService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[], inputs: array{custom_text: array{description?: string, skip_button?: string, submit_button?: string, title: string}, required?: bool, selection?: array{choices: array{style?: string, value: string}[]}, toggles?: array{default_value?: string, description?: string, title?: string}[], type: string}[], metadata?: \Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Terminal\Reader
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function collectInputs($id, $params = null, $opts = null)
     {
@@ -66,9 +66,9 @@ class ReaderService extends \Stripe\Service\AbstractService
      * @param null|array{collect_config?: array{allow_redisplay?: string, enable_customer_cancellation?: bool, skip_tipping?: bool, tipping?: array{amount_eligible?: int}}, expand?: string[], payment_intent: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Terminal\Reader
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function collectPaymentMethod($id, $params = null, $opts = null)
     {
@@ -82,9 +82,9 @@ class ReaderService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[], payment_intent: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Terminal\Reader
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function confirmPaymentIntent($id, $params = null, $opts = null)
     {

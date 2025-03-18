@@ -93,7 +93,7 @@ class SubscriptionItemService extends AbstractService
      * model.
      *
      * @param string $parentId
-     * @param null|array{action?: string, expand?: string[], quantity: int, timestamp?: string|int|array} $params
+     * @param null|array{action?: string, expand?: string[], quantity: int, timestamp?: array|int|string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\UsageRecord

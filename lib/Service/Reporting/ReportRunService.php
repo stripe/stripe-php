@@ -14,7 +14,7 @@ class ReportRunService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of Report Runs, with the most recent appearing first.
      *
-     * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Reporting\ReportRun>

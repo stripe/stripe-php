@@ -15,7 +15,7 @@ class ProductService extends AbstractService
      * Returns a list of your products. The products are returned sorted by creation
      * date, with the most recently created products appearing first.
      *
-     * @param null|array{active?: bool, created?: int|array, ending_before?: string, expand?: string[], ids?: string[], limit?: int, shippable?: bool, starting_after?: string, type?: string, url?: string} $params
+     * @param null|array{active?: bool, created?: array|int, ending_before?: string, expand?: string[], ids?: string[], limit?: int, shippable?: bool, starting_after?: string, type?: string, url?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Product>

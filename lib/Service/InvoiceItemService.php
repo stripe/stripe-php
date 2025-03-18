@@ -15,7 +15,7 @@ class InvoiceItemService extends AbstractService
      * Returns a list of your invoice items. Invoice items are returned sorted by
      * creation date, with the most recently created invoice items appearing first.
      *
-     * @param null|array{created?: int|array, customer?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, pending?: bool, starting_after?: string} $params
+     * @param null|array{created?: array|int, customer?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, pending?: bool, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\InvoiceItem>

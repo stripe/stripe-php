@@ -11,17 +11,17 @@ namespace Stripe\Issuing;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|(object{application_method: string, purpose: string, submitted_at: int}&\Stripe\StripeObject&\stdClass) $application For decisions triggered by an application, details about the submission.
+ * @property null|(object{application_method: string, purpose: string, submitted_at: int}&\stdClass&\Stripe\StripeObject) $application For decisions triggered by an application, details about the submission.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $created_from The event that triggered the underwriting.
- * @property (object{email: string, name: string}&\Stripe\StripeObject&\stdClass) $credit_user
+ * @property (object{email: string, name: string}&\stdClass&\Stripe\StripeObject) $credit_user
  * @property null|int $decided_at Date when a decision was made.
- * @property null|(object{application_rejected: null|(object{reason_other_explanation: null|string, reasons: string[]}&\Stripe\StripeObject&\stdClass), credit_limit_approved: null|(object{amount: int, currency: string}&\Stripe\StripeObject&\stdClass), credit_limit_decreased: null|(object{amount: int, currency: string, reason_other_explanation: null|string, reasons: string[]}&\Stripe\StripeObject&\stdClass), credit_line_closed: null|(object{reason_other_explanation: null|string, reasons: string[]}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass) $decision Details about the decision.
+ * @property null|(object{application_rejected: null|(object{reason_other_explanation: null|string, reasons: string[]}&\stdClass&\Stripe\StripeObject), credit_limit_approved: null|(object{amount: int, currency: string}&\stdClass&\Stripe\StripeObject), credit_limit_decreased: null|(object{amount: int, currency: string, reason_other_explanation: null|string, reasons: string[]}&\stdClass&\Stripe\StripeObject), credit_line_closed: null|(object{reason_other_explanation: null|string, reasons: string[]}&\stdClass&\Stripe\StripeObject), type: string}&\stdClass&\Stripe\StripeObject) $decision Details about the decision.
  * @property null|int $decision_deadline For underwriting initiated by an application, a decision must be taken 30 days after the submission.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $regulatory_reporting_file File containing regulatory reporting data for the decision. Required if you are subject to this <a href="https://stripe.com/docs/issuing/credit/report-required-regulatory-data-for-credit-decisions">reporting requirement</a>.
- * @property null|(object{explanation: string, original_decision_type: string}&\Stripe\StripeObject&\stdClass) $underwriting_exception If an exception to the usual underwriting criteria was made for this application, details about the exception must be provided. Exceptions should only be granted in rare circumstances, in consultation with Stripe Compliance.
+ * @property null|(object{explanation: string, original_decision_type: string}&\stdClass&\Stripe\StripeObject) $underwriting_exception If an exception to the usual underwriting criteria was made for this application, details about the exception must be provided. Exceptions should only be granted in rare circumstances, in consultation with Stripe Compliance.
  */
 class CreditUnderwritingRecord extends \Stripe\ApiResource
 {
@@ -38,9 +38,9 @@ class CreditUnderwritingRecord extends \Stripe\ApiResource
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<CreditUnderwritingRecord> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\CreditUnderwritingRecord> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -55,9 +55,9 @@ class CreditUnderwritingRecord extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditUnderwritingRecord
      *
-     * @return \Stripe\Issuing\CreditUnderwritingRecord
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -72,9 +72,9 @@ class CreditUnderwritingRecord extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditUnderwritingRecord the corrected credit underwriting record
      *
-     * @return \Stripe\Issuing\CreditUnderwritingRecord the corrected credit underwriting record
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function correct($params = null, $opts = null)
     {
@@ -89,9 +89,9 @@ class CreditUnderwritingRecord extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditUnderwritingRecord the created credit underwriting record
      *
-     * @return \Stripe\Issuing\CreditUnderwritingRecord the created credit underwriting record
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function createFromApplication($params = null, $opts = null)
     {
@@ -107,9 +107,9 @@ class CreditUnderwritingRecord extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditUnderwritingRecord the created credit underwriting record
      *
-     * @return \Stripe\Issuing\CreditUnderwritingRecord the created credit underwriting record
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function createFromProactiveReview($params = null, $opts = null)
     {
@@ -125,9 +125,9 @@ class CreditUnderwritingRecord extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditUnderwritingRecord the reported credit underwriting record
      *
-     * @return \Stripe\Issuing\CreditUnderwritingRecord the reported credit underwriting record
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function reportDecision($params = null, $opts = null)
     {

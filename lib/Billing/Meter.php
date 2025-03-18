@@ -12,16 +12,16 @@ namespace Stripe\Billing;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property (object{event_payload_key: string, type: string}&\Stripe\StripeObject&\stdClass) $customer_mapping
- * @property (object{formula: string}&\Stripe\StripeObject&\stdClass) $default_aggregation
+ * @property (object{event_payload_key: string, type: string}&\stdClass&\Stripe\StripeObject) $customer_mapping
+ * @property (object{formula: string}&\stdClass&\Stripe\StripeObject) $default_aggregation
  * @property string $display_name The meter's name.
  * @property string $event_name The name of the meter event to record usage for. Corresponds with the <code>event_name</code> field on meter events.
  * @property null|string $event_time_window The time window to pre-aggregate meter events for, if any.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $status The meter's status.
- * @property (object{deactivated_at: null|int}&\Stripe\StripeObject&\stdClass) $status_transitions
+ * @property (object{deactivated_at: null|int}&\stdClass&\Stripe\StripeObject) $status_transitions
  * @property int $updated Time at which the object was last updated. Measured in seconds since the Unix epoch.
- * @property (object{event_payload_key: string}&\Stripe\StripeObject&\stdClass) $value_settings
+ * @property (object{event_payload_key: string}&\stdClass&\Stripe\StripeObject) $value_settings
  */
 class Meter extends \Stripe\ApiResource
 {

@@ -18,8 +18,8 @@ namespace Stripe;
  * @property null|int $expires_at Date at which the promotion code can no longer be redeemed.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|int $max_redemptions Maximum number of times this promotion code can be redeemed.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property (object{currency_options?: \Stripe\StripeObject, first_time_transaction: bool, minimum_amount: null|int, minimum_amount_currency: null|string}&\Stripe\StripeObject&\stdClass) $restrictions
+ * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property (object{currency_options?: StripeObject, first_time_transaction: bool, minimum_amount: null|int, minimum_amount_currency: null|string}&\stdClass&StripeObject) $restrictions
  * @property int $times_redeemed Number of times this promotion code has been used.
  */
 class PromotionCode extends ApiResource
@@ -32,7 +32,7 @@ class PromotionCode extends ApiResource
      * A promotion code points to a coupon. You can optionally restrict the code to a
      * specific customer, redemption limit, and expiration date.
      *
-     * @param null|array{active?: bool, code?: string, coupon: string, customer?: string, expand?: string[], expires_at?: int, max_redemptions?: int, metadata?: \Stripe\StripeObject, restrictions?: array{currency_options?: \Stripe\StripeObject, first_time_transaction?: bool, minimum_amount?: int, minimum_amount_currency?: string}} $params
+     * @param null|array{active?: bool, code?: string, coupon: string, customer?: string, expand?: string[], expires_at?: int, max_redemptions?: int, metadata?: StripeObject, restrictions?: array{currency_options?: StripeObject, first_time_transaction?: bool, minimum_amount?: int, minimum_amount_currency?: string}} $params
      * @param null|array|string $options
      *
      * @return PromotionCode the created resource
@@ -54,7 +54,7 @@ class PromotionCode extends ApiResource
     /**
      * Returns a list of your promotion codes.
      *
-     * @param null|array{active?: bool, code?: string, coupon?: string, created?: int|array, customer?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|array{active?: bool, code?: string, coupon?: string, created?: array|int, customer?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<PromotionCode> of ApiResources
@@ -95,7 +95,7 @@ class PromotionCode extends ApiResource
      * passed. Most fields are, by design, not editable.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{active?: bool, expand?: string[], metadata?: null|\Stripe\StripeObject, restrictions?: array{currency_options?: \Stripe\StripeObject}} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|StripeObject, restrictions?: array{currency_options?: StripeObject}} $params
      * @param null|array|string $opts
      *
      * @return PromotionCode the updated resource

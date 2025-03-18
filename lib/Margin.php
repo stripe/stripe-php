@@ -13,7 +13,7 @@ namespace Stripe;
  * @property bool $active Whether the margin can be applied to invoices, invoice items, or invoice line items. Defaults to <code>true</code>.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name Name of the margin that's displayed on, for example, invoices.
  * @property float $percent_off Percent that will be taken off the subtotal before tax (after all other discounts and promotions) of any invoice to which the margin is applied.
  * @property int $updated Time at which the object was last updated. Measured in seconds since the Unix epoch.
@@ -32,12 +32,12 @@ class Margin extends ApiResource
      * a customer. Calculation of prorations do not include any partner margins applied
      * on the original invoice item.
      *
-     * @param null|array{active?: bool, expand?: string[], metadata?: \Stripe\StripeObject, name?: string, percent_off: float} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: StripeObject, name?: string, percent_off: float} $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Margin the created resource
      *
-     * @return \Stripe\Margin the created resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -45,7 +45,7 @@ class Margin extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -57,15 +57,15 @@ class Margin extends ApiResource
      * @param null|array{active?: bool, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<Margin> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Margin> of ApiResources
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+        return static::_requestPage($url, Collection::class, $params, $opts);
     }
 
     /**
@@ -74,13 +74,13 @@ class Margin extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Margin
      *
-     * @return \Stripe\Margin
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -92,12 +92,12 @@ class Margin extends ApiResource
      * editable.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{active?: bool, expand?: string[], metadata?: \Stripe\StripeObject, name?: string} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: StripeObject, name?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Margin the updated resource
      *
-     * @return \Stripe\Margin the updated resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -105,7 +105,7 @@ class Margin extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
