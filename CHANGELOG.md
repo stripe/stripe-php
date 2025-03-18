@@ -1,5 +1,143 @@
 # Changelog
 
+## 16.7.0-beta.1 - 2025-03-18
+* [#1820](https://github.com/stripe/stripe-php/pull/1820) Beta SDK updates between Open API versions 1473 and 1505 
+  Codegen for openapi 1505.
+  
+  * Add support for `succeed_input_collection` and `timeout_input_collection` test helper methods on resource `Terminal.Reader`
+* [#1825](https://github.com/stripe/stripe-php/pull/1825) Results of running formatter
+* [#1823](https://github.com/stripe/stripe-php/pull/1823) Merge from stripe-php master
+* [#1821](https://github.com/stripe/stripe-php/pull/1821) Merge from stripe-php master
+* [#1808](https://github.com/stripe/stripe-php/pull/1808) Update generated code for beta
+
+* [#1803](https://github.com/stripe/stripe-php/pull/1803) Update generated code for beta
+  * V2 Events now are subclass of `\Stripe\V2\Event`.
+* [#1796](https://github.com/stripe/stripe-php/pull/1796) Update generated code for beta
+  * Add support for `close` method on resource `Treasury.FinancialAccount`
+  * Add support for `advice_code` on `StripeError`
+  * Add support for `brand_product` on `Card`
+  * Add support for `is_default` and `nickname` on `Treasury.FinancialAccount`
+* [#1794](https://github.com/stripe/stripe-php/pull/1794) Improved php type hints
+  
+  ### Adds Create/Update/Retrieve/Delete/All/Search parameters
+  
+  You will now be able to get type hints of the keys that can passed without switching out of your IDE. Eg.
+  ```php
+  * @param null|array{customer:string, components: array} $params
+  ```
+  
+  <img width="417" alt="PHPStorm IDE with array type hints" src="https://github.com/user-attachments/assets/e914dcda-354f-4df2-b82e-217ad931e71d">
+  
+  ### Updated StripeObject class properties
+  We changed the type of class properties from `StripeObject` to something more specific. 
+  
+  For example: Invoice settings was defined as a StripeObject in Customer resource. 
+  
+  https://github.com/stripe/stripe-php/blob/bae10cd799404f0f4862ec03810c5ff8ca634b30/lib/Customer.php#L25
+  
+  Now you will be able to reference `custom_fields` and `rendering_options` on `customer->invoice_settings` without PHPStan complaining. 
+  ```php
+  * @property object{custom_fields: null|object{name: string, value: string}&\Stripe\StripeObject&\stdClass[], default_payment_method: null|string|\Stripe\PaymentMethod, footer: null|string, rendering_options: null|object{amount_tax_display: null|string, template: null|string}&\Stripe\StripeObject&\stdClass}&\Stripe\StripeObject&\stdClass $invoice_settings
+   */
+  ```
+* [#1792](https://github.com/stripe/stripe-php/pull/1792) Update generated code for beta
+  * Add support for `allow_redisplay` on `Card` and `Source`
+  * Remove support for `amount_refunded` on `PaymentRecord`
+* [#1790](https://github.com/stripe/stripe-php/pull/1790) Update generated code for beta
+  * Add support for new values `payout_minimum_balance_hold` and `payout_minimum_balance_release` on enum `BalanceTransaction.type`
+* [#1788](https://github.com/stripe/stripe-php/pull/1788) Update generated code for beta
+  * Add support for `network_advice_code` and `network_decline_code` on `StripeError`
+  * Add support for new value `invoice.overpaid` on enum `Event.type`
+  * Add support for `adjustable_quantity`, `display`, and `metadata` on `LineItem`
+  * Change type of `LineItem.description` from `string` to `nullable(string)`
+* [#1784](https://github.com/stripe/stripe-php/pull/1784) Update generated code for beta
+
+* [#1783](https://github.com/stripe/stripe-php/pull/1783) Update generated code for beta
+  * Add support for new resources `Issuing.FraudLiabilityDebit`, `PaymentAttemptRecord`, and `PaymentRecord`
+  * Add support for `all` and `retrieve` methods on resources `FraudLiabilityDebit` and `PaymentAttemptRecord`
+  * Add support for `report_payment_attempt_canceled`, `report_payment_attempt_failed`, `report_payment_attempt_guaranteed`, `report_payment_attempt`, `report_payment`, and `retrieve` methods on resource `PaymentRecord`
+  * Add support for `adaptive_pricing` on `Checkout.Session`
+  * Add support for new values `invoice.payment_attempt_required` and `issuing_fraud_liability_debit.created` on enum `Event.type`
+  * Add support for `amount_overpaid` on `Invoice`
+  * Add support for new value `li_vat` on enum `TaxId.type`
+  * Add support for new value `service_tax` on enum `TaxRate.tax_type`
+  * Change type of `Treasury.InboundTransfer.origin_payment_method` from `string` to `nullable(string)`
+* [#1780](https://github.com/stripe/stripe-php/pull/1780) Update generated code for beta
+  * Add support for `trigger_action` method on resource `PaymentIntent`
+  * Remove support for value `payout_statement_descriptor_profanity` from enum `StripeError.code`
+  * Add support for `id_bank_transfer` on `PaymentMethodConfiguration` and `PaymentMethod`
+  * Add support for `gopay`, `qris`, and `shopeepay` on `PaymentMethodConfiguration`
+* [#1774](https://github.com/stripe/stripe-php/pull/1774) Update generated code for beta
+  * Remove support for value `expired` from enum `Issuing.Authorization.status`
+  * Add support for new values `alma`, `gopay`, `qris`, and `shopeepay` on enum `PaymentLink.payment_method_types[]`
+  * Add support for `alma` on `PaymentMethodConfiguration` and `PaymentMethod`
+  * Add support for `gopay`, `qris`, and `shopeepay` on `PaymentMethod`
+  * Add support for new values `alma`, `gopay`, `qris`, and `shopeepay` on enum `PaymentMethod.type`
+  * Add support for `amazon_pay` on `PaymentMethodDomain`
+  * Add support for `au_serr`, `ca_mrdp`, `eu_dac7`, `gb_mrdp`, and `nz_mrdp` on `Tax.Form`
+  * Add support for new values `au_serr`, `ca_mrdp`, `eu_dac7`, `gb_mrdp`, and `nz_mrdp` on enum `Tax.Form.type`
+* [#1749](https://github.com/stripe/stripe-php/pull/1749) Update generated code for beta
+  * Add support for `submit_card` test helper method on resource `Issuing.Card`
+  * Add support for `groups` on `Account`
+  * Add support for new value `payout_statement_descriptor_profanity` on enum `StripeError.code`
+  * Add support for new value `refund.failed` on enum `Event.type`
+  * Add support for `metadata` on `Forwarding.Request`
+  * Add support for new value `expired` on enum `Issuing.Authorization.status`
+  * Add support for `kakao_pay`, `kr_card`, `naver_pay`, `payco`, and `samsung_pay` on `PaymentMethod`
+  * Add support for new values `kakao_pay`, `kr_card`, `naver_pay`, `payco`, and `samsung_pay` on enum `PaymentMethod.type`
+  * Add support for new values `by_tin`, `ma_vat`, `md_vat`, `tz_vat`, `uz_tin`, and `uz_vat` on enum `TaxId.type`
+  * Add support for `flat_amount` and `rate_type` on `TaxRate`
+  * Add support for new value `retail_delivery_fee` on enum `TaxRate.tax_type`
+* [#1770](https://github.com/stripe/stripe-php/pull/1770) Merge into beta using the merge script 
+* [#1766](https://github.com/stripe/stripe-php/pull/1766) Merge updates from stripe-php master to beta
+  
+  * The `Preview` class has been removed. Please use [rawRequest](https://github.com/stripe/stripe-php?tab=readme-ov-file#custom-requests) instead which accepts
+       * the http method as parameter instead of the dedicated methods in the `Preview` class
+       * an `apiMode` of `v1` instead of `standard` and `v2` instead of `preview`.
+* [#1748](https://github.com/stripe/stripe-php/pull/1748) Update generated code for beta
+  * Remove support for resource `QuotePhase`
+  * Remove support for `list_line_items` and `retrieve` methods on resource `QuotePhase`
+  * Add support for new value `rechnung` on enum `PaymentLink.payment_method_types[]`
+* [#1743](https://github.com/stripe/stripe-php/pull/1743) Update generated code for beta
+  * Add support for new resources `Issuing.DisputeSettlementDetail` and `Issuing.Settlement`
+  * Add support for `all` and `retrieve` methods on resource `DisputeSettlementDetail`
+  * Remove support for `all` method on resource `QuotePhase`
+  * Add support for new values `issuing_dispute_settlement_detail.created`, `issuing_dispute_settlement_detail.updated`, `issuing_settlement.created`, and `issuing_settlement.updated` on enum `Event.type`
+  * Add support for `settlement` on `Issuing.Transaction`
+* [#1738](https://github.com/stripe/stripe-php/pull/1738) Update generated code for beta
+  * Add support for new resources `Billing.MeterErrorReport` and `Terminal.ReaderCollectedData`
+  * Add support for `retrieve` method on resource `ReaderCollectedData`
+  * Add support for new value `terminal_reader_collected_data_invalid` on enum `StripeError.code`
+  * Add support for new value `billing.meter_error_report.triggered` on enum `Event.type`
+  * Add support for `regulatory_reporting_file` on `Issuing.CreditUnderwritingRecord`
+  * Add support for new value `mb_way` on enum `PaymentLink.payment_method_types[]`
+  * Add support for `mb_way` on `PaymentMethod`
+  * Add support for new value `mb_way` on enum `PaymentMethod.type`
+* [#1735](https://github.com/stripe/stripe-php/pull/1735) Update generated code for beta
+  * Add support for `collected_information` and `permissions` on `Checkout.Session`
+* [#1730](https://github.com/stripe/stripe-php/pull/1730) Update generated code for beta
+  * Add support for new value `custom` on enum `Checkout.Session.ui_mode`
+  * Add support for new value `payto` on enum `PaymentLink.payment_method_types[]`
+* [#1728](https://github.com/stripe/stripe-php/pull/1728) Update generated code for beta
+  * Add support for `attach_payment` method on resource `Invoice`
+  * Add support for `last_price_migration_error` on `SubscriptionSchedule` and `Subscription`
+* [#1723](https://github.com/stripe/stripe-php/pull/1723) Update generated code for beta
+  * Add support for new resources `Billing.AlertTriggered`, `Billing.Alert`, and `Tax.Association`
+  * Add support for `activate`, `all`, `archive`, `create`, `deactivate`, and `retrieve` methods on resource `Alert`
+  * Add support for `find` method on resource `Association`
+  * Add support for new values `issuing.account_closed_for_not_providing_business_model_clarification`, `issuing.account_closed_for_not_providing_url_clarification`, and `issuing.account_closed_for_not_providing_use_case_clarification` on enum `AccountNotice.reason`
+  * Add support for `async_workflows` on `PaymentIntent`
+  * Add support for `payto` on `PaymentMethodConfiguration`
+  * Add support for `display_name` on `Treasury.FinancialAccount`
+* [#1720](https://github.com/stripe/stripe-php/pull/1720) Update generated code for beta
+
+* [#1719](https://github.com/stripe/stripe-php/pull/1719) Update generated code for beta
+  * Add support for new resource `FinancialConnections.Institution`
+  * Add support for `all` and `retrieve` methods on resource `Institution`
+  * Add support for new value `balance` on enum `FinancialConnections.Account.subscriptions[]`
+* [#1712](https://github.com/stripe/stripe-php/pull/1712) Update generated code for beta
+
+
 ## 16.6.0-beta.1 - 2025-02-07
 * [#1808](https://github.com/stripe/stripe-php/pull/1808) Update generated code for beta
 
