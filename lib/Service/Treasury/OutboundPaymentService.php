@@ -14,7 +14,7 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of OutboundPayments sent from the specified FinancialAccount.
      *
-     * @param null|array{created?: int|array, customer?: string, ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
+     * @param null|array{created?: array|int, customer?: string, ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Treasury\OutboundPayment>

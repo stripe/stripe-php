@@ -6,6 +6,7 @@ namespace Stripe\Service\Tax;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class AssociationService extends \Stripe\Service\AbstractService
@@ -16,9 +17,9 @@ class AssociationService extends \Stripe\Service\AbstractService
      * @param null|array{expand?: string[], payment_intent: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Tax\Association
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function find($params = null, $opts = null)
     {

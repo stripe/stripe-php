@@ -19,8 +19,8 @@ namespace Stripe\Treasury;
  * @property string $network The rails used to reverse the funds.
  * @property string $received_credit The ReceivedCredit being reversed.
  * @property string $status Status of the CreditReversal
- * @property (object{posted_at: null|int}&\Stripe\StripeObject&\stdClass) $status_transitions
- * @property null|string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
+ * @property (object{posted_at: null|int}&\stdClass&\Stripe\StripeObject) $status_transitions
+ * @property null|string|Transaction $transaction The Transaction associated with this object.
  */
 class CreditReversal extends \Stripe\ApiResource
 {

@@ -10,7 +10,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject&\stdClass) $address The customer's address.
+ * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\stdClass&StripeObject) $address The customer's address.
  * @property null|int $balance The current balance, if any, that's stored on the customer. If negative, the customer has credit to apply to their next invoice. If positive, the customer has an amount owed that's added to their next invoice. The balance only considers amounts that Stripe hasn't successfully applied to any invoice. It doesn't reflect unpaid invoices. This balance is only taken into account after invoices finalize.
  * @property null|CashBalance $cash_balance The current funds being held by Stripe on behalf of the customer. You can apply these funds towards payment intents when the source is &quot;cash_balance&quot;. The <code>settings[reconciliation_mode]</code> field describes if these funds apply to these payment intents manually or automatically.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -22,17 +22,17 @@ namespace Stripe;
  * @property null|string $email The customer's email address.
  * @property null|StripeObject $invoice_credit_balance The current multi-currency balances, if any, that's stored on the customer. If positive in a currency, the customer has a credit to apply to their next invoice denominated in that currency. If negative, the customer has an amount owed that's added to their next invoice denominated in that currency. These balances don't apply to unpaid invoices. They solely track amounts that Stripe hasn't successfully applied to any invoice. Stripe only applies a balance in a specific currency to an invoice after that invoice (which is in the same currency) finalizes.
  * @property null|string $invoice_prefix The prefix for the customer used to generate unique invoice numbers.
- * @property (object{custom_fields: null|(object{name: string, value: string}&\Stripe\StripeObject&\stdClass)[], default_payment_method: null|string|\Stripe\PaymentMethod, footer: null|string, rendering_options: null|(object{amount_tax_display: null|string, template: null|string}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass) $invoice_settings
+ * @property (object{custom_fields: null|(object{name: string, value: string}&\stdClass&StripeObject)[], default_payment_method: null|PaymentMethod|string, footer: null|string, rendering_options: null|(object{amount_tax_display: null|string, template: null|string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $invoice_settings
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name The customer's full name or business name.
  * @property null|int $next_invoice_sequence The suffix of the customer's next invoice number (for example, 0001). When the account uses account level sequencing, this parameter is ignored in API requests and the field omitted in API responses.
  * @property null|string $phone The customer's phone number.
  * @property null|string[] $preferred_locales The customer's preferred locales (languages), ordered by preference.
- * @property null|(object{address?: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject&\stdClass), carrier?: null|string, name?: string, phone?: null|string, tracking_number?: null|string}&\Stripe\StripeObject&\stdClass) $shipping Mailing and shipping address for the customer. Appears on invoices emailed to this customer.
- * @property null|\Stripe\Collection<\Stripe\Account|\Stripe\BankAccount|\Stripe\Card|\Stripe\Source> $sources The customer's payment sources, if any.
- * @property null|\Stripe\Collection<\Stripe\Subscription> $subscriptions The customer's current subscriptions, if any.
- * @property (object{automatic_tax: string, ip_address: null|string, location: null|(object{country: string, source: string, state: null|string}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass) $tax
+ * @property null|(object{address?: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\stdClass&StripeObject), carrier?: null|string, name?: string, phone?: null|string, tracking_number?: null|string}&\stdClass&StripeObject) $shipping Mailing and shipping address for the customer. Appears on invoices emailed to this customer.
+ * @property null|Collection<Account|BankAccount|Card|Source> $sources The customer's payment sources, if any.
+ * @property null|Collection<Subscription> $subscriptions The customer's current subscriptions, if any.
+ * @property (object{automatic_tax: string, ip_address: null|string, location: null|(object{country: string, source: string, state: null|string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $tax
  * @property null|string $tax_exempt Describes the customer's tax exemption status, which is <code>none</code>, <code>exempt</code>, or <code>reverse</code>. When set to <code>reverse</code>, invoice and receipt PDFs include the following text: <strong>&quot;Reverse charge&quot;</strong>.
  * @property null|Collection<TaxId> $tax_ids The customer's tax IDs.
  * @property null|string|TestHelpers\TestClock $test_clock ID of the test clock that this customer belongs to.
@@ -51,7 +51,7 @@ class Customer extends ApiResource
     /**
      * Creates a new customer object.
      *
-     * @param null|array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, balance?: int, cash_balance?: array{settings?: array{reconciliation_mode?: string}}, coupon?: string, description?: string, email?: string, expand?: string[], invoice_prefix?: string, invoice_settings?: array{custom_fields?: null|array{name: string, value: string}[], default_payment_method?: string, footer?: string, rendering_options?: null|array{amount_tax_display?: null|string, template?: string}}, metadata?: null|\Stripe\StripeObject, name?: string, next_invoice_sequence?: int, payment_method?: string, phone?: string, preferred_locales?: string[], promotion_code?: string, shipping?: null|array{address: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, name: string, phone?: string}, source?: string, tax?: array{ip_address?: null|string, validate_location?: string}, tax_exempt?: null|string, tax_id_data?: array{type: string, value: string}[], test_clock?: string, validate?: bool} $params
+     * @param null|array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, balance?: int, cash_balance?: array{settings?: array{reconciliation_mode?: string}}, coupon?: string, description?: string, email?: string, expand?: string[], invoice_prefix?: string, invoice_settings?: array{custom_fields?: null|array{name: string, value: string}[], default_payment_method?: string, footer?: string, rendering_options?: null|array{amount_tax_display?: null|string, template?: string}}, metadata?: null|StripeObject, name?: string, next_invoice_sequence?: int, payment_method?: string, phone?: string, preferred_locales?: string[], promotion_code?: string, shipping?: null|array{address: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, name: string, phone?: string}, source?: string, tax?: array{ip_address?: null|string, validate_location?: string}, tax_exempt?: null|string, tax_id_data?: array{type: string, value: string}[], test_clock?: string, validate?: bool} $params
      * @param null|array|string $options
      *
      * @return Customer the created resource
@@ -96,7 +96,7 @@ class Customer extends ApiResource
      * Returns a list of your customers. The customers are returned sorted by creation
      * date, with the most recent customers appearing first.
      *
-     * @param null|array{created?: int|array, email?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, test_clock?: string} $params
+     * @param null|array{created?: array|int, email?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, test_clock?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Customer> of ApiResources
@@ -145,7 +145,7 @@ class Customer extends ApiResource
      * This request accepts mostly the same arguments as the customer creation call.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, balance?: int, cash_balance?: array{settings?: array{reconciliation_mode?: string}}, coupon?: string, default_source?: string, description?: string, email?: string, expand?: string[], invoice_prefix?: string, invoice_settings?: array{custom_fields?: null|array{name: string, value: string}[], default_payment_method?: string, footer?: string, rendering_options?: null|array{amount_tax_display?: null|string, template?: string}}, metadata?: null|\Stripe\StripeObject, name?: string, next_invoice_sequence?: int, phone?: string, preferred_locales?: string[], promotion_code?: string, shipping?: null|array{address: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, name: string, phone?: string}, source?: string, tax?: array{ip_address?: null|string, validate_location?: string}, tax_exempt?: null|string, validate?: bool} $params
+     * @param null|array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, balance?: int, cash_balance?: array{settings?: array{reconciliation_mode?: string}}, coupon?: string, default_source?: string, description?: string, email?: string, expand?: string[], invoice_prefix?: string, invoice_settings?: array{custom_fields?: null|array{name: string, value: string}[], default_payment_method?: string, footer?: string, rendering_options?: null|array{amount_tax_display?: null|string, template?: string}}, metadata?: null|StripeObject, name?: string, next_invoice_sequence?: int, phone?: string, preferred_locales?: string[], promotion_code?: string, shipping?: null|array{address: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, name: string, phone?: string}, source?: string, tax?: array{ip_address?: null|string, validate_location?: string}, tax_exempt?: null|string, validate?: bool} $params
      * @param null|array|string $opts
      *
      * @return Customer the updated resource

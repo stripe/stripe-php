@@ -25,12 +25,12 @@ class FraudLiabilityDebit extends \Stripe\ApiResource
      * are sorted in descending order by creation date, with the most recently created
      * object appearing first.
      *
-     * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<FraudLiabilityDebit> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\FraudLiabilityDebit> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -45,9 +45,9 @@ class FraudLiabilityDebit extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return FraudLiabilityDebit
      *
-     * @return \Stripe\Issuing\FraudLiabilityDebit
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

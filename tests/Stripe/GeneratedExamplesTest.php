@@ -2520,8 +2520,8 @@ final class GeneratedExamplesTest extends TestCase
             'in_xyz',
             []
         );
-        static::assertInstanceOf(\Stripe\Collection::class, $result);
-        static::assertInstanceOf(\Stripe\InvoiceLineItem::class, $result->data[0]);
+        self::assertInstanceOf(Collection::class, $result);
+        self::assertInstanceOf(InvoiceLineItem::class, $result->data[0]);
     }
 
     public function testRadarEarlyFraudWarningsGet()
@@ -3258,7 +3258,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->client->tax->forms->pdf(
             'form_xxxxxxxxxxxxx',
-            function () {},
+            static function () {},
             []
         );
         // TODO: assert proper instance, {"shape":"file"}
