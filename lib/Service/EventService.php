@@ -18,7 +18,7 @@ class EventService extends AbstractService
      * <code>api_version</code> attribute (not according to your current Stripe API
      * version or <code>Stripe-Version</code> header).
      *
-     * @param null|array{created?: int|array, delivery_success?: bool, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string, types?: string[]} $params
+     * @param null|array{created?: array|int, delivery_success?: bool, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string, types?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Event>

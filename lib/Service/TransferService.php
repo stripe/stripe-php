@@ -16,7 +16,7 @@ class TransferService extends AbstractService
      * are returned in sorted order, with the most recently created transfers appearing
      * first.
      *
-     * @param null|array{created?: int|array, destination?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, transfer_group?: string} $params
+     * @param null|array{created?: array|int, destination?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, transfer_group?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Transfer>

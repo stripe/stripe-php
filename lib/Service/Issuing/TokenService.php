@@ -14,7 +14,7 @@ class TokenService extends \Stripe\Service\AbstractService
     /**
      * Lists all Issuing <code>Token</code> objects for a given card.
      *
-     * @param null|array{card: string, created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
+     * @param null|array{card: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Issuing\Token>

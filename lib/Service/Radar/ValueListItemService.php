@@ -16,7 +16,7 @@ class ValueListItemService extends \Stripe\Service\AbstractService
      * descending order by creation date, with the most recently created object
      * appearing first.
      *
-     * @param null|array{created?: int|array, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, value?: string, value_list: string} $params
+     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, value?: string, value_list: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Radar\ValueListItem>

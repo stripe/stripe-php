@@ -11,11 +11,11 @@ namespace Stripe;
  *
  * @property string $id The identifier for the capability.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property string|\Stripe\Account $account The account for which the capability enables functionality.
- * @property (object{alternatives: null|(object{alternative_fields_due: string[], original_fields_due: string[]}&\Stripe\StripeObject&\stdClass)[], current_deadline: null|int, currently_due: string[], disabled_reason: null|string, errors: (object{code: string, reason: string, requirement: string}&\Stripe\StripeObject&\stdClass)[], eventually_due: string[], past_due: string[], pending_verification: string[]}&\Stripe\StripeObject&\stdClass) $future_requirements
+ * @property Account|string $account The account for which the capability enables functionality.
+ * @property (object{alternatives: null|(object{alternative_fields_due: string[], original_fields_due: string[]}&\stdClass&StripeObject)[], current_deadline: null|int, currently_due: string[], disabled_reason: null|string, errors: (object{code: string, reason: string, requirement: string}&\stdClass&StripeObject)[], eventually_due: string[], past_due: string[], pending_verification: string[]}&\stdClass&StripeObject) $future_requirements
  * @property bool $requested Whether the capability has been requested.
  * @property null|int $requested_at Time at which the capability was requested. Measured in seconds since the Unix epoch.
- * @property (object{alternatives: null|(object{alternative_fields_due: string[], original_fields_due: string[]}&\Stripe\StripeObject&\stdClass)[], current_deadline: null|int, currently_due: string[], disabled_reason: null|string, errors: (object{code: string, reason: string, requirement: string}&\Stripe\StripeObject&\stdClass)[], eventually_due: string[], past_due: string[], pending_verification: string[]}&\Stripe\StripeObject&\stdClass) $requirements
+ * @property (object{alternatives: null|(object{alternative_fields_due: string[], original_fields_due: string[]}&\stdClass&StripeObject)[], current_deadline: null|int, currently_due: string[], disabled_reason: null|string, errors: (object{code: string, reason: string, requirement: string}&\stdClass&StripeObject)[], eventually_due: string[], past_due: string[], pending_verification: string[]}&\stdClass&StripeObject) $requirements
  * @property string $status The status of the capability.
  */
 class Capability extends ApiResource
@@ -76,8 +76,8 @@ class Capability extends ApiResource
     public static function update($_id, $_params = null, $_options = null)
     {
         $msg = 'Capabilities cannot be updated without an account ID. '
-                   . 'Update a capability using `Account::updateCapability('
-                   . "'account_id', 'capability_id', \$updateParams)`.";
+               . 'Update a capability using `Account::updateCapability('
+               . "'account_id', 'capability_id', \$updateParams)`.";
 
         throw new Exception\BadMethodCallException($msg);
     }

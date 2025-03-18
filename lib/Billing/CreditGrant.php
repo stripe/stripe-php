@@ -11,8 +11,8 @@ namespace Stripe\Billing;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property (object{monetary: null|(object{currency: string, value: int}&\Stripe\StripeObject&\stdClass), type: string}&\Stripe\StripeObject&\stdClass) $amount
- * @property (object{scope: (object{price_type?: string, prices?: ((object{id: null|string}&\Stripe\StripeObject&\stdClass))[]}&\Stripe\StripeObject&\stdClass)}&\Stripe\StripeObject&\stdClass) $applicability_config
+ * @property (object{monetary: null|(object{currency: string, value: int}&\stdClass&\Stripe\StripeObject), type: string}&\stdClass&\Stripe\StripeObject) $amount
+ * @property (object{scope: (object{price_type?: string, prices?: ((object{id: null|string}&\stdClass&\Stripe\StripeObject))[]}&\stdClass&\Stripe\StripeObject)}&\stdClass&\Stripe\StripeObject) $applicability_config
  * @property string $category The category of this credit grant. This is for tracking purposes and isn't displayed to the customer.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string|\Stripe\Customer $customer ID of the customer receiving the billing credits.
@@ -38,7 +38,7 @@ class CreditGrant extends \Stripe\ApiResource
     /**
      * Creates a credit grant.
      *
-     * @param null|array{amount: array{monetary?: array{currency: string, value: int}, type: string}, applicability_config: array{scope: array{price_type: string, prices?: array{id: string}[]}}, category: string, customer: string, effective_at?: int, expand?: string[], expires_at?: int, metadata?: \Stripe\StripeObject, name?: string} $params
+     * @param null|array{amount: array{monetary?: array{currency: string, value: int}, type: string}, applicability_config: array{scope: array{price_type?: string, prices?: array{id: string}[]}}, category: string, customer: string, effective_at?: int, expand?: string[], expires_at?: int, metadata?: \Stripe\StripeObject, name?: string, priority?: int} $params
      * @param null|array|string $options
      *
      * @return CreditGrant the created resource
