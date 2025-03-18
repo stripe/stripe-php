@@ -67,7 +67,7 @@ class CreditNote extends ApiResource
      * <code>status=open</code> invoice, a credit note reduces its
      * <code>amount_due</code>. For a <code>status=paid</code> invoice, a credit note
      * does not affect its <code>amount_due</code>. Instead, it can result in any
-     * combination of the following:.
+     * combination of the following:
      *
      * <ul> <li>Refund: create a new refund (using <code>refund_amount</code>) or link
      * an existing refund (using <code>refund</code>).</li> <li>Customer balance
