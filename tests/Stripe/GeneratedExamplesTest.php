@@ -1397,7 +1397,6 @@ final class GeneratedExamplesTest extends TestCase
         $this->expectsRequest('post', '/v1/invoiceitems');
         $result = $this->client->invoiceItems->create([
             'customer' => 'cus_xxxxxxxxxxxxx',
-            'price' => 'price_xxxxxxxxxxxxx',
         ]);
         self::assertInstanceOf(InvoiceItem::class, $result);
     }
