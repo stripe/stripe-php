@@ -3002,36 +3002,6 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(SubscriptionItem::class, $result);
     }
 
-    public function testSubscriptionItemsUsageRecordSummariesGet()
-    {
-        $this->expectsRequest(
-            'get',
-            '/v1/subscription_items/si_xxxxxxxxxxxxx/usage_record_summaries'
-        );
-        $result = $this->client->subscriptionItems->allUsageRecordSummaries(
-            'si_xxxxxxxxxxxxx',
-            ['limit' => 3]
-        );
-        self::assertInstanceOf(Collection::class, $result);
-        self::assertInstanceOf(UsageRecordSummary::class, $result->data[0]);
-    }
-
-    public function testSubscriptionItemsUsageRecordsPost()
-    {
-        $this->expectsRequest(
-            'post',
-            '/v1/subscription_items/si_xxxxxxxxxxxxx/usage_records'
-        );
-        $result = $this->client->subscriptionItems->createUsageRecord(
-            'si_xxxxxxxxxxxxx',
-            [
-                'quantity' => 100,
-                'timestamp' => 1571252444,
-            ]
-        );
-        self::assertInstanceOf(UsageRecord::class, $result);
-    }
-
     public function testSubscriptionSchedulesCancelPost()
     {
         $this->expectsRequest(
