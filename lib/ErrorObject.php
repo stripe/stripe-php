@@ -195,6 +195,7 @@ class ErrorObject extends StripeObject
     const CODE_SETUP_INTENT_AUTHENTICATION_FAILURE = 'setup_intent_authentication_failure';
     const CODE_SETUP_INTENT_INVALID_PARAMETER = 'setup_intent_invalid_parameter';
     const CODE_SETUP_INTENT_MANDATE_INVALID = 'setup_intent_mandate_invalid';
+    const CODE_SETUP_INTENT_MOBILE_WALLET_UNSUPPORTED = 'setup_intent_mobile_wallet_unsupported';
     const CODE_SETUP_INTENT_SETUP_ATTEMPT_EXPIRED = 'setup_intent_setup_attempt_expired';
     const CODE_SETUP_INTENT_UNEXPECTED_STATE = 'setup_intent_unexpected_state';
     const CODE_SHIPPING_ADDRESS_INVALID = 'shipping_address_invalid';

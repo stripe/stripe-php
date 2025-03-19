@@ -35,8 +35,6 @@ class Coupon extends ApiResource
 
     const DURATION_FOREVER = 'forever';
     const DURATION_ONCE = 'once';
-    const DURATION_REPEATING = 'repeating';
-    const DURATION_VARIABLE = 'variable';
 
     /**
      * You can create coupons easily via the <a
@@ -54,7 +52,7 @@ class Coupon extends ApiResource
      * a coupon with an <code>amount_off</code> of <amount>200</amount> is applied to
      * it.
      *
-     * @param null|array{amount_off?: int, applies_to?: array{products?: string[]}, currency?: string, currency_options?: StripeObject, duration?: string, duration_in_months?: int, expand?: string[], id?: string, max_redemptions?: int, metadata?: null|StripeObject, name?: string, percent_off?: float, redeem_by?: int} $params
+     * @param null|array{amount_off?: int, applies_to?: array{products?: string[]}, currency?: string, currency_options?: StripeObject, duration?: string, expand?: string[], id?: string, max_redemptions?: int, metadata?: null|StripeObject, name?: string, percent_off?: float, redeem_by?: int} $params
      * @param null|array|string $options
      *
      * @return Coupon the created resource
