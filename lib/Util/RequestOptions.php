@@ -3,9 +3,9 @@
 namespace Stripe\Util;
 
 /**
- * @phpstan-type RequestOptionsArray array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_context?: string, stripe_version?: string, api_base?: string }
+ * @phpstan-type RequestOptionsArray array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_context?: string, stripe_version?: string, api_base?: string, max_network_retries?: int }
  *
- * @psalm-type RequestOptionsArray = array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_context?: string, stripe_version?: string, api_base?: string }
+ * @psalm-type RequestOptionsArray = array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_context?: string, stripe_version?: string, api_base?: string, max_network_retries?: int }
  */
 class RequestOptions
 {
@@ -26,16 +26,20 @@ class RequestOptions
     /** @var null|string */
     public $apiBase;
 
+    /** @var null|int */
+    public $maxNetworkRetries;
+
     /**
      * @param null|string $key
      * @param array<string, string> $headers
      * @param null|string $base
      */
-    public function __construct($key = null, $headers = [], $base = null)
+    public function __construct($key = null, $headers = [], $base = null, $maxNetworkRetries = null)
     {
         $this->apiKey = $key;
         $this->headers = $headers;
         $this->apiBase = $base;
+        $this->maxNetworkRetries = $maxNetworkRetries;
     }
 
     /**
@@ -47,6 +51,7 @@ class RequestOptions
             'apiKey' => $this->redactedApiKey(),
             'headers' => $this->headers,
             'apiBase' => $this->apiBase,
+            'maxNetworkRetries' => $this->maxNetworkRetries,
         ];
     }
 
@@ -67,6 +72,9 @@ class RequestOptions
         }
         if (null === $other_options->apiBase) {
             $other_options->apiBase = $this->apiBase;
+        }
+        if (null === $other_options->maxNetworkRetries) {
+            $other_options->maxNetworkRetries = $this->maxNetworkRetries;
         }
         $other_options->headers = \array_merge($this->headers, $other_options->headers);
 
@@ -120,6 +128,7 @@ class RequestOptions
             $headers = [];
             $key = null;
             $base = null;
+            $maxNetworkRetries = null;
 
             if (\array_key_exists('api_key', $options)) {
                 $key = $options['api_key'];
@@ -147,6 +156,12 @@ class RequestOptions
                 }
                 unset($options['stripe_version']);
             }
+            if (\array_key_exists('max_network_retries', $options)) {
+                if (null !== $options['max_network_retries']) {
+                    $maxNetworkRetries = $options['max_network_retries'];
+                }
+                unset($options['max_network_retries']);
+            }
             if (\array_key_exists('api_base', $options)) {
                 $base = $options['api_base'];
                 unset($options['api_base']);
@@ -158,7 +173,7 @@ class RequestOptions
                 throw new \Stripe\Exception\InvalidArgumentException($message);
             }
 
-            return new RequestOptions($key, $headers, $base);
+            return new RequestOptions($key, $headers, $base, $maxNetworkRetries);
         }
 
         $message = 'The second argument to Stripe API method calls is an '
