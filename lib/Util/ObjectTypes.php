@@ -173,8 +173,6 @@ class ObjectTypes
             \Stripe\Treasury\ReceivedDebit::OBJECT_NAME => \Stripe\Treasury\ReceivedDebit::class,
             \Stripe\Treasury\Transaction::OBJECT_NAME => \Stripe\Treasury\Transaction::class,
             \Stripe\Treasury\TransactionEntry::OBJECT_NAME => \Stripe\Treasury\TransactionEntry::class,
-            \Stripe\UsageRecord::OBJECT_NAME => \Stripe\UsageRecord::class,
-            \Stripe\UsageRecordSummary::OBJECT_NAME => \Stripe\UsageRecordSummary::class,
             \Stripe\WebhookEndpoint::OBJECT_NAME => \Stripe\WebhookEndpoint::class,
             // object classes: The end of the section generated from our OpenAPI spec
         ];

@@ -18,6 +18,7 @@ namespace Stripe;
  * @property ((object{amount: int, credit_balance_transaction?: Billing\CreditBalanceTransaction|string, discount?: Discount|string, type: string}&\stdClass&StripeObject))[] $pretax_credit_amounts The pretax credit amounts (ex: discount, credit grants, etc) for this line item.
  * @property null|int $quantity The number of units of product being credited.
  * @property TaxRate[] $tax_rates The tax rates which apply to the line item.
+ * @property null|((object{amount: int, tax_behavior: string, tax_rate_details: null|(object{tax_rate: string}&\stdClass&StripeObject), taxability_reason: string, taxable_amount: null|int, type: string}&\stdClass&StripeObject))[] $taxes The tax information of the line item.
  * @property string $type The type of the credit note line item, one of <code>invoice_line_item</code> or <code>custom_line_item</code>. When the type is <code>invoice_line_item</code> there is an additional <code>invoice_line_item</code> property on the resource the value of which is the id of the credited line item on the invoice.
  * @property null|int $unit_amount The cost of each unit of product being credited.
  * @property null|string $unit_amount_decimal Same as <code>unit_amount</code>, but contains a decimal value with at most 12 decimal places.

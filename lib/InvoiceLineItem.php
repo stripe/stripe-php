@@ -26,6 +26,7 @@ namespace Stripe;
  * @property null|((object{amount: int, credit_balance_transaction?: null|Billing\CreditBalanceTransaction|string, discount?: Discount|string, margin?: Margin|string, type: string}&\stdClass&StripeObject))[] $pretax_credit_amounts Contains pretax credit amounts (ex: discount, credit grants, etc) that apply to this line item.
  * @property null|int $quantity The quantity of the subscription, if the line item is a subscription or a proration.
  * @property null|string|Subscription $subscription
+ * @property null|((object{amount: int, tax_behavior: string, tax_rate_details: null|(object{tax_rate: string}&\stdClass&StripeObject), taxability_reason: string, taxable_amount: null|int, type: string}&\stdClass&StripeObject))[] $taxes The tax information of the line item.
  */
 class InvoiceLineItem extends ApiResource
 {

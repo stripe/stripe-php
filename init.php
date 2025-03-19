@@ -419,8 +419,6 @@ require __DIR__ . '/lib/Treasury/ReceivedCredit.php';
 require __DIR__ . '/lib/Treasury/ReceivedDebit.php';
 require __DIR__ . '/lib/Treasury/Transaction.php';
 require __DIR__ . '/lib/Treasury/TransactionEntry.php';
-require __DIR__ . '/lib/UsageRecord.php';
-require __DIR__ . '/lib/UsageRecordSummary.php';
 require __DIR__ . '/lib/V2/Billing/MeterEvent.php';
 require __DIR__ . '/lib/V2/Billing/MeterEventAdjustment.php';
 require __DIR__ . '/lib/V2/Billing/MeterEventSession.php';

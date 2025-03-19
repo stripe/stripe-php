@@ -25,7 +25,6 @@ class SubscriptionItem extends ApiResource
 {
     const OBJECT_NAME = 'subscription_item';
 
-    use ApiOperations\NestedResource;
     use ApiOperations\Update;
 
     /**
@@ -130,36 +129,5 @@ class SubscriptionItem extends ApiResource
         $obj->setLastResponse($response);
 
         return $obj;
-    }
-
-    const PATH_USAGE_RECORDS = '/usage_records';
-
-    /**
-     * @param string $id the ID of the subscription item on which to create the usage record
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @return UsageRecord
-     *
-     * @throws Exception\ApiErrorException if the request fails
-     */
-    public static function createUsageRecord($id, $params = null, $opts = null)
-    {
-        return self::_createNestedResource($id, static::PATH_USAGE_RECORDS, $params, $opts);
-    }
-    const PATH_USAGE_RECORD_SUMMARIES = '/usage_record_summaries';
-
-    /**
-     * @param string $id the ID of the subscription item on which to retrieve the usage record summaries
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @return Collection<UsageRecordSummary> the list of usage record summaries
-     *
-     * @throws Exception\ApiErrorException if the request fails
-     */
-    public static function allUsageRecordSummaries($id, $params = null, $opts = null)
-    {
-        return self::_allNestedResources($id, static::PATH_USAGE_RECORD_SUMMARIES, $params, $opts);
     }
 }

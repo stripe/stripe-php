@@ -30,6 +30,7 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|(Margin|string)[] $margins The margins which apply to the invoice item. When set, the <code>default_margins</code> on the invoice do not apply to this invoice item.
  * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|(object{rate_card_subscription_details: null|(object{rate_card_subscription: string}&\stdClass&StripeObject), subscription_details: null|(object{subscription: string, subscription_item?: string}&\stdClass&StripeObject), type: string}&\stdClass&StripeObject) $parent
  * @property (object{end: int, start: int}&\stdClass&StripeObject) $period
  * @property bool $proration Whether the invoice item was created automatically as a proration adjustment when the customer switched plans.
  * @property int $quantity Quantity of units for the invoice item. If the invoice item is a proration, the quantity of the subscription that the proration was computed for.

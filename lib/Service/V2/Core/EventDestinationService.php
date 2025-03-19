@@ -14,7 +14,7 @@ class EventDestinationService extends \Stripe\Service\AbstractService
     /**
      * Lists all event destinations.
      *
-     * @param null|array{include?: string[], limit?: int, page?: string} $params
+     * @param null|array{include?: string[], limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\EventDestination>
