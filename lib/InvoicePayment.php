@@ -9,7 +9,6 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|int $amount_overpaid Excess payment that was received for this invoice and credited to the customer’s <code>invoice_credit_balance</code>. This field is null until the payment is <code>paid</code>. Overpayment can happen when you attach more than one PaymentIntent to the invoice, and each of them succeeds. To avoid overpayment, cancel any PaymentIntents that you do not need before attaching more.
  * @property null|int $amount_paid Amount that was actually paid for this invoice, in cents (or local equivalent). This field is null until the payment is <code>paid</code>. This amount can be less than the <code>amount_requested</code> if the PaymentIntent’s <code>amount_received</code> is not sufficient to pay all of the invoices that it is attached to.
  * @property int $amount_requested Amount intended to be paid toward this invoice, in cents (or local equivalent)
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
