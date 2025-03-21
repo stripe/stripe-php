@@ -122,12 +122,13 @@ class ApiRequestor
      * @param null|array $headers
      * @param 'v1'|'v2' $apiMode
      * @param string[] $usage
+     * @param null|int $maxNetworkRetries
      *
      * @return array tuple containing (ApiReponse, API key)
      *
      * @throws Exception\ApiErrorException
      */
-    public function request($method, $url, $params = null, $headers = null, $apiMode = 'v1', $usage = [])
+    public function request($method, $url, $params = null, $headers = null, $apiMode = 'v1', $usage = [], $maxNetworkRetries = null)
     {
         $params = $params ?: [];
         $headers = $headers ?: [];

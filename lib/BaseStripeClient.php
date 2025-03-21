@@ -18,9 +18,6 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     /** @var string default base URL for Stripe's Meter Events API */
     const DEFAULT_METER_EVENTS_BASE = 'https://meter-events.stripe.com';
 
-    /** @var int default number of retries for network failures */
-    const DEFAULT_MAX_NETWORK_RETRIES = 0;
-
     /** @var array<string, null|string|int> */
     const DEFAULT_CONFIG = [
         'api_key' => null,
@@ -33,7 +30,8 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         'connect_base' => self::DEFAULT_CONNECT_BASE,
         'files_base' => self::DEFAULT_FILES_BASE,
         'meter_events_base' => self::DEFAULT_METER_EVENTS_BASE,
-        'max_nextwork_retries' => self::DEFAULT_MAX_NETWORK_RETRIES,
+        // inherit from global
+        'max_network_retries' => null,
     ];
 
     /** @var array<string, mixed> */
@@ -94,7 +92,8 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             'stripe_account' => $config['stripe_account'],
             'stripe_context' => $config['stripe_context'],
             'stripe_version' => $config['stripe_version'],
-            'max_network_retries' => $config['max_network_retries'],
+            // inherit the current global value, which will be used as this client's default value
+            'max_network_retries' => Stripe::getMaxNetworkRetries(),
         ]);
     }
 
@@ -197,7 +196,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
 
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new ApiRequestor($this->apiKeyForRequest($opts), $baseUrl, $this->getAppInfo());
-        list($response, $opts->apiKey) = $requestor->request($method, $path, $params, $opts->headers, $apiMode, ['stripe_client']);
+        list($response, $opts->apiKey) = $requestor->request($method, $path, $params, $opts->headers, $apiMode, ['stripe_client'], $opts->maxNetworkRetries);
         $opts->discardNonPersistentHeaders();
         $obj = Util::convertToStripeObject($response->json, $opts, $apiMode);
         if (\is_array($obj)) {

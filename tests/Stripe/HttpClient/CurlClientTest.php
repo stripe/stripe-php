@@ -186,7 +186,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_OPERATION_TIMEOUTED, 0, [], 0));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_OPERATION_TIMEOUTED, 0, [], 0, null));
     }
 
     public function testShouldRetryOnConnectionFailure()
@@ -195,7 +195,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_COULDNT_CONNECT, 0, [], 0));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_COULDNT_CONNECT, 0, [], 0, null));
     }
 
     public function testShouldRetryOnConflict()
@@ -204,7 +204,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 409, [], 0));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 409, [], 0, null));
     }
 
     public function testShouldNotRetryOn429()
@@ -213,7 +213,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 429, [], 0));
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 429, [], 0, null));
     }
 
     public function testShouldRetryOn500()
@@ -222,7 +222,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 500, [], 0));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 500, [], 0, null));
     }
 
     public function testShouldRetryOn503()
@@ -231,7 +231,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 503, [], 0));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 503, [], 0, null));
     }
 
     public function testShouldRetryOnStripeShouldRetryTrue()
@@ -240,8 +240,8 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 400, [], 0));
-        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 400, ['stripe-should-retry' => 'true'], 0));
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 400, [], 0, null));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 400, ['stripe-should-retry' => 'true'], 0, null));
     }
 
     public function testShouldNotRetryOnStripeShouldRetryFalse()
@@ -250,8 +250,8 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 500, [], 0));
-        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 500, ['stripe-should-retry' => 'false'], 0));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 500, [], 0, null));
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 500, ['stripe-should-retry' => 'false'], 0, null));
     }
 
     public function testShouldNotRetryAtMaximumCount()
@@ -260,7 +260,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 0, [], \Stripe\Stripe::getMaxNetworkRetries()));
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 0, [], \Stripe\Stripe::getMaxNetworkRetries(), null));
     }
 
     public function testShouldNotRetryOnCertValidationError()
@@ -269,7 +269,7 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient();
 
-        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, \CURLE_SSL_PEER_CERTIFICATE, -1, [], 0));
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, \CURLE_SSL_PEER_CERTIFICATE, -1, [], 0, null));
     }
 
     public function testSleepTimeShouldGrowExponentially()
