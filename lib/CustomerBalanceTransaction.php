@@ -15,6 +15,7 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount The amount of the transaction. A negative value is a credit for the customer's balance, and a positive value is a debit to the customer's <code>balance</code>.
+ * @property null|Checkout\Session|string $checkout_session The ID of the checkout session (if any) that created the transaction.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|CreditNote|string $credit_note The ID of the credit note (if any) related to the transaction.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
