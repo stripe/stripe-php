@@ -71,7 +71,11 @@ class Event extends ApiResource
     const BILLING_CREDIT_BALANCE_TRANSACTION_CREATED = 'billing.credit_balance_transaction.created';
     const BILLING_CREDIT_GRANT_CREATED = 'billing.credit_grant.created';
     const BILLING_CREDIT_GRANT_UPDATED = 'billing.credit_grant.updated';
+    const BILLING_METER_CREATED = 'billing.meter.created';
+    const BILLING_METER_DEACTIVATED = 'billing.meter.deactivated';
     const BILLING_METER_ERROR_REPORT_TRIGGERED = 'billing.meter_error_report.triggered';
+    const BILLING_METER_REACTIVATED = 'billing.meter.reactivated';
+    const BILLING_METER_UPDATED = 'billing.meter.updated';
     const BILLING_PORTAL_CONFIGURATION_CREATED = 'billing_portal.configuration.created';
     const BILLING_PORTAL_CONFIGURATION_UPDATED = 'billing_portal.configuration.updated';
     const BILLING_PORTAL_SESSION_CREATED = 'billing_portal.session.created';
