@@ -881,7 +881,7 @@ final class BaseStripeClientTest extends TestCase
     public function testClientThrowsForNullRetriesValue()
     {
         $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessageMatches('/max_network_retries.*int/');
+        $this->compatExpectExceptionMessageMatches('/max_network_retries.*int/');
 
         new BaseStripeClient(['max_network_retries' => null, 'stripe_api_key' => 'sk_test_123']);
     }
