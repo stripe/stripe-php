@@ -133,7 +133,7 @@ class ApiRequestor
         $params = $params ?: [];
         $headers = $headers ?: [];
         list($rbody, $rcode, $rheaders, $myApiKey)
-            = $this->_requestRaw($method, $url, $params, $headers, $apiMode, $usage);
+            = $this->_requestRaw($method, $url, $params, $headers, $apiMode, $usage, $maxNetworkRetries);
         $json = $this->_interpretResponse($rbody, $rcode, $rheaders, $apiMode);
         $resp = new ApiResponse($rbody, $rcode, $rheaders, $json);
 
@@ -148,15 +148,16 @@ class ApiRequestor
      * @param null|array $headers
      * @param 'v1'|'v2' $apiMode
      * @param string[] $usage
+     * @param null|int $maxNetworkRetries
      *
      * @throws Exception\ApiErrorException
      */
-    public function requestStream($method, $url, $readBodyChunkCallable, $params = null, $headers = null, $apiMode = 'v1', $usage = [])
+    public function requestStream($method, $url, $readBodyChunkCallable, $params = null, $headers = null, $apiMode = 'v1', $usage = [], $maxNetworkRetries = null)
     {
         $params = $params ?: [];
         $headers = $headers ?: [];
         list($rbody, $rcode, $rheaders, $myApiKey)
-            = $this->_requestRawStreaming($method, $url, $params, $headers, $apiMode, $usage, $readBodyChunkCallable);
+            = $this->_requestRawStreaming($method, $url, $params, $headers, $apiMode, $usage, $readBodyChunkCallable, $maxNetworkRetries);
         if ($rcode >= 300) {
             $this->_interpretResponse($rbody, $rcode, $rheaders, $apiMode);
         }
@@ -508,13 +509,14 @@ class ApiRequestor
      * @param array $headers
      * @param 'v1'|'v2' $apiMode
      * @param string[] $usage
+     * @param null|int $maxNetworkRetries
      *
      * @return array
      *
      * @throws Exception\AuthenticationException
      * @throws Exception\ApiConnectionException
      */
-    private function _requestRaw($method, $url, $params, $headers, $apiMode, $usage)
+    private function _requestRaw($method, $url, $params, $headers, $apiMode, $usage, $maxNetworkRetries)
     {
         list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $apiMode);
 
@@ -532,7 +534,8 @@ class ApiRequestor
             $rawHeaders,
             $params,
             $hasFile,
-            $apiMode
+            $apiMode,
+            $maxNetworkRetries
         );
 
         if (
@@ -558,13 +561,14 @@ class ApiRequestor
      * @param string[] $usage
      * @param callable $readBodyChunkCallable
      * @param 'v1'|'v2' $apiMode
+     * @param int $maxNetworkRetries
      *
      * @return array
      *
      * @throws Exception\AuthenticationException
      * @throws Exception\ApiConnectionException
      */
-    private function _requestRawStreaming($method, $url, $params, $headers, $apiMode, $usage, $readBodyChunkCallable)
+    private function _requestRawStreaming($method, $url, $params, $headers, $apiMode, $usage, $readBodyChunkCallable, $maxNetworkRetries)
     {
         list($absUrl, $rawHeaders, $params, $hasFile, $myApiKey) = $this->_prepareRequest($method, $url, $params, $headers, $apiMode);
 
@@ -576,7 +580,8 @@ class ApiRequestor
             $rawHeaders,
             $params,
             $hasFile,
-            $readBodyChunkCallable
+            $readBodyChunkCallable,
+            $maxNetworkRetries
         );
 
         if (

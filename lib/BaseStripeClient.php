@@ -83,6 +83,11 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             throw new Exception\InvalidArgumentException('$config must be a string or an array');
         }
 
+        if (!\array_key_exists("max_network_retries", $config)) {
+            // if no value is passed, inherit the global value at the time of client creation
+            $config['max_network_retries'] = Stripe::getMaxNetworkRetries();
+        }
+
         $config = \array_merge(self::DEFAULT_CONFIG, $config);
         $this->validateConfig($config);
 
@@ -92,8 +97,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             'stripe_account' => $config['stripe_account'],
             'stripe_context' => $config['stripe_context'],
             'stripe_version' => $config['stripe_version'],
-            // inherit the current global value, which will be used as this client's default value
-            'max_network_retries' => Stripe::getMaxNetworkRetries(),
+            'max_network_retries' => $config['max_network_retries']
         ]);
     }
 
@@ -218,10 +222,11 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * @param string $path the path of the request
      * @param null|array $params the parameters of the request
      * @param array $opts the special modifiers of the request
+     * @param null|int $maxNetworkRetries
      *
      * @return ApiResponse
      */
-    public function rawRequest($method, $path, $params = null, $opts = [])
+    public function rawRequest($method, $path, $params = null, $opts = [], $maxNetworkRetries = null)
     {
         if ('post' !== $method && null !== $params) {
             throw new Exception\InvalidArgumentException('Error: rawRequest only supports $params on post requests. Please pass null and add your parameters to $path');
@@ -245,7 +250,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $opts->headers = \array_merge($opts->headers, $headers);
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
-        list($response) = $requestor->request($method, $path, $params, $opts->headers, $apiMode, ['raw_request']);
+        list($response) = $requestor->request($method, $path, $params, $opts->headers, $apiMode, ['raw_request'], $maxNetworkRetries);
 
         return $response;
     }
@@ -416,8 +421,8 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         }
 
         // max_network_retries
-        if (null !== $config['max_network_retries'] && !\is_int($config['max_network_retries'])) {
-            throw new Exception\InvalidArgumentException('max_network_retries must be null or an int');
+        if (!\is_int($config['max_network_retries'])) {
+            throw new Exception\InvalidArgumentException('max_network_retries must an int');
         }
 
         $appInfoKeys = ['name', 'version', 'url', 'partner_id'];

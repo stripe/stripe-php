@@ -358,12 +358,13 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param bool $hasFile
      * @param callable $readBodyChunk
      * @param 'v1'|'v2' $apiMode
+     * @param null|int $maxNetworkRetries
      */
-    public function requestStream($method, $absUrl, $headers, $params, $hasFile, $readBodyChunk, $apiMode = 'v1')
+    public function requestStream($method, $absUrl, $headers, $params, $hasFile, $readBodyChunk, $apiMode = 'v1', $maxNetworkRetries = null)
     {
         list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile, $apiMode);
         $opts[\CURLOPT_RETURNTRANSFER] = false;
-        list($rbody, $rcode, $rheaders) = $this->executeStreamingRequestWithRetries($opts, $absUrl, $readBodyChunk);
+        list($rbody, $rcode, $rheaders) = $this->executeStreamingRequestWithRetries($opts, $absUrl, $readBodyChunk, $maxNetworkRetries);
 
         return [$rbody, $rcode, $rheaders];
     }
@@ -655,6 +656,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
     private function shouldRetry($errno, $rcode, $rheaders, $numRetries, $maxNetworkRetries)
     {
         if (null === $maxNetworkRetries) {
+            // all calls from a StripeClient have a number here, so we only see `null` (and use the global configuration) if coming from a non-client call.
             $maxNetworkRetries = Stripe::getMaxNetworkRetries();
         }
 
