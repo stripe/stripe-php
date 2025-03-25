@@ -22,6 +22,7 @@ namespace Stripe;
  * @property null|Price $price The price used to generate the line item.
  * @property null|Product|string $product <p>The ID of the product for this line item.</p><p>This will always be the same as <code>price.product</code>.</p>
  * @property null|int $quantity The quantity of products being purchased.
+ * @property null|(object{calculation_id: null|string, calculation_item_id: null|string}&\stdClass&StripeObject) $tax_calculation_reference The tax calculation identifiers of the line item.
  * @property ((object{amount: int, rate: TaxRate, taxability_reason: null|string, taxable_amount: null|int}&\stdClass&StripeObject))[] $taxes The taxes applied to the line item.
  */
 class LineItem extends ApiResource

@@ -17,6 +17,7 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property ((object{amount: int, credit_balance_transaction?: Billing\CreditBalanceTransaction|string, discount?: Discount|string, type: string}&\stdClass&StripeObject))[] $pretax_credit_amounts The pretax credit amounts (ex: discount, credit grants, etc) for this line item.
  * @property null|int $quantity The number of units of product being credited.
+ * @property null|(object{calculation_id: null|string, calculation_item_id: null|string}&\stdClass&StripeObject) $tax_calculation_reference The tax calculation identifiers of the line item.
  * @property TaxRate[] $tax_rates The tax rates which apply to the line item.
  * @property null|((object{amount: int, tax_behavior: string, tax_rate_details: null|(object{tax_rate: string}&\stdClass&StripeObject), taxability_reason: string, taxable_amount: null|int, type: string}&\stdClass&StripeObject))[] $taxes The tax information of the line item.
  * @property string $type The type of the credit note line item, one of <code>invoice_line_item</code> or <code>custom_line_item</code>. When the type is <code>invoice_line_item</code> there is an additional <code>invoice_line_item</code> property on the resource the value of which is the id of the credited line item on the invoice.

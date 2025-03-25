@@ -28,6 +28,7 @@ namespace Stripe;
  * @property null|(object{price_details?: (object{price: string, product: string}&\stdClass&StripeObject), type: string, unit_amount_decimal: null|string}&\stdClass&StripeObject) $pricing The pricing information of the line item.
  * @property null|int $quantity The quantity of the subscription, if the line item is a subscription or a proration.
  * @property null|string|Subscription $subscription
+ * @property null|(object{calculation_id: null|string, calculation_item_id: null|string}&\stdClass&StripeObject) $tax_calculation_reference The tax calculation identifiers of the line item.
  * @property null|((object{amount: int, tax_behavior: string, tax_rate_details: null|(object{tax_rate: string}&\stdClass&StripeObject), taxability_reason: string, taxable_amount: null|int, type: string}&\stdClass&StripeObject))[] $taxes The tax information of the line item.
  */
 class InvoiceLineItem extends ApiResource
