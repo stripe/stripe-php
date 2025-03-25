@@ -278,6 +278,16 @@ class ApiRequestor
                     $code
                 );
 
+            case 'financial_account_not_open':
+                return Exception\FinancialAccountNotOpenException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
             case 'blocked_by_stripe':
                 return Exception\BlockedByStripeException::factory(
                     $msg,
@@ -288,8 +298,28 @@ class ApiRequestor
                     $code
                 );
 
-            case 'invalid_payout_method':
-                return Exception\InvalidPayoutMethodException::factory(
+            case 'already_canceled':
+                return Exception\AlreadyCanceledException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'not_cancelable':
+                return Exception\NotCancelableException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'insufficient_funds':
+                return Exception\InsufficientFundsException::factory(
                     $msg,
                     $rcode,
                     $rbody,
@@ -300,6 +330,36 @@ class ApiRequestor
 
             case 'quota_exceeded':
                 return Exception\QuotaExceededException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'recipient_not_notifiable':
+                return Exception\RecipientNotNotifiableException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'feature_not_enabled':
+                return Exception\FeatureNotEnabledException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'invalid_payout_method':
+                return Exception\InvalidPayoutMethodException::factory(
                     $msg,
                     $rcode,
                     $rbody,

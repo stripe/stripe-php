@@ -2,43 +2,43 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\Service\V2\Core;
+namespace Stripe\Service\V2\MoneyManagement;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class EventService extends \Stripe\Service\AbstractService
+class ReceivedCreditService extends \Stripe\Service\AbstractService
 {
     /**
-     * List events, going back up to 30 days.
+     * Retrieves a list of ReceivedCredits.
      *
-     * @param null|array{limit?: int, object_id: string} $params
+     * @param null|array{created?: string, created_gt?: string, created_gte?: string, created_lt?: string, created_lte?: string, limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Collection<\Stripe\V2\Event>
+     * @return \Stripe\V2\Collection<\Stripe\V2\ReceivedCredit>
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
-        return $this->requestCollection('get', '/v2/core/events', $params, $opts);
+        return $this->requestCollection('get', '/v2/money_management/received_credits', $params, $opts);
     }
 
     /**
-     * Retrieves the details of an event.
+     * Retrieve a ReceivedCredit by ID.
      *
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Event
+     * @return \Stripe\V2\ReceivedCredit
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/core/events/%s', $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v2/money_management/received_credits/%s', $id), $params, $opts);
     }
 }

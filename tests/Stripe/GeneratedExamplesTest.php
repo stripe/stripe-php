@@ -4850,123 +4850,381 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(WebhookEndpoint::class, $result);
     }
 
-    public function testV2BillingMeterEventSessionPost()
+    public function testV2CoreAccountPost()
     {
         $this->stubRequest(
             'post',
-            '/v2/billing/meter_event_session',
+            '/v2/core/accounts/id_123/close',
             [],
             [],
             false,
             [
                 'id' => 'obj_123',
-                'object' => 'v2.billing.meter_event_session',
-                'authentication_token' => 'authentication_token',
+                'object' => 'v2.core.account',
+                'applied_configurations' => ['0' => 'recipient'],
+                'configuration' => null,
+                'contact_email' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
-                'expires_at' => '1970-01-10T15:36:51.170Z',
-                'livemode' => [],
+                'dashboard' => null,
+                'defaults' => null,
+                'display_name' => null,
+                'identity' => null,
+                'metadata' => null,
+                'requirements' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->billing->meterEventSession->create([]);
-        self::assertInstanceOf(V2\Billing\MeterEventSession::class, $result);
+        $result = $this->v2Client->v2->core->accounts->close('id_123', []);
+        self::assertInstanceOf(V2\Core\Account::class, $result);
     }
 
-    public function testV2BillingMeterEventAdjustmentPost()
+    public function testV2CoreAccountPost2()
     {
         $this->stubRequest(
             'post',
-            '/v2/billing/meter_event_adjustments',
-            [
-                'cancel' => ['identifier' => 'identifier'],
-                'event_name' => 'event_name',
-                'type' => 'cancel',
-            ],
+            '/v2/core/accounts',
+            [],
             [],
             false,
             [
                 'id' => 'obj_123',
-                'object' => 'v2.billing.meter_event_adjustment',
-                'cancel' => ['identifier' => 'identifier'],
+                'object' => 'v2.core.account',
+                'applied_configurations' => ['0' => 'recipient'],
+                'configuration' => null,
+                'contact_email' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
-                'event_name' => 'event_name',
-                'livemode' => [],
-                'status' => 'complete',
-                'type' => 'cancel',
+                'dashboard' => null,
+                'defaults' => null,
+                'display_name' => null,
+                'identity' => null,
+                'metadata' => null,
+                'requirements' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->billing->meterEventAdjustments->create([
-            'cancel' => ['identifier' => 'identifier'],
-            'event_name' => 'event_name',
-            'type' => 'cancel',
-        ]);
-        self::assertInstanceOf(V2\Billing\MeterEventAdjustment::class, $result);
+        $result = $this->v2Client->v2->core->accounts->create([]);
+        self::assertInstanceOf(V2\Core\Account::class, $result);
     }
 
-    public function testV2BillingMeterEventStreamPost()
+    public function testV2CoreAccountGet()
     {
         $this->stubRequest(
-            'post',
-            '/v2/billing/meter_event_stream',
+            'get',
+            '/v2/core/accounts',
+            [],
+            [],
+            false,
             [
-                'events' => [
-                    [
-                        'event_name' => 'event_name',
-                        'identifier' => 'identifier',
-                        'payload' => ['undefined' => 'payload'],
-                        'timestamp' => '1970-01-01T15:18:46.294Z',
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.core.account',
+                        'applied_configurations' => ['0' => 'recipient'],
+                        'configuration' => null,
+                        'contact_email' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'dashboard' => null,
+                        'defaults' => null,
+                        'display_name' => null,
+                        'identity' => null,
+                        'metadata' => null,
+                        'requirements' => null,
                     ],
                 ],
-            ],
-            [],
-            false,
-            [],
-            200,
-            BaseStripeClient::DEFAULT_METER_EVENTS_BASE
-        );
-        $this->v2Client->v2->billing->meterEventStream->create([
-            'events' => [
-                [
-                    'event_name' => 'event_name',
-                    'identifier' => 'identifier',
-                    'payload' => ['undefined' => 'payload'],
-                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                ],
-            ],
-        ]);
-    }
-
-    public function testV2BillingMeterEventPost()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/meter_events',
-            [
-                'event_name' => 'event_name',
-                'payload' => ['undefined' => 'payload'],
-            ],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.meter_event',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'event_name' => 'event_name',
-                'identifier' => 'identifier',
-                'livemode' => [],
-                'payload' => ['undefined' => 'payload'],
-                'timestamp' => '1970-01-01T15:18:46.294Z',
+                'next_page_url' => null,
+                'previous_page_url' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->billing->meterEvents->create([
-            'event_name' => 'event_name',
-            'payload' => ['undefined' => 'payload'],
-        ]);
-        self::assertInstanceOf(V2\Billing\MeterEvent::class, $result);
+        $result = $this->v2Client->v2->core->accounts->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Core\Account::class, $result->data[0]);
+    }
+
+    public function testV2CoreAccountGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/accounts/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.account',
+                'applied_configurations' => ['0' => 'recipient'],
+                'configuration' => null,
+                'contact_email' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'dashboard' => null,
+                'defaults' => null,
+                'display_name' => null,
+                'identity' => null,
+                'metadata' => null,
+                'requirements' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->retrieve('id_123', []);
+        self::assertInstanceOf(V2\Core\Account::class, $result);
+    }
+
+    public function testV2CoreAccountPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.account',
+                'applied_configurations' => ['0' => 'recipient'],
+                'configuration' => null,
+                'contact_email' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'dashboard' => null,
+                'defaults' => null,
+                'display_name' => null,
+                'identity' => null,
+                'metadata' => null,
+                'requirements' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->update('id_123', []);
+        self::assertInstanceOf(V2\Core\Account::class, $result);
+    }
+
+    public function testV2CoreAccountsPersonPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts/account_id_123/persons',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.account_person',
+                'account' => 'account',
+                'additional_addresses' => null,
+                'additional_names' => null,
+                'additional_terms_of_service' => null,
+                'address' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'date_of_birth' => null,
+                'documents' => null,
+                'email' => null,
+                'given_name' => null,
+                'id_numbers' => null,
+                'legal_gender' => null,
+                'metadata' => null,
+                'nationalities' => null,
+                'phone' => null,
+                'political_exposure' => null,
+                'relationship' => null,
+                'script_addresses' => null,
+                'script_names' => null,
+                'surname' => null,
+                'updated' => '1970-01-03T17:07:10.277Z',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->persons->create(
+            'account_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Person::class, $result);
+    }
+
+    public function testV2CoreAccountsPersonDelete()
+    {
+        $this->stubRequest(
+            'delete',
+            '/v2/core/accounts/account_id_123/persons/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.account_person',
+                'account' => 'account',
+                'additional_addresses' => null,
+                'additional_names' => null,
+                'additional_terms_of_service' => null,
+                'address' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'date_of_birth' => null,
+                'documents' => null,
+                'email' => null,
+                'given_name' => null,
+                'id_numbers' => null,
+                'legal_gender' => null,
+                'metadata' => null,
+                'nationalities' => null,
+                'phone' => null,
+                'political_exposure' => null,
+                'relationship' => null,
+                'script_addresses' => null,
+                'script_names' => null,
+                'surname' => null,
+                'updated' => '1970-01-03T17:07:10.277Z',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->persons->delete(
+            'account_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Person::class, $result);
+    }
+
+    public function testV2CoreAccountsPersonGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/accounts/account_id_123/persons',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.core.account_person',
+                        'account' => 'account',
+                        'additional_addresses' => null,
+                        'additional_names' => null,
+                        'additional_terms_of_service' => null,
+                        'address' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'date_of_birth' => null,
+                        'documents' => null,
+                        'email' => null,
+                        'given_name' => null,
+                        'id_numbers' => null,
+                        'legal_gender' => null,
+                        'metadata' => null,
+                        'nationalities' => null,
+                        'phone' => null,
+                        'political_exposure' => null,
+                        'relationship' => null,
+                        'script_addresses' => null,
+                        'script_names' => null,
+                        'surname' => null,
+                        'updated' => '1970-01-03T17:07:10.277Z',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->persons->all(
+            'account_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Core\Person::class, $result->data[0]);
+    }
+
+    public function testV2CoreAccountsPersonGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/accounts/account_id_123/persons/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.account_person',
+                'account' => 'account',
+                'additional_addresses' => null,
+                'additional_names' => null,
+                'additional_terms_of_service' => null,
+                'address' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'date_of_birth' => null,
+                'documents' => null,
+                'email' => null,
+                'given_name' => null,
+                'id_numbers' => null,
+                'legal_gender' => null,
+                'metadata' => null,
+                'nationalities' => null,
+                'phone' => null,
+                'political_exposure' => null,
+                'relationship' => null,
+                'script_addresses' => null,
+                'script_names' => null,
+                'surname' => null,
+                'updated' => '1970-01-03T17:07:10.277Z',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->persons->retrieve(
+            'account_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Person::class, $result);
+    }
+
+    public function testV2CoreAccountsPersonPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts/account_id_123/persons/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.account_person',
+                'account' => 'account',
+                'additional_addresses' => null,
+                'additional_names' => null,
+                'additional_terms_of_service' => null,
+                'address' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'date_of_birth' => null,
+                'documents' => null,
+                'email' => null,
+                'given_name' => null,
+                'id_numbers' => null,
+                'legal_gender' => null,
+                'metadata' => null,
+                'nationalities' => null,
+                'phone' => null,
+                'political_exposure' => null,
+                'relationship' => null,
+                'script_addresses' => null,
+                'script_names' => null,
+                'surname' => null,
+                'updated' => '1970-01-03T17:07:10.277Z',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->persons->update(
+            'account_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Person::class, $result);
     }
 
     public function testV2CoreEventDestinationPost()
@@ -5271,7 +5529,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'get',
             '/v2/core/events',
-            [],
+            ['object_id' => 'object_id'],
             [],
             false,
             [
@@ -5292,7 +5550,9 @@ final class GeneratedExamplesTest extends TestCase
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->core->events->all([]);
+        $result = $this->v2Client->v2->core->events->all([
+            'object_id' => 'object_id',
+        ]);
         self::assertInstanceOf(V2\Collection::class, $result);
         self::assertInstanceOf(V2\Event::class, $result->data[0]);
     }
@@ -5654,6 +5914,1023 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Core\Vault\UsBankAccount::class, $result);
+    }
+
+    public function testV2BillingMeterEventSessionPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/meter_event_session',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.meter_event_session',
+                'authentication_token' => 'authentication_token',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->meterEventSession->create([]);
+        self::assertInstanceOf(V2\Billing\MeterEventSession::class, $result);
+    }
+
+    public function testV2BillingMeterEventAdjustmentPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/meter_event_adjustments',
+            [
+                'cancel' => ['identifier' => 'identifier'],
+                'event_name' => 'event_name',
+                'type' => 'cancel',
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.meter_event_adjustment',
+                'cancel' => ['identifier' => 'identifier'],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'event_name' => 'event_name',
+                'livemode' => [],
+                'status' => 'complete',
+                'type' => 'cancel',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->meterEventAdjustments->create([
+            'cancel' => ['identifier' => 'identifier'],
+            'event_name' => 'event_name',
+            'type' => 'cancel',
+        ]);
+        self::assertInstanceOf(V2\Billing\MeterEventAdjustment::class, $result);
+    }
+
+    public function testV2BillingMeterEventStreamPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/meter_event_stream',
+            [
+                'events' => [
+                    [
+                        'event_name' => 'event_name',
+                        'identifier' => 'identifier',
+                        'payload' => ['undefined' => 'payload'],
+                        'timestamp' => '1970-01-01T15:18:46.294Z',
+                    ],
+                ],
+            ],
+            [],
+            false,
+            [],
+            200,
+            BaseStripeClient::DEFAULT_METER_EVENTS_BASE
+        );
+        $this->v2Client->v2->billing->meterEventStream->create([
+            'events' => [
+                [
+                    'event_name' => 'event_name',
+                    'identifier' => 'identifier',
+                    'payload' => ['undefined' => 'payload'],
+                    'timestamp' => '1970-01-01T15:18:46.294Z',
+                ],
+            ],
+        ]);
+    }
+
+    public function testV2BillingMeterEventPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/meter_events',
+            [
+                'event_name' => 'event_name',
+                'payload' => ['undefined' => 'payload'],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.billing.meter_event',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'event_name' => 'event_name',
+                'identifier' => 'identifier',
+                'livemode' => [],
+                'payload' => ['undefined' => 'payload'],
+                'timestamp' => '1970-01-01T15:18:46.294Z',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->meterEvents->create([
+            'event_name' => 'event_name',
+            'payload' => ['undefined' => 'payload'],
+        ]);
+        self::assertInstanceOf(V2\Billing\MeterEvent::class, $result);
+    }
+
+    public function testV2MoneyManagementFinancialAccountGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/financial_accounts',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.money_management.financial_account',
+                        'balance' => [
+                            'available' => [
+                                'undefined' => [
+                                    'currency' => 'USD',
+                                    'value' => [],
+                                ],
+                            ],
+                            'inbound_pending' => [
+                                'undefined' => [
+                                    'currency' => 'USD',
+                                    'value' => [],
+                                ],
+                            ],
+                            'outbound_pending' => [
+                                'undefined' => [
+                                    'currency' => 'USD',
+                                    'value' => [],
+                                ],
+                            ],
+                        ],
+                        'country' => 'ec',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'description' => null,
+                        'other' => null,
+                        'status' => 'closed',
+                        'storage' => null,
+                        'type' => 'other',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->financialAccounts->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\FinancialAccount::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementFinancialAccountGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/financial_accounts/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.financial_account',
+                'balance' => [
+                    'available' => [
+                        'undefined' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                    ],
+                    'inbound_pending' => [
+                        'undefined' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                    ],
+                    'outbound_pending' => [
+                        'undefined' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                    ],
+                ],
+                'country' => 'ec',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'description' => null,
+                'other' => null,
+                'status' => 'closed',
+                'storage' => null,
+                'type' => 'other',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->financialAccounts->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\FinancialAccount::class, $result);
+    }
+
+    public function testV2MoneyManagementFinancialAddressPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/financial_addresses',
+            ['currency' => 'gip', 'financial_account' => 'financial_account'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.financial_address',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'credentials' => null,
+                'currency' => 'gip',
+                'financial_account' => 'financial_account',
+                'status' => 'failed',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->financialAddresses->create([
+            'currency' => 'gip',
+            'financial_account' => 'financial_account',
+        ]);
+        self::assertInstanceOf(V2\FinancialAddress::class, $result);
+    }
+
+    public function testV2MoneyManagementFinancialAddressGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/financial_addresses',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.money_management.financial_address',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'credentials' => null,
+                        'currency' => 'gip',
+                        'financial_account' => 'financial_account',
+                        'status' => 'failed',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->financialAddresses->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\FinancialAddress::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementFinancialAddressGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/financial_addresses/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.financial_address',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'credentials' => null,
+                'currency' => 'gip',
+                'financial_account' => 'financial_account',
+                'status' => 'failed',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->financialAddresses->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\FinancialAddress::class, $result);
+    }
+
+    public function testV2MoneyManagementInboundTransferPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/inbound_transfers',
+            [
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'from' => [
+                    'currency' => 'currency',
+                    'payment_method' => 'payment_method',
+                ],
+                'to' => [
+                    'currency' => 'currency',
+                    'financial_account' => 'financial_account',
+                ],
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.inbound_transfer',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'description' => 'description',
+                'from' => [
+                    'debited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'payment_method' => [
+                        'type' => 'type',
+                        'us_bank_account' => null,
+                    ],
+                ],
+                'receipt_url' => 'receipt_url',
+                'to' => [
+                    'credited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'financial_account' => 'financial_account',
+                ],
+                'transfer_history' => [
+                    '0' => [
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'effective_at' => '1970-01-03T20:38:28.043Z',
+                        'id' => 'obj_123',
+                        'level' => 'canonical',
+                        'type' => 'bank_debit_failed',
+                        'bank_debit_failed' => null,
+                        'bank_debit_processing' => null,
+                        'bank_debit_queued' => null,
+                        'bank_debit_returned' => null,
+                        'bank_debit_succeeded' => null,
+                    ],
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->inboundTransfers->create([
+            'amount' => [
+                'currency' => 'USD',
+                'value' => 96,
+            ],
+            'from' => [
+                'currency' => 'currency',
+                'payment_method' => 'payment_method',
+            ],
+            'to' => [
+                'currency' => 'currency',
+                'financial_account' => 'financial_account',
+            ],
+        ]);
+        self::assertInstanceOf(V2\InboundTransfer::class, $result);
+    }
+
+    public function testV2MoneyManagementInboundTransferGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/inbound_transfers',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.money_management.inbound_transfer',
+                        'amount' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'description' => 'description',
+                        'from' => [
+                            'debited' => [
+                                'currency' => 'USD',
+                                'value' => [],
+                            ],
+                            'payment_method' => [
+                                'type' => 'type',
+                                'us_bank_account' => null,
+                            ],
+                        ],
+                        'receipt_url' => 'receipt_url',
+                        'to' => [
+                            'credited' => [
+                                'currency' => 'USD',
+                                'value' => [],
+                            ],
+                            'financial_account' => 'financial_account',
+                        ],
+                        'transfer_history' => [
+                            '0' => [
+                                'created' => '1970-01-12T21:42:34.472Z',
+                                'effective_at' => '1970-01-03T20:38:28.043Z',
+                                'id' => 'obj_123',
+                                'level' => 'canonical',
+                                'type' => 'bank_debit_failed',
+                                'bank_debit_failed' => null,
+                                'bank_debit_processing' => null,
+                                'bank_debit_queued' => null,
+                                'bank_debit_returned' => null,
+                                'bank_debit_succeeded' => null,
+                            ],
+                        ],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->inboundTransfers->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\InboundTransfer::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementInboundTransferGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/inbound_transfers/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.inbound_transfer',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'description' => 'description',
+                'from' => [
+                    'debited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'payment_method' => [
+                        'type' => 'type',
+                        'us_bank_account' => null,
+                    ],
+                ],
+                'receipt_url' => 'receipt_url',
+                'to' => [
+                    'credited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'financial_account' => 'financial_account',
+                ],
+                'transfer_history' => [
+                    '0' => [
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'effective_at' => '1970-01-03T20:38:28.043Z',
+                        'id' => 'obj_123',
+                        'level' => 'canonical',
+                        'type' => 'bank_debit_failed',
+                        'bank_debit_failed' => null,
+                        'bank_debit_processing' => null,
+                        'bank_debit_queued' => null,
+                        'bank_debit_returned' => null,
+                        'bank_debit_succeeded' => null,
+                    ],
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->inboundTransfers->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\InboundTransfer::class, $result);
+    }
+
+    public function testV2MoneyManagementOutboundPaymentPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_payments/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.outbound_payment',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'cancelable' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'delivery_options' => null,
+                'description' => null,
+                'expected_arrival_date' => null,
+                'from' => [
+                    'debited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'financial_account' => 'financial_account',
+                ],
+                'metadata' => null,
+                'receipt_url' => 'receipt_url',
+                'recipient_notification' => ['setting' => 'configured'],
+                'statement_descriptor' => 'statement_descriptor',
+                'status' => 'canceled',
+                'status_details' => null,
+                'status_transitions' => null,
+                'to' => [
+                    'credited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'payout_method' => 'payout_method',
+                    'recipient' => 'recipient',
+                ],
+                'trace_id' => [
+                    'status' => 'pending',
+                    'value' => null,
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundPayments->cancel(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\OutboundPayment::class, $result);
+    }
+
+    public function testV2MoneyManagementOutboundPaymentPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_payments',
+            [
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'from' => [
+                    'currency' => 'currency',
+                    'financial_account' => 'financial_account',
+                ],
+                'to' => [
+                    'currency' => 'currency',
+                    'payout_method' => 'payout_method',
+                    'recipient' => 'recipient',
+                ],
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.outbound_payment',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'cancelable' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'delivery_options' => null,
+                'description' => null,
+                'expected_arrival_date' => null,
+                'from' => [
+                    'debited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'financial_account' => 'financial_account',
+                ],
+                'metadata' => null,
+                'receipt_url' => 'receipt_url',
+                'recipient_notification' => ['setting' => 'configured'],
+                'statement_descriptor' => 'statement_descriptor',
+                'status' => 'canceled',
+                'status_details' => null,
+                'status_transitions' => null,
+                'to' => [
+                    'credited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'payout_method' => 'payout_method',
+                    'recipient' => 'recipient',
+                ],
+                'trace_id' => [
+                    'status' => 'pending',
+                    'value' => null,
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundPayments->create([
+            'amount' => [
+                'currency' => 'USD',
+                'value' => 96,
+            ],
+            'from' => [
+                'currency' => 'currency',
+                'financial_account' => 'financial_account',
+            ],
+            'to' => [
+                'currency' => 'currency',
+                'payout_method' => 'payout_method',
+                'recipient' => 'recipient',
+            ],
+        ]);
+        self::assertInstanceOf(V2\OutboundPayment::class, $result);
+    }
+
+    public function testV2MoneyManagementOutboundPaymentGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/outbound_payments',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.money_management.outbound_payment',
+                        'amount' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                        'cancelable' => [],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'delivery_options' => null,
+                        'description' => null,
+                        'expected_arrival_date' => null,
+                        'from' => [
+                            'debited' => [
+                                'currency' => 'USD',
+                                'value' => [],
+                            ],
+                            'financial_account' => 'financial_account',
+                        ],
+                        'metadata' => null,
+                        'receipt_url' => 'receipt_url',
+                        'recipient_notification' => ['setting' => 'configured'],
+                        'statement_descriptor' => 'statement_descriptor',
+                        'status' => 'canceled',
+                        'status_details' => null,
+                        'status_transitions' => null,
+                        'to' => [
+                            'credited' => [
+                                'currency' => 'USD',
+                                'value' => [],
+                            ],
+                            'payout_method' => 'payout_method',
+                            'recipient' => 'recipient',
+                        ],
+                        'trace_id' => [
+                            'status' => 'pending',
+                            'value' => null,
+                        ],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundPayments->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\OutboundPayment::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementOutboundPaymentGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/outbound_payments/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.outbound_payment',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'cancelable' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'delivery_options' => null,
+                'description' => null,
+                'expected_arrival_date' => null,
+                'from' => [
+                    'debited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'financial_account' => 'financial_account',
+                ],
+                'metadata' => null,
+                'receipt_url' => 'receipt_url',
+                'recipient_notification' => ['setting' => 'configured'],
+                'statement_descriptor' => 'statement_descriptor',
+                'status' => 'canceled',
+                'status_details' => null,
+                'status_transitions' => null,
+                'to' => [
+                    'credited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'payout_method' => 'payout_method',
+                    'recipient' => 'recipient',
+                ],
+                'trace_id' => [
+                    'status' => 'pending',
+                    'value' => null,
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundPayments->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\OutboundPayment::class, $result);
+    }
+
+    public function testV2MoneyManagementOutboundTransferPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_transfers/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.outbound_transfer',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'cancelable' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'delivery_options' => null,
+                'description' => null,
+                'expected_arrival_date' => null,
+                'from' => [
+                    'debited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'financial_account' => 'financial_account',
+                ],
+                'metadata' => null,
+                'receipt_url' => 'receipt_url',
+                'statement_descriptor' => 'statement_descriptor',
+                'status' => 'canceled',
+                'status_details' => null,
+                'status_transitions' => null,
+                'to' => [
+                    'credited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'payout_method' => 'payout_method',
+                ],
+                'trace_id' => [
+                    'status' => 'pending',
+                    'value' => null,
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundTransfers->cancel(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\OutboundTransfer::class, $result);
+    }
+
+    public function testV2MoneyManagementOutboundTransferPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_transfers',
+            [
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'from' => [
+                    'currency' => 'currency',
+                    'financial_account' => 'financial_account',
+                ],
+                'to' => [
+                    'currency' => 'currency',
+                    'payout_method' => 'payout_method',
+                ],
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.outbound_transfer',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'cancelable' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'delivery_options' => null,
+                'description' => null,
+                'expected_arrival_date' => null,
+                'from' => [
+                    'debited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'financial_account' => 'financial_account',
+                ],
+                'metadata' => null,
+                'receipt_url' => 'receipt_url',
+                'statement_descriptor' => 'statement_descriptor',
+                'status' => 'canceled',
+                'status_details' => null,
+                'status_transitions' => null,
+                'to' => [
+                    'credited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'payout_method' => 'payout_method',
+                ],
+                'trace_id' => [
+                    'status' => 'pending',
+                    'value' => null,
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundTransfers->create([
+            'amount' => [
+                'currency' => 'USD',
+                'value' => 96,
+            ],
+            'from' => [
+                'currency' => 'currency',
+                'financial_account' => 'financial_account',
+            ],
+            'to' => [
+                'currency' => 'currency',
+                'payout_method' => 'payout_method',
+            ],
+        ]);
+        self::assertInstanceOf(V2\OutboundTransfer::class, $result);
+    }
+
+    public function testV2MoneyManagementOutboundTransferGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/outbound_transfers',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.money_management.outbound_transfer',
+                        'amount' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                        'cancelable' => [],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'delivery_options' => null,
+                        'description' => null,
+                        'expected_arrival_date' => null,
+                        'from' => [
+                            'debited' => [
+                                'currency' => 'USD',
+                                'value' => [],
+                            ],
+                            'financial_account' => 'financial_account',
+                        ],
+                        'metadata' => null,
+                        'receipt_url' => 'receipt_url',
+                        'statement_descriptor' => 'statement_descriptor',
+                        'status' => 'canceled',
+                        'status_details' => null,
+                        'status_transitions' => null,
+                        'to' => [
+                            'credited' => [
+                                'currency' => 'USD',
+                                'value' => [],
+                            ],
+                            'payout_method' => 'payout_method',
+                        ],
+                        'trace_id' => [
+                            'status' => 'pending',
+                            'value' => null,
+                        ],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundTransfers->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\OutboundTransfer::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementOutboundTransferGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/outbound_transfers/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.outbound_transfer',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'cancelable' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'delivery_options' => null,
+                'description' => null,
+                'expected_arrival_date' => null,
+                'from' => [
+                    'debited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'financial_account' => 'financial_account',
+                ],
+                'metadata' => null,
+                'receipt_url' => 'receipt_url',
+                'statement_descriptor' => 'statement_descriptor',
+                'status' => 'canceled',
+                'status_details' => null,
+                'status_transitions' => null,
+                'to' => [
+                    'credited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'payout_method' => 'payout_method',
+                ],
+                'trace_id' => [
+                    'status' => 'pending',
+                    'value' => null,
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundTransfers->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\OutboundTransfer::class, $result);
     }
 
     public function testV2MoneyManagementOutboundSetupIntentPost()
@@ -6022,6 +7299,230 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\MoneyManagement\PayoutMethodsBankAccountSpec::class, $result);
     }
 
+    public function testV2MoneyManagementReceivedCreditGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/received_credits',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.money_management.received_credit',
+                        'amount' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                        'balance_transfer' => null,
+                        'bank_transfer' => null,
+                        'card_spend' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'description' => null,
+                        'financial_account' => 'financial_account',
+                        'receipt_url' => null,
+                        'status' => 'returned',
+                        'status_details' => null,
+                        'status_transitions' => null,
+                        'type' => 'card_spend',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->receivedCredits->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\ReceivedCredit::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementReceivedCreditGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/received_credits/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.received_credit',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'balance_transfer' => null,
+                'bank_transfer' => null,
+                'card_spend' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'description' => null,
+                'financial_account' => 'financial_account',
+                'receipt_url' => null,
+                'status' => 'returned',
+                'status_details' => null,
+                'status_transitions' => null,
+                'type' => 'card_spend',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->receivedCredits->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\ReceivedCredit::class, $result);
+    }
+
+    public function testV2MoneyManagementReceivedDebitGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/received_debits',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.money_management.received_debit',
+                        'amount' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                        'bank_transfer' => null,
+                        'card_spend' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'description' => null,
+                        'financial_account' => 'financial_account',
+                        'receipt_url' => null,
+                        'status' => 'canceled',
+                        'status_details' => null,
+                        'status_transitions' => [
+                            'canceled_at' => null,
+                            'failed_at' => null,
+                            'succeeded_at' => null,
+                        ],
+                        'type' => 'bank_transfer',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->receivedDebits->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\ReceivedDebit::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementReceivedDebitGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/received_debits/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.received_debit',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'bank_transfer' => null,
+                'card_spend' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'description' => null,
+                'financial_account' => 'financial_account',
+                'receipt_url' => null,
+                'status' => 'canceled',
+                'status_details' => null,
+                'status_transitions' => [
+                    'canceled_at' => null,
+                    'failed_at' => null,
+                    'succeeded_at' => null,
+                ],
+                'type' => 'bank_transfer',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->receivedDebits->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\ReceivedDebit::class, $result);
+    }
+
+    public function testV2TestHelpersFinancialAddressPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/test_helpers/financial_addresses/id_123/credit',
+            [
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'network' => 'rtp',
+            ],
+            [],
+            false,
+            [
+                'object' => 'financial_address_credit_simulation',
+                'status' => 'status',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->testHelpers->financialAddresses->credit(
+            'id_123',
+            [
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'network' => 'rtp',
+            ]
+        );
+        self::assertInstanceOf(V2\FinancialAddressCreditSimulation::class, $result);
+    }
+
+    public function testV2TestHelpersFinancialAddressPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/test_helpers/financial_addresses/id_123/generate_microdeposits',
+            [],
+            [],
+            false,
+            [
+                'object' => 'financial_address_generated_microdeposits',
+                'amounts' => [
+                    '0' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                ],
+                'status' => 'accepted',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->testHelpers->financialAddresses->generateMicrodeposits(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\FinancialAddressGeneratedMicrodeposits::class, $result);
+    }
+
     public function testTemporarySessionExpiredError()
     {
         $this->stubRequest(
@@ -6060,6 +7561,33 @@ final class GeneratedExamplesTest extends TestCase
         }
     }
 
+    public function testFinancialAccountNotOpenError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/financial_addresses',
+            ['currency' => 'gip', 'financial_account' => 'financial_account'],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'financial_account_not_open',
+                    'code' => 'financial_account_not_in_open_status',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->financialAddresses->create([
+                'currency' => 'gip',
+                'financial_account' => 'financial_account',
+            ]);
+        } catch (Exception\FinancialAccountNotOpenException $e) {
+        }
+    }
+
     public function testBlockedByStripeError()
     {
         $this->stubRequest(
@@ -6071,7 +7599,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'error' => [
                     'type' => 'blocked_by_stripe',
-                    'code' => 'blocked_payout_method_bank_account',
+                    'code' => 'inbound_transfer_not_allowed',
                 ],
             ],
             400,
@@ -6083,6 +7611,218 @@ final class GeneratedExamplesTest extends TestCase
                 'account_number' => 'account_number',
             ]);
         } catch (Exception\BlockedByStripeException $e) {
+        }
+    }
+
+    public function testAlreadyCanceledError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_payments/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'already_canceled',
+                    'code' => 'outbound_payment_already_canceled',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->outboundPayments->cancel(
+                'id_123',
+                []
+            );
+        } catch (Exception\AlreadyCanceledException $e) {
+        }
+    }
+
+    public function testNotCancelableError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_payments/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'not_cancelable',
+                    'code' => 'outbound_payment_not_cancelable',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->outboundPayments->cancel(
+                'id_123',
+                []
+            );
+        } catch (Exception\NotCancelableException $e) {
+        }
+    }
+
+    public function testInsufficientFundsError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_payments',
+            [
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'from' => [
+                    'currency' => 'currency',
+                    'financial_account' => 'financial_account',
+                ],
+                'to' => ['recipient' => 'recipient'],
+            ],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'insufficient_funds',
+                    'code' => 'outbound_payment_insufficient_funds',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->outboundPayments->create([
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'from' => [
+                    'currency' => 'currency',
+                    'financial_account' => 'financial_account',
+                ],
+                'to' => ['recipient' => 'recipient'],
+            ]);
+        } catch (Exception\InsufficientFundsException $e) {
+        }
+    }
+
+    public function testQuotaExceededError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts',
+            ['account_number' => 'account_number'],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'quota_exceeded',
+                    'code' => 'outbound_payment_recipient_amount_limit_exceeded',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->usBankAccounts->create([
+                'account_number' => 'account_number',
+            ]);
+        } catch (Exception\QuotaExceededException $e) {
+        }
+    }
+
+    public function testRecipientNotNotifiableError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_payments',
+            [
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'from' => [
+                    'currency' => 'currency',
+                    'financial_account' => 'financial_account',
+                ],
+                'to' => ['recipient' => 'recipient'],
+            ],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'recipient_not_notifiable',
+                    'code' => 'outbound_payment_recipient_email_does_not_exist',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->outboundPayments->create([
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'from' => [
+                    'currency' => 'currency',
+                    'financial_account' => 'financial_account',
+                ],
+                'to' => ['recipient' => 'recipient'],
+            ]);
+        } catch (Exception\RecipientNotNotifiableException $e) {
+        }
+    }
+
+    public function testFeatureNotEnabledError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_payments',
+            [
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'from' => [
+                    'currency' => 'currency',
+                    'financial_account' => 'financial_account',
+                ],
+                'to' => ['recipient' => 'recipient'],
+            ],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'feature_not_enabled',
+                    'code' => 'outbound_payment_recipient_feature_not_active',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->outboundPayments->create([
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'from' => [
+                    'currency' => 'currency',
+                    'financial_account' => 'financial_account',
+                ],
+                'to' => ['recipient' => 'recipient'],
+            ]);
+        } catch (Exception\FeatureNotEnabledException $e) {
         }
     }
 
@@ -6107,32 +7847,6 @@ final class GeneratedExamplesTest extends TestCase
         try {
             $this->v2Client->v2->moneyManagement->outboundSetupIntents->create([]);
         } catch (Exception\InvalidPayoutMethodException $e) {
-        }
-    }
-
-    public function testQuotaExceededError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/core/vault/us_bank_accounts',
-            ['account_number' => 'account_number'],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'quota_exceeded',
-                    'code' => 'limit_payout_method_bank_account',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $this->v2Client->v2->core->vault->usBankAccounts->create([
-                'account_number' => 'account_number',
-            ]);
-        } catch (Exception\QuotaExceededException $e) {
         }
     }
 

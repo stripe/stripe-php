@@ -6,6 +6,7 @@ namespace Stripe\Service\V2\Core;
  * Service factory class for API resources in the root namespace.
  * // Doc: The beginning of the section generated from our OpenAPI spec.
  *
+ * @property AccountService $accounts
  * @property EventDestinationService $eventDestinations
  * @property EventService $events
  * @property Vault\VaultServiceFactory $vault
@@ -18,6 +19,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
      */
     private static $classMap = [
         // Class Map: The beginning of the section generated from our OpenAPI spec
+        'accounts' => AccountService::class,
         'eventDestinations' => EventDestinationService::class,
         'events' => EventService::class,
         'vault' => Vault\VaultServiceFactory::class,

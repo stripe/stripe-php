@@ -10,6 +10,7 @@ namespace Stripe\Service\V2;
  * @property Billing\BillingServiceFactory $billing
  * @property Core\CoreServiceFactory $core
  * @property MoneyManagement\MoneyManagementServiceFactory $moneyManagement
+ * @property TestHelpers\TestHelpersServiceFactory $testHelpers
  */
 class V2ServiceFactory extends \Stripe\Service\AbstractServiceFactory
 {
@@ -20,6 +21,7 @@ class V2ServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'billing' => Billing\BillingServiceFactory::class,
         'core' => Core\CoreServiceFactory::class,
         'moneyManagement' => MoneyManagement\MoneyManagementServiceFactory::class,
+        'testHelpers' => TestHelpers\TestHelpersServiceFactory::class,
     ];
 
     protected function getServiceClass($name)
