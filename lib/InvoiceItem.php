@@ -29,17 +29,13 @@ namespace Stripe;
  * @property null|Invoice|string $invoice The ID of the invoice this invoice item belongs to.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $parent
  * @property StripeObject $period
- * @property null|Plan $plan If the invoice item is a proration, the plan of the subscription that the proration was computed for.
- * @property null|Price $price The price of the invoice item.
+ * @property null|StripeObject $pricing The pricing information of the invoice item.
  * @property bool $proration Whether the invoice item was created automatically as a proration adjustment when the customer switched plans.
  * @property int $quantity Quantity of units for the invoice item. If the invoice item is a proration, the quantity of the subscription that the proration was computed for.
- * @property null|string|Subscription $subscription The subscription that this invoice item has been created for, if any.
- * @property null|string $subscription_item The subscription item that this invoice item has been created for, if any.
  * @property null|TaxRate[] $tax_rates The tax rates which apply to the invoice item. When set, the <code>default_tax_rates</code> on the invoice do not apply to this invoice item.
  * @property null|string|TestHelpers\TestClock $test_clock ID of the test clock this invoice item belongs to.
- * @property null|int $unit_amount Unit amount (in the <code>currency</code> specified) of the invoice item.
- * @property null|string $unit_amount_decimal Same as <code>unit_amount</code>, but contains a decimal value with at most 12 decimal places.
  */
 class InvoiceItem extends ApiResource
 {

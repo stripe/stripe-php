@@ -23,6 +23,7 @@ namespace Stripe;
  * @property null|StripeObject $au_becs_debit
  * @property null|StripeObject $bacs_debit
  * @property null|StripeObject $bancontact
+ * @property null|StripeObject $billie
  * @property StripeObject $billing_details
  * @property null|StripeObject $blik
  * @property null|StripeObject $boleto
@@ -48,6 +49,7 @@ namespace Stripe;
  * @property null|StripeObject $mobilepay
  * @property null|StripeObject $multibanco
  * @property null|StripeObject $naver_pay
+ * @property null|StripeObject $nz_bank_account
  * @property null|StripeObject $oxxo
  * @property null|StripeObject $p24
  * @property null|StripeObject $pay_by_bank
@@ -59,6 +61,7 @@ namespace Stripe;
  * @property null|StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
  * @property null|StripeObject $revolut_pay
  * @property null|StripeObject $samsung_pay
+ * @property null|StripeObject $satispay
  * @property null|StripeObject $sepa_debit
  * @property null|StripeObject $sofort
  * @property null|StripeObject $swish
@@ -87,6 +90,7 @@ class PaymentMethod extends ApiResource
     const TYPE_AU_BECS_DEBIT = 'au_becs_debit';
     const TYPE_BACS_DEBIT = 'bacs_debit';
     const TYPE_BANCONTACT = 'bancontact';
+    const TYPE_BILLIE = 'billie';
     const TYPE_BLIK = 'blik';
     const TYPE_BOLETO = 'boleto';
     const TYPE_CARD = 'card';
@@ -107,6 +111,7 @@ class PaymentMethod extends ApiResource
     const TYPE_MOBILEPAY = 'mobilepay';
     const TYPE_MULTIBANCO = 'multibanco';
     const TYPE_NAVER_PAY = 'naver_pay';
+    const TYPE_NZ_BANK_ACCOUNT = 'nz_bank_account';
     const TYPE_OXXO = 'oxxo';
     const TYPE_P24 = 'p24';
     const TYPE_PAYCO = 'payco';
@@ -117,6 +122,7 @@ class PaymentMethod extends ApiResource
     const TYPE_PROMPTPAY = 'promptpay';
     const TYPE_REVOLUT_PAY = 'revolut_pay';
     const TYPE_SAMSUNG_PAY = 'samsung_pay';
+    const TYPE_SATISPAY = 'satispay';
     const TYPE_SEPA_DEBIT = 'sepa_debit';
     const TYPE_SOFORT = 'sofort';
     const TYPE_SWISH = 'swish';

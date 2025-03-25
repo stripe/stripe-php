@@ -37,8 +37,8 @@ class FinancialAccount extends \Stripe\ApiResource
     const STATUS_OPEN = 'open';
 
     /**
-     * Creates a new FinancialAccount. For now, each connected account can only have
-     * one FinancialAccount.
+     * Creates a new FinancialAccount. Each connected account can have up to three
+     * FinancialAccounts by default.
      *
      * @param null|array $params
      * @param null|array|string $options

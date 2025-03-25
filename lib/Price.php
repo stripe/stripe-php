@@ -54,8 +54,9 @@ class Price extends ApiResource
     const TYPE_RECURRING = 'recurring';
 
     /**
-     * Creates a new price for an existing product. The price can be recurring or
-     * one-time.
+     * Creates a new <a href="https://docs.stripe.com/api/prices">Price</a> for an
+     * existing <a href="https://docs.stripe.com/api/products">Product</a>. The Price
+     * can be recurring or one-time.
      *
      * @param null|array $params
      * @param null|array|string $options
