@@ -185,8 +185,13 @@ class ObjectTypes
         \Stripe\V2\Billing\MeterEvent::OBJECT_NAME => \Stripe\V2\Billing\MeterEvent::class,
         \Stripe\V2\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustment::class,
         \Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \Stripe\V2\Billing\MeterEventSession::class,
+        \Stripe\V2\Core\Vault\GbBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\GbBankAccount::class,
+        \Stripe\V2\Core\Vault\UsBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\UsBankAccount::class,
         \Stripe\V2\Event::OBJECT_NAME => \Stripe\V2\Event::class,
         \Stripe\V2\EventDestination::OBJECT_NAME => \Stripe\V2\EventDestination::class,
+        \Stripe\V2\MoneyManagement\OutboundSetupIntent::OBJECT_NAME => \Stripe\V2\MoneyManagement\OutboundSetupIntent::class,
+        \Stripe\V2\MoneyManagement\PayoutMethod::OBJECT_NAME => \Stripe\V2\MoneyManagement\PayoutMethod::class,
+        \Stripe\V2\MoneyManagement\PayoutMethodsBankAccountSpec::OBJECT_NAME => \Stripe\V2\MoneyManagement\PayoutMethodsBankAccountSpec::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
 }

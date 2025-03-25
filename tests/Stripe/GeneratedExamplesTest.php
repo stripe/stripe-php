@@ -5321,6 +5321,707 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Event::class, $result);
     }
 
+    public function testV2CoreVaultGbBankAccountPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/gb_bank_accounts/id_123/acknowledge_confirmation_of_payee',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.vault.gb_bank_account',
+                'archived' => [],
+                'bank_account_type' => 'savings',
+                'bank_name' => 'bank_name',
+                'confirmation_of_payee' => [
+                    'result' => [
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'match_result' => 'unavailable',
+                        'matched' => [
+                            'business_type' => null,
+                            'name' => null,
+                        ],
+                        'message' => 'message',
+                        'provided' => [
+                            'business_type' => 'personal',
+                            'name' => 'name',
+                        ],
+                    ],
+                    'status' => 'awaiting_acknowledgement',
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'last4' => 'last4',
+                'sort_code' => 'sort_code',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->gbBankAccounts->acknowledgeConfirmationOfPayee(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Vault\GbBankAccount::class, $result);
+    }
+
+    public function testV2CoreVaultGbBankAccountPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/gb_bank_accounts/id_123/archive',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.vault.gb_bank_account',
+                'archived' => [],
+                'bank_account_type' => 'savings',
+                'bank_name' => 'bank_name',
+                'confirmation_of_payee' => [
+                    'result' => [
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'match_result' => 'unavailable',
+                        'matched' => [
+                            'business_type' => null,
+                            'name' => null,
+                        ],
+                        'message' => 'message',
+                        'provided' => [
+                            'business_type' => 'personal',
+                            'name' => 'name',
+                        ],
+                    ],
+                    'status' => 'awaiting_acknowledgement',
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'last4' => 'last4',
+                'sort_code' => 'sort_code',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->gbBankAccounts->archive(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Vault\GbBankAccount::class, $result);
+    }
+
+    public function testV2CoreVaultGbBankAccountPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/gb_bank_accounts',
+            ['account_number' => 'account_number', 'sort_code' => 'sort_code'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.vault.gb_bank_account',
+                'archived' => [],
+                'bank_account_type' => 'savings',
+                'bank_name' => 'bank_name',
+                'confirmation_of_payee' => [
+                    'result' => [
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'match_result' => 'unavailable',
+                        'matched' => [
+                            'business_type' => null,
+                            'name' => null,
+                        ],
+                        'message' => 'message',
+                        'provided' => [
+                            'business_type' => 'personal',
+                            'name' => 'name',
+                        ],
+                    ],
+                    'status' => 'awaiting_acknowledgement',
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'last4' => 'last4',
+                'sort_code' => 'sort_code',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->gbBankAccounts->create([
+            'account_number' => 'account_number',
+            'sort_code' => 'sort_code',
+        ]);
+        self::assertInstanceOf(V2\Core\Vault\GbBankAccount::class, $result);
+    }
+
+    public function testV2CoreVaultGbBankAccountPost4()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/gb_bank_accounts/id_123/initiate_confirmation_of_payee',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.vault.gb_bank_account',
+                'archived' => [],
+                'bank_account_type' => 'savings',
+                'bank_name' => 'bank_name',
+                'confirmation_of_payee' => [
+                    'result' => [
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'match_result' => 'unavailable',
+                        'matched' => [
+                            'business_type' => null,
+                            'name' => null,
+                        ],
+                        'message' => 'message',
+                        'provided' => [
+                            'business_type' => 'personal',
+                            'name' => 'name',
+                        ],
+                    ],
+                    'status' => 'awaiting_acknowledgement',
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'last4' => 'last4',
+                'sort_code' => 'sort_code',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->gbBankAccounts->initiateConfirmationOfPayee(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Vault\GbBankAccount::class, $result);
+    }
+
+    public function testV2CoreVaultGbBankAccountGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/vault/gb_bank_accounts/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.vault.gb_bank_account',
+                'archived' => [],
+                'bank_account_type' => 'savings',
+                'bank_name' => 'bank_name',
+                'confirmation_of_payee' => [
+                    'result' => [
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'match_result' => 'unavailable',
+                        'matched' => [
+                            'business_type' => null,
+                            'name' => null,
+                        ],
+                        'message' => 'message',
+                        'provided' => [
+                            'business_type' => 'personal',
+                            'name' => 'name',
+                        ],
+                    ],
+                    'status' => 'awaiting_acknowledgement',
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'last4' => 'last4',
+                'sort_code' => 'sort_code',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->gbBankAccounts->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Vault\GbBankAccount::class, $result);
+    }
+
+    public function testV2CoreVaultUsBankAccountPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts/id_123/archive',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.vault.us_bank_account',
+                'archived' => [],
+                'bank_account_type' => 'savings',
+                'bank_name' => 'bank_name',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'fedwire_routing_number' => null,
+                'last4' => 'last4',
+                'routing_number' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->usBankAccounts->archive(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Vault\UsBankAccount::class, $result);
+    }
+
+    public function testV2CoreVaultUsBankAccountPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts',
+            ['account_number' => 'account_number'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.vault.us_bank_account',
+                'archived' => [],
+                'bank_account_type' => 'savings',
+                'bank_name' => 'bank_name',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'fedwire_routing_number' => null,
+                'last4' => 'last4',
+                'routing_number' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->usBankAccounts->create([
+            'account_number' => 'account_number',
+        ]);
+        self::assertInstanceOf(V2\Core\Vault\UsBankAccount::class, $result);
+    }
+
+    public function testV2CoreVaultUsBankAccountGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/vault/us_bank_accounts/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.vault.us_bank_account',
+                'archived' => [],
+                'bank_account_type' => 'savings',
+                'bank_name' => 'bank_name',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'fedwire_routing_number' => null,
+                'last4' => 'last4',
+                'routing_number' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->usBankAccounts->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Vault\UsBankAccount::class, $result);
+    }
+
+    public function testV2CoreVaultUsBankAccountPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.vault.us_bank_account',
+                'archived' => [],
+                'bank_account_type' => 'savings',
+                'bank_name' => 'bank_name',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'fedwire_routing_number' => null,
+                'last4' => 'last4',
+                'routing_number' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->usBankAccounts->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Vault\UsBankAccount::class, $result);
+    }
+
+    public function testV2MoneyManagementOutboundSetupIntentPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_setup_intents/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.outbound_setup_intent',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'next_action' => null,
+                'payout_method' => [
+                    'id' => 'obj_123',
+                    'object' => 'v2.money_management.payout_method',
+                    'available_payout_speeds' => ['0' => 'standard'],
+                    'bank_account' => null,
+                    'card' => null,
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'latest_outbound_setup_intent' => null,
+                    'type' => 'bank_account',
+                    'usage_status' => [
+                        'payments' => 'requires_action',
+                        'transfers' => 'invalid',
+                    ],
+                ],
+                'status' => 'requires_payout_method',
+                'usage_intent' => 'payment',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundSetupIntents->cancel(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\OutboundSetupIntent::class, $result);
+    }
+
+    public function testV2MoneyManagementOutboundSetupIntentPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_setup_intents',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.outbound_setup_intent',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'next_action' => null,
+                'payout_method' => [
+                    'id' => 'obj_123',
+                    'object' => 'v2.money_management.payout_method',
+                    'available_payout_speeds' => ['0' => 'standard'],
+                    'bank_account' => null,
+                    'card' => null,
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'latest_outbound_setup_intent' => null,
+                    'type' => 'bank_account',
+                    'usage_status' => [
+                        'payments' => 'requires_action',
+                        'transfers' => 'invalid',
+                    ],
+                ],
+                'status' => 'requires_payout_method',
+                'usage_intent' => 'payment',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundSetupIntents->create([]);
+        self::assertInstanceOf(V2\MoneyManagement\OutboundSetupIntent::class, $result);
+    }
+
+    public function testV2MoneyManagementOutboundSetupIntentGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/outbound_setup_intents',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.money_management.outbound_setup_intent',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'next_action' => null,
+                        'payout_method' => [
+                            'id' => 'obj_123',
+                            'object' => 'v2.money_management.payout_method',
+                            'available_payout_speeds' => ['0' => 'standard'],
+                            'bank_account' => null,
+                            'card' => null,
+                            'created' => '1970-01-12T21:42:34.472Z',
+                            'latest_outbound_setup_intent' => null,
+                            'type' => 'bank_account',
+                            'usage_status' => [
+                                'payments' => 'requires_action',
+                                'transfers' => 'invalid',
+                            ],
+                        ],
+                        'status' => 'requires_payout_method',
+                        'usage_intent' => 'payment',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundSetupIntents->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\OutboundSetupIntent::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementOutboundSetupIntentGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/outbound_setup_intents/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.outbound_setup_intent',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'next_action' => null,
+                'payout_method' => [
+                    'id' => 'obj_123',
+                    'object' => 'v2.money_management.payout_method',
+                    'available_payout_speeds' => ['0' => 'standard'],
+                    'bank_account' => null,
+                    'card' => null,
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'latest_outbound_setup_intent' => null,
+                    'type' => 'bank_account',
+                    'usage_status' => [
+                        'payments' => 'requires_action',
+                        'transfers' => 'invalid',
+                    ],
+                ],
+                'status' => 'requires_payout_method',
+                'usage_intent' => 'payment',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundSetupIntents->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\OutboundSetupIntent::class, $result);
+    }
+
+    public function testV2MoneyManagementOutboundSetupIntentPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_setup_intents/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.outbound_setup_intent',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'next_action' => null,
+                'payout_method' => [
+                    'id' => 'obj_123',
+                    'object' => 'v2.money_management.payout_method',
+                    'available_payout_speeds' => ['0' => 'standard'],
+                    'bank_account' => null,
+                    'card' => null,
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'latest_outbound_setup_intent' => null,
+                    'type' => 'bank_account',
+                    'usage_status' => [
+                        'payments' => 'requires_action',
+                        'transfers' => 'invalid',
+                    ],
+                ],
+                'status' => 'requires_payout_method',
+                'usage_intent' => 'payment',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundSetupIntents->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\OutboundSetupIntent::class, $result);
+    }
+
+    public function testV2MoneyManagementPayoutMethodPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/payout_methods/id_123/archive',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.payout_method',
+                'available_payout_speeds' => ['0' => 'standard'],
+                'bank_account' => null,
+                'card' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'latest_outbound_setup_intent' => null,
+                'type' => 'bank_account',
+                'usage_status' => [
+                    'payments' => 'requires_action',
+                    'transfers' => 'invalid',
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->payoutMethods->archive(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\PayoutMethod::class, $result);
+    }
+
+    public function testV2MoneyManagementPayoutMethodGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/payout_methods',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.money_management.payout_method',
+                        'available_payout_speeds' => ['0' => 'standard'],
+                        'bank_account' => null,
+                        'card' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'latest_outbound_setup_intent' => null,
+                        'type' => 'bank_account',
+                        'usage_status' => [
+                            'payments' => 'requires_action',
+                            'transfers' => 'invalid',
+                        ],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->payoutMethods->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\PayoutMethod::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementPayoutMethodGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/payout_methods/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.payout_method',
+                'available_payout_speeds' => ['0' => 'standard'],
+                'bank_account' => null,
+                'card' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'latest_outbound_setup_intent' => null,
+                'type' => 'bank_account',
+                'usage_status' => [
+                    'payments' => 'requires_action',
+                    'transfers' => 'invalid',
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->payoutMethods->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\PayoutMethod::class, $result);
+    }
+
+    public function testV2MoneyManagementPayoutMethodPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/payout_methods/id_123/unarchive',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.payout_method',
+                'available_payout_speeds' => ['0' => 'standard'],
+                'bank_account' => null,
+                'card' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'latest_outbound_setup_intent' => null,
+                'type' => 'bank_account',
+                'usage_status' => [
+                    'payments' => 'requires_action',
+                    'transfers' => 'invalid',
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->payoutMethods->unarchive(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\PayoutMethod::class, $result);
+    }
+
+    public function testV2MoneyManagementPayoutMethodsBankAccountSpecGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/payout_methods_bank_account_spec',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.payout_methods_bank_account_spec',
+                'countries' => [
+                    'undefined' => [
+                        'fields' => [
+                            '0' => [
+                                'local_name' => 'local_name',
+                                'local_name_human' => 'local_name_human',
+                                'max_length' => [],
+                                'min_length' => [],
+                                'placeholder' => 'placeholder',
+                                'stripe_name' => 'stripe_name',
+                                'validation_regex' => 'validation_regex',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->payoutMethodsBankAccountSpec->retrieve([]);
+        self::assertInstanceOf(V2\MoneyManagement\PayoutMethodsBankAccountSpec::class, $result);
+    }
+
     public function testTemporarySessionExpiredError()
     {
         $this->stubRequest(
@@ -5356,6 +6057,132 @@ final class GeneratedExamplesTest extends TestCase
                 ],
             ]);
         } catch (Exception\TemporarySessionExpiredException $e) {
+        }
+    }
+
+    public function testBlockedByStripeError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts',
+            ['account_number' => 'account_number'],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'blocked_by_stripe',
+                    'code' => 'blocked_payout_method_bank_account',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->usBankAccounts->create([
+                'account_number' => 'account_number',
+            ]);
+        } catch (Exception\BlockedByStripeException $e) {
+        }
+    }
+
+    public function testInvalidPayoutMethodError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_setup_intents',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'invalid_payout_method',
+                    'code' => 'invalid_payout_method',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->outboundSetupIntents->create([]);
+        } catch (Exception\InvalidPayoutMethodException $e) {
+        }
+    }
+
+    public function testQuotaExceededError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts',
+            ['account_number' => 'account_number'],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'quota_exceeded',
+                    'code' => 'limit_payout_method_bank_account',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->usBankAccounts->create([
+                'account_number' => 'account_number',
+            ]);
+        } catch (Exception\QuotaExceededException $e) {
+        }
+    }
+
+    public function testControlledByDashboardError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts/id_123/archive',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'controlled_by_dashboard',
+                    'code' => 'bank_account_cannot_be_archived',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->usBankAccounts->archive('id_123', []);
+        } catch (Exception\ControlledByDashboardException $e) {
+        }
+    }
+
+    public function testInvalidPaymentMethodError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts',
+            ['account_number' => 'account_number'],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'invalid_payment_method',
+                    'code' => 'invalid_us_bank_account',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->usBankAccounts->create([
+                'account_number' => 'account_number',
+            ]);
+        } catch (Exception\InvalidPaymentMethodException $e) {
         }
     }
 }

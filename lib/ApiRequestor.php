@@ -278,6 +278,59 @@ class ApiRequestor
                     $code
                 );
 
+            case 'blocked_by_stripe':
+                return Exception\BlockedByStripeException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'invalid_payout_method':
+                return Exception\InvalidPayoutMethodException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'quota_exceeded':
+                return Exception\QuotaExceededException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'controlled_by_dashboard':
+                return Exception\ControlledByDashboardException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'invalid_payment_method':
+                $invalidParam = isset($errorData['invalid_param']) ? $errorData['invalid_param'] : null;
+
+                return Exception\InvalidPaymentMethodException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code,
+                    $invalidParam
+                );
+
                 // The end of the section generated from our OpenAPI spec
             default:
                 return self::_specificV1APIError($rbody, $rcode, $rheaders, $resp, $errorData);

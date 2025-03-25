@@ -1,0 +1,26 @@
+<?php
+
+// File generated from our OpenAPI spec
+
+namespace Stripe\V2\Core\Vault;
+
+/**
+ * Use the UsBankAccounts API to create and manage US bank accounts objects that you can use to receive funds. Note that these are not interchangeable with v1 Tokens.
+ *
+ * @property string $id The ID of the UsBankAccount object.
+ * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
+ * @property bool $archived Whether this UsBankAccount object was archived.
+ * @property string $bank_account_type Closed Enum. The type of bank account (checking or savings).
+ * @property string $bank_name The name of the bank this bank account belongs to. This field is populated automatically by Stripe based on the routing number.
+ * @property int $created Creation time of the object.
+ * @property null|string $fedwire_routing_number The fedwire routing number of the bank account.
+ * @property string $last4 The last 4 digits of the account number.
+ * @property null|string $routing_number The ACH routing number of the bank account.
+ */
+class UsBankAccount extends \Stripe\ApiResource
+{
+    const OBJECT_NAME = 'v2.core.vault.us_bank_account';
+
+    const BANK_ACCOUNT_TYPE_CHECKING = 'checking';
+    const BANK_ACCOUNT_TYPE_SAVINGS = 'savings';
+}

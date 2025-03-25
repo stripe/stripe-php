@@ -143,6 +143,11 @@ require __DIR__ . '/lib/EventData/V1BillingMeterErrorReportTriggeredEventData.ph
 require __DIR__ . '/lib/EventData/V1BillingMeterNoMeterFoundEventData.php';
 require __DIR__ . '/lib/Events/V1BillingMeterErrorReportTriggeredEvent.php';
 require __DIR__ . '/lib/Events/V1BillingMeterNoMeterFoundEvent.php';
+require __DIR__ . '/lib/Exception/BlockedByStripeException.php';
+require __DIR__ . '/lib/Exception/ControlledByDashboardException.php';
+require __DIR__ . '/lib/Exception/InvalidPaymentMethodException.php';
+require __DIR__ . '/lib/Exception/InvalidPayoutMethodException.php';
+require __DIR__ . '/lib/Exception/QuotaExceededException.php';
 require __DIR__ . '/lib/Exception/TemporarySessionExpiredException.php';
 require __DIR__ . '/lib/ExchangeRate.php';
 require __DIR__ . '/lib/File.php';
@@ -374,6 +379,13 @@ require __DIR__ . '/lib/Service/V2/Billing/MeterEventStreamService.php';
 require __DIR__ . '/lib/Service/V2/Core/CoreServiceFactory.php';
 require __DIR__ . '/lib/Service/V2/Core/EventDestinationService.php';
 require __DIR__ . '/lib/Service/V2/Core/EventService.php';
+require __DIR__ . '/lib/Service/V2/Core/Vault/GbBankAccountService.php';
+require __DIR__ . '/lib/Service/V2/Core/Vault/UsBankAccountService.php';
+require __DIR__ . '/lib/Service/V2/Core/Vault/VaultServiceFactory.php';
+require __DIR__ . '/lib/Service/V2/MoneyManagement/MoneyManagementServiceFactory.php';
+require __DIR__ . '/lib/Service/V2/MoneyManagement/OutboundSetupIntentService.php';
+require __DIR__ . '/lib/Service/V2/MoneyManagement/PayoutMethodService.php';
+require __DIR__ . '/lib/Service/V2/MoneyManagement/PayoutMethodsBankAccountSpecService.php';
 require __DIR__ . '/lib/Service/V2/V2ServiceFactory.php';
 require __DIR__ . '/lib/Service/WebhookEndpointService.php';
 require __DIR__ . '/lib/SetupAttempt.php';
@@ -422,7 +434,12 @@ require __DIR__ . '/lib/Treasury/TransactionEntry.php';
 require __DIR__ . '/lib/V2/Billing/MeterEvent.php';
 require __DIR__ . '/lib/V2/Billing/MeterEventAdjustment.php';
 require __DIR__ . '/lib/V2/Billing/MeterEventSession.php';
+require __DIR__ . '/lib/V2/Core/Vault/GbBankAccount.php';
+require __DIR__ . '/lib/V2/Core/Vault/UsBankAccount.php';
 require __DIR__ . '/lib/V2/EventDestination.php';
+require __DIR__ . '/lib/V2/MoneyManagement/OutboundSetupIntent.php';
+require __DIR__ . '/lib/V2/MoneyManagement/PayoutMethod.php';
+require __DIR__ . '/lib/V2/MoneyManagement/PayoutMethodsBankAccountSpec.php';
 require __DIR__ . '/lib/WebhookEndpoint.php';
 
 // The end of the section generated from our OpenAPI spec
