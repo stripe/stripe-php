@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Issuing;
@@ -19,7 +20,7 @@ namespace Stripe\Issuing;
  * @property null|string $loss_reason The enum that describes the dispute loss outcome. If the dispute is not lost, this field will be absent. New enum values may be added in the future, so be sure to handle unknown values.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $status Current status of the dispute.
- * @property string|\Stripe\Issuing\Transaction $transaction The transaction being disputed.
+ * @property string|Transaction $transaction The transaction being disputed.
  * @property null|\Stripe\StripeObject $treasury <a href="https://stripe.com/docs/api/treasury">Treasury</a> details related to this dispute if it was created on a [FinancialAccount](/docs/api/treasury/financial_accounts
  */
 class Dispute extends \Stripe\ApiResource
@@ -65,9 +66,9 @@ class Dispute extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Dispute the created resource
      *
-     * @return \Stripe\Issuing\Dispute the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -89,9 +90,9 @@ class Dispute extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Dispute> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\Dispute> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -106,9 +107,9 @@ class Dispute extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Dispute
      *
-     * @return \Stripe\Issuing\Dispute
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -129,9 +130,9 @@ class Dispute extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Dispute the updated resource
      *
-     * @return \Stripe\Issuing\Dispute the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -149,9 +150,9 @@ class Dispute extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Dispute the submited dispute
      *
-     * @return \Stripe\Issuing\Dispute the submited dispute
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function submit($params = null, $opts = null)
     {

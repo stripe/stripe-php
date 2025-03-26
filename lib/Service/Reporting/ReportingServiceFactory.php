@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Reporting;
@@ -15,8 +16,8 @@ class ReportingServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
-    'reportRuns' => ReportRunService::class,
-    'reportTypes' => ReportTypeService::class,
+        'reportRuns' => ReportRunService::class,
+        'reportTypes' => ReportTypeService::class,
     ];
 
     protected function getServiceClass($name)

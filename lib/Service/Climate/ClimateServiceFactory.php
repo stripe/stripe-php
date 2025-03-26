@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Climate;
@@ -16,9 +17,9 @@ class ClimateServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
-    'orders' => OrderService::class,
-    'products' => ProductService::class,
-    'suppliers' => SupplierService::class,
+        'orders' => OrderService::class,
+        'products' => ProductService::class,
+        'suppliers' => SupplierService::class,
     ];
 
     protected function getServiceClass($name)

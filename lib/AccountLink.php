@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -18,7 +19,6 @@ class AccountLink extends ApiResource
 {
     const OBJECT_NAME = 'account_link';
 
-
     /**
      * Creates an AccountLink object that includes a single-use Stripe URL that the
      * platform can redirect their user to in order to take them through the Connect
@@ -27,9 +27,9 @@ class AccountLink extends ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return AccountLink the created resource
      *
-     * @return \Stripe\AccountLink the created resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -37,7 +37,7 @@ class AccountLink extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;

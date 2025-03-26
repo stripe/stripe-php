@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\TestHelpers;
@@ -22,7 +23,6 @@ class TestClock extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'test_helpers.test_clock';
 
-
     const STATUS_ADVANCING = 'advancing';
     const STATUS_INTERNAL_FAILURE = 'internal_failure';
     const STATUS_READY = 'ready';
@@ -33,9 +33,9 @@ class TestClock extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return TestClock the created resource
      *
-     * @return \Stripe\TestHelpers\TestClock the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -55,9 +55,9 @@ class TestClock extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return TestClock the deleted resource
      *
-     * @return \Stripe\TestHelpers\TestClock the deleted resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function delete($params = null, $opts = null)
     {
@@ -76,9 +76,9 @@ class TestClock extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<TestClock> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\TestHelpers\TestClock> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -93,9 +93,9 @@ class TestClock extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return TestClock
      *
-     * @return \Stripe\TestHelpers\TestClock
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -110,9 +110,9 @@ class TestClock extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return TestClock the advanced test clock
      *
-     * @return \Stripe\TestHelpers\TestClock the advanced test clock
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function advance($params = null, $opts = null)
     {

@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Terminal;
@@ -16,7 +17,6 @@ class ConnectionToken extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'terminal.connection_token';
 
-
     /**
      * To connect to a reader the Stripe Terminal SDK needs to retrieve a short-lived
      * connection token from Stripe, proxied through your server. On your backend, add
@@ -25,9 +25,9 @@ class ConnectionToken extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ConnectionToken the created resource
      *
-     * @return \Stripe\Terminal\ConnectionToken the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {

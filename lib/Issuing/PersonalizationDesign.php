@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Issuing;
@@ -15,7 +16,7 @@ namespace Stripe\Issuing;
  * @property null|string $lookup_key A lookup key used to retrieve personalization designs dynamically from a static string. This may be up to 200 characters.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name Friendly display name.
- * @property string|\Stripe\Issuing\PhysicalBundle $physical_bundle The physical bundle object belonging to this personalization design.
+ * @property PhysicalBundle|string $physical_bundle The physical bundle object belonging to this personalization design.
  * @property \Stripe\StripeObject $preferences
  * @property \Stripe\StripeObject $rejection_reasons
  * @property string $status Whether this personalization design can be used to create cards.
@@ -37,9 +38,9 @@ class PersonalizationDesign extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PersonalizationDesign the created resource
      *
-     * @return \Stripe\Issuing\PersonalizationDesign the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -61,9 +62,9 @@ class PersonalizationDesign extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<PersonalizationDesign> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\PersonalizationDesign> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -78,9 +79,9 @@ class PersonalizationDesign extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PersonalizationDesign
      *
-     * @return \Stripe\Issuing\PersonalizationDesign
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -98,9 +99,9 @@ class PersonalizationDesign extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return PersonalizationDesign the updated resource
      *
-     * @return \Stripe\Issuing\PersonalizationDesign the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {

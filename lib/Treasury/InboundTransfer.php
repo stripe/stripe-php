@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Treasury;
@@ -27,12 +28,11 @@ namespace Stripe\Treasury;
  * @property string $statement_descriptor Statement descriptor shown when funds are debited from the source. Not all payment networks support <code>statement_descriptor</code>.
  * @property string $status Status of the InboundTransfer: <code>processing</code>, <code>succeeded</code>, <code>failed</code>, and <code>canceled</code>. An InboundTransfer is <code>processing</code> if it is created and pending. The status changes to <code>succeeded</code> once the funds have been &quot;confirmed&quot; and a <code>transaction</code> is created and posted. The status changes to <code>failed</code> if the transfer fails.
  * @property \Stripe\StripeObject $status_transitions
- * @property null|string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
+ * @property null|string|Transaction $transaction The Transaction associated with this object.
  */
 class InboundTransfer extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'treasury.inbound_transfer';
-
 
     const STATUS_CANCELED = 'canceled';
     const STATUS_FAILED = 'failed';
@@ -45,9 +45,9 @@ class InboundTransfer extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return InboundTransfer the created resource
      *
-     * @return \Stripe\Treasury\InboundTransfer the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -67,9 +67,9 @@ class InboundTransfer extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<InboundTransfer> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Treasury\InboundTransfer> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -84,9 +84,9 @@ class InboundTransfer extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return InboundTransfer
      *
-     * @return \Stripe\Treasury\InboundTransfer
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -101,9 +101,9 @@ class InboundTransfer extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return InboundTransfer the canceled inbound transfer
      *
-     * @return \Stripe\Treasury\InboundTransfer the canceled inbound transfer
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function cancel($params = null, $opts = null)
     {

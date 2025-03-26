@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\BillingPortal;
@@ -21,7 +22,7 @@ namespace Stripe\BillingPortal;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property string|\Stripe\BillingPortal\Configuration $configuration The configuration used by this session, describing the features available.
+ * @property Configuration|string $configuration The configuration used by this session, describing the features available.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $customer The ID of the customer for this session.
  * @property null|\Stripe\StripeObject $flow Information about a specific flow for the customer to go through. See the <a href="https://stripe.com/docs/customer-management/portal-deep-links">docs</a> to learn more about using customer portal deep links and flows.
@@ -35,16 +36,15 @@ class Session extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'billing_portal.session';
 
-
     /**
      * Creates a session of the customer portal.
      *
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Session the created resource
      *
-     * @return \Stripe\BillingPortal\Session the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {

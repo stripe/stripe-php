@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Entitlements;
@@ -15,8 +16,8 @@ class EntitlementsServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
-    'activeEntitlements' => ActiveEntitlementService::class,
-    'features' => FeatureService::class,
+        'activeEntitlements' => ActiveEntitlementService::class,
+        'features' => FeatureService::class,
     ];
 
     protected function getServiceClass($name)

@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Radar;
@@ -16,9 +17,9 @@ class RadarServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
-    'earlyFraudWarnings' => EarlyFraudWarningService::class,
-    'valueListItems' => ValueListItemService::class,
-    'valueLists' => ValueListService::class,
+        'earlyFraudWarnings' => EarlyFraudWarningService::class,
+        'valueListItems' => ValueListItemService::class,
+        'valueLists' => ValueListService::class,
     ];
 
     protected function getServiceClass($name)

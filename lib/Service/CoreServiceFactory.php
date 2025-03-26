@@ -7,75 +7,75 @@ namespace Stripe\Service;
  *
  * @property OAuthService $oauth
  * // Doc: The beginning of the section generated from our OpenAPI spec
- @property AccountLinkService $accountLinks
- @property AccountService $accounts
- @property AccountSessionService $accountSessions
- @property ApplePayDomainService $applePayDomains
- @property ApplicationFeeService $applicationFees
- @property Apps\AppsServiceFactory $apps
- @property BalanceService $balance
- @property BalanceTransactionService $balanceTransactions
- @property Billing\BillingServiceFactory $billing
- @property BillingPortal\BillingPortalServiceFactory $billingPortal
- @property ChargeService $charges
- @property Checkout\CheckoutServiceFactory $checkout
- @property Climate\ClimateServiceFactory $climate
- @property ConfirmationTokenService $confirmationTokens
- @property CountrySpecService $countrySpecs
- @property CouponService $coupons
- @property CreditNoteService $creditNotes
- @property CustomerService $customers
- @property CustomerSessionService $customerSessions
- @property DisputeService $disputes
- @property Entitlements\EntitlementsServiceFactory $entitlements
- @property EphemeralKeyService $ephemeralKeys
- @property EventService $events
- @property ExchangeRateService $exchangeRates
- @property FileLinkService $fileLinks
- @property FileService $files
- @property FinancialConnections\FinancialConnectionsServiceFactory $financialConnections
- @property Forwarding\ForwardingServiceFactory $forwarding
- @property Identity\IdentityServiceFactory $identity
- @property InvoiceItemService $invoiceItems
- @property InvoiceRenderingTemplateService $invoiceRenderingTemplates
- @property InvoiceService $invoices
- @property Issuing\IssuingServiceFactory $issuing
- @property MandateService $mandates
- @property PaymentIntentService $paymentIntents
- @property PaymentLinkService $paymentLinks
- @property PaymentMethodConfigurationService $paymentMethodConfigurations
- @property PaymentMethodDomainService $paymentMethodDomains
- @property PaymentMethodService $paymentMethods
- @property PayoutService $payouts
- @property PlanService $plans
- @property PriceService $prices
- @property ProductService $products
- @property PromotionCodeService $promotionCodes
- @property QuoteService $quotes
- @property Radar\RadarServiceFactory $radar
- @property RefundService $refunds
- @property Reporting\ReportingServiceFactory $reporting
- @property ReviewService $reviews
- @property SetupAttemptService $setupAttempts
- @property SetupIntentService $setupIntents
- @property ShippingRateService $shippingRates
- @property Sigma\SigmaServiceFactory $sigma
- @property SourceService $sources
- @property SubscriptionItemService $subscriptionItems
- @property SubscriptionService $subscriptions
- @property SubscriptionScheduleService $subscriptionSchedules
- @property Tax\TaxServiceFactory $tax
- @property TaxCodeService $taxCodes
- @property TaxIdService $taxIds
- @property TaxRateService $taxRates
- @property Terminal\TerminalServiceFactory $terminal
- @property TestHelpers\TestHelpersServiceFactory $testHelpers
- @property TokenService $tokens
- @property TopupService $topups
- @property TransferService $transfers
- @property Treasury\TreasuryServiceFactory $treasury
- @property V2\V2ServiceFactory $v2
- @property WebhookEndpointService $webhookEndpoints
+ * @property AccountLinkService $accountLinks
+ * @property AccountService $accounts
+ * @property AccountSessionService $accountSessions
+ * @property ApplePayDomainService $applePayDomains
+ * @property ApplicationFeeService $applicationFees
+ * @property Apps\AppsServiceFactory $apps
+ * @property BalanceService $balance
+ * @property BalanceTransactionService $balanceTransactions
+ * @property Billing\BillingServiceFactory $billing
+ * @property BillingPortal\BillingPortalServiceFactory $billingPortal
+ * @property ChargeService $charges
+ * @property Checkout\CheckoutServiceFactory $checkout
+ * @property Climate\ClimateServiceFactory $climate
+ * @property ConfirmationTokenService $confirmationTokens
+ * @property CountrySpecService $countrySpecs
+ * @property CouponService $coupons
+ * @property CreditNoteService $creditNotes
+ * @property CustomerService $customers
+ * @property CustomerSessionService $customerSessions
+ * @property DisputeService $disputes
+ * @property Entitlements\EntitlementsServiceFactory $entitlements
+ * @property EphemeralKeyService $ephemeralKeys
+ * @property EventService $events
+ * @property ExchangeRateService $exchangeRates
+ * @property FileLinkService $fileLinks
+ * @property FileService $files
+ * @property FinancialConnections\FinancialConnectionsServiceFactory $financialConnections
+ * @property Forwarding\ForwardingServiceFactory $forwarding
+ * @property Identity\IdentityServiceFactory $identity
+ * @property InvoiceItemService $invoiceItems
+ * @property InvoiceRenderingTemplateService $invoiceRenderingTemplates
+ * @property InvoiceService $invoices
+ * @property Issuing\IssuingServiceFactory $issuing
+ * @property MandateService $mandates
+ * @property PaymentIntentService $paymentIntents
+ * @property PaymentLinkService $paymentLinks
+ * @property PaymentMethodConfigurationService $paymentMethodConfigurations
+ * @property PaymentMethodDomainService $paymentMethodDomains
+ * @property PaymentMethodService $paymentMethods
+ * @property PayoutService $payouts
+ * @property PlanService $plans
+ * @property PriceService $prices
+ * @property ProductService $products
+ * @property PromotionCodeService $promotionCodes
+ * @property QuoteService $quotes
+ * @property Radar\RadarServiceFactory $radar
+ * @property RefundService $refunds
+ * @property Reporting\ReportingServiceFactory $reporting
+ * @property ReviewService $reviews
+ * @property SetupAttemptService $setupAttempts
+ * @property SetupIntentService $setupIntents
+ * @property ShippingRateService $shippingRates
+ * @property Sigma\SigmaServiceFactory $sigma
+ * @property SourceService $sources
+ * @property SubscriptionItemService $subscriptionItems
+ * @property SubscriptionService $subscriptions
+ * @property SubscriptionScheduleService $subscriptionSchedules
+ * @property Tax\TaxServiceFactory $tax
+ * @property TaxCodeService $taxCodes
+ * @property TaxIdService $taxIds
+ * @property TaxRateService $taxRates
+ * @property Terminal\TerminalServiceFactory $terminal
+ * @property TestHelpers\TestHelpersServiceFactory $testHelpers
+ * @property TokenService $tokens
+ * @property TopupService $topups
+ * @property TransferService $transfers
+ * @property Treasury\TreasuryServiceFactory $treasury
+ * @property V2\V2ServiceFactory $v2
+ * @property WebhookEndpointService $webhookEndpoints
  * // Doc: The end of the section generated from our OpenAPI spec
  */
 class CoreServiceFactory extends AbstractServiceFactory

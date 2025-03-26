@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Billing;
@@ -18,16 +19,15 @@ class MeterEvent extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'billing.meter_event';
 
-
     /**
      * Creates a billing meter event.
      *
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return MeterEvent the created resource
      *
-     * @return \Stripe\Billing\MeterEvent the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {

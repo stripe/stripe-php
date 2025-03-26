@@ -1,14 +1,15 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- *
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class SourceService extends \Stripe\Service\AbstractService
+class SourceService extends AbstractService
 {
     /**
      * List source transactions for a given source.
@@ -17,9 +18,9 @@ class SourceService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\SourceTransaction>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function allSourceTransactions($id, $params = null, $opts = null)
     {
@@ -32,9 +33,9 @@ class SourceService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Source
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -49,9 +50,9 @@ class SourceService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Account|\Stripe\BankAccount|\Stripe\Card|\Stripe\Source
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function detach($parentId, $id, $params = null, $opts = null)
     {
@@ -67,9 +68,9 @@ class SourceService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Source
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -89,9 +90,9 @@ class SourceService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Source
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -105,9 +106,9 @@ class SourceService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Source
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function verify($id, $params = null, $opts = null)
     {

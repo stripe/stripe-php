@@ -1,25 +1,26 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- *
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class ConfirmationTokenService extends \Stripe\Service\AbstractService
+class ConfirmationTokenService extends AbstractService
 {
     /**
-     * Retrieves an existing ConfirmationToken object
+     * Retrieves an existing ConfirmationToken object.
      *
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\ConfirmationToken
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

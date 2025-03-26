@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Apps;
@@ -14,7 +15,7 @@ class AppsServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
-    'secrets' => SecretService::class,
+        'secrets' => SecretService::class,
     ];
 
     protected function getServiceClass($name)

@@ -1,14 +1,15 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- *
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class ProductService extends \Stripe\Service\AbstractService
+class ProductService extends AbstractService
 {
     /**
      * Returns a list of your products. The products are returned sorted by creation
@@ -17,9 +18,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Product>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -27,15 +28,15 @@ class ProductService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a list of features for a product
+     * Retrieve a list of features for a product.
      *
      * @param string $parentId
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\ProductFeature>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function allFeatures($parentId, $params = null, $opts = null)
     {
@@ -48,9 +49,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Product
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -58,15 +59,15 @@ class ProductService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a product_feature, which represents a feature attachment to a product
+     * Creates a product_feature, which represents a feature attachment to a product.
      *
      * @param string $parentId
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\ProductFeature
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function createFeature($parentId, $params = null, $opts = null)
     {
@@ -82,9 +83,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Product
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -92,16 +93,16 @@ class ProductService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Deletes the feature attachment to a product
+     * Deletes the feature attachment to a product.
      *
      * @param string $parentId
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\ProductFeature
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function deleteFeature($parentId, $id, $params = null, $opts = null)
     {
@@ -117,9 +118,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Product
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -127,16 +128,16 @@ class ProductService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves a product_feature, which represents a feature attachment to a product
+     * Retrieves a product_feature, which represents a feature attachment to a product.
      *
      * @param string $parentId
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\ProductFeature
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieveFeature($parentId, $id, $params = null, $opts = null)
     {
@@ -154,9 +155,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\SearchResult<\Stripe\Product>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function search($params = null, $opts = null)
     {
@@ -171,9 +172,9 @@ class ProductService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Product
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\FinancialConnections;
@@ -9,7 +10,7 @@ namespace Stripe\FinancialConnections;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|\Stripe\StripeObject $account_holder The account holder for whom accounts are collected in this session.
- * @property \Stripe\Collection<\Stripe\FinancialConnections\Account> $accounts The accounts that were collected as part of this Session.
+ * @property \Stripe\Collection<Account> $accounts The accounts that were collected as part of this Session.
  * @property string $client_secret A value that will be passed to the client to launch the authentication flow.
  * @property null|\Stripe\StripeObject $filters
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
@@ -21,7 +22,6 @@ class Session extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'financial_connections.session';
 
-
     /**
      * To launch the Financial Connections authorization flow, create a
      * <code>Session</code>. The session’s <code>client_secret</code> can be used to
@@ -30,9 +30,9 @@ class Session extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Session the created resource
      *
-     * @return \Stripe\FinancialConnections\Session the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -47,14 +47,14 @@ class Session extends \Stripe\ApiResource
     }
 
     /**
-     * Retrieves the details of a Financial Connections <code>Session</code>
+     * Retrieves the details of a Financial Connections <code>Session</code>.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Session
      *
-     * @return \Stripe\FinancialConnections\Session
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

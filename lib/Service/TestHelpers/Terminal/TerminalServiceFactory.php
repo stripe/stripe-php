@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\TestHelpers\Terminal;
@@ -14,7 +15,7 @@ class TerminalServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
-    'readers' => ReaderService::class,
+        'readers' => ReaderService::class,
     ];
 
     protected function getServiceClass($name)

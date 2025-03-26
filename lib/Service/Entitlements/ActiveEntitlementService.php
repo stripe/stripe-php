@@ -1,24 +1,25 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Entitlements;
 
 /**
- *
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class ActiveEntitlementService extends \Stripe\Service\AbstractService
 {
     /**
-     * Retrieve a list of active entitlements for a customer
+     * Retrieve a list of active entitlements for a customer.
      *
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\Entitlements\ActiveEntitlement>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -26,15 +27,15 @@ class ActiveEntitlementService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve an active entitlement
+     * Retrieve an active entitlement.
      *
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Entitlements\ActiveEntitlement
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

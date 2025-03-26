@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Tax;
@@ -15,7 +16,7 @@ namespace Stripe\Tax;
  * @property null|string $customer The ID of an existing <a href="https://stripe.com/docs/api/customers/object">Customer</a> used for the resource.
  * @property \Stripe\StripeObject $customer_details
  * @property null|int $expires_at Timestamp of date at which the tax calculation will expire.
- * @property null|\Stripe\Collection<\Stripe\Tax\CalculationLineItem> $line_items The list of items the customer is purchasing.
+ * @property null|\Stripe\Collection<CalculationLineItem> $line_items The list of items the customer is purchasing.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $ship_from_details The details of the ship from location, such as the address.
  * @property null|\Stripe\StripeObject $shipping_cost The shipping cost details for the calculation.
@@ -28,7 +29,6 @@ class Calculation extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'tax.calculation';
 
-
     /**
      * Calculates tax based on the input and returns a Tax <code>Calculation</code>
      * object.
@@ -36,9 +36,9 @@ class Calculation extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Calculation the created resource
      *
-     * @return \Stripe\Tax\Calculation the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -59,9 +59,9 @@ class Calculation extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Calculation
      *
-     * @return \Stripe\Tax\Calculation
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -77,9 +77,9 @@ class Calculation extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<CalculationLineItem> list of calculation line items
      *
-     * @return \Stripe\Collection<\Stripe\Tax\CalculationLineItem> list of calculation line items
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {

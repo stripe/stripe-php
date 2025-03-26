@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Treasury;
@@ -19,12 +20,11 @@ namespace Stripe\Treasury;
  * @property string $received_credit The ReceivedCredit being reversed.
  * @property string $status Status of the CreditReversal
  * @property \Stripe\StripeObject $status_transitions
- * @property null|string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
+ * @property null|string|Transaction $transaction The Transaction associated with this object.
  */
 class CreditReversal extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'treasury.credit_reversal';
-
 
     const NETWORK_ACH = 'ach';
     const NETWORK_STRIPE = 'stripe';
@@ -39,9 +39,9 @@ class CreditReversal extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditReversal the created resource
      *
-     * @return \Stripe\Treasury\CreditReversal the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -61,9 +61,9 @@ class CreditReversal extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<CreditReversal> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Treasury\CreditReversal> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -75,14 +75,14 @@ class CreditReversal extends \Stripe\ApiResource
     /**
      * Retrieves the details of an existing CreditReversal by passing the unique
      * CreditReversal ID from either the CreditReversal creation request or
-     * CreditReversal list
+     * CreditReversal list.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditReversal
      *
-     * @return \Stripe\Treasury\CreditReversal
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

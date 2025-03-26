@@ -1,24 +1,25 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- *
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class PaymentMethodConfigurationService extends \Stripe\Service\AbstractService
+class PaymentMethodConfigurationService extends AbstractService
 {
     /**
-     * List payment method configurations
+     * List payment method configurations.
      *
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\Collection<\Stripe\PaymentMethodConfiguration>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -26,14 +27,14 @@ class PaymentMethodConfigurationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a payment method configuration
+     * Creates a payment method configuration.
      *
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\PaymentMethodConfiguration
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -41,15 +42,15 @@ class PaymentMethodConfigurationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve payment method configuration
+     * Retrieve payment method configuration.
      *
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\PaymentMethodConfiguration
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -57,15 +58,15 @@ class PaymentMethodConfigurationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update payment method configuration
+     * Update payment method configuration.
      *
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \Stripe\PaymentMethodConfiguration
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

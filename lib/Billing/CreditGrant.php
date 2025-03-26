@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Billing;
@@ -40,9 +41,9 @@ class CreditGrant extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditGrant the created resource
      *
-     * @return \Stripe\Billing\CreditGrant the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -62,9 +63,9 @@ class CreditGrant extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<CreditGrant> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Billing\CreditGrant> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -79,9 +80,9 @@ class CreditGrant extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditGrant
      *
-     * @return \Stripe\Billing\CreditGrant
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -99,9 +100,9 @@ class CreditGrant extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditGrant the updated resource
      *
-     * @return \Stripe\Billing\CreditGrant the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -119,9 +120,9 @@ class CreditGrant extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditGrant the expired credit grant
      *
-     * @return \Stripe\Billing\CreditGrant the expired credit grant
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function expire($params = null, $opts = null)
     {
@@ -136,9 +137,9 @@ class CreditGrant extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditGrant the voided credit grant
      *
-     * @return \Stripe\Billing\CreditGrant the voided credit grant
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function voidGrant($params = null, $opts = null)
     {

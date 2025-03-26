@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Treasury;
@@ -29,12 +30,11 @@ namespace Stripe\Treasury;
  * @property string $status Current status of the OutboundTransfer: <code>processing</code>, <code>failed</code>, <code>canceled</code>, <code>posted</code>, <code>returned</code>. An OutboundTransfer is <code>processing</code> if it has been created and is pending. The status changes to <code>posted</code> once the OutboundTransfer has been &quot;confirmed&quot; and funds have left the account, or to <code>failed</code> or <code>canceled</code>. If an OutboundTransfer fails to arrive at its destination, its status will change to <code>returned</code>.
  * @property \Stripe\StripeObject $status_transitions
  * @property null|\Stripe\StripeObject $tracking_details Details about network-specific tracking information if available.
- * @property string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
+ * @property string|Transaction $transaction The Transaction associated with this object.
  */
 class OutboundTransfer extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'treasury.outbound_transfer';
-
 
     const STATUS_CANCELED = 'canceled';
     const STATUS_FAILED = 'failed';
@@ -48,9 +48,9 @@ class OutboundTransfer extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return OutboundTransfer the created resource
      *
-     * @return \Stripe\Treasury\OutboundTransfer the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -70,9 +70,9 @@ class OutboundTransfer extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<OutboundTransfer> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Treasury\OutboundTransfer> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -89,9 +89,9 @@ class OutboundTransfer extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return OutboundTransfer
      *
-     * @return \Stripe\Treasury\OutboundTransfer
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -106,9 +106,9 @@ class OutboundTransfer extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return OutboundTransfer the canceled outbound transfer
      *
-     * @return \Stripe\Treasury\OutboundTransfer the canceled outbound transfer
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function cancel($params = null, $opts = null)
     {

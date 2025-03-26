@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -17,43 +18,43 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\Stripe\StripeObject $ach_credit_transfer
- * @property null|\Stripe\StripeObject $ach_debit
- * @property null|\Stripe\StripeObject $acss_debit
- * @property null|\Stripe\StripeObject $alipay
+ * @property null|StripeObject $ach_credit_transfer
+ * @property null|StripeObject $ach_debit
+ * @property null|StripeObject $acss_debit
+ * @property null|StripeObject $alipay
  * @property null|string $allow_redisplay This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”.
  * @property null|int $amount A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a zero-decimal currency) representing the total amount associated with the source. This is the amount for which the source will be chargeable once ready. Required for <code>single_use</code> sources.
- * @property null|\Stripe\StripeObject $au_becs_debit
- * @property null|\Stripe\StripeObject $bancontact
- * @property null|\Stripe\StripeObject $card
- * @property null|\Stripe\StripeObject $card_present
+ * @property null|StripeObject $au_becs_debit
+ * @property null|StripeObject $bancontact
+ * @property null|StripeObject $card
+ * @property null|StripeObject $card_present
  * @property string $client_secret The client secret of the source. Used for client-side retrieval using a publishable key.
- * @property null|\Stripe\StripeObject $code_verification
+ * @property null|StripeObject $code_verification
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $currency Three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a> associated with the source. This is the currency for which the source will be chargeable once ready. Required for <code>single_use</code> sources.
  * @property null|string $customer The ID of the customer to which this source is attached. This will not be present when the source has not been attached to a customer.
- * @property null|\Stripe\StripeObject $eps
+ * @property null|StripeObject $eps
  * @property string $flow The authentication <code>flow</code> of the source. <code>flow</code> is one of <code>redirect</code>, <code>receiver</code>, <code>code_verification</code>, <code>none</code>.
- * @property null|\Stripe\StripeObject $giropay
- * @property null|\Stripe\StripeObject $ideal
- * @property null|\Stripe\StripeObject $klarna
+ * @property null|StripeObject $giropay
+ * @property null|StripeObject $ideal
+ * @property null|StripeObject $klarna
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|\Stripe\StripeObject $multibanco
- * @property null|\Stripe\StripeObject $owner Information about the owner of the payment instrument that may be used or required by particular source types.
- * @property null|\Stripe\StripeObject $p24
- * @property null|\Stripe\StripeObject $receiver
- * @property null|\Stripe\StripeObject $redirect
- * @property null|\Stripe\StripeObject $sepa_credit_transfer
- * @property null|\Stripe\StripeObject $sepa_debit
- * @property null|\Stripe\StripeObject $sofort
- * @property null|\Stripe\StripeObject $source_order
+ * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $multibanco
+ * @property null|StripeObject $owner Information about the owner of the payment instrument that may be used or required by particular source types.
+ * @property null|StripeObject $p24
+ * @property null|StripeObject $receiver
+ * @property null|StripeObject $redirect
+ * @property null|StripeObject $sepa_credit_transfer
+ * @property null|StripeObject $sepa_debit
+ * @property null|StripeObject $sofort
+ * @property null|StripeObject $source_order
  * @property null|string $statement_descriptor Extra information about a source. This will appear on your customer's statement every time you charge the source.
  * @property string $status The status of the source, one of <code>canceled</code>, <code>chargeable</code>, <code>consumed</code>, <code>failed</code>, or <code>pending</code>. Only <code>chargeable</code> sources can be used to create a charge.
- * @property null|\Stripe\StripeObject $three_d_secure
+ * @property null|StripeObject $three_d_secure
  * @property string $type The <code>type</code> of the source. The <code>type</code> is a payment method, one of <code>ach_credit_transfer</code>, <code>ach_debit</code>, <code>alipay</code>, <code>bancontact</code>, <code>card</code>, <code>card_present</code>, <code>eps</code>, <code>giropay</code>, <code>ideal</code>, <code>multibanco</code>, <code>klarna</code>, <code>p24</code>, <code>sepa_debit</code>, <code>sofort</code>, <code>three_d_secure</code>, or <code>wechat</code>. An additional hash is included on the source with a name matching this value. It contains additional information specific to the <a href="https://stripe.com/docs/sources">payment method</a> used.
  * @property null|string $usage Either <code>reusable</code> or <code>single_use</code>. Whether this source should be reusable or not. Some source types may or may not be reusable by construction, while others may leave the option at creation. If an incompatible value is passed, an error will be returned.
- * @property null|\Stripe\StripeObject $wechat
+ * @property null|StripeObject $wechat
  */
 class Source extends ApiResource
 {
@@ -105,9 +106,9 @@ class Source extends ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Source the created resource
      *
-     * @return \Stripe\Source the created resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -115,7 +116,7 @@ class Source extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -129,13 +130,13 @@ class Source extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Source
      *
-     * @return \Stripe\Source
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -155,9 +156,9 @@ class Source extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Source the updated resource
      *
-     * @return \Stripe\Source the updated resource
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -165,7 +166,7 @@ class Source extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -177,10 +178,10 @@ class Source extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\UnexpectedValueException if the source is not attached to a customer
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Source the detached source
      *
-     * @return \Stripe\Source the detached source
+     * @throws Exception\UnexpectedValueException if the source is not attached to a customer
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function detach($params = null, $opts = null)
     {
@@ -217,15 +218,15 @@ class Source extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<SourceTransaction> list of source transactions
      *
-     * @return \Stripe\Collection<\Stripe\SourceTransaction> list of source transactions
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function allSourceTransactions($id, $params = null, $opts = null)
     {
         $url = static::resourceUrl($id) . '/source_transactions';
         list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
-        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -235,9 +236,9 @@ class Source extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Source the verified source
      *
-     * @return \Stripe\Source the verified source
+     * @throws Exception\ApiErrorException if the request fails
      */
     public function verify($params = null, $opts = null)
     {

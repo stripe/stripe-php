@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Billing;
@@ -17,7 +18,6 @@ class MeterEventAdjustment extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'billing.meter_event_adjustment';
 
-
     const STATUS_COMPLETE = 'complete';
     const STATUS_PENDING = 'pending';
 
@@ -27,9 +27,9 @@ class MeterEventAdjustment extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return MeterEventAdjustment the created resource
      *
-     * @return \Stripe\Billing\MeterEventAdjustment the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {

@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Reporting;
@@ -27,16 +28,15 @@ class ReportType extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'reporting.report_type';
 
-
     /**
      * Returns a full list of Report Types.
      *
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<ReportType> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Reporting\ReportType> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -47,14 +47,14 @@ class ReportType extends \Stripe\ApiResource
 
     /**
      * Retrieves the details of a Report Type. (Certain report types require a <a
-     * href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.)
+     * href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.).
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return ReportType
      *
-     * @return \Stripe\Reporting\ReportType
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

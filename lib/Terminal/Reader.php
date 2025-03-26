@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Terminal;
@@ -16,7 +17,7 @@ namespace Stripe\Terminal;
  * @property null|string $ip_address The local IP address of the reader.
  * @property string $label Custom label given to the reader for easier identification.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|string|\Stripe\Terminal\Location $location The location identifier of the reader.
+ * @property null|Location|string $location The location identifier of the reader.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $serial_number Serial number of the reader.
  * @property null|string $status The networking status of the reader. We do not recommend using this field in flows that may block taking payments.
@@ -45,9 +46,9 @@ class Reader extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Reader the created resource
      *
-     * @return \Stripe\Terminal\Reader the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -67,9 +68,9 @@ class Reader extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Reader the deleted resource
      *
-     * @return \Stripe\Terminal\Reader the deleted resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function delete($params = null, $opts = null)
     {
@@ -88,9 +89,9 @@ class Reader extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Reader> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Terminal\Reader> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -105,9 +106,9 @@ class Reader extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Reader
      *
-     * @return \Stripe\Terminal\Reader
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -126,9 +127,9 @@ class Reader extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Reader the updated resource
      *
-     * @return \Stripe\Terminal\Reader the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -146,9 +147,9 @@ class Reader extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Reader the canceled reader
      *
-     * @return \Stripe\Terminal\Reader the canceled reader
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function cancelAction($params = null, $opts = null)
     {
@@ -163,9 +164,9 @@ class Reader extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Reader the processed reader
      *
-     * @return \Stripe\Terminal\Reader the processed reader
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function processPaymentIntent($params = null, $opts = null)
     {
@@ -180,9 +181,9 @@ class Reader extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Reader the processed reader
      *
-     * @return \Stripe\Terminal\Reader the processed reader
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function processSetupIntent($params = null, $opts = null)
     {
@@ -197,9 +198,9 @@ class Reader extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Reader the refunded reader
      *
-     * @return \Stripe\Terminal\Reader the refunded reader
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function refundPayment($params = null, $opts = null)
     {
@@ -214,9 +215,9 @@ class Reader extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Reader the seted reader
      *
-     * @return \Stripe\Terminal\Reader the seted reader
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function setReaderDisplay($params = null, $opts = null)
     {

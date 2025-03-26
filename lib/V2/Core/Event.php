@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\V2\Core;
@@ -17,5 +18,4 @@ namespace Stripe\V2\Core;
 class Event extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.core.event';
-
 }

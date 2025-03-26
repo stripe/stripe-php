@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\Apps;
@@ -28,16 +29,15 @@ class Secret extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'apps.secret';
 
-
     /**
      * Create or replace a secret in the secret store.
      *
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Secret the created resource
      *
-     * @return \Stripe\Apps\Secret the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -57,9 +57,9 @@ class Secret extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Secret> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\Apps\Secret> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -72,9 +72,9 @@ class Secret extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Secret the deleted secret
      *
-     * @return \Stripe\Apps\Secret the deleted secret
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function deleteWhere($params = null, $opts = null)
     {
@@ -90,9 +90,9 @@ class Secret extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Secret the finded secret
      *
-     * @return \Stripe\Apps\Secret the finded secret
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function find($params = null, $opts = null)
     {

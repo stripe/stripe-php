@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\V2\Core;
@@ -27,7 +28,6 @@ namespace Stripe\V2\Core;
 class EventDestination extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.core.event_destination';
-
 
     const EVENT_PAYLOAD_SNAPSHOT = 'snapshot';
     const EVENT_PAYLOAD_THIN = 'thin';

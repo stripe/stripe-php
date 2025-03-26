@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\EventData;
@@ -9,5 +10,4 @@ namespace Stripe\EventData;
  * @property int $validation_end The end of the window that is encapsulated by this summary.
  * @property int $validation_start The start of the window that is encapsulated by this summary.
  */
-class V1BillingMeterErrorReportTriggeredEventData extends \Stripe\StripeObject
-{}
+class V1BillingMeterErrorReportTriggeredEventData extends \Stripe\StripeObject {}

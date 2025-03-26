@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -11,5 +12,4 @@ namespace Stripe;
 class Application extends ApiResource
 {
     const OBJECT_NAME = 'application';
-
 }

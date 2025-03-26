@@ -1,4 +1,5 @@
 <?php
+
 // File generated from our OpenAPI spec
 
 namespace Stripe\FinancialConnections;
@@ -23,7 +24,6 @@ class Transaction extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'financial_connections.transaction';
 
-
     const STATUS_PENDING = 'pending';
     const STATUS_POSTED = 'posted';
     const STATUS_VOID = 'void';
@@ -34,9 +34,9 @@ class Transaction extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<Transaction> of ApiResources
      *
-     * @return \Stripe\Collection<\Stripe\FinancialConnections\Transaction> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -46,14 +46,14 @@ class Transaction extends \Stripe\ApiResource
     }
 
     /**
-     * Retrieves the details of a Financial Connections <code>Transaction</code>
+     * Retrieves the details of a Financial Connections <code>Transaction</code>.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @return Transaction
      *
-     * @return \Stripe\FinancialConnections\Transaction
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
