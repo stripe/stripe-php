@@ -17,6 +17,7 @@ namespace Stripe\V2;
  * @property null|int $expected_arrival_date The date when funds are expected to arrive in the payout method. This field is not set if the payout method is in a <code>failed</code>, <code>canceled</code>, or <code>returned</code> state. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property (object{debited: \Stripe\StripeObject, financial_account: string}&\stdClass&\Stripe\StripeObject) $from The FinancialAccount that funds were pulled from.
  * @property null|\Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|string $outbound_payment_quote The quote for this OutboundPayment. Only required for countries with regulatory mandates to display fee estimates before OutboundPayment creation.
  * @property string $receipt_url A hosted transaction receipt URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
  * @property (object{setting: string}&\stdClass&\Stripe\StripeObject) $recipient_notification Details about the OutboundPayment notification settings for recipient.
  * @property string $statement_descriptor The description that appears on the receiving end for an OutboundPayment (for example, bank statement for external bank transfer).

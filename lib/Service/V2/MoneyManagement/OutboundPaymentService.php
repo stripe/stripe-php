@@ -5,12 +5,20 @@
 namespace Stripe\Service\V2\MoneyManagement;
 
 /**
+ * @property OutboundPayments\QuoteService $quotes
+ *
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class OutboundPaymentService extends \Stripe\Service\AbstractService
 {
+    use \Stripe\Service\ServiceNavigatorTrait;
+
+    protected static $classMap = [
+        'quotes' => OutboundPayments\QuoteService::class,
+    ];
+
     /**
      * Returns a list of OutboundPayments that match the provided filters.
      *
@@ -46,7 +54,7 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
     /**
      * Creates an OutboundPayment.
      *
-     * @param null|array{amount: \Stripe\StripeObject, delivery_options?: array{bank_account?: string}, description?: string, from: array{currency: string, financial_account: string}, metadata?: \Stripe\StripeObject, recipient_notification?: array{setting: string}, to: array{currency?: string, payout_method?: string, recipient: string}} $params
+     * @param null|array{amount: \Stripe\StripeObject, delivery_options?: array{bank_account?: string}, description?: string, from: array{currency: string, financial_account: string}, metadata?: \Stripe\StripeObject, outbound_payment_quote?: string, recipient_notification?: array{setting: string}, to: array{currency?: string, payout_method?: string, recipient: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\OutboundPayment
@@ -76,5 +84,10 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
     public function retrieve($id, $params = null, $opts = null)
     {
         return $this->request('get', $this->buildPath('/v2/money_management/outbound_payments/%s', $id), $params, $opts);
+    }
+
+    protected function getServiceClass($name)
+    {
+        return \array_key_exists($name, self::$classMap) ? self::$classMap[$name] : null;
     }
 }

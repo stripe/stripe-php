@@ -182,6 +182,7 @@ class ObjectTypes
      */
     const v2Mapping = [
         // v2 object classes: The beginning of the section generated from our OpenAPI spec
+        \Stripe\V2\Adjustment::OBJECT_NAME => \Stripe\V2\Adjustment::class,
         \Stripe\V2\Billing\MeterEvent::OBJECT_NAME => \Stripe\V2\Billing\MeterEvent::class,
         \Stripe\V2\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustment::class,
         \Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \Stripe\V2\Billing\MeterEventSession::class,
@@ -200,9 +201,12 @@ class ObjectTypes
         \Stripe\V2\MoneyManagement\PayoutMethod::OBJECT_NAME => \Stripe\V2\MoneyManagement\PayoutMethod::class,
         \Stripe\V2\MoneyManagement\PayoutMethodsBankAccountSpec::OBJECT_NAME => \Stripe\V2\MoneyManagement\PayoutMethodsBankAccountSpec::class,
         \Stripe\V2\OutboundPayment::OBJECT_NAME => \Stripe\V2\OutboundPayment::class,
+        \Stripe\V2\OutboundPaymentQuote::OBJECT_NAME => \Stripe\V2\OutboundPaymentQuote::class,
         \Stripe\V2\OutboundTransfer::OBJECT_NAME => \Stripe\V2\OutboundTransfer::class,
         \Stripe\V2\ReceivedCredit::OBJECT_NAME => \Stripe\V2\ReceivedCredit::class,
         \Stripe\V2\ReceivedDebit::OBJECT_NAME => \Stripe\V2\ReceivedDebit::class,
+        \Stripe\V2\Transaction::OBJECT_NAME => \Stripe\V2\Transaction::class,
+        \Stripe\V2\TransactionEntry::OBJECT_NAME => \Stripe\V2\TransactionEntry::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
 }
