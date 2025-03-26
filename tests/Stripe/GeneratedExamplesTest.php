@@ -7372,7 +7372,10 @@ final class GeneratedExamplesTest extends TestCase
                         'fields' => [
                             '0' => [
                                 'local_name' => 'local_name',
-                                'local_name_human' => 'local_name_human',
+                                'local_name_human' => [
+                                    'content' => 'content',
+                                    'localization_key' => 'localization_key',
+                                ],
                                 'max_length' => [],
                                 'min_length' => [],
                                 'placeholder' => 'placeholder',
