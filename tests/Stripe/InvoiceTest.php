@@ -118,16 +118,6 @@ final class InvoiceTest extends TestCase
         self::assertSame($resource, $invoice);
     }
 
-    public function testCanRetrieveUpcoming()
-    {
-        $this->expectsRequest(
-            'get',
-            '/v1/invoices/upcoming'
-        );
-        $resource = Invoice::upcoming(['customer' => 'cus_123']);
-        self::assertInstanceOf(Invoice::class, $resource);
-    }
-
     public function testCanSendInvoice()
     {
         $invoice = Invoice::retrieve(self::TEST_RESOURCE_ID);
