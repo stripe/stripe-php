@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class PaymentLinkService extends AbstractService
+class PaymentLinkService extends \Stripe\Service\AbstractService
 {
     /**
      * Returns a list of your payment links.
@@ -17,9 +16,9 @@ class PaymentLinkService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\PaymentLink>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\PaymentLink>
      */
     public function all($params = null, $opts = null)
     {
@@ -36,9 +35,9 @@ class PaymentLinkService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\LineItem>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\LineItem>
      */
     public function allLineItems($id, $params = null, $opts = null)
     {
@@ -51,9 +50,9 @@ class PaymentLinkService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentLink
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentLink
      */
     public function create($params = null, $opts = null)
     {
@@ -67,9 +66,9 @@ class PaymentLinkService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentLink
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentLink
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -83,9 +82,9 @@ class PaymentLinkService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentLink
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentLink
      */
     public function update($id, $params = null, $opts = null)
     {

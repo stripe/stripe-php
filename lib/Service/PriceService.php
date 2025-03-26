@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class PriceService extends AbstractService
+class PriceService extends \Stripe\Service\AbstractService
 {
     /**
      * Returns a list of your active prices, excluding <a
@@ -19,9 +18,9 @@ class PriceService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Price>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Price>
      */
     public function all($params = null, $opts = null)
     {
@@ -35,9 +34,9 @@ class PriceService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Price
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Price
      */
     public function create($params = null, $opts = null)
     {
@@ -51,9 +50,9 @@ class PriceService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Price
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Price
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -71,9 +70,9 @@ class PriceService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\SearchResult<\Stripe\Price>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<\Stripe\Price>
      */
     public function search($params = null, $opts = null)
     {
@@ -88,9 +87,9 @@ class PriceService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Price
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Price
      */
     public function update($id, $params = null, $opts = null)
     {

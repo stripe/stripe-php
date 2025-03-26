@@ -1,12 +1,11 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Treasury;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class ReceivedDebitService extends \Stripe\Service\AbstractService
@@ -17,9 +16,9 @@ class ReceivedDebitService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Treasury\ReceivedDebit>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Treasury\ReceivedDebit>
      */
     public function all($params = null, $opts = null)
     {
@@ -28,15 +27,15 @@ class ReceivedDebitService extends \Stripe\Service\AbstractService
 
     /**
      * Retrieves the details of an existing ReceivedDebit by passing the unique
-     * ReceivedDebit ID from the ReceivedDebit list.
+     * ReceivedDebit ID from the ReceivedDebit list
      *
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Treasury\ReceivedDebit
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\ReceivedDebit
      */
     public function retrieve($id, $params = null, $opts = null)
     {

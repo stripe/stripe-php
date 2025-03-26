@@ -1,12 +1,11 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Checkout;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class SessionService extends \Stripe\Service\AbstractService
@@ -17,9 +16,9 @@ class SessionService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Checkout\Session>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Checkout\Session>
      */
     public function all($params = null, $opts = null)
     {
@@ -36,9 +35,9 @@ class SessionService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\LineItem>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\LineItem>
      */
     public function allLineItems($id, $params = null, $opts = null)
     {
@@ -51,9 +50,9 @@ class SessionService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Checkout\Session
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Checkout\Session
      */
     public function create($params = null, $opts = null)
     {
@@ -61,7 +60,7 @@ class SessionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * A Session can be expired when it is in one of these statuses: <code>open</code>.
+     * A Session can be expired when it is in one of these statuses: <code>open</code>
      *
      * After it expires, a customer can’t complete a Session and customers loading the
      * Session see a message saying the Session is expired.
@@ -70,9 +69,9 @@ class SessionService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Checkout\Session
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Checkout\Session
      */
     public function expire($id, $params = null, $opts = null)
     {
@@ -86,9 +85,9 @@ class SessionService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Checkout\Session
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Checkout\Session
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -102,9 +101,9 @@ class SessionService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Checkout\Session
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Checkout\Session
      */
     public function update($id, $params = null, $opts = null)
     {

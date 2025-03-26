@@ -1,12 +1,11 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Radar;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class ValueListItemService extends \Stripe\Service\AbstractService
@@ -19,9 +18,9 @@ class ValueListItemService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Radar\ValueListItem>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Radar\ValueListItem>
      */
     public function all($params = null, $opts = null)
     {
@@ -35,9 +34,9 @@ class ValueListItemService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Radar\ValueListItem
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Radar\ValueListItem
      */
     public function create($params = null, $opts = null)
     {
@@ -52,9 +51,9 @@ class ValueListItemService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Radar\ValueListItem
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Radar\ValueListItem
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -68,9 +67,9 @@ class ValueListItemService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Radar\ValueListItem
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Radar\ValueListItem
      */
     public function retrieve($id, $params = null, $opts = null)
     {

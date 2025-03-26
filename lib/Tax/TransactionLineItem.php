@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Tax;
@@ -22,6 +21,7 @@ namespace Stripe\Tax;
 class TransactionLineItem extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'tax.transaction_line_item';
+
 
     const TAX_BEHAVIOR_EXCLUSIVE = 'exclusive';
     const TAX_BEHAVIOR_INCLUSIVE = 'inclusive';

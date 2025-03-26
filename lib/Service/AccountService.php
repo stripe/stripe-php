@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class AccountService extends AbstractService
+class AccountService extends \Stripe\Service\AbstractService
 {
     /**
      * Returns a list of accounts connected to your platform via <a
@@ -18,9 +17,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Account>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Account>
      */
     public function all($params = null, $opts = null)
     {
@@ -36,9 +35,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Capability>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Capability>
      */
     public function allCapabilities($parentId, $params = null, $opts = null)
     {
@@ -52,9 +51,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\BankAccount|\Stripe\Card>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\BankAccount|\Stripe\Card>
      */
     public function allExternalAccounts($parentId, $params = null, $opts = null)
     {
@@ -70,9 +69,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Person>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Person>
      */
     public function allPersons($parentId, $params = null, $opts = null)
     {
@@ -94,9 +93,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Account
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Account
      */
     public function create($params = null, $opts = null)
     {
@@ -110,9 +109,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\BankAccount|\Stripe\Card
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\BankAccount|\Stripe\Card
      */
     public function createExternalAccount($parentId, $params = null, $opts = null)
     {
@@ -130,9 +129,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\LoginLink
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\LoginLink
      */
     public function createLoginLink($parentId, $params = null, $opts = null)
     {
@@ -146,9 +145,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Person
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Person
      */
     public function createPerson($parentId, $params = null, $opts = null)
     {
@@ -174,9 +173,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Account
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Account
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -191,9 +190,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\BankAccount|\Stripe\Card
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\BankAccount|\Stripe\Card
      */
     public function deleteExternalAccount($parentId, $id, $params = null, $opts = null)
     {
@@ -212,9 +211,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Person
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Person
      */
     public function deletePerson($parentId, $id, $params = null, $opts = null)
     {
@@ -234,9 +233,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Account
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Account
      */
     public function reject($id, $params = null, $opts = null)
     {
@@ -251,9 +250,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Capability
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Capability
      */
     public function retrieveCapability($parentId, $id, $params = null, $opts = null)
     {
@@ -268,9 +267,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\BankAccount|\Stripe\Card
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\BankAccount|\Stripe\Card
      */
     public function retrieveExternalAccount($parentId, $id, $params = null, $opts = null)
     {
@@ -285,9 +284,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Person
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Person
      */
     public function retrievePerson($parentId, $id, $params = null, $opts = null)
     {
@@ -319,9 +318,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Account
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Account
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -337,9 +336,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Capability
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Capability
      */
     public function updateCapability($parentId, $id, $params = null, $opts = null)
     {
@@ -364,9 +363,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\BankAccount|\Stripe\Card
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\BankAccount|\Stripe\Card
      */
     public function updateExternalAccount($parentId, $id, $params = null, $opts = null)
     {
@@ -381,9 +380,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Person
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Person
      */
     public function updatePerson($parentId, $id, $params = null, $opts = null)
     {
@@ -397,9 +396,9 @@ class AccountService extends AbstractService
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Account
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Account
      */
     public function retrieve($id = null, $params = null, $opts = null)
     {

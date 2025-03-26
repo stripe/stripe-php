@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class CountrySpecService extends AbstractService
+class CountrySpecService extends \Stripe\Service\AbstractService
 {
     /**
      * Lists all Country Spec objects available in the API.
@@ -17,9 +16,9 @@ class CountrySpecService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\CountrySpec>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\CountrySpec>
      */
     public function all($params = null, $opts = null)
     {
@@ -33,9 +32,9 @@ class CountrySpecService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\CountrySpec
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CountrySpec
      */
     public function retrieve($id, $params = null, $opts = null)
     {

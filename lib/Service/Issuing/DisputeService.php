@@ -1,12 +1,11 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Issuing;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class DisputeService extends \Stripe\Service\AbstractService
@@ -19,9 +18,9 @@ class DisputeService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\Dispute>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Issuing\Dispute>
      */
     public function all($params = null, $opts = null)
     {
@@ -38,9 +37,9 @@ class DisputeService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Issuing\Dispute
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Dispute
      */
     public function create($params = null, $opts = null)
     {
@@ -54,9 +53,9 @@ class DisputeService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Issuing\Dispute
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Dispute
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -74,9 +73,9 @@ class DisputeService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Issuing\Dispute
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Dispute
      */
     public function submit($id, $params = null, $opts = null)
     {
@@ -93,9 +92,9 @@ class DisputeService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Issuing\Dispute
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Dispute
      */
     public function update($id, $params = null, $opts = null)
     {

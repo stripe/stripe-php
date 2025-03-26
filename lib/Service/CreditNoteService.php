@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class CreditNoteService extends AbstractService
+class CreditNoteService extends \Stripe\Service\AbstractService
 {
     /**
      * Returns a list of credit notes.
@@ -17,9 +16,9 @@ class CreditNoteService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\CreditNote>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\CreditNote>
      */
     public function all($params = null, $opts = null)
     {
@@ -35,9 +34,9 @@ class CreditNoteService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\CreditNoteLineItem>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\CreditNoteLineItem>
      */
     public function allLines($parentId, $params = null, $opts = null)
     {
@@ -49,7 +48,7 @@ class CreditNoteService extends AbstractService
      * <code>status=open</code> invoice, a credit note reduces its
      * <code>amount_due</code>. For a <code>status=paid</code> invoice, a credit note
      * does not affect its <code>amount_due</code>. Instead, it can result in any
-     * combination of the following:.
+     * combination of the following:
      *
      * <ul> <li>Refund: create a new refund (using <code>refund_amount</code>) or link
      * an existing refund (using <code>refund</code>).</li> <li>Customer balance
@@ -69,9 +68,9 @@ class CreditNoteService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\CreditNote
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CreditNote
      */
     public function create($params = null, $opts = null)
     {
@@ -84,9 +83,9 @@ class CreditNoteService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\CreditNote
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CreditNote
      */
     public function preview($params = null, $opts = null)
     {
@@ -101,9 +100,9 @@ class CreditNoteService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\CreditNoteLineItem>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\CreditNoteLineItem>
      */
     public function previewLines($params = null, $opts = null)
     {
@@ -117,9 +116,9 @@ class CreditNoteService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\CreditNote
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CreditNote
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -133,9 +132,9 @@ class CreditNoteService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\CreditNote
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CreditNote
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -150,9 +149,9 @@ class CreditNoteService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\CreditNote
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CreditNote
      */
     public function voidCreditNote($id, $params = null, $opts = null)
     {

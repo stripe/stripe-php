@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -14,19 +13,19 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount Disputed amount. Usually the amount of the charge, but it can differ (usually because of currency fluctuation or because only part of the order is disputed).
- * @property BalanceTransaction[] $balance_transactions List of zero, one, or two balance transactions that show funds withdrawn and reinstated to your Stripe account as a result of this dispute.
- * @property Charge|string $charge ID of the charge that's disputed.
+ * @property \Stripe\BalanceTransaction[] $balance_transactions List of zero, one, or two balance transactions that show funds withdrawn and reinstated to your Stripe account as a result of this dispute.
+ * @property string|\Stripe\Charge $charge ID of the charge that's disputed.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property string[] $enhanced_eligibility_types List of eligibility types that are included in <code>enhanced_evidence</code>.
- * @property StripeObject $evidence
- * @property StripeObject $evidence_details
+ * @property \Stripe\StripeObject $evidence
+ * @property \Stripe\StripeObject $evidence_details
  * @property bool $is_charge_refundable If true, it's still possible to refund the disputed payment. After the payment has been fully refunded, no further funds are withdrawn from your Stripe account as a result of this dispute.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $network_reason_code Network-dependent reason code for the dispute.
- * @property null|PaymentIntent|string $payment_intent ID of the PaymentIntent that's disputed.
- * @property null|StripeObject $payment_method_details
+ * @property null|string|\Stripe\PaymentIntent $payment_intent ID of the PaymentIntent that's disputed.
+ * @property null|\Stripe\StripeObject $payment_method_details
  * @property string $reason Reason given by cardholder for dispute. Possible values are <code>bank_cannot_process</code>, <code>check_returned</code>, <code>credit_not_processed</code>, <code>customer_initiated</code>, <code>debit_not_authorized</code>, <code>duplicate</code>, <code>fraudulent</code>, <code>general</code>, <code>incorrect_account_details</code>, <code>insufficient_funds</code>, <code>product_not_received</code>, <code>product_unacceptable</code>, <code>subscription_canceled</code>, or <code>unrecognized</code>. Learn more about <a href="https://stripe.com/docs/disputes/categories">dispute reasons</a>.
  * @property string $status Current status of dispute. Possible values are <code>warning_needs_response</code>, <code>warning_under_review</code>, <code>warning_closed</code>, <code>needs_response</code>, <code>under_review</code>, <code>won</code>, or <code>lost</code>.
  */
@@ -65,15 +64,15 @@ class Dispute extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Collection<Dispute> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<\Stripe\Dispute> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, Collection::class, $params, $opts);
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
@@ -82,13 +81,13 @@ class Dispute extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return Dispute
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Dispute
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = Util\RequestOptions::parse($opts);
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -110,9 +109,9 @@ class Dispute extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Dispute the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Dispute the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -120,7 +119,7 @@ class Dispute extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -130,9 +129,9 @@ class Dispute extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Dispute the closed dispute
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Dispute the closed dispute
      */
     public function close($params = null, $opts = null)
     {

@@ -1,12 +1,11 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Treasury;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class FinancialAccountService extends \Stripe\Service\AbstractService
@@ -17,9 +16,9 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Treasury\FinancialAccount>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Treasury\FinancialAccount>
      */
     public function all($params = null, $opts = null)
     {
@@ -35,9 +34,9 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Treasury\FinancialAccount
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\FinancialAccount
      */
     public function close($id, $params = null, $opts = null)
     {
@@ -51,9 +50,9 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Treasury\FinancialAccount
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\FinancialAccount
      */
     public function create($params = null, $opts = null)
     {
@@ -67,9 +66,9 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Treasury\FinancialAccount
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\FinancialAccount
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -83,9 +82,9 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Treasury\FinancialAccountFeatures
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\FinancialAccountFeatures
      */
     public function retrieveFeatures($id, $params = null, $opts = null)
     {
@@ -99,9 +98,9 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Treasury\FinancialAccount
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\FinancialAccount
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -115,9 +114,9 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Treasury\FinancialAccountFeatures
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\FinancialAccountFeatures
      */
     public function updateFeatures($id, $params = null, $opts = null)
     {

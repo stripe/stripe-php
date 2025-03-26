@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -17,28 +16,28 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount The amount (in cents (or local equivalent)) that transfers to your bank account or debit card.
- * @property null|ApplicationFee|string $application_fee The application fee (if any) for the payout. <a href="https://stripe.com/docs/connect/instant-payouts#monetization-and-fees">See the Connect documentation</a> for details.
+ * @property null|string|\Stripe\ApplicationFee $application_fee The application fee (if any) for the payout. <a href="https://stripe.com/docs/connect/instant-payouts#monetization-and-fees">See the Connect documentation</a> for details.
  * @property null|int $application_fee_amount The amount of the application fee (if any) requested for the payout. <a href="https://stripe.com/docs/connect/instant-payouts#monetization-and-fees">See the Connect documentation</a> for details.
  * @property int $arrival_date Date that you can expect the payout to arrive in the bank. This factors in delays to account for weekends or bank holidays.
  * @property bool $automatic Returns <code>true</code> if the payout is created by an <a href="https://stripe.com/docs/payouts#payout-schedule">automated payout schedule</a> and <code>false</code> if it's <a href="https://stripe.com/docs/payouts#manual-payouts">requested manually</a>.
- * @property null|BalanceTransaction|string $balance_transaction ID of the balance transaction that describes the impact of this payout on your account balance.
+ * @property null|string|\Stripe\BalanceTransaction $balance_transaction ID of the balance transaction that describes the impact of this payout on your account balance.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
- * @property null|BankAccount|Card|string $destination ID of the bank account or card the payout is sent to.
- * @property null|BalanceTransaction|string $failure_balance_transaction If the payout fails or cancels, this is the ID of the balance transaction that reverses the initial balance transaction and returns the funds from the failed payout back in your balance.
+ * @property null|string|\Stripe\BankAccount|\Stripe\Card $destination ID of the bank account or card the payout is sent to.
+ * @property null|string|\Stripe\BalanceTransaction $failure_balance_transaction If the payout fails or cancels, this is the ID of the balance transaction that reverses the initial balance transaction and returns the funds from the failed payout back in your balance.
  * @property null|string $failure_code Error code that provides a reason for a payout failure, if available. View our <a href="https://stripe.com/docs/api#payout_failures">list of failure codes</a>.
  * @property null|string $failure_message Message that provides the reason for a payout failure, if available.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $method The method used to send this payout, which can be <code>standard</code> or <code>instant</code>. <code>instant</code> is supported for payouts to debit cards and bank accounts in certain countries. Learn more about <a href="https://stripe.com/docs/payouts/instant-payouts-banks">bank support for Instant Payouts</a>.
- * @property null|Payout|string $original_payout If the payout reverses another, this is the ID of the original payout.
+ * @property null|string|\Stripe\Payout $original_payout If the payout reverses another, this is the ID of the original payout.
  * @property string $reconciliation_status If <code>completed</code>, you can use the <a href="https://stripe.com/docs/api/balance_transactions/list#balance_transaction_list-payout">Balance Transactions API</a> to list all balance transactions that are paid out in this payout.
- * @property null|Payout|string $reversed_by If the payout reverses, this is the ID of the payout that reverses this payout.
+ * @property null|string|\Stripe\Payout $reversed_by If the payout reverses, this is the ID of the payout that reverses this payout.
  * @property string $source_type The source balance this payout came from, which can be one of the following: <code>card</code>, <code>fpx</code>, or <code>bank_account</code>.
  * @property null|string $statement_descriptor Extra information about a payout that displays on the user's bank statement.
  * @property string $status Current status of the payout: <code>paid</code>, <code>pending</code>, <code>in_transit</code>, <code>canceled</code> or <code>failed</code>. A payout is <code>pending</code> until it's submitted to the bank, when it becomes <code>in_transit</code>. The status changes to <code>paid</code> if the transaction succeeds, or to <code>failed</code> or <code>canceled</code> (within 5 business days). Some payouts that fail might initially show as <code>paid</code>, then change to <code>failed</code>.
- * @property null|StripeObject $trace_id A value that generates from the beneficiary's bank that allows users to track payouts with their bank. Banks might call this a &quot;reference number&quot; or something similar.
+ * @property null|\Stripe\StripeObject $trace_id A value that generates from the beneficiary's bank that allows users to track payouts with their bank. Banks might call this a &quot;reference number&quot; or something similar.
  * @property string $type Can be <code>bank_account</code> or <code>card</code>.
  */
 class Payout extends ApiResource
@@ -79,9 +78,9 @@ class Payout extends ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return Payout the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Payout the created resource
      */
     public static function create($params = null, $options = null)
     {
@@ -89,7 +88,7 @@ class Payout extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -103,15 +102,15 @@ class Payout extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Collection<Payout> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<\Stripe\Payout> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, Collection::class, $params, $opts);
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
@@ -122,13 +121,13 @@ class Payout extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return Payout
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Payout
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = Util\RequestOptions::parse($opts);
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -144,9 +143,9 @@ class Payout extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Payout the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Payout the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -154,7 +153,7 @@ class Payout extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -180,9 +179,9 @@ class Payout extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Payout the canceled payout
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Payout the canceled payout
      */
     public function cancel($params = null, $opts = null)
     {
@@ -197,9 +196,9 @@ class Payout extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Payout the reversed payout
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Payout the reversed payout
      */
     public function reverse($params = null, $opts = null)
     {

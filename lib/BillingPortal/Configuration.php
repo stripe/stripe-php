@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\BillingPortal;
@@ -29,14 +28,14 @@ class Configuration extends \Stripe\ApiResource
 
     /**
      * Creates a configuration that describes the functionality and behavior of a
-     * PortalSession.
+     * PortalSession
      *
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return Configuration the created resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\BillingPortal\Configuration the created resource
      */
     public static function create($params = null, $options = null)
     {
@@ -57,9 +56,9 @@ class Configuration extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<Configuration> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\BillingPortal\Configuration> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -75,9 +74,9 @@ class Configuration extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return Configuration
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\BillingPortal\Configuration
      */
     public static function retrieve($id, $opts = null)
     {
@@ -95,9 +94,9 @@ class Configuration extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Configuration the updated resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\BillingPortal\Configuration the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {

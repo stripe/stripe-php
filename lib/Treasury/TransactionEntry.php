@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Treasury;
@@ -18,12 +17,13 @@ namespace Stripe\Treasury;
  * @property null|\Stripe\StripeObject $flow_details Details of the flow associated with the TransactionEntry.
  * @property string $flow_type Type of the flow associated with the TransactionEntry.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property string|Transaction $transaction The Transaction associated with this object.
+ * @property string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
  * @property string $type The specific money movement that generated the TransactionEntry.
  */
 class TransactionEntry extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'treasury.transaction_entry';
+
 
     const FLOW_TYPE_CREDIT_REVERSAL = 'credit_reversal';
     const FLOW_TYPE_DEBIT_REVERSAL = 'debit_reversal';
@@ -62,9 +62,9 @@ class TransactionEntry extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<TransactionEntry> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Treasury\TransactionEntry> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -79,9 +79,9 @@ class TransactionEntry extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return TransactionEntry
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\TransactionEntry
      */
     public static function retrieve($id, $opts = null)
     {

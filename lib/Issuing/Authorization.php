@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Issuing;
@@ -18,8 +17,8 @@ namespace Stripe\Issuing;
  * @property bool $approved Whether the authorization has been approved.
  * @property string $authorization_method How the card details were provided.
  * @property \Stripe\BalanceTransaction[] $balance_transactions List of balance transactions associated with this authorization.
- * @property Card $card You can <a href="https://stripe.com/docs/issuing">create physical or virtual cards</a> that are issued to cardholders.
- * @property null|Cardholder|string $cardholder The cardholder to whom this authorization belongs.
+ * @property \Stripe\Issuing\Card $card You can <a href="https://stripe.com/docs/issuing">create physical or virtual cards</a> that are issued to cardholders.
+ * @property null|string|\Stripe\Issuing\Cardholder $cardholder The cardholder to whom this authorization belongs.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency The currency of the cardholder. This currency can be different from the currency presented at authorization and the <code>merchant_currency</code> field on this authorization. Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|\Stripe\StripeObject $fleet Fleet-specific information for authorizations using Fleet cards.
@@ -34,8 +33,8 @@ namespace Stripe\Issuing;
  * @property null|\Stripe\StripeObject $pending_request The pending authorization request. This field will only be non-null during an <code>issuing_authorization.request</code> webhook.
  * @property \Stripe\StripeObject[] $request_history History of every time a <code>pending_request</code> authorization was approved/declined, either by you directly or by Stripe (e.g. based on your spending_controls). If the merchant changes the authorization by performing an incremental authorization, you can look at this field to see the previous requests for the authorization. This field can be helpful in determining why a given authorization was approved/declined.
  * @property string $status The current status of the authorization in its lifecycle.
- * @property null|string|Token $token <a href="https://stripe.com/docs/api/issuing/tokens/object">Token</a> object used for this authorization. If a network token was not used for this authorization, this field will be null.
- * @property Transaction[] $transactions List of <a href="https://stripe.com/docs/api/issuing/transactions">transactions</a> associated with this authorization.
+ * @property null|string|\Stripe\Issuing\Token $token <a href="https://stripe.com/docs/api/issuing/tokens/object">Token</a> object used for this authorization. If a network token was not used for this authorization, this field will be null.
+ * @property \Stripe\Issuing\Transaction[] $transactions List of <a href="https://stripe.com/docs/api/issuing/transactions">transactions</a> associated with this authorization.
  * @property null|\Stripe\StripeObject $treasury <a href="https://stripe.com/docs/api/treasury">Treasury</a> details related to this authorization if it was created on a <a href="https://stripe.com/docs/api/treasury/financial_accounts">FinancialAccount</a>.
  * @property \Stripe\StripeObject $verification_data
  * @property null|bool $verified_by_fraud_challenge Whether the authorization bypassed fraud risk checks because the cardholder has previously completed a fraud challenge on a similar high-risk authorization from the same merchant.
@@ -65,9 +64,9 @@ class Authorization extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<Authorization> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Issuing\Authorization> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -82,9 +81,9 @@ class Authorization extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return Authorization
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Authorization
      */
     public static function retrieve($id, $opts = null)
     {
@@ -104,9 +103,9 @@ class Authorization extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Authorization the updated resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Authorization the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -124,9 +123,9 @@ class Authorization extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Authorization the approved authorization
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Authorization the approved authorization
      */
     public function approve($params = null, $opts = null)
     {
@@ -141,9 +140,9 @@ class Authorization extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Authorization the declined authorization
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Authorization the declined authorization
      */
     public function decline($params = null, $opts = null)
     {

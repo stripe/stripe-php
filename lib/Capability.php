@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -11,16 +10,17 @@ namespace Stripe;
  *
  * @property string $id The identifier for the capability.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property Account|string $account The account for which the capability enables functionality.
- * @property null|StripeObject $future_requirements
+ * @property string|\Stripe\Account $account The account for which the capability enables functionality.
+ * @property null|\Stripe\StripeObject $future_requirements
  * @property bool $requested Whether the capability has been requested.
  * @property null|int $requested_at Time at which the capability was requested. Measured in seconds since the Unix epoch.
- * @property null|StripeObject $requirements
+ * @property null|\Stripe\StripeObject $requirements
  * @property string $status The status of the capability.
  */
 class Capability extends ApiResource
 {
     const OBJECT_NAME = 'capability';
+
 
     const STATUS_ACTIVE = 'active';
     const STATUS_INACTIVE = 'inactive';
@@ -36,8 +36,8 @@ class Capability extends ApiResource
         $account = $this['account'];
         if (!$id) {
             throw new Exception\UnexpectedValueException(
-                'Could not determine which URL to request: '
-                . "class instance has invalid ID: {$id}",
+                'Could not determine which URL to request: ' .
+                "class instance has invalid ID: {$id}",
                 null
             );
         }
@@ -55,39 +55,39 @@ class Capability extends ApiResource
      * @param array|string $_id
      * @param null|array|string $_opts
      *
-     * @throws Exception\BadMethodCallException
+     * @throws \Stripe\Exception\BadMethodCallException
      */
     public static function retrieve($_id, $_opts = null)
     {
-        $msg = 'Capabilities cannot be retrieved without an account ID. '
-               . 'Retrieve a capability using `Account::retrieveCapability('
-               . "'account_id', 'capability_id')`.";
+        $msg = 'Capabilities cannot be retrieved without an account ID. ' .
+               'Retrieve a capability using `Account::retrieveCapability(' .
+               "'account_id', 'capability_id')`.";
 
         throw new Exception\BadMethodCallException($msg);
     }
 
-    /**
-     * @param string $_id
-     * @param null|array $_params
-     * @param null|array|string $_options
-     *
-     * @throws Exception\BadMethodCallException
-     */
-    public static function update($_id, $_params = null, $_options = null)
-    {
-        $msg = 'Capabilities cannot be updated without an account ID. '
-                   . 'Update a capability using `Account::updateCapability('
-                   . "'account_id', 'capability_id', \$updateParams)`.";
+        /**
+         * @param string $_id
+         * @param null|array $_params
+         * @param null|array|string $_options
+         *
+         * @throws \Stripe\Exception\BadMethodCallException
+         */
+        public static function update($_id, $_params = null, $_options = null)
+        {
+            $msg = 'Capabilities cannot be updated without an account ID. ' .
+                   'Update a capability using `Account::updateCapability(' .
+                   "'account_id', 'capability_id', \$updateParams)`.";
 
-        throw new Exception\BadMethodCallException($msg);
-    }
+            throw new Exception\BadMethodCallException($msg);
+        }
 
     /**
      * @param null|array|string $opts
      *
-     * @return static the saved resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return static the saved resource
      *
      * @deprecated The `save` method is deprecated and will be removed in a
      *     future major version of the library. Use the static method `update`
@@ -96,7 +96,7 @@ class Capability extends ApiResource
     public function save($opts = null)
     {
         $params = $this->serializeParameters();
-        if (\count($params) > 0) {
+        if (count($params) > 0) {
             $url = $this->instanceUrl();
             list($response, $opts) = $this->_request('post', $url, $params, $opts, ['save']);
             $this->refreshFrom($response, $opts);

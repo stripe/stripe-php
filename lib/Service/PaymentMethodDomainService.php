@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class PaymentMethodDomainService extends AbstractService
+class PaymentMethodDomainService extends \Stripe\Service\AbstractService
 {
     /**
      * Lists the details of existing payment method domains.
@@ -17,9 +16,9 @@ class PaymentMethodDomainService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\PaymentMethodDomain>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\PaymentMethodDomain>
      */
     public function all($params = null, $opts = null)
     {
@@ -32,9 +31,9 @@ class PaymentMethodDomainService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentMethodDomain
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentMethodDomain
      */
     public function create($params = null, $opts = null)
     {
@@ -48,9 +47,9 @@ class PaymentMethodDomainService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentMethodDomain
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentMethodDomain
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -64,9 +63,9 @@ class PaymentMethodDomainService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentMethodDomain
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentMethodDomain
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -91,9 +90,9 @@ class PaymentMethodDomainService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentMethodDomain
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentMethodDomain
      */
     public function validate($id, $params = null, $opts = null)
     {

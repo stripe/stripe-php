@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Forwarding;
@@ -38,15 +37,16 @@ class Request extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'forwarding.request';
 
+
     /**
      * Creates a ForwardingRequest object.
      *
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return Request the created resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Forwarding\Request the created resource
      */
     public static function create($params = null, $options = null)
     {
@@ -66,9 +66,9 @@ class Request extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<Request> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Forwarding\Request> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -83,9 +83,9 @@ class Request extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return Request
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Forwarding\Request
      */
     public static function retrieve($id, $opts = null)
     {

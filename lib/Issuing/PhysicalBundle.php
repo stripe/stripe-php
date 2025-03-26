@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Issuing;
@@ -19,6 +18,7 @@ class PhysicalBundle extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'issuing.physical_bundle';
 
+
     const STATUS_ACTIVE = 'active';
     const STATUS_INACTIVE = 'inactive';
     const STATUS_REVIEW = 'review';
@@ -33,9 +33,9 @@ class PhysicalBundle extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<PhysicalBundle> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Issuing\PhysicalBundle> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -50,9 +50,9 @@ class PhysicalBundle extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return PhysicalBundle
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\PhysicalBundle
      */
     public static function retrieve($id, $opts = null)
     {

@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -12,15 +11,15 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|StripeObject $ach_credit_transfer
+ * @property null|\Stripe\StripeObject $ach_credit_transfer
  * @property int $amount A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a zero-decimal currency) representing the amount your customer has pushed to the receiver.
- * @property null|StripeObject $chf_credit_transfer
+ * @property null|\Stripe\StripeObject $chf_credit_transfer
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property null|StripeObject $gbp_credit_transfer
+ * @property null|\Stripe\StripeObject $gbp_credit_transfer
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|StripeObject $paper_check
- * @property null|StripeObject $sepa_credit_transfer
+ * @property null|\Stripe\StripeObject $paper_check
+ * @property null|\Stripe\StripeObject $sepa_credit_transfer
  * @property string $source The ID of the source this transaction is attached to.
  * @property string $status The status of the transaction, one of <code>succeeded</code>, <code>pending</code>, or <code>failed</code>.
  * @property string $type The type of source this transaction is attached to.
@@ -28,6 +27,7 @@ namespace Stripe;
 class SourceTransaction extends ApiResource
 {
     const OBJECT_NAME = 'source_transaction';
+
 
     const TYPE_ACH_CREDIT_TRANSFER = 'ach_credit_transfer';
     const TYPE_ACH_DEBIT = 'ach_debit';

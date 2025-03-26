@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Entitlements;
@@ -23,14 +22,14 @@ class Feature extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Update;
 
     /**
-     * Creates a feature.
+     * Creates a feature
      *
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return Feature the created resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Entitlements\Feature the created resource
      */
     public static function create($params = null, $options = null)
     {
@@ -45,14 +44,14 @@ class Feature extends \Stripe\ApiResource
     }
 
     /**
-     * Retrieve a list of features.
+     * Retrieve a list of features
      *
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<Feature> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Entitlements\Feature> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -62,14 +61,14 @@ class Feature extends \Stripe\ApiResource
     }
 
     /**
-     * Retrieves a feature.
+     * Retrieves a feature
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return Feature
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Entitlements\Feature
      */
     public static function retrieve($id, $opts = null)
     {
@@ -87,9 +86,9 @@ class Feature extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Feature the updated resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Entitlements\Feature the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {

@@ -1,12 +1,11 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Billing;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class CreditGrantService extends \Stripe\Service\AbstractService
@@ -17,9 +16,9 @@ class CreditGrantService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Billing\CreditGrant>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Billing\CreditGrant>
      */
     public function all($params = null, $opts = null)
     {
@@ -32,9 +31,9 @@ class CreditGrantService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Billing\CreditGrant
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\CreditGrant
      */
     public function create($params = null, $opts = null)
     {
@@ -48,9 +47,9 @@ class CreditGrantService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Billing\CreditGrant
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\CreditGrant
      */
     public function expire($id, $params = null, $opts = null)
     {
@@ -64,9 +63,9 @@ class CreditGrantService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Billing\CreditGrant
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\CreditGrant
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -80,9 +79,9 @@ class CreditGrantService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Billing\CreditGrant
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\CreditGrant
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -96,9 +95,9 @@ class CreditGrantService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Billing\CreditGrant
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\CreditGrant
      */
     public function voidGrant($id, $params = null, $opts = null)
     {

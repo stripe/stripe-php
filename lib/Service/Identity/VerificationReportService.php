@@ -1,12 +1,11 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Identity;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class VerificationReportService extends \Stripe\Service\AbstractService
@@ -17,9 +16,9 @@ class VerificationReportService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Identity\VerificationReport>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Identity\VerificationReport>
      */
     public function all($params = null, $opts = null)
     {
@@ -27,15 +26,15 @@ class VerificationReportService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves an existing VerificationReport.
+     * Retrieves an existing VerificationReport
      *
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Identity\VerificationReport
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Identity\VerificationReport
      */
     public function retrieve($id, $params = null, $opts = null)
     {

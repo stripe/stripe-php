@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Billing;
@@ -16,14 +15,15 @@ class CreditBalanceSummary extends \Stripe\SingletonApiResource
 {
     const OBJECT_NAME = 'billing.credit_balance_summary';
 
+
     /**
      * Retrieves the credit balance summary for a customer.
      *
      * @param null|array|string $opts
      *
-     * @return CreditBalanceSummary
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\CreditBalanceSummary
      */
     public static function retrieve($opts = null)
     {

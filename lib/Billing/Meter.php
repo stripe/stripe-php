@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Billing;
@@ -42,9 +41,9 @@ class Meter extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return Meter the created resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\Meter the created resource
      */
     public static function create($params = null, $options = null)
     {
@@ -64,9 +63,9 @@ class Meter extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<Meter> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Billing\Meter> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -81,9 +80,9 @@ class Meter extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return Meter
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\Meter
      */
     public static function retrieve($id, $opts = null)
     {
@@ -101,9 +100,9 @@ class Meter extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Meter the updated resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\Meter the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -121,9 +120,9 @@ class Meter extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Meter the deactivated meter
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\Meter the deactivated meter
      */
     public function deactivate($params = null, $opts = null)
     {
@@ -138,9 +137,9 @@ class Meter extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Meter the reactivated meter
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\Meter the reactivated meter
      */
     public function reactivate($params = null, $opts = null)
     {
@@ -151,6 +150,7 @@ class Meter extends \Stripe\ApiResource
         return $this;
     }
 
+
     const PATH_EVENT_SUMMARIES = '/event_summaries';
 
     /**
@@ -158,9 +158,9 @@ class Meter extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<MeterEventSummary> the list of meter event summaries
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Billing\MeterEventSummary> the list of meter event summaries
      */
     public static function allEventSummaries($id, $params = null, $opts = null)
     {

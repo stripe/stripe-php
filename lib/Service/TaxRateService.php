@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class TaxRateService extends AbstractService
+class TaxRateService extends \Stripe\Service\AbstractService
 {
     /**
      * Returns a list of your tax rates. Tax rates are returned sorted by creation
@@ -18,9 +17,9 @@ class TaxRateService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\TaxRate>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\TaxRate>
      */
     public function all($params = null, $opts = null)
     {
@@ -33,9 +32,9 @@ class TaxRateService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\TaxRate
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\TaxRate
      */
     public function create($params = null, $opts = null)
     {
@@ -43,15 +42,15 @@ class TaxRateService extends AbstractService
     }
 
     /**
-     * Retrieves a tax rate with the given ID.
+     * Retrieves a tax rate with the given ID
      *
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\TaxRate
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\TaxRate
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -65,9 +64,9 @@ class TaxRateService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\TaxRate
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\TaxRate
      */
     public function update($id, $params = null, $opts = null)
     {

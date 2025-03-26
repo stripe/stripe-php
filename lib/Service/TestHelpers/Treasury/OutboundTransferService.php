@@ -1,12 +1,11 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\TestHelpers\Treasury;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class OutboundTransferService extends \Stripe\Service\AbstractService
@@ -20,9 +19,9 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Treasury\OutboundTransfer
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\OutboundTransfer
      */
     public function fail($id, $params = null, $opts = null)
     {
@@ -38,9 +37,9 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Treasury\OutboundTransfer
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\OutboundTransfer
      */
     public function post($id, $params = null, $opts = null)
     {
@@ -56,9 +55,9 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Treasury\OutboundTransfer
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\OutboundTransfer
      */
     public function returnOutboundTransfer($id, $params = null, $opts = null)
     {
@@ -74,9 +73,9 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Treasury\OutboundTransfer
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\OutboundTransfer
      */
     public function update($id, $params = null, $opts = null)
     {

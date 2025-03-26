@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -18,17 +17,17 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property bool $active Whether the product is currently available for purchase.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|Price|string $default_price The ID of the <a href="https://stripe.com/docs/api/prices">Price</a> object that is the default price for this product.
+ * @property null|string|\Stripe\Price $default_price The ID of the <a href="https://stripe.com/docs/api/prices">Price</a> object that is the default price for this product.
  * @property null|string $description The product's description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.
  * @property string[] $images A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property StripeObject[] $marketing_features A list of up to 15 marketing features for this product. These are displayed in <a href="https://stripe.com/docs/payments/checkout/pricing-table">pricing tables</a>.
- * @property StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Stripe\StripeObject[] $marketing_features A list of up to 15 marketing features for this product. These are displayed in <a href="https://stripe.com/docs/payments/checkout/pricing-table">pricing tables</a>.
+ * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $name The product's name, meant to be displayable to the customer.
- * @property null|StripeObject $package_dimensions The dimensions of this product for shipping purposes.
+ * @property null|\Stripe\StripeObject $package_dimensions The dimensions of this product for shipping purposes.
  * @property null|bool $shippable Whether this product is shipped (i.e., physical goods).
  * @property null|string $statement_descriptor Extra information about a product which will appear on your customer's credit card statement. In the case that multiple products are billed at once, the first statement descriptor will be used. Only used for subscription payments.
- * @property null|string|TaxCode $tax_code A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
+ * @property null|string|\Stripe\TaxCode $tax_code A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
  * @property string $type The type of the product. The product is either of type <code>good</code>, which is eligible for use with Orders and SKUs, or <code>service</code>, which is eligible for use with Subscriptions and Plans.
  * @property null|string $unit_label A label that represents units of this product. When set, this will be included in customers' receipts, invoices, Checkout, and the customer portal.
  * @property int $updated Time at which the object was last updated. Measured in seconds since the Unix epoch.
@@ -50,9 +49,9 @@ class Product extends ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return Product the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Product the created resource
      */
     public static function create($params = null, $options = null)
     {
@@ -60,7 +59,7 @@ class Product extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -74,9 +73,9 @@ class Product extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Product the deleted resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Product the deleted resource
      */
     public function delete($params = null, $opts = null)
     {
@@ -96,15 +95,15 @@ class Product extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Collection<Product> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<\Stripe\Product> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, Collection::class, $params, $opts);
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
@@ -115,13 +114,13 @@ class Product extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return Product
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Product
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = Util\RequestOptions::parse($opts);
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -136,9 +135,9 @@ class Product extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Product the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Product the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -146,7 +145,7 @@ class Product extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -156,16 +155,16 @@ class Product extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return SearchResult<Product> the product search results
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\SearchResult<\Stripe\Product> the product search results
      */
     public static function search($params = null, $opts = null)
     {
         $url = '/v1/products/search';
-
-        return static::_requestPage($url, SearchResult::class, $params, $opts);
+        return static::_requestPage($url, \Stripe\SearchResult::class, $params, $opts);
     }
+
 
     const PATH_FEATURES = '/features';
 
@@ -174,9 +173,9 @@ class Product extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Collection<ProductFeature> the list of product features
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<\Stripe\ProductFeature> the list of product features
      */
     public static function allFeatures($id, $params = null, $opts = null)
     {
@@ -188,9 +187,9 @@ class Product extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return ProductFeature
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\ProductFeature
      */
     public static function createFeature($id, $params = null, $opts = null)
     {
@@ -203,9 +202,9 @@ class Product extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return ProductFeature
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\ProductFeature
      */
     public static function deleteFeature($id, $featureId, $params = null, $opts = null)
     {
@@ -218,9 +217,9 @@ class Product extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return ProductFeature
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\ProductFeature
      */
     public static function retrieveFeature($id, $featureId, $params = null, $opts = null)
     {

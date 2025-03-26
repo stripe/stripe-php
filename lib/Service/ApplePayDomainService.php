@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class ApplePayDomainService extends AbstractService
+class ApplePayDomainService extends \Stripe\Service\AbstractService
 {
     /**
      * List apple pay domains.
@@ -17,9 +16,9 @@ class ApplePayDomainService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\ApplePayDomain>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\ApplePayDomain>
      */
     public function all($params = null, $opts = null)
     {
@@ -32,9 +31,9 @@ class ApplePayDomainService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\ApplePayDomain
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ApplePayDomain
      */
     public function create($params = null, $opts = null)
     {
@@ -48,9 +47,9 @@ class ApplePayDomainService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\ApplePayDomain
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ApplePayDomain
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -64,9 +63,9 @@ class ApplePayDomainService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\ApplePayDomain
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ApplePayDomain
      */
     public function retrieve($id, $params = null, $opts = null)
     {

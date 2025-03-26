@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -21,7 +20,7 @@ namespace Stripe;
  *
  * -----
  *
- *
+ *  
  *
  * <em>This Exchange Rates API is a Beta Service and is subject to Stripe's terms of service. You may use the API solely for the purpose of transacting on Stripe. For example, the API may be queried in order to:</em>
  *
@@ -34,11 +33,12 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object. Represented as the three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> in lowercase.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property StripeObject $rates Hash where the keys are supported currencies and the values are the exchange rate at which the base id currency converts to the key currency.
+ * @property \Stripe\StripeObject $rates Hash where the keys are supported currencies and the values are the exchange rate at which the base id currency converts to the key currency.
  */
 class ExchangeRate extends ApiResource
 {
     const OBJECT_NAME = 'exchange_rate';
+
 
     /**
      * Returns a list of objects that contain the rates at which foreign currencies are
@@ -47,15 +47,15 @@ class ExchangeRate extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Collection<ExchangeRate> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<\Stripe\ExchangeRate> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, Collection::class, $params, $opts);
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
@@ -65,13 +65,13 @@ class ExchangeRate extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return ExchangeRate
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\ExchangeRate
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = Util\RequestOptions::parse($opts);
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 

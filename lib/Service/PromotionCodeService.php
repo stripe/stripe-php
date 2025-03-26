@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class PromotionCodeService extends AbstractService
+class PromotionCodeService extends \Stripe\Service\AbstractService
 {
     /**
      * Returns a list of your promotion codes.
@@ -17,9 +16,9 @@ class PromotionCodeService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\PromotionCode>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\PromotionCode>
      */
     public function all($params = null, $opts = null)
     {
@@ -33,9 +32,9 @@ class PromotionCodeService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PromotionCode
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PromotionCode
      */
     public function create($params = null, $opts = null)
     {
@@ -52,9 +51,9 @@ class PromotionCodeService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PromotionCode
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PromotionCode
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -69,9 +68,9 @@ class PromotionCodeService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PromotionCode
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PromotionCode
      */
     public function update($id, $params = null, $opts = null)
     {

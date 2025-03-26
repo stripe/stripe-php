@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -12,15 +11,15 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property StripeObject $amazon_pay Indicates the status of a specific payment method on a payment method domain.
- * @property StripeObject $apple_pay Indicates the status of a specific payment method on a payment method domain.
+ * @property \Stripe\StripeObject $amazon_pay Indicates the status of a specific payment method on a payment method domain.
+ * @property \Stripe\StripeObject $apple_pay Indicates the status of a specific payment method on a payment method domain.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $domain_name The domain name that this payment method domain object represents.
  * @property bool $enabled Whether this payment method domain is enabled. If the domain is not enabled, payment methods that require a payment method domain will not appear in Elements.
- * @property StripeObject $google_pay Indicates the status of a specific payment method on a payment method domain.
- * @property StripeObject $link Indicates the status of a specific payment method on a payment method domain.
+ * @property \Stripe\StripeObject $google_pay Indicates the status of a specific payment method on a payment method domain.
+ * @property \Stripe\StripeObject $link Indicates the status of a specific payment method on a payment method domain.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property StripeObject $paypal Indicates the status of a specific payment method on a payment method domain.
+ * @property \Stripe\StripeObject $paypal Indicates the status of a specific payment method on a payment method domain.
  */
 class PaymentMethodDomain extends ApiResource
 {
@@ -34,9 +33,9 @@ class PaymentMethodDomain extends ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return PaymentMethodDomain the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\PaymentMethodDomain the created resource
      */
     public static function create($params = null, $options = null)
     {
@@ -44,7 +43,7 @@ class PaymentMethodDomain extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -56,15 +55,15 @@ class PaymentMethodDomain extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Collection<PaymentMethodDomain> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<\Stripe\PaymentMethodDomain> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, Collection::class, $params, $opts);
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
@@ -73,13 +72,13 @@ class PaymentMethodDomain extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return PaymentMethodDomain
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\PaymentMethodDomain
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = Util\RequestOptions::parse($opts);
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -93,9 +92,9 @@ class PaymentMethodDomain extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return PaymentMethodDomain the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\PaymentMethodDomain the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -103,7 +102,7 @@ class PaymentMethodDomain extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -113,9 +112,9 @@ class PaymentMethodDomain extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return PaymentMethodDomain the validated payment method domain
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\PaymentMethodDomain the validated payment method domain
      */
     public function validate($params = null, $opts = null)
     {

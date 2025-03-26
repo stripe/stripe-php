@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Treasury;
@@ -21,11 +20,12 @@ namespace Stripe\Treasury;
  * @property string $received_debit The ReceivedDebit being reversed.
  * @property string $status Status of the DebitReversal
  * @property \Stripe\StripeObject $status_transitions
- * @property null|string|Transaction $transaction The Transaction associated with this object.
+ * @property null|string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
  */
 class DebitReversal extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'treasury.debit_reversal';
+
 
     const NETWORK_ACH = 'ach';
     const NETWORK_CARD = 'card';
@@ -40,9 +40,9 @@ class DebitReversal extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return DebitReversal the created resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\DebitReversal the created resource
      */
     public static function create($params = null, $options = null)
     {
@@ -62,9 +62,9 @@ class DebitReversal extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<DebitReversal> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Treasury\DebitReversal> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -79,9 +79,9 @@ class DebitReversal extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return DebitReversal
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\DebitReversal
      */
     public static function retrieve($id, $opts = null)
     {

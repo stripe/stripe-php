@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class ExchangeRateService extends AbstractService
+class ExchangeRateService extends \Stripe\Service\AbstractService
 {
     /**
      * Returns a list of objects that contain the rates at which foreign currencies are
@@ -18,9 +17,9 @@ class ExchangeRateService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\ExchangeRate>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\ExchangeRate>
      */
     public function all($params = null, $opts = null)
     {
@@ -35,9 +34,9 @@ class ExchangeRateService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\ExchangeRate
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ExchangeRate
      */
     public function retrieve($id, $params = null, $opts = null)
     {

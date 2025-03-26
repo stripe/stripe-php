@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class ProductService extends AbstractService
+class ProductService extends \Stripe\Service\AbstractService
 {
     /**
      * Returns a list of your products. The products are returned sorted by creation
@@ -18,9 +17,9 @@ class ProductService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Product>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Product>
      */
     public function all($params = null, $opts = null)
     {
@@ -28,15 +27,15 @@ class ProductService extends AbstractService
     }
 
     /**
-     * Retrieve a list of features for a product.
+     * Retrieve a list of features for a product
      *
      * @param string $parentId
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\ProductFeature>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\ProductFeature>
      */
     public function allFeatures($parentId, $params = null, $opts = null)
     {
@@ -49,9 +48,9 @@ class ProductService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Product
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Product
      */
     public function create($params = null, $opts = null)
     {
@@ -59,15 +58,15 @@ class ProductService extends AbstractService
     }
 
     /**
-     * Creates a product_feature, which represents a feature attachment to a product.
+     * Creates a product_feature, which represents a feature attachment to a product
      *
      * @param string $parentId
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\ProductFeature
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ProductFeature
      */
     public function createFeature($parentId, $params = null, $opts = null)
     {
@@ -83,9 +82,9 @@ class ProductService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Product
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Product
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -93,16 +92,16 @@ class ProductService extends AbstractService
     }
 
     /**
-     * Deletes the feature attachment to a product.
+     * Deletes the feature attachment to a product
      *
      * @param string $parentId
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\ProductFeature
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ProductFeature
      */
     public function deleteFeature($parentId, $id, $params = null, $opts = null)
     {
@@ -118,9 +117,9 @@ class ProductService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Product
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Product
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -128,16 +127,16 @@ class ProductService extends AbstractService
     }
 
     /**
-     * Retrieves a product_feature, which represents a feature attachment to a product.
+     * Retrieves a product_feature, which represents a feature attachment to a product
      *
      * @param string $parentId
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\ProductFeature
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ProductFeature
      */
     public function retrieveFeature($parentId, $id, $params = null, $opts = null)
     {
@@ -155,9 +154,9 @@ class ProductService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\SearchResult<\Stripe\Product>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<\Stripe\Product>
      */
     public function search($params = null, $opts = null)
     {
@@ -172,9 +171,9 @@ class ProductService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Product
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Product
      */
     public function update($id, $params = null, $opts = null)
     {

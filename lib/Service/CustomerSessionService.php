@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class CustomerSessionService extends AbstractService
+class CustomerSessionService extends \Stripe\Service\AbstractService
 {
     /**
      * Creates a Customer Session object that includes a single-use client secret that
@@ -19,9 +18,9 @@ class CustomerSessionService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\CustomerSession
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\CustomerSession
      */
     public function create($params = null, $opts = null)
     {

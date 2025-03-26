@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Billing;
@@ -21,4 +20,5 @@ namespace Stripe\Billing;
 class MeterEventSummary extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'billing.meter_event_summary';
+
 }

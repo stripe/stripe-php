@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -44,15 +43,16 @@ namespace Stripe;
  * @property null|string $account The connected account that originates the event.
  * @property null|string $api_version The Stripe API version used to render <code>data</code>. This property is populated only for events on or after October 31, 2014.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property StripeObject $data
+ * @property \Stripe\StripeObject $data
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property int $pending_webhooks Number of webhooks that haven't been successfully delivered (for example, to return a 20x response) to the URLs you specify.
- * @property null|StripeObject $request Information on the API request that triggers the event.
+ * @property null|\Stripe\StripeObject $request Information on the API request that triggers the event.
  * @property string $type Description of the event (for example, <code>invoice.created</code> or <code>charge.refunded</code>).
  */
 class Event extends ApiResource
 {
     const OBJECT_NAME = 'event';
+
 
     const ACCOUNT_APPLICATION_AUTHORIZED = 'account.application.authorized';
     const ACCOUNT_APPLICATION_DEAUTHORIZED = 'account.application.deauthorized';
@@ -544,15 +544,15 @@ class Event extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Collection<Event> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<\Stripe\Event> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, Collection::class, $params, $opts);
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
@@ -562,13 +562,13 @@ class Event extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return Event
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Event
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = Util\RequestOptions::parse($opts);
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 

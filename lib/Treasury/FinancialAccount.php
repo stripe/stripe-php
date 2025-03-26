@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Treasury;
@@ -14,7 +13,7 @@ namespace Stripe\Treasury;
  * @property \Stripe\StripeObject $balance Balance information for the FinancialAccount
  * @property string $country Two-letter country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>).
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|FinancialAccountFeatures $features Encodes whether a FinancialAccount has access to a particular Feature, with a <code>status</code> enum and associated <code>status_details</code>. Stripe or the platform can control Features via the requested field.
+ * @property null|\Stripe\Treasury\FinancialAccountFeatures $features Encodes whether a FinancialAccount has access to a particular Feature, with a <code>status</code> enum and associated <code>status_details</code>. Stripe or the platform can control Features via the requested field.
  * @property \Stripe\StripeObject[] $financial_addresses The set of credentials that resolve to a FinancialAccount.
  * @property null|bool $is_default
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
@@ -43,9 +42,9 @@ class FinancialAccount extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return FinancialAccount the created resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\FinancialAccount the created resource
      */
     public static function create($params = null, $options = null)
     {
@@ -65,9 +64,9 @@ class FinancialAccount extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<FinancialAccount> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Treasury\FinancialAccount> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -82,9 +81,9 @@ class FinancialAccount extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return FinancialAccount
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\FinancialAccount
      */
     public static function retrieve($id, $opts = null)
     {
@@ -102,9 +101,9 @@ class FinancialAccount extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return FinancialAccount the updated resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\FinancialAccount the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -122,9 +121,9 @@ class FinancialAccount extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return FinancialAccount the closed financial account
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\FinancialAccount the closed financial account
      */
     public function close($params = null, $opts = null)
     {
@@ -139,9 +138,9 @@ class FinancialAccount extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return FinancialAccountFeatures the retrieved financial account features
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\FinancialAccountFeatures the retrieved financial account features
      */
     public function retrieveFeatures($params = null, $opts = null)
     {
@@ -157,9 +156,9 @@ class FinancialAccount extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return FinancialAccountFeatures the updated financial account features
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\FinancialAccountFeatures the updated financial account features
      */
     public function updateFeatures($params = null, $opts = null)
     {

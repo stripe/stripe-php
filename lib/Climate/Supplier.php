@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Climate;
@@ -19,6 +18,7 @@ class Supplier extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'climate.supplier';
 
+
     const REMOVAL_PATHWAY_BIOMASS_CARBON_REMOVAL_AND_STORAGE = 'biomass_carbon_removal_and_storage';
     const REMOVAL_PATHWAY_DIRECT_AIR_CAPTURE = 'direct_air_capture';
     const REMOVAL_PATHWAY_ENHANCED_WEATHERING = 'enhanced_weathering';
@@ -29,9 +29,9 @@ class Supplier extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<Supplier> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Climate\Supplier> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -46,9 +46,9 @@ class Supplier extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return Supplier
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Climate\Supplier
      */
     public static function retrieve($id, $opts = null)
     {

@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Treasury;
@@ -32,11 +31,12 @@ namespace Stripe\Treasury;
  * @property string $status Current status of the OutboundPayment: <code>processing</code>, <code>failed</code>, <code>posted</code>, <code>returned</code>, <code>canceled</code>. An OutboundPayment is <code>processing</code> if it has been created and is pending. The status changes to <code>posted</code> once the OutboundPayment has been &quot;confirmed&quot; and funds have left the account, or to <code>failed</code> or <code>canceled</code>. If an OutboundPayment fails to arrive at its destination, its status will change to <code>returned</code>.
  * @property \Stripe\StripeObject $status_transitions
  * @property null|\Stripe\StripeObject $tracking_details Details about network-specific tracking information if available.
- * @property string|Transaction $transaction The Transaction associated with this object.
+ * @property string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
  */
 class OutboundPayment extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'treasury.outbound_payment';
+
 
     const STATUS_CANCELED = 'canceled';
     const STATUS_FAILED = 'failed';
@@ -50,9 +50,9 @@ class OutboundPayment extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return OutboundPayment the created resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\OutboundPayment the created resource
      */
     public static function create($params = null, $options = null)
     {
@@ -72,9 +72,9 @@ class OutboundPayment extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<OutboundPayment> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Treasury\OutboundPayment> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -91,9 +91,9 @@ class OutboundPayment extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return OutboundPayment
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\OutboundPayment
      */
     public static function retrieve($id, $opts = null)
     {
@@ -108,9 +108,9 @@ class OutboundPayment extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return OutboundPayment the canceled outbound payment
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\OutboundPayment the canceled outbound payment
      */
     public function cancel($params = null, $opts = null)
     {

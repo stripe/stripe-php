@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Sigma;
@@ -26,15 +25,16 @@ class ScheduledQueryRun extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'scheduled_query_run';
 
+
     /**
      * Returns a list of scheduled query runs.
      *
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<ScheduledQueryRun> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Sigma\ScheduledQueryRun> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -49,9 +49,9 @@ class ScheduledQueryRun extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return ScheduledQueryRun
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Sigma\ScheduledQueryRun
      */
     public static function retrieve($id, $opts = null)
     {

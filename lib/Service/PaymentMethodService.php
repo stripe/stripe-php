@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class PaymentMethodService extends AbstractService
+class PaymentMethodService extends \Stripe\Service\AbstractService
 {
     /**
      * Returns a list of PaymentMethods for Treasury flows. If you want to list the
@@ -20,9 +19,9 @@ class PaymentMethodService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\PaymentMethod>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\PaymentMethod>
      */
     public function all($params = null, $opts = null)
     {
@@ -53,9 +52,9 @@ class PaymentMethodService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentMethod
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentMethod
      */
     public function attach($id, $params = null, $opts = null)
     {
@@ -76,9 +75,9 @@ class PaymentMethodService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentMethod
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentMethod
      */
     public function create($params = null, $opts = null)
     {
@@ -93,9 +92,9 @@ class PaymentMethodService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentMethod
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentMethod
      */
     public function detach($id, $params = null, $opts = null)
     {
@@ -106,15 +105,15 @@ class PaymentMethodService extends AbstractService
      * Retrieves a PaymentMethod object attached to the StripeAccount. To retrieve a
      * payment method attached to a Customer, you should use <a
      * href="/docs/api/payment_methods/customer">Retrieve a Customer’s
-     * PaymentMethods</a>.
+     * PaymentMethods</a>
      *
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentMethod
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentMethod
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -129,9 +128,9 @@ class PaymentMethodService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentMethod
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentMethod
      */
     public function update($id, $params = null, $opts = null)
     {

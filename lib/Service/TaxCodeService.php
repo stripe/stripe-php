@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class TaxCodeService extends AbstractService
+class TaxCodeService extends \Stripe\Service\AbstractService
 {
     /**
      * A list of <a href="https://stripe.com/docs/tax/tax-categories">all tax codes
@@ -18,9 +17,9 @@ class TaxCodeService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\TaxCode>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\TaxCode>
      */
     public function all($params = null, $opts = null)
     {
@@ -35,9 +34,9 @@ class TaxCodeService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\TaxCode
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\TaxCode
      */
     public function retrieve($id, $params = null, $opts = null)
     {

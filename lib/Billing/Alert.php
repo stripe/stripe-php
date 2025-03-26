@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Billing;
@@ -19,19 +18,20 @@ class Alert extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'billing.alert';
 
+
     const STATUS_ACTIVE = 'active';
     const STATUS_ARCHIVED = 'archived';
     const STATUS_INACTIVE = 'inactive';
 
     /**
-     * Creates a billing alert.
+     * Creates a billing alert
      *
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return Alert the created resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\Alert the created resource
      */
     public static function create($params = null, $options = null)
     {
@@ -46,14 +46,14 @@ class Alert extends \Stripe\ApiResource
     }
 
     /**
-     * Lists billing active and inactive alerts.
+     * Lists billing active and inactive alerts
      *
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<Alert> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Billing\Alert> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -63,14 +63,14 @@ class Alert extends \Stripe\ApiResource
     }
 
     /**
-     * Retrieves a billing alert given an ID.
+     * Retrieves a billing alert given an ID
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return Alert
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\Alert
      */
     public static function retrieve($id, $opts = null)
     {
@@ -85,9 +85,9 @@ class Alert extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Alert the activated alert
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\Alert the activated alert
      */
     public function activate($params = null, $opts = null)
     {
@@ -102,9 +102,9 @@ class Alert extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Alert the archived alert
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\Alert the archived alert
      */
     public function archive($params = null, $opts = null)
     {
@@ -119,9 +119,9 @@ class Alert extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Alert the deactivated alert
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Billing\Alert the deactivated alert
      */
     public function deactivate($params = null, $opts = null)
     {

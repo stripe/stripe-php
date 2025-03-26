@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class AccountLinkService extends AbstractService
+class AccountLinkService extends \Stripe\Service\AbstractService
 {
     /**
      * Creates an AccountLink object that includes a single-use Stripe URL that the
@@ -19,9 +18,9 @@ class AccountLinkService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\AccountLink
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\AccountLink
      */
     public function create($params = null, $opts = null)
     {

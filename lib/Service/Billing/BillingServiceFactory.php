@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Billing;
@@ -21,13 +20,13 @@ class BillingServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
-        'alerts' => AlertService::class,
-        'creditBalanceSummary' => CreditBalanceSummaryService::class,
-        'creditBalanceTransactions' => CreditBalanceTransactionService::class,
-        'creditGrants' => CreditGrantService::class,
-        'meterEventAdjustments' => MeterEventAdjustmentService::class,
-        'meterEvents' => MeterEventService::class,
-        'meters' => MeterService::class,
+    'alerts' => AlertService::class,
+    'creditBalanceSummary' => CreditBalanceSummaryService::class,
+    'creditBalanceTransactions' => CreditBalanceTransactionService::class,
+    'creditGrants' => CreditGrantService::class,
+    'meterEventAdjustments' => MeterEventAdjustmentService::class,
+    'meterEvents' => MeterEventService::class,
+    'meters' => MeterService::class,
     ];
 
     protected function getServiceClass($name)

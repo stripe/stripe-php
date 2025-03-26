@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class TopupService extends AbstractService
+class TopupService extends \Stripe\Service\AbstractService
 {
     /**
      * Returns a list of top-ups.
@@ -17,9 +16,9 @@ class TopupService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Topup>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Topup>
      */
     public function all($params = null, $opts = null)
     {
@@ -33,9 +32,9 @@ class TopupService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Topup
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Topup
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -43,14 +42,14 @@ class TopupService extends AbstractService
     }
 
     /**
-     * Top up the balance of an account.
+     * Top up the balance of an account
      *
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Topup
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Topup
      */
     public function create($params = null, $opts = null)
     {
@@ -66,9 +65,9 @@ class TopupService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Topup
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Topup
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -83,9 +82,9 @@ class TopupService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Topup
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Topup
      */
     public function update($id, $params = null, $opts = null)
     {

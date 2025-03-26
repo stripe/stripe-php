@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class PaymentIntentService extends AbstractService
+class PaymentIntentService extends \Stripe\Service\AbstractService
 {
     /**
      * Returns a list of PaymentIntents.
@@ -17,9 +16,9 @@ class PaymentIntentService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\PaymentIntent>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\PaymentIntent>
      */
     public function all($params = null, $opts = null)
     {
@@ -34,9 +33,9 @@ class PaymentIntentService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentIntent
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
      */
     public function applyCustomerBalance($id, $params = null, $opts = null)
     {
@@ -62,9 +61,9 @@ class PaymentIntentService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentIntent
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -85,9 +84,9 @@ class PaymentIntentService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentIntent
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
      */
     public function capture($id, $params = null, $opts = null)
     {
@@ -125,9 +124,9 @@ class PaymentIntentService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentIntent
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
      */
     public function confirm($id, $params = null, $opts = null)
     {
@@ -150,9 +149,9 @@ class PaymentIntentService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentIntent
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
      */
     public function create($params = null, $opts = null)
     {
@@ -192,9 +191,9 @@ class PaymentIntentService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentIntent
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
      */
     public function incrementAuthorization($id, $params = null, $opts = null)
     {
@@ -215,9 +214,9 @@ class PaymentIntentService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentIntent
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -235,9 +234,9 @@ class PaymentIntentService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\SearchResult<\Stripe\PaymentIntent>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\SearchResult<\Stripe\PaymentIntent>
      */
     public function search($params = null, $opts = null)
     {
@@ -257,9 +256,9 @@ class PaymentIntentService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentIntent
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -273,9 +272,9 @@ class PaymentIntentService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\PaymentIntent
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\PaymentIntent
      */
     public function verifyMicrodeposits($id, $params = null, $opts = null)
     {

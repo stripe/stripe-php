@@ -1,12 +1,11 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Issuing;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class AuthorizationService extends \Stripe\Service\AbstractService
@@ -19,9 +18,9 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Issuing\Authorization>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Issuing\Authorization>
      */
     public function all($params = null, $opts = null)
     {
@@ -36,15 +35,14 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * href="/docs/issuing/controls/real-time-authorizations#authorization-handling">respond
      * directly to the webhook request to approve an authorization</a>.
      *
-     * @deprecated  this method is deprecated, please refer to the description for details
-     *
+     * @deprecated  This method is deprecated, please refer to the description for details.
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Issuing\Authorization
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Authorization
      */
     public function approve($id, $params = null, $opts = null)
     {
@@ -59,15 +57,14 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * href="/docs/issuing/controls/real-time-authorizations#authorization-handling">respond
      * directly to the webhook request to decline an authorization</a>.
      *
-     * @deprecated  this method is deprecated, please refer to the description for details
-     *
+     * @deprecated  This method is deprecated, please refer to the description for details.
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Issuing\Authorization
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Authorization
      */
     public function decline($id, $params = null, $opts = null)
     {
@@ -81,9 +78,9 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Issuing\Authorization
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Authorization
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -99,9 +96,9 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Issuing\Authorization
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Issuing\Authorization
      */
     public function update($id, $params = null, $opts = null)
     {

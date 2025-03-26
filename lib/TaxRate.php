@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -17,12 +16,12 @@ namespace Stripe;
  * @property null|string $description An arbitrary string attached to the tax rate for your internal use only. It will not be visible to your customers.
  * @property string $display_name The display name of the tax rates as it will appear to your customer on their receipt email, PDF, and the hosted invoice page.
  * @property null|float $effective_percentage Actual/effective tax rate percentage out of 100. For tax calculations with automatic_tax[enabled]=true, this percentage reflects the rate actually used to calculate tax based on the product's taxability and whether the user is registered to collect taxes in the corresponding jurisdiction.
- * @property null|StripeObject $flat_amount The amount of the tax rate when the <code>rate_type</code> is <code>flat_amount</code>. Tax rates with <code>rate_type</code> <code>percentage</code> can vary based on the transaction, resulting in this field being <code>null</code>. This field exposes the amount and currency of the flat tax rate.
+ * @property null|\Stripe\StripeObject $flat_amount The amount of the tax rate when the <code>rate_type</code> is <code>flat_amount</code>. Tax rates with <code>rate_type</code> <code>percentage</code> can vary based on the transaction, resulting in this field being <code>null</code>. This field exposes the amount and currency of the flat tax rate.
  * @property bool $inclusive This specifies if the tax rate is inclusive or exclusive.
  * @property null|string $jurisdiction The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer’s invoice.
  * @property null|string $jurisdiction_level The level of the jurisdiction that imposes this tax rate. Will be <code>null</code> for manually defined tax rates.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property float $percentage Tax rate percentage out of 100. For tax calculations with automatic_tax[enabled]=true, this percentage includes the statutory tax rate of non-taxable jurisdictions.
  * @property null|string $rate_type Indicates the type of tax rate applied to the taxable amount. This value can be <code>null</code> when no tax applies to the location.
  * @property null|string $state <a href="https://en.wikipedia.org/wiki/ISO_3166-2">ISO 3166-2 subdivision code</a>, without country prefix. For example, &quot;NY&quot; for New York, United States.
@@ -65,9 +64,9 @@ class TaxRate extends ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return TaxRate the created resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\TaxRate the created resource
      */
     public static function create($params = null, $options = null)
     {
@@ -75,7 +74,7 @@ class TaxRate extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -88,30 +87,30 @@ class TaxRate extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Collection<TaxRate> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<\Stripe\TaxRate> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, Collection::class, $params, $opts);
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
-     * Retrieves a tax rate with the given ID.
+     * Retrieves a tax rate with the given ID
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return TaxRate
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\TaxRate
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = Util\RequestOptions::parse($opts);
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
@@ -125,9 +124,9 @@ class TaxRate extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return TaxRate the updated resource
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\TaxRate the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -135,7 +134,7 @@ class TaxRate extends ApiResource
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;

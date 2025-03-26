@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\FinancialConnections;
@@ -18,7 +17,7 @@ namespace Stripe\FinancialConnections;
  * @property string $institution_name The name of the institution that holds this account.
  * @property null|string $last4 The last 4 digits of the account number. If present, this will be 4 numeric characters.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|AccountOwnership|string $ownership The most recent information about the account's owners.
+ * @property null|string|\Stripe\FinancialConnections\AccountOwnership $ownership The most recent information about the account's owners.
  * @property null|\Stripe\StripeObject $ownership_refresh The state of the most recent attempt to refresh the account owners.
  * @property null|string[] $permissions The list of permissions granted by this account.
  * @property string $status The status of the link to the account.
@@ -30,6 +29,7 @@ namespace Stripe\FinancialConnections;
 class Account extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'financial_connections.account';
+
 
     const CATEGORY_CASH = 'cash';
     const CATEGORY_CREDIT = 'credit';
@@ -53,9 +53,9 @@ class Account extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<Account> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\FinancialConnections\Account> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -70,9 +70,9 @@ class Account extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return Account
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\FinancialConnections\Account
      */
     public static function retrieve($id, $opts = null)
     {
@@ -87,9 +87,9 @@ class Account extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Account the disconnected account
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\FinancialConnections\Account the disconnected account
      */
     public function disconnect($params = null, $opts = null)
     {
@@ -105,9 +105,9 @@ class Account extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<AccountOwner> list of account owners
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\FinancialConnections\AccountOwner> list of account owners
      */
     public static function allOwners($id, $params = null, $opts = null)
     {
@@ -123,9 +123,9 @@ class Account extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Account the refreshed account
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\FinancialConnections\Account the refreshed account
      */
     public function refreshAccount($params = null, $opts = null)
     {
@@ -140,9 +140,9 @@ class Account extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Account the subscribed account
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\FinancialConnections\Account the subscribed account
      */
     public function subscribe($params = null, $opts = null)
     {
@@ -157,9 +157,9 @@ class Account extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Account the unsubscribed account
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\FinancialConnections\Account the unsubscribed account
      */
     public function unsubscribe($params = null, $opts = null)
     {

@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Tax;
@@ -20,6 +19,7 @@ class Settings extends \Stripe\SingletonApiResource
 {
     const OBJECT_NAME = 'tax.settings';
 
+
     const STATUS_ACTIVE = 'active';
     const STATUS_PENDING = 'pending';
 
@@ -28,9 +28,9 @@ class Settings extends \Stripe\SingletonApiResource
      *
      * @param null|array|string $opts
      *
-     * @return Settings
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Tax\Settings
      */
     public static function retrieve($opts = null)
     {
@@ -45,9 +45,9 @@ class Settings extends \Stripe\SingletonApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return static the updated resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return static the updated resource
      */
     public static function update($params = null, $opts = null)
     {
@@ -64,9 +64,9 @@ class Settings extends \Stripe\SingletonApiResource
     /**
      * @param null|array|string $opts
      *
-     * @return static the saved resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return static the saved resource
      *
      * @deprecated The `save` method is deprecated and will be removed in a
      *     future major version of the library. Use the static method `update`
@@ -75,7 +75,7 @@ class Settings extends \Stripe\SingletonApiResource
     public function save($opts = null)
     {
         $params = $this->serializeParameters();
-        if (\count($params) > 0) {
+        if (count($params) > 0) {
             $url = $this->instanceUrl();
             list($response, $opts) = $this->_request('post', $url, $params, $opts, ['save']);
             $this->refreshFrom($response, $opts);

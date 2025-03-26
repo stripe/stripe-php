@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Climate;
@@ -27,7 +26,7 @@ namespace Stripe\Climate;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $metric_tons Quantity of carbon removal that is included in this order.
- * @property Product|string $product Unique ID for the Climate <code>Product</code> this order is purchasing.
+ * @property string|\Stripe\Climate\Product $product Unique ID for the Climate <code>Product</code> this order is purchasing.
  * @property null|int $product_substituted_at Time at which the order's product was substituted for a different product. Measured in seconds since the Unix epoch.
  * @property string $status The current status of this order.
  */
@@ -55,9 +54,9 @@ class Order extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return Order the created resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Climate\Order the created resource
      */
     public static function create($params = null, $options = null)
     {
@@ -78,9 +77,9 @@ class Order extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<Order> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Climate\Order> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -95,9 +94,9 @@ class Order extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return Order
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Climate\Order
      */
     public static function retrieve($id, $opts = null)
     {
@@ -115,9 +114,9 @@ class Order extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Order the updated resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Climate\Order the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {
@@ -135,9 +134,9 @@ class Order extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Order the canceled order
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Climate\Order the canceled order
      */
     public function cancel($params = null, $opts = null)
     {

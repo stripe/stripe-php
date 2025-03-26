@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Treasury;
@@ -22,11 +21,12 @@ namespace Stripe\Treasury;
  * @property string $network The network used for the ReceivedDebit.
  * @property null|\Stripe\StripeObject $reversal_details Details describing when a ReceivedDebit might be reversed.
  * @property string $status Status of the ReceivedDebit. ReceivedDebits are created with a status of either <code>succeeded</code> (approved) or <code>failed</code> (declined). The failure reason can be found under the <code>failure_code</code>.
- * @property null|string|Transaction $transaction The Transaction associated with this object.
+ * @property null|string|\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
  */
 class ReceivedDebit extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'treasury.received_debit';
+
 
     const FAILURE_CODE_ACCOUNT_CLOSED = 'account_closed';
     const FAILURE_CODE_ACCOUNT_FROZEN = 'account_frozen';
@@ -47,9 +47,9 @@ class ReceivedDebit extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<ReceivedDebit> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Treasury\ReceivedDebit> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -60,14 +60,14 @@ class ReceivedDebit extends \Stripe\ApiResource
 
     /**
      * Retrieves the details of an existing ReceivedDebit by passing the unique
-     * ReceivedDebit ID from the ReceivedDebit list.
+     * ReceivedDebit ID from the ReceivedDebit list
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return ReceivedDebit
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Treasury\ReceivedDebit
      */
     public static function retrieve($id, $opts = null)
     {

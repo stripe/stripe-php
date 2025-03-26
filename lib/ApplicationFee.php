@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -7,19 +6,19 @@ namespace Stripe;
 /**
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property Account|string $account ID of the Stripe account this fee was taken from.
+ * @property string|\Stripe\Account $account ID of the Stripe account this fee was taken from.
  * @property int $amount Amount earned, in cents (or local equivalent).
  * @property int $amount_refunded Amount in cents (or local equivalent) refunded (can be less than the amount attribute on the fee if a partial refund was issued)
- * @property Application|string $application ID of the Connect application that earned the fee.
- * @property null|BalanceTransaction|string $balance_transaction Balance transaction that describes the impact of this collected application fee on your account balance (not including refunds).
- * @property Charge|string $charge ID of the charge that the application fee was taken from.
+ * @property string|\Stripe\Application $application ID of the Connect application that earned the fee.
+ * @property null|string|\Stripe\BalanceTransaction $balance_transaction Balance transaction that describes the impact of this collected application fee on your account balance (not including refunds).
+ * @property string|\Stripe\Charge $charge ID of the charge that the application fee was taken from.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property null|StripeObject $fee_source Polymorphic source of the application fee. Includes the ID of the object the application fee was created from.
+ * @property null|\Stripe\StripeObject $fee_source Polymorphic source of the application fee. Includes the ID of the object the application fee was created from.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|Charge|string $originating_transaction ID of the corresponding charge on the platform account, if this fee was the result of a charge using the <code>destination</code> parameter.
+ * @property null|string|\Stripe\Charge $originating_transaction ID of the corresponding charge on the platform account, if this fee was the result of a charge using the <code>destination</code> parameter.
  * @property bool $refunded Whether the fee has been fully refunded. If the fee is only partially refunded, this attribute will still be false.
- * @property Collection<ApplicationFeeRefund> $refunds A list of refunds that have been applied to the fee.
+ * @property \Stripe\Collection<\Stripe\ApplicationFeeRefund> $refunds A list of refunds that have been applied to the fee.
  */
 class ApplicationFee extends ApiResource
 {
@@ -34,15 +33,15 @@ class ApplicationFee extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Collection<ApplicationFee> of ApiResources
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<\Stripe\ApplicationFee> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, Collection::class, $params, $opts);
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
     }
 
     /**
@@ -52,18 +51,19 @@ class ApplicationFee extends ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return ApplicationFee
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\ApplicationFee
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = Util\RequestOptions::parse($opts);
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 
         return $instance;
     }
+
 
     const PATH_REFUNDS = '/refunds';
 
@@ -72,9 +72,9 @@ class ApplicationFee extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Collection<ApplicationFeeRefund> the list of application fee refunds
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\Collection<\Stripe\ApplicationFeeRefund> the list of application fee refunds
      */
     public static function allRefunds($id, $params = null, $opts = null)
     {
@@ -86,9 +86,9 @@ class ApplicationFee extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return ApplicationFeeRefund
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\ApplicationFeeRefund
      */
     public static function createRefund($id, $params = null, $opts = null)
     {
@@ -101,9 +101,9 @@ class ApplicationFee extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return ApplicationFeeRefund
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\ApplicationFeeRefund
      */
     public static function retrieveRefund($id, $refundId, $params = null, $opts = null)
     {
@@ -116,9 +116,9 @@ class ApplicationFee extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return ApplicationFeeRefund
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @throws Exception\ApiErrorException if the request fails
+     * @return \Stripe\ApplicationFeeRefund
      */
     public static function updateRefund($id, $refundId, $params = null, $opts = null)
     {

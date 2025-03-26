@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Terminal;
@@ -31,9 +30,9 @@ class Location extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return Location the created resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Location the created resource
      */
     public static function create($params = null, $options = null)
     {
@@ -53,9 +52,9 @@ class Location extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Location the deleted resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Location the deleted resource
      */
     public function delete($params = null, $opts = null)
     {
@@ -74,9 +73,9 @@ class Location extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<Location> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Terminal\Location> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -91,9 +90,9 @@ class Location extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return Location
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Location
      */
     public static function retrieve($id, $opts = null)
     {
@@ -112,9 +111,9 @@ class Location extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Location the updated resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Location the updated resource
      */
     public static function update($id, $params = null, $opts = null)
     {

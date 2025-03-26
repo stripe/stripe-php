@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Identity;
@@ -36,6 +35,7 @@ class VerificationReport extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'identity.verification_report';
 
+
     const TYPE_DOCUMENT = 'document';
     const TYPE_ID_NUMBER = 'id_number';
     const TYPE_VERIFICATION_FLOW = 'verification_flow';
@@ -46,9 +46,9 @@ class VerificationReport extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<VerificationReport> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Identity\VerificationReport> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -58,14 +58,14 @@ class VerificationReport extends \Stripe\ApiResource
     }
 
     /**
-     * Retrieves an existing VerificationReport.
+     * Retrieves an existing VerificationReport
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return VerificationReport
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Identity\VerificationReport
      */
     public static function retrieve($id, $opts = null)
     {

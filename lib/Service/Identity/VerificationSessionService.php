@@ -1,25 +1,24 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Identity;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class VerificationSessionService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of VerificationSessions.
+     * Returns a list of VerificationSessions
      *
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Identity\VerificationSession>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Identity\VerificationSession>
      */
     public function all($params = null, $opts = null)
     {
@@ -38,9 +37,9 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Identity\VerificationSession
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Identity\VerificationSession
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -63,9 +62,9 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Identity\VerificationSession
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Identity\VerificationSession
      */
     public function create($params = null, $opts = null)
     {
@@ -101,9 +100,9 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Identity\VerificationSession
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Identity\VerificationSession
      */
     public function redact($id, $params = null, $opts = null)
     {
@@ -121,9 +120,9 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Identity\VerificationSession
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Identity\VerificationSession
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -140,9 +139,9 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Identity\VerificationSession
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Identity\VerificationSession
      */
     public function update($id, $params = null, $opts = null)
     {

@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class ShippingRateService extends AbstractService
+class ShippingRateService extends \Stripe\Service\AbstractService
 {
     /**
      * Returns a list of your shipping rates.
@@ -17,9 +16,9 @@ class ShippingRateService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\ShippingRate>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\ShippingRate>
      */
     public function all($params = null, $opts = null)
     {
@@ -32,9 +31,9 @@ class ShippingRateService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\ShippingRate
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ShippingRate
      */
     public function create($params = null, $opts = null)
     {
@@ -48,9 +47,9 @@ class ShippingRateService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\ShippingRate
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ShippingRate
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -64,9 +63,9 @@ class ShippingRateService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\ShippingRate
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\ShippingRate
      */
     public function update($id, $params = null, $opts = null)
     {

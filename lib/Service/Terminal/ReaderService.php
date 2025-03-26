@@ -1,12 +1,11 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service\Terminal;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class ReaderService extends \Stripe\Service\AbstractService
@@ -17,9 +16,9 @@ class ReaderService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\Terminal\Reader>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Terminal\Reader>
      */
     public function all($params = null, $opts = null)
     {
@@ -33,9 +32,9 @@ class ReaderService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Terminal\Reader
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Reader
      */
     public function cancelAction($id, $params = null, $opts = null)
     {
@@ -48,9 +47,9 @@ class ReaderService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Terminal\Reader
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Reader
      */
     public function create($params = null, $opts = null)
     {
@@ -64,9 +63,9 @@ class ReaderService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Terminal\Reader
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Reader
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -80,9 +79,9 @@ class ReaderService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Terminal\Reader
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Reader
      */
     public function processPaymentIntent($id, $params = null, $opts = null)
     {
@@ -96,9 +95,9 @@ class ReaderService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Terminal\Reader
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Reader
      */
     public function processSetupIntent($id, $params = null, $opts = null)
     {
@@ -106,15 +105,15 @@ class ReaderService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Initiates a refund on a Reader.
+     * Initiates a refund on a Reader
      *
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Terminal\Reader
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Reader
      */
     public function refundPayment($id, $params = null, $opts = null)
     {
@@ -128,9 +127,9 @@ class ReaderService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Terminal\Reader
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Reader
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -144,9 +143,9 @@ class ReaderService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Terminal\Reader
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Reader
      */
     public function setReaderDisplay($id, $params = null, $opts = null)
     {
@@ -161,9 +160,9 @@ class ReaderService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Terminal\Reader
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Terminal\Reader
      */
     public function update($id, $params = null, $opts = null)
     {

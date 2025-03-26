@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -16,19 +15,20 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount The amount of the transaction. A negative value is a credit for the customer's balance, and a positive value is a debit to the customer's <code>balance</code>.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|CreditNote|string $credit_note The ID of the credit note (if any) related to the transaction.
+ * @property null|string|\Stripe\CreditNote $credit_note The ID of the credit note (if any) related to the transaction.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property Customer|string $customer The ID of the customer the transaction belongs to.
+ * @property string|\Stripe\Customer $customer The ID of the customer the transaction belongs to.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property int $ending_balance The customer's <code>balance</code> after the transaction was applied. A negative value decreases the amount due on the customer's next invoice. A positive value increases the amount due on the customer's next invoice.
- * @property null|Invoice|string $invoice The ID of the invoice (if any) related to the transaction.
+ * @property null|string|\Stripe\Invoice $invoice The ID of the invoice (if any) related to the transaction.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $type Transaction type: <code>adjustment</code>, <code>applied_to_invoice</code>, <code>credit_note</code>, <code>initial</code>, <code>invoice_overpaid</code>, <code>invoice_too_large</code>, <code>invoice_too_small</code>, <code>unspent_receiver_credit</code>, or <code>unapplied_from_invoice</code>. See the <a href="https://stripe.com/docs/billing/customer/balance#types">Customer Balance page</a> to learn more about transaction types.
  */
 class CustomerBalanceTransaction extends ApiResource
 {
     const OBJECT_NAME = 'customer_balance_transaction';
+
 
     const TYPE_ADJUSTMENT = 'adjustment';
     const TYPE_APPLIED_TO_INVOICE = 'applied_to_invoice';
@@ -68,14 +68,14 @@ class CustomerBalanceTransaction extends ApiResource
      * @param array|string $_id
      * @param null|array|string $_opts
      *
-     * @throws Exception\BadMethodCallException
+     * @throws \Stripe\Exception\BadMethodCallException
      */
     public static function retrieve($_id, $_opts = null)
     {
-        $msg = 'Customer Balance Transactions cannot be retrieved without a '
-               . 'customer ID. Retrieve a Customer Balance Transaction using '
-               . "`Customer::retrieveBalanceTransaction('customer_id', "
-               . "'balance_transaction_id')`.";
+        $msg = 'Customer Balance Transactions cannot be retrieved without a ' .
+               'customer ID. Retrieve a Customer Balance Transaction using ' .
+               "`Customer::retrieveBalanceTransaction('customer_id', " .
+               "'balance_transaction_id')`.";
 
         throw new Exception\BadMethodCallException($msg);
     }
@@ -85,14 +85,14 @@ class CustomerBalanceTransaction extends ApiResource
      * @param null|array $_params
      * @param null|array|string $_options
      *
-     * @throws Exception\BadMethodCallException
+     * @throws \Stripe\Exception\BadMethodCallException
      */
     public static function update($_id, $_params = null, $_options = null)
     {
-        $msg = 'Customer Balance Transactions cannot be updated without a '
-               . 'customer ID. Update a Customer Balance Transaction using '
-               . "`Customer::updateBalanceTransaction('customer_id', "
-               . "'balance_transaction_id', \$updateParams)`.";
+        $msg = 'Customer Balance Transactions cannot be updated without a ' .
+               'customer ID. Update a Customer Balance Transaction using ' .
+               "`Customer::updateBalanceTransaction('customer_id', " .
+               "'balance_transaction_id', \$updateParams)`.";
 
         throw new Exception\BadMethodCallException($msg);
     }

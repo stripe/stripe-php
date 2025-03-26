@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe;
@@ -14,4 +13,5 @@ namespace Stripe;
 class ReserveTransaction extends ApiResource
 {
     const OBJECT_NAME = 'reserve_transaction';
+
 }

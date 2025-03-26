@@ -1,15 +1,14 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class InvoiceRenderingTemplateService extends AbstractService
+class InvoiceRenderingTemplateService extends \Stripe\Service\AbstractService
 {
     /**
      * List all templates, ordered by creation date, with the most recently created
@@ -18,9 +17,9 @@ class InvoiceRenderingTemplateService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Collection<\Stripe\InvoiceRenderingTemplate>
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\InvoiceRenderingTemplate>
      */
     public function all($params = null, $opts = null)
     {
@@ -37,9 +36,9 @@ class InvoiceRenderingTemplateService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\InvoiceRenderingTemplate
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\InvoiceRenderingTemplate
      */
     public function archive($id, $params = null, $opts = null)
     {
@@ -55,9 +54,9 @@ class InvoiceRenderingTemplateService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\InvoiceRenderingTemplate
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\InvoiceRenderingTemplate
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -72,9 +71,9 @@ class InvoiceRenderingTemplateService extends AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\InvoiceRenderingTemplate
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\InvoiceRenderingTemplate
      */
     public function unarchive($id, $params = null, $opts = null)
     {

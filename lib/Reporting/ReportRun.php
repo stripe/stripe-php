@@ -1,5 +1,4 @@
 <?php
-
 // File generated from our OpenAPI spec
 
 namespace Stripe\Reporting;
@@ -29,16 +28,17 @@ class ReportRun extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'reporting.report_run';
 
+
     /**
      * Creates a new object and begin running the report. (Certain report types require
-     * a <a href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.).
+     * a <a href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.)
      *
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return ReportRun the created resource
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Reporting\ReportRun the created resource
      */
     public static function create($params = null, $options = null)
     {
@@ -58,9 +58,9 @@ class ReportRun extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Stripe\Collection<ReportRun> of ApiResources
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Reporting\ReportRun> of ApiResources
      */
     public static function all($params = null, $opts = null)
     {
@@ -75,9 +75,9 @@ class ReportRun extends \Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @return ReportRun
-     *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Reporting\ReportRun
      */
     public static function retrieve($id, $opts = null)
     {
