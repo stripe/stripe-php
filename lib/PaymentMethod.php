@@ -32,6 +32,7 @@ namespace Stripe;
  * @property (object{buyer_id: null|string, cashtag: null|string}&\stdClass&StripeObject) $cashapp
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|Customer|string $customer The ID of the Customer to which this PaymentMethod is saved. This will not be set when the PaymentMethod has not been saved to a Customer.
+ * @property null|string $customer_account
  * @property null|(object{}&\stdClass&StripeObject) $customer_balance
  * @property (object{bank: null|string}&\stdClass&StripeObject) $eps
  * @property (object{account_holder_type: null|string, bank: string}&\stdClass&StripeObject) $fpx

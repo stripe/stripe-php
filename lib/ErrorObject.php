@@ -223,6 +223,8 @@ class ErrorObject extends StripeObject
     const CODE_TRANSFER_SOURCE_BALANCE_PARAMETERS_MISMATCH = 'transfer_source_balance_parameters_mismatch';
     const CODE_TRANSFERS_NOT_ALLOWED = 'transfers_not_allowed';
     const CODE_URL_INVALID = 'url_invalid';
+    const CODE_V2_ACCOUNT_DISCONNECTION_UNSUPPORTED = 'v2_account_disconnection_unsupported';
+    const CODE_V2_ACCOUNT_MISSING_CONFIGURATION = 'v2_account_missing_configuration';
     // The end of the section generated from our OpenAPI spec
 
     /**

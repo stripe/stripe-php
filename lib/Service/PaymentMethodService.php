@@ -50,7 +50,7 @@ class PaymentMethodService extends AbstractService
      * on the Customer to the PaymentMethod’s ID.
      *
      * @param string $id
-     * @param null|array{customer: string, expand?: string[]} $params
+     * @param null|array{customer: string, customer_account?: string, expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentMethod

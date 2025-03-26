@@ -15,6 +15,7 @@ namespace Stripe\Service;
  * @property ApplicationFeeService $applicationFees
  * @property Apps\AppsServiceFactory $apps
  * @property BalanceService $balance
+ * @property BalanceSettingsService $balanceSettings
  * @property BalanceTransactionService $balanceTransactions
  * @property Billing\BillingServiceFactory $billing
  * @property BillingPortal\BillingPortalServiceFactory $billingPortal
@@ -33,6 +34,7 @@ namespace Stripe\Service;
  * @property EphemeralKeyService $ephemeralKeys
  * @property EventService $events
  * @property ExchangeRateService $exchangeRates
+ * @property ExternalAccountService $externalAccounts
  * @property FileLinkService $fileLinks
  * @property FileService $files
  * @property FinancialConnections\FinancialConnectionsServiceFactory $financialConnections
@@ -101,6 +103,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'applicationFees' => ApplicationFeeService::class,
         'apps' => Apps\AppsServiceFactory::class,
         'balance' => BalanceService::class,
+        'balanceSettings' => BalanceSettingsService::class,
         'balanceTransactions' => BalanceTransactionService::class,
         'billing' => Billing\BillingServiceFactory::class,
         'billingPortal' => BillingPortal\BillingPortalServiceFactory::class,
@@ -119,6 +122,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'ephemeralKeys' => EphemeralKeyService::class,
         'events' => EventService::class,
         'exchangeRates' => ExchangeRateService::class,
+        'externalAccounts' => ExternalAccountService::class,
         'fileLinks' => FileLinkService::class,
         'files' => FileService::class,
         'financialConnections' => FinancialConnections\FinancialConnectionsServiceFactory::class,

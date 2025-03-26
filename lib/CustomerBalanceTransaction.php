@@ -20,6 +20,7 @@ namespace Stripe;
  * @property null|CreditNote|string $credit_note The ID of the credit note (if any) related to the transaction.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property Customer|string $customer The ID of the customer the transaction belongs to.
+ * @property null|string $customer_account
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property int $ending_balance The customer's <code>balance</code> after the transaction was applied. A negative value decreases the amount due on the customer's next invoice. A positive value increases the amount due on the customer's next invoice.
  * @property null|Invoice|string $invoice The ID of the invoice (if any) related to the transaction.

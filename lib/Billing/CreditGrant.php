@@ -16,6 +16,7 @@ namespace Stripe\Billing;
  * @property string $category The category of this credit grant. This is for tracking purposes and isn't displayed to the customer.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string|\Stripe\Customer $customer ID of the customer receiving the billing credits.
+ * @property null|string $customer_account ID of the account receiving the billing credits
  * @property null|int $effective_at The time when the billing credits become effective-when they're eligible for use.
  * @property null|int $expires_at The time when the billing credits expire. If not present, the billing credits don't expire.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
@@ -38,7 +39,7 @@ class CreditGrant extends \Stripe\ApiResource
     /**
      * Creates a credit grant.
      *
-     * @param null|array{amount: array{monetary?: array{currency: string, value: int}, type: string}, applicability_config: array{scope: array{price_type?: string, prices?: array{id: string}[]}}, category: string, customer: string, effective_at?: int, expand?: string[], expires_at?: int, metadata?: \Stripe\StripeObject, name?: string, priority?: int} $params
+     * @param null|array{amount: array{monetary?: array{currency: string, value: int}, type: string}, applicability_config: array{scope: array{price_type?: string, prices?: array{id: string}[]}}, category: string, customer: string, customer_account?: string, effective_at?: int, expand?: string[], expires_at?: int, metadata?: \Stripe\StripeObject, name?: string, priority?: int} $params
      * @param null|array|string $options
      *
      * @return CreditGrant the created resource
@@ -60,7 +61,7 @@ class CreditGrant extends \Stripe\ApiResource
     /**
      * Retrieve a list of credit grants.
      *
-     * @param null|array{customer?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|array{customer?: string, customer_account?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<CreditGrant> of ApiResources

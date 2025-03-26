@@ -16,6 +16,7 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property Customer|string $customer ID of the customer.
+ * @property null|string $customer_account ID of the account.
  * @property null|CustomerBalanceTransaction|string $customer_balance_transaction Customer balance transaction related to this credit note.
  * @property int $discount_amount The integer amount in cents (or local equivalent) representing the total amount of discount that was credited.
  * @property ((object{amount: int, discount: Discount|string}&\stdClass&StripeObject))[] $discount_amounts The aggregate amounts calculated per discount for all line items.
@@ -105,7 +106,7 @@ class CreditNote extends ApiResource
     /**
      * Returns a list of credit notes.
      *
-     * @param null|array{created?: array|int, customer?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, starting_after?: string} $params
+     * @param null|array{created?: array|int, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<CreditNote> of ApiResources

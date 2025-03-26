@@ -22,6 +22,7 @@ namespace Stripe;
  * @property int $amount Amount (in the <code>currency</code> specified) of the invoice item. This should always be equal to <code>unit_amount * quantity</code>.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property Customer|string $customer The ID of the customer who will be billed when this invoice item is billed.
+ * @property null|string $customer_account The ID of the account who will be billed when this invoice item is billed.
  * @property int $date Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property bool $discountable If true, discounts will apply to this invoice item. Always false for prorations.
@@ -49,7 +50,7 @@ class InvoiceItem extends ApiResource
      * no invoice is specified, the item will be on the next invoice created for the
      * customer specified.
      *
-     * @param null|array{amount?: int, currency?: string, customer: string, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], invoice?: string, margins?: string[], metadata?: null|StripeObject, period?: array{end: int, start: int}, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, pricing?: array{price?: string}, quantity?: int, subscription?: string, tax_behavior?: string, tax_code?: null|string, tax_rates?: string[], unit_amount_decimal?: string} $params
+     * @param null|array{amount?: int, currency?: string, customer: string, customer_account?: string, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], invoice?: string, margins?: string[], metadata?: null|StripeObject, period?: array{end: int, start: int}, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, pricing?: array{price?: string}, quantity?: int, subscription?: string, tax_behavior?: string, tax_code?: null|string, tax_rates?: string[], unit_amount_decimal?: string} $params
      * @param null|array|string $options
      *
      * @return InvoiceItem the created resource
@@ -95,7 +96,7 @@ class InvoiceItem extends ApiResource
      * Returns a list of your invoice items. Invoice items are returned sorted by
      * creation date, with the most recently created invoice items appearing first.
      *
-     * @param null|array{created?: array|int, customer?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, pending?: bool, starting_after?: string} $params
+     * @param null|array{created?: array|int, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, pending?: bool, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<InvoiceItem> of ApiResources
