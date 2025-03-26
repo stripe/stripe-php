@@ -17,7 +17,7 @@ class FinancialAddressService extends \Stripe\Service\AbstractService
      * @param null|array{financial_account?: string, include?: string[], limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Collection<\Stripe\V2\FinancialAddress>
+     * @return \Stripe\V2\Collection<\Stripe\V2\MoneyManagement\FinancialAddress>
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -32,7 +32,7 @@ class FinancialAddressService extends \Stripe\Service\AbstractService
      * @param null|array{currency: string, financial_account: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\FinancialAddress
+     * @return \Stripe\V2\MoneyManagement\FinancialAddress
      *
      * @throws \Stripe\Exception\FinancialAccountNotOpenException
      */
@@ -50,7 +50,7 @@ class FinancialAddressService extends \Stripe\Service\AbstractService
      * @param null|array{include?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\FinancialAddress
+     * @return \Stripe\V2\MoneyManagement\FinancialAddress
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

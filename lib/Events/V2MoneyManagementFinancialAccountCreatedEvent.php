@@ -14,7 +14,7 @@ class V2MoneyManagementFinancialAccountCreatedEvent extends \Stripe\V2\Event
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\V2\FinancialAccount
+     * @return \Stripe\V2\MoneyManagement\FinancialAccount
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

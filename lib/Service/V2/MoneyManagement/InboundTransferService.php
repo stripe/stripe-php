@@ -17,7 +17,7 @@ class InboundTransferService extends \Stripe\Service\AbstractService
      * @param null|array{created?: string, created_gt?: string, created_gte?: string, created_lt?: string, created_lte?: string, limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Collection<\Stripe\V2\InboundTransfer>
+     * @return \Stripe\V2\Collection<\Stripe\V2\MoneyManagement\InboundTransfer>
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -32,7 +32,7 @@ class InboundTransferService extends \Stripe\Service\AbstractService
      * @param null|array{amount: \Stripe\StripeObject, description?: string, from: array{currency?: string, payment_method: string}, to: array{currency: string, financial_account: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\InboundTransfer
+     * @return \Stripe\V2\MoneyManagement\InboundTransfer
      *
      * @throws \Stripe\Exception\BlockedByStripeException
      */
@@ -48,7 +48,7 @@ class InboundTransferService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\InboundTransfer
+     * @return \Stripe\V2\MoneyManagement\InboundTransfer
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

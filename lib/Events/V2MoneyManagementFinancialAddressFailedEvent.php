@@ -14,7 +14,7 @@ class V2MoneyManagementFinancialAddressFailedEvent extends \Stripe\V2\Event
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\V2\FinancialAddress
+     * @return \Stripe\V2\MoneyManagement\FinancialAddress
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

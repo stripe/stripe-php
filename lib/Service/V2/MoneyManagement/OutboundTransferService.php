@@ -17,7 +17,7 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
      * @param null|array{created?: string, created_gt?: string, created_gte?: string, created_lt?: string, created_lte?: string, limit?: int, status?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Collection<\Stripe\V2\OutboundTransfer>
+     * @return \Stripe\V2\Collection<\Stripe\V2\MoneyManagement\OutboundTransfer>
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -33,7 +33,7 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\OutboundTransfer
+     * @return \Stripe\V2\MoneyManagement\OutboundTransfer
      *
      * @throws \Stripe\Exception\AlreadyCanceledException
      * @throws \Stripe\Exception\NotCancelableException
@@ -49,7 +49,7 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
      * @param null|array{amount: \Stripe\StripeObject, delivery_options?: array{bank_account?: string}, description?: string, from: array{currency: string, financial_account: string}, metadata?: \Stripe\StripeObject, to: array{currency?: string, payout_method: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\OutboundTransfer
+     * @return \Stripe\V2\MoneyManagement\OutboundTransfer
      *
      * @throws \Stripe\Exception\InsufficientFundsException
      */
@@ -66,7 +66,7 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\OutboundTransfer
+     * @return \Stripe\V2\MoneyManagement\OutboundTransfer
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

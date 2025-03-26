@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\V2;
+namespace Stripe\V2\MoneyManagement;
 
 /**
  * OutboundTransfer represents a single money movement from one FinancialAccount you own to a payout method you also own.

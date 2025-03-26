@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\V2;
+namespace Stripe\V2\MoneyManagement;
 
 /**
  * Use ReceivedCredits API to retrieve information on when, where, and how funds are sent into your FinancialAccount.

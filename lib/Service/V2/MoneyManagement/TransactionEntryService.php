@@ -17,7 +17,7 @@ class TransactionEntryService extends \Stripe\Service\AbstractService
      * @param null|array{created?: string, created_gt?: string, created_gte?: string, created_lt?: string, created_lte?: string, limit?: int, transaction?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Collection<\Stripe\V2\TransactionEntry>
+     * @return \Stripe\V2\Collection<\Stripe\V2\MoneyManagement\TransactionEntry>
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -33,7 +33,7 @@ class TransactionEntryService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\TransactionEntry
+     * @return \Stripe\V2\MoneyManagement\TransactionEntry
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

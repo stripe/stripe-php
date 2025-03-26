@@ -6,16 +6,16 @@ namespace Stripe\Events;
 
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
- * @property \Stripe\EventData\V2MoneyManagementReceivedCreditAvailableEventData $data data associated with the event
+ * @property \Stripe\EventData\V2CoreAccountLinkCompletedEventData $data data associated with the event
  */
-class V2MoneyManagementReceivedCreditAvailableEvent extends \Stripe\V2\Event
+class V2CoreAccountLinkCompletedEvent extends \Stripe\V2\Event
 {
-    const LOOKUP_TYPE = 'v2.money_management.received_credit.available';
+    const LOOKUP_TYPE = 'v2.core.account_link.completed';
 
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\V2\MoneyManagement\ReceivedCredit
+     * @return \Stripe\V2\Core\AccountLink
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -38,7 +38,7 @@ class V2MoneyManagementReceivedCreditAvailableEvent extends \Stripe\V2\Event
     {
         $evt = parent::constructFrom($values, $opts, $apiMode);
         if (null !== $evt->data) {
-            $evt->data = \Stripe\EventData\V2MoneyManagementReceivedCreditAvailableEventData::constructFrom($evt->data, $opts, $apiMode);
+            $evt->data = \Stripe\EventData\V2CoreAccountLinkCompletedEventData::constructFrom($evt->data, $opts, $apiMode);
         }
 
         return $evt;

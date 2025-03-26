@@ -5227,6 +5227,63 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Core\Person::class, $result);
     }
 
+    public function testV2CoreAccountLinkPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/account_links',
+            [
+                'account' => 'account',
+                'use_case' => [
+                    'type' => 'account_onboarding',
+                    'account_onboarding' => [
+                        'configurations' => ['recipient'],
+                        'refresh_url' => 'refresh_url',
+                        'return_url' => 'return_url',
+                    ],
+                    'account_update' => [
+                        'configurations' => ['recipient'],
+                        'refresh_url' => 'refresh_url',
+                        'return_url' => 'return_url',
+                    ],
+                ],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.core.account_link',
+                'account' => 'account',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'url' => 'url',
+                'use_case' => [
+                    'type' => 'account_onboarding',
+                    'account_onboarding' => null,
+                    'account_update' => null,
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accountLinks->create([
+            'account' => 'account',
+            'use_case' => [
+                'type' => 'account_onboarding',
+                'account_onboarding' => [
+                    'configurations' => ['recipient'],
+                    'refresh_url' => 'refresh_url',
+                    'return_url' => 'return_url',
+                ],
+                'account_update' => [
+                    'configurations' => ['recipient'],
+                    'refresh_url' => 'refresh_url',
+                    'return_url' => 'return_url',
+                ],
+            ],
+        ]);
+        self::assertInstanceOf(V2\Core\AccountLink::class, $result);
+    }
+
     public function testV2CoreEventDestinationPost()
     {
         $this->stubRequest(
@@ -5948,7 +6005,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->moneyManagement->adjustments->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Adjustment::class, $result->data[0]);
+        self::assertInstanceOf(V2\MoneyManagement\Adjustment::class, $result->data[0]);
     }
 
     public function testV2MoneyManagementAdjustmentGet2()
@@ -5979,7 +6036,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\Adjustment::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\Adjustment::class, $result);
     }
 
     public function testV2MoneyManagementFinancialAccountGet()
@@ -6032,7 +6089,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->moneyManagement->financialAccounts->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\FinancialAccount::class, $result->data[0]);
+        self::assertInstanceOf(V2\MoneyManagement\FinancialAccount::class, $result->data[0]);
     }
 
     public function testV2MoneyManagementFinancialAccountGet2()
@@ -6081,7 +6138,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\FinancialAccount::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\FinancialAccount::class, $result);
     }
 
     public function testV2MoneyManagementFinancialAddressPost()
@@ -6108,7 +6165,7 @@ final class GeneratedExamplesTest extends TestCase
             'currency' => 'gip',
             'financial_account' => 'financial_account',
         ]);
-        self::assertInstanceOf(V2\FinancialAddress::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\FinancialAddress::class, $result);
     }
 
     public function testV2MoneyManagementFinancialAddressGet()
@@ -6139,7 +6196,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->moneyManagement->financialAddresses->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\FinancialAddress::class, $result->data[0]);
+        self::assertInstanceOf(V2\MoneyManagement\FinancialAddress::class, $result->data[0]);
     }
 
     public function testV2MoneyManagementFinancialAddressGet2()
@@ -6166,7 +6223,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\FinancialAddress::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\FinancialAddress::class, $result);
     }
 
     public function testV2MoneyManagementInboundTransferPost()
@@ -6249,7 +6306,7 @@ final class GeneratedExamplesTest extends TestCase
                 'financial_account' => 'financial_account',
             ],
         ]);
-        self::assertInstanceOf(V2\InboundTransfer::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\InboundTransfer::class, $result);
     }
 
     public function testV2MoneyManagementInboundTransferGet()
@@ -6313,7 +6370,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->moneyManagement->inboundTransfers->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\InboundTransfer::class, $result->data[0]);
+        self::assertInstanceOf(V2\MoneyManagement\InboundTransfer::class, $result->data[0]);
     }
 
     public function testV2MoneyManagementInboundTransferGet2()
@@ -6373,7 +6430,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\InboundTransfer::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\InboundTransfer::class, $result);
     }
 
     public function testV2MoneyManagementOutboundPaymentPost()
@@ -6431,7 +6488,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\OutboundPayment::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\OutboundPayment::class, $result);
     }
 
     public function testV2MoneyManagementOutboundPaymentPost2()
@@ -6514,7 +6571,7 @@ final class GeneratedExamplesTest extends TestCase
                 'recipient' => 'recipient',
             ],
         ]);
-        self::assertInstanceOf(V2\OutboundPayment::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\OutboundPayment::class, $result);
     }
 
     public function testV2MoneyManagementOutboundPaymentGet()
@@ -6576,7 +6633,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->moneyManagement->outboundPayments->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\OutboundPayment::class, $result->data[0]);
+        self::assertInstanceOf(V2\MoneyManagement\OutboundPayment::class, $result->data[0]);
     }
 
     public function testV2MoneyManagementOutboundPaymentGet2()
@@ -6634,7 +6691,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\OutboundPayment::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\OutboundPayment::class, $result);
     }
 
     public function testV2MoneyManagementOutboundPaymentsQuotePost()
@@ -6717,7 +6774,7 @@ final class GeneratedExamplesTest extends TestCase
                 'recipient' => 'recipient',
             ],
         ]);
-        self::assertInstanceOf(V2\OutboundPaymentQuote::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\OutboundPaymentQuote::class, $result);
     }
 
     public function testV2MoneyManagementOutboundTransferPost()
@@ -6772,7 +6829,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\OutboundTransfer::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\OutboundTransfer::class, $result);
     }
 
     public function testV2MoneyManagementOutboundTransferPost2()
@@ -6850,7 +6907,7 @@ final class GeneratedExamplesTest extends TestCase
                 'payout_method' => 'payout_method',
             ],
         ]);
-        self::assertInstanceOf(V2\OutboundTransfer::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\OutboundTransfer::class, $result);
     }
 
     public function testV2MoneyManagementOutboundTransferGet()
@@ -6909,7 +6966,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->moneyManagement->outboundTransfers->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\OutboundTransfer::class, $result->data[0]);
+        self::assertInstanceOf(V2\MoneyManagement\OutboundTransfer::class, $result->data[0]);
     }
 
     public function testV2MoneyManagementOutboundTransferGet2()
@@ -6964,7 +7021,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\OutboundTransfer::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\OutboundTransfer::class, $result);
     }
 
     public function testV2MoneyManagementOutboundSetupIntentPost()
@@ -7371,7 +7428,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->moneyManagement->receivedCredits->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\ReceivedCredit::class, $result->data[0]);
+        self::assertInstanceOf(V2\MoneyManagement\ReceivedCredit::class, $result->data[0]);
     }
 
     public function testV2MoneyManagementReceivedCreditGet2()
@@ -7408,7 +7465,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\ReceivedCredit::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\ReceivedCredit::class, $result);
     }
 
     public function testV2MoneyManagementReceivedDebitGet()
@@ -7452,7 +7509,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->moneyManagement->receivedDebits->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\ReceivedDebit::class, $result->data[0]);
+        self::assertInstanceOf(V2\MoneyManagement\ReceivedDebit::class, $result->data[0]);
     }
 
     public function testV2MoneyManagementReceivedDebitGet2()
@@ -7492,7 +7549,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\ReceivedDebit::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\ReceivedDebit::class, $result);
     }
 
     public function testV2MoneyManagementTransactionGet()
@@ -7554,7 +7611,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->moneyManagement->transactions->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Transaction::class, $result->data[0]);
+        self::assertInstanceOf(V2\MoneyManagement\Transaction::class, $result->data[0]);
     }
 
     public function testV2MoneyManagementTransactionGet2()
@@ -7612,7 +7669,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\Transaction::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\Transaction::class, $result);
     }
 
     public function testV2MoneyManagementTransactionEntryGet()
@@ -7669,7 +7726,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->moneyManagement->transactionEntries->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\TransactionEntry::class, $result->data[0]);
+        self::assertInstanceOf(V2\MoneyManagement\TransactionEntry::class, $result->data[0]);
     }
 
     public function testV2MoneyManagementTransactionEntryGet2()
@@ -7722,7 +7779,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\TransactionEntry::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\TransactionEntry::class, $result);
     }
 
     public function testV2BillingMeterEventSessionPost()

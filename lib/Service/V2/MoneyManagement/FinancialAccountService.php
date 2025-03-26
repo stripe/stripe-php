@@ -17,7 +17,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      * @param null|array{limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Collection<\Stripe\V2\FinancialAccount>
+     * @return \Stripe\V2\Collection<\Stripe\V2\MoneyManagement\FinancialAccount>
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -33,7 +33,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\FinancialAccount
+     * @return \Stripe\V2\MoneyManagement\FinancialAccount
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

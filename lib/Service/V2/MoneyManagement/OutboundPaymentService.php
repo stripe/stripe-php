@@ -25,7 +25,7 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
      * @param null|array{created?: string, created_gt?: string, created_gte?: string, created_lt?: string, created_lte?: string, limit?: int, recipient?: string, status?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Collection<\Stripe\V2\OutboundPayment>
+     * @return \Stripe\V2\Collection<\Stripe\V2\MoneyManagement\OutboundPayment>
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -41,7 +41,7 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\OutboundPayment
+     * @return \Stripe\V2\MoneyManagement\OutboundPayment
      *
      * @throws \Stripe\Exception\AlreadyCanceledException
      * @throws \Stripe\Exception\NotCancelableException
@@ -57,7 +57,7 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
      * @param null|array{amount: \Stripe\StripeObject, delivery_options?: array{bank_account?: string}, description?: string, from: array{currency: string, financial_account: string}, metadata?: \Stripe\StripeObject, outbound_payment_quote?: string, recipient_notification?: array{setting: string}, to: array{currency?: string, payout_method?: string, recipient: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\OutboundPayment
+     * @return \Stripe\V2\MoneyManagement\OutboundPayment
      *
      * @throws \Stripe\Exception\InsufficientFundsException
      * @throws \Stripe\Exception\QuotaExceededException
@@ -77,7 +77,7 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\OutboundPayment
+     * @return \Stripe\V2\MoneyManagement\OutboundPayment
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

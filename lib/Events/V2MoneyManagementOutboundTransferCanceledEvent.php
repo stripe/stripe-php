@@ -14,7 +14,7 @@ class V2MoneyManagementOutboundTransferCanceledEvent extends \Stripe\V2\Event
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\V2\OutboundTransfer
+     * @return \Stripe\V2\MoneyManagement\OutboundTransfer
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
