@@ -33,8 +33,7 @@ final class StripeClientTest extends TestCase
     {
         $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock()
-        ;
+            ->getMock();
 
         $curlClientStub->method('executeRequestWithRetries')
             ->willReturnOnConsecutiveCalls([
