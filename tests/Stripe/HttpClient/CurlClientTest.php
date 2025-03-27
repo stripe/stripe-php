@@ -182,94 +182,126 @@ final class CurlClientTest extends \Stripe\TestCase
 
     public function testShouldRetryOnTimeout()
     {
-        \Stripe\Stripe::setMaxNetworkRetries(2);
-
         $curlClient = new CurlClient();
 
-        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_OPERATION_TIMEOUTED, 0, [], 0));
+        // call works when `maxNetworkRetries` is provided directly
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_OPERATION_TIMEOUTED, 0, [], 0, 2));
+
+        // and when the arg is `null` and the value is read globally instead
+        \Stripe\Stripe::setMaxNetworkRetries(2);
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_OPERATION_TIMEOUTED, 0, [], 0, null));
     }
 
     public function testShouldRetryOnConnectionFailure()
     {
-        \Stripe\Stripe::setMaxNetworkRetries(2);
-
         $curlClient = new CurlClient();
 
-        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_COULDNT_CONNECT, 0, [], 0));
+        // call works when `maxNetworkRetries` is provided directly
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_COULDNT_CONNECT, 0, [], 0, 2));
+
+        // and when the arg is `null` and the value is read globally instead
+        \Stripe\Stripe::setMaxNetworkRetries(2);
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, \CURLE_COULDNT_CONNECT, 0, [], 0, null));
     }
 
     public function testShouldRetryOnConflict()
     {
-        \Stripe\Stripe::setMaxNetworkRetries(2);
-
         $curlClient = new CurlClient();
 
-        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 409, [], 0));
+        // call works when `maxNetworkRetries` is provided directly
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 409, [], 0, 2));
+
+        // and when the arg is `null` and the value is read globally instead
+        \Stripe\Stripe::setMaxNetworkRetries(2);
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 409, [], 0, null));
     }
 
     public function testShouldNotRetryOn429()
     {
-        \Stripe\Stripe::setMaxNetworkRetries(2);
-
         $curlClient = new CurlClient();
 
-        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 429, [], 0));
+        // call works when `maxNetworkRetries` is provided directly
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 429, [], 0, 2));
+
+        // and when the arg is `null` and the value is read globally instead
+        \Stripe\Stripe::setMaxNetworkRetries(2);
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 429, [], 0, null));
     }
 
     public function testShouldRetryOn500()
     {
-        \Stripe\Stripe::setMaxNetworkRetries(2);
-
         $curlClient = new CurlClient();
 
-        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 500, [], 0));
+        // call works when `maxNetworkRetries` is provided directly
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 500, [], 0, 2));
+
+        // and when the arg is `null` and the value is read globally instead
+        \Stripe\Stripe::setMaxNetworkRetries(2);
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 500, [], 0, null));
     }
 
     public function testShouldRetryOn503()
     {
-        \Stripe\Stripe::setMaxNetworkRetries(2);
-
         $curlClient = new CurlClient();
 
-        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 503, [], 0));
+        // call works when `maxNetworkRetries` is provided directly
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 503, [], 0, 2));
+
+        // and when the arg is `null` and the value is read globally instead
+        \Stripe\Stripe::setMaxNetworkRetries(2);
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 503, [], 0, null));
     }
 
     public function testShouldRetryOnStripeShouldRetryTrue()
     {
-        \Stripe\Stripe::setMaxNetworkRetries(2);
-
         $curlClient = new CurlClient();
 
-        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 400, [], 0));
-        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 400, ['stripe-should-retry' => 'true'], 0));
+        // call works when `maxNetworkRetries` is provided directly
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 400, [], 0, 2));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 400, ['stripe-should-retry' => 'true'], 0, 2));
+
+        // and when the arg is `null` and the value is read globally instead
+        \Stripe\Stripe::setMaxNetworkRetries(2);
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 400, [], 0, null));
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 400, ['stripe-should-retry' => 'true'], 0, null));
     }
 
     public function testShouldNotRetryOnStripeShouldRetryFalse()
     {
-        \Stripe\Stripe::setMaxNetworkRetries(2);
-
         $curlClient = new CurlClient();
 
-        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 500, [], 0));
-        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 500, ['stripe-should-retry' => 'false'], 0));
+        // call works when `maxNetworkRetries` is provided directly
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 500, [], 0, 2));
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 500, ['stripe-should-retry' => 'false'], 0, 2));
+
+        // and when the arg is `null` and the value is read globally instead
+        \Stripe\Stripe::setMaxNetworkRetries(2);
+        self::assertTrue($this->shouldRetryMethod->invoke($curlClient, 0, 500, [], 0, null));
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 500, ['stripe-should-retry' => 'false'], 0, null));
     }
 
     public function testShouldNotRetryAtMaximumCount()
     {
-        \Stripe\Stripe::setMaxNetworkRetries(2);
-
         $curlClient = new CurlClient();
 
-        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 0, [], \Stripe\Stripe::getMaxNetworkRetries()));
+        // call works when `maxNetworkRetries` is provided directly
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 0, [], \Stripe\Stripe::getMaxNetworkRetries(), null));
+
+        // and when the arg is `null` and the value is read globally instead
+        \Stripe\Stripe::setMaxNetworkRetries(2);
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, 0, 0, [], \Stripe\Stripe::getMaxNetworkRetries(), null));
     }
 
     public function testShouldNotRetryOnCertValidationError()
     {
-        \Stripe\Stripe::setMaxNetworkRetries(2);
-
         $curlClient = new CurlClient();
 
-        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, \CURLE_SSL_PEER_CERTIFICATE, -1, [], 0));
+        // call works when `maxNetworkRetries` is provided directly
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, \CURLE_SSL_PEER_CERTIFICATE, -1, [], 0, null));
+
+        // and when the arg is `null` and the value is read globally instead
+        \Stripe\Stripe::setMaxNetworkRetries(2);
+        self::assertFalse($this->shouldRetryMethod->invoke($curlClient, \CURLE_SSL_PEER_CERTIFICATE, -1, [], 0, null));
     }
 
     public function testSleepTimeShouldGrowExponentially()

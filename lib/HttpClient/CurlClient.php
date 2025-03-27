@@ -340,11 +340,12 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param array $params
      * @param bool $hasFile
      * @param 'v1'|'v2' $apiMode
+     * @param null|int $maxNetworkRetries
      */
-    public function request($method, $absUrl, $headers, $params, $hasFile, $apiMode = 'v1')
+    public function request($method, $absUrl, $headers, $params, $hasFile, $apiMode = 'v1', $maxNetworkRetries = null)
     {
         list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile, $apiMode);
-        list($rbody, $rcode, $rheaders) = $this->executeRequestWithRetries($opts, $absUrl);
+        list($rbody, $rcode, $rheaders) = $this->executeRequestWithRetries($opts, $absUrl, $maxNetworkRetries);
 
         return [$rbody, $rcode, $rheaders];
     }
@@ -357,12 +358,13 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param bool $hasFile
      * @param callable $readBodyChunk
      * @param 'v1'|'v2' $apiMode
+     * @param null|int $maxNetworkRetries
      */
-    public function requestStream($method, $absUrl, $headers, $params, $hasFile, $readBodyChunk, $apiMode = 'v1')
+    public function requestStream($method, $absUrl, $headers, $params, $hasFile, $readBodyChunk, $apiMode = 'v1', $maxNetworkRetries = null)
     {
         list($opts, $absUrl) = $this->constructRequest($method, $absUrl, $headers, $params, $hasFile, $apiMode);
         $opts[\CURLOPT_RETURNTRANSFER] = false;
-        list($rbody, $rcode, $rheaders) = $this->executeStreamingRequestWithRetries($opts, $absUrl, $readBodyChunk);
+        list($rbody, $rcode, $rheaders) = $this->executeStreamingRequestWithRetries($opts, $absUrl, $readBodyChunk, $maxNetworkRetries);
 
         return [$rbody, $rcode, $rheaders];
     }
@@ -426,10 +428,11 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param array $opts cURL options
      * @param string $absUrl
      * @param callable $readBodyChunk
+     * @param null|int $maxNetworkRetries
      *
      * @return array
      */
-    public function executeStreamingRequestWithRetries($opts, $absUrl, $readBodyChunk)
+    public function executeStreamingRequestWithRetries($opts, $absUrl, $readBodyChunk, $maxNetworkRetries = null)
     {
         /** @var bool */
         $shouldRetry = false;
@@ -452,7 +455,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
         $errno = null;
         $message = null;
 
-        $determineWriteCallback = function ($rheaders) use (&$readBodyChunk, &$shouldRetry, &$rbody, &$numRetries, &$rcode, &$lastRHeaders, &$errno) {
+        $determineWriteCallback = function ($rheaders) use (&$readBodyChunk, &$shouldRetry, &$rbody, &$numRetries, &$rcode, &$lastRHeaders, &$errno, &$maxNetworkRetries) {
             $lastRHeaders = $rheaders;
             $errno = \curl_errno($this->curlHandle);
 
@@ -471,7 +474,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
                 };
             }
 
-            $shouldRetry = $this->shouldRetry($errno, $rcode, $rheaders, $numRetries);
+            $shouldRetry = $this->shouldRetry($errno, $rcode, $rheaders, $numRetries, $maxNetworkRetries);
 
             // Discard the body from an unsuccessful request that should be retried.
             if ($shouldRetry) {
@@ -535,8 +538,9 @@ class CurlClient implements ClientInterface, StreamingClientInterface
     /**
      * @param array $opts cURL options
      * @param string $absUrl
+     * @param null|int $maxNetworkRetries
      */
-    public function executeRequestWithRetries($opts, $absUrl)
+    public function executeRequestWithRetries($opts, $absUrl, $maxNetworkRetries = null)
     {
         $numRetries = 0;
 
@@ -566,7 +570,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
                 $this->closeCurlHandle();
             }
 
-            $shouldRetry = $this->shouldRetry($errno, $rcode, $rheaders, $numRetries);
+            $shouldRetry = $this->shouldRetry($errno, $rcode, $rheaders, $numRetries, $maxNetworkRetries);
 
             if (\is_callable($this->getRequestStatusCallback())) {
                 \call_user_func_array(
@@ -645,12 +649,18 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * @param int $rcode
      * @param array|Util\CaseInsensitiveArray $rheaders
      * @param int $numRetries
+     * @param null|int $maxNetworkRetries
      *
      * @return bool
      */
-    private function shouldRetry($errno, $rcode, $rheaders, $numRetries)
+    private function shouldRetry($errno, $rcode, $rheaders, $numRetries, $maxNetworkRetries)
     {
-        if ($numRetries >= Stripe::getMaxNetworkRetries()) {
+        if (null === $maxNetworkRetries) {
+            // all calls from a StripeClient have a number here, so we only see `null` (and use the global configuration) if coming from a non-client call.
+            $maxNetworkRetries = Stripe::getMaxNetworkRetries();
+        }
+
+        if ($numRetries >= $maxNetworkRetries) {
             return false;
         }
 
