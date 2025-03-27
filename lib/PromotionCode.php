@@ -15,6 +15,7 @@ namespace Stripe;
  * @property Coupon $coupon A coupon contains information about a percent-off or amount-off discount you might want to apply to a customer. Coupons may be applied to <a href="https://stripe.com/docs/api#subscriptions">subscriptions</a>, <a href="https://stripe.com/docs/api#invoices">invoices</a>, <a href="https://stripe.com/docs/api/checkout/sessions">checkout sessions</a>, <a href="https://stripe.com/docs/api#quotes">quotes</a>, and more. Coupons do not work with conventional one-off <a href="https://stripe.com/docs/api#create_charge">charges</a> or <a href="https://stripe.com/docs/api/payment_intents">payment intents</a>.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|Customer|string $customer The customer that this promotion code can be used by.
+ * @property null|string $customer_account The account that this promotion code can be used by.
  * @property null|int $expires_at Date at which the promotion code can no longer be redeemed.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|int $max_redemptions Maximum number of times this promotion code can be redeemed.
@@ -32,7 +33,7 @@ class PromotionCode extends ApiResource
      * A promotion code points to a coupon. You can optionally restrict the code to a
      * specific customer, redemption limit, and expiration date.
      *
-     * @param null|array{active?: bool, code?: string, coupon: string, customer?: string, expand?: string[], expires_at?: int, max_redemptions?: int, metadata?: StripeObject, restrictions?: array{currency_options?: StripeObject, first_time_transaction?: bool, minimum_amount?: int, minimum_amount_currency?: string}} $params
+     * @param null|array{active?: bool, code?: string, coupon: string, customer?: string, customer_account?: string, expand?: string[], expires_at?: int, max_redemptions?: int, metadata?: StripeObject, restrictions?: array{currency_options?: StripeObject, first_time_transaction?: bool, minimum_amount?: int, minimum_amount_currency?: string}} $params
      * @param null|array|string $options
      *
      * @return PromotionCode the created resource
@@ -54,7 +55,7 @@ class PromotionCode extends ApiResource
     /**
      * Returns a list of your promotion codes.
      *
-     * @param null|array{active?: bool, code?: string, coupon?: string, created?: array|int, customer?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|array{active?: bool, code?: string, coupon?: string, created?: array|int, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<PromotionCode> of ApiResources

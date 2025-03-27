@@ -29,8 +29,8 @@ class ReaderService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Succeeds an input collection on a simulated reader. Can be used to simulate
-     * collecting inputs.
+     * Use this endpoint to trigger a successful input collection on a simulated
+     * reader.
      *
      * @param string $id
      * @param null|array{expand?: string[], skip_non_required_inputs?: string} $params
@@ -46,7 +46,8 @@ class ReaderService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Completes an input collection with a timeout error on a simulated reader.
+     * Use this endpoint to complete an input collection with a timeout error on a
+     * simulated reader.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params

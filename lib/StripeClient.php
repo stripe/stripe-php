@@ -15,6 +15,7 @@ namespace Stripe;
  * @property Service\ApplicationFeeService $applicationFees
  * @property Service\Apps\AppsServiceFactory $apps
  * @property Service\BalanceService $balance
+ * @property Service\BalanceSettingsService $balanceSettings
  * @property Service\BalanceTransactionService $balanceTransactions
  * @property Service\Billing\BillingServiceFactory $billing
  * @property Service\BillingPortal\BillingPortalServiceFactory $billingPortal
@@ -33,6 +34,7 @@ namespace Stripe;
  * @property Service\EphemeralKeyService $ephemeralKeys
  * @property Service\EventService $events
  * @property Service\ExchangeRateService $exchangeRates
+ * @property Service\ExternalAccountService $externalAccounts
  * @property Service\FileLinkService $fileLinks
  * @property Service\FileService $files
  * @property Service\FinancialConnections\FinancialConnectionsServiceFactory $financialConnections

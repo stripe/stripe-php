@@ -95,6 +95,7 @@ class ErrorObject extends StripeObject
     const CODE_FINANCIAL_CONNECTIONS_NO_SUCCESSFUL_TRANSACTION_REFRESH = 'financial_connections_no_successful_transaction_refresh';
     const CODE_FORWARDING_API_INACTIVE = 'forwarding_api_inactive';
     const CODE_FORWARDING_API_INVALID_PARAMETER = 'forwarding_api_invalid_parameter';
+    const CODE_FORWARDING_API_RETRYABLE_UPSTREAM_ERROR = 'forwarding_api_retryable_upstream_error';
     const CODE_FORWARDING_API_UPSTREAM_CONNECTION_ERROR = 'forwarding_api_upstream_connection_error';
     const CODE_FORWARDING_API_UPSTREAM_CONNECTION_TIMEOUT = 'forwarding_api_upstream_connection_timeout';
     const CODE_GIFT_CARD_BALANCE_INSUFFICIENT = 'gift_card_balance_insufficient';
@@ -195,6 +196,7 @@ class ErrorObject extends StripeObject
     const CODE_SETUP_INTENT_AUTHENTICATION_FAILURE = 'setup_intent_authentication_failure';
     const CODE_SETUP_INTENT_INVALID_PARAMETER = 'setup_intent_invalid_parameter';
     const CODE_SETUP_INTENT_MANDATE_INVALID = 'setup_intent_mandate_invalid';
+    const CODE_SETUP_INTENT_MOBILE_WALLET_UNSUPPORTED = 'setup_intent_mobile_wallet_unsupported';
     const CODE_SETUP_INTENT_SETUP_ATTEMPT_EXPIRED = 'setup_intent_setup_attempt_expired';
     const CODE_SETUP_INTENT_UNEXPECTED_STATE = 'setup_intent_unexpected_state';
     const CODE_SHIPPING_ADDRESS_INVALID = 'shipping_address_invalid';
@@ -221,6 +223,8 @@ class ErrorObject extends StripeObject
     const CODE_TRANSFER_SOURCE_BALANCE_PARAMETERS_MISMATCH = 'transfer_source_balance_parameters_mismatch';
     const CODE_TRANSFERS_NOT_ALLOWED = 'transfers_not_allowed';
     const CODE_URL_INVALID = 'url_invalid';
+    const CODE_V2_ACCOUNT_DISCONNECTION_UNSUPPORTED = 'v2_account_disconnection_unsupported';
+    const CODE_V2_ACCOUNT_MISSING_CONFIGURATION = 'v2_account_missing_configuration';
     // The end of the section generated from our OpenAPI spec
 
     /**

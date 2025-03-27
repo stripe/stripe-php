@@ -29,10 +29,11 @@ class PriceService extends AbstractService
     }
 
     /**
-     * Creates a new price for an existing product. The price can be recurring or
-     * one-time.
+     * Creates a new <a href="https://docs.stripe.com/api/prices">Price</a> for an
+     * existing <a href="https://docs.stripe.com/api/products">Product</a>. The Price
+     * can be recurring or one-time.
      *
-     * @param null|array{active?: bool, billing_scheme?: string, currency: string, currency_options?: \Stripe\StripeObject, custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, expand?: string[], lookup_key?: string, metadata?: \Stripe\StripeObject, nickname?: string, product?: string, product_data?: array{active?: bool, id?: string, metadata?: \Stripe\StripeObject, name: string, statement_descriptor?: string, tax_code?: string, unit_label?: string}, recurring?: array{aggregate_usage?: string, interval: string, interval_count?: int, meter?: string, trial_period_days?: int, usage_type?: string}, tax_behavior?: string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: array|int|string})[], tiers_mode?: string, transfer_lookup_key?: bool, transform_quantity?: array{divide_by: int, round: string}, unit_amount?: int, unit_amount_decimal?: string} $params
+     * @param null|array{active?: bool, billing_scheme?: string, currency: string, currency_options?: \Stripe\StripeObject, custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, expand?: string[], lookup_key?: string, metadata?: \Stripe\StripeObject, nickname?: string, product?: string, product_data?: array{active?: bool, id?: string, metadata?: \Stripe\StripeObject, name: string, statement_descriptor?: string, tax_code?: string, unit_label?: string}, recurring?: array{interval: string, interval_count?: int, meter?: string, trial_period_days?: int, usage_type?: string}, tax_behavior?: string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: array|int|string})[], tiers_mode?: string, transfer_lookup_key?: bool, transform_quantity?: array{divide_by: int, round: string}, unit_amount?: int, unit_amount_decimal?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Price

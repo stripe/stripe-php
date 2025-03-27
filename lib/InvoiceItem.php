@@ -22,6 +22,7 @@ namespace Stripe;
  * @property int $amount Amount (in the <code>currency</code> specified) of the invoice item. This should always be equal to <code>unit_amount * quantity</code>.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property Customer|string $customer The ID of the customer who will be billed when this invoice item is billed.
+ * @property null|string $customer_account The ID of the account who will be billed when this invoice item is billed.
  * @property int $date Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property bool $discountable If true, discounts will apply to this invoice item. Always false for prorations.
@@ -30,17 +31,13 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|(Margin|string)[] $margins The margins which apply to the invoice item. When set, the <code>default_margins</code> on the invoice do not apply to this invoice item.
  * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|(object{subscription_details: null|(object{subscription: string, subscription_item?: string}&\stdClass&StripeObject), type: string}&\stdClass&StripeObject) $parent
  * @property (object{end: int, start: int}&\stdClass&StripeObject) $period
- * @property null|Plan $plan If the invoice item is a proration, the plan of the subscription that the proration was computed for.
- * @property null|Price $price The price of the invoice item.
+ * @property null|(object{price_details?: (object{price: string, product: string}&\stdClass&StripeObject), type: string, unit_amount_decimal: null|string}&\stdClass&StripeObject) $pricing The pricing information of the invoice item.
  * @property bool $proration Whether the invoice item was created automatically as a proration adjustment when the customer switched plans.
  * @property int $quantity Quantity of units for the invoice item. If the invoice item is a proration, the quantity of the subscription that the proration was computed for.
- * @property null|string|Subscription $subscription The subscription that this invoice item has been created for, if any.
- * @property null|string $subscription_item The subscription item that this invoice item has been created for, if any.
  * @property null|TaxRate[] $tax_rates The tax rates which apply to the invoice item. When set, the <code>default_tax_rates</code> on the invoice do not apply to this invoice item.
  * @property null|string|TestHelpers\TestClock $test_clock ID of the test clock this invoice item belongs to.
- * @property null|int $unit_amount Unit amount (in the <code>currency</code> specified) of the invoice item.
- * @property null|string $unit_amount_decimal Same as <code>unit_amount</code>, but contains a decimal value with at most 12 decimal places.
  */
 class InvoiceItem extends ApiResource
 {
@@ -53,7 +50,7 @@ class InvoiceItem extends ApiResource
      * no invoice is specified, the item will be on the next invoice created for the
      * customer specified.
      *
-     * @param null|array{amount?: int, currency?: string, customer: string, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], invoice?: string, margins?: string[], metadata?: null|StripeObject, period?: array{end: int, start: int}, price?: string, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, subscription?: string, tax_behavior?: string, tax_code?: null|string, tax_rates?: string[], unit_amount?: int, unit_amount_decimal?: string} $params
+     * @param null|array{amount?: int, currency?: string, customer: string, customer_account?: string, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], invoice?: string, margins?: string[], metadata?: null|StripeObject, period?: array{end: int, start: int}, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, pricing?: array{price?: string}, quantity?: int, subscription?: string, tax_behavior?: string, tax_code?: null|string, tax_rates?: string[], unit_amount_decimal?: string} $params
      * @param null|array|string $options
      *
      * @return InvoiceItem the created resource
@@ -99,7 +96,7 @@ class InvoiceItem extends ApiResource
      * Returns a list of your invoice items. Invoice items are returned sorted by
      * creation date, with the most recently created invoice items appearing first.
      *
-     * @param null|array{created?: array|int, customer?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, pending?: bool, starting_after?: string} $params
+     * @param null|array{created?: array|int, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, pending?: bool, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<InvoiceItem> of ApiResources
@@ -138,7 +135,7 @@ class InvoiceItem extends ApiResource
      * closed.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{amount?: int, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], margins?: null|string[], metadata?: null|StripeObject, period?: array{end: int, start: int}, price?: string, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_behavior?: string, tax_code?: null|string, tax_rates?: null|string[], unit_amount?: int, unit_amount_decimal?: string} $params
+     * @param null|array{amount?: int, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], margins?: null|string[], metadata?: null|StripeObject, period?: array{end: int, start: int}, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, pricing?: array{price?: string}, quantity?: int, tax_behavior?: string, tax_code?: null|string, tax_rates?: null|string[], unit_amount_decimal?: string} $params
      * @param null|array|string $opts
      *
      * @return InvoiceItem the updated resource

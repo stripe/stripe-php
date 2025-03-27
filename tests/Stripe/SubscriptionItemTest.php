@@ -86,40 +86,4 @@ final class SubscriptionItemTest extends TestCase
         $resource->delete();
         self::assertInstanceOf(SubscriptionItem::class, $resource);
     }
-
-    public function testCanCreateUsageRecord()
-    {
-        $this->expectsRequest(
-            'post',
-            '/v1/subscription_items/' . self::TEST_RESOURCE_ID . '/usage_records'
-        );
-        $resource = SubscriptionItem::createUsageRecord(self::TEST_RESOURCE_ID, [
-            'quantity' => 100,
-            'timestamp' => 12341234,
-            'action' => 'set',
-        ]);
-    }
-
-    public function testCanListUsageRecordSummariesDeprecated()
-    {
-        $resource = SubscriptionItem::retrieve(self::TEST_RESOURCE_ID);
-        $this->expectsRequest(
-            'get',
-            '/v1/subscription_items/' . $resource->id . '/usage_record_summaries'
-        );
-        $resources = $resource->allUsageRecordSummaries(self::TEST_RESOURCE_ID);
-        self::compatAssertIsArray($resources->data);
-        self::assertInstanceOf(UsageRecordSummary::class, $resources->data[0]);
-    }
-
-    public function testCanListUsageRecordSummaries()
-    {
-        $this->expectsRequest(
-            'get',
-            '/v1/subscription_items/' . self::TEST_RESOURCE_ID . '/usage_record_summaries'
-        );
-        $resources = SubscriptionItem::allUsageRecordSummaries(self::TEST_RESOURCE_ID);
-        self::compatAssertIsArray($resources->data);
-        self::assertInstanceOf(UsageRecordSummary::class, $resources->data[0]);
-    }
 }

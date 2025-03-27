@@ -43,6 +43,7 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string $account The connected account that originates the event.
  * @property null|string $api_version The Stripe API version used to render <code>data</code>. This property is populated only for events on or after October 31, 2014.
+ * @property null|string $context
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property (object{object: StripeObject, previous_attributes?: StripeObject}&\stdClass&StripeObject) $data
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
@@ -68,7 +69,14 @@ class Event extends ApiResource
     const APPLICATION_FEE_REFUND_UPDATED = 'application_fee.refund.updated';
     const BALANCE_AVAILABLE = 'balance.available';
     const BILLING_ALERT_TRIGGERED = 'billing.alert.triggered';
+    const BILLING_CREDIT_BALANCE_TRANSACTION_CREATED = 'billing.credit_balance_transaction.created';
+    const BILLING_CREDIT_GRANT_CREATED = 'billing.credit_grant.created';
+    const BILLING_CREDIT_GRANT_UPDATED = 'billing.credit_grant.updated';
+    const BILLING_METER_CREATED = 'billing.meter.created';
+    const BILLING_METER_DEACTIVATED = 'billing.meter.deactivated';
     const BILLING_METER_ERROR_REPORT_TRIGGERED = 'billing.meter_error_report.triggered';
+    const BILLING_METER_REACTIVATED = 'billing.meter.reactivated';
+    const BILLING_METER_UPDATED = 'billing.meter.updated';
     const BILLING_PORTAL_CONFIGURATION_CREATED = 'billing_portal.configuration.created';
     const BILLING_PORTAL_CONFIGURATION_UPDATED = 'billing_portal.configuration.updated';
     const BILLING_PORTAL_SESSION_CREATED = 'billing_portal.session.created';

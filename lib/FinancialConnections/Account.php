@@ -9,7 +9,7 @@ namespace Stripe\FinancialConnections;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|(object{account?: string|\Stripe\Account, customer?: string|\Stripe\Customer, type: string}&\stdClass&\Stripe\StripeObject) $account_holder The account holder that this account belongs to.
+ * @property null|(object{account?: string|\Stripe\Account, customer?: string|\Stripe\Customer, customer_account?: string, type: string}&\stdClass&\Stripe\StripeObject) $account_holder The account holder that this account belongs to.
  * @property null|(object{as_of: int, cash?: (object{available: null|\Stripe\StripeObject}&\stdClass&\Stripe\StripeObject), credit?: (object{used: null|\Stripe\StripeObject}&\stdClass&\Stripe\StripeObject), current: \Stripe\StripeObject, type: string}&\stdClass&\Stripe\StripeObject) $balance The most recent information about the account's balance.
  * @property null|(object{last_attempted_at: int, next_refresh_available_at: null|int, status: string}&\stdClass&\Stripe\StripeObject) $balance_refresh The state of the most recent attempt to refresh the account balance.
  * @property string $category The type of the account. Account category is further divided in <code>subcategory</code>.
@@ -53,7 +53,7 @@ class Account extends \Stripe\ApiResource
     /**
      * Returns a list of Financial Connections <code>Account</code> objects.
      *
-     * @param null|array{account_holder?: array{account?: string, customer?: string}, ending_before?: string, expand?: string[], limit?: int, session?: string, starting_after?: string} $params
+     * @param null|array{account_holder?: array{account?: string, customer?: string, customer_account?: string}, ending_before?: string, expand?: string[], limit?: int, session?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<Account> of ApiResources

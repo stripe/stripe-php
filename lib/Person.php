@@ -7,7 +7,7 @@ namespace Stripe;
 /**
  * This is an object representing a person associated with a Stripe account.
  *
- * A platform cannot access a person for an account where <a href="/api/accounts/object#account_object-controller-requirement_collection">account.controller.requirement_collection</a> is <code>stripe</code>, which includes Standard and Express accounts, after creating an Account Link or Account Session to start Connect onboarding.
+ * A platform can only access a subset of data in a person for an account where <a href="/api/accounts/object#account_object-controller-requirement_collection">account.controller.requirement_collection</a> is <code>stripe</code>, which includes Standard and Express accounts, after creating an Account Link or Account Session to start Connect onboarding.
  *
  * See the <a href="/connect/standard-accounts">Standard onboarding</a> or <a href="/connect/express-accounts">Express onboarding</a> documentation for information about prefilling information and account onboarding steps. Learn more about <a href="/connect/handling-api-verification#person-information">handling identity verification with the API</a>.
  *
@@ -20,18 +20,18 @@ namespace Stripe;
  * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string, town: null|string}&\stdClass&StripeObject) $address_kanji The Kanji variation of the person's address (Japan only).
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property (object{day: null|int, month: null|int, year: null|int}&\stdClass&StripeObject) $dob
- * @property null|string $email The person's email address.
- * @property null|string $first_name The person's first name.
- * @property null|string $first_name_kana The Kana variation of the person's first name (Japan only).
- * @property null|string $first_name_kanji The Kanji variation of the person's first name (Japan only).
- * @property null|string[] $full_name_aliases A list of alternate names or aliases that the person is known by.
+ * @property null|string $email The person's email address. Also available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>stripe</code>.
+ * @property null|string $first_name The person's first name. Also available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>stripe</code>.
+ * @property null|string $first_name_kana The Kana variation of the person's first name (Japan only). Also available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>stripe</code>.
+ * @property null|string $first_name_kanji The Kanji variation of the person's first name (Japan only). Also available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>stripe</code>.
+ * @property null|string[] $full_name_aliases A list of alternate names or aliases that the person is known by. Also available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>stripe</code>.
  * @property null|(object{alternatives: null|(object{alternative_fields_due: string[], original_fields_due: string[]}&\stdClass&StripeObject)[], currently_due: string[], errors: (object{code: string, reason: string, requirement: string}&\stdClass&StripeObject)[], eventually_due: string[], past_due: string[], pending_verification: string[]}&\stdClass&StripeObject) $future_requirements Information about the <a href="https://stripe.com/docs/connect/custom-accounts/future-requirements">upcoming new requirements for this person</a>, including what information needs to be collected, and by when.
  * @property null|string $gender The person's gender.
  * @property null|bool $id_number_provided Whether the person's <code>id_number</code> was provided. True if either the full ID number was provided or if only the required part of the ID number was provided (ex. last four of an individual's SSN for the US indicated by <code>ssn_last_4_provided</code>).
  * @property null|bool $id_number_secondary_provided Whether the person's <code>id_number_secondary</code> was provided.
- * @property null|string $last_name The person's last name.
- * @property null|string $last_name_kana The Kana variation of the person's last name (Japan only).
- * @property null|string $last_name_kanji The Kanji variation of the person's last name (Japan only).
+ * @property null|string $last_name The person's last name. Also available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>stripe</code>.
+ * @property null|string $last_name_kana The Kana variation of the person's last name (Japan only). Also available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>stripe</code>.
+ * @property null|string $last_name_kanji The Kanji variation of the person's last name (Japan only). Also available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>stripe</code>.
  * @property null|string $maiden_name The person's maiden name.
  * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $nationality The country where the person is a national.

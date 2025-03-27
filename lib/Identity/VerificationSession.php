@@ -30,6 +30,7 @@ namespace Stripe\Identity;
  * @property null|(object{email?: string, phone?: string}&\stdClass&\Stripe\StripeObject) $provided_details Details provided about the user being verified. These details may be shown to the user.
  * @property null|(object{status: string}&\stdClass&\Stripe\StripeObject) $redaction Redaction status of this VerificationSession. If the VerificationSession is not redacted, this field will be null.
  * @property null|string $related_customer Customer ID
+ * @property null|string $related_customer_account Token referencing a Customer Account resource.
  * @property string $status Status of this VerificationSession. <a href="https://stripe.com/docs/identity/how-sessions-work">Learn more about the lifecycle of sessions</a>.
  * @property string $type The type of <a href="https://stripe.com/docs/identity/verification-checks">verification check</a> to be performed.
  * @property null|string $url The short-lived URL that you use to redirect a user to Stripe to submit their identity information. This URL expires after 48 hours and can only be used once. Don’t store it, log it, send it in emails or expose it to anyone other than the user. Refer to our docs on <a href="https://stripe.com/docs/identity/verify-identity-documents?platform=web&amp;type=redirect">verifying identity documents</a> to learn how to redirect users to Stripe.
@@ -64,7 +65,7 @@ class VerificationSession extends \Stripe\ApiResource
      * Related guide: <a href="/docs/identity/verify-identity-documents">Verify your
      * users’ identity documents</a>
      *
-     * @param null|array{client_reference_id?: string, expand?: string[], metadata?: \Stripe\StripeObject, options?: array{document?: null|array{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}}, provided_details?: array{email?: string, phone?: string}, related_customer?: string, return_url?: string, type?: string, verification_flow?: string} $params
+     * @param null|array{client_reference_id?: string, expand?: string[], metadata?: \Stripe\StripeObject, options?: array{document?: null|array{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}}, provided_details?: array{email?: string, phone?: string}, related_customer?: string, related_customer_account?: string, return_url?: string, type?: string, verification_flow?: string} $params
      * @param null|array|string $options
      *
      * @return VerificationSession the created resource
@@ -86,7 +87,7 @@ class VerificationSession extends \Stripe\ApiResource
     /**
      * Returns a list of VerificationSessions.
      *
-     * @param null|array{client_reference_id?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, related_customer?: string, starting_after?: string, status?: string} $params
+     * @param null|array{client_reference_id?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, related_customer?: string, related_customer_account?: string, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<VerificationSession> of ApiResources

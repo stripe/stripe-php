@@ -17,6 +17,7 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property Customer|string $customer The customer whose available cash balance changed as a result of this transaction.
+ * @property null|string $customer_account
  * @property int $ending_balance The total available cash balance for the specified currency after this transaction was applied. Represented in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
  * @property (object{bank_transfer: (object{eu_bank_transfer?: (object{bic: null|string, iban_last4: null|string, sender_name: null|string}&\stdClass&StripeObject), gb_bank_transfer?: (object{account_number_last4: null|string, sender_name: null|string, sort_code: null|string}&\stdClass&StripeObject), jp_bank_transfer?: (object{sender_bank: null|string, sender_branch: null|string, sender_name: null|string}&\stdClass&StripeObject), reference: null|string, type: string, us_bank_transfer?: (object{network?: string, sender_name: null|string}&\stdClass&StripeObject)}&\stdClass&StripeObject)}&\stdClass&StripeObject) $funded
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
