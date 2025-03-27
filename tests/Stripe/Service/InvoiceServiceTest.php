@@ -121,27 +121,6 @@ final class InvoiceServiceTest extends \Stripe\TestCase
         self::assertInstanceOf(\Stripe\Invoice::class, $resource);
     }
 
-    public function testUpcoming()
-    {
-        $this->expectsRequest(
-            'get',
-            '/v1/invoices/upcoming'
-        );
-        $resource = $this->service->upcoming(['customer' => 'cus_123']);
-        self::assertInstanceOf(\Stripe\Invoice::class, $resource);
-    }
-
-    public function testUpcomingLines()
-    {
-        $this->expectsRequest(
-            'get',
-            '/v1/invoices/upcoming/lines'
-        );
-        $resources = $this->service->upcomingLines();
-        self::compatAssertIsArray($resources->data);
-        self::assertInstanceOf(\Stripe\InvoiceLineItem::class, $resources->data[0]);
-    }
-
     public function testUpdate()
     {
         $this->expectsRequest(
