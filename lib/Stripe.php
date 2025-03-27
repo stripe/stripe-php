@@ -146,25 +146,11 @@ class Stripe
      */
     public static function addBetaVersion($betaName, $betaVersion)
     {
-        if (!preg_match('/^v\d+$/', $betaVersion)) {
-            throw new \Exception('Invalid beta version format. Expected format: "v" followed by a number.');
+        if (false !== strpos(self::$apiVersion, '; ' . $betaName . '=')) {
+            throw new \Exception('Stripe version header ' . self::$apiVersion . ' already contains entry for beta ' . $betaName);
         }
 
-        $pattern = '/; ' . preg_quote($betaName, '/') . '=v(\d+)/';
-        if (preg_match($pattern, self::$apiVersion, $matches)) {
-            $existingVersion = (int) $matches[1];
-            $newVersion = (int) substr($betaVersion, 1);
-
-            if ($newVersion <= $existingVersion) {
-                return; // Do nothing if the new version is not higher
-            }
-
-            // Replace the existing beta version with the new one
-            self::$apiVersion = preg_replace($pattern, '; ' . $betaName . '=' . $betaVersion, self::$apiVersion);
-        } else {
-            // Add the new beta version if it doesn't already exist
-            self::$apiVersion = self::$apiVersion . '; ' . $betaName . '=' . $betaVersion;
-        }
+        self::$apiVersion = self::$apiVersion . '; ' . $betaName . '=' . $betaVersion;
     }
 
     /**
