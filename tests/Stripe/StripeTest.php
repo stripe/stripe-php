@@ -43,8 +43,22 @@ final class StripeTest extends TestCase
         Stripe::setApiVersion('2024-02-26');
         Stripe::addBetaVersion('feature_beta', 'v3');
         self::assertSame(Stripe::$apiVersion, '2024-02-26; feature_beta=v3');
-        $this->expectException(\Exception::class);
-        $this->expectExceptionMessage('Stripe version header 2024-02-26; feature_beta=v3 already contains entry for beta feature_beta');
-        Stripe::addBetaVersion('feature_beta', 'v1');
+
+        // adding the same version should be a no-op
+        Stripe::addBetaVersion('feature_beta', 'v3');
+        self::assertSame(Stripe::$apiVersion, '2024-02-26; feature_beta=v3');
+
+        // adding a higher version should use the higher version
+        Stripe::addBetaVersion('feature_beta', 'v5');
+        self::assertSame(Stripe::$apiVersion, '2024-02-26; feature_beta=v5');
+
+        // adding a lower version should be a no-op
+        Stripe::addBetaVersion('feature_beta', 'v2');
+        self::assertSame(Stripe::$apiVersion, '2024-02-26; feature_beta=v5');
+
+        // adding another beta will append
+        Stripe::addBetaVersion('another_feature_beta', 'v2');
+        self::assertSame(Stripe::$apiVersion, '2024-02-26; feature_beta=v5; another_feature_beta=v2');
+
     }
 }
