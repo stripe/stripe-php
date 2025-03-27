@@ -35,6 +35,7 @@ class Coupon extends ApiResource
 
     const DURATION_FOREVER = 'forever';
     const DURATION_ONCE = 'once';
+    const DURATION_REPEATING = 'repeating';
 
     /**
      * You can create coupons easily via the <a

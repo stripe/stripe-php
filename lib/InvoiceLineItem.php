@@ -20,7 +20,7 @@ namespace Stripe;
  * @property null|string $invoice The ID of the invoice that contains this line item.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Note that for line items with <code>type=subscription</code>, <code>metadata</code> reflects the current metadata from the subscription associated with the line item, unless the invoice line was directly updated with different metadata after creation.
- * @property null|StripeObject $parent
+ * @property null|StripeObject $parent The parent that generated this invoice
  * @property StripeObject $period
  * @property null|StripeObject[] $pretax_credit_amounts Contains pretax credit amounts (ex: discount, credit grants, etc) that apply to this line item.
  * @property null|StripeObject $pricing The pricing information of the line item.
