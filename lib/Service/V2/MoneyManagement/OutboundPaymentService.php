@@ -5,20 +5,12 @@
 namespace Stripe\Service\V2\MoneyManagement;
 
 /**
- * @property OutboundPayments\QuoteService $quotes
- *
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class OutboundPaymentService extends \Stripe\Service\AbstractService
 {
-    use \Stripe\Service\ServiceNavigatorTrait;
-
-    protected static $classMap = [
-        'quotes' => OutboundPayments\QuoteService::class,
-    ];
-
     /**
      * Returns a list of OutboundPayments that match the provided filters.
      *
@@ -84,10 +76,5 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
     public function retrieve($id, $params = null, $opts = null)
     {
         return $this->request('get', $this->buildPath('/v2/money_management/outbound_payments/%s', $id), $params, $opts);
-    }
-
-    protected function getServiceClass($name)
-    {
-        return \array_key_exists($name, self::$classMap) ? self::$classMap[$name] : null;
     }
 }
