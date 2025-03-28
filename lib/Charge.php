@@ -32,7 +32,6 @@ namespace Stripe;
  * @property null|string $failure_code Error code explaining reason for charge failure if available (see <a href="https://stripe.com/docs/error-codes">the errors section</a> for a list of codes).
  * @property null|string $failure_message Message to user further explaining reason for charge failure if available.
  * @property null|StripeObject $fraud_details Information on fraud assessments for the charge.
- * @property null|Invoice|string $invoice ID of the invoice this charge is for if one exists.
  * @property null|StripeObject $level3
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -42,6 +41,7 @@ namespace Stripe;
  * @property null|PaymentIntent|string $payment_intent ID of the PaymentIntent associated with this charge, if one exists.
  * @property null|string $payment_method ID of the payment method used in this charge.
  * @property null|StripeObject $payment_method_details Details about the payment method at the time of the transaction.
+ * @property null|StripeObject $presentment_details
  * @property null|StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
  * @property null|string $receipt_email This is the email address that the receipt for this charge was sent to.
  * @property null|string $receipt_number This is the transaction number that appears on email receipts sent for this charge. This attribute will be <code>null</code> until a receipt has been sent.

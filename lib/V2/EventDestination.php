@@ -5,6 +5,8 @@
 namespace Stripe\V2;
 
 /**
+ * Set up an event destination to receive events from Stripe across multiple destination types, including <a href="https://docs.stripe.com/webhooks">webhook endpoints</a> and <a href="https://docs.stripe.com/event-destinations/eventbridge">Amazon EventBridge</a>. Event destinations support receiving <a href="https://docs.stripe.com/api/v2/events">thin events</a> and <a href="https://docs.stripe.com/api/events">snapshot events</a>.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property null|\Stripe\StripeObject $amazon_eventbridge Amazon EventBridge configuration.

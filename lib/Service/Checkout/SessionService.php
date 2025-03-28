@@ -46,7 +46,7 @@ class SessionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a Session object.
+     * Creates a Checkout Session object.
      *
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -61,10 +61,12 @@ class SessionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * A Session can be expired when it is in one of these statuses: <code>open</code>.
+     * A Checkout Session can be expired when it is in one of these statuses:
+     * <code>open</code>
      *
-     * After it expires, a customer can’t complete a Session and customers loading the
-     * Session see a message saying the Session is expired.
+     * After it expires, a customer can’t complete a Checkout Session and customers
+     * loading the Checkout Session see a message saying the Checkout Session is
+     * expired.
      *
      * @param string $id
      * @param null|array $params
@@ -80,7 +82,7 @@ class SessionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves a Session object.
+     * Retrieves a Checkout Session object.
      *
      * @param string $id
      * @param null|array $params
@@ -96,7 +98,7 @@ class SessionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates a Session object.
+     * Updates a Checkout Session object.
      *
      * @param string $id
      * @param null|array $params

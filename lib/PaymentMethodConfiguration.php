@@ -34,6 +34,7 @@ namespace Stripe;
  * @property null|StripeObject $au_becs_debit
  * @property null|StripeObject $bacs_debit
  * @property null|StripeObject $bancontact
+ * @property null|StripeObject $billie
  * @property null|StripeObject $blik
  * @property null|StripeObject $boleto
  * @property null|StripeObject $card
@@ -55,6 +56,7 @@ namespace Stripe;
  * @property null|StripeObject $mobilepay
  * @property null|StripeObject $multibanco
  * @property string $name The configuration's name.
+ * @property null|StripeObject $nz_bank_account
  * @property null|StripeObject $oxxo
  * @property null|StripeObject $p24
  * @property null|string $parent For child configs, the configuration's parent configuration.
@@ -63,6 +65,7 @@ namespace Stripe;
  * @property null|StripeObject $paypal
  * @property null|StripeObject $promptpay
  * @property null|StripeObject $revolut_pay
+ * @property null|StripeObject $satispay
  * @property null|StripeObject $sepa_debit
  * @property null|StripeObject $sofort
  * @property null|StripeObject $swish

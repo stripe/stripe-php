@@ -21,7 +21,7 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|StripeObject $business_profile Business information about the account.
- * @property null|string $business_type The business type. After you create an <a href="/api/account_links">Account Link</a> or <a href="/api/account_sessions">Account Session</a>, this property is only returned for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>application</code>, which includes Custom accounts.
+ * @property null|string $business_type The business type.
  * @property null|StripeObject $capabilities
  * @property null|bool $charges_enabled Whether the account can process charges.
  * @property null|StripeObject $company
@@ -34,7 +34,7 @@ namespace Stripe;
  * @property null|Collection<BankAccount|Card> $external_accounts External accounts (bank accounts and debit cards) currently attached to this account. External accounts are only returned for requests where <code>controller[is_controller]</code> is true.
  * @property null|StripeObject $future_requirements
  * @property null|StripeObject $groups The groups associated with the account.
- * @property null|Person $individual <p>This is an object representing a person associated with a Stripe account.</p><p>A platform cannot access a person for an account where <a href="/api/accounts/object#account_object-controller-requirement_collection">account.controller.requirement_collection</a> is <code>stripe</code>, which includes Standard and Express accounts, after creating an Account Link or Account Session to start Connect onboarding.</p><p>See the <a href="/connect/standard-accounts">Standard onboarding</a> or <a href="/connect/express-accounts">Express onboarding</a> documentation for information about prefilling information and account onboarding steps. Learn more about <a href="/connect/handling-api-verification#person-information">handling identity verification with the API</a>.</p>
+ * @property null|Person $individual <p>This is an object representing a person associated with a Stripe account.</p><p>A platform can only access a subset of data in a person for an account where <a href="/api/accounts/object#account_object-controller-requirement_collection">account.controller.requirement_collection</a> is <code>stripe</code>, which includes Standard and Express accounts, after creating an Account Link or Account Session to start Connect onboarding.</p><p>See the <a href="/connect/standard-accounts">Standard onboarding</a> or <a href="/connect/express-accounts">Express onboarding</a> documentation for information about prefilling information and account onboarding steps. Learn more about <a href="/connect/handling-api-verification#person-information">handling identity verification with the API</a>.</p>
  * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|bool $payouts_enabled Whether the funds in this account can be paid out.
  * @property null|StripeObject $requirements

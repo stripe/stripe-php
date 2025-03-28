@@ -76,8 +76,8 @@ class Capability extends ApiResource
     public static function update($_id, $_params = null, $_options = null)
     {
         $msg = 'Capabilities cannot be updated without an account ID. '
-                   . 'Update a capability using `Account::updateCapability('
-                   . "'account_id', 'capability_id', \$updateParams)`.";
+               . 'Update a capability using `Account::updateCapability('
+               . "'account_id', 'capability_id', \$updateParams)`.";
 
         throw new Exception\BadMethodCallException($msg);
     }
