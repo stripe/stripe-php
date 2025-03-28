@@ -2,14 +2,14 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\Service\V2\MoneyManagement\OutboundPayments;
+namespace Stripe\Service\V2\MoneyManagement;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class QuoteService extends \Stripe\Service\AbstractService
+class OutboundPaymentQuoteService extends \Stripe\Service\AbstractService
 {
     /**
      * Creates an OutboundPaymentQuote usable in an OutboundPayment.
@@ -23,6 +23,6 @@ class QuoteService extends \Stripe\Service\AbstractService
      */
     public function create($params = null, $opts = null)
     {
-        return $this->request('post', '/v2/money_management/outbound_payments/quotes', $params, $opts);
+        return $this->request('post', '/v2/money_management/outbound_payment_quotes', $params, $opts);
     }
 }

@@ -68,6 +68,7 @@ class Event extends ApiResource
     const APPLICATION_FEE_REFUNDED = 'application_fee.refunded';
     const APPLICATION_FEE_REFUND_UPDATED = 'application_fee.refund.updated';
     const BALANCE_AVAILABLE = 'balance.available';
+    const BALANCE_SETTINGS_UPDATED = 'balance_settings.updated';
     const BILLING_ALERT_TRIGGERED = 'billing.alert.triggered';
     const BILLING_CREDIT_BALANCE_TRANSACTION_CREATED = 'billing.credit_balance_transaction.created';
     const BILLING_CREDIT_GRANT_CREATED = 'billing.credit_grant.created';
@@ -350,8 +351,16 @@ class Event extends ApiResource
     const TYPE_APPLICATION_FEE_REFUNDED = 'application_fee.refunded';
     const TYPE_APPLICATION_FEE_REFUND_UPDATED = 'application_fee.refund.updated';
     const TYPE_BALANCE_AVAILABLE = 'balance.available';
+    const TYPE_BALANCE_SETTINGS_UPDATED = 'balance_settings.updated';
     const TYPE_BILLING_ALERT_TRIGGERED = 'billing.alert.triggered';
+    const TYPE_BILLING_CREDIT_BALANCE_TRANSACTION_CREATED = 'billing.credit_balance_transaction.created';
+    const TYPE_BILLING_CREDIT_GRANT_CREATED = 'billing.credit_grant.created';
+    const TYPE_BILLING_CREDIT_GRANT_UPDATED = 'billing.credit_grant.updated';
+    const TYPE_BILLING_METER_CREATED = 'billing.meter.created';
+    const TYPE_BILLING_METER_DEACTIVATED = 'billing.meter.deactivated';
     const TYPE_BILLING_METER_ERROR_REPORT_TRIGGERED = 'billing.meter_error_report.triggered';
+    const TYPE_BILLING_METER_REACTIVATED = 'billing.meter.reactivated';
+    const TYPE_BILLING_METER_UPDATED = 'billing.meter.updated';
     const TYPE_BILLING_PORTAL_CONFIGURATION_CREATED = 'billing_portal.configuration.created';
     const TYPE_BILLING_PORTAL_CONFIGURATION_UPDATED = 'billing_portal.configuration.updated';
     const TYPE_BILLING_PORTAL_SESSION_CREATED = 'billing_portal.session.created';

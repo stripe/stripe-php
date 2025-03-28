@@ -63,6 +63,7 @@ trait TestHelper
         Stripe::setApiKey($this->origApiKey);
         Stripe::setClientId($this->origClientId);
         Stripe::setAccountId($this->origAccountId);
+        Stripe::setMaxNetworkRetries(0);
     }
 
     /**
