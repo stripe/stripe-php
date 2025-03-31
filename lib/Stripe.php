@@ -232,7 +232,7 @@ class Stripe
     /**
      * > NOTE: this value is only read during client creation, so creating a client and _then_ calling this method won't affect your client's behavior.
      *
-     * @param int $maxNetworkRetries Maximum number of request retries.
+     * @param int $maxNetworkRetries maximum number of request retries
      */
     public static function setMaxNetworkRetries($maxNetworkRetries)
     {
