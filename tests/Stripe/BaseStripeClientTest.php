@@ -44,7 +44,8 @@ final class BaseStripeClientTest extends TestCase
     {
         $this->curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock();
+            ->getMock()
+        ;
     }
 
     public function testCtorDoesNotThrowWhenNoParams()
@@ -567,7 +568,8 @@ final class BaseStripeClientTest extends TestCase
     {
         $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock();
+            ->getMock()
+        ;
 
         $curlClientStub->method('executeRequestWithRetries')
             ->willReturn(['{"object": "charge"}', 200, []])
@@ -605,7 +607,8 @@ final class BaseStripeClientTest extends TestCase
     {
         $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock();
+            ->getMock()
+        ;
 
         $curlClientStub->method('executeRequestWithRetries')
             ->willReturn(['{"object": "charge"}', 200, []])
@@ -638,7 +641,8 @@ final class BaseStripeClientTest extends TestCase
     {
         $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock();
+            ->getMock()
+        ;
 
         $curlClientStub->method('executeRequestWithRetries')
             ->willReturn(['{"object": "charge"}', 200, []])
@@ -669,7 +673,8 @@ final class BaseStripeClientTest extends TestCase
     {
         $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock();
+            ->getMock()
+        ;
 
         $curlClientStub->method('executeRequestWithRetries')
             ->willReturn(['{"object": "charge"}', 200, []])
