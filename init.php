@@ -55,7 +55,6 @@ require __DIR__ . '/lib/ApiOperations/Delete.php';
 require __DIR__ . '/lib/ApiOperations/NestedResource.php';
 require __DIR__ . '/lib/ApiOperations/Request.php';
 require __DIR__ . '/lib/ApiOperations/Retrieve.php';
-require __DIR__ . '/lib/ApiOperations/Search.php';
 require __DIR__ . '/lib/ApiOperations/SingletonRetrieve.php';
 require __DIR__ . '/lib/ApiOperations/Update.php';
 
@@ -316,6 +315,7 @@ require __DIR__ . '/lib/Service/Identity/IdentityServiceFactory.php';
 require __DIR__ . '/lib/Service/Identity/VerificationReportService.php';
 require __DIR__ . '/lib/Service/Identity/VerificationSessionService.php';
 require __DIR__ . '/lib/Service/InvoiceItemService.php';
+require __DIR__ . '/lib/Service/InvoicePaymentService.php';
 require __DIR__ . '/lib/Service/InvoiceRenderingTemplateService.php';
 require __DIR__ . '/lib/Service/InvoiceService.php';
 require __DIR__ . '/lib/Service/Issuing/AuthorizationService.php';

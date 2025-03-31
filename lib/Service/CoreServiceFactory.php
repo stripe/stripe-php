@@ -42,6 +42,7 @@ namespace Stripe\Service;
  * @property GiftCards\GiftCardsServiceFactory $giftCards
  * @property Identity\IdentityServiceFactory $identity
  * @property InvoiceItemService $invoiceItems
+ * @property InvoicePaymentService $invoicePayments
  * @property InvoiceRenderingTemplateService $invoiceRenderingTemplates
  * @property InvoiceService $invoices
  * @property Issuing\IssuingServiceFactory $issuing
@@ -130,6 +131,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'giftCards' => GiftCards\GiftCardsServiceFactory::class,
         'identity' => Identity\IdentityServiceFactory::class,
         'invoiceItems' => InvoiceItemService::class,
+        'invoicePayments' => InvoicePaymentService::class,
         'invoiceRenderingTemplates' => InvoiceRenderingTemplateService::class,
         'invoices' => InvoiceService::class,
         'issuing' => Issuing\IssuingServiceFactory::class,
