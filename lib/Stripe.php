@@ -233,9 +233,6 @@ class Stripe
      * > NOTE: this value is only read during client creation, so creating a client and _then_ calling this method won't affect your client's behavior.
      *
      * @param int $maxNetworkRetries Maximum number of request retries.
-     *
-     * @deprecated The `setMaxNetworkRetries` method is deprecated and will be removed in a
-     *     future major version of the library. Configure the number of max retries at the client level or a per-request level.
      */
     public static function setMaxNetworkRetries($maxNetworkRetries)
     {
