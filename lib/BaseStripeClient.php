@@ -18,7 +18,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     /** @var string default base URL for Stripe's Meter Events API */
     const DEFAULT_METER_EVENTS_BASE = 'https://meter-events.stripe.com';
 
-    /** @var array<string, null|string|int> */
+    /** @var array<string, null|int|string> */
     const DEFAULT_CONFIG = [
         'api_key' => null,
         'app_info' => null,
@@ -83,7 +83,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             throw new Exception\InvalidArgumentException('$config must be a string or an array');
         }
 
-        if (!\array_key_exists("max_network_retries", $config)) {
+        if (!\array_key_exists('max_network_retries', $config)) {
             // if no value is passed, inherit the global value at the time of client creation
             $config['max_network_retries'] = Stripe::getMaxNetworkRetries();
         }
@@ -97,7 +97,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             'stripe_account' => $config['stripe_account'],
             'stripe_context' => $config['stripe_context'],
             'stripe_version' => $config['stripe_version'],
-            'max_network_retries' => $config['max_network_retries']
+            'max_network_retries' => $config['max_network_retries'],
         ]);
     }
 
@@ -164,7 +164,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     /**
      * Gets the configured number of retries.
      *
-     * @return int the number of times this client will retry failed requests.
+     * @return int the number of times this client will retry failed requests
      */
     public function getMaxNetworkRetries()
     {
