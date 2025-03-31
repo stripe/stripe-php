@@ -14,7 +14,7 @@ class WebhookEndpointService extends AbstractService
     /**
      * Returns a list of your webhook endpoints.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\WebhookEndpoint>
@@ -37,7 +37,7 @@ class WebhookEndpointService extends AbstractService
      * href="https://dashboard.stripe.com/account/webhooks">webhooks settings</a>
      * section of the Dashboard.
      *
-     * @param null|array $params
+     * @param null|array{api_version?: string, connect?: bool, description?: null|string, enabled_events: string[], expand?: string[], metadata?: null|\Stripe\StripeObject, url: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\WebhookEndpoint
@@ -71,7 +71,7 @@ class WebhookEndpointService extends AbstractService
      * Retrieves the webhook endpoint with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\WebhookEndpoint
@@ -88,7 +88,7 @@ class WebhookEndpointService extends AbstractService
      * <code>enabled_events</code>, and the status of your endpoint.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{description?: null|string, disabled?: bool, enabled_events?: string[], expand?: string[], metadata?: null|\Stripe\StripeObject, url?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\WebhookEndpoint

@@ -14,7 +14,7 @@ class MeterEventAdjustmentService extends \Stripe\Service\AbstractService
     /**
      * Creates a meter event adjustment to cancel a previously sent meter event.
      *
-     * @param null|array $params
+     * @param null|array{cancel: array{identifier: string}, event_name: string, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\MeterEventAdjustment

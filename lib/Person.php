@@ -14,18 +14,18 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string $account The account the person is associated with.
- * @property null|StripeObject $additional_tos_acceptances
- * @property null|StripeObject $address
- * @property null|StripeObject $address_kana The Kana variation of the person's address (Japan only).
- * @property null|StripeObject $address_kanji The Kanji variation of the person's address (Japan only).
+ * @property (object{account: null|(object{date: null|int, ip: null|string, user_agent: null|string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $additional_tos_acceptances
+ * @property (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\stdClass&StripeObject) $address
+ * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string, town: null|string}&\stdClass&StripeObject) $address_kana The Kana variation of the person's address (Japan only).
+ * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string, town: null|string}&\stdClass&StripeObject) $address_kanji The Kanji variation of the person's address (Japan only).
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|StripeObject $dob
+ * @property (object{day: null|int, month: null|int, year: null|int}&\stdClass&StripeObject) $dob
  * @property null|string $email The person's email address. Also available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>stripe</code>.
  * @property null|string $first_name The person's first name. Also available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>stripe</code>.
  * @property null|string $first_name_kana The Kana variation of the person's first name (Japan only). Also available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>stripe</code>.
  * @property null|string $first_name_kanji The Kanji variation of the person's first name (Japan only). Also available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>stripe</code>.
  * @property null|string[] $full_name_aliases A list of alternate names or aliases that the person is known by. Also available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>stripe</code>.
- * @property null|StripeObject $future_requirements Information about the <a href="https://stripe.com/docs/connect/custom-accounts/future-requirements">upcoming new requirements for this person</a>, including what information needs to be collected, and by when.
+ * @property null|(object{alternatives: null|(object{alternative_fields_due: string[], original_fields_due: string[]}&\stdClass&StripeObject)[], currently_due: string[], errors: (object{code: string, reason: string, requirement: string}&\stdClass&StripeObject)[], eventually_due: string[], past_due: string[], pending_verification: string[]}&\stdClass&StripeObject) $future_requirements Information about the <a href="https://stripe.com/docs/connect/custom-accounts/future-requirements">upcoming new requirements for this person</a>, including what information needs to be collected, and by when.
  * @property null|string $gender The person's gender.
  * @property null|bool $id_number_provided Whether the person's <code>id_number</code> was provided. True if either the full ID number was provided or if only the required part of the ID number was provided (ex. last four of an individual's SSN for the US indicated by <code>ssn_last_4_provided</code>).
  * @property null|bool $id_number_secondary_provided Whether the person's <code>id_number_secondary</code> was provided.
@@ -37,11 +37,11 @@ namespace Stripe;
  * @property null|string $nationality The country where the person is a national.
  * @property null|string $phone The person's phone number.
  * @property null|string $political_exposure Indicates if the person or any of their representatives, family members, or other closely related persons, declares that they hold or have held an important public job or function, in any jurisdiction.
- * @property null|StripeObject $registered_address
- * @property null|StripeObject $relationship
- * @property null|StripeObject $requirements Information about the requirements for this person, including what information needs to be collected, and by when.
+ * @property (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\stdClass&StripeObject) $registered_address
+ * @property (object{authorizer: null|bool, director: null|bool, executive: null|bool, legal_guardian: null|bool, owner: null|bool, percent_ownership: null|float, representative: null|bool, title: null|string}&\stdClass&StripeObject) $relationship
+ * @property null|(object{alternatives: null|(object{alternative_fields_due: string[], original_fields_due: string[]}&\stdClass&StripeObject)[], currently_due: string[], errors: (object{code: string, reason: string, requirement: string}&\stdClass&StripeObject)[], eventually_due: string[], past_due: string[], pending_verification: string[]}&\stdClass&StripeObject) $requirements Information about the requirements for this person, including what information needs to be collected, and by when.
  * @property null|bool $ssn_last_4_provided Whether the last four digits of the person's Social Security number have been provided (U.S. only).
- * @property null|StripeObject $verification
+ * @property (object{additional_document?: null|(object{back: null|File|string, details: null|string, details_code: null|string, front: null|File|string}&\stdClass&StripeObject), details?: null|string, details_code?: null|string, document?: (object{back: null|File|string, details: null|string, details_code: null|string, front: null|File|string}&\stdClass&StripeObject), status: string}&\stdClass&StripeObject) $verification
  */
 class Person extends ApiResource
 {

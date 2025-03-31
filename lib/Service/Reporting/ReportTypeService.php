@@ -14,7 +14,7 @@ class ReportTypeService extends \Stripe\Service\AbstractService
     /**
      * Returns a full list of Report Types.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Reporting\ReportType>
@@ -31,7 +31,7 @@ class ReportTypeService extends \Stripe\Service\AbstractService
      * href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.).
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Reporting\ReportType

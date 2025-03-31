@@ -15,7 +15,7 @@ class OrderService extends \Stripe\Service\AbstractService
      * Lists all Climate order objects. The orders are returned sorted by creation
      * date, with the most recently created orders appearing first.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Climate\Order>
@@ -36,7 +36,7 @@ class OrderService extends \Stripe\Service\AbstractService
      * <code>amount_total</code>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Climate\Order
@@ -53,7 +53,7 @@ class OrderService extends \Stripe\Service\AbstractService
      * processed immediately after creation and payment will be deducted your Stripe
      * balance.
      *
-     * @param null|array $params
+     * @param null|array{amount?: int, beneficiary?: array{public_name: string}, currency?: string, expand?: string[], metadata?: \Stripe\StripeObject, metric_tons?: string, product: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Climate\Order
@@ -69,7 +69,7 @@ class OrderService extends \Stripe\Service\AbstractService
      * Retrieves the details of a Climate order object with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Climate\Order
@@ -85,7 +85,7 @@ class OrderService extends \Stripe\Service\AbstractService
      * Updates the specified order by setting the values of the parameters passed.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{beneficiary?: null|array{public_name: null|string}, expand?: string[], metadata?: \Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Climate\Order

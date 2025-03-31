@@ -15,7 +15,7 @@ class SourceService extends AbstractService
      * List source transactions for a given source.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\SourceTransaction>
@@ -30,7 +30,7 @@ class SourceService extends AbstractService
     /**
      * Creates a new source object.
      *
-     * @param null|array $params
+     * @param null|array{amount?: int, currency?: string, customer?: string, expand?: string[], flow?: string, mandate?: array{acceptance?: array{date?: int, ip?: string, offline?: array{contact_email: string}, online?: array{date?: int, ip?: string, user_agent?: string}, status: string, type?: string, user_agent?: string}, amount?: null|int, currency?: string, interval?: string, notification_method?: string}, metadata?: \Stripe\StripeObject, original_source?: string, owner?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: string, name?: string, phone?: string}, receiver?: array{refund_attributes_method?: string}, redirect?: array{return_url: string}, source_order?: array{items?: array{amount?: int, currency?: string, description?: string, parent?: string, quantity?: int, type?: string}[], shipping?: array{address: array{city?: string, country?: string, line1: string, line2?: string, postal_code?: string, state?: string}, carrier?: string, name?: string, phone?: string, tracking_number?: string}}, statement_descriptor?: string, token?: string, type?: string, usage?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Source
@@ -47,7 +47,7 @@ class SourceService extends AbstractService
      *
      * @param string $parentId
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Account|\Stripe\BankAccount|\Stripe\Card|\Stripe\Source
@@ -65,7 +65,7 @@ class SourceService extends AbstractService
      * object information.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{client_secret?: string, expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Source
@@ -87,7 +87,7 @@ class SourceService extends AbstractService
      * guides</a> for more detail.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{amount?: int, expand?: string[], mandate?: array{acceptance?: array{date?: int, ip?: string, offline?: array{contact_email: string}, online?: array{date?: int, ip?: string, user_agent?: string}, status: string, type?: string, user_agent?: string}, amount?: null|int, currency?: string, interval?: string, notification_method?: string}, metadata?: null|\Stripe\StripeObject, owner?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: string, name?: string, phone?: string}, source_order?: array{items?: array{amount?: int, currency?: string, description?: string, parent?: string, quantity?: int, type?: string}[], shipping?: array{address: array{city?: string, country?: string, line1: string, line2?: string, postal_code?: string, state?: string}, carrier?: string, name?: string, phone?: string, tracking_number?: string}}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Source
@@ -103,7 +103,7 @@ class SourceService extends AbstractService
      * Verify a given source.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], values: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Source

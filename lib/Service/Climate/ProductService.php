@@ -14,7 +14,7 @@ class ProductService extends \Stripe\Service\AbstractService
     /**
      * Lists all available Climate product objects.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Climate\Product>
@@ -30,7 +30,7 @@ class ProductService extends \Stripe\Service\AbstractService
      * Retrieves the details of a Climate product with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Climate\Product

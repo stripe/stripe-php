@@ -16,7 +16,7 @@ class PersonalizationDesignService extends \Stripe\Service\AbstractService
      * descending order by creation date, with the most recently created object
      * appearing first.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, lookup_keys?: string[], preferences?: array{is_default?: bool, is_platform_default?: bool}, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Issuing\PersonalizationDesign>
@@ -31,7 +31,7 @@ class PersonalizationDesignService extends \Stripe\Service\AbstractService
     /**
      * Creates a personalization design object.
      *
-     * @param null|array $params
+     * @param null|array{card_logo?: string, carrier_text?: array{footer_body?: null|string, footer_title?: null|string, header_body?: null|string, header_title?: null|string}, expand?: string[], lookup_key?: string, metadata?: \Stripe\StripeObject, name?: string, physical_bundle: string, preferences?: array{is_default: bool}, transfer_lookup_key?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\PersonalizationDesign
@@ -47,7 +47,7 @@ class PersonalizationDesignService extends \Stripe\Service\AbstractService
      * Retrieves a personalization design object.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\PersonalizationDesign
@@ -63,7 +63,7 @@ class PersonalizationDesignService extends \Stripe\Service\AbstractService
      * Updates a card personalization object.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{card_logo?: null|string, carrier_text?: null|array{footer_body?: null|string, footer_title?: null|string, header_body?: null|string, header_title?: null|string}, expand?: string[], lookup_key?: null|string, metadata?: \Stripe\StripeObject, name?: null|string, physical_bundle?: string, preferences?: array{is_default: bool}, transfer_lookup_key?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\PersonalizationDesign

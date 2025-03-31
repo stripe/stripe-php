@@ -15,7 +15,7 @@ class ApplicationFeeService extends AbstractService
      * Returns a list of application fees you’ve previously collected. The application
      * fees are returned in sorted order, with the most recent fees appearing first.
      *
-     * @param null|array $params
+     * @param null|array{charge?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\ApplicationFee>
@@ -35,7 +35,7 @@ class ApplicationFeeService extends AbstractService
      * page through additional refunds.
      *
      * @param string $parentId
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\ApplicationFeeRefund>
@@ -60,7 +60,7 @@ class ApplicationFeeService extends AbstractService
      * trying to refund more money than is left on an application fee.
      *
      * @param string $parentId
-     * @param null|array $params
+     * @param null|array{amount?: int, expand?: string[], metadata?: \Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\ApplicationFeeRefund
@@ -77,7 +77,7 @@ class ApplicationFeeService extends AbstractService
      * same information is returned when refunding the application fee.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\ApplicationFee
@@ -96,7 +96,7 @@ class ApplicationFeeService extends AbstractService
      *
      * @param string $parentId
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\ApplicationFeeRefund
@@ -116,7 +116,7 @@ class ApplicationFeeService extends AbstractService
      *
      * @param string $parentId
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\ApplicationFeeRefund

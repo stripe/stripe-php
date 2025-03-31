@@ -14,7 +14,7 @@ namespace Stripe\Tax;
  * @property null|string $product The ID of an existing <a href="https://stripe.com/docs/api/products/object">Product</a>.
  * @property int $quantity The number of units of the item being purchased. For reversals, this is the quantity reversed.
  * @property string $reference A custom identifier for this line item in the transaction.
- * @property null|\Stripe\StripeObject $reversal If <code>type=reversal</code>, contains information about what was reversed.
+ * @property null|(object{original_line_item: string}&\stdClass&\Stripe\StripeObject) $reversal If <code>type=reversal</code>, contains information about what was reversed.
  * @property string $tax_behavior Specifies whether the <code>amount</code> includes taxes. If <code>tax_behavior=inclusive</code>, then the amount includes taxes.
  * @property string $tax_code The <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID used for this resource.
  * @property string $type If <code>reversal</code>, this line item reverses an earlier transaction.

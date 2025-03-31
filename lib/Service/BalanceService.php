@@ -17,7 +17,7 @@ class BalanceService extends AbstractService
      * href="/docs/connect/account-balances#accounting-for-negative-balances">Accounting
      * for negative balances</a>.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Balance

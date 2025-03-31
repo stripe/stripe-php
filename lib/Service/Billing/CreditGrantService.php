@@ -14,7 +14,7 @@ class CreditGrantService extends \Stripe\Service\AbstractService
     /**
      * Retrieve a list of credit grants.
      *
-     * @param null|array $params
+     * @param null|array{customer?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Billing\CreditGrant>
@@ -29,7 +29,7 @@ class CreditGrantService extends \Stripe\Service\AbstractService
     /**
      * Creates a credit grant.
      *
-     * @param null|array $params
+     * @param null|array{amount: array{monetary?: array{currency: string, value: int}, type: string}, applicability_config: array{scope: array{price_type?: string, prices?: array{id: string}[]}}, category: string, customer: string, effective_at?: int, expand?: string[], expires_at?: int, metadata?: \Stripe\StripeObject, name?: string, priority?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Billing\CreditGrant
@@ -45,7 +45,7 @@ class CreditGrantService extends \Stripe\Service\AbstractService
      * Expires a credit grant.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Billing\CreditGrant
@@ -61,7 +61,7 @@ class CreditGrantService extends \Stripe\Service\AbstractService
      * Retrieves a credit grant.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Billing\CreditGrant
@@ -77,7 +77,7 @@ class CreditGrantService extends \Stripe\Service\AbstractService
      * Updates a credit grant.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], expires_at?: null|int, metadata?: \Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Billing\CreditGrant
@@ -93,7 +93,7 @@ class CreditGrantService extends \Stripe\Service\AbstractService
      * Voids a credit grant.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Billing\CreditGrant

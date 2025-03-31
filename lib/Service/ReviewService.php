@@ -16,7 +16,7 @@ class ReviewService extends AbstractService
      * <code>true</code>. The objects are sorted in descending order by creation date,
      * with the most recently created object appearing first.
      *
-     * @param null|array $params
+     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Review>
@@ -33,7 +33,7 @@ class ReviewService extends AbstractService
      * of reviews.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Review
@@ -49,7 +49,7 @@ class ReviewService extends AbstractService
      * Retrieves a <code>Review</code> object.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Review

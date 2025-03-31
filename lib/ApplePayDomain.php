@@ -18,7 +18,7 @@ class ApplePayDomain extends ApiResource
     /**
      * Create an apple pay domain.
      *
-     * @param null|array $params
+     * @param null|array{domain_name: string, expand?: string[]} $params
      * @param null|array|string $options
      *
      * @return ApplePayDomain the created resource
@@ -61,7 +61,7 @@ class ApplePayDomain extends ApiResource
     /**
      * List apple pay domains.
      *
-     * @param null|array $params
+     * @param null|array{domain_name?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<ApplePayDomain> of ApiResources

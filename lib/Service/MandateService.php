@@ -15,7 +15,7 @@ class MandateService extends AbstractService
      * Retrieves a Mandate object.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Mandate

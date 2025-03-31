@@ -16,7 +16,7 @@ class PayoutService extends AbstractService
      * that Stripe sent to you. The payouts return in sorted order, with the most
      * recently created payouts appearing first.
      *
-     * @param null|array $params
+     * @param null|array{arrival_date?: array|int, created?: array|int, destination?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Payout>
@@ -34,7 +34,7 @@ class PayoutService extends AbstractService
      * can’t cancel automatic Stripe payouts.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Payout
@@ -59,7 +59,7 @@ class PayoutService extends AbstractService
      * from. The <a href="#balance_object">balance object</a> details available and
      * pending amounts by source type.
      *
-     * @param null|array $params
+     * @param null|array{amount: int, currency: string, description?: string, destination?: string, expand?: string[], metadata?: \Stripe\StripeObject, method?: string, source_type?: string, statement_descriptor?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Payout
@@ -77,7 +77,7 @@ class PayoutService extends AbstractService
      * corresponding payout information.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Payout
@@ -100,7 +100,7 @@ class PayoutService extends AbstractService
      * the debit on the bank account and that no other authorization is required.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], metadata?: \Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Payout
@@ -118,7 +118,7 @@ class PayoutService extends AbstractService
      * metadata as arguments.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Payout

@@ -44,10 +44,10 @@ namespace Stripe;
  * @property null|string $account The connected account that originates the event.
  * @property null|string $api_version The Stripe API version used to render <code>data</code>. This property is populated only for events on or after October 31, 2014.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property StripeObject $data
+ * @property (object{object: StripeObject, previous_attributes?: StripeObject}&\stdClass&StripeObject) $data
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property int $pending_webhooks Number of webhooks that haven't been successfully delivered (for example, to return a 20x response) to the URLs you specify.
- * @property null|StripeObject $request Information on the API request that triggers the event.
+ * @property null|(object{id: null|string, idempotency_key: null|string}&\stdClass&StripeObject) $request Information on the API request that triggers the event.
  * @property string $type Description of the event (for example, <code>invoice.created</code> or <code>charge.refunded</code>).
  */
 class Event extends ApiResource
@@ -557,7 +557,7 @@ class Event extends ApiResource
      * <code>api_version</code> attribute (not according to your current Stripe API
      * version or <code>Stripe-Version</code> header).
      *
-     * @param null|array $params
+     * @param null|array{created?: array|int, delivery_success?: bool, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string, types?: string[]} $params
      * @param null|array|string $opts
      *
      * @return Collection<Event> of ApiResources
