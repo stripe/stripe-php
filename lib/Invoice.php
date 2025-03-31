@@ -104,7 +104,6 @@ namespace Stripe;
  * @property null|string $statement_descriptor Extra information about an invoice for the customer's credit card statement.
  * @property null|string $status The status of the invoice, one of <code>draft</code>, <code>open</code>, <code>paid</code>, <code>uncollectible</code>, or <code>void</code>. <a href="https://stripe.com/docs/billing/invoices/workflow#workflow-overview">Learn more</a>
  * @property StripeObject $status_transitions
- * @property null|string|Subscription $subscription
  * @property int $subtotal Total of all subscriptions, invoice items, and prorations on the invoice before any invoice level discount or exclusive tax is applied. Item discounts are already incorporated
  * @property null|int $subtotal_excluding_tax The integer amount in cents (or local equivalent) representing the subtotal of the invoice before any invoice level discount or tax is applied. Item discounts are already incorporated
  * @property null|string|TestHelpers\TestClock $test_clock ID of the test clock this invoice belongs to.
