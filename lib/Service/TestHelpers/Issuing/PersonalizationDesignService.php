@@ -16,7 +16,7 @@ class PersonalizationDesignService extends \Stripe\Service\AbstractService
      * object to <code>active</code>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\PersonalizationDesign
@@ -33,7 +33,7 @@ class PersonalizationDesignService extends \Stripe\Service\AbstractService
      * object to <code>inactive</code>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\PersonalizationDesign
@@ -50,7 +50,7 @@ class PersonalizationDesignService extends \Stripe\Service\AbstractService
      * object to <code>rejected</code>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], rejection_reasons: array{card_logo?: string[], carrier_text?: string[]}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\PersonalizationDesign

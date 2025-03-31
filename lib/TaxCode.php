@@ -20,7 +20,7 @@ class TaxCode extends ApiResource
      * A list of <a href="https://stripe.com/docs/tax/tax-categories">all tax codes
      * available</a> to add to Products in order to allow specific tax calculations.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<TaxCode> of ApiResources

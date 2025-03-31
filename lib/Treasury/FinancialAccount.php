@@ -11,20 +11,20 @@ namespace Stripe\Treasury;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string[] $active_features The array of paths to active Features in the Features hash.
- * @property \Stripe\StripeObject $balance Balance information for the FinancialAccount
+ * @property (object{cash: \Stripe\StripeObject, inbound_pending: \Stripe\StripeObject, outbound_pending: \Stripe\StripeObject}&\stdClass&\Stripe\StripeObject) $balance Balance information for the FinancialAccount
  * @property string $country Two-letter country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>).
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|FinancialAccountFeatures $features Encodes whether a FinancialAccount has access to a particular Feature, with a <code>status</code> enum and associated <code>status_details</code>. Stripe or the platform can control Features via the requested field.
- * @property \Stripe\StripeObject[] $financial_addresses The set of credentials that resolve to a FinancialAccount.
+ * @property ((object{aba?: (object{account_holder_name: string, account_number?: null|string, account_number_last4: string, bank_name: string, routing_number: string}&\stdClass&\Stripe\StripeObject), supported_networks?: string[], type: string}&\stdClass&\Stripe\StripeObject))[] $financial_addresses The set of credentials that resolve to a FinancialAccount.
  * @property null|bool $is_default
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $nickname The nickname for the FinancialAccount.
  * @property null|string[] $pending_features The array of paths to pending Features in the Features hash.
- * @property null|\Stripe\StripeObject $platform_restrictions The set of functionalities that the platform can restrict on the FinancialAccount.
+ * @property null|(object{inbound_flows: null|string, outbound_flows: null|string}&\stdClass&\Stripe\StripeObject) $platform_restrictions The set of functionalities that the platform can restrict on the FinancialAccount.
  * @property null|string[] $restricted_features The array of paths to restricted Features in the Features hash.
  * @property string $status Status of this FinancialAccount.
- * @property \Stripe\StripeObject $status_details
+ * @property (object{closed: null|(object{reasons: string[]}&\stdClass&\Stripe\StripeObject)}&\stdClass&\Stripe\StripeObject) $status_details
  * @property string[] $supported_currencies The currencies the FinancialAccount can hold a balance in. Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase.
  */
 class FinancialAccount extends \Stripe\ApiResource
@@ -40,7 +40,7 @@ class FinancialAccount extends \Stripe\ApiResource
      * Creates a new FinancialAccount. Each connected account can have up to three
      * FinancialAccounts by default.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], features?: array{card_issuing?: array{requested: bool}, deposit_insurance?: array{requested: bool}, financial_addresses?: array{aba?: array{requested: bool}}, inbound_transfers?: array{ach?: array{requested: bool}}, intra_stripe_flows?: array{requested: bool}, outbound_payments?: array{ach?: array{requested: bool}, us_domestic_wire?: array{requested: bool}}, outbound_transfers?: array{ach?: array{requested: bool}, us_domestic_wire?: array{requested: bool}}}, metadata?: \Stripe\StripeObject, nickname?: null|string, platform_restrictions?: array{inbound_flows?: string, outbound_flows?: string}, supported_currencies: string[]} $params
      * @param null|array|string $options
      *
      * @return FinancialAccount the created resource
@@ -62,7 +62,7 @@ class FinancialAccount extends \Stripe\ApiResource
     /**
      * Returns a list of FinancialAccounts.
      *
-     * @param null|array $params
+     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<FinancialAccount> of ApiResources
@@ -99,7 +99,7 @@ class FinancialAccount extends \Stripe\ApiResource
      * Updates the details of a FinancialAccount.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{expand?: string[], features?: array{card_issuing?: array{requested: bool}, deposit_insurance?: array{requested: bool}, financial_addresses?: array{aba?: array{requested: bool}}, inbound_transfers?: array{ach?: array{requested: bool}}, intra_stripe_flows?: array{requested: bool}, outbound_payments?: array{ach?: array{requested: bool}, us_domestic_wire?: array{requested: bool}}, outbound_transfers?: array{ach?: array{requested: bool}, us_domestic_wire?: array{requested: bool}}}, forwarding_settings?: array{financial_account?: string, payment_method?: string, type: string}, metadata?: \Stripe\StripeObject, nickname?: null|string, platform_restrictions?: array{inbound_flows?: string, outbound_flows?: string}} $params
      * @param null|array|string $opts
      *
      * @return FinancialAccount the updated resource

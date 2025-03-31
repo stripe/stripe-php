@@ -25,7 +25,7 @@ class Product extends \Stripe\ApiResource
     /**
      * Lists all available Climate product objects.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<Product> of ApiResources

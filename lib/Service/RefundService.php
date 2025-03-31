@@ -16,7 +16,7 @@ class RefundService extends AbstractService
      * order, with the most recent refunds appearing first. The 10 most recent refunds
      * are always available by default on the Charge object.
      *
-     * @param null|array $params
+     * @param null|array{charge?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Refund>
@@ -35,7 +35,7 @@ class RefundService extends AbstractService
      * require customer action can enter the <code>requires_action</code> state.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Refund
@@ -62,7 +62,7 @@ class RefundService extends AbstractService
      * an error when called on an already-refunded charge, or when trying to refund
      * more money than is left on a charge.
      *
-     * @param null|array $params
+     * @param null|array{amount?: int, charge?: string, currency?: string, customer?: string, expand?: string[], instructions_email?: string, metadata?: null|\Stripe\StripeObject, origin?: string, payment_intent?: string, reason?: string, refund_application_fee?: bool, reverse_transfer?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Refund
@@ -78,7 +78,7 @@ class RefundService extends AbstractService
      * Retrieves the details of an existing refund.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Refund
@@ -97,7 +97,7 @@ class RefundService extends AbstractService
      * This request only accepts <code>metadata</code> as an argument.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Refund

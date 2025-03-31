@@ -11,7 +11,7 @@ namespace Stripe\Terminal;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property \Stripe\StripeObject $address
+ * @property (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\stdClass&\Stripe\StripeObject) $address
  * @property null|string $configuration_overrides The ID of a configuration that will be used to customize all readers in this location.
  * @property string $display_name The display name of the location.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
@@ -28,7 +28,7 @@ class Location extends \Stripe\ApiResource
      * address fields are required in each country, see the <a
      * href="/docs/terminal/fleet/locations">Manage locations</a> guide.
      *
-     * @param null|array $params
+     * @param null|array{address: array{city?: string, country: string, line1?: string, line2?: string, postal_code?: string, state?: string}, configuration_overrides?: string, display_name: string, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|array|string $options
      *
      * @return Location the created resource
@@ -71,7 +71,7 @@ class Location extends \Stripe\ApiResource
     /**
      * Returns a list of <code>Location</code> objects.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<Location> of ApiResources
@@ -109,7 +109,7 @@ class Location extends \Stripe\ApiResource
      * passed. Any parameters not provided will be left unchanged.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, configuration_overrides?: null|string, display_name?: string, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|array|string $opts
      *
      * @return Location the updated resource

@@ -15,7 +15,7 @@ class ProductService extends AbstractService
      * Returns a list of your products. The products are returned sorted by creation
      * date, with the most recently created products appearing first.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, created?: array|int, ending_before?: string, expand?: string[], ids?: string[], limit?: int, shippable?: bool, starting_after?: string, type?: string, url?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Product>
@@ -31,7 +31,7 @@ class ProductService extends AbstractService
      * Retrieve a list of features for a product.
      *
      * @param string $parentId
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\ProductFeature>
@@ -46,7 +46,7 @@ class ProductService extends AbstractService
     /**
      * Creates a new product object.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, default_price_data?: array{currency: string, currency_options?: \Stripe\StripeObject, custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, metadata?: \Stripe\StripeObject, recurring?: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, description?: string, expand?: string[], id?: string, images?: string[], marketing_features?: array{name: string}[], metadata?: \Stripe\StripeObject, name: string, package_dimensions?: array{height: float, length: float, weight: float, width: float}, shippable?: bool, statement_descriptor?: string, tax_code?: string, type?: string, unit_label?: string, url?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Product
@@ -62,7 +62,7 @@ class ProductService extends AbstractService
      * Creates a product_feature, which represents a feature attachment to a product.
      *
      * @param string $parentId
-     * @param null|array $params
+     * @param null|array{entitlement_feature: string, expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\ProductFeature
@@ -115,7 +115,7 @@ class ProductService extends AbstractService
      * the corresponding product information.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Product
@@ -132,7 +132,7 @@ class ProductService extends AbstractService
      *
      * @param string $parentId
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\ProductFeature
@@ -152,7 +152,7 @@ class ProductService extends AbstractService
      * Occasionally, propagation of new or updated data can be up to an hour behind
      * during outages. Search functionality is not available to merchants in India.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], limit?: int, page?: string, query: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\SearchResult<\Stripe\Product>
@@ -169,7 +169,7 @@ class ProductService extends AbstractService
      * parameters not provided will be left unchanged.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{active?: bool, default_price?: string, description?: null|string, expand?: string[], images?: null|string[], marketing_features?: null|array{name: string}[], metadata?: null|\Stripe\StripeObject, name?: string, package_dimensions?: null|array{height: float, length: float, weight: float, width: float}, shippable?: bool, statement_descriptor?: string, tax_code?: null|string, unit_label?: null|string, url?: null|string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Product

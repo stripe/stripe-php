@@ -15,7 +15,7 @@ class QuoteService extends AbstractService
      * Accepts the specified quote.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Quote
@@ -30,7 +30,7 @@ class QuoteService extends AbstractService
     /**
      * Returns a list of your quotes.
      *
-     * @param null|array $params
+     * @param null|array{customer?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string, test_clock?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Quote>
@@ -49,7 +49,7 @@ class QuoteService extends AbstractService
      * you can retrieve the full (paginated) list of upfront line items.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\LineItem>
@@ -67,7 +67,7 @@ class QuoteService extends AbstractService
      * you can retrieve the full (paginated) list of line items.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\LineItem>
@@ -83,7 +83,7 @@ class QuoteService extends AbstractService
      * Cancels the quote.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Quote
@@ -101,7 +101,7 @@ class QuoteService extends AbstractService
      * <code>expires_at</code> can be set in the dashboard via the <a
      * href="https://dashboard.stripe.com/settings/billing/quote">quote template</a>.
      *
-     * @param null|array $params
+     * @param null|array{application_fee_amount?: null|int, application_fee_percent?: null|float, automatic_tax?: array{enabled: bool, liability?: array{account?: string, type: string}}, collection_method?: string, customer?: string, default_tax_rates?: null|string[], description?: null|string, discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], expand?: string[], expires_at?: int, footer?: null|string, from_quote?: array{is_revision?: bool, quote: string}, header?: null|string, invoice_settings?: array{days_until_due?: int, issuer?: array{account?: string, type: string}}, line_items?: (array{discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], price?: string, price_data?: array{currency: string, product: string, recurring?: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], metadata?: \Stripe\StripeObject, on_behalf_of?: null|string, subscription_data?: array{description?: string, effective_date?: null|array|int|string, metadata?: \Stripe\StripeObject, trial_period_days?: null|int}, test_clock?: string, transfer_data?: null|array{amount?: int, amount_percent?: float, destination: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Quote
@@ -117,7 +117,7 @@ class QuoteService extends AbstractService
      * Finalizes the quote.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], expires_at?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Quote
@@ -135,7 +135,7 @@ class QuoteService extends AbstractService
      *
      * @param string $id
      * @param callable $readBodyChunkCallable
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return mixed
@@ -156,7 +156,7 @@ class QuoteService extends AbstractService
      * Retrieves the quote with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Quote
@@ -172,7 +172,7 @@ class QuoteService extends AbstractService
      * A quote models prices and services for a customer.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{application_fee_amount?: null|int, application_fee_percent?: null|float, automatic_tax?: array{enabled: bool, liability?: array{account?: string, type: string}}, collection_method?: string, customer?: string, default_tax_rates?: null|string[], description?: null|string, discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], expand?: string[], expires_at?: int, footer?: null|string, header?: null|string, invoice_settings?: array{days_until_due?: int, issuer?: array{account?: string, type: string}}, line_items?: (array{discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], id?: string, price?: string, price_data?: array{currency: string, product: string, recurring?: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], metadata?: \Stripe\StripeObject, on_behalf_of?: null|string, subscription_data?: array{description?: null|string, effective_date?: null|array|int|string, metadata?: \Stripe\StripeObject, trial_period_days?: null|int}, transfer_data?: null|array{amount?: int, amount_percent?: float, destination: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Quote

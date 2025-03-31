@@ -14,7 +14,7 @@ class EarlyFraudWarningService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of early fraud warnings.
      *
-     * @param null|array $params
+     * @param null|array{charge?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Radar\EarlyFraudWarning>
@@ -34,7 +34,7 @@ class EarlyFraudWarningService extends \Stripe\Service\AbstractService
      * warning</a> object reference for more details.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Radar\EarlyFraudWarning

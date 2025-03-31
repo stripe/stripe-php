@@ -12,15 +12,15 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property StripeObject $amazon_pay Indicates the status of a specific payment method on a payment method domain.
- * @property StripeObject $apple_pay Indicates the status of a specific payment method on a payment method domain.
+ * @property (object{status: string, status_details?: (object{error_message: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $amazon_pay Indicates the status of a specific payment method on a payment method domain.
+ * @property (object{status: string, status_details?: (object{error_message: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $apple_pay Indicates the status of a specific payment method on a payment method domain.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $domain_name The domain name that this payment method domain object represents.
  * @property bool $enabled Whether this payment method domain is enabled. If the domain is not enabled, payment methods that require a payment method domain will not appear in Elements.
- * @property StripeObject $google_pay Indicates the status of a specific payment method on a payment method domain.
- * @property StripeObject $link Indicates the status of a specific payment method on a payment method domain.
+ * @property (object{status: string, status_details?: (object{error_message: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $google_pay Indicates the status of a specific payment method on a payment method domain.
+ * @property (object{status: string, status_details?: (object{error_message: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $link Indicates the status of a specific payment method on a payment method domain.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property StripeObject $paypal Indicates the status of a specific payment method on a payment method domain.
+ * @property (object{status: string, status_details?: (object{error_message: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $paypal Indicates the status of a specific payment method on a payment method domain.
  */
 class PaymentMethodDomain extends ApiResource
 {
@@ -31,7 +31,7 @@ class PaymentMethodDomain extends ApiResource
     /**
      * Creates a payment method domain.
      *
-     * @param null|array $params
+     * @param null|array{domain_name: string, enabled?: bool, expand?: string[]} $params
      * @param null|array|string $options
      *
      * @return PaymentMethodDomain the created resource
@@ -53,7 +53,7 @@ class PaymentMethodDomain extends ApiResource
     /**
      * Lists the details of existing payment method domains.
      *
-     * @param null|array $params
+     * @param null|array{domain_name?: string, enabled?: bool, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<PaymentMethodDomain> of ApiResources
@@ -90,7 +90,7 @@ class PaymentMethodDomain extends ApiResource
      * Updates an existing payment method domain.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{enabled?: bool, expand?: string[]} $params
      * @param null|array|string $opts
      *
      * @return PaymentMethodDomain the updated resource

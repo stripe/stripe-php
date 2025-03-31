@@ -16,7 +16,7 @@ class PriceService extends AbstractService
      * href="/docs/products-prices/pricing-models#inline-pricing">inline prices</a>.
      * For the list of inactive prices, set <code>active</code> to false.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, created?: array|int, currency?: string, ending_before?: string, expand?: string[], limit?: int, lookup_keys?: string[], product?: string, recurring?: array{interval?: string, meter?: string, usage_type?: string}, starting_after?: string, type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Price>
@@ -33,7 +33,7 @@ class PriceService extends AbstractService
      * existing <a href="https://docs.stripe.com/api/products">Product</a>. The Price
      * can be recurring or one-time.
      *
-     * @param null|array $params
+     * @param null|array{active?: bool, billing_scheme?: string, currency: string, currency_options?: \Stripe\StripeObject, custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, expand?: string[], lookup_key?: string, metadata?: \Stripe\StripeObject, nickname?: string, product?: string, product_data?: array{active?: bool, id?: string, metadata?: \Stripe\StripeObject, name: string, statement_descriptor?: string, tax_code?: string, unit_label?: string}, recurring?: array{interval: string, interval_count?: int, meter?: string, trial_period_days?: int, usage_type?: string}, tax_behavior?: string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: array|int|string})[], tiers_mode?: string, transfer_lookup_key?: bool, transform_quantity?: array{divide_by: int, round: string}, unit_amount?: int, unit_amount_decimal?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Price
@@ -49,7 +49,7 @@ class PriceService extends AbstractService
      * Retrieves the price with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Price
@@ -69,7 +69,7 @@ class PriceService extends AbstractService
      * Occasionally, propagation of new or updated data can be up to an hour behind
      * during outages. Search functionality is not available to merchants in India.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], limit?: int, page?: string, query: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\SearchResult<\Stripe\Price>
@@ -86,7 +86,7 @@ class PriceService extends AbstractService
      * parameters not provided are left unchanged.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{active?: bool, currency_options?: null|\Stripe\StripeObject, expand?: string[], lookup_key?: string, metadata?: null|\Stripe\StripeObject, nickname?: string, tax_behavior?: string, transfer_lookup_key?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Price

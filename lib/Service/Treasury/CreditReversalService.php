@@ -14,7 +14,7 @@ class CreditReversalService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of CreditReversals.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], financial_account: string, limit?: int, received_credit?: string, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Treasury\CreditReversal>
@@ -29,7 +29,7 @@ class CreditReversalService extends \Stripe\Service\AbstractService
     /**
      * Reverses a ReceivedCredit and creates a CreditReversal object.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], metadata?: \Stripe\StripeObject, received_credit: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Treasury\CreditReversal
@@ -47,7 +47,7 @@ class CreditReversalService extends \Stripe\Service\AbstractService
      * CreditReversal list.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Treasury\CreditReversal

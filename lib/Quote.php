@@ -15,9 +15,9 @@ namespace Stripe;
  * @property null|Application|string $application ID of the Connect Application that created the quote.
  * @property null|int $application_fee_amount The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's Stripe account. Only applicable if there are no line items with recurring prices on the quote.
  * @property null|float $application_fee_percent A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice total that will be transferred to the application owner's Stripe account. Only applicable if there are line items with recurring prices on the quote.
- * @property StripeObject $automatic_tax
+ * @property (object{enabled: bool, liability: null|(object{account?: Account|string, type: string}&\stdClass&StripeObject), status: null|string}&\stdClass&StripeObject) $automatic_tax
  * @property string $collection_method Either <code>charge_automatically</code>, or <code>send_invoice</code>. When charging automatically, Stripe will attempt to pay invoices at the end of the subscription cycle or on finalization using the default payment method attached to the subscription or customer. When sending an invoice, Stripe will email your customer an invoice with payment instructions and mark the subscription as <code>active</code>. Defaults to <code>charge_automatically</code>.
- * @property StripeObject $computed
+ * @property (object{recurring: null|(object{amount_subtotal: int, amount_total: int, interval: string, interval_count: int, total_details: (object{amount_discount: int, amount_shipping: null|int, amount_tax: int, breakdown?: (object{discounts: (object{amount: int, discount: Discount}&\stdClass&StripeObject)[], taxes: ((object{amount: int, rate: TaxRate, taxability_reason: null|string, taxable_amount: null|int}&\stdClass&StripeObject))[]}&\stdClass&StripeObject)}&\stdClass&StripeObject)}&\stdClass&StripeObject), upfront: (object{amount_subtotal: int, amount_total: int, line_items?: Collection<LineItem>, total_details: (object{amount_discount: int, amount_shipping: null|int, amount_tax: int, breakdown?: (object{discounts: (object{amount: int, discount: Discount}&\stdClass&StripeObject)[], taxes: ((object{amount: int, rate: TaxRate, taxability_reason: null|string, taxable_amount: null|int}&\stdClass&StripeObject))[]}&\stdClass&StripeObject)}&\stdClass&StripeObject)}&\stdClass&StripeObject)}&\stdClass&StripeObject) $computed
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|Customer|string $customer The customer which this quote belongs to. A customer is required before finalizing the quote. Once specified, it cannot be changed.
@@ -26,23 +26,23 @@ namespace Stripe;
  * @property (Discount|string)[] $discounts The discounts applied to this quote.
  * @property int $expires_at The date on which the quote will be canceled if in <code>open</code> or <code>draft</code> status. Measured in seconds since the Unix epoch.
  * @property null|string $footer A footer that will be displayed on the quote PDF.
- * @property null|StripeObject $from_quote Details of the quote that was cloned. See the <a href="https://stripe.com/docs/quotes/clone">cloning documentation</a> for more details.
+ * @property null|(object{is_revision: bool, quote: Quote|string}&\stdClass&StripeObject) $from_quote Details of the quote that was cloned. See the <a href="https://stripe.com/docs/quotes/clone">cloning documentation</a> for more details.
  * @property null|string $header A header that will be displayed on the quote PDF.
  * @property null|Invoice|string $invoice The invoice that was created from this quote.
- * @property StripeObject $invoice_settings
+ * @property (object{days_until_due: null|int, issuer: (object{account?: Account|string, type: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $invoice_settings
  * @property null|Collection<LineItem> $line_items A list of items the customer is being quoted for.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $number A unique number that identifies this particular quote. This number is assigned once the quote is <a href="https://stripe.com/docs/quotes/overview#finalize">finalized</a>.
  * @property null|Account|string $on_behalf_of The account on behalf of which to charge. See the <a href="https://support.stripe.com/questions/sending-invoices-on-behalf-of-connected-accounts">Connect documentation</a> for details.
  * @property string $status The status of the quote.
- * @property StripeObject $status_transitions
+ * @property (object{accepted_at: null|int, canceled_at: null|int, finalized_at: null|int}&\stdClass&StripeObject) $status_transitions
  * @property null|string|Subscription $subscription The subscription that was created or updated from this quote.
- * @property StripeObject $subscription_data
+ * @property (object{description: null|string, effective_date: null|int, metadata: null|StripeObject, trial_period_days: null|int}&\stdClass&StripeObject) $subscription_data
  * @property null|string|SubscriptionSchedule $subscription_schedule The subscription schedule that was created or updated from this quote.
  * @property null|string|TestHelpers\TestClock $test_clock ID of the test clock this quote belongs to.
- * @property StripeObject $total_details
- * @property null|StripeObject $transfer_data The account (if any) the payments will be attributed to for tax reporting, and where funds from each payment will be transferred to for each of the invoices.
+ * @property (object{amount_discount: int, amount_shipping: null|int, amount_tax: int, breakdown?: (object{discounts: (object{amount: int, discount: Discount}&\stdClass&StripeObject)[], taxes: ((object{amount: int, rate: TaxRate, taxability_reason: null|string, taxable_amount: null|int}&\stdClass&StripeObject))[]}&\stdClass&StripeObject)}&\stdClass&StripeObject) $total_details
+ * @property null|(object{amount: null|int, amount_percent: null|float, destination: Account|string}&\stdClass&StripeObject) $transfer_data The account (if any) the payments will be attributed to for tax reporting, and where funds from each payment will be transferred to for each of the invoices.
  */
 class Quote extends ApiResource
 {
@@ -64,7 +64,7 @@ class Quote extends ApiResource
      * <code>expires_at</code> can be set in the dashboard via the <a
      * href="https://dashboard.stripe.com/settings/billing/quote">quote template</a>.
      *
-     * @param null|array $params
+     * @param null|array{application_fee_amount?: null|int, application_fee_percent?: null|float, automatic_tax?: array{enabled: bool, liability?: array{account?: string, type: string}}, collection_method?: string, customer?: string, default_tax_rates?: null|string[], description?: null|string, discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], expand?: string[], expires_at?: int, footer?: null|string, from_quote?: array{is_revision?: bool, quote: string}, header?: null|string, invoice_settings?: array{days_until_due?: int, issuer?: array{account?: string, type: string}}, line_items?: (array{discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], price?: string, price_data?: array{currency: string, product: string, recurring?: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], metadata?: StripeObject, on_behalf_of?: null|string, subscription_data?: array{description?: string, effective_date?: null|array|int|string, metadata?: StripeObject, trial_period_days?: null|int}, test_clock?: string, transfer_data?: null|array{amount?: int, amount_percent?: float, destination: string}} $params
      * @param null|array|string $options
      *
      * @return Quote the created resource
@@ -86,7 +86,7 @@ class Quote extends ApiResource
     /**
      * Returns a list of your quotes.
      *
-     * @param null|array $params
+     * @param null|array{customer?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string, test_clock?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Quote> of ApiResources
@@ -123,7 +123,7 @@ class Quote extends ApiResource
      * A quote models prices and services for a customer.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{application_fee_amount?: null|int, application_fee_percent?: null|float, automatic_tax?: array{enabled: bool, liability?: array{account?: string, type: string}}, collection_method?: string, customer?: string, default_tax_rates?: null|string[], description?: null|string, discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], expand?: string[], expires_at?: int, footer?: null|string, header?: null|string, invoice_settings?: array{days_until_due?: int, issuer?: array{account?: string, type: string}}, line_items?: (array{discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], id?: string, price?: string, price_data?: array{currency: string, product: string, recurring?: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], metadata?: StripeObject, on_behalf_of?: null|string, subscription_data?: array{description?: null|string, effective_date?: null|array|int|string, metadata?: StripeObject, trial_period_days?: null|int}, transfer_data?: null|array{amount?: int, amount_percent?: float, destination: string}} $params
      * @param null|array|string $opts
      *
      * @return Quote the updated resource

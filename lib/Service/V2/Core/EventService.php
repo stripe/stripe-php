@@ -14,7 +14,7 @@ class EventService extends \Stripe\Service\AbstractService
     /**
      * List events, going back up to 30 days.
      *
-     * @param null|array $params
+     * @param null|array{limit?: int, object_id: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\Event>

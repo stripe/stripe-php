@@ -14,7 +14,7 @@ class PaymentMethodDomainService extends AbstractService
     /**
      * Lists the details of existing payment method domains.
      *
-     * @param null|array $params
+     * @param null|array{domain_name?: string, enabled?: bool, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\PaymentMethodDomain>
@@ -29,7 +29,7 @@ class PaymentMethodDomainService extends AbstractService
     /**
      * Creates a payment method domain.
      *
-     * @param null|array $params
+     * @param null|array{domain_name: string, enabled?: bool, expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentMethodDomain
@@ -45,7 +45,7 @@ class PaymentMethodDomainService extends AbstractService
      * Retrieves the details of an existing payment method domain.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentMethodDomain
@@ -61,7 +61,7 @@ class PaymentMethodDomainService extends AbstractService
      * Updates an existing payment method domain.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{enabled?: bool, expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentMethodDomain
@@ -88,7 +88,7 @@ class PaymentMethodDomainService extends AbstractService
      * domains</a>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentMethodDomain

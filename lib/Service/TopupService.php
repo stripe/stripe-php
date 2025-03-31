@@ -14,7 +14,7 @@ class TopupService extends AbstractService
     /**
      * Returns a list of top-ups.
      *
-     * @param null|array $params
+     * @param null|array{amount?: array|int, created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Topup>
@@ -30,7 +30,7 @@ class TopupService extends AbstractService
      * Cancels a top-up. Only pending top-ups can be canceled.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Topup
@@ -45,7 +45,7 @@ class TopupService extends AbstractService
     /**
      * Top up the balance of an account.
      *
-     * @param null|array $params
+     * @param null|array{amount: int, currency: string, description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject, source?: string, statement_descriptor?: string, transfer_group?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Topup
@@ -63,7 +63,7 @@ class TopupService extends AbstractService
      * return the corresponding top-up information.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Topup
@@ -80,7 +80,7 @@ class TopupService extends AbstractService
      * design.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Topup

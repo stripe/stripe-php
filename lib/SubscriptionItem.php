@@ -31,7 +31,7 @@ class SubscriptionItem extends ApiResource
      * Adds a new item to an existing subscription. No existing items will be changed
      * or replaced.
      *
-     * @param null|array $params
+     * @param null|array{discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], expand?: string[], metadata?: StripeObject, payment_behavior?: string, plan?: string, price?: string, price_data?: array{currency: string, product: string, recurring: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, proration_behavior?: string, proration_date?: int, quantity?: int, subscription: string, tax_rates?: null|string[]} $params
      * @param null|array|string $options
      *
      * @return SubscriptionItem the created resource
@@ -54,7 +54,7 @@ class SubscriptionItem extends ApiResource
      * Deletes an item from the subscription. Removing a subscription item from a
      * subscription will not cancel the subscription.
      *
-     * @param null|array $params
+     * @param null|array{clear_usage?: bool, proration_behavior?: string, proration_date?: int} $params
      * @param null|array|string $opts
      *
      * @return SubscriptionItem the deleted resource
@@ -75,7 +75,7 @@ class SubscriptionItem extends ApiResource
     /**
      * Returns a list of your subscription items for a given subscription.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string, subscription: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<SubscriptionItem> of ApiResources
@@ -112,7 +112,7 @@ class SubscriptionItem extends ApiResource
      * Updates the plan or quantity of an item on a current subscription.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], expand?: string[], metadata?: null|StripeObject, off_session?: bool, payment_behavior?: string, plan?: string, price?: string, price_data?: array{currency: string, product: string, recurring: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, proration_behavior?: string, proration_date?: int, quantity?: int, tax_rates?: null|string[]} $params
      * @param null|array|string $opts
      *
      * @return SubscriptionItem the updated resource

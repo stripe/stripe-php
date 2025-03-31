@@ -16,7 +16,7 @@ class InvoicePaymentService extends AbstractService
      * the first handful of those items. There is also a URL where you can retrieve the
      * full (paginated) list of payments.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], invoice?: string, limit?: int, payment?: array{payment_intent?: string, type: string}, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\InvoicePayment>
@@ -32,7 +32,7 @@ class InvoicePaymentService extends AbstractService
      * Retrieves the invoice payment with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\InvoicePayment

@@ -14,7 +14,7 @@ class SubscriptionItemService extends AbstractService
     /**
      * Returns a list of your subscription items for a given subscription.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string, subscription: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\SubscriptionItem>
@@ -30,7 +30,7 @@ class SubscriptionItemService extends AbstractService
      * Adds a new item to an existing subscription. No existing items will be changed
      * or replaced.
      *
-     * @param null|array $params
+     * @param null|array{discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], expand?: string[], metadata?: \Stripe\StripeObject, payment_behavior?: string, plan?: string, price?: string, price_data?: array{currency: string, product: string, recurring: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, proration_behavior?: string, proration_date?: int, quantity?: int, subscription: string, tax_rates?: null|string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\SubscriptionItem
@@ -47,7 +47,7 @@ class SubscriptionItemService extends AbstractService
      * subscription will not cancel the subscription.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{clear_usage?: bool, proration_behavior?: string, proration_date?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\SubscriptionItem
@@ -63,7 +63,7 @@ class SubscriptionItemService extends AbstractService
      * Retrieves the subscription item with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\SubscriptionItem
@@ -79,7 +79,7 @@ class SubscriptionItemService extends AbstractService
      * Updates the plan or quantity of an item on a current subscription.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], expand?: string[], metadata?: null|\Stripe\StripeObject, off_session?: bool, payment_behavior?: string, plan?: string, price?: string, price_data?: array{currency: string, product: string, recurring: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, proration_behavior?: string, proration_date?: int, quantity?: int, tax_rates?: null|string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\SubscriptionItem

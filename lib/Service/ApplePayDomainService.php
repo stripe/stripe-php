@@ -14,7 +14,7 @@ class ApplePayDomainService extends AbstractService
     /**
      * List apple pay domains.
      *
-     * @param null|array $params
+     * @param null|array{domain_name?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\ApplePayDomain>
@@ -29,7 +29,7 @@ class ApplePayDomainService extends AbstractService
     /**
      * Create an apple pay domain.
      *
-     * @param null|array $params
+     * @param null|array{domain_name: string, expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\ApplePayDomain
@@ -61,7 +61,7 @@ class ApplePayDomainService extends AbstractService
      * Retrieve an apple pay domain.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\ApplePayDomain

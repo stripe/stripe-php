@@ -16,7 +16,7 @@ class FileService extends AbstractService
      * returns the files by their creation dates, placing the most recently created
      * files at the top.
      *
-     * @param null|array $params
+     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, purpose?: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\File>
@@ -34,7 +34,7 @@ class FileService extends AbstractService
      * href="/docs/file-upload#download-file-contents">access file contents</a>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\File

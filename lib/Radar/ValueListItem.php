@@ -25,7 +25,7 @@ class ValueListItem extends \Stripe\ApiResource
      * Creates a new <code>ValueListItem</code> object, which is added to the specified
      * parent value list.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], value: string, value_list: string} $params
      * @param null|array|string $options
      *
      * @return ValueListItem the created resource
@@ -71,7 +71,7 @@ class ValueListItem extends \Stripe\ApiResource
      * descending order by creation date, with the most recently created object
      * appearing first.
      *
-     * @param null|array $params
+     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, value?: string, value_list: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<ValueListItem> of ApiResources

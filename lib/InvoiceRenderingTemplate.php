@@ -28,7 +28,7 @@ class InvoiceRenderingTemplate extends ApiResource
      * List all templates, ordered by creation date, with the most recently created
      * template appearing first.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<InvoiceRenderingTemplate> of ApiResources

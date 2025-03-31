@@ -38,7 +38,7 @@ namespace Stripe;
  * @property string $source_type The source balance this payout came from, which can be one of the following: <code>card</code>, <code>fpx</code>, or <code>bank_account</code>.
  * @property null|string $statement_descriptor Extra information about a payout that displays on the user's bank statement.
  * @property string $status Current status of the payout: <code>paid</code>, <code>pending</code>, <code>in_transit</code>, <code>canceled</code> or <code>failed</code>. A payout is <code>pending</code> until it's submitted to the bank, when it becomes <code>in_transit</code>. The status changes to <code>paid</code> if the transaction succeeds, or to <code>failed</code> or <code>canceled</code> (within 5 business days). Some payouts that fail might initially show as <code>paid</code>, then change to <code>failed</code>.
- * @property null|StripeObject $trace_id A value that generates from the beneficiary's bank that allows users to track payouts with their bank. Banks might call this a &quot;reference number&quot; or something similar.
+ * @property null|(object{status: string, value: null|string}&\stdClass&StripeObject) $trace_id A value that generates from the beneficiary's bank that allows users to track payouts with their bank. Banks might call this a &quot;reference number&quot; or something similar.
  * @property string $type Can be <code>bank_account</code> or <code>card</code>.
  */
 class Payout extends ApiResource
@@ -76,7 +76,7 @@ class Payout extends ApiResource
      * from. The <a href="#balance_object">balance object</a> details available and
      * pending amounts by source type.
      *
-     * @param null|array $params
+     * @param null|array{amount: int, currency: string, description?: string, destination?: string, expand?: string[], metadata?: StripeObject, method?: string, source_type?: string, statement_descriptor?: string} $params
      * @param null|array|string $options
      *
      * @return Payout the created resource
@@ -100,7 +100,7 @@ class Payout extends ApiResource
      * that Stripe sent to you. The payouts return in sorted order, with the most
      * recently created payouts appearing first.
      *
-     * @param null|array $params
+     * @param null|array{arrival_date?: array|int, created?: array|int, destination?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Payout> of ApiResources
@@ -141,7 +141,7 @@ class Payout extends ApiResource
      * metadata as arguments.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{expand?: string[], metadata?: null|StripeObject} $params
      * @param null|array|string $opts
      *
      * @return Payout the updated resource
