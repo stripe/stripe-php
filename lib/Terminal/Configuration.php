@@ -18,6 +18,7 @@ namespace Stripe\Terminal;
  * @property null|\Stripe\StripeObject $stripe_s700
  * @property null|\Stripe\StripeObject $tipping
  * @property null|\Stripe\StripeObject $verifone_p400
+ * @property null|\Stripe\StripeObject $wifi
  */
 class Configuration extends \Stripe\ApiResource
 {

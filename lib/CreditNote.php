@@ -30,14 +30,14 @@ namespace Stripe;
  * @property string $pdf The link to download the PDF of the credit note.
  * @property StripeObject[] $pretax_credit_amounts The pretax credit amounts (ex: discount, credit grants, etc) for all line items.
  * @property null|string $reason Reason for issuing this credit note, one of <code>duplicate</code>, <code>fraudulent</code>, <code>order_change</code>, or <code>product_unsatisfactory</code>
- * @property null|Refund|string $refund Refund related to this credit note.
+ * @property StripeObject[] $refunds Refunds related to this credit note.
  * @property null|StripeObject $shipping_cost The details of the cost of shipping, including the ShippingRate applied to the invoice.
  * @property string $status Status of this credit note, one of <code>issued</code> or <code>void</code>. Learn more about <a href="https://stripe.com/docs/billing/invoices/credit-notes#voiding">voiding credit notes</a>.
  * @property int $subtotal The integer amount in cents (or local equivalent) representing the amount of the credit note, excluding exclusive tax and invoice level discounts.
  * @property null|int $subtotal_excluding_tax The integer amount in cents (or local equivalent) representing the amount of the credit note, excluding all tax and invoice level discounts.
- * @property StripeObject[] $tax_amounts The aggregate amounts calculated per tax rate for all line items.
  * @property int $total The integer amount in cents (or local equivalent) representing the total amount of the credit note, including tax and all discount.
  * @property null|int $total_excluding_tax The integer amount in cents (or local equivalent) representing the total amount of the credit note, excluding tax, but including discounts.
+ * @property null|StripeObject[] $total_taxes The aggregate tax information for all line items.
  * @property string $type Type of this credit note, one of <code>pre_payment</code> or <code>post_payment</code>. A <code>pre_payment</code> credit note means it was issued when the invoice was open. A <code>post_payment</code> credit note means it was issued when the invoice was paid.
  * @property null|int $voided_at The time that the credit note was voided.
  */
@@ -64,7 +64,7 @@ class CreditNote extends ApiResource
      * <code>status=open</code> invoice, a credit note reduces its
      * <code>amount_due</code>. For a <code>status=paid</code> invoice, a credit note
      * does not affect its <code>amount_due</code>. Instead, it can result in any
-     * combination of the following:.
+     * combination of the following:
      *
      * <ul> <li>Refund: create a new refund (using <code>refund_amount</code>) or link
      * an existing refund (using <code>refund</code>).</li> <li>Customer balance

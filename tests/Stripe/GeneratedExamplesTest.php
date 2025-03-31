@@ -15,11 +15,13 @@ final class GeneratedExamplesTest extends TestCase
 
     /** @var null|StripeClient */
     private $client;
+    private $v2Client;
 
     /** @before */
     protected function setUpService()
     {
         $this->client = new StripeClient(['api_key' => 'sk_test_123', 'api_base' => MOCK_URL, 'files_base' => MOCK_URL]);
+        $this->v2Client = new StripeClient(['api_key' => 'sk_test_123']);
     }
 
     public function testAccountLinksPost()
@@ -586,9 +588,25 @@ final class GeneratedExamplesTest extends TestCase
             [],
             [],
             false,
-            ['object' => V2\Event::OBJECT_NAME]
+            [
+                'context' => 'context',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'object' => 'v2.core.event',
+                'reason' => [
+                    'type' => 'request',
+                    'request' => [
+                        'id' => 'obj_123',
+                        'idempotency_key' => 'idempotency_key',
+                    ],
+                ],
+                'type' => 'type',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->client->v2->core->events->retrieve('ll_123', []);
+        $result = $this->v2Client->v2->core->events->retrieve('ll_123', []);
         self::assertInstanceOf(V2\Event::class, $result);
     }
 
@@ -634,8 +652,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->expectsRequest('post', '/v1/coupons');
         $result = $this->client->coupons->create([
             'percent_off' => 25.5,
-            'duration' => 'repeating',
-            'duration_in_months' => 3,
+            'duration' => 'once',
         ]);
         self::assertInstanceOf(Coupon::class, $result);
     }
@@ -1398,7 +1415,6 @@ final class GeneratedExamplesTest extends TestCase
         $this->expectsRequest('post', '/v1/invoiceitems');
         $result = $this->client->invoiceItems->create([
             'customer' => 'cus_xxxxxxxxxxxxx',
-            'price' => 'price_xxxxxxxxxxxxx',
         ]);
         self::assertInstanceOf(InvoiceItem::class, $result);
     }
@@ -1508,15 +1524,6 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->expectsRequest('post', '/v1/invoices/in_xxxxxxxxxxxxx/send');
         $result = $this->client->invoices->sendInvoice('in_xxxxxxxxxxxxx', []);
-        self::assertInstanceOf(Invoice::class, $result);
-    }
-
-    public function testInvoicesUpcomingGet()
-    {
-        $this->expectsRequest('get', '/v1/invoices/upcoming');
-        $result = $this->client->invoices->upcoming([
-            'customer' => 'cus_9utnxg47pWjV1e',
-        ]);
         self::assertInstanceOf(Invoice::class, $result);
     }
 
@@ -3011,36 +3018,6 @@ final class GeneratedExamplesTest extends TestCase
             ['metadata' => ['order_id' => '6735']]
         );
         self::assertInstanceOf(SubscriptionItem::class, $result);
-    }
-
-    public function testSubscriptionItemsUsageRecordSummariesGet()
-    {
-        $this->expectsRequest(
-            'get',
-            '/v1/subscription_items/si_xxxxxxxxxxxxx/usage_record_summaries'
-        );
-        $result = $this->client->subscriptionItems->allUsageRecordSummaries(
-            'si_xxxxxxxxxxxxx',
-            ['limit' => 3]
-        );
-        self::assertInstanceOf(Collection::class, $result);
-        self::assertInstanceOf(UsageRecordSummary::class, $result->data[0]);
-    }
-
-    public function testSubscriptionItemsUsageRecordsPost()
-    {
-        $this->expectsRequest(
-            'post',
-            '/v1/subscription_items/si_xxxxxxxxxxxxx/usage_records'
-        );
-        $result = $this->client->subscriptionItems->createUsageRecord(
-            'si_xxxxxxxxxxxxx',
-            [
-                'quantity' => 100,
-                'timestamp' => 1571252444,
-            ]
-        );
-        self::assertInstanceOf(UsageRecord::class, $result);
     }
 
     public function testSubscriptionSchedulesCancelPost()
@@ -4842,5 +4819,516 @@ final class GeneratedExamplesTest extends TestCase
             ['url' => 'https://example.com/new_endpoint']
         );
         self::assertInstanceOf(WebhookEndpoint::class, $result);
+    }
+
+    public function testV2BillingMeterEventSessionPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/meter_event_session',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.meter_event_session',
+                'authentication_token' => 'authentication_token',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->meterEventSession->create([]);
+        self::assertInstanceOf(V2\Billing\MeterEventSession::class, $result);
+    }
+
+    public function testV2BillingMeterEventAdjustmentPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/meter_event_adjustments',
+            [
+                'cancel' => ['identifier' => 'identifier'],
+                'event_name' => 'event_name',
+                'type' => 'cancel',
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.meter_event_adjustment',
+                'cancel' => ['identifier' => 'identifier'],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'event_name' => 'event_name',
+                'livemode' => [],
+                'status' => 'complete',
+                'type' => 'cancel',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->meterEventAdjustments->create([
+            'cancel' => ['identifier' => 'identifier'],
+            'event_name' => 'event_name',
+            'type' => 'cancel',
+        ]);
+        self::assertInstanceOf(V2\Billing\MeterEventAdjustment::class, $result);
+    }
+
+    public function testV2BillingMeterEventStreamPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/meter_event_stream',
+            [
+                'events' => [
+                    [
+                        'event_name' => 'event_name',
+                        'identifier' => 'identifier',
+                        'payload' => ['undefined' => 'payload'],
+                        'timestamp' => '1970-01-01T15:18:46.294Z',
+                    ],
+                ],
+            ],
+            [],
+            false,
+            [],
+            200,
+            BaseStripeClient::DEFAULT_METER_EVENTS_BASE
+        );
+        $this->v2Client->v2->billing->meterEventStream->create([
+            'events' => [
+                [
+                    'event_name' => 'event_name',
+                    'identifier' => 'identifier',
+                    'payload' => ['undefined' => 'payload'],
+                    'timestamp' => '1970-01-01T15:18:46.294Z',
+                ],
+            ],
+        ]);
+    }
+
+    public function testV2BillingMeterEventPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/meter_events',
+            [
+                'event_name' => 'event_name',
+                'payload' => ['undefined' => 'payload'],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.billing.meter_event',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'event_name' => 'event_name',
+                'identifier' => 'identifier',
+                'livemode' => [],
+                'payload' => ['undefined' => 'payload'],
+                'timestamp' => '1970-01-01T15:18:46.294Z',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->meterEvents->create([
+            'event_name' => 'event_name',
+            'payload' => ['undefined' => 'payload'],
+        ]);
+        self::assertInstanceOf(V2\Billing\MeterEvent::class, $result);
+    }
+
+    public function testV2CoreEventDestinationPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/event_destinations',
+            [
+                'enabled_events' => ['enabled_events'],
+                'event_payload' => 'thin',
+                'name' => 'name',
+                'type' => 'amazon_eventbridge',
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.event_destination',
+                'amazon_eventbridge' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'description' => 'description',
+                'enabled_events' => ['0' => 'enabled_events'],
+                'event_payload' => 'thin',
+                'events_from' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'name' => 'name',
+                'snapshot_api_version' => null,
+                'status' => 'disabled',
+                'status_details' => null,
+                'type' => 'amazon_eventbridge',
+                'updated' => '1970-01-03T17:07:10.277Z',
+                'webhook_endpoint' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->eventDestinations->create([
+            'enabled_events' => ['enabled_events'],
+            'event_payload' => 'thin',
+            'name' => 'name',
+            'type' => 'amazon_eventbridge',
+        ]);
+        self::assertInstanceOf(V2\EventDestination::class, $result);
+    }
+
+    public function testV2CoreEventDestinationDelete()
+    {
+        $this->stubRequest(
+            'delete',
+            '/v2/core/event_destinations/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.event_destination',
+                'amazon_eventbridge' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'description' => 'description',
+                'enabled_events' => ['0' => 'enabled_events'],
+                'event_payload' => 'thin',
+                'events_from' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'name' => 'name',
+                'snapshot_api_version' => null,
+                'status' => 'disabled',
+                'status_details' => null,
+                'type' => 'amazon_eventbridge',
+                'updated' => '1970-01-03T17:07:10.277Z',
+                'webhook_endpoint' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->eventDestinations->delete(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\EventDestination::class, $result);
+    }
+
+    public function testV2CoreEventDestinationPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/event_destinations/id_123/disable',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.event_destination',
+                'amazon_eventbridge' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'description' => 'description',
+                'enabled_events' => ['0' => 'enabled_events'],
+                'event_payload' => 'thin',
+                'events_from' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'name' => 'name',
+                'snapshot_api_version' => null,
+                'status' => 'disabled',
+                'status_details' => null,
+                'type' => 'amazon_eventbridge',
+                'updated' => '1970-01-03T17:07:10.277Z',
+                'webhook_endpoint' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->eventDestinations->disable(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\EventDestination::class, $result);
+    }
+
+    public function testV2CoreEventDestinationPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/event_destinations/id_123/enable',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.event_destination',
+                'amazon_eventbridge' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'description' => 'description',
+                'enabled_events' => ['0' => 'enabled_events'],
+                'event_payload' => 'thin',
+                'events_from' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'name' => 'name',
+                'snapshot_api_version' => null,
+                'status' => 'disabled',
+                'status_details' => null,
+                'type' => 'amazon_eventbridge',
+                'updated' => '1970-01-03T17:07:10.277Z',
+                'webhook_endpoint' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->eventDestinations->enable(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\EventDestination::class, $result);
+    }
+
+    public function testV2CoreEventDestinationGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/event_destinations',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.core.event_destination',
+                        'amazon_eventbridge' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'description' => 'description',
+                        'enabled_events' => ['0' => 'enabled_events'],
+                        'event_payload' => 'thin',
+                        'events_from' => null,
+                        'livemode' => [],
+                        'metadata' => null,
+                        'name' => 'name',
+                        'snapshot_api_version' => null,
+                        'status' => 'disabled',
+                        'status_details' => null,
+                        'type' => 'amazon_eventbridge',
+                        'updated' => '1970-01-03T17:07:10.277Z',
+                        'webhook_endpoint' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->eventDestinations->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\EventDestination::class, $result->data[0]);
+    }
+
+    public function testV2CoreEventDestinationPost4()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/event_destinations/id_123/ping',
+            [],
+            [],
+            false,
+            [
+                'context' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'object' => 'v2.core.event',
+                'reason' => null,
+                'type' => 'type',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->eventDestinations->ping(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Event::class, $result);
+    }
+
+    public function testV2CoreEventDestinationGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/event_destinations/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.event_destination',
+                'amazon_eventbridge' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'description' => 'description',
+                'enabled_events' => ['0' => 'enabled_events'],
+                'event_payload' => 'thin',
+                'events_from' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'name' => 'name',
+                'snapshot_api_version' => null,
+                'status' => 'disabled',
+                'status_details' => null,
+                'type' => 'amazon_eventbridge',
+                'updated' => '1970-01-03T17:07:10.277Z',
+                'webhook_endpoint' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->eventDestinations->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\EventDestination::class, $result);
+    }
+
+    public function testV2CoreEventDestinationPost5()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/event_destinations/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.event_destination',
+                'amazon_eventbridge' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'description' => 'description',
+                'enabled_events' => ['0' => 'enabled_events'],
+                'event_payload' => 'thin',
+                'events_from' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'name' => 'name',
+                'snapshot_api_version' => null,
+                'status' => 'disabled',
+                'status_details' => null,
+                'type' => 'amazon_eventbridge',
+                'updated' => '1970-01-03T17:07:10.277Z',
+                'webhook_endpoint' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->eventDestinations->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\EventDestination::class, $result);
+    }
+
+    public function testV2CoreEventGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/events',
+            ['object_id' => 'object_id'],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'context' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'object' => 'v2.core.event',
+                        'reason' => null,
+                        'type' => 'type',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->events->all([
+            'object_id' => 'object_id',
+        ]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Event::class, $result->data[0]);
+    }
+
+    public function testV2CoreEventGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/events/id_123',
+            [],
+            [],
+            false,
+            [
+                'context' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'object' => 'v2.core.event',
+                'reason' => null,
+                'type' => 'type',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->events->retrieve('id_123', []);
+        self::assertInstanceOf(V2\Event::class, $result);
+    }
+
+    public function testTemporarySessionExpiredError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/meter_event_stream',
+            [
+                'events' => [
+                    [
+                        'event_name' => 'event_name',
+                        'payload' => ['undefined' => 'payload'],
+                    ],
+                ],
+            ],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'temporary_session_expired',
+                    'code' => 'billing_meter_event_session_expired',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_METER_EVENTS_BASE
+        );
+
+        try {
+            $this->v2Client->v2->billing->meterEventStream->create([
+                'events' => [
+                    [
+                        'event_name' => 'event_name',
+                        'payload' => ['undefined' => 'payload'],
+                    ],
+                ],
+            ]);
+        } catch (Exception\TemporarySessionExpiredException $e) {
+        }
     }
 }
