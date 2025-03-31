@@ -52,7 +52,7 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Run PHP-CS-Fixer
-        run: just format
+        run: just format-check
 
   phpstan:
     name: PHPStan
