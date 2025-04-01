@@ -59,6 +59,5 @@ final class StripeTest extends TestCase
         // adding another beta will append
         Stripe::addBetaVersion('another_feature_beta', 'v2');
         self::assertSame(Stripe::$apiVersion, '2024-02-26; feature_beta=v5; another_feature_beta=v2');
-
     }
 }

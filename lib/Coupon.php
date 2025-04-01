@@ -16,7 +16,7 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $currency If <code>amount_off</code> has been set, the three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a> of the amount to take off.
  * @property null|StripeObject $currency_options Coupons defined in each available currency option. Each key must be a three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property string $duration One of <code>forever</code>, <code>once</code>, and <code>repeating</code>. Describes how long a customer who applies this coupon will get the discount.
+ * @property string $duration One of <code>forever</code>, <code>once</code>, or <code>repeating</code>. Describes how long a customer who applies this coupon will get the discount.
  * @property null|int $duration_in_months If <code>duration</code> is <code>repeating</code>, the number of months the coupon applies. Null if coupon <code>duration</code> is <code>forever</code> or <code>once</code>.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|int $max_redemptions Maximum number of times this coupon can be redeemed, in total, across all customers, before it is no longer valid.
@@ -35,6 +35,7 @@ class Coupon extends ApiResource
 
     const DURATION_FOREVER = 'forever';
     const DURATION_ONCE = 'once';
+    const DURATION_REPEATING = 'repeating';
 
     /**
      * You can create coupons easily via the <a
@@ -52,7 +53,7 @@ class Coupon extends ApiResource
      * a coupon with an <code>amount_off</code> of <amount>200</amount> is applied to
      * it.
      *
-     * @param null|array{amount_off?: int, applies_to?: array{products?: string[]}, currency?: string, currency_options?: StripeObject, duration?: string, expand?: string[], id?: string, max_redemptions?: int, metadata?: null|StripeObject, name?: string, percent_off?: float, redeem_by?: int} $params
+     * @param null|array{amount_off?: int, applies_to?: array{products?: string[]}, currency?: string, currency_options?: StripeObject, duration?: string, duration_in_months?: int, expand?: string[], id?: string, max_redemptions?: int, metadata?: null|StripeObject, name?: string, percent_off?: float, redeem_by?: int} $params
      * @param null|array|string $options
      *
      * @return Coupon the created resource
