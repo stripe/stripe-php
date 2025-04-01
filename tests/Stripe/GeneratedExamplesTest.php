@@ -6694,11 +6694,11 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\MoneyManagement\OutboundPayment::class, $result);
     }
 
-    public function testV2MoneyManagementOutboundPaymentsQuotePost()
+    public function testV2MoneyManagementOutboundPaymentQuotePost()
     {
         $this->stubRequest(
             'post',
-            '/v2/money_management/outbound_payments/quotes',
+            '/v2/money_management/outbound_payment_quotes',
             [
                 'amount' => [
                     'currency' => 'USD',
@@ -6759,7 +6759,7 @@ final class GeneratedExamplesTest extends TestCase
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->moneyManagement->outboundPayments->quotes->create([
+        $result = $this->v2Client->v2->moneyManagement->outboundPaymentQuotes->create([
             'amount' => [
                 'currency' => 'USD',
                 'value' => 96,

@@ -11,6 +11,7 @@ namespace Stripe\Service\V2\MoneyManagement;
  * @property FinancialAccountService $financialAccounts
  * @property FinancialAddressService $financialAddresses
  * @property InboundTransferService $inboundTransfers
+ * @property OutboundPaymentQuoteService $outboundPaymentQuotes
  * @property OutboundPaymentService $outboundPayments
  * @property OutboundSetupIntentService $outboundSetupIntents
  * @property OutboundTransferService $outboundTransfers
@@ -31,6 +32,7 @@ class MoneyManagementServiceFactory extends \Stripe\Service\AbstractServiceFacto
         'financialAccounts' => FinancialAccountService::class,
         'financialAddresses' => FinancialAddressService::class,
         'inboundTransfers' => InboundTransferService::class,
+        'outboundPaymentQuotes' => OutboundPaymentQuoteService::class,
         'outboundPayments' => OutboundPaymentService::class,
         'outboundSetupIntents' => OutboundSetupIntentService::class,
         'outboundTransfers' => OutboundTransferService::class,
