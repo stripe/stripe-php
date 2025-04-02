@@ -10,7 +10,7 @@ namespace Stripe\Capital;
  *
  * @property string $id A unique identifier for the financing object.
  * @property string $object The object type: financing_offer.
- * @property (object{advance_amount: int, currency: string, fee_amount: int, previous_financing_fee_discount_amount: null|int, withhold_rate: float}&\stdClass&\Stripe\StripeObject) $accepted_terms This is an object representing the terms of an offer of financing from Stripe Capital to a Connected account. This resource represents the terms accepted by the Connected account, which may differ from those offered.
+ * @property null|(object{advance_amount: int, currency: string, fee_amount: int, previous_financing_fee_discount_amount: null|int, withhold_rate: float}&\stdClass&\Stripe\StripeObject) $accepted_terms This is an object representing the terms of an offer of financing from Stripe Capital to a Connected account. This resource represents the terms accepted by the Connected account, which may differ from those offered.
  * @property string $account The ID of the merchant associated with this financing object.
  * @property null|int $charged_off_at The time at which this financing offer was charged off, if applicable. Given in seconds since unix epoch.
  * @property int $created Time at which the offer was created. Given in seconds since unix epoch.
@@ -18,7 +18,7 @@ namespace Stripe\Capital;
  * @property null|string $financing_type The type of financing being offered.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property (object{advance_amount: int, campaign_type: string, currency: string, fee_amount: int, previous_financing_fee_discount_rate: null|float, withhold_rate: float}&\stdClass&\Stripe\StripeObject) $offered_terms This is an object representing the terms of an offer of financing from Stripe Capital to a Connected account. This resource represents both the terms offered to the Connected account.
+ * @property null|(object{advance_amount: int, campaign_type: string, currency: string, fee_amount: int, previous_financing_fee_discount_rate: null|float, withhold_rate: float}&\stdClass&\Stripe\StripeObject) $offered_terms This is an object representing the terms of an offer of financing from Stripe Capital to a Connected account. This resource represents both the terms offered to the Connected account.
  * @property null|string $product_type Financing product identifier.
  * @property null|string $replacement The ID of the financing offer that replaced this offer.
  * @property null|string $replacement_for The ID of the financing offer that this offer is a replacement for.
