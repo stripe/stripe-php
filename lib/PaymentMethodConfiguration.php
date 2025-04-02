@@ -22,57 +22,57 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $acss_debit
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $acss_debit
  * @property bool $active Whether the configuration can be used for new payments.
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $affirm
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $afterpay_clearpay
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $alipay
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $alma
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $amazon_pay
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $apple_pay
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $affirm
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $afterpay_clearpay
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $alipay
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $alma
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $amazon_pay
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $apple_pay
  * @property null|string $application For child configs, the Connect application associated with the configuration.
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $au_becs_debit
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $bacs_debit
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $bancontact
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $billie
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $blik
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $boleto
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $card
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $cartes_bancaires
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $cashapp
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $customer_balance
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $eps
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $fpx
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $giropay
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $google_pay
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $grabpay
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $ideal
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $au_becs_debit
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $bacs_debit
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $bancontact
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $billie
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $blik
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $boleto
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $card
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $cartes_bancaires
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $cashapp
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $customer_balance
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $eps
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $fpx
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $giropay
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $google_pay
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $grabpay
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $ideal
  * @property bool $is_default The default configuration is used whenever a payment method configuration is not specified.
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $jcb
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $klarna
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $konbini
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $link
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $jcb
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $klarna
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $konbini
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $link
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $mobilepay
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $multibanco
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $mobilepay
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $multibanco
  * @property string $name The configuration's name.
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $nz_bank_account
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $oxxo
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $p24
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $nz_bank_account
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $oxxo
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $p24
  * @property null|string $parent For child configs, the configuration's parent configuration.
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $pay_by_bank
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $paynow
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $paypal
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $promptpay
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $revolut_pay
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $satispay
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $sepa_debit
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $sofort
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $swish
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $twint
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $us_bank_account
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $wechat_pay
- * @property (object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $zip
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $pay_by_bank
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $paynow
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $paypal
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $promptpay
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $revolut_pay
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $satispay
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $sepa_debit
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $sofort
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $swish
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $twint
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $us_bank_account
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $wechat_pay
+ * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $zip
  */
 class PaymentMethodConfiguration extends ApiResource
 {
