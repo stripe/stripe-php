@@ -860,4 +860,34 @@ final class BaseStripeClientTest extends TestCase
         self::assertNotNull($meterEventStream);
         self::assertInstanceOf(StripeObject::class, $meterEventStream);
     }
+
+    public function testRetriesIs0ByDefault()
+    {
+        $client = new BaseStripeClient('sk_test_123');
+        self::assertSame(0, $client->getMaxNetworkRetries());
+    }
+
+    public function testClientReadsGlobalRetriesIfNoneProvided()
+    {
+        Stripe::setMaxNetworkRetries(2);
+        $client = new BaseStripeClient('sk_test_123');
+
+        self::assertSame(2, $client->getMaxNetworkRetries());
+    }
+
+    public function testClientPrefersLocalConfig()
+    {
+        Stripe::setMaxNetworkRetries(2);
+        $client = new BaseStripeClient(['max_network_retries' => 3, 'api_key' => 'sk_test_123']);
+
+        self::assertSame(3, $client->getMaxNetworkRetries());
+    }
+
+    public function testClientThrowsForNullRetriesValue()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->compatExpectExceptionMessageMatches('/max_network_retries.*int/');
+
+        new BaseStripeClient(['max_network_retries' => null, 'stripe_api_key' => 'sk_test_123']);
+    }
 }
