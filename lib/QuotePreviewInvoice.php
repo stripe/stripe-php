@@ -108,7 +108,7 @@ namespace Stripe;
  * @property int $subtotal Total of all subscriptions, invoice items, and prorations on the invoice before any invoice level discount or exclusive tax is applied. Item discounts are already incorporated
  * @property null|int $subtotal_excluding_tax The integer amount in cents (or local equivalent) representing the subtotal of the invoice before any invoice level discount or tax is applied. Item discounts are already incorporated
  * @property null|string|TestHelpers\TestClock $test_clock ID of the test clock this invoice belongs to.
- * @property (object{amount_gte: null|int, item_reasons: (object{line_item_ids: string[], usage_gte: int}&\stdClass&StripeObject)[]}&\stdClass&StripeObject) $threshold_reason
+ * @property null|(object{amount_gte: null|int, item_reasons: (object{line_item_ids: string[], usage_gte: int}&\stdClass&StripeObject)[]}&\stdClass&StripeObject) $threshold_reason
  * @property int $total Total after discounts and taxes.
  * @property null|((object{amount: int, discount: Discount|string}&\stdClass&StripeObject))[] $total_discount_amounts The aggregate amounts calculated per discount across all line items.
  * @property null|int $total_excluding_tax The integer amount in cents (or local equivalent) representing the total amount of the invoice including all discounts but excluding all tax.
