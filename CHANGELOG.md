@@ -1,5 +1,9 @@
 # Changelog
 
+## 17.1.0 - 2025-04-02
+* [#1843](https://github.com/stripe/stripe-php/pull/1843) Add null type in resource fields to non required objects
+  * Fixes nullable resource properties that were incorrectly set as required in PHPDocs
+
 ## 17.0.0 - 2025-04-01
 * [#1837](https://github.com/stripe/stripe-php/pull/1837) Better type hints in your editor!!
   * Added type hints for method parameters
