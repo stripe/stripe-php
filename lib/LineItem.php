@@ -18,7 +18,7 @@ namespace Stripe;
  * @property null|(object{amount: int, discount: Discount}&\stdClass&StripeObject)[] $discounts The discounts applied to the line item.
  * @property null|Price $price The price used to generate the line item.
  * @property null|int $quantity The quantity of products being purchased.
- * @property ((object{amount: int, rate: TaxRate, taxability_reason: null|string, taxable_amount: null|int}&\stdClass&StripeObject))[] $taxes The taxes applied to the line item.
+ * @property null|((object{amount: int, rate: TaxRate, taxability_reason: null|string, taxable_amount: null|int}&\stdClass&StripeObject))[] $taxes The taxes applied to the line item.
  */
 class LineItem extends ApiResource
 {
