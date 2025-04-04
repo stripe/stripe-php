@@ -22,11 +22,11 @@ namespace Stripe;
  * @property null|string $description The product's description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.
  * @property string[] $images A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property (object{name?: string}&\stdClass&StripeObject)[] $marketing_features A list of up to 15 marketing features for this product. These are displayed in <a href="https://stripe.com/docs/payments/checkout/pricing-table">pricing tables</a>.
+ * @property (object{name?: string}&StripeObject)[] $marketing_features A list of up to 15 marketing features for this product. These are displayed in <a href="https://stripe.com/docs/payments/checkout/pricing-table">pricing tables</a>.
  * @property StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $name The product's name, meant to be displayable to the customer.
- * @property null|(object{height: float, length: float, weight: float, width: float}&\stdClass&StripeObject) $package_dimensions The dimensions of this product for shipping purposes.
- * @property null|(object{gift_card: null|(object{fixed_amount: null|(object{amount: int, currency: string}&\stdClass&StripeObject), type: string}&\stdClass&StripeObject), type: string}&\stdClass&StripeObject) $provisioning Provisioning configuration for this product.
+ * @property null|(object{height: float, length: float, weight: float, width: float}&StripeObject) $package_dimensions The dimensions of this product for shipping purposes.
+ * @property null|(object{gift_card: null|(object{fixed_amount: null|(object{amount: int, currency: string}&StripeObject), type: string}&StripeObject), type: string}&StripeObject) $provisioning Provisioning configuration for this product.
  * @property null|bool $shippable Whether this product is shipped (i.e., physical goods).
  * @property null|string $statement_descriptor Extra information about a product which will appear on your customer's credit card statement. In the case that multiple products are billed at once, the first statement descriptor will be used. Only used for subscription payments.
  * @property null|string|TaxCode $tax_code A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.

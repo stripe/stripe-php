@@ -12,7 +12,7 @@ namespace Stripe\V2\Core;
  * @property int $created The timestamp at which this AccountLink was created.
  * @property int $expires_at The timestamp at which this AccountLink will expire.
  * @property string $url The URL for the AccountLink.
- * @property (object{type: string, account_onboarding: null|(object{configurations: string[], refresh_url: string, return_url: null|string}&\stdClass&\Stripe\StripeObject), account_update: null|(object{configurations: string[], refresh_url: string, return_url: null|string}&\stdClass&\Stripe\StripeObject)}&\stdClass&\Stripe\StripeObject) $use_case The use case of AccountLink the user is requesting.
+ * @property (object{type: string, account_onboarding: null|(object{configurations: string[], refresh_url: string, return_url: null|string}&\Stripe\StripeObject), account_update: null|(object{configurations: string[], refresh_url: string, return_url: null|string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $use_case The use case of AccountLink the user is requesting.
  */
 class AccountLink extends \Stripe\ApiResource
 {

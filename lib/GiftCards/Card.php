@@ -15,7 +15,7 @@ namespace Stripe\GiftCards;
  * @property int $amount_held The amount of funds marked as held.
  * @property null|string $code Code used to redeem this gift card.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|(object{checkout?: (object{checkout_session: string, line_item: null|string}&\stdClass&\Stripe\StripeObject), order?: (object{line_item: null|string, order: string}&\stdClass&\Stripe\StripeObject), payment?: (object{payment_intent: string}&\stdClass&\Stripe\StripeObject), type: string}&\stdClass&\Stripe\StripeObject) $created_by The related Stripe objects that created this gift card.
+ * @property null|(object{checkout?: (object{checkout_session: string, line_item: null|string}&\Stripe\StripeObject), order?: (object{line_item: null|string, order: string}&\Stripe\StripeObject), payment?: (object{payment_intent: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $created_by The related Stripe objects that created this gift card.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|\Stripe\Collection<Transaction> $transactions Transactions on this gift card.

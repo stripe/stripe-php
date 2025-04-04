@@ -17,7 +17,7 @@ namespace Stripe\GiftCards;
  * @property null|int $amount The amount of this transaction. A positive value indicates that funds were added to the gift card. A negative value indicates that funds were removed from the gift card.
  * @property null|int $confirmed_at Time at which the transaction was confirmed. Measured in seconds since the Unix epoch.
  * @property null|int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|(object{checkout?: (object{checkout_session: string, line_item: null|string}&\stdClass&\Stripe\StripeObject), order?: (object{line_item: null|string, order: string}&\stdClass&\Stripe\StripeObject), payment?: (object{payment_intent: string}&\stdClass&\Stripe\StripeObject), type: string}&\stdClass&\Stripe\StripeObject) $created_by The related Stripe objects that created this gift card transaction.
+ * @property null|(object{checkout?: (object{checkout_session: string, line_item: null|string}&\Stripe\StripeObject), order?: (object{line_item: null|string, order: string}&\Stripe\StripeObject), payment?: (object{payment_intent: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $created_by The related Stripe objects that created this gift card transaction.
  * @property null|string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|string $gift_card The gift card that this transaction occurred on

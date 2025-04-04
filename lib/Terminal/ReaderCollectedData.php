@@ -11,7 +11,7 @@ namespace Stripe\Terminal;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|(object{data: null|string}&\stdClass&\Stripe\StripeObject) $magstripe The magstripe data collected by the reader.
+ * @property null|(object{data: null|string}&\Stripe\StripeObject) $magstripe The magstripe data collected by the reader.
  * @property string $type The type of data collected by the reader.
  */
 class ReaderCollectedData extends \Stripe\ApiResource

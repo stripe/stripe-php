@@ -12,7 +12,7 @@ namespace Stripe;
  * @property string $customer The ID of the customer whose cash balance this object represents.
  * @property null|string $customer_account The ID of the account whose cash balance this object represents.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property (object{reconciliation_mode: string, using_merchant_default: bool}&\stdClass&StripeObject) $settings
+ * @property (object{reconciliation_mode: string, using_merchant_default: bool}&StripeObject) $settings
  */
 class CashBalance extends ApiResource
 {

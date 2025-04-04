@@ -45,11 +45,11 @@ namespace Stripe;
  * @property null|string $api_version The Stripe API version used to render <code>data</code>. This property is populated only for events on or after October 31, 2014.
  * @property null|string $context
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property (object{object: StripeObject, previous_attributes?: StripeObject}&\stdClass&StripeObject) $data
+ * @property (object{object: StripeObject, previous_attributes?: StripeObject}&StripeObject) $data
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property int $pending_webhooks Number of webhooks that haven't been successfully delivered (for example, to return a 20x response) to the URLs you specify.
- * @property null|(object{automation_action?: (object{stripe_send_webhook_custom_event?: (object{custom_data: null|StripeObject}&\stdClass&StripeObject), trigger: string, type: string}&\stdClass&StripeObject), request?: (object{id: null|string, idempotency_key: null|string}&\stdClass&StripeObject), type: string}&\stdClass&StripeObject) $reason Information about the action that causes the event. Only present when the event is triggered by an API request or an <a href="https://docs.stripe.com/billing/automations">Automation</a> action.
- * @property null|(object{id: null|string, idempotency_key: null|string}&\stdClass&StripeObject) $request Information on the API request that triggers the event.
+ * @property null|(object{automation_action?: (object{stripe_send_webhook_custom_event?: (object{custom_data: null|StripeObject}&StripeObject), trigger: string, type: string}&StripeObject), request?: (object{id: null|string, idempotency_key: null|string}&StripeObject), type: string}&StripeObject) $reason Information about the action that causes the event. Only present when the event is triggered by an API request or an <a href="https://docs.stripe.com/billing/automations">Automation</a> action.
+ * @property null|(object{id: null|string, idempotency_key: null|string}&StripeObject) $request Information on the API request that triggers the event.
  * @property string $type Description of the event (for example, <code>invoice.created</code> or <code>charge.refunded</code>).
  */
 class Event extends ApiResource

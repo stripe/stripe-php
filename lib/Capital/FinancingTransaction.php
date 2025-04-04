@@ -11,7 +11,7 @@ namespace Stripe\Capital;
  * @property string $object The object type: financing_transaction
  * @property string $account The ID of the merchant associated with this financing transaction.
  * @property int $created_at Time at which the financing transaction was created. Given in seconds since unix epoch.
- * @property (object{advance_amount: int, currency: string, fee_amount: int, linked_payment?: string, reason?: string, reversed_transaction?: string, total_amount: int, transaction?: (object{charge?: string, treasury_transaction?: string}&\stdClass&\Stripe\StripeObject)}&\stdClass&\Stripe\StripeObject) $details This is an object representing a transaction on a Capital financing offer.
+ * @property (object{advance_amount: int, currency: string, fee_amount: int, linked_payment?: string, reason?: string, reversed_transaction?: string, total_amount: int, transaction?: (object{charge?: string, treasury_transaction?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $details This is an object representing a transaction on a Capital financing offer.
  * @property null|string $financing_offer The Capital financing offer for this financing transaction.
  * @property null|string $legacy_balance_transaction_source The Capital transaction object that predates the Financing Transactions API and corresponds with the balance transaction that was created as a result of this financing transaction.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.

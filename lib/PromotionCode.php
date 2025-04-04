@@ -20,7 +20,7 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|int $max_redemptions Maximum number of times this promotion code can be redeemed.
  * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property (object{currency_options?: StripeObject, first_time_transaction: bool, minimum_amount: null|int, minimum_amount_currency: null|string}&\stdClass&StripeObject) $restrictions
+ * @property (object{currency_options?: StripeObject, first_time_transaction: bool, minimum_amount: null|int, minimum_amount_currency: null|string}&StripeObject) $restrictions
  * @property int $times_redeemed Number of times this promotion code has been used.
  */
 class PromotionCode extends ApiResource

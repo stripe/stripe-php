@@ -9,13 +9,13 @@ namespace Stripe\V2\MoneyManagement;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property (object{available: \Stripe\StripeObject, inbound_pending: \Stripe\StripeObject, outbound_pending: \Stripe\StripeObject}&\stdClass&\Stripe\StripeObject) $balance Multi-currency balance of this FinancialAccount, split by availability state. Each balance is represented as a hash where the key is the three-letter ISO currency code, in lowercase, and the value is the amount for that currency.
+ * @property (object{available: \Stripe\StripeObject, inbound_pending: \Stripe\StripeObject, outbound_pending: \Stripe\StripeObject}&\Stripe\StripeObject) $balance Multi-currency balance of this FinancialAccount, split by availability state. Each balance is represented as a hash where the key is the three-letter ISO currency code, in lowercase, and the value is the amount for that currency.
  * @property string $country Open Enum. Two-letter country code that represents the country where the LegalEntity associated with the FinancialAccount is based in.
  * @property int $created Time at which the object was created.
  * @property null|string $description
- * @property null|(object{type: string}&\stdClass&\Stripe\StripeObject) $other If this is a <code>other</code> FinancialAccount, this hash indicates what the actual type is. Upgrade your API version to see it reflected in <code>type</code>.
+ * @property null|(object{type: string}&\Stripe\StripeObject) $other If this is a <code>other</code> FinancialAccount, this hash indicates what the actual type is. Upgrade your API version to see it reflected in <code>type</code>.
  * @property string $status An enum value that specifies which state the FinancialAccount is in.
- * @property null|(object{holds_currencies: string[]}&\stdClass&\Stripe\StripeObject) $storage If this is a <code>storage</code> FinancialAccount, this hash includes details specific to <code>storage</code> FinancialAccounts.
+ * @property null|(object{holds_currencies: string[]}&\Stripe\StripeObject) $storage If this is a <code>storage</code> FinancialAccount, this hash includes details specific to <code>storage</code> FinancialAccounts.
  * @property string $type Type of the FinancialAccount. An additional hash is included on the FinancialAccount with a name matching this value. It contains additional information specific to the FinancialAccount type.
  */
 class FinancialAccount extends \Stripe\ApiResource
