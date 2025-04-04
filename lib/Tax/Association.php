@@ -12,7 +12,7 @@ namespace Stripe\Tax;
  * @property string $calculation The <a href="https://stripe.com/docs/api/tax/calculations/object">Tax Calculation</a> that was included in PaymentIntent.
  * @property string $payment_intent The <a href="https://stripe.com/docs/api/payment_intents/object">PaymentIntent</a> that this Tax Association is tracking.
  * @property string $status Status of the Tax Association.
- * @property (object{committed?: (object{reversals: (object{status: string, status_details: (object{committed?: (object{transaction: string}&\stdClass&\Stripe\StripeObject), errored?: (object{reason: string, refund_id: string}&\stdClass&\Stripe\StripeObject)}&\stdClass&\Stripe\StripeObject)}&\stdClass&\Stripe\StripeObject)[], transaction: string}&\stdClass&\Stripe\StripeObject), errored?: (object{reason: string}&\stdClass&\Stripe\StripeObject)}&\stdClass&\Stripe\StripeObject) $status_details
+ * @property (object{committed?: (object{reversals: (object{status: string, status_details: (object{committed?: (object{transaction: string}&\Stripe\StripeObject), errored?: (object{reason: string, refund_id: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject)[], transaction: string}&\Stripe\StripeObject), errored?: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details
  */
 class Association extends \Stripe\ApiResource
 {

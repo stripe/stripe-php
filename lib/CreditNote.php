@@ -19,7 +19,7 @@ namespace Stripe;
  * @property null|string $customer_account ID of the account.
  * @property null|CustomerBalanceTransaction|string $customer_balance_transaction Customer balance transaction related to this credit note.
  * @property int $discount_amount The integer amount in cents (or local equivalent) representing the total amount of discount that was credited.
- * @property ((object{amount: int, discount: Discount|string}&\stdClass&StripeObject))[] $discount_amounts The aggregate amounts calculated per discount for all line items.
+ * @property ((object{amount: int, discount: Discount|string}&StripeObject))[] $discount_amounts The aggregate amounts calculated per discount for all line items.
  * @property null|int $effective_at The date when this credit note is in effect. Same as <code>created</code> unless overwritten. When defined, this value replaces the system-generated 'Date of issue' printed on the credit note PDF.
  * @property Invoice|string $invoice ID of the invoice.
  * @property Collection<CreditNoteLineItem> $lines Line items that make up the credit note
@@ -31,16 +31,16 @@ namespace Stripe;
  * @property string $pdf The link to download the PDF of the credit note.
  * @property null|int $post_payment_amount
  * @property null|int $pre_payment_amount
- * @property ((object{amount: int, credit_balance_transaction?: Billing\CreditBalanceTransaction|string, discount?: Discount|string, type: string}&\stdClass&StripeObject))[] $pretax_credit_amounts The pretax credit amounts (ex: discount, credit grants, etc) for all line items.
+ * @property ((object{amount: int, credit_balance_transaction?: Billing\CreditBalanceTransaction|string, discount?: Discount|string, type: string}&StripeObject))[] $pretax_credit_amounts The pretax credit amounts (ex: discount, credit grants, etc) for all line items.
  * @property null|string $reason Reason for issuing this credit note, one of <code>duplicate</code>, <code>fraudulent</code>, <code>order_change</code>, or <code>product_unsatisfactory</code>
- * @property ((object{amount_refunded: int, refund: Refund|string}&\stdClass&StripeObject))[] $refunds Refunds related to this credit note.
- * @property null|(object{amount_subtotal: int, amount_tax: int, amount_total: int, shipping_rate: null|ShippingRate|string, taxes?: ((object{amount: int, rate: TaxRate, taxability_reason: null|string, taxable_amount: null|int}&\stdClass&StripeObject))[]}&\stdClass&StripeObject) $shipping_cost The details of the cost of shipping, including the ShippingRate applied to the invoice.
+ * @property ((object{amount_refunded: int, refund: Refund|string}&StripeObject))[] $refunds Refunds related to this credit note.
+ * @property null|(object{amount_subtotal: int, amount_tax: int, amount_total: int, shipping_rate: null|ShippingRate|string, taxes?: ((object{amount: int, rate: TaxRate, taxability_reason: null|string, taxable_amount: null|int}&StripeObject))[]}&StripeObject) $shipping_cost The details of the cost of shipping, including the ShippingRate applied to the invoice.
  * @property string $status Status of this credit note, one of <code>issued</code> or <code>void</code>. Learn more about <a href="https://stripe.com/docs/billing/invoices/credit-notes#voiding">voiding credit notes</a>.
  * @property int $subtotal The integer amount in cents (or local equivalent) representing the amount of the credit note, excluding exclusive tax and invoice level discounts.
  * @property null|int $subtotal_excluding_tax The integer amount in cents (or local equivalent) representing the amount of the credit note, excluding all tax and invoice level discounts.
  * @property int $total The integer amount in cents (or local equivalent) representing the total amount of the credit note, including tax and all discount.
  * @property null|int $total_excluding_tax The integer amount in cents (or local equivalent) representing the total amount of the credit note, excluding tax, but including discounts.
- * @property null|((object{amount: int, tax_behavior: string, tax_rate_details: null|(object{tax_rate: string}&\stdClass&StripeObject), taxability_reason: string, taxable_amount: null|int, type: string}&\stdClass&StripeObject))[] $total_taxes The aggregate tax information for all line items.
+ * @property null|((object{amount: int, tax_behavior: string, tax_rate_details: null|(object{tax_rate: string}&StripeObject), taxability_reason: string, taxable_amount: null|int, type: string}&StripeObject))[] $total_taxes The aggregate tax information for all line items.
  * @property string $type Type of this credit note, one of <code>pre_payment</code> or <code>post_payment</code>. A <code>pre_payment</code> credit note means it was issued when the invoice was open. A <code>post_payment</code> credit note means it was issued when the invoice was paid.
  * @property null|int $voided_at The time that the credit note was voided.
  */

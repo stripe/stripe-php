@@ -9,8 +9,8 @@ namespace Stripe;
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|bool $debit_negative_balances A Boolean indicating if Stripe should try to reclaim negative balances from an attached bank account. See <a href="/connect/account-balances">Understanding Connect account balances</a> for details. The default value is <code>false</code> when <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>application</code>, which includes Custom accounts, otherwise <code>true</code>.
- * @property null|(object{schedule: null|(object{interval: null|string, monthly_anchor?: int, weekly_anchor?: string}&\stdClass&StripeObject), statement_descriptor: null|string, status: string}&\stdClass&StripeObject) $payouts Settings specific to the account's payouts.
- * @property (object{delay_days: int}&\stdClass&StripeObject) $settlement_timing
+ * @property null|(object{schedule: null|(object{interval: null|string, monthly_anchor?: int, weekly_anchor?: string}&StripeObject), statement_descriptor: null|string, status: string}&StripeObject) $payouts Settings specific to the account's payouts.
+ * @property (object{delay_days: int}&StripeObject) $settlement_timing
  */
 class BalanceSettings extends SingletonApiResource
 {

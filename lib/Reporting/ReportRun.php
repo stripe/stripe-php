@@ -19,7 +19,7 @@ namespace Stripe\Reporting;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $error If something should go wrong during the run, a message about the failure (populated when <code>status=failed</code>).
  * @property bool $livemode <code>true</code> if the report is run on live mode data and <code>false</code> if it is run on test mode data.
- * @property (object{columns?: string[], connected_account?: string, currency?: string, interval_end?: int, interval_start?: int, payout?: string, reporting_category?: string, timezone?: string}&\stdClass&\Stripe\StripeObject) $parameters
+ * @property (object{columns?: string[], connected_account?: string, currency?: string, interval_end?: int, interval_start?: int, payout?: string, reporting_category?: string, timezone?: string}&\Stripe\StripeObject) $parameters
  * @property string $report_type The ID of the <a href="https://stripe.com/docs/reports/report-types">report type</a> to run, such as <code>&quot;balance.summary.1&quot;</code>.
  * @property null|\Stripe\File $result The file object representing the result of the report run (populated when <code>status=succeeded</code>).
  * @property string $status Status of this report run. This will be <code>pending</code> when the run is initially created. When the run finishes, this will be set to <code>succeeded</code> and the <code>result</code> field will be populated. Rarely, we may encounter an error, at which point this will be set to <code>failed</code> and the <code>error</code> field will be populated.
