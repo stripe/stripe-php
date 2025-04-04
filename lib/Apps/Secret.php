@@ -23,7 +23,7 @@ namespace Stripe\Apps;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $name A name for the secret that's unique within the scope.
  * @property null|string $payload The plaintext secret value to be stored.
- * @property (object{type: string, user?: string}&\stdClass&\Stripe\StripeObject) $scope
+ * @property (object{type: string, user?: string}&\Stripe\StripeObject) $scope
  */
 class Secret extends \Stripe\ApiResource
 {
