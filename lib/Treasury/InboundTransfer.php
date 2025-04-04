@@ -16,18 +16,18 @@ namespace Stripe\Treasury;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
- * @property null|(object{code: string}&\stdClass&\Stripe\StripeObject) $failure_details Details about this InboundTransfer's failure. Only set when status is <code>failed</code>.
+ * @property null|(object{code: string}&\Stripe\StripeObject) $failure_details Details about this InboundTransfer's failure. Only set when status is <code>failed</code>.
  * @property string $financial_account The FinancialAccount that received the funds.
  * @property null|string $hosted_regulatory_receipt_url A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted transaction receipt</a> URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
- * @property (object{received_debit: null|string}&\stdClass&\Stripe\StripeObject) $linked_flows
+ * @property (object{received_debit: null|string}&\Stripe\StripeObject) $linked_flows
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $origin_payment_method The origin payment method to be debited for an InboundTransfer.
- * @property null|(object{billing_details: (object{address: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\stdClass&\Stripe\StripeObject), email: null|string, name: null|string}&\stdClass&\Stripe\StripeObject), type: string, us_bank_account?: (object{account_holder_type: null|string, account_type: null|string, bank_name: null|string, fingerprint: null|string, last4: null|string, mandate?: string|\Stripe\Mandate, network: string, routing_number: null|string}&\stdClass&\Stripe\StripeObject)}&\stdClass&\Stripe\StripeObject) $origin_payment_method_details Details about the PaymentMethod for an InboundTransfer.
+ * @property null|(object{billing_details: (object{address: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject), email: null|string, name: null|string}&\Stripe\StripeObject), type: string, us_bank_account?: (object{account_holder_type: null|string, account_type: null|string, bank_name: null|string, fingerprint: null|string, last4: null|string, mandate?: string|\Stripe\Mandate, network: string, routing_number: null|string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $origin_payment_method_details Details about the PaymentMethod for an InboundTransfer.
  * @property null|bool $returned Returns <code>true</code> if the funds for an InboundTransfer were returned after the InboundTransfer went to the <code>succeeded</code> state.
  * @property string $statement_descriptor Statement descriptor shown when funds are debited from the source. Not all payment networks support <code>statement_descriptor</code>.
  * @property string $status Status of the InboundTransfer: <code>processing</code>, <code>succeeded</code>, <code>failed</code>, and <code>canceled</code>. An InboundTransfer is <code>processing</code> if it is created and pending. The status changes to <code>succeeded</code> once the funds have been &quot;confirmed&quot; and a <code>transaction</code> is created and posted. The status changes to <code>failed</code> if the transfer fails.
- * @property (object{canceled_at?: null|int, failed_at: null|int, succeeded_at: null|int}&\stdClass&\Stripe\StripeObject) $status_transitions
+ * @property (object{canceled_at?: null|int, failed_at: null|int, succeeded_at: null|int}&\Stripe\StripeObject) $status_transitions
  * @property null|string|Transaction $transaction The Transaction associated with this object.
  */
 class InboundTransfer extends \Stripe\ApiResource
