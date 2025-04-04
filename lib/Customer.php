@@ -10,7 +10,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\stdClass&StripeObject) $address The customer's address.
+ * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject) $address The customer's address.
  * @property null|int $balance The current balance, if any, that's stored on the customer. If negative, the customer has credit to apply to their next invoice. If positive, the customer has an amount owed that's added to their next invoice. The balance only considers amounts that Stripe hasn't successfully applied to any invoice. It doesn't reflect unpaid invoices. This balance is only taken into account after invoices finalize.
  * @property null|CashBalance $cash_balance The current funds being held by Stripe on behalf of the customer. You can apply these funds towards payment intents when the source is &quot;cash_balance&quot;. The <code>settings[reconciliation_mode]</code> field describes if these funds apply to these payment intents manually or automatically.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -22,17 +22,17 @@ namespace Stripe;
  * @property null|string $email The customer's email address.
  * @property null|StripeObject $invoice_credit_balance The current multi-currency balances, if any, that's stored on the customer. If positive in a currency, the customer has a credit to apply to their next invoice denominated in that currency. If negative, the customer has an amount owed that's added to their next invoice denominated in that currency. These balances don't apply to unpaid invoices. They solely track amounts that Stripe hasn't successfully applied to any invoice. Stripe only applies a balance in a specific currency to an invoice after that invoice (which is in the same currency) finalizes.
  * @property null|string $invoice_prefix The prefix for the customer used to generate unique invoice numbers.
- * @property null|(object{custom_fields: null|(object{name: string, value: string}&\stdClass&StripeObject)[], default_payment_method: null|PaymentMethod|string, footer: null|string, rendering_options: null|(object{amount_tax_display: null|string, template: null|string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $invoice_settings
+ * @property null|(object{custom_fields: null|(object{name: string, value: string}&StripeObject)[], default_payment_method: null|PaymentMethod|string, footer: null|string, rendering_options: null|(object{amount_tax_display: null|string, template: null|string}&StripeObject)}&StripeObject) $invoice_settings
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name The customer's full name or business name.
  * @property null|int $next_invoice_sequence The suffix of the customer's next invoice number (for example, 0001). When the account uses account level sequencing, this parameter is ignored in API requests and the field omitted in API responses.
  * @property null|string $phone The customer's phone number.
  * @property null|string[] $preferred_locales The customer's preferred locales (languages), ordered by preference.
- * @property null|(object{address?: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\stdClass&StripeObject), carrier?: null|string, name?: string, phone?: null|string, tracking_number?: null|string}&\stdClass&StripeObject) $shipping Mailing and shipping address for the customer. Appears on invoices emailed to this customer.
+ * @property null|(object{address?: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject), carrier?: null|string, name?: string, phone?: null|string, tracking_number?: null|string}&StripeObject) $shipping Mailing and shipping address for the customer. Appears on invoices emailed to this customer.
  * @property null|Collection<Account|BankAccount|Card|Source> $sources The customer's payment sources, if any.
  * @property null|Collection<Subscription> $subscriptions The customer's current subscriptions, if any.
- * @property null|(object{automatic_tax: string, ip_address: null|string, location: null|(object{country: string, source: string, state: null|string}&\stdClass&StripeObject)}&\stdClass&StripeObject) $tax
+ * @property null|(object{automatic_tax: string, ip_address: null|string, location: null|(object{country: string, source: string, state: null|string}&StripeObject)}&StripeObject) $tax
  * @property null|string $tax_exempt Describes the customer's tax exemption status, which is <code>none</code>, <code>exempt</code>, or <code>reverse</code>. When set to <code>reverse</code>, invoice and receipt PDFs include the following text: <strong>&quot;Reverse charge&quot;</strong>.
  * @property null|Collection<TaxId> $tax_ids The customer's tax IDs.
  * @property null|string|TestHelpers\TestClock $test_clock ID of the test clock that this customer belongs to.

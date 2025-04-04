@@ -29,9 +29,9 @@ namespace Stripe;
  * @property null|Invoice|string $invoice The ID of the invoice this invoice item belongs to.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|(object{subscription_details: null|(object{subscription: string, subscription_item?: string}&\stdClass&StripeObject), type: string}&\stdClass&StripeObject) $parent The parent that generated this invoice
- * @property (object{end: int, start: int}&\stdClass&StripeObject) $period
- * @property null|(object{price_details?: (object{price: string, product: string}&\stdClass&StripeObject), type: string, unit_amount_decimal: null|string}&\stdClass&StripeObject) $pricing The pricing information of the invoice item.
+ * @property null|(object{subscription_details: null|(object{subscription: string, subscription_item?: string}&StripeObject), type: string}&StripeObject) $parent The parent that generated this invoice
+ * @property (object{end: int, start: int}&StripeObject) $period
+ * @property null|(object{price_details?: (object{price: string, product: string}&StripeObject), type: string, unit_amount_decimal: null|string}&StripeObject) $pricing The pricing information of the invoice item.
  * @property bool $proration Whether the invoice item was created automatically as a proration adjustment when the customer switched plans.
  * @property int $quantity Quantity of units for the invoice item. If the invoice item is a proration, the quantity of the subscription that the proration was computed for.
  * @property null|TaxRate[] $tax_rates The tax rates which apply to the invoice item. When set, the <code>default_tax_rates</code> on the invoice do not apply to this invoice item.

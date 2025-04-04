@@ -17,7 +17,7 @@ namespace Stripe\TestHelpers;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $name The custom name supplied at creation.
  * @property string $status The status of the Test Clock.
- * @property (object{advancing?: (object{target_frozen_time: int}&\stdClass&\Stripe\StripeObject)}&\stdClass&\Stripe\StripeObject) $status_details
+ * @property (object{advancing?: (object{target_frozen_time: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details
  */
 class TestClock extends \Stripe\ApiResource
 {
