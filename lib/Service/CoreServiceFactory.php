@@ -58,6 +58,7 @@ namespace Stripe\Service;
  * @property PayoutService $payouts
  * @property PlanService $plans
  * @property PriceService $prices
+ * @property Privacy\PrivacyServiceFactory $privacy
  * @property ProductService $products
  * @property PromotionCodeService $promotionCodes
  * @property QuoteService $quotes
@@ -146,6 +147,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'payouts' => PayoutService::class,
         'plans' => PlanService::class,
         'prices' => PriceService::class,
+        'privacy' => Privacy\PrivacyServiceFactory::class,
         'products' => ProductService::class,
         'promotionCodes' => PromotionCodeService::class,
         'quotes' => QuoteService::class,
