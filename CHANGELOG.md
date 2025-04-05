@@ -1,5 +1,9 @@
 # Changelog
 
+## 17.2.0-beta.2 - 2025-04-04
+* [#1847](https://github.com/stripe/stripe-php/pull/1847) Remove stdClass from object shapes
+  * Remove intersection with `stdClass` in resource properties and fixed `instanceof` checks.
+
 ## 17.2.0-beta.1 - 2025-04-02
 
 * [#1830](https://github.com/stripe/stripe-php/pull/1830) Update logic for Stripe::addBetaVersion
