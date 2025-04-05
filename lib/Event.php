@@ -242,6 +242,11 @@ class Event extends ApiResource
     const PRICE_CREATED = 'price.created';
     const PRICE_DELETED = 'price.deleted';
     const PRICE_UPDATED = 'price.updated';
+    const PRIVACY_REDACTION_JOB_CANCELED = 'privacy.redaction_job.canceled';
+    const PRIVACY_REDACTION_JOB_CREATED = 'privacy.redaction_job.created';
+    const PRIVACY_REDACTION_JOB_READY = 'privacy.redaction_job.ready';
+    const PRIVACY_REDACTION_JOB_SUCCEEDED = 'privacy.redaction_job.succeeded';
+    const PRIVACY_REDACTION_JOB_VALIDATION_ERROR = 'privacy.redaction_job.validation_error';
     const PRODUCT_CREATED = 'product.created';
     const PRODUCT_DELETED = 'product.deleted';
     const PRODUCT_UPDATED = 'product.updated';
@@ -525,6 +530,11 @@ class Event extends ApiResource
     const TYPE_PRICE_CREATED = 'price.created';
     const TYPE_PRICE_DELETED = 'price.deleted';
     const TYPE_PRICE_UPDATED = 'price.updated';
+    const TYPE_PRIVACY_REDACTION_JOB_CANCELED = 'privacy.redaction_job.canceled';
+    const TYPE_PRIVACY_REDACTION_JOB_CREATED = 'privacy.redaction_job.created';
+    const TYPE_PRIVACY_REDACTION_JOB_READY = 'privacy.redaction_job.ready';
+    const TYPE_PRIVACY_REDACTION_JOB_SUCCEEDED = 'privacy.redaction_job.succeeded';
+    const TYPE_PRIVACY_REDACTION_JOB_VALIDATION_ERROR = 'privacy.redaction_job.validation_error';
     const TYPE_PRODUCT_CREATED = 'product.created';
     const TYPE_PRODUCT_DELETED = 'product.deleted';
     const TYPE_PRODUCT_UPDATED = 'product.updated';
