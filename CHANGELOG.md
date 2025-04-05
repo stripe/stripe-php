@@ -1,5 +1,9 @@
 # Changelog
 
+## 17.1.1 - 2025-04-04
+* [#1847](https://github.com/stripe/stripe-php/pull/1847) Remove stdClass from object shapes
+  * Remove intersection with `stdClass` in resource properties and fixed `instanceof` checks.  
+
 ## 17.1.0 - 2025-04-02
 * [#1843](https://github.com/stripe/stripe-php/pull/1843) Add null type in resource fields to non required objects
   * Fixes nullable resource properties that were incorrectly set as required in PHPDocs
