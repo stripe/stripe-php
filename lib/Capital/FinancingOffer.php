@@ -47,6 +47,7 @@ class FinancingOffer extends \Stripe\ApiResource
     const STATUS_UNDELIVERED = 'undelivered';
 
     const TYPE_CASH_ADVANCE = 'cash_advance';
+    const TYPE_FIXED_TERM_LOAN = 'fixed_term_loan';
     const TYPE_FLEX_LOAN = 'flex_loan';
 
     /**
