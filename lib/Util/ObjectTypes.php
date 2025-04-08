@@ -79,7 +79,6 @@ class ObjectTypes
             \Stripe\FinancialConnections\Transaction::OBJECT_NAME => \Stripe\FinancialConnections\Transaction::class,
             \Stripe\Forwarding\Request::OBJECT_NAME => \Stripe\Forwarding\Request::class,
             \Stripe\FundingInstructions::OBJECT_NAME => \Stripe\FundingInstructions::class,
-            \Stripe\FxQuote::OBJECT_NAME => \Stripe\FxQuote::class,
             \Stripe\GiftCards\Card::OBJECT_NAME => \Stripe\GiftCards\Card::class,
             \Stripe\GiftCards\Transaction::OBJECT_NAME => \Stripe\GiftCards\Transaction::class,
             \Stripe\Identity\VerificationReport::OBJECT_NAME => \Stripe\Identity\VerificationReport::class,
