@@ -69,8 +69,6 @@ You can continue to use the legacy integration patterns used prior to version [7
 
 See the [PHP API docs](https://stripe.com/docs/api/?lang=php#intro).
 
-See [video demonstrations][youtube-playlist] covering how to use the library.
-
 ## Legacy Version Support
 
 ### PHP 5.4 & 5.5
