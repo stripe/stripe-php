@@ -29,7 +29,7 @@ class ExternalAccountService extends AbstractService
     /**
      * Create an external account for a given connected account.
      *
-     * @param null|array{default_for_currency?: bool, expand?: string[], external_account: string, metadata?: \Stripe\StripeObject} $params
+     * @param null|array{default_for_currency?: bool, expand?: string[], external_account: array|string, metadata?: \Stripe\StripeObject} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\BankAccount|\Stripe\Card
