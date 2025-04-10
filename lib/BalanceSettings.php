@@ -5,7 +5,11 @@
 namespace Stripe;
 
 /**
- * Options for customizing account balances within Stripe.
+ * Options for customizing account balances and payout settings for a Stripe platform’s connected accounts.
+ *
+ * This API is only available for users enrolled in the public preview for Accounts v2 on Stripe Connect.
+ * If you are not in this preview, please use the <a href="https://docs.stripe.com/api/accounts?api-version=2025-03-31.basil">Accounts v1 API</a>
+ * to manage your connected accounts’ balance settings instead.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|bool $debit_negative_balances A Boolean indicating if Stripe should try to reclaim negative balances from an attached bank account. See <a href="/connect/account-balances">Understanding Connect account balances</a> for details. The default value is <code>false</code> when <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>application</code>, which includes Custom accounts, otherwise <code>true</code>.
