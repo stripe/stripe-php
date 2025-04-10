@@ -58,6 +58,7 @@ namespace Stripe;
  * @property Service\PayoutService $payouts
  * @property Service\PlanService $plans
  * @property Service\PriceService $prices
+ * @property Service\Privacy\PrivacyServiceFactory $privacy
  * @property Service\ProductService $products
  * @property Service\PromotionCodeService $promotionCodes
  * @property Service\QuoteService $quotes

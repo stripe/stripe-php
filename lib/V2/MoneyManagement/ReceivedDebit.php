@@ -18,7 +18,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property null|string $receipt_url A link to the Stripe-hosted receipt for this ReceivedDebit.
  * @property string $status Open Enum. The status of the ReceivedDebit.
  * @property null|(object{failed: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Detailed information about the status of the ReceivedDebit.
- * @property (object{canceled_at: null|int, failed_at: null|int, succeeded_at: null|int}&\Stripe\StripeObject) $status_transitions The time at which the ReceivedDebit transitioned to a particular status.
+ * @property null|(object{canceled_at: null|int, failed_at: null|int, succeeded_at: null|int}&\Stripe\StripeObject) $status_transitions The time at which the ReceivedDebit transitioned to a particular status.
  * @property string $type Open Enum. The type of the ReceivedDebit.
  */
 class ReceivedDebit extends \Stripe\ApiResource
