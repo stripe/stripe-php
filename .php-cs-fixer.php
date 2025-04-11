@@ -6,8 +6,12 @@ $finder = PhpCsFixer\Finder::create()
 
 $config = new PhpCsFixer\Config();
 $config->setRiskyAllowed(true);
-// TODO Enable the parallel runner to speed up formatter when we upgrade to php-cs-fixer v4+
-// $config->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect());
+if(PHP_OS == "Darwin") {
+    // TODO Enable the parallel runner for CI to speed up formatter when we upgrade to php-cs-fixer v4+
+    // PHP CS Fixer's parallel runner currently does not support Linux and is in beta.
+    // Only enabling it locally for faster formatting.
+    $config->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect());
+}
 $config->setRules([
     // Rulesets
     '@PSR2' => true,
