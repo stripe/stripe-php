@@ -472,21 +472,6 @@ class Invoice extends ApiResource
         return static::_requestPage($url, SearchResult::class, $params, $opts);
     }
 
-    const PATH_LINES = '/lines';
-
-    /**
-     * @param string $id the ID of the invoice on which to retrieve the invoice line items
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @return Collection<InvoiceLineItem> the list of invoice line items
-     *
-     * @throws Exception\ApiErrorException if the request fails
-     */
-    public static function allLines($id, $params = null, $opts = null)
-    {
-        return self::_allNestedResources($id, static::PATH_LINES, $params, $opts);
-    }
     const PATH_PAYMENTS = '/payments';
 
     /**
@@ -516,5 +501,20 @@ class Invoice extends ApiResource
     public static function retrievePayment($id, $paymentId, $params = null, $opts = null)
     {
         return self::_retrieveNestedResource($id, static::PATH_PAYMENTS, $paymentId, $params, $opts);
+    }
+    const PATH_LINES = '/lines';
+
+    /**
+     * @param string $id the ID of the invoice on which to retrieve the invoice line items
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return Collection<InvoiceLineItem> the list of invoice line items
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public static function allLines($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_LINES, $params, $opts);
     }
 }

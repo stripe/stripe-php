@@ -19,6 +19,7 @@ class RedactionJob extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'privacy.redaction_job';
 
+    use \Stripe\ApiOperations\NestedResource;
     use \Stripe\ApiOperations\Update;
 
     /**
@@ -151,5 +152,36 @@ class RedactionJob extends \Stripe\ApiResource
         $this->refreshFrom($response, $opts);
 
         return $this;
+    }
+
+    const PATH_VALIDATION_ERRORS = '/validation_errors';
+
+    /**
+     * @param string $id the ID of the redaction job on which to retrieve the redaction job validation errors
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return \Stripe\Collection<RedactionJobValidationError> the list of redaction job validation errors
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public static function allValidationErrors($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_VALIDATION_ERRORS, $params, $opts);
+    }
+
+    /**
+     * @param string $id the ID of the redaction job to which the redaction job validation error belongs
+     * @param string $validationErrorId the ID of the redaction job validation error to retrieve
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return RedactionJobValidationError
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public static function retrieveValidationError($id, $validationErrorId, $params = null, $opts = null)
+    {
+        return self::_retrieveNestedResource($id, static::PATH_VALIDATION_ERRORS, $validationErrorId, $params, $opts);
     }
 }
