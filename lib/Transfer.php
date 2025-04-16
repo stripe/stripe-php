@@ -26,6 +26,7 @@ namespace Stripe;
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|Account|string $destination ID of the Stripe account the transfer was sent to.
  * @property null|Charge|string $destination_payment If the destination is a Stripe account, this will be the ID of the payment that the destination account received for the transfer.
+ * @property null|string $fx_quote The FX Quote used for the transfer.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property Collection<TransferReversal> $reversals A list of reversals that have been applied to the transfer.
@@ -50,7 +51,7 @@ class Transfer extends ApiResource
      * transfer object. Your <a href="#balance">Stripe balance</a> must be able to
      * cover the transfer amount, or you’ll receive an “Insufficient Funds” error.
      *
-     * @param null|array{amount?: int, currency: string, description?: string, destination: string, expand?: string[], metadata?: StripeObject, source_transaction?: string, source_type?: string, transfer_group?: string} $params
+     * @param null|array{amount?: int, currency: string, description?: string, destination: string, expand?: string[], fx_quote?: string, metadata?: StripeObject, source_transaction?: string, source_type?: string, transfer_group?: string} $params
      * @param null|array|string $options
      *
      * @return Transfer the created resource
