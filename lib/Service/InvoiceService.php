@@ -65,24 +65,6 @@ class InvoiceService extends AbstractService
     }
 
     /**
-     * When retrieving an invoice, there is an includable payments property containing
-     * the first handful of those items. There is also a URL where you can retrieve the
-     * full (paginated) list of payments.
-     *
-     * @param string $parentId
-     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
-     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
-     *
-     * @return \Stripe\Collection<\Stripe\InvoicePayment>
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     */
-    public function allPayments($parentId, $params = null, $opts = null)
-    {
-        return $this->requestCollection('get', $this->buildPath('/v1/invoices/%s/payments', $parentId), $params, $opts);
-    }
-
-    /**
      * Attaches a PaymentIntent or an Out of Band Payment to the invoice, adding it to
      * the list of <code>payments</code>.
      *
@@ -112,32 +94,6 @@ class InvoiceService extends AbstractService
     public function attachPayment($id, $params = null, $opts = null)
     {
         return $this->request('post', $this->buildPath('/v1/invoices/%s/attach_payment', $id), $params, $opts);
-    }
-
-    /**
-     * Attaches a PaymentIntent to the invoice, adding it to the list of
-     * <code>payments</code>. When the PaymentIntent’s status changes to
-     * <code>succeeded</code>, the payment is credited to the invoice, increasing its
-     * <code>amount_paid</code>. When the invoice is fully paid, the invoice’s status
-     * becomes <code>paid</code>.
-     *
-     * If the PaymentIntent’s status is already <code>succeeded</code> when it is
-     * attached, it is credited to the invoice immediately.
-     *
-     * Related guide: <a href="/docs/invoicing/payments/create">Create an invoice
-     * payment</a>
-     *
-     * @param string $id
-     * @param null|array{amount_requested?: int, expand?: string[], payment_intent: string} $params
-     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
-     *
-     * @return \Stripe\Invoice
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     */
-    public function attachPaymentIntent($id, $params = null, $opts = null)
-    {
-        return $this->request('post', $this->buildPath('/v1/invoices/%s/attach_payment_intent', $id), $params, $opts);
     }
 
     /**
@@ -302,23 +258,6 @@ class InvoiceService extends AbstractService
     public function retrieve($id, $params = null, $opts = null)
     {
         return $this->request('get', $this->buildPath('/v1/invoices/%s', $id), $params, $opts);
-    }
-
-    /**
-     * Retrieves the invoice payment with the given ID.
-     *
-     * @param string $parentId
-     * @param string $id
-     * @param null|array{expand?: string[]} $params
-     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
-     *
-     * @return \Stripe\InvoicePayment
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     */
-    public function retrievePayment($parentId, $id, $params = null, $opts = null)
-    {
-        return $this->request('get', $this->buildPath('/v1/invoices/%s/payments/%s', $parentId, $id), $params, $opts);
     }
 
     /**

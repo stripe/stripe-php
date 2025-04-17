@@ -53,7 +53,7 @@ class TransferService extends AbstractService
      * transfer object. Your <a href="#balance">Stripe balance</a> must be able to
      * cover the transfer amount, or you’ll receive an “Insufficient Funds” error.
      *
-     * @param null|array{amount?: int, currency: string, description?: string, destination: string, expand?: string[], metadata?: \Stripe\StripeObject, source_transaction?: string, source_type?: string, transfer_group?: string} $params
+     * @param null|array{amount?: int, currency: string, description?: string, destination: string, expand?: string[], fx_quote?: string, metadata?: \Stripe\StripeObject, source_transaction?: string, source_type?: string, transfer_group?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Transfer

@@ -307,23 +307,6 @@ class Invoice extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Invoice the attached invoice
-     *
-     * @throws Exception\ApiErrorException if the request fails
-     */
-    public function attachPaymentIntent($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/attach_payment_intent';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-
-        return $this;
-    }
-
-    /**
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
      * @return Invoice the created invoice
      *
      * @throws Exception\ApiErrorException if the request fails
@@ -486,35 +469,5 @@ class Invoice extends ApiResource
     public static function allLines($id, $params = null, $opts = null)
     {
         return self::_allNestedResources($id, static::PATH_LINES, $params, $opts);
-    }
-    const PATH_PAYMENTS = '/payments';
-
-    /**
-     * @param string $id the ID of the invoice on which to retrieve the invoice payments
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @return Collection<InvoicePayment> the list of invoice payments
-     *
-     * @throws Exception\ApiErrorException if the request fails
-     */
-    public static function allPayments($id, $params = null, $opts = null)
-    {
-        return self::_allNestedResources($id, static::PATH_PAYMENTS, $params, $opts);
-    }
-
-    /**
-     * @param string $id the ID of the invoice to which the invoice payment belongs
-     * @param string $paymentId the ID of the invoice payment to retrieve
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @return InvoicePayment
-     *
-     * @throws Exception\ApiErrorException if the request fails
-     */
-    public static function retrievePayment($id, $paymentId, $params = null, $opts = null)
-    {
-        return self::_retrieveNestedResource($id, static::PATH_PAYMENTS, $paymentId, $params, $opts);
     }
 }
