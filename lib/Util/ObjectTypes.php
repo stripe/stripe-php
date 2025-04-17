@@ -108,6 +108,7 @@ class ObjectTypes
             \Stripe\Order::OBJECT_NAME => \Stripe\Order::class,
             \Stripe\PaymentAttemptRecord::OBJECT_NAME => \Stripe\PaymentAttemptRecord::class,
             \Stripe\PaymentIntent::OBJECT_NAME => \Stripe\PaymentIntent::class,
+            \Stripe\PaymentIntentAmountDetailsLineItem::OBJECT_NAME => \Stripe\PaymentIntentAmountDetailsLineItem::class,
             \Stripe\PaymentLink::OBJECT_NAME => \Stripe\PaymentLink::class,
             \Stripe\PaymentMethod::OBJECT_NAME => \Stripe\PaymentMethod::class,
             \Stripe\PaymentMethodConfiguration::OBJECT_NAME => \Stripe\PaymentMethodConfiguration::class,

@@ -245,6 +245,7 @@ require __DIR__ . '/lib/Margin.php';
 require __DIR__ . '/lib/Order.php';
 require __DIR__ . '/lib/PaymentAttemptRecord.php';
 require __DIR__ . '/lib/PaymentIntent.php';
+require __DIR__ . '/lib/PaymentIntentAmountDetailsLineItem.php';
 require __DIR__ . '/lib/PaymentLink.php';
 require __DIR__ . '/lib/PaymentMethod.php';
 require __DIR__ . '/lib/PaymentMethodConfiguration.php';
