@@ -17,7 +17,7 @@ namespace Stripe;
  * @property null|Customer|string $customer ID of the customer.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|(object{account?: Account|string, application?: Application|string, customer?: Customer|string, type: string}&StripeObject) $owner The account or customer the tax ID belongs to.
- * @property string $type Type of the tax ID, one of <code>ad_nrt</code>, <code>ae_trn</code>, <code>al_tin</code>, <code>am_tin</code>, <code>ao_tin</code>, <code>ar_cuit</code>, <code>au_abn</code>, <code>au_arn</code>, <code>ba_tin</code>, <code>bb_tin</code>, <code>bg_uic</code>, <code>bh_vat</code>, <code>bo_tin</code>, <code>br_cnpj</code>, <code>br_cpf</code>, <code>bs_tin</code>, <code>by_tin</code>, <code>ca_bn</code>, <code>ca_gst_hst</code>, <code>ca_pst_bc</code>, <code>ca_pst_mb</code>, <code>ca_pst_sk</code>, <code>ca_qst</code>, <code>cd_nif</code>, <code>ch_uid</code>, <code>ch_vat</code>, <code>cl_tin</code>, <code>cn_tin</code>, <code>co_nit</code>, <code>cr_tin</code>, <code>de_stn</code>, <code>do_rcn</code>, <code>ec_ruc</code>, <code>eg_tin</code>, <code>es_cif</code>, <code>eu_oss_vat</code>, <code>eu_vat</code>, <code>gb_vat</code>, <code>ge_vat</code>, <code>gn_nif</code>, <code>hk_br</code>, <code>hr_oib</code>, <code>hu_tin</code>, <code>id_npwp</code>, <code>il_vat</code>, <code>in_gst</code>, <code>is_vat</code>, <code>jp_cn</code>, <code>jp_rn</code>, <code>jp_trn</code>, <code>ke_pin</code>, <code>kh_tin</code>, <code>kr_brn</code>, <code>kz_bin</code>, <code>li_uid</code>, <code>li_vat</code>, <code>ma_vat</code>, <code>md_vat</code>, <code>me_pib</code>, <code>mk_vat</code>, <code>mr_nif</code>, <code>mx_rfc</code>, <code>my_frp</code>, <code>my_itn</code>, <code>my_sst</code>, <code>ng_tin</code>, <code>no_vat</code>, <code>no_voec</code>, <code>np_pan</code>, <code>nz_gst</code>, <code>om_vat</code>, <code>pe_ruc</code>, <code>ph_tin</code>, <code>ro_tin</code>, <code>rs_pib</code>, <code>ru_inn</code>, <code>ru_kpp</code>, <code>sa_vat</code>, <code>sg_gst</code>, <code>sg_uen</code>, <code>si_tin</code>, <code>sn_ninea</code>, <code>sr_fin</code>, <code>sv_nit</code>, <code>th_vat</code>, <code>tj_tin</code>, <code>tr_tin</code>, <code>tw_vat</code>, <code>tz_vat</code>, <code>ua_vat</code>, <code>ug_tin</code>, <code>us_ein</code>, <code>uy_ruc</code>, <code>uz_tin</code>, <code>uz_vat</code>, <code>ve_rif</code>, <code>vn_tin</code>, <code>za_vat</code>, <code>zm_tin</code>, or <code>zw_tin</code>. Note that some legacy tax IDs have type <code>unknown</code>
+ * @property string $type Type of the tax ID, one of <code>ad_nrt</code>, <code>ae_trn</code>, <code>al_tin</code>, <code>am_tin</code>, <code>ao_tin</code>, <code>ar_cuit</code>, <code>au_abn</code>, <code>au_arn</code>, <code>aw_tin</code>, <code>az_tin</code>, <code>ba_tin</code>, <code>bb_tin</code>, <code>bd_bin</code>, <code>bf_ifu</code>, <code>bg_uic</code>, <code>bh_vat</code>, <code>bj_ifu</code>, <code>bo_tin</code>, <code>br_cnpj</code>, <code>br_cpf</code>, <code>bs_tin</code>, <code>by_tin</code>, <code>ca_bn</code>, <code>ca_gst_hst</code>, <code>ca_pst_bc</code>, <code>ca_pst_mb</code>, <code>ca_pst_sk</code>, <code>ca_qst</code>, <code>cd_nif</code>, <code>ch_uid</code>, <code>ch_vat</code>, <code>cl_tin</code>, <code>cm_niu</code>, <code>cn_tin</code>, <code>co_nit</code>, <code>cr_tin</code>, <code>cv_nif</code>, <code>de_stn</code>, <code>do_rcn</code>, <code>ec_ruc</code>, <code>eg_tin</code>, <code>es_cif</code>, <code>et_tin</code>, <code>eu_oss_vat</code>, <code>eu_vat</code>, <code>gb_vat</code>, <code>ge_vat</code>, <code>gn_nif</code>, <code>hk_br</code>, <code>hr_oib</code>, <code>hu_tin</code>, <code>id_npwp</code>, <code>il_vat</code>, <code>in_gst</code>, <code>is_vat</code>, <code>jp_cn</code>, <code>jp_rn</code>, <code>jp_trn</code>, <code>ke_pin</code>, <code>kg_tin</code>, <code>kh_tin</code>, <code>kr_brn</code>, <code>kz_bin</code>, <code>la_tin</code>, <code>li_uid</code>, <code>li_vat</code>, <code>ma_vat</code>, <code>md_vat</code>, <code>me_pib</code>, <code>mk_vat</code>, <code>mr_nif</code>, <code>mx_rfc</code>, <code>my_frp</code>, <code>my_itn</code>, <code>my_sst</code>, <code>ng_tin</code>, <code>no_vat</code>, <code>no_voec</code>, <code>np_pan</code>, <code>nz_gst</code>, <code>om_vat</code>, <code>pe_ruc</code>, <code>ph_tin</code>, <code>ro_tin</code>, <code>rs_pib</code>, <code>ru_inn</code>, <code>ru_kpp</code>, <code>sa_vat</code>, <code>sg_gst</code>, <code>sg_uen</code>, <code>si_tin</code>, <code>sn_ninea</code>, <code>sr_fin</code>, <code>sv_nit</code>, <code>th_vat</code>, <code>tj_tin</code>, <code>tr_tin</code>, <code>tw_vat</code>, <code>tz_vat</code>, <code>ua_vat</code>, <code>ug_tin</code>, <code>us_ein</code>, <code>uy_ruc</code>, <code>uz_tin</code>, <code>uz_vat</code>, <code>ve_rif</code>, <code>vn_tin</code>, <code>za_vat</code>, <code>zm_tin</code>, or <code>zw_tin</code>. Note that some legacy tax IDs have type <code>unknown</code>
  * @property string $value Value of the tax ID.
  * @property null|(object{status: string, verified_address: null|string, verified_name: null|string}&StripeObject) $verification Tax ID verification information.
  */
@@ -33,10 +33,15 @@ class TaxId extends ApiResource
     const TYPE_AR_CUIT = 'ar_cuit';
     const TYPE_AU_ABN = 'au_abn';
     const TYPE_AU_ARN = 'au_arn';
+    const TYPE_AW_TIN = 'aw_tin';
+    const TYPE_AZ_TIN = 'az_tin';
     const TYPE_BA_TIN = 'ba_tin';
     const TYPE_BB_TIN = 'bb_tin';
+    const TYPE_BD_BIN = 'bd_bin';
+    const TYPE_BF_IFU = 'bf_ifu';
     const TYPE_BG_UIC = 'bg_uic';
     const TYPE_BH_VAT = 'bh_vat';
+    const TYPE_BJ_IFU = 'bj_ifu';
     const TYPE_BO_TIN = 'bo_tin';
     const TYPE_BR_CNPJ = 'br_cnpj';
     const TYPE_BR_CPF = 'br_cpf';
@@ -52,14 +57,17 @@ class TaxId extends ApiResource
     const TYPE_CH_UID = 'ch_uid';
     const TYPE_CH_VAT = 'ch_vat';
     const TYPE_CL_TIN = 'cl_tin';
+    const TYPE_CM_NIU = 'cm_niu';
     const TYPE_CN_TIN = 'cn_tin';
     const TYPE_CO_NIT = 'co_nit';
     const TYPE_CR_TIN = 'cr_tin';
+    const TYPE_CV_NIF = 'cv_nif';
     const TYPE_DE_STN = 'de_stn';
     const TYPE_DO_RCN = 'do_rcn';
     const TYPE_EC_RUC = 'ec_ruc';
     const TYPE_EG_TIN = 'eg_tin';
     const TYPE_ES_CIF = 'es_cif';
+    const TYPE_ET_TIN = 'et_tin';
     const TYPE_EU_OSS_VAT = 'eu_oss_vat';
     const TYPE_EU_VAT = 'eu_vat';
     const TYPE_GB_VAT = 'gb_vat';
@@ -76,9 +84,11 @@ class TaxId extends ApiResource
     const TYPE_JP_RN = 'jp_rn';
     const TYPE_JP_TRN = 'jp_trn';
     const TYPE_KE_PIN = 'ke_pin';
+    const TYPE_KG_TIN = 'kg_tin';
     const TYPE_KH_TIN = 'kh_tin';
     const TYPE_KR_BRN = 'kr_brn';
     const TYPE_KZ_BIN = 'kz_bin';
+    const TYPE_LA_TIN = 'la_tin';
     const TYPE_LI_UID = 'li_uid';
     const TYPE_LI_VAT = 'li_vat';
     const TYPE_MA_VAT = 'ma_vat';
