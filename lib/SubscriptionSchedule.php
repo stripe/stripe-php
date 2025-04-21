@@ -13,6 +13,7 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|Application|string $application ID of the Connect Application that created the schedule.
  * @property null|string $billing_behavior Configures when the subscription schedule generates prorations for phase transitions. Possible values are <code>prorate_on_next_phase</code> or <code>prorate_up_front</code> with the default being <code>prorate_on_next_phase</code>. <code>prorate_on_next_phase</code> will apply phase changes and generate prorations at transition time. <code>prorate_up_front</code> will bill for all phases within the current billing cycle up front.
+ * @property null|string $billing_mode The <a href="/api/subscriptions/create#create_subscription-billing_mode">billing mode</a> that will be used to process all future operations for the subscription schedule.
  * @property null|int $canceled_at Time at which the subscription schedule was canceled. Measured in seconds since the Unix epoch.
  * @property null|int $completed_at Time at which the subscription schedule was completed. Measured in seconds since the Unix epoch.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -40,6 +41,9 @@ class SubscriptionSchedule extends ApiResource
 
     const BILLING_BEHAVIOR_PRORATE_ON_NEXT_PHASE = 'prorate_on_next_phase';
     const BILLING_BEHAVIOR_PRORATE_UP_FRONT = 'prorate_up_front';
+
+    const BILLING_MODE_CREDITS_ATTRIBUTED_TO_DEBITS = 'credits_attributed_to_debits';
+    const BILLING_MODE_LEGACY_PRORATIONS = 'legacy_prorations';
 
     const END_BEHAVIOR_CANCEL = 'cancel';
     const END_BEHAVIOR_NONE = 'none';

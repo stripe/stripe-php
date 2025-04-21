@@ -16,6 +16,7 @@ namespace Stripe;
  * @property (object{disabled_reason: null|string, enabled: bool, liability: null|(object{account?: Account|string, type: string}&StripeObject)}&StripeObject) $automatic_tax
  * @property int $billing_cycle_anchor The reference point that aligns future <a href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</a> dates. It sets the day of week for <code>week</code> intervals, the day of month for <code>month</code> and <code>year</code> intervals, and the month of year for <code>year</code> intervals. The timestamp is in UTC format.
  * @property null|(object{day_of_month: int, hour: null|int, minute: null|int, month: null|int, second: null|int}&StripeObject) $billing_cycle_anchor_config The fixed values used to calculate the <code>billing_cycle_anchor</code>.
+ * @property null|string $billing_mode Configure billing_mode in each subscription to opt in improved credit proration behavior.
  * @property null|int $cancel_at A date in the future at which the subscription will automatically get canceled
  * @property bool $cancel_at_period_end Whether this subscription will (if <code>status=active</code>) or did (if <code>status=canceled</code>) cancel at the end of the current billing period.
  * @property null|int $canceled_at If the subscription has been canceled, the date of that cancellation. If the subscription was canceled with <code>cancel_at_period_end</code>, <code>canceled_at</code> will reflect the time of the most recent update request, not the end of the subscription period when the subscription is automatically moved to a canceled state.
@@ -60,6 +61,9 @@ class Subscription extends ApiResource
     const OBJECT_NAME = 'subscription';
 
     use ApiOperations\Update;
+
+    const BILLING_MODE_CREDITS_ATTRIBUTED_TO_DEBITS = 'credits_attributed_to_debits';
+    const BILLING_MODE_LEGACY_PRORATIONS = 'legacy_prorations';
 
     const COLLECTION_METHOD_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const COLLECTION_METHOD_SEND_INVOICE = 'send_invoice';
