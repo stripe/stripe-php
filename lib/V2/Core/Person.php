@@ -21,11 +21,12 @@ namespace Stripe\V2\Core;
  * @property null|string $given_name The person's first name.
  * @property null|(object{type: string}&\Stripe\StripeObject)[] $id_numbers The identification numbers (e.g., SSN) associated with the person.
  * @property null|string $legal_gender The person's gender (International regulations require either &quot;male&quot; or &quot;female&quot;).
+ * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string[] $nationalities The countries where the person is a national. Two-letter country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>).
  * @property null|string $phone The person's phone number.
  * @property null|string $political_exposure The person's political exposure.
- * @property null|(object{director: null|bool, executive: null|bool, legal_guardian: null|bool, owner: null|bool, percent_ownership: null|string, representative: null|bool, title: null|string}&\Stripe\StripeObject) $relationship The relationship that this person has with the Account's business or legal entity.
+ * @property null|(object{authorizer: null|bool, director: null|bool, executive: null|bool, legal_guardian: null|bool, owner: null|bool, percent_ownership: null|string, representative: null|bool, title: null|string}&\Stripe\StripeObject) $relationship The relationship that this person has with the Account's business or legal entity.
  * @property null|(object{kana: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string, town: null|string}&\Stripe\StripeObject), kanji: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string, town: null|string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $script_addresses The script addresses (e.g., non-Latin characters) associated with the person.
  * @property null|(object{kana: null|(object{given_name: null|string, surname: null|string}&\Stripe\StripeObject), kanji: null|(object{given_name: null|string, surname: null|string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $script_names The script names (e.g. non-Latin characters) associated with the person.
  * @property null|string $surname The person's last name.
