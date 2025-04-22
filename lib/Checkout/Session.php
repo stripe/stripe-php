@@ -75,7 +75,7 @@ namespace Stripe\Checkout;
  * @property ((object{shipping_amount: int, shipping_rate: string|\Stripe\ShippingRate}&\Stripe\StripeObject))[] $shipping_options The shipping rate options applied to this Session.
  * @property null|string $status The status of the Checkout Session, one of <code>open</code>, <code>complete</code>, or <code>expired</code>.
  * @property null|string $submit_type Describes the type of transaction being performed by Checkout in order to customize relevant text on the page, such as the submit button. <code>submit_type</code> can only be specified on Checkout Sessions in <code>payment</code> mode. If blank or <code>auto</code>, <code>pay</code> is used.
- * @property null|string|\Stripe\Subscription $subscription The ID of the subscription for Checkout Sessions in <code>subscription</code> mode.
+ * @property null|string|\Stripe\Subscription $subscription The ID of the <a href="https://stripe.com/docs/api/subscriptions">Subscription</a> for Checkout Sessions in <code>subscription</code> mode.
  * @property null|string $success_url The URL the customer will be directed to after the payment or subscription creation is successful.
  * @property null|(object{enabled: bool, required: string}&\Stripe\StripeObject) $tax_id_collection
  * @property null|(object{amount_discount: int, amount_shipping: null|int, amount_tax: int, breakdown?: (object{discounts: (object{amount: int, discount: \Stripe\Discount}&\Stripe\StripeObject)[], taxes: ((object{amount: int, rate: \Stripe\TaxRate, taxability_reason: null|string, taxable_amount: null|int}&\Stripe\StripeObject))[]}&\Stripe\StripeObject)}&\Stripe\StripeObject) $total_details Tax and discount details for the computed total amount.
