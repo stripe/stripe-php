@@ -5,7 +5,7 @@
 namespace Stripe\V2\Core;
 
 /**
- * AccountLinks are the means by which a Merchant grants an Account permission to access Stripe-hosted application, such as Recipient Onboarding.
+ * AccountLinks are the means by which a Merchant grants an Account permission to access Stripe-hosted applications, such as Recipient Onboarding. This API is only available for users enrolled in the public preview for Global Payouts.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property string $account The ID of the Account the link was created for.

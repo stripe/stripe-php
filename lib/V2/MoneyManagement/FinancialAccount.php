@@ -276,7 +276,6 @@ class FinancialAccount extends \Stripe\ApiResource
 
     const STATUS_CLOSED = 'closed';
     const STATUS_OPEN = 'open';
-    const STATUS_PENDING = 'pending';
 
     const TYPE_OTHER = 'other';
     const TYPE_STORAGE = 'storage';

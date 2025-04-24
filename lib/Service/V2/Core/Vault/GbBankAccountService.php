@@ -33,7 +33,7 @@ class GbBankAccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Archive a GbBankAccount object. Archived GbBankAccount objects cannot be used as
+     * Archive a GBBankAccount object. Archived GBBankAccount objects cannot be used as
      * outbound destinations and will not appear in the outbound destination list.
      *
      * @param string $id
