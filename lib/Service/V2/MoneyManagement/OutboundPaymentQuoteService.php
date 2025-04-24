@@ -19,10 +19,27 @@ class OutboundPaymentQuoteService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\MoneyManagement\OutboundPaymentQuote
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Stripe\Exception\FeatureNotEnabledException
      */
     public function create($params = null, $opts = null)
     {
         return $this->request('post', '/v2/money_management/outbound_payment_quotes', $params, $opts);
+    }
+
+    /**
+     * Retrieves the details of an existing OutboundPaymentQuote by passing the unique
+     * OutboundPaymentQuote ID.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\MoneyManagement\OutboundPaymentQuote
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function retrieve($id, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v2/money_management/outbound_payment_quotes/%s', $id), $params, $opts);
     }
 }

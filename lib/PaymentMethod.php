@@ -13,7 +13,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|(object{bank_name: null|string, fingerprint: null|string, institution_number: null|string, last4: null|string, transit_number: null|string}&StripeObject) $acss_debit
+ * @property null|(object{account_number?: null|string, bank_name: null|string, fingerprint: null|string, institution_number: null|string, last4: null|string, transit_number: null|string}&StripeObject) $acss_debit
  * @property null|(object{}&StripeObject) $affirm
  * @property null|(object{}&StripeObject) $afterpay_clearpay
  * @property null|(object{}&StripeObject) $alipay
