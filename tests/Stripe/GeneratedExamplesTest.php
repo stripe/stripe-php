@@ -5597,7 +5597,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'get',
             '/v2/core/events',
-            [],
+            ['object_id' => 'object_id'],
             [],
             false,
             [
@@ -5618,7 +5618,9 @@ final class GeneratedExamplesTest extends TestCase
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->core->events->all([]);
+        $result = $this->v2Client->v2->core->events->all([
+            'object_id' => 'object_id',
+        ]);
         self::assertInstanceOf(V2\Collection::class, $result);
         self::assertInstanceOf(V2\Event::class, $result->data[0]);
     }
@@ -6179,7 +6181,6 @@ final class GeneratedExamplesTest extends TestCase
                 'currency' => 'stn',
                 'financial_account' => 'financial_account',
                 'livemode' => [],
-                'settlement_currency' => null,
                 'status' => 'failed',
             ],
             200,
@@ -6210,7 +6211,6 @@ final class GeneratedExamplesTest extends TestCase
                         'currency' => 'stn',
                         'financial_account' => 'financial_account',
                         'livemode' => [],
-                        'settlement_currency' => null,
                         'status' => 'failed',
                     ],
                 ],
@@ -6241,7 +6241,6 @@ final class GeneratedExamplesTest extends TestCase
                 'currency' => 'stn',
                 'financial_account' => 'financial_account',
                 'livemode' => [],
-                'settlement_currency' => null,
                 'status' => 'failed',
             ],
             200,
@@ -7532,8 +7531,8 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                         'balance_transfer' => null,
                         'bank_transfer' => null,
+                        'card_spend' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'crypto_wallet_transfer' => null,
                         'description' => null,
                         'financial_account' => 'financial_account',
                         'livemode' => [],
@@ -7541,7 +7540,7 @@ final class GeneratedExamplesTest extends TestCase
                         'status' => 'returned',
                         'status_details' => null,
                         'status_transitions' => null,
-                        'type' => 'crypto_wallet_transfer',
+                        'type' => 'card_spend',
                     ],
                 ],
                 'next_page_url' => null,
@@ -7572,8 +7571,8 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'balance_transfer' => null,
                 'bank_transfer' => null,
+                'card_spend' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
-                'crypto_wallet_transfer' => null,
                 'description' => null,
                 'financial_account' => 'financial_account',
                 'livemode' => [],
@@ -7581,7 +7580,7 @@ final class GeneratedExamplesTest extends TestCase
                 'status' => 'returned',
                 'status_details' => null,
                 'status_transitions' => null,
-                'type' => 'crypto_wallet_transfer',
+                'type' => 'card_spend',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -7611,6 +7610,7 @@ final class GeneratedExamplesTest extends TestCase
                             'value' => [],
                         ],
                         'bank_transfer' => null,
+                        'card_spend' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
                         'description' => null,
                         'financial_account' => 'financial_account',
@@ -7649,6 +7649,7 @@ final class GeneratedExamplesTest extends TestCase
                     'value' => [],
                 ],
                 'bank_transfer' => null,
+                'card_spend' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => null,
                 'financial_account' => 'financial_account',

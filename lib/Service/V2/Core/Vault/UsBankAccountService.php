@@ -12,8 +12,8 @@ namespace Stripe\Service\V2\Core\Vault;
 class UsBankAccountService extends \Stripe\Service\AbstractService
 {
     /**
-     * Archive a UsBankAccount object. UsBankAccount objects will not be automatically
-     * archived by Stripe. Archived UsBankAccount objects cannot be used as outbound
+     * Archive a USBankAccount object. USBankAccount objects will not be automatically
+     * archived by Stripe. Archived USBankAccount objects cannot be used as outbound
      * destinations and will not appear in the outbound destination list.
      *
      * @param string $id
@@ -30,7 +30,7 @@ class UsBankAccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a UsBankAccount object.
+     * Create a USBankAccount object.
      *
      * @param null|array{account_number: string, bank_account_type?: string, fedwire_routing_number?: string, routing_number?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -47,7 +47,7 @@ class UsBankAccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a UsBankAccount object.
+     * Retrieve a USBankAccount object.
      *
      * @param string $id
      * @param null|array $params
@@ -63,7 +63,7 @@ class UsBankAccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update a UsBankAccount object. This is limited to supplying a previously empty
+     * Update a USBankAccount object. This is limited to supplying a previously empty
      * routing_number field.
      *
      * @param string $id
