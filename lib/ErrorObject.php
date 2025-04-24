@@ -201,6 +201,7 @@ class ErrorObject extends StripeObject
     const CODE_STATUS_TRANSITION_INVALID = 'status_transition_invalid';
     const CODE_STRIPE_TAX_INACTIVE = 'stripe_tax_inactive';
     const CODE_TAX_ID_INVALID = 'tax_id_invalid';
+    const CODE_TAX_ID_PROHIBITED = 'tax_id_prohibited';
     const CODE_TAXES_CALCULATION_FAILED = 'taxes_calculation_failed';
     const CODE_TERMINAL_LOCATION_COUNTRY_UNSUPPORTED = 'terminal_location_country_unsupported';
     const CODE_TERMINAL_READER_BUSY = 'terminal_reader_busy';

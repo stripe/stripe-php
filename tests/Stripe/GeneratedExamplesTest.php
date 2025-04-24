@@ -592,7 +592,6 @@ final class GeneratedExamplesTest extends TestCase
                 'context' => 'context',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
-                'livemode' => [],
                 'object' => 'v2.core.event',
                 'reason' => [
                     'type' => 'request',
@@ -602,6 +601,7 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                 ],
                 'type' => 'type',
+                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5148,10 +5148,10 @@ final class GeneratedExamplesTest extends TestCase
                 'context' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
-                'livemode' => [],
                 'object' => 'v2.core.event',
                 'reason' => null,
                 'type' => 'type',
+                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5242,7 +5242,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'get',
             '/v2/core/events',
-            ['object_id' => 'object_id'],
+            [],
             [],
             false,
             [
@@ -5251,10 +5251,10 @@ final class GeneratedExamplesTest extends TestCase
                         'context' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
                         'id' => 'obj_123',
-                        'livemode' => [],
                         'object' => 'v2.core.event',
                         'reason' => null,
                         'type' => 'type',
+                        'livemode' => [],
                     ],
                 ],
                 'next_page_url' => null,
@@ -5263,9 +5263,7 @@ final class GeneratedExamplesTest extends TestCase
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->core->events->all([
-            'object_id' => 'object_id',
-        ]);
+        $result = $this->v2Client->v2->core->events->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
         self::assertInstanceOf(V2\Event::class, $result->data[0]);
     }
@@ -5282,10 +5280,10 @@ final class GeneratedExamplesTest extends TestCase
                 'context' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
-                'livemode' => [],
                 'object' => 'v2.core.event',
                 'reason' => null,
                 'type' => 'type',
+                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE

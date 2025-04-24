@@ -137,6 +137,7 @@ require __DIR__ . '/lib/EventData/V1BillingMeterErrorReportTriggeredEventData.ph
 require __DIR__ . '/lib/EventData/V1BillingMeterNoMeterFoundEventData.php';
 require __DIR__ . '/lib/Events/V1BillingMeterErrorReportTriggeredEvent.php';
 require __DIR__ . '/lib/Events/V1BillingMeterNoMeterFoundEvent.php';
+require __DIR__ . '/lib/Events/V2CoreEventDestinationPingEvent.php';
 require __DIR__ . '/lib/Exception/TemporarySessionExpiredException.php';
 require __DIR__ . '/lib/ExchangeRate.php';
 require __DIR__ . '/lib/File.php';
