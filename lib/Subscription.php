@@ -62,8 +62,8 @@ class Subscription extends ApiResource
 
     use ApiOperations\Update;
 
-    const BILLING_MODE_CREDITS_ATTRIBUTED_TO_DEBITS = 'credits_attributed_to_debits';
-    const BILLING_MODE_LEGACY_PRORATIONS = 'legacy_prorations';
+    const BILLING_MODE_CLASSIC = 'classic';
+    const BILLING_MODE_FLEXIBLE = 'flexible';
 
     const COLLECTION_METHOD_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const COLLECTION_METHOD_SEND_INVOICE = 'send_invoice';

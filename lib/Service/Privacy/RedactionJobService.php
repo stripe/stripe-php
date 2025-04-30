@@ -90,23 +90,6 @@ class RedactionJobService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve validation error method.
-     *
-     * @param string $parentId
-     * @param string $id
-     * @param null|array{expand?: string[]} $params
-     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
-     *
-     * @return \Stripe\Privacy\RedactionJobValidationError
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     */
-    public function retrieveValidationError($parentId, $id, $params = null, $opts = null)
-    {
-        return $this->request('get', $this->buildPath('/v1/privacy/redaction_jobs/%s/validation_errors/%s', $parentId, $id), $params, $opts);
-    }
-
-    /**
      * Run redaction job method.
      *
      * @param string $id

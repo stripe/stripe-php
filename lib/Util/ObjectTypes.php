@@ -119,7 +119,6 @@ class ObjectTypes
             \Stripe\Plan::OBJECT_NAME => \Stripe\Plan::class,
             \Stripe\Price::OBJECT_NAME => \Stripe\Price::class,
             \Stripe\Privacy\RedactionJob::OBJECT_NAME => \Stripe\Privacy\RedactionJob::class,
-            \Stripe\Privacy\RedactionJobRootObjects::OBJECT_NAME => \Stripe\Privacy\RedactionJobRootObjects::class,
             \Stripe\Privacy\RedactionJobValidationError::OBJECT_NAME => \Stripe\Privacy\RedactionJobValidationError::class,
             \Stripe\Product::OBJECT_NAME => \Stripe\Product::class,
             \Stripe\ProductFeature::OBJECT_NAME => \Stripe\ProductFeature::class,
