@@ -267,7 +267,6 @@ require __DIR__ . '/lib/Person.php';
 require __DIR__ . '/lib/Plan.php';
 require __DIR__ . '/lib/Price.php';
 require __DIR__ . '/lib/Privacy/RedactionJob.php';
-require __DIR__ . '/lib/Privacy/RedactionJobRootObjects.php';
 require __DIR__ . '/lib/Privacy/RedactionJobValidationError.php';
 require __DIR__ . '/lib/Product.php';
 require __DIR__ . '/lib/ProductFeature.php';
