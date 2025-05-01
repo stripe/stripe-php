@@ -43,7 +43,7 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string $account The connected account that originates the event.
  * @property null|string $api_version The Stripe API version used to render <code>data</code>. This property is populated only for events on or after October 31, 2014.
- * @property null|string $context
+ * @property null|string $context Authentication context needed to fetch the event or related object.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property (object{object: StripeObject, previous_attributes?: StripeObject}&StripeObject) $data
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
@@ -75,7 +75,6 @@ class Event extends ApiResource
     const BILLING_CREDIT_GRANT_UPDATED = 'billing.credit_grant.updated';
     const BILLING_METER_CREATED = 'billing.meter.created';
     const BILLING_METER_DEACTIVATED = 'billing.meter.deactivated';
-    const BILLING_METER_ERROR_REPORT_TRIGGERED = 'billing.meter_error_report.triggered';
     const BILLING_METER_REACTIVATED = 'billing.meter.reactivated';
     const BILLING_METER_UPDATED = 'billing.meter.updated';
     const BILLING_PORTAL_CONFIGURATION_CREATED = 'billing_portal.configuration.created';
@@ -364,7 +363,6 @@ class Event extends ApiResource
     const TYPE_BILLING_CREDIT_GRANT_UPDATED = 'billing.credit_grant.updated';
     const TYPE_BILLING_METER_CREATED = 'billing.meter.created';
     const TYPE_BILLING_METER_DEACTIVATED = 'billing.meter.deactivated';
-    const TYPE_BILLING_METER_ERROR_REPORT_TRIGGERED = 'billing.meter_error_report.triggered';
     const TYPE_BILLING_METER_REACTIVATED = 'billing.meter.reactivated';
     const TYPE_BILLING_METER_UPDATED = 'billing.meter.updated';
     const TYPE_BILLING_PORTAL_CONFIGURATION_CREATED = 'billing_portal.configuration.created';
