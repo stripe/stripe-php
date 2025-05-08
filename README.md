@@ -211,7 +211,7 @@ composer require stripe/stripe-php:v9.2.0-beta.1
 You can find the latest version to use in this command from the [releases page](https://github.com/stripe/stripe-php/releases/)
 
 > **Note**
-> There can be breaking changes between two versions of the public preview SDKs without a bump in the major version.
+> There can be breaking changes between two versions of the public preview SDKs without a bump in the major version. Therefore we recommend pinning the package version to a specific version in your Gemfile. This way you can install the same version each time without breaking changes unless you are intentionally looking for the latest version of the public preview SDK.
 
 If your beta feature requires a `Stripe-Version` header to be sent, set the `apiVersion` property of `config` object by using the function `addBetaVersion` (available only in the public preview SDKs):
 
