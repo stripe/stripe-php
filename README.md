@@ -204,7 +204,7 @@ You can disable this behavior if you prefer:
 Stripe has features in the [public preview phase](https://docs.stripe.com/release-phases) that can be accessed via the beta version of this package.
 We would love for you to try these as we incrementally release new features and improve them based on your feedback.
 
-The public preview SDKs are just a different version of the same package and are appended with `-beta.X` such as `45.0.0-beta.1`. To install, choose the version that includes support for the preview feature you are interested in by reviewing the [releases page](https://github.com/stripe/stripe-dotnet/releases/) and then use it in the `composer require` command:
+The public preview SDKs are a different version of the same package as the stable SDKs. These versions are appended with `-beta.X` such as `15.0.0-beta.1`. To install, choose the version that includes support for the preview feature you are interested in by reviewing the [releases page](https://github.com/stripe/stripe-dotnet/releases/) and then use it in the `composer require` command:
 
 ```bash
 composer require stripe/stripe-php:v<replace-with-the-version-of-your-choice>
