@@ -203,12 +203,12 @@ You can disable this behavior if you prefer:
 
 Stripe has features in the [public preview phase](https://docs.stripe.com/release-phases) that can be accessed via the beta version of this package.
 We would love for you to try these as we incrementally release new features and improve them based on your feedback.
-Use the `composer require` command with an exact version specified to install the public preview SDK.
+
+The public preview SDKs are just a different version of the same package and are appended with `-beta.X` such as `45.0.0-beta.1`. To install, choose the version that includes support for the preview feature you are interested in by reviewing the [releases page](https://github.com/stripe/stripe-dotnet/releases/) and then use it in the `composer require` command:
 
 ```bash
-composer require stripe/stripe-php:v9.2.0-beta.1
+composer require stripe/stripe-php:v<replace-with-the-version-of-your-choice>
 ```
-You can find the latest version to use in this command from the [releases page](https://github.com/stripe/stripe-php/releases/)
 
 > **Note**
 > There can be breaking changes between two versions of the public preview SDKs without a bump in the major version. Therefore we recommend pinning the package version to a specific version in your composer.json file. This way you can install the same version each time without breaking changes unless you are intentionally looking for the latest version of the public preview SDK.
