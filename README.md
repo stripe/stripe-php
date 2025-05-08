@@ -199,22 +199,21 @@ You can disable this behavior if you prefer:
 \Stripe\Stripe::setEnableTelemetry(false);
 ```
 
-### Beta SDKs
+### Public Preview SDKs
 
-Stripe has features in the beta phase that can be accessed via the beta version of this package.
-We would love for you to try these and share feedback with us before these features reach the stable phase.
-Use the `composer require` command with an exact version specified to install the beta version of the stripe-php pacakge.
+Stripe has features in the [public preview phase](https://docs.stripe.com/release-phases) that can be accessed via the beta version of this package.
+We would love for you to try these as we incrementally release new features and improve them based on your feedback.
+Use the `composer require` command with an exact version specified to install the public preview SDK.
 
 ```bash
 composer require stripe/stripe-php:v9.2.0-beta.1
 ```
+You can find the latest version to use in this command from the [releases page](https://github.com/stripe/stripe-php/releases/)
 
 > **Note**
-> There can be breaking changes between beta versions. Therefore we recommend pinning the package version to a specific beta version in your composer.json file. This way you can install the same version each time without breaking changes unless you are intentionally looking for the latest beta version.
+> There can be breaking changes between two versions of the public preview SDKs without a bump in the major version.
 
-We highly recommend keeping an eye on when the beta feature you are interested in goes from beta to stable so that you can move from using a beta version of the SDK to the stable version.
-
-If your beta feature requires a `Stripe-Version` header to be sent, set the `apiVersion` property of `config` object by using the function `addBetaVersion`:
+If your beta feature requires a `Stripe-Version` header to be sent, set the `apiVersion` property of `config` object by using the function `addBetaVersion` (available only in the public preview SDKs):
 
 ```php
 Stripe::addBetaVersion("feature_beta", "v3");
