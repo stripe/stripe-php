@@ -201,7 +201,7 @@ You can disable this behavior if you prefer:
 
 ### Public Preview SDKs
 
-Stripe has features in the [public preview phase](https://docs.stripe.com/release-phases) that can be accessed via the beta version of this package.
+Stripe has features in the [public preview phase](https://docs.stripe.com/release-phases) that can be accessed via versions of this package that have the `-beta.X` suffix like `12.2.0-beta.2`.
 We would love for you to try these as we incrementally release new features and improve them based on your feedback.
 
 The public preview SDKs are a different version of the same package as the stable SDKs. These versions are appended with `-beta.X` such as `15.0.0-beta.1`. To install, choose the version that includes support for the preview feature you are interested in by reviewing the [releases page](https://github.com/stripe/stripe-dotnet/releases/) and then use it in the `composer require` command:
@@ -213,7 +213,7 @@ composer require stripe/stripe-php:v<replace-with-the-version-of-your-choice>
 > **Note**
 > There can be breaking changes between two versions of the public preview SDKs without a bump in the major version. Therefore we recommend pinning the package version to a specific version in your composer.json file. This way you can install the same version each time without breaking changes unless you are intentionally looking for the latest version of the public preview SDK.
 
-If your beta feature requires a `Stripe-Version` header to be sent, set the `apiVersion` property of `config` object by using the function `addBetaVersion` (available only in the public preview SDKs):
+Some preview features require a name and version to be set in the `Stripe-Version` header like `feature_beta=v3`. If the preview feature you are interested in has this requirement, use the function `addBetaVersion` (available only in the public preview SDKs):
 
 ```php
 Stripe::addBetaVersion("feature_beta", "v3");
