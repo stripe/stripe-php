@@ -32,7 +32,7 @@ class ValueListService extends \Stripe\Service\AbstractService
      * Creates a new <code>ValueList</code> object, which can then be referenced in
      * rules.
      *
-     * @param null|array{alias: string, expand?: string[], item_type?: string, metadata?: \Stripe\StripeObject, name: string} $params
+     * @param null|array{alias: string, expand?: string[], item_type?: string, metadata?: array<string, string>, name: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Radar\ValueList
@@ -84,7 +84,7 @@ class ValueListService extends \Stripe\Service\AbstractService
      * <code>item_type</code> is immutable.
      *
      * @param string $id
-     * @param null|array{alias?: string, expand?: string[], metadata?: \Stripe\StripeObject, name?: string} $params
+     * @param null|array{alias?: string, expand?: string[], metadata?: array<string, string>, name?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Radar\ValueList
