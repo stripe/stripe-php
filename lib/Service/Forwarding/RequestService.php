@@ -29,7 +29,7 @@ class RequestService extends \Stripe\Service\AbstractService
     /**
      * Creates a ForwardingRequest object.
      *
-     * @param null|array{expand?: string[], metadata?: \Stripe\StripeObject, payment_method: string, replacements: string[], request: array{body?: string, headers?: array{name: string, value: string}[]}, url: string} $params
+     * @param null|array{expand?: string[], metadata?: array<string, string>, payment_method: string, replacements: string[], request: array{body?: string, headers?: array{name: string, value: string}[]}, url: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Forwarding\Request
