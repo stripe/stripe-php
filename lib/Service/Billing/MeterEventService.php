@@ -14,7 +14,7 @@ class MeterEventService extends \Stripe\Service\AbstractService
     /**
      * Creates a billing meter event.
      *
-     * @param null|array{event_name: string, expand?: string[], identifier?: string, payload: \Stripe\StripeObject, timestamp?: int} $params
+     * @param null|array{event_name: string, expand?: string[], identifier?: string, payload: array<string, string>, timestamp?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Billing\MeterEvent

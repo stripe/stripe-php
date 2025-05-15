@@ -141,7 +141,7 @@ class Payout extends ApiResource
      * metadata as arguments.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{expand?: string[], metadata?: array<string, string>} $params
+     * @param null|array{expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|array|string $opts
      *
      * @return Payout the updated resource

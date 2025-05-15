@@ -62,7 +62,7 @@ class TaxRateService extends AbstractService
      * Updates an existing tax rate.
      *
      * @param string $id
-     * @param null|array{active?: bool, country?: string, description?: string, display_name?: string, expand?: string[], jurisdiction?: string, metadata?: array<string, string>, state?: string, tax_type?: string} $params
+     * @param null|array{active?: bool, country?: string, description?: string, display_name?: string, expand?: string[], jurisdiction?: string, metadata?: null|array<string, string>, state?: string, tax_type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\TaxRate

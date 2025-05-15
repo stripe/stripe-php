@@ -122,7 +122,7 @@ class TaxRate extends ApiResource
      * Updates an existing tax rate.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{active?: bool, country?: string, description?: string, display_name?: string, expand?: string[], jurisdiction?: string, metadata?: array<string, string>, state?: string, tax_type?: string} $params
+     * @param null|array{active?: bool, country?: string, description?: string, display_name?: string, expand?: string[], jurisdiction?: string, metadata?: null|array<string, string>, state?: string, tax_type?: string} $params
      * @param null|array|string $opts
      *
      * @return TaxRate the updated resource

@@ -61,7 +61,7 @@ class FeatureService extends \Stripe\Service\AbstractService
      * Update a feature’s metadata or permanently deactivate it.
      *
      * @param string $id
-     * @param null|array{active?: bool, expand?: string[], metadata?: array<string, string>, name?: string} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|array<string, string>, name?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Entitlements\Feature

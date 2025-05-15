@@ -38,7 +38,7 @@ namespace Stripe;
  * @property string $status The status of the quote.
  * @property (object{accepted_at: null|int, canceled_at: null|int, finalized_at: null|int}&StripeObject) $status_transitions
  * @property null|string|Subscription $subscription The subscription that was created or updated from this quote.
- * @property (object{description: null|string, effective_date: null|int, metadata: null|array<string, string>, trial_period_days: null|int}&StripeObject) $subscription_data
+ * @property (object{description: null|string, effective_date: null|int, metadata: null|StripeObject, trial_period_days: null|int}&StripeObject) $subscription_data
  * @property null|string|SubscriptionSchedule $subscription_schedule The subscription schedule that was created or updated from this quote.
  * @property null|string|TestHelpers\TestClock $test_clock ID of the test clock this quote belongs to.
  * @property (object{amount_discount: int, amount_shipping: null|int, amount_tax: int, breakdown?: (object{discounts: (object{amount: int, discount: Discount}&StripeObject)[], taxes: ((object{amount: int, rate: TaxRate, taxability_reason: null|string, taxable_amount: null|int}&StripeObject))[]}&StripeObject)}&StripeObject) $total_details

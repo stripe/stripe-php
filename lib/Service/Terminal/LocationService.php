@@ -31,7 +31,7 @@ class LocationService extends \Stripe\Service\AbstractService
      * address fields are required in each country, see the <a
      * href="/docs/terminal/fleet/locations">Manage locations</a> guide.
      *
-     * @param null|array{address: array{city?: string, country: string, line1?: string, line2?: string, postal_code?: string, state?: string}, configuration_overrides?: string, display_name: string, expand?: string[], metadata?: array<string, string>} $params
+     * @param null|array{address: array{city?: string, country: string, line1?: string, line2?: string, postal_code?: string, state?: string}, configuration_overrides?: string, display_name: string, expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Location
@@ -80,7 +80,7 @@ class LocationService extends \Stripe\Service\AbstractService
      * passed. Any parameters not provided will be left unchanged.
      *
      * @param string $id
-     * @param null|array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, configuration_overrides?: null|string, display_name?: string, expand?: string[], metadata?: array<string, string>} $params
+     * @param null|array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, configuration_overrides?: null|string, display_name?: string, expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Location

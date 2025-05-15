@@ -74,7 +74,7 @@ class Refund extends ApiResource
      * an error when called on an already-refunded charge, or when trying to refund
      * more money than is left on a charge.
      *
-     * @param null|array{amount?: int, charge?: string, currency?: string, customer?: string, expand?: string[], instructions_email?: string, metadata?: array<string, string>, origin?: string, payment_intent?: string, reason?: string, refund_application_fee?: bool, reverse_transfer?: bool} $params
+     * @param null|array{amount?: int, charge?: string, currency?: string, customer?: string, expand?: string[], instructions_email?: string, metadata?: null|array<string, string>, origin?: string, payment_intent?: string, reason?: string, refund_application_fee?: bool, reverse_transfer?: bool} $params
      * @param null|array|string $options
      *
      * @return Refund the created resource
@@ -138,7 +138,7 @@ class Refund extends ApiResource
      * This request only accepts <code>metadata</code> as an argument.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{expand?: string[], metadata?: array<string, string>} $params
+     * @param null|array{expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|array|string $opts
      *
      * @return Refund the updated resource

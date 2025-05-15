@@ -118,7 +118,7 @@ class PayoutService extends AbstractService
      * metadata as arguments.
      *
      * @param string $id
-     * @param null|array{expand?: string[], metadata?: array<string, string>} $params
+     * @param null|array{expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Payout

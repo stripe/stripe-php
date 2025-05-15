@@ -16,7 +16,7 @@ class MeterEventService extends \Stripe\Service\AbstractService
      * asynchronously. Supports up to 1,000 events per second in livemode. For higher
      * rate-limits, please use meter event streams instead.
      *
-     * @param null|array{event_name: string, identifier?: string, payload: \Stripe\StripeObject, timestamp?: string} $params
+     * @param null|array{event_name: string, identifier?: string, payload: array<string, string>, timestamp?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\MeterEvent

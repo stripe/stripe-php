@@ -11,7 +11,7 @@ namespace Stripe\Terminal;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|(object{failure_code: null|string, failure_message: null|string, process_payment_intent?: (object{payment_intent: string|\Stripe\PaymentIntent, process_config?: (object{enable_customer_cancellation?: bool, skip_tipping?: bool, tipping?: (object{amount_eligible?: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), process_setup_intent?: (object{generated_card?: string, process_config?: (object{enable_customer_cancellation?: bool}&\Stripe\StripeObject), setup_intent: string|\Stripe\SetupIntent}&\Stripe\StripeObject), refund_payment?: (object{amount?: int, charge?: string|\Stripe\Charge, metadata?: array<string, string>, payment_intent?: string|\Stripe\PaymentIntent, reason?: string, refund?: string|\Stripe\Refund, refund_application_fee?: bool, refund_payment_config?: (object{enable_customer_cancellation?: bool}&\Stripe\StripeObject), reverse_transfer?: bool}&\Stripe\StripeObject), set_reader_display?: (object{cart: null|(object{currency: string, line_items: (object{amount: int, description: string, quantity: int}&\Stripe\StripeObject)[], tax: null|int, total: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), status: string, type: string}&\Stripe\StripeObject) $action The most recent action performed by the reader.
+ * @property null|(object{failure_code: null|string, failure_message: null|string, process_payment_intent?: (object{payment_intent: string|\Stripe\PaymentIntent, process_config?: (object{enable_customer_cancellation?: bool, skip_tipping?: bool, tipping?: (object{amount_eligible?: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), process_setup_intent?: (object{generated_card?: string, process_config?: (object{enable_customer_cancellation?: bool}&\Stripe\StripeObject), setup_intent: string|\Stripe\SetupIntent}&\Stripe\StripeObject), refund_payment?: (object{amount?: int, charge?: string|\Stripe\Charge, metadata?: \Stripe\StripeObject, payment_intent?: string|\Stripe\PaymentIntent, reason?: string, refund?: string|\Stripe\Refund, refund_application_fee?: bool, refund_payment_config?: (object{enable_customer_cancellation?: bool}&\Stripe\StripeObject), reverse_transfer?: bool}&\Stripe\StripeObject), set_reader_display?: (object{cart: null|(object{currency: string, line_items: (object{amount: int, description: string, quantity: int}&\Stripe\StripeObject)[], tax: null|int, total: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), status: string, type: string}&\Stripe\StripeObject) $action The most recent action performed by the reader.
  * @property null|string $device_sw_version The current software version of the reader.
  * @property string $device_type Type of reader, one of <code>bbpos_wisepad3</code>, <code>stripe_m2</code>, <code>stripe_s700</code>, <code>bbpos_chipper2x</code>, <code>bbpos_wisepos_e</code>, <code>verifone_P400</code>, <code>simulated_wisepos_e</code>, or <code>mobile_phone_reader</code>.
  * @property null|string $ip_address The local IP address of the reader.
@@ -43,7 +43,7 @@ class Reader extends \Stripe\ApiResource
     /**
      * Creates a new <code>Reader</code> object.
      *
-     * @param null|array{expand?: string[], label?: string, location?: string, metadata?: array<string, string>, registration_code: string} $params
+     * @param null|array{expand?: string[], label?: string, location?: string, metadata?: null|array<string, string>, registration_code: string} $params
      * @param null|array|string $options
      *
      * @return Reader the created resource
@@ -124,7 +124,7 @@ class Reader extends \Stripe\ApiResource
      * passed. Any parameters not provided will be left unchanged.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{expand?: string[], label?: null|string, metadata?: array<string, string>} $params
+     * @param null|array{expand?: string[], label?: null|string, metadata?: null|array<string, string>} $params
      * @param null|array|string $opts
      *
      * @return Reader the updated resource

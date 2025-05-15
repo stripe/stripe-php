@@ -45,7 +45,7 @@ class ReaderService extends \Stripe\Service\AbstractService
     /**
      * Creates a new <code>Reader</code> object.
      *
-     * @param null|array{expand?: string[], label?: string, location?: string, metadata?: array<string, string>, registration_code: string} $params
+     * @param null|array{expand?: string[], label?: string, location?: string, metadata?: null|array<string, string>, registration_code: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader
@@ -158,7 +158,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * passed. Any parameters not provided will be left unchanged.
      *
      * @param string $id
-     * @param null|array{expand?: string[], label?: null|string, metadata?: array<string, string>} $params
+     * @param null|array{expand?: string[], label?: null|string, metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader
