@@ -38,7 +38,7 @@ namespace Stripe;
  *
  * Related guide: <a href="https://stripe.com/docs/billing/invoices/sending">Send invoices to customers</a>
  *
- * @property null|string $id Unique identifier for the object. This property is always present unless the invoice is an upcoming invoice. See <a href="https://stripe.com/docs/api/invoices/upcoming">Retrieve an upcoming invoice</a> for more details.
+ * @property null|string $id Unique identifier for the object. For preview invoices created using the <a href="https://stripe.com/docs/api/invoices/create_preview">create preview</a> endpoint, this id will be prefixed with <code>upcoming_in</code>.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string $account_country The country of the business associated with this invoice, most often the business creating the invoice.
  * @property null|string $account_name The public name of the business associated with this invoice, most often the business creating the invoice.
@@ -276,6 +276,23 @@ class Invoice extends ApiResource
     public function addLines($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/add_lines';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return Invoice the attached invoice
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public function attachPayment($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/attach_payment';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
 

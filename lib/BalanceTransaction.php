@@ -14,6 +14,7 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount Gross amount of this transaction (in cents (or local equivalent)). A positive value represents funds charged to another party, and a negative value represents funds sent to another party.
  * @property int $available_on The date that the transaction's net funds become available in the Stripe balance.
+ * @property string $balance_type The balance that this transaction impacts.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
@@ -29,6 +30,10 @@ namespace Stripe;
 class BalanceTransaction extends ApiResource
 {
     const OBJECT_NAME = 'balance_transaction';
+
+    const BALANCE_TYPE_ISSUING = 'issuing';
+    const BALANCE_TYPE_PAYMENTS = 'payments';
+    const BALANCE_TYPE_REFUND_AND_DISPUTE_PREFUNDING = 'refund_and_dispute_prefunding';
 
     const TYPE_ADJUSTMENT = 'adjustment';
     const TYPE_ADVANCE = 'advance';
