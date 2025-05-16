@@ -43,7 +43,7 @@ class Reader extends \Stripe\ApiResource
     /**
      * Creates a new <code>Reader</code> object.
      *
-     * @param null|array{expand?: string[], label?: string, location?: string, metadata?: null|\Stripe\StripeObject, registration_code: string} $params
+     * @param null|array{expand?: string[], label?: string, location?: string, metadata?: null|array<string, string>, registration_code: string} $params
      * @param null|array|string $options
      *
      * @return Reader the created resource
@@ -124,7 +124,7 @@ class Reader extends \Stripe\ApiResource
      * passed. Any parameters not provided will be left unchanged.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{expand?: string[], label?: null|string, metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{expand?: string[], label?: null|string, metadata?: null|array<string, string>} $params
      * @param null|array|string $opts
      *
      * @return Reader the updated resource

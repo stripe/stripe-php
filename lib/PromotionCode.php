@@ -32,7 +32,7 @@ class PromotionCode extends ApiResource
      * A promotion code points to a coupon. You can optionally restrict the code to a
      * specific customer, redemption limit, and expiration date.
      *
-     * @param null|array{active?: bool, code?: string, coupon: string, customer?: string, expand?: string[], expires_at?: int, max_redemptions?: int, metadata?: StripeObject, restrictions?: array{currency_options?: StripeObject, first_time_transaction?: bool, minimum_amount?: int, minimum_amount_currency?: string}} $params
+     * @param null|array{active?: bool, code?: string, coupon: string, customer?: string, expand?: string[], expires_at?: int, max_redemptions?: int, metadata?: array<string, string>, restrictions?: array{currency_options?: array<string, array{minimum_amount?: int}>, first_time_transaction?: bool, minimum_amount?: int, minimum_amount_currency?: string}} $params
      * @param null|array|string $options
      *
      * @return PromotionCode the created resource
@@ -95,7 +95,7 @@ class PromotionCode extends ApiResource
      * passed. Most fields are, by design, not editable.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{active?: bool, expand?: string[], metadata?: null|StripeObject, restrictions?: array{currency_options?: StripeObject}} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|array<string, string>, restrictions?: array{currency_options?: array<string, array{minimum_amount?: int}>}} $params
      * @param null|array|string $opts
      *
      * @return PromotionCode the updated resource

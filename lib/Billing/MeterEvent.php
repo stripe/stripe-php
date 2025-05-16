@@ -22,7 +22,7 @@ class MeterEvent extends \Stripe\ApiResource
     /**
      * Creates a billing meter event.
      *
-     * @param null|array{event_name: string, expand?: string[], identifier?: string, payload: \Stripe\StripeObject, timestamp?: int} $params
+     * @param null|array{event_name: string, expand?: string[], identifier?: string, payload: array<string, string>, timestamp?: int} $params
      * @param null|array|string $options
      *
      * @return MeterEvent the created resource

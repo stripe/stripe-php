@@ -45,7 +45,7 @@ class ReaderService extends \Stripe\Service\AbstractService
     /**
      * Creates a new <code>Reader</code> object.
      *
-     * @param null|array{expand?: string[], label?: string, location?: string, metadata?: null|\Stripe\StripeObject, registration_code: string} $params
+     * @param null|array{expand?: string[], label?: string, location?: string, metadata?: null|array<string, string>, registration_code: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader
@@ -109,7 +109,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * Initiates a refund on a Reader.
      *
      * @param string $id
-     * @param null|array{amount?: int, charge?: string, expand?: string[], metadata?: \Stripe\StripeObject, payment_intent?: string, refund_application_fee?: bool, refund_payment_config?: array{enable_customer_cancellation?: bool}, reverse_transfer?: bool} $params
+     * @param null|array{amount?: int, charge?: string, expand?: string[], metadata?: array<string, string>, payment_intent?: string, refund_application_fee?: bool, refund_payment_config?: array{enable_customer_cancellation?: bool}, reverse_transfer?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader
@@ -158,7 +158,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * passed. Any parameters not provided will be left unchanged.
      *
      * @param string $id
-     * @param null|array{expand?: string[], label?: null|string, metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{expand?: string[], label?: null|string, metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader

@@ -62,7 +62,7 @@ class RefundService extends AbstractService
      * an error when called on an already-refunded charge, or when trying to refund
      * more money than is left on a charge.
      *
-     * @param null|array{amount?: int, charge?: string, currency?: string, customer?: string, expand?: string[], instructions_email?: string, metadata?: null|\Stripe\StripeObject, origin?: string, payment_intent?: string, reason?: string, refund_application_fee?: bool, reverse_transfer?: bool} $params
+     * @param null|array{amount?: int, charge?: string, currency?: string, customer?: string, expand?: string[], instructions_email?: string, metadata?: null|array<string, string>, origin?: string, payment_intent?: string, reason?: string, refund_application_fee?: bool, reverse_transfer?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Refund
@@ -97,7 +97,7 @@ class RefundService extends AbstractService
      * This request only accepts <code>metadata</code> as an argument.
      *
      * @param string $id
-     * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Refund

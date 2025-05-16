@@ -53,7 +53,7 @@ class TransferService extends AbstractService
      * transfer object. Your <a href="#balance">Stripe balance</a> must be able to
      * cover the transfer amount, or you’ll receive an “Insufficient Funds” error.
      *
-     * @param null|array{amount?: int, currency: string, description?: string, destination: string, expand?: string[], metadata?: \Stripe\StripeObject, source_transaction?: string, source_type?: string, transfer_group?: string} $params
+     * @param null|array{amount?: int, currency: string, description?: string, destination: string, expand?: string[], metadata?: array<string, string>, source_transaction?: string, source_type?: string, transfer_group?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Transfer
@@ -76,7 +76,7 @@ class TransferService extends AbstractService
      * reverse more money than is left on a transfer.
      *
      * @param string $parentId
-     * @param null|array{amount?: int, description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject, refund_application_fee?: bool} $params
+     * @param null|array{amount?: int, description?: string, expand?: string[], metadata?: null|array<string, string>, refund_application_fee?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\TransferReversal
@@ -132,7 +132,7 @@ class TransferService extends AbstractService
      * This request accepts only metadata as an argument.
      *
      * @param string $id
-     * @param null|array{description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{description?: string, expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Transfer
@@ -152,7 +152,7 @@ class TransferService extends AbstractService
      *
      * @param string $parentId
      * @param string $id
-     * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\TransferReversal

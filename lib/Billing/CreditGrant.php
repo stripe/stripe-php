@@ -38,7 +38,7 @@ class CreditGrant extends \Stripe\ApiResource
     /**
      * Creates a credit grant.
      *
-     * @param null|array{amount: array{monetary?: array{currency: string, value: int}, type: string}, applicability_config: array{scope: array{price_type?: string, prices?: array{id: string}[]}}, category: string, customer: string, effective_at?: int, expand?: string[], expires_at?: int, metadata?: \Stripe\StripeObject, name?: string, priority?: int} $params
+     * @param null|array{amount: array{monetary?: array{currency: string, value: int}, type: string}, applicability_config: array{scope: array{price_type?: string, prices?: array{id: string}[]}}, category: string, customer: string, effective_at?: int, expand?: string[], expires_at?: int, metadata?: array<string, string>, name?: string, priority?: int} $params
      * @param null|array|string $options
      *
      * @return CreditGrant the created resource
@@ -97,7 +97,7 @@ class CreditGrant extends \Stripe\ApiResource
      * Updates a credit grant.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{expand?: string[], expires_at?: null|int, metadata?: \Stripe\StripeObject} $params
+     * @param null|array{expand?: string[], expires_at?: null|int, metadata?: array<string, string>} $params
      * @param null|array|string $opts
      *
      * @return CreditGrant the updated resource
