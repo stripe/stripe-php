@@ -12,7 +12,7 @@ namespace Stripe\Privacy;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string $code A code indicating the reason for the error.
- * @property null|\Stripe\StripeObject $erroring_object If the error is related to a specific object, this field will include the object's identifier in <code>id</code> and object type in <code>object</code>.
+ * @property null|(object{id: string, object_type: string}&\Stripe\StripeObject) $erroring_object If the error is related to a specific object, this field includes the object's identifier and object type.
  * @property string $message A human-readable message providing more details about the error.
  */
 class RedactionJobValidationError extends \Stripe\ApiResource
