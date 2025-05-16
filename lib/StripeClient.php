@@ -40,7 +40,6 @@ namespace Stripe;
  * @property Service\FinancialConnections\FinancialConnectionsServiceFactory $financialConnections
  * @property Service\Forwarding\ForwardingServiceFactory $forwarding
  * @property Service\FxQuoteService $fxQuotes
- * @property Service\GiftCards\GiftCardsServiceFactory $giftCards
  * @property Service\Identity\IdentityServiceFactory $identity
  * @property Service\InvoiceItemService $invoiceItems
  * @property Service\InvoiceRenderingTemplateService $invoiceRenderingTemplates

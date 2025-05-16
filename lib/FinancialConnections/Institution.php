@@ -9,6 +9,7 @@ namespace Stripe\FinancialConnections;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property string[] $countries The list of countries supported by this institution, formatted as ISO country codes.
  * @property (object{balances: (object{supported: bool}&\Stripe\StripeObject), ownership: (object{supported: bool}&\Stripe\StripeObject), payment_method: (object{supported: bool}&\Stripe\StripeObject), transactions: (object{supported: bool}&\Stripe\StripeObject)}&\Stripe\StripeObject) $features
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $name The name of this institution.

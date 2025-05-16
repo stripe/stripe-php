@@ -43,7 +43,7 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string $account The connected account that originates the event.
  * @property null|string $api_version The Stripe API version used to render <code>data</code>. This property is populated only for events on or after October 31, 2014.
- * @property null|string $context
+ * @property null|string $context Authentication context needed to fetch the event or related object.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property (object{object: StripeObject, previous_attributes?: StripeObject}&StripeObject) $data
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
@@ -75,7 +75,6 @@ class Event extends ApiResource
     const BILLING_CREDIT_GRANT_UPDATED = 'billing.credit_grant.updated';
     const BILLING_METER_CREATED = 'billing.meter.created';
     const BILLING_METER_DEACTIVATED = 'billing.meter.deactivated';
-    const BILLING_METER_ERROR_REPORT_TRIGGERED = 'billing.meter_error_report.triggered';
     const BILLING_METER_REACTIVATED = 'billing.meter.reactivated';
     const BILLING_METER_UPDATED = 'billing.meter.updated';
     const BILLING_PORTAL_CONFIGURATION_CREATED = 'billing_portal.configuration.created';
@@ -180,6 +179,7 @@ class Event extends ApiResource
     const INVOICE_PAYMENT_ATTEMPT_REQUIRED = 'invoice.payment_attempt_required';
     const INVOICE_PAYMENT_FAILED = 'invoice.payment_failed';
     const INVOICE_PAYMENT_OVERPAID = 'invoice.payment.overpaid';
+    const INVOICE_PAYMENT_PAID = 'invoice.payment.paid';
     const INVOICE_PAYMENT_SUCCEEDED = 'invoice.payment_succeeded';
     const INVOICE_SENT = 'invoice.sent';
     const INVOICE_UPCOMING = 'invoice.upcoming';
@@ -359,9 +359,11 @@ class Event extends ApiResource
     const TYPE_BALANCE_AVAILABLE = 'balance.available';
     const TYPE_BALANCE_SETTINGS_UPDATED = 'balance_settings.updated';
     const TYPE_BILLING_ALERT_TRIGGERED = 'billing.alert.triggered';
+    const TYPE_BILLING_CREDIT_BALANCE_TRANSACTION_CREATED = 'billing.credit_balance_transaction.created';
+    const TYPE_BILLING_CREDIT_GRANT_CREATED = 'billing.credit_grant.created';
+    const TYPE_BILLING_CREDIT_GRANT_UPDATED = 'billing.credit_grant.updated';
     const TYPE_BILLING_METER_CREATED = 'billing.meter.created';
     const TYPE_BILLING_METER_DEACTIVATED = 'billing.meter.deactivated';
-    const TYPE_BILLING_METER_ERROR_REPORT_TRIGGERED = 'billing.meter_error_report.triggered';
     const TYPE_BILLING_METER_REACTIVATED = 'billing.meter.reactivated';
     const TYPE_BILLING_METER_UPDATED = 'billing.meter.updated';
     const TYPE_BILLING_PORTAL_CONFIGURATION_CREATED = 'billing_portal.configuration.created';
@@ -466,6 +468,7 @@ class Event extends ApiResource
     const TYPE_INVOICE_PAYMENT_ATTEMPT_REQUIRED = 'invoice.payment_attempt_required';
     const TYPE_INVOICE_PAYMENT_FAILED = 'invoice.payment_failed';
     const TYPE_INVOICE_PAYMENT_OVERPAID = 'invoice.payment.overpaid';
+    const TYPE_INVOICE_PAYMENT_PAID = 'invoice.payment.paid';
     const TYPE_INVOICE_PAYMENT_SUCCEEDED = 'invoice.payment_succeeded';
     const TYPE_INVOICE_SENT = 'invoice.sent';
     const TYPE_INVOICE_UPCOMING = 'invoice.upcoming';
