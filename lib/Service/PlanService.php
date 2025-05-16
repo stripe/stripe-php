@@ -31,7 +31,7 @@ class PlanService extends AbstractService
      * API</a>. It replaces the Plans API and is backwards compatible to simplify your
      * migration.
      *
-     * @param null|array{active?: bool, amount?: int, amount_decimal?: string, billing_scheme?: string, currency: string, expand?: string[], id?: string, interval: string, interval_count?: int, metadata?: null|\Stripe\StripeObject, meter?: string, nickname?: string, product?: array|string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: array|int|string})[], tiers_mode?: string, transform_usage?: array{divide_by: int, round: string}, trial_period_days?: int, usage_type?: string} $params
+     * @param null|array{active?: bool, amount?: int, amount_decimal?: string, billing_scheme?: string, currency: string, expand?: string[], id?: string, interval: string, interval_count?: int, metadata?: null|array<string, string>, meter?: string, nickname?: string, product?: array|string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: array|int|string})[], tiers_mode?: string, transform_usage?: array{divide_by: int, round: string}, trial_period_days?: int, usage_type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Plan
@@ -82,7 +82,7 @@ class PlanService extends AbstractService
      * plan’s ID, amount, currency, or billing cycle.
      *
      * @param string $id
-     * @param null|array{active?: bool, expand?: string[], metadata?: null|\Stripe\StripeObject, nickname?: string, product?: string, trial_period_days?: int} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|array<string, string>, nickname?: string, product?: string, trial_period_days?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Plan

@@ -62,7 +62,7 @@ class TaxRate extends ApiResource
     /**
      * Creates a new tax rate.
      *
-     * @param null|array{active?: bool, country?: string, description?: string, display_name: string, expand?: string[], inclusive: bool, jurisdiction?: string, metadata?: StripeObject, percentage: float, state?: string, tax_type?: string} $params
+     * @param null|array{active?: bool, country?: string, description?: string, display_name: string, expand?: string[], inclusive: bool, jurisdiction?: string, metadata?: array<string, string>, percentage: float, state?: string, tax_type?: string} $params
      * @param null|array|string $options
      *
      * @return TaxRate the created resource
@@ -122,7 +122,7 @@ class TaxRate extends ApiResource
      * Updates an existing tax rate.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{active?: bool, country?: string, description?: string, display_name?: string, expand?: string[], jurisdiction?: string, metadata?: null|StripeObject, state?: string, tax_type?: string} $params
+     * @param null|array{active?: bool, country?: string, description?: string, display_name?: string, expand?: string[], jurisdiction?: string, metadata?: null|array<string, string>, state?: string, tax_type?: string} $params
      * @param null|array|string $opts
      *
      * @return TaxRate the updated resource

@@ -28,7 +28,7 @@ class FileLink extends ApiResource
     /**
      * Creates a new file link object.
      *
-     * @param null|array{expand?: string[], expires_at?: int, file: string, metadata?: null|StripeObject} $params
+     * @param null|array{expand?: string[], expires_at?: int, file: string, metadata?: null|array<string, string>} $params
      * @param null|array|string $options
      *
      * @return FileLink the created resource
@@ -87,7 +87,7 @@ class FileLink extends ApiResource
      * Updates an existing file link object. Expired links can no longer be updated.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{expand?: string[], expires_at?: null|array|int|string, metadata?: null|StripeObject} $params
+     * @param null|array{expand?: string[], expires_at?: null|array|int|string, metadata?: null|array<string, string>} $params
      * @param null|array|string $opts
      *
      * @return FileLink the updated resource

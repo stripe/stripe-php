@@ -36,7 +36,7 @@ class ShippingRate extends ApiResource
     /**
      * Creates a new shipping rate object.
      *
-     * @param null|array{delivery_estimate?: array{maximum?: array{unit: string, value: int}, minimum?: array{unit: string, value: int}}, display_name: string, expand?: string[], fixed_amount?: array{amount: int, currency: string, currency_options?: StripeObject}, metadata?: StripeObject, tax_behavior?: string, tax_code?: string, type?: string} $params
+     * @param null|array{delivery_estimate?: array{maximum?: array{unit: string, value: int}, minimum?: array{unit: string, value: int}}, display_name: string, expand?: string[], fixed_amount?: array{amount: int, currency: string, currency_options?: array<string, array{amount: int, tax_behavior?: string}>}, metadata?: array<string, string>, tax_behavior?: string, tax_code?: string, type?: string} $params
      * @param null|array|string $options
      *
      * @return ShippingRate the created resource
@@ -95,7 +95,7 @@ class ShippingRate extends ApiResource
      * Updates an existing shipping rate object.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{active?: bool, expand?: string[], fixed_amount?: array{currency_options?: StripeObject}, metadata?: null|StripeObject, tax_behavior?: string} $params
+     * @param null|array{active?: bool, expand?: string[], fixed_amount?: array{currency_options?: array<string, array{amount?: int, tax_behavior?: string}>}, metadata?: null|array<string, string>, tax_behavior?: string} $params
      * @param null|array|string $opts
      *
      * @return ShippingRate the updated resource

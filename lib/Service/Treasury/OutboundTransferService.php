@@ -45,7 +45,7 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
     /**
      * Creates an OutboundTransfer.
      *
-     * @param null|array{amount: int, currency: string, description?: string, destination_payment_method?: string, destination_payment_method_data?: array{financial_account?: string, type: string}, destination_payment_method_options?: array{us_bank_account?: null|array{network?: string}}, expand?: string[], financial_account: string, metadata?: \Stripe\StripeObject, statement_descriptor?: string} $params
+     * @param null|array{amount: int, currency: string, description?: string, destination_payment_method?: string, destination_payment_method_data?: array{financial_account?: string, type: string}, destination_payment_method_options?: array{us_bank_account?: null|array{network?: string}}, expand?: string[], financial_account: string, metadata?: array<string, string>, statement_descriptor?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Treasury\OutboundTransfer

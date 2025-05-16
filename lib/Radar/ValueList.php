@@ -41,7 +41,7 @@ class ValueList extends \Stripe\ApiResource
      * Creates a new <code>ValueList</code> object, which can then be referenced in
      * rules.
      *
-     * @param null|array{alias: string, expand?: string[], item_type?: string, metadata?: \Stripe\StripeObject, name: string} $params
+     * @param null|array{alias: string, expand?: string[], item_type?: string, metadata?: array<string, string>, name: string} $params
      * @param null|array|string $options
      *
      * @return ValueList the created resource
@@ -127,7 +127,7 @@ class ValueList extends \Stripe\ApiResource
      * <code>item_type</code> is immutable.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{alias?: string, expand?: string[], metadata?: \Stripe\StripeObject, name?: string} $params
+     * @param null|array{alias?: string, expand?: string[], metadata?: array<string, string>, name?: string} $params
      * @param null|array|string $opts
      *
      * @return ValueList the updated resource

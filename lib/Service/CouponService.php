@@ -42,7 +42,7 @@ class CouponService extends AbstractService
      * a coupon with an <code>amount_off</code> of <amount>200</amount> is applied to
      * it.
      *
-     * @param null|array{amount_off?: int, applies_to?: array{products?: string[]}, currency?: string, currency_options?: \Stripe\StripeObject, duration?: string, duration_in_months?: int, expand?: string[], id?: string, max_redemptions?: int, metadata?: null|\Stripe\StripeObject, name?: string, percent_off?: float, redeem_by?: int} $params
+     * @param null|array{amount_off?: int, applies_to?: array{products?: string[]}, currency?: string, currency_options?: array<string, array{amount_off: int}>, duration?: string, duration_in_months?: int, expand?: string[], id?: string, max_redemptions?: int, metadata?: null|array<string, string>, name?: string, percent_off?: float, redeem_by?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Coupon
@@ -95,7 +95,7 @@ class CouponService extends AbstractService
      * amount_off) are, by design, not editable.
      *
      * @param string $id
-     * @param null|array{currency_options?: \Stripe\StripeObject, expand?: string[], metadata?: null|\Stripe\StripeObject, name?: string} $params
+     * @param null|array{currency_options?: array<string, array{amount_off: int}>, expand?: string[], metadata?: null|array<string, string>, name?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Coupon

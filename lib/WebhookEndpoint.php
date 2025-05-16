@@ -43,7 +43,7 @@ class WebhookEndpoint extends ApiResource
      * href="https://dashboard.stripe.com/account/webhooks">webhooks settings</a>
      * section of the Dashboard.
      *
-     * @param null|array{api_version?: string, connect?: bool, description?: null|string, enabled_events: string[], expand?: string[], metadata?: null|StripeObject, url: string} $params
+     * @param null|array{api_version?: string, connect?: bool, description?: null|string, enabled_events: string[], expand?: string[], metadata?: null|array<string, string>, url: string} $params
      * @param null|array|string $options
      *
      * @return WebhookEndpoint the created resource
@@ -126,7 +126,7 @@ class WebhookEndpoint extends ApiResource
      * <code>enabled_events</code>, and the status of your endpoint.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{description?: null|string, disabled?: bool, enabled_events?: string[], expand?: string[], metadata?: null|StripeObject, url?: string} $params
+     * @param null|array{description?: null|string, disabled?: bool, enabled_events?: string[], expand?: string[], metadata?: null|array<string, string>, url?: string} $params
      * @param null|array|string $opts
      *
      * @return WebhookEndpoint the updated resource

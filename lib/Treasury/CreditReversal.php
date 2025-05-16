@@ -36,7 +36,7 @@ class CreditReversal extends \Stripe\ApiResource
     /**
      * Reverses a ReceivedCredit and creates a CreditReversal object.
      *
-     * @param null|array{expand?: string[], metadata?: \Stripe\StripeObject, received_credit: string} $params
+     * @param null|array{expand?: string[], metadata?: array<string, string>, received_credit: string} $params
      * @param null|array|string $options
      *
      * @return CreditReversal the created resource

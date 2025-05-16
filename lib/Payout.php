@@ -76,7 +76,7 @@ class Payout extends ApiResource
      * from. The <a href="#balance_object">balance object</a> details available and
      * pending amounts by source type.
      *
-     * @param null|array{amount: int, currency: string, description?: string, destination?: string, expand?: string[], metadata?: StripeObject, method?: string, source_type?: string, statement_descriptor?: string} $params
+     * @param null|array{amount: int, currency: string, description?: string, destination?: string, expand?: string[], metadata?: array<string, string>, method?: string, source_type?: string, statement_descriptor?: string} $params
      * @param null|array|string $options
      *
      * @return Payout the created resource
@@ -141,7 +141,7 @@ class Payout extends ApiResource
      * metadata as arguments.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{expand?: string[], metadata?: null|StripeObject} $params
+     * @param null|array{expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|array|string $opts
      *
      * @return Payout the updated resource

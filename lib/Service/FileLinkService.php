@@ -29,7 +29,7 @@ class FileLinkService extends AbstractService
     /**
      * Creates a new file link object.
      *
-     * @param null|array{expand?: string[], expires_at?: int, file: string, metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{expand?: string[], expires_at?: int, file: string, metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\FileLink
@@ -61,7 +61,7 @@ class FileLinkService extends AbstractService
      * Updates an existing file link object. Expired links can no longer be updated.
      *
      * @param string $id
-     * @param null|array{expand?: string[], expires_at?: null|array|int|string, metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{expand?: string[], expires_at?: null|array|int|string, metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\FileLink

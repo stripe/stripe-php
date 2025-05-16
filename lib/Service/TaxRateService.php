@@ -30,7 +30,7 @@ class TaxRateService extends AbstractService
     /**
      * Creates a new tax rate.
      *
-     * @param null|array{active?: bool, country?: string, description?: string, display_name: string, expand?: string[], inclusive: bool, jurisdiction?: string, metadata?: \Stripe\StripeObject, percentage: float, state?: string, tax_type?: string} $params
+     * @param null|array{active?: bool, country?: string, description?: string, display_name: string, expand?: string[], inclusive: bool, jurisdiction?: string, metadata?: array<string, string>, percentage: float, state?: string, tax_type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\TaxRate
@@ -62,7 +62,7 @@ class TaxRateService extends AbstractService
      * Updates an existing tax rate.
      *
      * @param string $id
-     * @param null|array{active?: bool, country?: string, description?: string, display_name?: string, expand?: string[], jurisdiction?: string, metadata?: null|\Stripe\StripeObject, state?: string, tax_type?: string} $params
+     * @param null|array{active?: bool, country?: string, description?: string, display_name?: string, expand?: string[], jurisdiction?: string, metadata?: null|array<string, string>, state?: string, tax_type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\TaxRate

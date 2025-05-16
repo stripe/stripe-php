@@ -60,7 +60,7 @@ class ApplicationFeeService extends AbstractService
      * trying to refund more money than is left on an application fee.
      *
      * @param string $parentId
-     * @param null|array{amount?: int, expand?: string[], metadata?: \Stripe\StripeObject} $params
+     * @param null|array{amount?: int, expand?: string[], metadata?: array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\ApplicationFeeRefund
@@ -116,7 +116,7 @@ class ApplicationFeeService extends AbstractService
      *
      * @param string $parentId
      * @param string $id
-     * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\ApplicationFeeRefund

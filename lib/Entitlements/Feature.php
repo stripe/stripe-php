@@ -25,7 +25,7 @@ class Feature extends \Stripe\ApiResource
     /**
      * Creates a feature.
      *
-     * @param null|array{expand?: string[], lookup_key: string, metadata?: \Stripe\StripeObject, name: string} $params
+     * @param null|array{expand?: string[], lookup_key: string, metadata?: array<string, string>, name: string} $params
      * @param null|array|string $options
      *
      * @return Feature the created resource
@@ -84,7 +84,7 @@ class Feature extends \Stripe\ApiResource
      * Update a feature’s metadata or permanently deactivate it.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{active?: bool, expand?: string[], metadata?: null|\Stripe\StripeObject, name?: string} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|array<string, string>, name?: string} $params
      * @param null|array|string $opts
      *
      * @return Feature the updated resource

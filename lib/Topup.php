@@ -43,7 +43,7 @@ class Topup extends ApiResource
     /**
      * Top up the balance of an account.
      *
-     * @param null|array{amount: int, currency: string, description?: string, expand?: string[], metadata?: null|StripeObject, source?: string, statement_descriptor?: string, transfer_group?: string} $params
+     * @param null|array{amount: int, currency: string, description?: string, expand?: string[], metadata?: null|array<string, string>, source?: string, statement_descriptor?: string, transfer_group?: string} $params
      * @param null|array|string $options
      *
      * @return Topup the created resource
@@ -105,7 +105,7 @@ class Topup extends ApiResource
      * design.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{description?: string, expand?: string[], metadata?: null|StripeObject} $params
+     * @param null|array{description?: string, expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|array|string $opts
      *
      * @return Topup the updated resource

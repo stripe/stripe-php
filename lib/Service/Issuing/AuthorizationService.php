@@ -39,7 +39,7 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @deprecated  this method is deprecated, please refer to the description for details
      *
      * @param string $id
-     * @param null|array{amount?: int, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{amount?: int, expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\Authorization
@@ -62,7 +62,7 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * @deprecated  this method is deprecated, please refer to the description for details
      *
      * @param string $id
-     * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\Authorization
@@ -96,7 +96,7 @@ class AuthorizationService extends \Stripe\Service\AbstractService
      * unchanged.
      *
      * @param string $id
-     * @param null|array{expand?: string[], metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\Authorization
