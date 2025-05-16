@@ -37,8 +37,8 @@ class QuotePreviewSubscriptionSchedule extends ApiResource
     const BILLING_BEHAVIOR_PRORATE_ON_NEXT_PHASE = 'prorate_on_next_phase';
     const BILLING_BEHAVIOR_PRORATE_UP_FRONT = 'prorate_up_front';
 
-    const BILLING_MODE_CREDITS_ATTRIBUTED_TO_DEBITS = 'credits_attributed_to_debits';
-    const BILLING_MODE_LEGACY_PRORATIONS = 'legacy_prorations';
+    const BILLING_MODE_CLASSIC = 'classic';
+    const BILLING_MODE_FLEXIBLE = 'flexible';
 
     const END_BEHAVIOR_CANCEL = 'cancel';
     const END_BEHAVIOR_NONE = 'none';
