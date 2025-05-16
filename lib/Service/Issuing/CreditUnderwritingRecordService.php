@@ -32,7 +32,7 @@ class CreditUnderwritingRecordService extends \Stripe\Service\AbstractService
      * Update a <code>CreditUnderwritingRecord</code> object to correct mistakes.
      *
      * @param string $id
-     * @param null|array{application?: array{application_method?: string, purpose: string, submitted_at: int}, credit_user?: array{email: string, name: string}, decided_at?: int, decision?: array{application_rejected?: array{reason_other_explanation?: string, reasons: string[]}, credit_limit_approved?: array{amount: int, currency?: string}, credit_limit_decreased?: array{amount: int, currency?: string, reason_other_explanation?: string, reasons: string[]}, credit_line_closed?: array{reason_other_explanation?: string, reasons: string[]}, type: string}, expand?: string[], metadata?: \Stripe\StripeObject, regulatory_reporting_file?: string, underwriting_exception?: array{explanation: string, original_decision_type: string}} $params
+     * @param null|array{application?: array{application_method?: string, purpose: string, submitted_at: int}, credit_user?: array{email: string, name: string}, decided_at?: int, decision?: array{application_rejected?: array{reason_other_explanation?: string, reasons: string[]}, credit_limit_approved?: array{amount: int, currency?: string}, credit_limit_decreased?: array{amount: int, currency?: string, reason_other_explanation?: string, reasons: string[]}, credit_line_closed?: array{reason_other_explanation?: string, reasons: string[]}, type: string}, expand?: string[], metadata?: array<string, string>, regulatory_reporting_file?: string, underwriting_exception?: array{explanation: string, original_decision_type: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\CreditUnderwritingRecord
@@ -48,7 +48,7 @@ class CreditUnderwritingRecordService extends \Stripe\Service\AbstractService
      * Creates a <code>CreditUnderwritingRecord</code> object with information about a
      * credit application submission.
      *
-     * @param null|array{application: array{application_method?: string, purpose: string, submitted_at: int}, credit_user: array{email: string, name: string}, expand?: string[], metadata?: \Stripe\StripeObject} $params
+     * @param null|array{application: array{application_method?: string, purpose: string, submitted_at: int}, credit_user: array{email: string, name: string}, expand?: string[], metadata?: array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\CreditUnderwritingRecord
@@ -64,7 +64,7 @@ class CreditUnderwritingRecordService extends \Stripe\Service\AbstractService
      * Creates a <code>CreditUnderwritingRecord</code> object from an underwriting
      * decision coming from a proactive review of an existing accountholder.
      *
-     * @param null|array{credit_user: array{email: string, name: string}, decided_at: int, decision: array{credit_limit_approved?: array{amount: int, currency?: string}, credit_limit_decreased?: array{amount: int, currency?: string, reason_other_explanation?: string, reasons: string[]}, credit_line_closed?: array{reason_other_explanation?: string, reasons: string[]}, type: string}, expand?: string[], metadata?: \Stripe\StripeObject, regulatory_reporting_file?: string, underwriting_exception?: array{explanation: string, original_decision_type: string}} $params
+     * @param null|array{credit_user: array{email: string, name: string}, decided_at: int, decision: array{credit_limit_approved?: array{amount: int, currency?: string}, credit_limit_decreased?: array{amount: int, currency?: string, reason_other_explanation?: string, reasons: string[]}, credit_line_closed?: array{reason_other_explanation?: string, reasons: string[]}, type: string}, expand?: string[], metadata?: array<string, string>, regulatory_reporting_file?: string, underwriting_exception?: array{explanation: string, original_decision_type: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\CreditUnderwritingRecord
@@ -81,7 +81,7 @@ class CreditUnderwritingRecordService extends \Stripe\Service\AbstractService
      * credit application.
      *
      * @param string $id
-     * @param null|array{decided_at: int, decision: array{application_rejected?: array{reason_other_explanation?: string, reasons: string[]}, credit_limit_approved?: array{amount: int, currency?: string}, type: string}, expand?: string[], metadata?: \Stripe\StripeObject, regulatory_reporting_file?: string, underwriting_exception?: array{explanation: string, original_decision_type: string}} $params
+     * @param null|array{decided_at: int, decision: array{application_rejected?: array{reason_other_explanation?: string, reasons: string[]}, credit_limit_approved?: array{amount: int, currency?: string}, type: string}, expand?: string[], metadata?: array<string, string>, regulatory_reporting_file?: string, underwriting_exception?: array{explanation: string, original_decision_type: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Issuing\CreditUnderwritingRecord

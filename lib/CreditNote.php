@@ -84,7 +84,7 @@ class CreditNote extends ApiResource
      * <code>post_payment_credit_notes_amount</code> depending on its
      * <code>status</code> at the time of credit note creation.
      *
-     * @param null|array{amount?: int, credit_amount?: int, effective_at?: int, email_type?: string, expand?: string[], invoice: string, lines?: (array{amount?: int, description?: string, invoice_line_item?: string, quantity?: int, tax_amounts?: null|array{amount: int, tax_rate: string, taxable_amount: int}[], tax_rates?: null|string[], type: string, unit_amount?: int, unit_amount_decimal?: string})[], memo?: string, metadata?: StripeObject, out_of_band_amount?: int, reason?: string, refund_amount?: int, refunds?: array{amount_refunded?: int, refund?: string}[], shipping_cost?: array{shipping_rate?: string}} $params
+     * @param null|array{amount?: int, credit_amount?: int, effective_at?: int, email_type?: string, expand?: string[], invoice: string, lines?: (array{amount?: int, description?: string, invoice_line_item?: string, quantity?: int, tax_amounts?: null|array{amount: int, tax_rate: string, taxable_amount: int}[], tax_rates?: null|string[], type: string, unit_amount?: int, unit_amount_decimal?: string})[], memo?: string, metadata?: array<string, string>, out_of_band_amount?: int, reason?: string, refund_amount?: int, refunds?: array{amount_refunded?: int, refund?: string}[], shipping_cost?: array{shipping_rate?: string}} $params
      * @param null|array|string $options
      *
      * @return CreditNote the created resource
@@ -143,7 +143,7 @@ class CreditNote extends ApiResource
      * Updates an existing credit note.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{expand?: string[], memo?: string, metadata?: StripeObject} $params
+     * @param null|array{expand?: string[], memo?: string, metadata?: array<string, string>} $params
      * @param null|array|string $opts
      *
      * @return CreditNote the updated resource

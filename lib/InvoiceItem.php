@@ -50,7 +50,7 @@ class InvoiceItem extends ApiResource
      * no invoice is specified, the item will be on the next invoice created for the
      * customer specified.
      *
-     * @param null|array{amount?: int, currency?: string, customer?: string, customer_account?: string, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], invoice?: string, margins?: string[], metadata?: null|StripeObject, period?: array{end: int, start: int}, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, pricing?: array{price?: string}, quantity?: int, subscription?: string, tax_behavior?: string, tax_code?: null|string, tax_rates?: string[], unit_amount_decimal?: string} $params
+     * @param null|array{amount?: int, currency?: string, customer?: string, customer_account?: string, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], invoice?: string, margins?: string[], metadata?: null|array<string, string>, period?: array{end: int, start: int}, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, pricing?: array{price?: string}, quantity?: int, subscription?: string, tax_behavior?: string, tax_code?: null|string, tax_rates?: string[], unit_amount_decimal?: string} $params
      * @param null|array|string $options
      *
      * @return InvoiceItem the created resource
@@ -135,7 +135,7 @@ class InvoiceItem extends ApiResource
      * closed.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{amount?: int, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], margins?: null|string[], metadata?: null|StripeObject, period?: array{end: int, start: int}, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, pricing?: array{price?: string}, quantity?: int, tax_behavior?: string, tax_code?: null|string, tax_rates?: null|string[], unit_amount_decimal?: string} $params
+     * @param null|array{amount?: int, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], margins?: null|string[], metadata?: null|array<string, string>, period?: array{end: int, start: int}, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, pricing?: array{price?: string}, quantity?: int, tax_behavior?: string, tax_code?: null|string, tax_rates?: null|string[], unit_amount_decimal?: string} $params
      * @param null|array|string $opts
      *
      * @return InvoiceItem the updated resource

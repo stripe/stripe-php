@@ -29,7 +29,7 @@ class DebitReversalService extends \Stripe\Service\AbstractService
     /**
      * Reverses a ReceivedDebit and creates a DebitReversal object.
      *
-     * @param null|array{expand?: string[], metadata?: \Stripe\StripeObject, received_debit: string} $params
+     * @param null|array{expand?: string[], metadata?: array<string, string>, received_debit: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Treasury\DebitReversal

@@ -29,7 +29,7 @@ class CardService extends \Stripe\Service\AbstractService
     /**
      * Creates a new gift card object.
      *
-     * @param null|array{active?: bool, created_by?: array{payment: array{payment_intent: string}, type: string}, currency: string, expand?: string[], initial_amount?: int, metadata?: \Stripe\StripeObject} $params
+     * @param null|array{active?: bool, created_by?: array{payment: array{payment_intent: string}, type: string}, currency: string, expand?: string[], initial_amount?: int, metadata?: array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\GiftCards\Card
@@ -61,7 +61,7 @@ class CardService extends \Stripe\Service\AbstractService
      * Update a gift card.
      *
      * @param string $id
-     * @param null|array{active?: bool, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\GiftCards\Card

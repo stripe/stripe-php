@@ -48,7 +48,7 @@ class AccountNoticeService extends AbstractService
      * Updates an <code>AccountNotice</code> object.
      *
      * @param string $id
-     * @param null|array{email: array{plain_text: string, recipient: string, subject: string}, expand?: string[], metadata?: \Stripe\StripeObject, sent_at: int} $params
+     * @param null|array{email: array{plain_text: string, recipient: string, subject: string}, expand?: string[], metadata?: array<string, string>, sent_at: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\AccountNotice

@@ -29,7 +29,7 @@ class ExternalAccountService extends AbstractService
     /**
      * Create an external account for a given connected account.
      *
-     * @param null|array{default_for_currency?: bool, expand?: string[], external_account: array|string, metadata?: \Stripe\StripeObject} $params
+     * @param null|array{default_for_currency?: bool, expand?: string[], external_account: array|string, metadata?: array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\BankAccount|\Stripe\Card
@@ -87,7 +87,7 @@ class ExternalAccountService extends AbstractService
      * providing any arguments or changes.
      *
      * @param string $id
-     * @param null|array{account_holder_name?: string, account_holder_type?: null|string, account_type?: string, address_city?: string, address_country?: string, address_line1?: string, address_line2?: string, address_state?: string, address_zip?: string, default_for_currency?: bool, documents?: array{bank_account_ownership_verification?: array{files?: string[]}}, exp_month?: string, exp_year?: string, expand?: string[], metadata?: null|\Stripe\StripeObject, name?: string} $params
+     * @param null|array{account_holder_name?: string, account_holder_type?: null|string, account_type?: string, address_city?: string, address_country?: string, address_line1?: string, address_line2?: string, address_state?: string, address_zip?: string, default_for_currency?: bool, documents?: array{bank_account_ownership_verification?: array{files?: string[]}}, exp_month?: string, exp_year?: string, expand?: string[], metadata?: null|array<string, string>, name?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\BankAccount|\Stripe\Card

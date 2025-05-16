@@ -29,7 +29,7 @@ class Card extends \Stripe\ApiResource
     /**
      * Creates a new gift card object.
      *
-     * @param null|array{active?: bool, created_by?: array{payment: array{payment_intent: string}, type: string}, currency: string, expand?: string[], initial_amount?: int, metadata?: \Stripe\StripeObject} $params
+     * @param null|array{active?: bool, created_by?: array{payment: array{payment_intent: string}, type: string}, currency: string, expand?: string[], initial_amount?: int, metadata?: array<string, string>} $params
      * @param null|array|string $options
      *
      * @return Card the created resource
@@ -88,7 +88,7 @@ class Card extends \Stripe\ApiResource
      * Update a gift card.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{active?: bool, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|array|string $opts
      *
      * @return Card the updated resource

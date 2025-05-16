@@ -29,7 +29,7 @@ class CreditReversalService extends \Stripe\Service\AbstractService
     /**
      * Reverses a ReceivedCredit and creates a CreditReversal object.
      *
-     * @param null|array{expand?: string[], metadata?: \Stripe\StripeObject, received_credit: string} $params
+     * @param null|array{expand?: string[], metadata?: array<string, string>, received_credit: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Treasury\CreditReversal

@@ -82,7 +82,7 @@ class AccountNotice extends ApiResource
      * Updates an <code>AccountNotice</code> object.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{email: array{plain_text: string, recipient: string, subject: string}, expand?: string[], metadata?: StripeObject, sent_at: int} $params
+     * @param null|array{email: array{plain_text: string, recipient: string, subject: string}, expand?: string[], metadata?: array<string, string>, sent_at: int} $params
      * @param null|array|string $opts
      *
      * @return AccountNotice the updated resource
