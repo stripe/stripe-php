@@ -32,7 +32,7 @@ class Margin extends ApiResource
      * a customer. Calculation of prorations do not include any partner margins applied
      * on the original invoice item.
      *
-     * @param null|array{active?: bool, expand?: string[], metadata?: StripeObject, name?: string, percent_off: float} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: array<string, string>, name?: string, percent_off: float} $params
      * @param null|array|string $options
      *
      * @return Margin the created resource
@@ -92,7 +92,7 @@ class Margin extends ApiResource
      * editable.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{active?: bool, expand?: string[], metadata?: StripeObject, name?: string} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: array<string, string>, name?: string} $params
      * @param null|array|string $opts
      *
      * @return Margin the updated resource

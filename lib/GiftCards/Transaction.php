@@ -39,7 +39,7 @@ class Transaction extends \Stripe\ApiResource
     /**
      * Create a gift card transaction.
      *
-     * @param null|array{amount: int, confirm?: bool, created_by?: array{payment: array{payment_intent: string}, type: string}, currency: string, description?: string, expand?: string[], gift_card: string, metadata?: \Stripe\StripeObject, transfer_group?: string} $params
+     * @param null|array{amount: int, confirm?: bool, created_by?: array{payment: array{payment_intent: string}, type: string}, currency: string, description?: string, expand?: string[], gift_card: string, metadata?: array<string, string>, transfer_group?: string} $params
      * @param null|array|string $options
      *
      * @return Transaction the created resource
@@ -98,7 +98,7 @@ class Transaction extends \Stripe\ApiResource
      * Update a gift card transaction.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{description?: string, expand?: string[], metadata?: null|\Stripe\StripeObject} $params
+     * @param null|array{description?: string, expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|array|string $opts
      *
      * @return Transaction the updated resource

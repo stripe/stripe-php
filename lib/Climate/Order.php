@@ -52,7 +52,7 @@ class Order extends \Stripe\ApiResource
      * processed immediately after creation and payment will be deducted your Stripe
      * balance.
      *
-     * @param null|array{amount?: int, beneficiary?: array{public_name: string}, currency?: string, expand?: string[], metadata?: \Stripe\StripeObject, metric_tons?: string, product: string} $params
+     * @param null|array{amount?: int, beneficiary?: array{public_name: string}, currency?: string, expand?: string[], metadata?: array<string, string>, metric_tons?: string, product: string} $params
      * @param null|array|string $options
      *
      * @return Order the created resource
@@ -112,7 +112,7 @@ class Order extends \Stripe\ApiResource
      * Updates the specified order by setting the values of the parameters passed.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{beneficiary?: null|array{public_name: null|string}, expand?: string[], metadata?: \Stripe\StripeObject} $params
+     * @param null|array{beneficiary?: null|array{public_name: null|string}, expand?: string[], metadata?: array<string, string>} $params
      * @param null|array|string $opts
      *
      * @return Order the updated resource

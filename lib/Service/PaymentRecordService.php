@@ -16,7 +16,7 @@ class PaymentRecordService extends AbstractService
      * initialized and later report updates through the other report_* methods, or
      * report Payment  Records in a terminal state directly, through this method.
      *
-     * @param null|array{amount_requested: array{currency: string, value: int}, customer_details?: array{customer?: string, email?: string, name?: string, phone?: string}, customer_presence?: string, description?: string, expand?: string[], failed?: array{failed_at: int}, guaranteed?: array{guaranteed_at: int}, initiated_at: int, metadata?: \Stripe\StripeObject, outcome?: string, payment_method_details: array{billing_details?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: string, name?: string, phone?: string}, custom?: array{display_name?: string, type?: string}, payment_method?: string, type?: string}, payment_reference?: string, shipping_details?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, name?: string, phone?: string}} $params
+     * @param null|array{amount_requested: array{currency: string, value: int}, customer_details?: array{customer?: string, email?: string, name?: string, phone?: string}, customer_presence?: string, description?: string, expand?: string[], failed?: array{failed_at: int}, guaranteed?: array{guaranteed_at: int}, initiated_at: int, metadata?: array<string, string>, outcome?: string, payment_method_details: array{billing_details?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: string, name?: string, phone?: string}, custom?: array{display_name?: string, type?: string}, payment_method?: string, type?: string}, payment_reference?: string, shipping_details?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, name?: string, phone?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentRecord
@@ -34,7 +34,7 @@ class PaymentRecordService extends AbstractService
      * failed.
      *
      * @param string $id
-     * @param null|array{description?: string, expand?: string[], failed?: array{failed_at: int}, guaranteed?: array{guaranteed_at: int}, initiated_at: int, metadata?: \Stripe\StripeObject, outcome?: string, payment_method_details?: array{billing_details?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: string, name?: string, phone?: string}, custom?: array{display_name?: string, type?: string}, payment_method?: string, type?: string}, shipping_details?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, name?: string, phone?: string}} $params
+     * @param null|array{description?: string, expand?: string[], failed?: array{failed_at: int}, guaranteed?: array{guaranteed_at: int}, initiated_at: int, metadata?: array<string, string>, outcome?: string, payment_method_details?: array{billing_details?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: string, name?: string, phone?: string}, custom?: array{display_name?: string, type?: string}, payment_method?: string, type?: string}, shipping_details?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, name?: string, phone?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentRecord
@@ -51,7 +51,7 @@ class PaymentRecordService extends AbstractService
      * canceled.
      *
      * @param string $id
-     * @param null|array{canceled_at: int, expand?: string[], metadata?: \Stripe\StripeObject} $params
+     * @param null|array{canceled_at: int, expand?: string[], metadata?: array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentRecord
@@ -68,7 +68,7 @@ class PaymentRecordService extends AbstractService
      * failed or errored.
      *
      * @param string $id
-     * @param null|array{expand?: string[], failed_at: int, metadata?: \Stripe\StripeObject} $params
+     * @param null|array{expand?: string[], failed_at: int, metadata?: array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentRecord
@@ -85,7 +85,7 @@ class PaymentRecordService extends AbstractService
      * guaranteed.
      *
      * @param string $id
-     * @param null|array{expand?: string[], guaranteed_at: int, metadata?: \Stripe\StripeObject} $params
+     * @param null|array{expand?: string[], guaranteed_at: int, metadata?: array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentRecord

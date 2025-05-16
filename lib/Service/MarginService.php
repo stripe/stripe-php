@@ -34,7 +34,7 @@ class MarginService extends AbstractService
      * a customer. Calculation of prorations do not include any partner margins applied
      * on the original invoice item.
      *
-     * @param null|array{active?: bool, expand?: string[], metadata?: \Stripe\StripeObject, name?: string, percent_off: float} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: array<string, string>, name?: string, percent_off: float} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Margin
@@ -67,7 +67,7 @@ class MarginService extends AbstractService
      * editable.
      *
      * @param string $id
-     * @param null|array{active?: bool, expand?: string[], metadata?: \Stripe\StripeObject, name?: string} $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: array<string, string>, name?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Margin

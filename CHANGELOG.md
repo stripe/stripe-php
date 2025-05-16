@@ -8,6 +8,24 @@
   * Add support for new values `aw_tin`, `az_tin`, `bd_bin`, `bf_ifu`, `bj_ifu`, `cm_niu`, `cv_nif`, `et_tin`, `kg_tin`, and `la_tin` on enum `QuotePreviewInvoice.customer_tax_ids[].type`
   * Add support for `billing_mode` on `QuotePreviewSubscriptionSchedule`, `SubscriptionSchedule`, and `Subscription`
 
+## 17.2.0 - 2025-04-30
+
+  This release changes the pinned API version to `2025-04-30.basil`.
+
+* [#1839](https://github.com/stripe/stripe-php/pull/1839) Update generated code
+  * Add support for new value `tax_id_prohibited` on enums `Invoice.last_finalization_error.code`, `PaymentIntent.last_payment_error.code`, `SetupAttempt.setup_error.code`, `SetupIntent.last_setup_error.code`, and `StripeError.code`
+  * Add support for `wallet_options` on `Checkout.Session`
+  * Add support for `context` on `Event`
+  * Add support for new values `aw_tin`, `az_tin`, `bd_bin`, `bf_ifu`, `bj_ifu`, `cm_niu`, `cv_nif`, `et_tin`, `kg_tin`, and `la_tin` on enums `Invoice.customer_tax_ids[].type` and `TaxId.type`
+  * Add support for new value `affirm` on enums `Invoice.payment_settings.payment_method_types` and `Subscription.payment_settings.payment_method_types`
+  * Add support for `pix` on `PaymentMethodConfiguration`
+  * Add support for `klarna` on `PaymentMethodDomain`
+  * Add support for `us_cfpb_data` on `Person`
+  * Add support for `pending_reason` on `Refund`
+  * Change type of `Tax.CalculationLineItem.reference` from `nullable(string)` to `string`
+* [#1857](https://github.com/stripe/stripe-php/pull/1857) Include new PHP 8.3 and 8.4 in CI
+* [#1856](https://github.com/stripe/stripe-php/pull/1856) Faster parallel runner for PHP formatter
+
 ## 17.2.0-beta.4 - 2025-04-17
 * [#1855](https://github.com/stripe/stripe-php/pull/1855) Update generated code for beta
   * Add support for new resources `FxQuote` and `PaymentIntentAmountDetailsLineItem`
@@ -120,12 +138,9 @@
     * Change type of `InvoicePayment.is_default` from `nullable(boolean)` to `boolean`
     * Change type of `PaymentAttemptRecord.payment_method_details.custom` and `PaymentRecord.payment_method_details.custom` from `nullable(PaymentsPrimitivesPaymentRecordsResourcePaymentMethodCustomDetails)` to `PaymentsPrimitivesPaymentRecordsResourcePaymentMethodCustomDetails`
 
-
-
-
 ## 17.1.1 - 2025-04-04
 * [#1847](https://github.com/stripe/stripe-php/pull/1847) Remove stdClass from object shapes
-  * Remove intersection with `stdClass` in resource properties and fixed `instanceof` checks.  
+  * Remove intersection with `stdClass` in resource properties and fixed `instanceof` checks.
 
 ## 17.1.0 - 2025-04-02
 * [#1843](https://github.com/stripe/stripe-php/pull/1843) Add null type in resource fields to non required objects
@@ -3443,3 +3458,4 @@ Pull requests included in this release:
 -   Add new Transfer resource
 -   Switch from using HTTP Basic auth to Bearer auth. (Note: Stripe will support Basic auth for the indefinite future, but recommends Bearer auth when possible going forward)
 -   Numerous test suite improvements
+

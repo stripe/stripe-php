@@ -11,7 +11,7 @@ namespace Stripe\Privacy;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|(object{charges: null|string[], checkout_sessions: null|string[], customers: null|string[], identity_verification_sessions: null|string[], invoices: null|string[], issuing_cardholders: null|string[], payment_intents: null|string[], radar_value_list_items: null|string[], setup_intents: null|string[]}&\Stripe\StripeObject) $objects The objects at the root level that are subject to redaction.
+ * @property null|RedactionJobRootObjects $objects The objects at the root level that are subject to redaction.
  * @property string $status The status field represents the current state of the redaction job. It can take on any of the following values: VALIDATING, READY, REDACTING, SUCCEEDED, CANCELED, FAILED.
  * @property null|string $validation_behavior Default is &quot;error&quot;. If &quot;error&quot;, we will make sure all objects in the graph are redactable in the 1st traversal, otherwise error. If &quot;fix&quot;, where possible, we will auto-fix any validation errors (e.g. by auto-transitioning objects to a terminal state, etc.) in the 2nd traversal before redacting
  */
@@ -168,5 +168,20 @@ class RedactionJob extends \Stripe\ApiResource
     public static function allValidationErrors($id, $params = null, $opts = null)
     {
         return self::_allNestedResources($id, static::PATH_VALIDATION_ERRORS, $params, $opts);
+    }
+
+    /**
+     * @param string $id the ID of the redaction job to which the redaction job validation error belongs
+     * @param string $validationErrorId the ID of the redaction job validation error to retrieve
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return RedactionJobValidationError
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public static function retrieveValidationError($id, $validationErrorId, $params = null, $opts = null)
+    {
+        return self::_retrieveNestedResource($id, static::PATH_VALIDATION_ERRORS, $validationErrorId, $params, $opts);
     }
 }
