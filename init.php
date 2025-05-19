@@ -202,6 +202,13 @@ require __DIR__ . '/lib/Events/V2MoneyManagementReceivedDebitSucceededEvent.php'
 require __DIR__ . '/lib/Events/V2MoneyManagementReceivedDebitUpdatedEvent.php';
 require __DIR__ . '/lib/Events/V2MoneyManagementTransactionCreatedEvent.php';
 require __DIR__ . '/lib/Events/V2MoneyManagementTransactionUpdatedEvent.php';
+require __DIR__ . '/lib/Events/V2OffSessionPaymentRequiresCaptureEvent.php';
+require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent.php';
+require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent.php';
+require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentCanceledEvent.php';
+require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentCreatedEvent.php';
+require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentFailedEvent.php';
+require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentSucceededEvent.php';
 require __DIR__ . '/lib/Exception/AlreadyCanceledException.php';
 require __DIR__ . '/lib/Exception/BlockedByStripeException.php';
 require __DIR__ . '/lib/Exception/ControlledByDashboardException.php';
@@ -469,6 +476,8 @@ require __DIR__ . '/lib/Service/V2/MoneyManagement/ReceivedCreditService.php';
 require __DIR__ . '/lib/Service/V2/MoneyManagement/ReceivedDebitService.php';
 require __DIR__ . '/lib/Service/V2/MoneyManagement/TransactionEntryService.php';
 require __DIR__ . '/lib/Service/V2/MoneyManagement/TransactionService.php';
+require __DIR__ . '/lib/Service/V2/Payments/OffSessionPaymentService.php';
+require __DIR__ . '/lib/Service/V2/Payments/PaymentsServiceFactory.php';
 require __DIR__ . '/lib/Service/V2/TestHelpers/FinancialAddressService.php';
 require __DIR__ . '/lib/Service/V2/TestHelpers/TestHelpersServiceFactory.php';
 require __DIR__ . '/lib/Service/V2/V2ServiceFactory.php';
@@ -541,6 +550,7 @@ require __DIR__ . '/lib/V2/MoneyManagement/ReceivedCredit.php';
 require __DIR__ . '/lib/V2/MoneyManagement/ReceivedDebit.php';
 require __DIR__ . '/lib/V2/MoneyManagement/Transaction.php';
 require __DIR__ . '/lib/V2/MoneyManagement/TransactionEntry.php';
+require __DIR__ . '/lib/V2/Payments/OffSessionPayment.php';
 require __DIR__ . '/lib/WebhookEndpoint.php';
 
 // The end of the section generated from our OpenAPI spec

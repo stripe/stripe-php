@@ -43,8 +43,7 @@ class FinancialAddressService extends \Stripe\Service\AbstractService
 
     /**
      * Retrieve a FinancialAddress. By default, the FinancialAddress will be returned
-     * in it's unexpanded state, revealing only the last 4 digits of the account
-     * number.
+     * in its unexpanded state, revealing only the last 4 digits of the account number.
      *
      * @param string $id
      * @param null|array{include?: string[]} $params
