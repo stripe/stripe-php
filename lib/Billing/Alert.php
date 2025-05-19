@@ -26,7 +26,7 @@ class Alert extends \Stripe\ApiResource
     /**
      * Creates a billing alert.
      *
-     * @param null|array{alert_type: string, expand?: string[], title: string, usage_threshold?: array{filters?: array{customer?: string, type: string}[], gte: int, meter?: string, recurrence: string}} $params
+     * @param null|array{alert_type: string, expand?: string[], title: string, usage_threshold?: array{filters?: array{customer?: string, type: string}[], gte: int, meter: string, recurrence: string}} $params
      * @param null|array|string $options
      *
      * @return Alert the created resource

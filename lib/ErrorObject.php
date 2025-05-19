@@ -97,6 +97,7 @@ class ErrorObject extends StripeObject
     const CODE_FORWARDING_API_RETRYABLE_UPSTREAM_ERROR = 'forwarding_api_retryable_upstream_error';
     const CODE_FORWARDING_API_UPSTREAM_CONNECTION_ERROR = 'forwarding_api_upstream_connection_error';
     const CODE_FORWARDING_API_UPSTREAM_CONNECTION_TIMEOUT = 'forwarding_api_upstream_connection_timeout';
+    const CODE_FORWARDING_API_UPSTREAM_ERROR = 'forwarding_api_upstream_error';
     const CODE_IDEMPOTENCY_KEY_IN_USE = 'idempotency_key_in_use';
     const CODE_INCORRECT_ADDRESS = 'incorrect_address';
     const CODE_INCORRECT_CVC = 'incorrect_cvc';
