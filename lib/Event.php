@@ -179,7 +179,7 @@ class Event extends ApiResource
     const INVOICE_PAYMENT_ATTEMPT_REQUIRED = 'invoice.payment_attempt_required';
     const INVOICE_PAYMENT_FAILED = 'invoice.payment_failed';
     const INVOICE_PAYMENT_OVERPAID = 'invoice.payment.overpaid';
-    const INVOICE_PAYMENT_PAID = 'invoice.payment.paid';
+    const INVOICE_PAYMENT_PAID = 'invoice_payment.paid';
     const INVOICE_PAYMENT_SUCCEEDED = 'invoice.payment_succeeded';
     const INVOICE_SENT = 'invoice.sent';
     const INVOICE_UPCOMING = 'invoice.upcoming';
@@ -468,7 +468,7 @@ class Event extends ApiResource
     const TYPE_INVOICE_PAYMENT_ATTEMPT_REQUIRED = 'invoice.payment_attempt_required';
     const TYPE_INVOICE_PAYMENT_FAILED = 'invoice.payment_failed';
     const TYPE_INVOICE_PAYMENT_OVERPAID = 'invoice.payment.overpaid';
-    const TYPE_INVOICE_PAYMENT_PAID = 'invoice.payment.paid';
+    const TYPE_INVOICE_PAYMENT_PAID = 'invoice_payment.paid';
     const TYPE_INVOICE_PAYMENT_SUCCEEDED = 'invoice.payment_succeeded';
     const TYPE_INVOICE_SENT = 'invoice.sent';
     const TYPE_INVOICE_UPCOMING = 'invoice.upcoming';
