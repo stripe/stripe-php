@@ -7531,7 +7531,6 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                         'balance_transfer' => null,
                         'bank_transfer' => null,
-                        'card_spend' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
                         'description' => null,
                         'financial_account' => 'financial_account',
@@ -7540,7 +7539,7 @@ final class GeneratedExamplesTest extends TestCase
                         'status' => 'returned',
                         'status_details' => null,
                         'status_transitions' => null,
-                        'type' => 'card_spend',
+                        'type' => 'balance_transfer',
                     ],
                 ],
                 'next_page_url' => null,
@@ -7571,7 +7570,6 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'balance_transfer' => null,
                 'bank_transfer' => null,
-                'card_spend' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => null,
                 'financial_account' => 'financial_account',
@@ -7580,7 +7578,7 @@ final class GeneratedExamplesTest extends TestCase
                 'status' => 'returned',
                 'status_details' => null,
                 'status_transitions' => null,
-                'type' => 'card_spend',
+                'type' => 'balance_transfer',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -7610,7 +7608,6 @@ final class GeneratedExamplesTest extends TestCase
                             'value' => [],
                         ],
                         'bank_transfer' => null,
-                        'card_spend' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
                         'description' => null,
                         'financial_account' => 'financial_account',
@@ -7649,7 +7646,6 @@ final class GeneratedExamplesTest extends TestCase
                     'value' => [],
                 ],
                 'bank_transfer' => null,
-                'card_spend' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => null,
                 'financial_account' => 'financial_account',
@@ -8085,6 +8081,217 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\FinancialAddressGeneratedMicrodeposits::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/off_session_payments/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.payments.off_session_payment',
+                'amount_requested' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'attempts' => [],
+                'cadence' => 'unscheduled',
+                'compartment_id' => 'compartment_id',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'customer' => 'customer',
+                'failure_reason' => null,
+                'last_authorization_attempt_error' => null,
+                'latest_payment_attempt_record' => null,
+                'livemode' => [],
+                'metadata' => ['undefined' => 'metadata'],
+                'on_behalf_of' => null,
+                'payment_method' => 'payment_method',
+                'payment_record' => null,
+                'retry_details' => [
+                    'attempts' => [],
+                    'retry_strategy' => 'none',
+                ],
+                'statement_descriptor' => null,
+                'statement_descriptor_suffix' => null,
+                'status' => 'pending',
+                'test_clock' => null,
+                'transfer_data' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->cancel(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/off_session_payments',
+            [
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'cadence' => 'unscheduled',
+                'customer' => 'customer',
+                'metadata' => ['undefined' => 'metadata'],
+                'payment_method' => 'payment_method',
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.payments.off_session_payment',
+                'amount_requested' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'attempts' => [],
+                'cadence' => 'unscheduled',
+                'compartment_id' => 'compartment_id',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'customer' => 'customer',
+                'failure_reason' => null,
+                'last_authorization_attempt_error' => null,
+                'latest_payment_attempt_record' => null,
+                'livemode' => [],
+                'metadata' => ['undefined' => 'metadata'],
+                'on_behalf_of' => null,
+                'payment_method' => 'payment_method',
+                'payment_record' => null,
+                'retry_details' => [
+                    'attempts' => [],
+                    'retry_strategy' => 'none',
+                ],
+                'statement_descriptor' => null,
+                'statement_descriptor_suffix' => null,
+                'status' => 'pending',
+                'test_clock' => null,
+                'transfer_data' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->create([
+            'amount' => [
+                'currency' => 'USD',
+                'value' => 96,
+            ],
+            'cadence' => 'unscheduled',
+            'customer' => 'customer',
+            'metadata' => ['undefined' => 'metadata'],
+            'payment_method' => 'payment_method',
+        ]);
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/payments/off_session_payments',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.payments.off_session_payment',
+                        'amount_requested' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                        'attempts' => [],
+                        'cadence' => 'unscheduled',
+                        'compartment_id' => 'compartment_id',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'customer' => 'customer',
+                        'failure_reason' => null,
+                        'last_authorization_attempt_error' => null,
+                        'latest_payment_attempt_record' => null,
+                        'livemode' => [],
+                        'metadata' => ['undefined' => 'metadata'],
+                        'on_behalf_of' => null,
+                        'payment_method' => 'payment_method',
+                        'payment_record' => null,
+                        'retry_details' => [
+                            'attempts' => [],
+                            'retry_strategy' => 'none',
+                        ],
+                        'statement_descriptor' => null,
+                        'statement_descriptor_suffix' => null,
+                        'status' => 'pending',
+                        'test_clock' => null,
+                        'transfer_data' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result->data[0]);
+    }
+
+    public function testV2PaymentsOffSessionPaymentGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/payments/off_session_payments/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.payments.off_session_payment',
+                'amount_requested' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'attempts' => [],
+                'cadence' => 'unscheduled',
+                'compartment_id' => 'compartment_id',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'customer' => 'customer',
+                'failure_reason' => null,
+                'last_authorization_attempt_error' => null,
+                'latest_payment_attempt_record' => null,
+                'livemode' => [],
+                'metadata' => ['undefined' => 'metadata'],
+                'on_behalf_of' => null,
+                'payment_method' => 'payment_method',
+                'payment_record' => null,
+                'retry_details' => [
+                    'attempts' => [],
+                    'retry_strategy' => 'none',
+                ],
+                'statement_descriptor' => null,
+                'statement_descriptor_suffix' => null,
+                'status' => 'pending',
+                'test_clock' => null,
+                'transfer_data' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
     }
 
     public function testTemporarySessionExpiredError()

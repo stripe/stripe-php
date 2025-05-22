@@ -12,7 +12,6 @@ namespace Stripe\V2\MoneyManagement;
  * @property \Stripe\StripeObject $amount The amount and currency of the ReceivedCredit.
  * @property null|(object{payout_v1: string, type: string}&\Stripe\StripeObject) $balance_transfer This object stores details about the originating Stripe transaction that resulted in the ReceivedCredit. Present if <code>type</code> field value is <code>balance_transfer</code>.
  * @property null|(object{financial_address: string, payment_method_type: string, statement_descriptor: null|string, gb_bank_account: null|(object{account_holder_name: null|string, bank_name: null|string, last4: null|string, network: string, sort_code: null|string}&\Stripe\StripeObject), us_bank_account: null|(object{bank_name: null|string, last4: null|string, network: string, routing_number: null|string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $bank_transfer This object stores details about the originating banking transaction that resulted in the ReceivedCredit. Present if <code>type</code> field value is <code>external_credit</code>.
- * @property null|(object{card_v1_id: string, dispute: null|(object{issuing_dispute_v1: string}&\Stripe\StripeObject), refund: null|(object{issuing_transaction_v1: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $card_spend This object stores details about the originating issuing card spend that resulted in the ReceivedCredit. Present if <code>type</code> field value is <code>card_spend</code>.
  * @property int $created Time at which the ReceivedCredit was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property null|string $description Freeform string set by originator of the ReceivedCredit.
  * @property string $financial_account Financial Account ID on which funds for ReceivedCredit were received.
@@ -34,6 +33,5 @@ class ReceivedCredit extends \Stripe\ApiResource
 
     const TYPE_BALANCE_TRANSFER = 'balance_transfer';
     const TYPE_BANK_TRANSFER = 'bank_transfer';
-    const TYPE_CARD_SPEND = 'card_spend';
     const TYPE_EXTERNAL_CREDIT = 'external_credit';
 }

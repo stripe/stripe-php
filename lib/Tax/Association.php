@@ -11,13 +11,9 @@ namespace Stripe\Tax;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string $calculation The <a href="https://stripe.com/docs/api/tax/calculations/object">Tax Calculation</a> that was included in PaymentIntent.
  * @property string $payment_intent The <a href="https://stripe.com/docs/api/payment_intents/object">PaymentIntent</a> that this Tax Association is tracking.
- * @property string $status Status of the Tax Association.
- * @property (object{committed?: (object{reversals: (object{status: string, status_details: (object{committed?: (object{transaction: string}&\Stripe\StripeObject), errored?: (object{reason: string, refund_id: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject)[], transaction: string}&\Stripe\StripeObject), errored?: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details
+ * @property null|(object{committed?: (object{transaction: string}&\Stripe\StripeObject), errored?: (object{reason: string}&\Stripe\StripeObject), source: string, status: string}&\Stripe\StripeObject)[] $tax_transaction_attempts Information about the tax transactions linked to this payment intent
  */
 class Association extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'tax.association';
-
-    const STATUS_COMMITTED = 'committed';
-    const STATUS_ERRORED = 'errored';
 }

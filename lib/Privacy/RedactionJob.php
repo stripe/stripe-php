@@ -5,15 +5,18 @@
 namespace Stripe\Privacy;
 
 /**
- * Redaction Jobs store the status of a redaction request. They are created
- * when a redaction request is made and track the redaction validation and execution.
+ * The Redaction Job object redacts Stripe objects. You can use it
+ * to coordinate the removal of personal information from selected
+ * objects, making them permanently inaccessible in the Stripe Dashboard
+ * and API.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|RedactionJobRootObjects $objects The objects at the root level that are subject to redaction.
- * @property string $status The status field represents the current state of the redaction job. It can take on any of the following values: VALIDATING, READY, REDACTING, SUCCEEDED, CANCELED, FAILED.
- * @property null|string $validation_behavior Default is &quot;error&quot;. If &quot;error&quot;, we will make sure all objects in the graph are redactable in the 1st traversal, otherwise error. If &quot;fix&quot;, where possible, we will auto-fix any validation errors (e.g. by auto-transitioning objects to a terminal state, etc.) in the 2nd traversal before redacting
+ * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property null|(object{charges: null|string[], checkout_sessions: null|string[], customers: null|string[], identity_verification_sessions: null|string[], invoices: null|string[], issuing_cardholders: null|string[], payment_intents: null|string[], radar_value_list_items: null|string[], setup_intents: null|string[]}&\Stripe\StripeObject) $objects The objects to redact in this job.
+ * @property string $status The status of the job.
+ * @property null|string $validation_behavior Validation behavior determines how a job validates objects for redaction eligibility. Default is <code>error</code>.
  */
 class RedactionJob extends \Stripe\ApiResource
 {
@@ -22,8 +25,20 @@ class RedactionJob extends \Stripe\ApiResource
     use \Stripe\ApiOperations\NestedResource;
     use \Stripe\ApiOperations\Update;
 
+    const STATUS_CANCELED = 'canceled';
+    const STATUS_CANCELING = 'canceling';
+    const STATUS_CREATED = 'created';
+    const STATUS_FAILED = 'failed';
+    const STATUS_READY = 'ready';
+    const STATUS_REDACTING = 'redacting';
+    const STATUS_SUCCEEDED = 'succeeded';
+    const STATUS_VALIDATING = 'validating';
+
+    const VALIDATION_BEHAVIOR_ERROR = 'error';
+    const VALIDATION_BEHAVIOR_FIX = 'fix';
+
     /**
-     * Create redaction job method.
+     * Creates a redaction job. When a job is created, it will start to validate.
      *
      * @param null|array{expand?: string[], objects: array{charges?: string[], checkout_sessions?: string[], customers?: string[], identity_verification_sessions?: string[], invoices?: string[], issuing_cardholders?: string[], issuing_cards?: string[], payment_intents?: string[], radar_value_list_items?: string[], setup_intents?: string[]}, validation_behavior?: string} $params
      * @param null|array|string $options
@@ -45,7 +60,7 @@ class RedactionJob extends \Stripe\ApiResource
     }
 
     /**
-     * List redaction jobs method...
+     * Returns a list of redaction jobs.
      *
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
@@ -62,7 +77,7 @@ class RedactionJob extends \Stripe\ApiResource
     }
 
     /**
-     * Retrieve redaction job method.
+     * Retrieves the details of a previously created redaction job.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
@@ -81,7 +96,11 @@ class RedactionJob extends \Stripe\ApiResource
     }
 
     /**
-     * Update redaction job method.
+     * Updates the properties of a redaction job without running or canceling the job.
+     *
+     * If the job to update is in a <code>failed</code> status, it will not
+     * automatically start to validate. Once you applied all of the changes, use the
+     * validate API to start validation again.
      *
      * @param string $id the ID of the resource to update
      * @param null|array{expand?: string[], validation_behavior?: string} $params
@@ -168,20 +187,5 @@ class RedactionJob extends \Stripe\ApiResource
     public static function allValidationErrors($id, $params = null, $opts = null)
     {
         return self::_allNestedResources($id, static::PATH_VALIDATION_ERRORS, $params, $opts);
-    }
-
-    /**
-     * @param string $id the ID of the redaction job to which the redaction job validation error belongs
-     * @param string $validationErrorId the ID of the redaction job validation error to retrieve
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @return RedactionJobValidationError
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     */
-    public static function retrieveValidationError($id, $validationErrorId, $params = null, $opts = null)
-    {
-        return self::_retrieveNestedResource($id, static::PATH_VALIDATION_ERRORS, $validationErrorId, $params, $opts);
     }
 }
