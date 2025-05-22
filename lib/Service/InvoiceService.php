@@ -65,6 +65,34 @@ class InvoiceService extends AbstractService
     }
 
     /**
+     * Attaches a PaymentIntent or an Out of Band Payment to the invoice, adding it to
+     * the list of <code>payments</code>.
+     *
+     * For the PaymentIntent, when the PaymentIntent’s status changes to
+     * <code>succeeded</code>, the payment is credited to the invoice, increasing its
+     * <code>amount_paid</code>. When the invoice is fully paid, the invoice’s status
+     * becomes <code>paid</code>.
+     *
+     * If the PaymentIntent’s status is already <code>succeeded</code> when it’s
+     * attached, it’s credited to the invoice immediately.
+     *
+     * See: <a href="/docs/invoicing/partial-payments">Partial payments</a> to learn
+     * more.
+     *
+     * @param string $id
+     * @param null|array{expand?: string[], payment_intent?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Invoice
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function attachPayment($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/invoices/%s/attach_payment', $id), $params, $opts);
+    }
+
+    /**
      * This endpoint creates a draft invoice for a given customer. The invoice remains
      * a draft until you <a href="#finalize_invoice">finalize</a> the invoice, which
      * allows you to <a href="#pay_invoice">pay</a> or <a href="#send_invoice">send</a>
@@ -88,6 +116,17 @@ class InvoiceService extends AbstractService
      * including subscription renewal charges, invoice item charges, etc. It will also
      * show you any discounts that are applicable to the invoice.
      *
+     * You can also preview the effects of creating or updating a subscription or
+     * subscription schedule, including a preview of any prorations that will take
+     * place. To ensure that the actual proration is calculated exactly the same as the
+     * previewed proration, you should pass the
+     * <code>subscription_details.proration_date</code> parameter when doing the actual
+     * subscription update.
+     *
+     * The recommended way to get only the prorations being previewed on the invoice is
+     * to consider line items where
+     * <code>parent.subscription_item_details.proration</code> is <code>true</code>.
+     *
      * Note that when you are viewing an upcoming invoice, you are simply viewing a
      * preview – the invoice has not yet been created. As such, the upcoming invoice
      * will not show up in invoice listing calls, and you cannot use the API to pay or
@@ -95,21 +134,12 @@ class InvoiceService extends AbstractService
      * billed, you can add, remove, or update pending invoice items, or update the
      * customer’s discount.
      *
-     * You can preview the effects of updating a subscription, including a preview of
-     * what proration will take place. To ensure that the actual proration is
-     * calculated exactly the same as the previewed proration, you should pass the
-     * <code>subscription_details.proration_date</code> parameter when doing the actual
-     * subscription update. The recommended way to get only the prorations being
-     * previewed is to consider only proration line items where
-     * <code>period[start]</code> is equal to the
-     * <code>subscription_details.proration_date</code> value passed in the request.
-     *
      * Note: Currency conversion calculations use the latest exchange rates. Exchange
      * rates may vary between the time of the preview and the time of the actual
      * invoice creation. <a href="https://docs.stripe.com/currencies/conversions">Learn
      * more</a>
      *
-     * @param null|array{automatic_tax?: array{enabled: bool, liability?: array{account?: string, type: string}}, currency?: string, customer?: string, customer_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, shipping?: null|array{address: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, name: string, phone?: string}, tax?: array{ip_address?: null|string}, tax_exempt?: null|string, tax_ids?: array{type: string, value: string}[]}, discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], expand?: string[], invoice_items?: (array{amount?: int, currency?: string, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], invoiceitem?: string, metadata?: null|array<string, string>, period?: array{end: int, start: int}, price?: string, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_behavior?: string, tax_code?: null|string, tax_rates?: null|string[], unit_amount?: int, unit_amount_decimal?: string})[], issuer?: array{account?: string, type: string}, on_behalf_of?: null|string, preview_mode?: string, schedule?: string, schedule_details?: array{end_behavior?: string, phases?: (array{add_invoice_items?: (array{discounts?: array{coupon?: string, discount?: string, promotion_code?: string}[], price?: string, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], application_fee_percent?: float, automatic_tax?: array{enabled: bool, liability?: array{account?: string, type: string}}, billing_cycle_anchor?: string, collection_method?: string, currency?: string, default_payment_method?: string, default_tax_rates?: null|string[], description?: null|string, discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], end_date?: array|int|string, invoice_settings?: array{account_tax_ids?: null|string[], days_until_due?: int, issuer?: array{account?: string, type: string}}, items: (array{discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], metadata?: array<string, string>, plan?: string, price?: string, price_data?: array{currency: string, product: string, recurring: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], iterations?: int, metadata?: array<string, string>, on_behalf_of?: string, proration_behavior?: string, start_date?: array|int|string, transfer_data?: array{amount_percent?: float, destination: string}, trial?: bool, trial_end?: array|int|string})[], proration_behavior?: string}, subscription?: string, subscription_details?: array{billing_cycle_anchor?: array|int|string, cancel_at?: null|int, cancel_at_period_end?: bool, cancel_now?: bool, default_tax_rates?: null|string[], items?: (array{clear_usage?: bool, deleted?: bool, discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], id?: string, metadata?: null|array<string, string>, plan?: string, price?: string, price_data?: array{currency: string, product: string, recurring: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], proration_behavior?: string, proration_date?: int, resume_at?: string, start_date?: int, trial_end?: array|int|string}} $params
+     * @param null|array{automatic_tax?: array{enabled: bool, liability?: array{account?: string, type: string}}, currency?: string, customer?: string, customer_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, shipping?: null|array{address: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, name: string, phone?: string}, tax?: array{ip_address?: null|string}, tax_exempt?: null|string, tax_ids?: array{type: string, value: string}[]}, discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], expand?: string[], invoice_items?: (array{amount?: int, currency?: string, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], invoiceitem?: string, metadata?: null|array<string, string>, period?: array{end: int, start: int}, price?: string, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_behavior?: string, tax_code?: null|string, tax_rates?: null|string[], unit_amount?: int, unit_amount_decimal?: string})[], issuer?: array{account?: string, type: string}, on_behalf_of?: null|string, preview_mode?: string, schedule?: string, schedule_details?: array{end_behavior?: string, phases?: (array{add_invoice_items?: (array{discounts?: array{coupon?: string, discount?: string, promotion_code?: string}[], price?: string, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], application_fee_percent?: float, automatic_tax?: array{enabled: bool, liability?: array{account?: string, type: string}}, billing_cycle_anchor?: string, billing_thresholds?: null|array{amount_gte?: int, reset_billing_cycle_anchor?: bool}, collection_method?: string, currency?: string, default_payment_method?: string, default_tax_rates?: null|string[], description?: null|string, discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], end_date?: array|int|string, invoice_settings?: array{account_tax_ids?: null|string[], days_until_due?: int, issuer?: array{account?: string, type: string}}, items: (array{billing_thresholds?: null|array{usage_gte: int}, discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], metadata?: array<string, string>, plan?: string, price?: string, price_data?: array{currency: string, product: string, recurring: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], iterations?: int, metadata?: array<string, string>, on_behalf_of?: string, proration_behavior?: string, start_date?: array|int|string, transfer_data?: array{amount_percent?: float, destination: string}, trial?: bool, trial_end?: array|int|string})[], proration_behavior?: string}, subscription?: string, subscription_details?: array{billing_cycle_anchor?: array|int|string, cancel_at?: null|int, cancel_at_period_end?: bool, cancel_now?: bool, default_tax_rates?: null|string[], items?: (array{billing_thresholds?: null|array{usage_gte: int}, clear_usage?: bool, deleted?: bool, discounts?: null|array{coupon?: string, discount?: string, promotion_code?: string}[], id?: string, metadata?: null|array<string, string>, plan?: string, price?: string, price_data?: array{currency: string, product: string, recurring: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], proration_behavior?: string, proration_date?: int, resume_at?: string, start_date?: int, trial_end?: array|int|string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Invoice

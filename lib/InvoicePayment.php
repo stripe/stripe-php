@@ -5,7 +5,14 @@
 namespace Stripe;
 
 /**
- * The invoice payment object.
+ * Invoice Payments represent payments made against invoices. Invoice Payments can
+ * be accessed in two ways:
+ * 1. By expanding the <code>payments</code> field on the <a href="https://stripe.com/docs/api#invoice">Invoice</a> resource.
+ * 2. By using the Invoice Payment retrieve and list endpoints.
+ *
+ * Invoice Payments include the mapping between payment objects, such as Payment Intent, and Invoices.
+ * This resource and its endpoints allows you to easily track if a payment is associated with a specific invoice and
+ * monitor the allocation details of the payments.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
