@@ -45,26 +45,27 @@ class CreditNoteService extends AbstractService
     }
 
     /**
-     * Issue a credit note to adjust the amount of a finalized invoice. For a
-     * <code>status=open</code> invoice, a credit note reduces its
-     * <code>amount_due</code>. For a <code>status=paid</code> invoice, a credit note
-     * does not affect its <code>amount_due</code>. Instead, it can result in any
-     * combination of the following:
+     * Issue a credit note to adjust the amount of a finalized invoice. A credit note
+     * will first reduce the invoice’s <code>amount_remaining</code> (and
+     * <code>amount_due</code>), but not below zero. This amount is indicated by the
+     * credit note’s <code>pre_payment_amount</code>. The excess amount is indicated by
+     * <code>post_payment_amount</code>, and it can result in any combination of the
+     * following:
      *
-     * <ul> <li>Refund: create a new refund (using <code>refund_amount</code>) or link
-     * an existing refund (using <code>refund</code>).</li> <li>Customer balance
-     * credit: credit the customer’s balance (using <code>credit_amount</code>) which
-     * will be automatically applied to their next invoice when it’s finalized.</li>
+     * <ul> <li>Refunds: create a new refund (using <code>refund_amount</code>) or link
+     * existing refunds (using <code>refunds</code>).</li> <li>Customer balance credit:
+     * credit the customer’s balance (using <code>credit_amount</code>) which will be
+     * automatically applied to their next invoice when it’s finalized.</li>
      * <li>Outside of Stripe credit: record the amount that is or will be credited
      * outside of Stripe (using <code>out_of_band_amount</code>).</li> </ul>
      *
-     * For post-payment credit notes the sum of the refund, credit and outside of
-     * Stripe amounts must equal the credit note total.
+     * The sum of refunds, customer balance credits, and outside of Stripe credits must
+     * equal the <code>post_payment_amount</code>.
      *
-     * You may issue multiple credit notes for an invoice. Each credit note will
-     * increment the invoice’s <code>pre_payment_credit_notes_amount</code> or
-     * <code>post_payment_credit_notes_amount</code> depending on its
-     * <code>status</code> at the time of credit note creation.
+     * You may issue multiple credit notes for an invoice. Each credit note may
+     * increment the invoice’s <code>pre_payment_credit_notes_amount</code>,
+     * <code>post_payment_credit_notes_amount</code>, or both, depending on the
+     * invoice’s <code>amount_remaining</code> at the time of credit note creation.
      *
      * @param null|array{amount?: int, credit_amount?: int, effective_at?: int, email_type?: string, expand?: string[], invoice: string, lines?: (array{amount?: int, description?: string, invoice_line_item?: string, quantity?: int, tax_amounts?: null|array{amount: int, tax_rate: string, taxable_amount: int}[], tax_rates?: null|string[], type: string, unit_amount?: int, unit_amount_decimal?: string})[], memo?: string, metadata?: array<string, string>, out_of_band_amount?: int, reason?: string, refund_amount?: int, refunds?: array{amount_refunded?: int, refund?: string}[], shipping_cost?: array{shipping_rate?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts

@@ -33,7 +33,6 @@ class ObjectTypes
             \Stripe\Billing\CreditBalanceTransaction::OBJECT_NAME => \Stripe\Billing\CreditBalanceTransaction::class,
             \Stripe\Billing\CreditGrant::OBJECT_NAME => \Stripe\Billing\CreditGrant::class,
             \Stripe\Billing\Meter::OBJECT_NAME => \Stripe\Billing\Meter::class,
-            \Stripe\Billing\MeterErrorReport::OBJECT_NAME => \Stripe\Billing\MeterErrorReport::class,
             \Stripe\Billing\MeterEvent::OBJECT_NAME => \Stripe\Billing\MeterEvent::class,
             \Stripe\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\Billing\MeterEventAdjustment::class,
             \Stripe\Billing\MeterEventSummary::OBJECT_NAME => \Stripe\Billing\MeterEventSummary::class,
@@ -80,8 +79,6 @@ class ObjectTypes
             \Stripe\Forwarding\Request::OBJECT_NAME => \Stripe\Forwarding\Request::class,
             \Stripe\FundingInstructions::OBJECT_NAME => \Stripe\FundingInstructions::class,
             \Stripe\FxQuote::OBJECT_NAME => \Stripe\FxQuote::class,
-            \Stripe\GiftCards\Card::OBJECT_NAME => \Stripe\GiftCards\Card::class,
-            \Stripe\GiftCards\Transaction::OBJECT_NAME => \Stripe\GiftCards\Transaction::class,
             \Stripe\Identity\VerificationReport::OBJECT_NAME => \Stripe\Identity\VerificationReport::class,
             \Stripe\Identity\VerificationSession::OBJECT_NAME => \Stripe\Identity\VerificationSession::class,
             \Stripe\Invoice::OBJECT_NAME => \Stripe\Invoice::class,
@@ -119,7 +116,6 @@ class ObjectTypes
             \Stripe\Plan::OBJECT_NAME => \Stripe\Plan::class,
             \Stripe\Price::OBJECT_NAME => \Stripe\Price::class,
             \Stripe\Privacy\RedactionJob::OBJECT_NAME => \Stripe\Privacy\RedactionJob::class,
-            \Stripe\Privacy\RedactionJobRootObjects::OBJECT_NAME => \Stripe\Privacy\RedactionJobRootObjects::class,
             \Stripe\Privacy\RedactionJobValidationError::OBJECT_NAME => \Stripe\Privacy\RedactionJobValidationError::class,
             \Stripe\Product::OBJECT_NAME => \Stripe\Product::class,
             \Stripe\ProductFeature::OBJECT_NAME => \Stripe\ProductFeature::class,
@@ -214,6 +210,7 @@ class ObjectTypes
         \Stripe\V2\MoneyManagement\ReceivedDebit::OBJECT_NAME => \Stripe\V2\MoneyManagement\ReceivedDebit::class,
         \Stripe\V2\MoneyManagement\Transaction::OBJECT_NAME => \Stripe\V2\MoneyManagement\Transaction::class,
         \Stripe\V2\MoneyManagement\TransactionEntry::OBJECT_NAME => \Stripe\V2\MoneyManagement\TransactionEntry::class,
+        \Stripe\V2\Payments\OffSessionPayment::OBJECT_NAME => \Stripe\V2\Payments\OffSessionPayment::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
 }

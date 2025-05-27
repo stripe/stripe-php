@@ -12,7 +12,7 @@ namespace Stripe\Service\Privacy;
 class RedactionJobService extends \Stripe\Service\AbstractService
 {
     /**
-     * List redaction jobs method...
+     * Returns a list of redaction jobs.
      *
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -27,7 +27,7 @@ class RedactionJobService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * List validation errors method.
+     * Returns a list of validation errors for the specified redaction job.
      *
      * @param string $parentId
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
@@ -43,7 +43,11 @@ class RedactionJobService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Cancel redaction job method.
+     * You can cancel a redaction job when it’s in one of these statuses:
+     * <code>ready</code>, <code>failed</code>.
+     *
+     * Canceling the redaction job will abandon its attempt to redact the configured
+     * objects. A canceled job cannot be used again.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params
@@ -59,7 +63,7 @@ class RedactionJobService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create redaction job method.
+     * Creates a redaction job. When a job is created, it will start to validate.
      *
      * @param null|array{expand?: string[], objects: array{charges?: string[], checkout_sessions?: string[], customers?: string[], identity_verification_sessions?: string[], invoices?: string[], issuing_cardholders?: string[], issuing_cards?: string[], payment_intents?: string[], radar_value_list_items?: string[], setup_intents?: string[]}, validation_behavior?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -74,7 +78,7 @@ class RedactionJobService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve redaction job method.
+     * Retrieves the details of a previously created redaction job.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params
@@ -90,24 +94,15 @@ class RedactionJobService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve validation error method.
+     * Run a redaction job in a <code>ready</code> status.
      *
-     * @param string $parentId
-     * @param string $id
-     * @param null|array{expand?: string[]} $params
-     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     * When you run a job, the configured objects will be redacted asynchronously. This
+     * action is irreversible and cannot be canceled once started.
      *
-     * @return \Stripe\Privacy\RedactionJobValidationError
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     */
-    public function retrieveValidationError($parentId, $id, $params = null, $opts = null)
-    {
-        return $this->request('get', $this->buildPath('/v1/privacy/redaction_jobs/%s/validation_errors/%s', $parentId, $id), $params, $opts);
-    }
-
-    /**
-     * Run redaction job method.
+     * The status of the job will move to <code>redacting</code>. Once all of the
+     * objects are redacted, the status will become <code>succeeded</code>. If the
+     * job’s <code>validation_behavior</code> is set to <code>fix</code>, the automatic
+     * fixes will be applied to objects at this step.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params
@@ -123,7 +118,11 @@ class RedactionJobService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update redaction job method.
+     * Updates the properties of a redaction job without running or canceling the job.
+     *
+     * If the job to update is in a <code>failed</code> status, it will not
+     * automatically start to validate. Once you applied all of the changes, use the
+     * validate API to start validation again.
      *
      * @param string $id
      * @param null|array{expand?: string[], validation_behavior?: string} $params
@@ -139,7 +138,17 @@ class RedactionJobService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Validate redaction job method.
+     * Validate a redaction job when it is in a <code>failed</code> status.
+     *
+     * When a job is created, it automatically begins to validate on the configured
+     * objects’ eligibility for redaction. Use this to validate the job again after its
+     * validation errors are resolved or the job’s <code>validation_behavior</code> is
+     * changed.
+     *
+     * The status of the job will move to <code>validating</code>. Once all of the
+     * objects are validated, the status of the job will become <code>ready</code>. If
+     * there are any validation errors preventing the job from running, the status will
+     * become <code>failed</code>.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params

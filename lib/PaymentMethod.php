@@ -52,7 +52,7 @@ namespace Stripe;
  * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|(object{}&StripeObject) $mobilepay
  * @property null|(object{}&StripeObject) $multibanco
- * @property null|(object{buyer_id?: null|string, funding: string}&StripeObject) $naver_pay
+ * @property null|(object{buyer_id: null|string, funding: string}&StripeObject) $naver_pay
  * @property null|(object{account_holder_name: null|string, bank_code: string, bank_name: string, branch_code: string, last4: string, suffix: null|string}&StripeObject) $nz_bank_account
  * @property null|(object{}&StripeObject) $oxxo
  * @property null|(object{bank: null|string}&StripeObject) $p24

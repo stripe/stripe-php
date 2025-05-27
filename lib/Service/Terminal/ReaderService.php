@@ -79,7 +79,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * Finalizes a payment on a Reader.
      *
      * @param string $id
-     * @param null|array{expand?: string[], payment_intent: string} $params
+     * @param null|array{confirm_config?: array{return_url?: string}, expand?: string[], payment_intent: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader
@@ -126,7 +126,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * Initiates a payment flow on a Reader.
      *
      * @param string $id
-     * @param null|array{expand?: string[], payment_intent: string, process_config?: array{allow_redisplay?: string, enable_customer_cancellation?: bool, skip_tipping?: bool, tipping?: array{amount_eligible?: int}}} $params
+     * @param null|array{expand?: string[], payment_intent: string, process_config?: array{allow_redisplay?: string, enable_customer_cancellation?: bool, return_url?: string, skip_tipping?: bool, tipping?: array{amount_eligible?: int}}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader
