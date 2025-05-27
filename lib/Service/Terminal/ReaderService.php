@@ -43,6 +43,22 @@ class ReaderService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Initiates an input collection flow on a Reader.
+     *
+     * @param string $id
+     * @param null|array{expand?: string[], inputs: array{custom_text: array{description?: string, skip_button?: string, submit_button?: string, title: string}, required?: bool, selection?: array{choices: array{id: string, style?: string, text: string}[]}, toggles?: array{default_value?: string, description?: string, title?: string}[], type: string}[], metadata?: array<string, string>} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Terminal\Reader
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function collectInputs($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/terminal/readers/%s/collect_inputs', $id), $params, $opts);
+    }
+
+    /**
      * Creates a new <code>Reader</code> object.
      *
      * @param null|array{expand?: string[], label?: string, location?: string, metadata?: null|array<string, string>, registration_code: string} $params
@@ -77,7 +93,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * Initiates a payment flow on a Reader.
      *
      * @param string $id
-     * @param null|array{expand?: string[], payment_intent: string, process_config?: array{allow_redisplay?: string, enable_customer_cancellation?: bool, skip_tipping?: bool, tipping?: array{amount_eligible?: int}}} $params
+     * @param null|array{expand?: string[], payment_intent: string, process_config?: array{allow_redisplay?: string, enable_customer_cancellation?: bool, return_url?: string, skip_tipping?: bool, tipping?: array{amount_eligible?: int}}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader
