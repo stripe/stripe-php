@@ -1,5 +1,9 @@
 # Changelog
 
+## 17.2.1 - 2025-05-19
+* [#1869](https://github.com/stripe/stripe-php/pull/1869) Fixed type of map parameters(eg. metadata, currency_options) from `StripeObject` to `array<KType, VType>` in all methods.
+* [#1866](https://github.com/stripe/stripe-php/pull/1866) Adds CONTRIBUTING.md
+
 ## 17.2.0 - 2025-04-30
 
   This release changes the pinned API version to `2025-04-30.basil`.
