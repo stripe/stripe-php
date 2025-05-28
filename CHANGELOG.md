@@ -1,5 +1,39 @@
 # Changelog
 
+## 17.4.0-beta.1 - 2025-05-29
+This release changes the pinned API version to `2025-05-28.preview`.
+
+* [#1864](https://github.com/stripe/stripe-php/pull/1864) Update generated code for beta
+  ### Breaking changes
+  * Remove support for deprecated previews
+    * Remove support for resources `Billing.MeterErrorReport`, `GiftCards.Card`, `GiftCards.Transaction`, and `Privacy.RedactionJobRootObjects`
+    * Remove support for `all`, `create`, `retrieve`, `update`, and `validate` methods on resource `GiftCards.Card`
+    * Remove support for `all`, `cancel`, `confirm`, `create`, `retrieve`, and `update` methods on resource `GiftCards.Transaction`
+    * Remove support for `provisioning` on `Product`
+    * Remove support for snapshot event `BILLING_METER_ERROR_REPORT_TRIGGERED` with resource `Billing.MeterErrorReport`
+    * Remove support for error codes `gift_card_balance_insufficient`, `gift_card_code_exists`, and `gift_card_inactive` on `QuotePreviewInvoice.last_finalization_error`
+  * Remove support for `amount_remaining` and `credits` on `Order`
+  * Change type of `PaymentAttemptRecord.metadata` and `PaymentRecord.metadata` from `nullable(map(string: string))` to `map(string: string)`
+  * Remove support for `async_workflows` on `PaymentIntent`
+  * Change type of `Privacy.RedactionJob.objects` from `$Privacy.RedactionJobRootObjects` to `RedactionResourceRootObjects`
+  * Change type of `Privacy.RedactionJob.status` from `string` to `enum`
+  * Change type of `Privacy.RedactionJob.validation_behavior` from `string` to `enum('error'|'fix')`
+  * Change type of `Privacy.RedactionJobValidationError.code` from `string` to `enum`
+  * Change type of `Privacy.RedactionJobValidationError.erroring_object` from `map(string: string)` to `RedactionResourceErroringObject`
+  * Remove support for values `credits_attributed_to_debits` and `legacy_prorations` from enums `Quote.subscription_data.billing_mode`, `QuotePreviewSubscriptionSchedule.billing_mode`, `Subscription.billing_mode`, and `SubscriptionSchedule.billing_mode`
+  * Remove support for `status_details` and `status` on `Tax.Association`
+
+  ### Other changes
+  * Add support for `migrate` method on resource `Subscription`
+  * Add support for `institution` on `FinancialConnections.Account`
+  * Add support for `countries` on `FinancialConnections.Institution`
+  * Add support for `hooks` on `PaymentIntent`
+  * Add support for `livemode` on `Privacy.RedactionJob`
+  * Add support for new values `classic` and `flexible` on enums `Quote.subscription_data.billing_mode`, `QuotePreviewSubscriptionSchedule.billing_mode`, `Subscription.billing_mode`, and `SubscriptionSchedule.billing_mode`
+  * Add support for `billing_mode_details` on `Subscription`
+  * Add support for `tax_transaction_attempts` on `Tax.Association`
+  * Add support for error code `forwarding_api_upstream_error` on `QuotePreviewInvoice.last_finalization_error`
+
 ## 17.3.0 - 2025-05-29
  This release changes the pinned API version to `2025-05-28.basil`.
 
@@ -23,7 +57,7 @@
 ## 17.3.0-beta.1 - 2025-04-30
 * [#1859](https://github.com/stripe/stripe-php/pull/1859) Update generated code for beta
   This release changes the pinned API version to `2025-04-30.preview`.
-  
+
   * Add support for new value `balance_settings.updated` on enum `Event.type`
   * Add support for new values `aw_tin`, `az_tin`, `bd_bin`, `bf_ifu`, `bj_ifu`, `cm_niu`, `cv_nif`, `et_tin`, `kg_tin`, and `la_tin` on enum `QuotePreviewInvoice.customer_tax_ids[].type`
   * Add support for `billing_mode` on `QuotePreviewSubscriptionSchedule`, `SubscriptionSchedule`, and `Subscription`
@@ -66,11 +100,11 @@
 
 ## 17.2.0-beta.3 - 2025-04-10
 * [#1849](https://github.com/stripe/stripe-php/pull/1849) Update generated code for beta
-  
+
   ### Breaking changes
   * Change type of `V2.MoneyManagement.ReceivedDebit.status_transitions` from `an object` to `nullable(an object)`
   * Remove support for values `bank_accounts.local_uk`, `bank_accounts.wire_uk`, `cards_uk`, and `crypto_wallets_v2` from enum `EventsV2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEvent.updated_capability`
-  
+
   ### Additions
   * Add support for new resources `Privacy.RedactionJobRootObjects`, `Privacy.RedactionJobValidationError`, and `Privacy.RedactionJob`
   * Add support for `all`, `cancel`, `create`, `retrieve`, `run`, `update`, and `validate` methods on resource `RedactionJob`
