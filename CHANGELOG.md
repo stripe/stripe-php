@@ -1,5 +1,25 @@
 # Changelog
 
+## 17.3.0 - 2025-05-29
+ This release changes the pinned API version to `2025-05-28.basil`.
+
+* [#1871](https://github.com/stripe/stripe-php/pull/1871) Update generated code
+  * Add support for `attach_payment` method on resource `Invoice`
+  * Add support for `collect_inputs` method on resource `Terminal.Reader`
+  * Add support for `succeed_input_collection` and `timeout_input_collection` test helper methods on resource `Terminal.Reader`
+  * Add support for `refund_and_dispute_prefunding` on `Balance`
+  * Add support for `balance_type` on `BalanceTransaction`
+  * Add support for `post_payment_amount` and `pre_payment_amount` on `CreditNote`
+  * Add support for new value `mixed` on enum `CreditNote.type`
+  * Add support for new value `invoice_payment.paid` on enum `Event.type`
+  * Add support for `kakao_pay`, `kr_card`, `naver_pay`, `payco`, and `samsung_pay` on `PaymentMethodConfiguration`
+  * Add support for `billing_thresholds` on `SubscriptionItem` and `Subscription`
+  * Add support for `metadata` on `Tax.CalculationLineItem`
+  * Add support for new value `collect_inputs` on enum `Terminal.Reader.action.type`
+  * Add support for new value `simulated_stripe_s700` on enum `Terminal.Reader.device_type`
+  * Add support for snapshot event `INVOICE_PAYMENT_PAID` with resource `InvoicePayment`
+  * Add support for error code `forwarding_api_upstream_error` on `Invoice.last_finalization_error`, `PaymentIntent.last_payment_error`, `SetupAttempt.setup_error`, `SetupIntent.last_setup_error`, and `StripeError`
+
 ## 17.2.1 - 2025-05-19
 * [#1869](https://github.com/stripe/stripe-php/pull/1869) Fixed type of map parameters(eg. metadata, currency_options) from `StripeObject` to `array<KType, VType>` in all methods.
 * [#1866](https://github.com/stripe/stripe-php/pull/1866) Adds CONTRIBUTING.md
@@ -24,7 +44,7 @@
 
 ## 17.1.1 - 2025-04-04
 * [#1847](https://github.com/stripe/stripe-php/pull/1847) Remove stdClass from object shapes
-  * Remove intersection with `stdClass` in resource properties and fixed `instanceof` checks.  
+  * Remove intersection with `stdClass` in resource properties and fixed `instanceof` checks.
 
 ## 17.1.0 - 2025-04-02
 * [#1843](https://github.com/stripe/stripe-php/pull/1843) Add null type in resource fields to non required objects
