@@ -48,7 +48,7 @@ class EventDestinationService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\EventDestination
+     * @return \Stripe\V2\DeletedObject
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -125,7 +125,7 @@ class EventDestinationService extends \Stripe\Service\AbstractService
      * Update the details of an event destination.
      *
      * @param string $id
-     * @param null|array{description?: string, enabled_events?: string[], include?: string[], metadata?: array<string, null|string>, name?: string, webhook_endpoint?: array{url: string}} $params
+     * @param null|array{description?: string, enabled_events?: string[], include?: string[], metadata?: array<string, string>, name?: string, webhook_endpoint?: array{url: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\EventDestination
