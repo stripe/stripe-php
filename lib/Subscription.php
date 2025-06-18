@@ -16,7 +16,7 @@ namespace Stripe;
  * @property (object{disabled_reason: null|string, enabled: bool, liability: null|(object{account?: Account|string, type: string}&StripeObject)}&StripeObject) $automatic_tax
  * @property int $billing_cycle_anchor The reference point that aligns future <a href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</a> dates. It sets the day of week for <code>week</code> intervals, the day of month for <code>month</code> and <code>year</code> intervals, and the month of year for <code>year</code> intervals. The timestamp is in UTC format.
  * @property null|(object{day_of_month: int, hour: null|int, minute: null|int, month: null|int, second: null|int}&StripeObject) $billing_cycle_anchor_config The fixed values used to calculate the <code>billing_cycle_anchor</code>.
- * @property null|(object{type: string, updated_at?: int}&StripeObject) $billing_mode The billing mode of the subscription.
+ * @property (object{type: string, updated_at?: int}&StripeObject) $billing_mode The billing mode of the subscription.
  * @property null|(object{amount_gte: null|int, reset_billing_cycle_anchor: null|bool}&StripeObject) $billing_thresholds Define thresholds at which an invoice will be sent, and the subscription advanced to a new billing period
  * @property null|int $cancel_at A date in the future at which the subscription will automatically get canceled
  * @property bool $cancel_at_period_end Whether this subscription will (if <code>status=active</code>) or did (if <code>status=canceled</code>) cancel at the end of the current billing period.
