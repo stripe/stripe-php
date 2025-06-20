@@ -45,7 +45,7 @@ class OffSessionPaymentService extends \Stripe\Service\AbstractService
     /**
      * Create OSP.
      *
-     * @param null|array{amount: \Stripe\StripeObject, cadence: string, customer: string, metadata: array<string, string>, on_behalf_of?: string, payment_method: string, retry_details?: array{retry_strategy: string}, statement_descriptor?: string, statement_descriptor_suffix?: string, test_clock?: string, transfer_data?: array{amount: int, destination: string}} $params
+     * @param null|array{amount: \Stripe\StripeObject, cadence: string, customer: string, metadata: array<string, string>, on_behalf_of?: string, payment_method: string, retry_details?: array{retry_strategy: string}, statement_descriptor?: string, statement_descriptor_suffix?: string, test_clock?: string, transfer_data?: array{amount?: int, destination: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Payments\OffSessionPayment
