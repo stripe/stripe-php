@@ -62,7 +62,7 @@
 
   ### ⚠️ Breaking changes due to changes in the Stripe API
 
-  Please review details for the breaking changes and alternatives in the [Stripe API changelog](https://docs.stripe.com/changelog/acacia) before upgrading.
+  Please review details for the breaking changes and alternatives in the [Stripe API changelog](https://docs.stripe.com/changelog/basil#2025-03-31.basil) before upgrading.
 
   * Remove support for resources `UsageRecordSummary` and `UsageRecord`
   * Remove support for `create` method on resource `UsageRecord`
