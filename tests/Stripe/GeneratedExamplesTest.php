@@ -6100,7 +6100,6 @@ final class GeneratedExamplesTest extends TestCase
                         'metadata' => null,
                         'other' => null,
                         'status' => 'closed',
-                        'status_details' => null,
                         'storage' => null,
                         'type' => 'other',
                     ],
@@ -6153,7 +6152,6 @@ final class GeneratedExamplesTest extends TestCase
                 'metadata' => null,
                 'other' => null,
                 'status' => 'closed',
-                'status_details' => null,
                 'storage' => null,
                 'type' => 'other',
             ],
@@ -8357,6 +8355,33 @@ final class GeneratedExamplesTest extends TestCase
         }
     }
 
+    public function testFeatureNotEnabledError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/financial_addresses',
+            ['currency' => 'stn', 'financial_account' => 'financial_account'],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'feature_not_enabled',
+                    'code' => 'storer_capability_missing',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->financialAddresses->create([
+                'currency' => 'stn',
+                'financial_account' => 'financial_account',
+            ]);
+        } catch (Exception\FeatureNotEnabledException $e) {
+        }
+    }
+
     public function testBlockedByStripeError()
     {
         $this->stubRequest(
@@ -8548,50 +8573,6 @@ final class GeneratedExamplesTest extends TestCase
                 'to' => ['recipient' => 'recipient'],
             ]);
         } catch (Exception\RecipientNotNotifiableException $e) {
-        }
-    }
-
-    public function testFeatureNotEnabledError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/money_management/outbound_payments',
-            [
-                'amount' => [
-                    'currency' => 'USD',
-                    'value' => 96,
-                ],
-                'from' => [
-                    'currency' => 'currency',
-                    'financial_account' => 'financial_account',
-                ],
-                'to' => ['recipient' => 'recipient'],
-            ],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'feature_not_enabled',
-                    'code' => 'recipient_feature_not_active',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $this->v2Client->v2->moneyManagement->outboundPayments->create([
-                'amount' => [
-                    'currency' => 'USD',
-                    'value' => 96,
-                ],
-                'from' => [
-                    'currency' => 'currency',
-                    'financial_account' => 'financial_account',
-                ],
-                'to' => ['recipient' => 'recipient'],
-            ]);
-        } catch (Exception\FeatureNotEnabledException $e) {
         }
     }
 
