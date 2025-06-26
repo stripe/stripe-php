@@ -10,7 +10,6 @@ namespace Stripe\V2\Payments;
  * @property string $id ID of the OSP.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property \Stripe\StripeObject $amount_requested The amount you requested to be collected on the OSP upon creation.
- * @property int $attempts Number of authorization attempts.
  * @property string $cadence The frequency of the underlying payment that this OSP represents.
  * @property string $compartment_id ID of owning compartment.
  * @property int $created Timestamp of creation.
@@ -28,7 +27,7 @@ namespace Stripe\V2\Payments;
  * @property null|string $statement_descriptor_suffix Statement descriptor suffix you provided, similar to that on the PI.
  * @property string $status Status of the OSP.
  * @property null|string $test_clock Test clock to be used to advance the retry attempts.
- * @property null|(object{amount: int, destination: string}&\Stripe\StripeObject) $transfer_data Instructions for the transfer to be made with this OSP after successful money movement.
+ * @property null|(object{amount: null|int, destination: string}&\Stripe\StripeObject) $transfer_data Instructions for the transfer to be made with this OSP after successful money movement.
  */
 class OffSessionPayment extends \Stripe\ApiResource
 {
