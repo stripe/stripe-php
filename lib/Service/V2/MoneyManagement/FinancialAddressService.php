@@ -35,6 +35,7 @@ class FinancialAddressService extends \Stripe\Service\AbstractService
      * @return \Stripe\V2\MoneyManagement\FinancialAddress
      *
      * @throws \Stripe\Exception\FinancialAccountNotOpenException
+     * @throws \Stripe\Exception\FeatureNotEnabledException
      */
     public function create($params = null, $opts = null)
     {

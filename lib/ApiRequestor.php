@@ -290,6 +290,16 @@ class ApiRequestor
                     $code
                 );
 
+            case 'feature_not_enabled':
+                return Exception\FeatureNotEnabledException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
             case 'blocked_by_stripe':
                 return Exception\BlockedByStripeException::factory(
                     $msg,
@@ -342,16 +352,6 @@ class ApiRequestor
 
             case 'recipient_not_notifiable':
                 return Exception\RecipientNotNotifiableException::factory(
-                    $msg,
-                    $rcode,
-                    $rbody,
-                    $resp,
-                    $rheaders,
-                    $code
-                );
-
-            case 'feature_not_enabled':
-                return Exception\FeatureNotEnabledException::factory(
                     $msg,
                     $rcode,
                     $rbody,

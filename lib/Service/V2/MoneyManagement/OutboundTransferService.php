@@ -52,6 +52,7 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
      * @return \Stripe\V2\MoneyManagement\OutboundTransfer
      *
      * @throws \Stripe\Exception\InsufficientFundsException
+     * @throws \Stripe\Exception\FeatureNotEnabledException
      */
     public function create($params = null, $opts = null)
     {
