@@ -60,7 +60,7 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
      * Related guide: <a href="/docs/identity/verify-identity-documents">Verify your
      * users’ identity documents</a>
      *
-     * @param null|array{client_reference_id?: string, expand?: string[], metadata?: array<string, string>, options?: array{document?: null|array{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}}, provided_details?: array{email?: string, phone?: string}, related_customer?: string, return_url?: string, type?: string, verification_flow?: string} $params
+     * @param null|array{client_reference_id?: string, expand?: string[], metadata?: array<string, string>, options?: array{document?: null|array{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}}, provided_details?: array{email?: string, phone?: string}, related_customer?: string, related_person?: array{account: string, person: string}, return_url?: string, type?: string, verification_flow?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Identity\VerificationSession

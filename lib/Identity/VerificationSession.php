@@ -26,10 +26,11 @@ namespace Stripe\Identity;
  * @property null|string|VerificationReport $last_verification_report ID of the most recent VerificationReport. <a href="https://stripe.com/docs/identity/verification-sessions#results">Learn more about accessing detailed verification results.</a>
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|(object{document?: (object{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}&\Stripe\StripeObject), email?: (object{require_verification?: bool}&\Stripe\StripeObject), id_number?: (object{}&\Stripe\StripeObject), phone?: (object{require_verification?: bool}&\Stripe\StripeObject)}&\Stripe\StripeObject) $options A set of options for the session’s verification checks.
+ * @property null|(object{document?: (object{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}&\Stripe\StripeObject), email?: (object{require_verification?: bool}&\Stripe\StripeObject), id_number?: (object{}&\Stripe\StripeObject), matching?: (object{dob?: string, name?: string}&\Stripe\StripeObject), phone?: (object{require_verification?: bool}&\Stripe\StripeObject)}&\Stripe\StripeObject) $options A set of options for the session’s verification checks.
  * @property null|(object{email?: string, phone?: string}&\Stripe\StripeObject) $provided_details Details provided about the user being verified. These details may be shown to the user.
  * @property null|(object{status: string}&\Stripe\StripeObject) $redaction Redaction status of this VerificationSession. If the VerificationSession is not redacted, this field will be null.
  * @property null|string $related_customer Customer ID
+ * @property null|(object{account?: string, person?: string}&\Stripe\StripeObject) $related_person
  * @property string $status Status of this VerificationSession. <a href="https://stripe.com/docs/identity/how-sessions-work">Learn more about the lifecycle of sessions</a>.
  * @property string $type The type of <a href="https://stripe.com/docs/identity/verification-checks">verification check</a> to be performed.
  * @property null|string $url The short-lived URL that you use to redirect a user to Stripe to submit their identity information. This URL expires after 48 hours and can only be used once. Don’t store it, log it, send it in emails or expose it to anyone other than the user. Refer to our docs on <a href="https://stripe.com/docs/identity/verify-identity-documents?platform=web&amp;type=redirect">verifying identity documents</a> to learn how to redirect users to Stripe.
@@ -64,7 +65,7 @@ class VerificationSession extends \Stripe\ApiResource
      * Related guide: <a href="/docs/identity/verify-identity-documents">Verify your
      * users’ identity documents</a>
      *
-     * @param null|array{client_reference_id?: string, expand?: string[], metadata?: array<string, string>, options?: array{document?: null|array{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}}, provided_details?: array{email?: string, phone?: string}, related_customer?: string, return_url?: string, type?: string, verification_flow?: string} $params
+     * @param null|array{client_reference_id?: string, expand?: string[], metadata?: array<string, string>, options?: array{document?: null|array{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}}, provided_details?: array{email?: string, phone?: string}, related_customer?: string, related_person?: array{account: string, person: string}, return_url?: string, type?: string, verification_flow?: string} $params
      * @param null|array|string $options
      *
      * @return VerificationSession the created resource
