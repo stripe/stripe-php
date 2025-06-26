@@ -1,5 +1,8 @@
 # Changelog
 
+## 17.4.0-beta.2 - 2025-06-26
+* [#1883](https://github.com/stripe/stripe-php/pull/1883) Pull in OffSessionPayment changes for the May release
+
 ## 17.4.0-beta.1 - 2025-05-29
 This release changes the pinned API version to `2025-05-28.preview`.
 
