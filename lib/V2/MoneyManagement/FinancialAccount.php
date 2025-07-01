@@ -12,8 +12,8 @@ namespace Stripe\V2\MoneyManagement;
  * @property (object{available: \Stripe\StripeObject, inbound_pending: \Stripe\StripeObject, outbound_pending: \Stripe\StripeObject}&\Stripe\StripeObject) $balance Multi-currency balance of this FinancialAccount, split by availability state. Each balance is represented as a hash where the key is the three-letter ISO currency code, in lowercase, and the value is the amount for that currency.
  * @property string $country Open Enum. Two-letter country code that represents the country where the LegalEntity associated with the FinancialAccount is based in.
  * @property int $created Time at which the object was created.
- * @property null|string $description
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property null|\Stripe\StripeObject $metadata Metadata associated with the FinancialAccount
  * @property null|(object{type: string}&\Stripe\StripeObject) $other If this is a <code>other</code> FinancialAccount, this hash indicates what the actual type is. Upgrade your API version to see it reflected in <code>type</code>.
  * @property string $status Closed Enum. An enum representing the status of the FinancialAccount. This indicates whether or not the FinancialAccount can be used for any money movement flows.
  * @property null|(object{holds_currencies: string[]}&\Stripe\StripeObject) $storage If this is a <code>storage</code> FinancialAccount, this hash includes details specific to <code>storage</code> FinancialAccounts.
@@ -268,6 +268,7 @@ class FinancialAccount extends \Stripe\ApiResource
     const COUNTRY_VU = 'vu';
     const COUNTRY_WF = 'wf';
     const COUNTRY_WS = 'ws';
+    const COUNTRY_XX = 'xx';
     const COUNTRY_YE = 'ye';
     const COUNTRY_YT = 'yt';
     const COUNTRY_ZA = 'za';
@@ -276,6 +277,7 @@ class FinancialAccount extends \Stripe\ApiResource
 
     const STATUS_CLOSED = 'closed';
     const STATUS_OPEN = 'open';
+    const STATUS_PENDING = 'pending';
 
     const TYPE_OTHER = 'other';
     const TYPE_STORAGE = 'storage';

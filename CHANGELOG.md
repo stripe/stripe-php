@@ -219,7 +219,7 @@ This release changes the pinned API version to `2025-05-28.preview`.
 
   ### ⚠️ Breaking changes due to changes in the Stripe API
 
-  Please review details for the breaking changes and alternatives in the [Stripe API changelog](https://docs.stripe.com/changelog/acacia) before upgrading.
+  Please review details for the breaking changes and alternatives in the [Stripe API changelog](https://docs.stripe.com/changelog/basil#2025-03-31.basil) before upgrading.
 
     * Remove support for resources `UsageRecordSummary` and `UsageRecord`
     * Remove support for `create` method on resource `UsageRecord`
@@ -608,7 +608,7 @@ This release changes the pinned API version to `2025-05-28.preview`.
 ## 16.0.0 - 2024-10-01
 * [#1756](https://github.com/stripe/stripe-php/pull/1756) Support for APIs in the new API version 2024-09-30.acacia
 
-  This release changes the pinned API version to `2024-09-30.acacia`. Please read the [API Upgrade Guide](https://stripe.com/docs/upgrades#2024-09-30.acacia) and carefully review the API changes before upgrading.
+  This release changes the pinned API version to `2024-09-30.acacia`. Please read the [API Changelog](https://docs.stripe.com/changelog/acacia#2024-09-30.acacia) and carefully review the API changes before upgrading.
 
   ### ⚠️ Breaking changes
 
@@ -746,7 +746,7 @@ This release changes the pinned API version to `2025-05-28.preview`.
 ## 15.0.0 - 2024-06-24
 * [#1714](https://github.com/stripe/stripe-php/pull/1714)
 
-  This release changes the pinned API version to 2024-06-20. Please read the [API Upgrade Guide](https://stripe.com/docs/upgrades#2024-06-20) and carefully review the API changes before upgrading.
+  This release changes the pinned API version to 2024-06-20. Please read the [API Changelog](https://docs.stripe.com/changelog/2024-06-20) and carefully review the API changes before upgrading.
 
   ### ⚠️ Breaking changes
 
@@ -860,7 +860,7 @@ This release changes the pinned API version to `2025-05-28.preview`.
 ## 14.0.0 - 2024-04-10
 * [#1673](https://github.com/stripe/stripe-php/pull/1673)
 
-  * This release changes the pinned API version to `2024-04-10`. Please read the [API Upgrade Guide](https://stripe.com/docs/upgrades#2024-04-10) and carefully review the API changes before upgrading.
+  * This release changes the pinned API version to `2024-04-10`. Please read the [API Changelog](https://docs.stripe.com/changelog/2024-04-10) and carefully review the API changes before upgrading.
 
   ### ⚠️ Breaking changes
 
@@ -1159,7 +1159,7 @@ This release changes the pinned API version to `2025-05-28.preview`.
   - Update pinned API version to `2023-10-16`
 
 ## 13.0.0 - 2023-10-16
-* This release changes the pinned API version to `2023-10-16`. Please read the [API Upgrade Guide](https://stripe.com/docs/upgrades#2023-10-16) and carefully review the API changes before upgrading `stripe-php` package.
+* This release changes the pinned API version to `2023-10-16`. Please read the [API Changelog](https://docs.stripe.com/changelog/2023-10-16) and carefully review the API changes before upgrading `stripe-php` package.
 * [#1593](https://github.com/stripe/stripe-php/pull/1593) Update generated code
   - Added `additional_tos_acceptances` field on `Person`
 
@@ -1640,7 +1640,7 @@ Please do not use stripe-php v11. It did not correctly apply the [pinning behavi
 ## 10.0.0 - 2022-11-16
 * [#1392](https://github.com/stripe/stripe-php/pull/1392) Next major release changes
 
-Breaking changes that arose during code generation of the library that we postponed for the next major version. For changes to the Stripe products, read more at https://stripe.com/docs/upgrades#2022-11-15.
+Breaking changes that arose during code generation of the library that we postponed for the next major version. For changes to the Stripe products, read more at https://docs.stripe.com/changelog/2022-11-15.
 
 "⚠️" symbol highlights breaking changes.
 
@@ -1749,7 +1749,7 @@ Breaking changes that arose during code generation of the library that we postpo
 
 ## 9.0.0 - 2022-08-02
 
-Breaking changes that arose during code generation of the library that we postponed for the next major version. For changes to the SDK, read more detailed description at https://github.com/stripe/stripe-php/wiki/Migration-guide-for-v9. For changes to the Stripe products, read more at https://stripe.com/docs/upgrades#2022-08-01.
+Breaking changes that arose during code generation of the library that we postponed for the next major version. For changes to the SDK, read more detailed description at https://github.com/stripe/stripe-php/wiki/Migration-guide-for-v9. For changes to the Stripe products, read more at https://docs.stripe.com/changelog/2022-08-01.
 
 "⚠️" symbol highlights breaking changes.
 
@@ -3441,7 +3441,7 @@ Pull requests included in this release:
 
 ## 1.8.1 - 2013-07-12
 
--   Add support for multiple cards API (Stripe API version 2013-07-12: https://stripe.com/docs/upgrades#2013-07-05)
+-   Add support for multiple cards API (Stripe API version 2013-07-12: https://docs.stripe.com/changelog/2013-07-05)
 
 ## 1.8.0 - 2013-04-11
 
