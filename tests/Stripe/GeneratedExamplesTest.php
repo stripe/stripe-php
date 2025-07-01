@@ -6448,11 +6448,11 @@ final class GeneratedExamplesTest extends TestCase
                     'value' => 96,
                 ],
                 'from' => [
-                    'currency' => 'currency',
+                    'currency' => 'usd',
                     'payment_method' => 'payment_method',
                 ],
                 'to' => [
-                    'currency' => 'currency',
+                    'currency' => 'usd',
                     'financial_account' => 'financial_account',
                 ],
             ],
@@ -6510,11 +6510,11 @@ final class GeneratedExamplesTest extends TestCase
                 'value' => 96,
             ],
             'from' => [
-                'currency' => 'currency',
+                'currency' => 'usd',
                 'payment_method' => 'payment_method',
             ],
             'to' => [
-                'currency' => 'currency',
+                'currency' => 'usd',
                 'financial_account' => 'financial_account',
             ],
         ]);
@@ -6593,11 +6593,11 @@ final class GeneratedExamplesTest extends TestCase
                     'value' => 96,
                 ],
                 'from' => [
-                    'currency' => 'currency',
+                    'currency' => 'usd',
                     'financial_account' => 'financial_account',
                 ],
                 'to' => [
-                    'currency' => 'currency',
+                    'currency' => 'usd',
                     'payout_method' => 'payout_method',
                     'recipient' => 'recipient',
                 ],
@@ -6636,7 +6636,7 @@ final class GeneratedExamplesTest extends TestCase
                     'rates' => [
                         'undefined' => ['exchange_rate' => 'exchange_rate'],
                     ],
-                    'to_currency' => 'to_currency',
+                    'to_currency' => 'usd',
                 ],
                 'livemode' => [],
                 'to' => [
@@ -6657,11 +6657,11 @@ final class GeneratedExamplesTest extends TestCase
                 'value' => 96,
             ],
             'from' => [
-                'currency' => 'currency',
+                'currency' => 'usd',
                 'financial_account' => 'financial_account',
             ],
             'to' => [
-                'currency' => 'currency',
+                'currency' => 'usd',
                 'payout_method' => 'payout_method',
                 'recipient' => 'recipient',
             ],
@@ -6709,7 +6709,7 @@ final class GeneratedExamplesTest extends TestCase
                     'rates' => [
                         'undefined' => ['exchange_rate' => 'exchange_rate'],
                     ],
-                    'to_currency' => 'to_currency',
+                    'to_currency' => 'usd',
                 ],
                 'livemode' => [],
                 'to' => [
@@ -6805,11 +6805,11 @@ final class GeneratedExamplesTest extends TestCase
                     'value' => 96,
                 ],
                 'from' => [
-                    'currency' => 'currency',
+                    'currency' => 'usd',
                     'financial_account' => 'financial_account',
                 ],
                 'to' => [
-                    'currency' => 'currency',
+                    'currency' => 'usd',
                     'payout_method' => 'payout_method',
                     'recipient' => 'recipient',
                 ],
@@ -6866,11 +6866,11 @@ final class GeneratedExamplesTest extends TestCase
                 'value' => 96,
             ],
             'from' => [
-                'currency' => 'currency',
+                'currency' => 'usd',
                 'financial_account' => 'financial_account',
             ],
             'to' => [
-                'currency' => 'currency',
+                'currency' => 'usd',
                 'payout_method' => 'payout_method',
                 'recipient' => 'recipient',
             ],
@@ -7278,11 +7278,11 @@ final class GeneratedExamplesTest extends TestCase
                     'value' => 96,
                 ],
                 'from' => [
-                    'currency' => 'currency',
+                    'currency' => 'usd',
                     'financial_account' => 'financial_account',
                 ],
                 'to' => [
-                    'currency' => 'currency',
+                    'currency' => 'usd',
                     'payout_method' => 'payout_method',
                 ],
             ],
@@ -7335,11 +7335,11 @@ final class GeneratedExamplesTest extends TestCase
                 'value' => 96,
             ],
             'from' => [
-                'currency' => 'currency',
+                'currency' => 'usd',
                 'financial_account' => 'financial_account',
             ],
             'to' => [
-                'currency' => 'currency',
+                'currency' => 'usd',
                 'payout_method' => 'payout_method',
             ],
         ]);
@@ -8473,7 +8473,7 @@ final class GeneratedExamplesTest extends TestCase
                     'value' => 96,
                 ],
                 'from' => [
-                    'currency' => 'currency',
+                    'currency' => 'usd',
                     'financial_account' => 'financial_account',
                 ],
                 'to' => ['recipient' => 'recipient'],
@@ -8497,7 +8497,7 @@ final class GeneratedExamplesTest extends TestCase
                     'value' => 96,
                 ],
                 'from' => [
-                    'currency' => 'currency',
+                    'currency' => 'usd',
                     'financial_account' => 'financial_account',
                 ],
                 'to' => ['recipient' => 'recipient'],
@@ -8543,7 +8543,7 @@ final class GeneratedExamplesTest extends TestCase
                     'value' => 96,
                 ],
                 'from' => [
-                    'currency' => 'currency',
+                    'currency' => 'usd',
                     'financial_account' => 'financial_account',
                 ],
                 'to' => ['recipient' => 'recipient'],
@@ -8567,7 +8567,7 @@ final class GeneratedExamplesTest extends TestCase
                     'value' => 96,
                 ],
                 'from' => [
-                    'currency' => 'currency',
+                    'currency' => 'usd',
                     'financial_account' => 'financial_account',
                 ],
                 'to' => ['recipient' => 'recipient'],
