@@ -8,6 +8,7 @@ namespace Stripe\Service\Sigma;
  * Service factory class for API resources in the Sigma namespace.
  *
  * @property ScheduledQueryRunService $scheduledQueryRuns
+ * @property SchemaService $schemas
  */
 class SigmaServiceFactory extends \Stripe\Service\AbstractServiceFactory
 {
@@ -16,6 +17,7 @@ class SigmaServiceFactory extends \Stripe\Service\AbstractServiceFactory
      */
     private static $classMap = [
         'scheduledQueryRuns' => ScheduledQueryRunService::class,
+        'schemas' => SchemaService::class,
     ];
 
     protected function getServiceClass($name)
