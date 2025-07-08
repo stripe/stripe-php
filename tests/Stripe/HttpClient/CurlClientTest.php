@@ -548,8 +548,9 @@ EOF;
 http_response_code(200);
 header("Content-Length: 6");
 echo "12345";
-ob_flush();
-flush();
+// explicitly do not flush or ob_flush to test the behavior of the client
+// ob_flush();
+// flush();
 exit();
 EOF;
 
