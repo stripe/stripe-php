@@ -59,6 +59,39 @@ class ReaderService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Initiates a payment flow on a Reader and updates the PaymentIntent with card
+     * details before manual confirmation.
+     *
+     * @param string $id
+     * @param null|array{collect_config?: array{allow_redisplay?: string, enable_customer_cancellation?: bool, skip_tipping?: bool, tipping?: array{amount_eligible?: int}}, expand?: string[], payment_intent: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Terminal\Reader
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function collectPaymentMethod($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/terminal/readers/%s/collect_payment_method', $id), $params, $opts);
+    }
+
+    /**
+     * Finalizes a payment on a Reader.
+     *
+     * @param string $id
+     * @param null|array{confirm_config?: array{return_url?: string}, expand?: string[], payment_intent: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Terminal\Reader
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function confirmPaymentIntent($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/terminal/readers/%s/confirm_payment_intent', $id), $params, $opts);
+    }
+
+    /**
      * Creates a new <code>Reader</code> object.
      *
      * @param null|array{expand?: string[], label?: string, location?: string, metadata?: null|array<string, string>, registration_code: string} $params
