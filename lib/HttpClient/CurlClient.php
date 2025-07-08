@@ -268,7 +268,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
             $opts[\CURLOPT_POSTFIELDS] = $body;
         }
         // inspired by https://github.com/stripe/stripe-php/issues/1817#issuecomment-2670463182
-        else if (isset($opts[\CURLOPT_POST]) && $opts[\CURLOPT_POST] === 1) {
+        elseif (isset($opts[\CURLOPT_POST]) && 1 === $opts[\CURLOPT_POST]) {
             $opts[\CURLOPT_POSTFIELDS] = '';
         }
 
