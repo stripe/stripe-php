@@ -5040,7 +5040,7 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'id' => 'obj_123',
                         'object' => 'v2.core.account',
-                        'applied_configurations' => ['0' => 'recipient'],
+                        'applied_configurations' => ['0' => 'storer'],
                         'configuration' => null,
                         'contact_email' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
@@ -5075,7 +5075,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'recipient'],
+                'applied_configurations' => ['0' => 'storer'],
                 'configuration' => null,
                 'contact_email' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -5105,7 +5105,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'recipient'],
+                'applied_configurations' => ['0' => 'storer'],
                 'configuration' => null,
                 'contact_email' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -5135,7 +5135,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'recipient'],
+                'applied_configurations' => ['0' => 'storer'],
                 'configuration' => null,
                 'contact_email' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -5165,7 +5165,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'recipient'],
+                'applied_configurations' => ['0' => 'storer'],
                 'configuration' => null,
                 'contact_email' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -6219,6 +6219,7 @@ final class GeneratedExamplesTest extends TestCase
                         'metadata' => null,
                         'other' => null,
                         'status' => 'closed',
+                        'status_details' => null,
                         'storage' => null,
                         'type' => 'other',
                     ],
@@ -6232,6 +6233,56 @@ final class GeneratedExamplesTest extends TestCase
         $result = $this->v2Client->v2->moneyManagement->financialAccounts->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
         self::assertInstanceOf(V2\MoneyManagement\FinancialAccount::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementFinancialAccountPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/financial_accounts',
+            ['type' => 'storage'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.financial_account',
+                'balance' => [
+                    'available' => [
+                        'undefined' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                    ],
+                    'inbound_pending' => [
+                        'undefined' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                    ],
+                    'outbound_pending' => [
+                        'undefined' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                    ],
+                ],
+                'country' => 'af',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'metadata' => null,
+                'other' => null,
+                'status' => 'closed',
+                'status_details' => null,
+                'storage' => null,
+                'type' => 'other',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->financialAccounts->create([
+            'type' => 'storage',
+        ]);
+        self::assertInstanceOf(V2\MoneyManagement\FinancialAccount::class, $result);
     }
 
     public function testV2MoneyManagementFinancialAccountGet2()
@@ -6271,6 +6322,7 @@ final class GeneratedExamplesTest extends TestCase
                 'metadata' => null,
                 'other' => null,
                 'status' => 'closed',
+                'status_details' => null,
                 'storage' => null,
                 'type' => 'other',
             ],
@@ -6278,6 +6330,57 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->moneyManagement->financialAccounts->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\FinancialAccount::class, $result);
+    }
+
+    public function testV2MoneyManagementFinancialAccountPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/financial_accounts/id_123/close',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.financial_account',
+                'balance' => [
+                    'available' => [
+                        'undefined' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                    ],
+                    'inbound_pending' => [
+                        'undefined' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                    ],
+                    'outbound_pending' => [
+                        'undefined' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                    ],
+                ],
+                'country' => 'af',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'metadata' => null,
+                'other' => null,
+                'status' => 'closed',
+                'status_details' => null,
+                'storage' => null,
+                'type' => 'other',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->financialAccounts->close(
             'id_123',
             []
         );
@@ -8328,6 +8431,85 @@ final class GeneratedExamplesTest extends TestCase
         }
     }
 
+    public function testNonZeroBalanceError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/financial_accounts/id_123/close',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'non_zero_balance',
+                    'code' => 'closing_financial_account_with_non_zero_balances',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->financialAccounts->close(
+                'id_123',
+                []
+            );
+        } catch (Exception\NonZeroBalanceException $e) {
+        }
+    }
+
+    public function testAlreadyExistsError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/financial_accounts',
+            ['type' => 'storage'],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'already_exists',
+                    'code' => 'already_exists',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->financialAccounts->create([
+                'type' => 'storage',
+            ]);
+        } catch (Exception\AlreadyExistsException $e) {
+        }
+    }
+
+    public function testFeatureNotEnabledError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/financial_accounts',
+            ['type' => 'storage'],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'feature_not_enabled',
+                    'code' => 'storer_capability_missing',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->financialAccounts->create([
+                'type' => 'storage',
+            ]);
+        } catch (Exception\FeatureNotEnabledException $e) {
+        }
+    }
+
     public function testFinancialAccountNotOpenError()
     {
         $this->stubRequest(
@@ -8352,33 +8534,6 @@ final class GeneratedExamplesTest extends TestCase
                 'financial_account' => 'financial_account',
             ]);
         } catch (Exception\FinancialAccountNotOpenException $e) {
-        }
-    }
-
-    public function testFeatureNotEnabledError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/money_management/financial_addresses',
-            ['currency' => 'stn', 'financial_account' => 'financial_account'],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'feature_not_enabled',
-                    'code' => 'storer_capability_missing',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $this->v2Client->v2->moneyManagement->financialAddresses->create([
-                'currency' => 'stn',
-                'financial_account' => 'financial_account',
-            ]);
-        } catch (Exception\FeatureNotEnabledException $e) {
         }
     }
 

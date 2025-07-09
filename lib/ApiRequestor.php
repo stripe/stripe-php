@@ -280,8 +280,18 @@ class ApiRequestor
                     $code
                 );
 
-            case 'financial_account_not_open':
-                return Exception\FinancialAccountNotOpenException::factory(
+            case 'non_zero_balance':
+                return Exception\NonZeroBalanceException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'already_exists':
+                return Exception\AlreadyExistsException::factory(
                     $msg,
                     $rcode,
                     $rbody,
@@ -292,6 +302,16 @@ class ApiRequestor
 
             case 'feature_not_enabled':
                 return Exception\FeatureNotEnabledException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'financial_account_not_open':
+                return Exception\FinancialAccountNotOpenException::factory(
                     $msg,
                     $rcode,
                     $rbody,

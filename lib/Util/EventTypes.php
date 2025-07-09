@@ -22,6 +22,8 @@ class EventTypes
         \Stripe\Events\V2CoreAccountIncludingConfigurationMerchantUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationMerchantUpdatedEvent::class,
         \Stripe\Events\V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEvent::class,
         \Stripe\Events\V2CoreAccountIncludingConfigurationRecipientUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationRecipientUpdatedEvent::class,
+        \Stripe\Events\V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent::class,
+        \Stripe\Events\V2CoreAccountIncludingConfigurationStorerUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationStorerUpdatedEvent::class,
         \Stripe\Events\V2MoneyManagementAdjustmentCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementAdjustmentCreatedEvent::class,
         \Stripe\Events\V1BillingMeterErrorReportTriggeredEvent::LOOKUP_TYPE => \Stripe\Events\V1BillingMeterErrorReportTriggeredEvent::class,
         \Stripe\Events\V1BillingMeterNoMeterFoundEvent::LOOKUP_TYPE => \Stripe\Events\V1BillingMeterNoMeterFoundEvent::class,
