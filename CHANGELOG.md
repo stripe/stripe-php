@@ -1,5 +1,13 @@
 # Changelog
 
+## 17.5.0-beta.2 - 2025-07-09
+* [#1886](https://github.com/stripe/stripe-php/pull/1886) Pull in V2 FinancialAccount changes for June release
+  * Add support for `close` and `create` methods on resource `V2.MoneyManagement.FinancialAccount`
+  * Add support for new value `storer` on enum `V2.Core.Account.applied_configurations`
+  * Add support for `status_details` on `V2.MoneyManagement.FinancialAccount`
+  * Add support for thin events `V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent` and `V2CoreAccountIncludingConfigurationStorerUpdatedEvent` with related object `V2.Core.Account`
+  * Add support for error types `AlreadyExistsException` and `NonZeroBalanceException`
+
 ## 17.5.0-beta.1 - 2025-07-01
 * [#1876](https://github.com/stripe/stripe-php/pull/1876) Update generated code for beta
   * Change type of `Quote.subscription_data.billing_mode` from `enum('classic'|'flexible')` to `QuotesResourceSubscriptionDataBillingMode`
