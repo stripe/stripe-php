@@ -5,10 +5,12 @@
 namespace Stripe;
 
 /**
- * The FX Quotes API provides three key functions:
- * - View current exchange rates: The object shows Stripe's current exchange rate for any given currency pair.
- * - Extended quotes: The API provides rate quotes valid for a 1-hour period or a 24-hour period, eliminating uncertainty from FX fluctuations.
- * - View FX fees: The API provides information on the FX fees Stripe will charge on your FX transaction, allowing you to anticipate specific settlement amounts before payment costs.
+ * The FX Quotes API provides three functions:
+ * - View Stripe's current exchange rate for any given currency pair.
+ * - Extend quoted rates for a 1-hour period or a 24-hour period, minimizing uncertainty from FX fluctuations.
+ * - Preview the FX fees Stripe will charge on your FX transaction, allowing you to anticipate specific settlement amounts before payment costs.
+ *
+ * <a href="/payments/currencies/localize-prices/fx-quotes-api">View the docs</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

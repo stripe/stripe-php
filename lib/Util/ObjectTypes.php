@@ -136,6 +136,7 @@ class ObjectTypes
             \Stripe\SetupIntent::OBJECT_NAME => \Stripe\SetupIntent::class,
             \Stripe\ShippingRate::OBJECT_NAME => \Stripe\ShippingRate::class,
             \Stripe\Sigma\ScheduledQueryRun::OBJECT_NAME => \Stripe\Sigma\ScheduledQueryRun::class,
+            \Stripe\Sigma\Schema::OBJECT_NAME => \Stripe\Sigma\Schema::class,
             \Stripe\Source::OBJECT_NAME => \Stripe\Source::class,
             \Stripe\SourceMandateNotification::OBJECT_NAME => \Stripe\SourceMandateNotification::class,
             \Stripe\SourceTransaction::OBJECT_NAME => \Stripe\SourceTransaction::class,

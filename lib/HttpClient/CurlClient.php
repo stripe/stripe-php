@@ -267,6 +267,11 @@ class CurlClient implements ClientInterface, StreamingClientInterface
         if ($body) {
             $opts[\CURLOPT_POSTFIELDS] = $body;
         }
+        // inspired by https://github.com/stripe/stripe-php/issues/1817#issuecomment-2670463182
+        elseif (isset($opts[\CURLOPT_POST]) && 1 === $opts[\CURLOPT_POST]) {
+            $opts[\CURLOPT_POSTFIELDS] = '';
+        }
+
         // this is a little verbose, but makes v1 vs v2 behavior really clear
         if (!$this->hasHeader($headers, 'Idempotency-Key')) {
             // all v2 requests should have an IK
