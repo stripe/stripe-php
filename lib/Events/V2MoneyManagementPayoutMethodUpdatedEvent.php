@@ -7,14 +7,14 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V2OffSessionPaymentRequiresCaptureEvent extends \Stripe\V2\Event
+class V2MoneyManagementPayoutMethodUpdatedEvent extends \Stripe\V2\Event
 {
-    const LOOKUP_TYPE = 'v2.off_session_payment.requires_capture';
+    const LOOKUP_TYPE = 'v2.money_management.payout_method.updated';
 
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\V2\Payments\OffSessionPayment
+     * @return \Stripe\V2\MoneyManagement\PayoutMethod
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

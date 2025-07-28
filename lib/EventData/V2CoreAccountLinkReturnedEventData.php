@@ -9,4 +9,4 @@ namespace Stripe\EventData;
  * @property string[] $configurations Configurations on the Account that was onboarded via the account link.
  * @property string $use_case Open Enum. The use case type of the account link that has been completed.
  */
-class V2CoreAccountLinkCompletedEventData extends \Stripe\StripeObject {}
+class V2CoreAccountLinkReturnedEventData extends \Stripe\StripeObject {}

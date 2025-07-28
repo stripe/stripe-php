@@ -4979,12 +4979,20 @@ final class GeneratedExamplesTest extends TestCase
                 'use_case' => [
                     'type' => 'account_onboarding',
                     'account_onboarding' => [
-                        'configurations' => ['recipient'],
+                        'collection_options' => [
+                            'fields' => 'eventually_due',
+                            'future_requirements' => 'include',
+                        ],
+                        'configurations' => ['storer'],
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
                     'account_update' => [
-                        'configurations' => ['recipient'],
+                        'collection_options' => [
+                            'fields' => 'eventually_due',
+                            'future_requirements' => 'include',
+                        ],
+                        'configurations' => ['storer'],
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
@@ -5013,12 +5021,20 @@ final class GeneratedExamplesTest extends TestCase
             'use_case' => [
                 'type' => 'account_onboarding',
                 'account_onboarding' => [
-                    'configurations' => ['recipient'],
+                    'collection_options' => [
+                        'fields' => 'eventually_due',
+                        'future_requirements' => 'include',
+                    ],
+                    'configurations' => ['storer'],
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],
                 'account_update' => [
-                    'configurations' => ['recipient'],
+                    'collection_options' => [
+                        'fields' => 'eventually_due',
+                        'future_requirements' => 'include',
+                    ],
+                    'configurations' => ['storer'],
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],

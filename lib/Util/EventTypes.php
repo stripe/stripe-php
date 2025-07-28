@@ -7,7 +7,7 @@ class EventTypes
     const thinEventMapping = [
         // The beginning of the section generated from our OpenAPI spec
         \Stripe\Events\V2CoreAccountIncludingRequirementsUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingRequirementsUpdatedEvent::class,
-        \Stripe\Events\V2CoreAccountLinkCompletedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountLinkCompletedEvent::class,
+        \Stripe\Events\V2CoreAccountLinkReturnedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountLinkReturnedEvent::class,
         \Stripe\Events\V2CoreAccountClosedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountClosedEvent::class,
         \Stripe\Events\V2CoreAccountCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountCreatedEvent::class,
         \Stripe\Events\V2CoreAccountUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountUpdatedEvent::class,
@@ -38,7 +38,6 @@ class EventTypes
         \Stripe\Events\V2MoneyManagementInboundTransferBankDebitReturnedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementInboundTransferBankDebitReturnedEvent::class,
         \Stripe\Events\V2MoneyManagementInboundTransferBankDebitSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementInboundTransferBankDebitSucceededEvent::class,
         \Stripe\Events\V2CoreEventDestinationPingEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreEventDestinationPingEvent::class,
-        \Stripe\Events\V2OffSessionPaymentRequiresCaptureEvent::LOOKUP_TYPE => \Stripe\Events\V2OffSessionPaymentRequiresCaptureEvent::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentCanceledEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentCanceledEvent::class,
@@ -57,6 +56,7 @@ class EventTypes
         \Stripe\Events\V2MoneyManagementOutboundTransferPostedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementOutboundTransferPostedEvent::class,
         \Stripe\Events\V2MoneyManagementOutboundTransferReturnedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementOutboundTransferReturnedEvent::class,
         \Stripe\Events\V2MoneyManagementOutboundTransferUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementOutboundTransferUpdatedEvent::class,
+        \Stripe\Events\V2MoneyManagementPayoutMethodUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutMethodUpdatedEvent::class,
         \Stripe\Events\V2MoneyManagementReceivedCreditAvailableEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedCreditAvailableEvent::class,
         \Stripe\Events\V2MoneyManagementReceivedCreditFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedCreditFailedEvent::class,
         \Stripe\Events\V2MoneyManagementReceivedCreditReturnedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedCreditReturnedEvent::class,

@@ -10,6 +10,7 @@ namespace Stripe\Service\Terminal;
  * @property ConfigurationService $configurations
  * @property ConnectionTokenService $connectionTokens
  * @property LocationService $locations
+ * @property OnboardingLinkService $onboardingLinks
  * @property ReaderCollectedDataService $readerCollectedData
  * @property ReaderService $readers
  */
@@ -22,6 +23,7 @@ class TerminalServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'configurations' => ConfigurationService::class,
         'connectionTokens' => ConnectionTokenService::class,
         'locations' => LocationService::class,
+        'onboardingLinks' => OnboardingLinkService::class,
         'readerCollectedData' => ReaderCollectedDataService::class,
         'readers' => ReaderService::class,
     ];

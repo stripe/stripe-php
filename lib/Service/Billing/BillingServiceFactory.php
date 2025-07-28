@@ -14,6 +14,7 @@ namespace Stripe\Service\Billing;
  * @property MeterEventAdjustmentService $meterEventAdjustments
  * @property MeterEventService $meterEvents
  * @property MeterService $meters
+ * @property MeterUsageService $meterUsage
  */
 class BillingServiceFactory extends \Stripe\Service\AbstractServiceFactory
 {
@@ -28,6 +29,7 @@ class BillingServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'meterEventAdjustments' => MeterEventAdjustmentService::class,
         'meterEvents' => MeterEventService::class,
         'meters' => MeterService::class,
+        'meterUsage' => MeterUsageService::class,
     ];
 
     protected function getServiceClass($name)
