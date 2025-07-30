@@ -21,7 +21,7 @@ class FinancialAddressService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\FinancialAddressCreditSimulation
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Stripe\Exception\FeatureNotEnabledException
      */
     public function credit($id, $params = null, $opts = null)
     {
@@ -37,7 +37,7 @@ class FinancialAddressService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\FinancialAddressGeneratedMicrodeposits
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Stripe\Exception\FeatureNotEnabledException
      */
     public function generateMicrodeposits($id, $params = null, $opts = null)
     {

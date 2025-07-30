@@ -16,7 +16,7 @@ class AccountLinkService extends \Stripe\Service\AbstractService
      * merchant can redirect their user to in order to take them to a Stripe-hosted
      * application such as Recipient Onboarding.
      *
-     * @param null|array{account: string, use_case: array{type: string, account_onboarding?: array{configurations: string[], refresh_url: string, return_url?: string}, account_update?: array{configurations: string[], refresh_url: string, return_url?: string}}} $params
+     * @param null|array{account: string, use_case: array{type: string, account_onboarding?: array{collection_options?: array{fields?: string, future_requirements?: string}, configurations: string[], refresh_url: string, return_url?: string}, account_update?: array{collection_options?: array{fields?: string, future_requirements?: string}, configurations: string[], refresh_url: string, return_url?: string}}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Core\AccountLink

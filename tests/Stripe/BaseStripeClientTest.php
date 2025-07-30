@@ -483,7 +483,7 @@ final class BaseStripeClientTest extends TestCase
             ->method('executeRequestWithRetries')
             ->with(self::callback(function ($opts) {
                 $this->assertSame(1, $opts[\CURLOPT_POST]);
-                $this->assertArrayNotHasKey(\CURLOPT_POSTFIELDS, $opts);
+                $this->assertSame('', $opts[\CURLOPT_POSTFIELDS]);
                 $this->assertContains('Content-Type: application/json', $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;

@@ -31,7 +31,7 @@ class BalanceSettingsService extends AbstractService
      * Updates balance settings for a given connected account.  Related guide: <a
      * href="/connect/authentication">Making API calls for connected accounts</a>.
      *
-     * @param null|array{debit_negative_balances?: bool, expand?: string[], payouts?: array{schedule?: array{interval?: string, monthly_anchor?: int, weekly_anchor?: string}, statement_descriptor?: string}, settlement_timing?: array{delay_days?: int}} $params
+     * @param null|array{debit_negative_balances?: bool, expand?: string[], payouts?: array{schedule?: array{interval?: string, monthly_payout_days?: int[], weekly_payout_days?: string[]}, statement_descriptor?: string}, settlement_timing?: array{delay_days_override?: int}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\BalanceSettings

@@ -12,7 +12,7 @@ namespace Stripe\Service\V2\Payments;
 class OffSessionPaymentService extends \Stripe\Service\AbstractService
 {
     /**
-     * List OSPs matching filter.
+     * Returns a list of OffSessionPayments matching a filter.
      *
      * @param null|array{limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -27,7 +27,7 @@ class OffSessionPaymentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Cancel OSP.
+     * Cancel an OffSessionPayment that has previously been created.
      *
      * @param string $id
      * @param null|array $params
@@ -43,7 +43,7 @@ class OffSessionPaymentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create OSP.
+     * Creates an OffSessionPayment object.
      *
      * @param null|array{amount: \Stripe\StripeObject, cadence: string, customer: string, metadata: array<string, string>, on_behalf_of?: string, payment_method: string, retry_details?: array{retry_strategy: string}, statement_descriptor?: string, statement_descriptor_suffix?: string, test_clock?: string, transfer_data?: array{amount?: int, destination: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -58,7 +58,7 @@ class OffSessionPaymentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve OSP by ID.
+     * Retrieves the details of an OffSessionPayment that has previously been created.
      *
      * @param string $id
      * @param null|array $params
