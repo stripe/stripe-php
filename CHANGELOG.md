@@ -14,6 +14,14 @@ This release changes the pinned API version to `2025-07-30.preview`.
   * Remove support for thin event `V2CoreAccountLinkCompletedEvent`
   * Remove support for thin event `V2OffSessionPaymentRequiresCaptureEvent` with related object `V2.Payments.OffSessionPayment`
 
+## 17.5.0 - 2025-07-30
+This release changes the pinned API version to `2025-07-30.basil`.
+
+* [#1887](https://github.com/stripe/stripe-php/pull/1887) Update generated code
+  * Add support for `origin_context` on `Checkout.Session`
+* [#1881](https://github.com/stripe/stripe-php/pull/1881) Ensure compatibility with POST on older versions of libcurl
+  * Fixes an issue with older versions of php/libcurl where certain SDK calls that have empty POST bodies will result in a 400 Bad Request returned from the server.
+
 ## 17.5.0-beta.2 - 2025-07-09
 * [#1886](https://github.com/stripe/stripe-php/pull/1886) Pull in V2 FinancialAccount changes for June release
   * Add support for `close` and `create` methods on resource `V2.MoneyManagement.FinancialAccount`
@@ -41,6 +49,8 @@ This release changes the pinned API version to `2025-06-30.preview`.
   * Change type of `V2.MoneyManagement.ReceivedCredit.balance_transfer.payout_v1` from `string` to `nullable(string)`
 
 ## 17.4.0 - 2025-07-01
+This release changes the pinned API version to `2025-06-30.basil`.
+
 * [#1880](https://github.com/stripe/stripe-php/pull/1880) Update generated code
   * Add support for `migrate` method on resource `Subscription`
   * Add support for `collect_payment_method` and `confirm_payment_intent` methods on resource `Terminal.Reader`
