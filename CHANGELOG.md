@@ -1,5 +1,19 @@
 # Changelog
 
+## 17.6.0-beta.1 - 2025-07-30
+This release changes the pinned API version to `2025-07-30.preview`.
+
+* [#1885](https://github.com/stripe/stripe-php/pull/1885) Update generated code for beta
+  * Add support for new resources `Billing.MeterUsageRow`, `Billing.MeterUsage`, and `Terminal.OnboardingLink`
+  * Add support for `retrieve` method on resource `Billing.MeterUsage`
+  * Add support for `create` method on resource `Terminal.OnboardingLink`
+  * Add support for `smart_disputes` on `Dispute`
+  * Add support for new value `upi` on enums `Invoice.payment_settings.payment_method_types`, `QuotePreviewInvoice.payment_settings.payment_method_types`, and `Subscription.payment_settings.payment_method_types`
+  * Add support for thin event `V2CoreAccountLinkReturnedEvent`
+  * Add support for thin event `V2MoneyManagementPayoutMethodUpdatedEvent` with related object `V2.MoneyManagement.PayoutMethod`
+  * Remove support for thin event `V2CoreAccountLinkCompletedEvent`
+  * Remove support for thin event `V2OffSessionPaymentRequiresCaptureEvent` with related object `V2.Payments.OffSessionPayment`
+
 ## 17.5.0-beta.2 - 2025-07-09
 * [#1886](https://github.com/stripe/stripe-php/pull/1886) Pull in V2 FinancialAccount changes for June release
   * Add support for `close` and `create` methods on resource `V2.MoneyManagement.FinancialAccount`
@@ -9,6 +23,8 @@
   * Add support for error types `AlreadyExistsException` and `NonZeroBalanceException`
 
 ## 17.5.0-beta.1 - 2025-07-01
+This release changes the pinned API version to `2025-06-30.preview`.
+
 * [#1876](https://github.com/stripe/stripe-php/pull/1876) Update generated code for beta
   * Change type of `Quote.subscription_data.billing_mode` from `enum('classic'|'flexible')` to `QuotesResourceSubscriptionDataBillingMode`
   * Add support for new value `crypto` on enum `QuotePreviewInvoice.payment_settings.payment_method_types`
