@@ -3,6 +3,7 @@
 namespace Stripe\Util;
 
 use Stripe\StripeObject;
+use Stripe\V2\DeletedObject;
 
 abstract class Util
 {
@@ -39,10 +40,11 @@ abstract class Util
      * @param array                $resp    the response from the Stripe API
      * @param array|RequestOptions $opts
      * @param 'v1'|'v2'            $apiMode whether the response is from a v1 or v2 API
+     * @param bool                 $is_v2_deleted_object whether we should ignore the `object` field and treat the response as a v2 deleted object
      *
      * @return array|StripeObject
      */
-    public static function convertToStripeObject($resp, $opts, $apiMode = 'v1')
+    public static function convertToStripeObject($resp, $opts, $apiMode = 'v1', $is_v2_deleted_object = false)
     {
         $types = 'v1' === $apiMode ? ObjectTypes::mapping
             : ObjectTypes::v2Mapping;
@@ -55,7 +57,10 @@ abstract class Util
             return $mapped;
         }
         if (\is_array($resp)) {
-            if (isset($resp['object']) && \is_string($resp['object'])
+            if ($is_v2_deleted_object) {
+                $class = DeletedObject::class;
+            } elseif (
+                isset($resp['object']) && \is_string($resp['object'])
                 && isset($types[$resp['object']])
             ) {
                 $class = $types[$resp['object']];
@@ -131,15 +136,16 @@ abstract class Util
             if (!self::$isMbstringAvailable) {
                 \trigger_error(
                     'It looks like the mbstring extension is not enabled. '
-                    . 'UTF-8 strings will not properly be encoded. Ask your system '
-                    . 'administrator to enable the mbstring extension, or write to '
-                    . 'support@stripe.com if you have any questions.',
+                        . 'UTF-8 strings will not properly be encoded. Ask your system '
+                        . 'administrator to enable the mbstring extension, or write to '
+                        . 'support@stripe.com if you have any questions.',
                     \E_USER_WARNING
                 );
             }
         }
 
-        if (\is_string($value) && self::$isMbstringAvailable
+        if (
+            \is_string($value) && self::$isMbstringAvailable
             && 'UTF-8' !== \mb_detect_encoding($value, 'UTF-8', true)
         ) {
             return mb_convert_encoding($value, 'UTF-8', 'ISO-8859-1');
