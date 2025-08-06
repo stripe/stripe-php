@@ -357,6 +357,7 @@ require __DIR__ . '/lib/Service/Identity/IdentityServiceFactory.php';
 require __DIR__ . '/lib/Service/Identity/VerificationReportService.php';
 require __DIR__ . '/lib/Service/Identity/VerificationSessionService.php';
 require __DIR__ . '/lib/Service/InvoiceItemService.php';
+require __DIR__ . '/lib/Service/InvoicePaymentService.php';
 require __DIR__ . '/lib/Service/InvoiceRenderingTemplateService.php';
 require __DIR__ . '/lib/Service/InvoiceService.php';
 require __DIR__ . '/lib/Service/Issuing/AuthorizationService.php';
