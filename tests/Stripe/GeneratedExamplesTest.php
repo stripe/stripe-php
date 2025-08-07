@@ -4887,7 +4887,7 @@ final class GeneratedExamplesTest extends TestCase
                     [
                         'event_name' => 'event_name',
                         'identifier' => 'identifier',
-                        'payload' => ['undefined' => 'payload'],
+                        'payload' => ['key' => 'payload'],
                         'timestamp' => '1970-01-01T15:18:46.294Z',
                     ],
                 ],
@@ -4903,7 +4903,7 @@ final class GeneratedExamplesTest extends TestCase
                 [
                     'event_name' => 'event_name',
                     'identifier' => 'identifier',
-                    'payload' => ['undefined' => 'payload'],
+                    'payload' => ['key' => 'payload'],
                     'timestamp' => '1970-01-01T15:18:46.294Z',
                 ],
             ],
@@ -4915,10 +4915,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/billing/meter_events',
-            [
-                'event_name' => 'event_name',
-                'payload' => ['undefined' => 'payload'],
-            ],
+            ['event_name' => 'event_name', 'payload' => ['key' => 'payload']],
             [],
             false,
             [
@@ -4927,7 +4924,7 @@ final class GeneratedExamplesTest extends TestCase
                 'event_name' => 'event_name',
                 'identifier' => 'identifier',
                 'livemode' => [],
-                'payload' => ['undefined' => 'payload'],
+                'payload' => ['key' => 'payload'],
                 'timestamp' => '1970-01-01T15:18:46.294Z',
             ],
             200,
@@ -4935,7 +4932,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->billing->meterEvents->create([
             'event_name' => 'event_name',
-            'payload' => ['undefined' => 'payload'],
+            'payload' => ['key' => 'payload'],
         ]);
         self::assertInstanceOf(V2\Billing\MeterEvent::class, $result);
     }
@@ -5303,7 +5300,7 @@ final class GeneratedExamplesTest extends TestCase
                 'events' => [
                     [
                         'event_name' => 'event_name',
-                        'payload' => ['undefined' => 'payload'],
+                        'payload' => ['key' => 'payload'],
                     ],
                 ],
             ],
@@ -5324,7 +5321,7 @@ final class GeneratedExamplesTest extends TestCase
                 'events' => [
                     [
                         'event_name' => 'event_name',
-                        'payload' => ['undefined' => 'payload'],
+                        'payload' => ['key' => 'payload'],
                     ],
                 ],
             ]);
