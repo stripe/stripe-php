@@ -1,5 +1,10 @@
 # Changelog
 
+## 17.6.0-beta.2 - 2025-08-08
+* [#1891](https://github.com/stripe/stripe-php/pull/1891) Bring back invoice payments APIs that were missing in the public preview SDKs
+  * Add support for new resource `InvoicePayment`
+  * Add support for `all` and `retrieve` methods on resource `InvoicePayment`
+
 ## 17.6.0-beta.1 - 2025-07-30
 This release changes the pinned API version to `2025-07-30.preview`.
 
