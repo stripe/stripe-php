@@ -16,7 +16,7 @@ namespace Stripe\Billing;
  * @property (object{formula: string}&\Stripe\StripeObject) $default_aggregation
  * @property string $display_name The meter's name.
  * @property string $event_name The name of the meter event to record usage for. Corresponds with the <code>event_name</code> field on meter events.
- * @property null|string $event_time_window The time window to pre-aggregate meter events for, if any.
+ * @property null|string $event_time_window The time window which meter events have been pre-aggregated for, if any.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $status The meter's status.
  * @property (object{deactivated_at: null|int}&\Stripe\StripeObject) $status_transitions

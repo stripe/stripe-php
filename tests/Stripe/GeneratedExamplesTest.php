@@ -4916,7 +4916,7 @@ final class GeneratedExamplesTest extends TestCase
                     [
                         'event_name' => 'event_name',
                         'identifier' => 'identifier',
-                        'payload' => ['undefined' => 'payload'],
+                        'payload' => ['key' => 'payload'],
                         'timestamp' => '1970-01-01T15:18:46.294Z',
                     ],
                 ],
@@ -4932,7 +4932,7 @@ final class GeneratedExamplesTest extends TestCase
                 [
                     'event_name' => 'event_name',
                     'identifier' => 'identifier',
-                    'payload' => ['undefined' => 'payload'],
+                    'payload' => ['key' => 'payload'],
                     'timestamp' => '1970-01-01T15:18:46.294Z',
                 ],
             ],
@@ -4944,10 +4944,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/billing/meter_events',
-            [
-                'event_name' => 'event_name',
-                'payload' => ['undefined' => 'payload'],
-            ],
+            ['event_name' => 'event_name', 'payload' => ['key' => 'payload']],
             [],
             false,
             [
@@ -4956,7 +4953,7 @@ final class GeneratedExamplesTest extends TestCase
                 'event_name' => 'event_name',
                 'identifier' => 'identifier',
                 'livemode' => [],
-                'payload' => ['undefined' => 'payload'],
+                'payload' => ['key' => 'payload'],
                 'timestamp' => '1970-01-01T15:18:46.294Z',
             ],
             200,
@@ -4964,7 +4961,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->billing->meterEvents->create([
             'event_name' => 'event_name',
-            'payload' => ['undefined' => 'payload'],
+            'payload' => ['key' => 'payload'],
         ]);
         self::assertInstanceOf(V2\Billing\MeterEvent::class, $result);
     }
@@ -6211,19 +6208,19 @@ final class GeneratedExamplesTest extends TestCase
                         'object' => 'v2.money_management.financial_account',
                         'balance' => [
                             'available' => [
-                                'undefined' => [
+                                'key' => [
                                     'currency' => 'USD',
                                     'value' => [],
                                 ],
                             ],
                             'inbound_pending' => [
-                                'undefined' => [
+                                'key' => [
                                     'currency' => 'USD',
                                     'value' => [],
                                 ],
                             ],
                             'outbound_pending' => [
-                                'undefined' => [
+                                'key' => [
                                     'currency' => 'USD',
                                     'value' => [],
                                 ],
@@ -6264,19 +6261,19 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.financial_account',
                 'balance' => [
                     'available' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
                     ],
                     'inbound_pending' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
                     ],
                     'outbound_pending' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
@@ -6314,19 +6311,19 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.financial_account',
                 'balance' => [
                     'available' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
                     ],
                     'inbound_pending' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
                     ],
                     'outbound_pending' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
@@ -6365,19 +6362,19 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.financial_account',
                 'balance' => [
                     'available' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
                     ],
                     'inbound_pending' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
                     ],
                     'outbound_pending' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
@@ -6752,9 +6749,7 @@ final class GeneratedExamplesTest extends TestCase
                     'lock_duration' => 'five_minutes',
                     'lock_expires_at' => '1970-01-18T15:15:29.586Z',
                     'lock_status' => 'active',
-                    'rates' => [
-                        'undefined' => ['exchange_rate' => 'exchange_rate'],
-                    ],
+                    'rates' => ['key' => ['exchange_rate' => 'exchange_rate']],
                     'to_currency' => 'usd',
                 ],
                 'livemode' => [],
@@ -6825,9 +6820,7 @@ final class GeneratedExamplesTest extends TestCase
                     'lock_duration' => 'five_minutes',
                     'lock_expires_at' => '1970-01-18T15:15:29.586Z',
                     'lock_status' => 'active',
-                    'rates' => [
-                        'undefined' => ['exchange_rate' => 'exchange_rate'],
-                    ],
+                    'rates' => ['key' => ['exchange_rate' => 'exchange_rate']],
                     'to_currency' => 'usd',
                 ],
                 'livemode' => [],
@@ -7724,7 +7717,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.money_management.payout_methods_bank_account_spec',
                 'countries' => [
-                    'undefined' => [
+                    'key' => [
                         'fields' => [
                             '0' => [
                                 'local_name' => 'local_name',
@@ -8163,7 +8156,7 @@ final class GeneratedExamplesTest extends TestCase
                         'last_authorization_attempt_error' => null,
                         'latest_payment_attempt_record' => null,
                         'livemode' => [],
-                        'metadata' => ['undefined' => 'metadata'],
+                        'metadata' => ['key' => 'metadata'],
                         'on_behalf_of' => null,
                         'payment_method' => 'payment_method',
                         'payment_record' => null,
@@ -8201,7 +8194,7 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'cadence' => 'unscheduled',
                 'customer' => 'customer',
-                'metadata' => ['undefined' => 'metadata'],
+                'metadata' => ['key' => 'metadata'],
                 'payment_method' => 'payment_method',
             ],
             [],
@@ -8221,7 +8214,7 @@ final class GeneratedExamplesTest extends TestCase
                 'last_authorization_attempt_error' => null,
                 'latest_payment_attempt_record' => null,
                 'livemode' => [],
-                'metadata' => ['undefined' => 'metadata'],
+                'metadata' => ['key' => 'metadata'],
                 'on_behalf_of' => null,
                 'payment_method' => 'payment_method',
                 'payment_record' => null,
@@ -8245,7 +8238,7 @@ final class GeneratedExamplesTest extends TestCase
             ],
             'cadence' => 'unscheduled',
             'customer' => 'customer',
-            'metadata' => ['undefined' => 'metadata'],
+            'metadata' => ['key' => 'metadata'],
             'payment_method' => 'payment_method',
         ]);
         self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
@@ -8274,7 +8267,7 @@ final class GeneratedExamplesTest extends TestCase
                 'last_authorization_attempt_error' => null,
                 'latest_payment_attempt_record' => null,
                 'livemode' => [],
-                'metadata' => ['undefined' => 'metadata'],
+                'metadata' => ['key' => 'metadata'],
                 'on_behalf_of' => null,
                 'payment_method' => 'payment_method',
                 'payment_record' => null,
@@ -8321,7 +8314,7 @@ final class GeneratedExamplesTest extends TestCase
                 'last_authorization_attempt_error' => null,
                 'latest_payment_attempt_record' => null,
                 'livemode' => [],
-                'metadata' => ['undefined' => 'metadata'],
+                'metadata' => ['key' => 'metadata'],
                 'on_behalf_of' => null,
                 'payment_method' => 'payment_method',
                 'payment_record' => null,
@@ -8418,7 +8411,7 @@ final class GeneratedExamplesTest extends TestCase
                 'events' => [
                     [
                         'event_name' => 'event_name',
-                        'payload' => ['undefined' => 'payload'],
+                        'payload' => ['key' => 'payload'],
                     ],
                 ],
             ],
@@ -8439,7 +8432,7 @@ final class GeneratedExamplesTest extends TestCase
                 'events' => [
                     [
                         'event_name' => 'event_name',
-                        'payload' => ['undefined' => 'payload'],
+                        'payload' => ['key' => 'payload'],
                     ],
                 ],
             ]);

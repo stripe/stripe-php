@@ -31,6 +31,23 @@ class Mandate extends ApiResource
     const TYPE_SINGLE_USE = 'single_use';
 
     /**
+     * Retrieves a list of Mandates for a given PaymentMethod.
+     *
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, on_behalf_of?: string, payment_method: string, starting_after?: string, status: string} $params
+     * @param null|array|string $opts
+     *
+     * @return Collection<Mandate> of ApiResources
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, Collection::class, $params, $opts);
+    }
+
+    /**
      * Retrieves a Mandate object.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key

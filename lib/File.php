@@ -45,6 +45,7 @@ class File extends ApiResource
     const PURPOSE_SELFIE = 'selfie';
     const PURPOSE_SIGMA_SCHEDULED_QUERY = 'sigma_scheduled_query';
     const PURPOSE_TAX_DOCUMENT_USER_UPLOAD = 'tax_document_user_upload';
+    const PURPOSE_TERMINAL_ANDROID_APK = 'terminal_android_apk';
     const PURPOSE_TERMINAL_READER_SPLASHSCREEN = 'terminal_reader_splashscreen';
 
     /**

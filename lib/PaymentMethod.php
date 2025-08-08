@@ -47,6 +47,7 @@ namespace Stripe;
  * @property null|(object{dob?: null|(object{day: null|int, month: null|int, year: null|int}&StripeObject)}&StripeObject) $klarna
  * @property null|(object{}&StripeObject) $konbini
  * @property null|(object{brand: null|string, last4: null|string}&StripeObject) $kr_card
+ * @property null|Mandate $latest_active_mandate The Mandate object of the most recently created Mandate associated with this payment method
  * @property null|(object{email: null|string, persistent_token?: string}&StripeObject) $link
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|(object{}&StripeObject) $mb_way
