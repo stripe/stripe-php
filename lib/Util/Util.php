@@ -365,10 +365,11 @@ abstract class Util
     }
 
     /**
-     * Useful for determining if we should trust the object type when turning a response into a StripeObject
+     * Useful for determining if we should trust the object type when turning a response into a StripeObject.
      *
      * @param 'delete'|'get'|'post' $method the HTTP method
      * @param 'v1'|'v2' $apiMode the API version
+     *
      * @return bool true if the method is a DELETE request for v2 API, false otherwise
      */
     public static function isV2DeleteRequest($method, $apiMode)
