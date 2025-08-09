@@ -40,11 +40,11 @@ abstract class Util
      * @param array                $resp    the response from the Stripe API
      * @param array|RequestOptions $opts
      * @param 'v1'|'v2'            $apiMode whether the response is from a v1 or v2 API
-     * @param bool                 $is_v2_deleted_object whether we should ignore the `object` field and treat the response as a v2 deleted object
+     * @param bool                 $isV2DeletedObject whether we should ignore the `object` field and treat the response as a v2 deleted object
      *
      * @return array|StripeObject
      */
-    public static function convertToStripeObject($resp, $opts, $apiMode = 'v1', $is_v2_deleted_object = false)
+    public static function convertToStripeObject($resp, $opts, $apiMode = 'v1', $isV2DeletedObject = false)
     {
         $types = 'v1' === $apiMode ? ObjectTypes::mapping
             : ObjectTypes::v2Mapping;
@@ -57,7 +57,7 @@ abstract class Util
             return $mapped;
         }
         if (\is_array($resp)) {
-            if ($is_v2_deleted_object) {
+            if ($isV2DeletedObject) {
                 $class = DeletedObject::class;
             } elseif (
                 isset($resp['object']) && \is_string($resp['object'])
@@ -362,5 +362,17 @@ abstract class Util
         }
 
         return $apiMode;
+    }
+
+    /**
+     * Useful for determining if we should trust the object type when turning a response into a StripeObject
+     *
+     * @param 'delete'|'get'|'post' $method the HTTP method
+     * @param 'v1'|'v2' $apiMode the API version
+     * @return bool true if the method is a DELETE request for v2 API, false otherwise
+     */
+    public static function isV2DeleteRequest($method, $apiMode)
+    {
+        return 'delete' === $method && 'v2' === $apiMode;
     }
 }
