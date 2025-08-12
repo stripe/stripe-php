@@ -105,6 +105,7 @@ class ErrorObject extends StripeObject
     const CODE_INCORRECT_CVC = 'incorrect_cvc';
     const CODE_INCORRECT_NUMBER = 'incorrect_number';
     const CODE_INCORRECT_ZIP = 'incorrect_zip';
+    const CODE_INDIA_RECURRING_PAYMENT_MANDATE_CANCELED = 'india_recurring_payment_mandate_canceled';
     const CODE_INSTANT_PAYOUTS_CONFIG_DISABLED = 'instant_payouts_config_disabled';
     const CODE_INSTANT_PAYOUTS_CURRENCY_DISABLED = 'instant_payouts_currency_disabled';
     const CODE_INSTANT_PAYOUTS_LIMIT_EXCEEDED = 'instant_payouts_limit_exceeded';
