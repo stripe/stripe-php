@@ -5,7 +5,7 @@
 namespace Stripe\V2\MoneyManagement;
 
 /**
- * OutboundPaymentQuote represents a quote.
+ * OutboundPaymentQuote represents a quote that provides fee and amount estimates for OutboundPayment.
  *
  * @property string $id Unique identifier for the OutboundPaymentQuote.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
