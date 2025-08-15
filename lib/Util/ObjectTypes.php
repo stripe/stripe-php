@@ -187,9 +187,32 @@ class ObjectTypes
      */
     const v2Mapping = [
         // v2 object classes: The beginning of the section generated from our OpenAPI spec
+        \Stripe\V2\Account::OBJECT_NAME => \Stripe\V2\Account::class,
+        \Stripe\V2\AccountLink::OBJECT_NAME => \Stripe\V2\AccountLink::class,
+        \Stripe\V2\Billing\BillSetting::OBJECT_NAME => \Stripe\V2\Billing\BillSetting::class,
+        \Stripe\V2\Billing\BillSettingVersion::OBJECT_NAME => \Stripe\V2\Billing\BillSettingVersion::class,
+        \Stripe\V2\Billing\Cadence::OBJECT_NAME => \Stripe\V2\Billing\Cadence::class,
+        \Stripe\V2\Billing\CollectionSetting::OBJECT_NAME => \Stripe\V2\Billing\CollectionSetting::class,
+        \Stripe\V2\Billing\CollectionSettingVersion::OBJECT_NAME => \Stripe\V2\Billing\CollectionSettingVersion::class,
+        \Stripe\V2\Billing\CustomPricingUnit::OBJECT_NAME => \Stripe\V2\Billing\CustomPricingUnit::class,
+        \Stripe\V2\Billing\Intent::OBJECT_NAME => \Stripe\V2\Billing\Intent::class,
+        \Stripe\V2\Billing\LicensedItem::OBJECT_NAME => \Stripe\V2\Billing\LicensedItem::class,
+        \Stripe\V2\Billing\LicenseFee::OBJECT_NAME => \Stripe\V2\Billing\LicenseFee::class,
+        \Stripe\V2\Billing\LicenseFeeVersion::OBJECT_NAME => \Stripe\V2\Billing\LicenseFeeVersion::class,
+        \Stripe\V2\Billing\MeteredItem::OBJECT_NAME => \Stripe\V2\Billing\MeteredItem::class,
         \Stripe\V2\Billing\MeterEvent::OBJECT_NAME => \Stripe\V2\Billing\MeterEvent::class,
         \Stripe\V2\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustment::class,
         \Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \Stripe\V2\Billing\MeterEventSession::class,
+        \Stripe\V2\Billing\PricingPlan::OBJECT_NAME => \Stripe\V2\Billing\PricingPlan::class,
+        \Stripe\V2\Billing\PricingPlanComponent::OBJECT_NAME => \Stripe\V2\Billing\PricingPlanComponent::class,
+        \Stripe\V2\Billing\PricingPlanSubscription::OBJECT_NAME => \Stripe\V2\Billing\PricingPlanSubscription::class,
+        \Stripe\V2\Billing\PricingPlanVersion::OBJECT_NAME => \Stripe\V2\Billing\PricingPlanVersion::class,
+        \Stripe\V2\Billing\Profile::OBJECT_NAME => \Stripe\V2\Billing\Profile::class,
+        \Stripe\V2\Billing\RateCard::OBJECT_NAME => \Stripe\V2\Billing\RateCard::class,
+        \Stripe\V2\Billing\RateCardRate::OBJECT_NAME => \Stripe\V2\Billing\RateCardRate::class,
+        \Stripe\V2\Billing\RateCardSubscription::OBJECT_NAME => \Stripe\V2\Billing\RateCardSubscription::class,
+        \Stripe\V2\Billing\RateCardVersion::OBJECT_NAME => \Stripe\V2\Billing\RateCardVersion::class,
+        \Stripe\V2\Billing\ServiceAction::OBJECT_NAME => \Stripe\V2\Billing\ServiceAction::class,
         \Stripe\V2\Core\Account::OBJECT_NAME => \Stripe\V2\Core\Account::class,
         \Stripe\V2\Core\AccountLink::OBJECT_NAME => \Stripe\V2\Core\AccountLink::class,
         \Stripe\V2\Core\Person::OBJECT_NAME => \Stripe\V2\Core\Person::class,
@@ -214,6 +237,9 @@ class ObjectTypes
         \Stripe\V2\MoneyManagement\Transaction::OBJECT_NAME => \Stripe\V2\MoneyManagement\Transaction::class,
         \Stripe\V2\MoneyManagement\TransactionEntry::OBJECT_NAME => \Stripe\V2\MoneyManagement\TransactionEntry::class,
         \Stripe\V2\Payments\OffSessionPayment::OBJECT_NAME => \Stripe\V2\Payments\OffSessionPayment::class,
+        \Stripe\V2\Reporting\Report::OBJECT_NAME => \Stripe\V2\Reporting\Report::class,
+        \Stripe\V2\Reporting\ReportRun::OBJECT_NAME => \Stripe\V2\Reporting\ReportRun::class,
+        \Stripe\V2\Tax\AutomaticRule::OBJECT_NAME => \Stripe\V2\Tax\AutomaticRule::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
 }

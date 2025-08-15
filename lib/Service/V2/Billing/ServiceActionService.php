@@ -1,0 +1,44 @@
+<?php
+
+// File generated from our OpenAPI spec
+
+namespace Stripe\Service\V2\Billing;
+
+/**
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
+ * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ */
+class ServiceActionService extends \Stripe\Service\AbstractService
+{
+    /**
+     * Create a ServiceAction object.
+     *
+     * @param null|array{lookup_key?: string, service_interval: string, service_interval_count: int, type: string, credit_grant?: array{amount: array{type: string, custom_pricing_unit?: array{id: string, value: string}, monetary?: \Stripe\StripeObject}, applicability_config: array{scope: array{billable_items?: string[], price_type?: string}}, expiry_config: array{type: string}, name: string}, credit_grant_per_tenant?: array{amount: array{type: string, custom_pricing_unit?: array{id: string, value: string}, monetary?: \Stripe\StripeObject}, applicability_config: array{scope: array{billable_items?: string[], price_type?: string}}, expiry_config: array{type: string}, grant_condition: array{type: string, meter_event_first_per_period?: array{meter_segment_conditions: array{type: string, dimension?: array{payload_key: string, value: string}}[]}}, name: string}} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Billing\ServiceAction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function create($params = null, $opts = null)
+    {
+        return $this->request('post', '/v2/billing/service_actions', $params, $opts);
+    }
+
+    /**
+     * Retrieve a ServiceAction object.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Billing\ServiceAction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function retrieve($id, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v2/billing/service_actions/%s', $id), $params, $opts);
+    }
+}

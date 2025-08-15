@@ -589,6 +589,7 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
+                'changes' => ['key' => []],
                 'context' => 'context',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
@@ -2516,21 +2517,6 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(Quote::class, $result);
     }
 
-    public function testQuotesPreviewInvoicesLinesGet()
-    {
-        $this->expectsRequest(
-            'get',
-            '/v1/quotes/qt_xyz/preview_invoices/in_xyz/lines'
-        );
-        $result = $this->client->quotes->allPreviewInvoiceLines(
-            'qt_xyz',
-            'in_xyz',
-            []
-        );
-        self::assertInstanceOf(Collection::class, $result);
-        self::assertInstanceOf(InvoiceLineItem::class, $result->data[0]);
-    }
-
     public function testRadarEarlyFraudWarningsGet()
     {
         $this->expectsRequest('get', '/v1/radar/early_fraud_warnings');
@@ -3225,20 +3211,6 @@ final class GeneratedExamplesTest extends TestCase
         $this->expectsRequest('get', '/v1/tax_codes/txcd_xxxxxxxxxxxxx');
         $result = $this->client->taxCodes->retrieve('txcd_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(TaxCode::class, $result);
-    }
-
-    public function testTaxFormsPdfGet()
-    {
-        $this->expectsRequestStream(
-            'get',
-            '/v1/tax/forms/form_xxxxxxxxxxxxx/pdf'
-        );
-        $result = $this->client->tax->forms->pdf(
-            'form_xxxxxxxxxxxxx',
-            static function () {},
-            []
-        );
-        // TODO: assert proper instance, {"shape":"file"}
     }
 
     public function testTaxIdsDelete()
@@ -4850,6 +4822,1837 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(WebhookEndpoint::class, $result);
     }
 
+    public function testV2AccountLinkPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/account_links',
+            [
+                'account' => 'account',
+                'use_case' => [
+                    'type' => 'account_onboarding',
+                    'account_onboarding' => [
+                        'configurations' => ['recipient'],
+                        'refresh_url' => 'refresh_url',
+                        'return_url' => 'return_url',
+                    ],
+                    'account_update' => [
+                        'configurations' => ['recipient'],
+                        'refresh_url' => 'refresh_url',
+                        'return_url' => 'return_url',
+                    ],
+                ],
+            ],
+            [],
+            false,
+            [
+                'object' => 'account_link',
+                'account' => 'account',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'livemode' => [],
+                'url' => 'url',
+                'use_case' => [
+                    'type' => 'account_onboarding',
+                    'account_onboarding' => null,
+                    'account_update' => null,
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->accountLinks->create([
+            'account' => 'account',
+            'use_case' => [
+                'type' => 'account_onboarding',
+                'account_onboarding' => [
+                    'configurations' => ['recipient'],
+                    'refresh_url' => 'refresh_url',
+                    'return_url' => 'return_url',
+                ],
+                'account_update' => [
+                    'configurations' => ['recipient'],
+                    'refresh_url' => 'refresh_url',
+                    'return_url' => 'return_url',
+                ],
+            ],
+        ]);
+        self::assertInstanceOf(V2\AccountLink::class, $result);
+    }
+
+    public function testV2AccountGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/accounts',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'account',
+                        'applied_configurations' => ['0' => 'storer'],
+                        'configuration' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'email' => null,
+                        'legal_entity_data' => null,
+                        'livemode' => [],
+                        'metadata' => null,
+                        'name' => null,
+                        'requirements' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->accounts->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Account::class, $result->data[0]);
+    }
+
+    public function testV2AccountPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/accounts',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'account',
+                'applied_configurations' => ['0' => 'storer'],
+                'configuration' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'email' => null,
+                'legal_entity_data' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'name' => null,
+                'requirements' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->accounts->create([]);
+        self::assertInstanceOf(V2\Account::class, $result);
+    }
+
+    public function testV2AccountGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/accounts/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'account',
+                'applied_configurations' => ['0' => 'storer'],
+                'configuration' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'email' => null,
+                'legal_entity_data' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'name' => null,
+                'requirements' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->accounts->retrieve('id_123', []);
+        self::assertInstanceOf(V2\Account::class, $result);
+    }
+
+    public function testV2AccountPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/accounts/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'account',
+                'applied_configurations' => ['0' => 'storer'],
+                'configuration' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'email' => null,
+                'legal_entity_data' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'name' => null,
+                'requirements' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->accounts->update('id_123', []);
+        self::assertInstanceOf(V2\Account::class, $result);
+    }
+
+    public function testV2AccountPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/accounts/id_123/close',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'account',
+                'applied_configurations' => ['0' => 'storer'],
+                'configuration' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'email' => null,
+                'legal_entity_data' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'name' => null,
+                'requirements' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->accounts->close('id_123', []);
+        self::assertInstanceOf(V2\Account::class, $result);
+    }
+
+    public function testV2BillingBillSettingGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/bill_settings',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.bill_setting',
+                        'calculation' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'display_name' => null,
+                        'invoice' => null,
+                        'invoice_rendering_template' => null,
+                        'latest_version' => 'latest_version',
+                        'live_version' => 'live_version',
+                        'livemode' => [],
+                        'lookup_key' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->billSettings->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\BillSetting::class, $result->data[0]);
+    }
+
+    public function testV2BillingBillSettingPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/bill_settings',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.bill_setting',
+                'calculation' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => null,
+                'invoice' => null,
+                'invoice_rendering_template' => null,
+                'latest_version' => 'latest_version',
+                'live_version' => 'live_version',
+                'livemode' => [],
+                'lookup_key' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->billSettings->create([]);
+        self::assertInstanceOf(V2\Billing\BillSetting::class, $result);
+    }
+
+    public function testV2BillingBillSettingGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/bill_settings/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.bill_setting',
+                'calculation' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => null,
+                'invoice' => null,
+                'invoice_rendering_template' => null,
+                'latest_version' => 'latest_version',
+                'live_version' => 'live_version',
+                'livemode' => [],
+                'lookup_key' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->billSettings->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\BillSetting::class, $result);
+    }
+
+    public function testV2BillingBillSettingPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/bill_settings/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.bill_setting',
+                'calculation' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => null,
+                'invoice' => null,
+                'invoice_rendering_template' => null,
+                'latest_version' => 'latest_version',
+                'live_version' => 'live_version',
+                'livemode' => [],
+                'lookup_key' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->billSettings->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\BillSetting::class, $result);
+    }
+
+    public function testV2BillingBillSettingsVersionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/bill_settings/bill_setting_id_123/versions',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.bill_setting_version',
+                        'calculation' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'invoice' => null,
+                        'invoice_rendering_template' => null,
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->billSettings->versions->all(
+            'bill_setting_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\BillSettingVersion::class, $result->data[0]);
+    }
+
+    public function testV2BillingBillSettingsVersionGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/bill_settings/bill_setting_id_123/versions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.bill_setting_version',
+                'calculation' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'invoice' => null,
+                'invoice_rendering_template' => null,
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->billSettings->versions->retrieve(
+            'bill_setting_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\BillSettingVersion::class, $result);
+    }
+
+    public function testV2BillingCadenceGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/cadences',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.cadence',
+                        'billing_cycle' => [
+                            'interval_count' => [],
+                            'type' => 'week',
+                            'day' => null,
+                            'month' => null,
+                            'week' => null,
+                            'year' => null,
+                        ],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'invoice_discount_rules' => null,
+                        'livemode' => [],
+                        'metadata' => null,
+                        'next_billing_date' => null,
+                        'payer' => [
+                            'billing_profile' => null,
+                            'customer' => null,
+                            'type' => 'customer',
+                        ],
+                        'settings' => null,
+                        'status' => 'active',
+                        'test_clock' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->cadences->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\Cadence::class, $result->data[0]);
+    }
+
+    public function testV2BillingCadencePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/cadences',
+            [
+                'billing_cycle' => [
+                    'interval_count' => 797691627,
+                    'type' => 'week',
+                    'day' => [
+                        'time' => [
+                            'hour' => 3208676,
+                            'minute' => 1074026988,
+                        ],
+                    ],
+                    'month' => [
+                        'day_of_month' => 1361669285,
+                        'time' => [
+                            'hour' => 3208676,
+                            'minute' => 1074026988,
+                        ],
+                    ],
+                    'week' => [
+                        'day_of_week' => 43636807,
+                        'time' => [
+                            'hour' => 3208676,
+                            'minute' => 1074026988,
+                        ],
+                    ],
+                    'year' => [
+                        'day_of_month' => 1361669285,
+                        'month_of_year' => 82933018,
+                        'time' => [
+                            'hour' => 3208676,
+                            'minute' => 1074026988,
+                        ],
+                    ],
+                ],
+                'payer' => [
+                    'billing_profile' => 'billing_profile',
+                    'customer' => 'customer',
+                    'type' => 'customer',
+                ],
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.cadence',
+                'billing_cycle' => [
+                    'interval_count' => [],
+                    'type' => 'week',
+                    'day' => null,
+                    'month' => null,
+                    'week' => null,
+                    'year' => null,
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'invoice_discount_rules' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'next_billing_date' => null,
+                'payer' => [
+                    'billing_profile' => null,
+                    'customer' => null,
+                    'type' => 'customer',
+                ],
+                'settings' => null,
+                'status' => 'active',
+                'test_clock' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->cadences->create([
+            'billing_cycle' => [
+                'interval_count' => 797691627,
+                'type' => 'week',
+                'day' => [
+                    'time' => [
+                        'hour' => 3208676,
+                        'minute' => 1074026988,
+                    ],
+                ],
+                'month' => [
+                    'day_of_month' => 1361669285,
+                    'time' => [
+                        'hour' => 3208676,
+                        'minute' => 1074026988,
+                    ],
+                ],
+                'week' => [
+                    'day_of_week' => 43636807,
+                    'time' => [
+                        'hour' => 3208676,
+                        'minute' => 1074026988,
+                    ],
+                ],
+                'year' => [
+                    'day_of_month' => 1361669285,
+                    'month_of_year' => 82933018,
+                    'time' => [
+                        'hour' => 3208676,
+                        'minute' => 1074026988,
+                    ],
+                ],
+            ],
+            'payer' => [
+                'billing_profile' => 'billing_profile',
+                'customer' => 'customer',
+                'type' => 'customer',
+            ],
+        ]);
+        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
+    }
+
+    public function testV2BillingCadenceGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/cadences/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.cadence',
+                'billing_cycle' => [
+                    'interval_count' => [],
+                    'type' => 'week',
+                    'day' => null,
+                    'month' => null,
+                    'week' => null,
+                    'year' => null,
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'invoice_discount_rules' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'next_billing_date' => null,
+                'payer' => [
+                    'billing_profile' => null,
+                    'customer' => null,
+                    'type' => 'customer',
+                ],
+                'settings' => null,
+                'status' => 'active',
+                'test_clock' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->cadences->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
+    }
+
+    public function testV2BillingCadencePost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/cadences/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.cadence',
+                'billing_cycle' => [
+                    'interval_count' => [],
+                    'type' => 'week',
+                    'day' => null,
+                    'month' => null,
+                    'week' => null,
+                    'year' => null,
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'invoice_discount_rules' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'next_billing_date' => null,
+                'payer' => [
+                    'billing_profile' => null,
+                    'customer' => null,
+                    'type' => 'customer',
+                ],
+                'settings' => null,
+                'status' => 'active',
+                'test_clock' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->cadences->update('id_123', []);
+        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
+    }
+
+    public function testV2BillingCadencePost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/cadences/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.cadence',
+                'billing_cycle' => [
+                    'interval_count' => [],
+                    'type' => 'week',
+                    'day' => null,
+                    'month' => null,
+                    'week' => null,
+                    'year' => null,
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'invoice_discount_rules' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'next_billing_date' => null,
+                'payer' => [
+                    'billing_profile' => null,
+                    'customer' => null,
+                    'type' => 'customer',
+                ],
+                'settings' => null,
+                'status' => 'active',
+                'test_clock' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->cadences->cancel('id_123', []);
+        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
+    }
+
+    public function testV2BillingCollectionSettingGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/collection_settings',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.collection_setting',
+                        'collection_method' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'display_name' => null,
+                        'latest_version' => 'latest_version',
+                        'live_version' => 'live_version',
+                        'livemode' => [],
+                        'lookup_key' => null,
+                        'payment_method_configuration' => null,
+                        'payment_method_options' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->collectionSettings->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\CollectionSetting::class, $result->data[0]);
+    }
+
+    public function testV2BillingCollectionSettingPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/collection_settings',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.collection_setting',
+                'collection_method' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => null,
+                'latest_version' => 'latest_version',
+                'live_version' => 'live_version',
+                'livemode' => [],
+                'lookup_key' => null,
+                'payment_method_configuration' => null,
+                'payment_method_options' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->collectionSettings->create([]);
+        self::assertInstanceOf(V2\Billing\CollectionSetting::class, $result);
+    }
+
+    public function testV2BillingCollectionSettingGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/collection_settings/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.collection_setting',
+                'collection_method' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => null,
+                'latest_version' => 'latest_version',
+                'live_version' => 'live_version',
+                'livemode' => [],
+                'lookup_key' => null,
+                'payment_method_configuration' => null,
+                'payment_method_options' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->collectionSettings->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\CollectionSetting::class, $result);
+    }
+
+    public function testV2BillingCollectionSettingPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/collection_settings/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.collection_setting',
+                'collection_method' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => null,
+                'latest_version' => 'latest_version',
+                'live_version' => 'live_version',
+                'livemode' => [],
+                'lookup_key' => null,
+                'payment_method_configuration' => null,
+                'payment_method_options' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->collectionSettings->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\CollectionSetting::class, $result);
+    }
+
+    public function testV2BillingCollectionSettingsVersionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/collection_settings/collection_setting_id_123/versions',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.collection_setting_version',
+                        'collection_method' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'livemode' => [],
+                        'payment_method_configuration' => null,
+                        'payment_method_options' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->collectionSettings->versions->all(
+            'collection_setting_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\CollectionSettingVersion::class, $result->data[0]);
+    }
+
+    public function testV2BillingCollectionSettingsVersionGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/collection_settings/collection_setting_id_123/versions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.collection_setting_version',
+                'collection_method' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'payment_method_configuration' => null,
+                'payment_method_options' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->collectionSettings->versions->retrieve(
+            'collection_setting_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\CollectionSettingVersion::class, $result);
+    }
+
+    public function testV2BillingCustomPricingUnitGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/custom_pricing_units',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.custom_pricing_unit',
+                        'active' => [],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'display_name' => 'display_name',
+                        'livemode' => [],
+                        'lookup_key' => null,
+                        'metadata' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->customPricingUnits->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\CustomPricingUnit::class, $result->data[0]);
+    }
+
+    public function testV2BillingCustomPricingUnitPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/custom_pricing_units',
+            ['display_name' => 'display_name'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.custom_pricing_unit',
+                'active' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => 'display_name',
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->customPricingUnits->create([
+            'display_name' => 'display_name',
+        ]);
+        self::assertInstanceOf(V2\Billing\CustomPricingUnit::class, $result);
+    }
+
+    public function testV2BillingCustomPricingUnitGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/custom_pricing_units/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.custom_pricing_unit',
+                'active' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => 'display_name',
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->customPricingUnits->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\CustomPricingUnit::class, $result);
+    }
+
+    public function testV2BillingCustomPricingUnitPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/custom_pricing_units/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.custom_pricing_unit',
+                'active' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => 'display_name',
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->customPricingUnits->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\CustomPricingUnit::class, $result);
+    }
+
+    public function testV2BillingIntentGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/intents',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.intent',
+                        'amount_details' => [
+                            'currency' => 'usd',
+                            'discount' => 'discount',
+                            'shipping' => 'shipping',
+                            'subtotal' => 'subtotal',
+                            'tax' => 'tax',
+                            'total' => 'total',
+                        ],
+                        'cadence' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'currency' => 'usd',
+                        'effective_at' => 'on_reserve',
+                        'livemode' => [],
+                        'status' => 'draft',
+                        'status_transitions' => [
+                            'canceled_at' => null,
+                            'committed_at' => null,
+                            'drafted_at' => null,
+                            'reserved_at' => null,
+                        ],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->intents->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\Intent::class, $result->data[0]);
+    }
+
+    public function testV2BillingIntentPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/intents',
+            [
+                'actions' => [
+                    [
+                        'type' => 'apply',
+                        'apply' => [
+                            'type' => 'invoice_discount_rule',
+                            'invoice_discount_rule' => [
+                                'applies_to' => 'cadence',
+                                'type' => 'percent_off',
+                                'percent_off' => [
+                                    'maximum_applications' => [
+                                        'type' => 'indefinite',
+                                    ],
+                                    'percent_off' => 'percent_off',
+                                ],
+                            ],
+                        ],
+                        'deactivate' => [
+                            'pricing_plan_subscription_details' => [
+                                'pricing_plan_subscription' => 'pricing_plan_subscription',
+                            ],
+                            'proration_behavior' => 'none',
+                            'type' => 'pricing_plan_subscription_details',
+                        ],
+                        'modify' => [
+                            'pricing_plan_subscription_details' => [
+                                'component_configurations' => [
+                                    [
+                                        'quantity' => 1285004149,
+                                        'lookup_key' => 'lookup_key',
+                                        'pricing_plan_component' => 'pricing_plan_component',
+                                    ],
+                                ],
+                                'new_pricing_plan' => 'new_pricing_plan',
+                                'new_pricing_plan_version' => 'new_pricing_plan_version',
+                                'pricing_plan_subscription' => 'pricing_plan_subscription',
+                            ],
+                            'proration_behavior' => 'none',
+                            'type' => 'pricing_plan_subscription_details',
+                        ],
+                        'remove' => [
+                            'type' => 'invoice_discount_rule',
+                            'invoice_discount_rule' => 'invoice_discount_rule',
+                        ],
+                        'subscribe' => [
+                            'proration_behavior' => 'none',
+                            'type' => 'pricing_plan_subscription_details',
+                            'pricing_plan_subscription_details' => [
+                                'component_configurations' => [
+                                    [
+                                        'quantity' => 1285004149,
+                                        'lookup_key' => 'lookup_key',
+                                        'pricing_plan_component' => 'pricing_plan_component',
+                                    ],
+                                ],
+                                'metadata' => ['key' => 'metadata'],
+                                'pricing_plan' => 'pricing_plan',
+                                'pricing_plan_version' => 'pricing_plan_version',
+                            ],
+                        ],
+                    ],
+                ],
+                'currency' => 'usd',
+                'effective_at' => 'on_reserve',
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.intent',
+                'amount_details' => [
+                    'currency' => 'usd',
+                    'discount' => 'discount',
+                    'shipping' => 'shipping',
+                    'subtotal' => 'subtotal',
+                    'tax' => 'tax',
+                    'total' => 'total',
+                ],
+                'cadence' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'effective_at' => 'on_reserve',
+                'livemode' => [],
+                'status' => 'draft',
+                'status_transitions' => [
+                    'canceled_at' => null,
+                    'committed_at' => null,
+                    'drafted_at' => null,
+                    'reserved_at' => null,
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->intents->create([
+            'actions' => [
+                [
+                    'type' => 'apply',
+                    'apply' => [
+                        'type' => 'invoice_discount_rule',
+                        'invoice_discount_rule' => [
+                            'applies_to' => 'cadence',
+                            'type' => 'percent_off',
+                            'percent_off' => [
+                                'maximum_applications' => [
+                                    'type' => 'indefinite',
+                                ],
+                                'percent_off' => 'percent_off',
+                            ],
+                        ],
+                    ],
+                    'deactivate' => [
+                        'pricing_plan_subscription_details' => [
+                            'pricing_plan_subscription' => 'pricing_plan_subscription',
+                        ],
+                        'proration_behavior' => 'none',
+                        'type' => 'pricing_plan_subscription_details',
+                    ],
+                    'modify' => [
+                        'pricing_plan_subscription_details' => [
+                            'component_configurations' => [
+                                [
+                                    'quantity' => 1285004149,
+                                    'lookup_key' => 'lookup_key',
+                                    'pricing_plan_component' => 'pricing_plan_component',
+                                ],
+                            ],
+                            'new_pricing_plan' => 'new_pricing_plan',
+                            'new_pricing_plan_version' => 'new_pricing_plan_version',
+                            'pricing_plan_subscription' => 'pricing_plan_subscription',
+                        ],
+                        'proration_behavior' => 'none',
+                        'type' => 'pricing_plan_subscription_details',
+                    ],
+                    'remove' => [
+                        'type' => 'invoice_discount_rule',
+                        'invoice_discount_rule' => 'invoice_discount_rule',
+                    ],
+                    'subscribe' => [
+                        'proration_behavior' => 'none',
+                        'type' => 'pricing_plan_subscription_details',
+                        'pricing_plan_subscription_details' => [
+                            'component_configurations' => [
+                                [
+                                    'quantity' => 1285004149,
+                                    'lookup_key' => 'lookup_key',
+                                    'pricing_plan_component' => 'pricing_plan_component',
+                                ],
+                            ],
+                            'metadata' => ['key' => 'metadata'],
+                            'pricing_plan' => 'pricing_plan',
+                            'pricing_plan_version' => 'pricing_plan_version',
+                        ],
+                    ],
+                ],
+            ],
+            'currency' => 'usd',
+            'effective_at' => 'on_reserve',
+        ]);
+        self::assertInstanceOf(V2\Billing\Intent::class, $result);
+    }
+
+    public function testV2BillingIntentGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/intents/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.intent',
+                'amount_details' => [
+                    'currency' => 'usd',
+                    'discount' => 'discount',
+                    'shipping' => 'shipping',
+                    'subtotal' => 'subtotal',
+                    'tax' => 'tax',
+                    'total' => 'total',
+                ],
+                'cadence' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'effective_at' => 'on_reserve',
+                'livemode' => [],
+                'status' => 'draft',
+                'status_transitions' => [
+                    'canceled_at' => null,
+                    'committed_at' => null,
+                    'drafted_at' => null,
+                    'reserved_at' => null,
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->intents->retrieve('id_123', []);
+        self::assertInstanceOf(V2\Billing\Intent::class, $result);
+    }
+
+    public function testV2BillingIntentPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/intents/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.intent',
+                'amount_details' => [
+                    'currency' => 'usd',
+                    'discount' => 'discount',
+                    'shipping' => 'shipping',
+                    'subtotal' => 'subtotal',
+                    'tax' => 'tax',
+                    'total' => 'total',
+                ],
+                'cadence' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'effective_at' => 'on_reserve',
+                'livemode' => [],
+                'status' => 'draft',
+                'status_transitions' => [
+                    'canceled_at' => null,
+                    'committed_at' => null,
+                    'drafted_at' => null,
+                    'reserved_at' => null,
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->intents->cancel('id_123', []);
+        self::assertInstanceOf(V2\Billing\Intent::class, $result);
+    }
+
+    public function testV2BillingIntentPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/intents/id_123/commit',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.intent',
+                'amount_details' => [
+                    'currency' => 'usd',
+                    'discount' => 'discount',
+                    'shipping' => 'shipping',
+                    'subtotal' => 'subtotal',
+                    'tax' => 'tax',
+                    'total' => 'total',
+                ],
+                'cadence' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'effective_at' => 'on_reserve',
+                'livemode' => [],
+                'status' => 'draft',
+                'status_transitions' => [
+                    'canceled_at' => null,
+                    'committed_at' => null,
+                    'drafted_at' => null,
+                    'reserved_at' => null,
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->intents->commit('id_123', []);
+        self::assertInstanceOf(V2\Billing\Intent::class, $result);
+    }
+
+    public function testV2BillingIntentPost4()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/intents/id_123/release_reservation',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.intent',
+                'amount_details' => [
+                    'currency' => 'usd',
+                    'discount' => 'discount',
+                    'shipping' => 'shipping',
+                    'subtotal' => 'subtotal',
+                    'tax' => 'tax',
+                    'total' => 'total',
+                ],
+                'cadence' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'effective_at' => 'on_reserve',
+                'livemode' => [],
+                'status' => 'draft',
+                'status_transitions' => [
+                    'canceled_at' => null,
+                    'committed_at' => null,
+                    'drafted_at' => null,
+                    'reserved_at' => null,
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->intents->releaseReservation(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\Intent::class, $result);
+    }
+
+    public function testV2BillingIntentPost5()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/intents/id_123/reserve',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.intent',
+                'amount_details' => [
+                    'currency' => 'usd',
+                    'discount' => 'discount',
+                    'shipping' => 'shipping',
+                    'subtotal' => 'subtotal',
+                    'tax' => 'tax',
+                    'total' => 'total',
+                ],
+                'cadence' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'effective_at' => 'on_reserve',
+                'livemode' => [],
+                'status' => 'draft',
+                'status_transitions' => [
+                    'canceled_at' => null,
+                    'committed_at' => null,
+                    'drafted_at' => null,
+                    'reserved_at' => null,
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->intents->reserve('id_123', []);
+        self::assertInstanceOf(V2\Billing\Intent::class, $result);
+    }
+
+    public function testV2BillingLicenseFeeGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/license_fees',
+            ['lookup_keys' => ['lookup_keys']],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.license_fee',
+                        'active' => [],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'currency' => 'usd',
+                        'display_name' => 'display_name',
+                        'latest_version' => 'latest_version',
+                        'licensed_item' => [
+                            'id' => 'obj_123',
+                            'object' => 'v2.billing.licensed_item',
+                            'created' => '1970-01-12T21:42:34.472Z',
+                            'display_name' => 'display_name',
+                            'livemode' => [],
+                            'lookup_key' => null,
+                            'metadata' => null,
+                            'tax_details' => null,
+                            'unit_label' => null,
+                        ],
+                        'live_version' => 'live_version',
+                        'livemode' => [],
+                        'lookup_key' => null,
+                        'metadata' => null,
+                        'service_interval' => 'month',
+                        'service_interval_count' => [],
+                        'tax_behavior' => 'exclusive',
+                        'tiering_mode' => null,
+                        'tiers' => [
+                            '0' => [
+                                'flat_amount' => null,
+                                'unit_amount' => null,
+                                'up_to_decimal' => null,
+                                'up_to_inf' => null,
+                            ],
+                        ],
+                        'transform_quantity' => null,
+                        'unit_amount' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->licenseFees->all([
+            'lookup_keys' => ['lookup_keys'],
+        ]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\LicenseFee::class, $result->data[0]);
+    }
+
+    public function testV2BillingLicenseFeePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/license_fees',
+            [
+                'currency' => 'usd',
+                'display_name' => 'display_name',
+                'licensed_item' => 'licensed_item',
+                'service_interval' => 'month',
+                'service_interval_count' => 1375336415,
+                'tax_behavior' => 'exclusive',
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.license_fee',
+                'active' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'display_name' => 'display_name',
+                'latest_version' => 'latest_version',
+                'licensed_item' => [
+                    'id' => 'obj_123',
+                    'object' => 'v2.billing.licensed_item',
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'display_name' => 'display_name',
+                    'livemode' => [],
+                    'lookup_key' => null,
+                    'metadata' => null,
+                    'tax_details' => null,
+                    'unit_label' => null,
+                ],
+                'live_version' => 'live_version',
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'service_interval' => 'month',
+                'service_interval_count' => [],
+                'tax_behavior' => 'exclusive',
+                'tiering_mode' => null,
+                'tiers' => [
+                    '0' => [
+                        'flat_amount' => null,
+                        'unit_amount' => null,
+                        'up_to_decimal' => null,
+                        'up_to_inf' => null,
+                    ],
+                ],
+                'transform_quantity' => null,
+                'unit_amount' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->licenseFees->create([
+            'currency' => 'usd',
+            'display_name' => 'display_name',
+            'licensed_item' => 'licensed_item',
+            'service_interval' => 'month',
+            'service_interval_count' => 1375336415,
+            'tax_behavior' => 'exclusive',
+        ]);
+        self::assertInstanceOf(V2\Billing\LicenseFee::class, $result);
+    }
+
+    public function testV2BillingLicenseFeeGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/license_fees/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.license_fee',
+                'active' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'display_name' => 'display_name',
+                'latest_version' => 'latest_version',
+                'licensed_item' => [
+                    'id' => 'obj_123',
+                    'object' => 'v2.billing.licensed_item',
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'display_name' => 'display_name',
+                    'livemode' => [],
+                    'lookup_key' => null,
+                    'metadata' => null,
+                    'tax_details' => null,
+                    'unit_label' => null,
+                ],
+                'live_version' => 'live_version',
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'service_interval' => 'month',
+                'service_interval_count' => [],
+                'tax_behavior' => 'exclusive',
+                'tiering_mode' => null,
+                'tiers' => [
+                    '0' => [
+                        'flat_amount' => null,
+                        'unit_amount' => null,
+                        'up_to_decimal' => null,
+                        'up_to_inf' => null,
+                    ],
+                ],
+                'transform_quantity' => null,
+                'unit_amount' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->licenseFees->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\LicenseFee::class, $result);
+    }
+
+    public function testV2BillingLicenseFeePost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/license_fees/id_123',
+            ['display_name' => 'display_name'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.license_fee',
+                'active' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'display_name' => 'display_name',
+                'latest_version' => 'latest_version',
+                'licensed_item' => [
+                    'id' => 'obj_123',
+                    'object' => 'v2.billing.licensed_item',
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'display_name' => 'display_name',
+                    'livemode' => [],
+                    'lookup_key' => null,
+                    'metadata' => null,
+                    'tax_details' => null,
+                    'unit_label' => null,
+                ],
+                'live_version' => 'live_version',
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'service_interval' => 'month',
+                'service_interval_count' => [],
+                'tax_behavior' => 'exclusive',
+                'tiering_mode' => null,
+                'tiers' => [
+                    '0' => [
+                        'flat_amount' => null,
+                        'unit_amount' => null,
+                        'up_to_decimal' => null,
+                        'up_to_inf' => null,
+                    ],
+                ],
+                'transform_quantity' => null,
+                'unit_amount' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->licenseFees->update(
+            'id_123',
+            ['display_name' => 'display_name']
+        );
+        self::assertInstanceOf(V2\Billing\LicenseFee::class, $result);
+    }
+
+    public function testV2BillingLicenseFeesVersionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/license_fees/license_fee_id_123/versions',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.license_fee_version',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'license_fee_id' => 'license_fee_id',
+                        'livemode' => [],
+                        'tiering_mode' => null,
+                        'tiers' => [
+                            '0' => [
+                                'flat_amount' => null,
+                                'unit_amount' => null,
+                                'up_to_decimal' => null,
+                                'up_to_inf' => null,
+                            ],
+                        ],
+                        'transform_quantity' => null,
+                        'unit_amount' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->licenseFees->versions->all(
+            'license_fee_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\LicenseFeeVersion::class, $result->data[0]);
+    }
+
+    public function testV2BillingLicenseFeesVersionGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/license_fees/license_fee_id_123/versions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.license_fee_version',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'license_fee_id' => 'license_fee_id',
+                'livemode' => [],
+                'tiering_mode' => null,
+                'tiers' => [
+                    '0' => [
+                        'flat_amount' => null,
+                        'unit_amount' => null,
+                        'up_to_decimal' => null,
+                        'up_to_inf' => null,
+                    ],
+                ],
+                'transform_quantity' => null,
+                'unit_amount' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->licenseFees->versions->retrieve(
+            'license_fee_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\LicenseFeeVersion::class, $result);
+    }
+
+    public function testV2BillingLicensedItemGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/licensed_items',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.licensed_item',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'display_name' => 'display_name',
+                        'livemode' => [],
+                        'lookup_key' => null,
+                        'metadata' => null,
+                        'tax_details' => null,
+                        'unit_label' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->licensedItems->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\LicensedItem::class, $result->data[0]);
+    }
+
+    public function testV2BillingLicensedItemPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/licensed_items',
+            ['display_name' => 'display_name'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.licensed_item',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => 'display_name',
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'tax_details' => null,
+                'unit_label' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->licensedItems->create([
+            'display_name' => 'display_name',
+        ]);
+        self::assertInstanceOf(V2\Billing\LicensedItem::class, $result);
+    }
+
+    public function testV2BillingLicensedItemGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/licensed_items/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.licensed_item',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => 'display_name',
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'tax_details' => null,
+                'unit_label' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->licensedItems->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\LicensedItem::class, $result);
+    }
+
+    public function testV2BillingLicensedItemPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/licensed_items/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.licensed_item',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => 'display_name',
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'tax_details' => null,
+                'unit_label' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->licensedItems->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\LicensedItem::class, $result);
+    }
+
     public function testV2BillingMeterEventAdjustmentPost()
     {
         $this->stubRequest(
@@ -4916,7 +6719,7 @@ final class GeneratedExamplesTest extends TestCase
                     [
                         'event_name' => 'event_name',
                         'identifier' => 'identifier',
-                        'payload' => ['undefined' => 'payload'],
+                        'payload' => ['key' => 'payload'],
                         'timestamp' => '1970-01-01T15:18:46.294Z',
                     ],
                 ],
@@ -4932,7 +6735,7 @@ final class GeneratedExamplesTest extends TestCase
                 [
                     'event_name' => 'event_name',
                     'identifier' => 'identifier',
-                    'payload' => ['undefined' => 'payload'],
+                    'payload' => ['key' => 'payload'],
                     'timestamp' => '1970-01-01T15:18:46.294Z',
                 ],
             ],
@@ -4944,10 +6747,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/billing/meter_events',
-            [
-                'event_name' => 'event_name',
-                'payload' => ['undefined' => 'payload'],
-            ],
+            ['event_name' => 'event_name', 'payload' => ['key' => 'payload']],
             [],
             false,
             [
@@ -4956,7 +6756,7 @@ final class GeneratedExamplesTest extends TestCase
                 'event_name' => 'event_name',
                 'identifier' => 'identifier',
                 'livemode' => [],
-                'payload' => ['undefined' => 'payload'],
+                'payload' => ['key' => 'payload'],
                 'timestamp' => '1970-01-01T15:18:46.294Z',
             ],
             200,
@@ -4964,9 +6764,1440 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->billing->meterEvents->create([
             'event_name' => 'event_name',
-            'payload' => ['undefined' => 'payload'],
+            'payload' => ['key' => 'payload'],
         ]);
         self::assertInstanceOf(V2\Billing\MeterEvent::class, $result);
+    }
+
+    public function testV2BillingMeteredItemGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/metered_items',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.metered_item',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'display_name' => 'display_name',
+                        'invoice_presentation_dimensions' => [
+                            '0' => 'invoice_presentation_dimensions',
+                        ],
+                        'livemode' => [],
+                        'lookup_key' => null,
+                        'metadata' => null,
+                        'meter' => 'meter',
+                        'meter_segment_conditions' => [
+                            '0' => [
+                                'dimension' => 'dimension',
+                                'value' => 'value',
+                            ],
+                        ],
+                        'tax_details' => null,
+                        'unit_label' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->meteredItems->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\MeteredItem::class, $result->data[0]);
+    }
+
+    public function testV2BillingMeteredItemPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/metered_items',
+            ['display_name' => 'display_name', 'meter' => 'meter'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.metered_item',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => 'display_name',
+                'invoice_presentation_dimensions' => [
+                    '0' => 'invoice_presentation_dimensions',
+                ],
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'meter' => 'meter',
+                'meter_segment_conditions' => [
+                    '0' => [
+                        'dimension' => 'dimension',
+                        'value' => 'value',
+                    ],
+                ],
+                'tax_details' => null,
+                'unit_label' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->meteredItems->create([
+            'display_name' => 'display_name',
+            'meter' => 'meter',
+        ]);
+        self::assertInstanceOf(V2\Billing\MeteredItem::class, $result);
+    }
+
+    public function testV2BillingMeteredItemGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/metered_items/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.metered_item',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => 'display_name',
+                'invoice_presentation_dimensions' => [
+                    '0' => 'invoice_presentation_dimensions',
+                ],
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'meter' => 'meter',
+                'meter_segment_conditions' => [
+                    '0' => [
+                        'dimension' => 'dimension',
+                        'value' => 'value',
+                    ],
+                ],
+                'tax_details' => null,
+                'unit_label' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->meteredItems->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\MeteredItem::class, $result);
+    }
+
+    public function testV2BillingMeteredItemPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/metered_items/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.metered_item',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => 'display_name',
+                'invoice_presentation_dimensions' => [
+                    '0' => 'invoice_presentation_dimensions',
+                ],
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'meter' => 'meter',
+                'meter_segment_conditions' => [
+                    '0' => [
+                        'dimension' => 'dimension',
+                        'value' => 'value',
+                    ],
+                ],
+                'tax_details' => null,
+                'unit_label' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->meteredItems->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\MeteredItem::class, $result);
+    }
+
+    public function testV2BillingPricingPlanSubscriptionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/pricing_plan_subscriptions',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.pricing_plan_subscription',
+                        'billing_cadence' => 'billing_cadence',
+                        'collection_status' => 'past_due',
+                        'collection_status_transitions' => [
+                            'awaiting_customer_action_at' => null,
+                            'current_at' => null,
+                            'past_due_at' => null,
+                            'paused_at' => null,
+                            'unpaid_at' => null,
+                        ],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'livemode' => [],
+                        'metadata' => null,
+                        'pricing_plan' => 'pricing_plan',
+                        'pricing_plan_version' => 'pricing_plan_version',
+                        'servicing_status' => 'pending',
+                        'servicing_status_transitions' => [
+                            'activated_at' => null,
+                            'canceled_at' => null,
+                            'paused_at' => null,
+                        ],
+                        'test_clock' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlanSubscriptions->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\PricingPlanSubscription::class, $result->data[0]);
+    }
+
+    public function testV2BillingPricingPlanSubscriptionGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/pricing_plan_subscriptions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.pricing_plan_subscription',
+                'billing_cadence' => 'billing_cadence',
+                'collection_status' => 'past_due',
+                'collection_status_transitions' => [
+                    'awaiting_customer_action_at' => null,
+                    'current_at' => null,
+                    'past_due_at' => null,
+                    'paused_at' => null,
+                    'unpaid_at' => null,
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'metadata' => null,
+                'pricing_plan' => 'pricing_plan',
+                'pricing_plan_version' => 'pricing_plan_version',
+                'servicing_status' => 'pending',
+                'servicing_status_transitions' => [
+                    'activated_at' => null,
+                    'canceled_at' => null,
+                    'paused_at' => null,
+                ],
+                'test_clock' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlanSubscriptions->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\PricingPlanSubscription::class, $result);
+    }
+
+    public function testV2BillingPricingPlanGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/pricing_plans',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.pricing_plan',
+                        'active' => [],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'currency' => 'usd',
+                        'description' => null,
+                        'display_name' => 'display_name',
+                        'latest_version' => 'latest_version',
+                        'live_version' => null,
+                        'livemode' => [],
+                        'lookup_key' => null,
+                        'metadata' => null,
+                        'tax_behavior' => 'exclusive',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlans->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\PricingPlan::class, $result->data[0]);
+    }
+
+    public function testV2BillingPricingPlanPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/pricing_plans',
+            [
+                'currency' => 'usd',
+                'display_name' => 'display_name',
+                'tax_behavior' => 'exclusive',
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.pricing_plan',
+                'active' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'description' => null,
+                'display_name' => 'display_name',
+                'latest_version' => 'latest_version',
+                'live_version' => null,
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'tax_behavior' => 'exclusive',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlans->create([
+            'currency' => 'usd',
+            'display_name' => 'display_name',
+            'tax_behavior' => 'exclusive',
+        ]);
+        self::assertInstanceOf(V2\Billing\PricingPlan::class, $result);
+    }
+
+    public function testV2BillingPricingPlanGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/pricing_plans/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.pricing_plan',
+                'active' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'description' => null,
+                'display_name' => 'display_name',
+                'latest_version' => 'latest_version',
+                'live_version' => null,
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'tax_behavior' => 'exclusive',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlans->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\PricingPlan::class, $result);
+    }
+
+    public function testV2BillingPricingPlanPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/pricing_plans/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.pricing_plan',
+                'active' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'description' => null,
+                'display_name' => 'display_name',
+                'latest_version' => 'latest_version',
+                'live_version' => null,
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'tax_behavior' => 'exclusive',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlans->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\PricingPlan::class, $result);
+    }
+
+    public function testV2BillingPricingPlansComponentGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/pricing_plans/pricing_plan_id_123/components',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.pricing_plan_component',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'license_fee' => null,
+                        'livemode' => [],
+                        'lookup_key' => null,
+                        'metadata' => null,
+                        'pricing_plan' => 'pricing_plan',
+                        'pricing_plan_version' => 'pricing_plan_version',
+                        'rate_card' => null,
+                        'service_action' => null,
+                        'type' => 'license_fee',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlans->components->all(
+            'pricing_plan_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\PricingPlanComponent::class, $result->data[0]);
+    }
+
+    public function testV2BillingPricingPlansComponentPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/pricing_plans/pricing_plan_id_123/components',
+            ['type' => 'license_fee'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.pricing_plan_component',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'license_fee' => null,
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'pricing_plan' => 'pricing_plan',
+                'pricing_plan_version' => 'pricing_plan_version',
+                'rate_card' => null,
+                'service_action' => null,
+                'type' => 'license_fee',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlans->components->create(
+            'pricing_plan_id_123',
+            ['type' => 'license_fee']
+        );
+        self::assertInstanceOf(V2\Billing\PricingPlanComponent::class, $result);
+    }
+
+    public function testV2BillingPricingPlansComponentDelete()
+    {
+        $this->stubRequest(
+            'delete',
+            '/v2/billing/pricing_plans/pricing_plan_id_123/components/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.pricing_plan_component',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'license_fee' => null,
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'pricing_plan' => 'pricing_plan',
+                'pricing_plan_version' => 'pricing_plan_version',
+                'rate_card' => null,
+                'service_action' => null,
+                'type' => 'license_fee',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlans->components->delete(
+            'pricing_plan_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\PricingPlanComponent::class, $result);
+    }
+
+    public function testV2BillingPricingPlansComponentGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/pricing_plans/pricing_plan_id_123/components/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.pricing_plan_component',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'license_fee' => null,
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'pricing_plan' => 'pricing_plan',
+                'pricing_plan_version' => 'pricing_plan_version',
+                'rate_card' => null,
+                'service_action' => null,
+                'type' => 'license_fee',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlans->components->retrieve(
+            'pricing_plan_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\PricingPlanComponent::class, $result);
+    }
+
+    public function testV2BillingPricingPlansComponentPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/pricing_plans/pricing_plan_id_123/components/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.pricing_plan_component',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'license_fee' => null,
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'pricing_plan' => 'pricing_plan',
+                'pricing_plan_version' => 'pricing_plan_version',
+                'rate_card' => null,
+                'service_action' => null,
+                'type' => 'license_fee',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlans->components->update(
+            'pricing_plan_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\PricingPlanComponent::class, $result);
+    }
+
+    public function testV2BillingPricingPlansVersionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/pricing_plans/pricing_plan_id_123/versions',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.pricing_plan_version',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'end_date' => '1970-01-20T23:11:07.410Z',
+                        'livemode' => [],
+                        'pricing_plan' => 'pricing_plan',
+                        'start_date' => '1970-01-19T05:07:09.589Z',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlans->versions->all(
+            'pricing_plan_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\PricingPlanVersion::class, $result->data[0]);
+    }
+
+    public function testV2BillingPricingPlansVersionGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/pricing_plans/pricing_plan_id_123/versions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.pricing_plan_version',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'end_date' => '1970-01-20T23:11:07.410Z',
+                'livemode' => [],
+                'pricing_plan' => 'pricing_plan',
+                'start_date' => '1970-01-19T05:07:09.589Z',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlans->versions->retrieve(
+            'pricing_plan_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\PricingPlanVersion::class, $result);
+    }
+
+    public function testV2BillingProfileGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/profiles',
+            ['lookup_keys' => ['lookup_keys']],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.profile',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'customer' => null,
+                        'default_payment_method' => null,
+                        'display_name' => null,
+                        'livemode' => [],
+                        'lookup_key' => null,
+                        'metadata' => null,
+                        'status' => 'active',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->profiles->all([
+            'lookup_keys' => ['lookup_keys'],
+        ]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\Profile::class, $result->data[0]);
+    }
+
+    public function testV2BillingProfilePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/profiles',
+            ['customer' => 'customer'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.profile',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'customer' => null,
+                'default_payment_method' => null,
+                'display_name' => null,
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'status' => 'active',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->profiles->create([
+            'customer' => 'customer',
+        ]);
+        self::assertInstanceOf(V2\Billing\Profile::class, $result);
+    }
+
+    public function testV2BillingProfileGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/profiles/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.profile',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'customer' => null,
+                'default_payment_method' => null,
+                'display_name' => null,
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'status' => 'active',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->profiles->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\Profile::class, $result);
+    }
+
+    public function testV2BillingProfilePost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/profiles/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.profile',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'customer' => null,
+                'default_payment_method' => null,
+                'display_name' => null,
+                'livemode' => [],
+                'lookup_key' => null,
+                'metadata' => null,
+                'status' => 'active',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->profiles->update('id_123', []);
+        self::assertInstanceOf(V2\Billing\Profile::class, $result);
+    }
+
+    public function testV2BillingRateCardSubscriptionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/rate_card_subscriptions',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.rate_card_subscription',
+                        'billing_cadence' => 'billing_cadence',
+                        'collection_status' => null,
+                        'collection_status_transitions' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'livemode' => [],
+                        'metadata' => null,
+                        'rate_card' => 'rate_card',
+                        'rate_card_version' => 'rate_card_version',
+                        'servicing_status' => null,
+                        'servicing_status_transitions' => null,
+                        'test_clock' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCardSubscriptions->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result->data[0]);
+    }
+
+    public function testV2BillingRateCardSubscriptionPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/rate_card_subscriptions',
+            [
+                'billing_cadence' => 'billing_cadence',
+                'rate_card' => 'rate_card',
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card_subscription',
+                'billing_cadence' => 'billing_cadence',
+                'collection_status' => null,
+                'collection_status_transitions' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'metadata' => null,
+                'rate_card' => 'rate_card',
+                'rate_card_version' => 'rate_card_version',
+                'servicing_status' => null,
+                'servicing_status_transitions' => null,
+                'test_clock' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCardSubscriptions->create([
+            'billing_cadence' => 'billing_cadence',
+            'rate_card' => 'rate_card',
+        ]);
+        self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result);
+    }
+
+    public function testV2BillingRateCardSubscriptionGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/rate_card_subscriptions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card_subscription',
+                'billing_cadence' => 'billing_cadence',
+                'collection_status' => null,
+                'collection_status_transitions' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'metadata' => null,
+                'rate_card' => 'rate_card',
+                'rate_card_version' => 'rate_card_version',
+                'servicing_status' => null,
+                'servicing_status_transitions' => null,
+                'test_clock' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCardSubscriptions->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result);
+    }
+
+    public function testV2BillingRateCardSubscriptionPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/rate_card_subscriptions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card_subscription',
+                'billing_cadence' => 'billing_cadence',
+                'collection_status' => null,
+                'collection_status_transitions' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'metadata' => null,
+                'rate_card' => 'rate_card',
+                'rate_card_version' => 'rate_card_version',
+                'servicing_status' => null,
+                'servicing_status_transitions' => null,
+                'test_clock' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCardSubscriptions->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result);
+    }
+
+    public function testV2BillingRateCardSubscriptionPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/rate_card_subscriptions/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card_subscription',
+                'billing_cadence' => 'billing_cadence',
+                'collection_status' => null,
+                'collection_status_transitions' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'metadata' => null,
+                'rate_card' => 'rate_card',
+                'rate_card_version' => 'rate_card_version',
+                'servicing_status' => null,
+                'servicing_status_transitions' => null,
+                'test_clock' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCardSubscriptions->cancel(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result);
+    }
+
+    public function testV2BillingRateCardGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/rate_cards',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.rate_card',
+                        'active' => [],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'currency' => 'usd',
+                        'display_name' => 'display_name',
+                        'latest_version' => 'latest_version',
+                        'live_version' => 'live_version',
+                        'livemode' => [],
+                        'metadata' => null,
+                        'service_interval' => 'month',
+                        'service_interval_count' => [],
+                        'tax_behavior' => 'exclusive',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCards->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\RateCard::class, $result->data[0]);
+    }
+
+    public function testV2BillingRateCardPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/rate_cards',
+            [
+                'currency' => 'usd',
+                'display_name' => 'display_name',
+                'service_interval' => 'month',
+                'service_interval_count' => 1375336415,
+                'tax_behavior' => 'exclusive',
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card',
+                'active' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'display_name' => 'display_name',
+                'latest_version' => 'latest_version',
+                'live_version' => 'live_version',
+                'livemode' => [],
+                'metadata' => null,
+                'service_interval' => 'month',
+                'service_interval_count' => [],
+                'tax_behavior' => 'exclusive',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCards->create([
+            'currency' => 'usd',
+            'display_name' => 'display_name',
+            'service_interval' => 'month',
+            'service_interval_count' => 1375336415,
+            'tax_behavior' => 'exclusive',
+        ]);
+        self::assertInstanceOf(V2\Billing\RateCard::class, $result);
+    }
+
+    public function testV2BillingRateCardGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/rate_cards/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card',
+                'active' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'display_name' => 'display_name',
+                'latest_version' => 'latest_version',
+                'live_version' => 'live_version',
+                'livemode' => [],
+                'metadata' => null,
+                'service_interval' => 'month',
+                'service_interval_count' => [],
+                'tax_behavior' => 'exclusive',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCards->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\RateCard::class, $result);
+    }
+
+    public function testV2BillingRateCardPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/rate_cards/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card',
+                'active' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'display_name' => 'display_name',
+                'latest_version' => 'latest_version',
+                'live_version' => 'live_version',
+                'livemode' => [],
+                'metadata' => null,
+                'service_interval' => 'month',
+                'service_interval_count' => [],
+                'tax_behavior' => 'exclusive',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCards->update('id_123', []);
+        self::assertInstanceOf(V2\Billing\RateCard::class, $result);
+    }
+
+    public function testV2BillingRateCardsRateGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/rate_cards/rate_card_id_123/rates',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.rate_card_rate',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'custom_pricing_unit_amount' => null,
+                        'livemode' => [],
+                        'metadata' => null,
+                        'metered_item' => [
+                            'id' => 'obj_123',
+                            'object' => 'v2.billing.metered_item',
+                            'created' => '1970-01-12T21:42:34.472Z',
+                            'display_name' => 'display_name',
+                            'invoice_presentation_dimensions' => [
+                                '0' => 'invoice_presentation_dimensions',
+                            ],
+                            'livemode' => [],
+                            'lookup_key' => null,
+                            'metadata' => null,
+                            'meter' => 'meter',
+                            'meter_segment_conditions' => [
+                                '0' => [
+                                    'dimension' => 'dimension',
+                                    'value' => 'value',
+                                ],
+                            ],
+                            'tax_details' => null,
+                            'unit_label' => null,
+                        ],
+                        'rate_card' => 'rate_card',
+                        'rate_card_version' => 'rate_card_version',
+                        'tiering_mode' => null,
+                        'tiers' => [
+                            '0' => [
+                                'flat_amount' => null,
+                                'unit_amount' => null,
+                                'up_to_decimal' => null,
+                                'up_to_inf' => null,
+                            ],
+                        ],
+                        'transform_quantity' => null,
+                        'unit_amount' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCards->rates->all(
+            'rate_card_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\RateCardRate::class, $result->data[0]);
+    }
+
+    public function testV2BillingRateCardsRatePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/rate_cards/rate_card_id_123/rates',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card_rate',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'custom_pricing_unit_amount' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'metered_item' => [
+                    'id' => 'obj_123',
+                    'object' => 'v2.billing.metered_item',
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'display_name' => 'display_name',
+                    'invoice_presentation_dimensions' => [
+                        '0' => 'invoice_presentation_dimensions',
+                    ],
+                    'livemode' => [],
+                    'lookup_key' => null,
+                    'metadata' => null,
+                    'meter' => 'meter',
+                    'meter_segment_conditions' => [
+                        '0' => [
+                            'dimension' => 'dimension',
+                            'value' => 'value',
+                        ],
+                    ],
+                    'tax_details' => null,
+                    'unit_label' => null,
+                ],
+                'rate_card' => 'rate_card',
+                'rate_card_version' => 'rate_card_version',
+                'tiering_mode' => null,
+                'tiers' => [
+                    '0' => [
+                        'flat_amount' => null,
+                        'unit_amount' => null,
+                        'up_to_decimal' => null,
+                        'up_to_inf' => null,
+                    ],
+                ],
+                'transform_quantity' => null,
+                'unit_amount' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCards->rates->create(
+            'rate_card_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\RateCardRate::class, $result);
+    }
+
+    public function testV2BillingRateCardsRateDelete()
+    {
+        $this->stubRequest(
+            'delete',
+            '/v2/billing/rate_cards/rate_card_id_123/rates/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card_rate',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'custom_pricing_unit_amount' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'metered_item' => [
+                    'id' => 'obj_123',
+                    'object' => 'v2.billing.metered_item',
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'display_name' => 'display_name',
+                    'invoice_presentation_dimensions' => [
+                        '0' => 'invoice_presentation_dimensions',
+                    ],
+                    'livemode' => [],
+                    'lookup_key' => null,
+                    'metadata' => null,
+                    'meter' => 'meter',
+                    'meter_segment_conditions' => [
+                        '0' => [
+                            'dimension' => 'dimension',
+                            'value' => 'value',
+                        ],
+                    ],
+                    'tax_details' => null,
+                    'unit_label' => null,
+                ],
+                'rate_card' => 'rate_card',
+                'rate_card_version' => 'rate_card_version',
+                'tiering_mode' => null,
+                'tiers' => [
+                    '0' => [
+                        'flat_amount' => null,
+                        'unit_amount' => null,
+                        'up_to_decimal' => null,
+                        'up_to_inf' => null,
+                    ],
+                ],
+                'transform_quantity' => null,
+                'unit_amount' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCards->rates->delete(
+            'rate_card_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\RateCardRate::class, $result);
+    }
+
+    public function testV2BillingRateCardsRateGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/rate_cards/rate_card_id_123/rates/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card_rate',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'custom_pricing_unit_amount' => null,
+                'livemode' => [],
+                'metadata' => null,
+                'metered_item' => [
+                    'id' => 'obj_123',
+                    'object' => 'v2.billing.metered_item',
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'display_name' => 'display_name',
+                    'invoice_presentation_dimensions' => [
+                        '0' => 'invoice_presentation_dimensions',
+                    ],
+                    'livemode' => [],
+                    'lookup_key' => null,
+                    'metadata' => null,
+                    'meter' => 'meter',
+                    'meter_segment_conditions' => [
+                        '0' => [
+                            'dimension' => 'dimension',
+                            'value' => 'value',
+                        ],
+                    ],
+                    'tax_details' => null,
+                    'unit_label' => null,
+                ],
+                'rate_card' => 'rate_card',
+                'rate_card_version' => 'rate_card_version',
+                'tiering_mode' => null,
+                'tiers' => [
+                    '0' => [
+                        'flat_amount' => null,
+                        'unit_amount' => null,
+                        'up_to_decimal' => null,
+                        'up_to_inf' => null,
+                    ],
+                ],
+                'transform_quantity' => null,
+                'unit_amount' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCards->rates->retrieve(
+            'rate_card_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\RateCardRate::class, $result);
+    }
+
+    public function testV2BillingRateCardsVersionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/rate_cards/rate_card_id_123/versions',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.rate_card_version',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'livemode' => [],
+                        'rate_card_id' => 'rate_card_id',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCards->versions->all(
+            'rate_card_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\RateCardVersion::class, $result->data[0]);
+    }
+
+    public function testV2BillingRateCardsVersionGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/rate_cards/rate_card_id_123/versions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card_version',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'rate_card_id' => 'rate_card_id',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCards->versions->retrieve(
+            'rate_card_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\RateCardVersion::class, $result);
+    }
+
+    public function testV2BillingServiceActionPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/service_actions',
+            [
+                'service_interval' => 'month',
+                'service_interval_count' => 1375336415,
+                'type' => 'credit_grant',
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.service_action',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'credit_grant' => null,
+                'credit_grant_per_tenant' => null,
+                'livemode' => [],
+                'lookup_key' => null,
+                'service_interval' => 'month',
+                'service_interval_count' => [],
+                'type' => 'credit_grant',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->serviceActions->create([
+            'service_interval' => 'month',
+            'service_interval_count' => 1375336415,
+            'type' => 'credit_grant',
+        ]);
+        self::assertInstanceOf(V2\Billing\ServiceAction::class, $result);
+    }
+
+    public function testV2BillingServiceActionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/service_actions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.service_action',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'credit_grant' => null,
+                'credit_grant_per_tenant' => null,
+                'livemode' => [],
+                'lookup_key' => null,
+                'service_interval' => 'month',
+                'service_interval_count' => [],
+                'type' => 'credit_grant',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->serviceActions->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\ServiceAction::class, $result);
     }
 
     public function testV2CoreAccountLinkPost()
@@ -5709,6 +8940,7 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
+                'changes' => ['key' => []],
                 'context' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
@@ -5738,6 +8970,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'data' => [
                     '0' => [
+                        'changes' => ['key' => []],
                         'context' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
                         'id' => 'obj_123',
@@ -5769,6 +9002,7 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
+                'changes' => ['key' => []],
                 'context' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
@@ -6211,19 +9445,19 @@ final class GeneratedExamplesTest extends TestCase
                         'object' => 'v2.money_management.financial_account',
                         'balance' => [
                             'available' => [
-                                'undefined' => [
+                                'key' => [
                                     'currency' => 'USD',
                                     'value' => [],
                                 ],
                             ],
                             'inbound_pending' => [
-                                'undefined' => [
+                                'key' => [
                                     'currency' => 'USD',
                                     'value' => [],
                                 ],
                             ],
                             'outbound_pending' => [
-                                'undefined' => [
+                                'key' => [
                                     'currency' => 'USD',
                                     'value' => [],
                                 ],
@@ -6231,6 +9465,7 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                         'country' => 'af',
                         'created' => '1970-01-12T21:42:34.472Z',
+                        'display_name' => null,
                         'livemode' => [],
                         'metadata' => null,
                         'other' => null,
@@ -6264,19 +9499,19 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.financial_account',
                 'balance' => [
                     'available' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
                     ],
                     'inbound_pending' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
                     ],
                     'outbound_pending' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
@@ -6284,6 +9519,7 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'country' => 'af',
                 'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => null,
                 'livemode' => [],
                 'metadata' => null,
                 'other' => null,
@@ -6314,19 +9550,19 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.financial_account',
                 'balance' => [
                     'available' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
                     ],
                     'inbound_pending' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
                     ],
                     'outbound_pending' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
@@ -6334,6 +9570,7 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'country' => 'af',
                 'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => null,
                 'livemode' => [],
                 'metadata' => null,
                 'other' => null,
@@ -6365,19 +9602,19 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.financial_account',
                 'balance' => [
                     'available' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
                     ],
                     'inbound_pending' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
                     ],
                     'outbound_pending' => [
-                        'undefined' => [
+                        'key' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
@@ -6385,6 +9622,7 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'country' => 'af',
                 'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => null,
                 'livemode' => [],
                 'metadata' => null,
                 'other' => null,
@@ -6752,9 +9990,7 @@ final class GeneratedExamplesTest extends TestCase
                     'lock_duration' => 'five_minutes',
                     'lock_expires_at' => '1970-01-18T15:15:29.586Z',
                     'lock_status' => 'active',
-                    'rates' => [
-                        'undefined' => ['exchange_rate' => 'exchange_rate'],
-                    ],
+                    'rates' => ['key' => ['exchange_rate' => 'exchange_rate']],
                     'to_currency' => 'usd',
                 ],
                 'livemode' => [],
@@ -6825,9 +10061,7 @@ final class GeneratedExamplesTest extends TestCase
                     'lock_duration' => 'five_minutes',
                     'lock_expires_at' => '1970-01-18T15:15:29.586Z',
                     'lock_status' => 'active',
-                    'rates' => [
-                        'undefined' => ['exchange_rate' => 'exchange_rate'],
-                    ],
+                    'rates' => ['key' => ['exchange_rate' => 'exchange_rate']],
                     'to_currency' => 'usd',
                 ],
                 'livemode' => [],
@@ -7724,7 +10958,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.money_management.payout_methods_bank_account_spec',
                 'countries' => [
-                    'undefined' => [
+                    'key' => [
                         'fields' => [
                             '0' => [
                                 'local_name' => 'local_name',
@@ -8163,7 +11397,7 @@ final class GeneratedExamplesTest extends TestCase
                         'last_authorization_attempt_error' => null,
                         'latest_payment_attempt_record' => null,
                         'livemode' => [],
-                        'metadata' => ['undefined' => 'metadata'],
+                        'metadata' => ['key' => 'metadata'],
                         'on_behalf_of' => null,
                         'payment_method' => 'payment_method',
                         'payment_record' => null,
@@ -8201,7 +11435,7 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'cadence' => 'unscheduled',
                 'customer' => 'customer',
-                'metadata' => ['undefined' => 'metadata'],
+                'metadata' => ['key' => 'metadata'],
                 'payment_method' => 'payment_method',
             ],
             [],
@@ -8221,7 +11455,7 @@ final class GeneratedExamplesTest extends TestCase
                 'last_authorization_attempt_error' => null,
                 'latest_payment_attempt_record' => null,
                 'livemode' => [],
-                'metadata' => ['undefined' => 'metadata'],
+                'metadata' => ['key' => 'metadata'],
                 'on_behalf_of' => null,
                 'payment_method' => 'payment_method',
                 'payment_record' => null,
@@ -8245,7 +11479,7 @@ final class GeneratedExamplesTest extends TestCase
             ],
             'cadence' => 'unscheduled',
             'customer' => 'customer',
-            'metadata' => ['undefined' => 'metadata'],
+            'metadata' => ['key' => 'metadata'],
             'payment_method' => 'payment_method',
         ]);
         self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
@@ -8274,7 +11508,7 @@ final class GeneratedExamplesTest extends TestCase
                 'last_authorization_attempt_error' => null,
                 'latest_payment_attempt_record' => null,
                 'livemode' => [],
-                'metadata' => ['undefined' => 'metadata'],
+                'metadata' => ['key' => 'metadata'],
                 'on_behalf_of' => null,
                 'payment_method' => 'payment_method',
                 'payment_record' => null,
@@ -8321,7 +11555,7 @@ final class GeneratedExamplesTest extends TestCase
                 'last_authorization_attempt_error' => null,
                 'latest_payment_attempt_record' => null,
                 'livemode' => [],
-                'metadata' => ['undefined' => 'metadata'],
+                'metadata' => ['key' => 'metadata'],
                 'on_behalf_of' => null,
                 'payment_method' => 'payment_method',
                 'payment_record' => null,
@@ -8343,6 +11577,273 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
+    public function testV2ReportingReportRunPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/reporting/report_runs',
+            [
+                'report' => 'report',
+                'report_parameters' => [
+                    'key' => [
+                        'array_value' => ['items' => ['items']],
+                        'string_value' => 'string_value',
+                        'timestamp_value' => '1970-01-14T02:07:39.256Z',
+                    ],
+                ],
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.reporting.report_run',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'report' => 'report',
+                'report_name' => 'report_name',
+                'report_parameters' => [
+                    'key' => [
+                        'array_value' => null,
+                        'string_value' => null,
+                        'timestamp_value' => null,
+                    ],
+                ],
+                'result' => null,
+                'result_options' => null,
+                'status' => 'failed',
+                'status_details' => [
+                    'key' => [
+                        'error_code' => null,
+                        'error_message' => null,
+                    ],
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->reporting->reportRuns->create([
+            'report' => 'report',
+            'report_parameters' => [
+                'key' => [
+                    'array_value' => ['items' => ['items']],
+                    'string_value' => 'string_value',
+                    'timestamp_value' => '1970-01-14T02:07:39.256Z',
+                ],
+            ],
+        ]);
+        self::assertInstanceOf(V2\Reporting\ReportRun::class, $result);
+    }
+
+    public function testV2ReportingReportRunGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/reporting/report_runs/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.reporting.report_run',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'report' => 'report',
+                'report_name' => 'report_name',
+                'report_parameters' => [
+                    'key' => [
+                        'array_value' => null,
+                        'string_value' => null,
+                        'timestamp_value' => null,
+                    ],
+                ],
+                'result' => null,
+                'result_options' => null,
+                'status' => 'failed',
+                'status_details' => [
+                    'key' => [
+                        'error_code' => null,
+                        'error_message' => null,
+                    ],
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->reporting->reportRuns->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Reporting\ReportRun::class, $result);
+    }
+
+    public function testV2ReportingReportGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/reporting/reports/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.reporting.report',
+                'livemode' => [],
+                'name' => 'name',
+                'parameters' => [
+                    'key' => [
+                        'array_details' => null,
+                        'description' => 'description',
+                        'enum_details' => null,
+                        'required' => [],
+                        'timestamp_details' => null,
+                        'type' => 'string',
+                    ],
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->reporting->reports->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Reporting\Report::class, $result);
+    }
+
+    public function testV2TaxAutomaticRulePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/tax/automatic_rules',
+            ['billable_item' => 'billable_item', 'tax_code' => 'tax_code'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.tax.automatic_rule',
+                'billable_item' => 'billable_item',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'status' => 'active',
+                'tax_code' => 'tax_code',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->tax->automaticRules->create([
+            'billable_item' => 'billable_item',
+            'tax_code' => 'tax_code',
+        ]);
+        self::assertInstanceOf(V2\Tax\AutomaticRule::class, $result);
+    }
+
+    public function testV2TaxAutomaticRuleGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/tax/automatic_rules/find',
+            ['billable_item' => 'billable_item'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.tax.automatic_rule',
+                'billable_item' => 'billable_item',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'status' => 'active',
+                'tax_code' => 'tax_code',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->tax->automaticRules->find([
+            'billable_item' => 'billable_item',
+        ]);
+        self::assertInstanceOf(V2\Tax\AutomaticRule::class, $result);
+    }
+
+    public function testV2TaxAutomaticRuleGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/tax/automatic_rules/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.tax.automatic_rule',
+                'billable_item' => 'billable_item',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'status' => 'active',
+                'tax_code' => 'tax_code',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->tax->automaticRules->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Tax\AutomaticRule::class, $result);
+    }
+
+    public function testV2TaxAutomaticRulePost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/tax/automatic_rules/id_123',
+            ['tax_code' => 'tax_code'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.tax.automatic_rule',
+                'billable_item' => 'billable_item',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'status' => 'active',
+                'tax_code' => 'tax_code',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->tax->automaticRules->update(
+            'id_123',
+            ['tax_code' => 'tax_code']
+        );
+        self::assertInstanceOf(V2\Tax\AutomaticRule::class, $result);
+    }
+
+    public function testV2TaxAutomaticRulePost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/tax/automatic_rules/id_123/deactivate',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.tax.automatic_rule',
+                'billable_item' => 'billable_item',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'status' => 'active',
+                'tax_code' => 'tax_code',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->tax->automaticRules->deactivate(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Tax\AutomaticRule::class, $result);
     }
 
     public function testV2TestHelpersFinancialAddressPost()
@@ -8418,7 +11919,7 @@ final class GeneratedExamplesTest extends TestCase
                 'events' => [
                     [
                         'event_name' => 'event_name',
-                        'payload' => ['undefined' => 'payload'],
+                        'payload' => ['key' => 'payload'],
                     ],
                 ],
             ],
@@ -8439,7 +11940,7 @@ final class GeneratedExamplesTest extends TestCase
                 'events' => [
                     [
                         'event_name' => 'event_name',
-                        'payload' => ['undefined' => 'payload'],
+                        'payload' => ['key' => 'payload'],
                     ],
                 ],
             ]);
@@ -8818,6 +12319,33 @@ final class GeneratedExamplesTest extends TestCase
                 'account_number' => 'account_number',
             ]);
         } catch (Exception\InvalidPaymentMethodException $e) {
+        }
+    }
+
+    public function testRateLimitError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/reporting/report_runs',
+            ['report' => 'report', 'report_parameters' => ['key' => []]],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'rate_limit',
+                    'code' => 'report_run_rate_limit_exceeded',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->reporting->reportRuns->create([
+                'report' => 'report',
+                'report_parameters' => ['key' => []],
+            ]);
+        } catch (Exception\RateLimitException $e) {
         }
     }
 }

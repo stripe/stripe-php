@@ -30,42 +30,4 @@ namespace Stripe;
 class InvoicePayment extends ApiResource
 {
     const OBJECT_NAME = 'invoice_payment';
-
-    /**
-     * When retrieving an invoice, there is an includable payments property containing
-     * the first handful of those items. There is also a URL where you can retrieve the
-     * full (paginated) list of payments.
-     *
-     * @param null|array{ending_before?: string, expand?: string[], invoice?: string, limit?: int, payment?: array{payment_intent?: string, payment_record?: string, type: string}, starting_after?: string, status?: string} $params
-     * @param null|array|string $opts
-     *
-     * @return Collection<InvoicePayment> of ApiResources
-     *
-     * @throws Exception\ApiErrorException if the request fails
-     */
-    public static function all($params = null, $opts = null)
-    {
-        $url = static::classUrl();
-
-        return static::_requestPage($url, Collection::class, $params, $opts);
-    }
-
-    /**
-     * Retrieves the invoice payment with the given ID.
-     *
-     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
-     * @param null|array|string $opts
-     *
-     * @return InvoicePayment
-     *
-     * @throws Exception\ApiErrorException if the request fails
-     */
-    public static function retrieve($id, $opts = null)
-    {
-        $opts = Util\RequestOptions::parse($opts);
-        $instance = new static($id, $opts);
-        $instance->refresh();
-
-        return $instance;
-    }
 }

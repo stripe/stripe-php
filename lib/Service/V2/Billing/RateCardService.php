@@ -1,0 +1,90 @@
+<?php
+
+// File generated from our OpenAPI spec
+
+namespace Stripe\Service\V2\Billing;
+
+/**
+ * @property RateCards\RateService $rates
+ * @property RateCards\VersionService $versions
+ *
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
+ * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ */
+class RateCardService extends \Stripe\Service\AbstractService
+{
+    use \Stripe\Service\ServiceNavigatorTrait;
+
+    protected static $classMap = [
+        'rates' => RateCards\RateService::class,
+        'versions' => RateCards\VersionService::class,
+    ];
+
+    /**
+     * List all RateCard objects.
+     *
+     * @param null|array{active?: bool, limit?: int} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Collection<\Stripe\V2\Billing\RateCard>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function all($params = null, $opts = null)
+    {
+        return $this->requestCollection('get', '/v2/billing/rate_cards', $params, $opts);
+    }
+
+    /**
+     * Create a RateCard object.
+     *
+     * @param null|array{currency: string, display_name: string, metadata?: array<string, string>, service_interval: string, service_interval_count: int, tax_behavior: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Billing\RateCard
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function create($params = null, $opts = null)
+    {
+        return $this->request('post', '/v2/billing/rate_cards', $params, $opts);
+    }
+
+    /**
+     * Retrieve the latest version of a RateCard object.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Billing\RateCard
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function retrieve($id, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v2/billing/rate_cards/%s', $id), $params, $opts);
+    }
+
+    /**
+     * Update a RateCard object.
+     *
+     * @param string $id
+     * @param null|array{active?: bool, display_name?: string, live_version?: string, metadata?: array<string, null|string>} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Billing\RateCard
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function update($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v2/billing/rate_cards/%s', $id), $params, $opts);
+    }
+
+    protected function getServiceClass($name)
+    {
+        return \array_key_exists($name, self::$classMap) ? self::$classMap[$name] : null;
+    }
+}

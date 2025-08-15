@@ -30,7 +30,7 @@ class AlertService extends \Stripe\Service\AbstractService
     /**
      * Lists billing active and inactive alerts.
      *
-     * @param null|array{alert_type?: string, ending_before?: string, expand?: string[], limit?: int, meter?: string, starting_after?: string} $params
+     * @param null|array{alert_type?: string, customer?: string, ending_before?: string, expand?: string[], limit?: int, meter?: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Billing\Alert>
@@ -62,7 +62,7 @@ class AlertService extends \Stripe\Service\AbstractService
     /**
      * Creates a billing alert.
      *
-     * @param null|array{alert_type: string, expand?: string[], title: string, usage_threshold?: array{filters?: array{customer?: string, type: string}[], gte: int, meter: string, recurrence: string}} $params
+     * @param null|array{alert_type: string, credit_balance_threshold?: array{filters?: array{customer?: string, type: string}[], lte: array{balance_type: string, custom_pricing_unit?: array{id: string, value: string}, monetary?: array{currency: string, value: int}}, recurrence: string}, expand?: string[], title: string, usage_threshold?: array{filters?: array{customer?: string, type: string}[], gte: int, meter: string, recurrence: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Billing\Alert

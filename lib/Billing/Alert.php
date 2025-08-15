@@ -10,6 +10,7 @@ namespace Stripe\Billing;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string $alert_type Defines the type of the alert.
+ * @property null|(object{filters: null|((object{customer: null|string|\Stripe\Customer, type: string}&\Stripe\StripeObject))[], lte: (object{balance_type: string, custom_pricing_unit?: null|(object{id: string, value: string}&\Stripe\StripeObject), monetary: null|(object{currency: string, value: int}&\Stripe\StripeObject)}&\Stripe\StripeObject), recurrence: string}&\Stripe\StripeObject) $credit_balance_threshold Encapsulates configuration of the alert to monitor billing credit balance.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $status Status of the alert. This can be active, inactive or archived.
  * @property string $title Title of the alert.
@@ -19,6 +20,9 @@ class Alert extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'billing.alert';
 
+    const ALERT_TYPE_CREDIT_BALANCE_THRESHOLD = 'credit_balance_threshold';
+    const ALERT_TYPE_USAGE_THRESHOLD = 'usage_threshold';
+
     const STATUS_ACTIVE = 'active';
     const STATUS_ARCHIVED = 'archived';
     const STATUS_INACTIVE = 'inactive';
@@ -26,7 +30,7 @@ class Alert extends \Stripe\ApiResource
     /**
      * Creates a billing alert.
      *
-     * @param null|array{alert_type: string, expand?: string[], title: string, usage_threshold?: array{filters?: array{customer?: string, type: string}[], gte: int, meter: string, recurrence: string}} $params
+     * @param null|array{alert_type: string, credit_balance_threshold?: array{filters?: array{customer?: string, type: string}[], lte: array{balance_type: string, custom_pricing_unit?: array{id: string, value: string}, monetary?: array{currency: string, value: int}}, recurrence: string}, expand?: string[], title: string, usage_threshold?: array{filters?: array{customer?: string, type: string}[], gte: int, meter: string, recurrence: string}} $params
      * @param null|array|string $options
      *
      * @return Alert the created resource
@@ -48,7 +52,7 @@ class Alert extends \Stripe\ApiResource
     /**
      * Lists billing active and inactive alerts.
      *
-     * @param null|array{alert_type?: string, ending_before?: string, expand?: string[], limit?: int, meter?: string, starting_after?: string} $params
+     * @param null|array{alert_type?: string, customer?: string, ending_before?: string, expand?: string[], limit?: int, meter?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<Alert> of ApiResources

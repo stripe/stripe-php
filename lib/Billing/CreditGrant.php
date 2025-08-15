@@ -11,8 +11,8 @@ namespace Stripe\Billing;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property (object{monetary: null|(object{currency: string, value: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $amount
- * @property (object{scope: (object{price_type?: string, prices?: ((object{id: null|string}&\Stripe\StripeObject))[]}&\Stripe\StripeObject)}&\Stripe\StripeObject) $applicability_config
+ * @property (object{custom_pricing_unit?: null|(object{id: string, value: string}&\Stripe\StripeObject), monetary: null|(object{currency: string, value: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $amount
+ * @property (object{scope: (object{billable_items?: ((object{id: null|string}&\Stripe\StripeObject))[], price_type?: string, prices?: ((object{id: null|string}&\Stripe\StripeObject))[]}&\Stripe\StripeObject)}&\Stripe\StripeObject) $applicability_config
  * @property string $category The category of this credit grant. This is for tracking purposes and isn't displayed to the customer.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string|\Stripe\Customer $customer ID of the customer receiving the billing credits.
@@ -39,7 +39,7 @@ class CreditGrant extends \Stripe\ApiResource
     /**
      * Creates a credit grant.
      *
-     * @param null|array{amount: array{monetary?: array{currency: string, value: int}, type: string}, applicability_config: array{scope: array{price_type?: string, prices?: array{id: string}[]}}, category: string, customer?: string, customer_account?: string, effective_at?: int, expand?: string[], expires_at?: int, metadata?: array<string, string>, name?: string, priority?: int} $params
+     * @param null|array{amount: array{custom_pricing_unit?: array{id: string, value: string}, monetary?: array{currency: string, value: int}, type: string}, applicability_config: array{scope: array{billable_items?: array{id: string}[], price_type?: string, prices?: array{id: string}[]}}, category: string, customer?: string, customer_account?: string, effective_at?: int, expand?: string[], expires_at?: int, metadata?: array<string, string>, name?: string, priority?: int} $params
      * @param null|array|string $options
      *
      * @return CreditGrant the created resource

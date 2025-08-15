@@ -413,6 +413,16 @@ class ApiRequestor
                     $invalidParam
                 );
 
+            case 'rate_limit':
+                return Exception\RateLimitException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
                 // The end of the section generated from our OpenAPI spec
             default:
                 return self::_specificV1APIError($rbody, $rcode, $rheaders, $resp, $errorData);
