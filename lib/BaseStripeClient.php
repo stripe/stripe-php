@@ -122,7 +122,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * Gets the Stripe account id used by the client to send requests.
+     * Gets the Stripe account ID used by the client to send requests.
      *
      * @return null|string the Stripe account used by the client to send requests
      */
