@@ -33,6 +33,7 @@ namespace Stripe;
  * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $method The method used to send this payout, which can be <code>standard</code> or <code>instant</code>. <code>instant</code> is supported for payouts to debit cards and bank accounts in certain countries. Learn more about <a href="https://stripe.com/docs/payouts/instant-payouts-banks">bank support for Instant Payouts</a>.
  * @property null|Payout|string $original_payout If the payout reverses another, this is the ID of the original payout.
+ * @property null|string $payout_method ID of the v2 FinancialAccount the funds are sent to.
  * @property string $reconciliation_status If <code>completed</code>, you can use the <a href="https://stripe.com/docs/api/balance_transactions/list#balance_transaction_list-payout">Balance Transactions API</a> to list all balance transactions that are paid out in this payout.
  * @property null|Payout|string $reversed_by If the payout reverses, this is the ID of the payout that reverses this payout.
  * @property string $source_type The source balance this payout came from, which can be one of the following: <code>card</code>, <code>fpx</code>, or <code>bank_account</code>.
@@ -76,7 +77,7 @@ class Payout extends ApiResource
      * from. The <a href="#balance_object">balance object</a> details available and
      * pending amounts by source type.
      *
-     * @param null|array{amount: int, currency: string, description?: string, destination?: string, expand?: string[], metadata?: array<string, string>, method?: string, source_type?: string, statement_descriptor?: string} $params
+     * @param null|array{amount: int, currency: string, description?: string, destination?: string, expand?: string[], metadata?: array<string, string>, method?: string, payout_method?: string, source_type?: string, statement_descriptor?: string} $params
      * @param null|array|string $options
      *
      * @return Payout the created resource
