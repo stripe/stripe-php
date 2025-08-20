@@ -8410,56 +8410,18 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\FinancialAddressGeneratedMicrodeposits::class, $result);
     }
 
-    public function testTemporarySessionExpiredError()
+    public function testAlreadyCanceledError()
     {
         $this->stubRequest(
             'post',
-            '/v2/billing/meter_event_stream',
-            [
-                'events' => [
-                    [
-                        'event_name' => 'event_name',
-                        'payload' => ['key' => 'payload'],
-                    ],
-                ],
-            ],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'temporary_session_expired',
-                    'code' => 'billing_meter_event_session_expired',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_METER_EVENTS_BASE
-        );
-
-        try {
-            $this->v2Client->v2->billing->meterEventStream->create([
-                'events' => [
-                    [
-                        'event_name' => 'event_name',
-                        'payload' => ['key' => 'payload'],
-                    ],
-                ],
-            ]);
-        } catch (Exception\TemporarySessionExpiredException $e) {
-        }
-    }
-
-    public function testNonZeroBalanceError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/money_management/financial_accounts/id_123/close',
+            '/v2/money_management/outbound_payments/id_123/cancel',
             [],
             [],
             false,
             [
                 'error' => [
-                    'type' => 'non_zero_balance',
-                    'code' => 'closing_financial_account_with_non_zero_balances',
+                    'type' => 'already_canceled',
+                    'code' => 'outbound_payment_already_canceled',
                 ],
             ],
             400,
@@ -8467,11 +8429,11 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->moneyManagement->financialAccounts->close(
+            $this->v2Client->v2->moneyManagement->outboundPayments->cancel(
                 'id_123',
                 []
             );
-        } catch (Exception\NonZeroBalanceException $e) {
+        } catch (Exception\AlreadyCanceledException $e) {
         }
     }
 
@@ -8498,6 +8460,56 @@ final class GeneratedExamplesTest extends TestCase
                 'type' => 'storage',
             ]);
         } catch (Exception\AlreadyExistsException $e) {
+        }
+    }
+
+    public function testBlockedByStripeError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts',
+            ['account_number' => 'account_number'],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'blocked_by_stripe',
+                    'code' => 'inbound_transfer_not_allowed',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->usBankAccounts->create([
+                'account_number' => 'account_number',
+            ]);
+        } catch (Exception\BlockedByStripeException $e) {
+        }
+    }
+
+    public function testControlledByDashboardError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts/id_123/archive',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'controlled_by_dashboard',
+                    'code' => 'bank_account_cannot_be_archived',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->usBankAccounts->archive('id_123', []);
+        } catch (Exception\ControlledByDashboardException $e) {
         }
     }
 
@@ -8554,86 +8566,6 @@ final class GeneratedExamplesTest extends TestCase
         }
     }
 
-    public function testBlockedByStripeError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/core/vault/us_bank_accounts',
-            ['account_number' => 'account_number'],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'blocked_by_stripe',
-                    'code' => 'inbound_transfer_not_allowed',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $this->v2Client->v2->core->vault->usBankAccounts->create([
-                'account_number' => 'account_number',
-            ]);
-        } catch (Exception\BlockedByStripeException $e) {
-        }
-    }
-
-    public function testAlreadyCanceledError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/money_management/outbound_payments/id_123/cancel',
-            [],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'already_canceled',
-                    'code' => 'outbound_payment_already_canceled',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $this->v2Client->v2->moneyManagement->outboundPayments->cancel(
-                'id_123',
-                []
-            );
-        } catch (Exception\AlreadyCanceledException $e) {
-        }
-    }
-
-    public function testNotCancelableError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/money_management/outbound_payments/id_123/cancel',
-            [],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'not_cancelable',
-                    'code' => 'outbound_payment_not_cancelable',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $this->v2Client->v2->moneyManagement->outboundPayments->cancel(
-                'id_123',
-                []
-            );
-        } catch (Exception\NotCancelableException $e) {
-        }
-    }
-
     public function testInsufficientFundsError()
     {
         $this->stubRequest(
@@ -8675,6 +8607,110 @@ final class GeneratedExamplesTest extends TestCase
                 'to' => ['recipient' => 'recipient'],
             ]);
         } catch (Exception\InsufficientFundsException $e) {
+        }
+    }
+
+    public function testInvalidPaymentMethodError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts',
+            ['account_number' => 'account_number'],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'invalid_payment_method',
+                    'code' => 'invalid_us_bank_account',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->usBankAccounts->create([
+                'account_number' => 'account_number',
+            ]);
+        } catch (Exception\InvalidPaymentMethodException $e) {
+        }
+    }
+
+    public function testInvalidPayoutMethodError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_setup_intents',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'invalid_payout_method',
+                    'code' => 'invalid_payout_method',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->outboundSetupIntents->create([]);
+        } catch (Exception\InvalidPayoutMethodException $e) {
+        }
+    }
+
+    public function testNonZeroBalanceError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/financial_accounts/id_123/close',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'non_zero_balance',
+                    'code' => 'closing_financial_account_with_non_zero_balances',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->financialAccounts->close(
+                'id_123',
+                []
+            );
+        } catch (Exception\NonZeroBalanceException $e) {
+        }
+    }
+
+    public function testNotCancelableError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_payments/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'not_cancelable',
+                    'code' => 'outbound_payment_not_cancelable',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->outboundPayments->cancel(
+                'id_123',
+                []
+            );
+        } catch (Exception\NotCancelableException $e) {
         }
     }
 
@@ -8748,77 +8784,41 @@ final class GeneratedExamplesTest extends TestCase
         }
     }
 
-    public function testInvalidPayoutMethodError()
+    public function testTemporarySessionExpiredError()
     {
         $this->stubRequest(
             'post',
-            '/v2/money_management/outbound_setup_intents',
-            [],
+            '/v2/billing/meter_event_stream',
+            [
+                'events' => [
+                    [
+                        'event_name' => 'event_name',
+                        'payload' => ['key' => 'payload'],
+                    ],
+                ],
+            ],
             [],
             false,
             [
                 'error' => [
-                    'type' => 'invalid_payout_method',
-                    'code' => 'invalid_payout_method',
+                    'type' => 'temporary_session_expired',
+                    'code' => 'billing_meter_event_session_expired',
                 ],
             ],
             400,
-            BaseStripeClient::DEFAULT_API_BASE
+            BaseStripeClient::DEFAULT_METER_EVENTS_BASE
         );
 
         try {
-            $this->v2Client->v2->moneyManagement->outboundSetupIntents->create([]);
-        } catch (Exception\InvalidPayoutMethodException $e) {
-        }
-    }
-
-    public function testControlledByDashboardError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/core/vault/us_bank_accounts/id_123/archive',
-            [],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'controlled_by_dashboard',
-                    'code' => 'bank_account_cannot_be_archived',
+            $this->v2Client->v2->billing->meterEventStream->create([
+                'events' => [
+                    [
+                        'event_name' => 'event_name',
+                        'payload' => ['key' => 'payload'],
+                    ],
                 ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $this->v2Client->v2->core->vault->usBankAccounts->archive('id_123', []);
-        } catch (Exception\ControlledByDashboardException $e) {
-        }
-    }
-
-    public function testInvalidPaymentMethodError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/core/vault/us_bank_accounts',
-            ['account_number' => 'account_number'],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'invalid_payment_method',
-                    'code' => 'invalid_us_bank_account',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $this->v2Client->v2->core->vault->usBankAccounts->create([
-                'account_number' => 'account_number',
             ]);
-        } catch (Exception\InvalidPaymentMethodException $e) {
+        } catch (Exception\TemporarySessionExpiredException $e) {
         }
     }
 }
