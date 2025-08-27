@@ -11,7 +11,7 @@ namespace Stripe\Billing;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property (object{custom_pricing_unit?: null|(object{id: string, value: string}&\Stripe\StripeObject), monetary: null|(object{currency: string, value: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $amount
+ * @property (object{custom_pricing_unit?: null|(object{custom_pricing_unit_details: null|(object{created: int, display_name: string, id: string, lookup_key: null|string, metadata: \Stripe\StripeObject, status: string}&\Stripe\StripeObject), id: string, value: string}&\Stripe\StripeObject), monetary: null|(object{currency: string, value: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $amount
  * @property (object{scope: (object{billable_items?: ((object{id: null|string}&\Stripe\StripeObject))[], price_type?: string, prices?: ((object{id: null|string}&\Stripe\StripeObject))[]}&\Stripe\StripeObject)}&\Stripe\StripeObject) $applicability_config
  * @property string $category The category of this credit grant. This is for tracking purposes and isn't displayed to the customer.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.

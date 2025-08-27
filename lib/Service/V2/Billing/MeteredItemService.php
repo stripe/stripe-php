@@ -12,9 +12,9 @@ namespace Stripe\Service\V2\Billing;
 class MeteredItemService extends \Stripe\Service\AbstractService
 {
     /**
-     * List all MeteredItem objects in reverse chronological order of creation.
+     * List all Metered Item objects in reverse chronological order of creation.
      *
-     * @param null|array{limit?: int} $params
+     * @param null|array{limit?: int, lookup_keys?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\Billing\MeteredItem>
@@ -27,7 +27,7 @@ class MeteredItemService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a MeteredItem object.
+     * Create a Metered Item object.
      *
      * @param null|array{display_name: string, invoice_presentation_dimensions?: string[], lookup_key?: string, metadata?: array<string, string>, meter: string, meter_segment_conditions?: array{dimension: string, value: string}[], tax_details?: array{tax_code: string}, unit_label?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -42,7 +42,7 @@ class MeteredItemService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a MeteredItem object.
+     * Retrieve a Metered Item object.
      *
      * @param string $id
      * @param null|array $params
@@ -58,7 +58,7 @@ class MeteredItemService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update a MeteredItem object. At least one of the fields is required.
+     * Update a Metered Item object. At least one of the fields is required.
      *
      * @param string $id
      * @param null|array{display_name?: string, lookup_key?: null|string, metadata?: array<string, null|string>, tax_details?: array{tax_code: string}, unit_label?: null|string} $params

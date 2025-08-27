@@ -14,6 +14,7 @@ namespace Stripe\Service\V2\Billing;
  * @property IntentService $intents
  * @property LicensedItemService $licensedItems
  * @property LicenseFeeService $licenseFees
+ * @property LicenseFeeSubscriptionService $licenseFeeSubscriptions
  * @property MeteredItemService $meteredItems
  * @property MeterEventAdjustmentService $meterEventAdjustments
  * @property MeterEventService $meterEvents
@@ -39,6 +40,7 @@ class BillingServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'intents' => IntentService::class,
         'licensedItems' => LicensedItemService::class,
         'licenseFees' => LicenseFeeService::class,
+        'licenseFeeSubscriptions' => LicenseFeeSubscriptionService::class,
         'meteredItems' => MeteredItemService::class,
         'meterEventAdjustments' => MeterEventAdjustmentService::class,
         'meterEvents' => MeterEventService::class,

@@ -5,18 +5,18 @@
 namespace Stripe\V2\Billing;
 
 /**
- * @property string $id The ID of the RateCardSubscription.
+ * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property string $billing_cadence The ID of the billing Cadence.
- * @property null|string $collection_status The payment status of a RateCardSubscription.
- * @property null|(object{awaiting_customer_action_at: null|string, current_at: null|string, past_due_at: null|string, paused_at: null|string, unpaid_at: null|string}&\Stripe\StripeObject) $collection_status_transitions The collection status transitions of the RateCardSubscription.
+ * @property string $billing_cadence The ID of the Billing Cadence.
+ * @property null|string $collection_status The payment status of a Rate Card Subscription.
+ * @property null|(object{awaiting_customer_action_at: null|string, current_at: null|string, past_due_at: null|string, paused_at: null|string, unpaid_at: null|string}&\Stripe\StripeObject) $collection_status_transitions The collection status transitions of the Rate Card Subscription.
  * @property int $created Timestamp of when the object was created.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property string $rate_card The ID of the RateCard.
- * @property string $rate_card_version The ID of the RateCardVersion.
- * @property null|string $servicing_status The servicing status of a RateCardSubscription.
- * @property null|(object{activated_at: null|string, canceled_at: null|string, paused_at: null|string}&\Stripe\StripeObject) $servicing_status_transitions The servicing status transitions of the RateCardSubscription.
+ * @property null|\Stripe\StripeObject $metadata Set of <a href="/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property string $rate_card The ID of the Rate Card.
+ * @property string $rate_card_version The ID of the Rate Card Version.
+ * @property null|string $servicing_status The servicing status of a Rate Card Subscription.
+ * @property null|(object{activated_at: null|string, canceled_at: null|string, paused_at: null|string}&\Stripe\StripeObject) $servicing_status_transitions The servicing status transitions of the Rate Card Subscription.
  * @property null|string $test_clock The ID of the Test Clock, if any.
  */
 class RateCardSubscription extends \Stripe\ApiResource

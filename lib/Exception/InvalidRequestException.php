@@ -8,8 +8,6 @@ namespace Stripe\Exception;
  */
 class InvalidRequestException extends ApiErrorException
 {
-    protected $stripeParam;
-
     /**
      * Creates a new InvalidRequestException exception.
      *
@@ -32,29 +30,6 @@ class InvalidRequestException extends ApiErrorException
         $stripeCode = null,
         $stripeParam = null
     ) {
-        $instance = parent::factory($message, $httpStatus, $httpBody, $jsonBody, $httpHeaders, $stripeCode);
-        $instance->setStripeParam($stripeParam);
-
-        return $instance;
-    }
-
-    /**
-     * Gets the parameter related to the error.
-     *
-     * @return null|string
-     */
-    public function getStripeParam()
-    {
-        return $this->stripeParam;
-    }
-
-    /**
-     * Sets the parameter related to the error.
-     *
-     * @param null|string $stripeParam
-     */
-    public function setStripeParam($stripeParam)
-    {
-        $this->stripeParam = $stripeParam;
+        return parent::factory($message, $httpStatus, $httpBody, $jsonBody, $httpHeaders, $stripeCode, $stripeParam);
     }
 }

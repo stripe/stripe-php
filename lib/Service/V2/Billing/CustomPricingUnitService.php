@@ -12,7 +12,7 @@ namespace Stripe\Service\V2\Billing;
 class CustomPricingUnitService extends \Stripe\Service\AbstractService
 {
     /**
-     * List all CustomPricingUnit objects.
+     * List all Custom Pricing Unit objects.
      *
      * @param null|array{active?: bool, limit?: int, lookup_keys?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -27,7 +27,7 @@ class CustomPricingUnitService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a CustomPricingUnit object.
+     * Create a Custom Pricing Unit object.
      *
      * @param null|array{display_name: string, lookup_key?: string, metadata?: array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -42,7 +42,7 @@ class CustomPricingUnitService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a CustomPricingUnit object.
+     * Retrieve a Custom Pricing Unit object.
      *
      * @param string $id
      * @param null|array $params
@@ -58,10 +58,10 @@ class CustomPricingUnitService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update a CustomPricingUnit object.
+     * Update a Custom Pricing Unit object.
      *
      * @param string $id
-     * @param null|array{active?: bool, metadata?: array<string, null|string>} $params
+     * @param null|array{active?: bool, display_name?: string, lookup_key?: null|string, metadata?: array<string, null|string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\CustomPricingUnit

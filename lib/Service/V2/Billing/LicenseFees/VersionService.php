@@ -12,7 +12,7 @@ namespace Stripe\Service\V2\Billing\LicenseFees;
 class VersionService extends \Stripe\Service\AbstractService
 {
     /**
-     * List all versions of a LicenseFee objects.
+     * List all versions of a License Fee object.
      *
      * @param string $id
      * @param null|array{limit?: int} $params
@@ -28,7 +28,7 @@ class VersionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a LicenseFeeVersion object.
+     * Retrieve a License Fee Version object.
      *
      * @param string $parentId
      * @param string $id

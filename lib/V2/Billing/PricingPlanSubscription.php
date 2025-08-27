@@ -5,19 +5,19 @@
 namespace Stripe\V2\Billing;
 
 /**
- * @property string $id Unique identifier for the PricingPlanSubscription.
+ * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property string $billing_cadence The ID of the Cadence this subscription is billed on.
+ * @property string $billing_cadence The ID of the Billing Cadence this subscription is billed on.
  * @property string $collection_status Current collection status of this subscription.
  * @property (object{awaiting_customer_action_at: null|string, current_at: null|string, past_due_at: null|string, paused_at: null|string, unpaid_at: null|string}&\Stripe\StripeObject) $collection_status_transitions Timestamps for collection status transitions.
  * @property int $created Time at which the object was created.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object.
- * @property string $pricing_plan The ID of the PricingPlan for this subscription.
- * @property string $pricing_plan_version The ID of the PricingPlanVersion for this subscription.
+ * @property null|\Stripe\StripeObject $metadata Set of <a href="/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property string $pricing_plan The ID of the Pricing Plan for this subscription.
+ * @property string $pricing_plan_version The ID of the Pricing Plan Version for this subscription.
  * @property string $servicing_status Current servicing status of this subscription.
  * @property (object{activated_at: null|string, canceled_at: null|string, paused_at: null|string}&\Stripe\StripeObject) $servicing_status_transitions Timestamps for servicing status transitions.
- * @property null|string $test_clock The ID of the TestClock of the associated Cadence, if any.
+ * @property null|string $test_clock The ID of the Test Clock of the associated Billing Cadence, if any.
  */
 class PricingPlanSubscription extends \Stripe\ApiResource
 {

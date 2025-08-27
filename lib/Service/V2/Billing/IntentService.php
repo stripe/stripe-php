@@ -5,14 +5,20 @@
 namespace Stripe\Service\V2\Billing;
 
 /**
+ * @property Intents\ActionService $actions
+ *
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class IntentService extends \Stripe\Service\AbstractService
 {
+    use \Stripe\Service\ServiceNavigatorTrait;
+
+    protected static $classMap = ['actions' => Intents\ActionService::class];
+
     /**
-     * List BillingIntents.
+     * List Billing Intents.
      *
      * @param null|array{limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -27,7 +33,7 @@ class IntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Cancel a BillingIntent.
+     * Cancel a Billing Intent.
      *
      * @param string $id
      * @param null|array $params
@@ -43,7 +49,7 @@ class IntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Commit a BillingIntent.
+     * Commit a Billing Intent.
      *
      * @param string $id
      * @param null|array{payment_intent?: string} $params
@@ -59,9 +65,9 @@ class IntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a BillingIntent.
+     * Create a Billing Intent.
      *
-     * @param null|array{actions: array{type: string, apply?: array{type: string, invoice_discount_rule?: array{applies_to: string, type: string, percent_off?: array{maximum_applications: array{type: string}, percent_off: string}}}, deactivate?: array{pricing_plan_subscription_details: array{pricing_plan_subscription: string}, proration_behavior: string, type: string}, modify?: array{pricing_plan_subscription_details: array{component_configurations?: array{quantity?: int, lookup_key?: string, pricing_plan_component?: string}[], new_pricing_plan?: string, new_pricing_plan_version?: string, pricing_plan_subscription: string}, proration_behavior: string, type: string}, remove?: array{type: string, invoice_discount_rule?: string}, subscribe?: array{proration_behavior: string, type: string, pricing_plan_subscription_details?: array{component_configurations?: array{quantity?: int, lookup_key?: string, pricing_plan_component?: string}[], metadata?: array<string, string>, pricing_plan: string, pricing_plan_version: string}}}[], currency: string, effective_at: string, cadence?: string} $params
+     * @param null|array{actions: array{type: string, apply?: array{type: string, invoice_discount_rule?: array{applies_to: string, type: string, percent_off?: array{maximum_applications: array{type: string}, percent_off: string}}}, deactivate?: array{billing_details?: array{proration_behavior?: string}, effective_at?: array{timestamp?: string, type: string}, pricing_plan_subscription_details: array{pricing_plan_subscription: string}, type: string}, modify?: array{billing_details?: array{proration_behavior?: string}, effective_at?: array{timestamp?: string, type: string}, pricing_plan_subscription_details: array{component_configurations?: array{quantity?: int, lookup_key?: string, pricing_plan_component?: string}[], new_pricing_plan?: string, new_pricing_plan_version?: string, pricing_plan_subscription: string}, type: string}, remove?: array{type: string, invoice_discount_rule?: string}, subscribe?: array{billing_details?: array{proration_behavior?: string}, effective_at?: array{timestamp?: string, type: string}, type: string, pricing_plan_subscription_details?: array{component_configurations?: array{quantity?: int, lookup_key?: string, pricing_plan_component?: string}[], metadata?: array<string, string>, pricing_plan: string, pricing_plan_version: string}, v1_subscription_details?: array{description?: string, items: array{metadata?: array<string, string>, price: string, quantity?: int}[], metadata?: array<string, string>}}}[], currency: string, cadence?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\Intent
@@ -74,7 +80,7 @@ class IntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Release a BillingIntent.
+     * Release a Billing Intent.
      *
      * @param string $id
      * @param null|array $params
@@ -90,7 +96,7 @@ class IntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Reserve a BillingIntent.
+     * Reserve a Billing Intent.
      *
      * @param string $id
      * @param null|array $params
@@ -106,7 +112,7 @@ class IntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a BillingIntent.
+     * Retrieve a Billing Intent.
      *
      * @param string $id
      * @param null|array $params
@@ -119,5 +125,10 @@ class IntentService extends \Stripe\Service\AbstractService
     public function retrieve($id, $params = null, $opts = null)
     {
         return $this->request('get', $this->buildPath('/v2/billing/intents/%s', $id), $params, $opts);
+    }
+
+    protected function getServiceClass($name)
+    {
+        return \array_key_exists($name, self::$classMap) ? self::$classMap[$name] : null;
     }
 }

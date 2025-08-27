@@ -5,10 +5,10 @@
 namespace Stripe\V2\Billing;
 
 /**
- * @property string $id The ID of the LicenseFeeVersion.
+ * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property int $created Timestamp of when the object was created.
- * @property string $license_fee_id The ID of the parent LicenseFee.
+ * @property string $license_fee_id The ID of the parent License Fee.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $tiering_mode Defines whether the tiering price should be graduated or volume-based. In volume-based tiering, the maximum quantity within a period determines the per-unit price. In graduated tiering, the pricing changes as the quantity grows into new tiers. Can only be set if <code>tiers</code> is set.
  * @property ((object{flat_amount: null|string, unit_amount: null|string, up_to_decimal: null|string, up_to_inf: null|string}&\Stripe\StripeObject))[] $tiers Each element represents a pricing tier. Cannot be set if <code>unit_amount</code> is provided.

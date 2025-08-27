@@ -1,0 +1,14 @@
+<?php
+
+// File generated from our OpenAPI spec
+
+namespace Stripe\EventData;
+
+/**
+ * @property string $alert_id The alert ID.
+ * @property string $grouping_key The grouping key for the alert.
+ * @property (object{account: null|string, event_type: string, livemode: bool, missing_delivery_attempts: int, related_object_id: string}&\Stripe\StripeObject) $impact The user impact.
+ * @property int $resolved_at The time when the user experience has returned to expected levels.
+ * @property string $summary A short description of the alert.
+ */
+class V2CoreHealthEventGenerationFailureResolvedEventData extends \Stripe\StripeObject {}

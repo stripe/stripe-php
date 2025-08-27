@@ -204,7 +204,7 @@ You can disable this behavior if you prefer:
 Stripe has features in the [public preview phase](https://docs.stripe.com/release-phases) that can be accessed via versions of this package that have the `-beta.X` suffix like `12.2.0-beta.2`.
 We would love for you to try these as we incrementally release new features and improve them based on your feedback.
 
-The public preview SDKs are a different version of the same package as the stable SDKs. These versions are appended with `-beta.X` such as `15.0.0-beta.1`. To install, choose the version that includes support for the preview feature you are interested in by reviewing the [releases page](https://github.com/stripe/stripe-dotnet/releases/) and then use it in the `composer require` command:
+The public preview SDKs are a different version of the same package as the stable SDKs. These versions are appended with `-beta.X` such as `15.0.0-beta.1`. To install, pick the latest version with the `beta` suffix by reviewing the [releases page](https://github.com/stripe/stripe-dotnet/releases/) and then use it in the `composer require` command:
 
 ```bash
 composer require stripe/stripe-php:v<replace-with-the-version-of-your-choice>
@@ -218,6 +218,9 @@ Some preview features require a name and version to be set in the `Stripe-Versio
 ```php
 Stripe::addBetaVersion("feature_beta", "v3");
 ```
+### Private Preview SDKs
+
+Stripe has features in the [private preview phase](https://docs.stripe.com/release-phases) that can be accessed via versions of this package that have the `-alpha.X` suffix like `12.2.0-alpha.2`. These are invite-only features. Once invited, you can install the private preview SDKs by following the same instructions as for the [public preview SDKs](https://github.com/stripe/stripe-php?tab=readme-ov-file#public-preview-sdks) above and replacing the term `beta` with `alpha`.
 
 ### Custom requests
 

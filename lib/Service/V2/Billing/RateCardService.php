@@ -22,9 +22,9 @@ class RateCardService extends \Stripe\Service\AbstractService
     ];
 
     /**
-     * List all RateCard objects.
+     * List all Rate Card objects.
      *
-     * @param null|array{active?: bool, limit?: int} $params
+     * @param null|array{active?: bool, limit?: int, lookup_keys?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\Billing\RateCard>
@@ -37,9 +37,9 @@ class RateCardService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a RateCard object.
+     * Create a Rate Card object.
      *
-     * @param null|array{currency: string, display_name: string, metadata?: array<string, string>, service_interval: string, service_interval_count: int, tax_behavior: string} $params
+     * @param null|array{currency: string, display_name: string, lookup_key?: string, metadata?: array<string, string>, service_interval: string, service_interval_count: int, tax_behavior: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\RateCard
@@ -52,7 +52,7 @@ class RateCardService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve the latest version of a RateCard object.
+     * Retrieve the latest version of a Rate Card object.
      *
      * @param string $id
      * @param null|array $params
@@ -68,10 +68,10 @@ class RateCardService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update a RateCard object.
+     * Update a Rate Card object.
      *
      * @param string $id
-     * @param null|array{active?: bool, display_name?: string, live_version?: string, metadata?: array<string, null|string>} $params
+     * @param null|array{active?: bool, display_name?: string, live_version?: string, lookup_key?: string, metadata?: array<string, null|string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\RateCard

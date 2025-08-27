@@ -14,6 +14,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     protected $jsonBody;
     protected $requestId;
     protected $stripeCode;
+    protected $stripeParam;
 
     /**
      * Creates a new API error exception.
@@ -24,6 +25,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
      * @param null|array $jsonBody the JSON deserialized body
      * @param null|array|\Stripe\Util\CaseInsensitiveArray $httpHeaders the HTTP headers array
      * @param null|string $stripeCode the Stripe error code
+     * @param null|string $stripeParam the parameter related to the error
      *
      * @return static
      */
@@ -33,7 +35,8 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
         $httpBody = null,
         $jsonBody = null,
         $httpHeaders = null,
-        $stripeCode = null
+        $stripeCode = null,
+        $stripeParam = null
     ) {
         $instance = new static($message);
         $instance->setHttpStatus($httpStatus);
@@ -41,7 +44,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
         $instance->setJsonBody($jsonBody);
         $instance->setHttpHeaders($httpHeaders);
         $instance->setStripeCode($stripeCode);
-
+        $instance->setStripeParam($stripeParam);
         $instance->setRequestId(null);
         if ($httpHeaders && isset($httpHeaders['Request-Id'])) {
             $instance->setRequestId($httpHeaders['Request-Id']);
@@ -193,6 +196,26 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     public function setStripeCode($stripeCode)
     {
         $this->stripeCode = $stripeCode;
+    }
+
+    /**
+     * Gets the Stripe error parameter.
+     *
+     * @return null|string
+     */
+    public function getStripeParam()
+    {
+        return $this->stripeParam;
+    }
+
+    /**
+     * Sets the Stripe error parameter.
+     *
+     * @param null|string $stripeParam
+     */
+    public function setStripeParam($stripeParam)
+    {
+        $this->stripeParam = $stripeParam;
     }
 
     /**
