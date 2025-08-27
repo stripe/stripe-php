@@ -12,7 +12,7 @@ namespace Stripe\Service\V2\Billing;
 class ServiceActionService extends \Stripe\Service\AbstractService
 {
     /**
-     * Create a ServiceAction object.
+     * Create a Service Action object.
      *
      * @param null|array{lookup_key?: string, service_interval: string, service_interval_count: int, type: string, credit_grant?: array{amount: array{type: string, custom_pricing_unit?: array{id: string, value: string}, monetary?: \Stripe\StripeObject}, applicability_config: array{scope: array{billable_items?: string[], price_type?: string}}, expiry_config: array{type: string}, name: string}, credit_grant_per_tenant?: array{amount: array{type: string, custom_pricing_unit?: array{id: string, value: string}, monetary?: \Stripe\StripeObject}, applicability_config: array{scope: array{billable_items?: string[], price_type?: string}}, expiry_config: array{type: string}, grant_condition: array{type: string, meter_event_first_per_period?: array{meter_segment_conditions: array{type: string, dimension?: array{payload_key: string, value: string}}[]}}, name: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -27,7 +27,7 @@ class ServiceActionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a ServiceAction object.
+     * Retrieve a Service Action object.
      *
      * @param string $id
      * @param null|array $params

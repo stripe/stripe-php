@@ -12,7 +12,7 @@ namespace Stripe\Service\V2\Billing\PricingPlans;
 class ComponentService extends \Stripe\Service\AbstractService
 {
     /**
-     * List all PricingPlanComponent objects for a PricingPlan.
+     * List all Pricing Plan Component objects for a Pricing Plan.
      *
      * @param string $id
      * @param null|array{limit?: int, lookup_keys?: string[], pricing_plan_version?: string} $params
@@ -28,10 +28,10 @@ class ComponentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a PricingPlanComponent object.
+     * Create a Pricing Plan Component object.
      *
      * @param string $id
-     * @param null|array{lookup_key?: string, metadata?: array<string, string>, type: string, license_fee?: array{id: string, version: string}, rate_card?: array{id: string, version: string}, service_action?: array{id: string, version: string}} $params
+     * @param null|array{lookup_key?: string, metadata?: array<string, string>, type: string, license_fee?: array{id: string, version?: string}, rate_card?: array{id: string, version?: string}, service_action?: array{id: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\PricingPlanComponent
@@ -44,7 +44,7 @@ class ComponentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Remove a PricingPlanComponent from the latest version of a PricingPlan.
+     * Remove a Pricing Plan Component from the latest version of a Pricing Plan.
      *
      * @param string $parentId
      * @param string $id
@@ -61,7 +61,7 @@ class ComponentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a PricingPlanComponent object.
+     * Retrieve a Pricing Plan Component object.
      *
      * @param string $parentId
      * @param string $id
@@ -78,7 +78,7 @@ class ComponentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update a PricingPlanComponent object.
+     * Update a Pricing Plan Component object.
      *
      * @param string $parentId
      * @param string $id

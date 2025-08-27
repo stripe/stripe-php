@@ -1,0 +1,28 @@
+<?php
+
+// File generated from our OpenAPI spec
+
+namespace Stripe\V2\Billing;
+
+/**
+ * @property string $id Unique identifier for the object.
+ * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
+ * @property null|(object{type: string, invoice_discount_rule: null|(object{applies_to: string, invoice_discount_rule: null|string, type: string, percent_off: null|(object{maximum_applications: (object{type: string}&\Stripe\StripeObject), percent_off: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $apply Details for an apply action.
+ * @property int $created Time at which the object was created.
+ * @property null|(object{billing_details: (object{proration_behavior: null|string}&\Stripe\StripeObject), effective_at: (object{timestamp: null|int, type: string}&\Stripe\StripeObject), type: string, pricing_plan_subscription_details: null|(object{pricing_plan_subscription: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $deactivate Details for a deactivate action.
+ * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property null|(object{billing_details: (object{proration_behavior: null|string}&\Stripe\StripeObject), effective_at: (object{timestamp: null|int, type: string}&\Stripe\StripeObject), type: string, pricing_plan_subscription_details: null|(object{component_configurations: ((object{quantity: null|int, lookup_key: null|string, pricing_plan_component: null|string}&\Stripe\StripeObject))[], new_pricing_plan: string, new_pricing_plan_version: string, pricing_plan_subscription: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $modify Details for a modify action.
+ * @property null|(object{type: string, invoice_discount_rule: null|string}&\Stripe\StripeObject) $remove Details for a remove action.
+ * @property null|(object{billing_details: (object{proration_behavior: null|string}&\Stripe\StripeObject), effective_at: (object{timestamp: null|int, type: string}&\Stripe\StripeObject), type: string, pricing_plan_subscription_details: null|(object{component_configurations: ((object{quantity: null|int, lookup_key: null|string, pricing_plan_component: null|string}&\Stripe\StripeObject))[], metadata: null|\Stripe\StripeObject, pricing_plan: string, pricing_plan_subscription: null|string, pricing_plan_version: string}&\Stripe\StripeObject), v1_subscription_details: null|(object{description: null|string, items: ((object{metadata: null|\Stripe\StripeObject, price: string, quantity: null|int}&\Stripe\StripeObject))[], metadata: null|\Stripe\StripeObject}&\Stripe\StripeObject)}&\Stripe\StripeObject) $subscribe Details for a subscribe action.
+ * @property string $type Type of the Billing Intent Action.
+ */
+class IntentAction extends \Stripe\ApiResource
+{
+    const OBJECT_NAME = 'v2.billing.intent_action';
+
+    const TYPE_APPLY = 'apply';
+    const TYPE_DEACTIVATE = 'deactivate';
+    const TYPE_MODIFY = 'modify';
+    const TYPE_REMOVE = 'remove';
+    const TYPE_SUBSCRIBE = 'subscribe';
+}

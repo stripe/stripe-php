@@ -12,7 +12,7 @@ namespace Stripe\Service\V2\Billing;
 class CadenceService extends \Stripe\Service\AbstractService
 {
     /**
-     * List all the billing Cadences.
+     * List Billing Cadences.
      *
      * @param null|array{include?: string[], limit?: int, payer?: array{customer?: string, type: string}, test_clock?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -27,7 +27,7 @@ class CadenceService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Cancel the billing cadence.
+     * Cancel the Billing Cadence.
      *
      * @param string $id
      * @param null|array{include?: string[]} $params
@@ -43,9 +43,9 @@ class CadenceService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a billing Cadence object.
+     * Create a Billing Cadence object.
      *
-     * @param null|array{billing_cycle: array{interval_count?: int, type: string, day?: array{time?: array{hour: int, minute?: int}}, month?: array{day_of_month: int, time?: array{hour: int, minute?: int}}, week?: array{day_of_week: int, time?: array{hour: int, minute?: int}}, year?: array{day_of_month?: int, month_of_year?: int, time?: array{hour: int, minute?: int}}}, include?: string[], metadata?: array<string, string>, payer: array{billing_profile?: string, customer?: string, type?: string}, settings?: array{bill?: array{id: string, version?: string}, collection?: array{id: string, version?: string}}} $params
+     * @param null|array{billing_cycle: array{interval_count?: int, type: string, day?: array{time?: array{hour: int, minute: int, second: int}}, month?: array{day_of_month: int, time?: array{hour: int, minute: int, second: int}}, week?: array{day_of_week: int, time?: array{hour: int, minute: int, second: int}}, year?: array{day_of_month?: int, month_of_year?: int, time?: array{hour: int, minute: int, second: int}}}, include?: string[], metadata?: array<string, string>, payer: array{billing_profile?: string, customer?: string, type?: string}, settings?: array{bill?: array{id: string, version?: string}, collection?: array{id: string, version?: string}}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\Cadence
@@ -58,7 +58,7 @@ class CadenceService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a billing Cadence object.
+     * Retrieve a Billing Cadence object.
      *
      * @param string $id
      * @param null|array{include?: string[]} $params
@@ -74,7 +74,7 @@ class CadenceService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update a billing Cadence object.
+     * Update a Billing Cadence object.
      *
      * @param string $id
      * @param null|array{include?: string[], metadata?: array<string, null|string>, payer?: array{billing_profile?: string}, settings?: array{bill?: null|array{id: string, version?: null|string}, collection?: null|array{id: string, version?: null|string}}} $params

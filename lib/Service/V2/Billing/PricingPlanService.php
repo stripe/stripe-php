@@ -22,7 +22,7 @@ class PricingPlanService extends \Stripe\Service\AbstractService
     ];
 
     /**
-     * List all PricingPlan objects.
+     * List all Pricing Plan objects.
      *
      * @param null|array{active?: bool, limit?: int, lookup_keys?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -37,7 +37,7 @@ class PricingPlanService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a PricingPlan object.
+     * Create a Pricing Plan object.
      *
      * @param null|array{currency: string, description?: string, display_name: string, lookup_key?: string, metadata?: array<string, string>, tax_behavior: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -52,7 +52,7 @@ class PricingPlanService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a PricingPlan object.
+     * Retrieve a Pricing Plan object.
      *
      * @param string $id
      * @param null|array $params
@@ -68,7 +68,7 @@ class PricingPlanService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update a PricingPlan object.
+     * Update a Pricing Plan object.
      *
      * @param string $id
      * @param null|array{active?: bool, description?: string, display_name?: string, live_version?: string, lookup_key?: string, metadata?: array<string, null|string>} $params

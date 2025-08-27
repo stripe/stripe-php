@@ -5,7 +5,7 @@
 namespace Stripe\V2\Billing;
 
 /**
- * @property string $id Unique identifier for the ServiceAction.
+ * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property int $created Timestamp of when the object was created.
  * @property null|(object{amount: (object{type: string, custom_pricing_unit: null|(object{id: string, value: string}&\Stripe\StripeObject), monetary: null|\Stripe\StripeObject}&\Stripe\StripeObject), applicability_config: (object{scope: (object{billable_items: null|string[], price_type: null|string}&\Stripe\StripeObject)}&\Stripe\StripeObject), expiry_config: (object{type: string}&\Stripe\StripeObject), name: string}&\Stripe\StripeObject) $credit_grant Details for the credit grant. Provided only if <code>type</code> is &quot;credit_grant&quot;.

@@ -12,7 +12,7 @@ namespace Stripe\Service\V2\Billing\RateCards;
 class VersionService extends \Stripe\Service\AbstractService
 {
     /**
-     * List the versions of a RateCard object. Results are sorted in reverse
+     * List the versions of a Rate Card object. Results are sorted in reverse
      * chronological order (most recent first).
      *
      * @param string $id
@@ -29,7 +29,7 @@ class VersionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a specific version of a RateCard object.
+     * Retrieve a specific version of a Rate Card object.
      *
      * @param string $parentId
      * @param string $id

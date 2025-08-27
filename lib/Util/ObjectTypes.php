@@ -187,8 +187,6 @@ class ObjectTypes
      */
     const v2Mapping = [
         // v2 object classes: The beginning of the section generated from our OpenAPI spec
-        \Stripe\V2\Account::OBJECT_NAME => \Stripe\V2\Account::class,
-        \Stripe\V2\AccountLink::OBJECT_NAME => \Stripe\V2\AccountLink::class,
         \Stripe\V2\Billing\BillSetting::OBJECT_NAME => \Stripe\V2\Billing\BillSetting::class,
         \Stripe\V2\Billing\BillSettingVersion::OBJECT_NAME => \Stripe\V2\Billing\BillSettingVersion::class,
         \Stripe\V2\Billing\Cadence::OBJECT_NAME => \Stripe\V2\Billing\Cadence::class,
@@ -196,8 +194,10 @@ class ObjectTypes
         \Stripe\V2\Billing\CollectionSettingVersion::OBJECT_NAME => \Stripe\V2\Billing\CollectionSettingVersion::class,
         \Stripe\V2\Billing\CustomPricingUnit::OBJECT_NAME => \Stripe\V2\Billing\CustomPricingUnit::class,
         \Stripe\V2\Billing\Intent::OBJECT_NAME => \Stripe\V2\Billing\Intent::class,
+        \Stripe\V2\Billing\IntentAction::OBJECT_NAME => \Stripe\V2\Billing\IntentAction::class,
         \Stripe\V2\Billing\LicensedItem::OBJECT_NAME => \Stripe\V2\Billing\LicensedItem::class,
         \Stripe\V2\Billing\LicenseFee::OBJECT_NAME => \Stripe\V2\Billing\LicenseFee::class,
+        \Stripe\V2\Billing\LicenseFeeSubscription::OBJECT_NAME => \Stripe\V2\Billing\LicenseFeeSubscription::class,
         \Stripe\V2\Billing\LicenseFeeVersion::OBJECT_NAME => \Stripe\V2\Billing\LicenseFeeVersion::class,
         \Stripe\V2\Billing\MeteredItem::OBJECT_NAME => \Stripe\V2\Billing\MeteredItem::class,
         \Stripe\V2\Billing\MeterEvent::OBJECT_NAME => \Stripe\V2\Billing\MeterEvent::class,
@@ -215,6 +215,7 @@ class ObjectTypes
         \Stripe\V2\Billing\ServiceAction::OBJECT_NAME => \Stripe\V2\Billing\ServiceAction::class,
         \Stripe\V2\Core\Account::OBJECT_NAME => \Stripe\V2\Core\Account::class,
         \Stripe\V2\Core\AccountLink::OBJECT_NAME => \Stripe\V2\Core\AccountLink::class,
+        \Stripe\V2\Core\ClaimableSandbox::OBJECT_NAME => \Stripe\V2\Core\ClaimableSandbox::class,
         \Stripe\V2\Core\Person::OBJECT_NAME => \Stripe\V2\Core\Person::class,
         \Stripe\V2\Core\Vault\GbBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\GbBankAccount::class,
         \Stripe\V2\Core\Vault\UsBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\UsBankAccount::class,

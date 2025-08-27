@@ -4822,211 +4822,6 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(WebhookEndpoint::class, $result);
     }
 
-    public function testV2AccountLinkPost()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/account_links',
-            [
-                'account' => 'account',
-                'use_case' => [
-                    'type' => 'account_onboarding',
-                    'account_onboarding' => [
-                        'configurations' => ['recipient'],
-                        'refresh_url' => 'refresh_url',
-                        'return_url' => 'return_url',
-                    ],
-                    'account_update' => [
-                        'configurations' => ['recipient'],
-                        'refresh_url' => 'refresh_url',
-                        'return_url' => 'return_url',
-                    ],
-                ],
-            ],
-            [],
-            false,
-            [
-                'object' => 'account_link',
-                'account' => 'account',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'expires_at' => '1970-01-10T15:36:51.170Z',
-                'livemode' => [],
-                'url' => 'url',
-                'use_case' => [
-                    'type' => 'account_onboarding',
-                    'account_onboarding' => null,
-                    'account_update' => null,
-                ],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->accountLinks->create([
-            'account' => 'account',
-            'use_case' => [
-                'type' => 'account_onboarding',
-                'account_onboarding' => [
-                    'configurations' => ['recipient'],
-                    'refresh_url' => 'refresh_url',
-                    'return_url' => 'return_url',
-                ],
-                'account_update' => [
-                    'configurations' => ['recipient'],
-                    'refresh_url' => 'refresh_url',
-                    'return_url' => 'return_url',
-                ],
-            ],
-        ]);
-        self::assertInstanceOf(V2\AccountLink::class, $result);
-    }
-
-    public function testV2AccountGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/accounts',
-            [],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'id' => 'obj_123',
-                        'object' => 'account',
-                        'applied_configurations' => ['0' => 'storer'],
-                        'configuration' => null,
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'email' => null,
-                        'legal_entity_data' => null,
-                        'livemode' => [],
-                        'metadata' => null,
-                        'name' => null,
-                        'requirements' => null,
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->accounts->all([]);
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Account::class, $result->data[0]);
-    }
-
-    public function testV2AccountPost()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/accounts',
-            [],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'account',
-                'applied_configurations' => ['0' => 'storer'],
-                'configuration' => null,
-                'created' => '1970-01-12T21:42:34.472Z',
-                'email' => null,
-                'legal_entity_data' => null,
-                'livemode' => [],
-                'metadata' => null,
-                'name' => null,
-                'requirements' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->accounts->create([]);
-        self::assertInstanceOf(V2\Account::class, $result);
-    }
-
-    public function testV2AccountGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/accounts/id_123',
-            [],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'account',
-                'applied_configurations' => ['0' => 'storer'],
-                'configuration' => null,
-                'created' => '1970-01-12T21:42:34.472Z',
-                'email' => null,
-                'legal_entity_data' => null,
-                'livemode' => [],
-                'metadata' => null,
-                'name' => null,
-                'requirements' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->accounts->retrieve('id_123', []);
-        self::assertInstanceOf(V2\Account::class, $result);
-    }
-
-    public function testV2AccountPost2()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/accounts/id_123',
-            [],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'account',
-                'applied_configurations' => ['0' => 'storer'],
-                'configuration' => null,
-                'created' => '1970-01-12T21:42:34.472Z',
-                'email' => null,
-                'legal_entity_data' => null,
-                'livemode' => [],
-                'metadata' => null,
-                'name' => null,
-                'requirements' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->accounts->update('id_123', []);
-        self::assertInstanceOf(V2\Account::class, $result);
-    }
-
-    public function testV2AccountPost3()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/accounts/id_123/close',
-            [],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'account',
-                'applied_configurations' => ['0' => 'storer'],
-                'configuration' => null,
-                'created' => '1970-01-12T21:42:34.472Z',
-                'email' => null,
-                'legal_entity_data' => null,
-                'livemode' => [],
-                'metadata' => null,
-                'name' => null,
-                'requirements' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->accounts->close('id_123', []);
-        self::assertInstanceOf(V2\Account::class, $result);
-    }
-
     public function testV2BillingBillSettingGet()
     {
         $this->stubRequest(
@@ -5274,6 +5069,7 @@ final class GeneratedExamplesTest extends TestCase
                         'time' => [
                             'hour' => 3208676,
                             'minute' => 1074026988,
+                            'second' => 906279820,
                         ],
                     ],
                     'month' => [
@@ -5281,6 +5077,7 @@ final class GeneratedExamplesTest extends TestCase
                         'time' => [
                             'hour' => 3208676,
                             'minute' => 1074026988,
+                            'second' => 906279820,
                         ],
                     ],
                     'week' => [
@@ -5288,6 +5085,7 @@ final class GeneratedExamplesTest extends TestCase
                         'time' => [
                             'hour' => 3208676,
                             'minute' => 1074026988,
+                            'second' => 906279820,
                         ],
                     ],
                     'year' => [
@@ -5296,6 +5094,7 @@ final class GeneratedExamplesTest extends TestCase
                         'time' => [
                             'hour' => 3208676,
                             'minute' => 1074026988,
+                            'second' => 906279820,
                         ],
                     ],
                 ],
@@ -5343,6 +5142,7 @@ final class GeneratedExamplesTest extends TestCase
                     'time' => [
                         'hour' => 3208676,
                         'minute' => 1074026988,
+                        'second' => 906279820,
                     ],
                 ],
                 'month' => [
@@ -5350,6 +5150,7 @@ final class GeneratedExamplesTest extends TestCase
                     'time' => [
                         'hour' => 3208676,
                         'minute' => 1074026988,
+                        'second' => 906279820,
                     ],
                 ],
                 'week' => [
@@ -5357,6 +5158,7 @@ final class GeneratedExamplesTest extends TestCase
                     'time' => [
                         'hour' => 3208676,
                         'minute' => 1074026988,
+                        'second' => 906279820,
                     ],
                 ],
                 'year' => [
@@ -5365,6 +5167,7 @@ final class GeneratedExamplesTest extends TestCase
                     'time' => [
                         'hour' => 3208676,
                         'minute' => 1074026988,
+                        'second' => 906279820,
                     ],
                 ],
             ],
@@ -5516,6 +5319,7 @@ final class GeneratedExamplesTest extends TestCase
                         'collection_method' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
                         'display_name' => null,
+                        'email_delivery' => null,
                         'latest_version' => 'latest_version',
                         'live_version' => 'live_version',
                         'livemode' => [],
@@ -5549,6 +5353,7 @@ final class GeneratedExamplesTest extends TestCase
                 'collection_method' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'display_name' => null,
+                'email_delivery' => null,
                 'latest_version' => 'latest_version',
                 'live_version' => 'live_version',
                 'livemode' => [],
@@ -5577,6 +5382,7 @@ final class GeneratedExamplesTest extends TestCase
                 'collection_method' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'display_name' => null,
+                'email_delivery' => null,
                 'latest_version' => 'latest_version',
                 'live_version' => 'live_version',
                 'livemode' => [],
@@ -5608,6 +5414,7 @@ final class GeneratedExamplesTest extends TestCase
                 'collection_method' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'display_name' => null,
+                'email_delivery' => null,
                 'latest_version' => 'latest_version',
                 'live_version' => 'live_version',
                 'livemode' => [],
@@ -5640,6 +5447,7 @@ final class GeneratedExamplesTest extends TestCase
                         'object' => 'v2.billing.collection_setting_version',
                         'collection_method' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
+                        'email_delivery' => null,
                         'livemode' => [],
                         'payment_method_configuration' => null,
                         'payment_method_options' => null,
@@ -5672,6 +5480,7 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.billing.collection_setting_version',
                 'collection_method' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
+                'email_delivery' => null,
                 'livemode' => [],
                 'payment_method_configuration' => null,
                 'payment_method_options' => null,
@@ -5826,7 +5635,6 @@ final class GeneratedExamplesTest extends TestCase
                         'cadence' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
                         'currency' => 'usd',
-                        'effective_at' => 'on_reserve',
                         'livemode' => [],
                         'status' => 'draft',
                         'status_transitions' => [
@@ -5871,13 +5679,26 @@ final class GeneratedExamplesTest extends TestCase
                             ],
                         ],
                         'deactivate' => [
+                            'billing_details' => [
+                                'proration_behavior' => 'prorated_adjustment',
+                            ],
+                            'effective_at' => [
+                                'timestamp' => '1970-01-01T15:18:46.294Z',
+                                'type' => 'current_billing_period_start',
+                            ],
                             'pricing_plan_subscription_details' => [
                                 'pricing_plan_subscription' => 'pricing_plan_subscription',
                             ],
-                            'proration_behavior' => 'none',
                             'type' => 'pricing_plan_subscription_details',
                         ],
                         'modify' => [
+                            'billing_details' => [
+                                'proration_behavior' => 'prorated_adjustment',
+                            ],
+                            'effective_at' => [
+                                'timestamp' => '1970-01-01T15:18:46.294Z',
+                                'type' => 'current_billing_period_start',
+                            ],
                             'pricing_plan_subscription_details' => [
                                 'component_configurations' => [
                                     [
@@ -5890,7 +5711,6 @@ final class GeneratedExamplesTest extends TestCase
                                 'new_pricing_plan_version' => 'new_pricing_plan_version',
                                 'pricing_plan_subscription' => 'pricing_plan_subscription',
                             ],
-                            'proration_behavior' => 'none',
                             'type' => 'pricing_plan_subscription_details',
                         ],
                         'remove' => [
@@ -5898,7 +5718,13 @@ final class GeneratedExamplesTest extends TestCase
                             'invoice_discount_rule' => 'invoice_discount_rule',
                         ],
                         'subscribe' => [
-                            'proration_behavior' => 'none',
+                            'billing_details' => [
+                                'proration_behavior' => 'prorated_adjustment',
+                            ],
+                            'effective_at' => [
+                                'timestamp' => '1970-01-01T15:18:46.294Z',
+                                'type' => 'current_billing_period_start',
+                            ],
                             'type' => 'pricing_plan_subscription_details',
                             'pricing_plan_subscription_details' => [
                                 'component_configurations' => [
@@ -5912,11 +5738,21 @@ final class GeneratedExamplesTest extends TestCase
                                 'pricing_plan' => 'pricing_plan',
                                 'pricing_plan_version' => 'pricing_plan_version',
                             ],
+                            'v1_subscription_details' => [
+                                'description' => 'description',
+                                'items' => [
+                                    [
+                                        'metadata' => ['key' => 'metadata'],
+                                        'price' => 'price',
+                                        'quantity' => 1285004149,
+                                    ],
+                                ],
+                                'metadata' => ['key' => 'metadata'],
+                            ],
                         ],
                     ],
                 ],
                 'currency' => 'usd',
-                'effective_at' => 'on_reserve',
             ],
             [],
             false,
@@ -5934,7 +5770,6 @@ final class GeneratedExamplesTest extends TestCase
                 'cadence' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
-                'effective_at' => 'on_reserve',
                 'livemode' => [],
                 'status' => 'draft',
                 'status_transitions' => [
@@ -5965,13 +5800,26 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                     ],
                     'deactivate' => [
+                        'billing_details' => [
+                            'proration_behavior' => 'prorated_adjustment',
+                        ],
+                        'effective_at' => [
+                            'timestamp' => '1970-01-01T15:18:46.294Z',
+                            'type' => 'current_billing_period_start',
+                        ],
                         'pricing_plan_subscription_details' => [
                             'pricing_plan_subscription' => 'pricing_plan_subscription',
                         ],
-                        'proration_behavior' => 'none',
                         'type' => 'pricing_plan_subscription_details',
                     ],
                     'modify' => [
+                        'billing_details' => [
+                            'proration_behavior' => 'prorated_adjustment',
+                        ],
+                        'effective_at' => [
+                            'timestamp' => '1970-01-01T15:18:46.294Z',
+                            'type' => 'current_billing_period_start',
+                        ],
                         'pricing_plan_subscription_details' => [
                             'component_configurations' => [
                                 [
@@ -5984,7 +5832,6 @@ final class GeneratedExamplesTest extends TestCase
                             'new_pricing_plan_version' => 'new_pricing_plan_version',
                             'pricing_plan_subscription' => 'pricing_plan_subscription',
                         ],
-                        'proration_behavior' => 'none',
                         'type' => 'pricing_plan_subscription_details',
                     ],
                     'remove' => [
@@ -5992,7 +5839,13 @@ final class GeneratedExamplesTest extends TestCase
                         'invoice_discount_rule' => 'invoice_discount_rule',
                     ],
                     'subscribe' => [
-                        'proration_behavior' => 'none',
+                        'billing_details' => [
+                            'proration_behavior' => 'prorated_adjustment',
+                        ],
+                        'effective_at' => [
+                            'timestamp' => '1970-01-01T15:18:46.294Z',
+                            'type' => 'current_billing_period_start',
+                        ],
                         'type' => 'pricing_plan_subscription_details',
                         'pricing_plan_subscription_details' => [
                             'component_configurations' => [
@@ -6006,11 +5859,21 @@ final class GeneratedExamplesTest extends TestCase
                             'pricing_plan' => 'pricing_plan',
                             'pricing_plan_version' => 'pricing_plan_version',
                         ],
+                        'v1_subscription_details' => [
+                            'description' => 'description',
+                            'items' => [
+                                [
+                                    'metadata' => ['key' => 'metadata'],
+                                    'price' => 'price',
+                                    'quantity' => 1285004149,
+                                ],
+                            ],
+                            'metadata' => ['key' => 'metadata'],
+                        ],
                     ],
                 ],
             ],
             'currency' => 'usd',
-            'effective_at' => 'on_reserve',
         ]);
         self::assertInstanceOf(V2\Billing\Intent::class, $result);
     }
@@ -6037,7 +5900,6 @@ final class GeneratedExamplesTest extends TestCase
                 'cadence' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
-                'effective_at' => 'on_reserve',
                 'livemode' => [],
                 'status' => 'draft',
                 'status_transitions' => [
@@ -6076,7 +5938,6 @@ final class GeneratedExamplesTest extends TestCase
                 'cadence' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
-                'effective_at' => 'on_reserve',
                 'livemode' => [],
                 'status' => 'draft',
                 'status_transitions' => [
@@ -6115,7 +5976,6 @@ final class GeneratedExamplesTest extends TestCase
                 'cadence' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
-                'effective_at' => 'on_reserve',
                 'livemode' => [],
                 'status' => 'draft',
                 'status_transitions' => [
@@ -6154,7 +6014,6 @@ final class GeneratedExamplesTest extends TestCase
                 'cadence' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
-                'effective_at' => 'on_reserve',
                 'livemode' => [],
                 'status' => 'draft',
                 'status_transitions' => [
@@ -6196,7 +6055,6 @@ final class GeneratedExamplesTest extends TestCase
                 'cadence' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
-                'effective_at' => 'on_reserve',
                 'livemode' => [],
                 'status' => 'draft',
                 'status_transitions' => [
@@ -6211,6 +6069,74 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->billing->intents->reserve('id_123', []);
         self::assertInstanceOf(V2\Billing\Intent::class, $result);
+    }
+
+    public function testV2BillingIntentsActionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/intents/intent_id_123/actions',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.intent_action',
+                        'apply' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'deactivate' => null,
+                        'livemode' => [],
+                        'modify' => null,
+                        'remove' => null,
+                        'subscribe' => null,
+                        'type' => 'apply',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->intents->actions->all(
+            'intent_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\IntentAction::class, $result->data[0]);
+    }
+
+    public function testV2BillingIntentsActionGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/intents/intent_id_123/actions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.intent_action',
+                'apply' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'deactivate' => null,
+                'livemode' => [],
+                'modify' => null,
+                'remove' => null,
+                'subscribe' => null,
+                'type' => 'apply',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->intents->actions->retrieve(
+            'intent_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\IntentAction::class, $result);
     }
 
     public function testV2BillingLicenseFeeGet()
@@ -6534,6 +6460,36 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Billing\LicenseFeeVersion::class, $result);
     }
 
+    public function testV2BillingLicenseFeeSubscriptionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/license_fee_subscriptions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.license_fee_subscription',
+                'billing_cadence' => 'billing_cadence',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'license_fee' => 'license_fee',
+                'license_fee_version' => 'license_fee_version',
+                'livemode' => [],
+                'metadata' => null,
+                'quantity' => [],
+                'test_clock' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->licenseFeeSubscriptions->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\LicenseFeeSubscription::class, $result);
+    }
+
     public function testV2BillingLicensedItemGet()
     {
         $this->stubRequest(
@@ -6653,6 +6609,33 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Billing\LicensedItem::class, $result);
     }
 
+    public function testV2BillingMeterEventPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/meter_events',
+            ['event_name' => 'event_name', 'payload' => ['key' => 'payload']],
+            [],
+            false,
+            [
+                'object' => 'v2.billing.meter_event',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'event_name' => 'event_name',
+                'identifier' => 'identifier',
+                'livemode' => [],
+                'payload' => ['key' => 'payload'],
+                'timestamp' => '1970-01-01T15:18:46.294Z',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->meterEvents->create([
+            'event_name' => 'event_name',
+            'payload' => ['key' => 'payload'],
+        ]);
+        self::assertInstanceOf(V2\Billing\MeterEvent::class, $result);
+    }
+
     public function testV2BillingMeterEventAdjustmentPost()
     {
         $this->stubRequest(
@@ -6740,33 +6723,6 @@ final class GeneratedExamplesTest extends TestCase
                 ],
             ],
         ]);
-    }
-
-    public function testV2BillingMeterEventPost()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/meter_events',
-            ['event_name' => 'event_name', 'payload' => ['key' => 'payload']],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.meter_event',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'event_name' => 'event_name',
-                'identifier' => 'identifier',
-                'livemode' => [],
-                'payload' => ['key' => 'payload'],
-                'timestamp' => '1970-01-01T15:18:46.294Z',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->meterEvents->create([
-            'event_name' => 'event_name',
-            'payload' => ['key' => 'payload'],
-        ]);
-        self::assertInstanceOf(V2\Billing\MeterEvent::class, $result);
     }
 
     public function testV2BillingMeteredItemGet()
@@ -6927,96 +6883,6 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Billing\MeteredItem::class, $result);
-    }
-
-    public function testV2BillingPricingPlanSubscriptionGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/pricing_plan_subscriptions',
-            [],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'id' => 'obj_123',
-                        'object' => 'v2.billing.pricing_plan_subscription',
-                        'billing_cadence' => 'billing_cadence',
-                        'collection_status' => 'past_due',
-                        'collection_status_transitions' => [
-                            'awaiting_customer_action_at' => null,
-                            'current_at' => null,
-                            'past_due_at' => null,
-                            'paused_at' => null,
-                            'unpaid_at' => null,
-                        ],
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'livemode' => [],
-                        'metadata' => null,
-                        'pricing_plan' => 'pricing_plan',
-                        'pricing_plan_version' => 'pricing_plan_version',
-                        'servicing_status' => 'pending',
-                        'servicing_status_transitions' => [
-                            'activated_at' => null,
-                            'canceled_at' => null,
-                            'paused_at' => null,
-                        ],
-                        'test_clock' => null,
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->pricingPlanSubscriptions->all([]);
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Billing\PricingPlanSubscription::class, $result->data[0]);
-    }
-
-    public function testV2BillingPricingPlanSubscriptionGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/pricing_plan_subscriptions/id_123',
-            [],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.billing.pricing_plan_subscription',
-                'billing_cadence' => 'billing_cadence',
-                'collection_status' => 'past_due',
-                'collection_status_transitions' => [
-                    'awaiting_customer_action_at' => null,
-                    'current_at' => null,
-                    'past_due_at' => null,
-                    'paused_at' => null,
-                    'unpaid_at' => null,
-                ],
-                'created' => '1970-01-12T21:42:34.472Z',
-                'livemode' => [],
-                'metadata' => null,
-                'pricing_plan' => 'pricing_plan',
-                'pricing_plan_version' => 'pricing_plan_version',
-                'servicing_status' => 'pending',
-                'servicing_status_transitions' => [
-                    'activated_at' => null,
-                    'canceled_at' => null,
-                    'paused_at' => null,
-                ],
-                'test_clock' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->pricingPlanSubscriptions->retrieve(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Billing\PricingPlanSubscription::class, $result);
     }
 
     public function testV2BillingPricingPlanGet()
@@ -7344,7 +7210,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'object' => 'v2.billing.pricing_plan_version',
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'end_date' => '1970-01-20T23:11:07.410Z',
+                        'end_date' => null,
                         'livemode' => [],
                         'pricing_plan' => 'pricing_plan',
                         'start_date' => '1970-01-19T05:07:09.589Z',
@@ -7376,7 +7242,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.billing.pricing_plan_version',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'end_date' => '1970-01-20T23:11:07.410Z',
+                'end_date' => null,
                 'livemode' => [],
                 'pricing_plan' => 'pricing_plan',
                 'start_date' => '1970-01-19T05:07:09.589Z',
@@ -7390,6 +7256,96 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Billing\PricingPlanVersion::class, $result);
+    }
+
+    public function testV2BillingPricingPlanSubscriptionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/pricing_plan_subscriptions',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.pricing_plan_subscription',
+                        'billing_cadence' => 'billing_cadence',
+                        'collection_status' => 'past_due',
+                        'collection_status_transitions' => [
+                            'awaiting_customer_action_at' => null,
+                            'current_at' => null,
+                            'past_due_at' => null,
+                            'paused_at' => null,
+                            'unpaid_at' => null,
+                        ],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'livemode' => [],
+                        'metadata' => null,
+                        'pricing_plan' => 'pricing_plan',
+                        'pricing_plan_version' => 'pricing_plan_version',
+                        'servicing_status' => 'pending',
+                        'servicing_status_transitions' => [
+                            'activated_at' => null,
+                            'canceled_at' => null,
+                            'paused_at' => null,
+                        ],
+                        'test_clock' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlanSubscriptions->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\PricingPlanSubscription::class, $result->data[0]);
+    }
+
+    public function testV2BillingPricingPlanSubscriptionGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/pricing_plan_subscriptions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.pricing_plan_subscription',
+                'billing_cadence' => 'billing_cadence',
+                'collection_status' => 'past_due',
+                'collection_status_transitions' => [
+                    'awaiting_customer_action_at' => null,
+                    'current_at' => null,
+                    'past_due_at' => null,
+                    'paused_at' => null,
+                    'unpaid_at' => null,
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'metadata' => null,
+                'pricing_plan' => 'pricing_plan',
+                'pricing_plan_version' => 'pricing_plan_version',
+                'servicing_status' => 'pending',
+                'servicing_status_transitions' => [
+                    'activated_at' => null,
+                    'canceled_at' => null,
+                    'paused_at' => null,
+                ],
+                'test_clock' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlanSubscriptions->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\PricingPlanSubscription::class, $result);
     }
 
     public function testV2BillingProfileGet()
@@ -7514,178 +7470,6 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Billing\Profile::class, $result);
     }
 
-    public function testV2BillingRateCardSubscriptionGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/rate_card_subscriptions',
-            [],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'id' => 'obj_123',
-                        'object' => 'v2.billing.rate_card_subscription',
-                        'billing_cadence' => 'billing_cadence',
-                        'collection_status' => null,
-                        'collection_status_transitions' => null,
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'livemode' => [],
-                        'metadata' => null,
-                        'rate_card' => 'rate_card',
-                        'rate_card_version' => 'rate_card_version',
-                        'servicing_status' => null,
-                        'servicing_status_transitions' => null,
-                        'test_clock' => null,
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->rateCardSubscriptions->all([]);
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result->data[0]);
-    }
-
-    public function testV2BillingRateCardSubscriptionPost()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/rate_card_subscriptions',
-            [
-                'billing_cadence' => 'billing_cadence',
-                'rate_card' => 'rate_card',
-            ],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.billing.rate_card_subscription',
-                'billing_cadence' => 'billing_cadence',
-                'collection_status' => null,
-                'collection_status_transitions' => null,
-                'created' => '1970-01-12T21:42:34.472Z',
-                'livemode' => [],
-                'metadata' => null,
-                'rate_card' => 'rate_card',
-                'rate_card_version' => 'rate_card_version',
-                'servicing_status' => null,
-                'servicing_status_transitions' => null,
-                'test_clock' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->rateCardSubscriptions->create([
-            'billing_cadence' => 'billing_cadence',
-            'rate_card' => 'rate_card',
-        ]);
-        self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result);
-    }
-
-    public function testV2BillingRateCardSubscriptionGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/rate_card_subscriptions/id_123',
-            [],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.billing.rate_card_subscription',
-                'billing_cadence' => 'billing_cadence',
-                'collection_status' => null,
-                'collection_status_transitions' => null,
-                'created' => '1970-01-12T21:42:34.472Z',
-                'livemode' => [],
-                'metadata' => null,
-                'rate_card' => 'rate_card',
-                'rate_card_version' => 'rate_card_version',
-                'servicing_status' => null,
-                'servicing_status_transitions' => null,
-                'test_clock' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->rateCardSubscriptions->retrieve(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result);
-    }
-
-    public function testV2BillingRateCardSubscriptionPost2()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/rate_card_subscriptions/id_123',
-            [],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.billing.rate_card_subscription',
-                'billing_cadence' => 'billing_cadence',
-                'collection_status' => null,
-                'collection_status_transitions' => null,
-                'created' => '1970-01-12T21:42:34.472Z',
-                'livemode' => [],
-                'metadata' => null,
-                'rate_card' => 'rate_card',
-                'rate_card_version' => 'rate_card_version',
-                'servicing_status' => null,
-                'servicing_status_transitions' => null,
-                'test_clock' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->rateCardSubscriptions->update(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result);
-    }
-
-    public function testV2BillingRateCardSubscriptionPost3()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/rate_card_subscriptions/id_123/cancel',
-            [],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.billing.rate_card_subscription',
-                'billing_cadence' => 'billing_cadence',
-                'collection_status' => null,
-                'collection_status_transitions' => null,
-                'created' => '1970-01-12T21:42:34.472Z',
-                'livemode' => [],
-                'metadata' => null,
-                'rate_card' => 'rate_card',
-                'rate_card_version' => 'rate_card_version',
-                'servicing_status' => null,
-                'servicing_status_transitions' => null,
-                'test_clock' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->rateCardSubscriptions->cancel(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result);
-    }
-
     public function testV2BillingRateCardGet()
     {
         $this->stubRequest(
@@ -7706,6 +7490,7 @@ final class GeneratedExamplesTest extends TestCase
                         'latest_version' => 'latest_version',
                         'live_version' => 'live_version',
                         'livemode' => [],
+                        'lookup_key' => null,
                         'metadata' => null,
                         'service_interval' => 'month',
                         'service_interval_count' => [],
@@ -7747,6 +7532,7 @@ final class GeneratedExamplesTest extends TestCase
                 'latest_version' => 'latest_version',
                 'live_version' => 'live_version',
                 'livemode' => [],
+                'lookup_key' => null,
                 'metadata' => null,
                 'service_interval' => 'month',
                 'service_interval_count' => [],
@@ -7783,6 +7569,7 @@ final class GeneratedExamplesTest extends TestCase
                 'latest_version' => 'latest_version',
                 'live_version' => 'live_version',
                 'livemode' => [],
+                'lookup_key' => null,
                 'metadata' => null,
                 'service_interval' => 'month',
                 'service_interval_count' => [],
@@ -7816,6 +7603,7 @@ final class GeneratedExamplesTest extends TestCase
                 'latest_version' => 'latest_version',
                 'live_version' => 'live_version',
                 'livemode' => [],
+                'lookup_key' => null,
                 'metadata' => null,
                 'service_interval' => 'month',
                 'service_interval_count' => [],
@@ -8135,6 +7923,178 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Billing\RateCardVersion::class, $result);
     }
 
+    public function testV2BillingRateCardSubscriptionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/rate_card_subscriptions',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.rate_card_subscription',
+                        'billing_cadence' => 'billing_cadence',
+                        'collection_status' => null,
+                        'collection_status_transitions' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'livemode' => [],
+                        'metadata' => null,
+                        'rate_card' => 'rate_card',
+                        'rate_card_version' => 'rate_card_version',
+                        'servicing_status' => null,
+                        'servicing_status_transitions' => null,
+                        'test_clock' => null,
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCardSubscriptions->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result->data[0]);
+    }
+
+    public function testV2BillingRateCardSubscriptionPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/rate_card_subscriptions',
+            [
+                'billing_cadence' => 'billing_cadence',
+                'rate_card' => 'rate_card',
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card_subscription',
+                'billing_cadence' => 'billing_cadence',
+                'collection_status' => null,
+                'collection_status_transitions' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'metadata' => null,
+                'rate_card' => 'rate_card',
+                'rate_card_version' => 'rate_card_version',
+                'servicing_status' => null,
+                'servicing_status_transitions' => null,
+                'test_clock' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCardSubscriptions->create([
+            'billing_cadence' => 'billing_cadence',
+            'rate_card' => 'rate_card',
+        ]);
+        self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result);
+    }
+
+    public function testV2BillingRateCardSubscriptionGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/rate_card_subscriptions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card_subscription',
+                'billing_cadence' => 'billing_cadence',
+                'collection_status' => null,
+                'collection_status_transitions' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'metadata' => null,
+                'rate_card' => 'rate_card',
+                'rate_card_version' => 'rate_card_version',
+                'servicing_status' => null,
+                'servicing_status_transitions' => null,
+                'test_clock' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCardSubscriptions->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result);
+    }
+
+    public function testV2BillingRateCardSubscriptionPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/rate_card_subscriptions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card_subscription',
+                'billing_cadence' => 'billing_cadence',
+                'collection_status' => null,
+                'collection_status_transitions' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'metadata' => null,
+                'rate_card' => 'rate_card',
+                'rate_card_version' => 'rate_card_version',
+                'servicing_status' => null,
+                'servicing_status_transitions' => null,
+                'test_clock' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCardSubscriptions->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result);
+    }
+
+    public function testV2BillingRateCardSubscriptionPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/rate_card_subscriptions/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card_subscription',
+                'billing_cadence' => 'billing_cadence',
+                'collection_status' => null,
+                'collection_status_transitions' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'metadata' => null,
+                'rate_card' => 'rate_card',
+                'rate_card_version' => 'rate_card_version',
+                'servicing_status' => null,
+                'servicing_status_transitions' => null,
+                'test_clock' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCardSubscriptions->cancel(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result);
+    }
+
     public function testV2BillingServiceActionPost()
     {
         $this->stubRequest(
@@ -8198,80 +8158,6 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Billing\ServiceAction::class, $result);
-    }
-
-    public function testV2CoreAccountLinkPost()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/core/account_links',
-            [
-                'account' => 'account',
-                'use_case' => [
-                    'type' => 'account_onboarding',
-                    'account_onboarding' => [
-                        'collection_options' => [
-                            'fields' => 'eventually_due',
-                            'future_requirements' => 'include',
-                        ],
-                        'configurations' => ['storer'],
-                        'refresh_url' => 'refresh_url',
-                        'return_url' => 'return_url',
-                    ],
-                    'account_update' => [
-                        'collection_options' => [
-                            'fields' => 'eventually_due',
-                            'future_requirements' => 'include',
-                        ],
-                        'configurations' => ['storer'],
-                        'refresh_url' => 'refresh_url',
-                        'return_url' => 'return_url',
-                    ],
-                ],
-            ],
-            [],
-            false,
-            [
-                'object' => 'v2.core.account_link',
-                'account' => 'account',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'expires_at' => '1970-01-10T15:36:51.170Z',
-                'livemode' => [],
-                'url' => 'url',
-                'use_case' => [
-                    'type' => 'account_onboarding',
-                    'account_onboarding' => null,
-                    'account_update' => null,
-                ],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->core->accountLinks->create([
-            'account' => 'account',
-            'use_case' => [
-                'type' => 'account_onboarding',
-                'account_onboarding' => [
-                    'collection_options' => [
-                        'fields' => 'eventually_due',
-                        'future_requirements' => 'include',
-                    ],
-                    'configurations' => ['storer'],
-                    'refresh_url' => 'refresh_url',
-                    'return_url' => 'return_url',
-                ],
-                'account_update' => [
-                    'collection_options' => [
-                        'fields' => 'eventually_due',
-                        'future_requirements' => 'include',
-                    ],
-                    'configurations' => ['storer'],
-                    'refresh_url' => 'refresh_url',
-                    'return_url' => 'return_url',
-                ],
-            ],
-        ]);
-        self::assertInstanceOf(V2\Core\AccountLink::class, $result);
     }
 
     public function testV2CoreAccountGet()
@@ -8661,6 +8547,185 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Core\Person::class, $result);
     }
 
+    public function testV2CoreAccountLinkPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/account_links',
+            [
+                'account' => 'account',
+                'use_case' => [
+                    'type' => 'account_onboarding',
+                    'account_onboarding' => [
+                        'collection_options' => [
+                            'fields' => 'eventually_due',
+                            'future_requirements' => 'include',
+                        ],
+                        'configurations' => ['storer'],
+                        'refresh_url' => 'refresh_url',
+                        'return_url' => 'return_url',
+                    ],
+                    'account_update' => [
+                        'collection_options' => [
+                            'fields' => 'eventually_due',
+                            'future_requirements' => 'include',
+                        ],
+                        'configurations' => ['storer'],
+                        'refresh_url' => 'refresh_url',
+                        'return_url' => 'return_url',
+                    ],
+                ],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.core.account_link',
+                'account' => 'account',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'livemode' => [],
+                'url' => 'url',
+                'use_case' => [
+                    'type' => 'account_onboarding',
+                    'account_onboarding' => null,
+                    'account_update' => null,
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accountLinks->create([
+            'account' => 'account',
+            'use_case' => [
+                'type' => 'account_onboarding',
+                'account_onboarding' => [
+                    'collection_options' => [
+                        'fields' => 'eventually_due',
+                        'future_requirements' => 'include',
+                    ],
+                    'configurations' => ['storer'],
+                    'refresh_url' => 'refresh_url',
+                    'return_url' => 'return_url',
+                ],
+                'account_update' => [
+                    'collection_options' => [
+                        'fields' => 'eventually_due',
+                        'future_requirements' => 'include',
+                    ],
+                    'configurations' => ['storer'],
+                    'refresh_url' => 'refresh_url',
+                    'return_url' => 'return_url',
+                ],
+            ],
+        ]);
+        self::assertInstanceOf(V2\Core\AccountLink::class, $result);
+    }
+
+    public function testV2CoreClaimableSandboxPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/claimable_sandboxes',
+            [
+                'enable_mcp_access' => true,
+                'prefill' => [
+                    'country' => 'af',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.claimable_sandbox',
+                'api_keys' => [
+                    'mcp' => null,
+                    'publishable' => 'publishable',
+                    'secret' => 'secret',
+                ],
+                'claim_url' => 'claim_url',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'prefill' => [
+                    'country' => 'af',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->claimableSandboxes->create([
+            'enable_mcp_access' => true,
+            'prefill' => [
+                'country' => 'af',
+                'email' => 'email',
+                'name' => 'name',
+            ],
+        ]);
+        self::assertInstanceOf(V2\Core\ClaimableSandbox::class, $result);
+    }
+
+    public function testV2CoreEventGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/events',
+            ['object_id' => 'object_id'],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'changes' => ['key' => []],
+                        'context' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'object' => 'v2.core.event',
+                        'reason' => null,
+                        'type' => 'type',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->events->all([
+            'object_id' => 'object_id',
+        ]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Event::class, $result->data[0]);
+    }
+
+    public function testV2CoreEventGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/events/id_123',
+            [],
+            [],
+            false,
+            [
+                'changes' => ['key' => []],
+                'context' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.core.event',
+                'reason' => null,
+                'type' => 'type',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->events->retrieve('id_123', []);
+        self::assertInstanceOf(V2\Event::class, $result);
+    }
+
     public function testV2CoreEventDestinationGet()
     {
         $this->stubRequest(
@@ -8956,65 +9021,6 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\Event::class, $result);
-    }
-
-    public function testV2CoreEventGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/core/events',
-            ['object_id' => 'object_id'],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'changes' => ['key' => []],
-                        'context' => null,
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'id' => 'obj_123',
-                        'object' => 'v2.core.event',
-                        'reason' => null,
-                        'type' => 'type',
-                        'livemode' => [],
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->core->events->all([
-            'object_id' => 'object_id',
-        ]);
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Event::class, $result->data[0]);
-    }
-
-    public function testV2CoreEventGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/core/events/id_123',
-            [],
-            [],
-            false,
-            [
-                'changes' => ['key' => []],
-                'context' => null,
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'object' => 'v2.core.event',
-                'reason' => null,
-                'type' => 'type',
-                'livemode' => [],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->core->events->retrieve('id_123', []);
         self::assertInstanceOf(V2\Event::class, $result);
     }
 
@@ -9939,151 +9945,6 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\MoneyManagement\InboundTransfer::class, $result);
     }
 
-    public function testV2MoneyManagementOutboundPaymentQuotePost()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/money_management/outbound_payment_quotes',
-            [
-                'amount' => [
-                    'currency' => 'USD',
-                    'value' => 96,
-                ],
-                'from' => [
-                    'currency' => 'usd',
-                    'financial_account' => 'financial_account',
-                ],
-                'to' => [
-                    'currency' => 'usd',
-                    'payout_method' => 'payout_method',
-                    'recipient' => 'recipient',
-                ],
-            ],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.money_management.outbound_payment_quote',
-                'amount' => [
-                    'currency' => 'USD',
-                    'value' => [],
-                ],
-                'created' => '1970-01-12T21:42:34.472Z',
-                'delivery_options' => null,
-                'estimated_fees' => [
-                    '0' => [
-                        'amount' => [
-                            'currency' => 'USD',
-                            'value' => [],
-                        ],
-                        'type' => 'cross_border_payout_fee',
-                    ],
-                ],
-                'from' => [
-                    'debited' => [
-                        'currency' => 'USD',
-                        'value' => [],
-                    ],
-                    'financial_account' => 'financial_account',
-                ],
-                'fx_quote' => [
-                    'lock_duration' => 'five_minutes',
-                    'lock_expires_at' => '1970-01-18T15:15:29.586Z',
-                    'lock_status' => 'active',
-                    'rates' => ['key' => ['exchange_rate' => 'exchange_rate']],
-                    'to_currency' => 'usd',
-                ],
-                'livemode' => [],
-                'to' => [
-                    'credited' => [
-                        'currency' => 'USD',
-                        'value' => [],
-                    ],
-                    'payout_method' => 'payout_method',
-                    'recipient' => 'recipient',
-                ],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->moneyManagement->outboundPaymentQuotes->create([
-            'amount' => [
-                'currency' => 'USD',
-                'value' => 96,
-            ],
-            'from' => [
-                'currency' => 'usd',
-                'financial_account' => 'financial_account',
-            ],
-            'to' => [
-                'currency' => 'usd',
-                'payout_method' => 'payout_method',
-                'recipient' => 'recipient',
-            ],
-        ]);
-        self::assertInstanceOf(V2\MoneyManagement\OutboundPaymentQuote::class, $result);
-    }
-
-    public function testV2MoneyManagementOutboundPaymentQuoteGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/money_management/outbound_payment_quotes/id_123',
-            [],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.money_management.outbound_payment_quote',
-                'amount' => [
-                    'currency' => 'USD',
-                    'value' => [],
-                ],
-                'created' => '1970-01-12T21:42:34.472Z',
-                'delivery_options' => null,
-                'estimated_fees' => [
-                    '0' => [
-                        'amount' => [
-                            'currency' => 'USD',
-                            'value' => [],
-                        ],
-                        'type' => 'cross_border_payout_fee',
-                    ],
-                ],
-                'from' => [
-                    'debited' => [
-                        'currency' => 'USD',
-                        'value' => [],
-                    ],
-                    'financial_account' => 'financial_account',
-                ],
-                'fx_quote' => [
-                    'lock_duration' => 'five_minutes',
-                    'lock_expires_at' => '1970-01-18T15:15:29.586Z',
-                    'lock_status' => 'active',
-                    'rates' => ['key' => ['exchange_rate' => 'exchange_rate']],
-                    'to_currency' => 'usd',
-                ],
-                'livemode' => [],
-                'to' => [
-                    'credited' => [
-                        'currency' => 'USD',
-                        'value' => [],
-                    ],
-                    'payout_method' => 'payout_method',
-                    'recipient' => 'recipient',
-                ],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->moneyManagement->outboundPaymentQuotes->retrieve(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\MoneyManagement\OutboundPaymentQuote::class, $result);
-    }
-
     public function testV2MoneyManagementOutboundPaymentGet()
     {
         $this->stubRequest(
@@ -10347,6 +10208,151 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\MoneyManagement\OutboundPayment::class, $result);
+    }
+
+    public function testV2MoneyManagementOutboundPaymentQuotePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_payment_quotes',
+            [
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'from' => [
+                    'currency' => 'usd',
+                    'financial_account' => 'financial_account',
+                ],
+                'to' => [
+                    'currency' => 'usd',
+                    'payout_method' => 'payout_method',
+                    'recipient' => 'recipient',
+                ],
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.outbound_payment_quote',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'delivery_options' => null,
+                'estimated_fees' => [
+                    '0' => [
+                        'amount' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                        'type' => 'cross_border_payout_fee',
+                    ],
+                ],
+                'from' => [
+                    'debited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'financial_account' => 'financial_account',
+                ],
+                'fx_quote' => [
+                    'lock_duration' => 'five_minutes',
+                    'lock_expires_at' => '1970-01-18T15:15:29.586Z',
+                    'lock_status' => 'active',
+                    'rates' => ['key' => ['exchange_rate' => 'exchange_rate']],
+                    'to_currency' => 'usd',
+                ],
+                'livemode' => [],
+                'to' => [
+                    'credited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'payout_method' => 'payout_method',
+                    'recipient' => 'recipient',
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundPaymentQuotes->create([
+            'amount' => [
+                'currency' => 'USD',
+                'value' => 96,
+            ],
+            'from' => [
+                'currency' => 'usd',
+                'financial_account' => 'financial_account',
+            ],
+            'to' => [
+                'currency' => 'usd',
+                'payout_method' => 'payout_method',
+                'recipient' => 'recipient',
+            ],
+        ]);
+        self::assertInstanceOf(V2\MoneyManagement\OutboundPaymentQuote::class, $result);
+    }
+
+    public function testV2MoneyManagementOutboundPaymentQuoteGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/outbound_payment_quotes/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.outbound_payment_quote',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'delivery_options' => null,
+                'estimated_fees' => [
+                    '0' => [
+                        'amount' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                        'type' => 'cross_border_payout_fee',
+                    ],
+                ],
+                'from' => [
+                    'debited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'financial_account' => 'financial_account',
+                ],
+                'fx_quote' => [
+                    'lock_duration' => 'five_minutes',
+                    'lock_expires_at' => '1970-01-18T15:15:29.586Z',
+                    'lock_status' => 'active',
+                    'rates' => ['key' => ['exchange_rate' => 'exchange_rate']],
+                    'to_currency' => 'usd',
+                ],
+                'livemode' => [],
+                'to' => [
+                    'credited' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'payout_method' => 'payout_method',
+                    'recipient' => 'recipient',
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundPaymentQuotes->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\OutboundPaymentQuote::class, $result);
     }
 
     public function testV2MoneyManagementOutboundSetupIntentGet()
@@ -11138,118 +11144,6 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\MoneyManagement\ReceivedDebit::class, $result);
     }
 
-    public function testV2MoneyManagementTransactionEntryGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/money_management/transaction_entries',
-            [],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'id' => 'obj_123',
-                        'object' => 'v2.money_management.transaction_entry',
-                        'balance_impact' => [
-                            'available' => [
-                                'currency' => 'USD',
-                                'value' => [],
-                            ],
-                            'inbound_pending' => [
-                                'currency' => 'USD',
-                                'value' => [],
-                            ],
-                            'outbound_pending' => [
-                                'currency' => 'USD',
-                                'value' => [],
-                            ],
-                        ],
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'effective_at' => '1970-01-03T20:38:28.043Z',
-                        'livemode' => [],
-                        'transaction' => 'transaction',
-                        'transaction_details' => [
-                            'category' => 'return',
-                            'financial_account' => 'financial_account',
-                            'flow' => [
-                                'type' => 'outbound_payment',
-                                'adjustment' => null,
-                                'fee_transaction' => null,
-                                'inbound_transfer' => null,
-                                'outbound_payment' => null,
-                                'outbound_transfer' => null,
-                                'received_credit' => null,
-                                'received_debit' => null,
-                            ],
-                        ],
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->moneyManagement->transactionEntries->all([]);
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\MoneyManagement\TransactionEntry::class, $result->data[0]);
-    }
-
-    public function testV2MoneyManagementTransactionEntryGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/money_management/transaction_entries/id_123',
-            [],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.money_management.transaction_entry',
-                'balance_impact' => [
-                    'available' => [
-                        'currency' => 'USD',
-                        'value' => [],
-                    ],
-                    'inbound_pending' => [
-                        'currency' => 'USD',
-                        'value' => [],
-                    ],
-                    'outbound_pending' => [
-                        'currency' => 'USD',
-                        'value' => [],
-                    ],
-                ],
-                'created' => '1970-01-12T21:42:34.472Z',
-                'effective_at' => '1970-01-03T20:38:28.043Z',
-                'livemode' => [],
-                'transaction' => 'transaction',
-                'transaction_details' => [
-                    'category' => 'return',
-                    'financial_account' => 'financial_account',
-                    'flow' => [
-                        'type' => 'outbound_payment',
-                        'adjustment' => null,
-                        'fee_transaction' => null,
-                        'inbound_transfer' => null,
-                        'outbound_payment' => null,
-                        'outbound_transfer' => null,
-                        'received_credit' => null,
-                        'received_debit' => null,
-                    ],
-                ],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->moneyManagement->transactionEntries->retrieve(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\MoneyManagement\TransactionEntry::class, $result);
-    }
-
     public function testV2MoneyManagementTransactionGet()
     {
         $this->stubRequest(
@@ -11281,12 +11175,13 @@ final class GeneratedExamplesTest extends TestCase
                                 'value' => [],
                             ],
                         ],
-                        'category' => 'return',
+                        'category' => 'received_debit',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'flow' => [
-                            'type' => 'outbound_payment',
+                            'type' => 'fee_transaction',
                             'adjustment' => null,
+                            'currency_conversion' => null,
                             'fee_transaction' => null,
                             'inbound_transfer' => null,
                             'outbound_payment' => null,
@@ -11342,12 +11237,13 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'return',
+                'category' => 'received_debit',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'flow' => [
-                    'type' => 'outbound_payment',
+                    'type' => 'fee_transaction',
                     'adjustment' => null,
+                    'currency_conversion' => null,
                     'fee_transaction' => null,
                     'inbound_transfer' => null,
                     'outbound_payment' => null,
@@ -11370,6 +11266,120 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\MoneyManagement\Transaction::class, $result);
+    }
+
+    public function testV2MoneyManagementTransactionEntryGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/transaction_entries',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.money_management.transaction_entry',
+                        'balance_impact' => [
+                            'available' => [
+                                'currency' => 'USD',
+                                'value' => [],
+                            ],
+                            'inbound_pending' => [
+                                'currency' => 'USD',
+                                'value' => [],
+                            ],
+                            'outbound_pending' => [
+                                'currency' => 'USD',
+                                'value' => [],
+                            ],
+                        ],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'effective_at' => '1970-01-03T20:38:28.043Z',
+                        'livemode' => [],
+                        'transaction' => 'transaction',
+                        'transaction_details' => [
+                            'category' => 'received_debit',
+                            'financial_account' => 'financial_account',
+                            'flow' => [
+                                'type' => 'fee_transaction',
+                                'adjustment' => null,
+                                'currency_conversion' => null,
+                                'fee_transaction' => null,
+                                'inbound_transfer' => null,
+                                'outbound_payment' => null,
+                                'outbound_transfer' => null,
+                                'received_credit' => null,
+                                'received_debit' => null,
+                            ],
+                        ],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->transactionEntries->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\TransactionEntry::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementTransactionEntryGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/transaction_entries/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.transaction_entry',
+                'balance_impact' => [
+                    'available' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'inbound_pending' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'outbound_pending' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'effective_at' => '1970-01-03T20:38:28.043Z',
+                'livemode' => [],
+                'transaction' => 'transaction',
+                'transaction_details' => [
+                    'category' => 'received_debit',
+                    'financial_account' => 'financial_account',
+                    'flow' => [
+                        'type' => 'fee_transaction',
+                        'adjustment' => null,
+                        'currency_conversion' => null,
+                        'fee_transaction' => null,
+                        'inbound_transfer' => null,
+                        'outbound_payment' => null,
+                        'outbound_transfer' => null,
+                        'received_credit' => null,
+                        'received_debit' => null,
+                    ],
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->transactionEntries->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\TransactionEntry::class, $result);
     }
 
     public function testV2PaymentsOffSessionPaymentGet()
@@ -11579,6 +11589,40 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
     }
 
+    public function testV2ReportingReportGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/reporting/reports/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.reporting.report',
+                'livemode' => [],
+                'name' => 'name',
+                'parameters' => [
+                    'key' => [
+                        'array_details' => null,
+                        'description' => 'description',
+                        'enum_details' => null,
+                        'required' => [],
+                        'timestamp_details' => null,
+                        'type' => 'string',
+                    ],
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->reporting->reports->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Reporting\Report::class, $result);
+    }
+
     public function testV2ReportingReportRunPost()
     {
         $this->stubRequest(
@@ -11676,40 +11720,6 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Reporting\ReportRun::class, $result);
-    }
-
-    public function testV2ReportingReportGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/reporting/reports/id_123',
-            [],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.reporting.report',
-                'livemode' => [],
-                'name' => 'name',
-                'parameters' => [
-                    'key' => [
-                        'array_details' => null,
-                        'description' => 'description',
-                        'enum_details' => null,
-                        'required' => [],
-                        'timestamp_details' => null,
-                        'type' => 'string',
-                    ],
-                ],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->reporting->reports->retrieve(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Reporting\Report::class, $result);
     }
 
     public function testV2TaxAutomaticRulePost()
@@ -11910,56 +11920,18 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\FinancialAddressGeneratedMicrodeposits::class, $result);
     }
 
-    public function testTemporarySessionExpiredError()
+    public function testAlreadyCanceledError()
     {
         $this->stubRequest(
             'post',
-            '/v2/billing/meter_event_stream',
-            [
-                'events' => [
-                    [
-                        'event_name' => 'event_name',
-                        'payload' => ['key' => 'payload'],
-                    ],
-                ],
-            ],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'temporary_session_expired',
-                    'code' => 'billing_meter_event_session_expired',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_METER_EVENTS_BASE
-        );
-
-        try {
-            $this->v2Client->v2->billing->meterEventStream->create([
-                'events' => [
-                    [
-                        'event_name' => 'event_name',
-                        'payload' => ['key' => 'payload'],
-                    ],
-                ],
-            ]);
-        } catch (Exception\TemporarySessionExpiredException $e) {
-        }
-    }
-
-    public function testNonZeroBalanceError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/money_management/financial_accounts/id_123/close',
+            '/v2/money_management/outbound_payments/id_123/cancel',
             [],
             [],
             false,
             [
                 'error' => [
-                    'type' => 'non_zero_balance',
-                    'code' => 'closing_financial_account_with_non_zero_balances',
+                    'type' => 'already_canceled',
+                    'code' => 'outbound_payment_already_canceled',
                 ],
             ],
             400,
@@ -11967,11 +11939,11 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->moneyManagement->financialAccounts->close(
+            $this->v2Client->v2->moneyManagement->outboundPayments->cancel(
                 'id_123',
                 []
             );
-        } catch (Exception\NonZeroBalanceException $e) {
+        } catch (Exception\AlreadyCanceledException $e) {
         }
     }
 
@@ -11998,6 +11970,56 @@ final class GeneratedExamplesTest extends TestCase
                 'type' => 'storage',
             ]);
         } catch (Exception\AlreadyExistsException $e) {
+        }
+    }
+
+    public function testBlockedByStripeError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts',
+            ['account_number' => 'account_number'],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'blocked_by_stripe',
+                    'code' => 'inbound_transfer_not_allowed',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->usBankAccounts->create([
+                'account_number' => 'account_number',
+            ]);
+        } catch (Exception\BlockedByStripeException $e) {
+        }
+    }
+
+    public function testControlledByDashboardError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts/id_123/archive',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'controlled_by_dashboard',
+                    'code' => 'bank_account_cannot_be_archived',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->usBankAccounts->archive('id_123', []);
+        } catch (Exception\ControlledByDashboardException $e) {
         }
     }
 
@@ -12054,86 +12076,6 @@ final class GeneratedExamplesTest extends TestCase
         }
     }
 
-    public function testBlockedByStripeError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/core/vault/us_bank_accounts',
-            ['account_number' => 'account_number'],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'blocked_by_stripe',
-                    'code' => 'inbound_transfer_not_allowed',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $this->v2Client->v2->core->vault->usBankAccounts->create([
-                'account_number' => 'account_number',
-            ]);
-        } catch (Exception\BlockedByStripeException $e) {
-        }
-    }
-
-    public function testAlreadyCanceledError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/money_management/outbound_payments/id_123/cancel',
-            [],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'already_canceled',
-                    'code' => 'outbound_payment_already_canceled',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $this->v2Client->v2->moneyManagement->outboundPayments->cancel(
-                'id_123',
-                []
-            );
-        } catch (Exception\AlreadyCanceledException $e) {
-        }
-    }
-
-    public function testNotCancelableError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/money_management/outbound_payments/id_123/cancel',
-            [],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'not_cancelable',
-                    'code' => 'outbound_payment_not_cancelable',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $this->v2Client->v2->moneyManagement->outboundPayments->cancel(
-                'id_123',
-                []
-            );
-        } catch (Exception\NotCancelableException $e) {
-        }
-    }
-
     public function testInsufficientFundsError()
     {
         $this->stubRequest(
@@ -12178,6 +12120,110 @@ final class GeneratedExamplesTest extends TestCase
         }
     }
 
+    public function testInvalidPaymentMethodError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts',
+            ['account_number' => 'account_number'],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'invalid_payment_method',
+                    'code' => 'invalid_us_bank_account',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->usBankAccounts->create([
+                'account_number' => 'account_number',
+            ]);
+        } catch (Exception\InvalidPaymentMethodException $e) {
+        }
+    }
+
+    public function testInvalidPayoutMethodError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_setup_intents',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'invalid_payout_method',
+                    'code' => 'invalid_payout_method',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->outboundSetupIntents->create([]);
+        } catch (Exception\InvalidPayoutMethodException $e) {
+        }
+    }
+
+    public function testNonZeroBalanceError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/financial_accounts/id_123/close',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'non_zero_balance',
+                    'code' => 'closing_financial_account_with_non_zero_balances',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->financialAccounts->close(
+                'id_123',
+                []
+            );
+        } catch (Exception\NonZeroBalanceException $e) {
+        }
+    }
+
+    public function testNotCancelableError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_payments/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'not_cancelable',
+                    'code' => 'outbound_payment_not_cancelable',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->outboundPayments->cancel(
+                'id_123',
+                []
+            );
+        } catch (Exception\NotCancelableException $e) {
+        }
+    }
+
     public function testQuotaExceededError()
     {
         $this->stubRequest(
@@ -12201,6 +12247,33 @@ final class GeneratedExamplesTest extends TestCase
                 'account_number' => 'account_number',
             ]);
         } catch (Exception\QuotaExceededException $e) {
+        }
+    }
+
+    public function testRateLimitError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/reporting/report_runs',
+            ['report' => 'report', 'report_parameters' => ['key' => []]],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'rate_limit',
+                    'code' => 'report_run_rate_limit_exceeded',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->reporting->reportRuns->create([
+                'report' => 'report',
+                'report_parameters' => ['key' => []],
+            ]);
+        } catch (Exception\RateLimitException $e) {
         }
     }
 
@@ -12248,104 +12321,41 @@ final class GeneratedExamplesTest extends TestCase
         }
     }
 
-    public function testInvalidPayoutMethodError()
+    public function testTemporarySessionExpiredError()
     {
         $this->stubRequest(
             'post',
-            '/v2/money_management/outbound_setup_intents',
-            [],
+            '/v2/billing/meter_event_stream',
+            [
+                'events' => [
+                    [
+                        'event_name' => 'event_name',
+                        'payload' => ['key' => 'payload'],
+                    ],
+                ],
+            ],
             [],
             false,
             [
                 'error' => [
-                    'type' => 'invalid_payout_method',
-                    'code' => 'invalid_payout_method',
+                    'type' => 'temporary_session_expired',
+                    'code' => 'billing_meter_event_session_expired',
                 ],
             ],
             400,
-            BaseStripeClient::DEFAULT_API_BASE
+            BaseStripeClient::DEFAULT_METER_EVENTS_BASE
         );
 
         try {
-            $this->v2Client->v2->moneyManagement->outboundSetupIntents->create([]);
-        } catch (Exception\InvalidPayoutMethodException $e) {
-        }
-    }
-
-    public function testControlledByDashboardError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/core/vault/us_bank_accounts/id_123/archive',
-            [],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'controlled_by_dashboard',
-                    'code' => 'bank_account_cannot_be_archived',
+            $this->v2Client->v2->billing->meterEventStream->create([
+                'events' => [
+                    [
+                        'event_name' => 'event_name',
+                        'payload' => ['key' => 'payload'],
+                    ],
                 ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $this->v2Client->v2->core->vault->usBankAccounts->archive('id_123', []);
-        } catch (Exception\ControlledByDashboardException $e) {
-        }
-    }
-
-    public function testInvalidPaymentMethodError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/core/vault/us_bank_accounts',
-            ['account_number' => 'account_number'],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'invalid_payment_method',
-                    'code' => 'invalid_us_bank_account',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $this->v2Client->v2->core->vault->usBankAccounts->create([
-                'account_number' => 'account_number',
             ]);
-        } catch (Exception\InvalidPaymentMethodException $e) {
-        }
-    }
-
-    public function testRateLimitError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/reporting/report_runs',
-            ['report' => 'report', 'report_parameters' => ['key' => []]],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'rate_limit',
-                    'code' => 'report_run_rate_limit_exceeded',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $this->v2Client->v2->reporting->reportRuns->create([
-                'report' => 'report',
-                'report_parameters' => ['key' => []],
-            ]);
-        } catch (Exception\RateLimitException $e) {
+        } catch (Exception\TemporarySessionExpiredException $e) {
         }
     }
 }

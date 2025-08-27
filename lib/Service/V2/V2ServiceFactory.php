@@ -7,8 +7,6 @@ namespace Stripe\Service\V2;
 /**
  * Service factory class for API resources in the V2 namespace.
  *
- * @property AccountLinkService $accountLinks
- * @property AccountService $accounts
  * @property Billing\BillingServiceFactory $billing
  * @property Core\CoreServiceFactory $core
  * @property MoneyManagement\MoneyManagementServiceFactory $moneyManagement
@@ -23,8 +21,6 @@ class V2ServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
-        'accountLinks' => AccountLinkService::class,
-        'accounts' => AccountService::class,
         'billing' => Billing\BillingServiceFactory::class,
         'core' => Core\CoreServiceFactory::class,
         'moneyManagement' => MoneyManagement\MoneyManagementServiceFactory::class,

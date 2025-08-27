@@ -12,6 +12,21 @@ namespace Stripe\Service;
 class MandateService extends AbstractService
 {
     /**
+     * Retrieves a list of Mandates for a given PaymentMethod.
+     *
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, on_behalf_of?: string, payment_method: string, starting_after?: string, status: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Collection<\Stripe\Mandate>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function all($params = null, $opts = null)
+    {
+        return $this->requestCollection('get', '/v1/mandates', $params, $opts);
+    }
+
+    /**
      * Retrieves a Mandate object.
      *
      * @param string $id

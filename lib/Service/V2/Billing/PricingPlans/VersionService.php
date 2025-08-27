@@ -12,7 +12,7 @@ namespace Stripe\Service\V2\Billing\PricingPlans;
 class VersionService extends \Stripe\Service\AbstractService
 {
     /**
-     * List all versions of a PricingPlan.
+     * List all Pricing Plan Versions of a Pricing Plan.
      *
      * @param string $id
      * @param null|array{limit?: int} $params
@@ -28,7 +28,7 @@ class VersionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a specific version of a PricingPlan.
+     * Retrieve a specific Pricing Plan Version of a Pricing Plan.
      *
      * @param string $parentId
      * @param string $id

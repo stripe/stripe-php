@@ -12,7 +12,7 @@ namespace Stripe\Service\V2\Billing;
 class RateCardSubscriptionService extends \Stripe\Service\AbstractService
 {
     /**
-     * List all RateCardSubscription objects.
+     * List all Rate Card Subscription objects.
      *
      * @param null|array{billing_cadence?: string, limit?: int, payer?: array{customer?: string, type: string}, rate_card?: string, rate_card_version?: string, servicing_status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -27,7 +27,7 @@ class RateCardSubscriptionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Cancel an existing, active RateCardSubscription.
+     * Cancel an existing, active Rate Card Subscription.
      *
      * @param string $id
      * @param null|array $params
@@ -43,7 +43,8 @@ class RateCardSubscriptionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a RateCardSubscription to bill a RateCard on a specified billing Cadence.
+     * Create a Rate Card Subscription to bill a Rate Card on a specified Billing
+     * Cadence.
      *
      * @param null|array{billing_cadence: string, metadata?: array<string, string>, rate_card: string, rate_card_version?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -58,7 +59,7 @@ class RateCardSubscriptionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a RateCardSubscription by ID.
+     * Retrieve a Rate Card Subscription by ID.
      *
      * @param string $id
      * @param null|array $params
@@ -74,7 +75,7 @@ class RateCardSubscriptionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update fields on an existing, active RateCardSubscription.
+     * Update fields on an existing, active Rate Card Subscription.
      *
      * @param string $id
      * @param null|array{metadata?: array<string, null|string>} $params

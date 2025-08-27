@@ -12,7 +12,7 @@ namespace Stripe\Service\V2\Billing;
 class PricingPlanSubscriptionService extends \Stripe\Service\AbstractService
 {
     /**
-     * List all PricingPlanSubscription objects.
+     * List all Pricing Plan Subscription objects.
      *
      * @param null|array{billing_cadence?: string, limit?: int, payer?: array{customer?: string, type: string}, pricing_plan?: string, pricing_plan_version?: string, servicing_status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -27,7 +27,7 @@ class PricingPlanSubscriptionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a PricingPlanSubscription object.
+     * Retrieve a Pricing Plan Subscription object.
      *
      * @param string $id
      * @param null|array $params

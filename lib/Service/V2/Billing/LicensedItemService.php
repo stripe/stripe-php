@@ -12,9 +12,9 @@ namespace Stripe\Service\V2\Billing;
 class LicensedItemService extends \Stripe\Service\AbstractService
 {
     /**
-     * List all LicensedItem objects in reverse chronological order of creation.
+     * List all Licensed Item objects in reverse chronological order of creation.
      *
-     * @param null|array{limit?: int} $params
+     * @param null|array{limit?: int, lookup_keys?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\Billing\LicensedItem>
@@ -27,7 +27,7 @@ class LicensedItemService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a LicensedItem object.
+     * Create a Licensed Item object.
      *
      * @param null|array{display_name: string, lookup_key?: string, metadata?: array<string, string>, tax_details?: array{tax_code: string}, unit_label?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -42,7 +42,7 @@ class LicensedItemService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a LicensedItem object.
+     * Retrieve a Licensed Item object.
      *
      * @param string $id
      * @param null|array $params
@@ -58,7 +58,7 @@ class LicensedItemService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update a LicensedItem object. At least one of the fields is required.
+     * Update a Licensed Item object. At least one of the fields is required.
      *
      * @param string $id
      * @param null|array{display_name?: string, lookup_key?: null|string, metadata?: array<string, null|string>, tax_details?: array{tax_code: string}, unit_label?: null|string} $params

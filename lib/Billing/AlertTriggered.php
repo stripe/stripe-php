@@ -8,9 +8,12 @@ namespace Stripe\Billing;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property Alert $alert A billing alert is a resource that notifies you when a certain usage threshold on a meter is crossed. For example, you might create a billing alert to notify you when a certain user made 100 API requests.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
+ * @property null|string $currency Currency for the threshold value
+ * @property null|string $custom_pricing_unit Custom pricing unit for the threshold value
  * @property string $customer ID of customer for which the alert triggered
+ * @property null|string $external_customer_id External customer ID for the customer for which the alert triggered
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property int $value The value triggering the alert
+ * @property string $value The value triggering the alert
  */
 class AlertTriggered extends \Stripe\ApiResource
 {

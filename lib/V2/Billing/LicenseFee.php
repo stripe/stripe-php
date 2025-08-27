@@ -5,18 +5,18 @@
 namespace Stripe\V2\Billing;
 
 /**
- * @property string $id The ID of the LicenseFee.
+ * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property bool $active Whether this LicenseFee is active. Inactive LicenseFees cannot be used in new activations or be modified.
+ * @property bool $active Whether this License Fee is active. Inactive License Fees cannot be used in new activations or be modified.
  * @property int $created Timestamp of when the object was created.
- * @property string $currency The currency of this LicenseFee.
- * @property string $display_name A customer-facing name for the LicenseFee. This name is used in Stripe-hosted products like the Customer Portal and Checkout. It does not show up on Invoices. Maximum length of 250 characters.
- * @property string $latest_version The ID of the LicenseFee's most recently created version.
- * @property LicensedItem $licensed_item The LicensedItem that this license fee binds to.
- * @property string $live_version The ID of the version that will be used by all Subscriptions when no specific version is specified.
+ * @property string $currency Three-letter ISO currency code, in lowercase. Must be a supported currency.
+ * @property string $display_name A customer-facing name for the license fee. This name is used in Stripe-hosted products like the Customer Portal and Checkout. It does not show up on Invoices. Maximum length of 250 characters.
+ * @property string $latest_version The ID of the license fee's most recently created version.
+ * @property LicensedItem $licensed_item The Licensed Item that this License Fee binds to.
+ * @property string $live_version The ID of the License Fee Version that will be used by all subscriptions when no specific version is specified.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|string $lookup_key An internal key you can use to search for a particular LicenseFee. Maximum length of 200 characters.
- * @property null|\Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|string $lookup_key An internal key you can use to search for a particular License Fee. Maximum length of 200 characters.
+ * @property null|\Stripe\StripeObject $metadata Set of <a href="/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $service_interval The interval for assessing service.
  * @property int $service_interval_count The length of the interval for assessing service. For example, set this to 3 and <code>service_interval</code> to <code>&quot;month&quot;</code> in order to specify quarterly service.
  * @property string $tax_behavior The Stripe Tax tax behavior - whether the license fee is inclusive or exclusive of tax.
