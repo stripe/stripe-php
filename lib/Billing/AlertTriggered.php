@@ -10,7 +10,7 @@ namespace Stripe\Billing;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $customer ID of customer for which the alert triggered
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property int $value The value triggering the alert
+ * @property string $value The value triggering the alert
  */
 class AlertTriggered extends \Stripe\ApiResource
 {

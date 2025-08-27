@@ -270,18 +270,8 @@ class ApiRequestor
                 return Exception\IdempotencyException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code);
 
                 // The beginning of the section generated from our OpenAPI spec
-            case 'temporary_session_expired':
-                return Exception\TemporarySessionExpiredException::factory(
-                    $msg,
-                    $rcode,
-                    $rbody,
-                    $resp,
-                    $rheaders,
-                    $code
-                );
-
-            case 'non_zero_balance':
-                return Exception\NonZeroBalanceException::factory(
+            case 'already_canceled':
+                return Exception\AlreadyCanceledException::factory(
                     $msg,
                     $rcode,
                     $rbody,
@@ -292,6 +282,26 @@ class ApiRequestor
 
             case 'already_exists':
                 return Exception\AlreadyExistsException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'blocked_by_stripe':
+                return Exception\BlockedByStripeException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'controlled_by_dashboard':
+                return Exception\ControlledByDashboardException::factory(
                     $msg,
                     $rcode,
                     $rbody,
@@ -320,8 +330,8 @@ class ApiRequestor
                     $code
                 );
 
-            case 'blocked_by_stripe':
-                return Exception\BlockedByStripeException::factory(
+            case 'insufficient_funds':
+                return Exception\InsufficientFundsException::factory(
                     $msg,
                     $rcode,
                     $rbody,
@@ -330,8 +340,31 @@ class ApiRequestor
                     $code
                 );
 
-            case 'already_canceled':
-                return Exception\AlreadyCanceledException::factory(
+            case 'invalid_payment_method':
+                $invalidParam = isset($errorData['invalid_param']) ? $errorData['invalid_param'] : null;
+
+                return Exception\InvalidPaymentMethodException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code,
+                    $invalidParam
+                );
+
+            case 'invalid_payout_method':
+                return Exception\InvalidPayoutMethodException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'non_zero_balance':
+                return Exception\NonZeroBalanceException::factory(
                     $msg,
                     $rcode,
                     $rbody,
@@ -342,16 +375,6 @@ class ApiRequestor
 
             case 'not_cancelable':
                 return Exception\NotCancelableException::factory(
-                    $msg,
-                    $rcode,
-                    $rbody,
-                    $resp,
-                    $rheaders,
-                    $code
-                );
-
-            case 'insufficient_funds':
-                return Exception\InsufficientFundsException::factory(
                     $msg,
                     $rcode,
                     $rbody,
@@ -380,37 +403,14 @@ class ApiRequestor
                     $code
                 );
 
-            case 'invalid_payout_method':
-                return Exception\InvalidPayoutMethodException::factory(
+            case 'temporary_session_expired':
+                return Exception\TemporarySessionExpiredException::factory(
                     $msg,
                     $rcode,
                     $rbody,
                     $resp,
                     $rheaders,
                     $code
-                );
-
-            case 'controlled_by_dashboard':
-                return Exception\ControlledByDashboardException::factory(
-                    $msg,
-                    $rcode,
-                    $rbody,
-                    $resp,
-                    $rheaders,
-                    $code
-                );
-
-            case 'invalid_payment_method':
-                $invalidParam = isset($errorData['invalid_param']) ? $errorData['invalid_param'] : null;
-
-                return Exception\InvalidPaymentMethodException::factory(
-                    $msg,
-                    $rcode,
-                    $rbody,
-                    $resp,
-                    $rheaders,
-                    $code,
-                    $invalidParam
                 );
 
                 // The end of the section generated from our OpenAPI spec

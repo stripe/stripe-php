@@ -16,7 +16,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * accepting a payment, saving a card or refunding a transaction.
      *
      * @param string $id
-     * @param null|array{amount_tip?: int, card_present?: array{number?: string}, expand?: string[], interac_present?: array{number?: string}, type?: string} $params
+     * @param null|array{amount_tip?: int, card?: array{cvc?: string, exp_month: int, exp_year: int, number: string}, card_present?: array{number?: string}, expand?: string[], interac_present?: array{number?: string}, type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader
