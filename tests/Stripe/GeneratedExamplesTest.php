@@ -4821,6 +4821,33 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(WebhookEndpoint::class, $result);
     }
 
+    public function testV2BillingMeterEventPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/meter_events',
+            ['event_name' => 'event_name', 'payload' => ['key' => 'payload']],
+            [],
+            false,
+            [
+                'object' => 'v2.billing.meter_event',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'event_name' => 'event_name',
+                'identifier' => 'identifier',
+                'livemode' => [],
+                'payload' => ['key' => 'payload'],
+                'timestamp' => '1970-01-01T15:18:46.294Z',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->meterEvents->create([
+            'event_name' => 'event_name',
+            'payload' => ['key' => 'payload'],
+        ]);
+        self::assertInstanceOf(V2\Billing\MeterEvent::class, $result);
+    }
+
     public function testV2BillingMeterEventAdjustmentPost()
     {
         $this->stubRequest(
@@ -4887,7 +4914,7 @@ final class GeneratedExamplesTest extends TestCase
                     [
                         'event_name' => 'event_name',
                         'identifier' => 'identifier',
-                        'payload' => ['undefined' => 'payload'],
+                        'payload' => ['key' => 'payload'],
                         'timestamp' => '1970-01-01T15:18:46.294Z',
                     ],
                 ],
@@ -4903,41 +4930,68 @@ final class GeneratedExamplesTest extends TestCase
                 [
                     'event_name' => 'event_name',
                     'identifier' => 'identifier',
-                    'payload' => ['undefined' => 'payload'],
+                    'payload' => ['key' => 'payload'],
                     'timestamp' => '1970-01-01T15:18:46.294Z',
                 ],
             ],
         ]);
     }
 
-    public function testV2BillingMeterEventPost()
+    public function testV2CoreEventGet()
     {
         $this->stubRequest(
-            'post',
-            '/v2/billing/meter_events',
-            [
-                'event_name' => 'event_name',
-                'payload' => ['undefined' => 'payload'],
-            ],
+            'get',
+            '/v2/core/events',
+            ['object_id' => 'object_id'],
             [],
             false,
             [
-                'object' => 'v2.billing.meter_event',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'event_name' => 'event_name',
-                'identifier' => 'identifier',
-                'livemode' => [],
-                'payload' => ['undefined' => 'payload'],
-                'timestamp' => '1970-01-01T15:18:46.294Z',
+                'data' => [
+                    '0' => [
+                        'context' => null,
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'object' => 'v2.core.event',
+                        'reason' => null,
+                        'type' => 'type',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->billing->meterEvents->create([
-            'event_name' => 'event_name',
-            'payload' => ['undefined' => 'payload'],
+        $result = $this->v2Client->v2->core->events->all([
+            'object_id' => 'object_id',
         ]);
-        self::assertInstanceOf(V2\Billing\MeterEvent::class, $result);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Event::class, $result->data[0]);
+    }
+
+    public function testV2CoreEventGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/events/id_123',
+            [],
+            [],
+            false,
+            [
+                'context' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.core.event',
+                'reason' => null,
+                'type' => 'type',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->events->retrieve('id_123', []);
+        self::assertInstanceOf(V2\Event::class, $result);
     }
 
     public function testV2CoreEventDestinationGet()
@@ -5237,63 +5291,6 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Event::class, $result);
     }
 
-    public function testV2CoreEventGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/core/events',
-            ['object_id' => 'object_id'],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'context' => null,
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'id' => 'obj_123',
-                        'object' => 'v2.core.event',
-                        'reason' => null,
-                        'type' => 'type',
-                        'livemode' => [],
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->core->events->all([
-            'object_id' => 'object_id',
-        ]);
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Event::class, $result->data[0]);
-    }
-
-    public function testV2CoreEventGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/core/events/id_123',
-            [],
-            [],
-            false,
-            [
-                'context' => null,
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'object' => 'v2.core.event',
-                'reason' => null,
-                'type' => 'type',
-                'livemode' => [],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->core->events->retrieve('id_123', []);
-        self::assertInstanceOf(V2\Event::class, $result);
-    }
-
     public function testTemporarySessionExpiredError()
     {
         $this->stubRequest(
@@ -5303,7 +5300,7 @@ final class GeneratedExamplesTest extends TestCase
                 'events' => [
                     [
                         'event_name' => 'event_name',
-                        'payload' => ['undefined' => 'payload'],
+                        'payload' => ['key' => 'payload'],
                     ],
                 ],
             ],
@@ -5324,7 +5321,7 @@ final class GeneratedExamplesTest extends TestCase
                 'events' => [
                     [
                         'event_name' => 'event_name',
-                        'payload' => ['undefined' => 'payload'],
+                        'payload' => ['key' => 'payload'],
                     ],
                 ],
             ]);
