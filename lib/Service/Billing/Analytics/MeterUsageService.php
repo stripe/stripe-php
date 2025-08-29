@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\Service\Billing;
+namespace Stripe\Service\Billing\Analytics;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
@@ -19,7 +19,7 @@ class MeterUsageService extends \Stripe\Service\AbstractService
      * @param null|array{customer: string, end_time: int, expand?: string[], meters?: array{dimension_filters?: array<string, string>, dimension_group_by_keys?: string[], meter_id: string, tenant_filters?: array<string, string>}[], start_time: int, timezone?: string, value_grouping_window?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\Billing\MeterUsage
+     * @return \Stripe\Billing\Analytics\MeterUsage
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

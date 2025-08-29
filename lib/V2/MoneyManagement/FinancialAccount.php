@@ -5,7 +5,7 @@
 namespace Stripe\V2\MoneyManagement;
 
 /**
- * The Financial Account is the container that allows for the configuration of money movement.
+ * A FinancialAccount represents a balance and can be used as the source or destination for the money management (<code>/v2/money_management</code>) APIs.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
@@ -14,7 +14,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property int $created Time at which the object was created.
  * @property null|string $display_name A descriptive name for the FinancialAccount, up to 50 characters long. This name will be used in the Stripe Dashboard and embedded components.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Stripe\StripeObject $metadata Metadata associated with the FinancialAccount
+ * @property null|\Stripe\StripeObject $metadata Metadata associated with the FinancialAccount.
  * @property null|(object{type: string}&\Stripe\StripeObject) $other If this is a <code>other</code> FinancialAccount, this hash indicates what the actual type is. Upgrade your API version to see it reflected in <code>type</code>.
  * @property string $status Closed Enum. An enum representing the status of the FinancialAccount. This indicates whether or not the FinancialAccount can be used for any money movement flows.
  * @property null|(object{closed: null|(object{forwarding_settings: null|(object{payment_method: null|string, payout_method: null|string}&\Stripe\StripeObject), reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details

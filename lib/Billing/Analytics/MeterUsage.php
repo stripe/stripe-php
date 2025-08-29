@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\Billing;
+namespace Stripe\Billing\Analytics;
 
 /**
  * A billing meter usage event represents an aggregated view of a customer’s billing meter events within a specified timeframe.
@@ -14,7 +14,7 @@ namespace Stripe\Billing;
  */
 class MeterUsage extends \Stripe\SingletonApiResource
 {
-    const OBJECT_NAME = 'billing.meter_usage';
+    const OBJECT_NAME = 'billing.analytics.meter_usage';
 
     /**
      * Returns aggregated meter usage data for a customer within a specified time

@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\Billing;
+namespace Stripe\Billing\Analytics;
 
 /**
  * @property string $id Unique identifier for the object.
@@ -15,5 +15,5 @@ namespace Stripe\Billing;
  */
 class MeterUsageRow extends \Stripe\ApiResource
 {
-    const OBJECT_NAME = 'billing.meter_usage_row';
+    const OBJECT_NAME = 'billing.analytics.meter_usage_row';
 }

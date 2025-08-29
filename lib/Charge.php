@@ -6,8 +6,7 @@ namespace Stripe;
 
 /**
  * The <code>Charge</code> object represents a single attempt to move money into your Stripe account.
- * PaymentIntent confirmation is the most common way to create Charges, but transferring
- * money to a different Stripe account through Connect also creates Charges.
+ * PaymentIntent confirmation is the most common way to create Charges, but <a href="https://stripe.com/docs/connect/account-debits">Account Debits</a> may also create Charges.
  * Some legacy payment flows create Charges directly, which is not recommended for new integrations.
  *
  * @property string $id Unique identifier for the object.
