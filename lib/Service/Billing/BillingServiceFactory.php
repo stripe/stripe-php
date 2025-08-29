@@ -8,13 +8,13 @@ namespace Stripe\Service\Billing;
  * Service factory class for API resources in the Billing namespace.
  *
  * @property AlertService $alerts
+ * @property Analytics\AnalyticsServiceFactory $analytics
  * @property CreditBalanceSummaryService $creditBalanceSummary
  * @property CreditBalanceTransactionService $creditBalanceTransactions
  * @property CreditGrantService $creditGrants
  * @property MeterEventAdjustmentService $meterEventAdjustments
  * @property MeterEventService $meterEvents
  * @property MeterService $meters
- * @property MeterUsageService $meterUsage
  */
 class BillingServiceFactory extends \Stripe\Service\AbstractServiceFactory
 {
@@ -23,13 +23,13 @@ class BillingServiceFactory extends \Stripe\Service\AbstractServiceFactory
      */
     private static $classMap = [
         'alerts' => AlertService::class,
+        'analytics' => Analytics\AnalyticsServiceFactory::class,
         'creditBalanceSummary' => CreditBalanceSummaryService::class,
         'creditBalanceTransactions' => CreditBalanceTransactionService::class,
         'creditGrants' => CreditGrantService::class,
         'meterEventAdjustments' => MeterEventAdjustmentService::class,
         'meterEvents' => MeterEventService::class,
         'meters' => MeterService::class,
-        'meterUsage' => MeterUsageService::class,
     ];
 
     protected function getServiceClass($name)
