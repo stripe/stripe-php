@@ -4948,11 +4948,9 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'data' => [
                     '0' => [
-                        'context' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
                         'id' => 'obj_123',
                         'object' => 'v2.core.event',
-                        'reason' => null,
                         'type' => 'type',
                         'livemode' => [],
                     ],
@@ -4979,11 +4977,9 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'context' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'object' => 'v2.core.event',
-                'reason' => null,
                 'type' => 'type',
                 'livemode' => [],
             ],
