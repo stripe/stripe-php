@@ -192,7 +192,7 @@ class ObjectTypes
         \Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \Stripe\V2\Billing\MeterEventSession::class,
         \Stripe\V2\Core\Account::OBJECT_NAME => \Stripe\V2\Core\Account::class,
         \Stripe\V2\Core\AccountLink::OBJECT_NAME => \Stripe\V2\Core\AccountLink::class,
-        \Stripe\V2\Core\Person::OBJECT_NAME => \Stripe\V2\Core\Person::class,
+        \Stripe\V2\Core\AccountPerson::OBJECT_NAME => \Stripe\V2\Core\AccountPerson::class,
         \Stripe\V2\Core\Vault\GbBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\GbBankAccount::class,
         \Stripe\V2\Core\Vault\UsBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\UsBankAccount::class,
         \Stripe\V2\Event::OBJECT_NAME => \Stripe\V2\Event::class,

@@ -20,10 +20,10 @@ namespace Stripe\V2;
  * @property string $name Event destination name.
  * @property null|string $snapshot_api_version If using the snapshot event payload, the API version events are rendered as.
  * @property string $status Status. It can be set to either enabled or disabled.
- * @property null|(object{disabled: null|(object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Additional information about event destination status.
+ * @property null|(object{disabled?: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Additional information about event destination status.
  * @property string $type Event destination type.
  * @property int $updated Time at which the object was last updated.
- * @property null|(object{signing_secret: null|string, url: null|string}&\Stripe\StripeObject) $webhook_endpoint Webhook endpoint configuration.
+ * @property null|(object{signing_secret?: string, url?: string}&\Stripe\StripeObject) $webhook_endpoint Webhook endpoint configuration.
  */
 class EventDestination extends \Stripe\ApiResource
 {

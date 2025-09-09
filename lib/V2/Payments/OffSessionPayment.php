@@ -27,7 +27,7 @@ namespace Stripe\V2\Payments;
  * @property null|string $statement_descriptor_suffix Provides information about a card charge. Concatenated to the account’s <a href="https://docs.stripe.com/get-started/account/statement-descriptors#static">statement descriptor prefix</a> to form the complete statement descriptor that appears on the customer’s statement.
  * @property string $status Status of this OffSessionPayment, one of <code>pending</code>, <code>pending_retry</code>, <code>processing</code>, <code>failed</code>, <code>canceled</code>, <code>requires_capture</code>, or <code>succeeded</code>.
  * @property null|string $test_clock Test clock that can be used to advance the retry attempts in a sandbox.
- * @property null|(object{amount: null|int, destination: string}&\Stripe\StripeObject) $transfer_data The data that automatically creates a Transfer after the payment finalizes. Learn more about the use case for <a href="https://docs.corp.stripe.com/payments/connected-accounts">connected accounts</a>.
+ * @property null|(object{amount?: int, destination: string}&\Stripe\StripeObject) $transfer_data The data that automatically creates a Transfer after the payment finalizes. Learn more about the use case for <a href="https://docs.corp.stripe.com/payments/connected-accounts">connected accounts</a>.
  */
 class OffSessionPayment extends \Stripe\ApiResource
 {
