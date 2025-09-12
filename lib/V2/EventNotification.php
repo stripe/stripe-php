@@ -31,36 +31,55 @@ abstract class EventNotification
     protected $related_object;
 
     /**
-     * @param mixed $json the raw json body
-     * @param \Stripe\StripeClient $client a StripeClient instance that this can use to make requests.
+     * @param array $json the raw json body
+     * @param \Stripe\StripeClient $client a StripeClient instance that this can use to make requests
      */
     public function __construct($json, $client)
     {
         $this->client = $client;
 
-        $json = json_decode($json, true);
-
-        if (array_key_exists('id', $json)) {
+        if (\array_key_exists('id', $json)) {
             $this->id = $json['id'];
         }
-        if (array_key_exists('type', $json)) {
+        if (\array_key_exists('type', $json)) {
             $this->type = $json['type'];
         }
-        if (array_key_exists('created', $json)) {
+        if (\array_key_exists('created', $json)) {
             $this->created = $json['created'];
         }
-        if (array_key_exists('context', $json)) {
+        if (\array_key_exists('context', $json)) {
             $this->context = $json['context'];
         }
-        if (array_key_exists('livemode', $json)) {
+        if (\array_key_exists('livemode', $json)) {
             $this->livemode = $json['livemode'];
         }
-        if (array_key_exists('related_object', $json)) {
+        if (\array_key_exists('related_object', $json)) {
             $this->related_object = new RelatedObject($json['related_object']);
         }
-        if (array_key_exists('reason', $json)) {
+        if (\array_key_exists('reason', $json)) {
             $this->reason = new Reason($json['reason']);
         }
+    }
+
+    /**
+     * The `fromJson` constructor shouldn't be used in production code (since it doesn't validate webhook signatures), but it's useful for testing. It's also called by `StripeClient.parseEventNotification`.
+     *
+     * @param string $jsonStr the raw json payload
+     * @param \Stripe\StripeClient $client a StripeClient instance that this can use to make requests
+     *
+     * @return EventNotification
+     */
+    static function fromJson($jsonStr, $client)
+    {
+        $json = json_decode($jsonStr, true);
+
+        $class = UnknownEventNotification::class;
+        $eventNotificationTypes = \Stripe\Util\EventNotificationTypes::v2EventMapping;
+        if (\array_key_exists($json['type'], $eventNotificationTypes)) {
+            $class = $eventNotificationTypes[$json['type']];
+        }
+
+        return new $class($json, $client);
     }
 
     /**
@@ -71,15 +90,15 @@ abstract class EventNotification
     public function fetchEvent()
     {
         $response = $this->client->rawRequest(
-            "get",
+            'get',
             "/v2/core/events/{$this->id}",
             null,
             ['stripe_context' => $this->context],
             null,
-            ["fetch_event"]
+            ['fetch_event']
         );
 
-        return $this->client->deserialize($response, "v2");
+        return $this->client->deserialize($response, 'v2');
     }
 
     /**
@@ -89,17 +108,17 @@ abstract class EventNotification
      */
     protected function fetchRelatedObject()
     {
-        if (null == $this->related_object) {
+        if (null === $this->related_object) {
             return null;
         }
 
         $response = $this->client->rawRequest(
-            "get",
+            'get',
             $this->related_object->url,
             null,
             ['stripe_context' => $this->context],
             null,
-            ["fetch_related_object"]
+            ['fetch_related_object']
         );
 
         return $this->client->deserialize($response, \Stripe\Util\Util::getApiMode($this->related_object->url));

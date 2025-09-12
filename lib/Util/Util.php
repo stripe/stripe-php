@@ -65,7 +65,7 @@ abstract class Util
             ) {
                 $class = $types[$resp['object']];
                 if ('v2' === $apiMode && ('v2.core.event' === $resp['object'])) {
-                    $eventTypes = EventTypes::thinEventMapping;
+                    $eventTypes = EventTypes::v2EventMapping;
                     if (\array_key_exists('type', $resp) && \array_key_exists($resp['type'], $eventTypes)) {
                         $class = $eventTypes[$resp['type']];
                     } else {

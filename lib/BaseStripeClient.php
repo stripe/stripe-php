@@ -2,7 +2,9 @@
 
 namespace Stripe;
 
+use Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification;
 use Stripe\Util\Util;
+use Stripe\V2\EventNotification;
 use Stripe\V2\UnknownEventNotification;
 
 class BaseStripeClient implements StripeClientInterface, StripeStreamingClientInterface
@@ -234,6 +236,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * @param null|array $params the parameters of the request
      * @param array $opts the special modifiers of the request
      * @param null|int $maxNetworkRetries
+     * @param null|mixed $usage
      *
      * @return ApiResponse
      */
@@ -489,25 +492,6 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $eventData = Util::utf8($payload);
         WebhookSignature::verifyHeader($payload, $sigHeader, $secret, $tolerance);
 
-        $classes = [
-            "whatever" => UnknownEventNotification::class
-        ];
-
-        $c = $classes[""];
-
-        $c();
-
-
-
-        try {
-            return Util::json_decode_thin_event_object(
-                $eventData,
-                // FIXME: Look up class
-                '\Stripe\ThinEvent'
-            );
-        } catch (\ReflectionException $e) {
-            // Fail gracefully
-            return new UnknownEventNotification();
-        }
+        return EventNotification::fromJson($eventData, $this);
     }
 }

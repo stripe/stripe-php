@@ -5074,7 +5074,6 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'abc_123',
                 'object' => 'some.object.tag',
-                'deleted' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
