@@ -69,7 +69,7 @@ require __DIR__ . '/lib/Service/ServiceNavigatorTrait.php';
 require __DIR__ . '/lib/Service/AbstractService.php';
 require __DIR__ . '/lib/Service/AbstractServiceFactory.php';
 require __DIR__ . '/lib/V2/Event.php';
-require __DIR__ . '/lib/ThinEvent.php';
+require __DIR__ . '/lib/V2/EventNotification.php';
 require __DIR__ . '/lib/Reason.php';
 require __DIR__ . '/lib/RelatedObject.php';
 require __DIR__ . '/lib/Collection.php';
