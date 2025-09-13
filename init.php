@@ -14,6 +14,7 @@ require __DIR__ . '/lib/Util/RequestOptions.php';
 require __DIR__ . '/lib/Util/Set.php';
 require __DIR__ . '/lib/Util/Util.php';
 require __DIR__ . '/lib/Util/EventTypes.php';
+require __DIR__ . '/lib/Util/EventNotificationTypes.php';
 require __DIR__ . '/lib/Util/ObjectTypes.php';
 
 // HttpClient
@@ -70,6 +71,7 @@ require __DIR__ . '/lib/Service/AbstractService.php';
 require __DIR__ . '/lib/Service/AbstractServiceFactory.php';
 require __DIR__ . '/lib/V2/Event.php';
 require __DIR__ . '/lib/V2/EventNotification.php';
+require __DIR__ . '/lib/V2/UnknownEventNotification.php';
 require __DIR__ . '/lib/Reason.php';
 require __DIR__ . '/lib/RelatedObject.php';
 require __DIR__ . '/lib/Collection.php';
