@@ -46,7 +46,8 @@ final class BaseStripeClientTest extends TestCase
     {
         $this->curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock();
+            ->getMock()
+        ;
     }
 
     public function testCtorDoesNotThrowWhenNoParams()
@@ -569,7 +570,8 @@ final class BaseStripeClientTest extends TestCase
     {
         $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock();
+            ->getMock()
+        ;
 
         $curlClientStub->method('executeRequestWithRetries')
             ->willReturn(['{"object": "charge"}', 200, []])
@@ -607,7 +609,8 @@ final class BaseStripeClientTest extends TestCase
     {
         $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock();
+            ->getMock()
+        ;
 
         $curlClientStub->method('executeRequestWithRetries')
             ->willReturn(['{"object": "charge"}', 200, []])
@@ -640,7 +643,8 @@ final class BaseStripeClientTest extends TestCase
     {
         $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock();
+            ->getMock()
+        ;
 
         $curlClientStub->method('executeRequestWithRetries')
             ->willReturn(['{"object": "charge"}', 200, []])
@@ -671,7 +675,8 @@ final class BaseStripeClientTest extends TestCase
     {
         $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
             ->setMethods(['executeRequestWithRetries'])
-            ->getMock();
+            ->getMock()
+        ;
 
         $curlClientStub->method('executeRequestWithRetries')
             ->willReturn(['{"object": "charge"}', 200, []])
@@ -725,8 +730,8 @@ final class BaseStripeClientTest extends TestCase
             'object' => 'event',
             'type' => 'v1.billing.meter.error_report_triggered',
             'created' => '2022-02-15T00:27:45.330Z',
-            "context" => "acct_123",
-            "livemode" => false,
+            'context' => 'acct_123',
+            'livemode' => false,
             'related_object' => [
                 'id' => 'meter_123',
                 'type' => 'billing.meter',
@@ -748,7 +753,7 @@ final class BaseStripeClientTest extends TestCase
 
         self::assertInstanceOf(V1BillingMeterErrorReportTriggeredEventNotification::class, $event);
 
-        /** @var V1BillingMeterErrorReportTriggeredEventNotification $event */
+        // @var V1BillingMeterErrorReportTriggeredEventNotification $event
         self::assertInstanceOf(RelatedObject::class, $event->related_object);
         self::assertSame('meter_123', $event->related_object->id);
     }
@@ -759,8 +764,8 @@ final class BaseStripeClientTest extends TestCase
             'id' => 'evt_234',
             'object' => 'event',
             'type' => 'imaginary',
-            "livemode" => true,
-            'created' => '2022-02-15T00:27:45.330Z'
+            'livemode' => true,
+            'created' => '2022-02-15T00:27:45.330Z',
         ];
 
         $eventData = json_encode($jsonEvent);
@@ -776,7 +781,7 @@ final class BaseStripeClientTest extends TestCase
         self::assertTrue($event->livemode);
 
         self::assertInstanceOf(UnknownEventNotification::class, $event);
-        /** @var UnknownEventNotification $event */
+        // @var UnknownEventNotification $event
         self::assertNull($event->related_object);
         self::assertNull($event->fetchRelatedObject());
     }

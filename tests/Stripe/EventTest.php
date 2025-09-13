@@ -111,7 +111,6 @@ final class EventTest extends TestCase
         self::assertSame('mtr_123', $meter->id);
     }
 
-
     public function testJsonDecodeThinEventObject()
     {
         $eventData = json_encode([
@@ -125,18 +124,18 @@ final class EventTest extends TestCase
                 'url' => '/v2/financial_accounts/fa_123',
             ],
             'reason' => [
-                "type" => "request",
-                "request" => [
+                'type' => 'request',
+                'request' => [
                     'id' => 'id_123',
-                    'idempotency_key' => 'key_123'
-                ]
+                    'idempotency_key' => 'key_123',
+                ],
             ],
         ]);
 
         $event = EventNotification::fromJson($eventData, new StripeClient());
         self::assertInstanceOf(V1BillingMeterErrorReportTriggeredEventNotification::class, $event);
 
-        /** @var V1BillingMeterErrorReportTriggeredEventNotification $event */
+        // @var V1BillingMeterErrorReportTriggeredEventNotification $event
         self::assertSame('evt_234', $event->id);
         self::assertSame('v1.billing.meter.error_report_triggered', $event->type);
         self::assertSame('2022-02-15T00:27:45.330Z', $event->created);
@@ -161,7 +160,7 @@ final class EventTest extends TestCase
         $event = EventNotification::fromJson($eventData, new StripeClient());
         self::assertInstanceOf(V1BillingMeterNoMeterFoundEventNotification::class, $event);
 
-        /** @var V1BillingMeterNoMeterFoundEventNotification $event */
+        // @var V1BillingMeterNoMeterFoundEventNotification $event
         self::assertSame('evt_234', $event->id);
         self::assertSame('v1.billing.meter.no_meter_found', $event->type);
         self::assertSame('2022-02-15T00:27:45.330Z', $event->created);

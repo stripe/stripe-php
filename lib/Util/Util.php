@@ -87,41 +87,6 @@ abstract class Util
     }
 
     /**
-     * @param mixed $json
-     * @param mixed $class
-     *
-     * @throws \ReflectionException
-     */
-    public static function json_decode_thin_event_object($json, $class)
-    {
-        $reflection = new \ReflectionClass($class);
-        $instance = $reflection->newInstanceWithoutConstructor();
-        $json = json_decode($json, true);
-        $properties = $reflection->getProperties();
-        foreach ($properties as $key => $property) {
-            if (\array_key_exists($property->getName(), $json)) {
-                if ('related_object' === $property->getName()) {
-                    $related_object = new \Stripe\RelatedObject();
-                    $related_object->id = $json['related_object']['id'];
-                    $related_object->url = $json['related_object']['url'];
-                    $related_object->type = $json['related_object']['type'];
-                    $property->setValue($instance, $related_object);
-                } elseif ('reason' === $property->getName()) {
-                    $reason = new \Stripe\Reason();
-                    $reason->id = $json['reason']['id'];
-                    $reason->idempotency_key = $json['reason']['idempotency_key'];
-                    $property->setValue($instance, $reason);
-                } else {
-                    $property->setAccessible(true);
-                    $property->setValue($instance, $json[$property->getName()]);
-                }
-            }
-        }
-
-        return $instance;
-    }
-
-    /**
      * @param mixed|string $value a string to UTF8-encode
      *
      * @return mixed|string the UTF8-encoded string, or the object passed in if

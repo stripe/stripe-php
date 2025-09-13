@@ -2,10 +2,8 @@
 
 namespace Stripe;
 
-use Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification;
 use Stripe\Util\Util;
 use Stripe\V2\EventNotification;
-use Stripe\V2\UnknownEventNotification;
 
 class BaseStripeClient implements StripeClientInterface, StripeStreamingClientInterface
 {
@@ -265,7 +263,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
 
-        if (null == $usage) {
+        if (null === $usage) {
             $usage = ['raw_request'];
         }
 
@@ -487,7 +485,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time. Defaults to 300 seconds (5 min)
      *
-     * @return V2\EventNotification
+     * @return EventNotification
      *
      * @throws Exception\SignatureVerificationException if the verification fails
      * @throws Exception\UnexpectedValueException if the payload is not valid JSON,

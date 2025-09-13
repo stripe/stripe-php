@@ -4,6 +4,7 @@ namespace Stripe\V2;
 
 use Stripe\Reason;
 use Stripe\RelatedObject;
+use Stripe\Util\EventNotificationTypes;
 
 /**
  * EventNotification represents the json that's delivered from an Event Destination.
@@ -69,12 +70,12 @@ abstract class EventNotification
      *
      * @return EventNotification
      */
-    static function fromJson($jsonStr, $client)
+    public static function fromJson($jsonStr, $client)
     {
         $json = json_decode($jsonStr, true);
 
         $class = UnknownEventNotification::class;
-        $eventNotificationTypes = \Stripe\Util\EventNotificationTypes::v2EventMapping;
+        $eventNotificationTypes = EventNotificationTypes::v2EventMapping;
         if (\array_key_exists($json['type'], $eventNotificationTypes)) {
             $class = $eventNotificationTypes[$json['type']];
         }

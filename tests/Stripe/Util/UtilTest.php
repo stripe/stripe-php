@@ -2,8 +2,6 @@
 
 namespace Stripe\Util;
 
-use Stripe\ThinEvent;
-
 /**
  * @internal
  *
