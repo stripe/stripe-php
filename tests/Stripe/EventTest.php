@@ -111,6 +111,76 @@ final class EventTest extends TestCase
         self::assertSame('mtr_123', $meter->id);
     }
 
+    public function testV2EventNotificationFetchRelatedObject()
+    {
+        $jsonEvent = json_encode([
+            'id' => 'evt_123',
+            'object' => 'v2.core.event',
+            'type' => 'v1.billing.meter.error_report_triggered',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'context' => 'acct_123',
+            'related_object' => [
+                'id' => 'mtr_123',
+                'type' => 'billing.meter',
+                'url' => '/v1/billing/meters/mtr_123',
+            ],
+        ]);
+
+        $this->stubRequest(
+            'GET',
+            '/v1/billing/meters/mtr_123',
+            [],
+            null,
+            false,
+            ['object' => 'billing.meter', 'id' => 'mtr_123'],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $client = new StripeClient('sk_test_123');
+        $event = EventNotification::fromJson($jsonEvent, $client);
+        self::assertInstanceOf(V1BillingMeterErrorReportTriggeredEventNotification::class, $event);
+        /** @var V1BillingMeterErrorReportTriggeredEventNotification $event */
+        $meter = $event->fetchRelatedObject();
+        self::assertInstanceOf(Billing\Meter::class, $meter);
+        self::assertSame('mtr_123', $meter->id);
+    }
+
+    public function testV2EventNotificationFetchEvent()
+    {
+        $jsonEvent = json_encode([
+            'id' => 'evt_123',
+            'object' => 'v2.core.event',
+            'type' => 'v1.billing.meter.error_report_triggered',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'context' => 'acct_123',
+            'related_object' => [
+                'id' => 'mtr_123',
+                'type' => 'billing.meter',
+                'url' => '/v1/billing/meters/mtr_123',
+            ],
+        ]);
+
+        $message = 'there was an error';
+        $this->stubRequest(
+            'GET',
+            '/v2/core/events/evt_123',
+            [],
+            null,
+            false,
+            ['object' => 'v2.core.event', 'type' => 'v1.billing.meter.error_report_triggered', 'id' => 'mtr_123', 'data' => ['developer_message_summary' => $message]],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $client = new StripeClient('sk_test_123');
+        $eventNotif = EventNotification::fromJson($jsonEvent, $client);
+        self::assertInstanceOf(V1BillingMeterErrorReportTriggeredEventNotification::class, $eventNotif);
+        /** @var V1BillingMeterErrorReportTriggeredEventNotification $eventNotif */
+        $fullEvent = $eventNotif->fetchEvent();
+        self::assertInstanceOf(Events\V1BillingMeterErrorReportTriggeredEvent::class, $fullEvent);
+        // @var Events\V1BillingMeterErrorReportTriggeredEvent $fullEvent
+        self::assertSame($message, $fullEvent->data->developer_message_summary);
+    }
+
     public function testJsonDecodeThinEventObject()
     {
         $eventData = json_encode([

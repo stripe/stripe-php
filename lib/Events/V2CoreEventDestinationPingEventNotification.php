@@ -13,6 +13,18 @@ class V2CoreEventDestinationPingEventNotification extends \Stripe\V2\EventNotifi
     public $related_object;
 
     /**
+     * Retrieves the full event object from the API. Make an API request on every call.
+     *
+     * @return V2CoreEventDestinationPingEvent
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function fetchEvent()
+    {
+        return parent::fetchEvent();
+    }
+
+    /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
      * @return \Stripe\V2\EventDestination

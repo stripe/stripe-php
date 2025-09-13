@@ -99,7 +99,7 @@ abstract class EventNotification
             ['fetch_event']
         );
 
-        return $this->client->deserialize($response, 'v2');
+        return $this->client->deserialize($response->body, 'v2');
     }
 
     protected function fetchRelatedObject()
@@ -117,6 +117,6 @@ abstract class EventNotification
             ['fetch_related_object']
         );
 
-        return $this->client->deserialize($response, \Stripe\Util\Util::getApiMode($this->related_object->url));
+        return $this->client->deserialize($response->body, \Stripe\Util\Util::getApiMode($this->related_object->url));
     }
 }
