@@ -10,4 +10,14 @@ namespace Stripe\V2;
 class UnknownEventNotification extends EventNotification
 {
     public $related_object;
+
+    /**
+     * Retrieve the event's related object from the Stripe API, if one exists. Returns null otherwise.
+     *
+     * @return null|\Stripe\StripeObject
+     */
+    public function fetchRelatedObject()
+    {
+        return parent::fetchRelatedObject();
+    }
 }

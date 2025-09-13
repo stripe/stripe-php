@@ -34,7 +34,7 @@ class Reason
         $this->type = $json['type'];
 
         if ('request' === $this->type) {
-            $this->request = new ReasonRequest($json['reason']);
+            $this->request = new ReasonRequest($json['request']);
         } else {
             $this->request = null;
         }

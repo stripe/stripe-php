@@ -101,11 +101,6 @@ abstract class EventNotification
         return $this->client->deserialize($response, 'v2');
     }
 
-    /**
-     * Retrieve the event's related object from the Stripe API, if one exists. Returns null otherwise.
-     *
-     * @return null|\Stripe\StripeObject
-     */
     protected function fetchRelatedObject()
     {
         if (null === $this->related_object) {
