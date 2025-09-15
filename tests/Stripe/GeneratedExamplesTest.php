@@ -3084,7 +3084,6 @@ final class GeneratedExamplesTest extends TestCase
                             'quantity' => 1,
                         ],
                     ],
-                    'iterations' => 12,
                 ],
             ],
         ]);
