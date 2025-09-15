@@ -5074,6 +5074,7 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                     'month' => [
                         'day_of_month' => 1361669285,
+                        'month_of_year' => 82933018,
                         'time' => [
                             'hour' => 3208676,
                             'minute' => 1074026988,
@@ -5147,6 +5148,7 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'month' => [
                     'day_of_month' => 1361669285,
+                    'month_of_year' => 82933018,
                     'time' => [
                         'hour' => 3208676,
                         'minute' => 1074026988,
@@ -5684,7 +5686,7 @@ final class GeneratedExamplesTest extends TestCase
                             ],
                             'effective_at' => [
                                 'timestamp' => '1970-01-01T15:18:46.294Z',
-                                'type' => 'current_billing_period_start',
+                                'type' => 'on_reserve',
                             ],
                             'pricing_plan_subscription_details' => [
                                 'pricing_plan_subscription' => 'pricing_plan_subscription',
@@ -5805,7 +5807,7 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                         'effective_at' => [
                             'timestamp' => '1970-01-01T15:18:46.294Z',
-                            'type' => 'current_billing_period_start',
+                            'type' => 'on_reserve',
                         ],
                         'pricing_plan_subscription_details' => [
                             'pricing_plan_subscription' => 'pricing_plan_subscription',
@@ -6329,7 +6331,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/billing/license_fees/id_123',
-            ['display_name' => 'display_name'],
+            [],
             [],
             false,
             [
@@ -6375,7 +6377,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->billing->licenseFees->update(
             'id_123',
-            ['display_name' => 'display_name']
+            []
         );
         self::assertInstanceOf(V2\Billing\LicenseFee::class, $result);
     }
@@ -7290,6 +7292,8 @@ final class GeneratedExamplesTest extends TestCase
                             'activated_at' => null,
                             'canceled_at' => null,
                             'paused_at' => null,
+                            'will_activate_at' => null,
+                            'will_cancel_at' => null,
                         ],
                         'test_clock' => null,
                     ],
@@ -7335,6 +7339,8 @@ final class GeneratedExamplesTest extends TestCase
                     'activated_at' => null,
                     'canceled_at' => null,
                     'paused_at' => null,
+                    'will_activate_at' => null,
+                    'will_cancel_at' => null,
                 ],
                 'test_clock' => null,
             ],

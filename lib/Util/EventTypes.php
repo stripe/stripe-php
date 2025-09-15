@@ -11,7 +11,6 @@ class EventTypes
         \Stripe\Events\V2BillingCadenceBilledEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingCadenceBilledEvent::class,
         \Stripe\Events\V2BillingCadenceCanceledEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingCadenceCanceledEvent::class,
         \Stripe\Events\V2BillingCadenceCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingCadenceCreatedEvent::class,
-        \Stripe\Events\V2BillingCadenceErroredEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingCadenceErroredEvent::class,
         \Stripe\Events\V2BillingLicenseFeeCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingLicenseFeeCreatedEvent::class,
         \Stripe\Events\V2BillingLicenseFeeUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingLicenseFeeUpdatedEvent::class,
         \Stripe\Events\V2BillingLicenseFeeVersionCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingLicenseFeeVersionCreatedEvent::class,
