@@ -312,7 +312,6 @@ require __DIR__ . '/lib/Exception/InvalidPayoutMethodException.php';
 require __DIR__ . '/lib/Exception/NonZeroBalanceException.php';
 require __DIR__ . '/lib/Exception/NotCancelableException.php';
 require __DIR__ . '/lib/Exception/QuotaExceededException.php';
-require __DIR__ . '/lib/Exception/RateLimitException.php';
 require __DIR__ . '/lib/Exception/RecipientNotNotifiableException.php';
 require __DIR__ . '/lib/Exception/TemporarySessionExpiredException.php';
 require __DIR__ . '/lib/ExchangeRate.php';
