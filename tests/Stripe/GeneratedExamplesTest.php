@@ -8645,19 +8645,22 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.core.claimable_sandbox',
-                'api_keys' => [
-                    'mcp' => null,
-                    'publishable' => 'publishable',
-                    'secret' => 'secret',
-                ],
-                'claim_url' => 'claim_url',
+                'claim_url' => null,
+                'claimed_at' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => null,
                 'livemode' => [],
                 'prefill' => [
                     'country' => 'af',
                     'email' => 'email',
                     'name' => 'name',
                 ],
+                'sandbox_details' => [
+                    'account' => 'account',
+                    'api_keys' => null,
+                    'owner_account' => null,
+                ],
+                'status' => 'claimed',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -8670,6 +8673,44 @@ final class GeneratedExamplesTest extends TestCase
                 'name' => 'name',
             ],
         ]);
+        self::assertInstanceOf(V2\Core\ClaimableSandbox::class, $result);
+    }
+
+    public function testV2CoreClaimableSandboxGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/claimable_sandboxes/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.claimable_sandbox',
+                'claim_url' => null,
+                'claimed_at' => null,
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => null,
+                'livemode' => [],
+                'prefill' => [
+                    'country' => 'af',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+                'sandbox_details' => [
+                    'account' => 'account',
+                    'api_keys' => null,
+                    'owner_account' => null,
+                ],
+                'status' => 'claimed',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->claimableSandboxes->retrieve(
+            'id_123',
+            []
+        );
         self::assertInstanceOf(V2\Core\ClaimableSandbox::class, $result);
     }
 
