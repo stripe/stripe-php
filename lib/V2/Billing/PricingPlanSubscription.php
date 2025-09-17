@@ -16,7 +16,7 @@ namespace Stripe\V2\Billing;
  * @property string $pricing_plan The ID of the Pricing Plan for this subscription.
  * @property string $pricing_plan_version The ID of the Pricing Plan Version for this subscription.
  * @property string $servicing_status Current servicing status of this subscription.
- * @property (object{activated_at: null|string, canceled_at: null|string, paused_at: null|string}&\Stripe\StripeObject) $servicing_status_transitions Timestamps for servicing status transitions.
+ * @property (object{activated_at: null|string, canceled_at: null|string, paused_at: null|string, will_activate_at: null|string, will_cancel_at: null|string}&\Stripe\StripeObject) $servicing_status_transitions Timestamps for servicing status transitions.
  * @property null|string $test_clock The ID of the Test Clock of the associated Billing Cadence, if any.
  */
 class PricingPlanSubscription extends \Stripe\ApiResource

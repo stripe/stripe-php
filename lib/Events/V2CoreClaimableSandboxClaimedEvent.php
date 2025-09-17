@@ -7,14 +7,14 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V2BillingCadenceErroredEvent extends \Stripe\V2\Event
+class V2CoreClaimableSandboxClaimedEvent extends \Stripe\V2\Event
 {
-    const LOOKUP_TYPE = 'v2.billing.cadence.errored';
+    const LOOKUP_TYPE = 'v2.core.claimable_sandbox.claimed';
 
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\V2\Billing\Cadence
+     * @return \Stripe\V2\Core\ClaimableSandbox
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
