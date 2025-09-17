@@ -11,7 +11,6 @@ namespace Stripe\Service\V2;
  * @property Core\CoreServiceFactory $core
  * @property MoneyManagement\MoneyManagementServiceFactory $moneyManagement
  * @property Payments\PaymentsServiceFactory $payments
- * @property Reporting\ReportingServiceFactory $reporting
  * @property Tax\TaxServiceFactory $tax
  * @property TestHelpers\TestHelpersServiceFactory $testHelpers
  */
@@ -25,7 +24,6 @@ class V2ServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'core' => Core\CoreServiceFactory::class,
         'moneyManagement' => MoneyManagement\MoneyManagementServiceFactory::class,
         'payments' => Payments\PaymentsServiceFactory::class,
-        'reporting' => Reporting\ReportingServiceFactory::class,
         'tax' => Tax\TaxServiceFactory::class,
         'testHelpers' => TestHelpers\TestHelpersServiceFactory::class,
     ];

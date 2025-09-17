@@ -13,7 +13,7 @@ namespace Stripe\V2\Core;
  * @property int $expires_at The timestamp at which this AccountLink will expire.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $url The URL for the AccountLink.
- * @property (object{type: string, account_onboarding: null|(object{collection_options: null|(object{fields: null|string, future_requirements: null|string}&\Stripe\StripeObject), configurations: string[], refresh_url: string, return_url: null|string}&\Stripe\StripeObject), account_update: null|(object{collection_options: null|(object{fields: null|string, future_requirements: null|string}&\Stripe\StripeObject), configurations: string[], refresh_url: string, return_url: null|string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $use_case The use case of AccountLink the user is requesting.
+ * @property (object{type: string, account_onboarding?: (object{collection_options?: (object{fields?: string, future_requirements?: string}&\Stripe\StripeObject), configurations: string[], refresh_url: string, return_url?: string}&\Stripe\StripeObject), account_update?: (object{collection_options?: (object{fields?: string, future_requirements?: string}&\Stripe\StripeObject), configurations: string[], refresh_url: string, return_url?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $use_case The use case of AccountLink the user is requesting.
  */
 class AccountLink extends \Stripe\ApiResource
 {

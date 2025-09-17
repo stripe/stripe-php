@@ -61,7 +61,7 @@ class LicensedItemService extends \Stripe\Service\AbstractService
      * Update a Licensed Item object. At least one of the fields is required.
      *
      * @param string $id
-     * @param null|array{display_name?: string, lookup_key?: null|string, metadata?: array<string, null|string>, tax_details?: array{tax_code: string}, unit_label?: null|string} $params
+     * @param null|array{display_name?: string, lookup_key?: string, metadata?: array<string, null|string>, tax_details?: array{tax_code: string}, unit_label?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\LicensedItem

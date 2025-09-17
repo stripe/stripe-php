@@ -61,7 +61,7 @@ class ProfileService extends \Stripe\Service\AbstractService
      * Update a BillingProfile object.
      *
      * @param string $id
-     * @param null|array{default_payment_method?: string, display_name?: null|string, lookup_key?: null|string, metadata?: array<string, null|string>} $params
+     * @param null|array{default_payment_method?: string, display_name?: string, lookup_key?: string, metadata?: array<string, null|string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\Profile

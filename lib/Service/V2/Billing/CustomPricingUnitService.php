@@ -61,7 +61,7 @@ class CustomPricingUnitService extends \Stripe\Service\AbstractService
      * Update a Custom Pricing Unit object.
      *
      * @param string $id
-     * @param null|array{active?: bool, display_name?: string, lookup_key?: null|string, metadata?: array<string, null|string>} $params
+     * @param null|array{active?: bool, display_name?: string, lookup_key?: string, metadata?: array<string, null|string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\CustomPricingUnit
