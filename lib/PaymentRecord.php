@@ -142,4 +142,21 @@ class PaymentRecord extends ApiResource
 
         return $this;
     }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return PaymentRecord the reported payment record
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public function reportPaymentAttemptInformational($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/report_payment_attempt_informational';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
 }
