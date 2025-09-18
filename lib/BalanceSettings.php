@@ -12,7 +12,7 @@ namespace Stripe;
  * to manage your connected accounts’ balance settings instead.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property (object{debit_negative_balances: null|bool, payouts: null|(object{minimum_balance_by_currency: null|StripeObject, schedule: null|(object{interval: null|string, monthly_payout_days?: int[], weekly_payout_days?: string[]}&StripeObject), statement_descriptor: null|string, status: string}&StripeObject), settlement_timing: (object{delay_days: int}&StripeObject)}&StripeObject) $payments
+ * @property (object{debit_negative_balances: null|bool, payouts: null|(object{minimum_balance_by_currency: null|StripeObject, schedule: null|(object{interval: null|string, monthly_payout_days?: int[], weekly_payout_days?: string[]}&StripeObject), statement_descriptor: null|string, status: string}&StripeObject), settlement_timing: (object{delay_days: int, delay_days_override?: int}&StripeObject)}&StripeObject) $payments
  */
 class BalanceSettings extends SingletonApiResource
 {
