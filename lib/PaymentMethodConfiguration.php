@@ -43,7 +43,6 @@ namespace Stripe;
  * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&StripeObject)}&StripeObject) $customer_balance
  * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&StripeObject)}&StripeObject) $eps
  * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&StripeObject)}&StripeObject) $fpx
- * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&StripeObject)}&StripeObject) $fr_meal_voucher_conecs
  * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&StripeObject)}&StripeObject) $giropay
  * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&StripeObject)}&StripeObject) $google_pay
  * @property null|(object{available: bool, display_preference: (object{overridable: null|bool, preference: string, value: string}&StripeObject)}&StripeObject) $gopay
