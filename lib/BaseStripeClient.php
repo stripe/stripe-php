@@ -132,6 +132,24 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
+     * Gets the Stripe Context ID used by the client to send requests.
+     *
+     * @return null|string the Stripe Context ID used by the client to send requests
+     */
+    public function getStripeContext() {
+        return $this->config['stripe_context'];
+    }
+
+    /**
+     * Gets the Stripe Version used by the client to send requests.
+     *
+     * @return null|string the Stripe Context ID used by the client to send requests
+     */
+    public function getStripeVersion() {
+        return $this->config['stripe_version'];
+    }
+
+    /**
      * Gets the base URL for Stripe's API.
      *
      * @return string the base URL for Stripe's API
