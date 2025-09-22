@@ -8,9 +8,9 @@ namespace Stripe\Billing\Analytics;
  * A billing meter usage event represents an aggregated view of a customer’s billing meter events within a specified timeframe.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property MeterUsageRow[] $data The aggregated meter usage data for the specified customer and time range.
- * @property int $data_refreshed_at Timestamp indicating how fresh the data is. Measured in seconds since the Unix epoch.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property int $refreshed_at The timestamp to indicate data freshness, measured in seconds since the Unix epoch.
+ * @property \Stripe\Collection<MeterUsageRow> $rows
  */
 class MeterUsage extends \Stripe\SingletonApiResource
 {
