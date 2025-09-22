@@ -136,7 +136,8 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      *
      * @return null|string the Stripe Context ID used by the client to send requests
      */
-    public function getStripeContext() {
+    public function getStripeContext()
+    {
         return $this->config['stripe_context'];
     }
 
@@ -145,7 +146,8 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      *
      * @return null|string the Stripe Context ID used by the client to send requests
      */
-    public function getStripeVersion() {
+    public function getStripeVersion()
+    {
         return $this->config['stripe_version'];
     }
 
