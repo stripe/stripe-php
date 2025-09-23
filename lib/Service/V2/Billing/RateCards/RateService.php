@@ -56,7 +56,7 @@ class RateService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Billing\RateCardRate
+     * @return \Stripe\V2\DeletedObject
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

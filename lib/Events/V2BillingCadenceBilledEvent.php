@@ -6,7 +6,6 @@ namespace Stripe\Events;
 
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
- * @property \Stripe\EventData\V2BillingCadenceBilledEventData $data data associated with the event
  */
 class V2BillingCadenceBilledEvent extends \Stripe\V2\Event
 {
@@ -32,15 +31,5 @@ class V2BillingCadenceBilledEvent extends \Stripe\V2\Event
         );
 
         return \Stripe\Util\Util::convertToStripeObject($object, $options, $apiMode);
-    }
-
-    public static function constructFrom($values, $opts = null, $apiMode = 'v2')
-    {
-        $evt = parent::constructFrom($values, $opts, $apiMode);
-        if (null !== $evt->data) {
-            $evt->data = \Stripe\EventData\V2BillingCadenceBilledEventData::constructFrom($evt->data, $opts, $apiMode);
-        }
-
-        return $evt;
     }
 }

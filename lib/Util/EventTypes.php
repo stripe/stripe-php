@@ -11,6 +11,7 @@ class EventTypes
         \Stripe\Events\V2BillingCadenceBilledEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingCadenceBilledEvent::class,
         \Stripe\Events\V2BillingCadenceCanceledEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingCadenceCanceledEvent::class,
         \Stripe\Events\V2BillingCadenceCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingCadenceCreatedEvent::class,
+        \Stripe\Events\V2BillingCadenceErroredEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingCadenceErroredEvent::class,
         \Stripe\Events\V2BillingLicenseFeeCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingLicenseFeeCreatedEvent::class,
         \Stripe\Events\V2BillingLicenseFeeUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingLicenseFeeUpdatedEvent::class,
         \Stripe\Events\V2BillingLicenseFeeVersionCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingLicenseFeeVersionCreatedEvent::class,
@@ -63,10 +64,6 @@ class EventTypes
         \Stripe\Events\V2CoreAccountPersonCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonCreatedEvent::class,
         \Stripe\Events\V2CoreAccountPersonDeletedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonDeletedEvent::class,
         \Stripe\Events\V2CoreAccountPersonUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonUpdatedEvent::class,
-        \Stripe\Events\V2CoreClaimableSandboxClaimedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreClaimableSandboxClaimedEvent::class,
-        \Stripe\Events\V2CoreClaimableSandboxExpiredEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreClaimableSandboxExpiredEvent::class,
-        \Stripe\Events\V2CoreClaimableSandboxExpiringEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreClaimableSandboxExpiringEvent::class,
-        \Stripe\Events\V2CoreClaimableSandboxSandboxDetailsOwnerAccountUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreClaimableSandboxSandboxDetailsOwnerAccountUpdatedEvent::class,
         \Stripe\Events\V2CoreEventDestinationPingEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreEventDestinationPingEvent::class,
         \Stripe\Events\V2CoreHealthApiErrorFiringEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthApiErrorFiringEvent::class,
         \Stripe\Events\V2CoreHealthApiErrorResolvedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthApiErrorResolvedEvent::class,
@@ -125,10 +122,6 @@ class EventTypes
         \Stripe\Events\V2PaymentsOffSessionPaymentCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentCreatedEvent::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentFailedEvent::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentSucceededEvent::class,
-        \Stripe\Events\V2ReportingReportRunCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunCreatedEvent::class,
-        \Stripe\Events\V2ReportingReportRunFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunFailedEvent::class,
-        \Stripe\Events\V2ReportingReportRunSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunSucceededEvent::class,
-        \Stripe\Events\V2ReportingReportRunUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunUpdatedEvent::class,
         // The end of the section generated from our OpenAPI spec
     ];
 }

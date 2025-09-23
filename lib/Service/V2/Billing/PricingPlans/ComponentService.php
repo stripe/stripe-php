@@ -51,7 +51,7 @@ class ComponentService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Billing\PricingPlanComponent
+     * @return \Stripe\V2\DeletedObject
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

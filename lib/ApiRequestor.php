@@ -393,16 +393,6 @@ class ApiRequestor
                     $code
                 );
 
-            case 'rate_limit':
-                return Exception\RateLimitException::factory(
-                    $msg,
-                    $rcode,
-                    $rbody,
-                    $resp,
-                    $rheaders,
-                    $code
-                );
-
             case 'recipient_not_notifiable':
                 return Exception\RecipientNotNotifiableException::factory(
                     $msg,

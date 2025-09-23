@@ -215,8 +215,8 @@ class ObjectTypes
         \Stripe\V2\Billing\ServiceAction::OBJECT_NAME => \Stripe\V2\Billing\ServiceAction::class,
         \Stripe\V2\Core\Account::OBJECT_NAME => \Stripe\V2\Core\Account::class,
         \Stripe\V2\Core\AccountLink::OBJECT_NAME => \Stripe\V2\Core\AccountLink::class,
+        \Stripe\V2\Core\AccountPerson::OBJECT_NAME => \Stripe\V2\Core\AccountPerson::class,
         \Stripe\V2\Core\ClaimableSandbox::OBJECT_NAME => \Stripe\V2\Core\ClaimableSandbox::class,
-        \Stripe\V2\Core\Person::OBJECT_NAME => \Stripe\V2\Core\Person::class,
         \Stripe\V2\Core\Vault\GbBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\GbBankAccount::class,
         \Stripe\V2\Core\Vault\UsBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\UsBankAccount::class,
         \Stripe\V2\Event::OBJECT_NAME => \Stripe\V2\Event::class,
@@ -238,8 +238,6 @@ class ObjectTypes
         \Stripe\V2\MoneyManagement\Transaction::OBJECT_NAME => \Stripe\V2\MoneyManagement\Transaction::class,
         \Stripe\V2\MoneyManagement\TransactionEntry::OBJECT_NAME => \Stripe\V2\MoneyManagement\TransactionEntry::class,
         \Stripe\V2\Payments\OffSessionPayment::OBJECT_NAME => \Stripe\V2\Payments\OffSessionPayment::class,
-        \Stripe\V2\Reporting\Report::OBJECT_NAME => \Stripe\V2\Reporting\Report::class,
-        \Stripe\V2\Reporting\ReportRun::OBJECT_NAME => \Stripe\V2\Reporting\ReportRun::class,
         \Stripe\V2\Tax\AutomaticRule::OBJECT_NAME => \Stripe\V2\Tax\AutomaticRule::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
