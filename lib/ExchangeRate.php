@@ -5,6 +5,8 @@
 namespace Stripe;
 
 /**
+ * [Deprecated] The <code>ExchangeRate</code> APIs are deprecated. Please use the <a href="https://docs.stripe.com/payments/currencies/localize-prices/fx-quotes-api">FX Quotes API</a> instead.
+ *
  * <code>ExchangeRate</code> objects allow you to determine the rates that Stripe is currently
  * using to convert from one currency to another. Since this number is variable
  * throughout the day, there are various reasons why you might want to know the current
@@ -41,8 +43,15 @@ class ExchangeRate extends ApiResource
     const OBJECT_NAME = 'exchange_rate';
 
     /**
+     * [Deprecated] The <code>ExchangeRate</code> APIs are deprecated. Please use the
+     * <a
+     * href="https://docs.stripe.com/payments/currencies/localize-prices/fx-quotes-api">FX
+     * Quotes API</a> instead.
+     *
      * Returns a list of objects that contain the rates at which foreign currencies are
      * converted to one another. Only shows the currencies for which Stripe supports.
+     *
+     * @deprecated  this method is deprecated, please refer to the description for details
      *
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
@@ -59,8 +68,15 @@ class ExchangeRate extends ApiResource
     }
 
     /**
+     * [Deprecated] The <code>ExchangeRate</code> APIs are deprecated. Please use the
+     * <a
+     * href="https://docs.stripe.com/payments/currencies/localize-prices/fx-quotes-api">FX
+     * Quotes API</a> instead.
+     *
      * Retrieves the exchange rates from the given currency to every supported
      * currency.
+     *
+     * @deprecated  this method is deprecated, please refer to the description for details
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts

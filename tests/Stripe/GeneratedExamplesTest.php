@@ -2416,15 +2416,6 @@ final class GeneratedExamplesTest extends TestCase
 
     public function testPromotionCodesPost()
     {
-        $this->expectsRequest('post', '/v1/promotion_codes');
-        $result = $this->client->promotionCodes->create([
-            'coupon' => 'Z4OV52SU',
-        ]);
-        self::assertInstanceOf(PromotionCode::class, $result);
-    }
-
-    public function testPromotionCodesPost2()
-    {
         $this->expectsRequest(
             'post',
             '/v1/promotion_codes/promo_xxxxxxxxxxxxx'
@@ -3084,7 +3075,6 @@ final class GeneratedExamplesTest extends TestCase
                             'quantity' => 1,
                         ],
                     ],
-                    'iterations' => 12,
                 ],
             ],
         ]);
@@ -4980,16 +4970,8 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'object' => 'v2.core.account',
                         'applied_configurations' => ['0' => 'storer'],
-                        'configuration' => null,
-                        'contact_email' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'dashboard' => null,
-                        'defaults' => null,
-                        'display_name' => null,
-                        'identity' => null,
                         'livemode' => [],
-                        'metadata' => null,
-                        'requirements' => null,
                     ],
                 ],
                 'next_page_url' => null,
@@ -5015,16 +4997,8 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.core.account',
                 'applied_configurations' => ['0' => 'storer'],
-                'configuration' => null,
-                'contact_email' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
-                'dashboard' => null,
-                'defaults' => null,
-                'display_name' => null,
-                'identity' => null,
                 'livemode' => [],
-                'metadata' => null,
-                'requirements' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5045,16 +5019,8 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.core.account',
                 'applied_configurations' => ['0' => 'storer'],
-                'configuration' => null,
-                'contact_email' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
-                'dashboard' => null,
-                'defaults' => null,
-                'display_name' => null,
-                'identity' => null,
                 'livemode' => [],
-                'metadata' => null,
-                'requirements' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5075,16 +5041,8 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.core.account',
                 'applied_configurations' => ['0' => 'storer'],
-                'configuration' => null,
-                'contact_email' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
-                'dashboard' => null,
-                'defaults' => null,
-                'display_name' => null,
-                'identity' => null,
                 'livemode' => [],
-                'metadata' => null,
-                'requirements' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5105,16 +5063,8 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.core.account',
                 'applied_configurations' => ['0' => 'storer'],
-                'configuration' => null,
-                'contact_email' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
-                'dashboard' => null,
-                'defaults' => null,
-                'display_name' => null,
-                'identity' => null,
                 'livemode' => [],
-                'metadata' => null,
-                'requirements' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5137,26 +5087,8 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'object' => 'v2.core.account_person',
                         'account' => 'account',
-                        'additional_addresses' => null,
-                        'additional_names' => null,
-                        'additional_terms_of_service' => null,
-                        'address' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'date_of_birth' => null,
-                        'documents' => null,
-                        'email' => null,
-                        'given_name' => null,
-                        'id_numbers' => null,
-                        'legal_gender' => null,
                         'livemode' => [],
-                        'metadata' => null,
-                        'nationalities' => null,
-                        'phone' => null,
-                        'political_exposure' => null,
-                        'relationship' => null,
-                        'script_addresses' => null,
-                        'script_names' => null,
-                        'surname' => null,
                         'updated' => '1970-01-03T17:07:10.277Z',
                     ],
                 ],
@@ -5171,7 +5103,7 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Core\Person::class, $result->data[0]);
+        self::assertInstanceOf(V2\Core\AccountPerson::class, $result->data[0]);
     }
 
     public function testV2CoreAccountsPersonPost()
@@ -5186,26 +5118,8 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.core.account_person',
                 'account' => 'account',
-                'additional_addresses' => null,
-                'additional_names' => null,
-                'additional_terms_of_service' => null,
-                'address' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
-                'date_of_birth' => null,
-                'documents' => null,
-                'email' => null,
-                'given_name' => null,
-                'id_numbers' => null,
-                'legal_gender' => null,
                 'livemode' => [],
-                'metadata' => null,
-                'nationalities' => null,
-                'phone' => null,
-                'political_exposure' => null,
-                'relationship' => null,
-                'script_addresses' => null,
-                'script_names' => null,
-                'surname' => null,
                 'updated' => '1970-01-03T17:07:10.277Z',
             ],
             200,
@@ -5215,7 +5129,7 @@ final class GeneratedExamplesTest extends TestCase
             'account_id_123',
             []
         );
-        self::assertInstanceOf(V2\Core\Person::class, $result);
+        self::assertInstanceOf(V2\Core\AccountPerson::class, $result);
     }
 
     public function testV2CoreAccountsPersonDelete()
@@ -5227,30 +5141,8 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'id' => 'obj_123',
-                'object' => 'v2.core.account_person',
-                'account' => 'account',
-                'additional_addresses' => null,
-                'additional_names' => null,
-                'additional_terms_of_service' => null,
-                'address' => null,
-                'created' => '1970-01-12T21:42:34.472Z',
-                'date_of_birth' => null,
-                'documents' => null,
-                'email' => null,
-                'given_name' => null,
-                'id_numbers' => null,
-                'legal_gender' => null,
-                'livemode' => [],
-                'metadata' => null,
-                'nationalities' => null,
-                'phone' => null,
-                'political_exposure' => null,
-                'relationship' => null,
-                'script_addresses' => null,
-                'script_names' => null,
-                'surname' => null,
-                'updated' => '1970-01-03T17:07:10.277Z',
+                'id' => 'abc_123',
+                'object' => 'some.object.tag',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5260,7 +5152,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\Core\Person::class, $result);
+        self::assertInstanceOf(V2\DeletedObject::class, $result);
     }
 
     public function testV2CoreAccountsPersonGet2()
@@ -5275,26 +5167,8 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.core.account_person',
                 'account' => 'account',
-                'additional_addresses' => null,
-                'additional_names' => null,
-                'additional_terms_of_service' => null,
-                'address' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
-                'date_of_birth' => null,
-                'documents' => null,
-                'email' => null,
-                'given_name' => null,
-                'id_numbers' => null,
-                'legal_gender' => null,
                 'livemode' => [],
-                'metadata' => null,
-                'nationalities' => null,
-                'phone' => null,
-                'political_exposure' => null,
-                'relationship' => null,
-                'script_addresses' => null,
-                'script_names' => null,
-                'surname' => null,
                 'updated' => '1970-01-03T17:07:10.277Z',
             ],
             200,
@@ -5305,7 +5179,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\Core\Person::class, $result);
+        self::assertInstanceOf(V2\Core\AccountPerson::class, $result);
     }
 
     public function testV2CoreAccountsPersonPost2()
@@ -5320,26 +5194,8 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.core.account_person',
                 'account' => 'account',
-                'additional_addresses' => null,
-                'additional_names' => null,
-                'additional_terms_of_service' => null,
-                'address' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
-                'date_of_birth' => null,
-                'documents' => null,
-                'email' => null,
-                'given_name' => null,
-                'id_numbers' => null,
-                'legal_gender' => null,
                 'livemode' => [],
-                'metadata' => null,
-                'nationalities' => null,
-                'phone' => null,
-                'political_exposure' => null,
-                'relationship' => null,
-                'script_addresses' => null,
-                'script_names' => null,
-                'surname' => null,
                 'updated' => '1970-01-03T17:07:10.277Z',
             ],
             200,
@@ -5350,7 +5206,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\Core\Person::class, $result);
+        self::assertInstanceOf(V2\Core\AccountPerson::class, $result);
     }
 
     public function testV2CoreAccountLinkPost()
@@ -5391,11 +5247,7 @@ final class GeneratedExamplesTest extends TestCase
                 'expires_at' => '1970-01-10T15:36:51.170Z',
                 'livemode' => [],
                 'url' => 'url',
-                'use_case' => [
-                    'type' => 'account_onboarding',
-                    'account_onboarding' => null,
-                    'account_update' => null,
-                ],
+                'use_case' => ['type' => 'account_onboarding'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5438,11 +5290,9 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'data' => [
                     '0' => [
-                        'context' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
                         'id' => 'obj_123',
                         'object' => 'v2.core.event',
-                        'reason' => null,
                         'type' => 'type',
                         'livemode' => [],
                     ],
@@ -5469,11 +5319,9 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'context' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'object' => 'v2.core.event',
-                'reason' => null,
                 'type' => 'type',
                 'livemode' => [],
             ],
@@ -5497,21 +5345,15 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'id' => 'obj_123',
                         'object' => 'v2.core.event_destination',
-                        'amazon_eventbridge' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
                         'description' => 'description',
                         'enabled_events' => ['0' => 'enabled_events'],
                         'event_payload' => 'thin',
-                        'events_from' => null,
                         'livemode' => [],
-                        'metadata' => null,
                         'name' => 'name',
-                        'snapshot_api_version' => null,
                         'status' => 'disabled',
-                        'status_details' => null,
                         'type' => 'amazon_eventbridge',
                         'updated' => '1970-01-03T17:07:10.277Z',
-                        'webhook_endpoint' => null,
                     ],
                 ],
                 'next_page_url' => null,
@@ -5541,21 +5383,15 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.core.event_destination',
-                'amazon_eventbridge' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => 'description',
                 'enabled_events' => ['0' => 'enabled_events'],
                 'event_payload' => 'thin',
-                'events_from' => null,
                 'livemode' => [],
-                'metadata' => null,
                 'name' => 'name',
-                'snapshot_api_version' => null,
                 'status' => 'disabled',
-                'status_details' => null,
                 'type' => 'amazon_eventbridge',
                 'updated' => '1970-01-03T17:07:10.277Z',
-                'webhook_endpoint' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5578,23 +5414,8 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'id' => 'obj_123',
-                'object' => 'v2.core.event_destination',
-                'amazon_eventbridge' => null,
-                'created' => '1970-01-12T21:42:34.472Z',
-                'description' => 'description',
-                'enabled_events' => ['0' => 'enabled_events'],
-                'event_payload' => 'thin',
-                'events_from' => null,
-                'livemode' => [],
-                'metadata' => null,
-                'name' => 'name',
-                'snapshot_api_version' => null,
-                'status' => 'disabled',
-                'status_details' => null,
-                'type' => 'amazon_eventbridge',
-                'updated' => '1970-01-03T17:07:10.277Z',
-                'webhook_endpoint' => null,
+                'id' => 'abc_123',
+                'object' => 'some.object.tag',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5603,7 +5424,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\EventDestination::class, $result);
+        self::assertInstanceOf(V2\DeletedObject::class, $result);
     }
 
     public function testV2CoreEventDestinationGet2()
@@ -5617,21 +5438,15 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.core.event_destination',
-                'amazon_eventbridge' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => 'description',
                 'enabled_events' => ['0' => 'enabled_events'],
                 'event_payload' => 'thin',
-                'events_from' => null,
                 'livemode' => [],
-                'metadata' => null,
                 'name' => 'name',
-                'snapshot_api_version' => null,
                 'status' => 'disabled',
-                'status_details' => null,
                 'type' => 'amazon_eventbridge',
                 'updated' => '1970-01-03T17:07:10.277Z',
-                'webhook_endpoint' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5654,21 +5469,15 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.core.event_destination',
-                'amazon_eventbridge' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => 'description',
                 'enabled_events' => ['0' => 'enabled_events'],
                 'event_payload' => 'thin',
-                'events_from' => null,
                 'livemode' => [],
-                'metadata' => null,
                 'name' => 'name',
-                'snapshot_api_version' => null,
                 'status' => 'disabled',
-                'status_details' => null,
                 'type' => 'amazon_eventbridge',
                 'updated' => '1970-01-03T17:07:10.277Z',
-                'webhook_endpoint' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5691,21 +5500,15 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.core.event_destination',
-                'amazon_eventbridge' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => 'description',
                 'enabled_events' => ['0' => 'enabled_events'],
                 'event_payload' => 'thin',
-                'events_from' => null,
                 'livemode' => [],
-                'metadata' => null,
                 'name' => 'name',
-                'snapshot_api_version' => null,
                 'status' => 'disabled',
-                'status_details' => null,
                 'type' => 'amazon_eventbridge',
                 'updated' => '1970-01-03T17:07:10.277Z',
-                'webhook_endpoint' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5728,21 +5531,15 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.core.event_destination',
-                'amazon_eventbridge' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => 'description',
                 'enabled_events' => ['0' => 'enabled_events'],
                 'event_payload' => 'thin',
-                'events_from' => null,
                 'livemode' => [],
-                'metadata' => null,
                 'name' => 'name',
-                'snapshot_api_version' => null,
                 'status' => 'disabled',
-                'status_details' => null,
                 'type' => 'amazon_eventbridge',
                 'updated' => '1970-01-03T17:07:10.277Z',
-                'webhook_endpoint' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5763,11 +5560,9 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'context' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'object' => 'v2.core.event',
-                'reason' => null,
                 'type' => 'type',
                 'livemode' => [],
             ],
@@ -5799,10 +5594,7 @@ final class GeneratedExamplesTest extends TestCase
                     'result' => [
                         'created' => '1970-01-12T21:42:34.472Z',
                         'match_result' => 'unavailable',
-                        'matched' => [
-                            'business_type' => null,
-                            'name' => null,
-                        ],
+                        'matched' => [],
                         'message' => 'message',
                         'provided' => [
                             'business_type' => 'personal',
@@ -5844,10 +5636,7 @@ final class GeneratedExamplesTest extends TestCase
                     'result' => [
                         'created' => '1970-01-12T21:42:34.472Z',
                         'match_result' => 'unavailable',
-                        'matched' => [
-                            'business_type' => null,
-                            'name' => null,
-                        ],
+                        'matched' => [],
                         'message' => 'message',
                         'provided' => [
                             'business_type' => 'personal',
@@ -5889,10 +5678,7 @@ final class GeneratedExamplesTest extends TestCase
                     'result' => [
                         'created' => '1970-01-12T21:42:34.472Z',
                         'match_result' => 'unavailable',
-                        'matched' => [
-                            'business_type' => null,
-                            'name' => null,
-                        ],
+                        'matched' => [],
                         'message' => 'message',
                         'provided' => [
                             'business_type' => 'personal',
@@ -5934,10 +5720,7 @@ final class GeneratedExamplesTest extends TestCase
                     'result' => [
                         'created' => '1970-01-12T21:42:34.472Z',
                         'match_result' => 'unavailable',
-                        'matched' => [
-                            'business_type' => null,
-                            'name' => null,
-                        ],
+                        'matched' => [],
                         'message' => 'message',
                         'provided' => [
                             'business_type' => 'personal',
@@ -5979,10 +5762,7 @@ final class GeneratedExamplesTest extends TestCase
                     'result' => [
                         'created' => '1970-01-12T21:42:34.472Z',
                         'match_result' => 'unavailable',
-                        'matched' => [
-                            'business_type' => null,
-                            'name' => null,
-                        ],
+                        'matched' => [],
                         'message' => 'message',
                         'provided' => [
                             'business_type' => 'personal',
@@ -6021,10 +5801,8 @@ final class GeneratedExamplesTest extends TestCase
                 'bank_account_type' => 'savings',
                 'bank_name' => 'bank_name',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'fedwire_routing_number' => null,
                 'last4' => 'last4',
                 'livemode' => [],
-                'routing_number' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -6050,10 +5828,8 @@ final class GeneratedExamplesTest extends TestCase
                 'bank_account_type' => 'savings',
                 'bank_name' => 'bank_name',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'fedwire_routing_number' => null,
                 'last4' => 'last4',
                 'livemode' => [],
-                'routing_number' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -6080,10 +5856,8 @@ final class GeneratedExamplesTest extends TestCase
                 'bank_account_type' => 'savings',
                 'bank_name' => 'bank_name',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'fedwire_routing_number' => null,
                 'last4' => 'last4',
                 'livemode' => [],
-                'routing_number' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -6110,10 +5884,8 @@ final class GeneratedExamplesTest extends TestCase
                 'bank_account_type' => 'savings',
                 'bank_name' => 'bank_name',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'fedwire_routing_number' => null,
                 'last4' => 'last4',
                 'livemode' => [],
-                'routing_number' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -6138,16 +5910,13 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'id' => 'obj_123',
                         'object' => 'v2.money_management.adjustment',
-                        'adjusted_flow' => null,
                         'amount' => [
                             'currency' => 'USD',
                             'value' => [],
                         ],
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'description' => null,
                         'financial_account' => 'financial_account',
                         'livemode' => [],
-                        'receipt_url' => null,
                     ],
                 ],
                 'next_page_url' => null,
@@ -6172,16 +5941,13 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.adjustment',
-                'adjusted_flow' => null,
                 'amount' => [
                     'currency' => 'USD',
                     'value' => [],
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
-                'description' => null,
                 'financial_account' => 'financial_account',
                 'livemode' => [],
-                'receipt_url' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -6226,15 +5992,10 @@ final class GeneratedExamplesTest extends TestCase
                                 ],
                             ],
                         ],
-                        'country' => 'af',
+                        'country' => 'country',
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'display_name' => null,
                         'livemode' => [],
-                        'metadata' => null,
-                        'other' => null,
                         'status' => 'closed',
-                        'status_details' => null,
-                        'storage' => null,
                         'type' => 'other',
                     ],
                 ],
@@ -6280,15 +6041,10 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                     ],
                 ],
-                'country' => 'af',
+                'country' => 'country',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'display_name' => null,
                 'livemode' => [],
-                'metadata' => null,
-                'other' => null,
                 'status' => 'closed',
-                'status_details' => null,
-                'storage' => null,
                 'type' => 'other',
             ],
             200,
@@ -6331,15 +6087,10 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                     ],
                 ],
-                'country' => 'af',
+                'country' => 'country',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'display_name' => null,
                 'livemode' => [],
-                'metadata' => null,
-                'other' => null,
                 'status' => 'closed',
-                'status_details' => null,
-                'storage' => null,
                 'type' => 'other',
             ],
             200,
@@ -6383,15 +6134,10 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                     ],
                 ],
-                'country' => 'af',
+                'country' => 'country',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'display_name' => null,
                 'livemode' => [],
-                'metadata' => null,
-                'other' => null,
                 'status' => 'closed',
-                'status_details' => null,
-                'storage' => null,
                 'type' => 'other',
             ],
             200,
@@ -6418,8 +6164,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'object' => 'v2.money_management.financial_address',
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'credentials' => null,
-                        'currency' => 'stn',
+                        'currency' => 'usd',
                         'financial_account' => 'financial_account',
                         'livemode' => [],
                         'status' => 'failed',
@@ -6441,15 +6186,14 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/money_management/financial_addresses',
-            ['currency' => 'stn', 'financial_account' => 'financial_account'],
+            ['currency' => 'usd', 'financial_account' => 'financial_account'],
             [],
             false,
             [
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.financial_address',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'credentials' => null,
-                'currency' => 'stn',
+                'currency' => 'usd',
                 'financial_account' => 'financial_account',
                 'livemode' => [],
                 'status' => 'failed',
@@ -6458,7 +6202,7 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->moneyManagement->financialAddresses->create([
-            'currency' => 'stn',
+            'currency' => 'usd',
             'financial_account' => 'financial_account',
         ]);
         self::assertInstanceOf(V2\MoneyManagement\FinancialAddress::class, $result);
@@ -6476,8 +6220,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.financial_address',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'credentials' => null,
-                'currency' => 'stn',
+                'currency' => 'usd',
                 'financial_account' => 'financial_account',
                 'livemode' => [],
                 'status' => 'failed',
@@ -6516,13 +6259,9 @@ final class GeneratedExamplesTest extends TestCase
                                 'currency' => 'USD',
                                 'value' => [],
                             ],
-                            'payment_method' => [
-                                'type' => 'type',
-                                'us_bank_account' => null,
-                            ],
+                            'payment_method' => ['type' => 'type'],
                         ],
                         'livemode' => [],
-                        'receipt_url' => null,
                         'to' => [
                             'credited' => [
                                 'currency' => 'USD',
@@ -6537,11 +6276,6 @@ final class GeneratedExamplesTest extends TestCase
                                 'id' => 'obj_123',
                                 'level' => 'canonical',
                                 'type' => 'bank_debit_failed',
-                                'bank_debit_failed' => null,
-                                'bank_debit_processing' => null,
-                                'bank_debit_queued' => null,
-                                'bank_debit_returned' => null,
-                                'bank_debit_succeeded' => null,
                             ],
                         ],
                     ],
@@ -6592,13 +6326,9 @@ final class GeneratedExamplesTest extends TestCase
                         'currency' => 'USD',
                         'value' => [],
                     ],
-                    'payment_method' => [
-                        'type' => 'type',
-                        'us_bank_account' => null,
-                    ],
+                    'payment_method' => ['type' => 'type'],
                 ],
                 'livemode' => [],
-                'receipt_url' => null,
                 'to' => [
                     'credited' => [
                         'currency' => 'USD',
@@ -6613,11 +6343,6 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'level' => 'canonical',
                         'type' => 'bank_debit_failed',
-                        'bank_debit_failed' => null,
-                        'bank_debit_processing' => null,
-                        'bank_debit_queued' => null,
-                        'bank_debit_returned' => null,
-                        'bank_debit_succeeded' => null,
                     ],
                 ],
             ],
@@ -6663,13 +6388,9 @@ final class GeneratedExamplesTest extends TestCase
                         'currency' => 'USD',
                         'value' => [],
                     ],
-                    'payment_method' => [
-                        'type' => 'type',
-                        'us_bank_account' => null,
-                    ],
+                    'payment_method' => ['type' => 'type'],
                 ],
                 'livemode' => [],
-                'receipt_url' => null,
                 'to' => [
                     'credited' => [
                         'currency' => 'USD',
@@ -6684,11 +6405,6 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'level' => 'canonical',
                         'type' => 'bank_debit_failed',
-                        'bank_debit_failed' => null,
-                        'bank_debit_processing' => null,
-                        'bank_debit_queued' => null,
-                        'bank_debit_returned' => null,
-                        'bank_debit_succeeded' => null,
                     ],
                 ],
             ],
@@ -6721,9 +6437,6 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                         'cancelable' => [],
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'delivery_options' => null,
-                        'description' => null,
-                        'expected_arrival_date' => null,
                         'from' => [
                             'debited' => [
                                 'currency' => 'USD',
@@ -6732,14 +6445,9 @@ final class GeneratedExamplesTest extends TestCase
                             'financial_account' => 'financial_account',
                         ],
                         'livemode' => [],
-                        'metadata' => null,
-                        'outbound_payment_quote' => null,
-                        'receipt_url' => null,
                         'recipient_notification' => ['setting' => 'configured'],
                         'statement_descriptor' => 'statement_descriptor',
                         'status' => 'canceled',
-                        'status_details' => null,
-                        'status_transitions' => null,
                         'to' => [
                             'credited' => [
                                 'currency' => 'USD',
@@ -6748,10 +6456,7 @@ final class GeneratedExamplesTest extends TestCase
                             'payout_method' => 'payout_method',
                             'recipient' => 'recipient',
                         ],
-                        'trace_id' => [
-                            'status' => 'pending',
-                            'value' => null,
-                        ],
+                        'trace_id' => ['status' => 'pending'],
                     ],
                 ],
                 'next_page_url' => null,
@@ -6796,9 +6501,6 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
-                'delivery_options' => null,
-                'description' => null,
-                'expected_arrival_date' => null,
                 'from' => [
                     'debited' => [
                         'currency' => 'USD',
@@ -6807,14 +6509,9 @@ final class GeneratedExamplesTest extends TestCase
                     'financial_account' => 'financial_account',
                 ],
                 'livemode' => [],
-                'metadata' => null,
-                'outbound_payment_quote' => null,
-                'receipt_url' => null,
                 'recipient_notification' => ['setting' => 'configured'],
                 'statement_descriptor' => 'statement_descriptor',
                 'status' => 'canceled',
-                'status_details' => null,
-                'status_transitions' => null,
                 'to' => [
                     'credited' => [
                         'currency' => 'USD',
@@ -6823,10 +6520,7 @@ final class GeneratedExamplesTest extends TestCase
                     'payout_method' => 'payout_method',
                     'recipient' => 'recipient',
                 ],
-                'trace_id' => [
-                    'status' => 'pending',
-                    'value' => null,
-                ],
+                'trace_id' => ['status' => 'pending'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -6866,9 +6560,6 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
-                'delivery_options' => null,
-                'description' => null,
-                'expected_arrival_date' => null,
                 'from' => [
                     'debited' => [
                         'currency' => 'USD',
@@ -6877,14 +6568,9 @@ final class GeneratedExamplesTest extends TestCase
                     'financial_account' => 'financial_account',
                 ],
                 'livemode' => [],
-                'metadata' => null,
-                'outbound_payment_quote' => null,
-                'receipt_url' => null,
                 'recipient_notification' => ['setting' => 'configured'],
                 'statement_descriptor' => 'statement_descriptor',
                 'status' => 'canceled',
-                'status_details' => null,
-                'status_transitions' => null,
                 'to' => [
                     'credited' => [
                         'currency' => 'USD',
@@ -6893,10 +6579,7 @@ final class GeneratedExamplesTest extends TestCase
                     'payout_method' => 'payout_method',
                     'recipient' => 'recipient',
                 ],
-                'trace_id' => [
-                    'status' => 'pending',
-                    'value' => null,
-                ],
+                'trace_id' => ['status' => 'pending'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -6925,9 +6608,6 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
-                'delivery_options' => null,
-                'description' => null,
-                'expected_arrival_date' => null,
                 'from' => [
                     'debited' => [
                         'currency' => 'USD',
@@ -6936,14 +6616,9 @@ final class GeneratedExamplesTest extends TestCase
                     'financial_account' => 'financial_account',
                 ],
                 'livemode' => [],
-                'metadata' => null,
-                'outbound_payment_quote' => null,
-                'receipt_url' => null,
                 'recipient_notification' => ['setting' => 'configured'],
                 'statement_descriptor' => 'statement_descriptor',
                 'status' => 'canceled',
-                'status_details' => null,
-                'status_transitions' => null,
                 'to' => [
                     'credited' => [
                         'currency' => 'USD',
@@ -6952,10 +6627,7 @@ final class GeneratedExamplesTest extends TestCase
                     'payout_method' => 'payout_method',
                     'recipient' => 'recipient',
                 ],
-                'trace_id' => [
-                    'status' => 'pending',
-                    'value' => null,
-                ],
+                'trace_id' => ['status' => 'pending'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -6997,7 +6669,6 @@ final class GeneratedExamplesTest extends TestCase
                     'value' => [],
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
-                'delivery_options' => null,
                 'estimated_fees' => [
                     '0' => [
                         'amount' => [
@@ -7068,7 +6739,6 @@ final class GeneratedExamplesTest extends TestCase
                     'value' => [],
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
-                'delivery_options' => null,
                 'estimated_fees' => [
                     '0' => [
                         'amount' => [
@@ -7127,15 +6797,11 @@ final class GeneratedExamplesTest extends TestCase
                         'object' => 'v2.money_management.outbound_setup_intent',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'livemode' => [],
-                        'next_action' => null,
                         'payout_method' => [
                             'id' => 'obj_123',
                             'object' => 'v2.money_management.payout_method',
                             'available_payout_speeds' => ['0' => 'standard'],
-                            'bank_account' => null,
-                            'card' => null,
                             'created' => '1970-01-12T21:42:34.472Z',
-                            'latest_outbound_setup_intent' => null,
                             'livemode' => [],
                             'type' => 'bank_account',
                             'usage_status' => [
@@ -7171,15 +6837,11 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.outbound_setup_intent',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'livemode' => [],
-                'next_action' => null,
                 'payout_method' => [
                     'id' => 'obj_123',
                     'object' => 'v2.money_management.payout_method',
                     'available_payout_speeds' => ['0' => 'standard'],
-                    'bank_account' => null,
-                    'card' => null,
                     'created' => '1970-01-12T21:42:34.472Z',
-                    'latest_outbound_setup_intent' => null,
                     'livemode' => [],
                     'type' => 'bank_account',
                     'usage_status' => [
@@ -7210,15 +6872,11 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.outbound_setup_intent',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'livemode' => [],
-                'next_action' => null,
                 'payout_method' => [
                     'id' => 'obj_123',
                     'object' => 'v2.money_management.payout_method',
                     'available_payout_speeds' => ['0' => 'standard'],
-                    'bank_account' => null,
-                    'card' => null,
                     'created' => '1970-01-12T21:42:34.472Z',
-                    'latest_outbound_setup_intent' => null,
                     'livemode' => [],
                     'type' => 'bank_account',
                     'usage_status' => [
@@ -7252,15 +6910,11 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.outbound_setup_intent',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'livemode' => [],
-                'next_action' => null,
                 'payout_method' => [
                     'id' => 'obj_123',
                     'object' => 'v2.money_management.payout_method',
                     'available_payout_speeds' => ['0' => 'standard'],
-                    'bank_account' => null,
-                    'card' => null,
                     'created' => '1970-01-12T21:42:34.472Z',
-                    'latest_outbound_setup_intent' => null,
                     'livemode' => [],
                     'type' => 'bank_account',
                     'usage_status' => [
@@ -7294,15 +6948,11 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.outbound_setup_intent',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'livemode' => [],
-                'next_action' => null,
                 'payout_method' => [
                     'id' => 'obj_123',
                     'object' => 'v2.money_management.payout_method',
                     'available_payout_speeds' => ['0' => 'standard'],
-                    'bank_account' => null,
-                    'card' => null,
                     'created' => '1970-01-12T21:42:34.472Z',
-                    'latest_outbound_setup_intent' => null,
                     'livemode' => [],
                     'type' => 'bank_account',
                     'usage_status' => [
@@ -7342,9 +6992,6 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                         'cancelable' => [],
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'delivery_options' => null,
-                        'description' => null,
-                        'expected_arrival_date' => null,
                         'from' => [
                             'debited' => [
                                 'currency' => 'USD',
@@ -7353,12 +7000,8 @@ final class GeneratedExamplesTest extends TestCase
                             'financial_account' => 'financial_account',
                         ],
                         'livemode' => [],
-                        'metadata' => null,
-                        'receipt_url' => null,
                         'statement_descriptor' => 'statement_descriptor',
                         'status' => 'canceled',
-                        'status_details' => null,
-                        'status_transitions' => null,
                         'to' => [
                             'credited' => [
                                 'currency' => 'USD',
@@ -7366,10 +7009,7 @@ final class GeneratedExamplesTest extends TestCase
                             ],
                             'payout_method' => 'payout_method',
                         ],
-                        'trace_id' => [
-                            'status' => 'pending',
-                            'value' => null,
-                        ],
+                        'trace_id' => ['status' => 'pending'],
                     ],
                 ],
                 'next_page_url' => null,
@@ -7413,9 +7053,6 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
-                'delivery_options' => null,
-                'description' => null,
-                'expected_arrival_date' => null,
                 'from' => [
                     'debited' => [
                         'currency' => 'USD',
@@ -7424,12 +7061,8 @@ final class GeneratedExamplesTest extends TestCase
                     'financial_account' => 'financial_account',
                 ],
                 'livemode' => [],
-                'metadata' => null,
-                'receipt_url' => null,
                 'statement_descriptor' => 'statement_descriptor',
                 'status' => 'canceled',
-                'status_details' => null,
-                'status_transitions' => null,
                 'to' => [
                     'credited' => [
                         'currency' => 'USD',
@@ -7437,10 +7070,7 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                     'payout_method' => 'payout_method',
                 ],
-                'trace_id' => [
-                    'status' => 'pending',
-                    'value' => null,
-                ],
+                'trace_id' => ['status' => 'pending'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -7479,9 +7109,6 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
-                'delivery_options' => null,
-                'description' => null,
-                'expected_arrival_date' => null,
                 'from' => [
                     'debited' => [
                         'currency' => 'USD',
@@ -7490,12 +7117,8 @@ final class GeneratedExamplesTest extends TestCase
                     'financial_account' => 'financial_account',
                 ],
                 'livemode' => [],
-                'metadata' => null,
-                'receipt_url' => null,
                 'statement_descriptor' => 'statement_descriptor',
                 'status' => 'canceled',
-                'status_details' => null,
-                'status_transitions' => null,
                 'to' => [
                     'credited' => [
                         'currency' => 'USD',
@@ -7503,10 +7126,7 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                     'payout_method' => 'payout_method',
                 ],
-                'trace_id' => [
-                    'status' => 'pending',
-                    'value' => null,
-                ],
+                'trace_id' => ['status' => 'pending'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -7535,9 +7155,6 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
-                'delivery_options' => null,
-                'description' => null,
-                'expected_arrival_date' => null,
                 'from' => [
                     'debited' => [
                         'currency' => 'USD',
@@ -7546,12 +7163,8 @@ final class GeneratedExamplesTest extends TestCase
                     'financial_account' => 'financial_account',
                 ],
                 'livemode' => [],
-                'metadata' => null,
-                'receipt_url' => null,
                 'statement_descriptor' => 'statement_descriptor',
                 'status' => 'canceled',
-                'status_details' => null,
-                'status_transitions' => null,
                 'to' => [
                     'credited' => [
                         'currency' => 'USD',
@@ -7559,10 +7172,7 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                     'payout_method' => 'payout_method',
                 ],
-                'trace_id' => [
-                    'status' => 'pending',
-                    'value' => null,
-                ],
+                'trace_id' => ['status' => 'pending'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -7588,10 +7198,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'object' => 'v2.money_management.payout_method',
                         'available_payout_speeds' => ['0' => 'standard'],
-                        'bank_account' => null,
-                        'card' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'latest_outbound_setup_intent' => null,
                         'livemode' => [],
                         'type' => 'bank_account',
                         'usage_status' => [
@@ -7623,10 +7230,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.payout_method',
                 'available_payout_speeds' => ['0' => 'standard'],
-                'bank_account' => null,
-                'card' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
-                'latest_outbound_setup_intent' => null,
                 'livemode' => [],
                 'type' => 'bank_account',
                 'usage_status' => [
@@ -7656,10 +7260,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.payout_method',
                 'available_payout_speeds' => ['0' => 'standard'],
-                'bank_account' => null,
-                'card' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
-                'latest_outbound_setup_intent' => null,
                 'livemode' => [],
                 'type' => 'bank_account',
                 'usage_status' => [
@@ -7689,10 +7290,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.payout_method',
                 'available_payout_speeds' => ['0' => 'standard'],
-                'bank_account' => null,
-                'card' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
-                'latest_outbound_setup_intent' => null,
                 'livemode' => [],
                 'type' => 'bank_account',
                 'usage_status' => [
@@ -7764,16 +7362,10 @@ final class GeneratedExamplesTest extends TestCase
                             'currency' => 'USD',
                             'value' => [],
                         ],
-                        'balance_transfer' => null,
-                        'bank_transfer' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'description' => null,
                         'financial_account' => 'financial_account',
                         'livemode' => [],
-                        'receipt_url' => null,
                         'status' => 'returned',
-                        'status_details' => null,
-                        'status_transitions' => null,
                         'type' => 'balance_transfer',
                     ],
                 ],
@@ -7803,16 +7395,10 @@ final class GeneratedExamplesTest extends TestCase
                     'currency' => 'USD',
                     'value' => [],
                 ],
-                'balance_transfer' => null,
-                'bank_transfer' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
-                'description' => null,
                 'financial_account' => 'financial_account',
                 'livemode' => [],
-                'receipt_url' => null,
                 'status' => 'returned',
-                'status_details' => null,
-                'status_transitions' => null,
                 'type' => 'balance_transfer',
             ],
             200,
@@ -7842,15 +7428,10 @@ final class GeneratedExamplesTest extends TestCase
                             'currency' => 'USD',
                             'value' => [],
                         ],
-                        'bank_transfer' => null,
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'description' => null,
                         'financial_account' => 'financial_account',
                         'livemode' => [],
-                        'receipt_url' => null,
                         'status' => 'canceled',
-                        'status_details' => null,
-                        'status_transitions' => null,
                         'type' => 'bank_transfer',
                     ],
                 ],
@@ -7880,15 +7461,10 @@ final class GeneratedExamplesTest extends TestCase
                     'currency' => 'USD',
                     'value' => [],
                 ],
-                'bank_transfer' => null,
                 'created' => '1970-01-12T21:42:34.472Z',
-                'description' => null,
                 'financial_account' => 'financial_account',
                 'livemode' => [],
-                'receipt_url' => null,
                 'status' => 'canceled',
-                'status_details' => null,
-                'status_transitions' => null,
                 'type' => 'bank_transfer',
             ],
             200,
@@ -7935,23 +7511,10 @@ final class GeneratedExamplesTest extends TestCase
                         'category' => 'received_debit',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
-                        'flow' => [
-                            'type' => 'fee_transaction',
-                            'adjustment' => null,
-                            'currency_conversion' => null,
-                            'fee_transaction' => null,
-                            'inbound_transfer' => null,
-                            'outbound_payment' => null,
-                            'outbound_transfer' => null,
-                            'received_credit' => null,
-                            'received_debit' => null,
-                        ],
+                        'flow' => ['type' => 'fee_transaction'],
                         'livemode' => [],
                         'status' => 'pending',
-                        'status_transitions' => [
-                            'posted_at' => null,
-                            'void_at' => null,
-                        ],
+                        'status_transitions' => [],
                     ],
                 ],
                 'next_page_url' => null,
@@ -7997,23 +7560,10 @@ final class GeneratedExamplesTest extends TestCase
                 'category' => 'received_debit',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
-                'flow' => [
-                    'type' => 'fee_transaction',
-                    'adjustment' => null,
-                    'currency_conversion' => null,
-                    'fee_transaction' => null,
-                    'inbound_transfer' => null,
-                    'outbound_payment' => null,
-                    'outbound_transfer' => null,
-                    'received_credit' => null,
-                    'received_debit' => null,
-                ],
+                'flow' => ['type' => 'fee_transaction'],
                 'livemode' => [],
                 'status' => 'pending',
-                'status_transitions' => [
-                    'posted_at' => null,
-                    'void_at' => null,
-                ],
+                'status_transitions' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -8059,17 +7609,7 @@ final class GeneratedExamplesTest extends TestCase
                         'transaction_details' => [
                             'category' => 'received_debit',
                             'financial_account' => 'financial_account',
-                            'flow' => [
-                                'type' => 'fee_transaction',
-                                'adjustment' => null,
-                                'currency_conversion' => null,
-                                'fee_transaction' => null,
-                                'inbound_transfer' => null,
-                                'outbound_payment' => null,
-                                'outbound_transfer' => null,
-                                'received_credit' => null,
-                                'received_debit' => null,
-                            ],
+                            'flow' => ['type' => 'fee_transaction'],
                         ],
                     ],
                 ],
@@ -8116,17 +7656,7 @@ final class GeneratedExamplesTest extends TestCase
                 'transaction_details' => [
                     'category' => 'received_debit',
                     'financial_account' => 'financial_account',
-                    'flow' => [
-                        'type' => 'fee_transaction',
-                        'adjustment' => null,
-                        'currency_conversion' => null,
-                        'fee_transaction' => null,
-                        'inbound_transfer' => null,
-                        'outbound_payment' => null,
-                        'outbound_transfer' => null,
-                        'received_credit' => null,
-                        'received_debit' => null,
-                    ],
+                    'flow' => ['type' => 'fee_transaction'],
                 ],
             ],
             200,
@@ -8160,23 +7690,14 @@ final class GeneratedExamplesTest extends TestCase
                         'compartment_id' => 'compartment_id',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'customer' => 'customer',
-                        'failure_reason' => null,
-                        'last_authorization_attempt_error' => null,
-                        'latest_payment_attempt_record' => null,
                         'livemode' => [],
                         'metadata' => ['key' => 'metadata'],
-                        'on_behalf_of' => null,
                         'payment_method' => 'payment_method',
-                        'payment_record' => null,
                         'retry_details' => [
                             'attempts' => [],
                             'retry_strategy' => 'none',
                         ],
-                        'statement_descriptor' => null,
-                        'statement_descriptor_suffix' => null,
                         'status' => 'pending',
-                        'test_clock' => null,
-                        'transfer_data' => null,
                     ],
                 ],
                 'next_page_url' => null,
@@ -8218,23 +7739,14 @@ final class GeneratedExamplesTest extends TestCase
                 'compartment_id' => 'compartment_id',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'customer' => 'customer',
-                'failure_reason' => null,
-                'last_authorization_attempt_error' => null,
-                'latest_payment_attempt_record' => null,
                 'livemode' => [],
                 'metadata' => ['key' => 'metadata'],
-                'on_behalf_of' => null,
                 'payment_method' => 'payment_method',
-                'payment_record' => null,
                 'retry_details' => [
                     'attempts' => [],
                     'retry_strategy' => 'none',
                 ],
-                'statement_descriptor' => null,
-                'statement_descriptor_suffix' => null,
                 'status' => 'pending',
-                'test_clock' => null,
-                'transfer_data' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -8271,23 +7783,14 @@ final class GeneratedExamplesTest extends TestCase
                 'compartment_id' => 'compartment_id',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'customer' => 'customer',
-                'failure_reason' => null,
-                'last_authorization_attempt_error' => null,
-                'latest_payment_attempt_record' => null,
                 'livemode' => [],
                 'metadata' => ['key' => 'metadata'],
-                'on_behalf_of' => null,
                 'payment_method' => 'payment_method',
-                'payment_record' => null,
                 'retry_details' => [
                     'attempts' => [],
                     'retry_strategy' => 'none',
                 ],
-                'statement_descriptor' => null,
-                'statement_descriptor_suffix' => null,
                 'status' => 'pending',
-                'test_clock' => null,
-                'transfer_data' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -8318,23 +7821,14 @@ final class GeneratedExamplesTest extends TestCase
                 'compartment_id' => 'compartment_id',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'customer' => 'customer',
-                'failure_reason' => null,
-                'last_authorization_attempt_error' => null,
-                'latest_payment_attempt_record' => null,
                 'livemode' => [],
                 'metadata' => ['key' => 'metadata'],
-                'on_behalf_of' => null,
                 'payment_method' => 'payment_method',
-                'payment_record' => null,
                 'retry_details' => [
                     'attempts' => [],
                     'retry_strategy' => 'none',
                 ],
-                'statement_descriptor' => null,
-                'statement_descriptor_suffix' => null,
                 'status' => 'pending',
-                'test_clock' => null,
-                'transfer_data' => null,
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -8474,7 +7968,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'error' => [
                     'type' => 'blocked_by_stripe',
-                    'code' => 'inbound_transfer_not_allowed',
+                    'code' => 'blocked_payout_method_bank_account',
                 ],
             ],
             400,
@@ -8524,7 +8018,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'error' => [
                     'type' => 'feature_not_enabled',
-                    'code' => 'storer_capability_missing',
+                    'code' => 'recipient_feature_not_active',
                 ],
             ],
             400,
@@ -8544,7 +8038,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/money_management/financial_addresses',
-            ['currency' => 'stn', 'financial_account' => 'financial_account'],
+            ['currency' => 'usd', 'financial_account' => 'financial_account'],
             [],
             false,
             [
@@ -8559,7 +8053,7 @@ final class GeneratedExamplesTest extends TestCase
 
         try {
             $this->v2Client->v2->moneyManagement->financialAddresses->create([
-                'currency' => 'stn',
+                'currency' => 'usd',
                 'financial_account' => 'financial_account',
             ]);
         } catch (Exception\FinancialAccountNotOpenException $e) {
@@ -8725,7 +8219,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'error' => [
                     'type' => 'quota_exceeded',
-                    'code' => 'recipient_amount_limit_exceeded',
+                    'code' => 'archived_payout_method_card',
                 ],
             ],
             400,

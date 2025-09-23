@@ -132,6 +132,26 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
+     * Gets the Stripe Context ID used by the client to send requests.
+     *
+     * @return null|string the Stripe Context ID used by the client to send requests
+     */
+    public function getStripeContext()
+    {
+        return $this->config['stripe_context'];
+    }
+
+    /**
+     * Gets the Stripe Version used by the client to send requests.
+     *
+     * @return null|string the Stripe Context ID used by the client to send requests
+     */
+    public function getStripeVersion()
+    {
+        return $this->config['stripe_version'];
+    }
+
+    /**
      * Gets the base URL for Stripe's API.
      *
      * @return string the base URL for Stripe's API
@@ -212,7 +232,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $requestor = new ApiRequestor($this->apiKeyForRequest($opts), $baseUrl, $this->getAppInfo());
         list($response, $opts->apiKey) = $requestor->request($method, $path, $params, $opts->headers, $apiMode, ['stripe_client'], $opts->maxNetworkRetries);
         $opts->discardNonPersistentHeaders();
-        $obj = Util::convertToStripeObject($response->json, $opts, $apiMode);
+        $obj = Util::convertToStripeObject($response->json, $opts, $apiMode, Util::isV2DeleteRequest($method, $apiMode));
         if (\is_array($obj)) {
             // Edge case for v2 endpoints that return empty/void response
             // Example: client->v2->billing->meterEventStream->create
