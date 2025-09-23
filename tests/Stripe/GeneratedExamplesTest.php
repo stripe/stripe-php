@@ -2416,15 +2416,6 @@ final class GeneratedExamplesTest extends TestCase
 
     public function testPromotionCodesPost()
     {
-        $this->expectsRequest('post', '/v1/promotion_codes');
-        $result = $this->client->promotionCodes->create([
-            'coupon' => 'Z4OV52SU',
-        ]);
-        self::assertInstanceOf(PromotionCode::class, $result);
-    }
-
-    public function testPromotionCodesPost2()
-    {
         $this->expectsRequest(
             'post',
             '/v1/promotion_codes/promo_xxxxxxxxxxxxx'

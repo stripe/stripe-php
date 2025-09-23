@@ -23,6 +23,7 @@ class ObjectTypes
             \Stripe\ApplicationFeeRefund::OBJECT_NAME => \Stripe\ApplicationFeeRefund::class,
             \Stripe\Apps\Secret::OBJECT_NAME => \Stripe\Apps\Secret::class,
             \Stripe\Balance::OBJECT_NAME => \Stripe\Balance::class,
+            \Stripe\BalanceSettings::OBJECT_NAME => \Stripe\BalanceSettings::class,
             \Stripe\BalanceTransaction::OBJECT_NAME => \Stripe\BalanceTransaction::class,
             \Stripe\BankAccount::OBJECT_NAME => \Stripe\BankAccount::class,
             \Stripe\Billing\Alert::OBJECT_NAME => \Stripe\Billing\Alert::class,

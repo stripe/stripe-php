@@ -29,9 +29,11 @@ class Review extends ApiResource
 {
     const OBJECT_NAME = 'review';
 
+    const CLOSED_REASON_ACKNOWLEDGED = 'acknowledged';
     const CLOSED_REASON_APPROVED = 'approved';
     const CLOSED_REASON_CANCELED = 'canceled';
     const CLOSED_REASON_DISPUTED = 'disputed';
+    const CLOSED_REASON_PAYMENT_NEVER_SETTLED = 'payment_never_settled';
     const CLOSED_REASON_REDACTED = 'redacted';
     const CLOSED_REASON_REFUNDED = 'refunded';
     const CLOSED_REASON_REFUNDED_AS_FRAUD = 'refunded_as_fraud';

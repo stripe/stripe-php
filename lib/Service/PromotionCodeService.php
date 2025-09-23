@@ -27,10 +27,10 @@ class PromotionCodeService extends AbstractService
     }
 
     /**
-     * A promotion code points to a coupon. You can optionally restrict the code to a
-     * specific customer, redemption limit, and expiration date.
+     * A promotion code points to an underlying promotion. You can optionally restrict
+     * the code to a specific customer, redemption limit, and expiration date.
      *
-     * @param null|array{active?: bool, code?: string, coupon: string, customer?: string, expand?: string[], expires_at?: int, max_redemptions?: int, metadata?: array<string, string>, restrictions?: array{currency_options?: array<string, array{minimum_amount?: int}>, first_time_transaction?: bool, minimum_amount?: int, minimum_amount_currency?: string}} $params
+     * @param null|array{active?: bool, code?: string, customer?: string, expand?: string[], expires_at?: int, max_redemptions?: int, metadata?: array<string, string>, promotion: array{coupon?: string, type: string}, restrictions?: array{currency_options?: array<string, array{minimum_amount?: int}>, first_time_transaction?: bool, minimum_amount?: int, minimum_amount_currency?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PromotionCode
