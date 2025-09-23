@@ -10,7 +10,7 @@ namespace Stripe\Tax;
  * Related guide: <a href="https://stripe.com/docs/tax/settings-api">Using the Settings API</a>
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property (object{tax_behavior: null|string, tax_code: null|string}&\Stripe\StripeObject) $defaults
+ * @property (object{provider: string, tax_behavior: null|string, tax_code: null|string}&\Stripe\StripeObject) $defaults
  * @property null|(object{address: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $head_office The place where your business is located.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $status The status of the Tax <code>Settings</code>.

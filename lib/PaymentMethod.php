@@ -46,6 +46,7 @@ namespace Stripe;
  * @property null|(object{brand: null|string, last4: null|string}&StripeObject) $kr_card
  * @property null|(object{email: null|string, persistent_token?: string}&StripeObject) $link
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property null|(object{}&StripeObject) $mb_way
  * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|(object{}&StripeObject) $mobilepay
  * @property null|(object{}&StripeObject) $multibanco
@@ -57,6 +58,7 @@ namespace Stripe;
  * @property null|(object{}&StripeObject) $payco
  * @property null|(object{}&StripeObject) $paynow
  * @property null|(object{country: null|string, payer_email: null|string, payer_id: null|string}&StripeObject) $paypal
+ * @property null|(object{}&StripeObject) $paypay
  * @property null|(object{}&StripeObject) $pix
  * @property null|(object{}&StripeObject) $promptpay
  * @property null|(object{session?: string}&StripeObject) $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
@@ -110,6 +112,7 @@ class PaymentMethod extends ApiResource
     const TYPE_KONBINI = 'konbini';
     const TYPE_KR_CARD = 'kr_card';
     const TYPE_LINK = 'link';
+    const TYPE_MB_WAY = 'mb_way';
     const TYPE_MOBILEPAY = 'mobilepay';
     const TYPE_MULTIBANCO = 'multibanco';
     const TYPE_NAVER_PAY = 'naver_pay';
@@ -119,6 +122,7 @@ class PaymentMethod extends ApiResource
     const TYPE_PAYCO = 'payco';
     const TYPE_PAYNOW = 'paynow';
     const TYPE_PAYPAL = 'paypal';
+    const TYPE_PAYPAY = 'paypay';
     const TYPE_PAY_BY_BANK = 'pay_by_bank';
     const TYPE_PIX = 'pix';
     const TYPE_PROMPTPAY = 'promptpay';
@@ -144,7 +148,7 @@ class PaymentMethod extends ApiResource
      * href="/docs/payments/save-and-reuse">SetupIntent</a> API to collect payment
      * method details ahead of a future payment.
      *
-     * @param null|array{acss_debit?: array{account_number: string, institution_number: string, transit_number: string}, affirm?: array{}, afterpay_clearpay?: array{}, alipay?: array{}, allow_redisplay?: string, alma?: array{}, amazon_pay?: array{}, au_becs_debit?: array{account_number: string, bsb_number: string}, bacs_debit?: array{account_number?: string, sort_code?: string}, bancontact?: array{}, billie?: array{}, billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string, tax_id?: string}, blik?: array{}, boleto?: array{tax_id: string}, card?: array{cvc?: string, exp_month?: int, exp_year?: int, networks?: array{preferred?: string}, number?: string, token?: string}, cashapp?: array{}, crypto?: array{}, customer?: string, customer_balance?: array{}, eps?: array{bank?: string}, expand?: string[], fpx?: array{account_holder_type?: string, bank: string}, giropay?: array{}, grabpay?: array{}, ideal?: array{bank?: string}, interac_present?: array{}, kakao_pay?: array{}, klarna?: array{dob?: array{day: int, month: int, year: int}}, konbini?: array{}, kr_card?: array{}, link?: array{}, metadata?: array<string, string>, mobilepay?: array{}, multibanco?: array{}, naver_pay?: array{funding?: string}, nz_bank_account?: array{account_holder_name?: string, account_number: string, bank_code: string, branch_code: string, reference?: string, suffix: string}, oxxo?: array{}, p24?: array{bank?: string}, pay_by_bank?: array{}, payco?: array{}, payment_method?: string, paynow?: array{}, paypal?: array{}, pix?: array{}, promptpay?: array{}, radar_options?: array{session?: string}, revolut_pay?: array{}, samsung_pay?: array{}, satispay?: array{}, sepa_debit?: array{iban: string}, sofort?: array{country: string}, swish?: array{}, twint?: array{}, type?: string, us_bank_account?: array{account_holder_type?: string, account_number?: string, account_type?: string, financial_connections_account?: string, routing_number?: string}, wechat_pay?: array{}, zip?: array{}} $params
+     * @param null|array{acss_debit?: array{account_number: string, institution_number: string, transit_number: string}, affirm?: array{}, afterpay_clearpay?: array{}, alipay?: array{}, allow_redisplay?: string, alma?: array{}, amazon_pay?: array{}, au_becs_debit?: array{account_number: string, bsb_number: string}, bacs_debit?: array{account_number?: string, sort_code?: string}, bancontact?: array{}, billie?: array{}, billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string, tax_id?: string}, blik?: array{}, boleto?: array{tax_id: string}, card?: array{cvc?: string, exp_month?: int, exp_year?: int, networks?: array{preferred?: string}, number?: string, token?: string}, cashapp?: array{}, crypto?: array{}, customer?: string, customer_balance?: array{}, eps?: array{bank?: string}, expand?: string[], fpx?: array{account_holder_type?: string, bank: string}, giropay?: array{}, grabpay?: array{}, ideal?: array{bank?: string}, interac_present?: array{}, kakao_pay?: array{}, klarna?: array{dob?: array{day: int, month: int, year: int}}, konbini?: array{}, kr_card?: array{}, link?: array{}, mb_way?: array{}, metadata?: array<string, string>, mobilepay?: array{}, multibanco?: array{}, naver_pay?: array{funding?: string}, nz_bank_account?: array{account_holder_name?: string, account_number: string, bank_code: string, branch_code: string, reference?: string, suffix: string}, oxxo?: array{}, p24?: array{bank?: string}, pay_by_bank?: array{}, payco?: array{}, payment_method?: string, paynow?: array{}, paypal?: array{}, paypay?: array{}, pix?: array{}, promptpay?: array{}, radar_options?: array{session?: string}, revolut_pay?: array{}, samsung_pay?: array{}, satispay?: array{}, sepa_debit?: array{iban: string}, sofort?: array{country: string}, swish?: array{}, twint?: array{}, type?: string, us_bank_account?: array{account_holder_type?: string, account_number?: string, account_type?: string, financial_connections_account?: string, routing_number?: string}, wechat_pay?: array{}, zip?: array{}} $params
      * @param null|array|string $options
      *
      * @return PaymentMethod the created resource
@@ -210,7 +214,7 @@ class PaymentMethod extends ApiResource
      * to be updated.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{allow_redisplay?: string, billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string, tax_id?: string}, card?: array{exp_month?: int, exp_year?: int, networks?: array{preferred?: null|string}}, expand?: string[], link?: array{}, metadata?: null|array<string, string>, pay_by_bank?: array{}, us_bank_account?: array{account_holder_type?: string, account_type?: string}} $params
+     * @param null|array{allow_redisplay?: string, billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string, tax_id?: string}, card?: array{exp_month?: int, exp_year?: int, networks?: array{preferred?: null|string}}, expand?: string[], metadata?: null|array<string, string>, us_bank_account?: array{account_holder_type?: string, account_type?: string}} $params
      * @param null|array|string $opts
      *
      * @return PaymentMethod the updated resource
