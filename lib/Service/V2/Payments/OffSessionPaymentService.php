@@ -45,7 +45,7 @@ class OffSessionPaymentService extends \Stripe\Service\AbstractService
     /**
      * Creates an OffSessionPayment object.
      *
-     * @param null|array{amount: \Stripe\StripeObject, cadence: string, customer: string, metadata: array<string, string>, on_behalf_of?: string, payment_method: string, retry_details?: array{retry_strategy: string}, statement_descriptor?: string, statement_descriptor_suffix?: string, test_clock?: string, transfer_data?: array{amount?: int, destination: string}} $params
+     * @param null|array{amount: \Stripe\StripeObject, amount_details?: array{discount_amount?: int, line_items: array{discount_amount?: int, product_code?: string, product_name: string, quantity: int, tax?: array{total_tax_amount?: int}, unit_cost: int}[], shipping?: array{amount?: int, from_postal_code?: string, to_postal_code?: string}, tax?: array{total_tax_amount?: int}}, cadence: string, customer: string, mandate_data?: array{customer_acceptance: array{accepted_at?: string, type: string}}, metadata: array<string, string>, on_behalf_of?: string, payment_method: string, payment_method_options?: array{card?: array{network_transaction_id: string}}, payments_orchestration?: array{enabled: bool}, retry_details?: array{retry_policy?: string, retry_strategy: string}, statement_descriptor?: string, statement_descriptor_suffix?: string, test_clock?: string, transfer_data?: array{amount?: int, destination: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Payments\OffSessionPayment

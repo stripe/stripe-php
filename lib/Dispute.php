@@ -60,6 +60,7 @@ class Dispute extends ApiResource
 
     const STATUS_LOST = 'lost';
     const STATUS_NEEDS_RESPONSE = 'needs_response';
+    const STATUS_PREVENTED = 'prevented';
     const STATUS_UNDER_REVIEW = 'under_review';
     const STATUS_WARNING_CLOSED = 'warning_closed';
     const STATUS_WARNING_NEEDS_RESPONSE = 'warning_needs_response';

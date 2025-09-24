@@ -24,4 +24,5 @@ class PayoutMethod extends \Stripe\ApiResource
 
     const TYPE_BANK_ACCOUNT = 'bank_account';
     const TYPE_CARD = 'card';
+    const TYPE_CRYPTO_WALLET = 'crypto_wallet';
 }
