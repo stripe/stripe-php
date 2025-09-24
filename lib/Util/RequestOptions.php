@@ -3,9 +3,9 @@
 namespace Stripe\Util;
 
 /**
- * @phpstan-type RequestOptionsArray array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_context?: string, stripe_version?: string, api_base?: string, max_network_retries?: int }
+ * @phpstan-type RequestOptionsArray array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_context?: string|\Stripe\StripeContext, stripe_version?: string, api_base?: string, max_network_retries?: int }
  *
- * @psalm-type RequestOptionsArray = array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_context?: string, stripe_version?: string, api_base?: string, max_network_retries?: int }
+ * @psalm-type RequestOptionsArray = array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_context?: string|\Stripe\StripeContext, stripe_version?: string, api_base?: string, max_network_retries?: int }
  */
 class RequestOptions
 {
@@ -147,7 +147,14 @@ class RequestOptions
             }
             if (\array_key_exists('stripe_context', $options)) {
                 if (null !== $options['stripe_context']) {
-                    $headers['Stripe-Context'] = $options['stripe_context'];
+                    if ($options['stripe_context'] instanceof \Stripe\StripeContext) {
+                        $contextValue = (string) $options['stripe_context'];
+                        if ($contextValue !== '') {
+                            $headers['Stripe-Context'] = $contextValue;
+                        }
+                    } elseif (\is_string($options['stripe_context']) && '' !== $options['stripe_context']) {
+                        $headers['Stripe-Context'] = $options['stripe_context'];
+                    }
                 }
                 unset($options['stripe_context']);
             }

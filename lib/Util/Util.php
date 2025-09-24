@@ -111,6 +111,9 @@ abstract class Util
                     $reason->id = $json['reason']['id'];
                     $reason->idempotency_key = $json['reason']['idempotency_key'];
                     $property->setValue($instance, $reason);
+                } elseif ('context' === $property->getName() && null !== $json[$property->getName()]) {
+                    $context = \Stripe\StripeContext::parse($json[$property->getName()]);
+                    $property->setValue($instance, $context);
                 } else {
                     $property->setAccessible(true);
                     $property->setValue($instance, $json[$property->getName()]);

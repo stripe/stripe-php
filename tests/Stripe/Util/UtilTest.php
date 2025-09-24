@@ -224,4 +224,65 @@ final class UtilTest extends \Stripe\TestCase
         self::assertSame('2022-02-15T00:27:45.330Z', $event->created);
         self::assertNull($event->reason);
     }
+
+    public function testJsonDecodeThinEventObjectWithContext()
+    {
+        $eventData = json_encode([
+            'id' => 'evt_234',
+            'object' => 'event',
+            'type' => 'financial_account.balance.opened',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'context' => 'org_123/proj_456',
+        ]);
+
+        $event = Util::json_decode_thin_event_object($eventData, ThinEvent::class);
+        self::assertInstanceOf(ThinEvent::class, $event);
+        self::assertInstanceOf(\Stripe\StripeContext::class, $event->context);
+        self::assertSame('org_123/proj_456', (string) $event->context);
+    }
+
+    public function testJsonDecodeThinEventObjectWithEmptyContext()
+    {
+        $eventData = json_encode([
+            'id' => 'evt_234',
+            'object' => 'event',
+            'type' => 'financial_account.balance.opened',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'context' => '',
+        ]);
+
+        $event = Util::json_decode_thin_event_object($eventData, ThinEvent::class);
+        self::assertInstanceOf(ThinEvent::class, $event);
+        self::assertInstanceOf(\Stripe\StripeContext::class, $event->context);
+        self::assertSame('', (string) $event->context);
+    }
+
+    public function testJsonDecodeThinEventObjectWithNullContext()
+    {
+        $eventData = json_encode([
+            'id' => 'evt_234',
+            'object' => 'event',
+            'type' => 'financial_account.balance.opened',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'context' => null,
+        ]);
+
+        $event = Util::json_decode_thin_event_object($eventData, ThinEvent::class);
+        self::assertInstanceOf(ThinEvent::class, $event);
+        self::assertNull($event->context);
+    }
+
+    public function testJsonDecodeThinEventObjectWithoutContext()
+    {
+        $eventData = json_encode([
+            'id' => 'evt_234',
+            'object' => 'event',
+            'type' => 'financial_account.balance.opened',
+            'created' => '2022-02-15T00:27:45.330Z',
+        ]);
+
+        $event = Util::json_decode_thin_event_object($eventData, ThinEvent::class);
+        self::assertInstanceOf(ThinEvent::class, $event);
+        self::assertNull($event->context);
+    }
 }
