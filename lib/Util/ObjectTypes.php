@@ -187,9 +187,15 @@ class ObjectTypes
      */
     const v2Mapping = [
         // v2 object classes: The beginning of the section generated from our OpenAPI spec
+        \Stripe\V2\Billing\BillSetting::OBJECT_NAME => \Stripe\V2\Billing\BillSetting::class,
+        \Stripe\V2\Billing\BillSettingVersion::OBJECT_NAME => \Stripe\V2\Billing\BillSettingVersion::class,
+        \Stripe\V2\Billing\Cadence::OBJECT_NAME => \Stripe\V2\Billing\Cadence::class,
+        \Stripe\V2\Billing\CollectionSetting::OBJECT_NAME => \Stripe\V2\Billing\CollectionSetting::class,
+        \Stripe\V2\Billing\CollectionSettingVersion::OBJECT_NAME => \Stripe\V2\Billing\CollectionSettingVersion::class,
         \Stripe\V2\Billing\MeterEvent::OBJECT_NAME => \Stripe\V2\Billing\MeterEvent::class,
         \Stripe\V2\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustment::class,
         \Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \Stripe\V2\Billing\MeterEventSession::class,
+        \Stripe\V2\Billing\Profile::OBJECT_NAME => \Stripe\V2\Billing\Profile::class,
         \Stripe\V2\Core\Account::OBJECT_NAME => \Stripe\V2\Core\Account::class,
         \Stripe\V2\Core\AccountLink::OBJECT_NAME => \Stripe\V2\Core\AccountLink::class,
         \Stripe\V2\Core\AccountPerson::OBJECT_NAME => \Stripe\V2\Core\AccountPerson::class,

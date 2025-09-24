@@ -4840,6 +4840,566 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(WebhookEndpoint::class, $result);
     }
 
+    public function testV2BillingBillSettingGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/bill_settings',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.bill_setting',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'latest_version' => 'latest_version',
+                        'live_version' => 'live_version',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->billSettings->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\BillSetting::class, $result->data[0]);
+    }
+
+    public function testV2BillingBillSettingPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/bill_settings',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.bill_setting',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'latest_version' => 'latest_version',
+                'live_version' => 'live_version',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->billSettings->create([]);
+        self::assertInstanceOf(V2\Billing\BillSetting::class, $result);
+    }
+
+    public function testV2BillingBillSettingGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/bill_settings/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.bill_setting',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'latest_version' => 'latest_version',
+                'live_version' => 'live_version',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->billSettings->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\BillSetting::class, $result);
+    }
+
+    public function testV2BillingBillSettingPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/bill_settings/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.bill_setting',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'latest_version' => 'latest_version',
+                'live_version' => 'live_version',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->billSettings->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\BillSetting::class, $result);
+    }
+
+    public function testV2BillingBillSettingsVersionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/bill_settings/bill_setting_id_123/versions',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.bill_setting_version',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->billSettings->versions->all(
+            'bill_setting_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\BillSettingVersion::class, $result->data[0]);
+    }
+
+    public function testV2BillingBillSettingsVersionGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/bill_settings/bill_setting_id_123/versions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.bill_setting_version',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->billSettings->versions->retrieve(
+            'bill_setting_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\BillSettingVersion::class, $result);
+    }
+
+    public function testV2BillingCadenceGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/cadences',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.cadence',
+                        'billing_cycle' => [
+                            'interval_count' => [],
+                            'type' => 'week',
+                        ],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'livemode' => [],
+                        'payer' => [
+                            'billing_profile' => 'billing_profile',
+                            'type' => 'customer',
+                        ],
+                        'status' => 'active',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->cadences->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\Cadence::class, $result->data[0]);
+    }
+
+    public function testV2BillingCadencePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/cadences',
+            [
+                'billing_cycle' => [
+                    'interval_count' => 797691627,
+                    'type' => 'week',
+                    'day' => [
+                        'time' => [
+                            'hour' => 3208676,
+                            'minute' => 1074026988,
+                            'second' => 906279820,
+                        ],
+                    ],
+                    'month' => [
+                        'day_of_month' => 1361669285,
+                        'month_of_year' => 82933018,
+                        'time' => [
+                            'hour' => 3208676,
+                            'minute' => 1074026988,
+                            'second' => 906279820,
+                        ],
+                    ],
+                    'week' => [
+                        'day_of_week' => 43636807,
+                        'time' => [
+                            'hour' => 3208676,
+                            'minute' => 1074026988,
+                            'second' => 906279820,
+                        ],
+                    ],
+                    'year' => [
+                        'day_of_month' => 1361669285,
+                        'month_of_year' => 82933018,
+                        'time' => [
+                            'hour' => 3208676,
+                            'minute' => 1074026988,
+                            'second' => 906279820,
+                        ],
+                    ],
+                ],
+                'payer' => ['billing_profile' => 'billing_profile'],
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.cadence',
+                'billing_cycle' => [
+                    'interval_count' => [],
+                    'type' => 'week',
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'payer' => [
+                    'billing_profile' => 'billing_profile',
+                    'type' => 'customer',
+                ],
+                'status' => 'active',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->cadences->create([
+            'billing_cycle' => [
+                'interval_count' => 797691627,
+                'type' => 'week',
+                'day' => [
+                    'time' => [
+                        'hour' => 3208676,
+                        'minute' => 1074026988,
+                        'second' => 906279820,
+                    ],
+                ],
+                'month' => [
+                    'day_of_month' => 1361669285,
+                    'month_of_year' => 82933018,
+                    'time' => [
+                        'hour' => 3208676,
+                        'minute' => 1074026988,
+                        'second' => 906279820,
+                    ],
+                ],
+                'week' => [
+                    'day_of_week' => 43636807,
+                    'time' => [
+                        'hour' => 3208676,
+                        'minute' => 1074026988,
+                        'second' => 906279820,
+                    ],
+                ],
+                'year' => [
+                    'day_of_month' => 1361669285,
+                    'month_of_year' => 82933018,
+                    'time' => [
+                        'hour' => 3208676,
+                        'minute' => 1074026988,
+                        'second' => 906279820,
+                    ],
+                ],
+            ],
+            'payer' => ['billing_profile' => 'billing_profile'],
+        ]);
+        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
+    }
+
+    public function testV2BillingCadenceGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/cadences/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.cadence',
+                'billing_cycle' => [
+                    'interval_count' => [],
+                    'type' => 'week',
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'payer' => [
+                    'billing_profile' => 'billing_profile',
+                    'type' => 'customer',
+                ],
+                'status' => 'active',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->cadences->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
+    }
+
+    public function testV2BillingCadencePost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/cadences/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.cadence',
+                'billing_cycle' => [
+                    'interval_count' => [],
+                    'type' => 'week',
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'payer' => [
+                    'billing_profile' => 'billing_profile',
+                    'type' => 'customer',
+                ],
+                'status' => 'active',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->cadences->update('id_123', []);
+        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
+    }
+
+    public function testV2BillingCadencePost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/cadences/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.cadence',
+                'billing_cycle' => [
+                    'interval_count' => [],
+                    'type' => 'week',
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'payer' => [
+                    'billing_profile' => 'billing_profile',
+                    'type' => 'customer',
+                ],
+                'status' => 'active',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->cadences->cancel('id_123', []);
+        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
+    }
+
+    public function testV2BillingCollectionSettingGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/collection_settings',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.collection_setting',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'latest_version' => 'latest_version',
+                        'live_version' => 'live_version',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->collectionSettings->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\CollectionSetting::class, $result->data[0]);
+    }
+
+    public function testV2BillingCollectionSettingPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/collection_settings',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.collection_setting',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'latest_version' => 'latest_version',
+                'live_version' => 'live_version',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->collectionSettings->create([]);
+        self::assertInstanceOf(V2\Billing\CollectionSetting::class, $result);
+    }
+
+    public function testV2BillingCollectionSettingGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/collection_settings/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.collection_setting',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'latest_version' => 'latest_version',
+                'live_version' => 'live_version',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->collectionSettings->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\CollectionSetting::class, $result);
+    }
+
+    public function testV2BillingCollectionSettingPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/collection_settings/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.collection_setting',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'latest_version' => 'latest_version',
+                'live_version' => 'live_version',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->collectionSettings->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\CollectionSetting::class, $result);
+    }
+
+    public function testV2BillingCollectionSettingsVersionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/collection_settings/collection_setting_id_123/versions',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.collection_setting_version',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->collectionSettings->versions->all(
+            'collection_setting_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\CollectionSettingVersion::class, $result->data[0]);
+    }
+
+    public function testV2BillingCollectionSettingsVersionGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/collection_settings/collection_setting_id_123/versions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.collection_setting_version',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->collectionSettings->versions->retrieve(
+            'collection_setting_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\CollectionSettingVersion::class, $result);
+    }
+
     public function testV2BillingMeterEventPost()
     {
         $this->stubRequest(
@@ -4954,6 +5514,108 @@ final class GeneratedExamplesTest extends TestCase
                 ],
             ],
         ]);
+    }
+
+    public function testV2BillingProfileGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/profiles',
+            ['lookup_keys' => ['lookup_keys']],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.profile',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'livemode' => [],
+                        'status' => 'active',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->profiles->all([
+            'lookup_keys' => ['lookup_keys'],
+        ]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\Profile::class, $result->data[0]);
+    }
+
+    public function testV2BillingProfilePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/profiles',
+            ['customer' => 'customer'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.profile',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'status' => 'active',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->profiles->create([
+            'customer' => 'customer',
+        ]);
+        self::assertInstanceOf(V2\Billing\Profile::class, $result);
+    }
+
+    public function testV2BillingProfileGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/profiles/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.profile',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'status' => 'active',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->profiles->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\Profile::class, $result);
+    }
+
+    public function testV2BillingProfilePost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/profiles/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.profile',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'status' => 'active',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->profiles->update('id_123', []);
+        self::assertInstanceOf(V2\Billing\Profile::class, $result);
     }
 
     public function testV2CoreAccountGet()
@@ -6186,7 +6848,10 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/money_management/financial_addresses',
-            ['currency' => 'usd', 'financial_account' => 'financial_account'],
+            [
+                'financial_account' => 'financial_account',
+                'type' => 'gb_bank_account',
+            ],
             [],
             false,
             [
@@ -6202,8 +6867,8 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->moneyManagement->financialAddresses->create([
-            'currency' => 'usd',
             'financial_account' => 'financial_account',
+            'type' => 'gb_bank_account',
         ]);
         self::assertInstanceOf(V2\MoneyManagement\FinancialAddress::class, $result);
     }
@@ -6687,7 +7352,6 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'fx_quote' => [
                     'lock_duration' => 'five_minutes',
-                    'lock_expires_at' => '1970-01-18T15:15:29.586Z',
                     'lock_status' => 'active',
                     'rates' => ['key' => ['exchange_rate' => 'exchange_rate']],
                     'to_currency' => 'usd',
@@ -6757,7 +7421,6 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'fx_quote' => [
                     'lock_duration' => 'five_minutes',
-                    'lock_expires_at' => '1970-01-18T15:15:29.586Z',
                     'lock_status' => 'active',
                     'rates' => ['key' => ['exchange_rate' => 'exchange_rate']],
                     'to_currency' => 'usd',
@@ -7693,9 +8356,10 @@ final class GeneratedExamplesTest extends TestCase
                         'livemode' => [],
                         'metadata' => ['key' => 'metadata'],
                         'payment_method' => 'payment_method',
+                        'payments_orchestration' => ['enabled' => []],
                         'retry_details' => [
                             'attempts' => [],
-                            'retry_strategy' => 'none',
+                            'retry_strategy' => 'scheduled',
                         ],
                         'status' => 'pending',
                     ],
@@ -7742,9 +8406,10 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'metadata' => ['key' => 'metadata'],
                 'payment_method' => 'payment_method',
+                'payments_orchestration' => ['enabled' => []],
                 'retry_details' => [
                     'attempts' => [],
-                    'retry_strategy' => 'none',
+                    'retry_strategy' => 'scheduled',
                 ],
                 'status' => 'pending',
             ],
@@ -7786,9 +8451,10 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'metadata' => ['key' => 'metadata'],
                 'payment_method' => 'payment_method',
+                'payments_orchestration' => ['enabled' => []],
                 'retry_details' => [
                     'attempts' => [],
-                    'retry_strategy' => 'none',
+                    'retry_strategy' => 'scheduled',
                 ],
                 'status' => 'pending',
             ],
@@ -7824,9 +8490,10 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'metadata' => ['key' => 'metadata'],
                 'payment_method' => 'payment_method',
+                'payments_orchestration' => ['enabled' => []],
                 'retry_details' => [
                     'attempts' => [],
-                    'retry_strategy' => 'none',
+                    'retry_strategy' => 'scheduled',
                 ],
                 'status' => 'pending',
             ],
@@ -8038,7 +8705,10 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/money_management/financial_addresses',
-            ['currency' => 'usd', 'financial_account' => 'financial_account'],
+            [
+                'financial_account' => 'financial_account',
+                'type' => 'gb_bank_account',
+            ],
             [],
             false,
             [
@@ -8053,8 +8723,8 @@ final class GeneratedExamplesTest extends TestCase
 
         try {
             $this->v2Client->v2->moneyManagement->financialAddresses->create([
-                'currency' => 'usd',
                 'financial_account' => 'financial_account',
+                'type' => 'gb_bank_account',
             ]);
         } catch (Exception\FinancialAccountNotOpenException $e) {
         }
@@ -8231,6 +8901,30 @@ final class GeneratedExamplesTest extends TestCase
                 'account_number' => 'account_number',
             ]);
         } catch (Exception\QuotaExceededException $e) {
+        }
+    }
+
+    public function testRateLimitError()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/accounts/id_123',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'rate_limit',
+                    'code' => 'account_rate_limit_exceeded',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->accounts->retrieve('id_123', []);
+        } catch (Exception\RateLimitException $e) {
         }
     }
 
