@@ -86,7 +86,7 @@ abstract class EventNotification
     /**
      * Retrieve the full Event from the Stripe API.
      *
-     * @return \Stripe\V2\Event
+     * @return Event
      */
     public function fetchEvent()
     {
