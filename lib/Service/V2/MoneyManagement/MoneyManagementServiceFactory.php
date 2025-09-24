@@ -19,6 +19,7 @@ namespace Stripe\Service\V2\MoneyManagement;
  * @property PayoutMethodsBankAccountSpecService $payoutMethodsBankAccountSpec
  * @property ReceivedCreditService $receivedCredits
  * @property ReceivedDebitService $receivedDebits
+ * @property RecipientVerificationService $recipientVerifications
  * @property TransactionEntryService $transactionEntries
  * @property TransactionService $transactions
  */
@@ -40,6 +41,7 @@ class MoneyManagementServiceFactory extends \Stripe\Service\AbstractServiceFacto
         'payoutMethodsBankAccountSpec' => PayoutMethodsBankAccountSpecService::class,
         'receivedCredits' => ReceivedCreditService::class,
         'receivedDebits' => ReceivedDebitService::class,
+        'recipientVerifications' => RecipientVerificationService::class,
         'transactionEntries' => TransactionEntryService::class,
         'transactions' => TransactionService::class,
     ];

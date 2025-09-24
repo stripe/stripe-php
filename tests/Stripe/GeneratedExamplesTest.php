@@ -602,6 +602,7 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                 ],
                 'type' => 'type',
+                'v1_event_id' => 'v1_event_id',
                 'livemode' => [],
             ],
             200,
@@ -2416,15 +2417,6 @@ final class GeneratedExamplesTest extends TestCase
     }
 
     public function testPromotionCodesPost()
-    {
-        $this->expectsRequest('post', '/v1/promotion_codes');
-        $result = $this->client->promotionCodes->create([
-            'coupon' => 'Z4OV52SU',
-        ]);
-        self::assertInstanceOf(PromotionCode::class, $result);
-    }
-
-    public function testPromotionCodesPost2()
     {
         $this->expectsRequest(
             'post',
@@ -5001,7 +4993,10 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'livemode' => [],
-                        'payer' => ['type' => 'customer'],
+                        'payer' => [
+                            'billing_profile' => 'billing_profile',
+                            'type' => 'customer',
+                        ],
                         'status' => 'active',
                     ],
                 ],
@@ -5034,6 +5029,7 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                     'month' => [
                         'day_of_month' => 1361669285,
+                        'month_of_year' => 82933018,
                         'time' => [
                             'hour' => 3208676,
                             'minute' => 1074026988,
@@ -5058,11 +5054,7 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                     ],
                 ],
-                'payer' => [
-                    'billing_profile' => 'billing_profile',
-                    'customer' => 'customer',
-                    'type' => 'customer',
-                ],
+                'payer' => ['billing_profile' => 'billing_profile'],
             ],
             [],
             false,
@@ -5075,7 +5067,10 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'livemode' => [],
-                'payer' => ['type' => 'customer'],
+                'payer' => [
+                    'billing_profile' => 'billing_profile',
+                    'type' => 'customer',
+                ],
                 'status' => 'active',
             ],
             200,
@@ -5094,6 +5089,7 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'month' => [
                     'day_of_month' => 1361669285,
+                    'month_of_year' => 82933018,
                     'time' => [
                         'hour' => 3208676,
                         'minute' => 1074026988,
@@ -5118,11 +5114,7 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                 ],
             ],
-            'payer' => [
-                'billing_profile' => 'billing_profile',
-                'customer' => 'customer',
-                'type' => 'customer',
-            ],
+            'payer' => ['billing_profile' => 'billing_profile'],
         ]);
         self::assertInstanceOf(V2\Billing\Cadence::class, $result);
     }
@@ -5144,7 +5136,10 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'livemode' => [],
-                'payer' => ['type' => 'customer'],
+                'payer' => [
+                    'billing_profile' => 'billing_profile',
+                    'type' => 'customer',
+                ],
                 'status' => 'active',
             ],
             200,
@@ -5174,7 +5169,10 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'livemode' => [],
-                'payer' => ['type' => 'customer'],
+                'payer' => [
+                    'billing_profile' => 'billing_profile',
+                    'type' => 'customer',
+                ],
                 'status' => 'active',
             ],
             200,
@@ -5201,7 +5199,10 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'livemode' => [],
-                'payer' => ['type' => 'customer'],
+                'payer' => [
+                    'billing_profile' => 'billing_profile',
+                    'type' => 'customer',
+                ],
                 'status' => 'active',
             ],
             200,
@@ -5536,7 +5537,7 @@ final class GeneratedExamplesTest extends TestCase
                                     'maximum_applications' => [
                                         'type' => 'indefinite',
                                     ],
-                                    'percent_off' => '991934883.3333334',
+                                    'percent_off' => 'percent_off',
                                 ],
                             ],
                         ],
@@ -5546,7 +5547,7 @@ final class GeneratedExamplesTest extends TestCase
                             ],
                             'effective_at' => [
                                 'timestamp' => '1970-01-01T15:18:46.294Z',
-                                'type' => 'current_billing_period_start',
+                                'type' => 'on_reserve',
                             ],
                             'pricing_plan_subscription_details' => [
                                 'pricing_plan_subscription' => 'pricing_plan_subscription',
@@ -5651,7 +5652,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'maximum_applications' => [
                                     'type' => 'indefinite',
                                 ],
-                                'percent_off' => '991934883.3333334',
+                                'percent_off' => 'percent_off',
                             ],
                         ],
                     ],
@@ -5661,7 +5662,7 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                         'effective_at' => [
                             'timestamp' => '1970-01-01T15:18:46.294Z',
-                            'type' => 'current_billing_period_start',
+                            'type' => 'on_reserve',
                         ],
                         'pricing_plan_subscription_details' => [
                             'pricing_plan_subscription' => 'pricing_plan_subscription',
@@ -6097,7 +6098,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/billing/license_fees/id_123',
-            ['display_name' => 'display_name'],
+            [],
             [],
             false,
             [
@@ -6127,7 +6128,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->billing->licenseFees->update(
             'id_123',
-            ['display_name' => 'display_name']
+            []
         );
         self::assertInstanceOf(V2\Billing\LicenseFee::class, $result);
     }
@@ -6974,6 +6975,37 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Billing\PricingPlanSubscription::class, $result);
     }
 
+    public function testV2BillingPricingPlanSubscriptionPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/pricing_plan_subscriptions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.pricing_plan_subscription',
+                'billing_cadence' => 'billing_cadence',
+                'collection_status' => 'past_due',
+                'collection_status_transitions' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'pricing_plan' => 'pricing_plan',
+                'pricing_plan_version' => 'pricing_plan_version',
+                'servicing_status' => 'pending',
+                'servicing_status_transitions' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->pricingPlanSubscriptions->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\PricingPlanSubscription::class, $result);
+    }
+
     public function testV2BillingProfileGet()
     {
         $this->stubRequest(
@@ -7636,6 +7668,33 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Billing\ServiceAction::class, $result);
     }
 
+    public function testV2BillingServiceActionPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/service_actions/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.billing.service_action',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'service_interval' => 'month',
+                'service_interval_count' => [],
+                'type' => 'credit_grant',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->serviceActions->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\ServiceAction::class, $result);
+    }
+
     public function testV2CoreAccountGet()
     {
         $this->stubRequest(
@@ -7977,11 +8036,6 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.core.claimable_sandbox',
-                'api_keys' => [
-                    'publishable' => 'publishable',
-                    'secret' => 'secret',
-                ],
-                'claim_url' => 'claim_url',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'livemode' => [],
                 'prefill' => [
@@ -7989,6 +8043,8 @@ final class GeneratedExamplesTest extends TestCase
                     'email' => 'email',
                     'name' => 'name',
                 ],
+                'sandbox_details' => ['account' => 'account'],
+                'status' => 'claimed',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -8001,6 +8057,37 @@ final class GeneratedExamplesTest extends TestCase
                 'name' => 'name',
             ],
         ]);
+        self::assertInstanceOf(V2\Core\ClaimableSandbox::class, $result);
+    }
+
+    public function testV2CoreClaimableSandboxGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/claimable_sandboxes/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.claimable_sandbox',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'prefill' => [
+                    'country' => 'country',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+                'sandbox_details' => ['account' => 'account'],
+                'status' => 'claimed',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->claimableSandboxes->retrieve(
+            'id_123',
+            []
+        );
         self::assertInstanceOf(V2\Core\ClaimableSandbox::class, $result);
     }
 
@@ -8911,7 +8998,10 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/money_management/financial_addresses',
-            ['currency' => 'usd', 'financial_account' => 'financial_account'],
+            [
+                'financial_account' => 'financial_account',
+                'type' => 'gb_bank_account',
+            ],
             [],
             false,
             [
@@ -8927,8 +9017,8 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->moneyManagement->financialAddresses->create([
-            'currency' => 'usd',
             'financial_account' => 'financial_account',
+            'type' => 'gb_bank_account',
         ]);
         self::assertInstanceOf(V2\MoneyManagement\FinancialAddress::class, $result);
     }
@@ -9412,7 +9502,6 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'fx_quote' => [
                     'lock_duration' => 'five_minutes',
-                    'lock_expires_at' => '1970-01-18T15:15:29.586Z',
                     'lock_status' => 'active',
                     'rates' => ['key' => ['exchange_rate' => 'exchange_rate']],
                     'to_currency' => 'usd',
@@ -9482,7 +9571,6 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'fx_quote' => [
                     'lock_duration' => 'five_minutes',
-                    'lock_expires_at' => '1970-01-18T15:15:29.586Z',
                     'lock_status' => 'active',
                     'rates' => ['key' => ['exchange_rate' => 'exchange_rate']],
                     'to_currency' => 'usd',
@@ -10202,6 +10290,98 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\MoneyManagement\ReceivedDebit::class, $result);
     }
 
+    public function testV2MoneyManagementRecipientVerificationPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/recipient_verifications',
+            ['payout_method' => 'payout_method'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.recipient_verification',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'livemode' => [],
+                'match_result' => 'unavailable',
+                'match_result_details' => [
+                    'message' => 'message',
+                    'provided_name' => 'provided_name',
+                ],
+                'status' => 'acknowledged',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->recipientVerifications->create([
+            'payout_method' => 'payout_method',
+        ]);
+        self::assertInstanceOf(V2\MoneyManagement\RecipientVerification::class, $result);
+    }
+
+    public function testV2MoneyManagementRecipientVerificationGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/recipient_verifications/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.recipient_verification',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'livemode' => [],
+                'match_result' => 'unavailable',
+                'match_result_details' => [
+                    'message' => 'message',
+                    'provided_name' => 'provided_name',
+                ],
+                'status' => 'acknowledged',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->recipientVerifications->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\RecipientVerification::class, $result);
+    }
+
+    public function testV2MoneyManagementRecipientVerificationPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/recipient_verifications/id_123/acknowledge',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.recipient_verification',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'livemode' => [],
+                'match_result' => 'unavailable',
+                'match_result_details' => [
+                    'message' => 'message',
+                    'provided_name' => 'provided_name',
+                ],
+                'status' => 'acknowledged',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->recipientVerifications->acknowledge(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\RecipientVerification::class, $result);
+    }
+
     public function testV2MoneyManagementTransactionGet()
     {
         $this->stubRequest(
@@ -10418,9 +10598,10 @@ final class GeneratedExamplesTest extends TestCase
                         'livemode' => [],
                         'metadata' => ['key' => 'metadata'],
                         'payment_method' => 'payment_method',
+                        'payments_orchestration' => ['enabled' => []],
                         'retry_details' => [
                             'attempts' => [],
-                            'retry_strategy' => 'none',
+                            'retry_strategy' => 'scheduled',
                         ],
                         'status' => 'pending',
                     ],
@@ -10467,9 +10648,10 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'metadata' => ['key' => 'metadata'],
                 'payment_method' => 'payment_method',
+                'payments_orchestration' => ['enabled' => []],
                 'retry_details' => [
                     'attempts' => [],
-                    'retry_strategy' => 'none',
+                    'retry_strategy' => 'scheduled',
                 ],
                 'status' => 'pending',
             ],
@@ -10511,9 +10693,10 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'metadata' => ['key' => 'metadata'],
                 'payment_method' => 'payment_method',
+                'payments_orchestration' => ['enabled' => []],
                 'retry_details' => [
                     'attempts' => [],
-                    'retry_strategy' => 'none',
+                    'retry_strategy' => 'scheduled',
                 ],
                 'status' => 'pending',
             ],
@@ -10549,9 +10732,10 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'metadata' => ['key' => 'metadata'],
                 'payment_method' => 'payment_method',
+                'payments_orchestration' => ['enabled' => []],
                 'retry_details' => [
                     'attempts' => [],
-                    'retry_strategy' => 'none',
+                    'retry_strategy' => 'scheduled',
                 ],
                 'status' => 'pending',
             ],
@@ -10709,7 +10893,7 @@ final class GeneratedExamplesTest extends TestCase
                     'currency' => 'USD',
                     'value' => 96,
                 ],
-                'network' => 'rtp',
+                'network' => 'ach',
             ],
             [],
             false,
@@ -10728,7 +10912,7 @@ final class GeneratedExamplesTest extends TestCase
                     'currency' => 'USD',
                     'value' => 96,
                 ],
-                'network' => 'rtp',
+                'network' => 'ach',
             ]
         );
         self::assertInstanceOf(V2\FinancialAddressCreditSimulation::class, $result);
@@ -10761,6 +10945,40 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\FinancialAddressGeneratedMicrodeposits::class, $result);
+    }
+
+    public function testV2TestHelpersMoneyManagementPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/test_helpers/money_management/recipient_verifications',
+            [
+                'match_result' => 'unavailable',
+                'payout_method' => 'payout_method',
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.recipient_verification',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'livemode' => [],
+                'match_result' => 'unavailable',
+                'match_result_details' => [
+                    'message' => 'message',
+                    'provided_name' => 'provided_name',
+                ],
+                'status' => 'acknowledged',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->testHelpers->moneyManagement->recipientVerifications([
+            'match_result' => 'unavailable',
+            'payout_method' => 'payout_method',
+        ]);
+        self::assertInstanceOf(V2\MoneyManagement\RecipientVerification::class, $result);
     }
 
     public function testAlreadyCanceledError()
@@ -10897,7 +11115,10 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/money_management/financial_addresses',
-            ['currency' => 'usd', 'financial_account' => 'financial_account'],
+            [
+                'financial_account' => 'financial_account',
+                'type' => 'gb_bank_account',
+            ],
             [],
             false,
             [
@@ -10912,8 +11133,8 @@ final class GeneratedExamplesTest extends TestCase
 
         try {
             $this->v2Client->v2->moneyManagement->financialAddresses->create([
-                'currency' => 'usd',
                 'financial_account' => 'financial_account',
+                'type' => 'gb_bank_account',
             ]);
         } catch (Exception\FinancialAccountNotOpenException $e) {
         }
@@ -11090,6 +11311,30 @@ final class GeneratedExamplesTest extends TestCase
                 'account_number' => 'account_number',
             ]);
         } catch (Exception\QuotaExceededException $e) {
+        }
+    }
+
+    public function testRateLimitError()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/accounts/id_123',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'rate_limit',
+                    'code' => 'account_rate_limit_exceeded',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->accounts->retrieve('id_123', []);
+        } catch (Exception\RateLimitException $e) {
         }
     }
 

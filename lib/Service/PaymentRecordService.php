@@ -98,6 +98,22 @@ class PaymentRecordService extends AbstractService
     }
 
     /**
+     * Report informational updates on the specified Payment Record.
+     *
+     * @param string $id
+     * @param null|array{customer_details?: array{customer?: string, email?: string, name?: string, phone?: string}, description?: null|string, expand?: string[], metadata?: null|array<string, string>, shipping_details?: null|array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, name?: string, phone?: string}} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\PaymentRecord
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function reportPaymentAttemptInformational($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/payment_records/%s/report_payment_attempt_informational', $id), $params, $opts);
+    }
+
+    /**
      * Retrieves a Payment Record with the given ID.
      *
      * @param string $id
