@@ -41,4 +41,20 @@ class PricingPlanSubscriptionService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v2/billing/pricing_plan_subscriptions/%s', $id), $params, $opts);
     }
+
+    /**
+     * Update a Pricing Plan Subscription object.
+     *
+     * @param string $id
+     * @param null|array{clear_cancel_at?: bool, metadata?: array<string, null|string>} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Billing\PricingPlanSubscription
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function update($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v2/billing/pricing_plan_subscriptions/%s', $id), $params, $opts);
+    }
 }

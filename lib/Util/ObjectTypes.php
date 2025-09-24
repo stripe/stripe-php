@@ -235,6 +235,7 @@ class ObjectTypes
         \Stripe\V2\MoneyManagement\PayoutMethodsBankAccountSpec::OBJECT_NAME => \Stripe\V2\MoneyManagement\PayoutMethodsBankAccountSpec::class,
         \Stripe\V2\MoneyManagement\ReceivedCredit::OBJECT_NAME => \Stripe\V2\MoneyManagement\ReceivedCredit::class,
         \Stripe\V2\MoneyManagement\ReceivedDebit::OBJECT_NAME => \Stripe\V2\MoneyManagement\ReceivedDebit::class,
+        \Stripe\V2\MoneyManagement\RecipientVerification::OBJECT_NAME => \Stripe\V2\MoneyManagement\RecipientVerification::class,
         \Stripe\V2\MoneyManagement\Transaction::OBJECT_NAME => \Stripe\V2\MoneyManagement\Transaction::class,
         \Stripe\V2\MoneyManagement\TransactionEntry::OBJECT_NAME => \Stripe\V2\MoneyManagement\TransactionEntry::class,
         \Stripe\V2\Payments\OffSessionPayment::OBJECT_NAME => \Stripe\V2\Payments\OffSessionPayment::class,

@@ -16,7 +16,7 @@ namespace Stripe\V2\Billing;
  * @property string $rate_card The ID of the Rate Card.
  * @property string $rate_card_version The ID of the Rate Card Version.
  * @property null|string $servicing_status The servicing status of a Rate Card Subscription.
- * @property null|(object{activated_at?: string, canceled_at?: string, paused_at?: string}&\Stripe\StripeObject) $servicing_status_transitions The servicing status transitions of the Rate Card Subscription.
+ * @property null|(object{activated_at?: string, canceled_at?: string, paused_at?: string, will_activate_at?: string, will_cancel_at?: string}&\Stripe\StripeObject) $servicing_status_transitions The servicing status transitions of the Rate Card Subscription.
  * @property null|string $test_clock The ID of the Test Clock, if any.
  */
 class RateCardSubscription extends \Stripe\ApiResource
