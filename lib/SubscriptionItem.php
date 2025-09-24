@@ -10,6 +10,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property null|int $billed_until The time period the subscription item has been billed for.
  * @property null|(object{usage_gte: null|int}&StripeObject) $billing_thresholds Define thresholds at which an invoice will be sent, and the related subscription advanced to a new billing period
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property int $current_period_end The end time of this subscription item's current billing period.

@@ -10,7 +10,7 @@ namespace Stripe;
  * @property null|Application|string $application ID of the Connect Application that created the schedule.
  * @property (object{new_reference: null|string, subscription_schedule: null|string, type: string}&StripeObject) $applies_to
  * @property null|string $billing_behavior Configures when the subscription schedule generates prorations for phase transitions. Possible values are <code>prorate_on_next_phase</code> or <code>prorate_up_front</code> with the default being <code>prorate_on_next_phase</code>. <code>prorate_on_next_phase</code> will apply phase changes and generate prorations at transition time. <code>prorate_up_front</code> will bill for all phases within the current billing cycle up front.
- * @property (object{type: string, updated_at?: int}&StripeObject) $billing_mode The billing mode of the subscription.
+ * @property (object{flexible: null|(object{proration_discounts?: string}&StripeObject), type: string, updated_at?: int}&StripeObject) $billing_mode The billing mode of the subscription.
  * @property null|int $canceled_at Time at which the subscription schedule was canceled. Measured in seconds since the Unix epoch.
  * @property null|int $completed_at Time at which the subscription schedule was completed. Measured in seconds since the Unix epoch.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
