@@ -108,11 +108,16 @@ abstract class EventNotification
             return null;
         }
 
+        $options = [];
+        if (null !== $this->context) {
+            $options['stripe_context'] = $this->context;
+        }
+
         $response = $this->client->rawRequest(
             'get',
             $this->related_object->url,
             null,
-            ['stripe_context' => $this->context],
+            $options,
             null,
             ['fetch_related_object']
         );

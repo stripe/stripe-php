@@ -181,7 +181,7 @@ final class EventTest extends TestCase
         self::assertSame($message, $fullEvent->data->developer_message_summary);
     }
 
-    public function testJsonDecodeThinEventObject()
+    public function testJsonDecodeEventNotificationObject()
     {
         $eventData = json_encode([
             'id' => 'evt_234',
@@ -214,11 +214,12 @@ final class EventTest extends TestCase
         self::assertSame('/v2/financial_accounts/fa_123', $event->related_object->url);
         self::assertInstanceOf(Reason::class, $event->reason);
         self::assertInstanceOf(ReasonRequest::class, $event->reason->request);
+        self::assertInstanceOf(RelatedObject::class, $event->related_object);
         self::assertSame('id_123', $event->reason->request->id);
         self::assertSame('key_123', $event->reason->request->idempotency_key);
     }
 
-    public function testJsonDecodeThinEventObjectWithNoRelatedObject()
+    public function testJsonDecodeEventNotificationObjectWithNoRelatedObject()
     {
         $eventData = json_encode([
             'id' => 'evt_234',
@@ -236,7 +237,7 @@ final class EventTest extends TestCase
         self::assertSame('2022-02-15T00:27:45.330Z', $event->created);
     }
 
-    public function testJsonDecodeThinEventObjectWithNoReasonObject()
+    public function testJsonDecodeEventNotificationObjectWithNoReasonObject()
     {
         $eventData = json_encode([
             'id' => 'evt_234',

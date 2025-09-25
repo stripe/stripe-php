@@ -254,7 +254,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * @param null|array $params the parameters of the request
      * @param array $opts the special modifiers of the request
      * @param null|int $maxNetworkRetries
-     * @param null|mixed $usage
+     * @param null|mixed $usage used internally by the SDK
      *
      * @return ApiResponse
      */
@@ -269,7 +269,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             $headers = $opts['headers'] ?: [];
             unset($opts['headers']);
         }
-        if (\is_array($opts) && \array_key_exists('stripe_context', $opts) && null !== $opts['stripe_context']) {
+        if (\is_array($opts) && \array_key_exists('stripe_context', $opts)) {
             $headers['Stripe-Context'] = $opts['stripe_context'];
             unset($opts['stripe_context']);
         }
