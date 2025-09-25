@@ -67,7 +67,7 @@ abstract class EventNotification
      * should use \Stripe\BaseStripeClient#parseEventNotification instead for
      * initial handling. This is useful in unit tests and working with EventNotifications that you've
      * already validated the authenticity of.
-
+     *
      * @param string $jsonStr the raw json payload
      * @param \Stripe\StripeClient $client a StripeClient instance that this can use to make requests
      *
