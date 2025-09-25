@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Receive and process thin events like the v1.billing.meter.error_report_triggered event.
+ * Receive and process event notifications like the v1.billing.meter.error_report_triggered event.
  *
  * In this example, we:
- *   - use parseThinEvent to parse the received thin event webhook body
+ *   - use parseEventNotification to parse the received EventNotification body
  *   - call StripeClient.v2.core.events.retrieve to retrieve the full event object
  *   - if it is a V1BillingMeterErrorReportTriggeredEvent event type, call fetchRelatedObject
  *     to retrieve the Billing Meter object associated with the event.
@@ -22,16 +22,20 @@ $app->post('/webhook', static function ($request, $response) use ($client, $webh
     $sig_header = $request->getHeaderLine('Stripe-Signature');
 
     try {
-        $thin_event = $client->parseThinEvent($webhook_body, $sig_header, $webhook_secret);
+        $event_notification = $client->parseEventNotification($webhook_body, $sig_header, $webhook_secret);
 
-        // Fetch the event data to understand the failure
-        $event = $client->v2->core->events->retrieve($thin_event->id);
-        if ($event instanceof Stripe\Events\V1BillingMeterErrorReportTriggeredEvent) {
-            $meter = $event->fetchRelatedObject();
+        // check what type of event notification we have
+        if ($event_notification instanceof Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification) {
+            $meter = $event_notification->fetchRelatedObject();
             $meter_id = $meter->id;
 
             // Record the failures and alert your team
             // Add your logic here
+
+            // can fetch full event w/ data
+            $event = $event_notification->fetchEvent();
+            // data is fully typed
+            $event->data->developer_message_summary;
         }
 
         return $response->withStatus(200);
