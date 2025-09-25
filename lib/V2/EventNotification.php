@@ -63,8 +63,11 @@ abstract class EventNotification
     }
 
     /**
-     * The `fromJson` constructor shouldn't be used in production code (since it doesn't validate webhook signatures), but it's useful for testing. It's also called by `StripeClient.parseEventNotification`.
-     *
+     * Helper for constructing an Event Notification. Doesn't perform signature validation, so you
+     * should use \Stripe\BaseStripeClient#parseEventNotification instead for
+     * initial handling. This is useful in unit tests and working with EventNotifications that you've
+     * already validated the authenticity of.
+
      * @param string $jsonStr the raw json payload
      * @param \Stripe\StripeClient $client a StripeClient instance that this can use to make requests
      *
