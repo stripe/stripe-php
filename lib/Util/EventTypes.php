@@ -4,7 +4,7 @@ namespace Stripe\Util;
 
 class EventTypes
 {
-    const thinEventMapping = [
+    const v2EventMapping = [
         // The beginning of the section generated from our OpenAPI spec
         \Stripe\Events\V1AccountUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V1AccountUpdatedEvent::class,
         \Stripe\Events\V1ApplicationFeeCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V1ApplicationFeeCreatedEvent::class,

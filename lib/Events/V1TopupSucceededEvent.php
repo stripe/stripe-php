@@ -21,14 +21,9 @@ class V1TopupSucceededEvent extends \Stripe\V2\Event
     public function fetchRelatedObject()
     {
         $apiMode = \Stripe\Util\Util::getApiMode($this->related_object->url);
-        list($object, $options) = $this->_request(
-            'get',
-            $this->related_object->url,
-            [],
-            ['stripe_account' => $this->context],
-            [],
-            $apiMode
-        );
+        list($object, $options) = $this->_request('get', $this->related_object->url, [], [
+            'stripe_context' => $this->context,
+        ], [], $apiMode);
 
         return \Stripe\Util\Util::convertToStripeObject($object, $options, $apiMode);
     }
