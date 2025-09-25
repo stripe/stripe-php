@@ -3,6 +3,7 @@
 namespace Stripe;
 
 use Stripe\Util\Util;
+use Stripe\V2\EventNotification;
 
 class BaseStripeClient implements StripeClientInterface, StripeStreamingClientInterface
 {
@@ -253,10 +254,11 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * @param null|array $params the parameters of the request
      * @param array $opts the special modifiers of the request
      * @param null|int $maxNetworkRetries
+     * @param null|mixed $usage used internally by the SDK
      *
      * @return ApiResponse
      */
-    public function rawRequest($method, $path, $params = null, $opts = [], $maxNetworkRetries = null)
+    public function rawRequest($method, $path, $params = null, $opts = [], $maxNetworkRetries = null, $usage = null)
     {
         if ('post' !== $method && null !== $params) {
             throw new Exception\InvalidArgumentException('Error: rawRequest only supports $params on post requests. Please pass null and add your parameters to $path');
@@ -280,7 +282,12 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $opts->headers = \array_merge($opts->headers, $headers);
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
-        list($response) = $requestor->request($method, $path, $params, $opts->headers, $apiMode, ['raw_request'], $maxNetworkRetries);
+
+        if (null === $usage) {
+            $usage = ['raw_request'];
+        }
+
+        list($response) = $requestor->request($method, $path, $params, $opts->headers, $apiMode, $usage, $maxNetworkRetries);
 
         return $response;
     }
@@ -498,24 +505,16 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time. Defaults to 300 seconds (5 min)
      *
-     * @return ThinEvent
+     * @return EventNotification
      *
      * @throws Exception\SignatureVerificationException if the verification fails
      * @throws Exception\UnexpectedValueException if the payload is not valid JSON,
      */
-    public function parseThinEvent($payload, $sigHeader, $secret, $tolerance = Webhook::DEFAULT_TOLERANCE)
+    public function parseEventNotification($payload, $sigHeader, $secret, $tolerance = Webhook::DEFAULT_TOLERANCE)
     {
         $eventData = Util::utf8($payload);
         WebhookSignature::verifyHeader($payload, $sigHeader, $secret, $tolerance);
 
-        try {
-            return Util::json_decode_thin_event_object(
-                $eventData,
-                '\Stripe\ThinEvent'
-            );
-        } catch (\ReflectionException $e) {
-            // Fail gracefully
-            return new ThinEvent();
-        }
+        return EventNotification::fromJson($eventData, $this);
     }
 }

@@ -7,9 +7,22 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V2CoreEventDestinationPingEvent extends \Stripe\V2\Event
+class V2CoreEventDestinationPingEventNotification extends \Stripe\V2\EventNotification
 {
     const LOOKUP_TYPE = 'v2.core.event_destination.ping';
+    public $related_object;
+
+    /**
+     * Retrieves the full event object from the API. Make an API request on every call.
+     *
+     * @return V2CoreEventDestinationPingEvent
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function fetchEvent()
+    {
+        return parent::fetchEvent();
+    }
 
     /**
      * Retrieves the related object from the API. Make an API request on every call.
@@ -20,11 +33,6 @@ class V2CoreEventDestinationPingEvent extends \Stripe\V2\Event
      */
     public function fetchRelatedObject()
     {
-        $apiMode = \Stripe\Util\Util::getApiMode($this->related_object->url);
-        list($object, $options) = $this->_request('get', $this->related_object->url, [], [
-            'stripe_context' => $this->context,
-        ], [], $apiMode);
-
-        return \Stripe\Util\Util::convertToStripeObject($object, $options, $apiMode);
+        return parent::fetchRelatedObject();
     }
 }
