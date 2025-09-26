@@ -2,10 +2,10 @@
 
 namespace Stripe;
 
+use Stripe\Events\UnknownEventNotification;
 use Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification;
 use Stripe\Events\V1BillingMeterNoMeterFoundEventNotification;
 use Stripe\V2\Core\EventNotification;
-use Stripe\Events\UnknownEventNotification;
 
 /**
  * @internal
