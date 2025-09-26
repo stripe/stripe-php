@@ -106,6 +106,7 @@ final class EventTest extends TestCase
             200,
             MOCK_URL
         );
+        /** @var V1BillingMeterErrorReportTriggeredEventNotification $fullEvent */
         $meter = $fullEvent->fetchRelatedObject();
         self::assertInstanceOf(Billing\Meter::class, $meter);
         self::assertSame('mtr_123', $meter->id);
@@ -138,6 +139,7 @@ final class EventTest extends TestCase
         );
         $client = new StripeClient('sk_test_123');
         $event = EventNotification::fromJson($jsonEvent, $client);
+        self::assertInstanceOf(StripeContext::class, $event->context);
         self::assertInstanceOf(V1BillingMeterErrorReportTriggeredEventNotification::class, $event);
         /** @var V1BillingMeterErrorReportTriggeredEventNotification $event */
         $meter = $event->fetchRelatedObject();
@@ -165,7 +167,7 @@ final class EventTest extends TestCase
             'GET',
             '/v2/core/events/evt_123',
             [],
-            null,
+            ['Stripe-Context: acct_123'],
             false,
             ['object' => 'v2.core.event', 'type' => 'v1.billing.meter.error_report_triggered', 'id' => 'mtr_123', 'data' => ['developer_message_summary' => $message]],
             200,
@@ -173,11 +175,11 @@ final class EventTest extends TestCase
         );
         $client = new StripeClient('sk_test_123');
         $eventNotif = EventNotification::fromJson($jsonEvent, $client);
+        self::assertInstanceOf(StripeContext::class, $eventNotif->context);
         self::assertInstanceOf(V1BillingMeterErrorReportTriggeredEventNotification::class, $eventNotif);
         /** @var V1BillingMeterErrorReportTriggeredEventNotification $eventNotif */
         $fullEvent = $eventNotif->fetchEvent();
         self::assertInstanceOf(Events\V1BillingMeterErrorReportTriggeredEvent::class, $fullEvent);
-        // @var Events\V1BillingMeterErrorReportTriggeredEvent $fullEvent
         self::assertSame($message, $fullEvent->data->developer_message_summary);
     }
 
@@ -203,6 +205,7 @@ final class EventTest extends TestCase
         ]);
 
         $event = EventNotification::fromJson($eventData, new StripeClient());
+        self::assertNull($event->context);
         self::assertInstanceOf(V1BillingMeterErrorReportTriggeredEventNotification::class, $event);
 
         // @var V1BillingMeterErrorReportTriggeredEventNotification $event

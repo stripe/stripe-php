@@ -68,6 +68,7 @@ class EventNotificationTypes
         \Stripe\Events\V2PaymentsOffSessionPaymentCanceledEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentCanceledEventNotification::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentCreatedEventNotification::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentFailedEventNotification::class,
+        \Stripe\Events\V2PaymentsOffSessionPaymentRequiresCaptureEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentRequiresCaptureEventNotification::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentSucceededEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentSucceededEventNotification::class,
         // The end of the section generated from our OpenAPI spec
     ];

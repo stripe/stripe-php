@@ -89,6 +89,26 @@ final class BaseStripeClientTest extends TestCase
         $client = new BaseStripeClient(['api_key' => 234]);
     }
 
+    public function testCtorThrowsIfContextIsUnexpectedType()
+    {
+        $this->expectException(Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('stripe_context must be null, a string, or a StripeContext instance');
+
+        new BaseStripeClient(['stripe_context' => 234]);
+    }
+
+    public function testCtorAcceptsStripeClientClass()
+    {
+        $client = new BaseStripeClient(['stripe_context' => new StripeContext()]);
+        self::assertInstanceOf(StripeContext::class, $client->getStripeContext());
+    }
+
+    public function testCtorAcceptsStripeClientString()
+    {
+        $client = new BaseStripeClient(['stripe_context' => 'test_context']);
+        self::assertSame('test_context', $client->getStripeContext());
+    }
+
     public function testCtorThrowsIfConfigArrayContainsUnexpectedKey()
     {
         $this->expectException(Exception\InvalidArgumentException::class);
@@ -398,7 +418,7 @@ final class BaseStripeClientTest extends TestCase
         $this->curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
             ->with(self::callback(function ($opts) {
-                $this->assertContains('Stripe-Context: acct_123', $opts[\CURLOPT_HTTPHEADER]);
+                $this->assertContains('Stripe-Context: acct_456', $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
             }), MOCK_URL . '/v2/xyz')
@@ -412,7 +432,37 @@ final class BaseStripeClientTest extends TestCase
         ]);
         $params = [];
         $client->rawRequest('post', '/v2/xyz', $params, [
-            'stripe_context' => 'acct_123',
+            'stripe_context' => 'acct_456',
+        ]);
+    }
+
+    public function testReqOverridesClientContext()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(self::once())
+            ->method('executeRequestWithRetries')
+            ->with(self::callback(function ($opts) {
+                foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
+                    $this->assertStringStartsNotWith('Stripe-Context: ', $header);
+                }
+
+                return true;
+            }), MOCK_URL . '/v2/xyz')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_context' => new StripeContext(['acct_123']),
+            'api_base' => MOCK_URL,
+        ]);
+        $params = [];
+        $client->rawRequest('post', '/v2/xyz', $params, [
+            // this should unset the header
+            'stripe_context' => new StripeContext(),
         ]);
     }
 
@@ -442,6 +492,66 @@ final class BaseStripeClientTest extends TestCase
             'api_base' => MOCK_URL,
         ]);
         $meterEventSession = $client->request('get', '/v2/billing/meter_event_session', [], []);
+        self::assertNotNull($meterEventSession);
+        self::assertInstanceOf(V2\Billing\MeterEventSession::class, $meterEventSession);
+    }
+
+    public function testV2GetRequestUnsetContext()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "v2.billing.meter_event_session"}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(self::once())
+            ->method('executeRequestWithRetries')
+            ->with(self::callback(function ($opts) {
+                foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
+                    $this->assertStringStartsNotWith('Stripe-Context: ', $header);
+                }
+
+                return true;
+            }), MOCK_URL . '/v2/billing/meter_event_session')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_version' => '2222-22-22.preview-v2',
+            'api_base' => MOCK_URL,
+            'stripe_context' => new StripeContext(['acct_123']),
+        ]);
+        $meterEventSession = $client->request('get', '/v2/billing/meter_event_session', [], [
+            'stripe_context' => new StripeContext(),
+        ]);
+        self::assertNotNull($meterEventSession);
+        self::assertInstanceOf(V2\Billing\MeterEventSession::class, $meterEventSession);
+    }
+
+    public function testV2GetRequestOverwritesContext()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "v2.billing.meter_event_session"}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(self::once())
+            ->method('executeRequestWithRetries')
+            ->with(self::callback(function ($opts) {
+                $this->assertContains('Stripe-Context: acct_456', $opts[\CURLOPT_HTTPHEADER]);
+
+                return true;
+            }), MOCK_URL . '/v2/billing/meter_event_session')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_version' => '2222-22-22.preview-v2',
+            'api_base' => MOCK_URL,
+            'stripe_context' => new StripeContext(['acct_123']),
+        ]);
+        $meterEventSession = $client->request('get', '/v2/billing/meter_event_session', [], [
+            'stripe_context' => new StripeContext(['acct_456']),
+        ]);
         self::assertNotNull($meterEventSession);
         self::assertInstanceOf(V2\Billing\MeterEventSession::class, $meterEventSession);
     }
@@ -747,7 +857,7 @@ final class BaseStripeClientTest extends TestCase
 
         self::assertSame('evt_234', $event->id);
         self::assertSame('v1.billing.meter.error_report_triggered', $event->type);
-        self::assertSame('acct_123', $event->context);
+        self::assertSame('acct_123', (string) $event->context);
         self::assertSame('2022-02-15T00:27:45.330Z', $event->created);
         self::assertFalse($event->livemode);
 
