@@ -2,8 +2,6 @@
 
 namespace Stripe;
 
-use PHPUnit\Framework\TestCase;
-
 /**
  * @internal
  *
