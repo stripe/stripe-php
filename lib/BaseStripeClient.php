@@ -55,7 +55,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * - client_id (null|string): the Stripe client ID, to be used in OAuth requests.
      * - stripe_account (null|string): a Stripe account ID. If set, all requests sent by the client
      *   will automatically use the {@code Stripe-Account} header with that account ID.
-     * - stripe_context (null|string): a Stripe account or compartment ID. If set, all requests sent by the client
+     * - stripe_context (null|string|\Stripe\StripeContext): a Stripe account or compartment ID. If set, all requests sent by the client
      *   will automatically use the {@code Stripe-Context} header with that ID.
      * - stripe_version (null|string): a Stripe API version. If set, all requests sent by the client
      *   will include the {@code Stripe-Version} header with that API version.
@@ -135,7 +135,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     /**
      * Gets the Stripe Context ID used by the client to send requests.
      *
-     * @return null|string the Stripe Context ID used by the client to send requests
+     * @return null|string|StripeContext the Stripe Context ID used by the client to send requests
      */
     public function getStripeContext()
     {
@@ -268,10 +268,6 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         if (\is_array($opts) && \array_key_exists('headers', $opts)) {
             $headers = $opts['headers'] ?: [];
             unset($opts['headers']);
-        }
-        if (\is_array($opts) && \array_key_exists('stripe_context', $opts)) {
-            $headers['Stripe-Context'] = $opts['stripe_context'];
-            unset($opts['stripe_context']);
         }
 
         $defaultRawRequestOpts = $this->defaultOpts;
@@ -428,8 +424,8 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         }
 
         // stripe_context
-        if (null !== $config['stripe_context'] && !\is_string($config['stripe_context'])) {
-            throw new Exception\InvalidArgumentException('stripe_context must be null or a string');
+        if (null !== $config['stripe_context'] && !\is_string($config['stripe_context']) && !($config['stripe_context'] instanceof StripeContext)) {
+            throw new Exception\InvalidArgumentException('stripe_context must be null, a string, or a StripeContext instance');
         }
 
         // stripe_version
