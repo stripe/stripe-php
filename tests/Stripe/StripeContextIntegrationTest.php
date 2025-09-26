@@ -2,7 +2,6 @@
 
 namespace Stripe;
 
-use PHPUnit\Framework\TestCase;
 use Stripe\Util\RequestOptions;
 use Stripe\V2\EventNotification;
 
