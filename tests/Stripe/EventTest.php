@@ -2,16 +2,16 @@
 
 namespace Stripe;
 
+use Stripe\Events\UnknownEventNotification;
 use Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification;
 use Stripe\Events\V1BillingMeterNoMeterFoundEventNotification;
-use Stripe\V2\EventNotification;
-use Stripe\V2\UnknownEventNotification;
+use Stripe\V2\Core\EventNotification;
 
 /**
  * @internal
  *
  * @covers \Stripe\Event
- * @covers \Stripe\V2\Event
+ * @covers \Stripe\V2\Core\Event
  */
 final class EventTest extends TestCase
 {

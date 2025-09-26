@@ -1,7 +1,8 @@
 <?php
 
-namespace Stripe\V2;
+namespace Stripe\V2\Core;
 
+use Stripe\Events\UnknownEventNotification;
 use Stripe\Reason;
 use Stripe\RelatedObject;
 use Stripe\Util\EventNotificationTypes;
