@@ -42,7 +42,7 @@ final class StripeContextIntegrationTest extends TestCase
     {
         $context = new StripeContext(['a', 'b', 'c']);
         $client = new StripeClient(['api_key' => 'sk_test_123', 'stripe_context' => $context]);
-        self::assertSame('a/b/c', $client->getStripeContext());
+        self::assertSame(['a', 'b', 'c'], $client->getStripeContext()->getSegments());
     }
 
     public function testStripeClientWithNullContext()
