@@ -5,6 +5,9 @@ require __DIR__ . '/lib/Util/ApiVersion.php';
 // Stripe singleton
 require __DIR__ . '/lib/Stripe.php';
 
+// Stripe Context
+require __DIR__ . '/lib/StripeContext.php';
+
 // Utilities
 require __DIR__ . '/lib/Util/CaseInsensitiveArray.php';
 require __DIR__ . '/lib/Util/LoggerInterface.php';
@@ -801,6 +804,8 @@ require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentCreatedEvent.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentCreatedEventNotification.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentFailedEvent.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentFailedEventNotification.php';
+require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentRequiresCaptureEvent.php';
+require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentRequiresCaptureEventNotification.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentSucceededEvent.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentSucceededEventNotification.php';
 require __DIR__ . '/lib/Exception/AlreadyCanceledException.php';

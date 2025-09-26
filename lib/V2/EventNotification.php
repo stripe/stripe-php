@@ -14,7 +14,7 @@ use Stripe\Util\EventNotificationTypes;
  * @property string             $id       Unique identifier for the event.
  * @property string             $type     The type of the event.
  * @property string             $created  Time at which the object was created.
- * @property null|string        $context  Authentication context needed to fetch the event or related object.
+ * @property null|\Stripe\StripeContext        $context  Authentication context needed to fetch the event or related object.
  * @property null|Reason $reason Reason for the event.
  * @property bool $livemode Livemode indicates if the event is from a production(true) or test(false) account.
  */
@@ -48,8 +48,8 @@ abstract class EventNotification
         if (\array_key_exists('created', $json)) {
             $this->created = $json['created'];
         }
-        if (\array_key_exists('context', $json)) {
-            $this->context = $json['context'];
+        if (\array_key_exists('context', $json) && null !== $json['context']) {
+            $this->context = \Stripe\StripeContext::parse($json['context']);
         }
         if (\array_key_exists('livemode', $json)) {
             $this->livemode = $json['livemode'];
