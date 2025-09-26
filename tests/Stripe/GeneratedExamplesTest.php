@@ -10749,6 +10749,51 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
     }
 
+    public function testV2PaymentsOffSessionPaymentPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/off_session_payments/id_123/capture',
+            [
+                'amount_to_capture' => 1374310455,
+                'metadata' => ['key' => 'metadata'],
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.payments.off_session_payment',
+                'amount_requested' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'cadence' => 'unscheduled',
+                'compartment_id' => 'compartment_id',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'customer' => 'customer',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'payment_method' => 'payment_method',
+                'payments_orchestration' => ['enabled' => []],
+                'retry_details' => [
+                    'attempts' => [],
+                    'retry_strategy' => 'scheduled',
+                ],
+                'status' => 'pending',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->capture(
+            'id_123',
+            [
+                'amount_to_capture' => 1374310455,
+                'metadata' => ['key' => 'metadata'],
+            ]
+        );
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
     public function testV2TaxAutomaticRulePost()
     {
         $this->stubRequest(
