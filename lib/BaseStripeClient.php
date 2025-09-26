@@ -3,7 +3,7 @@
 namespace Stripe;
 
 use Stripe\Util\Util;
-use Stripe\V2\EventNotification;
+use Stripe\V2\Core\EventNotification;
 
 class BaseStripeClient implements StripeClientInterface, StripeStreamingClientInterface
 {

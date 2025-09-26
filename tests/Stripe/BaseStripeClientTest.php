@@ -4,7 +4,7 @@ namespace Stripe;
 
 use Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification;
 use Stripe\Util\ApiVersion;
-use Stripe\V2\UnknownEventNotification;
+use Stripe\Events\UnknownEventNotification;
 
 /**
  * @internal

@@ -69,9 +69,9 @@ require __DIR__ . '/lib/SingletonApiResource.php';
 require __DIR__ . '/lib/Service/ServiceNavigatorTrait.php';
 require __DIR__ . '/lib/Service/AbstractService.php';
 require __DIR__ . '/lib/Service/AbstractServiceFactory.php';
-require __DIR__ . '/lib/V2/Event.php';
-require __DIR__ . '/lib/V2/EventNotification.php';
-require __DIR__ . '/lib/V2/UnknownEventNotification.php';
+require __DIR__ . '/lib/V2/Core/Event.php';
+require __DIR__ . '/lib/V2/Core/EventNotification.php';
+require __DIR__ . '/lib/Events/UnknownEventNotification.php';
 require __DIR__ . '/lib/Reason.php';
 require __DIR__ . '/lib/RelatedObject.php';
 require __DIR__ . '/lib/Collection.php';
@@ -388,8 +388,8 @@ require __DIR__ . '/lib/Treasury/TransactionEntry.php';
 require __DIR__ . '/lib/V2/Billing/MeterEvent.php';
 require __DIR__ . '/lib/V2/Billing/MeterEventAdjustment.php';
 require __DIR__ . '/lib/V2/Billing/MeterEventSession.php';
+require __DIR__ . '/lib/V2/Core/EventDestination.php';
 require __DIR__ . '/lib/V2/DeletedObject.php';
-require __DIR__ . '/lib/V2/EventDestination.php';
 require __DIR__ . '/lib/WebhookEndpoint.php';
 
 // The end of the section generated from our OpenAPI spec
