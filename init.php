@@ -391,8 +391,8 @@ require __DIR__ . '/lib/Treasury/TransactionEntry.php';
 require __DIR__ . '/lib/V2/Billing/MeterEvent.php';
 require __DIR__ . '/lib/V2/Billing/MeterEventAdjustment.php';
 require __DIR__ . '/lib/V2/Billing/MeterEventSession.php';
+require __DIR__ . '/lib/V2/Core/EventDestination.php';
 require __DIR__ . '/lib/V2/DeletedObject.php';
-require __DIR__ . '/lib/V2/EventDestination.php';
 require __DIR__ . '/lib/WebhookEndpoint.php';
 
 // The end of the section generated from our OpenAPI spec
