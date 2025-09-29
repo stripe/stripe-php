@@ -8,7 +8,7 @@ namespace Stripe\Events;
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  * @property \Stripe\EventData\V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventData $data data associated with the event
  */
-class V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent extends \Stripe\V2\Event
+class V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent extends \Stripe\V2\Core\Event
 {
     const LOOKUP_TYPE = 'v2.core.account[configuration.storer].capability_status_updated';
 
