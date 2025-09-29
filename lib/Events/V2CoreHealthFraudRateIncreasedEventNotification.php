@@ -4,7 +4,7 @@
 
 namespace Stripe\Events;
 
-class V2CoreHealthFraudRateIncreasedEventNotification extends \Stripe\V2\EventNotification
+class V2CoreHealthFraudRateIncreasedEventNotification extends \Stripe\V2\Core\EventNotification
 {
     const LOOKUP_TYPE = 'v2.core.health.fraud_rate.increased';
 

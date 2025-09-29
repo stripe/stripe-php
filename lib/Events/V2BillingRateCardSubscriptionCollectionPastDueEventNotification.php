@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V2BillingRateCardSubscriptionCollectionPastDueEventNotification extends \Stripe\V2\EventNotification
+class V2BillingRateCardSubscriptionCollectionPastDueEventNotification extends \Stripe\V2\Core\EventNotification
 {
     const LOOKUP_TYPE = 'v2.billing.rate_card_subscription.collection_past_due';
     public $related_object;

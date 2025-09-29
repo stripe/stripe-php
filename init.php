@@ -5,6 +5,9 @@ require __DIR__ . '/lib/Util/ApiVersion.php';
 // Stripe singleton
 require __DIR__ . '/lib/Stripe.php';
 
+// Stripe Context
+require __DIR__ . '/lib/StripeContext.php';
+
 // Utilities
 require __DIR__ . '/lib/Util/CaseInsensitiveArray.php';
 require __DIR__ . '/lib/Util/LoggerInterface.php';
@@ -68,9 +71,9 @@ require __DIR__ . '/lib/SingletonApiResource.php';
 require __DIR__ . '/lib/Service/ServiceNavigatorTrait.php';
 require __DIR__ . '/lib/Service/AbstractService.php';
 require __DIR__ . '/lib/Service/AbstractServiceFactory.php';
-require __DIR__ . '/lib/V2/Event.php';
-require __DIR__ . '/lib/V2/EventNotification.php';
-require __DIR__ . '/lib/V2/UnknownEventNotification.php';
+require __DIR__ . '/lib/V2/Core/Event.php';
+require __DIR__ . '/lib/V2/Core/EventNotification.php';
+require __DIR__ . '/lib/Events/UnknownEventNotification.php';
 require __DIR__ . '/lib/Reason.php';
 require __DIR__ . '/lib/RelatedObject.php';
 require __DIR__ . '/lib/Collection.php';
@@ -801,6 +804,8 @@ require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentCreatedEvent.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentCreatedEventNotification.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentFailedEvent.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentFailedEventNotification.php';
+require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentRequiresCaptureEvent.php';
+require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentRequiresCaptureEventNotification.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentSucceededEvent.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentSucceededEventNotification.php';
 require __DIR__ . '/lib/Exception/AlreadyCanceledException.php';
@@ -1185,10 +1190,10 @@ require __DIR__ . '/lib/V2/Core/Account.php';
 require __DIR__ . '/lib/V2/Core/AccountLink.php';
 require __DIR__ . '/lib/V2/Core/AccountPerson.php';
 require __DIR__ . '/lib/V2/Core/ClaimableSandbox.php';
+require __DIR__ . '/lib/V2/Core/EventDestination.php';
 require __DIR__ . '/lib/V2/Core/Vault/GbBankAccount.php';
 require __DIR__ . '/lib/V2/Core/Vault/UsBankAccount.php';
 require __DIR__ . '/lib/V2/DeletedObject.php';
-require __DIR__ . '/lib/V2/EventDestination.php';
 require __DIR__ . '/lib/V2/FinancialAddressCreditSimulation.php';
 require __DIR__ . '/lib/V2/FinancialAddressGeneratedMicrodeposits.php';
 require __DIR__ . '/lib/V2/MoneyManagement/Adjustment.php';

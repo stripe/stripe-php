@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V1IdentityVerificationSessionVerifiedEventNotification extends \Stripe\V2\EventNotification
+class V1IdentityVerificationSessionVerifiedEventNotification extends \Stripe\V2\Core\EventNotification
 {
     const LOOKUP_TYPE = 'v1.identity.verification_session.verified';
     public $related_object;

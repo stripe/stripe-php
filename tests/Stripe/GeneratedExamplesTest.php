@@ -609,7 +609,7 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->core->events->retrieve('ll_123', []);
-        self::assertInstanceOf(V2\Event::class, $result);
+        self::assertInstanceOf(V2\Core\Event::class, $result);
     }
 
     public function testCountrySpecsGet()
@@ -8119,7 +8119,7 @@ final class GeneratedExamplesTest extends TestCase
             'object_id' => 'object_id',
         ]);
         self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Event::class, $result->data[0]);
+        self::assertInstanceOf(V2\Core\Event::class, $result->data[0]);
     }
 
     public function testV2CoreEventGet2()
@@ -8141,7 +8141,7 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->core->events->retrieve('id_123', []);
-        self::assertInstanceOf(V2\Event::class, $result);
+        self::assertInstanceOf(V2\Core\Event::class, $result);
     }
 
     public function testV2CoreEventDestinationGet()
@@ -8176,7 +8176,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->core->eventDestinations->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\EventDestination::class, $result->data[0]);
+        self::assertInstanceOf(V2\Core\EventDestination::class, $result->data[0]);
     }
 
     public function testV2CoreEventDestinationPost()
@@ -8214,7 +8214,7 @@ final class GeneratedExamplesTest extends TestCase
             'name' => 'name',
             'type' => 'amazon_eventbridge',
         ]);
-        self::assertInstanceOf(V2\EventDestination::class, $result);
+        self::assertInstanceOf(V2\Core\EventDestination::class, $result);
     }
 
     public function testV2CoreEventDestinationDelete()
@@ -8267,7 +8267,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\EventDestination::class, $result);
+        self::assertInstanceOf(V2\Core\EventDestination::class, $result);
     }
 
     public function testV2CoreEventDestinationPost2()
@@ -8298,7 +8298,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\EventDestination::class, $result);
+        self::assertInstanceOf(V2\Core\EventDestination::class, $result);
     }
 
     public function testV2CoreEventDestinationPost3()
@@ -8329,7 +8329,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\EventDestination::class, $result);
+        self::assertInstanceOf(V2\Core\EventDestination::class, $result);
     }
 
     public function testV2CoreEventDestinationPost4()
@@ -8360,7 +8360,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\EventDestination::class, $result);
+        self::assertInstanceOf(V2\Core\EventDestination::class, $result);
     }
 
     public function testV2CoreEventDestinationPost5()
@@ -8385,7 +8385,7 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             []
         );
-        self::assertInstanceOf(V2\Event::class, $result);
+        self::assertInstanceOf(V2\Core\Event::class, $result);
     }
 
     public function testV2CoreVaultGbBankAccountPost()
@@ -10745,6 +10745,51 @@ final class GeneratedExamplesTest extends TestCase
         $result = $this->v2Client->v2->payments->offSessionPayments->cancel(
             'id_123',
             []
+        );
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/off_session_payments/id_123/capture',
+            [
+                'amount_to_capture' => 1374310455,
+                'metadata' => ['key' => 'metadata'],
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.payments.off_session_payment',
+                'amount_requested' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'cadence' => 'unscheduled',
+                'compartment_id' => 'compartment_id',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'customer' => 'customer',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'payment_method' => 'payment_method',
+                'payments_orchestration' => ['enabled' => []],
+                'retry_details' => [
+                    'attempts' => [],
+                    'retry_strategy' => 'scheduled',
+                ],
+                'status' => 'pending',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->capture(
+            'id_123',
+            [
+                'amount_to_capture' => 1374310455,
+                'metadata' => ['key' => 'metadata'],
+            ]
         );
         self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
     }

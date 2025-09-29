@@ -4,7 +4,7 @@
 
 namespace Stripe\Events;
 
-class V2CoreHealthIssuingAuthorizationRequestTimeoutFiringEventNotification extends \Stripe\V2\EventNotification
+class V2CoreHealthIssuingAuthorizationRequestTimeoutFiringEventNotification extends \Stripe\V2\Core\EventNotification
 {
     const LOOKUP_TYPE = 'v2.core.health.issuing_authorization_request_timeout.firing';
 

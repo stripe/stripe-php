@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V1SigmaScheduledQueryRunCreatedEventNotification extends \Stripe\V2\EventNotification
+class V1SigmaScheduledQueryRunCreatedEventNotification extends \Stripe\V2\Core\EventNotification
 {
     const LOOKUP_TYPE = 'v1.sigma.scheduled_query_run.created';
     public $related_object;

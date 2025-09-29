@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V2BillingPricingPlanSubscriptionServicingCanceledEventNotification extends \Stripe\V2\EventNotification
+class V2BillingPricingPlanSubscriptionServicingCanceledEventNotification extends \Stripe\V2\Core\EventNotification
 {
     const LOOKUP_TYPE = 'v2.billing.pricing_plan_subscription.servicing_canceled';
     public $related_object;

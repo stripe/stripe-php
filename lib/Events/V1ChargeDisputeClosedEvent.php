@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V1ChargeDisputeClosedEvent extends \Stripe\V2\Event
+class V1ChargeDisputeClosedEvent extends \Stripe\V2\Core\Event
 {
     const LOOKUP_TYPE = 'v1.charge.dispute.closed';
 

@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent extends \Stripe\V2\Event
+class V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent extends \Stripe\V2\Core\Event
 {
     const LOOKUP_TYPE = 'v2.payments.off_session_payment.authorization_attempt_started';
 

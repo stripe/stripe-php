@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V1TerminalReaderActionFailedEventNotification extends \Stripe\V2\EventNotification
+class V1TerminalReaderActionFailedEventNotification extends \Stripe\V2\Core\EventNotification
 {
     const LOOKUP_TYPE = 'v1.terminal.reader.action_failed';
     public $related_object;

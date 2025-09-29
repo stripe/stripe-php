@@ -4,7 +4,7 @@
 
 namespace Stripe\Events;
 
-class V2CoreHealthTrafficVolumeDropFiringEventNotification extends \Stripe\V2\EventNotification
+class V2CoreHealthTrafficVolumeDropFiringEventNotification extends \Stripe\V2\Core\EventNotification
 {
     const LOOKUP_TYPE = 'v2.core.health.traffic_volume_drop.firing';
 
