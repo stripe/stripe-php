@@ -17,7 +17,7 @@ class EventService extends \Stripe\Service\AbstractService
      * @param null|array{limit?: int, object_id: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Collection<\Stripe\V2\Event>
+     * @return \Stripe\V2\Collection<\Stripe\V2\Core\Event>
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -33,7 +33,7 @@ class EventService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Event
+     * @return \Stripe\V2\Core\Event
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

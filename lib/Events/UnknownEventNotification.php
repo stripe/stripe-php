@@ -1,6 +1,8 @@
 <?php
 
-namespace Stripe\V2;
+namespace Stripe\Events;
+
+use Stripe\V2\Core\EventNotification;
 
 /**
  * A class representing an EventNotification that the SDK doesn't have types for.

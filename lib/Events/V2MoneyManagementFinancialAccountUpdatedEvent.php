@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V2MoneyManagementFinancialAccountUpdatedEvent extends \Stripe\V2\Event
+class V2MoneyManagementFinancialAccountUpdatedEvent extends \Stripe\V2\Core\Event
 {
     const LOOKUP_TYPE = 'v2.money_management.financial_account.updated';
 

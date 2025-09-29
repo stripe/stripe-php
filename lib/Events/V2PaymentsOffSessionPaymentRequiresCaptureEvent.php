@@ -6,16 +6,15 @@ namespace Stripe\Events;
 
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
- * @property \Stripe\EventData\V1BillingMeterErrorReportTriggeredEventData $data data associated with the event
  */
-class V1BillingMeterErrorReportTriggeredEvent extends \Stripe\V2\Core\Event
+class V2PaymentsOffSessionPaymentRequiresCaptureEvent extends \Stripe\V2\Core\Event
 {
-    const LOOKUP_TYPE = 'v1.billing.meter.error_report_triggered';
+    const LOOKUP_TYPE = 'v2.payments.off_session_payment.requires_capture';
 
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\Billing\Meter
+     * @return \Stripe\V2\Payments\OffSessionPayment
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -27,15 +26,5 @@ class V1BillingMeterErrorReportTriggeredEvent extends \Stripe\V2\Core\Event
         ], [], $apiMode);
 
         return \Stripe\Util\Util::convertToStripeObject($object, $options, $apiMode);
-    }
-
-    public static function constructFrom($values, $opts = null, $apiMode = 'v2')
-    {
-        $evt = parent::constructFrom($values, $opts, $apiMode);
-        if (null !== $evt->data) {
-            $evt->data = \Stripe\EventData\V1BillingMeterErrorReportTriggeredEventData::constructFrom($evt->data, $opts, $apiMode);
-        }
-
-        return $evt;
     }
 }

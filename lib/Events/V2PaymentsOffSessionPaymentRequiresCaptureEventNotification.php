@@ -7,15 +7,15 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification extends \Stripe\V2\Core\EventNotification
+class V2PaymentsOffSessionPaymentRequiresCaptureEventNotification extends \Stripe\V2\Core\EventNotification
 {
-    const LOOKUP_TYPE = 'v2.core.account[configuration.merchant].updated';
+    const LOOKUP_TYPE = 'v2.payments.off_session_payment.requires_capture';
     public $related_object;
 
     /**
      * Retrieves the full event object from the API. Make an API request on every call.
      *
-     * @return V2CoreAccountIncludingConfigurationMerchantUpdatedEvent
+     * @return V2PaymentsOffSessionPaymentRequiresCaptureEvent
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -27,7 +27,7 @@ class V2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification extend
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\V2\Core\Account
+     * @return \Stripe\V2\Payments\OffSessionPayment
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
