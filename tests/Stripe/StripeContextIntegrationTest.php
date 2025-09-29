@@ -3,7 +3,7 @@
 namespace Stripe;
 
 use Stripe\Util\RequestOptions;
-use Stripe\V2\EventNotification;
+use Stripe\V2\Core\EventNotification;
 
 /**
  * @internal
