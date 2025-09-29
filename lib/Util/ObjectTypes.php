@@ -163,8 +163,8 @@ class ObjectTypes
         \Stripe\V2\Billing\MeterEvent::OBJECT_NAME => \Stripe\V2\Billing\MeterEvent::class,
         \Stripe\V2\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustment::class,
         \Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \Stripe\V2\Billing\MeterEventSession::class,
-        \Stripe\V2\Core\Event::OBJECT_NAME => \Stripe\V2\Core\Event::class,
-        \Stripe\V2\Core\EventDestination::OBJECT_NAME => \Stripe\V2\Core\EventDestination::class,
+        \Stripe\V2\Event::OBJECT_NAME => \Stripe\V2\Event::class,
+        \Stripe\V2\EventDestination::OBJECT_NAME => \Stripe\V2\EventDestination::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
 }

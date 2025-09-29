@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\V2\Core;
+namespace Stripe\V2;
 
 /**
  * Set up an event destination to receive events from Stripe across multiple destination types, including <a href="https://docs.stripe.com/webhooks">webhook endpoints</a> and <a href="https://docs.stripe.com/event-destinations/eventbridge">Amazon EventBridge</a>. Event destinations support receiving <a href="https://docs.stripe.com/api/v2/events">thin events</a> and <a href="https://docs.stripe.com/api/events">snapshot events</a>.

@@ -8,7 +8,7 @@ namespace Stripe\Events;
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  * @property \Stripe\EventData\V1BillingMeterErrorReportTriggeredEventData $data data associated with the event
  */
-class V1BillingMeterErrorReportTriggeredEvent extends \Stripe\V2\Core\Event
+class V1BillingMeterErrorReportTriggeredEvent extends \Stripe\V2\Event
 {
     const LOOKUP_TYPE = 'v1.billing.meter.error_report_triggered';
 

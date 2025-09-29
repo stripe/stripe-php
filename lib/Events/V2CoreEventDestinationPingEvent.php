@@ -7,14 +7,14 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V2CoreEventDestinationPingEvent extends \Stripe\V2\Core\Event
+class V2CoreEventDestinationPingEvent extends \Stripe\V2\Event
 {
     const LOOKUP_TYPE = 'v2.core.event_destination.ping';
 
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\V2\Core\EventDestination
+     * @return \Stripe\V2\EventDestination
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
