@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\EventData\V2CoreHealthIssuingAuthorizationRequestTimeoutFiringEventData $data data associated with the event
  */
-class V2CoreHealthIssuingAuthorizationRequestTimeoutFiringEvent extends \Stripe\V2\Event
+class V2CoreHealthIssuingAuthorizationRequestTimeoutFiringEvent extends \Stripe\V2\Core\Event
 {
     const LOOKUP_TYPE = 'v2.core.health.issuing_authorization_request_timeout.firing';
 

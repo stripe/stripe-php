@@ -4,7 +4,7 @@
 
 namespace Stripe\Events;
 
-class V2CoreHealthEventGenerationFailureResolvedEventNotification extends \Stripe\V2\EventNotification
+class V2CoreHealthEventGenerationFailureResolvedEventNotification extends \Stripe\V2\Core\EventNotification
 {
     const LOOKUP_TYPE = 'v2.core.health.event_generation_failure.resolved';
 

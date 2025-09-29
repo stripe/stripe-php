@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V1InvoicePaymentActionRequiredEventNotification extends \Stripe\V2\EventNotification
+class V1InvoicePaymentActionRequiredEventNotification extends \Stripe\V2\Core\EventNotification
 {
     const LOOKUP_TYPE = 'v1.invoice.payment_action_required';
     public $related_object;

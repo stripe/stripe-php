@@ -8,7 +8,7 @@ namespace Stripe\Events;
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  * @property \Stripe\EventData\V2BillingPricingPlanVersionCreatedEventData $data data associated with the event
  */
-class V2BillingPricingPlanVersionCreatedEvent extends \Stripe\V2\Event
+class V2BillingPricingPlanVersionCreatedEvent extends \Stripe\V2\Core\Event
 {
     const LOOKUP_TYPE = 'v2.billing.pricing_plan_version.created';
 

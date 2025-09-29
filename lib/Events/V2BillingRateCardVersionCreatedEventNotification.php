@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V2BillingRateCardVersionCreatedEventNotification extends \Stripe\V2\EventNotification
+class V2BillingRateCardVersionCreatedEventNotification extends \Stripe\V2\Core\EventNotification
 {
     const LOOKUP_TYPE = 'v2.billing.rate_card_version.created';
     public $related_object;

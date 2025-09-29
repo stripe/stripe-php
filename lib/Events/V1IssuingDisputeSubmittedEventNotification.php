@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V1IssuingDisputeSubmittedEventNotification extends \Stripe\V2\EventNotification
+class V1IssuingDisputeSubmittedEventNotification extends \Stripe\V2\Core\EventNotification
 {
     const LOOKUP_TYPE = 'v1.issuing_dispute.submitted';
     public $related_object;

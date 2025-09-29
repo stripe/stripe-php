@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V1CreditNoteCreatedEvent extends \Stripe\V2\Event
+class V1CreditNoteCreatedEvent extends \Stripe\V2\Core\Event
 {
     const LOOKUP_TYPE = 'v1.credit_note.created';
 

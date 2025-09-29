@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\EventData\V2CoreHealthWebhookLatencyFiringEventData $data data associated with the event
  */
-class V2CoreHealthWebhookLatencyFiringEvent extends \Stripe\V2\Event
+class V2CoreHealthWebhookLatencyFiringEvent extends \Stripe\V2\Core\Event
 {
     const LOOKUP_TYPE = 'v2.core.health.webhook_latency.firing';
 

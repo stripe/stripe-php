@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V1SetupIntentRequiresActionEventNotification extends \Stripe\V2\EventNotification
+class V1SetupIntentRequiresActionEventNotification extends \Stripe\V2\Core\EventNotification
 {
     const LOOKUP_TYPE = 'v1.setup_intent.requires_action';
     public $related_object;
