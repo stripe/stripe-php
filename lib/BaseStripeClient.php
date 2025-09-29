@@ -3,7 +3,7 @@
 namespace Stripe;
 
 use Stripe\Util\Util;
-use Stripe\V2\EventNotification;
+use Stripe\V2\Core\EventNotification;
 
 class BaseStripeClient implements StripeClientInterface, StripeStreamingClientInterface
 {
@@ -489,7 +489,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * Returns a V2\Events instance using the provided JSON payload. Throws an
+     * Returns a \Stripe\V2\Core\Events instance using the provided JSON payload. Throws an
      * Exception\UnexpectedValueException if the payload is not valid JSON, and
      * an Exception\SignatureVerificationException if the signature
      * verification fails for any reason.
