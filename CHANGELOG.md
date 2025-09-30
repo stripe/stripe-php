@@ -1,7 +1,70 @@
 # Changelog
-This release changes the pinned API version to `2025-09-30.clover` and contains breaking changes (prefixed with ⚠️ below)
+## 18.1.0-beta.1 - 2025-09-30
+This release changes the pinned API version to `2025-09-30.preview`. It is built on top of SDK version 18.0.0 which contains breaking changes. Please review the [changelog for 18.0.0](https://github.com/stripe/stripe-php/blob/master/CHANGELOG.md#1800---2025-09-30) if upgrading from older SDK versions.
+
+* [#1914](https://github.com/stripe/stripe-php/pull/1914) Update generated code for beta
+  * Add support for `attach_cadence` method on resource `Subscription`
+  * Add support for `billing_cadence` on `Invoice.create_preview().$params`, `Subscription.create().$params`, `Subscription.update().$params`, and `Subscription`
+  * Add support for `billing_cadence_details` on `Invoice.parent` and `QuotePreviewInvoice.parent`
+  * Add support for new value `billing_cadence_details` on enums `Invoice.parent.type` and `QuotePreviewInvoice.parent.type`
+* [#1907](https://github.com/stripe/stripe-php/pull/1907) Update generated code for beta
+  * Add support for new resources `V2.Billing.BillSettingVersion`, `V2.Billing.BillSetting`, `V2.Billing.Cadence`, `V2.Billing.CollectionSettingVersion`, `V2.Billing.CollectionSetting`, and `V2.Billing.Profile`
+  * Add support for `all`, `create`, `retrieve`, and `update` methods on resources `V2.Billing.BillSetting`, `V2.Billing.CollectionSetting`, and `V2.Billing.Profile`
+  * Add support for `all` and `retrieve` methods on resources `V2.Billing.BillSettingVersion` and `V2.Billing.CollectionSettingVersion`
+  * Add support for `all`, `cancel`, `create`, `retrieve`, and `update` methods on resource `V2.Billing.Cadence`
+  * Add support for thin event `V2BillingBillSettingUpdatedEvent` with related object `V2.Billing.BillSetting`
+  * Remove support for `currency` on `V2\MoneyManagement\FinancialAddress.create().$params`
+  * Add support for `amount_details` and `payments_orchestration` on `V2.Payments.OffSessionPayment` and `V2\Payments\OffSessionPayment.create().$params`
+  * Add support for `mandate_data` and `payment_method_options` on `V2\Payments\OffSessionPayment.create().$params`
+  * Add support for `retry_policy` on `V2.Payments.OffSessionPayment.retry_details` and `V2\Payments\OffSessionPayment.create().$params.retry_detail`
+  * Add support for `profile` on `V2.Core.Account.defaults`, `V2\Core\Account.create().$params.default`, and `V2\Core\Account.update().$params.default`
+  * Add support for `sepa_bank_account` on `V2.MoneyManagement.FinancialAddress.credentials` and `V2.MoneyManagement.ReceivedCredit.bank_transfer`
+  * Add support for new value `sepa_bank_account` on enum `V2.MoneyManagement.FinancialAddress.credentials.type`
+  * Add support for new value `crypto_wallet` on enum `V2.Core.Account.configuration.recipient.default_outbound_destination.type`
+  * Add support for `settlement_currency` on `V2.MoneyManagement.FinancialAddress`
+  * Add support for new value `authorization_expired` on enum `V2.Payments.OffSessionPayment.failure_reason`
+  * Change type of `V2.MoneyManagement.OutboundPaymentQuote.fx_quote.lock_expires_at` from `DateTime` to `nullable(DateTime)`
+  * Add support for `i_p` on `V2.Core.Account.identity.attestations.directorship_declaration`, `V2.Core.Account.identity.attestations.ownership_declaration`, `V2.Core.Account.identity.attestations.terms_of_service.account`, `V2.Core.Account.identity.attestations.terms_of_service.storer`, `V2.Core.Account.identity.individual.additional_terms_of_service.account`, `V2.Core.Person.additional_terms_of_service.account`, `V2\Core\Account.create().$params.identity.attestation.terms_of_service.account`, `V2\Core\Account.create().$params.identity.attestation.terms_of_service.storer`, `V2\Core\Account.update().$params.identity.attestation.terms_of_service.account`, `V2\Core\Account.update().$params.identity.attestation.terms_of_service.storer`, `V2\Core\Person.create().$params.additional_terms_of_service.account`, and `V2\Core\Person.update().$params.additional_terms_of_service.account`
+  * Remove support for `ip` on `V2.Core.Account.identity.attestations.directorship_declaration`, `V2.Core.Account.identity.attestations.ownership_declaration`, `V2.Core.Account.identity.attestations.terms_of_service.account`, `V2.Core.Account.identity.attestations.terms_of_service.storer`, `V2.Core.Account.identity.individual.additional_terms_of_service.account`, `V2.Core.Person.additional_terms_of_service.account`, `V2\Core\Account.create().$params.identity.attestation.terms_of_service.account`, `V2\Core\Account.create().$params.identity.attestation.terms_of_service.storer`, `V2\Core\Account.update().$params.identity.attestation.terms_of_service.account`, `V2\Core\Account.update().$params.identity.attestation.terms_of_service.storer`, `V2\Core\Person.create().$params.additional_terms_of_service.account`, and `V2\Core\Person.update().$params.additional_terms_of_service.account`
+  * Remove support for `doing_business_as`, `product_description`, and `url` on `V2.Core.Account.identity.business_details`, `V2\Core\Account.create().$params.identity.business_detail`, and `V2\Core\Account.update().$params.identity.business_detail`
+  * Add support for new values `heuristic` and `scheduled` on enum `V2.Payments.OffSessionPayment.retry_details.retry_strategy`
+  * Change type of `V2.MoneyManagement.OutboundPaymentQuote.fx_quote.lock_duration` from `literal('five_minutes')` to `enum('five_minutes'|'none')`
+  * Add support for new value `none` on enum `V2.MoneyManagement.OutboundPaymentQuote.fx_quote.lock_status`
+  * Add support for new value `crypto_wallet` on enum `V2.MoneyManagement.PayoutMethod.type`
+  * Add support for `origin_type` on `V2.MoneyManagement.ReceivedCredit.bank_transfer`
+  * Remove support for `payment_method_type` on `V2.MoneyManagement.ReceivedCredit.bank_transfer`
+  * Add support for `type` on `V2\MoneyManagement\FinancialAddress.create().$params`
+  * Add support for new values `financial_addressses.crypto_wallets`, `holds_currencies.usdc`, `outbound_payments.crypto_wallets`, and `outbound_transfers.crypto_wallets` on enum `EventsV2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent.updated_capability`
+* [#1896](https://github.com/stripe/stripe-php/pull/1896) Update generated code for beta
+  * Add support for new resources `Billing.Analytics.MeterUsageRow` and `Billing.Analytics.MeterUsage`
+  * Remove support for resources `Billing.MeterUsageRow` and `Billing.MeterUsage`
+  * Add support for `retrieve` method on resource `Billing.Analytics.MeterUsage`
+  * Remove support for `retrieve` method on resource `Billing.MeterUsage`
+  * Add support for `report_payment_attempt_informational` method on resource `PaymentRecord`
+  * Add support for `minimum_balance_by_currency` on `BalanceSettings.payments.payouts` and `BalanceSettings.update().$params.payment.payout`
+  * Change type of `BalanceSettings.update().$params.payment.settlement_timing.delay_days_override` from `longInteger` to `emptyable(longInteger)`
+  * Change `BalanceSettings.update().$params.payments` to be optional
+  * Remove support for values `saturday` and `sunday` from enum `BalanceSettings.payments.payouts.schedule.weekly_payout_days`
+  * Add support for `delay_days_override` on `BalanceSettings.payments.settlement_timing`
+  * Add support for `automatic_tax` and `invoice_creation` on `Checkout\Session.update().$params`
+  * Add support for `unit_label` on `Checkout\Session.update().$params.line_item.price_datum.product_datum`
+  * Add support for `invoice_settings` on `Checkout\Session.update().$params.subscription_datum`
+  * Change `Checkout.Session.collected_information.business_name` to be required
+  * Add support for `intended_submission_method` on `Dispute.update().$params` and `Dispute`
+  * Change type of `Dispute.smart_disputes.recommended_evidence` from `string` to `array(string)`
+  * Add support for `pix` on `Invoice.create().$params.payment_setting.payment_method_option`, `Invoice.payment_settings.payment_method_options`, `Invoice.update().$params.payment_setting.payment_method_option`, `QuotePreviewInvoice.payment_settings.payment_method_options`, `Subscription.create().$params.payment_setting.payment_method_option`, `Subscription.payment_settings.payment_method_options`, and `Subscription.update().$params.payment_setting.payment_method_option`
+  * Add support for `billing_schedules` on `Invoice.create_preview().$params.subscription_detail`, `Subscription.create().$params`, `Subscription.update().$params`, and `Subscription`
+  * Add support for new value `pix` on enums `Invoice.payment_settings.payment_method_types`, `QuotePreviewInvoice.payment_settings.payment_method_types`, and `Subscription.payment_settings.payment_method_types`
+  * Add support for `paypay` on `PaymentAttemptRecord.payment_method_details` and `PaymentRecord.payment_method_details`
+  * Add support for `wallet` on `PaymentAttemptRecord.payment_method_details.card` and `PaymentRecord.payment_method_details.card`
+  * Change type of `PaymentAttemptRecord.processor_details.custom.payment_reference` and `PaymentRecord.processor_details.custom.payment_reference` from `string` to `nullable(string)`
+  * Add support for `flexible` on `QuotePreviewSubscriptionSchedule.billing_mode`
+  * Add support for `billed_until` on `SubscriptionItem`
+  * Add support for error codes `financial_connections_account_pending_account_numbers` and `financial_connections_account_unavailable_account_numbers` on `QuotePreviewInvoice.last_finalization_error`
 
 ## 18.0.0 - 2025-09-30
+This release changes the pinned API version to `2025-09-30.clover` and contains breaking changes (prefixed with ⚠️ below)
+
 * [#1903](https://github.com/stripe/stripe-php/pull/1903) ⚠️ Add strongly typed EventNotifications
   We've overhauled how V2 Events are handled in the SDK! This approach should provide a lot more information at authoring and compile time, leading to more robust integrations. As part of this process, there are a number of changes to be aware of.
   - Added matching `EventNotification` classes for every v2 `Event`. For example, there's now a `V1BillingMeterErrorReportTriggeredEventNotification` to match the existing `V1BillingMeterErrorReportTriggeredEvent`. Each of these interfaces defines a `fetchEvent()` method to retrieve its corresponding event. For events with related objects, there's a `fetchRelatedObject()` method that performs the API call and casts the response to the correct type.
