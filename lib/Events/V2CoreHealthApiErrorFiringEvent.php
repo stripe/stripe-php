@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\EventData\V2CoreHealthApiErrorFiringEventData $data data associated with the event
  */
-class V2CoreHealthApiErrorFiringEvent extends \Stripe\V2\Event
+class V2CoreHealthApiErrorFiringEvent extends \Stripe\V2\Core\Event
 {
     const LOOKUP_TYPE = 'v2.core.health.api_error.firing';
 

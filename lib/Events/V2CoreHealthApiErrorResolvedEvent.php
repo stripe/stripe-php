@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\EventData\V2CoreHealthApiErrorResolvedEventData $data data associated with the event
  */
-class V2CoreHealthApiErrorResolvedEvent extends \Stripe\V2\Event
+class V2CoreHealthApiErrorResolvedEvent extends \Stripe\V2\Core\Event
 {
     const LOOKUP_TYPE = 'v2.core.health.api_error.resolved';
 

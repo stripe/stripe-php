@@ -2,6 +2,8 @@
 
 namespace Stripe;
 
+use Stripe\Events\UnknownEventNotification;
+use Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification;
 use Stripe\Util\ApiVersion;
 
 /**
@@ -85,6 +87,26 @@ final class BaseStripeClientTest extends TestCase
         $this->expectExceptionMessage('api_key must be null or a string');
 
         $client = new BaseStripeClient(['api_key' => 234]);
+    }
+
+    public function testCtorThrowsIfContextIsUnexpectedType()
+    {
+        $this->expectException(Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('stripe_context must be null, a string, or a StripeContext instance');
+
+        new BaseStripeClient(['stripe_context' => 234]);
+    }
+
+    public function testCtorAcceptsStripeClientClass()
+    {
+        $client = new BaseStripeClient(['stripe_context' => new StripeContext()]);
+        self::assertInstanceOf(StripeContext::class, $client->getStripeContext());
+    }
+
+    public function testCtorAcceptsStripeClientString()
+    {
+        $client = new BaseStripeClient(['stripe_context' => 'test_context']);
+        self::assertSame('test_context', $client->getStripeContext());
     }
 
     public function testCtorThrowsIfConfigArrayContainsUnexpectedKey()
@@ -396,7 +418,7 @@ final class BaseStripeClientTest extends TestCase
         $this->curlClientStub->expects(self::once())
             ->method('executeRequestWithRetries')
             ->with(self::callback(function ($opts) {
-                $this->assertContains('Stripe-Context: acct_123', $opts[\CURLOPT_HTTPHEADER]);
+                $this->assertContains('Stripe-Context: acct_456', $opts[\CURLOPT_HTTPHEADER]);
 
                 return true;
             }), MOCK_URL . '/v2/xyz')
@@ -410,7 +432,37 @@ final class BaseStripeClientTest extends TestCase
         ]);
         $params = [];
         $client->rawRequest('post', '/v2/xyz', $params, [
-            'stripe_context' => 'acct_123',
+            'stripe_context' => 'acct_456',
+        ]);
+    }
+
+    public function testReqOverridesClientContext()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(self::once())
+            ->method('executeRequestWithRetries')
+            ->with(self::callback(function ($opts) {
+                foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
+                    $this->assertStringStartsNotWith('Stripe-Context: ', $header);
+                }
+
+                return true;
+            }), MOCK_URL . '/v2/xyz')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_context' => new StripeContext(['acct_123']),
+            'api_base' => MOCK_URL,
+        ]);
+        $params = [];
+        $client->rawRequest('post', '/v2/xyz', $params, [
+            // this should unset the header
+            'stripe_context' => new StripeContext(),
         ]);
     }
 
@@ -440,6 +492,66 @@ final class BaseStripeClientTest extends TestCase
             'api_base' => MOCK_URL,
         ]);
         $meterEventSession = $client->request('get', '/v2/billing/meter_event_session', [], []);
+        self::assertNotNull($meterEventSession);
+        self::assertInstanceOf(V2\Billing\MeterEventSession::class, $meterEventSession);
+    }
+
+    public function testV2GetRequestUnsetContext()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "v2.billing.meter_event_session"}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(self::once())
+            ->method('executeRequestWithRetries')
+            ->with(self::callback(function ($opts) {
+                foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
+                    $this->assertStringStartsNotWith('Stripe-Context: ', $header);
+                }
+
+                return true;
+            }), MOCK_URL . '/v2/billing/meter_event_session')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_version' => '2222-22-22.preview-v2',
+            'api_base' => MOCK_URL,
+            'stripe_context' => new StripeContext(['acct_123']),
+        ]);
+        $meterEventSession = $client->request('get', '/v2/billing/meter_event_session', [], [
+            'stripe_context' => new StripeContext(),
+        ]);
+        self::assertNotNull($meterEventSession);
+        self::assertInstanceOf(V2\Billing\MeterEventSession::class, $meterEventSession);
+    }
+
+    public function testV2GetRequestOverwritesContext()
+    {
+        $this->curlClientStub->method('executeRequestWithRetries')
+            ->willReturn(['{"object": "v2.billing.meter_event_session"}', 200, []])
+        ;
+
+        $this->curlClientStub->expects(self::once())
+            ->method('executeRequestWithRetries')
+            ->with(self::callback(function ($opts) {
+                $this->assertContains('Stripe-Context: acct_456', $opts[\CURLOPT_HTTPHEADER]);
+
+                return true;
+            }), MOCK_URL . '/v2/billing/meter_event_session')
+        ;
+
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_version' => '2222-22-22.preview-v2',
+            'api_base' => MOCK_URL,
+            'stripe_context' => new StripeContext(['acct_123']),
+        ]);
+        $meterEventSession = $client->request('get', '/v2/billing/meter_event_session', [], [
+            'stripe_context' => new StripeContext(['acct_456']),
+        ]);
         self::assertNotNull($meterEventSession);
         self::assertInstanceOf(V2\Billing\MeterEventSession::class, $meterEventSession);
     }
@@ -721,18 +833,19 @@ final class BaseStripeClientTest extends TestCase
         ]);
     }
 
-    public function testParseThinEvent()
+    public function testParseEventNotification()
     {
         $jsonEvent = [
             'id' => 'evt_234',
             'object' => 'event',
-            'type' => 'financial_account.balance.opened',
+            'type' => 'v1.billing.meter.error_report_triggered',
             'created' => '2022-02-15T00:27:45.330Z',
+            'context' => 'acct_123',
+            'livemode' => false,
             'related_object' => [
-                'id' => 'fa_123',
-                'type' => 'financial_account',
-                'url' => '/v2/financial_accounts/fa_123',
-                'stripe_context' => 'acct_123',
+                'id' => 'meter_123',
+                'type' => 'billing.meter',
+                'url' => '/v1/financial_accounts/meter_123',
             ],
         ];
 
@@ -740,13 +853,47 @@ final class BaseStripeClientTest extends TestCase
         $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL, 'stripe_account' => 'acc_123']);
 
         $sigHeader = WebhookTest::generateHeader(['payload' => $eventData]);
-        $event = $client->parseThinEvent($eventData, $sigHeader, WebhookTest::SECRET);
+        $event = $client->parseEventNotification($eventData, $sigHeader, WebhookTest::SECRET);
 
-        self::assertNotInstanceOf(StripeObject::class, $event);
         self::assertSame('evt_234', $event->id);
-        self::assertSame('financial_account.balance.opened', $event->type);
+        self::assertSame('v1.billing.meter.error_report_triggered', $event->type);
+        self::assertSame('acct_123', (string) $event->context);
         self::assertSame('2022-02-15T00:27:45.330Z', $event->created);
-        self::assertSame('fa_123', $event->related_object->id);
+        self::assertFalse($event->livemode);
+
+        self::assertInstanceOf(V1BillingMeterErrorReportTriggeredEventNotification::class, $event);
+
+        // @var V1BillingMeterErrorReportTriggeredEventNotification $event
+        self::assertInstanceOf(RelatedObject::class, $event->related_object);
+        self::assertSame('meter_123', $event->related_object->id);
+    }
+
+    public function testParseUnknownEventNotification()
+    {
+        $jsonEvent = [
+            'id' => 'evt_234',
+            'object' => 'event',
+            'type' => 'imaginary',
+            'livemode' => true,
+            'created' => '2022-02-15T00:27:45.330Z',
+        ];
+
+        $eventData = json_encode($jsonEvent);
+        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL, 'stripe_account' => 'acc_123']);
+
+        $sigHeader = WebhookTest::generateHeader(['payload' => $eventData]);
+        $event = $client->parseEventNotification($eventData, $sigHeader, WebhookTest::SECRET);
+
+        self::assertSame('evt_234', $event->id);
+        self::assertSame('imaginary', $event->type);
+        self::assertNull($event->context);
+        self::assertSame('2022-02-15T00:27:45.330Z', $event->created);
+        self::assertTrue($event->livemode);
+
+        self::assertInstanceOf(UnknownEventNotification::class, $event);
+        // @var UnknownEventNotification $event
+        self::assertNull($event->related_object);
+        self::assertNull($event->fetchRelatedObject());
     }
 
     public function testV2OverridesPreviewVersionIfPassedInRawRequestOptions()

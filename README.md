@@ -15,6 +15,10 @@ API.
 
 PHP 5.6.0 and later.
 
+Note that per our [language version support policy](https://docs.stripe.com/sdks/versioning?server=php#stripe-sdk-language-version-support-policy), support for PHP 5.6, 7.0, and 7.1 will be removed in the March 2026 major version.
+
+Additional PHP versions will be dropped in future major versions, so upgrade to supported versions if possible.
+
 ## Composer
 
 You can install the bindings via [Composer](http://getcomposer.org/). Run the following command:
@@ -218,6 +222,7 @@ Some preview features require a name and version to be set in the `Stripe-Versio
 ```php
 Stripe::addBetaVersion("feature_beta", "v3");
 ```
+
 ### Private Preview SDKs
 
 Stripe has features in the [private preview phase](https://docs.stripe.com/release-phases) that can be accessed via versions of this package that have the `-alpha.X` suffix like `12.2.0-alpha.2`. These are invite-only features. Once invited, you can install the private preview SDKs by following the same instructions as for the [public preview SDKs](https://github.com/stripe/stripe-php?tab=readme-ov-file#public-preview-sdks) above and replacing the term `beta` with `alpha`.

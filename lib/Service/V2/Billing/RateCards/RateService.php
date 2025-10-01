@@ -35,7 +35,7 @@ class RateService extends \Stripe\Service\AbstractService
      * on the Rate Card.
      *
      * @param string $id
-     * @param null|array{custom_pricing_unit_amount?: array{id: string, value: string}, metadata?: array<string, string>, metered_item?: string, price?: string, tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], transform_quantity?: array{divide_by: int, round: string}, unit_amount?: string} $params
+     * @param null|array{custom_pricing_unit_amount?: array{id: string, value: string}, metadata?: array<string, string>, metered_item?: string, tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], transform_quantity?: array{divide_by: int, round: string}, unit_amount?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\RateCardRate
@@ -56,7 +56,7 @@ class RateService extends \Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Billing\RateCardRate
+     * @return \Stripe\V2\DeletedObject
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

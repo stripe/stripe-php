@@ -8,28 +8,23 @@ namespace Stripe\Events;
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  * @property \Stripe\EventData\V2CoreAccountPersonCreatedEventData $data data associated with the event
  */
-class V2CoreAccountPersonCreatedEvent extends \Stripe\V2\Event
+class V2CoreAccountPersonCreatedEvent extends \Stripe\V2\Core\Event
 {
     const LOOKUP_TYPE = 'v2.core.account_person.created';
 
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\V2\Core\Person
+     * @return \Stripe\V2\Core\AccountPerson
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function fetchRelatedObject()
     {
         $apiMode = \Stripe\Util\Util::getApiMode($this->related_object->url);
-        list($object, $options) = $this->_request(
-            'get',
-            $this->related_object->url,
-            [],
-            ['stripe_account' => $this->context],
-            [],
-            $apiMode
-        );
+        list($object, $options) = $this->_request('get', $this->related_object->url, [], [
+            'stripe_context' => $this->context,
+        ], [], $apiMode);
 
         return \Stripe\Util\Util::convertToStripeObject($object, $options, $apiMode);
     }

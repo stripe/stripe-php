@@ -9,10 +9,10 @@ namespace Stripe\V2\Billing;
  *
  * @property string $id The ID of the BillSetting object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property null|(object{tax: null|(object{type: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $calculation Settings related to calculating a bill.
+ * @property null|(object{tax?: (object{type: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $calculation Settings related to calculating a bill.
  * @property int $created Timestamp of when the object was created.
  * @property null|string $display_name An optional field for adding a display name for the BillSetting object.
- * @property null|(object{time_until_due: null|(object{interval: string, interval_count: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $invoice Settings related to invoice behavior.
+ * @property null|(object{time_until_due?: (object{interval: string, interval_count: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $invoice Settings related to invoice behavior.
  * @property null|string $invoice_rendering_template The ID of the invoice rendering template to be used when generating invoices.
  * @property string $latest_version The latest version of the current settings object. This will be Updated every time an attribute of the settings is updated.
  * @property string $live_version The current live version of the settings object. This can be different from latest_version if settings are updated without setting live_version='latest'.

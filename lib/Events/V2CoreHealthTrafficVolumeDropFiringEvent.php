@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\EventData\V2CoreHealthTrafficVolumeDropFiringEventData $data data associated with the event
  */
-class V2CoreHealthTrafficVolumeDropFiringEvent extends \Stripe\V2\Event
+class V2CoreHealthTrafficVolumeDropFiringEvent extends \Stripe\V2\Core\Event
 {
     const LOOKUP_TYPE = 'v2.core.health.traffic_volume_drop.firing';
 

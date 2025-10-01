@@ -13,7 +13,7 @@ namespace Stripe\V2\Billing;
  * @property string $currency Three-letter ISO currency code, in lowercase. Must be a supported currency.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $status Current status of the Billing Intent.
- * @property (object{canceled_at: null|int, committed_at: null|int, drafted_at: null|int, reserved_at: null|int}&\Stripe\StripeObject) $status_transitions Timestamps for status transitions of the Billing Intent.
+ * @property (object{canceled_at?: int, committed_at?: int, drafted_at?: int, reserved_at?: int}&\Stripe\StripeObject) $status_transitions Timestamps for status transitions of the Billing Intent.
  */
 class Intent extends \Stripe\ApiResource
 {

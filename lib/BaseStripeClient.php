@@ -3,6 +3,7 @@
 namespace Stripe;
 
 use Stripe\Util\Util;
+use Stripe\V2\Core\EventNotification;
 
 class BaseStripeClient implements StripeClientInterface, StripeStreamingClientInterface
 {
@@ -54,7 +55,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * - client_id (null|string): the Stripe client ID, to be used in OAuth requests.
      * - stripe_account (null|string): a Stripe account ID. If set, all requests sent by the client
      *   will automatically use the {@code Stripe-Account} header with that account ID.
-     * - stripe_context (null|string): a Stripe account or compartment ID. If set, all requests sent by the client
+     * - stripe_context (null|string|\Stripe\StripeContext): a Stripe account or compartment ID. If set, all requests sent by the client
      *   will automatically use the {@code Stripe-Context} header with that ID.
      * - stripe_version (null|string): a Stripe API version. If set, all requests sent by the client
      *   will include the {@code Stripe-Version} header with that API version.
@@ -129,6 +130,26 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     public function getStripeAccount()
     {
         return $this->config['stripe_account'];
+    }
+
+    /**
+     * Gets the Stripe Context ID used by the client to send requests.
+     *
+     * @return null|string|StripeContext the Stripe Context ID used by the client to send requests
+     */
+    public function getStripeContext()
+    {
+        return $this->config['stripe_context'];
+    }
+
+    /**
+     * Gets the Stripe Version used by the client to send requests.
+     *
+     * @return null|string the Stripe Context ID used by the client to send requests
+     */
+    public function getStripeVersion()
+    {
+        return $this->config['stripe_version'];
     }
 
     /**
@@ -212,7 +233,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $requestor = new ApiRequestor($this->apiKeyForRequest($opts), $baseUrl, $this->getAppInfo());
         list($response, $opts->apiKey) = $requestor->request($method, $path, $params, $opts->headers, $apiMode, ['stripe_client'], $opts->maxNetworkRetries);
         $opts->discardNonPersistentHeaders();
-        $obj = Util::convertToStripeObject($response->json, $opts, $apiMode);
+        $obj = Util::convertToStripeObject($response->json, $opts, $apiMode, Util::isV2DeleteRequest($method, $apiMode));
         if (\is_array($obj)) {
             // Edge case for v2 endpoints that return empty/void response
             // Example: client->v2->billing->meterEventStream->create
@@ -233,10 +254,11 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * @param null|array $params the parameters of the request
      * @param array $opts the special modifiers of the request
      * @param null|int $maxNetworkRetries
+     * @param null|mixed $usage used internally by the SDK
      *
      * @return ApiResponse
      */
-    public function rawRequest($method, $path, $params = null, $opts = [], $maxNetworkRetries = null)
+    public function rawRequest($method, $path, $params = null, $opts = [], $maxNetworkRetries = null, $usage = null)
     {
         if ('post' !== $method && null !== $params) {
             throw new Exception\InvalidArgumentException('Error: rawRequest only supports $params on post requests. Please pass null and add your parameters to $path');
@@ -247,10 +269,6 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             $headers = $opts['headers'] ?: [];
             unset($opts['headers']);
         }
-        if (\is_array($opts) && \array_key_exists('stripe_context', $opts)) {
-            $headers['Stripe-Context'] = $opts['stripe_context'];
-            unset($opts['stripe_context']);
-        }
 
         $defaultRawRequestOpts = $this->defaultOpts;
 
@@ -260,7 +278,12 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $opts->headers = \array_merge($opts->headers, $headers);
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new ApiRequestor($this->apiKeyForRequest($opts), $baseUrl);
-        list($response) = $requestor->request($method, $path, $params, $opts->headers, $apiMode, ['raw_request'], $maxNetworkRetries);
+
+        if (null === $usage) {
+            $usage = ['raw_request'];
+        }
+
+        list($response) = $requestor->request($method, $path, $params, $opts->headers, $apiMode, $usage, $maxNetworkRetries);
 
         return $response;
     }
@@ -401,8 +424,8 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         }
 
         // stripe_context
-        if (null !== $config['stripe_context'] && !\is_string($config['stripe_context'])) {
-            throw new Exception\InvalidArgumentException('stripe_context must be null or a string');
+        if (null !== $config['stripe_context'] && !\is_string($config['stripe_context']) && !($config['stripe_context'] instanceof StripeContext)) {
+            throw new Exception\InvalidArgumentException('stripe_context must be null, a string, or a StripeContext instance');
         }
 
         // stripe_version
@@ -466,7 +489,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * Returns a V2\Events instance using the provided JSON payload. Throws an
+     * Returns a \Stripe\V2\Core\Events instance using the provided JSON payload. Throws an
      * Exception\UnexpectedValueException if the payload is not valid JSON, and
      * an Exception\SignatureVerificationException if the signature
      * verification fails for any reason.
@@ -478,24 +501,16 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time. Defaults to 300 seconds (5 min)
      *
-     * @return ThinEvent
+     * @return EventNotification
      *
      * @throws Exception\SignatureVerificationException if the verification fails
      * @throws Exception\UnexpectedValueException if the payload is not valid JSON,
      */
-    public function parseThinEvent($payload, $sigHeader, $secret, $tolerance = Webhook::DEFAULT_TOLERANCE)
+    public function parseEventNotification($payload, $sigHeader, $secret, $tolerance = Webhook::DEFAULT_TOLERANCE)
     {
         $eventData = Util::utf8($payload);
         WebhookSignature::verifyHeader($payload, $sigHeader, $secret, $tolerance);
 
-        try {
-            return Util::json_decode_thin_event_object(
-                $eventData,
-                '\Stripe\ThinEvent'
-            );
-        } catch (\ReflectionException $e) {
-            // Fail gracefully
-            return new ThinEvent();
-        }
+        return EventNotification::fromJson($eventData, $this);
     }
 }

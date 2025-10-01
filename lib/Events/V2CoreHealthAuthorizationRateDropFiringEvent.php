@@ -7,7 +7,7 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\EventData\V2CoreHealthAuthorizationRateDropFiringEventData $data data associated with the event
  */
-class V2CoreHealthAuthorizationRateDropFiringEvent extends \Stripe\V2\Event
+class V2CoreHealthAuthorizationRateDropFiringEvent extends \Stripe\V2\Core\Event
 {
     const LOOKUP_TYPE = 'v2.core.health.authorization_rate_drop.firing';
 

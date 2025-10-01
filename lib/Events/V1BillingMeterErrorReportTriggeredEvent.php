@@ -8,7 +8,7 @@ namespace Stripe\Events;
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  * @property \Stripe\EventData\V1BillingMeterErrorReportTriggeredEventData $data data associated with the event
  */
-class V1BillingMeterErrorReportTriggeredEvent extends \Stripe\V2\Event
+class V1BillingMeterErrorReportTriggeredEvent extends \Stripe\V2\Core\Event
 {
     const LOOKUP_TYPE = 'v1.billing.meter.error_report_triggered';
 
@@ -22,14 +22,9 @@ class V1BillingMeterErrorReportTriggeredEvent extends \Stripe\V2\Event
     public function fetchRelatedObject()
     {
         $apiMode = \Stripe\Util\Util::getApiMode($this->related_object->url);
-        list($object, $options) = $this->_request(
-            'get',
-            $this->related_object->url,
-            [],
-            ['stripe_account' => $this->context],
-            [],
-            $apiMode
-        );
+        list($object, $options) = $this->_request('get', $this->related_object->url, [], [
+            'stripe_context' => $this->context,
+        ], [], $apiMode);
 
         return \Stripe\Util\Util::convertToStripeObject($object, $options, $apiMode);
     }
