@@ -73,7 +73,7 @@ This release changes the pinned API version to `2025-09-30.clover` and contains 
       - If you parse an event the SDK doesn't have types for (e.g. it's newer than the SDK you're using), you'll get an instance of `Stripe\Events\UnknownEventNotification` instead of a more specific type. It has both the `relatedObject` property and the `FetchRelatedObject()` function (but they may be/return `null`)
   - ⚠️ removed the `Util::json_decode_thin_event_object`. Its functionality was folded into the new `\Stripe\V2\EventNotification::fromJson` method.
 * [#1925](https://github.com/stripe/stripe-php/pull/1925) add version deprecation note to README
-  - NOTE: we'll be dropping support for PHP 5.6, 7.0, and 7.1 in the next major version (March 2026). The README has been updated with a link to our new [language version support policy](https://docs.stripe.com/sdks/versioning?server=php#stripe-sdk-language-version-support-policy)
+  - NOTE: we'll be dropping support for PHP 5.6, 7.0, and 7.1 in the next major version (March 2026). The README has been updated with a link to our new [language version support policy](https://docs.stripe.com/sdks/versioning?lang=php#stripe-sdk-language-version-support-policy)
 * [#1921](https://github.com/stripe/stripe-php/pull/1921) Update generated code
   * Change `Invoice.id` to be required.
 * [#1923](https://github.com/stripe/stripe-php/pull/1923) Update generated code
