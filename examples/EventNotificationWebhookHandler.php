@@ -26,16 +26,22 @@ $app->post('/webhook', static function ($request, $response) use ($client, $webh
 
         // check what type of event notification we have
         if ($event_notification instanceof Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification) {
+            // there's a relatedObject property you can use for basic logging
+            echo "Meter with id {$event_notification->related_object->id} reported an error\n";
+
+            // or you can fetch the full object form the API for more details
             $meter = $event_notification->fetchRelatedObject();
-            $meter_id = $meter->id;
+            echo "Meter {$meter->display_name} ({$meter->id}) had a problem\n";
 
-            // Record the failures and alert your team
-            // Add your logic here
-
-            // can fetch full event w/ data
+            # And you can always fetch the full event:
             $event = $event_notification->fetchEvent();
-            // data is fully typed
-            $event->data->developer_message_summary;
+            echo "More info: {$event->data->developer_message_summary}\n";
+        } else if ($event_notification instanceof Stripe\Events\UnknownEventNotification) {
+            // this is a valid event type, but it's newer than this SDK, so there's no corresponding class
+            // we'll have to match on "type" instead
+            if ($event_notification->type === 'some.new.event') {
+                // handle it the same way as above
+            }
         }
 
         return $response->withStatus(200);
