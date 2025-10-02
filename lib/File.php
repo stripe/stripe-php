@@ -42,6 +42,7 @@ class File extends ApiResource
     const PURPOSE_IDENTITY_DOCUMENT_DOWNLOADABLE = 'identity_document_downloadable';
     const PURPOSE_ISSUING_REGULATORY_REPORTING = 'issuing_regulatory_reporting';
     const PURPOSE_PCI_DOCUMENT = 'pci_document';
+    const PURPOSE_PLATFORM_TERMS_OF_SERVICE = 'platform_terms_of_service';
     const PURPOSE_SELFIE = 'selfie';
     const PURPOSE_SIGMA_SCHEDULED_QUERY = 'sigma_scheduled_query';
     const PURPOSE_TAX_DOCUMENT_USER_UPLOAD = 'tax_document_user_upload';
