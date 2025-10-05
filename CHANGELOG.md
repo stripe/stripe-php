@@ -10,10 +10,8 @@ This release changes the pinned API version to `2025-09-30.preview`. It is built
   * Remove support for values `saturday` and `sunday` from enums `Account.settings.payouts.schedule.weekly_payout_days`
   * Add support for `location` and `reader` on `Charge.payment_method_details.paynow`
   * Add support for `paypay` on `Charge.payment_method_details`, `ConfirmationToken.create().$params.payment_method_datum`, `ConfirmationToken.payment_method_preview`, `PaymentIntent.confirm().$params.payment_method_datum`, `PaymentIntent.confirm().$params.payment_method_option`, `PaymentIntent.create().$params.payment_method_datum`, `PaymentIntent.create().$params.payment_method_option`, `PaymentIntent.payment_method_options`, `PaymentIntent.update().$params.payment_method_datum`, `PaymentIntent.update().$params.payment_method_option`, `PaymentMethod.create().$params`, `PaymentMethodConfiguration.create().$params`, `PaymentMethodConfiguration.update().$params`, `PaymentMethodConfiguration`, `PaymentMethod`, `SetupIntent.confirm().$params.payment_method_datum`, `SetupIntent.create().$params.payment_method_datum`, and `SetupIntent.update().$params.payment_method_datum`
-* Add support for new value `paypay` on enums `ConfirmationToken.payment_method_preview.type` and `PaymentMethod.type`
-* Add support for new value `paypay` on enums `PaymentIntent.excluded_payment_method_types` and `PaymentLink.payment_method_types`
-* Remove support for `link` and `pay_by_bank` on `PaymentMethod.update().$params`
-* Remove support for `iterations` on `Invoice.create_preview().$params.schedule_detail.phase`, `SubscriptionSchedule.create().$params.phase`, and `SubscriptionSchedule.update().$params.phase`
+  * Add support for new value `paypay` on enums `ConfirmationToken.payment_method_preview.type` and `PaymentMethod.type`
+  * Add support for new value `paypay` on enums `PaymentIntent.excluded_payment_method_types` and `PaymentLink.payment_method_types`
   * Add support for new resource `V2.MoneyManagement.RecipientVerification`
   * Add support for `acknowledge`, `create`, `recipient_verifications`, and `retrieve` methods on resource `V2.MoneyManagement.RecipientVerification`
   * Add support for `update` method on resources `V2.Billing.PricingPlanSubscription` and `V2.Billing.ServiceAction`
