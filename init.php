@@ -862,6 +862,7 @@ require __DIR__ . '/lib/PaymentIntent.php';
 require __DIR__ . '/lib/PaymentIntentAmountDetailsLineItem.php';
 require __DIR__ . '/lib/PaymentLink.php';
 require __DIR__ . '/lib/PaymentMethod.php';
+require __DIR__ . '/lib/PaymentMethodBalance.php';
 require __DIR__ . '/lib/PaymentMethodConfiguration.php';
 require __DIR__ . '/lib/PaymentMethodDomain.php';
 require __DIR__ . '/lib/PaymentRecord.php';
