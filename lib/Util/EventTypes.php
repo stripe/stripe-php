@@ -194,7 +194,6 @@ class EventTypes
         \Stripe\Events\V1TransferCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V1TransferCreatedEvent::class,
         \Stripe\Events\V1TransferReversedEvent::LOOKUP_TYPE => \Stripe\Events\V1TransferReversedEvent::class,
         \Stripe\Events\V1TransferUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V1TransferUpdatedEvent::class,
-        \Stripe\Events\V2BillingBillSettingUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingBillSettingUpdatedEvent::class,
         \Stripe\Events\V2BillingCadenceBilledEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingCadenceBilledEvent::class,
         \Stripe\Events\V2BillingCadenceCanceledEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingCadenceCanceledEvent::class,
         \Stripe\Events\V2BillingCadenceCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingCadenceCreatedEvent::class,
