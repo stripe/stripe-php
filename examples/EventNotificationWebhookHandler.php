@@ -33,15 +33,15 @@ $app->post('/webhook', static function ($request, $response) use ($client, $webh
             $meter = $event_notification->fetchRelatedObject();
             echo "Meter {$meter->display_name} ({$meter->id}) had a problem\n";
 
-            # And you can always fetch the full event:
+            // And you can always fetch the full event:
             $event = $event_notification->fetchEvent();
             echo "More info: {$event->data->developer_message_summary}\n";
-        } else if ($event_notification instanceof Stripe\Events\UnknownEventNotification) {
+        } elseif ($event_notification instanceof Stripe\Events\UnknownEventNotification) {
             // Events that were introduced after this SDK version release are
             // represented as `UnknownEventNotification`s.
             // They're valid, the SDK just doesn't have corresponding classes for them.
             // You must match on the "type" property instead.
-            if ($event_notification->type === 'some.new.event') {
+            if ('some.new.event' === $event_notification->type) {
                 // handle it the same way as above
             }
         }
