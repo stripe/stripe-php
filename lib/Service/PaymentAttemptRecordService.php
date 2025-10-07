@@ -14,7 +14,7 @@ class PaymentAttemptRecordService extends AbstractService
     /**
      * List all the Payment Attempt Records attached to the specified Payment Record.
      *
-     * @param null|array{expand?: string[], limit?: int, payment_record: string} $params
+     * @param null|array{expand?: string[], limit?: int, payment_record: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\PaymentAttemptRecord>

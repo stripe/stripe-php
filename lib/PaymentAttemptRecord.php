@@ -45,7 +45,7 @@ class PaymentAttemptRecord extends ApiResource
     /**
      * List all the Payment Attempt Records attached to the specified Payment Record.
      *
-     * @param null|array{expand?: string[], limit?: int, payment_record: string} $params
+     * @param null|array{expand?: string[], limit?: int, payment_record: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<PaymentAttemptRecord> of ApiResources
