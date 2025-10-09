@@ -234,6 +234,8 @@ class EventTypes
         \Stripe\Events\V2CoreAccountClosedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountClosedEvent::class,
         \Stripe\Events\V2CoreAccountCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountCreatedEvent::class,
         \Stripe\Events\V2CoreAccountUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountUpdatedEvent::class,
+        \Stripe\Events\V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEvent::class,
+        \Stripe\Events\V2CoreAccountIncludingConfigurationCardCreatorUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationCardCreatorUpdatedEvent::class,
         \Stripe\Events\V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEvent::class,
         \Stripe\Events\V2CoreAccountIncludingConfigurationCustomerUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationCustomerUpdatedEvent::class,
         \Stripe\Events\V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEvent::class,

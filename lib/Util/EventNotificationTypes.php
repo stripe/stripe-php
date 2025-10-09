@@ -234,6 +234,8 @@ class EventNotificationTypes
         \Stripe\Events\V2CoreAccountClosedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountClosedEventNotification::class,
         \Stripe\Events\V2CoreAccountCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountCreatedEventNotification::class,
         \Stripe\Events\V2CoreAccountUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountUpdatedEventNotification::class,
+        \Stripe\Events\V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEventNotification::class,
+        \Stripe\Events\V2CoreAccountIncludingConfigurationCardCreatorUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationCardCreatorUpdatedEventNotification::class,
         \Stripe\Events\V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification::class,
         \Stripe\Events\V2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification::class,
         \Stripe\Events\V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification::class,

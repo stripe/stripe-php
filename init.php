@@ -155,6 +155,7 @@ require __DIR__ . '/lib/EventData/V2BillingPricingPlanVersionCreatedEventData.ph
 require __DIR__ . '/lib/EventData/V2BillingRateCardCreatedEventData.php';
 require __DIR__ . '/lib/EventData/V2BillingRateCardRateCreatedEventData.php';
 require __DIR__ . '/lib/EventData/V2BillingRateCardVersionCreatedEventData.php';
+require __DIR__ . '/lib/EventData/V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEventData.php';
 require __DIR__ . '/lib/EventData/V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventData.php';
 require __DIR__ . '/lib/EventData/V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventData.php';
 require __DIR__ . '/lib/EventData/V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventData.php';
@@ -637,6 +638,10 @@ require __DIR__ . '/lib/Events/V2CoreAccountClosedEvent.php';
 require __DIR__ . '/lib/Events/V2CoreAccountClosedEventNotification.php';
 require __DIR__ . '/lib/Events/V2CoreAccountCreatedEvent.php';
 require __DIR__ . '/lib/Events/V2CoreAccountCreatedEventNotification.php';
+require __DIR__ . '/lib/Events/V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEvent.php';
+require __DIR__ . '/lib/Events/V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEventNotification.php';
+require __DIR__ . '/lib/Events/V2CoreAccountIncludingConfigurationCardCreatorUpdatedEvent.php';
+require __DIR__ . '/lib/Events/V2CoreAccountIncludingConfigurationCardCreatorUpdatedEventNotification.php';
 require __DIR__ . '/lib/Events/V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEvent.php';
 require __DIR__ . '/lib/Events/V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification.php';
 require __DIR__ . '/lib/Events/V2CoreAccountIncludingConfigurationCustomerUpdatedEvent.php';
