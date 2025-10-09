@@ -110,6 +110,7 @@ class ObjectTypes
             \Stripe\PaymentIntentAmountDetailsLineItem::OBJECT_NAME => \Stripe\PaymentIntentAmountDetailsLineItem::class,
             \Stripe\PaymentLink::OBJECT_NAME => \Stripe\PaymentLink::class,
             \Stripe\PaymentMethod::OBJECT_NAME => \Stripe\PaymentMethod::class,
+            \Stripe\PaymentMethodBalance::OBJECT_NAME => \Stripe\PaymentMethodBalance::class,
             \Stripe\PaymentMethodConfiguration::OBJECT_NAME => \Stripe\PaymentMethodConfiguration::class,
             \Stripe\PaymentMethodDomain::OBJECT_NAME => \Stripe\PaymentMethodDomain::class,
             \Stripe\PaymentRecord::OBJECT_NAME => \Stripe\PaymentRecord::class,

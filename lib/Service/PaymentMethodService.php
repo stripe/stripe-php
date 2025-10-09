@@ -63,6 +63,22 @@ class PaymentMethodService extends AbstractService
     }
 
     /**
+     * Retrieves a payment method’s balance.
+     *
+     * @param string $id
+     * @param null|array{expand?: string[]} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\PaymentMethodBalance
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function checkBalance($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/payment_methods/%s/check_balance', $id), $params, $opts);
+    }
+
+    /**
      * Creates a PaymentMethod object. Read the <a
      * href="/docs/stripe-js/reference#stripe-create-payment-method">Stripe.js
      * reference</a> to learn how to create PaymentMethods via Stripe.js.

@@ -7720,7 +7720,7 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'id' => 'obj_123',
                         'object' => 'v2.core.account',
-                        'applied_configurations' => ['0' => 'storer'],
+                        'applied_configurations' => ['0' => 'card_creator'],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'livemode' => [],
                     ],
@@ -7747,7 +7747,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'storer'],
+                'applied_configurations' => ['0' => 'card_creator'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'livemode' => [],
             ],
@@ -7769,7 +7769,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'storer'],
+                'applied_configurations' => ['0' => 'card_creator'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'livemode' => [],
             ],
@@ -7791,7 +7791,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'storer'],
+                'applied_configurations' => ['0' => 'card_creator'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'livemode' => [],
             ],
@@ -7813,7 +7813,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'id' => 'obj_123',
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'storer'],
+                'applied_configurations' => ['0' => 'card_creator'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'livemode' => [],
             ],
