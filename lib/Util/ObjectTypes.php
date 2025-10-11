@@ -81,6 +81,7 @@ class ObjectTypes
             \Stripe\Forwarding\Request::OBJECT_NAME => \Stripe\Forwarding\Request::class,
             \Stripe\FundingInstructions::OBJECT_NAME => \Stripe\FundingInstructions::class,
             \Stripe\FxQuote::OBJECT_NAME => \Stripe\FxQuote::class,
+            \Stripe\Identity\BlocklistEntry::OBJECT_NAME => \Stripe\Identity\BlocklistEntry::class,
             \Stripe\Identity\VerificationReport::OBJECT_NAME => \Stripe\Identity\VerificationReport::class,
             \Stripe\Identity\VerificationSession::OBJECT_NAME => \Stripe\Identity\VerificationSession::class,
             \Stripe\Invoice::OBJECT_NAME => \Stripe\Invoice::class,
