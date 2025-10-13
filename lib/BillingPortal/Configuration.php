@@ -5,7 +5,7 @@
 namespace Stripe\BillingPortal;
 
 /**
- * A portal configuration describes the functionality and behavior of a portal session.
+ * A portal configuration describes the functionality and behavior you embed in a portal session. Related guide: <a href="/customer-management/configure-portal">Configure the customer portal</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
