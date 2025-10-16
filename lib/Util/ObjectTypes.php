@@ -61,6 +61,7 @@ class ObjectTypes
             \Stripe\CustomerBalanceTransaction::OBJECT_NAME => \Stripe\CustomerBalanceTransaction::class,
             \Stripe\CustomerCashBalanceTransaction::OBJECT_NAME => \Stripe\CustomerCashBalanceTransaction::class,
             \Stripe\CustomerSession::OBJECT_NAME => \Stripe\CustomerSession::class,
+            \Stripe\DelegatedCheckout\RequestedSession::OBJECT_NAME => \Stripe\DelegatedCheckout\RequestedSession::class,
             \Stripe\Discount::OBJECT_NAME => \Stripe\Discount::class,
             \Stripe\Dispute::OBJECT_NAME => \Stripe\Dispute::class,
             \Stripe\Entitlements\ActiveEntitlement::OBJECT_NAME => \Stripe\Entitlements\ActiveEntitlement::class,

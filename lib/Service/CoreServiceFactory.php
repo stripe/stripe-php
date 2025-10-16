@@ -29,6 +29,7 @@ namespace Stripe\Service;
  * @property CreditNoteService $creditNotes
  * @property CustomerService $customers
  * @property CustomerSessionService $customerSessions
+ * @property DelegatedCheckout\DelegatedCheckoutServiceFactory $delegatedCheckout
  * @property DisputeService $disputes
  * @property Entitlements\EntitlementsServiceFactory $entitlements
  * @property EphemeralKeyService $ephemeralKeys
@@ -119,6 +120,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'creditNotes' => CreditNoteService::class,
         'customers' => CustomerService::class,
         'customerSessions' => CustomerSessionService::class,
+        'delegatedCheckout' => DelegatedCheckout\DelegatedCheckoutServiceFactory::class,
         'disputes' => DisputeService::class,
         'entitlements' => Entitlements\EntitlementsServiceFactory::class,
         'ephemeralKeys' => EphemeralKeyService::class,

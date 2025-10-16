@@ -29,6 +29,7 @@ namespace Stripe;
  * @property Service\CreditNoteService $creditNotes
  * @property Service\CustomerService $customers
  * @property Service\CustomerSessionService $customerSessions
+ * @property Service\DelegatedCheckout\DelegatedCheckoutServiceFactory $delegatedCheckout
  * @property Service\DisputeService $disputes
  * @property Service\Entitlements\EntitlementsServiceFactory $entitlements
  * @property Service\EphemeralKeyService $ephemeralKeys
