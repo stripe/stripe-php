@@ -1,4 +1,11 @@
 # Changelog
+## 18.1.0-alpha.3 - 2025-10-17
+* [#1939](https://github.com/stripe/stripe-php/pull/1939) Update generated code for private-preview
+  * Add support for new resources `DelegatedCheckout.RequestedSession` and `Identity.BlocklistEntry`
+  * Add support for `confirm`, `create`, `expire`, `retrieve`, and `update` methods on resource `DelegatedCheckout.RequestedSession`
+  * Add support for `all`, `create`, `disable`, and `retrieve` methods on resource `Identity.BlocklistEntry`
+  * Add support for `blocked_by_entry` on `Identity.VerificationReport.document`, `Identity.VerificationReport.selfie`, and `Identity\VerificationReport.all().$params`
+
 ## 18.1.0-alpha.2 - 2025-10-09
 * [#1938](https://github.com/stripe/stripe-php/pull/1938) Update generated code for private-preview
   * Add support for new resource `PaymentMethodBalance`
