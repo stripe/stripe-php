@@ -14,6 +14,7 @@ namespace Stripe\Billing;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property (object{event_payload_key: string, type: string}&\Stripe\StripeObject) $customer_mapping
  * @property (object{formula: string}&\Stripe\StripeObject) $default_aggregation
+ * @property null|string[] $dimension_payload_keys Set of keys that will be used to group meter events by.
  * @property string $display_name The meter's name.
  * @property string $event_name The name of the meter event to record usage for. Corresponds with the <code>event_name</code> field on meter events.
  * @property null|string $event_time_window The time window which meter events have been pre-aggregated for, if any.
@@ -39,7 +40,7 @@ class Meter extends \Stripe\ApiResource
     /**
      * Creates a billing meter.
      *
-     * @param null|array{customer_mapping?: array{event_payload_key: string, type: string}, default_aggregation: array{formula: string}, display_name: string, event_name: string, event_time_window?: string, expand?: string[], value_settings?: array{event_payload_key: string}} $params
+     * @param null|array{customer_mapping?: array{event_payload_key: string, type: string}, default_aggregation: array{formula: string}, display_name: string, event_name: string, event_time_window?: string, expand?: string[], value_settings?: array{event_payload_key: string}, dimension_payload_keys?: string[]} $params
      * @param null|array|string $options
      *
      * @return Meter the created resource
