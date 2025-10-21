@@ -43,11 +43,13 @@ namespace Stripe;
  * @property Service\InvoiceService $invoices
  * @property Service\Issuing\IssuingServiceFactory $issuing
  * @property Service\MandateService $mandates
+ * @property Service\PaymentAttemptRecordService $paymentAttemptRecords
  * @property Service\PaymentIntentService $paymentIntents
  * @property Service\PaymentLinkService $paymentLinks
  * @property Service\PaymentMethodConfigurationService $paymentMethodConfigurations
  * @property Service\PaymentMethodDomainService $paymentMethodDomains
  * @property Service\PaymentMethodService $paymentMethods
+ * @property Service\PaymentRecordService $paymentRecords
  * @property Service\PayoutService $payouts
  * @property Service\PlanService $plans
  * @property Service\PriceService $prices

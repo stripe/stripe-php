@@ -34,7 +34,7 @@ namespace Stripe;
  * @property null|(object{address?: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject), carrier?: null|string, name?: string, phone?: null|string, tracking_number?: null|string}&StripeObject) $shipping Mailing and shipping address for the customer. Appears on invoices emailed to this customer.
  * @property null|Collection<Account|BankAccount|Card|Source> $sources The customer's payment sources, if any.
  * @property null|Collection<Subscription> $subscriptions The customer's current subscriptions, if any.
- * @property null|(object{automatic_tax: string, ip_address: null|string, location: null|(object{country: string, source: string, state: null|string}&StripeObject)}&StripeObject) $tax
+ * @property null|(object{automatic_tax: string, ip_address: null|string, location: null|(object{country: string, source: string, state: null|string}&StripeObject), provider: string}&StripeObject) $tax
  * @property null|string $tax_exempt Describes the customer's tax exemption status, which is <code>none</code>, <code>exempt</code>, or <code>reverse</code>. When set to <code>reverse</code>, invoice and receipt PDFs include the following text: <strong>&quot;Reverse charge&quot;</strong>.
  * @property null|Collection<TaxId> $tax_ids The customer's tax IDs.
  * @property null|string|TestHelpers\TestClock $test_clock ID of the test clock that this customer belongs to.

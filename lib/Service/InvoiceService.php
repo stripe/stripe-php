@@ -80,7 +80,7 @@ class InvoiceService extends AbstractService
      * more.
      *
      * @param string $id
-     * @param null|array{expand?: string[], payment_intent?: string} $params
+     * @param null|array{expand?: string[], payment_intent?: string, payment_record?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Invoice
