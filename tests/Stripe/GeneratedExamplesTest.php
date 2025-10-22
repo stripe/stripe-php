@@ -5958,7 +5958,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'get',
             '/v2/core/events',
-            ['object_id' => 'object_id'],
+            [],
             [],
             false,
             [
@@ -5977,9 +5977,7 @@ final class GeneratedExamplesTest extends TestCase
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->core->events->all([
-            'object_id' => 'object_id',
-        ]);
+        $result = $this->v2Client->v2->core->events->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
         self::assertInstanceOf(V2\Core\Event::class, $result->data[0]);
     }
@@ -6919,6 +6917,53 @@ final class GeneratedExamplesTest extends TestCase
     }
 
     public function testV2MoneyManagementFinancialAccountPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/financial_accounts/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.money_management.financial_account',
+                'balance' => [
+                    'available' => [
+                        'key' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                    ],
+                    'inbound_pending' => [
+                        'key' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                    ],
+                    'outbound_pending' => [
+                        'key' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                    ],
+                ],
+                'country' => 'country',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'status' => 'closed',
+                'type' => 'other',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->financialAccounts->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\FinancialAccount::class, $result);
+    }
+
+    public function testV2MoneyManagementFinancialAccountPost3()
     {
         $this->stubRequest(
             'post',
@@ -8883,7 +8928,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'error' => [
                     'type' => 'feature_not_enabled',
-                    'code' => 'recipient_feature_not_active',
+                    'code' => 'outbound_flow_from_closed_financial_account_unsupported',
                 ],
             ],
             400,
