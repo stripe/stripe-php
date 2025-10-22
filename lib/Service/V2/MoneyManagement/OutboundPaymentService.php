@@ -52,9 +52,9 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
      * @return \Stripe\V2\MoneyManagement\OutboundPayment
      *
      * @throws \Stripe\Exception\InsufficientFundsException
+     * @throws \Stripe\Exception\FeatureNotEnabledException
      * @throws \Stripe\Exception\QuotaExceededException
      * @throws \Stripe\Exception\RecipientNotNotifiableException
-     * @throws \Stripe\Exception\FeatureNotEnabledException
      */
     public function create($params = null, $opts = null)
     {

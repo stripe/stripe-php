@@ -209,6 +209,7 @@ class ObjectTypes
         \Stripe\V2\Billing\PricingPlan::OBJECT_NAME => \Stripe\V2\Billing\PricingPlan::class,
         \Stripe\V2\Billing\PricingPlanComponent::OBJECT_NAME => \Stripe\V2\Billing\PricingPlanComponent::class,
         \Stripe\V2\Billing\PricingPlanSubscription::OBJECT_NAME => \Stripe\V2\Billing\PricingPlanSubscription::class,
+        \Stripe\V2\Billing\PricingPlanSubscriptionComponents::OBJECT_NAME => \Stripe\V2\Billing\PricingPlanSubscriptionComponents::class,
         \Stripe\V2\Billing\PricingPlanVersion::OBJECT_NAME => \Stripe\V2\Billing\PricingPlanVersion::class,
         \Stripe\V2\Billing\Profile::OBJECT_NAME => \Stripe\V2\Billing\Profile::class,
         \Stripe\V2\Billing\RateCard::OBJECT_NAME => \Stripe\V2\Billing\RateCard::class,

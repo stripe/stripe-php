@@ -20,7 +20,7 @@ class AccountService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of Accounts.
      *
-     * @param null|array{applied_configurations?: string[], limit?: int} $params
+     * @param null|array{applied_configurations?: string[], closed?: bool, limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\Core\Account>
@@ -33,7 +33,9 @@ class AccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Removes access to the Account and its associated resources.
+     * Removes access to the Account and its associated resources. Closed Accounts can
+     * no longer be operated on, but limited information can still be retrieved through
+     * the API in order to be able to track their history.
      *
      * @param string $id
      * @param null|array{applied_configurations?: string[]} $params
