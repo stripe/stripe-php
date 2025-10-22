@@ -8400,6 +8400,52 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Core\Event::class, $result);
     }
 
+    public function testV2CoreVaultGbBankAccountGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/vault/gb_bank_accounts',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.core.vault.gb_bank_account',
+                        'archived' => [],
+                        'bank_account_type' => 'savings',
+                        'bank_name' => 'bank_name',
+                        'confirmation_of_payee' => [
+                            'result' => [
+                                'created' => '1970-01-12T21:42:34.472Z',
+                                'match_result' => 'unavailable',
+                                'matched' => [],
+                                'message' => 'message',
+                                'provided' => [
+                                    'business_type' => 'personal',
+                                    'name' => 'name',
+                                ],
+                            ],
+                            'status' => 'awaiting_acknowledgement',
+                        ],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'last4' => 'last4',
+                        'livemode' => [],
+                        'sort_code' => 'sort_code',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->gbBankAccounts->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Core\Vault\GbBankAccount::class, $result->data[0]);
+    }
+
     public function testV2CoreVaultGbBankAccountPost()
     {
         $this->stubRequest(
@@ -8442,7 +8488,7 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Core\Vault\GbBankAccount::class, $result);
     }
 
-    public function testV2CoreVaultGbBankAccountGet()
+    public function testV2CoreVaultGbBankAccountGet2()
     {
         $this->stubRequest(
             'get',
@@ -8610,6 +8656,39 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Core\Vault\GbBankAccount::class, $result);
     }
 
+    public function testV2CoreVaultUsBankAccountGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/vault/us_bank_accounts',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'id' => 'obj_123',
+                        'object' => 'v2.core.vault.us_bank_account',
+                        'archived' => [],
+                        'bank_account_type' => 'savings',
+                        'bank_name' => 'bank_name',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'last4' => 'last4',
+                        'livemode' => [],
+                        'verification' => ['status' => 'verification_failed'],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->usBankAccounts->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Core\Vault\UsBankAccount::class, $result->data[0]);
+    }
+
     public function testV2CoreVaultUsBankAccountPost()
     {
         $this->stubRequest(
@@ -8627,6 +8706,7 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'last4' => 'last4',
                 'livemode' => [],
+                'verification' => ['status' => 'verification_failed'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -8637,7 +8717,7 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Core\Vault\UsBankAccount::class, $result);
     }
 
-    public function testV2CoreVaultUsBankAccountGet()
+    public function testV2CoreVaultUsBankAccountGet2()
     {
         $this->stubRequest(
             'get',
@@ -8654,6 +8734,7 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'last4' => 'last4',
                 'livemode' => [],
+                'verification' => ['status' => 'verification_failed'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -8682,6 +8763,7 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'last4' => 'last4',
                 'livemode' => [],
+                'verification' => ['status' => 'verification_failed'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -8710,11 +8792,70 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'last4' => 'last4',
                 'livemode' => [],
+                'verification' => ['status' => 'verification_failed'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->core->vault->usBankAccounts->archive(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Vault\UsBankAccount::class, $result);
+    }
+
+    public function testV2CoreVaultUsBankAccountPost4()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts/id_123/confirm_microdeposits',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.vault.us_bank_account',
+                'archived' => [],
+                'bank_account_type' => 'savings',
+                'bank_name' => 'bank_name',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'last4' => 'last4',
+                'livemode' => [],
+                'verification' => ['status' => 'verification_failed'],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->usBankAccounts->confirmMicrodeposits(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Vault\UsBankAccount::class, $result);
+    }
+
+    public function testV2CoreVaultUsBankAccountPost5()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts/id_123/send_microdeposits',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.vault.us_bank_account',
+                'archived' => [],
+                'bank_account_type' => 'savings',
+                'bank_name' => 'bank_name',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'last4' => 'last4',
+                'livemode' => [],
+                'verification' => ['status' => 'verification_failed'],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->usBankAccounts->sendMicrodeposits(
             'id_123',
             []
         );

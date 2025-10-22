@@ -185,6 +185,7 @@ require __DIR__ . '/lib/EventData/V2CoreHealthWebhookLatencyFiringEventData.php'
 require __DIR__ . '/lib/EventData/V2CoreHealthWebhookLatencyResolvedEventData.php';
 require __DIR__ . '/lib/EventData/V2MoneyManagementInboundTransferAvailableEventData.php';
 require __DIR__ . '/lib/EventData/V2MoneyManagementReceivedCreditAvailableEventData.php';
+require __DIR__ . '/lib/EventData/V2MoneyManagementTransactionCreatedEventData.php';
 require __DIR__ . '/lib/Events/V1AccountUpdatedEvent.php';
 require __DIR__ . '/lib/Events/V1AccountUpdatedEventNotification.php';
 require __DIR__ . '/lib/Events/V1ApplicationFeeCreatedEvent.php';
