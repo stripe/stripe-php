@@ -156,6 +156,7 @@ require __DIR__ . '/lib/EventData/V2CoreAccountPersonDeletedEventData.php';
 require __DIR__ . '/lib/EventData/V2CoreAccountPersonUpdatedEventData.php';
 require __DIR__ . '/lib/EventData/V2MoneyManagementInboundTransferAvailableEventData.php';
 require __DIR__ . '/lib/EventData/V2MoneyManagementReceivedCreditAvailableEventData.php';
+require __DIR__ . '/lib/EventData/V2MoneyManagementTransactionCreatedEventData.php';
 require __DIR__ . '/lib/Events/V1BillingMeterErrorReportTriggeredEvent.php';
 require __DIR__ . '/lib/Events/V1BillingMeterErrorReportTriggeredEventNotification.php';
 require __DIR__ . '/lib/Events/V1BillingMeterNoMeterFoundEvent.php';
