@@ -11,6 +11,35 @@ classes for API resources that initialize themselves dynamically from API
 responses which makes it compatible with a wide range of versions of the Stripe
 API.
 
+## Table of Contents
+
+- [Requirements](#requirements)
+- [Composer](#composer)
+- [Manual Installation](#manual-installation)
+- [Dependencies](#dependencies)
+- [Getting Started](#getting-started)
+  - [Client/service patterns vs legacy patterns](#clientservice-patterns-vs-legacy-patterns)
+- [Documentation](#documentation)
+- [Legacy Version Support](#legacy-version-support)
+  - [PHP 5.4 & 5.5](#php-54--55)
+  - [PHP 5.3](#php-53)
+- [Custom Request Timeouts](#custom-request-timeouts)
+- [Custom cURL Options (e.g. proxies)](#custom-curl-options-eg-proxies)
+  - [Configuring a Logger](#configuring-a-logger)
+  - [Accessing response data](#accessing-response-data)
+  - [SSL / TLS compatibility issues](#ssl--tls-compatibility-issues)
+  - [Per-request Configuration](#per-request-configuration)
+  - [Configuring CA Bundles](#configuring-ca-bundles)
+  - [Configuring Automatic Retries](#configuring-automatic-retries)
+  - [Telemetry](#telemetry)
+  - [Public Preview SDKs](#public-preview-sdks)
+  - [Private Preview SDKs](#private-preview-sdks)
+  - [Custom requests](#custom-requests)
+- [Support](#support)
+- [Development](#development)
+- [Attention plugin developers](#attention-plugin-developers)
+  - [SSL / TLS configuration option](#ssl--tls-configuration-option)
+
 ## Requirements
 
 PHP 5.6.0 and later.
