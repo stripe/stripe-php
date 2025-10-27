@@ -114,6 +114,23 @@ class PaymentRecordService extends AbstractService
     }
 
     /**
+     * Report that the most recent payment attempt on the specified Payment Record  was
+     * refunded.
+     *
+     * @param string $id
+     * @param null|array{amount?: array{currency: string, value: int}, expand?: string[], initiated_at?: int, metadata?: null|array<string, string>, outcome: string, processor_details: array{custom?: array{refund_reference: string}, type: string}, refunded: array{refunded_at: int}} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\PaymentRecord
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function reportRefund($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/payment_records/%s/report_refund', $id), $params, $opts);
+    }
+
+    /**
      * Retrieves a Payment Record with the given ID.
      *
      * @param string $id

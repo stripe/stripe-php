@@ -73,4 +73,20 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v2/money_management/financial_accounts/%s', $id), $params, $opts);
     }
+
+    /**
+     * Updates an existing FinancialAccount.
+     *
+     * @param string $id
+     * @param null|array{display_name?: string, metadata?: array<string, null|string>} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\MoneyManagement\FinancialAccount
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function update($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v2/money_management/financial_accounts/%s', $id), $params, $opts);
+    }
 }

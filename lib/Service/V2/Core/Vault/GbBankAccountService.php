@@ -33,6 +33,22 @@ class GbBankAccountService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * List objects that can be used as destinations for outbound money movement via
+     * OutboundPayment.
+     *
+     * @param null|array{limit?: int} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Collection<\Stripe\V2\Core\Vault\GbBankAccount>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function all($params = null, $opts = null)
+    {
+        return $this->requestCollection('get', '/v2/core/vault/gb_bank_accounts', $params, $opts);
+    }
+
+    /**
      * Archive a GBBankAccount object. Archived GBBankAccount objects cannot be used as
      * outbound destinations and will not appear in the outbound destination list.
      *
