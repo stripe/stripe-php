@@ -2,43 +2,43 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\Service\V2\Core;
+namespace Stripe\Service;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
-class EventService extends \Stripe\Service\AbstractService
+class PaymentAttemptRecordService extends AbstractService
 {
     /**
-     * List events, going back up to 30 days.
+     * List all the Payment Attempt Records attached to the specified Payment Record.
      *
-     * @param null|array{gt?: string, gte?: string, limit?: int, lt?: string, lte?: string, object_id?: string, types?: string[]} $params
+     * @param null|array{expand?: string[], limit?: int, payment_record: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Collection<\Stripe\V2\Core\Event>
+     * @return \Stripe\Collection<\Stripe\PaymentAttemptRecord>
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
-        return $this->requestCollection('get', '/v2/core/events', $params, $opts);
+        return $this->requestCollection('get', '/v1/payment_attempt_records', $params, $opts);
     }
 
     /**
-     * Retrieves the details of an event.
+     * Retrieves a Payment Attempt Record with the given ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Core\Event
+     * @return \Stripe\PaymentAttemptRecord
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/core/events/%s', $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v1/payment_attempt_records/%s', $id), $params, $opts);
     }
 }

@@ -53,6 +53,7 @@ class Event extends ApiResource
     const APPLICATION_FEE_REFUNDED = 'application_fee.refunded';
     const APPLICATION_FEE_REFUND_UPDATED = 'application_fee.refund.updated';
     const BALANCE_AVAILABLE = 'balance.available';
+    const BALANCE_SETTINGS_UPDATED = 'balance_settings.updated';
     const BILLING_ALERT_TRIGGERED = 'billing.alert.triggered';
     const BILLING_CREDIT_BALANCE_TRANSACTION_CREATED = 'billing.credit_balance_transaction.created';
     const BILLING_CREDIT_GRANT_CREATED = 'billing.credit_grant.created';
@@ -144,6 +145,7 @@ class Event extends ApiResource
     const INVOICE_OVERPAID = 'invoice.overpaid';
     const INVOICE_PAID = 'invoice.paid';
     const INVOICE_PAYMENT_ACTION_REQUIRED = 'invoice.payment_action_required';
+    const INVOICE_PAYMENT_ATTEMPT_REQUIRED = 'invoice.payment_attempt_required';
     const INVOICE_PAYMENT_FAILED = 'invoice.payment_failed';
     const INVOICE_PAYMENT_PAID = 'invoice_payment.paid';
     const INVOICE_PAYMENT_SUCCEEDED = 'invoice.payment_succeeded';
@@ -303,6 +305,7 @@ class Event extends ApiResource
     const TYPE_APPLICATION_FEE_REFUNDED = 'application_fee.refunded';
     const TYPE_APPLICATION_FEE_REFUND_UPDATED = 'application_fee.refund.updated';
     const TYPE_BALANCE_AVAILABLE = 'balance.available';
+    const TYPE_BALANCE_SETTINGS_UPDATED = 'balance_settings.updated';
     const TYPE_BILLING_ALERT_TRIGGERED = 'billing.alert.triggered';
     const TYPE_BILLING_CREDIT_BALANCE_TRANSACTION_CREATED = 'billing.credit_balance_transaction.created';
     const TYPE_BILLING_CREDIT_GRANT_CREATED = 'billing.credit_grant.created';
@@ -394,6 +397,7 @@ class Event extends ApiResource
     const TYPE_INVOICE_OVERPAID = 'invoice.overpaid';
     const TYPE_INVOICE_PAID = 'invoice.paid';
     const TYPE_INVOICE_PAYMENT_ACTION_REQUIRED = 'invoice.payment_action_required';
+    const TYPE_INVOICE_PAYMENT_ATTEMPT_REQUIRED = 'invoice.payment_attempt_required';
     const TYPE_INVOICE_PAYMENT_FAILED = 'invoice.payment_failed';
     const TYPE_INVOICE_PAYMENT_PAID = 'invoice_payment.paid';
     const TYPE_INVOICE_PAYMENT_SUCCEEDED = 'invoice.payment_succeeded';

@@ -4944,7 +4944,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'get',
             '/v2/core/events',
-            ['object_id' => 'object_id'],
+            [],
             [],
             false,
             [
@@ -4963,9 +4963,7 @@ final class GeneratedExamplesTest extends TestCase
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->core->events->all([
-            'object_id' => 'object_id',
-        ]);
+        $result = $this->v2Client->v2->core->events->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
         self::assertInstanceOf(V2\Core\Event::class, $result->data[0]);
     }
