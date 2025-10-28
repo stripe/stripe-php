@@ -5,7 +5,7 @@
 namespace Stripe\BillingPortal;
 
 /**
- * A portal configuration describes the functionality and behavior of a portal session.
+ * A portal configuration describes the functionality and behavior you embed in a portal session. Related guide: <a href="/customer-management/configure-portal">Configure the customer portal</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -32,7 +32,7 @@ class Configuration extends \Stripe\ApiResource
      * Creates a configuration that describes the functionality and behavior of a
      * PortalSession.
      *
-     * @param null|array{business_profile?: array{headline?: null|string, privacy_policy_url?: string, terms_of_service_url?: string}, default_return_url?: null|string, expand?: string[], features: array{customer_update?: array{allowed_updates?: null|string[], enabled: bool}, invoice_history?: array{enabled: bool}, payment_method_update?: array{enabled: bool}, subscription_cancel?: array{cancellation_reason?: array{enabled: bool, options: null|string[]}, enabled: bool, mode?: string, proration_behavior?: string}, subscription_update?: array{default_allowed_updates?: null|string[], enabled: bool, products?: null|array{adjustable_quantity?: array{enabled: bool, maximum?: int, minimum?: int}, prices: string[], product: string}[], proration_behavior?: string, schedule_at_period_end?: array{conditions?: array{type: string}[]}, trial_update_behavior?: string}}, login_page?: array{enabled: bool}, metadata?: array<string, string>, name?: null|string} $params
+     * @param null|array{business_profile?: array{headline?: null|string, privacy_policy_url?: string, terms_of_service_url?: string}, default_return_url?: null|string, expand?: string[], features: array{customer_update?: array{allowed_updates?: null|string[], enabled: bool}, invoice_history?: array{enabled: bool}, payment_method_update?: array{enabled: bool, payment_method_configuration?: null|string}, subscription_cancel?: array{cancellation_reason?: array{enabled: bool, options: null|string[]}, enabled: bool, mode?: string, proration_behavior?: string}, subscription_update?: array{default_allowed_updates?: null|string[], enabled: bool, products?: null|array{adjustable_quantity?: array{enabled: bool, maximum?: int, minimum?: int}, prices: string[], product: string}[], proration_behavior?: string, schedule_at_period_end?: array{conditions?: array{type: string}[]}, trial_update_behavior?: string}}, login_page?: array{enabled: bool}, metadata?: array<string, string>, name?: null|string} $params
      * @param null|array|string $options
      *
      * @return Configuration the created resource
@@ -93,7 +93,7 @@ class Configuration extends \Stripe\ApiResource
      * Updates a configuration that describes the functionality of the customer portal.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{active?: bool, business_profile?: array{headline?: null|string, privacy_policy_url?: null|string, terms_of_service_url?: null|string}, default_return_url?: null|string, expand?: string[], features?: array{customer_update?: array{allowed_updates?: null|string[], enabled?: bool}, invoice_history?: array{enabled: bool}, payment_method_update?: array{enabled: bool}, subscription_cancel?: array{cancellation_reason?: array{enabled: bool, options?: null|string[]}, enabled?: bool, mode?: string, proration_behavior?: string}, subscription_update?: array{default_allowed_updates?: null|string[], enabled?: bool, products?: null|array{adjustable_quantity?: array{enabled: bool, maximum?: int, minimum?: int}, prices: string[], product: string}[], proration_behavior?: string, schedule_at_period_end?: array{conditions?: null|array{type: string}[]}, trial_update_behavior?: string}}, login_page?: array{enabled: bool}, metadata?: null|array<string, string>, name?: null|string} $params
+     * @param null|array{active?: bool, business_profile?: array{headline?: null|string, privacy_policy_url?: null|string, terms_of_service_url?: null|string}, default_return_url?: null|string, expand?: string[], features?: array{customer_update?: array{allowed_updates?: null|string[], enabled?: bool}, invoice_history?: array{enabled: bool}, payment_method_update?: array{enabled: bool, payment_method_configuration?: null|string}, subscription_cancel?: array{cancellation_reason?: array{enabled: bool, options?: null|string[]}, enabled?: bool, mode?: string, proration_behavior?: string}, subscription_update?: array{default_allowed_updates?: null|string[], enabled?: bool, products?: null|array{adjustable_quantity?: array{enabled: bool, maximum?: int, minimum?: int}, prices: string[], product: string}[], proration_behavior?: string, schedule_at_period_end?: array{conditions?: null|array{type: string}[]}, trial_update_behavior?: string}}, login_page?: array{enabled: bool}, metadata?: null|array<string, string>, name?: null|string} $params
      * @param null|array|string $opts
      *
      * @return Configuration the updated resource

@@ -40,7 +40,7 @@ class Meter extends \Stripe\ApiResource
     /**
      * Creates a billing meter.
      *
-     * @param null|array{customer_mapping?: array{event_payload_key: string, type: string}, default_aggregation: array{formula: string}, display_name: string, event_name: string, event_time_window?: string, expand?: string[], value_settings?: array{event_payload_key: string}, dimension_payload_keys?: string[]} $params
+     * @param null|array{customer_mapping?: array{event_payload_key: string, type: string}, default_aggregation: array{formula: string}, dimension_payload_keys?: string[], display_name: string, event_name: string, event_time_window?: string, expand?: string[], value_settings?: array{event_payload_key: string}} $params
      * @param null|array|string $options
      *
      * @return Meter the created resource
