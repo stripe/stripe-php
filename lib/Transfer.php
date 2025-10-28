@@ -20,8 +20,6 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount Amount in cents (or local equivalent) to be transferred.
  * @property int $amount_reversed Amount in cents (or local equivalent) reversed (can be less than the amount attribute on the transfer if a partial reversal was issued).
- * @property null|ApplicationFee|string $application_fee
- * @property null|int $application_fee_amount
  * @property null|BalanceTransaction|string $balance_transaction Balance transaction that describes the impact of this transfer on your account balance.
  * @property int $created Time that this record of the transfer was first created.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
@@ -53,7 +51,7 @@ class Transfer extends ApiResource
      * transfer object. Your <a href="#balance">Stripe balance</a> must be able to
      * cover the transfer amount, or you’ll receive an “Insufficient Funds” error.
      *
-     * @param null|array{amount?: int, currency: string, description?: string, destination: string, expand?: string[], fx_quote?: string, metadata?: array<string, string>, source_transaction?: string, source_type?: string, transfer_group?: string, application_fee_amount?: int} $params
+     * @param null|array{amount?: int, currency: string, description?: string, destination: string, expand?: string[], fx_quote?: string, metadata?: array<string, string>, source_transaction?: string, source_type?: string, transfer_group?: string} $params
      * @param null|array|string $options
      *
      * @return Transfer the created resource

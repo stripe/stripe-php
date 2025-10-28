@@ -20,7 +20,6 @@ namespace Stripe;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property (object{amount: int, currency: string, source_types?: (object{bank_account?: int, card?: int, fpx?: int}&StripeObject)}&StripeObject)[] $pending Funds that aren't available in the balance yet. You can find the pending balance for each currency and each payment type in the <code>source_types</code> property.
  * @property null|(object{available: (object{amount: int, currency: string, source_types?: (object{bank_account?: int, card?: int, fpx?: int}&StripeObject)}&StripeObject)[], pending: (object{amount: int, currency: string, source_types?: (object{bank_account?: int, card?: int, fpx?: int}&StripeObject)}&StripeObject)[]}&StripeObject) $refund_and_dispute_prefunding
- * @property null|(object{available: (object{amount: int, currency: string, source_types?: (object{bank_account?: int, card?: int, fpx?: int}&StripeObject)}&StripeObject)[], pending: (object{amount: int, currency: string, source_types?: (object{bank_account?: int, card?: int, fpx?: int}&StripeObject)}&StripeObject)[]}&StripeObject) $transit_balances_total
  */
 class Balance extends SingletonApiResource
 {
