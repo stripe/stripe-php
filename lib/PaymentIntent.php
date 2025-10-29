@@ -19,6 +19,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property null|(object{enabled: null|bool}&StripeObject) $allocated_funds Allocated Funds configuration for this PaymentIntent.
  * @property int $amount Amount intended to be collected by this PaymentIntent. A positive integer representing how much to charge in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). The minimum amount is $0.50 US or <a href="https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts">equivalent in charge currency</a>. The amount value supports up to eight digits (e.g., a value of 99999999 for a USD charge of $999,999.99).
  * @property int $amount_capturable Amount that can be captured from this PaymentIntent.
  * @property null|(object{discount_amount?: int, line_items?: Collection<PaymentIntentAmountDetailsLineItem>, shipping?: (object{amount: null|int, from_postal_code: null|string, to_postal_code: null|string}&StripeObject), tax?: (object{total_tax_amount: null|int}&StripeObject), tip?: (object{amount?: int}&StripeObject)}&StripeObject) $amount_details

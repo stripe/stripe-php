@@ -11,6 +11,7 @@ namespace Stripe\Billing\Analytics;
  * @property int $ends_at Timestamp indicating the end of the bucket. Measured in seconds since the Unix epoch.
  * @property null|string $meter The unique identifier for the meter. Null if no meters were provided and usage was aggregated across all meters.
  * @property int $starts_at Timestamp indicating the start of the bucket. Measured in seconds since the Unix epoch.
+ * @property null|\Stripe\StripeObject $tenants A set of key-value pairs representing the tenants of the meter usage.
  * @property float $value The aggregated meter usage value for the specified bucket.
  */
 class MeterUsageRow extends \Stripe\ApiResource
