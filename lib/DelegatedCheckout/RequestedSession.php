@@ -19,8 +19,9 @@ namespace Stripe\DelegatedCheckout;
  * @property ((object{description: null|string, images: null|string[], key: string, name: string, quantity: int, sku_id: string, unit_amount: int}&\Stripe\StripeObject))[] $line_item_details The line items to be purchased.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|(object{order_status_url: null|string}&\Stripe\StripeObject) $order_details The details of the order.
+ * @property null|(object{order_status_url: null|string, order_id: null|string}&\Stripe\StripeObject) $order_details The details of the order.
  * @property null|string $payment_method The payment method used for the requested session.
+ * @property null|(object{billing_details: null|(object{address: null|(object{city: string, country: string, line1: string, line2: null|string, postal_code: string, state: string}&\Stripe\StripeObject), email: null|string, name: null|string, phone: null|string}&\Stripe\StripeObject), card: null|(object{exp_month: int, exp_year: int, last4: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $payment_method_preview The preview of the payment method to be created when the requested session is confirmed.
  * @property (object{}&\Stripe\StripeObject) $seller_details
  * @property null|string $setup_future_usage Whether or not the payment method should be saved for future use.
  * @property null|\Stripe\StripeObject $shared_metadata The metadata shared with the seller.
@@ -84,7 +85,7 @@ class RequestedSession extends \Stripe\ApiResource
      * Updates a requested session.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{expand?: string[], fulfillment_details?: array{address?: array{city: string, country: string, line1: string, line2?: string, postal_code: string, state: string}, email?: string, name?: string, phone?: string, selected_fulfillment_option?: array{shipping: array{shipping_option: string}, type: string}}, line_item_details?: array{key: string, quantity?: int}[], metadata?: array<string, string>, payment_method?: string, payment_method_data?: array{billing_details?: array{address?: array{city: string, country: string, line1: string, line2?: string, postal_code: string, state: string}, email?: string, name?: string, phone?: string}, card?: array{cvc?: string, exp_month: int, exp_year: int, number: string}, type?: string}, shared_metadata?: array<string, string>} $params
+     * @param null|array{expand?: string[], fulfillment_details?: array{address?: array{city: string, country: string, line1: string, line2?: string, postal_code: string, state: string}, email?: string, name?: string, phone?: string, selected_fulfillment_option?: array{shipping: array{shipping_option: string}, type: string}}, line_item_details?: array{key: string, quantity: int}[], metadata?: array<string, string>, payment_method?: string, payment_method_data?: array{billing_details?: array{address?: array{city: string, country: string, line1: string, line2?: string, postal_code: string, state: string}, email?: string, name?: string, phone?: string}, card?: array{cvc?: string, exp_month: int, exp_year: int, number: string}, type?: string}, shared_metadata?: array<string, string>} $params
      * @param null|array|string $opts
      *
      * @return RequestedSession the updated resource
