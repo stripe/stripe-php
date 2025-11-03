@@ -319,6 +319,10 @@ class EventTypes
         \Stripe\Events\V2PaymentsOffSessionPaymentFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentFailedEvent::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentRequiresCaptureEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentRequiresCaptureEvent::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentSucceededEvent::class,
+        \Stripe\Events\V2ReportingReportRunCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunCreatedEvent::class,
+        \Stripe\Events\V2ReportingReportRunFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunFailedEvent::class,
+        \Stripe\Events\V2ReportingReportRunSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunSucceededEvent::class,
+        \Stripe\Events\V2ReportingReportRunUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunUpdatedEvent::class,
         // The end of the section generated from our OpenAPI spec
     ];
 }
