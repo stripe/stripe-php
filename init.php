@@ -1038,6 +1038,8 @@ require __DIR__ . '/lib/Service/Terminal/OnboardingLinkService.php';
 require __DIR__ . '/lib/Service/Terminal/ReaderCollectedDataService.php';
 require __DIR__ . '/lib/Service/Terminal/ReaderService.php';
 require __DIR__ . '/lib/Service/Terminal/TerminalServiceFactory.php';
+require __DIR__ . '/lib/Service/TestHelpers/Capital/CapitalServiceFactory.php';
+require __DIR__ . '/lib/Service/TestHelpers/Capital/FinancingOfferService.php';
 require __DIR__ . '/lib/Service/TestHelpers/ConfirmationTokenService.php';
 require __DIR__ . '/lib/Service/TestHelpers/CustomerService.php';
 require __DIR__ . '/lib/Service/TestHelpers/Issuing/AuthorizationService.php';
