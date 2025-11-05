@@ -1172,6 +1172,7 @@ require __DIR__ . '/lib/Token.php';
 require __DIR__ . '/lib/Topup.php';
 require __DIR__ . '/lib/Transfer.php';
 require __DIR__ . '/lib/TransferReversal.php';
+require __DIR__ . '/lib/TransitBalance.php';
 require __DIR__ . '/lib/Treasury/CreditReversal.php';
 require __DIR__ . '/lib/Treasury/DebitReversal.php';
 require __DIR__ . '/lib/Treasury/FinancialAccount.php';

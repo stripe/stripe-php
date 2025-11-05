@@ -170,6 +170,7 @@ class ObjectTypes
             \Stripe\Topup::OBJECT_NAME => \Stripe\Topup::class,
             \Stripe\Transfer::OBJECT_NAME => \Stripe\Transfer::class,
             \Stripe\TransferReversal::OBJECT_NAME => \Stripe\TransferReversal::class,
+            \Stripe\TransitBalance::OBJECT_NAME => \Stripe\TransitBalance::class,
             \Stripe\Treasury\CreditReversal::OBJECT_NAME => \Stripe\Treasury\CreditReversal::class,
             \Stripe\Treasury\DebitReversal::OBJECT_NAME => \Stripe\Treasury\DebitReversal::class,
             \Stripe\Treasury\FinancialAccount::OBJECT_NAME => \Stripe\Treasury\FinancialAccount::class,
