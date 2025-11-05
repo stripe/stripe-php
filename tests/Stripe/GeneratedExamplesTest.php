@@ -607,6 +607,7 @@ final class GeneratedExamplesTest extends TestCase
                 'context' => 'context',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
+                'livemode' => [],
                 'object' => 'v2.core.event',
                 'reason' => [
                     'type' => 'request',
@@ -617,7 +618,6 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'type' => 'type',
                 'v1_event_id' => 'v1_event_id',
-                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -8158,9 +8158,9 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'created' => '1970-01-12T21:42:34.472Z',
                         'id' => 'obj_123',
+                        'livemode' => [],
                         'object' => 'v2.core.event',
                         'type' => 'type',
-                        'livemode' => [],
                     ],
                 ],
                 'next_page_url' => null,
@@ -8185,9 +8185,9 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
+                'livemode' => [],
                 'object' => 'v2.core.event',
                 'type' => 'type',
-                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -8426,9 +8426,9 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
+                'livemode' => [],
                 'object' => 'v2.core.event',
                 'type' => 'type',
-                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
