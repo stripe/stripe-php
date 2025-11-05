@@ -1,4 +1,8 @@
 # Changelog
+## 18.2.0 - 2025-11-05
+* [#1953](https://github.com/stripe/stripe-php/pull/1953) Update generated code
+  * Add support for `capture_method` on `PaymentIntent.confirm().$params.payment_method_option.card_present`, `PaymentIntent.create().$params.payment_method_option.card_present`, `PaymentIntent.payment_method_options.card_present`, and `PaymentIntent.update().$params.payment_method_option.card_present`
+
 ## 18.1.0 - 2025-10-29
 
 This release changes the pinned API version to `2025-10-29.clover`.
