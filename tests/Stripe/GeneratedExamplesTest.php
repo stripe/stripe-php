@@ -589,10 +589,25 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'changes' => ['key' => []],
+                'changes' => [
+                    'int_key' => [],
+                    'string_key' => 'value',
+                    'boolean_key' => [],
+                    'object_key' => [
+                        'object_int_key' => [],
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => [],
+                    ],
+                    'array_key' => [
+                        '0' => [],
+                        '1' => [],
+                        '2' => [],
+                    ],
+                ],
                 'context' => 'context',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
+                'livemode' => [],
                 'object' => 'v2.core.event',
                 'reason' => [
                     'type' => 'request',
@@ -603,7 +618,6 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'type' => 'type',
                 'v1_event_id' => 'v1_event_id',
-                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -8144,9 +8158,9 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'created' => '1970-01-12T21:42:34.472Z',
                         'id' => 'obj_123',
+                        'livemode' => [],
                         'object' => 'v2.core.event',
                         'type' => 'type',
-                        'livemode' => [],
                     ],
                 ],
                 'next_page_url' => null,
@@ -8171,9 +8185,9 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
+                'livemode' => [],
                 'object' => 'v2.core.event',
                 'type' => 'type',
-                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -8412,9 +8426,9 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
+                'livemode' => [],
                 'object' => 'v2.core.event',
                 'type' => 'type',
-                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -11018,6 +11032,146 @@ final class GeneratedExamplesTest extends TestCase
             ]
         );
         self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
+    public function testV2ReportingReportGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/reporting/reports/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.reporting.report',
+                'livemode' => [],
+                'name' => 'name',
+                'parameters' => [
+                    'key' => [
+                        'description' => 'description',
+                        'required' => [],
+                        'type' => 'string',
+                    ],
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->reporting->reports->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Reporting\Report::class, $result);
+    }
+
+    public function testV2ReportingReportRunPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/reporting/report_runs',
+            [
+                'report' => 'report',
+                'report_parameters' => [
+                    'int_key' => 123,
+                    'string_key' => 'value',
+                    'boolean_key' => true,
+                    'object_key' => [
+                        'object_int_key' => 123,
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => true,
+                    ],
+                    'array_key' => [1, 2, 3],
+                ],
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.reporting.report_run',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'report' => 'report',
+                'report_name' => 'report_name',
+                'report_parameters' => [
+                    'int_key' => [],
+                    'string_key' => 'value',
+                    'boolean_key' => [],
+                    'object_key' => [
+                        'object_int_key' => [],
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => [],
+                    ],
+                    'array_key' => [
+                        '0' => [],
+                        '1' => [],
+                        '2' => [],
+                    ],
+                ],
+                'status' => 'failed',
+                'status_details' => ['key' => []],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->reporting->reportRuns->create([
+            'report' => 'report',
+            'report_parameters' => [
+                'int_key' => 123,
+                'string_key' => 'value',
+                'boolean_key' => true,
+                'object_key' => [
+                    'object_int_key' => 123,
+                    'object_string_key' => 'value',
+                    'object_boolean_key' => true,
+                ],
+                'array_key' => [1, 2, 3],
+            ],
+        ]);
+        self::assertInstanceOf(V2\Reporting\ReportRun::class, $result);
+    }
+
+    public function testV2ReportingReportRunGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/reporting/report_runs/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.reporting.report_run',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'livemode' => [],
+                'report' => 'report',
+                'report_name' => 'report_name',
+                'report_parameters' => [
+                    'int_key' => [],
+                    'string_key' => 'value',
+                    'boolean_key' => [],
+                    'object_key' => [
+                        'object_int_key' => [],
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => [],
+                    ],
+                    'array_key' => [
+                        '0' => [],
+                        '1' => [],
+                        '2' => [],
+                    ],
+                ],
+                'status' => 'failed',
+                'status_details' => ['key' => []],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->reporting->reportRuns->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Reporting\ReportRun::class, $result);
     }
 
     public function testV2TaxAutomaticRulePost()

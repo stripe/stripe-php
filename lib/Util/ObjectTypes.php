@@ -170,6 +170,7 @@ class ObjectTypes
             \Stripe\Topup::OBJECT_NAME => \Stripe\Topup::class,
             \Stripe\Transfer::OBJECT_NAME => \Stripe\Transfer::class,
             \Stripe\TransferReversal::OBJECT_NAME => \Stripe\TransferReversal::class,
+            \Stripe\TransitBalance::OBJECT_NAME => \Stripe\TransitBalance::class,
             \Stripe\Treasury\CreditReversal::OBJECT_NAME => \Stripe\Treasury\CreditReversal::class,
             \Stripe\Treasury\DebitReversal::OBJECT_NAME => \Stripe\Treasury\DebitReversal::class,
             \Stripe\Treasury\FinancialAccount::OBJECT_NAME => \Stripe\Treasury\FinancialAccount::class,
@@ -243,6 +244,8 @@ class ObjectTypes
         \Stripe\V2\MoneyManagement\Transaction::OBJECT_NAME => \Stripe\V2\MoneyManagement\Transaction::class,
         \Stripe\V2\MoneyManagement\TransactionEntry::OBJECT_NAME => \Stripe\V2\MoneyManagement\TransactionEntry::class,
         \Stripe\V2\Payments\OffSessionPayment::OBJECT_NAME => \Stripe\V2\Payments\OffSessionPayment::class,
+        \Stripe\V2\Reporting\Report::OBJECT_NAME => \Stripe\V2\Reporting\Report::class,
+        \Stripe\V2\Reporting\ReportRun::OBJECT_NAME => \Stripe\V2\Reporting\ReportRun::class,
         \Stripe\V2\Tax\AutomaticRule::OBJECT_NAME => \Stripe\V2\Tax\AutomaticRule::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
