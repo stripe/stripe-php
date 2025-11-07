@@ -312,6 +312,8 @@ class EventNotificationTypes
         \Stripe\Events\V2MoneyManagementRecipientVerificationUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementRecipientVerificationUpdatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementTransactionCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementTransactionCreatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementTransactionUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementTransactionUpdatedEventNotification::class,
+        \Stripe\Events\V2PaymentsOffSessionPaymentAttemptFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAttemptFailedEventNotification::class,
+        \Stripe\Events\V2PaymentsOffSessionPaymentAttemptStartedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAttemptStartedEventNotification::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEventNotification::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEventNotification::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentCanceledEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentCanceledEventNotification::class,

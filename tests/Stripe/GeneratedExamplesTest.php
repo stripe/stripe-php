@@ -10994,10 +10994,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/payments/off_session_payments/id_123/capture',
-            [
-                'amount_to_capture' => 1374310455,
-                'metadata' => ['key' => 'metadata'],
-            ],
+            ['metadata' => ['key' => 'metadata']],
             [],
             false,
             [
@@ -11026,10 +11023,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->payments->offSessionPayments->capture(
             'id_123',
-            [
-                'amount_to_capture' => 1374310455,
-                'metadata' => ['key' => 'metadata'],
-            ]
+            ['metadata' => ['key' => 'metadata']]
         );
         self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
     }
@@ -11172,140 +11166,6 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Reporting\ReportRun::class, $result);
-    }
-
-    public function testV2TaxAutomaticRulePost()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/tax/automatic_rules',
-            ['billable_item' => 'billable_item', 'tax_code' => 'tax_code'],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.tax.automatic_rule',
-                'billable_item' => 'billable_item',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'livemode' => [],
-                'status' => 'active',
-                'tax_code' => 'tax_code',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->tax->automaticRules->create([
-            'billable_item' => 'billable_item',
-            'tax_code' => 'tax_code',
-        ]);
-        self::assertInstanceOf(V2\Tax\AutomaticRule::class, $result);
-    }
-
-    public function testV2TaxAutomaticRuleGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/tax/automatic_rules/find',
-            ['billable_item' => 'billable_item'],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.tax.automatic_rule',
-                'billable_item' => 'billable_item',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'livemode' => [],
-                'status' => 'active',
-                'tax_code' => 'tax_code',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->tax->automaticRules->find([
-            'billable_item' => 'billable_item',
-        ]);
-        self::assertInstanceOf(V2\Tax\AutomaticRule::class, $result);
-    }
-
-    public function testV2TaxAutomaticRuleGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/tax/automatic_rules/id_123',
-            [],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.tax.automatic_rule',
-                'billable_item' => 'billable_item',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'livemode' => [],
-                'status' => 'active',
-                'tax_code' => 'tax_code',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->tax->automaticRules->retrieve(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Tax\AutomaticRule::class, $result);
-    }
-
-    public function testV2TaxAutomaticRulePost2()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/tax/automatic_rules/id_123',
-            ['tax_code' => 'tax_code'],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.tax.automatic_rule',
-                'billable_item' => 'billable_item',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'livemode' => [],
-                'status' => 'active',
-                'tax_code' => 'tax_code',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->tax->automaticRules->update(
-            'id_123',
-            ['tax_code' => 'tax_code']
-        );
-        self::assertInstanceOf(V2\Tax\AutomaticRule::class, $result);
-    }
-
-    public function testV2TaxAutomaticRulePost3()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/tax/automatic_rules/id_123/deactivate',
-            [],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.tax.automatic_rule',
-                'billable_item' => 'billable_item',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'livemode' => [],
-                'status' => 'active',
-                'tax_code' => 'tax_code',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->tax->automaticRules->deactivate(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Tax\AutomaticRule::class, $result);
     }
 
     public function testV2TestHelpersFinancialAddressPost()

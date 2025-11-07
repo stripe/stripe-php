@@ -798,6 +798,10 @@ require __DIR__ . '/lib/Events/V2MoneyManagementTransactionCreatedEvent.php';
 require __DIR__ . '/lib/Events/V2MoneyManagementTransactionCreatedEventNotification.php';
 require __DIR__ . '/lib/Events/V2MoneyManagementTransactionUpdatedEvent.php';
 require __DIR__ . '/lib/Events/V2MoneyManagementTransactionUpdatedEventNotification.php';
+require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentAttemptFailedEvent.php';
+require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentAttemptFailedEventNotification.php';
+require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentAttemptStartedEvent.php';
+require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentAttemptStartedEventNotification.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEventNotification.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent.php';
@@ -1132,8 +1136,6 @@ require __DIR__ . '/lib/Service/V2/Payments/PaymentsServiceFactory.php';
 require __DIR__ . '/lib/Service/V2/Reporting/ReportRunService.php';
 require __DIR__ . '/lib/Service/V2/Reporting/ReportService.php';
 require __DIR__ . '/lib/Service/V2/Reporting/ReportingServiceFactory.php';
-require __DIR__ . '/lib/Service/V2/Tax/AutomaticRuleService.php';
-require __DIR__ . '/lib/Service/V2/Tax/TaxServiceFactory.php';
 require __DIR__ . '/lib/Service/V2/TestHelpers/FinancialAddressService.php';
 require __DIR__ . '/lib/Service/V2/TestHelpers/MoneyManagementService.php';
 require __DIR__ . '/lib/Service/V2/TestHelpers/TestHelpersServiceFactory.php';
@@ -1239,7 +1241,6 @@ require __DIR__ . '/lib/V2/MoneyManagement/TransactionEntry.php';
 require __DIR__ . '/lib/V2/Payments/OffSessionPayment.php';
 require __DIR__ . '/lib/V2/Reporting/Report.php';
 require __DIR__ . '/lib/V2/Reporting/ReportRun.php';
-require __DIR__ . '/lib/V2/Tax/AutomaticRule.php';
 require __DIR__ . '/lib/WebhookEndpoint.php';
 
 // The end of the section generated from our OpenAPI spec
