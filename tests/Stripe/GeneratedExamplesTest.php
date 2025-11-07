@@ -8710,10 +8710,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/payments/off_session_payments/id_123/capture',
-            [
-                'amount_to_capture' => 1374310455,
-                'metadata' => ['key' => 'metadata'],
-            ],
+            ['metadata' => ['key' => 'metadata']],
             [],
             false,
             [
@@ -8742,10 +8739,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->payments->offSessionPayments->capture(
             'id_123',
-            [
-                'amount_to_capture' => 1374310455,
-                'metadata' => ['key' => 'metadata'],
-            ]
+            ['metadata' => ['key' => 'metadata']]
         );
         self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
     }
