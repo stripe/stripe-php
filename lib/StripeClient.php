@@ -102,4 +102,16 @@ class StripeClient extends BaseStripeClient
 
         return $this->coreServiceFactory->getService($name);
     }
+
+    /**
+     * Creates a new StripeEventHandler associated with this client.
+     *
+     * @param string $webhookSecret The webhook secret to use for verifying incoming webhook signatures
+     *
+     * @return StripeEventHandler A new StripeEventHandler instance
+     */
+    public function handler($webhookSecret)
+    {
+        return new StripeEventHandler($this, $webhookSecret);
+    }
 }
