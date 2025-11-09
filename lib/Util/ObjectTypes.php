@@ -137,6 +137,7 @@ class ObjectTypes
             \Stripe\Terminal\Configuration::OBJECT_NAME => \Stripe\Terminal\Configuration::class,
             \Stripe\Terminal\ConnectionToken::OBJECT_NAME => \Stripe\Terminal\ConnectionToken::class,
             \Stripe\Terminal\Location::OBJECT_NAME => \Stripe\Terminal\Location::class,
+            \Stripe\Terminal\OnboardingLink::OBJECT_NAME => \Stripe\Terminal\OnboardingLink::class,
             \Stripe\Terminal\Reader::OBJECT_NAME => \Stripe\Terminal\Reader::class,
             \Stripe\TestHelpers\TestClock::OBJECT_NAME => \Stripe\TestHelpers\TestClock::class,
             \Stripe\Token::OBJECT_NAME => \Stripe\Token::class,
