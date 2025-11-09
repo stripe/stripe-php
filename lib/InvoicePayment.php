@@ -36,7 +36,7 @@ class InvoicePayment extends ApiResource
      * the first handful of those items. There is also a URL where you can retrieve the
      * full (paginated) list of payments.
      *
-     * @param null|array{ending_before?: string, expand?: string[], invoice?: string, limit?: int, payment?: array{payment_intent?: string, payment_record?: string, type: string}, starting_after?: string, status?: string} $params
+     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], invoice?: string, limit?: int, payment?: array{payment_intent?: string, payment_record?: string, type: string}, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<InvoicePayment> of ApiResources

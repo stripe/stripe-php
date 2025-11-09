@@ -27,6 +27,7 @@ class EventTypes
         \Stripe\Events\V2CoreAccountPersonDeletedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonDeletedEvent::class,
         \Stripe\Events\V2CoreAccountPersonUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonUpdatedEvent::class,
         \Stripe\Events\V2CoreEventDestinationPingEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreEventDestinationPingEvent::class,
+        \Stripe\Events\V2CoreHealthEventGenerationFailureResolvedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthEventGenerationFailureResolvedEvent::class,
         \Stripe\Events\V2MoneyManagementAdjustmentCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementAdjustmentCreatedEvent::class,
         \Stripe\Events\V2MoneyManagementFinancialAccountCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountCreatedEvent::class,
         \Stripe\Events\V2MoneyManagementFinancialAccountUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountUpdatedEvent::class,
