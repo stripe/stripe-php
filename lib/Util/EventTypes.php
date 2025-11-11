@@ -312,8 +312,6 @@ class EventTypes
         \Stripe\Events\V2MoneyManagementRecipientVerificationUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementRecipientVerificationUpdatedEvent::class,
         \Stripe\Events\V2MoneyManagementTransactionCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementTransactionCreatedEvent::class,
         \Stripe\Events\V2MoneyManagementTransactionUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementTransactionUpdatedEvent::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentAttemptFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAttemptFailedEvent::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentAttemptStartedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAttemptStartedEvent::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentCanceledEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentCanceledEvent::class,

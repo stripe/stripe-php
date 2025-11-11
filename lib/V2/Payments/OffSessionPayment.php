@@ -10,9 +10,11 @@ namespace Stripe\V2\Payments;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property null|\Stripe\StripeObject $amount_capturable The amount available to be captured.
+ * @property null|(object{discount_amount?: int, line_items: (object{discount_amount?: int, product_code?: string, product_name: string, quantity: int, tax?: (object{total_tax_amount?: int}&\Stripe\StripeObject), unit_cost: int}&\Stripe\StripeObject)[], shipping?: (object{amount?: int, from_postal_code?: string, to_postal_code?: string}&\Stripe\StripeObject), tax?: (object{total_tax_amount?: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $amount_details Provides industry-specific information about the amount.
  * @property \Stripe\StripeObject $amount_requested The “presentment amount” to be collected from the customer.
  * @property string $cadence The frequency of the underlying payment.
  * @property null|(object{capture_before?: int, capture_method: string}&\Stripe\StripeObject) $capture Details about the capture configuration for the OffSessionPayment.
+ * @property null|string $capture_method Whether the OffSessionPayment should be captured automatically or manually.
  * @property string $compartment_id ID of the owning compartment.
  * @property int $created Creation time of the OffSessionPayment. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property string $customer ID of the Customer to which this OffSessionPayment belongs.
@@ -38,6 +40,9 @@ class OffSessionPayment extends \Stripe\ApiResource
 
     const CADENCE_RECURRING = 'recurring';
     const CADENCE_UNSCHEDULED = 'unscheduled';
+
+    const CAPTURE_METHOD_AUTOMATIC = 'automatic';
+    const CAPTURE_METHOD_MANUAL = 'manual';
 
     const FAILURE_REASON_AUTHORIZATION_EXPIRED = 'authorization_expired';
     const FAILURE_REASON_REJECTED_BY_PARTNER = 'rejected_by_partner';
