@@ -9,6 +9,42 @@
   * Add support for `allocated_funds` on `Charge`, `PaymentIntent.confirm().$params`, `PaymentIntent.create().$params`, and `PaymentIntent.update().$params`
   * Add support for thin events `V2ReportingReportRunCreatedEvent`, `V2ReportingReportRunFailedEvent`, `V2ReportingReportRunSucceededEvent`, and `V2ReportingReportRunUpdatedEvent` with related object `V2.Reporting.ReportRun`
 
+## 18.2.0 - 2025-11-05
+* [#1953](https://github.com/stripe/stripe-php/pull/1953) Update generated code
+  * Add support for `capture_method` on `PaymentIntent.confirm().$params.payment_method_option.card_present`, `PaymentIntent.create().$params.payment_method_option.card_present`, `PaymentIntent.payment_method_options.card_present`, and `PaymentIntent.update().$params.payment_method_option.card_present`
+
+## 18.2.0-beta.1 - 2025-10-29
+
+This release changes the pinned API version to `2025-10-29.preview`.
+
+* [#1945](https://github.com/stripe/stripe-php/pull/1945) Update generated code for beta
+  * Add support for `crypto_storer` on `V2\Core\Account.update().$params.identity.attestation.terms_of_service`
+* [#1937](https://github.com/stripe/stripe-php/pull/1937) Update generated code for beta
+  * Add support for `update` method on resource `V2.MoneyManagement.FinancialAccount`
+  * Add support for `all`, `confirm_microdeposits`, and `send_microdeposits` methods on resource `V2.Core.Vault.UsBankAccount`
+  * Add support for `all` method on resource `V2.Core.Vault.GbBankAccount`
+  * Add support for new value `verification_data_not_found` on enums `Account.future_requirements.errors[].code`, `Account.requirements.errors[].code`, `BankAccount.future_requirements.errors[].code`, `BankAccount.requirements.errors[].code`, `Capability.future_requirements.errors[].code`, `Capability.requirements.errors[].code`, `Person.future_requirements.errors[].code`, and `Person.requirements.errors[].code`
+  * Add support for `payment_portal_url` on `Charge.payment_method_details.rechnung`, `PaymentAttemptRecord.payment_method_details.rechnung`, and `PaymentRecord.payment_method_details.rechnung`
+  * Add support for `tax_id_element` on `CustomerSession.components` and `CustomerSession.create().$params.component`
+  * Add support for `starting_after` on `PaymentAttemptRecord.all().$params`
+  * Add support for new value `solana` on enums `PaymentAttemptRecord.payment_method_details.crypto.network` and `PaymentRecord.payment_method_details.crypto.network`
+  * Add support for `reference` on `PaymentIntent.capture().$params.amount_detail.line_item.payment_method_option.klarna`, `PaymentIntent.confirm().$params.amount_detail.line_item.payment_method_option.klarna`, `PaymentIntent.create().$params.amount_detail.line_item.payment_method_option.klarna`, `PaymentIntent.increment_authorization().$params.amount_detail.line_item.payment_method_option.klarna`, `PaymentIntent.update().$params.amount_detail.line_item.payment_method_option.klarna`, and `PaymentIntentAmountDetailsLineItem.payment_method_options.klarna`
+  * Change `PaymentIntent.payment_details.customer_reference` to be required
+  * Change `PaymentIntent.payment_details.order_reference` to be required
+  * Add support for `subscription_reference` on `PaymentIntentAmountDetailsLineItem.payment_method_options.klarna`
+  * Add support for `closed` on `V2.Core.Account` and `V2\Core\Account.all().$params`
+  * Add support for new value `payment_method` on enum `V2.Core.Account.configuration.customer.automatic_indirect_tax.location_source`
+  * Add support for `usd` on `V2.Core.Account.configuration.storer.capabilities.holds_currencies`, `V2\Core\Account.create().$params.configuration.storer.capability.holds_currency`, and `V2\Core\Account.update().$params.configuration.storer.capability.holds_currency`
+  * Add support for new values `application_custom` and `application_express` on enum `V2.Core.Account.defaults.responsibilities.fees_collector`
+  * Add support for `representative_declaration` on `V2.Core.Account.identity.attestations`, `V2\Core\Account.create().$params.identity.attestation`, and `V2\Core\Account.update().$params.identity.attestation`
+  * Add support for new value `holds_currencies.usd` on enum `V2.Core.Account.requirements.entries[].impact.restricts_capabilities[].capability`
+  * Add support for `verification` on `V2.Core.Vault.UsBankAccount`
+  * Add support for `v1_id` on `EventsV2MoneyManagementTransactionCreatedEvent`
+  * Remove support for thin event `V2BillingBillSettingUpdatedEvent` with related object `V2.Billing.BillSetting`
+  * Add support for error code `payment_intent_rate_limit_exceeded` on `QuotePreviewInvoice.last_finalization_error`
+* [#1930](https://github.com/stripe/stripe-php/pull/1930) Update generated code for beta
+  * Add support for `last_seen_at` on `Terminal.Reader`
+
 ## 18.2.0-alpha.2 - 2025-10-30
 * [#1949](https://github.com/stripe/stripe-php/pull/1949) Update generated code for private-preview
   * Change `DelegatedCheckout\RequestedSession.update().$params.line_item_detail.quantity` to be required
@@ -68,38 +104,6 @@
   * Add support for `compliance_screening_description` on `V2.Core.Account.identity.business_details`, `V2\Core\Account.create().$params.identity.business_detail`, and `V2\Core\Account.update().$params.identity.business_detail`
   * Add support for `external_amount` on `V2.MoneyManagement.ReceivedCredit` and `V2.MoneyManagement.ReceivedDebit`
   * Add support for error code `payment_intent_rate_limit_exceeded` on `Invoice.last_finalization_error`, `PaymentIntent.last_payment_error`, `QuotePreviewInvoice.last_finalization_error`, `SetupAttempt.setup_error`, `SetupIntent.last_setup_error`, and `StripeError`
-
-## 18.2.0-beta.1 - 2025-10-29
-
-This release changes the pinned API version to `2025-10-29.preview`.
-
-* [#1945](https://github.com/stripe/stripe-php/pull/1945) Update generated code for beta
-  * Add support for `crypto_storer` on `V2\Core\Account.update().$params.identity.attestation.terms_of_service`
-* [#1937](https://github.com/stripe/stripe-php/pull/1937) Update generated code for beta
-  * Add support for `update` method on resource `V2.MoneyManagement.FinancialAccount`
-  * Add support for `all`, `confirm_microdeposits`, and `send_microdeposits` methods on resource `V2.Core.Vault.UsBankAccount`
-  * Add support for `all` method on resource `V2.Core.Vault.GbBankAccount`
-  * Add support for new value `verification_data_not_found` on enums `Account.future_requirements.errors[].code`, `Account.requirements.errors[].code`, `BankAccount.future_requirements.errors[].code`, `BankAccount.requirements.errors[].code`, `Capability.future_requirements.errors[].code`, `Capability.requirements.errors[].code`, `Person.future_requirements.errors[].code`, and `Person.requirements.errors[].code`
-  * Add support for `payment_portal_url` on `Charge.payment_method_details.rechnung`, `PaymentAttemptRecord.payment_method_details.rechnung`, and `PaymentRecord.payment_method_details.rechnung`
-  * Add support for `tax_id_element` on `CustomerSession.components` and `CustomerSession.create().$params.component`
-  * Add support for `starting_after` on `PaymentAttemptRecord.all().$params`
-  * Add support for new value `solana` on enums `PaymentAttemptRecord.payment_method_details.crypto.network` and `PaymentRecord.payment_method_details.crypto.network`
-  * Add support for `reference` on `PaymentIntent.capture().$params.amount_detail.line_item.payment_method_option.klarna`, `PaymentIntent.confirm().$params.amount_detail.line_item.payment_method_option.klarna`, `PaymentIntent.create().$params.amount_detail.line_item.payment_method_option.klarna`, `PaymentIntent.increment_authorization().$params.amount_detail.line_item.payment_method_option.klarna`, `PaymentIntent.update().$params.amount_detail.line_item.payment_method_option.klarna`, and `PaymentIntentAmountDetailsLineItem.payment_method_options.klarna`
-  * Change `PaymentIntent.payment_details.customer_reference` to be required
-  * Change `PaymentIntent.payment_details.order_reference` to be required
-  * Add support for `subscription_reference` on `PaymentIntentAmountDetailsLineItem.payment_method_options.klarna`
-  * Add support for `closed` on `V2.Core.Account` and `V2\Core\Account.all().$params`
-  * Add support for new value `payment_method` on enum `V2.Core.Account.configuration.customer.automatic_indirect_tax.location_source`
-  * Add support for `usd` on `V2.Core.Account.configuration.storer.capabilities.holds_currencies`, `V2\Core\Account.create().$params.configuration.storer.capability.holds_currency`, and `V2\Core\Account.update().$params.configuration.storer.capability.holds_currency`
-  * Add support for new values `application_custom` and `application_express` on enum `V2.Core.Account.defaults.responsibilities.fees_collector`
-  * Add support for `representative_declaration` on `V2.Core.Account.identity.attestations`, `V2\Core\Account.create().$params.identity.attestation`, and `V2\Core\Account.update().$params.identity.attestation`
-  * Add support for new value `holds_currencies.usd` on enum `V2.Core.Account.requirements.entries[].impact.restricts_capabilities[].capability`
-  * Add support for `verification` on `V2.Core.Vault.UsBankAccount`
-  * Add support for `v1_id` on `EventsV2MoneyManagementTransactionCreatedEvent`
-  * Remove support for thin event `V2BillingBillSettingUpdatedEvent` with related object `V2.Billing.BillSetting`
-  * Add support for error code `payment_intent_rate_limit_exceeded` on `QuotePreviewInvoice.last_finalization_error`
-* [#1930](https://github.com/stripe/stripe-php/pull/1930) Update generated code for beta
-  * Add support for `last_seen_at` on `Terminal.Reader`
 
 ## 18.1.0 - 2025-10-29
 
