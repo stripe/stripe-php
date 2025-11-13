@@ -1,5 +1,29 @@
 # Changelog
 
+## 18.3.0-alpha.2 - 2025-11-13
+This release changes the pinned API version to `2025-10-29.preview`.
+
+* [#1960](https://github.com/stripe/stripe-php/pull/1960) Update generated code for private-preview
+  * Add support for new resource `Issuing.Program`
+  * Add support for `all`, `create`, `retrieve`, and `update` methods on resource `Issuing.Program`
+  * Add support for `schedule` on `Discount`
+  * Add support for `applicable_fees` on `DelegatedCheckout.RequestedSession.total_details`
+  * Add support for `schedule_details` on `Invoice.parent`, `InvoiceItem.parent`, `InvoiceLineItem.parent`, and `QuotePreviewInvoice.parent`
+  * Add support for new value `schedule_details` on enum `InvoiceItem.parent.type`
+  * Add support for `billing_schedules` on `Invoice.create_preview().$params.schedule_detail`, `QuotePreviewSubscriptionSchedule`, `SubscriptionSchedule.create().$params`, `SubscriptionSchedule.update().$params`, and `SubscriptionSchedule`
+  * Add support for new value `schedule_details` on enums `Invoice.parent.type` and `QuotePreviewInvoice.parent.type`
+  * Add support for new value `schedule_details` on enum `InvoiceLineItem.parent.type`
+  * Add support for `latest_invoice` on `QuotePreviewSubscriptionSchedule` and `SubscriptionSchedule`
+  * Add support for `phase_effective_at` on `QuotePreviewSubscriptionSchedule.default_settings`, `SubscriptionSchedule.create().$params.default_setting`, `SubscriptionSchedule.default_settings`, and `SubscriptionSchedule.update().$params.default_setting`
+* [#1954](https://github.com/stripe/stripe-php/pull/1954) Update generated code for private-preview
+  * Remove support for resource `V2.Tax.AutomaticRule`
+  * Remove support for `create`, `deactivate`, `find`, `retrieve`, and `update` methods on resource `V2.Tax.AutomaticRule`
+  * Add support for `self_reported_income` and `self_reported_monthly_housing_payment` on `Account.create().$params.individual`, `Account.update().$params.individual`, `Person.create().$params`, `Person.update().$params`, `Person`, `Token.create().$params.account.individual`, and `Token.create().$params.person`
+  * Add support for `billing_schedules` and `phase_effective_at` on `Quote.create().$params.subscription_data_override`, `Quote.create().$params.subscription_datum`, `Quote.subscription_data_overrides[]`, `Quote.subscription_data`, `Quote.update().$params.subscription_data_override`, and `Quote.update().$params.subscription_datum`
+  * Add support for `bill_from` on `Subscription.billing_schedules[]`
+  * Add support for `amendment_end` and `line_ends_at` on `Subscription.billing_schedules[].bill_until`
+  * Add support for new values `amendment_end`, `line_ends_at`, `schedule_end`, and `upcoming_invoice` on enum `Subscription.billing_schedules[].bill_until.type`
+
 ## 18.3.0-alpha.1 - 2025-11-06
 * [#1951](https://github.com/stripe/stripe-php/pull/1951) Update generated code for private-preview
   * Add support for new resources `TransitBalance`, `V2.Reporting.ReportRun`, `V2.Reporting.Report`
