@@ -99,6 +99,7 @@ class ObjectTypes
             \Stripe\Issuing\FraudLiabilityDebit::OBJECT_NAME => \Stripe\Issuing\FraudLiabilityDebit::class,
             \Stripe\Issuing\PersonalizationDesign::OBJECT_NAME => \Stripe\Issuing\PersonalizationDesign::class,
             \Stripe\Issuing\PhysicalBundle::OBJECT_NAME => \Stripe\Issuing\PhysicalBundle::class,
+            \Stripe\Issuing\Program::OBJECT_NAME => \Stripe\Issuing\Program::class,
             \Stripe\Issuing\Settlement::OBJECT_NAME => \Stripe\Issuing\Settlement::class,
             \Stripe\Issuing\Token::OBJECT_NAME => \Stripe\Issuing\Token::class,
             \Stripe\Issuing\Transaction::OBJECT_NAME => \Stripe\Issuing\Transaction::class,

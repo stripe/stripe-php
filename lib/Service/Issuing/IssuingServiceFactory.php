@@ -16,6 +16,7 @@ namespace Stripe\Service\Issuing;
  * @property FraudLiabilityDebitService $fraudLiabilityDebits
  * @property PersonalizationDesignService $personalizationDesigns
  * @property PhysicalBundleService $physicalBundles
+ * @property ProgramService $programs
  * @property TokenService $tokens
  * @property TransactionService $transactions
  */
@@ -34,6 +35,7 @@ class IssuingServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'fraudLiabilityDebits' => FraudLiabilityDebitService::class,
         'personalizationDesigns' => PersonalizationDesignService::class,
         'physicalBundles' => PhysicalBundleService::class,
+        'programs' => ProgramService::class,
         'tokens' => TokenService::class,
         'transactions' => TransactionService::class,
     ];

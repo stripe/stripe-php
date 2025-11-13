@@ -27,7 +27,7 @@ namespace Stripe\DelegatedCheckout;
  * @property null|\Stripe\StripeObject $shared_metadata The metadata shared with the seller.
  * @property null|string $shared_payment_issued_token The SPT used for payment.
  * @property string $status The status of the requested session.
- * @property (object{amount_discount: null|int, amount_fulfillment: null|int, amount_tax: null|int}&\Stripe\StripeObject) $total_details
+ * @property (object{amount_discount: null|int, amount_fulfillment: null|int, amount_tax: null|int, applicable_fees: null|((object{amount: int, description: null|string, display_name: string}&\Stripe\StripeObject))[]}&\Stripe\StripeObject) $total_details
  * @property int $updated_at Time at which the object was last updated. Measured in seconds since the Unix epoch.
  */
 class RequestedSession extends \Stripe\ApiResource

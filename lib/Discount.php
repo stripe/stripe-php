@@ -19,6 +19,7 @@ namespace Stripe;
  * @property null|string $invoice The invoice that the discount's coupon was applied to, if it was applied directly to a particular invoice.
  * @property null|string $invoice_item The invoice item <code>id</code> (or invoice line item <code>id</code> for invoice line items of type='subscription') that the discount's coupon was applied to, if it was applied directly to a particular invoice item or invoice line item.
  * @property null|PromotionCode|string $promotion_code The promotion code applied to create this discount.
+ * @property null|string $schedule The subscription schedule that this coupon is applied to, if it is applied to a particular subscription schedule.
  * @property (object{coupon: null|Coupon|string, type: string}&StripeObject) $source
  * @property int $start Date that the coupon was applied.
  * @property null|string $subscription The subscription that this coupon is applied to, if it is applied to a particular subscription.
