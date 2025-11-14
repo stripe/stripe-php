@@ -17,7 +17,7 @@ class PaymentMethodService extends AbstractService
      * href="/docs/api/payment_methods/customer_list">List a Customer’s
      * PaymentMethods</a> API instead.
      *
-     * @param null|array{customer?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string} $params
+     * @param null|array{allow_redisplay?: string, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\PaymentMethod>

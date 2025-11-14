@@ -229,6 +229,8 @@ Stripe has features in the [private preview phase](https://docs.stripe.com/relea
 
 ### Custom requests
 
+> This feature is only available from version 16 of this SDK.
+
 If you would like to send a request to an undocumented API (for example you are in a private beta), or if you prefer to bypass the method definitions in the library and specify your request details directly, you can use the `rawRequest` method on the StripeClient.
 
 ```php

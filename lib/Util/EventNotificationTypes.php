@@ -27,6 +27,7 @@ class EventNotificationTypes
         \Stripe\Events\V2CoreAccountPersonDeletedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonDeletedEventNotification::class,
         \Stripe\Events\V2CoreAccountPersonUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonUpdatedEventNotification::class,
         \Stripe\Events\V2CoreEventDestinationPingEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreEventDestinationPingEventNotification::class,
+        \Stripe\Events\V2CoreHealthEventGenerationFailureResolvedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthEventGenerationFailureResolvedEventNotification::class,
         \Stripe\Events\V2MoneyManagementAdjustmentCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementAdjustmentCreatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementFinancialAccountCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountCreatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementFinancialAccountUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountUpdatedEventNotification::class,
@@ -62,13 +63,6 @@ class EventNotificationTypes
         \Stripe\Events\V2MoneyManagementReceivedDebitUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitUpdatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementTransactionCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementTransactionCreatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementTransactionUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementTransactionUpdatedEventNotification::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEventNotification::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEventNotification::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentCanceledEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentCanceledEventNotification::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentCreatedEventNotification::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentFailedEventNotification::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentRequiresCaptureEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentRequiresCaptureEventNotification::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentSucceededEventNotification::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentSucceededEventNotification::class,
         // The end of the section generated from our OpenAPI spec
     ];
 }

@@ -199,6 +199,8 @@ class ObjectTypes
         \Stripe\V2\Core\Account::OBJECT_NAME => \Stripe\V2\Core\Account::class,
         \Stripe\V2\Core\AccountLink::OBJECT_NAME => \Stripe\V2\Core\AccountLink::class,
         \Stripe\V2\Core\AccountPerson::OBJECT_NAME => \Stripe\V2\Core\AccountPerson::class,
+        \Stripe\V2\Core\AccountPersonToken::OBJECT_NAME => \Stripe\V2\Core\AccountPersonToken::class,
+        \Stripe\V2\Core\AccountToken::OBJECT_NAME => \Stripe\V2\Core\AccountToken::class,
         \Stripe\V2\Core\Event::OBJECT_NAME => \Stripe\V2\Core\Event::class,
         \Stripe\V2\Core\EventDestination::OBJECT_NAME => \Stripe\V2\Core\EventDestination::class,
         \Stripe\V2\Core\Vault\GbBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\GbBankAccount::class,
@@ -219,7 +221,6 @@ class ObjectTypes
         \Stripe\V2\MoneyManagement\ReceivedDebit::OBJECT_NAME => \Stripe\V2\MoneyManagement\ReceivedDebit::class,
         \Stripe\V2\MoneyManagement\Transaction::OBJECT_NAME => \Stripe\V2\MoneyManagement\Transaction::class,
         \Stripe\V2\MoneyManagement\TransactionEntry::OBJECT_NAME => \Stripe\V2\MoneyManagement\TransactionEntry::class,
-        \Stripe\V2\Payments\OffSessionPayment::OBJECT_NAME => \Stripe\V2\Payments\OffSessionPayment::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
 }

@@ -32,7 +32,7 @@ class CustomerService extends AbstractService
      * href="/docs/billing/customer/balance">balances</a>.
      *
      * @param string $parentId
-     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\CustomerBalanceTransaction>
