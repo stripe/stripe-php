@@ -589,6 +589,21 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
+                'changes' => [
+                    'int_key' => [],
+                    'string_key' => 'value',
+                    'boolean_key' => [],
+                    'object_key' => [
+                        'object_int_key' => [],
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => [],
+                    ],
+                    'array_key' => [
+                        '0' => [],
+                        '1' => [],
+                        '2' => [],
+                    ],
+                ],
                 'context' => 'context',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
