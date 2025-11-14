@@ -63,15 +63,6 @@ class EventTypes
         \Stripe\Events\V2MoneyManagementReceivedDebitUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitUpdatedEvent::class,
         \Stripe\Events\V2MoneyManagementTransactionCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementTransactionCreatedEvent::class,
         \Stripe\Events\V2MoneyManagementTransactionUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementTransactionUpdatedEvent::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentAttemptFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAttemptFailedEvent::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentAttemptStartedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAttemptStartedEvent::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentCanceledEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentCanceledEvent::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentCreatedEvent::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentFailedEvent::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentRequiresCaptureEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentRequiresCaptureEvent::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentSucceededEvent::class,
         // The end of the section generated from our OpenAPI spec
     ];
 }

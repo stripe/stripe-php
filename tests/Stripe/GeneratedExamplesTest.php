@@ -589,6 +589,21 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
+                'changes' => [
+                    'int_key' => [],
+                    'string_key' => 'value',
+                    'boolean_key' => [],
+                    'object_key' => [
+                        'object_int_key' => [],
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => [],
+                    ],
+                    'array_key' => [
+                        '0' => [],
+                        '1' => [],
+                        '2' => [],
+                    ],
+                ],
                 'context' => 'context',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
@@ -5883,6 +5898,59 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Core\AccountPerson::class, $result);
     }
 
+    public function testV2CoreAccountsPersonTokenPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts/account_id_123/person_tokens',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.account_person_token',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'livemode' => [],
+                'used' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->personTokens->create(
+            'account_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\AccountPersonToken::class, $result);
+    }
+
+    public function testV2CoreAccountsPersonTokenGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/accounts/account_id_123/person_tokens/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.account_person_token',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'livemode' => [],
+                'used' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->personTokens->retrieve(
+            'account_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\AccountPersonToken::class, $result);
+    }
+
     public function testV2CoreAccountLinkPost()
     {
         $this->stubRequest(
@@ -5951,6 +6019,531 @@ final class GeneratedExamplesTest extends TestCase
             ],
         ]);
         self::assertInstanceOf(V2\Core\AccountLink::class, $result);
+    }
+
+    public function testV2CoreAccountTokenPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/account_tokens',
+            [
+                'identity' => [
+                    'attestations' => [
+                        'directorship_declaration' => ['attested' => true],
+                        'ownership_declaration' => ['attested' => true],
+                        'persons_provided' => [
+                            'directors' => true,
+                            'executives' => true,
+                            'owners' => true,
+                            'ownership_exemption_reason' => 'qualified_entity_exceeds_ownership_threshold',
+                        ],
+                        'representative_declaration' => ['attested' => true],
+                        'terms_of_service' => [
+                            'account' => ['shown_and_accepted' => true],
+                            'storer' => ['shown_and_accepted' => true],
+                        ],
+                    ],
+                    'business_details' => [
+                        'address' => [
+                            'city' => 'city',
+                            'country' => 'country',
+                            'line1' => 'line1',
+                            'line2' => 'line2',
+                            'postal_code' => 'postal_code',
+                            'state' => 'state',
+                            'town' => 'town',
+                        ],
+                        'annual_revenue' => [
+                            'amount' => [
+                                'currency' => 'USD',
+                                'value' => 96,
+                            ],
+                            'fiscal_year_end' => 'fiscal_year_end',
+                        ],
+                        'documents' => [
+                            'bank_account_ownership_verification' => [
+                                'files' => ['files'],
+                                'type' => 'files',
+                            ],
+                            'company_license' => [
+                                'files' => ['files'],
+                                'type' => 'files',
+                            ],
+                            'company_memorandum_of_association' => [
+                                'files' => ['files'],
+                                'type' => 'files',
+                            ],
+                            'company_ministerial_decree' => [
+                                'files' => ['files'],
+                                'type' => 'files',
+                            ],
+                            'company_registration_verification' => [
+                                'files' => ['files'],
+                                'type' => 'files',
+                            ],
+                            'company_tax_id_verification' => [
+                                'files' => ['files'],
+                                'type' => 'files',
+                            ],
+                            'primary_verification' => [
+                                'front_back' => [
+                                    'back' => 'back',
+                                    'front' => 'front',
+                                ],
+                                'type' => 'front_back',
+                            ],
+                            'proof_of_address' => [
+                                'files' => ['files'],
+                                'type' => 'files',
+                            ],
+                            'proof_of_registration' => [
+                                'files' => ['files'],
+                                'type' => 'files',
+                            ],
+                            'proof_of_ultimate_beneficial_ownership' => [
+                                'files' => ['files'],
+                                'type' => 'files',
+                            ],
+                        ],
+                        'estimated_worker_count' => 884794319,
+                        'id_numbers' => [
+                            [
+                                'registrar' => 'registrar',
+                                'type' => 'th_prn',
+                                'value' => 'value',
+                            ],
+                        ],
+                        'monthly_estimated_revenue' => [
+                            'amount' => [
+                                'currency' => 'USD',
+                                'value' => 96,
+                            ],
+                        ],
+                        'phone' => 'phone',
+                        'registered_name' => 'registered_name',
+                        'script_addresses' => [
+                            'kana' => [
+                                'city' => 'city',
+                                'country' => 'country',
+                                'line1' => 'line1',
+                                'line2' => 'line2',
+                                'postal_code' => 'postal_code',
+                                'state' => 'state',
+                                'town' => 'town',
+                            ],
+                            'kanji' => [
+                                'city' => 'city',
+                                'country' => 'country',
+                                'line1' => 'line1',
+                                'line2' => 'line2',
+                                'postal_code' => 'postal_code',
+                                'state' => 'state',
+                                'town' => 'town',
+                            ],
+                        ],
+                        'script_names' => [
+                            'kana' => ['registered_name' => 'registered_name'],
+                            'kanji' => ['registered_name' => 'registered_name'],
+                        ],
+                        'structure' => 'public_listed_corporation',
+                    ],
+                    'entity_type' => 'individual',
+                    'individual' => [
+                        'additional_addresses' => [
+                            [
+                                'city' => 'city',
+                                'country' => 'country',
+                                'line1' => 'line1',
+                                'line2' => 'line2',
+                                'postal_code' => 'postal_code',
+                                'purpose' => 'registered',
+                                'state' => 'state',
+                                'town' => 'town',
+                            ],
+                        ],
+                        'additional_names' => [
+                            [
+                                'full_name' => 'full_name',
+                                'given_name' => 'given_name',
+                                'purpose' => 'alias',
+                                'surname' => 'surname',
+                            ],
+                        ],
+                        'address' => [
+                            'city' => 'city',
+                            'country' => 'country',
+                            'line1' => 'line1',
+                            'line2' => 'line2',
+                            'postal_code' => 'postal_code',
+                            'state' => 'state',
+                            'town' => 'town',
+                        ],
+                        'date_of_birth' => [
+                            'day' => 99228,
+                            'month' => 104080000,
+                            'year' => 3704893,
+                        ],
+                        'documents' => [
+                            'company_authorization' => [
+                                'files' => ['files'],
+                                'type' => 'files',
+                            ],
+                            'passport' => [
+                                'files' => ['files'],
+                                'type' => 'files',
+                            ],
+                            'primary_verification' => [
+                                'front_back' => [
+                                    'back' => 'back',
+                                    'front' => 'front',
+                                ],
+                                'type' => 'front_back',
+                            ],
+                            'secondary_verification' => [
+                                'front_back' => [
+                                    'back' => 'back',
+                                    'front' => 'front',
+                                ],
+                                'type' => 'front_back',
+                            ],
+                            'visa' => [
+                                'files' => ['files'],
+                                'type' => 'files',
+                            ],
+                        ],
+                        'email' => 'email',
+                        'given_name' => 'given_name',
+                        'id_numbers' => [
+                            [
+                                'type' => 'th_lc',
+                                'value' => 'value',
+                            ],
+                        ],
+                        'legal_gender' => 'male',
+                        'metadata' => ['key' => 'metadata'],
+                        'nationalities' => ['nationalities'],
+                        'phone' => 'phone',
+                        'political_exposure' => 'none',
+                        'relationship' => [
+                            'director' => true,
+                            'executive' => true,
+                            'owner' => true,
+                            'percent_ownership' => 'percent_ownership',
+                            'title' => 'title',
+                        ],
+                        'script_addresses' => [
+                            'kana' => [
+                                'city' => 'city',
+                                'country' => 'country',
+                                'line1' => 'line1',
+                                'line2' => 'line2',
+                                'postal_code' => 'postal_code',
+                                'state' => 'state',
+                                'town' => 'town',
+                            ],
+                            'kanji' => [
+                                'city' => 'city',
+                                'country' => 'country',
+                                'line1' => 'line1',
+                                'line2' => 'line2',
+                                'postal_code' => 'postal_code',
+                                'state' => 'state',
+                                'town' => 'town',
+                            ],
+                        ],
+                        'script_names' => [
+                            'kana' => [
+                                'given_name' => 'given_name',
+                                'surname' => 'surname',
+                            ],
+                            'kanji' => [
+                                'given_name' => 'given_name',
+                                'surname' => 'surname',
+                            ],
+                        ],
+                        'surname' => 'surname',
+                    ],
+                ],
+            ],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.account_token',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'livemode' => [],
+                'used' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accountTokens->create([
+            'identity' => [
+                'attestations' => [
+                    'directorship_declaration' => ['attested' => true],
+                    'ownership_declaration' => ['attested' => true],
+                    'persons_provided' => [
+                        'directors' => true,
+                        'executives' => true,
+                        'owners' => true,
+                        'ownership_exemption_reason' => 'qualified_entity_exceeds_ownership_threshold',
+                    ],
+                    'representative_declaration' => ['attested' => true],
+                    'terms_of_service' => [
+                        'account' => ['shown_and_accepted' => true],
+                        'storer' => ['shown_and_accepted' => true],
+                    ],
+                ],
+                'business_details' => [
+                    'address' => [
+                        'city' => 'city',
+                        'country' => 'country',
+                        'line1' => 'line1',
+                        'line2' => 'line2',
+                        'postal_code' => 'postal_code',
+                        'state' => 'state',
+                        'town' => 'town',
+                    ],
+                    'annual_revenue' => [
+                        'amount' => [
+                            'currency' => 'USD',
+                            'value' => 96,
+                        ],
+                        'fiscal_year_end' => 'fiscal_year_end',
+                    ],
+                    'documents' => [
+                        'bank_account_ownership_verification' => [
+                            'files' => ['files'],
+                            'type' => 'files',
+                        ],
+                        'company_license' => [
+                            'files' => ['files'],
+                            'type' => 'files',
+                        ],
+                        'company_memorandum_of_association' => [
+                            'files' => ['files'],
+                            'type' => 'files',
+                        ],
+                        'company_ministerial_decree' => [
+                            'files' => ['files'],
+                            'type' => 'files',
+                        ],
+                        'company_registration_verification' => [
+                            'files' => ['files'],
+                            'type' => 'files',
+                        ],
+                        'company_tax_id_verification' => [
+                            'files' => ['files'],
+                            'type' => 'files',
+                        ],
+                        'primary_verification' => [
+                            'front_back' => [
+                                'back' => 'back',
+                                'front' => 'front',
+                            ],
+                            'type' => 'front_back',
+                        ],
+                        'proof_of_address' => [
+                            'files' => ['files'],
+                            'type' => 'files',
+                        ],
+                        'proof_of_registration' => [
+                            'files' => ['files'],
+                            'type' => 'files',
+                        ],
+                        'proof_of_ultimate_beneficial_ownership' => [
+                            'files' => ['files'],
+                            'type' => 'files',
+                        ],
+                    ],
+                    'estimated_worker_count' => 884794319,
+                    'id_numbers' => [
+                        [
+                            'registrar' => 'registrar',
+                            'type' => 'th_prn',
+                            'value' => 'value',
+                        ],
+                    ],
+                    'monthly_estimated_revenue' => [
+                        'amount' => [
+                            'currency' => 'USD',
+                            'value' => 96,
+                        ],
+                    ],
+                    'phone' => 'phone',
+                    'registered_name' => 'registered_name',
+                    'script_addresses' => [
+                        'kana' => [
+                            'city' => 'city',
+                            'country' => 'country',
+                            'line1' => 'line1',
+                            'line2' => 'line2',
+                            'postal_code' => 'postal_code',
+                            'state' => 'state',
+                            'town' => 'town',
+                        ],
+                        'kanji' => [
+                            'city' => 'city',
+                            'country' => 'country',
+                            'line1' => 'line1',
+                            'line2' => 'line2',
+                            'postal_code' => 'postal_code',
+                            'state' => 'state',
+                            'town' => 'town',
+                        ],
+                    ],
+                    'script_names' => [
+                        'kana' => ['registered_name' => 'registered_name'],
+                        'kanji' => ['registered_name' => 'registered_name'],
+                    ],
+                    'structure' => 'public_listed_corporation',
+                ],
+                'entity_type' => 'individual',
+                'individual' => [
+                    'additional_addresses' => [
+                        [
+                            'city' => 'city',
+                            'country' => 'country',
+                            'line1' => 'line1',
+                            'line2' => 'line2',
+                            'postal_code' => 'postal_code',
+                            'purpose' => 'registered',
+                            'state' => 'state',
+                            'town' => 'town',
+                        ],
+                    ],
+                    'additional_names' => [
+                        [
+                            'full_name' => 'full_name',
+                            'given_name' => 'given_name',
+                            'purpose' => 'alias',
+                            'surname' => 'surname',
+                        ],
+                    ],
+                    'address' => [
+                        'city' => 'city',
+                        'country' => 'country',
+                        'line1' => 'line1',
+                        'line2' => 'line2',
+                        'postal_code' => 'postal_code',
+                        'state' => 'state',
+                        'town' => 'town',
+                    ],
+                    'date_of_birth' => [
+                        'day' => 99228,
+                        'month' => 104080000,
+                        'year' => 3704893,
+                    ],
+                    'documents' => [
+                        'company_authorization' => [
+                            'files' => ['files'],
+                            'type' => 'files',
+                        ],
+                        'passport' => [
+                            'files' => ['files'],
+                            'type' => 'files',
+                        ],
+                        'primary_verification' => [
+                            'front_back' => [
+                                'back' => 'back',
+                                'front' => 'front',
+                            ],
+                            'type' => 'front_back',
+                        ],
+                        'secondary_verification' => [
+                            'front_back' => [
+                                'back' => 'back',
+                                'front' => 'front',
+                            ],
+                            'type' => 'front_back',
+                        ],
+                        'visa' => [
+                            'files' => ['files'],
+                            'type' => 'files',
+                        ],
+                    ],
+                    'email' => 'email',
+                    'given_name' => 'given_name',
+                    'id_numbers' => [
+                        [
+                            'type' => 'th_lc',
+                            'value' => 'value',
+                        ],
+                    ],
+                    'legal_gender' => 'male',
+                    'metadata' => ['key' => 'metadata'],
+                    'nationalities' => ['nationalities'],
+                    'phone' => 'phone',
+                    'political_exposure' => 'none',
+                    'relationship' => [
+                        'director' => true,
+                        'executive' => true,
+                        'owner' => true,
+                        'percent_ownership' => 'percent_ownership',
+                        'title' => 'title',
+                    ],
+                    'script_addresses' => [
+                        'kana' => [
+                            'city' => 'city',
+                            'country' => 'country',
+                            'line1' => 'line1',
+                            'line2' => 'line2',
+                            'postal_code' => 'postal_code',
+                            'state' => 'state',
+                            'town' => 'town',
+                        ],
+                        'kanji' => [
+                            'city' => 'city',
+                            'country' => 'country',
+                            'line1' => 'line1',
+                            'line2' => 'line2',
+                            'postal_code' => 'postal_code',
+                            'state' => 'state',
+                            'town' => 'town',
+                        ],
+                    ],
+                    'script_names' => [
+                        'kana' => [
+                            'given_name' => 'given_name',
+                            'surname' => 'surname',
+                        ],
+                        'kanji' => [
+                            'given_name' => 'given_name',
+                            'surname' => 'surname',
+                        ],
+                    ],
+                    'surname' => 'surname',
+                ],
+            ],
+        ]);
+        self::assertInstanceOf(V2\Core\AccountToken::class, $result);
+    }
+
+    public function testV2CoreAccountTokenGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/account_tokens/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.account_token',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'livemode' => [],
+                'used' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accountTokens->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\AccountToken::class, $result);
     }
 
     public function testV2CoreEventGet()
@@ -8528,220 +9121,6 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\MoneyManagement\TransactionEntry::class, $result);
-    }
-
-    public function testV2PaymentsOffSessionPaymentGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/payments/off_session_payments',
-            [],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'id' => 'obj_123',
-                        'object' => 'v2.payments.off_session_payment',
-                        'amount_requested' => [
-                            'currency' => 'USD',
-                            'value' => [],
-                        ],
-                        'cadence' => 'unscheduled',
-                        'compartment_id' => 'compartment_id',
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'customer' => 'customer',
-                        'livemode' => [],
-                        'metadata' => ['key' => 'metadata'],
-                        'payment_method' => 'payment_method',
-                        'payments_orchestration' => ['enabled' => []],
-                        'retry_details' => [
-                            'attempts' => [],
-                            'retry_strategy' => 'scheduled',
-                        ],
-                        'status' => 'pending',
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->payments->offSessionPayments->all([]);
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result->data[0]);
-    }
-
-    public function testV2PaymentsOffSessionPaymentPost()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/payments/off_session_payments',
-            [
-                'amount' => [
-                    'currency' => 'USD',
-                    'value' => 96,
-                ],
-                'cadence' => 'unscheduled',
-                'customer' => 'customer',
-                'metadata' => ['key' => 'metadata'],
-                'payment_method' => 'payment_method',
-            ],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.payments.off_session_payment',
-                'amount_requested' => [
-                    'currency' => 'USD',
-                    'value' => [],
-                ],
-                'cadence' => 'unscheduled',
-                'compartment_id' => 'compartment_id',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'customer' => 'customer',
-                'livemode' => [],
-                'metadata' => ['key' => 'metadata'],
-                'payment_method' => 'payment_method',
-                'payments_orchestration' => ['enabled' => []],
-                'retry_details' => [
-                    'attempts' => [],
-                    'retry_strategy' => 'scheduled',
-                ],
-                'status' => 'pending',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->payments->offSessionPayments->create([
-            'amount' => [
-                'currency' => 'USD',
-                'value' => 96,
-            ],
-            'cadence' => 'unscheduled',
-            'customer' => 'customer',
-            'metadata' => ['key' => 'metadata'],
-            'payment_method' => 'payment_method',
-        ]);
-        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
-    }
-
-    public function testV2PaymentsOffSessionPaymentGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/payments/off_session_payments/id_123',
-            [],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.payments.off_session_payment',
-                'amount_requested' => [
-                    'currency' => 'USD',
-                    'value' => [],
-                ],
-                'cadence' => 'unscheduled',
-                'compartment_id' => 'compartment_id',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'customer' => 'customer',
-                'livemode' => [],
-                'metadata' => ['key' => 'metadata'],
-                'payment_method' => 'payment_method',
-                'payments_orchestration' => ['enabled' => []],
-                'retry_details' => [
-                    'attempts' => [],
-                    'retry_strategy' => 'scheduled',
-                ],
-                'status' => 'pending',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->payments->offSessionPayments->retrieve(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
-    }
-
-    public function testV2PaymentsOffSessionPaymentPost2()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/payments/off_session_payments/id_123/cancel',
-            [],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.payments.off_session_payment',
-                'amount_requested' => [
-                    'currency' => 'USD',
-                    'value' => [],
-                ],
-                'cadence' => 'unscheduled',
-                'compartment_id' => 'compartment_id',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'customer' => 'customer',
-                'livemode' => [],
-                'metadata' => ['key' => 'metadata'],
-                'payment_method' => 'payment_method',
-                'payments_orchestration' => ['enabled' => []],
-                'retry_details' => [
-                    'attempts' => [],
-                    'retry_strategy' => 'scheduled',
-                ],
-                'status' => 'pending',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->payments->offSessionPayments->cancel(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
-    }
-
-    public function testV2PaymentsOffSessionPaymentPost3()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/payments/off_session_payments/id_123/capture',
-            ['metadata' => ['key' => 'metadata']],
-            [],
-            false,
-            [
-                'id' => 'obj_123',
-                'object' => 'v2.payments.off_session_payment',
-                'amount_requested' => [
-                    'currency' => 'USD',
-                    'value' => [],
-                ],
-                'cadence' => 'unscheduled',
-                'compartment_id' => 'compartment_id',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'customer' => 'customer',
-                'livemode' => [],
-                'metadata' => ['key' => 'metadata'],
-                'payment_method' => 'payment_method',
-                'payments_orchestration' => ['enabled' => []],
-                'retry_details' => [
-                    'attempts' => [],
-                    'retry_strategy' => 'scheduled',
-                ],
-                'status' => 'pending',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->payments->offSessionPayments->capture(
-            'id_123',
-            ['metadata' => ['key' => 'metadata']]
-        );
-        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
     }
 
     public function testV2TestHelpersFinancialAddressPost()
