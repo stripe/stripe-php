@@ -11,7 +11,7 @@ namespace Stripe\FinancialConnections;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|(object{account?: string|\Stripe\Account, customer?: string|\Stripe\Customer, type: string}&\Stripe\StripeObject) $account_holder The account holder for whom accounts are collected in this session.
  * @property \Stripe\Collection<Account> $accounts The accounts that were collected as part of this Session.
- * @property string $client_secret A value that will be passed to the client to launch the authentication flow.
+ * @property null|string $client_secret A value that will be passed to the client to launch the authentication flow.
  * @property null|(object{account_subcategories: null|string[], countries: null|string[]}&\Stripe\StripeObject) $filters
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string[] $permissions Permissions requested for accounts collected during this session.

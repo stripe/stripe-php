@@ -10,6 +10,7 @@ namespace Stripe\FinancialConnections;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|(object{account?: string|\Stripe\Account, customer?: string|\Stripe\Customer, type: string}&\Stripe\StripeObject) $account_holder The account holder that this account belongs to.
+ * @property null|((object{expected_expiry_date: null|int, identifier_type: string, status: string, supported_networks: string[]}&\Stripe\StripeObject))[] $account_numbers Details about the account numbers.
  * @property null|(object{as_of: int, cash?: (object{available: null|\Stripe\StripeObject}&\Stripe\StripeObject), credit?: (object{used: null|\Stripe\StripeObject}&\Stripe\StripeObject), current: \Stripe\StripeObject, type: string}&\Stripe\StripeObject) $balance The most recent information about the account's balance.
  * @property null|(object{last_attempted_at: int, next_refresh_available_at: null|int, status: string}&\Stripe\StripeObject) $balance_refresh The state of the most recent attempt to refresh the account balance.
  * @property string $category The type of the account. Account category is further divided in <code>subcategory</code>.
