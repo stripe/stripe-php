@@ -114,7 +114,7 @@ final class UtilTest extends \Stripe\TestCase
         ];
 
         self::assertSame(
-            'a=3&b=%2Bfoo%3F&c=bar%26baz&d[a]=a&d[b]=b&e=0&e=1&f=',
+            'a=3&b=%2Bfoo%3F&c=bar%26baz&d[a]=a&d[b]=b&e[0]=0&e[1]=1&f=',
             Util::encodeParameters($params, 'v2')
         );
     }
