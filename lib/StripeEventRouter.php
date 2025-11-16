@@ -4,7 +4,17 @@ namespace Stripe;
 
 const UNKNOWN_EVENT_TYPE_KEY = '__unknown_event_type';
 
-class StripeEventHandler
+class UnhandledNotificationDetails
+{
+    public bool $isKnownType;
+
+    public function __construct(bool $isKnownType)
+    {
+        $this->isKnownType = $isKnownType;
+    }
+}
+
+class StripeEventRouter
 {
     /** @var array<string, callable> */
     private $registeredHandlers = [];
@@ -13,11 +23,20 @@ class StripeEventHandler
     /** @var string */
     private $webhookSecret;
     private $hasHandledEvents = false;
+    private $onUnhandledHandler;
 
-    public function __construct(StripeClient $client, string $webhookSecret)
+    /**
+     * Constructor for StripeEventRouter.
+     *
+     * @param StripeClient $client The Stripe client to use for API interactions
+     * @param string $webhookSecret The webhook secret for verifying signatures
+     * @param callable(Events\UnknownEventNotification, StripeClient, UnhandledNotificationDetails): void $onUnhandledHandler A handler to call for unhandled notifications
+     */
+    public function __construct($client, $webhookSecret, $onUnhandledHandler)
     {
         $this->client = $client;
         $this->webhookSecret = $webhookSecret;
+        $this->onUnhandledHandler = $onUnhandledHandler;
     }
 
     /**
@@ -43,36 +62,41 @@ class StripeEventHandler
 
         $eventType = $notif->type;
 
-        // TODO: bind the event's context to the client
-        if (isset($this->registeredHandlers[$eventType])) {
-            \call_user_func($this->registeredHandlers[$eventType], $notif, $this->client);
-        } elseif (isset($this->registeredHandlers[UNKNOWN_EVENT_TYPE_KEY])) {
-            \call_user_func($this->registeredHandlers[UNKNOWN_EVENT_TYPE_KEY], $notif, $this->client);
-        } else {
-            throw new Exception\UnexpectedValueException("No handler registered for event type {$eventType}");
+        $originalContext = $this->client->getStripeContext();
+        try {
+            // TODO: bind the event's context to the client
+            $this->client->setStripeContext($notif->context);
+
+            if (isset($this->registeredHandlers[$eventType])) {
+                \call_user_func($this->registeredHandlers[$eventType], $notif, $this->client);
+            } else {
+                \call_user_func($this->onUnhandledHandler, $notif, $this->client, new UnhandledNotificationDetails(!($notif instanceof Events\UnknownEventNotification)));
+            }
+        } finally {
+            // Clear references to the client to avoid memory leaks
+            $this->client->setStripeContext($originalContext);
         }
     }
 
-    private function register(string $eventType, callable $handler)
+    /**
+     * Registers a handler for a specific event type.
+     *
+     * @param string $eventType The event type to register the handler for
+     * @param callable $handler The handler function to call when the event is received
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    private function register($eventType, $handler)
     {
         if ($this->hasHandledEvents) {
             throw new Exception\BadMethodCallException('Cannot register new event handlers after .handle() has been called. This is indicative of a bug.');
         }
         if (isset($this->registeredHandlers[$eventType])) {
-            throw new Exception\InvalidArgumentException("Handler for event type {$eventType} is already registered");
+            throw new Exception\InvalidArgumentException("Handler for event type \"{$eventType}\" is already registered");
         }
 
         $this->registeredHandlers[$eventType] = $handler;
-    }
-
-    /**
-     * Register a handler for events that the SDK doesn't have types for.
-     *
-     * @param callable(Events\UnknownEventNotification, StripeClient): void $handler
-     */
-    public function on_UnknownEventNotification(callable $handler): void
-    {
-        $this->register(UNKNOWN_EVENT_TYPE_KEY, $handler);
     }
 
     // event-handler-methods: The beginning of the section generated from our OpenAPI spec

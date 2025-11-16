@@ -133,13 +133,28 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * Gets the Stripe Context ID used by the client to send requests.
+     * Gets the Stripe Context used by the client to send requests.
      *
-     * @return null|string|StripeContext the Stripe Context ID used by the client to send requests
+     * @return null|string|StripeContext the Stripe Context used by the client to send requests
      */
     public function getStripeContext()
     {
-        return $this->config['stripe_context'];
+        // use opts instead of config because we modify the default opts and want to make sure we get fresh reads
+        return $this->defaultOpts['stripe_context'];
+    }
+
+    /**
+     * FOR INTERNAL USE ONLY. MAY CHANGE WITHOUT WARNING.
+     *
+     * Updates the the Stripe Context used by the client to send requests.
+     *
+     * @param null|string|StripeContext $context the Stripe Context used by the client to send requests
+     *
+     * @return void
+     */
+    public function setStripeContext($context)
+    {
+        $this->defaultOpts['stripe_context'] = $context;
     }
 
     /**
@@ -515,14 +530,15 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * Creates a new StripeEventHandler associated with this client.
+     * Creates a new StripeEventRouter associated with this client.
      *
      * @param string $webhookSecret The webhook secret to use for verifying incoming webhook signatures
+     * @param callable(Events\UnknownEventNotification, StripeClient, UnhandledNotificationDetails): void $onUnhandledHandler A function to call if no other handler processes an event notification.
      *
-     * @return StripeEventHandler A new StripeEventHandler instance
+     * @return StripeEventRouter A new StripeEventRouter instance
      */
-    public function handler($webhookSecret)
+    public function router($webhookSecret, $onUnhandledHandler)
     {
-        return new StripeEventHandler($this, $webhookSecret);
+        return new StripeEventRouter($this, $webhookSecret, $onUnhandledHandler);
     }
 }
