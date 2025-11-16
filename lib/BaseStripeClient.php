@@ -139,8 +139,21 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      */
     public function getStripeContext()
     {
+        return $this->config['stripe_context'];
+    }
+
+    /**
+     * FOR INTERNAL USE ONLY. MAY CHANGE WITHOUT WARNING. Gets the Stripe Context used by the client to send requests.
+     *
+     * @return null|string the Stripe Context used by the client to send requests
+     */
+    public function getStripeContextHeader()
+    {
         // use opts instead of config because we modify the default opts and want to make sure we get fresh reads
-        return $this->defaultOpts['stripe_context'];
+        if (!isset($this->defaultOpts->headers['Stripe-Context'])) {
+            return null;
+        }
+        return $this->defaultOpts->headers['Stripe-Context'];
     }
 
     /**
@@ -154,7 +167,11 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      */
     public function setStripeContext($context)
     {
-        $this->defaultOpts['stripe_context'] = $context;
+        if ($context === null) {
+            unset($this->defaultOpts->headers['Stripe-Context']);
+        } else {
+            $this->defaultOpts->headers['Stripe-Context'] = (string) $context;
+        }
     }
 
     /**

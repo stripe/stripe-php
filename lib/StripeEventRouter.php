@@ -62,7 +62,7 @@ class StripeEventRouter
 
         $eventType = $notif->type;
 
-        $originalContext = $this->client->getStripeContext();
+        $originalContext = $this->client->getStripeContextHeader();
 
         try {
             // TODO: bind the event's context to the client
@@ -77,6 +77,18 @@ class StripeEventRouter
             // Clear references to the client to avoid memory leaks
             $this->client->setStripeContext($originalContext);
         }
+    }
+
+    /**
+     * Returns a sorted list of registered event types.
+     *
+     * @return string[] List of registered event type strings
+     */
+    public function getRegisteredHandlers()
+    {
+        $eventTypes = array_keys($this->registeredHandlers);
+        \sort($eventTypes);
+        return $eventTypes;
     }
 
     /**
