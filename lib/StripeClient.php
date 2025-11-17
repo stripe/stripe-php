@@ -17,6 +17,7 @@ namespace Stripe;
  * @property Service\BalanceService $balance
  * @property Service\BalanceSettingsService $balanceSettings
  * @property Service\BalanceTransactionService $balanceTransactions
+ * @property Service\BalanceTransferService $balanceTransfers
  * @property Service\Billing\BillingServiceFactory $billing
  * @property Service\BillingPortal\BillingPortalServiceFactory $billingPortal
  * @property Service\Capital\CapitalServiceFactory $capital
