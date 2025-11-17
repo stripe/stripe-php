@@ -6,9 +6,10 @@ const UNKNOWN_EVENT_TYPE_KEY = '__unknown_event_type';
 
 class UnhandledNotificationDetails
 {
-    public bool $isKnownType;
+    /** @var bool whether the SDK has types for this event */
+    public $isKnownType;
 
-    public function __construct(bool $isKnownType)
+    public function __construct($isKnownType)
     {
         $this->isKnownType = $isKnownType;
     }
