@@ -137,6 +137,7 @@ class Event extends ApiResource
     const CUSTOMER_UPDATED = 'customer.updated';
     const ENTITLEMENTS_ACTIVE_ENTITLEMENT_SUMMARY_UPDATED = 'entitlements.active_entitlement_summary.updated';
     const FILE_CREATED = 'file.created';
+    const FINANCIAL_CONNECTIONS_ACCOUNT_ACCOUNT_NUMBERS_UPDATED = 'financial_connections.account.account_numbers_updated';
     const FINANCIAL_CONNECTIONS_ACCOUNT_CREATED = 'financial_connections.account.created';
     const FINANCIAL_CONNECTIONS_ACCOUNT_DEACTIVATED = 'financial_connections.account.deactivated';
     const FINANCIAL_CONNECTIONS_ACCOUNT_DISCONNECTED = 'financial_connections.account.disconnected';
@@ -145,6 +146,7 @@ class Event extends ApiResource
     const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_INFERRED_BALANCES = 'financial_connections.account.refreshed_inferred_balances';
     const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_OWNERSHIP = 'financial_connections.account.refreshed_ownership';
     const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_TRANSACTIONS = 'financial_connections.account.refreshed_transactions';
+    const FINANCIAL_CONNECTIONS_ACCOUNT_UPCOMING_ACCOUNT_NUMBER_EXPIRY = 'financial_connections.account.upcoming_account_number_expiry';
     const FINANCIAL_CONNECTIONS_SESSION_UPDATED = 'financial_connections.session.updated';
     const FX_QUOTE_EXPIRED = 'fx_quote.expired';
     const IDENTITY_VERIFICATION_SESSION_CANCELED = 'identity.verification_session.canceled';
@@ -359,6 +361,7 @@ class Event extends ApiResource
     const TYPE_BILLING_PORTAL_SESSION_CREATED = 'billing_portal.session.created';
     const TYPE_CAPABILITY_UPDATED = 'capability.updated';
     const TYPE_CAPITAL_FINANCING_OFFER_ACCEPTED = 'capital.financing_offer.accepted';
+    const TYPE_CAPITAL_FINANCING_OFFER_ACCEPTED_OTHER_OFFER = 'capital.financing_offer.accepted_other_offer';
     const TYPE_CAPITAL_FINANCING_OFFER_CANCELED = 'capital.financing_offer.canceled';
     const TYPE_CAPITAL_FINANCING_OFFER_CREATED = 'capital.financing_offer.created';
     const TYPE_CAPITAL_FINANCING_OFFER_EXPIRED = 'capital.financing_offer.expired';
@@ -426,6 +429,7 @@ class Event extends ApiResource
     const TYPE_CUSTOMER_UPDATED = 'customer.updated';
     const TYPE_ENTITLEMENTS_ACTIVE_ENTITLEMENT_SUMMARY_UPDATED = 'entitlements.active_entitlement_summary.updated';
     const TYPE_FILE_CREATED = 'file.created';
+    const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_ACCOUNT_NUMBERS_UPDATED = 'financial_connections.account.account_numbers_updated';
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_CREATED = 'financial_connections.account.created';
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_DEACTIVATED = 'financial_connections.account.deactivated';
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_DISCONNECTED = 'financial_connections.account.disconnected';
@@ -434,6 +438,7 @@ class Event extends ApiResource
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_INFERRED_BALANCES = 'financial_connections.account.refreshed_inferred_balances';
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_OWNERSHIP = 'financial_connections.account.refreshed_ownership';
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_TRANSACTIONS = 'financial_connections.account.refreshed_transactions';
+    const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_UPCOMING_ACCOUNT_NUMBER_EXPIRY = 'financial_connections.account.upcoming_account_number_expiry';
     const TYPE_FINANCIAL_CONNECTIONS_SESSION_UPDATED = 'financial_connections.session.updated';
     const TYPE_FX_QUOTE_EXPIRED = 'fx_quote.expired';
     const TYPE_IDENTITY_VERIFICATION_SESSION_CANCELED = 'identity.verification_session.canceled';

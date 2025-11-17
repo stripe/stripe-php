@@ -191,7 +191,7 @@ class PaymentMethod extends ApiResource
      * href="/docs/api/payment_methods/customer_list">List a Customer’s
      * PaymentMethods</a> API instead.
      *
-     * @param null|array{customer?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string} $params
+     * @param null|array{allow_redisplay?: string, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<PaymentMethod> of ApiResources

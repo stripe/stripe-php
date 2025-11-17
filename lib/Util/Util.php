@@ -264,11 +264,8 @@ abstract class Util
                     self::flattenParams($elem, "{$calculatedKey}[{$i}]")
                 );
             } else {
-                if ('v2' === $apiMode) {
-                    $result[] = ["{$calculatedKey}", $elem];
-                } else {
-                    $result[] = ["{$calculatedKey}[{$i}]", $elem];
-                }
+                // Always use indexed format for arrays
+                $result[] = ["{$calculatedKey}[{$i}]", $elem];
             }
         }
 
