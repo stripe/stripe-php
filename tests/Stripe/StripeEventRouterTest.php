@@ -32,7 +32,7 @@ final class StripeEventRouterTest extends TestCase
             'stripe_context' => 'original_context_123',
         ]);
 
-        $this->onUnhandledHandler = function ($event, $client, $info) {
+        $this->onUnhandledHandler = static function ($event, $client, $info) {
             // Default no-op handler
         };
 
@@ -102,7 +102,7 @@ final class StripeEventRouterTest extends TestCase
         $handlerCalled = false;
         $receivedEvent = null;
 
-        $handler = function ($event, $client) use (&$handlerCalled, &$receivedEvent) {
+        $handler = static function ($event, $client) use (&$handlerCalled, &$receivedEvent) {
             $handlerCalled = true;
             $receivedEvent = $event;
         };
@@ -113,8 +113,8 @@ final class StripeEventRouterTest extends TestCase
         $sigHeader = $this->generateHeader($payload);
         $this->router->handle($payload, $sigHeader);
 
-        static::assertTrue($handlerCalled);
-        static::assertInstanceOf(Events\V1BillingMeterErrorReportTriggeredEventNotification::class, $receivedEvent);
+        self::assertTrue($handlerCalled);
+        self::assertInstanceOf(Events\V1BillingMeterErrorReportTriggeredEventNotification::class, $receivedEvent);
     }
 
     public function testRoutesDifferentEventsToCorrectHandlers()
@@ -124,12 +124,12 @@ final class StripeEventRouterTest extends TestCase
         $noMeterHandlerCalled = false;
         $noMeterReceivedEvent = null;
 
-        $billingHandler = function ($event, $client) use (&$billingHandlerCalled, &$billingReceivedEvent) {
+        $billingHandler = static function ($event, $client) use (&$billingHandlerCalled, &$billingReceivedEvent) {
             $billingHandlerCalled = true;
             $billingReceivedEvent = $event;
         };
 
-        $noMeterHandler = function ($event, $client) use (&$noMeterHandlerCalled, &$noMeterReceivedEvent) {
+        $noMeterHandler = static function ($event, $client) use (&$noMeterHandlerCalled, &$noMeterReceivedEvent) {
             $noMeterHandlerCalled = true;
             $noMeterReceivedEvent = $event;
         };
@@ -145,10 +145,10 @@ final class StripeEventRouterTest extends TestCase
         $sigHeader2 = $this->generateHeader($payload2);
         $this->router->handle($payload2, $sigHeader2);
 
-        static::assertTrue($billingHandlerCalled);
-        static::assertTrue($noMeterHandlerCalled);
-        static::assertInstanceOf(Events\V1BillingMeterErrorReportTriggeredEventNotification::class, $billingReceivedEvent);
-        static::assertInstanceOf(Events\V1BillingMeterNoMeterFoundEventNotification::class, $noMeterReceivedEvent);
+        self::assertTrue($billingHandlerCalled);
+        self::assertTrue($noMeterHandlerCalled);
+        self::assertInstanceOf(Events\V1BillingMeterErrorReportTriggeredEventNotification::class, $billingReceivedEvent);
+        self::assertInstanceOf(Events\V1BillingMeterNoMeterFoundEventNotification::class, $noMeterReceivedEvent);
     }
 
     public function testHandlerReceivesCorrectRuntimeType()
@@ -156,7 +156,7 @@ final class StripeEventRouterTest extends TestCase
         $receivedEvent = null;
         $receivedClient = null;
 
-        $handler = function ($event, $client) use (&$receivedEvent, &$receivedClient) {
+        $handler = static function ($event, $client) use (&$receivedEvent, &$receivedClient) {
             $receivedEvent = $event;
             $receivedClient = $client;
         };
@@ -167,16 +167,16 @@ final class StripeEventRouterTest extends TestCase
         $sigHeader = $this->generateHeader($payload);
         $this->router->handle($payload, $sigHeader);
 
-        static::assertInstanceOf(Events\V1BillingMeterErrorReportTriggeredEventNotification::class, $receivedEvent);
-        static::assertSame('v1.billing.meter.error_report_triggered', $receivedEvent->type);
-        static::assertSame('evt_123', $receivedEvent->id);
-        static::assertSame('mtr_123', $receivedEvent->related_object->id);
-        static::assertInstanceOf(StripeClient::class, $receivedClient);
+        self::assertInstanceOf(Events\V1BillingMeterErrorReportTriggeredEventNotification::class, $receivedEvent);
+        self::assertSame('v1.billing.meter.error_report_triggered', $receivedEvent->type);
+        self::assertSame('evt_123', $receivedEvent->id);
+        self::assertSame('mtr_123', $receivedEvent->related_object->id);
+        self::assertInstanceOf(StripeClient::class, $receivedClient);
     }
 
     public function testCannotRegisterHandlerAfterHandling()
     {
-        $handler = function ($event, $client) {
+        $handler = static function ($event, $client) {
             // no-op
         };
 
@@ -187,17 +187,17 @@ final class StripeEventRouterTest extends TestCase
         $this->router->handle($payload, $sigHeader);
 
         $this->expectException(Exception\BadMethodCallException::class);
-        $this->compatExpectExceptionMessageMatches('/Cannot register new event handlers after .handle\\(\\) has been called/');
+        $this->compatExpectExceptionMessageMatches('/Cannot register new event handlers after .handle\(\) has been called/');
 
         $this->router->on_V1BillingMeterNoMeterFoundEventNotification($handler);
     }
 
     public function testCannotRegisterDuplicateHandler()
     {
-        $handler1 = function ($event, $client) {
+        $handler1 = static function ($event, $client) {
             // no-op
         };
-        $handler2 = function ($event, $client) {
+        $handler2 = static function ($event, $client) {
             // no-op
         };
 
@@ -213,46 +213,46 @@ final class StripeEventRouterTest extends TestCase
     {
         $receivedContext = null;
 
-        $handler = function ($event, $client) use (&$receivedContext) {
+        $handler = static function ($event, $client) use (&$receivedContext) {
             $receivedContext = $client->getStripeContextHeader();
         };
 
         $this->router->on_V1BillingMeterErrorReportTriggeredEventNotification($handler);
 
-        static::assertSame('original_context_123', $this->client->getStripeContext());
+        self::assertSame('original_context_123', $this->client->getStripeContext());
 
         $payload = $this->getV1BillingMeterPayload();
         $sigHeader = $this->generateHeader($payload);
         $this->router->handle($payload, $sigHeader);
 
-        static::assertSame('event_context_456', $receivedContext);
+        self::assertSame('event_context_456', $receivedContext);
     }
 
     public function testStripeContextRestoredAfterHandlerSuccess()
     {
         $contextDuringHandler = null;
 
-        $handler = function ($event, $client) use (&$contextDuringHandler) {
+        $handler = static function ($event, $client) use (&$contextDuringHandler) {
             $contextDuringHandler = $client->getStripeContextHeader();
         };
 
         $this->router->on_V1BillingMeterErrorReportTriggeredEventNotification($handler);
 
-        static::assertSame('original_context_123', $this->client->getStripeContext());
+        self::assertSame('original_context_123', $this->client->getStripeContext());
 
         $payload = $this->getV1BillingMeterPayload();
         $sigHeader = $this->generateHeader($payload);
         $this->router->handle($payload, $sigHeader);
 
-        static::assertSame('event_context_456', $contextDuringHandler);
-        static::assertSame('original_context_123', $this->client->getStripeContext());
+        self::assertSame('event_context_456', $contextDuringHandler);
+        self::assertSame('original_context_123', $this->client->getStripeContext());
     }
 
     public function testStripeContextRestoredAfterHandlerError()
     {
         $contextDuringHandler = null;
 
-        $handler = function ($event, $client) use (&$contextDuringHandler) {
+        $handler = static function ($event, $client) use (&$contextDuringHandler) {
             $contextDuringHandler = $client->getStripeContextHeader();
 
             throw new \RuntimeException('Handler error!');
@@ -260,7 +260,7 @@ final class StripeEventRouterTest extends TestCase
 
         $this->router->on_V1BillingMeterErrorReportTriggeredEventNotification($handler);
 
-        static::assertSame('original_context_123', $this->client->getStripeContext());
+        self::assertSame('original_context_123', $this->client->getStripeContext());
 
         $payload = $this->getV1BillingMeterPayload();
         $sigHeader = $this->generateHeader($payload);
@@ -271,8 +271,8 @@ final class StripeEventRouterTest extends TestCase
         try {
             $this->router->handle($payload, $sigHeader);
         } finally {
-            static::assertSame('event_context_456', $contextDuringHandler);
-            static::assertSame('original_context_123', $this->client->getStripeContext());
+            self::assertSame('event_context_456', $contextDuringHandler);
+            self::assertSame('original_context_123', $this->client->getStripeContext());
         }
     }
 
@@ -280,20 +280,20 @@ final class StripeEventRouterTest extends TestCase
     {
         $receivedContext = 'not_set';
 
-        $handler = function ($event, $client) use (&$receivedContext) {
+        $handler = static function ($event, $client) use (&$receivedContext) {
             $receivedContext = $client->getStripeContextHeader();
         };
 
         $this->router->on_V1BillingMeterNoMeterFoundEventNotification($handler);
 
-        static::assertSame('original_context_123', $this->client->getStripeContext());
+        self::assertSame('original_context_123', $this->client->getStripeContext());
 
         $payload = $this->getV1BillingMeterNoMeterFoundPayload();
         $sigHeader = $this->generateHeader($payload);
         $this->router->handle($payload, $sigHeader);
 
-        static::assertNull($receivedContext);
-        static::assertSame('original_context_123', $this->client->getStripeContext());
+        self::assertNull($receivedContext);
+        self::assertSame('original_context_123', $this->client->getStripeContext());
     }
 
     public function testClientWithNoContextTemporarilyGetsEventContext()
@@ -302,30 +302,30 @@ final class StripeEventRouterTest extends TestCase
 
         $client = new StripeClient(['api_key' => 'sk_test_123']);
 
-        $onUnhandledHandler = function ($event, $client, $info) {
+        $onUnhandledHandler = static function ($event, $client, $info) {
             // no-op
         };
 
         $router = new StripeEventRouter($client, self::WEBHOOK_SECRET, $onUnhandledHandler);
 
-        $handler = function ($event, $receivedClient) use (&$contextDuringHandler) {
+        $handler = static function ($event, $receivedClient) use (&$contextDuringHandler) {
             $contextDuringHandler = $receivedClient->getStripeContextHeader();
         };
 
         $router->on_V1BillingMeterErrorReportTriggeredEventNotification($handler);
 
         // Client initially has no context
-        static::assertNull($client->getStripeContext());
+        self::assertNull($client->getStripeContext());
 
         $payload = $this->getV1BillingMeterPayload();
         $sigHeader = $this->generateHeader($payload);
         $router->handle($payload, $sigHeader);
 
         // During handler, context was set to event's context
-        static::assertSame('event_context_456', $contextDuringHandler);
+        self::assertSame('event_context_456', $contextDuringHandler);
 
         // After handler, context is restored to null
-        static::assertNull($client->getStripeContext());
+        self::assertNull($client->getStripeContext());
     }
 
     public function testUnknownEventRoutesToOnUnhandled()
@@ -335,7 +335,7 @@ final class StripeEventRouterTest extends TestCase
         $receivedClient = null;
         $receivedInfo = null;
 
-        $onUnhandledHandler = function ($event, $client, $info) use (&$onUnhandledCalled, &$receivedEvent, &$receivedClient, &$receivedInfo) {
+        $onUnhandledHandler = static function ($event, $client, $info) use (&$onUnhandledCalled, &$receivedEvent, &$receivedClient, &$receivedInfo) {
             $onUnhandledCalled = true;
             $receivedEvent = $event;
             $receivedClient = $client;
@@ -348,12 +348,12 @@ final class StripeEventRouterTest extends TestCase
         $sigHeader = $this->generateHeader($payload);
         $router->handle($payload, $sigHeader);
 
-        static::assertTrue($onUnhandledCalled);
-        static::assertInstanceOf(Events\UnknownEventNotification::class, $receivedEvent);
-        static::assertSame('llama.created', $receivedEvent->type);
-        static::assertInstanceOf(StripeClient::class, $receivedClient);
-        static::assertInstanceOf(UnhandledNotificationDetails::class, $receivedInfo);
-        static::assertFalse($receivedInfo->isKnownType);
+        self::assertTrue($onUnhandledCalled);
+        self::assertInstanceOf(Events\UnknownEventNotification::class, $receivedEvent);
+        self::assertSame('llama.created', $receivedEvent->type);
+        self::assertInstanceOf(StripeClient::class, $receivedClient);
+        self::assertInstanceOf(UnhandledNotificationDetails::class, $receivedInfo);
+        self::assertFalse($receivedInfo->isKnownType);
     }
 
     public function testKnownUnregisteredEventRoutesToOnUnhandled()
@@ -363,7 +363,7 @@ final class StripeEventRouterTest extends TestCase
         $receivedClient = null;
         $receivedInfo = null;
 
-        $onUnhandledHandler = function ($event, $client, $info) use (&$onUnhandledCalled, &$receivedEvent, &$receivedClient, &$receivedInfo) {
+        $onUnhandledHandler = static function ($event, $client, $info) use (&$onUnhandledCalled, &$receivedEvent, &$receivedClient, &$receivedInfo) {
             $onUnhandledCalled = true;
             $receivedEvent = $event;
             $receivedClient = $client;
@@ -376,12 +376,12 @@ final class StripeEventRouterTest extends TestCase
         $sigHeader = $this->generateHeader($payload);
         $router->handle($payload, $sigHeader);
 
-        static::assertTrue($onUnhandledCalled);
-        static::assertInstanceOf(Events\V1BillingMeterErrorReportTriggeredEventNotification::class, $receivedEvent);
-        static::assertSame('v1.billing.meter.error_report_triggered', $receivedEvent->type);
-        static::assertInstanceOf(StripeClient::class, $receivedClient);
-        static::assertInstanceOf(UnhandledNotificationDetails::class, $receivedInfo);
-        static::assertTrue($receivedInfo->isKnownType);
+        self::assertTrue($onUnhandledCalled);
+        self::assertInstanceOf(Events\V1BillingMeterErrorReportTriggeredEventNotification::class, $receivedEvent);
+        self::assertSame('v1.billing.meter.error_report_triggered', $receivedEvent->type);
+        self::assertInstanceOf(StripeClient::class, $receivedClient);
+        self::assertInstanceOf(UnhandledNotificationDetails::class, $receivedInfo);
+        self::assertTrue($receivedInfo->isKnownType);
     }
 
     public function testRegisteredEventDoesNotCallOnUnhandled()
@@ -389,11 +389,11 @@ final class StripeEventRouterTest extends TestCase
         $handlerCalled = false;
         $onUnhandledCalled = false;
 
-        $handler = function ($event, $client) use (&$handlerCalled) {
+        $handler = static function ($event, $client) use (&$handlerCalled) {
             $handlerCalled = true;
         };
 
-        $onUnhandledHandler = function ($event, $client, $info) use (&$onUnhandledCalled) {
+        $onUnhandledHandler = static function ($event, $client, $info) use (&$onUnhandledCalled) {
             $onUnhandledCalled = true;
         };
 
@@ -404,8 +404,8 @@ final class StripeEventRouterTest extends TestCase
         $sigHeader = $this->generateHeader($payload);
         $router->handle($payload, $sigHeader);
 
-        static::assertTrue($handlerCalled);
-        static::assertFalse($onUnhandledCalled);
+        self::assertTrue($handlerCalled);
+        self::assertFalse($onUnhandledCalled);
     }
 
     public function testHandlerClientRetainsConfiguration()
@@ -421,13 +421,13 @@ final class StripeEventRouterTest extends TestCase
         $receivedApiKey = null;
         $receivedContext = null;
 
-        $onUnhandledHandler = function ($event, $client, $info) {
+        $onUnhandledHandler = static function ($event, $client, $info) {
             // no-op
         };
 
         $router = new StripeEventRouter($client, self::WEBHOOK_SECRET, $onUnhandledHandler);
 
-        $handler = function ($event, $receivedClient) use (&$receivedApiKey, &$receivedContext) {
+        $handler = static function ($event, $receivedClient) use (&$receivedApiKey, &$receivedContext) {
             $receivedApiKey = $receivedClient->getApiKey();
             $receivedContext = $receivedClient->getStripeContextHeader();
         };
@@ -438,16 +438,16 @@ final class StripeEventRouterTest extends TestCase
         $sigHeader = $this->generateHeader($payload);
         $router->handle($payload, $sigHeader);
 
-        static::assertSame($apiKey, $receivedApiKey);
-        static::assertSame('event_context_456', $receivedContext);
-        static::assertSame($originalContext, $client->getStripeContext());
+        self::assertSame($apiKey, $receivedApiKey);
+        self::assertSame('event_context_456', $receivedContext);
+        self::assertSame($originalContext, $client->getStripeContext());
     }
 
     public function testOnUnhandledReceivesCorrectInfoForUnknown()
     {
         $receivedInfo = null;
 
-        $onUnhandledHandler = function ($event, $client, $info) use (&$receivedInfo) {
+        $onUnhandledHandler = static function ($event, $client, $info) use (&$receivedInfo) {
             $receivedInfo = $info;
         };
 
@@ -457,15 +457,15 @@ final class StripeEventRouterTest extends TestCase
         $sigHeader = $this->generateHeader($payload);
         $router->handle($payload, $sigHeader);
 
-        static::assertInstanceOf(UnhandledNotificationDetails::class, $receivedInfo);
-        static::assertFalse($receivedInfo->isKnownType);
+        self::assertInstanceOf(UnhandledNotificationDetails::class, $receivedInfo);
+        self::assertFalse($receivedInfo->isKnownType);
     }
 
     public function testOnUnhandledReceivesCorrectInfoForKnownUnregistered()
     {
         $receivedInfo = null;
 
-        $onUnhandledHandler = function ($event, $client, $info) use (&$receivedInfo) {
+        $onUnhandledHandler = static function ($event, $client, $info) use (&$receivedInfo) {
             $receivedInfo = $info;
         };
 
@@ -475,8 +475,8 @@ final class StripeEventRouterTest extends TestCase
         $sigHeader = $this->generateHeader($payload);
         $router->handle($payload, $sigHeader);
 
-        static::assertInstanceOf(UnhandledNotificationDetails::class, $receivedInfo);
-        static::assertTrue($receivedInfo->isKnownType);
+        self::assertInstanceOf(UnhandledNotificationDetails::class, $receivedInfo);
+        self::assertTrue($receivedInfo->isKnownType);
     }
 
     public function testValidatesWebhookSignature()
@@ -491,12 +491,12 @@ final class StripeEventRouterTest extends TestCase
     {
         $types = $this->router->getRegisteredHandlers();
 
-        static::assertSame([], $types);
+        self::assertSame([], $types);
     }
 
     public function testRegisteredEventTypesSingle()
     {
-        $handler = function ($event, $client) {
+        $handler = static function ($event, $client) {
             // no-op
         };
 
@@ -504,12 +504,12 @@ final class StripeEventRouterTest extends TestCase
 
         $types = $this->router->getRegisteredHandlers();
 
-        static::assertSame(['v1.billing.meter.error_report_triggered'], $types);
+        self::assertSame(['v1.billing.meter.error_report_triggered'], $types);
     }
 
     public function testRegisteredEventTypesMultipleAlphabetized()
     {
-        $handler = function ($event, $client) {
+        $handler = static function ($event, $client) {
             // no-op
         };
 
@@ -524,6 +524,6 @@ final class StripeEventRouterTest extends TestCase
             'v1.billing.meter.no_meter_found',
         ];
 
-        static::assertSame($expected, $types);
+        self::assertSame($expected, $types);
     }
 }

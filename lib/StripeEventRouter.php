@@ -88,6 +88,7 @@ class StripeEventRouter
     {
         $eventTypes = array_keys($this->registeredHandlers);
         \sort($eventTypes);
+
         return $eventTypes;
     }
 

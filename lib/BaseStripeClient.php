@@ -153,6 +153,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         if (!isset($this->defaultOpts->headers['Stripe-Context'])) {
             return null;
         }
+
         return $this->defaultOpts->headers['Stripe-Context'];
     }
 
@@ -167,7 +168,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      */
     public function setStripeContext($context)
     {
-        if ($context === null) {
+        if (null === $context) {
             unset($this->defaultOpts->headers['Stripe-Context']);
         } else {
             $this->defaultOpts->headers['Stripe-Context'] = (string) $context;
