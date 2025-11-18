@@ -150,7 +150,7 @@ class Dispute extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Dispute the submited dispute
+     * @return Dispute the submitted dispute
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
