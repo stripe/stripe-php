@@ -33,41 +33,39 @@ This release changes the pinned API version to `2025-11-17.preview`.
   * Change type of `SubscriptionSchedule.update().$params.billing_schedules` from `array(billing_schedules_update_params)` to `emptyable(array(billing_schedules_update_params))`
   * Add support for snapshot events `FINANCIAL_CONNECTIONS_ACCOUNT_ACCOUNT_NUMBERS_UPDATED` and `FINANCIAL_CONNECTIONS_ACCOUNT_UPCOMING_ACCOUNT_NUMBER_EXPIRY` with resource `FinancialConnections.Account`
 
-## 14.1.0b1 - 2025-11-18
+## 19.1.0-beta.1 - 2025-11-18
 This release changes the pinned API version to `2025-11-17.preview`.
 
-* [#1663](https://github.com/stripe/stripe-python/pull/1663) Update generated code for beta
-  * Add support for new resources `v2.core.AccountPersonToken` and `v2.core.AccountToken`
-  * Remove support for resource `v2.payments.OffSessionPayment`
-  * Add support for `create` and `retrieve` methods on resources `v2.core.AccountPersonToken` and `v2.core.AccountToken`
-  * Remove support for `cancel`, `capture`, `create`, `list`, and `retrieve` methods on resource `v2.payments.OffSessionPayment`
+* [#1952](https://github.com/stripe/stripe-php/pull/1952) Update generated code for beta
+  * Add support for new resources `V2.Core.AccountPersonToken` and `V2.Core.AccountToken`
+  * Remove support for resource `V2.Payments.OffSessionPayment`
+  * Add support for `create` and `retrieve` methods on resources `V2.Core.AccountPersonToken` and `V2.Core.AccountToken`
+  * Remove support for `all`, `cancel`, `capture`, `create`, and `retrieve` methods on resource `V2.Payments.OffSessionPayment`
   * Change `Tax.Association.tax_transaction_attempts` to be required
-  * Add support for `specified_commercial_transactions_act_url` on `Account.BusinessProfile`, `AccountCreateParamsBusinessProfile`, and `AccountModifyParamsBusinessProfile`
-  * Add support for `paypay_payments` on `Account.Setting`, `AccountCreateParamsSetting`, and `AccountModifyParamsSetting`
-  * Change type of `billing.analytics.MeterUsageRetrieveParamsMeter.dimension_filters` from `string` to `array(string)`
-  * Change type of `billing.analytics.MeterUsageRetrieveParamsMeter.tenant_filters` from `string` to `array(string)`
-  * Add support for `car_rental_data`, `flight_data`, and `lodging_data` on `ChargeCaptureParamsPaymentDetail`, `ChargeModifyParamsPaymentDetail`, `PaymentIntentCaptureParamsPaymentDetail`, `PaymentIntentConfirmParamsPaymentDetail`, `PaymentIntentCreateParamsPaymentDetail`, and `PaymentIntentModifyParamsPaymentDetail`
-  * Add support for `supplementary_purchase_data` on `OrderCreateParamsPaymentSettingPaymentMethodOptionKlarna`, `OrderModifyParamsPaymentSettingPaymentMethodOptionKlarna`, `PaymentIntentConfirmParamsPaymentMethodOptionKlarna`, `PaymentIntentCreateParamsPaymentMethodOptionKlarna`, and `PaymentIntentModifyParamsPaymentMethodOptionKlarna`
-  * Add support for `allow_redisplay` and `customer_account` on `PaymentMethodListParams`
+  * Add support for `specified_commercial_transactions_act_url` on `Account.business_profile`, `Account.create().$params.business_profile`, and `Account.update().$params.business_profile`
+  * Add support for `paypay_payments` on `Account.create().$params.setting`, `Account.settings`, and `Account.update().$params.setting`
+  * Change type of `Billing\Analytics\MeterUsage.retrieve().$params.meter.dimension_filters` from `string` to `array(string)`
+  * Change type of `Billing\Analytics\MeterUsage.retrieve().$params.meter.tenant_filters` from `string` to `array(string)`
+  * Add support for `car_rental_data`, `flight_data`, and `lodging_data` on `Charge.capture().$params.payment_detail`, `Charge.update().$params.payment_detail`, `PaymentIntent.capture().$params.payment_detail`, `PaymentIntent.confirm().$params.payment_detail`, `PaymentIntent.create().$params.payment_detail`, and `PaymentIntent.update().$params.payment_detail`
+  * Add support for `supplementary_purchase_data` on `Order.create().$params.payment.setting.payment_method_option.klarna`, `Order.update().$params.payment.setting.payment_method_option.klarna`, `PaymentIntent.confirm().$params.payment_method_option.klarna`, `PaymentIntent.create().$params.payment_method_option.klarna`, and `PaymentIntent.update().$params.payment_method_option.klarna`
+  * Add support for `allow_redisplay` and `customer_account` on `PaymentMethod.all().$params`
   * Add support for `future_requirements` on `V2.Core.Account`
-  * Add support for `konbini_payments` and `script_statement_descriptor` on `V2.Core.Account.Configuration.Merchant`, `v2.core.AccountCreateParamsConfigurationMerchant`, and `v2.core.AccountModifyParamsConfigurationMerchant`
-  * Add support for `eur` on `V2.Core.Account.Configuration.Storer.Capability.HoldsCurrency`, `v2.core.AccountCreateParamsConfigurationStorerCapabilityHoldsCurrency`, and `v2.core.AccountModifyParamsConfigurationStorerCapabilityHoldsCurrency`
-  * Add support for `requirements_collector` on `V2.Core.Account.Default.Responsibility`
-  * Add support for new value `ar_cuit` on enums `V2.Core.Account.Identity.BusinessDetail.IdNumber.type`, `v2.core.AccountCreateParamsIdentityBusinessDetailIdNumber.type`, and `v2.core.AccountModifyParamsIdentityBusinessDetailIdNumber.type`
-  * Add support for new value `ar_dni` on enums `V2.Core.Account.Identity.Individual.IdNumber.type`, `V2.Core.AccountPerson.IdNumber.type`, `v2.core.AccountCreateParamsIdentityIndividualIdNumber.type`, `v2.core.AccountModifyParamsIdentityIndividualIdNumber.type`, `v2.core.AccountPersonCreateParamsIdNumber.type`, and `v2.core.AccountPersonModifyParamsIdNumber.type`
-  * Remove support for `collector` on `V2.Core.Account.Requirement`
-  * Add support for new value `holds_currencies.eur` on enum `V2.Core.Account.Requirement.Entry.Impact.RestrictsCapability.capability`
-  * Add support for new values `payment_method` and `person` on enum `V2.Core.Account.Requirement.Entry.Reference.type`
-  * Remove support for value `resource` from enum `V2.Core.Account.Requirement.Entry.Reference.type`
-  * Remove support for value `future_requirements` from enum `V2.Core.Account.Requirement.Entry.RequestedReason.code`
+  * Add support for `konbini_payments` and `script_statement_descriptor` on `V2.Core.Account.configuration.merchant`, `V2\Core\Account.create().$params.configuration.merchant`, and `V2\Core\Account.update().$params.configuration.merchant`
+  * Add support for `eur` on `V2.Core.Account.configuration.storer.capabilities.holds_currencies`, `V2\Core\Account.create().$params.configuration.storer.capability.holds_currency`, and `V2\Core\Account.update().$params.configuration.storer.capability.holds_currency`
+  * Add support for `requirements_collector` on `V2.Core.Account.defaults.responsibilities`
+  * Add support for new value `ar_cuit` on enum `V2.Core.Account.identity.business_details.id_numbers[].type`
+  * Add support for new value `ar_dni` on enums `V2.Core.Account.identity.individual.id_numbers[].type` and `V2.Core.AccountPerson.id_numbers[].type`
+  * Remove support for `collector` on `V2.Core.Account.requirements`
+  * Add support for new value `holds_currencies.eur` on enum `V2.Core.Account.requirements.entries[].impact.restricts_capabilities[].capability`
+  * Add support for new values `payment_method` and `person` on enum `V2.Core.Account.requirements.entries[].reference.type`
+  * Remove support for value `resource` from enum `V2.Core.Account.requirements.entries[].reference.type`
+  * Remove support for value `future_requirements` from enum `V2.Core.Account.requirements.entries[].requested_reasons[].code`
   * Add support for `changes` on `V2.Core.Event`
-  * Remove support for value `sepa_bank_account` from enums `V2.MoneyManagement.FinancialAddress.Credential.type` and `v2.money_management.FinancialAddressCreateParams.type`
-  * Add support for `account_token` on `v2.core.AccountCreateParams` and `v2.core.AccountModifyParams`
-  * Add support for new value `future_requirements` on enums `v2.core.AccountCreateParams.include`, `v2.core.AccountModifyParams.include`, and `v2.core.AccountRetrieveParams.include`
-  * Add support for `person_token` on `v2.core.AccountPersonCreateParams` and `v2.core.AccountPersonModifyParams`
+  * Remove support for value `sepa_bank_account` from enum `V2.MoneyManagement.FinancialAddress.credentials.type`
+  * Add support for `account_token` on `V2\Core\Account.create().$params` and `V2\Core\Account.update().$params`
+  * Add support for `person_token` on `V2\Core\AccountPerson.create().$params` and `V2\Core\AccountPerson.update().$params`
   * Add support for thin event `V2CoreHealthEventGenerationFailureResolvedEvent`
-  * Remove support for thin events `V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent`, `V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent`, `V2PaymentsOffSessionPaymentCanceledEvent`, `V2PaymentsOffSessionPaymentCreatedEvent`, `V2PaymentsOffSessionPaymentFailedEvent`, `V2PaymentsOffSessionPaymentRequiresCaptureEvent`, and `V2PaymentsOffSessionPaymentSucceededEvent` with related object `v2.payments.OffSessionPayment`
-
+  * Remove support for thin events `V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent`, `V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent`, `V2PaymentsOffSessionPaymentCanceledEvent`, `V2PaymentsOffSessionPaymentCreatedEvent`, `V2PaymentsOffSessionPaymentFailedEvent`, `V2PaymentsOffSessionPaymentRequiresCaptureEvent`, and `V2PaymentsOffSessionPaymentSucceededEvent` with related object `V2.Payments.OffSessionPayment`
 ## 19.0.0 - 2025-11-18
 This release changes the pinned API version to `2025-11-17.clover`.
 
