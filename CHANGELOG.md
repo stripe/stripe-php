@@ -1,5 +1,69 @@
 # Changelog
 
+## 19.1.0-beta.1 - 2025-11-18
+This release changes the pinned API version to `2025-11-17.preview`.
+
+* [#1952](https://github.com/stripe/stripe-php/pull/1952) Update generated code for beta
+  * Add support for new resources `V2.Core.AccountPersonToken` and `V2.Core.AccountToken`
+  * Remove support for resource `V2.Payments.OffSessionPayment`
+  * Add support for `create` and `retrieve` methods on resources `V2.Core.AccountPersonToken` and `V2.Core.AccountToken`
+  * Remove support for `all`, `cancel`, `capture`, `create`, and `retrieve` methods on resource `V2.Payments.OffSessionPayment`
+  * Change `Tax.Association.tax_transaction_attempts` to be required
+  * Add support for `specified_commercial_transactions_act_url` on `Account.business_profile`, `Account.create().$params.business_profile`, and `Account.update().$params.business_profile`
+  * Add support for `paypay_payments` on `Account.create().$params.setting`, `Account.settings`, and `Account.update().$params.setting`
+  * Change type of `Billing\Analytics\MeterUsage.retrieve().$params.meter.dimension_filters` from `string` to `array(string)`
+  * Change type of `Billing\Analytics\MeterUsage.retrieve().$params.meter.tenant_filters` from `string` to `array(string)`
+  * Add support for `car_rental_data`, `flight_data`, and `lodging_data` on `Charge.capture().$params.payment_detail`, `Charge.update().$params.payment_detail`, `PaymentIntent.capture().$params.payment_detail`, `PaymentIntent.confirm().$params.payment_detail`, `PaymentIntent.create().$params.payment_detail`, and `PaymentIntent.update().$params.payment_detail`
+  * Add support for `supplementary_purchase_data` on `Order.create().$params.payment.setting.payment_method_option.klarna`, `Order.update().$params.payment.setting.payment_method_option.klarna`, `PaymentIntent.confirm().$params.payment_method_option.klarna`, `PaymentIntent.create().$params.payment_method_option.klarna`, and `PaymentIntent.update().$params.payment_method_option.klarna`
+  * Add support for `allow_redisplay` and `customer_account` on `PaymentMethod.all().$params`
+  * Add support for `future_requirements` on `V2.Core.Account`
+  * Add support for `konbini_payments` and `script_statement_descriptor` on `V2.Core.Account.configuration.merchant`, `V2\Core\Account.create().$params.configuration.merchant`, and `V2\Core\Account.update().$params.configuration.merchant`
+  * Add support for `eur` on `V2.Core.Account.configuration.storer.capabilities.holds_currencies`, `V2\Core\Account.create().$params.configuration.storer.capability.holds_currency`, and `V2\Core\Account.update().$params.configuration.storer.capability.holds_currency`
+  * Add support for `requirements_collector` on `V2.Core.Account.defaults.responsibilities`
+  * Add support for new value `ar_cuit` on enum `V2.Core.Account.identity.business_details.id_numbers[].type`
+  * Add support for new value `ar_dni` on enums `V2.Core.Account.identity.individual.id_numbers[].type` and `V2.Core.AccountPerson.id_numbers[].type`
+  * Remove support for `collector` on `V2.Core.Account.requirements`
+  * Add support for new value `holds_currencies.eur` on enum `V2.Core.Account.requirements.entries[].impact.restricts_capabilities[].capability`
+  * Add support for new values `payment_method` and `person` on enum `V2.Core.Account.requirements.entries[].reference.type`
+  * Remove support for value `resource` from enum `V2.Core.Account.requirements.entries[].reference.type`
+  * Remove support for value `future_requirements` from enum `V2.Core.Account.requirements.entries[].requested_reasons[].code`
+  * Add support for `changes` on `V2.Core.Event`
+  * Remove support for value `sepa_bank_account` from enum `V2.MoneyManagement.FinancialAddress.credentials.type`
+  * Add support for `account_token` on `V2\Core\Account.create().$params` and `V2\Core\Account.update().$params`
+  * Add support for `person_token` on `V2\Core\AccountPerson.create().$params` and `V2\Core\AccountPerson.update().$params`
+  * Add support for thin event `V2CoreHealthEventGenerationFailureResolvedEvent`
+  * Remove support for thin events `V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent`, `V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent`, `V2PaymentsOffSessionPaymentCanceledEvent`, `V2PaymentsOffSessionPaymentCreatedEvent`, `V2PaymentsOffSessionPaymentFailedEvent`, `V2PaymentsOffSessionPaymentRequiresCaptureEvent`, and `V2PaymentsOffSessionPaymentSucceededEvent` with related object `V2.Payments.OffSessionPayment`
+
+## 19.0.0 - 2025-11-18
+This release changes the pinned API version to `2025-11-17.clover`.
+
+* [#1961](https://github.com/stripe/stripe-php/pull/1961) Update generated code
+  * ⚠️ Remove `gt`, `gte`, `lt`, and `lte` on `V2\Core\Event.all().$params` in favor of `created`.
+* [#1958](https://github.com/stripe/stripe-php/pull/1958) Update v2 array parameter serialization to use indexed format
+  - `Retrieve` and `List` calls for `/v2` endpoints now use indexed format (e.g., `?include[0]=foo&include[1]=bar`) instead of repeated parameter format (e.g., `?include=foo&include=bar`) when communicating with the Stripe API. This may break any unit tests that expect the latter behavior when setting up a mock server. Instead, they should now expect the former.
+* [#1956](https://github.com/stripe/stripe-php/pull/1956) Update generated code
+  * Add support for new resources `Tax.Association` and `Terminal.OnboardingLink`
+  * Add support for `find` method on resource `Tax.Association`
+  * Add support for `create` method on resource `Terminal.OnboardingLink`
+  * Add support for `payment_method_configuration` on `BillingPortal.Configuration.features.payment_method_update`
+  * Add support for `transaction_id` on `Charge.payment_method_details.ideal`, `PaymentAttemptRecord.payment_method_details.ideal`, and `PaymentRecord.payment_method_details.ideal`
+  * Add support for new value `finom` on enums `Charge.payment_method_details.ideal.bank`, `ConfirmationToken.payment_method_preview.ideal.bank`, `PaymentAttemptRecord.payment_method_details.ideal.bank`, `PaymentMethod.ideal.bank`, `PaymentRecord.payment_method_details.ideal.bank`, and `SetupAttempt.payment_method_details.ideal.bank`
+  * Add support for new value `FNOMNL22` on enums `Charge.payment_method_details.ideal.bic`, `ConfirmationToken.payment_method_preview.ideal.bic`, `PaymentAttemptRecord.payment_method_details.ideal.bic`, `PaymentMethod.ideal.bic`, `PaymentRecord.payment_method_details.ideal.bic`, and `SetupAttempt.payment_method_details.ideal.bic`
+  * Add support for new value `tokenized_account_number_deactivated` on enums `ConfirmationToken.payment_method_preview.us_bank_account.status_details.blocked.reason` and `PaymentMethod.us_bank_account.status_details.blocked.reason`
+  * Add support for `created` on `CustomerBalanceTransaction.all().$params` and `InvoicePayment.all().$params`
+  * Add support for new values `financial_connections.account.account_numbers_updated` and `financial_connections.account.upcoming_account_number_expiry` on enum `Event.type`
+  * Add support for `account_numbers` on `FinancialConnections.Account`
+  * Change type of `FinancialConnections.Session.client_secret` from `string` to `nullable(string)`
+  * Add support for `fraud_risk` on `Issuing\Authorization.create().$params.risk_assessment`
+  * Add support for `latest_fraud_warning` on `Issuing.Card`
+  * Add support for `hooks` on `PaymentIntent.capture().$params`, `PaymentIntent.confirm().$params`, `PaymentIntent.create().$params`, `PaymentIntent.increment_authorization().$params`, `PaymentIntent.update().$params`, and `PaymentIntent`
+  * Add support for `mb_way` and `twint` on `Refund.destination_details`
+  * Add support for snapshot events `FINANCIAL_CONNECTIONS_ACCOUNT_ACCOUNT_NUMBERS_UPDATED` and `FINANCIAL_CONNECTIONS_ACCOUNT_UPCOMING_ACCOUNT_NUMBER_EXPIRY` with resource `FinancialConnections.Account`
+
+## 18.2.0 - 2025-11-05
+* [#1953](https://github.com/stripe/stripe-php/pull/1953) Update generated code
+  * Add support for `capture_method` on `PaymentIntent.confirm().$params.payment_method_option.card_present`, `PaymentIntent.create().$params.payment_method_option.card_present`, `PaymentIntent.payment_method_options.card_present`, and `PaymentIntent.update().$params.payment_method_option.card_present`
+
 ## 18.2.0-beta.1 - 2025-10-29
 
 This release changes the pinned API version to `2025-10-29.preview`.
