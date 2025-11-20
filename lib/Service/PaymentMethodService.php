@@ -63,7 +63,7 @@ class PaymentMethodService extends AbstractService
     }
 
     /**
-     * Retrieves a payment method’s balance.
+     * Retrieves a PaymentMethod’s Balance.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params

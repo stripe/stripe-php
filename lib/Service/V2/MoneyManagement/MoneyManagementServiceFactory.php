@@ -8,6 +8,7 @@ namespace Stripe\Service\V2\MoneyManagement;
  * Service factory class for API resources in the MoneyManagement namespace.
  *
  * @property AdjustmentService $adjustments
+ * @property CurrencyConversionService $currencyConversions
  * @property FinancialAccountService $financialAccounts
  * @property FinancialAddressService $financialAddresses
  * @property InboundTransferService $inboundTransfers
@@ -30,6 +31,7 @@ class MoneyManagementServiceFactory extends \Stripe\Service\AbstractServiceFacto
      */
     private static $classMap = [
         'adjustments' => AdjustmentService::class,
+        'currencyConversions' => CurrencyConversionService::class,
         'financialAccounts' => FinancialAccountService::class,
         'financialAddresses' => FinancialAddressService::class,
         'inboundTransfers' => InboundTransferService::class,

@@ -8,6 +8,7 @@ namespace Stripe\Service\V2\Core;
  *
  * @property AccountLinkService $accountLinks
  * @property AccountService $accounts
+ * @property AccountTokenService $accountTokens
  * @property ClaimableSandboxService $claimableSandboxes
  * @property EventDestinationService $eventDestinations
  * @property EventService $events
@@ -23,6 +24,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         // Class Map: The beginning of the section generated from our OpenAPI spec
         'accountLinks' => AccountLinkService::class,
         'accounts' => AccountService::class,
+        'accountTokens' => AccountTokenService::class,
         'claimableSandboxes' => ClaimableSandboxService::class,
         'eventDestinations' => EventDestinationService::class,
         'events' => EventService::class,
