@@ -16,7 +16,7 @@ class FinancialAddressService extends \Stripe\Service\AbstractService
      * to add virtual funds and increase your balance for testing.
      *
      * @param string $id
-     * @param null|array{amount: \Stripe\StripeObject, network: string, statement_descriptor?: string} $params
+     * @param null|array{amount: array{value?: int, currency?: string}, network: string, statement_descriptor?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\FinancialAddressCreditSimulation
