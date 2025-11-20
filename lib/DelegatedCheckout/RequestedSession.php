@@ -9,8 +9,8 @@ namespace Stripe\DelegatedCheckout;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property int $amount_subtotal The subtotal amount of the requested session.
- * @property int $amount_total The total amount of the requested session.
+ * @property null|int $amount_subtotal The subtotal amount of the requested session.
+ * @property null|int $amount_total The total amount of the requested session.
  * @property int $created_at Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $customer The customer for this requested session.
