@@ -16,7 +16,7 @@ namespace Stripe\DelegatedCheckout;
  * @property null|string $customer The customer for this requested session.
  * @property int $expires_at Time at which the requested session expires. Measured in seconds since the Unix epoch.
  * @property null|(object{address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject), email: null|string, fulfillment_options: null|((object{shipping: null|(object{shipping_options: null|((object{description: null|string, display_name: string, earliest_delivery_time: null|int, key: string, latest_delivery_time: null|int, shipping_amount: int}&\Stripe\StripeObject))[]}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject))[], name: null|string, phone: null|string, selected_fulfillment_option: null|(object{shipping: null|(object{shipping_option: null|string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $fulfillment_details The details of the fulfillment.
- * @property ((object{description: null|string, images: null|string[], key: string, name: string, quantity: int, sku_id: string, unit_amount: int, amount_discount: int, amount_subtotal: int, amount_subtotal_after_discount: int, amount_total: int, unit_amount_after_discount: int, unit_discount: int}&\Stripe\StripeObject))[] $line_item_details The line items to be purchased.
+ * @property ((object{description: null|string, images: null|string[], key: string, name: string, quantity: int, sku_id: string, unit_amount: int, amount_discount: int, amount_subtotal: int}&\Stripe\StripeObject))[] $line_item_details The line items to be purchased.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|(object{order_id: null|string, order_status_url: null|string}&\Stripe\StripeObject) $order_details The details of the order.
@@ -27,7 +27,7 @@ namespace Stripe\DelegatedCheckout;
  * @property null|\Stripe\StripeObject $shared_metadata The metadata shared with the seller.
  * @property null|string $shared_payment_issued_token The SPT used for payment.
  * @property string $status The status of the requested session.
- * @property (object{amount_discount: null|int, amount_fulfillment: null|int, amount_tax: null|int, amount_subtotal_after_discount: null|int, applicable_fees: null|((object{amount: int, description: null|string, display_name: string}&\Stripe\StripeObject))[]}&\Stripe\StripeObject) $total_details
+ * @property (object{amount_fulfillment: null|int, amount_tax: null|int, amount_cart_discount: null|int, amount_items_discount: null|int, applicable_fees: null|((object{amount: int, description: null|string, display_name: string}&\Stripe\StripeObject))[]}&\Stripe\StripeObject) $total_details
  * @property int $updated_at Time at which the object was last updated. Measured in seconds since the Unix epoch.
  */
 class RequestedSession extends \Stripe\ApiResource
