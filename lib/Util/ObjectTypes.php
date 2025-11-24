@@ -125,6 +125,7 @@ class ObjectTypes
             \Stripe\Privacy\RedactionJob::OBJECT_NAME => \Stripe\Privacy\RedactionJob::class,
             \Stripe\Privacy\RedactionJobValidationError::OBJECT_NAME => \Stripe\Privacy\RedactionJobValidationError::class,
             \Stripe\Product::OBJECT_NAME => \Stripe\Product::class,
+            \Stripe\ProductCatalog\TrialOffer::OBJECT_NAME => \Stripe\ProductCatalog\TrialOffer::class,
             \Stripe\ProductFeature::OBJECT_NAME => \Stripe\ProductFeature::class,
             \Stripe\PromotionCode::OBJECT_NAME => \Stripe\PromotionCode::class,
             \Stripe\Quote::OBJECT_NAME => \Stripe\Quote::class,
