@@ -10,7 +10,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property null|(object{type: string, adjustment?: string, inbound_transfer?: string, outbound_payment?: string, outbound_transfer?: string, received_credit?: string, received_debit?: string}&\Stripe\StripeObject) $adjusted_flow If applicable, contains information about the original flow linked to this Adjustment.
- * @property \Stripe\StripeObject $amount The amount of the Adjustment.
+ * @property (object{value?: int, currency?: string}&\Stripe\StripeObject) $amount The amount of the Adjustment.
  * @property int $created Time at which the object was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property null|string $description Description of the Adjustment and what it was used for.
  * @property string $financial_account The FinancialAccount that this adjustment is for.
