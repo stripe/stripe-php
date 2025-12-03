@@ -21,6 +21,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property string $status Open Enum. The status of the ReceivedCredit.
  * @property null|(object{failed?: (object{reason: string}&\Stripe\StripeObject), returned?: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details This hash contains detailed information that elaborates on the specific status of the ReceivedCredit. e.g the reason behind a failure if the status is marked as <code>failed</code>.
  * @property null|(object{failed_at?: int, returned_at?: int, succeeded_at?: int}&\Stripe\StripeObject) $status_transitions Hash containing timestamps of when the object transitioned to a particular status.
+ * @property null|(object{statement_descriptor?: string}&\Stripe\StripeObject) $stripe_balance_payment This object stores details about the stripe balance pay refund that resulted in the ReceivedCredit. Present if <code>type</code> field value is <code>stripe_balance_payment</code>.
  * @property string $type Open Enum. The type of flow that caused the ReceivedCredit.
  */
 class ReceivedCredit extends \Stripe\ApiResource
@@ -35,4 +36,5 @@ class ReceivedCredit extends \Stripe\ApiResource
     const TYPE_BALANCE_TRANSFER = 'balance_transfer';
     const TYPE_BANK_TRANSFER = 'bank_transfer';
     const TYPE_EXTERNAL_CREDIT = 'external_credit';
+    const TYPE_STRIPE_BALANCE_PAYMENT = 'stripe_balance_payment';
 }

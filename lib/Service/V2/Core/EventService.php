@@ -14,7 +14,7 @@ class EventService extends \Stripe\Service\AbstractService
     /**
      * List events, going back up to 30 days.
      *
-     * @param null|array{created?: array{gt?: string, gte?: string, lt?: string, lte?: string}, limit?: int, object_id?: string, types?: string[]} $params
+     * @param null|array{created?: array{gt?: string, gte?: string, lt?: string, lte?: string}, include?: string[], limit?: int, object_id?: string, types?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\Core\Event>
@@ -30,7 +30,7 @@ class EventService extends \Stripe\Service\AbstractService
      * Retrieves the details of an event.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{include?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Core\Event
