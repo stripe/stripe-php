@@ -1,5 +1,17 @@
 # Changelog
 
+## 19.1.0-alpha.4 - 2025-12-04
+* [#1977](https://github.com/stripe/stripe-php/pull/1977) Update generated code for private-preview
+  * Add support for event notifications `V2IamApiKeyCreatedEvent`, `V2IamApiKeyDefaultSecretRevealedEvent`, `V2IamApiKeyExpiredEvent`, `V2IamApiKeyPermissionsUpdatedEvent`, `V2IamApiKeyRotatedEvent`, and `V2IamApiKeyUpdatedEvent`
+* [#1974](https://github.com/stripe/stripe-php/pull/1974) Update generated code for private-preview
+  * Add support for `check_scanning` on `AccountSession.components`
+  * Add support for `client` on `V2.Core.Event.reason.request`
+  * Add support for `stripe_balance_payment` on `V2.MoneyManagement.ReceivedCredit` and `V2.MoneyManagement.ReceivedDebit`
+  * Add support for new value `stripe_balance_payment` on enum `V2.MoneyManagement.ReceivedCredit.type`
+  * Add support for `balance_transfer` on `V2.MoneyManagement.ReceivedDebit`
+  * Add support for new values `balance_transfer` and `stripe_balance_payment` on enum `V2.MoneyManagement.ReceivedDebit.type`
+  * Add support for `include` on `V2\Core\Event.all().$params` and `V2\Core\Event.retrieve().$params`
+
 ## 19.1.0-alpha.3 - 2025-11-24
 * [#1971](https://github.com/stripe/stripe-php/pull/1971) Update generated code for private-preview
   * Add support for new resource `ProductCatalog.TrialOffer`
