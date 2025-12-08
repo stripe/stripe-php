@@ -12,7 +12,7 @@ namespace Stripe\Identity;
  * This allows us to compare future verification attempts against these entries.
  * If a match is found, we categorize the new verification as unverified.
  *
- * To learn more, see <a href="https://stripe.com/docs/identity/review-tools#block-list">Identity Verification Blocklist</a>
+ * To learn more, see <a href="https://docs.stripe.com/identity/review-tools#block-list">Identity Verification Blocklist</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

@@ -32,7 +32,7 @@ namespace Stripe\Issuing;
  * @property (object{allowed_categories: null|string[], allowed_merchant_countries: null|string[], blocked_categories: null|string[], blocked_merchant_countries: null|string[], spending_limits: null|((object{amount: int, categories: null|string[], interval: string}&\Stripe\StripeObject))[], spending_limits_currency: null|string}&\Stripe\StripeObject) $spending_controls
  * @property string $status Whether authorizations can be approved on this card. May be blocked from activating cards depending on past-due Cardholder requirements. Defaults to <code>inactive</code>.
  * @property string $type The type of the card.
- * @property null|(object{apple_pay: (object{eligible: bool, ineligible_reason: null|string}&\Stripe\StripeObject), google_pay: (object{eligible: bool, ineligible_reason: null|string}&\Stripe\StripeObject), primary_account_identifier: null|string}&\Stripe\StripeObject) $wallets Information relating to digital wallets (like Apple Pay and Google Pay).
+ * @property null|(object{apple_pay: (object{eligible: bool, ineligible_reason: null|string, primary_account_identifier?: null|string}&\Stripe\StripeObject), google_pay: (object{eligible: bool, ineligible_reason: null|string, primary_account_identifier?: null|string}&\Stripe\StripeObject), primary_account_identifier: null|string}&\Stripe\StripeObject) $wallets Information relating to digital wallets (like Apple Pay and Google Pay).
  */
 class Card extends \Stripe\ApiResource
 {
@@ -83,7 +83,7 @@ class Card extends \Stripe\ApiResource
      * descending order by creation date, with the most recently created object
      * appearing first.
      *
-     * @param null|array{cardholder?: string, created?: array|int, ending_before?: string, exp_month?: int, exp_year?: int, expand?: string[], last4?: string, limit?: int, personalization_design?: string, starting_after?: string, status?: string, type?: string} $params
+     * @param null|array{cardholder?: string, created?: array|int, ending_before?: string, exp_month?: int, exp_year?: int, expand?: string[], last4?: string, limit?: int, personalization_design?: string, starting_after?: string, status?: string, type?: string, wallets?: array{apple_pay?: array{primary_account_identifier?: string}, google_pay?: array{primary_account_identifier?: string}}} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<Card> of ApiResources
