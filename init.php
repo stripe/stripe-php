@@ -90,7 +90,7 @@ require __DIR__ . '/lib/BaseStripeClient.php';
 require __DIR__ . '/lib/StripeClient.php';
 
 // EventRouter
-require __DIR__ . '/lib/StripeEventRouter.php';
+require __DIR__ . '/lib/StripeEventNotificationHandler.php';
 
 // The beginning of the section generated from our OpenAPI spec
 require __DIR__ . '/lib/Account.php';

@@ -2,8 +2,6 @@
 
 namespace Stripe;
 
-const UNKNOWN_EVENT_TYPE_KEY = '__unknown_event_type';
-
 class UnhandledNotificationDetails
 {
     /** @var bool whether the SDK has types for this event */
@@ -15,7 +13,7 @@ class UnhandledNotificationDetails
     }
 }
 
-class StripeEventRouter
+class StripeEventNotificationHandler
 {
     /** @var array<string, callable> */
     private $registeredHandlers = [];
@@ -29,11 +27,11 @@ class StripeEventRouter
     private $clientConfig;
 
     /**
-     * Constructor for StripeEventRouter.
+     * Constructor for StripeEventNotificationHandler.
      *
      * @param StripeClient $client The Stripe client to use for API interactions
      * @param string $webhookSecret The webhook secret for verifying signatures
-     * @param callable(Events\UnknownEventNotification, StripeClient, UnhandledNotificationDetails): void $fallbackCallback A handler to call for unhandled notifications
+     * @param callable(Events\UnknownEventNotification, StripeClient, UnhandledNotificationDetails): void $fallbackCallback A callback that's invoked when
      */
     public function __construct($client, $webhookSecret, $fallbackCallback)
     {
@@ -139,7 +137,7 @@ class StripeEventRouter
         $this->registeredHandlers[$eventType] = $handler;
     }
 
-    // event-router-methods: The beginning of the section generated from our OpenAPI spec
+    // event-handler-methods: The beginning of the section generated from our OpenAPI spec
     /**
      * Registers a handler for the "v1.billing.meter.error_report_triggered" event.
      *
@@ -148,9 +146,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V1BillingMeterErrorReportTriggeredEventNotification(
-        $handler
-    ) {
+    public function onV1BillingMeterErrorReportTriggered($handler)
+    {
         $this->register('v1.billing.meter.error_report_triggered', $handler);
     }
 
@@ -162,7 +159,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V1BillingMeterNoMeterFoundEventNotification($handler)
+    public function onV1BillingMeterNoMeterFound($handler)
     {
         $this->register('v1.billing.meter.no_meter_found', $handler);
     }
@@ -175,7 +172,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountClosedEventNotification($handler)
+    public function onV2CoreAccountClosed($handler)
     {
         $this->register('v2.core.account.closed', $handler);
     }
@@ -188,7 +185,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountCreatedEventNotification($handler)
+    public function onV2CoreAccountCreated($handler)
     {
         $this->register('v2.core.account.created', $handler);
     }
@@ -201,7 +198,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountUpdatedEventNotification($handler)
+    public function onV2CoreAccountUpdated($handler)
     {
         $this->register('v2.core.account.updated', $handler);
     }
@@ -214,7 +211,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification(
+    public function onV2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdated(
         $handler
     ) {
         $this->register(
@@ -231,7 +228,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification(
+    public function onV2CoreAccountIncludingConfigurationCustomerUpdated(
         $handler
     ) {
         $this->register(
@@ -248,7 +245,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification(
+    public function onV2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdated(
         $handler
     ) {
         $this->register(
@@ -265,7 +262,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification(
+    public function onV2CoreAccountIncludingConfigurationMerchantUpdated(
         $handler
     ) {
         $this->register(
@@ -282,7 +279,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification(
+    public function onV2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdated(
         $handler
     ) {
         $this->register(
@@ -299,7 +296,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification(
+    public function onV2CoreAccountIncludingConfigurationRecipientUpdated(
         $handler
     ) {
         $this->register(
@@ -316,7 +313,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification(
+    public function onV2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdated(
         $handler
     ) {
         $this->register(
@@ -333,9 +330,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountIncludingConfigurationStorerUpdatedEventNotification(
-        $handler
-    ) {
+    public function onV2CoreAccountIncludingConfigurationStorerUpdated($handler)
+    {
         $this->register('v2.core.account[configuration.storer].updated', $handler);
     }
 
@@ -347,9 +343,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountIncludingDefaultsUpdatedEventNotification(
-        $handler
-    ) {
+    public function onV2CoreAccountIncludingDefaultsUpdated($handler)
+    {
         $this->register('v2.core.account[defaults].updated', $handler);
     }
 
@@ -361,9 +356,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountIncludingIdentityUpdatedEventNotification(
-        $handler
-    ) {
+    public function onV2CoreAccountIncludingIdentityUpdated($handler)
+    {
         $this->register('v2.core.account[identity].updated', $handler);
     }
 
@@ -375,9 +369,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountIncludingRequirementsUpdatedEventNotification(
-        $handler
-    ) {
+    public function onV2CoreAccountIncludingRequirementsUpdated($handler)
+    {
         $this->register('v2.core.account[requirements].updated', $handler);
     }
 
@@ -389,7 +382,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountLinkReturnedEventNotification($handler)
+    public function onV2CoreAccountLinkReturned($handler)
     {
         $this->register('v2.core.account_link.returned', $handler);
     }
@@ -402,7 +395,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountPersonCreatedEventNotification($handler)
+    public function onV2CoreAccountPersonCreated($handler)
     {
         $this->register('v2.core.account_person.created', $handler);
     }
@@ -415,7 +408,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountPersonDeletedEventNotification($handler)
+    public function onV2CoreAccountPersonDeleted($handler)
     {
         $this->register('v2.core.account_person.deleted', $handler);
     }
@@ -428,7 +421,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreAccountPersonUpdatedEventNotification($handler)
+    public function onV2CoreAccountPersonUpdated($handler)
     {
         $this->register('v2.core.account_person.updated', $handler);
     }
@@ -441,7 +434,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreEventDestinationPingEventNotification($handler)
+    public function onV2CoreEventDestinationPing($handler)
     {
         $this->register('v2.core.event_destination.ping', $handler);
     }
@@ -454,9 +447,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2CoreHealthEventGenerationFailureResolvedEventNotification(
-        $handler
-    ) {
+    public function onV2CoreHealthEventGenerationFailureResolved($handler)
+    {
         $this->register(
             'v2.core.health.event_generation_failure.resolved',
             $handler
@@ -471,9 +463,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementAdjustmentCreatedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementAdjustmentCreated($handler)
+    {
         $this->register('v2.money_management.adjustment.created', $handler);
     }
 
@@ -485,9 +476,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementFinancialAccountCreatedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementFinancialAccountCreated($handler)
+    {
         $this->register('v2.money_management.financial_account.created', $handler);
     }
 
@@ -499,9 +489,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementFinancialAccountUpdatedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementFinancialAccountUpdated($handler)
+    {
         $this->register('v2.money_management.financial_account.updated', $handler);
     }
 
@@ -513,9 +502,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementFinancialAddressActivatedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementFinancialAddressActivated($handler)
+    {
         $this->register(
             'v2.money_management.financial_address.activated',
             $handler
@@ -530,9 +518,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementFinancialAddressFailedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementFinancialAddressFailed($handler)
+    {
         $this->register('v2.money_management.financial_address.failed', $handler);
     }
 
@@ -544,9 +531,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementInboundTransferAvailableEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementInboundTransferAvailable($handler)
+    {
         $this->register('v2.money_management.inbound_transfer.available', $handler);
     }
 
@@ -558,9 +544,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementInboundTransferBankDebitFailedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementInboundTransferBankDebitFailed($handler)
+    {
         $this->register(
             'v2.money_management.inbound_transfer.bank_debit_failed',
             $handler
@@ -575,7 +560,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementInboundTransferBankDebitProcessingEventNotification(
+    public function onV2MoneyManagementInboundTransferBankDebitProcessing(
         $handler
     ) {
         $this->register(
@@ -592,9 +577,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementInboundTransferBankDebitQueuedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementInboundTransferBankDebitQueued($handler)
+    {
         $this->register(
             'v2.money_management.inbound_transfer.bank_debit_queued',
             $handler
@@ -609,9 +593,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementInboundTransferBankDebitReturnedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementInboundTransferBankDebitReturned($handler)
+    {
         $this->register(
             'v2.money_management.inbound_transfer.bank_debit_returned',
             $handler
@@ -626,7 +609,7 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementInboundTransferBankDebitSucceededEventNotification(
+    public function onV2MoneyManagementInboundTransferBankDebitSucceeded(
         $handler
     ) {
         $this->register(
@@ -643,9 +626,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementOutboundPaymentCanceledEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementOutboundPaymentCanceled($handler)
+    {
         $this->register('v2.money_management.outbound_payment.canceled', $handler);
     }
 
@@ -657,9 +639,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementOutboundPaymentCreatedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementOutboundPaymentCreated($handler)
+    {
         $this->register('v2.money_management.outbound_payment.created', $handler);
     }
 
@@ -671,9 +652,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementOutboundPaymentFailedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementOutboundPaymentFailed($handler)
+    {
         $this->register('v2.money_management.outbound_payment.failed', $handler);
     }
 
@@ -685,9 +665,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementOutboundPaymentPostedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementOutboundPaymentPosted($handler)
+    {
         $this->register('v2.money_management.outbound_payment.posted', $handler);
     }
 
@@ -699,9 +678,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementOutboundPaymentReturnedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementOutboundPaymentReturned($handler)
+    {
         $this->register('v2.money_management.outbound_payment.returned', $handler);
     }
 
@@ -713,9 +691,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementOutboundPaymentUpdatedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementOutboundPaymentUpdated($handler)
+    {
         $this->register('v2.money_management.outbound_payment.updated', $handler);
     }
 
@@ -727,9 +704,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementOutboundTransferCanceledEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementOutboundTransferCanceled($handler)
+    {
         $this->register('v2.money_management.outbound_transfer.canceled', $handler);
     }
 
@@ -741,9 +717,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementOutboundTransferCreatedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementOutboundTransferCreated($handler)
+    {
         $this->register('v2.money_management.outbound_transfer.created', $handler);
     }
 
@@ -755,9 +730,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementOutboundTransferFailedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementOutboundTransferFailed($handler)
+    {
         $this->register('v2.money_management.outbound_transfer.failed', $handler);
     }
 
@@ -769,9 +743,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementOutboundTransferPostedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementOutboundTransferPosted($handler)
+    {
         $this->register('v2.money_management.outbound_transfer.posted', $handler);
     }
 
@@ -783,9 +756,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementOutboundTransferReturnedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementOutboundTransferReturned($handler)
+    {
         $this->register('v2.money_management.outbound_transfer.returned', $handler);
     }
 
@@ -797,9 +769,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementOutboundTransferUpdatedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementOutboundTransferUpdated($handler)
+    {
         $this->register('v2.money_management.outbound_transfer.updated', $handler);
     }
 
@@ -811,9 +782,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementPayoutMethodUpdatedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementPayoutMethodUpdated($handler)
+    {
         $this->register('v2.money_management.payout_method.updated', $handler);
     }
 
@@ -825,9 +795,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementReceivedCreditAvailableEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementReceivedCreditAvailable($handler)
+    {
         $this->register('v2.money_management.received_credit.available', $handler);
     }
 
@@ -839,9 +808,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementReceivedCreditFailedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementReceivedCreditFailed($handler)
+    {
         $this->register('v2.money_management.received_credit.failed', $handler);
     }
 
@@ -853,9 +821,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementReceivedCreditReturnedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementReceivedCreditReturned($handler)
+    {
         $this->register('v2.money_management.received_credit.returned', $handler);
     }
 
@@ -867,9 +834,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementReceivedCreditSucceededEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementReceivedCreditSucceeded($handler)
+    {
         $this->register('v2.money_management.received_credit.succeeded', $handler);
     }
 
@@ -881,9 +847,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementReceivedDebitCanceledEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementReceivedDebitCanceled($handler)
+    {
         $this->register('v2.money_management.received_debit.canceled', $handler);
     }
 
@@ -895,9 +860,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementReceivedDebitFailedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementReceivedDebitFailed($handler)
+    {
         $this->register('v2.money_management.received_debit.failed', $handler);
     }
 
@@ -909,9 +873,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementReceivedDebitPendingEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementReceivedDebitPending($handler)
+    {
         $this->register('v2.money_management.received_debit.pending', $handler);
     }
 
@@ -923,9 +886,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementReceivedDebitSucceededEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementReceivedDebitSucceeded($handler)
+    {
         $this->register('v2.money_management.received_debit.succeeded', $handler);
     }
 
@@ -937,9 +899,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementReceivedDebitUpdatedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementReceivedDebitUpdated($handler)
+    {
         $this->register('v2.money_management.received_debit.updated', $handler);
     }
 
@@ -951,9 +912,8 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementTransactionCreatedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementTransactionCreated($handler)
+    {
         $this->register('v2.money_management.transaction.created', $handler);
     }
 
@@ -965,10 +925,9 @@ class StripeEventRouter
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    public function on_V2MoneyManagementTransactionUpdatedEventNotification(
-        $handler
-    ) {
+    public function onV2MoneyManagementTransactionUpdated($handler)
+    {
         $this->register('v2.money_management.transaction.updated', $handler);
     }
-    // event-router-methods: The end of the section generated from our OpenAPI spec
+    // event-handler-methods: The end of the section generated from our OpenAPI spec
 }
