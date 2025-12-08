@@ -158,24 +158,6 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * FOR INTERNAL USE ONLY. MAY CHANGE WITHOUT WARNING.
-     *
-     * Updates the the Stripe Context used by the client to send requests.
-     *
-     * @param null|string|StripeContext $context the Stripe Context used by the client to send requests
-     *
-     * @return void
-     */
-    public function setStripeContext($context)
-    {
-        if (null === $context) {
-            unset($this->defaultOpts->headers['Stripe-Context']);
-        } else {
-            $this->defaultOpts->headers['Stripe-Context'] = (string) $context;
-        }
-    }
-
-    /**
      * Gets the Stripe Version used by the client to send requests.
      *
      * @return null|string the Stripe Context ID used by the client to send requests

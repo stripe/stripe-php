@@ -7,11 +7,11 @@ const UNKNOWN_EVENT_TYPE_KEY = '__unknown_event_type';
 class UnhandledNotificationDetails
 {
     /** @var bool whether the SDK has types for this event */
-    public $isKnownType;
+    public $isKnownEventType;
 
-    public function __construct($isKnownType)
+    public function __construct($isKnownEventType)
     {
-        $this->isKnownType = $isKnownType;
+        $this->isKnownEventType = $isKnownEventType;
     }
 }
 
@@ -24,20 +24,36 @@ class StripeEventRouter
     /** @var string */
     private $webhookSecret;
     private $hasHandledEvents = false;
-    private $onUnhandledHandler;
+    private $fallbackCallback;
+    /** @var array<string, mixed> everything we need to duplicate a client */
+    private $clientConfig;
 
     /**
      * Constructor for StripeEventRouter.
      *
      * @param StripeClient $client The Stripe client to use for API interactions
      * @param string $webhookSecret The webhook secret for verifying signatures
-     * @param callable(Events\UnknownEventNotification, StripeClient, UnhandledNotificationDetails): void $onUnhandledHandler A handler to call for unhandled notifications
+     * @param callable(Events\UnknownEventNotification, StripeClient, UnhandledNotificationDetails): void $fallbackCallback A handler to call for unhandled notifications
      */
-    public function __construct($client, $webhookSecret, $onUnhandledHandler)
+    public function __construct($client, $webhookSecret, $fallbackCallback)
     {
         $this->client = $client;
         $this->webhookSecret = $webhookSecret;
-        $this->onUnhandledHandler = $onUnhandledHandler;
+        $this->fallbackCallback = $fallbackCallback;
+
+        // Extract configuration from the client for creating new instances
+        $this->clientConfig = [
+            'api_key' => $client->getApiKey(),
+            'client_id' => $client->getClientId(),
+            'stripe_account' => $client->getStripeAccount(),
+            'stripe_version' => $client->getStripeVersion(),
+            'api_base' => $client->getApiBase(),
+            'connect_base' => $client->getConnectBase(),
+            'files_base' => $client->getFilesBase(),
+            'meter_events_base' => $client->getMeterEventsBase(),
+            'max_network_retries' => $client->getMaxNetworkRetries(),
+            'app_info' => $client->getAppInfo(),
+        ];
     }
 
     /**
@@ -53,6 +69,7 @@ class StripeEventRouter
      */
     public function handle($payload, $sigHeader)
     {
+        // we're ok with this write being naiive because the expectation is that users register functions
         $this->hasHandledEvents = true;
 
         $notif = $this->client->parseEventNotification(
@@ -63,21 +80,29 @@ class StripeEventRouter
 
         $eventType = $notif->type;
 
-        $originalContext = $this->client->getStripeContextHeader();
+        // Create a new client instance with the event's context instead of modifying the shared client
+        $eventClient = $this->createClientWithContext($notif->context);
 
-        try {
-            // TODO: bind the event's context to the client
-            $this->client->setStripeContext($notif->context);
-
-            if (isset($this->registeredHandlers[$eventType])) {
-                \call_user_func($this->registeredHandlers[$eventType], $notif, $this->client);
-            } else {
-                \call_user_func($this->onUnhandledHandler, $notif, $this->client, new UnhandledNotificationDetails(!$notif instanceof Events\UnknownEventNotification));
-            }
-        } finally {
-            // Clear references to the client to avoid memory leaks
-            $this->client->setStripeContext($originalContext);
+        if (isset($this->registeredHandlers[$eventType])) {
+            \call_user_func($this->registeredHandlers[$eventType], $notif, $eventClient);
+        } else {
+            \call_user_func($this->fallbackCallback, $notif, $eventClient, new UnhandledNotificationDetails(!$notif instanceof Events\UnknownEventNotification));
         }
+    }
+
+    /**
+     * Creates a new StripeClient instance with the specified stripe_context.
+     *
+     * @param null|string $context The stripe_context to use for the new client
+     *
+     * @return StripeClient A new StripeClient instance with the specified context
+     */
+    private function createClientWithContext($context)
+    {
+        $config = $this->clientConfig;
+        $config['stripe_context'] = $context;
+
+        return new StripeClient($config);
     }
 
     /**

@@ -353,7 +353,7 @@ final class StripeEventRouterTest extends TestCase
         self::assertSame('llama.created', $receivedEvent->type);
         self::assertInstanceOf(StripeClient::class, $receivedClient);
         self::assertInstanceOf(UnhandledNotificationDetails::class, $receivedInfo);
-        self::assertFalse($receivedInfo->isKnownType);
+        self::assertFalse($receivedInfo->isKnownEventType);
     }
 
     public function testKnownUnregisteredEventRoutesToOnUnhandled()
@@ -381,7 +381,7 @@ final class StripeEventRouterTest extends TestCase
         self::assertSame('v1.billing.meter.error_report_triggered', $receivedEvent->type);
         self::assertInstanceOf(StripeClient::class, $receivedClient);
         self::assertInstanceOf(UnhandledNotificationDetails::class, $receivedInfo);
-        self::assertTrue($receivedInfo->isKnownType);
+        self::assertTrue($receivedInfo->isKnownEventType);
     }
 
     public function testRegisteredEventDoesNotCallOnUnhandled()
@@ -458,7 +458,7 @@ final class StripeEventRouterTest extends TestCase
         $router->handle($payload, $sigHeader);
 
         self::assertInstanceOf(UnhandledNotificationDetails::class, $receivedInfo);
-        self::assertFalse($receivedInfo->isKnownType);
+        self::assertFalse($receivedInfo->isKnownEventType);
     }
 
     public function testOnUnhandledReceivesCorrectInfoForKnownUnregistered()
@@ -476,7 +476,7 @@ final class StripeEventRouterTest extends TestCase
         $router->handle($payload, $sigHeader);
 
         self::assertInstanceOf(UnhandledNotificationDetails::class, $receivedInfo);
-        self::assertTrue($receivedInfo->isKnownType);
+        self::assertTrue($receivedInfo->isKnownEventType);
     }
 
     public function testValidatesWebhookSignature()
