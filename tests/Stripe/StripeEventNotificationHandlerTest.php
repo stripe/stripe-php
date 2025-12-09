@@ -7,7 +7,7 @@ namespace Stripe;
  *
  * @covers \Stripe\StripeEventNotificationHandler
  */
-final class StripeEventRouterTest extends TestCase
+final class StripeEventNotificationHandlerTest extends TestCase
 {
     use TestHelper;
 
