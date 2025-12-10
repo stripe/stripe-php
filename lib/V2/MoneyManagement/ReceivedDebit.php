@@ -19,7 +19,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property string $status Open Enum. The status of the ReceivedDebit.
  * @property null|(object{failed: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Detailed information about the status of the ReceivedDebit.
  * @property null|(object{canceled_at?: int, failed_at?: int, succeeded_at?: int}&\Stripe\StripeObject) $status_transitions The time at which the ReceivedDebit transitioned to a particular status.
- * @property string $type Open Enum. The type of the ReceivedDebit.
+ * @property string $type Open enum, the type of the received debit.
  */
 class ReceivedDebit extends \Stripe\ApiResource
 {

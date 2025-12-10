@@ -11,11 +11,11 @@ namespace Stripe\Identity;
  * appropriate sub-resource: <code>document</code>, <code>id_number</code>, <code>selfie</code>.
  *
  * Each VerificationReport contains a copy of any data collected by the user as well as
- * reference IDs which can be used to access collected images through the <a href="https://stripe.com/docs/api/files">FileUpload</a>
+ * reference IDs which can be used to access collected images through the <a href="https://docs.stripe.com/api/files">FileUpload</a>
  * API. To configure and create VerificationReports, use the
- * <a href="https://stripe.com/docs/api/identity/verification_sessions">VerificationSession</a> API.
+ * <a href="https://docs.stripe.com/api/identity/verification_sessions">VerificationSession</a> API.
  *
- * Related guide: <a href="https://stripe.com/docs/identity/verification-sessions#results">Accessing verification results</a>.
+ * Related guide: <a href="https://docs.stripe.com/identity/verification-sessions#results">Accessing verification results</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

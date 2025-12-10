@@ -51,6 +51,7 @@ class EventNotificationTypes
         \Stripe\Events\V2MoneyManagementOutboundTransferPostedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementOutboundTransferPostedEventNotification::class,
         \Stripe\Events\V2MoneyManagementOutboundTransferReturnedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementOutboundTransferReturnedEventNotification::class,
         \Stripe\Events\V2MoneyManagementOutboundTransferUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementOutboundTransferUpdatedEventNotification::class,
+        \Stripe\Events\V2MoneyManagementPayoutMethodCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutMethodCreatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementPayoutMethodUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutMethodUpdatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementReceivedCreditAvailableEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedCreditAvailableEventNotification::class,
         \Stripe\Events\V2MoneyManagementReceivedCreditFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedCreditFailedEventNotification::class,

@@ -5,7 +5,7 @@
 namespace Stripe\Issuing;
 
 /**
- * When a non-stripe BIN is used, any use of an <a href="https://stripe.com/docs/issuing">issued card</a> must be settled directly with the card network. The net amount owed is represented by an Issuing <code>Settlement</code> object.
+ * When a non-stripe BIN is used, any use of an <a href="https://docs.stripe.com/issuing">issued card</a> must be settled directly with the card network. The net amount owed is represented by an Issuing <code>Settlement</code> object.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -15,7 +15,7 @@ namespace Stripe\Issuing;
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property int $interchange_fees_amount The total interchange received as reimbursement for the transactions.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property int $net_total_amount The total net amount required to settle with the network.
  * @property string $network The card network for this settlement report. One of [&quot;visa&quot;, &quot;maestro&quot;]
  * @property int $network_fees_amount The total amount of fees owed to the network.

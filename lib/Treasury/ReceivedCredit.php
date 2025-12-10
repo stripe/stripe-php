@@ -5,7 +5,7 @@
 namespace Stripe\Treasury;
 
 /**
- * ReceivedCredits represent funds sent to a <a href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> (for example, via ACH or wire). These money movements are not initiated from the FinancialAccount.
+ * ReceivedCredits represent funds sent to a <a href="https://api.stripe.com#financial_accounts">FinancialAccount</a> (for example, via ACH or wire). These money movements are not initiated from the FinancialAccount.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -15,7 +15,7 @@ namespace Stripe\Treasury;
  * @property string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|string $failure_code Reason for the failure. A ReceivedCredit might fail because the receiving FinancialAccount is closed or frozen.
  * @property null|string $financial_account The FinancialAccount that received the funds.
- * @property null|string $hosted_regulatory_receipt_url A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted transaction receipt</a> URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
+ * @property null|string $hosted_regulatory_receipt_url A <a href="https://docs.stripe.com/treasury/moving-money/regulatory-receipts">hosted transaction receipt</a> URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
  * @property (object{balance?: string, billing_details: (object{address: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject), email: null|string, name: null|string}&\Stripe\StripeObject), financial_account?: (object{id: string, network: string}&\Stripe\StripeObject), issuing_card?: string, type: string, us_bank_account?: (object{bank_name: null|string, last4: null|string, routing_number: null|string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $initiating_payment_method_details
  * @property (object{credit_reversal: null|string, issuing_authorization: null|string, issuing_transaction: null|string, source_flow: null|string, source_flow_details?: null|(object{credit_reversal?: CreditReversal, outbound_payment?: OutboundPayment, outbound_transfer?: OutboundTransfer, payout?: \Stripe\Payout, type: string}&\Stripe\StripeObject), source_flow_type: null|string}&\Stripe\StripeObject) $linked_flows
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.

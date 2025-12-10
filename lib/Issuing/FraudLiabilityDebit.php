@@ -10,7 +10,7 @@ namespace Stripe\Issuing;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount Debited amount. This is equal to the disputed amount and is given in the card’s currency and in the smallest currency unit.
- * @property null|string|\Stripe\BalanceTransaction $balance_transaction ID of the <a href="https://stripe.com/docs/api/balance_transactions">balance transaction</a> associated with this debit.
+ * @property null|string|\Stripe\BalanceTransaction $balance_transaction ID of the <a href="https://docs.stripe.com/api/balance_transactions">balance transaction</a> associated with this debit.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency The currency of the debit. Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property string $dispute The ID of the linked dispute.

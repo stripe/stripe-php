@@ -5,23 +5,23 @@
 namespace Stripe\Issuing;
 
 /**
- * As a <a href="https://stripe.com/docs/issuing">card issuer</a>, you can dispute transactions that the cardholder does not recognize, suspects to be fraudulent, or has other issues with.
+ * As a <a href="https://docs.stripe.com/issuing">card issuer</a>, you can dispute transactions that the cardholder does not recognize, suspects to be fraudulent, or has other issues with.
  *
- * Related guide: <a href="https://stripe.com/docs/issuing/purchases/disputes">Issuing disputes</a>
+ * Related guide: <a href="https://docs.stripe.com/issuing/purchases/disputes">Issuing disputes</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property int $amount Disputed amount in the card's currency and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>. Usually the amount of the <code>transaction</code>, but can differ (usually because of currency fluctuation).
+ * @property int $amount Disputed amount in the card's currency and in the <a href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. Usually the amount of the <code>transaction</code>, but can differ (usually because of currency fluctuation).
  * @property null|\Stripe\BalanceTransaction[] $balance_transactions List of balance transactions associated with the dispute.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency The currency the <code>transaction</code> was made in.
  * @property (object{canceled?: (object{additional_documentation: null|string|\Stripe\File, canceled_at: null|int, cancellation_policy_provided: null|bool, cancellation_reason: null|string, expected_at: null|int, explanation: null|string, product_description: null|string, product_type: null|string, return_status: null|string, returned_at: null|int}&\Stripe\StripeObject), duplicate?: (object{additional_documentation: null|string|\Stripe\File, card_statement: null|string|\Stripe\File, cash_receipt: null|string|\Stripe\File, check_image: null|string|\Stripe\File, explanation: null|string, original_transaction: null|string}&\Stripe\StripeObject), fraudulent?: (object{additional_documentation: null|string|\Stripe\File, explanation: null|string}&\Stripe\StripeObject), merchandise_not_as_described?: (object{additional_documentation: null|string|\Stripe\File, explanation: null|string, received_at: null|int, return_description: null|string, return_status: null|string, returned_at: null|int}&\Stripe\StripeObject), no_valid_authorization?: (object{additional_documentation: null|string|\Stripe\File, explanation: null|string}&\Stripe\StripeObject), not_received?: (object{additional_documentation: null|string|\Stripe\File, expected_at: null|int, explanation: null|string, product_description: null|string, product_type: null|string}&\Stripe\StripeObject), other?: (object{additional_documentation: null|string|\Stripe\File, explanation: null|string, product_description: null|string, product_type: null|string}&\Stripe\StripeObject), reason: string, service_not_as_described?: (object{additional_documentation: null|string|\Stripe\File, canceled_at: null|int, cancellation_reason: null|string, explanation: null|string, received_at: null|int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $evidence
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $loss_reason The enum that describes the dispute loss outcome. If the dispute is not lost, this field will be absent. New enum values may be added in the future, so be sure to handle unknown values.
- * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $status Current status of the dispute.
  * @property string|Transaction $transaction The transaction being disputed.
- * @property null|(object{debit_reversal: null|string, received_debit: string}&\Stripe\StripeObject) $treasury <a href="https://stripe.com/docs/api/treasury">Treasury</a> details related to this dispute if it was created on a [FinancialAccount](/docs/api/treasury/financial_accounts
+ * @property null|(object{debit_reversal: null|string, received_debit: string}&\Stripe\StripeObject) $treasury <a href="https://docs.stripe.com/api/treasury">Treasury</a> details related to this dispute if it was created on a [FinancialAccount](/docs/api/treasury/financial_accounts
  */
 class Dispute extends \Stripe\ApiResource
 {

@@ -248,6 +248,8 @@ require __DIR__ . '/lib/Events/V2MoneyManagementOutboundTransferReturnedEvent.ph
 require __DIR__ . '/lib/Events/V2MoneyManagementOutboundTransferReturnedEventNotification.php';
 require __DIR__ . '/lib/Events/V2MoneyManagementOutboundTransferUpdatedEvent.php';
 require __DIR__ . '/lib/Events/V2MoneyManagementOutboundTransferUpdatedEventNotification.php';
+require __DIR__ . '/lib/Events/V2MoneyManagementPayoutMethodCreatedEvent.php';
+require __DIR__ . '/lib/Events/V2MoneyManagementPayoutMethodCreatedEventNotification.php';
 require __DIR__ . '/lib/Events/V2MoneyManagementPayoutMethodUpdatedEvent.php';
 require __DIR__ . '/lib/Events/V2MoneyManagementPayoutMethodUpdatedEventNotification.php';
 require __DIR__ . '/lib/Events/V2MoneyManagementReceivedCreditAvailableEvent.php';
@@ -275,6 +277,7 @@ require __DIR__ . '/lib/Events/V2MoneyManagementTransactionUpdatedEventNotificat
 require __DIR__ . '/lib/Exception/AlreadyCanceledException.php';
 require __DIR__ . '/lib/Exception/AlreadyExistsException.php';
 require __DIR__ . '/lib/Exception/BlockedByStripeException.php';
+require __DIR__ . '/lib/Exception/ControlledByAlternateResourceException.php';
 require __DIR__ . '/lib/Exception/ControlledByDashboardException.php';
 require __DIR__ . '/lib/Exception/FeatureNotEnabledException.php';
 require __DIR__ . '/lib/Exception/FinancialAccountNotOpenException.php';
@@ -284,7 +287,6 @@ require __DIR__ . '/lib/Exception/InvalidPayoutMethodException.php';
 require __DIR__ . '/lib/Exception/NonZeroBalanceException.php';
 require __DIR__ . '/lib/Exception/NotCancelableException.php';
 require __DIR__ . '/lib/Exception/QuotaExceededException.php';
-require __DIR__ . '/lib/Exception/RateLimitException.php';
 require __DIR__ . '/lib/Exception/RecipientNotNotifiableException.php';
 require __DIR__ . '/lib/Exception/TemporarySessionExpiredException.php';
 require __DIR__ . '/lib/ExchangeRate.php';

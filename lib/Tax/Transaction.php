@@ -7,17 +7,17 @@ namespace Stripe\Tax;
 /**
  * A Tax Transaction records the tax collected from or refunded to your customer.
  *
- * Related guide: <a href="https://stripe.com/docs/tax/custom#tax-transaction">Calculate tax in your custom payment flow</a>
+ * Related guide: <a href="https://docs.stripe.com/tax/custom#tax-transaction">Calculate tax in your custom payment flow</a>
  *
  * @property string $id Unique identifier for the transaction.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property null|string $customer The ID of an existing <a href="https://stripe.com/docs/api/customers/object">Customer</a> used for the resource.
+ * @property null|string $customer The ID of an existing <a href="https://docs.stripe.com/api/customers/object">Customer</a> used for the resource.
  * @property (object{address: null|(object{city: null|string, country: string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject), address_source: null|string, ip_address: null|string, tax_ids: (object{type: string, value: string}&\Stripe\StripeObject)[], taxability_override: string}&\Stripe\StripeObject) $customer_details
  * @property null|\Stripe\Collection<TransactionLineItem> $line_items The tax collected or refunded, by line item.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property int $posted_at The Unix timestamp representing when the tax liability is assumed or reduced.
  * @property string $reference A custom unique identifier, such as 'myOrder_123'.
  * @property null|(object{original_transaction: null|string}&\Stripe\StripeObject) $reversal If <code>type=reversal</code>, contains information about what was reversed.
