@@ -12,7 +12,7 @@ namespace Stripe\Billing;
  * @property string $event_name The name of the meter event. Corresponds with the <code>event_name</code> field on a meter.
  * @property string $identifier A unique identifier for the event.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property \Stripe\StripeObject $payload The payload of the event. This contains the fields corresponding to a meter's <code>customer_mapping.event_payload_key</code> (default is <code>stripe_customer_id</code>) and <code>value_settings.event_payload_key</code> (default is <code>value</code>). Read more about the <a href="https://stripe.com/docs/billing/subscriptions/usage-based/recording-usage#payload-key-overrides">payload</a>.
+ * @property \Stripe\StripeObject $payload The payload of the event. This contains the fields corresponding to a meter's <code>customer_mapping.event_payload_key</code> (default is <code>stripe_customer_id</code>) and <code>value_settings.event_payload_key</code> (default is <code>value</code>). Read more about the <a href="https://docs.stripe.com/billing/subscriptions/usage-based/meters/configure#meter-configuration-attributes">payload</a>.
  * @property int $timestamp The timestamp passed in when creating the event. Measured in seconds since the Unix epoch.
  */
 class MeterEvent extends \Stripe\ApiResource

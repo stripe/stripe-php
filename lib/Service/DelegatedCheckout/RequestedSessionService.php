@@ -15,7 +15,7 @@ class RequestedSessionService extends \Stripe\Service\AbstractService
      * Confirms a requested session.
      *
      * @param string $id
-     * @param null|array{expand?: string[], payment_method?: string, risk_details?: array{client_device_metadata_details?: array{radar_session?: string, referrer?: string, remote_ip?: string, time_on_page_ms?: int, user_agent?: string}}, payment_method_data?: array{billing_details?: array{address?: array{city: string, country: string, line1: string, line2?: string, postal_code: string, state: string}, email?: string, name?: string, phone?: string}, card?: array{cvc?: string, exp_month: int, exp_year: int, number: string}, type?: string}} $params
+     * @param null|array{expand?: string[], payment_method?: string, payment_method_data?: array{billing_details?: array{address?: array{city: string, country: string, line1: string, line2?: string, postal_code: string, state: string}, email?: string, name?: string, phone?: string}, card?: array{cvc?: string, exp_month: int, exp_year: int, number: string}, type?: string}, risk_details?: array{client_device_metadata_details?: array{radar_session?: string, referrer?: string, remote_ip?: string, time_on_page_ms?: int, user_agent?: string}}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\DelegatedCheckout\RequestedSession

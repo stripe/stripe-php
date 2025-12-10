@@ -300,6 +300,16 @@ class ApiRequestor
                     $code
                 );
 
+            case 'controlled_by_alternate_resource':
+                return Exception\ControlledByAlternateResourceException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
             case 'controlled_by_dashboard':
                 return Exception\ControlledByDashboardException::factory(
                     $msg,

@@ -234,6 +234,7 @@ class ObjectTypes
         \Stripe\V2\Core\Vault\UsBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\UsBankAccount::class,
         \Stripe\V2\FinancialAddressCreditSimulation::OBJECT_NAME => \Stripe\V2\FinancialAddressCreditSimulation::class,
         \Stripe\V2\FinancialAddressGeneratedMicrodeposits::OBJECT_NAME => \Stripe\V2\FinancialAddressGeneratedMicrodeposits::class,
+        \Stripe\V2\Iam\ApiKey::OBJECT_NAME => \Stripe\V2\Iam\ApiKey::class,
         \Stripe\V2\MoneyManagement\Adjustment::OBJECT_NAME => \Stripe\V2\MoneyManagement\Adjustment::class,
         \Stripe\V2\MoneyManagement\CurrencyConversion::OBJECT_NAME => \Stripe\V2\MoneyManagement\CurrencyConversion::class,
         \Stripe\V2\MoneyManagement\FinancialAccount::OBJECT_NAME => \Stripe\V2\MoneyManagement\FinancialAccount::class,
@@ -251,8 +252,11 @@ class ObjectTypes
         \Stripe\V2\MoneyManagement\Transaction::OBJECT_NAME => \Stripe\V2\MoneyManagement\Transaction::class,
         \Stripe\V2\MoneyManagement\TransactionEntry::OBJECT_NAME => \Stripe\V2\MoneyManagement\TransactionEntry::class,
         \Stripe\V2\Payments\OffSessionPayment::OBJECT_NAME => \Stripe\V2\Payments\OffSessionPayment::class,
+        \Stripe\V2\Payments\SettlementAllocationIntent::OBJECT_NAME => \Stripe\V2\Payments\SettlementAllocationIntent::class,
+        \Stripe\V2\Payments\SettlementAllocationIntentSplit::OBJECT_NAME => \Stripe\V2\Payments\SettlementAllocationIntentSplit::class,
         \Stripe\V2\Reporting\Report::OBJECT_NAME => \Stripe\V2\Reporting\Report::class,
         \Stripe\V2\Reporting\ReportRun::OBJECT_NAME => \Stripe\V2\Reporting\ReportRun::class,
+        \Stripe\V2\Tax\ManualRule::OBJECT_NAME => \Stripe\V2\Tax\ManualRule::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
 }

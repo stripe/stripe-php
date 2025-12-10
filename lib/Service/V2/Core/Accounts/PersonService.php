@@ -12,7 +12,7 @@ namespace Stripe\Service\V2\Core\Accounts;
 class PersonService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of Persons associated with an Account.
+     * Returns a paginated list of Persons associated with an Account.
      *
      * @param string $id
      * @param null|array{limit?: int} $params
@@ -28,7 +28,8 @@ class PersonService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a Person associated with an Account.
+     * Create a Person. Adds an individual to an Account's identity. You can set
+     * relationship attributes and identity information at creation.
      *
      * @param string $id
      * @param null|array{additional_addresses?: array{city?: string, country: string, line1?: string, line2?: string, postal_code?: string, purpose: string, state?: string, town?: string}[], additional_names?: array{full_name?: string, given_name?: string, purpose: string, surname?: string}[], additional_terms_of_service?: array{account?: array{date: string, ip: string, user_agent?: string}}, address?: array{city?: string, country: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}, date_of_birth?: array{day: int, month: int, year: int}, documents?: array{company_authorization?: array{files: string[], type: string}, passport?: array{files: string[], type: string}, primary_verification?: array{front_back: array{back?: string, front: string}, type: string}, secondary_verification?: array{front_back: array{back?: string, front: string}, type: string}, visa?: array{files: string[], type: string}}, email?: string, given_name?: string, id_numbers?: array{type: string, value: string}[], legal_gender?: string, metadata?: array<string, string>, nationalities?: string[], person_token?: string, phone?: string, political_exposure?: string, relationship?: array{authorizer?: bool, director?: bool, executive?: bool, legal_guardian?: bool, owner?: bool, percent_ownership?: string, representative?: bool, title?: string}, script_addresses?: array{kana?: array{city?: string, country: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}, kanji?: array{city?: string, country: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}}, script_names?: array{kana?: array{given_name?: string, surname?: string}, kanji?: array{given_name?: string, surname?: string}}, surname?: string} $params

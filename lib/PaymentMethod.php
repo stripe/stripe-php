@@ -6,10 +6,10 @@ namespace Stripe;
 
 /**
  * PaymentMethod objects represent your customer's payment instruments.
- * You can use them with <a href="https://stripe.com/docs/payments/payment-intents">PaymentIntents</a> to collect payments or save them to
+ * You can use them with <a href="https://docs.stripe.com/payments/payment-intents">PaymentIntents</a> to collect payments or save them to
  * Customer objects to store instrument details for future payments.
  *
- * Related guides: <a href="https://stripe.com/docs/payments/payment-methods">Payment Methods</a> and <a href="https://stripe.com/docs/payments/more-payment-scenarios">More Payment Scenarios</a>.
+ * Related guides: <a href="https://docs.stripe.com/payments/payment-methods">Payment Methods</a> and <a href="https://docs.stripe.com/payments/more-payment-scenarios">More Payment Scenarios</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -52,7 +52,7 @@ namespace Stripe;
  * @property null|(object{email: null|string, persistent_token?: string}&StripeObject) $link
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|(object{}&StripeObject) $mb_way
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|(object{}&StripeObject) $mobilepay
  * @property null|(object{}&StripeObject) $multibanco
  * @property null|(object{buyer_id: null|string, funding: string}&StripeObject) $naver_pay
@@ -68,7 +68,7 @@ namespace Stripe;
  * @property null|(object{}&StripeObject) $pix
  * @property null|(object{}&StripeObject) $promptpay
  * @property null|(object{}&StripeObject) $qris
- * @property null|(object{session?: string}&StripeObject) $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
+ * @property null|(object{session?: string}&StripeObject) $radar_options Options to configure Radar. See <a href="https://docs.stripe.com/radar/radar-session">Radar Session</a> for more information.
  * @property null|(object{dob?: (object{day: int, month: int, year: int}&StripeObject)}&StripeObject) $rechnung
  * @property null|(object{}&StripeObject) $revolut_pay
  * @property null|(object{}&StripeObject) $samsung_pay
@@ -186,10 +186,7 @@ class PaymentMethod extends ApiResource
     }
 
     /**
-     * Returns a list of PaymentMethods for Treasury flows. If you want to list the
-     * PaymentMethods attached to a Customer for payments, you should use the <a
-     * href="/docs/api/payment_methods/customer_list">List a Customer’s
-     * PaymentMethods</a> API instead.
+     * Returns a list of all PaymentMethods.
      *
      * @param null|array{allow_redisplay?: string, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string} $params
      * @param null|array|string $opts

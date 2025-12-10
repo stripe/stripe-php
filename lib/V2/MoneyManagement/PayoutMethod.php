@@ -9,8 +9,9 @@ namespace Stripe\V2\MoneyManagement;
  *
  * @property string $id ID of the PayoutMethod object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
+ * @property null|(object{id: string, type: string}&\Stripe\StripeObject) $alternative_reference The alternative reference for this payout method, if it's a projected payout method.
  * @property string[] $available_payout_speeds A set of available payout speeds for this payout method.
- * @property null|(object{archived: bool, bank_account_type: string, bank_name: string, country: string, enabled_delivery_options: string[], last4: string, routing_number?: string, supported_currencies: string[]}&\Stripe\StripeObject) $bank_account The PayoutMethodBankAccount object details.
+ * @property null|(object{archived: bool, bank_account_type: string, bank_name: string, country: string, enabled_delivery_options: string[], financial_connections_account?: string, last4: string, routing_number?: string, supported_currencies: string[]}&\Stripe\StripeObject) $bank_account The PayoutMethodBankAccount object details.
  * @property null|(object{archived: bool, exp_month: string, exp_year: string, last4: string}&\Stripe\StripeObject) $card The PayoutMethodCard object details.
  * @property int $created Created timestamp.
  * @property null|(object{address: string, archived: bool, memo?: string, network: string}&\Stripe\StripeObject) $crypto_wallet The PayoutMethodCryptoWallet object details.

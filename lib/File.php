@@ -6,20 +6,20 @@ namespace Stripe;
 
 /**
  * This object represents files hosted on Stripe's servers. You can upload
- * files with the <a href="https://stripe.com/docs/api#create_file">create file</a> request
+ * files with the <a href="https://api.stripe.com#create_file">create file</a> request
  * (for example, when uploading dispute evidence). Stripe also
  * creates files independently (for example, the results of a <a href="#scheduled_queries">Sigma scheduled
  * query</a>).
  *
- * Related guide: <a href="https://stripe.com/docs/file-upload">File upload guide</a>
+ * Related guide: <a href="https://docs.stripe.com/file-upload">File upload guide</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|int $expires_at The file expires and isn't available at this time in epoch seconds.
  * @property null|string $filename The suitable name for saving the file to a filesystem.
- * @property null|Collection<FileLink> $links A list of <a href="https://stripe.com/docs/api#file_links">file links</a> that point at this file.
- * @property string $purpose The <a href="https://stripe.com/docs/file-upload#uploading-a-file">purpose</a> of the uploaded file.
+ * @property null|Collection<FileLink> $links A list of <a href="https://api.stripe.com#file_links">file links</a> that point at this file.
+ * @property string $purpose The <a href="https://docs.stripe.com/file-upload#uploading-a-file">purpose</a> of the uploaded file.
  * @property int $size The size of the file object in bytes.
  * @property null|string $title A suitable title for the document.
  * @property null|string $type The returned file type (for example, <code>csv</code>, <code>pdf</code>, <code>jpg</code>, or <code>png</code>).
