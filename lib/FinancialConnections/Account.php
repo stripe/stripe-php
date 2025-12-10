@@ -9,7 +9,7 @@ namespace Stripe\FinancialConnections;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|(object{account?: string|\Stripe\Account, customer?: string|\Stripe\Customer, type: string}&\Stripe\StripeObject) $account_holder The account holder that this account belongs to.
+ * @property null|(object{account?: string|\Stripe\Account, customer?: string|\Stripe\Customer, customer_account?: string, type: string}&\Stripe\StripeObject) $account_holder The account holder that this account belongs to.
  * @property null|((object{expected_expiry_date: null|int, identifier_type: string, status: string, supported_networks: string[]}&\Stripe\StripeObject))[] $account_numbers Details about the account numbers.
  * @property null|(object{as_of: int, cash?: (object{available: null|\Stripe\StripeObject}&\Stripe\StripeObject), credit?: (object{used: null|\Stripe\StripeObject}&\Stripe\StripeObject), current: \Stripe\StripeObject, type: string}&\Stripe\StripeObject) $balance The most recent information about the account's balance.
  * @property null|(object{last_attempted_at: int, next_refresh_available_at: null|int, status: string}&\Stripe\StripeObject) $balance_refresh The state of the most recent attempt to refresh the account balance.
@@ -25,7 +25,7 @@ namespace Stripe\FinancialConnections;
  * @property string $status The status of the link to the account.
  * @property string $subcategory <p>If <code>category</code> is <code>cash</code>, one of:</p><p>- <code>checking</code> - <code>savings</code> - <code>other</code></p><p>If <code>category</code> is <code>credit</code>, one of:</p><p>- <code>mortgage</code> - <code>line_of_credit</code> - <code>credit_card</code> - <code>other</code></p><p>If <code>category</code> is <code>investment</code> or <code>other</code>, this will be <code>other</code>.</p>
  * @property null|string[] $subscriptions The list of data refresh subscriptions requested on this account.
- * @property string[] $supported_payment_method_types The <a href="https://stripe.com/docs/api/payment_methods/object#payment_method_object-type">PaymentMethod type</a>(s) that can be created from this account.
+ * @property string[] $supported_payment_method_types The <a href="https://docs.stripe.com/api/payment_methods/object#payment_method_object-type">PaymentMethod type</a>(s) that can be created from this account.
  * @property null|(object{id: string, last_attempted_at: int, next_refresh_available_at: null|int, status: string}&\Stripe\StripeObject) $transaction_refresh The state of the most recent attempt to refresh the account transactions.
  */
 class Account extends \Stripe\ApiResource
@@ -51,7 +51,7 @@ class Account extends \Stripe\ApiResource
     /**
      * Returns a list of Financial Connections <code>Account</code> objects.
      *
-     * @param null|array{account_holder?: array{account?: string, customer?: string}, ending_before?: string, expand?: string[], limit?: int, session?: string, starting_after?: string} $params
+     * @param null|array{account_holder?: array{account?: string, customer?: string, customer_account?: string}, ending_before?: string, expand?: string[], limit?: int, session?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<Account> of ApiResources

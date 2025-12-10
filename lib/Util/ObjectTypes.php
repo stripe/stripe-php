@@ -168,6 +168,11 @@ class ObjectTypes
         \Stripe\V2\Billing\MeterEvent::OBJECT_NAME => \Stripe\V2\Billing\MeterEvent::class,
         \Stripe\V2\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustment::class,
         \Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \Stripe\V2\Billing\MeterEventSession::class,
+        \Stripe\V2\Core\Account::OBJECT_NAME => \Stripe\V2\Core\Account::class,
+        \Stripe\V2\Core\AccountLink::OBJECT_NAME => \Stripe\V2\Core\AccountLink::class,
+        \Stripe\V2\Core\AccountPerson::OBJECT_NAME => \Stripe\V2\Core\AccountPerson::class,
+        \Stripe\V2\Core\AccountPersonToken::OBJECT_NAME => \Stripe\V2\Core\AccountPersonToken::class,
+        \Stripe\V2\Core\AccountToken::OBJECT_NAME => \Stripe\V2\Core\AccountToken::class,
         \Stripe\V2\Core\Event::OBJECT_NAME => \Stripe\V2\Core\Event::class,
         \Stripe\V2\Core\EventDestination::OBJECT_NAME => \Stripe\V2\Core\EventDestination::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec

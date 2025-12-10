@@ -9,7 +9,7 @@ namespace Stripe;
  * has previously been created but not yet refunded. Funds will be refunded to
  * the Stripe account from which the fee was originally collected.
  *
- * Related guide: <a href="https://stripe.com/docs/connect/destination-charges#refunding-app-fee">Refunding application fees</a>
+ * Related guide: <a href="https://docs.stripe.com/connect/destination-charges#refunding-app-fee">Refunding application fees</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -18,7 +18,7 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property ApplicationFee|string $fee ID of the application fee that was refunded.
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  */
 class ApplicationFeeRefund extends ApiResource
 {

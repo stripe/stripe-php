@@ -9,7 +9,7 @@ namespace Stripe;
  * individual top-ups, as well as list all top-ups. Top-ups are identified by a
  * unique, random ID.
  *
- * Related guide: <a href="https://stripe.com/docs/connect/top-ups">Topping up your platform account</a>
+ * Related guide: <a href="https://docs.stripe.com/connect/top-ups">Topping up your platform account</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -19,10 +19,10 @@ namespace Stripe;
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|int $expected_availability_date Date the funds are expected to arrive in your Stripe account for payouts. This factors in delays like weekends or bank holidays. May not be specified depending on status of top-up.
- * @property null|string $failure_code Error code explaining reason for top-up failure if available (see <a href="https://stripe.com/docs/api#errors">the errors section</a> for a list of codes).
+ * @property null|string $failure_code Error code explaining reason for top-up failure if available (see <a href="https://docs.stripe.com/api#errors">the errors section</a> for a list of codes).
  * @property null|string $failure_message Message to user further explaining reason for top-up failure if available.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|Source $source The source field is deprecated. It might not always be present in the API response.
  * @property null|string $statement_descriptor Extra information about a top-up. This will appear on your source's bank statement. It must contain at least one letter.
  * @property string $status The status of the top-up is either <code>canceled</code>, <code>failed</code>, <code>pending</code>, <code>reversed</code>, or <code>succeeded</code>.

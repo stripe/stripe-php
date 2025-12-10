@@ -7,13 +7,13 @@ namespace Stripe\Tax;
 /**
  * A Tax Calculation allows you to calculate the tax to collect from your customer.
  *
- * Related guide: <a href="https://stripe.com/docs/tax/custom">Calculate tax in your custom payment flow</a>
+ * Related guide: <a href="https://docs.stripe.com/tax/custom">Calculate tax in your custom payment flow</a>
  *
  * @property null|string $id Unique identifier for the calculation.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property int $amount_total Total amount after taxes in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+ * @property int $amount_total Total amount after taxes in the <a href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property null|string $customer The ID of an existing <a href="https://stripe.com/docs/api/customers/object">Customer</a> used for the resource.
+ * @property null|string $customer The ID of an existing <a href="https://docs.stripe.com/api/customers/object">Customer</a> used for the resource.
  * @property (object{address: null|(object{city: null|string, country: string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject), address_source: null|string, ip_address: null|string, tax_ids: (object{type: string, value: string}&\Stripe\StripeObject)[], taxability_override: string}&\Stripe\StripeObject) $customer_details
  * @property null|int $expires_at Timestamp of date at which the tax calculation will expire.
  * @property null|\Stripe\Collection<CalculationLineItem> $line_items The list of items the customer is purchasing.

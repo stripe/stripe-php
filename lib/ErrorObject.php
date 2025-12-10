@@ -49,6 +49,7 @@ class ErrorObject extends StripeObject
     const CODE_ACCOUNT_INFORMATION_MISMATCH = 'account_information_mismatch';
     const CODE_ACCOUNT_INVALID = 'account_invalid';
     const CODE_ACCOUNT_NUMBER_INVALID = 'account_number_invalid';
+    const CODE_ACCOUNT_TOKEN_REQUIRED_FOR_V2_ACCOUNT = 'account_token_required_for_v2_account';
     const CODE_ACSS_DEBIT_SESSION_INCOMPLETE = 'acss_debit_session_incomplete';
     const CODE_ALIPAY_UPGRADE_REQUIRED = 'alipay_upgrade_required';
     const CODE_AMOUNT_TOO_LARGE = 'amount_too_large';

@@ -5,12 +5,12 @@
 namespace Stripe;
 
 /**
- * Each customer has a <a href="https://stripe.com/docs/api/customers/object#customer_object-balance">Balance</a> value,
+ * Each customer has a <a href="https://docs.stripe.com/api/customers/object#customer_object-balance">Balance</a> value,
  * which denotes a debit or credit that's automatically applied to their next invoice upon finalization.
- * You may modify the value directly by using the <a href="https://stripe.com/docs/api/customers/update">update customer API</a>,
+ * You may modify the value directly by using the <a href="https://docs.stripe.com/api/customers/update">update customer API</a>,
  * or by creating a Customer Balance Transaction, which increments or decrements the customer's <code>balance</code> by the specified <code>amount</code>.
  *
- * Related guide: <a href="https://stripe.com/docs/billing/customer/balance">Customer balance</a>
+ * Related guide: <a href="https://docs.stripe.com/billing/customer/balance">Customer balance</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -20,12 +20,13 @@ namespace Stripe;
  * @property null|CreditNote|string $credit_note The ID of the credit note (if any) related to the transaction.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property Customer|string $customer The ID of the customer the transaction belongs to.
+ * @property null|string $customer_account The ID of an Account representing a customer that the transaction belongs to.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property int $ending_balance The customer's <code>balance</code> after the transaction was applied. A negative value decreases the amount due on the customer's next invoice. A positive value increases the amount due on the customer's next invoice.
  * @property null|Invoice|string $invoice The ID of the invoice (if any) related to the transaction.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property string $type Transaction type: <code>adjustment</code>, <code>applied_to_invoice</code>, <code>credit_note</code>, <code>initial</code>, <code>invoice_overpaid</code>, <code>invoice_too_large</code>, <code>invoice_too_small</code>, <code>unspent_receiver_credit</code>, <code>unapplied_from_invoice</code>, <code>checkout_session_subscription_payment</code>, or <code>checkout_session_subscription_payment_canceled</code>. See the <a href="https://stripe.com/docs/billing/customer/balance#types">Customer Balance page</a> to learn more about transaction types.
+ * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property string $type Transaction type: <code>adjustment</code>, <code>applied_to_invoice</code>, <code>credit_note</code>, <code>initial</code>, <code>invoice_overpaid</code>, <code>invoice_too_large</code>, <code>invoice_too_small</code>, <code>unspent_receiver_credit</code>, <code>unapplied_from_invoice</code>, <code>checkout_session_subscription_payment</code>, or <code>checkout_session_subscription_payment_canceled</code>. See the <a href="https://docs.stripe.com/billing/customer/balance#types">Customer Balance page</a> to learn more about transaction types.
  */
 class CustomerBalanceTransaction extends ApiResource
 {
