@@ -30,7 +30,7 @@ namespace Stripe;
  * @property null|int $net_amount The amount after discounts, but before credits and taxes. This field is <code>null</code> for <code>discountable=true</code> items.
  * @property null|(object{subscription_details: null|(object{subscription: string, subscription_item?: string}&StripeObject), type: string}&StripeObject) $parent The parent that generated this invoice item.
  * @property (object{end: int, start: int}&StripeObject) $period
- * @property null|(object{price_details?: (object{price: string, product: string}&StripeObject), type: string, unit_amount_decimal: null|string}&StripeObject) $pricing The pricing information of the invoice item.
+ * @property null|(object{price_details?: (object{price: Price|string, product: string}&StripeObject), type: string, unit_amount_decimal: null|string}&StripeObject) $pricing The pricing information of the invoice item.
  * @property bool $proration Whether the invoice item was created automatically as a proration adjustment when the customer switched plans.
  * @property null|(object{discount_amounts: ((object{amount: int, discount: Discount|string}&StripeObject))[]}&StripeObject) $proration_details
  * @property int $quantity Quantity of units for the invoice item. If the invoice item is a proration, the quantity of the subscription that the proration was computed for.
