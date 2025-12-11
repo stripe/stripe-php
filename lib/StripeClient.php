@@ -66,6 +66,7 @@ namespace Stripe;
  * @property Service\Radar\RadarServiceFactory $radar
  * @property Service\RefundService $refunds
  * @property Service\Reporting\ReportingServiceFactory $reporting
+ * @property Service\Reserve\ReserveServiceFactory $reserve
  * @property Service\ReviewService $reviews
  * @property Service\SetupAttemptService $setupAttempts
  * @property Service\SetupIntentService $setupIntents

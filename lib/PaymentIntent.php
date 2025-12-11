@@ -11,7 +11,7 @@ namespace Stripe;
  * see the history of payment attempts for a particular session.
  *
  * A PaymentIntent transitions through
- * <a href="https://docs.stripe.com/payments/intents#intent-statuses">multiple statuses</a>
+ * <a href="/payments/paymentintents/lifecycle">multiple statuses</a>
  * throughout its lifetime as it interfaces with Stripe.js to perform
  * authentication flows and ultimately creates at most one successful charge.
  *
