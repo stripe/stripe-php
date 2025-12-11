@@ -72,6 +72,7 @@ namespace Stripe\Service;
  * @property ReviewService $reviews
  * @property SetupAttemptService $setupAttempts
  * @property SetupIntentService $setupIntents
+ * @property SharedPayment\SharedPaymentServiceFactory $sharedPayment
  * @property ShippingRateService $shippingRates
  * @property Sigma\SigmaServiceFactory $sigma
  * @property SourceService $sources
@@ -165,6 +166,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'reviews' => ReviewService::class,
         'setupAttempts' => SetupAttemptService::class,
         'setupIntents' => SetupIntentService::class,
+        'sharedPayment' => SharedPayment\SharedPaymentServiceFactory::class,
         'shippingRates' => ShippingRateService::class,
         'sigma' => Sigma\SigmaServiceFactory::class,
         'sources' => SourceService::class,
