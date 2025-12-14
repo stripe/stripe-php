@@ -20,7 +20,8 @@ class SettlementAllocationIntentService extends \Stripe\Service\AbstractService
     ];
 
     /**
-     * Cancel SettlementAllocationIntent API.
+     * Cancels an existing SettlementAllocationIntent. Only SettlementAllocationIntent
+     * with status `pending`, `submitted` and `errored` can be `canceled`.
      *
      * @param string $id
      * @param null|array $params
@@ -36,7 +37,7 @@ class SettlementAllocationIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create SettlementAllocationIntent API.
+     * Create a new SettlementAllocationIntent.
      *
      * @param null|array{amount: array{value?: int, currency?: string}, expected_settlement_date: string, financial_account: string, metadata?: array<string, string>, reference: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -51,7 +52,7 @@ class SettlementAllocationIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve SettlementAllocationIntent API.
+     * Retrieve an existing SettlementAllocationIntent.
      *
      * @param string $id
      * @param null|array $params
@@ -67,7 +68,10 @@ class SettlementAllocationIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Submit SettlementAllocationIntent API.
+     * Submits a SettlementAllocationIntent. Only SettlementAllocationIntent with
+     * status `pending` can be `submitted`. The net sum of
+     * SettlementAllocationIntentSplit amount must be equal to
+     * SettlementAllocationIntent amount to be eligible to be submitted.
      *
      * @param string $id
      * @param null|array $params
@@ -83,7 +87,12 @@ class SettlementAllocationIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update SettlementAllocationIntent API.
+     * Updates SettlementAllocationIntent. Only SettlementAllocationIntent with status
+     * `pending`, `submitted` and `errored` can be updated. Only amount and reference
+     * fields can be updated for a SettlementAllocationIntent and at least one must be
+     * present. Updating an `amount` moves the SettlementAllocationIntent `pending`
+     * status and updating the `reference` for `errored` SettlementAllocationIntent
+     * moves it to `submitted`.
      *
      * @param string $id
      * @param null|array{amount?: array{value?: int, currency?: string}, reference?: string} $params

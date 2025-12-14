@@ -9,7 +9,7 @@ namespace Stripe\V2\Payments;
  *
  * @property string $id Unique identifier for the SettlementAllocationIntentSplit.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property string $account The ID of the account that will be used for the debit/credit.
+ * @property string $account The account id against which the SettlementAllocationIntentSplit should be settled.
  * @property (object{value?: int, currency?: string}&\Stripe\StripeObject) $amount The amount and currency of the SettlementAllocationIntentSplit.
  * @property int $created Timestamp at which SettlementAllocationIntentSplit was created.
  * @property (object{type: string, outbound_payment?: string, outbound_transfer?: string, received_credit?: string}&\Stripe\StripeObject) $flow Details about the Flow object that settled the split.

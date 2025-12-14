@@ -45,7 +45,7 @@ class ApiKeyService extends \Stripe\Service\AbstractService
      * Expire an API key.
      *
      * @param string $id
-     * @param null|array{expire_in_minutes?: int} $params
+     * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Iam\ApiKey

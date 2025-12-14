@@ -12,7 +12,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property (object{value?: int, currency?: string}&\Stripe\StripeObject) $amount The &quot;presentment amount&quot; for the OutboundPayment.
  * @property bool $cancelable Returns true if the OutboundPayment can be canceled, and false otherwise.
  * @property int $created Time at which the OutboundPayment was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
- * @property null|(object{bank_account?: string}&\Stripe\StripeObject) $delivery_options Delivery options to be used to send the OutboundPayment.
+ * @property null|(object{bank_account?: string, speed?: string}&\Stripe\StripeObject) $delivery_options Delivery options to be used to send the OutboundPayment.
  * @property null|string $description An arbitrary string attached to the OutboundPayment. Often useful for displaying to users.
  * @property null|int $expected_arrival_date The date when funds are expected to arrive in the payout method. This field is not set if the payout method is in a <code>failed</code>, <code>canceled</code>, or <code>returned</code> state. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property (object{debited: (object{value?: int, currency?: string}&\Stripe\StripeObject), financial_account: string}&\Stripe\StripeObject) $from The FinancialAccount that funds were pulled from.
