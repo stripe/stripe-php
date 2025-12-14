@@ -8,7 +8,7 @@ namespace Stripe;
  * A payment method domain represents a web domain that you have registered with Stripe.
  * Stripe Elements use registered payment method domains to control where certain payment methods are shown.
  *
- * Related guide: <a href="https://stripe.com/docs/payments/payment-methods/pmd-registration">Payment method domains</a>.
+ * Related guide: <a href="https://docs.stripe.com/payments/payment-methods/pmd-registration">Payment method domains</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

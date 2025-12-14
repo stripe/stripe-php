@@ -7,7 +7,7 @@ namespace Stripe\Issuing;
 /**
  * Every time an applicant submits an application for a Charge Card product your platform offers, or every time your platform takes a proactive credit decision on an existing account, you must record the decision by creating a new <code>CreditUnderwritingRecord</code> object on a connected account.
  *
- * <a href="https://stripe.com/docs/issuing/credit/report-credit-decisions-and-manage-aans">Follow the guide</a> to learn about your requirements as a platform.
+ * <a href="https://docs.stripe.com/issuing/credit/report-credit-decisions-and-manage-aans">Follow the guide</a> to learn about your requirements as a platform.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -19,8 +19,8 @@ namespace Stripe\Issuing;
  * @property null|(object{application_rejected: null|(object{reason_other_explanation: null|string, reasons: string[]}&\Stripe\StripeObject), credit_limit_approved: null|(object{amount: int, currency: string}&\Stripe\StripeObject), credit_limit_decreased: null|(object{amount: int, currency: string, reason_other_explanation: null|string, reasons: string[]}&\Stripe\StripeObject), credit_line_closed: null|(object{reason_other_explanation: null|string, reasons: string[]}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $decision Details about the decision.
  * @property null|int $decision_deadline For underwriting initiated by an application, a decision must be taken 30 days after the submission.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|string $regulatory_reporting_file File containing regulatory reporting data for the decision. Required if you are subject to this <a href="https://stripe.com/docs/issuing/credit/report-required-regulatory-data-for-credit-decisions">reporting requirement</a>.
+ * @property null|\Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|string $regulatory_reporting_file File containing regulatory reporting data for the decision. Required if you are subject to this <a href="https://docs.stripe.com/issuing/credit/report-required-regulatory-data-for-credit-decisions">reporting requirement</a>.
  * @property null|(object{explanation: string, original_decision_type: string}&\Stripe\StripeObject) $underwriting_exception If an exception to the usual underwriting criteria was made for this application, details about the exception must be provided. Exceptions should only be granted in rare circumstances, in consultation with Stripe Compliance.
  */
 class CreditUnderwritingRecord extends \Stripe\ApiResource

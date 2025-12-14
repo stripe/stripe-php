@@ -72,6 +72,7 @@ namespace Stripe;
  * @property Service\ReviewService $reviews
  * @property Service\SetupAttemptService $setupAttempts
  * @property Service\SetupIntentService $setupIntents
+ * @property Service\SharedPayment\SharedPaymentServiceFactory $sharedPayment
  * @property Service\ShippingRateService $shippingRates
  * @property Service\Sigma\SigmaServiceFactory $sigma
  * @property Service\SourceService $sources

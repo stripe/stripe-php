@@ -18,7 +18,7 @@ namespace Stripe;
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users. Defaults to product name.
  * @property null|(object{amount: int, discount: Discount}&StripeObject)[] $discounts The discounts applied to the line item.
  * @property null|(object{description: null|string, images: string[], name: string}&StripeObject) $display
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|Price $price The price used to generate the line item.
  * @property null|Product|string $product <p>The ID of the product for this line item.</p><p>This will always be the same as <code>price.product</code>.</p>
  * @property null|int $quantity The quantity of products being purchased.

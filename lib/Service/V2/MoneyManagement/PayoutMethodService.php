@@ -38,6 +38,7 @@ class PayoutMethodService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ControlledByDashboardException
      * @throws \Stripe\Exception\InvalidPayoutMethodException
+     * @throws \Stripe\Exception\ControlledByAlternateResourceException
      */
     public function archive($id, $params = null, $opts = null)
     {
@@ -71,6 +72,7 @@ class PayoutMethodService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ControlledByDashboardException
      * @throws \Stripe\Exception\InvalidPayoutMethodException
+     * @throws \Stripe\Exception\ControlledByAlternateResourceException
      */
     public function unarchive($id, $params = null, $opts = null)
     {

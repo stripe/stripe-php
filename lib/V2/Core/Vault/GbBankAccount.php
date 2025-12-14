@@ -9,6 +9,7 @@ namespace Stripe\V2\Core\Vault;
  *
  * @property string $id The ID of the GBBankAccount object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
+ * @property null|(object{id: string, type: string}&\Stripe\StripeObject) $alternative_reference The alternative reference for this payout method, if it's a projected payout method.
  * @property bool $archived Whether this bank account object was archived. Bank account objects can be archived through the /archive API, and they will not be automatically archived by Stripe. Archived bank account objects cannot be used as outbound destinations and will not appear in the outbound destination list.
  * @property string $bank_account_type Closed Enum. The type of the bank account (checking or savings).
  * @property string $bank_name The name of the bank.

@@ -5591,22 +5591,28 @@ final class GeneratedExamplesTest extends TestCase
                             ],
                         ],
                         'deactivate' => [
-                            'billing_details' => [
-                                'proration_behavior' => 'prorated_adjustment',
-                            ],
+                            'collect_at' => 'next_billing_date',
                             'effective_at' => [
                                 'timestamp' => '1970-01-01T15:18:46.294Z',
                                 'type' => 'on_reserve',
                             ],
                             'pricing_plan_subscription_details' => [
+                                'overrides' => [
+                                    'partial_period_behaviors' => [
+                                        [
+                                            'type' => 'license_fee',
+                                            'license_fee' => [
+                                                'credit_proration_behavior' => 'prorated',
+                                            ],
+                                        ],
+                                    ],
+                                ],
                                 'pricing_plan_subscription' => 'pricing_plan_subscription',
                             ],
                             'type' => 'pricing_plan_subscription_details',
                         ],
                         'modify' => [
-                            'billing_details' => [
-                                'proration_behavior' => 'prorated_adjustment',
-                            ],
+                            'collect_at' => 'next_billing_date',
                             'effective_at' => [
                                 'timestamp' => '1970-01-01T15:18:46.294Z',
                                 'type' => 'current_billing_period_start',
@@ -5621,6 +5627,17 @@ final class GeneratedExamplesTest extends TestCase
                                 ],
                                 'new_pricing_plan' => 'new_pricing_plan',
                                 'new_pricing_plan_version' => 'new_pricing_plan_version',
+                                'overrides' => [
+                                    'partial_period_behaviors' => [
+                                        [
+                                            'type' => 'license_fee',
+                                            'license_fee' => [
+                                                'credit_proration_behavior' => 'prorated',
+                                                'debit_proration_behavior' => 'none',
+                                            ],
+                                        ],
+                                    ],
+                                ],
                                 'pricing_plan_subscription' => 'pricing_plan_subscription',
                             ],
                             'type' => 'pricing_plan_subscription_details',
@@ -5630,9 +5647,7 @@ final class GeneratedExamplesTest extends TestCase
                             'invoice_discount_rule' => 'invoice_discount_rule',
                         ],
                         'subscribe' => [
-                            'billing_details' => [
-                                'proration_behavior' => 'prorated_adjustment',
-                            ],
+                            'collect_at' => 'next_billing_date',
                             'effective_at' => [
                                 'timestamp' => '1970-01-01T15:18:46.294Z',
                                 'type' => 'current_billing_period_start',
@@ -5647,6 +5662,16 @@ final class GeneratedExamplesTest extends TestCase
                                     ],
                                 ],
                                 'metadata' => ['key' => 'metadata'],
+                                'overrides' => [
+                                    'partial_period_behaviors' => [
+                                        [
+                                            'type' => 'license_fee',
+                                            'license_fee' => [
+                                                'debit_proration_behavior' => 'none',
+                                            ],
+                                        ],
+                                    ],
+                                ],
                                 'pricing_plan' => 'pricing_plan',
                                 'pricing_plan_version' => 'pricing_plan_version',
                             ],
@@ -5706,22 +5731,28 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                     ],
                     'deactivate' => [
-                        'billing_details' => [
-                            'proration_behavior' => 'prorated_adjustment',
-                        ],
+                        'collect_at' => 'next_billing_date',
                         'effective_at' => [
                             'timestamp' => '1970-01-01T15:18:46.294Z',
                             'type' => 'on_reserve',
                         ],
                         'pricing_plan_subscription_details' => [
+                            'overrides' => [
+                                'partial_period_behaviors' => [
+                                    [
+                                        'type' => 'license_fee',
+                                        'license_fee' => [
+                                            'credit_proration_behavior' => 'prorated',
+                                        ],
+                                    ],
+                                ],
+                            ],
                             'pricing_plan_subscription' => 'pricing_plan_subscription',
                         ],
                         'type' => 'pricing_plan_subscription_details',
                     ],
                     'modify' => [
-                        'billing_details' => [
-                            'proration_behavior' => 'prorated_adjustment',
-                        ],
+                        'collect_at' => 'next_billing_date',
                         'effective_at' => [
                             'timestamp' => '1970-01-01T15:18:46.294Z',
                             'type' => 'current_billing_period_start',
@@ -5736,6 +5767,17 @@ final class GeneratedExamplesTest extends TestCase
                             ],
                             'new_pricing_plan' => 'new_pricing_plan',
                             'new_pricing_plan_version' => 'new_pricing_plan_version',
+                            'overrides' => [
+                                'partial_period_behaviors' => [
+                                    [
+                                        'type' => 'license_fee',
+                                        'license_fee' => [
+                                            'credit_proration_behavior' => 'prorated',
+                                            'debit_proration_behavior' => 'none',
+                                        ],
+                                    ],
+                                ],
+                            ],
                             'pricing_plan_subscription' => 'pricing_plan_subscription',
                         ],
                         'type' => 'pricing_plan_subscription_details',
@@ -5745,9 +5787,7 @@ final class GeneratedExamplesTest extends TestCase
                         'invoice_discount_rule' => 'invoice_discount_rule',
                     ],
                     'subscribe' => [
-                        'billing_details' => [
-                            'proration_behavior' => 'prorated_adjustment',
-                        ],
+                        'collect_at' => 'next_billing_date',
                         'effective_at' => [
                             'timestamp' => '1970-01-01T15:18:46.294Z',
                             'type' => 'current_billing_period_start',
@@ -5762,6 +5802,16 @@ final class GeneratedExamplesTest extends TestCase
                                 ],
                             ],
                             'metadata' => ['key' => 'metadata'],
+                            'overrides' => [
+                                'partial_period_behaviors' => [
+                                    [
+                                        'type' => 'license_fee',
+                                        'license_fee' => [
+                                            'debit_proration_behavior' => 'none',
+                                        ],
+                                    ],
+                                ],
+                            ],
                             'pricing_plan' => 'pricing_plan',
                             'pricing_plan_version' => 'pricing_plan_version',
                         ],
@@ -8153,302 +8203,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/core/account_tokens',
-            [
-                'identity' => [
-                    'attestations' => [
-                        'directorship_declaration' => ['attested' => true],
-                        'ownership_declaration' => ['attested' => true],
-                        'persons_provided' => [
-                            'directors' => true,
-                            'executives' => true,
-                            'owners' => true,
-                            'ownership_exemption_reason' => 'qualified_entity_exceeds_ownership_threshold',
-                        ],
-                        'representative_declaration' => ['attested' => true],
-                        'terms_of_service' => [
-                            'account' => ['shown_and_accepted' => true],
-                            'card_creator' => [
-                                'commercial' => [
-                                    'account_holder' => [
-                                        'shown_and_accepted' => true,
-                                    ],
-                                    'celtic' => [
-                                        'apple_pay' => [
-                                            'shown_and_accepted' => true,
-                                        ],
-                                        'charge_card' => [
-                                            'bank_terms' => [
-                                                'shown_and_accepted' => true,
-                                            ],
-                                            'platform' => [
-                                                'shown_and_accepted' => true,
-                                            ],
-                                        ],
-                                        'spend_card' => [
-                                            'bank_terms' => [
-                                                'shown_and_accepted' => true,
-                                            ],
-                                            'financing_disclosures' => [
-                                                'shown_and_accepted' => true,
-                                            ],
-                                            'platform' => [
-                                                'shown_and_accepted' => true,
-                                            ],
-                                        ],
-                                    ],
-                                    'cross_river_bank' => [
-                                        'apple_pay' => [
-                                            'shown_and_accepted' => true,
-                                        ],
-                                        'charge_card' => [
-                                            'bank_terms' => [
-                                                'shown_and_accepted' => true,
-                                            ],
-                                            'financing_disclosures' => [
-                                                'shown_and_accepted' => true,
-                                            ],
-                                            'platform' => [
-                                                'shown_and_accepted' => true,
-                                            ],
-                                        ],
-                                        'spend_card' => [
-                                            'bank_terms' => [
-                                                'shown_and_accepted' => true,
-                                            ],
-                                            'financing_disclosures' => [
-                                                'shown_and_accepted' => true,
-                                            ],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                            'crypto_storer' => ['shown_and_accepted' => true],
-                            'storer' => ['shown_and_accepted' => true],
-                        ],
-                    ],
-                    'business_details' => [
-                        'address' => [
-                            'city' => 'city',
-                            'country' => 'country',
-                            'line1' => 'line1',
-                            'line2' => 'line2',
-                            'postal_code' => 'postal_code',
-                            'state' => 'state',
-                            'town' => 'town',
-                        ],
-                        'annual_revenue' => [
-                            'amount' => [
-                                'value' => 111972721,
-                                'currency' => 'usd',
-                            ],
-                            'fiscal_year_end' => 'fiscal_year_end',
-                        ],
-                        'compliance_screening_description' => 'compliance_screening_description',
-                        'documents' => [
-                            'bank_account_ownership_verification' => [
-                                'files' => ['files'],
-                                'type' => 'files',
-                            ],
-                            'company_license' => [
-                                'files' => ['files'],
-                                'type' => 'files',
-                            ],
-                            'company_memorandum_of_association' => [
-                                'files' => ['files'],
-                                'type' => 'files',
-                            ],
-                            'company_ministerial_decree' => [
-                                'files' => ['files'],
-                                'type' => 'files',
-                            ],
-                            'company_registration_verification' => [
-                                'files' => ['files'],
-                                'type' => 'files',
-                            ],
-                            'company_tax_id_verification' => [
-                                'files' => ['files'],
-                                'type' => 'files',
-                            ],
-                            'primary_verification' => [
-                                'front_back' => [
-                                    'back' => 'back',
-                                    'front' => 'front',
-                                ],
-                                'type' => 'front_back',
-                            ],
-                            'proof_of_address' => [
-                                'files' => ['files'],
-                                'type' => 'files',
-                            ],
-                            'proof_of_registration' => [
-                                'files' => ['files'],
-                                'type' => 'files',
-                            ],
-                            'proof_of_ultimate_beneficial_ownership' => [
-                                'files' => ['files'],
-                                'type' => 'files',
-                            ],
-                        ],
-                        'estimated_worker_count' => 884794319,
-                        'id_numbers' => [
-                            [
-                                'registrar' => 'registrar',
-                                'type' => 'th_prn',
-                                'value' => 'value',
-                            ],
-                        ],
-                        'monthly_estimated_revenue' => [
-                            'amount' => [
-                                'value' => 111972721,
-                                'currency' => 'usd',
-                            ],
-                        ],
-                        'phone' => 'phone',
-                        'registered_name' => 'registered_name',
-                        'script_addresses' => [
-                            'kana' => [
-                                'city' => 'city',
-                                'country' => 'country',
-                                'line1' => 'line1',
-                                'line2' => 'line2',
-                                'postal_code' => 'postal_code',
-                                'state' => 'state',
-                                'town' => 'town',
-                            ],
-                            'kanji' => [
-                                'city' => 'city',
-                                'country' => 'country',
-                                'line1' => 'line1',
-                                'line2' => 'line2',
-                                'postal_code' => 'postal_code',
-                                'state' => 'state',
-                                'town' => 'town',
-                            ],
-                        ],
-                        'script_names' => [
-                            'kana' => ['registered_name' => 'registered_name'],
-                            'kanji' => ['registered_name' => 'registered_name'],
-                        ],
-                        'structure' => 'public_listed_corporation',
-                    ],
-                    'entity_type' => 'individual',
-                    'individual' => [
-                        'additional_addresses' => [
-                            [
-                                'city' => 'city',
-                                'country' => 'country',
-                                'line1' => 'line1',
-                                'line2' => 'line2',
-                                'postal_code' => 'postal_code',
-                                'purpose' => 'registered',
-                                'state' => 'state',
-                                'town' => 'town',
-                            ],
-                        ],
-                        'additional_names' => [
-                            [
-                                'full_name' => 'full_name',
-                                'given_name' => 'given_name',
-                                'purpose' => 'alias',
-                                'surname' => 'surname',
-                            ],
-                        ],
-                        'address' => [
-                            'city' => 'city',
-                            'country' => 'country',
-                            'line1' => 'line1',
-                            'line2' => 'line2',
-                            'postal_code' => 'postal_code',
-                            'state' => 'state',
-                            'town' => 'town',
-                        ],
-                        'date_of_birth' => [
-                            'day' => 99228,
-                            'month' => 104080000,
-                            'year' => 3704893,
-                        ],
-                        'documents' => [
-                            'company_authorization' => [
-                                'files' => ['files'],
-                                'type' => 'files',
-                            ],
-                            'passport' => [
-                                'files' => ['files'],
-                                'type' => 'files',
-                            ],
-                            'primary_verification' => [
-                                'front_back' => [
-                                    'back' => 'back',
-                                    'front' => 'front',
-                                ],
-                                'type' => 'front_back',
-                            ],
-                            'secondary_verification' => [
-                                'front_back' => [
-                                    'back' => 'back',
-                                    'front' => 'front',
-                                ],
-                                'type' => 'front_back',
-                            ],
-                            'visa' => [
-                                'files' => ['files'],
-                                'type' => 'files',
-                            ],
-                        ],
-                        'email' => 'email',
-                        'given_name' => 'given_name',
-                        'id_numbers' => [
-                            [
-                                'type' => 'th_lc',
-                                'value' => 'value',
-                            ],
-                        ],
-                        'legal_gender' => 'male',
-                        'metadata' => ['key' => 'metadata'],
-                        'nationalities' => ['nationalities'],
-                        'phone' => 'phone',
-                        'political_exposure' => 'none',
-                        'relationship' => [
-                            'director' => true,
-                            'executive' => true,
-                            'owner' => true,
-                            'percent_ownership' => 'percent_ownership',
-                            'title' => 'title',
-                        ],
-                        'script_addresses' => [
-                            'kana' => [
-                                'city' => 'city',
-                                'country' => 'country',
-                                'line1' => 'line1',
-                                'line2' => 'line2',
-                                'postal_code' => 'postal_code',
-                                'state' => 'state',
-                                'town' => 'town',
-                            ],
-                            'kanji' => [
-                                'city' => 'city',
-                                'country' => 'country',
-                                'line1' => 'line1',
-                                'line2' => 'line2',
-                                'postal_code' => 'postal_code',
-                                'state' => 'state',
-                                'town' => 'town',
-                            ],
-                        ],
-                        'script_names' => [
-                            'kana' => [
-                                'given_name' => 'given_name',
-                                'surname' => 'surname',
-                            ],
-                            'kanji' => [
-                                'given_name' => 'given_name',
-                                'surname' => 'surname',
-                            ],
-                        ],
-                        'surname' => 'surname',
-                    ],
-                ],
-            ],
+            [],
             [],
             false,
             [
@@ -8462,302 +8217,7 @@ final class GeneratedExamplesTest extends TestCase
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->core->accountTokens->create([
-            'identity' => [
-                'attestations' => [
-                    'directorship_declaration' => ['attested' => true],
-                    'ownership_declaration' => ['attested' => true],
-                    'persons_provided' => [
-                        'directors' => true,
-                        'executives' => true,
-                        'owners' => true,
-                        'ownership_exemption_reason' => 'qualified_entity_exceeds_ownership_threshold',
-                    ],
-                    'representative_declaration' => ['attested' => true],
-                    'terms_of_service' => [
-                        'account' => ['shown_and_accepted' => true],
-                        'card_creator' => [
-                            'commercial' => [
-                                'account_holder' => [
-                                    'shown_and_accepted' => true,
-                                ],
-                                'celtic' => [
-                                    'apple_pay' => [
-                                        'shown_and_accepted' => true,
-                                    ],
-                                    'charge_card' => [
-                                        'bank_terms' => [
-                                            'shown_and_accepted' => true,
-                                        ],
-                                        'platform' => [
-                                            'shown_and_accepted' => true,
-                                        ],
-                                    ],
-                                    'spend_card' => [
-                                        'bank_terms' => [
-                                            'shown_and_accepted' => true,
-                                        ],
-                                        'financing_disclosures' => [
-                                            'shown_and_accepted' => true,
-                                        ],
-                                        'platform' => [
-                                            'shown_and_accepted' => true,
-                                        ],
-                                    ],
-                                ],
-                                'cross_river_bank' => [
-                                    'apple_pay' => [
-                                        'shown_and_accepted' => true,
-                                    ],
-                                    'charge_card' => [
-                                        'bank_terms' => [
-                                            'shown_and_accepted' => true,
-                                        ],
-                                        'financing_disclosures' => [
-                                            'shown_and_accepted' => true,
-                                        ],
-                                        'platform' => [
-                                            'shown_and_accepted' => true,
-                                        ],
-                                    ],
-                                    'spend_card' => [
-                                        'bank_terms' => [
-                                            'shown_and_accepted' => true,
-                                        ],
-                                        'financing_disclosures' => [
-                                            'shown_and_accepted' => true,
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                        'crypto_storer' => ['shown_and_accepted' => true],
-                        'storer' => ['shown_and_accepted' => true],
-                    ],
-                ],
-                'business_details' => [
-                    'address' => [
-                        'city' => 'city',
-                        'country' => 'country',
-                        'line1' => 'line1',
-                        'line2' => 'line2',
-                        'postal_code' => 'postal_code',
-                        'state' => 'state',
-                        'town' => 'town',
-                    ],
-                    'annual_revenue' => [
-                        'amount' => [
-                            'value' => 111972721,
-                            'currency' => 'usd',
-                        ],
-                        'fiscal_year_end' => 'fiscal_year_end',
-                    ],
-                    'compliance_screening_description' => 'compliance_screening_description',
-                    'documents' => [
-                        'bank_account_ownership_verification' => [
-                            'files' => ['files'],
-                            'type' => 'files',
-                        ],
-                        'company_license' => [
-                            'files' => ['files'],
-                            'type' => 'files',
-                        ],
-                        'company_memorandum_of_association' => [
-                            'files' => ['files'],
-                            'type' => 'files',
-                        ],
-                        'company_ministerial_decree' => [
-                            'files' => ['files'],
-                            'type' => 'files',
-                        ],
-                        'company_registration_verification' => [
-                            'files' => ['files'],
-                            'type' => 'files',
-                        ],
-                        'company_tax_id_verification' => [
-                            'files' => ['files'],
-                            'type' => 'files',
-                        ],
-                        'primary_verification' => [
-                            'front_back' => [
-                                'back' => 'back',
-                                'front' => 'front',
-                            ],
-                            'type' => 'front_back',
-                        ],
-                        'proof_of_address' => [
-                            'files' => ['files'],
-                            'type' => 'files',
-                        ],
-                        'proof_of_registration' => [
-                            'files' => ['files'],
-                            'type' => 'files',
-                        ],
-                        'proof_of_ultimate_beneficial_ownership' => [
-                            'files' => ['files'],
-                            'type' => 'files',
-                        ],
-                    ],
-                    'estimated_worker_count' => 884794319,
-                    'id_numbers' => [
-                        [
-                            'registrar' => 'registrar',
-                            'type' => 'th_prn',
-                            'value' => 'value',
-                        ],
-                    ],
-                    'monthly_estimated_revenue' => [
-                        'amount' => [
-                            'value' => 111972721,
-                            'currency' => 'usd',
-                        ],
-                    ],
-                    'phone' => 'phone',
-                    'registered_name' => 'registered_name',
-                    'script_addresses' => [
-                        'kana' => [
-                            'city' => 'city',
-                            'country' => 'country',
-                            'line1' => 'line1',
-                            'line2' => 'line2',
-                            'postal_code' => 'postal_code',
-                            'state' => 'state',
-                            'town' => 'town',
-                        ],
-                        'kanji' => [
-                            'city' => 'city',
-                            'country' => 'country',
-                            'line1' => 'line1',
-                            'line2' => 'line2',
-                            'postal_code' => 'postal_code',
-                            'state' => 'state',
-                            'town' => 'town',
-                        ],
-                    ],
-                    'script_names' => [
-                        'kana' => ['registered_name' => 'registered_name'],
-                        'kanji' => ['registered_name' => 'registered_name'],
-                    ],
-                    'structure' => 'public_listed_corporation',
-                ],
-                'entity_type' => 'individual',
-                'individual' => [
-                    'additional_addresses' => [
-                        [
-                            'city' => 'city',
-                            'country' => 'country',
-                            'line1' => 'line1',
-                            'line2' => 'line2',
-                            'postal_code' => 'postal_code',
-                            'purpose' => 'registered',
-                            'state' => 'state',
-                            'town' => 'town',
-                        ],
-                    ],
-                    'additional_names' => [
-                        [
-                            'full_name' => 'full_name',
-                            'given_name' => 'given_name',
-                            'purpose' => 'alias',
-                            'surname' => 'surname',
-                        ],
-                    ],
-                    'address' => [
-                        'city' => 'city',
-                        'country' => 'country',
-                        'line1' => 'line1',
-                        'line2' => 'line2',
-                        'postal_code' => 'postal_code',
-                        'state' => 'state',
-                        'town' => 'town',
-                    ],
-                    'date_of_birth' => [
-                        'day' => 99228,
-                        'month' => 104080000,
-                        'year' => 3704893,
-                    ],
-                    'documents' => [
-                        'company_authorization' => [
-                            'files' => ['files'],
-                            'type' => 'files',
-                        ],
-                        'passport' => [
-                            'files' => ['files'],
-                            'type' => 'files',
-                        ],
-                        'primary_verification' => [
-                            'front_back' => [
-                                'back' => 'back',
-                                'front' => 'front',
-                            ],
-                            'type' => 'front_back',
-                        ],
-                        'secondary_verification' => [
-                            'front_back' => [
-                                'back' => 'back',
-                                'front' => 'front',
-                            ],
-                            'type' => 'front_back',
-                        ],
-                        'visa' => [
-                            'files' => ['files'],
-                            'type' => 'files',
-                        ],
-                    ],
-                    'email' => 'email',
-                    'given_name' => 'given_name',
-                    'id_numbers' => [
-                        [
-                            'type' => 'th_lc',
-                            'value' => 'value',
-                        ],
-                    ],
-                    'legal_gender' => 'male',
-                    'metadata' => ['key' => 'metadata'],
-                    'nationalities' => ['nationalities'],
-                    'phone' => 'phone',
-                    'political_exposure' => 'none',
-                    'relationship' => [
-                        'director' => true,
-                        'executive' => true,
-                        'owner' => true,
-                        'percent_ownership' => 'percent_ownership',
-                        'title' => 'title',
-                    ],
-                    'script_addresses' => [
-                        'kana' => [
-                            'city' => 'city',
-                            'country' => 'country',
-                            'line1' => 'line1',
-                            'line2' => 'line2',
-                            'postal_code' => 'postal_code',
-                            'state' => 'state',
-                            'town' => 'town',
-                        ],
-                        'kanji' => [
-                            'city' => 'city',
-                            'country' => 'country',
-                            'line1' => 'line1',
-                            'line2' => 'line2',
-                            'postal_code' => 'postal_code',
-                            'state' => 'state',
-                            'town' => 'town',
-                        ],
-                    ],
-                    'script_names' => [
-                        'kana' => [
-                            'given_name' => 'given_name',
-                            'surname' => 'surname',
-                        ],
-                        'kanji' => [
-                            'given_name' => 'given_name',
-                            'surname' => 'surname',
-                        ],
-                    ],
-                    'surname' => 'surname',
-                ],
-            ],
-        ]);
+        $result = $this->v2Client->v2->core->accountTokens->create([]);
         self::assertInstanceOf(V2\Core\AccountToken::class, $result);
     }
 
@@ -9615,6 +9075,159 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Core\Vault\UsBankAccount::class, $result);
+    }
+
+    public function testV2IamApiKeyGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/iam/api_keys',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'ip_allowlist' => ['0' => 'ip_allowlist'],
+                        'object' => 'v2.iam.api_key',
+                        'status' => 'active',
+                        'type' => 'publishable_key',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->iam->apiKeys->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Iam\ApiKey::class, $result->data[0]);
+    }
+
+    public function testV2IamApiKeyPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/iam/api_keys',
+            ['type' => 'publishable_key'],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'ip_allowlist' => ['0' => 'ip_allowlist'],
+                'object' => 'v2.iam.api_key',
+                'status' => 'active',
+                'type' => 'publishable_key',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->iam->apiKeys->create([
+            'type' => 'publishable_key',
+        ]);
+        self::assertInstanceOf(V2\Iam\ApiKey::class, $result);
+    }
+
+    public function testV2IamApiKeyGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/iam/api_keys/id_123',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'ip_allowlist' => ['0' => 'ip_allowlist'],
+                'object' => 'v2.iam.api_key',
+                'status' => 'active',
+                'type' => 'publishable_key',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->iam->apiKeys->retrieve('id_123', []);
+        self::assertInstanceOf(V2\Iam\ApiKey::class, $result);
+    }
+
+    public function testV2IamApiKeyPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/iam/api_keys/id_123',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'ip_allowlist' => ['0' => 'ip_allowlist'],
+                'object' => 'v2.iam.api_key',
+                'status' => 'active',
+                'type' => 'publishable_key',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->iam->apiKeys->update('id_123', []);
+        self::assertInstanceOf(V2\Iam\ApiKey::class, $result);
+    }
+
+    public function testV2IamApiKeyPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/iam/api_keys/id_123/expire',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'ip_allowlist' => ['0' => 'ip_allowlist'],
+                'object' => 'v2.iam.api_key',
+                'status' => 'active',
+                'type' => 'publishable_key',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->iam->apiKeys->expire('id_123', []);
+        self::assertInstanceOf(V2\Iam\ApiKey::class, $result);
+    }
+
+    public function testV2IamApiKeyPost4()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/iam/api_keys/id_123/rotate',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'ip_allowlist' => ['0' => 'ip_allowlist'],
+                'object' => 'v2.iam.api_key',
+                'status' => 'active',
+                'type' => 'publishable_key',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->iam->apiKeys->rotate('id_123', []);
+        self::assertInstanceOf(V2\Iam\ApiKey::class, $result);
     }
 
     public function testV2MoneyManagementAdjustmentGet()
@@ -11587,6 +11200,275 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
     }
 
+    public function testV2PaymentsSettlementAllocationIntentPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/settlement_allocation_intents',
+            [
+                'amount' => [
+                    'value' => 111972721,
+                    'currency' => 'usd',
+                ],
+                'expected_settlement_date' => '1970-01-22T14:14:13.629Z',
+                'financial_account' => 'financial_account',
+                'reference' => 'reference',
+            ],
+            [],
+            false,
+            [
+                'amount' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expected_settlement_date' => '1970-01-22T14:14:13.629Z',
+                'financial_account' => 'financial_account',
+                'id' => 'obj_123',
+                'linked_credits' => ['0' => 'linked_credits'],
+                'object' => 'v2.payments.settlement_allocation_intent',
+                'reference' => 'reference',
+                'status' => 'canceled',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->settlementAllocationIntents->create([
+            'amount' => [
+                'value' => 111972721,
+                'currency' => 'usd',
+            ],
+            'expected_settlement_date' => '1970-01-22T14:14:13.629Z',
+            'financial_account' => 'financial_account',
+            'reference' => 'reference',
+        ]);
+        self::assertInstanceOf(V2\Payments\SettlementAllocationIntent::class, $result);
+    }
+
+    public function testV2PaymentsSettlementAllocationIntentGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/payments/settlement_allocation_intents/id_123',
+            [],
+            [],
+            false,
+            [
+                'amount' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expected_settlement_date' => '1970-01-22T14:14:13.629Z',
+                'financial_account' => 'financial_account',
+                'id' => 'obj_123',
+                'linked_credits' => ['0' => 'linked_credits'],
+                'object' => 'v2.payments.settlement_allocation_intent',
+                'reference' => 'reference',
+                'status' => 'canceled',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->settlementAllocationIntents->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\SettlementAllocationIntent::class, $result);
+    }
+
+    public function testV2PaymentsSettlementAllocationIntentPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/settlement_allocation_intents/id_123',
+            [],
+            [],
+            false,
+            [
+                'amount' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expected_settlement_date' => '1970-01-22T14:14:13.629Z',
+                'financial_account' => 'financial_account',
+                'id' => 'obj_123',
+                'linked_credits' => ['0' => 'linked_credits'],
+                'object' => 'v2.payments.settlement_allocation_intent',
+                'reference' => 'reference',
+                'status' => 'canceled',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->settlementAllocationIntents->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\SettlementAllocationIntent::class, $result);
+    }
+
+    public function testV2PaymentsSettlementAllocationIntentPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/settlement_allocation_intents/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'amount' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expected_settlement_date' => '1970-01-22T14:14:13.629Z',
+                'financial_account' => 'financial_account',
+                'id' => 'obj_123',
+                'linked_credits' => ['0' => 'linked_credits'],
+                'object' => 'v2.payments.settlement_allocation_intent',
+                'reference' => 'reference',
+                'status' => 'canceled',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->settlementAllocationIntents->cancel(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\SettlementAllocationIntent::class, $result);
+    }
+
+    public function testV2PaymentsSettlementAllocationIntentPost4()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/settlement_allocation_intents/id_123/submit',
+            [],
+            [],
+            false,
+            [
+                'amount' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expected_settlement_date' => '1970-01-22T14:14:13.629Z',
+                'financial_account' => 'financial_account',
+                'id' => 'obj_123',
+                'linked_credits' => ['0' => 'linked_credits'],
+                'object' => 'v2.payments.settlement_allocation_intent',
+                'reference' => 'reference',
+                'status' => 'canceled',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->settlementAllocationIntents->submit(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\SettlementAllocationIntent::class, $result);
+    }
+
+    public function testV2PaymentsSettlementAllocationIntentsSplitPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/settlement_allocation_intents/settlement_allocation_intent_id_123/splits',
+            [
+                'account' => 'account',
+                'amount' => [
+                    'value' => 111972721,
+                    'currency' => 'usd',
+                ],
+                'type' => 'credit',
+            ],
+            [],
+            false,
+            [
+                'account' => 'account',
+                'amount' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'flow' => ['type' => 'outbound_payment'],
+                'id' => 'obj_123',
+                'object' => 'v2.payments.settlement_allocation_intent_split',
+                'settlement_allocation_intent' => 'settlement_allocation_intent',
+                'status' => 'canceled',
+                'type' => 'credit',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->settlementAllocationIntents->splits->create(
+            'settlement_allocation_intent_id_123',
+            [
+                'account' => 'account',
+                'amount' => [
+                    'value' => 111972721,
+                    'currency' => 'usd',
+                ],
+                'type' => 'credit',
+            ]
+        );
+        self::assertInstanceOf(V2\Payments\SettlementAllocationIntentSplit::class, $result);
+    }
+
+    public function testV2PaymentsSettlementAllocationIntentsSplitGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/payments/settlement_allocation_intents/settlement_allocation_intent_id_123/splits/id_123',
+            [],
+            [],
+            false,
+            [
+                'account' => 'account',
+                'amount' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'flow' => ['type' => 'outbound_payment'],
+                'id' => 'obj_123',
+                'object' => 'v2.payments.settlement_allocation_intent_split',
+                'settlement_allocation_intent' => 'settlement_allocation_intent',
+                'status' => 'canceled',
+                'type' => 'credit',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->settlementAllocationIntents->splits->retrieve(
+            'settlement_allocation_intent_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\SettlementAllocationIntentSplit::class, $result);
+    }
+
+    public function testV2PaymentsSettlementAllocationIntentsSplitPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/settlement_allocation_intents/settlement_allocation_intent_id_123/splits/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'account' => 'account',
+                'amount' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'flow' => ['type' => 'outbound_payment'],
+                'id' => 'obj_123',
+                'object' => 'v2.payments.settlement_allocation_intent_split',
+                'settlement_allocation_intent' => 'settlement_allocation_intent',
+                'status' => 'canceled',
+                'type' => 'credit',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->settlementAllocationIntents->splits->cancel(
+            'settlement_allocation_intent_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\SettlementAllocationIntentSplit::class, $result);
+    }
+
     public function testV2ReportingReportGet()
     {
         $this->stubRequest(
@@ -11725,6 +11607,248 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Reporting\ReportRun::class, $result);
+    }
+
+    public function testV2TaxManualRuleGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/tax/manual_rules',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'object' => 'v2.tax.manual_rule',
+                        'products' => ['0' => ['type' => 'licensed_item']],
+                        'scheduled_tax_rates' => [
+                            '0' => [
+                                'rates' => [
+                                    '0' => [
+                                        'display_name' => 'display_name',
+                                        'percentage' => 'percentage',
+                                    ],
+                                ],
+                            ],
+                        ],
+                        'status' => 'active',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->tax->manualRules->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Tax\ManualRule::class, $result->data[0]);
+    }
+
+    public function testV2TaxManualRulePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/tax/manual_rules',
+            [
+                'scheduled_tax_rates' => [
+                    [
+                        'rates' => [
+                            [
+                                'country' => 'country',
+                                'description' => 'description',
+                                'display_name' => 'display_name',
+                                'jurisdiction' => 'jurisdiction',
+                                'percentage' => 'percentage',
+                                'state' => 'state',
+                            ],
+                        ],
+                        'starts_at' => '1970-01-25T15:13:01.215Z',
+                    ],
+                ],
+            ],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.tax.manual_rule',
+                'products' => ['0' => ['type' => 'licensed_item']],
+                'scheduled_tax_rates' => [
+                    '0' => [
+                        'rates' => [
+                            '0' => [
+                                'display_name' => 'display_name',
+                                'percentage' => 'percentage',
+                            ],
+                        ],
+                    ],
+                ],
+                'status' => 'active',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->tax->manualRules->create([
+            'scheduled_tax_rates' => [
+                [
+                    'rates' => [
+                        [
+                            'country' => 'country',
+                            'description' => 'description',
+                            'display_name' => 'display_name',
+                            'jurisdiction' => 'jurisdiction',
+                            'percentage' => 'percentage',
+                            'state' => 'state',
+                        ],
+                    ],
+                    'starts_at' => '1970-01-25T15:13:01.215Z',
+                ],
+            ],
+        ]);
+        self::assertInstanceOf(V2\Tax\ManualRule::class, $result);
+    }
+
+    public function testV2TaxManualRuleGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/tax/manual_rules/id_123',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.tax.manual_rule',
+                'products' => ['0' => ['type' => 'licensed_item']],
+                'scheduled_tax_rates' => [
+                    '0' => [
+                        'rates' => [
+                            '0' => [
+                                'display_name' => 'display_name',
+                                'percentage' => 'percentage',
+                            ],
+                        ],
+                    ],
+                ],
+                'status' => 'active',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->tax->manualRules->retrieve('id_123', []);
+        self::assertInstanceOf(V2\Tax\ManualRule::class, $result);
+    }
+
+    public function testV2TaxManualRulePost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/tax/manual_rules/id_123',
+            [
+                'scheduled_tax_rates' => [
+                    [
+                        'rates' => [
+                            [
+                                'country' => 'country',
+                                'description' => 'description',
+                                'display_name' => 'display_name',
+                                'jurisdiction' => 'jurisdiction',
+                                'percentage' => 'percentage',
+                                'state' => 'state',
+                            ],
+                        ],
+                        'starts_at' => '1970-01-25T15:13:01.215Z',
+                    ],
+                ],
+            ],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.tax.manual_rule',
+                'products' => ['0' => ['type' => 'licensed_item']],
+                'scheduled_tax_rates' => [
+                    '0' => [
+                        'rates' => [
+                            '0' => [
+                                'display_name' => 'display_name',
+                                'percentage' => 'percentage',
+                            ],
+                        ],
+                    ],
+                ],
+                'status' => 'active',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->tax->manualRules->update(
+            'id_123',
+            [
+                'scheduled_tax_rates' => [
+                    [
+                        'rates' => [
+                            [
+                                'country' => 'country',
+                                'description' => 'description',
+                                'display_name' => 'display_name',
+                                'jurisdiction' => 'jurisdiction',
+                                'percentage' => 'percentage',
+                                'state' => 'state',
+                            ],
+                        ],
+                        'starts_at' => '1970-01-25T15:13:01.215Z',
+                    ],
+                ],
+            ]
+        );
+        self::assertInstanceOf(V2\Tax\ManualRule::class, $result);
+    }
+
+    public function testV2TaxManualRulePost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/tax/manual_rules/id_123/deactivate',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.tax.manual_rule',
+                'products' => ['0' => ['type' => 'licensed_item']],
+                'scheduled_tax_rates' => [
+                    '0' => [
+                        'rates' => [
+                            '0' => [
+                                'display_name' => 'display_name',
+                                'percentage' => 'percentage',
+                            ],
+                        ],
+                    ],
+                ],
+                'status' => 'active',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->tax->manualRules->deactivate(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Tax\ManualRule::class, $result);
     }
 
     public function testV2TestHelpersFinancialAddressPost()
@@ -11896,6 +12020,30 @@ final class GeneratedExamplesTest extends TestCase
                 'account_number' => 'account_number',
             ]);
         } catch (Exception\BlockedByStripeException $e) {
+        }
+    }
+
+    public function testControlledByAlternateResourceError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_setup_intents',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'controlled_by_alternate_resource',
+                    'code' => 'payout_method_cannot_be_archived',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->outboundSetupIntents->create([]);
+        } catch (Exception\ControlledByAlternateResourceException $e) {
         }
     }
 
@@ -12156,15 +12304,28 @@ final class GeneratedExamplesTest extends TestCase
     public function testRateLimitError()
     {
         $this->stubRequest(
-            'get',
-            '/v2/core/accounts/id_123',
-            [],
+            'post',
+            '/v2/reporting/report_runs',
+            [
+                'report' => 'report',
+                'report_parameters' => [
+                    'int_key' => 123,
+                    'string_key' => 'value',
+                    'boolean_key' => true,
+                    'object_key' => [
+                        'object_int_key' => 123,
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => true,
+                    ],
+                    'array_key' => [1, 2, 3],
+                ],
+            ],
             [],
             false,
             [
                 'error' => [
                     'type' => 'rate_limit',
-                    'code' => 'account_rate_limit_exceeded',
+                    'code' => 'report_run_rate_limit_exceeded',
                 ],
             ],
             400,
@@ -12172,7 +12333,20 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->core->accounts->retrieve('id_123', []);
+            $this->v2Client->v2->reporting->reportRuns->create([
+                'report' => 'report',
+                'report_parameters' => [
+                    'int_key' => 123,
+                    'string_key' => 'value',
+                    'boolean_key' => true,
+                    'object_key' => [
+                        'object_int_key' => 123,
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => true,
+                    ],
+                    'array_key' => [1, 2, 3],
+                ],
+            ]);
         } catch (Exception\RateLimitException $e) {
         }
     }

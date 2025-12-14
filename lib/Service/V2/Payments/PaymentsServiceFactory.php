@@ -8,6 +8,7 @@ namespace Stripe\Service\V2\Payments;
  * Service factory class for API resources in the Payments namespace.
  *
  * @property OffSessionPaymentService $offSessionPayments
+ * @property SettlementAllocationIntentService $settlementAllocationIntents
  */
 class PaymentsServiceFactory extends \Stripe\Service\AbstractServiceFactory
 {
@@ -16,6 +17,7 @@ class PaymentsServiceFactory extends \Stripe\Service\AbstractServiceFactory
      */
     private static $classMap = [
         'offSessionPayments' => OffSessionPaymentService::class,
+        'settlementAllocationIntents' => SettlementAllocationIntentService::class,
     ];
 
     protected function getServiceClass($name)

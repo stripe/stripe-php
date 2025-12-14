@@ -8,13 +8,13 @@ namespace Stripe;
  * Invoices are statements of amounts owed by a customer, and are either
  * generated one-off, or generated periodically from a subscription.
  *
- * They contain <a href="https://stripe.com/docs/api#invoiceitems">invoice items</a>, and proration adjustments
+ * They contain <a href="https://api.stripe.com#invoiceitems">invoice items</a>, and proration adjustments
  * that may be caused by subscription upgrades/downgrades (if necessary).
  *
  * If your invoice is configured to be billed through automatic charges,
  * Stripe automatically finalizes your invoice and attempts payment. Note
  * that finalizing the invoice,
- * <a href="https://stripe.com/docs/invoicing/integration/automatic-advancement-collection">when automatic</a>, does
+ * <a href="https://docs.stripe.com/invoicing/integration/automatic-advancement-collection">when automatic</a>, does
  * not happen immediately as the invoice is created. Stripe waits
  * until one hour after the last webhook was successfully sent (or the last
  * webhook timed out after failing). If you (and the platforms you may have
@@ -34,9 +34,9 @@ namespace Stripe;
  * customer's credit balance which is applied to the next invoice.
  *
  * More details on the customer's credit balance are
- * <a href="https://stripe.com/docs/billing/customer/balance">here</a>.
+ * <a href="https://docs.stripe.com/billing/customer/balance">here</a>.
  *
- * Related guide: <a href="https://stripe.com/docs/billing/invoices/sending">Send invoices to customers</a>
+ * Related guide: <a href="https://docs.stripe.com/billing/invoices/sending">Send invoices to customers</a>
  *
  * @property string $id Unique identifier for the object. For preview invoices created using the <a href="https://stripe.com/docs/api/invoices/create_preview">create preview</a> endpoint, this id will be prefixed with <code>upcoming_in</code>.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -61,7 +61,7 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|(object{name: string, value: string}&StripeObject)[] $custom_fields Custom fields displayed on the invoice.
- * @property null|string $customer_account The ID of the account who will be billed.
+ * @property null|string $customer_account The ID of the account representing the customer to bill.
  * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject) $customer_address The customer's address. Until the invoice is finalized, this field will equal <code>customer.address</code>. Once the invoice is finalized, this field will no longer be updated.
  * @property null|string $customer_email The customer's email. Until the invoice is finalized, this field will equal <code>customer.email</code>. Once the invoice is finalized, this field will no longer be updated.
  * @property null|string $customer_name The customer's name. Until the invoice is finalized, this field will equal <code>customer.name</code>. Once the invoice is finalized, this field will no longer be updated.
@@ -79,18 +79,18 @@ namespace Stripe;
  * @property null|int $effective_at The date when this invoice is in effect. Same as <code>finalized_at</code> unless overwritten. When defined, this value replaces the system-generated 'Date of issue' printed on the invoice PDF and receipt.
  * @property null|int $ending_balance Ending customer balance after the invoice is finalized. Invoices are finalized approximately an hour after successful webhook delivery or when payment collection is attempted for the invoice. If the invoice has not been finalized yet, this will be null.
  * @property null|string $footer Footer displayed on the invoice.
- * @property null|(object{action: string, invoice: Invoice|string}&StripeObject) $from_invoice Details of the invoice that was cloned. See the <a href="https://stripe.com/docs/invoicing/invoice-revisions">revision documentation</a> for more details.
+ * @property null|(object{action: string, invoice: Invoice|string}&StripeObject) $from_invoice Details of the invoice that was cloned. See the <a href="https://docs.stripe.com/invoicing/invoice-revisions">revision documentation</a> for more details.
  * @property (object{account?: Account|string, type: string}&StripeObject) $issuer
  * @property null|(object{advice_code?: string, charge?: string, code?: string, decline_code?: string, doc_url?: string, message?: string, network_advice_code?: string, network_decline_code?: string, param?: string, payment_intent?: PaymentIntent, payment_method?: PaymentMethod, payment_method_type?: string, request_log_url?: string, setup_intent?: SetupIntent, source?: Account|BankAccount|Card|Source, type: string}&StripeObject) $last_finalization_error The error encountered during the previous attempt to finalize the invoice. This field is cleared when the invoice is successfully finalized.
  * @property null|Invoice|string $latest_revision The ID of the most recent non-draft revision of this invoice
  * @property Collection<InvoiceLineItem> $lines The individual line items that make up the invoice. <code>lines</code> is sorted as follows: (1) pending invoice items (including prorations) in reverse chronological order, (2) subscription items in reverse chronological order, and (3) invoice items added after invoice creation in chronological order.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|int $next_payment_attempt The time at which payment will next be attempted. This value will be <code>null</code> for invoices where <code>collection_method=send_invoice</code>.
  * @property null|string $number A unique, identifying string that appears on emails sent to the customer for this invoice. This starts with the customer's unique invoice_prefix if it is specified.
- * @property null|Account|string $on_behalf_of The account (if any) for which the funds of the invoice payment are intended. If set, the invoice will be presented with the branding and support information of the specified account. See the <a href="https://stripe.com/docs/billing/invoices/connect">Invoices with Connect</a> documentation for details.
- * @property null|(object{billing_cadence_details?: null|(object{billing_cadence: string}&StripeObject), quote_details: null|(object{quote: string}&StripeObject), subscription_details: null|(object{metadata: null|StripeObject, pause_collection?: null|(object{behavior: null|string, resumes_at: null|int}&StripeObject), subscription: string|Subscription, subscription_proration_date?: int}&StripeObject), type: string, schedule_details?: null|(object{schedule: string}&StripeObject)}&StripeObject) $parent The parent that generated this invoice
- * @property (object{default_mandate: null|string, payment_method_options: null|(object{acss_debit: null|(object{mandate_options?: (object{transaction_type: null|string}&StripeObject), verification_method?: string}&StripeObject), bancontact: null|(object{preferred_language: string}&StripeObject), card: null|(object{installments?: (object{enabled: null|bool}&StripeObject), request_three_d_secure: null|string}&StripeObject), customer_balance: null|(object{bank_transfer?: (object{eu_bank_transfer?: (object{country: string}&StripeObject), type: null|string}&StripeObject), funding_type: null|string}&StripeObject), id_bank_transfer?: null|(object{}&StripeObject), konbini: null|(object{}&StripeObject), pix?: null|(object{amount_includes_iof: null|string}&StripeObject), sepa_debit: null|(object{}&StripeObject), upi?: null|(object{mandate_options?: (object{amount: null|int, amount_type: null|string, description: null|string, end_date: null|int}&StripeObject)}&StripeObject), us_bank_account: null|(object{financial_connections?: (object{filters?: (object{account_subcategories?: string[], institution?: string}&StripeObject), permissions?: string[], prefetch: null|string[]}&StripeObject), verification_method?: string}&StripeObject)}&StripeObject), payment_method_types: null|string[]}&StripeObject) $payment_settings
+ * @property null|Account|string $on_behalf_of The account (if any) for which the funds of the invoice payment are intended. If set, the invoice will be presented with the branding and support information of the specified account. See the <a href="https://docs.stripe.com/billing/invoices/connect">Invoices with Connect</a> documentation for details.
+ * @property null|(object{billing_cadence_details?: null|(object{billing_cadence: string}&StripeObject), quote_details: null|(object{quote: string}&StripeObject), schedule_details?: null|(object{schedule: string}&StripeObject), subscription_details: null|(object{metadata: null|StripeObject, pause_collection?: null|(object{behavior: null|string, resumes_at: null|int}&StripeObject), subscription: string|Subscription, subscription_proration_date?: int}&StripeObject), type: string}&StripeObject) $parent The parent that generated this invoice
+ * @property (object{default_mandate: null|string, payment_method_options: null|(object{acss_debit: null|(object{mandate_options?: (object{transaction_type: null|string}&StripeObject), verification_method?: string}&StripeObject), bancontact: null|(object{preferred_language: string}&StripeObject), card: null|(object{installments?: (object{enabled: null|bool}&StripeObject), request_three_d_secure: null|string}&StripeObject), customer_balance: null|(object{bank_transfer?: (object{eu_bank_transfer?: (object{country: string}&StripeObject), type: null|string}&StripeObject), funding_type: null|string}&StripeObject), id_bank_transfer?: null|(object{}&StripeObject), konbini: null|(object{}&StripeObject), payto?: null|(object{mandate_options?: (object{amount: null|int, amount_type: null|string, purpose: null|string}&StripeObject)}&StripeObject), pix?: null|(object{amount_includes_iof: null|string}&StripeObject), sepa_debit: null|(object{}&StripeObject), upi?: null|(object{mandate_options?: (object{amount: null|int, amount_type: null|string, description: null|string, end_date: null|int}&StripeObject)}&StripeObject), us_bank_account: null|(object{financial_connections?: (object{filters?: (object{account_subcategories?: string[], institution?: string}&StripeObject), permissions?: string[], prefetch: null|string[]}&StripeObject), verification_method?: string}&StripeObject)}&StripeObject), payment_method_types: null|string[]}&StripeObject) $payment_settings
  * @property null|Collection<InvoicePayment> $payments Payments for this invoice
  * @property int $period_end End of the usage period during which invoice items were added to this invoice. This looks back one period for a subscription invoice. Use the <a href="/api/invoices/line_item#invoice_line_item_object-period">line item period</a> to get the service period for each price.
  * @property int $period_start Start of the usage period during which invoice items were added to this invoice. This looks back one period for a subscription invoice. Use the <a href="/api/invoices/line_item#invoice_line_item_object-period">line item period</a> to get the service period for each price.
@@ -102,7 +102,7 @@ namespace Stripe;
  * @property null|(object{address?: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject), carrier?: null|string, name?: string, phone?: null|string, tracking_number?: null|string}&StripeObject) $shipping_details Shipping details for the invoice. The Invoice PDF will use the <code>shipping_details</code> value if it is set, otherwise the PDF will render the shipping address from the customer.
  * @property int $starting_balance Starting customer balance before the invoice is finalized. If the invoice has not been finalized yet, this will be the current customer balance. For revision invoices, this also includes any customer balance that was applied to the original invoice.
  * @property null|string $statement_descriptor Extra information about an invoice for the customer's credit card statement.
- * @property null|string $status The status of the invoice, one of <code>draft</code>, <code>open</code>, <code>paid</code>, <code>uncollectible</code>, or <code>void</code>. <a href="https://stripe.com/docs/billing/invoices/workflow#workflow-overview">Learn more</a>
+ * @property null|string $status The status of the invoice, one of <code>draft</code>, <code>open</code>, <code>paid</code>, <code>uncollectible</code>, or <code>void</code>. <a href="https://docs.stripe.com/billing/invoices/workflow#workflow-overview">Learn more</a>
  * @property (object{finalized_at: null|int, marked_uncollectible_at: null|int, paid_at: null|int, voided_at: null|int}&StripeObject) $status_transitions
  * @property null|string|Subscription $subscription
  * @property int $subtotal Total of all subscriptions, invoice items, and prorations on the invoice before any invoice level discount or exclusive tax is applied. Item discounts are already incorporated
@@ -115,7 +115,7 @@ namespace Stripe;
  * @property null|((object{amount: int, margin: Margin|string}&StripeObject))[] $total_margin_amounts The aggregate amounts calculated per margin across all line items.
  * @property null|((object{amount: int, credit_balance_transaction?: null|Billing\CreditBalanceTransaction|string, discount?: Discount|string, margin?: Margin|string, type: string}&StripeObject))[] $total_pretax_credit_amounts Contains pretax credit amounts (ex: discount, credit grants, etc) that apply to this invoice. This is a combined list of total_pretax_credit_amounts across all invoice line items.
  * @property null|((object{amount: int, tax_behavior: string, tax_rate_details: null|(object{tax_rate: string}&StripeObject), taxability_reason: string, taxable_amount: null|int, type: string}&StripeObject))[] $total_taxes The aggregate tax information of all line items.
- * @property null|int $webhooks_delivered_at Invoices are automatically paid or sent 1 hour after webhooks are delivered, or until all webhook delivery attempts have <a href="https://stripe.com/docs/billing/webhooks#understand">been exhausted</a>. This field tracks the time when webhooks for this invoice were successfully delivered. If the invoice had no webhooks to deliver, this will be set while the invoice is being created.
+ * @property null|int $webhooks_delivered_at Invoices are automatically paid or sent 1 hour after webhooks are delivered, or until all webhook delivery attempts have <a href="https://docs.stripe.com/billing/webhooks#understand">been exhausted</a>. This field tracks the time when webhooks for this invoice were successfully delivered. If the invoice had no webhooks to deliver, this will be set while the invoice is being created.
  */
 class QuotePreviewInvoice extends ApiResource
 {

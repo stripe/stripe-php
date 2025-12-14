@@ -11,7 +11,7 @@ namespace Stripe\Issuing;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property bool $is_default Whether or not this is the &quot;default&quot; issuing program new cards are created on. Only one active <code>is_default</code> program at the same time.
- * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $platform_program The platform's Issuing Program for which this program is associated.
  */
 class Program extends \Stripe\ApiResource
