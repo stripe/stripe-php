@@ -8,7 +8,7 @@ namespace Stripe\Radar;
  * An early fraud warning indicates that the card issuer has notified us that a
  * charge may be fraudulent.
  *
- * Related guide: <a href="https://stripe.com/docs/disputes/measuring#early-fraud-warnings">Early fraud warnings</a>
+ * Related guide: <a href="https://docs.stripe.com/disputes/measuring#early-fraud-warnings">Early fraud warnings</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

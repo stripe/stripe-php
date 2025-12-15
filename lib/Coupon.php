@@ -6,8 +6,8 @@ namespace Stripe;
 
 /**
  * A coupon contains information about a percent-off or amount-off discount you
- * might want to apply to a customer. Coupons may be applied to <a href="https://stripe.com/docs/api#subscriptions">subscriptions</a>, <a href="https://stripe.com/docs/api#invoices">invoices</a>,
- * <a href="https://stripe.com/docs/api/checkout/sessions">checkout sessions</a>, <a href="https://stripe.com/docs/api#quotes">quotes</a>, and more. Coupons do not work with conventional one-off <a href="https://stripe.com/docs/api#create_charge">charges</a> or <a href="https://stripe.com/docs/api/payment_intents">payment intents</a>.
+ * might want to apply to a customer. Coupons may be applied to <a href="https://api.stripe.com#subscriptions">subscriptions</a>, <a href="https://api.stripe.com#invoices">invoices</a>,
+ * <a href="https://docs.stripe.com/api/checkout/sessions">checkout sessions</a>, <a href="https://api.stripe.com#quotes">quotes</a>, and more. Coupons do not work with conventional one-off <a href="https://api.stripe.com#create_charge">charges</a> or <a href="https://docs.stripe.com/api/payment_intents">payment intents</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -20,7 +20,7 @@ namespace Stripe;
  * @property null|int $duration_in_months If <code>duration</code> is <code>repeating</code>, the number of months the coupon applies. Null if coupon <code>duration</code> is <code>forever</code> or <code>once</code>.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|int $max_redemptions Maximum number of times this coupon can be redeemed, in total, across all customers, before it is no longer valid.
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name Name of the coupon displayed to customers on for instance invoices or receipts.
  * @property null|float $percent_off Percent that will be taken off the subtotal of any invoices for this customer for the duration of the coupon. For example, a coupon with percent_off of 50 will make a $ (or local equivalent)100 invoice $ (or local equivalent)50 instead.
  * @property null|int $redeem_by Date after which the coupon can no longer be redeemed.

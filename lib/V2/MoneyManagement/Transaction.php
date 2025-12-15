@@ -9,8 +9,8 @@ namespace Stripe\V2\MoneyManagement;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property \Stripe\StripeObject $amount The amount of the Transaction.
- * @property (object{available: \Stripe\StripeObject, inbound_pending: \Stripe\StripeObject, outbound_pending: \Stripe\StripeObject}&\Stripe\StripeObject) $balance_impact The delta to the FinancialAccount's balance. The balance_impact for the Transaction is equal to sum of its TransactionEntries that have <code>effective_at</code>s in the past.
+ * @property (object{value?: int, currency?: string}&\Stripe\StripeObject) $amount The amount of the Transaction.
+ * @property (object{available: (object{value?: int, currency?: string}&\Stripe\StripeObject), inbound_pending: (object{value?: int, currency?: string}&\Stripe\StripeObject), outbound_pending: (object{value?: int, currency?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $balance_impact The delta to the FinancialAccount's balance. The balance_impact for the Transaction is equal to sum of its TransactionEntries that have <code>effective_at</code>s in the past.
  * @property string $category Open Enum. A descriptive category used to classify the Transaction.
  * @property int $created Time at which the object was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property string $financial_account Indicates the FinancialAccount affected by this Transaction.

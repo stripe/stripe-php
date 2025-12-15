@@ -53,6 +53,7 @@ class OutboundSetupIntentService extends \Stripe\Service\AbstractService
      * @throws \Stripe\Exception\BlockedByStripeException
      * @throws \Stripe\Exception\InvalidPayoutMethodException
      * @throws \Stripe\Exception\QuotaExceededException
+     * @throws \Stripe\Exception\ControlledByAlternateResourceException
      */
     public function create($params = null, $opts = null)
     {
@@ -87,6 +88,7 @@ class OutboundSetupIntentService extends \Stripe\Service\AbstractService
      * @throws \Stripe\Exception\QuotaExceededException
      * @throws \Stripe\Exception\BlockedByStripeException
      * @throws \Stripe\Exception\InvalidPayoutMethodException
+     * @throws \Stripe\Exception\ControlledByAlternateResourceException
      */
     public function update($id, $params = null, $opts = null)
     {

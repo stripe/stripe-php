@@ -12,8 +12,7 @@ namespace Stripe\Service\Capital;
 class FinancingSummaryService extends \Stripe\Service\AbstractService
 {
     /**
-     * Retrieve the financing state for the account that was authenticated in the
-     * request.
+     * Retrieve the financing summary object for the account.
      *
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts

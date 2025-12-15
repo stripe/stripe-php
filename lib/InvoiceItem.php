@@ -5,21 +5,21 @@
 namespace Stripe;
 
 /**
- * Invoice Items represent the component lines of an <a href="https://stripe.com/docs/api/invoices">invoice</a>. When you create an invoice item with an <code>invoice</code> field, it is attached to the specified invoice and included as <a href="https://stripe.com/docs/api/invoices/line_item">an invoice line item</a> within <a href="https://stripe.com/docs/api/invoices/object#invoice_object-lines">invoice.lines</a>.
+ * Invoice Items represent the component lines of an <a href="https://docs.stripe.com/api/invoices">invoice</a>. When you create an invoice item with an <code>invoice</code> field, it is attached to the specified invoice and included as <a href="https://docs.stripe.com/api/invoices/line_item">an invoice line item</a> within <a href="https://docs.stripe.com/api/invoices/object#invoice_object-lines">invoice.lines</a>.
  *
  * Invoice Items can be created before you are ready to actually send the invoice. This can be particularly useful when combined
- * with a <a href="https://stripe.com/docs/api/subscriptions">subscription</a>. Sometimes you want to add a charge or credit to a customer, but actually charge
+ * with a <a href="https://docs.stripe.com/api/subscriptions">subscription</a>. Sometimes you want to add a charge or credit to a customer, but actually charge
  * or credit the customer's card only at the end of a regular billing cycle. This is useful for combining several charges
  * (to minimize per-transaction fees), or for having Stripe tabulate your usage-based billing totals.
  *
- * Related guides: <a href="https://stripe.com/docs/invoicing/integration">Integrate with the Invoicing API</a>, <a href="https://stripe.com/docs/billing/invoices/subscription#adding-upcoming-invoice-items">Subscription Invoices</a>.
+ * Related guides: <a href="https://docs.stripe.com/invoicing/integration">Integrate with the Invoicing API</a>, <a href="https://docs.stripe.com/billing/invoices/subscription#adding-upcoming-invoice-items">Subscription Invoices</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount Amount (in the <code>currency</code> specified) of the invoice item. This should always be equal to <code>unit_amount * quantity</code>.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property Customer|string $customer The ID of the customer who will be billed when this invoice item is billed.
- * @property null|string $customer_account The ID of the account who will be billed when this invoice item is billed.
+ * @property Customer|string $customer The ID of the customer to bill for this invoice item.
+ * @property null|string $customer_account The ID of the account to bill for this invoice item.
  * @property int $date Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property bool $discountable If true, discounts will apply to this invoice item. Always false for prorations.
@@ -27,11 +27,11 @@ namespace Stripe;
  * @property null|Invoice|string $invoice The ID of the invoice this invoice item belongs to.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|(Margin|string)[] $margins The margins which apply to the invoice item. When set, the <code>default_margins</code> on the invoice do not apply to this invoice item.
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|int $net_amount The amount after discounts, but before credits and taxes. This field is <code>null</code> for <code>discountable=true</code> items.
  * @property null|(object{subscription_details: null|(object{subscription: string, subscription_item?: string}&StripeObject), type: string}&StripeObject) $parent The parent that generated this invoice item.
  * @property (object{end: int, start: int}&StripeObject) $period
- * @property null|(object{price_details?: (object{price: string, product: string}&StripeObject), type: string, unit_amount_decimal: null|string}&StripeObject) $pricing The pricing information of the invoice item.
+ * @property null|(object{price_details?: (object{price: Price|string, product: string}&StripeObject), type: string, unit_amount_decimal: null|string}&StripeObject) $pricing The pricing information of the invoice item.
  * @property bool $proration Whether the invoice item was created automatically as a proration adjustment when the customer switched plans.
  * @property null|(object{discount_amounts: ((object{amount: int, discount: Discount|string}&StripeObject))[]}&StripeObject) $proration_details
  * @property int $quantity Quantity of units for the invoice item. If the invoice item is a proration, the quantity of the subscription that the proration was computed for.

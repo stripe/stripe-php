@@ -9,7 +9,7 @@ namespace Stripe\V2\MoneyManagement;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property (object{available: \Stripe\StripeObject, inbound_pending: \Stripe\StripeObject, outbound_pending: \Stripe\StripeObject}&\Stripe\StripeObject) $balance_impact The delta to the FinancialAccount's balance.
+ * @property (object{available: (object{value?: int, currency?: string}&\Stripe\StripeObject), inbound_pending: (object{value?: int, currency?: string}&\Stripe\StripeObject), outbound_pending: (object{value?: int, currency?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $balance_impact The delta to the FinancialAccount's balance.
  * @property int $created Time at which the object was created.
  * @property int $effective_at Time at which the entry impacted (or will impact if it's in the future) the FinancialAccount balance.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.

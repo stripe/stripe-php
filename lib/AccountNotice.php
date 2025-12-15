@@ -7,7 +7,7 @@ namespace Stripe;
 /**
  * A notice to a Connected account. Notice can be sent by Stripe on your behalf or you can opt to send the notices yourself.
  *
- * See the <a href="https://stripe.com/docs/issuing/compliance-us/issuing-regulated-customer-notices">guide to send notices</a> to your connected accounts.
+ * See the <a href="https://docs.stripe.com/issuing/compliance-us/issuing-regulated-customer-notices">guide to send notices</a> to your connected accounts.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -16,8 +16,8 @@ namespace Stripe;
  * @property null|(object{plain_text: string, recipient: string, subject: string}&StripeObject) $email Information about the email when sent.
  * @property null|(object{capability: null|string, issuing_credit_underwriting_record?: null|string, issuing_dispute: null|string}&StripeObject) $linked_objects Information about objects related to the notice.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property string $reason Reason the notice is being sent. The reason determines what copy the notice must contain. See the <a href="https://stripe.com/docs/issuing/compliance-us/issuing-regulated-customer-notices">regulated customer notices</a> guide. All reasons might not apply to your integration, and Stripe might add new reasons in the future, so we recommend an internal warning when you receive an unknown reason.
+ * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property string $reason Reason the notice is being sent. The reason determines what copy the notice must contain. See the <a href="https://docs.stripe.com/issuing/compliance-us/issuing-regulated-customer-notices">regulated customer notices</a> guide. All reasons might not apply to your integration, and Stripe might add new reasons in the future, so we recommend an internal warning when you receive an unknown reason.
  * @property null|int $sent_at Date when the notice was sent. When absent, you must send the notice, update the content of the email and date when it was sent.
  */
 class AccountNotice extends ApiResource

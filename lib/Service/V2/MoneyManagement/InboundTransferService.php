@@ -29,7 +29,7 @@ class InboundTransferService extends \Stripe\Service\AbstractService
     /**
      * InboundTransfers APIs are used to create, retrieve or list InboundTransfers.
      *
-     * @param null|array{amount: \Stripe\StripeObject, description?: string, from: array{currency?: string, payment_method: string}, to: array{currency: string, financial_account: string}} $params
+     * @param null|array{amount: array{value?: int, currency?: string}, description?: string, from: array{currency?: string, payment_method: string}, to: array{currency: string, financial_account: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\InboundTransfer

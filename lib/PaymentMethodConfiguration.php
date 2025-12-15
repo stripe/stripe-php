@@ -7,7 +7,7 @@ namespace Stripe;
 /**
  * PaymentMethodConfigurations control which payment methods are displayed to your customers when you don't explicitly specify payment method types. You can have multiple configurations with different sets of payment methods for different scenarios.
  *
- * There are two types of PaymentMethodConfigurations. Which is used depends on the <a href="https://stripe.com/docs/connect/charges">charge type</a>:
+ * There are two types of PaymentMethodConfigurations. Which is used depends on the <a href="https://docs.stripe.com/connect/charges">charge type</a>:
  *
  * <strong>Direct</strong> configurations apply to payments created on your account, including Connect destination charges, Connect separate charges and transfers, and payments not involving Connect.
  *
@@ -16,9 +16,9 @@ namespace Stripe;
  * Child configurations have a <code>parent</code> that sets default values and controls which settings connected accounts may override. You can specify a parent ID at payment time, and Stripe will automatically resolve the connected account’s associated child configuration. Parent configurations are <a href="https://dashboard.stripe.com/settings/payment_methods/connected_accounts">managed in the dashboard</a> and are not available in this API.
  *
  * Related guides:
- * - <a href="https://stripe.com/docs/connect/payment-method-configurations">Payment Method Configurations API</a>
- * - <a href="https://stripe.com/docs/payments/multiple-payment-method-configs">Multiple configurations on dynamic payment methods</a>
- * - <a href="https://stripe.com/docs/connect/multiple-payment-method-configurations">Multiple configurations for your Connect accounts</a>
+ * - <a href="https://docs.stripe.com/connect/payment-method-configurations">Payment Method Configurations API</a>
+ * - <a href="https://docs.stripe.com/payments/multiple-payment-method-configs">Multiple configurations on dynamic payment methods</a>
+ * - <a href="https://docs.stripe.com/connect/multiple-payment-method-configurations">Multiple configurations for your Connect accounts</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

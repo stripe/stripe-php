@@ -14,6 +14,7 @@ namespace Stripe\V2\Core\Vault;
  * @property string $bank_name The name of the bank this bank account belongs to. This field is populated automatically by Stripe based on the routing number.
  * @property int $created Creation time of the object.
  * @property null|string $fedwire_routing_number The fedwire routing number of the bank account.
+ * @property null|string $financial_connections_account The ID of the Financial Connections Account used to create the bank account.
  * @property string $last4 The last 4 digits of the account number.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $routing_number The ACH routing number of the bank account.
