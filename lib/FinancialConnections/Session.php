@@ -9,7 +9,7 @@ namespace Stripe\FinancialConnections;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|(object{account?: string|\Stripe\Account, customer?: string|\Stripe\Customer, type: string}&\Stripe\StripeObject) $account_holder The account holder for whom accounts are collected in this session.
+ * @property null|(object{account?: string|\Stripe\Account, customer?: string|\Stripe\Customer, customer_account?: string, type: string}&\Stripe\StripeObject) $account_holder The account holder for whom accounts are collected in this session.
  * @property \Stripe\Collection<Account> $accounts The accounts that were collected as part of this Session.
  * @property null|string $client_secret A value that will be passed to the client to launch the authentication flow.
  * @property null|(object{account_subcategories: null|string[], countries: null|string[]}&\Stripe\StripeObject) $filters
@@ -27,7 +27,7 @@ class Session extends \Stripe\ApiResource
      * <code>Session</code>. The session’s <code>client_secret</code> can be used to
      * launch the flow using Stripe.js.
      *
-     * @param null|array{account_holder: array{account?: string, customer?: string, type: string}, expand?: string[], filters?: array{account_subcategories?: string[], countries?: string[]}, permissions: string[], prefetch?: string[], return_url?: string} $params
+     * @param null|array{account_holder: array{account?: string, customer?: string, customer_account?: string, type: string}, expand?: string[], filters?: array{account_subcategories?: string[], countries?: string[]}, permissions: string[], prefetch?: string[], return_url?: string} $params
      * @param null|array|string $options
      *
      * @return Session the created resource

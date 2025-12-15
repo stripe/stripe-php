@@ -8,8 +8,9 @@ namespace Stripe;
  * A customer's <code>Cash balance</code> represents real funds. Customers can add funds to their cash balance by sending a bank transfer. These funds can be used for payment and can eventually be paid out to your bank account.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|StripeObject $available A hash of all cash balances available to this customer. You cannot delete a customer with any cash balances, even if the balance is 0. Amounts are represented in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+ * @property null|StripeObject $available A hash of all cash balances available to this customer. You cannot delete a customer with any cash balances, even if the balance is 0. Amounts are represented in the <a href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
  * @property string $customer The ID of the customer whose cash balance this object represents.
+ * @property null|string $customer_account The ID of an Account representing a customer whose cash balance this object represents.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property (object{reconciliation_mode: string, using_merchant_default: bool}&StripeObject) $settings
  */

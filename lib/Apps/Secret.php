@@ -13,7 +13,7 @@ namespace Stripe\Apps;
  *
  * A <code>user</code> scoped secret is accessible by the app backend and one specific Dashboard user. Use the <code>user</code> scope for per-user secrets like per-user OAuth tokens, where different users might have different permissions.
  *
- * Related guide: <a href="https://stripe.com/docs/stripe-apps/store-auth-data-custom-objects">Store data between page reloads</a>
+ * Related guide: <a href="https://docs.stripe.com/stripe-apps/store-auth-data-custom-objects">Store data between page reloads</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

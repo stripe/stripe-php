@@ -5,9 +5,9 @@
 namespace Stripe;
 
 /**
- * Invoice Line Items represent the individual lines within an <a href="https://stripe.com/docs/api/invoices">invoice</a> and only exist within the context of an invoice.
+ * Invoice Line Items represent the individual lines within an <a href="https://docs.stripe.com/api/invoices">invoice</a> and only exist within the context of an invoice.
  *
- * Each line item is backed by either an <a href="https://stripe.com/docs/api/invoiceitems">invoice item</a> or a <a href="https://stripe.com/docs/api/subscription_items">subscription item</a>.
+ * Each line item is backed by either an <a href="https://docs.stripe.com/api/invoiceitems">invoice item</a> or a <a href="https://docs.stripe.com/api/subscription_items">subscription item</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -19,13 +19,14 @@ namespace Stripe;
  * @property (Discount|string)[] $discounts The discounts applied to the invoice line item. Line item discounts are applied before invoice discounts. Use <code>expand[]=discounts</code> to expand each discount.
  * @property null|string $invoice The ID of the invoice that contains this line item.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Note that for line items with <code>type=subscription</code>, <code>metadata</code> reflects the current metadata from the subscription associated with the line item, unless the invoice line was directly updated with different metadata after creation.
+ * @property StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Note that for line items with <code>type=subscription</code>, <code>metadata</code> reflects the current metadata from the subscription associated with the line item, unless the invoice line was directly updated with different metadata after creation.
  * @property null|(object{invoice_item_details: null|(object{invoice_item: string, proration: bool, proration_details: null|(object{credited_items: null|(object{invoice: string, invoice_line_items: string[]}&StripeObject)}&StripeObject), subscription: null|string}&StripeObject), subscription_item_details: null|(object{invoice_item: null|string, proration: bool, proration_details: null|(object{credited_items: null|(object{invoice: string, invoice_line_items: string[]}&StripeObject)}&StripeObject), subscription: null|string, subscription_item: string}&StripeObject), type: string}&StripeObject) $parent The parent that generated this line item.
  * @property (object{end: int, start: int}&StripeObject) $period
  * @property null|((object{amount: int, credit_balance_transaction?: null|Billing\CreditBalanceTransaction|string, discount?: Discount|string, type: string}&StripeObject))[] $pretax_credit_amounts Contains pretax credit amounts (ex: discount, credit grants, etc) that apply to this line item.
- * @property null|(object{price_details?: (object{price: string, product: string}&StripeObject), type: string, unit_amount_decimal: null|string}&StripeObject) $pricing The pricing information of the line item.
+ * @property null|(object{price_details?: (object{price: Price|string, product: string}&StripeObject), type: string, unit_amount_decimal: null|string}&StripeObject) $pricing The pricing information of the line item.
  * @property null|int $quantity The quantity of the subscription, if the line item is a subscription or a proration.
  * @property null|string|Subscription $subscription
+ * @property int $subtotal The subtotal of the line item, in cents (or local equivalent), before any discounts or taxes.
  * @property null|((object{amount: int, tax_behavior: string, tax_rate_details: null|(object{tax_rate: string}&StripeObject), taxability_reason: string, taxable_amount: null|int, type: string}&StripeObject))[] $taxes The tax information of the line item.
  */
 class InvoiceLineItem extends ApiResource

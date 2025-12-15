@@ -5,7 +5,7 @@
 namespace Stripe\Issuing;
 
 /**
- * An issuing token object is created when an issued card is added to a digital wallet. As a <a href="https://stripe.com/docs/issuing">card issuer</a>, you can <a href="https://stripe.com/docs/issuing/controls/token-management">view and manage these tokens</a> through Stripe.
+ * An issuing token object is created when an issued card is added to a digital wallet. As a <a href="https://docs.stripe.com/issuing">card issuer</a>, you can <a href="https://docs.stripe.com/issuing/controls/token-management">view and manage these tokens</a> through Stripe.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

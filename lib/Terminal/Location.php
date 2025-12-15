@@ -7,7 +7,7 @@ namespace Stripe\Terminal;
 /**
  * A Location represents a grouping of readers.
  *
- * Related guide: <a href="https://stripe.com/docs/terminal/fleet/locations">Fleet management</a>
+ * Related guide: <a href="https://docs.stripe.com/terminal/fleet/locations">Fleet management</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -19,7 +19,7 @@ namespace Stripe\Terminal;
  * @property null|string $display_name_kana The Kana variation of the display name of the location.
  * @property null|string $display_name_kanji The Kanji variation of the display name of the location.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property \Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $phone The phone number of the location.
  */
 class Location extends \Stripe\ApiResource

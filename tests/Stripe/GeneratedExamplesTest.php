@@ -589,6 +589,21 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
+                'changes' => [
+                    'int_key' => [],
+                    'string_key' => 'value',
+                    'boolean_key' => [],
+                    'object_key' => [
+                        'object_int_key' => [],
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => [],
+                    ],
+                    'array_key' => [
+                        '0' => [],
+                        '1' => [],
+                        '2' => [],
+                    ],
+                ],
                 'context' => 'context',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
@@ -4832,13 +4847,13 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'object' => 'v2.billing.meter_event',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'event_name' => 'event_name',
                 'identifier' => 'identifier',
-                'livemode' => [],
+                'object' => 'v2.billing.meter_event',
                 'payload' => ['key' => 'payload'],
                 'timestamp' => '1970-01-01T15:18:46.294Z',
+                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -4863,14 +4878,14 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'id' => 'obj_123',
-                'object' => 'v2.billing.meter_event_adjustment',
                 'cancel' => ['identifier' => 'identifier'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'event_name' => 'event_name',
-                'livemode' => [],
+                'id' => 'obj_123',
+                'object' => 'v2.billing.meter_event_adjustment',
                 'status' => 'complete',
                 'type' => 'cancel',
+                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -4892,11 +4907,11 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'id' => 'obj_123',
-                'object' => 'v2.billing.meter_event_session',
                 'authentication_token' => 'authentication_token',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'expires_at' => '1970-01-10T15:36:51.170Z',
+                'id' => 'obj_123',
+                'object' => 'v2.billing.meter_event_session',
                 'livemode' => [],
             ],
             200,
@@ -4937,6 +4952,431 @@ final class GeneratedExamplesTest extends TestCase
                 ],
             ],
         ]);
+    }
+
+    public function testV2CoreAccountGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/accounts',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'applied_configurations' => ['0' => 'recipient'],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'object' => 'v2.core.account',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Core\Account::class, $result->data[0]);
+    }
+
+    public function testV2CoreAccountPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts',
+            [],
+            [],
+            false,
+            [
+                'applied_configurations' => ['0' => 'recipient'],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.core.account',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->create([]);
+        self::assertInstanceOf(V2\Core\Account::class, $result);
+    }
+
+    public function testV2CoreAccountGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/accounts/id_123',
+            [],
+            [],
+            false,
+            [
+                'applied_configurations' => ['0' => 'recipient'],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.core.account',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->retrieve('id_123', []);
+        self::assertInstanceOf(V2\Core\Account::class, $result);
+    }
+
+    public function testV2CoreAccountPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts/id_123',
+            [],
+            [],
+            false,
+            [
+                'applied_configurations' => ['0' => 'recipient'],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.core.account',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->update('id_123', []);
+        self::assertInstanceOf(V2\Core\Account::class, $result);
+    }
+
+    public function testV2CoreAccountPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts/id_123/close',
+            [],
+            [],
+            false,
+            [
+                'applied_configurations' => ['0' => 'recipient'],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.core.account',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->close('id_123', []);
+        self::assertInstanceOf(V2\Core\Account::class, $result);
+    }
+
+    public function testV2CoreAccountsPersonGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/accounts/account_id_123/persons',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'account' => 'account',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'object' => 'v2.core.account_person',
+                        'updated' => '1970-01-03T17:07:10.277Z',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->persons->all(
+            'account_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Core\AccountPerson::class, $result->data[0]);
+    }
+
+    public function testV2CoreAccountsPersonPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts/account_id_123/persons',
+            [],
+            [],
+            false,
+            [
+                'account' => 'account',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.core.account_person',
+                'updated' => '1970-01-03T17:07:10.277Z',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->persons->create(
+            'account_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\AccountPerson::class, $result);
+    }
+
+    public function testV2CoreAccountsPersonDelete()
+    {
+        $this->stubRequest(
+            'delete',
+            '/v2/core/accounts/account_id_123/persons/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'abc_123',
+                'object' => 'some.object.tag',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->persons->delete(
+            'account_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\DeletedObject::class, $result);
+    }
+
+    public function testV2CoreAccountsPersonGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/accounts/account_id_123/persons/id_123',
+            [],
+            [],
+            false,
+            [
+                'account' => 'account',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.core.account_person',
+                'updated' => '1970-01-03T17:07:10.277Z',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->persons->retrieve(
+            'account_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\AccountPerson::class, $result);
+    }
+
+    public function testV2CoreAccountsPersonPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts/account_id_123/persons/id_123',
+            [],
+            [],
+            false,
+            [
+                'account' => 'account',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.core.account_person',
+                'updated' => '1970-01-03T17:07:10.277Z',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->persons->update(
+            'account_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\AccountPerson::class, $result);
+    }
+
+    public function testV2CoreAccountsPersonTokenPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts/account_id_123/person_tokens',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'object' => 'v2.core.account_person_token',
+                'used' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->personTokens->create(
+            'account_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\AccountPersonToken::class, $result);
+    }
+
+    public function testV2CoreAccountsPersonTokenGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/accounts/account_id_123/person_tokens/id_123',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'object' => 'v2.core.account_person_token',
+                'used' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->personTokens->retrieve(
+            'account_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\AccountPersonToken::class, $result);
+    }
+
+    public function testV2CoreAccountLinkPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/account_links',
+            [
+                'account' => 'account',
+                'use_case' => [
+                    'type' => 'account_onboarding',
+                    'account_onboarding' => [
+                        'collection_options' => [
+                            'fields' => 'eventually_due',
+                            'future_requirements' => 'include',
+                        ],
+                        'configurations' => ['merchant'],
+                        'refresh_url' => 'refresh_url',
+                        'return_url' => 'return_url',
+                    ],
+                    'account_update' => [
+                        'collection_options' => [
+                            'fields' => 'eventually_due',
+                            'future_requirements' => 'include',
+                        ],
+                        'configurations' => ['merchant'],
+                        'refresh_url' => 'refresh_url',
+                        'return_url' => 'return_url',
+                    ],
+                ],
+            ],
+            [],
+            false,
+            [
+                'account' => 'account',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'object' => 'v2.core.account_link',
+                'url' => 'url',
+                'use_case' => ['type' => 'account_onboarding'],
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accountLinks->create([
+            'account' => 'account',
+            'use_case' => [
+                'type' => 'account_onboarding',
+                'account_onboarding' => [
+                    'collection_options' => [
+                        'fields' => 'eventually_due',
+                        'future_requirements' => 'include',
+                    ],
+                    'configurations' => ['merchant'],
+                    'refresh_url' => 'refresh_url',
+                    'return_url' => 'return_url',
+                ],
+                'account_update' => [
+                    'collection_options' => [
+                        'fields' => 'eventually_due',
+                        'future_requirements' => 'include',
+                    ],
+                    'configurations' => ['merchant'],
+                    'refresh_url' => 'refresh_url',
+                    'return_url' => 'return_url',
+                ],
+            ],
+        ]);
+        self::assertInstanceOf(V2\Core\AccountLink::class, $result);
+    }
+
+    public function testV2CoreAccountTokenPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/account_tokens',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'object' => 'v2.core.account_token',
+                'used' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accountTokens->create([]);
+        self::assertInstanceOf(V2\Core\AccountToken::class, $result);
+    }
+
+    public function testV2CoreAccountTokenGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/account_tokens/id_123',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'object' => 'v2.core.account_token',
+                'used' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accountTokens->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\AccountToken::class, $result);
     }
 
     public function testV2CoreEventGet()
@@ -5001,17 +5441,17 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'data' => [
                     '0' => [
-                        'id' => 'obj_123',
-                        'object' => 'v2.core.event_destination',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'description' => 'description',
                         'enabled_events' => ['0' => 'enabled_events'],
                         'event_payload' => 'thin',
-                        'livemode' => [],
+                        'id' => 'obj_123',
                         'name' => 'name',
+                        'object' => 'v2.core.event_destination',
                         'status' => 'disabled',
                         'type' => 'amazon_eventbridge',
                         'updated' => '1970-01-03T17:07:10.277Z',
+                        'livemode' => [],
                     ],
                 ],
                 'next_page_url' => null,
@@ -5039,17 +5479,17 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'id' => 'obj_123',
-                'object' => 'v2.core.event_destination',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => 'description',
                 'enabled_events' => ['0' => 'enabled_events'],
                 'event_payload' => 'thin',
-                'livemode' => [],
+                'id' => 'obj_123',
                 'name' => 'name',
+                'object' => 'v2.core.event_destination',
                 'status' => 'disabled',
                 'type' => 'amazon_eventbridge',
                 'updated' => '1970-01-03T17:07:10.277Z',
+                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5094,17 +5534,17 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'id' => 'obj_123',
-                'object' => 'v2.core.event_destination',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => 'description',
                 'enabled_events' => ['0' => 'enabled_events'],
                 'event_payload' => 'thin',
-                'livemode' => [],
+                'id' => 'obj_123',
                 'name' => 'name',
+                'object' => 'v2.core.event_destination',
                 'status' => 'disabled',
                 'type' => 'amazon_eventbridge',
                 'updated' => '1970-01-03T17:07:10.277Z',
+                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5125,17 +5565,17 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'id' => 'obj_123',
-                'object' => 'v2.core.event_destination',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => 'description',
                 'enabled_events' => ['0' => 'enabled_events'],
                 'event_payload' => 'thin',
-                'livemode' => [],
+                'id' => 'obj_123',
                 'name' => 'name',
+                'object' => 'v2.core.event_destination',
                 'status' => 'disabled',
                 'type' => 'amazon_eventbridge',
                 'updated' => '1970-01-03T17:07:10.277Z',
+                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5156,17 +5596,17 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'id' => 'obj_123',
-                'object' => 'v2.core.event_destination',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => 'description',
                 'enabled_events' => ['0' => 'enabled_events'],
                 'event_payload' => 'thin',
-                'livemode' => [],
+                'id' => 'obj_123',
                 'name' => 'name',
+                'object' => 'v2.core.event_destination',
                 'status' => 'disabled',
                 'type' => 'amazon_eventbridge',
                 'updated' => '1970-01-03T17:07:10.277Z',
+                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5187,17 +5627,17 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'id' => 'obj_123',
-                'object' => 'v2.core.event_destination',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => 'description',
                 'enabled_events' => ['0' => 'enabled_events'],
                 'event_payload' => 'thin',
-                'livemode' => [],
+                'id' => 'obj_123',
                 'name' => 'name',
+                'object' => 'v2.core.event_destination',
                 'status' => 'disabled',
                 'type' => 'amazon_eventbridge',
                 'updated' => '1970-01-03T17:07:10.277Z',
+                'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE

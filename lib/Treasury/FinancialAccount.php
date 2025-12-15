@@ -18,7 +18,7 @@ namespace Stripe\Treasury;
  * @property ((object{aba?: (object{account_holder_name: string, account_number?: null|string, account_number_last4: string, bank_name: string, routing_number: string}&\Stripe\StripeObject), supported_networks?: string[], type: string}&\Stripe\StripeObject))[] $financial_addresses The set of credentials that resolve to a FinancialAccount.
  * @property null|bool $is_default
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $nickname The nickname for the FinancialAccount.
  * @property null|string[] $pending_features The array of paths to pending Features in the Features hash.
  * @property null|(object{inbound_flows: null|string, outbound_flows: null|string}&\Stripe\StripeObject) $platform_restrictions The set of functionalities that the platform can restrict on the FinancialAccount.
