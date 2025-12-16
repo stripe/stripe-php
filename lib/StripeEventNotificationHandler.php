@@ -775,6 +775,19 @@ class StripeEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.money_management.payout_method.created" event.
+     *
+     * @param callable(Events\V2MoneyManagementPayoutMethodCreatedEvent, StripeClient): void $handler Handles v2.money_management.payout_method.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementPayoutMethodCreated($handler)
+    {
+        $this->register('v2.money_management.payout_method.created', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.money_management.payout_method.updated" event.
      *
      * @param callable(Events\V2MoneyManagementPayoutMethodUpdatedEvent, StripeClient): void $handler Handles v2.money_management.payout_method.updated events
