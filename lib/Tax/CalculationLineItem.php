@@ -11,6 +11,7 @@ namespace Stripe\Tax;
  * @property int $amount_tax The amount of tax calculated for this line item, in the <a href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|string $performance_location A tax location for a line item that acts as a performance location. This indicates that the line item might be taxed at the place where it is being performed at. This is helpful for events or other services being performed at non-customer addresses like venues or offices. This can be left empty for tax codes that do not require a tax location. For tax codes where the location requirement is &quot;optional&quot;, this would override the customer address in most use cases.
  * @property null|string $product The ID of an existing <a href="https://docs.stripe.com/api/products/object">Product</a>.
  * @property int $quantity The number of units of the item being purchased. For reversals, this is the quantity reversed.
  * @property string $reference A custom identifier for this line item.
