@@ -88,7 +88,7 @@ abstract class WebhookSignature
 
         foreach ($items as $item) {
             $itemParts = \explode('=', $item, 2);
-            if ('t' === $itemParts[0]) {
+            if (2 === \count($itemParts) && 't' === $itemParts[0]) {
                 if (!\is_numeric($itemParts[1])) {
                     return -1;
                 }
@@ -115,7 +115,7 @@ abstract class WebhookSignature
 
         foreach ($items as $item) {
             $itemParts = \explode('=', $item, 2);
-            if (\trim($itemParts[0]) === $scheme) {
+            if (2 === \count($itemParts) && \trim($itemParts[0]) === $scheme) {
                 $signatures[] = $itemParts[1];
             }
         }
