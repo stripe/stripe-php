@@ -41,7 +41,7 @@ class GrantedTokenService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
-    public function update($id, $params = null, $opts = null)
+    public function revoke($id, $params = null, $opts = null)
     {
         return $this->request('post', $this->buildPath('/v1/test_helpers/shared_payment/granted_tokens/%s/revoke', $id), $params, $opts);
     }
