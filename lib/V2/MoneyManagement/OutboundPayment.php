@@ -12,7 +12,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property (object{value?: int, currency?: string}&\Stripe\StripeObject) $amount The &quot;presentment amount&quot; for the OutboundPayment.
  * @property bool $cancelable Returns true if the OutboundPayment can be canceled, and false otherwise.
  * @property int $created Time at which the OutboundPayment was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
- * @property null|(object{bank_account?: string, speed?: string}&\Stripe\StripeObject) $delivery_options Delivery options to be used to send the OutboundPayment.
+ * @property null|(object{speed?: string, bank_account?: string, paper_check?: (object{memo?: string, shipping_speed: string, signature: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $delivery_options Delivery options to be used to send the OutboundPayment.
  * @property null|string $description An arbitrary string attached to the OutboundPayment. Often useful for displaying to users.
  * @property null|int $expected_arrival_date The date when funds are expected to arrive in the payout method. This field is not set if the payout method is in a <code>failed</code>, <code>canceled</code>, or <code>returned</code> state. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property (object{debited: (object{value?: int, currency?: string}&\Stripe\StripeObject), financial_account: string}&\Stripe\StripeObject) $from The FinancialAccount that funds were pulled from.
@@ -28,6 +28,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property null|(object{canceled_at?: int, failed_at?: int, posted_at?: int, returned_at?: int}&\Stripe\StripeObject) $status_transitions Hash containing timestamps of when the object transitioned to a particular status.
  * @property (object{credited: (object{value?: int, currency?: string}&\Stripe\StripeObject), payout_method: string, recipient: string}&\Stripe\StripeObject) $to To which payout method the OutboundPayment was sent.
  * @property (object{status: string, value?: string}&\Stripe\StripeObject) $trace_id A unique identifier that can be used to track this OutboundPayment with recipient bank. Banks might call this a “reference number” or something similar.
+ * @property null|(object{paper_check?: (object{carrier: string, check_number: string, current_postal_code: string, mailing_address: (object{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}&\Stripe\StripeObject), tracking_number: string, tracking_status: string, updated_at: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $tracking_details Information to track this OutboundPayment with the recipient bank.
  */
 class OutboundPayment extends \Stripe\ApiResource
 {

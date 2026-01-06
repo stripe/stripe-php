@@ -12304,28 +12304,15 @@ final class GeneratedExamplesTest extends TestCase
     public function testRateLimitError()
     {
         $this->stubRequest(
-            'post',
-            '/v2/reporting/report_runs',
-            [
-                'report' => 'report',
-                'report_parameters' => [
-                    'int_key' => 123,
-                    'string_key' => 'value',
-                    'boolean_key' => true,
-                    'object_key' => [
-                        'object_int_key' => 123,
-                        'object_string_key' => 'value',
-                        'object_boolean_key' => true,
-                    ],
-                    'array_key' => [1, 2, 3],
-                ],
-            ],
+            'get',
+            '/v2/core/accounts',
+            [],
             [],
             false,
             [
                 'error' => [
                     'type' => 'rate_limit',
-                    'code' => 'report_run_rate_limit_exceeded',
+                    'code' => 'account_rate_limit_exceeded',
                 ],
             ],
             400,
@@ -12333,20 +12320,7 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->reporting->reportRuns->create([
-                'report' => 'report',
-                'report_parameters' => [
-                    'int_key' => 123,
-                    'string_key' => 'value',
-                    'boolean_key' => true,
-                    'object_key' => [
-                        'object_int_key' => 123,
-                        'object_string_key' => 'value',
-                        'object_boolean_key' => true,
-                    ],
-                    'array_key' => [1, 2, 3],
-                ],
-            ]);
+            $this->v2Client->v2->core->accounts->all([]);
         } catch (Exception\RateLimitException $e) {
         }
     }
