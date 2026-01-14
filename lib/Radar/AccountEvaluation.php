@@ -11,7 +11,7 @@ namespace Stripe\Radar;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created_at Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $customer The ID of the Stripe customer the account evaluation is associated with.
- * @property null|(object{occurred_at: int, type: string}&\Stripe\StripeObject)[] $events The list of events that were reported for this Account Evaluation object via the report API.
+ * @property null|(object{occurred_at: int, type: string, login_failed?: (object{reason: string}&\Stripe\StripeObject), registration_failed?: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)[] $events The list of events that were reported for this Account Evaluation object via the report API.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|(object{account_sharing?: (object{score: float}&\Stripe\StripeObject), multi_accounting?: (object{score: float}&\Stripe\StripeObject)}&\Stripe\StripeObject) $signals A hash of signal objects providing Radar's evaluation for the lifecycle event.
  * @property string $type The type of evaluation returned, based on the user's request.
@@ -67,7 +67,7 @@ class AccountEvaluation extends \Stripe\ApiResource
      * Reports an event on an <code>AccountEvaluation</code> object.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{expand?: string[], type: string} $params
+     * @param null|array{expand?: string[], type: string, login_failed?: array{reason: string}, registration_failed?: array{reason: string}} $params
      * @param null|array|string $opts
      *
      * @return AccountEvaluation the updated resource
