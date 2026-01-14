@@ -1,5 +1,13 @@
 # Changelog
 
+## 19.2.0-alpha.3 - 2026-01-14
+* [#1996](https://github.com/stripe/stripe-php/pull/1996) Update generated code for private-preview
+  * Add support for `risk_details` on `DelegatedCheckout.RequestedSession`
+  * Remove support for `description`, `images`, and `name` on `DelegatedCheckout.RequestedSession.line_item_details[]`
+  * Add support for `name` on `ProductCatalog.TrialOffer` and `ProductCatalog\TrialOffer.create().$params`
+  * Add support for `login_failed` and `registration_failed` on `Radar.AccountEvaluation.events[]` and `Radar\AccountEvaluation.update().$params`
+  * Change type of `Radar\AccountEvaluation.update().$params.type` from `literal('registration_succeeded')` to `enum('login_failed'|'login_succeeded'|'registration_failed'|'registration_succeeded')`
+
 ## 19.2.0-alpha.2 - 2026-01-07
 * [#1989](https://github.com/stripe/stripe-php/pull/1989) Update generated code for private-preview
   * Add support for `tracking_details` on `V2.MoneyManagement.OutboundPayment`
