@@ -188,6 +188,8 @@ require __DIR__ . '/lib/Events/V2CoreAccountIncludingConfigurationStorerUpdatedE
 require __DIR__ . '/lib/Events/V2CoreAccountIncludingConfigurationStorerUpdatedEventNotification.php';
 require __DIR__ . '/lib/Events/V2CoreAccountIncludingDefaultsUpdatedEvent.php';
 require __DIR__ . '/lib/Events/V2CoreAccountIncludingDefaultsUpdatedEventNotification.php';
+require __DIR__ . '/lib/Events/V2CoreAccountIncludingFutureRequirementsUpdatedEvent.php';
+require __DIR__ . '/lib/Events/V2CoreAccountIncludingFutureRequirementsUpdatedEventNotification.php';
 require __DIR__ . '/lib/Events/V2CoreAccountIncludingIdentityUpdatedEvent.php';
 require __DIR__ . '/lib/Events/V2CoreAccountIncludingIdentityUpdatedEventNotification.php';
 require __DIR__ . '/lib/Events/V2CoreAccountIncludingRequirementsUpdatedEvent.php';
@@ -291,6 +293,7 @@ require __DIR__ . '/lib/Exception/InvalidPayoutMethodException.php';
 require __DIR__ . '/lib/Exception/NonZeroBalanceException.php';
 require __DIR__ . '/lib/Exception/NotCancelableException.php';
 require __DIR__ . '/lib/Exception/QuotaExceededException.php';
+require __DIR__ . '/lib/Exception/RateLimitException.php';
 require __DIR__ . '/lib/Exception/RecipientNotNotifiableException.php';
 require __DIR__ . '/lib/Exception/TemporarySessionExpiredException.php';
 require __DIR__ . '/lib/ExchangeRate.php';

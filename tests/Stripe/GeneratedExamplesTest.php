@@ -8512,7 +8512,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'error' => [
                     'type' => 'blocked_by_stripe',
-                    'code' => 'blocked_payout_method_bank_account',
+                    'code' => 'blocked_payout_method',
                 ],
             ],
             400,
@@ -8796,6 +8796,30 @@ final class GeneratedExamplesTest extends TestCase
                 'account_number' => 'account_number',
             ]);
         } catch (Exception\QuotaExceededException $e) {
+        }
+    }
+
+    public function testRateLimitError()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/accounts',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'rate_limit',
+                    'code' => 'account_rate_limit_exceeded',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->accounts->all([]);
+        } catch (Exception\RateLimitException $e) {
         }
     }
 
