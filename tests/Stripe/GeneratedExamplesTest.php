@@ -5674,6 +5674,30 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Core\Event::class, $result);
     }
 
+    public function testRateLimitError()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/accounts',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'rate_limit',
+                    'code' => 'account_rate_limit_exceeded',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->accounts->all([]);
+        } catch (Exception\RateLimitException $e) {
+        }
+    }
+
     public function testTemporarySessionExpiredError()
     {
         $this->stubRequest(
