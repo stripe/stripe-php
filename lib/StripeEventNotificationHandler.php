@@ -349,6 +349,19 @@ class StripeEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.core.account[future_requirements].updated" event.
+     *
+     * @param callable(Events\V2CoreAccountIncludingFutureRequirementsUpdatedEvent, StripeClient): void $handler Handles v2.core.account[future_requirements].updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreAccountIncludingFutureRequirementsUpdated($handler)
+    {
+        $this->register('v2.core.account[future_requirements].updated', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.core.account[identity].updated" event.
      *
      * @param callable(Events\V2CoreAccountIncludingIdentityUpdatedEvent, StripeClient): void $handler Handles v2.core.account[identity].updated events

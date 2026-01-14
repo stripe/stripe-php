@@ -20,7 +20,7 @@ class PersonTokenService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\AccountPersonToken
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Stripe\Exception\RateLimitException
      */
     public function create($id, $params = null, $opts = null)
     {
@@ -37,7 +37,7 @@ class PersonTokenService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\AccountPersonToken
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Stripe\Exception\RateLimitException
      */
     public function retrieve($parentId, $id, $params = null, $opts = null)
     {

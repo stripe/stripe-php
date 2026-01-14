@@ -20,6 +20,7 @@ class EventNotificationTypes
         \Stripe\Events\V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification::class,
         \Stripe\Events\V2CoreAccountIncludingConfigurationStorerUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingConfigurationStorerUpdatedEventNotification::class,
         \Stripe\Events\V2CoreAccountIncludingDefaultsUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingDefaultsUpdatedEventNotification::class,
+        \Stripe\Events\V2CoreAccountIncludingFutureRequirementsUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingFutureRequirementsUpdatedEventNotification::class,
         \Stripe\Events\V2CoreAccountIncludingIdentityUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingIdentityUpdatedEventNotification::class,
         \Stripe\Events\V2CoreAccountIncludingRequirementsUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountIncludingRequirementsUpdatedEventNotification::class,
         \Stripe\Events\V2CoreAccountLinkReturnedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountLinkReturnedEventNotification::class,

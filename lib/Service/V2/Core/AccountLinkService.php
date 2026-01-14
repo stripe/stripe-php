@@ -21,7 +21,7 @@ class AccountLinkService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\AccountLink
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Stripe\Exception\RateLimitException
      */
     public function create($params = null, $opts = null)
     {

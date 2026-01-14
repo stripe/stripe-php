@@ -19,7 +19,7 @@ class AccountTokenService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\AccountToken
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Stripe\Exception\RateLimitException
      */
     public function create($params = null, $opts = null)
     {
@@ -35,7 +35,7 @@ class AccountTokenService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\AccountToken
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Stripe\Exception\RateLimitException
      */
     public function retrieve($id, $params = null, $opts = null)
     {
