@@ -13,6 +13,7 @@ namespace Stripe\ProductCatalog;
  * @property (object{relative?: (object{iterations: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $duration
  * @property (object{transition: (object{price: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $end_behavior
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property null|string $name A brief, user-friendly name for the trial offer-for identification purposes.
  * @property string|\Stripe\Price $price The price during the trial offer.
  */
 class TrialOffer extends \Stripe\ApiResource
@@ -22,7 +23,7 @@ class TrialOffer extends \Stripe\ApiResource
     /**
      * Creates a trial offer.
      *
-     * @param null|array{duration: array{relative?: array{iterations: int}, type: string}, end_behavior: array{transition: array{price: string}}, expand?: string[], price: string} $params
+     * @param null|array{duration: array{relative?: array{iterations: int}, type: string}, end_behavior: array{transition: array{price: string}}, expand?: string[], price: string, name?: string} $params
      * @param null|array|string $options
      *
      * @return TrialOffer the created resource

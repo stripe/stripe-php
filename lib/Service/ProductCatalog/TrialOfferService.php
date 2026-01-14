@@ -14,7 +14,7 @@ class TrialOfferService extends \Stripe\Service\AbstractService
     /**
      * Creates a trial offer.
      *
-     * @param null|array{duration: array{relative?: array{iterations: int}, type: string}, end_behavior: array{transition: array{price: string}}, expand?: string[], price: string} $params
+     * @param null|array{duration: array{relative?: array{iterations: int}, type: string}, end_behavior: array{transition: array{price: string}}, expand?: string[], price: string, name?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\ProductCatalog\TrialOffer
