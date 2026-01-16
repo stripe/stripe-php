@@ -20,7 +20,7 @@ class PersonService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\Core\AccountPerson>
      *
-     * @throws \Stripe\Exception\RateLimitException
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($id, $params = null, $opts = null)
     {
@@ -37,7 +37,7 @@ class PersonService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\AccountPerson
      *
-     * @throws \Stripe\Exception\RateLimitException
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($id, $params = null, $opts = null)
     {
@@ -54,7 +54,7 @@ class PersonService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\DeletedObject
      *
-     * @throws \Stripe\Exception\RateLimitException
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function delete($parentId, $id, $params = null, $opts = null)
     {
@@ -71,7 +71,7 @@ class PersonService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\AccountPerson
      *
-     * @throws \Stripe\Exception\RateLimitException
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($parentId, $id, $params = null, $opts = null)
     {
@@ -88,7 +88,7 @@ class PersonService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\AccountPerson
      *
-     * @throws \Stripe\Exception\RateLimitException
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($parentId, $id, $params = null, $opts = null)
     {
