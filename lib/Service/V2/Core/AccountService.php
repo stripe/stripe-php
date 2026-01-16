@@ -29,7 +29,7 @@ class AccountService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\Core\Account>
      *
-     * @throws \Stripe\Exception\RateLimitException
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -47,7 +47,7 @@ class AccountService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\Account
      *
-     * @throws \Stripe\Exception\RateLimitException
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function close($id, $params = null, $opts = null)
     {
@@ -66,7 +66,7 @@ class AccountService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\Account
      *
-     * @throws \Stripe\Exception\RateLimitException
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -82,7 +82,7 @@ class AccountService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\Account
      *
-     * @throws \Stripe\Exception\RateLimitException
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -98,7 +98,7 @@ class AccountService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\Account
      *
-     * @throws \Stripe\Exception\RateLimitException
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {
