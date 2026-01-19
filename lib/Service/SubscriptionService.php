@@ -137,25 +137,6 @@ class SubscriptionService extends AbstractService
     }
 
     /**
-     * Pauses a subscription by transitioning it to the paused status. A paused
-     * subscription does not generate invoices and will not advance to new billing
-     * periods. The subscription can be resumed later using the resume endpoint. Cannot
-     * pause subscriptions with attached schedules.
-     *
-     * @param string $id
-     * @param null|array{bill_for?: array{outstanding_usage?: bool, unused_time?: bool}, expand?: string[], invoicing_behavior?: string, type: string} $params
-     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
-     *
-     * @return \Stripe\Subscription
-     *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
-     */
-    public function pause($id, $params = null, $opts = null)
-    {
-        return $this->request('post', $this->buildPath('/v1/subscriptions/%s/pause', $id), $params, $opts);
-    }
-
-    /**
      * Initiates resumption of a paused subscription, optionally resetting the billing
      * cycle anchor and creating prorations. If a resumption invoice is generated, it
      * must be paid or marked uncollectible before the subscription will be unpaused.
