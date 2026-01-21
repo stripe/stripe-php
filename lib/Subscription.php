@@ -316,23 +316,6 @@ class Subscription extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Subscription the paused subscription
-     *
-     * @throws Exception\ApiErrorException if the request fails
-     */
-    public function pause($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/pause';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-
-        return $this;
-    }
-
-    /**
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
      * @return Subscription the resumed subscription
      *
      * @throws Exception\ApiErrorException if the request fails
