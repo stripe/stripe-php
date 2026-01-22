@@ -41,6 +41,7 @@ namespace Stripe\Service;
  * @property FileService $files
  * @property FinancialConnections\FinancialConnectionsServiceFactory $financialConnections
  * @property Forwarding\ForwardingServiceFactory $forwarding
+ * @property FrMealVouchersOnboardingService $frMealVouchersOnboardings
  * @property FxQuoteService $fxQuotes
  * @property Identity\IdentityServiceFactory $identity
  * @property InvoiceItemService $invoiceItems
@@ -135,6 +136,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'files' => FileService::class,
         'financialConnections' => FinancialConnections\FinancialConnectionsServiceFactory::class,
         'forwarding' => Forwarding\ForwardingServiceFactory::class,
+        'frMealVouchersOnboardings' => FrMealVouchersOnboardingService::class,
         'fxQuotes' => FxQuoteService::class,
         'identity' => Identity\IdentityServiceFactory::class,
         'invoiceItems' => InvoiceItemService::class,

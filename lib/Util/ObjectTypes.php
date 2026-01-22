@@ -81,6 +81,7 @@ class ObjectTypes
             \Stripe\FinancialConnections\Session::OBJECT_NAME => \Stripe\FinancialConnections\Session::class,
             \Stripe\FinancialConnections\Transaction::OBJECT_NAME => \Stripe\FinancialConnections\Transaction::class,
             \Stripe\Forwarding\Request::OBJECT_NAME => \Stripe\Forwarding\Request::class,
+            \Stripe\FrMealVouchersOnboarding::OBJECT_NAME => \Stripe\FrMealVouchersOnboarding::class,
             \Stripe\FundingInstructions::OBJECT_NAME => \Stripe\FundingInstructions::class,
             \Stripe\FxQuote::OBJECT_NAME => \Stripe\FxQuote::class,
             \Stripe\Identity\BlocklistEntry::OBJECT_NAME => \Stripe\Identity\BlocklistEntry::class,

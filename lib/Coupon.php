@@ -25,6 +25,7 @@ namespace Stripe;
  * @property null|float $percent_off Percent that will be taken off the subtotal of any invoices for this customer for the duration of the coupon. For example, a coupon with percent_off of 50 will make a $ (or local equivalent)100 invoice $ (or local equivalent)50 instead.
  * @property null|int $redeem_by Date after which the coupon can no longer be redeemed.
  * @property null|(object{configuration: StripeObject, display_name: string, id: string}&StripeObject) $script Configuration of the <a href="https://docs.stripe.com/billing/subscriptions/script-coupons">script</a> used to calculate the discount.
+ * @property null|(object{interval: string, interval_count: int}&StripeObject) $service_period
  * @property int $times_redeemed Number of times this coupon has been applied to a customer.
  * @property null|string $type One of <code>amount_off</code>, <code>percent_off</code>, or <code>script</code>. Describes the type of coupon logic used to calculate the discount.
  * @property bool $valid Taking account of the above properties, whether this coupon can still be applied to a customer.
@@ -38,6 +39,7 @@ class Coupon extends ApiResource
     const DURATION_FOREVER = 'forever';
     const DURATION_ONCE = 'once';
     const DURATION_REPEATING = 'repeating';
+    const DURATION_SERVICE_PERIOD = 'service_period';
 
     const TYPE_AMOUNT_OFF = 'amount_off';
     const TYPE_PERCENT_OFF = 'percent_off';
@@ -59,7 +61,7 @@ class Coupon extends ApiResource
      * a coupon with an <code>amount_off</code> of <amount>200</amount> is applied to
      * it.
      *
-     * @param null|array{amount_off?: int, applies_to?: array{products?: string[]}, currency?: string, currency_options?: array<string, array{amount_off: int}>, duration?: string, duration_in_months?: int, expand?: string[], id?: string, max_redemptions?: int, metadata?: null|array<string, string>, name?: string, percent_off?: float, redeem_by?: int, script?: array{configuration: array, id: string}} $params
+     * @param null|array{amount_off?: int, applies_to?: array{products?: string[]}, currency?: string, currency_options?: array<string, array{amount_off: int}>, duration?: string, duration_in_months?: int, expand?: string[], id?: string, max_redemptions?: int, metadata?: null|array<string, string>, name?: string, percent_off?: float, redeem_by?: int, script?: array{configuration: array, id: string}, service_period?: array{interval: string, interval_count: int}} $params
      * @param null|array|string $options
      *
      * @return Coupon the created resource
