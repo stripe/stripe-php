@@ -25,7 +25,7 @@ namespace Stripe;
  * @property string $reporting_category Learn more about how <a href="https://stripe.com/docs/reports/reporting-categories">reporting categories</a> can help you understand balance transactions from an accounting perspective.
  * @property null|ApplicationFee|ApplicationFeeRefund|Charge|ConnectCollectionTransfer|CustomerCashBalanceTransaction|Dispute|Issuing\Authorization|Issuing\Dispute|Issuing\Transaction|Payout|Refund|ReserveTransaction|string|TaxDeductedAtSource|Topup|Transfer|TransferReversal $source This transaction relates to the Stripe object.
  * @property string $status The transaction's net funds status in the Stripe balance, which are either <code>available</code> or <code>pending</code>.
- * @property string $type Transaction type: <code>adjustment</code>, <code>advance</code>, <code>advance_funding</code>, <code>anticipation_repayment</code>, <code>application_fee</code>, <code>application_fee_refund</code>, <code>charge</code>, <code>climate_order_purchase</code>, <code>climate_order_refund</code>, <code>connect_collection_transfer</code>, <code>contribution</code>, <code>issuing_authorization_hold</code>, <code>issuing_authorization_release</code>, <code>issuing_dispute</code>, <code>issuing_transaction</code>, <code>obligation_outbound</code>, <code>obligation_reversal_inbound</code>, <code>payment</code>, <code>payment_failure_refund</code>, <code>payment_network_reserve_hold</code>, <code>payment_network_reserve_release</code>, <code>payment_refund</code>, <code>payment_reversal</code>, <code>payment_unreconciled</code>, <code>payout</code>, <code>payout_cancel</code>, <code>payout_failure</code>, <code>payout_minimum_balance_hold</code>, <code>payout_minimum_balance_release</code>, <code>refund</code>, <code>refund_failure</code>, <code>reserve_transaction</code>, <code>reserved_funds</code>, <code>stripe_fee</code>, <code>stripe_fx_fee</code>, <code>stripe_balance_payment_debit</code>, <code>stripe_balance_payment_debit_reversal</code>, <code>tax_fee</code>, <code>topup</code>, <code>topup_reversal</code>, <code>transfer</code>, <code>transfer_cancel</code>, <code>transfer_failure</code>, or <code>transfer_refund</code>. Learn more about <a href="https://stripe.com/docs/reports/balance-transaction-types">balance transaction types and what they represent</a>. To classify transactions for accounting purposes, consider <code>reporting_category</code> instead.
+ * @property string $type Transaction type: <code>adjustment</code>, <code>advance</code>, <code>advance_funding</code>, <code>anticipation_repayment</code>, <code>application_fee</code>, <code>application_fee_refund</code>, <code>charge</code>, <code>climate_order_purchase</code>, <code>climate_order_refund</code>, <code>connect_collection_transfer</code>, <code>contribution</code>, <code>issuing_authorization_hold</code>, <code>issuing_authorization_release</code>, <code>issuing_dispute</code>, <code>issuing_transaction</code>, <code>obligation_outbound</code>, <code>obligation_reversal_inbound</code>, <code>payment</code>, <code>payment_failure_refund</code>, <code>payment_network_reserve_hold</code>, <code>payment_network_reserve_release</code>, <code>payment_refund</code>, <code>payment_reversal</code>, <code>payment_unreconciled</code>, <code>payout</code>, <code>payout_cancel</code>, <code>payout_failure</code>, <code>payout_minimum_balance_hold</code>, <code>payout_minimum_balance_release</code>, <code>refund</code>, <code>refund_failure</code>, <code>reserve_transaction</code>, <code>reserved_funds</code>, <code>reserve_hold</code>, <code>reserve_release</code>, <code>stripe_fee</code>, <code>stripe_fx_fee</code>, <code>stripe_balance_payment_debit</code>, <code>stripe_balance_payment_debit_reversal</code>, <code>tax_fee</code>, <code>topup</code>, <code>topup_reversal</code>, <code>transfer</code>, <code>transfer_cancel</code>, <code>transfer_failure</code>, or <code>transfer_refund</code>. Learn more about <a href="https://stripe.com/docs/reports/balance-transaction-types">balance transaction types and what they represent</a>. To classify transactions for accounting purposes, consider <code>reporting_category</code> instead.
  */
 class BalanceTransaction extends ApiResource
 {
@@ -34,6 +34,7 @@ class BalanceTransaction extends ApiResource
     const BALANCE_TYPE_ISSUING = 'issuing';
     const BALANCE_TYPE_PAYMENTS = 'payments';
     const BALANCE_TYPE_REFUND_AND_DISPUTE_PREFUNDING = 'refund_and_dispute_prefunding';
+    const BALANCE_TYPE_RISK_RESERVED = 'risk_reserved';
 
     const TYPE_ADJUSTMENT = 'adjustment';
     const TYPE_ADVANCE = 'advance';
@@ -67,6 +68,8 @@ class BalanceTransaction extends ApiResource
     const TYPE_REFUND = 'refund';
     const TYPE_REFUND_FAILURE = 'refund_failure';
     const TYPE_RESERVED_FUNDS = 'reserved_funds';
+    const TYPE_RESERVE_HOLD = 'reserve_hold';
+    const TYPE_RESERVE_RELEASE = 'reserve_release';
     const TYPE_RESERVE_TRANSACTION = 'reserve_transaction';
     const TYPE_STRIPE_BALANCE_PAYMENT_DEBIT = 'stripe_balance_payment_debit';
     const TYPE_STRIPE_BALANCE_PAYMENT_DEBIT_REVERSAL = 'stripe_balance_payment_debit_reversal';

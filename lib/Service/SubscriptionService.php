@@ -15,7 +15,7 @@ class SubscriptionService extends AbstractService
      * By default, returns a list of subscriptions that have not been canceled. In
      * order to list canceled subscriptions, specify <code>status=canceled</code>.
      *
-     * @param null|array{automatic_tax?: array{enabled: bool}, collection_method?: string, created?: array|int, current_period_end?: array|int, current_period_start?: array|int, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], limit?: int, plan?: string, price?: string, starting_after?: string, status?: string, test_clock?: string} $params
+     * @param null|array{automatic_tax?: array{enabled: bool}, billing_cadence?: string, collection_method?: string, created?: array|int, current_period_end?: array|int, current_period_start?: array|int, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], limit?: int, plan?: string, price?: string, starting_after?: string, status?: string, test_clock?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Subscription>
@@ -134,6 +134,25 @@ class SubscriptionService extends AbstractService
     public function migrate($id, $params = null, $opts = null)
     {
         return $this->request('post', $this->buildPath('/v1/subscriptions/%s/migrate', $id), $params, $opts);
+    }
+
+    /**
+     * Pauses a subscription by transitioning it to the paused status. A paused
+     * subscription does not generate invoices and will not advance to new billing
+     * periods. The subscription can be resumed later using the resume endpoint. Cannot
+     * pause subscriptions with attached schedules.
+     *
+     * @param string $id
+     * @param null|array{bill_for?: array{outstanding_usage?: bool, unused_time?: bool}, expand?: string[], invoicing_behavior?: string, type: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Subscription
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function pause($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/subscriptions/%s/pause', $id), $params, $opts);
     }
 
     /**
