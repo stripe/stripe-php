@@ -188,6 +188,7 @@ class ErrorObject extends StripeObject
     const CODE_RATE_LIMIT = 'rate_limit';
     const CODE_REFER_TO_CUSTOMER = 'refer_to_customer';
     const CODE_REFUND_DISPUTED_PAYMENT = 'refund_disputed_payment';
+    const CODE_REQUEST_BLOCKED = 'request_blocked';
     const CODE_RESOURCE_ALREADY_EXISTS = 'resource_already_exists';
     const CODE_RESOURCE_MISSING = 'resource_missing';
     const CODE_RETURN_INTENT_ALREADY_PROCESSED = 'return_intent_already_processed';

@@ -100,8 +100,8 @@ class SessionService extends \Stripe\Service\AbstractService
     /**
      * Updates a Checkout Session object.
      *
-     * Related guide: <a href="/payments/checkout/dynamic-updates">Dynamically update
-     * Checkout</a>
+     * Related guide: <a href="/payments/advanced/dynamic-updates">Dynamically update a
+     * Checkout Session</a>
      *
      * @param string $id
      * @param null|array{collected_information?: array{shipping_details?: array{address: array{city?: string, country: string, line1: string, line2?: string, postal_code?: string, state?: string}, name: string}}, expand?: string[], line_items?: (array{adjustable_quantity?: array{enabled: bool, maximum?: int, minimum?: int}, id?: string, metadata?: null|array<string, string>, price?: string, price_data?: array{currency: string, product?: string, product_data?: array{description?: string, images?: string[], metadata?: array<string, string>, name: string, tax_code?: string, unit_label?: string}, recurring?: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], metadata?: null|array<string, string>, shipping_options?: null|array{shipping_rate?: string, shipping_rate_data?: array{delivery_estimate?: array{maximum?: array{unit: string, value: int}, minimum?: array{unit: string, value: int}}, display_name: string, fixed_amount?: array{amount: int, currency: string, currency_options?: array<string, array{amount: int, tax_behavior?: string}>}, metadata?: array<string, string>, tax_behavior?: string, tax_code?: string, type?: string}}[]} $params
