@@ -46,7 +46,7 @@ class AccountEvaluationService extends \Stripe\Service\AbstractService
      * Reports an event on an <code>AccountEvaluation</code> object.
      *
      * @param string $id
-     * @param null|array{expand?: string[], type: string, login_failed?: array{reason: string}, registration_failed?: array{reason: string}} $params
+     * @param null|array{expand?: string[], login_failed?: array{reason: string}, registration_failed?: array{reason: string}, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Radar\AccountEvaluation

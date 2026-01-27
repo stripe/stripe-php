@@ -136,59 +136,6 @@ class Order extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Order the canceled order
-     *
-     * @throws Exception\ApiErrorException if the request fails
-     */
-    public function cancel($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/cancel';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-
-        return $this;
-    }
-
-    /**
-     * @param string $id
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @return Collection<LineItem> list of line items
-     *
-     * @throws Exception\ApiErrorException if the request fails
-     */
-    public static function allLineItems($id, $params = null, $opts = null)
-    {
-        $url = static::resourceUrl($id) . '/line_items';
-        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
-        $obj = Util\Util::convertToStripeObject($response->json, $opts);
-        $obj->setLastResponse($response);
-
-        return $obj;
-    }
-
-    /**
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
-     * @return Order the reopened order
-     *
-     * @throws Exception\ApiErrorException if the request fails
-     */
-    public function reopen($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/reopen';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-
-        return $this;
-    }
-
-    /**
-     * @param null|array $params
-     * @param null|array|string $opts
-     *
      * @return Order the submited order
      *
      * @throws Exception\ApiErrorException if the request fails

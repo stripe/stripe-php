@@ -23,7 +23,7 @@ class TrialOffer extends \Stripe\ApiResource
     /**
      * Creates a trial offer.
      *
-     * @param null|array{duration: array{relative?: array{iterations: int}, type: string}, end_behavior: array{transition: array{price: string}}, expand?: string[], price: string, name?: string} $params
+     * @param null|array{duration: array{relative?: array{iterations: int}, type: string}, end_behavior: array{transition: array{price: string}}, expand?: string[], name?: string, price: string} $params
      * @param null|array|string $options
      *
      * @return TrialOffer the created resource

@@ -70,6 +70,7 @@ namespace Stripe\Service;
  * @property Radar\RadarServiceFactory $radar
  * @property RefundService $refunds
  * @property Reporting\ReportingServiceFactory $reporting
+ * @property Reserve\ReserveServiceFactory $reserve
  * @property ReviewService $reviews
  * @property SetupAttemptService $setupAttempts
  * @property SetupIntentService $setupIntents
@@ -165,6 +166,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'radar' => Radar\RadarServiceFactory::class,
         'refunds' => RefundService::class,
         'reporting' => Reporting\ReportingServiceFactory::class,
+        'reserve' => Reserve\ReserveServiceFactory::class,
         'reviews' => ReviewService::class,
         'setupAttempts' => SetupAttemptService::class,
         'setupIntents' => SetupIntentService::class,

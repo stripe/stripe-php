@@ -167,6 +167,7 @@ class Event extends ApiResource
     const INVOICE_PAID = 'invoice.paid';
     const INVOICE_PAYMENT_ACTION_REQUIRED = 'invoice.payment_action_required';
     const INVOICE_PAYMENT_ATTEMPT_REQUIRED = 'invoice.payment_attempt_required';
+    const INVOICE_PAYMENT_DETACHED = 'invoice_payment.detached';
     const INVOICE_PAYMENT_FAILED = 'invoice.payment_failed';
     const INVOICE_PAYMENT_OVERPAID = 'invoice.payment.overpaid';
     const INVOICE_PAYMENT_PAID = 'invoice_payment.paid';
@@ -369,6 +370,7 @@ class Event extends ApiResource
     const TYPE_CAPITAL_FINANCING_OFFER_PAID_OUT = 'capital.financing_offer.paid_out';
     const TYPE_CAPITAL_FINANCING_OFFER_REJECTED = 'capital.financing_offer.rejected';
     const TYPE_CAPITAL_FINANCING_OFFER_REPLACEMENT_CREATED = 'capital.financing_offer.replacement_created';
+    const TYPE_CAPITAL_FINANCING_SUMMARY_LINE_OF_CREDIT_UPDATE = 'capital.financing_summary.line_of_credit_update';
     const TYPE_CAPITAL_FINANCING_TRANSACTION_CREATED = 'capital.financing_transaction.created';
     const TYPE_CASH_BALANCE_FUNDS_AVAILABLE = 'cash_balance.funds_available';
     const TYPE_CHARGE_CAPTURED = 'charge.captured';
