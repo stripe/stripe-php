@@ -15,7 +15,7 @@ class SubscriptionService extends AbstractService
      * By default, returns a list of subscriptions that have not been canceled. In
      * order to list canceled subscriptions, specify <code>status=canceled</code>.
      *
-     * @param null|array{automatic_tax?: array{enabled: bool}, collection_method?: string, created?: array|int, current_period_end?: array|int, current_period_start?: array|int, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], limit?: int, plan?: string, price?: string, starting_after?: string, status?: string, test_clock?: string} $params
+     * @param null|array{automatic_tax?: array{enabled: bool}, billing_cadence?: string, collection_method?: string, created?: array|int, current_period_end?: array|int, current_period_start?: array|int, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], limit?: int, plan?: string, price?: string, starting_after?: string, status?: string, test_clock?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Subscription>
