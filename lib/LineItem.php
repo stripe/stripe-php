@@ -9,6 +9,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property null|(object{enabled: bool, maximum: null|int, minimum: null|int}&StripeObject) $adjustable_quantity
  * @property int $amount_discount Total discount amount applied. If no discounts were applied, defaults to 0.
  * @property int $amount_subtotal Total before any discounts or taxes are applied.
  * @property int $amount_tax Total tax amount applied. If no tax was applied, defaults to 0.
