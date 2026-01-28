@@ -461,6 +461,7 @@ class Event extends ApiResource
     const TYPE_INVOICE_PAID = 'invoice.paid';
     const TYPE_INVOICE_PAYMENT_ACTION_REQUIRED = 'invoice.payment_action_required';
     const TYPE_INVOICE_PAYMENT_ATTEMPT_REQUIRED = 'invoice.payment_attempt_required';
+    const TYPE_INVOICE_PAYMENT_DETACHED = 'invoice_payment.detached';
     const TYPE_INVOICE_PAYMENT_FAILED = 'invoice.payment_failed';
     const TYPE_INVOICE_PAYMENT_OVERPAID = 'invoice.payment.overpaid';
     const TYPE_INVOICE_PAYMENT_PAID = 'invoice_payment.paid';
