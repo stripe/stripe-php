@@ -41,6 +41,7 @@ namespace Stripe\Service;
  * @property FileService $files
  * @property FinancialConnections\FinancialConnectionsServiceFactory $financialConnections
  * @property Forwarding\ForwardingServiceFactory $forwarding
+ * @property FrMealVouchersOnboardingService $frMealVouchersOnboardings
  * @property FxQuoteService $fxQuotes
  * @property Identity\IdentityServiceFactory $identity
  * @property InvoiceItemService $invoiceItems
@@ -69,6 +70,7 @@ namespace Stripe\Service;
  * @property Radar\RadarServiceFactory $radar
  * @property RefundService $refunds
  * @property Reporting\ReportingServiceFactory $reporting
+ * @property Reserve\ReserveServiceFactory $reserve
  * @property ReviewService $reviews
  * @property SetupAttemptService $setupAttempts
  * @property SetupIntentService $setupIntents
@@ -135,6 +137,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'files' => FileService::class,
         'financialConnections' => FinancialConnections\FinancialConnectionsServiceFactory::class,
         'forwarding' => Forwarding\ForwardingServiceFactory::class,
+        'frMealVouchersOnboardings' => FrMealVouchersOnboardingService::class,
         'fxQuotes' => FxQuoteService::class,
         'identity' => Identity\IdentityServiceFactory::class,
         'invoiceItems' => InvoiceItemService::class,
@@ -163,6 +166,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'radar' => Radar\RadarServiceFactory::class,
         'refunds' => RefundService::class,
         'reporting' => Reporting\ReportingServiceFactory::class,
+        'reserve' => Reserve\ReserveServiceFactory::class,
         'reviews' => ReviewService::class,
         'setupAttempts' => SetupAttemptService::class,
         'setupIntents' => SetupIntentService::class,

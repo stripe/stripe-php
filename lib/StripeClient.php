@@ -41,6 +41,7 @@ namespace Stripe;
  * @property Service\FileService $files
  * @property Service\FinancialConnections\FinancialConnectionsServiceFactory $financialConnections
  * @property Service\Forwarding\ForwardingServiceFactory $forwarding
+ * @property Service\FrMealVouchersOnboardingService $frMealVouchersOnboardings
  * @property Service\FxQuoteService $fxQuotes
  * @property Service\Identity\IdentityServiceFactory $identity
  * @property Service\InvoiceItemService $invoiceItems
@@ -69,6 +70,7 @@ namespace Stripe;
  * @property Service\Radar\RadarServiceFactory $radar
  * @property Service\RefundService $refunds
  * @property Service\Reporting\ReportingServiceFactory $reporting
+ * @property Service\Reserve\ReserveServiceFactory $reserve
  * @property Service\ReviewService $reviews
  * @property Service\SetupAttemptService $setupAttempts
  * @property Service\SetupIntentService $setupIntents
