@@ -36,7 +36,6 @@ require __DIR__ . '/lib/Exception/IdempotencyException.php';
 require __DIR__ . '/lib/Exception/InvalidArgumentException.php';
 require __DIR__ . '/lib/Exception/InvalidRequestException.php';
 require __DIR__ . '/lib/Exception/PermissionException.php';
-require __DIR__ . '/lib/Exception/RateLimitException.php';
 require __DIR__ . '/lib/Exception/SignatureVerificationException.php';
 require __DIR__ . '/lib/Exception/UnexpectedValueException.php';
 require __DIR__ . '/lib/Exception/UnknownApiErrorException.php';
