@@ -107,6 +107,7 @@ class ObjectTypes
             \Stripe\PromotionCode::OBJECT_NAME => \Stripe\PromotionCode::class,
             \Stripe\Quote::OBJECT_NAME => \Stripe\Quote::class,
             \Stripe\Radar\EarlyFraudWarning::OBJECT_NAME => \Stripe\Radar\EarlyFraudWarning::class,
+            \Stripe\Radar\PaymentEvaluation::OBJECT_NAME => \Stripe\Radar\PaymentEvaluation::class,
             \Stripe\Radar\ValueList::OBJECT_NAME => \Stripe\Radar\ValueList::class,
             \Stripe\Radar\ValueListItem::OBJECT_NAME => \Stripe\Radar\ValueListItem::class,
             \Stripe\Refund::OBJECT_NAME => \Stripe\Refund::class,
