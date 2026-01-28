@@ -18,6 +18,8 @@ namespace Stripe\FinancialConnections;
  * @property null|(object{}&\Stripe\StripeObject) $manual_entry
  * @property string[] $permissions Permissions requested for accounts collected during this session.
  * @property null|string[] $prefetch Data features requested to be retrieved upon account creation.
+ * @property null|(object{account?: null|string, authorization: string}&\Stripe\StripeObject) $relink_options
+ * @property null|(object{account: null|string, authorization: null|string, failure_reason: null|string}&\Stripe\StripeObject) $relink_result
  * @property null|string $return_url For webview integrations only. Upon completing OAuth login in the native browser, the user will be redirected to this URL to return to your app.
  * @property null|string $status The current state of the session.
  * @property null|(object{cancelled?: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details
@@ -36,7 +38,7 @@ class Session extends \Stripe\ApiResource
      * <code>Session</code>. The session’s <code>client_secret</code> can be used to
      * launch the flow using Stripe.js.
      *
-     * @param null|array{account_holder: array{account?: string, customer?: string, customer_account?: string, type: string}, expand?: string[], filters?: array{account_subcategories?: string[], countries?: string[], institution?: string}, limits?: array{accounts: int}, manual_entry?: array{mode?: string}, permissions: string[], prefetch?: string[], return_url?: string} $params
+     * @param null|array{account_holder?: array{account?: string, customer?: string, customer_account?: string, type: string}, expand?: string[], filters?: array{account_subcategories?: string[], countries?: string[], institution?: string}, limits?: array{accounts: int}, manual_entry?: array{mode?: string}, permissions: string[], prefetch?: string[], relink_options?: array{account?: string, authorization: string}, return_url?: string} $params
      * @param null|array|string $options
      *
      * @return Session the created resource

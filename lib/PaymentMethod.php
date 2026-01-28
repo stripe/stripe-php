@@ -76,7 +76,7 @@ namespace Stripe;
  * @property null|(object{bank_code: null|string, branch_code: null|string, country: null|string, fingerprint: null|string, generated_from: null|(object{charge: null|Charge|string, setup_attempt: null|SetupAttempt|string}&StripeObject), last4: null|string}&StripeObject) $sepa_debit
  * @property null|(object{}&StripeObject) $shopeepay
  * @property null|(object{country: null|string}&StripeObject) $sofort
- * @property null|(object{account?: null|string, source_type: string}&StripeObject) $stripe_balance
+ * @property null|(object{account?: null|string, source_type: null|string}&StripeObject) $stripe_balance
  * @property null|(object{}&StripeObject) $swish
  * @property null|(object{}&StripeObject) $twint
  * @property string $type The type of the PaymentMethod. An additional hash is included on the PaymentMethod with a name matching this value. It contains additional information specific to the PaymentMethod type.
