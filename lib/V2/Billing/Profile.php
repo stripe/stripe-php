@@ -5,6 +5,8 @@
 namespace Stripe\V2\Billing;
 
 /**
+ * A Billing Profile is a representation of how a bill is paid, separating payment behavior from customer identity.
+ *
  * @property string $id The ID of the billing profile object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property int $created Timestamp of when the object was created.

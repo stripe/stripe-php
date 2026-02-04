@@ -5591,6 +5591,10 @@ final class GeneratedExamplesTest extends TestCase
                             ],
                         ],
                         'deactivate' => [
+                            'cancellation_details' => [
+                                'comment' => 'comment',
+                                'feedback' => 'other',
+                            ],
                             'collect_at' => 'next_billing_date',
                             'effective_at' => [
                                 'timestamp' => '1970-01-01T15:18:46.294Z',
@@ -5731,6 +5735,10 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                     ],
                     'deactivate' => [
+                        'cancellation_details' => [
+                            'comment' => 'comment',
+                            'feedback' => 'other',
+                        ],
                         'collect_at' => 'next_billing_date',
                         'effective_at' => [
                             'timestamp' => '1970-01-01T15:18:46.294Z',
@@ -7429,7 +7437,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/billing/rate_cards/rate_card_id_123/rates',
-            [],
+            ['metered_item' => 'metered_item'],
             [],
             false,
             [
@@ -7463,7 +7471,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->billing->rateCards->rates->create(
             'rate_card_id_123',
-            []
+            ['metered_item' => 'metered_item']
         );
         self::assertInstanceOf(V2\Billing\RateCardRate::class, $result);
     }
@@ -8318,6 +8326,57 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Core\ClaimableSandbox::class, $result);
+    }
+
+    public function testV2CoreConnectionSessionPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/connection_sessions',
+            ['account' => 'account'],
+            [],
+            false,
+            [
+                'account' => 'account',
+                'client_secret' => 'client_secret',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.core.connection_session',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->connectionSessions->create([
+            'account' => 'account',
+        ]);
+        self::assertInstanceOf(V2\Core\ConnectionSession::class, $result);
+    }
+
+    public function testV2CoreConnectionSessionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/connection_sessions/id_123',
+            [],
+            [],
+            false,
+            [
+                'account' => 'account',
+                'client_secret' => 'client_secret',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.core.connection_session',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->connectionSessions->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\ConnectionSession::class, $result);
     }
 
     public function testV2CoreEventGet()
@@ -9424,7 +9483,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'object' => 'v2.money_management.financial_account',
                         'status' => 'closed',
-                        'type' => 'other',
+                        'type' => 'payments',
                         'livemode' => [],
                     ],
                 ],
@@ -9458,7 +9517,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.financial_account',
                 'status' => 'closed',
-                'type' => 'other',
+                'type' => 'payments',
                 'livemode' => [],
             ],
             200,
@@ -9489,7 +9548,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.financial_account',
                 'status' => 'closed',
-                'type' => 'other',
+                'type' => 'payments',
                 'livemode' => [],
             ],
             200,
@@ -9521,7 +9580,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.financial_account',
                 'status' => 'closed',
-                'type' => 'other',
+                'type' => 'payments',
                 'livemode' => [],
             ],
             200,
@@ -9553,7 +9612,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.financial_account',
                 'status' => 'closed',
-                'type' => 'other',
+                'type' => 'payments',
                 'livemode' => [],
             ],
             200,
@@ -10656,7 +10715,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'object' => 'v2.money_management.received_credit',
                         'status' => 'returned',
-                        'type' => 'external_credit',
+                        'type' => 'balance_transfer',
                         'livemode' => [],
                     ],
                 ],
@@ -10686,7 +10745,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.received_credit',
                 'status' => 'returned',
-                'type' => 'external_credit',
+                'type' => 'balance_transfer',
                 'livemode' => [],
             ],
             200,
@@ -10716,7 +10775,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'object' => 'v2.money_management.received_debit',
                         'status' => 'canceled',
-                        'type' => 'external_debit',
+                        'type' => 'balance_transfer',
                         'livemode' => [],
                     ],
                 ],
@@ -10746,7 +10805,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.received_debit',
                 'status' => 'canceled',
-                'type' => 'external_debit',
+                'type' => 'balance_transfer',
                 'livemode' => [],
             ],
             200,
@@ -10868,10 +10927,10 @@ final class GeneratedExamplesTest extends TestCase
                             'inbound_pending' => [],
                             'outbound_pending' => [],
                         ],
-                        'category' => 'received_debit',
+                        'category' => 'issuing_dispute_provisional_credit_reversal',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
-                        'flow' => ['type' => 'fee_transaction'],
+                        'flow' => ['type' => 'adjustment'],
                         'id' => 'obj_123',
                         'object' => 'v2.money_management.transaction',
                         'status' => 'pending',
@@ -10905,10 +10964,10 @@ final class GeneratedExamplesTest extends TestCase
                     'inbound_pending' => [],
                     'outbound_pending' => [],
                 ],
-                'category' => 'received_debit',
+                'category' => 'issuing_dispute_provisional_credit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
-                'flow' => ['type' => 'fee_transaction'],
+                'flow' => ['type' => 'adjustment'],
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.transaction',
                 'status' => 'pending',
@@ -10947,9 +11006,9 @@ final class GeneratedExamplesTest extends TestCase
                         'object' => 'v2.money_management.transaction_entry',
                         'transaction' => 'transaction',
                         'transaction_details' => [
-                            'category' => 'received_debit',
+                            'category' => 'issuing_dispute_provisional_credit_reversal',
                             'financial_account' => 'financial_account',
-                            'flow' => ['type' => 'fee_transaction'],
+                            'flow' => ['type' => 'adjustment'],
                         ],
                         'livemode' => [],
                     ],
@@ -10985,9 +11044,9 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.transaction_entry',
                 'transaction' => 'transaction',
                 'transaction_details' => [
-                    'category' => 'received_debit',
+                    'category' => 'issuing_dispute_provisional_credit_reversal',
                     'financial_account' => 'financial_account',
-                    'flow' => ['type' => 'fee_transaction'],
+                    'flow' => ['type' => 'adjustment'],
                 ],
                 'livemode' => [],
             ],
@@ -11200,6 +11259,40 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
     }
 
+    public function testV2PaymentsSettlementAllocationIntentGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/payments/settlement_allocation_intents',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'amount' => [],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'expected_settlement_date' => '1970-01-22T14:14:13.629Z',
+                        'financial_account' => 'financial_account',
+                        'id' => 'obj_123',
+                        'linked_credits' => ['0' => 'linked_credits'],
+                        'object' => 'v2.payments.settlement_allocation_intent',
+                        'reference' => 'reference',
+                        'status' => 'canceled',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->settlementAllocationIntents->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Payments\SettlementAllocationIntent::class, $result->data[0]);
+    }
+
     public function testV2PaymentsSettlementAllocationIntentPost()
     {
         $this->stubRequest(
@@ -11243,7 +11336,7 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Payments\SettlementAllocationIntent::class, $result);
     }
 
-    public function testV2PaymentsSettlementAllocationIntentGet()
+    public function testV2PaymentsSettlementAllocationIntentGet2()
     {
         $this->stubRequest(
             'get',
@@ -11363,6 +11456,42 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Payments\SettlementAllocationIntent::class, $result);
     }
 
+    public function testV2PaymentsSettlementAllocationIntentsSplitGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/payments/settlement_allocation_intents/settlement_allocation_intent_id_123/splits',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'account' => 'account',
+                        'amount' => [],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'object' => 'v2.payments.settlement_allocation_intent_split',
+                        'settlement_allocation_intent' => 'settlement_allocation_intent',
+                        'status' => 'canceled',
+                        'type' => 'credit',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->settlementAllocationIntents->splits->all(
+            'settlement_allocation_intent_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Payments\SettlementAllocationIntentSplit::class, $result->data[0]);
+    }
+
     public function testV2PaymentsSettlementAllocationIntentsSplitPost()
     {
         $this->stubRequest(
@@ -11382,7 +11511,6 @@ final class GeneratedExamplesTest extends TestCase
                 'account' => 'account',
                 'amount' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
-                'flow' => ['type' => 'outbound_payment'],
                 'id' => 'obj_123',
                 'object' => 'v2.payments.settlement_allocation_intent_split',
                 'settlement_allocation_intent' => 'settlement_allocation_intent',
@@ -11407,7 +11535,7 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Payments\SettlementAllocationIntentSplit::class, $result);
     }
 
-    public function testV2PaymentsSettlementAllocationIntentsSplitGet()
+    public function testV2PaymentsSettlementAllocationIntentsSplitGet2()
     {
         $this->stubRequest(
             'get',
@@ -11419,7 +11547,6 @@ final class GeneratedExamplesTest extends TestCase
                 'account' => 'account',
                 'amount' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
-                'flow' => ['type' => 'outbound_payment'],
                 'id' => 'obj_123',
                 'object' => 'v2.payments.settlement_allocation_intent_split',
                 'settlement_allocation_intent' => 'settlement_allocation_intent',
@@ -11450,7 +11577,6 @@ final class GeneratedExamplesTest extends TestCase
                 'account' => 'account',
                 'amount' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
-                'flow' => ['type' => 'outbound_payment'],
                 'id' => 'obj_123',
                 'object' => 'v2.payments.settlement_allocation_intent_split',
                 'settlement_allocation_intent' => 'settlement_allocation_intent',
@@ -12008,7 +12134,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'error' => [
                     'type' => 'blocked_by_stripe',
-                    'code' => 'blocked_payout_method_bank_account',
+                    'code' => 'blocked_payout_method',
                 ],
             ],
             400,

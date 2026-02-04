@@ -9,6 +9,7 @@ namespace Stripe\V2\MoneyManagement;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
+ * @property null|(object{currencies: string[], direction: string}&\Stripe\StripeObject) $accrued_fees If this is a <code>accrued_fees</code> FinancialAccount, this hash include details specific to <code>accrued_fees</code> FinancialAccount.
  * @property (object{available: \Stripe\StripeObject, inbound_pending: \Stripe\StripeObject, outbound_pending: \Stripe\StripeObject}&\Stripe\StripeObject) $balance Multi-currency balance of this FinancialAccount, split by availability state. Each balance is represented as a hash where the key is the three-letter ISO currency code, in lowercase, and the value is the amount for that currency.
  * @property string $country Open Enum. Two-letter country code that represents the country where the LegalEntity associated with the FinancialAccount is based in.
  * @property int $created Time at which the object was created.
@@ -17,7 +18,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property null|(object{type: string}&\Stripe\StripeObject) $managed_by If this is a managed FinancialAccount, <code>managed_by</code> indicates the product that created and manages this FinancialAccount. For managed FinancialAccounts, creation of money management resources can only be orchestrated by the managing product.
  * @property null|\Stripe\StripeObject $metadata Metadata associated with the FinancialAccount.
  * @property null|(object{type: string}&\Stripe\StripeObject) $other If this is a <code>other</code> FinancialAccount, this hash indicates what the actual type is. Upgrade your API version to see it reflected in <code>type</code>.
- * @property null|(object{default_currency: string, settlement_currencies: string[]}&\Stripe\StripeObject) $payments If this is a <code>payments</code> FinancialAccount, this hash include details specific to <code>payments</code> FinancialAccount.
+ * @property null|(object{default_currency: string, settlement_currencies: string[], starting_balance?: (object{at: int, available: \Stripe\StripeObject}&\Stripe\StripeObject)}&\Stripe\StripeObject) $payments If this is a <code>payments</code> FinancialAccount, this hash include details specific to <code>payments</code> FinancialAccount.
  * @property string $status Closed Enum. An enum representing the status of the FinancialAccount. This indicates whether or not the FinancialAccount can be used for any money movement flows.
  * @property null|(object{closed?: (object{forwarding_settings?: (object{payment_method?: string, payout_method?: string}&\Stripe\StripeObject), reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details
  * @property null|(object{holds_currencies: string[]}&\Stripe\StripeObject) $storage If this is a <code>storage</code> FinancialAccount, this hash includes details specific to <code>storage</code> FinancialAccounts.
@@ -31,6 +32,7 @@ class FinancialAccount extends \Stripe\ApiResource
     const STATUS_OPEN = 'open';
     const STATUS_PENDING = 'pending';
 
+    const TYPE_ACCRUED_FEES = 'accrued_fees';
     const TYPE_OTHER = 'other';
     const TYPE_PAYMENTS = 'payments';
     const TYPE_STORAGE = 'storage';

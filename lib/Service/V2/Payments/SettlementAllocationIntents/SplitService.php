@@ -12,6 +12,22 @@ namespace Stripe\Service\V2\Payments\SettlementAllocationIntents;
 class SplitService extends \Stripe\Service\AbstractService
 {
     /**
+     * List SettlementAllocationIntentSplits API.
+     *
+     * @param string $id
+     * @param null|array{limit?: int, status?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Collection<\Stripe\V2\Payments\SettlementAllocationIntentSplit>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function all($id, $params = null, $opts = null)
+    {
+        return $this->requestCollection('get', $this->buildPath('/v2/payments/settlement_allocation_intents/%s/splits', $id), $params, $opts);
+    }
+
+    /**
      * Cancel SettlementAllocationIntentSplit API.
      *
      * @param string $parentId

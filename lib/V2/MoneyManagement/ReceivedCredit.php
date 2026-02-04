@@ -12,6 +12,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property (object{value?: int, currency?: string}&\Stripe\StripeObject) $amount The amount and currency of the ReceivedCredit.
  * @property null|(object{from_account?: string, type: string, outbound_payment?: string, outbound_transfer?: string, payout_v1?: string, transfer?: string}&\Stripe\StripeObject) $balance_transfer This object stores details about the originating Stripe transaction that resulted in the ReceivedCredit. Present if <code>type</code> field value is <code>balance_transfer</code>.
  * @property null|(object{financial_address: string, origin_type: string, statement_descriptor?: string, gb_bank_account?: (object{account_holder_name?: string, bank_name?: string, last4?: string, network: string, sort_code?: string}&\Stripe\StripeObject), sepa_bank_account?: (object{account_holder_name?: string, bank_name?: string, bic?: string, country?: string, iban?: string, network: string}&\Stripe\StripeObject), us_bank_account?: (object{bank_name?: string, last4?: string, network: string, routing_number?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $bank_transfer This object stores details about the originating banking transaction that resulted in the ReceivedCredit. Present if <code>type</code> field value is <code>bank_transfer</code>.
+ * @property null|(object{card_v1_id: string, dispute?: (object{issuing_dispute_v1: string}&\Stripe\StripeObject), refund?: (object{issuing_transaction_v1: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $card_spend This object stores details about the originating issuing card spend that resulted in the ReceivedCredit. Present if <code>type</code> field value is <code>card_spend</code>.
  * @property int $created Time at which the ReceivedCredit was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property null|string $description Freeform string set by originator of the ReceivedCredit.
  * @property null|(object{value?: int, currency?: string}&\Stripe\StripeObject) $external_amount The amount and currency of the original/external credit request.
@@ -35,6 +36,7 @@ class ReceivedCredit extends \Stripe\ApiResource
 
     const TYPE_BALANCE_TRANSFER = 'balance_transfer';
     const TYPE_BANK_TRANSFER = 'bank_transfer';
+    const TYPE_CARD_SPEND = 'card_spend';
     const TYPE_EXTERNAL_CREDIT = 'external_credit';
     const TYPE_STRIPE_BALANCE_PAYMENT = 'stripe_balance_payment';
 }
