@@ -20,12 +20,16 @@ namespace Stripe;
  * @property null|Charge|string $originating_transaction ID of the corresponding charge on the platform account, if this fee was the result of a charge using the <code>destination</code> parameter.
  * @property bool $refunded Whether the fee has been fully refunded. If the fee is only partially refunded, this attribute will still be false.
  * @property Collection<ApplicationFeeRefund> $refunds A list of refunds that have been applied to the fee.
+ * @property null|string $settlement_type Type of settlement for the application fee. One of <code>net_settled</code> or <code>gross_settled</code>.
  */
 class ApplicationFee extends ApiResource
 {
     const OBJECT_NAME = 'application_fee';
 
     use ApiOperations\NestedResource;
+
+    const SETTLEMENT_TYPE_GROSS_SETTLED = 'gross_settled';
+    const SETTLEMENT_TYPE_NET_SETTLED = 'net_settled';
 
     /**
      * Returns a list of application fees you’ve previously collected. The application
