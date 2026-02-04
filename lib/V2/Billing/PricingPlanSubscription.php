@@ -8,6 +8,7 @@ namespace Stripe\V2\Billing;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property string $billing_cadence The ID of the Billing Cadence this subscription is billed on.
+ * @property null|(object{comment?: string, feedback?: string, reason?: string}&\Stripe\StripeObject) $cancellation_details Details about why the subscription was canceled, if applicable. Includes system-generated reason.
  * @property string $collection_status Current collection status of this subscription.
  * @property (object{awaiting_customer_action_at?: string, current_at?: string, past_due_at?: string, paused_at?: string, unpaid_at?: string}&\Stripe\StripeObject) $collection_status_transitions Timestamps for collection status transitions.
  * @property int $created Time at which the object was created.

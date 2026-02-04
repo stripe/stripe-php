@@ -20,6 +20,21 @@ class SettlementAllocationIntentService extends \Stripe\Service\AbstractService
     ];
 
     /**
+     * Lists all SettlementAllocationIntents.
+     *
+     * @param null|array{created_gt?: string, created_gte?: string, created_lt?: string, created_lte?: string, financial_account?: string, limit?: int, status?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Collection<\Stripe\V2\Payments\SettlementAllocationIntent>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function all($params = null, $opts = null)
+    {
+        return $this->requestCollection('get', '/v2/payments/settlement_allocation_intents', $params, $opts);
+    }
+
+    /**
      * Cancels an existing SettlementAllocationIntent. Only SettlementAllocationIntent
      * with status `pending`, `submitted` and `errored` can be `canceled`.
      *

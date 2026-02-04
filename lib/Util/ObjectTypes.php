@@ -236,6 +236,7 @@ class ObjectTypes
         \Stripe\V2\Core\AccountPersonToken::OBJECT_NAME => \Stripe\V2\Core\AccountPersonToken::class,
         \Stripe\V2\Core\AccountToken::OBJECT_NAME => \Stripe\V2\Core\AccountToken::class,
         \Stripe\V2\Core\ClaimableSandbox::OBJECT_NAME => \Stripe\V2\Core\ClaimableSandbox::class,
+        \Stripe\V2\Core\ConnectionSession::OBJECT_NAME => \Stripe\V2\Core\ConnectionSession::class,
         \Stripe\V2\Core\Event::OBJECT_NAME => \Stripe\V2\Core\Event::class,
         \Stripe\V2\Core\EventDestination::OBJECT_NAME => \Stripe\V2\Core\EventDestination::class,
         \Stripe\V2\Core\Vault\GbBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\GbBankAccount::class,
