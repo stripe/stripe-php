@@ -9,7 +9,7 @@ namespace Stripe\V2\Payments;
  *
  * @property string $id Unique identifier for the SettlementAllocationIntent.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property (object{value?: int, currency?: string}&\Stripe\StripeObject) $amount The amount and currency of the SettlementAllocationIntent.
+ * @property (object{value: int, currency: string}&\Stripe\StripeObject) $amount The amount and currency of the SettlementAllocationIntent.
  * @property int $created Timestamp at which SettlementAllocationIntent was created .
  * @property int $expected_settlement_date Date when we expect to receive the funds.
  * @property string $financial_account FinancialAccount ID where the funds are expected.

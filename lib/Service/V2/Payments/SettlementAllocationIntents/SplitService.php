@@ -48,7 +48,7 @@ class SplitService extends \Stripe\Service\AbstractService
      * Create SettlementAllocationIntentSplit API.
      *
      * @param string $id
-     * @param null|array{account: string, amount: array{value?: int, currency?: string}, metadata?: array<string, string>, type: string} $params
+     * @param null|array{account: string, amount: array{value: int, currency: string}, metadata?: array<string, string>, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Payments\SettlementAllocationIntentSplit

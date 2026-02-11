@@ -5,6 +5,7 @@
 namespace Stripe\Service\V2\Billing;
 
 /**
+ * @property RateCards\CustomPricingUnitOverageRateService $customPricingUnitOverageRates
  * @property RateCards\RateService $rates
  * @property RateCards\VersionService $versions
  *
@@ -17,6 +18,7 @@ class RateCardService extends \Stripe\Service\AbstractService
     use \Stripe\Service\ServiceNavigatorTrait;
 
     protected static $classMap = [
+        'customPricingUnitOverageRates' => RateCards\CustomPricingUnitOverageRateService::class,
         'rates' => RateCards\RateService::class,
         'versions' => RateCards\VersionService::class,
     ];

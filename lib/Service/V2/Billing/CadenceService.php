@@ -5,12 +5,20 @@
 namespace Stripe\Service\V2\Billing;
 
 /**
+ * @property Cadences\SpendModifierRuleService $spendModifierRules
+ *
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class CadenceService extends \Stripe\Service\AbstractService
 {
+    use \Stripe\Service\ServiceNavigatorTrait;
+
+    protected static $classMap = [
+        'spendModifierRules' => Cadences\SpendModifierRuleService::class,
+    ];
+
     /**
      * List Billing Cadences.
      *
@@ -87,5 +95,10 @@ class CadenceService extends \Stripe\Service\AbstractService
     public function update($id, $params = null, $opts = null)
     {
         return $this->request('post', $this->buildPath('/v2/billing/cadences/%s', $id), $params, $opts);
+    }
+
+    protected function getServiceClass($name)
+    {
+        return \array_key_exists($name, self::$classMap) ? self::$classMap[$name] : null;
     }
 }

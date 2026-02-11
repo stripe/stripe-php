@@ -9,8 +9,8 @@ namespace Stripe\V2\Payments;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property null|(object{value?: int, currency?: string}&\Stripe\StripeObject) $amount_capturable The amount available to be captured.
- * @property (object{value?: int, currency?: string}&\Stripe\StripeObject) $amount_requested The “presentment amount” to be collected from the customer.
+ * @property null|(object{value: int, currency: string}&\Stripe\StripeObject) $amount_capturable The amount available to be captured.
+ * @property (object{value: int, currency: string}&\Stripe\StripeObject) $amount_requested The “presentment amount” to be collected from the customer.
  * @property string $cadence The frequency of the underlying payment.
  * @property null|(object{capture_before?: int, capture_method: string}&\Stripe\StripeObject) $capture Details about the capture configuration for the OffSessionPayment.
  * @property string $compartment_id ID of the owning compartment.

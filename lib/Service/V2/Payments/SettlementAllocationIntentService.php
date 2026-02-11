@@ -54,7 +54,7 @@ class SettlementAllocationIntentService extends \Stripe\Service\AbstractService
     /**
      * Create a new SettlementAllocationIntent.
      *
-     * @param null|array{amount: array{value?: int, currency?: string}, expected_settlement_date: string, financial_account: string, metadata?: array<string, string>, reference: string} $params
+     * @param null|array{amount: array{value: int, currency: string}, expected_settlement_date: string, financial_account: string, metadata?: array<string, string>, reference: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Payments\SettlementAllocationIntent
@@ -110,7 +110,7 @@ class SettlementAllocationIntentService extends \Stripe\Service\AbstractService
      * moves it to `submitted`.
      *
      * @param string $id
-     * @param null|array{amount?: array{value?: int, currency?: string}, reference?: string} $params
+     * @param null|array{amount?: array{value: int, currency: string}, reference?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Payments\SettlementAllocationIntent
