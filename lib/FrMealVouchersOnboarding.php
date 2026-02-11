@@ -5,8 +5,14 @@
 namespace Stripe;
 
 /**
- * The French Meal Vouchers Onboarding resource encapsulates the onboarding status and other related information
+ * The <code>French Meal Vouchers Onboarding</code> resource encapsulates the onboarding status and other related information
  * for a single restaurant (SIRET number) in the context of the French Meal Vouchers program.
+ *
+ * To onboard a restaurant for the French Meal Vouchers program, you create a <code>French Meal Vouchers Onboarding</code> object.
+ * You can retrieve individual objects, list all such objects, or update objects to correct the postal code of the restaurant.
+ * We identify <code>French Meal Vouchers Onboarding</code> objects with a unique, random ID.
+ *
+ * Related guide: <a href="https://docs.stripe.com/payments/meal-vouchers/fr-meal-vouchers/set-up-restaurant">Set up a restaurant for titres-restaurant payments</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -24,8 +30,8 @@ class FrMealVouchersOnboarding extends ApiResource
     use ApiOperations\Update;
 
     /**
-     * Creates a French Meal Vouchers Onboarding object that represents a restaurant’s
-     * onboarding status and starts the onboarding process.
+     * Creates a <code>French Meal Vouchers Onboarding</code> object that represents a
+     * restaurant’s onboarding status and starts the onboarding process.
      *
      * @param null|array{expand?: string[], metadata?: array<string, string>, name: string, postal_code: string, siret: string} $params
      * @param null|array|string $options
@@ -47,7 +53,9 @@ class FrMealVouchersOnboarding extends ApiResource
     }
 
     /**
-     * Lists French Meal Vouchers Onboarding objects.
+     * Lists <code>French Meal Vouchers Onboarding</code> objects. The objects are
+     * returned in sorted order, with the most recently created objects appearing
+     * first.
      *
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
@@ -64,7 +72,12 @@ class FrMealVouchersOnboarding extends ApiResource
     }
 
     /**
-     * Retrieves the details of a French Meal Vouchers Onboarding object.
+     * Retrieves the details of a previously created <code>French Meal Vouchers
+     * Onboarding</code> object.
+     *
+     * Supply the unique <code>French Meal Vouchers Onboarding</code> ID that was
+     * returned from your previous request, and Stripe returns the corresponding
+     * onboarding information.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
@@ -83,7 +96,13 @@ class FrMealVouchersOnboarding extends ApiResource
     }
 
     /**
-     * Updates the details of a restaurant’s French Meal Vouchers Onboarding object.
+     * Updates the details of a restaurant’s <code>French Meal Vouchers
+     * Onboarding</code> object by setting the values of the parameters passed. Any
+     * parameters not provided are left unchanged. After you update the object, the
+     * onboarding process automatically restarts.
+     *
+     * You can only update <code>French Meal Vouchers Onboarding</code> objects with
+     * the <code>postal_code</code> field requirement in <code>past_due</code>.
      *
      * @param string $id the ID of the resource to update
      * @param null|array{expand?: string[], postal_code: string} $params

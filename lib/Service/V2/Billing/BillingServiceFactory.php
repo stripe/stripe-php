@@ -20,6 +20,7 @@ namespace Stripe\Service\V2\Billing;
  * @property MeterEventService $meterEvents
  * @property MeterEventSessionService $meterEventSession
  * @property MeterEventStreamService $meterEventStream
+ * @property OneTimeItemService $oneTimeItems
  * @property PricingPlanService $pricingPlans
  * @property PricingPlanSubscriptionService $pricingPlanSubscriptions
  * @property ProfileService $profiles
@@ -46,6 +47,7 @@ class BillingServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'meterEvents' => MeterEventService::class,
         'meterEventSession' => MeterEventSessionService::class,
         'meterEventStream' => MeterEventStreamService::class,
+        'oneTimeItems' => OneTimeItemService::class,
         'pricingPlans' => PricingPlanService::class,
         'pricingPlanSubscriptions' => PricingPlanSubscriptionService::class,
         'profiles' => ProfileService::class,

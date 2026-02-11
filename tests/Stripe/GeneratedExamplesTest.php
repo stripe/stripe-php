@@ -5261,6 +5261,66 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Billing\Cadence::class, $result);
     }
 
+    public function testV2BillingCadencesSpendModifierRuleGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/cadences/cadence_id_123/spend_modifier_rules',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'billing_cadence' => 'billing_cadence',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.cadence_spend_modifier',
+                        'type' => 'max_billing_period_spend',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->cadences->spendModifierRules->all(
+            'cadence_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\CadenceSpendModifier::class, $result->data[0]);
+    }
+
+    public function testV2BillingCadencesSpendModifierRuleGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/cadences/cadence_id_123/spend_modifier_rules/id_123',
+            [],
+            [],
+            false,
+            [
+                'billing_cadence' => 'billing_cadence',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.billing.cadence_spend_modifier',
+                'type' => 'max_billing_period_spend',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->cadences->spendModifierRules->retrieve(
+            'cadence_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\CadenceSpendModifier::class, $result);
+    }
+
     public function testV2BillingCollectionSettingGet()
     {
         $this->stubRequest(
@@ -5578,6 +5638,9 @@ final class GeneratedExamplesTest extends TestCase
                     [
                         'type' => 'apply',
                         'apply' => [
+                            'effective_at' => [
+                                'type' => 'current_billing_period_end',
+                            ],
                             'type' => 'invoice_discount_rule',
                             'invoice_discount_rule' => [
                                 'applies_to' => 'cadence',
@@ -5587,6 +5650,21 @@ final class GeneratedExamplesTest extends TestCase
                                         'type' => 'indefinite',
                                     ],
                                     'percent_off' => 'percent_off',
+                                ],
+                            ],
+                            'spend_modifier_rule' => [
+                                'applies_to' => 'cadence',
+                                'type' => 'max_billing_period_spend',
+                                'max_billing_period_spend' => [
+                                    'amount' => [
+                                        'type' => 'custom_pricing_unit',
+                                        'custom_pricing_unit' => [
+                                            'value' => 'value',
+                                        ],
+                                    ],
+                                    'custom_pricing_unit_overage_rate' => [
+                                        'id' => 'obj_123',
+                                    ],
                                 ],
                             ],
                         ],
@@ -5647,8 +5725,12 @@ final class GeneratedExamplesTest extends TestCase
                             'type' => 'pricing_plan_subscription_details',
                         ],
                         'remove' => [
+                            'effective_at' => [
+                                'type' => 'current_billing_period_end',
+                            ],
                             'type' => 'invoice_discount_rule',
                             'invoice_discount_rule' => 'invoice_discount_rule',
+                            'spend_modifier_rule' => 'spend_modifier_rule',
                         ],
                         'subscribe' => [
                             'collect_at' => 'next_billing_date',
@@ -5722,6 +5804,9 @@ final class GeneratedExamplesTest extends TestCase
                 [
                     'type' => 'apply',
                     'apply' => [
+                        'effective_at' => [
+                            'type' => 'current_billing_period_end',
+                        ],
                         'type' => 'invoice_discount_rule',
                         'invoice_discount_rule' => [
                             'applies_to' => 'cadence',
@@ -5731,6 +5816,21 @@ final class GeneratedExamplesTest extends TestCase
                                     'type' => 'indefinite',
                                 ],
                                 'percent_off' => 'percent_off',
+                            ],
+                        ],
+                        'spend_modifier_rule' => [
+                            'applies_to' => 'cadence',
+                            'type' => 'max_billing_period_spend',
+                            'max_billing_period_spend' => [
+                                'amount' => [
+                                    'type' => 'custom_pricing_unit',
+                                    'custom_pricing_unit' => [
+                                        'value' => 'value',
+                                    ],
+                                ],
+                                'custom_pricing_unit_overage_rate' => [
+                                    'id' => 'obj_123',
+                                ],
                             ],
                         ],
                     ],
@@ -5791,8 +5891,12 @@ final class GeneratedExamplesTest extends TestCase
                         'type' => 'pricing_plan_subscription_details',
                     ],
                     'remove' => [
+                        'effective_at' => [
+                            'type' => 'current_billing_period_end',
+                        ],
                         'type' => 'invoice_discount_rule',
                         'invoice_discount_rule' => 'invoice_discount_rule',
+                        'spend_modifier_rule' => 'spend_modifier_rule',
                     ],
                     'subscribe' => [
                         'collect_at' => 'next_billing_date',
@@ -6691,6 +6795,109 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Billing\MeteredItem::class, $result);
     }
 
+    public function testV2BillingOneTimeItemGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/one_time_items',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'display_name' => 'display_name',
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.one_time_item',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->oneTimeItems->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\OneTimeItem::class, $result->data[0]);
+    }
+
+    public function testV2BillingOneTimeItemPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/one_time_items',
+            ['display_name' => 'display_name'],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => 'display_name',
+                'id' => 'obj_123',
+                'object' => 'v2.billing.one_time_item',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->oneTimeItems->create([
+            'display_name' => 'display_name',
+        ]);
+        self::assertInstanceOf(V2\Billing\OneTimeItem::class, $result);
+    }
+
+    public function testV2BillingOneTimeItemGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/one_time_items/id_123',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => 'display_name',
+                'id' => 'obj_123',
+                'object' => 'v2.billing.one_time_item',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->oneTimeItems->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\OneTimeItem::class, $result);
+    }
+
+    public function testV2BillingOneTimeItemPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/one_time_items/id_123',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name' => 'display_name',
+                'id' => 'obj_123',
+                'object' => 'v2.billing.one_time_item',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->oneTimeItems->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\OneTimeItem::class, $result);
+    }
+
     public function testV2BillingPricingPlanGet()
     {
         $this->stubRequest(
@@ -7379,6 +7586,150 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->billing->rateCards->update('id_123', []);
         self::assertInstanceOf(V2\Billing\RateCard::class, $result);
+    }
+
+    public function testV2BillingRateCardsCustomPricingUnitOverageRateGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/rate_cards/rate_card_id_123/custom_pricing_unit_overage_rates',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'custom_pricing_unit' => 'custom_pricing_unit',
+                        'id' => 'obj_123',
+                        'object' => 'v2.billing.rate_card_custom_pricing_unit_overage_rate',
+                        'one_time_item' => [
+                            'created' => '1970-01-12T21:42:34.472Z',
+                            'display_name' => 'display_name',
+                            'id' => 'obj_123',
+                            'object' => 'v2.billing.one_time_item',
+                            'livemode' => [],
+                        ],
+                        'rate_card' => 'rate_card',
+                        'rate_card_version' => 'rate_card_version',
+                        'unit_amount' => 'unit_amount',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCards->customPricingUnitOverageRates->all(
+            'rate_card_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\RateCardCustomPricingUnitOverageRate::class, $result->data[0]);
+    }
+
+    public function testV2BillingRateCardsCustomPricingUnitOverageRatePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/rate_cards/rate_card_id_123/custom_pricing_unit_overage_rates',
+            [
+                'custom_pricing_unit' => 'custom_pricing_unit',
+                'one_time_item' => 'one_time_item',
+                'unit_amount' => 'unit_amount',
+            ],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'custom_pricing_unit' => 'custom_pricing_unit',
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card_custom_pricing_unit_overage_rate',
+                'one_time_item' => [
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'display_name' => 'display_name',
+                    'id' => 'obj_123',
+                    'object' => 'v2.billing.one_time_item',
+                    'livemode' => [],
+                ],
+                'rate_card' => 'rate_card',
+                'rate_card_version' => 'rate_card_version',
+                'unit_amount' => 'unit_amount',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCards->customPricingUnitOverageRates->create(
+            'rate_card_id_123',
+            [
+                'custom_pricing_unit' => 'custom_pricing_unit',
+                'one_time_item' => 'one_time_item',
+                'unit_amount' => 'unit_amount',
+            ]
+        );
+        self::assertInstanceOf(V2\Billing\RateCardCustomPricingUnitOverageRate::class, $result);
+    }
+
+    public function testV2BillingRateCardsCustomPricingUnitOverageRateDelete()
+    {
+        $this->stubRequest(
+            'delete',
+            '/v2/billing/rate_cards/rate_card_id_123/custom_pricing_unit_overage_rates/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'abc_123',
+                'object' => 'some.object.tag',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCards->customPricingUnitOverageRates->delete(
+            'rate_card_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\DeletedObject::class, $result);
+    }
+
+    public function testV2BillingRateCardsCustomPricingUnitOverageRateGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/rate_cards/rate_card_id_123/custom_pricing_unit_overage_rates/id_123',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'custom_pricing_unit' => 'custom_pricing_unit',
+                'id' => 'obj_123',
+                'object' => 'v2.billing.rate_card_custom_pricing_unit_overage_rate',
+                'one_time_item' => [
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'display_name' => 'display_name',
+                    'id' => 'obj_123',
+                    'object' => 'v2.billing.one_time_item',
+                    'livemode' => [],
+                ],
+                'rate_card' => 'rate_card',
+                'rate_card_version' => 'rate_card_version',
+                'unit_amount' => 'unit_amount',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->rateCards->customPricingUnitOverageRates->retrieve(
+            'rate_card_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\RateCardCustomPricingUnitOverageRate::class, $result);
     }
 
     public function testV2BillingRateCardsRateGet()
@@ -9300,7 +9651,10 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'data' => [
                     '0' => [
-                        'amount' => [],
+                        'amount' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -9328,7 +9682,10 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -9359,11 +9716,21 @@ final class GeneratedExamplesTest extends TestCase
                         'created' => '1970-01-12T21:42:34.472Z',
                         'exchange_rate' => 'exchange_rate',
                         'financial_account' => 'financial_account',
-                        'from' => ['amount' => []],
+                        'from' => [
+                            'amount' => [
+                                'value' => [],
+                                'currency' => 'usd',
+                            ],
+                        ],
                         'id' => 'obj_123',
                         'livemode' => [],
                         'object' => 'v2.money_management.currency_conversion',
-                        'to' => ['amount' => []],
+                        'to' => [
+                            'amount' => [
+                                'value' => [],
+                                'currency' => 'usd',
+                            ],
+                        ],
                     ],
                 ],
                 'next_page_url' => null,
@@ -9405,11 +9772,21 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'exchange_rate' => 'exchange_rate',
                 'financial_account' => 'financial_account',
-                'from' => ['amount' => []],
+                'from' => [
+                    'amount' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
+                ],
                 'id' => 'obj_123',
                 'livemode' => [],
                 'object' => 'v2.money_management.currency_conversion',
-                'to' => ['amount' => []],
+                'to' => [
+                    'amount' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
+                ],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -9446,11 +9823,21 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'exchange_rate' => 'exchange_rate',
                 'financial_account' => 'financial_account',
-                'from' => ['amount' => []],
+                'from' => [
+                    'amount' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
+                ],
                 'id' => 'obj_123',
                 'livemode' => [],
                 'object' => 'v2.money_management.currency_conversion',
-                'to' => ['amount' => []],
+                'to' => [
+                    'amount' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
+                ],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -9474,9 +9861,24 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'balance' => [
-                            'available' => ['key' => []],
-                            'inbound_pending' => ['key' => []],
-                            'outbound_pending' => ['key' => []],
+                            'available' => [
+                                'key' => [
+                                    'value' => [],
+                                    'currency' => 'usd',
+                                ],
+                            ],
+                            'inbound_pending' => [
+                                'key' => [
+                                    'value' => [],
+                                    'currency' => 'usd',
+                                ],
+                            ],
+                            'outbound_pending' => [
+                                'key' => [
+                                    'value' => [],
+                                    'currency' => 'usd',
+                                ],
+                            ],
                         ],
                         'country' => 'country',
                         'created' => '1970-01-12T21:42:34.472Z',
@@ -9508,9 +9910,24 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'balance' => [
-                    'available' => ['key' => []],
-                    'inbound_pending' => ['key' => []],
-                    'outbound_pending' => ['key' => []],
+                    'available' => [
+                        'key' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
+                    ],
+                    'inbound_pending' => [
+                        'key' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
+                    ],
+                    'outbound_pending' => [
+                        'key' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
+                    ],
                 ],
                 'country' => 'country',
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -9539,9 +9956,24 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'balance' => [
-                    'available' => ['key' => []],
-                    'inbound_pending' => ['key' => []],
-                    'outbound_pending' => ['key' => []],
+                    'available' => [
+                        'key' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
+                    ],
+                    'inbound_pending' => [
+                        'key' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
+                    ],
+                    'outbound_pending' => [
+                        'key' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
+                    ],
                 ],
                 'country' => 'country',
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -9571,9 +10003,24 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'balance' => [
-                    'available' => ['key' => []],
-                    'inbound_pending' => ['key' => []],
-                    'outbound_pending' => ['key' => []],
+                    'available' => [
+                        'key' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
+                    ],
+                    'inbound_pending' => [
+                        'key' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
+                    ],
+                    'outbound_pending' => [
+                        'key' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
+                    ],
                 ],
                 'country' => 'country',
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -9603,9 +10050,24 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'balance' => [
-                    'available' => ['key' => []],
-                    'inbound_pending' => ['key' => []],
-                    'outbound_pending' => ['key' => []],
+                    'available' => [
+                        'key' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
+                    ],
+                    'inbound_pending' => [
+                        'key' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
+                    ],
+                    'outbound_pending' => [
+                        'key' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
+                    ],
                 ],
                 'country' => 'country',
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -9724,17 +10186,26 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'data' => [
                     '0' => [
-                        'amount' => [],
+                        'amount' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'description' => 'description',
                         'from' => [
-                            'debited' => [],
+                            'debited' => [
+                                'value' => [],
+                                'currency' => 'usd',
+                            ],
                             'payment_method' => ['type' => 'type'],
                         ],
                         'id' => 'obj_123',
                         'object' => 'v2.money_management.inbound_transfer',
                         'to' => [
-                            'credited' => [],
+                            'credited' => [
+                                'value' => [],
+                                'currency' => 'usd',
+                            ],
                             'financial_account' => 'financial_account',
                         ],
                         'transfer_history' => [
@@ -9782,17 +10253,26 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => 'description',
                 'from' => [
-                    'debited' => [],
+                    'debited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'payment_method' => ['type' => 'type'],
                 ],
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.inbound_transfer',
                 'to' => [
-                    'credited' => [],
+                    'credited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'financial_account' => 'financial_account',
                 ],
                 'transfer_history' => [
@@ -9835,17 +10315,26 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => 'description',
                 'from' => [
-                    'debited' => [],
+                    'debited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'payment_method' => ['type' => 'type'],
                 ],
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.inbound_transfer',
                 'to' => [
-                    'credited' => [],
+                    'credited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'financial_account' => 'financial_account',
                 ],
                 'transfer_history' => [
@@ -9880,11 +10369,17 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'data' => [
                     '0' => [
-                        'amount' => [],
+                        'amount' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
                         'cancelable' => [],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'from' => [
-                            'debited' => [],
+                            'debited' => [
+                                'value' => [],
+                                'currency' => 'usd',
+                            ],
                             'financial_account' => 'financial_account',
                         ],
                         'id' => 'obj_123',
@@ -9893,7 +10388,10 @@ final class GeneratedExamplesTest extends TestCase
                         'statement_descriptor' => 'statement_descriptor',
                         'status' => 'canceled',
                         'to' => [
-                            'credited' => [],
+                            'credited' => [
+                                'value' => [],
+                                'currency' => 'usd',
+                            ],
                             'payout_method' => 'payout_method',
                             'recipient' => 'recipient',
                         ],
@@ -9935,11 +10433,17 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
-                    'debited' => [],
+                    'debited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'financial_account' => 'financial_account',
                 ],
                 'id' => 'obj_123',
@@ -9948,7 +10452,10 @@ final class GeneratedExamplesTest extends TestCase
                 'statement_descriptor' => 'statement_descriptor',
                 'status' => 'canceled',
                 'to' => [
-                    'credited' => [],
+                    'credited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'payout_method' => 'payout_method',
                     'recipient' => 'recipient',
                 ],
@@ -9985,11 +10492,17 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
-                    'debited' => [],
+                    'debited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'financial_account' => 'financial_account',
                 ],
                 'id' => 'obj_123',
@@ -9998,7 +10511,10 @@ final class GeneratedExamplesTest extends TestCase
                 'statement_descriptor' => 'statement_descriptor',
                 'status' => 'canceled',
                 'to' => [
-                    'credited' => [],
+                    'credited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'payout_method' => 'payout_method',
                     'recipient' => 'recipient',
                 ],
@@ -10024,11 +10540,17 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
-                    'debited' => [],
+                    'debited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'financial_account' => 'financial_account',
                 ],
                 'id' => 'obj_123',
@@ -10037,7 +10559,10 @@ final class GeneratedExamplesTest extends TestCase
                 'statement_descriptor' => 'statement_descriptor',
                 'status' => 'canceled',
                 'to' => [
-                    'credited' => [],
+                    'credited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'payout_method' => 'payout_method',
                     'recipient' => 'recipient',
                 ],
@@ -10077,16 +10602,25 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'estimated_fees' => [
                     '0' => [
-                        'amount' => [],
+                        'amount' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
                         'type' => 'cross_border_payout_fee',
                     ],
                 ],
                 'from' => [
-                    'debited' => [],
+                    'debited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'financial_account' => 'financial_account',
                 ],
                 'fx_quote' => [
@@ -10098,7 +10632,10 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.outbound_payment_quote',
                 'to' => [
-                    'credited' => [],
+                    'credited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'payout_method' => 'payout_method',
                     'recipient' => 'recipient',
                 ],
@@ -10134,16 +10671,25 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'estimated_fees' => [
                     '0' => [
-                        'amount' => [],
+                        'amount' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
                         'type' => 'cross_border_payout_fee',
                     ],
                 ],
                 'from' => [
-                    'debited' => [],
+                    'debited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'financial_account' => 'financial_account',
                 ],
                 'fx_quote' => [
@@ -10155,7 +10701,10 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.outbound_payment_quote',
                 'to' => [
-                    'credited' => [],
+                    'credited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'payout_method' => 'payout_method',
                     'recipient' => 'recipient',
                 ],
@@ -10373,11 +10922,17 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'data' => [
                     '0' => [
-                        'amount' => [],
+                        'amount' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
                         'cancelable' => [],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'from' => [
-                            'debited' => [],
+                            'debited' => [
+                                'value' => [],
+                                'currency' => 'usd',
+                            ],
                             'financial_account' => 'financial_account',
                         ],
                         'id' => 'obj_123',
@@ -10385,7 +10940,10 @@ final class GeneratedExamplesTest extends TestCase
                         'statement_descriptor' => 'statement_descriptor',
                         'status' => 'canceled',
                         'to' => [
-                            'credited' => [],
+                            'credited' => [
+                                'value' => [],
+                                'currency' => 'usd',
+                            ],
                             'payout_method' => 'payout_method',
                         ],
                         'trace_id' => ['status' => 'pending'],
@@ -10425,11 +10983,17 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
-                    'debited' => [],
+                    'debited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'financial_account' => 'financial_account',
                 ],
                 'id' => 'obj_123',
@@ -10437,7 +11001,10 @@ final class GeneratedExamplesTest extends TestCase
                 'statement_descriptor' => 'statement_descriptor',
                 'status' => 'canceled',
                 'to' => [
-                    'credited' => [],
+                    'credited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'payout_method' => 'payout_method',
                 ],
                 'trace_id' => ['status' => 'pending'],
@@ -10472,11 +11039,17 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
-                    'debited' => [],
+                    'debited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'financial_account' => 'financial_account',
                 ],
                 'id' => 'obj_123',
@@ -10484,7 +11057,10 @@ final class GeneratedExamplesTest extends TestCase
                 'statement_descriptor' => 'statement_descriptor',
                 'status' => 'canceled',
                 'to' => [
-                    'credited' => [],
+                    'credited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'payout_method' => 'payout_method',
                 ],
                 'trace_id' => ['status' => 'pending'],
@@ -10509,11 +11085,17 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
-                    'debited' => [],
+                    'debited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'financial_account' => 'financial_account',
                 ],
                 'id' => 'obj_123',
@@ -10521,7 +11103,10 @@ final class GeneratedExamplesTest extends TestCase
                 'statement_descriptor' => 'statement_descriptor',
                 'status' => 'canceled',
                 'to' => [
-                    'credited' => [],
+                    'credited' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                     'payout_method' => 'payout_method',
                 ],
                 'trace_id' => ['status' => 'pending'],
@@ -10709,7 +11294,10 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'data' => [
                     '0' => [
-                        'amount' => [],
+                        'amount' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -10739,7 +11327,10 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -10769,7 +11360,10 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'data' => [
                     '0' => [
-                        'amount' => [],
+                        'amount' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -10799,7 +11393,10 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -10921,11 +11518,23 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'data' => [
                     '0' => [
-                        'amount' => [],
+                        'amount' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
                         'balance_impact' => [
-                            'available' => [],
-                            'inbound_pending' => [],
-                            'outbound_pending' => [],
+                            'available' => [
+                                'value' => [],
+                                'currency' => 'usd',
+                            ],
+                            'inbound_pending' => [
+                                'value' => [],
+                                'currency' => 'usd',
+                            ],
+                            'outbound_pending' => [
+                                'value' => [],
+                                'currency' => 'usd',
+                            ],
                         ],
                         'category' => 'issuing_dispute_provisional_credit_reversal',
                         'created' => '1970-01-12T21:42:34.472Z',
@@ -10958,11 +11567,23 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'balance_impact' => [
-                    'available' => [],
-                    'inbound_pending' => [],
-                    'outbound_pending' => [],
+                    'available' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
+                    'inbound_pending' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
+                    'outbound_pending' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                 ],
                 'category' => 'issuing_dispute_provisional_credit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -10996,9 +11617,18 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'balance_impact' => [
-                            'available' => [],
-                            'inbound_pending' => [],
-                            'outbound_pending' => [],
+                            'available' => [
+                                'value' => [],
+                                'currency' => 'usd',
+                            ],
+                            'inbound_pending' => [
+                                'value' => [],
+                                'currency' => 'usd',
+                            ],
+                            'outbound_pending' => [
+                                'value' => [],
+                                'currency' => 'usd',
+                            ],
                         ],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'effective_at' => '1970-01-03T20:38:28.043Z',
@@ -11034,9 +11664,18 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'balance_impact' => [
-                    'available' => [],
-                    'inbound_pending' => [],
-                    'outbound_pending' => [],
+                    'available' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
+                    'inbound_pending' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
+                    'outbound_pending' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'effective_at' => '1970-01-03T20:38:28.043Z',
@@ -11071,7 +11710,10 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'data' => [
                     '0' => [
-                        'amount_requested' => [],
+                        'amount_requested' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
                         'cadence' => 'unscheduled',
                         'compartment_id' => 'compartment_id',
                         'created' => '1970-01-12T21:42:34.472Z',
@@ -11118,7 +11760,10 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount_requested' => [],
+                'amount_requested' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'cadence' => 'unscheduled',
                 'compartment_id' => 'compartment_id',
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -11160,7 +11805,10 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount_requested' => [],
+                'amount_requested' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'cadence' => 'unscheduled',
                 'compartment_id' => 'compartment_id',
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -11196,7 +11844,10 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount_requested' => [],
+                'amount_requested' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'cadence' => 'unscheduled',
                 'compartment_id' => 'compartment_id',
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -11232,7 +11883,10 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount_requested' => [],
+                'amount_requested' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'cadence' => 'unscheduled',
                 'compartment_id' => 'compartment_id',
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -11270,7 +11924,10 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'data' => [
                     '0' => [
-                        'amount' => [],
+                        'amount' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'expected_settlement_date' => '1970-01-22T14:14:13.629Z',
                         'financial_account' => 'financial_account',
@@ -11310,7 +11967,10 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'expected_settlement_date' => '1970-01-22T14:14:13.629Z',
                 'financial_account' => 'financial_account',
@@ -11345,7 +12005,10 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'expected_settlement_date' => '1970-01-22T14:14:13.629Z',
                 'financial_account' => 'financial_account',
@@ -11375,7 +12038,10 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'expected_settlement_date' => '1970-01-22T14:14:13.629Z',
                 'financial_account' => 'financial_account',
@@ -11405,7 +12071,10 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'expected_settlement_date' => '1970-01-22T14:14:13.629Z',
                 'financial_account' => 'financial_account',
@@ -11435,7 +12104,10 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'expected_settlement_date' => '1970-01-22T14:14:13.629Z',
                 'financial_account' => 'financial_account',
@@ -11468,7 +12140,10 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'account' => 'account',
-                        'amount' => [],
+                        'amount' => [
+                            'value' => [],
+                            'currency' => 'usd',
+                        ],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'id' => 'obj_123',
                         'object' => 'v2.payments.settlement_allocation_intent_split',
@@ -11509,7 +12184,10 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'account' => 'account',
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'object' => 'v2.payments.settlement_allocation_intent_split',
@@ -11545,7 +12223,10 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'account' => 'account',
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'object' => 'v2.payments.settlement_allocation_intent_split',
@@ -11575,7 +12256,10 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'account' => 'account',
-                'amount' => [],
+                'amount' => [
+                    'value' => [],
+                    'currency' => 'usd',
+                ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'object' => 'v2.payments.settlement_allocation_intent_split',
@@ -12021,7 +12705,12 @@ final class GeneratedExamplesTest extends TestCase
             [],
             false,
             [
-                'amounts' => ['0' => []],
+                'amounts' => [
+                    '0' => [
+                        'value' => [],
+                        'currency' => 'usd',
+                    ],
+                ],
                 'object' => 'financial_address_generated_microdeposits',
                 'status' => 'accepted',
                 'livemode' => [],
@@ -12265,7 +12954,10 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v2/money_management/outbound_payments',
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => 111972721,
+                    'currency' => 'usd',
+                ],
                 'from' => [
                     'currency' => 'usd',
                     'financial_account' => 'financial_account',
@@ -12286,7 +12978,10 @@ final class GeneratedExamplesTest extends TestCase
 
         try {
             $this->v2Client->v2->moneyManagement->outboundPayments->create([
-                'amount' => [],
+                'amount' => [
+                    'value' => 111972721,
+                    'currency' => 'usd',
+                ],
                 'from' => [
                     'currency' => 'usd',
                     'financial_account' => 'financial_account',
@@ -12457,7 +13152,10 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v2/money_management/outbound_payments',
             [
-                'amount' => [],
+                'amount' => [
+                    'value' => 111972721,
+                    'currency' => 'usd',
+                ],
                 'from' => [
                     'currency' => 'usd',
                     'financial_account' => 'financial_account',
@@ -12478,7 +13176,10 @@ final class GeneratedExamplesTest extends TestCase
 
         try {
             $this->v2Client->v2->moneyManagement->outboundPayments->create([
-                'amount' => [],
+                'amount' => [
+                    'value' => 111972721,
+                    'currency' => 'usd',
+                ],
                 'from' => [
                     'currency' => 'usd',
                     'financial_account' => 'financial_account',

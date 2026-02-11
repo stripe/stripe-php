@@ -164,7 +164,7 @@ class SubscriptionService extends AbstractService
      * invoice will void automatically if not paid by the expiration date.
      *
      * @param string $id
-     * @param null|array{billing_cycle_anchor?: string, expand?: string[], proration_behavior?: string, proration_date?: int} $params
+     * @param null|array{billing_cycle_anchor?: string, expand?: string[], proration_behavior?: string, proration_date?: int, payment_behavior?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Subscription

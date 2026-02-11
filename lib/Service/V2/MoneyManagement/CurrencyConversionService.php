@@ -30,7 +30,7 @@ class CurrencyConversionService extends \Stripe\Service\AbstractService
     /**
      * Create a CurrencyConversion.
      *
-     * @param null|array{financial_account: string, from: array{amount?: array{value?: int, currency?: string}, currency?: string}, to: array{amount?: array{value?: int, currency?: string}, currency?: string}} $params
+     * @param null|array{financial_account: string, from: array{amount?: array{value: int, currency: string}, currency?: string}, to: array{amount?: array{value: int, currency: string}, currency?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\CurrencyConversion

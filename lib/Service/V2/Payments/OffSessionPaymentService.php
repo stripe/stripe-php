@@ -61,7 +61,7 @@ class OffSessionPaymentService extends \Stripe\Service\AbstractService
     /**
      * Creates an OffSessionPayment object.
      *
-     * @param null|array{amount: array{value?: int, currency?: string}, cadence: string, capture?: array{capture_method: string}, customer: string, metadata: array<string, string>, on_behalf_of?: string, payment_method: string, payment_method_options?: array{card?: array{network_transaction_id: string}}, payments_orchestration?: array{enabled: bool}, retry_details?: array{retry_policy?: string, retry_strategy?: string}, statement_descriptor?: string, statement_descriptor_suffix?: string, test_clock?: string, transfer_data?: array{amount?: int, destination: string}} $params
+     * @param null|array{amount: array{value: int, currency: string}, cadence: string, capture?: array{capture_method: string}, customer: string, metadata: array<string, string>, on_behalf_of?: string, payment_method: string, payment_method_options?: array{card?: array{network_transaction_id: string}}, payments_orchestration?: array{enabled: bool}, retry_details?: array{retry_policy?: string, retry_strategy?: string}, statement_descriptor?: string, statement_descriptor_suffix?: string, test_clock?: string, transfer_data?: array{amount?: int, destination: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Payments\OffSessionPayment
