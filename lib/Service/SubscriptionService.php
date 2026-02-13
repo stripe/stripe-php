@@ -143,7 +143,7 @@ class SubscriptionService extends AbstractService
      * pause subscriptions with attached schedules.
      *
      * @param string $id
-     * @param null|array{bill_for?: array{outstanding_usage?: bool, unused_time?: bool}, expand?: string[], invoicing_behavior?: string, type: string} $params
+     * @param null|array{bill_for?: array{outstanding_usage_through?: array{type: string}, unused_time_from?: array{type: string}}, expand?: string[], invoicing_behavior?: string, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Subscription
@@ -164,7 +164,7 @@ class SubscriptionService extends AbstractService
      * invoice will void automatically if not paid by the expiration date.
      *
      * @param string $id
-     * @param null|array{billing_cycle_anchor?: string, expand?: string[], proration_behavior?: string, proration_date?: int, payment_behavior?: string} $params
+     * @param null|array{billing_cycle_anchor?: string, expand?: string[], proration_behavior?: string, proration_date?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Subscription
