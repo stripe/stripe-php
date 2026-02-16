@@ -597,4 +597,16 @@ EOS;
         $inner = $obj->metadata;
         self::assertSame('value', $inner->metadata);
     }
+
+    public function testDeserializeEmptyPreviousAttributes()
+    {
+        /** @var mixed $obj */
+        $obj = StripeObject::constructFrom([
+            'data' => [
+                'previous_attributes' => [],
+            ],
+        ]);
+
+        self::assertInstanceOf(StripeObject::class, $obj->data->previous_attributes);
+    }
 }
