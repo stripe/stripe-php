@@ -12,6 +12,7 @@ namespace Stripe\Billing;
  * @property string $alert_type Defines the type of the alert.
  * @property null|(object{filters: null|((object{customer: null|string|\Stripe\Customer, type: string}&\Stripe\StripeObject))[], lte: (object{balance_type: string, custom_pricing_unit?: null|(object{custom_pricing_unit_details: null|(object{created: int, display_name: string, id: string, lookup_key: null|string, metadata: \Stripe\StripeObject, status: string}&\Stripe\StripeObject), id: string, value: string}&\Stripe\StripeObject), monetary: null|(object{currency: string, value: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $credit_balance_threshold Encapsulates configuration of the alert to monitor billing credit balance.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property null|(object{aggregation_period: string, filters: null|(object{billable_items: null|string[], billing_cadence: null|string, pricing_plan: null|string, pricing_plan_subscription: null|string}&\Stripe\StripeObject), group_by: null|string, gte: (object{amount: null|(object{currency: string, value: int}&\Stripe\StripeObject), custom_pricing_unit: null|(object{custom_pricing_unit_details: null|(object{created: int, display_name: string, id: string, lookup_key: null|string, metadata: \Stripe\StripeObject, status: string}&\Stripe\StripeObject), id: string, value: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $spend_threshold Encapsulates the alert's configuration to monitor spend on pricing plan subscriptions.
  * @property null|string $status Status of the alert. This can be active, inactive or archived.
  * @property string $title Title of the alert.
  * @property null|(object{filters: null|((object{customer: null|string|\Stripe\Customer, type: string}&\Stripe\StripeObject))[], gte: int, meter: Meter|string, recurrence: string}&\Stripe\StripeObject) $usage_threshold Encapsulates configuration of the alert to monitor usage on a specific <a href="https://docs.stripe.com/api/billing/meter">Billing Meter</a>.
@@ -21,6 +22,7 @@ class Alert extends \Stripe\ApiResource
     const OBJECT_NAME = 'billing.alert';
 
     const ALERT_TYPE_CREDIT_BALANCE_THRESHOLD = 'credit_balance_threshold';
+    const ALERT_TYPE_SPEND_THRESHOLD = 'spend_threshold';
     const ALERT_TYPE_USAGE_THRESHOLD = 'usage_threshold';
 
     const STATUS_ACTIVE = 'active';
@@ -30,7 +32,7 @@ class Alert extends \Stripe\ApiResource
     /**
      * Creates a billing alert.
      *
-     * @param null|array{alert_type: string, credit_balance_threshold?: array{filters?: array{credit_grants?: array{applicability_config: array{scope: array{billable_items?: array{id: string}[], price_type?: string, prices?: array{id: string}[]}}}, customer?: string, type: string}[], lte: array{balance_type: string, custom_pricing_unit?: array{id: string, value: string}, monetary?: array{currency: string, value: int}}}, expand?: string[], title: string, usage_threshold?: array{filters?: array{customer?: string, type: string}[], gte: int, meter: string, recurrence: string}} $params
+     * @param null|array{alert_type: string, credit_balance_threshold?: array{filters?: array{credit_grants?: array{applicability_config: array{scope: array{billable_items?: array{id: string}[], price_type?: string, prices?: array{id: string}[]}}}, customer?: string, type: string}[], lte: array{balance_type: string, custom_pricing_unit?: array{id: string, value: string}, monetary?: array{currency: string, value: int}}}, expand?: string[], title: string, usage_threshold?: array{filters?: array{customer?: string, type: string}[], gte: int, meter: string, recurrence: string}, spend_threshold?: array{aggregation_period: string, filters?: array{billable_items?: string[], billing_cadence?: string, pricing_plan?: string, pricing_plan_subscription?: string}, group_by?: string, gte: array{amount?: array{currency: string, value: int}, custom_pricing_unit?: array{id: string, value: string}, type: string}}} $params
      * @param null|array|string $options
      *
      * @return Alert the created resource
