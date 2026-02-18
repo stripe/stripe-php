@@ -32,7 +32,7 @@ namespace Stripe;
  * @property null|(object{buyer_id: null|string, cashtag: null|string}&StripeObject) $cashapp
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|(object{}&StripeObject) $crypto
- * @property null|(object{display_name: null|string, logo: null|(object{content_type: null|string, url: string}&StripeObject), type: string}&StripeObject) $custom
+ * @property null|(object{display_name: null|string, logo: null|(object{content_type: null|string, url: string}&StripeObject), type: string, payment_method_reference?: null|string, usage?: null|string}&StripeObject) $custom
  * @property null|Customer|string $customer The ID of the Customer to which this PaymentMethod is saved. This will not be set when the PaymentMethod has not been saved to a Customer.
  * @property null|string $customer_account
  * @property null|(object{}&StripeObject) $customer_balance
@@ -229,7 +229,7 @@ class PaymentMethod extends ApiResource
      * to be updated.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{allow_redisplay?: string, billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string, tax_id?: string}, card?: array{exp_month?: int, exp_year?: int, networks?: array{preferred?: null|string}}, expand?: string[], metadata?: null|array<string, string>, payto?: array{account_number?: string, bsb_number?: string, pay_id?: string}, us_bank_account?: array{account_holder_type?: string, account_type?: string}} $params
+     * @param null|array{allow_redisplay?: string, billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string, tax_id?: string}, card?: array{exp_month?: int, exp_year?: int, networks?: array{preferred?: null|string}}, expand?: string[], metadata?: null|array<string, string>, payto?: array{account_number?: string, bsb_number?: string, pay_id?: string}, us_bank_account?: array{account_holder_type?: string, account_type?: string}, custom?: array{payment_method_reference?: string, usage?: string}} $params
      * @param null|array|string $opts
      *
      * @return PaymentMethod the updated resource
