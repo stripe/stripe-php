@@ -1,5 +1,16 @@
 # Changelog
 
+## 19.4.0-alpha.4 - 2026-02-19
+* [#2010](https://github.com/stripe/stripe-php/pull/2010) Update generated code for private-preview
+  * Add support for `spend_threshold` on `Billing.Alert` and `Billing\Alert.create().$params`
+  * ⚠️ Add support for new value `spend_threshold` on enum `Billing.Alert.alert_type`
+  * Add support for `invoice_item`, `proration_details`, `proration`, and `subscription` on `InvoiceLineItem.parent.schedule_details`
+  * Add support for `custom` on `PaymentMethod.update().$params`
+  * Add support for `payment_method_reference` and `usage` on `PaymentMethod.custom`
+  * Add support for `outstanding_usage_through` and `unused_time_from` on `Subscription.pause().$params.bill_for`
+  * ⚠️ Remove support for `outstanding_usage` and `unused_time` on `Subscription.pause().$params.bill_for`
+  * ⚠️ Remove support for `payment_behavior` on `Subscription.resume().$params`
+
 ## 19.4.0-alpha.3 - 2026-02-11
 * [#2008](https://github.com/stripe/stripe-php/pull/2008) Update generated code for private-preview
   * Add support for new resources `V2.Billing.CadenceSpendModifier`, `V2.Billing.OneTimeItem`, and `V2.Billing.RateCardCustomPricingUnitOverageRate`
