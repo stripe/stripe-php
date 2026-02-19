@@ -18,6 +18,7 @@ class ObjectTypes
             \Stripe\AccountLink::OBJECT_NAME => \Stripe\AccountLink::class,
             \Stripe\AccountNotice::OBJECT_NAME => \Stripe\AccountNotice::class,
             \Stripe\AccountSession::OBJECT_NAME => \Stripe\AccountSession::class,
+            \Stripe\AccountSignals::OBJECT_NAME => \Stripe\AccountSignals::class,
             \Stripe\ApplePayDomain::OBJECT_NAME => \Stripe\ApplePayDomain::class,
             \Stripe\Application::OBJECT_NAME => \Stripe\Application::class,
             \Stripe\ApplicationFee::OBJECT_NAME => \Stripe\ApplicationFee::class,

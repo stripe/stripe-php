@@ -521,4 +521,20 @@ class Account extends ApiResource
     {
         return self::_updateNestedResource($id, static::PATH_PERSONS, $personId, $params, $opts);
     }
+    const PATH_SIGNALS = '/signals';
+
+    /**
+     * @param string $id the ID of the account to which the account signals belongs
+     * @param null|array $params
+     * @param null|array|string $opts
+     * @param mixed $signalId
+     *
+     * @return AccountSignals
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public static function retrieveSignal($id, $signalId, $params = null, $opts = null)
+    {
+        return self::_retrieveNestedResource($id, static::PATH_SIGNALS, $params, $opts);
+    }
 }
