@@ -5,7 +5,7 @@
 namespace Stripe\V2\Billing;
 
 /**
- * Fix me empty_doc_string.
+ * A Meter Event is a usage record that captures billable activity for usage-based billing. Meter Events contain an event name, timestamp, and payload with customer mapping and usage value, enabling accurate usage tracking and billing.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property int $created The creation time of this meter event.

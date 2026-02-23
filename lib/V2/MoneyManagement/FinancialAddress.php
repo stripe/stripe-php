@@ -5,7 +5,7 @@
 namespace Stripe\V2\MoneyManagement;
 
 /**
- * A FinancialAddress contains information needed to transfer money to a Financial Account. A Financial Account can have more than one Financial Address.
+ * A Financial Address contains information needed to transfer money to a Financial Account. A Financial Account can have more than one Financial Address.
  *
  * @property string $id The ID of a FinancialAddress.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
