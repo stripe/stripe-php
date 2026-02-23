@@ -294,6 +294,22 @@ class AccountService extends AbstractService
     }
 
     /**
+     * Retrieves the account’s Signal objects.
+     *
+     * @param string $parentId
+     * @param null|array{expand?: string[]} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\AccountSignals
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function retrieveSignal($parentId, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v1/accounts/%s/signals', $parentId), $params, $opts);
+    }
+
+    /**
      * Updates a <a href="/connect/accounts">connected account</a> by setting the
      * values of the parameters passed. Any parameters not provided are left unchanged.
      *

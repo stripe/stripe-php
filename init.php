@@ -94,6 +94,7 @@ require __DIR__ . '/lib/Account.php';
 require __DIR__ . '/lib/AccountLink.php';
 require __DIR__ . '/lib/AccountNotice.php';
 require __DIR__ . '/lib/AccountSession.php';
+require __DIR__ . '/lib/AccountSignals.php';
 require __DIR__ . '/lib/ApplePayDomain.php';
 require __DIR__ . '/lib/Application.php';
 require __DIR__ . '/lib/ApplicationFee.php';

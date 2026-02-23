@@ -13,6 +13,7 @@ namespace Stripe\FinancialConnections;
  * @property \Stripe\Collection<Account> $accounts The accounts that were collected as part of this Session.
  * @property null|string $client_secret A value that will be passed to the client to launch the authentication flow.
  * @property null|(object{account_subcategories: null|string[], countries: null|string[], institution?: string}&\Stripe\StripeObject) $filters
+ * @property null|(object{delivery_method?: string, return_url: null|string}&\Stripe\StripeObject) $hosted Settings for the Hosted UI mode.
  * @property null|(object{accounts: int}&\Stripe\StripeObject) $limits
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|(object{}&\Stripe\StripeObject) $manual_entry
@@ -23,6 +24,8 @@ namespace Stripe\FinancialConnections;
  * @property null|string $return_url For webview integrations only. Upon completing OAuth login in the native browser, the user will be redirected to this URL to return to your app.
  * @property null|string $status The current state of the session.
  * @property null|(object{cancelled?: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details
+ * @property null|string $ui_mode The UI mode for this session.
+ * @property null|string $url The hosted URL for this Session. Redirect customers to this URL to take them to the hosted authentication flow. This value is only present when the Session is active and the <code>ui_mode</code> is <code>hosted</code>.
  */
 class Session extends \Stripe\ApiResource
 {
@@ -33,12 +36,15 @@ class Session extends \Stripe\ApiResource
     const STATUS_PENDING = 'pending';
     const STATUS_SUCCEEDED = 'succeeded';
 
+    const UI_MODE_HOSTED = 'hosted';
+    const UI_MODE_MODAL = 'modal';
+
     /**
      * To launch the Financial Connections authorization flow, create a
      * <code>Session</code>. The session’s <code>client_secret</code> can be used to
      * launch the flow using Stripe.js.
      *
-     * @param null|array{account_holder?: array{account?: string, customer?: string, customer_account?: string, type: string}, expand?: string[], filters?: array{account_subcategories?: string[], countries?: string[], institution?: string}, limits?: array{accounts: int}, manual_entry?: array{mode?: string}, permissions: string[], prefetch?: string[], relink_options?: array{account?: string, authorization: string}, return_url?: string} $params
+     * @param null|array{account_holder?: array{account?: string, customer?: string, customer_account?: string, type: string}, expand?: string[], filters?: array{account_subcategories?: string[], countries?: string[], institution?: string}, limits?: array{accounts: int}, manual_entry?: array{mode?: string}, permissions: string[], prefetch?: string[], relink_options?: array{account?: string, authorization: string}, return_url?: string, hosted?: array{delivery_method?: string}, ui_mode?: string} $params
      * @param null|array|string $options
      *
      * @return Session the created resource
