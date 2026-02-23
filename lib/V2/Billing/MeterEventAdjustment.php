@@ -5,6 +5,8 @@
 namespace Stripe\V2\Billing;
 
 /**
+ * A Meter Event Adjustment is used to cancel or modify previously recorded meter events. Meter Event Adjustments allow you to correct billing data by canceling individual events or event ranges, with tracking of adjustment status and creation time.
+ *
  * @property string $id The unique id of this meter event adjustment.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property (object{identifier: string}&\Stripe\StripeObject) $cancel Specifies which event to cancel.
