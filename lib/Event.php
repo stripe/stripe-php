@@ -225,6 +225,13 @@ class Event extends ApiResource
     const REPORTING_REPORT_RUN_FAILED = 'reporting.report_run.failed';
     const REPORTING_REPORT_RUN_SUCCEEDED = 'reporting.report_run.succeeded';
     const REPORTING_REPORT_TYPE_UPDATED = 'reporting.report_type.updated';
+    const RESERVE_HOLD_CREATED = 'reserve.hold.created';
+    const RESERVE_HOLD_UPDATED = 'reserve.hold.updated';
+    const RESERVE_PLAN_CREATED = 'reserve.plan.created';
+    const RESERVE_PLAN_DISABLED = 'reserve.plan.disabled';
+    const RESERVE_PLAN_EXPIRED = 'reserve.plan.expired';
+    const RESERVE_PLAN_UPDATED = 'reserve.plan.updated';
+    const RESERVE_RELEASE_CREATED = 'reserve.release.created';
     const REVIEW_CLOSED = 'review.closed';
     const REVIEW_OPENED = 'review.opened';
     const SETUP_INTENT_CANCELED = 'setup_intent.canceled';
@@ -479,6 +486,13 @@ class Event extends ApiResource
     const TYPE_REPORTING_REPORT_RUN_FAILED = 'reporting.report_run.failed';
     const TYPE_REPORTING_REPORT_RUN_SUCCEEDED = 'reporting.report_run.succeeded';
     const TYPE_REPORTING_REPORT_TYPE_UPDATED = 'reporting.report_type.updated';
+    const TYPE_RESERVE_HOLD_CREATED = 'reserve.hold.created';
+    const TYPE_RESERVE_HOLD_UPDATED = 'reserve.hold.updated';
+    const TYPE_RESERVE_PLAN_CREATED = 'reserve.plan.created';
+    const TYPE_RESERVE_PLAN_DISABLED = 'reserve.plan.disabled';
+    const TYPE_RESERVE_PLAN_EXPIRED = 'reserve.plan.expired';
+    const TYPE_RESERVE_PLAN_UPDATED = 'reserve.plan.updated';
+    const TYPE_RESERVE_RELEASE_CREATED = 'reserve.release.created';
     const TYPE_REVIEW_CLOSED = 'review.closed';
     const TYPE_REVIEW_OPENED = 'review.opened';
     const TYPE_SETUP_INTENT_CANCELED = 'setup_intent.canceled';
