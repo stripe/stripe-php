@@ -6070,6 +6070,28 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Core\AccountToken::class, $result);
     }
 
+    public function testV2CoreBatchJobPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/batch_jobs',
+            ['endpoint' => '/v1/subscription_schedules'],
+            [],
+            false,
+            [
+                'id' => 'obj_123',
+                'object' => 'v2.core.batch_job',
+                'url' => 'url',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->batchJobs->create([
+            'endpoint' => '/v1/subscription_schedules',
+        ]);
+        self::assertInstanceOf(V2\Core\BatchJob::class, $result);
+    }
+
     public function testV2CoreEventGet()
     {
         $this->stubRequest(
