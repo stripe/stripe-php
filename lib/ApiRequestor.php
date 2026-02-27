@@ -384,10 +384,10 @@ class ApiRequestor
         ['OPENCODE', 'open_code'],
     ];
 
-    private static function _detectAIAgent(?callable $getEnv = null)
+    private static function _detectAIAgent($getEnv = null)
     {
         if (null === $getEnv) {
-            $getEnv = '\\getenv';
+            $getEnv = '\getenv';
         }
         foreach (self::AI_AGENTS as $agent) {
             $val = $getEnv($agent[0]);

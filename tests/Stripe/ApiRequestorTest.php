@@ -113,7 +113,7 @@ final class ApiRequestorTest extends TestCase
 
             $headers = $method->invoke(null, 'sk_test_notarealkey');
 
-            self::assertStringContainsString(
+            self::compatAssertStringContainsString(
                 'AIAgent/claude_code',
                 $headers['User-Agent']
             );
@@ -786,7 +786,7 @@ final class ApiRequestorTest extends TestCase
         $method = $reflector->getMethod('_detectAIAgent');
         $method->setAccessible(true);
 
-        $result = $method->invoke(null, function ($key) {
+        $result = $method->invoke(null, static function ($key) {
             return 'CLAUDECODE' === $key ? '1' : false;
         });
         self::assertSame('claude_code', $result);
@@ -798,7 +798,7 @@ final class ApiRequestorTest extends TestCase
         $method = $reflector->getMethod('_detectAIAgent');
         $method->setAccessible(true);
 
-        $result = $method->invoke(null, function ($key) {
+        $result = $method->invoke(null, static function ($key) {
             return false;
         });
         self::assertSame('', $result);
@@ -810,7 +810,7 @@ final class ApiRequestorTest extends TestCase
         $method = $reflector->getMethod('_detectAIAgent');
         $method->setAccessible(true);
 
-        $result = $method->invoke(null, function ($key) {
+        $result = $method->invoke(null, static function ($key) {
             return \in_array($key, ['CURSOR_AGENT', 'OPENCODE'], true) ? '1' : false;
         });
         self::assertSame('cursor', $result);
