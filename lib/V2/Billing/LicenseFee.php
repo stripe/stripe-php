@@ -5,6 +5,10 @@
 namespace Stripe\V2\Billing;
 
 /**
+ * A License Fee represents a versioned recurring charge for a Licensed Item, typically used for seat-based or quantity-based
+ * pricing. Each License Fee defines the pricing structure (flat unit amount or tiered pricing) and service interval. After
+ * creating a License Fee, you can subscribe customers to it by creating a License Fee Subscription.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property bool $active Whether this License Fee is active. Inactive License Fees cannot be used in new activations or be modified.

@@ -5,6 +5,10 @@
 namespace Stripe\V2\Billing;
 
 /**
+ * A Rate Card Rate represents a single usage-based price within a Rate Card. Each rate binds to one Metered Item and
+ * defines the pricing structure for that item, including either a flat unit amount or tiered pricing. Rates support
+ * features like graduated or volume-based tiering, quantity transformations, and custom pricing units.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property int $created Timestamp of when the object was created.

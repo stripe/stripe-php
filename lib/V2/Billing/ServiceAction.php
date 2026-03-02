@@ -5,6 +5,8 @@
 namespace Stripe\V2\Billing;
 
 /**
+ * Service Actions represent actions applied during service assessment periods, such as granting credits to a customer.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property int $created Timestamp of when the object was created.

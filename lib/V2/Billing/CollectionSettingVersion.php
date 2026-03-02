@@ -5,6 +5,8 @@
 namespace Stripe\V2\Billing;
 
 /**
+ * A Collection Setting Version is a specific configuration of a CollectionSetting at a point in time. Collection Setting Versions enable you to track changes to payment collection settings over time and manage which version is active for new billing operations.
+ *
  * @property string $id The ID of the CollectionSettingVersion object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property null|string $collection_method Either automatic, or send_invoice. When charging automatically, Stripe will attempt to pay this bill at the end of the period using the payment method attached to the payer profile. When sending an invoice, Stripe will email your payer profile an invoice with payment instructions. Defaults to automatic.

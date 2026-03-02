@@ -5,6 +5,10 @@
 namespace Stripe\V2\Billing;
 
 /**
+ * A Pricing Plan Component represents an individual billing element within a Pricing Plan. Components can be Rate Cards
+ * for usage-based charges, License Fees for recurring fixed charges, or Service Actions for recurring credit grants. Each component
+ * is associated with a specific version of the Pricing Plan and defines one aspect of how customers are billed.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property int $created Time at which the object was created.

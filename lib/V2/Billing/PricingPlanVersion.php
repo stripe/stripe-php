@@ -5,6 +5,10 @@
 namespace Stripe\V2\Billing;
 
 /**
+ * A Pricing Plan Version represents a specific configuration of a Pricing Plan at a point in time. Versions are created
+ * automatically when you update a Pricing Plan, allowing you to track changes and manage which version is active for new
+ * subscriptions. Each version has a start date and optionally an end date if it has been superseded.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property int $created Time at which the object was created.

@@ -5,7 +5,7 @@
 namespace Stripe\V2\Iam;
 
 /**
- * An API key.
+ * An API key is used to authenticate API requests.
  *
  * @property string $id Unique identifier of the API key.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.

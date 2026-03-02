@@ -5,6 +5,10 @@
 namespace Stripe\V2\Billing;
 
 /**
+ * A Pricing Plan Subscription represents a customer's active subscription to a Pricing Plan. It tracks both the servicing
+ * status (whether the customer is receiving service) and collection status (whether payments are current). Subscriptions
+ * are created through Billing Intents and bill according to the associated Billing Cadence.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property string $billing_cadence The ID of the Billing Cadence this subscription is billed on.
