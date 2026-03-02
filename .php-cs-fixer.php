@@ -5,6 +5,7 @@ $finder = PhpCsFixer\Finder::create()
     ->notPath('tests/TestCase.php');
 
 $config = new PhpCsFixer\Config();
+$config->setUnsupportedPhpVersionAllowed(true);
 $config->setRiskyAllowed(true);
 $config->setRules([
     // Rulesets
