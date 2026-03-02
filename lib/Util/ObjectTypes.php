@@ -130,6 +130,7 @@ class ObjectTypes
             \Stripe\Product::OBJECT_NAME => \Stripe\Product::class,
             \Stripe\ProductCatalog\TrialOffer::OBJECT_NAME => \Stripe\ProductCatalog\TrialOffer::class,
             \Stripe\ProductFeature::OBJECT_NAME => \Stripe\ProductFeature::class,
+            \Stripe\Profile::OBJECT_NAME => \Stripe\Profile::class,
             \Stripe\PromotionCode::OBJECT_NAME => \Stripe\PromotionCode::class,
             \Stripe\Quote::OBJECT_NAME => \Stripe\Quote::class,
             \Stripe\QuoteLine::OBJECT_NAME => \Stripe\QuoteLine::class,

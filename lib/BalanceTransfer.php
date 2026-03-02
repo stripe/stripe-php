@@ -15,7 +15,7 @@ namespace Stripe;
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|(object{issuing?: (object{balance_transaction?: BalanceTransaction|string}&StripeObject), payments?: (object{balance_transaction?: BalanceTransaction|string}&StripeObject), type: string}&StripeObject) $destination_balance The balance that funds were transferred to.
  * @property null|string $hosted_regulatory_receipt_url A <a href="https://docs.stripe.com/treasury/moving-money/regulatory-receipts">hosted transaction receipt</a> URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|(object{issuing?: (object{balance_transaction?: BalanceTransaction|string}&StripeObject), payments?: (object{balance_transaction: BalanceTransaction|string, source_type?: string}&StripeObject), type: string}&StripeObject) $source_balance The balance that funds were transferred from. One of <code>card</code>, <code>fpx</code>, or <code>bank_account</code>.
  */

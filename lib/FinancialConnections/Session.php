@@ -44,7 +44,7 @@ class Session extends \Stripe\ApiResource
      * <code>Session</code>. The session’s <code>client_secret</code> can be used to
      * launch the flow using Stripe.js.
      *
-     * @param null|array{account_holder?: array{account?: string, customer?: string, customer_account?: string, type: string}, expand?: string[], filters?: array{account_subcategories?: string[], countries?: string[], institution?: string}, limits?: array{accounts: int}, manual_entry?: array{mode?: string}, permissions: string[], prefetch?: string[], relink_options?: array{account?: string, authorization: string}, return_url?: string, hosted?: array{delivery_method?: string}, ui_mode?: string} $params
+     * @param null|array{account_holder?: array{account?: string, customer?: string, customer_account?: string, type: string}, expand?: string[], filters?: array{account_subcategories?: string[], countries?: string[], institution?: string}, hosted?: array{delivery_method?: string}, limits?: array{accounts: int}, manual_entry?: array{mode?: string}, permissions: string[], prefetch?: string[], relink_options?: array{account?: string, authorization: string}, return_url?: string, ui_mode?: string} $params
      * @param null|array|string $options
      *
      * @return Session the created resource

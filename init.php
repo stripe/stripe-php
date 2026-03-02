@@ -594,6 +594,7 @@ require __DIR__ . '/lib/Privacy/RedactionJobValidationError.php';
 require __DIR__ . '/lib/Product.php';
 require __DIR__ . '/lib/ProductCatalog/TrialOffer.php';
 require __DIR__ . '/lib/ProductFeature.php';
+require __DIR__ . '/lib/Profile.php';
 require __DIR__ . '/lib/PromotionCode.php';
 require __DIR__ . '/lib/Quote.php';
 require __DIR__ . '/lib/QuoteLine.php';

@@ -12,7 +12,7 @@ namespace Stripe\ProductCatalog;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property (object{relative?: (object{iterations: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $duration
  * @property (object{transition: (object{price: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $end_behavior
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|string $name A brief, user-friendly name for the trial offer-for identification purposes.
  * @property string|\Stripe\Price $price The price during the trial offer.
  */

@@ -12,7 +12,7 @@ namespace Stripe\Radar;
  * @property int $created_at Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $customer The ID of the Stripe customer the account evaluation is associated with.
  * @property null|(object{login_failed?: (object{reason: string}&\Stripe\StripeObject), occurred_at: int, registration_failed?: (object{reason: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[] $events The list of events that were reported for this Account Evaluation object via the report API.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|(object{account_sharing?: (object{score: float}&\Stripe\StripeObject), multi_accounting?: (object{score: float}&\Stripe\StripeObject)}&\Stripe\StripeObject) $signals A hash of signal objects providing Radar's evaluation for the lifecycle event.
  * @property string $type The type of evaluation returned, based on the user's request.
  */
