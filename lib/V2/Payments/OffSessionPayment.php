@@ -5,7 +5,12 @@
 namespace Stripe\V2\Payments;
 
 /**
- * OffSessionPayment resource.
+ * An OffSessionPayment allows you to create your own payment flow for recurring and unscheduled payments. In a single API request, you can
+ * initiate a payment and leverage Stripe's AI-powered <a href="https://docs.stripe.com/payments/off-session-payments/smart-retries">Smart Retries</a>
+ * to choose the best times to retry failures to increase the chance of a successful payment.
+ * To properly interface with OffSessionPayments, we recommend setting up an event destination to listen to webhook notifications, as the
+ * OffSessionPayment will transition through its lifecycle asynchronously.
+ * Related guide: <a href="https://docs.stripe.com/payments/off-session-payments">Off-Session Payments API</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.

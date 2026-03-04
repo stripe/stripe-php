@@ -21,7 +21,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property null|(object{default_currency: string, settlement_currencies: string[], starting_balance?: (object{at: int, available: \Stripe\StripeObject}&\Stripe\StripeObject)}&\Stripe\StripeObject) $payments If this is a <code>payments</code> FinancialAccount, this hash include details specific to <code>payments</code> FinancialAccount.
  * @property string $status Closed Enum. An enum representing the status of the FinancialAccount. This indicates whether or not the FinancialAccount can be used for any money movement flows.
  * @property null|(object{closed?: (object{forwarding_settings?: (object{payment_method?: string, payout_method?: string}&\Stripe\StripeObject), reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details
- * @property null|(object{holds_currencies: string[]}&\Stripe\StripeObject) $storage If this is a <code>storage</code> FinancialAccount, this hash includes details specific to <code>storage</code> FinancialAccounts.
+ * @property null|(object{funds_usage_type?: string, holds_currencies: string[]}&\Stripe\StripeObject) $storage If this is a <code>storage</code> FinancialAccount, this hash includes details specific to <code>storage</code> FinancialAccounts.
  * @property string $type Type of the FinancialAccount. An additional hash is included on the FinancialAccount with a name matching this value. It contains additional information specific to the FinancialAccount type.
  */
 class FinancialAccount extends \Stripe\ApiResource

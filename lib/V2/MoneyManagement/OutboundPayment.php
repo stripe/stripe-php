@@ -19,6 +19,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $outbound_payment_quote The quote for this OutboundPayment. Only required for countries with regulatory mandates to display fee estimates before OutboundPayment creation.
+ * @property null|string $purpose The purpose of the OutboundPayment.
  * @property null|string $receipt_url A link to the Stripe-hosted receipt for this OutboundPayment. The receipt link remains active for 60 days from the OutboundPayment creation date. After this period, the link will expire and the receipt url value will be null.
  * @property (object{setting: string}&\Stripe\StripeObject) $recipient_notification Details about the OutboundPayment notification settings for recipient.
  * @property null|string $recipient_verification The recipient verification id for this OutboundPayment. Only required for countries with regulatory mandates to verify recipient names before OutboundPayment creation.
@@ -27,7 +28,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property null|(object{failed?: (object{reason: string}&\Stripe\StripeObject), returned?: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Status details for an OutboundPayment in a <code>failed</code> or <code>returned</code> state.
  * @property null|(object{canceled_at?: int, failed_at?: int, posted_at?: int, returned_at?: int}&\Stripe\StripeObject) $status_transitions Hash containing timestamps of when the object transitioned to a particular status.
  * @property (object{credited: (object{value: int, currency: string}&\Stripe\StripeObject), payout_method: string, recipient: string}&\Stripe\StripeObject) $to To which payout method the OutboundPayment was sent.
- * @property (object{status: string, value?: string}&\Stripe\StripeObject) $trace_id A unique identifier that can be used to track this OutboundPayment with recipient bank. Banks might call this a “reference number” or something similar.
+ * @property (object{status: string, value?: string}&\Stripe\StripeObject) $trace_id A unique identifier that can be used to track this OutboundPayment with recipient bank. Banks might call this a &quot;reference number&quot; or something similar.
  * @property null|(object{paper_check?: (object{carrier: string, check_number: string, current_postal_code: string, mailing_address: (object{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}&\Stripe\StripeObject), tracking_number: string, tracking_status: string, updated_at: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $tracking_details Information to track this OutboundPayment with the recipient bank.
  */
 class OutboundPayment extends \Stripe\ApiResource

@@ -5,6 +5,10 @@
 namespace Stripe\V2\Billing;
 
 /**
+ * A License Fee Version represents a specific configuration of a License Fee at a point in time. Versions are created
+ * automatically when you update the pricing structure of a License Fee, allowing you to track changes and manage which
+ * version is active for new subscriptions. Each version maintains the pricing details including unit amounts and tiers.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property int $created Timestamp of when the object was created.

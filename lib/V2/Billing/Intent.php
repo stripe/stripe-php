@@ -5,6 +5,10 @@
 namespace Stripe\V2\Billing;
 
 /**
+ * A Billing Intent represents a proposed change to a customer's billing configuration, such as subscribing to a new service,
+ * modifying an existing subscription, or canceling service. Intents follow a draft-reserve-commit workflow where they can be
+ * previewed before committing, allowing you to see the billing impact before changes take effect.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property (object{currency: string, discount: string, shipping: string, subtotal: string, tax: string, total: string}&\Stripe\StripeObject) $amount_details Breakdown of the amount for this Billing Intent.

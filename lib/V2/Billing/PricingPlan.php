@@ -5,6 +5,10 @@
 namespace Stripe\V2\Billing;
 
 /**
+ * A Pricing Plan represents a bundled collection of billing components that define how customers are charged. Each plan
+ * can include multiple components such as Rate Cards for usage-based pricing, License Fees for recurring charges, and Service
+ * Actions for recurring credit grants. After creating a Pricing Plan, you can subscribe customers to it by creating a Pricing Plan Subscription.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property bool $active Whether the PricingPlan is active.

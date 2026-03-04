@@ -8495,7 +8495,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'account' => 'account',
                 'use_case' => [
-                    'type' => 'account_onboarding',
+                    'type' => 'recipient_onboarding',
                     'account_onboarding' => [
                         'collection_options' => [
                             'fields' => 'eventually_due',
@@ -8514,6 +8514,24 @@ final class GeneratedExamplesTest extends TestCase
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
+                    'recipient_onboarding' => [
+                        'collection_options' => [
+                            'fields' => 'eventually_due',
+                            'future_requirements' => 'include',
+                        ],
+                        'configurations' => ['recipient'],
+                        'refresh_url' => 'refresh_url',
+                        'return_url' => 'return_url',
+                    ],
+                    'recipient_update' => [
+                        'collection_options' => [
+                            'fields' => 'eventually_due',
+                            'future_requirements' => 'include',
+                        ],
+                        'configurations' => ['recipient'],
+                        'refresh_url' => 'refresh_url',
+                        'return_url' => 'return_url',
+                    ],
                 ],
             ],
             [],
@@ -8524,7 +8542,7 @@ final class GeneratedExamplesTest extends TestCase
                 'expires_at' => '1970-01-10T15:36:51.170Z',
                 'object' => 'v2.core.account_link',
                 'url' => 'url',
-                'use_case' => ['type' => 'account_onboarding'],
+                'use_case' => ['type' => 'recipient_onboarding'],
                 'livemode' => [],
             ],
             200,
@@ -8533,7 +8551,7 @@ final class GeneratedExamplesTest extends TestCase
         $result = $this->v2Client->v2->core->accountLinks->create([
             'account' => 'account',
             'use_case' => [
-                'type' => 'account_onboarding',
+                'type' => 'recipient_onboarding',
                 'account_onboarding' => [
                     'collection_options' => [
                         'fields' => 'eventually_due',
@@ -8549,6 +8567,24 @@ final class GeneratedExamplesTest extends TestCase
                         'future_requirements' => 'include',
                     ],
                     'configurations' => ['storer'],
+                    'refresh_url' => 'refresh_url',
+                    'return_url' => 'return_url',
+                ],
+                'recipient_onboarding' => [
+                    'collection_options' => [
+                        'fields' => 'eventually_due',
+                        'future_requirements' => 'include',
+                    ],
+                    'configurations' => ['recipient'],
+                    'refresh_url' => 'refresh_url',
+                    'return_url' => 'return_url',
+                ],
+                'recipient_update' => [
+                    'collection_options' => [
+                        'fields' => 'eventually_due',
+                        'future_requirements' => 'include',
+                    ],
+                    'configurations' => ['recipient'],
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],
@@ -11536,10 +11572,9 @@ final class GeneratedExamplesTest extends TestCase
                                 'currency' => 'usd',
                             ],
                         ],
-                        'category' => 'issuing_dispute_provisional_credit_reversal',
+                        'category' => 'received_debit_reversal',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
-                        'flow' => ['type' => 'adjustment'],
                         'id' => 'obj_123',
                         'object' => 'v2.money_management.transaction',
                         'status' => 'pending',
@@ -11585,10 +11620,9 @@ final class GeneratedExamplesTest extends TestCase
                         'currency' => 'usd',
                     ],
                 ],
-                'category' => 'issuing_dispute_provisional_credit_reversal',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
-                'flow' => ['type' => 'adjustment'],
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.transaction',
                 'status' => 'pending',
@@ -11636,9 +11670,8 @@ final class GeneratedExamplesTest extends TestCase
                         'object' => 'v2.money_management.transaction_entry',
                         'transaction' => 'transaction',
                         'transaction_details' => [
-                            'category' => 'issuing_dispute_provisional_credit_reversal',
+                            'category' => 'received_debit_reversal',
                             'financial_account' => 'financial_account',
-                            'flow' => ['type' => 'adjustment'],
                         ],
                         'livemode' => [],
                     ],
@@ -11683,9 +11716,8 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.transaction_entry',
                 'transaction' => 'transaction',
                 'transaction_details' => [
-                    'category' => 'issuing_dispute_provisional_credit_reversal',
+                    'category' => 'received_debit_reversal',
                     'financial_account' => 'financial_account',
-                    'flow' => ['type' => 'adjustment'],
                 ],
                 'livemode' => [],
             ],

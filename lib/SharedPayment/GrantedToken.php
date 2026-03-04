@@ -13,7 +13,7 @@ namespace Stripe\SharedPayment;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|int $deactivated_at Time at which this SharedPaymentGrantedToken expires and can no longer be used to confirm a PaymentIntent.
  * @property null|string $deactivated_reason The reason why the SharedPaymentGrantedToken has been deactivated.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|\Stripe\StripeObject $shared_metadata Metadata about the SharedPaymentGrantedToken.
  * @property null|(object{amount_captured: null|(object{currency: string, value: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $usage_details Some details about how the SharedPaymentGrantedToken has been used already.
  * @property null|(object{currency: string, expires_at: int, max_amount: int}&\Stripe\StripeObject) $usage_limits Limits on how this SharedPaymentGrantedToken can be used.

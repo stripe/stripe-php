@@ -5,6 +5,10 @@
 namespace Stripe\V2\Billing;
 
 /**
+ * A License Fee Subscription represents a customer's subscription to a License Fee at a specified quantity. It tracks
+ * the number of units (such as seats or licenses) the customer has subscribed to and bills them according to the service
+ * interval defined in the License Fee and the Billing Cadence.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property string $billing_cadence The ID of the Billing Cadence.

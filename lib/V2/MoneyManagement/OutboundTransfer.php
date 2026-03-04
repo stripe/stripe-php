@@ -25,7 +25,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property null|(object{failed?: (object{reason: string}&\Stripe\StripeObject), returned?: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Status details for an OutboundTransfer in a <code>failed</code> or <code>returned</code> state.
  * @property null|(object{canceled_at?: int, failed_at?: int, posted_at?: int, returned_at?: int}&\Stripe\StripeObject) $status_transitions Hash containing timestamps of when the object transitioned to a particular status.
  * @property (object{credited: (object{value: int, currency: string}&\Stripe\StripeObject), payout_method: string}&\Stripe\StripeObject) $to To which payout method the OutboundTransfer was sent.
- * @property (object{status: string, value?: string}&\Stripe\StripeObject) $trace_id A unique identifier that can be used to track this OutboundTransfer with recipient bank. Banks might call this a “reference number” or something similar.
+ * @property (object{status: string, value?: string}&\Stripe\StripeObject) $trace_id A unique identifier that can be used to track this OutboundTransfer with recipient bank. Banks might call this a &quot;reference number&quot; or something similar.
  */
 class OutboundTransfer extends \Stripe\ApiResource
 {

@@ -12,7 +12,7 @@ namespace Stripe\Service\V2\Iam;
 class ApiKeyService extends \Stripe\Service\AbstractService
 {
     /**
-     * List all API keys of an account.
+     * List all API Keys of an account.
      *
      * @param null|array{include_expired?: bool, limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -27,7 +27,7 @@ class ApiKeyService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create an API key. To create a secret key in livemode, a public key for
+     * Create an API Key. To create a secret key in livemode, a public key for
      * encryption must be provided.
      *
      * @param null|array{name?: string, note?: string, public_key?: array{id?: string, pem_key?: array{algorithm: string, data: string}}, type: string} $params
@@ -43,7 +43,7 @@ class ApiKeyService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Expire an API key. The specified key becomes invalid immediately.
+     * Expire an API Key. The specified key becomes invalid immediately.
      *
      * @param string $id
      * @param null|array $params
@@ -59,7 +59,7 @@ class ApiKeyService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve an API key. For livemode secret keys, secret tokens are only returned
+     * Retrieve an API Key. For livemode secret keys, secret tokens are only returned
      * on creation, and never returned here.
      *
      * @param string $id
@@ -76,7 +76,7 @@ class ApiKeyService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Rotate an API key. A new key with the same properties is created and returned.
+     * Rotate an API Key. A new key with the same properties is created and returned.
      * The existing key is expired immediately, unless an expiry time is specified.
      *
      * @param string $id
@@ -93,7 +93,7 @@ class ApiKeyService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update an API key. Only parameters that are specified in the request will be
+     * Update an API Key. Only parameters that are specified in the request will be
      * updated.
      *
      * @param string $id

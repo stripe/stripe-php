@@ -19,7 +19,7 @@ namespace Stripe\Identity;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|int $disabled_at Time at which you disabled the BlocklistEntry. Measured in seconds since the Unix epoch.
  * @property null|int $expires_at Time at which the BlocklistEntry expires. Measured in seconds since the Unix epoch.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string $status The current status of the BlocklistEntry.
  * @property string $type The type of BlocklistEntry.
  * @property null|string|VerificationReport $verification_report The verification report the BlocklistEntry was created from.
