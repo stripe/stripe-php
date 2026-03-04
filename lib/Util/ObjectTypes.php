@@ -30,6 +30,7 @@ class ObjectTypes
             \Stripe\BalanceTransfer::OBJECT_NAME => \Stripe\BalanceTransfer::class,
             \Stripe\BankAccount::OBJECT_NAME => \Stripe\BankAccount::class,
             \Stripe\Billing\Alert::OBJECT_NAME => \Stripe\Billing\Alert::class,
+            \Stripe\Billing\AlertRecovered::OBJECT_NAME => \Stripe\Billing\AlertRecovered::class,
             \Stripe\Billing\AlertTriggered::OBJECT_NAME => \Stripe\Billing\AlertTriggered::class,
             \Stripe\Billing\Analytics\MeterUsage::OBJECT_NAME => \Stripe\Billing\Analytics\MeterUsage::class,
             \Stripe\Billing\Analytics\MeterUsageRow::OBJECT_NAME => \Stripe\Billing\Analytics\MeterUsageRow::class,

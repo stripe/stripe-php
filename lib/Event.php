@@ -57,6 +57,7 @@ class Event extends ApiResource
     const APPLICATION_FEE_REFUND_UPDATED = 'application_fee.refund.updated';
     const BALANCE_AVAILABLE = 'balance.available';
     const BALANCE_SETTINGS_UPDATED = 'balance_settings.updated';
+    const BILLING_ALERT_RECOVERED = 'billing.alert.recovered';
     const BILLING_ALERT_TRIGGERED = 'billing.alert.triggered';
     const BILLING_CREDIT_BALANCE_TRANSACTION_CREATED = 'billing.credit_balance_transaction.created';
     const BILLING_CREDIT_GRANT_CREATED = 'billing.credit_grant.created';

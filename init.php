@@ -106,6 +106,7 @@ require __DIR__ . '/lib/BalanceTransaction.php';
 require __DIR__ . '/lib/BalanceTransfer.php';
 require __DIR__ . '/lib/BankAccount.php';
 require __DIR__ . '/lib/Billing/Alert.php';
+require __DIR__ . '/lib/Billing/AlertRecovered.php';
 require __DIR__ . '/lib/Billing/AlertTriggered.php';
 require __DIR__ . '/lib/Billing/Analytics/MeterUsage.php';
 require __DIR__ . '/lib/Billing/Analytics/MeterUsageRow.php';

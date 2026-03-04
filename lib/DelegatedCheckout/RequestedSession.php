@@ -9,6 +9,7 @@ namespace Stripe\DelegatedCheckout;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property null|((object{campaign_id: null|string, creative_id: null|string, expires_at: int, identification_token: string, issued_at: int, provider: string, publisher_id: null|string, shared_metadata: null|\Stripe\StripeObject, source: null|(object{platform: null|string, type: string, url: null|string}&\Stripe\StripeObject), sub_id: null|string, touchpoint: string}&\Stripe\StripeObject))[] $affiliate_attributions Affiliate attribution data associated with this requested session.
  * @property null|int $amount_subtotal The subtotal amount of the requested session.
  * @property null|int $amount_total The total amount of the requested session.
  * @property int $created_at Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -44,7 +45,7 @@ class RequestedSession extends \Stripe\ApiResource
     /**
      * Creates a requested session.
      *
-     * @param null|array{currency: string, customer?: string, expand?: string[], fulfillment_details?: array{address?: array{city: string, country: string, line1?: string, line2?: string, postal_code: string, state: string}, email?: string, name?: string, phone?: string}, line_item_details: array{quantity: int, sku_id: string}[], metadata?: array<string, string>, payment_method?: string, payment_method_data?: array{billing_details?: array{address?: array{city: string, country: string, line1?: string, line2?: string, postal_code: string, state: string}, email?: string, name?: string, phone?: string}, card?: array{cvc?: string, exp_month: int, exp_year: int, number: string}, type?: string}, seller_details: array{network_profile: string}, setup_future_usage?: string, shared_metadata?: array<string, string>} $params
+     * @param null|array{currency: string, customer?: string, expand?: string[], fulfillment_details?: array{address?: array{city: string, country: string, line1?: string, line2?: string, postal_code: string, state: string}, email?: string, name?: string, phone?: string}, line_item_details: array{quantity: int, sku_id: string}[], metadata?: array<string, string>, payment_method?: string, payment_method_data?: array{billing_details?: array{address?: array{city: string, country: string, line1?: string, line2?: string, postal_code: string, state: string}, email?: string, name?: string, phone?: string}, card?: array{cvc?: string, exp_month: int, exp_year: int, number: string}, type?: string}, seller_details: array{network_profile: string}, setup_future_usage?: string, shared_metadata?: array<string, string>, affiliate_attributions?: array{campaign_id?: string, creative_id?: string, expires_at: int, identification_token: string, issued_at: int, provider: string, publisher_id?: string, shared_metadata?: array<string, string>, source?: array{platform?: string, type: string, url?: string}, sub_id?: string, touchpoint: string}[]} $params
      * @param null|array|string $options
      *
      * @return RequestedSession the created resource
