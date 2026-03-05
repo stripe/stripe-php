@@ -8,6 +8,9 @@ export PATH := "vendor/bin:" + env_var('PATH')
 _default:
     just --list --unsorted
 
+# ⭐ run format, lint, and tests to prepare for CI
+prepare: format lint test
+
 # install vendored dependencies
 install *args:
     composer install {{ if is_dependency() == "true" {"--quiet"} else {""} }} {{ args }}
