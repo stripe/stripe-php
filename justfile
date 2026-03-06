@@ -27,7 +27,7 @@ ci-test autoload:
 
 # ⭐ format all files
 format *args: install
-    PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix -v --using-cache=no {{ args }}
+    php-cs-fixer fix -v --using-cache=no {{ args }}
 
 # check formatting for, but don't modify, files
 format-check: (format "--dry-run")
