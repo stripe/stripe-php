@@ -14,6 +14,13 @@ final class ApiRequestorTest extends TestCase
 {
     use TestHelper;
 
+    private function clearAgentEnvVars()
+    {
+        foreach (ApiRequestor::AI_AGENTS as $agent) {
+            \putenv($agent[0]);
+        }
+    }
+
     public function testEncodeObjects()
     {
         $reflector = new \ReflectionClass(ApiRequestor::class);
@@ -60,6 +67,8 @@ final class ApiRequestorTest extends TestCase
 
     public function testDefaultHeaders()
     {
+        $this->clearAgentEnvVars();
+
         $reflector = new \ReflectionClass(ApiRequestor::class);
         $method = $reflector->getMethod('_defaultHeaders');
         $method->setAccessible(true);
@@ -90,6 +99,30 @@ final class ApiRequestorTest extends TestCase
         );
 
         self::assertSame($headers['Authorization'], 'Bearer ' . $apiKey);
+    }
+
+    public function testDefaultHeadersIncludeAIAgent()
+    {
+        $this->clearAgentEnvVars();
+        \putenv('CLAUDECODE=1');
+
+        try {
+            $reflector = new \ReflectionClass(ApiRequestor::class);
+            $method = $reflector->getMethod('_defaultHeaders');
+            $method->setAccessible(true);
+
+            $headers = $method->invoke(null, 'sk_test_notarealkey');
+
+            self::compatAssertStringContainsString(
+                'AIAgent/claude_code',
+                $headers['User-Agent']
+            );
+
+            $ua = \json_decode($headers['X-Stripe-Client-User-Agent'], true);
+            self::assertSame('claude_code', $ua['ai_agent']);
+        } finally {
+            \putenv('CLAUDECODE');
+        }
     }
 
     public function testRaisesAuthenticationErrorWhenNoApiKey()
@@ -745,5 +778,41 @@ final class ApiRequestorTest extends TestCase
             'api_key' => 'sk_test_client',
         ]);
         $client->rawRequest('get', "/v1/xyz\0");
+    }
+
+    public function testDetectAIAgent()
+    {
+        $reflector = new \ReflectionClass(ApiRequestor::class);
+        $method = $reflector->getMethod('_detectAIAgent');
+        $method->setAccessible(true);
+
+        $result = $method->invoke(null, static function ($key) {
+            return 'CLAUDECODE' === $key ? '1' : false;
+        });
+        self::assertSame('claude_code', $result);
+    }
+
+    public function testDetectAIAgentNoEnvVars()
+    {
+        $reflector = new \ReflectionClass(ApiRequestor::class);
+        $method = $reflector->getMethod('_detectAIAgent');
+        $method->setAccessible(true);
+
+        $result = $method->invoke(null, static function ($key) {
+            return false;
+        });
+        self::assertSame('', $result);
+    }
+
+    public function testDetectAIAgentFirstMatchWins()
+    {
+        $reflector = new \ReflectionClass(ApiRequestor::class);
+        $method = $reflector->getMethod('_detectAIAgent');
+        $method->setAccessible(true);
+
+        $result = $method->invoke(null, static function ($key) {
+            return \in_array($key, ['CURSOR_AGENT', 'OPENCODE'], true) ? '1' : false;
+        });
+        self::assertSame('cursor', $result);
     }
 }

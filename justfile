@@ -8,6 +8,9 @@ export PATH := "vendor/bin:" + env_var('PATH')
 _default:
     just --list --unsorted
 
+# ⭐ run format, lint, and tests to prepare for CI
+prepare: format lint test
+
 # install vendored dependencies
 install *args:
     composer install {{ if is_dependency() == "true" {"--quiet"} else {""} }} {{ args }}
@@ -24,7 +27,7 @@ ci-test autoload:
 
 # ⭐ format all files
 format *args: install
-    PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix -v --using-cache=no {{ args }}
+    php-cs-fixer fix -v --using-cache=no {{ args }}
 
 # check formatting for, but don't modify, files
 format-check: (format "--dry-run")
