@@ -98,7 +98,10 @@ abstract class EventNotification
             'get',
             "/v2/core/events/{$this->id}",
             null,
-            ['stripe_context' => $this->context],
+            [
+                'stripe_context' => $this->context,
+                'headers' => ['Stripe-Request-Trigger' => 'event=' . $this->id],
+            ],
             null,
             ['fetch_event']
         );
@@ -112,7 +115,9 @@ abstract class EventNotification
             return null;
         }
 
-        $options = [];
+        $options = [
+            'headers' => ['Stripe-Request-Trigger' => 'event=' . $this->id],
+        ];
         if (null !== $this->context) {
             $options['stripe_context'] = $this->context;
         }
