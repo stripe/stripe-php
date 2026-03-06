@@ -269,7 +269,7 @@ class ApiRequestor
             case 'idempotency_error':
                 return Exception\IdempotencyException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code);
 
-                // The beginning of the section generated from our OpenAPI spec
+                // switchCases: The beginning of the section generated from our OpenAPI spec
             case 'temporary_session_expired':
                 return Exception\TemporarySessionExpiredException::factory(
                     $msg,
@@ -280,7 +280,7 @@ class ApiRequestor
                     $code
                 );
 
-                // The end of the section generated from our OpenAPI spec
+                // switchCases: The end of the section generated from our OpenAPI spec
             default:
                 return self::_specificV1APIError($rbody, $rcode, $rheaders, $resp, $errorData);
         }
@@ -372,6 +372,41 @@ class ApiRequestor
     /**
      * @static
      *
+     * @return string the detected AI agent slug, or empty string if none detected
+     */
+    const AI_AGENTS = [
+        // aiAgents: The beginning of the section generated from our OpenAPI spec
+        ['ANTIGRAVITY_CLI_ALIAS', 'antigravity'],
+        ['CLAUDECODE', 'claude_code'],
+        ['CLINE_ACTIVE', 'cline'],
+        ['CODEX_SANDBOX', 'codex_cli'],
+        ['CODEX_THREAD_ID', 'codex_cli'],
+        ['CODEX_SANDBOX_NETWORK_DISABLED', 'codex_cli'],
+        ['CODEX_CI', 'codex_cli'],
+        ['CURSOR_AGENT', 'cursor'],
+        ['GEMINI_CLI', 'gemini_cli'],
+        ['OPENCODE', 'open_code'],
+        // aiAgents: The end of the section generated from our OpenAPI spec
+    ];
+
+    private static function _detectAIAgent($getEnv = null)
+    {
+        if (null === $getEnv) {
+            $getEnv = '\getenv';
+        }
+        foreach (self::AI_AGENTS as $agent) {
+            $val = $getEnv($agent[0]);
+            if (false !== $val && '' !== $val) {
+                return $agent[1];
+            }
+        }
+
+        return '';
+    }
+
+    /**
+     * @static
+     *
      * @param string     $apiKey the Stripe API key, to be used in regular API requests
      * @param null       $clientInfo client user agent information
      * @param null       $appInfo information to identify a plugin that integrates Stripe using this library
@@ -402,6 +437,12 @@ class ApiRequestor
         if (null !== $appInfo) {
             $uaString .= ' ' . self::_formatAppInfo($appInfo);
             $ua['application'] = $appInfo;
+        }
+
+        $aiAgent = self::_detectAIAgent();
+        if ('' !== $aiAgent) {
+            $uaString .= ' AIAgent/' . $aiAgent;
+            $ua['ai_agent'] = $aiAgent;
         }
 
         return [
