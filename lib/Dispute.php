@@ -14,6 +14,7 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount Disputed amount. Usually the amount of the charge, but it can differ (usually because of currency fluctuation or because only part of the order is disputed).
+ * @property null|int $amount_to_counter The amount you want to contest, in the dispute's currency. Setting this to less than the full dispute amount means accepting the loss on the remaining amount. If not specified, the entire disputed amount is contested.
  * @property BalanceTransaction[] $balance_transactions List of zero, one, or two balance transactions that show funds withdrawn and reinstated to your Stripe account as a result of this dispute.
  * @property Charge|string $charge ID of the charge that's disputed.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.

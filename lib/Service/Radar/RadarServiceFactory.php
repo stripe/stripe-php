@@ -9,6 +9,7 @@ namespace Stripe\Service\Radar;
  *
  * @property AccountEvaluationService $accountEvaluations
  * @property EarlyFraudWarningService $earlyFraudWarnings
+ * @property IssuingAuthorizationEvaluationService $issuingAuthorizationEvaluations
  * @property PaymentEvaluationService $paymentEvaluations
  * @property ValueListItemService $valueListItems
  * @property ValueListService $valueLists
@@ -21,6 +22,7 @@ class RadarServiceFactory extends \Stripe\Service\AbstractServiceFactory
     private static $classMap = [
         'accountEvaluations' => AccountEvaluationService::class,
         'earlyFraudWarnings' => EarlyFraudWarningService::class,
+        'issuingAuthorizationEvaluations' => IssuingAuthorizationEvaluationService::class,
         'paymentEvaluations' => PaymentEvaluationService::class,
         'valueListItems' => ValueListItemService::class,
         'valueLists' => ValueListService::class,
