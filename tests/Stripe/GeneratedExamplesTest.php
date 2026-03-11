@@ -11787,7 +11787,6 @@ final class GeneratedExamplesTest extends TestCase
                 'cadence' => 'unscheduled',
                 'customer' => 'customer',
                 'metadata' => ['key' => 'metadata'],
-                'payment_method' => 'payment_method',
             ],
             [],
             false,
@@ -11823,7 +11822,6 @@ final class GeneratedExamplesTest extends TestCase
             'cadence' => 'unscheduled',
             'customer' => 'customer',
             'metadata' => ['key' => 'metadata'],
-            'payment_method' => 'payment_method',
         ]);
         self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
     }
