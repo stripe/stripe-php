@@ -51,6 +51,7 @@ namespace Stripe;
  * @property Service\Issuing\IssuingServiceFactory $issuing
  * @property Service\MandateService $mandates
  * @property Service\MarginService $margins
+ * @property Service\Orchestration\OrchestrationServiceFactory $orchestration
  * @property Service\OrderService $orders
  * @property Service\PaymentAttemptRecordService $paymentAttemptRecords
  * @property Service\PaymentIntentService $paymentIntents
