@@ -9,6 +9,7 @@ namespace Stripe\Service\V2\Core;
  * @property AccountLinkService $accountLinks
  * @property AccountService $accounts
  * @property AccountTokenService $accountTokens
+ * @property BatchJobService $batchJobs
  * @property EventDestinationService $eventDestinations
  * @property EventService $events
  * @property Vault\VaultServiceFactory $vault
@@ -24,6 +25,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'accountLinks' => AccountLinkService::class,
         'accounts' => AccountService::class,
         'accountTokens' => AccountTokenService::class,
+        'batchJobs' => BatchJobService::class,
         'eventDestinations' => EventDestinationService::class,
         'events' => EventService::class,
         'vault' => Vault\VaultServiceFactory::class,
