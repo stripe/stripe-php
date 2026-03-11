@@ -16,7 +16,7 @@ namespace Stripe\V2\Reporting;
  * @property string $report The unique identifier of the <code>Report</code> object which was run.
  * @property string $report_name The human-readable name of the <code>Report</code> which was run.
  * @property \Stripe\StripeObject $report_parameters The parameters used to customize the generation of the report.
- * @property null|(object{file: (object{content_type: string, download_url: (object{expires_at?: int, url: string}&\Stripe\StripeObject), size: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $result Details how to retrieve the results of a successfully completed <code>ReportRun</code>.
+ * @property null|(object{file: (object{content_type: string, download_url: (object{expires_at?: int, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $result Details how to retrieve the results of a successfully completed <code>ReportRun</code>.
  * @property null|(object{compress_file?: bool}&\Stripe\StripeObject) $result_options The options specified for customizing the output file of the <code>ReportRun</code>.
  * @property string $status The current status of the <code>ReportRun</code>.
  * @property \Stripe\StripeObject $status_details Additional details about the current state of the <code>ReportRun</code>. The field is currently only populated when a <code>ReportRun</code> is in the <code>failed</code> state, providing more information about why the report failed to generate successfully.

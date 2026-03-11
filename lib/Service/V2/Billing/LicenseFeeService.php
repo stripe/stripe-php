@@ -35,7 +35,7 @@ class LicenseFeeService extends \Stripe\Service\AbstractService
     /**
      * Create a License Fee object.
      *
-     * @param null|array{currency: string, display_name: string, licensed_item: string, lookup_key?: string, metadata?: array<string, string>, service_interval: string, service_interval_count: int, tax_behavior: string, tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], transform_quantity?: array{divide_by: string, round: string}, unit_amount?: string} $params
+     * @param null|array{currency: string, display_name: string, licensed_item: string, lookup_key?: string, metadata?: array<string, string>, service_interval: string, service_interval_count: int, tax_behavior: string, tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], transform_quantity?: array{divide_by: int, round: string}, unit_amount?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\LicenseFee
@@ -67,7 +67,7 @@ class LicenseFeeService extends \Stripe\Service\AbstractService
      * Update a License Fee object.
      *
      * @param string $id
-     * @param null|array{display_name?: string, live_version?: string, lookup_key?: string, metadata?: array<string, null|string>, tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], transform_quantity?: array{divide_by: string, round: string}, unit_amount?: string} $params
+     * @param null|array{display_name?: string, live_version?: string, lookup_key?: string, metadata?: array<string, null|string>, tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], transform_quantity?: array{divide_by: int, round: string}, unit_amount?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\LicenseFee
