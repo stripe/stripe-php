@@ -31,6 +31,7 @@ class BalanceTransaction extends ApiResource
 {
     const OBJECT_NAME = 'balance_transaction';
 
+    const BALANCE_TYPE_FEE_CREDITS = 'fee_credits';
     const BALANCE_TYPE_ISSUING = 'issuing';
     const BALANCE_TYPE_PAYMENTS = 'payments';
     const BALANCE_TYPE_REFUND_AND_DISPUTE_PREFUNDING = 'refund_and_dispute_prefunding';
