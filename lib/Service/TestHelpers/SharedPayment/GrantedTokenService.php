@@ -16,7 +16,7 @@ class GrantedTokenService extends \Stripe\Service\AbstractService
      * available in test mode and allows sellers to create SharedPaymentGrantedTokens
      * for testing their integration.
      *
-     * @param null|array{customer?: string, expand?: string[], payment_method: string, shared_metadata?: null|array<string, string>, usage_limits: array{currency: string, expires_at: int, max_amount: int}} $params
+     * @param null|array{customer?: string, expand?: string[], payment_method: string, shared_metadata?: null|array<string, string>, usage_limits: array{currency: string, expires_at?: int, max_amount: int, recurring_interval?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\SharedPayment\GrantedToken
