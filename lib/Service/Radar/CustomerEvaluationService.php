@@ -25,4 +25,20 @@ class CustomerEvaluationService extends \Stripe\Service\AbstractService
     {
         return $this->request('post', '/v1/radar/customer_evaluations', $params, $opts);
     }
+
+    /**
+     * Reports an event on a <code>CustomerEvaluation</code> object.
+     *
+     * @param string $id
+     * @param null|array{expand?: string[], login_failed?: array{reason: string}, registration_failed?: array{reason: string}, registration_success?: array{customer?: string}, type: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Radar\CustomerEvaluation
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function update($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/radar/customer_evaluations/%s/report', $id), $params, $opts);
+    }
 }
