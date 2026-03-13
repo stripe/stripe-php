@@ -15,6 +15,10 @@ This release changes the pinned API version to `2026-02-25.preview`.
   * Change `V2.MoneyManagement.Transaction.flow` and `V2.MoneyManagement.TransactionEntry.transaction_details.flow` to be optional
   * Add support for error codes `storer_capability_missing` and `storer_capability_not_active` on `QuotePreviewInvoice.last_finalization_error`
 
+## 19.4.1 - 2026-03-06
+* [#2024](https://github.com/stripe/stripe-php/pull/2024) Add Stripe-Request-Trigger header
+* [#2022](https://github.com/stripe/stripe-php/pull/2022) Add agent information to UserAgent
+
 ## 19.4.0 - 2026-02-25
 This release changes the pinned API version to `2026-02-25.clover`.
 
