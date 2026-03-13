@@ -139,6 +139,7 @@ class ObjectTypes
             \Stripe\QuotePreviewInvoice::OBJECT_NAME => \Stripe\QuotePreviewInvoice::class,
             \Stripe\QuotePreviewSubscriptionSchedule::OBJECT_NAME => \Stripe\QuotePreviewSubscriptionSchedule::class,
             \Stripe\Radar\AccountEvaluation::OBJECT_NAME => \Stripe\Radar\AccountEvaluation::class,
+            \Stripe\Radar\CustomerEvaluation::OBJECT_NAME => \Stripe\Radar\CustomerEvaluation::class,
             \Stripe\Radar\EarlyFraudWarning::OBJECT_NAME => \Stripe\Radar\EarlyFraudWarning::class,
             \Stripe\Radar\IssuingAuthorizationEvaluation::OBJECT_NAME => \Stripe\Radar\IssuingAuthorizationEvaluation::class,
             \Stripe\Radar\PaymentEvaluation::OBJECT_NAME => \Stripe\Radar\PaymentEvaluation::class,
