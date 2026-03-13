@@ -6,7 +6,7 @@
 [![License](https://poser.pugx.org/stripe/stripe-php/license.svg)](https://packagist.org/packages/stripe/stripe-php)
 
 > [!TIP]
-> Want to chat live with Stripe engineers? Join us on our [Discord server](https://stripe.com/go/developer-chat).
+> Want to chat live with Stripe engineers? Join us on our [Discord server](https://stripe.com/go/discord/php).
 
 The Stripe PHP library provides convenient access to the Stripe API from
 applications written in the PHP language. It includes a pre-defined set of
