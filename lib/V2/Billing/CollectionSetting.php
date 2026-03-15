@@ -24,6 +24,28 @@ class CollectionSetting extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.billing.collection_setting';
 
+    public static function fieldEncodings()
+    {
+        return [
+            'payment_method_options' => [
+                'kind' => 'object',
+                'fields' => [
+                    'card' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'mandate_options' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'amount' => ['kind' => 'int64_string'],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     const COLLECTION_METHOD_AUTOMATIC = 'automatic';
     const COLLECTION_METHOD_SEND_INVOICE = 'send_invoice';
 }

@@ -33,6 +33,16 @@ class LicenseFee extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.billing.license_fee';
 
+    public static function fieldEncodings()
+    {
+        return [
+            'transform_quantity' => [
+                'kind' => 'object',
+                'fields' => ['divide_by' => ['kind' => 'int64_string']],
+            ],
+        ];
+    }
+
     const SERVICE_INTERVAL_DAY = 'day';
     const SERVICE_INTERVAL_MONTH = 'month';
     const SERVICE_INTERVAL_WEEK = 'week';

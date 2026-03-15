@@ -31,7 +31,49 @@ class CadenceService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->requestCollection('get', '/v2/billing/cadences', $params, $opts);
+        return $this->requestCollection('get', '/v2/billing/cadences', $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'data' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'settings_data' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'collection' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'payment_method_options' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'card' => [
+                                                            'kind' => 'object',
+                                                            'fields' => [
+                                                                'mandate_options' => [
+                                                                    'kind' => 'object',
+                                                                    'fields' => [
+                                                                        'amount' => [
+                                                                            'kind' => 'int64_string',
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -47,7 +89,41 @@ class CadenceService extends \Stripe\Service\AbstractService
      */
     public function cancel($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v2/billing/cadences/%s/cancel', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v2/billing/cadences/%s/cancel', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'settings_data' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'collection' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'payment_method_options' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'card' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'mandate_options' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'amount' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -62,7 +138,41 @@ class CadenceService extends \Stripe\Service\AbstractService
      */
     public function create($params = null, $opts = null)
     {
-        return $this->request('post', '/v2/billing/cadences', $params, $opts);
+        return $this->request('post', '/v2/billing/cadences', $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'settings_data' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'collection' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'payment_method_options' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'card' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'mandate_options' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'amount' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -78,7 +188,41 @@ class CadenceService extends \Stripe\Service\AbstractService
      */
     public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/billing/cadences/%s', $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v2/billing/cadences/%s', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'settings_data' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'collection' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'payment_method_options' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'card' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'mandate_options' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'amount' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -94,7 +238,41 @@ class CadenceService extends \Stripe\Service\AbstractService
      */
     public function update($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v2/billing/cadences/%s', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v2/billing/cadences/%s', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'settings_data' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'collection' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'payment_method_options' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'card' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'mandate_options' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'amount' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     protected function getServiceClass($name)

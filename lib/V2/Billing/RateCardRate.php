@@ -27,6 +27,16 @@ class RateCardRate extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.billing.rate_card_rate';
 
+    public static function fieldEncodings()
+    {
+        return [
+            'transform_quantity' => [
+                'kind' => 'object',
+                'fields' => ['divide_by' => ['kind' => 'int64_string']],
+            ],
+        ];
+    }
+
     const TIERING_MODE_GRADUATED = 'graduated';
     const TIERING_MODE_VOLUME = 'volume';
 }

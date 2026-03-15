@@ -26,7 +26,24 @@ class ReportRunService extends \Stripe\Service\AbstractService
      */
     public function create($params = null, $opts = null)
     {
-        return $this->request('post', '/v2/reporting/report_runs', $params, $opts);
+        return $this->request('post', '/v2/reporting/report_runs', $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'result' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'file' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'size' => ['kind' => 'int64_string'],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -44,6 +61,23 @@ class ReportRunService extends \Stripe\Service\AbstractService
      */
     public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/reporting/report_runs/%s', $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v2/reporting/report_runs/%s', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'result' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'file' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'size' => ['kind' => 'int64_string'],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 }
