@@ -26,6 +26,40 @@ class Cadence extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.billing.cadence';
 
+    public static function fieldEncodings()
+    {
+        return [
+            'settings_data' => [
+                'kind' => 'object',
+                'fields' => [
+                    'collection' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'payment_method_options' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'card' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'mandate_options' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'amount' => [
+                                                        'kind' => 'int64_string',
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     const STATUS_ACTIVE = 'active';
     const STATUS_CANCELED = 'canceled';
 }

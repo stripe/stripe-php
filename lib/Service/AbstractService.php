@@ -70,9 +70,14 @@ abstract class AbstractService
         return $params;
     }
 
-    protected function request($method, $path, $params, $opts)
+    protected function request($method, $path, $params, $opts, $schemas = null)
     {
-        return $this->getClient()->request($method, $path, self::formatParams($params), $opts);
+        $params = self::formatParams($params);
+        if (null !== $schemas && isset($schemas['request_schema'])) {
+            $params = \Stripe\Util\Int64::coerceRequestParams($params, $schemas['request_schema']);
+        }
+
+        return $this->getClient()->request($method, $path, $params, $opts);
     }
 
     protected function requestStream($method, $path, $readBodyChunkCallable, $params, $opts)
@@ -80,14 +85,24 @@ abstract class AbstractService
         return $this->getStreamingClient()->requestStream($method, $path, $readBodyChunkCallable, self::formatParams($params), $opts);
     }
 
-    protected function requestCollection($method, $path, $params, $opts)
+    protected function requestCollection($method, $path, $params, $opts, $schemas = null)
     {
-        return $this->getClient()->requestCollection($method, $path, self::formatParams($params), $opts);
+        $params = self::formatParams($params);
+        if (null !== $schemas && isset($schemas['request_schema'])) {
+            $params = \Stripe\Util\Int64::coerceRequestParams($params, $schemas['request_schema']);
+        }
+
+        return $this->getClient()->requestCollection($method, $path, $params, $opts);
     }
 
-    protected function requestSearchResult($method, $path, $params, $opts)
+    protected function requestSearchResult($method, $path, $params, $opts, $schemas = null)
     {
-        return $this->getClient()->requestSearchResult($method, $path, self::formatParams($params), $opts);
+        $params = self::formatParams($params);
+        if (null !== $schemas && isset($schemas['request_schema'])) {
+            $params = \Stripe\Util\Int64::coerceRequestParams($params, $schemas['request_schema']);
+        }
+
+        return $this->getClient()->requestSearchResult($method, $path, $params, $opts);
     }
 
     protected function buildPath($basePath, ...$ids)
