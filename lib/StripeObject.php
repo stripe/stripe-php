@@ -296,6 +296,16 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             $values = $values->toArray();
         }
 
+        // Apply int64_string response coercion on raw values before hydration.
+        // V2 resource classes declare fieldEncodings() with metadata about which
+        // fields are int64_string (wire format: JSON string, SDK type: PHP int).
+        if (\method_exists(static::class, 'fieldEncodings')) {
+            $encodings = static::fieldEncodings();
+            if (!empty($encodings)) {
+                $values = Util\Int64::coerceResponseValues($values, $encodings);
+            }
+        }
+
         // Wipe old state before setting new.  This is useful for e.g. updating a
         // customer, where there is no persistent card parameter.  Mark those values
         // which don't persist as transient
