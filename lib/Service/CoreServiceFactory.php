@@ -51,6 +51,7 @@ namespace Stripe\Service;
  * @property Issuing\IssuingServiceFactory $issuing
  * @property MandateService $mandates
  * @property MarginService $margins
+ * @property Orchestration\OrchestrationServiceFactory $orchestration
  * @property OrderService $orders
  * @property PaymentAttemptRecordService $paymentAttemptRecords
  * @property PaymentIntentService $paymentIntents
@@ -147,6 +148,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'issuing' => Issuing\IssuingServiceFactory::class,
         'mandates' => MandateService::class,
         'margins' => MarginService::class,
+        'orchestration' => Orchestration\OrchestrationServiceFactory::class,
         'orders' => OrderService::class,
         'paymentAttemptRecords' => PaymentAttemptRecordService::class,
         'paymentIntents' => PaymentIntentService::class,

@@ -77,4 +77,106 @@ class PaymentAttemptRecord extends ApiResource
 
         return $instance;
     }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return PaymentAttemptRecord the reported payment attempt record
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public function reportAuthenticated($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/report_authenticated';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return PaymentAttemptRecord the reported payment attempt record
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public function reportCanceled($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/report_canceled';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return PaymentAttemptRecord the reported payment attempt record
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public function reportFailed($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/report_failed';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return PaymentAttemptRecord the reported payment attempt record
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public function reportGuaranteed($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/report_guaranteed';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return PaymentAttemptRecord the reported payment attempt record
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public function reportInformational($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/report_informational';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return PaymentAttemptRecord the reported payment attempt record
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public function reportRefund($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/report_refund';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
 }
