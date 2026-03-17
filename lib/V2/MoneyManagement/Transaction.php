@@ -12,7 +12,9 @@ namespace Stripe\V2\MoneyManagement;
  * @property (object{value: int, currency: string}&\Stripe\StripeObject) $amount The amount of the Transaction.
  * @property (object{available: (object{value: int, currency: string}&\Stripe\StripeObject), inbound_pending: (object{value: int, currency: string}&\Stripe\StripeObject), outbound_pending: (object{value: int, currency: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $balance_impact The delta to the FinancialAccount's balance. The balance_impact for the Transaction is equal to sum of its TransactionEntries that have <code>effective_at</code>s in the past.
  * @property string $category Open Enum. A descriptive category used to classify the Transaction.
+ * @property null|(object{name?: string}&\Stripe\StripeObject) $counterparty Counterparty to this Transaction.
  * @property int $created Time at which the object was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
+ * @property null|string $description Description of this Transaction. When applicable, the description is copied from the Flow object at the time of transaction creation.
  * @property string $financial_account Indicates the FinancialAccount affected by this Transaction.
  * @property null|(object{type: string, adjustment?: string, currency_conversion?: string, fee_transaction?: string, inbound_transfer?: string, outbound_payment?: string, outbound_transfer?: string, received_credit?: string, received_debit?: string}&\Stripe\StripeObject) $flow Details about the Flow object that created the Transaction.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.

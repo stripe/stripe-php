@@ -440,6 +440,136 @@ class StripeEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.core.batch_job.batch_failed" event.
+     *
+     * @param callable(Events\V2CoreBatchJobBatchFailedEvent, StripeClient): void $handler Handles v2.core.batch_job.batch_failed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreBatchJobBatchFailed($handler)
+    {
+        $this->register('v2.core.batch_job.batch_failed', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.batch_job.canceled" event.
+     *
+     * @param callable(Events\V2CoreBatchJobCanceledEvent, StripeClient): void $handler Handles v2.core.batch_job.canceled events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreBatchJobCanceled($handler)
+    {
+        $this->register('v2.core.batch_job.canceled', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.batch_job.completed" event.
+     *
+     * @param callable(Events\V2CoreBatchJobCompletedEvent, StripeClient): void $handler Handles v2.core.batch_job.completed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreBatchJobCompleted($handler)
+    {
+        $this->register('v2.core.batch_job.completed', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.batch_job.created" event.
+     *
+     * @param callable(Events\V2CoreBatchJobCreatedEvent, StripeClient): void $handler Handles v2.core.batch_job.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreBatchJobCreated($handler)
+    {
+        $this->register('v2.core.batch_job.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.batch_job.ready_for_upload" event.
+     *
+     * @param callable(Events\V2CoreBatchJobReadyForUploadEvent, StripeClient): void $handler Handles v2.core.batch_job.ready_for_upload events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreBatchJobReadyForUpload($handler)
+    {
+        $this->register('v2.core.batch_job.ready_for_upload', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.batch_job.timeout" event.
+     *
+     * @param callable(Events\V2CoreBatchJobTimeoutEvent, StripeClient): void $handler Handles v2.core.batch_job.timeout events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreBatchJobTimeout($handler)
+    {
+        $this->register('v2.core.batch_job.timeout', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.batch_job.updated" event.
+     *
+     * @param callable(Events\V2CoreBatchJobUpdatedEvent, StripeClient): void $handler Handles v2.core.batch_job.updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreBatchJobUpdated($handler)
+    {
+        $this->register('v2.core.batch_job.updated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.batch_job.upload_timeout" event.
+     *
+     * @param callable(Events\V2CoreBatchJobUploadTimeoutEvent, StripeClient): void $handler Handles v2.core.batch_job.upload_timeout events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreBatchJobUploadTimeout($handler)
+    {
+        $this->register('v2.core.batch_job.upload_timeout', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.batch_job.validating" event.
+     *
+     * @param callable(Events\V2CoreBatchJobValidatingEvent, StripeClient): void $handler Handles v2.core.batch_job.validating events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreBatchJobValidating($handler)
+    {
+        $this->register('v2.core.batch_job.validating', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.batch_job.validation_failed" event.
+     *
+     * @param callable(Events\V2CoreBatchJobValidationFailedEvent, StripeClient): void $handler Handles v2.core.batch_job.validation_failed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreBatchJobValidationFailed($handler)
+    {
+        $this->register('v2.core.batch_job.validation_failed', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.core.event_destination.ping" event.
      *
      * @param callable(Events\V2CoreEventDestinationPingEvent, StripeClient): void $handler Handles v2.core.event_destination.ping events
