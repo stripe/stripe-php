@@ -14,7 +14,8 @@ namespace Stripe;
  * @property int $discount_amount The integer amount in cents (or local equivalent) representing the discount being credited for this line item.
  * @property ((object{amount: int, discount: Discount|string}&StripeObject))[] $discount_amounts The amount of discount calculated per discount for this line item
  * @property null|string $invoice_line_item ID of the invoice line item being credited
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
+ * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property ((object{amount: int, credit_balance_transaction?: Billing\CreditBalanceTransaction|string, discount?: Discount|string, type: string}&StripeObject))[] $pretax_credit_amounts The pretax credit amounts (ex: discount, credit grants, etc) for this line item.
  * @property null|int $quantity The number of units of product being credited.
  * @property TaxRate[] $tax_rates The tax rates which apply to the line item.

@@ -16,7 +16,7 @@ namespace Stripe\Radar;
  * @property string|\Stripe\Charge $charge ID of the charge this early fraud warning is for, optionally expanded.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $fraud_type The type of fraud labelled by the issuer. One of <code>card_never_received</code>, <code>fraudulent_card_application</code>, <code>made_with_counterfeit_card</code>, <code>made_with_lost_card</code>, <code>made_with_stolen_card</code>, <code>misc</code>, <code>unauthorized_use_of_card</code>.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|string|\Stripe\PaymentIntent $payment_intent ID of the Payment Intent this early fraud warning is for, optionally expanded.
  */
 class EarlyFraudWarning extends \Stripe\ApiResource

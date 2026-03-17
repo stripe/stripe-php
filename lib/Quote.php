@@ -32,7 +32,7 @@ namespace Stripe;
  * @property null|Invoice|string $invoice The invoice that was created from this quote.
  * @property (object{days_until_due: null|int, issuer: (object{account?: Account|string, type: string}&StripeObject)}&StripeObject) $invoice_settings
  * @property null|Collection<LineItem> $line_items A list of items the customer is being quoted for.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $number A unique number that identifies this particular quote. This number is assigned once the quote is <a href="https://docs.stripe.com/quotes/overview#finalize">finalized</a>.
  * @property null|Account|string $on_behalf_of The account on behalf of which to charge. See the <a href="https://support.stripe.com/questions/sending-invoices-on-behalf-of-connected-accounts">Connect documentation</a> for details.

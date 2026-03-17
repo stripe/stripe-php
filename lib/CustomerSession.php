@@ -19,7 +19,7 @@ namespace Stripe;
  * @property Customer|string $customer The Customer the Customer Session was created for.
  * @property null|string $customer_account The Account that the Customer Session was created for.
  * @property int $expires_at The timestamp at which this Customer Session will expire.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  */
 class CustomerSession extends ApiResource
 {

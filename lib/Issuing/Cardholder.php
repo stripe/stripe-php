@@ -16,7 +16,7 @@ namespace Stripe\Issuing;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $email The cardholder's email address.
  * @property null|(object{card_issuing?: null|(object{user_terms_acceptance: null|(object{date: null|int, ip: null|string, user_agent: null|string}&\Stripe\StripeObject)}&\Stripe\StripeObject), dob: null|(object{day: null|int, month: null|int, year: null|int}&\Stripe\StripeObject), first_name: null|string, last_name: null|string, verification: null|(object{document: null|(object{back: null|string|\Stripe\File, front: null|string|\Stripe\File}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $individual Additional information about an <code>individual</code> cardholder.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $name The cardholder's name. This will be printed on cards issued to them.
  * @property null|string $phone_number The cardholder's phone number. This is required for all cardholders who will be creating EU cards. See the <a href="https://docs.stripe.com/issuing/3d-secure#when-is-3d-secure-applied">3D Secure documentation</a> for more details.

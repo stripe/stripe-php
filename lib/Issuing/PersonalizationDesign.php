@@ -12,7 +12,7 @@ namespace Stripe\Issuing;
  * @property null|string|\Stripe\File $card_logo The file for the card logo to use with physical bundles that support card logos. Must have a <code>purpose</code> value of <code>issuing_logo</code>.
  * @property null|(object{footer_body: null|string, footer_title: null|string, header_body: null|string, header_title: null|string}&\Stripe\StripeObject) $carrier_text Hash containing carrier text, for use with physical bundles that support carrier text.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|string $lookup_key A lookup key used to retrieve personalization designs dynamically from a static string. This may be up to 200 characters.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name Friendly display name.

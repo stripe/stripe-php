@@ -34,7 +34,7 @@ namespace Stripe;
  * @property null|string $context Authentication context needed to fetch the event or related object.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property (object{object: StripeObject, previous_attributes?: StripeObject}&StripeObject) $data
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property int $pending_webhooks Number of webhooks that haven't been successfully delivered (for example, to return a 20x response) to the URLs you specify.
  * @property null|(object{id: null|string, idempotency_key: null|string}&StripeObject) $request Information on the API request that triggers the event.
  * @property string $type Description of the event (for example, <code>invoice.created</code> or <code>charge.refunded</code>).

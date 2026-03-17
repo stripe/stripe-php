@@ -14,9 +14,9 @@ namespace Stripe\Radar;
  * @property string $alias The name of the value list for use in rules.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $created_by The name or email address of the user who created this value list.
- * @property string $item_type The type of items in the value list. One of <code>card_fingerprint</code>, <code>card_bin</code>, <code>email</code>, <code>ip_address</code>, <code>country</code>, <code>string</code>, <code>case_sensitive_string</code>, <code>customer_id</code>, <code>sepa_debit_fingerprint</code>, or <code>us_bank_account_fingerprint</code>.
+ * @property string $item_type The type of items in the value list. One of <code>card_fingerprint</code>, <code>card_bin</code>, <code>crypto_fingerprint</code>, <code>email</code>, <code>ip_address</code>, <code>country</code>, <code>string</code>, <code>case_sensitive_string</code>, <code>customer_id</code>, <code>sepa_debit_fingerprint</code>, or <code>us_bank_account_fingerprint</code>.
  * @property \Stripe\Collection<ValueListItem> $list_items List of items contained within this value list.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $name The name of the value list.
  */
@@ -30,6 +30,7 @@ class ValueList extends \Stripe\ApiResource
     const ITEM_TYPE_CARD_FINGERPRINT = 'card_fingerprint';
     const ITEM_TYPE_CASE_SENSITIVE_STRING = 'case_sensitive_string';
     const ITEM_TYPE_COUNTRY = 'country';
+    const ITEM_TYPE_CRYPTO_FINGERPRINT = 'crypto_fingerprint';
     const ITEM_TYPE_CUSTOMER_ID = 'customer_id';
     const ITEM_TYPE_EMAIL = 'email';
     const ITEM_TYPE_IP_ADDRESS = 'ip_address';
