@@ -17,7 +17,7 @@ namespace Stripe\Billing;
  * @property string $display_name The meter's name.
  * @property string $event_name The name of the meter event to record usage for. Corresponds with the <code>event_name</code> field on meter events.
  * @property null|string $event_time_window The time window which meter events have been pre-aggregated for, if any.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string $status The meter's status.
  * @property (object{deactivated_at: null|int}&\Stripe\StripeObject) $status_transitions
  * @property int $updated Time at which the object was last updated. Measured in seconds since the Unix epoch.

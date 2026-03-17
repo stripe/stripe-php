@@ -23,7 +23,7 @@ namespace Stripe;
  * @property (object{due_by: null|int, enhanced_eligibility: (object{visa_compelling_evidence_3?: (object{required_actions: string[], status: string}&StripeObject), visa_compliance?: (object{status: string}&StripeObject)}&StripeObject), has_evidence: bool, past_due: bool, submission_count: int, submission_method?: string}&StripeObject) $evidence_details
  * @property null|string $intended_submission_method Intended submission method for the dispute.
  * @property bool $is_charge_refundable If true, it's still possible to refund the disputed payment. After the payment has been fully refunded, no further funds are withdrawn from your Stripe account as a result of this dispute.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $network_reason_code Network-dependent reason code for the dispute.
  * @property null|PaymentIntent|string $payment_intent ID of the PaymentIntent that's disputed.

@@ -8,7 +8,7 @@ namespace Stripe\Billing\Analytics;
  * A billing meter usage event represents an aggregated view of a customer’s billing meter events within a specified timeframe.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property int $refreshed_at The timestamp to indicate data freshness, measured in seconds since the Unix epoch.
  * @property \Stripe\Collection<MeterUsageRow> $rows
  */

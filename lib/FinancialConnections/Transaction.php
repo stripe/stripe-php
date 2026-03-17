@@ -13,7 +13,7 @@ namespace Stripe\FinancialConnections;
  * @property int $amount The amount of this transaction, in cents (or local equivalent).
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property string $description The description of this transaction.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string $status The status of the transaction.
  * @property (object{posted_at: null|int, void_at: null|int}&\Stripe\StripeObject) $status_transitions
  * @property int $transacted_at Time at which the transaction was transacted. Measured in seconds since the Unix epoch.

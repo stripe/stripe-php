@@ -19,7 +19,7 @@ namespace Stripe;
  * @property null|Customer|string $customer The customer who can use this promotion code.
  * @property null|string $customer_account The account representing the customer who can use this promotion code.
  * @property null|int $expires_at Date at which the promotion code can no longer be redeemed.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|int $max_redemptions Maximum number of times this promotion code can be redeemed.
  * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property (object{coupon: null|Coupon|string, type: string}&StripeObject) $promotion

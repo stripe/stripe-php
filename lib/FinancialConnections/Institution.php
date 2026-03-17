@@ -11,7 +11,7 @@ namespace Stripe\FinancialConnections;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string[] $countries The list of countries supported by this institution, formatted as ISO country codes.
  * @property (object{balances: (object{supported: bool}&\Stripe\StripeObject), ownership: (object{supported: bool}&\Stripe\StripeObject), payment_method: (object{supported: bool}&\Stripe\StripeObject), transactions: (object{supported: bool}&\Stripe\StripeObject)}&\Stripe\StripeObject) $features
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string $name The name of this institution.
  * @property string[] $routing_numbers A list of routing numbers which are known to correspond to this institution. Due to the many to many relationship between institutions and routing numbers, this list may not be comprehensive and routing numbers may also be shared between institutions.
  * @property string $status The status of this institution in the Financial Connections authentication flow.

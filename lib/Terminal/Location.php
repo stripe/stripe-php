@@ -18,7 +18,7 @@ namespace Stripe\Terminal;
  * @property string $display_name The display name of the location.
  * @property null|string $display_name_kana The Kana variation of the display name of the location.
  * @property null|string $display_name_kanji The Kanji variation of the display name of the location.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $phone The phone number of the location.
  */

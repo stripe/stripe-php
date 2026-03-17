@@ -16,7 +16,7 @@ namespace Stripe\Capital;
  * @property int $created Time at which the offer was created. Given in seconds since unix epoch.
  * @property float $expires_after Time at which the offer expires. Given in seconds since unix epoch.
  * @property null|string $financing_type The type of financing being offered.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|(object{advance_amount: int, campaign_type: string, currency: string, fee_amount: int, previous_financing_fee_discount_rate: null|float, withhold_rate: float}&\Stripe\StripeObject) $offered_terms This is an object representing the terms of an offer of financing from Stripe Capital to a Connected account. This resource represents both the terms offered to the Connected account.
  * @property null|string $product_type Financing product identifier.
