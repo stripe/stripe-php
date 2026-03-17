@@ -780,6 +780,7 @@ require __DIR__ . '/lib/Service/TestHelpers/Issuing/CardService.php';
 require __DIR__ . '/lib/Service/TestHelpers/Issuing/IssuingServiceFactory.php';
 require __DIR__ . '/lib/Service/TestHelpers/Issuing/PersonalizationDesignService.php';
 require __DIR__ . '/lib/Service/TestHelpers/Issuing/TransactionService.php';
+require __DIR__ . '/lib/Service/TestHelpers/PaymentIntentService.php';
 require __DIR__ . '/lib/Service/TestHelpers/RefundService.php';
 require __DIR__ . '/lib/Service/TestHelpers/SharedPayment/GrantedTokenService.php';
 require __DIR__ . '/lib/Service/TestHelpers/SharedPayment/SharedPaymentServiceFactory.php';

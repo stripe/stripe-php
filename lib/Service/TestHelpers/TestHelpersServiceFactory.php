@@ -11,6 +11,7 @@ namespace Stripe\Service\TestHelpers;
  * @property ConfirmationTokenService $confirmationTokens
  * @property CustomerService $customers
  * @property Issuing\IssuingServiceFactory $issuing
+ * @property PaymentIntentService $paymentIntents
  * @property RefundService $refunds
  * @property SharedPayment\SharedPaymentServiceFactory $sharedPayment
  * @property Terminal\TerminalServiceFactory $terminal
@@ -27,6 +28,7 @@ class TestHelpersServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'confirmationTokens' => ConfirmationTokenService::class,
         'customers' => CustomerService::class,
         'issuing' => Issuing\IssuingServiceFactory::class,
+        'paymentIntents' => PaymentIntentService::class,
         'refunds' => RefundService::class,
         'sharedPayment' => SharedPayment\SharedPaymentServiceFactory::class,
         'terminal' => Terminal\TerminalServiceFactory::class,
