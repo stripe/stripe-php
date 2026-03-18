@@ -423,7 +423,7 @@ EOS;
         } catch (\InvalidArgumentException $e) {
             self::assertSame(
                 'Cannot save property `customer` containing an API resource of type Stripe\Customer. '
-                . "It doesn't appear to be persisted and is not marked as `saveWithParent`.",
+                    . "It doesn't appear to be persisted and is not marked as `saveWithParent`.",
                 $e->getMessage()
             );
         } catch (\Exception $e) {
@@ -596,6 +596,18 @@ EOS;
         /** @var mixed $inner */
         $inner = $obj->metadata;
         self::assertSame('value', $inner->metadata);
+    }
+
+    public function testDeserializeEmptyPreviousAttributes()
+    {
+        /** @var mixed $obj */
+        $obj = StripeObject::constructFrom([
+            'data' => [
+                'previous_attributes' => [],
+            ],
+        ]);
+
+        self::assertInstanceOf(StripeObject::class, $obj->data->previous_attributes);
     }
 
     public function testRefreshFromCoercesInt64ResponseValues()

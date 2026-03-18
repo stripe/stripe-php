@@ -341,7 +341,8 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             // This is necessary in case metadata is empty, as PHP arrays do
             // not differentiate between lists and hashes, and we consider
             // empty arrays to be lists.
-            if (('metadata' === $k) && \is_array($v)) {
+            // The same applies to the previous_attributes attribute.
+            if (('metadata' === $k || 'previous_attributes' === $k) && \is_array($v)) {
                 $this->_values[$k] = StripeObject::constructFrom($v, $opts, $apiMode);
             } else {
                 $this->_values[$k] = Util\Util::convertToStripeObject($v, $opts, $apiMode);
