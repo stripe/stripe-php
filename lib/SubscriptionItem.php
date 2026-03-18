@@ -55,7 +55,7 @@ class SubscriptionItem extends ApiResource
      * Deletes an item from the subscription. Removing a subscription item from a
      * subscription will not cancel the subscription.
      *
-     * @param null|array{clear_usage?: bool, proration_behavior?: string, proration_date?: int} $params
+     * @param null|array{clear_usage?: bool, payment_behavior?: string, proration_behavior?: string, proration_date?: int} $params
      * @param null|array|string $opts
      *
      * @return SubscriptionItem the deleted resource

@@ -120,11 +120,11 @@ class SubscriptionService extends AbstractService
 
     /**
      * Initiates resumption of a paused subscription, optionally resetting the billing
-     * cycle anchor and creating prorations. If a resumption invoice is generated, it
-     * must be paid or marked uncollectible before the subscription will be unpaused.
-     * If payment succeeds the subscription will become <code>active</code>, and if
-     * payment fails the subscription will be <code>past_due</code>. The resumption
-     * invoice will void automatically if not paid by the expiration date.
+     * cycle anchor and creating prorations. If no resumption invoice is generated, the
+     * subscription becomes <code>active</code> immediately. If a resumption invoice is
+     * generated, the subscription remains <code>paused</code> until the invoice is
+     * paid or marked uncollectible. If the invoice is not paid by the expiration date,
+     * it is voided and the subscription remains <code>paused</code>.
      *
      * @param string $id
      * @param null|array{billing_cycle_anchor?: string, expand?: string[], proration_behavior?: string, proration_date?: int} $params

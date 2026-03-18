@@ -5,6 +5,8 @@
 namespace Stripe\V2\Billing;
 
 /**
+ * A Meter Event Session is an authentication session for the high-throughput meter event API. Meter Event Sessions provide temporary authentication tokens with expiration times, enabling secure and efficient bulk submission of usage events.
+ *
  * @property string $id The unique id of this auth session.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property string $authentication_token The authentication token for this session.  Use this token when calling the high-throughput meter event API.

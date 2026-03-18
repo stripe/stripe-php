@@ -5,21 +5,15 @@ $finder = PhpCsFixer\Finder::create()
     ->notPath('tests/TestCase.php');
 
 $config = new PhpCsFixer\Config();
+$config->setUnsupportedPhpVersionAllowed(true);
 $config->setRiskyAllowed(true);
-if(PHP_OS == "Darwin") {
-    // TODO Enable the parallel runner for CI to speed up formatter when we upgrade to php-cs-fixer v4+
-    // PHP CS Fixer's parallel runner currently does not support Linux and is in beta.
-    // Only enabling it locally for faster formatting.
-    // See: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/b62538df5cf84c9f1c990e67c04819fbf4c8f285/tests/Runner/RunnerTest.php#L254
-    $config->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect());
-}
 $config->setRules([
     // Rulesets
     '@PSR2' => true,
     '@PhpCsFixer' => true,
     '@PhpCsFixer:risky' => true,
-    '@PHP56Migration:risky' => true,
-    '@PHPUnit57Migration:risky' => true,
+    '@PHP5x6Migration:risky' => true,
+    '@PHPUnit5x7Migration:risky' => true,
 
     // Additional rules
     'fopen_flags' => true,
@@ -60,7 +54,7 @@ $config->setRules([
     'self_accessor' => false,
 
     // Visibility for constants requires PHP 7.1, but we support PHP 5.6
-    'visibility_required' => [
+    'modifier_keywords' => [
         'elements' => [
             'method',
             'property',

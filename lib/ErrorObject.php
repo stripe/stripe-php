@@ -207,6 +207,8 @@ class ErrorObject extends StripeObject
     const CODE_SKU_INACTIVE = 'sku_inactive';
     const CODE_STATE_UNSUPPORTED = 'state_unsupported';
     const CODE_STATUS_TRANSITION_INVALID = 'status_transition_invalid';
+    const CODE_STORER_CAPABILITY_MISSING = 'storer_capability_missing';
+    const CODE_STORER_CAPABILITY_NOT_ACTIVE = 'storer_capability_not_active';
     const CODE_STRIPE_TAX_INACTIVE = 'stripe_tax_inactive';
     const CODE_TAX_ID_INVALID = 'tax_id_invalid';
     const CODE_TAX_ID_PROHIBITED = 'tax_id_prohibited';

@@ -23,6 +23,7 @@ class V2CoreAccountIncludingConfigurationCustomerUpdatedEvent extends \Stripe\V2
         $apiMode = \Stripe\Util\Util::getApiMode($this->related_object->url);
         list($object, $options) = $this->_request('get', $this->related_object->url, [], [
             'stripe_context' => $this->context,
+            'headers' => ['Stripe-Request-Trigger' => 'event=' . $this->id],
         ], [], $apiMode);
 
         return \Stripe\Util\Util::convertToStripeObject($object, $options, $apiMode);

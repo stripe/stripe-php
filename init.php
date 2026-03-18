@@ -18,6 +18,7 @@ require __DIR__ . '/lib/Util/Set.php';
 require __DIR__ . '/lib/Util/Util.php';
 require __DIR__ . '/lib/Util/EventTypes.php';
 require __DIR__ . '/lib/Util/EventNotificationTypes.php';
+require __DIR__ . '/lib/Util/Int64.php';
 require __DIR__ . '/lib/Util/ObjectTypes.php';
 
 // HttpClient
@@ -240,6 +241,9 @@ require __DIR__ . '/lib/Radar/ValueListItem.php';
 require __DIR__ . '/lib/Refund.php';
 require __DIR__ . '/lib/Reporting/ReportRun.php';
 require __DIR__ . '/lib/Reporting/ReportType.php';
+require __DIR__ . '/lib/Reserve/Hold.php';
+require __DIR__ . '/lib/Reserve/Plan.php';
+require __DIR__ . '/lib/Reserve/Release.php';
 require __DIR__ . '/lib/ReserveTransaction.php';
 require __DIR__ . '/lib/Review.php';
 require __DIR__ . '/lib/Service/AccountLinkService.php';

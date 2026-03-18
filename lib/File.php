@@ -48,6 +48,8 @@ class File extends ApiResource
     const PURPOSE_TAX_DOCUMENT_USER_UPLOAD = 'tax_document_user_upload';
     const PURPOSE_TERMINAL_ANDROID_APK = 'terminal_android_apk';
     const PURPOSE_TERMINAL_READER_SPLASHSCREEN = 'terminal_reader_splashscreen';
+    const PURPOSE_TERMINAL_WIFI_CERTIFICATE = 'terminal_wifi_certificate';
+    const PURPOSE_TERMINAL_WIFI_PRIVATE_KEY = 'terminal_wifi_private_key';
 
     /**
      * Returns a list of the files that your account has access to. Stripe sorts and
