@@ -635,9 +635,9 @@ EOS;
 
 /**
  * @internal
- * Test subclass that declares int64_string field encodings.
+ * Test subclass that declares int64_string field encodings
  */
-class StripeObjectWithInt64Fields extends StripeObject
+final class StripeObjectWithInt64Fields extends StripeObject
 {
     public static function fieldEncodings()
     {
@@ -649,9 +649,9 @@ class StripeObjectWithInt64Fields extends StripeObject
 
 /**
  * @internal
- * Test subclass with nested int64_string field encodings.
+ * Test subclass with nested int64_string field encodings
  */
-class StripeObjectWithNestedInt64Fields extends StripeObject
+final class StripeObjectWithNestedInt64Fields extends StripeObject
 {
     public static function fieldEncodings()
     {

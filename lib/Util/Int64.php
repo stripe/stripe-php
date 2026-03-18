@@ -14,10 +14,10 @@ class Int64
      * Coerce outbound request params: convert PHP ints to strings where
      * the request schema indicates an int64_string field.
      *
-     * @param null|array $params
+     * @param mixed $params
      * @param array $schema e.g. ['kind' => 'object', 'fields' => ['amount' => ['kind' => 'int64_string']]]
      *
-     * @return null|array
+     * @return mixed
      */
     public static function coerceRequestParams($params, $schema)
     {
@@ -72,10 +72,10 @@ class Int64
      * Coerce inbound response values: convert JSON strings to PHP ints where
      * the field encodings indicate an int64_string field.
      *
-     * @param array $values
+     * @param mixed $values
      * @param array $encodings e.g. ['amount' => ['kind' => 'int64_string'], 'nested' => ['kind' => 'object', 'fields' => [...]]]
      *
-     * @return array
+     * @return mixed
      */
     public static function coerceResponseValues($values, $encodings)
     {
@@ -101,6 +101,10 @@ class Int64
             } elseif ('array' === $encoding['kind'] && isset($encoding['items'])) {
                 if (\is_array($value)) {
                     foreach ($value as $i => $item) {
+                        if (!isset($encoding['items']['kind'])) {
+                            continue;
+                        }
+
                         if ('int64_string' === $encoding['items']['kind']) {
                             if (\is_string($item) && \is_numeric($item)) {
                                 $values[$field][$i] = (int) $item;

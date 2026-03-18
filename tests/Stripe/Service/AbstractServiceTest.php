@@ -221,9 +221,9 @@ final class AbstractServiceTest extends \Stripe\TestCase
 
 /**
  * @internal
- * Concrete subclass that exposes protected methods for testing.
+ * Concrete subclass that exposes protected methods for testing
  */
-class ConcreteTestService extends AbstractService
+final class ConcreteTestService extends AbstractService
 {
     public function publicRequest($method, $path, $params, $opts, $schemas = null)
     {
