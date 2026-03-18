@@ -92,4 +92,151 @@ final class AbstractServiceTest extends \Stripe\TestCase
         self::assertTrue('' === $result['toplevelnull']);
         self::assertTrue(4 === $result['toplevelnonnull']);
     }
+
+    public function testRequestCoercesInt64ParamsWhenSchemaProvided()
+    {
+        $capturedParams = null;
+        $mockClient = $this->createMock(\Stripe\StripeClientInterface::class);
+        $mockClient->expects(self::once())
+            ->method('request')
+            ->with(
+                self::equalTo('post'),
+                self::equalTo('/v2/test'),
+                self::callback(static function ($params) use (&$capturedParams) {
+                    $capturedParams = $params;
+
+                    return true;
+                }),
+                self::anything()
+            )
+            ->willReturn(\Stripe\StripeObject::constructFrom([]))
+        ;
+
+        $service = new ConcreteTestService($mockClient);
+        $schemas = [
+            'request_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'amount' => ['kind' => 'int64_string'],
+                ],
+            ],
+        ];
+        $service->publicRequest('post', '/v2/test', ['amount' => 100, 'currency' => 'usd'], [], $schemas);
+
+        self::assertSame('100', $capturedParams['amount']);
+        self::assertSame('usd', $capturedParams['currency']);
+    }
+
+    public function testRequestDoesNotCoerceWithoutSchema()
+    {
+        $capturedParams = null;
+        $mockClient = $this->createMock(\Stripe\StripeClientInterface::class);
+        $mockClient->expects(self::once())
+            ->method('request')
+            ->with(
+                self::anything(),
+                self::anything(),
+                self::callback(static function ($params) use (&$capturedParams) {
+                    $capturedParams = $params;
+
+                    return true;
+                }),
+                self::anything()
+            )
+            ->willReturn(\Stripe\StripeObject::constructFrom([]))
+        ;
+
+        $service = new ConcreteTestService($mockClient);
+        $service->publicRequest('post', '/v2/test', ['amount' => 100], []);
+
+        self::assertSame(100, $capturedParams['amount']);
+    }
+
+    public function testRequestCollectionCoercesInt64Params()
+    {
+        $capturedParams = null;
+        $mockClient = $this->createMock(\Stripe\StripeClientInterface::class);
+        $mockClient->expects(self::once())
+            ->method('requestCollection')
+            ->with(
+                self::anything(),
+                self::anything(),
+                self::callback(static function ($params) use (&$capturedParams) {
+                    $capturedParams = $params;
+
+                    return true;
+                }),
+                self::anything()
+            )
+            ->willReturn(\Stripe\Collection::constructFrom(['data' => []]))
+        ;
+
+        $service = new ConcreteTestService($mockClient);
+        $schemas = [
+            'request_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'limit' => ['kind' => 'int64_string'],
+                ],
+            ],
+        ];
+        $service->publicRequestCollection('get', '/v2/test', ['limit' => 50], [], $schemas);
+
+        self::assertSame('50', $capturedParams['limit']);
+    }
+
+    public function testRequestSearchResultCoercesInt64Params()
+    {
+        $capturedParams = null;
+        $mockClient = $this->createMock(\Stripe\StripeClientInterface::class);
+        $mockClient->expects(self::once())
+            ->method('requestSearchResult')
+            ->with(
+                self::anything(),
+                self::anything(),
+                self::callback(static function ($params) use (&$capturedParams) {
+                    $capturedParams = $params;
+
+                    return true;
+                }),
+                self::anything()
+            )
+            ->willReturn(\Stripe\SearchResult::constructFrom(['data' => []]))
+        ;
+
+        $service = new ConcreteTestService($mockClient);
+        $schemas = [
+            'request_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'amount_gte' => ['kind' => 'int64_string'],
+                ],
+            ],
+        ];
+        $service->publicRequestSearchResult('get', '/v2/test', ['amount_gte' => 1000], [], $schemas);
+
+        self::assertSame('1000', $capturedParams['amount_gte']);
+    }
+}
+
+/**
+ * @internal
+ * Concrete subclass that exposes protected methods for testing
+ */
+final class ConcreteTestService extends AbstractService
+{
+    public function publicRequest($method, $path, $params, $opts, $schemas = null)
+    {
+        return $this->request($method, $path, $params, $opts, $schemas);
+    }
+
+    public function publicRequestCollection($method, $path, $params, $opts, $schemas = null)
+    {
+        return $this->requestCollection($method, $path, $params, $opts, $schemas);
+    }
+
+    public function publicRequestSearchResult($method, $path, $params, $opts, $schemas = null)
+    {
+        return $this->requestSearchResult($method, $path, $params, $opts, $schemas);
+    }
 }
