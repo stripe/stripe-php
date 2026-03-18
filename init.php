@@ -18,6 +18,7 @@ require __DIR__ . '/lib/Util/Set.php';
 require __DIR__ . '/lib/Util/Util.php';
 require __DIR__ . '/lib/Util/EventTypes.php';
 require __DIR__ . '/lib/Util/EventNotificationTypes.php';
+require __DIR__ . '/lib/Util/Int64.php';
 require __DIR__ . '/lib/Util/ObjectTypes.php';
 
 // HttpClient
