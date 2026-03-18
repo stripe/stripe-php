@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . '/lib/version_check.php';
+
 require __DIR__ . '/lib/Util/ApiVersion.php';
 
 // Stripe singleton
