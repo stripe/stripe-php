@@ -423,7 +423,7 @@ EOS;
         } catch (\InvalidArgumentException $e) {
             self::assertSame(
                 'Cannot save property `customer` containing an API resource of type Stripe\Customer. '
-                . "It doesn't appear to be persisted and is not marked as `saveWithParent`.",
+                    . "It doesn't appear to be persisted and is not marked as `saveWithParent`.",
                 $e->getMessage()
             );
         } catch (\Exception $e) {
@@ -596,5 +596,84 @@ EOS;
         /** @var mixed $inner */
         $inner = $obj->metadata;
         self::assertSame('value', $inner->metadata);
+    }
+
+    public function testDeserializeEmptyPreviousAttributes()
+    {
+        /** @var mixed $obj */
+        $obj = StripeObject::constructFrom([
+            'data' => [
+                'previous_attributes' => [],
+            ],
+        ]);
+
+        self::assertInstanceOf(StripeObject::class, $obj->data->previous_attributes);
+    }
+
+    public function testRefreshFromCoercesInt64ResponseValues()
+    {
+        $obj = StripeObjectWithInt64Fields::constructFrom([
+            'id' => 'obj_123',
+            'amount' => '12345',
+            'currency' => 'usd',
+        ]);
+
+        self::assertSame(12345, $obj['amount']);
+        self::assertSame('usd', $obj['currency']);
+    }
+
+    public function testRefreshFromCoercesNestedInt64ResponseValues()
+    {
+        $obj = StripeObjectWithNestedInt64Fields::constructFrom([
+            'id' => 'obj_123',
+            'details' => ['amount' => '999', 'label' => 'test'],
+        ]);
+
+        self::assertSame(999, $obj['details']['amount']);
+        self::assertSame('test', $obj['details']['label']);
+    }
+
+    public function testRefreshFromSkipsCoercionWhenNoFieldEncodings()
+    {
+        $obj = StripeObject::constructFrom([
+            'id' => 'obj_123',
+            'amount' => '12345',
+        ]);
+
+        // Without fieldEncodings(), string values stay as strings
+        self::assertSame('12345', $obj['amount']);
+    }
+}
+
+/**
+ * @internal
+ * Test subclass that declares int64_string field encodings
+ */
+final class StripeObjectWithInt64Fields extends StripeObject
+{
+    public static function fieldEncodings()
+    {
+        return [
+            'amount' => ['kind' => 'int64_string'],
+        ];
+    }
+}
+
+/**
+ * @internal
+ * Test subclass with nested int64_string field encodings
+ */
+final class StripeObjectWithNestedInt64Fields extends StripeObject
+{
+    public static function fieldEncodings()
+    {
+        return [
+            'details' => [
+                'kind' => 'object',
+                'fields' => [
+                    'amount' => ['kind' => 'int64_string'],
+                ],
+            ],
+        ];
     }
 }
