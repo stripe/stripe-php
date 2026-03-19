@@ -21,6 +21,82 @@ class BatchJob extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.core.batch_job';
 
+    public static function fieldEncodings()
+    {
+        return [
+            'status_details' => [
+                'kind' => 'object',
+                'fields' => [
+                    'canceled' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'failure_count' => ['kind' => 'int64_string'],
+                            'output_file' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'size' => ['kind' => 'int64_string'],
+                                ],
+                            ],
+                            'success_count' => ['kind' => 'int64_string'],
+                        ],
+                    ],
+                    'complete' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'failure_count' => ['kind' => 'int64_string'],
+                            'output_file' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'size' => ['kind' => 'int64_string'],
+                                ],
+                            ],
+                            'success_count' => ['kind' => 'int64_string'],
+                        ],
+                    ],
+                    'in_progress' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'failure_count' => ['kind' => 'int64_string'],
+                            'success_count' => ['kind' => 'int64_string'],
+                        ],
+                    ],
+                    'timeout' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'failure_count' => ['kind' => 'int64_string'],
+                            'output_file' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'size' => ['kind' => 'int64_string'],
+                                ],
+                            ],
+                            'success_count' => ['kind' => 'int64_string'],
+                        ],
+                    ],
+                    'validating' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'validated_count' => ['kind' => 'int64_string'],
+                        ],
+                    ],
+                    'validation_failed' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'failure_count' => ['kind' => 'int64_string'],
+                            'output_file' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'size' => ['kind' => 'int64_string'],
+                                ],
+                            ],
+                            'success_count' => ['kind' => 'int64_string'],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     const STATUS_BATCH_FAILED = 'batch_failed';
     const STATUS_CANCELED = 'canceled';
     const STATUS_CANCELLING = 'cancelling';

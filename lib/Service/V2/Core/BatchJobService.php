@@ -24,7 +24,113 @@ class BatchJobService extends \Stripe\Service\AbstractService
      */
     public function cancel($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v2/core/batch_jobs/%s/cancel', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v2/core/batch_jobs/%s/cancel', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'status_details' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'canceled' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'failure_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                    'output_file' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'size' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                    'success_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                            'complete' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'failure_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                    'output_file' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'size' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                    'success_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                            'in_progress' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'failure_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                    'success_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                            'timeout' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'failure_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                    'output_file' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'size' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                    'success_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                            'validating' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'validated_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                            'validation_failed' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'failure_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                    'output_file' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'size' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                    'success_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -39,7 +145,113 @@ class BatchJobService extends \Stripe\Service\AbstractService
      */
     public function create($params = null, $opts = null)
     {
-        return $this->request('post', '/v2/core/batch_jobs', $params, $opts);
+        return $this->request('post', '/v2/core/batch_jobs', $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'status_details' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'canceled' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'failure_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                    'output_file' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'size' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                    'success_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                            'complete' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'failure_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                    'output_file' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'size' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                    'success_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                            'in_progress' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'failure_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                    'success_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                            'timeout' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'failure_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                    'output_file' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'size' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                    'success_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                            'validating' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'validated_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                            'validation_failed' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'failure_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                    'output_file' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'size' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                    'success_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -55,6 +267,112 @@ class BatchJobService extends \Stripe\Service\AbstractService
      */
     public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/core/batch_jobs/%s', $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v2/core/batch_jobs/%s', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'status_details' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'canceled' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'failure_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                    'output_file' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'size' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                    'success_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                            'complete' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'failure_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                    'output_file' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'size' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                    'success_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                            'in_progress' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'failure_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                    'success_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                            'timeout' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'failure_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                    'output_file' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'size' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                    'success_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                            'validating' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'validated_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                            'validation_failed' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'failure_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                    'output_file' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'size' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                    'success_count' => [
+                                        'kind' => 'int64_string',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 }

@@ -24,7 +24,39 @@ class VersionService extends \Stripe\Service\AbstractService
      */
     public function all($id, $params = null, $opts = null)
     {
-        return $this->requestCollection('get', $this->buildPath('/v2/billing/collection_settings/%s/versions', $id), $params, $opts);
+        return $this->requestCollection('get', $this->buildPath('/v2/billing/collection_settings/%s/versions', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'data' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'payment_method_options' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'card' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'mandate_options' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'amount' => [
+                                                            'kind' => 'int64_string',
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -41,6 +73,30 @@ class VersionService extends \Stripe\Service\AbstractService
      */
     public function retrieve($parentId, $id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/billing/collection_settings/%s/versions/%s', $parentId, $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v2/billing/collection_settings/%s/versions/%s', $parentId, $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'payment_method_options' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'card' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'mandate_options' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'amount' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 }
