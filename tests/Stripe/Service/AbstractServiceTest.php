@@ -93,6 +93,99 @@ final class AbstractServiceTest extends \Stripe\TestCase
         self::assertTrue(4 === $result['toplevelnonnull']);
     }
 
+    public function testFormatParamsV1ConvertsNullToEmptyString()
+    {
+        // v1 behavior: null → '' (unchanged from previous behavior)
+        $result = $this->formatParamsReflector->invoke(null, ['foo' => null], 'v1');
+        self::assertSame('', $result['foo']);
+    }
+
+    public function testFormatParamsV2PreservesNull()
+    {
+        // v2 behavior: null values are preserved for JSON encoding
+        $result = $this->formatParamsReflector->invoke(null, ['foo' => null], 'v2');
+        self::assertNull($result['foo']);
+        self::assertArrayHasKey('foo', $result);
+    }
+
+    public function testFormatParamsV2PreservesNestedNull()
+    {
+        $result = $this->formatParamsReflector->invoke(null, [
+            'name' => 'test',
+            'description' => null,
+            'nested' => ['inner' => null, 'value' => 42],
+        ], 'v2');
+        self::assertSame('test', $result['name']);
+        self::assertNull($result['description']);
+        self::assertNull($result['nested']['inner']);
+        self::assertSame(42, $result['nested']['value']);
+    }
+
+    public function testFormatParamsV2NullParamsReturnsNull()
+    {
+        $result = $this->formatParamsReflector->invoke(null, null, 'v2');
+        self::assertNull($result);
+    }
+
+    public function testRequestPreservesNullForV2Path()
+    {
+        $capturedParams = null;
+        $mockClient = $this->createMock(\Stripe\StripeClientInterface::class);
+        $mockClient->expects(self::once())
+            ->method('request')
+            ->with(
+                self::equalTo('post'),
+                self::equalTo('/v2/test/resource'),
+                self::callback(static function ($params) use (&$capturedParams) {
+                    $capturedParams = $params;
+
+                    return true;
+                }),
+                self::anything()
+            )
+            ->willReturn(\Stripe\StripeObject::constructFrom([]))
+        ;
+
+        $service = new ConcreteTestService($mockClient);
+        $service->publicRequest('post', '/v2/test/resource', [
+            'name' => 'test',
+            'description' => null,
+        ], []);
+
+        self::assertSame('test', $capturedParams['name']);
+        self::assertNull($capturedParams['description']);
+        self::assertArrayHasKey('description', $capturedParams);
+    }
+
+    public function testRequestConvertsNullToEmptyStringForV1Path()
+    {
+        $capturedParams = null;
+        $mockClient = $this->createMock(\Stripe\StripeClientInterface::class);
+        $mockClient->expects(self::once())
+            ->method('request')
+            ->with(
+                self::equalTo('post'),
+                self::equalTo('/v1/test/resource'),
+                self::callback(static function ($params) use (&$capturedParams) {
+                    $capturedParams = $params;
+
+                    return true;
+                }),
+                self::anything()
+            )
+            ->willReturn(\Stripe\StripeObject::constructFrom([]))
+        ;
+
+        $service = new ConcreteTestService($mockClient);
+        $service->publicRequest('post', '/v1/test/resource', [
+            'name' => 'test',
+            'description' => null,
+        ], []);
+
+        self::assertSame('test', $capturedParams['name']);
+        self::assertSame('', $capturedParams['description']);
+    }
+
     public function testRequestCoercesInt64ParamsWhenSchemaProvided()
     {
         $capturedParams = null;
