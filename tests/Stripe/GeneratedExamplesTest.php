@@ -5649,7 +5649,7 @@ final class GeneratedExamplesTest extends TestCase
                                     'maximum_applications' => [
                                         'type' => 'indefinite',
                                     ],
-                                    'percent_off' => 'percent_off',
+                                    'percent_off' => '991934883.3333334',
                                 ],
                             ],
                             'spend_modifier_rule' => [
@@ -5815,7 +5815,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'maximum_applications' => [
                                     'type' => 'indefinite',
                                 ],
-                                'percent_off' => 'percent_off',
+                                'percent_off' => '991934883.3333334',
                             ],
                         ],
                         'spend_modifier_rule' => [
@@ -12469,7 +12469,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'rates' => [
                                     '0' => [
                                         'display_name' => 'display_name',
-                                        'percentage' => 'percentage',
+                                        'percentage' => '614555204',
                                     ],
                                 ],
                             ],
@@ -12503,7 +12503,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'description' => 'description',
                                 'display_name' => 'display_name',
                                 'jurisdiction' => 'jurisdiction',
-                                'percentage' => 'percentage',
+                                'percentage' => '614555204',
                                 'state' => 'state',
                             ],
                         ],
@@ -12523,7 +12523,7 @@ final class GeneratedExamplesTest extends TestCase
                         'rates' => [
                             '0' => [
                                 'display_name' => 'display_name',
-                                'percentage' => 'percentage',
+                                'percentage' => '614555204',
                             ],
                         ],
                     ],
@@ -12543,7 +12543,7 @@ final class GeneratedExamplesTest extends TestCase
                             'description' => 'description',
                             'display_name' => 'display_name',
                             'jurisdiction' => 'jurisdiction',
-                            'percentage' => 'percentage',
+                            'percentage' => '614555204',
                             'state' => 'state',
                         ],
                     ],
@@ -12572,7 +12572,7 @@ final class GeneratedExamplesTest extends TestCase
                         'rates' => [
                             '0' => [
                                 'display_name' => 'display_name',
-                                'percentage' => 'percentage',
+                                'percentage' => '614555204',
                             ],
                         ],
                     ],
@@ -12601,7 +12601,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'description' => 'description',
                                 'display_name' => 'display_name',
                                 'jurisdiction' => 'jurisdiction',
-                                'percentage' => 'percentage',
+                                'percentage' => '614555204',
                                 'state' => 'state',
                             ],
                         ],
@@ -12621,7 +12621,7 @@ final class GeneratedExamplesTest extends TestCase
                         'rates' => [
                             '0' => [
                                 'display_name' => 'display_name',
-                                'percentage' => 'percentage',
+                                'percentage' => '614555204',
                             ],
                         ],
                     ],
@@ -12643,7 +12643,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'description' => 'description',
                                 'display_name' => 'display_name',
                                 'jurisdiction' => 'jurisdiction',
-                                'percentage' => 'percentage',
+                                'percentage' => '614555204',
                                 'state' => 'state',
                             ],
                         ],
@@ -12673,7 +12673,7 @@ final class GeneratedExamplesTest extends TestCase
                         'rates' => [
                             '0' => [
                                 'display_name' => 'display_name',
-                                'percentage' => 'percentage',
+                                'percentage' => '614555204',
                             ],
                         ],
                     ],
