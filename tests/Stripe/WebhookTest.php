@@ -121,4 +121,21 @@ final class WebhookTest extends TestCase
         $sigHeader = $this->generateHeader(['timestamp' => 12345]);
         self::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET));
     }
+
+    public function testConstructEventRejectsV2Payload()
+    {
+        $payload = json_encode([
+            'id' => 'evt_test_webhook',
+            'object' => 'v2.core.event',
+            'type' => 'v1.billing.meter.error_report_triggered',
+        ]);
+        $sigHeader = $this->generateHeader(['payload' => $payload]);
+
+        try {
+            Webhook::constructEvent($payload, $sigHeader, self::SECRET);
+            self::fail('Expected UnexpectedValueException was not thrown');
+        } catch (Exception\UnexpectedValueException $e) {
+            self::compatAssertStringContainsString('StripeClient::parseEventNotification', $e->getMessage());
+        }
+    }
 }
