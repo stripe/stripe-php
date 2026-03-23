@@ -12,10 +12,11 @@ namespace Stripe\V2\MoneyManagement;
  * @property null|(object{id: string, type: string}&\Stripe\StripeObject) $alternative_reference The alternative reference for this payout method, if it's a projected payout method.
  * @property string[] $available_payout_speeds A set of available payout speeds for this payout method.
  * @property null|(object{archived: bool, bank_account_type: string, bank_name: string, branch_number?: string, country: string, enabled_delivery_options: string[], financial_connections_account?: string, last4: string, routing_number?: string, supported_currencies: string[], swift_code?: string}&\Stripe\StripeObject) $bank_account The PayoutMethodBankAccount object details.
- * @property null|(object{archived: bool, exp_month: string, exp_year: string, fingerprint: string, last4: string}&\Stripe\StripeObject) $card The PayoutMethodCard object details.
+ * @property null|(object{archived: bool, exp_month: string, exp_year: string, fingerprint: string, last4: string, supported_currencies: string[]}&\Stripe\StripeObject) $card The PayoutMethodCard object details.
  * @property int $created Created timestamp.
  * @property null|string $latest_outbound_setup_intent ID of the underlying active OutboundSetupIntent object, if any.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $restricted Whether the Payout Method is currently unusable for money movement, despite potentially being correctly set up. Please reach out to Stripe Support for more information.
  * @property string $type Closed Enum. The type of payout method.
  * @property (object{payments: string, transfers: string}&\Stripe\StripeObject) $usage_status Indicates whether the payout method has met the necessary requirements for outbound money movement.
  */

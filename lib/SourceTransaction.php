@@ -18,7 +18,7 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|(object{fingerprint?: string, funding_method?: string, last4?: string, reference?: string, sender_account_number?: string, sender_name?: string, sender_sort_code?: string}&StripeObject) $gbp_credit_transfer
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|(object{available_at?: string, invoices?: string}&StripeObject) $paper_check
  * @property null|(object{reference?: string, sender_iban?: string, sender_name?: string}&StripeObject) $sepa_credit_transfer
  * @property string $source The ID of the source this transaction is attached to.

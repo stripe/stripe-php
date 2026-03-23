@@ -68,7 +68,7 @@ class GbBankAccountService extends \Stripe\Service\AbstractService
     /**
      * Create a GB bank account.
      *
-     * @param null|array{account_number: string, bank_account_type?: string, confirmation_of_payee?: array{business_type?: string, initiate: bool, name?: string}, sort_code: string} $params
+     * @param null|array{account_number?: string, bank_account_type?: string, confirmation_of_payee?: array{business_type?: string, initiate: bool, name?: string}, currency: string, iban?: string, sort_code?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Core\Vault\GbBankAccount

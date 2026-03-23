@@ -6070,6 +6070,95 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Core\AccountToken::class, $result);
     }
 
+    public function testV2CoreBatchJobPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/batch_jobs',
+            [
+                'endpoint' => [
+                    'http_method' => 'post',
+                    'path' => 'path',
+                ],
+                'metadata' => ['key' => 'metadata'],
+                'skip_validation' => true,
+            ],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'maximum_rps' => [],
+                'metadata' => ['key' => 'metadata'],
+                'object' => 'v2.core.batch_job',
+                'skip_validation' => [],
+                'status' => 'batch_failed',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->batchJobs->create([
+            'endpoint' => [
+                'http_method' => 'post',
+                'path' => 'path',
+            ],
+            'metadata' => ['key' => 'metadata'],
+            'skip_validation' => true,
+        ]);
+        self::assertInstanceOf(V2\Core\BatchJob::class, $result);
+    }
+
+    public function testV2CoreBatchJobGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/batch_jobs/id_123',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'maximum_rps' => [],
+                'metadata' => ['key' => 'metadata'],
+                'object' => 'v2.core.batch_job',
+                'skip_validation' => [],
+                'status' => 'batch_failed',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->batchJobs->retrieve('id_123', []);
+        self::assertInstanceOf(V2\Core\BatchJob::class, $result);
+    }
+
+    public function testV2CoreBatchJobPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/batch_jobs/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'maximum_rps' => [],
+                'metadata' => ['key' => 'metadata'],
+                'object' => 'v2.core.batch_job',
+                'skip_validation' => [],
+                'status' => 'batch_failed',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->batchJobs->cancel('id_123', []);
+        self::assertInstanceOf(V2\Core\BatchJob::class, $result);
+    }
+
     public function testV2CoreEventGet()
     {
         $this->stubRequest(
@@ -6396,7 +6485,9 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'last4' => 'last4',
                         'object' => 'v2.core.vault.gb_bank_account',
-                        'sort_code' => 'sort_code',
+                        'supported_currencies' => [
+                            '0' => 'supported_currencies',
+                        ],
                         'livemode' => [],
                     ],
                 ],
@@ -6416,7 +6507,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/core/vault/gb_bank_accounts',
-            ['account_number' => 'account_number', 'sort_code' => 'sort_code'],
+            ['currency' => 'usd'],
             [],
             false,
             [
@@ -6440,15 +6531,14 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'object' => 'v2.core.vault.gb_bank_account',
-                'sort_code' => 'sort_code',
+                'supported_currencies' => ['0' => 'supported_currencies'],
                 'livemode' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->core->vault->gbBankAccounts->create([
-            'account_number' => 'account_number',
-            'sort_code' => 'sort_code',
+            'currency' => 'usd',
         ]);
         self::assertInstanceOf(V2\Core\Vault\GbBankAccount::class, $result);
     }
@@ -6482,7 +6572,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'object' => 'v2.core.vault.gb_bank_account',
-                'sort_code' => 'sort_code',
+                'supported_currencies' => ['0' => 'supported_currencies'],
                 'livemode' => [],
             ],
             200,
@@ -6524,7 +6614,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'object' => 'v2.core.vault.gb_bank_account',
-                'sort_code' => 'sort_code',
+                'supported_currencies' => ['0' => 'supported_currencies'],
                 'livemode' => [],
             ],
             200,
@@ -6566,7 +6656,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'object' => 'v2.core.vault.gb_bank_account',
-                'sort_code' => 'sort_code',
+                'supported_currencies' => ['0' => 'supported_currencies'],
                 'livemode' => [],
             ],
             200,
@@ -6608,7 +6698,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'object' => 'v2.core.vault.gb_bank_account',
-                'sort_code' => 'sort_code',
+                'supported_currencies' => ['0' => 'supported_currencies'],
                 'livemode' => [],
             ],
             200,
@@ -6639,6 +6729,9 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'last4' => 'last4',
                         'object' => 'v2.core.vault.us_bank_account',
+                        'supported_currencies' => [
+                            '0' => 'supported_currencies',
+                        ],
                         'verification' => ['status' => 'verification_failed'],
                         'livemode' => [],
                     ],
@@ -6659,7 +6752,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/core/vault/us_bank_accounts',
-            ['account_number' => 'account_number'],
+            ['account_number' => 'account_number', 'currency' => 'usd'],
             [],
             false,
             [
@@ -6670,6 +6763,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'object' => 'v2.core.vault.us_bank_account',
+                'supported_currencies' => ['0' => 'supported_currencies'],
                 'verification' => ['status' => 'verification_failed'],
                 'livemode' => [],
             ],
@@ -6678,6 +6772,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->core->vault->usBankAccounts->create([
             'account_number' => 'account_number',
+            'currency' => 'usd',
         ]);
         self::assertInstanceOf(V2\Core\Vault\UsBankAccount::class, $result);
     }
@@ -6698,6 +6793,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'object' => 'v2.core.vault.us_bank_account',
+                'supported_currencies' => ['0' => 'supported_currencies'],
                 'verification' => ['status' => 'verification_failed'],
                 'livemode' => [],
             ],
@@ -6727,6 +6823,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'object' => 'v2.core.vault.us_bank_account',
+                'supported_currencies' => ['0' => 'supported_currencies'],
                 'verification' => ['status' => 'verification_failed'],
                 'livemode' => [],
             ],
@@ -6756,6 +6853,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'object' => 'v2.core.vault.us_bank_account',
+                'supported_currencies' => ['0' => 'supported_currencies'],
                 'verification' => ['status' => 'verification_failed'],
                 'livemode' => [],
             ],
@@ -6785,6 +6883,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'object' => 'v2.core.vault.us_bank_account',
+                'supported_currencies' => ['0' => 'supported_currencies'],
                 'verification' => ['status' => 'verification_failed'],
                 'livemode' => [],
             ],
@@ -6814,6 +6913,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'object' => 'v2.core.vault.us_bank_account',
+                'supported_currencies' => ['0' => 'supported_currencies'],
                 'verification' => ['status' => 'verification_failed'],
                 'livemode' => [],
             ],
@@ -6839,8 +6939,8 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'amount' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
@@ -6870,8 +6970,8 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount' => [
+                    'currency' => 'USD',
                     'value' => [],
-                    'currency' => 'usd',
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
@@ -6903,20 +7003,20 @@ final class GeneratedExamplesTest extends TestCase
                         'balance' => [
                             'available' => [
                                 'key' => [
+                                    'currency' => 'USD',
                                     'value' => [],
-                                    'currency' => 'usd',
                                 ],
                             ],
                             'inbound_pending' => [
                                 'key' => [
+                                    'currency' => 'USD',
                                     'value' => [],
-                                    'currency' => 'usd',
                                 ],
                             ],
                             'outbound_pending' => [
                                 'key' => [
+                                    'currency' => 'USD',
                                     'value' => [],
-                                    'currency' => 'usd',
                                 ],
                             ],
                         ],
@@ -6952,20 +7052,20 @@ final class GeneratedExamplesTest extends TestCase
                 'balance' => [
                     'available' => [
                         'key' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                     ],
                     'inbound_pending' => [
                         'key' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                     ],
                     'outbound_pending' => [
                         'key' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                     ],
                 ],
@@ -6998,20 +7098,20 @@ final class GeneratedExamplesTest extends TestCase
                 'balance' => [
                     'available' => [
                         'key' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                     ],
                     'inbound_pending' => [
                         'key' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                     ],
                     'outbound_pending' => [
                         'key' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                     ],
                 ],
@@ -7045,20 +7145,20 @@ final class GeneratedExamplesTest extends TestCase
                 'balance' => [
                     'available' => [
                         'key' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                     ],
                     'inbound_pending' => [
                         'key' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                     ],
                     'outbound_pending' => [
                         'key' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                     ],
                 ],
@@ -7092,20 +7192,20 @@ final class GeneratedExamplesTest extends TestCase
                 'balance' => [
                     'available' => [
                         'key' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                     ],
                     'inbound_pending' => [
                         'key' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                     ],
                     'outbound_pending' => [
                         'key' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                     ],
                 ],
@@ -7227,15 +7327,15 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'amount' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'description' => 'description',
                         'from' => [
                             'debited' => [
+                                'currency' => 'USD',
                                 'value' => [],
-                                'currency' => 'usd',
                             ],
                             'payment_method' => ['type' => 'type'],
                         ],
@@ -7243,8 +7343,8 @@ final class GeneratedExamplesTest extends TestCase
                         'object' => 'v2.money_management.inbound_transfer',
                         'to' => [
                             'credited' => [
+                                'currency' => 'USD',
                                 'value' => [],
-                                'currency' => 'usd',
                             ],
                             'financial_account' => 'financial_account',
                         ],
@@ -7278,8 +7378,8 @@ final class GeneratedExamplesTest extends TestCase
             '/v2/money_management/inbound_transfers',
             [
                 'amount' => [
-                    'value' => 111972721,
-                    'currency' => 'usd',
+                    'currency' => 'USD',
+                    'value' => 96,
                 ],
                 'from' => [
                     'currency' => 'usd',
@@ -7294,15 +7394,15 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount' => [
+                    'currency' => 'USD',
                     'value' => [],
-                    'currency' => 'usd',
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => 'description',
                 'from' => [
                     'debited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'payment_method' => ['type' => 'type'],
                 ],
@@ -7310,8 +7410,8 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.inbound_transfer',
                 'to' => [
                     'credited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'financial_account' => 'financial_account',
                 ],
@@ -7331,8 +7431,8 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->moneyManagement->inboundTransfers->create([
             'amount' => [
-                'value' => 111972721,
-                'currency' => 'usd',
+                'currency' => 'USD',
+                'value' => 96,
             ],
             'from' => [
                 'currency' => 'usd',
@@ -7356,15 +7456,15 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount' => [
+                    'currency' => 'USD',
                     'value' => [],
-                    'currency' => 'usd',
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'description' => 'description',
                 'from' => [
                     'debited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'payment_method' => ['type' => 'type'],
                 ],
@@ -7372,8 +7472,8 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.inbound_transfer',
                 'to' => [
                     'credited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'financial_account' => 'financial_account',
                 ],
@@ -7410,15 +7510,15 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'amount' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                         'cancelable' => [],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'from' => [
                             'debited' => [
+                                'currency' => 'USD',
                                 'value' => [],
-                                'currency' => 'usd',
                             ],
                             'financial_account' => 'financial_account',
                         ],
@@ -7429,8 +7529,8 @@ final class GeneratedExamplesTest extends TestCase
                         'status' => 'canceled',
                         'to' => [
                             'credited' => [
+                                'currency' => 'USD',
                                 'value' => [],
-                                'currency' => 'usd',
                             ],
                             'payout_method' => 'payout_method',
                             'recipient' => 'recipient',
@@ -7457,8 +7557,8 @@ final class GeneratedExamplesTest extends TestCase
             '/v2/money_management/outbound_payments',
             [
                 'amount' => [
-                    'value' => 111972721,
-                    'currency' => 'usd',
+                    'currency' => 'USD',
+                    'value' => 96,
                 ],
                 'from' => [
                     'currency' => 'usd',
@@ -7474,15 +7574,15 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount' => [
+                    'currency' => 'USD',
                     'value' => [],
-                    'currency' => 'usd',
                 ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
                     'debited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'financial_account' => 'financial_account',
                 ],
@@ -7493,8 +7593,8 @@ final class GeneratedExamplesTest extends TestCase
                 'status' => 'canceled',
                 'to' => [
                     'credited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'payout_method' => 'payout_method',
                     'recipient' => 'recipient',
@@ -7507,8 +7607,8 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->moneyManagement->outboundPayments->create([
             'amount' => [
-                'value' => 111972721,
-                'currency' => 'usd',
+                'currency' => 'USD',
+                'value' => 96,
             ],
             'from' => [
                 'currency' => 'usd',
@@ -7533,15 +7633,15 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount' => [
+                    'currency' => 'USD',
                     'value' => [],
-                    'currency' => 'usd',
                 ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
                     'debited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'financial_account' => 'financial_account',
                 ],
@@ -7552,8 +7652,8 @@ final class GeneratedExamplesTest extends TestCase
                 'status' => 'canceled',
                 'to' => [
                     'credited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'payout_method' => 'payout_method',
                     'recipient' => 'recipient',
@@ -7581,15 +7681,15 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount' => [
+                    'currency' => 'USD',
                     'value' => [],
-                    'currency' => 'usd',
                 ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
                     'debited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'financial_account' => 'financial_account',
                 ],
@@ -7600,8 +7700,8 @@ final class GeneratedExamplesTest extends TestCase
                 'status' => 'canceled',
                 'to' => [
                     'credited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'payout_method' => 'payout_method',
                     'recipient' => 'recipient',
@@ -7626,8 +7726,8 @@ final class GeneratedExamplesTest extends TestCase
             '/v2/money_management/outbound_payment_quotes',
             [
                 'amount' => [
-                    'value' => 111972721,
-                    'currency' => 'usd',
+                    'currency' => 'USD',
+                    'value' => 96,
                 ],
                 'from' => [
                     'currency' => 'usd',
@@ -7643,23 +7743,23 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount' => [
+                    'currency' => 'USD',
                     'value' => [],
-                    'currency' => 'usd',
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'estimated_fees' => [
                     '0' => [
                         'amount' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                         'type' => 'cross_border_payout_fee',
                     ],
                 ],
                 'from' => [
                     'debited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'financial_account' => 'financial_account',
                 ],
@@ -7673,8 +7773,8 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.outbound_payment_quote',
                 'to' => [
                     'credited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'payout_method' => 'payout_method',
                     'recipient' => 'recipient',
@@ -7686,8 +7786,8 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->moneyManagement->outboundPaymentQuotes->create([
             'amount' => [
-                'value' => 111972721,
-                'currency' => 'usd',
+                'currency' => 'USD',
+                'value' => 96,
             ],
             'from' => [
                 'currency' => 'usd',
@@ -7712,23 +7812,23 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount' => [
+                    'currency' => 'USD',
                     'value' => [],
-                    'currency' => 'usd',
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'estimated_fees' => [
                     '0' => [
                         'amount' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                         'type' => 'cross_border_payout_fee',
                     ],
                 ],
                 'from' => [
                     'debited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'financial_account' => 'financial_account',
                 ],
@@ -7742,8 +7842,8 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.money_management.outbound_payment_quote',
                 'to' => [
                     'credited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'payout_method' => 'payout_method',
                     'recipient' => 'recipient',
@@ -7779,6 +7879,7 @@ final class GeneratedExamplesTest extends TestCase
                             'created' => '1970-01-12T21:42:34.472Z',
                             'id' => 'obj_123',
                             'object' => 'v2.money_management.payout_method',
+                            'restricted' => [],
                             'type' => 'bank_account',
                             'usage_status' => [
                                 'payments' => 'requires_action',
@@ -7819,6 +7920,7 @@ final class GeneratedExamplesTest extends TestCase
                     'created' => '1970-01-12T21:42:34.472Z',
                     'id' => 'obj_123',
                     'object' => 'v2.money_management.payout_method',
+                    'restricted' => [],
                     'type' => 'bank_account',
                     'usage_status' => [
                         'payments' => 'requires_action',
@@ -7854,6 +7956,7 @@ final class GeneratedExamplesTest extends TestCase
                     'created' => '1970-01-12T21:42:34.472Z',
                     'id' => 'obj_123',
                     'object' => 'v2.money_management.payout_method',
+                    'restricted' => [],
                     'type' => 'bank_account',
                     'usage_status' => [
                         'payments' => 'requires_action',
@@ -7892,6 +7995,7 @@ final class GeneratedExamplesTest extends TestCase
                     'created' => '1970-01-12T21:42:34.472Z',
                     'id' => 'obj_123',
                     'object' => 'v2.money_management.payout_method',
+                    'restricted' => [],
                     'type' => 'bank_account',
                     'usage_status' => [
                         'payments' => 'requires_action',
@@ -7930,6 +8034,7 @@ final class GeneratedExamplesTest extends TestCase
                     'created' => '1970-01-12T21:42:34.472Z',
                     'id' => 'obj_123',
                     'object' => 'v2.money_management.payout_method',
+                    'restricted' => [],
                     'type' => 'bank_account',
                     'usage_status' => [
                         'payments' => 'requires_action',
@@ -7963,15 +8068,15 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'amount' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                         'cancelable' => [],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'from' => [
                             'debited' => [
+                                'currency' => 'USD',
                                 'value' => [],
-                                'currency' => 'usd',
                             ],
                             'financial_account' => 'financial_account',
                         ],
@@ -7981,8 +8086,8 @@ final class GeneratedExamplesTest extends TestCase
                         'status' => 'canceled',
                         'to' => [
                             'credited' => [
+                                'currency' => 'USD',
                                 'value' => [],
-                                'currency' => 'usd',
                             ],
                             'payout_method' => 'payout_method',
                         ],
@@ -8008,8 +8113,8 @@ final class GeneratedExamplesTest extends TestCase
             '/v2/money_management/outbound_transfers',
             [
                 'amount' => [
-                    'value' => 111972721,
-                    'currency' => 'usd',
+                    'currency' => 'USD',
+                    'value' => 96,
                 ],
                 'from' => [
                     'currency' => 'usd',
@@ -8024,15 +8129,15 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount' => [
+                    'currency' => 'USD',
                     'value' => [],
-                    'currency' => 'usd',
                 ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
                     'debited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'financial_account' => 'financial_account',
                 ],
@@ -8042,8 +8147,8 @@ final class GeneratedExamplesTest extends TestCase
                 'status' => 'canceled',
                 'to' => [
                     'credited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'payout_method' => 'payout_method',
                 ],
@@ -8055,8 +8160,8 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->moneyManagement->outboundTransfers->create([
             'amount' => [
-                'value' => 111972721,
-                'currency' => 'usd',
+                'currency' => 'USD',
+                'value' => 96,
             ],
             'from' => [
                 'currency' => 'usd',
@@ -8080,15 +8185,15 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount' => [
+                    'currency' => 'USD',
                     'value' => [],
-                    'currency' => 'usd',
                 ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
                     'debited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'financial_account' => 'financial_account',
                 ],
@@ -8098,8 +8203,8 @@ final class GeneratedExamplesTest extends TestCase
                 'status' => 'canceled',
                 'to' => [
                     'credited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'payout_method' => 'payout_method',
                 ],
@@ -8126,15 +8231,15 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount' => [
+                    'currency' => 'USD',
                     'value' => [],
-                    'currency' => 'usd',
                 ],
                 'cancelable' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
                     'debited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'financial_account' => 'financial_account',
                 ],
@@ -8144,8 +8249,8 @@ final class GeneratedExamplesTest extends TestCase
                 'status' => 'canceled',
                 'to' => [
                     'credited' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'payout_method' => 'payout_method',
                 ],
@@ -8177,6 +8282,7 @@ final class GeneratedExamplesTest extends TestCase
                         'created' => '1970-01-12T21:42:34.472Z',
                         'id' => 'obj_123',
                         'object' => 'v2.money_management.payout_method',
+                        'restricted' => [],
                         'type' => 'bank_account',
                         'usage_status' => [
                             'payments' => 'requires_action',
@@ -8209,6 +8315,7 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.payout_method',
+                'restricted' => [],
                 'type' => 'bank_account',
                 'usage_status' => [
                     'payments' => 'requires_action',
@@ -8239,6 +8346,7 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.payout_method',
+                'restricted' => [],
                 'type' => 'bank_account',
                 'usage_status' => [
                     'payments' => 'requires_action',
@@ -8269,6 +8377,7 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'object' => 'v2.money_management.payout_method',
+                'restricted' => [],
                 'type' => 'bank_account',
                 'usage_status' => [
                     'payments' => 'requires_action',
@@ -8335,8 +8444,8 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'amount' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
@@ -8368,8 +8477,8 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount' => [
+                    'currency' => 'USD',
                     'value' => [],
-                    'currency' => 'usd',
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
@@ -8401,8 +8510,8 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'amount' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
@@ -8434,8 +8543,8 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount' => [
+                    'currency' => 'USD',
                     'value' => [],
-                    'currency' => 'usd',
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
@@ -8467,21 +8576,21 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'amount' => [
+                            'currency' => 'USD',
                             'value' => [],
-                            'currency' => 'usd',
                         ],
                         'balance_impact' => [
                             'available' => [
+                                'currency' => 'USD',
                                 'value' => [],
-                                'currency' => 'usd',
                             ],
                             'inbound_pending' => [
+                                'currency' => 'USD',
                                 'value' => [],
-                                'currency' => 'usd',
                             ],
                             'outbound_pending' => [
+                                'currency' => 'USD',
                                 'value' => [],
-                                'currency' => 'usd',
                             ],
                         ],
                         'category' => 'received_debit',
@@ -8515,21 +8624,21 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount' => [
+                    'currency' => 'USD',
                     'value' => [],
-                    'currency' => 'usd',
                 ],
                 'balance_impact' => [
                     'available' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'inbound_pending' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'outbound_pending' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                 ],
                 'category' => 'received_debit',
@@ -8564,16 +8673,16 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'balance_impact' => [
                             'available' => [
+                                'currency' => 'USD',
                                 'value' => [],
-                                'currency' => 'usd',
                             ],
                             'inbound_pending' => [
+                                'currency' => 'USD',
                                 'value' => [],
-                                'currency' => 'usd',
                             ],
                             'outbound_pending' => [
+                                'currency' => 'USD',
                                 'value' => [],
-                                'currency' => 'usd',
                             ],
                         ],
                         'created' => '1970-01-12T21:42:34.472Z',
@@ -8610,16 +8719,16 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'balance_impact' => [
                     'available' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'inbound_pending' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                     'outbound_pending' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -8650,8 +8759,8 @@ final class GeneratedExamplesTest extends TestCase
             '/v2/test_helpers/financial_addresses/id_123/credit',
             [
                 'amount' => [
-                    'value' => 111972721,
-                    'currency' => 'usd',
+                    'currency' => 'USD',
+                    'value' => 96,
                 ],
                 'network' => 'rtp',
             ],
@@ -8669,8 +8778,8 @@ final class GeneratedExamplesTest extends TestCase
             'id_123',
             [
                 'amount' => [
-                    'value' => 111972721,
-                    'currency' => 'usd',
+                    'currency' => 'USD',
+                    'value' => 96,
                 ],
                 'network' => 'rtp',
             ]
@@ -8689,8 +8798,8 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'amounts' => [
                     '0' => [
+                        'currency' => 'USD',
                         'value' => [],
-                        'currency' => 'usd',
                     ],
                 ],
                 'object' => 'financial_address_generated_microdeposits',
@@ -8765,7 +8874,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/core/vault/us_bank_accounts',
-            ['account_number' => 'account_number'],
+            ['account_number' => 'account_number', 'currency' => 'usd'],
             [],
             false,
             [
@@ -8781,6 +8890,7 @@ final class GeneratedExamplesTest extends TestCase
         try {
             $this->v2Client->v2->core->vault->usBankAccounts->create([
                 'account_number' => 'account_number',
+                'currency' => 'usd',
             ]);
         } catch (Exception\BlockedByStripeException $e) {
         }
@@ -8897,8 +9007,8 @@ final class GeneratedExamplesTest extends TestCase
             '/v2/money_management/outbound_payments',
             [
                 'amount' => [
-                    'value' => 111972721,
-                    'currency' => 'usd',
+                    'currency' => 'USD',
+                    'value' => 96,
                 ],
                 'from' => [
                     'currency' => 'usd',
@@ -8921,8 +9031,8 @@ final class GeneratedExamplesTest extends TestCase
         try {
             $this->v2Client->v2->moneyManagement->outboundPayments->create([
                 'amount' => [
-                    'value' => 111972721,
-                    'currency' => 'usd',
+                    'currency' => 'USD',
+                    'value' => 96,
                 ],
                 'from' => [
                     'currency' => 'usd',
@@ -8939,7 +9049,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/core/vault/us_bank_accounts',
-            ['account_number' => 'account_number'],
+            ['account_number' => 'account_number', 'currency' => 'usd'],
             [],
             false,
             [
@@ -8955,6 +9065,7 @@ final class GeneratedExamplesTest extends TestCase
         try {
             $this->v2Client->v2->core->vault->usBankAccounts->create([
                 'account_number' => 'account_number',
+                'currency' => 'usd',
             ]);
         } catch (Exception\InvalidPaymentMethodException $e) {
         }
@@ -9043,7 +9154,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/core/vault/us_bank_accounts',
-            ['account_number' => 'account_number'],
+            ['account_number' => 'account_number', 'currency' => 'usd'],
             [],
             false,
             [
@@ -9059,6 +9170,7 @@ final class GeneratedExamplesTest extends TestCase
         try {
             $this->v2Client->v2->core->vault->usBankAccounts->create([
                 'account_number' => 'account_number',
+                'currency' => 'usd',
             ]);
         } catch (Exception\QuotaExceededException $e) {
         }
@@ -9095,8 +9207,8 @@ final class GeneratedExamplesTest extends TestCase
             '/v2/money_management/outbound_payments',
             [
                 'amount' => [
-                    'value' => 111972721,
-                    'currency' => 'usd',
+                    'currency' => 'USD',
+                    'value' => 96,
                 ],
                 'from' => [
                     'currency' => 'usd',
@@ -9119,8 +9231,8 @@ final class GeneratedExamplesTest extends TestCase
         try {
             $this->v2Client->v2->moneyManagement->outboundPayments->create([
                 'amount' => [
-                    'value' => 111972721,
-                    'currency' => 'usd',
+                    'currency' => 'USD',
+                    'value' => 96,
                 ],
                 'from' => [
                     'currency' => 'usd',

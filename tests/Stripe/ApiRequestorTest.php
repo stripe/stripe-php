@@ -101,6 +101,49 @@ final class ApiRequestorTest extends TestCase
         self::assertSame($headers['Authorization'], 'Bearer ' . $apiKey);
     }
 
+    public function testDefaultHeadersOmitPlatformWhenTelemetryDisabled()
+    {
+        $this->clearAgentEnvVars();
+
+        $originalTelemetry = Stripe::getEnableTelemetry();
+        Stripe::setEnableTelemetry(false);
+
+        try {
+            $reflector = new \ReflectionClass(ApiRequestor::class);
+            $method = $reflector->getMethod('_defaultHeaders');
+            $method->setAccessible(true);
+
+            $headers = $method->invoke(null, 'sk_test_notarealkey');
+
+            $ua = \json_decode($headers['X-Stripe-Client-User-Agent'], true);
+            self::assertArrayNotHasKey('platform', $ua);
+        } finally {
+            Stripe::setEnableTelemetry($originalTelemetry);
+        }
+    }
+
+    public function testDefaultHeadersIncludePlatformWhenTelemetryEnabled()
+    {
+        $this->clearAgentEnvVars();
+
+        $originalTelemetry = Stripe::getEnableTelemetry();
+        Stripe::setEnableTelemetry(true);
+
+        try {
+            $reflector = new \ReflectionClass(ApiRequestor::class);
+            $method = $reflector->getMethod('_defaultHeaders');
+            $method->setAccessible(true);
+
+            $headers = $method->invoke(null, 'sk_test_notarealkey');
+
+            $ua = \json_decode($headers['X-Stripe-Client-User-Agent'], true);
+            self::assertArrayHasKey('platform', $ua);
+            self::assertNotEmpty($ua['platform']);
+        } finally {
+            Stripe::setEnableTelemetry($originalTelemetry);
+        }
+    }
+
     public function testDefaultHeadersIncludeAIAgent()
     {
         $this->clearAgentEnvVars();

@@ -11,7 +11,7 @@ namespace Stripe\Billing;
  * @property ((object{available_balance: (object{monetary: null|(object{currency: string, value: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), ledger_balance: (object{monetary: null|(object{currency: string, value: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)}&\Stripe\StripeObject))[] $balances The billing credit balances. One entry per credit grant currency. If a customer only has credit grants in a single currency, then this will have a single balance entry.
  * @property string|\Stripe\Customer $customer The customer the balance is for.
  * @property null|string $customer_account The account the balance is for.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  */
 class CreditBalanceSummary extends \Stripe\SingletonApiResource
 {

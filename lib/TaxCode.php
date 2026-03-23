@@ -11,6 +11,7 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string $description A detailed description of which types of products the tax code represents.
  * @property string $name A short name for the tax code.
+ * @property null|(object{performance_location?: string}&StripeObject) $requirements An object that describes more information about the tax location required for this tax code. Some <a href="/tax/tax-for-tickets/integration-guide#types-of-products">tax codes</a> require a tax location of type <code>performance</code> to calculate tax correctly.
  */
 class TaxCode extends ApiResource
 {

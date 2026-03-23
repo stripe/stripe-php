@@ -837,7 +837,7 @@ final class BaseStripeClientTest extends TestCase
     {
         $jsonEvent = [
             'id' => 'evt_234',
-            'object' => 'event',
+            'object' => 'v2.core.event',
             'type' => 'v1.billing.meter.error_report_triggered',
             'created' => '2022-02-15T00:27:45.330Z',
             'context' => 'acct_123',
@@ -872,7 +872,7 @@ final class BaseStripeClientTest extends TestCase
     {
         $jsonEvent = [
             'id' => 'evt_234',
-            'object' => 'event',
+            'object' => 'v2.core.event',
             'type' => 'imaginary',
             'livemode' => true,
             'created' => '2022-02-15T00:27:45.330Z',
@@ -894,6 +894,28 @@ final class BaseStripeClientTest extends TestCase
         // @var UnknownEventNotification $event
         self::assertNull($event->related_object);
         self::assertNull($event->fetchRelatedObject());
+    }
+
+    public function testParseEventNotificationRejectsV1Payload()
+    {
+        $jsonEvent = [
+            'id' => 'evt_234',
+            'object' => 'event',
+            'type' => 'charge.succeeded',
+            'data' => ['object' => ['id' => 'ch_123', 'object' => 'charge']],
+        ];
+
+        $eventData = json_encode($jsonEvent);
+        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL, 'stripe_account' => 'acc_123']);
+
+        $sigHeader = WebhookTest::generateHeader(['payload' => $eventData]);
+
+        try {
+            $client->parseEventNotification($eventData, $sigHeader, WebhookTest::SECRET);
+            self::fail('Expected UnexpectedValueException was not thrown');
+        } catch (Exception\UnexpectedValueException $e) {
+            self::compatAssertStringContainsString('Webhook::constructEvent', $e->getMessage());
+        }
     }
 
     public function testV2OverridesPreviewVersionIfPassedInRawRequestOptions()

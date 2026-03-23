@@ -197,6 +197,7 @@ class ErrorObject extends StripeObject
     const CODE_SECRET_KEY_REQUIRED = 'secret_key_required';
     const CODE_SENSITIVE_DATA_ACCESS_EXPIRED = 'sensitive_data_access_expired';
     const CODE_SEPA_UNSUPPORTED_ACCOUNT = 'sepa_unsupported_account';
+    const CODE_SERVICE_PERIOD_COUPON_WITH_METERED_TIERED_ITEM_UNSUPPORTED = 'service_period_coupon_with_metered_tiered_item_unsupported';
     const CODE_SETUP_ATTEMPT_FAILED = 'setup_attempt_failed';
     const CODE_SETUP_INTENT_AUTHENTICATION_FAILURE = 'setup_intent_authentication_failure';
     const CODE_SETUP_INTENT_INVALID_PARAMETER = 'setup_intent_invalid_parameter';
