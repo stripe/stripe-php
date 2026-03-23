@@ -84,7 +84,7 @@ namespace Stripe\Checkout;
  * @property null|string $success_url The URL the customer will be directed to after the payment or subscription creation is successful.
  * @property null|(object{enabled: bool, required: string}&\Stripe\StripeObject) $tax_id_collection
  * @property null|(object{amount_discount: int, amount_shipping: null|int, amount_tax: int, breakdown?: (object{discounts: (object{amount: int, discount: \Stripe\Discount}&\Stripe\StripeObject)[], taxes: ((object{amount: int, rate: \Stripe\TaxRate, taxability_reason: null|string, taxable_amount: null|int}&\Stripe\StripeObject))[]}&\Stripe\StripeObject)}&\Stripe\StripeObject) $total_details Tax and discount details for the computed total amount.
- * @property null|string $ui_mode The UI mode of the Session. Defaults to <code>hosted</code>.
+ * @property null|string $ui_mode The UI mode of the Session. Defaults to <code>hosted_page</code>.
  * @property null|string $url The URL to the Checkout Session. Applies to Checkout Sessions with <code>ui_mode: hosted</code>. Redirect customers to this URL to take them to Checkout. If you’re using <a href="https://docs.stripe.com/payments/checkout/custom-domains">Custom Domains</a>, the URL will use your subdomain. Otherwise, it’ll use <code>checkout.stripe.com.</code> This value is only present when the session is active.
  * @property null|(object{link?: (object{display?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $wallet_options Wallet-specific configuration for this Checkout Session.
  */
@@ -128,12 +128,9 @@ class Session extends \Stripe\ApiResource
     const SUBMIT_TYPE_PAY = 'pay';
     const SUBMIT_TYPE_SUBSCRIBE = 'subscribe';
 
-    const UI_MODE_CUSTOM = 'custom';
     const UI_MODE_ELEMENTS = 'elements';
-    const UI_MODE_EMBEDDED = 'embedded';
     const UI_MODE_EMBEDDED_PAGE = 'embedded_page';
     const UI_MODE_FORM = 'form';
-    const UI_MODE_HOSTED = 'hosted';
     const UI_MODE_HOSTED_PAGE = 'hosted_page';
 
     /**
