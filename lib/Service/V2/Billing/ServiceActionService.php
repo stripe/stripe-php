@@ -23,7 +23,90 @@ class ServiceActionService extends \Stripe\Service\AbstractService
      */
     public function create($params = null, $opts = null)
     {
-        return $this->request('post', '/v2/billing/service_actions', $params, $opts);
+        return $this->request('post', '/v2/billing/service_actions', $params, $opts, [
+            'request_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'credit_grant' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'amount' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'custom_pricing_unit' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'value' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    'credit_grant_per_tenant' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'amount' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'custom_pricing_unit' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'value' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'credit_grant' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'amount' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'custom_pricing_unit' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'value' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    'credit_grant_per_tenant' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'amount' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'custom_pricing_unit' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'value' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -39,7 +122,49 @@ class ServiceActionService extends \Stripe\Service\AbstractService
      */
     public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/billing/service_actions/%s', $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v2/billing/service_actions/%s', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'credit_grant' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'amount' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'custom_pricing_unit' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'value' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    'credit_grant_per_tenant' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'amount' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'custom_pricing_unit' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'value' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -55,6 +180,48 @@ class ServiceActionService extends \Stripe\Service\AbstractService
      */
     public function update($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v2/billing/service_actions/%s', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v2/billing/service_actions/%s', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'credit_grant' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'amount' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'custom_pricing_unit' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'value' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    'credit_grant_per_tenant' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'amount' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'custom_pricing_unit' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'value' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 }

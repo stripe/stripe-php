@@ -40,6 +40,22 @@ class CadenceService extends \Stripe\Service\AbstractService
                         'element' => [
                             'kind' => 'object',
                             'fields' => [
+                                'invoice_discount_rules' => [
+                                    'kind' => 'array',
+                                    'element' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percent_off' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'percent_off' => [
+                                                        'kind' => 'decimal_string',
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
                                 'settings_data' => [
                                     'kind' => 'object',
                                     'fields' => [
@@ -93,6 +109,22 @@ class CadenceService extends \Stripe\Service\AbstractService
             'response_schema' => [
                 'kind' => 'object',
                 'fields' => [
+                    'invoice_discount_rules' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'percent_off' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'percent_off' => [
+                                            'kind' => 'decimal_string',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                     'settings_data' => [
                         'kind' => 'object',
                         'fields' => [
@@ -142,6 +174,22 @@ class CadenceService extends \Stripe\Service\AbstractService
             'response_schema' => [
                 'kind' => 'object',
                 'fields' => [
+                    'invoice_discount_rules' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'percent_off' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'percent_off' => [
+                                            'kind' => 'decimal_string',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                     'settings_data' => [
                         'kind' => 'object',
                         'fields' => [
@@ -192,6 +240,22 @@ class CadenceService extends \Stripe\Service\AbstractService
             'response_schema' => [
                 'kind' => 'object',
                 'fields' => [
+                    'invoice_discount_rules' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'percent_off' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'percent_off' => [
+                                            'kind' => 'decimal_string',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                     'settings_data' => [
                         'kind' => 'object',
                         'fields' => [
@@ -242,6 +306,22 @@ class CadenceService extends \Stripe\Service\AbstractService
             'response_schema' => [
                 'kind' => 'object',
                 'fields' => [
+                    'invoice_discount_rules' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'percent_off' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'percent_off' => [
+                                            'kind' => 'decimal_string',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                     'settings_data' => [
                         'kind' => 'object',
                         'fields' => [

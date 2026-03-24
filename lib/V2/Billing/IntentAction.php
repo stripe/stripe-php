@@ -24,6 +24,30 @@ class IntentAction extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.billing.intent_action';
 
+    public static function fieldEncodings()
+    {
+        return [
+            'apply' => [
+                'kind' => 'object',
+                'fields' => [
+                    'invoice_discount_rule' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'percent_off' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'percent_off' => [
+                                        'kind' => 'decimal_string',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     const TYPE_APPLY = 'apply';
     const TYPE_DEACTIVATE = 'deactivate';
     const TYPE_MODIFY = 'modify';

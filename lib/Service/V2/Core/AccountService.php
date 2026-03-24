@@ -33,7 +33,39 @@ class AccountService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->requestCollection('get', '/v2/core/accounts', $params, $opts);
+        return $this->requestCollection('get', '/v2/core/accounts', $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'data' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'identity' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'individual' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'relationship' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'percent_ownership' => [
+                                                            'kind' => 'decimal_string',
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -51,7 +83,31 @@ class AccountService extends \Stripe\Service\AbstractService
      */
     public function close($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v2/core/accounts/%s/close', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v2/core/accounts/%s/close', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'identity' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'individual' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'relationship' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percent_ownership' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -70,7 +126,54 @@ class AccountService extends \Stripe\Service\AbstractService
      */
     public function create($params = null, $opts = null)
     {
-        return $this->request('post', '/v2/core/accounts', $params, $opts);
+        return $this->request('post', '/v2/core/accounts', $params, $opts, [
+            'request_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'identity' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'individual' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'relationship' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percent_ownership' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'identity' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'individual' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'relationship' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percent_ownership' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -86,7 +189,31 @@ class AccountService extends \Stripe\Service\AbstractService
      */
     public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/core/accounts/%s', $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v2/core/accounts/%s', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'identity' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'individual' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'relationship' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percent_ownership' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -102,7 +229,54 @@ class AccountService extends \Stripe\Service\AbstractService
      */
     public function update($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v2/core/accounts/%s', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v2/core/accounts/%s', $id), $params, $opts, [
+            'request_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'identity' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'individual' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'relationship' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percent_ownership' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'identity' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'individual' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'relationship' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percent_ownership' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     protected function getServiceClass($name)

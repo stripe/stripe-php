@@ -30,6 +30,30 @@ class Account extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.core.account';
 
+    public static function fieldEncodings()
+    {
+        return [
+            'identity' => [
+                'kind' => 'object',
+                'fields' => [
+                    'individual' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'relationship' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'percent_ownership' => [
+                                        'kind' => 'decimal_string',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     const DASHBOARD_EXPRESS = 'express';
     const DASHBOARD_FULL = 'full';
     const DASHBOARD_NONE = 'none';

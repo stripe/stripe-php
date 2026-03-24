@@ -33,6 +33,17 @@ class VersionService extends \Stripe\Service\AbstractService
                         'element' => [
                             'kind' => 'object',
                             'fields' => [
+                                'tiers' => [
+                                    'kind' => 'array',
+                                    'element' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'up_to_decimal' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
                                 'transform_quantity' => [
                                     'kind' => 'object',
                                     'fields' => [
@@ -67,6 +78,15 @@ class VersionService extends \Stripe\Service\AbstractService
             'response_schema' => [
                 'kind' => 'object',
                 'fields' => [
+                    'tiers' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'up_to_decimal' => ['kind' => 'decimal_string'],
+                            ],
+                        ],
+                    ],
                     'transform_quantity' => [
                         'kind' => 'object',
                         'fields' => ['divide_by' => ['kind' => 'int64_string']],

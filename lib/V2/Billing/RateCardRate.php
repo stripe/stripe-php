@@ -30,6 +30,15 @@ class RateCardRate extends \Stripe\ApiResource
     public static function fieldEncodings()
     {
         return [
+            'tiers' => [
+                'kind' => 'array',
+                'element' => [
+                    'kind' => 'object',
+                    'fields' => [
+                        'up_to_decimal' => ['kind' => 'decimal_string'],
+                    ],
+                ],
+            ],
             'transform_quantity' => [
                 'kind' => 'object',
                 'fields' => ['divide_by' => ['kind' => 'int64_string']],

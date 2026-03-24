@@ -22,6 +22,44 @@ class ServiceAction extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.billing.service_action';
 
+    public static function fieldEncodings()
+    {
+        return [
+            'credit_grant' => [
+                'kind' => 'object',
+                'fields' => [
+                    'amount' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'custom_pricing_unit' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'value' => ['kind' => 'decimal_string'],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'credit_grant_per_tenant' => [
+                'kind' => 'object',
+                'fields' => [
+                    'amount' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'custom_pricing_unit' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'value' => ['kind' => 'decimal_string'],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     const SERVICE_INTERVAL_DAY = 'day';
     const SERVICE_INTERVAL_MONTH = 'month';
     const SERVICE_INTERVAL_WEEK = 'week';

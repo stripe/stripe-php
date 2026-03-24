@@ -29,6 +29,20 @@ class Cadence extends \Stripe\ApiResource
     public static function fieldEncodings()
     {
         return [
+            'invoice_discount_rules' => [
+                'kind' => 'array',
+                'element' => [
+                    'kind' => 'object',
+                    'fields' => [
+                        'percent_off' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'percent_off' => ['kind' => 'decimal_string'],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
             'settings_data' => [
                 'kind' => 'object',
                 'fields' => [

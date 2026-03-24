@@ -40,11 +40,63 @@ class PricingPlanSubscriptionService extends \Stripe\Service\AbstractService
                                             'license_fee_details' => [
                                                 'kind' => 'object',
                                                 'fields' => [
+                                                    'tiers' => [
+                                                        'kind' => 'array',
+                                                        'element' => [
+                                                            'kind' => 'object',
+                                                            'fields' => [
+                                                                'up_to_decimal' => [
+                                                                    'kind' => 'decimal_string',
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
                                                     'transform_quantity' => [
                                                         'kind' => 'object',
                                                         'fields' => [
                                                             'divide_by' => [
                                                                 'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'recurring_credit_grant_details' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'credit_grant_details' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'amount' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'custom_pricing_unit' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'value' => [
+                                                                                'kind' => 'decimal_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                    'credit_grant_per_tenant_details' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'amount' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'custom_pricing_unit' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'value' => [
+                                                                                'kind' => 'decimal_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
                                                             ],
                                                         ],
                                                     ],
@@ -86,11 +138,63 @@ class PricingPlanSubscriptionService extends \Stripe\Service\AbstractService
                                 'license_fee_details' => [
                                     'kind' => 'object',
                                     'fields' => [
+                                        'tiers' => [
+                                            'kind' => 'array',
+                                            'element' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'up_to_decimal' => [
+                                                        'kind' => 'decimal_string',
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
                                         'transform_quantity' => [
                                             'kind' => 'object',
                                             'fields' => [
                                                 'divide_by' => [
                                                     'kind' => 'int64_string',
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                                'recurring_credit_grant_details' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'credit_grant_details' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'amount' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'custom_pricing_unit' => [
+                                                            'kind' => 'object',
+                                                            'fields' => [
+                                                                'value' => [
+                                                                    'kind' => 'decimal_string',
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                        'credit_grant_per_tenant_details' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'amount' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'custom_pricing_unit' => [
+                                                            'kind' => 'object',
+                                                            'fields' => [
+                                                                'value' => [
+                                                                    'kind' => 'decimal_string',
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
                                                 ],
                                             ],
                                         ],
@@ -129,11 +233,63 @@ class PricingPlanSubscriptionService extends \Stripe\Service\AbstractService
                                 'license_fee_details' => [
                                     'kind' => 'object',
                                     'fields' => [
+                                        'tiers' => [
+                                            'kind' => 'array',
+                                            'element' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'up_to_decimal' => [
+                                                        'kind' => 'decimal_string',
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
                                         'transform_quantity' => [
                                             'kind' => 'object',
                                             'fields' => [
                                                 'divide_by' => [
                                                     'kind' => 'int64_string',
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                                'recurring_credit_grant_details' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'credit_grant_details' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'amount' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'custom_pricing_unit' => [
+                                                            'kind' => 'object',
+                                                            'fields' => [
+                                                                'value' => [
+                                                                    'kind' => 'decimal_string',
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                        'credit_grant_per_tenant_details' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'amount' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'custom_pricing_unit' => [
+                                                            'kind' => 'object',
+                                                            'fields' => [
+                                                                'value' => [
+                                                                    'kind' => 'decimal_string',
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
                                                 ],
                                             ],
                                         ],
@@ -172,11 +328,63 @@ class PricingPlanSubscriptionService extends \Stripe\Service\AbstractService
                                 'license_fee_details' => [
                                     'kind' => 'object',
                                     'fields' => [
+                                        'tiers' => [
+                                            'kind' => 'array',
+                                            'element' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'up_to_decimal' => [
+                                                        'kind' => 'decimal_string',
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
                                         'transform_quantity' => [
                                             'kind' => 'object',
                                             'fields' => [
                                                 'divide_by' => [
                                                     'kind' => 'int64_string',
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                                'recurring_credit_grant_details' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'credit_grant_details' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'amount' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'custom_pricing_unit' => [
+                                                            'kind' => 'object',
+                                                            'fields' => [
+                                                                'value' => [
+                                                                    'kind' => 'decimal_string',
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                        'credit_grant_per_tenant_details' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'amount' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'custom_pricing_unit' => [
+                                                            'kind' => 'object',
+                                                            'fields' => [
+                                                                'value' => [
+                                                                    'kind' => 'decimal_string',
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
                                                 ],
                                             ],
                                         ],

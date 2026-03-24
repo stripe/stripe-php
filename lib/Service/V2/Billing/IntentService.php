@@ -76,7 +76,39 @@ class IntentService extends \Stripe\Service\AbstractService
      */
     public function create($params = null, $opts = null)
     {
-        return $this->request('post', '/v2/billing/intents', $params, $opts);
+        return $this->request('post', '/v2/billing/intents', $params, $opts, [
+            'request_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'actions' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'apply' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'invoice_discount_rule' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'percent_off' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'percent_off' => [
+                                                            'kind' => 'decimal_string',
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
