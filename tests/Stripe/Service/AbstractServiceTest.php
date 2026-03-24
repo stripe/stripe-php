@@ -73,18 +73,18 @@ final class AbstractServiceTest extends \Stripe\TestCase
 
     public function testFormatParams()
     {
-        $result = $this->formatParamsReflector->invoke(null, ['foo' => null]);
+        $result = $this->formatParamsReflector->invoke(null, ['foo' => null], 'v1');
         self::assertTrue('' === $result['foo']);
         self::assertTrue(null !== $result['foo']);
 
-        $result = $this->formatParamsReflector->invoke(null, ['foo' => ['bar' => null, 'baz' => 1, 'nest' => ['triplynestednull' => null, 'triplynestednonnull' => 1]]]);
+        $result = $this->formatParamsReflector->invoke(null, ['foo' => ['bar' => null, 'baz' => 1, 'nest' => ['triplynestednull' => null, 'triplynestednonnull' => 1]]], 'v1');
         self::assertTrue('' === $result['foo']['bar']);
         self::assertTrue(null !== $result['foo']['bar']);
         self::assertTrue(1 === $result['foo']['baz']);
         self::assertTrue('' === $result['foo']['nest']['triplynestednull']);
         self::assertTrue(1 === $result['foo']['nest']['triplynestednonnull']);
 
-        $result = $this->formatParamsReflector->invoke(null, ['foo' => ['zero', null, null, 'three'], 'toplevelnull' => null, 'toplevelnonnull' => 4]);
+        $result = $this->formatParamsReflector->invoke(null, ['foo' => ['zero', null, null, 'three'], 'toplevelnull' => null, 'toplevelnonnull' => 4], 'v1');
         self::assertTrue('zero' === $result['foo'][0]);
         self::assertTrue('' === $result['foo'][1]);
         self::assertTrue('' === $result['foo'][2]);
