@@ -23,7 +23,31 @@ class AccountTokenService extends \Stripe\Service\AbstractService
      */
     public function create($params = null, $opts = null)
     {
-        return $this->request('post', '/v2/core/account_tokens', $params, $opts);
+        return $this->request('post', '/v2/core/account_tokens', $params, $opts, [
+            'request_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'identity' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'individual' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'relationship' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percent_ownership' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
