@@ -104,8 +104,8 @@ final class AbstractServiceTest extends \Stripe\TestCase
     {
         // v2 behavior: null values are preserved for JSON encoding
         $result = $this->formatParamsReflector->invoke(null, ['foo' => null], 'v2');
-        self::assertNull($result['foo']);
         self::assertArrayHasKey('foo', $result);
+        self::assertNull($result['foo']);
     }
 
     public function testFormatParamsV2PreservesNestedNull()
