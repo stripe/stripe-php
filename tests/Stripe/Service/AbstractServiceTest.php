@@ -153,8 +153,8 @@ final class AbstractServiceTest extends \Stripe\TestCase
         ], []);
 
         self::assertSame('test', $capturedParams['name']);
-        self::assertNull($capturedParams['description']);
         self::assertArrayHasKey('description', $capturedParams);
+        self::assertNull($capturedParams['description']);
     }
 
     public function testRequestConvertsNullToEmptyStringForV1Path()
