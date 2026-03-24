@@ -11,7 +11,7 @@ namespace Stripe\V2\Billing;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property null|(object{effective_at?: (object{type: string}&\Stripe\StripeObject), type: string, invoice_discount_rule?: (object{applies_to: string, invoice_discount_rule?: string, type: string, percent_off?: (object{maximum_applications: (object{type: string}&\Stripe\StripeObject), percent_off: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), spend_modifier_rule?: (object{applies_to: string, id: string, type: string, max_billing_period_spend?: (object{amount: (object{type: string, custom_pricing_unit?: (object{value: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), custom_pricing_unit_overage_rate: (object{id: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $apply Details for an apply action.
+ * @property null|(object{effective_at?: (object{timestamp?: int, type: string}&\Stripe\StripeObject), type: string, discount?: (object{coupon?: string, discount?: string, promotion_code?: string, type: string}&\Stripe\StripeObject), invoice_discount_rule?: (object{applies_to: string, invoice_discount_rule?: string, type: string, percent_off?: (object{maximum_applications: (object{type: string}&\Stripe\StripeObject), percent_off: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), spend_modifier_rule?: (object{applies_to: string, id: string, type: string, max_billing_period_spend?: (object{amount: (object{type: string, custom_pricing_unit?: (object{value: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), custom_pricing_unit_overage_rate: (object{id: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $apply Details for an apply action.
  * @property int $created Time at which the object was created.
  * @property null|(object{cancellation_details?: (object{comment?: string, feedback?: string}&\Stripe\StripeObject), collect_at: string, effective_at: (object{timestamp?: int, type: string}&\Stripe\StripeObject), type: string, pricing_plan_subscription_details?: (object{overrides?: (object{partial_period_behaviors: (object{type: string, license_fee?: (object{credit_proration_behavior: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), pricing_plan_subscription: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $deactivate Details for a deactivate action.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
@@ -23,6 +23,30 @@ namespace Stripe\V2\Billing;
 class IntentAction extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.billing.intent_action';
+
+    public static function fieldEncodings()
+    {
+        return [
+            'apply' => [
+                'kind' => 'object',
+                'fields' => [
+                    'invoice_discount_rule' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'percent_off' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'percent_off' => [
+                                        'kind' => 'decimal_string',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+    }
 
     const TYPE_APPLY = 'apply';
     const TYPE_DEACTIVATE = 'deactivate';

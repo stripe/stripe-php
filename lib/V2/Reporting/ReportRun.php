@@ -25,6 +25,21 @@ class ReportRun extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.reporting.report_run';
 
+    public static function fieldEncodings()
+    {
+        return [
+            'result' => [
+                'kind' => 'object',
+                'fields' => [
+                    'file' => [
+                        'kind' => 'object',
+                        'fields' => ['size' => ['kind' => 'int64_string']],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     const STATUS_FAILED = 'failed';
     const STATUS_RUNNING = 'running';
     const STATUS_SUCCEEDED = 'succeeded';

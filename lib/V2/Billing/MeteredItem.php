@@ -14,7 +14,7 @@ namespace Stripe\V2\Billing;
  * @property string $display_name Description that customers will see in the invoice line item. Maximum length of 250 characters.
  * @property string[] $invoice_presentation_dimensions Optional array of Meter dimensions to group event dimension keys for invoice line items.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|string $lookup_key An internal key you can use to search for a particular billable item. Maximum length of 200 characters.
+ * @property null|string $lookup_key An internal key you can use to search for a particular metered item. Maximum length of 200 characters.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $meter ID of the Meter that measures usage for this Metered Item.
  * @property (object{dimension: string, value: string}&\Stripe\StripeObject)[] $meter_segment_conditions Optional array of Meter segments to filter event dimension keys for billing.

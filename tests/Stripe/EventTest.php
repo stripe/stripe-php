@@ -187,7 +187,7 @@ final class EventTest extends TestCase
     {
         $eventData = json_encode([
             'id' => 'evt_234',
-            'object' => 'event',
+            'object' => 'v2.core.event',
             'type' => 'v1.billing.meter.error_report_triggered',
             'created' => '2022-02-15T00:27:45.330Z',
             'related_object' => [
@@ -226,7 +226,7 @@ final class EventTest extends TestCase
     {
         $eventData = json_encode([
             'id' => 'evt_234',
-            'object' => 'event',
+            'object' => 'v2.core.event',
             'type' => 'v1.billing.meter.no_meter_found',
             'created' => '2022-02-15T00:27:45.330Z',
         ]);
@@ -244,7 +244,7 @@ final class EventTest extends TestCase
     {
         $eventData = json_encode([
             'id' => 'evt_234',
-            'object' => 'event',
+            'object' => 'v2.core.event',
             'type' => 'imaginary',
             'created' => '2022-02-15T00:27:45.330Z',
         ]);

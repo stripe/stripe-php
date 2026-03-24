@@ -24,7 +24,19 @@ class PersonTokenService extends \Stripe\Service\AbstractService
      */
     public function create($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v2/core/accounts/%s/person_tokens', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v2/core/accounts/%s/person_tokens', $id), $params, $opts, [
+            'request_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'relationship' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'percent_ownership' => ['kind' => 'decimal_string'],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**

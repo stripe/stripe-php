@@ -29,7 +29,40 @@ class LicenseFeeService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->requestCollection('get', '/v2/billing/license_fees', $params, $opts);
+        return $this->requestCollection('get', '/v2/billing/license_fees', $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'data' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'tiers' => [
+                                    'kind' => 'array',
+                                    'element' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'up_to_decimal' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                                'transform_quantity' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'divide_by' => [
+                                            'kind' => 'int64_string',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -44,7 +77,44 @@ class LicenseFeeService extends \Stripe\Service\AbstractService
      */
     public function create($params = null, $opts = null)
     {
-        return $this->request('post', '/v2/billing/license_fees', $params, $opts);
+        return $this->request('post', '/v2/billing/license_fees', $params, $opts, [
+            'request_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'tiers' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'up_to_decimal' => ['kind' => 'decimal_string'],
+                            ],
+                        ],
+                    ],
+                    'transform_quantity' => [
+                        'kind' => 'object',
+                        'fields' => ['divide_by' => ['kind' => 'int64_string']],
+                    ],
+                ],
+            ],
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'tiers' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'up_to_decimal' => ['kind' => 'decimal_string'],
+                            ],
+                        ],
+                    ],
+                    'transform_quantity' => [
+                        'kind' => 'object',
+                        'fields' => ['divide_by' => ['kind' => 'int64_string']],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -60,7 +130,26 @@ class LicenseFeeService extends \Stripe\Service\AbstractService
      */
     public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/billing/license_fees/%s', $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v2/billing/license_fees/%s', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'tiers' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'up_to_decimal' => ['kind' => 'decimal_string'],
+                            ],
+                        ],
+                    ],
+                    'transform_quantity' => [
+                        'kind' => 'object',
+                        'fields' => ['divide_by' => ['kind' => 'int64_string']],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -76,7 +165,44 @@ class LicenseFeeService extends \Stripe\Service\AbstractService
      */
     public function update($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v2/billing/license_fees/%s', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v2/billing/license_fees/%s', $id), $params, $opts, [
+            'request_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'tiers' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'up_to_decimal' => ['kind' => 'decimal_string'],
+                            ],
+                        ],
+                    ],
+                    'transform_quantity' => [
+                        'kind' => 'object',
+                        'fields' => ['divide_by' => ['kind' => 'int64_string']],
+                    ],
+                ],
+            ],
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'tiers' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'up_to_decimal' => ['kind' => 'decimal_string'],
+                            ],
+                        ],
+                    ],
+                    'transform_quantity' => [
+                        'kind' => 'object',
+                        'fields' => ['divide_by' => ['kind' => 'int64_string']],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     protected function getServiceClass($name)

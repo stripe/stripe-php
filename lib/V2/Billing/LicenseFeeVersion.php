@@ -23,6 +23,25 @@ class LicenseFeeVersion extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.billing.license_fee_version';
 
+    public static function fieldEncodings()
+    {
+        return [
+            'tiers' => [
+                'kind' => 'array',
+                'element' => [
+                    'kind' => 'object',
+                    'fields' => [
+                        'up_to_decimal' => ['kind' => 'decimal_string'],
+                    ],
+                ],
+            ],
+            'transform_quantity' => [
+                'kind' => 'object',
+                'fields' => ['divide_by' => ['kind' => 'int64_string']],
+            ],
+        ];
+    }
+
     const TIERING_MODE_GRADUATED = 'graduated';
     const TIERING_MODE_VOLUME = 'volume';
 }

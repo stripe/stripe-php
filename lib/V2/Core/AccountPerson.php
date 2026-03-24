@@ -36,6 +36,18 @@ class AccountPerson extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.core.account_person';
 
+    public static function fieldEncodings()
+    {
+        return [
+            'relationship' => [
+                'kind' => 'object',
+                'fields' => [
+                    'percent_ownership' => ['kind' => 'decimal_string'],
+                ],
+            ],
+        ];
+    }
+
     const LEGAL_GENDER_FEMALE = 'female';
     const LEGAL_GENDER_MALE = 'male';
 

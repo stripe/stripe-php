@@ -23,7 +23,40 @@ class ManualRuleService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->requestCollection('get', '/v2/tax/manual_rules', $params, $opts);
+        return $this->requestCollection('get', '/v2/tax/manual_rules', $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'data' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'scheduled_tax_rates' => [
+                                    'kind' => 'array',
+                                    'element' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'rates' => [
+                                                'kind' => 'array',
+                                                'element' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'percentage' => [
+                                                            'kind' => 'decimal_string',
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -38,7 +71,56 @@ class ManualRuleService extends \Stripe\Service\AbstractService
      */
     public function create($params = null, $opts = null)
     {
-        return $this->request('post', '/v2/tax/manual_rules', $params, $opts);
+        return $this->request('post', '/v2/tax/manual_rules', $params, $opts, [
+            'request_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'scheduled_tax_rates' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'rates' => [
+                                    'kind' => 'array',
+                                    'element' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percentage' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'scheduled_tax_rates' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'rates' => [
+                                    'kind' => 'array',
+                                    'element' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percentage' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -54,7 +136,32 @@ class ManualRuleService extends \Stripe\Service\AbstractService
      */
     public function deactivate($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v2/tax/manual_rules/%s/deactivate', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v2/tax/manual_rules/%s/deactivate', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'scheduled_tax_rates' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'rates' => [
+                                    'kind' => 'array',
+                                    'element' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percentage' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -70,7 +177,32 @@ class ManualRuleService extends \Stripe\Service\AbstractService
      */
     public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/tax/manual_rules/%s', $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v2/tax/manual_rules/%s', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'scheduled_tax_rates' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'rates' => [
+                                    'kind' => 'array',
+                                    'element' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percentage' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -86,6 +218,55 @@ class ManualRuleService extends \Stripe\Service\AbstractService
      */
     public function update($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v2/tax/manual_rules/%s', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v2/tax/manual_rules/%s', $id), $params, $opts, [
+            'request_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'scheduled_tax_rates' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'rates' => [
+                                    'kind' => 'array',
+                                    'element' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percentage' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'scheduled_tax_rates' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'rates' => [
+                                    'kind' => 'array',
+                                    'element' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percentage' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 }

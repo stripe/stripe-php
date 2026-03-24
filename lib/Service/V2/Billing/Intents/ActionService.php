@@ -24,7 +24,39 @@ class ActionService extends \Stripe\Service\AbstractService
      */
     public function all($id, $params = null, $opts = null)
     {
-        return $this->requestCollection('get', $this->buildPath('/v2/billing/intents/%s/actions', $id), $params, $opts);
+        return $this->requestCollection('get', $this->buildPath('/v2/billing/intents/%s/actions', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'data' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'apply' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'invoice_discount_rule' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'percent_off' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'percent_off' => [
+                                                            'kind' => 'decimal_string',
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -41,6 +73,30 @@ class ActionService extends \Stripe\Service\AbstractService
      */
     public function retrieve($parentId, $id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/billing/intents/%s/actions/%s', $parentId, $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v2/billing/intents/%s/actions/%s', $parentId, $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'apply' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'invoice_discount_rule' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'percent_off' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percent_off' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 }

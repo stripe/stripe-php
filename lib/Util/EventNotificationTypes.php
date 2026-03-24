@@ -6,6 +6,7 @@ class EventNotificationTypes
 {
     const v2EventMapping = [
         // The beginning of the section generated from our OpenAPI spec
+        \Stripe\Events\V1AccountSignalsIncludingDelinquencyCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V1AccountSignalsIncludingDelinquencyCreatedEventNotification::class,
         \Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification::LOOKUP_TYPE => \Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification::class,
         \Stripe\Events\V1BillingMeterNoMeterFoundEventNotification::LOOKUP_TYPE => \Stripe\Events\V1BillingMeterNoMeterFoundEventNotification::class,
         \Stripe\Events\V2BillingCadenceBilledEventNotification::LOOKUP_TYPE => \Stripe\Events\V2BillingCadenceBilledEventNotification::class,
@@ -67,6 +68,17 @@ class EventNotificationTypes
         \Stripe\Events\V2CoreAccountPersonCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonCreatedEventNotification::class,
         \Stripe\Events\V2CoreAccountPersonDeletedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonDeletedEventNotification::class,
         \Stripe\Events\V2CoreAccountPersonUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonUpdatedEventNotification::class,
+        \Stripe\Events\V2CoreAccountSignalsFraudulentWebsiteReadyEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountSignalsFraudulentWebsiteReadyEventNotification::class,
+        \Stripe\Events\V2CoreBatchJobBatchFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobBatchFailedEventNotification::class,
+        \Stripe\Events\V2CoreBatchJobCanceledEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobCanceledEventNotification::class,
+        \Stripe\Events\V2CoreBatchJobCompletedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobCompletedEventNotification::class,
+        \Stripe\Events\V2CoreBatchJobCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobCreatedEventNotification::class,
+        \Stripe\Events\V2CoreBatchJobReadyForUploadEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobReadyForUploadEventNotification::class,
+        \Stripe\Events\V2CoreBatchJobTimeoutEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobTimeoutEventNotification::class,
+        \Stripe\Events\V2CoreBatchJobUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobUpdatedEventNotification::class,
+        \Stripe\Events\V2CoreBatchJobUploadTimeoutEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobUploadTimeoutEventNotification::class,
+        \Stripe\Events\V2CoreBatchJobValidatingEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobValidatingEventNotification::class,
+        \Stripe\Events\V2CoreBatchJobValidationFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobValidationFailedEventNotification::class,
         \Stripe\Events\V2CoreClaimableSandboxClaimedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreClaimableSandboxClaimedEventNotification::class,
         \Stripe\Events\V2CoreClaimableSandboxCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreClaimableSandboxCreatedEventNotification::class,
         \Stripe\Events\V2CoreClaimableSandboxExpiredEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreClaimableSandboxExpiredEventNotification::class,
@@ -167,6 +179,7 @@ class EventNotificationTypes
         \Stripe\Events\V2ReportingReportRunFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunFailedEventNotification::class,
         \Stripe\Events\V2ReportingReportRunSucceededEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunSucceededEventNotification::class,
         \Stripe\Events\V2ReportingReportRunUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunUpdatedEventNotification::class,
+        \Stripe\Events\V2SignalsAccountSignalFraudulentMerchantReadyEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalFraudulentMerchantReadyEventNotification::class,
         // The end of the section generated from our OpenAPI spec
     ];
 }

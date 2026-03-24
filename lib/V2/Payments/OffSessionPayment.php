@@ -14,8 +14,8 @@ namespace Stripe\V2\Payments;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property null|(object{value: int, currency: string}&\Stripe\StripeObject) $amount_capturable The amount available to be captured.
- * @property (object{value: int, currency: string}&\Stripe\StripeObject) $amount_requested The “presentment amount” to be collected from the customer.
+ * @property null|\Stripe\StripeObject $amount_capturable The amount available to be captured.
+ * @property \Stripe\StripeObject $amount_requested The “presentment amount” to be collected from the customer.
  * @property string $cadence The frequency of the underlying payment.
  * @property null|(object{capture_before?: int, capture_method: string}&\Stripe\StripeObject) $capture Details about the capture configuration for the OffSessionPayment.
  * @property string $compartment_id ID of the owning compartment.
@@ -45,6 +45,7 @@ class OffSessionPayment extends \Stripe\ApiResource
     const CADENCE_UNSCHEDULED = 'unscheduled';
 
     const FAILURE_REASON_AUTHORIZATION_EXPIRED = 'authorization_expired';
+    const FAILURE_REASON_NO_VALID_PAYMENT_METHOD = 'no_valid_payment_method';
     const FAILURE_REASON_REJECTED_BY_PARTNER = 'rejected_by_partner';
     const FAILURE_REASON_RETRIES_EXHAUSTED = 'retries_exhausted';
 

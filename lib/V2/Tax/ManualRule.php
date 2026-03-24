@@ -20,6 +20,31 @@ class ManualRule extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.tax.manual_rule';
 
+    public static function fieldEncodings()
+    {
+        return [
+            'scheduled_tax_rates' => [
+                'kind' => 'array',
+                'element' => [
+                    'kind' => 'object',
+                    'fields' => [
+                        'rates' => [
+                            'kind' => 'array',
+                            'element' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'percentage' => [
+                                        'kind' => 'decimal_string',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     const STATUS_ACTIVE = 'active';
     const STATUS_INACTIVE = 'inactive';
 }
