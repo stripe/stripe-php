@@ -202,7 +202,13 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      */
     private function constructUrlAndBody($method, $absUrl, $params, $hasFile, $apiMode)
     {
-        $params = Util\Util::objectsToIds($params);
+        // For V2 POST bodies, preserve null values so they serialize to JSON
+        // null (the V2 mechanism for clearing fields / metadata keys).
+        // For all other cases (V1, GET/DELETE query params), strip nulls as
+        // before — null values become empty strings in query params which
+        // causes server errors.
+        $serializeNull = ('post' === $method && 'v2' === $apiMode);
+        $params = Util\Util::objectsToIds($params, $serializeNull);
         if ('post' === $method) {
             $absUrl = Util\Util::utf8($absUrl);
             if ($hasFile) {

@@ -75,8 +75,97 @@ final class UtilTest extends \Stripe\TestCase
                 'foo' => 'bar',
                 'customer' => 'cus_123',
             ],
-            Util::objectsToIds($params)
+            Util::objectsToIds($params, false)
         );
+    }
+
+    public function testObjectsToIdsSerializeNullPreservesNulls()
+    {
+        $params = [
+            'foo' => 'bar',
+            'null_value' => null,
+        ];
+
+        $result = Util::objectsToIds($params, true);
+        self::assertArrayHasKey('null_value', $result);
+        self::assertNull($result['null_value']);
+        self::assertSame('bar', $result['foo']);
+    }
+
+    public function testObjectsToIdsSerializeNullPreservesNestedNulls()
+    {
+        $params = [
+            'metadata' => ['key' => 'value', 'to_delete' => null],
+            'name' => 'test',
+        ];
+
+        $result = Util::objectsToIds($params, true);
+        self::assertSame('test', $result['name']);
+        self::assertSame('value', $result['metadata']['key']);
+        self::assertArrayHasKey('to_delete', $result['metadata']);
+        self::assertNull($result['metadata']['to_delete']);
+    }
+
+    public function testObjectsToIdsDefaultStripsNulls()
+    {
+        // serializeEmpty=false: null values are stripped
+        $params = [
+            'foo' => 'bar',
+            'null_value' => null,
+        ];
+
+        $result = Util::objectsToIds($params, false);
+        self::assertArrayNotHasKey('null_value', $result);
+        self::assertSame('bar', $result['foo']);
+    }
+
+    public function testObjectsToIdsSerializeNullWithApiResource()
+    {
+        // ApiResource replacement should still work with serializeEmpty
+        $params = [
+            'customer' => Util::convertToStripeObject(
+                [
+                    'id' => 'cus_123',
+                    'object' => 'customer',
+                ],
+                null
+            ),
+            'description' => null,
+        ];
+
+        $result = Util::objectsToIds($params, true);
+        self::assertSame('cus_123', $result['customer']);
+        self::assertArrayHasKey('description', $result);
+        self::assertNull($result['description']);
+    }
+
+    public function testObjectsToIdsEmptyAssocArrayBecomesObject()
+    {
+        // When all values are stripped from an associative array,
+        // the result should be an object (for correct JSON encoding
+        // as {} instead of [])
+        $params = [
+            'metadata' => ['only_null' => null],
+        ];
+
+        $result = Util::objectsToIds($params, false);
+        // metadata's only value was null and got stripped; the result
+        // for metadata should be an object (stdClass) not an empty array
+        self::assertInstanceOf(\stdClass::class, $result['metadata']);
+        self::assertSame('{}', \json_encode($result['metadata']));
+    }
+
+    public function testObjectsToIdsSerializeNullInList()
+    {
+        // Lists should pass through serializeEmpty to nested elements
+        $params = [
+            ['key' => null, 'name' => 'test'],
+        ];
+
+        $result = Util::objectsToIds($params, true);
+        self::assertArrayHasKey('key', $result[0]);
+        self::assertNull($result[0]['key']);
+        self::assertSame('test', $result[0]['name']);
     }
 
     public function testEncodeParameters()

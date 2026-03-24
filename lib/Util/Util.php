@@ -154,11 +154,17 @@ abstract class Util
      * ApiResource, then it is replaced by the resource's ID.
      * Also clears out null values.
      *
+     * When $serializeNull is true (used for V2 POST request
+     * bodies), null values in associative arrays are preserved instead of
+     * stripped.  This is necessary because V2 JSON bodies use explicit null
+     * to signal "delete this field / metadata key".
+     *
      * @param mixed $h
+     * @param bool  $serializeNull when true, preserve null values instead of stripping them
      *
      * @return mixed
      */
-    public static function objectsToIds($h)
+    public static function objectsToIds($h, $serializeNull)
     {
         if ($h instanceof \Stripe\ApiResource) {
             return $h->id;
@@ -166,7 +172,7 @@ abstract class Util
         if (static::isList($h)) {
             $results = [];
             foreach ($h as $v) {
-                $results[] = static::objectsToIds($v);
+                $results[] = static::objectsToIds($v, $serializeNull);
             }
 
             return $results;
@@ -175,9 +181,21 @@ abstract class Util
             $results = [];
             foreach ($h as $k => $v) {
                 if (null === $v) {
+                    if ($serializeNull) {
+                        $results[$k] = null;
+                    }
+
                     continue;
                 }
-                $results[$k] = static::objectsToIds($v);
+                $results[$k] = static::objectsToIds($v, $serializeNull);
+            }
+
+            // If the input was an associative array with string keys but
+            // all values were stripped, $results is an empty indexed array.
+            // PHP's json_encode would render that as [] (JSON array) instead
+            // of {} (JSON object). Cast to object to preserve the type.
+            if (empty($results) && !empty($h)) {
+                return (object) $results;
             }
 
             return $results;
