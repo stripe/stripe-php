@@ -6,6 +6,7 @@ class EventTypes
 {
     const v2EventMapping = [
         // The beginning of the section generated from our OpenAPI spec
+        \Stripe\Events\V1AccountSignalsIncludingDelinquencyCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V1AccountSignalsIncludingDelinquencyCreatedEvent::class,
         \Stripe\Events\V1BillingMeterErrorReportTriggeredEvent::LOOKUP_TYPE => \Stripe\Events\V1BillingMeterErrorReportTriggeredEvent::class,
         \Stripe\Events\V1BillingMeterNoMeterFoundEvent::LOOKUP_TYPE => \Stripe\Events\V1BillingMeterNoMeterFoundEvent::class,
         \Stripe\Events\V2BillingCadenceBilledEvent::LOOKUP_TYPE => \Stripe\Events\V2BillingCadenceBilledEvent::class,
@@ -67,6 +68,17 @@ class EventTypes
         \Stripe\Events\V2CoreAccountPersonCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonCreatedEvent::class,
         \Stripe\Events\V2CoreAccountPersonDeletedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonDeletedEvent::class,
         \Stripe\Events\V2CoreAccountPersonUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonUpdatedEvent::class,
+        \Stripe\Events\V2CoreAccountSignalsFraudulentWebsiteReadyEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountSignalsFraudulentWebsiteReadyEvent::class,
+        \Stripe\Events\V2CoreBatchJobBatchFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobBatchFailedEvent::class,
+        \Stripe\Events\V2CoreBatchJobCanceledEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobCanceledEvent::class,
+        \Stripe\Events\V2CoreBatchJobCompletedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobCompletedEvent::class,
+        \Stripe\Events\V2CoreBatchJobCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobCreatedEvent::class,
+        \Stripe\Events\V2CoreBatchJobReadyForUploadEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobReadyForUploadEvent::class,
+        \Stripe\Events\V2CoreBatchJobTimeoutEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobTimeoutEvent::class,
+        \Stripe\Events\V2CoreBatchJobUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobUpdatedEvent::class,
+        \Stripe\Events\V2CoreBatchJobUploadTimeoutEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobUploadTimeoutEvent::class,
+        \Stripe\Events\V2CoreBatchJobValidatingEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobValidatingEvent::class,
+        \Stripe\Events\V2CoreBatchJobValidationFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobValidationFailedEvent::class,
         \Stripe\Events\V2CoreClaimableSandboxClaimedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreClaimableSandboxClaimedEvent::class,
         \Stripe\Events\V2CoreClaimableSandboxCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreClaimableSandboxCreatedEvent::class,
         \Stripe\Events\V2CoreClaimableSandboxExpiredEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreClaimableSandboxExpiredEvent::class,
@@ -167,6 +179,7 @@ class EventTypes
         \Stripe\Events\V2ReportingReportRunFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunFailedEvent::class,
         \Stripe\Events\V2ReportingReportRunSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunSucceededEvent::class,
         \Stripe\Events\V2ReportingReportRunUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunUpdatedEvent::class,
+        \Stripe\Events\V2SignalsAccountSignalFraudulentMerchantReadyEvent::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalFraudulentMerchantReadyEvent::class,
         // The end of the section generated from our OpenAPI spec
     ];
 }

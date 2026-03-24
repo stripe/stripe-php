@@ -12,8 +12,8 @@ namespace Stripe\Service\V2\Billing\RateCards;
 class RateService extends \Stripe\Service\AbstractService
 {
     /**
-     * List all Rates associated with a Rate Card for a specific version (defaults to
-     * latest). Rates remain active for all subsequent versions until a new rate is
+     * List all Rates associated with a Rate Card for a specific version. Defaults to
+     * latest. Rates remain active for all subsequent versions until a new rate is
      * created for the same Metered Item.
      *
      * @param string $id
@@ -26,7 +26,29 @@ class RateService extends \Stripe\Service\AbstractService
      */
     public function all($id, $params = null, $opts = null)
     {
-        return $this->requestCollection('get', $this->buildPath('/v2/billing/rate_cards/%s/rates', $id), $params, $opts);
+        return $this->requestCollection('get', $this->buildPath('/v2/billing/rate_cards/%s/rates', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'data' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'transform_quantity' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'divide_by' => [
+                                            'kind' => 'int64_string',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -44,7 +66,26 @@ class RateService extends \Stripe\Service\AbstractService
      */
     public function create($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v2/billing/rate_cards/%s/rates', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v2/billing/rate_cards/%s/rates', $id), $params, $opts, [
+            'request_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'transform_quantity' => [
+                        'kind' => 'object',
+                        'fields' => ['divide_by' => ['kind' => 'int64_string']],
+                    ],
+                ],
+            ],
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'transform_quantity' => [
+                        'kind' => 'object',
+                        'fields' => ['divide_by' => ['kind' => 'int64_string']],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -79,6 +120,16 @@ class RateService extends \Stripe\Service\AbstractService
      */
     public function retrieve($parentId, $id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/billing/rate_cards/%s/rates/%s', $parentId, $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v2/billing/rate_cards/%s/rates/%s', $parentId, $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'transform_quantity' => [
+                        'kind' => 'object',
+                        'fields' => ['divide_by' => ['kind' => 'int64_string']],
+                    ],
+                ],
+            ],
+        ]);
     }
 }

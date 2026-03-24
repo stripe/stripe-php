@@ -24,7 +24,29 @@ class VersionService extends \Stripe\Service\AbstractService
      */
     public function all($id, $params = null, $opts = null)
     {
-        return $this->requestCollection('get', $this->buildPath('/v2/billing/license_fees/%s/versions', $id), $params, $opts);
+        return $this->requestCollection('get', $this->buildPath('/v2/billing/license_fees/%s/versions', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'data' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'transform_quantity' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'divide_by' => [
+                                            'kind' => 'int64_string',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -41,6 +63,16 @@ class VersionService extends \Stripe\Service\AbstractService
      */
     public function retrieve($parentId, $id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/billing/license_fees/%s/versions/%s', $parentId, $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v2/billing/license_fees/%s/versions/%s', $parentId, $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'transform_quantity' => [
+                        'kind' => 'object',
+                        'fields' => ['divide_by' => ['kind' => 'int64_string']],
+                    ],
+                ],
+            ],
+        ]);
     }
 }

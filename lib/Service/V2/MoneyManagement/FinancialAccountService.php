@@ -14,7 +14,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
     /**
      * Lists FinancialAccounts in this compartment.
      *
-     * @param null|array{limit?: int, status?: string, types?: string[]} $params
+     * @param null|array{include?: string[], limit?: int, status?: string, types?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\MoneyManagement\FinancialAccount>
@@ -62,7 +62,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      * Retrieves the details of an existing FinancialAccount.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{include?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\FinancialAccount

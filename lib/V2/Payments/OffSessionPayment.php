@@ -45,6 +45,7 @@ class OffSessionPayment extends \Stripe\ApiResource
     const CADENCE_UNSCHEDULED = 'unscheduled';
 
     const FAILURE_REASON_AUTHORIZATION_EXPIRED = 'authorization_expired';
+    const FAILURE_REASON_NO_VALID_PAYMENT_METHOD = 'no_valid_payment_method';
     const FAILURE_REASON_REJECTED_BY_PARTNER = 'rejected_by_partner';
     const FAILURE_REASON_RETRIES_EXHAUSTED = 'retries_exhausted';
 

@@ -65,7 +65,7 @@ class UsBankAccountService extends \Stripe\Service\AbstractService
     /**
      * Create a USBankAccount object.
      *
-     * @param null|array{account_number: string, bank_account_type?: string, fedwire_routing_number?: string, routing_number?: string} $params
+     * @param null|array{account_number: string, bank_account_type?: string, currency: string, fedwire_routing_number?: string, routing_number?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Core\Vault\UsBankAccount
