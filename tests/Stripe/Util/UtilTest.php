@@ -79,7 +79,7 @@ final class UtilTest extends \Stripe\TestCase
         );
     }
 
-    public function testObjectsToIdsSerializeEmptyPreservesNulls()
+    public function testObjectsToIdsSerializeNullPreservesNulls()
     {
         $params = [
             'foo' => 'bar',
@@ -92,7 +92,7 @@ final class UtilTest extends \Stripe\TestCase
         self::assertSame('bar', $result['foo']);
     }
 
-    public function testObjectsToIdsSerializeEmptyPreservesNestedNulls()
+    public function testObjectsToIdsSerializeNullPreservesNestedNulls()
     {
         $params = [
             'metadata' => ['key' => 'value', 'to_delete' => null],
@@ -119,7 +119,7 @@ final class UtilTest extends \Stripe\TestCase
         self::assertSame('bar', $result['foo']);
     }
 
-    public function testObjectsToIdsSerializeEmptyWithApiResource()
+    public function testObjectsToIdsSerializeNullWithApiResource()
     {
         // ApiResource replacement should still work with serializeEmpty
         $params = [
@@ -155,7 +155,7 @@ final class UtilTest extends \Stripe\TestCase
         self::assertSame('{}', \json_encode($result['metadata']));
     }
 
-    public function testObjectsToIdsSerializeEmptyInList()
+    public function testObjectsToIdsSerializeNullInList()
     {
         // Lists should pass through serializeEmpty to nested elements
         $params = [
