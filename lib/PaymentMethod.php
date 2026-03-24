@@ -6,10 +6,10 @@ namespace Stripe;
 
 /**
  * PaymentMethod objects represent your customer's payment instruments.
- * You can use them with <a href="https://stripe.com/docs/payments/payment-intents">PaymentIntents</a> to collect payments or save them to
+ * You can use them with <a href="https://docs.stripe.com/payments/payment-intents">PaymentIntents</a> to collect payments or save them to
  * Customer objects to store instrument details for future payments.
  *
- * Related guides: <a href="https://stripe.com/docs/payments/payment-methods">Payment Methods</a> and <a href="https://stripe.com/docs/payments/more-payment-scenarios">More Payment Scenarios</a>.
+ * Related guides: <a href="https://docs.stripe.com/payments/payment-methods">Payment Methods</a> and <a href="https://docs.stripe.com/payments/more-payment-scenarios">More Payment Scenarios</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -27,12 +27,14 @@ namespace Stripe;
  * @property (object{address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject), email: null|string, name: null|string, phone: null|string, tax_id: null|string}&StripeObject) $billing_details
  * @property null|(object{}&StripeObject) $blik
  * @property null|(object{tax_id: string}&StripeObject) $boleto
- * @property null|(object{brand: string, checks: null|(object{address_line1_check: null|string, address_postal_code_check: null|string, cvc_check: null|string}&StripeObject), country: null|string, description?: null|string, display_brand: null|string, exp_month: int, exp_year: int, fingerprint?: null|string, funding: string, generated_from: null|(object{charge: null|string, payment_method_details: null|(object{card_present?: (object{amount_authorized: null|int, brand: null|string, brand_product: null|string, capture_before?: int, cardholder_name: null|string, country: null|string, description?: null|string, emv_auth_data: null|string, exp_month: int, exp_year: int, fingerprint: null|string, funding: null|string, generated_card: null|string, iin?: null|string, incremental_authorization_supported: bool, issuer?: null|string, last4: null|string, network: null|string, network_transaction_id: null|string, offline: null|(object{stored_at: null|int, type: null|string}&StripeObject), overcapture_supported: bool, preferred_locales: null|string[], read_method: null|string, receipt: null|(object{account_type?: string, application_cryptogram: null|string, application_preferred_name: null|string, authorization_code: null|string, authorization_response_code: null|string, cardholder_verification_method: null|string, dedicated_file_name: null|string, terminal_verification_results: null|string, transaction_status_information: null|string}&StripeObject), wallet?: (object{type: string}&StripeObject)}&StripeObject), type: string}&StripeObject), setup_attempt: null|SetupAttempt|string}&StripeObject), iin?: null|string, issuer?: null|string, last4: string, networks: null|(object{available: string[], preferred: null|string}&StripeObject), regulated_status: null|string, three_d_secure_usage: null|(object{supported: bool}&StripeObject), wallet: null|(object{amex_express_checkout?: (object{}&StripeObject), apple_pay?: (object{}&StripeObject), dynamic_last4: null|string, google_pay?: (object{}&StripeObject), link?: (object{}&StripeObject), masterpass?: (object{billing_address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject), email: null|string, name: null|string, shipping_address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject)}&StripeObject), samsung_pay?: (object{}&StripeObject), type: string, visa_checkout?: (object{billing_address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject), email: null|string, name: null|string, shipping_address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject)}&StripeObject)}&StripeObject)}&StripeObject) $card
+ * @property null|(object{brand: string, checks: null|(object{address_line1_check: null|string, address_postal_code_check: null|string, cvc_check: null|string}&StripeObject), country: null|string, description?: null|string, display_brand: null|string, exp_month: int, exp_year: int, fingerprint?: null|string, funding: string, generated_from: null|(object{charge: null|string, payment_method_details: null|(object{card_present?: (object{amount_authorized: null|int, brand: null|string, brand_product: null|string, capture_before?: int, cardholder_name: null|string, country: null|string, description?: null|string, emv_auth_data: null|string, exp_month: int, exp_year: int, fingerprint: null|string, funding: null|string, generated_card: null|string, iin?: null|string, incremental_authorization_supported: bool, issuer?: null|string, last4: null|string, location?: string, network: null|string, network_transaction_id: null|string, offline: null|(object{stored_at: null|int, type: null|string}&StripeObject), overcapture_supported: bool, preferred_locales: null|string[], read_method: null|string, reader?: string, receipt: null|(object{account_type?: string, application_cryptogram: null|string, application_preferred_name: null|string, authorization_code: null|string, authorization_response_code: null|string, cardholder_verification_method: null|string, dedicated_file_name: null|string, terminal_verification_results: null|string, transaction_status_information: null|string}&StripeObject), wallet?: (object{type: string}&StripeObject)}&StripeObject), type: string}&StripeObject), setup_attempt: null|SetupAttempt|string}&StripeObject), iin?: null|string, issuer?: null|string, last4: string, networks: null|(object{available: string[], preferred: null|string}&StripeObject), regulated_status: null|string, three_d_secure_usage: null|(object{supported: bool}&StripeObject), wallet: null|(object{amex_express_checkout?: (object{}&StripeObject), apple_pay?: (object{}&StripeObject), dynamic_last4: null|string, google_pay?: (object{}&StripeObject), link?: (object{}&StripeObject), masterpass?: (object{billing_address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject), email: null|string, name: null|string, shipping_address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject)}&StripeObject), samsung_pay?: (object{}&StripeObject), type: string, visa_checkout?: (object{billing_address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject), email: null|string, name: null|string, shipping_address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject)}&StripeObject)}&StripeObject)}&StripeObject) $card
  * @property null|(object{brand: null|string, brand_product: null|string, cardholder_name: null|string, country: null|string, description?: null|string, exp_month: int, exp_year: int, fingerprint: null|string, funding: null|string, iin?: null|string, issuer?: null|string, last4: null|string, networks: null|(object{available: string[], preferred: null|string}&StripeObject), offline: null|(object{stored_at: null|int, type: null|string}&StripeObject), preferred_locales: null|string[], read_method: null|string, wallet?: (object{type: string}&StripeObject)}&StripeObject) $card_present
  * @property null|(object{buyer_id: null|string, cashtag: null|string}&StripeObject) $cashapp
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|(object{}&StripeObject) $crypto
+ * @property null|(object{display_name: null|string, logo: null|(object{content_type: null|string, url: string}&StripeObject), type: string}&StripeObject) $custom
  * @property null|Customer|string $customer The ID of the Customer to which this PaymentMethod is saved. This will not be set when the PaymentMethod has not been saved to a Customer.
+ * @property null|string $customer_account
  * @property null|(object{}&StripeObject) $customer_balance
  * @property null|(object{bank: null|string}&StripeObject) $eps
  * @property null|(object{account_holder_type: null|string, bank: string}&StripeObject) $fpx
@@ -45,9 +47,9 @@ namespace Stripe;
  * @property null|(object{}&StripeObject) $konbini
  * @property null|(object{brand: null|string, last4: null|string}&StripeObject) $kr_card
  * @property null|(object{email: null|string, persistent_token?: string}&StripeObject) $link
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|(object{}&StripeObject) $mb_way
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|(object{}&StripeObject) $mobilepay
  * @property null|(object{}&StripeObject) $multibanco
  * @property null|(object{buyer_id: null|string, funding: string}&StripeObject) $naver_pay
@@ -58,9 +60,10 @@ namespace Stripe;
  * @property null|(object{}&StripeObject) $payco
  * @property null|(object{}&StripeObject) $paynow
  * @property null|(object{country: null|string, payer_email: null|string, payer_id: null|string}&StripeObject) $paypal
+ * @property null|(object{bsb_number: null|string, last4: null|string, pay_id: null|string}&StripeObject) $payto
  * @property null|(object{}&StripeObject) $pix
  * @property null|(object{}&StripeObject) $promptpay
- * @property null|(object{session?: string}&StripeObject) $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
+ * @property null|(object{session?: string}&StripeObject) $radar_options Options to configure Radar. See <a href="https://docs.stripe.com/radar/radar-session">Radar Session</a> for more information.
  * @property null|(object{}&StripeObject) $revolut_pay
  * @property null|(object{}&StripeObject) $samsung_pay
  * @property null|(object{}&StripeObject) $satispay
@@ -69,6 +72,7 @@ namespace Stripe;
  * @property null|(object{}&StripeObject) $swish
  * @property null|(object{}&StripeObject) $twint
  * @property string $type The type of the PaymentMethod. An additional hash is included on the PaymentMethod with a name matching this value. It contains additional information specific to the PaymentMethod type.
+ * @property null|(object{vpa: null|string}&StripeObject) $upi
  * @property null|(object{account_holder_type: null|string, account_type: null|string, bank_name: null|string, financial_connections_account: null|string, fingerprint: null|string, last4: null|string, networks: null|(object{preferred: null|string, supported: string[]}&StripeObject), routing_number: null|string, status_details: null|(object{blocked?: (object{network_code: null|string, reason: null|string}&StripeObject)}&StripeObject)}&StripeObject) $us_bank_account
  * @property null|(object{}&StripeObject) $wechat_pay
  * @property null|(object{}&StripeObject) $zip
@@ -99,6 +103,7 @@ class PaymentMethod extends ApiResource
     const TYPE_CARD_PRESENT = 'card_present';
     const TYPE_CASHAPP = 'cashapp';
     const TYPE_CRYPTO = 'crypto';
+    const TYPE_CUSTOM = 'custom';
     const TYPE_CUSTOMER_BALANCE = 'customer_balance';
     const TYPE_EPS = 'eps';
     const TYPE_FPX = 'fpx';
@@ -121,6 +126,7 @@ class PaymentMethod extends ApiResource
     const TYPE_PAYCO = 'payco';
     const TYPE_PAYNOW = 'paynow';
     const TYPE_PAYPAL = 'paypal';
+    const TYPE_PAYTO = 'payto';
     const TYPE_PAY_BY_BANK = 'pay_by_bank';
     const TYPE_PIX = 'pix';
     const TYPE_PROMPTPAY = 'promptpay';
@@ -131,6 +137,7 @@ class PaymentMethod extends ApiResource
     const TYPE_SOFORT = 'sofort';
     const TYPE_SWISH = 'swish';
     const TYPE_TWINT = 'twint';
+    const TYPE_UPI = 'upi';
     const TYPE_US_BANK_ACCOUNT = 'us_bank_account';
     const TYPE_WECHAT_PAY = 'wechat_pay';
     const TYPE_ZIP = 'zip';
@@ -146,7 +153,7 @@ class PaymentMethod extends ApiResource
      * href="/docs/payments/save-and-reuse">SetupIntent</a> API to collect payment
      * method details ahead of a future payment.
      *
-     * @param null|array{acss_debit?: array{account_number: string, institution_number: string, transit_number: string}, affirm?: array{}, afterpay_clearpay?: array{}, alipay?: array{}, allow_redisplay?: string, alma?: array{}, amazon_pay?: array{}, au_becs_debit?: array{account_number: string, bsb_number: string}, bacs_debit?: array{account_number?: string, sort_code?: string}, bancontact?: array{}, billie?: array{}, billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string, tax_id?: string}, blik?: array{}, boleto?: array{tax_id: string}, card?: array{cvc?: string, exp_month?: int, exp_year?: int, networks?: array{preferred?: string}, number?: string, token?: string}, cashapp?: array{}, crypto?: array{}, customer?: string, customer_balance?: array{}, eps?: array{bank?: string}, expand?: string[], fpx?: array{account_holder_type?: string, bank: string}, giropay?: array{}, grabpay?: array{}, ideal?: array{bank?: string}, interac_present?: array{}, kakao_pay?: array{}, klarna?: array{dob?: array{day: int, month: int, year: int}}, konbini?: array{}, kr_card?: array{}, link?: array{}, mb_way?: array{}, metadata?: array<string, string>, mobilepay?: array{}, multibanco?: array{}, naver_pay?: array{funding?: string}, nz_bank_account?: array{account_holder_name?: string, account_number: string, bank_code: string, branch_code: string, reference?: string, suffix: string}, oxxo?: array{}, p24?: array{bank?: string}, pay_by_bank?: array{}, payco?: array{}, payment_method?: string, paynow?: array{}, paypal?: array{}, pix?: array{}, promptpay?: array{}, radar_options?: array{session?: string}, revolut_pay?: array{}, samsung_pay?: array{}, satispay?: array{}, sepa_debit?: array{iban: string}, sofort?: array{country: string}, swish?: array{}, twint?: array{}, type?: string, us_bank_account?: array{account_holder_type?: string, account_number?: string, account_type?: string, financial_connections_account?: string, routing_number?: string}, wechat_pay?: array{}, zip?: array{}} $params
+     * @param null|array{acss_debit?: array{account_number: string, institution_number: string, transit_number: string}, affirm?: array{}, afterpay_clearpay?: array{}, alipay?: array{}, allow_redisplay?: string, alma?: array{}, amazon_pay?: array{}, au_becs_debit?: array{account_number: string, bsb_number: string}, bacs_debit?: array{account_number?: string, sort_code?: string}, bancontact?: array{}, billie?: array{}, billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string, tax_id?: string}, blik?: array{}, boleto?: array{tax_id: string}, card?: array{cvc?: string, exp_month?: int, exp_year?: int, networks?: array{preferred?: string}, number?: string, token?: string}, cashapp?: array{}, crypto?: array{}, custom?: array{type: string}, customer?: string, customer_balance?: array{}, eps?: array{bank?: string}, expand?: string[], fpx?: array{account_holder_type?: string, bank: string}, giropay?: array{}, grabpay?: array{}, ideal?: array{bank?: string}, interac_present?: array{}, kakao_pay?: array{}, klarna?: array{dob?: array{day: int, month: int, year: int}}, konbini?: array{}, kr_card?: array{}, link?: array{}, mb_way?: array{}, metadata?: array<string, string>, mobilepay?: array{}, multibanco?: array{}, naver_pay?: array{funding?: string}, nz_bank_account?: array{account_holder_name?: string, account_number: string, bank_code: string, branch_code: string, reference?: string, suffix: string}, oxxo?: array{}, p24?: array{bank?: string}, pay_by_bank?: array{}, payco?: array{}, payment_method?: string, paynow?: array{}, paypal?: array{}, payto?: array{account_number?: string, bsb_number?: string, pay_id?: string}, pix?: array{}, promptpay?: array{}, radar_options?: array{session?: string}, revolut_pay?: array{}, samsung_pay?: array{}, satispay?: array{}, sepa_debit?: array{iban: string}, sofort?: array{country: string}, swish?: array{}, twint?: array{}, type?: string, upi?: array{mandate_options?: array{amount?: int, amount_type?: string, description?: string, end_date?: int}}, us_bank_account?: array{account_holder_type?: string, account_number?: string, account_type?: string, financial_connections_account?: string, routing_number?: string}, wechat_pay?: array{}, zip?: array{}} $params
      * @param null|array|string $options
      *
      * @return PaymentMethod the created resource
@@ -166,12 +173,9 @@ class PaymentMethod extends ApiResource
     }
 
     /**
-     * Returns a list of PaymentMethods for Treasury flows. If you want to list the
-     * PaymentMethods attached to a Customer for payments, you should use the <a
-     * href="/docs/api/payment_methods/customer_list">List a Customer’s
-     * PaymentMethods</a> API instead.
+     * Returns a list of all PaymentMethods.
      *
-     * @param null|array{customer?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string} $params
+     * @param null|array{allow_redisplay?: string, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<PaymentMethod> of ApiResources
@@ -212,7 +216,7 @@ class PaymentMethod extends ApiResource
      * to be updated.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{allow_redisplay?: string, billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string, tax_id?: string}, card?: array{exp_month?: int, exp_year?: int, networks?: array{preferred?: null|string}}, expand?: string[], metadata?: null|array<string, string>, us_bank_account?: array{account_holder_type?: string, account_type?: string}} $params
+     * @param null|array{allow_redisplay?: string, billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string, tax_id?: string}, card?: array{exp_month?: int, exp_year?: int, networks?: array{preferred?: null|string}}, expand?: string[], metadata?: null|array<string, string>, payto?: array{account_number?: string, bsb_number?: string, pay_id?: string}, us_bank_account?: array{account_holder_type?: string, account_type?: string}} $params
      * @param null|array|string $opts
      *
      * @return PaymentMethod the updated resource

@@ -34,7 +34,7 @@ namespace Stripe;
  * @property null|string $context Authentication context needed to fetch the event or related object.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property (object{object: StripeObject, previous_attributes?: StripeObject}&StripeObject) $data
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property int $pending_webhooks Number of webhooks that haven't been successfully delivered (for example, to return a 20x response) to the URLs you specify.
  * @property null|(object{id: null|string, idempotency_key: null|string}&StripeObject) $request Information on the API request that triggers the event.
  * @property string $type Description of the event (for example, <code>invoice.created</code> or <code>charge.refunded</code>).
@@ -53,6 +53,7 @@ class Event extends ApiResource
     const APPLICATION_FEE_REFUNDED = 'application_fee.refunded';
     const APPLICATION_FEE_REFUND_UPDATED = 'application_fee.refund.updated';
     const BALANCE_AVAILABLE = 'balance.available';
+    const BALANCE_SETTINGS_UPDATED = 'balance_settings.updated';
     const BILLING_ALERT_TRIGGERED = 'billing.alert.triggered';
     const BILLING_CREDIT_BALANCE_TRANSACTION_CREATED = 'billing.credit_balance_transaction.created';
     const BILLING_CREDIT_GRANT_CREATED = 'billing.credit_grant.created';
@@ -120,6 +121,7 @@ class Event extends ApiResource
     const CUSTOMER_UPDATED = 'customer.updated';
     const ENTITLEMENTS_ACTIVE_ENTITLEMENT_SUMMARY_UPDATED = 'entitlements.active_entitlement_summary.updated';
     const FILE_CREATED = 'file.created';
+    const FINANCIAL_CONNECTIONS_ACCOUNT_ACCOUNT_NUMBERS_UPDATED = 'financial_connections.account.account_numbers_updated';
     const FINANCIAL_CONNECTIONS_ACCOUNT_CREATED = 'financial_connections.account.created';
     const FINANCIAL_CONNECTIONS_ACCOUNT_DEACTIVATED = 'financial_connections.account.deactivated';
     const FINANCIAL_CONNECTIONS_ACCOUNT_DISCONNECTED = 'financial_connections.account.disconnected';
@@ -127,6 +129,7 @@ class Event extends ApiResource
     const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_BALANCE = 'financial_connections.account.refreshed_balance';
     const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_OWNERSHIP = 'financial_connections.account.refreshed_ownership';
     const FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_TRANSACTIONS = 'financial_connections.account.refreshed_transactions';
+    const FINANCIAL_CONNECTIONS_ACCOUNT_UPCOMING_ACCOUNT_NUMBER_EXPIRY = 'financial_connections.account.upcoming_account_number_expiry';
     const IDENTITY_VERIFICATION_SESSION_CANCELED = 'identity.verification_session.canceled';
     const IDENTITY_VERIFICATION_SESSION_CREATED = 'identity.verification_session.created';
     const IDENTITY_VERIFICATION_SESSION_PROCESSING = 'identity.verification_session.processing';
@@ -144,6 +147,7 @@ class Event extends ApiResource
     const INVOICE_OVERPAID = 'invoice.overpaid';
     const INVOICE_PAID = 'invoice.paid';
     const INVOICE_PAYMENT_ACTION_REQUIRED = 'invoice.payment_action_required';
+    const INVOICE_PAYMENT_ATTEMPT_REQUIRED = 'invoice.payment_attempt_required';
     const INVOICE_PAYMENT_FAILED = 'invoice.payment_failed';
     const INVOICE_PAYMENT_PAID = 'invoice_payment.paid';
     const INVOICE_PAYMENT_SUCCEEDED = 'invoice.payment_succeeded';
@@ -221,6 +225,13 @@ class Event extends ApiResource
     const REPORTING_REPORT_RUN_FAILED = 'reporting.report_run.failed';
     const REPORTING_REPORT_RUN_SUCCEEDED = 'reporting.report_run.succeeded';
     const REPORTING_REPORT_TYPE_UPDATED = 'reporting.report_type.updated';
+    const RESERVE_HOLD_CREATED = 'reserve.hold.created';
+    const RESERVE_HOLD_UPDATED = 'reserve.hold.updated';
+    const RESERVE_PLAN_CREATED = 'reserve.plan.created';
+    const RESERVE_PLAN_DISABLED = 'reserve.plan.disabled';
+    const RESERVE_PLAN_EXPIRED = 'reserve.plan.expired';
+    const RESERVE_PLAN_UPDATED = 'reserve.plan.updated';
+    const RESERVE_RELEASE_CREATED = 'reserve.release.created';
     const REVIEW_CLOSED = 'review.closed';
     const REVIEW_OPENED = 'review.opened';
     const SETUP_INTENT_CANCELED = 'setup_intent.canceled';
@@ -303,6 +314,7 @@ class Event extends ApiResource
     const TYPE_APPLICATION_FEE_REFUNDED = 'application_fee.refunded';
     const TYPE_APPLICATION_FEE_REFUND_UPDATED = 'application_fee.refund.updated';
     const TYPE_BALANCE_AVAILABLE = 'balance.available';
+    const TYPE_BALANCE_SETTINGS_UPDATED = 'balance_settings.updated';
     const TYPE_BILLING_ALERT_TRIGGERED = 'billing.alert.triggered';
     const TYPE_BILLING_CREDIT_BALANCE_TRANSACTION_CREATED = 'billing.credit_balance_transaction.created';
     const TYPE_BILLING_CREDIT_GRANT_CREATED = 'billing.credit_grant.created';
@@ -370,6 +382,7 @@ class Event extends ApiResource
     const TYPE_CUSTOMER_UPDATED = 'customer.updated';
     const TYPE_ENTITLEMENTS_ACTIVE_ENTITLEMENT_SUMMARY_UPDATED = 'entitlements.active_entitlement_summary.updated';
     const TYPE_FILE_CREATED = 'file.created';
+    const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_ACCOUNT_NUMBERS_UPDATED = 'financial_connections.account.account_numbers_updated';
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_CREATED = 'financial_connections.account.created';
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_DEACTIVATED = 'financial_connections.account.deactivated';
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_DISCONNECTED = 'financial_connections.account.disconnected';
@@ -377,6 +390,7 @@ class Event extends ApiResource
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_BALANCE = 'financial_connections.account.refreshed_balance';
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_OWNERSHIP = 'financial_connections.account.refreshed_ownership';
     const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_REFRESHED_TRANSACTIONS = 'financial_connections.account.refreshed_transactions';
+    const TYPE_FINANCIAL_CONNECTIONS_ACCOUNT_UPCOMING_ACCOUNT_NUMBER_EXPIRY = 'financial_connections.account.upcoming_account_number_expiry';
     const TYPE_IDENTITY_VERIFICATION_SESSION_CANCELED = 'identity.verification_session.canceled';
     const TYPE_IDENTITY_VERIFICATION_SESSION_CREATED = 'identity.verification_session.created';
     const TYPE_IDENTITY_VERIFICATION_SESSION_PROCESSING = 'identity.verification_session.processing';
@@ -394,6 +408,7 @@ class Event extends ApiResource
     const TYPE_INVOICE_OVERPAID = 'invoice.overpaid';
     const TYPE_INVOICE_PAID = 'invoice.paid';
     const TYPE_INVOICE_PAYMENT_ACTION_REQUIRED = 'invoice.payment_action_required';
+    const TYPE_INVOICE_PAYMENT_ATTEMPT_REQUIRED = 'invoice.payment_attempt_required';
     const TYPE_INVOICE_PAYMENT_FAILED = 'invoice.payment_failed';
     const TYPE_INVOICE_PAYMENT_PAID = 'invoice_payment.paid';
     const TYPE_INVOICE_PAYMENT_SUCCEEDED = 'invoice.payment_succeeded';
@@ -471,6 +486,13 @@ class Event extends ApiResource
     const TYPE_REPORTING_REPORT_RUN_FAILED = 'reporting.report_run.failed';
     const TYPE_REPORTING_REPORT_RUN_SUCCEEDED = 'reporting.report_run.succeeded';
     const TYPE_REPORTING_REPORT_TYPE_UPDATED = 'reporting.report_type.updated';
+    const TYPE_RESERVE_HOLD_CREATED = 'reserve.hold.created';
+    const TYPE_RESERVE_HOLD_UPDATED = 'reserve.hold.updated';
+    const TYPE_RESERVE_PLAN_CREATED = 'reserve.plan.created';
+    const TYPE_RESERVE_PLAN_DISABLED = 'reserve.plan.disabled';
+    const TYPE_RESERVE_PLAN_EXPIRED = 'reserve.plan.expired';
+    const TYPE_RESERVE_PLAN_UPDATED = 'reserve.plan.updated';
+    const TYPE_RESERVE_RELEASE_CREATED = 'reserve.release.created';
     const TYPE_REVIEW_CLOSED = 'review.closed';
     const TYPE_REVIEW_OPENED = 'review.opened';
     const TYPE_SETUP_INTENT_CANCELED = 'setup_intent.canceled';

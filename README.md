@@ -5,6 +5,9 @@
 [![Total Downloads](https://poser.pugx.org/stripe/stripe-php/downloads.svg)](https://packagist.org/packages/stripe/stripe-php)
 [![License](https://poser.pugx.org/stripe/stripe-php/license.svg)](https://packagist.org/packages/stripe/stripe-php)
 
+> [!TIP]
+> Want to chat live with Stripe engineers? Join us on our [Discord server](https://stripe.com/go/discord/php).
+
 The Stripe PHP library provides convenient access to the Stripe API from
 applications written in the PHP language. It includes a pre-defined set of
 classes for API resources that initialize themselves dynamically from API
@@ -13,7 +16,11 @@ API.
 
 ## Requirements
 
-PHP 5.6.0 and later.
+PHP 7.2.0 and later.
+
+Note that per our [language version support policy](https://docs.stripe.com/sdks/versioning?lang=php#stripe-sdk-language-version-support-policy), support for PHP 7.2 and 7.3 will be removed soon, so upgrade your runtime if you're able to.
+
+Additional PHP versions will be dropped in future major versions, so upgrade to supported versions if possible.
 
 ## Composer
 
@@ -41,9 +48,9 @@ require_once '/path/to/stripe-php/init.php';
 
 The bindings require the following extensions in order to work properly:
 
--   [`curl`](https://secure.php.net/manual/en/book.curl.php), although you can use your own non-cURL client if you prefer
--   [`json`](https://secure.php.net/manual/en/book.json.php)
--   [`mbstring`](https://secure.php.net/manual/en/book.mbstring.php) (Multibyte String)
+- [`curl`](https://secure.php.net/manual/en/book.curl.php), although you can use your own non-cURL client if you prefer
+- [`json`](https://secure.php.net/manual/en/book.json.php)
+- [`mbstring`](https://secure.php.net/manual/en/book.mbstring.php) (Multibyte String)
 
 If you use Composer, these dependencies should be handled automatically. If you install manually, you'll want to make sure that these extensions are available.
 
@@ -199,6 +206,12 @@ You can disable this behavior if you prefer:
 \Stripe\Stripe::setEnableTelemetry(false);
 ```
 
+### How to use undocumented parameters and properties
+
+In some cases, you might encounter parameters on an API request or fields on an API response that aren’t available in the SDKs.
+This might happen when they’re undocumented or when they’re in preview and you aren’t using a preview SDK.
+See [undocumented params and properties](https://docs.stripe.com/sdks/server-side?lang=php#undocumented-params-and-fields) to send those parameters or access those fields.
+
 ### Public Preview SDKs
 
 Stripe has features in the [public preview phase](https://docs.stripe.com/release-phases) that can be accessed via versions of this package that have the `-beta.X` suffix like `12.2.0-beta.2`.
@@ -218,11 +231,14 @@ Some preview features require a name and version to be set in the `Stripe-Versio
 ```php
 Stripe::addBetaVersion("feature_beta", "v3");
 ```
+
 ### Private Preview SDKs
 
 Stripe has features in the [private preview phase](https://docs.stripe.com/release-phases) that can be accessed via versions of this package that have the `-alpha.X` suffix like `12.2.0-alpha.2`. These are invite-only features. Once invited, you can install the private preview SDKs by following the same instructions as for the [public preview SDKs](https://github.com/stripe/stripe-php?tab=readme-ov-file#public-preview-sdks) above and replacing the term `beta` with `alpha`.
 
 ### Custom requests
+
+> This feature is only available from version 16 of this SDK.
 
 If you would like to send a request to an undocumented API (for example you are in a private beta), or if you prefer to bypass the method definitions in the library and specify your request details directly, you can use the `rawRequest` method on the StripeClient.
 

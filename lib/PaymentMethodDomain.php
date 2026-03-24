@@ -8,7 +8,7 @@ namespace Stripe;
  * A payment method domain represents a web domain that you have registered with Stripe.
  * Stripe Elements use registered payment method domains to control where certain payment methods are shown.
  *
- * Related guide: <a href="https://stripe.com/docs/payments/payment-methods/pmd-registration">Payment method domains</a>.
+ * Related guide: <a href="https://docs.stripe.com/payments/payment-methods/pmd-registration">Payment method domains</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -20,7 +20,7 @@ namespace Stripe;
  * @property (object{status: string, status_details?: (object{error_message: string}&StripeObject)}&StripeObject) $google_pay Indicates the status of a specific payment method on a payment method domain.
  * @property (object{status: string, status_details?: (object{error_message: string}&StripeObject)}&StripeObject) $klarna Indicates the status of a specific payment method on a payment method domain.
  * @property (object{status: string, status_details?: (object{error_message: string}&StripeObject)}&StripeObject) $link Indicates the status of a specific payment method on a payment method domain.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property (object{status: string, status_details?: (object{error_message: string}&StripeObject)}&StripeObject) $paypal Indicates the status of a specific payment method on a payment method domain.
  */
 class PaymentMethodDomain extends ApiResource

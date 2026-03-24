@@ -154,7 +154,7 @@ final class RequestOptionsTest extends \Stripe\TestCase
             ]
         );
         $opts->discardNonPersistentHeaders();
-        self::assertSame(['Stripe-Account' => 'foo'], $opts->headers);
+        self::assertSame(['Stripe-Account' => 'foo', 'Stripe-Context' => 'foo'], $opts->headers);
     }
 
     public function testDebugInfo()

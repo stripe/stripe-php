@@ -14,7 +14,7 @@ class TaxIdService extends AbstractService
     /**
      * Returns a list of tax IDs.
      *
-     * @param null|array{ending_before?: string, expand?: string[], limit?: int, owner?: array{account?: string, customer?: string, type: string}, starting_after?: string} $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, owner?: array{account?: string, customer?: string, customer_account?: string, type: string}, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\TaxId>
@@ -29,7 +29,7 @@ class TaxIdService extends AbstractService
     /**
      * Creates a new account or customer <code>tax_id</code> object.
      *
-     * @param null|array{expand?: string[], owner?: array{account?: string, customer?: string, type: string}, type: string, value: string} $params
+     * @param null|array{expand?: string[], owner?: array{account?: string, customer?: string, customer_account?: string, type: string}, type: string, value: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\TaxId

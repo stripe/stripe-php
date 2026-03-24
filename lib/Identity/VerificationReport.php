@@ -11,11 +11,11 @@ namespace Stripe\Identity;
  * appropriate sub-resource: <code>document</code>, <code>id_number</code>, <code>selfie</code>.
  *
  * Each VerificationReport contains a copy of any data collected by the user as well as
- * reference IDs which can be used to access collected images through the <a href="https://stripe.com/docs/api/files">FileUpload</a>
+ * reference IDs which can be used to access collected images through the <a href="https://docs.stripe.com/api/files">FileUpload</a>
  * API. To configure and create VerificationReports, use the
- * <a href="https://stripe.com/docs/api/identity/verification_sessions">VerificationSession</a> API.
+ * <a href="https://docs.stripe.com/api/identity/verification_sessions">VerificationSession</a> API.
  *
- * Related guide: <a href="https://stripe.com/docs/identity/verification-sessions#results">Accessing verification results</a>.
+ * Related guide: <a href="https://docs.stripe.com/identity/verification-sessions#results">Accessing verification results</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -24,7 +24,7 @@ namespace Stripe\Identity;
  * @property null|(object{address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject), dob?: null|(object{day: null|int, month: null|int, year: null|int}&\Stripe\StripeObject), error: null|(object{code: null|string, reason: null|string}&\Stripe\StripeObject), expiration_date?: null|(object{day: null|int, month: null|int, year: null|int}&\Stripe\StripeObject), files: null|string[], first_name: null|string, issued_date: null|(object{day: null|int, month: null|int, year: null|int}&\Stripe\StripeObject), issuing_country: null|string, last_name: null|string, number?: null|string, sex?: null|string, status: string, type: null|string, unparsed_place_of_birth?: null|string, unparsed_sex?: null|string}&\Stripe\StripeObject) $document Result from a document check
  * @property null|(object{email: null|string, error: null|(object{code: null|string, reason: null|string}&\Stripe\StripeObject), status: string}&\Stripe\StripeObject) $email Result from a email check
  * @property null|(object{dob?: null|(object{day: null|int, month: null|int, year: null|int}&\Stripe\StripeObject), error: null|(object{code: null|string, reason: null|string}&\Stripe\StripeObject), first_name: null|string, id_number?: null|string, id_number_type: null|string, last_name: null|string, status: string}&\Stripe\StripeObject) $id_number Result from an id_number check
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|(object{document?: (object{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}&\Stripe\StripeObject), id_number?: (object{}&\Stripe\StripeObject)}&\Stripe\StripeObject) $options
  * @property null|(object{error: null|(object{code: null|string, reason: null|string}&\Stripe\StripeObject), phone: null|string, status: string}&\Stripe\StripeObject) $phone Result from a phone check
  * @property null|(object{document: null|string, error: null|(object{code: null|string, reason: null|string}&\Stripe\StripeObject), selfie: null|string, status: string}&\Stripe\StripeObject) $selfie Result from a selfie check

@@ -7,7 +7,7 @@ namespace Stripe;
 /**
  * Issue a credit note to adjust an invoice's amount after the invoice is finalized.
  *
- * Related guide: <a href="https://stripe.com/docs/billing/invoices/credit-notes">Credit notes</a>
+ * Related guide: <a href="https://docs.stripe.com/billing/invoices/credit-notes">Credit notes</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -16,15 +16,16 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property Customer|string $customer ID of the customer.
+ * @property null|string $customer_account ID of the account representing the customer.
  * @property null|CustomerBalanceTransaction|string $customer_balance_transaction Customer balance transaction related to this credit note.
  * @property int $discount_amount The integer amount in cents (or local equivalent) representing the total amount of discount that was credited.
  * @property ((object{amount: int, discount: Discount|string}&StripeObject))[] $discount_amounts The aggregate amounts calculated per discount for all line items.
  * @property null|int $effective_at The date when this credit note is in effect. Same as <code>created</code> unless overwritten. When defined, this value replaces the system-generated 'Date of issue' printed on the credit note PDF.
  * @property Invoice|string $invoice ID of the invoice.
  * @property Collection<CreditNoteLineItem> $lines Line items that make up the credit note
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|string $memo Customer-facing text that appears on the credit note PDF.
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $number A unique number that identifies this particular credit note and appears on the PDF of the credit note and its associated invoice.
  * @property null|int $out_of_band_amount Amount that was credited outside of Stripe.
  * @property string $pdf The link to download the PDF of the credit note.
@@ -32,9 +33,9 @@ namespace Stripe;
  * @property int $pre_payment_amount The amount of the credit note by which the invoice's <code>amount_remaining</code> and <code>amount_due</code> were reduced.
  * @property ((object{amount: int, credit_balance_transaction?: Billing\CreditBalanceTransaction|string, discount?: Discount|string, type: string}&StripeObject))[] $pretax_credit_amounts The pretax credit amounts (ex: discount, credit grants, etc) for all line items.
  * @property null|string $reason Reason for issuing this credit note, one of <code>duplicate</code>, <code>fraudulent</code>, <code>order_change</code>, or <code>product_unsatisfactory</code>
- * @property ((object{amount_refunded: int, refund: Refund|string}&StripeObject))[] $refunds Refunds related to this credit note.
+ * @property ((object{amount_refunded: int, payment_record_refund: null|(object{payment_record: string, refund_group: string}&StripeObject), refund: Refund|string, type: null|string}&StripeObject))[] $refunds Refunds related to this credit note.
  * @property null|(object{amount_subtotal: int, amount_tax: int, amount_total: int, shipping_rate: null|ShippingRate|string, taxes?: ((object{amount: int, rate: TaxRate, taxability_reason: null|string, taxable_amount: null|int}&StripeObject))[]}&StripeObject) $shipping_cost The details of the cost of shipping, including the ShippingRate applied to the invoice.
- * @property string $status Status of this credit note, one of <code>issued</code> or <code>void</code>. Learn more about <a href="https://stripe.com/docs/billing/invoices/credit-notes#voiding">voiding credit notes</a>.
+ * @property string $status Status of this credit note, one of <code>issued</code> or <code>void</code>. Learn more about <a href="https://docs.stripe.com/billing/invoices/credit-notes#voiding">voiding credit notes</a>.
  * @property int $subtotal The integer amount in cents (or local equivalent) representing the amount of the credit note, excluding exclusive tax and invoice level discounts.
  * @property null|int $subtotal_excluding_tax The integer amount in cents (or local equivalent) representing the amount of the credit note, excluding all tax and invoice level discounts.
  * @property int $total The integer amount in cents (or local equivalent) representing the total amount of the credit note, including tax and all discount.
@@ -85,7 +86,7 @@ class CreditNote extends ApiResource
      * <code>post_payment_credit_notes_amount</code>, or both, depending on the
      * invoice’s <code>amount_remaining</code> at the time of credit note creation.
      *
-     * @param null|array{amount?: int, credit_amount?: int, effective_at?: int, email_type?: string, expand?: string[], invoice: string, lines?: (array{amount?: int, description?: string, invoice_line_item?: string, quantity?: int, tax_amounts?: null|array{amount: int, tax_rate: string, taxable_amount: int}[], tax_rates?: null|string[], type: string, unit_amount?: int, unit_amount_decimal?: string})[], memo?: string, metadata?: array<string, string>, out_of_band_amount?: int, reason?: string, refund_amount?: int, refunds?: array{amount_refunded?: int, refund?: string}[], shipping_cost?: array{shipping_rate?: string}} $params
+     * @param null|array{amount?: int, credit_amount?: int, effective_at?: int, email_type?: string, expand?: string[], invoice: string, lines?: (array{amount?: int, description?: string, invoice_line_item?: string, metadata?: array<string, string>, quantity?: int, tax_amounts?: null|array{amount: int, tax_rate: string, taxable_amount: int}[], tax_rates?: null|string[], type: string, unit_amount?: int, unit_amount_decimal?: string})[], memo?: string, metadata?: array<string, string>, out_of_band_amount?: int, reason?: string, refund_amount?: int, refunds?: array{amount_refunded?: int, payment_record_refund?: array{payment_record: string, refund_group: string}, refund?: string, type?: string}[], shipping_cost?: array{shipping_rate?: string}} $params
      * @param null|array|string $options
      *
      * @return CreditNote the created resource
@@ -107,7 +108,7 @@ class CreditNote extends ApiResource
     /**
      * Returns a list of credit notes.
      *
-     * @param null|array{created?: array|int, customer?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, starting_after?: string} $params
+     * @param null|array{created?: array|int, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<CreditNote> of ApiResources

@@ -5,19 +5,20 @@
 namespace Stripe;
 
 /**
- * This object represents a customer of your business. Use it to <a href="https://stripe.com/docs/invoicing/customer">create recurring charges</a>, <a href="https://stripe.com/docs/payments/save-during-payment">save payment</a> and contact information,
+ * This object represents a customer of your business. Use it to <a href="https://docs.stripe.com/invoicing/customer">create recurring charges</a>, <a href="https://docs.stripe.com/payments/save-during-payment">save payment</a> and contact information,
  * and track payments that belong to the same customer.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject) $address The customer's address.
- * @property null|int $balance The current balance, if any, that's stored on the customer in their default currency. If negative, the customer has credit to apply to their next invoice. If positive, the customer has an amount owed that's added to their next invoice. The balance only considers amounts that Stripe hasn't successfully applied to any invoice. It doesn't reflect unpaid invoices. This balance is only taken into account after invoices finalize. For multi-currency balances, see <a href="https://stripe.com/docs/api/customers/object#customer_object-invoice_credit_balance">invoice_credit_balance</a>.
+ * @property null|int $balance The current balance, if any, that's stored on the customer in their default currency. If negative, the customer has credit to apply to their next invoice. If positive, the customer has an amount owed that's added to their next invoice. The balance only considers amounts that Stripe hasn't successfully applied to any invoice. It doesn't reflect unpaid invoices. This balance is only taken into account after invoices finalize. For multi-currency balances, see <a href="https://docs.stripe.com/api/customers/object#customer_object-invoice_credit_balance">invoice_credit_balance</a>.
  * @property null|string $business_name The customer's business name.
  * @property null|CashBalance $cash_balance The current funds being held by Stripe on behalf of the customer. You can apply these funds towards payment intents when the source is &quot;cash_balance&quot;. The <code>settings[reconciliation_mode]</code> field describes if these funds apply to these payment intents manually or automatically.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $currency Three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a> the customer can be charged in for recurring billing purposes.
- * @property null|Account|BankAccount|Card|Source|string $default_source <p>ID of the default payment source for the customer.</p><p>If you use payment methods created through the PaymentMethods API, see the <a href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a> field instead.</p>
- * @property null|bool $delinquent <p>Tracks the most recent state change on any invoice belonging to the customer. Paying an invoice or marking it uncollectible via the API will set this field to false. An automatic payment failure or passing the <code>invoice.due_date</code> will set this field to <code>true</code>.</p><p>If an invoice becomes uncollectible by <a href="https://stripe.com/docs/billing/automatic-collection">dunning</a>, <code>delinquent</code> doesn't reset to <code>false</code>.</p><p>If you care whether the customer has paid their most recent subscription invoice, use <code>subscription.status</code> instead. Paying or marking uncollectible any customer invoice regardless of whether it is the latest invoice for a subscription will always set this field to <code>false</code>.</p>
+ * @property null|string $customer_account The ID of an Account representing a customer. You can use this ID with any v1 API that accepts a customer_account parameter.
+ * @property null|Account|BankAccount|Card|Source|string $default_source <p>ID of the default payment source for the customer.</p><p>If you use payment methods created through the PaymentMethods API, see the <a href="https://docs.stripe.com/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a> field instead.</p>
+ * @property null|bool $delinquent <p>Tracks the most recent state change on any invoice belonging to the customer. Paying an invoice or marking it uncollectible via the API will set this field to false. An automatic payment failure or passing the <code>invoice.due_date</code> will set this field to <code>true</code>.</p><p>If an invoice becomes uncollectible by <a href="https://docs.stripe.com/billing/automatic-collection">dunning</a>, <code>delinquent</code> doesn't reset to <code>false</code>.</p><p>If you care whether the customer has paid their most recent subscription invoice, use <code>subscription.status</code> instead. Paying or marking uncollectible any customer invoice regardless of whether it is the latest invoice for a subscription will always set this field to <code>false</code>.</p>
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|Discount $discount Describes the current discount active on the customer, if there is one.
  * @property null|string $email The customer's email address.
@@ -25,8 +26,8 @@ namespace Stripe;
  * @property null|StripeObject $invoice_credit_balance The current multi-currency balances, if any, that's stored on the customer. If positive in a currency, the customer has a credit to apply to their next invoice denominated in that currency. If negative, the customer has an amount owed that's added to their next invoice denominated in that currency. These balances don't apply to unpaid invoices. They solely track amounts that Stripe hasn't successfully applied to any invoice. Stripe only applies a balance in a specific currency to an invoice after that invoice (which is in the same currency) finalizes.
  * @property null|string $invoice_prefix The prefix for the customer used to generate unique invoice numbers.
  * @property null|(object{custom_fields: null|(object{name: string, value: string}&StripeObject)[], default_payment_method: null|PaymentMethod|string, footer: null|string, rendering_options: null|(object{amount_tax_display: null|string, template: null|string}&StripeObject)}&StripeObject) $invoice_settings
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
+ * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name The customer's full name or business name.
  * @property null|int $next_invoice_sequence The suffix of the customer's next invoice number (for example, 0001). When the account uses account level sequencing, this parameter is ignored in API requests and the field omitted in API responses.
  * @property null|string $phone The customer's phone number.
@@ -34,7 +35,7 @@ namespace Stripe;
  * @property null|(object{address?: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject), carrier?: null|string, name?: string, phone?: null|string, tracking_number?: null|string}&StripeObject) $shipping Mailing and shipping address for the customer. Appears on invoices emailed to this customer.
  * @property null|Collection<Account|BankAccount|Card|Source> $sources The customer's payment sources, if any.
  * @property null|Collection<Subscription> $subscriptions The customer's current subscriptions, if any.
- * @property null|(object{automatic_tax: string, ip_address: null|string, location: null|(object{country: string, source: string, state: null|string}&StripeObject)}&StripeObject) $tax
+ * @property null|(object{automatic_tax: string, ip_address: null|string, location: null|(object{country: string, source: string, state: null|string}&StripeObject), provider: string}&StripeObject) $tax
  * @property null|string $tax_exempt Describes the customer's tax exemption status, which is <code>none</code>, <code>exempt</code>, or <code>reverse</code>. When set to <code>reverse</code>, invoice and receipt PDFs include the following text: <strong>&quot;Reverse charge&quot;</strong>.
  * @property null|Collection<TaxId> $tax_ids The customer's tax IDs.
  * @property null|string|TestHelpers\TestClock $test_clock ID of the test clock that this customer belongs to.
@@ -133,16 +134,16 @@ class Customer extends ApiResource
 
     /**
      * Updates the specified customer by setting the values of the parameters passed.
-     * Any parameters not provided will be left unchanged. For example, if you pass the
+     * Any parameters not provided are left unchanged. For example, if you pass the
      * <strong>source</strong> parameter, that becomes the customer’s active source
-     * (e.g., a card) to be used for all charges in the future. When you update a
+     * (such as a card) to be used for all charges in the future. When you update a
      * customer to a new valid card source by passing the <strong>source</strong>
      * parameter: for each of the customer’s current subscriptions, if the subscription
      * bills automatically and is in the <code>past_due</code> state, then the latest
-     * open invoice for the subscription with automatic collection enabled will be
-     * retried. This retry will not count as an automatic retry, and will not affect
-     * the next regularly scheduled payment for the invoice. Changing the
-     * <strong>default_source</strong> for a customer will not trigger this behavior.
+     * open invoice for the subscription with automatic collection enabled is retried.
+     * This retry doesn’t count as an automatic retry, and doesn’t affect the next
+     * regularly scheduled payment for the invoice. Changing the
+     * <strong>default_source</strong> for a customer doesn’t trigger this behavior.
      *
      * This request accepts mostly the same arguments as the customer creation call.
      *

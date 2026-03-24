@@ -14,7 +14,7 @@ class AccountService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of Financial Connections <code>Account</code> objects.
      *
-     * @param null|array{account_holder?: array{account?: string, customer?: string}, ending_before?: string, expand?: string[], limit?: int, session?: string, starting_after?: string} $params
+     * @param null|array{account_holder?: array{account?: string, customer?: string, customer_account?: string}, ending_before?: string, expand?: string[], limit?: int, session?: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\FinancialConnections\Account>
@@ -94,7 +94,8 @@ class AccountService extends \Stripe\Service\AbstractService
 
     /**
      * Subscribes to periodic refreshes of data associated with a Financial Connections
-     * <code>Account</code>.
+     * <code>Account</code>. When the account status is active, data is typically
+     * refreshed once a day.
      *
      * @param string $id
      * @param null|array{expand?: string[], features: string[]} $params
