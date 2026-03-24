@@ -18,7 +18,7 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $ip_address The IP address where the payment originated.
  * @property null|(object{city: null|string, country: null|string, latitude: null|float, longitude: null|float, region: null|string}&StripeObject) $ip_address_location Information related to the location of the payment. Note that this information is an approximation and attempts to locate the nearest population center - it should not be used to determine a specific address.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property bool $open If <code>true</code>, the review needs action.
  * @property string $opened_reason The reason the review was opened. One of <code>rule</code> or <code>manual</code>.
  * @property null|PaymentIntent|string $payment_intent The PaymentIntent ID associated with this review, if one exists.

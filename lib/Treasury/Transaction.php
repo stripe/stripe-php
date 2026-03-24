@@ -19,7 +19,7 @@ namespace Stripe\Treasury;
  * @property null|string $flow ID of the flow that created the Transaction.
  * @property null|(object{credit_reversal?: CreditReversal, debit_reversal?: DebitReversal, inbound_transfer?: InboundTransfer, issuing_authorization?: \Stripe\Issuing\Authorization, outbound_payment?: OutboundPayment, outbound_transfer?: OutboundTransfer, received_credit?: ReceivedCredit, received_debit?: ReceivedDebit, type: string}&\Stripe\StripeObject) $flow_details Details of the flow that created the Transaction.
  * @property string $flow_type Type of the flow that created the Transaction.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string $status Status of the Transaction.
  * @property (object{posted_at: null|int, void_at: null|int}&\Stripe\StripeObject) $status_transitions
  */

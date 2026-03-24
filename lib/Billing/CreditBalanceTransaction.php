@@ -14,7 +14,7 @@ namespace Stripe\Billing;
  * @property CreditGrant|string $credit_grant The credit grant associated with this credit balance transaction.
  * @property null|(object{amount: (object{monetary: null|(object{currency: string, value: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), credits_applied: null|(object{invoice: string|\Stripe\Invoice, invoice_line_item: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $debit Debit details for this credit balance transaction. Only present if type is <code>debit</code>.
  * @property int $effective_at The effective time of this credit balance transaction.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|string|\Stripe\TestHelpers\TestClock $test_clock ID of the test clock this credit balance transaction belongs to.
  * @property null|string $type The type of credit balance transaction (credit or debit).
  */

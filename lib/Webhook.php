@@ -32,9 +32,15 @@ abstract class Webhook
         $jsonError = \json_last_error();
         if (null === $data && \JSON_ERROR_NONE !== $jsonError) {
             $msg = "Invalid payload: {$payload} "
-              . "(json_last_error() was {$jsonError})";
+                . "(json_last_error() was {$jsonError})";
 
             throw new Exception\UnexpectedValueException($msg);
+        }
+
+        if (isset($data['object']) && 'v2.core.event' === $data['object']) {
+            throw new Exception\UnexpectedValueException(
+                'You passed an event notification to Webhook::constructEvent, which expects a webhook payload. Use StripeClient::parseEventNotification instead.'
+            );
         }
 
         return Event::constructFrom($data);

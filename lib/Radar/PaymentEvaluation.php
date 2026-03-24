@@ -13,15 +13,19 @@ namespace Stripe\Radar;
  * @property int $created_at Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|(object{customer: null|string, customer_account: null|string, email: null|string, name: null|string, phone: null|string}&\Stripe\StripeObject) $customer_details Customer details attached to this payment evaluation.
  * @property null|((object{dispute_opened?: (object{amount: int, currency: string, reason: string}&\Stripe\StripeObject), early_fraud_warning_received?: (object{fraud_type: string}&\Stripe\StripeObject), occurred_at: int, refunded?: (object{amount: int, currency: string, reason: string}&\Stripe\StripeObject), type: string, user_intervention_raised?: (object{custom?: (object{type: string}&\Stripe\StripeObject), key: string, type: string}&\Stripe\StripeObject), user_intervention_resolved?: (object{key: string, outcome: null|string}&\Stripe\StripeObject)}&\Stripe\StripeObject))[] $events Event information associated with the payment evaluation, such as refunds, dispute, early fraud warnings, or user interventions.
- * @property (object{evaluated_at: int, fraudulent_dispute: (object{recommended_action: string, risk_score: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $insights Collection of scores and insights for this payment evaluation.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|(object{merchant_blocked?: (object{reason: string}&\Stripe\StripeObject), payment_intent_id?: string, rejected?: (object{card?: (object{address_line1_check: string, address_postal_code_check: string, cvc_check: string, reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), succeeded?: (object{card?: (object{address_line1_check: string, address_postal_code_check: string, cvc_check: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $outcome Indicates the final outcome for the payment evaluation.
  * @property null|(object{amount: int, currency: string, description: null|string, money_movement_details: null|(object{card: null|(object{customer_presence: null|string, payment_type: null|string}&\Stripe\StripeObject), money_movement_type: string}&\Stripe\StripeObject), payment_method_details: null|(object{billing_details: null|(object{address: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject), email: null|string, name: null|string, phone: null|string}&\Stripe\StripeObject), payment_method: string|\Stripe\PaymentMethod}&\Stripe\StripeObject), shipping_details: null|(object{address: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject), name: null|string, phone: null|string}&\Stripe\StripeObject), statement_descriptor: null|string}&\Stripe\StripeObject) $payment_details Payment details attached to this payment evaluation.
+ * @property string $recommended_action Recommended action based on the score of the fraudulent_payment signal. Possible values are <code>block</code> and <code>continue</code>.
+ * @property (object{fraudulent_payment: (object{evaluated_at: int, risk_level: string, score: float}&\Stripe\StripeObject)}&\Stripe\StripeObject) $signals Collection of signals for this payment evaluation.
  */
 class PaymentEvaluation extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'radar.payment_evaluation';
+
+    const RECOMMENDED_ACTION_BLOCK = 'block';
+    const RECOMMENDED_ACTION_CONTINUE = 'continue';
 
     /**
      * Request a Radar API fraud risk score from Stripe for a payment before sending it

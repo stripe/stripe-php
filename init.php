@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . '/lib/version_check.php';
+
 require __DIR__ . '/lib/Util/ApiVersion.php';
 
 // Stripe singleton
@@ -37,7 +39,6 @@ require __DIR__ . '/lib/Exception/IdempotencyException.php';
 require __DIR__ . '/lib/Exception/InvalidArgumentException.php';
 require __DIR__ . '/lib/Exception/InvalidRequestException.php';
 require __DIR__ . '/lib/Exception/PermissionException.php';
-require __DIR__ . '/lib/Exception/RateLimitException.php';
 require __DIR__ . '/lib/Exception/SignatureVerificationException.php';
 require __DIR__ . '/lib/Exception/UnexpectedValueException.php';
 require __DIR__ . '/lib/Exception/UnknownApiErrorException.php';
@@ -189,6 +190,7 @@ require __DIR__ . '/lib/Events/V2CoreAccountUpdatedEvent.php';
 require __DIR__ . '/lib/Events/V2CoreAccountUpdatedEventNotification.php';
 require __DIR__ . '/lib/Events/V2CoreEventDestinationPingEvent.php';
 require __DIR__ . '/lib/Events/V2CoreEventDestinationPingEventNotification.php';
+require __DIR__ . '/lib/Exception/RateLimitException.php';
 require __DIR__ . '/lib/Exception/TemporarySessionExpiredException.php';
 require __DIR__ . '/lib/ExchangeRate.php';
 require __DIR__ . '/lib/File.php';

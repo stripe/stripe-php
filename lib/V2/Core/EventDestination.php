@@ -14,7 +14,7 @@ namespace Stripe\V2\Core;
  * @property string $description An optional description of what the event destination is used for.
  * @property string[] $enabled_events The list of events to enable for this endpoint.
  * @property string $event_payload Payload type of events being subscribed to.
- * @property null|string[] $events_from Where events should be routed from.
+ * @property null|string[] $events_from Specifies which accounts' events route to this destination. <code>@self</code>: Receive events from the account that owns the event destination. <code>@accounts</code>: Receive events emitted from other accounts you manage which includes your v1 and v2 accounts. <code>@organization_members</code>: Receive events from accounts directly linked to the organization. <code>@organization_members/@accounts</code>: Receive events from all accounts connected to any platform accounts in the organization.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Metadata.
  * @property string $name Event destination name.

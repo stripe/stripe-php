@@ -17,7 +17,7 @@ namespace Stripe\Treasury;
  * @property null|string $flow Token of the flow associated with the TransactionEntry.
  * @property null|(object{credit_reversal?: CreditReversal, debit_reversal?: DebitReversal, inbound_transfer?: InboundTransfer, issuing_authorization?: \Stripe\Issuing\Authorization, outbound_payment?: OutboundPayment, outbound_transfer?: OutboundTransfer, received_credit?: ReceivedCredit, received_debit?: ReceivedDebit, type: string}&\Stripe\StripeObject) $flow_details Details of the flow associated with the TransactionEntry.
  * @property string $flow_type Type of the flow associated with the TransactionEntry.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string|Transaction $transaction The Transaction associated with this object.
  * @property string $type The specific money movement that generated the TransactionEntry.
  */

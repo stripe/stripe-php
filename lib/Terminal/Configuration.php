@@ -14,7 +14,7 @@ namespace Stripe\Terminal;
  * @property null|(object{splashscreen?: string|\Stripe\File}&\Stripe\StripeObject) $bbpos_wisepos_e
  * @property null|(object{enabled: bool}&\Stripe\StripeObject) $cellular
  * @property null|bool $is_account_default Whether this Configuration is the default for your account
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|string $name String indicating the name of the Configuration object, set by the user
  * @property null|(object{enabled: null|bool}&\Stripe\StripeObject) $offline
  * @property null|(object{end_hour: int, start_hour: int}&\Stripe\StripeObject) $reboot_window

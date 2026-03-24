@@ -7,7 +7,7 @@ namespace Stripe;
 /**
  * A coupon contains information about a percent-off or amount-off discount you
  * might want to apply to a customer. Coupons may be applied to <a href="https://api.stripe.com#subscriptions">subscriptions</a>, <a href="https://api.stripe.com#invoices">invoices</a>,
- * <a href="https://docs.stripe.com/api/checkout/sessions">checkout sessions</a>, <a href="https://api.stripe.com#quotes">quotes</a>, and more. Coupons do not work with conventional one-off <a href="https://api.stripe.com#create_charge">charges</a> or <a href="https://docs.stripe.com/api/payment_intents">payment intents</a>.
+ * <a href="https://docs.stripe.com/api/checkout/sessions">checkout sessions</a>, <a href="https://api.stripe.com#quotes">quotes</a>, and more. Coupons do not work with conventional one-off <a href="/api/charges/create">charges</a> or <a href="https://docs.stripe.com/api/payment_intents">payment intents</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -18,7 +18,7 @@ namespace Stripe;
  * @property null|StripeObject $currency_options Coupons defined in each available currency option. Each key must be a three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property string $duration One of <code>forever</code>, <code>once</code>, or <code>repeating</code>. Describes how long a customer who applies this coupon will get the discount.
  * @property null|int $duration_in_months If <code>duration</code> is <code>repeating</code>, the number of months the coupon applies. Null if coupon <code>duration</code> is <code>forever</code> or <code>once</code>.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|int $max_redemptions Maximum number of times this coupon can be redeemed, in total, across all customers, before it is no longer valid.
  * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name Name of the coupon displayed to customers on for instance invoices or receipts.

@@ -17,7 +17,7 @@ namespace Stripe\Terminal;
  * @property null|string $ip_address The local IP address of the reader.
  * @property string $label Custom label given to the reader for easier identification.
  * @property null|int $last_seen_at The last time this reader reported to Stripe backend. Timestamp is measured in milliseconds since the Unix epoch. Unlike most other Stripe timestamp fields which use seconds, this field uses milliseconds.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|Location|string $location The location identifier of the reader.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $serial_number Serial number of the reader.

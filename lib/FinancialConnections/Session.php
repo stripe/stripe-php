@@ -13,7 +13,7 @@ namespace Stripe\FinancialConnections;
  * @property \Stripe\Collection<Account> $accounts The accounts that were collected as part of this Session.
  * @property null|string $client_secret A value that will be passed to the client to launch the authentication flow.
  * @property null|(object{account_subcategories: null|string[], countries: null|string[]}&\Stripe\StripeObject) $filters
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string[] $permissions Permissions requested for accounts collected during this session.
  * @property null|string[] $prefetch Data features requested to be retrieved upon account creation.
  * @property null|string $return_url For webview integrations only. Upon completing OAuth login in the native browser, the user will be redirected to this URL to return to your app.

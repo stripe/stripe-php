@@ -16,9 +16,9 @@ API.
 
 ## Requirements
 
-PHP 5.6.0 and later.
+PHP 7.2.0 and later.
 
-Note that per our [language version support policy](https://docs.stripe.com/sdks/versioning?lang=php#stripe-sdk-language-version-support-policy), support for PHP 5.6, 7.0, and 7.1 will be removed in the March 2026 major version.
+Note that per our [language version support policy](https://docs.stripe.com/sdks/versioning?lang=php#stripe-sdk-language-version-support-policy), support for PHP 7.2 and 7.3 will be removed soon, so upgrade your runtime if you're able to.
 
 Additional PHP versions will be dropped in future major versions, so upgrade to supported versions if possible.
 

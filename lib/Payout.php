@@ -29,7 +29,7 @@ namespace Stripe;
  * @property null|BalanceTransaction|string $failure_balance_transaction If the payout fails or cancels, this is the ID of the balance transaction that reverses the initial balance transaction and returns the funds from the failed payout back in your balance.
  * @property null|string $failure_code Error code that provides a reason for a payout failure, if available. View our <a href="https://docs.stripe.com/api#payout_failures">list of failure codes</a>.
  * @property null|string $failure_message Message that provides the reason for a payout failure, if available.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $method The method used to send this payout, which can be <code>standard</code> or <code>instant</code>. <code>instant</code> is supported for payouts to debit cards and bank accounts in certain countries. Learn more about <a href="https://stripe.com/docs/payouts/instant-payouts-banks">bank support for Instant Payouts</a>.
  * @property null|Payout|string $original_payout If the payout reverses another, this is the ID of the original payout.
@@ -74,8 +74,8 @@ class Payout extends ApiResource
      *
      * If you create a manual payout on a Stripe account that uses multiple payment
      * source types, you need to specify the source type balance that the payout draws
-     * from. The <a href="#balance_object">balance object</a> details available and
-     * pending amounts by source type.
+     * from. The <a href="/api/balances/object">balance object</a> details available
+     * and pending amounts by source type.
      *
      * @param null|array{amount: int, currency: string, description?: string, destination?: string, expand?: string[], metadata?: array<string, string>, method?: string, payout_method?: string, source_type?: string, statement_descriptor?: string} $params
      * @param null|array|string $options
