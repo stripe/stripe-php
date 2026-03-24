@@ -154,7 +154,7 @@ abstract class Util
      * ApiResource, then it is replaced by the resource's ID.
      * Also clears out null values.
      *
-     * When $serializeEmpty is true (used for V2 POST/PUT/PATCH request
+     * When $serializeEmpty is true (used for V2 POST request
      * bodies), null values in associative arrays are preserved instead of
      * stripped.  This is necessary because V2 JSON bodies use explicit null
      * to signal "delete this field / metadata key".
@@ -164,7 +164,7 @@ abstract class Util
      *
      * @return mixed
      */
-    public static function objectsToIds($h, $serializeEmpty = false)
+    public static function objectsToIds($h, $serializeEmpty)
     {
         if ($h instanceof \Stripe\ApiResource) {
             return $h->id;

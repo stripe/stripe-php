@@ -60,7 +60,7 @@ abstract class AbstractService
      * @param null|array $params
      * @param 'v1'|'v2' $apiMode
      */
-    private static function formatParams($params, $apiMode = 'v1')
+    private static function formatParams($params, $apiMode)
     {
         if (null === $params) {
             return null;

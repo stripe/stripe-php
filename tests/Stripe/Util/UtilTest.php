@@ -75,7 +75,7 @@ final class UtilTest extends \Stripe\TestCase
                 'foo' => 'bar',
                 'customer' => 'cus_123',
             ],
-            Util::objectsToIds($params)
+            Util::objectsToIds($params, false)
         );
     }
 
@@ -108,13 +108,13 @@ final class UtilTest extends \Stripe\TestCase
 
     public function testObjectsToIdsDefaultStripsNulls()
     {
-        // Default behavior (serializeEmpty=false): null values are stripped
+        // serializeEmpty=false: null values are stripped
         $params = [
             'foo' => 'bar',
             'null_value' => null,
         ];
 
-        $result = Util::objectsToIds($params);
+        $result = Util::objectsToIds($params, false);
         self::assertArrayNotHasKey('null_value', $result);
         self::assertSame('bar', $result['foo']);
     }
@@ -148,7 +148,7 @@ final class UtilTest extends \Stripe\TestCase
             'metadata' => ['only_null' => null],
         ];
 
-        $result = Util::objectsToIds($params);
+        $result = Util::objectsToIds($params, false);
         // metadata's only value was null and got stripped; the result
         // for metadata should be an object (stdClass) not an empty array
         self::assertInstanceOf(\stdClass::class, $result['metadata']);
