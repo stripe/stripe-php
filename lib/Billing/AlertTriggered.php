@@ -14,7 +14,7 @@ namespace Stripe\Billing;
  * @property string $customer ID of customer for which the alert triggered
  * @property null|string $external_customer_id External customer ID for the customer for which the alert triggered
  * @property null|(object{billing_cadence: null|string, pricing_plan_subscription: null|string, type: string}&\Stripe\StripeObject) $group_by Populated specifically for spend alerts to notify merchants which group_by entity has the exceeded spend
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|int $triggered_at Timestamp at which the threshold was crossed
  * @property string $value The value triggering the alert
  */

@@ -12,7 +12,7 @@ namespace Stripe\FinancialConnections;
  * @property null|(object{account?: string|\Stripe\Account, customer?: string|\Stripe\Customer, customer_account?: string, type: string}&\Stripe\StripeObject) $account_holder The account holder that this authorization belongs to.
  * @property null|Institution|string $institution The ID of the Financial Connections Institution this account belongs to. Note that this relationship may sometimes change in rare circumstances (e.g. institution mergers).
  * @property string $institution_name The name of the institution that this authorization belongs to.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string $status The status of the connection to the Authorization.
  * @property (object{inactive?: (object{action: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details
  */

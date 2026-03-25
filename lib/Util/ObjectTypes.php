@@ -153,6 +153,7 @@ class ObjectTypes
             \Stripe\Reserve\Release::OBJECT_NAME => \Stripe\Reserve\Release::class,
             \Stripe\ReserveTransaction::OBJECT_NAME => \Stripe\ReserveTransaction::class,
             \Stripe\Review::OBJECT_NAME => \Stripe\Review::class,
+            \Stripe\RiskSignals::OBJECT_NAME => \Stripe\RiskSignals::class,
             \Stripe\SetupAttempt::OBJECT_NAME => \Stripe\SetupAttempt::class,
             \Stripe\SetupIntent::OBJECT_NAME => \Stripe\SetupIntent::class,
             \Stripe\SharedPayment\GrantedToken::OBJECT_NAME => \Stripe\SharedPayment\GrantedToken::class,

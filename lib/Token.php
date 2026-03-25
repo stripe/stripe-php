@@ -32,7 +32,7 @@ namespace Stripe;
  * @property null|Card $card <p>You can store multiple cards on a customer in order to charge the customer later. You can also store multiple debit cards on a recipient in order to transfer to those cards later.</p><p>Related guide: <a href="https://docs.stripe.com/sources/cards">Card payments with Sources</a></p>
  * @property null|string $client_ip IP address of the client that generates the token.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string $type Type of the token: <code>account</code>, <code>bank_account</code>, <code>card</code>, or <code>pii</code>.
  * @property bool $used Determines if you have already used this token (you can only use tokens once).
  */

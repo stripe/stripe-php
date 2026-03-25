@@ -15,7 +15,7 @@ namespace Stripe\Billing;
  * @property float $aggregated_value Aggregated value of all the events within <code>start_time</code> (inclusive) and <code>end_time</code> (inclusive). The aggregation strategy is defined on meter via <code>default_aggregation</code>.
  * @property null|\Stripe\StripeObject $dimensions Key-value pairs of dimension values for event summaries with grouping on dimensions.
  * @property int $end_time End timestamp for this event summary (exclusive). Must be aligned with minute boundaries.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string $meter The meter associated with this event summary.
  * @property int $start_time Start timestamp for this event summary (inclusive). Must be aligned with minute boundaries.
  */

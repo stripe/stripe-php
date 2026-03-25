@@ -18,7 +18,7 @@ namespace Stripe\Tax;
  * @property null|(object{reporting_period_end_date: string, reporting_period_start_date: string}&\Stripe\StripeObject) $eu_dac7
  * @property ((object{effective_at: int, jurisdiction: (object{country: string, level: string, state: null|string}&\Stripe\StripeObject), value: string}&\Stripe\StripeObject))[] $filing_statuses A list of tax filing statuses. Note that a filing status will only be included if the form has been filed directly with the jurisdiction’s tax authority.
  * @property null|(object{reporting_period_end_date: string, reporting_period_start_date: string}&\Stripe\StripeObject) $gb_mrdp
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|(object{reporting_period_end_date: string, reporting_period_start_date: string}&\Stripe\StripeObject) $nz_mrdp
  * @property (object{account: null|string|\Stripe\Account, external_reference: null|string, type: string}&\Stripe\StripeObject) $payee
  * @property string $type The type of the tax form. An additional hash is included on the tax form with a name matching this value. It contains additional information specific to the tax form type.
