@@ -8786,7 +8786,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'endpoint' => [
                     'http_method' => 'post',
-                    'path' => 'path',
+                    'path' => '/v1/subscription_schedules',
                 ],
                 'metadata' => ['key' => 'metadata'],
                 'skip_validation' => true,
@@ -8809,7 +8809,7 @@ final class GeneratedExamplesTest extends TestCase
         $result = $this->v2Client->v2->core->batchJobs->create([
             'endpoint' => [
                 'http_method' => 'post',
-                'path' => 'path',
+                'path' => '/v1/subscription_schedules',
             ],
             'metadata' => ['key' => 'metadata'],
             'skip_validation' => true,
