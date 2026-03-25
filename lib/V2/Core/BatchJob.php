@@ -107,4 +107,17 @@ class BatchJob extends \Stripe\ApiResource
     const STATUS_UPLOAD_TIMEOUT = 'upload_timeout';
     const STATUS_VALIDATING = 'validating';
     const STATUS_VALIDATION_FAILED = 'validation_failed';
+
+    const ENDPOINT_PATH_V1_ACCOUNT_UPDATE = '/v1/accounts/:account';
+    const ENDPOINT_PATH_V1_CREDIT_NOTE_CREATE = '/v1/credit_notes';
+    const ENDPOINT_PATH_V1_CUSTOMER_UPDATE = '/v1/customers/:customer';
+    const ENDPOINT_PATH_V1_INVOICE_UPDATE = '/v1/invoices/:invoice';
+    const ENDPOINT_PATH_V1_INVOICE_PAY = '/v1/invoices/:invoice/pay';
+    const ENDPOINT_PATH_V1_PROMOTION_CODE_CREATE = '/v1/promotion_codes';
+    const ENDPOINT_PATH_V1_PROMOTION_CODE_UPDATE = '/v1/promotion_codes/:promotion_code';
+    const ENDPOINT_PATH_V1_SUBSCRIPTION_UPDATE = '/v1/subscriptions/:subscription_exposed_id';
+    const ENDPOINT_PATH_V1_SUBSCRIPTION_MIGRATE = '/v1/subscriptions/:subscription/migrate';
+    const ENDPOINT_PATH_V1_SUBSCRIPTION_SCHEDULE_CREATE = '/v1/subscription_schedules';
+    const ENDPOINT_PATH_V1_SUBSCRIPTION_SCHEDULE_UPDATE = '/v1/subscription_schedules/:schedule';
+    const ENDPOINT_PATH_V1_SUBSCRIPTION_SCHEDULE_CANCEL = '/v1/subscription_schedules/:schedule/cancel';
 }
