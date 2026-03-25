@@ -14,7 +14,7 @@ namespace Stripe\Reserve;
  * @property null|string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>. An unset currency indicates that the plan applies to all currencies.
  * @property null|int $disabled_at Time at which the ReservePlan was disabled.
  * @property null|(object{release_after: int, scheduled_release: int}&\Stripe\StripeObject) $fixed_release
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property int $percent The percent of each Charge to reserve.
  * @property null|(object{days_after_charge: int, expires_on: null|int}&\Stripe\StripeObject) $rolling_release

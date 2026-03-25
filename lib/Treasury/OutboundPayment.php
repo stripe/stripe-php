@@ -25,7 +25,7 @@ namespace Stripe\Treasury;
  * @property int $expected_arrival_date The date when funds are expected to arrive in the destination account.
  * @property string $financial_account The FinancialAccount that funds were pulled from.
  * @property null|string $hosted_regulatory_receipt_url A <a href="https://docs.stripe.com/treasury/moving-money/regulatory-receipts">hosted transaction receipt</a> URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|(object{code: string, transaction: string|Transaction}&\Stripe\StripeObject) $returned_details Details about a returned OutboundPayment. Only set when the status is <code>returned</code>.
  * @property string $statement_descriptor The description that appears on the receiving end for an OutboundPayment (for example, bank statement for external bank transfer).

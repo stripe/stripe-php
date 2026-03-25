@@ -15,7 +15,7 @@ namespace Stripe\Issuing;
  * @property string $currency The currency the original transaction was made in. Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property string $dispute The ID of the linked dispute.
  * @property string $event_type The type of event corresponding to this dispute settlement detail, representing the stage in the dispute network lifecycle.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string $network The card network for this dispute settlement detail. One of [&quot;visa&quot;, &quot;mastercard&quot;, &quot;maestro&quot;]
  * @property null|(object{processing_date: null|string}&\Stripe\StripeObject) $network_data Details about the transaction, such as processing dates, set by the card network.
  * @property null|string $settlement The ID of the linked card network settlement.

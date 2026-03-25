@@ -649,6 +649,7 @@ require __DIR__ . '/lib/Reserve/Plan.php';
 require __DIR__ . '/lib/Reserve/Release.php';
 require __DIR__ . '/lib/ReserveTransaction.php';
 require __DIR__ . '/lib/Review.php';
+require __DIR__ . '/lib/RiskSignals.php';
 require __DIR__ . '/lib/Service/AccountLinkService.php';
 require __DIR__ . '/lib/Service/AccountNoticeService.php';
 require __DIR__ . '/lib/Service/AccountService.php';

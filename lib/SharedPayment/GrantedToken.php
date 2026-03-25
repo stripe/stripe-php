@@ -16,7 +16,7 @@ namespace Stripe\SharedPayment;
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|\Stripe\StripeObject $shared_metadata Metadata about the SharedPaymentGrantedToken.
  * @property null|(object{amount_captured: null|(object{currency: string, value: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $usage_details Some details about how the SharedPaymentGrantedToken has been used already.
- * @property null|(object{currency: string, expires_at: int, max_amount: int}&\Stripe\StripeObject) $usage_limits Limits on how this SharedPaymentGrantedToken can be used.
+ * @property null|(object{currency: string, expires_at: null|int, max_amount: int, recurring_interval?: null|string}&\Stripe\StripeObject) $usage_limits Limits on how this SharedPaymentGrantedToken can be used.
  */
 class GrantedToken extends \Stripe\ApiResource
 {
@@ -24,6 +24,7 @@ class GrantedToken extends \Stripe\ApiResource
 
     const DEACTIVATED_REASON_CONSUMED = 'consumed';
     const DEACTIVATED_REASON_EXPIRED = 'expired';
+    const DEACTIVATED_REASON_RESOLVED = 'resolved';
     const DEACTIVATED_REASON_REVOKED = 'revoked';
 
     /**

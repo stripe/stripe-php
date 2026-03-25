@@ -68,7 +68,7 @@ class PaymentRecordService extends AbstractService
      * failed or errored.
      *
      * @param string $id
-     * @param null|array{expand?: string[], failed_at?: int, metadata?: null|array<string, string>, failure_code?: string} $params
+     * @param null|array{expand?: string[], failed_at?: int, failure_code?: string, metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentRecord

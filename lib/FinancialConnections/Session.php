@@ -15,7 +15,7 @@ namespace Stripe\FinancialConnections;
  * @property null|(object{account_subcategories: null|string[], countries: null|string[], institution?: string}&\Stripe\StripeObject) $filters
  * @property null|(object{delivery_method?: string, return_url: null|string}&\Stripe\StripeObject) $hosted Settings for the Hosted UI mode.
  * @property null|(object{accounts: int}&\Stripe\StripeObject) $limits
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|(object{}&\Stripe\StripeObject) $manual_entry
  * @property string[] $permissions Permissions requested for accounts collected during this session.
  * @property null|string[] $prefetch Data features requested to be retrieved upon account creation.

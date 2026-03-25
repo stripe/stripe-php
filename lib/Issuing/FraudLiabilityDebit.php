@@ -14,7 +14,7 @@ namespace Stripe\Issuing;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency The currency of the debit. Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property string $dispute The ID of the linked dispute.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  */
 class FraudLiabilityDebit extends \Stripe\ApiResource
 {

@@ -14,7 +14,7 @@ namespace Stripe\Capital;
  * @property (object{advance_amount: int, currency: string, fee_amount: int, linked_payment?: string, reason?: string, reversed_transaction?: string, total_amount: int, transaction?: (object{charge?: string, treasury_transaction?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $details This is an object representing a transaction on a Capital financing offer.
  * @property null|string $financing_offer The Capital financing offer for this financing transaction.
  * @property null|string $legacy_balance_transaction_source The Capital transaction object that predates the Financing Transactions API and corresponds with the balance transaction that was created as a result of this financing transaction.
- * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string $type The type of the financing transaction.
  * @property null|string $user_facing_description A human-friendly description of the financing transaction.
  */
