@@ -11,12 +11,11 @@ namespace Stripe\V2\Billing;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property (object{amount_due: string, currency: string, customer_balance_applied: string, discount: string, shipping: string, subtotal: string, tax: string, total: string}&\Stripe\StripeObject) $amount_details Breakdown of the amount for this Billing Intent.
+ * @property (object{currency: string, discount: string, shipping: string, subtotal: string, tax: string, total: string}&\Stripe\StripeObject) $amount_details Breakdown of the amount for this Billing Intent.
  * @property null|string $cadence ID of an existing Cadence to use.
  * @property null|(object{billing_cycle: (object{interval_count: int, type: string, day?: (object{time: (object{hour: int, minute: int, second?: int}&\Stripe\StripeObject)}&\Stripe\StripeObject), month?: (object{day_of_month: int, month_of_year?: int, time: (object{hour: int, minute: int, second?: int}&\Stripe\StripeObject)}&\Stripe\StripeObject), week?: (object{day_of_week: int, time: (object{hour: int, minute: int, second?: int}&\Stripe\StripeObject)}&\Stripe\StripeObject), year?: (object{day_of_month: int, month_of_year: int, time: (object{hour: int, minute: int, second?: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), payer: (object{billing_profile?: string, billing_profile_data?: (object{customer: string, default_payment_method?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), settings?: (object{bill?: (object{id: string, version?: string}&\Stripe\StripeObject), collection?: (object{id: string, version?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $cadence_data Data for creating a new Cadence.
  * @property int $created Time at which the object was created.
  * @property string $currency Three-letter ISO currency code, in lowercase. Must be a supported currency.
- * @property null|(object{preview_invoice?: string}&\Stripe\StripeObject) $invoice_resources Invoice resources associated with this Billing Intent. Populated when include parameters are specified.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $status Current status of the Billing Intent.
  * @property (object{canceled_at?: int, committed_at?: int, drafted_at?: int, expires_at: int, reserved_at?: int}&\Stripe\StripeObject) $status_transitions Timestamps for status transitions of the Billing Intent.

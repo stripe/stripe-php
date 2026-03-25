@@ -5601,9 +5601,7 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'amount_details' => [
-                            'amount_due' => 'amount_due',
                             'currency' => 'usd',
-                            'customer_balance_applied' => 'customer_balance_applied',
                             'discount' => 'discount',
                             'shipping' => 'shipping',
                             'subtotal' => 'subtotal',
@@ -5727,6 +5725,9 @@ final class GeneratedExamplesTest extends TestCase
                                                 'credit_proration_behavior' => 'prorated',
                                                 'debit_proration_behavior' => 'none',
                                             ],
+                                            'recurring_credit_grant' => [
+                                                'create_behavior' => 'none',
+                                            ],
                                         ],
                                     ],
                                 ],
@@ -5765,6 +5766,9 @@ final class GeneratedExamplesTest extends TestCase
                                             'license_fee' => [
                                                 'debit_proration_behavior' => 'none',
                                             ],
+                                            'recurring_credit_grant' => [
+                                                'create_behavior' => 'none',
+                                            ],
                                         ],
                                     ],
                                 ],
@@ -5791,9 +5795,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount_details' => [
-                    'amount_due' => 'amount_due',
                     'currency' => 'usd',
-                    'customer_balance_applied' => 'customer_balance_applied',
                     'discount' => 'discount',
                     'shipping' => 'shipping',
                     'subtotal' => 'subtotal',
@@ -5903,6 +5905,9 @@ final class GeneratedExamplesTest extends TestCase
                                             'credit_proration_behavior' => 'prorated',
                                             'debit_proration_behavior' => 'none',
                                         ],
+                                        'recurring_credit_grant' => [
+                                            'create_behavior' => 'none',
+                                        ],
                                     ],
                                 ],
                             ],
@@ -5941,6 +5946,9 @@ final class GeneratedExamplesTest extends TestCase
                                         'license_fee' => [
                                             'debit_proration_behavior' => 'none',
                                         ],
+                                        'recurring_credit_grant' => [
+                                            'create_behavior' => 'none',
+                                        ],
                                     ],
                                 ],
                             ],
@@ -5976,9 +5984,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount_details' => [
-                    'amount_due' => 'amount_due',
                     'currency' => 'usd',
-                    'customer_balance_applied' => 'customer_balance_applied',
                     'discount' => 'discount',
                     'shipping' => 'shipping',
                     'subtotal' => 'subtotal',
@@ -6012,9 +6018,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount_details' => [
-                    'amount_due' => 'amount_due',
                     'currency' => 'usd',
-                    'customer_balance_applied' => 'customer_balance_applied',
                     'discount' => 'discount',
                     'shipping' => 'shipping',
                     'subtotal' => 'subtotal',
@@ -6048,9 +6052,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount_details' => [
-                    'amount_due' => 'amount_due',
                     'currency' => 'usd',
-                    'customer_balance_applied' => 'customer_balance_applied',
                     'discount' => 'discount',
                     'shipping' => 'shipping',
                     'subtotal' => 'subtotal',
@@ -6084,9 +6086,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount_details' => [
-                    'amount_due' => 'amount_due',
                     'currency' => 'usd',
-                    'customer_balance_applied' => 'customer_balance_applied',
                     'discount' => 'discount',
                     'shipping' => 'shipping',
                     'subtotal' => 'subtotal',
@@ -6123,9 +6123,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'amount_details' => [
-                    'amount_due' => 'amount_due',
                     'currency' => 'usd',
-                    'customer_balance_applied' => 'customer_balance_applied',
                     'discount' => 'discount',
                     'shipping' => 'shipping',
                     'subtotal' => 'subtotal',
