@@ -5,6 +5,7 @@
 namespace Stripe\EventData;
 
 /**
+ * @property string $alert_id The alert ID.
  * @property string $grouping_key The grouping key for the alert.
  * @property (object{canonical_path: string, error_code?: string, http_method: string, http_status: string, impacted_requests: int, impacted_requests_percentage?: string, top_impacted_accounts?: (object{account: string, impacted_requests: int, impacted_requests_percentage?: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $impact The user impact.
  * @property int $resolved_at The time when the user experience has returned to expected levels.

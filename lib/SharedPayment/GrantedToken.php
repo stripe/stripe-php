@@ -10,10 +10,12 @@ namespace Stripe\SharedPayment;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property null|(object{network_business_profile: null|string}&\Stripe\StripeObject) $agent_details Details about the agent that issued this SharedPaymentGrantedToken.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|int $deactivated_at Time at which this SharedPaymentGrantedToken expires and can no longer be used to confirm a PaymentIntent.
  * @property null|string $deactivated_reason The reason why the SharedPaymentGrantedToken has been deactivated.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
+ * @property null|(object{insights: (object{bot?: null|(object{recommended_action: string, score: float}&\Stripe\StripeObject), card_issuer_decline?: null|(object{recommended_action: string, score: float}&\Stripe\StripeObject), card_testing?: null|(object{recommended_action: string, score: float}&\Stripe\StripeObject), fraudulent_dispute: null|(object{recommended_action: string, score: int}&\Stripe\StripeObject), stolen_card?: null|(object{recommended_action: string, score: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $risk_details Risk details of the SharedPaymentGrantedToken.
  * @property null|\Stripe\StripeObject $shared_metadata Metadata about the SharedPaymentGrantedToken.
  * @property null|(object{amount_captured: null|(object{currency: string, value: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $usage_details Some details about how the SharedPaymentGrantedToken has been used already.
  * @property null|(object{currency: string, expires_at: null|int, max_amount: int, recurring_interval?: null|string}&\Stripe\StripeObject) $usage_limits Limits on how this SharedPaymentGrantedToken can be used.

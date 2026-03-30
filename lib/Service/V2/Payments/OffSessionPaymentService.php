@@ -74,6 +74,38 @@ class OffSessionPaymentService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Pauses an OffSessionPayment that has previously been created.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Payments\OffSessionPayment
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function pause($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v2/payments/off_session_payments/%s/pause', $id), $params, $opts);
+    }
+
+    /**
+     * Resumes an OffSessionPayment that has previously been paused.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Payments\OffSessionPayment
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function resume($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v2/payments/off_session_payments/%s/resume', $id), $params, $opts);
+    }
+
+    /**
      * Retrieves the details of an OffSessionPayment that has previously been created.
      *
      * @param string $id

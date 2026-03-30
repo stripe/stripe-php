@@ -18,7 +18,6 @@ namespace Stripe\V2\Payments;
  * @property \Stripe\StripeObject $amount_requested The “presentment amount” to be collected from the customer.
  * @property string $cadence The frequency of the underlying payment.
  * @property null|(object{capture_before?: int, capture_method: string}&\Stripe\StripeObject) $capture Details about the capture configuration for the OffSessionPayment.
- * @property string $compartment_id ID of the owning compartment.
  * @property int $created Creation time of the OffSessionPayment. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property string $customer ID of the Customer to which this OffSessionPayment belongs.
  * @property null|string $failure_reason The reason why the OffSessionPayment failed.
@@ -30,7 +29,7 @@ namespace Stripe\V2\Payments;
  * @property string $payment_method ID of the payment method used in this OffSessionPayment.
  * @property null|string $payment_record Payment record associated with the OffSessionPayment.
  * @property (object{enabled: bool}&\Stripe\StripeObject) $payments_orchestration Details about the payments orchestration configuration.
- * @property (object{attempts: int, retry_policy?: string, retry_strategy: string}&\Stripe\StripeObject) $retry_details Details about the OffSessionPayment retries.
+ * @property (object{attempts: int, retry_policy?: string, retry_strategy: string, retry_until?: int}&\Stripe\StripeObject) $retry_details Details about the OffSessionPayment retries.
  * @property null|string $statement_descriptor Text that appears on the customer’s statement as the statement descriptor for a non-card charge. This value overrides the account’s default statement descriptor. For information about requirements, including the 22-character limit, see the <a href="https://docs.stripe.com/get-started/account/statement-descriptors">Statement Descriptor docs</a>.
  * @property null|string $statement_descriptor_suffix Provides information about a card charge. Concatenated to the account’s <a href="https://docs.stripe.com/get-started/account/statement-descriptors#static">statement descriptor prefix</a> to form the complete statement descriptor that appears on the customer’s statement.
  * @property string $status Status of this OffSessionPayment, one of <code>pending</code>, <code>pending_retry</code>, <code>processing</code>, <code>failed</code>, <code>canceled</code>, <code>requires_capture</code>, or <code>succeeded</code>.
@@ -45,12 +44,14 @@ class OffSessionPayment extends \Stripe\ApiResource
     const CADENCE_UNSCHEDULED = 'unscheduled';
 
     const FAILURE_REASON_AUTHORIZATION_EXPIRED = 'authorization_expired';
+    const FAILURE_REASON_EXCEEDED_RETRY_WINDOW = 'exceeded_retry_window';
     const FAILURE_REASON_NO_VALID_PAYMENT_METHOD = 'no_valid_payment_method';
     const FAILURE_REASON_REJECTED_BY_PARTNER = 'rejected_by_partner';
     const FAILURE_REASON_RETRIES_EXHAUSTED = 'retries_exhausted';
 
     const STATUS_CANCELED = 'canceled';
     const STATUS_FAILED = 'failed';
+    const STATUS_PAUSED = 'paused';
     const STATUS_PENDING = 'pending';
     const STATUS_PENDING_RETRY = 'pending_retry';
     const STATUS_PROCESSING = 'processing';
