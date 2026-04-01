@@ -5,17 +5,17 @@
 namespace Stripe\V2\Core;
 
 /**
- * BatchJob resource.
+ * A batch job allows you to perform an API operation on a large set of records asynchronously.
  *
- * @property string $id Unique identifier for the BatchJob.
+ * @property string $id Unique identifier for the <code>batch_job</code>.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property int $created Timestamp at which BatchJob was created.
+ * @property int $created Timestamp at which the <code>batch_job</code> was created.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property int $maximum_rps The maximum rps defined for the <code>BatchJob</code>.
- * @property \Stripe\StripeObject $metadata The metadata of the <code>BatchJob</code> object.
- * @property bool $skip_validation If the validation will be run previous to the execution of the <code>BatchJob</code>.
- * @property string $status The current status of the <code>BatchJob</code>.
- * @property null|(object{batch_failed?: (object{error: string}&\Stripe\StripeObject), canceled?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: int, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject), complete?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: int, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject), in_progress?: (object{failure_count: int, success_count: int}&\Stripe\StripeObject), ready_for_upload?: (object{upload_url: (object{expires_at?: int, url: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), timeout?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: int, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject), validating?: (object{validated_count: int}&\Stripe\StripeObject), validation_failed?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: int, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Additional details about the current state of the <code>BatchJob</code>.
+ * @property int $maximum_rps The maximum requests per second defined for the <code>batch_job</code>.
+ * @property \Stripe\StripeObject $metadata The metadata of the <code>batch_job</code>.
+ * @property bool $skip_validation Whether validation runs before executing the <code>batch_job</code>.
+ * @property string $status The current status of the <code>batch_job</code>.
+ * @property null|(object{batch_failed?: (object{error: string}&\Stripe\StripeObject), canceled?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: int, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject), complete?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: int, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject), in_progress?: (object{failure_count: int, success_count: int}&\Stripe\StripeObject), ready_for_upload?: (object{upload_url: (object{expires_at?: int, url: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), timeout?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: int, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject), validating?: (object{validated_count: int}&\Stripe\StripeObject), validation_failed?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: int, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Additional details about the current state of the <code>batch_job</code>.
  */
 class BatchJob extends \Stripe\ApiResource
 {

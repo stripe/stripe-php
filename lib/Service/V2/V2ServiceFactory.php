@@ -9,6 +9,7 @@ namespace Stripe\Service\V2;
  *
  * @property Billing\BillingServiceFactory $billing
  * @property Core\CoreServiceFactory $core
+ * @property Data\DataServiceFactory $data
  * @property Iam\IamServiceFactory $iam
  * @property MoneyManagement\MoneyManagementServiceFactory $moneyManagement
  * @property Payments\PaymentsServiceFactory $payments
@@ -24,6 +25,7 @@ class V2ServiceFactory extends \Stripe\Service\AbstractServiceFactory
     private static $classMap = [
         'billing' => Billing\BillingServiceFactory::class,
         'core' => Core\CoreServiceFactory::class,
+        'data' => Data\DataServiceFactory::class,
         'iam' => Iam\IamServiceFactory::class,
         'moneyManagement' => MoneyManagement\MoneyManagementServiceFactory::class,
         'payments' => Payments\PaymentsServiceFactory::class,

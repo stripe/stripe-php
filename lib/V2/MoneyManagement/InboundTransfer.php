@@ -17,7 +17,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $receipt_url A hosted transaction receipt URL that is provided when money movement is considered regulated under Stripe’s money transmission licenses.
  * @property (object{credited: \Stripe\StripeObject, financial_account: string}&\Stripe\StripeObject) $to A nested object containing information about the destination of the InboundTransfer.
- * @property (object{created: int, effective_at: int, id: string, level: string, type: string, bank_debit_failed?: (object{failure_reason: string}&\Stripe\StripeObject), bank_debit_processing?: \Stripe\StripeObject, bank_debit_queued?: \Stripe\StripeObject, bank_debit_returned?: (object{return_reason: string}&\Stripe\StripeObject), bank_debit_succeeded?: \Stripe\StripeObject}&\Stripe\StripeObject)[] $transfer_history A list of history objects, representing changes in the state of the InboundTransfer.
+ * @property (object{created: int, effective_at: int, id: string, level: string, type: string, bank_debit_failed?: (object{failure_reason: string}&\Stripe\StripeObject), bank_debit_processing?: (object{}&\Stripe\StripeObject), bank_debit_queued?: (object{}&\Stripe\StripeObject), bank_debit_returned?: (object{return_reason: string}&\Stripe\StripeObject), bank_debit_succeeded?: (object{}&\Stripe\StripeObject)}&\Stripe\StripeObject)[] $transfer_history A list of history objects, representing changes in the state of the InboundTransfer.
  */
 class InboundTransfer extends \Stripe\ApiResource
 {

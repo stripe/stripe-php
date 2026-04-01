@@ -30,7 +30,7 @@ class MeterService extends \Stripe\Service\AbstractService
      * Retrieve a list of billing meter event summaries.
      *
      * @param string $parentId
-     * @param null|array{customer: string, dimension_filters?: array<string, string>, dimension_group_by_keys?: string[], end_time: int, ending_before?: string, expand?: string[], limit?: int, start_time: int, starting_after?: string, value_grouping_window?: string} $params
+     * @param null|array{customer: string, dimension_filters?: array<string, string>, dimension_group_by_keys?: string[], end_time: int, ending_before?: string, expand?: string[], limit?: int, start_time: int, starting_after?: string, tenant_keys?: string[], tenant_operator?: string, tenant_values?: string[][], value_grouping_window?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Billing\MeterEventSummary>
