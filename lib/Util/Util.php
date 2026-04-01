@@ -274,7 +274,7 @@ abstract class Util
             if (self::isList($elem)) {
                 $result = \array_merge(
                     $result,
-                    self::flattenParamsList($elem, $calculatedKey)
+                    self::flattenParamsList($elem, "{$calculatedKey}[{$i}]")
                 );
             } elseif (\is_array($elem)) {
                 $result = \array_merge(
