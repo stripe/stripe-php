@@ -274,12 +274,12 @@ abstract class Util
             if (self::isList($elem)) {
                 $result = \array_merge(
                     $result,
-                    self::flattenParamsList($elem, $calculatedKey)
+                    self::flattenParamsList($elem, "{$calculatedKey}[{$i}]", $apiMode)
                 );
             } elseif (\is_array($elem)) {
                 $result = \array_merge(
                     $result,
-                    self::flattenParams($elem, "{$calculatedKey}[{$i}]")
+                    self::flattenParams($elem, "{$calculatedKey}[{$i}]", $apiMode)
                 );
             } else {
                 // Always use indexed format for arrays
