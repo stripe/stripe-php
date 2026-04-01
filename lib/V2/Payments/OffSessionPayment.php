@@ -16,6 +16,7 @@ namespace Stripe\V2\Payments;
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property null|\Stripe\StripeObject $amount_capturable The amount available to be captured.
  * @property \Stripe\StripeObject $amount_requested The “presentment amount” to be collected from the customer.
+ * @property null|\Stripe\StripeObject $application_fee_amount_requested The amount of the application fee requested to be applied to the payment.
  * @property string $cadence The frequency of the underlying payment.
  * @property null|(object{capture_before?: int, capture_method: string}&\Stripe\StripeObject) $capture Details about the capture configuration for the OffSessionPayment.
  * @property int $created Creation time of the OffSessionPayment. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.

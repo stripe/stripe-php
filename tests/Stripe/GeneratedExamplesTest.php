@@ -620,21 +620,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'ip_address' => 'ip_address',
                                 'machine_identifier' => 'machine_identifier',
                             ],
-                            'stripe_action' => [
-                                'int_key' => [],
-                                'string_key' => 'value',
-                                'boolean_key' => [],
-                                'object_key' => [
-                                    'object_int_key' => [],
-                                    'object_string_key' => 'value',
-                                    'object_boolean_key' => [],
-                                ],
-                                'array_key' => [
-                                    '0' => [],
-                                    '1' => [],
-                                    '2' => [],
-                                ],
-                            ],
+                            'stripe_action' => [],
                         ],
                         'id' => 'obj_123',
                         'idempotency_key' => 'idempotency_key',
@@ -5667,6 +5653,7 @@ final class GeneratedExamplesTest extends TestCase
                                     'amount' => [
                                         'type' => 'custom_pricing_unit',
                                         'custom_pricing_unit' => [
+                                            'id' => 'obj_123',
                                             'value' => 'value',
                                         ],
                                     ],
@@ -5847,6 +5834,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'amount' => [
                                     'type' => 'custom_pricing_unit',
                                     'custom_pricing_unit' => [
+                                        'id' => 'obj_123',
                                         'value' => 'value',
                                     ],
                                 ],
