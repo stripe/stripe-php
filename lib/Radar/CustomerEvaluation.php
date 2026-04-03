@@ -10,17 +10,20 @@ namespace Stripe\Radar;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created_at Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|string $customer The ID of the Stripe customer the customer evaluation is associated with.
+ * @property null|string $customer The ID of the Customer to associate with this CustomerEvaluation.
  * @property string $event_type The type of evaluation event.
  * @property null|(object{login_failed?: (object{reason: string}&\Stripe\StripeObject), occurred_at: int, registration_failed?: (object{reason: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[] $events A list of events that have been reported on this customer evaluation.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
- * @property null|(object{account_sharing?: (object{evaluated_at: int, risk_level?: string, score: float}&\Stripe\StripeObject), multi_accounting?: (object{evaluated_at: int, risk_level?: string, score: float}&\Stripe\StripeObject)}&\Stripe\StripeObject) $signals A hash of signal objects providing Radar's evaluation for the lifecycle event.
+ * @property null|(object{account_sharing?: (object{evaluated_at: int, risk_level?: string, score: float}&\Stripe\StripeObject), multi_accounting?: (object{evaluated_at: int, risk_level?: string, score: float}&\Stripe\StripeObject)}&\Stripe\StripeObject) $signals A hash of signal objects providing Radar's evaluation of the customer.
  */
 class CustomerEvaluation extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'radar.customer_evaluation';
 
     use \Stripe\ApiOperations\Update;
+
+    const EVENT_TYPE_LOGIN = 'login';
+    const EVENT_TYPE_REGISTRATION = 'registration';
 
     /**
      * Creates a new <code>CustomerEvaluation</code> object.
