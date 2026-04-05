@@ -127,7 +127,7 @@ final class RefTest extends \Stripe\TestCase
         $ref = new Ref($json);
 
         $this->expectException(\Stripe\Exception\UnexpectedValueException::class);
-        $this->expectExceptionMessage('Ref has no client.');
+        $this->expectExceptionMessage('Ref has no client. Was it deserialized from a StripeClient response?');
 
         $ref->fetch();
     }
