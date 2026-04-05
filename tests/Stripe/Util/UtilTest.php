@@ -247,4 +247,21 @@ final class UtilTest extends \Stripe\TestCase
             Util::flattenParams($params)
         );
     }
+
+    public function testFlattenParamsNestedArrays()
+    {
+        $params = [
+            'a' => [[1, 2], [3, 4]],
+        ];
+
+        self::assertSame(
+            [
+                ['a[0][0]', 1],
+                ['a[0][1]', 2],
+                ['a[1][0]', 3],
+                ['a[1][1]', 4],
+            ],
+            Util::flattenParams($params)
+        );
+    }
 }
