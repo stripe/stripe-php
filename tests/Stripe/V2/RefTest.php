@@ -132,6 +132,28 @@ final class RefTest extends \Stripe\TestCase
         $ref->fetch();
     }
 
+    public function testDeserializeViaClientCreatesRefWithClientSet()
+    {
+        $client = new \Stripe\StripeClient('sk_test_123');
+
+        $json = json_encode([
+            'type' => 'v2.core.account',
+            'id' => 'acct_123',
+            'url' => '/v2/core/accounts/acct_123',
+        ]);
+
+        $result = $client->deserialize($json, 'v2');
+
+        self::assertInstanceOf(Ref::class, $result);
+        self::assertSame('v2.core.account', $result->type);
+        self::assertSame('acct_123', $result->id);
+        self::assertSame('/v2/core/accounts/acct_123', $result->url);
+
+        $reflProp = new \ReflectionProperty(Ref::class, 'client');
+        $reflProp->setAccessible(true);
+        self::assertSame($client, $reflProp->getValue($result));
+    }
+
     public function testSetClientAllowsFetch()
     {
         $responseBody = json_encode([

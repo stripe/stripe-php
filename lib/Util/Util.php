@@ -76,6 +76,14 @@ abstract class Util
                 // TODO: this is a horrible hack. The API needs
                 // to return something for `object` here.
                 $class = \Stripe\V2\Collection::class;
+            } elseif (
+                'v2' === $apiMode
+                && !\array_key_exists('object', $resp)
+                && \array_key_exists('type', $resp)
+                && \array_key_exists('id', $resp)
+                && \array_key_exists('url', $resp)
+            ) {
+                return new \Stripe\V2\Ref($resp, $opts['client'] ?? null);
             } else {
                 $class = StripeObject::class;
             }

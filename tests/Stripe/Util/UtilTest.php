@@ -264,4 +264,84 @@ final class UtilTest extends \Stripe\TestCase
             Util::flattenParams($params)
         );
     }
+
+    public function testConvertToStripeObjectReturnsRefForRefShapedV2Array()
+    {
+        $resp = [
+            'type' => 'v2.core.account',
+            'id' => 'acct_123',
+            'url' => '/v2/core/accounts/acct_123',
+        ];
+
+        $result = Util::convertToStripeObject($resp, [], 'v2');
+
+        self::assertInstanceOf(\Stripe\V2\Ref::class, $result);
+        self::assertSame('v2.core.account', $result->type);
+        self::assertSame('acct_123', $result->id);
+        self::assertSame('/v2/core/accounts/acct_123', $result->url);
+    }
+
+    public function testConvertToStripeObjectPassesClientToRef()
+    {
+        $resp = [
+            'type' => 'v2.core.account',
+            'id' => 'acct_123',
+            'url' => '/v2/core/accounts/acct_123',
+        ];
+
+        $client = new \Stripe\StripeClient('sk_test_123');
+        $result = Util::convertToStripeObject($resp, ['client' => $client], 'v2');
+
+        self::assertInstanceOf(\Stripe\V2\Ref::class, $result);
+
+        // Verify the client was threaded through by checking that fetch() does
+        // not throw the "no client" exception (it will throw on the HTTP call
+        // instead, which we stub out via reflection — so we just confirm the
+        // client property was set by calling setClient and confirming it replaces).
+        $refWithoutClient = new \Stripe\V2\Ref($resp);
+        try {
+            $refWithoutClient->fetch();
+            self::fail('Expected UnexpectedValueException');
+        } catch (\Stripe\Exception\UnexpectedValueException $e) {
+            self::assertStringContainsString('no client', $e->getMessage());
+        }
+
+        // The Ref returned from convertToStripeObject had a client set, so
+        // accessing the protected $client property via reflection should not be null.
+        $reflProp = new \ReflectionProperty(\Stripe\V2\Ref::class, 'client');
+        $reflProp->setAccessible(true);
+        self::assertSame($client, $reflProp->getValue($result));
+    }
+
+    public function testConvertToStripeObjectDoesNotTreatRefShapeAsRefInV1()
+    {
+        // A v1 array with type/id/url but no object key should fall through to
+        // StripeObject, not become a Ref.
+        $resp = [
+            'type' => 'some_type',
+            'id' => 'obj_123',
+            'url' => '/v1/things/obj_123',
+        ];
+
+        $result = Util::convertToStripeObject($resp, [], 'v1');
+
+        self::assertInstanceOf(\Stripe\StripeObject::class, $result);
+        self::assertNotInstanceOf(\Stripe\V2\Ref::class, $result);
+    }
+
+    public function testConvertToStripeObjectDoesNotTreatObjectKeyedArrayAsRef()
+    {
+        // A v2 array that has an `object` key must not be treated as a Ref even
+        // if it also has type/id/url, because it's a normal typed v2 object.
+        $resp = [
+            'object' => 'v2.core.account',
+            'type' => 'some_type',
+            'id' => 'acct_123',
+            'url' => '/v2/core/accounts/acct_123',
+        ];
+
+        $result = Util::convertToStripeObject($resp, [], 'v2');
+
+        self::assertNotInstanceOf(\Stripe\V2\Ref::class, $result);
+    }
 }

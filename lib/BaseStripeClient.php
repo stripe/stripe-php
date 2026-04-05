@@ -485,7 +485,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * */
     public function deserialize($json, $apiMode = 'v1')
     {
-        return Util::convertToStripeObject(\json_decode($json, true), [], $apiMode);
+        return Util::convertToStripeObject(\json_decode($json, true), ['client' => $this], $apiMode);
     }
 
     /**
