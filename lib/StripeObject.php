@@ -30,6 +30,9 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     /** @var null|ApiResponse */
     protected $_lastResponse;
 
+    /** @var null|BaseStripeClient */
+    protected $_client;
+
     /**
      * @return Util\Set Attributes that should not be sent to the API because
      *    they're not updatable (e.g. ID).
@@ -270,9 +273,10 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
      *
      * @return static the object constructed from the given values
      */
-    public static function constructFrom($values, $opts = null, $apiMode = 'v1')
+    public static function constructFrom($values, $opts = null, $apiMode = 'v1', $client = null)
     {
         $obj = new static(isset($values['id']) ? $values['id'] : null);
+        $obj->_client = $client;
         $obj->refreshFrom($values, $opts, false, $apiMode);
 
         return $obj;
@@ -343,9 +347,9 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
             // empty arrays to be lists.
             // The same applies to the previous_attributes attribute.
             if (('metadata' === $k || 'previous_attributes' === $k) && \is_array($v)) {
-                $this->_values[$k] = StripeObject::constructFrom($v, $opts, $apiMode);
+                $this->_values[$k] = StripeObject::constructFrom($v, $opts, $apiMode, $this->_client);
             } else {
-                $this->_values[$k] = Util\Util::convertToStripeObject($v, $opts, $apiMode);
+                $this->_values[$k] = Util\Util::convertToStripeObject($v, $opts, $apiMode, false, $this->_client);
             }
             if ($dirty) {
                 $this->dirtyValue($this->_values[$k]);

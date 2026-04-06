@@ -44,14 +44,14 @@ abstract class Util
      *
      * @return array|StripeObject
      */
-    public static function convertToStripeObject($resp, $opts, $apiMode = 'v1', $isV2DeletedObject = false)
+    public static function convertToStripeObject($resp, $opts, $apiMode = 'v1', $isV2DeletedObject = false, $client = null)
     {
         $types = 'v1' === $apiMode ? ObjectTypes::mapping
             : ObjectTypes::v2Mapping;
         if (self::isList($resp)) {
             $mapped = [];
             foreach ($resp as $i) {
-                $mapped[] = self::convertToStripeObject($i, $opts, $apiMode);
+                $mapped[] = self::convertToStripeObject($i, $opts, $apiMode, false, $client);
             }
 
             return $mapped;
@@ -83,12 +83,12 @@ abstract class Util
                 && \array_key_exists('id', $resp)
                 && \array_key_exists('url', $resp)
             ) {
-                return new \Stripe\V2\Ref($resp, $opts['client'] ?? null);
+                return new \Stripe\V2\Ref($resp, $client);
             } else {
                 $class = StripeObject::class;
             }
 
-            return $class::constructFrom($resp, $opts, $apiMode);
+            return $class::constructFrom($resp, $opts, $apiMode, $client);
         }
 
         return $resp;
