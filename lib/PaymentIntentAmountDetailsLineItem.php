@@ -12,6 +12,7 @@ namespace Stripe;
  * @property null|string $product_code The product code of the line item, such as an SKU. Required for L3 rates. At most 12 characters long.
  * @property string $product_name <p>The product name of the line item. Required for L3 rates. At most 1024 characters long.</p><p>For Cards, this field is truncated to 26 alphanumeric characters before being sent to the card networks. For PayPal, this field is truncated to 127 characters.</p>
  * @property int $quantity The quantity of items. Required for L3 rates. An integer greater than 0.
+ * @property null|int $quantity_precision The number of decimal places implied in the quantity. For example, if quantity is 10000 and quantity_precision is 2, the actual quantity is 100.00. Defaults to 0 if not provided.
  * @property null|(object{total_tax_amount: int}&StripeObject) $tax Contains information about the tax on the item.
  * @property int $unit_cost The unit cost of the line item represented in the <a href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. Required for L3 rates. An integer greater than or equal to 0.
  * @property null|string $unit_of_measure A unit of measure for the line item, such as gallons, feet, meters, etc. Required for L3 rates. At most 12 alphanumeric characters long.
