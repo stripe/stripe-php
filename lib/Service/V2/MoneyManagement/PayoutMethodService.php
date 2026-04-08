@@ -37,6 +37,7 @@ class PayoutMethodService extends \Stripe\Service\AbstractService
      * @return \Stripe\V2\MoneyManagement\PayoutMethod
      *
      * @throws \Stripe\Exception\ControlledByDashboardException
+     * @throws \Stripe\Exception\CannotProceedException
      * @throws \Stripe\Exception\InvalidPayoutMethodException
      * @throws \Stripe\Exception\ControlledByAlternateResourceException
      */

@@ -42,6 +42,7 @@ class RequestedSession extends \Stripe\ApiResource
     const STATUS_COMPLETED = 'completed';
     const STATUS_EXPIRED = 'expired';
     const STATUS_OPEN = 'open';
+    const STATUS_REQUIRES_ACTION = 'requires_action';
 
     /**
      * Creates a requested session.

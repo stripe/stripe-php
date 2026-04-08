@@ -15,7 +15,7 @@ namespace Stripe;
  * @property Charge|string $charge ID of the charge that the application fee was taken from.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property null|(object{charge?: string, payout?: string, transfer?: string, type: string}&StripeObject) $fee_source Polymorphic source of the application fee. Includes the ID of the object the application fee was created from.
+ * @property null|(object{charge?: string, payout?: string, transfer?: string, type: string, payment_record?: string}&StripeObject) $fee_source Polymorphic source of the application fee. Includes the ID of the object the application fee was created from.
  * @property null|(object{invoice?: string, type: string}&StripeObject) $funding_source Polymorphic funding source of the application fee. Includes the type and details of the funding source.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|Charge|string $originating_transaction ID of the corresponding charge on the platform account, if this fee was the result of a charge using the <code>destination</code> parameter.
