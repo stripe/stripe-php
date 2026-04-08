@@ -13224,6 +13224,33 @@ final class GeneratedExamplesTest extends TestCase
         }
     }
 
+    public function testCannotProceedError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/payout_methods/id_123/archive',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'cannot_proceed',
+                    'code' => 'default_payout_method_cannot_be_archived',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->payoutMethods->archive(
+                'id_123',
+                []
+            );
+        } catch (Exception\CannotProceedException $e) {
+        }
+    }
+
     public function testControlledByAlternateResourceError()
     {
         $this->stubRequest(

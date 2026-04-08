@@ -300,6 +300,19 @@ class ApiRequestor
                     $code
                 );
 
+            case 'cannot_proceed':
+                $reason = isset($errorData['reason']) ? $errorData['reason'] : null;
+
+                return Exception\CannotProceedException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code,
+                    $reason
+                );
+
             case 'controlled_by_alternate_resource':
                 return Exception\ControlledByAlternateResourceException::factory(
                     $msg,

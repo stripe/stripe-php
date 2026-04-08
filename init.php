@@ -578,6 +578,7 @@ require __DIR__ . '/lib/Events/V2SignalsAccountSignalFraudulentMerchantReadyEven
 require __DIR__ . '/lib/Exception/AlreadyCanceledException.php';
 require __DIR__ . '/lib/Exception/AlreadyExistsException.php';
 require __DIR__ . '/lib/Exception/BlockedByStripeException.php';
+require __DIR__ . '/lib/Exception/CannotProceedException.php';
 require __DIR__ . '/lib/Exception/ControlledByAlternateResourceException.php';
 require __DIR__ . '/lib/Exception/ControlledByDashboardException.php';
 require __DIR__ . '/lib/Exception/FeatureNotEnabledException.php';
