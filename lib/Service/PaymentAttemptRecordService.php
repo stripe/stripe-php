@@ -43,6 +43,22 @@ class PaymentAttemptRecordService extends AbstractService
     }
 
     /**
+     * Report that the specified Payment Attempt Record was authorized.
+     *
+     * @param string $id
+     * @param null|array{authorized_at?: int, expand?: string[], metadata?: null|array<string, string>, processor_details?: array{custom?: array{payment_reference: string}, type: string}} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\PaymentAttemptRecord
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function reportAuthorized($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/payment_attempt_records/%s/report_authorized', $id), $params, $opts);
+    }
+
+    /**
      * Report that the specified Payment Attempt Record was canceled.
      *
      * @param string $id
