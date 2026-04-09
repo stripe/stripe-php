@@ -19,6 +19,7 @@ namespace Stripe;
  * @property null|Application|string $application The ID of the Connect application that created the Payment Link.
  * @property null|int $application_fee_amount The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's Stripe account.
  * @property null|float $application_fee_percent This represents the percentage of the subscription invoice total that will be transferred to the application owner's Stripe account.
+ * @property null|(object{calculation_basis: null|string, enabled: bool, provider?: string, tax_behavior: null|string}&StripeObject) $automatic_surcharge
  * @property (object{enabled: bool, liability: null|(object{account?: Account|string, type: string}&StripeObject)}&StripeObject) $automatic_tax
  * @property string $billing_address_collection Configuration for collecting the customer's billing address. Defaults to <code>auto</code>.
  * @property null|(object{payment_method_reuse_agreement: null|(object{position: string}&StripeObject), promotions: null|string, terms_of_service: null|string}&StripeObject) $consent_collection When set, provides configuration to gather active consent from customers.
