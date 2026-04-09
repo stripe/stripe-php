@@ -50,6 +50,7 @@ class VerificationSession extends \Stripe\ApiResource
     const STATUS_VERIFIED = 'verified';
 
     const TYPE_DOCUMENT = 'document';
+    const TYPE_EMAIL = 'email';
     const TYPE_ID_NUMBER = 'id_number';
     const TYPE_VERIFICATION_FLOW = 'verification_flow';
 

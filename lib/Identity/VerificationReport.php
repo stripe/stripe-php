@@ -37,6 +37,7 @@ class VerificationReport extends \Stripe\ApiResource
     const OBJECT_NAME = 'identity.verification_report';
 
     const TYPE_DOCUMENT = 'document';
+    const TYPE_EMAIL = 'email';
     const TYPE_ID_NUMBER = 'id_number';
     const TYPE_VERIFICATION_FLOW = 'verification_flow';
 
