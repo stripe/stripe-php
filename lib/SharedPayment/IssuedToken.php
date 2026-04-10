@@ -18,7 +18,7 @@ namespace Stripe\SharedPayment;
  * @property null|string $payment_method ID of an existing PaymentMethod.
  * @property null|string $return_url If the customer does not exit their browser while authenticating, they will be redirected to this specified URL after completion.
  * @property null|(object{insights: (object{bot?: null|(object{recommended_action: string, score: float}&\Stripe\StripeObject), card_issuer_decline?: null|(object{recommended_action: string, score: float}&\Stripe\StripeObject), card_testing?: null|(object{recommended_action: string, score: float}&\Stripe\StripeObject), fraudulent_dispute: null|(object{recommended_action: string, score: int}&\Stripe\StripeObject), stolen_card?: null|(object{recommended_action: string, score: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $risk_details Risk details of the SharedPaymentIssuedToken.
- * @property null|(object{external_id: string, network_business_profile: string, network_id?: string}&\Stripe\StripeObject) $seller_details Seller details of the SharedPaymentIssuedToken, including network_id and external_id.
+ * @property null|(object{external_id: string, network_business_profile: string}&\Stripe\StripeObject) $seller_details Seller details of the SharedPaymentIssuedToken, including network_id and external_id.
  * @property null|string $setup_future_usage Indicates that you intend to save the PaymentMethod of this SharedPaymentToken to a customer later.
  * @property null|\Stripe\StripeObject $shared_metadata Metadata about the SharedPaymentIssuedToken.
  * @property null|string $status Status of this SharedPaymentIssuedToken, one of <code>active</code>, <code>requires_action</code>, or <code>deactivated</code>.
