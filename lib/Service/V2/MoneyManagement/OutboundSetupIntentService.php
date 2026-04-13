@@ -45,7 +45,7 @@ class OutboundSetupIntentService extends \Stripe\Service\AbstractService
     /**
      * Create an OutboundSetupIntent object.
      *
-     * @param null|array{payout_method?: string, payout_method_data?: array{type: string, bank_account?: array{account_number: string, bank_account_type?: string, branch_number?: string, country: string, currency: string, routing_number?: string, swift_code?: string}, card?: array{currency: string, exp_month: string, exp_year: string, number: string}, crypto_wallet?: array{address: string, memo?: string, network: string}}, usage_intent?: string} $params
+     * @param null|array{payout_method?: string, payout_method_data?: array{bank_account?: array{account_number: string, bank_account_type?: string, branch_number?: string, country: string, currency: string, routing_number?: string, swift_code?: string}, card?: array{currency: string, exp_month: string, exp_year: string, number: string}, crypto_wallet?: array{address: string, memo?: string, network: string}, type: string}, usage_intent?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\OutboundSetupIntent
@@ -80,7 +80,7 @@ class OutboundSetupIntentService extends \Stripe\Service\AbstractService
      * Update an OutboundSetupIntent object.
      *
      * @param string $id
-     * @param null|array{payout_method?: string, payout_method_data?: array{type: string, bank_account?: array{account_number: string, bank_account_type?: string, branch_number?: string, country: string, currency: string, routing_number?: string, swift_code?: string}, card?: array{currency?: string, exp_month?: string, exp_year?: string, number?: string}}} $params
+     * @param null|array{payout_method?: string, payout_method_data?: array{bank_account?: array{account_number: string, bank_account_type?: string, branch_number?: string, country: string, currency: string, routing_number?: string, swift_code?: string}, card?: array{currency?: string, exp_month?: string, exp_year?: string, number?: string}, type: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\OutboundSetupIntent

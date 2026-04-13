@@ -14,7 +14,7 @@ namespace Stripe\V2\Core;
  * @property string $status The current Workflow Run execution status.
  * @property null|(object{failed?: (object{action?: string, error_code: string, error_message?: string}&\Stripe\StripeObject), started?: (object{}&\Stripe\StripeObject), succeeded?: (object{status_code: string, status_message?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Details about the Workflow Run's status transitions.
  * @property (object{failed_at?: int, started_at?: int, succeeded_at?: int}&\Stripe\StripeObject) $status_transitions Summary information about the Workflow Run's status transitions.
- * @property (object{type: string, event_trigger?: (object{id: string, type: string}&\Stripe\StripeObject), manual?: (object{input_parameters: \Stripe\StripeObject}&\Stripe\StripeObject)}&\Stripe\StripeObject) $trigger A record of the trigger that launched this Workflow Run.
+ * @property (object{event_trigger?: (object{id: string, type: string}&\Stripe\StripeObject), manual?: (object{input_parameters: \Stripe\StripeObject}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $trigger A record of the trigger that launched this Workflow Run.
  * @property string $workflow The Workflow this Run belongs to.
  */
 class WorkflowRun extends \Stripe\ApiResource

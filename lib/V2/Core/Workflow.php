@@ -14,7 +14,7 @@ namespace Stripe\V2\Core;
  * @property string $description Workflow description.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $status Whether this Workflow is active, inactive, or in some other state. Only active Workflows may be invoked.
- * @property (object{type: string, event_trigger?: (object{type: string}&\Stripe\StripeObject), manual?: (object{raw_schema: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)[] $triggers Under what conditions will this Workflow launch.
+ * @property (object{event_trigger?: (object{type: string}&\Stripe\StripeObject), manual?: (object{raw_schema: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[] $triggers Under what conditions will this Workflow launch.
  */
 class Workflow extends \Stripe\ApiResource
 {
