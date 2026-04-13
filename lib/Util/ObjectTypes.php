@@ -252,6 +252,8 @@ class ObjectTypes
         \Stripe\V2\Core\EventDestination::OBJECT_NAME => \Stripe\V2\Core\EventDestination::class,
         \Stripe\V2\Core\Vault\GbBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\GbBankAccount::class,
         \Stripe\V2\Core\Vault\UsBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\UsBankAccount::class,
+        \Stripe\V2\Core\Workflow::OBJECT_NAME => \Stripe\V2\Core\Workflow::class,
+        \Stripe\V2\Core\WorkflowRun::OBJECT_NAME => \Stripe\V2\Core\WorkflowRun::class,
         \Stripe\V2\Data\Reporting\QueryRun::OBJECT_NAME => \Stripe\V2\Data\Reporting\QueryRun::class,
         \Stripe\V2\FinancialAddressCreditSimulation::OBJECT_NAME => \Stripe\V2\FinancialAddressCreditSimulation::class,
         \Stripe\V2\FinancialAddressGeneratedMicrodeposits::OBJECT_NAME => \Stripe\V2\FinancialAddressGeneratedMicrodeposits::class,

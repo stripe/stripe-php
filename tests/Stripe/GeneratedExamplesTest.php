@@ -9745,6 +9745,178 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Core\Vault\UsBankAccount::class, $result);
     }
 
+    public function testV2CoreWorkflowGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/workflows',
+            ['status' => ['draft']],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'description' => 'description',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'object' => 'v2.core.workflow',
+                        'status' => 'draft',
+                        'triggers' => ['0' => ['type' => 'event_trigger']],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->workflows->all([
+            'status' => ['draft'],
+        ]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Core\Workflow::class, $result->data[0]);
+    }
+
+    public function testV2CoreWorkflowGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/workflows/id_123',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'description' => 'description',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'object' => 'v2.core.workflow',
+                'status' => 'draft',
+                'triggers' => ['0' => ['type' => 'event_trigger']],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->workflows->retrieve('id_123', []);
+        self::assertInstanceOf(V2\Core\Workflow::class, $result);
+    }
+
+    public function testV2CoreWorkflowPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/workflows/id_123/invoke',
+            [
+                'input_parameters' => [
+                    'int_key' => 123,
+                    'string_key' => 'value',
+                    'boolean_key' => true,
+                    'object_key' => [
+                        'object_int_key' => 123,
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => true,
+                    ],
+                    'array_key' => [1, 2, 3],
+                ],
+            ],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.core.workflow_run',
+                'status' => 'failed',
+                'status_transitions' => [],
+                'trigger' => ['type' => 'event_trigger'],
+                'workflow' => 'workflow',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->workflows->invoke(
+            'id_123',
+            [
+                'input_parameters' => [
+                    'int_key' => 123,
+                    'string_key' => 'value',
+                    'boolean_key' => true,
+                    'object_key' => [
+                        'object_int_key' => 123,
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => true,
+                    ],
+                    'array_key' => [1, 2, 3],
+                ],
+            ]
+        );
+        self::assertInstanceOf(V2\Core\WorkflowRun::class, $result);
+    }
+
+    public function testV2CoreWorkflowRunGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/workflow_runs',
+            ['status' => ['failed'], 'workflow' => ['workflow']],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'object' => 'v2.core.workflow_run',
+                        'status' => 'failed',
+                        'status_transitions' => [],
+                        'trigger' => ['type' => 'event_trigger'],
+                        'workflow' => 'workflow',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->workflowRuns->all([
+            'status' => ['failed'],
+            'workflow' => ['workflow'],
+        ]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Core\WorkflowRun::class, $result->data[0]);
+    }
+
+    public function testV2CoreWorkflowRunGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/workflow_runs/id_123',
+            [],
+            [],
+            false,
+            [
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'object' => 'v2.core.workflow_run',
+                'status' => 'failed',
+                'status_transitions' => [],
+                'trigger' => ['type' => 'event_trigger'],
+                'workflow' => 'workflow',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->workflowRuns->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\WorkflowRun::class, $result);
+    }
+
     public function testV2DataReportingQueryRunPost()
     {
         $this->stubRequest(
