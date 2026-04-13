@@ -29,7 +29,7 @@ class EventDestinationService extends \Stripe\Service\AbstractService
     /**
      * Create a new event destination.
      *
-     * @param null|array{description?: string, enabled_events: string[], event_payload: string, events_from?: string[], include?: string[], metadata?: array<string, string>, name: string, snapshot_api_version?: string, type: string, amazon_eventbridge?: array{aws_account_id: string, aws_region: string}, webhook_endpoint?: array{url: string}} $params
+     * @param null|array{amazon_eventbridge?: array{aws_account_id: string, aws_region: string}, description?: string, enabled_events: string[], event_payload: string, events_from?: string[], include?: string[], metadata?: array<string, string>, name: string, snapshot_api_version?: string, type: string, webhook_endpoint?: array{url: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Core\EventDestination
