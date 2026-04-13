@@ -121,7 +121,7 @@ class CadenceService extends \Stripe\Service\AbstractService
     /**
      * Create a Billing Cadence object.
      *
-     * @param null|array{billing_cycle: array{interval_count?: int, type: string, day?: array{time?: array{hour: int, minute: int, second: int}}, month?: array{day_of_month: int, month_of_year?: int, time?: array{hour: int, minute: int, second: int}}, week?: array{day_of_week: int, time?: array{hour: int, minute: int, second: int}}, year?: array{day_of_month?: int, month_of_year?: int, time?: array{hour: int, minute: int, second: int}}}, lookup_key?: string, metadata?: array<string, string>, payer: array{billing_profile: string}, settings?: array{bill?: array{id: string, version?: string}, collection?: array{id: string, version?: string}}} $params
+     * @param null|array{billing_cycle: array{day?: array{time?: array{hour: int, minute: int, second: int}}, interval_count?: int, month?: array{day_of_month: int, month_of_year?: int, time?: array{hour: int, minute: int, second: int}}, type: string, week?: array{day_of_week: int, time?: array{hour: int, minute: int, second: int}}, year?: array{day_of_month?: int, month_of_year?: int, time?: array{hour: int, minute: int, second: int}}}, lookup_key?: string, metadata?: array<string, string>, payer: array{billing_profile: string}, settings?: array{bill?: array{id: string, version?: string}, collection?: array{id: string, version?: string}}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\Cadence
