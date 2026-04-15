@@ -12,7 +12,7 @@ namespace Stripe\V2\Data\Reporting;
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property int $created Time at which the object was created.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|(object{type: string, file?: (object{content_type: string, download_url: (object{expires_at?: int, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $result Details how to retrieve the results of a successfully completed <code>QueryRun</code>.
+ * @property null|(object{file?: (object{content_type: string, download_url: (object{expires_at?: int, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $result Details how to retrieve the results of a successfully completed <code>QueryRun</code>.
  * @property null|(object{compress_file?: bool}&\Stripe\StripeObject) $result_options The options specified for customizing the output of the <code>QueryRun</code>.
  * @property string $sql The SQL that was executed.
  * @property string $status The current status of the <code>QueryRun</code>.

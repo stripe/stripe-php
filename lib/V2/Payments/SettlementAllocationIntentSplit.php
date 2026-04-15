@@ -12,7 +12,7 @@ namespace Stripe\V2\Payments;
  * @property string $account The account id against which the SettlementAllocationIntentSplit should be settled.
  * @property \Stripe\StripeObject $amount The amount and currency of the SettlementAllocationIntentSplit.
  * @property int $created Timestamp at which SettlementAllocationIntentSplit was created.
- * @property null|(object{type: string, outbound_payment?: string, outbound_transfer?: string, received_credit?: string}&\Stripe\StripeObject) $flow Details about the Flow object that settled the split.
+ * @property null|(object{outbound_payment?: string, outbound_transfer?: string, received_credit?: string, type: string}&\Stripe\StripeObject) $flow Details about the Flow object that settled the split.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Metadata associated with the SettlementAllocationIntentSplit.
  * @property string $settlement_allocation_intent The ID of the SettlementAllocationIntent that this split belongs to.

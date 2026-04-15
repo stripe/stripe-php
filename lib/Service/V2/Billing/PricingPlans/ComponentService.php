@@ -31,7 +31,7 @@ class ComponentService extends \Stripe\Service\AbstractService
      * Create a Pricing Plan Component object.
      *
      * @param string $id
-     * @param null|array{lookup_key?: string, metadata?: array<string, string>, type: string, license_fee?: array{id: string, version?: string}, rate_card?: array{id: string, version?: string}, service_action?: array{id: string}} $params
+     * @param null|array{license_fee?: array{id: string, version?: string}, lookup_key?: string, metadata?: array<string, string>, rate_card?: array{id: string, version?: string}, service_action?: array{id: string}, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\PricingPlanComponent

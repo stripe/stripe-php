@@ -14,7 +14,7 @@ namespace Stripe\V2\Iam;
  * @property string[] $ip_allowlist List of IP addresses allowed to use this API key. Addresses use IPv4 protocol, and may be a CIDR range (e.g., [100.10.38.255, 100.10.38.0/24]).
  * @property null|int $last_used Timestamp when the API key was last used.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|(object{type: string, application?: (object{id: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $managed_by Account that manages this API key (for keys managed by platforms).
+ * @property null|(object{application?: (object{id: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $managed_by Account that manages this API key (for keys managed by platforms).
  * @property null|string $name Name of the API key.
  * @property null|string $note Note or description for the API key.
  * @property null|(object{token: string}&\Stripe\StripeObject) $publishable_key Token set for a publishable key.

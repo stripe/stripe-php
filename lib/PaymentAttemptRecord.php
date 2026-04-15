@@ -103,6 +103,23 @@ class PaymentAttemptRecord extends ApiResource
      *
      * @throws Exception\ApiErrorException if the request fails
      */
+    public function reportAuthorized($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/report_authorized';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return PaymentAttemptRecord the reported payment attempt record
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
     public function reportCanceled($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/report_canceled';

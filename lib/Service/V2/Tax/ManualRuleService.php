@@ -62,7 +62,7 @@ class ManualRuleService extends \Stripe\Service\AbstractService
     /**
      * Creates a ManualRule object.
      *
-     * @param null|array{location?: array{country: string, state?: string}, products?: array{type: string, licensed_item?: string, metered_item?: string, tax_code?: string}[], scheduled_tax_rates: array{rates: array{country?: string, description?: string, display_name: string, jurisdiction?: string, percentage: string, state?: string}[], starts_at?: string}[]} $params
+     * @param null|array{location?: array{country: string, state?: string}, products?: array{licensed_item?: string, metered_item?: string, tax_code?: string, type: string}[], scheduled_tax_rates: array{rates: array{country?: string, description?: string, display_name: string, jurisdiction?: string, percentage: string, state?: string}[], starts_at?: string}[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Tax\ManualRule
@@ -209,7 +209,7 @@ class ManualRuleService extends \Stripe\Service\AbstractService
      * Updates the Tax configuration for a ManualRule object.
      *
      * @param string $id
-     * @param null|array{location?: array{country: string, state?: string}, products?: array{type: string, licensed_item?: string, metered_item?: string, tax_code?: string}[], scheduled_tax_rates: array{rates: array{country?: string, description?: string, display_name: string, jurisdiction?: string, percentage: string, state?: string}[], starts_at?: string}[]} $params
+     * @param null|array{location?: array{country: string, state?: string}, products?: array{licensed_item?: string, metered_item?: string, tax_code?: string, type: string}[], scheduled_tax_rates: array{rates: array{country?: string, description?: string, display_name: string, jurisdiction?: string, percentage: string, state?: string}[], starts_at?: string}[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Tax\ManualRule
