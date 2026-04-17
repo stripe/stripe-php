@@ -73,8 +73,7 @@ namespace Stripe;
  * @property null|(object{}&StripeObject) $revolut_pay
  * @property null|(object{}&StripeObject) $samsung_pay
  * @property null|(object{}&StripeObject) $satispay
- * @property null|(object{bank_code: null|string, branch_code: null|string, country: null|string, fingerprint: null|string, generated_from: null|(object{charge: null|Charge|string, setup_attempt: null|SetupAttempt|string}&StripeObject), last4: null|string}&StripeObject) $sepa_debit
- * @property null|string $shared_payment_granted_token ID of the shared payment granted token used in the creation of this PaymentMethod.
+ * @property null|(object{bank_code: null|string, branch_code: null|string, country: null|string, fingerprint: null|string, generated_from: null|(object{charge: null|Charge|string, payment_method?: null|PaymentMethod|string, setup_attempt: null|SetupAttempt|string}&StripeObject), last4: null|string}&StripeObject) $sepa_debit
  * @property null|(object{}&StripeObject) $shopeepay
  * @property null|(object{country: null|string}&StripeObject) $sofort
  * @property null|(object{account?: null|string}&StripeObject) $stripe_balance
