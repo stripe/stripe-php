@@ -30,7 +30,7 @@ namespace Stripe\Issuing;
  * @property null|string $replacement_reason The reason why the previous card needed to be replaced.
  * @property null|string $second_line Text separate from cardholder name, printed on the card.
  * @property null|(object{address: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject), address_validation: null|(object{mode: string, normalized_address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject), result: null|string}&\Stripe\StripeObject), carrier: null|string, customs: null|(object{eori_number: null|string}&\Stripe\StripeObject), eta: null|int, name: string, phone_number: null|string, require_signature: null|bool, service: string, status: null|string, tracking_number: null|string, tracking_url: null|string, type: string}&\Stripe\StripeObject) $shipping Where and how the card will be shipped.
- * @property (object{allowed_categories: null|string[], allowed_merchant_countries: null|string[], blocked_categories: null|string[], blocked_merchant_countries: null|string[], spending_limits: null|((object{amount: int, categories: null|string[], interval: string}&\Stripe\StripeObject))[], spending_limits_currency: null|string}&\Stripe\StripeObject) $spending_controls
+ * @property (object{allowed_card_presences: null|string[], allowed_categories: null|string[], allowed_merchant_countries: null|string[], blocked_card_presences: null|string[], blocked_categories: null|string[], blocked_merchant_countries: null|string[], spending_limits: null|((object{amount: int, categories: null|string[], interval: string}&\Stripe\StripeObject))[], spending_limits_currency: null|string}&\Stripe\StripeObject) $spending_controls
  * @property string $status Whether authorizations can be approved on this card. May be blocked from activating cards depending on past-due Cardholder requirements. Defaults to <code>inactive</code>.
  * @property string $type The type of the card.
  * @property null|(object{apple_pay: (object{eligible: bool, ineligible_reason: null|string}&\Stripe\StripeObject), google_pay: (object{eligible: bool, ineligible_reason: null|string}&\Stripe\StripeObject), primary_account_identifier: null|string}&\Stripe\StripeObject) $wallets Information relating to digital wallets (like Apple Pay and Google Pay).
@@ -42,11 +42,13 @@ class Card extends \Stripe\ApiResource
     use \Stripe\ApiOperations\Update;
 
     const CANCELLATION_REASON_DESIGN_REJECTED = 'design_rejected';
+    const CANCELLATION_REASON_FULFILLMENT_ERROR = 'fulfillment_error';
     const CANCELLATION_REASON_LOST = 'lost';
     const CANCELLATION_REASON_STOLEN = 'stolen';
 
     const REPLACEMENT_REASON_DAMAGED = 'damaged';
     const REPLACEMENT_REASON_EXPIRED = 'expired';
+    const REPLACEMENT_REASON_FULFILLMENT_ERROR = 'fulfillment_error';
     const REPLACEMENT_REASON_LOST = 'lost';
     const REPLACEMENT_REASON_STOLEN = 'stolen';
 
@@ -60,7 +62,7 @@ class Card extends \Stripe\ApiResource
     /**
      * Creates an Issuing <code>Card</code> object.
      *
-     * @param null|array{cardholder?: string, currency: string, exp_month?: int, exp_year?: int, expand?: string[], financial_account?: string, lifecycle_controls?: array{cancel_after: array{payment_count: int}}, metadata?: array<string, string>, personalization_design?: string, pin?: array{encrypted_number?: string}, replacement_for?: string, replacement_reason?: string, second_line?: null|string, shipping?: array{address: array{city: string, country: string, line1: string, line2?: string, postal_code: string, state?: string}, address_validation?: array{mode: string}, customs?: array{eori_number?: string}, name: string, phone_number?: string, require_signature?: bool, service?: string, type?: string}, spending_controls?: array{allowed_categories?: string[], allowed_merchant_countries?: string[], blocked_categories?: string[], blocked_merchant_countries?: string[], spending_limits?: array{amount: int, categories?: string[], interval: string}[]}, status?: string, type: string} $params
+     * @param null|array{cardholder?: string, currency: string, exp_month?: int, exp_year?: int, expand?: string[], financial_account?: string, lifecycle_controls?: array{cancel_after: array{payment_count: int}}, metadata?: array<string, string>, personalization_design?: string, pin?: array{encrypted_number?: string}, replacement_for?: string, replacement_reason?: string, second_line?: null|string, shipping?: array{address: array{city: string, country: string, line1: string, line2?: string, postal_code: string, state?: string}, address_validation?: array{mode: string}, customs?: array{eori_number?: string}, name: string, phone_number?: string, require_signature?: bool, service?: string, type?: string}, spending_controls?: array{allowed_card_presences?: string[], allowed_categories?: string[], allowed_merchant_countries?: string[], blocked_card_presences?: string[], blocked_categories?: string[], blocked_merchant_countries?: string[], spending_limits?: array{amount: int, categories?: string[], interval: string}[]}, status?: string, type: string} $params
      * @param null|array|string $options
      *
      * @return Card the created resource
@@ -122,7 +124,7 @@ class Card extends \Stripe\ApiResource
      * the parameters passed. Any parameters not provided will be left unchanged.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{cancellation_reason?: string, expand?: string[], metadata?: null|array<string, string>, personalization_design?: string, pin?: array{encrypted_number?: string}, shipping?: array{address: array{city: string, country: string, line1: string, line2?: string, postal_code: string, state?: string}, address_validation?: array{mode: string}, customs?: array{eori_number?: string}, name: string, phone_number?: string, require_signature?: bool, service?: string, type?: string}, spending_controls?: array{allowed_categories?: string[], allowed_merchant_countries?: string[], blocked_categories?: string[], blocked_merchant_countries?: string[], spending_limits?: array{amount: int, categories?: string[], interval: string}[]}, status?: string} $params
+     * @param null|array{cancellation_reason?: string, expand?: string[], metadata?: null|array<string, string>, personalization_design?: string, pin?: array{encrypted_number?: string}, shipping?: array{address: array{city: string, country: string, line1: string, line2?: string, postal_code: string, state?: string}, address_validation?: array{mode: string}, customs?: array{eori_number?: string}, name: string, phone_number?: string, require_signature?: bool, service?: string, type?: string}, spending_controls?: array{allowed_card_presences?: string[], allowed_categories?: string[], allowed_merchant_countries?: string[], blocked_card_presences?: string[], blocked_categories?: string[], blocked_merchant_countries?: string[], spending_limits?: array{amount: int, categories?: string[], interval: string}[]}, status?: string} $params
      * @param null|array|string $opts
      *
      * @return Card the updated resource

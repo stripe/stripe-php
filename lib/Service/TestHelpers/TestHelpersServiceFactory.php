@@ -11,6 +11,7 @@ namespace Stripe\Service\TestHelpers;
  * @property CustomerService $customers
  * @property Issuing\IssuingServiceFactory $issuing
  * @property RefundService $refunds
+ * @property SharedPayment\SharedPaymentServiceFactory $sharedPayment
  * @property Terminal\TerminalServiceFactory $terminal
  * @property TestClockService $testClocks
  * @property Treasury\TreasuryServiceFactory $treasury
@@ -25,6 +26,7 @@ class TestHelpersServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'customers' => CustomerService::class,
         'issuing' => Issuing\IssuingServiceFactory::class,
         'refunds' => RefundService::class,
+        'sharedPayment' => SharedPayment\SharedPaymentServiceFactory::class,
         'terminal' => Terminal\TerminalServiceFactory::class,
         'testClocks' => TestClockService::class,
         'treasury' => Treasury\TreasuryServiceFactory::class,
