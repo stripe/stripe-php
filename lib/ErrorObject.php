@@ -51,11 +51,13 @@ class ErrorObject extends StripeObject
     const CODE_ACCOUNT_NUMBER_INVALID = 'account_number_invalid';
     const CODE_ACCOUNT_TOKEN_REQUIRED_FOR_V2_ACCOUNT = 'account_token_required_for_v2_account';
     const CODE_ACSS_DEBIT_SESSION_INCOMPLETE = 'acss_debit_session_incomplete';
+    const CODE_ACTION_BLOCKED = 'action_blocked';
     const CODE_ALIPAY_UPGRADE_REQUIRED = 'alipay_upgrade_required';
     const CODE_AMOUNT_TOO_LARGE = 'amount_too_large';
     const CODE_AMOUNT_TOO_SMALL = 'amount_too_small';
     const CODE_API_KEY_EXPIRED = 'api_key_expired';
     const CODE_APPLICATION_FEES_NOT_ALLOWED = 'application_fees_not_allowed';
+    const CODE_APPROVAL_REQUIRED = 'approval_required';
     const CODE_AUTHENTICATION_REQUIRED = 'authentication_required';
     const CODE_BALANCE_INSUFFICIENT = 'balance_insufficient';
     const CODE_BALANCE_INVALID_PARAMETER = 'balance_invalid_parameter';

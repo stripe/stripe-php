@@ -23,7 +23,7 @@ namespace Stripe\Tax;
  * @property int $tax_amount_exclusive The amount of tax to be collected on top of the line item prices.
  * @property int $tax_amount_inclusive The amount of tax already included in the line item prices.
  * @property ((object{amount: int, inclusive: bool, tax_rate_details: (object{country: null|string, flat_amount: null|(object{amount: int, currency: string}&\Stripe\StripeObject), percentage_decimal: string, rate_type: null|string, state: null|string, tax_type: null|string}&\Stripe\StripeObject), taxability_reason: string, taxable_amount: int}&\Stripe\StripeObject))[] $tax_breakdown Breakdown of individual tax amounts that add up to the total.
- * @property int $tax_date Timestamp of date at which the tax rules and rates in effect applies for the calculation.
+ * @property int $tax_date The calculation uses the tax rules and rates that are in effect at this timestamp. You can use a date up to 31 days in the past or up to 31 days in the future. If you use a future date, Stripe doesn't guarantee that the expected tax rules and rate being used match the actual rules and rate that will be in effect on that date. We deploy tax changes before their effective date, but not within a fixed window.
  */
 class Calculation extends \Stripe\ApiResource
 {
