@@ -40,7 +40,7 @@ namespace Stripe;
  * @property null|int $subtotal_excluding_tax The integer amount in cents (or local equivalent) representing the amount of the credit note, excluding all tax and invoice level discounts.
  * @property int $total The integer amount in cents (or local equivalent) representing the total amount of the credit note, including tax and all discount.
  * @property null|int $total_excluding_tax The integer amount in cents (or local equivalent) representing the total amount of the credit note, excluding tax, but including discounts.
- * @property null|((object{amount: int, tax_behavior: string, tax_rate_details: null|(object{tax_rate: string|TaxRate}&StripeObject), taxability_reason: string, taxable_amount: null|int, type: string}&StripeObject))[] $total_taxes The aggregate tax information for all line items.
+ * @property null|((object{amount: int, tax_behavior: string, tax_rate_details: null|(object{tax_rate: string}&StripeObject), taxability_reason: string, taxable_amount: null|int, type: string}&StripeObject))[] $total_taxes The aggregate tax information for all line items.
  * @property string $type Type of this credit note, one of <code>pre_payment</code> or <code>post_payment</code>. A <code>pre_payment</code> credit note means it was issued when the invoice was open. A <code>post_payment</code> credit note means it was issued when the invoice was paid.
  * @property null|int $voided_at The time that the credit note was voided.
  */

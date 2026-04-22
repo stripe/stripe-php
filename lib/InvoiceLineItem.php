@@ -28,7 +28,7 @@ namespace Stripe;
  * @property null|string $quantity_decimal Non-negative decimal with at most 12 decimal places. The quantity of units for the line item.
  * @property null|string|Subscription $subscription
  * @property int $subtotal The subtotal of the line item, in cents (or local equivalent), before any discounts or taxes.
- * @property null|((object{amount: int, tax_behavior: string, tax_rate_details: null|(object{tax_rate: string|TaxRate}&StripeObject), taxability_reason: string, taxable_amount: null|int, type: string}&StripeObject))[] $taxes The tax information of the line item.
+ * @property null|((object{amount: int, tax_behavior: string, tax_rate_details: null|(object{tax_rate: string}&StripeObject), taxability_reason: string, taxable_amount: null|int, type: string}&StripeObject))[] $taxes The tax information of the line item.
  */
 class InvoiceLineItem extends ApiResource
 {
