@@ -14,7 +14,7 @@ namespace Stripe\Radar;
  * @property string $alias The name of the value list for use in rules.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $created_by The name or email address of the user who created this value list.
- * @property string $item_type The type of items in the value list. One of <code>card_fingerprint</code>, <code>card_bin</code>, <code>crypto_fingerprint</code>, <code>email</code>, <code>ip_address</code>, <code>country</code>, <code>string</code>, <code>case_sensitive_string</code>, <code>customer_id</code>, <code>sepa_debit_fingerprint</code>, or <code>us_bank_account_fingerprint</code>.
+ * @property string $item_type The type of items in the value list. One of <code>card_fingerprint</code>, <code>card_bin</code>, <code>crypto_fingerprint</code>, <code>email</code>, <code>ip_address</code>, <code>country</code>, <code>string</code>, <code>case_sensitive_string</code>, <code>customer_id</code>, <code>account</code>, <code>sepa_debit_fingerprint</code>, or <code>us_bank_account_fingerprint</code>.
  * @property \Stripe\Collection<ValueListItem> $list_items List of items contained within this value list.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -26,6 +26,7 @@ class ValueList extends \Stripe\ApiResource
 
     use \Stripe\ApiOperations\Update;
 
+    const ITEM_TYPE_ACCOUNT = 'account';
     const ITEM_TYPE_CARD_BIN = 'card_bin';
     const ITEM_TYPE_CARD_FINGERPRINT = 'card_fingerprint';
     const ITEM_TYPE_CASE_SENSITIVE_STRING = 'case_sensitive_string';

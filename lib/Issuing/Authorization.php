@@ -19,6 +19,7 @@ namespace Stripe\Issuing;
  * @property string $authorization_method How the card details were provided.
  * @property \Stripe\BalanceTransaction[] $balance_transactions List of balance transactions associated with this authorization.
  * @property Card $card You can <a href="https://docs.stripe.com/issuing">create physical or virtual cards</a> that are issued to cardholders.
+ * @property null|string $card_presence Whether the card was present at the point of sale for the authorization.
  * @property null|Cardholder|string $cardholder The cardholder to whom this authorization belongs.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency The currency of the cardholder. This currency can be different from the currency presented at authorization and the <code>merchant_currency</code> field on this authorization. Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
@@ -52,6 +53,9 @@ class Authorization extends \Stripe\ApiResource
     const AUTHORIZATION_METHOD_KEYED_IN = 'keyed_in';
     const AUTHORIZATION_METHOD_ONLINE = 'online';
     const AUTHORIZATION_METHOD_SWIPE = 'swipe';
+
+    const CARD_PRESENCE_NOT_PRESENT = 'not_present';
+    const CARD_PRESENCE_PRESENT = 'present';
 
     const STATUS_CLOSED = 'closed';
     const STATUS_EXPIRED = 'expired';

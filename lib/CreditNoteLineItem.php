@@ -20,7 +20,7 @@ namespace Stripe;
  * @property null|int $quantity The number of units of product being credited.
  * @property null|(object{calculation_id: null|string, calculation_item_id: null|string}&StripeObject) $tax_calculation_reference The tax calculation identifiers of the line item.
  * @property TaxRate[] $tax_rates The tax rates which apply to the line item.
- * @property null|((object{amount: int, tax_behavior: string, tax_rate_details: null|(object{tax_rate: string}&StripeObject), taxability_reason: string, taxable_amount: null|int, type: string}&StripeObject))[] $taxes The tax information of the line item.
+ * @property null|((object{amount: int, tax_behavior: string, tax_rate_details: null|(object{tax_rate: string|TaxRate}&StripeObject), taxability_reason: string, taxable_amount: null|int, type: string}&StripeObject))[] $taxes The tax information of the line item.
  * @property string $type The type of the credit note line item, one of <code>invoice_line_item</code> or <code>custom_line_item</code>. When the type is <code>invoice_line_item</code> there is an additional <code>invoice_line_item</code> property on the resource the value of which is the id of the credited line item on the invoice.
  * @property null|int $unit_amount The cost of each unit of product being credited.
  * @property null|string $unit_amount_decimal Same as <code>unit_amount</code>, but contains a decimal value with at most 12 decimal places.
