@@ -165,6 +165,62 @@ class StripeEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.commerce.product_catalog.imports.failed" event.
+     *
+     * @param callable(Events\V2CommerceProductCatalogImportsFailedEvent, StripeClient): void $handler Handles v2.commerce.product_catalog.imports.failed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CommerceProductCatalogImportsFailed($handler)
+    {
+        $this->register('v2.commerce.product_catalog.imports.failed', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.commerce.product_catalog.imports.processing" event.
+     *
+     * @param callable(Events\V2CommerceProductCatalogImportsProcessingEvent, StripeClient): void $handler Handles v2.commerce.product_catalog.imports.processing events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CommerceProductCatalogImportsProcessing($handler)
+    {
+        $this->register('v2.commerce.product_catalog.imports.processing', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.commerce.product_catalog.imports.succeeded" event.
+     *
+     * @param callable(Events\V2CommerceProductCatalogImportsSucceededEvent, StripeClient): void $handler Handles v2.commerce.product_catalog.imports.succeeded events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CommerceProductCatalogImportsSucceeded($handler)
+    {
+        $this->register('v2.commerce.product_catalog.imports.succeeded', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.commerce.product_catalog.imports.succeeded_with_errors" event.
+     *
+     * @param callable(Events\V2CommerceProductCatalogImportsSucceededWithErrorsEvent, StripeClient): void $handler Handles v2.commerce.product_catalog.imports.succeeded_with_errors events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CommerceProductCatalogImportsSucceededWithErrors(
+        $handler
+    ) {
+        $this->register(
+            'v2.commerce.product_catalog.imports.succeeded_with_errors',
+            $handler
+        );
+    }
+
+    /**
      * Registers a handler for the "v2.core.account.closed" event.
      *
      * @param callable(Events\V2CoreAccountClosedEvent, StripeClient): void $handler Handles v2.core.account.closed events
@@ -596,6 +652,97 @@ class StripeEventNotificationHandler
             'v2.core.health.event_generation_failure.resolved',
             $handler
         );
+    }
+
+    /**
+     * Registers a handler for the "v2.data.reporting.query_run.created" event.
+     *
+     * @param callable(Events\V2DataReportingQueryRunCreatedEvent, StripeClient): void $handler Handles v2.data.reporting.query_run.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2DataReportingQueryRunCreated($handler)
+    {
+        $this->register('v2.data.reporting.query_run.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.data.reporting.query_run.failed" event.
+     *
+     * @param callable(Events\V2DataReportingQueryRunFailedEvent, StripeClient): void $handler Handles v2.data.reporting.query_run.failed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2DataReportingQueryRunFailed($handler)
+    {
+        $this->register('v2.data.reporting.query_run.failed', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.data.reporting.query_run.succeeded" event.
+     *
+     * @param callable(Events\V2DataReportingQueryRunSucceededEvent, StripeClient): void $handler Handles v2.data.reporting.query_run.succeeded events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2DataReportingQueryRunSucceeded($handler)
+    {
+        $this->register('v2.data.reporting.query_run.succeeded', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.data.reporting.query_run.updated" event.
+     *
+     * @param callable(Events\V2DataReportingQueryRunUpdatedEvent, StripeClient): void $handler Handles v2.data.reporting.query_run.updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2DataReportingQueryRunUpdated($handler)
+    {
+        $this->register('v2.data.reporting.query_run.updated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.extend.workflow_run.failed" event.
+     *
+     * @param callable(Events\V2ExtendWorkflowRunFailedEvent, StripeClient): void $handler Handles v2.extend.workflow_run.failed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2ExtendWorkflowRunFailed($handler)
+    {
+        $this->register('v2.extend.workflow_run.failed', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.extend.workflow_run.started" event.
+     *
+     * @param callable(Events\V2ExtendWorkflowRunStartedEvent, StripeClient): void $handler Handles v2.extend.workflow_run.started events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2ExtendWorkflowRunStarted($handler)
+    {
+        $this->register('v2.extend.workflow_run.started', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.extend.workflow_run.succeeded" event.
+     *
+     * @param callable(Events\V2ExtendWorkflowRunSucceededEvent, StripeClient): void $handler Handles v2.extend.workflow_run.succeeded events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2ExtendWorkflowRunSucceeded($handler)
+    {
+        $this->register('v2.extend.workflow_run.succeeded', $handler);
     }
 
     /**
@@ -1084,6 +1231,61 @@ class StripeEventNotificationHandler
     public function onV2MoneyManagementTransactionUpdated($handler)
     {
         $this->register('v2.money_management.transaction.updated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.orchestrated_commerce.agreement.confirmed" event.
+     *
+     * @param callable(Events\V2OrchestratedCommerceAgreementConfirmedEvent, StripeClient): void $handler Handles v2.orchestrated_commerce.agreement.confirmed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2OrchestratedCommerceAgreementConfirmed($handler)
+    {
+        $this->register('v2.orchestrated_commerce.agreement.confirmed', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.orchestrated_commerce.agreement.created" event.
+     *
+     * @param callable(Events\V2OrchestratedCommerceAgreementCreatedEvent, StripeClient): void $handler Handles v2.orchestrated_commerce.agreement.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2OrchestratedCommerceAgreementCreated($handler)
+    {
+        $this->register('v2.orchestrated_commerce.agreement.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.orchestrated_commerce.agreement.partially_confirmed" event.
+     *
+     * @param callable(Events\V2OrchestratedCommerceAgreementPartiallyConfirmedEvent, StripeClient): void $handler Handles v2.orchestrated_commerce.agreement.partially_confirmed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2OrchestratedCommerceAgreementPartiallyConfirmed($handler)
+    {
+        $this->register(
+            'v2.orchestrated_commerce.agreement.partially_confirmed',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.orchestrated_commerce.agreement.terminated" event.
+     *
+     * @param callable(Events\V2OrchestratedCommerceAgreementTerminatedEvent, StripeClient): void $handler Handles v2.orchestrated_commerce.agreement.terminated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2OrchestratedCommerceAgreementTerminated($handler)
+    {
+        $this->register('v2.orchestrated_commerce.agreement.terminated', $handler);
     }
     // event-handler-methods: The end of the section generated from our OpenAPI spec
 }
