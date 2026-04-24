@@ -30,11 +30,12 @@ class CurrencyConversionService extends \Stripe\Service\AbstractService
     /**
      * Create a CurrencyConversion.
      *
-     * @param null|array{financial_account: string, from: array{amount?: \Stripe\StripeObject, currency?: string}, to: array{amount?: \Stripe\StripeObject, currency?: string}} $params
+     * @param null|array{financial_account?: string, from: array{amount?: \Stripe\StripeObject, currency?: string}, fx_quote?: string, to: array{amount?: \Stripe\StripeObject, currency?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\CurrencyConversion
      *
+     * @throws \Stripe\Exception\FxQuoteExpiredException
      * @throws \Stripe\Exception\FeatureNotEnabledException
      */
     public function create($params = null, $opts = null)

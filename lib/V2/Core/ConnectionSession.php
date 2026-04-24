@@ -5,7 +5,8 @@
 namespace Stripe\V2\Core;
 
 /**
- * The ConnectionSession resource.
+ * A short-lived, single-use session used to launch client-side Link onboarding
+ * that connects an Account to a Link consumer account.
  *
  * @property string $id The unique identifier for this ConnectionSession.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.

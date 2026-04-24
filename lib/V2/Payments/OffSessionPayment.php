@@ -15,18 +15,21 @@ namespace Stripe\V2\Payments;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property null|\Stripe\StripeObject $amount_capturable The amount available to be captured.
+ * @property null|(object{discount_amount?: int, error?: (object{code?: string, message?: string}&\Stripe\StripeObject), line_items: (object{discount_amount?: int, product_code?: string, product_name: string, quantity: int, tax?: (object{total_tax_amount?: int}&\Stripe\StripeObject), unit_cost: int, unit_of_measure?: string}&\Stripe\StripeObject)[], shipping?: (object{amount?: int, from_postal_code?: string, to_postal_code?: string}&\Stripe\StripeObject), tax?: (object{total_tax_amount?: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $amount_details Provides industry-specific information about the amount.
  * @property \Stripe\StripeObject $amount_requested The “presentment amount” to be collected from the customer.
  * @property null|\Stripe\StripeObject $application_fee_amount_requested The amount of the application fee requested to be applied to the payment.
  * @property string $cadence The frequency of the underlying payment.
  * @property null|(object{capture_before?: int, capture_method: string}&\Stripe\StripeObject) $capture Details about the capture configuration for the OffSessionPayment.
  * @property int $created Creation time of the OffSessionPayment. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property string $customer ID of the Customer to which this OffSessionPayment belongs.
+ * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|string $failure_reason The reason why the OffSessionPayment failed.
  * @property null|string $last_authorization_attempt_error The payment error encountered in the previous attempt to authorize the payment.
  * @property null|string $latest_payment_attempt_record Payment attempt record for the latest attempt, if one exists.
  * @property bool $livemode Has the value true if the object exists in live mode or the value false if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Learn more about <a href="https://docs.stripe.com/payments/payment-intents#storing-information-in-metadata">storing information in metadata</a>.
  * @property null|string $on_behalf_of The account (if any) for which the funds of the OffSessionPayment are intended.
+ * @property null|(object{customer_reference?: string, order_reference?: string}&\Stripe\StripeObject) $payment_details Provides industry-specific information about the payment.
  * @property string $payment_method ID of the payment method used in this OffSessionPayment.
  * @property null|string $payment_record Payment record associated with the OffSessionPayment.
  * @property (object{enabled: bool}&\Stripe\StripeObject) $payments_orchestration Details about the payments orchestration configuration.

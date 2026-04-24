@@ -353,6 +353,16 @@ class ApiRequestor
                     $code
                 );
 
+            case 'fx_quote_expired':
+                return Exception\FxQuoteExpiredException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
             case 'insufficient_funds':
                 return Exception\InsufficientFundsException::factory(
                     $msg,

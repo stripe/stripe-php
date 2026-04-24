@@ -12,6 +12,7 @@ namespace Stripe\DelegatedCheckout;
  * @property null|((object{campaign_id: null|string, creative_id: null|string, expires_at: int, identification_token: string, issued_at: int, provider: string, publisher_id: null|string, shared_metadata: null|\Stripe\StripeObject, source: null|(object{platform: null|string, type: string, url: null|string}&\Stripe\StripeObject), sub_id: null|string, touchpoint: string}&\Stripe\StripeObject))[] $affiliate_attributions Affiliate attribution data associated with this requested session.
  * @property null|int $amount_subtotal The subtotal amount of the requested session.
  * @property null|int $amount_total The total amount of the requested session.
+ * @property null|(object{marketing: null|(object{options: null|(object{channel: string, description: string, privacy_policy_url: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject) $buyer_consents The buyer consent options for this requested session, including marketing preferences.
  * @property int $created_at Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $customer The customer for this requested session.

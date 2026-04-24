@@ -78,7 +78,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      * Updates an existing FinancialAccount.
      *
      * @param string $id
-     * @param null|array{display_name?: string, metadata?: array<string, null|string>} $params
+     * @param null|array{display_name?: string, metadata?: array<string, null|string>, storage?: array{holds_currencies?: string[]}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\FinancialAccount

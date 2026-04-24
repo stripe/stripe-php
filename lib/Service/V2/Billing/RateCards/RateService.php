@@ -64,8 +64,8 @@ class RateService extends \Stripe\Service\AbstractService
 
     /**
      * Set the Rate for a Metered Item on the latest version of a Rate Card object.
-     * This will create a new Rate Card version if the Metered Item already has a rate
-     * on the Rate Card.
+     * This creates a new Rate Card version if the Metered Item already has a rate on
+     * the Rate Card.
      *
      * @param string $id
      * @param null|array{custom_pricing_unit_amount?: array{id: string, value: string}, metadata?: array<string, string>, metered_item: string, tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], transform_quantity?: array{divide_by: int, round: string}, unit_amount?: string} $params
@@ -118,8 +118,8 @@ class RateService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Remove an existing Rate from a Rate Card. This will create a new Rate Card
-     * Version without that Rate.
+     * Remove an existing Rate from a Rate Card. This creates a new Rate Card Version
+     * without that Rate.
      *
      * @param string $parentId
      * @param string $id
