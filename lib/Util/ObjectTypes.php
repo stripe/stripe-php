@@ -205,6 +205,7 @@ class ObjectTypes
         \Stripe\V2\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustment::class,
         \Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \Stripe\V2\Billing\MeterEventSession::class,
         \Stripe\V2\Billing\Profile::OBJECT_NAME => \Stripe\V2\Billing\Profile::class,
+        \Stripe\V2\Commerce\ProductCatalogImport::OBJECT_NAME => \Stripe\V2\Commerce\ProductCatalogImport::class,
         \Stripe\V2\Core\Account::OBJECT_NAME => \Stripe\V2\Core\Account::class,
         \Stripe\V2\Core\AccountLink::OBJECT_NAME => \Stripe\V2\Core\AccountLink::class,
         \Stripe\V2\Core\AccountPerson::OBJECT_NAME => \Stripe\V2\Core\AccountPerson::class,
@@ -215,8 +216,12 @@ class ObjectTypes
         \Stripe\V2\Core\EventDestination::OBJECT_NAME => \Stripe\V2\Core\EventDestination::class,
         \Stripe\V2\Core\Vault\GbBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\GbBankAccount::class,
         \Stripe\V2\Core\Vault\UsBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\UsBankAccount::class,
+        \Stripe\V2\Data\Reporting\QueryRun::OBJECT_NAME => \Stripe\V2\Data\Reporting\QueryRun::class,
+        \Stripe\V2\Extend\Workflow::OBJECT_NAME => \Stripe\V2\Extend\Workflow::class,
+        \Stripe\V2\Extend\WorkflowRun::OBJECT_NAME => \Stripe\V2\Extend\WorkflowRun::class,
         \Stripe\V2\FinancialAddressCreditSimulation::OBJECT_NAME => \Stripe\V2\FinancialAddressCreditSimulation::class,
         \Stripe\V2\FinancialAddressGeneratedMicrodeposits::OBJECT_NAME => \Stripe\V2\FinancialAddressGeneratedMicrodeposits::class,
+        \Stripe\V2\Iam\ActivityLog::OBJECT_NAME => \Stripe\V2\Iam\ActivityLog::class,
         \Stripe\V2\MoneyManagement\Adjustment::OBJECT_NAME => \Stripe\V2\MoneyManagement\Adjustment::class,
         \Stripe\V2\MoneyManagement\FinancialAccount::OBJECT_NAME => \Stripe\V2\MoneyManagement\FinancialAccount::class,
         \Stripe\V2\MoneyManagement\FinancialAddress::OBJECT_NAME => \Stripe\V2\MoneyManagement\FinancialAddress::class,
@@ -231,6 +236,8 @@ class ObjectTypes
         \Stripe\V2\MoneyManagement\ReceivedDebit::OBJECT_NAME => \Stripe\V2\MoneyManagement\ReceivedDebit::class,
         \Stripe\V2\MoneyManagement\Transaction::OBJECT_NAME => \Stripe\V2\MoneyManagement\Transaction::class,
         \Stripe\V2\MoneyManagement\TransactionEntry::OBJECT_NAME => \Stripe\V2\MoneyManagement\TransactionEntry::class,
+        \Stripe\V2\Network\BusinessProfile::OBJECT_NAME => \Stripe\V2\Network\BusinessProfile::class,
+        \Stripe\V2\OrchestratedCommerce\Agreement::OBJECT_NAME => \Stripe\V2\OrchestratedCommerce\Agreement::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
 }

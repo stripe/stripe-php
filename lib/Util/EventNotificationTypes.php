@@ -8,6 +8,10 @@ class EventNotificationTypes
         // The beginning of the section generated from our OpenAPI spec
         \Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification::LOOKUP_TYPE => \Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification::class,
         \Stripe\Events\V1BillingMeterNoMeterFoundEventNotification::LOOKUP_TYPE => \Stripe\Events\V1BillingMeterNoMeterFoundEventNotification::class,
+        \Stripe\Events\V2CommerceProductCatalogImportsFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CommerceProductCatalogImportsFailedEventNotification::class,
+        \Stripe\Events\V2CommerceProductCatalogImportsProcessingEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CommerceProductCatalogImportsProcessingEventNotification::class,
+        \Stripe\Events\V2CommerceProductCatalogImportsSucceededEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CommerceProductCatalogImportsSucceededEventNotification::class,
+        \Stripe\Events\V2CommerceProductCatalogImportsSucceededWithErrorsEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CommerceProductCatalogImportsSucceededWithErrorsEventNotification::class,
         \Stripe\Events\V2CoreAccountClosedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountClosedEventNotification::class,
         \Stripe\Events\V2CoreAccountCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountCreatedEventNotification::class,
         \Stripe\Events\V2CoreAccountUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountUpdatedEventNotification::class,
@@ -39,6 +43,13 @@ class EventNotificationTypes
         \Stripe\Events\V2CoreBatchJobValidationFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobValidationFailedEventNotification::class,
         \Stripe\Events\V2CoreEventDestinationPingEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreEventDestinationPingEventNotification::class,
         \Stripe\Events\V2CoreHealthEventGenerationFailureResolvedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthEventGenerationFailureResolvedEventNotification::class,
+        \Stripe\Events\V2DataReportingQueryRunCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2DataReportingQueryRunCreatedEventNotification::class,
+        \Stripe\Events\V2DataReportingQueryRunFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2DataReportingQueryRunFailedEventNotification::class,
+        \Stripe\Events\V2DataReportingQueryRunSucceededEventNotification::LOOKUP_TYPE => \Stripe\Events\V2DataReportingQueryRunSucceededEventNotification::class,
+        \Stripe\Events\V2DataReportingQueryRunUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2DataReportingQueryRunUpdatedEventNotification::class,
+        \Stripe\Events\V2ExtendWorkflowRunFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ExtendWorkflowRunFailedEventNotification::class,
+        \Stripe\Events\V2ExtendWorkflowRunStartedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ExtendWorkflowRunStartedEventNotification::class,
+        \Stripe\Events\V2ExtendWorkflowRunSucceededEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ExtendWorkflowRunSucceededEventNotification::class,
         \Stripe\Events\V2MoneyManagementAdjustmentCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementAdjustmentCreatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementFinancialAccountCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountCreatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementFinancialAccountUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountUpdatedEventNotification::class,
@@ -75,6 +86,10 @@ class EventNotificationTypes
         \Stripe\Events\V2MoneyManagementReceivedDebitUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitUpdatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementTransactionCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementTransactionCreatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementTransactionUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementTransactionUpdatedEventNotification::class,
+        \Stripe\Events\V2OrchestratedCommerceAgreementConfirmedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2OrchestratedCommerceAgreementConfirmedEventNotification::class,
+        \Stripe\Events\V2OrchestratedCommerceAgreementCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2OrchestratedCommerceAgreementCreatedEventNotification::class,
+        \Stripe\Events\V2OrchestratedCommerceAgreementPartiallyConfirmedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2OrchestratedCommerceAgreementPartiallyConfirmedEventNotification::class,
+        \Stripe\Events\V2OrchestratedCommerceAgreementTerminatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2OrchestratedCommerceAgreementTerminatedEventNotification::class,
         // The end of the section generated from our OpenAPI spec
     ];
 }

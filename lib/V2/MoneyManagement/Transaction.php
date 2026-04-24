@@ -28,12 +28,17 @@ class Transaction extends \Stripe\ApiResource
     const CATEGORY_ADJUSTMENT = 'adjustment';
     const CATEGORY_CURRENCY_CONVERSION = 'currency_conversion';
     const CATEGORY_INBOUND_TRANSFER = 'inbound_transfer';
+    const CATEGORY_INBOUND_TRANSFER_REVERSAL = 'inbound_transfer_reversal';
     const CATEGORY_OUTBOUND_PAYMENT = 'outbound_payment';
+    const CATEGORY_OUTBOUND_PAYMENT_REVERSAL = 'outbound_payment_reversal';
     const CATEGORY_OUTBOUND_TRANSFER = 'outbound_transfer';
+    const CATEGORY_OUTBOUND_TRANSFER_REVERSAL = 'outbound_transfer_reversal';
     const CATEGORY_RECEIVED_CREDIT = 'received_credit';
+    const CATEGORY_RECEIVED_CREDIT_REVERSAL = 'received_credit_reversal';
     const CATEGORY_RECEIVED_DEBIT = 'received_debit';
-    const CATEGORY_RETURN = 'return';
+    const CATEGORY_RECEIVED_DEBIT_REVERSAL = 'received_debit_reversal';
     const CATEGORY_STRIPE_FEE = 'stripe_fee';
+    const CATEGORY_STRIPE_FEE_TAX = 'stripe_fee_tax';
 
     const STATUS_PENDING = 'pending';
     const STATUS_POSTED = 'posted';

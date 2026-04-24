@@ -5645,6 +5645,96 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Billing\Profile::class, $result);
     }
 
+    public function testV2CommerceProductCatalogImportGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/commerce/product_catalog/imports',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.commerce.product_catalog_import',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'feed_type' => 'pricing',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'metadata' => ['key' => 'metadata'],
+                        'status' => 'awaiting_upload',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->commerce->productCatalog->imports->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Commerce\ProductCatalogImport::class, $result->data[0]);
+    }
+
+    public function testV2CommerceProductCatalogImportPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/commerce/product_catalog/imports',
+            [
+                'feed_type' => 'pricing',
+                'metadata' => ['key' => 'metadata'],
+                'mode' => 'upsert',
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.commerce.product_catalog_import',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'feed_type' => 'pricing',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'status' => 'awaiting_upload',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->commerce->productCatalog->imports->create([
+            'feed_type' => 'pricing',
+            'metadata' => ['key' => 'metadata'],
+            'mode' => 'upsert',
+        ]);
+        self::assertInstanceOf(V2\Commerce\ProductCatalogImport::class, $result);
+    }
+
+    public function testV2CommerceProductCatalogImportGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/commerce/product_catalog/imports/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.commerce.product_catalog_import',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'feed_type' => 'pricing',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'status' => 'awaiting_upload',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->commerce->productCatalog->imports->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Commerce\ProductCatalogImport::class, $result);
+    }
+
     public function testV2CoreAccountGet()
     {
         $this->stubRequest(
@@ -6077,7 +6167,7 @@ final class GeneratedExamplesTest extends TestCase
             '/v2/core/batch_jobs',
             [
                 'endpoint' => [
-                    'http_method' => 'post',
+                    'http_method' => 'delete',
                     'path' => '/v1/subscription_schedules',
                 ],
                 'metadata' => ['key' => 'metadata'],
@@ -6100,7 +6190,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->core->batchJobs->create([
             'endpoint' => [
-                'http_method' => 'post',
+                'http_method' => 'delete',
                 'path' => '/v1/subscription_schedules',
             ],
             'metadata' => ['key' => 'metadata'],
@@ -6467,7 +6557,7 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'object' => 'v2.core.vault.gb_bank_account',
                         'archived' => [],
-                        'bank_account_type' => 'savings',
+                        'bank_account_type' => 'toza',
                         'bank_name' => 'bank_name',
                         'confirmation_of_payee' => [
                             'result' => [
@@ -6513,7 +6603,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.core.vault.gb_bank_account',
                 'archived' => [],
-                'bank_account_type' => 'savings',
+                'bank_account_type' => 'toza',
                 'bank_name' => 'bank_name',
                 'confirmation_of_payee' => [
                     'result' => [
@@ -6554,7 +6644,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.core.vault.gb_bank_account',
                 'archived' => [],
-                'bank_account_type' => 'savings',
+                'bank_account_type' => 'toza',
                 'bank_name' => 'bank_name',
                 'confirmation_of_payee' => [
                     'result' => [
@@ -6596,7 +6686,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.core.vault.gb_bank_account',
                 'archived' => [],
-                'bank_account_type' => 'savings',
+                'bank_account_type' => 'toza',
                 'bank_name' => 'bank_name',
                 'confirmation_of_payee' => [
                     'result' => [
@@ -6638,7 +6728,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.core.vault.gb_bank_account',
                 'archived' => [],
-                'bank_account_type' => 'savings',
+                'bank_account_type' => 'toza',
                 'bank_name' => 'bank_name',
                 'confirmation_of_payee' => [
                     'result' => [
@@ -6680,7 +6770,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.core.vault.gb_bank_account',
                 'archived' => [],
-                'bank_account_type' => 'savings',
+                'bank_account_type' => 'toza',
                 'bank_name' => 'bank_name',
                 'confirmation_of_payee' => [
                     'result' => [
@@ -6925,6 +7015,261 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Core\Vault\UsBankAccount::class, $result);
+    }
+
+    public function testV2DataReportingQueryRunPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/data/reporting/query_runs',
+            ['sql' => 'sql'],
+            [],
+            false,
+            [
+                'object' => 'v2.data.reporting.query_run',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'sql' => 'sql',
+                'status' => 'failed',
+                'status_details' => ['key' => []],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->data->reporting->queryRuns->create([
+            'sql' => 'sql',
+        ]);
+        self::assertInstanceOf(V2\Data\Reporting\QueryRun::class, $result);
+    }
+
+    public function testV2DataReportingQueryRunGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/data/reporting/query_runs/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.data.reporting.query_run',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'sql' => 'sql',
+                'status' => 'failed',
+                'status_details' => ['key' => []],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->data->reporting->queryRuns->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Data\Reporting\QueryRun::class, $result);
+    }
+
+    public function testV2ExtendWorkflowGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/extend/workflows',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.extend.workflow',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'status' => 'draft',
+                        'title' => 'title',
+                        'triggers' => ['0' => ['type' => 'event_trigger']],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->extend->workflows->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Extend\Workflow::class, $result->data[0]);
+    }
+
+    public function testV2ExtendWorkflowGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/extend/workflows/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.extend.workflow',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'draft',
+                'title' => 'title',
+                'triggers' => ['0' => ['type' => 'event_trigger']],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->extend->workflows->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Extend\Workflow::class, $result);
+    }
+
+    public function testV2ExtendWorkflowPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/extend/workflows/id_123/invoke',
+            [
+                'input_parameters' => [
+                    'int_key' => 123,
+                    'string_key' => 'value',
+                    'boolean_key' => true,
+                    'object_key' => [
+                        'object_int_key' => 123,
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => true,
+                    ],
+                    'array_key' => [1, 2, 3],
+                ],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.extend.workflow_run',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'failed',
+                'status_transitions' => [],
+                'trigger' => ['type' => 'event_trigger'],
+                'workflow' => 'workflow',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->extend->workflows->invoke(
+            'id_123',
+            [
+                'input_parameters' => [
+                    'int_key' => 123,
+                    'string_key' => 'value',
+                    'boolean_key' => true,
+                    'object_key' => [
+                        'object_int_key' => 123,
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => true,
+                    ],
+                    'array_key' => [1, 2, 3],
+                ],
+            ]
+        );
+        self::assertInstanceOf(V2\Extend\WorkflowRun::class, $result);
+    }
+
+    public function testV2ExtendWorkflowRunGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/extend/workflow_runs',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.extend.workflow_run',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'status' => 'failed',
+                        'status_transitions' => [],
+                        'trigger' => ['type' => 'event_trigger'],
+                        'workflow' => 'workflow',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->extend->workflowRuns->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Extend\WorkflowRun::class, $result->data[0]);
+    }
+
+    public function testV2ExtendWorkflowRunGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/extend/workflow_runs/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.extend.workflow_run',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'failed',
+                'status_transitions' => [],
+                'trigger' => ['type' => 'event_trigger'],
+                'workflow' => 'workflow',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->extend->workflowRuns->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Extend\WorkflowRun::class, $result);
+    }
+
+    public function testV2IamActivityLogGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/iam/activity_logs',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.iam.activity_log',
+                        'actor' => ['type' => 'api_key'],
+                        'context' => 'context',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'details' => ['type' => 'api_key'],
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'type' => 'api_key_created',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->iam->activityLogs->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Iam\ActivityLog::class, $result->data[0]);
     }
 
     public function testV2MoneyManagementAdjustmentGet()
@@ -8594,7 +8939,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'value' => [],
                             ],
                         ],
-                        'category' => 'received_debit',
+                        'category' => 'stripe_fee',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -8642,7 +8987,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'received_debit',
+                'category' => 'stripe_fee',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -8692,7 +9037,7 @@ final class GeneratedExamplesTest extends TestCase
                         'livemode' => [],
                         'transaction' => 'transaction',
                         'transaction_details' => [
-                            'category' => 'received_debit',
+                            'category' => 'stripe_fee',
                             'financial_account' => 'financial_account',
                         ],
                     ],
@@ -8738,7 +9083,7 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'transaction' => 'transaction',
                 'transaction_details' => [
-                    'category' => 'received_debit',
+                    'category' => 'stripe_fee',
                     'financial_account' => 'financial_account',
                 ],
             ],
@@ -8750,6 +9095,226 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\MoneyManagement\TransactionEntry::class, $result);
+    }
+
+    public function testV2NetworkBusinessProfileGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/network/business_profiles/me',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.network.business_profile',
+                'display_name' => 'display_name',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'username' => 'username',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->network->businessProfiles->me([]);
+        self::assertInstanceOf(V2\Network\BusinessProfile::class, $result);
+    }
+
+    public function testV2NetworkBusinessProfileGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/network/business_profiles/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.network.business_profile',
+                'display_name' => 'display_name',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'username' => 'username',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->network->businessProfiles->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Network\BusinessProfile::class, $result);
+    }
+
+    public function testV2OrchestratedCommerceAgreementGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/orchestrated_commerce/agreements',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.orchestrated_commerce.agreement',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'initiated_by' => 'seller',
+                        'livemode' => [],
+                        'orchestrator_details' => [
+                            'name' => 'name',
+                            'network_business_profile' => 'network_business_profile',
+                        ],
+                        'seller_details' => [
+                            'network_business_profile' => 'network_business_profile',
+                        ],
+                        'status' => 'partially_confirmed',
+                        'status_transitions' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->orchestratedCommerce->agreements->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\OrchestratedCommerce\Agreement::class, $result->data[0]);
+    }
+
+    public function testV2OrchestratedCommerceAgreementPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/orchestrated_commerce/agreements',
+            ['orchestrator' => 'orchestrator'],
+            [],
+            false,
+            [
+                'object' => 'v2.orchestrated_commerce.agreement',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'initiated_by' => 'seller',
+                'livemode' => [],
+                'orchestrator_details' => [
+                    'name' => 'name',
+                    'network_business_profile' => 'network_business_profile',
+                ],
+                'seller_details' => [
+                    'network_business_profile' => 'network_business_profile',
+                ],
+                'status' => 'partially_confirmed',
+                'status_transitions' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->orchestratedCommerce->agreements->create([
+            'orchestrator' => 'orchestrator',
+        ]);
+        self::assertInstanceOf(V2\OrchestratedCommerce\Agreement::class, $result);
+    }
+
+    public function testV2OrchestratedCommerceAgreementGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/orchestrated_commerce/agreements/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.orchestrated_commerce.agreement',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'initiated_by' => 'seller',
+                'livemode' => [],
+                'orchestrator_details' => [
+                    'name' => 'name',
+                    'network_business_profile' => 'network_business_profile',
+                ],
+                'seller_details' => [
+                    'network_business_profile' => 'network_business_profile',
+                ],
+                'status' => 'partially_confirmed',
+                'status_transitions' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->orchestratedCommerce->agreements->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\OrchestratedCommerce\Agreement::class, $result);
+    }
+
+    public function testV2OrchestratedCommerceAgreementPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/orchestrated_commerce/agreements/id_123/confirm',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.orchestrated_commerce.agreement',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'initiated_by' => 'seller',
+                'livemode' => [],
+                'orchestrator_details' => [
+                    'name' => 'name',
+                    'network_business_profile' => 'network_business_profile',
+                ],
+                'seller_details' => [
+                    'network_business_profile' => 'network_business_profile',
+                ],
+                'status' => 'partially_confirmed',
+                'status_transitions' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->orchestratedCommerce->agreements->confirm(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\OrchestratedCommerce\Agreement::class, $result);
+    }
+
+    public function testV2OrchestratedCommerceAgreementPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/orchestrated_commerce/agreements/id_123/terminate',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.orchestrated_commerce.agreement',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'initiated_by' => 'seller',
+                'livemode' => [],
+                'orchestrator_details' => [
+                    'name' => 'name',
+                    'network_business_profile' => 'network_business_profile',
+                ],
+                'seller_details' => [
+                    'network_business_profile' => 'network_business_profile',
+                ],
+                'status' => 'partially_confirmed',
+                'status_transitions' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->orchestratedCommerce->agreements->terminate(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\OrchestratedCommerce\Agreement::class, $result);
     }
 
     public function testV2TestHelpersFinancialAddressPost()
@@ -8893,6 +9458,57 @@ final class GeneratedExamplesTest extends TestCase
                 'currency' => 'usd',
             ]);
         } catch (Exception\BlockedByStripeException $e) {
+        }
+    }
+
+    public function testCannotProceedError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/extend/workflows/id_123/invoke',
+            [
+                'input_parameters' => [
+                    'int_key' => 123,
+                    'string_key' => 'value',
+                    'boolean_key' => true,
+                    'object_key' => [
+                        'object_int_key' => 123,
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => true,
+                    ],
+                    'array_key' => [1, 2, 3],
+                ],
+            ],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'cannot_proceed',
+                    'code' => 'default_payout_method_cannot_be_archived',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->extend->workflows->invoke(
+                'id_123',
+                [
+                    'input_parameters' => [
+                        'int_key' => 123,
+                        'string_key' => 'value',
+                        'boolean_key' => true,
+                        'object_key' => [
+                            'object_int_key' => 123,
+                            'object_string_key' => 'value',
+                            'object_boolean_key' => true,
+                        ],
+                        'array_key' => [1, 2, 3],
+                    ],
+                ]
+            );
+        } catch (Exception\CannotProceedException $e) {
         }
     }
 
