@@ -14,7 +14,7 @@ namespace Stripe\V2\Billing;
  * @property null|string $display_name An optional field for adding a display name for the BillSetting object.
  * @property null|(object{time_until_due?: (object{interval: string, interval_count: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $invoice Settings related to invoice behavior.
  * @property null|string $invoice_rendering_template The ID of the invoice rendering template to be used when generating invoices.
- * @property string $latest_version The latest version of the current settings object. This will be Updated every time an attribute of the settings is updated.
+ * @property string $latest_version The latest version of the current settings object. This is updated every time an attribute of the settings is updated.
  * @property string $live_version The current live version of the settings object. This can be different from latest_version if settings are updated without setting live_version='latest'.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $lookup_key A lookup key used to retrieve settings dynamically from a static string. This may be up to 200 characters.

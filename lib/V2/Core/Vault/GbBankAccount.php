@@ -25,5 +25,7 @@ class GbBankAccount extends \Stripe\ApiResource
     const OBJECT_NAME = 'v2.core.vault.gb_bank_account';
 
     const BANK_ACCOUNT_TYPE_CHECKING = 'checking';
+    const BANK_ACCOUNT_TYPE_FUTSU = 'futsu';
     const BANK_ACCOUNT_TYPE_SAVINGS = 'savings';
+    const BANK_ACCOUNT_TYPE_TOZA = 'toza';
 }

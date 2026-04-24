@@ -68,7 +68,6 @@ class Transaction extends \Stripe\ApiResource
     const CATEGORY_RECEIVED_DEBIT_REVERSAL = 'received_debit_reversal';
     const CATEGORY_REFUND = 'refund';
     const CATEGORY_REFUND_FAILURE = 'refund_failure';
-    const CATEGORY_RETURN = 'return';
     const CATEGORY_RISK_RESERVED_FUNDS = 'risk_reserved_funds';
     const CATEGORY_STRIPE_BALANCE_PAYMENT_DEBIT = 'stripe_balance_payment_debit';
     const CATEGORY_STRIPE_BALANCE_PAYMENT_DEBIT_REVERSAL = 'stripe_balance_payment_debit_reversal';

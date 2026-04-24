@@ -17,6 +17,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|(object{type: string}&\Stripe\StripeObject) $managed_by If this is a managed FinancialAccount, <code>managed_by</code> indicates the product that created and manages this FinancialAccount. For managed FinancialAccounts, creation of money management resources can only be orchestrated by the managing product.
  * @property null|\Stripe\StripeObject $metadata Metadata associated with the FinancialAccount.
+ * @property null|(object{settlement_currencies: string[]}&\Stripe\StripeObject) $multiprocessor_settlement If this is a <code>multiprocessor_settlement</code> FinancialAccount, this hash includes details specific to <code>multiprocessor_settlement</code> FinancialAccounts.
  * @property null|(object{type: string}&\Stripe\StripeObject) $other If this is a <code>other</code> FinancialAccount, this hash indicates what the actual type is. Upgrade your API version to see it reflected in <code>type</code>.
  * @property null|(object{balance_by_funds_type?: (object{payment_processing: (object{available: \Stripe\StripeObject, inbound_pending: \Stripe\StripeObject, outbound_pending: \Stripe\StripeObject}&\Stripe\StripeObject), stored_value: (object{available: \Stripe\StripeObject, inbound_pending: \Stripe\StripeObject, outbound_pending: \Stripe\StripeObject}&\Stripe\StripeObject)}&\Stripe\StripeObject), default_currency: string, settlement_currencies: string[], starting_balance?: (object{at: int, available: \Stripe\StripeObject}&\Stripe\StripeObject)}&\Stripe\StripeObject) $payments If this is a <code>payments</code> FinancialAccount, this hash include details specific to <code>payments</code> FinancialAccount.
  * @property string $status Closed Enum. An enum representing the status of the FinancialAccount. This indicates whether or not the FinancialAccount can be used for any money movement flows.
@@ -33,6 +34,7 @@ class FinancialAccount extends \Stripe\ApiResource
     const STATUS_PENDING = 'pending';
 
     const TYPE_ACCRUED_FEES = 'accrued_fees';
+    const TYPE_MULTIPROCESSOR_SETTLEMENT = 'multiprocessor_settlement';
     const TYPE_OTHER = 'other';
     const TYPE_PAYMENTS = 'payments';
     const TYPE_STORAGE = 'storage';

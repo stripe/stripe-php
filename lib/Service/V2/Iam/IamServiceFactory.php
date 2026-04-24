@@ -7,6 +7,7 @@ namespace Stripe\Service\V2\Iam;
 /**
  * Service factory class for API resources in the Iam namespace.
  *
+ * @property ActivityLogService $activityLogs
  * @property ApiKeyService $apiKeys
  */
 class IamServiceFactory extends \Stripe\Service\AbstractServiceFactory
@@ -15,6 +16,7 @@ class IamServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
+        'activityLogs' => ActivityLogService::class,
         'apiKeys' => ApiKeyService::class,
     ];
 
