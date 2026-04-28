@@ -36,4 +36,62 @@ class IssuedToken extends \Stripe\ApiResource
     const STATUS_ACTIVE = 'active';
     const STATUS_DEACTIVATED = 'deactivated';
     const STATUS_REQUIRES_ACTION = 'requires_action';
+
+    /**
+     * Creates a new SharedPaymentIssuedToken object.
+     *
+     * @param null|array{expand?: string[], payment_method: string, return_url?: string, seller_details: array{external_id?: string, network_business_profile?: string}, setup_future_usage?: string, shared_metadata?: array<string, string>, usage_limits: array{currency: string, expires_at?: int, max_amount: int, recurring_interval?: string}} $params
+     * @param null|array|string $options
+     *
+     * @return IssuedToken the created resource
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Retrieves an existing SharedPaymentIssuedToken object.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @return IssuedToken
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return IssuedToken the revoked issued token
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function revoke($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/revoke';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
 }

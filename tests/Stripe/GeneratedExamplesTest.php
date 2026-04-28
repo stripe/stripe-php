@@ -10059,6 +10059,62 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Core\Vault\UsBankAccount::class, $result);
     }
 
+    public function testV2DataAnalyticsMetricQueryPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/data/analytics/metric_query',
+            [
+                'ends_at' => '1970-01-19T14:12:09.638Z',
+                'granularity' => 'week',
+                'metrics' => [
+                    [
+                        'id' => 'obj_123',
+                        'name' => 'name',
+                    ],
+                ],
+                'starts_at' => '1970-01-25T15:13:01.215Z',
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.data.analytics.metric_query_result',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'data' => [
+                    '0' => [
+                        'dimensions' => ['key' => 'dimensions'],
+                        'id' => 'obj_123',
+                        'results' => [
+                            '0' => [
+                                'metric' => 'metric',
+                                'name' => 'name',
+                                'value' => '111972721',
+                            ],
+                        ],
+                        'timestamp' => '1970-01-01T15:18:46.294Z',
+                    ],
+                ],
+                'id' => 'obj_123',
+                'livemode' => [],
+                'refreshed_at' => '1970-01-01T11:25:45.896Z',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->data->analytics->metricQuery->create([
+            'ends_at' => '1970-01-19T14:12:09.638Z',
+            'granularity' => 'week',
+            'metrics' => [
+                [
+                    'id' => 'obj_123',
+                    'name' => 'name',
+                ],
+            ],
+            'starts_at' => '1970-01-25T15:13:01.215Z',
+        ]);
+        self::assertInstanceOf(V2\Data\Analytics\MetricQueryResult::class, $result);
+    }
+
     public function testV2DataReportingQueryRunPost()
     {
         $this->stubRequest(
@@ -10947,7 +11003,7 @@ final class GeneratedExamplesTest extends TestCase
             '/v2/money_management/financial_addresses',
             [
                 'financial_account' => 'financial_account',
-                'type' => 'sepa_bank_account',
+                'type' => 'ca_bank_account',
             ],
             [],
             false,
@@ -10965,7 +11021,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->moneyManagement->financialAddresses->create([
             'financial_account' => 'financial_account',
-            'type' => 'sepa_bank_account',
+            'type' => 'ca_bank_account',
         ]);
         self::assertInstanceOf(V2\MoneyManagement\FinancialAddress::class, $result);
     }
@@ -12800,7 +12856,6 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'cadence' => 'unscheduled',
                 'customer' => 'customer',
-                'metadata' => ['key' => 'metadata'],
             ],
             [],
             false,
@@ -12834,7 +12889,6 @@ final class GeneratedExamplesTest extends TestCase
             ],
             'cadence' => 'unscheduled',
             'customer' => 'customer',
-            'metadata' => ['key' => 'metadata'],
         ]);
         self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
     }
@@ -12920,7 +12974,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/payments/off_session_payments/id_123/capture',
-            ['metadata' => ['key' => 'metadata']],
+            [],
             [],
             false,
             [
@@ -12948,7 +13002,7 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->payments->offSessionPayments->capture(
             'id_123',
-            ['metadata' => ['key' => 'metadata']]
+            []
         );
         self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
     }
@@ -14088,7 +14142,7 @@ final class GeneratedExamplesTest extends TestCase
             '/v2/money_management/financial_addresses',
             [
                 'financial_account' => 'financial_account',
-                'type' => 'sepa_bank_account',
+                'type' => 'ca_bank_account',
             ],
             [],
             false,
@@ -14105,7 +14159,7 @@ final class GeneratedExamplesTest extends TestCase
         try {
             $this->v2Client->v2->moneyManagement->financialAddresses->create([
                 'financial_account' => 'financial_account',
-                'type' => 'sepa_bank_account',
+                'type' => 'ca_bank_account',
             ]);
         } catch (Exception\FinancialAccountNotOpenException $e) {
         }

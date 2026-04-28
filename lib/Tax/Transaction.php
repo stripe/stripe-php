@@ -23,7 +23,7 @@ namespace Stripe\Tax;
  * @property null|(object{original_transaction: null|string}&\Stripe\StripeObject) $reversal If <code>type=reversal</code>, contains information about what was reversed.
  * @property null|(object{address: (object{city: null|string, country: string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $ship_from_details The details of the ship from location, such as the address.
  * @property null|(object{amount: int, amount_tax: int, shipping_rate?: string, tax_behavior: string, tax_breakdown?: ((object{amount: int, jurisdiction: (object{country: string, display_name: string, level: string, state: null|string}&\Stripe\StripeObject), sourcing: string, tax_rate_details: null|(object{display_name: string, percentage_decimal: string, tax_type: string}&\Stripe\StripeObject), taxability_reason: string, taxable_amount: int}&\Stripe\StripeObject))[], tax_code: string}&\Stripe\StripeObject) $shipping_cost The shipping cost details for the transaction.
- * @property int $tax_date Timestamp of date at which the tax rules and rates in effect applies for the calculation.
+ * @property int $tax_date The calculation uses the tax rules and rates that are in effect at this timestamp. You can use a date up to 31 days in the past or up to 31 days in the future. If you use a future date, Stripe doesn't guarantee that the expected tax rules and rate being used match the actual rules and rate that will be in effect on that date. We deploy tax changes before their effective date, but not within a fixed window.
  * @property string $type If <code>reversal</code>, this transaction reverses an earlier transaction.
  */
 class Transaction extends \Stripe\ApiResource

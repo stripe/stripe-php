@@ -12,7 +12,7 @@ namespace Stripe\Service\V2\Network;
 class BusinessProfileService extends \Stripe\Service\AbstractService
 {
     /**
-     * Retrieve the Stripe profile associated with the requesting merchant and
+     * Retrieve the Stripe business profile associated with the requesting merchant and
      * livemode.
      *
      * @param null|array $params
@@ -28,7 +28,7 @@ class BusinessProfileService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a Stripe profile by its Network ID.
+     * Retrieve a Stripe business profile by its Network ID.
      *
      * @param string $id
      * @param null|array $params

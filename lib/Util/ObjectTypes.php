@@ -254,6 +254,7 @@ class ObjectTypes
         \Stripe\V2\Core\EventDestination::OBJECT_NAME => \Stripe\V2\Core\EventDestination::class,
         \Stripe\V2\Core\Vault\GbBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\GbBankAccount::class,
         \Stripe\V2\Core\Vault\UsBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\UsBankAccount::class,
+        \Stripe\V2\Data\Analytics\MetricQueryResult::OBJECT_NAME => \Stripe\V2\Data\Analytics\MetricQueryResult::class,
         \Stripe\V2\Data\Reporting\QueryRun::OBJECT_NAME => \Stripe\V2\Data\Reporting\QueryRun::class,
         \Stripe\V2\Extend\Workflow::OBJECT_NAME => \Stripe\V2\Extend\Workflow::class,
         \Stripe\V2\Extend\WorkflowRun::OBJECT_NAME => \Stripe\V2\Extend\WorkflowRun::class,

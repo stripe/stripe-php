@@ -17,6 +17,7 @@ namespace Stripe\Privacy;
  * @property null|(object{charges: null|string[], checkout_sessions: null|string[], customers: null|string[], identity_verification_sessions: null|string[], invoices: null|string[], issuing_cardholders: null|string[], payment_intents: null|string[], radar_value_list_items: null|string[], setup_intents: null|string[]}&\Stripe\StripeObject) $objects The objects to redact in this job.
  * @property string $status The status of the job.
  * @property null|string $validation_behavior Validation behavior determines how a job validates objects for redaction eligibility. Default is <code>error</code>.
+ * @property null|\Stripe\Collection<RedactionJobValidationError> $validation_errors The first 10 validation errors for the current validation attempt. Use the validation errors list endpoint to paginate through the full list.
  */
 class RedactionJob extends \Stripe\ApiResource
 {

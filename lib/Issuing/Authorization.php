@@ -19,6 +19,7 @@ namespace Stripe\Issuing;
  * @property string $authorization_method How the card details were provided.
  * @property \Stripe\BalanceTransaction[] $balance_transactions List of balance transactions associated with this authorization.
  * @property Card $card You can <a href="https://docs.stripe.com/issuing">create physical or virtual cards</a> that are issued to cardholders.
+ * @property null|string $card_presence Whether the card was present at the point of sale for the authorization.
  * @property null|Cardholder|string $cardholder The cardholder to whom this authorization belongs.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|((object{crypto_transaction_confirmed: null|(object{amount: string, amount_mcc_upcharged: null|string, chain: string, confirmed_at: int, currency: string, fees: (object{amount: string, currency: string, type: string}&\Stripe\StripeObject)[], from_address: string, memo: null|string, to_address: string, transaction_hash: string}&\Stripe\StripeObject), crypto_transaction_failed: null|(object{amount: string, amount_mcc_upcharged: null|string, chain: string, currency: string, failed_at: int, failure_reason: string, fees: (object{amount: string, currency: string, type: string}&\Stripe\StripeObject)[], from_address: string, memo: null|string, to_address: null|string, transaction_hash: null|string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject))[] $crypto_transactions Array of onchain crypto transactions linked to this resource.
@@ -54,6 +55,9 @@ class Authorization extends \Stripe\ApiResource
     const AUTHORIZATION_METHOD_KEYED_IN = 'keyed_in';
     const AUTHORIZATION_METHOD_ONLINE = 'online';
     const AUTHORIZATION_METHOD_SWIPE = 'swipe';
+
+    const CARD_PRESENCE_NOT_PRESENT = 'not_present';
+    const CARD_PRESENCE_PRESENT = 'present';
 
     const STATUS_CLOSED = 'closed';
     const STATUS_EXPIRED = 'expired';
