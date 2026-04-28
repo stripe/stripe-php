@@ -8,6 +8,7 @@ namespace Stripe\Service\SharedPayment;
  * Service factory class for API resources in the SharedPayment namespace.
  *
  * @property GrantedTokenService $grantedTokens
+ * @property IssuedTokenService $issuedTokens
  */
 class SharedPaymentServiceFactory extends \Stripe\Service\AbstractServiceFactory
 {
@@ -16,6 +17,7 @@ class SharedPaymentServiceFactory extends \Stripe\Service\AbstractServiceFactory
      */
     private static $classMap = [
         'grantedTokens' => GrantedTokenService::class,
+        'issuedTokens' => IssuedTokenService::class,
     ];
 
     protected function getServiceClass($name)

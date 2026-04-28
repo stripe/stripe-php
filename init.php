@@ -1244,6 +1244,7 @@ require __DIR__ . '/lib/Service/ReviewService.php';
 require __DIR__ . '/lib/Service/SetupAttemptService.php';
 require __DIR__ . '/lib/Service/SetupIntentService.php';
 require __DIR__ . '/lib/Service/SharedPayment/GrantedTokenService.php';
+require __DIR__ . '/lib/Service/SharedPayment/IssuedTokenService.php';
 require __DIR__ . '/lib/Service/SharedPayment/SharedPaymentServiceFactory.php';
 require __DIR__ . '/lib/Service/ShippingRateService.php';
 require __DIR__ . '/lib/Service/Sigma/ScheduledQueryRunService.php';
