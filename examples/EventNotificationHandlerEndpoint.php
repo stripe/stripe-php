@@ -1,5 +1,7 @@
 <?php
 
+// File copied from our code generator; changes here will be overwritten.
+
 /**
  * event_notification_handler_endpoint.py - receive and process event notifications (AKA thin events) like "v1.billing.meter.error_report_triggered" using EventNotificationHandler.
  * In this example, we:
