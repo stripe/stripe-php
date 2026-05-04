@@ -13,6 +13,7 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property Account|string $account The account for which the capability enables functionality.
  * @property null|(object{alternatives: null|(object{alternative_fields_due: string[], original_fields_due: string[]}&StripeObject)[], current_deadline: null|int, currently_due: string[], disabled_reason: null|string, errors: (object{code: string, reason: string, requirement: string}&StripeObject)[], eventually_due: string[], past_due: string[], pending_verification: string[]}&StripeObject) $future_requirements
+ * @property null|(object{psp_migration?: (object{expires_at: int, requested_at: int, status: string}&StripeObject)}&StripeObject) $protections
  * @property bool $requested Whether the capability has been requested.
  * @property null|int $requested_at Time at which the capability was requested. Measured in seconds since the Unix epoch.
  * @property null|(object{alternatives: null|(object{alternative_fields_due: string[], original_fields_due: string[]}&StripeObject)[], current_deadline: null|int, currently_due: string[], disabled_reason: null|string, errors: (object{code: string, reason: string, requirement: string}&StripeObject)[], eventually_due: string[], past_due: string[], pending_verification: string[]}&StripeObject) $requirements

@@ -1,0 +1,28 @@
+<?php
+
+// File generated from our OpenAPI spec
+
+namespace Stripe\Service;
+
+/**
+ * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ *
+ * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
+ */
+class PaymentLocationService extends AbstractService
+{
+    /**
+     * Create a Payment Location.
+     *
+     * @param null|array{address: array{city?: string, country: string, line1?: string, line2?: string, postal_code?: string, state?: string}, business_registration?: array{siret?: string}, display_name: string, expand?: string[]} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\PaymentLocation
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function create($params = null, $opts = null)
+    {
+        return $this->request('post', '/v1/payment_locations', $params, $opts);
+    }
+}
