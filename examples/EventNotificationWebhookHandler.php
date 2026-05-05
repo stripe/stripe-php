@@ -1,5 +1,7 @@
 <?php
 
+// File copied from our code generator; changes here will be overwritten.
+
 /**
  * Receive and process event notifications like the v1.billing.meter.error_report_triggered event.
  *

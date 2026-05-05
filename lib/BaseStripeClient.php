@@ -133,13 +133,28 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * Gets the Stripe Context ID used by the client to send requests.
+     * Gets the Stripe Context used by the client to send requests.
      *
-     * @return null|string|StripeContext the Stripe Context ID used by the client to send requests
+     * @return null|string|StripeContext the Stripe Context used by the client to send requests
      */
     public function getStripeContext()
     {
         return $this->config['stripe_context'];
+    }
+
+    /**
+     * FOR INTERNAL USE ONLY. MAY CHANGE WITHOUT WARNING. Gets the Stripe Context used by the client to send requests.
+     *
+     * @return null|string the Stripe Context used by the client to send requests
+     */
+    public function getStripeContextHeader()
+    {
+        // use opts instead of config because we modify the default opts and want to make sure we get fresh reads
+        if (!isset($this->defaultOpts->headers['Stripe-Context'])) {
+            return null;
+        }
+
+        return $this->defaultOpts->headers['Stripe-Context'];
     }
 
     /**
@@ -512,5 +527,18 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         WebhookSignature::verifyHeader($payload, $sigHeader, $secret, $tolerance);
 
         return EventNotification::fromJson($eventData, $this);
+    }
+
+    /**
+     * Creates a new StripeEventNotificationHandler associated with this client.
+     *
+     * @param string $webhookSecret The webhook secret to use for verifying incoming webhook signatures
+     * @param callable(Events\UnknownEventNotification, StripeClient, UnhandledNotificationDetails): void $fallbackCallback a function to call if no other handler processes an event notification
+     *
+     * @return StripeEventNotificationHandler A new StripeEventNotificationHandler instance
+     */
+    public function notificationHandler($webhookSecret, $fallbackCallback)
+    {
+        return new StripeEventNotificationHandler($this, $webhookSecret, $fallbackCallback);
     }
 }
