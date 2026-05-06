@@ -19,6 +19,8 @@ class PaymentLocation extends ApiResource
 {
     const OBJECT_NAME = 'payment_location';
 
+    use ApiOperations\Update;
+
     /**
      * Create a Payment Location.
      *
@@ -35,6 +37,69 @@ class PaymentLocation extends ApiResource
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
+     * Delete a Payment Location.
+     *
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return PaymentLocation the deleted resource
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public function delete($params = null, $opts = null)
+    {
+        self::_validateParams($params);
+
+        $url = $this->instanceUrl();
+        list($response, $opts) = $this->_request('delete', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * Retrieve a Payment Location.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @return PaymentLocation
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
+     * Update a Payment Location.
+     *
+     * @param string $id the ID of the resource to update
+     * @param null|array{address?: array{city?: string, country: string, line1?: string, line2?: string, postal_code?: string, state?: string}, business_registration?: array{siret?: string}, display_name?: string, expand?: string[]} $params
+     * @param null|array|string $opts
+     *
+     * @return PaymentLocation the updated resource
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
         $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
