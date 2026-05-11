@@ -1289,6 +1289,7 @@ require __DIR__ . '/lib/Service/TestHelpers/ConfirmationTokenService.php';
 require __DIR__ . '/lib/Service/TestHelpers/CustomerService.php';
 require __DIR__ . '/lib/Service/TestHelpers/Issuing/AuthorizationService.php';
 require __DIR__ . '/lib/Service/TestHelpers/Issuing/CardService.php';
+require __DIR__ . '/lib/Service/TestHelpers/Issuing/DisputeService.php';
 require __DIR__ . '/lib/Service/TestHelpers/Issuing/IssuingServiceFactory.php';
 require __DIR__ . '/lib/Service/TestHelpers/Issuing/PersonalizationDesignService.php';
 require __DIR__ . '/lib/Service/TestHelpers/Issuing/TransactionService.php';
