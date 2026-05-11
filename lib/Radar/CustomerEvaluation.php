@@ -15,6 +15,7 @@ namespace Stripe\Radar;
  * @property null|(object{login_failed?: (object{reason: string}&\Stripe\StripeObject), occurred_at: int, registration_failed?: (object{reason: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[] $events A list of events that have been reported on this customer evaluation.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|(object{account_sharing?: (object{evaluated_at: int, risk_level?: string, score: float}&\Stripe\StripeObject), multi_accounting?: (object{evaluated_at: int, risk_level?: string, score: float}&\Stripe\StripeObject)}&\Stripe\StripeObject) $signals A hash of signal objects providing Radar's evaluation of the customer.
+ * @property null|string $status The outcome status reported for this evaluation: allowed, restricted, or blocked.
  */
 class CustomerEvaluation extends \Stripe\ApiResource
 {
@@ -51,7 +52,7 @@ class CustomerEvaluation extends \Stripe\ApiResource
      * Reports an event on a <code>CustomerEvaluation</code> object.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{expand?: string[], login_failed?: array{reason: string}, registration_failed?: array{reason: string}, registration_success?: array{customer?: string}, type: string} $params
+     * @param null|array{customer?: string, expand?: string[], login_failed?: array{reason: string}, registration_failed?: array{reason: string}, registration_success?: array{customer?: string}, status?: string, type?: string} $params
      * @param null|array|string $opts
      *
      * @return CustomerEvaluation the updated resource
