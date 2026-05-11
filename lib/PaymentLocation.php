@@ -24,7 +24,7 @@ class PaymentLocation extends ApiResource
     /**
      * Create a Payment Location.
      *
-     * @param null|array{address: array{city?: string, country: string, line1?: string, line2?: string, postal_code?: string, state?: string}, business_registration?: array{siret?: string}, display_name: string, expand?: string[]} $params
+     * @param null|array{address: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, business_registration?: array{siret?: string}, display_name: string, expand?: string[]} $params
      * @param null|array|string $options
      *
      * @return PaymentLocation the created resource
@@ -65,6 +65,23 @@ class PaymentLocation extends ApiResource
     }
 
     /**
+     * List all Payment Locations.
+     *
+     * @param null|array{expand?: string[]} $params
+     * @param null|array|string $opts
+     *
+     * @return Collection<PaymentLocation> of ApiResources
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, Collection::class, $params, $opts);
+    }
+
+    /**
      * Retrieve a Payment Location.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
@@ -87,7 +104,7 @@ class PaymentLocation extends ApiResource
      * Update a Payment Location.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{address?: array{city?: string, country: string, line1?: string, line2?: string, postal_code?: string, state?: string}, business_registration?: array{siret?: string}, display_name?: string, expand?: string[]} $params
+     * @param null|array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, business_registration?: array{siret?: string}, display_name?: string, expand?: string[]} $params
      * @param null|array|string $opts
      *
      * @return PaymentLocation the updated resource
