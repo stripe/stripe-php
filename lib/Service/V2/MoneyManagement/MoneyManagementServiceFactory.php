@@ -9,6 +9,7 @@ namespace Stripe\Service\V2\MoneyManagement;
  *
  * @property AdjustmentService $adjustments
  * @property CurrencyConversionService $currencyConversions
+ * @property DebitDisputeService $debitDisputes
  * @property FinancialAccountService $financialAccounts
  * @property FinancialAddressService $financialAddresses
  * @property InboundTransferService $inboundTransfers
@@ -32,6 +33,7 @@ class MoneyManagementServiceFactory extends \Stripe\Service\AbstractServiceFacto
     private static $classMap = [
         'adjustments' => AdjustmentService::class,
         'currencyConversions' => CurrencyConversionService::class,
+        'debitDisputes' => DebitDisputeService::class,
         'financialAccounts' => FinancialAccountService::class,
         'financialAddresses' => FinancialAddressService::class,
         'inboundTransfers' => InboundTransferService::class,

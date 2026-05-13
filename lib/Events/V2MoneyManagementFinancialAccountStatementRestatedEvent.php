@@ -6,16 +6,16 @@ namespace Stripe\Events;
 
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
- * @property \Stripe\EventData\V2PaymentsOffSessionPaymentFailedEventData $data data associated with the event
+ * @property \Stripe\EventData\V2MoneyManagementFinancialAccountStatementRestatedEventData $data data associated with the event
  */
-class V2PaymentsOffSessionPaymentFailedEvent extends \Stripe\V2\Core\Event
+class V2MoneyManagementFinancialAccountStatementRestatedEvent extends \Stripe\V2\Core\Event
 {
-    const LOOKUP_TYPE = 'v2.payments.off_session_payment.failed';
+    const LOOKUP_TYPE = 'v2.money_management.financial_account_statement.restated';
 
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\V2\Payments\OffSessionPayment
+     * @return \Stripe\V2\MoneyManagement\FinancialAccountStatement
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -34,7 +34,7 @@ class V2PaymentsOffSessionPaymentFailedEvent extends \Stripe\V2\Core\Event
     {
         $evt = parent::constructFrom($values, $opts, $apiMode);
         if (null !== $evt->data) {
-            $evt->data = \Stripe\EventData\V2PaymentsOffSessionPaymentFailedEventData::constructFrom($evt->data, $opts, $apiMode);
+            $evt->data = \Stripe\EventData\V2MoneyManagementFinancialAccountStatementRestatedEventData::constructFrom($evt->data, $opts, $apiMode);
         }
 
         return $evt;

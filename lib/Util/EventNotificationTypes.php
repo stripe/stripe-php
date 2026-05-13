@@ -342,6 +342,8 @@ class EventNotificationTypes
         \Stripe\Events\V2MoneyManagementAdjustmentCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementAdjustmentCreatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementFinancialAccountCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountCreatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementFinancialAccountUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountUpdatedEventNotification::class,
+        \Stripe\Events\V2MoneyManagementFinancialAccountStatementCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountStatementCreatedEventNotification::class,
+        \Stripe\Events\V2MoneyManagementFinancialAccountStatementRestatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountStatementRestatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementFinancialAddressActivatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAddressActivatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementFinancialAddressFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAddressFailedEventNotification::class,
         \Stripe\Events\V2MoneyManagementInboundTransferAvailableEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementInboundTransferAvailableEventNotification::class,
