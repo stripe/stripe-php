@@ -62,7 +62,7 @@ class PaymentAttemptRecordService extends AbstractService
      * Report that the specified Payment Attempt Record was canceled.
      *
      * @param string $id
-     * @param null|array{canceled_at?: int, expand?: string[], metadata?: null|array<string, string>} $params
+     * @param null|array{canceled_at?: int, expand?: string[], metadata?: null|array<string, string>, payment_evaluations?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentAttemptRecord
