@@ -12,9 +12,24 @@ namespace Stripe\Service;
 class PaymentLocationService extends AbstractService
 {
     /**
+     * List all Payment Locations.
+     *
+     * @param null|array{expand?: string[]} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Collection<\Stripe\PaymentLocation>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function all($params = null, $opts = null)
+    {
+        return $this->requestCollection('get', '/v1/payment_locations', $params, $opts);
+    }
+
+    /**
      * Create a Payment Location.
      *
-     * @param null|array{address: array{city?: string, country: string, line1?: string, line2?: string, postal_code?: string, state?: string}, business_registration?: array{siret?: string}, display_name: string, expand?: string[]} $params
+     * @param null|array{address: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, business_registration?: array{siret?: string}, display_name: string, expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentLocation
@@ -62,7 +77,7 @@ class PaymentLocationService extends AbstractService
      * Update a Payment Location.
      *
      * @param string $id
-     * @param null|array{address?: array{city?: string, country: string, line1?: string, line2?: string, postal_code?: string, state?: string}, business_registration?: array{siret?: string}, display_name?: string, expand?: string[]} $params
+     * @param null|array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, business_registration?: array{siret?: string}, display_name?: string, expand?: string[], onboarding_data_update_acknowledged?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentLocation

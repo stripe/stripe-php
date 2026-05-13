@@ -4634,6 +4634,39 @@ class StripeEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.money_management.financial_account_statement.created" event.
+     *
+     * @param callable(Events\V2MoneyManagementFinancialAccountStatementCreatedEvent, StripeClient): void $handler Handles v2.money_management.financial_account_statement.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementFinancialAccountStatementCreated($handler)
+    {
+        $this->register(
+            'v2.money_management.financial_account_statement.created',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.financial_account_statement.restated" event.
+     *
+     * @param callable(Events\V2MoneyManagementFinancialAccountStatementRestatedEvent, StripeClient): void $handler Handles v2.money_management.financial_account_statement.restated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementFinancialAccountStatementRestated(
+        $handler
+    ) {
+        $this->register(
+            'v2.money_management.financial_account_statement.restated',
+            $handler
+        );
+    }
+
+    /**
      * Registers a handler for the "v2.money_management.financial_address.activated" event.
      *
      * @param callable(Events\V2MoneyManagementFinancialAddressActivatedEvent, StripeClient): void $handler Handles v2.money_management.financial_address.activated events

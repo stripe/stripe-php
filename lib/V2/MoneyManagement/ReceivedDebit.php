@@ -15,6 +15,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property null|(object{authorization?: (object{amount: \Stripe\StripeObject, issuing_authorization_v1: string}&\Stripe\StripeObject), card_transactions: (object{amount: \Stripe\StripeObject, issuing_transaction_v1: string}&\Stripe\StripeObject)[], card_v1_id: string}&\Stripe\StripeObject) $card_spend This object stores details about the issuing transactions that resulted in the ReceivedDebit. Present if <code>type</code> field value is <code>card_spend</code>.
  * @property int $created The time at which the ReceivedDebit was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: <code>2022-09-18T13:22:18.123Z</code>.
  * @property null|string $description Freeform string sent by the originator of the ReceivedDebit.
+ * @property null|(object{debit_dispute?: string, dispute_window_closes_at?: int}&\Stripe\StripeObject) $dispute_details The dispute details.
  * @property null|\Stripe\StripeObject $external_amount The amount and currency of the original/external debit request.
  * @property string $financial_account Financial Account on which funds for ReceivedDebit were debited.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.

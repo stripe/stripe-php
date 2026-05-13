@@ -340,6 +340,8 @@ class EventTypes
         \Stripe\Events\V2MoneyManagementAdjustmentCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementAdjustmentCreatedEvent::class,
         \Stripe\Events\V2MoneyManagementFinancialAccountCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountCreatedEvent::class,
         \Stripe\Events\V2MoneyManagementFinancialAccountUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountUpdatedEvent::class,
+        \Stripe\Events\V2MoneyManagementFinancialAccountStatementCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountStatementCreatedEvent::class,
+        \Stripe\Events\V2MoneyManagementFinancialAccountStatementRestatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountStatementRestatedEvent::class,
         \Stripe\Events\V2MoneyManagementFinancialAddressActivatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAddressActivatedEvent::class,
         \Stripe\Events\V2MoneyManagementFinancialAddressFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAddressFailedEvent::class,
         \Stripe\Events\V2MoneyManagementInboundTransferAvailableEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementInboundTransferAvailableEvent::class,

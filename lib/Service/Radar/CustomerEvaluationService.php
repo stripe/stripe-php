@@ -30,7 +30,7 @@ class CustomerEvaluationService extends \Stripe\Service\AbstractService
      * Reports an event on a <code>CustomerEvaluation</code> object.
      *
      * @param string $id
-     * @param null|array{expand?: string[], login_failed?: array{reason: string}, registration_failed?: array{reason: string}, registration_success?: array{customer?: string}, type: string} $params
+     * @param null|array{customer?: string, expand?: string[], login_failed?: array{reason: string}, registration_failed?: array{reason: string}, registration_success?: array{customer?: string}, status?: string, type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Radar\CustomerEvaluation
