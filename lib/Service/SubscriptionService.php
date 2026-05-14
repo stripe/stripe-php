@@ -143,7 +143,7 @@ class SubscriptionService extends AbstractService
      * pause subscriptions with attached schedules.
      *
      * @param string $id
-     * @param null|array{bill_for?: array{outstanding_usage_through?: array{type: string}, unused_time_from?: array{type: string}}, expand?: string[], invoicing_behavior?: string, type: string} $params
+     * @param null|array{bill_for?: array{outstanding_usage_through?: array{type: string}, unused_time_from?: array{type: string}}, expand?: string[], invoicing_behavior?: string, type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Subscription
