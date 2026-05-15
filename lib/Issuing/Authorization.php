@@ -17,6 +17,7 @@ namespace Stripe\Issuing;
  * @property null|(object{atm_fee: null|int, cashback_amount: null|int}&\Stripe\StripeObject) $amount_details Detailed breakdown of amount components. These amounts are denominated in <code>currency</code> and in the <a href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
  * @property bool $approved Whether the authorization has been approved.
  * @property string $authorization_method How the card details were provided.
+ * @property null|(object{account_type: string, amount: int, currency: string}&\Stripe\StripeObject) $balance_response
  * @property \Stripe\BalanceTransaction[] $balance_transactions List of balance transactions associated with this authorization.
  * @property Card $card You can <a href="https://docs.stripe.com/issuing">create physical or virtual cards</a> that are issued to cardholders.
  * @property null|string $card_presence Whether the card was present at the point of sale for the authorization.

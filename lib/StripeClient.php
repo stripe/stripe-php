@@ -56,6 +56,7 @@ namespace Stripe;
  * @property Service\PaymentAttemptRecordService $paymentAttemptRecords
  * @property Service\PaymentIntentService $paymentIntents
  * @property Service\PaymentLinkService $paymentLinks
+ * @property Service\PaymentLocationCapabilityService $paymentLocationCapabilities
  * @property Service\PaymentLocationService $paymentLocations
  * @property Service\PaymentMethodConfigurationService $paymentMethodConfigurations
  * @property Service\PaymentMethodDomainService $paymentMethodDomains
