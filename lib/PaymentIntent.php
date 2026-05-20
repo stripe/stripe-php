@@ -19,6 +19,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property null|(object{capture_before?: int, decremental_authorization?: (object{status: string}&StripeObject), incremental_authorization?: (object{status: string}&StripeObject), multicapture?: (object{status: string}&StripeObject), overcapture?: (object{maximum_amount_capturable?: int, status: string}&StripeObject), reauthorization?: (object{status: string}&StripeObject), reauthorize_before: null|int}&StripeObject) $advanced_feature_details
  * @property null|(object{name: string, network_business_profile: Profile|string}&StripeObject) $agent_details Details about the agent that initiated the creation of this PaymentIntent.
  * @property null|(object{enabled: null|bool}&StripeObject) $allocated_funds Allocated Funds configuration for this PaymentIntent.
  * @property null|string[] $allowed_payment_method_types The list of payment method types allowed for use with this payment. Stripe automatically returns compatible payment methods from this list in the <code>payment_method_types</code> field of the response, based on the other PaymentIntent parameters, such as <code>currency</code>, <code>amount</code>, and <code>customer</code>.
