@@ -21,7 +21,7 @@
     "ext-mbstring": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "^5.7 || ^9.0",
+    "phpunit/phpunit": "^8.0 || ^9.0",
     "friendsofphp/php-cs-fixer": "3.94.0",
     "phpstan/phpstan": "^1.2"
   },
@@ -44,13 +44,6 @@
   "extra": {
     "branch-alias": {
       "dev-master": "2.0-dev"
-    }
-  },
-  "config": {
-    "audit": {
-      "ignore": {
-        "PKSA-z3gr-8qht-p93v": "PHPUnit is only a dev dependency. Temporarily ignore PHPUnit security advisory to ensure continued support for PHP 5.6 in CI."
-      }
     }
   }
 }
