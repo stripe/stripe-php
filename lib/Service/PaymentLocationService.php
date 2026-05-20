@@ -77,7 +77,7 @@ class PaymentLocationService extends AbstractService
      * Update a Payment Location.
      *
      * @param string $id
-     * @param null|array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, business_registration?: array{siret?: string}, display_name?: string, expand?: string[], onboarding_data_update_acknowledged?: bool} $params
+     * @param null|array{address?: array{city?: null|string, country?: string, line1?: null|string, line2?: null|string, postal_code?: null|string, state?: null|string}, business_registration?: array{siret?: string}, display_name?: string, expand?: string[], onboarding_data_update_acknowledged?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentLocation

@@ -104,7 +104,7 @@ class PaymentLocation extends ApiResource
      * Update a Payment Location.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, business_registration?: array{siret?: string}, display_name?: string, expand?: string[], onboarding_data_update_acknowledged?: bool} $params
+     * @param null|array{address?: array{city?: null|string, country?: string, line1?: null|string, line2?: null|string, postal_code?: null|string, state?: null|string}, business_registration?: array{siret?: string}, display_name?: string, expand?: string[], onboarding_data_update_acknowledged?: bool} $params
      * @param null|array|string $opts
      *
      * @return PaymentLocation the updated resource
