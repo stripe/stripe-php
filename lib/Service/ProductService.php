@@ -180,4 +180,148 @@ class ProductService extends AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/products/%s', $id), $params, $opts);
     }
+
+    /**
+     * Serializes a Product create request into a batch job JSONL line.
+     *
+     * @param null|array{active?: bool, default_price_data?: array{currency: string, currency_options?: array<string, array{custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, tax_behavior?: string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: array|int|string})[], unit_amount?: int, unit_amount_decimal?: string}>, custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, metadata?: array<string, string>, recurring?: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, description?: string, expand?: string[], id?: string, identifiers?: array{ean?: string, gtin?: string, isbn?: string, jan?: string, mpn?: string, nsn?: string, upc?: string}, images?: string[], marketing_features?: array{name: string}[], metadata?: array<string, string>, name: string, package_dimensions?: array{height: float, length: float, weight: float, width: float}, shippable?: bool, statement_descriptor?: string, tax_code?: string, tax_details?: array{performance_location?: string, tax_code?: null|string}, type?: string, unit_label?: string, url?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return string
+     */
+    public function serializeBatchCreate($params = null, $opts = null)
+    {
+        $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $stripeVersion = isset($opts->headers['Stripe-Version']) ? $opts->headers['Stripe-Version'] : \Stripe\Stripe::getApiVersion();
+
+        $item = [
+            'id' => $itemId,
+            'params' => $params,
+            'stripe_version' => $stripeVersion,
+        ];
+        $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
+        if (null !== $stripeContext) {
+            $item['context'] = $stripeContext;
+        }
+
+        return \json_encode($item);
+    }
+
+    /**
+     * Serializes a Product delete request into a batch job JSONL line.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return string
+     */
+    public function serializeBatchDelete($id, $params = null, $opts = null)
+    {
+        $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $stripeVersion = isset($opts->headers['Stripe-Version']) ? $opts->headers['Stripe-Version'] : \Stripe\Stripe::getApiVersion();
+
+        $item = [
+            'id' => $itemId,
+            'params' => $params,
+            'stripe_version' => $stripeVersion,
+        ];
+        $item['path_params'] = ['id' => $id];
+        $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
+        if (null !== $stripeContext) {
+            $item['context'] = $stripeContext;
+        }
+
+        return \json_encode($item);
+    }
+
+    /**
+     * Serializes a ProductFeature create request into a batch job JSONL line.
+     *
+     * @param string $product
+     * @param null|array{entitlement_feature: string, expand?: string[]} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return string
+     */
+    public function serializeBatchProductFeatureCreate($product, $params = null, $opts = null)
+    {
+        $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $stripeVersion = isset($opts->headers['Stripe-Version']) ? $opts->headers['Stripe-Version'] : \Stripe\Stripe::getApiVersion();
+
+        $item = [
+            'id' => $itemId,
+            'params' => $params,
+            'stripe_version' => $stripeVersion,
+        ];
+        $item['path_params'] = ['product' => $product];
+        $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
+        if (null !== $stripeContext) {
+            $item['context'] = $stripeContext;
+        }
+
+        return \json_encode($item);
+    }
+
+    /**
+     * Serializes a ProductFeature delete request into a batch job JSONL line.
+     *
+     * @param string $product
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return string
+     */
+    public function serializeBatchProductFeatureDelete($product, $id, $params = null, $opts = null)
+    {
+        $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $stripeVersion = isset($opts->headers['Stripe-Version']) ? $opts->headers['Stripe-Version'] : \Stripe\Stripe::getApiVersion();
+
+        $item = [
+            'id' => $itemId,
+            'params' => $params,
+            'stripe_version' => $stripeVersion,
+        ];
+        $item['path_params'] = ['product' => $product, 'id' => $id];
+        $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
+        if (null !== $stripeContext) {
+            $item['context'] = $stripeContext;
+        }
+
+        return \json_encode($item);
+    }
+
+    /**
+     * Serializes a Product update request into a batch job JSONL line.
+     *
+     * @param string $id
+     * @param null|array{active?: bool, default_price?: string, description?: null|string, expand?: string[], identifiers?: array{ean?: null|string, gtin?: null|string, isbn?: null|string, jan?: null|string, mpn?: null|string, nsn?: null|string, upc?: null|string}, images?: null|string[], marketing_features?: null|array{name: string}[], metadata?: null|array<string, string>, name?: string, package_dimensions?: null|array{height: float, length: float, weight: float, width: float}, shippable?: bool, statement_descriptor?: string, tax_code?: null|string, tax_details?: null|array{performance_location?: string, tax_code?: null|string}, unit_label?: null|string, url?: null|string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return string
+     */
+    public function serializeBatchUpdate($id, $params = null, $opts = null)
+    {
+        $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $stripeVersion = isset($opts->headers['Stripe-Version']) ? $opts->headers['Stripe-Version'] : \Stripe\Stripe::getApiVersion();
+
+        $item = [
+            'id' => $itemId,
+            'params' => $params,
+            'stripe_version' => $stripeVersion,
+        ];
+        $item['path_params'] = ['id' => $id];
+        $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
+        if (null !== $stripeContext) {
+            $item['context'] = $stripeContext;
+        }
+
+        return \json_encode($item);
+    }
 }

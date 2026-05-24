@@ -150,4 +150,33 @@ class PaymentMethodService extends AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/payment_methods/%s', $id), $params, $opts);
     }
+
+    /**
+     * Serializes a PaymentMethod attach request into a batch job JSONL line.
+     *
+     * @param string $payment_method
+     * @param null|array{customer?: string, customer_account?: string, expand?: string[]} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return string
+     */
+    public function serializeBatchAttach($payment_method, $params = null, $opts = null)
+    {
+        $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $stripeVersion = isset($opts->headers['Stripe-Version']) ? $opts->headers['Stripe-Version'] : \Stripe\Stripe::getApiVersion();
+
+        $item = [
+            'id' => $itemId,
+            'params' => $params,
+            'stripe_version' => $stripeVersion,
+        ];
+        $item['path_params'] = ['payment_method' => $payment_method];
+        $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
+        if (null !== $stripeContext) {
+            $item['context'] = $stripeContext;
+        }
+
+        return \json_encode($item);
+    }
 }

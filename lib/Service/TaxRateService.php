@@ -73,4 +73,60 @@ class TaxRateService extends AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/tax_rates/%s', $id), $params, $opts);
     }
+
+    /**
+     * Serializes a TaxRate create request into a batch job JSONL line.
+     *
+     * @param null|array{active?: bool, country?: string, description?: string, display_name: string, expand?: string[], inclusive: bool, jurisdiction?: string, metadata?: array<string, string>, percentage: float, state?: string, tax_type?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return string
+     */
+    public function serializeBatchCreate($params = null, $opts = null)
+    {
+        $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $stripeVersion = isset($opts->headers['Stripe-Version']) ? $opts->headers['Stripe-Version'] : \Stripe\Stripe::getApiVersion();
+
+        $item = [
+            'id' => $itemId,
+            'params' => $params,
+            'stripe_version' => $stripeVersion,
+        ];
+        $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
+        if (null !== $stripeContext) {
+            $item['context'] = $stripeContext;
+        }
+
+        return \json_encode($item);
+    }
+
+    /**
+     * Serializes a TaxRate update request into a batch job JSONL line.
+     *
+     * @param string $tax_rate
+     * @param null|array{active?: bool, country?: string, description?: string, display_name?: string, expand?: string[], jurisdiction?: string, metadata?: null|array<string, string>, state?: string, tax_type?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return string
+     */
+    public function serializeBatchUpdate($tax_rate, $params = null, $opts = null)
+    {
+        $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $stripeVersion = isset($opts->headers['Stripe-Version']) ? $opts->headers['Stripe-Version'] : \Stripe\Stripe::getApiVersion();
+
+        $item = [
+            'id' => $itemId,
+            'params' => $params,
+            'stripe_version' => $stripeVersion,
+        ];
+        $item['path_params'] = ['tax_rate' => $tax_rate];
+        $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
+        if (null !== $stripeContext) {
+            $item['context'] = $stripeContext;
+        }
+
+        return \json_encode($item);
+    }
 }

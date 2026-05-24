@@ -97,4 +97,60 @@ class PriceService extends AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/prices/%s', $id), $params, $opts);
     }
+
+    /**
+     * Serializes a Price create request into a batch job JSONL line.
+     *
+     * @param null|array{active?: bool, billing_scheme?: string, currency: string, currency_options?: array<string, array{custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, tax_behavior?: string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: array|int|string})[], unit_amount?: int, unit_amount_decimal?: string}>, custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, expand?: string[], external_reference?: string, lookup_key?: string, metadata?: array<string, string>, nickname?: string, product?: string, product_data?: array{active?: bool, id?: string, metadata?: array<string, string>, name: string, statement_descriptor?: string, tax_code?: string, tax_details?: array{performance_location?: string, tax_code?: null|string}, unit_label?: string}, recurring?: array{interval: string, interval_count?: int, meter?: string, trial_period_days?: int, usage_type?: string}, tax_behavior?: string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: array|int|string})[], tiers_mode?: string, transfer_lookup_key?: bool, transform_quantity?: array{divide_by: int, round: string}, unit_amount?: int, unit_amount_decimal?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return string
+     */
+    public function serializeBatchCreate($params = null, $opts = null)
+    {
+        $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $stripeVersion = isset($opts->headers['Stripe-Version']) ? $opts->headers['Stripe-Version'] : \Stripe\Stripe::getApiVersion();
+
+        $item = [
+            'id' => $itemId,
+            'params' => $params,
+            'stripe_version' => $stripeVersion,
+        ];
+        $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
+        if (null !== $stripeContext) {
+            $item['context'] = $stripeContext;
+        }
+
+        return \json_encode($item);
+    }
+
+    /**
+     * Serializes a Price update request into a batch job JSONL line.
+     *
+     * @param string $price
+     * @param null|array{active?: bool, currency_options?: null|array<string, array{custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, tax_behavior?: string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: array|int|string})[], unit_amount?: int, unit_amount_decimal?: string}>, expand?: string[], external_reference?: null|string, lookup_key?: string, metadata?: null|array<string, string>, migrate_to?: null|array{behavior: string, effective_after?: int, price: string}, nickname?: string, tax_behavior?: string, transfer_lookup_key?: bool} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return string
+     */
+    public function serializeBatchUpdate($price, $params = null, $opts = null)
+    {
+        $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $stripeVersion = isset($opts->headers['Stripe-Version']) ? $opts->headers['Stripe-Version'] : \Stripe\Stripe::getApiVersion();
+
+        $item = [
+            'id' => $itemId,
+            'params' => $params,
+            'stripe_version' => $stripeVersion,
+        ];
+        $item['path_params'] = ['price' => $price];
+        $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
+        if (null !== $stripeContext) {
+            $item['context'] = $stripeContext;
+        }
+
+        return \json_encode($item);
+    }
 }

@@ -85,4 +85,33 @@ class DisputeService extends AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/disputes/%s', $id), $params, $opts);
     }
+
+    /**
+     * Serializes a Dispute close request into a batch job JSONL line.
+     *
+     * @param string $dispute
+     * @param null|array{expand?: string[]} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return string
+     */
+    public function serializeBatchClose($dispute, $params = null, $opts = null)
+    {
+        $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $stripeVersion = isset($opts->headers['Stripe-Version']) ? $opts->headers['Stripe-Version'] : \Stripe\Stripe::getApiVersion();
+
+        $item = [
+            'id' => $itemId,
+            'params' => $params,
+            'stripe_version' => $stripeVersion,
+        ];
+        $item['path_params'] = ['dispute' => $dispute];
+        $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
+        if (null !== $stripeContext) {
+            $item['context'] = $stripeContext;
+        }
+
+        return \json_encode($item);
+    }
 }

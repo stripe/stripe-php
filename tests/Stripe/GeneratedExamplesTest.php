@@ -9035,7 +9035,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'endpoint' => [
                     'http_method' => 'delete',
-                    'path' => '/v1/subscription_schedules',
+                    'path' => '/v1/products',
                 ],
                 'metadata' => ['key' => 'metadata'],
                 'skip_validation' => true,
@@ -9058,7 +9058,7 @@ final class GeneratedExamplesTest extends TestCase
         $result = $this->v2Client->v2->core->batchJobs->create([
             'endpoint' => [
                 'http_method' => 'delete',
-                'path' => '/v1/subscription_schedules',
+                'path' => '/v1/products',
             ],
             'metadata' => ['key' => 'metadata'],
             'skip_validation' => true,

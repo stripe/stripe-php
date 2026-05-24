@@ -189,6 +189,35 @@ class SubscriptionScheduleService extends AbstractService
     }
 
     /**
+     * Serializes a SubscriptionSchedule release request into a batch job JSONL line.
+     *
+     * @param string $schedule
+     * @param null|array{expand?: string[], preserve_cancel_date?: bool} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return string
+     */
+    public function serializeBatchRelease($schedule, $params = null, $opts = null)
+    {
+        $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $stripeVersion = isset($opts->headers['Stripe-Version']) ? $opts->headers['Stripe-Version'] : \Stripe\Stripe::getApiVersion();
+
+        $item = [
+            'id' => $itemId,
+            'params' => $params,
+            'stripe_version' => $stripeVersion,
+        ];
+        $item['path_params'] = ['schedule' => $schedule];
+        $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
+        if (null !== $stripeContext) {
+            $item['context'] = $stripeContext;
+        }
+
+        return \json_encode($item);
+    }
+
+    /**
      * Serializes a SubscriptionSchedule update request into a batch job JSONL line.
      *
      * @param string $schedule
