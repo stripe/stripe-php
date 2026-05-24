@@ -32,7 +32,7 @@ namespace Stripe;
  * @property (object{end: int, start: int}&StripeObject) $period
  * @property null|(object{price_details?: (object{price: Price|string, product: string}&StripeObject), type: string, unit_amount_decimal: null|string}&StripeObject) $pricing The pricing information of the invoice item.
  * @property bool $proration Whether the invoice item was created automatically as a proration adjustment when the customer switched plans.
- * @property null|(object{discount_amounts: ((object{amount: int, discount: Discount|string}&StripeObject))[]}&StripeObject) $proration_details
+ * @property null|(object{credited_items: null|(object{invoice_item?: string, invoice_line_item_details?: (object{invoice: string, invoice_line_items: string[]}&StripeObject), type: string}&StripeObject), discount_amounts: ((object{amount: int, discount: Discount|string}&StripeObject))[]}&StripeObject) $proration_details
  * @property int $quantity Quantity of units for the invoice item in integer format, with any decimal precision truncated. For the item's full-precision decimal quantity, use <code>quantity_decimal</code>. This field will be deprecated in favor of <code>quantity_decimal</code> in a future version. If the invoice item is a proration, the quantity of the subscription that the proration was computed for.
  * @property string $quantity_decimal Non-negative decimal with at most 12 decimal places. The quantity of units for the invoice item.
  * @property null|TaxRate[] $tax_rates The tax rates which apply to the invoice item. When set, the <code>default_tax_rates</code> on the invoice do not apply to this invoice item.
