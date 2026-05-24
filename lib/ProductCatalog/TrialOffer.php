@@ -5,13 +5,16 @@
 namespace Stripe\ProductCatalog;
 
 /**
- * Resource for the TrialOffer API, used to describe a subscription item's trial period settings.
- * Renders a TrialOffer object that describes the price, duration, end_behavior of a trial offer.
+ * Trial offers let you define free or paid introductory pricing for a subscription item.
+ * A TrialOffer specifies the price to charge during the trial, how long the trial lasts
+ * (a fixed end timestamp or a number of billing intervals), and what price the subscription
+ * item transitions to when the trial ends. You attach a TrialOffer to a subscription item
+ * using <code>items[current_trial][trial_offer]</code> when creating or updating a subscription.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property (object{relative?: (object{iterations: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $duration
- * @property (object{transition: (object{price: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $end_behavior
+ * @property (object{transition: (object{price: string|\Stripe\Price}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $end_behavior
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|string $name A brief, user-friendly name for the trial offer-for identification purposes.
  * @property string|\Stripe\Price $price The price during the trial offer.

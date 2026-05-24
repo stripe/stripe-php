@@ -159,31 +159,4 @@ class CreditNoteService extends AbstractService
     {
         return $this->request('post', $this->buildPath('/v1/credit_notes/%s/void', $id), $params, $opts);
     }
-
-    /**
-     * Serializes a CreditNote create request into a batch job JSONL line.
-     *
-     * @param null|array{amount?: int, credit_amount?: int, effective_at?: int, email_type?: string, expand?: string[], invoice: string, lines?: (array{amount?: int, description?: string, invoice_line_item?: string, metadata?: array<string, string>, quantity?: int, tax_amounts?: null|array{amount: int, tax_rate: string, taxable_amount: int}[], tax_rates?: null|string[], type: string, unit_amount?: int, unit_amount_decimal?: string})[], memo?: string, metadata?: array<string, string>, out_of_band_amount?: int, reason?: string, refund_amount?: int, refunds?: array{amount_refunded?: int, payment_record_refund?: array{payment_record: string, refund_group: string}, refund?: string, type?: string}[], shipping_cost?: array{shipping_rate?: string}} $params
-     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
-     *
-     * @return string
-     */
-    public function serializeBatchCreate($params = null, $opts = null)
-    {
-        $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
-        $opts = \Stripe\Util\RequestOptions::parse($opts);
-        $stripeVersion = isset($opts->headers['Stripe-Version']) ? $opts->headers['Stripe-Version'] : \Stripe\Stripe::getApiVersion();
-
-        $item = [
-            'id' => $itemId,
-            'params' => $params,
-            'stripe_version' => $stripeVersion,
-        ];
-        $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
-        if (null !== $stripeContext) {
-            $item['context'] = $stripeContext;
-        }
-
-        return \json_encode($item);
-    }
 }

@@ -10,9 +10,9 @@ namespace Stripe;
  *
  * Related guide: <a href="https://docs.stripe.com/billing/subscriptions/discounts">Applying discounts to subscriptions</a>
  *
- * @property string $id The ID of the discount object. Discounts cannot be fetched by ID. Use <code>expand[]=discounts</code> in API calls to expand discount IDs in an array.
+ * @property string $id The ID of the discount object. Discounts can't be fetched by ID. Use <code>expand[]=discounts</code> in API calls to expand discount IDs in an array.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|string $checkout_session The Checkout session that this coupon is applied to, if it is applied to a particular session in payment mode. Will not be present for subscription mode.
+ * @property null|string $checkout_session The Checkout session that this coupon is applied to, if it is applied to a particular session in payment mode. Not present for subscription mode.
  * @property null|Customer|string $customer The ID of the customer associated with this discount.
  * @property null|string $customer_account The ID of the account representing the customer associated with this discount.
  * @property null|int $end If the coupon has a duration of <code>repeating</code>, the date that this discount will end. If the coupon has a duration of <code>once</code> or <code>forever</code>, this attribute will be null.
