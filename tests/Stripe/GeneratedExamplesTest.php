@@ -4954,6 +4954,96 @@ final class GeneratedExamplesTest extends TestCase
         ]);
     }
 
+    public function testV2CommerceProductCatalogImportGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/commerce/product_catalog/imports',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.commerce.product_catalog_import',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'feed_type' => 'pricing',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'metadata' => ['key' => 'metadata'],
+                        'status' => 'awaiting_upload',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->commerce->productCatalog->imports->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Commerce\ProductCatalogImport::class, $result->data[0]);
+    }
+
+    public function testV2CommerceProductCatalogImportPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/commerce/product_catalog/imports',
+            [
+                'feed_type' => 'pricing',
+                'metadata' => ['key' => 'metadata'],
+                'mode' => 'upsert',
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.commerce.product_catalog_import',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'feed_type' => 'pricing',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'status' => 'awaiting_upload',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->commerce->productCatalog->imports->create([
+            'feed_type' => 'pricing',
+            'metadata' => ['key' => 'metadata'],
+            'mode' => 'upsert',
+        ]);
+        self::assertInstanceOf(V2\Commerce\ProductCatalogImport::class, $result);
+    }
+
+    public function testV2CommerceProductCatalogImportGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/commerce/product_catalog/imports/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.commerce.product_catalog_import',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'feed_type' => 'pricing',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'status' => 'awaiting_upload',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->commerce->productCatalog->imports->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Commerce\ProductCatalogImport::class, $result);
+    }
+
     public function testV2CoreAccountGet()
     {
         $this->stubRequest(

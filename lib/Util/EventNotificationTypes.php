@@ -8,6 +8,10 @@ class EventNotificationTypes
         // The beginning of the section generated from our OpenAPI spec
         \Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification::LOOKUP_TYPE => \Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification::class,
         \Stripe\Events\V1BillingMeterNoMeterFoundEventNotification::LOOKUP_TYPE => \Stripe\Events\V1BillingMeterNoMeterFoundEventNotification::class,
+        \Stripe\Events\V2CommerceProductCatalogImportsFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CommerceProductCatalogImportsFailedEventNotification::class,
+        \Stripe\Events\V2CommerceProductCatalogImportsProcessingEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CommerceProductCatalogImportsProcessingEventNotification::class,
+        \Stripe\Events\V2CommerceProductCatalogImportsSucceededEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CommerceProductCatalogImportsSucceededEventNotification::class,
+        \Stripe\Events\V2CommerceProductCatalogImportsSucceededWithErrorsEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CommerceProductCatalogImportsSucceededWithErrorsEventNotification::class,
         \Stripe\Events\V2CoreAccountClosedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountClosedEventNotification::class,
         \Stripe\Events\V2CoreAccountCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountCreatedEventNotification::class,
         \Stripe\Events\V2CoreAccountUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountUpdatedEventNotification::class,
