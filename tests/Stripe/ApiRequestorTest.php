@@ -858,4 +858,54 @@ final class ApiRequestorTest extends TestCase
         });
         self::assertSame('cursor', $result);
     }
+
+    public function testEmitsWarningWhenStripeNoticeHeaderPresent()
+    {
+        // https://github.com/sebastianbergmann/phpunit/issues/5062
+        // (if we go to phpunit@10)
+        $this->expectWarning();
+        $this->expectWarningMessage('test notice');
+
+        $stub = $this->createMock('\Stripe\HttpClient\ClientInterface');
+        $stub->expects(self::once())
+            ->method('request')
+            ->willReturn([
+                \json_encode(['id' => 'ch_123', 'object' => 'charge']),
+                200,
+                ['stripe-notice' => 'test notice'],
+            ])
+        ;
+        ApiRequestor::setHttpClient($stub);
+
+        Charge::retrieve('ch_123');
+    }
+
+    public function testNoWarningWhenStripeNoticeHeaderAbsent()
+    {
+        $warningEmitted = false;
+        \set_error_handler(static function () use (&$warningEmitted) {
+            $warningEmitted = true;
+
+            return true;
+        }, \E_USER_WARNING);
+
+        try {
+            $stub = $this->createMock('\Stripe\HttpClient\ClientInterface');
+            $stub->expects(self::once())
+                ->method('request')
+                ->willReturn([
+                    \json_encode(['id' => 'ch_123', 'object' => 'charge']),
+                    200,
+                    [],
+                ])
+            ;
+            ApiRequestor::setHttpClient($stub);
+
+            Charge::retrieve('ch_123');
+        } finally {
+            \restore_error_handler();
+        }
+
+        self::assertFalse($warningEmitted);
+    }
 }
