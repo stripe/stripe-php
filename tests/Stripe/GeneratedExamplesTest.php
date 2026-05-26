@@ -7272,6 +7272,34 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Iam\ActivityLog::class, $result->data[0]);
     }
 
+    public function testV2IamActivityLogGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/iam/activity_logs/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.iam.activity_log',
+                'actor' => ['type' => 'api_key'],
+                'context' => 'context',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'details' => ['type' => 'api_key'],
+                'id' => 'obj_123',
+                'livemode' => [],
+                'type' => 'api_key_created',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->iam->activityLogs->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Iam\ActivityLog::class, $result);
+    }
+
     public function testV2MoneyManagementAdjustmentGet()
     {
         $this->stubRequest(
@@ -9327,7 +9355,7 @@ final class GeneratedExamplesTest extends TestCase
                     'currency' => 'USD',
                     'value' => 96,
                 ],
-                'network' => 'rtp',
+                'network' => 'ach',
             ],
             [],
             false,
@@ -9346,7 +9374,7 @@ final class GeneratedExamplesTest extends TestCase
                     'currency' => 'USD',
                     'value' => 96,
                 ],
-                'network' => 'rtp',
+                'network' => 'ach',
             ]
         );
         self::assertInstanceOf(V2\FinancialAddressCreditSimulation::class, $result);

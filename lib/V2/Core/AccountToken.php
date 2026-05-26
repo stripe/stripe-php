@@ -5,7 +5,7 @@
 namespace Stripe\V2\Core;
 
 /**
- * Account tokens are single-use tokens which tokenize company/individual/business information, and are used for creating or updating an Account.
+ * Account tokens are single-use tokens which tokenize an account's contact_email, display_name, contact_phone, and identity.
  *
  * @property string $id Unique identifier for the token.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
