@@ -23,7 +23,7 @@ namespace Stripe\Issuing;
  * @property null|(object{dispute_response: null|(object{error: null|string, merchant_evidence_files: null|string[]}&\Stripe\StripeObject), pre_arbitration_response: null|(object{error: null|string, merchant_evidence_files: null|string[]}&\Stripe\StripeObject), pre_arbitration_submission: null|(object{error: null|string, merchant_evidence_files: null|string[]}&\Stripe\StripeObject)}&\Stripe\StripeObject) $network_lifecycle Incoming information from the card network for this dispute. Includes the acquiring merchant's initial response, pre-arbitration submission, and pre-arbitration response to the dispute.
  * @property string $status Current status of the dispute.
  * @property string|Transaction $transaction The transaction being disputed.
- * @property null|(object{debit_reversal: null|string, received_debit: string}&\Stripe\StripeObject) $treasury <a href="https://docs.stripe.com/api/treasury">Treasury</a> details related to this dispute if it was created on a [FinancialAccount](/docs/api/treasury/financial_accounts
+ * @property null|(object{debit_reversal: null|string, received_debit: string}&\Stripe\StripeObject) $treasury <a href="https://docs.stripe.com/api/treasury">Treasury</a> details related to this dispute if it was created on a <a href="https://docs.stripe.com/api/treasury/financial_accounts">FinancialAccount</a>
  */
 class Dispute extends \Stripe\ApiResource
 {

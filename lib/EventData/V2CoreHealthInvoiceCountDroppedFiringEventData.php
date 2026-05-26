@@ -7,9 +7,8 @@ namespace Stripe\EventData;
 /**
  * @property string $alert_id The alert ID.
  * @property string $grouping_key The grouping key for the alert.
- * @property (object{actual_traffic: int, canonical_path?: string, expected_traffic?: int, time_window: string}&\Stripe\StripeObject) $impact The user impact.
- * @property int $resolved_at The time when the user experience has returned to expected levels.
+ * @property (object{observed_count: string, threshold_count: string, time_window: string}&\Stripe\StripeObject) $impact The user impact.
  * @property int $started_at The time when impact on the user experience was first detected.
  * @property string $summary A short description of the alert.
  */
-class V2CoreHealthTrafficVolumeDropResolvedEventData extends \Stripe\StripeObject {}
+class V2CoreHealthInvoiceCountDroppedFiringEventData extends \Stripe\StripeObject {}

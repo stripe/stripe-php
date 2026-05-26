@@ -52,7 +52,7 @@ class CustomerEvaluation extends \Stripe\ApiResource
      * Reports an event on a <code>CustomerEvaluation</code> object.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{customer?: string, expand?: string[], login_failed?: array{reason: string}, registration_failed?: array{reason: string}, registration_success?: array{customer?: string}, status?: string, type?: string} $params
+     * @param null|array{customer?: string, expand?: string[], status?: string} $params
      * @param null|array|string $opts
      *
      * @return CustomerEvaluation the updated resource

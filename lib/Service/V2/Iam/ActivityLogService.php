@@ -25,4 +25,20 @@ class ActivityLogService extends \Stripe\Service\AbstractService
     {
         return $this->requestCollection('get', '/v2/iam/activity_logs', $params, $opts);
     }
+
+    /**
+     * Retrieve an activity log.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Iam\ActivityLog
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function retrieve($id, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v2/iam/activity_logs/%s', $id), $params, $opts);
+    }
 }

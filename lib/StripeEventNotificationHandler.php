@@ -4102,6 +4102,32 @@ class StripeEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.core.health.elements_error.firing" event.
+     *
+     * @param callable(Events\V2CoreHealthElementsErrorFiringEvent, StripeClient): void $handler Handles v2.core.health.elements_error.firing events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreHealthElementsErrorFiring($handler)
+    {
+        $this->register('v2.core.health.elements_error.firing', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.health.elements_error.resolved" event.
+     *
+     * @param callable(Events\V2CoreHealthElementsErrorResolvedEvent, StripeClient): void $handler Handles v2.core.health.elements_error.resolved events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreHealthElementsErrorResolved($handler)
+    {
+        $this->register('v2.core.health.elements_error.resolved', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.core.health.event_generation_failure.resolved" event.
      *
      * @param callable(Events\V2CoreHealthEventGenerationFailureResolvedEvent, StripeClient): void $handler Handles v2.core.health.event_generation_failure.resolved events
@@ -4128,6 +4154,32 @@ class StripeEventNotificationHandler
     public function onV2CoreHealthFraudRateIncreased($handler)
     {
         $this->register('v2.core.health.fraud_rate.increased', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.health.invoice_count_dropped.firing" event.
+     *
+     * @param callable(Events\V2CoreHealthInvoiceCountDroppedFiringEvent, StripeClient): void $handler Handles v2.core.health.invoice_count_dropped.firing events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreHealthInvoiceCountDroppedFiring($handler)
+    {
+        $this->register('v2.core.health.invoice_count_dropped.firing', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.health.invoice_count_dropped.resolved" event.
+     *
+     * @param callable(Events\V2CoreHealthInvoiceCountDroppedResolvedEvent, StripeClient): void $handler Handles v2.core.health.invoice_count_dropped.resolved events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreHealthInvoiceCountDroppedResolved($handler)
+    {
+        $this->register('v2.core.health.invoice_count_dropped.resolved', $handler);
     }
 
     /**
