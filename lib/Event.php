@@ -512,6 +512,7 @@ class Event extends ApiResource
     const TYPE_PAYMENT_INTENT_AMOUNT_CAPTURABLE_UPDATED = 'payment_intent.amount_capturable_updated';
     const TYPE_PAYMENT_INTENT_CANCELED = 'payment_intent.canceled';
     const TYPE_PAYMENT_INTENT_CREATED = 'payment_intent.created';
+    const TYPE_PAYMENT_INTENT_EXPIRED = 'payment_intent.expired';
     const TYPE_PAYMENT_INTENT_PARTIALLY_FUNDED = 'payment_intent.partially_funded';
     const TYPE_PAYMENT_INTENT_PAYMENT_FAILED = 'payment_intent.payment_failed';
     const TYPE_PAYMENT_INTENT_PROCESSING = 'payment_intent.processing';
