@@ -134,6 +134,7 @@ class ApiRequestor
         $headers = $headers ?: [];
         list($rbody, $rcode, $rheaders, $myApiKey)
             = $this->_requestRaw($method, $url, $params, $headers, $apiMode, $usage, $maxNetworkRetries);
+        $this->_maybeEmitStripeNotice($rheaders);
         $json = $this->_interpretResponse($rbody, $rcode, $rheaders, $apiMode);
         $resp = new ApiResponse($rbody, $rcode, $rheaders, $json);
 
@@ -158,6 +159,7 @@ class ApiRequestor
         $headers = $headers ?: [];
         list($rbody, $rcode, $rheaders, $myApiKey)
             = $this->_requestRawStreaming($method, $url, $params, $headers, $apiMode, $usage, $readBodyChunkCallable, $maxNetworkRetries);
+        $this->_maybeEmitStripeNotice($rheaders);
         if ($rcode >= 300) {
             $this->_interpretResponse($rbody, $rcode, $rheaders, $apiMode);
         }
@@ -555,6 +557,13 @@ class ApiRequestor
         }
 
         return [$absUrl, $rawHeaders, $params, $hasFile, $myApiKey];
+    }
+
+    private function _maybeEmitStripeNotice($rheaders)
+    {
+        if (isset($rheaders['stripe-notice']) && \is_string($rheaders['stripe-notice'])) {
+            \trigger_error($rheaders['stripe-notice'], \E_USER_WARNING);
+        }
     }
 
     /**
