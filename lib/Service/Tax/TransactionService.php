@@ -73,4 +73,31 @@ class TransactionService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v1/tax/transactions/%s', $id), $params, $opts);
     }
+
+    /**
+     * Serializes a Transaction create_reversal request into a batch job JSONL line.
+     *
+     * @param null|array{expand?: string[], flat_amount?: int, line_items?: array{amount: int, amount_tax: int, metadata?: array<string, string>, original_line_item: string, quantity?: int, reference: string}[], metadata?: array<string, string>, mode: string, original_transaction: string, reference: string, shipping_cost?: array{amount: int, amount_tax: int}} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return string
+     */
+    public function serializeBatchCreateReversal($params = null, $opts = null)
+    {
+        $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $stripeVersion = isset($opts->headers['Stripe-Version']) ? $opts->headers['Stripe-Version'] : \Stripe\Stripe::getApiVersion();
+
+        $item = [
+            'id' => $itemId,
+            'params' => $params,
+            'stripe_version' => $stripeVersion,
+        ];
+        $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
+        if (null !== $stripeContext) {
+            $item['context'] = $stripeContext;
+        }
+
+        return \json_encode($item);
+    }
 }

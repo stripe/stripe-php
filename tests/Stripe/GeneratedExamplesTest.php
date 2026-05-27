@@ -6211,7 +6211,6 @@ final class GeneratedExamplesTest extends TestCase
                         'currency' => 'usd',
                         'display_name' => 'display_name',
                         'id' => 'obj_123',
-                        'latest_version' => 'latest_version',
                         'licensed_item' => [
                             'object' => 'v2.billing.licensed_item',
                             'created' => '1970-01-12T21:42:34.472Z',
@@ -6225,8 +6224,6 @@ final class GeneratedExamplesTest extends TestCase
                             'interval' => 'month',
                             'interval_count' => [],
                         ],
-                        'service_interval' => 'month',
-                        'service_interval_count' => [],
                         'tax_behavior' => 'exclusive',
                         'tiers' => ['0' => []],
                     ],
@@ -6266,7 +6263,6 @@ final class GeneratedExamplesTest extends TestCase
                 'currency' => 'usd',
                 'display_name' => 'display_name',
                 'id' => 'obj_123',
-                'latest_version' => 'latest_version',
                 'licensed_item' => [
                     'object' => 'v2.billing.licensed_item',
                     'created' => '1970-01-12T21:42:34.472Z',
@@ -6280,8 +6276,6 @@ final class GeneratedExamplesTest extends TestCase
                     'interval' => 'month',
                     'interval_count' => [],
                 ],
-                'service_interval' => 'month',
-                'service_interval_count' => [],
                 'tax_behavior' => 'exclusive',
                 'tiers' => ['0' => []],
             ],
@@ -6314,7 +6308,6 @@ final class GeneratedExamplesTest extends TestCase
                 'currency' => 'usd',
                 'display_name' => 'display_name',
                 'id' => 'obj_123',
-                'latest_version' => 'latest_version',
                 'licensed_item' => [
                     'object' => 'v2.billing.licensed_item',
                     'created' => '1970-01-12T21:42:34.472Z',
@@ -6328,8 +6321,6 @@ final class GeneratedExamplesTest extends TestCase
                     'interval' => 'month',
                     'interval_count' => [],
                 ],
-                'service_interval' => 'month',
-                'service_interval_count' => [],
                 'tax_behavior' => 'exclusive',
                 'tiers' => ['0' => []],
             ],
@@ -6358,7 +6349,6 @@ final class GeneratedExamplesTest extends TestCase
                 'currency' => 'usd',
                 'display_name' => 'display_name',
                 'id' => 'obj_123',
-                'latest_version' => 'latest_version',
                 'licensed_item' => [
                     'object' => 'v2.billing.licensed_item',
                     'created' => '1970-01-12T21:42:34.472Z',
@@ -6372,8 +6362,6 @@ final class GeneratedExamplesTest extends TestCase
                     'interval' => 'month',
                     'interval_count' => [],
                 ],
-                'service_interval' => 'month',
-                'service_interval_count' => [],
                 'tax_behavior' => 'exclusive',
                 'tiers' => ['0' => []],
             ],
@@ -6930,7 +6918,6 @@ final class GeneratedExamplesTest extends TestCase
                         'currency' => 'usd',
                         'display_name' => 'display_name',
                         'id' => 'obj_123',
-                        'latest_version' => 'latest_version',
                         'livemode' => [],
                         'tax_behavior' => 'exclusive',
                     ],
@@ -6965,7 +6952,6 @@ final class GeneratedExamplesTest extends TestCase
                 'currency' => 'usd',
                 'display_name' => 'display_name',
                 'id' => 'obj_123',
-                'latest_version' => 'latest_version',
                 'livemode' => [],
                 'tax_behavior' => 'exclusive',
             ],
@@ -6995,7 +6981,6 @@ final class GeneratedExamplesTest extends TestCase
                 'currency' => 'usd',
                 'display_name' => 'display_name',
                 'id' => 'obj_123',
-                'latest_version' => 'latest_version',
                 'livemode' => [],
                 'tax_behavior' => 'exclusive',
             ],
@@ -7024,7 +7009,6 @@ final class GeneratedExamplesTest extends TestCase
                 'currency' => 'usd',
                 'display_name' => 'display_name',
                 'id' => 'obj_123',
-                'latest_version' => 'latest_version',
                 'livemode' => [],
                 'tax_behavior' => 'exclusive',
             ],
@@ -7485,15 +7469,12 @@ final class GeneratedExamplesTest extends TestCase
                         'currency' => 'usd',
                         'display_name' => 'display_name',
                         'id' => 'obj_123',
-                        'latest_version' => 'latest_version',
                         'live_version' => 'live_version',
                         'livemode' => [],
                         'service_cycle' => [
                             'interval' => 'month',
                             'interval_count' => [],
                         ],
-                        'service_interval' => 'month',
-                        'service_interval_count' => [],
                         'tax_behavior' => 'exclusive',
                     ],
                 ],
@@ -7529,15 +7510,12 @@ final class GeneratedExamplesTest extends TestCase
                 'currency' => 'usd',
                 'display_name' => 'display_name',
                 'id' => 'obj_123',
-                'latest_version' => 'latest_version',
                 'live_version' => 'live_version',
                 'livemode' => [],
                 'service_cycle' => [
                     'interval' => 'month',
                     'interval_count' => [],
                 ],
-                'service_interval' => 'month',
-                'service_interval_count' => [],
                 'tax_behavior' => 'exclusive',
             ],
             200,
@@ -7568,15 +7546,12 @@ final class GeneratedExamplesTest extends TestCase
                 'currency' => 'usd',
                 'display_name' => 'display_name',
                 'id' => 'obj_123',
-                'latest_version' => 'latest_version',
                 'live_version' => 'live_version',
                 'livemode' => [],
                 'service_cycle' => [
                     'interval' => 'month',
                     'interval_count' => [],
                 ],
-                'service_interval' => 'month',
-                'service_interval_count' => [],
                 'tax_behavior' => 'exclusive',
             ],
             200,
@@ -7604,15 +7579,12 @@ final class GeneratedExamplesTest extends TestCase
                 'currency' => 'usd',
                 'display_name' => 'display_name',
                 'id' => 'obj_123',
-                'latest_version' => 'latest_version',
                 'live_version' => 'live_version',
                 'livemode' => [],
                 'service_cycle' => [
                     'interval' => 'month',
                     'interval_count' => [],
                 ],
-                'service_interval' => 'month',
-                'service_interval_count' => [],
                 'tax_behavior' => 'exclusive',
             ],
             200,
@@ -9035,7 +9007,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'endpoint' => [
                     'http_method' => 'delete',
-                    'path' => '/v1/subscription_schedules',
+                    'path' => '/v1/products',
                 ],
                 'metadata' => ['key' => 'metadata'],
                 'skip_validation' => true,
@@ -9058,7 +9030,7 @@ final class GeneratedExamplesTest extends TestCase
         $result = $this->v2Client->v2->core->batchJobs->create([
             'endpoint' => [
                 'http_method' => 'delete',
-                'path' => '/v1/subscription_schedules',
+                'path' => '/v1/products',
             ],
             'metadata' => ['key' => 'metadata'],
             'skip_validation' => true,
@@ -10520,6 +10492,34 @@ final class GeneratedExamplesTest extends TestCase
         $result = $this->v2Client->v2->iam->activityLogs->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
         self::assertInstanceOf(V2\Iam\ActivityLog::class, $result->data[0]);
+    }
+
+    public function testV2IamActivityLogGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/iam/activity_logs/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.iam.activity_log',
+                'actor' => ['type' => 'api_key'],
+                'context' => 'context',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'details' => ['type' => 'api_key'],
+                'id' => 'obj_123',
+                'livemode' => [],
+                'type' => 'api_key_created',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->iam->activityLogs->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Iam\ActivityLog::class, $result);
     }
 
     public function testV2IamApiKeyGet()
@@ -14184,7 +14184,7 @@ final class GeneratedExamplesTest extends TestCase
                     'currency' => 'USD',
                     'value' => 96,
                 ],
-                'network' => 'fps',
+                'network' => 'wire',
             ],
             [],
             false,
@@ -14203,7 +14203,7 @@ final class GeneratedExamplesTest extends TestCase
                     'currency' => 'USD',
                     'value' => 96,
                 ],
-                'network' => 'fps',
+                'network' => 'wire',
             ]
         );
         self::assertInstanceOf(V2\FinancialAddressCreditSimulation::class, $result);

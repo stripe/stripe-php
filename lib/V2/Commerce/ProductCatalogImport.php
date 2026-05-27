@@ -5,7 +5,7 @@
 namespace Stripe\V2\Commerce;
 
 /**
- * The product catalog import object tracks the long-running background process that handles uploading, processing and validation.
+ * The ProductCatalogImport object tracks the long-running background process that handles uploading, processing and validation.
  *
  * @property string $id The unique identifier for this ProductCatalogImport.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
