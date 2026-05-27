@@ -8,6 +8,10 @@ class EventTypes
         // The beginning of the section generated from our OpenAPI spec
         \Stripe\Events\V1BillingMeterErrorReportTriggeredEvent::LOOKUP_TYPE => \Stripe\Events\V1BillingMeterErrorReportTriggeredEvent::class,
         \Stripe\Events\V1BillingMeterNoMeterFoundEvent::LOOKUP_TYPE => \Stripe\Events\V1BillingMeterNoMeterFoundEvent::class,
+        \Stripe\Events\V2CommerceProductCatalogImportsFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2CommerceProductCatalogImportsFailedEvent::class,
+        \Stripe\Events\V2CommerceProductCatalogImportsProcessingEvent::LOOKUP_TYPE => \Stripe\Events\V2CommerceProductCatalogImportsProcessingEvent::class,
+        \Stripe\Events\V2CommerceProductCatalogImportsSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2CommerceProductCatalogImportsSucceededEvent::class,
+        \Stripe\Events\V2CommerceProductCatalogImportsSucceededWithErrorsEvent::LOOKUP_TYPE => \Stripe\Events\V2CommerceProductCatalogImportsSucceededWithErrorsEvent::class,
         \Stripe\Events\V2CoreAccountClosedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountClosedEvent::class,
         \Stripe\Events\V2CoreAccountCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountCreatedEvent::class,
         \Stripe\Events\V2CoreAccountUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountUpdatedEvent::class,

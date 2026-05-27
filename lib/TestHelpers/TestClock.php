@@ -30,7 +30,7 @@ class TestClock extends \Stripe\ApiResource
     /**
      * Creates a new test clock that can be attached to new customers and quotes.
      *
-     * @param null|array{expand?: string[], frozen_time: int, name?: string} $params
+     * @param null|array{customer?: string, expand?: string[], frozen_time: int, name?: string} $params
      * @param null|array|string $options
      *
      * @return TestClock the created resource

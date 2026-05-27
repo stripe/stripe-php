@@ -12,7 +12,12 @@ namespace Stripe\Service\V2\Core\Accounts;
 class PersonTokenService extends \Stripe\Service\AbstractService
 {
     /**
-     * Creates a Person Token associated with an Account.
+     * Creates a single-use token that represents the details for a person. Use this
+     * when you create or update persons associated with an Account v2. Learn more
+     * about [account tokens](https://docs.stripe.com/connect/account-tokens). You can
+     * only create person tokens with your application's publishable key and in live
+     * mode. You can use your application's secret key to create person tokens only in
+     * test mode.
      *
      * @param string $id
      * @param null|array{additional_addresses?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, purpose: string, state?: string, town?: string}[], additional_names?: array{full_name?: string, given_name?: string, purpose: string, surname?: string}[], additional_terms_of_service?: array{account?: array{shown_and_accepted?: bool}}, address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}, date_of_birth?: array{day: int, month: int, year: int}, documents?: array{company_authorization?: array{files: string[], type: string}, passport?: array{files: string[], type: string}, primary_verification?: array{front_back: array{back?: string, front?: string}, type: string}, secondary_verification?: array{front_back: array{back?: string, front?: string}, type: string}, visa?: array{files: string[], type: string}}, email?: string, given_name?: string, id_numbers?: array{type: string, value: string}[], legal_gender?: string, metadata?: array<string, null|string>, nationalities?: string[], phone?: string, political_exposure?: string, relationship?: array{authorizer?: bool, director?: bool, executive?: bool, legal_guardian?: bool, owner?: bool, percent_ownership?: string, representative?: bool, title?: string}, script_addresses?: array{kana?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}, kanji?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}}, script_names?: array{kana?: array{given_name?: string, surname?: string}, kanji?: array{given_name?: string, surname?: string}}, surname?: string} $params
