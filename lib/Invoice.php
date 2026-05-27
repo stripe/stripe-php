@@ -46,6 +46,7 @@ namespace Stripe;
  * @property int $amount_due Final amount due at this time for this invoice. If the invoice's total is smaller than the minimum charge amount, for example, or if there is account credit that can be applied to the invoice, the <code>amount_due</code> may be 0. If there is a positive <code>starting_balance</code> for the invoice (the customer owes money), the <code>amount_due</code> will also take that into account. The charge that gets generated for the invoice will be for the amount specified in <code>amount_due</code>.
  * @property int $amount_overpaid Amount that was overpaid on the invoice. The amount overpaid is credited to the customer's credit balance.
  * @property int $amount_paid The amount, in cents (or local equivalent), that was paid.
+ * @property null|int $amount_paid_off_stripe Amount, in cents (or local equivalent), that was paid on the invoice outside of Stripe.
  * @property int $amount_remaining The difference between amount_due and amount_paid, in cents (or local equivalent).
  * @property int $amount_shipping This is the sum of all the shipping amounts.
  * @property null|((object{amount: int, amount_paid: int, amount_remaining: int, days_until_due: null|int, description: null|string, due_date: null|int, paid_at: null|int, status: string}&StripeObject))[] $amounts_due List of expected payments and corresponding due dates. This value will be null for invoices where collection_method=charge_automatically.

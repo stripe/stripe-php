@@ -17,7 +17,7 @@ namespace Stripe\Issuing;
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property int $net_total_amount The total net amount required to settle with the network.
- * @property string $network The card network for this settlement report. One of [&quot;visa&quot;, &quot;maestro&quot;]
+ * @property string $network The card network for this settlement report. One of [&quot;visa&quot;, &quot;maestro&quot;, &quot;mastercard&quot;]
  * @property int $network_fees_amount The total amount of fees owed to the network.
  * @property string $network_settlement_identifier The Settlement Identification Number assigned by the network.
  * @property null|int $other_fees_amount The total amount of any additional fees assessed by the card network.
@@ -32,6 +32,7 @@ class Settlement extends \Stripe\ApiResource
     const OBJECT_NAME = 'issuing.settlement';
 
     const NETWORK_MAESTRO = 'maestro';
+    const NETWORK_MASTERCARD = 'mastercard';
     const NETWORK_VISA = 'visa';
 
     const STATUS_COMPLETE = 'complete';
