@@ -50,7 +50,7 @@ class QueryRunService extends \Stripe\Service\AbstractService
      * the results.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{include?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Data\Reporting\QueryRun
