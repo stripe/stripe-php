@@ -12,6 +12,22 @@ namespace Stripe\Service\DelegatedCheckout;
 class RequestedSessionService extends \Stripe\Service\AbstractService
 {
     /**
+     * Lists orders for a delegated checkout requested session.
+     *
+     * @param string $id
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Collection<\Stripe\DelegatedCheckout\Order>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function allOrders($id, $params = null, $opts = null)
+    {
+        return $this->requestCollection('get', $this->buildPath('/v1/delegated_checkout/requested_sessions/%s/orders', $id), $params, $opts);
+    }
+
+    /**
      * Confirms a requested session.
      *
      * @param string $id

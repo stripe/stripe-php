@@ -12,8 +12,7 @@ namespace Stripe\Service;
 class PaymentLocationCapabilityService extends AbstractService
 {
     /**
-     * Returns a list of <code>PaymentLocationCapability</code> objects associated with
-     * the location.
+     * List all payment location capabilities associated with the payment location.
      *
      * @param null|array{expand?: string[], location: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -28,7 +27,7 @@ class PaymentLocationCapabilityService extends AbstractService
     }
 
     /**
-     * Retrieves information about the specified Payment Location Capability.
+     * Retrieves a <code>payment_location</code> capability.
      *
      * @param string $id
      * @param null|array{expand?: string[], location: string} $params
@@ -44,8 +43,9 @@ class PaymentLocationCapabilityService extends AbstractService
     }
 
     /**
-     * Updates a specified Payment Location Capability. Request or remove a payment
-     * location capability by updating its <code>requested</code> parameter.
+     * Updates a <code>payment_location</code> capability. Request or remove a
+     * <code>payment_location</code> capability by updating its <code>requested</code>
+     * parameter.
      *
      * @param string $id
      * @param null|array{expand?: string[], location: string, requested: bool} $params

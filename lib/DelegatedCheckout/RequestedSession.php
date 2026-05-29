@@ -143,4 +143,23 @@ class RequestedSession extends \Stripe\ApiResource
 
         return $this;
     }
+
+    /**
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return \Stripe\Collection<Order> list of orders
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public static function allOrders($id, $params = null, $opts = null)
+    {
+        $url = static::resourceUrl($id) . '/orders';
+        list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
 }

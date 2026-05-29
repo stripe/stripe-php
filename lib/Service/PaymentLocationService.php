@@ -14,7 +14,7 @@ class PaymentLocationService extends AbstractService
     /**
      * List all Payment Locations.
      *
-     * @param null|array{expand?: string[]} $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\PaymentLocation>
