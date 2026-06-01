@@ -295,6 +295,7 @@ class ObjectTypes
         \Stripe\V2\Payments\SettlementAllocationIntentSplit::OBJECT_NAME => \Stripe\V2\Payments\SettlementAllocationIntentSplit::class,
         \Stripe\V2\Reporting\Report::OBJECT_NAME => \Stripe\V2\Reporting\Report::class,
         \Stripe\V2\Reporting\ReportRun::OBJECT_NAME => \Stripe\V2\Reporting\ReportRun::class,
+        \Stripe\V2\Signals\AccountSignal::OBJECT_NAME => \Stripe\V2\Signals\AccountSignal::class,
         \Stripe\V2\Tax\ManualRule::OBJECT_NAME => \Stripe\V2\Tax\ManualRule::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];

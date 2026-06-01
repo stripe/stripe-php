@@ -18,6 +18,7 @@ namespace Stripe\Service\V2;
  * @property OrchestratedCommerce\OrchestratedCommerceServiceFactory $orchestratedCommerce
  * @property Payments\PaymentsServiceFactory $payments
  * @property Reporting\ReportingServiceFactory $reporting
+ * @property Signals\SignalsServiceFactory $signals
  * @property Tax\TaxServiceFactory $tax
  * @property TestHelpers\TestHelpersServiceFactory $testHelpers
  */
@@ -38,6 +39,7 @@ class V2ServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'orchestratedCommerce' => OrchestratedCommerce\OrchestratedCommerceServiceFactory::class,
         'payments' => Payments\PaymentsServiceFactory::class,
         'reporting' => Reporting\ReportingServiceFactory::class,
+        'signals' => Signals\SignalsServiceFactory::class,
         'tax' => Tax\TaxServiceFactory::class,
         'testHelpers' => TestHelpers\TestHelpersServiceFactory::class,
     ];

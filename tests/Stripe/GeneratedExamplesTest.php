@@ -10479,15 +10479,15 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'object' => 'v2.core.fee_batch',
                         'amount' => [
-                            'currency' => 'USD',
-                            'value' => [],
+                            'currency' => 'usd',
+                            'value' => 'value',
                         ],
                         'collected_by' => ['type' => 'application'],
                         'collection_records' => [
                             '0' => [
                                 'amount' => [
-                                    'currency' => 'USD',
-                                    'value' => [],
+                                    'currency' => 'usd',
+                                    'value' => 'value',
                                 ],
                                 'type' => 'money_management_transaction',
                             ],
@@ -10521,15 +10521,15 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.core.fee_batch',
                 'amount' => [
-                    'currency' => 'USD',
-                    'value' => [],
+                    'currency' => 'usd',
+                    'value' => 'value',
                 ],
                 'collected_by' => ['type' => 'application'],
                 'collection_records' => [
                     '0' => [
                         'amount' => [
-                            'currency' => 'USD',
-                            'value' => [],
+                            'currency' => 'usd',
+                            'value' => 'value',
                         ],
                         'type' => 'money_management_transaction',
                     ],
@@ -10560,8 +10560,8 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'object' => 'v2.core.fee_entry',
                         'amount' => [
-                            'currency' => 'USD',
-                            'value' => [],
+                            'currency' => 'usd',
+                            'value' => 'value',
                         ],
                         'charged_by' => ['type' => 'application'],
                         'created' => '1970-01-12T21:42:34.472Z',
@@ -10597,8 +10597,8 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.core.fee_entry',
                 'amount' => [
-                    'currency' => 'USD',
-                    'value' => [],
+                    'currency' => 'usd',
+                    'value' => 'value',
                 ],
                 'charged_by' => ['type' => 'application'],
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -14838,6 +14838,62 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Reporting\ReportRun::class, $result);
+    }
+
+    public function testV2SignalsAccountSignalGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/signals/account_signals',
+            ['type' => ['fraudulent_merchant']],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.signals.account_signal',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'type' => 'fraudulent_merchant',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->signals->accountSignals->all([
+            'type' => ['fraudulent_merchant'],
+        ]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Signals\AccountSignal::class, $result->data[0]);
+    }
+
+    public function testV2SignalsAccountSignalGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/signals/account_signals/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.signals.account_signal',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'type' => 'fraudulent_merchant',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->signals->accountSignals->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Signals\AccountSignal::class, $result);
     }
 
     public function testV2TaxManualRuleGet()

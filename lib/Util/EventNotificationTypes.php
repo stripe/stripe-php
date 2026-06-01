@@ -414,6 +414,7 @@ class EventNotificationTypes
         \Stripe\Events\V2ReportingReportRunSucceededEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunSucceededEventNotification::class,
         \Stripe\Events\V2ReportingReportRunUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunUpdatedEventNotification::class,
         \Stripe\Events\V2SignalsAccountSignalFraudulentMerchantReadyEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalFraudulentMerchantReadyEventNotification::class,
+        \Stripe\Events\V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification::class,
         // The end of the section generated from our OpenAPI spec
     ];
 }

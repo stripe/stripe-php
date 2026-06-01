@@ -22,4 +22,23 @@ namespace Stripe\DelegatedCheckout;
 class Order extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'delegated_checkout.order';
+
+    /**
+     * Retrieves a delegated checkout order.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @return Order
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }
