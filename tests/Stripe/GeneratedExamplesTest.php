@@ -10479,15 +10479,15 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'object' => 'v2.core.fee_batch',
                         'amount' => [
-                            'currency' => 'usd',
-                            'value' => 'value',
+                            'currency' => 'USD',
+                            'value' => [],
                         ],
                         'collected_by' => ['type' => 'application'],
                         'collection_records' => [
                             '0' => [
                                 'amount' => [
-                                    'currency' => 'usd',
-                                    'value' => 'value',
+                                    'currency' => 'USD',
+                                    'value' => [],
                                 ],
                                 'type' => 'money_management_transaction',
                             ],
@@ -10521,15 +10521,15 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.core.fee_batch',
                 'amount' => [
-                    'currency' => 'usd',
-                    'value' => 'value',
+                    'currency' => 'USD',
+                    'value' => [],
                 ],
                 'collected_by' => ['type' => 'application'],
                 'collection_records' => [
                     '0' => [
                         'amount' => [
-                            'currency' => 'usd',
-                            'value' => 'value',
+                            'currency' => 'USD',
+                            'value' => [],
                         ],
                         'type' => 'money_management_transaction',
                     ],
@@ -10560,8 +10560,8 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'object' => 'v2.core.fee_entry',
                         'amount' => [
-                            'currency' => 'usd',
-                            'value' => 'value',
+                            'currency' => 'USD',
+                            'value' => [],
                         ],
                         'charged_by' => ['type' => 'application'],
                         'created' => '1970-01-12T21:42:34.472Z',
@@ -10597,8 +10597,8 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.core.fee_entry',
                 'amount' => [
-                    'currency' => 'usd',
-                    'value' => 'value',
+                    'currency' => 'USD',
+                    'value' => [],
                 ],
                 'charged_by' => ['type' => 'application'],
                 'created' => '1970-01-12T21:42:34.472Z',
