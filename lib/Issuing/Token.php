@@ -15,9 +15,11 @@ namespace Stripe\Issuing;
  * @property null|string $last4 The last four digits of the token.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string $network The token service provider / card network associated with the token.
- * @property null|(object{device?: (object{device_fingerprint?: string, ip_address?: string, location?: string, name?: string, phone_number?: string, type?: string}&\Stripe\StripeObject), mastercard?: (object{card_reference_id?: string, token_reference_id: string, token_requestor_id: string, token_requestor_name?: string}&\Stripe\StripeObject), type: string, visa?: (object{card_reference_id: null|string, token_reference_id: string, token_requestor_id: string, token_risk_score?: string}&\Stripe\StripeObject), wallet_provider?: (object{account_id?: string, account_trust_score?: int, card_number_source?: string, cardholder_address?: (object{line1: string, postal_code: string}&\Stripe\StripeObject), cardholder_name?: string, device_trust_score?: int, hashed_account_email_address?: string, reason_codes?: string[], suggested_decision?: string, suggested_decision_version?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $network_data
+ * @property null|(object{device?: (object{device_fingerprint?: string, ip_address?: string, language?: null|string, location?: string, name?: string, phone_number?: string, type?: string}&\Stripe\StripeObject), mastercard?: (object{card_reference_id?: string, token_reference_id: string, token_requestor_id: string, token_requestor_name?: string}&\Stripe\StripeObject), type: string, visa?: (object{card_reference_id: null|string, token_decision_recommendation?: null|string, token_reference_id: string, token_requestor_id: string, token_risk_score?: string}&\Stripe\StripeObject), wallet_provider?: (object{account_id?: string, account_trust_score?: int, card_number_source?: string, cardholder_address?: (object{line1: string, postal_code: string}&\Stripe\StripeObject), cardholder_name?: string, device_trust_score?: int, hashed_account_email_address?: string, reason_codes?: string[], suggested_decision?: string, suggested_decision_version?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $network_data
  * @property int $network_updated_at Time at which the token was last updated by the card network. Measured in seconds since the Unix epoch.
+ * @property null|string $provisioning_decision The decision made during token provisioning.
  * @property string $status The usage state of the token.
+ * @property null|string $token_type The type of the token, indicating how it is used.
  * @property null|string $wallet_provider The digital wallet for this token, if one was used.
  */
 class Token extends \Stripe\ApiResource
@@ -29,10 +31,21 @@ class Token extends \Stripe\ApiResource
     const NETWORK_MASTERCARD = 'mastercard';
     const NETWORK_VISA = 'visa';
 
+    const PROVISIONING_DECISION_APPROVE = 'approve';
+    const PROVISIONING_DECISION_APPROVE_PENDING_ID_AND_V = 'approve_pending_id_and_v';
+    const PROVISIONING_DECISION_DECLINE = 'decline';
+
     const STATUS_ACTIVE = 'active';
     const STATUS_DELETED = 'deleted';
     const STATUS_REQUESTED = 'requested';
     const STATUS_SUSPENDED = 'suspended';
+
+    const TOKEN_TYPE_CARD_ON_FILE = 'card_on_file';
+    const TOKEN_TYPE_CLOUD_BASED = 'cloud_based';
+    const TOKEN_TYPE_COMMERCE_PLATFORM = 'commerce_platform';
+    const TOKEN_TYPE_COMMERCIAL_VIRTUAL_ACCOUNT = 'commercial_virtual_account';
+    const TOKEN_TYPE_SECURE_ELEMENT = 'secure_element';
+    const TOKEN_TYPE_STATIC_CREDENTIAL = 'static_credential';
 
     const WALLET_PROVIDER_APPLE_PAY = 'apple_pay';
     const WALLET_PROVIDER_GOOGLE_PAY = 'google_pay';
