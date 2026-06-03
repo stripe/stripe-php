@@ -5,7 +5,7 @@
 namespace Stripe\Service\V2\Billing;
 
 /**
- * @property Contracts\LicensePricing\LicensePricingServiceFactory $licensePricings
+ * @property Contracts\LicensePricing\LicensePricingServiceFactory $licensePricing
  *
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
@@ -16,7 +16,7 @@ class ContractService extends \Stripe\Service\AbstractService
     use \Stripe\Service\ServiceNavigatorTrait;
 
     protected static $classMap = [
-        'licensePricings' => Contracts\LicensePricing\LicensePricingServiceFactory::class,
+        'licensePricing' => Contracts\LicensePricing\LicensePricingServiceFactory::class,
     ];
 
     /**
