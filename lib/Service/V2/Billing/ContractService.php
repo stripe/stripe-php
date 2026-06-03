@@ -5,12 +5,20 @@
 namespace Stripe\Service\V2\Billing;
 
 /**
+ * @property Contracts\LicensePricing\LicensePricingServiceFactory $licensePricings
+ *
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
  * @psalm-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  */
 class ContractService extends \Stripe\Service\AbstractService
 {
+    use \Stripe\Service\ServiceNavigatorTrait;
+
+    protected static $classMap = [
+        'licensePricings' => Contracts\LicensePricing\LicensePricingServiceFactory::class,
+    ];
+
     /**
      * Activate a Draft Contract object by ID.
      *
@@ -487,5 +495,10 @@ class ContractService extends \Stripe\Service\AbstractService
                 ],
             ],
         ]);
+    }
+
+    protected function getServiceClass($name)
+    {
+        return \array_key_exists($name, self::$classMap) ? self::$classMap[$name] : null;
     }
 }

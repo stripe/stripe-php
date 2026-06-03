@@ -1356,7 +1356,6 @@ require __DIR__ . '/lib/Service/V2/Billing/Cadences/SpendModifierRuleService.php
 require __DIR__ . '/lib/Service/V2/Billing/CollectionSettingService.php';
 require __DIR__ . '/lib/Service/V2/Billing/CollectionSettings/VersionService.php';
 require __DIR__ . '/lib/Service/V2/Billing/ContractService.php';
-require __DIR__ . '/lib/Service/V2/Billing/Contracts/ContractsServiceFactory.php';
 require __DIR__ . '/lib/Service/V2/Billing/Contracts/LicensePricing/LicensePricingServiceFactory.php';
 require __DIR__ . '/lib/Service/V2/Billing/Contracts/LicensePricing/QuantityChangeService.php';
 require __DIR__ . '/lib/Service/V2/Billing/CustomPricingUnitService.php';
