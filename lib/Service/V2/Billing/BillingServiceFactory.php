@@ -10,6 +10,7 @@ namespace Stripe\Service\V2\Billing;
  * @property BillSettingService $billSettings
  * @property CadenceService $cadences
  * @property CollectionSettingService $collectionSettings
+ * @property ContractService $contracts
  * @property CustomPricingUnitService $customPricingUnits
  * @property IntentService $intents
  * @property LicensedItemService $licensedItems
@@ -36,6 +37,7 @@ class BillingServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'billSettings' => BillSettingService::class,
         'cadences' => CadenceService::class,
         'collectionSettings' => CollectionSettingService::class,
+        'contracts' => ContractService::class,
         'customPricingUnits' => CustomPricingUnitService::class,
         'intents' => IntentService::class,
         'licensedItems' => LicensedItemService::class,

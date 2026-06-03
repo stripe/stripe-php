@@ -64,6 +64,8 @@ class ObjectTypes
             \Stripe\CustomerBalanceTransaction::OBJECT_NAME => \Stripe\CustomerBalanceTransaction::class,
             \Stripe\CustomerCashBalanceTransaction::OBJECT_NAME => \Stripe\CustomerCashBalanceTransaction::class,
             \Stripe\CustomerSession::OBJECT_NAME => \Stripe\CustomerSession::class,
+            \Stripe\DelegatedCheckout\Order::OBJECT_NAME => \Stripe\DelegatedCheckout\Order::class,
+            \Stripe\DelegatedCheckout\OrderEvent::OBJECT_NAME => \Stripe\DelegatedCheckout\OrderEvent::class,
             \Stripe\DelegatedCheckout\RequestedSession::OBJECT_NAME => \Stripe\DelegatedCheckout\RequestedSession::class,
             \Stripe\Discount::OBJECT_NAME => \Stripe\Discount::class,
             \Stripe\Dispute::OBJECT_NAME => \Stripe\Dispute::class,
@@ -219,6 +221,8 @@ class ObjectTypes
         \Stripe\V2\Billing\CadenceSpendModifier::OBJECT_NAME => \Stripe\V2\Billing\CadenceSpendModifier::class,
         \Stripe\V2\Billing\CollectionSetting::OBJECT_NAME => \Stripe\V2\Billing\CollectionSetting::class,
         \Stripe\V2\Billing\CollectionSettingVersion::OBJECT_NAME => \Stripe\V2\Billing\CollectionSettingVersion::class,
+        \Stripe\V2\Billing\Contract::OBJECT_NAME => \Stripe\V2\Billing\Contract::class,
+        \Stripe\V2\Billing\ContractLicensePricingQuantityChange::OBJECT_NAME => \Stripe\V2\Billing\ContractLicensePricingQuantityChange::class,
         \Stripe\V2\Billing\CustomPricingUnit::OBJECT_NAME => \Stripe\V2\Billing\CustomPricingUnit::class,
         \Stripe\V2\Billing\Intent::OBJECT_NAME => \Stripe\V2\Billing\Intent::class,
         \Stripe\V2\Billing\IntentAction::OBJECT_NAME => \Stripe\V2\Billing\IntentAction::class,
@@ -291,6 +295,7 @@ class ObjectTypes
         \Stripe\V2\Payments\SettlementAllocationIntentSplit::OBJECT_NAME => \Stripe\V2\Payments\SettlementAllocationIntentSplit::class,
         \Stripe\V2\Reporting\Report::OBJECT_NAME => \Stripe\V2\Reporting\Report::class,
         \Stripe\V2\Reporting\ReportRun::OBJECT_NAME => \Stripe\V2\Reporting\ReportRun::class,
+        \Stripe\V2\Signals\AccountSignal::OBJECT_NAME => \Stripe\V2\Signals\AccountSignal::class,
         \Stripe\V2\Tax\ManualRule::OBJECT_NAME => \Stripe\V2\Tax\ManualRule::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];

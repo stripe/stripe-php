@@ -5,15 +5,15 @@
 namespace Stripe;
 
 /**
- * A Payment Location Capability represents a capability for a Stripe account at a Payment Location.
+ * A <code>payment_location</code> capability represents a capability for a Stripe account at a payment location.
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property string $account The account for which the capability enables functionality.
+ * @property string $account The account that the capability enables functionality for.
  * @property string $capability The identifier for the capability.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
- * @property string $location The payment location for which the capability enables functionality.
+ * @property string $location The payment location that the capability enables functionality for.
  * @property bool $requested Whether the capability has been requested.
- * @property null|int $requested_at Time at which the capability was requested. Measured in seconds since the Unix epoch.
+ * @property null|int $requested_at Time when the capability was requested. Measured in seconds since the Unix epoch.
  * @property (object{currently_due: string[], disabled_reason: null|string, errors: (object{code: string, reason: string, requirement: string}&StripeObject)[]}&StripeObject) $requirements
  * @property string $status The status of the capability.
  */
@@ -29,8 +29,7 @@ class PaymentLocationCapability extends ApiResource
     const STATUS_UNREQUESTED = 'unrequested';
 
     /**
-     * Returns a list of <code>PaymentLocationCapability</code> objects associated with
-     * the location.
+     * List all payment location capabilities associated with the payment location.
      *
      * @param null|array{expand?: string[], location: string} $params
      * @param null|array|string $opts
@@ -47,7 +46,7 @@ class PaymentLocationCapability extends ApiResource
     }
 
     /**
-     * Retrieves information about the specified Payment Location Capability.
+     * Retrieves a <code>payment_location</code> capability.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
@@ -66,8 +65,9 @@ class PaymentLocationCapability extends ApiResource
     }
 
     /**
-     * Updates a specified Payment Location Capability. Request or remove a payment
-     * location capability by updating its <code>requested</code> parameter.
+     * Updates a <code>payment_location</code> capability. Request or remove a
+     * <code>payment_location</code> capability by updating its <code>requested</code>
+     * parameter.
      *
      * @param string $id the ID of the resource to update
      * @param null|array{expand?: string[], location: string, requested: bool} $params

@@ -18,6 +18,7 @@ namespace Stripe;
  * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject) $address
  * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string, town: null|string}&StripeObject) $address_kana The Kana variation of the person's address (Japan only).
  * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string, town: null|string}&StripeObject) $address_kanji The Kanji variation of the person's address (Japan only).
+ * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject) $birth_address
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|(object{day: null|int, month: null|int, year: null|int}&StripeObject) $dob
  * @property null|string $email The person's email address. Also available for accounts where <a href="/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a> is <code>stripe</code>.

@@ -5655,5 +5655,21 @@ class StripeEventNotificationHandler
             $handler
         );
     }
+
+    /**
+     * Registers a handler for the "v2.signals.account_signal.merchant_delinquency_ready" event.
+     *
+     * @param callable(Events\V2SignalsAccountSignalMerchantDelinquencyReadyEvent, StripeClient): void $handler Handles v2.signals.account_signal.merchant_delinquency_ready events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2SignalsAccountSignalMerchantDelinquencyReady($handler)
+    {
+        $this->register(
+            'v2.signals.account_signal.merchant_delinquency_ready',
+            $handler
+        );
+    }
     // event-handler-methods: The end of the section generated from our OpenAPI spec
 }

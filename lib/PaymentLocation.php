@@ -11,7 +11,7 @@ namespace Stripe;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject) $address
  * @property null|(object{siret: null|string}&StripeObject) $business_registration Identification numbers associated with the location.
- * @property null|(object{fr_meal_vouchers_conecs_payments: null|(object{supported_issuers: null|(object{card: null|string[], card_present: null|string[]}&StripeObject)}&StripeObject)}&StripeObject) $capability_settings The capability settings for the location. Only applicable for locations with requested Payment Location Capabilities.
+ * @property null|(object{fr_meal_vouchers_conecs_payments: null|(object{supported_issuers: null|(object{card: null|string[], card_present: null|string[]}&StripeObject)}&StripeObject)}&StripeObject) $capability_settings The capability settings for the location. Only applicable for locations with requested payment location capabilities.
  * @property string $display_name The display name of the location.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  */
@@ -67,7 +67,7 @@ class PaymentLocation extends ApiResource
     /**
      * List all Payment Locations.
      *
-     * @param null|array{expand?: string[]} $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<PaymentLocation> of ApiResources
