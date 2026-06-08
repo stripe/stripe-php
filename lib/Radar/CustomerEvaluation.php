@@ -29,7 +29,7 @@ class CustomerEvaluation extends \Stripe\ApiResource
     /**
      * Creates a new <code>CustomerEvaluation</code> object.
      *
-     * @param null|array{evaluation_context: array{client_details?: array{radar_session: string}, customer_details?: array{customer?: string, customer_data?: array{email?: string, name?: string, phone?: string}}, type: string}[], event_type: string, expand?: string[]} $params
+     * @param null|array{evaluation_context: array{client_details?: array{data?: array{ip: string, referrer?: string, user_agent?: string}, radar_session?: string}, customer_details?: array{customer?: string, customer_data?: array{email?: string, name?: string, phone?: string}}, type: string}[], event_type: string, expand?: string[]} $params
      * @param null|array|string $options
      *
      * @return CustomerEvaluation the created resource

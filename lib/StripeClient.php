@@ -43,6 +43,8 @@ namespace Stripe;
  * @property Service\Forwarding\ForwardingServiceFactory $forwarding
  * @property Service\FrMealVouchersOnboardingService $frMealVouchersOnboardings
  * @property Service\FxQuoteService $fxQuotes
+ * @property Service\GiftCardOperationService $giftCardOperations
+ * @property Service\GiftCardService $giftCards
  * @property Service\Identity\IdentityServiceFactory $identity
  * @property Service\InvoiceItemService $invoiceItems
  * @property Service\InvoicePaymentService $invoicePayments
@@ -86,6 +88,7 @@ namespace Stripe;
  * @property Service\SubscriptionScheduleService $subscriptionSchedules
  * @property Service\Tax\TaxServiceFactory $tax
  * @property Service\TaxCodeService $taxCodes
+ * @property Service\TaxFundService $taxFunds
  * @property Service\TaxIdService $taxIds
  * @property Service\TaxRateService $taxRates
  * @property Service\Terminal\TerminalServiceFactory $terminal
