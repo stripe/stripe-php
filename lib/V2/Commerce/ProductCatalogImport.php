@@ -69,6 +69,7 @@ class ProductCatalogImport extends \Stripe\ApiResource
     const FEED_TYPE_INVENTORY = 'inventory';
     const FEED_TYPE_PRICING = 'pricing';
     const FEED_TYPE_PRODUCT = 'product';
+    const FEED_TYPE_PROMOTION = 'promotion';
 
     const STATUS_AWAITING_UPLOAD = 'awaiting_upload';
     const STATUS_FAILED = 'failed';
