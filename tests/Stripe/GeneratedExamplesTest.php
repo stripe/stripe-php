@@ -10479,15 +10479,15 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'object' => 'v2.core.fee_batch',
                         'amount' => [
-                            'currency' => 'USD',
-                            'value' => [],
+                            'currency' => 'usd',
+                            'value' => 'value',
                         ],
                         'collected_by' => ['type' => 'application'],
                         'collection_records' => [
                             '0' => [
                                 'amount' => [
-                                    'currency' => 'USD',
-                                    'value' => [],
+                                    'currency' => 'usd',
+                                    'value' => 'value',
                                 ],
                                 'type' => 'money_management_transaction',
                             ],
@@ -10521,15 +10521,15 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.core.fee_batch',
                 'amount' => [
-                    'currency' => 'USD',
-                    'value' => [],
+                    'currency' => 'usd',
+                    'value' => 'value',
                 ],
                 'collected_by' => ['type' => 'application'],
                 'collection_records' => [
                     '0' => [
                         'amount' => [
-                            'currency' => 'USD',
-                            'value' => [],
+                            'currency' => 'usd',
+                            'value' => 'value',
                         ],
                         'type' => 'money_management_transaction',
                     ],
@@ -10560,8 +10560,8 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'object' => 'v2.core.fee_entry',
                         'amount' => [
-                            'currency' => 'USD',
-                            'value' => [],
+                            'currency' => 'usd',
+                            'value' => 'value',
                         ],
                         'charged_by' => ['type' => 'application'],
                         'created' => '1970-01-12T21:42:34.472Z',
@@ -10597,8 +10597,8 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.core.fee_entry',
                 'amount' => [
-                    'currency' => 'USD',
-                    'value' => [],
+                    'currency' => 'usd',
+                    'value' => 'value',
                 ],
                 'charged_by' => ['type' => 'application'],
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -13675,7 +13675,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'value' => [],
                             ],
                         ],
-                        'category' => 'received_debit',
+                        'category' => 'inbound_transfer_reversal',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -13723,7 +13723,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'received_debit',
+                'category' => 'inbound_transfer_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -13773,7 +13773,7 @@ final class GeneratedExamplesTest extends TestCase
                         'livemode' => [],
                         'transaction' => 'transaction',
                         'transaction_details' => [
-                            'category' => 'received_debit',
+                            'category' => 'inbound_transfer_reversal',
                             'financial_account' => 'financial_account',
                         ],
                     ],
@@ -13819,7 +13819,7 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'transaction' => 'transaction',
                 'transaction_details' => [
-                    'category' => 'received_debit',
+                    'category' => 'inbound_transfer_reversal',
                     'financial_account' => 'financial_account',
                 ],
             ],
@@ -15320,20 +15320,8 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
-            '/v2/extend/workflows/id_123/invoke',
-            [
-                'input_parameters' => [
-                    'int_key' => 123,
-                    'string_key' => 'value',
-                    'boolean_key' => true,
-                    'object_key' => [
-                        'object_int_key' => 123,
-                        'object_string_key' => 'value',
-                        'object_boolean_key' => true,
-                    ],
-                    'array_key' => [1, 2, 3],
-                ],
-            ],
+            '/v2/core/vault/us_bank_accounts/id_123/archive',
+            [],
             [],
             false,
             [
@@ -15347,22 +15335,7 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->extend->workflows->invoke(
-                'id_123',
-                [
-                    'input_parameters' => [
-                        'int_key' => 123,
-                        'string_key' => 'value',
-                        'boolean_key' => true,
-                        'object_key' => [
-                            'object_int_key' => 123,
-                            'object_string_key' => 'value',
-                            'object_boolean_key' => true,
-                        ],
-                        'array_key' => [1, 2, 3],
-                    ],
-                ]
-            );
+            $this->v2Client->v2->core->vault->usBankAccounts->archive('id_123', []);
         } catch (Exception\CannotProceedException $e) {
         }
     }
