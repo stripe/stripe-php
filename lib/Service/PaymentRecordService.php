@@ -51,7 +51,7 @@ class PaymentRecordService extends AbstractService
      * canceled.
      *
      * @param string $id
-     * @param null|array{canceled_at?: int, expand?: string[], metadata?: null|array<string, string>, payment_evaluations?: string[]} $params
+     * @param null|array{canceled_at?: int, expand?: string[], metadata?: null|array<string, string>, payment_evaluations?: string[], reason?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentRecord

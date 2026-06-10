@@ -37,6 +37,7 @@ class UsBankAccountService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\Vault\UsBankAccount
      *
+     * @throws \Stripe\Exception\CannotProceedException
      * @throws \Stripe\Exception\ControlledByDashboardException
      */
     public function archive($id, $params = null, $opts = null)

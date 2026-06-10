@@ -25,7 +25,7 @@ class AccountEvaluation extends \Stripe\ApiResource
     /**
      * Creates a new <code>AccountEvaluation</code> object.
      *
-     * @param null|array{expand?: string[], login_initiated?: array{client_device_metadata_details: array{radar_session: string}, customer: string}, registration_initiated?: array{client_device_metadata_details: array{radar_session: string}, customer?: string, customer_data?: array{email?: string, name?: string, phone?: string}}, type: string} $params
+     * @param null|array{expand?: string[], login_initiated?: array{client_device_metadata_details: array{data?: array{ip: string, referrer?: string, user_agent?: string}, radar_session?: string}, customer: string}, registration_initiated?: array{client_device_metadata_details: array{data?: array{ip: string, referrer?: string, user_agent?: string}, radar_session?: string}, customer?: string, customer_data?: array{email?: string, name?: string, phone?: string}}, type: string} $params
      * @param null|array|string $options
      *
      * @return AccountEvaluation the created resource

@@ -43,6 +43,8 @@ namespace Stripe\Service;
  * @property Forwarding\ForwardingServiceFactory $forwarding
  * @property FrMealVouchersOnboardingService $frMealVouchersOnboardings
  * @property FxQuoteService $fxQuotes
+ * @property GiftCardOperationService $giftCardOperations
+ * @property GiftCardService $giftCards
  * @property Identity\IdentityServiceFactory $identity
  * @property InvoiceItemService $invoiceItems
  * @property InvoicePaymentService $invoicePayments
@@ -86,6 +88,7 @@ namespace Stripe\Service;
  * @property SubscriptionScheduleService $subscriptionSchedules
  * @property Tax\TaxServiceFactory $tax
  * @property TaxCodeService $taxCodes
+ * @property TaxFundService $taxFunds
  * @property TaxIdService $taxIds
  * @property TaxRateService $taxRates
  * @property Terminal\TerminalServiceFactory $terminal
@@ -142,6 +145,8 @@ class CoreServiceFactory extends AbstractServiceFactory
         'forwarding' => Forwarding\ForwardingServiceFactory::class,
         'frMealVouchersOnboardings' => FrMealVouchersOnboardingService::class,
         'fxQuotes' => FxQuoteService::class,
+        'giftCardOperations' => GiftCardOperationService::class,
+        'giftCards' => GiftCardService::class,
         'identity' => Identity\IdentityServiceFactory::class,
         'invoiceItems' => InvoiceItemService::class,
         'invoicePayments' => InvoicePaymentService::class,
@@ -185,6 +190,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'subscriptionSchedules' => SubscriptionScheduleService::class,
         'tax' => Tax\TaxServiceFactory::class,
         'taxCodes' => TaxCodeService::class,
+        'taxFunds' => TaxFundService::class,
         'taxIds' => TaxIdService::class,
         'taxRates' => TaxRateService::class,
         'terminal' => Terminal\TerminalServiceFactory::class,
