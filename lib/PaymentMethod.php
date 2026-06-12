@@ -39,7 +39,7 @@ namespace Stripe;
  * @property null|(object{}&StripeObject) $customer_balance
  * @property null|(object{bank: null|string}&StripeObject) $eps
  * @property null|(object{account_holder_type: null|string, bank: string}&StripeObject) $fpx
- * @property null|(object{brand: string, exp_month: null|int, exp_year: null|int, fingerprint?: string, first6: string, last4: null|string}&StripeObject) $gift_card
+ * @property null|(object{brand: string, exp_month: null|int, exp_year: null|int, fingerprint?: string, last4: null|string}&StripeObject) $gift_card
  * @property null|(object{}&StripeObject) $giropay
  * @property null|(object{}&StripeObject) $gopay
  * @property null|(object{}&StripeObject) $grabpay
