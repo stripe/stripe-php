@@ -27,6 +27,22 @@ class CustomerEvaluationService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Retrieves an <code>CustomerEvaluation</code> object.
+     *
+     * @param string $id
+     * @param null|array{expand?: string[]} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Radar\CustomerEvaluation
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function retrieve($id, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v1/radar/customer_evaluations/%s', $id), $params, $opts);
+    }
+
+    /**
      * Reports an event on a <code>CustomerEvaluation</code> object.
      *
      * @param string $id

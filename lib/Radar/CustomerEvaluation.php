@@ -49,6 +49,25 @@ class CustomerEvaluation extends \Stripe\ApiResource
     }
 
     /**
+     * Retrieves an <code>CustomerEvaluation</code> object.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @return CustomerEvaluation
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
+
+    /**
      * Reports an event on a <code>CustomerEvaluation</code> object.
      *
      * @param string $id the ID of the resource to update
