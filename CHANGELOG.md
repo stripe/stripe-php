@@ -1,5 +1,8 @@
 # Changelog
 
+## 20.2.1 - 2026-06-12
+* [#2079](https://github.com/stripe/stripe-php/pull/2079) Add "source" field to user-agent header
+
 ## 20.2.0 - 2026-05-27
 This release changes the pinned API version to 2026-05-27.dahlia.
 
