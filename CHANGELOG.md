@@ -22,6 +22,9 @@ This release changes the pinned API version to 2026-05-27.private.
   * ⚠️ Change type of `V2.MoneyManagement.ReceivedCredit.bank_transfer.gb_bank_account.network` from `literal('fps')` to `enum('chaps'|'fps')`
   * Add support for error codes `payment_method_microdeposit_processing_error` and `siret_invalid` on `QuotePreviewInvoice.last_finalization_error`
 
+## 20.2.1 - 2026-06-12
+* [#2079](https://github.com/stripe/stripe-php/pull/2079) Add "source" field to user-agent header
+
 ## 20.2.0 - 2026-05-27
 This release changes the pinned API version to 2026-05-27.dahlia.
 
