@@ -12,6 +12,7 @@ namespace Stripe;
  * @property string $brand The brand of the gift card.
  * @property null|int $exp_month The expiration month of the gift card.
  * @property null|int $exp_year The expiration year of the gift card.
+ * @property string $fingerprint Uniquely identifies this particular gift card number. You can use this attribute to check whether two gift cards are the same.
  * @property null|GiftCardOperation|string $last_operation The last operation performed on this gift card.
  * @property null|string $last4 The last four digits of the gift card number.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
