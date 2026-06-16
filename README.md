@@ -264,6 +264,9 @@ New features and bug fixes are released on the latest major version of the Strip
 
 ## Development
 
+> [!WARNING]
+> External contributions to this repo from first-time contributors are currently on hiatus. If you'd like to see a change made to the package, please open an issue.
+
 [Contribution guidelines for this project](CONTRIBUTING.md)
 
 We use [just](https://github.com/casey/just) for conveniently running development tasks. You can use them directly, or copy the commands out of the `justfile`. To our help docs, run `just`.
