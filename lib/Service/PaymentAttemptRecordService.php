@@ -126,7 +126,7 @@ class PaymentAttemptRecordService extends AbstractService
      * Report that the specified Payment Attempt Record was refunded.
      *
      * @param string $id
-     * @param null|array{amount?: array{currency: string, value: int}, expand?: string[], initiated_at?: int, metadata?: null|array<string, string>, outcome: string, processor_details: array{custom?: array{refund_reference: string}, type: string}, refund_group?: string, refunded?: array{refunded_at: int}} $params
+     * @param null|array{amount?: array{currency: string, value: int}, expand?: string[], failed?: array{failed_at?: int, failure_reason?: string}, initiated_at?: int, metadata?: null|array<string, string>, outcome: string, processor_details: array{custom?: array{refund_reference: string}, type: string}, refund_group?: string, refunded?: array{refunded_at: int}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentAttemptRecord
