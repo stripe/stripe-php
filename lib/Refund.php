@@ -74,7 +74,7 @@ class Refund extends ApiResource
      * an error when called on an already-refunded charge, or when trying to refund
      * more money than is left on a charge.
      *
-     * @param null|array{amount?: int, charge?: string, currency?: string, customer?: string, expand?: string[], instructions_email?: string, metadata?: null|array<string, string>, origin?: string, payment_intent?: string, reason?: string, refund_application_fee?: bool, reverse_transfer?: bool} $params
+     * @param null|array{amount?: int, charge?: string, currency?: string, customer?: string, expand?: string[], instructions_email?: string, metadata?: null|array<string, string>, origin?: string, payment_attempt_record?: string, payment_intent?: string, reason?: string, refund_application_fee?: bool, reverse_transfer?: bool} $params
      * @param null|array|string $options
      *
      * @return Refund the created resource
@@ -98,7 +98,7 @@ class Refund extends ApiResource
      * order, with the most recent refunds appearing first. The 10 most recent refunds
      * are always available by default on the Charge object.
      *
-     * @param null|array{charge?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, starting_after?: string} $params
+     * @param null|array{charge?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, payment_attempt_record?: string, payment_intent?: string, payment_record?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Refund> of ApiResources

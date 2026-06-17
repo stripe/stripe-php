@@ -84,6 +84,9 @@ This release changes the pinned API version to 2026-05-27.private.
   * Add support for snapshot event `PAYMENT_INTENT_EXPIRED` with resource `PaymentIntent`
   * Add support for event notifications `V2CoreHealthElementsErrorFiringEvent`, `V2CoreHealthElementsErrorResolvedEvent`, `V2CoreHealthInvoiceCountDroppedFiringEvent`, and `V2CoreHealthInvoiceCountDroppedResolvedEvent`
 
+## 20.2.1 - 2026-06-12
+* [#2079](https://github.com/stripe/stripe-php/pull/2079) Add "source" field to user-agent header
+
 ## 20.2.0 - 2026-05-27
 This release changes the pinned API version to 2026-05-27.dahlia.
 

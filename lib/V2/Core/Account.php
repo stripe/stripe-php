@@ -12,7 +12,7 @@ namespace Stripe\V2\Core;
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property string[] $applied_configurations The configurations that have been applied to this account.
  * @property null|bool $closed Indicates whether the account has been closed.
- * @property null|(object{card_creator?: (object{applied: bool, capabilities?: (object{commercial?: (object{celtic?: (object{charge_card?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), spend_card?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), cross_river_bank?: (object{charge_card?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), prepaid_card?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), spend_card?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), fifth_third?: (object{charge_card?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), lead?: (object{prepaid_card?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), stripe?: (object{charge_card?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), prepaid_card?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), consumer?: (object{celtic?: (object{revolving_credit_card?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), cross_river_bank?: (object{prepaid_card?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), lead?: (object{debit_card?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), prepaid_card?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), customer?: (object{applied: bool, automatic_indirect_tax?: (object{exempt?: string, ip_address?: string, location?: (object{country?: string, state?: string}&\Stripe\StripeObject), location_source?: string}&\Stripe\StripeObject), billing?: (object{default_payment_method?: string, invoice?: (object{custom_fields: (object{name: string, value: string}&\Stripe\StripeObject)[], footer?: string, next_sequence?: int, prefix?: string, rendering?: (object{amount_tax_display?: string, template?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), capabilities?: (object{automatic_indirect_tax?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), shipping?: (object{address?: (object{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}&\Stripe\StripeObject), name?: string, phone?: string}&\Stripe\StripeObject), test_clock?: string}&\Stripe\StripeObject), merchant?: (object{applied: bool, bacs_debit_payments?: (object{display_name?: string, service_user_number?: string}&\Stripe\StripeObject), branding?: (object{icon?: string, logo?: string, primary_color?: string, secondary_color?: string}&\Stripe\StripeObject), capabilities?: (object{ach_debit_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), acss_debit_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), affirm_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), afterpay_clearpay_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), alma_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), amazon_pay_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), au_becs_debit_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), bacs_debit_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), bancontact_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), blik_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), boleto_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), card_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), cartes_bancaires_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), cashapp_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), eps_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), fpx_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), gb_bank_transfer_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), grabpay_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), ideal_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), jcb_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), jp_bank_transfer_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), kakao_pay_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), klarna_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), konbini_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), kr_card_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), link_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), mobilepay_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), multibanco_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), mx_bank_transfer_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), naver_pay_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), oxxo_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), p24_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), pay_by_bank_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), payco_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), paynow_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), promptpay_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), revolut_pay_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), samsung_pay_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), sepa_bank_transfer_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), sepa_debit_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), stripe_balance?: (object{payouts?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), swish_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), twint_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), us_bank_transfer_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), zip_payments?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), card_payments?: (object{decline_on?: (object{avs_failure?: bool, cvc_failure?: bool}&\Stripe\StripeObject)}&\Stripe\StripeObject), konbini_payments?: (object{support?: (object{email?: string, hours?: (object{end_time?: string, start_time?: string}&\Stripe\StripeObject), phone?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), mcc?: string, script_statement_descriptor?: (object{kana?: (object{descriptor?: string, prefix?: string}&\Stripe\StripeObject), kanji?: (object{descriptor?: string, prefix?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), sepa_debit_payments?: (object{creditor_id?: string}&\Stripe\StripeObject), smart_disputes?: (object{auto_respond?: (object{preference?: string, value?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), statement_descriptor?: (object{descriptor?: string, prefix?: string}&\Stripe\StripeObject), support?: (object{address?: (object{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}&\Stripe\StripeObject), email?: string, phone?: string, url?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), recipient?: (object{applied: bool, capabilities?: (object{bank_accounts?: (object{instant?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), local?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), wire?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), cards?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), crypto_wallets?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), paper_checks?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), stripe_balance?: (object{payouts?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), stripe_transfers?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), default_outbound_destination?: (object{id: string, type: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), storer?: (object{applied: bool, capabilities?: (object{consumer?: (object{holds_currencies?: (object{usd?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), financial_addresses?: (object{bank_accounts?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), crypto_wallets?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), holds_currencies?: (object{eur?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), gbp?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), usd?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), usdc?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), inbound_transfers?: (object{bank_accounts?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), outbound_payments?: (object{bank_accounts?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), cards?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), crypto_wallets?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), financial_accounts?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), paper_checks?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), outbound_transfers?: (object{bank_accounts?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), crypto_wallets?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), financial_accounts?: (object{status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), high_risk_activities?: string[], high_risk_activities_description?: string, money_services_description?: string, operates_in_prohibited_countries?: bool, participates_in_regulated_activity?: bool, purpose_of_funds?: string, purpose_of_funds_description?: string, regulated_activity?: (object{description?: string, license_number?: string, primary_regulatory_authority_country?: string, primary_regulatory_authority_name?: string}&\Stripe\StripeObject), source_of_funds?: string, source_of_funds_description?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $configuration An Account represents a company, individual, or other entity that a user interacts with. Accounts store identity information and one or more configurations that enable product-specific capabilities. You can assign configurations at creation or add them later.
+ * @property null|(object{card_creator?: (object{applied: bool, capabilities?: (object{commercial?: (object{celtic?: (object{charge_card?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), spend_card?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), cross_river_bank?: (object{charge_card?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), prepaid_card?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), spend_card?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), fifth_third?: (object{charge_card?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), lead?: (object{prepaid_card?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), stripe?: (object{charge_card?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), prepaid_card?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), consumer?: (object{celtic?: (object{revolving_credit_card?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), cross_river_bank?: (object{prepaid_card?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), lead?: (object{debit_card?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), prepaid_card?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), customer?: (object{applied: bool, automatic_indirect_tax?: (object{exempt?: string, ip_address?: string, location?: (object{country?: string, state?: string}&\Stripe\StripeObject), location_source?: string}&\Stripe\StripeObject), billing?: (object{default_payment_method?: string, invoice?: (object{custom_fields: (object{name: string, value: string}&\Stripe\StripeObject)[], footer?: string, next_sequence?: int, prefix?: string, rendering?: (object{amount_tax_display?: string, template?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), capabilities?: (object{automatic_indirect_tax?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), shipping?: (object{address?: (object{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}&\Stripe\StripeObject), name?: string, phone?: string}&\Stripe\StripeObject), test_clock?: string}&\Stripe\StripeObject), merchant?: (object{applied: bool, bacs_debit_payments?: (object{display_name?: string, service_user_number?: string}&\Stripe\StripeObject), branding?: (object{icon?: string, logo?: string, primary_color?: string, secondary_color?: string}&\Stripe\StripeObject), capabilities?: (object{ach_debit_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), acss_debit_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), affirm_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), afterpay_clearpay_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), alma_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), amazon_pay_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), au_becs_debit_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), bacs_debit_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), bancontact_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), blik_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), boleto_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), card_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), cartes_bancaires_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), cashapp_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), eps_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), fpx_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), gb_bank_transfer_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), grabpay_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), ideal_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), jcb_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), jp_bank_transfer_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), kakao_pay_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), klarna_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), konbini_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), kr_card_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), link_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), mobilepay_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), multibanco_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), mx_bank_transfer_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), naver_pay_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), oxxo_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), p24_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), pay_by_bank_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), payco_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), paynow_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), promptpay_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), revolut_pay_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), samsung_pay_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), sepa_bank_transfer_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), sepa_debit_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), stripe_balance?: (object{payouts?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), swish_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), twint_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), us_bank_transfer_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), zip_payments?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), card_payments?: (object{decline_on?: (object{avs_failure?: bool, cvc_failure?: bool}&\Stripe\StripeObject)}&\Stripe\StripeObject), konbini_payments?: (object{support?: (object{email?: string, hours?: (object{end_time?: string, start_time?: string}&\Stripe\StripeObject), phone?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), mcc?: string, script_statement_descriptor?: (object{kana?: (object{descriptor?: string, prefix?: string}&\Stripe\StripeObject), kanji?: (object{descriptor?: string, prefix?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), sepa_debit_payments?: (object{creditor_id?: string}&\Stripe\StripeObject), smart_disputes?: (object{auto_respond?: (object{preference?: string, value?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), statement_descriptor?: (object{descriptor?: string, prefix?: string}&\Stripe\StripeObject), support?: (object{address?: (object{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}&\Stripe\StripeObject), email?: string, phone?: string, url?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), recipient?: (object{applied: bool, capabilities?: (object{bank_accounts?: (object{instant?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), local?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), wire?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), cards?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), crypto_wallets?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), paper_checks?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), stripe_balance?: (object{payouts?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), stripe_transfers?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), default_outbound_destination?: (object{id: string, type: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), storer?: (object{applied: bool, capabilities?: (object{consumer?: (object{holds_currencies?: (object{usd?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), financial_addresses?: (object{bank_accounts?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), crypto_wallets?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), holds_currencies?: (object{eur?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), gbp?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), usd?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), usdc?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), inbound_transfers?: (object{bank_accounts?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), outbound_payments?: (object{bank_accounts?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), cards?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), crypto_wallets?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), financial_accounts?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), paper_checks?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), outbound_transfers?: (object{bank_accounts?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), crypto_wallets?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), financial_accounts?: (object{protections: (object{psp_migration: (object{expires_at?: int, requested_at: int, status: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string, status_details: (object{code: string, resolution: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), high_risk_activities?: string[], high_risk_activities_description?: string, money_services_description?: string, operates_in_prohibited_countries?: bool, participates_in_regulated_activity?: bool, purpose_of_funds?: string, purpose_of_funds_description?: string, regulated_activity?: (object{description?: string, license_number?: string, primary_regulatory_authority_country?: string, primary_regulatory_authority_name?: string}&\Stripe\StripeObject), source_of_funds?: string, source_of_funds_description?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $configuration An Account represents a company, individual, or other entity that a user interacts with. Accounts store identity information and one or more configurations that enable product-specific capabilities. You can assign configurations at creation or add them later.
  * @property null|string $contact_email The primary contact email address for the Account.
  * @property null|string $contact_phone The default contact phone for the Account.
  * @property int $created Time at which the object was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
@@ -32,6 +32,1904 @@ class Account extends \Stripe\ApiResource
     public static function fieldEncodings()
     {
         return [
+            'configuration' => [
+                'kind' => 'object',
+                'fields' => [
+                    'card_creator' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'capabilities' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'commercial' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'celtic' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'charge_card' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'protections' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'psp_migration' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'expires_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                            'requested_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                    'spend_card' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'protections' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'psp_migration' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'expires_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                            'requested_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'cross_river_bank' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'charge_card' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'protections' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'psp_migration' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'expires_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                            'requested_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                    'prepaid_card' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'protections' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'psp_migration' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'expires_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                            'requested_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                    'spend_card' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'protections' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'psp_migration' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'expires_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                            'requested_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'fifth_third' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'charge_card' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'protections' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'psp_migration' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'expires_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                            'requested_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'lead' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'prepaid_card' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'protections' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'psp_migration' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'expires_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                            'requested_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'stripe' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'charge_card' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'protections' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'psp_migration' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'expires_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                            'requested_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                    'prepaid_card' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'protections' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'psp_migration' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'expires_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                            'requested_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'consumer' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'celtic' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'revolving_credit_card' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'protections' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'psp_migration' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'expires_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                            'requested_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'cross_river_bank' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'prepaid_card' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'protections' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'psp_migration' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'expires_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                            'requested_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'lead' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'debit_card' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'protections' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'psp_migration' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'expires_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                            'requested_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                    'prepaid_card' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'protections' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'psp_migration' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'expires_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                            'requested_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    'customer' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'capabilities' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'automatic_indirect_tax' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    'merchant' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'capabilities' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'ach_debit_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'acss_debit_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'affirm_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'afterpay_clearpay_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'alma_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'amazon_pay_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'au_becs_debit_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'bacs_debit_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'bancontact_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'blik_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'boleto_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'card_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'cartes_bancaires_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'cashapp_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'eps_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'fpx_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'gb_bank_transfer_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'grabpay_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'ideal_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'jcb_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'jp_bank_transfer_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'kakao_pay_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'klarna_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'konbini_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'kr_card_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'link_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'mobilepay_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'multibanco_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'mx_bank_transfer_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'naver_pay_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'oxxo_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'p24_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'pay_by_bank_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'payco_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'paynow_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'promptpay_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'revolut_pay_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'samsung_pay_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'sepa_bank_transfer_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'sepa_debit_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'stripe_balance' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'payouts' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'swish_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'twint_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'us_bank_transfer_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'zip_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    'recipient' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'capabilities' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'bank_accounts' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'instant' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'local' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'wire' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'cards' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'crypto_wallets' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'paper_checks' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'protections' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'psp_migration' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'expires_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                            'requested_at' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'stripe_balance' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'payouts' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'stripe_transfers' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    'storer' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'capabilities' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'consumer' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'holds_currencies' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'usd' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'protections' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'psp_migration' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'expires_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                            'requested_at' => [
+                                                                                'kind' => 'int64_string',
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'financial_addresses' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'bank_accounts' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'crypto_wallets' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'holds_currencies' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'eur' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'gbp' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'usd' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'usdc' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'inbound_transfers' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'bank_accounts' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'outbound_payments' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'bank_accounts' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'cards' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'crypto_wallets' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'financial_accounts' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'paper_checks' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    'outbound_transfers' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'bank_accounts' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'crypto_wallets' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                            'financial_accounts' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'protections' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'psp_migration' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'expires_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                    'requested_at' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
             'identity' => [
                 'kind' => 'object',
                 'fields' => [
