@@ -118,7 +118,7 @@ class PaymentRecordService extends AbstractService
      * refunded.
      *
      * @param string $id
-     * @param null|array{amount?: array{currency: string, value: int}, expand?: string[], failed?: array{failed_at?: int, failure_reason?: string}, initiated_at?: int, metadata?: null|array<string, string>, outcome: string, processor_details: array{custom?: array{refund_reference: string}, type: string}, refund_group?: string, refunded?: array{refunded_at: int}} $params
+     * @param null|array{amount?: array{currency: string, value: int}, expand?: string[], failed?: array{failed_at?: int, failure_reason?: string}, initiated_at?: int, metadata?: null|array<string, string>, outcome?: string, processor_details: array{custom?: array{refund_reference: string}, type: string}, refund_group?: string, refunded?: array{refunded_at: int}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentRecord
@@ -144,5 +144,25 @@ class PaymentRecordService extends AbstractService
     public function retrieve($id, $params = null, $opts = null)
     {
         return $this->request('get', $this->buildPath('/v1/payment_records/%s', $id), $params, $opts);
+    }
+
+    /**
+     * Search for PaymentRecords you’ve previously created using Stripe’s <a
+     * href="/docs/search#search-query-language">Search Query Language</a>. Don’t use
+     * search in read-after-write flows where strict consistency is necessary. Under
+     * normal operating conditions, data is searchable in less than a minute.
+     * Occasionally, propagation of new or updated data can be up to an hour behind
+     * during outages. Search functionality is not available to merchants in India.
+     *
+     * @param null|array{expand?: string[], limit?: int, page?: string, query: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\SearchResult<\Stripe\PaymentRecord>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function search($params = null, $opts = null)
+    {
+        return $this->requestSearchResult('get', '/v1/payment_records/search', $params, $opts);
     }
 }

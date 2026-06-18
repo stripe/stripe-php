@@ -160,7 +160,7 @@ class ContractService extends \Stripe\Service\AbstractService
      * Cancel a Contract object by ID.
      *
      * @param string $id
-     * @param null|array{include?: string[]} $params
+     * @param null|array{cancel_pricing_lines?: array{id?: string, lookup_key?: string, proration_behavior?: string}[], include?: string[], proration_behavior?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\Contract

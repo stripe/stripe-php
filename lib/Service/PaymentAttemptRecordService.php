@@ -75,6 +75,23 @@ class PaymentAttemptRecordService extends AbstractService
     }
 
     /**
+     * Report that the specified Payment Attempt Record received an early fraud
+     * warning.
+     *
+     * @param string $id
+     * @param null|array{expand?: string[], fraud_type: string, metadata?: null|array<string, string>, occurred_at: int} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\PaymentAttemptRecord
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function reportEarlyFraudWarning($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/payment_attempt_records/%s/report_early_fraud_warning', $id), $params, $opts);
+    }
+
+    /**
      * Report that the specified Payment Attempt Record failed.
      *
      * @param string $id
@@ -126,7 +143,7 @@ class PaymentAttemptRecordService extends AbstractService
      * Report that the specified Payment Attempt Record was refunded.
      *
      * @param string $id
-     * @param null|array{amount?: array{currency: string, value: int}, expand?: string[], failed?: array{failed_at?: int, failure_reason?: string}, initiated_at?: int, metadata?: null|array<string, string>, outcome: string, processor_details: array{custom?: array{refund_reference: string}, type: string}, refund_group?: string, refunded?: array{refunded_at: int}} $params
+     * @param null|array{amount?: array{currency: string, value: int}, expand?: string[], failed?: array{failed_at?: int, failure_reason?: string}, initiated_at?: int, metadata?: null|array<string, string>, outcome?: string, processor_details: array{custom?: array{refund_reference: string}, type: string}, refund_group?: string, refunded?: array{refunded_at: int}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentAttemptRecord
